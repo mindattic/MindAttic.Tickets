@@ -1,0 +1,9 @@
+<Solution>
+  <Project Path="Spike.Shared/Spike.Shared.csproj" />
+  <Project Path="Spike.Baseline/Spike.Baseline.csproj" />
+  <Project Path="Spike.FlickerFree/Spike.FlickerFree.csproj" />
+  <Project Path="Spike.SpectreLive/Spike.SpectreLive.csproj" />
+  <Project Path="Spike.RazorConsole/Spike.RazorConsole.csproj" />
+  <Project Path="Spike.XenoAtom/Spike.XenoAtom.csproj" />
+  <Project Path="Spike.TerminalGui/Spike.TerminalGui.csproj" />
+</Solution>

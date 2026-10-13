@@ -1,0 +1,8 @@
+<Project>
+  <!-- Spikes inherit repo settings but are throwaway: warnings stay warnings. -->
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+  <PropertyGroup>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+</Project>

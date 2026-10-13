@@ -1,0 +1,86 @@
+@namespace SpikeRazor
+@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.Extensions.Hosting
+@using RazorConsole.Components
+@using Spectre.Console
+@using Spike.Shared
+@inject IHostApplicationLifetime Lifetime
+@implements IDisposable
+
+<Rows>
+    <Markup Content="@Crumbs" Foreground="@Color.Aqua" />
+    <Markup Content="@_status" Foreground="@Color.Grey50" />
+    <Newline />
+    <Panel Title="Menu" Border="BoxBorder.Rounded" BorderColor="@Color.Grey35" Expand="true">
+        @* @key = depth: a new Select per level, so focus/highlight state resets cleanly. *@
+        <Select @key="_stack.Count"
+                TItem="MenuNode"
+                Options="@Options"
+                FocusedValue="@Remembered"
+                ValueChanged="OnPicked"
+                Formatter="@Format"
+                IsFocused="true"
+                SelectedIndicator="@('>')" />
+    </Panel>
+    @if (_picked is not null)
+    {
+        <Markup Content="@($"Picked: {_picked}")" Foreground="@Color.Green" />
+    }
+    <Markup Content="Up/Down navigate · type to jump · Enter open · '< Back' row goes back · Ctrl+C quit" Foreground="@Color.Grey58" />
+</Rows>
+
+@code {
+    private static readonly MenuNode BackRow = new("< Back", "return to previous menu");
+    private static readonly MenuNode QuitRow = new("< Quit", "exit the spike");
+
+    private readonly List<(MenuNode Node, int Index)> _stack = [(DemoMenu.Root, 0)];
+    private string _status = DemoMenu.Status();
+    private string? _picked;
+    private Timer? _timer;
+
+    private string Crumbs => string.Join(" > ", new[] { DemoMenu.Title }.Concat(_stack.Skip(1).Select(f => f.Node.Name)));
+
+    private MenuNode[] Options => [.. _stack[^1].Node.Children!, _stack.Count == 1 ? QuitRow : BackRow];
+
+    private MenuNode Remembered => Options[Math.Clamp(_stack[^1].Index, 0, Options.Length - 1)];
+
+    private int NameWidth => Options.Max(o => o.Name.Length);
+
+    private string Format(MenuNode node) => $"{node.Name.PadRight(NameWidth)}   {node.Description}";
+
+    protected override void OnInitialized()
+    {
+        _timer = new Timer(_ => InvokeAsync(() =>
+        {
+            _status = DemoMenu.Status();
+            StateHasChanged();
+        }), null, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1));
+    }
+
+    private void OnPicked(MenuNode node)
+    {
+        if (ReferenceEquals(node, QuitRow))
+        {
+            Lifetime.StopApplication();
+            return;
+        }
+        if (ReferenceEquals(node, BackRow))
+        {
+            _stack.RemoveAt(_stack.Count - 1);
+            return;
+        }
+        var current = _stack[^1].Node;
+        var index = current.Children!.ToList().IndexOf(node);
+        if (node.IsLeaf)
+        {
+            _picked = string.Join(" > ", _stack.Skip(1).Select(f => f.Node.Name).Append(node.Name));
+            _stack[^1] = (current, index);
+            return;
+        }
+        _stack[^1] = (current, index);
+        _stack.Add((node, 0));
+    }
+
+    public void Dispose() => _timer?.Dispose();
+}

@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="src/MindAttic.Workflow/MindAttic.Workflow.csproj" />
+  <Project Path="src/MindAttic.Workflow.Cli/MindAttic.Workflow.Cli.csproj" />
+  <Project Path="tests/MindAttic.Workflow.Tests/MindAttic.Workflow.Tests.csproj" />
+</Solution>
