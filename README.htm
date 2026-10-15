@@ -6,7 +6,7 @@
 <title>MindAttic.Workflow</title>
 <meta name="description" content="A ticket engine and repo job runner for the MindAttic workspace: every repo keeps its own permanent ticket log in markdown, and one CLI queries, checks and maintains them all.">
 <meta name="generator" content="MindAttic Codex build-readme.ps1">
-<meta name="generated" content="2026-10-12">
+<meta name="generated" content="2026-10-15">
 <style>:root{
   --bg:#0d1117;--bg2:#161b22;--bg3:#21262d;
   --border:#30363d;
@@ -128,13 +128,14 @@ pre:hover .cpbtn{opacity:1}
 <li>Clean up the workspace without losing anything that only exists on this machine.</li>
 </ul>
 <h2 id="features">Features</h2>
-<p><strong>Tickets</strong> (each repo's <code>## Tickets</code> table in <code>docs/USER_STORIES.md</code>)</p>
+<p><strong>Stories and tickets</strong> (every repo's, in one SQLite database: <code>data/workflow.db</code>, with links such as <code>requires</code> between any two; each repo's <code>docs/USER_STORIES.md</code> is now a generated, read-only view of it)</p>
 <ul>
 <li><code>ticket new</code> appends a row with the next free <code>CODE-T&lt;n&gt;</code> ID and prints it. Only that one line changes; line endings and BOM are kept.</li>
 <li><code>ticket close</code> moves a ticket to <code>closed</code> or <code>wont-do</code> and can set its Ref.</li>
 <li><code>ticket list</code> shows tickets across the workspace, filtered by repo, status, type or date, as a table or <code>--json</code>.</li>
 <li><code>ticket verify</code> fails if the table breaks the rules or a committed row was deleted or reworded.</li>
 <li><code>codes check</code> finds duplicate project codes, repos without a ticket log, and malformed tables.</li>
+<li><code>view</code> opens a read-only page of every repo's tickets and stories, with filters, in MindAttic.Browser (or the default browser). It's a snapshot; run it again to refresh.</li>
 </ul>
 <p><strong>Workspace jobs</strong></p>
 <ul>
@@ -155,6 +156,7 @@ workflow ticket close &lt;CODE-Tn&gt; [--repo X] [--ref ...] [--wont-do]
 workflow ticket list  [--repo X] [--status S] [--type T] [--since YYYY-MM-DD] [--json]
 workflow ticket verify [--repo X]
 workflow codes check
+workflow view [--repo X] [--out DIR] [--no-open]
 workflow repos status [--json]
 workflow repos prune  [--apply] [--only A,B] [--override A,B]
 workflow repos rollout tickets [--apply]</code></pre>
@@ -167,7 +169,7 @@ workflow repos rollout tickets [--apply]</code></pre>
    Tickets/ (markdown)     Repos/ (git + GitHub)
            |                    |
  &lt;repo&gt;/docs/USER_STORIES.md   git -C &lt;repo&gt;, api.github.com/user/repos</code></pre>
-<p>There is no database or index: every query re-reads the files. The GitHub token comes from MindAttic.Vault (bucket <code>GitHub</code>, key <code>github</code>), the same one the Launcher's roster filter uses.</p>
+<p>There is no database or index: every query re-reads the files. The GitHub token comes from MindAttic.Vault (bucket <code>GitHub</code>, key <code>github</code>), the same one the Launcher's roster filter uses. The library has no package dependencies: the CLI (and the Launcher) read the token and pass it in.</p>
 <h2 id="project-layout">Project layout</h2>
 <pre><code class="language-text">src/MindAttic.Workflow/            library (packed to C:\LocalNuGet)
   Tickets/   Ticket, TicketRules, StoryFile, WorkspaceTickets
@@ -192,13 +194,14 @@ powershell -File tools/codex.ps1 doctor   # docs canon check</code></pre>
 <li><a href="docs/BIBLE.md">docs/BIBLE.md</a>: what this project is and isn't, and its laws.</li>
 <li><a href="docs/USER<em>STORIES.md">docs/USER</em>STORIES.md</a>: stories with their tests, the backlog, and this repo's own ticket log.</li>
 <li><a href="docs/AMENDMENTS.md">docs/AMENDMENTS.md</a>: pending decisions.</li>
+<li><a href="docs/VIEWER.md">docs/VIEWER.md</a>: how <code>workflow view</code> works and why it's a static snapshot.</li>
 <li><a href="AGENTS.md">AGENTS.md</a>: agent instructions.</li>
 </ul>
 <h2 id="license">License</h2>
 <p>No LICENSE file; all rights reserved.</p>
 <p>Part of <a href="https://mindattic.com">MindAttic</a> — see more projects at <a href="https://github.com/mindattic">github.com/mindattic</a>. Related: <a href="https://github.com/mindattic/MindAttic.Launcher">MindAttic.Launcher</a> (workspace launcher) and <a href="https://github.com/mindattic/MindAttic.Vault">MindAttic.Vault</a> (credential store).</p>
 
-    <p class="codex-footer">Generated 2026-10-12 by the shared MindAttic Codex engine (<code>codex-standard/build-readme.ps1</code>) from <code>README.md</code>. Edit the Markdown source, not this file.</p>
+    <p class="codex-footer">Generated 2026-10-15 by the shared MindAttic Codex engine (<code>codex-standard/build-readme.ps1</code>) from <code>README.md</code>. Edit the Markdown source, not this file.</p>
   </main>
 </div>
 <script>(function(){

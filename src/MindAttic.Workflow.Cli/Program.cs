@@ -67,6 +67,8 @@ app.Configure(config =>
         r.AddCommand<ReposPruneCommand>("prune").WithDescription("Delete folders of archived / untagged repos that are safe to remove (preview unless --apply).");
         r.AddCommand<ReposRolloutTicketsCommand>("rollout").WithDescription("Give every repo a USER_STORIES.md with a ticket log (preview unless --apply).");
     });
+
+    config.AddCommand<ViewCommand>("view").WithDescription("Open a read-only page of every repo's stories and tickets in MindAttic.Browser.");
 });
 
 try

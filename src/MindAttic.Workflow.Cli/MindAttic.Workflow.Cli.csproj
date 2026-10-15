@@ -21,6 +21,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!-- `workflow view` writes this page next to its data.js (docs/VIEWER.md). -->
+    <EmbeddedResource Include="Viewer\index.html" LogicalName="viewer/index.html" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MindAttic.Workflow\MindAttic.Workflow.csproj" />
   </ItemGroup>
 

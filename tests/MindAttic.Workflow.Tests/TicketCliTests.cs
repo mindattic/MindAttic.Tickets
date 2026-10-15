@@ -136,6 +136,31 @@ public sealed class TicketCliTests
     }
 
     [Test]
+    public void View_writes_a_page_and_a_snapshot_of_every_ticket_and_story_with_markup_escaped()
+    {
+        MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | fix | open | close </script><b>x</b> & more | — |\n");
+        MakeRepo("B", "BB", "| BB-T1 | 2026-10-02 | chore | closed | other | done |\n");
+        Directory.CreateDirectory(Path.Combine(root, "MindAttic.Workflow", ".git"));
+        Run("db", "migrate", "--cutover");
+
+        var site = Path.Combine(root, "site");
+        var view = Run("view", "--out", site, "--no-open", "--repo", "b");
+        Assert.That((view.Code, view.Out.Trim()), Is.EqualTo((0, site)), view.Out);
+        Assert.That(File.ReadAllText(Path.Combine(site, "index.html")), Does.Contain("<script src=\"data.js\"></script>"));
+
+        var js = File.ReadAllText(Path.Combine(site, "data.js"));
+        Assert.That(js, Does.StartWith("window.WORKFLOW = ").And.Not.Contain("</script>").And.Not.Contain("<b>"), "ticket text can't break out of the script");
+        var data = JsonDocument.Parse(js["window.WORKFLOW = ".Length..].TrimEnd().TrimEnd(';')).RootElement;
+        Assert.That(data.GetProperty("selectedRepo").GetString(), Is.EqualTo("b"));
+        var tickets = data.GetProperty("tickets").EnumerateArray().ToList();
+        Assert.That(tickets.Select(t => t.GetProperty("id").GetString()), Is.EquivalentTo(new[] { "AA-T1", "BB-T1" }));
+        Assert.That(tickets.Single(t => t.GetProperty("id").GetString() == "AA-T1").GetProperty("summary").GetString(), Is.EqualTo("close </script><b>x</b> & more"));
+        Assert.That(tickets[0].EnumerateObject().Select(p => p.Name), Is.EqualTo(new[] { "repo", "id", "date", "type", "status", "summary", "ref" }));
+
+        Assert.That(Run("view", "--out", site, "--no-open", "--repo", "Nope").Code, Is.Not.Zero, "an unknown repo is an error, not an empty page");
+    }
+
+    [Test]
     public void Rollout_previews_then_seeds_a_new_file_with_an_unused_code_and_never_overwrites_one()
     {
         Directory.CreateDirectory(Path.Combine(root, "Alpha", ".git"));

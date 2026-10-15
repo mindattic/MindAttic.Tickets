@@ -29,6 +29,7 @@ $ workflow ticket list --status open
 - `ticket list` shows tickets across the workspace, filtered by repo, status, type or date, as a table or `--json`.
 - `ticket verify` fails if the table breaks the rules or a committed row was deleted or reworded.
 - `codes check` finds duplicate project codes, repos without a ticket log, and malformed tables.
+- `view` opens a read-only page of every repo's tickets and stories, with filters, in MindAttic.Browser (or the default browser). It's a snapshot; run it again to refresh.
 
 **Workspace jobs**
 - `repos status` shows each repo's uncommitted, unpushed and stashed work, ignored files that no build regenerates, and its GitHub state (archived, `work-in-progress` topic). Origins that predate a repo rename are resolved through GitHub's redirect.
@@ -56,6 +57,7 @@ workflow ticket close <CODE-Tn> [--repo X] [--ref ...] [--wont-do]
 workflow ticket list  [--repo X] [--status S] [--type T] [--since YYYY-MM-DD] [--json]
 workflow ticket verify [--repo X]
 workflow codes check
+workflow view [--repo X] [--out DIR] [--no-open]
 workflow repos status [--json]
 workflow repos prune  [--apply] [--only A,B] [--override A,B]
 workflow repos rollout tickets [--apply]
@@ -110,6 +112,7 @@ The repo-level tests run real `git` against temporary repos; nothing touches the
 - [docs/BIBLE.md](docs/BIBLE.md): what this project is and isn't, and its laws.
 - [docs/USER_STORIES.md](docs/USER_STORIES.md): stories with their tests, the backlog, and this repo's own ticket log.
 - [docs/AMENDMENTS.md](docs/AMENDMENTS.md): pending decisions.
+- [docs/VIEWER.md](docs/VIEWER.md): how `workflow view` works and why it's a static snapshot.
 - [AGENTS.md](AGENTS.md): agent instructions.
 
 ## License
