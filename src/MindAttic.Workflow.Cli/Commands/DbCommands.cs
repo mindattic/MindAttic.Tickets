@@ -201,6 +201,32 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
     }
 }
 
+public sealed class TicketCorrectCommand : Command<TicketCorrectCommand.Settings>
+{
+    public sealed class Settings : WorkspaceSettings
+    {
+        [CommandArgument(0, "<ID>")]
+        public string Id { get; init; } = "";
+
+        [CommandOption("--type <TYPE>")]
+        [Description("feature | fix | chore | docs")]
+        public string Type { get; init; } = "";
+
+        [CommandOption("--reason <TEXT>")]
+        [Description("Why; kept in the ticket's history.")]
+        public string Reason { get; init; } = "";
+    }
+
+    public override int Execute(CommandContext context, Settings settings)
+    {
+        using var db = Db.Open(settings);
+        var t = db.CorrectType(settings.Id, settings.Type, settings.Reason);
+        Db.Rerender(db, settings);
+        Console.WriteLine($"{t.Id} type {t.Type}");
+        return 0;
+    }
+}
+
 public sealed class TicketLinkCommand : Command<TicketLinkCommand.Settings>
 {
     public sealed class Settings : WorkspaceSettings

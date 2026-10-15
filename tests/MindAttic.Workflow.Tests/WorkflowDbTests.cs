@@ -150,6 +150,27 @@ public sealed class WorkflowDbTests
     }
 
     [Test]
+    public void A_nonstandard_type_is_corrected_with_a_reason_in_its_history_and_append_only_holds_after()
+    {
+        var a = MakeRepo("Gamma", "GA", "", "| GA-T1 | 2026-10-01 | bugfix | open | odd type | — |\n");
+        using var db = WorkflowDb.Open(Path.Combine(root, "c.db"));
+        db.Import([a]);
+        Assert.That(db.Check(), Has.Some.Contains("unknown type 'bugfix'"));
+
+        Assert.That(db.CorrectType("GA-T1", "fix", "bugfix predates the vocabulary").Type, Is.EqualTo("fix"));
+        Assert.That(db.Check(), Is.Empty);
+        Assert.That(db.History("GA-T1").Single(), Is.EqualTo(new TicketEvent("GA-T1", db.History("GA-T1")[0].At, "type", "bugfix", "fix (corrected: bugfix predates the vocabulary)")));
+        Assert.That(System.Text.Encoding.UTF8.GetString(db.Export("Gamma")!), Does.Contain("| GA-T1 | 2026-10-01 | fix | open | odd type | — |"));
+        Assert.That(() => db.CorrectType("GA-T1", "bugfix", "x"), Throws.ArgumentException);
+
+        using var raw = new SqliteConnection($"Data Source={db.Path};Pooling=False");
+        raw.Open();
+        using var cmd = raw.CreateCommand();
+        cmd.CommandText = "UPDATE tickets SET type = 'docs' WHERE id = 'GA-T1'";
+        Assert.That(() => cmd.ExecuteNonQuery(), Throws.InstanceOf<SqliteException>(), "the trigger is back");
+    }
+
+    [Test]
     public void The_dump_is_readable_sql_that_lists_every_ticket()
     {
         var (db, _) = Migrated();

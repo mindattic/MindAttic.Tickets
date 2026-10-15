@@ -438,6 +438,29 @@ public sealed partial class WorkflowDb : IDisposable
         return updated;
     }
 
+    /// <summary>
+    /// Corrects a ticket's type to one of <see cref="TicketRules.Types"/>, the one sanctioned exception to append-only
+    /// (for rows that predate the vocabulary, like 'bugfix'): the append-only trigger is lifted for this one update only,
+    /// and the change is recorded in the ticket's history with <paramref name="reason"/>.
+    /// </summary>
+    public Ticket CorrectType(string id, string type, string reason)
+    {
+        if (!TicketRules.Types.Contains(type)) throw new ArgumentException($"Unknown type '{type}' (expected {string.Join("/", TicketRules.Types)}).", nameof(type));
+        if (string.IsNullOrWhiteSpace(reason)) throw new ArgumentException("A correction needs a reason.", nameof(reason));
+        var t = Ticket(id)?.Ticket ?? throw new KeyNotFoundException($"No ticket {id}.");
+        if (t.Type == type) return t;
+        using (var tx = db.BeginTransaction())
+        {
+            Exec("DROP TRIGGER tickets_append_only", tx);
+            Exec("UPDATE tickets SET type = $ty, row_md = NULL WHERE id = $id", tx, ("$ty", type), ("$id", t.Id));
+            Exec("INSERT INTO ticket_events (ticket_id, at, field, old, new) VALUES ($id, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), 'type', $o, $n)", tx,
+                ("$id", t.Id), ("$o", t.Type), ("$n", $"{type} (corrected: {reason.Trim()})"));
+            tx.Commit();
+        }
+        EnsureSchema(); // the trigger comes straight back
+        return t with { Type = type };
+    }
+
     /// <summary>A ticket's history, oldest first.</summary>
     public IReadOnlyList<TicketEvent> History(string id) =>
         [.. Rows("SELECT ticket_id, at, field, old, new FROM ticket_events WHERE ticket_id = $id COLLATE NOCASE ORDER BY seq",

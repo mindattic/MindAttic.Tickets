@@ -18,6 +18,7 @@ app.Configure(config =>
         t.AddCommand<TicketListCommand>("list").WithDescription("List tickets across the workspace (or one repo).");
         t.AddCommand<TicketShowCommand>("show").WithDescription("One ticket: its row, links (prerequisites included) and history.");
         t.AddCommand<TicketLinkCommand>("link").WithDescription("Link two tickets or stories: workflow ticket link A requires B (--remove to unlink).");
+        t.AddCommand<TicketCorrectCommand>("correct").WithDescription("Correct a ticket's type to the standard vocabulary (recorded in its history).");
         t.AddCommand<TicketVerifyCommand>("verify").WithDescription("Check a repo's tickets and links are valid.");
     });
 
