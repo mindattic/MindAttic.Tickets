@@ -47,8 +47,8 @@ code: GE
 layer: stories
 status: living
 updated: 2026-10-15', 0, 0, 1);
-INSERT INTO repos (name, code, project, title, updated, front_matter, bom, crlf, trailing_newline) VALUES ('GTFO.Glaive', 'GTF', 'GTFO.Glaive', 'GTFO.Glaive — User Stories', '2026-10-15', 'codex: 1
-project: GTFO.Glaive
+INSERT INTO repos (name, code, project, title, updated, front_matter, bom, crlf, trailing_newline) VALUES ('GTFO.Weapons', 'GTF', 'GTFO.Weapons', 'GTFO.Weapons — User Stories', '2026-10-15', 'codex: 1
+project: GTFO.Weapons
 code: GTF
 layer: stories
 status: living
@@ -3958,8 +3958,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GE-T18', 'GTFO.EZ', 18, '2026-10-15', 'feature', 'closed', 'I2-LP health syringe restores 50% of max health (vanilla: random 5-15%, hardcoded in native code). SyringeFirstPerson._ApplySyringe_d__18.MoveNext flags the apply window (finalizer clears it) and Dam_SyncedDamageBase.AddHealth rewrites addHealth to HealthMax x ''I2-LP Syringe Heal Amount'' (default 0.5, 0 = vanilla) only inside it, so med kits are untouched. Needs an in-game syringe use to confirm the log line appears', 'src/GTFO.EZ/Patches/SyringeHealPatch.cs', 17, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GE-T19', 'GTFO.EZ', 19, '2026-10-15', 'feature', 'closed', 'One-time control defaults: after CellSettingsManager.PostSetup, sets Gameplay_HoldToShowComsList=false (Q toggles comms menu), Gameplay_SprintToggle, Gameplay_AimToggle and Gameplay_StandWhenJumpToggle=true, then ApplyAndSave; gated by ''Control Defaults Applied'' so player changes in the game menu are never overwritten', 'src/GTFO.EZ/Patches/ControlDefaultsPatch.cs', 18, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GE-T20', 'GTFO.EZ', 20, '2026-10-15', 'feature', 'closed', 'Disabled consumables'' loot slots become syringes at the item''s original odds, alternating I2-LP (health) and IIx (melee) per table, instead of zeroing out. Zeroing handed the share to whatever remained: per a vanilla build-34855 dump, 23 tables (every Baseline zone) became Long-Range-Flashlight-only and 25 had nothing left. Now 81 of 85 tables include health syringes (the other 4 are objective-item tables). Replaces GE-T17''s restock-only-empty-tables approach', 'src/GTFO.EZ/Patches/GameDataTweaks.cs ApplyLootTweaks', 19, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GTF-T1', 'GTFO.Glaive', 1, '2026-10-15', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GTF-T2', 'GTFO.Glaive', 2, '2026-10-15', 'feature', 'closed', 'Glaive v1: new selectable melee weapon - IsoCo Stinger (Spear_02) model swung overhead with the sledgehammer''s animation/SFX sets. GameDataInit.Initialize postfix registers MeleeArchetype/GearCategory/PlayerOfflineGear blocks at fixed id 1001 via AddBlock (cloned from Spear/MeleeSpear/Spear_02; hammer damage, stagger, hit width and third-person movement; spear reach and cleave; hold-thrust off). Compatible with GTFO.EZ (its melee tuning keys by name). Builds clean; loadout appearance, hand placement and hit detection still need an in-game check', 'src/GTFO.Glaive/GlaiveInjector.cs', 1, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GTF-T1', 'GTFO.Weapons', 1, '2026-10-15', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GTF-T2', 'GTFO.Weapons', 2, '2026-10-15', 'feature', 'closed', 'Glaive v1: new selectable melee weapon - IsoCo Stinger (Spear_02) model swung overhead with the sledgehammer''s animation/SFX sets. GameDataInit.Initialize postfix registers MeleeArchetype/GearCategory/PlayerOfflineGear blocks at fixed id 1001 via AddBlock (cloned from Spear/MeleeSpear/Spear_02; hammer damage, stagger, hit width and third-person movement; spear reach and cleave; hold-thrust off). Compatible with GTFO.EZ (its melee tuning keys by name). Builds clean; loadout appearance, hand placement and hit detection still need an in-game check', 'src/GTFO.Glaive/GlaiveInjector.cs', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T1', 'Gadfly', 1, '2026-10-13', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| GAD-T1 | 2026-10-13 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T2', 'Gadfly', 2, '2026-10-14', 'chore', 'open', 'NUnit tests for CorpusRepository (Gadfly/Corpus/CorpusRepository.cs): GetAll orders by TimestampUtc, GetHumanMessages drops non-Human roles, GetSince is inclusive of the boundary, and CorpusHash is identical regardless of store read order but changes when a message is added/removed - it is the digest cache key, so a wrong hash means stale or needlessly re-billed summaries', '—', 1, '| GAD-T2 | 2026-10-14 | chore | open | NUnit tests for CorpusRepository (Gadfly/Corpus/CorpusRepository.cs): GetAll orders by TimestampUtc, GetHumanMessages drops non-Human roles, GetSince is inclusive of the boundary, and CorpusHash is identical regardless of store read order but changes when a message is added/removed - it is the digest cache key, so a wrong hash means stale or needlessly re-billed summaries | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T3', 'Gadfly', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for ContextBuilder (Gadfly/Mining/ContextBuilder.cs): BuildInterrogationContext emits the CORPUS DIGEST header and omits the DIALOGUE SO FAR block when there are no turns, renders ''Speaker: Text'' lines in order otherwise; BuildCorpusDigestAsync (with FakeSocraticVotingClient) summarizes only human messages and reuses the cached digest when CorpusHash is unchanged', '—', 2, '| GAD-T3 | 2026-10-14 | chore | open | NUnit tests for ContextBuilder (Gadfly/Mining/ContextBuilder.cs): BuildInterrogationContext emits the CORPUS DIGEST header and omits the DIALOGUE SO FAR block when there are no turns, renders ''Speaker: Text'' lines in order otherwise; BuildCorpusDigestAsync (with FakeSocraticVotingClient) summarizes only human messages and reuses the cached digest when CorpusHash is unchanged | — |');
@@ -6415,22 +6415,22 @@ INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('GTFO.EZ', 1, 'ticke
 
 | ID | Date | Type | Status | Summary | Ref |
 |---|---|---|---|---|---|');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('GTFO.Glaive', 0, 'raw', NULL, '---
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('GTFO.Weapons', 0, 'raw', NULL, '---
 codex: 1
-project: GTFO.Glaive
+project: GTFO.Weapons
 code: GTF
 layer: stories
 status: living
 updated: 2026-10-15
 ---
 
-# GTFO.Glaive — User Stories
+# GTFO.Weapons — User Stories
 > ✅ done (shipped & tested) · 🟡 partial · ⬜ planned. Every ✅ cites the test.
 
 ## Priority backlog
 _Nothing recorded yet._
 ');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('GTFO.Glaive', 1, 'tickets', NULL, '## Tickets
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('GTFO.Weapons', 1, 'tickets', NULL, '## Tickets
 > Permanent log of every change and fix — this repo''s ticket system. Rows are append-only: never
 > delete or reword one; only move its Status (open → closed / wont-do) and fill in Ref. Status is
 > a word, not a glyph, so tickets don''t count toward the story index. Keep this section last.
