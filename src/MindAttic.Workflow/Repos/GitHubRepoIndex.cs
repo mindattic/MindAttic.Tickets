@@ -21,6 +21,12 @@ public sealed class GitHubRepoIndex(HttpClient? http = null)
     public const string WorkInProgressTopic = "wip";
     public const string VaultBucket = "GitHub";
     public const string VaultTokenName = "github";
+
+    /// <summary>
+    /// Set to a JSON file of <c>/user/repos</c> objects (<c>full_name</c>, <c>archived</c>, <c>topics</c>)
+    /// to read the index from it instead of GitHub, so the repo jobs can be run offline.
+    /// </summary>
+    public const string FileEnvVar = "MINDATTIC_WORKFLOW_GITHUB_INDEX";
     private const int PageSize = 100;
 
     private readonly HttpClient http = http ?? Shared.Value;
@@ -94,6 +100,16 @@ public sealed class GitHubRepoIndex(HttpClient? http = null)
         foreach (var slug in slugs.Distinct(StringComparer.OrdinalIgnoreCase).Where(s => !result.ContainsKey(s)).ToList())
             if (await LookupAsync(token, slug, ct).ConfigureAwait(false) is { } info)
                 result[slug] = info;
+        return result;
+    }
+
+    /// <summary>The index from a JSON array in the shape <c>GET /user/repos</c> returns.</summary>
+    public static IReadOnlyDictionary<string, GitHubRepoInfo> Load(string jsonPath)
+    {
+        using var doc = JsonDocument.Parse(File.ReadAllText(jsonPath));
+        var result = new Dictionary<string, GitHubRepoInfo>(StringComparer.OrdinalIgnoreCase);
+        foreach (var repo in doc.RootElement.EnumerateArray())
+            if (Parse(repo) is { } info) result[info.Slug] = info;
         return result;
     }
 

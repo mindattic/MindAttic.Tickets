@@ -40,6 +40,8 @@ internal static class Output
     /// <summary>The GitHub index, or null (with a printed reason) when there's no token or the call fails.</summary>
     public static IReadOnlyDictionary<string, GitHubRepoInfo>? TryGitHub(bool required, IEnumerable<string>? localSlugs = null)
     {
+        if (Environment.GetEnvironmentVariable(GitHubRepoIndex.FileEnvVar) is { Length: > 0 } file)
+            return GitHubRepoIndex.Load(file);
         var token = TokenStore.ForBucket(GitHubRepoIndex.VaultBucket).Get(GitHubRepoIndex.VaultTokenName);
         if (string.IsNullOrWhiteSpace(token))
         {

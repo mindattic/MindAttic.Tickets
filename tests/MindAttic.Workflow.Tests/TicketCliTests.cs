@@ -25,16 +25,22 @@ public sealed class TicketCliTests
         Directory.Delete(root, recursive: true);
     }
 
-    private (int Code, string Out) Run(params string[] args)
+    private (int Code, string Out) Run(params string[] args) => RunWithInput(null, args);
+
+    private (int Code, string Out) RunWithInput(string? input, params string[] args)
     {
-        var psi = new ProcessStartInfo("dotnet") { RedirectStandardOutput = true, RedirectStandardError = true, UseShellExecute = false, WorkingDirectory = root };
+        var psi = new ProcessStartInfo("dotnet") { RedirectStandardInput = true, RedirectStandardOutput = true, RedirectStandardError = true, UseShellExecute = false, WorkingDirectory = root };
         psi.ArgumentList.Add(Path.Combine(AppContext.BaseDirectory, "workflow.dll"));
         foreach (var a in args) psi.ArgumentList.Add(a);
         psi.ArgumentList.Add("--root");
         psi.ArgumentList.Add(root);
         psi.Environment.Remove("MINDATTIC_WORKFLOW_DB");
         psi.Environment["COLUMNS"] = "400";
+        psi.Environment["NO_COLOR"] = "1"; // a redirected stdin otherwise lets Spectre emit ANSI colors
+        psi.Environment[Workflow.Repos.GitHubRepoIndex.FileEnvVar] = Path.Combine(root, "github.json");
         using var p = Process.Start(psi)!;
+        p.StandardInput.Write(input ?? "");
+        p.StandardInput.Close();
         var err = p.StandardError.ReadToEndAsync();
         var output = p.StandardOutput.ReadToEnd();
         p.WaitForExit();
@@ -172,6 +178,71 @@ public sealed class TicketCliTests
         Assert.That(hung.ExitCode, Is.EqualTo(-1));
         Assert.That(hung.Error, Does.Contain("timed out after 1s"));
         Assert.That(DateTime.UtcNow - started, Is.LessThan(TimeSpan.FromSeconds(20)));
+    }
+
+    /// <summary>A committed repo whose origin is on GitHub, plus the fake GitHub index entry for it.</summary>
+    private string MakeGitHubRepo(string name, bool archived = false, string topic = "", bool dirty = false)
+    {
+        var dir = Path.Combine(root, name);
+        Directory.CreateDirectory(dir);
+        Git(dir, "init", "-q", "-b", "main");
+        Git(dir, "remote", "add", "origin", $"https://github.com/mindattic/{name}.git");
+        File.WriteAllText(Path.Combine(dir, "README.md"), name);
+        Git(dir, "add", "-A");
+        Git(dir, "-c", "user.email=t@t", "-c", "user.name=t", "commit", "-qm", "init");
+        // A remote-tracking ref for the commit, so it isn't counted as unpushed.
+        Git(dir, "update-ref", "refs/remotes/origin/main", "HEAD");
+        if (dirty) File.WriteAllText(Path.Combine(dir, "draft.txt"), "only here");
+        github.Add(new { full_name = $"mindattic/{name}", archived, topics = topic.Length == 0 ? Array.Empty<string>() : [topic] });
+        File.WriteAllText(Path.Combine(root, "github.json"), JsonSerializer.Serialize(github));
+        return dir;
+    }
+
+    private readonly List<object> github = [];
+
+    [Test]
+    public void Prune_previews_without_deleting_and_only_and_override_lists_are_trimmed_and_case_insensitive()
+    {
+        var old = MakeGitHubRepo("Old", archived: true);
+        var stale = MakeGitHubRepo("Stale");
+        var kept = MakeGitHubRepo("Kept", topic: "wip");
+        var dirty = MakeGitHubRepo("Dirty", archived: true, dirty: true);
+
+        var plan = Run("repos", "prune");
+        Assert.That(plan.Code, Is.Zero, plan.Out);
+        Assert.That(plan.Out, Does.Contain("3 candidate(s): 2 safe, 1 blocked").And.Contain("uncommitted").And.Not.Contain("Kept"));
+        Assert.That(new[] { old, stale, kept, dirty }.All(Directory.Exists), "a preview deletes nothing");
+
+        var apply = RunWithInput("yes\n", "repos", "prune", "--apply", "--only", " old , DIRTY", "--override", " dirty ");
+        Assert.That(apply.Code, Is.Zero, apply.Out);
+        Assert.That((Directory.Exists(old), Directory.Exists(dirty)), Is.EqualTo((false, false)), "named in --only (and --override for the blocked one)");
+        Assert.That((Directory.Exists(stale), Directory.Exists(kept)), Is.EqualTo((true, true)), "safe but not in --only; not a candidate");
+    }
+
+    [Test]
+    public void Prune_apply_deletes_nothing_without_a_typed_yes()
+    {
+        var old = MakeGitHubRepo("Old", archived: true);
+        var cancelled = RunWithInput("y\n", "repos", "prune", "--apply");
+        Assert.That(cancelled.Code, Is.EqualTo(1));
+        Assert.That(cancelled.Out, Does.Contain("Cancelled; nothing deleted."));
+        Assert.That(Directory.Exists(old));
+    }
+
+    [Test]
+    public void Prune_override_never_frees_a_repo_with_no_github_copy()
+    {
+        MakeGitHubRepo("Kept", topic: "wip");
+        var local = Path.Combine(root, "LocalOnly");
+        Directory.CreateDirectory(local);
+        Git(local, "init", "-q", "-b", "main");
+        Git(local, "remote", "add", "origin", "https://github.com/mindattic/LocalOnly.git"); // not in the index
+        File.WriteAllText(Path.Combine(local, "draft.txt"), "only here");
+
+        var refused = RunWithInput("yes\n", "repos", "prune", "--apply", "--override", "localonly");
+        Assert.That(refused.Code, Is.Not.Zero);
+        Assert.That(refused.Out, Does.Contain("can't override").And.Contain("no GitHub copy"));
+        Assert.That(Directory.Exists(local), "nothing is deleted");
     }
 
     private static void Git(string dir, params string[] args)
