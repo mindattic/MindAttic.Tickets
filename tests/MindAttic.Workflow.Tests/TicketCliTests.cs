@@ -129,6 +129,51 @@ public sealed class TicketCliTests
         Assert.That(Run("db", "check").Code, Is.Zero);
     }
 
+    [Test]
+    public void Rollout_previews_then_seeds_a_new_file_with_an_unused_code_and_never_overwrites_one()
+    {
+        Directory.CreateDirectory(Path.Combine(root, "Alpha", ".git"));
+        MakeRepo("Beta", "AL"); // already has the code Alpha would get first
+        var before = File.ReadAllText(Path.Combine(root, "Beta", "docs", "USER_STORIES.md"));
+
+        Assert.That(Run("repos", "rollout", "tickets").Out, Does.Contain("would Alpha"));
+        Assert.That(File.Exists(Path.Combine(root, "Alpha", "docs", "USER_STORIES.md")), Is.False, "a preview writes nothing");
+
+        Run("repos", "rollout", "tickets", "--apply");
+        var alpha = File.ReadAllText(Path.Combine(root, "Alpha", "docs", "USER_STORIES.md"));
+        Assert.That(alpha, Does.Contain("code: ALP").And.Contain("| ALP-T1 |"), "AL is taken, so the next derived code");
+        Assert.That(File.ReadAllText(Path.Combine(root, "Beta", "docs", "USER_STORIES.md")), Is.EqualTo(before), "an existing file is left alone");
+    }
+
+    [Test]
+    public void Once_migrated_rollout_adds_a_new_repo_to_the_database_with_its_view()
+    {
+        MakeRepo("Alpha", "AL", "| AL-T1 | 2026-10-01 | fix | open | one | — |\n");
+        Directory.CreateDirectory(Path.Combine(root, "MindAttic.Workflow", ".git"));
+        Run("db", "migrate", "--cutover");
+        Directory.CreateDirectory(Path.Combine(root, "Gamma", ".git"));
+
+        Assert.That(Run("repos", "rollout", "tickets").Out, Does.Contain("would Gamma: add to the workflow database"));
+        Run("repos", "rollout", "tickets", "--apply");
+        Assert.That(Run("ticket", "list", "--repo", "Gamma", "--json").Out, Does.Match("\"id\": \"[A-Z][A-Z0-9]*-T1\""), "seeded with its first ticket");
+        Assert.That(File.ReadAllText(Path.Combine(root, "Gamma", "docs", "USER_STORIES.md")), Does.Contain("GENERATED from MindAttic.Workflow/data/workflow.db"));
+        Assert.That(Run("repos", "rollout", "tickets").Out, Does.Contain("Every repo is already in the workflow database."));
+    }
+
+    [Test]
+    public void Git_runs_never_prompt_and_a_hung_one_is_killed_at_its_timeout()
+    {
+        Git(root, "init", "-q");
+        var env = Workflow.Git.Run(root, "-c", "alias.envcheck=!echo prompt=$GIT_TERMINAL_PROMPT", "envcheck");
+        Assert.That(env.Output.Trim(), Is.EqualTo("prompt=0"), "a credential prompt would hang an agent");
+
+        var started = DateTime.UtcNow;
+        var hung = Workflow.Git.Run(root, TimeSpan.FromSeconds(1), "-c", "alias.hang=!sleep 30", "hang");
+        Assert.That(hung.ExitCode, Is.EqualTo(-1));
+        Assert.That(hung.Error, Does.Contain("timed out after 1s"));
+        Assert.That(DateTime.UtcNow - started, Is.LessThan(TimeSpan.FromSeconds(20)));
+    }
+
     private static void Git(string dir, params string[] args)
     {
         var psi = new ProcessStartInfo("git") { RedirectStandardOutput = true, RedirectStandardError = true, UseShellExecute = false };

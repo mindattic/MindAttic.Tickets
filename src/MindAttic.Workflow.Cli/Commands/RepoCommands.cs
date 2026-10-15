@@ -158,6 +158,8 @@ public sealed class ReposRolloutTicketsCommand : Command<ReposRolloutTicketsComm
     public override int Execute(CommandContext context, Settings settings)
     {
         var repos = settings.Workspace.Repos();
+        using (var db = Data.WorkflowDb.OpenIfMigrated(settings.Workspace.Root))
+            if (db is not null) return InDatabase(db, settings, repos);
         var taken = repos.Select(WorkspaceTickets.CodeOf).OfType<string>().ToHashSet(StringComparer.Ordinal);
         var today = TicketRules.Today();
         var changes = 0;
@@ -191,6 +193,28 @@ public sealed class ReposRolloutTicketsCommand : Command<ReposRolloutTicketsComm
 
         AnsiConsole.MarkupLine(changes == 0 ? "Every repo already has a ticket log."
             : settings.Apply ? $"{changes} repo(s) updated." : $"{changes} repo(s) would change. Re-run with --apply to write.");
+        return 0;
+    }
+
+    /// <summary>Once migrated: a repo not in the database gets added to it (a code no other repo has) and its view written.</summary>
+    private static int InDatabase(Data.WorkflowDb db, Settings settings, IReadOnlyList<Repo> repos)
+    {
+        var known = db.Repos().ToDictionary(r => r.Name, r => r.Code, StringComparer.OrdinalIgnoreCase);
+        var taken = known.Values.ToHashSet(StringComparer.Ordinal);
+        var changes = 0;
+        foreach (var r in repos.Where(r => !known.ContainsKey(r.Name)))
+        {
+            var code = WorkspaceTickets.DeriveCode(r.Name, taken);
+            taken.Add(code);
+            changes++;
+            AnsiConsole.MarkupLine($"{(settings.Apply ? "[green]done[/]" : "[grey]would[/]")} {Output.Esc(r.Name)}: add to the workflow database (code {code}) with a USER_STORIES.md view");
+            if (!settings.Apply) continue;
+            db.AddRepo(r, code);
+            db.Add(r.Name, "docs", TicketRules.Closed, "Start the permanent ticket log in the workflow database", "");
+            db.Render(settings.Workspace, [r.Name]);
+        }
+        AnsiConsole.MarkupLine(changes == 0 ? "Every repo is already in the workflow database."
+            : settings.Apply ? $"{changes} repo(s) added." : $"{changes} repo(s) would be added. Re-run with --apply to write.");
         return 0;
     }
 
