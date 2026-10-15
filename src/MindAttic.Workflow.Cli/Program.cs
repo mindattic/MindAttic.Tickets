@@ -28,6 +28,20 @@ app.Configure(config =>
         s.AddCommand<StoryListCommand>("list").WithDescription("List stories (--repo, --status done|partial|planned).");
         s.AddCommand<StoryShowCommand>("show").WithDescription("One story: its text, evidence and links.");
         s.AddCommand<StoryStatusCommand>("status").WithDescription("Mark a story done, partial or planned.");
+        s.AddCommand<StoryNewCommand>("new").WithDescription("Add a story to an epic (next free ID); prints the ID.");
+        s.AddCommand<StoryEditCommand>("edit").WithDescription("Rewrite a story's text.");
+    });
+
+    config.AddBranch("epic", e =>
+    {
+        e.SetDescription("Epics: the themes stories are grouped under.");
+        e.AddCommand<EpicNewCommand>("new").WithDescription("Add an epic to a repo.");
+    });
+
+    config.AddBranch("backlog", b =>
+    {
+        b.SetDescription("A repo's priority backlog.");
+        b.AddCommand<BacklogAddCommand>("add").WithDescription("Append an item (story IDs in it are linked).");
     });
 
     config.AddBranch("db", d =>

@@ -171,6 +171,36 @@ public sealed class WorkflowDbTests
     }
 
     [Test]
+    public void Stories_epics_and_backlog_items_are_added_and_edited_in_the_database_and_the_view_follows()
+    {
+        var (db, _) = Migrated();
+        using (db)
+        {
+            Assert.That(db.AddStory("Alpha", "A", "As a user, I can stop.", "planned"), Is.EqualTo("AL-US-A3"), "the next free number in epic A");
+            db.EditStory("AL-US-A1", "As a user, I can start, quickly.");
+            db.AddEpic("Alpha", "B", "Reports");
+            Assert.That(db.AddStory("Alpha", "B", "As an owner, I see a report."), Is.EqualTo("AL-US-B1"));
+            db.AddBacklogItem("Alpha", "Ship AL-US-B1");
+            Assert.That(() => db.AddStory("Alpha", "Z", "x"), Throws.InstanceOf<KeyNotFoundException>());
+            Assert.That(() => db.AddEpic("Alpha", "B", "again"), Throws.InvalidOperationException);
+
+            var text = System.Text.Encoding.UTF8.GetString(db.Export("Alpha")!);
+            Assert.That(text, Does.Contain("- **AL-US-A1 ⬜** As a user, I can start, quickly.\n- **AL-US-A2 ✅** Done thing. *(verified by `T`.)*\n- **AL-US-A3 ⬜** As a user, I can stop."),
+                "the edit in place, the new story after the epic's last one");
+            Assert.That(text.IndexOf("## Epic B — Reports", StringComparison.Ordinal), Is.GreaterThan(text.IndexOf("AL-US-A3", StringComparison.Ordinal))
+                .And.LessThan(text.IndexOf("## Tickets", StringComparison.Ordinal)), "a new epic goes just before the ticket log");
+            Assert.That(text, Does.Contain("\n## Epic B — Reports\n- **AL-US-B1 ⬜** As an owner, I see a report.\n\n## Tickets"), "laid out like the existing epics");
+            Assert.That(text, Does.Contain("1. **AL-US-A1** next\n2. Ship AL-US-B1"));
+
+            // The view still parses into the same structure: nothing the parser can't read came out of the edits.
+            var reparsed = Stories.StoryDocument.Parse(text);
+            Assert.That(reparsed.Stories.Select(s => s.Id), Is.EqualTo(new[] { "AL-US-A1", "AL-US-A2", "AL-US-A3", "AL-US-B1" }));
+            Assert.That(db.Stories("Alpha").Select(s => (s.Id, s.Epic)), Is.EquivalentTo(new[] { ("AL-US-A1", "A"), ("AL-US-A2", "A"), ("AL-US-A3", "A"), ("AL-US-B1", (string?)"B") }));
+            Assert.That(db.Links("AL-US-B1").Select(l => (l.Kind, l.To)), Does.Contain(("part-of", "AL-EPIC-B")));
+        }
+    }
+
+    [Test]
     public void The_dump_is_readable_sql_that_lists_every_ticket()
     {
         var (db, _) = Migrated();

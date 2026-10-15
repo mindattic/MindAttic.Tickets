@@ -547,6 +547,110 @@ public sealed partial class WorkflowDb : IDisposable
         return stories.Count;
     }
 
+    /// <summary>
+    /// Adds a story under epic <paramref name="epic"/> with the next free <c>CODE-US-&lt;epic&gt;&lt;n&gt;</c> ID, written as a
+    /// bullet after the epic's last story (or its heading). Returns the new ID.
+    /// </summary>
+    public string AddStory(string repo, string epic, string text, string status = "planned")
+    {
+        if (string.IsNullOrWhiteSpace(text)) throw new ArgumentException("A story needs text.", nameof(text));
+        var glyph = StoryDocument.GlyphOf(status);
+        var (name, code) = RepoRow(repo);
+        var e = Rows("SELECT key FROM epics WHERE repo = $r AND key = $k COLLATE NOCASE", r => r.GetString(0), ("$r", name), ("$k", epic)).FirstOrDefault()
+            ?? throw new KeyNotFoundException($"{name} has no epic {epic}; add it with 'workflow epic new'.");
+        var prefix = $"{code}-US-{e}";
+        var next = 1 + Rows("SELECT story_id FROM stories WHERE repo = $r AND story_id LIKE $p", r => r.GetString(0), ("$r", name), ("$p", prefix + "%"))
+            .Select(id => int.TryParse(id[prefix.Length..], out var n) ? n : 0).DefaultIfEmpty(0).Max();
+        var id = prefix + next;
+        var line = $"- **{id} {glyph}** {OneLine(text)}";
+
+        using var tx = db.BeginTransaction();
+        var after = (long)(Scalar(
+            "SELECT MAX(b.ordinal) FROM blocks b WHERE b.repo = $r AND (" +
+            "(b.kind = 'epic' AND b.ref = $e) OR (b.kind = 'story' AND b.ref IN (SELECT CAST(uid AS TEXT) FROM stories WHERE repo = $r AND epic = $e)))", tx,
+            ("$r", name), ("$e", e)) ?? throw new InvalidOperationException($"{name}'s epic {e} has no heading block."));
+        var uid = (long)Scalar(
+            "INSERT INTO stories (repo, story_id, epic, status, glyph, suffix, text, source, ordinal) " +
+            "VALUES ($r, $id, $e, $s, $g, '', $t, 'bullet', (SELECT COALESCE(MAX(ordinal), -1) + 1 FROM stories WHERE repo = $r)) RETURNING uid", tx,
+            ("$r", name), ("$id", id), ("$e", e), ("$s", status), ("$g", glyph), ("$t", OneLine(text)))!;
+        InsertBlock(name, after + 1, "story", uid.ToString(CultureInfo.InvariantCulture), line, tx);
+        Exec("INSERT OR IGNORE INTO links (from_id, to_id, kind, note) VALUES ($f, $t, 'part-of', 'story under its epic')", tx, ("$f", id), ("$t", $"{code}-EPIC-{e}"));
+        tx.Commit();
+        return id;
+    }
+
+    /// <summary>Rewrites a story's text (its bullet becomes one line; ID, glyph and suffix are kept).</summary>
+    public void EditStory(string id, string text, string? repo = null)
+    {
+        if (string.IsNullOrWhiteSpace(text)) throw new ArgumentException("A story needs text.", nameof(text));
+        var s = Story(id).Where(x => repo is null || x.Repo.Equals(repo, StringComparison.OrdinalIgnoreCase)).ToList() switch
+        {
+            [var one] => one,
+            [] => throw new KeyNotFoundException($"No story {id}{(repo is null ? "" : " in " + repo)}."),
+            _ => throw new InvalidOperationException($"More than one story is {id}; pass --repo."),
+        };
+        if (s.Source == "table") throw new InvalidOperationException($"{id} is a table row; edit table stories with a new row instead.");
+        var indent = s.Source == "sub-bullet" ? "  " : "";
+        var suffix = s.Suffix.Length > 0 ? " " + s.Suffix : "";
+        using var tx = db.BeginTransaction();
+        Exec("UPDATE stories SET text = $t, evidence = NULL, acceptance = NULL WHERE uid = $u", tx, ("$t", OneLine(text)), ("$u", s.Uid));
+        Exec("UPDATE blocks SET text = $x WHERE repo = $r AND kind = 'story' AND ref = $u", tx,
+            ("$x", $"{indent}- **{s.Id} {s.Glyph}{suffix}** {OneLine(text)}"), ("$r", s.Repo), ("$u", s.Uid.ToString(CultureInfo.InvariantCulture)));
+        tx.Commit();
+    }
+
+    /// <summary>Adds an <c>## Epic KEY — title</c> section just before the repo's ticket log.</summary>
+    public void AddEpic(string repo, string key, string title)
+    {
+        var (name, _) = RepoRow(repo);
+        if (Scalar("SELECT 1 FROM epics WHERE repo = $r AND key = $k COLLATE NOCASE", null, ("$r", name), ("$k", key)) is not null)
+            throw new InvalidOperationException($"{name} already has epic {key}.");
+        using var tx = db.BeginTransaction();
+        var at = (long)(Scalar("SELECT COALESCE(MIN(ordinal), (SELECT COALESCE(MAX(ordinal), -1) + 1 FROM blocks WHERE repo = $r)) FROM blocks WHERE repo = $r AND kind = 'tickets'", tx, ("$r", name)) ?? 0L);
+        Exec("INSERT INTO epics (repo, key, title, ordinal) VALUES ($r, $k, $t, (SELECT COALESCE(MAX(ordinal), -1) + 1 FROM epics WHERE repo = $r))", tx,
+            ("$r", name), ("$k", key), ("$t", OneLine(title)));
+        // A blank line before the heading, and one after it, so the view reads like the files did.
+        InsertBlock(name, at, "epic", key, $"## Epic {key} — {OneLine(title)}", tx);
+        InsertBlock(name, at, "raw", null, "", tx);
+        InsertBlock(name, at + 2, "raw", null, "", tx);
+        tx.Commit();
+    }
+
+    /// <summary>Appends a numbered item to the repo's priority backlog; story IDs in it are linked.</summary>
+    public void AddBacklogItem(string repo, string text)
+    {
+        var (name, _) = RepoRow(repo);
+        var last = Rows("SELECT b.ordinal, i.ordinal FROM blocks b JOIN backlog_items i ON i.repo = b.repo AND CAST(i.uid AS TEXT) = b.ref " +
+                        "WHERE b.repo = $r AND b.kind = 'backlog' ORDER BY b.ordinal DESC LIMIT 1", r => (r.GetInt64(0), r.GetInt64(1)), ("$r", name)).ToList();
+        var heading = Rows("SELECT ordinal, text FROM blocks WHERE repo = $r AND kind = 'raw' AND text LIKE '%## Priority backlog%'", r => (r.GetInt64(0), r.GetString(1)), ("$r", name)).FirstOrDefault();
+        if (last.Count == 0 && heading.Item2 is null) throw new InvalidOperationException($"{name} has no '## Priority backlog' section.");
+        var position = last.Count > 0 ? last[0].Item1 + 1 : heading.Item1 + 1;
+        var number = Rows("SELECT COUNT(*) FROM backlog_items WHERE repo = $r", r => r.GetInt64(0), ("$r", name)).Single() + 1;
+        using var tx = db.BeginTransaction();
+        var item =(long)Scalar("INSERT INTO backlog_items (repo, ordinal, text) VALUES ($r, $o, $t) RETURNING uid", tx, ("$r", name), ("$o", position), ("$t", OneLine(text)))!;
+        foreach (var sid in StoryDocument.StoryIdRef().Matches(text).Select(m => m.Value).Distinct(StringComparer.Ordinal))
+            Exec("INSERT OR IGNORE INTO backlog_refs (item_uid, story_id) VALUES ($i, $s)", tx, ("$i", item), ("$s", sid));
+        InsertBlock(name, position, "backlog", item.ToString(CultureInfo.InvariantCulture), $"{number}. {OneLine(text)}", tx);
+        tx.Commit();
+    }
+
+    private (string Name, string Code) RepoRow(string repo)
+    {
+        var row = Rows("SELECT name, code FROM repos WHERE name = $r COLLATE NOCASE", r => (r.GetString(0), r.GetString(1)), ("$r", repo)).FirstOrDefault();
+        return row.Item1 is null ? throw new KeyNotFoundException($"{repo} isn't in the workflow database.") : row;
+    }
+
+    /// <summary>Inserts a block at <paramref name="ordinal"/>, moving every later block of the repo down one.</summary>
+    private void InsertBlock(string repo, long ordinal, string kind, string? reference, string text, SqliteTransaction tx)
+    {
+        // Two steps, so the (repo, ordinal) key never collides mid-update.
+        Exec("UPDATE blocks SET ordinal = -ordinal - 1 WHERE repo = $r AND ordinal >= $o", tx, ("$r", repo), ("$o", ordinal));
+        Exec("UPDATE blocks SET ordinal = -ordinal WHERE repo = $r AND ordinal < 0", tx, ("$r", repo));
+        Exec("INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ($r, $o, $k, $ref, $t)", tx, ("$r", repo), ("$o", ordinal), ("$k", kind), ("$ref", reference), ("$t", text));
+    }
+
+    private static string OneLine(string text) => string.Join(" ", text.Split(['\r', '\n'], StringSplitOptions.RemoveEmptyEntries).Select(l => l.Trim())).Trim();
+
     private static string ReplaceCell(string row, string old, string glyph)
     {
         var at = row.LastIndexOf(old, StringComparison.Ordinal);

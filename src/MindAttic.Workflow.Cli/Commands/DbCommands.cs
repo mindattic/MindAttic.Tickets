@@ -349,3 +349,94 @@ public sealed class StoryStatusCommand : Command<StoryStatusCommand.Settings>
         return 0;
     }
 }
+
+public sealed class StoryNewCommand : Command<StoryNewCommand.Settings>
+{
+    public sealed class Settings : RepoSettings
+    {
+        [CommandOption("--epic <KEY>")]
+        public string Epic { get; init; } = "";
+
+        [CommandOption("--text <TEXT>")]
+        [Description("The story, e.g. 'As a user, I can …, so …'.")]
+        public string Text { get; init; } = "";
+
+        [CommandOption("--status <STATUS>")]
+        [Description("planned (default) | partial | done")]
+        public string Status { get; init; } = "planned";
+    }
+
+    public override int Execute(CommandContext context, Settings settings)
+    {
+        using var db = Db.Open(settings);
+        var id = db.AddStory(settings.ResolveRepo().Name, settings.Epic, settings.Text, settings.Status);
+        Db.Rerender(db, settings);
+        Console.WriteLine(id);
+        return 0;
+    }
+}
+
+public sealed class StoryEditCommand : Command<StoryEditCommand.Settings>
+{
+    public sealed class Settings : WorkspaceSettings
+    {
+        [CommandArgument(0, "<ID>")]
+        public string Id { get; init; } = "";
+
+        [CommandOption("--text <TEXT>")]
+        public string Text { get; init; } = "";
+
+        [CommandOption("--repo <NAME>")]
+        [Description("When more than one repo has a story with this ID.")]
+        public string? Repo { get; init; }
+    }
+
+    public override int Execute(CommandContext context, Settings settings)
+    {
+        using var db = Db.Open(settings);
+        db.EditStory(settings.Id, settings.Text, settings.Repo);
+        Db.Rerender(db, settings);
+        Console.WriteLine($"{settings.Id} updated");
+        return 0;
+    }
+}
+
+public sealed class EpicNewCommand : Command<EpicNewCommand.Settings>
+{
+    public sealed class Settings : RepoSettings
+    {
+        [CommandOption("--key <KEY>")]
+        [Description("The epic's letter (or short key), e.g. F.")]
+        public string Key { get; init; } = "";
+
+        [CommandOption("--title <TEXT>")]
+        public string Title { get; init; } = "";
+    }
+
+    public override int Execute(CommandContext context, Settings settings)
+    {
+        using var db = Db.Open(settings);
+        db.AddEpic(settings.ResolveRepo().Name, settings.Key, settings.Title);
+        Db.Rerender(db, settings);
+        Console.WriteLine($"Epic {settings.Key} added");
+        return 0;
+    }
+}
+
+public sealed class BacklogAddCommand : Command<BacklogAddCommand.Settings>
+{
+    public sealed class Settings : RepoSettings
+    {
+        [CommandOption("--text <TEXT>")]
+        public string Text { get; init; } = "";
+    }
+
+    public override int Execute(CommandContext context, Settings settings)
+    {
+        using var db = Db.Open(settings);
+        db.AddBacklogItem(settings.ResolveRepo().Name, settings.Text);
+        Db.Rerender(db, settings);
+        Console.WriteLine("added to the priority backlog");
+        return 0;
+    }
+}

@@ -1,4 +1,4 @@
-﻿AUTHORITATIVE - full detail in docs/BIBLE.md
+AUTHORITATIVE - full detail in docs/BIBLE.md
 <!-- generatedFrom: WF-bible -->
 
 # MindAttic.Workflow (WF) - Bible digest
@@ -17,8 +17,7 @@ repo under `D:\Projects\MindAttic`.
   as one front door ([HOUSE-LAW-6](../../MindAttic.HouseRules.md#HOUSE-LAW-6)). This repo owns
   tickets and workspace jobs.
 - NOT a git client for commits. `/commit` commits; it calls `workflow ticket` to log the work.
-- NOT a full story editor yet. Stories (`CODE-US-…`) are in the database and can be listed, shown and
-  marked done/partial/planned (`workflow story status`); adding or rewording one isn't supported yet.
+- NOT a free-form document editor. Stories (`CODE-US-…`), epics and backlog items are edited through the CLI\n  (`story new`/`edit`/`status`, `epic new`, `backlog add`), which keeps the database and each view in step.
 
 ## The Laws (#WF-§5)
 This project **inherits** the org-wide laws in
