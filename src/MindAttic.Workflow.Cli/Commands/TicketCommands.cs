@@ -165,6 +165,34 @@ public sealed class TicketVerifyCommand : Command<RepoSettings>
     }
 }
 
+public sealed class TicketIndexCommand : Command<TicketIndexCommand.Settings>
+{
+    public sealed class Settings : WorkspaceSettings
+    {
+        [CommandOption("--db <PATH>")]
+        [Description("SQLite file to (re)build. Default: <MindAttic.Workflow repo>/data/tickets.db")]
+        public string? Db { get; init; }
+    }
+
+    public override int Execute(CommandContext context, Settings settings)
+    {
+        var ws = settings.Workspace;
+        var repos = ws.Repos();
+
+        var dbPath = settings.Db;
+        if (string.IsNullOrWhiteSpace(dbPath))
+        {
+            var self = ws.Find("MindAttic.Workflow")
+                ?? throw new InvalidOperationException($"No 'MindAttic.Workflow' repo under {ws.Root}; pass --db explicitly.");
+            dbPath = Path.Combine(self.Path, TicketIndex.DefaultRelativePath.Replace('/', Path.DirectorySeparatorChar));
+        }
+
+        var count = TicketIndex.Rebuild(repos, dbPath);
+        AnsiConsole.MarkupLine($"[green]Rebuilt[/] {Output.Esc(dbPath)} — {count} ticket(s) across {repos.Count} repo(s).");
+        return 0;
+    }
+}
+
 public sealed class CodesCheckCommand : Command<WorkspaceSettings>
 {
     public override int Execute(CommandContext context, WorkspaceSettings settings)

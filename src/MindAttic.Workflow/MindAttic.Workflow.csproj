@@ -17,4 +17,13 @@
     <InternalsVisibleTo Include="MindAttic.Workflow.Tests" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.9" />
+    <!-- Direct override: Microsoft.Data.Sqlite 10.0.9 floors SQLitePCLRaw.bundle_e_sqlite3 at
+         2.1.11, which is vulnerable to CVE-2025-6965 (CVSS 9.8). Pinning a direct reference to a
+         patched version wins NuGet's transitive version resolution (highest requested wins). Same
+         fix as Prose.Core. -->
+    <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="3.0.5" />
+  </ItemGroup>
+
 </Project>

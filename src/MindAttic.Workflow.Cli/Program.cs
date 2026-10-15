@@ -17,6 +17,7 @@ app.Configure(config =>
         t.AddCommand<TicketCloseCommand>("close").WithDescription("Move a ticket to closed (or wont-do).");
         t.AddCommand<TicketListCommand>("list").WithDescription("List tickets across the workspace (or one repo).");
         t.AddCommand<TicketVerifyCommand>("verify").WithDescription("Check a repo's table is valid and no committed row was deleted or reworded.");
+        t.AddCommand<TicketIndexCommand>("index").WithDescription("Rebuild the SQLite index of every repo's tickets (a disposable cache; markdown stays canonical).");
     });
 
     config.AddBranch("codes", c =>

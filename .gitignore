@@ -9,3 +9,5 @@ TestResults/
 *.log
 .claude/quicksave.md*
 .claude/settings.local.json
+# Generated ticket index (WF-T14 follow-up): rebuilt from every repo's USER_STORIES.md, never hand-edited.
+data/
