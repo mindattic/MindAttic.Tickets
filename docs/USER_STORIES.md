@@ -68,6 +68,25 @@ updated: 2026-10-12
 - **WF-US-C3 ⬜** As a Dev, `workflow codes fix` renames a duplicate project code and its ticket
   IDs, so a clash `codes check` reports can be resolved without hand edits.
 
+
+## Epic D — The database: safety, concurrency and git
+- **WF-US-D1 ⬜** As a Dev, `workflow db restore` rebuilds data/workflow.db from the committed data/workflow.sql dump and proves it matches (row counts per table, `db check` clean, every view renders unchanged), so a corrupt or merge-conflicted binary is never data loss (WF-LAW-3). Today nothing reads the dump back.
+- **WF-US-D2 ⬜** As an Agent, my feature commits never carry data/workflow.db or data/workflow.sql; only `workflow db sync` commits them, and .gitattributes marks the db binary with a merge that keeps the working copy, so merging a worktree branch can't conflict on the database or roll it back to an older snapshot. Today ordinary commits sweep it in whenever it's modified.
+- **WF-US-D3 ⬜** As an Agent running alongside other autopilot agents, `workflow ticket new` from many processes at once hands out distinct IDs with none lost and no 'database is locked' failure, proved by a test that starts parallel writers against one database (and decides whether WAL beats today's journal_mode=DELETE with a 15s busy_timeout).
+
+
+## Epic E — CLI output and coverage
+- **WF-US-E1 ⬜** As an Agent, workflow output piped or redirected (not a terminal) has no ANSI escape codes and honors NO_COLOR, so scripts and agents read plain text. Today `ticket list | cat` prints raw color codes around '0 ticket(s)', and help text keeps its underline codes even with NO_COLOR.
+- **WF-US-E2 ⬜** As a Dev, `workflow story list` is readable in an 80-column terminal: one line per story with ID, glyph, epic and the text cut to fit, instead of today's 20-character Story column that wraps each story over seven lines. `--json` is unchanged.
+- **WF-US-E3 ⬜** As a Dev, `workflow ticket list --search <text>` matches ID, summary and ref (case-insensitive) across the workspace, so finding a ticket doesn't mean piping --json through grep.
+- **WF-US-E4 ⬜** As a Dev, the commands agents run that have no CLI test yet are tested through the real `workflow` on a temp workspace: story new/edit/status, epic new, backlog add, ticket link (a refused cycle), ticket correct, db render, and db sync --no-push committing only the database files.
+
+
+## Epic F — Viewer and canon
+- **WF-US-F1 ⬜** As a Dev, `workflow view` shows each ticket's and story's links (requires, blocks) and a ticket's history, and an ID in a summary or ref links to that item, so I can see from the page why something is blocked.
+- **WF-US-F2 ⬜** As a Dev, the Launcher's Workflow menu (MCO-US-E6) has an 'Open viewer' item that runs `workflow view`, scoped to the repo I'm in.
+- **WF-US-F3 ⬜** As an Agent reading the canon, README.md and docs/BIBLE.md describe the database, not the markdown era: the intro and architecture diagrams say tickets live in SQLite, `ticket new` no longer claims 'only that one line changes', 'stories are still written by hand' goes, the glossary's 'Ticket log' stops pointing at the ## Tickets table, WF-LAW-2 stops repeating its trigger sentence, and the codex doctor passes.
+
 ## Tickets
 > Permanent log of every change and fix — this repo's ticket system. Rows are append-only: never
 > delete or reword one; only move its Status (open → closed / wont-do) and fill in Ref. Status is
@@ -103,3 +122,4 @@ updated: 2026-10-12
 | WF-T26 | 2026-10-15 | chore | wont-do | MindAttic.Bob is archived on GitHub, so its USER_STORIES.md pointer commit is local only: unarchive, push and re-archive, or drop the local commit (and the file, with the deletion ticket) | Bob is archived and retiring (MCO-T23): its archived GitHub copy keeps the original stories, and its two local view commits are left for MCO-T23 to keep or drop |
 | WF-T27 | 2026-10-15 | feature | closed | Each repo's USER_STORIES.md is a generated, read-only view of the database (front-matter, a do-not-edit marker, then the full stories and tickets), rewritten after every CLI change and on each sync; db check flags a hand edit, and a view is never imported back, so the 84 links into it, the codex doctors and GitHub keep working | WorkflowDbTests.Each_repo_gets_a_generated_view_that_follows_the_database_and_a_hand_edit_is_flagged; 19/20 codex doctors pass (ChiMesh failed before) |
 | WF-T28 | 2026-10-15 | chore | closed | NUnit tests for repos prune (split from WF-T16): without --apply nothing is deleted, --only/--override lists are trimmed and case-insensitive, and --override never frees a repo with no GitHub copy; needs a fake GitHub index so it runs offline | TicketCliTests: Prune_previews_without_deleting_and_only_and_override_lists_are_trimmed_and_case_insensitive, Prune_apply_deletes_nothing_without_a_typed_yes, Prune_override_never_frees_a_repo_with_no_github_copy; offline via MINDATTIC_WORKFLOW_GITHUB_INDEX; 72 passed |
+| WF-T29 | 2026-10-15 | docs | closed | Write ten improvement stories in three new epics (D database safety/concurrency/git, E CLI output and coverage, F viewer and canon), each from a gap observed in the code or output | WF-US-D1..D3, WF-US-E1..E4, WF-US-F1..F3 |
