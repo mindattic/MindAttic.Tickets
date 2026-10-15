@@ -11,11 +11,23 @@ public sealed record TicketProblem(string Repo, string Message);
 /// <summary>Ticket queries and checks across every repo in a <see cref="Workspace"/>.</summary>
 public static partial class WorkspaceTickets
 {
-    /// <summary>Every ticket in every repo that has a USER_STORIES.md, in repo then file order.</summary>
+    /// <summary>
+    /// Every ticket of <paramref name="repos"/>, in repo then log order: from the Workflow database once the workspace
+    /// is migrated (<see cref="Data.WorkflowDb"/>), otherwise from each repo's USER_STORIES.md.
+    /// </summary>
     public static IReadOnlyList<RepoTicket> All(IEnumerable<Repo> repos)
     {
+        var list = repos.ToList();
+        var root = list.Count > 0 ? Path.GetDirectoryName(list[0].Path) : null;
+        using (var db = Data.WorkflowDb.OpenIfMigrated(root))
+            if (db is not null)
+            {
+                var byName = list.ToDictionary(r => r.Name, StringComparer.OrdinalIgnoreCase);
+                return [.. db.Tickets().Where(t => byName.ContainsKey(t.Repo)).Select(t => new RepoTicket(byName[t.Repo], t.Ticket))];
+            }
+
         var result = new List<RepoTicket>();
-        foreach (var r in repos)
+        foreach (var r in list)
         {
             if (!File.Exists(r.StoriesPath)) continue;
             try { result.AddRange(StoryFile.Load(r.StoriesPath).Tickets.Select(t => new RepoTicket(r, t))); }
@@ -31,6 +43,16 @@ public static partial class WorkspaceTickets
     public static IReadOnlyList<TicketProblem> Check(IEnumerable<Repo> repos)
     {
         var problems = new List<TicketProblem>();
+        var given = repos.ToList();
+        using (var db = Data.WorkflowDb.OpenIfMigrated(given.Count > 0 ? Path.GetDirectoryName(given[0].Path) : null))
+            if (db is not null)
+            {
+                var known = db.Repos().Select(r => r.Name).ToHashSet(StringComparer.OrdinalIgnoreCase);
+                problems.AddRange(given.Where(r => !known.Contains(r.Name) && File.Exists(r.StoriesPath)).Select(r => new TicketProblem(r.Name, "not in the workflow database; run 'workflow db migrate'")));
+                problems.AddRange(db.Check().Select(p => p.Split(": ", 2) is [var repo, var msg] && known.Contains(repo) ? new TicketProblem(repo, msg) : new TicketProblem("workflow.db", p)));
+                return problems;
+            }
+        repos = given;
         var codes = new Dictionary<string, List<string>>(StringComparer.Ordinal);
         foreach (var r in repos)
         {
@@ -88,7 +110,7 @@ public static partial class WorkspaceTickets
 
     /// <summary>The code in a USER_STORIES.md, if the repo has one.</summary>
     public static string? CodeOf(Repo repo) =>
-        File.Exists(repo.StoriesPath) ? StoryFile.Load(repo.StoriesPath).Code : null;
+        File.Exists(repo.StoriesPath) ? StoryFile.Load(repo.StoriesPath).Code : null; // a migrated repo's pointer file keeps its front-matter
 
     [GeneratedRegex(@"\d{4}$")]
     private static partial Regex TrailingYear();

@@ -1,0 +1,606 @@
+using System.Globalization;
+using System.Text;
+using System.Text.RegularExpressions;
+using Microsoft.Data.Sqlite;
+using MindAttic.Workflow.Stories;
+using MindAttic.Workflow.Tickets;
+
+namespace MindAttic.Workflow.Data;
+
+/// <summary>A link between two items (tickets or stories, by ID).</summary>
+public sealed record Link(string From, string To, string Kind, string? Note);
+
+/// <summary>One change to a ticket: its creation, or a status or ref change.</summary>
+public sealed record TicketEvent(string TicketId, string At, string Field, string? Old, string? New);
+
+/// <summary>A story row as stored.</summary>
+public sealed record StoredStory(long Uid, string Repo, string Id, string? Status, string? Glyph, string Suffix, string Text,
+    string Source, long? ParentUid, string? Epic, string? Section, string? Evidence, string? Acceptance);
+
+/// <summary>What <see cref="WorkflowDb.Import"/> found in one repo.</summary>
+public sealed record ImportReport(string Repo, string Code, int Epics, int Stories, int BacklogItems, int Tickets, int Links, bool RoundTrips);
+
+/// <summary>
+/// The one Workflow database: every repo's stories (front-matter, epics, stories, backlog) and tickets in a
+/// structured schema, with links between any of them (prerequisites included) and a history of every ticket
+/// change. Each repo's file is also kept as ordered blocks, so <see cref="Export"/> rebuilds its
+/// USER_STORIES.md byte-for-byte. Tickets are append-only (enforced by triggers): only status and ref change.
+/// </summary>
+public sealed partial class WorkflowDb : IDisposable
+{
+    public const int SchemaVersion = 1;
+    public const string RelativePath = "data/workflow.db";
+    public const string DumpRelativePath = "data/workflow.sql";
+    public const string EnvVar = "MINDATTIC_WORKFLOW_DB";
+
+    /// <summary>Kinds a <see cref="Link"/> may have; <c>requires</c> is a prerequisite (From waits for To).</summary>
+    public static readonly IReadOnlyList<string> LinkKinds = ["requires", "related", "follow-up-of", "supersedes", "duplicates", "implements", "part-of"];
+
+    private readonly SqliteConnection db;
+
+    public string Path { get; }
+
+    private WorkflowDb(string path)
+    {
+        Path = System.IO.Path.GetFullPath(path);
+        // Pooling off: a pooled connection keeps the file open after Dispose, and git (or a delete) on Windows needs it closed.
+        db = new SqliteConnection($"Data Source={Path};Pooling=False;Foreign Keys=True");
+        db.Open();
+        Exec("PRAGMA busy_timeout = 15000; PRAGMA journal_mode = DELETE;");
+        EnsureSchema();
+    }
+
+    /// <summary>
+    /// Where the database lives: <c>$MINDATTIC_WORKFLOW_DB</c> if set, else <c>&lt;root&gt;\MindAttic.Workflow\data\workflow.db</c>.
+    /// It never depends on the current folder, so agents in worktrees outside the workspace reach the same database.
+    /// </summary>
+    public static string DefaultPath(string? workspaceRoot = null) =>
+        Environment.GetEnvironmentVariable(EnvVar) is { Length: > 0 } env ? env
+            : System.IO.Path.Combine(workspaceRoot ?? Workspace.DefaultRoot, "MindAttic.Workflow", RelativePath.Replace('/', System.IO.Path.DirectorySeparatorChar));
+
+    /// <summary>Opens (creating the schema if needed) the database at <paramref name="path"/>.</summary>
+    public static WorkflowDb Open(string path)
+    {
+        var dir = System.IO.Path.GetDirectoryName(System.IO.Path.GetFullPath(path));
+        if (!string.IsNullOrEmpty(dir)) Directory.CreateDirectory(dir);
+        return new WorkflowDb(path);
+    }
+
+    /// <summary>The workspace database if it has been migrated; null while tickets still live in the markdown.</summary>
+    public static WorkflowDb? OpenIfMigrated(string? workspaceRoot = null)
+    {
+        var path = DefaultPath(workspaceRoot);
+        if (!File.Exists(path)) return null;
+        var w = new WorkflowDb(path);
+        if (w.Scalar("SELECT COUNT(*) FROM repos") is long n && n > 0) return w;
+        w.Dispose();
+        return null;
+    }
+
+    public void Dispose() => db.Dispose();
+
+    private void EnsureSchema()
+    {
+        Exec(
+            """
+            CREATE TABLE IF NOT EXISTS meta (key TEXT PRIMARY KEY, value TEXT NOT NULL);
+            CREATE TABLE IF NOT EXISTS repos (
+                name TEXT PRIMARY KEY,
+                code TEXT NOT NULL UNIQUE,
+                project TEXT, title TEXT, updated TEXT,
+                front_matter TEXT NOT NULL DEFAULT '',
+                bom INTEGER NOT NULL DEFAULT 0, crlf INTEGER NOT NULL DEFAULT 0, trailing_newline INTEGER NOT NULL DEFAULT 1);
+            CREATE TABLE IF NOT EXISTS blocks (
+                repo TEXT NOT NULL REFERENCES repos(name), ordinal INTEGER NOT NULL,
+                kind TEXT NOT NULL CHECK (kind IN ('raw', 'epic', 'story', 'backlog', 'tickets')),
+                ref TEXT, text TEXT NOT NULL,
+                PRIMARY KEY (repo, ordinal));
+            CREATE TABLE IF NOT EXISTS epics (
+                repo TEXT NOT NULL REFERENCES repos(name), key TEXT NOT NULL, title TEXT NOT NULL, anchor TEXT, ordinal INTEGER NOT NULL,
+                PRIMARY KEY (repo, key));
+            CREATE TABLE IF NOT EXISTS stories (
+                uid INTEGER PRIMARY KEY, repo TEXT NOT NULL REFERENCES repos(name), story_id TEXT NOT NULL,
+                parent_uid INTEGER REFERENCES stories(uid), epic TEXT, section TEXT, section_ref TEXT,
+                status TEXT CHECK (status IS NULL OR status IN ('done', 'partial', 'planned')), glyph TEXT, suffix TEXT NOT NULL DEFAULT '',
+                text TEXT NOT NULL, evidence TEXT, acceptance TEXT,
+                source TEXT NOT NULL CHECK (source IN ('bullet', 'sub-bullet', 'table', 'backlog')), ordinal INTEGER NOT NULL);
+            CREATE INDEX IF NOT EXISTS stories_by_id ON stories (story_id);
+            CREATE TABLE IF NOT EXISTS backlog_items (
+                uid INTEGER PRIMARY KEY, repo TEXT NOT NULL REFERENCES repos(name), ordinal INTEGER NOT NULL, text TEXT NOT NULL);
+            CREATE TABLE IF NOT EXISTS backlog_refs (
+                item_uid INTEGER NOT NULL REFERENCES backlog_items(uid), story_id TEXT NOT NULL, PRIMARY KEY (item_uid, story_id));
+            CREATE TABLE IF NOT EXISTS tickets (
+                id TEXT PRIMARY KEY, repo TEXT NOT NULL REFERENCES repos(name), number INTEGER,
+                date TEXT NOT NULL, type TEXT NOT NULL,
+                status TEXT NOT NULL CHECK (status IN ('open', 'closed', 'wont-do')),
+                summary TEXT NOT NULL, ref TEXT NOT NULL DEFAULT '—', ordinal INTEGER NOT NULL,
+                row_md TEXT);
+            CREATE INDEX IF NOT EXISTS tickets_by_repo ON tickets (repo, ordinal);
+            CREATE TABLE IF NOT EXISTS ticket_events (
+                seq INTEGER PRIMARY KEY, ticket_id TEXT NOT NULL REFERENCES tickets(id), at TEXT NOT NULL,
+                field TEXT NOT NULL, old TEXT, new TEXT);
+            CREATE TABLE IF NOT EXISTS links (
+                from_id TEXT NOT NULL, to_id TEXT NOT NULL,
+                kind TEXT NOT NULL CHECK (kind IN ('requires', 'related', 'follow-up-of', 'supersedes', 'duplicates', 'implements', 'part-of')),
+                note TEXT, PRIMARY KEY (from_id, to_id, kind), CHECK (from_id <> to_id));
+            CREATE INDEX IF NOT EXISTS links_to ON links (to_id);
+
+            -- Append-only: a ticket is never deleted, and only its status and ref ever change.
+            CREATE TRIGGER IF NOT EXISTS tickets_no_delete BEFORE DELETE ON tickets
+            BEGIN SELECT RAISE(ABORT, 'tickets are never deleted; close one as wont-do instead'); END;
+            CREATE TRIGGER IF NOT EXISTS tickets_append_only BEFORE UPDATE OF id, repo, number, date, type, summary, ordinal ON tickets
+            WHEN NEW.id IS NOT OLD.id OR NEW.repo IS NOT OLD.repo OR NEW.number IS NOT OLD.number OR NEW.date IS NOT OLD.date
+              OR NEW.type IS NOT OLD.type OR NEW.summary IS NOT OLD.summary OR NEW.ordinal IS NOT OLD.ordinal
+            BEGIN SELECT RAISE(ABORT, 'tickets are append-only: only status and ref may change'); END;
+            -- Every status or ref change is history; the row's original markdown no longer describes it.
+            CREATE TRIGGER IF NOT EXISTS tickets_history AFTER UPDATE OF status, ref ON tickets
+            WHEN NEW.status IS NOT OLD.status OR NEW.ref IS NOT OLD.ref
+            BEGIN
+                INSERT INTO ticket_events (ticket_id, at, field, old, new)
+                    SELECT NEW.id, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), 'status', OLD.status, NEW.status WHERE NEW.status IS NOT OLD.status;
+                INSERT INTO ticket_events (ticket_id, at, field, old, new)
+                    SELECT NEW.id, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), 'ref', OLD.ref, NEW.ref WHERE NEW.ref IS NOT OLD.ref;
+                UPDATE tickets SET row_md = NULL WHERE id = NEW.id;
+            END;
+            """);
+        Exec($"INSERT OR IGNORE INTO meta (key, value) VALUES ('schema_version', '{SchemaVersion}')");
+    }
+
+    // ── Import ──────────────────────────────────────────────────────────────
+
+    /// <summary>
+    /// Migrates every repo's <c>docs/USER_STORIES.md</c> into the database (replacing what's there for those repos),
+    /// derives links (story to epic, "blocked by" phrases, ticket refs naming other tickets or stories, and
+    /// <paramref name="extraRequires"/>), then checks each repo exports back to its file byte-for-byte.
+    /// </summary>
+    public IReadOnlyList<ImportReport> Import(IEnumerable<Repo> repos, IReadOnlyDictionary<string, IReadOnlyList<string>>? extraRequires = null)
+    {
+        var docs = repos.Where(r => File.Exists(r.StoriesPath))
+            .Select(r => (Repo: r, Bytes: File.ReadAllBytes(r.StoriesPath)))
+            .Where(x => !IsPointer(x.Bytes)) // already migrated: its content lives here, not in the file
+            .Select(x => (x.Repo, x.Bytes, Doc: StoryDocument.FromBytes(x.Bytes)))
+            .Where(x => x.Doc.Code is not null)
+            .ToList();
+
+        using (var tx = db.BeginTransaction())
+        {
+            Exec("DROP TRIGGER IF EXISTS tickets_no_delete; DROP TRIGGER IF EXISTS tickets_append_only; DROP TRIGGER IF EXISTS tickets_history;", tx);
+            foreach (var (repo, _, _) in docs)
+                foreach (var sql in new[]
+                {
+                    "DELETE FROM backlog_refs WHERE item_uid IN (SELECT uid FROM backlog_items WHERE repo = $r)",
+                    "DELETE FROM backlog_items WHERE repo = $r", "DELETE FROM stories WHERE repo = $r", "DELETE FROM epics WHERE repo = $r",
+                    "DELETE FROM blocks WHERE repo = $r",
+                    "DELETE FROM ticket_events WHERE ticket_id IN (SELECT id FROM tickets WHERE repo = $r)",
+                    "DELETE FROM tickets WHERE repo = $r", "DELETE FROM repos WHERE name = $r",
+                })
+                    Exec(sql, tx, ("$r", repo.Name));
+            foreach (var (repo, _, doc) in docs) ImportOne(repo, doc, tx);
+            tx.Commit();
+        }
+        EnsureSchema(); // put the triggers back
+
+        var linkCounts = ImportLinks(docs.Select(d => (d.Repo, d.Doc)).ToList(), extraRequires);
+        Exec("INSERT OR REPLACE INTO meta (key, value) VALUES ('migrated_at', $v)", null, ("$v", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ", CultureInfo.InvariantCulture)));
+
+        return [.. docs.Select(d => new ImportReport(d.Repo.Name, d.Doc.Code!,
+            d.Doc.Blocks.Count(b => b.Kind == BlockKind.Epic), d.Doc.Stories.Count,
+            d.Doc.Blocks.Count(b => b.Kind == BlockKind.BacklogItem), d.Doc.Tickets.Count, linkCounts.GetValueOrDefault(d.Repo.Name),
+            Export(d.Repo.Name) is { } bytes && bytes.SequenceEqual(d.Bytes)))];
+    }
+
+    private void ImportOne(Repo repo, StoryDocument doc, SqliteTransaction tx)
+    {
+        var fm = string.Join("\n", doc.FrontMatter.Select(kv => $"{kv.Key}: {kv.Value}"));
+        Exec("INSERT INTO repos (name, code, project, title, updated, front_matter, bom, crlf, trailing_newline) VALUES ($n, $c, $p, $t, $u, $fm, $b, $cr, $tn)", tx,
+            ("$n", repo.Name), ("$c", doc.Code), ("$p", doc.FrontMatter.GetValueOrDefault("project")), ("$t", doc.Title),
+            ("$u", doc.FrontMatter.GetValueOrDefault("updated")), ("$fm", fm), ("$b", doc.Bom ? 1 : 0), ("$cr", doc.Crlf ? 1 : 0), ("$tn", doc.TrailingNewline ? 1 : 0));
+
+        var storyUids = new List<long>();
+        var ordinal = 0;
+        var epicOrdinal = 0;
+        foreach (var b in doc.Blocks)
+        {
+            string? reference = null;
+            switch (b.Kind)
+            {
+                case BlockKind.Epic:
+                    Exec("INSERT OR REPLACE INTO epics (repo, key, title, anchor, ordinal) VALUES ($r, $k, $t, $a, $o)", tx,
+                        ("$r", repo.Name), ("$k", b.Epic!.Key), ("$t", b.Epic.Title), ("$a", b.Epic.Anchor), ("$o", epicOrdinal++));
+                    reference = b.Epic.Key;
+                    break;
+                case BlockKind.Story:
+                    var s = b.Story!;
+                    var uid = (long)Scalar(
+                        """
+                        INSERT INTO stories (repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal)
+                        VALUES ($r, $id, $p, $e, $sec, $sr, $st, $g, $suf, $txt, $ev, $ac, $src, $o) RETURNING uid
+                        """, tx,
+                        ("$r", repo.Name), ("$id", s.Id), ("$p", s.Parent is { } pi ? storyUids[pi] : null), ("$e", s.Epic), ("$sec", s.Section),
+                        ("$sr", s.SectionRef), ("$st", s.Status), ("$g", s.Glyph), ("$suf", s.Suffix), ("$txt", s.Text), ("$ev", s.Evidence),
+                        ("$ac", s.Acceptance), ("$src", s.Source), ("$o", storyUids.Count))!;
+                    storyUids.Add(uid);
+                    reference = uid.ToString(CultureInfo.InvariantCulture);
+                    break;
+                case BlockKind.BacklogItem:
+                    var item = (long)Scalar("INSERT INTO backlog_items (repo, ordinal, text) VALUES ($r, $o, $t) RETURNING uid", tx,
+                        ("$r", repo.Name), ("$o", ordinal), ("$t", b.Backlog!.Text))!;
+                    foreach (var id in b.Backlog.StoryIds)
+                        Exec("INSERT OR IGNORE INTO backlog_refs (item_uid, story_id) VALUES ($i, $s)", tx, ("$i", item), ("$s", id));
+                    reference = item.ToString(CultureInfo.InvariantCulture);
+                    break;
+            }
+            Exec("INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ($r, $o, $k, $ref, $t)", tx,
+                ("$r", repo.Name), ("$o", ordinal++), ("$k", KindName(b.Kind)), ("$ref", reference), ("$t", b.Text));
+        }
+
+        var row = 0;
+        foreach (var t in doc.Tickets)
+            Exec("INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ($id, $r, $n, $d, $ty, $st, $su, $ref, $o, $md)", tx,
+                ("$id", t.Ticket.Id), ("$r", repo.Name), ("$n", t.Ticket.Number), ("$d", t.Ticket.Date), ("$ty", t.Ticket.Type),
+                ("$st", t.Ticket.Status), ("$su", t.Ticket.Summary), ("$ref", t.Ticket.Ref), ("$o", row++), ("$md", t.Markdown));
+    }
+
+    private Dictionary<string, int> ImportLinks(List<(Repo Repo, StoryDocument Doc)> docs, IReadOnlyDictionary<string, IReadOnlyList<string>>? extraRequires)
+    {
+        var counts = new Dictionary<string, int>(StringComparer.Ordinal);
+        var ticketRepo = Rows("SELECT id, repo FROM tickets", r => (r.GetString(0), r.GetString(1))).ToDictionary(x => x.Item1, x => x.Item2, StringComparer.Ordinal);
+        var storyIds = Rows("SELECT DISTINCT story_id FROM stories", r => r.GetString(0)).ToHashSet(StringComparer.Ordinal);
+        var repos = docs.Select(d => d.Repo.Name).ToHashSet(StringComparer.Ordinal);
+
+        using var tx = db.BeginTransaction();
+        // Links from the migrated repos are derived again; links added by hand to other items are kept.
+        Exec("DELETE FROM links WHERE note LIKE 'migrated:%' AND (from_id IN (SELECT id FROM tickets WHERE repo IN (SELECT value FROM json_each($r))) " +
+             "OR from_id IN (SELECT story_id FROM stories WHERE repo IN (SELECT value FROM json_each($r))))", tx,
+             ("$r", System.Text.Json.JsonSerializer.Serialize(repos)));
+        void Link(string repo, string from, string to, string kind, string why)
+        {
+            if (from == to) return;
+            if (Exec("INSERT OR IGNORE INTO links (from_id, to_id, kind, note) VALUES ($f, $t, $k, $n)", tx, ("$f", from), ("$t", to), ("$k", kind), ("$n", "migrated: " + why)) > 0)
+                counts[repo] = counts.GetValueOrDefault(repo) + 1;
+        }
+
+        foreach (var (repo, doc) in docs)
+        {
+            foreach (var s in doc.Stories)
+            {
+                if (s.Epic is { } e) Link(repo.Name, s.Id, $"{doc.Code}-EPIC-{e}", "part-of", "story under its epic");
+                if (s.Parent is { } p) Link(repo.Name, s.Id, doc.Stories[p].Id, "part-of", "sub-story");
+            }
+            foreach (var t in doc.Tickets.Select(x => x.Ticket))
+            {
+                foreach (Match m in BlockedBy().Matches(t.Summary))
+                    if (ticketRepo.ContainsKey(m.Groups["id"].Value)) Link(repo.Name, t.Id, m.Groups["id"].Value, "requires", "blocked by in summary");
+                var superseded = SupersededBy().Match(t.Ref);
+                foreach (Match m in TicketId().Matches(t.Ref))
+                {
+                    var other = m.Value;
+                    if (!ticketRepo.ContainsKey(other)) continue;
+                    if (superseded.Success && superseded.Groups["id"].Value == other) Link(repo.Name, other, t.Id, "supersedes", "superseded by in ref");
+                    else Link(repo.Name, t.Id, other, "related", "named in ref");
+                }
+                foreach (Match m in StoryDocument.StoryIdRef().Matches(t.Ref + " " + t.Summary))
+                    if (storyIds.Contains(m.Value)) Link(repo.Name, t.Id, m.Value, "implements", "story named in ticket");
+            }
+        }
+        if (extraRequires is not null)
+            foreach (var (from, tos) in extraRequires)
+                if (ticketRepo.TryGetValue(from, out var repo))
+                    foreach (var to in tos.Where(ticketRepo.ContainsKey))
+                        Link(repo, from, to, "requires", "orchestrator block setting");
+        tx.Commit();
+        return counts;
+    }
+
+    private static string KindName(BlockKind k) => k switch
+    {
+        BlockKind.Raw => "raw", BlockKind.Epic => "epic", BlockKind.Story => "story", BlockKind.BacklogItem => "backlog", _ => "tickets",
+    };
+
+    private static BlockKind KindOf(string k) => k switch
+    {
+        "raw" => BlockKind.Raw, "epic" => BlockKind.Epic, "story" => BlockKind.Story, "backlog" => BlockKind.BacklogItem, _ => BlockKind.Tickets,
+    };
+
+    /// <summary>The first line of the body of a migrated repo's USER_STORIES.md.</summary>
+    public const string PointerMarker = "<!-- workflow-db: this repo's stories and tickets live in the MindAttic.Workflow database -->";
+
+    public static bool IsPointer(byte[] bytes) =>
+        Encoding.UTF8.GetString(bytes).Contains(PointerMarker, StringComparison.Ordinal);
+
+    /// <summary>
+    /// What a migrated repo's USER_STORIES.md becomes: its front-matter (so anything reading <c>code:</c> still works)
+    /// and where its stories and tickets are now.
+    /// </summary>
+    public string PointerText(string repo)
+    {
+        var (fm, project, code) = Rows("SELECT front_matter, project, code FROM repos WHERE name = $r COLLATE NOCASE",
+            r => (r.GetString(0), r.IsDBNull(1) ? repo : r.GetString(1), r.GetString(2)), ("$r", repo)).Single();
+        return $"""
+            ---
+            {fm}
+            ---
+            {PointerMarker}
+
+            # {project} — User Stories
+
+            This repo's stories and tickets ({code}-US-…, {code}-T…) live in the MindAttic.Workflow database
+            (`MindAttic.Workflow/data/workflow.db`), not in this file. Use the `workflow` CLI:
+
+            - Read: `workflow story list --repo {repo}`, `workflow ticket list --repo {repo}`, `workflow ticket show <ID>`
+            - Change: `workflow ticket new` / `close`, `workflow story status <ID> done|partial|planned`, `workflow ticket link <A> requires <B>`
+            - This file as it was, rebuilt from the database: `workflow db export --repo {repo}`
+
+            """.Replace("\r\n", "\n", StringComparison.Ordinal);
+    }
+
+    /// <summary>Adds a repo that has never had a USER_STORIES.md: front-matter, an empty backlog and an empty ticket log.</summary>
+    public void AddRepo(Repo repo, string code, string? project = null)
+    {
+        var dir = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "wf-new-" + Guid.NewGuid().ToString("N"));
+        var tmp = new Repo(repo.Name, dir);
+        Directory.CreateDirectory(System.IO.Path.GetDirectoryName(tmp.StoriesPath)!);
+        try
+        {
+            File.WriteAllText(tmp.StoriesPath, StoryFile.NewFileText(project ?? repo.Name, code, TicketRules.Today()));
+            Import([tmp]);
+        }
+        finally { Directory.Delete(dir, recursive: true); }
+    }
+
+    // ── Export ──────────────────────────────────────────────────────────────
+
+    /// <summary>The repo's USER_STORIES.md as bytes, rebuilt from the database (tickets as they are now); null for an unknown repo.</summary>
+    public byte[]? Export(string repo)
+    {
+        var meta = Rows("SELECT bom, crlf, trailing_newline FROM repos WHERE name = $r", r => (r.GetInt64(0) == 1, r.GetInt64(1) == 1, r.GetInt64(2) == 1), ("$r", repo)).ToList();
+        if (meta.Count == 0) return null;
+        var (bom, crlf, trailing) = meta[0];
+        var blocks = Rows("SELECT kind, text FROM blocks WHERE repo = $r ORDER BY ordinal", r => (KindOf(r.GetString(0)), r.GetString(1)), ("$r", repo)).ToList();
+        var rows = Rows("SELECT id, date, type, status, summary, ref, row_md FROM tickets WHERE repo = $r ORDER BY ordinal",
+            r => r.IsDBNull(6) ? StoryFile.FormatRow(new Ticket(r.GetString(0), r.GetString(1), r.GetString(2), r.GetString(3), r.GetString(4), r.GetString(5))) : r.GetString(6),
+            ("$r", repo)).ToList();
+        var text = StoryDocument.Join(blocks.Select(b => b.Item2), rows, blocks.Select(b => b.Item1), trailing);
+        return StoryDocument.Encode(text, bom, crlf);
+    }
+
+    // ── Tickets ─────────────────────────────────────────────────────────────
+
+    /// <summary>Every repo in the database: name and code.</summary>
+    public IReadOnlyList<(string Name, string Code)> Repos() =>
+        [.. Rows("SELECT name, code FROM repos ORDER BY name COLLATE NOCASE", r => (r.GetString(0), r.GetString(1)))];
+
+    /// <summary>Tickets (with their repo name), optionally for one repo, in repo then log order.</summary>
+    public IReadOnlyList<(string Repo, Ticket Ticket)> Tickets(string? repo = null) =>
+        [.. Rows("SELECT repo, id, date, type, status, summary, ref FROM tickets WHERE $r IS NULL OR repo = $r COLLATE NOCASE ORDER BY repo COLLATE NOCASE, ordinal",
+            r => (r.GetString(0), new Ticket(r.GetString(1), r.GetString(2), r.GetString(3), r.GetString(4), r.GetString(5), r.GetString(6))), ("$r", repo))];
+
+    public (string Repo, Ticket Ticket)? Ticket(string id) =>
+        Rows("SELECT repo, id, date, type, status, summary, ref FROM tickets WHERE id = $id COLLATE NOCASE",
+            r => (r.GetString(0), new Ticket(r.GetString(1), r.GetString(2), r.GetString(3), r.GetString(4), r.GetString(5), r.GetString(6))), ("$id", id))
+            .Cast<(string, Ticket)?>().FirstOrDefault();
+
+    /// <summary>Adds a ticket to <paramref name="repo"/> with the next free number (never reusing a gap), atomically.</summary>
+    public Ticket Add(string repo, string type, string status, string summary, string reference, string? date = null)
+    {
+        if (!TicketRules.Types.Contains(type)) throw new ArgumentException($"Unknown type '{type}' (expected {string.Join("/", TicketRules.Types)}).", nameof(type));
+        if (!TicketRules.Statuses.Contains(status)) throw new ArgumentException($"Unknown status '{status}' (expected {string.Join("/", TicketRules.Statuses)}).", nameof(status));
+        if (string.IsNullOrWhiteSpace(summary)) throw new ArgumentException("A ticket needs a summary.", nameof(summary));
+
+        Exec("BEGIN IMMEDIATE");
+        try
+        {
+            var (name, code) = Rows("SELECT name, code FROM repos WHERE name = $r COLLATE NOCASE", r => (r.GetString(0), r.GetString(1)), ("$r", repo)).FirstOrDefault();
+            if (name is null) throw new InvalidOperationException($"{repo} isn't in the workflow database; run 'workflow db migrate' (or 'workflow repos rollout tickets --apply').");
+            var next = (long)(Scalar("SELECT COALESCE(MAX(number), 0) + 1 FROM tickets WHERE repo = $r", null, ("$r", name)) ?? 1L);
+            var ordinal = (long)(Scalar("SELECT COALESCE(MAX(ordinal), -1) + 1 FROM tickets WHERE repo = $r", null, ("$r", name)) ?? 0L);
+            var t = new Ticket($"{code}-T{next}", date ?? TicketRules.Today(), type, status, summary.Trim(), string.IsNullOrWhiteSpace(reference) ? "—" : reference.Trim());
+            Exec("INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal) VALUES ($id, $r, $n, $d, $ty, $st, $su, $ref, $o)", null,
+                ("$id", t.Id), ("$r", name), ("$n", next), ("$d", t.Date), ("$ty", t.Type), ("$st", t.Status), ("$su", t.Summary), ("$ref", t.Ref), ("$o", ordinal));
+            Exec("INSERT INTO ticket_events (ticket_id, at, field, old, new) VALUES ($id, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), 'created', NULL, $st)", null, ("$id", t.Id), ("$st", t.Status));
+            foreach (Match m in BlockedBy().Matches(t.Summary))
+                if (Ticket(m.Groups["id"].Value) is not null) AddLinkCore(t.Id, m.Groups["id"].Value, "requires", "blocked by in summary");
+            Exec("COMMIT");
+            return t;
+        }
+        catch
+        {
+            Exec("ROLLBACK");
+            throw;
+        }
+    }
+
+    /// <summary>Moves a ticket to closed or wont-do, setting Ref when one is given.</summary>
+    public Ticket Close(string id, string status = TicketRules.Closed, string? reference = null)
+    {
+        if (status is not (TicketRules.Closed or TicketRules.WontDo))
+            throw new ArgumentException($"Close to '{TicketRules.Closed}' or '{TicketRules.WontDo}', not '{status}'.", nameof(status));
+        var t = Ticket(id)?.Ticket ?? throw new KeyNotFoundException($"No ticket {id}.");
+        var updated = t with { Status = status, Ref = string.IsNullOrWhiteSpace(reference) ? t.Ref : reference.Trim() };
+        Exec("UPDATE tickets SET status = $s, ref = $ref WHERE id = $id", null, ("$s", updated.Status), ("$ref", updated.Ref), ("$id", t.Id));
+        return updated;
+    }
+
+    /// <summary>A ticket's history, oldest first.</summary>
+    public IReadOnlyList<TicketEvent> History(string id) =>
+        [.. Rows("SELECT ticket_id, at, field, old, new FROM ticket_events WHERE ticket_id = $id COLLATE NOCASE ORDER BY seq",
+            r => new TicketEvent(r.GetString(0), r.GetString(1), r.GetString(2), r.IsDBNull(3) ? null : r.GetString(3), r.IsDBNull(4) ? null : r.GetString(4)), ("$id", id))];
+
+    // ── Links ───────────────────────────────────────────────────────────────
+
+    /// <summary>Links <paramref name="from"/> to <paramref name="to"/>; <c>requires</c> makes <paramref name="to"/> a prerequisite.</summary>
+    public void AddLink(string from, string to, string kind, string? note = null)
+    {
+        if (!LinkKinds.Contains(kind)) throw new ArgumentException($"Unknown link kind '{kind}' (expected {string.Join(", ", LinkKinds)}).", nameof(kind));
+        if (string.Equals(from, to, StringComparison.OrdinalIgnoreCase)) throw new ArgumentException("An item can't link to itself.");
+        if (kind == "requires" && Requires(to, transitive: true).Contains(from, StringComparer.OrdinalIgnoreCase))
+            throw new InvalidOperationException($"{to} already (indirectly) requires {from}; that would be a cycle.");
+        AddLinkCore(from, to, kind, note);
+    }
+
+    private void AddLinkCore(string from, string to, string kind, string? note) =>
+        Exec("INSERT OR IGNORE INTO links (from_id, to_id, kind, note) VALUES ($f, $t, $k, $n)", null, ("$f", from), ("$t", to), ("$k", kind), ("$n", note));
+
+    public bool RemoveLink(string from, string to, string kind) =>
+        Exec("DELETE FROM links WHERE from_id = $f COLLATE NOCASE AND to_id = $t COLLATE NOCASE AND kind = $k", null, ("$f", from), ("$t", to), ("$k", kind)) > 0;
+
+    /// <summary>Every link touching <paramref name="id"/>, in either direction.</summary>
+    public IReadOnlyList<Link> Links(string id) =>
+        [.. Rows("SELECT from_id, to_id, kind, note FROM links WHERE from_id = $id COLLATE NOCASE OR to_id = $id COLLATE NOCASE ORDER BY kind, from_id, to_id",
+            r => new Link(r.GetString(0), r.GetString(1), r.GetString(2), r.IsDBNull(3) ? null : r.GetString(3)), ("$id", id))];
+
+    /// <summary>Every link in the database.</summary>
+    public IReadOnlyList<Link> AllLinks() =>
+        [.. Rows("SELECT from_id, to_id, kind, note FROM links ORDER BY from_id, kind, to_id",
+            r => new Link(r.GetString(0), r.GetString(1), r.GetString(2), r.IsDBNull(3) ? null : r.GetString(3)))];
+
+    /// <summary>What <paramref name="id"/> requires (directly, or all the way down).</summary>
+    public IReadOnlyList<string> Requires(string id, bool transitive = false)
+    {
+        var sql = transitive
+            ? "WITH RECURSIVE r(x) AS (SELECT to_id FROM links WHERE from_id = $id COLLATE NOCASE AND kind = 'requires' " +
+              "UNION SELECT l.to_id FROM links l JOIN r ON l.from_id = r.x AND l.kind = 'requires') SELECT x FROM r"
+            : "SELECT to_id FROM links WHERE from_id = $id COLLATE NOCASE AND kind = 'requires'";
+        return [.. Rows(sql, r => r.GetString(0), ("$id", id))];
+    }
+
+    // ── Stories ─────────────────────────────────────────────────────────────
+
+    public IReadOnlyList<StoredStory> Stories(string? repo = null) =>
+        [.. Rows("SELECT uid, repo, story_id, status, glyph, suffix, text, source, parent_uid, epic, section, evidence, acceptance FROM stories " +
+                 "WHERE $r IS NULL OR repo = $r COLLATE NOCASE ORDER BY repo COLLATE NOCASE, ordinal", ReadStory, ("$r", repo))];
+
+    public IReadOnlyList<StoredStory> Story(string id) =>
+        [.. Rows("SELECT uid, repo, story_id, status, glyph, suffix, text, source, parent_uid, epic, section, evidence, acceptance FROM stories " +
+                 "WHERE story_id = $id COLLATE NOCASE ORDER BY repo, ordinal", ReadStory, ("$id", id))];
+
+    private static StoredStory ReadStory(SqliteDataReader r) => new(r.GetInt64(0), r.GetString(1), r.GetString(2),
+        r.IsDBNull(3) ? null : r.GetString(3), r.IsDBNull(4) ? null : r.GetString(4), r.GetString(5), r.GetString(6), r.GetString(7),
+        r.IsDBNull(8) ? null : r.GetInt64(8), r.IsDBNull(9) ? null : r.GetString(9), r.IsDBNull(10) ? null : r.GetString(10),
+        r.IsDBNull(11) ? null : r.GetString(11), r.IsDBNull(12) ? null : r.GetString(12));
+
+    /// <summary>
+    /// Sets a story's status (done, partial or planned), swapping the glyph in its markdown too so the exported file
+    /// matches. With several stories under one ID (it happens), pass <paramref name="repo"/>; all of them change otherwise.
+    /// </summary>
+    public int SetStoryStatus(string id, string status, string? repo = null)
+    {
+        var glyph = StoryDocument.GlyphOf(status);
+        var stories = Story(id).Where(s => repo is null || s.Repo.Equals(repo, StringComparison.OrdinalIgnoreCase)).ToList();
+        if (stories.Count == 0) throw new KeyNotFoundException($"No story {id}{(repo is null ? "" : " in " + repo)}.");
+        using var tx = db.BeginTransaction();
+        foreach (var s in stories)
+        {
+            Exec("UPDATE stories SET status = $s, glyph = $g WHERE uid = $u", tx, ("$s", status), ("$g", glyph), ("$u", s.Uid));
+            if (s.Glyph is { } old)
+            {
+                var text = (string)Scalar("SELECT text FROM blocks WHERE repo = $r AND kind = 'story' AND ref = $u", tx, ("$r", s.Repo), ("$u", s.Uid.ToString(CultureInfo.InvariantCulture)))!;
+                var first = text.Split('\n')[0];
+                var swapped = s.Source == "table"
+                    ? ReplaceCell(first, old, glyph)
+                    : StoryDocument.StoryBullet().Replace(first, m => m.Value.Replace($"{m.Groups["id"].Value} {old}", $"{m.Groups["id"].Value} {glyph}", StringComparison.Ordinal), 1);
+                Exec("UPDATE blocks SET text = $t WHERE repo = $r AND kind = 'story' AND ref = $u", tx,
+                    ("$t", swapped + text[first.Length..]), ("$r", s.Repo), ("$u", s.Uid.ToString(CultureInfo.InvariantCulture)));
+            }
+        }
+        tx.Commit();
+        return stories.Count;
+    }
+
+    private static string ReplaceCell(string row, string old, string glyph)
+    {
+        var at = row.LastIndexOf(old, StringComparison.Ordinal);
+        return at < 0 ? row : row[..at] + glyph + row[(at + old.Length)..];
+    }
+
+    // ── Checks and dump ─────────────────────────────────────────────────────
+
+    /// <summary>Problems: bad ticket IDs/dates/types, codes that don't match, links to items that don't exist, and requires-cycles.</summary>
+    public IReadOnlyList<string> Check()
+    {
+        var problems = new List<string>();
+        foreach (var (name, code) in Repos())
+            problems.AddRange(TicketRules.Validate(code, [.. Tickets(name).Select(t => t.Ticket)]).Select(p => $"{name}: {p}"));
+        var ids = Rows("SELECT id FROM tickets UNION SELECT story_id FROM stories", r => r.GetString(0)).ToHashSet(StringComparer.OrdinalIgnoreCase);
+        foreach (var l in AllLinks())
+        {
+            if (l.Kind == "part-of" && l.To.Contains("-EPIC-", StringComparison.Ordinal)) continue;
+            if (!ids.Contains(l.From)) problems.Add($"link {l.From} {l.Kind} {l.To}: no item {l.From}");
+            if (!ids.Contains(l.To)) problems.Add($"link {l.From} {l.Kind} {l.To}: no item {l.To}");
+        }
+        foreach (var id in Rows("SELECT DISTINCT from_id FROM links WHERE kind = 'requires'", r => r.GetString(0)))
+            if (Requires(id, transitive: true).Contains(id, StringComparer.OrdinalIgnoreCase)) problems.Add($"{id}: requires itself through a cycle");
+        return problems;
+    }
+
+    /// <summary>
+    /// A readable, deterministic SQL dump of the whole database (one INSERT per row, in key order), committed
+    /// beside it so changes show up as text diffs.
+    /// </summary>
+    public string Dump()
+    {
+        var sb = new StringBuilder("-- MindAttic.Workflow database dump (generated by 'workflow db sync'; the .db file is the store).\n");
+        foreach (var (table, order) in new[]
+        {
+            ("meta", "key"), ("repos", "name"), ("epics", "repo, key"), ("stories", "uid"), ("backlog_items", "uid"), ("backlog_refs", "item_uid, story_id"),
+            ("tickets", "repo, ordinal"), ("ticket_events", "seq"), ("links", "from_id, to_id, kind"), ("blocks", "repo, ordinal"),
+        })
+        {
+            sb.Append("\n-- ").Append(table).Append('\n');
+            using var cmd = db.CreateCommand();
+            cmd.CommandText = $"SELECT * FROM {table} ORDER BY {order}";
+            using var r = cmd.ExecuteReader();
+            var cols = Enumerable.Range(0, r.FieldCount).Select(r.GetName).ToList();
+            while (r.Read())
+            {
+                sb.Append("INSERT INTO ").Append(table).Append(" (").Append(string.Join(", ", cols)).Append(") VALUES (");
+                sb.Append(string.Join(", ", Enumerable.Range(0, r.FieldCount).Select(i => r.IsDBNull(i) ? "NULL"
+                    : r.GetValue(i) is long n ? n.ToString(CultureInfo.InvariantCulture)
+                    : "'" + r.GetValue(i).ToString()!.Replace("'", "''", StringComparison.Ordinal) + "'")));
+                sb.Append(");\n");
+            }
+        }
+        return sb.ToString();
+    }
+
+    // ── Plumbing ────────────────────────────────────────────────────────────
+
+    private int Exec(string sql, SqliteTransaction? tx = null, params (string Name, object? Value)[] args)
+    {
+        using var cmd = Command(sql, tx, args);
+        return cmd.ExecuteNonQuery();
+    }
+
+    private object? Scalar(string sql, SqliteTransaction? tx = null, params (string Name, object? Value)[] args)
+    {
+        using var cmd = Command(sql, tx, args);
+        return cmd.ExecuteScalar();
+    }
+
+    private List<T> Rows<T>(string sql, Func<SqliteDataReader, T> read, params (string Name, object? Value)[] args)
+    {
+        using var cmd = Command(sql, null, args);
+        using var r = cmd.ExecuteReader();
+        var list = new List<T>();
+        while (r.Read()) list.Add(read(r));
+        return list;
+    }
+
+    private SqliteCommand Command(string sql, SqliteTransaction? tx, (string Name, object? Value)[] args)
+    {
+        var cmd = db.CreateCommand();
+        cmd.CommandText = sql;
+        cmd.Transaction = tx;
+        foreach (var (n, v) in args) cmd.Parameters.AddWithValue(n, v ?? DBNull.Value);
+        return cmd;
+    }
+
+    [GeneratedRegex(@"blocked by (?<id>[A-Z][A-Z0-9]*-T\d+)\b", RegexOptions.IgnoreCase)]
+    private static partial Regex BlockedBy();
+
+    [GeneratedRegex(@"superseded by (?<id>[A-Z][A-Z0-9]*-T\d+)\b", RegexOptions.IgnoreCase)]
+    private static partial Regex SupersededBy();
+
+    [GeneratedRegex(@"\b[A-Z][A-Z0-9]*-T\d+\b")]
+    private static partial Regex TicketId();
+}

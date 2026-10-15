@@ -1,24 +1,24 @@
-﻿AUTHORITATIVE - full detail in docs/BIBLE.md
+AUTHORITATIVE - full detail in docs/BIBLE.md
 <!-- generatedFrom: WF-bible -->
 
 # MindAttic.Workflow (WF) - Bible digest
 
 ## The one sentence (#WF-§1)
 MindAttic.Workflow is the workspace's ticket engine and repo job runner: a .NET library plus a
-`workflow` CLI that keeps every repo's permanent ticket log (the `## Tickets` table in
-`docs/USER_STORIES.md`) and runs workspace-wide jobs (status, prune, rollout) safely across every
+`workflow` CLI that keeps every repo's stories and permanent ticket log in one SQLite database
+(`data/workflow.db`) and runs workspace-wide jobs (status, prune, rollout) safely across every
 repo under `D:\Projects\MindAttic`.
 
 ## What it is NOT (#WF-§3)
-- NOT a database or a hosted tracker. The markdown files are the store; the engine only parses and
-  writes them. There is no index file, cache or server to fall out of sync.
+- NOT a hosted tracker or a server. The store is one SQLite file in this repo (`data/workflow.db`),
+  committed with a readable dump (`data/workflow.sql`); there is no second copy to fall out of sync.
 - NOT an agent and NOT an LLM client. No code path calls an LLM SDK or API.
 - NOT the Launcher. MindAttic.Launcher launches agent tabs and orchestrates; it calls this library
   as one front door ([HOUSE-LAW-6](../../MindAttic.HouseRules.md#HOUSE-LAW-6)). This repo owns
   tickets and workspace jobs.
 - NOT a git client for commits. `/commit` commits; it calls `workflow ticket` to log the work.
-- NOT a story editor. Stories (`CODE-US-…`) stay hand-written; the engine only manages the
-  `## Tickets` section and creates a skeleton file when a repo has none.
+- NOT a full story editor yet. Stories (`CODE-US-…`) are in the database and can be listed, shown and
+  marked done/partial/planned (`workflow story status`); adding or rewording one isn't supported yet.
 
 ## The Laws (#WF-§5)
 This project **inherits** the org-wide laws in
@@ -29,19 +29,21 @@ Vault), [HOUSE-LAW-6](../../MindAttic.HouseRules.md#HOUSE-LAW-6) (one engine; CL
 `/commit` are front doors), [HOUSE-LAW-8](../../MindAttic.HouseRules.md#HOUSE-LAW-8) (every ✅
 story cites a test).
 
-### {#WF-LAW-1} Markdown in each repo is the only ticket store.
-Tickets live in that repo's `docs/USER_STORIES.md` and nowhere else. No database, cache or
-central index; every query re-reads the files.
+### {#WF-LAW-1} The workflow database is the only store.
+Every repo's stories, epics, backlog and tickets, and the links between them, live in
+`data/workflow.db` and nowhere else (amended 2026-10-15 by WF-T20; markdown was the store before). A
+repo's `docs/USER_STORIES.md` is a pointer; `workflow db export` rebuilds the old file byte-for-byte.
 
 ### {#WF-LAW-2} Ticket rows are append-only.
-A row is never deleted or reworded. Only Status (open → closed / wont-do) and Ref change. IDs are
+A row is never deleted or reworded. The database enforces it with triggers: a ticket can't be deleted, and only
+its status and ref can be updated; every change is recorded in `ticket_events`. Only Status (open → closed / wont-do) and Ref change. IDs are
 the highest existing number + 1 and are never reused. `ticket verify` fails if a committed row was
-deleted or reworded.
+deleted or reworded. The database enforces it with triggers: a ticket can't be deleted, and only
+its status and ref can be updated; every change is recorded in `ticket_events`.
 
-### {#WF-LAW-3} Edits are surgical.
-Adding or closing a ticket changes exactly one line; the rest of the file, its line endings and its
-BOM are preserved byte-for-byte. `## Tickets` stays the last section, and the engine refuses to
-append when it isn't.
+### {#WF-LAW-3} Nothing is lost.
+Each repo's file was imported as ordered blocks as well as structured rows, and the migration only
+cut a repo over after its file rebuilt from the database byte-for-byte (line endings and BOM included).
 
 ### {#WF-LAW-4} Destructive jobs preview by default and never lose what only exists here.
 `prune` and `rollout` change nothing without `--apply`; `prune --apply` also needs a typed `yes`.

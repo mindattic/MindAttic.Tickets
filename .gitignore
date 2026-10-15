@@ -9,5 +9,7 @@ TestResults/
 *.log
 .claude/quicksave.md*
 .claude/settings.local.json
-# Generated ticket index (WF-T14 follow-up): rebuilt from every repo's USER_STORIES.md, never hand-edited.
-data/
+# The workflow database (data/workflow.db) and its dump are committed; only SQLite's scratch files aren't.
+data/*.db-journal
+data/*.db-wal
+data/*.db-shm

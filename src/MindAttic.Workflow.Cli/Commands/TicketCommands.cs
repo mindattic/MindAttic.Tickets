@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using System.Text.Json;
+using MindAttic.Workflow.Data;
 using MindAttic.Workflow.Tickets;
 using Spectre.Console;
 using Spectre.Console.Cli;
@@ -36,6 +37,12 @@ public sealed class TicketNewCommand : Command<TicketNewCommand.Settings>
     public override int Execute(CommandContext context, Settings settings)
     {
         var repo = settings.ResolveRepo();
+        using (var db = WorkflowDb.OpenIfMigrated(settings.Workspace.Root))
+            if (db is not null)
+            {
+                Console.WriteLine(db.Add(repo.Name, settings.Type, settings.Status, settings.Summary, settings.Ref ?? "").Id);
+                return 0;
+            }
         if (!File.Exists(repo.StoriesPath))
             throw new InvalidOperationException($"{repo.Name} has no docs/USER_STORIES.md; run 'workflow repos rollout --apply' first.");
 
@@ -66,9 +73,18 @@ public sealed class TicketCloseCommand : Command<TicketCloseCommand.Settings>
 
     public override int Execute(CommandContext context, Settings settings)
     {
+        var status = settings.WontDo ? TicketRules.WontDo : TicketRules.Closed;
+        using (var db = WorkflowDb.OpenIfMigrated(settings.Workspace.Root))
+            if (db is not null)
+            {
+                // Ticket IDs are unique across the workspace, so --repo isn't needed (an agent in a worktree may not be in one).
+                var closed = db.Close(settings.Id, status, settings.Ref);
+                Console.WriteLine($"{closed.Id} {closed.Status}");
+                return 0;
+            }
         var repo = settings.ResolveRepo();
         var file = StoryFile.Load(repo.StoriesPath);
-        var t = file.Close(settings.Id, settings.WontDo ? TicketRules.WontDo : TicketRules.Closed, settings.Ref);
+        var t = file.Close(settings.Id, status, settings.Ref);
         file.Save();
         Console.WriteLine($"{t.Id} {t.Status}");
         return 0;
@@ -143,6 +159,15 @@ public sealed class TicketVerifyCommand : Command<RepoSettings>
     public override int Execute(CommandContext context, RepoSettings settings)
     {
         var repo = settings.ResolveRepo();
+        using (var db = WorkflowDb.OpenIfMigrated(settings.Workspace.Root))
+            if (db is not null)
+            {
+                // Append-only is enforced by the database itself; what's left to check is the data.
+                var found = db.Check().Where(p => p.StartsWith(repo.Name + ": ", StringComparison.OrdinalIgnoreCase) || !p.Contains(": ", StringComparison.Ordinal) || p.StartsWith("link ", StringComparison.Ordinal)).ToList();
+                foreach (var p in found) AnsiConsole.MarkupLine($"[red]{Output.Esc(p)}[/]");
+                if (found.Count == 0) AnsiConsole.MarkupLine($"[green]{Output.Esc(repo.Name)}: tickets OK[/] ({db.Tickets(repo.Name).Count})");
+                return found.Count == 0 ? 0 : 1;
+            }
         if (!File.Exists(repo.StoriesPath)) { AnsiConsole.MarkupLine($"[red]{Output.Esc(repo.Name)}: no docs/USER_STORIES.md[/]"); return 1; }
 
         var now = StoryFile.Load(repo.StoriesPath);
@@ -162,34 +187,6 @@ public sealed class TicketVerifyCommand : Command<RepoSettings>
         foreach (var p in problems) AnsiConsole.MarkupLine($"[red]{Output.Esc(repo.Name)}:[/] {Output.Esc(p)}");
         if (problems.Count == 0) AnsiConsole.MarkupLine($"[green]{Output.Esc(repo.Name)}: tickets OK[/] ({now.Tickets.Count})");
         return problems.Count == 0 ? 0 : 1;
-    }
-}
-
-public sealed class TicketIndexCommand : Command<TicketIndexCommand.Settings>
-{
-    public sealed class Settings : WorkspaceSettings
-    {
-        [CommandOption("--db <PATH>")]
-        [Description("SQLite file to (re)build. Default: <MindAttic.Workflow repo>/data/tickets.db")]
-        public string? Db { get; init; }
-    }
-
-    public override int Execute(CommandContext context, Settings settings)
-    {
-        var ws = settings.Workspace;
-        var repos = ws.Repos();
-
-        var dbPath = settings.Db;
-        if (string.IsNullOrWhiteSpace(dbPath))
-        {
-            var self = ws.Find("MindAttic.Workflow")
-                ?? throw new InvalidOperationException($"No 'MindAttic.Workflow' repo under {ws.Root}; pass --db explicitly.");
-            dbPath = Path.Combine(self.Path, TicketIndex.DefaultRelativePath.Replace('/', Path.DirectorySeparatorChar));
-        }
-
-        var count = TicketIndex.Rebuild(repos, dbPath);
-        AnsiConsole.MarkupLine($"[green]Rebuilt[/] {Output.Esc(dbPath)} — {count} ticket(s) across {repos.Count} repo(s).");
-        return 0;
     }
 }
 

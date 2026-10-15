@@ -12,12 +12,30 @@ app.Configure(config =>
 
     config.AddBranch("ticket", t =>
     {
-        t.SetDescription("Tickets in a repo's docs/USER_STORIES.md (the repo's permanent ticket log).");
-        t.AddCommand<TicketNewCommand>("new").WithDescription("Append a ticket with the next free ID; prints the ID.");
+        t.SetDescription("Tickets: every repo's permanent ticket log, in the workflow database.");
+        t.AddCommand<TicketNewCommand>("new").WithDescription("Add a ticket with the next free ID; prints the ID.");
         t.AddCommand<TicketCloseCommand>("close").WithDescription("Move a ticket to closed (or wont-do).");
         t.AddCommand<TicketListCommand>("list").WithDescription("List tickets across the workspace (or one repo).");
-        t.AddCommand<TicketVerifyCommand>("verify").WithDescription("Check a repo's table is valid and no committed row was deleted or reworded.");
-        t.AddCommand<TicketIndexCommand>("index").WithDescription("Rebuild the SQLite index of every repo's tickets (a disposable cache; markdown stays canonical).");
+        t.AddCommand<TicketShowCommand>("show").WithDescription("One ticket: its row, links (prerequisites included) and history.");
+        t.AddCommand<TicketLinkCommand>("link").WithDescription("Link two tickets or stories: workflow ticket link A requires B (--remove to unlink).");
+        t.AddCommand<TicketVerifyCommand>("verify").WithDescription("Check a repo's tickets and links are valid.");
+    });
+
+    config.AddBranch("story", s =>
+    {
+        s.SetDescription("Stories: every repo's user stories, in the workflow database.");
+        s.AddCommand<StoryListCommand>("list").WithDescription("List stories (--repo, --status done|partial|planned).");
+        s.AddCommand<StoryShowCommand>("show").WithDescription("One story: its text, evidence and links.");
+        s.AddCommand<StoryStatusCommand>("status").WithDescription("Mark a story done, partial or planned.");
+    });
+
+    config.AddBranch("db", d =>
+    {
+        d.SetDescription("The workflow database (MindAttic.Workflow/data/workflow.db).");
+        d.AddCommand<DbMigrateCommand>("migrate").WithDescription("Import every repo's USER_STORIES.md and verify each rebuilds byte-for-byte (--cutover then replaces the files with pointers).");
+        d.AddCommand<DbExportCommand>("export").WithDescription("A repo's USER_STORIES.md, rebuilt from the database.");
+        d.AddCommand<DbCheckCommand>("check").WithDescription("Bad IDs, types, dates, dangling links and prerequisite cycles.");
+        d.AddCommand<DbSyncCommand>("sync").WithDescription("Write the readable dump and commit (and push) the database.");
     });
 
     config.AddBranch("codes", c =>
