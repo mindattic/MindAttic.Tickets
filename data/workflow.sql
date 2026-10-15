@@ -5046,6 +5046,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T53', 'GG-T50', 'requ
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T54', 'GG-T38', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T54', 'GG-T44', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T54', 'GG-T49', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T54', 'GG-T50', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T56', 'GG-T55', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T57', 'GG-T55', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T57', 'GG-T56', 'requires', NULL);
