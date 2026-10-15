@@ -14,6 +14,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\MindAttic.Workflow\MindAttic.Workflow.csproj" />
+    <!-- The CLI tests run the real `workflow` (its workflow.dll is copied beside the tests). -->
+    <ProjectReference Include="..\..\src\MindAttic.Workflow.Cli\MindAttic.Workflow.Cli.csproj" />
   </ItemGroup>
 
 </Project>
