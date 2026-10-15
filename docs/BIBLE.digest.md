@@ -1,4 +1,4 @@
-AUTHORITATIVE - full detail in docs/BIBLE.md
+﻿AUTHORITATIVE - full detail in docs/BIBLE.md
 <!-- generatedFrom: WF-bible -->
 
 # MindAttic.Workflow (WF) - Bible digest
@@ -32,7 +32,7 @@ story cites a test).
 ### {#WF-LAW-1} The workflow database is the only store.
 Every repo's stories, epics, backlog and tickets, and the links between them, live in
 `data/workflow.db` and nowhere else (amended 2026-10-15 by WF-T20; markdown was the store before). A
-repo's `docs/USER_STORIES.md` is a pointer; `workflow db export` rebuilds the old file byte-for-byte.
+repo's `docs/USER_STORIES.md` is a generated, read-only view (`workflow db render`); `db check` flags a hand edit.
 
 ### {#WF-LAW-2} Ticket rows are append-only.
 A row is never deleted or reworded. The database enforces it with triggers: a ticket can't be deleted, and only

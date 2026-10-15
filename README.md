@@ -23,7 +23,7 @@ $ workflow ticket list --status open
 
 ## Features
 
-**Stories and tickets** (every repo's, in one SQLite database: `data/workflow.db`, with links such as `requires` between any two; each repo's `docs/USER_STORIES.md` is now a pointer and `workflow db export` rebuilds it)
+**Stories and tickets** (every repo's, in one SQLite database: `data/workflow.db`, with links such as `requires` between any two; each repo's `docs/USER_STORIES.md` is now a generated, read-only view of it)
 - `ticket new` appends a row with the next free `CODE-T<n>` ID and prints it. Only that one line changes; line endings and BOM are kept.
 - `ticket close` moves a ticket to `closed` or `wont-do` and can set its Ref.
 - `ticket list` shows tickets across the workspace, filtered by repo, status, type or date, as a table or `--json`.

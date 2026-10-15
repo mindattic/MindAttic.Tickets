@@ -27,9 +27,10 @@ foreach ($id in 'mindattic.workflow.cli', 'mindattic.workflow') {
     if (Test-Path $cache) { Remove-Item $cache -Recurse -Force }
 }
 
+# `tool update` skips a same-version repack ("already installed"), so reinstall instead.
 $installed = dotnet tool list --global | Select-String -Pattern '^mindattic\.workflow\.cli\s'
-if ($installed) { dotnet tool update --global MindAttic.Workflow.Cli --add-source $feed }
-else            { dotnet tool install --global MindAttic.Workflow.Cli --add-source $feed }
+if ($installed) { dotnet tool uninstall --global MindAttic.Workflow.Cli | Out-Null }
+dotnet tool install --global MindAttic.Workflow.Cli --add-source $feed
 if ($LASTEXITCODE -ne 0) { throw 'Tool install/update failed.' }
 
 Write-Host "Installed: $(Get-Command workflow -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Source)"

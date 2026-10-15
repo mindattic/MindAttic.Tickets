@@ -13,6 +13,9 @@ internal static class Db
     public static WorkflowDb Open(WorkspaceSettings s) =>
         WorkflowDb.OpenIfMigrated(s.Workspace.Root) ?? throw new InvalidOperationException("The workspace isn't migrated to the workflow database yet; run 'workflow db migrate'.");
 
+    /// <summary>Re-renders the generated USER_STORIES.md views a change touched (only files that differ are written).</summary>
+    public static void Rerender(WorkflowDb db, WorkspaceSettings s) => db.Render(s.Workspace);
+
     /// <summary>Ticket → tickets it waits for, from the orchestrator's 'block X --by Y' settings, if it has any.</summary>
     public static Dictionary<string, IReadOnlyList<string>> OrchestratorBlocks()
     {
@@ -32,7 +35,7 @@ public sealed class DbMigrateCommand : Command<DbMigrateCommand.Settings>
     public sealed class Settings : WorkspaceSettings
     {
         [CommandOption("--cutover")]
-        [Description("After every file is verified to rebuild byte-for-byte, replace each repo's USER_STORIES.md with a pointer to the database.")]
+        [Description("After every file is verified to rebuild byte-for-byte, turn each repo's USER_STORIES.md into a generated view of the database.")]
         public bool Cutover { get; init; }
 
         [CommandOption("--db <PATH>")]
@@ -62,16 +65,12 @@ public sealed class DbMigrateCommand : Command<DbMigrateCommand.Settings>
         }
         if (!settings.Cutover)
         {
-            AnsiConsole.MarkupLine("[grey]Every file rebuilds byte-for-byte. Nothing in the repos was changed; --cutover replaces their USER_STORIES.md with a pointer.[/]");
+            AnsiConsole.MarkupLine("[grey]Every file rebuilds byte-for-byte. Nothing in the repos was changed; --cutover turns their USER_STORIES.md into generated views.[/]");
             return 0;
         }
 
-        foreach (var r in report)
-        {
-            var repo = ws.Find(r.Repo)!;
-            File.WriteAllText(repo.StoriesPath, db.PointerText(r.Repo), new UTF8Encoding(false));
-        }
-        AnsiConsole.MarkupLine($"[green]Cut over {report.Count} repos:[/] each USER_STORIES.md now points to the database. Commit them, then 'workflow db sync'.");
+        var written = db.Render(ws, report.Select(r => r.Repo));
+        AnsiConsole.MarkupLine($"[green]Cut over {report.Count} repos:[/] each USER_STORIES.md is now a generated view of the database ({written.Count} rewritten). Commit them, then 'workflow db sync'.");
         return 0;
     }
 }
@@ -101,10 +100,27 @@ public sealed class DbCheckCommand : Command<WorkspaceSettings>
     public override int Execute(CommandContext context, WorkspaceSettings settings)
     {
         using var db = Db.Open(settings);
-        var problems = db.Check();
+        var problems = db.Check().Concat(db.StaleViews(settings.Workspace).Select(r => $"{r}: docs/USER_STORIES.md isn't its current view (hand-edited or not rendered); run 'workflow db render'")).ToList();
         foreach (var p in problems) AnsiConsole.MarkupLine($"[yellow]{Output.Esc(p)}[/]");
         AnsiConsole.MarkupLine(problems.Count == 0 ? "[green]No problems.[/]" : $"[grey]{problems.Count} problem(s)[/]");
         return problems.Count == 0 ? 0 : 1;
+    }
+}
+
+public sealed class DbRenderCommand : Command<DbRenderCommand.Settings>
+{
+    public sealed class Settings : WorkspaceSettings
+    {
+        [CommandOption("--repo <NAME>")]
+        public string? Repo { get; init; }
+    }
+
+    public override int Execute(CommandContext context, Settings settings)
+    {
+        using var db = Db.Open(settings);
+        var written = db.Render(settings.Workspace, settings.Repo is null ? null : [settings.Repo]);
+        AnsiConsole.MarkupLine(written.Count == 0 ? "[grey]Every view is current.[/]" : $"[green]Rewrote[/] {Output.Esc(string.Join(", ", written))}");
+        return 0;
     }
 }
 
@@ -121,7 +137,12 @@ public sealed class DbSyncCommand : Command<DbSyncCommand.Settings>
     {
         var self = settings.Workspace.Find("MindAttic.Workflow") ?? throw new InvalidOperationException("No MindAttic.Workflow repo in the workspace.");
         using (var db = Db.Open(settings))
+        {
+            // Changes made outside the CLI (the orchestrator's GitHub intake) reach the views here; each repo commits its own.
+            if (db.Render(settings.Workspace) is { Count: > 0 } views)
+                AnsiConsole.MarkupLine($"[grey]Refreshed the USER_STORIES.md view in {Output.Esc(string.Join(", ", views))}.[/]");
             File.WriteAllText(Path.Combine(self.Path, WorkflowDb.DumpRelativePath.Replace('/', Path.DirectorySeparatorChar)), db.Dump(), new UTF8Encoding(false));
+        }
 
         var files = new[] { WorkflowDb.RelativePath, WorkflowDb.DumpRelativePath };
         Git.Run(self.Path, ["add", "--", .. files]);
@@ -211,6 +232,7 @@ public sealed class TicketLinkCommand : Command<TicketLinkCommand.Settings>
             return gone ? 0 : 1;
         }
         db.AddLink(settings.From, settings.To, settings.Kind, settings.Note);
+        Db.Rerender(db, settings);
         Console.WriteLine($"{settings.From} {settings.Kind} {settings.To}");
         return 0;
     }
@@ -296,6 +318,7 @@ public sealed class StoryStatusCommand : Command<StoryStatusCommand.Settings>
     {
         using var db = Db.Open(settings);
         var n = db.SetStoryStatus(settings.Id, settings.Status, settings.Repo);
+        Db.Rerender(db, settings);
         Console.WriteLine($"{settings.Id} {settings.Status}{(n > 1 ? $" ({n} stories with that ID)" : "")}");
         return 0;
     }

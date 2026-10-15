@@ -124,6 +124,32 @@ public sealed class WorkflowDbTests
     }
 
     [Test]
+    public void Each_repo_gets_a_generated_view_that_follows_the_database_and_a_hand_edit_is_flagged()
+    {
+        var (db, repos) = Migrated();
+        using (db)
+        {
+            var ws = new Workspace(root);
+            Assert.That(db.Render(ws), Is.EquivalentTo(new[] { "Alpha", "Beta" }));
+            var view = File.ReadAllText(repos[0].StoriesPath);
+            Assert.That(view, Does.StartWith("---\ncodex: 1"), "front-matter stays first, for the doctors");
+            Assert.That(view, Does.Contain("---\n" + WorkflowDb.ViewMarker + "\n"));
+            Assert.That(view, Does.Contain("- **AL-US-A1 ⬜**").And.Contain("| AL-T1 |"), "the full stories and tickets, so links into it resolve");
+            Assert.That(db.Render(ws), Is.Empty, "unchanged: nothing rewritten");
+            Assert.That(db.StaleViews(ws), Is.Empty);
+
+            db.Close("AL-T1", reference: "done");
+            Assert.That(db.StaleViews(ws), Is.EqualTo(new[] { "Alpha" }));
+            db.Render(ws);
+            Assert.That(File.ReadAllText(repos[0].StoriesPath), Does.Contain("| closed |"));
+
+            File.AppendAllText(repos[1].StoriesPath, "a hand edit\n");
+            Assert.That(db.StaleViews(ws), Is.EqualTo(new[] { "Beta" }));
+            Assert.That(db.Import(repos).Select(r => r.Repo), Is.Empty, "a view is never imported back over the database");
+        }
+    }
+
+    [Test]
     public void The_dump_is_readable_sql_that_lists_every_ticket()
     {
         var (db, _) = Migrated();

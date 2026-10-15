@@ -41,6 +41,7 @@ public sealed class TicketNewCommand : Command<TicketNewCommand.Settings>
             if (db is not null)
             {
                 Console.WriteLine(db.Add(repo.Name, settings.Type, settings.Status, settings.Summary, settings.Ref ?? "").Id);
+                Db.Rerender(db, settings);
                 return 0;
             }
         if (!File.Exists(repo.StoriesPath))
@@ -79,6 +80,7 @@ public sealed class TicketCloseCommand : Command<TicketCloseCommand.Settings>
             {
                 // Ticket IDs are unique across the workspace, so --repo isn't needed (an agent in a worktree may not be in one).
                 var closed = db.Close(settings.Id, status, settings.Ref);
+                Db.Rerender(db, settings);
                 Console.WriteLine($"{closed.Id} {closed.Status}");
                 return 0;
             }

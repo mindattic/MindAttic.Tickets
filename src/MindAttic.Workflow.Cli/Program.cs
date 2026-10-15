@@ -32,9 +32,10 @@ app.Configure(config =>
     config.AddBranch("db", d =>
     {
         d.SetDescription("The workflow database (MindAttic.Workflow/data/workflow.db).");
-        d.AddCommand<DbMigrateCommand>("migrate").WithDescription("Import every repo's USER_STORIES.md and verify each rebuilds byte-for-byte (--cutover then replaces the files with pointers).");
+        d.AddCommand<DbMigrateCommand>("migrate").WithDescription("Import every repo's USER_STORIES.md and verify each rebuilds byte-for-byte (--cutover then turns the files into generated views).");
         d.AddCommand<DbExportCommand>("export").WithDescription("A repo's USER_STORIES.md, rebuilt from the database.");
         d.AddCommand<DbCheckCommand>("check").WithDescription("Bad IDs, types, dates, dangling links and prerequisite cycles.");
+        d.AddCommand<DbRenderCommand>("render").WithDescription("Rewrite each repo's generated USER_STORIES.md view from the database.");
         d.AddCommand<DbSyncCommand>("sync").WithDescription("Write the readable dump and commit (and push) the database.");
     });
 

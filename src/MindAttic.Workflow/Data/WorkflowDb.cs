@@ -302,37 +302,54 @@ public sealed partial class WorkflowDb : IDisposable
         "raw" => BlockKind.Raw, "epic" => BlockKind.Epic, "story" => BlockKind.Story, "backlog" => BlockKind.BacklogItem, _ => BlockKind.Tickets,
     };
 
-    /// <summary>The first line of the body of a migrated repo's USER_STORIES.md.</summary>
+    /// <summary>The first line of the body of a migrated repo's USER_STORIES.md while it was only a pointer.</summary>
     public const string PointerMarker = "<!-- workflow-db: this repo's stories and tickets live in the MindAttic.Workflow database -->";
 
+    /// <summary>The line after the front-matter of a repo's generated USER_STORIES.md view.</summary>
+    public const string ViewMarker = "<!-- GENERATED from MindAttic.Workflow/data/workflow.db by `workflow db render`. Do not edit: this file is rewritten from the database; change stories and tickets with the workflow CLI. -->";
+
+    /// <summary>A file the database wrote (a view, or an old pointer): never imported, since its content is already here.</summary>
     public static bool IsPointer(byte[] bytes) =>
-        Encoding.UTF8.GetString(bytes).Contains(PointerMarker, StringComparison.Ordinal);
+        Encoding.UTF8.GetString(bytes) is var s && (s.Contains(PointerMarker, StringComparison.Ordinal) || s.Contains(ViewMarker, StringComparison.Ordinal));
 
     /// <summary>
-    /// What a migrated repo's USER_STORIES.md becomes: its front-matter (so anything reading <c>code:</c> still works)
-    /// and where its stories and tickets are now.
+    /// The repo's read-only USER_STORIES.md view: the file rebuilt from the database (<see cref="Export"/>) with
+    /// <see cref="ViewMarker"/> after its front-matter, so links into it, the codex doctors and GitHub keep working.
     /// </summary>
-    public string PointerText(string repo)
+    public byte[]? View(string repo)
     {
-        var (fm, project, code) = Rows("SELECT front_matter, project, code FROM repos WHERE name = $r COLLATE NOCASE",
-            r => (r.GetString(0), r.IsDBNull(1) ? repo : r.GetString(1), r.GetString(2)), ("$r", repo)).Single();
-        return $"""
-            ---
-            {fm}
-            ---
-            {PointerMarker}
-
-            # {project} — User Stories
-
-            This repo's stories and tickets ({code}-US-…, {code}-T…) live in the MindAttic.Workflow database
-            (`MindAttic.Workflow/data/workflow.db`), not in this file. Use the `workflow` CLI:
-
-            - Read: `workflow story list --repo {repo}`, `workflow ticket list --repo {repo}`, `workflow ticket show <ID>`
-            - Change: `workflow ticket new` / `close`, `workflow story status <ID> done|partial|planned`, `workflow ticket link <A> requires <B>`
-            - This file as it was, rebuilt from the database: `workflow db export --repo {repo}`
-
-            """.Replace("\r\n", "\n", StringComparison.Ordinal);
+        var bytes = Export(repo);
+        if (bytes is null) return null;
+        var bom = bytes.Length >= 3 && bytes[0] == 0xEF && bytes[1] == 0xBB && bytes[2] == 0xBF;
+        var text = Encoding.UTF8.GetString(bytes, bom ? 3 : 0, bytes.Length - (bom ? 3 : 0));
+        var crlf = text.Contains("\r\n", StringComparison.Ordinal);
+        var lines = text.Replace("\r\n", "\n", StringComparison.Ordinal).Split('\n').ToList();
+        var at = lines.Count > 0 && lines[0].Trim() == "---" ? lines.FindIndex(1, l => l.Trim() == "---") + 1 : 0;
+        lines.Insert(Math.Max(at, 0), ViewMarker);
+        return StoryDocument.Encode(string.Join("\n", lines), bom, crlf);
     }
+
+    /// <summary>Writes the views that differ from what's on disk (all repos, or those named); returns the repos rewritten.</summary>
+    public IReadOnlyList<string> Render(Workspace workspace, IEnumerable<string>? only = null)
+    {
+        var wanted = only?.ToHashSet(StringComparer.OrdinalIgnoreCase);
+        var written = new List<string>();
+        foreach (var (name, _) in Repos())
+        {
+            if (wanted is not null && !wanted.Contains(name)) continue;
+            if (workspace.Find(name) is not { } repo || View(name) is not { } bytes) continue;
+            if (File.Exists(repo.StoriesPath) && File.ReadAllBytes(repo.StoriesPath).SequenceEqual(bytes)) continue;
+            Directory.CreateDirectory(System.IO.Path.GetDirectoryName(repo.StoriesPath)!);
+            File.WriteAllBytes(repo.StoriesPath, bytes);
+            written.Add(name);
+        }
+        return written;
+    }
+
+    /// <summary>Repos whose USER_STORIES.md on disk isn't their current view: hand-edited, or not rendered since a change.</summary>
+    public IReadOnlyList<string> StaleViews(Workspace workspace) =>
+        [.. Repos().Select(r => r.Name).Where(n => workspace.Find(n) is { } repo &&
+            !(File.Exists(repo.StoriesPath) && View(n) is { } v && File.ReadAllBytes(repo.StoriesPath).SequenceEqual(v)))];
 
     /// <summary>Adds a repo that has never had a USER_STORIES.md: front-matter, an empty backlog and an empty ticket log.</summary>
     public void AddRepo(Repo repo, string code, string? project = null)
