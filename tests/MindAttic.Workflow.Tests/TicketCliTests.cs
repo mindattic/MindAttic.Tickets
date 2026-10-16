@@ -25,7 +25,29 @@ public sealed class TicketCliTests
         Directory.Delete(root, recursive: true);
     }
 
+    private string LogDb => Path.Combine(root, "log", "MindAttic.Log.db");
+
     private (int Code, string Out) Run(params string[] args) => RunWithInput(null, args);
+
+    [Test]
+    public void Every_command_is_logged_to_mindattic_log_with_its_outcome()
+    {
+        MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | fix | open | one | — |\n");
+        Assert.That(Run("ticket", "close", "AA-T1", "--repo", "A").Code, Is.Zero);
+        Assert.That(Run("ticket", "close", "AA-T99", "--repo", "A").Code, Is.EqualTo(1));
+
+        using var c = new SqliteConnection($"Data Source={LogDb};Pooling=False");
+        c.Open();
+        using var cmd = c.CreateCommand();
+        cmd.CommandText = "SELECT Level, Application, Message FROM MindAttic_Log ORDER BY Id";
+        using var r = cmd.ExecuteReader();
+        var rows = new List<(long, string, string)>();
+        while (r.Read()) rows.Add((r.GetInt64(0), r.GetString(1), r.GetString(2)));
+        Assert.That(rows.Select(x => x.Item2).Distinct(), Is.EqualTo(new[] { "MindAttic.Workflow" }));
+        Assert.That(rows.Any(x => x.Item3.StartsWith("workflow ticket close AA-T1 ", StringComparison.Ordinal) && x.Item3.EndsWith("exited 0", StringComparison.Ordinal)));
+        Assert.That(rows.Any(x => x.Item1 == 4 && x.Item3.StartsWith("workflow ticket close AA-T99", StringComparison.Ordinal) && x.Item3.Contains("failed", StringComparison.Ordinal)),
+            "the failure is an Error row");
+    }
 
     private (int Code, string Out) RunWithInput(string? input, params string[] args)
     {
@@ -38,6 +60,7 @@ public sealed class TicketCliTests
         psi.Environment["COLUMNS"] = "400";
         psi.Environment["NO_COLOR"] = "1"; // a redirected stdin otherwise lets Spectre emit ANSI colors
         psi.Environment[Workflow.Repos.GitHubRepoIndex.FileEnvVar] = Path.Combine(root, "github.json");
+        psi.Environment["MINDATTIC_WORKFLOW_LOG_DB"] = LogDb;
         using var p = Process.Start(psi)!;
         p.StandardInput.Write(input ?? "");
         p.StandardInput.Close();

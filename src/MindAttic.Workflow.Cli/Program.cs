@@ -75,17 +75,33 @@ app.Configure(config =>
     config.AddCommand<ViewCommand>("view").WithDescription("Open a read-only page of every repo's stories and tickets in MindAttic.Browser.");
 });
 
+MindAttic.Workflow.Cli.WorkflowLog.Start("Cli");
+var log = MindAttic.Workflow.Cli.WorkflowLog.For("Command");
+var line = "workflow " + string.Join(' ', args);
 try
 {
-    return app.Run(args);
+    var code = app.Run(args);
+    log.Information("{Command:l} exited {Code}", line, code);
+    return code;
 }
 catch (Exception ex) when (ex is CommandParseException or CommandRuntimeException)
 {
+    log.Warning("{Command:l}: {Message:l}", line, ex.Message);
     Spectre.Console.AnsiConsole.MarkupLine($"[red]{Spectre.Console.Markup.Escape(ex.Message)}[/]");
     return 2;
 }
 catch (Exception ex) when (ex is InvalidOperationException or ArgumentException or KeyNotFoundException or IOException or HttpRequestException)
 {
+    log.Error(ex, "{Command:l} failed: {Message:l}", line, ex.Message);
     Spectre.Console.AnsiConsole.MarkupLine($"[red]error:[/] {Spectre.Console.Markup.Escape(ex.Message)}");
     return 1;
+}
+catch (Exception ex)
+{
+    log.Fatal(ex, "{Command:l} crashed", line);
+    throw;
+}
+finally
+{
+    MindAttic.Workflow.Cli.WorkflowLog.Stop();
 }

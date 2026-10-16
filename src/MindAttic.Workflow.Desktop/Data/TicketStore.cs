@@ -48,19 +48,20 @@ public sealed class TicketStore(string root)
         return new TicketDetail(new TicketInfo(found.Repo, found.Ticket, approval, priority), db.History(found.Ticket.Id), db.Links(found.Ticket.Id), blockers);
     });
 
-    public void Approve(string id) => Write(db => db.Approve(id), render: false);
-    public void Unapprove(string id) => Write(db => db.Unapprove(id), render: false);
-    public void Reject(string id, string reason) => Write(db => db.Reject(id, reason));
-    public void Move(string id, IReadOnlyList<string> newOrder) => Write(db => db.Move(id, newOrder), render: false);
-    public void Close(string id, string status, string? reference) => Write(db => db.Close(id, status, reference));
-    public void CorrectType(string id, string type, string reason) => Write(db => db.CorrectType(id, type, reason));
-    public void AddLink(string from, string to, string kind) => Write(db => db.AddLink(from, to, kind), render: false);
-    public void RemoveLink(string from, string to, string kind) => Write(db => db.RemoveLink(from, to, kind), render: false);
+    public void Approve(string id) => Write($"approve {id}", db => db.Approve(id), render: false);
+    public void Unapprove(string id) => Write($"unapprove {id}", db => db.Unapprove(id), render: false);
+    public void Reject(string id, string reason) => Write($"reject {id}: {reason}", db => db.Reject(id, reason));
+    public void Move(string id, IReadOnlyList<string> newOrder) =>
+        Write($"move {id} to position {newOrder.ToList().IndexOf(id) + 1}", db => db.Move(id, newOrder), render: false);
+    public void Close(string id, string status, string? reference) => Write($"{status} {id} ({reference})", db => db.Close(id, status, reference));
+    public void CorrectType(string id, string type, string reason) => Write($"correct {id} to {type}: {reason}", db => db.CorrectType(id, type, reason));
+    public void AddLink(string from, string to, string kind) => Write($"link {from} {kind} {to}", db => db.AddLink(from, to, kind), render: false);
+    public void RemoveLink(string from, string to, string kind) => Write($"unlink {from} {kind} {to}", db => db.RemoveLink(from, to, kind), render: false);
 
     public Ticket Add(string repo, string type, string summary, string reference)
     {
         Ticket t = null!;
-        Write(db => t = db.Add(repo, type, TicketRules.Open, summary, reference));
+        Write($"new {type} in {repo}: {summary}", db => t = db.Add(repo, type, TicketRules.Open, summary, reference));
         return t;
     }
 
@@ -80,7 +81,10 @@ public sealed class TicketStore(string root)
         var stdout = p.StandardOutput.ReadToEndAsync();
         var stderr = p.StandardError.ReadToEndAsync();
         await p.WaitForExitAsync();
-        return (p.ExitCode, ((await stdout) + (await stderr)).Trim());
+        var output = ((await stdout) + (await stderr)).Trim();
+        if (p.ExitCode == 0) Log.Information("workflow db sync: {Output:l}", output);
+        else Log.Warning("workflow db sync exited {Code}: {Output:l}", p.ExitCode, output);
+        return (p.ExitCode, output);
     }
 
     private T Read<T>(Func<WorkflowDb, T> work)
@@ -90,11 +94,14 @@ public sealed class TicketStore(string root)
         return work(db);
     }
 
-    private void Write(Action<WorkflowDb> work, bool render = true)
+    private void Write(string what, Action<WorkflowDb> work, bool render = true)
     {
         if (!Exists) throw new FileNotFoundException($"No workflow database at {DbPath}.");
         using var db = WorkflowDb.Open(DbPath);
         work(db);
         if (render) db.Render(new Workspace(Root));
+        Log.Information("{Change:l}", what);
     }
+
+    private static readonly Serilog.ILogger Log = WorkflowLog.For("Store");
 }

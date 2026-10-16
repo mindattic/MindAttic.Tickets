@@ -31,11 +31,18 @@ public partial class App : Application
             return;
         }
 
+        WorkflowLog.Start("Desktop");
+        var log = WorkflowLog.For("App");
+        DispatcherUnhandledException += (_, x) => log.Fatal(x.Exception, "Unhandled on the UI thread");
+        AppDomain.CurrentDomain.UnhandledException += (_, x) => log.Fatal(x.ExceptionObject as Exception, "Unhandled");
+        TaskScheduler.UnobservedTaskException += (_, x) => log.Error(x.Exception, "Unobserved task exception");
+
         var args = e.Args;
         var at = Array.FindIndex(args, a => a.Equals("--root", StringComparison.OrdinalIgnoreCase));
         var root = at >= 0 && at + 1 < args.Length ? args[at + 1] : Workspace.DefaultRoot;
         HighContrast.Track(this, force: args.Contains("--high-contrast", StringComparer.OrdinalIgnoreCase));
 
+        log.Information("Started {Version} on {Root}", typeof(App).Assembly.GetName().Version, root);
         var window = new MainWindow(new MainViewModel(new TicketStore(root), DesktopSettings.Load()));
         MainWindow = window;
         window.Show();
@@ -44,6 +51,7 @@ public partial class App : Application
     protected override void OnExit(ExitEventArgs e)
     {
         single?.Dispose();
+        WorkflowLog.Stop();
         base.OnExit(e);
     }
 

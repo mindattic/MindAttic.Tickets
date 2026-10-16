@@ -175,6 +175,7 @@ public sealed partial class MainViewModel : ObservableObject
         }
         catch (Exception ex) when (ex is IOException or InvalidOperationException or Microsoft.Data.Sqlite.SqliteException)
         {
+            WorkflowLog.For("Refresh").Warning(ex, "Couldn't read {Db}", store.DbPath);
             StatusMessage = $"Couldn't read the workflow database: {ex.Message}";
             Announcement = StatusMessage;
         }
@@ -286,6 +287,7 @@ public sealed partial class MainViewModel : ObservableObject
         }
         catch (Exception ex) when (ex is ArgumentException or InvalidOperationException or KeyNotFoundException or IOException or Microsoft.Data.Sqlite.SqliteException)
         {
+            WorkflowLog.For("Action").Warning(ex, "{Action:l} failed: {Message:l}", done, ex.Message);
             if (Detail is { } dd) dd.Error = ex.Message;
             StatusMessage = ex.Message;
             Announcement = "Error: " + ex.Message;
