@@ -4353,6 +4353,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LNCH-T34', 'MindAttic.Launcher', 34, '2026-10-16', 'chore', 'open', 'Run the full unit test suite and fix every failure (each under its own fix ticket) until it passes; put the passing run in --ref. No test project: close this wont-do saying so', 'user request 2026-10-16: approved repo sweep', 33, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LNCH-T35', 'MindAttic.Launcher', 35, '2026-10-16', 'chore', 'open', 'Clean up code and docs: remove dead code, stale comments and outdated or duplicated docs, and simplify where behaviour doesn''t change (/simplify); tests stay green', 'user request 2026-10-16: approved repo sweep', 34, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LNCH-T36', 'MindAttic.Launcher', 36, '2026-10-16', 'docs', 'open', 'Bring README.md up to date with the code as it is now (what it is, setup, usage, commands, current state), following codex-standard/README-STYLE.md; README.htm regenerated if the repo has one', 'user request 2026-10-16: approved repo sweep', 35, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LNCH-T37', 'MindAttic.Launcher', 37, '2026-10-16', 'fix', 'open', 'A push GitHub refuses because the repo is archived (read-only) is reported as an expected ''archived on GitHub; kept local'' notice, not a push failure, so an archived repo (MindAttic.Bob) stops failing every commit run and its exit code', '—', 36, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LEGN-T1', 'MindAttic.Legion', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.LEGN-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LEGN-T2', 'MindAttic.Legion', 2, '2026-10-13', 'fix', 'closed', 'Restore LlmProviderCatalog to live-verified model ids (all 13 providers) and expand the default trusted/voting set from 4 to 9 providers', 'M.LEGN-LAW-5, ActiveProviderIds_DefaultAllowedSet_IsTheTrustedProviders, AskCommandTests.TrustedProviderIds_MatchesCatalogDefaultSet', 1, '| M.LEGN-T2 | 2026-10-13 | fix | closed | Restore LlmProviderCatalog to live-verified model ids (all 13 providers) and expand the default trusted/voting set from 4 to 9 providers | M.LEGN-LAW-5, ActiveProviderIds_DefaultAllowedSet_IsTheTrustedProviders, AskCommandTests.TrustedProviderIds_MatchesCatalogDefaultSet |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LEGN-T3', 'MindAttic.Legion', 3, '2026-10-14', 'chore', 'closed', 'NUnit tests for LegionConfig (Models/LegionConfig.cs): LoadFromDirectory walks up parent dirs to find legion.json (stops after 12 levels, null when absent or path invalid), LoadFromFile tolerates comments/trailing commas/case-insensitive keys and returns null on malformed JSON, ApplyTo replaces AllowedProviderIds only when voters is non-empty (case-insensitive set), sets JudgeProviderId only when non-blank, merges models/apiKeys skipping blank keys or values, applies maxConcurrency; this is how every project declares its voter panel and the CLI vote command depends on it', 'MindAttic.Legion.Tests/LegionConfigTests.cs (cdea439)', 2, NULL);
@@ -5999,6 +6000,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (995, 'U.
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (996, 'U.SPC-T48', '2026-10-16T08:12:08Z', 'ref', '—', 'cbd9993 / Tests/Core.Tests (467 NUnit tests)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (997, 'GG-T69', '2026-10-16T08:17:11Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (998, 'GG-T69', '2026-10-16T08:17:11Z', 'ref', '—', 'e8aebf6 / Tests/Core.Tests (864 NUnit tests)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (999, 'M.LNCH-T37', '2026-10-16T08:19:42Z', 'created', NULL, 'open');
 
 -- links
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AUT-T12', 'M.FLOW-T14', 'related', 'migrated: named in ref');
@@ -7478,7 +7480,7 @@ updated: 2026-10-09
 > built. For Camp screens, harness ✅ means "the screen builds, is screenshotted and layout-audited
 > in `sweep`"; the service behind it has its own line.
 >
-> Evidence key: test names are xUnit methods in `Tests/Core.Tests/*.cs` (last run 2026-10-09: all
+> Evidence key: test names are NUnit methods in `Tests/Core.Tests/*.cs` (last run 2026-10-09: all
 > green); **soak** = `ContentAndSoakTests.Bots_play_every_stage_without_breaking_invariants` (runs
 > the mechanic over real content but asserts only invariants); **smoke** / **sweep** = harness runs
 > whose artifacts are in `artifacts/smoke1/` and `artifacts/sweep/`.
@@ -9966,7 +9968,7 @@ updated: 2026-10-03
 # MindAttic.Psst — User Stories
 
 > ✅ done (shipped & tested) · 🟡 partial · ⬜ planned. Every ✅ cites its verifying test.
-> Test tokens are xUnit method names in `MindAttic.Psst.Tests`. See
+> Test tokens are NUnit method names in `MindAttic.Psst.Tests`. See
 > [BIBLE §6](BIBLE.md#M.PSST-§6) for the aggregate build/test evidence.
 ');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Psst', 1, 'epic', 'A', '## Epic A — Wrap & notify');
@@ -11388,7 +11390,7 @@ updated: 2026-10-11
 # Unity Eve: User stories
 
 > **Status:** ✅ verified (a named test or autoplay step shows it) · 🟡 partial · ⬜ planned.
-> **Evidence:** `TestName` = xUnit in `Tests/Core.Tests`; `autoplay:NN_name` = screenshot step of
+> **Evidence:** `TestName` = NUnit in `Tests/Core.Tests`; `autoplay:NN_name` = screenshot step of
 > `UnityEve.exe -batchmode -autoplay`.
 
 **Definition of done (every story):**
@@ -11504,7 +11506,7 @@ updated: 2026-10-11
 # Unity Ronin: User stories
 
 > **Status:** ✅ verified (a named test or batch-mode check proves it) · 🟡 partial · ⬜ planned.
-> **Evidence:** `TestName` = xUnit in `Tests/Core.Tests`; `autoplay` = `tools/autoplay.ps1`''s
+> **Evidence:** `TestName` = NUnit in `Tests/Core.Tests`; `autoplay` = `tools/autoplay.ps1`''s
 > `-batchmode -nographics -autoplay` run, which drives `VirtualJoystick`/`SwipeInputReader` through
 > their real pointer-handler methods — proves the code path fires correctly, not that it feels right
 > under a real thumb (that still needs an owner playtest, BIBLE §7).
