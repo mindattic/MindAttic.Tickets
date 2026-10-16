@@ -5227,6 +5227,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T175', 'UnitySolarSystem', 175, '2026-10-16', 'fix', 'closed', 'A player-flown hull with no guns left but marines aboard still counted as willing to fight, so a battle against only disabled hulls never ended until its four-hour cap', '0e294c4', 174, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T176', 'UnitySolarSystem', 176, '2026-10-16', 'fix', 'closed', 'Asteroid belt name labels were still painted over the model viewer (F9) and the spawn grid (V), which the rest of the HUD gives way to', 'b1b4d84', 175, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T177', 'UnitySolarSystem', 177, '2026-10-16', 'fix', 'closed', 'A prize captured from the player in the tick its battle ended was pinned in place after the war had already scheduled it, so it sat at the capture spot until the departure time of a trip it had lost', '97cc4fa', 176, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T178', 'UnitySolarSystem', 178, '2026-10-16', 'fix', 'open', 'A ship pinned on leaving the player''s hands mid-battle (released, or captured) kept its old departure time and destination, so after the battle it sat frozen until then and set off on the old owner''s plan', 'U.SPC-T49 bughunt', 177, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T1', 'Unstuck', 1, '2026-10-16', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T2', 'Unstuck', 2, '2026-10-16', 'feature', 'open', 'Canonicalize unstuck.ps1 + the /unstuck command in this repo (global ~/.claude copies become forwarders) and add UnstuckTaskbar, a tray app with an assignable global hotkey (incl. media keys) that fires it', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T3', 'Unstuck', 3, '2026-10-16', 'chore', 'closed', 'Add deploy.ps1/deploy.bat packaging to C:\Apps\Unstuck and a desktop shortcut', 'user request', 2, NULL);
@@ -6665,6 +6666,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (1430, 'U
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (1431, 'U.SPC-T175', '2026-10-16T21:33:00Z', 'ref', 'U.SPC-T49 bughunt', '0e294c4');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (1432, 'U.SPC-T174', '2026-10-16T21:33:00Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (1433, 'U.SPC-T174', '2026-10-16T21:33:00Z', 'ref', 'U.SPC-T49 bughunt', '264f845');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (1434, 'U.SPC-T178', '2026-10-16T21:52:46Z', 'created', NULL, 'open');
 
 -- ticket_queue
 
