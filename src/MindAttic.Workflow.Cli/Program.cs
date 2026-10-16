@@ -20,6 +20,10 @@ app.Configure(config =>
         t.AddCommand<TicketLinkCommand>("link").WithDescription("Link two tickets or stories: workflow ticket link A requires B (--remove to unlink).");
         t.AddCommand<TicketCorrectCommand>("correct").WithDescription("Correct a ticket's type to the standard vocabulary (recorded in its history).");
         t.AddCommand<TicketVerifyCommand>("verify").WithDescription("Check a repo's tickets and links are valid.");
+        t.AddCommand<TicketQueueCommand>("queue").WithDescription("Open tickets in queue order, with approval and priority.");
+        t.AddCommand<TicketApproveCommand>("approve").WithDescription("Approve an open ticket for work (--undo puts it back to proposed).");
+        t.AddCommand<TicketRejectCommand>("reject").WithDescription("Reject an open ticket: it closes wont-do with --reason as its ref.");
+        t.AddCommand<TicketPriorityCommand>("priority").WithDescription("Set a ticket's queue priority (higher runs sooner).");
     });
 
     config.AddBranch("story", s =>

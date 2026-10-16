@@ -28,7 +28,7 @@ public sealed record ImportReport(string Repo, string Code, int Epics, int Stori
 /// </summary>
 public sealed partial class WorkflowDb : IDisposable
 {
-    public const int SchemaVersion = 1;
+    public const int SchemaVersion = 2;
     public const string RelativePath = "data/workflow.db";
     public const string DumpRelativePath = "data/workflow.sql";
     public const string EnvVar = "MINDATTIC_WORKFLOW_DB";
@@ -124,6 +124,13 @@ public sealed partial class WorkflowDb : IDisposable
                 kind TEXT NOT NULL CHECK (kind IN ('requires', 'related', 'follow-up-of', 'supersedes', 'duplicates', 'implements', 'part-of')),
                 note TEXT, PRIMARY KEY (from_id, to_id, kind), CHECK (from_id <> to_id));
             CREATE INDEX IF NOT EXISTS links_to ON links (to_id);
+            -- Schema 2: approval and queue priority. No row means proposed at priority 0. No foreign key, so Import's
+            -- per-repo ticket rebuild keeps a repo's queue state.
+            CREATE TABLE IF NOT EXISTS ticket_queue (
+                ticket_id TEXT PRIMARY KEY COLLATE NOCASE,
+                approval TEXT NOT NULL DEFAULT 'proposed' CHECK (approval IN ('proposed', 'approved', 'rejected')),
+                priority INTEGER NOT NULL DEFAULT 0,
+                updated TEXT NOT NULL);
 
             -- Append-only: a ticket is never deleted, and only its status and ref ever change.
             CREATE TRIGGER IF NOT EXISTS tickets_no_delete BEFORE DELETE ON tickets
@@ -143,7 +150,8 @@ public sealed partial class WorkflowDb : IDisposable
                 UPDATE tickets SET row_md = NULL WHERE id = NEW.id;
             END;
             """);
-        Exec($"INSERT OR IGNORE INTO meta (key, value) VALUES ('schema_version', '{SchemaVersion}')");
+        Exec($"INSERT INTO meta (key, value) VALUES ('schema_version', '{SchemaVersion}') " +
+             $"ON CONFLICT (key) DO UPDATE SET value = excluded.value WHERE CAST(value AS INTEGER) < {SchemaVersion}");
     }
 
     // ── Import ──────────────────────────────────────────────────────────────
@@ -687,7 +695,7 @@ public sealed partial class WorkflowDb : IDisposable
         foreach (var (table, order) in new[]
         {
             ("meta", "key"), ("repos", "name"), ("epics", "repo, key"), ("stories", "uid"), ("backlog_items", "uid"), ("backlog_refs", "item_uid, story_id"),
-            ("tickets", "repo, ordinal"), ("ticket_events", "seq"), ("links", "from_id, to_id, kind"), ("blocks", "repo, ordinal"),
+            ("tickets", "repo, ordinal"), ("ticket_events", "seq"), ("ticket_queue", "ticket_id"), ("links", "from_id, to_id, kind"), ("blocks", "repo, ordinal"),
         })
         {
             sb.Append("\n-- ").Append(table).Append('\n');
