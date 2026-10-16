@@ -68,6 +68,54 @@ public sealed partial class WorkflowDb
         });
     }
 
+    /// <summary>
+    /// Moves <paramref name="id"/> to its place in <paramref name="newOrder"/> (a list as shown, already rearranged) by
+    /// writing as few priorities as it can: the ticket goes one above its new lower neighbour (or below its upper one),
+    /// then only the neighbours that would tie or invert are nudged, up the list or down it, whichever touches fewer.
+    /// Tickets not in the list, and the rest of it, keep their priority, so one drag doesn't hand everything a manual rank.
+    /// </summary>
+    public void Move(string id, IReadOnlyList<string> newOrder)
+    {
+        var at = newOrder.ToList().FindIndex(x => string.Equals(x, id, StringComparison.OrdinalIgnoreCase));
+        if (at < 0) throw new ArgumentException($"{id} isn't in the new order.", nameof(newOrder));
+        InWrite(() =>
+        {
+            var ids = newOrder.Select(x => RequireTicket(x).Id).ToList();
+            var p = ids.Select(x => QueueState(x).Priority).ToList();
+            var up = Placement(p, at, upward: true);
+            var down = Placement(p, at, upward: false);
+            foreach (var (index, priority) in up.Count <= down.Count ? up : down)
+                SetPriorityCore(ids[index], priority);
+        });
+    }
+
+    /// <summary>The priorities to write (index → value) so item <paramref name="at"/> sits strictly between its neighbours.</summary>
+    private static List<(int Index, long Priority)> Placement(List<long> p, int at, bool upward)
+    {
+        var writes = new List<(int, long)>();
+        long mine;
+        if (upward)
+        {
+            mine = at + 1 < p.Count ? p[at + 1] + 1 : at > 0 ? p[at - 1] - 1 : p[at];
+            writes.Add((at, mine));
+            var needed = mine + 1;
+            for (var j = at - 1; j >= 0 && p[j] < needed; j--, needed++) writes.Add((j, needed));
+        }
+        else
+        {
+            mine = at > 0 ? p[at - 1] - 1 : at + 1 < p.Count ? p[at + 1] + 1 : p[at];
+            writes.Add((at, mine));
+            var needed = mine - 1;
+            for (var j = at + 1; j < p.Count && p[j] > needed; j++, needed--) writes.Add((j, needed));
+        }
+        return [.. writes.Where(w => p[w.Item1] != w.Item2)];
+    }
+
+    /// <summary>Approval and priority of every ticket that has any (others are proposed at 0).</summary>
+    public IReadOnlyDictionary<string, (string Approval, long Priority)> QueueStates() =>
+        Rows("SELECT ticket_id, approval, priority FROM ticket_queue", r => (r.GetString(0), r.GetString(1), r.GetInt64(2)))
+            .ToDictionary(x => x.Item1, x => (x.Item2, x.Item3), StringComparer.OrdinalIgnoreCase);
+
     private void SetApprovalCore(string id, string approval)
     {
         var (old, priority) = QueueState(id);

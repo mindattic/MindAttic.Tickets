@@ -104,6 +104,43 @@ public sealed class QueueTests
         Assert.That(db.Dump(), Does.Contain("INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('AL-T1', 'approved', 7, '"));
     }
 
+    private int Writes(string id) => db.History(id).Count(e => e.Field == "priority");
+
+    [Test]
+    public void Move_to_the_top_of_an_unranked_queue_writes_only_the_moved_ticket()
+    {
+        db.Move("AL-T3", ["AL-T3", "AL-T1", "AL-T2"]);
+        Assert.That(Order(), Is.EqualTo(new[] { "AL-T3", "AL-T1", "AL-T2" }));
+        Assert.That((Writes("AL-T1"), Writes("AL-T2"), Writes("AL-T3")), Is.EqualTo((0, 0, 1)));
+    }
+
+    [Test]
+    public void Move_into_the_middle_nudges_only_the_shorter_side()
+    {
+        db.Move("AL-T1", ["AL-T2", "AL-T1", "AL-T3"]);
+        Assert.That(Order(), Is.EqualTo(new[] { "AL-T2", "AL-T1", "AL-T3" }));
+        Assert.That(Writes("AL-T1") + Writes("AL-T2") + Writes("AL-T3"), Is.EqualTo(2), "the moved ticket and the one above it");
+    }
+
+    [Test]
+    public void Move_to_the_bottom_and_back_keeps_the_order_shown()
+    {
+        db.Move("AL-T1", ["AL-T2", "AL-T3", "AL-T1"]);
+        Assert.That(Order(), Is.EqualTo(new[] { "AL-T2", "AL-T3", "AL-T1" }));
+        db.Move("AL-T1", ["AL-T1", "AL-T2", "AL-T3"]);
+        Assert.That(Order(), Is.EqualTo(new[] { "AL-T1", "AL-T2", "AL-T3" }));
+        db.Move("AL-T3", ["AL-T1", "AL-T3", "AL-T2"]);
+        Assert.That(Order(), Is.EqualTo(new[] { "AL-T1", "AL-T3", "AL-T2" }));
+        Assert.That(() => db.Move("AL-T9", ["AL-T1"]), Throws.ArgumentException);
+    }
+
+    [Test]
+    public void Queue_states_lists_only_tickets_with_a_row()
+    {
+        db.Approve("AL-T2");
+        Assert.That(db.QueueStates(), Is.EquivalentTo(new Dictionary<string, (string, long)> { ["AL-T2"] = ("approved", 0) }));
+    }
+
     [Test]
     public void A_version_one_database_upgrades_to_version_two()
     {
