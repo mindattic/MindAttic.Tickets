@@ -5147,6 +5147,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T114', 'UnitySolarSystem', 114, '2026-10-16', 'fix', 'open', 'Spawning a ship while the camera was focused on a distant body placed it in the stale free-flight frame of a body the camera had left, mapped far outside that body''s neighbourhood', 'U.SPC-T49 bughunt', 113, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T115', 'UnitySolarSystem', 115, '2026-10-16', 'fix', 'open', 'launch.bat reported ''Deploy failed (exit )'' after every successful deploy and never started the game, because deploy.ps1 left LASTEXITCODE empty on success', 'U.SPC-T49 bughunt', 114, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T116', 'UnitySolarSystem', 116, '2026-10-16', 'fix', 'open', 'deploy.ps1 passed the project and log paths to Unity unquoted, so a checkout path containing a space would break the build', 'U.SPC-T49 bughunt', 115, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T117', 'UnitySolarSystem', 117, '2026-10-16', 'fix', 'open', 'An armed warship that struck its colours and was to be taken was never boarded: the boarding check counted the surrendered hull itself as a threat nearby, so the battle stalled', 'U.SPC-T49 bughunt', 116, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T1', 'Unstuck', 1, '2026-10-16', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T2', 'Unstuck', 2, '2026-10-16', 'feature', 'open', 'Canonicalize unstuck.ps1 + the /unstuck command in this repo (global ~/.claude copies become forwarders) and add UnstuckTaskbar, a tray app with an assignable global hotkey (incl. media keys) that fires it', '—', 1, NULL);
 
@@ -6311,6 +6312,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (1157, 'M
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (1158, 'M.FLOW-T64', '2026-10-16T17:25:35Z', 'ref', 'M.FLOW-US-G1', 'deploy.bat: C:\Apps\MindAttic.Workflow.Desktop + R:\Desktop\MindAttic Workflow.lnk (56172ed)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (1159, 'M.FLOW-T65', '2026-10-16T17:25:35Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (1160, 'M.FLOW-T65', '2026-10-16T17:25:35Z', 'ref', 'M.FLOW-US-G2', 'QueueTests (12); d60f6ab');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (1161, 'U.SPC-T117', '2026-10-16T17:27:04Z', 'created', NULL, 'open');
 
 -- ticket_queue
 
