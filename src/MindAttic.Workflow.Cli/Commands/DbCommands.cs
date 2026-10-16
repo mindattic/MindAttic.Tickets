@@ -130,18 +130,25 @@ public sealed class DbSyncCommand : Command<DbSyncCommand.Settings>
     {
         [CommandOption("--no-push")]
         public bool NoPush { get; init; }
+
+        [CommandOption("--ticket <ID>")]
+        [Description("The ticket this sync commits for. Default: the tickets whose rows or history changed since the committed dump.")]
+        public string? Ticket { get; init; }
     }
 
     /// <summary>Writes the readable dump and commits both files in the MindAttic.Workflow repo when anything changed.</summary>
     public override int Execute(CommandContext context, Settings settings)
     {
         var self = settings.Workspace.Find("MindAttic.Workflow") ?? throw new InvalidOperationException("No MindAttic.Workflow repo in the workspace.");
+        string dump;
         using (var db = Db.Open(settings))
         {
             // Changes made outside the CLI (the orchestrator's GitHub intake) reach the views here; each repo commits its own.
             if (db.Render(settings.Workspace) is { Count: > 0 } views)
                 AnsiConsole.MarkupLine($"[grey]Refreshed the USER_STORIES.md view in {Output.Esc(string.Join(", ", views))}.[/]");
-            File.WriteAllText(Path.Combine(self.Path, WorkflowDb.DumpRelativePath.Replace('/', Path.DirectorySeparatorChar)), db.Dump(), new UTF8Encoding(false));
+            dump = db.Dump();
+            if (settings.Ticket is { } t && db.Ticket(t) is null) throw new InvalidOperationException($"No ticket {t} in the workflow database.");
+            File.WriteAllText(Path.Combine(self.Path, WorkflowDb.DumpRelativePath.Replace('/', Path.DirectorySeparatorChar)), dump, new UTF8Encoding(false));
         }
 
         var files = new[] { WorkflowDb.RelativePath, WorkflowDb.DumpRelativePath };
@@ -151,9 +158,18 @@ public sealed class DbSyncCommand : Command<DbSyncCommand.Settings>
             AnsiConsole.MarkupLine("[grey]No changes to the workflow database since the last sync.[/]");
             return 0;
         }
-        var commit = Git.Run(self.Path, ["commit", "-q", "-m", "Sync the workflow database", "--", .. files]);
-        if (!commit.Ok) throw new InvalidOperationException("git commit failed: " + commit.Output);
-        AnsiConsole.MarkupLine("[green]Committed the workflow database.[/]");
+        var committed = Git.Run(self.Path, "show", "HEAD:" + WorkflowDb.DumpRelativePath);
+        var subject = SyncCommit.Subject(SyncCommit.ChangedTickets(committed.Ok ? committed.Output : null, dump), settings.Ticket);
+        if (subject is null)
+        {
+            // Every commit names a ticket; story or link edits alone ride along with the next sync that carries one.
+            Git.Run(self.Path, ["reset", "-q", "--", .. files]);
+            AnsiConsole.MarkupLine("[grey]No ticket changed since the last sync, so nothing is committed yet (pass --ticket <ID> to commit now).[/]");
+            return 0;
+        }
+        var commit = Git.Run(self.Path, ["commit", "-q", "-m", subject, "--", .. files]);
+        if (!commit.Ok) throw new InvalidOperationException("git commit failed: " + (commit.Output + commit.Error).Trim());
+        AnsiConsole.MarkupLine($"[green]Committed the workflow database:[/] {Output.Esc(subject)}");
         if (settings.NoPush) return 0;
         var push = Git.Run(self.Path, "push", "-q");
         AnsiConsole.MarkupLine(push.Ok ? "[green]Pushed.[/]" : $"[yellow]Push failed (pull and sync again):[/] {Output.Esc(push.Output)}");

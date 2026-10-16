@@ -32,7 +32,7 @@ $ workflow ticket list --status open
 - `ticket verify` fails if the table breaks the rules or a committed row was deleted or reworded.
 - `codes check` finds duplicate project codes, repos without a ticket log, and malformed tables.
 - `story new`/`edit`/`status`/`list`/`show`, `epic new`, `backlog add` add and edit a repo's stories, epics and priority backlog in the database.
-- `db migrate`, `export`, `check`, `render`, `sync` import a repo's file once, rebuild it from the database, validate the database, rewrite a stale view, and commit (and push) `data/workflow.db` and its readable dump `data/workflow.sql`.
+- `db migrate`, `export`, `check`, `render`, `sync` import a repo's file once, rebuild it from the database, validate the database, rewrite a stale view, and commit (and push) `data/workflow.db` and its readable dump `data/workflow.sql`; a sync's commit names the tickets whose rows or history changed since the last one (or `--ticket ID`), and a sync that changed no ticket commits nothing yet, since every commit must name its ticket.
 - `view` opens a read-only page of every repo's tickets and stories, with filters, in MindAttic.Browser (or the default browser). It's a snapshot; run it again to refresh.
 
 **Workspace jobs**
@@ -75,7 +75,7 @@ workflow db migrate     [--cutover]
 workflow db export      [--repo X] [--out FILE]
 workflow db check
 workflow db render      [--repo X]
-workflow db sync        [--no-push]
+workflow db sync        [--no-push] [--ticket ID]
 workflow view [--repo X] [--out DIR] [--no-open]
 workflow repos status [--json]
 workflow repos prune  [--apply] [--only A,B] [--override A,B]

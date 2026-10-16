@@ -222,7 +222,8 @@ public sealed class TicketCliTests
 
         var sync = Run("db", "sync", "--no-push");
         Assert.That(sync.Code, Is.Zero, sync.Out);
-        Assert.That(sync.Out, Does.Contain("Committed the workflow database."));
+        Assert.That(sync.Out, Does.Contain("Committed the workflow database: Sync the workflow database (AA-T1)"));
+        Assert.That(Workflow.Git.Run(mw, "log", "-1", "--pretty=%s").Output.Trim(), Is.EqualTo("Sync the workflow database (AA-T1)"), "the subject names the ticket the commit carries");
         Assert.That(File.Exists(Path.Combine(mw, "data", "workflow.sql")));
 
         var log = Workflow.Git.Run(mw, "log", "-1", "--name-only", "--pretty=format:").Output;

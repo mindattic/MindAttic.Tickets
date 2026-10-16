@@ -6,7 +6,7 @@
 <title>MindAttic.Workflow</title>
 <meta name="description" content="A ticket engine and repo job runner for the MindAttic workspace: every repo's stories and permanent ticket log live in one SQLite database, and one CLI queries, checks and maintains them all.">
 <meta name="generator" content="MindAttic Codex build-readme.ps1">
-<meta name="generated" content="2026-10-15">
+<meta name="generated" content="2026-10-16">
 <style>:root{
   --bg:#0d1117;--bg2:#161b22;--bg3:#21262d;
   --border:#30363d;
@@ -138,7 +138,7 @@ pre:hover .cpbtn{opacity:1}
 <li><code>ticket verify</code> fails if the table breaks the rules or a committed row was deleted or reworded.</li>
 <li><code>codes check</code> finds duplicate project codes, repos without a ticket log, and malformed tables.</li>
 <li><code>story new</code>/<code>edit</code>/<code>status</code>/<code>list</code>/<code>show</code>, <code>epic new</code>, <code>backlog add</code> add and edit a repo's stories, epics and priority backlog in the database.</li>
-<li><code>db migrate</code>, <code>export</code>, <code>check</code>, <code>render</code>, <code>sync</code> import a repo's file once, rebuild it from the database, validate the database, rewrite a stale view, and commit (and push) <code>data/workflow.db</code> and its readable dump <code>data/workflow.sql</code>.</li>
+<li><code>db migrate</code>, <code>export</code>, <code>check</code>, <code>render</code>, <code>sync</code> import a repo's file once, rebuild it from the database, validate the database, rewrite a stale view, and commit (and push) <code>data/workflow.db</code> and its readable dump <code>data/workflow.sql</code>; a sync's commit names the tickets whose rows or history changed since the last one (or <code>--ticket ID</code>), and a sync that changed no ticket commits nothing yet, since every commit must name its ticket.</li>
 <li><code>view</code> opens a read-only page of every repo's tickets and stories, with filters, in MindAttic.Browser (or the default browser). It's a snapshot; run it again to refresh.</li>
 </ul>
 <p><strong>Workspace jobs</strong></p>
@@ -174,7 +174,7 @@ workflow db migrate     [--cutover]
 workflow db export      [--repo X] [--out FILE]
 workflow db check
 workflow db render      [--repo X]
-workflow db sync        [--no-push]
+workflow db sync        [--no-push] [--ticket ID]
 workflow view [--repo X] [--out DIR] [--no-open]
 workflow repos status [--json]
 workflow repos prune  [--apply] [--only A,B] [--override A,B]
@@ -222,7 +222,7 @@ powershell -File tools/codex.ps1 doctor   # docs canon check</code></pre>
 <p>No LICENSE file; all rights reserved.</p>
 <p>Part of <a href="https://mindattic.com">MindAttic</a> — see more projects at <a href="https://github.com/mindattic">github.com/mindattic</a>. Related: <a href="https://github.com/mindattic/MindAttic.Launcher">MindAttic.Launcher</a> (workspace launcher) and <a href="https://github.com/mindattic/MindAttic.Vault">MindAttic.Vault</a> (credential store).</p>
 
-    <p class="codex-footer">Generated 2026-10-15 by the shared MindAttic Codex engine (<code>codex-standard/build-readme.ps1</code>) from <code>README.md</code>. Edit the Markdown source, not this file.</p>
+    <p class="codex-footer">Generated 2026-10-16 by the shared MindAttic Codex engine (<code>codex-standard/build-readme.ps1</code>) from <code>README.md</code>. Edit the Markdown source, not this file.</p>
   </main>
 </div>
 <script>(function(){
