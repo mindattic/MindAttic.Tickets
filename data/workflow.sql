@@ -5044,6 +5044,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T80', 'UnitySolarSystem', 80, '2026-10-16', 'fix', 'open', 'Escorts past the fifth in a group were put on an earlier escort''s formation slot, so hulls were drawn on top of each other', 'U.SPC-T49 bughunt', 79, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T81', 'UnitySolarSystem', 81, '2026-10-16', 'fix', 'open', 'Collision avoidance measured parked and queued ships'' velocity without their world''s motion round the Sun, giving a phantom 30 km/s closing speed against ships in flight', 'U.SPC-T49 bughunt', 80, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T82', 'UnitySolarSystem', 82, '2026-10-16', 'fix', 'open', 'A spawned ship (dev spawn, tour showcase) not held by a pilot or a battle departed for body -1 on the next update and threw', 'U.SPC-T49 bughunt', 81, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T83', 'UnitySolarSystem', 83, '2026-10-16', 'fix', 'open', 'A pirate group re-planned before reaching a planned ambush kept the stale ambush lane, so a later trip (e.g. to repair) stopped to lurk on it for days', 'U.SPC-T49 bughunt', 82, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T1', 'Unstuck', 1, '2026-10-16', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T2', 'Unstuck', 2, '2026-10-16', 'feature', 'open', 'Canonicalize unstuck.ps1 + the /unstuck command in this repo (global ~/.claude copies become forwarders) and add UnstuckTaskbar, a tray app with an assignable global hotkey (incl. media keys) that fires it', '—', 1, NULL);
 
@@ -6121,6 +6122,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (1070, 'U
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (1071, 'U.SPC-T82', '2026-10-16T16:16:33Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (1072, 'U.SPC-T54', '2026-10-16T16:17:26Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (1073, 'U.SPC-T54', '2026-10-16T16:17:26Z', 'ref', 'user request 2026-10-16', 'NearbySystemsTests (commit dc4b477)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (1074, 'U.SPC-T83', '2026-10-16T16:19:14Z', 'created', NULL, 'open');
 
 -- links
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AUT-T12', 'M.FLOW-T14', 'related', 'migrated: named in ref');
