@@ -1,7 +1,7 @@
 ---
 codex: 1
 project: MindAttic.Workflow
-code: WF
+code: M.FLOW
 layer: bible
 status: living
 updated: 2026-10-15
@@ -11,13 +11,13 @@ updated: 2026-10-15
 > Single source of truth for what MindAttic.Workflow IS, is NOT, and the rules that keep it coherent.
 > README says how to build/run; this says how to think about the system.
 
-## 1. The one sentence {#WF-§1}
+## 1. The one sentence {#M.FLOW-§1}
 MindAttic.Workflow is the workspace's ticket engine and repo job runner: a .NET library plus a
 `workflow` CLI that keeps every repo's stories and permanent ticket log in one SQLite database
 (`data/workflow.db`) and runs workspace-wide jobs (status, prune, rollout) safely across every
 repo under `D:\Projects\MindAttic`.
 
-## 2. The product promise {#WF-§2}
+## 2. The product promise {#M.FLOW-§2}
 - Every change and fix gets a ticket with a stable `CODE-T<n>` ID, kept forever in the repo it
   belongs to, so history travels with the code in git.
 - One query answers "every open ticket", "what got fixed this week", across all repos.
@@ -27,7 +27,7 @@ repo under `D:\Projects\MindAttic`.
   and a typed `yes`, and nothing deleted that exists only on this machine unless explicitly
   overridden.
 
-## 3. What it is NOT {#WF-§3}
+## 3. What it is NOT {#M.FLOW-§3}
 - NOT a hosted tracker or a server. The store is one SQLite file in this repo (`data/workflow.db`),
   committed with a readable dump (`data/workflow.sql`); there is no second copy to fall out of sync.
 - NOT an agent and NOT an LLM client. No code path calls an LLM SDK or API.
@@ -37,7 +37,7 @@ repo under `D:\Projects\MindAttic`.
 - NOT a git client for commits. `/commit` commits; it calls `workflow ticket` to log the work.
 - NOT a free-form document editor. Stories (`CODE-US-…`), epics and backlog items are edited through the CLI\n  (`story new`/`edit`/`status`, `epic new`, `backlog add`), which keeps the database and each view in step.
 
-## 4. Architecture canon {#WF-§4}
+## 4. Architecture canon {#M.FLOW-§4}
 ```
    workflow CLI (src/MindAttic.Workflow.Cli, Spectre.Console.Cli)      Launcher menu, /commit
                  |                                                         |
@@ -90,7 +90,7 @@ repo under `D:\Projects\MindAttic`.
 - `DependencyScan.Scan` — repos reaching into a sibling folder by relative path.
 - `PrunePlanner.Plan` / `DeleteFolder` — candidates, blockers, safe deletion.
 
-## 5. The Laws {#WF-§5}
+## 5. The Laws {#M.FLOW-§5}
 This project **inherits** the org-wide laws in
 [`MindAttic.HouseRules.md`](../../MindAttic.HouseRules.md) by reference. The directly
 load-bearing ones: [HOUSE-LAW-1](../../MindAttic.HouseRules.md#HOUSE-LAW-1) (whole-number
@@ -99,31 +99,31 @@ Vault), [HOUSE-LAW-6](../../MindAttic.HouseRules.md#HOUSE-LAW-6) (one engine; CL
 `/commit` are front doors), [HOUSE-LAW-8](../../MindAttic.HouseRules.md#HOUSE-LAW-8) (every ✅
 story cites a test).
 
-### {#WF-LAW-1} The workflow database is the only store.
+### {#M.FLOW-LAW-1} The workflow database is the only store.
 Every repo's stories, epics, backlog and tickets, and the links between them, live in
-`data/workflow.db` and nowhere else (amended 2026-10-15 by WF-T20; markdown was the store before). A
+`data/workflow.db` and nowhere else (amended 2026-10-15 by M.FLOW-T20; markdown was the store before). A
 repo's `docs/USER_STORIES.md` is a generated, read-only view (`workflow db render`); `db check` flags a hand edit.
 
-### {#WF-LAW-2} Ticket rows are append-only.
+### {#M.FLOW-LAW-2} Ticket rows are append-only.
 A row is never deleted or reworded. The database enforces it with triggers: a ticket can't be deleted, and only
 its status and ref can be updated; every change is recorded in `ticket_events`. Only Status (open → closed / wont-do) and Ref change. IDs are
 the highest existing number + 1 and are never reused. `ticket verify` fails if a committed row was
 deleted or reworded.
 
-### {#WF-LAW-3} Nothing is lost.
+### {#M.FLOW-LAW-3} Nothing is lost.
 Each repo's file was imported as ordered blocks as well as structured rows, and the migration only
 cut a repo over after its file rebuilt from the database byte-for-byte (line endings and BOM included).
 
-### {#WF-LAW-4} Destructive jobs preview by default and never lose what only exists here.
+### {#M.FLOW-LAW-4} Destructive jobs preview by default and never lose what only exists here.
 `prune` and `rollout` change nothing without `--apply`; `prune --apply` also needs a typed `yes`.
 A folder with uncommitted, unpushed or stashed work or local-only ignored files is blocked unless
 named in `--override`. A repo with no GitHub copy, or one a kept repo depends on by path, can never
 be overridden.
 
-### {#WF-LAW-5} No LLM.
+### {#M.FLOW-LAW-5} No LLM.
 No code path links an LLM SDK or calls an LLM API.
 
-## 6. Verified state {#WF-§6}
+## 6. Verified state {#M.FLOW-§6}
 - `dotnet build MindAttic.Workflow.slnx`: 0 warnings, 0 errors.
 - `dotnet test`: 78 passing NUnit tests (database import/export/links/history, story/epic/backlog
   editing, the CLI commands through the real `workflow` on a temp workspace, ticket parsing and
@@ -133,22 +133,22 @@ No code path links an LLM SDK or calls an LLM API.
   found the duplicate `GG` code, and `repos prune` blocked MindAttic.Telemetry because
   GridGameGaiden loads it from its folder, resolved MindAttic.Cryptography's pre-rename origin,
   then deleted 20 folders with the user's confirmation.
-- Database cutover (2026-10-15, WF-T20): 46 repos migrated, 1046 stories, 561 tickets, 831 links,
+- Database cutover (2026-10-15, M.FLOW-T20): 46 repos migrated, 1046 stories, 561 tickets, 831 links,
   every file rebuilt byte-for-byte before the cutover.
 
-## 7. Active frontier {#WF-§7}
+## 7. Active frontier {#M.FLOW-§7}
 See the Priority backlog in [USER_STORIES.md](USER_STORIES.md).
 
-## 8. Quality bar {#WF-§8}
+## 8. Quality bar {#M.FLOW-§8}
 A feature is done when it has a focused NUnit test, the solution builds with zero warnings, and
 any command that writes or deletes has a preview path. Anything touching other repos is tried on
 temp directories in tests before it runs on the real workspace.
 
-## 9. Glossary {#WF-§9}
+## 9. Glossary {#M.FLOW-§9}
 - **Workspace root** — `D:\Projects\MindAttic`, the parent of every repo (`--root` overrides).
 - **Ticket log** — a repo's tickets in the database, shown as the `## Tickets` table at the end of
   its generated `docs/USER_STORIES.md` view.
-- **Project code** — the `code:` front-matter value that prefixes ticket IDs (`MCO-T4`).
+- **Project code** — the `code:` front-matter value that prefixes ticket IDs (`M.LNCH-T4`).
 - **Local-only work** — anything a folder delete would lose: uncommitted, unpushed or stashed work,
   or ignored files that no build regenerates.
 - **Candidate** — a repo whose GitHub copy is archived or lacks the `work-in-progress` topic.

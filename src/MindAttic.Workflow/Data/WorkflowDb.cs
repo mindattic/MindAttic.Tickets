@@ -739,12 +739,12 @@ public sealed partial class WorkflowDb : IDisposable
         return cmd;
     }
 
-    [GeneratedRegex(@"blocked by (?<id>[A-Z][A-Z0-9]*-T\d+)\b", RegexOptions.IgnoreCase)]
+    [GeneratedRegex(@"blocked by (?<id>(?:[A-Z]\.)?[A-Z][A-Z0-9]*-T\d+)\b", RegexOptions.IgnoreCase)]
     private static partial Regex BlockedBy();
 
-    [GeneratedRegex(@"superseded by (?<id>[A-Z][A-Z0-9]*-T\d+)\b", RegexOptions.IgnoreCase)]
+    [GeneratedRegex(@"superseded by (?<id>(?:[A-Z]\.)?[A-Z][A-Z0-9]*-T\d+)\b", RegexOptions.IgnoreCase)]
     private static partial Regex SupersededBy();
 
-    [GeneratedRegex(@"\b[A-Z][A-Z0-9]*-T\d+\b")]
+    [GeneratedRegex(@"\b(?:[A-Z]\.)?[A-Z][A-Z0-9]*-T\d+\b")]
     private static partial Regex TicketId();
 }

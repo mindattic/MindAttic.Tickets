@@ -1,7 +1,7 @@
 ---
 codex: 1
 project: MindAttic.Workflow
-code: WF
+code: M.FLOW
 layer: amendments
 status: living
 updated: 2026-10-12

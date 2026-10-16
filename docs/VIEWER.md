@@ -1,4 +1,4 @@
-# Workflow viewer — plan (WF-T11, built as WF-T10)
+# Workflow viewer — plan (M.FLOW-T11, built as M.FLOW-T10)
 
 A read-only window onto the workflow database: every repo's stories and tickets, with filters, in
 MindAttic.Browser.
@@ -17,7 +17,7 @@ MindAttic.Browser.
 MindAttic.Browser.exe %LOCALAPPDATA%\MindAttic\Workflow\viewer --host workflow.local
 ```
 
-**Why static, not live.** The database has one writer: the `workflow` CLI (WF-LAW-1, WF-LAW-2).
+**Why static, not live.** The database has one writer: the `workflow` CLI (M.FLOW-LAW-1, M.FLOW-LAW-2).
 A live view would need a local server or a WebView2 host object reading SQLite, and that's a
 second path into the store. An export is a snapshot, so it can never write back, and a reader
 can't lock the database while an agent is closing a ticket. `workflow view` re-exports on every

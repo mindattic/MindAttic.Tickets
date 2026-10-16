@@ -55,6 +55,15 @@ public sealed class StoryFileTests
     }
 
     [Test]
+    public void Parses_a_family_code_with_a_dot()
+    {
+        var file = StoryFile.Parse(Sample.Replace("DEM", "M.DEM"));
+
+        Assert.That(file.Code, Is.EqualTo("M.DEM"));
+        Assert.That(file.Tickets.Select(t => t.Id), Is.EqualTo(new[] { "M.DEM-T1", "M.DEM-T4" }));
+    }
+
+    [Test]
     public void Add_takes_the_number_after_the_highest_existing_id_never_filling_a_gap()
     {
         var file = StoryFile.Parse(Sample);

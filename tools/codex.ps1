@@ -66,7 +66,7 @@ function Test-FrontMatter ($path, $expectedLayer) {
         if (-not $fm.ContainsKey($k)) { Add-Err "front-matter: $rel missing key '$k'" }
     }
     if ($fm.ContainsKey('codex') -and $fm['codex'] -ne '1') { Add-Err "front-matter: $rel codex must be 1" }
-    if ($fm.ContainsKey('code')  -and $fm['code'] -ne 'WF') { Add-Err "front-matter: $rel code must be WF" }
+    if ($fm.ContainsKey('code')  -and $fm['code'] -ne 'M.FLOW') { Add-Err "front-matter: $rel code must be M.FLOW" }
     if ($expectedLayer -and $fm.ContainsKey('layer') -and $fm['layer'] -ne $expectedLayer) {
         Add-Err "front-matter: $rel layer is '$($fm['layer'])', expected '$expectedLayer'"
     }
@@ -108,11 +108,11 @@ function Invoke-Digest {
     if (-not (Test-Path $BiblePath)) { Add-Err "digest: $BiblePath not found"; return }
     $bible = Read-Utf8Raw $BiblePath
 
-    $sect = [char]::ConvertFromUtf32(0x00A7)   # section sign used in {#WF-<sect>N} anchors
-    $s1 = Get-Section $bible ('WF-' + $sect + '1')
-    $s3 = Get-Section $bible ('WF-' + $sect + '3')
-    $s5 = Get-Section $bible ('WF-' + $sect + '5')
-    $s9 = Get-Section $bible ('WF-' + $sect + '9')
+    $sect = [char]::ConvertFromUtf32(0x00A7)   # section sign used in {#M.FLOW-<sect>N} anchors
+    $s1 = Get-Section $bible ('M.FLOW-' + $sect + '1')
+    $s3 = Get-Section $bible ('M.FLOW-' + $sect + '3')
+    $s5 = Get-Section $bible ('M.FLOW-' + $sect + '5')
+    $s9 = Get-Section $bible ('M.FLOW-' + $sect + '9')
 
     # status index from USER_STORIES.md
     $done = 0; $partial = 0; $planned = 0; $cut = 0
@@ -124,27 +124,27 @@ function Invoke-Digest {
         $cut     = ([regex]::Matches($st, $script:GlyphCut)).Count
     }
 
-    # pending decisions (every "## WF-A<n>" entry still in AMENDMENTS.md; normally none)
+    # pending decisions (every "## M.FLOW-A<n>" entry still in AMENDMENTS.md; normally none)
     $pending = New-Object System.Collections.Generic.List[string]
     if (Test-Path $AmendPath) {
         foreach ($l in (Read-Utf8Lines $AmendPath)) {
-            if ($l -match '^##\s+(WF-A\d+.*)$') { $pending.Add($Matches[1]) }
+            if ($l -match '^##\s+(M\.FLOW-A\d+.*)$') { $pending.Add($Matches[1]) }
         }
     }
 
     $sb = New-Object System.Text.StringBuilder
     [void]$sb.AppendLine('AUTHORITATIVE - full detail in docs/BIBLE.md')
-    [void]$sb.AppendLine('<!-- generatedFrom: WF-bible -->')
+    [void]$sb.AppendLine('<!-- generatedFrom: M.FLOW-bible -->')
     [void]$sb.AppendLine('')
     [void]$sb.AppendLine('# MindAttic.Workflow (WF) - Bible digest')
     [void]$sb.AppendLine('')
-    [void]$sb.AppendLine("## The one sentence (#WF-${sect}1)")
+    [void]$sb.AppendLine("## The one sentence (#M.FLOW-${sect}1)")
     [void]$sb.AppendLine($s1); [void]$sb.AppendLine('')
-    [void]$sb.AppendLine("## What it is NOT (#WF-${sect}3)")
+    [void]$sb.AppendLine("## What it is NOT (#M.FLOW-${sect}3)")
     [void]$sb.AppendLine($s3); [void]$sb.AppendLine('')
-    [void]$sb.AppendLine("## The Laws (#WF-${sect}5)")
+    [void]$sb.AppendLine("## The Laws (#M.FLOW-${sect}5)")
     [void]$sb.AppendLine($s5); [void]$sb.AppendLine('')
-    [void]$sb.AppendLine("## Glossary (#WF-${sect}9)")
+    [void]$sb.AppendLine("## Glossary (#M.FLOW-${sect}9)")
     [void]$sb.AppendLine($s9); [void]$sb.AppendLine('')
     [void]$sb.AppendLine('## Status index (docs/USER_STORIES.md)')
     [void]$sb.AppendLine("- done: $done")
@@ -197,7 +197,7 @@ function Invoke-Doctor {
     foreach ($ref in $linkRefs) {
         $id = $ref.Id
         if ($id -like 'HOUSE-*') { continue }                 # external (MindAttic.HouseRules.md)
-        if ($id -notmatch '^WF-') { continue }               # not a Codex ID we own
+        if ($id -notmatch '^M\.FLOW-') { continue }               # not a Codex ID we own
         if (-not $anchors.ContainsKey($id)) {
             Add-Err "links: $($ref.Src) references '#$id' but no '{#$id}' anchor exists"
         }
@@ -231,7 +231,7 @@ function Invoke-Doctor {
                 Get-Content -Raw) -join "`n"
         }
         # split into story bullets, look at each done-glyph line block
-        $donePattern = '(?ms)^\-\s+\*\*(WF-US-[A-Za-z0-9]+)\s*' + $script:GlyphDone + '\*\*.*?(?=^\-\s+\*\*WF-US-|\Z)'
+        $donePattern = '(?ms)^\-\s+\*\*(M\.FLOW-US-[A-Za-z0-9]+)\s*' + $script:GlyphDone + '\*\*.*?(?=^\-\s+\*\*M\.FLOW-US-|\Z)'
         foreach ($m in [regex]::Matches($storyText, $donePattern)) {
             $sid   = $m.Groups[1].Value
             $block = $m.Value
@@ -280,7 +280,7 @@ function Invoke-Doctor {
         }
         # generatedFrom presence
         $dg = Read-Utf8Raw $DigestPath
-        if ($dg -notmatch 'generatedFrom:\s*WF-bible') {
+        if ($dg -notmatch 'generatedFrom:\s*M\.FLOW-bible') {
             Add-Err 'digest: BIBLE.digest.md missing generatedFrom marker'
         }
     }

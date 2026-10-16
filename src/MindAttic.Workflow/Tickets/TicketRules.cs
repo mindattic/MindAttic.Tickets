@@ -17,7 +17,7 @@ public static partial class TicketRules
     public static readonly IReadOnlyList<string> Statuses = [Open, Closed, WontDo];
     public static readonly IReadOnlyList<string> Types = ["feature", "fix", "chore", "docs"];
 
-    [GeneratedRegex(@"^([A-Z][A-Z0-9]*)-T(\d+)$")]
+    [GeneratedRegex(@"^((?:[A-Z]\.)?[A-Z][A-Z0-9]*)-T(\d+)$")]
     private static partial Regex IdPattern();
 
     /// <summary>The number in <c>CODE-T&lt;n&gt;</c>, or null when <paramref name="id"/> isn't one.</summary>

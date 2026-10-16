@@ -225,6 +225,6 @@ public sealed partial class StoryFile
     internal static string FormatRow(Ticket t) =>
         $"| {Escape(t.Id)} | {Escape(t.Date)} | {Escape(t.Type)} | {Escape(t.Status)} | {Escape(t.Summary)} | {Escape(t.Ref)} |";
 
-    [GeneratedRegex(@"^code:\s*([A-Za-z0-9]+)\s*$")]
+    [GeneratedRegex(@"^code:\s*((?:[A-Za-z]\.)?[A-Za-z0-9]+)\s*$")]
     private static partial Regex FrontMatterCode();
 }

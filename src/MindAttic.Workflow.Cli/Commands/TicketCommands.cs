@@ -60,7 +60,7 @@ public sealed class TicketCloseCommand : Command<TicketCloseCommand.Settings>
     public sealed class Settings : RepoSettings
     {
         [CommandArgument(0, "<ID>")]
-        [Description("Ticket ID, e.g. MCO-T5.")]
+        [Description("Ticket ID, e.g. M.LNCH-T5.")]
         public string Id { get; init; } = "";
 
         [CommandOption("--ref <TEXT>")]

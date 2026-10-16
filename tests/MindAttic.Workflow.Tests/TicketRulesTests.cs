@@ -23,6 +23,16 @@ public sealed class TicketRulesTests
     }
 
     [Test]
+    public void A_family_code_with_a_dot_numbers_validates_and_parses()
+    {
+        Assert.That(TicketRules.NextId("M.AUTH", [T("M.AUTH-T7")]), Is.EqualTo("M.AUTH-T8"));
+        Assert.That(TicketRules.ParseNumber("M.AUTH-T7"), Is.EqualTo(7));
+        Assert.That(TicketRules.Validate("M.AUTH", [T("M.AUTH-T1"), T("M.AUTH-T2", "closed")]), Is.Empty);
+        Assert.That(TicketRules.Validate("M.AUTH", [T("AUTH-T3")]), Has.Some.Contains("ID prefix doesn't match"));
+        Assert.That(TicketRules.ParseNumber("MA.AUTH-T1"), Is.Null, "only a single-letter family goes before the dot");
+    }
+
+    [Test]
     public void Validate_flags_bad_ids_duplicates_wrong_prefix_vocabulary_and_dates()
     {
         var problems = TicketRules.Validate("WF",

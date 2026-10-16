@@ -143,17 +143,17 @@ public sealed partial class StoryDocument
     [GeneratedRegex(@"^## Epic ([A-Za-z0-9]+)\s*[—–:-]\s*(.*?)(?:\s*\{#([^}]+)\})?\s*$")]
     internal static partial Regex EpicHeading();
 
-    // - **CM-US-A3 🟡** text…   /   - **LOG-US-D1 ✅ (retired)** text…   /   (indented) - **H1a ✅** text…
+    // - **CM-US-A3 🟡** text…   /   - **M.LOGS-US-D1 ✅ (retired)** text…   /   (indented) - **H1a ✅** text…
     [GeneratedRegex(@"^(?<indent>\s*)- \*\*(?<id>[A-Za-z0-9][A-Za-z0-9.\-]*) (?<glyph>✅|🟡|⬜)(?<suffix>[^*]*)\*\*(?<rest>.*)$")]
     internal static partial Regex StoryBullet();
 
     [GeneratedRegex(@"^\s*\d+\.\s")]
     private static partial Regex BacklogNumber();
 
-    [GeneratedRegex(@"^(?:[A-Z][A-Z0-9]*-)?US-[A-Za-z0-9]+$")]
+    [GeneratedRegex(@"^(?:(?:[A-Z]\.)?[A-Z][A-Z0-9]*-)?US-[A-Za-z0-9]+$")]
     private static partial Regex TableStoryId();
 
-    [GeneratedRegex(@"\b[A-Z][A-Z0-9]*-US-[A-Za-z0-9]+(?:-[A-Za-z0-9]+)?")]
+    [GeneratedRegex(@"\b(?:[A-Z]\.)?[A-Z][A-Z0-9]*-US-[A-Za-z0-9]+(?:-[A-Za-z0-9]+)?")]
     internal static partial Regex StoryIdRef();
 
     [GeneratedRegex(@"\*\((?<e>[^*]*?)\)\*")]
