@@ -1,4 +1,4 @@
-AUTHORITATIVE - full detail in docs/BIBLE.md
+﻿AUTHORITATIVE - full detail in docs/BIBLE.md
 <!-- generatedFrom: WF-bible -->
 
 # MindAttic.Workflow (WF) - Bible digest
@@ -37,8 +37,7 @@ repo's `docs/USER_STORIES.md` is a generated, read-only view (`workflow db rende
 A row is never deleted or reworded. The database enforces it with triggers: a ticket can't be deleted, and only
 its status and ref can be updated; every change is recorded in `ticket_events`. Only Status (open → closed / wont-do) and Ref change. IDs are
 the highest existing number + 1 and are never reused. `ticket verify` fails if a committed row was
-deleted or reworded. The database enforces it with triggers: a ticket can't be deleted, and only
-its status and ref can be updated; every change is recorded in `ticket_events`.
+deleted or reworded.
 
 ### {#WF-LAW-3} Nothing is lost.
 Each repo's file was imported as ordered blocks as well as structured rows, and the migration only
@@ -55,7 +54,8 @@ No code path links an LLM SDK or calls an LLM API.
 
 ## Glossary (#WF-§9)
 - **Workspace root** — `D:\Projects\MindAttic`, the parent of every repo (`--root` overrides).
-- **Ticket log** — the `## Tickets` table at the end of a repo's `docs/USER_STORIES.md`.
+- **Ticket log** — a repo's tickets in the database, shown as the `## Tickets` table at the end of
+  its generated `docs/USER_STORIES.md` view.
 - **Project code** — the `code:` front-matter value that prefixes ticket IDs (`MCO-T4`).
 - **Local-only work** — anything a folder delete would lose: uncommitted, unpushed or stashed work,
   or ignored files that no build regenerates.
@@ -66,5 +66,5 @@ No code path links an LLM SDK or calls an LLM API.
 ## Status index (docs/USER_STORIES.md)
 - done: 10
 - partial: 3
-- planned: 2
+- planned: 12
 

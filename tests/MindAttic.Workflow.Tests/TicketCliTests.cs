@@ -136,6 +136,102 @@ public sealed class TicketCliTests
     }
 
     [Test]
+    public void Correct_relabels_a_nonstandard_type_and_only_accepts_the_standard_vocabulary()
+    {
+        MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | bugfix | open | odd type | — |\n");
+        Directory.CreateDirectory(Path.Combine(root, "MindAttic.Workflow", ".git"));
+        Run("db", "migrate", "--cutover");
+
+        var correct = Run("ticket", "correct", "AA-T1", "--type", "fix", "--reason", "bugfix predates the vocabulary");
+        Assert.That(correct.Out.Trim(), Is.EqualTo("AA-T1 type fix"));
+        Assert.That(Run("db", "check").Code, Is.Zero);
+        Assert.That(Run("ticket", "correct", "AA-T1", "--type", "bugfix", "--reason", "x").Code, Is.Not.Zero, "only the standard vocabulary is accepted");
+    }
+
+    [Test]
+    public void Link_connects_two_tickets_and_refuses_a_cycle()
+    {
+        MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | fix | open | one | — |\n| AA-T2 | 2026-10-01 | fix | open | two | — |\n");
+        Directory.CreateDirectory(Path.Combine(root, "MindAttic.Workflow", ".git"));
+        Run("db", "migrate", "--cutover");
+
+        Assert.That(Run("ticket", "link", "AA-T2", "requires", "AA-T1").Out.Trim(), Is.EqualTo("AA-T2 requires AA-T1"));
+        var show = JsonDocument.Parse(Run("ticket", "show", "AA-T2", "--json").Out).RootElement;
+        Assert.That(show.GetProperty("requires").EnumerateArray().Select(x => x.GetString()), Is.EqualTo(new[] { "AA-T1" }));
+
+        var cycle = Run("ticket", "link", "AA-T1", "requires", "AA-T2");
+        Assert.That(cycle.Code, Is.Not.Zero);
+        Assert.That(cycle.Out, Does.Contain("cycle"));
+
+        Assert.That(Run("ticket", "link", "AA-T2", "requires", "AA-T1", "--remove").Out.Trim(), Is.EqualTo("removed AA-T2 requires AA-T1"));
+        Assert.That(Run("ticket", "link", "AA-T2", "requires", "AA-T1", "--remove").Out.Trim(), Is.EqualTo("no such link"));
+    }
+
+    [Test]
+    public void Story_epic_and_backlog_commands_edit_the_database_through_the_cli()
+    {
+        var dir = Path.Combine(root, "A");
+        Directory.CreateDirectory(Path.Combine(dir, "docs"));
+        Git(dir, "init", "-q", "-b", "main");
+        File.WriteAllText(Path.Combine(dir, "docs", "USER_STORIES.md"),
+            "---\ncode: AA\n---\n\n# A\n\n## Priority backlog\n_Nothing recorded yet._\n\n## Tickets\n\n| ID | Date | Type | Status | Summary | Ref |\n|---|---|---|---|---|---|\n");
+        Directory.CreateDirectory(Path.Combine(root, "MindAttic.Workflow", ".git"));
+        Run("db", "migrate", "--cutover");
+
+        Assert.That(Run("epic", "new", "--repo", "A", "--key", "A", "--title", "Core").Out.Trim(), Is.EqualTo("Epic A added"));
+        Assert.That(Run("story", "new", "--repo", "A", "--epic", "A", "--text", "As a user, I can begin.").Out.Trim(), Is.EqualTo("AA-US-A1"));
+        Assert.That(Run("story", "edit", "AA-US-A1", "--text", "As a user, I can begin, revised.").Out.Trim(), Is.EqualTo("AA-US-A1 updated"));
+        Assert.That(Run("story", "status", "AA-US-A1", "done").Out.Trim(), Is.EqualTo("AA-US-A1 done"));
+        Assert.That(Run("backlog", "add", "--repo", "A", "--text", "Ship AA-US-A1").Out.Trim(), Is.EqualTo("added to the priority backlog"));
+        Assert.That(Run("db", "check").Code, Is.Zero);
+
+        var view = File.ReadAllText(Path.Combine(dir, "docs", "USER_STORIES.md"));
+        Assert.That(view, Does.Contain("- **AA-US-A1 ✅** As a user, I can begin, revised."));
+        Assert.That(view, Does.Contain("1. Ship AA-US-A1"));
+    }
+
+    [Test]
+    public void Render_rewrites_a_view_that_fell_out_of_date()
+    {
+        MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | fix | open | one | — |\n");
+        Directory.CreateDirectory(Path.Combine(root, "MindAttic.Workflow", ".git"));
+        Run("db", "migrate", "--cutover");
+
+        var storiesPath = Path.Combine(root, "A", "docs", "USER_STORIES.md");
+        File.Delete(storiesPath);
+        Assert.That(Run("db", "render").Out.Trim(), Is.EqualTo("Rewrote A"));
+        Assert.That(File.Exists(storiesPath));
+        Assert.That(Run("db", "render").Out.Trim(), Is.EqualTo("Every view is current."));
+    }
+
+    [Test]
+    public void Sync_commits_only_the_database_files_and_a_second_run_is_a_no_op()
+    {
+        MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | fix | open | one | — |\n");
+        var mw = Path.Combine(root, "MindAttic.Workflow");
+        Directory.CreateDirectory(mw);
+        Git(mw, "init", "-q", "-b", "main");
+        Git(mw, "config", "user.email", "t@t");
+        Git(mw, "config", "user.name", "t");
+        File.WriteAllText(Path.Combine(mw, "README.md"), "placeholder");
+        Git(mw, "add", "-A");
+        Git(mw, "commit", "-qm", "init");
+
+        Run("db", "migrate", "--cutover");
+        File.WriteAllText(Path.Combine(mw, "scratch.txt"), "untracked work");
+
+        var sync = Run("db", "sync", "--no-push");
+        Assert.That(sync.Code, Is.Zero, sync.Out);
+        Assert.That(sync.Out, Does.Contain("Committed the workflow database."));
+        Assert.That(File.Exists(Path.Combine(mw, "data", "workflow.sql")));
+
+        var log = Workflow.Git.Run(mw, "log", "-1", "--name-only", "--pretty=format:").Output;
+        Assert.That(log, Does.Contain("data/workflow.db").And.Contain("data/workflow.sql").And.Not.Contain("scratch.txt"));
+
+        Assert.That(Run("db", "sync", "--no-push").Out, Does.Contain("No changes to the workflow database since the last sync."));
+    }
+
+    [Test]
     public void View_writes_a_page_and_a_snapshot_of_every_ticket_and_story_with_markup_escaped()
     {
         MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | fix | open | close </script><b>x</b> & more | — |\n");

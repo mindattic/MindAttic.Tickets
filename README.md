@@ -1,6 +1,6 @@
 # MindAttic.Workflow
 
-A ticket engine and repo job runner for the MindAttic workspace: every repo keeps its own permanent ticket log in markdown, and one CLI queries, checks and maintains them all.
+A ticket engine and repo job runner for the MindAttic workspace: every repo's stories and permanent ticket log live in one SQLite database, and one CLI queries, checks and maintains them all.
 
 ![C#](https://img.shields.io/badge/C%23-latest-239120) ![.NET](https://img.shields.io/badge/.NET-10-512BD4) ![Status](https://img.shields.io/badge/status-work--in--progress-orange)
 
@@ -23,12 +23,16 @@ $ workflow ticket list --status open
 
 ## Features
 
-**Stories and tickets** (every repo's, in one SQLite database: `data/workflow.db`, with links such as `requires` between any two; each repo's `docs/USER_STORIES.md` is now a generated, read-only view of it)
-- `ticket new` appends a row with the next free `CODE-T<n>` ID and prints it. Only that one line changes; line endings and BOM are kept.
+**Stories and tickets** (every repo's, in one SQLite database: `data/workflow.db`, with links such as `requires` between any two; each repo's `docs/USER_STORIES.md` is a generated, read-only view of it, rewritten after every change)
+- `ticket new` appends a row with the next free `CODE-T<n>` ID and prints it.
 - `ticket close` moves a ticket to `closed` or `wont-do` and can set its Ref.
+- `ticket correct` relabels a nonstandard type to the standard vocabulary, the one sanctioned exception to append-only (recorded in the ticket's history).
+- `ticket show` prints one ticket's row, links and history; `ticket link` connects two tickets or stories (`requires` is a prerequisite; a cycle is refused).
 - `ticket list` shows tickets across the workspace, filtered by repo, status, type or date, as a table or `--json`.
 - `ticket verify` fails if the table breaks the rules or a committed row was deleted or reworded.
 - `codes check` finds duplicate project codes, repos without a ticket log, and malformed tables.
+- `story new`/`edit`/`status`/`list`/`show`, `epic new`, `backlog add` add and edit a repo's stories, epics and priority backlog in the database.
+- `db migrate`, `export`, `check`, `render`, `sync` import a repo's file once, rebuild it from the database, validate the database, rewrite a stale view, and commit (and push) `data/workflow.db` and its readable dump `data/workflow.sql`.
 - `view` opens a read-only page of every repo's tickets and stories, with filters, in MindAttic.Browser (or the default browser). It's a snapshot; run it again to refresh.
 
 **Workspace jobs**
@@ -52,11 +56,26 @@ You should see every ticket in every repo under `D:\Projects\MindAttic`.
 ## Commands
 
 ```text
-workflow ticket new   [--repo X] --type feature|fix|chore|docs --summary "..." [--ref ...] [--status open|closed|wont-do]
-workflow ticket close <CODE-Tn> [--repo X] [--ref ...] [--wont-do]
-workflow ticket list  [--repo X] [--status S] [--type T] [--since YYYY-MM-DD] [--json]
-workflow ticket verify [--repo X]
+workflow ticket new     [--repo X] --type feature|fix|chore|docs --summary "..." [--ref ...] [--status open|closed|wont-do]
+workflow ticket close   <CODE-Tn> [--repo X] [--ref ...] [--wont-do]
+workflow ticket correct <CODE-Tn> --type feature|fix|chore|docs --reason "..."
+workflow ticket show    <CODE-Tn> [--json]
+workflow ticket link    <FROM> requires|related|follow-up-of|supersedes|duplicates|implements|part-of <TO> [--remove] [--note "..."]
+workflow ticket list    [--repo X] [--status S] [--type T] [--since YYYY-MM-DD] [--json]
+workflow ticket verify  [--repo X]
 workflow codes check
+workflow story  list    [--repo X] [--status done|partial|planned] [--json]
+workflow story  show    <CODE-US-...>
+workflow story  new     [--repo X] --epic KEY --text "..." [--status planned|partial|done]
+workflow story  edit    <CODE-US-...> --text "..." [--repo X]
+workflow story  status  <CODE-US-...> done|partial|planned [--repo X]
+workflow epic   new     [--repo X] --key KEY --title "..."
+workflow backlog add    [--repo X] --text "..."
+workflow db migrate     [--cutover]
+workflow db export      [--repo X] [--out FILE]
+workflow db check
+workflow db render      [--repo X]
+workflow db sync        [--no-push]
 workflow view [--repo X] [--out DIR] [--no-open]
 workflow repos status [--json]
 workflow repos prune  [--apply] [--only A,B] [--override A,B]
@@ -71,19 +90,22 @@ Every command takes `--root <DIR>` (default `D:\Projects\MindAttic`). `--repo` d
    workflow CLI  ·  Launcher menu  ·  /commit
                  |
         MindAttic.Workflow (library)
-           |                    |
-   Tickets/ (markdown)     Repos/ (git + GitHub)
-           |                    |
- <repo>/docs/USER_STORIES.md   git -C <repo>, api.github.com/user/repos
+           |                              |
+   Data/ (SQLite, WorkflowDb)       Repos/ (git + GitHub)
+           |                              |
+  data/workflow.db, data/workflow.sql,    git -C <repo>, api.github.com/user/repos
+  <repo>/docs/USER_STORIES.md (generated view)
 ```
 
-There is no database or index: every query re-reads the files. The GitHub token comes from MindAttic.Vault (bucket `GitHub`, key `github`), the same one the Launcher's roster filter uses. The library has no package dependencies: the CLI (and the Launcher) read the token and pass it in.
+Every repo's stories, epics, backlog and tickets (and the links between them) live in `data/workflow.db`, committed to this repo alongside a readable SQL dump (`data/workflow.sql`) so changes show up as text diffs. A repo's `docs/USER_STORIES.md` is rewritten from the database after every change that touches it (and by `workflow db render`/`sync`); it's never read back in, so a hand edit is only ever a mistake `db check` flags. The GitHub token comes from MindAttic.Vault (bucket `GitHub`, key `github`), the same one the Launcher's roster filter uses. The library has no package dependencies: the CLI (and the Launcher) read the token and pass it in.
 
 ## Project layout
 
 ```text
 src/MindAttic.Workflow/            library (packed to C:\LocalNuGet)
-  Tickets/   Ticket, TicketRules, StoryFile, WorkspaceTickets
+  Data/      WorkflowDb (schema, import/export, tickets, stories, links, history)
+  Stories/   StoryDocument (parses a USER_STORIES.md into ordered blocks)
+  Tickets/   Ticket, TicketRules, StoryFile, WorkspaceTickets (the markdown fallback, pre-migration)
   Repos/     RepoStatus, GitHubRepoIndex, DependencyScan, PrunePlanner
   Git.cs, Workspace.cs
 src/MindAttic.Workflow.Cli/        the workflow exe (Spectre.Console.Cli)
@@ -104,8 +126,7 @@ The repo-level tests run real `git` against temporary repos; nothing touches the
 ## Limitations
 
 - Windows-first: the default root is `D:\Projects\MindAttic`, and the CLI is built and tested on Windows.
-- `/commit` doesn't call the CLI yet, and the Launcher has no Workflow menu item yet (see the Priority backlog).
-- Only the `## Tickets` section is managed; stories are still written by hand.
+- Output piped or redirected still carries ANSI color codes in places and doesn't yet honor `NO_COLOR`; `story list` wraps rather than truncating in a narrow terminal. See the Priority backlog in [docs/USER_STORIES.md](docs/USER_STORIES.md) for these and other open gaps (restoring the db from its dump, keeping `data/workflow.db` out of ordinary feature commits, concurrent writers).
 
 ## Documentation
 
