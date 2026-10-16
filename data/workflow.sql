@@ -5206,6 +5206,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T165', 'UnitySolarSystem', 165, '2026-10-16', 'fix', 'closed', 'Ships spawned from the spawn screen or arriving through the gate had the hidden pirate havens'' rocks among their ports and could wander to a haven nobody was meant to know about', 'b5cfbdb', 164, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T166', 'UnitySolarSystem', 166, '2026-10-16', 'fix', 'closed', 'Spawn-screen hull thumbnails were built at world position 1e6, where float precision snapped every vertex to a 1/16-unit grid, stair-stepping hull edges and losing small parts', 'e70b9ab', 165, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T167', 'UnitySolarSystem', 167, '2026-10-16', 'fix', 'closed', 'Psyche was labelled twice, overlapping, since it became a full catalogue body (haven) while the asteroid belt still labelled its field record too', 'ddec63b', 166, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T168', 'UnitySolarSystem', 168, '2026-10-16', 'fix', 'open', 'The empty-ports hold added for barycentre systems also caught patrols (which route by waypoints, not ports), so default-fleet patrol groups never left their first waypoint', 'U.SPC-T49 bughunt', 167, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T1', 'Unstuck', 1, '2026-10-16', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T2', 'Unstuck', 2, '2026-10-16', 'feature', 'open', 'Canonicalize unstuck.ps1 + the /unstuck command in this repo (global ~/.claude copies become forwarders) and add UnstuckTaskbar, a tray app with an assignable global hotkey (incl. media keys) that fires it', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T3', 'Unstuck', 3, '2026-10-16', 'chore', 'closed', 'Add deploy.ps1/deploy.bat packaging to C:\Apps\Unstuck and a desktop shortcut', 'user request', 2, NULL);
@@ -6602,6 +6603,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (1388, 'U
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (1389, 'U.SPC-T157', '2026-10-16T19:47:56Z', 'ref', 'U.SPC-T49 bughunt', 'b65222b');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (1390, 'U.SPC-T156', '2026-10-16T19:47:56Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (1391, 'U.SPC-T156', '2026-10-16T19:47:56Z', 'ref', 'U.SPC-T49 bughunt', 'ee723d3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (1392, 'U.SPC-T168', '2026-10-16T20:13:13Z', 'created', NULL, 'open');
 
 -- ticket_queue
 
