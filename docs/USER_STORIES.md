@@ -87,6 +87,41 @@ updated: 2026-10-12
 - **M.FLOW-US-F2 ⬜** As a Dev, the Launcher's Workflow menu (M.LNCH-US-E6) has an 'Open viewer' item that runs `workflow view`, scoped to the repo I'm in.
 - **M.FLOW-US-F3 ⬜** As an Agent reading the canon, README.md and docs/BIBLE.md describe the database, not the markdown era: the intro and architecture diagrams say tickets live in SQLite, `ticket new` no longer claims 'only that one line changes', 'stories are still written by hand' goes, the glossary's 'Ticket log' stops pointing at the ## Tickets table, M.FLOW-LAW-2 stops repeating its trigger sentence, and the codex doctor passes.
 
+
+## Epic G — Desktop UI (Workflow Desktop, WPF, WCAG 2.2 AA)
+- **M.FLOW-US-G1 ⬜** As a Dev, Workflow Desktop (src/MindAttic.Workflow.Desktop, WPF on net10.0-windows with MindAttic.Components.Wpf, the Orchestrator's look) opens from a Desktop and Start-menu shortcut that shows assets/logo.ico, which is also the exe and window icon, installed by deploy.ps1 to C:\Apps\MindAttic.Workflow.Desktop.
+- **M.FLOW-US-G2 ⬜** As a Dev or Agent, a ticket's approval (proposed/approved/rejected) and queue priority live in workflow.db (ticket_queue), recorded in its history, set through the library and 'workflow ticket approve|reject|priority', so the database stays the only store.
+- **M.FLOW-US-G3 ⬜** As a Dev, Workflow Desktop's Queue view lists every repo's open tickets in priority order; I approve, reject (with a reason; it closes wont-do) and reorder them by drag and drop or by keyboard (buttons, Alt+Up/Down), each change announced to screen readers.
+- **M.FLOW-US-G4 ⬜** As a Dev, Workflow Desktop's Tickets view lists every ticket in every repo, filterable by repo, status, type and approval, searchable by ID, summary and ref, sortable by column, with closed and wont-do tickets hidden until I show archived.
+- **M.FLOW-US-G5 ⬜** As a Dev, selecting a ticket opens a detail pane with its fields, history and links both ways (linked IDs focus that ticket, blocked state shown), where I close it, wont-do it, set its ref, correct its type with a reason and add or remove links.
+- **M.FLOW-US-G6 ⬜** As a Dev, Ctrl+N in Workflow Desktop files a new ticket (repo, type, summary, ref), remembering the last repo and type.
+- **M.FLOW-US-G7 ⬜** As a Dev, Workflow Desktop shows agents' ticket changes within seconds without a manual refresh, and a Sync button runs 'workflow db sync' and shows its result.
+- **M.FLOW-US-G8 ⬜** As a Dev who relies on assistive tech, Workflow Desktop meets WCAG 2.2 AA: contrast, keyboard-only use, visible unobscured focus, names and roles, live regions, 200% zoom, high-contrast mode, 24px targets and a dragging alternative, proved by tests and an Accessibility Insights FastPass.
+
+
+## Epic H — Better than Jira
+- **M.FLOW-US-H1 ⬜** As a Dev or Agent, I add append-only comments to a ticket (author, time, markdown), shown in its history, without rewording the ticket row.
+- **M.FLOW-US-H2 ⬜** As a Dev, a ticket has a markdown description separate from its one-line summary, and rewording the summary is a recorded correction with a reason, like CorrectType.
+- **M.FLOW-US-H3 ⬜** As a Dev, I tag tickets with labels and components and filter by them in the CLI and Workflow Desktop.
+- **M.FLOW-US-H4 ⬜** As a Dev, each ticket carries an effort estimate, seeded from the Orchestrator's TicketCosts actuals for similar tickets and editable, so the queue can sort by smallest effort from the database.
+- **M.FLOW-US-H5 ⬜** As a Dev, I see which agent, CLI or worktree is working a ticket and since when, from the Orchestrator's assignments, in the list and detail pane.
+- **M.FLOW-US-H6 ⬜** As a Dev, a Board view shows tickets in columns Proposed, Approved, In progress and Done, and moving a card (drag or keyboard) changes its approval or status.
+- **M.FLOW-US-H7 ⬜** As a Dev, I filter with a query language (repo:M.FLOW type:fix status:open label:ui 'text') and save named filters for reuse in the CLI and Desktop.
+- **M.FLOW-US-H8 ⬜** As a Dev, I select many tickets and approve, reject, close, label or reprioritize them in one action.
+- **M.FLOW-US-H9 ⬜** As a Dev, Ctrl+Z undoes my last Workflow Desktop action by writing a compensating, recorded change, never by deleting history.
+- **M.FLOW-US-H10 ⬜** As a Dev, Ctrl+K opens a command palette to jump to any ticket or story by ID or text and run any command by name.
+- **M.FLOW-US-H11 ⬜** As a Dev, Workflow Desktop shows and edits a repo's epics and stories (text, status, acceptance, evidence) and their implements links to tickets.
+- **M.FLOW-US-H12 ⬜** As a Dev, a dependency graph shows a ticket's requires chain both ways, with what's blocking it highlighted (and a text list for screen readers).
+- **M.FLOW-US-H13 ⬜** As a Dev, an activity feed shows every ticket change across the workspace as it happens, and a toast tells me when an agent closes a ticket.
+- **M.FLOW-US-H14 ⬜** As a Dev, a ticket lists the commits whose subject names it, in every repo, with links to them on GitHub.
+- **M.FLOW-US-H15 ⬜** As a Dev, a metrics view shows throughput, cycle time (opened to closed), and open tickets by repo and type over time.
+- **M.FLOW-US-H16 ⬜** As a Dev, I export a filtered ticket list to CSV or markdown.
+- **M.FLOW-US-H17 ⬜** As a Dev, filing a ticket offers a template per type (fix: symptom, cause, test; feature: story, acceptance) and warns when a similar open ticket already exists.
+
+
+## Epic I — Storage: GitHub or local database
+- **M.FLOW-US-I1 ⬜** As a Dev, once the GitHub Issues spike (M.FLOW-T50) reports, I decide whether Issues becomes the ticket store or a mirror of workflow.db, and a two-way sync prototype runs behind the same library API so the CLI, hooks and orchestrator don't change.
+
 ## Tickets
 > Permanent log of every change and fix — this repo's ticket system. Rows are append-only: never
 > delete or reword one; only move its Status (open → closed / wont-do) and fill in Ref. Status is
@@ -151,3 +186,39 @@ updated: 2026-10-12
 | M.FLOW-T55 | 2026-10-16 | fix | closed | workflow db sync names the tickets it carries: its commit subject lists the tickets whose rows or history changed since the committed dump and ends with one in parentheses (or --ticket <ID>), so the commit-msg hook accepts it; with no ticket change it leaves the database for the next ticketed sync instead of failing every run | SyncCommitTests, TicketCliTests.Sync_commits_only_the_database_files_and_a_second_run_is_a_no_op |
 | M.FLOW-T56 | 2026-10-16 | fix | open | workflow db sync is always refused by the commit-msg hook (M.FLOW-T54): its subject 'Sync the workflow database' cites no ticket. Make DbSyncCommand commit as 'Sync the workflow database (ID)', citing --ticket <ID> when given, else the last ticket whose tickets/ticket_events row the staged workflow.sql diff adds (WorkflowDb.TicketsInDumpDiff), else a new closed chore ticket in MindAttic.Workflow (re-render its view, re-dump, commit docs/USER_STORIES.md too); and report commit.Error, not just commit.Output, on failure (the hook's message is on stderr, so the failure printed empty) | — |
 | M.FLOW-T57 | 2026-10-16 | chore | closed | install.ps1 adds this repo's 15 .prose/commands stubs for the shared global commands, so any LLM client finds them | mindattic-agent-standard/install.ps1 run 2026-10-16 |
+| M.FLOW-T58 | 2026-10-16 | fix | open | workflow ticket new/close rewrites and stages data/workflow.db + workflow.sql, so the next commit in MindAttic.Workflow carries every other agent's pending ticket changes (seen in f0aa401, M.FLOW-T57), breaking one-ticket-per-commit; stop auto-staging, and let a commit carry only its own ticket's rows | f0aa401 |
+| M.FLOW-T59 | 2026-10-16 | chore | open | Bug hunt: run an exhaustive /bughunt over the whole repo and fix every real bug found (each fix under its own fix ticket), then hunt again; close this only when a full pass finds nothing | user request 2026-10-16: approved repo sweep |
+| M.FLOW-T60 | 2026-10-16 | chore | open | Run the full unit test suite and fix every failure (each under its own fix ticket) until it passes; put the passing run in --ref. No test project: close this wont-do saying so | user request 2026-10-16: approved repo sweep |
+| M.FLOW-T61 | 2026-10-16 | chore | open | Clean up code and docs: remove dead code, stale comments and outdated or duplicated docs, and simplify where behaviour doesn't change (/simplify); tests stay green | user request 2026-10-16: approved repo sweep |
+| M.FLOW-T62 | 2026-10-16 | docs | open | Bring README.md up to date with the code as it is now (what it is, setup, usage, commands, current state), following codex-standard/README-STYLE.md; README.htm regenerated if the repo has one | user request 2026-10-16: approved repo sweep |
+| M.FLOW-T63 | 2026-10-16 | feature | open | Interactive tickets page (like MindAttic.Orchestrator's UI): list every repo's tickets, approve one for work, or reject it (wont-do) and archive it, and drag and drop tickets to set their queue priority, written back to the workflow database so the orchestrator and autopilot follow it | user request 2026-10-16 |
+| M.FLOW-T64 | 2026-10-16 | feature | closed | Scaffold Workflow Desktop: WPF app with the shared theme and AA overrides, logo.ico embedded as ApplicationIcon and window icon, deploy.ps1 single-file publish to C:\Apps\MindAttic.Workflow.Desktop and Desktop/Start-menu shortcuts with that icon | deploy.bat: C:\Apps\MindAttic.Workflow.Desktop + R:\Desktop\MindAttic Workflow.lnk (56172ed) |
+| M.FLOW-T65 | 2026-10-16 | feature | closed | Queue data in workflow.db: ticket_queue table (approval, priority) in schema v2, WorkflowDb.Queue/Approve/Reject/Reorder writing ticket_events, in the dump, CLI ticket approve\|reject\|priority, tests | QueueTests (12); d60f6ab |
+| M.FLOW-T66 | 2026-10-16 | feature | open | Workflow Desktop Queue view: open tickets in priority order, approve/reject, reorder by drag and drop plus buttons and Alt+Up/Down, live-region announcements | M.FLOW-US-G3 |
+| M.FLOW-T67 | 2026-10-16 | feature | open | Workflow Desktop Tickets view: virtualized list of every repo's tickets with repo/status/type/approval filters, text search, column sort and a show-archived toggle | M.FLOW-US-G4 |
+| M.FLOW-T68 | 2026-10-16 | feature | open | Workflow Desktop detail pane: fields, history timeline, links both directions with blocked state, and close/wont-do/ref/correct-type/link actions with inline errors | M.FLOW-US-G5 |
+| M.FLOW-T69 | 2026-10-16 | feature | open | Workflow Desktop new-ticket dialog (Ctrl+N): repo, type, summary, ref; remembers last repo and type | M.FLOW-US-G6 |
+| M.FLOW-T70 | 2026-10-16 | feature | open | Workflow Desktop live refresh (database file watcher plus poll, keyed list sync that keeps focus) and a Sync button running workflow db sync | M.FLOW-US-G7 |
+| M.FLOW-T71 | 2026-10-16 | chore | open | Workflow Desktop WCAG 2.2 AA audit: high-contrast theme swap, contrast-ratio unit test over every used token pair, automation-name test, Narrator, keyboard-only, 200% zoom and Accessibility Insights FastPass with no failures | M.FLOW-US-G8 |
+| M.FLOW-T72 | 2026-10-16 | feature | open | Append-only ticket comments: ticket_notes table (ticket, author, at, markdown), WorkflowDb.AddNote/Notes, workflow ticket note, shown in show and Desktop | M.FLOW-US-H1 |
+| M.FLOW-T73 | 2026-10-16 | feature | open | Ticket description body and recorded summary corrections: description stored apart from the summary, WorkflowDb.CorrectSummary(id, text, reason) writing ticket_events, CLI and Desktop | M.FLOW-US-H2 |
+| M.FLOW-T74 | 2026-10-16 | feature | open | Ticket labels and components: ticket_labels table, workflow ticket label add/remove, list --label filter, Desktop chips and filter | M.FLOW-US-H3 |
+| M.FLOW-T75 | 2026-10-16 | feature | open | Stored effort estimates: estimate column in ticket_queue seeded from Orchestrator TicketCosts medians, editable in CLI and Desktop, used by queue sort | M.FLOW-US-H4 |
+| M.FLOW-T76 | 2026-10-16 | feature | open | Assignee and claim visibility in Workflow Desktop: read Orchestrator assignments (agent, worktree, since) and show them on rows and in the detail pane | M.FLOW-US-H5 |
+| M.FLOW-T77 | 2026-10-16 | feature | open | Workflow Desktop Board view: Proposed / Approved / In progress / Done columns, card moves by drag or keyboard update approval or status | M.FLOW-US-H6 |
+| M.FLOW-T78 | 2026-10-16 | feature | open | Ticket query language and saved filters: parser for repo:/type:/status:/label:/approval: and free text, workflow ticket list --query, named saved filters in the database, Desktop filter bar | M.FLOW-US-H7 |
+| M.FLOW-T79 | 2026-10-16 | feature | open | Bulk actions in Workflow Desktop: multi-select (Shift/Ctrl and keyboard) then approve, reject, close, label or move, each recorded per ticket | M.FLOW-US-H8 |
+| M.FLOW-T80 | 2026-10-16 | feature | open | Undo in Workflow Desktop: compensating events for approve/reject/priority/close/link, Ctrl+Z and an undo toast, history kept intact | M.FLOW-US-H9 |
+| M.FLOW-T81 | 2026-10-16 | feature | open | Workflow Desktop command palette (Ctrl+K): fuzzy jump to tickets and stories, run any command, fully keyboard and screen-reader accessible | M.FLOW-US-H10 |
+| M.FLOW-T82 | 2026-10-16 | feature | open | Story and epic editing in Workflow Desktop: Stories view per repo, edit text/status/acceptance/evidence, implements links to tickets | M.FLOW-US-H11 |
+| M.FLOW-T83 | 2026-10-16 | feature | open | Dependency graph view: requires chains around a ticket, blockers highlighted, accessible text alternative | M.FLOW-US-H12 |
+| M.FLOW-T84 | 2026-10-16 | feature | open | Workspace activity feed from ticket_events across all repos, live in Workflow Desktop, toasts when agents close tickets | M.FLOW-US-H13 |
+| M.FLOW-T85 | 2026-10-16 | feature | open | Ticket-to-commit links: index commits by the ticket ID in their subject (git log per repo), show them in ticket show and the detail pane with GitHub links | M.FLOW-US-H14 |
+| M.FLOW-T86 | 2026-10-16 | feature | open | Ticket metrics: throughput, cycle time from ticket_events, open by repo and type over time, in CLI (workflow ticket stats) and a Desktop view with accessible tables | M.FLOW-US-H15 |
+| M.FLOW-T87 | 2026-10-16 | feature | open | Ticket export: workflow ticket list --format csv\|md and Desktop Export for the current filter | M.FLOW-US-H16 |
+| M.FLOW-T88 | 2026-10-16 | feature | open | Ticket templates per type and duplicate detection on summary similarity, in ticket new and the Desktop dialog | M.FLOW-US-H17 |
+| M.FLOW-T89 | 2026-10-16 | feature | open | Decide GitHub Issues as store or mirror from the M.FLOW-T50 report, then prototype two-way sync (issues <-> workflow.db) behind the WorkflowDb API, offline-first, keeping ticket IDs and history | M.FLOW-US-I1 |
+| M.FLOW-T90 | 2026-10-16 | feature | closed | Agent standard: cloning a new repo always creates the folder, clones it, tags it wip on GitHub, and restarts the open Launcher menu so the roster picks it up | — |
+| M.FLOW-T91 | 2026-10-16 | chore | open | Workflow Desktop uses MindAttic.Components.Wpf controls only: move Theme/Styles.xaml's buttons, field, combo, check, pills, row list, grid view, chips, cards, focus ring, tooltips, Theme/HighContrast.cs and ViewModels/Mvvm.cs into the package (M.COMP-T11) and consume them | M.COMP-T11 |
+| M.FLOW-T92 | 2026-10-16 | feature | closed | Workflow CLI and Workflow Desktop log to MindAttic.Log: the standalone MindAttic.Log.db Vault assigns MindAttic.Workflow (Component Cli/Desktop): every CLI command and its exit code or error, every Desktop database change, failed action, sync result and crash; CLI moves to MindAttic.Vault 6.0.0 for VaultPaths.LoggingDbPath | TicketCliTests.Every_command_is_logged_to_mindattic_log_with_its_outcome; b71dc34 |
+| M.FLOW-T93 | 2026-10-16 | chore | closed | Update workflow.db, workflow.sql, USER_STORIES.md | — |
