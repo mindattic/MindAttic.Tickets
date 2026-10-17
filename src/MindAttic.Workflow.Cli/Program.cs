@@ -90,7 +90,8 @@ catch (Exception ex) when (ex is CommandParseException or CommandRuntimeExceptio
     Spectre.Console.AnsiConsole.MarkupLine($"[red]{Spectre.Console.Markup.Escape(ex.Message)}[/]");
     return 2;
 }
-catch (Exception ex) when (ex is InvalidOperationException or ArgumentException or KeyNotFoundException or IOException or HttpRequestException)
+catch (Exception ex) when (ex is InvalidOperationException or ArgumentException or KeyNotFoundException or IOException or HttpRequestException
+    or Microsoft.Data.Sqlite.SqliteException)
 {
     log.Error(ex, "{Command:l} failed: {Message:l}", line, ex.Message);
     Spectre.Console.AnsiConsole.MarkupLine($"[red]error:[/] {Spectre.Console.Markup.Escape(ex.Message)}");

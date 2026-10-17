@@ -172,7 +172,7 @@ public sealed class DbSyncCommand : Command<DbSyncCommand.Settings>
         AnsiConsole.MarkupLine($"[green]Committed the workflow database:[/] {Output.Esc(subject)}");
         if (settings.NoPush) return 0;
         var push = Git.Run(self.Path, "push", "-q");
-        AnsiConsole.MarkupLine(push.Ok ? "[green]Pushed.[/]" : $"[yellow]Push failed (pull and sync again):[/] {Output.Esc(push.Output)}");
+        AnsiConsole.MarkupLine(push.Ok ? "[green]Pushed.[/]" : $"[yellow]Push failed (pull and sync again):[/] {Output.Esc((push.Output + push.Error).Trim())}");
         return push.Ok ? 0 : 1;
     }
 }

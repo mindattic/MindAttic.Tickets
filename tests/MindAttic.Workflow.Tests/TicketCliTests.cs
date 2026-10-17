@@ -312,6 +312,20 @@ public sealed class TicketCliTests
     }
 
     [Test]
+    public void Once_migrated_rollout_imports_a_new_repos_own_stories_file_instead_of_overwriting_it()
+    {
+        MakeRepo("Alpha", "AL", "| AL-T1 | 2026-10-01 | fix | open | one | — |\n");
+        Directory.CreateDirectory(Path.Combine(root, "MindAttic.Workflow", ".git"));
+        Run("db", "migrate", "--cutover");
+        MakeRepo("Delta", "DE", "| DE-T1 | 2026-10-02 | feature | open | keep me | — |\n");
+
+        Assert.That(Run("repos", "rollout", "tickets").Out, Does.Contain("would Delta: import its USER_STORIES.md"));
+        Run("repos", "rollout", "tickets", "--apply");
+        Assert.That(Run("ticket", "list", "--repo", "Delta", "--json").Out, Does.Contain("\"id\": \"DE-T1\"").And.Contain("keep me"), "its own tickets, not a blank log");
+        Assert.That(File.ReadAllText(Path.Combine(root, "Delta", "docs", "USER_STORIES.md")), Does.Contain("| DE-T1 |").And.Contain("GENERATED from"));
+    }
+
+    [Test]
     public void Git_runs_never_prompt_and_a_hung_one_is_killed_at_its_timeout()
     {
         Git(root, "init", "-q");

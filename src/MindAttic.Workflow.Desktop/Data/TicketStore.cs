@@ -68,8 +68,10 @@ public sealed class TicketStore(string root)
     /// <summary>Runs <c>workflow db sync</c> (render, dump, commit and push the database); returns its exit code and output.</summary>
     public async Task<(int Code, string Output)> SyncAsync()
     {
-        var psi = new ProcessStartInfo("workflow", "db sync")
+        // --root: the window's workspace, which needn't be the CLI's default one.
+        var psi = new ProcessStartInfo("workflow")
         {
+            ArgumentList = { "db", "sync", "--root", Root },
             WorkingDirectory = Path.Combine(Root, "MindAttic.Workflow"),
             RedirectStandardOutput = true,
             RedirectStandardError = true,

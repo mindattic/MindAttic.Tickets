@@ -171,6 +171,18 @@ public sealed class WorkflowDbTests
     }
 
     [Test]
+    public void The_first_backlog_item_lands_in_the_backlog_section_not_after_the_one_that_follows_it()
+    {
+        var a = MakeRepo("Eta", "ET", "## Priority backlog\n_Nothing recorded yet._\n\n## Notes\nSome prose.\n", "");
+        using var db = WorkflowDb.Open(Path.Combine(root, "b.db"));
+        db.Import([a]);
+        db.AddBacklogItem("Eta", "Do the thing");
+
+        var text = System.Text.Encoding.UTF8.GetString(db.Export("Eta")!);
+        Assert.That(text, Does.Contain("## Priority backlog\n_Nothing recorded yet._\n1. Do the thing\n\n## Notes\nSome prose.\n"));
+    }
+
+    [Test]
     public void Stories_epics_and_backlog_items_are_added_and_edited_in_the_database_and_the_view_follows()
     {
         var (db, _) = Migrated();

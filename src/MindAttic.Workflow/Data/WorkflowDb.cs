@@ -573,10 +573,11 @@ public sealed partial class WorkflowDb : IDisposable
         var line = $"- **{id} {glyph}** {OneLine(text)}";
 
         using var tx = db.BeginTransaction();
-        var after = (long)(Scalar(
+        // MAX over no rows is NULL (DBNull here), not a missing row.
+        var after = Scalar(
             "SELECT MAX(b.ordinal) FROM blocks b WHERE b.repo = $r AND (" +
             "(b.kind = 'epic' AND b.ref = $e) OR (b.kind = 'story' AND b.ref IN (SELECT CAST(uid AS TEXT) FROM stories WHERE repo = $r AND epic = $e)))", tx,
-            ("$r", name), ("$e", e)) ?? throw new InvalidOperationException($"{name}'s epic {e} has no heading block."));
+            ("$r", name), ("$e", e)) as long? ?? throw new InvalidOperationException($"{name}'s epic {e} has no heading block.");
         var uid = (long)Scalar(
             "INSERT INTO stories (repo, story_id, epic, status, glyph, suffix, text, source, ordinal) " +
             "VALUES ($r, $id, $e, $s, $g, '', $t, 'bullet', (SELECT COALESCE(MAX(ordinal), -1) + 1 FROM stories WHERE repo = $r)) RETURNING uid", tx,
@@ -635,6 +636,21 @@ public sealed partial class WorkflowDb : IDisposable
         var position = last.Count > 0 ? last[0].Item1 + 1 : heading.Item1 + 1;
         var number = Rows("SELECT COUNT(*) FROM backlog_items WHERE repo = $r", r => r.GetInt64(0), ("$r", name)).Single() + 1;
         using var tx = db.BeginTransaction();
+        if (last.Count == 0)
+        {
+            // The heading's raw block can run on past the backlog (blank lines, later sections): split it where the backlog's
+            // content ends, so the first item lands in the backlog rather than after whatever follows it.
+            var lines = heading.Item2!.Split('\n');
+            var at = Array.FindIndex(lines, l => l.Contains("## Priority backlog", StringComparison.Ordinal));
+            var end = Array.FindIndex(lines, at + 1, l => l.StartsWith("# ", StringComparison.Ordinal) || l.StartsWith("## ", StringComparison.Ordinal));
+            if (end < 0) end = lines.Length;
+            while (end - 1 > at && lines[end - 1].Trim().Length == 0) end--;
+            if (end < lines.Length)
+            {
+                Exec("UPDATE blocks SET text = $t WHERE repo = $r AND ordinal = $o", tx, ("$t", string.Join("\n", lines[..end])), ("$r", name), ("$o", heading.Item1));
+                InsertBlock(name, heading.Item1 + 1, "raw", null, string.Join("\n", lines[end..]), tx);
+            }
+        }
         var item =(long)Scalar("INSERT INTO backlog_items (repo, ordinal, text) VALUES ($r, $o, $t) RETURNING uid", tx, ("$r", name), ("$o", position), ("$t", OneLine(text)))!;
         foreach (var sid in StoryDocument.StoryIdRef().Matches(text).Select(m => m.Value).Distinct(StringComparer.Ordinal))
             Exec("INSERT OR IGNORE INTO backlog_refs (item_uid, story_id) VALUES ($i, $s)", tx, ("$i", item), ("$s", sid));

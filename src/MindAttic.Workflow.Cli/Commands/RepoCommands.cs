@@ -204,6 +204,31 @@ public sealed class ReposRolloutTicketsCommand : Command<ReposRolloutTicketsComm
         var changes = 0;
         foreach (var r in repos.Where(r => !known.ContainsKey(r.Name)))
         {
+            // A repo that arrives with its own USER_STORIES.md is imported, never replaced: rendering a blank entry's view
+            // over that file would lose its stories and tickets.
+            var bytes = File.Exists(r.StoriesPath) ? File.ReadAllBytes(r.StoriesPath) : null;
+            if (bytes is not null && !Data.WorkflowDb.IsPointer(bytes))
+            {
+                if (Stories.StoryDocument.FromBytes(bytes).Code is not { } own)
+                {
+                    AnsiConsole.MarkupLine($"[yellow]{Output.Esc(r.Name)}:[/] has USER_STORIES.md but no 'code:' front-matter; skipped.");
+                    continue;
+                }
+                if (taken.Contains(own))
+                {
+                    AnsiConsole.MarkupLine($"[yellow]{Output.Esc(r.Name)}:[/] its code '{Output.Esc(own)}' is already another repo's; skipped.");
+                    continue;
+                }
+                taken.Add(own);
+                changes++;
+                AnsiConsole.MarkupLine($"{(settings.Apply ? "[green]done[/]" : "[grey]would[/]")} {Output.Esc(r.Name)}: import its USER_STORIES.md into the workflow database (code {Output.Esc(own)})");
+                if (!settings.Apply) continue;
+                if (!StoryFile.Load(r.StoriesPath).HasTicketsSection) Seed(r);
+                if (db.Import([r]).Single().RoundTrips) db.Render(settings.Workspace, [r.Name]);
+                else AnsiConsole.MarkupLine($"[red]{Output.Esc(r.Name)}:[/] imported, but it doesn't rebuild byte-for-byte, so its file was left as it is.");
+                continue;
+            }
+
             var code = WorkspaceTickets.DeriveCode(r.Name, taken);
             taken.Add(code);
             changes++;

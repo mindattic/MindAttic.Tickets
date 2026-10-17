@@ -32,13 +32,15 @@ public sealed partial record RepoStatus(
         var stashes = Git.Run(repo.Path, "stash", "list");
         var ignored = Git.Run(repo.Path, "ls-files", "--others", "--ignored", "--exclude-standard", "--directory");
 
+        // A check that couldn't run is an error, never "nothing local": reading it as zero would let prune delete unseen work.
+        var failed = new[] { unpushed, stashes, ignored }.FirstOrDefault(r => !r.Ok);
         return new RepoStatus(
             repo, url, GitHubSlugFrom(url),
             status.Lines.Count,
             unpushed.Ok ? unpushed.Lines.Count : 0,
             stashes.Ok ? stashes.Lines.Count : 0,
             ignored.Ok ? [.. ignored.Lines.Where(p => !IsRegenerable(p))] : [],
-            null);
+            failed is null ? null : failed.Error.Trim() is { Length: > 0 } e ? e : $"git exited {failed.ExitCode}");
     }
 
     /// <summary>
