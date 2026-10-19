@@ -537,7 +537,6 @@ public sealed partial class WorkflowDb : IDisposable
         if (Scalar("SELECT 1 FROM repos WHERE name = $n COLLATE NOCASE", null, ("$n", newName)) is not null)
             throw new InvalidOperationException($"A repo named '{newName}' already exists.");
 
-        var ticketIds = Rows("SELECT id FROM tickets WHERE repo = $r", r => r.GetString(0), ("$r", name)).ToList();
         var backup = $"{Path}.{DateTime.UtcNow:yyyyMMdd'T'HHmmss'Z'}.bak";
         using (var dest = new SqliteConnection($"Data Source={backup};Pooling=False"))
         {
@@ -546,6 +545,7 @@ public sealed partial class WorkflowDb : IDisposable
         }
 
         Exec("PRAGMA foreign_keys = OFF;");
+        int ticketsMoved;
         try
         {
             using (var tx = db.BeginTransaction())
@@ -557,15 +557,20 @@ public sealed partial class WorkflowDb : IDisposable
                 RenameInPage(name, newName, tx);
                 Exec("INSERT INTO repo_renames (old_name, new_name, at, reason) VALUES ($o, $n, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), $reason)", tx,
                     ("$o", name), ("$n", newName), ("$reason", reason.Trim()));
+                // Read the moved tickets inside the same transaction, after the UPDATE above: reading them earlier
+                // (before the backup and the transaction even opened) raced any concurrent `ticket new` against this
+                // repo, which would get silently renamed with no 'repo' history row and an undercounted TicketsMoved.
+                var ticketIds = Rows("SELECT id FROM tickets WHERE repo = $n", tx, r => r.GetString(0), ("$n", newName)).ToList();
                 foreach (var id in ticketIds)
                     Exec("INSERT INTO ticket_events (ticket_id, at, field, old, new) VALUES ($id, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), 'repo', $o, $n)", tx,
                         ("$id", id), ("$o", name), ("$n", newName));
+                ticketsMoved = ticketIds.Count;
                 EnsureSchema(tx); // the trigger comes straight back, before commit, so no other connection ever sees it missing
                 tx.Commit();
             }
         }
         finally { Exec("PRAGMA foreign_keys = ON;"); }
-        return new RenameResult(newName, ticketIds.Count, backup);
+        return new RenameResult(newName, ticketsMoved, backup);
     }
 
     // The page names its repo too: front matter's "project: <name>", the "# <name> — User Stories" title,
