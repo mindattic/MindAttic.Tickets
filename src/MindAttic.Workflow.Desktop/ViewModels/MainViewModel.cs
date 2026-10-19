@@ -161,11 +161,17 @@ public sealed partial class MainViewModel : ObservableObject
 
     // ── Loading ─────────────────────────────────────────────────────────────
 
+    private int refreshRequest;
+
     public async Task RefreshAsync()
     {
+        // The poll, the file watcher and every action refresh independently; a snapshot read before a change must not
+        // land after (and overwrite) one read after it.
+        var request = ++refreshRequest;
         try
         {
             var s = await Task.Run(store.Load);
+            if (request != refreshRequest) return;
             snapshot = s;
             foreach (var r in s.Repos.Where(r => !RepoChoices.Contains(r))) RepoChoices.Add(r);
             ApplyFilters();
@@ -233,11 +239,17 @@ public sealed partial class MainViewModel : ObservableObject
         Announcement = $"Sorted by {SortBy}, {(SortDescending ? "descending" : "ascending")}.";
     }
 
+    private int detailRequest;
+
     private async Task ShowDetailAsync(string id, bool quiet = false)
     {
+        // Loads run on the thread pool and can finish out of order (arrowing through rows, a refresh beside a click):
+        // only the latest request may set the pane, or it shows, and Close / Won't do act on, a ticket that isn't selected.
+        var request = ++detailRequest;
         try
         {
             var d = await Task.Run(() => store.Detail(id));
+            if (request != detailRequest) return;
             Detail = d is null ? null : new DetailViewModel(d);
             if (!quiet && Detail is { } v) StatusMessage = $"{v.Id}: {v.WorkText}";
         }
