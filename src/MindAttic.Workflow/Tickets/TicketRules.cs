@@ -20,10 +20,15 @@ public static partial class TicketRules
     [GeneratedRegex(@"^((?:[A-Z]\.)?[A-Z][A-Z0-9]*)-T(\d+)$")]
     private static partial Regex IdPattern();
 
-    /// <summary>The number in <c>CODE-T&lt;n&gt;</c>, or null when <paramref name="id"/> isn't one.</summary>
+    // Case-insensitive on purpose: the front-matter 'code:' accepts a lowercase code (Validate flags it as malformed), and
+    // if its tickets' numbers didn't parse, NextId would see every one as 0 and hand out "-T1" again on every Add.
+    [GeneratedRegex(@"^((?:[A-Z]\.)?[A-Z][A-Z0-9]*)-T(\d+)$", RegexOptions.IgnoreCase)]
+    private static partial Regex IdNumberPattern();
+
+    /// <summary>The number in <c>CODE-T&lt;n&gt;</c> (whatever the code's case), or null when <paramref name="id"/> isn't one.</summary>
     public static int? ParseNumber(string id)
     {
-        var m = IdPattern().Match(id);
+        var m = IdNumberPattern().Match(id);
         return m.Success && int.TryParse(m.Groups[2].Value, NumberStyles.None, CultureInfo.InvariantCulture, out var n) ? n : null;
     }
 

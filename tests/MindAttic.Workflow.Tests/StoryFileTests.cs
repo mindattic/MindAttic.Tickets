@@ -28,6 +28,16 @@ public sealed class StoryFileTests
         "| DEM-T1 | 2026-10-01 | docs | closed | Start the log | — |\n" +
         "| DEM-T4 | 2026-10-02 | fix | open | Fix the a\\|b split | DEM-US-A1 |\n";
 
+    [Test]
+    public void A_lowercase_code_still_numbers_new_tickets_past_the_existing_ones()
+    {
+        // 'code: flow' is accepted by the front-matter but isn't the canonical upper-case form; its tickets' numbers must
+        // still parse, or every Add sees them all as 0 and hands out flow-T1 again.
+        var file = StoryFile.Parse(Sample.Replace("code: DEM", "code: flow").Replace("DEM-T", "flow-T"));
+        Assert.That(file.Add("fix", "open", "one more", "").Id, Is.EqualTo("flow-T5"));
+        Assert.That(file.Add("fix", "open", "and another", "").Id, Is.EqualTo("flow-T6"));
+    }
+
     private string dir = "";
 
     [SetUp]
