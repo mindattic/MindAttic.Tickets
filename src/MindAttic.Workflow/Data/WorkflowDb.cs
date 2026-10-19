@@ -13,6 +13,12 @@ public sealed record Link(string From, string To, string Kind, string? Note);
 /// <summary>One change to a ticket: its creation, or a status or ref change.</summary>
 public sealed record TicketEvent(string TicketId, string At, string Field, string? Old, string? New);
 
+/// <summary>One repo rename, kept forever so a repo (and its tickets) can be traced back to its original name.</summary>
+public sealed record RepoRename(string OldName, string NewName, string At, string Reason);
+
+/// <summary>What <see cref="WorkflowDb.RenameRepo"/> did.</summary>
+public sealed record RenameResult(string NewName, int TicketsMoved, string BackupPath);
+
 /// <summary>A story row as stored.</summary>
 public sealed record StoredStory(long Uid, string Repo, string Id, string? Status, string? Glyph, string Suffix, string Text,
     string Source, long? ParentUid, string? Epic, string? Section, string? Evidence, string? Acceptance);
@@ -28,7 +34,7 @@ public sealed record ImportReport(string Repo, string Code, int Epics, int Stori
 /// </summary>
 public sealed partial class WorkflowDb : IDisposable
 {
-    public const int SchemaVersion = 2;
+    public const int SchemaVersion = 3;
     public const string RelativePath = "data/workflow.db";
     public const string DumpRelativePath = "data/workflow.sql";
     public const string EnvVar = "MINDATTIC_WORKFLOW_DB";
@@ -131,6 +137,16 @@ public sealed partial class WorkflowDb : IDisposable
                 approval TEXT NOT NULL DEFAULT 'proposed' CHECK (approval IN ('proposed', 'approved', 'rejected')),
                 priority INTEGER NOT NULL DEFAULT 0,
                 updated TEXT NOT NULL);
+            -- Schema 3: a repo's folder-name key can be renamed (RenameRepo); every rename is kept forever here,
+            -- so the repo (and each of its tickets, via a 'repo' ticket_events row) traces back to its original name.
+            CREATE TABLE IF NOT EXISTS repo_renames (
+                seq INTEGER PRIMARY KEY, old_name TEXT NOT NULL, new_name TEXT NOT NULL, at TEXT NOT NULL, reason TEXT NOT NULL);
+            CREATE INDEX IF NOT EXISTS repo_renames_by_old ON repo_renames (old_name);
+            CREATE INDEX IF NOT EXISTS repo_renames_by_new ON repo_renames (new_name);
+            CREATE TRIGGER IF NOT EXISTS repo_renames_no_delete BEFORE DELETE ON repo_renames
+            BEGIN SELECT RAISE(ABORT, 'repo renames are never deleted'); END;
+            CREATE TRIGGER IF NOT EXISTS repo_renames_no_update BEFORE UPDATE ON repo_renames
+            BEGIN SELECT RAISE(ABORT, 'repo renames are append-only'); END;
 
             -- Append-only: a ticket is never deleted, and only its status and ref ever change.
             CREATE TRIGGER IF NOT EXISTS tickets_no_delete BEFORE DELETE ON tickets
@@ -416,6 +432,8 @@ public sealed partial class WorkflowDb : IDisposable
         try
         {
             var (name, code) = Rows("SELECT name, code FROM repos WHERE name = $r COLLATE NOCASE", r => (r.GetString(0), r.GetString(1)), ("$r", repo)).FirstOrDefault();
+            if (name is null && ResolveRenamedName(repo) is { } current)
+                (name, code) = Rows("SELECT name, code FROM repos WHERE name = $r COLLATE NOCASE", r => (r.GetString(0), r.GetString(1)), ("$r", current)).FirstOrDefault();
             if (name is null) throw new InvalidOperationException($"{repo} isn't in the workflow database; run 'workflow db migrate' (or 'workflow repos rollout tickets --apply').");
             var next = (long)(Scalar("SELECT COALESCE(MAX(number), 0) + 1 FROM tickets WHERE repo = $r", null, ("$r", name)) ?? 1L);
             var ordinal = (long)(Scalar("SELECT COALESCE(MAX(ordinal), -1) + 1 FROM tickets WHERE repo = $r", null, ("$r", name)) ?? 0L);
@@ -473,6 +491,74 @@ public sealed partial class WorkflowDb : IDisposable
     public IReadOnlyList<TicketEvent> History(string id) =>
         [.. Rows("SELECT ticket_id, at, field, old, new FROM ticket_events WHERE ticket_id = $id COLLATE NOCASE ORDER BY seq",
             r => new TicketEvent(r.GetString(0), r.GetString(1), r.GetString(2), r.IsDBNull(3) ? null : r.GetString(3), r.IsDBNull(4) ? null : r.GetString(4)), ("$id", id))];
+
+    // ── Repo rename ─────────────────────────────────────────────────────────
+
+    /// <summary>
+    /// Renames a repo's folder-name key everywhere the database keys by it (repos, blocks, epics, stories,
+    /// backlog_items, tickets.repo), in one transaction, after backing up the database file. Ticket IDs, codes,
+    /// dates, types and summaries never change — this is the other sanctioned exception to the tickets append-only
+    /// guard (alongside <see cref="CorrectType"/>), lifted for this update only. The old name is kept forever in
+    /// <see cref="RepoRenames"/>, and every one of the repo's tickets gets a 'repo' history entry, so the repo and
+    /// each of its tickets can always be traced back to where they started. Never touches anything on disk.
+    /// </summary>
+    public RenameResult RenameRepo(string oldName, string newName, string reason)
+    {
+        if (string.IsNullOrWhiteSpace(newName)) throw new ArgumentException("A rename needs a new name.", nameof(newName));
+        if (string.IsNullOrWhiteSpace(reason)) throw new ArgumentException("A rename needs a reason.", nameof(reason));
+        var (name, _) = RepoRow(oldName);
+        newName = newName.Trim();
+        if (name.Equals(newName, StringComparison.Ordinal)) throw new InvalidOperationException($"{name} is already named that.");
+        if (Scalar("SELECT 1 FROM repos WHERE name = $n COLLATE NOCASE", null, ("$n", newName)) is not null)
+            throw new InvalidOperationException($"A repo named '{newName}' already exists.");
+
+        var ticketIds = Rows("SELECT id FROM tickets WHERE repo = $r", r => r.GetString(0), ("$r", name)).ToList();
+        var backup = $"{Path}.{DateTime.UtcNow:yyyyMMdd'T'HHmmss'Z'}.bak";
+        using (var dest = new SqliteConnection($"Data Source={backup};Pooling=False"))
+        {
+            dest.Open();
+            db.BackupDatabase(dest); // SQLite's online backup API: safe to run against the live, open connection
+        }
+
+        Exec("PRAGMA foreign_keys = OFF;");
+        try
+        {
+            using (var tx = db.BeginTransaction())
+            {
+                Exec("DROP TRIGGER IF EXISTS tickets_append_only", tx);
+                Exec("UPDATE repos SET name = $n WHERE name = $o", tx, ("$n", newName), ("$o", name));
+                foreach (var table in new[] { "blocks", "epics", "stories", "backlog_items", "tickets" })
+                    Exec($"UPDATE {table} SET repo = $n WHERE repo = $o", tx, ("$n", newName), ("$o", name));
+                Exec("INSERT INTO repo_renames (old_name, new_name, at, reason) VALUES ($o, $n, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), $reason)", tx,
+                    ("$o", name), ("$n", newName), ("$reason", reason.Trim()));
+                foreach (var id in ticketIds)
+                    Exec("INSERT INTO ticket_events (ticket_id, at, field, old, new) VALUES ($id, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), 'repo', $o, $n)", tx,
+                        ("$id", id), ("$o", name), ("$n", newName));
+                tx.Commit();
+            }
+        }
+        finally { Exec("PRAGMA foreign_keys = ON;"); }
+        EnsureSchema(); // the trigger comes straight back
+        return new RenameResult(newName, ticketIds.Count, backup);
+    }
+
+    /// <summary>Every rename on record, oldest first; optionally only those touching <paramref name="name"/> (as old or new).</summary>
+    public IReadOnlyList<RepoRename> RepoRenames(string? name = null) =>
+        [.. Rows("SELECT old_name, new_name, at, reason FROM repo_renames WHERE $n IS NULL OR old_name = $n COLLATE NOCASE OR new_name = $n COLLATE NOCASE ORDER BY seq",
+            r => new RepoRename(r.GetString(0), r.GetString(1), r.GetString(2), r.GetString(3)), ("$n", name))];
+
+    /// <summary>Follows the rename chain from a former repo name to its current one; null if <paramref name="name"/> was never a repo's name.</summary>
+    private string? ResolveRenamedName(string name)
+    {
+        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { name };
+        var cur = name;
+        while (true)
+        {
+            var next = Rows("SELECT new_name FROM repo_renames WHERE old_name = $o COLLATE NOCASE ORDER BY seq DESC LIMIT 1", r => r.GetString(0), ("$o", cur)).FirstOrDefault();
+            if (next is null || !seen.Add(next)) return seen.Count > 1 ? cur : null;
+            cur = next;
+        }
+    }
 
     // ── Links ───────────────────────────────────────────────────────────────
 
@@ -661,6 +747,9 @@ public sealed partial class WorkflowDb : IDisposable
     private (string Name, string Code) RepoRow(string repo)
     {
         var row = Rows("SELECT name, code FROM repos WHERE name = $r COLLATE NOCASE", r => (r.GetString(0), r.GetString(1)), ("$r", repo)).FirstOrDefault();
+        if (row.Item1 is not null) return row;
+        if (ResolveRenamedName(repo) is { } current)
+            row = Rows("SELECT name, code FROM repos WHERE name = $r COLLATE NOCASE", r => (r.GetString(0), r.GetString(1)), ("$r", current)).FirstOrDefault();
         return row.Item1 is null ? throw new KeyNotFoundException($"{repo} isn't in the workflow database.") : row;
     }
 
@@ -711,7 +800,7 @@ public sealed partial class WorkflowDb : IDisposable
         foreach (var (table, order) in new[]
         {
             ("meta", "key"), ("repos", "name"), ("epics", "repo, key"), ("stories", "uid"), ("backlog_items", "uid"), ("backlog_refs", "item_uid, story_id"),
-            ("tickets", "repo, ordinal"), ("ticket_events", "seq"), ("ticket_queue", "ticket_id"), ("links", "from_id, to_id, kind"), ("blocks", "repo, ordinal"),
+            ("tickets", "repo, ordinal"), ("ticket_events", "seq"), ("ticket_queue", "ticket_id"), ("repo_renames", "seq"), ("links", "from_id, to_id, kind"), ("blocks", "repo, ordinal"),
         })
         {
             sb.Append("\n-- ").Append(table).Append('\n');

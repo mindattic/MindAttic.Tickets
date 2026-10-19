@@ -71,7 +71,12 @@ repo under `D:\Projects\MindAttic`.
 
 ### 4.3 Key services (verbs)
 - `WorkflowDb.Add` / `Close` / `CorrectType` — append a ticket, move its status, or relabel a
-  nonstandard type (the one exception to append-only, recorded in `ticket_events`).
+  nonstandard type (one of the two sanctioned exceptions to append-only, recorded in `ticket_events`).
+- `WorkflowDb.RenameRepo` / `RepoRenames` — rename a repo's folder-name key everywhere it's used
+  (repos, blocks, epics, stories, backlog_items, tickets.repo), backing up the database first; the
+  other sanctioned exception. The old name is kept forever in `repo_renames`, and each moved ticket
+  gets a 'repo' `ticket_events` row, so the repo and every ticket trace back to their original name;
+  a stale `--repo <old name>` keeps resolving through that history.
 - `WorkflowDb.AddStory` / `EditStory` / `SetStoryStatus`, `AddEpic`, `AddBacklogItem` — edit a
   repo's stories, epics and backlog directly in the database.
 - `WorkflowDb.AddLink` / `RemoveLink` / `Requires` — links between any two tickets or stories
@@ -106,7 +111,9 @@ repo's `docs/USER_STORIES.md` is a generated, read-only view (`workflow db rende
 
 ### {#M.FLOW-LAW-2} Ticket rows are append-only.
 A row is never deleted or reworded. The database enforces it with triggers: a ticket can't be deleted, and only
-its status and ref can be updated; every change is recorded in `ticket_events`. Only Status (open → closed / wont-do) and Ref change. IDs are
+its status and ref can be updated; every change is recorded in `ticket_events`. Only Status (open → closed / wont-do) and Ref change,
+with two sanctioned, logged exceptions that lift the trigger for one update: `CorrectType` (a nonstandard type) and
+`RenameRepo` (its `repo` key, when the repo's folder is renamed). IDs are
 the highest existing number + 1 and are never reused. `ticket verify` fails if a committed row was
 deleted or reworded.
 
@@ -125,10 +132,10 @@ No code path links an LLM SDK or calls an LLM API.
 
 ## 6. Verified state {#M.FLOW-§6}
 - `dotnet build MindAttic.Workflow.slnx`: 0 warnings, 0 errors.
-- `dotnet test`: 78 passing NUnit tests (database import/export/links/history, story/epic/backlog
-  editing, the CLI commands through the real `workflow` on a temp workspace, ticket parsing and
-  writing on the markdown fallback, rules, workspace checks, code derivation, git status on real
-  temp repos, GitHub index with a fake handler, dependency scan, prune planning).
+- `dotnet test`: 100 passing NUnit tests (database import/export/links/history, repo rename,
+  story/epic/backlog editing, the CLI commands through the real `workflow` on a temp workspace,
+  ticket parsing and writing on the markdown fallback, rules, workspace checks, code derivation,
+  git status on real temp repos, GitHub index with a fake handler, dependency scan, prune planning).
 - First real run (2026-10-12): `ticket list` read 35 tickets across the workspace, `codes check`
   found the duplicate `GG` code, and `repos prune` blocked MindAttic.Telemetry because
   GridGameGaiden loads it from its folder, resolved MindAttic.Cryptography's pre-rename origin,

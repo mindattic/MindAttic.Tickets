@@ -326,6 +326,27 @@ public sealed class TicketCliTests
     }
 
     [Test]
+    public void Rename_moves_a_repos_tickets_to_its_new_name_and_old_name_references_still_resolve()
+    {
+        MakeRepo("Old", "OL", "| OL-T1 | 2026-10-01 | fix | open | one | — |\n");
+        Directory.CreateDirectory(Path.Combine(root, "MindAttic.Workflow", ".git"));
+        Run("db", "migrate", "--cutover");
+
+        var rename = Run("repos", "rename", "Old", "New", "--reason", "folder renamed");
+        Assert.That(rename.Code, Is.Zero, rename.Out);
+        Assert.That(rename.Out, Does.Contain("Old -> New").And.Contain("1 ticket(s)").And.Contain("backed up to"));
+
+        Assert.That(Run("repos", "renames").Out, Does.Contain("Old").And.Contain("New").And.Contain("folder renamed"));
+        Assert.That(Run("ticket", "show", "OL-T1", "--json").Out, Does.Contain("\"repo\": \"New\""));
+
+        // A ticket command naming the old folder still finds the (now renamed) repo.
+        Assert.That(Run("ticket", "new", "--repo", "Old", "--type", "fix", "--summary", "two").Out.Trim(), Is.EqualTo("OL-T2"));
+        Assert.That(Run("db", "check").Code, Is.Zero);
+
+        Assert.That(Run("repos", "rename", "Nope", "Whatever", "--reason", "x").Code, Is.Not.Zero);
+    }
+
+    [Test]
     public void Git_runs_never_prompt_and_a_hung_one_is_killed_at_its_timeout()
     {
         Git(root, "init", "-q");

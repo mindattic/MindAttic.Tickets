@@ -70,6 +70,8 @@ app.Configure(config =>
         r.AddCommand<ReposStatusCommand>("status").WithDescription("Local-only work and GitHub state for every repo.");
         r.AddCommand<ReposPruneCommand>("prune").WithDescription("Delete folders of archived / untagged repos that are safe to remove (preview unless --apply).");
         r.AddCommand<ReposRolloutTicketsCommand>("rollout").WithDescription("Give every repo a USER_STORIES.md with a ticket log (preview unless --apply).");
+        r.AddCommand<ReposRenameCommand>("rename").WithDescription("Rename a repo's folder-name key everywhere the database keys it (backed up first; doesn't touch disk).");
+        r.AddCommand<ReposRenamesCommand>("renames").WithDescription("List recorded repo renames (--repo to filter).");
     });
 
     config.AddCommand<ViewCommand>("view").WithDescription("Open a read-only page of every repo's stories and tickets in MindAttic.Browser.");

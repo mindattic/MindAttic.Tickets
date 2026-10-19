@@ -213,6 +213,50 @@ public sealed class WorkflowDbTests
     }
 
     [Test]
+    public void Renaming_a_repo_moves_every_row_backs_up_first_and_keeps_the_old_name_traceable()
+    {
+        var (db, _) = Migrated();
+        using (db)
+        {
+            var before = db.Tickets("Alpha").Count;
+            var result = db.RenameRepo("Alpha", "Omega", "GTFO.Absurd* -> GTFO.EZ.Absurd*");
+            Assert.That(result.NewName, Is.EqualTo("Omega"));
+            Assert.That(result.TicketsMoved, Is.EqualTo(before));
+            Assert.That(File.Exists(result.BackupPath), "a backup of the database is left behind");
+
+            Assert.That(db.Repos().Select(r => r.Name), Does.Contain("Omega").And.Not.Contain("Alpha"));
+            Assert.That(db.Tickets("Omega").Select(t => t.Ticket.Id), Is.EquivalentTo(new[] { "AL-T1", "AL-T2" }), "ticket IDs and codes never change");
+            Assert.That(db.Stories("Omega").Select(s => s.Id), Does.Contain("AL-US-A1"));
+            Assert.That(System.Text.Encoding.UTF8.GetString(db.Export("Omega")!), Does.Contain("| AL-T1 |"));
+            Assert.That(db.Export("Alpha"), Is.Null, "the old name is gone from the live data");
+
+            // Every ticket that moved got its own 'repo' history entry, tracing it back to Alpha.
+            Assert.That(db.History("AL-T1").Select(e => (e.Field, e.Old, e.New)), Does.Contain(("repo", (string?)"Alpha", (string?)"Omega")));
+
+            var renames = db.RepoRenames();
+            Assert.That(renames.Single(), Is.EqualTo(new RepoRename("Alpha", "Omega", renames[0].At, "GTFO.Absurd* -> GTFO.EZ.Absurd*")));
+            Assert.That(db.RepoRenames("alpha").Single().NewName, Is.EqualTo("Omega"), "found by either its old or new name");
+
+            // A reference to the old name still resolves, through the rename history.
+            Assert.That(db.Add("Alpha", "fix", "open", "filed under the old name", "").Id, Is.EqualTo("AL-T3"));
+            db.AddStory("Alpha", "A", "As a user, I can keep going.");
+            db.AddBacklogItem("Alpha", "Ship it");
+
+            Assert.That(() => db.RenameRepo("Nope", "Whatever", "x"), Throws.InstanceOf<KeyNotFoundException>());
+            Assert.That(() => db.RenameRepo("Omega", "Omega", "x"), Throws.InvalidOperationException.With.Message.Contains("already named that"));
+            Assert.That(() => db.RenameRepo("Beta", "Omega", "x"), Throws.InvalidOperationException.With.Message.Contains("already exists"));
+            Assert.That(() => db.RenameRepo("Omega", "", "x"), Throws.ArgumentException);
+            Assert.That(() => db.RenameRepo("Omega", "Sigma", " "), Throws.ArgumentException);
+
+            using var raw = new SqliteConnection($"Data Source={db.Path};Pooling=False");
+            raw.Open();
+            using var cmd = raw.CreateCommand();
+            cmd.CommandText = "UPDATE tickets SET repo = 'Zed' WHERE id = 'AL-T1'";
+            Assert.That(() => cmd.ExecuteNonQuery(), Throws.InstanceOf<SqliteException>(), "the append-only trigger is back after the rename");
+        }
+    }
+
+    [Test]
     public void The_dump_is_readable_sql_that_lists_every_ticket()
     {
         var (db, _) = Migrated();

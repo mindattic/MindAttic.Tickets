@@ -142,7 +142,7 @@ public sealed class QueueTests
     }
 
     [Test]
-    public void A_version_one_database_upgrades_to_version_two()
+    public void A_version_one_database_upgrades_to_the_current_version()
     {
         var path = db.Path;
         db.Dispose();
@@ -154,7 +154,7 @@ public sealed class QueueTests
             cmd.ExecuteNonQuery();
         }
         db = WorkflowDb.Open(path);
-        Assert.That(db.Dump(), Does.Contain("('schema_version', '2')"));
+        Assert.That(db.Dump(), Does.Contain($"('schema_version', '{WorkflowDb.SchemaVersion}')"));
         db.Approve("AL-T1");
         Assert.That(db.QueueState("AL-T1").Approval, Is.EqualTo("approved"));
     }

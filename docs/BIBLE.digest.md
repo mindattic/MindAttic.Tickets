@@ -35,7 +35,9 @@ repo's `docs/USER_STORIES.md` is a generated, read-only view (`workflow db rende
 
 ### {#M.FLOW-LAW-2} Ticket rows are append-only.
 A row is never deleted or reworded. The database enforces it with triggers: a ticket can't be deleted, and only
-its status and ref can be updated; every change is recorded in `ticket_events`. Only Status (open → closed / wont-do) and Ref change. IDs are
+its status and ref can be updated; every change is recorded in `ticket_events`. Only Status (open → closed / wont-do) and Ref change,
+with two sanctioned, logged exceptions that lift the trigger for one update: `CorrectType` (a nonstandard type) and
+`RenameRepo` (its `repo` key, when the repo's folder is renamed). IDs are
 the highest existing number + 1 and are never reused. `ticket verify` fails if a committed row was
 deleted or reworded.
 
@@ -66,5 +68,5 @@ No code path links an LLM SDK or calls an LLM API.
 ## Status index (docs/USER_STORIES.md)
 - done: 10
 - partial: 3
-- planned: 12
+- planned: 38
 

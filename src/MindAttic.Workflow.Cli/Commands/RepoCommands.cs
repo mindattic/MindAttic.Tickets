@@ -250,3 +250,52 @@ public sealed class ReposRolloutTicketsCommand : Command<ReposRolloutTicketsComm
         file.Save();
     }
 }
+
+public sealed class ReposRenameCommand : Command<ReposRenameCommand.Settings>
+{
+    public sealed class Settings : WorkspaceSettings
+    {
+        [CommandArgument(0, "<OLD>")]
+        [Description("The repo's current folder name, as the workflow database keys it.")]
+        public string Old { get; init; } = "";
+
+        [CommandArgument(1, "<NEW>")]
+        [Description("Its new folder name. Doesn't rename anything on disk — rename the folder yourself (first or after).")]
+        public string New { get; init; } = "";
+
+        [CommandOption("--reason <TEXT>")]
+        [Description("Why; kept forever in the repo's rename history and in every one of its tickets' history.")]
+        public string Reason { get; init; } = "";
+    }
+
+    public override int Execute(CommandContext context, Settings settings)
+    {
+        using var db = Db.Open(settings);
+        var result = db.RenameRepo(settings.Old, settings.New, settings.Reason);
+        Db.Rerender(db, settings);
+        Console.WriteLine($"{settings.Old} -> {result.NewName} ({result.TicketsMoved} ticket(s)); backed up to {result.BackupPath}");
+        return 0;
+    }
+}
+
+public sealed class ReposRenamesCommand : Command<ReposRenamesCommand.Settings>
+{
+    public sealed class Settings : WorkspaceSettings
+    {
+        [CommandOption("--repo <NAME>")]
+        [Description("Only renames touching this name (as old or new, anywhere in its chain).")]
+        public string? Repo { get; init; }
+    }
+
+    public override int Execute(CommandContext context, Settings settings)
+    {
+        using var db = Db.Open(settings);
+        var renames = db.RepoRenames(settings.Repo);
+        if (renames.Count == 0) { AnsiConsole.MarkupLine("[grey]No renames on record.[/]"); return 0; }
+        var table = new Table().Border(TableBorder.Rounded).AddColumns("Old name", "New name", "When", "Reason");
+        foreach (var r in renames)
+            table.AddRow(Output.Esc(r.OldName), Output.Esc(r.NewName), Output.Esc(r.At), Output.Esc(r.Reason));
+        AnsiConsole.Write(table);
+        return 0;
+    }
+}
