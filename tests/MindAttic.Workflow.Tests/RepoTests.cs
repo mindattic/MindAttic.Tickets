@@ -107,6 +107,30 @@ public sealed class RepoStatusTests
         Assert.That((empty.Error, empty.Unpushed), Is.EqualTo(((string?)null, 0)));
     }
 
+    [Test]
+    public void Read_counts_uncommitted_work_in_the_repos_linked_worktrees()
+    {
+        var remote = Path.Combine(root, "remote.git");
+        Directory.CreateDirectory(remote);
+        G(remote, "init", "-q", "--bare");
+        var repo = Init("Main");
+        File.WriteAllText(Path.Combine(repo.Path, "a.txt"), "1");
+        G(repo.Path, "add", ".");
+        G(repo.Path, "commit", "-q", "-m", "first");
+        G(repo.Path, "remote", "add", "origin", remote);
+        G(repo.Path, "push", "-q", "origin", "HEAD:refs/heads/main");
+        G(repo.Path, "fetch", "-q", "origin");
+        // A worktree elsewhere (as agents use) on a pushed commit, with an edit only there: deleting Main deletes the
+        // .git that worktree lives on.
+        var wt = Path.Combine(root, "worktrees", "Main-T1");
+        G(repo.Path, "worktree", "add", "-q", "--detach", wt);
+        File.WriteAllText(Path.Combine(wt, "a.txt"), "edited in the worktree");
+
+        var s = RepoStatus.Read(repo);
+        Assert.That((s.Error, s.Uncommitted), Is.EqualTo(((string?)null, 1)));
+        Assert.That(s.HasLocalOnlyWork, Is.True);
+    }
+
     [TestCase("https://github.com/mindattic/MindAttic.Launcher.git", "mindattic/mindattic.launcher")]
     [TestCase("https://github.com/mindattic/Tutor", "mindattic/tutor")]
     [TestCase("git@github.com:Someone/Repo.git", "someone/repo")]

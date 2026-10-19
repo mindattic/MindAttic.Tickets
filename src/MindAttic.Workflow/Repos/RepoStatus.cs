@@ -36,11 +36,25 @@ public sealed partial record RepoStatus(
         var stashes = Git.Run(repo.Path, "stash", "list");
         var ignored = Git.Run(repo.Path, "ls-files", "--others", "--ignored", "--exclude-standard", "--directory");
 
+        // Uncommitted work in the repo's linked worktrees (agents work in folders elsewhere) is this repo's too: deleting
+        // the folder deletes the .git those worktrees live on. The first entry is the main worktree, already read above.
+        var uncommitted = status.Lines.Count;
+        var worktrees = Git.Run(repo.Path, "worktree", "list", "--porcelain");
+        var checks = new List<GitResult> { unpushed, stashes, ignored, worktrees };
+        if (worktrees.Ok)
+            foreach (var path in worktrees.Lines.Where(l => l.StartsWith("worktree ", StringComparison.Ordinal)).Skip(1).Select(l => l["worktree ".Length..]))
+            {
+                if (!Directory.Exists(path)) continue; // gone from disk: git prunes it, nothing to lose there
+                var linked = Git.Run(path, "status", "--porcelain");
+                checks.Add(linked);
+                if (linked.Ok) uncommitted += linked.Lines.Count;
+            }
+
         // A check that couldn't run is an error, never "nothing local": reading it as zero would let prune delete unseen work.
-        var failed = new[] { unpushed, stashes, ignored }.FirstOrDefault(r => !r.Ok);
+        var failed = checks.FirstOrDefault(r => !r.Ok);
         return new RepoStatus(
             repo, url, GitHubSlugFrom(url),
-            status.Lines.Count,
+            uncommitted,
             unpushed.Ok ? unpushed.Lines.Count : 0,
             stashes.Ok ? stashes.Lines.Count : 0,
             ignored.Ok ? [.. ignored.Lines.Where(p => !IsRegenerable(p))] : [],
