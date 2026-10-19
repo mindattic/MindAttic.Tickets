@@ -65,6 +65,24 @@ public sealed class WorkflowDbTests
     }
 
     [Test]
+    public void Reimporting_one_repo_drops_a_stale_supersedes_link_whose_from_id_is_in_another_repo()
+    {
+        // 'supersedes' is derived with from = the superseding ticket (can live in a different repo) and
+        // to = the ticket whose Ref was parsed, so cleaning it up on a reimport must also key off to_id's repo.
+        var a = MakeRepo("Alpha", "AL", "", "| AL-T9 | 2026-10-01 | chore | open | newer | — |\n");
+        var b = MakeRepo("Beta", "BE", "", "| BE-T5 | 2026-10-01 | chore | open | groundwork | superseded by AL-T9 |\n");
+        using var db = WorkflowDb.Open(Path.Combine(root, "w.db"));
+        db.Import([a, b]);
+        Assert.That(db.Links("BE-T5").Select(l => (l.From, l.Kind, l.To)), Does.Contain(("AL-T9", "supersedes", "BE-T5")));
+
+        // BE-T5's Ref no longer says it was superseded; reimporting only Beta must drop the now-stale link.
+        var b2 = MakeRepo("Beta", "BE", "", "| BE-T5 | 2026-10-01 | chore | open | groundwork | — |\n");
+        db.Import([b2]);
+
+        Assert.That(db.Links("BE-T5").Select(l => (l.From, l.Kind, l.To)), Does.Not.Contain(("AL-T9", "supersedes", "BE-T5")));
+    }
+
+    [Test]
     public void Tickets_are_append_only_with_history_and_new_ones_take_the_next_number()
     {
         var (db, repos) = Migrated();

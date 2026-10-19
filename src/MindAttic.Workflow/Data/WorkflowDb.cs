@@ -298,9 +298,13 @@ public sealed partial class WorkflowDb : IDisposable
         var repos = docs.Select(d => d.Repo.Name).ToHashSet(StringComparer.Ordinal);
 
         using var tx = db.BeginTransaction();
-        // Links from the migrated repos are derived again; links added by hand to other items are kept.
+        // Links from the migrated repos are derived again; links added by hand to other items are kept. 'supersedes' is
+        // the one kind whose derived direction is flipped from the ticket whose Ref was actually parsed (from = the
+        // superseding ticket, which can be in a different repo; to = the reimported ticket), so it also needs the to_id
+        // side checked, or a stale 'supersedes' link survives a reimport of just the superseded ticket's repo.
         Exec("DELETE FROM links WHERE note LIKE 'migrated:%' AND (from_id IN (SELECT id FROM tickets WHERE repo IN (SELECT value FROM json_each($r))) " +
-             "OR from_id IN (SELECT story_id FROM stories WHERE repo IN (SELECT value FROM json_each($r))))", tx,
+             "OR from_id IN (SELECT story_id FROM stories WHERE repo IN (SELECT value FROM json_each($r))) " +
+             "OR (kind = 'supersedes' AND to_id IN (SELECT id FROM tickets WHERE repo IN (SELECT value FROM json_each($r)))))", tx,
              ("$r", System.Text.Json.JsonSerializer.Serialize(repos)));
         void Link(string repo, string from, string to, string kind, string why)
         {
