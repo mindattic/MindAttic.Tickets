@@ -187,7 +187,10 @@ public sealed class DbSyncCommand : Command<DbSyncCommand.Settings>
                 subject = SyncCommit.Subject([], ticket.Id)!; // ticket.Id is given explicitly, so Subject never returns null here
             }
             File.WriteAllText(Path.Combine(self.Path, WorkflowDb.DumpRelativePath.Replace('/', Path.DirectorySeparatorChar)), dump, new UTF8Encoding(false));
-            Git.Run(self.Path, ["add", "--", .. files]);
+            // A failed add (another git holding index.lock) stages nothing, and the diff below would then read as
+            // "no changes" and exit 0 with the database left uncommitted.
+            var add = Git.Run(self.Path, ["add", "--", .. files]);
+            if (!add.Ok) throw new InvalidOperationException("git add failed: " + (add.Output + add.Error).Trim());
             if (Git.Run(self.Path, ["diff", "--cached", "--quiet", "--", .. files]).Ok)
             {
                 AnsiConsole.MarkupLine("[grey]No changes to the workflow database since the last sync.[/]");

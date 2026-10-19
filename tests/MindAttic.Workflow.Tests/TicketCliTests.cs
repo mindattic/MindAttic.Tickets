@@ -299,6 +299,22 @@ public sealed class TicketCliTests
     }
 
     [Test]
+    public void Sync_fails_instead_of_reporting_no_changes_when_git_add_cant_stage()
+    {
+        MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | fix | open | one | — |\n");
+        var mw = MakeRepo("MindAttic.Workflow", "MW");
+        Git(mw, "config", "user.email", "t@t");
+        Git(mw, "config", "user.name", "t");
+        Run("db", "migrate", "--cutover");
+
+        // Another git (the daemon's sync, an agent's commit) holding the index lock makes 'git add' fail.
+        File.WriteAllText(Path.Combine(mw, ".git", "index.lock"), "");
+        var sync = Run("db", "sync", "--no-push");
+        Assert.That(sync.Code, Is.Not.Zero, sync.Out);
+        Assert.That(sync.Out, Does.Contain("git add failed").And.Not.Contain("No changes"));
+    }
+
+    [Test]
     public void Sync_with_no_ticketed_change_opens_a_closed_chore_ticket_in_MindAttic_Workflow_to_carry_it()
     {
         MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | fix | open | one | — |\n");
