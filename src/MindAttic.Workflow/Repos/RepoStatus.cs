@@ -28,7 +28,11 @@ public sealed partial record RepoStatus(
         if (!status.Ok)
             return new RepoStatus(repo, url, GitHubSlugFrom(url), 0, 0, 0, [], status.Error.Trim());
 
-        var unpushed = Git.Run(repo.Path, "log", "--branches", "--not", "--remotes", "--oneline");
+        // Commits no remote has: on any branch or tag, and on HEAD too when it's detached (a checked-out commit, an
+        // interrupted rebase), which --branches alone never sees. HEAD is named only when it resolves: in a repo with no
+        // commits yet, naming it makes git log fail.
+        var headResolves = Git.Run(repo.Path, "rev-parse", "-q", "--verify", "HEAD").Ok;
+        var unpushed = Git.Run(repo.Path, ["log", "--branches", "--tags", .. headResolves ? ["HEAD"] : Array.Empty<string>(), "--not", "--remotes", "--oneline"]);
         var stashes = Git.Run(repo.Path, "stash", "list");
         var ignored = Git.Run(repo.Path, "ls-files", "--others", "--ignored", "--exclude-standard", "--directory");
 

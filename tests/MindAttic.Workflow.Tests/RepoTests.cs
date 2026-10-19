@@ -81,6 +81,32 @@ public sealed class RepoStatusTests
         Assert.That(RepoStatus.Read(repo).HasLocalOnlyWork, Is.False);
     }
 
+    [Test]
+    public void Read_counts_commits_on_a_detached_head_and_an_empty_repo_reads_cleanly()
+    {
+        var remote = Path.Combine(root, "remote.git");
+        Directory.CreateDirectory(remote);
+        G(remote, "init", "-q", "--bare");
+        var repo = Init("Detached");
+        File.WriteAllText(Path.Combine(repo.Path, "a.txt"), "1");
+        G(repo.Path, "add", ".");
+        G(repo.Path, "commit", "-q", "-m", "first");
+        G(repo.Path, "remote", "add", "origin", remote);
+        G(repo.Path, "push", "-q", "origin", "HEAD:refs/heads/main");
+        G(repo.Path, "fetch", "-q", "origin");
+        // Work on a detached HEAD (a checked-out commit, an interrupted rebase) is on no branch and no remote.
+        G(repo.Path, "checkout", "-q", "--detach");
+        File.WriteAllText(Path.Combine(repo.Path, "a.txt"), "2");
+        G(repo.Path, "commit", "-q", "-am", "only on the detached head");
+
+        var s = RepoStatus.Read(repo);
+        Assert.That((s.Error, s.Unpushed), Is.EqualTo(((string?)null, 1)));
+        Assert.That(s.HasLocalOnlyWork, Is.True, "deleting the folder would lose that commit");
+
+        var empty = RepoStatus.Read(Init("Empty")); // no commits yet: HEAD doesn't resolve
+        Assert.That((empty.Error, empty.Unpushed), Is.EqualTo(((string?)null, 0)));
+    }
+
     [TestCase("https://github.com/mindattic/MindAttic.Launcher.git", "mindattic/mindattic.launcher")]
     [TestCase("https://github.com/mindattic/Tutor", "mindattic/tutor")]
     [TestCase("git@github.com:Someone/Repo.git", "someone/repo")]
