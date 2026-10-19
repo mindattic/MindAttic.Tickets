@@ -110,6 +110,9 @@ public static partial class DependencyScan
     [GeneratedRegex(@"Project\([^)]*\)\s*=\s*""[^""]*""\s*,\s*""([^""]+)""")]
     private static partial Regex SlnPath();
 
-    [GeneratedRegex(@"<(?:ProjectReference|Import)\s+(?:Include|Project)=""([^""]+)""", RegexOptions.IgnoreCase)]
+    // Any other attribute (e.g. Condition) may come before Include/Project: MSBuild doesn't fix attribute order,
+    // and `<ProjectReference Condition="..." Include="..\Sibling\Sibling.csproj" />` is a common, legitimate pattern
+    // that a regex anchored to "the tag name is immediately followed by Include/Project" would silently miss.
+    [GeneratedRegex(@"<(?:ProjectReference|Import)\b(?:\s+[A-Za-z_][\w.-]*\s*=\s*""[^""]*"")*?\s+(?:Include|Project)\s*=\s*""([^""]+)""", RegexOptions.IgnoreCase)]
     private static partial Regex ProjectRef();
 }
