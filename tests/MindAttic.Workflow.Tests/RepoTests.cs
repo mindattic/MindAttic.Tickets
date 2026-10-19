@@ -223,6 +223,25 @@ public sealed class DependencyScanTests
             ("App", "Lib", "App.slnx"),
         }));
     }
+
+    [Test]
+    public void Scan_finds_a_project_reference_or_import_with_an_attribute_before_include_or_project()
+    {
+        // MSBuild doesn't fix attribute order: Condition (or anything else) commonly comes before Include/Project.
+        var lib = Make("Lib");
+        var app = Make("App");
+        Put(app, "App.csproj",
+            """<Project><ItemGroup><ProjectReference Condition="'$(Configuration)'=='Debug'" Include="..\Lib\Lib.csproj" /></ItemGroup>""" +
+            """<Import Condition="Exists('..\Lib\x.props')" Project="..\Lib\x.props" /></Project>""");
+
+        var deps = DependencyScan.Scan([lib, app]);
+
+        Assert.That(deps.Select(d => (d.FromRepo, d.ToRepo, d.File)), Is.EquivalentTo(new[]
+        {
+            ("App", "Lib", "App.csproj"),
+            ("App", "Lib", "App.csproj"),
+        }));
+    }
 }
 
 [TestFixture]
@@ -286,5 +305,22 @@ public sealed class PrunePlannerTests
             [new FolderDependency("Old", "x.csproj", "Untagged", "../Untagged/x.csproj")]);
 
         Assert.That(plan.All(c => c.Safe), Is.True);
+    }
+
+    [Test]
+    public void Plan_blocks_a_candidate_depended_on_by_another_candidate_that_ends_up_staying()
+    {
+        // "Blocked" is an archived candidate, but its own uncommitted work means it isn't actually going anywhere;
+        // its dependency on "DependedOn" (also a candidate) must therefore block "DependedOn" too, the same as a
+        // kept repo's dependency would - not be waved through just because "Blocked" was an initial candidate.
+        var plan = PrunePlanner.Plan(
+            [S("Blocked", "mindattic/old", dirty: 1), S("DependedOn", "mindattic/untagged")],
+            GitHub,
+            [new FolderDependency("Blocked", "x.csproj", "DependedOn", "../DependedOn/x.csproj")]);
+
+        var byName = plan.ToDictionary(c => c.Status.Repo.Name);
+        Assert.That(byName["Blocked"].Safe, Is.False, "has its own uncommitted work");
+        Assert.That(byName["DependedOn"].Blockers.Select(b => b.Kind), Does.Contain(BlockerKind.Dependent));
+        Assert.That(byName["DependedOn"].Overridable, Is.False, "a dependent that is actually staying can never be overridden");
     }
 }

@@ -73,12 +73,26 @@ public static class PrunePlanner
             candidates.Add((s, reason, blockers));
         }
 
-        // A kept repo depending on a candidate blocks the candidate. A candidate depending on another
-        // candidate doesn't: both are going.
-        var leaving = candidates.Select(c => c.Status.Repo.Name).ToHashSet(StringComparer.OrdinalIgnoreCase);
-        foreach (var c in candidates)
-            foreach (var d in dependencies.Where(d => d.ToRepo.Equals(c.Status.Repo.Name, StringComparison.OrdinalIgnoreCase) && !leaving.Contains(d.FromRepo)))
-                c.Blockers.Add(new(BlockerKind.Dependent, $"{d.FromRepo} depends on it ({d.File} → {d.RawPath})"));
+        // A kept repo depending on a candidate blocks the candidate. A candidate depending on another candidate
+        // doesn't, but only once that other candidate is actually going too: one blocked by its own local work,
+        // a git error, a missing GitHub copy, or (transitively) by this same rule, is staying on disk just as a
+        // kept repo would, so anything depending on it must be blocked the same way. Iterate to a fixed point so
+        // a chain of candidates depending on each other resolves correctly however deep it goes.
+        bool changed;
+        do
+        {
+            changed = false;
+            var leaving = candidates.Where(c => c.Blockers.Count == 0).Select(c => c.Status.Repo.Name).ToHashSet(StringComparer.OrdinalIgnoreCase);
+            foreach (var c in candidates)
+            {
+                if (!leaving.Contains(c.Status.Repo.Name)) continue; // already blocked; no need to re-derive
+                foreach (var d in dependencies.Where(d => d.ToRepo.Equals(c.Status.Repo.Name, StringComparison.OrdinalIgnoreCase) && !leaving.Contains(d.FromRepo)))
+                {
+                    c.Blockers.Add(new(BlockerKind.Dependent, $"{d.FromRepo} depends on it ({d.File} → {d.RawPath})"));
+                    changed = true;
+                }
+            }
+        } while (changed);
 
         return [.. candidates.Select(c => new PruneCandidate(c.Status, c.Reason, c.Blockers))];
     }
