@@ -136,7 +136,15 @@ public sealed class DbSyncCommand : Command<DbSyncCommand.Settings>
         public string? Ticket { get; init; }
     }
 
-    /// <summary>Writes the readable dump and commits both files in the MindAttic.Workflow repo when anything changed.</summary>
+    /// <summary>
+    /// Writes the readable dump and commits both files in the MindAttic.Workflow repo when anything changed.
+    /// Every other repo's agents share this one database file, so it's never staged speculatively: whether
+    /// there's anything to commit is decided from the dump text alone, before <c>git add</c> touches the
+    /// index, and anything that stops the commit from landing (the hook rejects it, git errors, an
+    /// exception) always resets the index back to clean. Otherwise a failed or partial sync would leave
+    /// data/workflow.db and data/workflow.sql staged — including whatever other tickets changed them since
+    /// the last sync — for the next, unrelated commit in this repo to sweep in.
+    /// </summary>
     public override int Execute(CommandContext context, Settings settings)
     {
         var self = settings.Workspace.Find("MindAttic.Workflow") ?? throw new InvalidOperationException("No MindAttic.Workflow repo in the workspace.");
@@ -148,36 +156,53 @@ public sealed class DbSyncCommand : Command<DbSyncCommand.Settings>
                 AnsiConsole.MarkupLine($"[grey]Refreshed the USER_STORIES.md view in {Output.Esc(string.Join(", ", views))}.[/]");
             dump = db.Dump();
             if (settings.Ticket is { } t && db.Ticket(t) is null) throw new InvalidOperationException($"No ticket {t} in the workflow database.");
-            File.WriteAllText(Path.Combine(self.Path, WorkflowDb.DumpRelativePath.Replace('/', Path.DirectorySeparatorChar)), dump, new UTF8Encoding(false));
         }
 
-        var files = new List<string> { WorkflowDb.RelativePath, WorkflowDb.DumpRelativePath };
-        Git.Run(self.Path, ["add", "--", .. files]);
-        if (Git.Run(self.Path, ["diff", "--cached", "--quiet", "--", .. files]).Ok)
+        // Decide whether this sync has anything to commit before the database or its dump ever touch the
+        // index: comparing the two dump texts needs no git state at all.
+        var committed = Git.Run(self.Path, "show", "HEAD:" + WorkflowDb.DumpRelativePath);
+        var before = committed.Ok ? committed.Output : null;
+        if (before == dump)
         {
             AnsiConsole.MarkupLine("[grey]No changes to the workflow database since the last sync.[/]");
             return 0;
         }
-        var committed = Git.Run(self.Path, "show", "HEAD:" + WorkflowDb.DumpRelativePath);
-        var subject = SyncCommit.Subject(SyncCommit.ChangedTickets(committed.Ok ? committed.Output : null, dump), settings.Ticket);
-        if (subject is null)
+
+        var files = new List<string> { WorkflowDb.RelativePath, WorkflowDb.DumpRelativePath };
+        var subject = SyncCommit.Subject(SyncCommit.ChangedTickets(before, dump), settings.Ticket);
+        try
         {
-            // Nothing names this sync (no --ticket, and no ticket row or history changed, e.g. a story/epic/backlog
-            // edit alone): open a closed chore ticket here to carry it instead of leaving the database staged
-            // indefinitely for some later ticketed sync.
-            Ticket ticket;
-            using (var db = Db.Open(settings))
+            if (subject is null)
             {
-                ticket = db.Add(self.Name, "chore", TicketRules.Closed, "Sync the workflow database for changes that touched no ticket (story, epic or backlog edits)", "");
-                if (db.Render(settings.Workspace, [self.Name]).Count > 0) files.Add(StoryFile.RelativePath);
-                dump = db.Dump();
+                // Nothing names this sync (no --ticket, and no ticket row or history changed, e.g. a story/epic/backlog
+                // edit alone): open a closed chore ticket here to carry it instead of leaving the database staged
+                // indefinitely for some later ticketed sync.
+                Ticket ticket;
+                using (var db = Db.Open(settings))
+                {
+                    ticket = db.Add(self.Name, "chore", TicketRules.Closed, "Sync the workflow database for changes that touched no ticket (story, epic or backlog edits)", "");
+                    if (db.Render(settings.Workspace, [self.Name]).Count > 0) files.Add(StoryFile.RelativePath);
+                    dump = db.Dump();
+                }
+                subject = SyncCommit.Subject([], ticket.Id)!; // ticket.Id is given explicitly, so Subject never returns null here
             }
             File.WriteAllText(Path.Combine(self.Path, WorkflowDb.DumpRelativePath.Replace('/', Path.DirectorySeparatorChar)), dump, new UTF8Encoding(false));
             Git.Run(self.Path, ["add", "--", .. files]);
-            subject = SyncCommit.Subject([], ticket.Id)!; // ticket.Id is given explicitly, so Subject never returns null here
+            if (Git.Run(self.Path, ["diff", "--cached", "--quiet", "--", .. files]).Ok)
+            {
+                AnsiConsole.MarkupLine("[grey]No changes to the workflow database since the last sync.[/]");
+                return 0;
+            }
+            var commit = Git.Run(self.Path, ["commit", "-q", "-m", subject, "--", .. files]);
+            if (!commit.Ok) throw new InvalidOperationException("git commit failed: " + (commit.Output + commit.Error).Trim());
         }
-        var commit = Git.Run(self.Path, ["commit", "-q", "-m", subject, "--", .. files]);
-        if (!commit.Ok) throw new InvalidOperationException("git commit failed: " + (commit.Output + commit.Error).Trim());
+        catch
+        {
+            // Never leave these files staged for whatever commit happens next in this repo: only a sync
+            // that actually commits may touch the index for them.
+            Git.Run(self.Path, ["reset", "-q", "--", .. files]);
+            throw;
+        }
         AnsiConsole.MarkupLine($"[green]Committed the workflow database:[/] {Output.Esc(subject)}");
         if (settings.NoPush) return 0;
         var push = Git.Run(self.Path, "push", "-q");

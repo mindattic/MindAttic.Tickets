@@ -327,6 +327,46 @@ public sealed class TicketCliTests
     }
 
     [Test]
+    public void A_failed_commit_never_leaves_the_database_staged_for_the_next_commit_to_sweep_in()
+    {
+        MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | fix | open | one | — |\n");
+        var mw = Path.Combine(root, "MindAttic.Workflow");
+        Directory.CreateDirectory(mw);
+        Git(mw, "init", "-q", "-b", "main");
+        Git(mw, "config", "user.email", "t@t");
+        Git(mw, "config", "user.name", "t");
+        File.WriteAllText(Path.Combine(mw, "README.md"), "placeholder");
+        Git(mw, "add", "-A");
+        Git(mw, "commit", "-qm", "init");
+
+        Run("db", "migrate", "--cutover");
+        Assert.That(Run("db", "sync", "--no-push").Code, Is.Zero, "the database is tracked and committed before the failing hook is installed");
+
+        // Another agent's own ticket work dirties the shared database again.
+        Assert.That(Run("ticket", "new", "--repo", "A", "--type", "chore", "--summary", "two").Out.Trim(), Is.EqualTo("AA-T2"));
+
+        var hooks = Path.Combine(mw, ".git", "hooks");
+        Directory.CreateDirectory(hooks);
+        File.WriteAllText(Path.Combine(hooks, "commit-msg"), "#!/bin/sh\nexit 1\n");
+
+        var failed = Run("db", "sync", "--ticket", "AA-T2", "--no-push");
+        Assert.That(failed.Code, Is.Not.Zero, failed.Out);
+
+        // The failed commit must not leave data/workflow.db or data/workflow.sql staged: nothing in the
+        // index may differ from HEAD for them, so an unrelated commit made next in this repo can never
+        // sweep in the database's current (partly someone else's pending) content.
+        Assert.That(Workflow.Git.Run(mw, "diff", "--cached", "--quiet", "--", "data/workflow.db", "data/workflow.sql").Ok,
+            "the index must be clean for the database files after a failed sync");
+
+        File.Delete(Path.Combine(hooks, "commit-msg"));
+        File.WriteAllText(Path.Combine(mw, "code.txt"), "unrelated ticket's own file");
+        Git(mw, "add", "--", "code.txt");
+        Git(mw, "commit", "-qm", "unrelated work (AA-T2)");
+        var carried = Workflow.Git.Run(mw, "log", "-1", "--name-only", "--pretty=format:").Output;
+        Assert.That(carried, Does.Contain("code.txt").And.Not.Contain("data/workflow.db").And.Not.Contain("data/workflow.sql"));
+    }
+
+    [Test]
     public void View_writes_a_page_and_a_snapshot_of_every_ticket_and_story_with_markup_escaped()
     {
         MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | fix | open | close </script><b>x</b> & more | — |\n");
