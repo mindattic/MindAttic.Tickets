@@ -511,6 +511,21 @@ public sealed class TicketCliTests
     }
 
     [Test]
+    public void Prune_only_never_deletes_a_folder_that_a_repo_left_on_disk_reaches_into()
+    {
+        var old = MakeGitHubRepo("Old", archived: true);
+        var stale = MakeGitHubRepo("Stale"); // untagged, so also safe to delete - but --only leaves it behind
+        File.WriteAllText(Path.Combine(stale, "Stale.csproj"), """<Project><ItemGroup><ProjectReference Include="..\Old\Old.csproj" /></ItemGroup></Project>""");
+        Git(stale, "add", "-A");
+        Git(stale, "-c", "user.email=t@t", "-c", "user.name=t", "commit", "-qm", "ref");
+        Git(stale, "update-ref", "refs/remotes/origin/main", "HEAD");
+
+        var apply = RunWithInput("yes\n", "repos", "prune", "--apply", "--only", "Old");
+        Assert.That(apply.Out, Does.Contain("Stale depends on it"));
+        Assert.That(Directory.Exists(old), "Stale stays and reaches into Old by path");
+    }
+
+    [Test]
     public void Prune_apply_deletes_nothing_without_a_typed_yes()
     {
         var old = MakeGitHubRepo("Old", archived: true);

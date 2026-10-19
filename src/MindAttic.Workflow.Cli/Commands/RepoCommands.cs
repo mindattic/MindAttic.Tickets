@@ -82,7 +82,8 @@ public sealed class ReposPruneCommand : Command<ReposPruneCommand.Settings>
         AnsiConsole.MarkupLine("[grey]Reading git state and scanning for cross-repo folder references…[/]");
         var statuses = repos.Select(RepoStatus.Read).ToList();
         var github = Output.TryGitHub(required: true, statuses.Select(s => s.GitHubSlug).OfType<string>())!;
-        var plan = PrunePlanner.Plan(statuses, github, DependencyScan.Scan(repos));
+        var dependencies = DependencyScan.Scan(repos);
+        var plan = PrunePlanner.Plan(statuses, github, dependencies);
 
         var table = new Table().Border(TableBorder.Rounded).AddColumns("Repo", "Why it's a candidate", "Verdict");
         foreach (var c in plan)
@@ -101,6 +102,24 @@ public sealed class ReposPruneCommand : Command<ReposPruneCommand.Settings>
         }
 
         var toDelete = plan.Where(c => (c.Safe || overrides.Contains(c.Status.Repo.Name)) && (only is null || only.Contains(c.Status.Repo.Name))).ToList();
+
+        // The plan counts every safe candidate as going, so a candidate reaching into another doesn't block it. --only can
+        // leave some of them on disk, and a folder one of those reaches into by path then has to stay too (to a fixed
+        // point, for chains), exactly as for a kept repo.
+        var going = toDelete.Select(c => c.Status.Repo.Name).ToHashSet(StringComparer.OrdinalIgnoreCase);
+        bool dropped;
+        do
+        {
+            dropped = false;
+            foreach (var c in toDelete.ToList())
+            {
+                if (dependencies.FirstOrDefault(d => d.ToRepo.Equals(c.Status.Repo.Name, StringComparison.OrdinalIgnoreCase) && !going.Contains(d.FromRepo)) is not { } d) continue;
+                toDelete.Remove(c);
+                going.Remove(c.Status.Repo.Name);
+                dropped = true;
+                AnsiConsole.MarkupLine($"[yellow]keeping {Output.Esc(c.Status.Repo.Name)}:[/] {Output.Esc(d.FromRepo)} depends on it ({Output.Esc(d.File)} → {Output.Esc(d.RawPath)}) and isn't being deleted.");
+            }
+        } while (dropped);
         AnsiConsole.MarkupLine($"{plan.Count} candidate(s): {plan.Count(c => c.Safe)} safe, {plan.Count(c => !c.Safe)} blocked{(overrides.Count > 0 ? $", {overrides.Count} overridden" : "")}.");
 
         if (!settings.Apply)
