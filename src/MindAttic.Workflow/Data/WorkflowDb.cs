@@ -651,9 +651,11 @@ public sealed partial class WorkflowDb : IDisposable
     /// <summary>What <paramref name="id"/> requires (directly, or all the way down).</summary>
     public IReadOnlyList<string> Requires(string id, bool transitive = false)
     {
+        // IDs are stored as typed (a CLI argument, a "blocked by" phrase), so every step of the walk matches without case,
+        // like its first step: a case-sensitive join stopped at "BE-T1" vs "be-t1" and let AddLink close a cycle through it.
         var sql = transitive
             ? "WITH RECURSIVE r(x) AS (SELECT to_id FROM links WHERE from_id = $id COLLATE NOCASE AND kind = 'requires' " +
-              "UNION SELECT l.to_id FROM links l JOIN r ON l.from_id = r.x AND l.kind = 'requires') SELECT x FROM r"
+              "UNION SELECT l.to_id FROM links l JOIN r ON l.from_id = r.x COLLATE NOCASE AND l.kind = 'requires') SELECT x FROM r"
             : "SELECT to_id FROM links WHERE from_id = $id COLLATE NOCASE AND kind = 'requires'";
         return [.. Rows(sql, r => r.GetString(0), ("$id", id))];
     }

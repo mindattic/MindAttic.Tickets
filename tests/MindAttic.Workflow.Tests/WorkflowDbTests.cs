@@ -83,6 +83,18 @@ public sealed class WorkflowDbTests
     }
 
     [Test]
+    public void A_requires_cycle_is_refused_whatever_case_the_ids_were_typed_in()
+    {
+        var (db, _) = Migrated(); // AL-T1 requires BE-T1 (from 'blocked by')
+        using (db)
+        {
+            db.AddLink("be-t1", "AL-T2", "requires"); // typed in lower case: the chain is AL-T1 → BE-T1 → AL-T2
+            Assert.That(db.Requires("AL-T1", transitive: true), Does.Contain("AL-T2"));
+            Assert.That(() => db.AddLink("AL-T2", "AL-T1", "requires"), Throws.InvalidOperationException.With.Message.Contains("cycle"));
+        }
+    }
+
+    [Test]
     public void Tickets_are_append_only_with_history_and_new_ones_take_the_next_number()
     {
         var (db, repos) = Migrated();
