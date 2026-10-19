@@ -15,7 +15,7 @@ public static partial class TicketRules
     public const string WontDo = "wont-do";
 
     public static readonly IReadOnlyList<string> Statuses = [Open, Closed, WontDo];
-    public static readonly IReadOnlyList<string> Types = ["feature", "fix", "chore", "docs"];
+    public static readonly IReadOnlyList<string> Types = ["feature", "fix", "chore", "docs", "interview"];
 
     [GeneratedRegex(@"^((?:[A-Z]\.)?[A-Z][A-Z0-9]*)-T(\d+)$")]
     private static partial Regex IdPattern();

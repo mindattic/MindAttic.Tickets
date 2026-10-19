@@ -262,7 +262,7 @@ public sealed class TicketCorrectCommand : Command<TicketCorrectCommand.Settings
         public string Id { get; init; } = "";
 
         [CommandOption("--type <TYPE>")]
-        [Description("feature | fix | chore | docs")]
+        [Description("feature | fix | chore | docs | interview")]
         public string Type { get; init; } = "";
 
         [CommandOption("--reason <TEXT>")]

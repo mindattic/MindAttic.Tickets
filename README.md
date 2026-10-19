@@ -65,9 +65,9 @@ You should see every ticket in every repo under `D:\Projects\MindAttic`.
 ## Commands
 
 ```text
-workflow ticket new     [--repo X] --type feature|fix|chore|docs --summary "..." [--ref ...] [--status open|closed|wont-do]
+workflow ticket new     [--repo X] --type feature|fix|chore|docs|interview --summary "..." [--ref ...] [--status open|closed|wont-do]
 workflow ticket close   <CODE-Tn> [--repo X] [--ref ...] [--wont-do]
-workflow ticket correct <CODE-Tn> --type feature|fix|chore|docs --reason "..."
+workflow ticket correct <CODE-Tn> --type feature|fix|chore|docs|interview --reason "..."
 workflow ticket show    <CODE-Tn> [--json]
 workflow ticket link    <FROM> requires|related|follow-up-of|supersedes|duplicates|implements|part-of <TO> [--remove] [--note "..."]
 workflow ticket list    [--repo X] [--status S] [--type T] [--since YYYY-MM-DD] [--json]

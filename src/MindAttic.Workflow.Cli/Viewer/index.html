@@ -85,7 +85,7 @@
   const setFilters = () => {
     if (tab === "tickets") {
       options($("status"), [["", "Any status"], ["open", "Open"], ["closed", "Closed"], ["wont-do", "Won't do"]]);
-      options($("type"), [["", "Any type"], ...["feature", "fix", "chore", "docs"].map(t => [t, t])]);
+      options($("type"), [["", "Any type"], ...["feature", "fix", "chore", "docs", "interview"].map(t => [t, t])]);
       $("type").hidden = false;
     } else {
       options($("status"), [["", "Any status"], ["done", "✅ Done"], ["partial", "🟡 Partial"], ["planned", "⬜ Planned"]]);

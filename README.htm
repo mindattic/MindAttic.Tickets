@@ -6,7 +6,11 @@
 <title>MindAttic.Workflow</title>
 <meta name="description" content="A ticket engine and repo job runner for the MindAttic workspace: every repo's stories and permanent ticket log live in one SQLite database, queried, checked and maintained by a CLI and a WPF desktop app.">
 <meta name="generator" content="MindAttic Codex build-readme.ps1">
+<<<<<<< Updated upstream
 <meta name="generated" content="2026-10-18">
+=======
+<meta name="generated" content="2026-10-19">
+>>>>>>> Stashed changes
 <style>:root{
   --bg:#0d1117;--bg2:#161b22;--bg3:#21262d;
   --border:#30363d;
@@ -165,9 +169,9 @@ dotnet build MindAttic.Workflow.slnx
 dotnet run --project src/MindAttic.Workflow.Cli -- ticket list</code></pre>
 <p>You should see every ticket in every repo under <code>D:\Projects\MindAttic</code>.</p>
 <h2 id="commands">Commands</h2>
-<pre><code class="language-text">workflow ticket new     [--repo X] --type feature|fix|chore|docs --summary "..." [--ref ...] [--status open|closed|wont-do]
+<pre><code class="language-text">workflow ticket new     [--repo X] --type feature|fix|chore|docs|interview --summary "..." [--ref ...] [--status open|closed|wont-do]
 workflow ticket close   &lt;CODE-Tn&gt; [--repo X] [--ref ...] [--wont-do]
-workflow ticket correct &lt;CODE-Tn&gt; --type feature|fix|chore|docs --reason "..."
+workflow ticket correct &lt;CODE-Tn&gt; --type feature|fix|chore|docs|interview --reason "..."
 workflow ticket show    &lt;CODE-Tn&gt; [--json]
 workflow ticket link    &lt;FROM&gt; requires|related|follow-up-of|supersedes|duplicates|implements|part-of &lt;TO&gt; [--remove] [--note "..."]
 workflow ticket list    [--repo X] [--status S] [--type T] [--since YYYY-MM-DD] [--json]
@@ -243,7 +247,11 @@ powershell -File tools/codex.ps1 doctor   # docs canon check</code></pre>
 <p>No LICENSE file; all rights reserved.</p>
 <p>Part of <a href="https://mindattic.com">MindAttic</a> — see more projects at <a href="https://github.com/mindattic">github.com/mindattic</a>. Related: <a href="https://github.com/mindattic/MindAttic.Launcher">MindAttic.Launcher</a> (workspace launcher) and <a href="https://github.com/mindattic/MindAttic.Vault">MindAttic.Vault</a> (credential store).</p>
 
+<<<<<<< Updated upstream
     <p class="codex-footer">Generated 2026-10-18 by the shared MindAttic Codex engine (<code>codex-standard/build-readme.ps1</code>) from <code>README.md</code>. Edit the Markdown source, not this file.</p>
+=======
+    <p class="codex-footer">Generated 2026-10-19 by the shared MindAttic Codex engine (<code>codex-standard/build-readme.ps1</code>) from <code>README.md</code>. Edit the Markdown source, not this file.</p>
+>>>>>>> Stashed changes
   </main>
 </div>
 <script>(function(){

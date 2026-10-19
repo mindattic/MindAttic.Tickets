@@ -12,7 +12,7 @@ public sealed class TicketNewCommand : Command<TicketNewCommand.Settings>
     public sealed class Settings : RepoSettings
     {
         [CommandOption("--type <TYPE>")]
-        [Description("feature | fix | chore | docs")]
+        [Description("feature | fix | chore | docs | interview")]
         public string Type { get; init; } = "";
 
         [CommandOption("--summary <TEXT>")]

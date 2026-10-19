@@ -23,6 +23,12 @@ public sealed class TicketRulesTests
     }
 
     [Test]
+    public void Validate_accepts_the_interview_type()
+    {
+        Assert.That(TicketRules.Validate("WF", [T("WF-T1", type: "interview")]), Is.Empty);
+    }
+
+    [Test]
     public void A_family_code_with_a_dot_numbers_validates_and_parses()
     {
         Assert.That(TicketRules.NextId("M.AUTH", [T("M.AUTH-T7")]), Is.EqualTo("M.AUTH-T8"));
