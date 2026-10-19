@@ -151,7 +151,7 @@ public sealed class DbSyncCommand : Command<DbSyncCommand.Settings>
             File.WriteAllText(Path.Combine(self.Path, WorkflowDb.DumpRelativePath.Replace('/', Path.DirectorySeparatorChar)), dump, new UTF8Encoding(false));
         }
 
-        var files = new[] { WorkflowDb.RelativePath, WorkflowDb.DumpRelativePath };
+        var files = new List<string> { WorkflowDb.RelativePath, WorkflowDb.DumpRelativePath };
         Git.Run(self.Path, ["add", "--", .. files]);
         if (Git.Run(self.Path, ["diff", "--cached", "--quiet", "--", .. files]).Ok)
         {
@@ -162,10 +162,19 @@ public sealed class DbSyncCommand : Command<DbSyncCommand.Settings>
         var subject = SyncCommit.Subject(SyncCommit.ChangedTickets(committed.Ok ? committed.Output : null, dump), settings.Ticket);
         if (subject is null)
         {
-            // Every commit names a ticket; story or link edits alone ride along with the next sync that carries one.
-            Git.Run(self.Path, ["reset", "-q", "--", .. files]);
-            AnsiConsole.MarkupLine("[grey]No ticket changed since the last sync, so nothing is committed yet (pass --ticket <ID> to commit now).[/]");
-            return 0;
+            // Nothing names this sync (no --ticket, and no ticket row or history changed, e.g. a story/epic/backlog
+            // edit alone): open a closed chore ticket here to carry it instead of leaving the database staged
+            // indefinitely for some later ticketed sync.
+            Ticket ticket;
+            using (var db = Db.Open(settings))
+            {
+                ticket = db.Add(self.Name, "chore", TicketRules.Closed, "Sync the workflow database for changes that touched no ticket (story, epic or backlog edits)", "");
+                if (db.Render(settings.Workspace, [self.Name]).Count > 0) files.Add(StoryFile.RelativePath);
+                dump = db.Dump();
+            }
+            File.WriteAllText(Path.Combine(self.Path, WorkflowDb.DumpRelativePath.Replace('/', Path.DirectorySeparatorChar)), dump, new UTF8Encoding(false));
+            Git.Run(self.Path, ["add", "--", .. files]);
+            subject = SyncCommit.Subject([], ticket.Id)!; // ticket.Id is given explicitly, so Subject never returns null here
         }
         var commit = Git.Run(self.Path, ["commit", "-q", "-m", subject, "--", .. files]);
         if (!commit.Ok) throw new InvalidOperationException("git commit failed: " + (commit.Output + commit.Error).Trim());

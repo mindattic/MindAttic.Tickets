@@ -256,6 +256,34 @@ public sealed class TicketCliTests
     }
 
     [Test]
+    public void Sync_with_no_ticketed_change_opens_a_closed_chore_ticket_in_MindAttic_Workflow_to_carry_it()
+    {
+        MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | fix | open | one | — |\n");
+        var mw = MakeRepo("MindAttic.Workflow", "MW");
+        Git(mw, "config", "user.email", "t@t");
+        Git(mw, "config", "user.name", "t");
+
+        Run("db", "migrate", "--cutover");
+        Assert.That(Run("db", "sync", "--no-push").Out, Does.Contain("Sync the workflow database (AA-T1)"), "the baseline sync carries the only ticket so far");
+
+        // An epic edit alone touches no ticket row or history, so a plain sync has nothing to name itself after.
+        Assert.That(Run("epic", "new", "--repo", "A", "--key", "E", "--title", "Something").Code, Is.Zero);
+
+        var sync = Run("db", "sync", "--no-push");
+        Assert.That(sync.Code, Is.Zero, sync.Out);
+        Assert.That(sync.Out, Does.Contain("Committed the workflow database: Sync the workflow database (MW-T1)"));
+        Assert.That(Workflow.Git.Run(mw, "log", "-1", "--pretty=%s").Output.Trim(), Is.EqualTo("Sync the workflow database (MW-T1)"));
+
+        var show = Run("ticket", "show", "MW-T1");
+        Assert.That(show.Out, Does.Contain("chore").And.Contain("closed"), "the new ticket is already closed, not left open");
+
+        var log = Workflow.Git.Run(mw, "log", "-1", "--name-only", "--pretty=format:").Output;
+        Assert.That(log, Does.Contain("data/workflow.db").And.Contain("data/workflow.sql").And.Contain("docs/USER_STORIES.md"),
+            "MindAttic.Workflow's own re-rendered view rides along with the ticket that now appears in it");
+        Assert.That(File.ReadAllText(Path.Combine(mw, "docs", "USER_STORIES.md")), Does.Contain("MW-T1"));
+    }
+
+    [Test]
     public void View_writes_a_page_and_a_snapshot_of_every_ticket_and_story_with_markup_escaped()
     {
         MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | fix | open | close </script><b>x</b> & more | — |\n");
