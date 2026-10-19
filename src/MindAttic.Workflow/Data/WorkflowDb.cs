@@ -529,6 +529,7 @@ public sealed partial class WorkflowDb : IDisposable
                 Exec("UPDATE repos SET name = $n WHERE name = $o", tx, ("$n", newName), ("$o", name));
                 foreach (var table in new[] { "blocks", "epics", "stories", "backlog_items", "tickets" })
                     Exec($"UPDATE {table} SET repo = $n WHERE repo = $o", tx, ("$n", newName), ("$o", name));
+                RenameInPage(name, newName, tx);
                 Exec("INSERT INTO repo_renames (old_name, new_name, at, reason) VALUES ($o, $n, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), $reason)", tx,
                     ("$o", name), ("$n", newName), ("$reason", reason.Trim()));
                 foreach (var id in ticketIds)
@@ -540,6 +541,31 @@ public sealed partial class WorkflowDb : IDisposable
         finally { Exec("PRAGMA foreign_keys = ON;"); }
         EnsureSchema(); // the trigger comes straight back
         return new RenameResult(newName, ticketIds.Count, backup);
+    }
+
+    // The page names its repo too: front matter's "project: <name>", the "# <name> — User Stories" title,
+    // and the raw header block they're rendered from. Only those exact spots change; any other mention of the
+    // old name (a ticket summary, a story) is history and stays as written.
+    private void RenameInPage(string oldName, string newName, SqliteTransaction tx)
+    {
+        string Rewrite(string text) => text
+            .Replace($"\nproject: {oldName}\n", $"\nproject: {newName}\n", StringComparison.Ordinal)
+            .Replace($"\n# {oldName} ", $"\n# {newName} ", StringComparison.Ordinal);
+        string RewriteFrontMatter(string fm) => Rewrite($"\n{fm}\n")[1..^1];
+
+        var row = Rows("SELECT project, title, front_matter FROM repos WHERE name = $n", tx,
+            r => (Project: r.IsDBNull(0) ? null : r.GetString(0), Title: r.IsDBNull(1) ? null : r.GetString(1), FrontMatter: r.GetString(2)), ("$n", newName)).Single();
+        var title = row.Title is { } t && t.StartsWith(oldName + " ", StringComparison.Ordinal) ? newName + t[oldName.Length..] : row.Title;
+        Exec("UPDATE repos SET project = $p, title = $t, front_matter = $fm WHERE name = $n", tx,
+            ("$p", row.Project == oldName ? newName : row.Project), ("$t", title), ("$fm", RewriteFrontMatter(row.FrontMatter)), ("$n", newName));
+
+        var raw = Rows("SELECT ordinal, text FROM blocks WHERE repo = $n AND kind = 'raw'", tx, r => (Ordinal: r.GetInt32(0), Text: r.GetString(1)), ("$n", newName)).ToList();
+        foreach (var (ordinal, text) in raw)
+        {
+            var rewritten = Rewrite("\n" + text)[1..];
+            if (rewritten != text)
+                Exec("UPDATE blocks SET text = $t WHERE repo = $n AND ordinal = $o", tx, ("$t", rewritten), ("$n", newName), ("$o", ordinal));
+        }
     }
 
     /// <summary>Every rename on record, oldest first; optionally only those touching <paramref name="name"/> (as old or new).</summary>
@@ -834,9 +860,12 @@ public sealed partial class WorkflowDb : IDisposable
         return cmd.ExecuteScalar();
     }
 
-    private List<T> Rows<T>(string sql, Func<SqliteDataReader, T> read, params (string Name, object? Value)[] args)
+    private List<T> Rows<T>(string sql, Func<SqliteDataReader, T> read, params (string Name, object? Value)[] args) =>
+        Rows(sql, null, read, args);
+
+    private List<T> Rows<T>(string sql, SqliteTransaction? tx, Func<SqliteDataReader, T> read, params (string Name, object? Value)[] args)
     {
-        using var cmd = Command(sql, null, args);
+        using var cmd = Command(sql, tx, args);
         using var r = cmd.ExecuteReader();
         var list = new List<T>();
         while (r.Read()) list.Add(read(r));

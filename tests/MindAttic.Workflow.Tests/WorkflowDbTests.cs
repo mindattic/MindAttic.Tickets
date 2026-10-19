@@ -227,7 +227,10 @@ public sealed class WorkflowDbTests
             Assert.That(db.Repos().Select(r => r.Name), Does.Contain("Omega").And.Not.Contain("Alpha"));
             Assert.That(db.Tickets("Omega").Select(t => t.Ticket.Id), Is.EquivalentTo(new[] { "AL-T1", "AL-T2" }), "ticket IDs and codes never change");
             Assert.That(db.Stories("Omega").Select(s => s.Id), Does.Contain("AL-US-A1"));
-            Assert.That(System.Text.Encoding.UTF8.GetString(db.Export("Omega")!), Does.Contain("| AL-T1 |"));
+            var page = System.Text.Encoding.UTF8.GetString(db.Export("Omega")!);
+            Assert.That(page, Does.Contain("| AL-T1 |"));
+            Assert.That(page, Does.Contain("\nproject: Omega\n").And.Contain("\n# Omega — User Stories\n"), "the page's own name follows the rename");
+            Assert.That(page, Does.Not.Contain("project: Alpha").And.Not.Contain("# Alpha "));
             Assert.That(db.Export("Alpha"), Is.Null, "the old name is gone from the live data");
 
             // Every ticket that moved got its own 'repo' history entry, tracing it back to Alpha.
