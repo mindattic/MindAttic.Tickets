@@ -104,7 +104,13 @@ public sealed partial class WorkflowDb : IDisposable
 
     public void Dispose() => db.Dispose();
 
-    private void EnsureSchema()
+    /// <summary>
+    /// Creates the schema (tables, indexes, triggers) if missing. Pass the active transaction when called from inside
+    /// one of the sanctioned-exception methods (<see cref="Import"/>, <see cref="CorrectType"/>, <see cref="RenameRepo"/>)
+    /// that drop the tickets guard triggers and must put them back before committing — recreating them only after the
+    /// commit would leave a window where another connection sees no append-only/no-delete guard on the tickets table.
+    /// </summary>
+    private void EnsureSchema(SqliteTransaction? tx = null)
     {
         Exec(
             """
@@ -184,9 +190,9 @@ public sealed partial class WorkflowDb : IDisposable
                     SELECT NEW.id, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), 'ref', OLD.ref, NEW.ref WHERE NEW.ref IS NOT OLD.ref;
                 UPDATE tickets SET row_md = NULL WHERE id = NEW.id;
             END;
-            """);
+            """, tx);
         Exec($"INSERT INTO meta (key, value) VALUES ('schema_version', '{SchemaVersion}') " +
-             $"ON CONFLICT (key) DO UPDATE SET value = excluded.value WHERE CAST(value AS INTEGER) < {SchemaVersion}");
+             $"ON CONFLICT (key) DO UPDATE SET value = excluded.value WHERE CAST(value AS INTEGER) < {SchemaVersion}", tx);
     }
 
     // ── Import ──────────────────────────────────────────────────────────────
@@ -219,9 +225,9 @@ public sealed partial class WorkflowDb : IDisposable
                 })
                     Exec(sql, tx, ("$r", repo.Name));
             foreach (var (repo, _, doc) in docs) ImportOne(repo, doc, tx);
+            EnsureSchema(tx); // put the triggers back before commit, so no other connection ever sees them missing
             tx.Commit();
         }
-        EnsureSchema(); // put the triggers back
 
         var linkCounts = ImportLinks(docs.Select(d => (d.Repo, d.Doc)).ToList(), extraRequires);
         Exec("INSERT OR REPLACE INTO meta (key, value) VALUES ('migrated_at', $v)", null, ("$v", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ", CultureInfo.InvariantCulture)));
@@ -500,9 +506,9 @@ public sealed partial class WorkflowDb : IDisposable
             Exec("UPDATE tickets SET type = $ty, row_md = NULL WHERE id = $id", tx, ("$ty", type), ("$id", t.Id));
             Exec("INSERT INTO ticket_events (ticket_id, at, field, old, new) VALUES ($id, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), 'type', $o, $n)", tx,
                 ("$id", t.Id), ("$o", t.Type), ("$n", $"{type} (corrected: {reason.Trim()})"));
+            EnsureSchema(tx); // the trigger comes straight back, before commit, so no other connection ever sees it missing
             tx.Commit();
         }
-        EnsureSchema(); // the trigger comes straight back
         return t with { Type = type };
     }
 
@@ -554,11 +560,11 @@ public sealed partial class WorkflowDb : IDisposable
                 foreach (var id in ticketIds)
                     Exec("INSERT INTO ticket_events (ticket_id, at, field, old, new) VALUES ($id, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), 'repo', $o, $n)", tx,
                         ("$id", id), ("$o", name), ("$n", newName));
+                EnsureSchema(tx); // the trigger comes straight back, before commit, so no other connection ever sees it missing
                 tx.Commit();
             }
         }
         finally { Exec("PRAGMA foreign_keys = ON;"); }
-        EnsureSchema(); // the trigger comes straight back
         return new RenameResult(newName, ticketIds.Count, backup);
     }
 
