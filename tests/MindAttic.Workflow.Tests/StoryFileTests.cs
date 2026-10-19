@@ -38,6 +38,22 @@ public sealed class StoryFileTests
         Assert.That(file.Add("fix", "open", "and another", "").Id, Is.EqualTo("flow-T6"));
     }
 
+    [Test]
+    public void Add_and_close_keep_every_other_lines_ending_in_a_file_with_mixed_endings()
+    {
+        // One CRLF line (a Windows paste) among LF ones: only the rows Add/Close write may change.
+        var mixed = Sample.Replace("## Epic A — Things\n", "## Epic A — Things\r\n");
+        var file = StoryFile.Parse(mixed);
+        file.Close("DEM-T4", reference: "done");
+        file.Add("fix", "open", "one more", "", date: "2026-10-18");
+
+        var expected = mixed
+            .Replace("| DEM-T4 | 2026-10-02 | fix | open | Fix the a\\|b split | DEM-US-A1 |\n",
+                     "| DEM-T4 | 2026-10-02 | fix | closed | Fix the a\\|b split | done |\n" +
+                     "| DEM-T5 | 2026-10-18 | fix | open | one more | — |\r\n");
+        Assert.That(file.Text, Is.EqualTo(expected));
+    }
+
     private string dir = "";
 
     [SetUp]

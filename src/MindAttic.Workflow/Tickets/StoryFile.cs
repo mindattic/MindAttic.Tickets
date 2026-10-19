@@ -16,6 +16,8 @@ public sealed partial class StoryFile
 
     private const string TableSeparator = "|---|---|---|---|---|---|";
 
+    // Each line keeps its own trailing '\r' (split on '\n' only), so a file with mixed endings saves back with every
+    // untouched line's ending exactly as it was; lines this class writes use the file's prevailing ending.
     private readonly List<string> lines;
     private readonly string newline;
     private readonly bool bom;
@@ -27,8 +29,23 @@ public sealed partial class StoryFile
         this.bom = bom;
         newline = text.Contains("\r\n", StringComparison.Ordinal) ? "\r\n" : "\n";
         trailingNewline = text.EndsWith('\n');
-        lines = [.. text.Replace("\r\n", "\n", StringComparison.Ordinal).Split('\n')];
+        lines = [.. text.Split('\n')];
         if (trailingNewline) lines.RemoveAt(lines.Count - 1);
+    }
+
+    private string Cr => newline == "\r\n" ? "\r" : "";
+
+    /// <summary>Inserts a line written by this class, with the file's prevailing ending.</summary>
+    private void InsertLine(int at, string content)
+    {
+        if (at == lines.Count && !trailingNewline && lines.Count > 0)
+        {
+            // The new line becomes the last one of a file with no final newline: the old last line now needs an ending.
+            lines[^1] += Cr;
+            lines.Add(content);
+            return;
+        }
+        lines.Insert(at, content + Cr);
     }
 
     /// <summary>Full path of the file.</summary>
@@ -74,8 +91,8 @@ public sealed partial class StoryFile
     {
         get
         {
-            var body = string.Join(newline, lines);
-            return trailingNewline ? body + newline : body;
+            var body = string.Join("\n", lines);
+            return trailingNewline ? body + "\n" : body;
         }
     }
 
@@ -113,7 +130,7 @@ public sealed partial class StoryFile
 
         var rows = RowIndexes();
         var insertAt = rows.Count > 0 ? rows[^1] + 1 : SeparatorIndex() + 1;
-        lines.Insert(insertAt, FormatRow(ticket));
+        InsertLine(insertAt, FormatRow(ticket));
         return ticket;
     }
 
@@ -128,7 +145,7 @@ public sealed partial class StoryFile
             var t = ParseRow(lines[i])!;
             if (!string.Equals(t.Id, id, StringComparison.OrdinalIgnoreCase)) continue;
             var updated = t with { Status = status, Ref = string.IsNullOrWhiteSpace(reference) ? t.Ref : reference.Trim() };
-            lines[i] = FormatRow(updated);
+            lines[i] = FormatRow(updated) + (lines[i].EndsWith('\r') ? "\r" : "");
             return updated;
         }
         throw new KeyNotFoundException($"{Path} has no ticket {id}.");
@@ -169,8 +186,8 @@ public sealed partial class StoryFile
     private void AppendTicketsSection()
     {
         while (lines.Count > 0 && lines[^1].Trim().Length == 0) lines.RemoveAt(lines.Count - 1);
-        lines.Add("");
-        lines.AddRange(TicketsBlock.Replace("\r\n", "\n", StringComparison.Ordinal).Split('\n'));
+        InsertLine(lines.Count, "");
+        foreach (var l in TicketsBlock.Replace("\r\n", "\n", StringComparison.Ordinal).Split('\n')) InsertLine(lines.Count, l);
     }
 
     private int HeadingIndex() => lines.FindIndex(l => l.TrimEnd() == TicketsHeading);
