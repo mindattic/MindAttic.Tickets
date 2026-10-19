@@ -9,6 +9,9 @@ app.Configure(config =>
 {
     config.SetApplicationName("workflow");
     config.PropagateExceptions();
+    // An option a command doesn't declare (a typo, or one that belongs to a sibling command) is a
+    // CommandParseException naming it, not a silent no-op — see M.FLOW-T51.
+    config.UseStrictParsing();
 
     config.AddBranch("ticket", t =>
     {

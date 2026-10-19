@@ -70,11 +70,27 @@ public sealed class TicketCloseCommand : Command<TicketCloseCommand.Settings>
         [CommandOption("--wont-do")]
         [Description("Close as wont-do instead of closed.")]
         public bool WontDo { get; init; }
+
+        [CommandOption("--status <STATUS>")]
+        [Description("closed | wont-do. Same as --wont-do; accepted so a mistyped --status doesn't silently close as 'closed' instead.")]
+        public string? Status { get; init; }
+
+        public override ValidationResult Validate()
+        {
+            if (Status is null) return ValidationResult.Success();
+            if (Status != TicketRules.Closed && Status != TicketRules.WontDo)
+                return ValidationResult.Error($"--status must be '{TicketRules.Closed}' or '{TicketRules.WontDo}'");
+            if (WontDo && Status != TicketRules.WontDo)
+                return ValidationResult.Error("--status and --wont-do disagree");
+            return ValidationResult.Success();
+        }
+
+        internal bool IsWontDo => WontDo || Status == TicketRules.WontDo;
     }
 
     public override int Execute(CommandContext context, Settings settings)
     {
-        var status = settings.WontDo ? TicketRules.WontDo : TicketRules.Closed;
+        var status = settings.IsWontDo ? TicketRules.WontDo : TicketRules.Closed;
         using (var db = WorkflowDb.OpenIfMigrated(settings.Workspace.Root))
             if (db is not null)
             {

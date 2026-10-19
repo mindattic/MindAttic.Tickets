@@ -109,6 +109,49 @@ public sealed class TicketCliTests
     }
 
     [Test]
+    public void Close_accepts_status_wont_do_as_an_alias_for_wont_do_and_rejects_bad_or_conflicting_status()
+    {
+        MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | fix | open | one | — |\n| AA-T2 | 2026-10-01 | fix | open | two | — |\n");
+
+        // The bug this fixes: 'ticket close ... --status wont-do' used to be silently parsed as nothing
+        // (an unknown option to this command) and the ticket closed as 'closed' instead.
+        Assert.That(Run("ticket", "close", "AA-T1", "--repo", "A", "--status", "wont-do").Out.Trim(), Is.EqualTo("AA-T1 wont-do"));
+        Assert.That(Run("ticket", "close", "AA-T2", "--repo", "A", "--status", "closed").Out.Trim(), Is.EqualTo("AA-T2 closed"));
+
+        var badStatus = Run("ticket", "close", "AA-T1", "--repo", "A", "--status", "bogus");
+        Assert.That(badStatus.Code, Is.Not.Zero);
+        Assert.That(badStatus.Out, Does.Contain("--status"));
+
+        var conflict = Run("ticket", "close", "AA-T1", "--repo", "A", "--status", "closed", "--wont-do");
+        Assert.That(conflict.Code, Is.Not.Zero);
+        Assert.That(conflict.Out, Does.Contain("--status").And.Contain("--wont-do"));
+    }
+
+    [TestCase("new", "--repo", "A", "--type", "fix", "--summary", "x")]
+    [TestCase("close", "AA-T1")]
+    [TestCase("list")]
+    [TestCase("show", "AA-T2")]
+    [TestCase("link", "AA-T2", "requires", "AA-T1")]
+    [TestCase("correct", "AA-T2", "--type", "fix", "--reason", "x")]
+    [TestCase("verify", "--repo", "A")]
+    [TestCase("queue")]
+    [TestCase("approve", "AA-T2")]
+    [TestCase("reject", "AA-T2", "--reason", "x")]
+    [TestCase("priority", "AA-T1", "1")]
+    public void Every_ticket_subcommand_rejects_an_option_it_doesnt_know_instead_of_silently_ignoring_it(string subcommand, params string[] args)
+    {
+        MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | fix | open | one | — |\n| AA-T2 | 2026-10-01 | fix | open | two | — |\n");
+        Directory.CreateDirectory(Path.Combine(root, "MindAttic.Workflow", ".git"));
+        Run("db", "migrate", "--cutover"); // IDs are then unique workspace-wide, so the ID-only commands need no --repo
+
+        var ok = Run(["ticket", subcommand, .. args]);
+        Assert.That(ok.Code, Is.Zero, ok.Out); // the base invocation is valid on its own
+        var bad = Run(["ticket", subcommand, .. args, "--this-option-does-not-exist", "x"]);
+        Assert.That(bad.Code, Is.Not.EqualTo(0), bad.Out);
+        Assert.That(bad.Out, Does.Contain("this-option-does-not-exist"));
+    }
+
+    [Test]
     public void List_filters_and_emits_the_documented_json()
     {
         MakeRepo("A", "AA", "| AA-T1 | 2026-09-01 | fix | open | old | — |\n| AA-T2 | 2026-10-05 | chore | closed | new | x |\n");
