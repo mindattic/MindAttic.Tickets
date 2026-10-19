@@ -10266,6 +10266,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('U.SPC
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('U.SPC-T98', 'approved', 0, '2026-10-18T08:37:30Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('UNS-T9', 'approved', 0, '2026-10-19T01:44:34Z');
 
+-- repo_renames
+
 -- links
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AUT-T12', 'M.FLOW-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AUT-T20', 'M.WD-T4', 'requires', NULL);
