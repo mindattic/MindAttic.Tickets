@@ -51,9 +51,20 @@ public sealed partial class WorkflowDb : IDisposable
         Path = System.IO.Path.GetFullPath(path);
         // Pooling off: a pooled connection keeps the file open after Dispose, and git (or a delete) on Windows needs it closed.
         db = new SqliteConnection($"Data Source={Path};Pooling=False;Foreign Keys=True");
-        db.Open();
-        Exec("PRAGMA busy_timeout = 15000; PRAGMA journal_mode = DELETE;");
-        EnsureSchema();
+        try
+        {
+            db.Open();
+            Exec("PRAGMA busy_timeout = 15000; PRAGMA journal_mode = DELETE;");
+            EnsureSchema();
+        }
+        catch
+        {
+            // Schema setup (or even Open) can throw on a corrupt or locked file; with pooling off, an undisposed
+            // connection holds the file handle until a finalizer eventually runs, so a caller that retries each
+            // refresh leaks handles and git (or a restore) can't replace the file in the meantime.
+            db.Dispose();
+            throw;
+        }
     }
 
     /// <summary>
@@ -78,7 +89,15 @@ public sealed partial class WorkflowDb : IDisposable
         var path = DefaultPath(workspaceRoot);
         if (!File.Exists(path)) return null;
         var w = new WorkflowDb(path);
-        if (w.Scalar("SELECT COUNT(*) FROM repos") is long n && n > 0) return w;
+        try
+        {
+            if (w.Scalar("SELECT COUNT(*) FROM repos") is long n && n > 0) return w;
+        }
+        catch
+        {
+            w.Dispose();
+            throw;
+        }
         w.Dispose();
         return null;
     }

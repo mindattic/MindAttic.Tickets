@@ -272,6 +272,34 @@ public sealed class WorkflowDbTests
     }
 
     [Test]
+    public void Open_disposes_the_connection_when_schema_setup_fails_on_a_corrupt_file()
+    {
+        // Pooling is off, so if the failed Open()/EnsureSchema() left the SqliteConnection undisposed, the file
+        // handle would stay held (until a finalizer eventually ran) and Windows would refuse to overwrite it.
+        var path = Path.Combine(root, "corrupt.db");
+        File.WriteAllBytes(path, "not a sqlite database"u8.ToArray());
+
+        Assert.Throws<SqliteException>(() => WorkflowDb.Open(path));
+        Assert.DoesNotThrow(() => File.WriteAllBytes(path, "still not a sqlite database, but overwritable"u8.ToArray()),
+            "the connection from the failed Open() must have been disposed, not leaked");
+    }
+
+    [Test]
+    public void OpenIfMigrated_disposes_the_connection_when_construction_fails_on_a_corrupt_file()
+    {
+        var path = Path.Combine(root, "corrupt.db");
+        File.WriteAllBytes(path, "not a sqlite database"u8.ToArray());
+        Environment.SetEnvironmentVariable(WorkflowDb.EnvVar, path);
+        try
+        {
+            Assert.Throws<SqliteException>(() => WorkflowDb.OpenIfMigrated());
+            Assert.DoesNotThrow(() => File.WriteAllBytes(path, "still not a sqlite database, but overwritable"u8.ToArray()),
+                "the connection from the failed OpenIfMigrated() must have been disposed, not leaked");
+        }
+        finally { Environment.SetEnvironmentVariable(WorkflowDb.EnvVar, null); }
+    }
+
+    [Test]
     public void The_real_workspace_migrates_with_every_file_rebuilt_byte_for_byte()
     {
         var ws = new Workspace(Workspace.DefaultRoot);
