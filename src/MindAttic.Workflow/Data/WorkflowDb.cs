@@ -715,12 +715,14 @@ public sealed partial class WorkflowDb : IDisposable
         var e = Rows("SELECT key FROM epics WHERE repo = $r AND key = $k COLLATE NOCASE", r => r.GetString(0), ("$r", name), ("$k", epic)).FirstOrDefault()
             ?? throw new KeyNotFoundException($"{name} has no epic {epic}; add it with 'workflow epic new'.");
         var prefix = $"{code}-US-{e}";
-        var next = 1 + Rows("SELECT story_id FROM stories WHERE repo = $r AND story_id LIKE $p", r => r.GetString(0), ("$r", name), ("$p", prefix + "%"))
+
+        // The next free ID is read inside the write transaction, as Add does for tickets: read before it, two agents adding
+        // a story to the same epic at once both got the same ID.
+        using var tx = db.BeginTransaction();
+        var next = 1 + Rows("SELECT story_id FROM stories WHERE repo = $r AND story_id LIKE $p", r => r.GetString(0), tx, ("$r", name), ("$p", prefix + "%"))
             .Select(id => int.TryParse(id[prefix.Length..], out var n) ? n : 0).DefaultIfEmpty(0).Max();
         var id = prefix + next;
         var line = $"- **{id} {glyph}** {OneLine(text)}";
-
-        using var tx = db.BeginTransaction();
         // MAX over no rows is NULL (DBNull here), not a missing row.
         var after = Scalar(
             "SELECT MAX(b.ordinal) FROM blocks b WHERE b.repo = $r AND (" +
@@ -777,13 +779,15 @@ public sealed partial class WorkflowDb : IDisposable
     public void AddBacklogItem(string repo, string text)
     {
         var (name, _) = RepoRow(repo);
+        // Position and number are read inside the write transaction: read before it, two concurrent adds took the same
+        // number and block position.
+        using var tx = db.BeginTransaction();
         var last = Rows("SELECT b.ordinal, i.ordinal FROM blocks b JOIN backlog_items i ON i.repo = b.repo AND CAST(i.uid AS TEXT) = b.ref " +
-                        "WHERE b.repo = $r AND b.kind = 'backlog' ORDER BY b.ordinal DESC LIMIT 1", r => (r.GetInt64(0), r.GetInt64(1)), ("$r", name)).ToList();
-        var heading = Rows("SELECT ordinal, text FROM blocks WHERE repo = $r AND kind = 'raw' AND text LIKE '%## Priority backlog%'", r => (r.GetInt64(0), r.GetString(1)), ("$r", name)).FirstOrDefault();
+                        "WHERE b.repo = $r AND b.kind = 'backlog' ORDER BY b.ordinal DESC LIMIT 1", r => (r.GetInt64(0), r.GetInt64(1)), tx, ("$r", name)).ToList();
+        var heading = Rows("SELECT ordinal, text FROM blocks WHERE repo = $r AND kind = 'raw' AND text LIKE '%## Priority backlog%'", r => (r.GetInt64(0), r.GetString(1)), tx, ("$r", name)).FirstOrDefault();
         if (last.Count == 0 && heading.Item2 is null) throw new InvalidOperationException($"{name} has no '## Priority backlog' section.");
         var position = last.Count > 0 ? last[0].Item1 + 1 : heading.Item1 + 1;
-        var number = Rows("SELECT COUNT(*) FROM backlog_items WHERE repo = $r", r => r.GetInt64(0), ("$r", name)).Single() + 1;
-        using var tx = db.BeginTransaction();
+        var number = Rows("SELECT COUNT(*) FROM backlog_items WHERE repo = $r", r => r.GetInt64(0), tx, ("$r", name)).Single() + 1;
         if (last.Count == 0)
         {
             // The heading's raw block can run on past the backlog (blank lines, later sections): split it where the backlog's
