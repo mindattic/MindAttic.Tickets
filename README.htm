@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>MindAttic.Workflow</title>
-<meta name="description" content="A ticket engine and repo job runner for the MindAttic workspace: every repo's stories and permanent ticket log live in one SQLite database, and one CLI queries, checks and maintains them all.">
+<meta name="description" content="A ticket engine and repo job runner for the MindAttic workspace: every repo's stories and permanent ticket log live in one SQLite database, queried, checked and maintained by a CLI and a WPF desktop app.">
 <meta name="generator" content="MindAttic Codex build-readme.ps1">
-<meta name="generated" content="2026-10-16">
+<meta name="generated" content="2026-10-18">
 <style>:root{
   --bg:#0d1117;--bg2:#161b22;--bg3:#21262d;
   --border:#30363d;
@@ -111,7 +111,7 @@ pre:hover .cpbtn{opacity:1}
   </nav>
   <main id="content">
 <h1 id="mindatticworkflow">MindAttic.Workflow</h1>
-<p>A ticket engine and repo job runner for the MindAttic workspace: every repo's stories and permanent ticket log live in one SQLite database, and one CLI queries, checks and maintains them all.</p>
+<p>A ticket engine and repo job runner for the MindAttic workspace: every repo's stories and permanent ticket log live in one SQLite database, queried, checked and maintained by a CLI and a WPF desktop app.</p>
 <p><img src="https://img.shields.io/badge/C%23-latest-239120" alt="C#"> <img src="https://img.shields.io/badge/.NET-10-512BD4" alt=".NET"> <img src="https://img.shields.io/badge/status-work--in--progress-orange" alt="Status"></p>
 <pre><code class="language-text">$ workflow ticket list --status open
 ╭───────────────────┬───────┬────────────┬─────────┬────────┬────────────────────────────────────────╮
@@ -124,6 +124,7 @@ pre:hover .cpbtn{opacity:1}
 <ul>
 <li>Every change and fix gets a ticket with a stable ID that lives in the repo it belongs to, so the history travels with the code.</li>
 <li>Answer "what's still open?" or "what got fixed this week?" across every repo with one command.</li>
+<li>Approve, reject and reorder the work before an agent picks it up, from the CLI or from Workflow Desktop.</li>
 <li>The rules (next ID, append-only rows, table last, unique project codes) are enforced by a tool, not remembered by an agent.</li>
 <li>Clean up the workspace without losing anything that only exists on this machine.</li>
 </ul>
@@ -136,16 +137,25 @@ pre:hover .cpbtn{opacity:1}
 <li><code>ticket show</code> prints one ticket's row, links and history; <code>ticket link</code> connects two tickets or stories (<code>requires</code> is a prerequisite; a cycle is refused).</li>
 <li><code>ticket list</code> shows tickets across the workspace, filtered by repo, status, type or date, as a table or <code>--json</code>.</li>
 <li><code>ticket verify</code> fails if the table breaks the rules or a committed row was deleted or reworded.</li>
+<li><code>ticket queue</code> lists a repo's (or every repo's) open tickets in priority order with their approval state; <code>ticket approve</code>/<code>ticket reject --reason</code> move a ticket through review (<code>--undo</code> puts an approval back to proposed; a reject closes the ticket wont-do with the reason as its ref); <code>ticket priority</code> sets where a ticket sits in that order.</li>
 <li><code>codes check</code> finds duplicate project codes, repos without a ticket log, and malformed tables.</li>
 <li><code>story new</code>/<code>edit</code>/<code>status</code>/<code>list</code>/<code>show</code>, <code>epic new</code>, <code>backlog add</code> add and edit a repo's stories, epics and priority backlog in the database.</li>
-<li><code>db migrate</code>, <code>export</code>, <code>check</code>, <code>render</code>, <code>sync</code> import a repo's file once, rebuild it from the database, validate the database, rewrite a stale view, and commit (and push) <code>data/workflow.db</code> and its readable dump <code>data/workflow.sql</code>; a sync's commit names the tickets whose rows or history changed since the last one (or <code>--ticket ID</code>), and a sync that changed no ticket commits nothing yet, since every commit must name its ticket.</li>
+<li><code>db migrate</code>, <code>export</code>, <code>check</code>, <code>render</code>, <code>sync</code> import a repo's file once, rebuild it from the database, validate the database, rewrite a stale view, and commit (and push) <code>data/workflow.db</code> and its readable dump <code>data/workflow.sql</code>; a sync's commit names the tickets whose rows or history changed since the last one (or <code>--ticket ID</code>), and when a change has nothing to name (a story, epic or backlog edit alone) it opens and closes a chore ticket to carry it instead, so a sync with something to commit always names a ticket.</li>
 <li><code>view</code> opens a read-only page of every repo's tickets and stories, with filters, in MindAttic.Browser (or the default browser). It's a snapshot; run it again to refresh.</li>
+</ul>
+<p><strong>Workflow Desktop</strong> (<code>src/MindAttic.Workflow.Desktop</code>, a WPF app built on MindAttic.Components.Wpf, matching the Orchestrator's look)</p>
+<ul>
+<li>Queue and Tickets views (Ctrl+1/Ctrl+2), filterable by repo, status, type and approval and searchable (Ctrl+F), with closed and wont-do tickets hidden until you show archived.</li>
+<li>Approve, unapprove, reject and reorder (move up/down/to top) queued tickets; file a new ticket (Ctrl+N); close, mark wont-do, correct a ticket's type or add a link from its detail pane.</li>
+<li>A Sync button (Ctrl+Shift+S) runs <code>workflow db sync</code> and shows the result; F5 refreshes.</li>
+<li><code>deploy.ps1</code> publishes it as a self-contained exe to <code>C:\Apps\MindAttic.Workflow.Desktop</code> with Desktop and Start-menu shortcuts (and reinstalls the <code>workflow</code> CLI alongside it, via <code>tools/install.ps1</code>, unless <code>-SkipCli</code>).</li>
 </ul>
 <p><strong>Workspace jobs</strong></p>
 <ul>
 <li><code>repos status</code> shows each repo's uncommitted, unpushed and stashed work, ignored files that no build regenerates, and its GitHub state (archived, <code>work-in-progress</code> topic). Origins that predate a repo rename are resolved through GitHub's redirect.</li>
 <li><code>repos prune</code> lists repos that are archived or untagged on GitHub and deletes the safe ones with <code>--apply</code> and a typed <code>yes</code>. Local-only work blocks a delete unless you name the repo in <code>--override</code>. A repo with no GitHub copy, or one another kept repo loads by relative path (a <code>ProjectReference</code>, a Unity <code>file:</code> package, a solution entry), can't be overridden.</li>
 <li><code>repos rollout tickets</code> gives every repo without one a <code>docs/USER_STORIES.md</code> with a unique project code and a ticket log.</li>
+<li><code>repos rename</code> renames a repo's folder-name key everywhere the database keys it (backed up first; it doesn't touch anything on disk — rename the folder yourself) and is kept forever in the repo's rename history and in every one of its tickets' history; <code>repos renames</code> lists recorded renames.</li>
 </ul>
 <h2 id="quick-start">Quick start</h2>
 <p>Prerequisites: the .NET 10 SDK, <code>git</code> on PATH, and (for the GitHub columns and <code>prune</code>) a GitHub token in MindAttic.Vault, set from the Launcher's Settings menu.</p>
@@ -162,6 +172,10 @@ workflow ticket show    &lt;CODE-Tn&gt; [--json]
 workflow ticket link    &lt;FROM&gt; requires|related|follow-up-of|supersedes|duplicates|implements|part-of &lt;TO&gt; [--remove] [--note "..."]
 workflow ticket list    [--repo X] [--status S] [--type T] [--since YYYY-MM-DD] [--json]
 workflow ticket verify  [--repo X]
+workflow ticket queue   [--repo X] [--json]
+workflow ticket approve &lt;CODE-Tn&gt; [--undo]
+workflow ticket reject  &lt;CODE-Tn&gt; --reason "..."
+workflow ticket priority &lt;CODE-Tn&gt; &lt;PRIORITY&gt;
 workflow codes check
 workflow story  list    [--repo X] [--status done|partial|planned] [--json]
 workflow story  show    &lt;CODE-US-...&gt;
@@ -170,7 +184,7 @@ workflow story  edit    &lt;CODE-US-...&gt; --text "..." [--repo X]
 workflow story  status  &lt;CODE-US-...&gt; done|partial|planned [--repo X]
 workflow epic   new     [--repo X] --key KEY --title "..."
 workflow backlog add    [--repo X] --text "..."
-workflow db migrate     [--cutover]
+workflow db migrate     [--cutover] [--db FILE]
 workflow db export      [--repo X] [--out FILE]
 workflow db check
 workflow db render      [--repo X]
@@ -178,10 +192,12 @@ workflow db sync        [--no-push] [--ticket ID]
 workflow view [--repo X] [--out DIR] [--no-open]
 workflow repos status [--json]
 workflow repos prune  [--apply] [--only A,B] [--override A,B]
-workflow repos rollout tickets [--apply]</code></pre>
+workflow repos rollout tickets [--apply]
+workflow repos rename   &lt;OLD&gt; &lt;NEW&gt; [--reason "..."]
+workflow repos renames  [--repo X]</code></pre>
 <p>Every command takes <code>--root &lt;DIR&gt;</code> (default <code>D:\Projects\MindAttic</code>). <code>--repo</code> defaults to the repo containing the current directory. Exit codes: 0 success, 1 problems found or the operation failed, 2 bad arguments.</p>
 <h2 id="how-it-works">How it works</h2>
-<pre><code class="language-text">   workflow CLI  ·  Launcher menu  ·  /commit
+<pre><code class="language-text">   workflow CLI  ·  Workflow Desktop (WPF)  ·  Launcher menu  ·  /commit
                  |
         MindAttic.Workflow (library)
            |                              |
@@ -192,22 +208,27 @@ workflow repos rollout tickets [--apply]</code></pre>
 <p>Every repo's stories, epics, backlog and tickets (and the links between them) live in <code>data/workflow.db</code>, committed to this repo alongside a readable SQL dump (<code>data/workflow.sql</code>) so changes show up as text diffs. A repo's <code>docs/USER_STORIES.md</code> is rewritten from the database after every change that touches it (and by <code>workflow db render</code>/<code>sync</code>); it's never read back in, so a hand edit is only ever a mistake <code>db check</code> flags. The GitHub token comes from MindAttic.Vault (bucket <code>GitHub</code>, key <code>github</code>), the same one the Launcher's roster filter uses. The library has no package dependencies: the CLI (and the Launcher) read the token and pass it in.</p>
 <h2 id="project-layout">Project layout</h2>
 <pre><code class="language-text">src/MindAttic.Workflow/            library (packed to C:\LocalNuGet)
-  Data/      WorkflowDb (schema, import/export, tickets, stories, links, history)
+  Data/      WorkflowDb (schema, import/export, tickets, stories, links, history, the ticket queue, sync-commit subjects)
   Stories/   StoryDocument (parses a USER_STORIES.md into ordered blocks)
   Tickets/   Ticket, TicketRules, StoryFile, WorkspaceTickets (the markdown fallback, pre-migration)
   Repos/     RepoStatus, GitHubRepoIndex, DependencyScan, PrunePlanner
   Git.cs, Workspace.cs
 src/MindAttic.Workflow.Cli/        the workflow exe (Spectre.Console.Cli)
+src/MindAttic.Workflow.Desktop/    Workflow Desktop, a WPF ticket app (net10.0-windows, MindAttic.Components.Wpf)
 tests/MindAttic.Workflow.Tests/    NUnit 4
-tools/codex.ps1                    Codex doctor + digest</code></pre>
+tools/build-readme.ps1             regenerates README.htm from README.md (wraps codex-standard's shared engine)
+tools/codex.ps1                    Codex doctor + digest
+tools/install.ps1                  packs the library and CLI and installs `workflow` as a global tool
+deploy.ps1                         publishes Workflow Desktop and (re)creates its shortcuts</code></pre>
 <h2 id="building-and-testing">Building and testing</h2>
-<pre><code class="language-text">dotnet build MindAttic.Workflow.slnx      # TreatWarningsAsErrors, Nullable enabled
+<pre><code class="language-text">dotnet build MindAttic.Workflow.slnx      # TreatWarningsAsErrors, Nullable enabled; also builds Workflow Desktop (Windows)
 dotnet test MindAttic.Workflow.slnx
 powershell -File tools/codex.ps1 doctor   # docs canon check</code></pre>
 <p>The repo-level tests run real <code>git</code> against temporary repos; nothing touches the real workspace.</p>
+<p>Install the CLI as a global <code>workflow</code> tool with <code>powershell -File tools/install.ps1</code> (packs the library and CLI to <code>C:\LocalNuGet</code> and installs or updates the tool from there). Publish and install Workflow Desktop, with its Desktop and Start-menu shortcuts, with <code>powershell -File deploy.ps1</code> (add <code>-Launch</code> to open it when done).</p>
 <h2 id="limitations">Limitations</h2>
 <ul>
-<li>Windows-first: the default root is <code>D:\Projects\MindAttic</code>, and the CLI is built and tested on Windows.</li>
+<li>Windows-first: the default root is <code>D:\Projects\MindAttic</code>, the CLI is built and tested on Windows, and Workflow Desktop (WPF, <code>net10.0-windows</code>) only runs on Windows at all.</li>
 <li>Output piped or redirected still carries ANSI color codes in places and doesn't yet honor <code>NO_COLOR</code>; <code>story list</code> wraps rather than truncating in a narrow terminal. See the Priority backlog in <a href="docs/USER<em>STORIES.md">docs/USER</em>STORIES.md</a> for these and other open gaps (restoring the db from its dump, keeping <code>data/workflow.db</code> out of ordinary feature commits, concurrent writers).</li>
 </ul>
 <h2 id="documentation">Documentation</h2>
@@ -222,7 +243,7 @@ powershell -File tools/codex.ps1 doctor   # docs canon check</code></pre>
 <p>No LICENSE file; all rights reserved.</p>
 <p>Part of <a href="https://mindattic.com">MindAttic</a> — see more projects at <a href="https://github.com/mindattic">github.com/mindattic</a>. Related: <a href="https://github.com/mindattic/MindAttic.Launcher">MindAttic.Launcher</a> (workspace launcher) and <a href="https://github.com/mindattic/MindAttic.Vault">MindAttic.Vault</a> (credential store).</p>
 
-    <p class="codex-footer">Generated 2026-10-16 by the shared MindAttic Codex engine (<code>codex-standard/build-readme.ps1</code>) from <code>README.md</code>. Edit the Markdown source, not this file.</p>
+    <p class="codex-footer">Generated 2026-10-18 by the shared MindAttic Codex engine (<code>codex-standard/build-readme.ps1</code>) from <code>README.md</code>. Edit the Markdown source, not this file.</p>
   </main>
 </div>
 <script>(function(){

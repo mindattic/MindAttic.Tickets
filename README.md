@@ -1,6 +1,6 @@
 # MindAttic.Workflow
 
-A ticket engine and repo job runner for the MindAttic workspace: every repo's stories and permanent ticket log live in one SQLite database, and one CLI queries, checks and maintains them all.
+A ticket engine and repo job runner for the MindAttic workspace: every repo's stories and permanent ticket log live in one SQLite database, queried, checked and maintained by a CLI and a WPF desktop app.
 
 ![C#](https://img.shields.io/badge/C%23-latest-239120) ![.NET](https://img.shields.io/badge/.NET-10-512BD4) ![Status](https://img.shields.io/badge/status-work--in--progress-orange)
 
@@ -18,6 +18,7 @@ $ workflow ticket list --status open
 
 - Every change and fix gets a ticket with a stable ID that lives in the repo it belongs to, so the history travels with the code.
 - Answer "what's still open?" or "what got fixed this week?" across every repo with one command.
+- Approve, reject and reorder the work before an agent picks it up, from the CLI or from Workflow Desktop.
 - The rules (next ID, append-only rows, table last, unique project codes) are enforced by a tool, not remembered by an agent.
 - Clean up the workspace without losing anything that only exists on this machine.
 
@@ -30,15 +31,23 @@ $ workflow ticket list --status open
 - `ticket show` prints one ticket's row, links and history; `ticket link` connects two tickets or stories (`requires` is a prerequisite; a cycle is refused).
 - `ticket list` shows tickets across the workspace, filtered by repo, status, type or date, as a table or `--json`.
 - `ticket verify` fails if the table breaks the rules or a committed row was deleted or reworded.
+- `ticket queue` lists a repo's (or every repo's) open tickets in priority order with their approval state; `ticket approve`/`ticket reject --reason` move a ticket through review (`--undo` puts an approval back to proposed; a reject closes the ticket wont-do with the reason as its ref); `ticket priority` sets where a ticket sits in that order.
 - `codes check` finds duplicate project codes, repos without a ticket log, and malformed tables.
 - `story new`/`edit`/`status`/`list`/`show`, `epic new`, `backlog add` add and edit a repo's stories, epics and priority backlog in the database.
-- `db migrate`, `export`, `check`, `render`, `sync` import a repo's file once, rebuild it from the database, validate the database, rewrite a stale view, and commit (and push) `data/workflow.db` and its readable dump `data/workflow.sql`; a sync's commit names the tickets whose rows or history changed since the last one (or `--ticket ID`), and a sync that changed no ticket commits nothing yet, since every commit must name its ticket.
+- `db migrate`, `export`, `check`, `render`, `sync` import a repo's file once, rebuild it from the database, validate the database, rewrite a stale view, and commit (and push) `data/workflow.db` and its readable dump `data/workflow.sql`; a sync's commit names the tickets whose rows or history changed since the last one (or `--ticket ID`), and when a change has nothing to name (a story, epic or backlog edit alone) it opens and closes a chore ticket to carry it instead, so a sync with something to commit always names a ticket.
 - `view` opens a read-only page of every repo's tickets and stories, with filters, in MindAttic.Browser (or the default browser). It's a snapshot; run it again to refresh.
+
+**Workflow Desktop** (`src/MindAttic.Workflow.Desktop`, a WPF app built on MindAttic.Components.Wpf, matching the Orchestrator's look)
+- Queue and Tickets views (Ctrl+1/Ctrl+2), filterable by repo, status, type and approval and searchable (Ctrl+F), with closed and wont-do tickets hidden until you show archived.
+- Approve, unapprove, reject and reorder (move up/down/to top) queued tickets; file a new ticket (Ctrl+N); close, mark wont-do, correct a ticket's type or add a link from its detail pane.
+- A Sync button (Ctrl+Shift+S) runs `workflow db sync` and shows the result; F5 refreshes.
+- `deploy.ps1` publishes it as a self-contained exe to `C:\Apps\MindAttic.Workflow.Desktop` with Desktop and Start-menu shortcuts (and reinstalls the `workflow` CLI alongside it, via `tools/install.ps1`, unless `-SkipCli`).
 
 **Workspace jobs**
 - `repos status` shows each repo's uncommitted, unpushed and stashed work, ignored files that no build regenerates, and its GitHub state (archived, `work-in-progress` topic). Origins that predate a repo rename are resolved through GitHub's redirect.
 - `repos prune` lists repos that are archived or untagged on GitHub and deletes the safe ones with `--apply` and a typed `yes`. Local-only work blocks a delete unless you name the repo in `--override`. A repo with no GitHub copy, or one another kept repo loads by relative path (a `ProjectReference`, a Unity `file:` package, a solution entry), can't be overridden.
 - `repos rollout tickets` gives every repo without one a `docs/USER_STORIES.md` with a unique project code and a ticket log.
+- `repos rename` renames a repo's folder-name key everywhere the database keys it (backed up first; it doesn't touch anything on disk — rename the folder yourself) and is kept forever in the repo's rename history and in every one of its tickets' history; `repos renames` lists recorded renames.
 
 ## Quick start
 
@@ -63,6 +72,10 @@ workflow ticket show    <CODE-Tn> [--json]
 workflow ticket link    <FROM> requires|related|follow-up-of|supersedes|duplicates|implements|part-of <TO> [--remove] [--note "..."]
 workflow ticket list    [--repo X] [--status S] [--type T] [--since YYYY-MM-DD] [--json]
 workflow ticket verify  [--repo X]
+workflow ticket queue   [--repo X] [--json]
+workflow ticket approve <CODE-Tn> [--undo]
+workflow ticket reject  <CODE-Tn> --reason "..."
+workflow ticket priority <CODE-Tn> <PRIORITY>
 workflow codes check
 workflow story  list    [--repo X] [--status done|partial|planned] [--json]
 workflow story  show    <CODE-US-...>
@@ -71,7 +84,7 @@ workflow story  edit    <CODE-US-...> --text "..." [--repo X]
 workflow story  status  <CODE-US-...> done|partial|planned [--repo X]
 workflow epic   new     [--repo X] --key KEY --title "..."
 workflow backlog add    [--repo X] --text "..."
-workflow db migrate     [--cutover]
+workflow db migrate     [--cutover] [--db FILE]
 workflow db export      [--repo X] [--out FILE]
 workflow db check
 workflow db render      [--repo X]
@@ -80,6 +93,8 @@ workflow view [--repo X] [--out DIR] [--no-open]
 workflow repos status [--json]
 workflow repos prune  [--apply] [--only A,B] [--override A,B]
 workflow repos rollout tickets [--apply]
+workflow repos rename   <OLD> <NEW> [--reason "..."]
+workflow repos renames  [--repo X]
 ```
 
 Every command takes `--root <DIR>` (default `D:\Projects\MindAttic`). `--repo` defaults to the repo containing the current directory. Exit codes: 0 success, 1 problems found or the operation failed, 2 bad arguments.
@@ -87,7 +102,7 @@ Every command takes `--root <DIR>` (default `D:\Projects\MindAttic`). `--repo` d
 ## How it works
 
 ```text
-   workflow CLI  ·  Launcher menu  ·  /commit
+   workflow CLI  ·  Workflow Desktop (WPF)  ·  Launcher menu  ·  /commit
                  |
         MindAttic.Workflow (library)
            |                              |
@@ -103,29 +118,37 @@ Every repo's stories, epics, backlog and tickets (and the links between them) li
 
 ```text
 src/MindAttic.Workflow/            library (packed to C:\LocalNuGet)
-  Data/      WorkflowDb (schema, import/export, tickets, stories, links, history)
+  Data/      WorkflowDb (schema, import/export, tickets, stories, links, history, the ticket queue, sync-commit subjects)
   Stories/   StoryDocument (parses a USER_STORIES.md into ordered blocks)
   Tickets/   Ticket, TicketRules, StoryFile, WorkspaceTickets (the markdown fallback, pre-migration)
   Repos/     RepoStatus, GitHubRepoIndex, DependencyScan, PrunePlanner
   Git.cs, Workspace.cs
 src/MindAttic.Workflow.Cli/        the workflow exe (Spectre.Console.Cli)
+src/MindAttic.Workflow.Desktop/    Workflow Desktop, a WPF ticket app (net10.0-windows, MindAttic.Components.Wpf)
 tests/MindAttic.Workflow.Tests/    NUnit 4
+tools/build-readme.ps1             regenerates README.htm from README.md (wraps codex-standard's shared engine)
 tools/codex.ps1                    Codex doctor + digest
+tools/install.ps1                  packs the library and CLI and installs `workflow` as a global tool
+deploy.ps1                         publishes Workflow Desktop and (re)creates its shortcuts
 ```
 
 ## Building and testing
 
 ```text
-dotnet build MindAttic.Workflow.slnx      # TreatWarningsAsErrors, Nullable enabled
+dotnet build MindAttic.Workflow.slnx      # TreatWarningsAsErrors, Nullable enabled; also builds Workflow Desktop (Windows)
 dotnet test MindAttic.Workflow.slnx
 powershell -File tools/codex.ps1 doctor   # docs canon check
 ```
 
 The repo-level tests run real `git` against temporary repos; nothing touches the real workspace.
 
+Install the CLI as a global `workflow` tool with `powershell -File tools/install.ps1` (packs the library and CLI to
+`C:\LocalNuGet` and installs or updates the tool from there). Publish and install Workflow Desktop, with its Desktop
+and Start-menu shortcuts, with `powershell -File deploy.ps1` (add `-Launch` to open it when done).
+
 ## Limitations
 
-- Windows-first: the default root is `D:\Projects\MindAttic`, and the CLI is built and tested on Windows.
+- Windows-first: the default root is `D:\Projects\MindAttic`, the CLI is built and tested on Windows, and Workflow Desktop (WPF, `net10.0-windows`) only runs on Windows at all.
 - Output piped or redirected still carries ANSI color codes in places and doesn't yet honor `NO_COLOR`; `story list` wraps rather than truncating in a narrow terminal. See the Priority backlog in [docs/USER_STORIES.md](docs/USER_STORIES.md) for these and other open gaps (restoring the db from its dump, keeping `data/workflow.db` out of ordinary feature commits, concurrent writers).
 
 ## Documentation
