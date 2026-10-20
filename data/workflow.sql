@@ -6356,7 +6356,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T317', 'UnitySpace', 317, '2026-10-19', 'fix', 'open', 'A bounty contract on a captain the player takes alive never completes (Contracts.cs:1102 checks u.Side where it should check u.FoughtOn)', '—', 316, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T318', 'UnitySpace', 318, '2026-10-19', 'fix', 'open', 'Companies.Scrap does not call SettleOut, so a scrapped hull''s takings since the last review are lost from the company''s books', '—', 317, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T319', 'UnitySpace', 319, '2026-10-19', 'fix', 'open', 'Colonisation.Abandon deletes the last settlers of a failed frontier outpost when the system has no other settlement to take them', '—', 318, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T320', 'UnitySpace', 320, '2026-10-19', 'fix', 'open', 'A re-founded settlement''s name skips the number 2', '—', 319, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T320', 'UnitySpace', 320, '2026-10-19', 'fix', 'closed', 'A re-founded settlement''s name skips the number 2', '16e172a', 319, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T321', 'UnitySpace', 321, '2026-10-19', 'fix', 'open', 'Law.Captains, EventDirector.restUntil, retired rows in Outlaws.Hunters and Pursuit.lastChased grow for ever over a long game', '—', 320, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T322', 'UnitySpace', 322, '2026-10-19', 'fix', 'open', 'InterstellarWars.RebuildForts can add a fort to a gate during the two-day hold after the gate battle was won', '—', 321, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T323', 'UnitySpace', 323, '2026-10-19', 'fix', 'open', 'Two overlapping interstellar wars can hand a captured gate back to the wrong owner when the second was declared by hand', '—', 322, NULL);
@@ -11553,6 +11553,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5172, 'M
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5173, 'PRS-T216', '2026-10-20T02:46:49Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5174, 'PRS-T216', '2026-10-20T02:50:30Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5175, 'PRS-T216', '2026-10-20T02:50:30Z', 'ref', '—', 'd1dd618c2');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5176, 'U.SPC-T320', '2026-10-20T03:06:29Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5177, 'U.SPC-T320', '2026-10-20T03:06:29Z', 'ref', '—', '16e172a');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('AUT-T14', 'approved', 0, '2026-10-18T08:37:29Z');
