@@ -126,6 +126,7 @@ src/MindAttic.Workflow/            library (packed to C:\LocalNuGet)
 src/MindAttic.Workflow.Cli/        the workflow exe (Spectre.Console.Cli)
 src/MindAttic.Workflow.Desktop/    Workflow Desktop, a WPF ticket app (net10.0-windows, MindAttic.Components.Wpf)
 tests/MindAttic.Workflow.Tests/    NUnit 4
+tests/MindAttic.Workflow.Desktop.Tests/  NUnit 4: Workflow Desktop's view model and store against a temporary database
 tools/build-readme.ps1             regenerates README.htm from README.md (wraps codex-standard's shared engine)
 tools/codex.ps1                    Codex doctor + digest
 tools/install.ps1                  packs the library and CLI and installs `workflow` as a global tool
