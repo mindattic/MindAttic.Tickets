@@ -30,7 +30,7 @@ public static class DemoMenu
     {
         string[] repos =
         [
-            "MindAttic.Launcher", "MindAttic.Workflow", "MindAttic.Browser", "MindAttic.Capture",
+            "MindAttic.Launcher", "MindAttic.Tickets", "MindAttic.Browser", "MindAttic.Capture",
             "MindAttic.Deploy", "MindAttic.Vault", "MindAttic.Log", "MindAttic.Mobile",
             "MindAttic.Automata", "UnityEve", "KdpPublish", "HyperspaceGallery",
             "MindAttic.Codex", "MindAttic.HouseRules", "MindAttic.Site", "MindAttic.Notes",

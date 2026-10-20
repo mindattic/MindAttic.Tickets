@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="src/MindAttic.Tickets/MindAttic.Tickets.csproj" />
+  <Project Path="src/MindAttic.Tickets.Cli/MindAttic.Tickets.Cli.csproj" />
+  <Project Path="src/MindAttic.Tickets.Desktop/MindAttic.Tickets.Desktop.csproj" />
+  <Project Path="tests/MindAttic.Tickets.Tests/MindAttic.Tickets.Tests.csproj" />
+  <Project Path="tests/MindAttic.Tickets.Desktop.Tests/MindAttic.Tickets.Desktop.Tests.csproj" />
+</Solution>

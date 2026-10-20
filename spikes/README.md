@@ -3,7 +3,7 @@
 Throwaway comparisons of console menu approaches for the MindAttic.Launcher (and any other
 MindAttic TUI). Every spike draws the same menu from `Spike.Shared`: a main menu, a 20-project
 list, and per-project actions, two levels deep. Each one also has a status line that ticks every
-second, standing in for the Launcher's refresh timer. Not part of `MindAttic.Workflow.slnx`;
+second, standing in for the Launcher's refresh timer. Not part of `MindAttic.Tickets.slnx`;
 build them through `Spikes.slnx` or `run.ps1`.
 
 ```powershell
