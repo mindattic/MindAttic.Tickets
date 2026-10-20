@@ -20,8 +20,7 @@ public sealed partial class WorkflowDb
             "FROM tickets t LEFT JOIN ticket_queue q ON q.ticket_id = t.id " +
             "WHERE t.status = 'open' AND ($r IS NULL OR t.repo = $r COLLATE NOCASE) " +
             "ORDER BY COALESCE(q.priority, 0) DESC, t.date, t.repo COLLATE NOCASE, t.ordinal",
-            r => new QueueEntry(r.GetString(0), new Ticket(r.GetString(1), r.GetString(2), r.GetString(3), r.GetString(4), r.GetString(5), r.GetString(6)),
-                r.GetString(7), r.GetInt64(8)),
+            r => new QueueEntry(r.GetString(0), ReadTicket(r, 1), r.GetString(7), r.GetInt64(8)),
             ("$r", repo))];
 
     /// <summary>Approval and priority for any ticket, open or not (a ticket never queued is proposed at 0).</summary>

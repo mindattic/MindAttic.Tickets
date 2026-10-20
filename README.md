@@ -6,12 +6,12 @@ A ticket engine and repo job runner for the MindAttic workspace: every repo's st
 
 ```text
 $ workflow ticket list --status open
-╭───────────────────┬───────┬────────────┬─────────┬────────┬────────────────────────────────────────╮
-│ Repo              │ ID    │ Date       │ Type    │ Status │ Summary                                │
-├───────────────────┼───────┼────────────┼─────────┼────────┼────────────────────────────────────────┤
-│ MindAttic.Workflow│ M.FLOW-T7 │ 2026-10-12 │ feature │ open   │ /commit logs tickets through …         │
-│ MindAttic.Workflow│ M.FLOW-T8 │ 2026-10-12 │ feature │ open   │ Launcher Workflow menu item            │
-╰───────────────────┴───────┴────────────┴─────────┴────────┴────────────────────────────────────────╯
+╭────────────────────┬────────────┬────────────┬─────────┬────────┬─────────────────────────────────╮
+│ Repo               │ ID         │ Date       │ Type    │ Status │ Summary                         │
+├────────────────────┼────────────┼────────────┼─────────┼────────┼─────────────────────────────────┤
+│ MindAttic.Workflow │ M.FLOW-T7  │ 2026-10-12 │ feature │ open   │ /commit logs tickets through …  │
+│ MindAttic.Workflow │ M.FLOW-T8  │ 2026-10-12 │ feature │ open   │ Launcher Workflow menu item     │
+╰────────────────────┴────────────┴────────────┴─────────┴────────┴─────────────────────────────────╯
 ```
 
 ## Why

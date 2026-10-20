@@ -52,9 +52,8 @@ public static partial class WorkspaceTickets
                 problems.AddRange(db.Check().Select(p => p.Split(": ", 2) is [var repo, var msg] && known.Contains(repo) ? new TicketProblem(repo, msg) : new TicketProblem("workflow.db", p)));
                 return problems;
             }
-        repos = given;
         var codes = new Dictionary<string, List<string>>(StringComparer.Ordinal);
-        foreach (var r in repos)
+        foreach (var r in given)
         {
             if (!File.Exists(r.StoriesPath)) { problems.Add(new(r.Name, "no docs/USER_STORIES.md")); continue; }
             StoryFile file;
@@ -110,7 +109,7 @@ public static partial class WorkspaceTickets
 
     /// <summary>The code in a USER_STORIES.md, if the repo has one.</summary>
     public static string? CodeOf(Repo repo) =>
-        File.Exists(repo.StoriesPath) ? StoryFile.Load(repo.StoriesPath).Code : null; // a migrated repo's pointer file keeps its front-matter
+        File.Exists(repo.StoriesPath) ? StoryFile.Load(repo.StoriesPath).Code : null; // a migrated repo's generated view keeps its front-matter
 
     [GeneratedRegex(@"\d{4}$")]
     private static partial Regex TrailingYear();

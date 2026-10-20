@@ -1,6 +1,6 @@
 #requires -Version 5.1
 <#
-    codex.ps1 - the MindAttic Codex doctor + digest CLI for MindAttic.Workflow (CODE: WF).
+    codex.ps1 - the MindAttic Codex doctor + digest CLI for MindAttic.Workflow (CODE: M.FLOW).
     No build step. Runs under Windows PowerShell 5.1 and PowerShell 7+.
 
     Usage:
@@ -136,7 +136,7 @@ function Invoke-Digest {
     [void]$sb.AppendLine('AUTHORITATIVE - full detail in docs/BIBLE.md')
     [void]$sb.AppendLine('<!-- generatedFrom: M.FLOW-bible -->')
     [void]$sb.AppendLine('')
-    [void]$sb.AppendLine('# MindAttic.Workflow (WF) - Bible digest')
+    [void]$sb.AppendLine('# MindAttic.Workflow (M.FLOW) - Bible digest')
     [void]$sb.AppendLine('')
     [void]$sb.AppendLine("## The one sentence (#M.FLOW-${sect}1)")
     [void]$sb.AppendLine($s1); [void]$sb.AppendLine('')
@@ -287,7 +287,7 @@ function Invoke-Doctor {
 
     # ---- report ----
     Write-Host ''
-    Write-Host 'codex doctor - MindAttic.Workflow (WF)'
+    Write-Host 'codex doctor - MindAttic.Workflow (M.FLOW)'
     Write-Host '--------------------------------------'
     $checks = @(
         'front-matter on every canon file',

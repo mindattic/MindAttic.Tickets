@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using MindAttic.Vault.Credentials;
+using MindAttic.Workflow.Data;
 using MindAttic.Workflow.Repos;
 using Spectre.Console;
 using Spectre.Console.Cli;
@@ -36,6 +37,11 @@ public class RepoSettings : WorkspaceSettings
 internal static class Output
 {
     public static string Esc(string? s) => Markup.Escape(s ?? "");
+
+    /// <summary>One link as seen from <paramref name="id"/>: outgoing as "kind → to", incoming as "← kind from".</summary>
+    public static string LinkLine(Link l, string id) => l.From.Equals(id, StringComparison.OrdinalIgnoreCase)
+        ? $"  [cyan]{Esc(l.Kind)}[/] → {Esc(l.To)}"
+        : $"  ← [cyan]{Esc(l.Kind)}[/] {Esc(l.From)}";
 
     /// <summary>The GitHub index, or null (with a printed reason) when there's no token or the call fails.</summary>
     public static IReadOnlyDictionary<string, GitHubRepoInfo>? TryGitHub(bool required, IEnumerable<string>? localSlugs = null)

@@ -1,7 +1,7 @@
 ﻿AUTHORITATIVE - full detail in docs/BIBLE.md
 <!-- generatedFrom: M.FLOW-bible -->
 
-# MindAttic.Workflow (WF) - Bible digest
+# MindAttic.Workflow (M.FLOW) - Bible digest
 
 ## The one sentence (#M.FLOW-§1)
 MindAttic.Workflow is the workspace's ticket engine and repo job runner: a .NET library plus a
@@ -17,7 +17,8 @@ repo under `D:\Projects\MindAttic`.
   as one front door ([HOUSE-LAW-6](../../MindAttic.HouseRules.md#HOUSE-LAW-6)). This repo owns
   tickets and workspace jobs.
 - NOT a git client for commits. `/commit` commits; it calls `workflow ticket` to log the work.
-- NOT a free-form document editor. Stories (`CODE-US-…`), epics and backlog items are edited through the CLI\n  (`story new`/`edit`/`status`, `epic new`, `backlog add`), which keeps the database and each view in step.
+- NOT a free-form document editor. Stories (`CODE-US-…`), epics and backlog items are edited through the CLI
+  (`story new`/`edit`/`status`, `epic new`, `backlog add`), which keeps the database and each view in step.
 
 ## The Laws (#M.FLOW-§5)
 This project **inherits** the org-wide laws in

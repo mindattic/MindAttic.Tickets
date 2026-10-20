@@ -443,12 +443,16 @@ public sealed partial class WorkflowDb : IDisposable
     /// <summary>Tickets (with their repo name), optionally for one repo, in repo then log order.</summary>
     public IReadOnlyList<(string Repo, Ticket Ticket)> Tickets(string? repo = null) =>
         [.. Rows("SELECT repo, id, date, type, status, summary, ref FROM tickets WHERE $r IS NULL OR repo = $r COLLATE NOCASE ORDER BY repo COLLATE NOCASE, ordinal",
-            r => (r.GetString(0), new Ticket(r.GetString(1), r.GetString(2), r.GetString(3), r.GetString(4), r.GetString(5), r.GetString(6))), ("$r", repo))];
+            r => (r.GetString(0), ReadTicket(r, 1)), ("$r", repo))];
 
     public (string Repo, Ticket Ticket)? Ticket(string id) =>
         Rows("SELECT repo, id, date, type, status, summary, ref FROM tickets WHERE id = $id COLLATE NOCASE",
-            r => (r.GetString(0), new Ticket(r.GetString(1), r.GetString(2), r.GetString(3), r.GetString(4), r.GetString(5), r.GetString(6))), ("$id", id))
+            r => (r.GetString(0), ReadTicket(r, 1)), ("$id", id))
             .Cast<(string, Ticket)?>().FirstOrDefault();
+
+    /// <summary>The ticket in the six columns id, date, type, status, summary, ref starting at <paramref name="at"/>.</summary>
+    private static Ticket ReadTicket(SqliteDataReader r, int at) =>
+        new(r.GetString(at), r.GetString(at + 1), r.GetString(at + 2), r.GetString(at + 3), r.GetString(at + 4), r.GetString(at + 5));
 
     /// <summary>Adds a ticket to <paramref name="repo"/> with the next free number (never reusing a gap), atomically.</summary>
     public Ticket Add(string repo, string type, string status, string summary, string reference, string? date = null)
@@ -460,10 +464,8 @@ public sealed partial class WorkflowDb : IDisposable
         Exec("BEGIN IMMEDIATE");
         try
         {
-            var (name, code) = Rows("SELECT name, code FROM repos WHERE name = $r COLLATE NOCASE", r => (r.GetString(0), r.GetString(1)), ("$r", repo)).FirstOrDefault();
-            if (name is null && ResolveRenamedName(repo) is { } current)
-                (name, code) = Rows("SELECT name, code FROM repos WHERE name = $r COLLATE NOCASE", r => (r.GetString(0), r.GetString(1)), ("$r", current)).FirstOrDefault();
-            if (name is null) throw new InvalidOperationException($"{repo} isn't in the workflow database; run 'workflow db migrate' (or 'workflow repos rollout tickets --apply').");
+            var (name, code) = FindRepoRow(repo)
+                ?? throw new InvalidOperationException($"{repo} isn't in the workflow database; run 'workflow db migrate' (or 'workflow repos rollout tickets --apply').");
             var next = (long)(Scalar("SELECT COALESCE(MAX(number), 0) + 1 FROM tickets WHERE repo = $r", null, ("$r", name)) ?? 1L);
             var ordinal = (long)(Scalar("SELECT COALESCE(MAX(ordinal), -1) + 1 FROM tickets WHERE repo = $r", null, ("$r", name)) ?? 0L);
             var t = new Ticket($"{code}-T{next}", date ?? TicketRules.Today(), type, status, summary.Trim(), string.IsNullOrWhiteSpace(reference) ? "—" : reference.Trim());
@@ -641,12 +643,13 @@ public sealed partial class WorkflowDb : IDisposable
     /// <summary>Every link touching <paramref name="id"/>, in either direction.</summary>
     public IReadOnlyList<Link> Links(string id) =>
         [.. Rows("SELECT from_id, to_id, kind, note FROM links WHERE from_id = $id COLLATE NOCASE OR to_id = $id COLLATE NOCASE ORDER BY kind, from_id, to_id",
-            r => new Link(r.GetString(0), r.GetString(1), r.GetString(2), r.IsDBNull(3) ? null : r.GetString(3)), ("$id", id))];
+            ReadLink, ("$id", id))];
 
     /// <summary>Every link in the database.</summary>
     public IReadOnlyList<Link> AllLinks() =>
-        [.. Rows("SELECT from_id, to_id, kind, note FROM links ORDER BY from_id, kind, to_id",
-            r => new Link(r.GetString(0), r.GetString(1), r.GetString(2), r.IsDBNull(3) ? null : r.GetString(3)))];
+        [.. Rows("SELECT from_id, to_id, kind, note FROM links ORDER BY from_id, kind, to_id", ReadLink)];
+
+    private static Link ReadLink(SqliteDataReader r) => new(r.GetString(0), r.GetString(1), r.GetString(2), r.IsDBNull(3) ? null : r.GetString(3));
 
     /// <summary>What <paramref name="id"/> requires (directly, or all the way down).</summary>
     public IReadOnlyList<string> Requires(string id, bool transitive = false)
@@ -803,20 +806,23 @@ public sealed partial class WorkflowDb : IDisposable
                 InsertBlock(name, heading.Item1 + 1, "raw", null, string.Join("\n", lines[end..]), tx);
             }
         }
-        var item =(long)Scalar("INSERT INTO backlog_items (repo, ordinal, text) VALUES ($r, $o, $t) RETURNING uid", tx, ("$r", name), ("$o", position), ("$t", OneLine(text)))!;
+        var item = (long)Scalar("INSERT INTO backlog_items (repo, ordinal, text) VALUES ($r, $o, $t) RETURNING uid", tx, ("$r", name), ("$o", position), ("$t", OneLine(text)))!;
         foreach (var sid in StoryDocument.StoryIdRef().Matches(text).Select(m => m.Value).Distinct(StringComparer.Ordinal))
             Exec("INSERT OR IGNORE INTO backlog_refs (item_uid, story_id) VALUES ($i, $s)", tx, ("$i", item), ("$s", sid));
         InsertBlock(name, position, "backlog", item.ToString(CultureInfo.InvariantCulture), $"{number}. {OneLine(text)}", tx);
         tx.Commit();
     }
 
-    private (string Name, string Code) RepoRow(string repo)
+    private (string Name, string Code) RepoRow(string repo) =>
+        FindRepoRow(repo) ?? throw new KeyNotFoundException($"{repo} isn't in the workflow database.");
+
+    /// <summary>The repo's current name and code, following its rename history from a former name; null if unknown.</summary>
+    private (string Name, string Code)? FindRepoRow(string repo)
     {
-        var row = Rows("SELECT name, code FROM repos WHERE name = $r COLLATE NOCASE", r => (r.GetString(0), r.GetString(1)), ("$r", repo)).FirstOrDefault();
-        if (row.Item1 is not null) return row;
-        if (ResolveRenamedName(repo) is { } current)
-            row = Rows("SELECT name, code FROM repos WHERE name = $r COLLATE NOCASE", r => (r.GetString(0), r.GetString(1)), ("$r", current)).FirstOrDefault();
-        return row.Item1 is null ? throw new KeyNotFoundException($"{repo} isn't in the workflow database.") : row;
+        (string, string)? Lookup(string name) =>
+            Rows("SELECT name, code FROM repos WHERE name = $r COLLATE NOCASE", r => (r.GetString(0), r.GetString(1)), ("$r", name))
+                .Cast<(string, string)?>().FirstOrDefault();
+        return Lookup(repo) ?? (ResolveRenamedName(repo) is { } current ? Lookup(current) : null);
     }
 
     /// <summary>Inserts a block at <paramref name="ordinal"/>, moving every later block of the repo down one.</summary>

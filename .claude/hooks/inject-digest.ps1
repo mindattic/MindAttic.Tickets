@@ -15,7 +15,7 @@ $digest = Get-Content -LiteralPath $DigestPath -Raw
 if ([string]::IsNullOrWhiteSpace($digest)) { Write-Output '{}'; exit 0 }
 
 $preamble = @"
-[MindAttic Codex] The following is the AUTHORITATIVE project digest for MindAttic.Workflow (WF),
+[MindAttic Codex] The following is the AUTHORITATIVE project digest for MindAttic.Workflow (M.FLOW),
 generated from docs/BIBLE.md. Treat it as the source of truth for what this project IS, is NOT,
 its Laws, and its glossary. Full detail lives in docs/BIBLE.md. Do not contradict it; if reality differs, update the canon and re-run
 tools/codex.ps1 doctor.

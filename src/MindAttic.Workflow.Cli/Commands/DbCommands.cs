@@ -244,10 +244,7 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
         AnsiConsole.MarkupLine($"[bold]{Output.Esc(t.Id)}[/] · {Output.Esc(repo)} · {Output.Esc(t.Type)} · {Output.Esc(t.Status)} · opened {Output.Esc(t.Date)}");
         AnsiConsole.WriteLine(t.Summary);
         AnsiConsole.MarkupLine($"[grey]Ref:[/] {Output.Esc(t.Ref)}");
-        foreach (var l in links)
-            AnsiConsole.MarkupLine(l.From.Equals(t.Id, StringComparison.OrdinalIgnoreCase)
-                ? $"  [cyan]{Output.Esc(l.Kind)}[/] → {Output.Esc(l.To)}"
-                : $"  ← [cyan]{Output.Esc(l.Kind)}[/] {Output.Esc(l.From)}");
+        foreach (var l in links) AnsiConsole.MarkupLine(Output.LinkLine(l, t.Id));
         foreach (var e in history)
             AnsiConsole.MarkupLine($"  [grey]{Output.Esc(e.At)} {Output.Esc(e.Field)}: {Output.Esc(e.Old ?? "")} → {Output.Esc(e.New ?? "")}[/]");
         return 0;
@@ -370,9 +367,7 @@ public sealed class StoryShowCommand : Command<StoryShowCommand.Settings>
             AnsiConsole.WriteLine(s.Text);
             if (s.Evidence is { } e) AnsiConsole.MarkupLine($"[grey]Evidence:[/] {Output.Esc(e)}");
         }
-        foreach (var l in db.Links(settings.Id))
-            AnsiConsole.MarkupLine(l.From.Equals(settings.Id, StringComparison.OrdinalIgnoreCase)
-                ? $"  [cyan]{Output.Esc(l.Kind)}[/] → {Output.Esc(l.To)}" : $"  ← [cyan]{Output.Esc(l.Kind)}[/] {Output.Esc(l.From)}");
+        foreach (var l in db.Links(settings.Id)) AnsiConsole.MarkupLine(Output.LinkLine(l, settings.Id));
         return 0;
     }
 }

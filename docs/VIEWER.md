@@ -1,4 +1,4 @@
-# Workflow viewer — plan (M.FLOW-T11, built as M.FLOW-T10)
+# Workflow viewer (planned as M.FLOW-T11, built as M.FLOW-T10)
 
 A read-only window onto the workflow database: every repo's stories and tickets, with filters, in
 MindAttic.Browser.

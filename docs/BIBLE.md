@@ -4,7 +4,7 @@ project: MindAttic.Workflow
 code: M.FLOW
 layer: bible
 status: living
-updated: 2026-10-15
+updated: 2026-10-19
 ---
 
 # MindAttic.Workflow — Project Bible
@@ -35,7 +35,8 @@ repo under `D:\Projects\MindAttic`.
   as one front door ([HOUSE-LAW-6](../../MindAttic.HouseRules.md#HOUSE-LAW-6)). This repo owns
   tickets and workspace jobs.
 - NOT a git client for commits. `/commit` commits; it calls `workflow ticket` to log the work.
-- NOT a free-form document editor. Stories (`CODE-US-…`), epics and backlog items are edited through the CLI\n  (`story new`/`edit`/`status`, `epic new`, `backlog add`), which keeps the database and each view in step.
+- NOT a free-form document editor. Stories (`CODE-US-…`), epics and backlog items are edited through the CLI
+  (`story new`/`edit`/`status`, `epic new`, `backlog add`), which keeps the database and each view in step.
 
 ## 4. Architecture canon {#M.FLOW-§4}
 ```
@@ -53,6 +54,7 @@ repo under `D:\Projects\MindAttic`.
 ### 4.1 Projects
 - `src/MindAttic.Workflow` — the library (net10.0), packed to `C:\LocalNuGet`.
 - `src/MindAttic.Workflow.Cli` — the `workflow` exe.
+- `src/MindAttic.Workflow.Desktop` — Workflow Desktop, the WPF ticket app (net10.0-windows).
 - `tests/MindAttic.Workflow.Tests` — NUnit 4.
 
 ### 4.2 Domain model (nouns)
@@ -132,7 +134,7 @@ No code path links an LLM SDK or calls an LLM API.
 
 ## 6. Verified state {#M.FLOW-§6}
 - `dotnet build MindAttic.Workflow.slnx`: 0 warnings, 0 errors.
-- `dotnet test`: 100 passing NUnit tests (database import/export/links/history, repo rename,
+- `dotnet test`: 127 passing NUnit tests (database import/export/links/history, the ticket queue, repo rename,
   story/epic/backlog editing, the CLI commands through the real `workflow` on a temp workspace,
   ticket parsing and writing on the markdown fallback, rules, workspace checks, code derivation,
   git status on real temp repos, GitHub index with a fake handler, dependency scan, prune planning).
