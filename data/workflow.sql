@@ -11577,6 +11577,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5189, 'U
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5190, 'U.SPC-T316', '2026-10-20T03:49:45Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5191, 'U.SPC-T316', '2026-10-20T03:49:45Z', 'ref', '—', 'b3d1940');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5192, 'M.CAPT-T34', '2026-10-20T03:50:00Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5193, 'M.ORCH-T495', '2026-10-20T04:21:42Z', 'priority', '0', '100');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('AUT-T14', 'approved', 0, '2026-10-18T08:37:29Z');
@@ -11825,6 +11826,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.ORC
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.ORCH-T492', 'approved', 190, '2026-10-20T00:58:57Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.ORCH-T493', 'approved', 185, '2026-10-20T00:59:52Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.ORCH-T494', 'approved', 100, '2026-10-20T01:10:26Z');
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.ORCH-T495', 'proposed', 100, '2026-10-20T04:21:42Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.ORCH-T498', 'approved', 0, '2026-10-20T03:34:12Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.ORCH-T499', 'approved', 0, '2026-10-20T03:34:12Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.ORCH-T500', 'approved', 0, '2026-10-20T03:34:12Z');
