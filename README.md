@@ -87,7 +87,7 @@ workflow epic   new     [--repo X] --key KEY --title "..."
 workflow backlog add    [--repo X] --text "..."
 workflow db migrate     [--cutover] [--db FILE]
 workflow db export      [--repo X] [--out FILE]
-workflow db check
+workflow db check       [--fix]
 workflow db render      [--repo X]
 workflow db sync        [--no-push] [--ticket ID]
 workflow view [--repo X] [--out DIR] [--no-open]

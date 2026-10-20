@@ -95,11 +95,20 @@ public sealed class DbExportCommand : Command<DbExportCommand.Settings>
     }
 }
 
-public sealed class DbCheckCommand : Command<WorkspaceSettings>
+public sealed class DbCheckCommand : Command<DbCheckCommand.Settings>
 {
-    public override int Execute(CommandContext context, WorkspaceSettings settings)
+    public sealed class Settings : WorkspaceSettings
+    {
+        [CommandOption("--fix")]
+        [Description("First repair links with stray whitespace in an endpoint (trim it, or remove a blank or duplicate one); each change is printed and logged in the ticket's history.")]
+        public bool Fix { get; init; }
+    }
+
+    public override int Execute(CommandContext context, Settings settings)
     {
         using var db = Db.Open(settings);
+        if (settings.Fix)
+            foreach (var line in db.RepairLinks()) AnsiConsole.MarkupLine($"[cyan]fixed[/] {Output.Esc(line)}");
         var problems = db.Check().Concat(db.StaleViews(settings.Workspace).Select(r => $"{r}: docs/USER_STORIES.md isn't its current view (hand-edited or not rendered); run 'workflow db render'")).ToList();
         foreach (var p in problems) AnsiConsole.MarkupLine($"[yellow]{Output.Esc(p)}[/]");
         AnsiConsole.MarkupLine(problems.Count == 0 ? "[green]No problems.[/]" : $"[grey]{problems.Count} problem(s)[/]");

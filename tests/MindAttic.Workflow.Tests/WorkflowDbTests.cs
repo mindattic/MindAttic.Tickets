@@ -167,6 +167,53 @@ public sealed class WorkflowDbTests
     }
 
     [Test]
+    public void Check_fix_trims_stray_crs_from_links_into_the_tickets_history_and_moves_old_code_epic_links_to_the_current_code()
+    {
+        var (db, _) = Migrated();
+        using (db)
+        {
+            using (var raw = new SqliteConnection($"Data Source={db.Path};Pooling=False"))
+            {
+                raw.Open();
+                using var cmd = raw.CreateCommand();
+                // What a CRLF script feeding 'ticket link' left behind (M.FLOW-T116): a blank target, a padded one, and a padded duplicate.
+                cmd.CommandText = "INSERT INTO links (from_id, to_id, kind) VALUES ('AL-T1', char(13), 'requires'), ('AL-T2', 'BE-T1' || char(13), 'requires'), " +
+                                  "('BE-T2', 'AL-T1', 'related'), ('BE-T2', 'AL-T1' || char(13), 'related'); " +
+                                  // And a story's epic link under an old code (Prose's SS-EPIC-G with its code now PRS).
+                                  "DELETE FROM links WHERE from_id = 'AL-US-A1' AND kind = 'part-of'; " +
+                                  "INSERT INTO links (from_id, to_id, kind) VALUES ('AL-US-A1', 'SS-EPIC-A', 'part-of'), ('AL-US-A2', 'SS-EPIC-A', 'part-of')";
+                cmd.ExecuteNonQuery();
+            }
+            Assert.That(db.Check(), Is.EquivalentTo(new[]
+            {
+                "link AL-T1 requires \\r: no item (blank; run 'workflow db check --fix')",
+                "link AL-T2 requires BE-T1\\r: no item BE-T1 (stray whitespace; run 'workflow db check --fix')",
+                "link BE-T2 related AL-T1\\r: no item AL-T1 (stray whitespace; run 'workflow db check --fix')",
+                "link AL-US-A1 part-of SS-EPIC-A: no item SS-EPIC-A",
+                "link AL-US-A2 part-of SS-EPIC-A: no item SS-EPIC-A",
+            }));
+
+            Assert.That(db.RepairLinks(), Is.EquivalentTo(new[]
+            {
+                "link AL-T1 requires \\r: removed (blank endpoint)",
+                "link AL-T2 requires BE-T1\\r: trimmed to AL-T2 requires BE-T1",
+                "link BE-T2 related AL-T1\\r: removed (the trimmed link already exists)",
+                "link AL-US-A1 part-of SS-EPIC-A: retargeted to AL-EPIC-A (the repo's current code)",
+                "link AL-US-A2 part-of SS-EPIC-A: removed (AL-US-A2 part-of AL-EPIC-A already exists)",
+            }));
+            Assert.That(db.Links("AL-US-A1").Where(l => l.Kind == "part-of").Select(l => l.To), Is.EqualTo(new[] { "AL-EPIC-A" }));
+            Assert.That(db.Check(), Is.Empty);
+            Assert.That(db.RepairLinks(), Is.Empty, "a second run has nothing to do");
+            Assert.That(db.Requires("AL-T2", transitive: false), Does.Contain("BE-T1"));
+            Assert.That(db.History("AL-T2").Select(e => (e.Field, e.Old, e.New)), Does.Contain(("link", (string?)"requires BE-T1\\r", (string?)"requires BE-T1")));
+
+            db.AddLink("BE-T2", " BE-T1\r", "related");
+            Assert.That(db.Check(), Is.Empty, "AddLink trims what it's given");
+            Assert.That(() => db.AddLink("BE-T2", "\r", "related"), Throws.ArgumentException);
+        }
+    }
+
+    [Test]
     public void A_story_status_change_updates_its_row_and_its_markdown()
     {
         var (db, _) = Migrated();

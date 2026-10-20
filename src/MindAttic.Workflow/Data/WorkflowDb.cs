@@ -627,6 +627,9 @@ public sealed partial class WorkflowDb : IDisposable
     /// <summary>Links <paramref name="from"/> to <paramref name="to"/>; <c>requires</c> makes <paramref name="to"/> a prerequisite.</summary>
     public void AddLink(string from, string to, string kind, string? note = null)
     {
+        // Trim: a CR from a CRLF script would otherwise land in the ID and the link would point at nothing.
+        (from, to) = (from.Trim(), to.Trim());
+        if (from.Length == 0 || to.Length == 0) throw new ArgumentException("A link needs both ends.");
         if (!LinkKinds.Contains(kind)) throw new ArgumentException($"Unknown link kind '{kind}' (expected {string.Join(", ", LinkKinds)}).", nameof(kind));
         if (string.Equals(from, to, StringComparison.OrdinalIgnoreCase)) throw new ArgumentException("An item can't link to itself.");
         if (kind == "requires" && Requires(to, transitive: true).Contains(from, StringComparer.OrdinalIgnoreCase))
@@ -855,13 +858,65 @@ public sealed partial class WorkflowDb : IDisposable
             r => r.GetString(0)).ToHashSet(StringComparer.OrdinalIgnoreCase);
         foreach (var l in AllLinks())
         {
-            if (!ids.Contains(l.From)) problems.Add($"link {l.From} {l.Kind} {l.To}: no item {l.From}");
-            if (!ids.Contains(l.To)) problems.Add($"link {l.From} {l.Kind} {l.To}: no item {l.To}");
+            if (!ids.Contains(l.From)) problems.Add($"link {Escaped(l.From)} {l.Kind} {Escaped(l.To)}: no item {Shown(l.From)}");
+            if (!ids.Contains(l.To)) problems.Add($"link {Escaped(l.From)} {l.Kind} {Escaped(l.To)}: no item {Shown(l.To)}");
         }
         foreach (var id in Rows("SELECT DISTINCT from_id FROM links WHERE kind = 'requires'", r => r.GetString(0)))
             if (Requires(id, transitive: true).Contains(id, StringComparer.OrdinalIgnoreCase)) problems.Add($"{id}: requires itself through a cycle");
         return problems;
     }
+
+    // An endpoint with stray whitespace (a CR from a CRLF script, say) prints the same as a good ID; say so.
+    private static string Shown(string id) =>
+        id.Trim() == id ? id : id.Trim().Length == 0 ? "(blank; run 'workflow db check --fix')" : $"{id.Trim()} (stray whitespace; run 'workflow db check --fix')";
+
+    /// <summary>
+    /// Repairs links whose endpoint has stray whitespace: a blank endpoint is removed, a padded one is trimmed (removed
+    /// instead when the trimmed link already exists), each change going in the from-ticket's history; and a story's
+    /// part-of link to its epic under an old repo code moves to the current CODE-EPIC-KEY. Every change is returned.
+    /// </summary>
+    public IReadOnlyList<string> RepairLinks()
+    {
+        var log = new List<string>();
+        var tickets = Rows("SELECT id FROM tickets", r => r.GetString(0)).ToHashSet(StringComparer.OrdinalIgnoreCase);
+        var padded = AllLinks().Where(l => l.From.Trim() != l.From || l.To.Trim() != l.To).ToList();
+        using var tx = db.BeginTransaction();
+        foreach (var l in padded)
+        {
+            var (from, to) = (l.From.Trim(), l.To.Trim());
+            Exec("DELETE FROM links WHERE from_id = $f AND to_id = $t AND kind = $k", tx, ("$f", l.From), ("$t", l.To), ("$k", l.Kind));
+            string what;
+            if (from.Length == 0 || to.Length == 0 || string.Equals(from, to, StringComparison.OrdinalIgnoreCase))
+                what = "removed (blank endpoint)";
+            else if (Exec("INSERT OR IGNORE INTO links (from_id, to_id, kind, note) VALUES ($f, $t, $k, $n)", tx, ("$f", from), ("$t", to), ("$k", l.Kind), ("$n", l.Note)) > 0)
+                what = $"trimmed to {from} {l.Kind} {to}";
+            else
+                what = "removed (the trimmed link already exists)";
+            var line = $"link {Escaped(l.From)} {l.Kind} {Escaped(l.To)}: {what}";
+            log.Add(line);
+            if (tickets.Contains(from))
+                Exec("INSERT INTO ticket_events (ticket_id, at, field, old, new) VALUES ($id, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), 'link', $o, $n)", tx,
+                    ("$id", tickets.First(t => string.Equals(t, from, StringComparison.OrdinalIgnoreCase))), ("$o", $"{l.Kind} {Escaped(l.To)}"), ("$n", what.StartsWith("trimmed") ? $"{l.Kind} {to}" : null));
+        }
+        // A story's part-of link to its epic under a code its repo no longer has (Prose's SS-EPIC-G, its code now PRS):
+        // retarget it to the repo's current CODE-EPIC-KEY when that epic exists.
+        foreach (var (story, oldTo, newTo) in Rows("""
+                SELECT l.from_id, l.to_id, r.code || '-EPIC-' || e.key FROM links l
+                JOIN stories s ON s.story_id = l.from_id COLLATE NOCASE JOIN repos r ON r.name = s.repo
+                JOIN epics e ON e.repo = s.repo AND l.to_id LIKE '%-EPIC-' || e.key AND substr(l.to_id, 1, length(l.to_id) - length(e.key) - 6) <> ''
+                WHERE l.kind = 'part-of' AND upper(l.to_id) <> upper(r.code || '-EPIC-' || e.key)
+                  AND NOT EXISTS (SELECT 1 FROM epics e2 JOIN repos r2 ON r2.name = e2.repo WHERE upper(r2.code || '-EPIC-' || e2.key) = upper(l.to_id))
+                """, tx, r => (r.GetString(0), r.GetString(1), r.GetString(2))).ToList())
+        {
+            Exec("DELETE FROM links WHERE from_id = $f AND to_id = $t AND kind = 'part-of'", tx, ("$f", story), ("$t", oldTo));
+            var added = Exec("INSERT OR IGNORE INTO links (from_id, to_id, kind, note) VALUES ($f, $t, 'part-of', 'story under its epic')", tx, ("$f", story), ("$t", newTo)) > 0;
+            log.Add($"link {story} part-of {oldTo}: " + (added ? $"retargeted to {newTo} (the repo's current code)" : $"removed ({story} part-of {newTo} already exists)"));
+        }
+        tx.Commit();
+        return log;
+    }
+
+    private static string Escaped(string id) => id.Replace("\r", "\\r").Replace("\n", "\\n").Replace("\t", "\\t");
 
     /// <summary>
     /// A readable, deterministic SQL dump of the whole database (one INSERT per row, in key order), committed
