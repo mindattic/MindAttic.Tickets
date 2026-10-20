@@ -141,6 +141,32 @@ public sealed class WorkflowDbTests
     }
 
     [Test]
+    public void Check_flags_a_link_whose_endpoint_is_no_ticket_story_or_code_epic_key_epic()
+    {
+        var (db, _) = Migrated();
+        using (db)
+        {
+            Assert.That(db.Links("AL-US-A1").Select(l => l.To), Does.Contain("AL-EPIC-A"), "an epic resolves by its repo's CODE-EPIC-KEY");
+            Assert.That(db.Check(), Is.Empty);
+
+            using (var raw = new SqliteConnection($"Data Source={db.Path};Pooling=False"))
+            {
+                raw.Open();
+                using var cmd = raw.CreateCommand();
+                cmd.CommandText = "INSERT INTO links (from_id, to_id, kind) VALUES ('AL-US-A2', 'SS-EPIC-G', 'part-of'), ('G5a', 'AL-EPIC-Z', 'part-of'), ('AL-T1', 'H10a', 'related')";
+                cmd.ExecuteNonQuery();
+            }
+            Assert.That(db.Check(), Is.EquivalentTo(new[]
+            {
+                "link AL-US-A2 part-of SS-EPIC-G: no item SS-EPIC-G",
+                "link G5a part-of AL-EPIC-Z: no item G5a",
+                "link G5a part-of AL-EPIC-Z: no item AL-EPIC-Z",
+                "link AL-T1 related H10a: no item H10a",
+            }));
+        }
+    }
+
+    [Test]
     public void A_story_status_change_updates_its_row_and_its_markdown()
     {
         var (db, _) = Migrated();

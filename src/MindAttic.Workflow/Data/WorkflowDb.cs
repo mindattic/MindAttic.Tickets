@@ -838,16 +838,17 @@ public sealed partial class WorkflowDb : IDisposable
 
     // ── Checks and dump ─────────────────────────────────────────────────────
 
-    /// <summary>Problems: bad ticket IDs/dates/types, codes that don't match, links to items that don't exist, and requires-cycles.</summary>
+    /// <summary>Problems: bad ticket IDs/dates/types, codes that don't match, link endpoints that aren't a ticket, story or CODE-EPIC-KEY epic, and requires-cycles.</summary>
     public IReadOnlyList<string> Check()
     {
         var problems = new List<string>();
         foreach (var (name, code) in Repos())
             problems.AddRange(TicketRules.Validate(code, [.. Tickets(name).Select(t => t.Ticket)]).Select(p => $"{name}: {p}"));
-        var ids = Rows("SELECT id FROM tickets UNION SELECT story_id FROM stories", r => r.GetString(0)).ToHashSet(StringComparer.OrdinalIgnoreCase);
+        // Every endpoint must resolve to a ticket, a story or an epic by its CODE-EPIC-KEY id (the repo's current code).
+        var ids = Rows("SELECT id FROM tickets UNION SELECT story_id FROM stories UNION SELECT r.code || '-EPIC-' || e.key FROM epics e JOIN repos r ON r.name = e.repo",
+            r => r.GetString(0)).ToHashSet(StringComparer.OrdinalIgnoreCase);
         foreach (var l in AllLinks())
         {
-            if (l.Kind == "part-of" && l.To.Contains("-EPIC-", StringComparison.Ordinal)) continue;
             if (!ids.Contains(l.From)) problems.Add($"link {l.From} {l.Kind} {l.To}: no item {l.From}");
             if (!ids.Contains(l.To)) problems.Add($"link {l.From} {l.Kind} {l.To}: no item {l.To}");
         }
