@@ -22,6 +22,7 @@ app.Configure(config =>
         t.AddCommand<TicketShowCommand>("show").WithDescription("One ticket: its row, links (prerequisites included) and history.");
         t.AddCommand<TicketLinkCommand>("link").WithDescription("Link two tickets or stories: workflow ticket link A requires B (--remove to unlink).");
         t.AddCommand<TicketCorrectCommand>("correct").WithDescription("Correct a ticket's type to the standard vocabulary (recorded in its history).");
+        t.AddCommand<TicketReassignCommand>("reassign").WithDescription("Give a ticket a new ID; the old one is kept in its history and still resolves.");
         t.AddCommand<TicketVerifyCommand>("verify").WithDescription("Check a repo's tickets and links are valid.");
         t.AddCommand<TicketQueueCommand>("queue").WithDescription("Open tickets in queue order, with approval and priority.");
         t.AddCommand<TicketApproveCommand>("approve").WithDescription("Approve an open ticket for work (--undo puts it back to proposed).");
@@ -74,6 +75,7 @@ app.Configure(config =>
         r.AddCommand<ReposPruneCommand>("prune").WithDescription("Delete folders of archived / untagged repos that are safe to remove (preview unless --apply).");
         r.AddCommand<ReposRolloutTicketsCommand>("rollout").WithDescription("Give every repo a USER_STORIES.md with a ticket log (preview unless --apply).");
         r.AddCommand<ReposRenameCommand>("rename").WithDescription("Rename a repo's folder-name key everywhere the database keys it (backed up first; doesn't touch disk).");
+        r.AddCommand<ReposRecodeCommand>("recode").WithDescription("Change a repo's project code, reassigning its ticket, story and epic IDs (old IDs still resolve; backed up first).");
         r.AddCommand<ReposRenamesCommand>("renames").WithDescription("List recorded repo renames (--repo to filter).");
     });
 

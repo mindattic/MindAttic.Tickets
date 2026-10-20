@@ -297,6 +297,32 @@ public sealed class ReposRenameCommand : Command<ReposRenameCommand.Settings>
     }
 }
 
+public sealed class ReposRecodeCommand : Command<ReposRecodeCommand.Settings>
+{
+    public sealed class Settings : WorkspaceSettings
+    {
+        [CommandArgument(0, "<REPO>")]
+        public string Repo { get; init; } = "";
+
+        [CommandArgument(1, "<CODE>")]
+        [Description("The new project code (like M.LNCH or PRS); never one another repo has or had.")]
+        public string Code { get; init; } = "";
+
+        [CommandOption("--reason <TEXT>")]
+        [Description("Why; kept forever in the ID history of the code and of every ticket, story and epic it moves.")]
+        public string Reason { get; init; } = "";
+    }
+
+    public override int Execute(CommandContext context, Settings settings)
+    {
+        using var db = Db.Open(settings);
+        var r = db.RecodeRepo(settings.Repo, settings.Code, settings.Reason);
+        Db.Rerender(db, settings);
+        Console.WriteLine($"{r.Repo}: {r.OldCode} -> {r.NewCode} ({r.Tickets} ticket(s), {r.Stories} story ID(s), {r.Epics} epic(s); former IDs still resolve); backed up to {r.BackupPath}");
+        return 0;
+    }
+}
+
 public sealed class ReposRenamesCommand : Command<ReposRenamesCommand.Settings>
 {
     public sealed class Settings : WorkspaceSettings

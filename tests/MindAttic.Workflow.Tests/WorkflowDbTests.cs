@@ -363,6 +363,75 @@ public sealed class WorkflowDbTests
     }
 
     [Test]
+    public void Reassigning_a_ticket_id_keeps_its_history_links_and_queue_and_the_old_id_still_resolves()
+    {
+        var (db, _) = Migrated();
+        using (db)
+        {
+            db.Approve("AL-T1");
+            db.SetPriority("AL-T1", 7);
+            var t = db.ReassignTicketId("AL-T1", "AL-T9", "renumbered");
+            Assert.That(t.Id, Is.EqualTo("AL-T9"));
+            Assert.That(db.Ticket("AL-T1")?.Ticket.Id, Is.EqualTo("AL-T9"), "the old ID resolves to the ticket");
+            Assert.That(db.Tickets("Alpha").Select(x => x.Ticket.Id), Is.EquivalentTo(new[] { "AL-T9", "AL-T2" }));
+            Assert.That(db.History("AL-T9").Select(e => e.Field), Does.Contain("created").Or.Contain("id"));
+            Assert.That(db.History("AL-T9").Select(e => (e.Field, e.Old)), Does.Contain(("id", (string?)"AL-T1")));
+            Assert.That(db.Links("AL-T9").Select(l => (l.From, l.Kind, l.To)), Does.Contain(("AL-T9", "requires", "BE-T1")).And.Contain(("AL-T2", "related", "AL-T9")));
+            Assert.That(db.Links("AL-T1"), Is.Empty, "no link is left under the old ID");
+            Assert.That(db.QueueState("AL-T9"), Is.EqualTo(("approved", 7L)));
+            Assert.That(db.IdHistory("AL-T9").Single(), Has.Property("OldId").EqualTo("AL-T1").And.Property("Kind").EqualTo("ticket"));
+            Assert.That(System.Text.Encoding.UTF8.GetString(db.Export("Alpha")!), Does.Contain("| AL-T9 | 2026-10-01 |").And.Not.Contain("| AL-T1 | 2026-10-01 |"));
+            Assert.That(db.Check(), Is.Empty);
+
+            db.AddLink("AL-T1", "BE-T2", "related");
+            Assert.That(db.Links("AL-T9").Select(l => (l.From, l.To)), Does.Contain(("AL-T9", "BE-T2")), "a link to a former ID lands on the current one");
+            Assert.That(db.Add("Alpha", "fix", "open", "next", "").Id, Is.EqualTo("AL-T10"), "numbers keep counting from the highest");
+
+            Assert.That(() => db.ReassignTicketId("AL-T9", "AL-T1", "x"), Throws.InvalidOperationException, "a former ID is never reused");
+            Assert.That(() => db.ReassignTicketId("AL-T9", "AL-T2", "x"), Throws.InvalidOperationException);
+            Assert.That(() => db.ReassignTicketId("AL-T9", "BE-T50", "x"), Throws.ArgumentException, "the repo's own code only");
+            Assert.That(() => db.ReassignTicketId("AL-T9", "AL-X", "x"), Throws.ArgumentException);
+            Assert.That(() => db.ReassignTicketId("AL-T9", "AL-T50", " "), Throws.ArgumentException);
+
+            using var raw = new SqliteConnection($"Data Source={db.Path};Pooling=False");
+            raw.Open();
+            using var cmd = raw.CreateCommand();
+            cmd.CommandText = "UPDATE tickets SET id = 'AL-T77' WHERE id = 'AL-T9'";
+            Assert.That(() => cmd.ExecuteNonQuery(), Throws.InstanceOf<SqliteException>(), "the append-only trigger is back");
+            cmd.CommandText = "DELETE FROM id_history";
+            Assert.That(() => cmd.ExecuteNonQuery(), Throws.InstanceOf<SqliteException>(), "ID history is never deleted");
+        }
+    }
+
+    [Test]
+    public void Recoding_a_repo_reassigns_its_ticket_story_and_epic_ids_and_every_old_id_still_resolves()
+    {
+        var (db, _) = Migrated();
+        using (db)
+        {
+            var r = db.RecodeRepo("Alpha", "A.LPH", "the name was wrong");
+            Assert.That((r.OldCode, r.NewCode, r.Tickets, r.Stories, r.Epics), Is.EqualTo(("AL", "A.LPH", 2, 2, 1)));
+            Assert.That(File.Exists(r.BackupPath));
+            Assert.That(db.Repos().Single(x => x.Name == "Alpha").Code, Is.EqualTo("A.LPH"));
+            Assert.That(db.Tickets("Alpha").Select(x => x.Ticket.Id), Is.EquivalentTo(new[] { "A.LPH-T1", "A.LPH-T2" }));
+            Assert.That(db.Ticket("AL-T2")?.Ticket.Id, Is.EqualTo("A.LPH-T2"));
+            Assert.That(db.Story("AL-US-A1").Single().Id, Is.EqualTo("A.LPH-US-A1"));
+            Assert.That(db.Links("A.LPH-US-A1").Select(l => (l.From, l.Kind, l.To)), Does.Contain(("A.LPH-US-A1", "part-of", "A.LPH-EPIC-A")));
+            Assert.That(db.Links("A.LPH-T1").Select(l => (l.From, l.Kind, l.To)), Does.Contain(("A.LPH-T1", "implements", "A.LPH-US-A1")));
+            Assert.That(db.Add("Alpha", "fix", "open", "new", "").Id, Is.EqualTo("A.LPH-T3"));
+            Assert.That(db.Check(), Is.Empty);
+
+            var page = System.Text.Encoding.UTF8.GetString(db.Export("Alpha")!);
+            Assert.That(page, Does.Contain("\ncode: A.LPH\n").And.Contain("**A.LPH-US-A1 ⬜**").And.Contain("1. **A.LPH-US-A1** next").And.Contain("| A.LPH-T2 |"));
+            Assert.That(page, Does.Contain("build AL-US-A1, blocked by BE-T1"), "a ticket's summary is history and stays as written");
+
+            Assert.That(() => db.RecodeRepo("Beta", "A.LPH", "x"), Throws.InvalidOperationException, "another repo's code");
+            Assert.That(() => db.RecodeRepo("Beta", "AL", "x"), Throws.InvalidOperationException, "a former code is never reused");
+            Assert.That(() => db.RecodeRepo("Beta", "be-", "x"), Throws.ArgumentException);
+        }
+    }
+
+    [Test]
     public void The_dump_is_readable_sql_that_lists_every_ticket()
     {
         var (db, _) = Migrated();

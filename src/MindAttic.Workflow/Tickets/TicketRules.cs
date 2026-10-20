@@ -32,6 +32,12 @@ public static partial class TicketRules
         return m.Success && int.TryParse(m.Groups[2].Value, NumberStyles.None, CultureInfo.InvariantCulture, out var n) ? n : null;
     }
 
+    /// <summary>The code in <c>CODE-T&lt;n&gt;</c>, or null when <paramref name="id"/> isn't one.</summary>
+    public static string? CodeOf(string id) => IdPattern().Match(id) is { Success: true } m ? m.Groups[1].Value : null;
+
+    /// <summary>Whether <paramref name="code"/> is a well-formed project code (<c>PRS</c>, <c>M.LNCH</c>).</summary>
+    public static bool IsCode(string code) => CodeOf(code + "-T1") == code;
+
     /// <summary>The next unused ID: highest existing number + 1, so a gap is never back-filled.</summary>
     public static string NextId(string code, IEnumerable<Ticket> existing)
     {

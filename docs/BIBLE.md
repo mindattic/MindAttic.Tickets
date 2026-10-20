@@ -115,9 +115,12 @@ repo's `docs/USER_STORIES.md` is a generated, read-only view (`workflow db rende
 ### {#M.FLOW-LAW-2} Ticket rows are append-only.
 A row is never deleted or reworded. The database enforces it with triggers: a ticket can't be deleted, and only
 its status and ref can be updated; every change is recorded in `ticket_events`. Only Status (open → closed / wont-do) and Ref change,
-with two sanctioned, logged exceptions that lift the trigger for one update: `CorrectType` (a nonstandard type) and
-`RenameRepo` (its `repo` key, when the repo's folder is renamed). IDs are
-the highest existing number + 1 and are never reused. `ticket verify` fails if a committed row was
+with three sanctioned, logged exceptions that lift the trigger for one update: `CorrectType` (a nonstandard type),
+`RenameRepo` (its `repo` key, when the repo's folder is renamed) and ID reassignment (`ticket reassign`, or
+`repos recode` for a whole repo's code; amended 2026-10-20 by M.FLOW-T121). A reassigned ID keeps its history: the old
+ID is kept forever in the append-only `id_history` table and as an `id` entry in the ticket's own history, and every
+lookup by it (`ticket show`, links, the commit-msg hook) still finds the ticket. IDs are
+the highest existing number + 1 and are never reused, including former IDs. `ticket verify` fails if a committed row was
 deleted or reworded.
 
 ### {#M.FLOW-LAW-3} Nothing is lost.

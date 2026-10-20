@@ -245,6 +245,7 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
             Console.WriteLine(JsonSerializer.Serialize(new
             {
                 repo, id = t.Id, date = t.Date, type = t.Type, status = t.Status, summary = t.Summary, @ref = t.Ref,
+                formerIds = db.IdHistory(t.Id).Select(c => c.OldId),
                 requires = db.Requires(t.Id), links = links.Select(l => new { from = l.From, kind = l.Kind, to = l.To, note = l.Note }),
                 history = history.Select(e => new { at = e.At, field = e.Field, old = e.Old, @new = e.New }),
             }, new JsonSerializerOptions { WriteIndented = true }));
@@ -253,6 +254,8 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
         AnsiConsole.MarkupLine($"[bold]{Output.Esc(t.Id)}[/] · {Output.Esc(repo)} · {Output.Esc(t.Type)} · {Output.Esc(t.Status)} · opened {Output.Esc(t.Date)}");
         AnsiConsole.WriteLine(t.Summary);
         AnsiConsole.MarkupLine($"[grey]Ref:[/] {Output.Esc(t.Ref)}");
+        if (db.IdHistory(t.Id) is { Count: > 0 } former)
+            AnsiConsole.MarkupLine($"[grey]Formerly:[/] {Output.Esc(string.Join(", ", former.Select(c => c.OldId)))}");
         foreach (var l in links) AnsiConsole.MarkupLine(Output.LinkLine(l, t.Id));
         foreach (var e in history)
             AnsiConsole.MarkupLine($"  [grey]{Output.Esc(e.At)} {Output.Esc(e.Field)}: {Output.Esc(e.Old ?? "")} → {Output.Esc(e.New ?? "")}[/]");
@@ -282,6 +285,33 @@ public sealed class TicketCorrectCommand : Command<TicketCorrectCommand.Settings
         var t = db.CorrectType(settings.Id, settings.Type, settings.Reason);
         Db.Rerender(db, settings);
         Console.WriteLine($"{t.Id} type {t.Type}");
+        return 0;
+    }
+}
+
+public sealed class TicketReassignCommand : Command<TicketReassignCommand.Settings>
+{
+    public sealed class Settings : WorkspaceSettings
+    {
+        [CommandArgument(0, "<ID>")]
+        public string Id { get; init; } = "";
+
+        [CommandArgument(1, "<NEW-ID>")]
+        [Description("The new ID: the repo's code and a number never used before.")]
+        public string NewId { get; init; } = "";
+
+        [CommandOption("--reason <TEXT>")]
+        [Description("Why; kept forever in the ID history and the ticket's own history.")]
+        public string Reason { get; init; } = "";
+    }
+
+    public override int Execute(CommandContext context, Settings settings)
+    {
+        using var db = Db.Open(settings);
+        var old = db.Ticket(settings.Id)?.Ticket.Id ?? settings.Id;
+        var t = db.ReassignTicketId(settings.Id, settings.NewId, settings.Reason);
+        Db.Rerender(db, settings);
+        Console.WriteLine($"{old} -> {t.Id}");
         return 0;
     }
 }

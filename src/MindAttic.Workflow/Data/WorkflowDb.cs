@@ -34,7 +34,7 @@ public sealed record ImportReport(string Repo, string Code, int Epics, int Stori
 /// </summary>
 public sealed partial class WorkflowDb : IDisposable
 {
-    public const int SchemaVersion = 3;
+    public const int SchemaVersion = 4;
     public const string RelativePath = "data/workflow.db";
     public const string DumpRelativePath = "data/workflow.sql";
     public const string EnvVar = "MINDATTIC_WORKFLOW_DB";
@@ -106,7 +106,8 @@ public sealed partial class WorkflowDb : IDisposable
 
     /// <summary>
     /// Creates the schema (tables, indexes, triggers) if missing. Pass the active transaction when called from inside
-    /// one of the sanctioned-exception methods (<see cref="Import"/>, <see cref="CorrectType"/>, <see cref="RenameRepo"/>)
+    /// one of the sanctioned-exception methods (<see cref="Import"/>, <see cref="CorrectType"/>, <see cref="RenameRepo"/>,
+    /// <see cref="ReassignTicketId"/>, <see cref="RecodeRepo"/>)
     /// that drop the tickets guard triggers and must put them back before committing — recreating them only after the
     /// commit would leave a window where another connection sees no append-only/no-delete guard on the tickets table.
     /// </summary>
@@ -172,6 +173,16 @@ public sealed partial class WorkflowDb : IDisposable
             BEGIN SELECT RAISE(ABORT, 'repo renames are never deleted'); END;
             CREATE TRIGGER IF NOT EXISTS repo_renames_no_update BEFORE UPDATE ON repo_renames
             BEGIN SELECT RAISE(ABORT, 'repo renames are append-only'); END;
+            -- Schema 4: a ticket, story or epic ID (or a repo's code) can be reassigned (ReassignTicketId, RecodeRepo); every
+            -- old ID is kept forever here and still resolves to the current one, so nothing that cites it ever dangles.
+            CREATE TABLE IF NOT EXISTS id_history (
+                seq INTEGER PRIMARY KEY, kind TEXT NOT NULL CHECK (kind IN ('ticket', 'story', 'epic', 'code')),
+                old_id TEXT NOT NULL, new_id TEXT NOT NULL, at TEXT NOT NULL, reason TEXT NOT NULL);
+            CREATE INDEX IF NOT EXISTS id_history_by_old ON id_history (old_id COLLATE NOCASE);
+            CREATE TRIGGER IF NOT EXISTS id_history_no_delete BEFORE DELETE ON id_history
+            BEGIN SELECT RAISE(ABORT, 'ID history is never deleted'); END;
+            CREATE TRIGGER IF NOT EXISTS id_history_no_update BEFORE UPDATE ON id_history
+            BEGIN SELECT RAISE(ABORT, 'ID history is append-only'); END;
 
             -- Append-only: a ticket is never deleted, and only its status and ref ever change.
             CREATE TRIGGER IF NOT EXISTS tickets_no_delete BEFORE DELETE ON tickets
@@ -445,10 +456,15 @@ public sealed partial class WorkflowDb : IDisposable
         [.. Rows("SELECT repo, id, date, type, status, summary, ref FROM tickets WHERE $r IS NULL OR repo = $r COLLATE NOCASE ORDER BY repo COLLATE NOCASE, ordinal",
             r => (r.GetString(0), ReadTicket(r, 1)), ("$r", repo))];
 
-    public (string Repo, Ticket Ticket)? Ticket(string id) =>
-        Rows("SELECT repo, id, date, type, status, summary, ref FROM tickets WHERE id = $id COLLATE NOCASE",
-            r => (r.GetString(0), ReadTicket(r, 1)), ("$id", id))
-            .Cast<(string, Ticket)?>().FirstOrDefault();
+    /// <summary>The ticket with <paramref name="id"/>, or the one a former ID was reassigned to; null if neither.</summary>
+    public (string Repo, Ticket Ticket)? Ticket(string id)
+    {
+        (string, Ticket)? Lookup(string key) =>
+            Rows("SELECT repo, id, date, type, status, summary, ref FROM tickets WHERE id = $id COLLATE NOCASE",
+                r => (r.GetString(0), ReadTicket(r, 1)), ("$id", key))
+                .Cast<(string, Ticket)?>().FirstOrDefault();
+        return Lookup(id) ?? (CurrentId(id) is var current && !current.Equals(id, StringComparison.OrdinalIgnoreCase) ? Lookup(current) : null);
+    }
 
     /// <summary>The ticket in the six columns id, date, type, status, summary, ref starting at <paramref name="at"/>.</summary>
     private static Ticket ReadTicket(SqliteDataReader r, int at) =>
@@ -543,12 +559,7 @@ public sealed partial class WorkflowDb : IDisposable
         if (Scalar("SELECT 1 FROM repos WHERE name = $n COLLATE NOCASE", null, ("$n", newName)) is not null)
             throw new InvalidOperationException($"A repo named '{newName}' already exists.");
 
-        var backup = $"{Path}.{DateTime.UtcNow:yyyyMMdd'T'HHmmss'Z'}.bak";
-        using (var dest = new SqliteConnection($"Data Source={backup};Pooling=False"))
-        {
-            dest.Open();
-            db.BackupDatabase(dest); // SQLite's online backup API: safe to run against the live, open connection
-        }
+        var backup = Backup();
 
         Exec("PRAGMA foreign_keys = OFF;");
         int ticketsMoved;
@@ -577,6 +588,16 @@ public sealed partial class WorkflowDb : IDisposable
         }
         finally { Exec("PRAGMA foreign_keys = ON;"); }
         return new RenameResult(newName, ticketsMoved, backup);
+    }
+
+    /// <summary>Copies the database beside itself (<c>&lt;file&gt;.&lt;UTC stamp&gt;.bak</c>) before a bulk rewrite; returns the copy's path.</summary>
+    private string Backup()
+    {
+        var backup = $"{Path}.{DateTime.UtcNow:yyyyMMdd'T'HHmmss'Z'}.bak";
+        using var dest = new SqliteConnection($"Data Source={backup};Pooling=False");
+        dest.Open();
+        db.BackupDatabase(dest); // SQLite's online backup API: safe to run against the live, open connection
+        return backup;
     }
 
     // The page names its repo too: front matter's "project: <name>", the "# <name> — User Stories" title,
@@ -630,6 +651,7 @@ public sealed partial class WorkflowDb : IDisposable
         // Trim: a CR from a CRLF script would otherwise land in the ID and the link would point at nothing.
         (from, to) = (from.Trim(), to.Trim());
         if (from.Length == 0 || to.Length == 0) throw new ArgumentException("A link needs both ends.");
+        (from, to) = (CurrentId(from), CurrentId(to)); // a former ID links the item it became
         if (!LinkKinds.Contains(kind)) throw new ArgumentException($"Unknown link kind '{kind}' (expected {string.Join(", ", LinkKinds)}).", nameof(kind));
         if (string.Equals(from, to, StringComparison.OrdinalIgnoreCase)) throw new ArgumentException("An item can't link to itself.");
         if (kind == "requires" && Requires(to, transitive: true).Contains(from, StringComparer.OrdinalIgnoreCase))
@@ -641,7 +663,7 @@ public sealed partial class WorkflowDb : IDisposable
         Exec("INSERT OR IGNORE INTO links (from_id, to_id, kind, note) VALUES ($f, $t, $k, $n)", null, ("$f", from), ("$t", to), ("$k", kind), ("$n", note));
 
     public bool RemoveLink(string from, string to, string kind) =>
-        Exec("DELETE FROM links WHERE from_id = $f COLLATE NOCASE AND to_id = $t COLLATE NOCASE AND kind = $k", null, ("$f", from), ("$t", to), ("$k", kind)) > 0;
+        Exec("DELETE FROM links WHERE from_id = $f COLLATE NOCASE AND to_id = $t COLLATE NOCASE AND kind = $k", null, ("$f", CurrentId(from)), ("$t", CurrentId(to)), ("$k", kind)) > 0;
 
     /// <summary>Every link touching <paramref name="id"/>, in either direction.</summary>
     public IReadOnlyList<Link> Links(string id) =>
@@ -672,7 +694,9 @@ public sealed partial class WorkflowDb : IDisposable
         [.. Rows("SELECT uid, repo, story_id, status, glyph, suffix, text, source, parent_uid, epic, section, evidence, acceptance FROM stories " +
                  "WHERE $r IS NULL OR repo = $r COLLATE NOCASE ORDER BY repo COLLATE NOCASE, ordinal", ReadStory, ("$r", repo))];
 
-    public IReadOnlyList<StoredStory> Story(string id) =>
+    public IReadOnlyList<StoredStory> Story(string id) => StoryRows(id) is { Count: > 0 } found ? found : StoryRows(CurrentId(id));
+
+    private List<StoredStory> StoryRows(string id) =>
         [.. Rows("SELECT uid, repo, story_id, status, glyph, suffix, text, source, parent_uid, epic, section, evidence, acceptance FROM stories " +
                  "WHERE story_id = $id COLLATE NOCASE ORDER BY repo, ordinal", ReadStory, ("$id", id))];
 
@@ -928,7 +952,7 @@ public sealed partial class WorkflowDb : IDisposable
         foreach (var (table, order) in new[]
         {
             ("meta", "key"), ("repos", "name"), ("epics", "repo, key"), ("stories", "uid"), ("backlog_items", "uid"), ("backlog_refs", "item_uid, story_id"),
-            ("tickets", "repo, ordinal"), ("ticket_events", "seq"), ("ticket_queue", "ticket_id"), ("repo_renames", "seq"), ("links", "from_id, to_id, kind"), ("blocks", "repo, ordinal"),
+            ("tickets", "repo, ordinal"), ("ticket_events", "seq"), ("ticket_queue", "ticket_id"), ("repo_renames", "seq"), ("id_history", "seq"), ("links", "from_id, to_id, kind"), ("blocks", "repo, ordinal"),
         })
         {
             sb.Append("\n-- ").Append(table).Append('\n');
