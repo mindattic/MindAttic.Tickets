@@ -56,6 +56,7 @@ repo under `D:\Projects\MindAttic`.
 - `src/MindAttic.Workflow.Cli` — the `workflow` exe.
 - `src/MindAttic.Workflow.Desktop` — Workflow Desktop, the WPF ticket app (net10.0-windows).
 - `tests/MindAttic.Workflow.Tests` — NUnit 4.
+- `tests/MindAttic.Workflow.Desktop.Tests` — NUnit 4: Workflow Desktop's view model and store.
 
 ### 4.2 Domain model (nouns)
 - **Repo** — a git repo directly under the workspace root (`Workspace.cs`).
@@ -134,7 +135,7 @@ No code path links an LLM SDK or calls an LLM API.
 
 ## 6. Verified state {#M.FLOW-§6}
 - `dotnet build MindAttic.Workflow.slnx`: 0 warnings, 0 errors.
-- `dotnet test`: 127 passing NUnit tests (database import/export/links/history, the ticket queue, repo rename,
+- `dotnet test`: 134 passing NUnit tests (Workflow Desktop's tickets page, database import/export/links/history, the ticket queue, repo rename,
   story/epic/backlog editing, the CLI commands through the real `workflow` on a temp workspace,
   ticket parsing and writing on the markdown fallback, rules, workspace checks, code derivation,
   git status on real temp repos, GitHub index with a fake handler, dependency scan, prune planning).
