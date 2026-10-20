@@ -19,7 +19,8 @@ public partial class MainWindow : Window
     private readonly DispatcherTimer poll, settle;
     private FileSystemWatcher? watcher;
 
-    public MainWindow(MainViewModel model)
+    /// <param name="ticket">The ticket <c>--ticket</c> names, opened once the list has loaded; null for none.</param>
+    public MainWindow(MainViewModel model, string? ticket = null)
     {
         InitializeComponent();
         this.model = model;
@@ -50,7 +51,7 @@ public partial class MainWindow : Window
             await model.RefreshAsync();
             Watch();
             poll.Start();
-            FocusList();
+            if (ticket is null || !await model.OpenTicketAsync(ticket)) FocusList();
         };
         Closed += (_, _) =>
         {
@@ -58,6 +59,14 @@ public partial class MainWindow : Window
             settle.Stop();
             watcher?.Dispose();
         };
+    }
+
+    /// <summary>A second start handed over <paramref name="id"/> (<c>--ticket</c>): come forward and open it.</summary>
+    public async Task OpenTicketAsync(string id)
+    {
+        if (WindowState == WindowState.Minimized) WindowState = WindowState.Normal;
+        Activate();
+        if (!await model.OpenTicketAsync(id)) FocusList();
     }
 
     private void Watch()

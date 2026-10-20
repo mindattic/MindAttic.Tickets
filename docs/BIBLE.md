@@ -135,7 +135,7 @@ No code path links an LLM SDK or calls an LLM API.
 
 ## 6. Verified state {#M.FLOW-§6}
 - `dotnet build MindAttic.Workflow.slnx`: 0 warnings, 0 errors.
-- `dotnet test`: 134 passing NUnit tests (Workflow Desktop's tickets page, database import/export/links/history, the ticket queue, repo rename,
+- `dotnet test`: 147 passing NUnit tests (Workflow Desktop's tickets page and `--ticket` opening and handoff, database import/export/links/history, the ticket queue, repo rename,
   story/epic/backlog editing, the CLI commands through the real `workflow` on a temp workspace,
   ticket parsing and writing on the markdown fallback, rules, workspace checks, code derivation,
   git status on real temp repos, GitHub index with a fake handler, dependency scan, prune planning).

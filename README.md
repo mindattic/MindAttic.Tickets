@@ -41,6 +41,7 @@ $ workflow ticket list --status open
 - Queue and Tickets views (Ctrl+1/Ctrl+2), filterable by repo, status, type and approval and searchable (Ctrl+F), with closed and wont-do tickets hidden until you show archived.
 - Approve, unapprove, reject and reorder (move up/down/to top) queued tickets; file a new ticket (Ctrl+N); close, mark wont-do, correct a ticket's type or add a link from its detail pane.
 - A Sync button (Ctrl+Shift+S) runs `workflow db sync` and shows the result; F5 refreshes.
+- `MindAttic.Workflow.Desktop.exe --root <dir> --ticket <ID>` opens on that ticket, selected with its detail pane open (an open one in the Queue, to approve, move or close; a closed one in Tickets). Started again while the window is open, it hands the id to that window and brings it forward. The Orchestrator dashboard's ticket links start it this way.
 - `deploy.ps1` publishes it as a self-contained exe to `C:\Apps\MindAttic.Workflow.Desktop` with Desktop and Start-menu shortcuts (and reinstalls the `workflow` CLI alongside it, via `tools/install.ps1`, unless `-SkipCli`).
 
 **Workspace jobs**

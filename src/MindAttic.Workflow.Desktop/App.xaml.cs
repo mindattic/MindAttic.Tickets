@@ -9,8 +9,9 @@ namespace MindAttic.Workflow.Desktop;
 
 /// <summary>
 /// Workflow Desktop: every repo's tickets from the workflow database, to browse, approve, reject, reorder and change.
-/// One window per user: a second start brings the first one forward. <c>--root DIR</c> picks the workspace;
-/// <c>--high-contrast</c> forces the high-contrast colours (to check them without changing the Windows theme).
+/// One window per user: a second start brings the first one forward, handing it its <c>--ticket</c> if it has one.
+/// <c>--root DIR</c> picks the workspace; <c>--ticket ID</c> selects that ticket and opens its detail pane (the
+/// Orchestrator dashboard's ticket links start it this way); <c>--high-contrast</c> forces the high-contrast colours (to check them without changing the Windows theme).
 /// </summary>
 public partial class App : Application
 {
@@ -19,13 +20,17 @@ public partial class App : Application
         typeof(DependencyObject), new FrameworkPropertyMetadata(int.MaxValue));
 
     private Mutex? single;
+    private readonly CancellationTokenSource stopListening = new();
 
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
         single = new Mutex(true, @"Local\MindAttic.Workflow.Desktop", out var first);
+        var ticket = TicketHandoff.TicketArg(e.Args);
         if (!first)
         {
+            // Hand the ticket over before raising the window, so it comes forward already showing it.
+            if (ticket is not null) TicketHandoff.Send(ticket, TimeSpan.FromSeconds(3));
             BringOtherForward();
             Shutdown();
             return;
@@ -42,14 +47,22 @@ public partial class App : Application
         var root = at >= 0 && at + 1 < args.Length ? args[at + 1] : Workspace.DefaultRoot;
         HighContrast.Track(this, force: args.Contains("--high-contrast", StringComparer.OrdinalIgnoreCase));
 
-        log.Information("Started {Version} on {Root}", typeof(App).Assembly.GetName().Version, root);
-        var window = new MainWindow(new MainViewModel(new TicketStore(root), DesktopSettings.Load()));
+        log.Information("Started {Version} on {Root}{Ticket}", typeof(App).Assembly.GetName().Version, root,
+            ticket is null ? "" : $", opening {ticket}");
+        var window = new MainWindow(new MainViewModel(new TicketStore(root), DesktopSettings.Load()), ticket);
         MainWindow = window;
         window.Show();
+
+        _ = TicketHandoff.ListenAsync(id => Dispatcher.BeginInvoke(async () =>
+        {
+            log.Information("Handed {Ticket} by a second start", id);
+            await window.OpenTicketAsync(id);
+        }), stopListening.Token);
     }
 
     protected override void OnExit(ExitEventArgs e)
     {
+        stopListening.Cancel();
         single?.Dispose();
         WorkflowLog.Stop();
         base.OnExit(e);
@@ -61,7 +74,7 @@ public partial class App : Application
         foreach (var p in Process.GetProcessesByName(me.ProcessName))
         {
             if (p.Id == me.Id || p.MainWindowHandle == IntPtr.Zero) continue;
-            ShowWindow(p.MainWindowHandle, 9); // SW_RESTORE
+            if (IsIconic(p.MainWindowHandle)) ShowWindow(p.MainWindowHandle, 9); // SW_RESTORE, only when minimized: not un-maximize it
             SetForegroundWindow(p.MainWindowHandle);
             return;
         }
@@ -70,6 +83,10 @@ public partial class App : Application
     [DllImport("user32.dll")]
     [return: MarshalAs(UnmanagedType.Bool)]
     private static extern bool SetForegroundWindow(IntPtr hWnd);
+
+    [DllImport("user32.dll")]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    private static extern bool IsIconic(IntPtr hWnd);
 
     [DllImport("user32.dll")]
     [return: MarshalAs(UnmanagedType.Bool)]

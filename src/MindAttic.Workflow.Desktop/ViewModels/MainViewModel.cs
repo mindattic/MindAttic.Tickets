@@ -272,14 +272,59 @@ public sealed partial class MainViewModel : ObservableObject
         var row = (IsQueueView ? QueueRows : TicketRows).FirstOrDefault(r => r.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
         if (row is null)
         {
-            search = ""; repoFilter = AllRepos; typeFilter = AnyType; approvalFilter = AnyApproval; statusFilter = AnyStatus; showArchived = true;
-            foreach (var p in new[] { nameof(Search), nameof(RepoFilter), nameof(TypeFilter), nameof(ApprovalFilter), nameof(StatusFilter), nameof(ShowArchived) }) Raise(p);
+            ClearFilters();
             SelectedView = TicketsView;
             ApplyFilters();
             row = TicketRows.First(r => r.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
         }
         if (IsQueueView) SelectedQueueRow = row; else SelectedTicketRow = row;
         FocusRow?.Invoke(row);
+    }
+
+    /// <summary>Clears search and every filter and shows archived tickets, without re-filtering (the caller does).</summary>
+    private void ClearFilters()
+    {
+        search = ""; repoFilter = AllRepos; typeFilter = AnyType; approvalFilter = AnyApproval; statusFilter = AnyStatus; showArchived = true;
+        foreach (var p in new[] { nameof(Search), nameof(RepoFilter), nameof(TypeFilter), nameof(ApprovalFilter), nameof(StatusFilter), nameof(ShowArchived) }) Raise(p);
+    }
+
+    /// <summary>
+    /// Opens <paramref name="id"/> as <c>--ticket</c> asks (at start, or handed over by a second start): reads the database
+    /// afresh (a link can name a ticket filed seconds ago), selects the ticket and opens its detail pane, even when it was
+    /// already selected with the pane closed. False, with the reason shown, when there's no such ticket.
+    /// </summary>
+    public async Task<bool> OpenTicketAsync(string id)
+    {
+        await RefreshAsync();
+        var known = snapshot?.Tickets.FirstOrDefault(t => t.Ticket.Id.Equals(id.Trim(), StringComparison.OrdinalIgnoreCase));
+        if (known is null)
+        {
+            StatusMessage = snapshot is null ? $"Couldn't open {id}: the workflow database isn't readable." : $"{id} isn't a ticket.";
+            Announcement = StatusMessage;
+            return false;
+        }
+        id = known.Ticket.Id;
+
+        // An open ticket opens in the Queue, where it can be approved and moved up or down as well as closed; a closed
+        // one in Tickets. Filters that hide it are cleared.
+        var open = known.Ticket.Status == TicketRules.Open;
+        SelectedView = open ? QueueView : TicketsView;
+        var rows = open ? QueueRows : TicketRows;
+        bool Shown(TicketRowViewModel r) => r.Id.Equals(id, StringComparison.OrdinalIgnoreCase);
+        if (!rows.Any(Shown))
+        {
+            ClearFilters();
+            ApplyFilters();
+        }
+        if (rows.FirstOrDefault(Shown) is { } row)
+        {
+            if (open) SelectedQueueRow = row; else SelectedTicketRow = row;
+            FocusRow?.Invoke(row);
+        }
+        else GoTo(id);
+        await ShowDetailAsync(id);
+        Announcement = $"Opened {id}.";
+        return Detail?.Id == id;
     }
 
     // ── Actions ─────────────────────────────────────────────────────────────
