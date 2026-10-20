@@ -28,8 +28,16 @@ public sealed class Workspace(string root)
     }
 
     /// <summary>The repo (by folder name, case-insensitive), or null.</summary>
-    public Repo? Find(string name) =>
+    public Repo? Find(string name) => FindExact(name) ?? (Renamed(name) is { } other ? FindExact(other) : null);
+
+    private Repo? FindExact(string name) =>
         Repos().FirstOrDefault(r => string.Equals(r.Name, name, StringComparison.OrdinalIgnoreCase));
+
+    // This repo's own folder is renamed by hand after the rename to MindAttic.Tickets (M.TIX-T120): until then (and for
+    // anything still using the old name after), either name finds whichever folder exists.
+    private static string? Renamed(string name) =>
+        name.Equals(Data.TicketsDb.RepoName, StringComparison.OrdinalIgnoreCase) ? Data.TicketsDb.LegacyRepoName
+        : name.Equals(Data.TicketsDb.LegacyRepoName, StringComparison.OrdinalIgnoreCase) ? Data.TicketsDb.RepoName : null;
 
     /// <summary>
     /// The workspace repo containing <paramref name="directory"/> (walking up), or null when the

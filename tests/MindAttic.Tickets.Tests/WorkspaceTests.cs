@@ -91,4 +91,22 @@ public sealed class WorkspaceTests
         Assert.That(WorkspaceTickets.DeriveCode("GridGameGaiden", new HashSet<string> { "GGG" }), Is.EqualTo("GRI"));
         Assert.That(WorkspaceTickets.DeriveCode("Tutor", new HashSet<string> { "TUT", "TUTO" }), Is.EqualTo("TUT2"));
     }
+
+    [Test]
+    public void Either_name_of_this_repo_finds_its_folder_while_it_is_renamed()
+    {
+        var root = Path.Combine(Path.GetTempPath(), "wf-ws-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(Path.Combine(root, "MindAttic.Workflow", ".git"));
+        try
+        {
+            var ws = new Workspace(root);
+            Assert.That(ws.Find("MindAttic.Tickets")?.Name, Is.EqualTo("MindAttic.Workflow"), "before the folder is renamed");
+            Assert.That(Data.TicketsDb.HomeFolder(root), Is.EqualTo("MindAttic.Workflow"));
+            Directory.Move(Path.Combine(root, "MindAttic.Workflow"), Path.Combine(root, "MindAttic.Tickets"));
+            Assert.That(ws.Find("MindAttic.Workflow")?.Name, Is.EqualTo("MindAttic.Tickets"), "after it");
+            Assert.That(Data.TicketsDb.HomeFolder(root), Is.EqualTo("MindAttic.Tickets"));
+            Assert.That(ws.Find("Nope"), Is.Null);
+        }
+        finally { Directory.Delete(root, recursive: true); }
+    }
 }
