@@ -1,26 +1,26 @@
-# Workflow viewer (planned as M.FLOW-T11, built as M.FLOW-T10)
+# Tickets viewer (planned as M.TIX-T11, built as M.TIX-T10)
 
-A read-only window onto the workflow database: every repo's stories and tickets, with filters, in
+A read-only window onto the ticket database: every repo's stories and tickets, with filters, in
 MindAttic.Browser.
 
 ## Decision: a static export, opened in the Browser as a local site
 
-`workflow view` writes a small site and opens it in MindAttic.Browser:
+`tickets view` writes a small site and opens it in MindAttic.Browser:
 
 ```
-%LOCALAPPDATA%\MindAttic\Workflow\viewer\
+%LOCALAPPDATA%\MindAttic\Tickets\viewer\
   index.html   the page: one file, no build step, no CDN (works offline)
-  data.js      window.WORKFLOW = { generated, repos, stories, tickets } from the database
+  data.js      window.TICKETS = { generated, repos, stories, tickets } from the database
 ```
 
 ```
-MindAttic.Browser.exe %LOCALAPPDATA%\MindAttic\Workflow\viewer --host workflow.local
+MindAttic.Browser.exe %LOCALAPPDATA%\MindAttic\Tickets\viewer --host tickets.local
 ```
 
-**Why static, not live.** The database has one writer: the `workflow` CLI (M.FLOW-LAW-1, M.FLOW-LAW-2).
+**Why static, not live.** The database has one writer: the `tickets` CLI (M.TIX-LAW-1, M.TIX-LAW-2).
 A live view would need a local server or a WebView2 host object reading SQLite, and that's a
 second path into the store. An export is a snapshot, so it can never write back, and a reader
-can't lock the database while an agent is closing a ticket. `workflow view` re-exports on every
+can't lock the database while an agent is closing a ticket. `tickets view` re-exports on every
 run, and the page's Reload button re-reads `data.js`, so a fresh look is one keystroke away.
 
 **Why `data.js`, not `data.json`.** WebView2's folder mapping serves `fetch()` fine, but a
@@ -31,7 +31,7 @@ useful without MindAttic.Browser and easy to test.
 done: `BrowserTarget.Parse` serves any folder at `https://<host>/` through
 `SetVirtualHostNameToFolderMapping` (DenyCors), and opens its `index.html`. The capture bridge
 stays limited to that origin, which is harmless here. If the Browser isn't installed
-(`C:\Apps\MindAttic.Browser\MindAttic.Browser.exe`), `workflow view` prints the folder and
+(`C:\Apps\MindAttic.Browser\MindAttic.Browser.exe`), `tickets view` prints the folder and
 opens `index.html` with the default browser instead.
 
 ## What the page shows
@@ -44,7 +44,7 @@ opens `index.html` with the default browser instead.
 
 ## Command
 
-`workflow view [--repo NAME] [--out DIR] [--no-open]`
+`tickets view [--repo NAME] [--out DIR] [--no-open]`
 
 - `--out` writes the export somewhere else (tests use a temp folder).
 - `--no-open` writes the files and prints the path without launching anything.

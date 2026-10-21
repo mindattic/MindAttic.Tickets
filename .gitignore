@@ -13,7 +13,7 @@ TestResults/
 .prose/agent-session.json
 .prose/agent-session.json.*
 .prose/archive/
-# The workflow database (data/workflow.db) and its dump are committed; only SQLite's scratch files aren't.
+# The ticket database (data/Tickets.db) and its dump are committed; only SQLite's scratch files aren't.
 data/*.db-journal
 data/*.db-wal
 data/*.db-shm

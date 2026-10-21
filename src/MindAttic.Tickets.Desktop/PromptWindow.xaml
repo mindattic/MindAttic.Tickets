@@ -1,0 +1,31 @@
+<Window x:Class="MindAttic.Tickets.Desktop.PromptWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="clr-namespace:MindAttic.Components.Wpf.Controls;assembly=MindAttic.Components.Wpf"
+        mc:McWindow.DarkTitleBar="True"
+        Width="520" SizeToContent="Height" MinHeight="200" ResizeMode="CanResize" ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner" Icon="/logo.ico"
+        Background="{DynamicResource McPane}" Foreground="{DynamicResource McText}" FontFamily="Segoe UI" FontSize="13"
+        TextOptions.TextFormattingMode="Display" UseLayoutRounding="True">
+    <StackPanel Margin="22,18,22,18">
+        <TextBlock x:Name="Heading" Style="{StaticResource Heading}" FontSize="17" TextWrapping="Wrap" />
+        <TextBlock x:Name="Message" TextWrapping="Wrap" Margin="0,8,0,4" Foreground="{DynamicResource McMuted}" />
+
+        <StackPanel x:Name="ChoicePanel" Margin="0,10,0,0">
+            <Label x:Name="ChoiceLabel" Target="{Binding ElementName=Choice}" Foreground="{DynamicResource McMuted}" Padding="0,0,0,3" />
+            <ComboBox x:Name="Choice" Style="{StaticResource Combo}" HorizontalAlignment="Left" MinWidth="200" />
+        </StackPanel>
+
+        <StackPanel x:Name="TextPanel" Margin="0,10,0,0">
+            <Label x:Name="TextLabel" Target="{Binding ElementName=Answer}" Foreground="{DynamicResource McMuted}" Padding="0,0,0,3" />
+            <TextBox x:Name="Answer" Style="{StaticResource Field}" TextWrapping="Wrap" AcceptsReturn="False" MinHeight="34" />
+        </StackPanel>
+
+        <TextBlock x:Name="Error" Style="{StaticResource ErrorText}" Visibility="Collapsed" />
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,18,0,0">
+            <Button x:Name="OkButton" Style="{StaticResource PrimaryBtn}" IsDefault="True" MinWidth="90" Margin="0,0,8,0" Click="OnOk" />
+            <Button Style="{StaticResource Btn}" Content="Cancel" IsCancel="True" MinWidth="90" />
+        </StackPanel>
+    </StackPanel>
+</Window>

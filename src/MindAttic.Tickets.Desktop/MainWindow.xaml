@@ -1,0 +1,416 @@
+<Window x:Class="MindAttic.Tickets.Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="clr-namespace:MindAttic.Components.Wpf.Controls;assembly=MindAttic.Components.Wpf"
+        xmlns:vm="clr-namespace:MindAttic.Tickets.Desktop.ViewModels"
+        mc:McWindow.DarkTitleBar="True"
+        Title="MindAttic Tickets" Width="1360" Height="880" MinWidth="720" MinHeight="480"
+        WindowStartupLocation="CenterScreen" Icon="/logo.ico"
+        Background="{DynamicResource McChrome}" Foreground="{DynamicResource McText}"
+        FontFamily="Segoe UI" FontSize="13"
+        TextOptions.TextFormattingMode="Display" UseLayoutRounding="True">
+
+    <Window.InputBindings>
+        <KeyBinding Key="F5" Command="{Binding RefreshCommand}" />
+        <KeyBinding Key="N" Modifiers="Control" Command="{Binding NewTicketCommand}" />
+        <KeyBinding Key="S" Modifiers="Control+Shift" Command="{Binding SyncCommand}" />
+        <KeyBinding Key="F" Modifiers="Control" Command="{x:Static vm:WindowCommands.FocusSearch}" />
+        <KeyBinding Key="D1" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowQueue}" />
+        <KeyBinding Key="D2" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowTickets}" />
+        <KeyBinding Key="F1" Command="{x:Static vm:WindowCommands.Help}" />
+        <KeyBinding Key="Escape" Command="{x:Static vm:WindowCommands.Escape}" />
+        <KeyBinding Key="OemPlus" Modifiers="Control" Command="{Binding ZoomInCommand}" />
+        <KeyBinding Key="Add" Modifiers="Control" Command="{Binding ZoomInCommand}" />
+        <KeyBinding Key="OemMinus" Modifiers="Control" Command="{Binding ZoomOutCommand}" />
+        <KeyBinding Key="Subtract" Modifiers="Control" Command="{Binding ZoomOutCommand}" />
+        <KeyBinding Key="D0" Modifiers="Control" Command="{Binding ZoomResetCommand}" />
+        <KeyBinding Key="NumPad0" Modifiers="Control" Command="{Binding ZoomResetCommand}" />
+    </Window.InputBindings>
+
+    <Window.Resources>
+        <Style x:Key="FilterLabel" TargetType="Label">
+            <Setter Property="Foreground" Value="{DynamicResource McMuted}" />
+            <Setter Property="Padding" Value="0,0,0,3" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+
+        <!-- Approval chip: a glyph and a word in the state's colour. -->
+        <Style x:Key="ApprovalChip" TargetType="Border" BasedOn="{StaticResource Chip}">
+            <Setter Property="BorderBrush" Value="{DynamicResource StateProposed}" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Approval}" Value="approved">
+                    <Setter Property="BorderBrush" Value="{DynamicResource StateApproved}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Approval}" Value="rejected">
+                    <Setter Property="BorderBrush" Value="{DynamicResource StateRejected}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="ApprovalText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Foreground" Value="{DynamicResource StateProposed}" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Approval}" Value="approved">
+                    <Setter Property="Foreground" Value="{DynamicResource StateApproved}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Approval}" Value="rejected">
+                    <Setter Property="Foreground" Value="{DynamicResource StateRejected}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="StatusText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Foreground" Value="{DynamicResource StateOpen}" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Status}" Value="closed">
+                    <Setter Property="Foreground" Value="{DynamicResource StateClosed}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status}" Value="wont-do">
+                    <Setter Property="Foreground" Value="{DynamicResource StateWontDo}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="FieldName" TargetType="TextBlock" BasedOn="{StaticResource Muted}">
+            <Setter Property="Margin" Value="0,3,12,3" />
+        </Style>
+        <Style x:Key="FieldValue" TargetType="TextBlock">
+            <Setter Property="Margin" Value="0,3,0,3" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+        </Style>
+
+        <!-- One queue row. Its buttons are for the mouse; the keyboard uses the row's shortcuts and the action bar above. -->
+        <DataTemplate x:Key="QueueRowTemplate" DataType="{x:Type vm:TicketRowViewModel}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="Auto" MinWidth="150" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding Rank}" Style="{StaticResource Muted}" FontSize="14" VerticalAlignment="Center" />
+                <StackPanel Grid.Column="1" Margin="0,0,14,0" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding Id}" FontWeight="SemiBold" />
+                    <TextBlock Text="{Binding Repo}" Style="{StaticResource Muted}" />
+                </StackPanel>
+                <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding Summary}" TextWrapping="Wrap" />
+                    <WrapPanel Margin="0,5,0,0">
+                        <Border Style="{StaticResource Chip}" BorderBrush="{DynamicResource McControlBorder}">
+                            <TextBlock Text="{Binding Type}" FontSize="12" />
+                        </Border>
+                        <Border Style="{StaticResource ApprovalChip}">
+                            <TextBlock Text="{Binding ApprovalText}" Style="{StaticResource ApprovalText}" />
+                        </Border>
+                        <TextBlock Style="{StaticResource Muted}" VerticalAlignment="Center"
+                                   Text="{Binding Priority, StringFormat='priority {0}'}" />
+                    </WrapPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="3" Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,0">
+                    <Button Style="{StaticResource IconBtn}" Content="&#x2714;" Focusable="False" Margin="0,0,4,0"
+                            Command="{Binding DataContext.ApproveCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}"
+                            AutomationProperties.Name="{Binding Id, StringFormat='Approve {0}'}" ToolTip="Approve (A)" />
+                    <Button Style="{StaticResource IconBtn}" Content="&#x2716;" Focusable="False" Margin="0,0,10,0"
+                            Command="{Binding DataContext.RejectCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}"
+                            AutomationProperties.Name="{Binding Id, StringFormat='Reject {0}'}" ToolTip="Reject: closes it as wont-do (R)" />
+                    <Button Style="{StaticResource IconBtn}" Content="&#x25B2;" Focusable="False" Margin="0,0,4,0"
+                            Command="{Binding DataContext.MoveUpCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}"
+                            AutomationProperties.Name="{Binding Id, StringFormat='Move {0} up'}" ToolTip="Move up (Alt+Up)" />
+                    <Button Style="{StaticResource IconBtn}" Content="&#x25BC;" Focusable="False"
+                            Command="{Binding DataContext.MoveDownCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}"
+                            AutomationProperties.Name="{Binding Id, StringFormat='Move {0} down'}" ToolTip="Move down (Alt+Down)" />
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.LayoutTransform>
+            <ScaleTransform ScaleX="{Binding Zoom}" ScaleY="{Binding Zoom}" />
+        </Grid.LayoutTransform>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Header: title, queue summary, and the actions every view shares (always in this place: 3.2.6). -->
+        <DockPanel Margin="20,16,20,8">
+            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center">
+                <Button Style="{StaticResource PrimaryBtn}" Content="_New ticket" Command="{Binding NewTicketCommand}" Margin="0,0,8,0"
+                        ToolTip="File a new ticket (Ctrl+N)" />
+                <Button Style="{StaticResource Btn}" Content="S_ync" Command="{Binding SyncCommand}" Margin="0,0,8,0"
+                        ToolTip="Commit and push the ticket database: runs 'tickets db sync' (Ctrl+Shift+S)" />
+                <Button Style="{StaticResource Btn}" Content="_Refresh" Command="{Binding RefreshCommand}" Margin="0,0,8,0"
+                        ToolTip="Read the database again (F5). It also refreshes by itself when agents change tickets." />
+                <Button Style="{StaticResource Btn}" Content="_Help" Command="{x:Static vm:WindowCommands.Help}"
+                        ToolTip="Keyboard shortcuts and how the queue works (F1)" />
+            </StackPanel>
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="MindAttic Tickets" FontSize="22" FontWeight="SemiBold" AutomationProperties.HeadingLevel="Level1" />
+                <TextBlock Text="{Binding Headline}" Style="{StaticResource Muted}" FontSize="13" Margin="0,2,0,0" TextWrapping="Wrap" />
+            </StackPanel>
+        </DockPanel>
+
+        <!-- View switcher, search and filters. -->
+        <WrapPanel Grid.Row="1" Margin="20,4,20,10">
+            <StackPanel Margin="0,0,18,6">
+                <Label Style="{StaticResource FilterLabel}" Content="View" Target="{Binding ElementName=ViewChoice}" />
+                <ListBox x:Name="ViewChoice" Style="{StaticResource PillChoice}" ItemsSource="{Binding Views}"
+                         SelectedItem="{Binding SelectedView}" AutomationProperties.Name="View" />
+            </StackPanel>
+            <StackPanel Margin="0,0,12,6">
+                <Label Style="{StaticResource FilterLabel}" Content="_Search (Ctrl+F)" Target="{Binding ElementName=SearchBox}" />
+                <TextBox x:Name="SearchBox" Style="{StaticResource Field}" Width="260" Text="{Binding Search, UpdateSourceTrigger=PropertyChanged, Delay=150}"
+                         AutomationProperties.Name="Search tickets by ID, summary, ref or repo" />
+            </StackPanel>
+            <StackPanel Margin="0,0,12,6">
+                <Label Style="{StaticResource FilterLabel}" Content="Rep_o" Target="{Binding ElementName=RepoBox}" />
+                <ComboBox x:Name="RepoBox" Style="{StaticResource Combo}" MinWidth="190" ItemsSource="{Binding RepoChoices}"
+                          SelectedItem="{Binding RepoFilter}" AutomationProperties.Name="Repo filter" />
+            </StackPanel>
+            <StackPanel Margin="0,0,12,6">
+                <Label Style="{StaticResource FilterLabel}" Content="_Type" Target="{Binding ElementName=TypeBox}" />
+                <ComboBox x:Name="TypeBox" Style="{StaticResource Combo}" ItemsSource="{Binding TypeChoices}"
+                          SelectedItem="{Binding TypeFilter}" AutomationProperties.Name="Type filter" />
+            </StackPanel>
+            <StackPanel Margin="0,0,12,6">
+                <Label Style="{StaticResource FilterLabel}" Content="_Approval" Target="{Binding ElementName=ApprovalBox}" />
+                <ComboBox x:Name="ApprovalBox" Style="{StaticResource Combo}" MinWidth="140" ItemsSource="{Binding ApprovalChoices}"
+                          SelectedItem="{Binding ApprovalFilter}" AutomationProperties.Name="Approval filter" />
+            </StackPanel>
+            <StackPanel Margin="0,0,12,6" Visibility="{Binding IsTicketsView, Converter={StaticResource Visible}}">
+                <Label Style="{StaticResource FilterLabel}" Content="Stat_us" Target="{Binding ElementName=StatusBox}" />
+                <ComboBox x:Name="StatusBox" Style="{StaticResource Combo}" ItemsSource="{Binding StatusChoices}"
+                          SelectedItem="{Binding StatusFilter}" AutomationProperties.Name="Status filter" />
+            </StackPanel>
+            <StackPanel Margin="0,0,12,6" Visibility="{Binding IsTicketsView, Converter={StaticResource Visible}}">
+                <Label Style="{StaticResource FilterLabel}" Content="Sort _by" Target="{Binding ElementName=SortBox}" />
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox x:Name="SortBox" Style="{StaticResource Combo}" ItemsSource="{Binding SortChoices}"
+                              SelectedItem="{Binding SortBy}" AutomationProperties.Name="Sort by" />
+                    <CheckBox Style="{StaticResource Check}" Content="Descending" IsChecked="{Binding SortDescending}" Margin="10,0,0,0" />
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Margin="0,0,12,6" VerticalAlignment="Bottom" Visibility="{Binding IsTicketsView, Converter={StaticResource Visible}}">
+                <CheckBox Style="{StaticResource Check}" Content="Show closed and wont-do" IsChecked="{Binding ShowArchived}"
+                          ToolTip="Closed and wont-do tickets are archived: hidden unless this is on or a status is picked." />
+            </StackPanel>
+        </WrapPanel>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" MinWidth="320" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!-- ── Queue ── -->
+            <Grid Margin="20,0,12,0" Visibility="{Binding IsQueueView, Converter={StaticResource Visible}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <DockPanel Margin="0,0,0,8">
+                    <WrapPanel DockPanel.Dock="Right">
+                        <Button Style="{StaticResource Btn}" Content="Approve" Command="{Binding ApproveCommand}" Margin="0,0,6,4" ToolTip="Approve the selected ticket (A)" />
+                        <Button Style="{StaticResource Btn}" Content="Unapprove" Command="{Binding UnapproveCommand}" Margin="0,0,6,4" ToolTip="Back to proposed (U)" />
+                        <Button Style="{StaticResource Btn}" Content="Reject…" Command="{Binding RejectCommand}" Margin="0,0,14,4" ToolTip="Reject: closes it as wont-do with your reason (R)" />
+                        <Button Style="{StaticResource Btn}" Content="To top" Command="{Binding MoveTopCommand}" Margin="0,0,6,4" ToolTip="Move to the top (Alt+Home)" />
+                        <Button Style="{StaticResource IconBtn}" Content="&#x25B2;" Command="{Binding MoveUpCommand}" Margin="0,0,6,4"
+                                AutomationProperties.Name="Move up" ToolTip="Move up (Alt+Up)" />
+                        <Button Style="{StaticResource IconBtn}" Content="&#x25BC;" Command="{Binding MoveDownCommand}" Margin="0,0,0,4"
+                                AutomationProperties.Name="Move down" ToolTip="Move down (Alt+Down)" />
+                    </WrapPanel>
+                    <TextBlock Style="{StaticResource Muted}" TextWrapping="Wrap" VerticalAlignment="Center" Margin="0,0,12,4"
+                               Text="Highest priority first. Drag a ticket, or select it and press Alt+Up / Alt+Down, to change its place; fixes and approved tickets are what autopilot works." />
+                </DockPanel>
+                <ListBox x:Name="QueueList" Grid.Row="1" Style="{StaticResource RowList}" ItemsSource="{Binding QueueRows}"
+                         SelectedItem="{Binding SelectedQueueRow}" ItemTemplate="{StaticResource QueueRowTemplate}"
+                         AutomationProperties.Name="Queue: open tickets in priority order" AllowDrop="True"
+                         PreviewKeyDown="OnQueueKeyDown" PreviewMouseLeftButtonDown="OnQueueMouseDown" PreviewMouseMove="OnQueueMouseMove"
+                         DragOver="OnQueueDragOver" DragLeave="OnQueueDragLeave" Drop="OnQueueDrop" />
+                <TextBlock Grid.Row="1" Style="{StaticResource Muted}" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,40,0,0"
+                           Text="No open tickets match." AutomationProperties.LiveSetting="Polite">
+                    <TextBlock.Visibility>
+                        <Binding Path="QueueRows.Count" Converter="{x:Static vm:Converters.ZeroToVisible}" />
+                    </TextBlock.Visibility>
+                </TextBlock>
+            </Grid>
+
+            <!-- ── Tickets ── -->
+            <ListView x:Name="TicketList" Margin="20,0,12,0" Background="Transparent" BorderThickness="0" Foreground="{DynamicResource McText}"
+                      Visibility="{Binding IsTicketsView, Converter={StaticResource Visible}}"
+                      ItemsSource="{Binding TicketRows}" SelectedItem="{Binding SelectedTicketRow}" ItemContainerStyle="{StaticResource GridRow}"
+                      AutomationProperties.Name="Tickets" PreviewKeyDown="OnTicketsKeyDown"
+                      VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling" KeyboardNavigation.TabNavigation="Once">
+                <ListView.View>
+                    <GridView ColumnHeaderContainerStyle="{StaticResource GridHeader}">
+                        <GridViewColumn Width="120">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader Content="ID" Command="{Binding ToggleSortCommand}" CommandParameter="ID" />
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate><TextBlock Text="{Binding Id}" FontWeight="SemiBold" /></DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="170">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader Content="Repo" Command="{Binding ToggleSortCommand}" CommandParameter="Repo" />
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate><TextBlock Text="{Binding Repo}" TextTrimming="CharacterEllipsis" /></DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="80">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader Content="Type" Command="{Binding ToggleSortCommand}" CommandParameter="Type" />
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate><TextBlock Text="{Binding Type}" /></DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="100">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader Content="Status" Command="{Binding ToggleSortCommand}" CommandParameter="Status" />
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate><TextBlock Text="{Binding StatusText}" Style="{StaticResource StatusText}" /></DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="110">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader Content="Approval" Command="{Binding ToggleSortCommand}" CommandParameter="Approval" />
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate><TextBlock Text="{Binding ApprovalText}" Style="{StaticResource ApprovalText}" /></DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="96">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader Content="Date" Command="{Binding ToggleSortCommand}" CommandParameter="Date" />
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate><TextBlock Text="{Binding Date}" /></DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="560">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader Content="Summary" Command="{Binding ToggleSortCommand}" CommandParameter="Summary" />
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate><TextBlock Text="{Binding Summary}" TextTrimming="CharacterEllipsis" ToolTip="{Binding Summary}" /></DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <!-- ── Detail pane ── -->
+            <Border Grid.Column="1" Width="430" Background="{DynamicResource McPane}" BorderBrush="{DynamicResource McChromeBorder}" BorderThickness="1,0,0,0"
+                    Visibility="{Binding IsDetailOpen, Converter={StaticResource Visible}}">
+                <ScrollViewer x:Name="DetailPane" VerticalScrollBarVisibility="Auto" Focusable="False" DataContext="{Binding Detail}">
+                    <StackPanel Margin="20,16,20,20">
+                        <DockPanel>
+                            <Button DockPanel.Dock="Right" Style="{StaticResource IconBtn}" Content="&#x2715;" VerticalAlignment="Top"
+                                    Command="{Binding DataContext.CloseDetailCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                    AutomationProperties.Name="Close details" ToolTip="Close details (Esc)" />
+                            <TextBlock x:Name="DetailTitle" Text="{Binding Id}" Style="{StaticResource PaneTitle}" Focusable="True" FocusVisualStyle="{StaticResource FocusRing}" />
+                        </DockPanel>
+                        <TextBlock Text="{Binding Summary}" TextWrapping="Wrap" Margin="0,8,0,0" FontSize="14" />
+                        <TextBlock Text="{Binding WorkText}" Style="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,8,0,0" />
+
+                        <Grid Margin="0,12,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition />
+                            </Grid.RowDefinitions>
+                            <TextBlock Style="{StaticResource FieldName}" Text="Repo" />
+                            <TextBlock Grid.Column="1" Style="{StaticResource FieldValue}" Text="{Binding Repo}" />
+                            <TextBlock Grid.Row="1" Style="{StaticResource FieldName}" Text="Type" />
+                            <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource FieldValue}" Text="{Binding Type}" />
+                            <TextBlock Grid.Row="2" Style="{StaticResource FieldName}" Text="Status" />
+                            <TextBlock Grid.Row="2" Grid.Column="1" Style="{StaticResource StatusText}" FontSize="13" Margin="0,3" Text="{Binding StatusText}" />
+                            <TextBlock Grid.Row="3" Style="{StaticResource FieldName}" Text="Approval" />
+                            <TextBlock Grid.Row="3" Grid.Column="1" Style="{StaticResource ApprovalText}" FontSize="13" Margin="0,3" Text="{Binding ApprovalText}" />
+                            <TextBlock Grid.Row="4" Style="{StaticResource FieldName}" Text="Priority" />
+                            <TextBlock Grid.Row="4" Grid.Column="1" Style="{StaticResource FieldValue}" Text="{Binding Priority}" />
+                            <TextBlock Grid.Row="5" Style="{StaticResource FieldName}" Text="Filed" />
+                            <TextBlock Grid.Row="5" Grid.Column="1" Style="{StaticResource FieldValue}" Text="{Binding Date}" />
+                            <TextBlock Grid.Row="6" Style="{StaticResource FieldName}" Text="Ref" />
+                            <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Ref, Mode=OneWay}" IsReadOnly="True" TextWrapping="Wrap" Background="Transparent"
+                                     BorderThickness="0" Foreground="{DynamicResource McText}" Padding="0" Margin="0,3" AutomationProperties.Name="Ref" />
+                        </Grid>
+
+                        <TextBlock Text="ACTIONS" Style="{StaticResource SectionLabel}" />
+                        <WrapPanel>
+                            <Button Style="{StaticResource Btn}" Content="Approve" Margin="0,0,6,6"
+                                    Command="{Binding DataContext.ApproveCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
+                            <Button Style="{StaticResource Btn}" Content="Reject…" Margin="0,0,6,6"
+                                    Command="{Binding DataContext.RejectCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
+                            <Button Style="{StaticResource Btn}" Content="Close…" Margin="0,0,6,6" ToolTip="Close as done, optionally setting its ref"
+                                    Command="{Binding DataContext.CloseTicketCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
+                            <Button Style="{StaticResource Btn}" Content="Won't do…" Margin="0,0,6,6"
+                                    Command="{Binding DataContext.WontDoCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
+                            <Button Style="{StaticResource Btn}" Content="Correct type…" Margin="0,0,6,6"
+                                    Command="{Binding DataContext.CorrectTypeCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
+                            <Button Style="{StaticResource Btn}" Content="Add link…" Margin="0,0,6,6"
+                                    Command="{Binding DataContext.AddLinkCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
+                        </WrapPanel>
+                        <TextBlock Text="{Binding Error}" Style="{StaticResource ErrorText}"
+                                   Visibility="{Binding Error, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
+
+                        <TextBlock Text="LINKS" Style="{StaticResource SectionLabel}" />
+                        <TextBlock Text="No links." Style="{StaticResource Muted}">
+                            <TextBlock.Visibility>
+                                <Binding Path="Links.Count" Converter="{x:Static vm:Converters.ZeroToVisible}" />
+                            </TextBlock.Visibility>
+                        </TextBlock>
+                        <ItemsControl ItemsSource="{Binding Links}" Focusable="False">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate DataType="{x:Type vm:LinkLine}">
+                                    <DockPanel Margin="0,2">
+                                        <Button DockPanel.Dock="Right" Style="{StaticResource IconBtn}" Content="&#x2715;" Width="26" Height="26" FontSize="10"
+                                                Command="{Binding DataContext.RemoveLinkCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}"
+                                                AutomationProperties.Name="{Binding SpokenName, StringFormat='Remove link: {0}'}" ToolTip="Remove this link" />
+                                        <TextBlock Text="{Binding Phrase}" Style="{StaticResource Muted}" Width="110" VerticalAlignment="Center" />
+                                        <Button Style="{StaticResource LinkBtn}" Content="{Binding Other}" HorizontalAlignment="Left"
+                                                Command="{Binding DataContext.GoToCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding Other}"
+                                                AutomationProperties.Name="{Binding SpokenName, StringFormat='{}{0}: go to it'}" />
+                                    </DockPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <TextBlock Text="HISTORY" Style="{StaticResource SectionLabel}" />
+                        <ItemsControl ItemsSource="{Binding History}" Focusable="False">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate DataType="{x:Type vm:HistoryLine}">
+                                    <StackPanel Margin="0,0,0,8">
+                                        <TextBlock Text="{Binding When}" Style="{StaticResource Muted}" />
+                                        <TextBlock Text="{Binding Text}" TextWrapping="Wrap" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+
+        <!-- Footer: status, last refresh, zoom, database. The hidden announcer speaks changes (4.1.3). -->
+        <Border Grid.Row="3" BorderBrush="{DynamicResource McChromeBorder}" BorderThickness="0,1,0,0" Padding="20,6">
+            <DockPanel>
+                <TextBlock DockPanel.Dock="Right" Style="{StaticResource Muted}" Text="{Binding DbPath}" Margin="16,0,0,0" TextTrimming="CharacterEllipsis" MaxWidth="420" />
+                <TextBlock DockPanel.Dock="Right" Style="{StaticResource Muted}" Text="{Binding ZoomText}" Margin="16,0,0,0" />
+                <TextBlock DockPanel.Dock="Right" Style="{StaticResource Muted}" Text="{Binding LastRefresh, StringFormat='Refreshed {0}'}" Margin="16,0,0,0" />
+                <TextBlock x:Name="Announcer" DockPanel.Dock="Right" Width="1" Height="1" Opacity="0" Focusable="False"
+                           AutomationProperties.LiveSetting="Polite" AutomationProperties.Name="Announcement" />
+                <TextBlock Text="{Binding StatusMessage}" TextTrimming="CharacterEllipsis" ToolTip="{Binding StatusMessage}" />
+            </DockPanel>
+        </Border>
+    </Grid>
+</Window>
