@@ -254,3 +254,4 @@ updated: 2026-10-12
 | M.TIX-T122 | 2026-10-20 | chore | closed | Move to MindAttic.Components.Wpf 19.0.0 (Mc->Ma rename): bump the PackageReference and rename every Mc-prefixed style/class reference to Ma across Desktop/MainWindow.xaml, NewTicketWindow.xaml, PromptWindow.xaml and its own Theme/Colors.xaml, Theme/Styles.xaml, Theme/HighContrast.cs (~115 occurrences, including its own theme dictionary layered on the shared one) | 6672f7f |
 | M.TIX-T123 | 2026-10-20 | chore | closed | Update logo.ico and logo.png assets | 1ee8921 |
 | M.TIX-T124 | 2026-10-21 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
+| M.TIX-T125 | 2026-10-21 | chore | closed | Update Tickets.db, Tickets.sql; Remove logo.ico | — |
