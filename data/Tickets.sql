@@ -6133,7 +6133,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T4', 'REA.Bloodlines', 4, '2026-10-21', 'feature', 'open', 'Troika VPK extractor: unpack base game + Unofficial Patch overlay into work/, inventory every file type in docs/FORMATS.md', '—', 3, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T4', 'REA.Bloodlines', 4, '2026-10-21', 'feature', 'closed', 'Troika VPK extractor: unpack base game + Unofficial Patch overlay into work/, inventory every file type in docs/FORMATS.md', '—', 3, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T5', 'REA.Bloodlines', 5, '2026-10-21', 'docs', 'closed', 'docs/RESEARCH.md: community-documented Bloodlines formats (tth/ttz, mdl 2531, bsp v17, dlg, vdata, lip, python API) and the conversion route each takes to s&box', '—', 4, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T6', 'REA.Bloodlines', 6, '2026-10-21', 'feature', 'open', 'Bloodlines.Data C# library: .dlg dialogue parser, vdata KeyValues tables, condition/action expression parser; NUnit tests against every shipped .dlg', '—', 5, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T7', 'REA.Bloodlines', 7, '2026-10-21', 'docs', 'open', 'docs/SCRIPT_API.md: every Python binding vampire.dll exposes (module functions, entity/character methods, signatures, native handlers) recovered with Ghidra', '—', 6, NULL);
@@ -14907,6 +14907,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (7957, 'R
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (7958, 'RB-T8', '2026-10-21T20:28:26Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (7959, 'RB-T7', '2026-10-21T20:28:27Z', 'approval', 'proposed', 'approved');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (7960, 'RB-T8', '2026-10-21T20:28:27Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (7961, 'RB-T4', '2026-10-21T20:38:06Z', 'status', 'open', 'closed');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z');
