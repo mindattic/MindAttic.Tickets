@@ -246,18 +246,18 @@ code: M.TIX
 layer: stories
 status: living
 updated: 2026-10-12', 0, 0, 1);
-INSERT INTO repos (name, code, project, title, updated, front_matter, bom, crlf, trailing_newline) VALUES ('MindAttic.Unity', 'MAU', 'MindAttic.Unity', 'MindAttic.Unity — User Stories', '2026-10-19', 'codex: 1
-project: MindAttic.Unity
-code: MAU
-layer: stories
-status: living
-updated: 2026-10-19', 0, 0, 1);
 INSERT INTO repos (name, code, project, title, updated, front_matter, bom, crlf, trailing_newline) VALUES ('MindAttic.Unity.Multiplayer', 'UM', 'MindAttic.Unity.Multiplayer', 'MindAttic.Unity.Multiplayer — User Stories', '2026-10-20', 'codex: 1
 project: MindAttic.Unity.Multiplayer
 code: UM
 layer: stories
 status: living
 updated: 2026-10-20', 0, 0, 1);
+INSERT INTO repos (name, code, project, title, updated, front_matter, bom, crlf, trailing_newline) VALUES ('MindAttic.Unity.Shared', 'MAU', 'MindAttic.Unity.Shared', 'MindAttic.Unity.Shared — User Stories', '2026-10-19', 'codex: 1
+project: MindAttic.Unity.Shared
+code: MAU
+layer: stories
+status: living
+updated: 2026-10-19', 0, 0, 1);
 INSERT INTO repos (name, code, project, title, updated, front_matter, bom, crlf, trailing_newline) VALUES ('MindAttic.Vault', 'M.VALT', 'MindAttic.Vault', 'MindAttic.Vault — User Stories', '2026-10-03', 'codex: 1
 project: MindAttic.Vault
 code: M.VALT
@@ -5846,11 +5846,6 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T119', 'MindAttic.Tickets', 119, '2026-10-20', 'docs', 'open', 'Publish MindAttic.Workflow docs to GitHub Pages via the shared Toolkit DocFX pipeline: run adopt-docs-site.ps1 (README.md as home page, docs/*.md as articles, API reference only where the code builds in CI), enable Pages with build_type=workflow, set the repo homepage URL, retire tools/build-readme.ps1 and README.htm, confirm the docs Actions run is green and https://mindattic.github.io/MindAttic.Workflow/ returns 200. Depends on MAT-T8.', '—', 118, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T120', 'MindAttic.Tickets', 120, '2026-10-20', 'chore', 'closed', 'Rename MindAttic.Workflow to MindAttic.Tickets: repo, namespaces, CLI (tickets, with a temporary workflow shim), data/Tickets.db, docs and every caller in the workspace; project code M.FLOW becomes M.TIX, with existing IDs reassigned through a new logged ticket-ID reassignment that keeps each ticket''s former IDs resolvable', '22e6e78', 119, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T121', 'MindAttic.Tickets', 121, '2026-10-20', 'feature', 'closed', 'Ticket IDs can be reassigned (ticket reassign) and a repo''s code changed (repos recode), each a logged exception to append-only: every old ticket, story and epic ID is kept forever in id_history and still resolves, so citations in commits and other tickets never dangle', '26a21e2', 120, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAU-T1', 'MindAttic.Unity', 1, '2026-10-19', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAU-T2', 'MindAttic.Unity', 2, '2026-10-19', 'feature', 'open', 'Create the MindAttic.Unity package (owner 2026-10-19): multiple player profiles, each with its own settings file as in GridGame2026, in ONE common format defined here and reused by every MindAttic Unity game (first users GridGameGaiden and UnitySpace), plus a home for shared Unity helpers. Package: package.json name com.mindattic.unity, consumed by games as "file:../../MindAttic.Unity" in Packages/manifest.json (owner chose local package). Two assemblies: (1) MindAttic.Unity.Core, ENGINE-FREE (noEngineReferences, compiles under plain dotnet netstandard2.1) so games'' engine-free Core/Meta layers and their dotnet test projects can use it; (2) MindAttic.Unity.Runtime, thin, supplies Application.persistentDataPath as the root. THE STANDARD, written in README as a versioned spec: <persistentDataPath>/Profiles/current.txt names the profile in use; Profiles/<Name>/settings.json is that profile''s ONE settings file (owner chose single JSON over UnitySpace''s file-per-setting); Profiles/<Name>/Saves/ holds the game''s own save files. settings.json = {"format":"mindattic.settings","version":1,"common":{musicVolume,sfxVolume,muteMusic,muteSfx,reduceMotion,language},"game":{...game-owned...}}. Unknown fields in common and game survive a load/save round-trip; missing file/keys fall back to defaults; damaged JSON is moved aside (settings.json.bad-<timestamp>) and defaults used, never a crash; writes are atomic (temp + replace). Profile API: list, current, select, create (name rules as UnitySpace''s ProfileStore.IsValidName: one folder on every platform, <=64 chars), rename, delete = move to Profiles/.trash (HOUSE-LAW-2 soft-disable), root override for tests/automation. JSON: do not ship a second Newtonsoft (GridGameGaiden bundles its own Newtonsoft.Json.dll; check UnitySpace) - choose an approach that works in both (e.g. an injected codec interface) and document it. Port the good parts of UnitySpace''s uncommitted Assets/UnitySpace/Core/Persistence/Profiles.cs and GridGame2026''s ProfileHelper/FolderHelper (archived repo mindattic/GridGame2026); do NOT edit UnitySpace or GridGameGaiden from this ticket. Repo basics: AGENTS.md/CLAUDE.md forwarders like sibling repos, README per codex-standard/README-STYLE.md, MIT LICENSE, a dotnet NUnit test project for the format (round-trip incl. unknown keys, defaults, damaged file, atomic write, name rules, current/select/create/rename/delete-to-trash, root override), a v1.0.0 tag once green.', '—', 1, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAU-T3', 'MindAttic.Unity', 3, '2026-10-19', 'chore', 'open', 'Convert tracked source files to LF line endings via .gitattributes, per HOUSE-LAW-13 (low priority)', '—', 2, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAU-T4', 'MindAttic.Unity', 4, '2026-10-20', 'docs', 'open', 'Publish MindAttic.Unity docs to GitHub Pages via the shared Toolkit DocFX pipeline: run adopt-docs-site.ps1 (README.md as home page, docs/*.md as articles, API reference only where the code builds in CI), enable Pages with build_type=workflow, set the repo homepage URL, retire tools/build-readme.ps1 and README.htm, confirm the docs Actions run is green and https://mindattic.github.io/MindAttic.Unity/ returns 200. Depends on MAT-T8.', '—', 3, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAU-T5', 'MindAttic.Unity', 5, '2026-10-20', 'chore', 'open', 'Rename MindAttic.Unity repo/folder/namespace to MindAttic.Unity.Shared: its README already describes it as the shared Unity package (player profiles, common helpers) every MindAttic game depends on, distinct from an actual game named just ''Unity''. Update: GitHub repo rename, local folder, git remote, settings.json/Launcher roster Project entries (fixes a duplicate ''MindAttic.Unity'' row in the Open Project Tab menu), MindAttic.Unity.Multiplayer''s project reference to it, and the README title itself.', '—', 4, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UM-T1', 'MindAttic.Unity.Multiplayer', 1, '2026-10-20', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UM-T2', 'MindAttic.Unity.Multiplayer', 2, '2026-10-20', 'chore', 'closed', 'Bootstrap repo: AGENTS.md/CLAUDE.md forwarders and docs/rfc/0001-architecture.md (the approved plan: NGO 2.x behind MindAttic API, partial-method attribute RPCs via source generator, dedicated + host topologies, Relay + self-hosted rendezvous join codes, DocFX site, full ticket chain)', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UM-T3', 'MindAttic.Unity.Multiplayer', 3, '2026-10-20', 'chore', 'closed', 'Repo skeleton: unity/com.mindattic.unity.multiplayer/package.json (name com.mindattic.unity.multiplayer, unity 6000.0, deps com.unity.netcode.gameobjects 2.x + com.unity.transport 2.x; com.unity.services.multiplayer optional via versionDefines MINDATTIC_UGS), asmdefs MindAttic.Unity.Multiplayer.Core (Runtime/Core, noEngineReferences) / MindAttic.Unity.Multiplayer (Runtime) / .Editor / .Tests, MIT LICENSE, .gitattributes LF (HOUSE-LAW-13), README stub, docs/BIBLE.md laws: server owns state; nothing above the NGO adapter imports Unity.Netcode; generator output is C# 9; one home per fact. Design: MindAttic.Unity.Multiplayer docs/rfc/0001-architecture.md.', 'ac90616', 2, NULL);
@@ -5886,6 +5881,11 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UM-T33', 'MindAttic.Unity.Multiplayer', 33, '2026-10-20', 'feature', 'open', 'NetBootstrap gets a public way to set its default NetConfig in code (port, topology, game version, etc.) before Start, so games and tests stop setting its private serialized fields by reflection (UnityCursory''s ServerPhysicsTests does today, UC-T6); switch that test over once it lands', '—', 32, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UM-T34', 'MindAttic.Unity.Multiplayer', 34, '2026-10-20', 'fix', 'closed', 'A kicked or replaced client can lose the reason it was given: NetSession.Kick and the stale-connection takeover call NGO DisconnectClient(reason), which sends the reason as a reliable message and closes the transport connection at once, so if that message is dropped (or, under UM-T14''s simulator stage, still delayed) the client only sees ClosedByRemote and reports ServerShutdown instead of Kicked with the message. Deliver the reason first (e.g. own reliable message, client leaves on receipt, server force-closes after a grace) and assert the reason in LossyNetworkTests.KilledClient_ReconnectingOverTheLossyLink_TakesItsSeatBack.', 'LossyNetworkTests.KilledClient_ReconnectingOverTheLossyLink_TakesItsSeatBack @ 00048ca', 33, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UM-T35', 'MindAttic.Unity.Multiplayer', 35, '2026-10-20', 'chore', 'open', 'Rename MindAttic.Unity.Multiplayer to Unity.Multiplayer: it''s a Unity library, not a MindAttic-specific project. Covers GitHub repo, local folder, ticket DB key (tickets repos rename), git remote URL, UnityCursory''s references to the library, docs/rfc/0001-architecture.md, and the autopilot handoff note pointing at the old repo name. Approved by owner 2026-10-20.', '—', 34, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAU-T1', 'MindAttic.Unity.Shared', 1, '2026-10-19', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAU-T2', 'MindAttic.Unity.Shared', 2, '2026-10-19', 'feature', 'open', 'Create the MindAttic.Unity package (owner 2026-10-19): multiple player profiles, each with its own settings file as in GridGame2026, in ONE common format defined here and reused by every MindAttic Unity game (first users GridGameGaiden and UnitySpace), plus a home for shared Unity helpers. Package: package.json name com.mindattic.unity, consumed by games as "file:../../MindAttic.Unity" in Packages/manifest.json (owner chose local package). Two assemblies: (1) MindAttic.Unity.Core, ENGINE-FREE (noEngineReferences, compiles under plain dotnet netstandard2.1) so games'' engine-free Core/Meta layers and their dotnet test projects can use it; (2) MindAttic.Unity.Runtime, thin, supplies Application.persistentDataPath as the root. THE STANDARD, written in README as a versioned spec: <persistentDataPath>/Profiles/current.txt names the profile in use; Profiles/<Name>/settings.json is that profile''s ONE settings file (owner chose single JSON over UnitySpace''s file-per-setting); Profiles/<Name>/Saves/ holds the game''s own save files. settings.json = {"format":"mindattic.settings","version":1,"common":{musicVolume,sfxVolume,muteMusic,muteSfx,reduceMotion,language},"game":{...game-owned...}}. Unknown fields in common and game survive a load/save round-trip; missing file/keys fall back to defaults; damaged JSON is moved aside (settings.json.bad-<timestamp>) and defaults used, never a crash; writes are atomic (temp + replace). Profile API: list, current, select, create (name rules as UnitySpace''s ProfileStore.IsValidName: one folder on every platform, <=64 chars), rename, delete = move to Profiles/.trash (HOUSE-LAW-2 soft-disable), root override for tests/automation. JSON: do not ship a second Newtonsoft (GridGameGaiden bundles its own Newtonsoft.Json.dll; check UnitySpace) - choose an approach that works in both (e.g. an injected codec interface) and document it. Port the good parts of UnitySpace''s uncommitted Assets/UnitySpace/Core/Persistence/Profiles.cs and GridGame2026''s ProfileHelper/FolderHelper (archived repo mindattic/GridGame2026); do NOT edit UnitySpace or GridGameGaiden from this ticket. Repo basics: AGENTS.md/CLAUDE.md forwarders like sibling repos, README per codex-standard/README-STYLE.md, MIT LICENSE, a dotnet NUnit test project for the format (round-trip incl. unknown keys, defaults, damaged file, atomic write, name rules, current/select/create/rename/delete-to-trash, root override), a v1.0.0 tag once green.', '—', 1, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAU-T3', 'MindAttic.Unity.Shared', 3, '2026-10-19', 'chore', 'open', 'Convert tracked source files to LF line endings via .gitattributes, per HOUSE-LAW-13 (low priority)', '—', 2, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAU-T4', 'MindAttic.Unity.Shared', 4, '2026-10-20', 'docs', 'open', 'Publish MindAttic.Unity docs to GitHub Pages via the shared Toolkit DocFX pipeline: run adopt-docs-site.ps1 (README.md as home page, docs/*.md as articles, API reference only where the code builds in CI), enable Pages with build_type=workflow, set the repo homepage URL, retire tools/build-readme.ps1 and README.htm, confirm the docs Actions run is green and https://mindattic.github.io/MindAttic.Unity/ returns 200. Depends on MAT-T8.', '—', 3, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAU-T5', 'MindAttic.Unity.Shared', 5, '2026-10-20', 'chore', 'open', 'Rename MindAttic.Unity repo/folder/namespace to MindAttic.Unity.Shared: its README already describes it as the shared Unity package (player profiles, common helpers) every MindAttic game depends on, distinct from an actual game named just ''Unity''. Update: GitHub repo rename, local folder, git remote, settings.json/Launcher roster Project entries (fixes a duplicate ''MindAttic.Unity'' row in the Open Project Tab menu), MindAttic.Unity.Multiplayer''s project reference to it, and the README title itself.', '—', 4, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.VALT-T1', 'MindAttic.Vault', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.VALT-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.VALT-T2', 'MindAttic.Vault', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for Dashboard HealthMonitorStore (MindAttic.Vault.Dashboard/Services/HealthMonitorStore.cs; add a Dashboard ProjectReference to MindAttic.Vault.Tests first): RecordUptime running percentage per provider and case-insensitive ids, Previous returns null before first commit, Commit replaces snapshots and evicts providers missing from the fresh set, sets LastSweepUtc, clears SweepInProgress and fires OnChanged, Snapshots ordered trusted-first then alphabetical, TrustedPanelHealthy false when no trusted snapshots exist or any trusted one is not Healthy - this is the headline confidence verdict the dashboard leads with', 'MindAttic.Vault.Tests/HealthMonitorStoreTests.cs', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.VALT-T3', 'MindAttic.Vault', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for Dashboard AlertDispatcher (Services/AlertDispatcher.cs): with a fake IHttpClientFactory/HttpMessageHandler verify every non-blank webhook gets a JSON POST with provider, displayName, status, previous, diagnosis, detail, atUtc fields; blank webhook urls skipped; no channels configured means no work; a webhook that throws or returns non-2xx is logged and does not stop other webhooks or fault DispatchAsync; email channel skipped when Host is blank or To is empty, and an SMTP failure is swallowed - alerts must be best-effort and isolated so one bad channel never breaks a sweep', '—', 2, '| M.VALT-T3 | 2026-10-14 | chore | open | NUnit tests for Dashboard AlertDispatcher (Services/AlertDispatcher.cs): with a fake IHttpClientFactory/HttpMessageHandler verify every non-blank webhook gets a JSON POST with provider, displayName, status, previous, diagnosis, detail, atUtc fields; blank webhook urls skipped; no channels configured means no work; a webhook that throws or returns non-2xx is logged and does not stop other webhooks or fault DispatchAsync; email channel skipped when Host is blank or To is empty, and an SMTP failure is swallowed - alerts must be best-effort and isolated so one bad channel never breaks a sweep | — |');
@@ -13188,6 +13188,11 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6457, 'M
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6458, 'M.SCHD-T14', '2026-10-21T01:25:19Z', 'ref', '—', 'superseded by M.SCHD-T17 (user confirmed Scheduler over Coordinator on 2026-10-20)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6459, 'MAU-T5', '2026-10-21T01:26:34Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6460, 'M.LNCH-T47', '2026-10-21T01:31:15Z', 'created', NULL, 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6461, 'MAU-T1', '2026-10-21T01:37:38Z', 'repo', 'MindAttic.Unity', 'MindAttic.Unity.Shared');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6462, 'MAU-T2', '2026-10-21T01:37:38Z', 'repo', 'MindAttic.Unity', 'MindAttic.Unity.Shared');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6463, 'MAU-T3', '2026-10-21T01:37:38Z', 'repo', 'MindAttic.Unity', 'MindAttic.Unity.Shared');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6464, 'MAU-T4', '2026-10-21T01:37:38Z', 'repo', 'MindAttic.Unity', 'MindAttic.Unity.Shared');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6465, 'MAU-T5', '2026-10-21T01:37:38Z', 'repo', 'MindAttic.Unity', 'MindAttic.Unity.Shared');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('AUT-T14', 'approved', 0, '2026-10-18T08:37:29Z');
@@ -13638,6 +13643,7 @@ INSERT INTO repo_renames (seq, old_name, new_name, at, reason) VALUES (4, 'Unity
 INSERT INTO repo_renames (seq, old_name, new_name, at, reason) VALUES (5, 'GridGameCaravan', 'TownWalker', '2026-10-19T17:09:23Z', 'Owner 2026-10-19: GridGameCaravan is now a standalone project named TownWalker (GGC-T20); GitHub repo renamed, folder rename by owner');
 INSERT INTO repo_renames (seq, old_name, new_name, at, reason) VALUES (6, 'MindAttic.Workflow', 'MindAttic.Tickets', '2026-10-21T00:38:40Z', 'Renamed to what it is, a ticketing system (M.TIX-T120)');
 INSERT INTO repo_renames (seq, old_name, new_name, at, reason) VALUES (7, 'MindAttic.Toolkit', 'MindAttic.Agency', '2026-10-21T01:04:28Z', 'Toolkit undersold the agent/prompt catalog half of the repo; renamed to Agency to cover scripts, hooks, docs pipeline, and the slash-command/prompt catalog (MAT-T21)');
+INSERT INTO repo_renames (seq, old_name, new_name, at, reason) VALUES (8, 'MindAttic.Unity', 'MindAttic.Unity.Shared', '2026-10-21T01:37:38Z', 'README already described it as the shared package every MindAttic game depends on, not a game itself; GitHub repo and local folder renamed to match (M.LNCH-T47 follow-up, MAU-T5)');
 
 -- id_history
 INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (1, 'ticket', 'M.FLOW-T1', 'M.TIX-T1', '2026-10-21T00:38:39Z', 'MindAttic.Workflow renamed MindAttic.Tickets: it is a ticketing system (M.FLOW-T120)');
@@ -18431,28 +18437,6 @@ INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Tickets',
 
 | ID | Date | Type | Status | Summary | Ref |
 |---|---|---|---|---|---|');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Unity', 0, 'raw', NULL, '---
-codex: 1
-project: MindAttic.Unity
-code: MAU
-layer: stories
-status: living
-updated: 2026-10-19
----
-
-# MindAttic.Unity — User Stories
-> ✅ done (shipped & tested) · 🟡 partial · ⬜ planned. Every ✅ cites the test.
-
-## Priority backlog
-_Nothing recorded yet._
-');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Unity', 1, 'tickets', NULL, '## Tickets
-> Permanent log of every change and fix — this repo''s ticket system. Rows are append-only: never
-> delete or reword one; only move its Status (open → closed / wont-do) and fill in Ref. Status is
-> a word, not a glyph, so tickets don''t count toward the story index. Keep this section last.
-
-| ID | Date | Type | Status | Summary | Ref |
-|---|---|---|---|---|---|');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Unity.Multiplayer', 0, 'raw', NULL, '---
 codex: 1
 project: MindAttic.Unity.Multiplayer
@@ -18469,6 +18453,28 @@ updated: 2026-10-20
 _Nothing recorded yet._
 ');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Unity.Multiplayer', 1, 'tickets', NULL, '## Tickets
+> Permanent log of every change and fix — this repo''s ticket system. Rows are append-only: never
+> delete or reword one; only move its Status (open → closed / wont-do) and fill in Ref. Status is
+> a word, not a glyph, so tickets don''t count toward the story index. Keep this section last.
+
+| ID | Date | Type | Status | Summary | Ref |
+|---|---|---|---|---|---|');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Unity.Shared', 0, 'raw', NULL, '---
+codex: 1
+project: MindAttic.Unity.Shared
+code: MAU
+layer: stories
+status: living
+updated: 2026-10-19
+---
+
+# MindAttic.Unity.Shared — User Stories
+> ✅ done (shipped & tested) · 🟡 partial · ⬜ planned. Every ✅ cites the test.
+
+## Priority backlog
+_Nothing recorded yet._
+');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Unity.Shared', 1, 'tickets', NULL, '## Tickets
 > Permanent log of every change and fix — this repo''s ticket system. Rows are append-only: never
 > delete or reword one; only move its Status (open → closed / wont-do) and fill in Ref. Status is
 > a word, not a glyph, so tickets don''t count toward the story index. Keep this section last.
