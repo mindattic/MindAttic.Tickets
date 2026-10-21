@@ -264,9 +264,9 @@ code: M.VALT
 layer: stories
 status: living
 updated: 2026-10-03', 0, 1, 1);
-INSERT INTO repos (name, code, project, title, updated, front_matter, bom, crlf, trailing_newline) VALUES ('MindAttic.Watchdog', 'M.WD', 'MindAttic.WatchDog', 'MindAttic.WatchDog — User Stories', '2026-10-18', 'codex: 1
+INSERT INTO repos (name, code, project, title, updated, front_matter, bom, crlf, trailing_newline) VALUES ('MindAttic.Watchdog', 'M.SCHD', 'MindAttic.WatchDog', 'MindAttic.WatchDog — User Stories', '2026-10-18', 'codex: 1
 project: MindAttic.WatchDog
-code: M.WD
+code: M.SCHD
 layer: stories
 status: living
 updated: 2026-10-18', 0, 0, 1);
@@ -5900,23 +5900,23 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.VALT-T14', 'MindAttic.Vault', 14, '2026-10-16', 'docs', 'closed', 'Update USER_STORIES.md', '—', 13, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.VALT-T15', 'MindAttic.Vault', 15, '2026-10-19', 'chore', 'open', 'Convert tracked source files to LF line endings via .gitattributes, per HOUSE-LAW-13 (low priority)', '—', 14, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.VALT-T16', 'MindAttic.Vault', 16, '2026-10-20', 'docs', 'open', 'Publish MindAttic.Vault docs to GitHub Pages via the shared Toolkit DocFX pipeline: run adopt-docs-site.ps1 (README.md as home page, docs/*.md as articles, API reference only where the code builds in CI), enable Pages with build_type=workflow, set the repo homepage URL, retire tools/build-readme.ps1 and README.htm, confirm the docs Actions run is green and https://mindattic.github.io/MindAttic.Vault/ returns 200. Depends on MAT-T8.', '—', 15, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.WD-T1', 'MindAttic.Watchdog', 1, '2026-10-18', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.WD-T1 | 2026-10-18 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.WD-T2', 'MindAttic.Watchdog', 2, '2026-10-18', 'feature', 'closed', 'Scaffold the scheduled-jobs host: jobs.json manifest (name, command, schedule, replaces) and an idempotent install.ps1 that registers every job under \MindAttic\WatchDog\ (HOUSE-LAW-11) through conhost --headless so none opens a window or steals focus, removes the older copies a job lists under ''replaces'', and unregisters WatchDog tasks no longer in the manifest; README; first commit of AGENTS.md and docs/USER_STORIES.md', 'tests/install.Tests.ps1 (ae85b6d)', 1, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.WD-T3', 'MindAttic.Watchdog', 3, '2026-10-18', 'chore', 'closed', 'Audit every repo for scheduled tasks and record each as a job (owner repo, registrar file, task path, schedule, command): found so far Automata (SchTasksRegistrar, Tick), MindAttic.Orchestrator (Setup/Installer.cs, daemon), MindAttic.Launcher (ScheduledTaskService + tools/register-nightly-backup-task.ps1), JellyFinPoster (scripts/register_scheduled_task.ps1), IdiotProof (tools/register-research-scan-task.ps1), MindAttic.Psst (Cli/Scheduling per-reminder tasks), Unstuck (UnstuckTaskbar logon task), Prose (scripts/fix-task-focus-stealing.ps1 patches others'' tasks); also any task under \MindAttic\ on this machine with no repo', '72f26f7', 2, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.WD-T4', 'MindAttic.Watchdog', 4, '2026-10-18', 'feature', 'closed', 'Run Automata''s tick as a WatchDog job (replaces \MindAttic\Automata\MindAttic.Automata.Tick: automata-runner.exe tick, same schedule)', '61500f0', 3, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.WD-T5', 'MindAttic.Watchdog', 5, '2026-10-18', 'feature', 'closed', 'Run the Orchestrator daemon as a WatchDog job (replaces \MindAttic\Orchestrator\Orchestrator daemon: MindAttic.Orchestrator.exe --daemon at logon, kept running)', 'ec47857', 4, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.WD-T6', 'MindAttic.Watchdog', 6, '2026-10-18', 'feature', 'closed', 'Run the Launcher nightly backup as a WatchDog job (replaces \MindAttic\Launcher\MindAtticLauncherNightlyBackup: MindAttic.Launcher.exe backup --keep 30)', 'install.Tests.ps1: runs the Launcher nightly backup at midnight keeping 30, replacing the Launcher''s own task (eed5c9e)', 5, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.WD-T7', 'MindAttic.Watchdog', 7, '2026-10-18', 'feature', 'closed', 'Run the Jellyfin poster refresh as a WatchDog job (replaces \MindAttic\JellyFinPoster\JellyfinPosterRefresh: pythonw jellyfin_poster.py)', '59131d6', 6, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.WD-T8', 'MindAttic.Watchdog', 8, '2026-10-18', 'feature', 'closed', 'Run IdiotProof''s research scan as a WatchDog job (the task tools/register-research-scan-task.ps1 registers by hand, elevated, S4U logon)', '1b1ba49 (tests/install.Tests.ps1: runs IdiotProof''s research scan hourly...)', 7, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.WD-T9', 'MindAttic.Watchdog', 9, '2026-10-18', 'feature', 'closed', 'Run UnstuckTaskbar at logon as a WatchDog job (replaces \MindAttic\UnstuckTaskbar\Logon)', 'install.Tests.ps1: runs UnstuckTaskbar at logon and keeps it running (73d374e)', 8, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.WD-T10', 'MindAttic.Watchdog', 10, '2026-10-18', 'feature', 'wont-do', 'Decide how Psst''s per-reminder tasks fit WatchDog: they''re created and cancelled at runtime per reminder, so either WatchDog exposes a register/cancel API Psst calls, or Psst stays exempt and the exemption is recorded in HOUSE-LAW-11', 'replaced by M.WD-T12', 9, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.WD-T11', 'MindAttic.Watchdog', 11, '2026-10-18', 'feature', 'closed', 'Move the G HUB leak guard into WatchDog: restart lghub_agent past 2 GB, hourly (replaces the root-level ''\MindAttic LghubWatchdog'' task, which breaks HOUSE-LAW-11, and its script in %LOCALAPPDATA%\MindAttic\LghubWatchdog)', '14203b6', 10, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.WD-T12', 'MindAttic.Watchdog', 12, '2026-10-18', 'feature', 'closed', 'Runtime job API for apps that schedule on the fly: a WatchDog command (watchdog job add <name> --at <time>|--every <span> --run <command> --owner <app>, watchdog job cancel <name>, watchdog job list --owner <app>) that registers one-off and recurring tasks under \MindAttic\WatchDog\<owner>\ headless, the same way install.ps1 does; first caller is Psst''s reminders. Supersedes M.WD-T10''s open question', 'tests/watchdog.Tests.ps1 (212554d)', 11, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.WD-T13', 'MindAttic.Watchdog', 13, '2026-10-19', 'chore', 'open', 'Convert tracked source files to LF line endings via .gitattributes, per HOUSE-LAW-13 (low priority)', '—', 12, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.WD-T14', 'MindAttic.Watchdog', 14, '2026-10-19', 'chore', 'open', 'Rename WatchDog to Coordinator everywhere: project/repo name MindAttic.WatchDog -> MindAttic.Coordinator, ticket code, README/docs/AGENTS.md, jobs.json comments, install.ps1 and tests, the watchdog CLI command (watchdog job ... -> coordinator job ...), the task folder \MindAttic\WatchDog\ -> \MindAttic\Coordinator\ (install.ps1 migrates/removes the old WatchDog-folder tasks), the %LOCALAPPDATA%\MindAttic\WatchDog log path, and every reference in other repos (Psst''s job API calls and README, HOUSE-LAW-11 in MindAttic.HouseRules.md, Orchestrator/workflow registries). The user renames the folder and GitHub repo themselves.', '—', 13, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.WD-T15', 'MindAttic.Watchdog', 15, '2026-10-19', 'fix', 'open', 'The Orchestrator.Daemon job (M.WD-T5) runs the exe from a fixed C:\Apps\MindAttic.Orchestrator path, but the Orchestrator installs to %LOCALAPPDATA%\Programs\MindAttic.Orchestrator when C:\Apps isn''t writable; there the daemon never starts at logon (only when the dashboard opens), now that the Orchestrator no longer installs its own scheduled task (M.ORCH-T475). Resolve the installed exe''s path instead', '—', 14, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.WD-T16', 'MindAttic.Watchdog', 16, '2026-10-20', 'docs', 'open', 'Publish MindAttic.WatchDog docs to GitHub Pages via the shared Toolkit DocFX pipeline: run adopt-docs-site.ps1 (README.md as home page, docs/*.md as articles, API reference only where the code builds in CI), enable Pages with build_type=workflow, set the repo homepage URL, retire tools/build-readme.ps1 and README.htm, confirm the docs Actions run is green and https://mindattic.github.io/MindAttic.WatchDog/ returns 200. Depends on MAT-T8.', '—', 15, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.WD-T17', 'MindAttic.Watchdog', 17, '2026-10-20', 'chore', 'open', 'Rename MindAttic.WatchDog to MindAttic.Scheduler (repo, code, namespaces, docs, callers), the same way MindAttic.Workflow became MindAttic.Tickets (M.TIX-T120)', '—', 16, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T1', 'MindAttic.Watchdog', 1, '2026-10-18', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T2', 'MindAttic.Watchdog', 2, '2026-10-18', 'feature', 'closed', 'Scaffold the scheduled-jobs host: jobs.json manifest (name, command, schedule, replaces) and an idempotent install.ps1 that registers every job under \MindAttic\WatchDog\ (HOUSE-LAW-11) through conhost --headless so none opens a window or steals focus, removes the older copies a job lists under ''replaces'', and unregisters WatchDog tasks no longer in the manifest; README; first commit of AGENTS.md and docs/USER_STORIES.md', 'tests/install.Tests.ps1 (ae85b6d)', 1, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T3', 'MindAttic.Watchdog', 3, '2026-10-18', 'chore', 'closed', 'Audit every repo for scheduled tasks and record each as a job (owner repo, registrar file, task path, schedule, command): found so far Automata (SchTasksRegistrar, Tick), MindAttic.Orchestrator (Setup/Installer.cs, daemon), MindAttic.Launcher (ScheduledTaskService + tools/register-nightly-backup-task.ps1), JellyFinPoster (scripts/register_scheduled_task.ps1), IdiotProof (tools/register-research-scan-task.ps1), MindAttic.Psst (Cli/Scheduling per-reminder tasks), Unstuck (UnstuckTaskbar logon task), Prose (scripts/fix-task-focus-stealing.ps1 patches others'' tasks); also any task under \MindAttic\ on this machine with no repo', '72f26f7', 2, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T4', 'MindAttic.Watchdog', 4, '2026-10-18', 'feature', 'closed', 'Run Automata''s tick as a WatchDog job (replaces \MindAttic\Automata\MindAttic.Automata.Tick: automata-runner.exe tick, same schedule)', '61500f0', 3, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T5', 'MindAttic.Watchdog', 5, '2026-10-18', 'feature', 'closed', 'Run the Orchestrator daemon as a WatchDog job (replaces \MindAttic\Orchestrator\Orchestrator daemon: MindAttic.Orchestrator.exe --daemon at logon, kept running)', 'ec47857', 4, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T6', 'MindAttic.Watchdog', 6, '2026-10-18', 'feature', 'closed', 'Run the Launcher nightly backup as a WatchDog job (replaces \MindAttic\Launcher\MindAtticLauncherNightlyBackup: MindAttic.Launcher.exe backup --keep 30)', 'install.Tests.ps1: runs the Launcher nightly backup at midnight keeping 30, replacing the Launcher''s own task (eed5c9e)', 5, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T7', 'MindAttic.Watchdog', 7, '2026-10-18', 'feature', 'closed', 'Run the Jellyfin poster refresh as a WatchDog job (replaces \MindAttic\JellyFinPoster\JellyfinPosterRefresh: pythonw jellyfin_poster.py)', '59131d6', 6, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T8', 'MindAttic.Watchdog', 8, '2026-10-18', 'feature', 'closed', 'Run IdiotProof''s research scan as a WatchDog job (the task tools/register-research-scan-task.ps1 registers by hand, elevated, S4U logon)', '1b1ba49 (tests/install.Tests.ps1: runs IdiotProof''s research scan hourly...)', 7, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T9', 'MindAttic.Watchdog', 9, '2026-10-18', 'feature', 'closed', 'Run UnstuckTaskbar at logon as a WatchDog job (replaces \MindAttic\UnstuckTaskbar\Logon)', 'install.Tests.ps1: runs UnstuckTaskbar at logon and keeps it running (73d374e)', 8, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T10', 'MindAttic.Watchdog', 10, '2026-10-18', 'feature', 'wont-do', 'Decide how Psst''s per-reminder tasks fit WatchDog: they''re created and cancelled at runtime per reminder, so either WatchDog exposes a register/cancel API Psst calls, or Psst stays exempt and the exemption is recorded in HOUSE-LAW-11', 'replaced by M.WD-T12', 9, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T11', 'MindAttic.Watchdog', 11, '2026-10-18', 'feature', 'closed', 'Move the G HUB leak guard into WatchDog: restart lghub_agent past 2 GB, hourly (replaces the root-level ''\MindAttic LghubWatchdog'' task, which breaks HOUSE-LAW-11, and its script in %LOCALAPPDATA%\MindAttic\LghubWatchdog)', '14203b6', 10, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T12', 'MindAttic.Watchdog', 12, '2026-10-18', 'feature', 'closed', 'Runtime job API for apps that schedule on the fly: a WatchDog command (watchdog job add <name> --at <time>|--every <span> --run <command> --owner <app>, watchdog job cancel <name>, watchdog job list --owner <app>) that registers one-off and recurring tasks under \MindAttic\WatchDog\<owner>\ headless, the same way install.ps1 does; first caller is Psst''s reminders. Supersedes M.WD-T10''s open question', 'tests/watchdog.Tests.ps1 (212554d)', 11, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T13', 'MindAttic.Watchdog', 13, '2026-10-19', 'chore', 'open', 'Convert tracked source files to LF line endings via .gitattributes, per HOUSE-LAW-13 (low priority)', '—', 12, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T14', 'MindAttic.Watchdog', 14, '2026-10-19', 'chore', 'wont-do', 'Rename WatchDog to Coordinator everywhere: project/repo name MindAttic.WatchDog -> MindAttic.Coordinator, ticket code, README/docs/AGENTS.md, jobs.json comments, install.ps1 and tests, the watchdog CLI command (watchdog job ... -> coordinator job ...), the task folder \MindAttic\WatchDog\ -> \MindAttic\Coordinator\ (install.ps1 migrates/removes the old WatchDog-folder tasks), the %LOCALAPPDATA%\MindAttic\WatchDog log path, and every reference in other repos (Psst''s job API calls and README, HOUSE-LAW-11 in MindAttic.HouseRules.md, Orchestrator/workflow registries). The user renames the folder and GitHub repo themselves.', 'superseded by M.SCHD-T17 (user confirmed Scheduler over Coordinator on 2026-10-20)', 13, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T15', 'MindAttic.Watchdog', 15, '2026-10-19', 'fix', 'open', 'The Orchestrator.Daemon job (M.WD-T5) runs the exe from a fixed C:\Apps\MindAttic.Orchestrator path, but the Orchestrator installs to %LOCALAPPDATA%\Programs\MindAttic.Orchestrator when C:\Apps isn''t writable; there the daemon never starts at logon (only when the dashboard opens), now that the Orchestrator no longer installs its own scheduled task (M.ORCH-T475). Resolve the installed exe''s path instead', '—', 14, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T16', 'MindAttic.Watchdog', 16, '2026-10-20', 'docs', 'open', 'Publish MindAttic.WatchDog docs to GitHub Pages via the shared Toolkit DocFX pipeline: run adopt-docs-site.ps1 (README.md as home page, docs/*.md as articles, API reference only where the code builds in CI), enable Pages with build_type=workflow, set the repo homepage URL, retire tools/build-readme.ps1 and README.htm, confirm the docs Actions run is green and https://mindattic.github.io/MindAttic.WatchDog/ returns 200. Depends on MAT-T8.', '—', 15, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T17', 'MindAttic.Watchdog', 17, '2026-10-20', 'chore', 'open', 'Rename MindAttic.WatchDog to MindAttic.Scheduler (repo, code, namespaces, docs, callers), the same way MindAttic.Workflow became MindAttic.Tickets (M.TIX-T120)', '—', 16, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.WEB-T1', 'MindAttic.Web', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.WEB-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.WEB-T2', 'MindAttic.Web', 2, '2026-10-13', 'feature', 'closed', 'ryandebraal.com rebuilt with the slower Sand theme; capture.ps1 launches the Browser''s deploy.bat (launch.bat no longer exists)', 'ryandebraal.com/index.htm, capture.ps1', 1, '| M.WEB-T2 | 2026-10-13 | feature | closed | ryandebraal.com rebuilt with the slower Sand theme; capture.ps1 launches the Browser''s deploy.bat (launch.bat no longer exists) | ryandebraal.com/index.htm, capture.ps1 |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.WEB-T3', 'MindAttic.Web', 3, '2026-10-13', 'chore', 'closed', 'Pages rebuilt with the default-tag site build: stamp lines take the page''s line endings, Cyberspace banner no longer mentions cdnTag', 'MindAttic.Components build-sites.mjs', 2, '| M.WEB-T3 | 2026-10-13 | chore | closed | Pages rebuilt with the default-tag site build: stamp lines take the page''s line endings, Cyberspace banner no longer mentions cdnTag | MindAttic.Components build-sites.mjs |');
@@ -10521,34 +10521,34 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3792, 'G
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3793, 'M.BRWS-T13', '2026-10-19T01:42:45Z', 'created', NULL, 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3794, 'G.AWPN-T161', '2026-10-19T01:43:01Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3795, 'G.AWPN-T161', '2026-10-19T01:43:01Z', 'status', 'open', 'closed');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3796, 'M.WD-T2', '2026-10-19T01:44:14Z', 'created', NULL, 'open');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3797, 'M.WD-T3', '2026-10-19T01:44:14Z', 'created', NULL, 'open');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3798, 'M.WD-T4', '2026-10-19T01:44:15Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3796, 'M.SCHD-T2', '2026-10-19T01:44:14Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3797, 'M.SCHD-T3', '2026-10-19T01:44:14Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3798, 'M.SCHD-T4', '2026-10-19T01:44:15Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3799, 'AUT-T20', '2026-10-19T01:44:15Z', 'created', NULL, 'open');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3800, 'M.WD-T5', '2026-10-19T01:44:16Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3800, 'M.SCHD-T5', '2026-10-19T01:44:16Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3801, 'M.ORCH-T475', '2026-10-19T01:44:16Z', 'created', NULL, 'open');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3802, 'M.WD-T6', '2026-10-19T01:44:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3802, 'M.SCHD-T6', '2026-10-19T01:44:17Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3803, 'M.LNCH-T42', '2026-10-19T01:44:17Z', 'created', NULL, 'open');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3804, 'M.WD-T7', '2026-10-19T01:44:18Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3804, 'M.SCHD-T7', '2026-10-19T01:44:18Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3805, 'JFP-T8', '2026-10-19T01:44:18Z', 'created', NULL, 'open');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3806, 'M.WD-T8', '2026-10-19T01:44:19Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3806, 'M.SCHD-T8', '2026-10-19T01:44:19Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3807, 'IP-T25', '2026-10-19T01:44:19Z', 'created', NULL, 'open');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3808, 'M.WD-T9', '2026-10-19T01:44:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3808, 'M.SCHD-T9', '2026-10-19T01:44:20Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3809, 'UNS-T9', '2026-10-19T01:44:20Z', 'created', NULL, 'open');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3810, 'M.WD-T10', '2026-10-19T01:44:21Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3810, 'M.SCHD-T10', '2026-10-19T01:44:21Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3811, 'M.PSST-T19', '2026-10-19T01:44:21Z', 'created', NULL, 'open');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3812, 'M.WD-T11', '2026-10-19T01:44:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3812, 'M.SCHD-T11', '2026-10-19T01:44:22Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3813, 'PRS-T187', '2026-10-19T01:44:22Z', 'created', NULL, 'open');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3814, 'M.WD-T2', '2026-10-19T01:44:30Z', 'approval', 'proposed', 'approved');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3815, 'M.WD-T3', '2026-10-19T01:44:31Z', 'approval', 'proposed', 'approved');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3816, 'M.WD-T4', '2026-10-19T01:44:31Z', 'approval', 'proposed', 'approved');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3817, 'M.WD-T5', '2026-10-19T01:44:31Z', 'approval', 'proposed', 'approved');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3818, 'M.WD-T6', '2026-10-19T01:44:31Z', 'approval', 'proposed', 'approved');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3819, 'M.WD-T7', '2026-10-19T01:44:32Z', 'approval', 'proposed', 'approved');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3820, 'M.WD-T8', '2026-10-19T01:44:32Z', 'approval', 'proposed', 'approved');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3821, 'M.WD-T9', '2026-10-19T01:44:32Z', 'approval', 'proposed', 'approved');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3822, 'M.WD-T10', '2026-10-19T01:44:32Z', 'approval', 'proposed', 'approved');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3823, 'M.WD-T11', '2026-10-19T01:44:32Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3814, 'M.SCHD-T2', '2026-10-19T01:44:30Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3815, 'M.SCHD-T3', '2026-10-19T01:44:31Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3816, 'M.SCHD-T4', '2026-10-19T01:44:31Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3817, 'M.SCHD-T5', '2026-10-19T01:44:31Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3818, 'M.SCHD-T6', '2026-10-19T01:44:31Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3819, 'M.SCHD-T7', '2026-10-19T01:44:32Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3820, 'M.SCHD-T8', '2026-10-19T01:44:32Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3821, 'M.SCHD-T9', '2026-10-19T01:44:32Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3822, 'M.SCHD-T10', '2026-10-19T01:44:32Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3823, 'M.SCHD-T11', '2026-10-19T01:44:32Z', 'approval', 'proposed', 'approved');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3824, 'AUT-T20', '2026-10-19T01:44:33Z', 'approval', 'proposed', 'approved');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3825, 'M.ORCH-T475', '2026-10-19T01:44:33Z', 'approval', 'proposed', 'approved');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3826, 'M.LNCH-T42', '2026-10-19T01:44:33Z', 'approval', 'proposed', 'approved');
@@ -10564,11 +10564,11 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3835, 'G
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3836, 'GAI-T10', '2026-10-19T01:48:41Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3837, 'G.EZ-T76', '2026-10-19T01:48:41Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3838, 'G.CTD-T31', '2026-10-19T01:48:42Z', 'created', NULL, 'open');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3839, 'M.WD-T12', '2026-10-19T01:50:15Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3839, 'M.SCHD-T12', '2026-10-19T01:50:15Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3840, 'M.PSST-T20', '2026-10-19T01:50:16Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3841, 'MAT-T4', '2026-10-19T01:51:20Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3842, 'MAT-T4', '2026-10-19T01:51:21Z', 'approval', 'proposed', 'approved');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3843, 'M.WD-T12', '2026-10-19T01:51:21Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3843, 'M.SCHD-T12', '2026-10-19T01:51:21Z', 'approval', 'proposed', 'approved');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3844, 'M.PSST-T20', '2026-10-19T01:51:22Z', 'approval', 'proposed', 'approved');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3845, 'G.EZ-T77', '2026-10-19T01:52:51Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3846, 'G.EZ-T77', '2026-10-19T01:52:52Z', 'approval', 'proposed', 'approved');
@@ -10592,10 +10592,10 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3863, 'M
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3864, 'M.ORCH-T476', '2026-10-19T02:02:17Z', 'ref', 'user request 2026-10-18', 'da0aa3c ContextCyclerTests.Autopilot_is_on_by_default_for_each_clis_own_repo_until_it_is_turned_off_there');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3865, 'U.SPC-T271', '2026-10-19T02:05:58Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3866, 'U.SPC-T278', '2026-10-19T02:07:22Z', 'created', NULL, 'open');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3867, 'M.WD-T3', '2026-10-19T02:07:51Z', 'status', 'open', 'closed');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3868, 'M.WD-T3', '2026-10-19T02:07:51Z', 'ref', 'scheduled-task consolidation 2026-10-18', '72f26f7');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3869, 'M.WD-T2', '2026-10-19T02:08:30Z', 'status', 'open', 'closed');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3870, 'M.WD-T2', '2026-10-19T02:08:30Z', 'ref', 'scheduled-task consolidation 2026-10-18', 'tests/install.Tests.ps1 (ae85b6d)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3867, 'M.SCHD-T3', '2026-10-19T02:07:51Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3868, 'M.SCHD-T3', '2026-10-19T02:07:51Z', 'ref', 'scheduled-task consolidation 2026-10-18', '72f26f7');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3869, 'M.SCHD-T2', '2026-10-19T02:08:30Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3870, 'M.SCHD-T2', '2026-10-19T02:08:30Z', 'ref', 'scheduled-task consolidation 2026-10-18', 'tests/install.Tests.ps1 (ae85b6d)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3871, 'G.AWPN-T1', '2026-10-19T02:14:58Z', 'repo', 'GTFO.AbsurdWeapons', 'GTFO.EZ.AbsurdWeapons');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3872, 'G.AWPN-T2', '2026-10-19T02:14:58Z', 'repo', 'GTFO.AbsurdWeapons', 'GTFO.EZ.AbsurdWeapons');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (3873, 'G.AWPN-T3', '2026-10-19T02:14:58Z', 'repo', 'GTFO.AbsurdWeapons', 'GTFO.EZ.AbsurdWeapons');
@@ -10820,8 +10820,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4091, 'M
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4092, 'M.ORCH-T478', '2026-10-19T02:37:30Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4093, 'M.ORCH-T478', '2026-10-19T02:37:33Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4094, 'M.ORCH-T478', '2026-10-19T02:37:33Z', 'ref', 'user request 2026-10-18', 'f8fd737 ContextCyclerTests.Work_is_autopilot_by_another_name_and_workflow_is_not_it');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4095, 'M.WD-T4', '2026-10-19T02:37:59Z', 'status', 'open', 'closed');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4096, 'M.WD-T4', '2026-10-19T02:37:59Z', 'ref', 'scheduled-task consolidation 2026-10-18', '61500f0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4095, 'M.SCHD-T4', '2026-10-19T02:37:59Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4096, 'M.SCHD-T4', '2026-10-19T02:37:59Z', 'ref', 'scheduled-task consolidation 2026-10-18', '61500f0');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4097, 'U.SPC-T273', '2026-10-19T02:39:38Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4098, 'GAM-T30', '2026-10-19T02:40:45Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4099, 'GAM-T30', '2026-10-19T02:40:47Z', 'status', 'open', 'closed');
@@ -10831,13 +10831,13 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4102, 'U
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4103, 'U.SPC-T262', '2026-10-19T02:46:27Z', 'ref', 'U.SPC-T49 bughunt', '026af77');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4104, 'U.SPC-T274', '2026-10-19T02:47:24Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4105, 'G.AWPN-T165', '2026-10-19T02:49:08Z', 'created', NULL, 'closed');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4106, 'M.WD-T10', '2026-10-19T02:52:55Z', 'status', 'open', 'wont-do');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4107, 'M.WD-T10', '2026-10-19T02:52:55Z', 'ref', 'scheduled-task consolidation 2026-10-18', 'replaced by M.WD-T12');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4106, 'M.SCHD-T10', '2026-10-19T02:52:55Z', 'status', 'open', 'wont-do');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4107, 'M.SCHD-T10', '2026-10-19T02:52:55Z', 'ref', 'scheduled-task consolidation 2026-10-18', 'replaced by M.WD-T12');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4108, 'M.PSST-T19', '2026-10-19T02:52:55Z', 'status', 'open', 'wont-do');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4109, 'M.PSST-T19', '2026-10-19T02:52:55Z', 'ref', 'scheduled-task consolidation 2026-10-18', 'replaced by M.PSST-T20');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4110, 'M.TIX-T100', '2026-10-19T02:59:19Z', 'created', NULL, 'open');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4111, 'M.WD-T12', '2026-10-19T03:00:17Z', 'status', 'open', 'closed');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4112, 'M.WD-T12', '2026-10-19T03:00:17Z', 'ref', 'user decision 2026-10-18: Psst uses WatchDog to create and cancel its tasks', 'tests/watchdog.Tests.ps1 (212554d)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4111, 'M.SCHD-T12', '2026-10-19T03:00:17Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4112, 'M.SCHD-T12', '2026-10-19T03:00:17Z', 'ref', 'user decision 2026-10-18: Psst uses WatchDog to create and cancel its tasks', 'tests/watchdog.Tests.ps1 (212554d)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4113, 'M.TIX-T101', '2026-10-19T03:01:31Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4114, 'G.EZ-T78', '2026-10-19T03:01:47Z', 'created', NULL, 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4115, 'G.EZ-T79', '2026-10-19T03:02:08Z', 'created', NULL, 'closed');
@@ -10973,8 +10973,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4244, 'U
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4245, 'U.SPC-T297', '2026-10-19T15:06:26Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4246, 'U.SPC-T298', '2026-10-19T15:10:01Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4247, 'U.SPC-T299', '2026-10-19T15:14:05Z', 'created', NULL, 'open');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4248, 'M.WD-T6', '2026-10-19T15:16:29Z', 'status', 'open', 'closed');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4249, 'M.WD-T6', '2026-10-19T15:16:29Z', 'ref', 'scheduled-task consolidation 2026-10-18', 'install.Tests.ps1: runs the Launcher nightly backup at midnight keeping 30, replacing the Launcher''s own task (eed5c9e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4248, 'M.SCHD-T6', '2026-10-19T15:16:29Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4249, 'M.SCHD-T6', '2026-10-19T15:16:29Z', 'ref', 'scheduled-task consolidation 2026-10-18', 'install.Tests.ps1: runs the Launcher nightly backup at midnight keeping 30, replacing the Launcher''s own task (eed5c9e)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4250, 'G.EZ-T37', '2026-10-19T15:16:51Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4251, 'G.EZ-T37', '2026-10-19T15:16:51Z', 'ref', '—', 'Done as GTFO.EZ.AbsurdMoves'' Dodge (moved out of EZ)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4252, 'G.EZ-T39', '2026-10-19T15:16:51Z', 'status', 'open', 'closed');
@@ -10991,8 +10991,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4262, 'G
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4263, 'G.AWPN-T94', '2026-10-19T15:16:54Z', 'ref', 'user request 2026-10-18', 'Superseded: Hand Grenade moved to GTFO.EZ.AbsurdItems instead (G.AWPN-T148, GAI-T3)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4264, 'GG-T73', '2026-10-19T15:18:22Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4265, 'GG-T73', '2026-10-19T15:18:22Z', 'ref', 'user request 2026-10-16: approved repo sweep', '14b630b');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4266, 'M.WD-T8', '2026-10-19T15:20:08Z', 'status', 'open', 'closed');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4267, 'M.WD-T8', '2026-10-19T15:20:08Z', 'ref', 'scheduled-task consolidation 2026-10-18', '1b1ba49 (tests/install.Tests.ps1: runs IdiotProof''s research scan hourly...)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4266, 'M.SCHD-T8', '2026-10-19T15:20:08Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4267, 'M.SCHD-T8', '2026-10-19T15:20:08Z', 'ref', 'scheduled-task consolidation 2026-10-18', '1b1ba49 (tests/install.Tests.ps1: runs IdiotProof''s research scan hourly...)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4268, 'G.AWPN-T43', '2026-10-19T15:20:42Z', 'status', 'open', 'wont-do');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4269, 'G.AWPN-T43', '2026-10-19T15:20:42Z', 'ref', 'docs/spikes/weapon-mods.md', 'Superseded: GTFO.EZ became the core the companion mods build on (G.EZ-T76)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4270, 'G.AWPN-T16', '2026-10-19T15:21:01Z', 'status', 'open', 'wont-do');
@@ -11008,17 +11008,17 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4279, 'U
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4280, 'U.SPC-T298', '2026-10-19T15:21:47Z', 'ref', 'InterstellarColonisationTests.AFrontierSystemWhoseOnlyOutpostFailedIsOpenToSettlementAgain', 'fd3db8f');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4281, 'U.SPC-T299', '2026-10-19T15:21:47Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4282, 'U.SPC-T299', '2026-10-19T15:21:47Z', 'ref', 'GateConstructionTests.DamageDoneToAGateUnderRepairIsNotUndoneByTheNextDaysWork', '0696060');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4283, 'M.WD-T7', '2026-10-19T15:23:30Z', 'status', 'open', 'closed');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4284, 'M.WD-T7', '2026-10-19T15:23:30Z', 'ref', 'scheduled-task consolidation 2026-10-18', '59131d6');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4283, 'M.SCHD-T7', '2026-10-19T15:23:30Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4284, 'M.SCHD-T7', '2026-10-19T15:23:30Z', 'ref', 'scheduled-task consolidation 2026-10-18', '59131d6');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4285, 'GG-T93', '2026-10-19T15:24:15Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4286, 'GG-T94', '2026-10-19T15:24:16Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4287, 'GG-T95', '2026-10-19T15:24:50Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4288, 'GG-T94', '2026-10-19T15:24:50Z', 'status', 'open', 'wont-do');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4289, 'GG-T94', '2026-10-19T15:24:50Z', 'ref', '—', 'superseded by owner correction: Crucible lives inside the saved campaign, see newer ticket');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4290, 'M.WD-T5', '2026-10-19T15:26:29Z', 'status', 'open', 'closed');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4291, 'M.WD-T5', '2026-10-19T15:26:29Z', 'ref', 'scheduled-task consolidation 2026-10-18', 'ec47857');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4292, 'M.WD-T9', '2026-10-19T15:28:36Z', 'status', 'open', 'closed');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4293, 'M.WD-T9', '2026-10-19T15:28:36Z', 'ref', 'scheduled-task consolidation 2026-10-18', 'install.Tests.ps1: runs UnstuckTaskbar at logon and keeps it running (73d374e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4290, 'M.SCHD-T5', '2026-10-19T15:26:29Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4291, 'M.SCHD-T5', '2026-10-19T15:26:29Z', 'ref', 'scheduled-task consolidation 2026-10-18', 'ec47857');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4292, 'M.SCHD-T9', '2026-10-19T15:28:36Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4293, 'M.SCHD-T9', '2026-10-19T15:28:36Z', 'ref', 'scheduled-task consolidation 2026-10-18', 'install.Tests.ps1: runs UnstuckTaskbar at logon and keeps it running (73d374e)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4294, 'G.EZ-T81', '2026-10-19T15:29:12Z', 'created', NULL, 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4295, 'G.EZ-T81', '2026-10-19T15:29:42Z', 'ref', '—', 'tools/model-catalog (7545e53, 1 follow-up); output kept local in reference/');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4296, 'U.SPC-T300', '2026-10-19T15:30:52Z', 'created', NULL, 'closed');
@@ -11368,8 +11368,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4639, 'U
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4640, 'U.SPC-T321', '2026-10-19T15:31:52Z', 'repo', 'UnitySolarSystem', 'UnitySpace');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4641, 'U.SPC-T322', '2026-10-19T15:31:52Z', 'repo', 'UnitySolarSystem', 'UnitySpace');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4642, 'U.SPC-T323', '2026-10-19T15:31:52Z', 'repo', 'UnitySolarSystem', 'UnitySpace');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4643, 'M.WD-T11', '2026-10-19T15:32:58Z', 'status', 'open', 'closed');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4644, 'M.WD-T11', '2026-10-19T15:32:58Z', 'ref', 'scheduled-task consolidation 2026-10-18', '14203b6');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4643, 'M.SCHD-T11', '2026-10-19T15:32:58Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4644, 'M.SCHD-T11', '2026-10-19T15:32:58Z', 'ref', 'scheduled-task consolidation 2026-10-18', '14203b6');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4645, 'GG-T93', '2026-10-19T15:33:43Z', 'approval', 'proposed', 'approved');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4646, 'GG-T95', '2026-10-19T15:33:43Z', 'approval', 'proposed', 'approved');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4647, 'G.EZ-T82', '2026-10-19T15:41:18Z', 'created', NULL, 'closed');
@@ -11663,7 +11663,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4934, 'M
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4935, 'MAT-T6', '2026-10-19T18:34:22Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4936, 'MAU-T3', '2026-10-19T18:34:22Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4937, 'M.VALT-T15', '2026-10-19T18:34:23Z', 'created', NULL, 'open');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4938, 'M.WD-T13', '2026-10-19T18:34:23Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4938, 'M.SCHD-T13', '2026-10-19T18:34:23Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4939, 'M.WEB-T12', '2026-10-19T18:34:23Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4940, 'M.TIX-T115', '2026-10-19T18:34:23Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4941, 'OC-T24', '2026-10-19T18:34:24Z', 'created', NULL, 'open');
@@ -11683,7 +11683,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4954, 'M
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4955, 'M.ORCH-T481', '2026-10-19T18:55:42Z', 'priority', '0', '10');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4956, 'GG-T126', '2026-10-19T19:03:15Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4957, 'GG-T126', '2026-10-19T19:03:15Z', 'priority', '0', '30');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4958, 'M.WD-T14', '2026-10-19T19:09:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4958, 'M.SCHD-T14', '2026-10-19T19:09:49Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4959, 'GG-T110', '2026-10-19T19:17:48Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4960, 'GG-T110', '2026-10-19T19:17:48Z', 'ref', '—', 'tools/uicheck.py 72/72 @ cfc39da');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (4961, 'GG-T97', '2026-10-19T19:27:49Z', 'status', 'open', 'closed');
@@ -11770,7 +11770,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5041, 'G
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5042, 'GAM-T42', '2026-10-19T22:37:30Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5043, 'M.ORCH-T475', '2026-10-19T22:41:23Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5044, 'M.ORCH-T475', '2026-10-19T22:41:23Z', 'ref', 'scheduled-task consolidation 2026-10-18', '5d2beda');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5045, 'M.WD-T15', '2026-10-19T22:41:36Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5045, 'M.SCHD-T15', '2026-10-19T22:41:36Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5046, 'M.ORCH-T483', '2026-10-19T22:43:36Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5047, 'M.ORCH-T483', '2026-10-19T22:43:36Z', 'ref', '—', '29918b2');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5048, 'M.ORCH-T479', '2026-10-19T22:44:01Z', 'status', 'open', 'closed');
@@ -12537,7 +12537,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5808, 'M
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5809, 'MAT-T9', '2026-10-20T17:48:24Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5810, 'MAU-T4', '2026-10-20T17:48:24Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5811, 'M.VALT-T16', '2026-10-20T17:48:24Z', 'created', NULL, 'open');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5812, 'M.WD-T16', '2026-10-20T17:48:25Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5812, 'M.SCHD-T16', '2026-10-20T17:48:25Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5813, 'M.WEB-T14', '2026-10-20T17:48:25Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5814, 'M.TIX-T119', '2026-10-20T17:48:25Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (5815, 'OC-T25', '2026-10-20T17:48:25Z', 'created', NULL, 'open');
@@ -13118,7 +13118,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6389, 'M
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6390, 'M.TIX-T121', '2026-10-21T00:38:40Z', 'repo', 'MindAttic.Workflow', 'MindAttic.Tickets');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6391, 'UM-T23', '2026-10-21T00:42:01Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6392, 'UM-T23', '2026-10-21T00:42:01Z', 'ref', '—', '26b6b9c');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6393, 'M.WD-T17', '2026-10-21T00:53:31Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6393, 'M.SCHD-T17', '2026-10-21T00:53:31Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6394, 'M.ORCH-T565', '2026-10-21T00:55:34Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6395, 'M.TIX-T120', '2026-10-21T01:00:36Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6396, 'M.TIX-T120', '2026-10-21T01:00:36Z', 'ref', '—', '22e6e78');
@@ -13165,6 +13165,25 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6436, 'U
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6437, 'UC-T16', '2026-10-21T01:18:38Z', 'approval', 'proposed', 'approved');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6438, 'U.EVE-T20', '2026-10-21T01:18:38Z', 'approval', 'proposed', 'approved');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6439, 'GG-T158', '2026-10-21T01:18:38Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6440, 'M.SCHD-T1', '2026-10-21T01:25:13Z', 'id', 'M.WD-T1', 'M.SCHD-T1 (MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6441, 'M.SCHD-T2', '2026-10-21T01:25:13Z', 'id', 'M.WD-T2', 'M.SCHD-T2 (MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6442, 'M.SCHD-T3', '2026-10-21T01:25:13Z', 'id', 'M.WD-T3', 'M.SCHD-T3 (MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6443, 'M.SCHD-T4', '2026-10-21T01:25:13Z', 'id', 'M.WD-T4', 'M.SCHD-T4 (MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6444, 'M.SCHD-T5', '2026-10-21T01:25:13Z', 'id', 'M.WD-T5', 'M.SCHD-T5 (MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6445, 'M.SCHD-T6', '2026-10-21T01:25:13Z', 'id', 'M.WD-T6', 'M.SCHD-T6 (MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6446, 'M.SCHD-T7', '2026-10-21T01:25:13Z', 'id', 'M.WD-T7', 'M.SCHD-T7 (MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6447, 'M.SCHD-T8', '2026-10-21T01:25:13Z', 'id', 'M.WD-T8', 'M.SCHD-T8 (MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6448, 'M.SCHD-T9', '2026-10-21T01:25:13Z', 'id', 'M.WD-T9', 'M.SCHD-T9 (MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6449, 'M.SCHD-T10', '2026-10-21T01:25:13Z', 'id', 'M.WD-T10', 'M.SCHD-T10 (MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6450, 'M.SCHD-T11', '2026-10-21T01:25:13Z', 'id', 'M.WD-T11', 'M.SCHD-T11 (MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6451, 'M.SCHD-T12', '2026-10-21T01:25:13Z', 'id', 'M.WD-T12', 'M.SCHD-T12 (MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6452, 'M.SCHD-T13', '2026-10-21T01:25:13Z', 'id', 'M.WD-T13', 'M.SCHD-T13 (MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6453, 'M.SCHD-T14', '2026-10-21T01:25:13Z', 'id', 'M.WD-T14', 'M.SCHD-T14 (MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6454, 'M.SCHD-T15', '2026-10-21T01:25:13Z', 'id', 'M.WD-T15', 'M.SCHD-T15 (MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6455, 'M.SCHD-T16', '2026-10-21T01:25:13Z', 'id', 'M.WD-T16', 'M.SCHD-T16 (MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6456, 'M.SCHD-T17', '2026-10-21T01:25:13Z', 'id', 'M.WD-T17', 'M.SCHD-T17 (MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6457, 'M.SCHD-T14', '2026-10-21T01:25:19Z', 'status', 'open', 'wont-do');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (6458, 'M.SCHD-T14', '2026-10-21T01:25:19Z', 'ref', '—', 'superseded by M.SCHD-T17 (user confirmed Scheduler over Coordinator on 2026-10-20)');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('AUT-T14', 'approved', 0, '2026-10-18T08:37:29Z');
@@ -13460,6 +13479,17 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.PSS
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.PSST-T16', 'approved', 0, '2026-10-18T08:37:30Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.PSST-T19', 'approved', 0, '2026-10-19T01:44:34Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.PSST-T20', 'approved', 0, '2026-10-19T01:51:22Z');
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.SCHD-T10', 'approved', 0, '2026-10-19T01:44:32Z');
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.SCHD-T11', 'approved', 0, '2026-10-19T01:44:32Z');
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.SCHD-T12', 'approved', 0, '2026-10-19T01:51:21Z');
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.SCHD-T2', 'approved', 0, '2026-10-19T01:44:30Z');
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.SCHD-T3', 'approved', 0, '2026-10-19T01:44:31Z');
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.SCHD-T4', 'approved', 0, '2026-10-19T01:44:31Z');
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.SCHD-T5', 'approved', 0, '2026-10-19T01:44:31Z');
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.SCHD-T6', 'approved', 0, '2026-10-19T01:44:31Z');
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.SCHD-T7', 'approved', 0, '2026-10-19T01:44:32Z');
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.SCHD-T8', 'approved', 0, '2026-10-19T01:44:32Z');
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.SCHD-T9', 'approved', 0, '2026-10-19T01:44:32Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.TELE-T10', 'approved', 0, '2026-10-18T08:37:30Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.TELE-T7', 'approved', 0, '2026-10-18T08:37:30Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.TELE-T8', 'approved', 0, '2026-10-18T08:37:30Z');
@@ -13488,17 +13518,6 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.VAL
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.VALT-T11', 'approved', 0, '2026-10-18T08:37:30Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.VALT-T12', 'approved', 0, '2026-10-18T08:37:30Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.VALT-T13', 'approved', 0, '2026-10-18T08:37:30Z');
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.WD-T10', 'approved', 0, '2026-10-19T01:44:32Z');
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.WD-T11', 'approved', 0, '2026-10-19T01:44:32Z');
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.WD-T12', 'approved', 0, '2026-10-19T01:51:21Z');
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.WD-T2', 'approved', 0, '2026-10-19T01:44:30Z');
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.WD-T3', 'approved', 0, '2026-10-19T01:44:31Z');
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.WD-T4', 'approved', 0, '2026-10-19T01:44:31Z');
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.WD-T5', 'approved', 0, '2026-10-19T01:44:31Z');
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.WD-T6', 'approved', 0, '2026-10-19T01:44:31Z');
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.WD-T7', 'approved', 0, '2026-10-19T01:44:32Z');
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.WD-T8', 'approved', 0, '2026-10-19T01:44:32Z');
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.WD-T9', 'approved', 0, '2026-10-19T01:44:32Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.WEB-T10', 'approved', 0, '2026-10-18T08:37:30Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.WEB-T7', 'approved', 0, '2026-10-18T08:37:30Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.WEB-T8', 'approved', 0, '2026-10-18T08:37:30Z');
@@ -13794,10 +13813,28 @@ INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (174, 'epi
 INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (175, 'epic', 'M.FLOW-EPIC-H', 'M.TIX-EPIC-H', '2026-10-21T00:38:39Z', 'MindAttic.Workflow renamed MindAttic.Tickets: it is a ticketing system (M.FLOW-T120)');
 INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (176, 'epic', 'M.FLOW-EPIC-I', 'M.TIX-EPIC-I', '2026-10-21T00:38:39Z', 'MindAttic.Workflow renamed MindAttic.Tickets: it is a ticketing system (M.FLOW-T120)');
 INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (177, 'code', 'M.FLOW', 'M.TIX', '2026-10-21T00:38:39Z', 'MindAttic.Workflow renamed MindAttic.Tickets: it is a ticketing system (M.FLOW-T120)');
+INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (178, 'ticket', 'M.WD-T1', 'M.SCHD-T1', '2026-10-21T01:25:13Z', 'MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17)');
+INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (179, 'ticket', 'M.WD-T2', 'M.SCHD-T2', '2026-10-21T01:25:13Z', 'MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17)');
+INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (180, 'ticket', 'M.WD-T3', 'M.SCHD-T3', '2026-10-21T01:25:13Z', 'MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17)');
+INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (181, 'ticket', 'M.WD-T4', 'M.SCHD-T4', '2026-10-21T01:25:13Z', 'MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17)');
+INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (182, 'ticket', 'M.WD-T5', 'M.SCHD-T5', '2026-10-21T01:25:13Z', 'MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17)');
+INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (183, 'ticket', 'M.WD-T6', 'M.SCHD-T6', '2026-10-21T01:25:13Z', 'MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17)');
+INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (184, 'ticket', 'M.WD-T7', 'M.SCHD-T7', '2026-10-21T01:25:13Z', 'MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17)');
+INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (185, 'ticket', 'M.WD-T8', 'M.SCHD-T8', '2026-10-21T01:25:13Z', 'MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17)');
+INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (186, 'ticket', 'M.WD-T9', 'M.SCHD-T9', '2026-10-21T01:25:13Z', 'MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17)');
+INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (187, 'ticket', 'M.WD-T10', 'M.SCHD-T10', '2026-10-21T01:25:13Z', 'MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17)');
+INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (188, 'ticket', 'M.WD-T11', 'M.SCHD-T11', '2026-10-21T01:25:13Z', 'MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17)');
+INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (189, 'ticket', 'M.WD-T12', 'M.SCHD-T12', '2026-10-21T01:25:13Z', 'MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17)');
+INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (190, 'ticket', 'M.WD-T13', 'M.SCHD-T13', '2026-10-21T01:25:13Z', 'MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17)');
+INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (191, 'ticket', 'M.WD-T14', 'M.SCHD-T14', '2026-10-21T01:25:13Z', 'MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17)');
+INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (192, 'ticket', 'M.WD-T15', 'M.SCHD-T15', '2026-10-21T01:25:13Z', 'MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17)');
+INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (193, 'ticket', 'M.WD-T16', 'M.SCHD-T16', '2026-10-21T01:25:13Z', 'MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17)');
+INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (194, 'ticket', 'M.WD-T17', 'M.SCHD-T17', '2026-10-21T01:25:13Z', 'MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17)');
+INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (195, 'code', 'M.WD', 'M.SCHD', '2026-10-21T01:25:13Z', 'MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17)');
 
 -- links
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AUT-T12', 'M.TIX-T14', 'related', 'migrated: named in ref');
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('AUT-T20', 'M.WD-T4', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('AUT-T20', 'M.SCHD-T4', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AWN-T7', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('CLA-T2', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('CLA-US-A1', 'CLA-EPIC-A', 'part-of', 'migrated: story under its epic');
@@ -14067,7 +14104,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('H9g', 'PRS-US-H9', 'part
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('H9h', 'PRS-EPIC-H', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('H9h', 'PRS-US-H9', 'part-of', 'migrated: sub-story');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T17', 'M.TIX-T14', 'related', 'migrated: named in ref');
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T25', 'M.WD-T8', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T25', 'M.SCHD-T8', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-US-A1', 'IP-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-US-A2', 'IP-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-US-A3', 'IP-EPIC-A', 'part-of', 'migrated: story under its epic');
@@ -14160,7 +14197,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-US-U7', 'IP-EPIC-U', 
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-US-U8', 'IP-EPIC-U', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-US-U9', 'IP-EPIC-U', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('JF-T2', 'M.TIX-T14', 'related', 'migrated: named in ref');
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('JFP-T8', 'M.WD-T7', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('JFP-T8', 'M.SCHD-T7', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('JH-T9', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('KP-T8', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.AUTH-T12', 'M.TIX-T14', 'related', 'migrated: named in ref');
@@ -14340,7 +14377,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T2', 'M.LNCH-US-E
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T24', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T3', 'M.LNCH-US-E4', 'implements', 'migrated: story named in ticket');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T3', 'M.LNCH-US-E5', 'implements', 'migrated: story named in ticket');
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T42', 'M.WD-T6', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T42', 'M.SCHD-T6', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T5', 'M.LNCH-US-E6', 'implements', 'migrated: story named in ticket');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T7', 'M.TIX-T9', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-US-A1', 'M.LNCH-EPIC-A', 'part-of', 'migrated: story under its epic');
@@ -14402,7 +14439,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T192', 'M.ORCH-T1
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T202', 'M.CAPT-T30', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T43', 'M.ORCH-T44', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T45', 'M.ORCH-T9', 'related', 'migrated: named in ref');
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T475', 'M.WD-T5', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T475', 'M.SCHD-T5', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T486', 'M.ORCH-T485', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T491', 'M.ORCH-T490', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T492', 'M.ORCH-T490', 'requires', NULL);
@@ -14427,8 +14464,8 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T58', 'M.ORCH-T53
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T9', 'M.ORCH-T45', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T93', 'M.ORCH-T92', 'follow-up-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.PSST-T10', 'M.TIX-T14', 'related', 'migrated: named in ref');
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.PSST-T19', 'M.WD-T10', 'requires', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.PSST-T20', 'M.WD-T12', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.PSST-T19', 'M.SCHD-T10', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.PSST-T20', 'M.SCHD-T12', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.PSST-US-A1', 'M.PSST-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.PSST-US-A2', 'M.PSST-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.PSST-US-A3', 'M.PSST-EPIC-A', 'part-of', 'migrated: story under its epic');
@@ -14445,6 +14482,15 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.PSST-US-D2', 'M.PSST-E
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.PSST-US-D3', 'M.PSST-EPIC-D', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.PSST-US-D4', 'M.PSST-EPIC-D', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.PSST-US-E1', 'M.PSST-EPIC-E', 'part-of', 'migrated: story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T10', 'M.SCHD-T2', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T11', 'M.SCHD-T2', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T12', 'M.SCHD-T2', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T4', 'M.SCHD-T2', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T5', 'M.SCHD-T2', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T6', 'M.SCHD-T2', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T7', 'M.SCHD-T2', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T8', 'M.SCHD-T2', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T9', 'M.SCHD-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T1', 'M.TIX-US-A1', 'implements', 'migrated: story named in ticket');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T1', 'M.TIX-US-B1', 'implements', 'migrated: story named in ticket');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T11', 'M.TIX-T10', 'related', 'migrated: named in ref');
@@ -14571,18 +14617,9 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.VALT-US-C9', 'M.VALT-E
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.VALT-US-D1', 'M.VALT-EPIC-D', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.VALT-US-D2', 'M.VALT-EPIC-D', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.VALT-US-D3', 'M.VALT-EPIC-D', 'part-of', 'migrated: story under its epic');
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.WD-T10', 'M.WD-T2', 'requires', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.WD-T11', 'M.WD-T2', 'requires', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.WD-T12', 'M.WD-T2', 'requires', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.WD-T4', 'M.WD-T2', 'requires', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.WD-T5', 'M.WD-T2', 'requires', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.WD-T6', 'M.WD-T2', 'requires', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.WD-T7', 'M.WD-T2', 'requires', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.WD-T8', 'M.WD-T2', 'requires', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.WD-T9', 'M.WD-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.WEB-T5', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAB-T2', 'M.TIX-T14', 'related', 'migrated: named in ref');
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAT-T4', 'M.WD-T2', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAT-T4', 'M.SCHD-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MB-T12', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MB-T2', 'MB-US-F1', 'implements', 'migrated: story named in ticket');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MB-US-A1', 'MB-EPIC-A', 'part-of', 'migrated: story under its epic');
@@ -14741,7 +14778,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T185', 'PRS-T181', '
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T185', 'PRS-T182', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T185', 'PRS-T183', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T185', 'PRS-T184', 'requires', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T187', 'M.WD-T11', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T187', 'M.SCHD-T11', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T22', 'PRS-T3', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T27', 'PRS-T24', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T47', 'PRS-US-Q1', 'implements', NULL);
@@ -15061,7 +15098,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('UM-T6', 'UM-T5', 'requir
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UM-T7', 'UM-T6', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UM-T8', 'UM-T7', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UM-T9', 'UM-T8', 'requires', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNS-T9', 'M.WD-T9', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNS-T9', 'M.SCHD-T9', 'requires', NULL);
 
 -- blocks
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('AutoWebNav', 0, 'raw', NULL, '---
@@ -18576,7 +18613,7 @@ INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Vault', 4
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Watchdog', 0, 'raw', NULL, '---
 codex: 1
 project: MindAttic.Watchdog
-code: M.WD
+code: M.SCHD
 layer: stories
 status: living
 updated: 2026-10-18
