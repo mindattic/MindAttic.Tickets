@@ -3,10 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="clr-namespace:MindAttic.Components.Wpf.Controls;assembly=MindAttic.Components.Wpf"
         xmlns:vm="clr-namespace:MindAttic.Tickets.Desktop.ViewModels"
-        mc:McWindow.DarkTitleBar="True"
+        mc:MaWindow.DarkTitleBar="True"
         Title="MindAttic Tickets" Width="1360" Height="880" MinWidth="720" MinHeight="480"
         WindowStartupLocation="CenterScreen" Icon="/logo.ico"
-        Background="{DynamicResource McChrome}" Foreground="{DynamicResource McText}"
+        Background="{DynamicResource MaChrome}" Foreground="{DynamicResource MaText}"
         FontFamily="Segoe UI" FontSize="13"
         TextOptions.TextFormattingMode="Display" UseLayoutRounding="True">
 
@@ -29,7 +29,7 @@
 
     <Window.Resources>
         <Style x:Key="FilterLabel" TargetType="Label">
-            <Setter Property="Foreground" Value="{DynamicResource McMuted}" />
+            <Setter Property="Foreground" Value="{DynamicResource MaMuted}" />
             <Setter Property="Padding" Value="0,0,0,3" />
             <Setter Property="FontSize" Value="12" />
         </Style>
@@ -96,7 +96,7 @@
                 <StackPanel Grid.Column="2" VerticalAlignment="Center">
                     <TextBlock Text="{Binding Summary}" TextWrapping="Wrap" />
                     <WrapPanel Margin="0,5,0,0">
-                        <Border Style="{StaticResource Chip}" BorderBrush="{DynamicResource McControlBorder}">
+                        <Border Style="{StaticResource Chip}" BorderBrush="{DynamicResource MaControlBorder}">
                             <TextBlock Text="{Binding Type}" FontSize="12" />
                         </Border>
                         <Border Style="{StaticResource ApprovalChip}">
@@ -239,7 +239,7 @@
             </Grid>
 
             <!-- ── Tickets ── -->
-            <ListView x:Name="TicketList" Margin="20,0,12,0" Background="Transparent" BorderThickness="0" Foreground="{DynamicResource McText}"
+            <ListView x:Name="TicketList" Margin="20,0,12,0" Background="Transparent" BorderThickness="0" Foreground="{DynamicResource MaText}"
                       Visibility="{Binding IsTicketsView, Converter={StaticResource Visible}}"
                       ItemsSource="{Binding TicketRows}" SelectedItem="{Binding SelectedTicketRow}" ItemContainerStyle="{StaticResource GridRow}"
                       AutomationProperties.Name="Tickets" PreviewKeyDown="OnTicketsKeyDown"
@@ -307,7 +307,7 @@
             </ListView>
 
             <!-- ── Detail pane ── -->
-            <Border Grid.Column="1" Width="430" Background="{DynamicResource McPane}" BorderBrush="{DynamicResource McChromeBorder}" BorderThickness="1,0,0,0"
+            <Border Grid.Column="1" Width="430" Background="{DynamicResource MaPane}" BorderBrush="{DynamicResource MaChromeBorder}" BorderThickness="1,0,0,0"
                     Visibility="{Binding IsDetailOpen, Converter={StaticResource Visible}}">
                 <ScrollViewer x:Name="DetailPane" VerticalScrollBarVisibility="Auto" Focusable="False" DataContext="{Binding Detail}">
                     <StackPanel Margin="20,16,20,20">
@@ -342,7 +342,7 @@
                             <TextBlock Grid.Row="5" Grid.Column="1" Style="{StaticResource FieldValue}" Text="{Binding Date}" />
                             <TextBlock Grid.Row="6" Style="{StaticResource FieldName}" Text="Ref" />
                             <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Ref, Mode=OneWay}" IsReadOnly="True" TextWrapping="Wrap" Background="Transparent"
-                                     BorderThickness="0" Foreground="{DynamicResource McText}" Padding="0" Margin="0,3" AutomationProperties.Name="Ref" />
+                                     BorderThickness="0" Foreground="{DynamicResource MaText}" Padding="0" Margin="0,3" AutomationProperties.Name="Ref" />
                         </Grid>
 
                         <TextBlock Text="ACTIONS" Style="{StaticResource SectionLabel}" />
@@ -402,7 +402,7 @@
         </Grid>
 
         <!-- Footer: status, last refresh, zoom, database. The hidden announcer speaks changes (4.1.3). -->
-        <Border Grid.Row="3" BorderBrush="{DynamicResource McChromeBorder}" BorderThickness="0,1,0,0" Padding="20,6">
+        <Border Grid.Row="3" BorderBrush="{DynamicResource MaChromeBorder}" BorderThickness="0,1,0,0" Padding="20,6">
             <DockPanel>
                 <TextBlock DockPanel.Dock="Right" Style="{StaticResource Muted}" Text="{Binding DbPath}" Margin="16,0,0,0" TextTrimming="CharacterEllipsis" MaxWidth="420" />
                 <TextBlock DockPanel.Dock="Right" Style="{StaticResource Muted}" Text="{Binding ZoomText}" Margin="16,0,0,0" />

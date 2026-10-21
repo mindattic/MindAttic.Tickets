@@ -10,7 +10,7 @@
         <Setter Property="Control.Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Border Margin="-3" BorderBrush="{DynamicResource McFocus}" BorderThickness="2" CornerRadius="7" SnapsToDevicePixels="True" />
+                    <Border Margin="-3" BorderBrush="{DynamicResource MaFocus}" BorderThickness="2" CornerRadius="7" SnapsToDevicePixels="True" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -18,9 +18,9 @@
 
     <!-- Tooltips stay up until dismissed (App's static constructor, 1.4.13) and follow the theme. -->
     <Style TargetType="ToolTip">
-        <Setter Property="Background" Value="{DynamicResource McChrome}" />
-        <Setter Property="Foreground" Value="{DynamicResource McText}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource McControlBorder}" />
+        <Setter Property="Background" Value="{DynamicResource MaChrome}" />
+        <Setter Property="Foreground" Value="{DynamicResource MaText}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MaControlBorder}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="8,5" />
         <Setter Property="MaxWidth" Value="420" />
@@ -36,7 +36,7 @@
     <Style x:Key="Heading" TargetType="TextBlock">
         <Setter Property="FontSize" Value="15" />
         <Setter Property="FontWeight" Value="SemiBold" />
-        <Setter Property="Foreground" Value="{DynamicResource McText}" />
+        <Setter Property="Foreground" Value="{DynamicResource MaText}" />
         <Setter Property="AutomationProperties.HeadingLevel" Value="Level2" />
     </Style>
 
@@ -47,27 +47,27 @@
 
     <Style x:Key="SectionLabel" TargetType="TextBlock">
         <Setter Property="AutomationProperties.HeadingLevel" Value="Level3" />
-        <Setter Property="Foreground" Value="{DynamicResource McMuted}" />
+        <Setter Property="Foreground" Value="{DynamicResource MaMuted}" />
         <Setter Property="FontSize" Value="12" />
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="Margin" Value="0,16,0,6" />
     </Style>
 
     <Style x:Key="Muted" TargetType="TextBlock">
-        <Setter Property="Foreground" Value="{DynamicResource McMuted}" />
+        <Setter Property="Foreground" Value="{DynamicResource MaMuted}" />
         <Setter Property="FontSize" Value="12" />
     </Style>
 
     <Style x:Key="ErrorText" TargetType="TextBlock">
-        <Setter Property="Foreground" Value="{DynamicResource McRec}" />
+        <Setter Property="Foreground" Value="{DynamicResource MaRec}" />
         <Setter Property="TextWrapping" Value="Wrap" />
         <Setter Property="Margin" Value="0,6,0,0" />
         <Setter Property="AutomationProperties.LiveSetting" Value="Assertive" />
     </Style>
 
     <Style x:Key="Card" TargetType="Border">
-        <Setter Property="Background" Value="{DynamicResource McSurface}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource McChromeBorder}" />
+        <Setter Property="Background" Value="{DynamicResource MaSurface}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MaChromeBorder}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CornerRadius" Value="6" />
         <Setter Property="Padding" Value="12,10" />
@@ -75,9 +75,9 @@
 
     <!-- ── Buttons ───────────────────────────────────────────────────────── -->
     <Style x:Key="Btn" TargetType="ButtonBase">
-        <Setter Property="Foreground" Value="{DynamicResource McText}" />
-        <Setter Property="Background" Value="{DynamicResource McSurface}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource McControlBorder}" />
+        <Setter Property="Foreground" Value="{DynamicResource MaText}" />
+        <Setter Property="Background" Value="{DynamicResource MaSurface}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MaControlBorder}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="12,5" />
         <Setter Property="MinHeight" Value="30" />
@@ -94,11 +94,11 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource McHover}" />
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource MaHover}" />
                             <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource FieldBorder}" />
                         </Trigger>
                         <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource McFocus}" />
+                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource MaFocus}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <!-- Disabled controls are exempt from contrast (1.4.3), but stay readable. -->
@@ -112,13 +112,13 @@
     </Style>
 
     <Style x:Key="PrimaryBtn" TargetType="ButtonBase" BasedOn="{StaticResource Btn}">
-        <Setter Property="Foreground" Value="{DynamicResource McOnAccent}" />
-        <Setter Property="Background" Value="{DynamicResource McAccent}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource McAccent}" />
+        <Setter Property="Foreground" Value="{DynamicResource MaOnAccent}" />
+        <Setter Property="Background" Value="{DynamicResource MaAccent}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MaAccent}" />
         <Setter Property="FontWeight" Value="SemiBold" />
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource McAccentHover}" />
+                <Setter Property="Background" Value="{DynamicResource MaAccentHover}" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -133,7 +133,7 @@
 
     <!-- A ticket ID that jumps to that ticket. -->
     <Style x:Key="LinkBtn" TargetType="Button">
-        <Setter Property="Foreground" Value="{DynamicResource McFocus}" />
+        <Setter Property="Foreground" Value="{DynamicResource MaFocus}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="MinHeight" Value="24" />
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusRing}" />
@@ -150,12 +150,12 @@
 
     <!-- ── Inputs ────────────────────────────────────────────────────────── -->
     <Style x:Key="Field" TargetType="TextBox">
-        <Setter Property="Background" Value="{DynamicResource McSurface}" />
-        <Setter Property="Foreground" Value="{DynamicResource McText}" />
+        <Setter Property="Background" Value="{DynamicResource MaSurface}" />
+        <Setter Property="Foreground" Value="{DynamicResource MaText}" />
         <Setter Property="BorderBrush" Value="{DynamicResource FieldBorder}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="CaretBrush" Value="{DynamicResource McText}" />
-        <Setter Property="SelectionBrush" Value="{DynamicResource McAccent}" />
+        <Setter Property="CaretBrush" Value="{DynamicResource MaText}" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource MaAccent}" />
         <Setter Property="Padding" Value="8,5" />
         <Setter Property="MinHeight" Value="30" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -171,7 +171,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource McFocus}" />
+                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource MaFocus}" />
                             <Setter TargetName="Bd" Property="BorderThickness" Value="2" />
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -181,7 +181,7 @@
     </Style>
 
     <Style x:Key="ComboItem" TargetType="ComboBoxItem">
-        <Setter Property="Foreground" Value="{DynamicResource McText}" />
+        <Setter Property="Foreground" Value="{DynamicResource MaText}" />
         <Setter Property="MinHeight" Value="28" />
         <Setter Property="Padding" Value="8,4" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
@@ -193,11 +193,11 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsHighlighted" Value="True">
-                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource McAccent}" />
-                            <Setter Property="Foreground" Value="{DynamicResource McOnAccent}" />
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource MaAccent}" />
+                            <Setter Property="Foreground" Value="{DynamicResource MaOnAccent}" />
                         </Trigger>
                         <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource McFocus}" />
+                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource MaFocus}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -211,7 +211,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
                     <Border Background="Transparent">
-                        <TextBlock Text="&#xE70D;" FontFamily="Segoe MDL2 Assets" FontSize="10" Foreground="{DynamicResource McText}"
+                        <TextBlock Text="&#xE70D;" FontFamily="Segoe MDL2 Assets" FontSize="10" Foreground="{DynamicResource MaText}"
                                    HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0" />
                     </Border>
                 </ControlTemplate>
@@ -220,8 +220,8 @@
     </Style>
 
     <Style x:Key="Combo" TargetType="ComboBox">
-        <Setter Property="Foreground" Value="{DynamicResource McText}" />
-        <Setter Property="Background" Value="{DynamicResource McSurface}" />
+        <Setter Property="Foreground" Value="{DynamicResource MaText}" />
+        <Setter Property="Background" Value="{DynamicResource MaSurface}" />
         <Setter Property="BorderBrush" Value="{DynamicResource FieldBorder}" />
         <Setter Property="MinHeight" Value="30" />
         <Setter Property="MinWidth" Value="120" />
@@ -240,7 +240,7 @@
                         <ToggleButton Style="{StaticResource ComboToggle}" ClickMode="Press"
                                       IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" />
                         <Popup IsOpen="{TemplateBinding IsDropDownOpen}" Placement="Bottom" AllowsTransparency="True" Focusable="False" PopupAnimation="None">
-                            <Border Background="{DynamicResource McChrome}" BorderBrush="{DynamicResource McControlBorder}" BorderThickness="1"
+                            <Border Background="{DynamicResource MaChrome}" BorderBrush="{DynamicResource MaControlBorder}" BorderThickness="1"
                                     MinWidth="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}" MaxHeight="360">
                                 <ScrollViewer>
                                     <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" />
@@ -250,10 +250,10 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource McHover}" />
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource MaHover}" />
                         </Trigger>
                         <Trigger Property="IsKeyboardFocusWithin" Value="True">
-                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource McFocus}" />
+                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource MaFocus}" />
                             <Setter TargetName="Bd" Property="BorderThickness" Value="2" />
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -263,7 +263,7 @@
     </Style>
 
     <Style x:Key="Check" TargetType="CheckBox">
-        <Setter Property="Foreground" Value="{DynamicResource McText}" />
+        <Setter Property="Foreground" Value="{DynamicResource MaText}" />
         <Setter Property="MinHeight" Value="30" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusRing}" />
@@ -272,17 +272,17 @@
                 <ControlTemplate TargetType="CheckBox">
                     <StackPanel Orientation="Horizontal" Background="Transparent">
                         <Border x:Name="Box" Width="18" Height="18" CornerRadius="3" BorderThickness="1" VerticalAlignment="Center"
-                                BorderBrush="{DynamicResource FieldBorder}" Background="{DynamicResource McSurface}">
+                                BorderBrush="{DynamicResource FieldBorder}" Background="{DynamicResource MaSurface}">
                             <TextBlock x:Name="Mark" Text="&#xE73E;" FontFamily="Segoe MDL2 Assets" FontSize="12" Visibility="Collapsed"
-                                       Foreground="{DynamicResource McOnAccent}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                       Foreground="{DynamicResource MaOnAccent}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
                         <ContentPresenter Margin="8,0,0,0" VerticalAlignment="Center" RecognizesAccessKey="True" />
                     </StackPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="Mark" Property="Visibility" Value="Visible" />
-                            <Setter TargetName="Box" Property="Background" Value="{DynamicResource McAccent}" />
-                            <Setter TargetName="Box" Property="BorderBrush" Value="{DynamicResource McAccent}" />
+                            <Setter TargetName="Box" Property="Background" Value="{DynamicResource MaAccent}" />
+                            <Setter TargetName="Box" Property="BorderBrush" Value="{DynamicResource MaAccent}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -306,25 +306,25 @@
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
                 <Style TargetType="ListBoxItem">
-                    <Setter Property="Foreground" Value="{DynamicResource McText}" />
+                    <Setter Property="Foreground" Value="{DynamicResource MaText}" />
                     <Setter Property="Cursor" Value="Hand" />
                     <Setter Property="FocusVisualStyle" Value="{StaticResource FocusRing}" />
                     <Setter Property="MinHeight" Value="32" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="ListBoxItem">
-                                <Border x:Name="Bd" Background="{DynamicResource McChrome}" BorderBrush="{DynamicResource McControlBorder}"
+                                <Border x:Name="Bd" Background="{DynamicResource MaChrome}" BorderBrush="{DynamicResource MaControlBorder}"
                                         BorderThickness="1" CornerRadius="14" Padding="14,5" Margin="0,0,6,0">
                                     <ContentPresenter VerticalAlignment="Center" />
                                 </Border>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter TargetName="Bd" Property="Background" Value="{DynamicResource McHover}" />
+                                        <Setter TargetName="Bd" Property="Background" Value="{DynamicResource MaHover}" />
                                     </Trigger>
                                     <Trigger Property="IsSelected" Value="True">
-                                        <Setter TargetName="Bd" Property="Background" Value="{DynamicResource McAccent}" />
-                                        <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource McAccent}" />
-                                        <Setter Property="Foreground" Value="{DynamicResource McOnAccent}" />
+                                        <Setter TargetName="Bd" Property="Background" Value="{DynamicResource MaAccent}" />
+                                        <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource MaAccent}" />
+                                        <Setter Property="Foreground" Value="{DynamicResource MaOnAccent}" />
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
@@ -338,7 +338,7 @@
     <!-- A list of ticket rows: arrow keys move, the selected row is outlined (not colour alone: a 2px border and the
          marker bar), and each row reads as one sentence to a screen reader. -->
     <Style x:Key="RowItem" TargetType="ListBoxItem">
-        <Setter Property="Foreground" Value="{DynamicResource McText}" />
+        <Setter Property="Foreground" Value="{DynamicResource MaText}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="AutomationProperties.Name" Value="{Binding SpokenName}" />
@@ -349,22 +349,22 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ListBoxItem">
                     <Grid Margin="0,0,0,6">
-                        <Border x:Name="Drop" Height="3" VerticalAlignment="Top" Margin="0,-5,0,0" Background="{DynamicResource McFocus}" Visibility="Collapsed" />
-                        <Border x:Name="Bd" Background="{DynamicResource McSurface}" BorderBrush="{DynamicResource McChromeBorder}"
+                        <Border x:Name="Drop" Height="3" VerticalAlignment="Top" Margin="0,-5,0,0" Background="{DynamicResource MaFocus}" Visibility="Collapsed" />
+                        <Border x:Name="Bd" Background="{DynamicResource MaSurface}" BorderBrush="{DynamicResource MaChromeBorder}"
                                 BorderThickness="1" CornerRadius="6" Padding="10,8">
                             <ContentPresenter />
                         </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource McHover}" />
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource MaHover}" />
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource McControlBorder}" />
+                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource MaControlBorder}" />
                             <Setter TargetName="Bd" Property="BorderThickness" Value="2" />
                         </Trigger>
                         <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource McFocus}" />
+                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource MaFocus}" />
                             <Setter TargetName="Bd" Property="BorderThickness" Value="2" />
                         </Trigger>
                         <DataTrigger Binding="{Binding IsDropTarget}" Value="True">
@@ -379,7 +379,7 @@
     <Style x:Key="RowList" TargetType="ListBox">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="Foreground" Value="{DynamicResource McText}" />
+        <Setter Property="Foreground" Value="{DynamicResource MaText}" />
         <Setter Property="ItemContainerStyle" Value="{StaticResource RowItem}" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
         <Setter Property="VirtualizingPanel.IsVirtualizing" Value="True" />
@@ -399,19 +399,19 @@
 
     <!-- ── Grid (Tickets view) ───────────────────────────────────────────── -->
     <Style x:Key="GridHeader" TargetType="GridViewColumnHeader">
-        <Setter Property="Foreground" Value="{DynamicResource McMuted}" />
+        <Setter Property="Foreground" Value="{DynamicResource MaMuted}" />
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="GridViewColumnHeader">
-                    <Border x:Name="Bd" Background="{DynamicResource McChrome}" BorderBrush="{DynamicResource McChromeBorder}"
+                    <Border x:Name="Bd" Background="{DynamicResource MaChrome}" BorderBrush="{DynamicResource MaChromeBorder}"
                             BorderThickness="0,0,0,1" Padding="8,6">
                         <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" />
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource McHover}" />
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource MaHover}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -420,7 +420,7 @@
     </Style>
 
     <Style x:Key="GridRow" TargetType="ListViewItem">
-        <Setter Property="Foreground" Value="{DynamicResource McText}" />
+        <Setter Property="Foreground" Value="{DynamicResource MaText}" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="AutomationProperties.Name" Value="{Binding SpokenName}" />
         <Setter Property="MinHeight" Value="30" />
@@ -432,14 +432,14 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource McHover}" />
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource MaHover}" />
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource McSurface}" />
-                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource McControlBorder}" />
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource MaSurface}" />
+                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource MaControlBorder}" />
                         </Trigger>
                         <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource McFocus}" />
+                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource MaFocus}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

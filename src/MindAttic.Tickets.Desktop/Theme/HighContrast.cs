@@ -10,15 +10,15 @@ namespace MindAttic.Tickets.Desktop.Theme;
 /// </summary>
 public static class HighContrast
 {
-    private static readonly string[] Backgrounds = ["McChrome", "McPane", "McSurface", "McHover"];
+    private static readonly string[] Backgrounds = ["MaChrome", "MaPane", "MaSurface", "MaHover"];
     private static readonly string[] Foregrounds =
     [
-        "McText", "McMuted", "McRec", "McChromeBorder", "McControlBorder", "FieldBorder",
+        "MaText", "MaMuted", "MaRec", "MaChromeBorder", "MaControlBorder", "FieldBorder",
         "StateApproved", "StateProposed", "StateRejected", "StateOpen", "StateClosed", "StateWontDo",
     ];
-    private static readonly string[] Accents = ["McAccent", "McAccentHover", "McFocus"];
+    private static readonly string[] Accents = ["MaAccent", "MaAccentHover", "MaFocus"];
 
-    public static IEnumerable<string> Keys => [.. Backgrounds, .. Foregrounds, .. Accents, "McOnAccent"];
+    public static IEnumerable<string> Keys => [.. Backgrounds, .. Foregrounds, .. Accents, "MaOnAccent"];
 
     /// <summary>Applies the current system setting (or <paramref name="force"/>) and follows later changes.</summary>
     public static void Track(Application app, bool force = false)
@@ -43,7 +43,7 @@ public static class HighContrast
         foreach (var k in Backgrounds) r[k] = SystemColors.WindowBrush;
         foreach (var k in Foregrounds) r[k] = SystemColors.WindowTextBrush;
         foreach (var k in Accents) r[k] = SystemColors.HighlightBrush;
-        r["McOnAccent"] = SystemColors.HighlightTextBrush;
+        r["MaOnAccent"] = SystemColors.HighlightTextBrush;
     }
 
     /// <summary>A brush token's current value, for code that can't use a resource reference.</summary>
