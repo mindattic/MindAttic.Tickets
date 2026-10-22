@@ -258,3 +258,4 @@ updated: 2026-10-12
 | M.TIX-T126 | 2026-10-21 | fix | closed | The MindAttic Tickets desktop shortcut opens the exe directly, skipping C:\Apps\MindAttic.Tickets.Desktop\deploy.bat; point it at deploy.bat so every open pulls the newest build | d32d528 |
 | M.TIX-T127 | 2026-10-21 | fix | closed | Restore assets/logo.ico: sync commit c886d68 (M.TIX-T125) deleted it, so Tickets Desktop no longer builds (CS7064) | 468c79f |
 | M.TIX-T128 | 2026-10-21 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
+| M.TIX-T129 | 2026-10-21 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |

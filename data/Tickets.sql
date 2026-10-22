@@ -554,6 +554,7 @@ INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Unity.Hare', 'J',
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Unity.Hare', 'K', 'Audio: Music & SFX', NULL, 10);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Unity.Hare', 'L', 'VFX & Particles', NULL, 11);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Unity.Hare', 'M', 'Boss Encounters', NULL, 12);
+INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Unity.Incognito', 'A', 'Reverse-engineer and rebuild Incognito (2013 GameMaker prototype) in Unity', NULL, 0);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Unity.Ricochet', 'CORE', 'Single-player core rebuild', NULL, 0);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Unity.Ricochet', 'NET', 'Real multiplayer', NULL, 1);
 
@@ -5944,6 +5945,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T126', 'MindAttic.Tickets', 126, '2026-10-21', 'fix', 'closed', 'The MindAttic Tickets desktop shortcut opens the exe directly, skipping C:\Apps\MindAttic.Tickets.Desktop\deploy.bat; point it at deploy.bat so every open pulls the newest build', 'd32d528', 125, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T127', 'MindAttic.Tickets', 127, '2026-10-21', 'fix', 'closed', 'Restore assets/logo.ico: sync commit c886d68 (M.TIX-T125) deleted it, so Tickets Desktop no longer builds (CS7064)', '468c79f', 126, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T128', 'MindAttic.Tickets', 128, '2026-10-21', 'chore', 'closed', 'Sync the ticket database for changes that touched no ticket (story, epic or backlog edits)', '—', 127, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T129', 'MindAttic.Tickets', 129, '2026-10-21', 'chore', 'closed', 'Sync the ticket database for changes that touched no ticket (story, epic or backlog edits)', '—', 128, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.VALT-T1', 'MindAttic.Vault', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.VALT-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.VALT-T2', 'MindAttic.Vault', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for Dashboard HealthMonitorStore (MindAttic.Vault.Dashboard/Services/HealthMonitorStore.cs; add a Dashboard ProjectReference to MindAttic.Vault.Tests first): RecordUptime running percentage per provider and case-insensitive ids, Previous returns null before first commit, Commit replaces snapshots and evicts providers missing from the fresh set, sets LastSweepUtc, clears SweepInProgress and fires OnChanged, Snapshots ordered trusted-first then alphabetical, TrustedPanelHealthy false when no trusted snapshots exist or any trusted one is not Healthy - this is the headline confidence verdict the dashboard leads with', 'MindAttic.Vault.Tests/HealthMonitorStoreTests.cs', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.VALT-T3', 'MindAttic.Vault', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for Dashboard AlertDispatcher (Services/AlertDispatcher.cs): with a fake IHttpClientFactory/HttpMessageHandler verify every non-blank webhook gets a JSON POST with provider, displayName, status, previous, diagnosis, detail, atUtc fields; blank webhook urls skipped; no channels configured means no work; a webhook that throws or returns non-2xx is logged and does not stop other webhooks or fault DispatchAsync; email channel skipped when Host is blank or To is empty, and an SMTP failure is swallowed - alerts must be best-effort and isolated so one bad channel never breaks a sweep', '—', 2, '| M.VALT-T3 | 2026-10-14 | chore | open | NUnit tests for Dashboard AlertDispatcher (Services/AlertDispatcher.cs): with a fake IHttpClientFactory/HttpMessageHandler verify every non-blank webhook gets a JSON POST with provider, displayName, status, previous, diagnosis, detail, atUtc fields; blank webhook urls skipped; no channels configured means no work; a webhook that throws or returns non-2xx is logged and does not stop other webhooks or fault DispatchAsync; email channel skipped when Host is blank or To is empty, and an SMTP failure is swallowed - alerts must be best-effort and isolated so one bad channel never breaks a sweep | — |');
@@ -15707,6 +15709,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8461, 'U
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8462, 'UH-T3', '2026-10-22T04:01:46Z', 'ref', 'UH-US-A2', '19d3c0f');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8463, 'UI-T1', '2026-10-22T04:02:07Z', 'created', NULL, 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8464, 'RB-T29', '2026-10-22T04:02:32Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8465, 'M.TIX-T129', '2026-10-22T04:13:52Z', 'created', NULL, 'closed');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z');
@@ -22978,7 +22981,10 @@ updated: 2026-10-21
 ## Priority backlog
 _Nothing recorded yet._
 ');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Unity.Incognito', 1, 'tickets', NULL, '## Tickets
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Unity.Incognito', 1, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Unity.Incognito', 2, 'epic', 'A', '## Epic A — Reverse-engineer and rebuild Incognito (2013 GameMaker prototype) in Unity');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Unity.Incognito', 3, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Unity.Incognito', 4, 'tickets', NULL, '## Tickets
 > Permanent log of every change and fix — this repo''s ticket system. Rows are append-only: never
 > delete or reword one; only move its Status (open → closed / wont-do) and fill in Ref. Status is
 > a word, not a glyph, so tickets don''t count toward the story index. Keep this section last.
