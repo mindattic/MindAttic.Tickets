@@ -342,9 +342,9 @@ code: UH
 layer: stories
 status: living
 updated: 2026-10-21', 0, 0, 1);
-INSERT INTO repos (name, code, project, title, updated, front_matter, bom, crlf, trailing_newline) VALUES ('Unity.Incognito', 'UI', 'Unity.Incognito', 'Unity.Incognito — User Stories', '2026-10-21', 'codex: 1
+INSERT INTO repos (name, code, project, title, updated, front_matter, bom, crlf, trailing_newline) VALUES ('Unity.Incognito', 'U.INC', 'Unity.Incognito', 'Unity.Incognito — User Stories', '2026-10-21', 'codex: 1
 project: Unity.Incognito
-code: UI
+code: U.INC
 layer: stories
 status: living
 updated: 2026-10-21', 0, 0, 1);
@@ -3948,6 +3948,15 @@ INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref
 INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1152, 'Unity.Ricochet', 'UR-US-NET2', NULL, 'NET', NULL, NULL, 'planned', '⬜', '', 'As a player, turn order, aiming inputs, shot resolution and damage are server-authoritative and replicated to every client, replacing the original''s single-PC hotseat turn-passing.', NULL, NULL, 'bullet', 9);
 INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1153, 'Unity.Ricochet', 'UR-US-NET3', NULL, 'NET', NULL, NULL, 'planned', '⬜', '', 'As a player who drops mid-match, my seat and health are held for the reconnect grace period and I resume on the same turn if I reconnect in time.', NULL, NULL, 'bullet', 10);
 INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1154, 'Unity.Ricochet', 'UR-US-NET4', NULL, 'NET', NULL, NULL, 'planned', '⬜', '', 'As a player, I can start a restart or kick vote through NetVotes with the same overlay the house front end provides.', NULL, NULL, 'bullet', 11);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1155, 'Unity.Incognito', 'U.INC-US-A1', NULL, 'A', NULL, NULL, 'planned', '⬜', '', 'As a player, I walk left/right with a gentle triangle-wave vertical bob (ramping between a min/max offset, not a literal sine) that quickens while sprinting, so movement feels alive instead of robotic.', NULL, NULL, 'bullet', 0);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1156, 'Unity.Incognito', 'U.INC-US-A2', NULL, 'A', NULL, NULL, 'planned', '⬜', '', 'As a player, the camera holds my character pinned near the screen edge opposite my facing direction (leading room ahead of me) while panning vertically with the mouse, so the view stays close and intimate instead of centering me.', NULL, NULL, 'bullet', 1);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1157, 'Unity.Incognito', 'U.INC-US-A3', NULL, 'A', NULL, NULL, 'planned', '⬜', '', 'As a player, my cursor doubles as my character''s visible eye: the pupil tracks the mouse with a parallax offset and blinks on a randomized idle timer, and the on-screen cursor sprite itself changes to reflect look/talk/pointer/aim modes.', NULL, NULL, 'bullet', 2);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1158, 'Unity.Incognito', 'U.INC-US-A4', NULL, 'A', NULL, NULL, 'planned', '⬜', '', 'As a player, scrolling the mouse wheel cycles the cursor between look mode (hover an NPC to read a floating description) and talk mode (click an NPC to walk over and start a conversation).', NULL, NULL, 'bullet', 3);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1159, 'Unity.Incognito', 'U.INC-US-A5', NULL, 'A', NULL, NULL, 'planned', '⬜', '', 'As a player, clicking an NPC in pointer mode opens a hacking/console overlay on that NPC (a Shadowrun-style ''matrix'' panel), separate from the look/talk interactions.', NULL, NULL, 'bullet', 4);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1160, 'Unity.Incognito', 'U.INC-US-A6', NULL, 'A', NULL, NULL, 'planned', '⬜', '', 'As a player, NPCs patrol between waypoints with the same idle bob animation and raise a visible suspicion meter driven by my proximity, whether we''re facing each other, and whether I''m looking down (console/menu open), so stealth has Shadowrun-flavored social detection.', NULL, NULL, 'bullet', 5);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1161, 'Unity.Incognito', 'U.INC-US-A7', NULL, 'A', NULL, NULL, 'planned', '⬜', '', 'As a player, I can draw/holster a weapon through an equip animation, aim with the arm pivoting toward the mouse, and fire a bullet that travels and can hit an NPC.', NULL, NULL, 'bullet', 6);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1162, 'Unity.Incognito', 'U.INC-US-A8', NULL, 'A', NULL, NULL, 'planned', '⬜', '', 'As a player, I can open a typed command console (help/list/reboot/overwrite/clear) that queries nearby objects by type, echoing the original terminal/hacking mini-game.', NULL, NULL, 'bullet', 7);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1163, 'Unity.Incognito', 'U.INC-US-A9', NULL, 'A', NULL, NULL, 'planned', '⬜', '', 'As a player, the street/shop/title rooms are rebuilt as Unity scenes with the original parallax clouds, rain, and lamplight props, playing the original footstep/whoosh/door/type sound effects and music tracks.', NULL, NULL, 'bullet', 8);
 
 -- backlog_items
 INSERT INTO backlog_items (uid, repo, ordinal, text) VALUES (1, 'ChiMesh', 19, '1. **CM-US-A1/A2** — order parts, assemble three nodes (gates everything physical).');
@@ -6390,6 +6399,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNI-T8', 'Unity.Chain', 8, '2026-10-21', 'feature', 'open', 'Enemies + Physics2D hit detection against the mace, replacing the legacy single AABB check', '—', 7, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNI-T9', 'Unity.Chain', 9, '2026-10-21', 'feature', 'open', 'Audio: SFX for mace swing/impact/grapple and background music hookup', '—', 8, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNI-T10', 'Unity.Chain', 10, '2026-10-21', 'feature', 'open', 'HUD/UI, level bounds and camera framing for the angel+chain play space', '—', 9, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNI-T11', 'Unity.Chain', 11, '2026-10-21', 'chore', 'closed', 'Add CLAUDE.md provider-compatibility forwarder, matching every other repo''s thin-pointer convention', '—', 10, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UC-T1', 'Unity.Cursory', 1, '2026-10-20', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UC-T2', 'Unity.Cursory', 2, '2026-10-20', 'chore', 'closed', 'Bootstrap repo: AGENTS.md/CLAUDE.md forwarders and docs/rfc/0001-port-plan.md (port Cursory to Unity 6 on MindAttic.Unity.Multiplayer; points at that repo''s architecture RFC)', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UC-T3', 'Unity.Cursory', 3, '2026-10-20', 'chore', 'closed', 'Unity 6000.4.3f1 project: URP 2D, top-down orthographic camera, Packages/manifest.json referencing file:../../MindAttic.Unity.Multiplayer/unity/com.mindattic.unity.multiplayer and com.mindattic.capture, engine-free Assets/UnityCursory/Core + Tests/Core.Tests dotnet NUnit pattern (as in UnitySpace/GridGameGaiden), docs/BIBLE.md porting Cursory''s CUR-LAW rules (server authoritative; geometry once per level), .gitattributes LF, .gitignore for Unity. Design: MindAttic.Unity.Multiplayer docs/rfc/0001-architecture.md.', '5d05eca', 2, NULL);
@@ -6676,7 +6686,17 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UH-T30', 'Unity.Hare', 30, '2026-10-21', 'feature', 'open', 'Port and wire up weapon/UI/enemy sound effects', 'UH-US-K2', 29, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UH-T31', 'Unity.Hare', 31, '2026-10-21', 'feature', 'open', 'Implement weapon and explosion VFX (muzzle flash, explosions, rail swirl)', 'UH-US-L1', 30, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UH-T32', 'Unity.Hare', 32, '2026-10-21', 'feature', 'open', 'Implement boss room, structure/cover objects and boss fight flow', 'UH-US-M1', 31, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UI-T1', 'Unity.Incognito', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.INC-T1', 'Unity.Incognito', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.INC-T2', 'Unity.Incognito', 2, '2026-10-21', 'chore', 'open', 'Bootstrap Unity 6 project, workspace docs, and reverse-engineering notes from the 2013 GameMaker source', 'U.INC-US-A1,U.INC-US-A2,U.INC-US-A3,U.INC-US-A4,U.INC-US-A5,U.INC-US-A6,U.INC-US-A7,U.INC-US-A8,U.INC-US-A9', 1, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.INC-T3', 'Unity.Incognito', 3, '2026-10-21', 'feature', 'open', 'Port player locomotion: triangle-wave walk bob, sprint acceleration/friction, and facing flip', 'U.INC-US-A1', 2, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.INC-T4', 'Unity.Incognito', 4, '2026-10-21', 'feature', 'open', 'Port the close-framing camera: edge-pinned horizontal lock by facing with mouse-driven vertical pan', 'U.INC-US-A2', 3, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.INC-T5', 'Unity.Incognito', 5, '2026-10-21', 'feature', 'open', 'Port the eyeball cursor: pupil parallax tracking, randomized blink, and mode-based cursor sprite swap', 'U.INC-US-A3', 4, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.INC-T6', 'Unity.Incognito', 6, '2026-10-21', 'feature', 'open', 'Port cursor mode cycling: mouse-wheel toggle between look (hover description) and talk (walk-to NPC, start conversation)', 'U.INC-US-A4', 5, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.INC-T7', 'Unity.Incognito', 7, '2026-10-21', 'feature', 'open', 'Port the hacking console overlay triggered by pointer-mode click on an NPC', 'U.INC-US-A5', 6, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.INC-T8', 'Unity.Incognito', 8, '2026-10-21', 'feature', 'open', 'Port NPC patrol and the Shadowrun-style suspicion meter (proximity, mutual facing, player-looking-down)', 'U.INC-US-A6', 7, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.INC-T9', 'Unity.Incognito', 9, '2026-10-21', 'feature', 'open', 'Port the weapon equip/aim/fire state machine with arm-pivot aiming and a traveling bullet', 'U.INC-US-A7', 8, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.INC-T10', 'Unity.Incognito', 10, '2026-10-21', 'feature', 'open', 'Port the typed command console (help/list/reboot/overwrite/clear) for querying nearby objects', 'U.INC-US-A8', 9, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.INC-T11', 'Unity.Incognito', 11, '2026-10-21', 'feature', 'open', 'Port street00/street01/shop/titlescreen rooms as Unity scenes with parallax props, SFX, and music', 'U.INC-US-A9', 10, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UM-T1', 'Unity.Multiplayer', 1, '2026-10-20', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UM-T2', 'Unity.Multiplayer', 2, '2026-10-20', 'chore', 'closed', 'Bootstrap repo: AGENTS.md/CLAUDE.md forwarders and docs/rfc/0001-architecture.md (the approved plan: NGO 2.x behind MindAttic API, partial-method attribute RPCs via source generator, dedicated + host topologies, Relay + self-hosted rendezvous join codes, DocFX site, full ticket chain)', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UM-T3', 'Unity.Multiplayer', 3, '2026-10-20', 'chore', 'closed', 'Repo skeleton: unity/com.mindattic.unity.multiplayer/package.json (name com.mindattic.unity.multiplayer, unity 6000.0, deps com.unity.netcode.gameobjects 2.x + com.unity.transport 2.x; com.unity.services.multiplayer optional via versionDefines MINDATTIC_UGS), asmdefs MindAttic.Unity.Multiplayer.Core (Runtime/Core, noEngineReferences) / MindAttic.Unity.Multiplayer (Runtime) / .Editor / .Tests, MIT LICENSE, .gitattributes LF (HOUSE-LAW-13), README stub, docs/BIBLE.md laws: server owns state; nothing above the NGO adapter imports Unity.Netcode; generator output is C# 9; one home per fact. Design: MindAttic.Unity.Multiplayer docs/rfc/0001-architecture.md.', 'ac90616', 2, NULL);
@@ -6762,6 +6782,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UQD-T9', 'Unity.QuickDuel', 9, '2026-10-21', 'chore', 'open', 'CI: GitHub Actions workflow that runs dotnet test Core.slnx on every push to main', '—', 8, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UQD-T10', 'Unity.QuickDuel', 10, '2026-10-21', 'docs', 'open', 'Docs: docs/BIBLE.md (game design) and adopt the shared docs site with adopt-docs-site.ps1 -Api (HOUSE-LAW-14)', '—', 9, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UQD-T11', 'Unity.QuickDuel', 11, '2026-10-21', 'feature', 'open', 'Windows build: deploy.ps1 that builds a standalone Windows player into Build/ via Unity batch mode', '—', 10, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UQD-T12', 'Unity.QuickDuel', 12, '2026-10-21', 'docs', 'closed', 'Docs: credit Samurai Kirby (Kirby Super Star) as the original inspiration and record the online PvP design (credit Christopher Danielson) in docs/ORIGINS.md', '—', 11, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UQD-T13', 'Unity.QuickDuel', 13, '2026-10-21', 'feature', 'open', 'Online PvP (idea: Christopher Danielson): a listening host sends each round''s standoff length; each client times its own reaction from its own cue and sends only the reaction time; the host compares them, so latency cannot decide a duel. Add a DuelJudge to Core, transport via Unity.Multiplayer, plus sanity checks on reported times', '—', 12, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UR-T1', 'Unity.Ricochet', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UR-T2', 'Unity.Ricochet', 2, '2026-10-21', 'chore', 'closed', 'Create Unity.Ricochet repo (mindattic/Unity.Ricochet, tagged wip); scaffold README, AGENTS/CLAUDE pointers, .gitignore, Packages/manifest.json referencing the house kit (Unity.Multiplayer, MindAttic.Components, Unity.Shared), and docs/BIBLE.md + docs/rfc/0001-architecture.md capturing the GML Ricochet port plan', 'repo scaffold commit', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UR-T3', 'Unity.Ricochet', 3, '2026-10-21', 'feature', 'open', 'Run the Unity.Multiplayer New Game wizard to scaffold the project (NetBootstrap/NetFrontEnd/NetVotes scene, package manifest), then build core aim-and-fire: angle/power input, bounce-path preview off borders and rail redirectors (porting the line-line intersection and bounce-prediction math from aim.gml/draw_potential.gml/draw_bounceinfo.gml/check_rail_intersection.gml), and projectile flight/impact', 'UR-US-CORE1', 2, NULL);
@@ -15707,9 +15729,33 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8459, 'U
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8460, 'UNI-T10', '2026-10-22T04:01:41Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8461, 'UH-T3', '2026-10-22T04:01:46Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8462, 'UH-T3', '2026-10-22T04:01:46Z', 'ref', 'UH-US-A2', '19d3c0f');
-INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8463, 'UI-T1', '2026-10-22T04:02:07Z', 'created', NULL, 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8463, 'U.INC-T1', '2026-10-22T04:02:07Z', 'created', NULL, 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8464, 'RB-T29', '2026-10-22T04:02:32Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8465, 'M.TIX-T129', '2026-10-22T04:13:52Z', 'created', NULL, 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8466, 'U.INC-T1', '2026-10-22T04:15:43Z', 'id', 'UI-T1', 'U.INC-T1 (UI collides with ''User Interface''; match the U.EVE/U.SPC long-form convention for clarity)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8467, 'UQD-T12', '2026-10-22T04:15:57Z', 'created', NULL, 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8468, 'UQD-T13', '2026-10-22T04:15:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8469, 'UQD-T13', '2026-10-22T04:15:57Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8470, 'U.INC-T2', '2026-10-22T04:16:15Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8471, 'UNI-T11', '2026-10-22T04:16:40Z', 'created', NULL, 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8472, 'U.INC-T3', '2026-10-22T04:17:08Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8473, 'U.INC-T4', '2026-10-22T04:17:08Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8474, 'U.INC-T5', '2026-10-22T04:17:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8475, 'U.INC-T6', '2026-10-22T04:17:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8476, 'U.INC-T7', '2026-10-22T04:17:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8477, 'U.INC-T8', '2026-10-22T04:17:10Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8478, 'U.INC-T9', '2026-10-22T04:17:10Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8479, 'U.INC-T10', '2026-10-22T04:17:10Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8480, 'U.INC-T11', '2026-10-22T04:17:11Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8481, 'U.INC-T3', '2026-10-22T04:18:06Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8482, 'U.INC-T4', '2026-10-22T04:18:06Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8483, 'U.INC-T5', '2026-10-22T04:18:06Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8484, 'U.INC-T6', '2026-10-22T04:18:06Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8485, 'U.INC-T7', '2026-10-22T04:18:07Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8486, 'U.INC-T8', '2026-10-22T04:18:07Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8487, 'U.INC-T9', '2026-10-22T04:18:07Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8488, 'U.INC-T10', '2026-10-22T04:18:07Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8489, 'U.INC-T11', '2026-10-22T04:18:07Z', 'approval', 'proposed', 'approved');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z');
@@ -16260,6 +16306,15 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('U.EVE
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('U.EVE-T19', 'approved', 0, '2026-10-21T04:34:53Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('U.EVE-T20', 'approved', 0, '2026-10-21T01:18:38Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('U.EVE-T26', 'approved', 0, '2026-10-22T03:00:02Z');
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('U.INC-T10', 'approved', 0, '2026-10-22T04:18:07Z');
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('U.INC-T11', 'approved', 0, '2026-10-22T04:18:07Z');
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('U.INC-T3', 'approved', 0, '2026-10-22T04:18:06Z');
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('U.INC-T4', 'approved', 0, '2026-10-22T04:18:06Z');
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('U.INC-T5', 'approved', 0, '2026-10-22T04:18:06Z');
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('U.INC-T6', 'approved', 0, '2026-10-22T04:18:06Z');
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('U.INC-T7', 'approved', 0, '2026-10-22T04:18:07Z');
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('U.INC-T8', 'approved', 0, '2026-10-22T04:18:07Z');
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('U.INC-T9', 'approved', 0, '2026-10-22T04:18:07Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('U.RON-T10', 'approved', 0, '2026-10-18T08:37:30Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('U.RON-T11', 'approved', 0, '2026-10-18T08:37:30Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('U.RON-T13', 'approved', 0, '2026-10-21T04:34:53Z');
@@ -16429,6 +16484,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('UNS-T
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('UNS-T9', 'approved', 0, '2026-10-19T01:44:34Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('UQD-T10', 'approved', 0, '2026-10-22T03:45:54Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('UQD-T11', 'approved', 0, '2026-10-22T03:45:55Z');
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('UQD-T13', 'approved', 0, '2026-10-22T04:15:57Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('UQD-T2', 'approved', 0, '2026-10-22T03:45:52Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('UQD-T3', 'approved', 0, '2026-10-22T03:45:53Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('UQD-T4', 'approved', 0, '2026-10-22T03:45:53Z');
@@ -16651,6 +16707,9 @@ INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (192, 'tic
 INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (193, 'ticket', 'M.WD-T16', 'M.SCHD-T16', '2026-10-21T01:25:13Z', 'MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17)');
 INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (194, 'ticket', 'M.WD-T17', 'M.SCHD-T17', '2026-10-21T01:25:13Z', 'MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17)');
 INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (195, 'code', 'M.WD', 'M.SCHD', '2026-10-21T01:25:13Z', 'MindAttic.WatchDog renamed to MindAttic.Scheduler (M.WD-T17)');
+INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (196, 'ticket', 'UI-T1', 'U.INC-T1', '2026-10-22T04:15:43Z', 'UI collides with ''User Interface''; match the U.EVE/U.SPC long-form convention for clarity');
+INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (197, 'epic', 'UI-EPIC-A', 'U.INC-EPIC-A', '2026-10-22T04:15:43Z', 'UI collides with ''User Interface''; match the U.EVE/U.SPC long-form convention for clarity');
+INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (198, 'code', 'UI', 'U.INC', '2026-10-22T04:15:43Z', 'UI collides with ''User Interface''; match the U.EVE/U.SPC long-form convention for clarity');
 
 -- links
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AUT-T12', 'M.TIX-T14', 'related', 'migrated: named in ref');
@@ -17907,6 +17966,21 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-US-F4', 'TUT-EPIC-F'
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-US-F5', 'TUT-EPIC-F', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.EVE-T11', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.EVE-T26', 'UM-T74', 'requires', 'orchestrator block');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-T4', 'U.INC-T3', 'requires', 'camera needs player facing/position first');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-T5', 'U.INC-T3', 'requires', 'eye cursor needs the player object to exist');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-T6', 'U.INC-T5', 'requires', 'mode cycling needs the eye cursor''s mode plumbing');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-T7', 'U.INC-T6', 'requires', 'hacking overlay is a pointer-mode interaction');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-T8', 'U.INC-T3', 'requires', 'NPC suspicion reads player position/facing');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-T9', 'U.INC-T3', 'requires', 'weapon aim/fire builds on player state machine');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-US-A1', 'U.INC-EPIC-A', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-US-A2', 'U.INC-EPIC-A', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-US-A3', 'U.INC-EPIC-A', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-US-A4', 'U.INC-EPIC-A', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-US-A5', 'U.INC-EPIC-A', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-US-A6', 'U.INC-EPIC-A', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-US-A7', 'U.INC-EPIC-A', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-US-A8', 'U.INC-EPIC-A', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-US-A9', 'U.INC-EPIC-A', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.RON-T15', 'UM-T74', 'requires', 'orchestrator block');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.SPC-T100', 'U.SPC-T55', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.SPC-T101', 'U.SPC-T56', 'requires', NULL);
@@ -22969,7 +23043,7 @@ INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Unity.Hare', 71, 't
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Unity.Incognito', 0, 'raw', NULL, '---
 codex: 1
 project: Unity.Incognito
-code: UI
+code: U.INC
 layer: stories
 status: living
 updated: 2026-10-21
@@ -22983,8 +23057,17 @@ _Nothing recorded yet._
 ');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Unity.Incognito', 1, 'raw', NULL, '');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Unity.Incognito', 2, 'epic', 'A', '## Epic A — Reverse-engineer and rebuild Incognito (2013 GameMaker prototype) in Unity');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Unity.Incognito', 3, 'raw', NULL, '');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Unity.Incognito', 4, 'tickets', NULL, '## Tickets
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Unity.Incognito', 3, 'story', '1155', '- **U.INC-US-A1 ⬜** As a player, I walk left/right with a gentle triangle-wave vertical bob (ramping between a min/max offset, not a literal sine) that quickens while sprinting, so movement feels alive instead of robotic.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Unity.Incognito', 4, 'story', '1156', '- **U.INC-US-A2 ⬜** As a player, the camera holds my character pinned near the screen edge opposite my facing direction (leading room ahead of me) while panning vertically with the mouse, so the view stays close and intimate instead of centering me.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Unity.Incognito', 5, 'story', '1157', '- **U.INC-US-A3 ⬜** As a player, my cursor doubles as my character''s visible eye: the pupil tracks the mouse with a parallax offset and blinks on a randomized idle timer, and the on-screen cursor sprite itself changes to reflect look/talk/pointer/aim modes.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Unity.Incognito', 6, 'story', '1158', '- **U.INC-US-A4 ⬜** As a player, scrolling the mouse wheel cycles the cursor between look mode (hover an NPC to read a floating description) and talk mode (click an NPC to walk over and start a conversation).');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Unity.Incognito', 7, 'story', '1159', '- **U.INC-US-A5 ⬜** As a player, clicking an NPC in pointer mode opens a hacking/console overlay on that NPC (a Shadowrun-style ''matrix'' panel), separate from the look/talk interactions.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Unity.Incognito', 8, 'story', '1160', '- **U.INC-US-A6 ⬜** As a player, NPCs patrol between waypoints with the same idle bob animation and raise a visible suspicion meter driven by my proximity, whether we''re facing each other, and whether I''m looking down (console/menu open), so stealth has Shadowrun-flavored social detection.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Unity.Incognito', 9, 'story', '1161', '- **U.INC-US-A7 ⬜** As a player, I can draw/holster a weapon through an equip animation, aim with the arm pivoting toward the mouse, and fire a bullet that travels and can hit an NPC.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Unity.Incognito', 10, 'story', '1162', '- **U.INC-US-A8 ⬜** As a player, I can open a typed command console (help/list/reboot/overwrite/clear) that queries nearby objects by type, echoing the original terminal/hacking mini-game.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Unity.Incognito', 11, 'story', '1163', '- **U.INC-US-A9 ⬜** As a player, the street/shop/title rooms are rebuilt as Unity scenes with the original parallax clouds, rain, and lamplight props, playing the original footstep/whoosh/door/type sound effects and music tracks.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Unity.Incognito', 12, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Unity.Incognito', 13, 'tickets', NULL, '## Tickets
 > Permanent log of every change and fix — this repo''s ticket system. Rows are append-only: never
 > delete or reword one; only move its Status (open → closed / wont-do) and fill in Ref. Status is
 > a word, not a glyph, so tickets don''t count toward the story index. Keep this section last.
