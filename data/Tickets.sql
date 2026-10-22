@@ -6687,7 +6687,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UH-T31', 'Unity.Hare', 31, '2026-10-21', 'feature', 'open', 'Implement weapon and explosion VFX (muzzle flash, explosions, rail swirl)', 'UH-US-L1', 30, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UH-T32', 'Unity.Hare', 32, '2026-10-21', 'feature', 'open', 'Implement boss room, structure/cover objects and boss fight flow', 'UH-US-M1', 31, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.INC-T1', 'Unity.Incognito', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.INC-T2', 'Unity.Incognito', 2, '2026-10-21', 'chore', 'open', 'Bootstrap Unity 6 project, workspace docs, and reverse-engineering notes from the 2013 GameMaker source', 'U.INC-US-A1,U.INC-US-A2,U.INC-US-A3,U.INC-US-A4,U.INC-US-A5,U.INC-US-A6,U.INC-US-A7,U.INC-US-A8,U.INC-US-A9', 1, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.INC-T2', 'Unity.Incognito', 2, '2026-10-21', 'chore', 'closed', 'Bootstrap Unity 6 project, workspace docs, and reverse-engineering notes from the 2013 GameMaker source', 'eae442c', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.INC-T3', 'Unity.Incognito', 3, '2026-10-21', 'feature', 'open', 'Port player locomotion: triangle-wave walk bob, sprint acceleration/friction, and facing flip', 'U.INC-US-A1', 2, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.INC-T4', 'Unity.Incognito', 4, '2026-10-21', 'feature', 'open', 'Port the close-framing camera: edge-pinned horizontal lock by facing with mouse-driven vertical pan', 'U.INC-US-A2', 3, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.INC-T5', 'Unity.Incognito', 5, '2026-10-21', 'feature', 'open', 'Port the eyeball cursor: pupil parallax tracking, randomized blink, and mode-based cursor sprite swap', 'U.INC-US-A3', 4, NULL);
@@ -15756,6 +15756,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8486, 'U
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8487, 'U.INC-T9', '2026-10-22T04:18:07Z', 'approval', 'proposed', 'approved');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8488, 'U.INC-T10', '2026-10-22T04:18:07Z', 'approval', 'proposed', 'approved');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8489, 'U.INC-T11', '2026-10-22T04:18:07Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8490, 'U.INC-T2', '2026-10-22T04:28:55Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (8491, 'U.INC-T2', '2026-10-22T04:28:55Z', 'ref', 'U.INC-US-A1,U.INC-US-A2,U.INC-US-A3,U.INC-US-A4,U.INC-US-A5,U.INC-US-A6,U.INC-US-A7,U.INC-US-A8,U.INC-US-A9', 'eae442c');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z');
