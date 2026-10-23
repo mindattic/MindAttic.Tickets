@@ -179,7 +179,7 @@ public sealed partial class MainViewModel : ObservableObject
             LastRefresh = s.Read.ToString("HH:mm:ss", CultureInfo.InvariantCulture);
             CommandManager.InvalidateRequerySuggested();
         }
-        catch (Exception ex) when (ex is IOException or InvalidOperationException or Microsoft.Data.Sqlite.SqliteException)
+        catch (Exception ex) when (ex is IOException or InvalidOperationException or System.Data.Common.DbException)
         {
             TicketsLog.For("Refresh").Warning(ex, "Couldn't read {Db}", store.DbPath);
             StatusMessage = $"Couldn't read the ticket database: {ex.Message}";
@@ -253,7 +253,7 @@ public sealed partial class MainViewModel : ObservableObject
             Detail = d is null ? null : new DetailViewModel(d);
             if (!quiet && Detail is { } v) StatusMessage = $"{v.Id}: {v.WorkText}";
         }
-        catch (Exception ex) when (ex is IOException or InvalidOperationException or Microsoft.Data.Sqlite.SqliteException)
+        catch (Exception ex) when (ex is IOException or InvalidOperationException or System.Data.Common.DbException)
         {
             StatusMessage = ex.Message;
         }
@@ -342,7 +342,7 @@ public sealed partial class MainViewModel : ObservableObject
             Announcement = done;
             return true;
         }
-        catch (Exception ex) when (ex is ArgumentException or InvalidOperationException or KeyNotFoundException or IOException or Microsoft.Data.Sqlite.SqliteException)
+        catch (Exception ex) when (ex is ArgumentException or InvalidOperationException or KeyNotFoundException or IOException or System.Data.Common.DbException)
         {
             TicketsLog.For("Action").Warning(ex, "{Action:l} failed: {Message:l}", done, ex.Message);
             if (Detail is { } dd) dd.Error = ex.Message;

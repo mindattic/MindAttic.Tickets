@@ -1,3 +1,4 @@
+using System.Data.Common;
 using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -51,19 +52,32 @@ public sealed partial class TicketsDb : IDisposable
     /// <summary>Kinds a <see cref="Link"/> may have; <c>requires</c> is a prerequisite (From waits for To).</summary>
     public static readonly IReadOnlyList<string> LinkKinds = ["requires", "related", "follow-up-of", "supersedes", "duplicates", "implements", "part-of"];
 
-    private readonly SqliteConnection db;
+    /// <summary>The store: this SQLite file, or the SQL Server database once one is configured (M.TIX-T131).</summary>
+    private readonly DbConnection db;
+
+    /// <summary>The SQL Server database the data is kept in, or null while this file is the store.</summary>
+    private readonly TicketsServer? server;
 
     public string Path { get; }
+
+    /// <summary>Where the data is kept: this file's path, or the SQL Server database's server/name.</summary>
+    public string Store => server?.Describe() ?? Path;
+
+    public bool OnServer => server is not null;
 
     private TicketsDb(string path)
     {
         Path = System.IO.Path.GetFullPath(path);
+        server = TicketsServer.For(Path);
         // Pooling off: a pooled connection keeps the file open after Dispose, and git (or a delete) on Windows needs it closed.
-        db = new SqliteConnection($"Data Source={Path};Pooling=False;Foreign Keys=True");
+        db = server is null ? new SqliteConnection($"Data Source={Path};Pooling=False;Foreign Keys=True") : server.Open();
         try
         {
-            db.Open();
-            Exec("PRAGMA busy_timeout = 15000; PRAGMA journal_mode = DELETE;");
+            if (server is null)
+            {
+                db.Open();
+                Exec("PRAGMA busy_timeout = 15000; PRAGMA journal_mode = DELETE;");
+            }
             EnsureSchema();
         }
         catch
@@ -129,9 +143,17 @@ public sealed partial class TicketsDb : IDisposable
     /// that drop the tickets guard triggers and must put them back before committing — recreating them only after the
     /// commit would leave a window where another connection sees no append-only/no-delete guard on the tickets table.
     /// </summary>
-    private void EnsureSchema(SqliteTransaction? tx = null)
+    private void EnsureSchema(DbTransaction? tx = null)
     {
-        Exec(
+        if (server is not null) EnsureServerSchema(tx);
+        else SqliteSchema(db, tx ?? ambient);
+    }
+
+    /// <summary>The SQLite schema (tables, indexes, guard triggers) on <paramref name="connection"/>: this file's, or the copy
+    /// a SQL Server store keeps in it and its backups.</summary>
+    internal static void SqliteSchema(DbConnection connection, DbTransaction? tx)
+    {
+        Raw(connection, tx,
             """
             CREATE TABLE IF NOT EXISTS meta (key TEXT PRIMARY KEY, value TEXT NOT NULL);
             CREATE TABLE IF NOT EXISTS repos (
@@ -219,9 +241,25 @@ public sealed partial class TicketsDb : IDisposable
                     SELECT NEW.id, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), 'ref', OLD.ref, NEW.ref WHERE NEW.ref IS NOT OLD.ref;
                 UPDATE tickets SET row_md = NULL WHERE id = NEW.id;
             END;
-            """, tx);
-        Exec($"INSERT INTO meta (key, value) VALUES ('schema_version', '{SchemaVersion}') " +
-             $"ON CONFLICT (key) DO UPDATE SET value = excluded.value WHERE CAST(value AS INTEGER) < {SchemaVersion}", tx);
+            """);
+        Raw(connection, tx, $"INSERT INTO meta (key, value) VALUES ('schema_version', '{SchemaVersion}') " +
+             $"ON CONFLICT (key) DO UPDATE SET value = excluded.value WHERE CAST(value AS INTEGER) < {SchemaVersion}");
+    }
+
+    /// <summary>Runs <paramref name="sql"/> on <paramref name="connection"/> as written (no dialect rewrite, no mirror).</summary>
+    internal static int Raw(DbConnection connection, DbTransaction? tx, string sql, params (string Name, object? Value)[] args)
+    {
+        using var cmd = connection.CreateCommand();
+        cmd.Transaction = tx;
+        cmd.CommandText = sql;
+        foreach (var (n, v) in args)
+        {
+            var p = cmd.CreateParameter();
+            p.ParameterName = n;
+            p.Value = v ?? DBNull.Value;
+            cmd.Parameters.Add(p);
+        }
+        return cmd.ExecuteNonQuery();
     }
 
     // ── Import ──────────────────────────────────────────────────────────────
@@ -240,7 +278,7 @@ public sealed partial class TicketsDb : IDisposable
             .Where(x => x.Doc.Code is not null)
             .ToList();
 
-        using (var tx = db.BeginTransaction())
+        using (var tx = Begin())
         {
             Exec("DROP TRIGGER IF EXISTS tickets_no_delete; DROP TRIGGER IF EXISTS tickets_append_only; DROP TRIGGER IF EXISTS tickets_history;", tx);
             foreach (var (repo, _, _) in docs)
@@ -259,7 +297,7 @@ public sealed partial class TicketsDb : IDisposable
         }
 
         var linkCounts = ImportLinks(docs.Select(d => (d.Repo, d.Doc)).ToList(), extraRequires);
-        Exec("INSERT OR REPLACE INTO meta (key, value) VALUES ('migrated_at', $v)", null, ("$v", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ", CultureInfo.InvariantCulture)));
+        SetMeta("migrated_at", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ", CultureInfo.InvariantCulture));
 
         return [.. docs.Select(d => new ImportReport(d.Repo.Name, d.Doc.Code!,
             d.Doc.Blocks.Count(b => b.Kind == BlockKind.Epic), d.Doc.Stories.Count,
@@ -267,7 +305,7 @@ public sealed partial class TicketsDb : IDisposable
             Export(d.Repo.Name) is { } bytes && bytes.SequenceEqual(d.Bytes)))];
     }
 
-    private void ImportOne(Repo repo, StoryDocument doc, SqliteTransaction tx)
+    private void ImportOne(Repo repo, StoryDocument doc, DbTransaction tx)
     {
         var fm = string.Join("\n", doc.FrontMatter.Select(kv => $"{kv.Key}: {kv.Value}"));
         Exec("INSERT INTO repos (name, code, project, title, updated, front_matter, bom, crlf, trailing_newline) VALUES ($n, $c, $p, $t, $u, $fm, $b, $cr, $tn)", tx,
@@ -283,7 +321,10 @@ public sealed partial class TicketsDb : IDisposable
             switch (b.Kind)
             {
                 case BlockKind.Epic:
-                    Exec("INSERT OR REPLACE INTO epics (repo, key, title, anchor, ordinal) VALUES ($r, $k, $t, $a, $o)", tx,
+                    Exec(server is null
+                            ? "INSERT OR REPLACE INTO epics (repo, key, title, anchor, ordinal) VALUES ($r, $k, $t, $a, $o)"
+                            : "UPDATE epics SET title = $t, anchor = $a, ordinal = $o WHERE repo = $r AND key = $k; " +
+                              "IF @@ROWCOUNT = 0 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ($r, $k, $t, $a, $o)", tx,
                         ("$r", repo.Name), ("$k", b.Epic!.Key), ("$t", b.Epic.Title), ("$a", b.Epic.Anchor), ("$o", epicOrdinal++));
                     reference = b.Epic.Key;
                     break;
@@ -326,15 +367,17 @@ public sealed partial class TicketsDb : IDisposable
         var storyIds = Rows("SELECT DISTINCT story_id FROM stories", r => r.GetString(0)).ToHashSet(StringComparer.Ordinal);
         var repos = docs.Select(d => d.Repo.Name).ToHashSet(StringComparer.Ordinal);
 
-        using var tx = db.BeginTransaction();
+        using var tx = Begin();
         // Links from the migrated repos are derived again; links added by hand to other items are kept. 'supersedes' is
         // the one kind whose derived direction is flipped from the ticket whose Ref was actually parsed (from = the
         // superseding ticket, which can be in a different repo; to = the reimported ticket), so it also needs the to_id
         // side checked, or a stale 'supersedes' link survives a reimport of just the superseded ticket's repo.
-        Exec("DELETE FROM links WHERE note LIKE 'migrated:%' AND (from_id IN (SELECT id FROM tickets WHERE repo IN (SELECT value FROM json_each($r))) " +
-             "OR from_id IN (SELECT story_id FROM stories WHERE repo IN (SELECT value FROM json_each($r))) " +
-             "OR (kind = 'supersedes' AND to_id IN (SELECT id FROM tickets WHERE repo IN (SELECT value FROM json_each($r)))))", tx,
-             ("$r", System.Text.Json.JsonSerializer.Serialize(repos)));
+        // The repos as one parameter each, which both dialects take (SQLite's json_each has no T-SQL twin with the same name).
+        var names = repos.Select((r, i) => ("$r" + i, (object?)r)).ToArray();
+        var inRepos = names.Length == 0 ? "(NULL)" : "(" + string.Join(", ", names.Select(n => n.Item1)) + ")";
+        Exec($"DELETE FROM links WHERE note LIKE 'migrated:%' AND (from_id IN (SELECT id FROM tickets WHERE repo IN {inRepos}) " +
+             $"OR from_id IN (SELECT story_id FROM stories WHERE repo IN {inRepos}) " +
+             $"OR (kind = 'supersedes' AND to_id IN (SELECT id FROM tickets WHERE repo IN {inRepos})))", tx, names);
         void Link(string repo, string from, string to, string kind, string why)
         {
             if (from == to) return;
@@ -489,7 +532,7 @@ public sealed partial class TicketsDb : IDisposable
     }
 
     /// <summary>The ticket in the six columns id, date, type, status, summary, ref starting at <paramref name="at"/>.</summary>
-    private static Ticket ReadTicket(SqliteDataReader r, int at) =>
+    private static Ticket ReadTicket(DbDataReader r, int at) =>
         new(r.GetString(at), r.GetString(at + 1), r.GetString(at + 2), r.GetString(at + 3), r.GetString(at + 4), r.GetString(at + 5));
 
     /// <summary>Adds a ticket to <paramref name="repo"/> with the next free number (never reusing a gap), atomically.</summary>
@@ -544,7 +587,7 @@ public sealed partial class TicketsDb : IDisposable
         if (string.IsNullOrWhiteSpace(reason)) throw new ArgumentException("A correction needs a reason.", nameof(reason));
         var t = Ticket(id)?.Ticket ?? throw new KeyNotFoundException($"No ticket {id}.");
         if (t.Type == type) return t;
-        using (var tx = db.BeginTransaction())
+        using (var tx = Begin())
         {
             Exec("DROP TRIGGER tickets_append_only", tx);
             Exec("UPDATE tickets SET type = $ty, row_md = NULL WHERE id = $id", tx, ("$ty", type), ("$id", t.Id));
@@ -587,7 +630,7 @@ public sealed partial class TicketsDb : IDisposable
         int ticketsMoved;
         try
         {
-            using (var tx = db.BeginTransaction())
+            using (var tx = Begin())
             {
                 Exec("DROP TRIGGER IF EXISTS tickets_append_only", tx);
                 Exec("UPDATE repos SET name = $n WHERE name = $o", tx, ("$n", newName), ("$o", name));
@@ -625,7 +668,7 @@ public sealed partial class TicketsDb : IDisposable
     // The page names its repo too: front matter's "project: <name>", the "# <name> — User Stories" title,
     // and the raw header block they're rendered from. Only those exact spots change; any other mention of the
     // old name (a ticket summary, a story) is history and stays as written.
-    private void RenameInPage(string oldName, string newName, SqliteTransaction tx)
+    private void RenameInPage(string oldName, string newName, DbTransaction tx)
     {
         string Rewrite(string text) => text
             .Replace($"\nproject: {oldName}\n", $"\nproject: {newName}\n", StringComparison.Ordinal)
@@ -696,7 +739,7 @@ public sealed partial class TicketsDb : IDisposable
     public IReadOnlyList<Link> AllLinks() =>
         [.. Rows("SELECT from_id, to_id, kind, note FROM links ORDER BY from_id, kind, to_id", ReadLink)];
 
-    private static Link ReadLink(SqliteDataReader r) => new(r.GetString(0), r.GetString(1), r.GetString(2), r.IsDBNull(3) ? null : r.GetString(3));
+    private static Link ReadLink(DbDataReader r) => new(r.GetString(0), r.GetString(1), r.GetString(2), r.IsDBNull(3) ? null : r.GetString(3));
 
     /// <summary>What <paramref name="id"/> requires (directly, or all the way down).</summary>
     public IReadOnlyList<string> Requires(string id, bool transitive = false)
@@ -722,7 +765,7 @@ public sealed partial class TicketsDb : IDisposable
         [.. Rows("SELECT uid, repo, story_id, status, glyph, suffix, text, source, parent_uid, epic, section, evidence, acceptance FROM stories " +
                  "WHERE story_id = $id COLLATE NOCASE ORDER BY repo, ordinal", ReadStory, ("$id", id))];
 
-    private static StoredStory ReadStory(SqliteDataReader r) => new(r.GetInt64(0), r.GetString(1), r.GetString(2),
+    private static StoredStory ReadStory(DbDataReader r) => new(r.GetInt64(0), r.GetString(1), r.GetString(2),
         r.IsDBNull(3) ? null : r.GetString(3), r.IsDBNull(4) ? null : r.GetString(4), r.GetString(5), r.GetString(6), r.GetString(7),
         r.IsDBNull(8) ? null : r.GetInt64(8), r.IsDBNull(9) ? null : r.GetString(9), r.IsDBNull(10) ? null : r.GetString(10),
         r.IsDBNull(11) ? null : r.GetString(11), r.IsDBNull(12) ? null : r.GetString(12));
@@ -736,7 +779,7 @@ public sealed partial class TicketsDb : IDisposable
         var glyph = StoryDocument.GlyphOf(status);
         var stories = Story(id).Where(s => repo is null || s.Repo.Equals(repo, StringComparison.OrdinalIgnoreCase)).ToList();
         if (stories.Count == 0) throw new KeyNotFoundException($"No story {id}{(repo is null ? "" : " in " + repo)}.");
-        using var tx = db.BeginTransaction();
+        using var tx = Begin();
         foreach (var s in stories)
         {
             Exec("UPDATE stories SET status = $s, glyph = $g WHERE uid = $u", tx, ("$s", status), ("$g", glyph), ("$u", s.Uid));
@@ -770,7 +813,7 @@ public sealed partial class TicketsDb : IDisposable
 
         // The next free ID is read inside the write transaction, as Add does for tickets: read before it, two agents adding
         // a story to the same epic at once both got the same ID.
-        using var tx = db.BeginTransaction();
+        using var tx = Begin();
         var next = 1 + Rows("SELECT story_id FROM stories WHERE repo = $r AND story_id LIKE $p", tx, r => r.GetString(0), ("$r", name), ("$p", prefix + "%"))
             .Select(id => int.TryParse(id[prefix.Length..], out var n) ? n : 0).DefaultIfEmpty(0).Max();
         var id = prefix + next;
@@ -803,7 +846,7 @@ public sealed partial class TicketsDb : IDisposable
         if (s.Source == "table") throw new InvalidOperationException($"{id} is a table row; edit table stories with a new row instead.");
         var indent = s.Source == "sub-bullet" ? "  " : "";
         var suffix = s.Suffix.Length > 0 ? " " + s.Suffix : "";
-        using var tx = db.BeginTransaction();
+        using var tx = Begin();
         Exec("UPDATE stories SET text = $t, evidence = NULL, acceptance = NULL WHERE uid = $u", tx, ("$t", OneLine(text)), ("$u", s.Uid));
         Exec("UPDATE blocks SET text = $x WHERE repo = $r AND kind = 'story' AND ref = $u", tx,
             ("$x", $"{indent}- **{s.Id} {s.Glyph}{suffix}** {OneLine(text)}"), ("$r", s.Repo), ("$u", s.Uid.ToString(CultureInfo.InvariantCulture)));
@@ -816,7 +859,7 @@ public sealed partial class TicketsDb : IDisposable
         var (name, _) = RepoRow(repo);
         if (Scalar("SELECT 1 FROM epics WHERE repo = $r AND key = $k COLLATE NOCASE", null, ("$r", name), ("$k", key)) is not null)
             throw new InvalidOperationException($"{name} already has epic {key}.");
-        using var tx = db.BeginTransaction();
+        using var tx = Begin();
         var at = (long)(Scalar("SELECT COALESCE(MIN(ordinal), (SELECT COALESCE(MAX(ordinal), -1) + 1 FROM blocks WHERE repo = $r)) FROM blocks WHERE repo = $r AND kind = 'tickets'", tx, ("$r", name)) ?? 0L);
         Exec("INSERT INTO epics (repo, key, title, ordinal) VALUES ($r, $k, $t, (SELECT COALESCE(MAX(ordinal), -1) + 1 FROM epics WHERE repo = $r))", tx,
             ("$r", name), ("$k", key), ("$t", OneLine(title)));
@@ -833,7 +876,7 @@ public sealed partial class TicketsDb : IDisposable
         var (name, _) = RepoRow(repo);
         // Position and number are read inside the write transaction: read before it, two concurrent adds took the same
         // number and block position.
-        using var tx = db.BeginTransaction();
+        using var tx = Begin();
         var last = Rows("SELECT b.ordinal, i.ordinal FROM blocks b JOIN backlog_items i ON i.repo = b.repo AND CAST(i.uid AS TEXT) = b.ref " +
                         "WHERE b.repo = $r AND b.kind = 'backlog' ORDER BY b.ordinal DESC LIMIT 1", tx, r => (r.GetInt64(0), r.GetInt64(1)), ("$r", name)).ToList();
         var heading = Rows("SELECT ordinal, text FROM blocks WHERE repo = $r AND kind = 'raw' AND text LIKE '%## Priority backlog%'", tx, r => (r.GetInt64(0), r.GetString(1)), ("$r", name)).FirstOrDefault();
@@ -875,7 +918,7 @@ public sealed partial class TicketsDb : IDisposable
     }
 
     /// <summary>Inserts a block at <paramref name="ordinal"/>, moving every later block of the repo down one.</summary>
-    private void InsertBlock(string repo, long ordinal, string kind, string? reference, string text, SqliteTransaction tx)
+    private void InsertBlock(string repo, long ordinal, string kind, string? reference, string text, DbTransaction tx)
     {
         // Two steps, so the (repo, ordinal) key never collides mid-update.
         Exec("UPDATE blocks SET ordinal = -ordinal - 1 WHERE repo = $r AND ordinal >= $o", tx, ("$r", repo), ("$o", ordinal));
@@ -926,7 +969,7 @@ public sealed partial class TicketsDb : IDisposable
         var log = new List<string>();
         var tickets = Rows("SELECT id FROM tickets", r => r.GetString(0)).ToHashSet(StringComparer.OrdinalIgnoreCase);
         var padded = AllLinks().Where(l => l.From.Trim() != l.From || l.To.Trim() != l.To).ToList();
-        using var tx = db.BeginTransaction();
+        using var tx = Begin();
         foreach (var l in padded)
         {
             var (from, to) = (l.From.Trim(), l.To.Trim());
@@ -996,22 +1039,27 @@ public sealed partial class TicketsDb : IDisposable
 
     // ── Plumbing ────────────────────────────────────────────────────────────
 
-    private int Exec(string sql, SqliteTransaction? tx = null, params (string Name, object? Value)[] args)
+    private int Exec(string sql, DbTransaction? tx = null, params (string Name, object? Value)[] args)
     {
         using var cmd = Command(sql, tx, args);
-        return cmd.ExecuteNonQuery();
+        var n = cmd.ExecuteNonQuery();
+        Wrote(sql, cmd.Transaction);
+        return n;
     }
 
-    private object? Scalar(string sql, SqliteTransaction? tx = null, params (string Name, object? Value)[] args)
+    /// <summary>The first column of the first row; an <c>int</c> (SQL Server's COUNT) comes back a <c>long</c>, as SQLite's does.</summary>
+    private object? Scalar(string sql, DbTransaction? tx = null, params (string Name, object? Value)[] args)
     {
         using var cmd = Command(sql, tx, args);
-        return cmd.ExecuteScalar();
+        var v = cmd.ExecuteScalar();
+        Wrote(sql, cmd.Transaction);
+        return v switch { int i => (long)i, short s => (long)s, _ => v };
     }
 
-    private List<T> Rows<T>(string sql, Func<SqliteDataReader, T> read, params (string Name, object? Value)[] args) =>
+    private List<T> Rows<T>(string sql, Func<DbDataReader, T> read, params (string Name, object? Value)[] args) =>
         Rows(sql, null, read, args);
 
-    private List<T> Rows<T>(string sql, SqliteTransaction? tx, Func<SqliteDataReader, T> read, params (string Name, object? Value)[] args)
+    private List<T> Rows<T>(string sql, DbTransaction? tx, Func<DbDataReader, T> read, params (string Name, object? Value)[] args)
     {
         using var cmd = Command(sql, tx, args);
         using var r = cmd.ExecuteReader();
@@ -1020,12 +1068,19 @@ public sealed partial class TicketsDb : IDisposable
         return list;
     }
 
-    private SqliteCommand Command(string sql, SqliteTransaction? tx, (string Name, object? Value)[] args)
+    private DbCommand Command(string sql, DbTransaction? tx, (string Name, object? Value)[] args)
     {
         var cmd = db.CreateCommand();
-        cmd.CommandText = sql;
-        cmd.Transaction = tx;
-        foreach (var (n, v) in args) cmd.Parameters.AddWithValue(n, v ?? DBNull.Value);
+        cmd.CommandText = server is null ? sql : ToTransactSql(sql);
+        // A write transaction open on the connection takes every command: SQL Server refuses one without it.
+        cmd.Transaction = tx ?? ambient;
+        foreach (var (n, v) in args)
+        {
+            var p = cmd.CreateParameter();
+            p.ParameterName = server is null ? n : "@" + n.TrimStart('$', '@');
+            p.Value = v ?? DBNull.Value;
+            cmd.Parameters.Add(p);
+        }
         return cmd;
     }
 

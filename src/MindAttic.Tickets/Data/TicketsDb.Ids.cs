@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using System.Data.Common;
 using Microsoft.Data.Sqlite;
 using MindAttic.Tickets.Log;
 
@@ -34,7 +35,7 @@ public sealed partial class TicketsDb
         if (newCode != code) throw new ArgumentException($"{newId} doesn't use {repo}'s code '{code}'; change the code with 'repos recode'.", nameof(newId));
         if (IdTaken(newId)) throw new InvalidOperationException($"{newId} is (or was) already an ID; IDs are never reused.");
 
-        using (var tx = db.BeginTransaction())
+        using (var tx = Begin())
         {
             Exec("PRAGMA defer_foreign_keys = ON", tx); // ticket_events follow the ticket within this transaction
             Exec("DROP TRIGGER IF EXISTS tickets_append_only", tx);
@@ -71,7 +72,7 @@ public sealed partial class TicketsDb
         var codeLine = new Regex(@"(?m)^(code:[ \t]*)" + Regex.Escape(oldCode) + @"(?=[ \t]*\r?$)");
         var mention = new Regex(@"(?<![A-Za-z0-9.])" + Regex.Escape(oldCode) + @"(?=-(?:T\d|US-|EPIC-))");
         string Rewrite(string text) => mention.Replace(codeLine.Replace(text, "${1}" + newCode, 1), newCode);
-        using (var tx = db.BeginTransaction())
+        using (var tx = Begin())
         {
             Exec("PRAGMA defer_foreign_keys = ON", tx);
             Exec("DROP TRIGGER IF EXISTS tickets_append_only", tx);
@@ -147,7 +148,7 @@ public sealed partial class TicketsDb
         Scalar("SELECT 1 FROM tickets WHERE id = $i COLLATE NOCASE UNION ALL SELECT 1 FROM id_history WHERE old_id = $i COLLATE NOCASE " +
                "UNION ALL SELECT 1 FROM stories WHERE story_id = $i COLLATE NOCASE LIMIT 1", null, ("$i", id)) is not null;
 
-    private void ReassignTicketCore(string oldId, string newId, string reason, SqliteTransaction tx)
+    private void ReassignTicketCore(string oldId, string newId, string reason, DbTransaction tx)
     {
         Exec("UPDATE tickets SET id = $n, number = $num, row_md = NULL WHERE id = $o", tx, ("$n", newId), ("$num", TicketRules.ParseNumber(newId)), ("$o", oldId));
         Exec("UPDATE ticket_events SET ticket_id = $n WHERE ticket_id = $o", tx, ("$n", newId), ("$o", oldId));
@@ -159,7 +160,7 @@ public sealed partial class TicketsDb
     }
 
     // A link that would duplicate one already pointing at the new ID is dropped rather than kept under the old ID.
-    private void RetargetLinks(string oldId, string newId, SqliteTransaction tx)
+    private void RetargetLinks(string oldId, string newId, DbTransaction tx)
     {
         foreach (var end in new[] { "from_id", "to_id" })
         {
@@ -168,6 +169,6 @@ public sealed partial class TicketsDb
         }
     }
 
-    private void RecordId(string kind, string oldId, string newId, string reason, SqliteTransaction tx) =>
+    private void RecordId(string kind, string oldId, string newId, string reason, DbTransaction tx) =>
         Exec("INSERT INTO id_history (kind, old_id, new_id, at, reason) VALUES ($k, $o, $n, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), $r)", tx,
             ("$k", kind), ("$o", oldId), ("$n", newId), ("$r", reason));}

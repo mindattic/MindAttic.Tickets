@@ -1,3 +1,4 @@
+using System.Data.Common;
 using MindAttic.Tickets.Log;
 
 namespace MindAttic.Tickets.Data;
