@@ -7007,7 +7007,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UH-T12', 'Unity.Hare', 12, '2026-10-21', 'feature', 'closed', 'Implement shared ammo-cost and ammo-subtraction economy for air/ground weapons', '7a75849', 11, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UH-T13', 'Unity.Hare', 13, '2026-10-21', 'feature', 'closed', 'Implement flying insect enemies and their ai_* movement scripts', '68a46cd', 12, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UH-T14', 'Unity.Hare', 14, '2026-10-21', 'feature', 'closed', 'Implement set-piece enemies: hydra, phalanx+shield, meatball, wraith, sawblade, worm, trilobyte, mimic', 'b80a36d', 13, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UH-T15', 'Unity.Hare', 15, '2026-10-21', 'feature', 'open', 'Implement enemy spawn emitters and generate_enemy_list pacing', 'UH-US-E3', 14, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UH-T15', 'Unity.Hare', 15, '2026-10-21', 'feature', 'closed', 'Implement enemy spawn emitters and generate_enemy_list pacing', '55ae20b', 14, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UH-T16', 'Unity.Hare', 16, '2026-10-21', 'feature', 'open', 'Implement per-enemy death effects (gibs, explosions, death particles)', 'UH-US-E4', 15, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UH-T17', 'Unity.Hare', 17, '2026-10-21', 'feature', 'open', 'Implement destructible rock field (spawn, movement, destruction)', 'UH-US-F1', 16, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UH-T18', 'Unity.Hare', 18, '2026-10-21', 'feature', 'open', 'Implement ambient weather/environment emitters (cloud, rain, snow, sand, fog)', 'UH-US-F2', 17, NULL);
@@ -17345,6 +17345,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (9661, 'U
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (9662, 'U.SPC-T423', '2026-10-23T10:59:13Z', 'ref', 'owner 2026-10-21', 'e2d67bc StrategicCommandTests');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (9663, 'M.ORCH-T659', '2026-10-23T11:06:14Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (9664, 'M.ORCH-T659', '2026-10-23T11:06:14Z', 'ref', 'data/orchestrator.db pace_ledger', '6d2cda5');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (9665, 'UH-T15', '2026-10-23T11:14:34Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (9666, 'UH-T15', '2026-10-23T11:14:34Z', 'ref', 'UH-US-E3', '55ae20b');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z');
