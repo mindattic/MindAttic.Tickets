@@ -37,7 +37,7 @@ if ($LASTEXITCODE -ne 0) { throw 'Tool install/update failed.' }
 
 # Temporary: a `workflow` shim beside the tool forwards to `tickets`, so callers not yet moved to the new name keep
 # working (workflow.cmd for PowerShell and cmd, an extensionless script for Git Bash and the commit-msg hook).
-$toolDir = Join-Path $env:USERPROFILE '.dotnet	ools'
+$toolDir = Join-Path $env:USERPROFILE '.dotnet\tools'
 Set-Content -Path (Join-Path $toolDir 'workflow.cmd') -Encoding ascii -Value "@echo off`r`nrem Temporary shim: MindAttic.Workflow was renamed MindAttic.Tickets (M.TIX-T120). Use 'tickets'.`r`ntickets %*"
 [IO.File]::WriteAllText((Join-Path $toolDir 'workflow'), "#!/bin/sh`n# Temporary shim: MindAttic.Workflow was renamed MindAttic.Tickets (M.TIX-T120). Use 'tickets'.`nexec tickets `"`$@`"`n")
 
