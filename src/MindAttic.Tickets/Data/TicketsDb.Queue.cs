@@ -18,7 +18,8 @@ public sealed partial class TicketsDb
     public IReadOnlyList<QueueEntry> Queue(string? repo = null) =>
         [.. Rows(
             "SELECT t.repo, t.id, t.date, t.type, t.status, t.summary, t.ref, COALESCE(q.approval, 'proposed'), COALESCE(q.priority, 0) " +
-            "FROM tickets t LEFT JOIN ticket_queue q ON q.ticket_id = t.id " +
+            // Without case, as ticket_queue.ticket_id's own collation compares: said here so SQL Server joins it the same way.
+            "FROM tickets t LEFT JOIN ticket_queue q ON q.ticket_id = t.id COLLATE NOCASE " +
             "WHERE t.status = 'open' AND ($r IS NULL OR t.repo = $r COLLATE NOCASE) " +
             "ORDER BY COALESCE(q.priority, 0) DESC, t.date, t.repo COLLATE NOCASE, t.ordinal",
             r => new QueueEntry(r.GetString(0), ReadTicket(r, 1), r.GetString(7), r.GetInt64(8)),
@@ -133,8 +134,12 @@ public sealed partial class TicketsDb
     }
 
     private void Upsert(string id, string approval, long priority) =>
-        Exec("INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ($id, $a, $p, strftime('%Y-%m-%dT%H:%M:%SZ', 'now')) " +
-             "ON CONFLICT (ticket_id) DO UPDATE SET approval = excluded.approval, priority = excluded.priority, updated = excluded.updated",
+        Exec(server is null
+                ? "INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ($id, $a, $p, strftime('%Y-%m-%dT%H:%M:%SZ', 'now')) " +
+                  "ON CONFLICT (ticket_id) DO UPDATE SET approval = excluded.approval, priority = excluded.priority, updated = excluded.updated"
+                // ticket_id is case-insensitive there as here (its column's collation), so the update finds the row the insert would clash with.
+                : "UPDATE ticket_queue SET approval = $a, priority = $p, updated = strftime('%Y-%m-%dT%H:%M:%SZ', 'now') WHERE ticket_id = $id; " +
+                  "IF @@ROWCOUNT = 0 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ($id, $a, $p, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'))",
             null, ("$id", id), ("$a", approval), ("$p", priority));
 
     private void Event(string id, string field, string? old, string? value) =>
@@ -149,18 +154,11 @@ public sealed partial class TicketsDb
         return t.Status == TicketRules.Open ? t : throw new InvalidOperationException($"{t.Id} is {t.Status}; only open tickets can be approved or rejected.");
     }
 
+    /// <summary>Runs <paramref name="work"/> in one write transaction every command in it joins; thrown, it's rolled back.</summary>
     private void InWrite(Action work)
     {
-        Exec("BEGIN IMMEDIATE");
-        try
-        {
-            work();
-            Exec("COMMIT");
-        }
-        catch
-        {
-            Exec("ROLLBACK");
-            throw;
-        }
+        using var tx = Begin();
+        work();
+        tx.Commit();
     }
 }

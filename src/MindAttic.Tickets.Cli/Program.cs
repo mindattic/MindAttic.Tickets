@@ -60,6 +60,13 @@ app.Configure(config =>
         d.AddCommand<DbCheckCommand>("check").WithDescription("Bad IDs, types, dates, dangling links and prerequisite cycles.");
         d.AddCommand<DbRenderCommand>("render").WithDescription("Rewrite each repo's generated USER_STORIES.md view from the database.");
         d.AddCommand<DbSyncCommand>("sync").WithDescription("Write the readable dump and commit (and push) the database.");
+        d.AddBranch("server", s =>
+        {
+            s.SetDescription("Where the ticket database is kept: SQL Server (its own database beside Prose's) or data/Tickets.db, with each table's rows in both.");
+            s.SetDefaultCommand<DbServerStatusCommand>();
+            s.AddCommand<DbServerMigrateCommand>("migrate").WithDescription("Copy data/Tickets.db into SQL Server (--server, --database or --connection; the database is created), check every table's row count, then use it on this machine; --replace copies over a database that already holds tickets.");
+            s.AddCommand<DbServerBackCommand>("back").WithDescription("Copy the SQL Server database back into data/Tickets.db and stop using SQL Server on this machine.");
+        });
     });
 
     config.AddBranch("codes", c =>

@@ -149,13 +149,8 @@ public sealed class TicketsDbTests
             Assert.That(db.Links("AL-US-A1").Select(l => l.To), Does.Contain("AL-EPIC-A"), "an epic resolves by its repo's CODE-EPIC-KEY");
             Assert.That(db.Check(), Is.Empty);
 
-            using (var raw = new SqliteConnection($"Data Source={db.Path};Pooling=False"))
-            {
-                raw.Open();
-                using var cmd = raw.CreateCommand();
-                cmd.CommandText = "INSERT INTO links (from_id, to_id, kind) VALUES ('AL-US-A2', 'SS-EPIC-G', 'part-of'), ('G5a', 'AL-EPIC-Z', 'part-of'), ('AL-T1', 'H10a', 'related')";
-                cmd.ExecuteNonQuery();
-            }
+            // Planted in the store itself (the file, or SQL Server on the suite's SQL Server run): no method writes such links.
+            db.Plant("INSERT INTO links (from_id, to_id, kind) VALUES ('AL-US-A2', 'SS-EPIC-G', 'part-of'), ('G5a', 'AL-EPIC-Z', 'part-of'), ('AL-T1', 'H10a', 'related')");
             Assert.That(db.Check(), Is.EquivalentTo(new[]
             {
                 "link AL-US-A2 part-of SS-EPIC-G: no item SS-EPIC-G",
@@ -172,18 +167,13 @@ public sealed class TicketsDbTests
         var (db, _) = Migrated();
         using (db)
         {
-            using (var raw = new SqliteConnection($"Data Source={db.Path};Pooling=False"))
-            {
-                raw.Open();
-                using var cmd = raw.CreateCommand();
-                // What a CRLF script feeding 'ticket link' left behind (M.TIX-T116): a blank target, a padded one, and a padded duplicate.
-                cmd.CommandText = "INSERT INTO links (from_id, to_id, kind) VALUES ('AL-T1', char(13), 'requires'), ('AL-T2', 'BE-T1' || char(13), 'requires'), " +
-                                  "('BE-T2', 'AL-T1', 'related'), ('BE-T2', 'AL-T1' || char(13), 'related'); " +
-                                  // And a story's epic link under an old code (Prose's SS-EPIC-G with its code now PRS).
-                                  "DELETE FROM links WHERE from_id = 'AL-US-A1' AND kind = 'part-of'; " +
-                                  "INSERT INTO links (from_id, to_id, kind) VALUES ('AL-US-A1', 'SS-EPIC-A', 'part-of'), ('AL-US-A2', 'SS-EPIC-A', 'part-of')";
-                cmd.ExecuteNonQuery();
-            }
+            // What a CRLF script feeding 'ticket link' left behind (M.TIX-T116): a blank target, a padded one, and a padded duplicate,
+            // planted in the store itself (the CRs as parameters, which both dialects take).
+            db.Plant("INSERT INTO links (from_id, to_id, kind) VALUES ('AL-T1', $cr, 'requires'), ('AL-T2', $be1, 'requires'), " +
+                     "('BE-T2', 'AL-T1', 'related'), ('BE-T2', $al1, 'related')", ("$cr", "\r"), ("$be1", "BE-T1\r"), ("$al1", "AL-T1\r"));
+            // And a story's epic link under an old code (Prose's SS-EPIC-G with its code now PRS).
+            db.Plant("DELETE FROM links WHERE from_id = 'AL-US-A1' AND kind = 'part-of'");
+            db.Plant("INSERT INTO links (from_id, to_id, kind) VALUES ('AL-US-A1', 'SS-EPIC-A', 'part-of'), ('AL-US-A2', 'SS-EPIC-A', 'part-of')");
             Assert.That(db.Check(), Is.EquivalentTo(new[]
             {
                 "link AL-T1 requires \\r: no item (blank; run 'tickets db check --fix')",
@@ -446,6 +436,7 @@ public sealed class TicketsDbTests
     [Test]
     public void Open_disposes_the_connection_when_schema_setup_fails_on_a_corrupt_file()
     {
+        Assume.That(Environment.GetEnvironmentVariable(TicketsServer.TestEnvVar), Is.Null.Or.Empty, "a SQLite file's own failure; the SQL Server run opens no file");
         // Pooling is off, so if the failed Open()/EnsureSchema() left the SqliteConnection undisposed, the file
         // handle would stay held (until a finalizer eventually ran) and Windows would refuse to overwrite it.
         var path = Path.Combine(root, "corrupt.db");
@@ -459,6 +450,7 @@ public sealed class TicketsDbTests
     [Test]
     public void OpenIfMigrated_disposes_the_connection_when_construction_fails_on_a_corrupt_file()
     {
+        Assume.That(Environment.GetEnvironmentVariable(TicketsServer.TestEnvVar), Is.Null.Or.Empty, "a SQLite file's own failure; the SQL Server run opens no file");
         var path = Path.Combine(root, "corrupt.db");
         File.WriteAllBytes(path, "not a sqlite database"u8.ToArray());
         Environment.SetEnvironmentVariable(TicketsDb.EnvVar, path);

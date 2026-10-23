@@ -37,9 +37,10 @@ public sealed partial class TicketsDb
 
         using (var tx = Begin())
         {
-            Exec("PRAGMA defer_foreign_keys = ON", tx); // ticket_events follow the ticket within this transaction
+            DeferForeignKeys(tx); // ticket_events follow the ticket within this transaction
             Exec("DROP TRIGGER IF EXISTS tickets_append_only", tx);
             ReassignTicketCore(t.Id, newId, reason.Trim(), tx);
+            CheckForeignKeys(tx);
             EnsureSchema(tx); // the trigger comes straight back, before commit, so no other connection ever sees it missing
             tx.Commit();
         }
@@ -74,7 +75,7 @@ public sealed partial class TicketsDb
         string Rewrite(string text) => mention.Replace(codeLine.Replace(text, "${1}" + newCode, 1), newCode);
         using (var tx = Begin())
         {
-            Exec("PRAGMA defer_foreign_keys = ON", tx);
+            DeferForeignKeys(tx);
             Exec("DROP TRIGGER IF EXISTS tickets_append_only", tx);
             var fm = (string)Scalar("SELECT front_matter FROM repos WHERE name = $n", tx, ("$n", name))!;
             Exec("UPDATE repos SET code = $c, front_matter = $fm WHERE name = $n", tx,
@@ -88,7 +89,8 @@ public sealed partial class TicketsDb
                 if (!id.StartsWith(oldCode + "-", StringComparison.Ordinal)) continue;
                 var to = Swap(id);
                 Exec("UPDATE stories SET story_id = $t WHERE repo = $n AND story_id = $o", tx, ("$t", to), ("$n", name), ("$o", id));
-                Exec("UPDATE OR IGNORE backlog_refs SET story_id = $t WHERE story_id = $o AND item_uid IN (SELECT uid FROM backlog_items WHERE repo = $n)", tx,
+                Exec("UPDATE backlog_refs SET story_id = $t WHERE story_id = $o AND item_uid IN (SELECT uid FROM backlog_items WHERE repo = $n) " +
+                    "AND NOT EXISTS (SELECT 1 FROM backlog_refs x WHERE x.item_uid = backlog_refs.item_uid AND x.story_id = $t)", tx,
                     ("$t", to), ("$o", id), ("$n", name));
                 RetargetLinks(id, to, tx);
                 RecordId("story", id, to, reason.Trim(), tx);
@@ -111,6 +113,7 @@ public sealed partial class TicketsDb
                     Exec("UPDATE backlog_items SET text = $t WHERE uid = $u", tx, ("$t", rewritten), ("$u", uid));
 
             RecordId("code", oldCode, newCode, reason.Trim(), tx);
+            CheckForeignKeys(tx);
             EnsureSchema(tx);
             tx.Commit();
         }
@@ -164,7 +167,10 @@ public sealed partial class TicketsDb
     {
         foreach (var end in new[] { "from_id", "to_id" })
         {
-            Exec($"UPDATE OR IGNORE links SET {end} = $n WHERE {end} = $o COLLATE NOCASE", tx, ("$n", newId), ("$o", oldId));
+            // Both dialects: UPDATE OR IGNORE is SQLite's; a row that would duplicate a link already there is left for the DELETE below.
+            var other = end == "from_id" ? "to_id" : "from_id";
+            Exec($"UPDATE links SET {end} = $n WHERE {end} = $o COLLATE NOCASE AND {other} <> $n AND NOT EXISTS " +
+                 $"(SELECT 1 FROM links x WHERE x.{end} = $n AND x.{other} = links.{other} AND x.kind = links.kind)", tx, ("$n", newId), ("$o", oldId));
             Exec($"DELETE FROM links WHERE {end} = $o COLLATE NOCASE", tx, ("$o", oldId));
         }
     }

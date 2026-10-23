@@ -163,6 +163,9 @@ public sealed class DbSyncCommand : Command<DbSyncCommand.Settings>
             // Changes made outside the CLI (the orchestrator's GitHub intake) reach the views here; each repo commits its own.
             if (db.Render(settings.Workspace) is { Count: > 0 } views)
                 AnsiConsole.MarkupLine($"[grey]Refreshed the USER_STORIES.md view in {Output.Esc(string.Join(", ", views))}.[/]");
+            // On SQL Server (M.TIX-T131) the file committed is the copy: rewritten whole first, so a copy a write couldn't
+            // make then is made now, and the commit holds what the server does.
+            db.CopyAll();
             dump = db.Dump();
             if (settings.Ticket is { } t && db.Ticket(t) is null) throw new InvalidOperationException($"No ticket {t} in the ticket database.");
         }

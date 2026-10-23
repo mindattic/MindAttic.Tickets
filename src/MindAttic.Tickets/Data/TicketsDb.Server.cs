@@ -24,7 +24,9 @@ public sealed partial class TicketsDb
     {
         private bool done;
 
-        public static implicit operator DbTransaction(Tx t) => t.inner;
+        private DbTransaction Inner => inner;
+
+        public static implicit operator DbTransaction(Tx t) => t.Inner;
 
         public void Commit()
         {
@@ -62,6 +64,13 @@ public sealed partial class TicketsDb
                 throw new IOException("The ticket database on SQL Server stayed busy past its timeout.");
             }
         }
+        else if (TicketsServer.For(Path) is not null)
+        {
+            // Opened on the file, then waited on its lock while `tickets db server migrate` moved the database: a write here
+            // would land in what's only a copy now.
+            tx.Dispose();
+            throw new InvalidOperationException("The ticket database just moved to SQL Server; run the command again.");
+        }
         ambient = tx;
         return new Tx(this, tx);
     }
@@ -87,9 +96,20 @@ public sealed partial class TicketsDb
         if (server is null || touched.Count == 0) return;
         var tables = TableOrder.Where(touched.Contains).ToList();
         touched.Clear();
-        try { CopyTables(db, null, Path, tables); }
-        catch (Exception ex) when (ex is SqliteException or IOException or UnauthorizedAccessException) { }
+        try
+        {
+            CopyTables(db, null, Path, tables);
+            LastCopyError = null;
+        }
+        catch (Exception ex) when (ex is SqliteException or IOException or UnauthorizedAccessException) { LastCopyError = ex.Message; }
     }
+
+    /// <summary>Runs <paramref name="sql"/> against the store as written (rewritten for SQL Server): a test planting rows no
+    /// method would write (a link to nothing, an ID with a stray CR), on whichever store it's running against.</summary>
+    internal void Plant(string sql, params (string Name, object? Value)[] args) => Exec(sql, null, args);
+
+    /// <summary>Why the last copy into the file couldn't be made (null when it was), for <c>tickets db server</c> to say.</summary>
+    public string? LastCopyError { get; private set; }
 
     /// <summary>Every table, parents before children (the order rows go in and the order the dump lists them).</summary>
     internal static readonly string[] TableOrder =
@@ -233,21 +253,25 @@ public sealed partial class TicketsDb
         TicketsServer.CreateDatabase(connection);
         var server = new TicketsServer(connection);
         using (var schema = new TicketsDbOn(server)) { } // creates the tables and triggers
-        using var source = new SqliteConnection($"Data Source={System.IO.Path.GetFullPath(file)};Pooling=False;Mode=ReadOnly");
+        // The file's write lock is held from the copy until SQL Server is switched on: a ticket added meanwhile waits for it, then
+        // opens on SQL Server (the setting is read at every open), rather than landing in the file after its rows were read.
+        using var source = new SqliteConnection($"Data Source={System.IO.Path.GetFullPath(file)};Pooling=False");
         source.Open();
+        Raw(source, null, "PRAGMA busy_timeout = 15000;");
+        using var held = source.BeginTransaction(deferred: false);
         using var target = server.Open();
         using var tx = target.BeginTransaction();
         Raw(target, tx, "DECLARE @r int; EXEC @r = sp_getapplock @Resource = N'MindAttic.Tickets.write', @LockMode = N'Exclusive', @LockOwner = N'Transaction', @LockTimeout = 15000;");
-        var held = Convert.ToInt64(ScalarOn(target, tx, "SELECT COUNT_BIG(*) FROM tickets"), System.Globalization.CultureInfo.InvariantCulture);
-        if (held > 0 && !replace)
-            throw new InvalidOperationException($"{server.Describe()} already holds {held} tickets; pass --replace to copy {file} over them.");
+        var there0 = Convert.ToInt64(ScalarOn(target, tx, "SELECT COUNT_BIG(*) FROM tickets"), System.Globalization.CultureInfo.InvariantCulture);
+        if (there0 > 0 && !replace)
+            throw new InvalidOperationException($"{server.Describe()} already holds {there0} tickets; pass --replace to copy {file} over them.");
         foreach (var (name, _) in TicketsServer.Triggers) Raw(target, tx, $"DISABLE TRIGGER {name} ON {TriggerTable(name)}");
         foreach (var t in TicketsServer.Referencing) Raw(target, tx, $"ALTER TABLE {t} NOCHECK CONSTRAINT ALL");
         foreach (var table in TableOrder.Reverse()) Raw(target, tx, $"DELETE FROM {table}");
         var copied = new List<Copied>();
         foreach (var table in TableOrder)
         {
-            var rows = ReadAll(source, null, table);
+            var rows = ReadAll(source, held, table);
             if (TicketsServer.Identities.Contains(table)) Raw(target, tx, $"SET IDENTITY_INSERT {table} ON");
             foreach (var row in rows) Insert(target, tx, table, row, quote: true);
             if (TicketsServer.Identities.Contains(table)) Raw(target, tx, $"SET IDENTITY_INSERT {table} OFF");
@@ -260,6 +284,7 @@ public sealed partial class TicketsDb
         foreach (var (name, _) in TicketsServer.Triggers) Raw(target, tx, $"ENABLE TRIGGER {name} ON {TriggerTable(name)}");
         tx.Commit();
         if (configure) TicketsServer.Configure(connection);
+        held.Rollback(); // nothing was written to the file; its lock goes now
         return copied;
     }
 

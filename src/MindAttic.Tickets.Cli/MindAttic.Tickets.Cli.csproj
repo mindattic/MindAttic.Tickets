@@ -6,7 +6,7 @@
     <RootNamespace>MindAttic.Tickets.Cli</RootNamespace>
     <AssemblyName>tickets</AssemblyName>
     <!-- HOUSE-LAW-1: whole-number versions only; bump the major. -->
-    <Version>2.0.0</Version>
+    <Version>3.0.0</Version>
     <!-- Installed as a .NET global tool (~/.dotnet/tools is on PATH): tools/install.ps1. -->
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>tickets</ToolCommandName>

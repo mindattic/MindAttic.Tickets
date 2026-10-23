@@ -542,27 +542,21 @@ public sealed partial class TicketsDb : IDisposable
         if (!TicketRules.Statuses.Contains(status)) throw new ArgumentException($"Unknown status '{status}' (expected {string.Join("/", TicketRules.Statuses)}).", nameof(status));
         if (string.IsNullOrWhiteSpace(summary)) throw new ArgumentException("A ticket needs a summary.", nameof(summary));
 
-        Exec("BEGIN IMMEDIATE");
-        try
-        {
-            var (name, code) = FindRepoRow(repo)
-                ?? throw new InvalidOperationException($"{repo} isn't in the ticket database; run 'tickets db migrate' (or 'tickets repos rollout tickets --apply').");
-            var next = (long)(Scalar("SELECT COALESCE(MAX(number), 0) + 1 FROM tickets WHERE repo = $r", null, ("$r", name)) ?? 1L);
-            var ordinal = (long)(Scalar("SELECT COALESCE(MAX(ordinal), -1) + 1 FROM tickets WHERE repo = $r", null, ("$r", name)) ?? 0L);
-            var t = new Ticket($"{code}-T{next}", date ?? TicketRules.Today(), type, status, summary.Trim(), string.IsNullOrWhiteSpace(reference) ? "—" : reference.Trim());
-            Exec("INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal) VALUES ($id, $r, $n, $d, $ty, $st, $su, $ref, $o)", null,
-                ("$id", t.Id), ("$r", name), ("$n", next), ("$d", t.Date), ("$ty", t.Type), ("$st", t.Status), ("$su", t.Summary), ("$ref", t.Ref), ("$o", ordinal));
-            Exec("INSERT INTO ticket_events (ticket_id, at, field, old, new) VALUES ($id, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), 'created', NULL, $st)", null, ("$id", t.Id), ("$st", t.Status));
-            foreach (Match m in BlockedBy().Matches(t.Summary))
-                if (Ticket(m.Groups["id"].Value) is not null) AddLinkCore(t.Id, m.Groups["id"].Value, "requires", "blocked by in summary");
-            Exec("COMMIT");
-            return t;
-        }
-        catch
-        {
-            Exec("ROLLBACK");
-            throw;
-        }
+        // One write transaction (SQLite's BEGIN IMMEDIATE, SQL Server's write lock): the next number is read inside it, so two
+        // agents adding a ticket at once never take the same one. Every command below joins it.
+        using var tx = Begin();
+        var (name, code) = FindRepoRow(repo)
+            ?? throw new InvalidOperationException($"{repo} isn't in the ticket database; run 'tickets db migrate' (or 'tickets repos rollout tickets --apply').");
+        var next = (long)(Scalar("SELECT COALESCE(MAX(number), 0) + 1 FROM tickets WHERE repo = $r", null, ("$r", name)) ?? 1L);
+        var ordinal = (long)(Scalar("SELECT COALESCE(MAX(ordinal), -1) + 1 FROM tickets WHERE repo = $r", null, ("$r", name)) ?? 0L);
+        var t = new Ticket($"{code}-T{next}", date ?? TicketRules.Today(), type, status, summary.Trim(), string.IsNullOrWhiteSpace(reference) ? "—" : reference.Trim());
+        Exec("INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal) VALUES ($id, $r, $n, $d, $ty, $st, $su, $ref, $o)", null,
+            ("$id", t.Id), ("$r", name), ("$n", next), ("$d", t.Date), ("$ty", t.Type), ("$st", t.Status), ("$su", t.Summary), ("$ref", t.Ref), ("$o", ordinal));
+        Exec("INSERT INTO ticket_events (ticket_id, at, field, old, new) VALUES ($id, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), 'created', NULL, $st)", null, ("$id", t.Id), ("$st", t.Status));
+        foreach (Match m in BlockedBy().Matches(t.Summary))
+            if (Ticket(m.Groups["id"].Value) is not null) AddLinkCore(t.Id, m.Groups["id"].Value, "requires", "blocked by in summary");
+        tx.Commit();
+        return t;
     }
 
     /// <summary>Moves a ticket to closed or wont-do, setting Ref when one is given.</summary>
@@ -626,12 +620,15 @@ public sealed partial class TicketsDb : IDisposable
 
         var backup = Backup();
 
-        Exec("PRAGMA foreign_keys = OFF;");
+        // SQLite turns its keys off outside the transaction (the pragma does nothing inside one); SQL Server holds its checks off
+        // inside it and checks every row again before it commits.
+        if (server is null) Exec("PRAGMA foreign_keys = OFF;");
         int ticketsMoved;
         try
         {
             using (var tx = Begin())
             {
+                if (server is not null) DeferForeignKeys(tx);
                 Exec("DROP TRIGGER IF EXISTS tickets_append_only", tx);
                 Exec("UPDATE repos SET name = $n WHERE name = $o", tx, ("$n", newName), ("$o", name));
                 foreach (var table in new[] { "blocks", "epics", "stories", "backlog_items", "tickets" })
@@ -647,22 +644,13 @@ public sealed partial class TicketsDb : IDisposable
                     Exec("INSERT INTO ticket_events (ticket_id, at, field, old, new) VALUES ($id, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), 'repo', $o, $n)", tx,
                         ("$id", id), ("$o", name), ("$n", newName));
                 ticketsMoved = ticketIds.Count;
+                CheckForeignKeys(tx);
                 EnsureSchema(tx); // the trigger comes straight back, before commit, so no other connection ever sees it missing
                 tx.Commit();
             }
         }
-        finally { Exec("PRAGMA foreign_keys = ON;"); }
+        finally { if (server is null) Exec("PRAGMA foreign_keys = ON;"); }
         return new RenameResult(newName, ticketsMoved, backup);
-    }
-
-    /// <summary>Copies the database beside itself (<c>&lt;file&gt;.&lt;UTC stamp&gt;.bak</c>) before a bulk rewrite; returns the copy's path.</summary>
-    private string Backup()
-    {
-        var backup = $"{Path}.{DateTime.UtcNow:yyyyMMdd'T'HHmmss'Z'}.bak";
-        using var dest = new SqliteConnection($"Data Source={backup};Pooling=False");
-        dest.Open();
-        db.BackupDatabase(dest); // SQLite's online backup API: safe to run against the live, open connection
-        return backup;
     }
 
     // The page names its repo too: front matter's "project: <name>", the "# <name> — User Stories" title,
@@ -681,7 +669,7 @@ public sealed partial class TicketsDb : IDisposable
         Exec("UPDATE repos SET project = $p, title = $t, front_matter = $fm WHERE name = $n", tx,
             ("$p", row.Project == oldName ? newName : row.Project), ("$t", title), ("$fm", RewriteFrontMatter(row.FrontMatter)), ("$n", newName));
 
-        var raw = Rows("SELECT ordinal, text FROM blocks WHERE repo = $n AND kind = 'raw'", tx, r => (Ordinal: r.GetInt32(0), Text: r.GetString(1)), ("$n", newName)).ToList();
+        var raw = Rows("SELECT ordinal, text FROM blocks WHERE repo = $n AND kind = 'raw'", tx, r => (Ordinal: Convert.ToInt32(r.GetValue(0), CultureInfo.InvariantCulture), Text: r.GetString(1)), ("$n", newName)).ToList();
         foreach (var (ordinal, text) in raw)
         {
             var rewritten = Rewrite("\n" + text)[1..];
@@ -746,11 +734,21 @@ public sealed partial class TicketsDb : IDisposable
     {
         // IDs are stored as typed (a CLI argument, a "blocked by" phrase), so every step of the walk matches without case,
         // like its first step: a case-sensitive join stopped at "BE-T1" vs "be-t1" and let AddLink close a cycle through it.
-        var sql = transitive
-            ? "WITH RECURSIVE r(x) AS (SELECT to_id FROM links WHERE from_id = $id COLLATE NOCASE AND kind = 'requires' " +
-              "UNION SELECT l.to_id FROM links l JOIN r ON l.from_id = r.x COLLATE NOCASE AND l.kind = 'requires') SELECT x FROM r"
-            : "SELECT to_id FROM links WHERE from_id = $id COLLATE NOCASE AND kind = 'requires'";
-        return [.. Rows(sql, r => r.GetString(0), ("$id", id))];
+        if (!transitive) return [.. Rows("SELECT to_id FROM links WHERE from_id = $id COLLATE NOCASE AND kind = 'requires'", r => r.GetString(0), ("$id", id))];
+        // Walked here over every requires link rather than by a recursive query: SQL Server's recursion has no UNION to stop
+        // at a cycle (it fails at its depth limit), and a cycle is exactly what this is asked to find.
+        var edges = Rows("SELECT from_id, to_id FROM links WHERE kind = 'requires'", r => (From: r.GetString(0), To: r.GetString(1)))
+            .ToLookup(e => e.From, e => e.To, StringComparer.OrdinalIgnoreCase);
+        var found = new List<string>();
+        var seen = new HashSet<string>(StringComparer.Ordinal);
+        var next = new Queue<string>(edges[id]);
+        while (next.TryDequeue(out var x))
+        {
+            if (!seen.Add(x)) continue;
+            found.Add(x);
+            foreach (var y in edges[x]) next.Enqueue(y);
+        }
+        return found;
     }
 
     // ── Stories ─────────────────────────────────────────────────────────────
@@ -943,8 +941,8 @@ public sealed partial class TicketsDb : IDisposable
         foreach (var (name, code) in Repos())
             problems.AddRange(TicketRules.Validate(code, [.. Tickets(name).Select(t => t.Ticket)]).Select(p => $"{name}: {p}"));
         // Every endpoint must resolve to a ticket, a story or an epic by its CODE-EPIC-KEY id (the repo's current code).
-        var ids = Rows("SELECT id FROM tickets UNION SELECT story_id FROM stories UNION SELECT r.code || '-EPIC-' || e.key FROM epics e JOIN repos r ON r.name = e.repo",
-            r => r.GetString(0)).ToHashSet(StringComparer.OrdinalIgnoreCase);
+        var ids = Rows("SELECT id FROM tickets UNION SELECT story_id FROM stories", r => r.GetString(0))
+            .Concat(EpicIds().Select(e => e.Id)).ToHashSet(StringComparer.OrdinalIgnoreCase);
         foreach (var l in AllLinks())
         {
             if (!ids.Contains(l.From)) problems.Add($"link {Escaped(l.From)} {l.Kind} {Escaped(l.To)}: no item {Shown(l.From)}");
@@ -989,13 +987,20 @@ public sealed partial class TicketsDb : IDisposable
         }
         // A story's part-of link to its epic under a code its repo no longer has (Prose's SS-EPIC-G, its code now PRS):
         // retarget it to the repo's current CODE-EPIC-KEY when that epic exists.
-        foreach (var (story, oldTo, newTo) in Rows("""
-                SELECT l.from_id, l.to_id, r.code || '-EPIC-' || e.key FROM links l
-                JOIN stories s ON s.story_id = l.from_id COLLATE NOCASE JOIN repos r ON r.name = s.repo
-                JOIN epics e ON e.repo = s.repo AND l.to_id LIKE '%-EPIC-' || e.key AND substr(l.to_id, 1, length(l.to_id) - length(e.key) - 6) <> ''
-                WHERE l.kind = 'part-of' AND upper(l.to_id) <> upper(r.code || '-EPIC-' || e.key)
-                  AND NOT EXISTS (SELECT 1 FROM epics e2 JOIN repos r2 ON r2.name = e2.repo WHERE upper(r2.code || '-EPIC-' || e2.key) = upper(l.to_id))
-                """, tx, r => (r.GetString(0), r.GetString(1), r.GetString(2))).ToList())
+        // Worked out here rather than in SQL, which joins text with || in SQLite and + in T-SQL: a part-of link from a story to
+        // "<anything>-EPIC-<one of its repo's epic keys>" whose target is no epic now, retargeted to the repo's current code.
+        var epics = EpicIds(tx);
+        var current = epics.Select(e => e.Id).ToHashSet(StringComparer.OrdinalIgnoreCase);
+        var storyRepo = Rows("SELECT story_id, repo FROM stories", tx, r => (Id: r.GetString(0), Repo: r.GetString(1)))
+            .ToLookup(s => s.Id, s => s.Repo, StringComparer.OrdinalIgnoreCase);
+        var moves = Rows("SELECT from_id, to_id FROM links WHERE kind = 'part-of'", tx, r => (From: r.GetString(0), To: r.GetString(1)))
+            .Where(l => !current.Contains(l.To))
+            .SelectMany(l => storyRepo[l.From].SelectMany(repo => epics.Where(e => e.Repo == repo &&
+                l.To.EndsWith("-EPIC-" + e.Key, StringComparison.OrdinalIgnoreCase) && l.To.Length > e.Key.Length + 6 &&
+                !string.Equals(l.To, e.Id, StringComparison.OrdinalIgnoreCase))
+                .Select(e => (l.From, l.To, e.Id))))
+            .ToList();
+        foreach (var (story, oldTo, newTo) in moves)
         {
             Exec("DELETE FROM links WHERE from_id = $f AND to_id = $t AND kind = 'part-of'", tx, ("$f", story), ("$t", oldTo));
             var added = Exec("INSERT OR IGNORE INTO links (from_id, to_id, kind, note) VALUES ($f, $t, 'part-of', 'story under its epic')", tx, ("$f", story), ("$t", newTo)) > 0;
@@ -1004,6 +1009,11 @@ public sealed partial class TicketsDb : IDisposable
         tx.Commit();
         return log;
     }
+
+    /// <summary>Every epic by its CODE-EPIC-KEY id (its repo's current code), with its repo and key.</summary>
+    private List<(string Id, string Repo, string Key)> EpicIds(DbTransaction? tx = null) =>
+        Rows("SELECT r.code, e.repo, e.key FROM epics e JOIN repos r ON r.name = e.repo", tx,
+            r => ($"{r.GetString(0)}-EPIC-{r.GetString(2)}", r.GetString(1), r.GetString(2)));
 
     private static string Escaped(string id) => id.Replace("\r", "\\r").Replace("\n", "\\n").Replace("\t", "\\t");
 
@@ -1021,8 +1031,7 @@ public sealed partial class TicketsDb : IDisposable
         })
         {
             sb.Append("\n-- ").Append(table).Append('\n');
-            using var cmd = db.CreateCommand();
-            cmd.CommandText = $"SELECT * FROM {table} ORDER BY {order}";
+            using var cmd = Command($"SELECT * FROM {table} ORDER BY {order}", null, []);
             using var r = cmd.ExecuteReader();
             var cols = Enumerable.Range(0, r.FieldCount).Select(r.GetName).ToList();
             while (r.Read())
