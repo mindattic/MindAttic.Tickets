@@ -7385,7 +7385,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UH-T14', 'Unity.Hare', 14, '2026-10-21', 'feature', 'closed', 'Implement set-piece enemies: hydra, phalanx+shield, meatball, wraith, sawblade, worm, trilobyte, mimic', 'b80a36d', 13, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UH-T15', 'Unity.Hare', 15, '2026-10-21', 'feature', 'closed', 'Implement enemy spawn emitters and generate_enemy_list pacing', '55ae20b', 14, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UH-T16', 'Unity.Hare', 16, '2026-10-21', 'feature', 'closed', 'Implement per-enemy death effects (gibs, explosions, death particles)', 'DeathEffectsTests (4b8a6b7)', 15, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UH-T17', 'Unity.Hare', 17, '2026-10-21', 'feature', 'open', 'Implement destructible rock field (spawn, movement, destruction)', 'UH-US-F1', 16, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UH-T17', 'Unity.Hare', 17, '2026-10-21', 'feature', 'closed', 'Implement destructible rock field (spawn, movement, destruction)', 'e528f9a RockFieldTests', 16, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UH-T18', 'Unity.Hare', 18, '2026-10-21', 'feature', 'open', 'Implement ambient weather/environment emitters (cloud, rain, snow, sand, fog)', 'UH-US-F2', 17, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UH-T19', 'Unity.Hare', 19, '2026-10-21', 'feature', 'open', 'Implement level-select map screen and destination/level buttons', 'UH-US-G1', 18, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UH-T20', 'Unity.Hare', 20, '2026-10-21', 'feature', 'open', 'Port level_01..level_10 definitions and the level_default/composition/objective/setting data model', 'UH-US-G2', 19, NULL);
@@ -19350,6 +19350,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (11024, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (11025, 'UR-T34', '2026-10-23T23:41:57Z', 'ref', 'UR-US-STD2', '29b2488');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (11026, 'UR-T65', '2026-10-23T23:42:09Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (11027, 'UR-T65', '2026-10-23T23:42:11Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (11028, 'UH-T17', '2026-10-23T23:51:37Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (11029, 'UH-T17', '2026-10-23T23:51:37Z', 'ref', 'UH-US-F1', 'e528f9a RockFieldTests');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z');
