@@ -6683,7 +6683,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNI-T5', 'Unity.Chain', 5, '2026-10-21', 'feature', 'closed', 'ChainController MonoBehaviour: drive ChainSimulation from FixedUpdate, anchor link 0 to the player''s hand socket, render the chain', 'ChainControllerTests (ca71b30)', 4, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNI-T6', 'Unity.Chain', 6, '2026-10-21', 'feature', 'closed', 'Mace: render the heavy end link at its configurable index, adjustable chain length (shorten/lengthen), overhead-swing boost tuned in-engine', 'c77cf65', 5, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNI-T7', 'Unity.Chain', 7, '2026-10-21', 'feature', 'closed', 'Grapple/throw mechanic: arm on input hold, release throws the grappled target using the mace''s current velocity', '5c91a78', 6, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNI-T8', 'Unity.Chain', 8, '2026-10-21', 'feature', 'open', 'Enemies + Physics2D hit detection against the mace, replacing the legacy single AABB check', '—', 7, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNI-T8', 'Unity.Chain', 8, '2026-10-21', 'feature', 'closed', 'Enemies + Physics2D hit detection against the mace, replacing the legacy single AABB check', 'ad66efb', 7, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNI-T9', 'Unity.Chain', 9, '2026-10-21', 'feature', 'open', 'Audio: SFX for mace swing/impact/grapple and background music hookup', '—', 8, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNI-T10', 'Unity.Chain', 10, '2026-10-21', 'feature', 'open', 'HUD/UI, level bounds and camera framing for the angel+chain play space', '—', 9, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNI-T11', 'Unity.Chain', 11, '2026-10-21', 'chore', 'closed', 'Add CLAUDE.md provider-compatibility forwarder, matching every other repo''s thin-pointer convention', '—', 10, NULL);
@@ -17242,6 +17242,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (9579, 'M
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (9580, 'M.ORCH-T655', '2026-10-23T06:44:20Z', 'priority', '1', '0');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (9581, 'UQD-T20', '2026-10-23T06:45:12Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (9582, 'UQD-T20', '2026-10-23T06:45:12Z', 'ref', '—', '5dafe1b');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (9583, 'UNI-T8', '2026-10-23T06:50:30Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (9584, 'UNI-T8', '2026-10-23T06:50:30Z', 'ref', '—', 'ad66efb');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z');
