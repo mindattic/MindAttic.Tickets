@@ -25,9 +25,16 @@ app.Configure(config =>
         t.AddCommand<TicketReassignCommand>("reassign").WithDescription("Give a ticket a new ID; the old one is kept in its history and still resolves.");
         t.AddCommand<TicketVerifyCommand>("verify").WithDescription("Check a repo's tickets and links are valid.");
         t.AddCommand<TicketQueueCommand>("queue").WithDescription("Open tickets in queue order, with approval and priority.");
-        t.AddCommand<TicketApproveCommand>("approve").WithDescription("Approve an open ticket for work (--undo puts it back to proposed).");
+        t.AddCommand<TicketApproveCommand>("approve").WithDescription("Approve open tickets for work (--undo puts them back to proposed); with no IDs, list what waits for approval.");
         t.AddCommand<TicketRejectCommand>("reject").WithDescription("Reject an open ticket: it closes wont-do with --reason as its ref.");
         t.AddCommand<TicketPriorityCommand>("priority").WithDescription("Set a ticket's queue priority (higher runs sooner).");
+        t.AddCommand<TicketBumpCommand>("bump").WithDescription("Raise (or with a negative --by, lower) a ticket's priority.");
+        t.AddCommand<TicketAssignCommand>("assign").WithDescription("Assign a ticket to a member's login (assign <ID> <email>): it's dispatched only on that login; --unassign takes it off them, --redelegate hands it on like an unassigned ticket.");
+        t.AddCommand<TicketBlockCommand>("block").WithDescription("Make a ticket wait for others (--by X-T1, repeatable), or --clear it.");
+        t.AddCommand<TicketReserveCommand>("reserve").WithDescription("Set aside tokens for a ticket so background work can't spend them first (0 releases).");
+        t.AddCommand<TicketWorkingCommand>("working").WithDescription("Record the session working a ticket now (--login, --session) or --clear it; the Orchestrator writes it, Tickets Desktop links back.");
+        t.AddCommand<TicketHygieneCommand>("hygiene").WithDescription("Closed tickets that may not be done: no Ref cited, or a later ticket says it came back.");
+        t.AddCommand<TicketIntakeCommand>("intake").WithDescription("File GitHub issues labelled orchestrator and CI failures on main as tickets (--dry-run to preview).");
     });
 
     config.AddBranch("story", s =>

@@ -205,6 +205,13 @@ public sealed class TicketsServer(string connectionString)
             priority bigint NOT NULL DEFAULT 0,
             updated nvarchar(64) NOT NULL);
         """,
+        $"""
+        CREATE TABLE ticket_work (
+            ticket_id nvarchar(450) COLLATE {NoCase} NOT NULL PRIMARY KEY,
+            assignee nvarchar(450) NULL, reserved bigint NOT NULL DEFAULT 0,
+            login nvarchar(450) NULL, session nvarchar(450) NULL, since nvarchar(64) NULL,
+            updated nvarchar(64) NOT NULL);
+        """,
         """
         CREATE TABLE repo_renames (
             seq bigint IDENTITY(1,1) PRIMARY KEY, old_name nvarchar(450) NOT NULL, new_name nvarchar(450) NOT NULL, at nvarchar(64) NOT NULL, reason nvarchar(max) NOT NULL);

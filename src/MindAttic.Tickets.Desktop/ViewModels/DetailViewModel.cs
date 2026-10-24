@@ -13,6 +13,12 @@ public sealed record LinkLine(string Phrase, string Other, Link Link)
     public string SpokenName => $"{Phrase} {Other}";
 }
 
+/// <summary>A link that opens the Orchestrator on <see cref="Target"/> (a login's email, a session id or a ticket id).</summary>
+public sealed record OrchestratorTarget(string Text, string Target)
+{
+    public string SpokenName => $"{Text}: open in the Orchestrator";
+}
+
 /// <summary>The detail pane's content for one ticket.</summary>
 public sealed class DetailViewModel(TicketDetail d) : ObservableObject
 {
@@ -41,6 +47,31 @@ public sealed class DetailViewModel(TicketDetail d) : ObservableObject
         : "Needs approval before autopilot works it.";
 
     public IReadOnlyList<string> Blockers => Source.OpenBlockers;
+
+    // ── Work (M.TIX-T134): assignee, reservation, and the session working it, which links back to the Orchestrator ──
+
+    public TicketWork Work => Source.Work;
+    public string AssigneeText => Work.Assignee ?? "Nobody";
+    public bool IsAssigned => Work.Assignee is not null;
+    public string ReservedText => Work.Reserved > 0 ? $"{Tokens(Work.Reserved)} tokens" : "None";
+    public bool IsWorking => Work.IsWorking;
+
+    /// <summary>"Being worked on ryan@… since 14:02".</summary>
+    public string WorkingText => !IsWorking ? "" : $"Being worked{(Work.Login is { } l ? $" on {l}" : "")}{(Work.Since is { } s ? $" since {When(s)}" : "")}.";
+
+    /// <summary>The links that open the Orchestrator on what's working the ticket: its login, its session, the ticket itself.</summary>
+    public IReadOnlyList<OrchestratorTarget> OrchestratorTargets => !IsWorking ? [] :
+        [
+            .. Work.Login is { } login ? [new OrchestratorTarget($"Login {login}", login)] : Array.Empty<OrchestratorTarget>(),
+            .. Work.Session is { } session ? [new OrchestratorTarget($"Session {session}", session)] : Array.Empty<OrchestratorTarget>(),
+            new OrchestratorTarget($"{Id} in the Orchestrator", Id),
+        ];
+
+    private static string Tokens(long n) =>
+        n >= 1_000_000_000 ? (n / 1e9).ToString("0.#", CultureInfo.InvariantCulture) + "B"
+        : n >= 1_000_000 ? (n / 1e6).ToString("0.#", CultureInfo.InvariantCulture) + "M"
+        : n >= 1_000 ? (n / 1e3).ToString("0.#", CultureInfo.InvariantCulture) + "k"
+        : n.ToString(CultureInfo.InvariantCulture);
 
     public IReadOnlyList<LinkLine> Links { get; } = [.. d.Links.Select(l =>
         string.Equals(l.From, d.Info.Ticket.Id, StringComparison.OrdinalIgnoreCase)

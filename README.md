@@ -28,10 +28,11 @@ $ tickets ticket list --status open
 - `ticket new` appends a row with the next free `CODE-T<n>` ID and prints it.
 - `ticket close` moves a ticket to `closed` or `wont-do` and can set its Ref.
 - `ticket correct` relabels a nonstandard type to the standard vocabulary, the one sanctioned exception to append-only (recorded in the ticket's history).
-- `ticket show` prints one ticket's row, links and history; `ticket link` connects two tickets or stories (`requires` is a prerequisite; a cycle is refused).
+- `ticket show` prints a ticket end to end: its row, queue state, assignee, reservation, the session working it, links, history and the commits that mention it (`--diff` for full diffs); `ticket link` connects two tickets or stories (`requires` is a prerequisite; a cycle is refused).
 - `ticket list` shows tickets across the workspace, filtered by repo, status, type or date, as a table or `--json`.
 - `ticket verify` fails if the table breaks the rules or a committed row was deleted or reworded.
-- `ticket queue` lists a repo's (or every repo's) open tickets in priority order with their approval state; `ticket approve`/`ticket reject --reason` move a ticket through review (`--undo` puts an approval back to proposed; a reject closes the ticket wont-do with the reason as its ref); `ticket priority` sets where a ticket sits in that order.
+- `ticket queue` lists a repo's (or every repo's) open tickets in priority order with their approval state; `ticket approve`/`ticket reject --reason` move a ticket through review (`--undo` puts an approval back to proposed; a reject closes the ticket wont-do with the reason as its ref); `ticket priority` sets where a ticket sits in that order and `ticket bump` moves it up or down.
+- The ticket functions the Orchestrator used to own (M.TIX-T134; the Orchestrator now only runs the work and reads these from the database): `ticket assign <ID> <email>` assigns a ticket to a member's login (`--unassign`, `--redelegate`), `ticket block <ID> --by X` makes it wait for others (`--clear`), `ticket reserve <ID> 2M` sets tokens aside for it (0 releases), `ticket working <ID> --login --session` records the session working it (`--clear`), `ticket hygiene` lists closed tickets that may not be done, and `ticket intake` files GitHub issues labelled `orchestrator` and CI failures on main as tickets (`--dry-run`).
 - `codes check` finds duplicate project codes, repos without a ticket log, and malformed tables.
 - `story new`/`edit`/`status`/`list`/`show`, `epic new`, `backlog add` add and edit a repo's stories, epics and priority backlog in the database.
 - `db migrate`, `export`, `check`, `render`, `sync` import a repo's file once, rebuild it from the database, validate the database, rewrite a stale view, and commit (and push) `data/Tickets.db` and its readable dump `data/Tickets.sql`; a sync's commit names the tickets whose rows or history changed since the last one (or `--ticket ID`), and when a change has nothing to name (a story, epic or backlog edit alone) it opens and closes a chore ticket to carry it instead, so a sync with something to commit always names a ticket.
@@ -39,7 +40,8 @@ $ tickets ticket list --status open
 
 **Tickets Desktop** (`src/MindAttic.Tickets.Desktop`, a WPF app built on MindAttic.Components.Wpf, matching the Orchestrator's look)
 - Queue and Tickets views (Ctrl+1/Ctrl+2), filterable by repo, status, type and approval and searchable (Ctrl+F), with closed and wont-do tickets hidden until you show archived.
-- Approve, unapprove, reject and reorder (move up/down/to top) queued tickets; file a new ticket (Ctrl+N); close, mark wont-do, correct a ticket's type or add a link from its detail pane.
+- Approve, unapprove, reject and reorder (move up/down/to top) queued tickets; file a new ticket (Ctrl+N); close, mark wont-do, correct a ticket's type, add a link, assign it to a member's login or reserve tokens for it from its detail pane.
+- A ticket being worked shows its login and session as links that open the Orchestrator on them (`MindAttic.Orchestrator.exe --show <email|session|ticket>`; nothing happens beyond a message when the Orchestrator isn't installed).
 - A Sync button (Ctrl+Shift+S) runs `tickets db sync` and shows the result; F5 refreshes.
 - `MindAttic.Tickets.Desktop.exe --root <dir> --ticket <ID>` opens on that ticket, selected with its detail pane open (an open one in the Queue, to approve, move or close; a closed one in Tickets). Started again while the window is open, it hands the id to that window and brings it forward. The Orchestrator dashboard's ticket links start it this way.
 - `deploy.ps1` publishes it as a self-contained exe to `C:\Apps\MindAttic.Tickets.Desktop` with Desktop and Start-menu shortcuts (and reinstalls the `tickets` CLI alongside it, via `tools/install.ps1`, unless `-SkipCli`).
@@ -70,14 +72,21 @@ tickets ticket new     [--repo X] --type feature|fix|chore|docs|interview --summ
 tickets ticket close   <CODE-Tn> [--repo X] [--ref ...] [--wont-do]
 tickets ticket correct <CODE-Tn> --type feature|fix|chore|docs|interview --reason "..."
 tickets ticket reassign <CODE-Tn> <CODE-Tm> --reason "..."   # the old ID is kept in id_history and still resolves
-tickets ticket show    <CODE-Tn> [--json]
+tickets ticket show    <CODE-Tn> [--json] [--diff]
 tickets ticket link    <FROM> requires|related|follow-up-of|supersedes|duplicates|implements|part-of <TO> [--remove] [--note "..."]
 tickets ticket list    [--repo X] [--status S] [--type T] [--since YYYY-MM-DD] [--json]
 tickets ticket verify  [--repo X]
 tickets ticket queue   [--repo X] [--json]
-tickets ticket approve <CODE-Tn> [--undo]
+tickets ticket approve [<CODE-Tn> ...] [--undo]    # no IDs: list what waits for approval
 tickets ticket reject  <CODE-Tn> --reason "..."
 tickets ticket priority <CODE-Tn> <PRIORITY>
+tickets ticket bump    <CODE-Tn> [--by N]
+tickets ticket assign  <CODE-Tn> [<email>] [--unassign | --redelegate]
+tickets ticket block   <CODE-Tn> [--by <CODE-Tm> ...] [--clear]
+tickets ticket reserve <CODE-Tn> <TOKENS>          # like 2M or 500k; 0 releases
+tickets ticket working <CODE-Tn> [--login <email>] [--session <id>] | --clear
+tickets ticket hygiene [--repo X] [--json]
+tickets ticket intake  [--repo X] [--dry-run]
 tickets codes check
 tickets story  list    [--repo X] [--status done|partial|planned] [--json]
 tickets story  show    <CODE-US-...>

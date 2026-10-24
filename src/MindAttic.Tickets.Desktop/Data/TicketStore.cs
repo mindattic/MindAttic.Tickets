@@ -29,7 +29,11 @@ public sealed record TicketInfo(string Repo, Ticket Ticket, string Approval, lon
 public sealed record Snapshot(IReadOnlyList<string> Repos, IReadOnlyList<TicketInfo> Tickets, IReadOnlyList<TicketInfo> Queue, DateTime Read);
 
 /// <summary>A ticket's detail: history and links (both directions) and what it's waiting for.</summary>
-public sealed record TicketDetail(TicketInfo Info, IReadOnlyList<TicketEvent> History, IReadOnlyList<Link> Links, IReadOnlyList<string> OpenBlockers);
+public sealed record TicketDetail(TicketInfo Info, IReadOnlyList<TicketEvent> History, IReadOnlyList<Link> Links, IReadOnlyList<string> OpenBlockers)
+{
+    /// <summary>Who it's assigned to, the tokens reserved for it and the session working it now (M.TIX-T134).</summary>
+    public TicketWork Work { get; init; } = TicketWork.None;
+}
 
 /// <summary>
 /// The window's only way to the ticket database. Every call opens the database, does its work and closes it, so
@@ -92,10 +96,16 @@ public sealed class TicketStore(string root)
         var (approval, priority) = db.QueueState(found.Ticket.Id);
         var blockers = db.Requires(found.Ticket.Id, transitive: true)
             .Where(b => db.Ticket(b) is { } t && t.Ticket.Status == TicketRules.Open).ToList();
-        return new TicketDetail(new TicketInfo(found.Repo, found.Ticket, approval, priority, blockers), db.History(found.Ticket.Id), db.Links(found.Ticket.Id), blockers);
+        return new TicketDetail(new TicketInfo(found.Repo, found.Ticket, approval, priority, blockers), db.History(found.Ticket.Id), db.Links(found.Ticket.Id), blockers)
+        {
+            Work = db.Work(found.Ticket.Id),
+        };
     });
 
     public void Approve(string id) => Write($"approve {id}", db => db.Approve(id), render: false);
+    public void Assign(string id, string email) => Write($"assign {id} to {email}", db => db.Assign(id, email), render: false);
+    public void Unassign(string id) => Write($"unassign {id}", db => db.Unassign(id), render: false);
+    public void Reserve(string id, long tokens) => Write($"reserve {tokens} tokens for {id}", db => db.Reserve(id, tokens), render: false);
     public void Unapprove(string id) => Write($"unapprove {id}", db => db.Unapprove(id), render: false);
     public void Reject(string id, string reason) => Write($"reject {id}: {reason}", db => db.Reject(id, reason));
     public void Move(string id, IReadOnlyList<string> newOrder) =>

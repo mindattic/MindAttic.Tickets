@@ -54,6 +54,20 @@ public sealed partial class TicketsDb
     /// <summary>Sets one ticket's priority (higher runs sooner).</summary>
     public void SetPriority(string id, long priority) => InWrite(() => SetPriorityCore(RequireTicket(id).Id, priority));
 
+    /// <summary>Moves a ticket's priority by <paramref name="by"/> (negative lowers it), read and written in one transaction;
+    /// returns the new priority.</summary>
+    public long Bump(string id, long by)
+    {
+        long next = 0;
+        InWrite(() =>
+        {
+            var t = RequireTicket(id);
+            next = QueueState(t.Id).Priority + by;
+            SetPriorityCore(t.Id, next);
+        });
+        return next;
+    }
+
     /// <summary>
     /// Orders <paramref name="idsInOrder"/> first-to-last by giving them descending priorities (n … 1), in one transaction;
     /// tickets left out keep theirs. Only tickets whose priority actually changes are written and recorded.

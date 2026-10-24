@@ -235,6 +235,10 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
 
         [CommandOption("--json")]
         public bool Json { get; init; }
+
+        [CommandOption("--diff")]
+        [Description("Show each commit's full diff, not just the files it touched.")]
+        public bool Diff { get; init; }
     }
 
     public override int Execute(CommandContext context, Settings settings)
@@ -243,6 +247,11 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
         var (repo, t) = db.Ticket(settings.Id) ?? throw new KeyNotFoundException($"No ticket {settings.Id}.");
         var links = db.Links(t.Id);
         var history = db.History(t.Id);
+        // The end-to-end view (M.TIX-T134, taken over from orchestrator show): the row, its queue and work state, links,
+        // history and the commits that mention it.
+        var (approval, priority) = db.QueueState(t.Id);
+        var work = db.Work(t.Id);
+        var commits = settings.Workspace.Find(repo) is { } r ? TicketCommits.Log(t.Id, r.Path, settings.Diff) : "";
         if (settings.Json)
         {
             Console.WriteLine(JsonSerializer.Serialize(new
@@ -251,17 +260,28 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
                 formerIds = db.IdHistory(t.Id).Select(c => c.OldId),
                 requires = db.Requires(t.Id), links = links.Select(l => new { from = l.From, kind = l.Kind, to = l.To, note = l.Note }),
                 history = history.Select(e => new { at = e.At, field = e.Field, old = e.Old, @new = e.New }),
+                approval, priority, assignee = work.Assignee, reserved = work.Reserved,
+                working = work.IsWorking ? new { login = work.Login, session = work.Session, since = work.Since } : null,
+                commits,
             }, new JsonSerializerOptions { WriteIndented = true }));
             return 0;
         }
         AnsiConsole.MarkupLine($"[bold]{Output.Esc(t.Id)}[/] · {Output.Esc(repo)} · {Output.Esc(t.Type)} · {Output.Esc(t.Status)} · opened {Output.Esc(t.Date)}");
         AnsiConsole.WriteLine(t.Summary);
         AnsiConsole.MarkupLine($"[grey]Ref:[/] {Output.Esc(t.Ref)}");
+        AnsiConsole.MarkupLine($"[grey]Queue:[/] {Output.Esc(approval)}, priority {priority.ToString(System.Globalization.CultureInfo.InvariantCulture)}" +
+            (work.Assignee is { } who ? $" · [grey]assigned to[/] {Output.Esc(who)}" : "") +
+            (work.Reserved > 0 ? $" · {Output.Esc(TokenText.Format(work.Reserved))} [grey]reserved[/]" : ""));
+        if (work.IsWorking)
+            AnsiConsole.MarkupLine($"[grey]Being worked:[/] {Output.Esc(work.Login ?? "unknown login")}{(work.Session is { } s ? Output.Esc($" ({s})") : "")}" +
+                (work.Since is { } since ? $" [grey]since {Output.Esc(since)}[/]" : ""));
         if (db.IdHistory(t.Id) is { Count: > 0 } former)
             AnsiConsole.MarkupLine($"[grey]Formerly:[/] {Output.Esc(string.Join(", ", former.Select(c => c.OldId)))}");
         foreach (var l in links) AnsiConsole.MarkupLine(Output.LinkLine(l, t.Id));
         foreach (var e in history)
             AnsiConsole.MarkupLine($"  [grey]{Output.Esc(e.At)} {Output.Esc(e.Field)}: {Output.Esc(e.Old ?? "")} → {Output.Esc(e.New ?? "")}[/]");
+        AnsiConsole.MarkupLine(commits.Length == 0 ? "[grey]No commits mention it.[/]" : "[bold]Commits[/]");
+        if (commits.Length > 0) AnsiConsole.WriteLine(commits);
         return 0;
     }
 }

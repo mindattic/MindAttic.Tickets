@@ -351,6 +351,19 @@
                         </DockPanel>
                         <TextBlock Text="{Binding Summary}" TextWrapping="Wrap" Margin="0,8,0,0" FontSize="14" />
                         <TextBlock Text="{Binding WorkText}" Style="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,8,0,0" />
+                        <!-- Being worked (M.TIX-T134): its login and session link back to the Orchestrator, which runs the work. -->
+                        <StackPanel Margin="0,8,0,0" Visibility="{Binding IsWorking, Converter={StaticResource Visible}}">
+                            <TextBlock Text="{Binding WorkingText}" TextWrapping="Wrap" />
+                            <ItemsControl ItemsSource="{Binding OrchestratorTargets}" Focusable="False">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type vm:OrchestratorTarget}">
+                                        <Button Style="{StaticResource LinkBtn}" Content="{Binding Text}" HorizontalAlignment="Left" Margin="0,2"
+                                                Command="{Binding DataContext.OpenInOrchestratorCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding Target}"
+                                                AutomationProperties.Name="{Binding SpokenName}" ToolTip="Open the Orchestrator on it" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
 
                         <Grid Margin="0,12,0,0">
                             <Grid.ColumnDefinitions>
@@ -358,7 +371,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition />
+                                <RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition />
                             </Grid.RowDefinitions>
                             <TextBlock Style="{StaticResource FieldName}" Text="Repo" />
                             <TextBlock Grid.Column="1" Style="{StaticResource FieldValue}" Text="{Binding Repo}" />
@@ -375,6 +388,10 @@
                             <TextBlock Grid.Row="6" Style="{StaticResource FieldName}" Text="Ref" />
                             <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Ref, Mode=OneWay}" IsReadOnly="True" TextWrapping="Wrap" Background="Transparent"
                                      BorderThickness="0" Foreground="{DynamicResource MaText}" Padding="0" Margin="0,3" AutomationProperties.Name="Ref" />
+                            <TextBlock Grid.Row="7" Style="{StaticResource FieldName}" Text="Assigned" />
+                            <TextBlock Grid.Row="7" Grid.Column="1" Style="{StaticResource FieldValue}" Text="{Binding AssigneeText}" />
+                            <TextBlock Grid.Row="8" Style="{StaticResource FieldName}" Text="Reserved" />
+                            <TextBlock Grid.Row="8" Grid.Column="1" Style="{StaticResource FieldValue}" Text="{Binding ReservedText}" />
                         </Grid>
 
                         <TextBlock Text="ACTIONS" Style="{StaticResource SectionLabel}" />
@@ -391,6 +408,12 @@
                                     Command="{Binding DataContext.CorrectTypeCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
                             <Button Style="{StaticResource Btn}" Content="Add link…" Margin="0,0,6,6"
                                     Command="{Binding DataContext.AddLinkCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
+                            <Button Style="{StaticResource Btn}" Content="Assign…" Margin="0,0,6,6" ToolTip="Assign it to a member's login: it's dispatched only on that login"
+                                    Command="{Binding DataContext.AssignCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
+                            <Button Style="{StaticResource Btn}" Content="Unassign" Margin="0,0,6,6" ToolTip="Take it off its member: it's handed out like any unassigned ticket"
+                                    Command="{Binding DataContext.UnassignCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
+                            <Button Style="{StaticResource Btn}" Content="Reserve…" Margin="0,0,6,6" ToolTip="Set aside tokens for it (0 releases)"
+                                    Command="{Binding DataContext.ReserveCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
                         </WrapPanel>
                         <TextBlock Text="{Binding Error}" Style="{StaticResource ErrorText}"
                                    Visibility="{Binding Error, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />

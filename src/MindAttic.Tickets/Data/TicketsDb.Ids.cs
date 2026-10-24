@@ -156,6 +156,7 @@ public sealed partial class TicketsDb
         Exec("UPDATE tickets SET id = $n, number = $num, row_md = NULL WHERE id = $o", tx, ("$n", newId), ("$num", TicketRules.ParseNumber(newId)), ("$o", oldId));
         Exec("UPDATE ticket_events SET ticket_id = $n WHERE ticket_id = $o", tx, ("$n", newId), ("$o", oldId));
         Exec("UPDATE ticket_queue SET ticket_id = $n WHERE ticket_id = $o COLLATE NOCASE", tx, ("$n", newId), ("$o", oldId));
+        Exec("UPDATE ticket_work SET ticket_id = $n WHERE ticket_id = $o COLLATE NOCASE", tx, ("$n", newId), ("$o", oldId));
         RetargetLinks(oldId, newId, tx);
         RecordId("ticket", oldId, newId, reason, tx);
         Exec("INSERT INTO ticket_events (ticket_id, at, field, old, new) VALUES ($id, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), 'id', $o, $n)", tx,

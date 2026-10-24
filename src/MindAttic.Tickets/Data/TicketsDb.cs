@@ -35,7 +35,7 @@ public sealed record ImportReport(string Repo, string Code, int Epics, int Stori
 /// </summary>
 public sealed partial class TicketsDb : IDisposable
 {
-    public const int SchemaVersion = 4;
+    public const int SchemaVersion = 5;
     public const string RelativePath = "data/Tickets.db";
     public const string DumpRelativePath = "data/Tickets.sql";
     public const string EnvVar = "MINDATTIC_TICKETS_DB";
@@ -223,6 +223,13 @@ public sealed partial class TicketsDb : IDisposable
             BEGIN SELECT RAISE(ABORT, 'ID history is never deleted'); END;
             CREATE TRIGGER IF NOT EXISTS id_history_no_update BEFORE UPDATE ON id_history
             BEGIN SELECT RAISE(ABORT, 'ID history is append-only'); END;
+            -- Schema 5 (M.TIX-T134): who a ticket is assigned to, the tokens reserved for it, and the session working it now
+            -- (written by the Orchestrator, which runs the work). No row means none of them. No foreign key, as ticket_queue.
+            CREATE TABLE IF NOT EXISTS ticket_work (
+                ticket_id TEXT PRIMARY KEY COLLATE NOCASE,
+                assignee TEXT, reserved INTEGER NOT NULL DEFAULT 0,
+                login TEXT, session TEXT, since TEXT,
+                updated TEXT NOT NULL);
 
             -- Append-only: a ticket is never deleted, and only its status and ref ever change.
             CREATE TRIGGER IF NOT EXISTS tickets_no_delete BEFORE DELETE ON tickets
@@ -1027,7 +1034,7 @@ public sealed partial class TicketsDb : IDisposable
         foreach (var (table, order) in new[]
         {
             ("meta", "key"), ("repos", "name"), ("epics", "repo, key"), ("stories", "uid"), ("backlog_items", "uid"), ("backlog_refs", "item_uid, story_id"),
-            ("tickets", "repo, ordinal"), ("ticket_events", "seq"), ("ticket_queue", "ticket_id"), ("repo_renames", "seq"), ("id_history", "seq"), ("links", "from_id, to_id, kind"), ("blocks", "repo, ordinal"),
+            ("tickets", "repo, ordinal"), ("ticket_events", "seq"), ("ticket_queue", "ticket_id"), ("ticket_work", "ticket_id"), ("repo_renames", "seq"), ("id_history", "seq"), ("links", "from_id, to_id, kind"), ("blocks", "repo, ordinal"),
         })
         {
             sb.Append("\n-- ").Append(table).Append('\n');

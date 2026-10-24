@@ -138,6 +138,12 @@ public sealed class TicketCliTests
     [TestCase("approve", "AA-T2")]
     [TestCase("reject", "AA-T2", "--reason", "x")]
     [TestCase("priority", "AA-T1", "1")]
+    [TestCase("bump", "AA-T1")]
+    [TestCase("assign", "AA-T1", "a@b.co")]
+    [TestCase("block", "AA-T2", "--by", "AA-T1")]
+    [TestCase("reserve", "AA-T1", "2M")]
+    [TestCase("working", "AA-T1", "--login", "a@b.co")]
+    [TestCase("hygiene")]
     public void Every_ticket_subcommand_rejects_an_option_it_doesnt_know_instead_of_silently_ignoring_it(string subcommand, params string[] args)
     {
         MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | fix | open | one | — |\n| AA-T2 | 2026-10-01 | fix | open | two | — |\n");
@@ -149,6 +155,37 @@ public sealed class TicketCliTests
         var bad = Run(["ticket", subcommand, .. args, "--this-option-does-not-exist", "x"]);
         Assert.That(bad.Code, Is.Not.EqualTo(0), bad.Out);
         Assert.That(bad.Out, Does.Contain("this-option-does-not-exist"));
+    }
+
+    [Test]
+    public void The_orchestrators_ticket_functions_work_from_the_cli_and_show_reports_them()
+    {
+        MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | feature | open | one | — |\n| AA-T2 | 2026-10-01 | fix | open | two | — |\n");
+        Directory.CreateDirectory(Path.Combine(root, "MindAttic.Tickets", ".git"));
+        Run("db", "migrate", "--cutover");
+
+        Assert.That(Run("ticket", "bump", "AA-T1", "--by", "3").Out.Trim(), Is.EqualTo("AA-T1 priority 3"));
+        Assert.That(Run("ticket", "assign", "AA-T1", "Ryan@Example.com").Out, Does.Contain("assigned to ryan@example.com"));
+        Assert.That(Run("ticket", "assign", "AA-T1", "Ryan").Code, Is.EqualTo(1), "not an email");
+        Assert.That(Run("ticket", "block", "AA-T1", "--by", "AA-T2").Out.Trim(), Is.EqualTo("AA-T1 requires AA-T2."));
+        Assert.That(Run("ticket", "block", "AA-T2", "--by", "AA-T1").Code, Is.EqualTo(1), "a cycle");
+        Assert.That(Run("ticket", "reserve", "AA-T1", "2M").Out, Does.Contain("AA-T1 has 2M reserved"));
+        Assert.That(Run("ticket", "reserve", "AA-T1", "lots").Code, Is.Not.Zero);
+        Assert.That(Run("ticket", "working", "AA-T1", "--login", "ryan@example.com", "--session", "s-1").Code, Is.Zero);
+        var approve = Run("ticket", "approve", "AA-T1", "AA-T99");
+        Assert.That(approve.Code, Is.EqualTo(1));
+        Assert.That(approve.Out, Does.Contain("No ticket AA-T99"));
+        Assert.That(Run("ticket", "approve").Out, Does.Contain("AA-T1").And.Not.Contain("AA-T2"), "fixes need no approval");
+
+        var show = JsonDocument.Parse(Run("ticket", "show", "AA-T1", "--json").Out).RootElement;
+        Assert.That(show.GetProperty("priority").GetInt64(), Is.EqualTo(3));
+        Assert.That(show.GetProperty("approval").GetString(), Is.EqualTo("proposed"), "the bad id stopped the whole approve");
+        Assert.That(show.GetProperty("assignee").GetString(), Is.EqualTo("ryan@example.com"));
+        Assert.That(show.GetProperty("reserved").GetInt64(), Is.EqualTo(2_000_000));
+        Assert.That(show.GetProperty("working").GetProperty("session").GetString(), Is.EqualTo("s-1"));
+        Assert.That(show.GetProperty("requires").EnumerateArray().Select(x => x.GetString()), Is.EqualTo(new[] { "AA-T2" }));
+        var queue = JsonDocument.Parse(Run("ticket", "queue", "--json").Out).RootElement.EnumerateArray().First();
+        Assert.That(queue.GetProperty("assignee").GetString(), Is.EqualTo("ryan@example.com"));
     }
 
     [Test]
