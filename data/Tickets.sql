@@ -21609,6 +21609,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (12956, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (12957, 'U.SPC-T535', '2026-10-24T23:03:36Z', 'working', 'waffle@mindattic.com (1987ec86-9f1f-42b9-b2e9-9f56bbbce08d)', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (12958, 'U.OVW-T7', '2026-10-24T23:37:48Z', 'working', 'ryandebraal@mindattic.com (94fd2733-b325-443d-adfc-d8c7ef9f5bdd)', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (12959, 'RB-T187', '2026-10-24T23:41:30Z', 'working', 'waffle@mindattic.com (3218d735-2bae-4de1-89d9-348ec56c423b)', '3218d735-2bae-4de1-89d9-348ec56c423b');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (12960, 'U.SPC-T534', '2026-10-24T23:52:41Z', 'working', 'waffle@mindattic.com (1987ec86-9f1f-42b9-b2e9-9f56bbbce08d)', '1987ec86-9f1f-42b9-b2e9-9f56bbbce08d');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z');
@@ -22959,7 +22960,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.RICO-T58', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-24T18:56:16Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.RICO-T59', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-24T18:56:16Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.RICO-T62', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-24T18:56:17Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.SPC-T534', NULL, 0, 'waffle@mindattic.com', '1987ec86-9f1f-42b9-b2e9-9f56bbbce08d', '2026-10-24T23:00:35Z', '2026-10-24T23:00:35Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.SPC-T534', NULL, 0, NULL, '1987ec86-9f1f-42b9-b2e9-9f56bbbce08d', '2026-10-24T23:52:41Z', '2026-10-24T23:52:41Z');
 
 -- repo_renames
 INSERT INTO repo_renames (seq, old_name, new_name, at, reason) VALUES (1, 'GTFO.AbsurdWeapons', 'GTFO.EZ.AbsurdWeapons', '2026-10-19T02:14:58Z', 'Renamed under GTFO.EZ, its core mod, before release (G.EZ-T77)');
