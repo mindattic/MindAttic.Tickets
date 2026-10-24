@@ -39,11 +39,14 @@ $ tickets ticket list --status open
 - `view` opens a read-only page of every repo's tickets and stories, with filters, in MindAttic.Browser (or the default browser). It's a snapshot; run it again to refresh.
 
 **Tickets Desktop** (`src/MindAttic.Tickets.Desktop`, a WPF app built on MindAttic.Components.Wpf, matching the Orchestrator's look)
-- Queue and Tickets views (Ctrl+1/Ctrl+2), filterable by repo, status, type and approval and searchable (Ctrl+F), with closed and wont-do tickets hidden until you show archived.
+- Tabs Repos | Queue | Audit (Ctrl+1/2/3), filterable by repo, status, type, approval and work (queued, needs approval, blocked) and searchable (Ctrl+F), with closed and wont-do tickets hidden until you show archived.
+- Repos: every repo's tickets under its name, with its counts, git state (branch, ahead/behind, changed files) and a Start link that opens the Orchestrator to start a CLI there.
+- Queue: open tickets in the order /allocate hands them out; a claimed ticket shows its live worker (person, login, model, or orphaned) from the Orchestrator's database, read-only, as a link that opens the Orchestrator on it (O on the row).
+- Audit: the Orchestrator's last audit run (shared agent files that drifted or are missing, duplicate code across repos), read from its database.
 - Approve, unapprove, reject and reorder (move up/down/to top) queued tickets; file a new ticket (Ctrl+N); close, mark wont-do, correct a ticket's type, add a link, assign it to a member's login or reserve tokens for it from its detail pane.
 - A ticket being worked shows its login and session as links that open the Orchestrator on them (`MindAttic.Orchestrator.exe --show <email|session|ticket>`; nothing happens beyond a message when the Orchestrator isn't installed).
 - A Sync button (Ctrl+Shift+S) runs `tickets db sync` and shows the result; F5 refreshes.
-- `MindAttic.Tickets.Desktop.exe --root <dir> --ticket <ID>` opens on that ticket, selected with its detail pane open (an open one in the Queue, to approve, move or close; a closed one in Tickets). Started again while the window is open, it hands the id to that window and brings it forward. The Orchestrator dashboard's ticket links start it this way.
+- `MindAttic.Tickets.Desktop.exe --root <dir> --ticket <ID>` opens on that ticket, selected with its detail pane open (an open one in the Queue, to approve, move or close; a closed one in Repos). Started again while the window is open, it hands the id to that window and brings it forward. The Orchestrator dashboard's ticket links start it this way.
 - `deploy.ps1` publishes it as a self-contained exe to `C:\Apps\MindAttic.Tickets.Desktop` with Desktop and Start-menu shortcuts (and reinstalls the `tickets` CLI alongside it, via `tools/install.ps1`, unless `-SkipCli`).
 
 **Workspace jobs**

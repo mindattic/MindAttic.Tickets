@@ -31,6 +31,7 @@ public partial class MainWindow : Window
         CommandBindings.Add(new CommandBinding(WindowCommands.Escape, (_, _) => OnEscape()));
         CommandBindings.Add(new CommandBinding(WindowCommands.ShowQueue, (_, _) => { model.SelectedView = MainViewModel.QueueView; FocusList(); }));
         CommandBindings.Add(new CommandBinding(WindowCommands.ShowTickets, (_, _) => { model.SelectedView = MainViewModel.TicketsView; FocusList(); }));
+        CommandBindings.Add(new CommandBinding(WindowCommands.ShowAudit, (_, _) => model.SelectedView = MainViewModel.AuditView));
         CommandBindings.Add(new CommandBinding(WindowCommands.Help, (_, _) => ShowHelp()));
 
         model.PropertyChanged += (_, e) =>
@@ -63,12 +64,15 @@ public partial class MainWindow : Window
         };
     }
 
-    /// <summary>Groups the Tickets list by repo, or not, as the model says (the model sorts each repo's tickets together).</summary>
+    /// <summary>
+    /// Groups the Repos list by repo, or not, as the model says (the model sorts each repo's tickets together). Grouped by
+    /// the repo's heading view model, so each heading shows its counts, git state and Start link (M.TIX-T135).
+    /// </summary>
     private void ApplyGrouping()
     {
         var view = System.Windows.Data.CollectionViewSource.GetDefaultView(model.TicketRows);
         view.GroupDescriptions.Clear();
-        if (model.GroupByRepo) view.GroupDescriptions.Add(new System.Windows.Data.PropertyGroupDescription(nameof(TicketRowViewModel.Repo)));
+        if (model.GroupByRepo) view.GroupDescriptions.Add(new System.Windows.Data.PropertyGroupDescription(nameof(TicketRowViewModel.RepoHeader)));
     }
 
     /// <summary>A second start handed over <paramref name="id"/> (<c>--ticket</c>): come forward and open it.</summary>
@@ -97,7 +101,7 @@ public partial class MainWindow : Window
         watcher.Renamed += (_, _) => Dispatcher.BeginInvoke(() => { settle.Stop(); settle.Start(); });
     }
 
-    private ListBox CurrentList => model.IsQueueView ? QueueList : TicketList;
+    private ListBox CurrentList => model.IsQueueView ? QueueList : TicketList; // Audit has no ticket list: Repos' stands in
 
     private void FocusList()
     {
@@ -166,6 +170,7 @@ public partial class MainWindow : Window
             case Key.A when row.IsOpen: await model.ApproveAsync(row); return true;
             case Key.U when row.IsOpen: await model.UnapproveAsync(row); return true;
             case Key.R or Key.Delete when row.IsOpen: await model.RejectAsync(row); return true;
+            case Key.O when row.Worker is not null: model.ShowWorker(row); return true;
             case Key.Enter or Key.F6 when model.IsDetailOpen: DetailTitle.Focus(); return true;
             default: return false;
         }
@@ -232,7 +237,10 @@ public partial class MainWindow : Window
 
     private void ShowHelp() => MessageBox.Show(this,
         """
-        The Queue is every open ticket, highest priority first. Autopilot works fixes and approved tickets, in this order.
+        Repos lists every repo's tickets under its name, with its git state and a Start link that opens the Orchestrator
+        to start a CLI there. The Queue is every open ticket in the order /allocate hands them out, highest priority
+        first; /allocate works fixes and approved tickets, and a ticket being worked shows who has it (click to open the
+        Orchestrator on it). Audit shows the Orchestrator's drift and duplicate-code findings.
 
         In a list
           Up / Down            move between tickets
@@ -240,10 +248,11 @@ public partial class MainWindow : Window
           Alt+Home / Alt+End   move it to the top or bottom
           A                    approve        U   back to proposed
           R or Delete          reject (closes it as wont-do, with a reason)
+          O                    open the Orchestrator on the ticket's live worker
           Enter or F6          go to the detail pane
 
         Anywhere
-          Ctrl+1 / Ctrl+2      Queue / Tickets
+          Ctrl+1 / 2 / 3       Repos / Queue / Audit
           Work filter          Queued (autopilot takes it next), Needs approval, Blocked (waiting on other tickets)
           Ctrl+F               search          Ctrl+N   new ticket
           F5                   refresh         Ctrl+Shift+S   sync (commit and push the database)

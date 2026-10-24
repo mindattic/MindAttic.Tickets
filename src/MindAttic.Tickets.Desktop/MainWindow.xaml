@@ -15,8 +15,9 @@
         <KeyBinding Key="N" Modifiers="Control" Command="{Binding NewTicketCommand}" />
         <KeyBinding Key="S" Modifiers="Control+Shift" Command="{Binding SyncCommand}" />
         <KeyBinding Key="F" Modifiers="Control" Command="{x:Static vm:WindowCommands.FocusSearch}" />
-        <KeyBinding Key="D1" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowQueue}" />
-        <KeyBinding Key="D2" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowTickets}" />
+        <KeyBinding Key="D1" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowTickets}" />
+        <KeyBinding Key="D2" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowQueue}" />
+        <KeyBinding Key="D3" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowAudit}" />
         <KeyBinding Key="F1" Command="{x:Static vm:WindowCommands.Help}" />
         <KeyBinding Key="Escape" Command="{x:Static vm:WindowCommands.Escape}" />
         <KeyBinding Key="OemPlus" Modifiers="Control" Command="{Binding ZoomInCommand}" />
@@ -109,6 +110,11 @@
                         <TextBlock Style="{StaticResource Muted}" VerticalAlignment="Center"
                                    Text="{Binding Priority, StringFormat='priority {0}'}" />
                     </WrapPanel>
+                    <!-- Its live worker, from the Orchestrator's state: opens the Orchestrator on it (M.TIX-T135). -->
+                    <Button Style="{StaticResource LinkBtn}" HorizontalAlignment="Left" Margin="0,4,0,0" Focusable="False"
+                            Content="{Binding WorkerText}" Visibility="{Binding WorkerText, Converter={x:Static vm:Converters.EmptyToCollapsed}}"
+                            Command="{Binding DataContext.ShowWorkerCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}"
+                            AutomationProperties.Name="{Binding WorkerName}" ToolTip="{Binding WorkerTip}" />
                 </StackPanel>
                 <StackPanel Grid.Column="3" Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,0">
                     <Button Style="{StaticResource IconBtn}" Content="&#x2714;" Focusable="False" Margin="0,0,4,0"
@@ -162,7 +168,8 @@
             <StackPanel Margin="0,0,18,6">
                 <Label Style="{StaticResource FilterLabel}" Content="View" Target="{Binding ElementName=ViewChoice}" />
                 <ListBox x:Name="ViewChoice" Style="{StaticResource PillChoice}" ItemsSource="{Binding Views}"
-                         SelectedItem="{Binding SelectedView}" AutomationProperties.Name="View" />
+                         SelectedItem="{Binding SelectedView}" AutomationProperties.Name="View"
+                         ToolTip="Repos: every repo with its tickets and git state (Ctrl+1). Queue: open tickets in the order /allocate takes them (Ctrl+2). Audit: the Orchestrator's drift and duplicate-code findings (Ctrl+3)." />
             </StackPanel>
             <StackPanel Margin="0,0,12,6">
                 <Label Style="{StaticResource FilterLabel}" Content="_Search (Ctrl+F)" Target="{Binding ElementName=SearchBox}" />
@@ -174,17 +181,17 @@
                 <ComboBox x:Name="RepoBox" Style="{StaticResource Combo}" MinWidth="190" ItemsSource="{Binding RepoChoices}"
                           SelectedItem="{Binding RepoFilter}" AutomationProperties.Name="Repo filter" />
             </StackPanel>
-            <StackPanel Margin="0,0,12,6">
+            <StackPanel Margin="0,0,12,6" Visibility="{Binding ShowsTicketFilters, Converter={StaticResource Visible}}">
                 <Label Style="{StaticResource FilterLabel}" Content="_Type" Target="{Binding ElementName=TypeBox}" />
                 <ComboBox x:Name="TypeBox" Style="{StaticResource Combo}" ItemsSource="{Binding TypeChoices}"
                           SelectedItem="{Binding TypeFilter}" AutomationProperties.Name="Type filter" />
             </StackPanel>
-            <StackPanel Margin="0,0,12,6">
+            <StackPanel Margin="0,0,12,6" Visibility="{Binding ShowsTicketFilters, Converter={StaticResource Visible}}">
                 <Label Style="{StaticResource FilterLabel}" Content="_Approval" Target="{Binding ElementName=ApprovalBox}" />
                 <ComboBox x:Name="ApprovalBox" Style="{StaticResource Combo}" MinWidth="140" ItemsSource="{Binding ApprovalChoices}"
                           SelectedItem="{Binding ApprovalFilter}" AutomationProperties.Name="Approval filter" />
             </StackPanel>
-            <StackPanel Margin="0,0,12,6">
+            <StackPanel Margin="0,0,12,6" Visibility="{Binding ShowsTicketFilters, Converter={StaticResource Visible}}">
                 <Label Style="{StaticResource FilterLabel}" Content="Wor_k" Target="{Binding ElementName=WorkBox}" />
                 <ComboBox x:Name="WorkBox" Style="{StaticResource Combo}" MinWidth="150" ItemsSource="{Binding WorkChoices}"
                           SelectedItem="{Binding WorkFilter}" AutomationProperties.Name="Work filter"
@@ -235,7 +242,7 @@
                                 AutomationProperties.Name="Move down" ToolTip="Move down (Alt+Down)" />
                     </WrapPanel>
                     <TextBlock Style="{StaticResource Muted}" TextWrapping="Wrap" VerticalAlignment="Center" Margin="0,0,12,4"
-                               Text="Highest priority first. Drag a ticket, or select it and press Alt+Up / Alt+Down, to change its place; fixes and approved tickets are what autopilot works." />
+                               Text="In the order /allocate hands tickets out, highest priority first. Drag a ticket, or select it and press Alt+Up / Alt+Down, to change its place; fixes and approved tickets are what /allocate works. A ticket being worked shows who has it: click to open the Orchestrator on it." />
                 </DockPanel>
                 <ListBox x:Name="QueueList" Grid.Row="1" Style="{StaticResource RowList}" ItemsSource="{Binding QueueRows}"
                          SelectedItem="{Binding SelectedQueueRow}" ItemTemplate="{StaticResource QueueRowTemplate}"
@@ -261,11 +268,17 @@
                 <ListView.GroupStyle>
                     <GroupStyle>
                         <GroupStyle.HeaderTemplate>
+                            <!-- The group's Name is the repo's RepoHeaderViewModel (M.TIX-T135): its counts, git state and Start link. -->
                             <DataTemplate>
-                                <StackPanel Orientation="Horizontal" Margin="4,12,0,4" AutomationProperties.HeadingLevel="Level2">
-                                    <TextBlock Text="{Binding Name}" FontWeight="SemiBold" FontSize="14" />
-                                    <TextBlock Text="{Binding ItemCount, StringFormat='  {0} tickets'}" Style="{StaticResource Muted}" VerticalAlignment="Bottom" />
-                                </StackPanel>
+                                <WrapPanel Margin="4,12,0,4">
+                                    <TextBlock Text="{Binding Name.Name}" FontWeight="SemiBold" FontSize="14" AutomationProperties.HeadingLevel="Level2" VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding ItemCount, StringFormat='  {0} tickets'}" Style="{StaticResource Muted}" VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding Name.Counts, StringFormat='  ·  {0}'}" Style="{StaticResource Muted}" VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding Name.Git, StringFormat='  ·  git: {0}'}" Style="{StaticResource Muted}" VerticalAlignment="Center" />
+                                    <Button Style="{StaticResource LinkBtn}" Content="Start" Margin="14,0,0,0" VerticalAlignment="Center"
+                                            Command="{Binding DataContext.StartCliCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding Name}"
+                                            AutomationProperties.Name="{Binding Name.StartName}" ToolTip="Open the Orchestrator to start a CLI in this repo" />
+                                </WrapPanel>
                             </DataTemplate>
                         </GroupStyle.HeaderTemplate>
                     </GroupStyle>
@@ -337,6 +350,52 @@
                     </GridView>
                 </ListView.View>
             </ListView>
+
+            <!-- ── Audit: the Orchestrator's findings, read-only (M.TIX-T135) ── -->
+            <ScrollViewer Margin="20,0,12,0" VerticalScrollBarVisibility="Auto" Focusable="False"
+                          Visibility="{Binding IsAuditView, Converter={StaticResource Visible}}">
+                <StackPanel>
+                    <TextBlock Text="{Binding AuditSummary}" Style="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,0,0,4" />
+                    <TextBlock Style="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,0,0,4"
+                               Text="Read from the Orchestrator's database; the repo filter and search narrow every list." />
+
+                    <TextBlock Text="{Binding DriftRows.Count, StringFormat='DRIFT: SHARED FILES THAT DIFFER ({0})'}" Style="{StaticResource SectionLabel}" AutomationProperties.HeadingLevel="Level2" />
+                    <ItemsControl ItemsSource="{Binding DriftRows}" Focusable="False">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="0,0,0,8">
+                                    <TextBlock TextWrapping="Wrap"><Run Text="{Binding Repo, Mode=OneWay}" FontWeight="SemiBold" /><Run Text="  " /><Run Text="{Binding File, Mode=OneWay}" /><Run Text="  ·  " /><Run Text="{Binding SimilarityText, Mode=OneWay}" /></TextBlock>
+                                    <TextBox Text="{Binding Path, Mode=OneWay}" IsReadOnly="True" BorderThickness="0" Background="Transparent" Foreground="{DynamicResource MaMuted}" Padding="0" TextWrapping="Wrap" AutomationProperties.Name="Path" />
+                                    <TextBlock Style="{StaticResource Muted}" TextWrapping="Wrap"
+                                               Text="{Binding CanonicalPath, StringFormat='most repos match {0}'}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <TextBlock Text="{Binding MissingRows.Count, StringFormat='MISSING: SHARED FILES A REPO LACKS ({0})'}" Style="{StaticResource SectionLabel}" AutomationProperties.HeadingLevel="Level2" />
+                    <ItemsControl ItemsSource="{Binding MissingRows}" Focusable="False">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock TextWrapping="Wrap" Margin="0,0,0,6"><Run Text="{Binding Repo, Mode=OneWay}" FontWeight="SemiBold" /><Run Text="  " /><Run Text="{Binding File, Mode=OneWay}" /><Run Text="  ·  " /><Run Text="{Binding CountText, Mode=OneWay}" Foreground="{DynamicResource MaMuted}" /></TextBlock>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <TextBlock Text="{Binding DuplicateRows.Count, StringFormat='DUPLICATE CODE ACROSS REPOS ({0})'}" Style="{StaticResource SectionLabel}" AutomationProperties.HeadingLevel="Level2" />
+                    <ItemsControl ItemsSource="{Binding DuplicateRows}" Focusable="False">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="0,0,0,10">
+                                    <TextBlock Text="{Binding Title}" FontWeight="SemiBold" TextWrapping="Wrap" />
+                                    <TextBlock Text="{Binding Facts}" Style="{StaticResource Muted}" TextWrapping="Wrap" />
+                                    <TextBox Text="{Binding FileList, Mode=OneWay}" IsReadOnly="True" BorderThickness="0" Background="Transparent" Foreground="{DynamicResource MaMuted}" Padding="0" TextWrapping="Wrap" AutomationProperties.Name="Files" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </ScrollViewer>
 
             <!-- ── Detail pane ── -->
             <Border Grid.Column="1" Width="430" Background="{DynamicResource MaPane}" BorderBrush="{DynamicResource MaChromeBorder}" BorderThickness="1,0,0,0"

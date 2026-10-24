@@ -12,6 +12,8 @@ public sealed class TicketRowViewModel(string id) : ObservableObject
     private int rank;
     private bool isDropTarget;
     private IReadOnlyList<string> blockers = [];
+    private RepoHeaderViewModel? repoHeader;
+    private Worker? worker;
 
     public string Id { get; } = id;
     public string Repo { get => repo; private set => Set(ref repo, value); }
@@ -34,6 +36,28 @@ public sealed class TicketRowViewModel(string id) : ObservableObject
     public int Rank { get => rank; set { if (Set(ref rank, value)) Raise(nameof(SpokenName)); } }
 
     public bool IsDropTarget { get => isDropTarget; set => Set(ref isDropTarget, value); }
+
+    /// <summary>Its repo's heading on the Repos tab (M.TIX-T135); the list groups rows by it.</summary>
+    public RepoHeaderViewModel? RepoHeader { get => repoHeader; set => Set(ref repoHeader, value); }
+
+    /// <summary>Who's working it now, from the Orchestrator's state (M.TIX-T135); null when nobody has claimed it.</summary>
+    public Worker? Worker
+    {
+        get => worker;
+        set
+        {
+            if (!Set(ref worker, value)) return;
+            Raise(nameof(WorkerText));
+            Raise(nameof(WorkerName));
+            Raise(nameof(WorkerTip));
+        }
+    }
+
+    public string WorkerText => Worker?.Text ?? "";
+
+    public string WorkerTip => Worker is { } w ? (w.Why is { Length: > 0 } why ? why + ". " : "") + "Opens the Orchestrator on this ticket's live work (O)." : "";
+
+    public string WorkerName => Worker is { } w ? $"{Id} is being worked: {w.Text.TrimStart('▶', '⚠', ' ')}. Opens the Orchestrator on it." : "";
 
     public long Number => TicketRules.ParseNumber(Id) ?? 0;
 

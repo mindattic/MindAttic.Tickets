@@ -35,20 +35,32 @@ public static partial class OrchestratorLink
     /// <summary>What the Orchestrator is started with to show <paramref name="target"/>.</summary>
     public static IReadOnlyList<string> Arguments(string target) => ["--show", target];
 
+    /// <summary>What the Orchestrator is started with to start a CLI in <paramref name="repo"/> (the Repos tab's Start link,
+    /// M.TIX-T135); an Orchestrator that doesn't take <c>--start</c> just opens its window.</summary>
+    public static IReadOnlyList<string> StartArguments(string repo) => ["--start", repo];
+
     /// <summary>Opens the Orchestrator on <paramref name="target"/> (a login's email, a session id or a ticket id); returns why it
     /// couldn't, or null once it's started.</summary>
     public static string? Open(string? target, string? exe = null)
     {
         if (!IsTarget(target)) return $"Can't show '{target}' in the Orchestrator.";
+        return Launch(Arguments(target!), exe);
+    }
+
+    /// <summary>Starts the Orchestrator with <paramref name="args"/> (built by <see cref="Arguments"/> or
+    /// <see cref="StartArguments"/>, each value a checked <see cref="IsTarget"/>); returns why it couldn't, or null.</summary>
+    public static string? Launch(IReadOnlyList<string> args, string? exe = null)
+    {
+        if (args.Skip(1).Any(a => !IsTarget(a))) return $"Can't pass '{string.Join(' ', args)}' to the Orchestrator.";
         exe ??= FindExe();
         if (exe is null || !File.Exists(exe))
             return $"The Orchestrator isn't installed here (looked for {string.Join(", ", Candidates())}).";
         var psi = new ProcessStartInfo(exe) { UseShellExecute = false };
-        foreach (var a in Arguments(target!)) psi.ArgumentList.Add(a);
+        foreach (var a in args) psi.ArgumentList.Add(a);
         try
         {
             using var _ = Process.Start(psi);
-            TicketsLog.For("Orchestrator").Information("Opened the Orchestrator on {Target:l}", target);
+            TicketsLog.For("Orchestrator").Information("Opened the Orchestrator: {Args:l}", string.Join(' ', args));
             return null;
         }
         catch (Exception ex) when (ex is System.ComponentModel.Win32Exception or InvalidOperationException)

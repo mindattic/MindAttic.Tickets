@@ -9,12 +9,15 @@ using MindAttic.Tickets.Log;
 namespace MindAttic.Tickets.Desktop.ViewModels;
 
 /// <summary>
-/// The window: the Queue (open tickets in priority order, to approve, reject and reorder) and Tickets (every ticket,
-/// filtered and sorted), a detail pane for the selected ticket, and live refresh. Database work runs off the UI thread.
+/// The window's tabs, Repos | Queue | Audit (M.TIX-T135): Repos (every ticket, filtered and sorted, under a heading per
+/// repo with its git state and a Start link), the Queue (open tickets in the order /allocate hands them out, to approve,
+/// reject and reorder, each claimed one showing its live worker) and Audit (the Orchestrator's drift and duplicate-code
+/// findings); a detail pane for the selected ticket, and live refresh. Database work runs off the UI thread.
 /// </summary>
 public sealed partial class MainViewModel : ObservableObject
 {
-    public const string QueueView = "Queue", TicketsView = "Tickets";
+    /// <summary>The tabs. <see cref="TicketsView"/> is the Repos tab (it was "Tickets" before M.TIX-T135).</summary>
+    public const string QueueView = "Queue", TicketsView = "Repos", ReposView = TicketsView, AuditView = "Audit";
     public const string AllRepos = "All repos", AnyStatus = "Any status", AnyType = "Any type", AnyApproval = "Any approval";
 
     /// <summary>The work filter (M.TIX-T133): where an open ticket stands with autopilot.</summary>
@@ -31,16 +34,18 @@ public sealed partial class MainViewModel : ObservableObject
     private DetailViewModel? detail;
     private string announcement = "", statusMessage = "", lastRefresh = "", headline = "";
 
-    public MainViewModel(TicketStore store, DesktopSettings settings, IDialogs? dialogs = null)
+    public MainViewModel(TicketStore store, DesktopSettings settings, IDialogs? dialogs = null, OrchestratorState? orchestrator = null)
     {
         this.store = store;
         this.settings = settings;
         Dialogs = dialogs ?? new NoDialogs();
-        selectedView = settings.View == TicketsView ? TicketsView : QueueView;
+        selectedView = settings.View switch { TicketsView or "Tickets" => TicketsView, AuditView => AuditView, _ => QueueView };
+        InitOrchestrator(orchestrator);
         zoom = Math.Clamp(settings.Zoom, MinZoom, MaxZoom);
         groupByRepo = settings.GroupByRepo;
 
-        RefreshCommand = new RelayCommand(async () => await RefreshAsync());
+        // F5 re-reads every repo's git state too (the poll leaves that to its own slower interval).
+        RefreshCommand = new RelayCommand(async () => { await RefreshAsync(); await RefreshGitAsync(force: true); });
         NewTicketCommand = new RelayCommand(async () => await NewTicketAsync(), () => snapshot is not null);
         SyncCommand = new RelayCommand(async () => await SyncAsync(), () => !busy);
         ApproveCommand = new RelayCommand(async p => await ApproveAsync(Target(p)), p => Target(p) is { IsOpen: true });
@@ -63,7 +68,7 @@ public sealed partial class MainViewModel : ObservableObject
 
     // ── What's shown ────────────────────────────────────────────────────────
 
-    public IReadOnlyList<string> Views { get; } = [QueueView, TicketsView];
+    public IReadOnlyList<string> Views { get; } = [ReposView, QueueView, AuditView];
 
     public string SelectedView
     {
@@ -73,8 +78,12 @@ public sealed partial class MainViewModel : ObservableObject
             if (!Set(ref selectedView, value)) return;
             Raise(nameof(IsQueueView));
             Raise(nameof(IsTicketsView));
+            Raise(nameof(IsAuditView));
+            Raise(nameof(ShowsTicketFilters));
             settings.View = value;
             settings.Save();
+            ApplyFilters();
+            if (IsTicketsView) _ = RefreshGitAsync();
         }
     }
 
@@ -193,7 +202,9 @@ public sealed partial class MainViewModel : ObservableObject
         var request = ++refreshRequest;
         try
         {
+            var orch = LoadOrchestratorAsync();
             var s = await Task.Run(store.Load);
+            await orch;
             if (request != refreshRequest) return;
             snapshot = s;
             foreach (var r in s.Repos.Where(r => !RepoChoices.Contains(r))) RepoChoices.Add(r);
@@ -201,6 +212,7 @@ public sealed partial class MainViewModel : ObservableObject
             if (Detail is { } d) await ShowDetailAsync(d.Id, quiet: true);
             LastRefresh = s.Read.ToString("HH:mm:ss", CultureInfo.InvariantCulture);
             CommandManager.InvalidateRequerySuggested();
+            _ = RefreshGitAsync();
         }
         catch (Exception ex) when (ex is IOException or InvalidOperationException or System.Data.Common.DbException)
         {
@@ -224,19 +236,22 @@ public sealed partial class MainViewModel : ObservableObject
              t.Ticket.Summary.Contains(Search, StringComparison.OrdinalIgnoreCase) || t.Ticket.Ref.Contains(Search, StringComparison.OrdinalIgnoreCase) ||
              t.Repo.Contains(Search, StringComparison.OrdinalIgnoreCase));
 
-        QueueRows.SyncBy(s.Queue.Where(Match), t => t.Ticket.Id, r => r.Id, TicketRowViewModel.From, (r, t) => r.Update(t));
+        ApplyRepoHeaders(s);
+        QueueRows.SyncBy(s.Queue.Where(Match), t => t.Ticket.Id, r => r.Id, NewRow, UpdateRow);
         for (var i = 0; i < QueueRows.Count; i++) QueueRows[i].Rank = i + 1;
 
         var tickets = s.Tickets.Where(Match)
             .Where(t => StatusFilter != AnyStatus ? t.Ticket.Status == StatusFilter : ShowArchived || t.Ticket.Status == TicketRules.Open);
-        TicketRows.SyncBy(Sort(tickets), t => t.Ticket.Id, r => r.Id, TicketRowViewModel.From, (r, t) => r.Update(t));
+        TicketRows.SyncBy(Sort(tickets), t => t.Ticket.Id, r => r.Id, NewRow, UpdateRow);
+        ApplyAudit();
 
         var ready = s.Queue.Count(t => t.Ticket.Type == "fix" || t.Approval == TicketsDb.Approved);
         var blocked = s.Queue.Count(t => t.Blocked);
-        Headline = $"{s.Queue.Count} open · {ready} ready for autopilot · {s.Queue.Count - ready} awaiting approval · {blocked} blocked · {s.Repos.Count} repos";
-        StatusMessage = IsQueueView
-            ? $"Queue: {QueueRows.Count} of {s.Queue.Count} open tickets shown."
-            : $"Tickets: {TicketRows.Count} of {s.Tickets.Count} shown.";
+        var working = s.Queue.Count(t => WorkerOf(t.Ticket.Id) is { Orphaned: false });
+        Headline = $"{s.Queue.Count} open · {ready} ready for autopilot · {s.Queue.Count - ready} awaiting approval · {blocked} blocked · {working} being worked · {s.Repos.Count} repos";
+        StatusMessage = IsQueueView ? $"Queue: {QueueRows.Count} of {s.Queue.Count} open tickets shown."
+            : IsAuditView ? $"Audit: {DriftRows.Count} drifted, {MissingRows.Count} missing, {DuplicateRows.Count} duplicate groups shown."
+            : $"Repos: {TicketRows.Count} of {s.Tickets.Count} tickets shown.";
     }
 
     private bool WorkMatch(TicketInfo t) => WorkFilter switch
