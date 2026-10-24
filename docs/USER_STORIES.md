@@ -270,4 +270,5 @@ updated: 2026-10-12
 | M.TIX-T138 | 2026-10-23 | feature | closed | Tickets Desktop: a Hygiene view (closed tickets with no Ref or that came back, as 'tickets ticket hygiene') and a GitHub intake button (as 'tickets ticket intake', with a dry-run preview), the two M.TIX-T134 functions that landed in the engine and CLI only | 26cfe60 HygieneIntakeTests |
 | M.TIX-T139 | 2026-10-23 | chore | wont-do | many billions of tokens | commit failed |
 | M.TIX-T140 | 2026-10-23 | chore | closed | Sync the ticket database: recover from the stale index.lock that stranded M.TIX-T139's commit (~99 min old, holding process gone), and push the day's accumulated ticket changes (M.ORCH-T769-773, M.LNCH-T72, UR-T70 correction, etc.) | — |
-| M.TIX-T141 | 2026-10-23 | chore | open | Sync the ticket database | — |
+| M.TIX-T141 | 2026-10-23 | chore | closed | Sync the ticket database | — |
+| M.TIX-T142 | 2026-10-23 | chore | open | Sync the ticket database after the rebase | — |
