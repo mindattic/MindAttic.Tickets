@@ -152,6 +152,8 @@
                         ToolTip="File a new ticket (Ctrl+N)" />
                 <Button Style="{StaticResource Btn}" Content="S_ync" Command="{Binding SyncCommand}" Margin="0,0,8,0"
                         ToolTip="Commit and push the ticket database: runs 'tickets db sync' (Ctrl+Shift+S)" />
+                <Button Style="{StaticResource Btn}" Content="_GitHub intake…" Command="{Binding IntakeCommand}" Margin="0,0,8,0"
+                        ToolTip="File GitHub issues labelled 'orchestrator' and CI failures on main as tickets: shows a dry run first and files only when you click File ('tickets ticket intake')" />
                 <Button Style="{StaticResource Btn}" Content="_Refresh" Command="{Binding RefreshCommand}" Margin="0,0,8,0"
                         ToolTip="Read the database again (F5). It also refreshes by itself when agents change tickets." />
                 <Button Style="{StaticResource Btn}" Content="_Help" Command="{x:Static vm:WindowCommands.Help}"
@@ -169,7 +171,7 @@
                 <Label Style="{StaticResource FilterLabel}" Content="View" Target="{Binding ElementName=ViewChoice}" />
                 <ListBox x:Name="ViewChoice" Style="{StaticResource PillChoice}" ItemsSource="{Binding Views}"
                          SelectedItem="{Binding SelectedView}" AutomationProperties.Name="View"
-                         ToolTip="Repos: every repo with its tickets and git state (Ctrl+1). Queue: open tickets in the order /allocate takes them (Ctrl+2). Audit: the Orchestrator's drift and duplicate-code findings (Ctrl+3)." />
+                         ToolTip="Repos: every repo with its tickets and git state (Ctrl+1). Queue: open tickets in the order /allocate takes them (Ctrl+2). Audit: closed tickets to double-check, and the Orchestrator's drift and duplicate-code findings (Ctrl+3)." />
             </StackPanel>
             <StackPanel Margin="0,0,12,6">
                 <Label Style="{StaticResource FilterLabel}" Content="_Search (Ctrl+F)" Target="{Binding ElementName=SearchBox}" />
@@ -357,7 +359,28 @@
                 <StackPanel>
                     <TextBlock Text="{Binding AuditSummary}" Style="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,0,0,4" />
                     <TextBlock Style="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,0,0,4"
-                               Text="Read from the Orchestrator's database; the repo filter and search narrow every list." />
+                               Text="Ticket hygiene is read from the ticket database, the rest from the Orchestrator's; the repo filter and search narrow every list." />
+
+                    <!-- Ticket hygiene, from the ticket database ('tickets ticket hygiene', M.TIX-T138). -->
+                    <TextBlock Text="{Binding HygieneRows.Count, StringFormat='TICKET HYGIENE: CLOSED TICKETS TO DOUBLE-CHECK ({0})'}" Style="{StaticResource SectionLabel}" AutomationProperties.HeadingLevel="Level2" />
+                    <TextBlock Style="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,0,0,4"
+                               Text="Fixes and features closed with no Ref (no test or commit cited), and closed tickets a later ticket says came back." />
+                    <ItemsControl ItemsSource="{Binding HygieneRows}" Focusable="False">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="0,0,0,8">
+                                    <WrapPanel>
+                                        <TextBlock Text="{Binding Repo}" FontWeight="SemiBold" VerticalAlignment="Center" Margin="0,0,10,0" />
+                                        <Button Style="{StaticResource LinkBtn}" Content="{Binding TicketId}" VerticalAlignment="Center"
+                                                Command="{Binding DataContext.GoToCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding TicketId}"
+                                                AutomationProperties.Name="{Binding TicketId, StringFormat='Open {0}'}" ToolTip="Open the ticket" />
+                                    </WrapPanel>
+                                    <TextBlock Text="{Binding Summary}" TextWrapping="Wrap" />
+                                    <TextBlock Text="{Binding Why}" Style="{StaticResource Muted}" TextWrapping="Wrap" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
 
                     <TextBlock Text="{Binding DriftRows.Count, StringFormat='DRIFT: SHARED FILES THAT DIFFER ({0})'}" Style="{StaticResource SectionLabel}" AutomationProperties.HeadingLevel="Level2" />
                     <ItemsControl ItemsSource="{Binding DriftRows}" Focusable="False">

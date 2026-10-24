@@ -240,7 +240,9 @@ public partial class MainWindow : Window
         Repos lists every repo's tickets under its name, with its git state and a Start link that opens the Orchestrator
         to start a CLI there. The Queue is every open ticket in the order /allocate hands them out, highest priority
         first; /allocate works fixes and approved tickets, and a ticket being worked shows who has it (click to open the
-        Orchestrator on it). Audit shows the Orchestrator's drift and duplicate-code findings.
+        Orchestrator on it). Audit shows closed tickets to double-check (closed with no Ref, or that a later ticket says
+        came back) and the Orchestrator's drift and duplicate-code findings. GitHub intake shows what it would file from
+        GitHub issues labelled 'orchestrator' and CI failures on main, and files them only when you click File.
 
         In a list
           Up / Down            move between tickets

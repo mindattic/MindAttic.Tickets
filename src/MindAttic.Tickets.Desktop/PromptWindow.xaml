@@ -9,7 +9,10 @@
         TextOptions.TextFormattingMode="Display" UseLayoutRounding="True">
     <StackPanel Margin="22,18,22,18">
         <TextBlock x:Name="Heading" Style="{StaticResource Heading}" FontSize="17" TextWrapping="Wrap" />
-        <TextBlock x:Name="Message" TextWrapping="Wrap" Margin="0,8,0,4" Foreground="{DynamicResource MaMuted}" />
+        <!-- Scrolls when long (GitHub intake's preview, M.TIX-T138) rather than growing past the screen. -->
+        <ScrollViewer MaxHeight="420" VerticalScrollBarVisibility="Auto" Focusable="False">
+            <TextBlock x:Name="Message" TextWrapping="Wrap" Margin="0,8,0,4" Foreground="{DynamicResource MaMuted}" />
+        </ScrollViewer>
 
         <StackPanel x:Name="ChoicePanel" Margin="0,10,0,0">
             <Label x:Name="ChoiceLabel" Target="{Binding ElementName=Choice}" Foreground="{DynamicResource MaMuted}" Padding="0,0,0,3" />

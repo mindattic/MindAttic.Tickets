@@ -42,7 +42,8 @@ $ tickets ticket list --status open
 - Tabs Repos | Queue | Audit (Ctrl+1/2/3), filterable by repo, status, type, approval and work (queued, needs approval, blocked) and searchable (Ctrl+F), with closed and wont-do tickets hidden until you show archived.
 - Repos: every repo's tickets under its name, with its counts, git state (branch, ahead/behind, changed files) and a Start link that opens the Orchestrator to start a CLI there.
 - Queue: open tickets in the order /allocate hands them out; a claimed ticket shows its live worker (person, login, model, or orphaned) from the Orchestrator's database, read-only, as a link that opens the Orchestrator on it (O on the row).
-- Audit: the Orchestrator's last audit run (shared agent files that drifted or are missing, duplicate code across repos), read from its database.
+- Audit: ticket hygiene (closed fixes and features with no Ref, or that a later ticket says came back, as `tickets ticket hygiene`; each links to its ticket) and the Orchestrator's last audit run (shared agent files that drifted or are missing, duplicate code across repos), read from its database.
+- GitHub intake (`tickets ticket intake`): asks GitHub for issues labelled `orchestrator` and CI failures on main, shows the dry run, and files exactly those tickets only when you click File; nothing is written to GitHub.
 - Approve, unapprove, reject and reorder (move up/down/to top) queued tickets; file a new ticket (Ctrl+N); close, mark wont-do, correct a ticket's type, add a link, assign it to a member's login or reserve tokens for it from its detail pane.
 - A ticket being worked shows its login and session as links that open the Orchestrator on them (`MindAttic.Orchestrator.exe --show <email|session|ticket>`; nothing happens beyond a message when the Orchestrator isn't installed).
 - A Sync button (Ctrl+Shift+S) runs `tickets db sync` and shows the result; F5 refreshes.

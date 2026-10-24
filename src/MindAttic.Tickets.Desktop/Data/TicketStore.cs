@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.IO;
 using MindAttic.Tickets.Data;
 using MindAttic.Tickets.Log;
+using MindAttic.Tickets.Repos;
 
 namespace MindAttic.Tickets.Desktop.Data;
 
@@ -25,8 +26,23 @@ public sealed record TicketInfo(string Repo, Ticket Ticket, string Approval, lon
     public bool Queued => IsOpen && !NeedsApproval && !Blocked;
 }
 
+/// <summary>One thing GitHub intake's dry run would file, in <paramref name="Repo"/>.</summary>
+public sealed record IntakePreview(string Repo, IntakeItem Item)
+{
+    /// <summary>The intake item a dry-run ticket stands for: its marker (GH#12, CI#987) leads its summary, its link is its Ref.</summary>
+    internal static IntakeItem ItemOf(Ticket t)
+    {
+        var colon = t.Summary.IndexOf(':');
+        return new IntakeItem(colon > 0 ? t.Summary[..colon] : t.Summary, t.Type, t.Summary, t.Ref);
+    }
+}
+
 /// <summary>Everything the window shows, read in one go.</summary>
-public sealed record Snapshot(IReadOnlyList<string> Repos, IReadOnlyList<TicketInfo> Tickets, IReadOnlyList<TicketInfo> Queue, DateTime Read);
+public sealed record Snapshot(IReadOnlyList<string> Repos, IReadOnlyList<TicketInfo> Tickets, IReadOnlyList<TicketInfo> Queue, DateTime Read)
+{
+    /// <summary>Closed tickets that may not really be done (<c>tickets ticket hygiene</c>), worked out with the read (M.TIX-T138).</summary>
+    public IReadOnlyList<HygieneFinding> Hygiene { get; init; } = [];
+}
 
 /// <summary>A ticket's detail: history and links (both directions) and what it's waiting for.</summary>
 public sealed record TicketDetail(TicketInfo Info, IReadOnlyList<TicketEvent> History, IReadOnlyList<Link> Links, IReadOnlyList<string> OpenBlockers)
@@ -60,7 +76,10 @@ public sealed class TicketStore(string root)
             [.. db.Repos().Select(r => r.Name)],
             [.. tickets.Select(x => Info(x.Repo, x.Ticket))],
             [.. db.Queue().Select(q => new TicketInfo(q.Repo, q.Ticket, q.Approval, q.Priority, BlockersOf(q.Ticket.Id)))],
-            DateTime.Now);
+            DateTime.Now)
+        {
+            Hygiene = TicketHygiene.Check(tickets),
+        };
     });
 
     /// <summary>
@@ -120,6 +139,62 @@ public sealed class TicketStore(string root)
         Ticket t = null!;
         Write($"new {type} in {repo}: {summary}", db => t = db.Add(repo, type, TicketRules.Open, summary, reference));
         return t;
+    }
+
+    /// <summary>Runs <c>gh</c> for GitHub intake; tests replace it.</summary>
+    public Func<string[], (int Code, string Output)> Gh { get; init; } = GitHubIntake.Gh;
+
+    /// <summary>A repo's <c>origin</c> URL for GitHub intake (null when it has none); tests replace it.</summary>
+    public Func<Repo, string?>? Remote { get; init; }
+
+    /// <summary>What the last intake preview's <c>gh</c> calls said when one failed (not installed, not signed in), else null.</summary>
+    public string? IntakeError { get; private set; }
+
+    /// <summary>
+    /// GitHub intake's dry run (<c>tickets ticket intake --dry-run</c>): what each workspace repo with a GitHub origin would
+    /// get filed, nothing written.
+    /// </summary>
+    public IReadOnlyList<IntakePreview> PreviewIntake()
+    {
+        IntakeError = null;
+        (int Code, string Output) Ask(string[] args)
+        {
+            var result = Gh(args);
+            if (result.Code != 0 && !string.IsNullOrWhiteSpace(result.Output)) IntakeError ??= result.Output.Trim();
+            return result;
+        }
+        return Read(db => GitHubIntake.Intake(new Workspace(Root), db, dryRun: true, gh: Ask, remote: Remote)
+            .Select(x => new IntakePreview(x.Repo, IntakePreview.ItemOf(x.Ticket))).ToList());
+    }
+
+    /// <summary>
+    /// Files exactly the previewed items (not a fresh read of GitHub), each once: into the ticket database when it holds the
+    /// repo, else into the repo's own USER_STORIES.md. Returns what was filed; an item filed since the preview is skipped.
+    /// </summary>
+    public IReadOnlyList<(string Repo, Ticket Ticket)> FileIntake(IReadOnlyList<IntakePreview> preview)
+    {
+        var filed = new List<(string Repo, Ticket Ticket)>();
+        Write($"GitHub intake of {preview.Count} item(s)", db =>
+        {
+            var ws = new Workspace(Root);
+            var inDb = db.Repos().Select(r => r.Name).ToHashSet(StringComparer.OrdinalIgnoreCase);
+            foreach (var group in preview.GroupBy(p => p.Repo, StringComparer.OrdinalIgnoreCase))
+            {
+                var items = group.Select(p => p.Item).ToList();
+                if (inDb.Contains(group.Key))
+                {
+                    filed.AddRange(GitHubIntake.FileNew(db, group.Key, items).Select(t => (group.Key, t)));
+                    continue;
+                }
+                if (ws.Repos().FirstOrDefault(r => r.Name.Equals(group.Key, StringComparison.OrdinalIgnoreCase)) is not { } repo || !File.Exists(repo.StoriesPath)) continue;
+                var stories = StoryFile.Load(repo.StoriesPath);
+                var added = GitHubIntake.FileNew(stories, items);
+                if (added.Count > 0) stories.Save();
+                filed.AddRange(added.Select(t => (repo.Name, t)));
+            }
+        });
+        foreach (var (repo, t) in filed) Log.Information("GitHub intake filed {Id} in {Repo}: {Summary:l}", t.Id, repo, t.Summary);
+        return filed;
     }
 
     /// <summary>Runs <c>tickets db sync</c> (render, dump, commit and push the database); returns its exit code and output.</summary>

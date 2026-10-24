@@ -244,13 +244,14 @@ public sealed partial class MainViewModel : ObservableObject
             .Where(t => StatusFilter != AnyStatus ? t.Ticket.Status == StatusFilter : ShowArchived || t.Ticket.Status == TicketRules.Open);
         TicketRows.SyncBy(Sort(tickets), t => t.Ticket.Id, r => r.Id, NewRow, UpdateRow);
         ApplyAudit();
+        ApplyHygiene(s);
 
         var ready = s.Queue.Count(t => t.Ticket.Type == "fix" || t.Approval == TicketsDb.Approved);
         var blocked = s.Queue.Count(t => t.Blocked);
         var working = s.Queue.Count(t => WorkerOf(t.Ticket.Id) is { Orphaned: false });
         Headline = $"{s.Queue.Count} open · {ready} ready for autopilot · {s.Queue.Count - ready} awaiting approval · {blocked} blocked · {working} being worked · {s.Repos.Count} repos";
         StatusMessage = IsQueueView ? $"Queue: {QueueRows.Count} of {s.Queue.Count} open tickets shown."
-            : IsAuditView ? $"Audit: {DriftRows.Count} drifted, {MissingRows.Count} missing, {DuplicateRows.Count} duplicate groups shown."
+            : IsAuditView ? $"Audit: {HygieneRows.Count} closed tickets to double-check, {DriftRows.Count} drifted, {MissingRows.Count} missing, {DuplicateRows.Count} duplicate groups shown."
             : $"Repos: {TicketRows.Count} of {s.Tickets.Count} tickets shown.";
     }
 
@@ -318,6 +319,8 @@ public sealed partial class MainViewModel : ObservableObject
     public void GoTo(string? id)
     {
         if (id is null || snapshot is null) return;
+        // Audit has no ticket list: a hygiene finding's ticket opens in Repos.
+        if (IsAuditView && snapshot.Tickets.Any(t => t.Ticket.Id.Equals(id, StringComparison.OrdinalIgnoreCase))) SelectedView = TicketsView;
         if (snapshot.Tickets.All(t => !t.Ticket.Id.Equals(id, StringComparison.OrdinalIgnoreCase)))
         {
             StatusMessage = $"{id} isn't a ticket (stories open in a later version).";
