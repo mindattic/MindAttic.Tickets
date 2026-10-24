@@ -7251,6 +7251,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNI-T67', 'Unity.Chain', 67, '2026-10-23', 'docs', 'closed', 'Make the Unity compile and test mandatory before a ticket closes (owner''s rebuild standard, rule 7): several agents landed Unity code they never compiled, though Unity 6000.4.3f1 runs headless on this machine; AGENTS.md now says every ticket that touches Unity-side code or assets must run a headless Unity import/compile of its worktree and the EditMode (and, where relevant, PlayMode) tests it touches, and commit any .meta files Unity writes, before it lands', '4dc5696', 66, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNI-T68', 'Unity.Chain', 68, '2026-10-23', 'docs', 'closed', 'many billions of tokens', '—', 67, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNI-T69', 'Unity.Chain', 69, '2026-10-24', 'docs', 'closed', 'Update USER_STORIES.md', '—', 68, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNI-T70', 'Unity.Chain', 70, '2026-10-24', 'fix', 'open', 'Every enemy spawn uses enemies.json''s resetHP (1.0), never loadHP (0.2): GameSettings.cs maps EnemySetup.Hp from enemies.ResetHP unconditionally, so the very first wave (Enemy.vb''s loadEnemy) is not weaker than a post-Reset wave as the original intended (found by UNI-T19)', '—', 69, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UC-T1', 'Unity.Cursory', 1, '2026-10-20', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UC-T2', 'Unity.Cursory', 2, '2026-10-20', 'chore', 'closed', 'Bootstrap repo: AGENTS.md/CLAUDE.md forwarders and docs/rfc/0001-port-plan.md (port Cursory to Unity 6 on MindAttic.Unity.Multiplayer; points at that repo''s architecture RFC)', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UC-T3', 'Unity.Cursory', 3, '2026-10-20', 'chore', 'closed', 'Unity 6000.4.3f1 project: URP 2D, top-down orthographic camera, Packages/manifest.json referencing file:../../MindAttic.Unity.Multiplayer/unity/com.mindattic.unity.multiplayer and com.mindattic.capture, engine-free Assets/UnityCursory/Core + Tests/Core.Tests dotnet NUnit pattern (as in UnitySpace/GridGameGaiden), docs/BIBLE.md porting Cursory''s CUR-LAW rules (server authoritative; geometry once per level), .gitattributes LF, .gitignore for Unity. Design: MindAttic.Unity.Multiplayer docs/rfc/0001-architecture.md.', '5d05eca', 2, NULL);
@@ -20618,6 +20619,14 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (12070, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (12071, 'UNI-T56', '2026-10-24T16:55:29Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (12072, 'UNI-T56', '2026-10-24T16:55:29Z', 'ref', 'UNI-US-D7', '808b377');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (12073, 'UNI-T56', '2026-10-24T16:55:31Z', 'working', 'honey@mindattic.com (33e02961-5b42-446b-a988-ee46b3b0ee9d)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (12074, 'UNI-T70', '2026-10-24T17:06:50Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (12075, 'M.ORCH-T785', '2026-10-24T17:06:55Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (12076, 'M.ORCH-T786', '2026-10-24T17:06:55Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (12077, 'M.ORCH-T789', '2026-10-24T17:06:55Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (12078, 'M.ORCH-T790', '2026-10-24T17:06:56Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (12079, 'M.ORCH-T785', '2026-10-24T17:07:00Z', 'working', NULL, 'ryandebraal@mindattic.com (ddefd224-ff9a-422d-b6e9-218728189540)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (12080, 'M.ORCH-T790', '2026-10-24T17:07:01Z', 'working', NULL, 'ryandebraal@mindattic.com (ddefd224-ff9a-422d-b6e9-218728189540)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (12081, 'UNI-T70', '2026-10-24T17:07:03Z', 'working', NULL, '33e02961-5b42-446b-a988-ee46b3b0ee9d');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z');
@@ -21117,8 +21126,12 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.ORC
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.ORCH-T779', 'approved', 1, '2026-10-24T04:21:59Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.ORCH-T78', 'proposed', 110, '2026-10-18T08:37:30Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.ORCH-T780', 'proposed', 3001, '2026-10-24T05:46:35Z');
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.ORCH-T785', 'approved', 0, '2026-10-24T17:06:55Z');
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.ORCH-T786', 'approved', 0, '2026-10-24T17:06:55Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.ORCH-T787', 'proposed', -1, '2026-10-24T15:55:27Z');
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.ORCH-T789', 'approved', 0, '2026-10-24T17:06:55Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.ORCH-T79', 'proposed', 130, '2026-10-18T08:37:30Z');
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.ORCH-T790', 'approved', 0, '2026-10-24T17:06:56Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.ORCH-T82', 'proposed', 140, '2026-10-18T08:37:30Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.ORCH-T84', 'proposed', 150, '2026-10-18T08:37:30Z');
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('M.ORCH-T87', 'proposed', 185, '2026-10-18T08:37:30Z');
@@ -21887,11 +21900,14 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('USOD-
 
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T774', NULL, 0, 'ryandebraal@mindattic.com', '9976eacd-149e-4ad5-a16b-b31ecc8eb4cc', '2026-10-24T05:24:25Z', '2026-10-24T05:24:25Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T785', NULL, 0, 'ryandebraal@mindattic.com', 'ddefd224-ff9a-422d-b6e9-218728189540', '2026-10-24T17:07:00Z', '2026-10-24T17:07:00Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T790', NULL, 0, 'ryandebraal@mindattic.com', 'ddefd224-ff9a-422d-b6e9-218728189540', '2026-10-24T17:07:01Z', '2026-10-24T17:07:01Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T49', NULL, 0, 'honey@mindattic.com', '3355791e-fb1c-436b-9d8e-7fb6aeda09fd', '2026-10-24T06:48:18Z', '2026-10-24T06:48:18Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T110', NULL, 0, 'honey@mindattic.com', '80266bf8-e700-42a4-8046-431131f55d29', '2026-10-24T12:36:05Z', '2026-10-24T12:36:05Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.OVW-T7', NULL, 0, 'ryandebraal@mindattic.com', '94fd2733-b325-443d-adfc-d8c7ef9f5bdd', '2026-10-24T11:36:55Z', '2026-10-24T11:36:55Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UH-T41', NULL, 0, 'honey@mindattic.com', '920f73e2-defc-4a55-b788-dcf01eab5395', '2026-10-24T10:53:44Z', '2026-10-24T10:53:44Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UNI-T19', NULL, 0, 'honey@mindattic.com', '33e02961-5b42-446b-a988-ee46b3b0ee9d', '2026-10-24T16:36:32Z', '2026-10-24T16:36:32Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UNI-T70', NULL, 0, NULL, '33e02961-5b42-446b-a988-ee46b3b0ee9d', '2026-10-24T17:07:03Z', '2026-10-24T17:07:03Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UR-T36', NULL, 0, 'honey@mindattic.com', '920f73e2-defc-4a55-b788-dcf01eab5395', '2026-10-24T11:07:29Z', '2026-10-24T11:07:29Z');
 
 -- repo_renames
