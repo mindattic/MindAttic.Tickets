@@ -102,6 +102,10 @@
                         <Border Style="{StaticResource ApprovalChip}">
                             <TextBlock Text="{Binding ApprovalText}" Style="{StaticResource ApprovalText}" />
                         </Border>
+                        <Border Style="{StaticResource Chip}" BorderBrush="{DynamicResource StateRejected}"
+                                Visibility="{Binding BlockedText, Converter={x:Static vm:Converters.EmptyToCollapsed}}">
+                            <TextBlock Text="{Binding BlockedText}" FontSize="12" Foreground="{DynamicResource StateRejected}" />
+                        </Border>
                         <TextBlock Style="{StaticResource Muted}" VerticalAlignment="Center"
                                    Text="{Binding Priority, StringFormat='priority {0}'}" />
                     </WrapPanel>
@@ -180,6 +184,12 @@
                 <ComboBox x:Name="ApprovalBox" Style="{StaticResource Combo}" MinWidth="140" ItemsSource="{Binding ApprovalChoices}"
                           SelectedItem="{Binding ApprovalFilter}" AutomationProperties.Name="Approval filter" />
             </StackPanel>
+            <StackPanel Margin="0,0,12,6">
+                <Label Style="{StaticResource FilterLabel}" Content="Wor_k" Target="{Binding ElementName=WorkBox}" />
+                <ComboBox x:Name="WorkBox" Style="{StaticResource Combo}" MinWidth="150" ItemsSource="{Binding WorkChoices}"
+                          SelectedItem="{Binding WorkFilter}" AutomationProperties.Name="Work filter"
+                          ToolTip="Queued: open, a fix or approved, and not blocked (what autopilot takes next). Needs approval: open and not yet approved. Blocked: waiting on other open tickets." />
+            </StackPanel>
             <StackPanel Margin="0,0,12,6" Visibility="{Binding IsTicketsView, Converter={StaticResource Visible}}">
                 <Label Style="{StaticResource FilterLabel}" Content="Stat_us" Target="{Binding ElementName=StatusBox}" />
                 <ComboBox x:Name="StatusBox" Style="{StaticResource Combo}" ItemsSource="{Binding StatusChoices}"
@@ -194,6 +204,8 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Margin="0,0,12,6" VerticalAlignment="Bottom" Visibility="{Binding IsTicketsView, Converter={StaticResource Visible}}">
+                <CheckBox Style="{StaticResource Check}" Content="_Group by repo" IsChecked="{Binding GroupByRepo}" Margin="0,0,0,6"
+                          ToolTip="List each repo's tickets together under its name, sorted within it." />
                 <CheckBox Style="{StaticResource Check}" Content="Show closed and wont-do" IsChecked="{Binding ShowArchived}"
                           ToolTip="Closed and wont-do tickets are archived: hidden unless this is on or a status is picked." />
             </StackPanel>
@@ -243,7 +255,21 @@
                       Visibility="{Binding IsTicketsView, Converter={StaticResource Visible}}"
                       ItemsSource="{Binding TicketRows}" SelectedItem="{Binding SelectedTicketRow}" ItemContainerStyle="{StaticResource GridRow}"
                       AutomationProperties.Name="Tickets" PreviewKeyDown="OnTicketsKeyDown"
-                      VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling" KeyboardNavigation.TabNavigation="Once">
+                      VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling" VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                      KeyboardNavigation.TabNavigation="Once">
+                <!-- Group by repo: a heading per repo with its count (shown when the list is grouped; MainWindow sets the grouping). -->
+                <ListView.GroupStyle>
+                    <GroupStyle>
+                        <GroupStyle.HeaderTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="4,12,0,4" AutomationProperties.HeadingLevel="Level2">
+                                    <TextBlock Text="{Binding Name}" FontWeight="SemiBold" FontSize="14" />
+                                    <TextBlock Text="{Binding ItemCount, StringFormat='  {0} tickets'}" Style="{StaticResource Muted}" VerticalAlignment="Bottom" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </GroupStyle.HeaderTemplate>
+                    </GroupStyle>
+                </ListView.GroupStyle>
                 <ListView.View>
                     <GridView ColumnHeaderContainerStyle="{StaticResource GridHeader}">
                         <GridViewColumn Width="120">
@@ -275,7 +301,13 @@
                                 <GridViewColumnHeader Content="Status" Command="{Binding ToggleSortCommand}" CommandParameter="Status" />
                             </GridViewColumn.Header>
                             <GridViewColumn.CellTemplate>
-                                <DataTemplate><TextBlock Text="{Binding StatusText}" Style="{StaticResource StatusText}" /></DataTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding StatusText}" Style="{StaticResource StatusText}" />
+                                        <TextBlock Text="⏸ blocked" FontSize="12" Foreground="{DynamicResource StateRejected}" ToolTip="{Binding BlockedText}"
+                                                   Visibility="{Binding BlockedText, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
+                                    </StackPanel>
+                                </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         <GridViewColumn Width="110">

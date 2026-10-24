@@ -5,8 +5,25 @@ using MindAttic.Tickets.Log;
 
 namespace MindAttic.Tickets.Desktop.Data;
 
-/// <summary>One ticket with its queue state, as the views show it.</summary>
-public sealed record TicketInfo(string Repo, Ticket Ticket, string Approval, long Priority);
+/// <summary>
+/// One ticket with its queue state, as the views show it. <paramref name="Blockers"/>: the open tickets it waits on
+/// (its <c>requires</c> links, all the way down), empty when nothing holds it up.
+/// </summary>
+public sealed record TicketInfo(string Repo, Ticket Ticket, string Approval, long Priority, IReadOnlyList<string>? Blockers = null)
+{
+    public IReadOnlyList<string> Blockers { get; init; } = Blockers ?? [];
+
+    public bool IsOpen => Ticket.Status == TicketRules.Open;
+
+    /// <summary>Open and waiting on another open ticket.</summary>
+    public bool Blocked => IsOpen && Blockers.Count > 0;
+
+    /// <summary>Open, not a fix and not approved: autopilot won't take it until it's approved (the orchestrator's rule).</summary>
+    public bool NeedsApproval => IsOpen && Ticket.Type != "fix" && Approval != TicketsDb.Approved;
+
+    /// <summary>Open, approved or a fix, and not blocked: what autopilot takes next, in priority order.</summary>
+    public bool Queued => IsOpen && !NeedsApproval && !Blocked;
+}
 
 /// <summary>Everything the window shows, read in one go.</summary>
 public sealed record Snapshot(IReadOnlyList<string> Repos, IReadOnlyList<TicketInfo> Tickets, IReadOnlyList<TicketInfo> Queue, DateTime Read);
@@ -30,14 +47,44 @@ public sealed class TicketStore(string root)
     public Snapshot Load() => Read(db =>
     {
         var states = db.QueueStates();
+        var tickets = db.Tickets();
+        var blockers = OpenBlockers(tickets.Select(x => x.Ticket), db.AllLinks());
+        IReadOnlyList<string> BlockersOf(string id) => blockers.TryGetValue(id, out var b) ? b : [];
         TicketInfo Info(string repo, Ticket t) =>
-            states.TryGetValue(t.Id, out var s) ? new(repo, t, s.Approval, s.Priority) : new(repo, t, TicketsDb.Proposed, 0);
+            states.TryGetValue(t.Id, out var s) ? new(repo, t, s.Approval, s.Priority, BlockersOf(t.Id)) : new(repo, t, TicketsDb.Proposed, 0, BlockersOf(t.Id));
         return new Snapshot(
             [.. db.Repos().Select(r => r.Name)],
-            [.. db.Tickets().Select(x => Info(x.Repo, x.Ticket))],
-            [.. db.Queue().Select(q => new TicketInfo(q.Repo, q.Ticket, q.Approval, q.Priority))],
+            [.. tickets.Select(x => Info(x.Repo, x.Ticket))],
+            [.. db.Queue().Select(q => new TicketInfo(q.Repo, q.Ticket, q.Approval, q.Priority, BlockersOf(q.Ticket.Id)))],
             DateTime.Now);
     });
+
+    /// <summary>
+    /// Each open ticket's open blockers: the open tickets its <c>requires</c> links reach, directly or through others
+    /// (the detail pane's "waiting for", worked out for every ticket from one read of the links). IDs match without case.
+    /// </summary>
+    internal static IReadOnlyDictionary<string, IReadOnlyList<string>> OpenBlockers(IEnumerable<Ticket> tickets, IEnumerable<Link> links)
+    {
+        var open = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        var all = new List<Ticket>();
+        foreach (var t in tickets) { all.Add(t); if (t.Status == TicketRules.Open) open.Add(t.Id); }
+        var edges = links.Where(l => l.Kind == "requires").ToLookup(l => l.From, l => l.To, StringComparer.OrdinalIgnoreCase);
+        var result = new Dictionary<string, IReadOnlyList<string>>(StringComparer.OrdinalIgnoreCase);
+        foreach (var t in all.Where(t => open.Contains(t.Id) && edges.Contains(t.Id)))
+        {
+            var found = new List<string>();
+            var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { t.Id };
+            var next = new Queue<string>(edges[t.Id]);
+            while (next.TryDequeue(out var x))
+            {
+                if (!seen.Add(x)) continue;
+                if (open.Contains(x)) found.Add(x);
+                foreach (var y in edges[x]) next.Enqueue(y);
+            }
+            if (found.Count > 0) result[t.Id] = found;
+        }
+        return result;
+    }
 
     public TicketDetail? Detail(string id) => Read(db =>
     {
@@ -45,7 +92,7 @@ public sealed class TicketStore(string root)
         var (approval, priority) = db.QueueState(found.Ticket.Id);
         var blockers = db.Requires(found.Ticket.Id, transitive: true)
             .Where(b => db.Ticket(b) is { } t && t.Ticket.Status == TicketRules.Open).ToList();
-        return new TicketDetail(new TicketInfo(found.Repo, found.Ticket, approval, priority), db.History(found.Ticket.Id), db.Links(found.Ticket.Id), blockers);
+        return new TicketDetail(new TicketInfo(found.Repo, found.Ticket, approval, priority, blockers), db.History(found.Ticket.Id), db.Links(found.Ticket.Id), blockers);
     });
 
     public void Approve(string id) => Write($"approve {id}", db => db.Approve(id), render: false);

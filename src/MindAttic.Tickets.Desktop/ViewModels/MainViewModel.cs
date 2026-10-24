@@ -17,13 +17,16 @@ public sealed partial class MainViewModel : ObservableObject
     public const string QueueView = "Queue", TicketsView = "Tickets";
     public const string AllRepos = "All repos", AnyStatus = "Any status", AnyType = "Any type", AnyApproval = "Any approval";
 
+    /// <summary>The work filter (M.TIX-T133): where an open ticket stands with autopilot.</summary>
+    public const string AnyWork = "Any", Queued = "Queued", NeedsApproval = "Needs approval", Blocked = "Blocked";
+
     private readonly TicketStore store;
     private readonly DesktopSettings settings;
     private Snapshot? snapshot;
     private string selectedView;
-    private string search = "", repoFilter = AllRepos, statusFilter = AnyStatus, typeFilter = AnyType, approvalFilter = AnyApproval;
+    private string search = "", repoFilter = AllRepos, statusFilter = AnyStatus, typeFilter = AnyType, approvalFilter = AnyApproval, workFilter = AnyWork;
     private string sortBy = "ID";
-    private bool sortDescending, showArchived, busy;
+    private bool sortDescending, showArchived, busy, groupByRepo;
     private TicketRowViewModel? selectedQueueRow, selectedTicketRow;
     private DetailViewModel? detail;
     private string announcement = "", statusMessage = "", lastRefresh = "", headline = "";
@@ -35,6 +38,7 @@ public sealed partial class MainViewModel : ObservableObject
         Dialogs = dialogs ?? new NoDialogs();
         selectedView = settings.View == TicketsView ? TicketsView : QueueView;
         zoom = Math.Clamp(settings.Zoom, MinZoom, MaxZoom);
+        groupByRepo = settings.GroupByRepo;
 
         RefreshCommand = new RelayCommand(async () => await RefreshAsync());
         NewTicketCommand = new RelayCommand(async () => await NewTicketAsync(), () => snapshot is not null);
@@ -83,6 +87,7 @@ public sealed partial class MainViewModel : ObservableObject
     public IReadOnlyList<string> StatusChoices { get; } = [AnyStatus, .. TicketRules.Statuses];
     public IReadOnlyList<string> TypeChoices { get; } = [AnyType, .. TicketRules.Types];
     public IReadOnlyList<string> ApprovalChoices { get; } = [AnyApproval, .. TicketsDb.Approvals];
+    public IReadOnlyList<string> WorkChoices { get; } = [AnyWork, Queued, NeedsApproval, Blocked];
     public IReadOnlyList<string> SortChoices { get; } = ["ID", "Date", "Repo", "Type", "Status", "Approval", "Priority", "Summary"];
 
     public string Search { get => search; set { if (Set(ref search, value)) ApplyFilters(); } }
@@ -90,11 +95,29 @@ public sealed partial class MainViewModel : ObservableObject
     public string StatusFilter { get => statusFilter; set { if (Set(ref statusFilter, value ?? AnyStatus)) ApplyFilters(); } }
     public string TypeFilter { get => typeFilter; set { if (Set(ref typeFilter, value ?? AnyType)) ApplyFilters(); } }
     public string ApprovalFilter { get => approvalFilter; set { if (Set(ref approvalFilter, value ?? AnyApproval)) ApplyFilters(); } }
+    public string WorkFilter { get => workFilter; set { if (Set(ref workFilter, value ?? AnyWork)) ApplyFilters(); } }
+
+    /// <summary>
+    /// Tickets listed under a heading per repo, each repo's tickets together (the owner: "organized by repos, and each repo
+    /// has tickets"); the sort then orders tickets within each repo. Remembered between runs.
+    /// </summary>
+    public bool GroupByRepo
+    {
+        get => groupByRepo;
+        set
+        {
+            if (!Set(ref groupByRepo, value)) return;
+            settings.GroupByRepo = value;
+            settings.Save();
+            ApplyFilters();
+        }
+    }
+
     public bool ShowArchived { get => showArchived; set { if (Set(ref showArchived, value)) ApplyFilters(); } }
     public string SortBy { get => sortBy; set { if (Set(ref sortBy, value ?? "ID")) ApplyFilters(); } }
     public bool SortDescending { get => sortDescending; set { if (Set(ref sortDescending, value)) ApplyFilters(); } }
 
-    public bool IsFiltered => Search.Length > 0 || RepoFilter != AllRepos || TypeFilter != AnyType || ApprovalFilter != AnyApproval;
+    public bool IsFiltered => Search.Length > 0 || RepoFilter != AllRepos || TypeFilter != AnyType || ApprovalFilter != AnyApproval || WorkFilter != AnyWork;
 
     public TicketRowViewModel? SelectedQueueRow
     {
@@ -196,6 +219,7 @@ public sealed partial class MainViewModel : ObservableObject
             (RepoFilter == AllRepos || t.Repo.Equals(RepoFilter, StringComparison.OrdinalIgnoreCase)) &&
             (TypeFilter == AnyType || t.Ticket.Type == TypeFilter) &&
             (ApprovalFilter == AnyApproval || t.Approval == ApprovalFilter) &&
+            WorkMatch(t) &&
             (Search.Length == 0 || t.Ticket.Id.Contains(Search, StringComparison.OrdinalIgnoreCase) ||
              t.Ticket.Summary.Contains(Search, StringComparison.OrdinalIgnoreCase) || t.Ticket.Ref.Contains(Search, StringComparison.OrdinalIgnoreCase) ||
              t.Repo.Contains(Search, StringComparison.OrdinalIgnoreCase));
@@ -208,11 +232,20 @@ public sealed partial class MainViewModel : ObservableObject
         TicketRows.SyncBy(Sort(tickets), t => t.Ticket.Id, r => r.Id, TicketRowViewModel.From, (r, t) => r.Update(t));
 
         var ready = s.Queue.Count(t => t.Ticket.Type == "fix" || t.Approval == TicketsDb.Approved);
-        Headline = $"{s.Queue.Count} open · {ready} ready for autopilot · {s.Queue.Count - ready} awaiting approval · {s.Repos.Count} repos";
+        var blocked = s.Queue.Count(t => t.Blocked);
+        Headline = $"{s.Queue.Count} open · {ready} ready for autopilot · {s.Queue.Count - ready} awaiting approval · {blocked} blocked · {s.Repos.Count} repos";
         StatusMessage = IsQueueView
             ? $"Queue: {QueueRows.Count} of {s.Queue.Count} open tickets shown."
             : $"Tickets: {TicketRows.Count} of {s.Tickets.Count} shown.";
     }
+
+    private bool WorkMatch(TicketInfo t) => WorkFilter switch
+    {
+        Queued => t.Queued,
+        NeedsApproval => t.NeedsApproval,
+        Blocked => t.Blocked,
+        _ => true,
+    };
 
     private IEnumerable<TicketInfo> Sort(IEnumerable<TicketInfo> rows)
     {
@@ -227,7 +260,14 @@ public sealed partial class MainViewModel : ObservableObject
             "Summary" => t => t.Ticket.Summary.ToUpperInvariant(),
             _ => t => t.Repo.ToUpperInvariant(),
         };
-        var ordered = SortDescending ? rows.OrderByDescending(key) : rows.OrderBy(key);
+        // Grouped by repo, each repo's tickets stay together (the list's headings follow the rows' order), sorted within it.
+        IOrderedEnumerable<TicketInfo> ordered;
+        if (GroupByRepo)
+        {
+            var byRepo = rows.OrderBy(t => t.Repo, StringComparer.OrdinalIgnoreCase);
+            ordered = SortDescending ? byRepo.ThenByDescending(key) : byRepo.ThenBy(key);
+        }
+        else ordered = SortDescending ? rows.OrderByDescending(key) : rows.OrderBy(key);
         return ordered.ThenBy(t => t.Repo, StringComparer.OrdinalIgnoreCase).ThenBy(t => TicketRules.ParseNumber(t.Ticket.Id) ?? 0);
     }
 
@@ -284,8 +324,8 @@ public sealed partial class MainViewModel : ObservableObject
     /// <summary>Clears search and every filter and shows archived tickets, without re-filtering (the caller does).</summary>
     private void ClearFilters()
     {
-        search = ""; repoFilter = AllRepos; typeFilter = AnyType; approvalFilter = AnyApproval; statusFilter = AnyStatus; showArchived = true;
-        foreach (var p in new[] { nameof(Search), nameof(RepoFilter), nameof(TypeFilter), nameof(ApprovalFilter), nameof(StatusFilter), nameof(ShowArchived) }) Raise(p);
+        search = ""; repoFilter = AllRepos; typeFilter = AnyType; approvalFilter = AnyApproval; workFilter = AnyWork; statusFilter = AnyStatus; showArchived = true;
+        foreach (var p in new[] { nameof(Search), nameof(RepoFilter), nameof(TypeFilter), nameof(ApprovalFilter), nameof(WorkFilter), nameof(StatusFilter), nameof(ShowArchived) }) Raise(p);
     }
 
     /// <summary>
@@ -295,8 +335,15 @@ public sealed partial class MainViewModel : ObservableObject
     /// </summary>
     public async Task<bool> OpenTicketAsync(string id)
     {
-        await RefreshAsync();
-        var known = snapshot?.Tickets.FirstOrDefault(t => t.Ticket.Id.Equals(id.Trim(), StringComparison.OrdinalIgnoreCase));
+        // Fast: a ticket the window already lists opens straight away (its detail is read afresh below, and the file
+        // watcher keeps the lists current); only one it doesn't know yet costs a full read first.
+        TicketInfo? Known() => snapshot?.Tickets.FirstOrDefault(t => t.Ticket.Id.Equals(id.Trim(), StringComparison.OrdinalIgnoreCase));
+        var known = Known();
+        if (known is null)
+        {
+            await RefreshAsync();
+            known = Known();
+        }
         if (known is null)
         {
             StatusMessage = snapshot is null ? $"Couldn't open {id}: the ticket database isn't readable." : $"{id} isn't a ticket.";

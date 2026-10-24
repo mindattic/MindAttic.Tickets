@@ -11,6 +11,7 @@ public sealed class TicketRowViewModel(string id) : ObservableObject
     private long priority;
     private int rank;
     private bool isDropTarget;
+    private IReadOnlyList<string> blockers = [];
 
     public string Id { get; } = id;
     public string Repo { get => repo; private set => Set(ref repo, value); }
@@ -21,6 +22,13 @@ public sealed class TicketRowViewModel(string id) : ObservableObject
     public string Ref { get => reference; private set => Set(ref reference, value); }
     public string Approval { get => approval; private set => Set(ref approval, value); }
     public long Priority { get => priority; private set => Set(ref priority, value); }
+
+    /// <summary>The open tickets this one waits on (its <c>requires</c> links, all the way down).</summary>
+    public IReadOnlyList<string> Blockers { get => blockers; private set => Set(ref blockers, value); }
+
+    public bool IsBlocked => IsOpen && Blockers.Count > 0;
+
+    public string BlockedText => IsBlocked ? "⏸ blocked by " + string.Join(", ", Blockers) : "";
 
     /// <summary>1-based position in the queue as shown (0 outside the queue).</summary>
     public int Rank { get => rank; set { if (Set(ref rank, value)) Raise(nameof(SpokenName)); } }
@@ -40,7 +48,7 @@ public sealed class TicketRowViewModel(string id) : ObservableObject
     /// <summary>What a screen reader says for the row: everything a sighted user reads off it, in one sentence.</summary>
     public string SpokenName =>
         (Rank > 0 ? $"Position {Rank}. " : "") + $"{Id}, {Type}, {Status}, {Approval}" +
-        (Priority != 0 ? $", priority {Priority}" : "") + $", {Repo}: {Summary}";
+        (Priority != 0 ? $", priority {Priority}" : "") + (IsBlocked ? $", {BlockedText.TrimStart('⏸', ' ')}" : "") + $", {Repo}: {Summary}";
 
     public void Update(TicketInfo t)
     {
@@ -52,6 +60,9 @@ public sealed class TicketRowViewModel(string id) : ObservableObject
         Ref = t.Ticket.Ref;
         Approval = t.Approval;
         Priority = t.Priority;
+        if (!Blockers.SequenceEqual(t.Blockers, StringComparer.OrdinalIgnoreCase)) Blockers = t.Blockers;
+        Raise(nameof(IsBlocked));
+        Raise(nameof(BlockedText));
         Raise(nameof(MayWork));
         Raise(nameof(IsOpen));
         Raise(nameof(ApprovalText));

@@ -7,6 +7,8 @@
     <RootNamespace>MindAttic.Tickets.Desktop</RootNamespace>
     <!-- Not MindAttic.Tickets: the library already ships MindAttic.Tickets.dll beside it. -->
     <AssemblyName>MindAttic.Tickets.Desktop</AssemblyName>
+    <!-- Program.Main, not the generated one: a second start hands over its ticket before WPF loads (M.TIX-T133). -->
+    <StartupObject>MindAttic.Tickets.Desktop.Program</StartupObject>
     <!-- HOUSE-LAW-1: whole-number versions only; bump the major. -->
     <Version>1.0.0</Version>
     <!-- The exe's own icon: Explorer, the shortcuts and the taskbar all show it. -->

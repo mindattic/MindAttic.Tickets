@@ -1,5 +1,3 @@
-using System.Diagnostics;
-using System.Runtime.InteropServices;
 using System.Windows;
 using MindAttic.Tickets.Desktop.Data;
 using MindAttic.Tickets.Desktop.Theme;
@@ -9,7 +7,8 @@ namespace MindAttic.Tickets.Desktop;
 
 /// <summary>
 /// Tickets Desktop: every repo's tickets from the ticket database, to browse, approve, reject, reorder and change.
-/// One window per user: a second start brings the first one forward, handing it its <c>--ticket</c> if it has one.
+/// One window per user: a second start brings the first one forward, handing it its <c>--ticket</c> if it has one
+/// (<see cref="Program"/> does that before this app is built).
 /// <c>--root DIR</c> picks the workspace; <c>--ticket ID</c> selects that ticket and opens its detail pane (the
 /// Orchestrator dashboard's ticket links start it this way); <c>--high-contrast</c> forces the high-contrast colours (to check them without changing the Windows theme).
 /// </summary>
@@ -19,23 +18,12 @@ public partial class App : Application
     static App() => System.Windows.Controls.ToolTipService.ShowDurationProperty.OverrideMetadata(
         typeof(DependencyObject), new FrameworkPropertyMetadata(int.MaxValue));
 
-    private Mutex? single;
     private readonly CancellationTokenSource stopListening = new();
 
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
-        single = new Mutex(true, @"Local\MindAttic.Tickets.Desktop", out var first);
         var ticket = TicketHandoff.TicketArg(e.Args);
-        if (!first)
-        {
-            // Hand the ticket over before raising the window, so it comes forward already showing it.
-            if (ticket is not null) TicketHandoff.Send(ticket, TimeSpan.FromSeconds(3));
-            BringOtherForward();
-            Shutdown();
-            return;
-        }
-
         TicketsLog.Start("Desktop");
         var log = TicketsLog.For("App");
         DispatcherUnhandledException += (_, x) => log.Fatal(x.Exception, "Unhandled on the UI thread");
@@ -63,32 +51,7 @@ public partial class App : Application
     protected override void OnExit(ExitEventArgs e)
     {
         stopListening.Cancel();
-        single?.Dispose();
         TicketsLog.Stop();
         base.OnExit(e);
     }
-
-    private static void BringOtherForward()
-    {
-        var me = Process.GetCurrentProcess();
-        foreach (var p in Process.GetProcessesByName(me.ProcessName))
-        {
-            if (p.Id == me.Id || p.MainWindowHandle == IntPtr.Zero) continue;
-            if (IsIconic(p.MainWindowHandle)) ShowWindow(p.MainWindowHandle, 9); // SW_RESTORE, only when minimized: not un-maximize it
-            SetForegroundWindow(p.MainWindowHandle);
-            return;
-        }
-    }
-
-    [DllImport("user32.dll")]
-    [return: MarshalAs(UnmanagedType.Bool)]
-    private static extern bool SetForegroundWindow(IntPtr hWnd);
-
-    [DllImport("user32.dll")]
-    [return: MarshalAs(UnmanagedType.Bool)]
-    private static extern bool IsIconic(IntPtr hWnd);
-
-    [DllImport("user32.dll")]
-    [return: MarshalAs(UnmanagedType.Bool)]
-    private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 }

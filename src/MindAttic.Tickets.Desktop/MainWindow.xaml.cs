@@ -36,7 +36,9 @@ public partial class MainWindow : Window
         model.PropertyChanged += (_, e) =>
         {
             if (e.PropertyName == nameof(MainViewModel.Announcement)) Announce(model.Announcement);
+            if (e.PropertyName == nameof(MainViewModel.GroupByRepo)) ApplyGrouping();
         };
+        ApplyGrouping();
         model.FocusRow += row => Dispatcher.BeginInvoke(DispatcherPriority.Background, () => FocusRow(row));
 
         // Agents change tickets all the time: follow the database file (settled for a second, since one change is several
@@ -61,11 +63,22 @@ public partial class MainWindow : Window
         };
     }
 
+    /// <summary>Groups the Tickets list by repo, or not, as the model says (the model sorts each repo's tickets together).</summary>
+    private void ApplyGrouping()
+    {
+        var view = System.Windows.Data.CollectionViewSource.GetDefaultView(model.TicketRows);
+        view.GroupDescriptions.Clear();
+        if (model.GroupByRepo) view.GroupDescriptions.Add(new System.Windows.Data.PropertyGroupDescription(nameof(TicketRowViewModel.Repo)));
+    }
+
     /// <summary>A second start handed over <paramref name="id"/> (<c>--ticket</c>): come forward and open it.</summary>
     public async Task OpenTicketAsync(string id)
     {
         if (WindowState == WindowState.Minimized) WindowState = WindowState.Normal;
-        Activate();
+        Show();
+        // The second start allowed this process to take the foreground (AllowSetForegroundWindow); if Windows still
+        // refused, a brief topmost brings the window above the one that has it without stealing it for good.
+        if (!Activate()) { Topmost = true; Topmost = false; Activate(); }
         if (!await model.OpenTicketAsync(id)) FocusList();
     }
 
@@ -231,6 +244,7 @@ public partial class MainWindow : Window
 
         Anywhere
           Ctrl+1 / Ctrl+2      Queue / Tickets
+          Work filter          Queued (autopilot takes it next), Needs approval, Blocked (waiting on other tickets)
           Ctrl+F               search          Ctrl+N   new ticket
           F5                   refresh         Ctrl+Shift+S   sync (commit and push the database)
           Ctrl+Plus / Minus / 0   zoom         Esc   close details or clear search
