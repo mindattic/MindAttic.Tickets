@@ -130,7 +130,6 @@ src/MindAttic.Tickets.Cli/        the tickets exe (Spectre.Console.Cli)
 src/MindAttic.Tickets.Desktop/    Tickets Desktop, a WPF ticket app (net10.0-windows, MindAttic.Components.Wpf)
 tests/MindAttic.Tickets.Tests/    NUnit 4
 tests/MindAttic.Tickets.Desktop.Tests/  NUnit 4: Tickets Desktop's view model and store against a temporary database
-tools/build-readme.ps1             regenerates README.htm from README.md (wraps codex-standard's shared engine)
 tools/codex.ps1                    Codex doctor + digest
 tools/install.ps1                  packs the library and CLI and installs `tickets` as a global tool
 deploy.ps1                         publishes Tickets Desktop and (re)creates its shortcuts
