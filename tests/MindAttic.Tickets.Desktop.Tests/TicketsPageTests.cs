@@ -11,7 +11,7 @@ namespace MindAttic.Tickets.Desktop.Tests;
 /// <summary>
 /// The interactive tickets page (M.TIX-T63), end to end through the window's view model and store: every repo's tickets
 /// listed, approve, reject (closed wont-do and archived) and drag-and-drop reordering, each written to the ticket
-/// database's queue, which the orchestrator and autopilot read.
+/// database's queue, which the orchestrator and /allocate read.
 /// </summary>
 public sealed class TicketsPageTests
 {

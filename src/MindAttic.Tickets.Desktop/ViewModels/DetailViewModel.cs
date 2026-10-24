@@ -116,8 +116,8 @@ public sealed class DetailViewModel : ObservableObject
     public string WorkText =>
         !IsOpen ? "Done: not in the queue."
         : IsBlocked ? $"Blocked: waits for {string.Join(", ", Source.OpenBlockers)}."
-        : Type == "fix" || IsApproved ? "Ready: autopilot may work it."
-        : "Needs approval before autopilot works it.";
+        : Type == "fix" || IsApproved ? "Ready: /allocate may work it."
+        : "Needs approval before /allocate works it.";
 
     public IReadOnlyList<string> Blockers => Source.OpenBlockers;
 

@@ -76,14 +76,14 @@ public sealed class WorkFilterTests
     }
 
     [Test]
-    public void Needs_approval_shows_open_tickets_autopilot_wont_take_until_approved()
+    public void Needs_approval_shows_open_tickets_allocate_wont_take_until_approved()
     {
         model.WorkFilter = MainViewModel.NeedsApproval;
         Assert.That(Queue(), Is.EqualTo(new[] { "AL-T1" }));
     }
 
     [Test]
-    public void Queued_shows_what_autopilot_takes_next()
+    public void Queued_shows_what_allocate_takes_next()
     {
         model.WorkFilter = MainViewModel.Queued;
 

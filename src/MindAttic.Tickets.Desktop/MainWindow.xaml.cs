@@ -266,7 +266,7 @@ public partial class MainWindow : Window
 
         Anywhere
           Ctrl+1 / 2 / 3       Repos / Queue / Audit
-          Work filter          Queued (autopilot takes it next), Needs approval, Blocked (waiting on other tickets)
+          Work filter          Queued (/allocate takes it next), Needs approval, Blocked (waiting on other tickets)
           Ctrl+F               search          Ctrl+N   new ticket
           F5                   refresh         Ctrl+Shift+S   sync (commit and push the database)
           Ctrl+Plus / Minus / 0   zoom         Esc   close details or clear search
