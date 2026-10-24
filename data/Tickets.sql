@@ -7466,6 +7466,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T200', 'Unity.GridGame', 200, '2026-10-22', 'docs', 'closed', 'Update USER_STORIES.md', '—', 199, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T201', 'Unity.GridGame', 201, '2026-10-22', 'chore', 'closed', 'Add EncounterParty.cs.meta', '—', 200, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T202', 'Unity.GridGame', 202, '2026-10-24', 'fix', 'open', 'tools/unity.ps1''s Editor-open guard (line 78) matches MainWindowTitle -like ''*GridGameGaiden*'', but the repo folder, and so the Editor title, is Unity.GridGame since the Unity Fleet Rename, so it never fires and a batch build runs against an open project; match the repo folder''s leaf name instead. Same stale ''tools\ -> GridGameGaiden\'' comments in tools/deploy.ps1 and make-desktop-shortcut.ps1 (the GridGameGaiden.exe product name and C:\Apps\GridGameGaiden install path can stay) (found by MAT-T26 sweep)', '—', 201, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T203', 'Unity.GridGame', 203, '2026-10-24', 'fix', 'open', 'MetaLoopTests.Full_loop_battle_commit_then_every_vendor fails on origin/main 7b4efd9 (Tests/Core.Tests/MetaLoopTests.cs line 118): after forging and equipping, hero.WeaponDurability is 200 but the forged weapon''s Durability is 160 (Assert.That(hero.WeaponDurability, Is.EqualTo(forged.Durability))). Either equip doesn''t take the forged piece''s durability or the test''s expectation is stale after a durability change (GG-T194/T196 area); fix whichever is wrong (found by MAT-T26 sweep)', '—', 202, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UH-T1', 'Unity.Hare', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UH-T2', 'Unity.Hare', 2, '2026-10-21', 'chore', 'closed', 'Scaffold Unity.Hare project (folders, .gitignore, Unity version, docs layout)', '71b3ce1', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UH-T3', 'Unity.Hare', 3, '2026-10-21', 'docs', 'closed', 'Write reverse-engineering notes for gmlHARE/gmlRabbit object, script and room catalog', '19d3c0f', 2, NULL);
@@ -20021,6 +20022,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (11561, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (11562, 'MAT-T53', '2026-10-24T05:53:56Z', 'working', '8c6394ee-f1b8-4b85-8d7a-50a4527056f9', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (11563, 'M.CAPT-T72', '2026-10-24T05:55:52Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (11564, 'M.CAPT-T72', '2026-10-24T05:56:06Z', 'working', NULL, '3355791e-fb1c-436b-9d8e-7fb6aeda09fd');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (11565, 'GG-T203', '2026-10-24T06:13:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (11566, 'GG-T203', '2026-10-24T06:14:13Z', 'working', NULL, '3355791e-fb1c-436b-9d8e-7fb6aeda09fd');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z');
@@ -21285,6 +21288,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('USOD-
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('USOD-T9', 'approved', 0, '2026-10-22T23:02:27Z');
 
 -- ticket_work
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T203', NULL, 0, NULL, '3355791e-fb1c-436b-9d8e-7fb6aeda09fd', '2026-10-24T06:14:13Z', '2026-10-24T06:14:13Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.CAPT-T72', NULL, 0, NULL, '3355791e-fb1c-436b-9d8e-7fb6aeda09fd', '2026-10-24T05:56:06Z', '2026-10-24T05:56:06Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T762', NULL, 0, 'ryandebraal@mindattic.com', '98a40e2a-cc75-4838-86e0-d73a698227b1', '2026-10-24T02:30:09Z', '2026-10-24T02:30:09Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T763', NULL, 0, 'ryandebraal@mindattic.com', '98a40e2a-cc75-4838-86e0-d73a698227b1', '2026-10-24T02:30:09Z', '2026-10-24T02:30:09Z');
