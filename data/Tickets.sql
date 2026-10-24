@@ -20274,6 +20274,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (11752, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (11753, 'MAT-T47', '2026-10-24T10:47:25Z', 'ref', 'MAT-T39', '64 repos committed (install.ps1 already migrated .prose -> .agent on disk; see each repo''s own HEAD commit tagged MAT-T47)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (11754, 'UQD-T57', '2026-10-24T10:48:07Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (11755, 'UQD-T57', '2026-10-24T10:48:07Z', 'ref', '—', 'f8b2472');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (11756, 'UQD-T57', '2026-10-24T10:48:37Z', 'working', 'honey@mindattic.com (920f73e2-defc-4a55-b788-dcf01eab5395)', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z');
@@ -21553,7 +21554,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.SPC-T491', NULL, 0, 'ryandebraal@mindattic.com', 'ebfa0b7b-24aa-466f-a83a-3b4d3a262661', '2026-10-24T02:30:10Z', '2026-10-24T02:30:10Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.SPC-T498', NULL, 0, 'ryandebraal@mindattic.com', 'ebfa0b7b-24aa-466f-a83a-3b4d3a262661', '2026-10-24T02:30:10Z', '2026-10-24T02:30:10Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UH-T40', NULL, 0, 'honey@mindattic.com', '920f73e2-defc-4a55-b788-dcf01eab5395', '2026-10-24T10:26:39Z', '2026-10-24T10:26:39Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UQD-T57', NULL, 0, 'honey@mindattic.com', '920f73e2-defc-4a55-b788-dcf01eab5395', '2026-10-24T10:26:38Z', '2026-10-24T10:26:38Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UR-T68', NULL, 0, 'honey@mindattic.com', '920f73e2-defc-4a55-b788-dcf01eab5395', '2026-10-24T10:26:42Z', '2026-10-24T10:26:42Z');
 
 -- repo_renames
