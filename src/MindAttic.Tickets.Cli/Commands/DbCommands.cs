@@ -239,12 +239,26 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
         [CommandOption("--diff")]
         [Description("Show each commit's full diff, not just the files it touched.")]
         public bool Diff { get; init; }
+
+        [CommandOption("--versions")]
+        [Description("Every version of the ticket, oldest first: number, when, and what each save changed.")]
+        public bool Versions { get; init; }
+
+        [CommandOption("--version <N>")]
+        [Description("The ticket as version N read (1 is as filed; the highest is now), its changes from the version before marked.")]
+        public int? Version { get; init; }
+
+        public override ValidationResult Validate() =>
+            Version is < 1 ? ValidationResult.Error("--version counts from 1")
+            : Versions && Version is not null ? ValidationResult.Error("--versions and --version: pick one")
+            : ValidationResult.Success();
     }
 
     public override int Execute(CommandContext context, Settings settings)
     {
         using var db = Db.Open(settings);
         var (repo, t) = db.Ticket(settings.Id) ?? throw new KeyNotFoundException($"No ticket {settings.Id}.");
+        if (settings.Versions || settings.Version is not null) return ShowVersions(db, t, settings);
         var links = db.Links(t.Id);
         var history = db.History(t.Id);
         // The end-to-end view (M.TIX-T134, taken over from orchestrator show): the row, its queue and work state, links,
@@ -282,6 +296,55 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
             AnsiConsole.MarkupLine($"  [grey]{Output.Esc(e.At)} {Output.Esc(e.Field)}: {Output.Esc(e.Old ?? "")} → {Output.Esc(e.New ?? "")}[/]");
         AnsiConsole.MarkupLine(commits.Length == 0 ? "[grey]No commits mention it.[/]" : "[bold]Commits[/]");
         if (commits.Length > 0) AnsiConsole.WriteLine(commits);
+        return 0;
+    }
+
+    /// <summary><c>--versions</c> and <c>--version N</c> (M.TIX-T137): the ticket as it read at each save.</summary>
+    private static int ShowVersions(TicketsDb db, Ticket t, Settings settings)
+    {
+        var versions = db.Versions(t.Id);
+        static string When(DateTime at) => at.ToString("yyyy-MM-dd HH:mm:ss'Z'", System.Globalization.CultureInfo.InvariantCulture);
+        static object Json(TicketVersion v) => new
+        {
+            number = v.Number, at = When(v.At), repo = v.Repo, id = v.Ticket.Id, date = v.Ticket.Date, type = v.Ticket.Type, status = v.Ticket.Status,
+            summary = v.Ticket.Summary, @ref = v.Ticket.Ref, approval = v.Approval, priority = v.Priority, assignee = v.Assignee, reserved = v.Reserved,
+            links = v.Links.Select(l => new { from = l.From, kind = l.Kind, to = l.To, note = l.Note }), changed = v.Changed, recorded = v.Recorded,
+        };
+        if (settings.Version is not { } n)
+        {
+            if (settings.Json)
+            {
+                Console.WriteLine(JsonSerializer.Serialize(versions.Select(Json), new JsonSerializerOptions { WriteIndented = true }));
+                return 0;
+            }
+            var table = new Table().Border(TableBorder.Rounded).AddColumns("#", "When (UTC)", "Status", "Approval", "Priority", "Changed");
+            foreach (var v in versions)
+                table.AddRow(v.Number.ToString(System.Globalization.CultureInfo.InvariantCulture) + (v.Number == versions.Count ? " (now)" : ""), When(v.At),
+                    Output.Esc(v.Ticket.Status), Output.Esc(v.Approval), v.Priority.ToString(System.Globalization.CultureInfo.InvariantCulture),
+                    v.Number == 1 ? "[grey]filed[/]" : Output.Esc(string.Join(", ", v.Changed)));
+            AnsiConsole.MarkupLine($"[bold]{Output.Esc(t.Id)}[/]: {versions.Count} version(s)");
+            AnsiConsole.Write(table);
+            if (versions.Count > 0 && !versions[^1].Recorded)
+                AnsiConsole.MarkupLine("[grey]Worked back from the ticket's history (this store doesn't keep every save); links are shown as they are now.[/]");
+            return 0;
+        }
+        if (n > versions.Count) throw new ArgumentException($"{t.Id} has {versions.Count} version(s); there's no version {n}.");
+        var shown = versions[n - 1];
+        if (settings.Json)
+        {
+            Console.WriteLine(JsonSerializer.Serialize(Json(shown), new JsonSerializerOptions { WriteIndented = true }));
+            return 0;
+        }
+        string Mark(string field, string text) => shown.Changed.Contains(field) ? $"[black on yellow]{Output.Esc(text)}[/]" : Output.Esc(text);
+        AnsiConsole.MarkupLine($"[bold]{Output.Esc(t.Id)}[/] version {n} of {versions.Count}{(n == versions.Count ? " (now)" : "")} · {When(shown.At)}" +
+                               (n == 1 ? " · as filed" : $" · changed: {Output.Esc(string.Join(", ", shown.Changed))}"));
+        AnsiConsole.MarkupLine($"{Mark("id", shown.Ticket.Id)} · {Mark("repo", shown.Repo)} · {Mark("type", shown.Ticket.Type)} · {Mark("status", shown.Ticket.Status)} · opened {Output.Esc(shown.Ticket.Date)}");
+        AnsiConsole.MarkupLine(Mark("summary", shown.Ticket.Summary));
+        AnsiConsole.MarkupLine($"[grey]Ref:[/] {Mark("ref", shown.Ticket.Ref)}");
+        AnsiConsole.MarkupLine($"[grey]Approval:[/] {Mark("approval", shown.Approval)} · [grey]priority:[/] {Mark("priority", shown.Priority.ToString(System.Globalization.CultureInfo.InvariantCulture))}");
+        AnsiConsole.MarkupLine($"[grey]Assigned:[/] {Mark("assignee", shown.Assignee ?? "nobody")} · [grey]reserved:[/] {Mark("reserved", shown.Reserved.ToString(System.Globalization.CultureInfo.InvariantCulture))}");
+        if (shown.Changed.Contains("links")) AnsiConsole.MarkupLine("[black on yellow]Links changed:[/]");
+        foreach (var l in shown.Links) AnsiConsole.MarkupLine(Output.LinkLine(l, shown.Ticket.Id));
         return 0;
     }
 }

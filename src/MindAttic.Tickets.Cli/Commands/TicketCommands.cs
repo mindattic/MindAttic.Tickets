@@ -182,8 +182,12 @@ public sealed class TicketVerifyCommand : Command<RepoSettings>
             {
                 // Append-only is enforced by the database itself; what's left to check is the data.
                 var found = db.Check().Where(p => p.StartsWith(repo.Name + ": ", StringComparison.OrdinalIgnoreCase) || !p.Contains(": ", StringComparison.Ordinal) || p.StartsWith("link ", StringComparison.Ordinal)).ToList();
+                // And their versions (M.TIX-T137): the history every version is read from.
+                found.AddRange(db.CheckVersions(repo.Name));
                 foreach (var p in found) AnsiConsole.MarkupLine($"[red]{Output.Esc(p)}[/]");
-                if (found.Count == 0) AnsiConsole.MarkupLine($"[green]{Output.Esc(repo.Name)}: tickets OK[/] ({db.Tickets(repo.Name).Count})");
+                if (found.Count == 0)
+                    AnsiConsole.MarkupLine($"[green]{Output.Esc(repo.Name)}: tickets OK[/] ({db.Tickets(repo.Name).Count}; " +
+                                           (db.IsVersioned() ? "every save kept" : "versions worked back from their history") + ")");
                 return found.Count == 0 ? 0 : 1;
             }
         if (!File.Exists(repo.StoriesPath)) { AnsiConsole.MarkupLine($"[red]{Output.Esc(repo.Name)}: no docs/USER_STORIES.md[/]"); return 1; }

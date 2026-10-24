@@ -49,6 +49,9 @@ public sealed record TicketDetail(TicketInfo Info, IReadOnlyList<TicketEvent> Hi
 {
     /// <summary>Who it's assigned to, the tokens reserved for it and the session working it now (M.TIX-T134).</summary>
     public TicketWork Work { get; init; } = TicketWork.None;
+
+    /// <summary>Every version of it, oldest first, the last the current one (M.TIX-T137).</summary>
+    public IReadOnlyList<TicketVersion> Versions { get; init; } = [];
 }
 
 /// <summary>
@@ -118,6 +121,7 @@ public sealed class TicketStore(string root)
         return new TicketDetail(new TicketInfo(found.Repo, found.Ticket, approval, priority, blockers), db.History(found.Ticket.Id), db.Links(found.Ticket.Id), blockers)
         {
             Work = db.Work(found.Ticket.Id),
+            Versions = db.Versions(found.Ticket.Id),
         };
     });
 

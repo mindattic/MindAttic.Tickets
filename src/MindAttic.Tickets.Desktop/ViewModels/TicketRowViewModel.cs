@@ -118,4 +118,12 @@ public static class Labels
         TicketRules.Closed => "✓ closed",
         _ => "– wont-do",
     };
+
+    /// <summary>A field a version changed (<see cref="TicketsDb.VersionFields"/>), as the detail pane names it.</summary>
+    public static string Field(string field) => field switch
+    {
+        "id" => "ID",
+        "ref" => "Ref",
+        _ => char.ToUpperInvariant(field[0]) + field[1..],
+    };
 }

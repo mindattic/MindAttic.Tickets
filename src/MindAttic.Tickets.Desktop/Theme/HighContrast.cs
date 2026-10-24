@@ -10,7 +10,7 @@ namespace MindAttic.Tickets.Desktop.Theme;
 /// </summary>
 public static class HighContrast
 {
-    private static readonly string[] Backgrounds = ["MaChrome", "MaPane", "MaSurface", "MaHover"];
+    private static readonly string[] Backgrounds = ["MaChrome", "MaPane", "MaSurface", "MaHover", "MaChanged"];
     private static readonly string[] Foregrounds =
     [
         "MaText", "MaMuted", "MaRec", "MaChromeBorder", "MaControlBorder", "FieldBorder",

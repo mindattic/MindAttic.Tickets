@@ -28,9 +28,9 @@ $ tickets ticket list --status open
 - `ticket new` appends a row with the next free `CODE-T<n>` ID and prints it.
 - `ticket close` moves a ticket to `closed` or `wont-do` and can set its Ref.
 - `ticket correct` relabels a nonstandard type to the standard vocabulary, the one sanctioned exception to append-only (recorded in the ticket's history).
-- `ticket show` prints a ticket end to end: its row, queue state, assignee, reservation, the session working it, links, history and the commits that mention it (`--diff` for full diffs); `ticket link` connects two tickets or stories (`requires` is a prerequisite; a cycle is refused).
+- `ticket show` prints a ticket end to end: its row, queue state, assignee, reservation, the session working it, links, history and the commits that mention it (`--diff` for full diffs); `--versions` lists every version of it (on SQL Server, where tickets, their approval and priority, their work and links are system-versioned temporal tables, every save is kept, never pruned; on the SQLite file, versions are worked back from its history) and `--version N` shows one, its changes marked. `ticket link` connects two tickets or stories (`requires` is a prerequisite; a cycle is refused).
 - `ticket list` shows tickets across the workspace, filtered by repo, status, type or date, as a table or `--json`.
-- `ticket verify` fails if the table breaks the rules or a committed row was deleted or reworded.
+- `ticket verify` fails if the table breaks the rules or a committed row was deleted or reworded. It checks the versions too: a table no longer system-versioned, a history row that runs backwards, or a ticket whose last recorded change isn't what it says now.
 - `ticket queue` lists a repo's (or every repo's) open tickets in priority order with their approval state; `ticket approve`/`ticket reject --reason` move a ticket through review (`--undo` puts an approval back to proposed; a reject closes the ticket wont-do with the reason as its ref); `ticket priority` sets where a ticket sits in that order and `ticket bump` moves it up or down.
 - The ticket functions the Orchestrator used to own (M.TIX-T134; the Orchestrator now only runs the work and reads these from the database): `ticket assign <ID> <email>` assigns a ticket to a member's login (`--unassign`, `--redelegate`), `ticket block <ID> --by X` makes it wait for others (`--clear`), `ticket reserve <ID> 2M` sets tokens aside for it (0 releases), `ticket working <ID> --login --session` records the session working it (`--clear`), `ticket hygiene` lists closed tickets that may not be done, and `ticket intake` files GitHub issues labelled `orchestrator` and CI failures on main as tickets (`--dry-run`).
 - `codes check` finds duplicate project codes, repos without a ticket log, and malformed tables.
@@ -46,6 +46,7 @@ $ tickets ticket list --status open
 - GitHub intake (`tickets ticket intake`): asks GitHub for issues labelled `orchestrator` and CI failures on main, shows the dry run, and files exactly those tickets only when you click File; nothing is written to GitHub.
 - Approve, unapprove, reject and reorder (move up/down/to top) queued tickets; file a new ticket (Ctrl+N); close, mark wont-do, correct a ticket's type, add a link, assign it to a member's login or reserve tokens for it from its detail pane.
 - A ticket being worked shows its login and session as links that open the Orchestrator on them (`MindAttic.Orchestrator.exe --show <email|session|ticket>`; nothing happens beyond a message when the Orchestrator isn't installed).
+- A ticket's detail pane steps through every version of it with its ◀ ▶ arrows (or Left/Right), the rightmost the current one: each shows its version number and time, with what it changed from the version before marked.
 - A Sync button (Ctrl+Shift+S) runs `tickets db sync` and shows the result; F5 refreshes.
 - `MindAttic.Tickets.Desktop.exe --root <dir> --ticket <ID>` opens on that ticket, selected with its detail pane open (an open one in the Queue, to approve, move or close; a closed one in Repos). Started again while the window is open, it hands the id to that window and brings it forward. The Orchestrator dashboard's ticket links start it this way.
 - `deploy.ps1` publishes it as a self-contained exe to `C:\Apps\MindAttic.Tickets.Desktop` with Desktop and Start-menu shortcuts (and reinstalls the `tickets` CLI alongside it, via `tools/install.ps1`, unless `-SkipCli`).
@@ -76,7 +77,7 @@ tickets ticket new     [--repo X] --type feature|fix|chore|docs|interview --summ
 tickets ticket close   <CODE-Tn> [--repo X] [--ref ...] [--wont-do]
 tickets ticket correct <CODE-Tn> --type feature|fix|chore|docs|interview --reason "..."
 tickets ticket reassign <CODE-Tn> <CODE-Tm> --reason "..."   # the old ID is kept in id_history and still resolves
-tickets ticket show    <CODE-Tn> [--json] [--diff]
+tickets ticket show    <CODE-Tn> [--json] [--diff] [--versions | --version N]
 tickets ticket link    <FROM> requires|related|follow-up-of|supersedes|duplicates|implements|part-of <TO> [--remove] [--note "..."]
 tickets ticket list    [--repo X] [--status S] [--type T] [--since YYYY-MM-DD] [--json]
 tickets ticket verify  [--repo X]

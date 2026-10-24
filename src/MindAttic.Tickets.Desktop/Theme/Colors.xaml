@@ -11,6 +11,8 @@
     <SolidColorBrush x:Key="MaHover" Color="#FF2D2F37" />
     <SolidColorBrush x:Key="MaAccent" Color="#FF3B5BDB" />
     <SolidColorBrush x:Key="MaAccentHover" Color="#FF2F4AB8" />
+    <!-- Behind what a ticket's version changed (M.TIX-T137): MaText on it is over 10:1, and it's edged in StateProposed. -->
+    <SolidColorBrush x:Key="MaChanged" Color="#FF4A3D14" />
 
     <!-- Text -->
     <SolidColorBrush x:Key="MaText" Color="#FFE6E6EA" />

@@ -61,6 +61,8 @@ public sealed partial class MainViewModel : ObservableObject
         AddLinkCommand = new RelayCommand(async () => await AddLinkAsync(), () => Detail is not null);
         RemoveLinkCommand = new RelayCommand(async p => await RemoveLinkAsync(p as LinkLine), p => p is LinkLine);
         GoToCommand = new RelayCommand(p => GoTo(p as string), p => p is string);
+        OlderVersionCommand = new RelayCommand(() => StepVersion(-1), () => Detail is { CanGoOlder: true });
+        NewerVersionCommand = new RelayCommand(() => StepVersion(+1), () => Detail is { CanGoNewer: true });
         ToggleSortCommand = new RelayCommand(p => ToggleSort(p as string), p => p is string);
     }
 
@@ -184,6 +186,8 @@ public sealed partial class MainViewModel : ObservableObject
     public ICommand AddLinkCommand { get; }
     public ICommand RemoveLinkCommand { get; }
     public ICommand GoToCommand { get; }
+    public ICommand OlderVersionCommand { get; }
+    public ICommand NewerVersionCommand { get; }
     public ICommand ToggleSortCommand { get; }
 
     /// <summary>The row a command acts on: its parameter, else the selection in the current view.</summary>
@@ -306,13 +310,25 @@ public sealed partial class MainViewModel : ObservableObject
         {
             var d = await Task.Run(() => store.Detail(id));
             if (request != detailRequest) return;
-            Detail = d is null ? null : new DetailViewModel(d);
+            // A refresh keeps an older version on screen if one was stepped to; on the current one, it follows new saves.
+            int? keep = quiet && Detail is { IsCurrentVersion: false } shown && string.Equals(shown.Id, id, StringComparison.OrdinalIgnoreCase) ? shown.VersionNumber : null;
+            Detail = d is null ? null : new DetailViewModel(d, keep);
             if (!quiet && Detail is { } v) StatusMessage = $"{v.Id}: {v.WorkText}";
         }
         catch (Exception ex) when (ex is IOException or InvalidOperationException or System.Data.Common.DbException)
         {
             StatusMessage = ex.Message;
         }
+    }
+
+    /// <summary>Steps the detail pane to an older (−1) or newer (+1) version of its ticket and says which (M.TIX-T137); false
+    /// at either end.</summary>
+    public bool StepVersion(int delta)
+    {
+        if (Detail is not { } d || !d.Step(delta)) return false;
+        StatusMessage = $"{d.Id}: {d.VersionText}";
+        Announcement = d.VersionAnnouncement;
+        return true;
     }
 
     /// <summary>Shows <paramref name="id"/>: selects it in the current view if it's there, else in Tickets with filters cleared.</summary>

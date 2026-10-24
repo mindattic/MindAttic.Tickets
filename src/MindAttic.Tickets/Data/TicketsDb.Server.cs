@@ -18,7 +18,7 @@ public sealed partial class TicketsDb
     /// <summary>The tables written since the last copy into the file.</summary>
     private readonly HashSet<string> touched = new(StringComparer.OrdinalIgnoreCase);
 
-    /// <summary>A write transaction: on SQL Server it takes the database's one write lock at once (as SQLite's BEGIN IMMEDIATE
+    /// <summary>A write transaction: on SQL Server it takes the database's one write lock first (as SQLite's BEGIN IMMEDIATE
     /// does), and its commit copies what it changed into the file.</summary>
     private sealed class Tx(TicketsDb owner, DbTransaction inner) : IDisposable
     {
@@ -33,6 +33,7 @@ public sealed partial class TicketsDb
             inner.Commit();
             done = true;
             owner.ambient = null;
+            owner.ReleaseWriteLock();
             owner.Copy();
         }
 
@@ -46,33 +47,62 @@ public sealed partial class TicketsDb
             }
             inner.Dispose();
             if (ReferenceEquals(owner.ambient, inner)) owner.ambient = null;
+            if (!done) owner.ReleaseWriteLock();
         }
     }
 
+    private const string WriteLock = "MindAttic.Tickets.write";
+
+    private bool holdsWriteLock;
+
     private Tx Begin()
     {
-        var tx = db.BeginTransaction();
         if (server is not null)
         {
+            // The lock is the session's, taken before the transaction begins (M.TIX-T137): a system-versioned table stamps every
+            // row a transaction writes with the time the transaction began, so one begun before the last writer committed would
+            // close that writer's row before it opened, which SQL Server refuses.
             using var cmd = db.CreateCommand();
-            cmd.Transaction = tx;
-            cmd.CommandText = "DECLARE @r int; EXEC @r = sp_getapplock @Resource = N'MindAttic.Tickets.write', @LockMode = N'Exclusive', " +
-                              "@LockOwner = N'Transaction', @LockTimeout = 15000; SELECT @r;";
+            cmd.CommandText = $"DECLARE @r int; EXEC @r = sp_getapplock @Resource = N'{WriteLock}', @LockMode = N'Exclusive', " +
+                              "@LockOwner = N'Session', @LockTimeout = 15000; SELECT @r;";
             if (Convert.ToInt32(cmd.ExecuteScalar(), System.Globalization.CultureInfo.InvariantCulture) < 0)
-            {
-                tx.Dispose();
                 throw new IOException("The ticket database on SQL Server stayed busy past its timeout.");
+            holdsWriteLock = true;
+            try { return Started(db.BeginTransaction()); }
+            catch
+            {
+                ReleaseWriteLock();
+                throw;
             }
         }
-        else if (TicketsServer.For(Path) is not null)
+        var tx = db.BeginTransaction();
+        if (TicketsServer.For(Path) is not null)
         {
             // Opened on the file, then waited on its lock while `tickets db server migrate` moved the database: a write here
             // would land in what's only a copy now.
             tx.Dispose();
             throw new InvalidOperationException("The ticket database just moved to SQL Server; run the command again.");
         }
+        return Started(tx);
+    }
+
+    private Tx Started(DbTransaction tx)
+    {
         ambient = tx;
         return new Tx(this, tx);
+    }
+
+    private void ReleaseWriteLock()
+    {
+        if (!holdsWriteLock) return;
+        holdsWriteLock = false;
+        try
+        {
+            using var cmd = db.CreateCommand();
+            cmd.CommandText = $"EXEC sp_releaseapplock @Resource = N'{WriteLock}', @LockOwner = N'Session';";
+            cmd.ExecuteNonQuery();
+        }
+        catch (Exception ex) when (ex is DbException or InvalidOperationException) { } // the connection went, and its lock with it
     }
 
     [GeneratedRegex(@"^\s*(?:BEGIN TRY\s+)?(?:INSERT(?: OR \w+)? INTO|UPDATE(?: OR \w+)?|DELETE FROM)\s+(\w+)", RegexOptions.IgnoreCase)]
@@ -213,15 +243,44 @@ public sealed partial class TicketsDb
     private void EnsureServerSchema(DbTransaction? tx)
     {
         tx ??= ambient;
+        if (tx is null)
+        {
+            // At open: the whole schema, the versioning step (M.TIX-T137) included, which backs the database up first.
+            ServerSchema((SqlConnection)db, server!.Describe(), backupBeforeVersioning);
+            return;
+        }
+        // Inside a write that lifted guard triggers: put them back before it commits.
+        ServerTables(db, tx);
+        ServerTriggers(db, tx);
+    }
+
+    /// <summary>
+    /// The SQL Server schema on <paramref name="connection"/>, step by step as its <c>schema_version</c> rises: the tables
+    /// (versions 1 to 5), the tickets made system-versioned (version 6, <see cref="Versioning"/>), then the guard triggers.
+    /// </summary>
+    internal static void ServerSchema(SqlConnection connection, string describe, bool backup = true)
+    {
+        ServerTables(connection, null);
+        Versioning(connection, describe, backup);
+        ServerTriggers(connection, null);
+        var version = IsVersioned(connection, null) ? SchemaVersion : SchemaVersion - 1;
+        Raw(connection, null, $"IF NOT EXISTS (SELECT 1 FROM meta WHERE [key] = 'schema_version') INSERT INTO meta ([key], value) VALUES ('schema_version', '{version}') " +
+                              $"ELSE UPDATE meta SET value = '{version}' WHERE [key] = 'schema_version' AND CAST(value AS int) < {version}");
+    }
+
+    private static void ServerTables(DbConnection connection, DbTransaction? tx)
+    {
         foreach (var create in TicketsServer.Tables)
         {
             var table = Regex.Match(create, @"CREATE TABLE (\w+)").Groups[1].Value;
-            Raw(db, tx, $"IF OBJECT_ID(N'{table}', N'U') IS NULL BEGIN {create} END");
+            Raw(connection, tx, $"IF OBJECT_ID(N'{table}', N'U') IS NULL BEGIN {create} END");
         }
+    }
+
+    private static void ServerTriggers(DbConnection connection, DbTransaction? tx)
+    {
         foreach (var (name, body) in TicketsServer.Triggers)
-            Raw(db, tx, $"IF OBJECT_ID(N'{name}', N'TR') IS NULL EXEC (N'{body.Replace("'", "''", StringComparison.Ordinal)}')");
-        Raw(db, tx, $"IF NOT EXISTS (SELECT 1 FROM meta WHERE [key] = 'schema_version') INSERT INTO meta ([key], value) VALUES ('schema_version', '{SchemaVersion}') " +
-                    $"ELSE UPDATE meta SET value = '{SchemaVersion}' WHERE [key] = 'schema_version' AND CAST(value AS int) < {SchemaVersion}");
+            Raw(connection, tx, $"IF OBJECT_ID(N'{name}', N'TR') IS NULL EXEC (N'{body.Replace("'", "''", StringComparison.Ordinal)}')");
     }
 
     /// <summary>A copy of the whole database beside the file (<c>&lt;file&gt;.&lt;UTC stamp&gt;.bak</c>, a SQLite file either way)
@@ -252,7 +311,7 @@ public sealed partial class TicketsDb
     {
         TicketsServer.CreateDatabase(connection);
         var server = new TicketsServer(connection);
-        using (var schema = new TicketsDbOn(server)) { } // creates the tables and triggers
+        using (var schema = new TicketsDbOn(server, versioning: false)) { } // creates the tables and triggers; versioned once the rows are in
         // The file's write lock is held from the copy until SQL Server is switched on: a ticket added meanwhile waits for it, then
         // opens on SQL Server (the setting is read at every open), rather than landing in the file after its rows were read.
         using var source = new SqliteConnection($"Data Source={System.IO.Path.GetFullPath(file)};Pooling=False");
@@ -283,6 +342,8 @@ public sealed partial class TicketsDb
         foreach (var t in TicketsServer.Referencing) Raw(target, tx, $"ALTER TABLE {t} WITH CHECK CHECK CONSTRAINT ALL");
         foreach (var (name, _) in TicketsServer.Triggers) Raw(target, tx, $"ENABLE TRIGGER {name} ON {TriggerTable(name)}");
         tx.Commit();
+        // Versioned now the rows are there, so each ticket's first versions are worked back from its events (M.TIX-T137).
+        ServerSchema(target, server.Describe(), backup: false);
         if (configure) TicketsServer.Configure(connection);
         held.Rollback(); // nothing was written to the file; its lock goes now
         return copied;
@@ -333,18 +394,15 @@ public sealed partial class TicketsDb
     {
         private readonly SqlConnection connection;
 
-        public TicketsDbOn(TicketsServer server)
+        public TicketsDbOn(TicketsServer server, bool versioning = true)
         {
             connection = server.Open();
-            using var tx = connection.BeginTransaction();
-            foreach (var create in TicketsServer.Tables)
+            if (versioning) ServerSchema(connection, server.Describe());
+            else
             {
-                var table = Regex.Match(create, @"CREATE TABLE (\w+)").Groups[1].Value;
-                Raw(connection, tx, $"IF OBJECT_ID(N'{table}', N'U') IS NULL BEGIN {create} END");
+                ServerTables(connection, null);
+                ServerTriggers(connection, null);
             }
-            foreach (var (name, body) in TicketsServer.Triggers)
-                Raw(connection, tx, $"IF OBJECT_ID(N'{name}', N'TR') IS NULL EXEC (N'{body.Replace("'", "''", StringComparison.Ordinal)}')");
-            tx.Commit();
         }
 
         public void Dispose() => connection.Dispose();

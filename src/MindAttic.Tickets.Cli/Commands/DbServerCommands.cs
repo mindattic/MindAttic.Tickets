@@ -16,6 +16,11 @@ public sealed class DbServerStatusCommand : Command<WorkspaceSettings>
             ? $"[bold]SQL Server[/]: the ticket database is in {Output.Esc(db.Store)}; {Output.Esc(db.Path)} is its copy, rewritten after every change (the hooks and git read it)."
             : $"[bold]SQLite[/]: the ticket database is {Output.Esc(db.Path)}. Run [blue]tickets db server migrate[/] to move it to SQL Server.");
         if (db.LastCopyError is { } error) AnsiConsole.MarkupLine($"[yellow]The last copy into the file failed: {Output.Esc(error)}[/]");
+        if (db.OnServer)
+            AnsiConsole.MarkupLine(db.IsVersioned()
+                ? "Tickets, their approval and priority, and links are [bold]system-versioned[/]: every save is kept ([blue]tickets ticket show <ID> --versions[/])."
+                : $"[yellow]Not versioned yet[/]{(TicketsDb.VersioningError is { } why ? ": " + Output.Esc(why) : ".")}");
+        if (TicketsDb.VersioningBackup is { } backup) AnsiConsole.MarkupLine($"Versioned just now; the database was backed up first to {Output.Esc(backup)}.");
         var table = new Table().Border(TableBorder.Rounded).AddColumn("Table").AddColumn(db.OnServer ? "SQL Server" : "Store", c => c.RightAligned()).AddColumn("Tickets.db", c => c.RightAligned());
         foreach (var (name, store, file) in db.Counts())
             table.AddRow(name, store.ToString(System.Globalization.CultureInfo.InvariantCulture), file.ToString(System.Globalization.CultureInfo.InvariantCulture));

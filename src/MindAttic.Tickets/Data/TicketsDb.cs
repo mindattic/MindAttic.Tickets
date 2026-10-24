@@ -35,7 +35,8 @@ public sealed record ImportReport(string Repo, string Code, int Epics, int Stori
 /// </summary>
 public sealed partial class TicketsDb : IDisposable
 {
-    public const int SchemaVersion = 5;
+    /// <summary>6 (M.TIX-T137): on SQL Server, tickets, their queue state, work and links are system-versioned; the file's schema is 5's.</summary>
+    public const int SchemaVersion = 6;
     public const string RelativePath = "data/Tickets.db";
     public const string DumpRelativePath = "data/Tickets.sql";
     public const string EnvVar = "MINDATTIC_TICKETS_DB";
@@ -65,10 +66,13 @@ public sealed partial class TicketsDb : IDisposable
 
     public bool OnServer => server is not null;
 
-    private TicketsDb(string path)
+    private TicketsDb(string path) : this(path, TicketsServer.For(System.IO.Path.GetFullPath(path))) { }
+
+    private TicketsDb(string path, TicketsServer? server, bool backup = true)
     {
         Path = System.IO.Path.GetFullPath(path);
-        server = TicketsServer.For(Path);
+        this.server = server;
+        backupBeforeVersioning = backup;
         // Pooling off: a pooled connection keeps the file open after Dispose, and git (or a delete) on Windows needs it closed.
         db = server is null ? new SqliteConnection($"Data Source={Path};Pooling=False;Foreign Keys=True") : server.Open();
         try
@@ -114,6 +118,13 @@ public sealed partial class TicketsDb : IDisposable
         if (!string.IsNullOrEmpty(dir)) Directory.CreateDirectory(dir);
         return new TicketsDb(path);
     }
+
+    /// <summary>The database kept on <paramref name="server"/>, its copy at <paramref name="path"/>, whatever this machine has
+    /// configured (a test's scratch database).</summary>
+    internal static TicketsDb OpenOn(string path, TicketsServer server, bool backup = true) => new(path, server, backup);
+
+    /// <summary>Whether the versioning step backs the server database up before it changes the schema (always, but for tests).</summary>
+    private readonly bool backupBeforeVersioning;
 
     /// <summary>The workspace database if it has been migrated; null while tickets still live in the markdown.</summary>
     public static TicketsDb? OpenIfMigrated(string? workspaceRoot = null)
@@ -1057,6 +1068,14 @@ public sealed partial class TicketsDb : IDisposable
 
     private int Exec(string sql, DbTransaction? tx = null, params (string Name, object? Value)[] args)
     {
+        if (server is not null && tx is null && ambient is null && WriteTarget().IsMatch(sql))
+        {
+            // A write on its own still queues on the write lock (M.TIX-T137): see Begin.
+            using var own = Begin();
+            var written = Exec(sql, own, args);
+            own.Commit();
+            return written;
+        }
         using var cmd = Command(sql, tx, args);
         var n = cmd.ExecuteNonQuery();
         Wrote(sql, cmd.Transaction);

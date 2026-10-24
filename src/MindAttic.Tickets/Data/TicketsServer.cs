@@ -231,8 +231,9 @@ public sealed class TicketsServer(string connectionString)
     /// once a statement, so each checks the rows it was given, and nothing fires for a statement that touched none.</summary>
     internal static readonly (string Name, string Body)[] Triggers =
     [
+        // AFTER, not INSTEAD OF: a system-versioned table takes no INSTEAD OF trigger (M.TIX-T137). The THROW rolls the delete back.
         ("tickets_no_delete", """
-            CREATE TRIGGER tickets_no_delete ON tickets INSTEAD OF DELETE AS
+            CREATE TRIGGER tickets_no_delete ON tickets AFTER DELETE AS
             BEGIN IF EXISTS (SELECT 1 FROM deleted) THROW 50000, 'tickets are never deleted; close one as wont-do instead', 1; END
             """),
         ("tickets_append_only", """
@@ -280,6 +281,20 @@ public sealed class TicketsServer(string connectionString)
     /// <summary>The tables a <c>REFERENCES</c> points out of, whose checks a repo rename or an ID reassignment holds off within
     /// its transaction (SQLite's <c>PRAGMA foreign_keys</c> / <c>defer_foreign_keys</c>), and checks again before it commits.</summary>
     internal static readonly string[] Referencing = ["blocks", "epics", "stories", "backlog_items", "backlog_refs", "tickets", "ticket_events"];
+
+    /// <summary>
+    /// The tables kept SYSTEM_VERSIONED (M.TIX-T137): every save keeps the row it replaced, with the period it held, in the
+    /// history table beside it, never pruned. A ticket's own row, its approval and priority, its work (assignee, reservation,
+    /// the session working it) and its links (prerequisites and blocks included), so a ticket reads as it did at any moment. The period columns are HIDDEN, so <c>SELECT *</c> (the copy into
+    /// the file, the dump) reads the current rows as before.
+    /// </summary>
+    internal static readonly (string Table, string History, string[] Key)[] Versioned =
+    [
+        ("tickets", "tickets_versions", ["id"]),
+        ("ticket_queue", "ticket_queue_versions", ["ticket_id"]),
+        ("ticket_work", "ticket_work_versions", ["ticket_id"]),
+        ("links", "links_versions", ["from_id", "to_id", "kind"]),
+    ];
 
     /// <summary>The tables with identity keys, for copying rows in with their keys.</summary>
     internal static readonly HashSet<string> Identities = new(StringComparer.OrdinalIgnoreCase) { "stories", "backlog_items", "ticket_events", "repo_renames", "id_history" };

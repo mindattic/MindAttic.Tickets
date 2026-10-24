@@ -172,8 +172,18 @@ public partial class MainWindow : Window
             case Key.R or Key.Delete when row.IsOpen: await model.RejectAsync(row); return true;
             case Key.O when row.Worker is not null: model.ShowWorker(row); return true;
             case Key.Enter or Key.F6 when model.IsDetailOpen: DetailTitle.Focus(); return true;
+            case Key.Left when model.IsDetailOpen: model.StepVersion(-1); return true;
+            case Key.Right when model.IsDetailOpen: model.StepVersion(+1); return true;
             default: return false;
         }
+    }
+
+    /// <summary>Left / Right in the detail pane step through the ticket's versions (M.TIX-T137), except where they move a caret.</summary>
+    private void OnDetailKeyDown(object sender, KeyEventArgs e)
+    {
+        if (Keyboard.Modifiers != ModifierKeys.None || e.OriginalSource is TextBox) return;
+        if (e.Key == Key.Left) { model.StepVersion(-1); e.Handled = true; }
+        else if (e.Key == Key.Right) { model.StepVersion(+1); e.Handled = true; }
     }
 
     // ── Drag and drop (the keyboard and the ▲▼ buttons do the same: 2.5.7) ──
@@ -252,6 +262,7 @@ public partial class MainWindow : Window
           R or Delete          reject (closes it as wont-do, with a reason)
           O                    open the Orchestrator on the ticket's live worker
           Enter or F6          go to the detail pane
+          Left / Right         older / newer version of the ticket shown
 
         Anywhere
           Ctrl+1 / 2 / 3       Repos / Queue / Audit

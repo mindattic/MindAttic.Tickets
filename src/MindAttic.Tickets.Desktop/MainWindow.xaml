@@ -80,6 +80,23 @@
             <Setter Property="TextWrapping" Value="Wrap" />
         </Style>
 
+        <!-- What the version shown changed from the one before (Tag true): a tinted box with a 3:1 edge, and the version bar
+             says it in words too (colour never carries meaning alone, 1.4.1). -->
+        <Style x:Key="ChangedMark" TargetType="Border">
+            <Setter Property="Padding" Value="4,0" />
+            <Setter Property="Margin" Value="-4,0,0,0" />
+            <Setter Property="CornerRadius" Value="3" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource MaChanged}" />
+                    <Setter Property="BorderBrush" Value="{DynamicResource StateProposed}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
         <!-- One queue row. Its buttons are for the mouse; the keyboard uses the row's shortcuts and the action bar above. -->
         <DataTemplate x:Key="QueueRowTemplate" DataType="{x:Type vm:TicketRowViewModel}">
             <Grid>
@@ -423,7 +440,7 @@
             <!-- ── Detail pane ── -->
             <Border Grid.Column="1" Width="430" Background="{DynamicResource MaPane}" BorderBrush="{DynamicResource MaChromeBorder}" BorderThickness="1,0,0,0"
                     Visibility="{Binding IsDetailOpen, Converter={StaticResource Visible}}">
-                <ScrollViewer x:Name="DetailPane" VerticalScrollBarVisibility="Auto" Focusable="False" DataContext="{Binding Detail}">
+                <ScrollViewer x:Name="DetailPane" VerticalScrollBarVisibility="Auto" Focusable="False" DataContext="{Binding Detail}" PreviewKeyDown="OnDetailKeyDown">
                     <StackPanel Margin="20,16,20,20">
                         <DockPanel>
                             <Button DockPanel.Dock="Right" Style="{StaticResource IconBtn}" Content="&#x2715;" VerticalAlignment="Top"
@@ -431,7 +448,28 @@
                                     AutomationProperties.Name="Close details" ToolTip="Close details (Esc)" />
                             <TextBlock x:Name="DetailTitle" Text="{Binding Id}" Style="{StaticResource PaneTitle}" Focusable="True" FocusVisualStyle="{StaticResource FocusRing}" />
                         </DockPanel>
-                        <TextBlock Text="{Binding Summary}" TextWrapping="Wrap" Margin="0,8,0,0" FontSize="14" />
+
+                        <!-- Versions (M.TIX-T137): the arrows, or Left / Right, step through every save; the rightmost is the ticket now. -->
+                        <Border Style="{StaticResource Card}" Margin="0,10,0,0" Padding="6,6"
+                                Visibility="{Binding HasVersions, Converter={StaticResource Visible}}">
+                            <DockPanel>
+                                <Button DockPanel.Dock="Left" Style="{StaticResource IconBtn}" Content="&#x25C0;" VerticalAlignment="Center"
+                                        Command="{Binding DataContext.OlderVersionCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                        AutomationProperties.Name="Older version" ToolTip="Older version (Left)" />
+                                <Button DockPanel.Dock="Right" Style="{StaticResource IconBtn}" Content="&#x25B6;" VerticalAlignment="Center"
+                                        Command="{Binding DataContext.NewerVersionCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                        AutomationProperties.Name="Newer version" ToolTip="Newer version (Right)" />
+                                <StackPanel Margin="10,0">
+                                    <TextBlock Text="{Binding VersionText}" FontWeight="SemiBold" />
+                                    <TextBlock Text="{Binding VersionWhen}" Style="{StaticResource Muted}" />
+                                    <TextBlock Text="{Binding ChangesText}" Style="{StaticResource Muted}" TextWrapping="Wrap" />
+                                </StackPanel>
+                            </DockPanel>
+                        </Border>
+
+                        <Border Style="{StaticResource ChangedMark}" Tag="{Binding SummaryChanged}" Margin="-4,8,0,0">
+                            <TextBlock Text="{Binding Summary}" TextWrapping="Wrap" FontSize="14" />
+                        </Border>
                         <TextBlock Text="{Binding WorkText}" Style="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,8,0,0" />
                         <!-- Being worked (M.TIX-T134): its login and session link back to the Orchestrator, which runs the work. -->
                         <StackPanel Margin="0,8,0,0" Visibility="{Binding IsWorking, Converter={StaticResource Visible}}">
@@ -456,24 +494,40 @@
                                 <RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition />
                             </Grid.RowDefinitions>
                             <TextBlock Style="{StaticResource FieldName}" Text="Repo" />
-                            <TextBlock Grid.Column="1" Style="{StaticResource FieldValue}" Text="{Binding Repo}" />
+                            <Border Grid.Column="1" Style="{StaticResource ChangedMark}" Tag="{Binding RepoChanged}">
+                                <TextBlock Style="{StaticResource FieldValue}" Text="{Binding Repo}" />
+                            </Border>
                             <TextBlock Grid.Row="1" Style="{StaticResource FieldName}" Text="Type" />
-                            <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource FieldValue}" Text="{Binding Type}" />
+                            <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource ChangedMark}" Tag="{Binding TypeChanged}">
+                                <TextBlock Style="{StaticResource FieldValue}" Text="{Binding Type}" />
+                            </Border>
                             <TextBlock Grid.Row="2" Style="{StaticResource FieldName}" Text="Status" />
-                            <TextBlock Grid.Row="2" Grid.Column="1" Style="{StaticResource StatusText}" FontSize="13" Margin="0,3" Text="{Binding StatusText}" />
+                            <Border Grid.Row="2" Grid.Column="1" Style="{StaticResource ChangedMark}" Tag="{Binding StatusChanged}">
+                                <TextBlock Style="{StaticResource StatusText}" FontSize="13" Margin="0,3" Text="{Binding StatusText}" />
+                            </Border>
                             <TextBlock Grid.Row="3" Style="{StaticResource FieldName}" Text="Approval" />
-                            <TextBlock Grid.Row="3" Grid.Column="1" Style="{StaticResource ApprovalText}" FontSize="13" Margin="0,3" Text="{Binding ApprovalText}" />
+                            <Border Grid.Row="3" Grid.Column="1" Style="{StaticResource ChangedMark}" Tag="{Binding ApprovalChanged}">
+                                <TextBlock Style="{StaticResource ApprovalText}" FontSize="13" Margin="0,3" Text="{Binding ApprovalText}" />
+                            </Border>
                             <TextBlock Grid.Row="4" Style="{StaticResource FieldName}" Text="Priority" />
-                            <TextBlock Grid.Row="4" Grid.Column="1" Style="{StaticResource FieldValue}" Text="{Binding Priority}" />
+                            <Border Grid.Row="4" Grid.Column="1" Style="{StaticResource ChangedMark}" Tag="{Binding PriorityChanged}">
+                                <TextBlock Style="{StaticResource FieldValue}" Text="{Binding Priority}" />
+                            </Border>
                             <TextBlock Grid.Row="5" Style="{StaticResource FieldName}" Text="Filed" />
                             <TextBlock Grid.Row="5" Grid.Column="1" Style="{StaticResource FieldValue}" Text="{Binding Date}" />
                             <TextBlock Grid.Row="6" Style="{StaticResource FieldName}" Text="Ref" />
-                            <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Ref, Mode=OneWay}" IsReadOnly="True" TextWrapping="Wrap" Background="Transparent"
-                                     BorderThickness="0" Foreground="{DynamicResource MaText}" Padding="0" Margin="0,3" AutomationProperties.Name="Ref" />
+                            <Border Grid.Row="6" Grid.Column="1" Style="{StaticResource ChangedMark}" Tag="{Binding RefChanged}" HorizontalAlignment="Stretch">
+                                <TextBox Text="{Binding Ref, Mode=OneWay}" IsReadOnly="True" TextWrapping="Wrap" Background="Transparent"
+                                         BorderThickness="0" Foreground="{DynamicResource MaText}" Padding="0" Margin="0,3" AutomationProperties.Name="Ref" />
+                            </Border>
                             <TextBlock Grid.Row="7" Style="{StaticResource FieldName}" Text="Assigned" />
-                            <TextBlock Grid.Row="7" Grid.Column="1" Style="{StaticResource FieldValue}" Text="{Binding AssigneeText}" />
+                            <Border Grid.Row="7" Grid.Column="1" Style="{StaticResource ChangedMark}" Tag="{Binding AssigneeChanged}">
+                                <TextBlock Style="{StaticResource FieldValue}" Text="{Binding AssigneeText}" />
+                            </Border>
                             <TextBlock Grid.Row="8" Style="{StaticResource FieldName}" Text="Reserved" />
-                            <TextBlock Grid.Row="8" Grid.Column="1" Style="{StaticResource FieldValue}" Text="{Binding ReservedText}" />
+                            <Border Grid.Row="8" Grid.Column="1" Style="{StaticResource ChangedMark}" Tag="{Binding ReservedChanged}">
+                                <TextBlock Style="{StaticResource FieldValue}" Text="{Binding ReservedText}" />
+                            </Border>
                         </Grid>
 
                         <TextBlock Text="ACTIONS" Style="{StaticResource SectionLabel}" />
@@ -500,7 +554,13 @@
                         <TextBlock Text="{Binding Error}" Style="{StaticResource ErrorText}"
                                    Visibility="{Binding Error, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
 
-                        <TextBlock Text="LINKS" Style="{StaticResource SectionLabel}" />
+                        <DockPanel>
+                            <Border DockPanel.Dock="Right" Style="{StaticResource ChangedMark}" Tag="{Binding LinksChanged}" Margin="0,16,0,6" VerticalAlignment="Bottom"
+                                    Visibility="{Binding LinksChanged, Converter={StaticResource Visible}}">
+                                <TextBlock Text="changed in this version" FontSize="12" />
+                            </Border>
+                            <TextBlock Text="LINKS" Style="{StaticResource SectionLabel}" />
+                        </DockPanel>
                         <TextBlock Text="No links." Style="{StaticResource Muted}">
                             <TextBlock.Visibility>
                                 <Binding Path="Links.Count" Converter="{x:Static vm:Converters.ZeroToVisible}" />
@@ -511,6 +571,7 @@
                                 <DataTemplate DataType="{x:Type vm:LinkLine}">
                                     <DockPanel Margin="0,2">
                                         <Button DockPanel.Dock="Right" Style="{StaticResource IconBtn}" Content="&#x2715;" Width="26" Height="26" FontSize="10"
+                                                Visibility="{Binding DataContext.IsCurrentVersion, RelativeSource={RelativeSource AncestorType=ItemsControl}, Converter={StaticResource Visible}}"
                                                 Command="{Binding DataContext.RemoveLinkCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}"
                                                 AutomationProperties.Name="{Binding SpokenName, StringFormat='Remove link: {0}'}" ToolTip="Remove this link" />
                                         <TextBlock Text="{Binding Phrase}" Style="{StaticResource Muted}" Width="110" VerticalAlignment="Center" />
