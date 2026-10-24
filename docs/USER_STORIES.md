@@ -201,13 +201,13 @@ updated: 2026-10-12
 | M.TIX-T69 | 2026-10-16 | feature | open | Workflow Desktop new-ticket dialog (Ctrl+N): repo, type, summary, ref; remembers last repo and type | M.FLOW-US-G6 |
 | M.TIX-T70 | 2026-10-16 | feature | open | Workflow Desktop live refresh (database file watcher plus poll, keyed list sync that keeps focus) and a Sync button running workflow db sync | M.FLOW-US-G7 |
 | M.TIX-T71 | 2026-10-16 | chore | open | Workflow Desktop WCAG 2.2 AA audit: high-contrast theme swap, contrast-ratio unit test over every used token pair, automation-name test, Narrator, keyboard-only, 200% zoom and Accessibility Insights FastPass with no failures | M.FLOW-US-G8 |
-| M.TIX-T72 | 2026-10-16 | feature | open | Append-only ticket comments: ticket_notes table (ticket, author, at, markdown), WorkflowDb.AddNote/Notes, workflow ticket note, shown in show and Desktop | M.FLOW-US-H1 |
+| M.TIX-T72 | 2026-10-16 | feature | open | Append-only ticket comments: ticket_notes table (ticket, author, at, markdown), TicketsDb.AddNote/Notes, tickets ticket note, shown in show and Desktop | M.FLOW-US-H1 |
 | M.TIX-T73 | 2026-10-16 | feature | open | Ticket description body and recorded summary corrections: description stored apart from the summary, WorkflowDb.CorrectSummary(id, text, reason) writing ticket_events, CLI and Desktop | M.FLOW-US-H2 |
-| M.TIX-T74 | 2026-10-16 | feature | open | Ticket labels and components: ticket_labels table, workflow ticket label add/remove, list --label filter, Desktop chips and filter | M.FLOW-US-H3 |
+| M.TIX-T74 | 2026-10-16 | feature | open | Ticket labels and components: ticket_labels table, tickets ticket label add/remove, list --label filter, Desktop chips and filter | M.FLOW-US-H3 |
 | M.TIX-T75 | 2026-10-16 | feature | open | Stored effort estimates: estimate column in ticket_queue seeded from Orchestrator TicketCosts medians, editable in CLI and Desktop, used by queue sort | M.FLOW-US-H4 |
 | M.TIX-T76 | 2026-10-16 | feature | open | Assignee and claim visibility in Workflow Desktop: read Orchestrator assignments (agent, worktree, since) and show them on rows and in the detail pane | M.FLOW-US-H5 |
 | M.TIX-T77 | 2026-10-16 | feature | open | Workflow Desktop Board view: Proposed / Approved / In progress / Done columns, card moves by drag or keyboard update approval or status | M.FLOW-US-H6 |
-| M.TIX-T78 | 2026-10-16 | feature | open | Ticket query language and saved filters: parser for repo:/type:/status:/label:/approval: and free text, workflow ticket list --query, named saved filters in the database, Desktop filter bar | M.FLOW-US-H7 |
+| M.TIX-T78 | 2026-10-16 | feature | open | Ticket query language and saved filters: parser for repo:/type:/status:/label:/approval: and free text, tickets ticket list --query, named saved filters in the database, Desktop filter bar | M.FLOW-US-H7 |
 | M.TIX-T79 | 2026-10-16 | feature | open | Bulk actions in Workflow Desktop: multi-select (Shift/Ctrl and keyboard) then approve, reject, close, label or move, each recorded per ticket | M.FLOW-US-H8 |
 | M.TIX-T80 | 2026-10-16 | feature | open | Undo in Workflow Desktop: compensating events for approve/reject/priority/close/link, Ctrl+Z and an undo toast, history kept intact | M.FLOW-US-H9 |
 | M.TIX-T81 | 2026-10-16 | feature | open | Workflow Desktop command palette (Ctrl+K): fuzzy jump to tickets and stories, run any command, fully keyboard and screen-reader accessible | M.FLOW-US-H10 |
@@ -215,8 +215,8 @@ updated: 2026-10-12
 | M.TIX-T83 | 2026-10-16 | feature | open | Dependency graph view: requires chains around a ticket, blockers highlighted, accessible text alternative | M.FLOW-US-H12 |
 | M.TIX-T84 | 2026-10-16 | feature | open | Workspace activity feed from ticket_events across all repos, live in Workflow Desktop, toasts when agents close tickets | M.FLOW-US-H13 |
 | M.TIX-T85 | 2026-10-16 | feature | open | Ticket-to-commit links: index commits by the ticket ID in their subject (git log per repo), show them in ticket show and the detail pane with GitHub links | M.FLOW-US-H14 |
-| M.TIX-T86 | 2026-10-16 | feature | open | Ticket metrics: throughput, cycle time from ticket_events, open by repo and type over time, in CLI (workflow ticket stats) and a Desktop view with accessible tables | M.FLOW-US-H15 |
-| M.TIX-T87 | 2026-10-16 | feature | open | Ticket export: workflow ticket list --format csv\|md and Desktop Export for the current filter | M.FLOW-US-H16 |
+| M.TIX-T86 | 2026-10-16 | feature | open | Ticket metrics: throughput, cycle time from ticket_events, open by repo and type over time, in CLI (tickets ticket stats) and a Desktop view with accessible tables | M.FLOW-US-H15 |
+| M.TIX-T87 | 2026-10-16 | feature | open | Ticket export: tickets ticket list --format csv\|md and Desktop Export for the current filter | M.FLOW-US-H16 |
 | M.TIX-T88 | 2026-10-16 | feature | open | Ticket templates per type and duplicate detection on summary similarity, in ticket new and the Desktop dialog | M.FLOW-US-H17 |
 | M.TIX-T89 | 2026-10-16 | feature | open | Decide GitHub Issues as store or mirror from the M.FLOW-T50 report, then prototype two-way sync (issues <-> workflow.db) behind the WorkflowDb API, offline-first, keeping ticket IDs and history | M.FLOW-US-I1 |
 | M.TIX-T90 | 2026-10-16 | feature | closed | Agent standard: cloning a new repo always creates the folder, clones it, tags it wip on GitHub, and restarts the open Launcher menu so the roster picks it up | — |
@@ -274,3 +274,4 @@ updated: 2026-10-12
 | M.TIX-T142 | 2026-10-23 | chore | closed | Sync the ticket database after the rebase | — |
 | M.TIX-T143 | 2026-10-23 | chore | closed | Update Tickets.db, Tickets.sql, USER_STORIES.md | — |
 | M.TIX-T144 | 2026-10-23 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
+| M.TIX-T145 | 2026-10-24 | chore | closed | Update Tickets.db, Tickets.sql, USER_STORIES.md | — |
