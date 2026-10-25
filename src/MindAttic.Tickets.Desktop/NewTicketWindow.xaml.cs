@@ -35,7 +35,7 @@ public partial class NewTicketWindow : Window
             problem.Item1?.Focus();
             return;
         }
-        Result = new NewTicket((string)Repo.SelectedItem!, (string)Type.SelectedItem, Summary.Text.Trim(), Ref.Text.Trim());
+        Result = new NewTicket((string)Repo.SelectedItem!, (string)Type.SelectedItem, Summary.Text.Trim(), Ref.Text.Trim(), Description.Text);
         DialogResult = true;
     }
 }

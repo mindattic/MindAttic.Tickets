@@ -297,6 +297,34 @@ public sealed class TicketCliTests
     }
 
     [Test]
+    public void Correct_rewords_a_summary_and_describe_sets_a_description_apart_from_it()
+    {
+        MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | fix | open | stale wording | — |\n");
+        Directory.CreateDirectory(Path.Combine(root, "MindAttic.Tickets", ".git"));
+        Run("db", "migrate", "--cutover");
+
+        Assert.That(Run("ticket", "correct", "AA-T1", "--summary", "fresh wording", "--reason", "pre-rename").Out.Trim(), Is.EqualTo("AA-T1 summary: fresh wording"));
+        Assert.That(Run("ticket", "correct", "AA-T1", "--summary", "x").Code, Is.Not.Zero, "a reason is required");
+        Assert.That(Run("ticket", "correct", "AA-T1", "--reason", "x").Code, Is.Not.Zero, "something to correct is required");
+        Assert.That(File.ReadAllText(Path.Combine(root, "A", "docs", "USER_STORIES.md")), Does.Contain("| AA-T1 | 2026-10-01 | fix | open | fresh wording | — |"), "the view follows");
+
+        Assert.That(Run("ticket", "new", "--repo", "A", "--type", "fix", "--summary", "two", "--description", "Body **two**.").Out.Trim(), Is.EqualTo("AA-T2"));
+        Assert.That(RunWithInput("# Heading\nline\n", "ticket", "describe", "AA-T1", "--stdin").Out.Trim(), Is.EqualTo("AA-T1 description set"));
+        Assert.That(Run("ticket", "describe", "AA-T1", "--text", "x", "--clear").Code, Is.Not.Zero, "one of --text, --file, --stdin or --clear");
+
+        var one = JsonDocument.Parse(Run("ticket", "show", "AA-T1", "--json").Out).RootElement;
+        Assert.That(one.GetProperty("summary").GetString(), Is.EqualTo("fresh wording"));
+        Assert.That(one.GetProperty("description").GetString(), Is.EqualTo("# Heading\nline"));
+        Assert.That(one.GetProperty("history").EnumerateArray().Select(e => e.GetProperty("field").GetString()), Is.EqualTo(new[] { "summary", "description" }));
+        Assert.That(JsonDocument.Parse(Run("ticket", "show", "AA-T2", "--json").Out).RootElement.GetProperty("description").GetString(), Is.EqualTo("Body **two**."));
+        var shown = Run("ticket", "show", "AA-T1").Out;
+        Assert.That(shown, Does.Contain("Description").And.Contain("# Heading").And.Contain("description added"));
+
+        Assert.That(Run("ticket", "describe", "AA-T1", "--clear").Out.Trim(), Is.EqualTo("AA-T1 description cleared"));
+        Assert.That(JsonDocument.Parse(Run("ticket", "show", "AA-T1", "--json").Out).RootElement.GetProperty("description").ValueKind, Is.EqualTo(JsonValueKind.Null));
+    }
+
+    [Test]
     public void Link_connects_two_tickets_and_refuses_a_cycle()
     {
         MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | fix | open | one | — |\n| AA-T2 | 2026-10-01 | fix | open | two | — |\n");

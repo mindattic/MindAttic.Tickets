@@ -243,6 +243,63 @@ public sealed class TicketsDbTests
     }
 
     [Test]
+    public void A_summary_is_reworded_with_a_reason_in_its_history_and_append_only_holds_after()
+    {
+        var a = MakeRepo("Gamma", "GA", "", "| GA-T1 | 2026-10-01 | fix | open | stale wording | — |\n| GA-T2 | 2026-10-01 | fix | open | other | — |\n");
+        using var db = TicketsDb.Open(Path.Combine(root, "s.db"));
+        db.Import([a]);
+
+        var t = db.CorrectSummary("GA-T1", "fresh\nwording, blocked by GA-T2", "pre-rename wording");
+        Assert.That(t.Summary, Is.EqualTo("fresh wording, blocked by GA-T2"), "a summary stays one line");
+        Assert.That(db.Ticket("GA-T1")!.Value.Ticket.Summary, Is.EqualTo(t.Summary));
+        var e = db.History("GA-T1").Single();
+        Assert.That((e.Field, e.Old, e.New), Is.EqualTo(("summary", "stale wording", "fresh wording, blocked by GA-T2 (corrected: pre-rename wording)")));
+        Assert.That(db.Requires("GA-T1"), Is.EqualTo(new[] { "GA-T2" }), "a 'blocked by' the new wording adds is linked");
+        Assert.That(System.Text.Encoding.UTF8.GetString(db.Export("Gamma")!), Does.Contain("| GA-T1 | 2026-10-01 | fix | open | fresh wording, blocked by GA-T2 | — |"));
+        Assert.That(db.CorrectSummary("GA-T1", t.Summary, "again").Summary, Is.EqualTo(t.Summary));
+        Assert.That(db.History("GA-T1"), Has.Count.EqualTo(1), "an unchanged summary records nothing");
+        Assert.That(() => db.CorrectSummary("GA-T1", "x", " "), Throws.ArgumentException, "a reason is required");
+        Assert.That(() => db.CorrectSummary("GA-T1", " ", "why"), Throws.ArgumentException);
+        Assert.That(() => db.CorrectSummary("GA-T9", "x", "why"), Throws.InstanceOf<KeyNotFoundException>());
+
+        using var raw = new SqliteConnection($"Data Source={db.Path};Pooling=False");
+        raw.Open();
+        using var cmd = raw.CreateCommand();
+        cmd.CommandText = "UPDATE tickets SET summary = 'sneaky' WHERE id = 'GA-T1'";
+        Assert.That(() => cmd.ExecuteNonQuery(), Throws.InstanceOf<SqliteException>(), "the trigger is back");
+    }
+
+    [Test]
+    public void A_description_is_kept_apart_from_the_summary_and_every_change_is_history()
+    {
+        var a = MakeRepo("Gamma", "GA", "", "| GA-T1 | 2026-10-01 | fix | open | one | — |\n");
+        using var db = TicketsDb.Open(Path.Combine(root, "d.db"));
+        db.Import([a]);
+
+        var t = db.Add("Gamma", "feature", "open", "two", "—", description: "## Why\r\n\r\n- because  \r\n\r\n");
+        Assert.That(db.Description(t.Id), Is.EqualTo("## Why\n\n- because"), "LF line ends, no trailing whitespace");
+        Assert.That(db.Ticket(t.Id)!.Value.Ticket.Summary, Is.EqualTo("two"), "the summary is untouched");
+        Assert.That(db.Description("GA-T1"), Is.Null);
+
+        Assert.That(db.SetDescription("GA-T1", "First body."), Is.True);
+        Assert.That(db.SetDescription("ga-t1", "First body.\n"), Is.False, "unchanged: nothing recorded");
+        Assert.That(db.SetDescription("GA-T1", "Second body."), Is.True);
+        Assert.That(db.SetDescription("GA-T1", "   "), Is.True, "blank removes it");
+        Assert.That(db.Description("GA-T1"), Is.Null);
+        Assert.That(db.History("GA-T1").Select(e => (e.Field, e.Old, e.New)), Is.EqualTo(new (string, string?, string?)[]
+        {
+            ("description", null, "First body."), ("description", "First body.", "Second body."), ("description", "Second body.", null),
+        }));
+        Assert.That(System.Text.Encoding.UTF8.GetString(db.Export("Gamma")!), Does.Not.Contain("because"), "the description isn't in the ticket log's row");
+        Assert.That(db.Dump(), Does.Contain("INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GA-T2', '## Why\n\n- because', '"));
+
+        db.ReassignTicketId(t.Id, "GA-T7", "renumbered");
+        Assert.That(db.Description("GA-T7"), Is.EqualTo("## Why\n\n- because"), "the description follows a new ID");
+        Assert.That(db.Description(t.Id), Is.EqualTo("## Why\n\n- because"), "and is still found by the old one");
+        Assert.That(() => db.SetDescription("GA-T99", "x"), Throws.InstanceOf<KeyNotFoundException>());
+    }
+
+    [Test]
     public void A_nonstandard_type_is_corrected_with_a_reason_in_its_history_and_append_only_holds_after()
     {
         var a = MakeRepo("Gamma", "GA", "", "| GA-T1 | 2026-10-01 | bugfix | open | odd type | — |\n");

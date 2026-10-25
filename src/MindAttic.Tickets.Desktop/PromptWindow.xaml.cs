@@ -30,6 +30,14 @@ public partial class PromptWindow : Window
         AutomationProperties.SetName(Answer, prompt.TextLabel ?? "");
         AutomationProperties.SetIsRequiredForForm(Answer, prompt.TextRequired);
         Answer.Text = prompt.Initial ?? "";
+        if (prompt.Multiline)
+        {
+            Answer.AcceptsReturn = true;
+            Answer.MinHeight = 180;
+            Answer.MaxHeight = 420;
+            Answer.VerticalContentAlignment = VerticalAlignment.Top;
+            Answer.VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto;
+        }
 
         Loaded += (_, _) => (prompt.TextLabel is not null ? Answer : prompt.Choices is { Count: > 0 } ? Choice : (UIElement)OkButton).Focus();
     }
@@ -46,7 +54,8 @@ public partial class PromptWindow : Window
             Answer.Focus();
             return;
         }
-        Result = new PromptAnswer(Choice.SelectedItem as string, Answer.Text.Trim());
+        // A multi-line answer keeps its indentation (markdown); the store trims what doesn't matter.
+        Result = new PromptAnswer(Choice.SelectedItem as string, prompt.Multiline ? Answer.Text : Answer.Text.Trim());
         DialogResult = true;
     }
 }

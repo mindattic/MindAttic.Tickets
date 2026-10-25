@@ -50,6 +50,19 @@ public sealed class TicketVersionsTests
     }
 
     [Test]
+    public void A_reworded_summary_is_a_version_and_the_one_before_reads_the_old_wording()
+    {
+        using var db = Alpha();
+        var a = db.Add("Alpha", "fix", "open", "old wording", "—");
+        db.CorrectSummary(a.Id, "new wording", "clearer");
+
+        var versions = db.Versions(a.Id);
+        Assert.That(versions.Select(v => v.Ticket.Summary), Is.EqualTo(new[] { "old wording", "new wording" }));
+        Assert.That(versions[1].Changed, Is.EqualTo(new[] { "summary" }));
+        Assert.That(db.CheckVersions(), Is.Empty);
+    }
+
+    [Test]
     public void Verify_says_when_a_tickets_history_no_longer_matches_it()
     {
         using var db = Alpha();

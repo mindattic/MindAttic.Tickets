@@ -267,11 +267,13 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
         var (approval, priority) = db.QueueState(t.Id);
         var work = db.Work(t.Id);
         var commits = settings.Workspace.Find(repo) is { } r ? TicketCommits.Log(t.Id, r.Path, settings.Diff) : "";
+        var description = db.Description(t.Id);
         if (settings.Json)
         {
             Console.WriteLine(JsonSerializer.Serialize(new
             {
                 repo, id = t.Id, date = t.Date, type = t.Type, status = t.Status, summary = t.Summary, @ref = t.Ref,
+                description,
                 formerIds = db.IdHistory(t.Id).Select(c => c.OldId),
                 requires = db.Requires(t.Id), links = links.Select(l => new { from = l.From, kind = l.Kind, to = l.To, note = l.Note }),
                 history = history.Select(e => new { at = e.At, field = e.Field, old = e.Old, @new = e.New }),
@@ -293,9 +295,17 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
                 (work.Since is { } since ? $" [grey]since {Output.Esc(since)}[/]" : ""));
         if (db.IdHistory(t.Id) is { Count: > 0 } former)
             AnsiConsole.MarkupLine($"[grey]Formerly:[/] {Output.Esc(string.Join(", ", former.Select(c => c.OldId)))}");
+        if (description is not null)
+        {
+            AnsiConsole.MarkupLine("[bold]Description[/]");
+            AnsiConsole.WriteLine(description);
+        }
         foreach (var l in links) AnsiConsole.MarkupLine(Output.LinkLine(l, t.Id));
         foreach (var e in history)
-            AnsiConsole.MarkupLine($"  [grey]{Output.Esc(e.At)} {Output.Esc(e.Field)}: {Output.Esc(e.Old ?? "")} → {Output.Esc(e.New ?? "")}[/]");
+            AnsiConsole.MarkupLine(e.Field == "description"
+                // A description's history holds whole bodies; the line only says what happened (--json has them).
+                ? $"  [grey]{Output.Esc(e.At)} description {(e.Old is null ? "added" : e.New is null ? "removed" : "edited")}[/]"
+                : $"  [grey]{Output.Esc(e.At)} {Output.Esc(e.Field)}: {Output.Esc(e.Old ?? "")} → {Output.Esc(e.New ?? "")}[/]");
         if (notes.Count > 0)
         {
             AnsiConsole.MarkupLine($"[bold]Notes[/] ({notes.Count.ToString(System.Globalization.CultureInfo.InvariantCulture)})");
@@ -419,19 +429,36 @@ public sealed class TicketCorrectCommand : Command<TicketCorrectCommand.Settings
 
         [CommandOption("--type <TYPE>")]
         [Description("feature | fix | chore | docs | interview")]
-        public string Type { get; init; } = "";
+        public string? Type { get; init; }
+
+        [CommandOption("--summary <TEXT>")]
+        [Description("The reworded one-line summary (M.TIX-T73); the old wording stays in the ticket's history.")]
+        public string? Summary { get; init; }
 
         [CommandOption("--reason <TEXT>")]
         [Description("Why; kept in the ticket's history.")]
         public string Reason { get; init; } = "";
+
+        public override ValidationResult Validate() =>
+            string.IsNullOrWhiteSpace(Type) && string.IsNullOrWhiteSpace(Summary) ? ValidationResult.Error("give --type, --summary or both")
+            : string.IsNullOrWhiteSpace(Reason) ? ValidationResult.Error("--reason is required")
+            : ValidationResult.Success();
     }
 
     public override int Execute(CommandContext context, Settings settings)
     {
         using var db = Db.Open(settings);
-        var t = db.CorrectType(settings.Id, settings.Type, settings.Reason);
+        if (!string.IsNullOrWhiteSpace(settings.Type))
+        {
+            var t = db.CorrectType(settings.Id, settings.Type, settings.Reason);
+            Console.WriteLine($"{t.Id} type {t.Type}");
+        }
+        if (!string.IsNullOrWhiteSpace(settings.Summary))
+        {
+            var t = db.CorrectSummary(settings.Id, settings.Summary, settings.Reason);
+            Console.WriteLine($"{t.Id} summary: {t.Summary}");
+        }
         Db.Rerender(db, settings);
-        Console.WriteLine($"{t.Id} type {t.Type}");
         return 0;
     }
 }

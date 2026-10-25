@@ -539,6 +539,13 @@
                         <Border Style="{StaticResource ChangedMark}" Tag="{Binding SummaryChanged}" Margin="-4,8,0,0">
                             <TextBlock Text="{Binding Summary}" TextWrapping="Wrap" FontSize="14" />
                         </Border>
+                        <!-- The markdown description (M.TIX-T73), kept apart from the summary; selectable so it can be copied. -->
+                        <StackPanel Visibility="{Binding HasDescription, Converter={StaticResource Visible}}">
+                            <TextBlock Text="DESCRIPTION" Style="{StaticResource SectionLabel}" />
+                            <TextBox Text="{Binding Description, Mode=OneWay}" IsReadOnly="True" TextWrapping="Wrap" Background="Transparent"
+                                     BorderThickness="0" Foreground="{DynamicResource MaText}" Padding="0" FontFamily="Cascadia Mono, Consolas"
+                                     AutomationProperties.Name="Description" />
+                        </StackPanel>
                         <TextBlock Text="{Binding WorkText}" Style="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,8,0,0" />
                         <!-- Being worked (M.TIX-T134): its login and session link back to the Orchestrator, which runs the work. -->
                         <StackPanel Margin="0,8,0,0" Visibility="{Binding IsWorking, Converter={StaticResource Visible}}">
@@ -627,6 +634,10 @@
                                     Command="{Binding DataContext.SetRefCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
                             <Button Style="{StaticResource Btn}" Content="Correct type…" Margin="0,0,6,6"
                                     Command="{Binding DataContext.CorrectTypeCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
+                            <Button Style="{StaticResource Btn}" Content="Reword summary…" Margin="0,0,6,6" ToolTip="Correct its summary; the old wording stays in its history"
+                                    Command="{Binding DataContext.CorrectSummaryCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
+                            <Button Style="{StaticResource Btn}" Content="Edit description…" Margin="0,0,6,6" ToolTip="Its markdown description, kept apart from the summary"
+                                    Command="{Binding DataContext.EditDescriptionCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
                             <Button Style="{StaticResource Btn}" Content="Add link…" Margin="0,0,6,6"
                                     Command="{Binding DataContext.AddLinkCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
                             <Button Style="{StaticResource Btn}" Content="Assign…" Margin="0,0,6,6" ToolTip="Assign it to a member's login: it's dispatched only on that login"

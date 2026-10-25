@@ -27,9 +27,18 @@ public sealed class TicketNewCommand : Command<TicketNewCommand.Settings>
         [Description("open (default) | closed | wont-do")]
         public string Status { get; init; } = TicketRules.Open;
 
+        [CommandOption("--description <TEXT>")]
+        [Description("Its markdown description, kept apart from the one-line summary.")]
+        public string? Description { get; init; }
+
+        [CommandOption("--description-file <PATH>")]
+        [Description("Read the markdown description from this file.")]
+        public string? DescriptionFile { get; init; }
+
         public override ValidationResult Validate() =>
             !TicketRules.Types.Contains(Type) ? ValidationResult.Error($"--type must be one of {string.Join(", ", TicketRules.Types)}")
             : string.IsNullOrWhiteSpace(Summary) ? ValidationResult.Error("--summary is required")
+            : Description is not null && DescriptionFile is not null ? ValidationResult.Error("--description and --description-file: pick one")
             : !TicketRules.Statuses.Contains(Status) ? ValidationResult.Error($"--status must be one of {string.Join(", ", TicketRules.Statuses)}")
             : ValidationResult.Success();
     }
@@ -40,17 +49,62 @@ public sealed class TicketNewCommand : Command<TicketNewCommand.Settings>
         using (var db = TicketsDb.OpenIfMigrated(settings.Workspace.Root))
             if (db is not null)
             {
-                Console.WriteLine(db.Add(repo.Name, settings.Type, settings.Status, settings.Summary, settings.Ref ?? "").Id);
+                var description = settings.Description ?? (settings.DescriptionFile is { } path ? File.ReadAllText(path) : null);
+                Console.WriteLine(db.Add(repo.Name, settings.Type, settings.Status, settings.Summary, settings.Ref ?? "", description: description).Id);
                 Db.Rerender(db, settings);
                 return 0;
             }
         if (!File.Exists(repo.StoriesPath))
             throw new InvalidOperationException($"{repo.Name} has no docs/USER_STORIES.md; run 'tickets repos rollout --apply' first.");
+        if (settings.Description is not null || settings.DescriptionFile is not null)
+            throw new InvalidOperationException("Descriptions live in the ticket database; this workspace hasn't been migrated to it.");
 
         var file = StoryFile.Load(repo.StoriesPath);
         var t = file.Add(settings.Type, settings.Status, settings.Summary, settings.Ref ?? "");
         file.Save();
         Console.WriteLine(t.Id);
+        return 0;
+    }
+}
+
+/// <summary><c>tickets ticket describe ID</c> (M.TIX-T73): sets, replaces or clears a ticket's markdown description.</summary>
+public sealed class TicketDescribeCommand : Command<TicketDescribeCommand.Settings>
+{
+    public sealed class Settings : WorkspaceSettings
+    {
+        [CommandArgument(0, "<ID>")]
+        [Description("Ticket ID, e.g. M.LNCH-T5.")]
+        public string Id { get; init; } = "";
+
+        [CommandOption("--text <TEXT>")]
+        [Description("The markdown description.")]
+        public string? Text { get; init; }
+
+        [CommandOption("--file <PATH>")]
+        [Description("Read the markdown description from this file.")]
+        public string? File { get; init; }
+
+        [CommandOption("--stdin")]
+        [Description("Read the markdown description from standard input.")]
+        public bool Stdin { get; init; }
+
+        [CommandOption("--clear")]
+        [Description("Remove the description.")]
+        public bool Clear { get; init; }
+
+        public override ValidationResult Validate() =>
+            (Text is not null ? 1 : 0) + (File is not null ? 1 : 0) + (Stdin ? 1 : 0) + (Clear ? 1 : 0) != 1
+                ? ValidationResult.Error("give exactly one of --text, --file, --stdin or --clear")
+                : ValidationResult.Success();
+    }
+
+    public override int Execute(CommandContext context, Settings settings)
+    {
+        using var db = Db.Open(settings);
+        var body = settings.Clear ? null : settings.Text ?? (settings.Stdin ? Console.In.ReadToEnd() : System.IO.File.ReadAllText(settings.File!));
+        var changed = db.SetDescription(settings.Id, body);
+        var id = db.Ticket(settings.Id)!.Value.Ticket.Id;
+        Console.WriteLine(!changed ? $"{id} description unchanged" : db.Description(id) is null ? $"{id} description cleared" : $"{id} description set");
         return 0;
     }
 }

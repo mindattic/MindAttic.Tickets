@@ -31,7 +31,8 @@ public sealed record ImportReport(string Repo, string Code, int Epics, int Stori
 /// The one Ticket database: every repo's stories (front-matter, epics, stories, backlog) and tickets in a
 /// structured schema, with links between any of them (prerequisites included) and a history of every ticket
 /// change. Each repo's file is also kept as ordered blocks, so <see cref="Export"/> rebuilds its
-/// USER_STORIES.md byte-for-byte. Tickets are append-only (enforced by triggers): only status and ref change.
+/// USER_STORIES.md byte-for-byte. Tickets are append-only (enforced by triggers): only status and ref change, but for the
+/// recorded corrections (<see cref="CorrectType"/>, <see cref="CorrectSummary"/>, ID and repo changes).
 /// </summary>
 public sealed partial class TicketsDb : IDisposable
 {
@@ -149,7 +150,7 @@ public sealed partial class TicketsDb : IDisposable
 
     /// <summary>
     /// Creates the schema (tables, indexes, triggers) if missing. Pass the active transaction when called from inside
-    /// one of the sanctioned-exception methods (<see cref="Import"/>, <see cref="CorrectType"/>, <see cref="RenameRepo"/>,
+    /// one of the sanctioned-exception methods (<see cref="Import"/>, <see cref="CorrectType"/>, <see cref="CorrectSummary"/>, <see cref="RenameRepo"/>,
     /// <see cref="ReassignTicketId"/>, <see cref="RecodeRepo"/>)
     /// that drop the tickets guard triggers and must put them back before committing — recreating them only after the
     /// commit would leave a window where another connection sees no append-only/no-delete guard on the tickets table.
@@ -252,6 +253,12 @@ public sealed partial class TicketsDb : IDisposable
             CREATE TRIGGER IF NOT EXISTS ticket_notes_no_update BEFORE UPDATE OF seq, author, at, markdown ON ticket_notes
             WHEN NEW.seq IS NOT OLD.seq OR NEW.author IS NOT OLD.author OR NEW.at IS NOT OLD.at OR NEW.markdown IS NOT OLD.markdown
             BEGIN SELECT RAISE(ABORT, 'ticket notes are append-only'); END;
+            -- M.TIX-T73: a ticket's markdown description, kept apart from its one-line summary. No row means none. No foreign
+            -- key, as ticket_queue; every change is a 'description' row in ticket_events.
+            CREATE TABLE IF NOT EXISTS ticket_descriptions (
+                ticket_id TEXT PRIMARY KEY COLLATE NOCASE,
+                body TEXT NOT NULL,
+                updated TEXT NOT NULL);
 
             -- Append-only: a ticket is never deleted, and only its status and ref ever change.
             CREATE TRIGGER IF NOT EXISTS tickets_no_delete BEFORE DELETE ON tickets
@@ -564,8 +571,11 @@ public sealed partial class TicketsDb : IDisposable
     private static Ticket ReadTicket(DbDataReader r, int at) =>
         new(r.GetString(at), r.GetString(at + 1), r.GetString(at + 2), r.GetString(at + 3), r.GetString(at + 4), r.GetString(at + 5));
 
-    /// <summary>Adds a ticket to <paramref name="repo"/> with the next free number (never reusing a gap), atomically.</summary>
-    public Ticket Add(string repo, string type, string status, string summary, string reference, string? date = null)
+    /// <summary>
+    /// Adds a ticket to <paramref name="repo"/> with the next free number (never reusing a gap), atomically; a
+    /// <c>description</c> is its markdown description (M.TIX-T73), kept apart from the one-line summary, none when blank.
+    /// </summary>
+    public Ticket Add(string repo, string type, string status, string summary, string reference, string? date = null, string? description = null)
     {
         if (!TicketRules.Types.Contains(type)) throw new ArgumentException($"Unknown type '{type}' (expected {string.Join("/", TicketRules.Types)}).", nameof(type));
         if (!TicketRules.Statuses.Contains(status)) throw new ArgumentException($"Unknown status '{status}' (expected {string.Join("/", TicketRules.Statuses)}).", nameof(status));
@@ -582,6 +592,7 @@ public sealed partial class TicketsDb : IDisposable
         Exec("INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal) VALUES ($id, $r, $n, $d, $ty, $st, $su, $ref, $o)", null,
             ("$id", t.Id), ("$r", name), ("$n", next), ("$d", t.Date), ("$ty", t.Type), ("$st", t.Status), ("$su", t.Summary), ("$ref", t.Ref), ("$o", ordinal));
         Exec("INSERT INTO ticket_events (ticket_id, at, field, old, new) VALUES ($id, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), 'created', NULL, $st)", null, ("$id", t.Id), ("$st", t.Status));
+        if (NormalizeDescription(description) is { } body) SaveDescription(t.Id, body);
         foreach (Match m in BlockedBy().Matches(t.Summary))
             if (Ticket(m.Groups["id"].Value) is not null) AddLinkCore(t.Id, m.Groups["id"].Value, "requires", "blocked by in summary");
         tx.Commit();
@@ -634,6 +645,72 @@ public sealed partial class TicketsDb : IDisposable
         }
         return t with { Type = type };
     }
+
+    /// <summary>
+    /// Rewords a ticket's one-line summary (M.TIX-T73), a sanctioned exception to append-only like <see cref="CorrectType"/>:
+    /// the append-only trigger is lifted for this one update only, and the change is recorded in the ticket's history as a
+    /// 'summary' event (the old wording kept as its old value) with <paramref name="reason"/>. A "blocked by X-T1" the new
+    /// wording adds is linked, as <see cref="Add"/> does.
+    /// </summary>
+    public Ticket CorrectSummary(string id, string summary, string reason)
+    {
+        if (string.IsNullOrWhiteSpace(summary)) throw new ArgumentException("A ticket needs a summary.", nameof(summary));
+        if (string.IsNullOrWhiteSpace(reason)) throw new ArgumentException("A correction needs a reason.", nameof(reason));
+        summary = OneLine(summary);
+        var t = Ticket(id)?.Ticket ?? throw new KeyNotFoundException($"No ticket {id}.");
+        if (t.Summary == summary) return t;
+        using (var tx = Begin())
+        {
+            Exec("DROP TRIGGER IF EXISTS tickets_append_only", tx);
+            Exec("UPDATE tickets SET summary = $su, row_md = NULL WHERE id = $id", tx, ("$su", summary), ("$id", t.Id));
+            Exec("INSERT INTO ticket_events (ticket_id, at, field, old, new) VALUES ($id, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), 'summary', $o, $n)", tx,
+                ("$id", t.Id), ("$o", t.Summary), ("$n", $"{summary} (corrected: {reason.Trim()})"));
+            foreach (Match m in BlockedBy().Matches(summary))
+                if (!string.Equals(m.Groups["id"].Value, t.Id, StringComparison.OrdinalIgnoreCase) && Ticket(m.Groups["id"].Value) is not null)
+                    AddLinkCore(t.Id, m.Groups["id"].Value, "requires", "blocked by in summary");
+            EnsureSchema(tx); // the trigger comes straight back, before commit, so no other connection ever sees it missing
+            tx.Commit();
+        }
+        return t with { Summary = summary };
+    }
+
+    // ── Descriptions (M.TIX-T73) ────────────────────────────────────────────
+
+    /// <summary>A ticket's markdown description (found by a former ID too); null when it has none.</summary>
+    public string? Description(string id) =>
+        Rows("SELECT body FROM ticket_descriptions WHERE ticket_id = $id COLLATE NOCASE", r => r.GetString(0), ("$id", CurrentId(id.Trim()))).FirstOrDefault();
+
+    /// <summary>
+    /// Sets (or, with a blank <paramref name="body"/>, removes) a ticket's markdown description. Unlike the summary it's not
+    /// append-only, but every change is history: a 'description' event with the old and new text. Returns false when nothing
+    /// changed.
+    /// </summary>
+    public bool SetDescription(string id, string? body)
+    {
+        var text = NormalizeDescription(body);
+        var t = Ticket(id)?.Ticket ?? throw new KeyNotFoundException($"No ticket {id}.");
+        using var tx = Begin();
+        var old = Rows("SELECT body FROM ticket_descriptions WHERE ticket_id = $id COLLATE NOCASE", tx, r => r.GetString(0), ("$id", t.Id)).FirstOrDefault();
+        if (old == text) return false;
+        if (text is null) Exec("DELETE FROM ticket_descriptions WHERE ticket_id = $id", tx, ("$id", t.Id));
+        else SaveDescription(t.Id, text, tx);
+        Exec("INSERT INTO ticket_events (ticket_id, at, field, old, new) VALUES ($id, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), 'description', $o, $n)", tx,
+            ("$id", t.Id), ("$o", old), ("$n", text));
+        tx.Commit();
+        return true;
+    }
+
+    private void SaveDescription(string id, string body, DbTransaction? tx = null) =>
+        Exec(server is null
+                ? "INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ($id, $b, strftime('%Y-%m-%dT%H:%M:%SZ', 'now')) " +
+                  "ON CONFLICT (ticket_id) DO UPDATE SET body = excluded.body, updated = excluded.updated"
+                : "UPDATE ticket_descriptions SET body = $b, updated = strftime('%Y-%m-%dT%H:%M:%SZ', 'now') WHERE ticket_id = $id; " +
+                  "IF @@ROWCOUNT = 0 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ($id, $b, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'))",
+            tx, ("$id", id), ("$b", body));
+
+    /// <summary>A description as stored: LF line ends, no trailing whitespace; null when blank.</summary>
+    internal static string? NormalizeDescription(string? body) =>
+        body?.Replace("\r\n", "\n", StringComparison.Ordinal).Replace('\r', '\n').TrimEnd() is { Length: > 0 } s && s.Trim().Length > 0 ? s : null;
 
     /// <summary>A ticket's history, oldest first.</summary>
     public IReadOnlyList<TicketEvent> History(string id) =>
@@ -1069,7 +1146,7 @@ public sealed partial class TicketsDb : IDisposable
         foreach (var (table, order) in new[]
         {
             ("meta", "key"), ("repos", "name"), ("epics", "repo, key"), ("stories", "uid"), ("backlog_items", "uid"), ("backlog_refs", "item_uid, story_id"),
-            ("tickets", "repo, ordinal"), ("ticket_events", "seq"), ("ticket_queue", "ticket_id"), ("ticket_work", "ticket_id"), ("ticket_notes", "seq"), ("repo_renames", "seq"), ("id_history", "seq"), ("links", "from_id, to_id, kind"), ("blocks", "repo, ordinal"),
+            ("tickets", "repo, ordinal"), ("ticket_events", "seq"), ("ticket_queue", "ticket_id"), ("ticket_work", "ticket_id"), ("ticket_notes", "seq"), ("ticket_descriptions", "ticket_id"), ("repo_renames", "seq"), ("id_history", "seq"), ("links", "from_id, to_id, kind"), ("blocks", "repo, ordinal"),
         })
         {
             sb.Append("\n-- ").Append(table).Append('\n');

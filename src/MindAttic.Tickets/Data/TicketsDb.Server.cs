@@ -143,7 +143,7 @@ public sealed partial class TicketsDb
 
     /// <summary>Every table, parents before children (the order rows go in and the order the dump lists them).</summary>
     internal static readonly string[] TableOrder =
-        ["meta", "repos", "epics", "stories", "backlog_items", "backlog_refs", "tickets", "ticket_events", "ticket_queue", "ticket_work", "ticket_notes", "repo_renames", "id_history", "links", "blocks"];
+        ["meta", "repos", "epics", "stories", "backlog_items", "backlog_refs", "tickets", "ticket_events", "ticket_queue", "ticket_work", "ticket_notes", "ticket_descriptions", "repo_renames", "id_history", "links", "blocks"];
 
     /// <summary>Copies <paramref name="tables"/> from <paramref name="source"/> into the SQLite file at <paramref name="file"/>,
     /// replacing them, in one transaction with its guard triggers lifted and put back before it commits.</summary>

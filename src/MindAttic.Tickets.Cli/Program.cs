@@ -22,7 +22,8 @@ app.Configure(config =>
         t.AddCommand<TicketShowCommand>("show").WithDescription("One ticket: its row, links (prerequisites included) and history; --versions lists every version, --version N shows one.");
         t.AddCommand<TicketGraphCommand>("graph").WithDescription("A ticket's requires chains both ways as an indented tree: what it waits for and what waits for it, blockers marked (--json for the nodes).");
         t.AddCommand<TicketLinkCommand>("link").WithDescription("Link two tickets or stories: tickets ticket link A requires B (--remove to unlink).");
-        t.AddCommand<TicketCorrectCommand>("correct").WithDescription("Correct a ticket's type to the standard vocabulary (recorded in its history).");
+        t.AddCommand<TicketCorrectCommand>("correct").WithDescription("Correct a ticket's type to the standard vocabulary (--type) or reword its summary (--summary), with --reason; recorded in its history.");
+        t.AddCommand<TicketDescribeCommand>("describe").WithDescription("Set (--text, --file) or --clear a ticket's markdown description, kept apart from its one-line summary; recorded in its history.");
         t.AddCommand<TicketReassignCommand>("reassign").WithDescription("Give a ticket a new ID; the old one is kept in its history and still resolves.");
         t.AddCommand<TicketVerifyCommand>("verify").WithDescription("Check a repo's tickets, links and versions are valid.");
         t.AddCommand<TicketQueueCommand>("queue").WithDescription("Open tickets in queue order, with approval and priority.");

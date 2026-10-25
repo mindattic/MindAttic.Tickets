@@ -64,6 +64,8 @@ public sealed record TicketDetail(TicketInfo Info, IReadOnlyList<TicketEvent> Hi
 
     /// <summary>Its requires chains both ways, as they are now (M.TIX-T83); empty when nothing waits either way.</summary>
     public DependencyGraph? Graph { get; init; }
+    /// <summary>Its markdown description, kept apart from the one-line summary (M.TIX-T73); null when it has none.</summary>
+    public string? Description { get; init; }
 }
 
 /// <summary>
@@ -148,6 +150,7 @@ public sealed class TicketStore(string root)
             Graph = links.Any(l => l.Kind == "requires")
                 ? DependencyGraph.Build(found.Ticket.Id, db.Tickets().Select(x => x.Ticket), db.AllLinks())
                 : DependencyGraph.Empty(found.Ticket.Id),
+            Description = db.Description(found.Ticket.Id),
         };
     });
 
@@ -166,6 +169,9 @@ public sealed class TicketStore(string root)
     public void Close(string id, string status, string? reference) => Write($"{status} {id} ({reference})", db => db.Close(id, status, reference));
     public void SetRef(string id, string reference) => Write($"ref {id} ({reference})", db => db.SetRef(id, reference));
     public void CorrectType(string id, string type, string reason) => Write($"correct {id} to {type}: {reason}", db => db.CorrectType(id, type, reason));
+    public void CorrectSummary(string id, string summary, string reason) => Write($"reword {id} to '{summary}': {reason}", db => db.CorrectSummary(id, summary, reason));
+    public void SetDescription(string id, string? body) =>
+        Write($"{(string.IsNullOrWhiteSpace(body) ? "clear" : "set")} {id}'s description", db => db.SetDescription(id, body), render: false);
     public void AddLink(string from, string to, string kind) => Write($"link {from} {kind} {to}", db => db.AddLink(from, to, kind), render: false);
     public void RemoveLink(string from, string to, string kind) => Write($"unlink {from} {kind} {to}", db => db.RemoveLink(from, to, kind), render: false);
 
@@ -198,10 +204,10 @@ public sealed class TicketStore(string root)
             }
         }, render: to == BoardColumn.Done);
 
-    public Ticket Add(string repo, string type, string summary, string reference)
+    public Ticket Add(string repo, string type, string summary, string reference, string? description = null)
     {
         Ticket t = null!;
-        Write($"new {type} in {repo}: {summary}", db => t = db.Add(repo, type, TicketRules.Open, summary, reference));
+        Write($"new {type} in {repo}: {summary}", db => t = db.Add(repo, type, TicketRules.Open, summary, reference, description: description));
         return t;
     }
 

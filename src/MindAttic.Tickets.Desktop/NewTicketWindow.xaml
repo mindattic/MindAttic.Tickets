@@ -31,6 +31,10 @@
         <Label Content="R_ef: story ID, test or commit (optional)" Target="{Binding ElementName=Ref}" Foreground="{DynamicResource MaMuted}" Padding="0,12,0,3" />
         <TextBox x:Name="Ref" Style="{StaticResource Field}" AutomationProperties.Name="Ref" />
 
+        <Label Content="_Description: markdown, as long as it needs (optional)" Target="{Binding ElementName=Description}" Foreground="{DynamicResource MaMuted}" Padding="0,12,0,3" />
+        <TextBox x:Name="Description" Style="{StaticResource Field}" TextWrapping="Wrap" AcceptsReturn="True" MinHeight="120" MaxHeight="320"
+                 VerticalContentAlignment="Top" VerticalScrollBarVisibility="Auto" AutomationProperties.Name="Description" />
+
         <TextBlock x:Name="Error" Style="{StaticResource ErrorText}" Visibility="Collapsed" />
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,18,0,0">

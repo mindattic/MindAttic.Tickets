@@ -118,20 +118,21 @@ public sealed partial class TicketsDb
         var (approval, priority) = QueueState(t.Id);
         var links = Links(t.Id);
         var work = Work(t.Id);
-        var current = new Shape(t.Id, repo, t.Type, t.Status, t.Ref, approval, priority, work.Assignee, work.Reserved);
+        var current = new Shape(t.Id, repo, t.Type, t.Status, t.Ref, approval, priority, work.Assignee, work.Reserved, t.Summary);
         return [.. Timeline(current, Created(t.Date, events), events, AllShapeFields, DateTime.UtcNow)
-            .Select(x => new Draft(x.At, x.State.Repo, t with { Id = x.State.Id, Type = x.State.Type, Status = x.State.Status, Ref = x.State.Ref },
+            .Select(x => new Draft(x.At, x.State.Repo, t with { Id = x.State.Id, Type = x.State.Type, Status = x.State.Status, Ref = x.State.Ref, Summary = x.State.Summary ?? t.Summary },
                 x.State.Approval, x.State.Priority, links, Recorded: false, x.State.Assignee, x.State.Reserved))];
     }
 
     // ── Working a ticket's past back from its history events ───────────────
 
-    /// <summary>What a ticket's history events say it was: everything but its summary, date and ordinal, which never change.</summary>
+    /// <summary>What a ticket's history events say it was: everything but its date and ordinal, which never change (its summary
+    /// only by a recorded correction, M.TIX-T73; null where the caller doesn't follow it).</summary>
     internal sealed record Shape(string Id, string Repo, string Type, string Status, string Ref, string Approval, long Priority,
-        string? Assignee = null, long Reserved = 0);
+        string? Assignee = null, long Reserved = 0, string? Summary = null);
 
-    private static readonly HashSet<string> AllShapeFields = ["status", "ref", "type", "repo", "id", "approval", "priority", "assignee", "reserved"];
-    private static readonly HashSet<string> TicketShapeFields = ["status", "ref", "type", "repo", "id"];
+    private static readonly HashSet<string> AllShapeFields = ["status", "ref", "type", "summary", "repo", "id", "approval", "priority", "assignee", "reserved"];
+    private static readonly HashSet<string> TicketShapeFields = ["status", "ref", "type", "summary", "repo", "id"];
     private static readonly HashSet<string> QueueShapeFields = ["approval", "priority"];
     private static readonly HashSet<string> WorkShapeFields = ["assignee", "reserved"];
 
@@ -168,6 +169,7 @@ public sealed partial class TicketsDb
         "status" when e.Old is { } o => s with { Status = o },
         "ref" when e.Old is { } o => s with { Ref = o },
         "type" when e.Old is { } o => s with { Type = o },
+        "summary" when e.Old is { } o => s with { Summary = o },
         "repo" when e.Old is { } o => s with { Repo = o },
         "id" when e.Old is { } o => s with { Id = o },
         "approval" when e.Old is { } o => s with { Approval = o },
@@ -355,11 +357,11 @@ public sealed partial class TicketsDb
             var starts = Table(("id", typeof(string)), ("valid_from", typeof(DateTime)));
             foreach (var t in tickets)
             {
-                var line = Timeline(new Shape(t.Id, t.Repo, t.Type, t.Status, t.Ref, Proposed, 0), created[t.Id], [.. events[t.Id]], TicketShapeFields, now);
+                var line = Timeline(new Shape(t.Id, t.Repo, t.Type, t.Status, t.Ref, Proposed, 0, Summary: t.Summary), created[t.Id], [.. events[t.Id]], TicketShapeFields, now);
                 for (var i = 0; i < line.Count - 1; i++)
                 {
                     var s = line[i].State;
-                    history.Rows.Add(s.Id, s.Repo, (object?)TicketRules.ParseNumber(s.Id) ?? (object?)t.Number ?? DBNull.Value, t.Date, s.Type, s.Status, t.Summary, s.Ref, t.Ordinal,
+                    history.Rows.Add(s.Id, s.Repo, (object?)TicketRules.ParseNumber(s.Id) ?? (object?)t.Number ?? DBNull.Value, t.Date, s.Type, s.Status, s.Summary ?? t.Summary, s.Ref, t.Ordinal,
                         line[i].At, line[i + 1].At);
                 }
                 starts.Rows.Add(t.Id, line[^1].At);

@@ -59,6 +59,8 @@ public sealed partial class MainViewModel : ObservableObject
         WontDoCommand = new RelayCommand(async () => await CloseTicketAsync(TicketRules.WontDo), () => Detail is { IsOpen: true });
         SetRefCommand = new RelayCommand(async () => await SetRefAsync(), () => Detail is not null);
         CorrectTypeCommand = new RelayCommand(async () => await CorrectTypeAsync(), () => Detail is not null);
+        CorrectSummaryCommand = new RelayCommand(async () => await CorrectSummaryAsync(), () => Detail is not null);
+        EditDescriptionCommand = new RelayCommand(async () => await EditDescriptionAsync(), () => Detail is not null);
         AddLinkCommand = new RelayCommand(async () => await AddLinkAsync(), () => Detail is not null);
         RemoveLinkCommand = new RelayCommand(async p => await RemoveLinkAsync(p as LinkLine), p => p is LinkLine);
         GoToCommand = new RelayCommand(p => GoTo(p as string), p => p is string);
@@ -186,6 +188,8 @@ public sealed partial class MainViewModel : ObservableObject
     public ICommand WontDoCommand { get; }
     public ICommand SetRefCommand { get; }
     public ICommand CorrectTypeCommand { get; }
+    public ICommand CorrectSummaryCommand { get; }
+    public ICommand EditDescriptionCommand { get; }
     public ICommand AddLinkCommand { get; }
     public ICommand RemoveLinkCommand { get; }
     public ICommand GoToCommand { get; }
@@ -516,6 +520,29 @@ public sealed partial class MainViewModel : ObservableObject
         await Do(() => store.CorrectType(d.Id, type, answer.Text), $"{d.Id} is now a {type}.");
     }
 
+    /// <summary>Rewords the summary (M.TIX-T73): the new wording, then why; both kept in its history.</summary>
+    private async Task CorrectSummaryAsync()
+    {
+        if (Detail is not { } d) return;
+        var current = d.Source.Info.Ticket.Summary;
+        var wording = Dialogs.Ask(new Prompt($"Reword the summary of {d.Id}", "Summaries are append-only; a rewording is recorded in the ticket's history, the old wording kept.",
+            "Summary (one line)", Initial: current, Ok: "Next"));
+        if (wording is null || wording.Text == current) return;
+        var reason = Dialogs.Ask(new Prompt($"Reword the summary of {d.Id}", $"From: {current}\nTo: {wording.Text}\n\nWhy?", "Reason", Ok: "Reword"));
+        if (reason is null) return;
+        await Do(() => store.CorrectSummary(d.Id, wording.Text, reason.Text), $"{d.Id} reworded.");
+    }
+
+    /// <summary>Sets, edits or (emptied) removes the markdown description (M.TIX-T73).</summary>
+    private async Task EditDescriptionAsync()
+    {
+        if (Detail is not { } d) return;
+        var answer = Dialogs.Ask(new Prompt($"Description of {d.Id}", "Markdown, kept apart from the one-line summary. Leave it empty to remove it; every change is kept in the ticket's history.",
+            "Description", TextRequired: false, Initial: d.Source.Description ?? "", Ok: "Save", Multiline: true));
+        if (answer is null) return;
+        await Do(() => store.SetDescription(d.Id, answer.Text), string.IsNullOrWhiteSpace(answer.Text) ? $"{d.Id}'s description removed." : $"{d.Id}'s description saved.");
+    }
+
     public async Task AddLinkAsync()
     {
         if (Detail is not { } d) return;
@@ -541,7 +568,7 @@ public sealed partial class MainViewModel : ObservableObject
         settings.LastType = n.Type;
         settings.Save();
         string? id = null;
-        if (await Do(() => id = store.Add(n.Repo, n.Type, n.Summary, n.Ref).Id, $"Filed {n.Repo} ticket.") && id is not null)
+        if (await Do(() => id = store.Add(n.Repo, n.Type, n.Summary, n.Ref, n.Description).Id, $"Filed {n.Repo} ticket.") && id is not null)
         {
             GoTo(id);
             // Selecting the row starts a detail load that reports the ticket's readiness in the status bar; a quiet load

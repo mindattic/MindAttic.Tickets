@@ -88,6 +88,10 @@ public sealed class DetailViewModel : ObservableObject
     public string Date => Ticket.Date;
     public string Summary => Ticket.Summary;
     public string Ref => Ticket.Ref;
+
+    /// <summary>Its markdown description (M.TIX-T73), as it is now (descriptions aren't versioned with the row).</summary>
+    public string Description => Source.Description ?? "";
+    public bool HasDescription => Source.Description is not null;
     public bool IsOpen => Source.Info.Ticket.Status == TicketRules.Open;
     public bool IsApproved => Source.Info.Approval == TicketsDb.Approved;
     public bool IsBlocked => Source.OpenBlockers.Count > 0;
@@ -294,6 +298,8 @@ public sealed class DetailViewModel : ObservableObject
     private static string Describe(TicketEvent e) => e.Field switch
     {
         "created" => $"Filed ({e.New})",
+        // A description's history holds whole bodies; the line only says what happened.
+        "description" => e.Old is null ? "Description added" : e.New is null ? "Description removed" : "Description edited",
         _ when e.Old is null => $"{e.Field}: {e.New}",
         _ => $"{e.Field}: {e.Old} → {e.New}",
     };
