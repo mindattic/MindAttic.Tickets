@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using MindAttic.Components.Wpf.Mvvm;
 
 namespace MindAttic.Tickets.Desktop.ViewModels;
 
