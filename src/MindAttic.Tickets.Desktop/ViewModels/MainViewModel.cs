@@ -103,7 +103,7 @@ public sealed partial class MainViewModel : ObservableObject
     public IReadOnlyList<string> TypeChoices { get; } = [AnyType, .. TicketRules.Types];
     public IReadOnlyList<string> ApprovalChoices { get; } = [AnyApproval, .. TicketsDb.Approvals];
     public IReadOnlyList<string> WorkChoices { get; } = [AnyWork, Queued, NeedsApproval, Blocked];
-    public IReadOnlyList<string> SortChoices { get; } = ["ID", "Date", "Repo", "Type", "Status", "Approval", "Priority", "Summary"];
+    public IReadOnlyList<string> SortChoices { get; } = ["ID", "Date", "Repo", "Type", "Status", "Approval", "Priority", "Estimate", "Summary"];
 
     public string Search { get => search; set { if (Set(ref search, value)) ApplyFilters(); } }
     public string RepoFilter { get => repoFilter; set { if (Set(ref repoFilter, value ?? AllRepos)) ApplyFilters(); } }
@@ -286,6 +286,8 @@ public sealed partial class MainViewModel : ObservableObject
             "Status" => t => t.Ticket.Status,
             "Approval" => t => t.Approval,
             "Priority" => t => t.Priority,
+            // Smallest effort first; a ticket with no estimate after every one that has.
+            "Estimate" => t => t.Estimate ?? long.MaxValue,
             "Summary" => t => t.Ticket.Summary.ToUpperInvariant(),
             // An ID is its repo then its number (T9 before T10), so descending reverses both, not just the repo.
             _ => t => (t.Repo.ToUpperInvariant(), TicketRules.ParseNumber(t.Ticket.Id) ?? 0),

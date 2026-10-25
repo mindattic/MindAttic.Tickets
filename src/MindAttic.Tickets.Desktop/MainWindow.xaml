@@ -127,6 +127,8 @@
                         </Border>
                         <TextBlock Style="{StaticResource Muted}" VerticalAlignment="Center"
                                    Text="{Binding Priority, StringFormat='priority {0}'}" />
+                        <TextBlock Style="{StaticResource Muted}" VerticalAlignment="Center" Margin="10,0,0,0" Text="{Binding EstimateText}"
+                                   Visibility="{Binding EstimateText, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
                     </WrapPanel>
                     <!-- Its live worker, from the Orchestrator's state: opens the Orchestrator on it (M.TIX-T135). -->
                     <Button Style="{StaticResource LinkBtn}" HorizontalAlignment="Left" Margin="0,4,0,0" Focusable="False"
@@ -581,7 +583,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition />
+                                <RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition />
                             </Grid.RowDefinitions>
                             <TextBlock Style="{StaticResource FieldName}" Text="Repo" />
                             <Border Grid.Column="1" Style="{StaticResource ChangedMark}" Tag="{Binding RepoChanged}">
@@ -618,6 +620,8 @@
                             <Border Grid.Row="8" Grid.Column="1" Style="{StaticResource ChangedMark}" Tag="{Binding ReservedChanged}">
                                 <TextBlock Style="{StaticResource FieldValue}" Text="{Binding ReservedText}" />
                             </Border>
+                            <TextBlock Grid.Row="9" Style="{StaticResource FieldName}" Text="Estimate" />
+                            <TextBlock Grid.Row="9" Grid.Column="1" Style="{StaticResource FieldValue}" Text="{Binding EstimateText}" />
                         </Grid>
 
                         <TextBlock Text="ACTIONS" Style="{StaticResource SectionLabel}" />
@@ -648,6 +652,8 @@
                                     Command="{Binding DataContext.ReserveCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
                             <Button Style="{StaticResource Btn}" Content="Add note…" Margin="0,0,6,6" ToolTip="Append a comment to it (notes are never edited or deleted)"
                                     Command="{Binding DataContext.AddNoteCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
+                            <Button Style="{StaticResource Btn}" Content="Estimate…" Margin="0,0,6,6" ToolTip="Set its effort estimate in tokens: within a priority the queue runs the smallest first (empty clears)"
+                                    Command="{Binding DataContext.EstimateCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
                         </WrapPanel>
                         <TextBlock Text="{Binding Error}" Style="{StaticResource ErrorText}"
                                    Visibility="{Binding Error, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />

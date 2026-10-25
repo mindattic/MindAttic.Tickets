@@ -70,6 +70,31 @@ public sealed class WorkDetailTests
     }
 
     [Test]
+    public async Task Estimate_is_set_shown_on_the_queue_row_and_cleared_from_the_detail_pane()
+    {
+        Assert.That(await model.OpenTicketAsync("AL-T1"), Is.True);
+        Assert.That(model.Detail!.EstimateText, Is.EqualTo("None"));
+
+        answers.Enqueue(new PromptAnswer(null, "300k"));
+        model.EstimateCommand.Execute(null);
+        await WaitFor(() => model.Detail?.Source.Info.Estimate == 300_000);
+        Assert.That(model.Detail!.EstimateText, Is.EqualTo("~300k tokens"));
+        await WaitFor(() => model.QueueRows.Any(r => r.Id == "AL-T1" && r.Estimate == 300_000));
+        var row = model.QueueRows.Single(r => r.Id == "AL-T1");
+        Assert.That(row.EstimateText, Is.EqualTo("~300k tokens"));
+        Assert.That(row.SpokenName, Does.Contain("estimated 300k tokens"));
+
+        answers.Enqueue(new PromptAnswer(null, "lots"));
+        model.EstimateCommand.Execute(null);
+        Assert.That(model.Detail!.Error, Does.Contain("Tokens"));
+
+        answers.Enqueue(new PromptAnswer(null, " "));
+        model.EstimateCommand.Execute(null);
+        await WaitFor(() => model.Detail?.Source.Info.Estimate is null);
+        Assert.That(model.Detail!.EstimateText, Is.EqualTo("None"));
+    }
+
+    [Test]
     public async Task A_ticket_being_worked_links_its_login_session_and_itself_to_the_orchestrator()
     {
         using (var db = TicketsDb.Open(TicketsDb.DefaultPath(root))) db.SetWorking("AL-T1", "ryan@example.com", "sess-42");

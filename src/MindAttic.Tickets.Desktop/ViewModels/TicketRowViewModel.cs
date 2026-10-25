@@ -9,6 +9,7 @@ public sealed class TicketRowViewModel(string id) : ObservableObject
 {
     private string repo = "", date = "", type = "", status = "", summary = "", reference = "", approval = TicketsDb.Proposed;
     private long priority;
+    private long? estimate;
     private int rank;
     private bool isDropTarget;
     private IReadOnlyList<string> blockers = [];
@@ -24,6 +25,12 @@ public sealed class TicketRowViewModel(string id) : ObservableObject
     public string Ref { get => reference; private set => Set(ref reference, value); }
     public string Approval { get => approval; private set => Set(ref approval, value); }
     public long Priority { get => priority; private set => Set(ref priority, value); }
+
+    /// <summary>Its effort estimate in tokens (M.TIX-T75), null while it has none.</summary>
+    public long? Estimate { get => estimate; private set { if (Set(ref estimate, value)) Raise(nameof(EstimateText)); } }
+
+    /// <summary>"~300k tokens", or empty with no estimate.</summary>
+    public string EstimateText => Estimate is { } e ? $"~{TokenCount.Format(e)} tokens" : "";
 
     /// <summary>The open tickets this one waits on (its <c>requires</c> links, all the way down).</summary>
     public IReadOnlyList<string> Blockers { get => blockers; private set => Set(ref blockers, value); }
@@ -76,7 +83,7 @@ public sealed class TicketRowViewModel(string id) : ObservableObject
     /// <summary>What a screen reader says for the row: everything a sighted user reads off it, in one sentence.</summary>
     public string SpokenName =>
         (Rank > 0 ? $"Position {Rank}. " : "") + $"{Id}, {Type}, {Status}, {Approval}" +
-        (Priority != 0 ? $", priority {Priority}" : "") + (IsBlocked ? $", {BlockedText.TrimStart('⏸', ' ')}" : "") + $", {Repo}: {Summary}";
+        (Priority != 0 ? $", priority {Priority}" : "") + (Estimate is not null ? $", estimated {EstimateText.TrimStart('~')}" : "") + (IsBlocked ? $", {BlockedText.TrimStart('⏸', ' ')}" : "") + $", {Repo}: {Summary}";
 
     public void Update(TicketInfo t)
     {
@@ -88,6 +95,7 @@ public sealed class TicketRowViewModel(string id) : ObservableObject
         Ref = t.Ticket.Ref;
         Approval = t.Approval;
         Priority = t.Priority;
+        Estimate = t.Estimate;
         if (!Blockers.SequenceEqual(t.Blockers, StringComparer.OrdinalIgnoreCase)) Blockers = t.Blockers;
         Raise(nameof(IsBlocked));
         Raise(nameof(BlockedText));
@@ -104,6 +112,16 @@ public sealed class TicketRowViewModel(string id) : ObservableObject
         row.Update(t);
         return row;
     }
+}
+
+/// <summary>Token counts as shown: 1.2M, 300k, 950.</summary>
+public static class TokenCount
+{
+    public static string Format(long tokens) =>
+        tokens >= 1_000_000_000 ? (tokens / 1e9).ToString("0.#", System.Globalization.CultureInfo.InvariantCulture) + "B"
+        : tokens >= 1_000_000 ? (tokens / 1e6).ToString("0.#", System.Globalization.CultureInfo.InvariantCulture) + "M"
+        : tokens >= 1_000 ? (tokens / 1e3).ToString("0.#", System.Globalization.CultureInfo.InvariantCulture) + "k"
+        : tokens.ToString(System.Globalization.CultureInfo.InvariantCulture);
 }
 
 /// <summary>The glyph + word shown for each state, so no state is told by colour alone (1.4.1).</summary>

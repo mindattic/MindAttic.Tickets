@@ -3,8 +3,9 @@ using MindAttic.Tickets.Log;
 
 namespace MindAttic.Tickets.Data;
 
-/// <summary>An open ticket's place in the work queue: whether it's approved for work, and its priority (higher runs sooner).</summary>
-public sealed record QueueEntry(string Repo, Ticket Ticket, string Approval, long Priority);
+/// <summary>An open ticket's place in the work queue: whether it's approved for work, its priority (higher runs sooner), and
+/// its effort estimate in tokens (M.TIX-T75; null while it has none), which orders tickets of one priority smallest first.</summary>
+public sealed record QueueEntry(string Repo, Ticket Ticket, string Approval, long Priority, long? Estimate = null);
 
 public sealed partial class TicketsDb
 {
@@ -14,16 +15,73 @@ public sealed partial class TicketsDb
 
     public static readonly IReadOnlyList<string> Approvals = [Proposed, Approved, Rejected];
 
-    /// <summary>Open tickets (optionally for one repo) with approval and priority: highest priority first, then oldest.</summary>
+    /// <summary>Open tickets (optionally for one repo) with approval, priority and estimate: highest priority first, then
+    /// smallest estimate (M.TIX-T75; those without one after those with), then oldest.</summary>
     public IReadOnlyList<QueueEntry> Queue(string? repo = null) =>
         [.. Rows(
-            "SELECT t.repo, t.id, t.date, t.type, t.status, t.summary, t.ref, COALESCE(q.approval, 'proposed'), COALESCE(q.priority, 0) " +
+            "SELECT t.repo, t.id, t.date, t.type, t.status, t.summary, t.ref, COALESCE(q.approval, 'proposed'), COALESCE(q.priority, 0), q.estimate " +
             // Without case, as ticket_queue.ticket_id's own collation compares: said here so SQL Server joins it the same way.
             "FROM tickets t LEFT JOIN ticket_queue q ON q.ticket_id = t.id COLLATE NOCASE " +
             "WHERE t.status = 'open' AND ($r IS NULL OR t.repo = $r COLLATE NOCASE) " +
-            "ORDER BY COALESCE(q.priority, 0) DESC, t.date, t.repo COLLATE NOCASE, t.ordinal",
-            r => new QueueEntry(r.GetString(0), ReadTicket(r, 1), r.GetString(7), r.GetInt64(8)),
+            "ORDER BY COALESCE(q.priority, 0) DESC, CASE WHEN q.estimate IS NULL THEN 1 ELSE 0 END, q.estimate, t.date, t.repo COLLATE NOCASE, t.ordinal",
+            r => new QueueEntry(r.GetString(0), ReadTicket(r, 1), r.GetString(7), r.GetInt64(8), r.IsDBNull(9) ? null : r.GetInt64(9)),
             ("$r", repo))];
+
+    /// <summary>The largest estimate a ticket takes (a quadrillion tokens; past it is a typo), as a reservation.</summary>
+    public const long MaxEstimate = MaxReserved;
+
+    /// <summary>A ticket's effort estimate in tokens (M.TIX-T75), or null while it has none.</summary>
+    public long? Estimate(string id) =>
+        Rows("SELECT estimate FROM ticket_queue WHERE ticket_id = $id", r => r.IsDBNull(0) ? (long?)null : r.GetInt64(0), ("$id", id)).FirstOrDefault();
+
+    /// <summary>Every ticket's estimate that has one.</summary>
+    public IReadOnlyDictionary<string, long> Estimates() =>
+        Rows("SELECT ticket_id, estimate FROM ticket_queue WHERE estimate IS NOT NULL", r => (r.GetString(0), r.GetInt64(1)))
+            .ToDictionary(x => x.Item1, x => x.Item2, StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>Sets a ticket's effort estimate in tokens (null clears it), recorded in its history.</summary>
+    public void SetEstimate(string id, long? tokens)
+    {
+        if (tokens is < 0 or > MaxEstimate) throw new ArgumentOutOfRangeException(nameof(tokens), $"Estimate 0 to {MaxEstimate} tokens.");
+        InWrite(() => SetEstimateCore(RequireTicket(id).Id, tokens));
+    }
+
+    /// <summary>
+    /// Gives each open ticket (optionally one repo's) with no estimate the median of what finished tickets like it cost
+    /// (<paramref name="costs"/>, the Orchestrator's TicketCosts; see <see cref="EstimateSeed"/>), in one transaction; with
+    /// <paramref name="overwrite"/>, those that have one get it again too. Returns what each was given; with
+    /// <paramref name="dryRun"/>, what each would be given, nothing written.
+    /// </summary>
+    public IReadOnlyList<SeededEstimate> SeedEstimates(IReadOnlyList<PastCost> costs, string? repo = null, bool overwrite = false, bool dryRun = false)
+    {
+        var seed = new EstimateSeed(costs);
+        var had = Estimates();
+        var given = new List<SeededEstimate>();
+        foreach (var q in Queue(repo))
+        {
+            if (!overwrite && had.ContainsKey(q.Ticket.Id)) continue;
+            if (seed.Estimate(q.Repo, q.Ticket.Type, q.Ticket.Id) is not { } e) continue;
+            if (had.TryGetValue(q.Ticket.Id, out var now) && now == e.Tokens) continue;
+            given.Add(new SeededEstimate(q.Repo, q.Ticket.Id, e));
+        }
+        if (!dryRun && given.Count > 0)
+            InWrite(() => { foreach (var g in given) SetEstimateCore(g.TicketId, g.Estimate.Tokens); });
+        return given;
+    }
+
+    private void SetEstimateCore(string id, long? tokens)
+    {
+        var old = Estimate(id);
+        if (old == tokens) return;
+        var (approval, priority) = QueueState(id);
+        Exec(server is null
+                ? "INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ($id, $a, $p, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), $e) " +
+                  "ON CONFLICT (ticket_id) DO UPDATE SET estimate = excluded.estimate, updated = excluded.updated"
+                : "UPDATE ticket_queue SET estimate = $e, updated = strftime('%Y-%m-%dT%H:%M:%SZ', 'now') WHERE ticket_id = $id; " +
+                  "IF @@ROWCOUNT = 0 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ($id, $a, $p, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), $e)",
+            null, ("$id", id), ("$a", approval), ("$p", priority), ("$e", tokens));
+        Event(id, "estimate", old?.ToString(System.Globalization.CultureInfo.InvariantCulture), tokens?.ToString(System.Globalization.CultureInfo.InvariantCulture));
+    }
 
     /// <summary>Approval and priority for any ticket, open or not (a ticket never queued is proposed at 0).</summary>
     public (string Approval, long Priority) QueueState(string id) =>

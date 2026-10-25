@@ -101,7 +101,126 @@ public sealed class QueueTests
         db.Approve("AL-T1");
         db.SetPriority("AL-T1", 7);
         Assert.That(db.QueueState("AL-T1"), Is.EqualTo(("approved", 7L)));
-        Assert.That(db.Dump(), Does.Contain("INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('AL-T1', 'approved', 7, '"));
+        Assert.That(db.Dump(), Does.Contain("INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AL-T1', 'approved', 7, '"));
+    }
+
+    // ── Effort estimates (M.TIX-T75) ────────────────────────────────────────
+
+    [Test]
+    public void Within_a_priority_the_smallest_estimate_runs_first_and_tickets_without_one_last()
+    {
+        db.SetEstimate("AL-T3", 100_000);
+        db.SetEstimate("AL-T2", 500_000);
+        Assert.That(Order(), Is.EqualTo(new[] { "AL-T3", "AL-T2", "AL-T1" }));
+        Assert.That(db.Queue().Select(q => q.Estimate), Is.EqualTo(new long?[] { 100_000, 500_000, null }));
+        db.SetPriority("AL-T1", 1); // priority still comes first
+        Assert.That(Order(), Is.EqualTo(new[] { "AL-T1", "AL-T3", "AL-T2" }));
+    }
+
+    [Test]
+    public void An_estimate_is_set_cleared_and_recorded_without_touching_approval_or_priority()
+    {
+        db.Approve("AL-T1");
+        db.SetPriority("AL-T1", 4);
+        db.SetEstimate("al-t1", 300_000);
+        db.SetEstimate("AL-T1", 300_000); // no change, no event
+        Assert.That(db.Estimate("AL-T1"), Is.EqualTo(300_000));
+        Assert.That(db.QueueState("AL-T1"), Is.EqualTo(("approved", 4L)));
+        db.SetPriority("AL-T1", 5);
+        Assert.That(db.Estimate("AL-T1"), Is.EqualTo(300_000), "a priority change keeps the estimate");
+        Assert.That(db.Dump(), Does.Contain("VALUES ('AL-T1', 'approved', 5, '").And.Contain("', 300000);"));
+        db.SetEstimate("AL-T1", null);
+        Assert.That(db.Estimate("AL-T1"), Is.Null);
+        Assert.That(db.History("AL-T1").Where(e => e.Field == "estimate").Select(e => (e.Old, e.New)),
+            Is.EqualTo(new[] { ((string?)null, (string?)"300000"), ("300000", null) }));
+        Assert.That(() => db.SetEstimate("AL-T1", -1), Throws.InstanceOf<ArgumentOutOfRangeException>());
+        Assert.That(() => db.SetEstimate("AL-T99", 1), Throws.InstanceOf<KeyNotFoundException>());
+    }
+
+    [Test]
+    public void An_estimate_on_a_ticket_never_queued_starts_it_proposed_at_zero()
+    {
+        db.SetEstimate("AL-T2", 42);
+        Assert.That(db.QueueState("AL-T2"), Is.EqualTo(("proposed", 0L)));
+        Assert.That(db.Estimates(), Is.EquivalentTo(new Dictionary<string, long> { ["AL-T2"] = 42 }));
+    }
+
+    [Test]
+    public void A_schema_6_file_gains_the_estimate_column_and_keeps_its_queue()
+    {
+        db.Approve("AL-T1");
+        var path = db.Path;
+        db.Dispose();
+        using (var raw = new SqliteConnection($"Data Source={path};Pooling=False"))
+        {
+            raw.Open();
+            using var cmd = raw.CreateCommand();
+            cmd.CommandText = "ALTER TABLE ticket_queue DROP COLUMN estimate; UPDATE meta SET value = '6' WHERE key = 'schema_version';";
+            cmd.ExecuteNonQuery();
+        }
+        db = TicketsDb.Open(path);
+        Assert.That(db.Dump(), Does.Contain($"('schema_version', '{TicketsDb.SchemaVersion}')"));
+        Assert.That(db.QueueState("AL-T1").Approval, Is.EqualTo("approved"));
+        db.SetEstimate("AL-T1", 7);
+        Assert.That(db.Estimate("AL-T1"), Is.EqualTo(7));
+    }
+
+    [Test]
+    public void Seeding_gives_open_tickets_without_one_the_median_of_tickets_like_them()
+    {
+        PastCost[] costs =
+        [
+            // Three chores in Alpha: their median wins for AL-T3.
+            new("AL-T10", "chore", "Alpha", 100), new("AL-T11", "chore", "Alpha", 300), new("AL-T12", "chore", "Alpha", 200),
+            // Fixes: only two in Alpha, so the median of every fix (four) for AL-T2. Two sessions on one ticket add up.
+            new("AL-T20", "fix", "Alpha", 1_000), new("AL-T21", "fix", "Alpha", 2_000), new("B-T1", "fix", "Beta", 3_000), new("B-T1", "fix", "Beta", 1_000),
+            new("B-T2", "fix", "Beta", 5_000),
+            // Features: none anywhere near three, so AL-T1 gets the median of every ticket.
+        ];
+        db.SetEstimate("AL-T1", 9); // already has one: kept
+        var given = db.SeedEstimates(costs, dryRun: true);
+        Assert.That(given.Select(g => (g.TicketId, g.Estimate.Tokens, g.Estimate.Basis, g.Estimate.Of)),
+            Is.EquivalentTo(new[] { ("AL-T2", 4_000L, 4, "fix tickets"), ("AL-T3", 200L, 3, "chore tickets in Alpha") }));
+        Assert.That(db.Estimate("AL-T2"), Is.Null, "a dry run writes nothing");
+
+        db.SeedEstimates(costs);
+        Assert.That((db.Estimate("AL-T1"), db.Estimate("AL-T2"), db.Estimate("AL-T3")), Is.EqualTo(((long?)9, (long?)4_000, (long?)200)));
+        Assert.That(Order(), Is.EqualTo(new[] { "AL-T1", "AL-T3", "AL-T2" }));
+
+        var again = db.SeedEstimates(costs, overwrite: true);
+        Assert.That(again.Select(g => (g.TicketId, g.Estimate.Tokens, g.Estimate.Of)), Is.EqualTo(new[] { ("AL-T1", 1_000L, "tickets") }),
+            "overwriting re-estimates only what changes; every ticket's median is 1000 of 7");
+        Assert.That(db.SeedEstimates([]), Is.Empty, "no costs, no estimates");
+    }
+
+    [Test]
+    public void The_orchestrators_ticket_costs_are_read_from_its_file()
+    {
+        var file = Path.Combine(root, "orchestrator.db");
+        using (var c = new SqliteConnection($"Data Source={file};Pooling=False"))
+        {
+            c.Open();
+            using var cmd = c.CreateCommand();
+            cmd.CommandText = "CREATE TABLE ticket_costs (session_id TEXT PRIMARY KEY, ticket_id TEXT NOT NULL, type TEXT, repo TEXT NOT NULL, fresh INTEGER NOT NULL, " +
+                              "last_utc TEXT NOT NULL, own_share INTEGER NOT NULL DEFAULT 0, model TEXT); " +
+                              "INSERT INTO ticket_costs VALUES ('s1', 'AL-T10', 'chore', 'Alpha', 1234, '2026-10-01T00:00:00Z', 1, 'opus'), ('s2', 'AL-T11', NULL, 'Alpha', 5, '2026-10-01T00:00:00Z', 1, NULL);";
+            cmd.ExecuteNonQuery();
+        }
+        var was = (Environment.GetEnvironmentVariable(OrchestratorCosts.DbEnvVar), Environment.GetEnvironmentVariable(OrchestratorCosts.ServerEnvVar));
+        try
+        {
+            Environment.SetEnvironmentVariable(OrchestratorCosts.DbEnvVar, file);
+            Environment.SetEnvironmentVariable(OrchestratorCosts.ServerEnvVar, null);
+            var (costs, source) = OrchestratorCosts.Load(root);
+            Assert.That(source, Is.EqualTo(Path.GetFullPath(file)));
+            Assert.That(costs, Is.EquivalentTo(new[] { new PastCost("AL-T10", "chore", "Alpha", 1234), new PastCost("AL-T11", null, "Alpha", 5) }));
+        }
+        finally
+        {
+            Environment.SetEnvironmentVariable(OrchestratorCosts.DbEnvVar, was.Item1);
+            Environment.SetEnvironmentVariable(OrchestratorCosts.ServerEnvVar, was.Item2);
+            SqliteConnection.ClearAllPools();
+        }
     }
 
     private int Writes(string id) => db.History(id).Count(e => e.Field == "priority");

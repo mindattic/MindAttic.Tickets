@@ -204,11 +204,10 @@ public sealed class DetailViewModel : ObservableObject
         ClaimSince.Length > 0 ? $"Since {ClaimSince}." : null,
     }.Where(s => s is not null));
 
-    private static string Tokens(long n) =>
-        n >= 1_000_000_000 ? (n / 1e9).ToString("0.#", CultureInfo.InvariantCulture) + "B"
-        : n >= 1_000_000 ? (n / 1e6).ToString("0.#", CultureInfo.InvariantCulture) + "M"
-        : n >= 1_000 ? (n / 1e3).ToString("0.#", CultureInfo.InvariantCulture) + "k"
-        : n.ToString(CultureInfo.InvariantCulture);
+    private static string Tokens(long n) => TokenCount.Format(n);
+
+    /// <summary>Its effort estimate now (M.TIX-T75): "~300k tokens", or "None".</summary>
+    public string EstimateText => Source.Info.Estimate is { } e ? $"~{Tokens(e)} tokens" : "None";
 
     public IReadOnlyList<LinkLine> Links => links;
 

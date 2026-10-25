@@ -12,6 +12,9 @@ namespace MindAttic.Tickets.Desktop.Data;
 /// </summary>
 public sealed record TicketInfo(string Repo, Ticket Ticket, string Approval, long Priority, IReadOnlyList<string>? Blockers = null)
 {
+    /// <summary>Its effort estimate in tokens (M.TIX-T75), or null while it has none.</summary>
+    public long? Estimate { get; init; }
+
     public IReadOnlyList<string> Blockers { get; init; } = Blockers ?? [];
 
     /// <summary>A session is recorded as working it in the ticket database (<c>ticket_work</c>; M.TIX-T134).</summary>
@@ -84,18 +87,20 @@ public sealed class TicketStore(string root)
     public Snapshot Load() => Read(db =>
     {
         var states = db.QueueStates();
+        var estimates = db.Estimates();
         var tickets = db.Tickets();
         var blockers = OpenBlockers(tickets.Select(x => x.Ticket), db.AllLinks());
         var work = db.WorkStates();
         IReadOnlyList<string> BlockersOf(string id) => blockers.TryGetValue(id, out var b) ? b : [];
         bool WorkingOn(string id) => work.TryGetValue(id, out var w) && w.IsWorking;
+        long? EstimateOf(string id) => estimates.TryGetValue(id, out var e) ? e : null;
         TicketInfo Info(string repo, Ticket t) =>
             (states.TryGetValue(t.Id, out var s) ? new TicketInfo(repo, t, s.Approval, s.Priority, BlockersOf(t.Id)) : new TicketInfo(repo, t, TicketsDb.Proposed, 0, BlockersOf(t.Id)))
-            with { Working = WorkingOn(t.Id) };
+            with { Working = WorkingOn(t.Id), Estimate = EstimateOf(t.Id) };
         return new Snapshot(
             [.. db.Repos().Select(r => r.Name)],
             [.. tickets.Select(x => Info(x.Repo, x.Ticket))],
-            [.. db.Queue().Select(q => new TicketInfo(q.Repo, q.Ticket, q.Approval, q.Priority, BlockersOf(q.Ticket.Id)) { Working = WorkingOn(q.Ticket.Id) })],
+            [.. db.Queue().Select(q => new TicketInfo(q.Repo, q.Ticket, q.Approval, q.Priority, BlockersOf(q.Ticket.Id)) { Working = WorkingOn(q.Ticket.Id), Estimate = q.Estimate })],
             DateTime.Now)
         {
             Hygiene = TicketHygiene.Check(tickets),
@@ -140,7 +145,7 @@ public sealed class TicketStore(string root)
             .Where(l => l.Kind == "requires" && string.Equals(l.To, found.Ticket.Id, StringComparison.OrdinalIgnoreCase))
             .Select(l => l.From)
             .Where(d => db.Ticket(d) is { } t && t.Ticket.Status == TicketRules.Open).ToList();
-        return new TicketDetail(new TicketInfo(found.Repo, found.Ticket, approval, priority, blockers), db.History(found.Ticket.Id), links, blockers)
+        return new TicketDetail(new TicketInfo(found.Repo, found.Ticket, approval, priority, blockers) { Estimate = db.Estimate(found.Ticket.Id) }, db.History(found.Ticket.Id), links, blockers)
         {
             OpenDependents = dependents,
             Work = db.Work(found.Ticket.Id),
@@ -162,6 +167,8 @@ public sealed class TicketStore(string root)
     public void Assign(string id, string email) => Write($"assign {id} to {email}", db => db.Assign(id, email), render: false);
     public void Unassign(string id) => Write($"unassign {id}", db => db.Unassign(id), render: false);
     public void Reserve(string id, long tokens) => Write($"reserve {tokens} tokens for {id}", db => db.Reserve(id, tokens), render: false);
+    public void SetEstimate(string id, long? tokens) =>
+        Write(tokens is { } t ? $"estimate {id} at {t} tokens" : $"clear {id}'s estimate", db => db.SetEstimate(id, tokens), render: false);
     public void Unapprove(string id) => Write($"unapprove {id}", db => db.Unapprove(id), render: false);
     public void Reject(string id, string reason) => Write($"reject {id}: {reason}", db => db.Reject(id, reason));
     public void Move(string id, IReadOnlyList<string> newOrder) =>

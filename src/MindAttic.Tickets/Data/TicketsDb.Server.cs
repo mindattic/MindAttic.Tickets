@@ -264,7 +264,8 @@ public sealed partial class TicketsDb
         ServerTables(connection, null);
         Versioning(connection, describe, backup);
         ServerTriggers(connection, null);
-        var version = IsVersioned(connection, null) ? SchemaVersion : SchemaVersion - 1;
+        // Unversioned (only between a migration's copy and its versioning step), it's 5's tables plus the estimate.
+        var version = IsVersioned(connection, null) ? SchemaVersion : 5;
         Raw(connection, null, $"IF NOT EXISTS (SELECT 1 FROM meta WHERE [key] = 'schema_version') INSERT INTO meta ([key], value) VALUES ('schema_version', '{version}') " +
                               $"ELSE UPDATE meta SET value = '{version}' WHERE [key] = 'schema_version' AND CAST(value AS int) < {version}");
     }
@@ -276,6 +277,9 @@ public sealed partial class TicketsDb
             var table = Regex.Match(create, @"CREATE TABLE (\w+)").Groups[1].Value;
             Raw(connection, tx, $"IF OBJECT_ID(N'{table}', N'U') IS NULL BEGIN {create} END");
         }
+        // Schema 7 (M.TIX-T75): the effort estimate, added to a table made before it. Nullable, so a system-versioned table takes
+        // it as it is (SQL Server adds it to the history table too).
+        Raw(connection, tx, "IF COL_LENGTH(N'ticket_queue', N'estimate') IS NULL ALTER TABLE ticket_queue ADD estimate bigint NULL");
     }
 
     private static void ServerTriggers(DbConnection connection, DbTransaction? tx)

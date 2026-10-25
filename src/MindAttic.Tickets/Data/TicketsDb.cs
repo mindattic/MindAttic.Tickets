@@ -36,8 +36,9 @@ public sealed record ImportReport(string Repo, string Code, int Epics, int Stori
 /// </summary>
 public sealed partial class TicketsDb : IDisposable
 {
-    /// <summary>6 (M.TIX-T137): on SQL Server, tickets, their queue state, work and links are system-versioned; the file's schema is 5's.</summary>
-    public const int SchemaVersion = 6;
+    /// <summary>7 (M.TIX-T75): <c>ticket_queue.estimate</c>, a ticket's effort estimate in tokens. 6 (M.TIX-T137): on SQL
+    /// Server, tickets, their queue state, work and links are system-versioned; the file's schema is 5's plus the estimate.</summary>
+    public const int SchemaVersion = 7;
     public const string RelativePath = "data/Tickets.db";
     public const string DumpRelativePath = "data/Tickets.sql";
     public const string EnvVar = "MINDATTIC_TICKETS_DB";
@@ -214,7 +215,8 @@ public sealed partial class TicketsDb : IDisposable
                 ticket_id TEXT PRIMARY KEY COLLATE NOCASE,
                 approval TEXT NOT NULL DEFAULT 'proposed' CHECK (approval IN ('proposed', 'approved', 'rejected')),
                 priority INTEGER NOT NULL DEFAULT 0,
-                updated TEXT NOT NULL);
+                updated TEXT NOT NULL,
+                estimate INTEGER);
             -- Schema 3: a repo's folder-name key can be renamed (RenameRepo); every rename is kept forever here,
             -- so the repo (and each of its tickets, via a 'repo' ticket_events row) traces back to its original name.
             CREATE TABLE IF NOT EXISTS repo_renames (
@@ -278,6 +280,9 @@ public sealed partial class TicketsDb : IDisposable
                 UPDATE tickets SET row_md = NULL WHERE id = NEW.id;
             END;
             """);
+        // Schema 7 (M.TIX-T75): a ticket's effort estimate in tokens, null while it has none; a file made before it gains the column.
+        if (Convert.ToInt64(ScalarOn(connection, tx, "SELECT COUNT(*) FROM pragma_table_info('ticket_queue') WHERE name = 'estimate'"), CultureInfo.InvariantCulture) == 0)
+            Raw(connection, tx, "ALTER TABLE ticket_queue ADD COLUMN estimate INTEGER");
         Raw(connection, tx, $"INSERT INTO meta (key, value) VALUES ('schema_version', '{SchemaVersion}') " +
              $"ON CONFLICT (key) DO UPDATE SET value = excluded.value WHERE CAST(value AS INTEGER) < {SchemaVersion}");
     }

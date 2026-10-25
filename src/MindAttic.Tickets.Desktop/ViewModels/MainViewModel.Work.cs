@@ -9,7 +9,9 @@ namespace MindAttic.Tickets.Desktop.ViewModels;
 /// </summary>
 public sealed partial class MainViewModel
 {
-    private ICommand? assignCommand, unassignCommand, reserveCommand, openInOrchestratorCommand, addNoteCommand;
+    private ICommand? assignCommand, unassignCommand, reserveCommand, estimateCommand, openInOrchestratorCommand, addNoteCommand;
+
+    public ICommand EstimateCommand => estimateCommand ??= new RelayCommand(async () => await EstimateAsync(), () => Detail is not null);
 
     /// <summary>Appends a comment to the ticket (M.TIX-T72); notes are never changed or deleted.</summary>
     public ICommand AddNoteCommand => addNoteCommand ??= new RelayCommand(async () => await AddNoteAsync(), () => Detail is not null);
@@ -61,6 +63,29 @@ public sealed partial class MainViewModel
             return;
         }
         await Do(() => store.Reserve(d.Id, tokens), tokens > 0 ? $"{d.Id} has {tokens:N0} tokens reserved." : $"{d.Id}'s reservation is released.");
+    }
+
+    /// <summary>Sets or clears (empty) the effort estimate (M.TIX-T75), which orders the queue smallest first within a priority.</summary>
+    private async Task EstimateAsync()
+    {
+        if (Detail is not { } d) return;
+        var had = d.Source.Info.Estimate;
+        var answer = Dialogs.Ask(new Prompt($"Estimate {d.Id}", "The uncached tokens it should take. Within a priority the queue runs the smallest first; leave it empty to clear it.",
+            "Tokens (like 300k or 1.2M; empty clears)", Initial: had is { } h ? h.ToString(System.Globalization.CultureInfo.InvariantCulture) : "", Ok: "Estimate"));
+        if (answer is null) return;
+        long? tokens = null;
+        if (answer.Text.Trim().Length > 0)
+        {
+            if (!ParseTokens(answer.Text, out var t) || t > TicketsDb.MaxEstimate)
+            {
+                d.Error = "Tokens: a number like 300k or 1.2M, or empty to clear.";
+                StatusMessage = d.Error;
+                Announcement = "Error: " + d.Error;
+                return;
+            }
+            tokens = t;
+        }
+        await Do(() => store.SetEstimate(d.Id, tokens), tokens is { } n ? $"{d.Id} is estimated at {n:N0} tokens." : $"{d.Id}'s estimate is cleared.");
     }
 
     private void OpenInOrchestrator(string? target)

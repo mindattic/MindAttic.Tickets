@@ -30,6 +30,7 @@ app.Configure(config =>
         t.AddCommand<TicketApproveCommand>("approve").WithDescription("Approve open tickets for work (--undo puts them back to proposed); with no IDs, list what waits for approval.");
         t.AddCommand<TicketRejectCommand>("reject").WithDescription("Reject an open ticket: it closes wont-do with --reason as its ref.");
         t.AddCommand<TicketPriorityCommand>("priority").WithDescription("Set a ticket's queue priority (higher runs sooner).");
+        t.AddCommand<TicketEstimateCommand>("estimate").WithDescription("Show, set (estimate <ID> 300k) or --clear a ticket's effort estimate in tokens; --seed estimates every open ticket without one from the Orchestrator's TicketCosts medians. Within a priority the queue runs the smallest first.");
         t.AddCommand<TicketBumpCommand>("bump").WithDescription("Raise (or with a negative --by, lower) a ticket's priority.");
         t.AddCommand<TicketAssignCommand>("assign").WithDescription("Assign a ticket to a member's login (assign <ID> <email>): it's dispatched only on that login; --unassign takes it off them, --redelegate hands it on like an unassigned ticket.");
         t.AddCommand<TicketBlockCommand>("block").WithDescription("Make a ticket wait for others (--by X-T1, repeatable), or --clear it.");

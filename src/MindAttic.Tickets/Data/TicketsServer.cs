@@ -203,7 +203,8 @@ public sealed class TicketsServer(string connectionString)
             ticket_id nvarchar(450) COLLATE {NoCase} NOT NULL PRIMARY KEY,
             approval nvarchar(16) NOT NULL DEFAULT 'proposed' CHECK (approval IN ('proposed', 'approved', 'rejected')),
             priority bigint NOT NULL DEFAULT 0,
-            updated nvarchar(64) NOT NULL);
+            updated nvarchar(64) NOT NULL,
+            estimate bigint NULL);
         """,
         $"""
         CREATE TABLE ticket_work (
