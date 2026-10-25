@@ -20,7 +20,7 @@ public sealed partial class MainViewModel : ObservableObject
     public const string QueueView = "Queue", TicketsView = "Repos", ReposView = TicketsView, AuditView = "Audit";
     public const string AllRepos = "All repos", AnyStatus = "Any status", AnyType = "Any type", AnyApproval = "Any approval";
 
-    /// <summary>The work filter (M.TIX-T133): where an open ticket stands with autopilot.</summary>
+    /// <summary>The work filter (M.TIX-T133): where an open ticket stands with /allocate.</summary>
     public const string AnyWork = "Any", Queued = "Queued", NeedsApproval = "Needs approval", Blocked = "Blocked";
 
     private readonly TicketStore store;
@@ -253,7 +253,7 @@ public sealed partial class MainViewModel : ObservableObject
         var ready = s.Queue.Count(t => t.Ticket.Type == "fix" || t.Approval == TicketsDb.Approved);
         var blocked = s.Queue.Count(t => t.Blocked);
         var working = s.Queue.Count(t => WorkerOf(t.Ticket.Id) is { Orphaned: false });
-        Headline = $"{s.Queue.Count} open · {ready} ready for autopilot · {s.Queue.Count - ready} awaiting approval · {blocked} blocked · {working} being worked · {s.Repos.Count} repos";
+        Headline = $"{s.Queue.Count} open · {ready} ready for /allocate · {s.Queue.Count - ready} awaiting approval · {blocked} blocked · {working} being worked · {s.Repos.Count} repos";
         StatusMessage = IsQueueView ? $"Queue: {QueueRows.Count} of {s.Queue.Count} open tickets shown."
             : IsAuditView ? $"Audit: {HygieneRows.Count} closed tickets to double-check, {DriftRows.Count} drifted, {MissingRows.Count} missing, {DuplicateRows.Count} duplicate groups shown."
             : $"Repos: {TicketRows.Count} of {s.Tickets.Count} tickets shown.";

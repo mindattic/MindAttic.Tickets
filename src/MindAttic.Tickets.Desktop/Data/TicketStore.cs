@@ -19,10 +19,10 @@ public sealed record TicketInfo(string Repo, Ticket Ticket, string Approval, lon
     /// <summary>Open and waiting on another open ticket.</summary>
     public bool Blocked => IsOpen && Blockers.Count > 0;
 
-    /// <summary>Open, not a fix and not approved: autopilot won't take it until it's approved (the orchestrator's rule).</summary>
+    /// <summary>Open, not a fix and not approved: /allocate won't take it until it's approved (the orchestrator's rule).</summary>
     public bool NeedsApproval => IsOpen && Ticket.Type != "fix" && Approval != TicketsDb.Approved;
 
-    /// <summary>Open, approved or a fix, and not blocked: what autopilot takes next, in priority order.</summary>
+    /// <summary>Open, approved or a fix, and not blocked: what /allocate takes next, in priority order.</summary>
     public bool Queued => IsOpen && !NeedsApproval && !Blocked;
 }
 

@@ -214,7 +214,7 @@
                 <Label Style="{StaticResource FilterLabel}" Content="Wor_k" Target="{Binding ElementName=WorkBox}" />
                 <ComboBox x:Name="WorkBox" Style="{StaticResource Combo}" MinWidth="150" ItemsSource="{Binding WorkChoices}"
                           SelectedItem="{Binding WorkFilter}" AutomationProperties.Name="Work filter"
-                          ToolTip="Queued: open, a fix or approved, and not blocked (what autopilot takes next). Needs approval: open and not yet approved. Blocked: waiting on other open tickets." />
+                          ToolTip="Queued: open, a fix or approved, and not blocked (what /allocate takes next). Needs approval: open and not yet approved. Blocked: waiting on other open tickets." />
             </StackPanel>
             <StackPanel Margin="0,0,12,6" Visibility="{Binding IsTicketsView, Converter={StaticResource Visible}}">
                 <Label Style="{StaticResource FilterLabel}" Content="Stat_us" Target="{Binding ElementName=StatusBox}" />
