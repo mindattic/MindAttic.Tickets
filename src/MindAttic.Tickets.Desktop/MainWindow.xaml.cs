@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
+using MindAttic.Tickets.Desktop.Data;
 using MindAttic.Tickets.Desktop.ViewModels;
 
 namespace MindAttic.Tickets.Desktop;
@@ -16,8 +17,7 @@ public partial class MainWindow : Window
     private static readonly TimeSpan SettleDelay = TimeSpan.FromSeconds(1);
 
     private readonly MainViewModel model;
-    private readonly DispatcherTimer poll, settle;
-    private FileSystemWatcher? watcher;
+    private DatabaseWatch? watch;
 
     /// <param name="ticket">The ticket <c>--ticket</c> names, opened once the list has loaded; null for none.</param>
     public MainWindow(MainViewModel model, string? ticket = null)
@@ -43,25 +43,16 @@ public partial class MainWindow : Window
         model.FocusRow += row => Dispatcher.BeginInvoke(DispatcherPriority.Background, () => FocusRow(row));
 
         // Agents change tickets all the time: follow the database file (settled for a second, since one change is several
-        // writes), with a slow poll behind it in case a change notification is missed.
-        settle = new DispatcherTimer { Interval = SettleDelay };
-        settle.Tick += async (_, _) => { settle.Stop(); await model.RefreshAsync(); };
-        poll = new DispatcherTimer(DispatcherPriority.Background) { Interval = PollInterval };
-        poll.Tick += async (_, _) => await model.RefreshAsync();
-
+        // writes), with a slow poll behind it in case a change notification is missed. Rows are synced by ID, so the
+        // selected row, its focus and the scroll position survive every refresh.
         Loaded += async (_, _) =>
         {
             await model.RefreshAsync();
-            Watch();
-            poll.Start();
+            watch = new DatabaseWatch(model.DbPath, SettleDelay, PollInterval,
+                () => Dispatcher.BeginInvoke(DispatcherPriority.Background, async () => await model.RefreshAsync()));
             if (ticket is null || !await model.OpenTicketAsync(ticket)) FocusList();
         };
-        Closed += (_, _) =>
-        {
-            poll.Stop();
-            settle.Stop();
-            watcher?.Dispose();
-        };
+        Closed += (_, _) => watch?.Dispose();
     }
 
     /// <summary>
@@ -84,21 +75,6 @@ public partial class MainWindow : Window
         // refused, a brief topmost brings the window above the one that has it without stealing it for good.
         if (!Activate()) { Topmost = true; Topmost = false; Activate(); }
         if (!await model.OpenTicketAsync(id)) FocusList();
-    }
-
-    private void Watch()
-    {
-        var dir = Path.GetDirectoryName(model.DbPath);
-        if (dir is null || !Directory.Exists(dir)) return;
-        watcher = new FileSystemWatcher(dir, Path.GetFileName(model.DbPath))
-        {
-            NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.Size | NotifyFilters.FileName,
-            EnableRaisingEvents = true,
-        };
-        FileSystemEventHandler changed = (_, _) => Dispatcher.BeginInvoke(() => { settle.Stop(); settle.Start(); });
-        watcher.Changed += changed;
-        watcher.Created += changed;
-        watcher.Renamed += (_, _) => Dispatcher.BeginInvoke(() => { settle.Stop(); settle.Start(); });
     }
 
     private ListBox CurrentList => model.IsQueueView ? QueueList : TicketList; // Audit has no ticket list: Repos' stands in

@@ -202,13 +202,19 @@ public sealed class TicketStore(string root)
     }
 
     /// <summary>Runs <c>tickets db sync</c> (render, dump, commit and push the database); returns its exit code and output.</summary>
-    public async Task<(int Code, string Output)> SyncAsync()
+    public Task<(int Code, string Output)> SyncAsync() => Sync(this);
+
+    /// <summary>What <see cref="SyncAsync"/> runs: the <c>tickets</c> CLI; tests replace it.</summary>
+    public Func<TicketStore, Task<(int Code, string Output)>> Sync { get; init; } = RunSyncAsync;
+
+    private static async Task<(int Code, string Output)> RunSyncAsync(TicketStore store)
     {
         // --root: the window's workspace, which needn't be the CLI's default one.
+        var root = store.Root;
         var psi = new ProcessStartInfo("tickets")
         {
-            ArgumentList = { "db", "sync", "--root", Root },
-            WorkingDirectory = Path.Combine(Root, MindAttic.Tickets.Data.TicketsDb.HomeFolder(Root)),
+            ArgumentList = { "db", "sync", "--root", root },
+            WorkingDirectory = Path.Combine(root, MindAttic.Tickets.Data.TicketsDb.HomeFolder(root)),
             RedirectStandardOutput = true,
             RedirectStandardError = true,
             UseShellExecute = false,

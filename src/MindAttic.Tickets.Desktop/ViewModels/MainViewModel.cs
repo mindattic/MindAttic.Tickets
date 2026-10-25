@@ -537,6 +537,10 @@ public sealed partial class MainViewModel : ObservableObject
         {
             var (code, output) = await store.SyncAsync();
             var last = output.Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).LastOrDefault() ?? "";
+            // The sync renders, commits and pushes: show the lists and the repos' git state as they now are, then its result
+            // (a refresh rewrites the status line, so the result goes last).
+            await RefreshAsync();
+            await RefreshGitAsync(force: true);
             StatusMessage = code == 0 ? $"Synced. {last}" : $"Sync failed ({code}): {last}";
             Announcement = StatusMessage;
         }
