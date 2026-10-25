@@ -12,9 +12,12 @@ public sealed class Dialogs(Window owner) : IDialogs
         return w.ShowDialog() == true ? w.Result : null;
     }
 
-    public NewTicket? NewTicket(IReadOnlyList<string> repos, string? repo, string type)
+    public NewTicket? NewTicket(IReadOnlyList<string> repos, string? repo, string type) =>
+        NewTicket(new NewTicketRequest(repos, repo, type, (_, _) => []));
+
+    public NewTicket? NewTicket(NewTicketRequest request)
     {
-        var w = new NewTicketWindow(repos, repo, type) { Owner = owner };
+        var w = new NewTicketWindow(request) { Owner = owner };
         return w.ShowDialog() == true ? w.Result : null;
     }
 

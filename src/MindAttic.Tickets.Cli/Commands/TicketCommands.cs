@@ -35,10 +35,15 @@ public sealed class TicketNewCommand : Command<TicketNewCommand.Settings>
         [Description("Read the markdown description from this file.")]
         public string? DescriptionFile { get; init; }
 
+        [CommandOption("--template")]
+        [Description("Start the description from the type's template (fix: symptom, cause, test; feature: story, acceptance); 'tickets ticket template TYPE' prints it.")]
+        public bool Template { get; init; }
+
         public override ValidationResult Validate() =>
             !TicketRules.Types.Contains(Type) ? ValidationResult.Error($"--type must be one of {string.Join(", ", TicketRules.Types)}")
             : string.IsNullOrWhiteSpace(Summary) ? ValidationResult.Error("--summary is required")
-            : Description is not null && DescriptionFile is not null ? ValidationResult.Error("--description and --description-file: pick one")
+            : (Description is not null ? 1 : 0) + (DescriptionFile is not null ? 1 : 0) + (Template ? 1 : 0) > 1
+                ? ValidationResult.Error("--description, --description-file and --template: pick one")
             : !TicketRules.Statuses.Contains(Status) ? ValidationResult.Error($"--status must be one of {string.Join(", ", TicketRules.Statuses)}")
             : ValidationResult.Success();
     }
@@ -49,20 +54,58 @@ public sealed class TicketNewCommand : Command<TicketNewCommand.Settings>
         using (var db = TicketsDb.OpenIfMigrated(settings.Workspace.Root))
             if (db is not null)
             {
-                var description = settings.Description ?? (settings.DescriptionFile is { } path ? File.ReadAllText(path) : null);
+                WarnOfDuplicates(settings, db.Tickets(repo.Name));
+                var description = settings.Template ? TicketTemplates.For(settings.Type)
+                    : settings.Description ?? (settings.DescriptionFile is { } path ? File.ReadAllText(path) : null);
                 Console.WriteLine(db.Add(repo.Name, settings.Type, settings.Status, settings.Summary, settings.Ref ?? "", description: description).Id);
                 Db.Rerender(db, settings);
                 return 0;
             }
         if (!File.Exists(repo.StoriesPath))
             throw new InvalidOperationException($"{repo.Name} has no docs/USER_STORIES.md; run 'tickets repos rollout --apply' first.");
-        if (settings.Description is not null || settings.DescriptionFile is not null)
+        if (settings.Description is not null || settings.DescriptionFile is not null || settings.Template)
             throw new InvalidOperationException("Descriptions live in the ticket database; this workspace hasn't been migrated to it.");
 
         var file = StoryFile.Load(repo.StoriesPath);
-        var t = file.Add(settings.Type, settings.Status, settings.Summary, settings.Ref ?? "");
+        WarnOfDuplicates(settings, file.Tickets.Select(t => (repo.Name, t)));
+        var added = file.Add(settings.Type, settings.Status, settings.Summary, settings.Ref ?? "");
         file.Save();
-        Console.WriteLine(t.Id);
+        Console.WriteLine(added.Id);
+        return 0;
+    }
+
+    /// <summary>
+    /// Warns (on stderr, so stdout stays just the new ID) when an open ticket in the repo already reads like this one
+    /// (M.TIX-T88). It still files: logging finished work as closed skips the check.
+    /// </summary>
+    private static void WarnOfDuplicates(Settings settings, IEnumerable<(string Repo, Ticket Ticket)> existing)
+    {
+        if (settings.Status != TicketRules.Open) return;
+        var similar = TicketSimilarity.Similar(settings.Summary, existing);
+        if (similar.Count == 0) return;
+        Console.Error.WriteLine($"warning: {similar.Count} open ticket(s) read like this one; filing it anyway:");
+        foreach (var s in similar)
+            Console.Error.WriteLine($"  {s.Ticket.Id} ({s.Score:P0} alike) {s.Ticket.Summary}");
+    }
+}
+
+/// <summary><c>tickets ticket template TYPE</c> (M.TIX-T88): prints the description template for a ticket type.</summary>
+public sealed class TicketTemplateCommand : Command<TicketTemplateCommand.Settings>
+{
+    public sealed class Settings : WorkspaceSettings
+    {
+        [CommandArgument(0, "<TYPE>")]
+        [Description("feature | fix | chore | docs | interview")]
+        public string Type { get; init; } = "";
+
+        public override ValidationResult Validate() =>
+            TicketRules.Types.Contains(Type) ? ValidationResult.Success()
+                : ValidationResult.Error($"TYPE must be one of {string.Join(", ", TicketRules.Types)}");
+    }
+
+    public override int Execute(CommandContext context, Settings settings)
+    {
+        Console.Write(TicketTemplates.For(settings.Type));
         return 0;
     }
 }

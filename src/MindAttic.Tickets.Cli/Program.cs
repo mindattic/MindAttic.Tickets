@@ -16,7 +16,8 @@ app.Configure(config =>
     config.AddBranch("ticket", t =>
     {
         t.SetDescription("Tickets: every repo's permanent ticket log, in the ticket database.");
-        t.AddCommand<TicketNewCommand>("new").WithDescription("Add a ticket with the next free ID; prints the ID.");
+        t.AddCommand<TicketNewCommand>("new").WithDescription("Add a ticket with the next free ID; prints the ID, and warns on stderr of open tickets in the repo whose summary reads alike (--template starts the description from the type's template).");
+        t.AddCommand<TicketTemplateCommand>("template").WithDescription("Print a ticket type's description template (fix: symptom, cause, test; feature: story, acceptance); 'ticket new --template' starts from it.");
         t.AddCommand<TicketCloseCommand>("close").WithDescription("Move a ticket to closed (or wont-do).");
         t.AddCommand<TicketListCommand>("list").WithDescription("List tickets across the workspace (or one repo).");
         t.AddCommand<TicketShowCommand>("show").WithDescription("One ticket: its row, links (prerequisites included) and history; --versions lists every version, --version N shows one.");

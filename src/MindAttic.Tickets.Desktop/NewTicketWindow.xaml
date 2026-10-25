@@ -27,11 +27,13 @@
         <Label Content="_Summary: one line, what and why" Target="{Binding ElementName=Summary}" Foreground="{DynamicResource MaMuted}" Padding="0,12,0,3" />
         <TextBox x:Name="Summary" Style="{StaticResource Field}" TextWrapping="Wrap" MinHeight="64" VerticalContentAlignment="Top"
                  AutomationProperties.Name="Summary" AutomationProperties.IsRequiredForForm="True" />
+        <TextBlock x:Name="Duplicates" Foreground="{DynamicResource StateProposed}" TextWrapping="Wrap" Margin="0,6,0,0" Visibility="Collapsed"
+                   AutomationProperties.Name="Similar open tickets" AutomationProperties.LiveSetting="Polite" />
 
         <Label Content="R_ef: story ID, test or commit (optional)" Target="{Binding ElementName=Ref}" Foreground="{DynamicResource MaMuted}" Padding="0,12,0,3" />
         <TextBox x:Name="Ref" Style="{StaticResource Field}" AutomationProperties.Name="Ref" />
 
-        <Label Content="_Description: markdown, as long as it needs (optional)" Target="{Binding ElementName=Description}" Foreground="{DynamicResource MaMuted}" Padding="0,12,0,3" />
+        <Label Content="_Description: markdown, started from the type's template (optional)" Target="{Binding ElementName=Description}" Foreground="{DynamicResource MaMuted}" Padding="0,12,0,3" />
         <TextBox x:Name="Description" Style="{StaticResource Field}" TextWrapping="Wrap" AcceptsReturn="True" MinHeight="120" MaxHeight="320"
                  VerticalContentAlignment="Top" VerticalScrollBarVisibility="Auto" AutomationProperties.Name="Description" />
 

@@ -25,7 +25,7 @@ $ tickets ticket list --status open
 ## Features
 
 **Stories and tickets** (every repo's, in one SQLite database: `data/Tickets.db`, with links such as `requires` between any two; each repo's `docs/USER_STORIES.md` is a generated, read-only view of it, rewritten after every change)
-- `ticket new` appends a row with the next free `CODE-T<n>` ID and prints it.
+- `ticket new` appends a row with the next free `CODE-T<n>` ID and prints it. It warns (on stderr, still filing) of open tickets in the repo whose summary reads alike, the same check Tickets Desktop's new-ticket dialog shows as you type. `--template` starts the description from the type's template (fix: symptom, cause, test; feature: story, acceptance; `ticket template TYPE` prints it), and the Desktop dialog starts from it too, swapping it as the type changes while it's untouched; an untouched template is never filed as a description.
 - `ticket close` moves a ticket to `closed` or `wont-do` and can set its Ref.
 - `ticket correct` relabels a nonstandard type to the standard vocabulary, the one sanctioned exception to append-only (recorded in the ticket's history).
 - `ticket show` prints a ticket end to end: its row, queue state, assignee, reservation, the session working it, links, history and its commits: those whose subject names it, each with its GitHub link, as the Desktop detail pane lists them too (`--diff` adds their full diffs); `--versions` lists every version of it (on SQL Server, where tickets, their approval and priority, their work and links are system-versioned temporal tables, every save is kept, never pruned; on the SQLite file, versions are worked back from its history) and `--version N` shows one, its changes marked. `ticket link` connects two tickets or stories (`requires` is a prerequisite; a cycle is refused).
@@ -76,7 +76,8 @@ You should see every ticket in every repo under `D:\Projects\MindAttic`.
 ## Commands
 
 ```text
-tickets ticket new     [--repo X] --type feature|fix|chore|docs|interview --summary "..." [--ref ...] [--status open|closed|wont-do]
+tickets ticket new     [--repo X] --type feature|fix|chore|docs|interview --summary "..." [--ref ...] [--status open|closed|wont-do] [--template | --description "..." | --description-file F]
+tickets ticket template feature|fix|chore|docs|interview   # print the type's description template
 tickets ticket close   <CODE-Tn> [--repo X] [--ref ...] [--wont-do]
 tickets ticket correct <CODE-Tn> --type feature|fix|chore|docs|interview --reason "..."
 tickets ticket reassign <CODE-Tn> <CODE-Tm> --reason "..."   # the old ID is kept in id_history and still resolves

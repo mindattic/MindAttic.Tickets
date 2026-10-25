@@ -600,20 +600,28 @@ public sealed partial class MainViewModel : ObservableObject
     {
         if (snapshot is null) return;
         var repo = RepoFilter != AllRepos ? RepoFilter : settings.LastRepo;
-        if (Dialogs.NewTicket(snapshot.Repos, repo, settings.LastType) is not { } n) return;
+        if (Dialogs.NewTicket(new NewTicketRequest(snapshot.Repos, repo, settings.LastType, SimilarOpenTickets)) is not { } n) return;
         settings.LastRepo = n.Repo;
         settings.LastType = n.Type;
         settings.Save();
+        var similar = SimilarOpenTickets(n.Repo, n.Summary);
         string? id = null;
-        if (await Do(() => id = store.Add(n.Repo, n.Type, n.Summary, n.Ref, n.Description).Id, $"Filed {n.Repo} ticket.") && id is not null)
+        // An untouched template isn't a description (M.TIX-T88).
+        if (await Do(() => id = store.Add(n.Repo, n.Type, n.Summary, n.Ref, TicketTemplates.Keep(n.Description)).Id, $"Filed {n.Repo} ticket.") && id is not null)
         {
             GoTo(id);
             // Selecting the row starts a detail load that reports the ticket's readiness in the status bar; a quiet load
             // supersedes it, so "Filed" is what's shown and announced.
             await ShowDetailAsync(id, quiet: true);
-            StatusMessage = Announcement = $"Filed {id}.";
+            StatusMessage = Announcement = similar.Count == 0 ? $"Filed {id}."
+                : $"Filed {id}; it reads like {string.Join(", ", similar.Select(s => s.Ticket.Id))}.";
         }
     }
+
+    /// <summary>The repo's open tickets whose summary reads like <paramref name="summary"/> (M.TIX-T88), most alike first.</summary>
+    public IReadOnlyList<SimilarTicket> SimilarOpenTickets(string repo, string summary) =>
+        snapshot is null ? [] : TicketSimilarity.Similar(summary,
+            snapshot.Tickets.Where(t => t.Repo.Equals(repo, StringComparison.OrdinalIgnoreCase)).Select(t => (t.Repo, t.Ticket)));
 
     public async Task SyncAsync()
     {

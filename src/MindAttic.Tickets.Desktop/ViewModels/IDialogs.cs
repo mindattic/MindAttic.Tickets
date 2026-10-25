@@ -24,4 +24,14 @@ public interface IDialogs
     /// <summary>A file to save to (M.TIX-T87's Export), <paramref name="fileName"/> suggested; null when cancelled. <paramref name="filter"/>
     /// is a file dialog filter ("CSV (*.csv)|*.csv|…").</summary>
     string? SaveFile(string title, string fileName, string filter) => null;
+
+    /// <summary>
+    /// Null when cancelled. The dialog starts the description from the type's template and warns, as the summary is
+    /// typed, of open tickets that read alike (M.TIX-T88); a dialog that does neither just answers the plain overload.
+    /// </summary>
+    NewTicket? NewTicket(NewTicketRequest request) => NewTicket(request.Repos, request.Repo, request.Type);
 }
+
+/// <summary>What the new-ticket dialog starts on, and how it finds the open tickets of a repo that read like a summary.</summary>
+public sealed record NewTicketRequest(IReadOnlyList<string> Repos, string? Repo, string Type,
+    Func<string, string, IReadOnlyList<MindAttic.Tickets.Log.SimilarTicket>> Similar);

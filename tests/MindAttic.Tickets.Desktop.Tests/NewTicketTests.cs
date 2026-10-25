@@ -127,9 +127,44 @@ public sealed class NewTicketTests
         Assert.That(File.Exists(settingsPath), Is.False);
     }
 
+    [Test]
+    public async Task Warns_of_a_similar_open_ticket_in_the_repo_and_names_it_once_filed()
+    {
+        var model = await Open();
+        dialogs.Next = new NewTicket("Beta", "fix", "Beta one crashes", "");
+        await model.NewTicketAsync();
+
+        Assert.That(dialogs.Request, Is.Not.Null, "the dialog gets the similarity lookup");
+        Assert.That(dialogs.Request!.Similar("Beta", "the beta one").First().Ticket.Id, Is.EqualTo("BE-T1"), "most alike first");
+        Assert.That(dialogs.Request.Similar("Alpha", "the beta one"), Is.Empty, "only the repo's own tickets");
+        Assert.That(model.StatusMessage, Is.EqualTo("Filed BE-T2; it reads like BE-T1."));
+    }
+
+    [Test]
+    public async Task An_untouched_template_files_no_description_and_a_filled_one_is_kept()
+    {
+        var model = await Open();
+        dialogs.Next = new NewTicket("Alpha", "fix", "first", "", TicketTemplates.For("fix"));
+        await model.NewTicketAsync();
+        var filled = TicketTemplates.For("feature").Replace("## Story\n", "## Story\n\nAs a Dev, I want it.\n");
+        dialogs.Next = new NewTicket("Alpha", "feature", "second", "", filled);
+        await model.NewTicketAsync();
+
+        using var db = TicketsDb.Open(dbPath);
+        Assert.That(db.Description("AL-T2"), Is.Null);
+        Assert.That(db.Description("AL-T3"), Does.Contain("As a Dev, I want it."));
+    }
+
     private sealed class Answers : IDialogs
     {
         public NewTicket? Next { get; set; }
+        public NewTicketRequest? Request { get; private set; }
+
+        public NewTicket? NewTicket(NewTicketRequest request)
+        {
+            Request = request;
+            return NewTicket(request.Repos, request.Repo, request.Type);
+        }
         public IReadOnlyList<string> Repos { get; private set; } = [];
         public string? OfferedRepo { get; private set; }
         public string? OfferedType { get; private set; }

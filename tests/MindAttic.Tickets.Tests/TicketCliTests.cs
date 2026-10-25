@@ -445,6 +445,33 @@ public sealed class TicketCliTests
     }
 
     [Test]
+    public void New_warns_of_a_similar_open_ticket_and_template_starts_the_description_from_the_types()
+    {
+        MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | fix | open | Desktop crashes when saving a ticket | — |\n" +
+                            "| AA-T2 | 2026-10-02 | fix | closed | Export drops the labels column | — |\n");
+        Directory.CreateDirectory(Path.Combine(root, "MindAttic.Tickets", ".git"));
+        Run("db", "migrate", "--cutover");
+
+        var dup = Run("ticket", "new", "--repo", "A", "--type", "fix", "--summary", "Desktop crash on saving tickets");
+        Assert.That(dup.Code, Is.Zero, "it warns but still files");
+        Assert.That(dup.Out.Split('\n')[0].Trim(), Is.EqualTo("AA-T3"), "stdout is still just the ID");
+        Assert.That(dup.Out, Does.Contain("warning:").And.Contain("AA-T1"));
+
+        var closedOnly = Run("ticket", "new", "--repo", "A", "--type", "fix", "--summary", "Export drops the labels column again");
+        Assert.That(closedOnly.Out.Trim(), Is.EqualTo("AA-T4"), "a closed ticket isn't a duplicate");
+
+        Assert.That(Run("ticket", "new", "--repo", "A", "--type", "fix", "--summary", "unrelated thing", "--template").Out.Trim(), Is.EqualTo("AA-T5"));
+        var description = JsonDocument.Parse(Run("ticket", "show", "AA-T5", "--json").Out).RootElement.GetProperty("description").GetString();
+        Assert.That(description, Does.Contain("## Symptom").And.Contain("## Cause").And.Contain("## Test"));
+        Assert.That(Run("ticket", "new", "--repo", "A", "--type", "fix", "--summary", "x", "--template", "--description", "y").Code, Is.Not.Zero);
+
+        var feature = Run("ticket", "template", "feature");
+        Assert.That((feature.Code, feature.Out), Is.EqualTo((0, Tickets.Log.TicketTemplates.For("feature"))));
+        Assert.That(feature.Out, Does.Contain("## Story").And.Contain("## Acceptance"));
+        Assert.That(Run("ticket", "template", "nonsense").Code, Is.Not.Zero);
+    }
+
+    [Test]
     public void Link_connects_two_tickets_and_refuses_a_cycle()
     {
         MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | fix | open | one | — |\n| AA-T2 | 2026-10-01 | fix | open | two | — |\n");
