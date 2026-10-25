@@ -589,6 +589,19 @@ public sealed partial class TicketsDb : IDisposable
     }
 
     /// <summary>
+    /// Sets a ticket's Ref (its test, commit or story) without changing its status; the change is recorded in its history
+    /// like any other ref change.
+    /// </summary>
+    public Ticket SetRef(string id, string reference)
+    {
+        if (string.IsNullOrWhiteSpace(reference)) throw new ArgumentException("A ref can't be empty: name a test, commit or story.", nameof(reference));
+        var t = Ticket(id)?.Ticket ?? throw new KeyNotFoundException($"No ticket {id}.");
+        var updated = t with { Ref = reference.Trim() };
+        if (updated.Ref != t.Ref) Exec("UPDATE tickets SET ref = $ref WHERE id = $id", null, ("$ref", updated.Ref), ("$id", t.Id));
+        return updated;
+    }
+
+    /// <summary>
     /// Corrects a ticket's type to one of <see cref="TicketRules.Types"/>, the one sanctioned exception to append-only
     /// (for rows that predate the vocabulary, like 'bugfix'): the append-only trigger is lifted for this one update only,
     /// and the change is recorded in the ticket's history with <paramref name="reason"/>.

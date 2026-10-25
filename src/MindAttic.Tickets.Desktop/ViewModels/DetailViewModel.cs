@@ -8,10 +8,13 @@ namespace MindAttic.Tickets.Desktop.ViewModels;
 
 public sealed record HistoryLine(string When, string Text);
 
-/// <summary>A link as read from this ticket's side: "Waits for M.TIX-T64".</summary>
-public sealed record LinkLine(string Phrase, string Other, Link Link)
+/// <summary>
+/// A link as read from this ticket's side: "Waits for M.TIX-T64". <see cref="Blocking"/> marks a requires link that holds
+/// work up now: this ticket waits for an open one, or an open ticket waits for this open one; <see cref="State"/> says which.
+/// </summary>
+public sealed record LinkLine(string Phrase, string Other, Link Link, bool Blocking = false, string State = "")
 {
-    public string SpokenName => $"{Phrase} {Other}";
+    public string SpokenName => State.Length == 0 ? $"{Phrase} {Other}" : $"{Phrase} {Other}, {State}";
 }
 
 /// <summary>A link that opens the Orchestrator on <see cref="Target"/> (a login's email, a session id or a ticket id).</summary>
@@ -183,9 +186,19 @@ public sealed class DetailViewModel : ObservableObject
     public IReadOnlyList<LinkLine> Links => links;
 
     private IReadOnlyList<LinkLine> LinkLines(IEnumerable<Link> all) => [.. all.Select(l =>
-        string.Equals(l.From, Id, StringComparison.OrdinalIgnoreCase) || string.Equals(l.From, ShownId, StringComparison.OrdinalIgnoreCase)
-            ? new LinkLine(Outgoing(l.Kind), l.To, l)
-            : new LinkLine(Incoming(l.Kind), l.From, l))];
+    {
+        var outgoing = string.Equals(l.From, Id, StringComparison.OrdinalIgnoreCase) || string.Equals(l.From, ShownId, StringComparison.OrdinalIgnoreCase);
+        if (l.Kind != "requires")
+            return outgoing ? new LinkLine(Outgoing(l.Kind), l.To, l) : new LinkLine(Incoming(l.Kind), l.From, l);
+        // Blocked state, both ways: what this one waits for that's still open, and who waits for this one while it's open.
+        if (outgoing)
+            return IsOpen && Source.OpenBlockers.Contains(l.To, StringComparer.OrdinalIgnoreCase)
+                ? new LinkLine(Outgoing(l.Kind), l.To, l, Blocking: true, State: "open: blocks this")
+                : new LinkLine(Outgoing(l.Kind), l.To, l, State: IsOpen ? "not blocking" : "");
+        return IsOpen && Source.OpenDependents.Contains(l.From, StringComparer.OrdinalIgnoreCase)
+            ? new LinkLine(Incoming(l.Kind), l.From, l, Blocking: true, State: "blocked by this")
+            : new LinkLine(Incoming(l.Kind), l.From, l);
+    })];
 
     public IReadOnlyList<HistoryLine> History { get; }
 

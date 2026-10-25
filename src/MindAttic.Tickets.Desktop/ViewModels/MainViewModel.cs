@@ -57,6 +57,7 @@ public sealed partial class MainViewModel : ObservableObject
         CloseDetailCommand = new RelayCommand(() => Detail = null, () => Detail is not null);
         CloseTicketCommand = new RelayCommand(async () => await CloseTicketAsync(TicketRules.Closed), () => Detail is { IsOpen: true });
         WontDoCommand = new RelayCommand(async () => await CloseTicketAsync(TicketRules.WontDo), () => Detail is { IsOpen: true });
+        SetRefCommand = new RelayCommand(async () => await SetRefAsync(), () => Detail is not null);
         CorrectTypeCommand = new RelayCommand(async () => await CorrectTypeAsync(), () => Detail is not null);
         AddLinkCommand = new RelayCommand(async () => await AddLinkAsync(), () => Detail is not null);
         RemoveLinkCommand = new RelayCommand(async p => await RemoveLinkAsync(p as LinkLine), p => p is LinkLine);
@@ -182,6 +183,7 @@ public sealed partial class MainViewModel : ObservableObject
     public ICommand CloseDetailCommand { get; }
     public ICommand CloseTicketCommand { get; }
     public ICommand WontDoCommand { get; }
+    public ICommand SetRefCommand { get; }
     public ICommand CorrectTypeCommand { get; }
     public ICommand AddLinkCommand { get; }
     public ICommand RemoveLinkCommand { get; }
@@ -474,7 +476,7 @@ public sealed partial class MainViewModel : ObservableObject
         }
     }
 
-    private async Task CloseTicketAsync(string status)
+    public async Task CloseTicketAsync(string status)
     {
         if (Detail is not { } d) return;
         var verb = status == TicketRules.WontDo ? "Won't do" : "Close";
@@ -485,7 +487,17 @@ public sealed partial class MainViewModel : ObservableObject
         await Do(() => store.Close(d.Id, status, answer.Text), $"{d.Id} {status}.");
     }
 
-    private async Task CorrectTypeAsync()
+    /// <summary>Sets the ticket's Ref without closing it; an empty answer is refused inline, as the database refuses it.</summary>
+    public async Task SetRefAsync()
+    {
+        if (Detail is not { } d) return;
+        var answer = Dialogs.Ask(new Prompt($"Set the ref of {d.Id}", d.Summary, "Ref: test, commit or story",
+            TextRequired: true, Initial: d.Source.Info.Ticket.Ref is "—" ? "" : d.Source.Info.Ticket.Ref, Ok: "Set ref"));
+        if (answer is null) return;
+        await Do(() => store.SetRef(d.Id, answer.Text), $"{d.Id} ref set to {answer.Text.Trim()}.");
+    }
+
+    public async Task CorrectTypeAsync()
     {
         if (Detail is not { } d) return;
         var answer = Dialogs.Ask(new Prompt($"Correct the type of {d.Id}", "Types are append-only; a correction is recorded in the ticket's history with your reason.",
@@ -494,7 +506,7 @@ public sealed partial class MainViewModel : ObservableObject
         await Do(() => store.CorrectType(d.Id, type, answer.Text), $"{d.Id} is now a {type}.");
     }
 
-    private async Task AddLinkAsync()
+    public async Task AddLinkAsync()
     {
         if (Detail is not { } d) return;
         var answer = Dialogs.Ask(new Prompt($"Link {d.Id}", $"{d.Id} [kind] the ticket or story you name. 'requires' means {d.Id} waits for it.",
@@ -504,7 +516,7 @@ public sealed partial class MainViewModel : ObservableObject
         await Do(() => store.AddLink(d.Id, other, kind), $"{d.Id} {kind} {other}.");
     }
 
-    private async Task RemoveLinkAsync(LinkLine? line)
+    public async Task RemoveLinkAsync(LinkLine? line)
     {
         if (line is null) return;
         await Do(() => store.RemoveLink(line.Link.From, line.Link.To, line.Link.Kind), $"Removed: {line.Link.From} {line.Link.Kind} {line.Link.To}.");

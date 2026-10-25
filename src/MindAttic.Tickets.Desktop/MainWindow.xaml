@@ -554,6 +554,8 @@
                                     Command="{Binding DataContext.CloseTicketCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
                             <Button Style="{StaticResource Btn}" Content="Won't do…" Margin="0,0,6,6"
                                     Command="{Binding DataContext.WontDoCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
+                            <Button Style="{StaticResource Btn}" Content="Set ref…" Margin="0,0,6,6" ToolTip="Set its ref (test, commit or story) without closing it"
+                                    Command="{Binding DataContext.SetRefCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
                             <Button Style="{StaticResource Btn}" Content="Correct type…" Margin="0,0,6,6"
                                     Command="{Binding DataContext.CorrectTypeCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
                             <Button Style="{StaticResource Btn}" Content="Add link…" Margin="0,0,6,6"
@@ -589,6 +591,20 @@
                                                 Command="{Binding DataContext.RemoveLinkCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}"
                                                 AutomationProperties.Name="{Binding SpokenName, StringFormat='Remove link: {0}'}" ToolTip="Remove this link" />
                                         <TextBlock Text="{Binding Phrase}" Style="{StaticResource Muted}" Width="110" VerticalAlignment="Center" />
+                                        <!-- Blocked state (M.TIX-T68): said in words, and in the error colour when it holds work up now. -->
+                                        <TextBlock DockPanel.Dock="Right" Text="{Binding State}" FontSize="12" VerticalAlignment="Center" Margin="6,0"
+                                                   Visibility="{Binding State, Converter={x:Static vm:Converters.EmptyToCollapsed}}">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock" BasedOn="{StaticResource Muted}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Blocking}" Value="True">
+                                                            <Setter Property="Foreground" Value="{DynamicResource MaRec}" />
+                                                            <Setter Property="FontWeight" Value="SemiBold" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
                                         <Button Style="{StaticResource LinkBtn}" Content="{Binding Other}" HorizontalAlignment="Left"
                                                 Command="{Binding DataContext.GoToCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding Other}"
                                                 AutomationProperties.Name="{Binding SpokenName, StringFormat='{}{0}: go to it'}" />

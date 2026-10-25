@@ -52,6 +52,9 @@ public sealed record TicketDetail(TicketInfo Info, IReadOnlyList<TicketEvent> Hi
 
     /// <summary>Every version of it, oldest first, the last the current one (M.TIX-T137).</summary>
     public IReadOnlyList<TicketVersion> Versions { get; init; } = [];
+
+    /// <summary>The open tickets that require this one directly: while it's open, it blocks them (M.TIX-T68).</summary>
+    public IReadOnlyList<string> OpenDependents { get; init; } = [];
 }
 
 /// <summary>
@@ -118,8 +121,14 @@ public sealed class TicketStore(string root)
         var (approval, priority) = db.QueueState(found.Ticket.Id);
         var blockers = db.Requires(found.Ticket.Id, transitive: true)
             .Where(b => db.Ticket(b) is { } t && t.Ticket.Status == TicketRules.Open).ToList();
-        return new TicketDetail(new TicketInfo(found.Repo, found.Ticket, approval, priority, blockers), db.History(found.Ticket.Id), db.Links(found.Ticket.Id), blockers)
+        var links = db.Links(found.Ticket.Id);
+        var dependents = links
+            .Where(l => l.Kind == "requires" && string.Equals(l.To, found.Ticket.Id, StringComparison.OrdinalIgnoreCase))
+            .Select(l => l.From)
+            .Where(d => db.Ticket(d) is { } t && t.Ticket.Status == TicketRules.Open).ToList();
+        return new TicketDetail(new TicketInfo(found.Repo, found.Ticket, approval, priority, blockers), db.History(found.Ticket.Id), links, blockers)
         {
+            OpenDependents = dependents,
             Work = db.Work(found.Ticket.Id),
             Versions = db.Versions(found.Ticket.Id),
         };
@@ -134,6 +143,7 @@ public sealed class TicketStore(string root)
     public void Move(string id, IReadOnlyList<string> newOrder) =>
         Write($"move {id} to position {newOrder.ToList().IndexOf(id) + 1}", db => db.Move(id, newOrder), render: false);
     public void Close(string id, string status, string? reference) => Write($"{status} {id} ({reference})", db => db.Close(id, status, reference));
+    public void SetRef(string id, string reference) => Write($"ref {id} ({reference})", db => db.SetRef(id, reference));
     public void CorrectType(string id, string type, string reason) => Write($"correct {id} to {type}: {reason}", db => db.CorrectType(id, type, reason));
     public void AddLink(string from, string to, string kind) => Write($"link {from} {kind} {to}", db => db.AddLink(from, to, kind), render: false);
     public void RemoveLink(string from, string to, string kind) => Write($"unlink {from} {kind} {to}", db => db.RemoveLink(from, to, kind), render: false);
