@@ -217,6 +217,27 @@
                 <TextBox x:Name="SearchBox" Style="{StaticResource Field}" Width="260" Text="{Binding Search, UpdateSourceTrigger=PropertyChanged, Delay=150}"
                          AutomationProperties.Name="Search tickets by ID, summary, ref or repo" />
             </StackPanel>
+            <StackPanel Margin="0,0,12,6" Visibility="{Binding ShowsTicketFilters, Converter={StaticResource Visible}}">
+                <Label Style="{StaticResource FilterLabel}" Content="_Query" Target="{Binding ElementName=QueryBox}" />
+                <TextBox x:Name="QueryBox" Style="{StaticResource Field}" Width="300" Text="{Binding Query, UpdateSourceTrigger=PropertyChanged, Delay=250}"
+                         AutomationProperties.Name="Ticket query"
+                         AutomationProperties.HelpText="{Binding QueryError}"
+                         ToolTip="repo:NAME or CODE, type:fix, status:open, label:ui, approval:approved and free text ('quoted' keeps spaces). Commas give alternatives (status:open,wont-do), a leading - negates (-type:chore), * is a wildcard in repo and label." />
+                <TextBlock Text="{Binding QueryError}" Style="{StaticResource ErrorText}" MaxWidth="300" TextWrapping="Wrap"
+                           Visibility="{Binding QueryError, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
+            </StackPanel>
+            <StackPanel Margin="0,0,12,6" Visibility="{Binding ShowsTicketFilters, Converter={StaticResource Visible}}">
+                <Label Style="{StaticResource FilterLabel}" Content="Sa_ved filter" Target="{Binding ElementName=SavedFilterBox}" />
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox x:Name="SavedFilterBox" Style="{StaticResource Combo}" MinWidth="150" ItemsSource="{Binding SavedFilterChoices}"
+                              SelectedItem="{Binding SelectedSavedFilter}" AutomationProperties.Name="Saved filter"
+                              ToolTip="Named queries kept in the ticket database (also 'tickets filter list' and 'tickets ticket list --filter')." />
+                    <Button Style="{StaticResource Btn}" Content="Save…" Command="{Binding SaveFilterCommand}" Margin="6,0,0,0"
+                            ToolTip="Save the query as a named filter" />
+                    <Button Style="{StaticResource Btn}" Content="Delete" Command="{Binding DeleteFilterCommand}" Margin="6,0,0,0"
+                            ToolTip="Delete the picked saved filter" />
+                </StackPanel>
+            </StackPanel>
             <StackPanel Margin="0,0,12,6">
                 <Label Style="{StaticResource FilterLabel}" Content="Rep_o" Target="{Binding ElementName=RepoBox}" />
                 <ComboBox x:Name="RepoBox" Style="{StaticResource Combo}" MinWidth="190" ItemsSource="{Binding RepoChoices}"

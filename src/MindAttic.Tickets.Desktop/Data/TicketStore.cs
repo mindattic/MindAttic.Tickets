@@ -20,6 +20,12 @@ public sealed record TicketInfo(string Repo, Ticket Ticket, string Approval, lon
     /// <summary>A session is recorded as working it in the ticket database (<c>ticket_work</c>; M.TIX-T134).</summary>
     public bool Working { get; init; }
 
+    /// <summary>Its labels, for a query's <c>label:</c> (M.TIX-T78).</summary>
+    public IReadOnlyCollection<string> Labels { get; init; } = [];
+
+    /// <summary>What a <see cref="TicketQuery"/> is matched against.</summary>
+    public TicketFacts Facts => new(Repo, Ticket, Approval, Labels);
+
     public bool IsOpen => Ticket.Status == TicketRules.Open;
 
     /// <summary>Open and waiting on another open ticket.</summary>
@@ -48,6 +54,9 @@ public sealed record Snapshot(IReadOnlyList<string> Repos, IReadOnlyList<TicketI
 {
     /// <summary>Closed tickets that may not really be done (<c>tickets ticket hygiene</c>), worked out with the read (M.TIX-T138).</summary>
     public IReadOnlyList<HygieneFinding> Hygiene { get; init; } = [];
+
+    /// <summary>The named queries kept in the database, for the filter bar (M.TIX-T78).</summary>
+    public IReadOnlyList<SavedFilter> SavedFilters { get; init; } = [];
 }
 
 /// <summary>A ticket's detail: history and links (both directions) and what it's waiting for.</summary>
@@ -91,19 +100,22 @@ public sealed class TicketStore(string root)
         var tickets = db.Tickets();
         var blockers = OpenBlockers(tickets.Select(x => x.Ticket), db.AllLinks());
         var work = db.WorkStates();
+        var labels = db.TicketLabels();
         IReadOnlyList<string> BlockersOf(string id) => blockers.TryGetValue(id, out var b) ? b : [];
+        IReadOnlyCollection<string> LabelsOf(string id) => labels.TryGetValue(id, out var l) ? l : [];
         bool WorkingOn(string id) => work.TryGetValue(id, out var w) && w.IsWorking;
         long? EstimateOf(string id) => estimates.TryGetValue(id, out var e) ? e : null;
         TicketInfo Info(string repo, Ticket t) =>
             (states.TryGetValue(t.Id, out var s) ? new TicketInfo(repo, t, s.Approval, s.Priority, BlockersOf(t.Id)) : new TicketInfo(repo, t, TicketsDb.Proposed, 0, BlockersOf(t.Id)))
-            with { Working = WorkingOn(t.Id), Estimate = EstimateOf(t.Id) };
+            with { Working = WorkingOn(t.Id), Estimate = EstimateOf(t.Id), Labels = LabelsOf(t.Id) };
         return new Snapshot(
             [.. db.Repos().Select(r => r.Name)],
             [.. tickets.Select(x => Info(x.Repo, x.Ticket))],
-            [.. db.Queue().Select(q => new TicketInfo(q.Repo, q.Ticket, q.Approval, q.Priority, BlockersOf(q.Ticket.Id)) { Working = WorkingOn(q.Ticket.Id), Estimate = q.Estimate })],
+            [.. db.Queue().Select(q => new TicketInfo(q.Repo, q.Ticket, q.Approval, q.Priority, BlockersOf(q.Ticket.Id)) { Working = WorkingOn(q.Ticket.Id), Estimate = q.Estimate, Labels = LabelsOf(q.Ticket.Id) })],
             DateTime.Now)
         {
             Hygiene = TicketHygiene.Check(tickets),
+            SavedFilters = db.SavedFilters(),
         };
     });
 
@@ -181,6 +193,8 @@ public sealed class TicketStore(string root)
         Write($"{(string.IsNullOrWhiteSpace(body) ? "clear" : "set")} {id}'s description", db => db.SetDescription(id, body), render: false);
     public void AddLink(string from, string to, string kind) => Write($"link {from} {kind} {to}", db => db.AddLink(from, to, kind), render: false);
     public void RemoveLink(string from, string to, string kind) => Write($"unlink {from} {kind} {to}", db => db.RemoveLink(from, to, kind), render: false);
+    public void SaveFilter(string name, string query) => Write($"save filter {name}: {query}", db => db.SaveFilter(name, query), render: false);
+    public void DeleteFilter(string name) => Write($"delete filter {name}", db => db.DeleteFilter(name), render: false);
 
     /// <summary>
     /// Moves a card on the Board (M.TIX-T77) by changing what its column stands for: Proposed unapproves it, Approved approves

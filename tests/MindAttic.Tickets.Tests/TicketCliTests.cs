@@ -249,6 +249,44 @@ public sealed class TicketCliTests
     }
 
     [Test]
+    public void List_query_and_saved_filters_narrow_the_list_by_repo_type_status_approval_and_text()
+    {
+        MakeRepo("A", "AA", "| AA-T1 | 2026-09-01 | fix | open | crash on start | — |\n| AA-T2 | 2026-10-05 | chore | closed | tidy up | x |\n" +
+                            "| AA-T3 | 2026-10-06 | feature | open | dark mode | — |\n");
+        MakeRepo("B", "BB", "| BB-T1 | 2026-10-06 | fix | open | other crash | — |\n");
+        Directory.CreateDirectory(Path.Combine(root, "MindAttic.Tickets", ".git"));
+        Run("db", "migrate", "--cutover");
+        Run("ticket", "approve", "AA-T3");
+        string[] Ids(params string[] args) =>
+            [.. JsonDocument.Parse(Run(["ticket", "list", "--json", .. args]).Out).RootElement.EnumerateArray().Select(x => x.GetProperty("id").GetString()!)];
+
+        Assert.That(Ids("--query", "repo:AA status:open"), Is.EqualTo(new[] { "AA-T1", "AA-T3" }), "a repo by its code");
+        Assert.That(Ids("--query", "type:fix crash"), Is.EqualTo(new[] { "AA-T1", "BB-T1" }));
+        Assert.That(Ids("--query", "approval:approved"), Is.EqualTo(new[] { "AA-T3" }));
+        Assert.That(Ids("--query=-repo:a 'other crash'"), Is.EqualTo(new[] { "BB-T1" }), "a repo by its name, negated");
+        Assert.That(Ids("--query", "status:closed,wont-do"), Is.EqualTo(new[] { "AA-T2" }));
+
+        var bad = Run("ticket", "list", "--query", "priority:high");
+        Assert.That(bad.Code, Is.EqualTo(1));
+        Assert.That(bad.Out, Does.Contain("Unknown filter 'priority:'"));
+
+        Assert.That(Run("filter", "save", "open-fixes", "type:fix status:open").Out.Trim(), Is.EqualTo("Saved filter open-fixes: type:fix status:open"));
+        Assert.That(Run("filter", "save", "Open-Fixes", "type:fix status:open repo:BB").Out, Does.Contain("Replaced filter open-fixes"), "names match without case");
+        Assert.That(Run("filter", "save", "broken", "status:done").Code, Is.EqualTo(1), "a query that can't run isn't saved");
+        var listed = JsonDocument.Parse(Run("filter", "list", "--json").Out).RootElement.EnumerateArray().ToList();
+        Assert.That(listed.Select(f => (f.GetProperty("name").GetString(), f.GetProperty("query").GetString())),
+            Is.EqualTo(new[] { ("open-fixes", "type:fix status:open repo:BB") }));
+
+        Assert.That(Ids("--filter", "OPEN-FIXES"), Is.EqualTo(new[] { "BB-T1" }));
+        Assert.That(Ids("--filter", "open-fixes", "--query", "crash"), Is.EqualTo(new[] { "BB-T1" }), "--query narrows the saved filter");
+        Assert.That(Run("ticket", "list", "--filter", "nope").Code, Is.EqualTo(1));
+
+        Assert.That(Run("filter", "delete", "open-fixes").Code, Is.Zero);
+        Assert.That(Run("filter", "delete", "open-fixes").Code, Is.EqualTo(1));
+        Assert.That(Run("filter", "list").Out, Does.Contain("No saved filters"));
+    }
+
+    [Test]
     public void Verify_fails_a_deleted_or_reworded_committed_row_and_passes_a_new_uncommitted_file()
     {
         var a = MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | fix | open | one | — |\n");

@@ -41,6 +41,14 @@ app.Configure(config =>
         t.AddCommand<TicketIntakeCommand>("intake").WithDescription("File GitHub issues labelled orchestrator and CI failures on main as tickets (--dry-run to preview).");
     });
 
+    config.AddBranch("filter", f =>
+    {
+        f.SetDescription("Saved filters: named ticket queries (repo: type: status: label: approval: and text) for 'ticket list --filter' and Tickets Desktop.");
+        f.AddCommand<FilterListCommand>("list").WithDescription("Every saved filter and its query.");
+        f.AddCommand<FilterSaveCommand>("save").WithDescription("Save (or replace) a named query: tickets filter save open-fixes \"type:fix status:open\".");
+        f.AddCommand<FilterDeleteCommand>("delete").WithDescription("Delete a saved filter.");
+    });
+
     config.AddBranch("story", s =>
     {
         s.SetDescription("Stories: every repo's user stories, in the ticket database.");
@@ -116,7 +124,7 @@ catch (Exception ex) when (ex is CommandParseException or CommandRuntimeExceptio
     return 2;
 }
 catch (Exception ex) when (ex is InvalidOperationException or ArgumentException or KeyNotFoundException or IOException or HttpRequestException
-    or System.Data.Common.DbException)
+    or System.Data.Common.DbException or FormatException)
 {
     log.Error(ex, "{Command:l} failed: {Message:l}", line, ex.Message);
     Spectre.Console.AnsiConsole.MarkupLine($"[red]error:[/] {Spectre.Console.Markup.Escape(ex.Message)}");

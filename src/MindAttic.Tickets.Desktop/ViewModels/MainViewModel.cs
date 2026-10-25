@@ -41,6 +41,7 @@ public sealed partial class MainViewModel : ObservableObject
         Dialogs = dialogs ?? new NoDialogs();
         selectedView = settings.View switch { TicketsView or "Tickets" => TicketsView, AuditView => AuditView, BoardView => BoardView, _ => QueueView };
         InitOrchestrator(orchestrator);
+        InitQuery();
         zoom = Math.Clamp(settings.Zoom, MinZoom, MaxZoom);
         groupByRepo = settings.GroupByRepo;
 
@@ -132,7 +133,7 @@ public sealed partial class MainViewModel : ObservableObject
     public string SortBy { get => sortBy; set { if (Set(ref sortBy, value ?? "ID")) ApplyFilters(); } }
     public bool SortDescending { get => sortDescending; set { if (Set(ref sortDescending, value)) ApplyFilters(); } }
 
-    public bool IsFiltered => Search.Length > 0 || RepoFilter != AllRepos || TypeFilter != AnyType || ApprovalFilter != AnyApproval || WorkFilter != AnyWork;
+    public bool IsFiltered => Search.Length > 0 || !parsedQuery.IsEmpty || RepoFilter != AllRepos || TypeFilter != AnyType || ApprovalFilter != AnyApproval || WorkFilter != AnyWork;
 
     public TicketRowViewModel? SelectedQueueRow
     {
@@ -218,6 +219,7 @@ public sealed partial class MainViewModel : ObservableObject
             await orch;
             if (request != refreshRequest) return;
             snapshot = s;
+            SyncSavedFilters(s);
             foreach (var r in s.Repos.Where(r => !RepoChoices.Contains(r))) RepoChoices.Add(r);
             ApplyFilters();
             if (Detail is { } d) await ShowDetailAsync(d.Id, quiet: true);
@@ -243,6 +245,7 @@ public sealed partial class MainViewModel : ObservableObject
             (TypeFilter == AnyType || t.Ticket.Type == TypeFilter) &&
             (ApprovalFilter == AnyApproval || t.Approval == ApprovalFilter) &&
             WorkMatch(t) &&
+            QueryMatch(t) &&
             (Search.Length == 0 || t.Ticket.Id.Contains(Search, StringComparison.OrdinalIgnoreCase) ||
              t.Ticket.Summary.Contains(Search, StringComparison.OrdinalIgnoreCase) || t.Ticket.Ref.Contains(Search, StringComparison.OrdinalIgnoreCase) ||
              t.Repo.Contains(Search, StringComparison.OrdinalIgnoreCase));
@@ -251,8 +254,10 @@ public sealed partial class MainViewModel : ObservableObject
         QueueRows.SyncBy(s.Queue.Where(Match), t => t.Ticket.Id, r => r.Id, NewRow, UpdateRow);
         for (var i = 0; i < QueueRows.Count; i++) QueueRows[i].Rank = i + 1;
 
+        // A query naming a status picks it, as the Status box does: archived tickets aren't hidden from it.
+        var queryPicksStatus = parsedQuery.Terms.Any(q => q.Field == TicketQuery.StatusField);
         var tickets = s.Tickets.Where(Match)
-            .Where(t => StatusFilter != AnyStatus ? t.Ticket.Status == StatusFilter : ShowArchived || t.Ticket.Status == TicketRules.Open);
+            .Where(t => StatusFilter != AnyStatus ? t.Ticket.Status == StatusFilter : ShowArchived || queryPicksStatus || t.Ticket.Status == TicketRules.Open);
         TicketRows.SyncBy(Sort(tickets), t => t.Ticket.Id, r => r.Id, NewRow, UpdateRow);
         ApplyBoard(s, Match);
         ApplyAudit();
@@ -378,7 +383,9 @@ public sealed partial class MainViewModel : ObservableObject
     private void ClearFilters()
     {
         search = ""; repoFilter = AllRepos; typeFilter = AnyType; approvalFilter = AnyApproval; workFilter = AnyWork; statusFilter = AnyStatus; showArchived = true;
-        foreach (var p in new[] { nameof(Search), nameof(RepoFilter), nameof(TypeFilter), nameof(ApprovalFilter), nameof(WorkFilter), nameof(StatusFilter), nameof(ShowArchived) }) Raise(p);
+        query = ""; queryError = ""; parsedQuery = TicketQuery.All; selectedSavedFilter = NoSavedFilter;
+        foreach (var p in new[] { nameof(Search), nameof(RepoFilter), nameof(TypeFilter), nameof(ApprovalFilter), nameof(WorkFilter), nameof(StatusFilter), nameof(ShowArchived),
+                     nameof(Query), nameof(QueryError), nameof(SelectedSavedFilter) }) Raise(p);
     }
 
     /// <summary>

@@ -261,6 +261,9 @@ public sealed partial class TicketsDb : IDisposable
                 ticket_id TEXT PRIMARY KEY COLLATE NOCASE,
                 body TEXT NOT NULL,
                 updated TEXT NOT NULL);
+            -- Named ticket queries (M.TIX-T78), shared by the CLI's 'ticket list --filter' and Tickets Desktop's filter bar.
+            CREATE TABLE IF NOT EXISTS saved_filters (
+                name TEXT PRIMARY KEY COLLATE NOCASE, query TEXT NOT NULL, updated TEXT NOT NULL);
 
             -- Append-only: a ticket is never deleted, and only its status and ref ever change.
             CREATE TRIGGER IF NOT EXISTS tickets_no_delete BEFORE DELETE ON tickets
@@ -1151,7 +1154,7 @@ public sealed partial class TicketsDb : IDisposable
         foreach (var (table, order) in new[]
         {
             ("meta", "key"), ("repos", "name"), ("epics", "repo, key"), ("stories", "uid"), ("backlog_items", "uid"), ("backlog_refs", "item_uid, story_id"),
-            ("tickets", "repo, ordinal"), ("ticket_events", "seq"), ("ticket_queue", "ticket_id"), ("ticket_work", "ticket_id"), ("ticket_notes", "seq"), ("ticket_descriptions", "ticket_id"), ("repo_renames", "seq"), ("id_history", "seq"), ("links", "from_id, to_id, kind"), ("blocks", "repo, ordinal"),
+            ("tickets", "repo, ordinal"), ("ticket_events", "seq"), ("ticket_queue", "ticket_id"), ("ticket_work", "ticket_id"), ("ticket_notes", "seq"), ("ticket_descriptions", "ticket_id"), ("repo_renames", "seq"), ("id_history", "seq"), ("links", "from_id, to_id, kind"), ("blocks", "repo, ordinal"), ("saved_filters", "name"),
         })
         {
             sb.Append("\n-- ").Append(table).Append('\n');

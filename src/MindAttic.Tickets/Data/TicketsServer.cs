@@ -237,6 +237,10 @@ public sealed class TicketsServer(string connectionString)
             old_id nvarchar(450) NOT NULL, new_id nvarchar(450) NOT NULL, at nvarchar(64) NOT NULL, reason nvarchar(max) NOT NULL);
         CREATE INDEX id_history_by_old ON id_history (old_id);
         """,
+        $"""
+        CREATE TABLE saved_filters (
+            name nvarchar(450) COLLATE {NoCase} NOT NULL PRIMARY KEY, query nvarchar(max) NOT NULL, updated nvarchar(64) NOT NULL);
+        """,
     ];
 
     /// <summary>The guards, as SQLite's triggers keep them: tickets are never deleted and only their status and ref change

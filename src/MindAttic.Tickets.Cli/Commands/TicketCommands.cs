@@ -181,6 +181,14 @@ public sealed class TicketListCommand : Command<TicketListCommand.Settings>
         [Description("Only tickets dated on or after this day.")]
         public string? Since { get; init; }
 
+        [CommandOption("--query <QUERY>")]
+        [Description("A ticket query: repo:NAME|CODE type:fix status:open label:ui approval:approved and free text ('quoted' to keep spaces); commas give alternatives (status:open,wont-do), a leading - negates (-type:chore; a query that starts with one is passed as --query=-type:chore), * is a wildcard in repo and label.")]
+        public string? Query { get; init; }
+
+        [CommandOption("--filter <NAME>")]
+        [Description("A saved filter's query (see 'tickets filter list'); combined with --query when both are given.")]
+        public string? Filter { get; init; }
+
         [CommandOption("--json")]
         public bool Json { get; init; }
     }
@@ -196,6 +204,26 @@ public sealed class TicketListCommand : Command<TicketListCommand.Settings>
             .Where(x => settings.Type is null || x.Ticket.Type == settings.Type)
             .Where(x => settings.Since is null || string.CompareOrdinal(x.Ticket.Date, settings.Since) >= 0)
             .ToList();
+
+        if (!string.IsNullOrWhiteSpace(settings.Query) || !string.IsNullOrWhiteSpace(settings.Filter))
+        {
+            using var db = TicketsDb.OpenIfMigrated(settings.Workspace.Root);
+            var text = settings.Query ?? "";
+            if (!string.IsNullOrWhiteSpace(settings.Filter))
+            {
+                if (db is null) throw new InvalidOperationException("Saved filters live in the ticket database, and this workspace isn't migrated yet.");
+                var saved = db.FindFilter(settings.Filter)
+                    ?? throw new KeyNotFoundException($"No saved filter '{settings.Filter}'; 'tickets filter list' shows them.");
+                text = saved.Query + " " + text;
+            }
+            var query = TicketQuery.Parse(text);
+            // Approval and labels live only in the database; before migration every ticket is proposed and unlabelled.
+            var states = db?.QueueStates();
+            var labels = db?.TicketLabels();
+            rows = [.. rows.Where(x => query.Matches(new TicketFacts(x.Repo.Name, x.Ticket,
+                states is not null && states.TryGetValue(x.Ticket.Id, out var s) ? s.Approval : TicketsDb.Proposed,
+                labels?.GetValueOrDefault(x.Ticket.Id))))];
+        }
 
         if (settings.Json)
         {
