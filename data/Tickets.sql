@@ -7370,8 +7370,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T195', 'RogueTraderBrevity', 195, '2026-10-25', 'chore', 'closed', 'RTB v3 dialogue rewrite: .brevity/all group 187/237 (3 chunks: c1063, c1064, c1065)', 'check.py OK on .brevity/all group 187', 194, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T196', 'RogueTraderBrevity', 196, '2026-10-25', 'chore', 'closed', 'RTB v3 dialogue rewrite: .brevity/all group 188/237 (3 chunks: c1066, c1067, c1068)', 'check.py OK on .brevity/all group 188', 195, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T197', 'RogueTraderBrevity', 197, '2026-10-25', 'chore', 'closed', 'RTB v3 dialogue rewrite: .brevity/all group 189/237 (5 chunks: c1069, c1070, c1071...)', 'check.py OK on .brevity/all group 189', 196, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T198', 'RogueTraderBrevity', 198, '2026-10-25', 'chore', 'open', 'RTB v3 dialogue rewrite: .brevity/all group 190/237 (7 chunks: c1074, c1075, c1076...)', 'RTB-T6', 197, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T199', 'RogueTraderBrevity', 199, '2026-10-25', 'chore', 'open', 'RTB v3 dialogue rewrite: .brevity/all group 191/237 (3 chunks: c1081, c1082, c1083)', 'RTB-T6', 198, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T198', 'RogueTraderBrevity', 198, '2026-10-25', 'chore', 'closed', 'RTB v3 dialogue rewrite: .brevity/all group 190/237 (7 chunks: c1074, c1075, c1076...)', 'check.py OK on .brevity/all group 190', 197, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T199', 'RogueTraderBrevity', 199, '2026-10-25', 'chore', 'closed', 'RTB v3 dialogue rewrite: .brevity/all group 191/237 (3 chunks: c1081, c1082, c1083)', 'check.py OK on .brevity/all group 191', 198, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T200', 'RogueTraderBrevity', 200, '2026-10-25', 'chore', 'open', 'RTB v3 dialogue rewrite: .brevity/all group 192/237 (4 chunks: c1084, c1085, c1086...)', 'RTB-T6', 199, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T201', 'RogueTraderBrevity', 201, '2026-10-25', 'chore', 'open', 'RTB v3 dialogue rewrite: .brevity/all group 193/237 (1 chunks: c1088)', 'RTB-T6', 200, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T202', 'RogueTraderBrevity', 202, '2026-10-25', 'chore', 'open', 'RTB v3 dialogue rewrite: .brevity/all group 194/237 (1 chunks: c1089)', 'RTB-T6', 201, NULL);
@@ -23805,6 +23805,17 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (14819, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (14820, 'RTB-T197', '2026-10-25T10:14:06Z', 'working', 'waffle@mindattic.com (b74d07e9-e3e7-44d0-83dd-71a7f557c566)', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (14821, 'RTB-T197', '2026-10-25T10:14:07Z', 'working', NULL, 'b74d07e9-e3e7-44d0-83dd-71a7f557c566');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (14822, 'RTB-T197', '2026-10-25T10:14:31Z', 'working', 'b74d07e9-e3e7-44d0-83dd-71a7f557c566', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (14823, 'RTB-T198', '2026-10-25T10:16:30Z', 'working', NULL, 'waffle@mindattic.com');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (14824, 'RTB-T198', '2026-10-25T10:16:49Z', 'working', 'waffle@mindattic.com', 'waffle@mindattic.com (b74d07e9-e3e7-44d0-83dd-71a7f557c566)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (14825, 'RTB-T198', '2026-10-25T10:22:06Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (14826, 'RTB-T198', '2026-10-25T10:22:06Z', 'ref', 'RTB-T6', 'check.py OK on .brevity/all group 190');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (14827, 'RTB-T198', '2026-10-25T10:22:11Z', 'working', 'waffle@mindattic.com (b74d07e9-e3e7-44d0-83dd-71a7f557c566)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (14828, 'RTB-T198', '2026-10-25T10:22:11Z', 'working', NULL, 'b74d07e9-e3e7-44d0-83dd-71a7f557c566');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (14829, 'RTB-T199', '2026-10-25T10:22:20Z', 'working', NULL, 'waffle@mindattic.com');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (14830, 'RTB-T199', '2026-10-25T10:22:36Z', 'working', 'waffle@mindattic.com', 'waffle@mindattic.com (b74d07e9-e3e7-44d0-83dd-71a7f557c566)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (14831, 'RTB-T198', '2026-10-25T10:22:36Z', 'working', 'b74d07e9-e3e7-44d0-83dd-71a7f557c566', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (14832, 'RTB-T199', '2026-10-25T10:26:13Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (14833, 'RTB-T199', '2026-10-25T10:26:13Z', 'ref', 'RTB-T6', 'check.py OK on .brevity/all group 191');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z');
@@ -25387,8 +25398,8 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T195', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T10:04:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T196', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T10:11:05Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T197', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T10:14:31Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T198', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:42Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T199', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:43Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T198', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T10:22:36Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T199', 'waffle@mindattic.com', 0, 'waffle@mindattic.com', 'b74d07e9-e3e7-44d0-83dd-71a7f557c566', '2026-10-25T10:22:36Z', '2026-10-25T10:22:36Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T200', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:44Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T201', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:44Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T202', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:45Z');
