@@ -1,16 +1,24 @@
 <!-- Tickets Desktop's own controls: those MindAttic.Components.Wpf (M.COMP-T11) has no equivalent for: Combo, Check,
      RowList/RowItem (a drag-reorderable ListBox with a drop marker; the package's MaRowList is a plain ItemsControl
      with no drag support) and the Tickets grid view (GridHeader/GridRow) and Chip. Everything else (buttons, cards,
-     the focus ring, text fields, pills) comes from the package's Theme.xaml, merged before this dictionary in
-     App.xaml; this dictionary also merges it itself (below) so its own styles can reference the package's keys (e.g.
-     Field's BasedOn, and the focus ring on Check and LinkBtn): a StaticResource inside a merged ResourceDictionary
-     file only sees keys in its own file or in dictionaries it merges itself, not sibling files merged elsewhere.
-     Every brush is a DynamicResource from Colors.xaml so high contrast swaps them live, and every focusable control
-     shows a 3:1 focus cue (2.4.7) and is at least 24x24 (2.5.8). -->
+     the focus ring, text fields, pills) comes from the package's Theme.xaml (M.TIX-T91).
+
+     Both Theme.xaml and Colors.xaml are merged below, in that order, instead of as separate entries in App.xaml:
+     merging them here, inside this dictionary, is what lets this dictionary's own styles reference their keys with a
+     plain StaticResource (Field's BasedOn MaTextBox, and the focus ring on Check and LinkBtn). A StaticResource
+     inside a merged ResourceDictionary file only sees keys in its own file or in dictionaries it merges itself, not
+     sibling files merged elsewhere in App.xaml. The order matters: Colors.xaml, merged second, wins any key the two
+     share (MaMuted and MaControlBorder differ: Colors.xaml's are the WCAG 2.2 AA fixes from M.TIX-T71) exactly as it
+     did when App.xaml listed Theme.xaml, then Colors.xaml, then this file side by side. Every brush is a
+     DynamicResource from Colors.xaml so high contrast swaps them live, and every focusable control shows a 3:1 focus
+     cue (2.4.7) and is at least 24x24 (2.5.8). -->
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/MindAttic.Components.Wpf;component/Theme.xaml" />
+        <!-- An absolute pack URI, not a relative "Colors.xaml": a relative Source only resolves against a base URI,
+             which a XamlReader.Load of this file from a raw stream (AutomationNameTests) has none of. -->
+        <ResourceDictionary Source="pack://application:,,,/MindAttic.Tickets.Desktop;component/Theme/Colors.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <BooleanToVisibilityConverter x:Key="Visible" />
