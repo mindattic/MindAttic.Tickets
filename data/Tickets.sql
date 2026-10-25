@@ -24385,6 +24385,15 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15385, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15386, 'M.LNCH-T79', '2026-10-25T20:37:14Z', 'ref', '—', '2f5fec9');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15387, 'M.LNCH-T79', '2026-10-25T20:37:14Z', 'working', NULL, '3fecd139-ae58-4d45-9ee8-7e2e4b8c0242');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15388, 'M.LNCH-T79', '2026-10-25T20:37:32Z', 'working', '3fecd139-ae58-4d45-9ee8-7e2e4b8c0242', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15389, 'M.ORCH-T534', '2026-10-25T20:46:00Z', 'assignee', NULL, 'waffle@mindattic.com');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15390, 'M.ORCH-T758', '2026-10-25T20:46:01Z', 'assignee', NULL, 'waffle@mindattic.com');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15391, 'M.ORCH-T768', '2026-10-25T20:46:01Z', 'assignee', NULL, 'waffle@mindattic.com');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15392, 'M.ORCH-T802', '2026-10-25T20:46:02Z', 'assignee', NULL, 'waffle@mindattic.com');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15393, 'M.ORCH-T813', '2026-10-25T20:46:03Z', 'assignee', NULL, 'waffle@mindattic.com');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15394, 'M.ORCH-T814', '2026-10-25T20:46:03Z', 'assignee', NULL, 'waffle@mindattic.com');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15395, 'M.ORCH-T815', '2026-10-25T20:46:04Z', 'assignee', NULL, 'waffle@mindattic.com');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15396, 'M.ORCH-T817', '2026-10-25T20:46:04Z', 'assignee', NULL, 'waffle@mindattic.com');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15397, 'M.ORCH-T817', '2026-10-25T20:47:55Z', 'working', NULL, 'waffle@mindattic.com (488587f4-0437-4b45-bf07-e5866af0dcd1)');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z');
@@ -25870,6 +25879,14 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('USOD-
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('USOD-T9', 'approved', 0, '2026-10-22T23:02:27Z');
 
 -- ticket_work
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T768', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T802', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:02Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T813', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:03Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T814', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:03Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T815', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:04Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T817', 'waffle@mindattic.com', 0, 'waffle@mindattic.com', '488587f4-0437-4b45-bf07-e5866af0dcd1', '2026-10-25T20:47:55Z', '2026-10-25T20:47:55Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T111', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:34:40Z');
