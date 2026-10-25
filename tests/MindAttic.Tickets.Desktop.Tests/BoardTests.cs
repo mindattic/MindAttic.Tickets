@@ -115,7 +115,7 @@ public sealed class BoardTests
         Assert.That(Detail("AL-T2").Info.Ticket.Status, Is.EqualTo(TicketRules.Open));
 
         Assert.That(await model.MoveCardAsync(Card("AL-T4"), BoardColumn.Approved), Is.False);
-        Assert.That(model.StatusMessage, Does.Contain("can't be reopened"));
+        Assert.That(model.StatusMessage, Does.Contain("can't be moved back"));
         Assert.That(Ids(BoardColumn.Done), Is.EqualTo(new[] { "AL-T4" }));
 
         await model.MoveCardByAsync(Card("AL-T1"), -1);

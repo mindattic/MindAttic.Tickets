@@ -187,26 +187,43 @@ public sealed class TicketStore(string root)
     public void AddNote(string id, string markdown) => Write($"note on {id}", db => db.AddNote(id,
         Environment.GetEnvironmentVariable("MINDATTIC_TICKETS_AUTHOR") is { Length: > 0 } a ? a.Trim() : Environment.UserName, markdown), render: false);
 
-    public void Approve(string id) => Write($"approve {id}", db => db.Approve(id), render: false);
+    // Approve, unapprove, reject, move, close, link and unlink return what they changed, so the window can undo them (M.TIX-T80).
+    public TicketChange Approve(string id) => Change($"approve {id}", [id], db => db.Approve(id), render: false);
     public void Assign(string id, string email) => Write($"assign {id} to {email}", db => db.Assign(id, email), render: false);
     public void Unassign(string id) => Write($"unassign {id}", db => db.Unassign(id), render: false);
     public void Reserve(string id, long tokens) => Write($"reserve {tokens} tokens for {id}", db => db.Reserve(id, tokens), render: false);
     public void SetEstimate(string id, long? tokens) =>
         Write(tokens is { } t ? $"estimate {id} at {t} tokens" : $"clear {id}'s estimate", db => db.SetEstimate(id, tokens), render: false);
-    public void Unapprove(string id) => Write($"unapprove {id}", db => db.Unapprove(id), render: false);
-    public void Reject(string id, string reason) => Write($"reject {id}: {reason}", db => db.Reject(id, reason));
-    public void Move(string id, IReadOnlyList<string> newOrder) =>
-        Write($"move {id} to position {newOrder.ToList().IndexOf(id) + 1}", db => db.Move(id, newOrder), render: false);
-    public void Close(string id, string status, string? reference) => Write($"{status} {id} ({reference})", db => db.Close(id, status, reference));
+    public TicketChange Unapprove(string id) => Change($"unapprove {id}", [id], db => db.Unapprove(id), render: false);
+    public TicketChange Reject(string id, string reason) => Change($"reject {id}: {reason}", [id], db => db.Reject(id, reason));
+    public TicketChange Move(string id, IReadOnlyList<string> newOrder) =>
+        Change($"move {id} to position {newOrder.ToList().IndexOf(id) + 1}", [id, .. newOrder.Where(x => !string.Equals(x, id, StringComparison.OrdinalIgnoreCase))],
+            db => db.Move(id, newOrder), render: false);
+    public TicketChange Close(string id, string status, string? reference) => Change($"{status} {id} ({reference})", [id], db => db.Close(id, status, reference));
     public void SetRef(string id, string reference) => Write($"ref {id} ({reference})", db => db.SetRef(id, reference));
     public void CorrectType(string id, string type, string reason) => Write($"correct {id} to {type}: {reason}", db => db.CorrectType(id, type, reason));
     public void CorrectSummary(string id, string summary, string reason) => Write($"reword {id} to '{summary}': {reason}", db => db.CorrectSummary(id, summary, reason));
     public void SetDescription(string id, string? body) =>
         Write($"{(string.IsNullOrWhiteSpace(body) ? "clear" : "set")} {id}'s description", db => db.SetDescription(id, body), render: false);
-    public void AddLink(string from, string to, string kind) => Write($"link {from} {kind} {to}", db => db.AddLink(from, to, kind), render: false);
-    public void RemoveLink(string from, string to, string kind) => Write($"unlink {from} {kind} {to}", db => db.RemoveLink(from, to, kind), render: false);
+    public TicketChange AddLink(string from, string to, string kind) => Change($"link {from} {kind} {to}", [from], db => db.AddLink(from, to, kind), render: false);
+    public TicketChange RemoveLink(string from, string to, string kind) => Change($"unlink {from} {kind} {to}", [from], db => db.RemoveLink(from, to, kind), render: false);
     public void SaveFilter(string name, string query) => Write($"save filter {name}: {query}", db => db.SaveFilter(name, query), render: false);
     public void DeleteFilter(string name) => Write($"delete filter {name}", db => db.DeleteFilter(name), render: false);
+
+    /// <summary>
+    /// Undoes <paramref name="change"/> with compensating changes, each recorded in the ticket's history, plus an <c>undo</c>
+    /// event (M.TIX-T80); nothing is deleted. Throws <see cref="InvalidOperationException"/> when it has changed again since.
+    /// </summary>
+    public void Undo(TicketChange change) =>
+        Write($"undo {change.What}", db => db.Undo(change), render: change.States.Any(s => s.Before.Status != s.After.Status || s.Before.Ref != s.After.Ref));
+
+    /// <summary>Writes <paramref name="work"/> as <see cref="Write"/> does and returns what it changed to <paramref name="ids"/>.</summary>
+    private TicketChange Change(string what, IReadOnlyList<string> ids, Action<TicketsDb> work, bool render = true)
+    {
+        TicketChange change = null!;
+        Write(what, db => change = db.Record(what, ids, () => work(db)), render);
+        return change;
+    }
 
     /// <summary>
     /// Moves a card on the Board (M.TIX-T77) by changing what its column stands for: Proposed unapproves it, Approved approves
@@ -214,8 +231,8 @@ public sealed class TicketStore(string root)
     /// <paramref name="reference"/> (optional). Leaving In progress clears the work record. A closed ticket stays closed:
     /// tickets are append-only, so a card can't leave Done (file a new ticket instead).
     /// </summary>
-    public void MoveCard(string id, BoardColumn to, string? reference = null) =>
-        Write($"board: {id} to {Board.Title(to)}", db =>
+    public TicketChange MoveCard(string id, BoardColumn to, string? reference = null) =>
+        Change($"board: {id} to {Board.Title(to)}", [id], db =>
         {
             var found = db.Ticket(id) ?? throw new KeyNotFoundException($"No ticket {id}.");
             if (found.Ticket.Status != TicketRules.Open)

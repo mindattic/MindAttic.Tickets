@@ -226,9 +226,15 @@ public sealed partial class TicketsDb
         return t.Status == TicketRules.Open ? t : throw new InvalidOperationException($"{t.Id} is {t.Status}; only open tickets can be approved or rejected.");
     }
 
-    /// <summary>Runs <paramref name="work"/> in one write transaction every command in it joins; thrown, it's rolled back.</summary>
+    /// <summary>Runs <paramref name="work"/> in one write transaction every command in it joins; thrown, it's rolled back.
+    /// Inside one already (<see cref="Record"/> runs a change in its own), it joins that one.</summary>
     private void InWrite(Action work)
     {
+        if (ambient is not null)
+        {
+            work();
+            return;
+        }
         using var tx = Begin();
         work();
         tx.Commit();

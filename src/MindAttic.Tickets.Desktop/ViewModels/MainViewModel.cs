@@ -68,6 +68,8 @@ public sealed partial class MainViewModel : ObservableObject
         OlderVersionCommand = new RelayCommand(() => StepVersion(-1), () => Detail is { CanGoOlder: true });
         NewerVersionCommand = new RelayCommand(() => StepVersion(+1), () => Detail is { CanGoNewer: true });
         ToggleSortCommand = new RelayCommand(p => ToggleSort(p as string), p => p is string);
+        UndoCommand = new RelayCommand(async () => await UndoAsync(), () => CanUndo && !Busy);
+        DismissUndoToastCommand = new RelayCommand(HideUndoToast, () => IsUndoToastShown);
     }
 
     public IDialogs Dialogs { get; set; }
@@ -465,17 +467,17 @@ public sealed partial class MainViewModel : ObservableObject
     }
 
     public Task ApproveAsync(TicketRowViewModel? row) =>
-        row is null ? Task.CompletedTask : Do(() => store.Approve(row.Id), $"{row.Id} approved.");
+        row is null ? Task.CompletedTask : Undoable(() => store.Approve(row.Id), $"{row.Id} approved.");
 
     public Task UnapproveAsync(TicketRowViewModel? row) =>
-        row is null ? Task.CompletedTask : Do(() => store.Unapprove(row.Id), $"{row.Id} back to proposed.");
+        row is null ? Task.CompletedTask : Undoable(() => store.Unapprove(row.Id), $"{row.Id} back to proposed.");
 
     public async Task RejectAsync(TicketRowViewModel? row)
     {
         if (row is null) return;
         var answer = Dialogs.Ask(new Prompt($"Reject {row.Id}", $"{row.Summary}\n\nRejecting closes it as wont-do. Why?", "Reason", Ok: "Reject"));
         if (answer is null) return;
-        await Do(() => store.Reject(row.Id, answer.Text), $"{row.Id} rejected and closed as wont-do.");
+        await Undoable(() => store.Reject(row.Id, answer.Text), $"{row.Id} rejected and closed as wont-do.");
     }
 
     /// <summary>Moves a queue row by <paramref name="delta"/> places (Alt+Up / Alt+Down, the ▲▼ buttons).</summary>
@@ -492,7 +494,7 @@ public sealed partial class MainViewModel : ObservableObject
         var order = QueueRows.Select(r => r.Id).ToList();
         order.RemoveAt(from);
         order.Insert(index, row.Id);
-        if (await Do(() => store.Move(row.Id, order), $"{row.Id} moved to position {index + 1} of {order.Count}."))
+        if (await Undoable(() => store.Move(row.Id, order), $"{row.Id} moved to position {index + 1} of {order.Count}."))
         {
             SelectedQueueRow = row;
             FocusRow?.Invoke(row);
@@ -507,7 +509,7 @@ public sealed partial class MainViewModel : ObservableObject
             status == TicketRules.WontDo ? "Reason (becomes its ref)" : "Ref: test, commit or story (optional; keeps the current ref when empty)",
             TextRequired: status == TicketRules.WontDo, Initial: "", Ok: verb));
         if (answer is null) return;
-        await Do(() => store.Close(d.Id, status, answer.Text), $"{d.Id} {status}.");
+        await Undoable(() => store.Close(d.Id, status, answer.Text), $"{d.Id} {status}.");
     }
 
     /// <summary>Sets the ticket's Ref without closing it; an empty answer is refused inline, as the database refuses it.</summary>
@@ -559,13 +561,13 @@ public sealed partial class MainViewModel : ObservableObject
             "Other ticket or story ID", ChoiceLabel: "Kind", Choices: TicketsDb.LinkKinds, Choice: "requires", Ok: "Link"));
         if (answer?.Choice is not { } kind) return;
         var other = answer.Text.Trim().ToUpperInvariant();
-        await Do(() => store.AddLink(d.Id, other, kind), $"{d.Id} {kind} {other}.");
+        await Undoable(() => store.AddLink(d.Id, other, kind), $"{d.Id} {kind} {other}.");
     }
 
     public async Task RemoveLinkAsync(LinkLine? line)
     {
         if (line is null) return;
-        await Do(() => store.RemoveLink(line.Link.From, line.Link.To, line.Link.Kind), $"Removed: {line.Link.From} {line.Link.Kind} {line.Link.To}.");
+        await Undoable(() => store.RemoveLink(line.Link.From, line.Link.To, line.Link.Kind), $"Removed: {line.Link.From} {line.Link.Kind} {line.Link.To}.");
     }
 
     public async Task NewTicketAsync()

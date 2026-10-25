@@ -102,7 +102,7 @@ public sealed partial class MainViewModel
         if (from == to) return false;
         if (from == BoardColumn.Done || !row.IsOpen)
         {
-            StatusMessage = Announcement = $"{row.Id} is {row.Status}: a closed ticket can't be reopened (tickets are append-only). File a new ticket instead.";
+            StatusMessage = Announcement = $"{row.Id} is {row.Status}: a closed ticket can't be moved back (tickets are append-only). Ctrl+Z undoes a close you just made; otherwise file a new ticket.";
             return false;
         }
         string? reference = null;
@@ -121,7 +121,7 @@ public sealed partial class MainViewModel
             BoardColumn.InProgress => $"{row.Id} moved to In progress: approved and marked as worked by hand.",
             _ => $"{row.Id} moved to Done: closed.",
         };
-        if (!await Do(() => store.MoveCard(row.Id, to, reference), done)) return false;
+        if (!await Undoable(() => store.MoveCard(row.Id, to, reference), done)) return false;
         if (BoardColumnOf(to).Rows.FirstOrDefault(r => r.Id.Equals(row.Id, StringComparison.OrdinalIgnoreCase)) is { } moved)
         {
             SelectedBoardRow = moved;

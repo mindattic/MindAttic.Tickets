@@ -15,6 +15,9 @@ public static class WindowCommands
     public static readonly RoutedCommand ShowAudit = new(nameof(ShowAudit), typeof(WindowCommands));
     public static readonly RoutedCommand ShowBoard = new(nameof(ShowBoard), typeof(WindowCommands));
     public static readonly RoutedCommand Help = new(nameof(Help), typeof(WindowCommands));
+
+    /// <summary>Ctrl+Z: undoes the last ticket change (M.TIX-T80), except in a text box, which keeps its own undo.</summary>
+    public static readonly RoutedCommand Undo = new(nameof(Undo), typeof(WindowCommands));
 }
 
 public static class Converters

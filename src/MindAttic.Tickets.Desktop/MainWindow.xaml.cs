@@ -34,6 +34,12 @@ public partial class MainWindow : Window
         CommandBindings.Add(new CommandBinding(WindowCommands.ShowAudit, (_, _) => model.SelectedView = MainViewModel.AuditView));
         CommandBindings.Add(new CommandBinding(WindowCommands.ShowBoard, (_, _) => { model.SelectedView = MainViewModel.BoardView; FocusList(); }));
         CommandBindings.Add(new CommandBinding(WindowCommands.Help, (_, _) => ShowHelp()));
+        CommandBindings.Add(new CommandBinding(WindowCommands.Undo, async (_, _) =>
+        {
+            // A text box with nothing left to undo lets Ctrl+Z through; typing there shouldn't take back a ticket change.
+            if (Keyboard.FocusedElement is System.Windows.Controls.Primitives.TextBoxBase) return;
+            if (!model.Busy) await model.UndoAsync();
+        }));
 
         model.PropertyChanged += (_, e) =>
         {
@@ -357,7 +363,12 @@ public partial class MainWindow : Window
         came back) and the Orchestrator's drift and duplicate-code findings. GitHub intake shows what it would file from
         GitHub issues labelled 'orchestrator' and CI failures on main, and files them only when you click File. The
         Board shows tickets as cards in Proposed, Approved, In progress and Done: moving a card unapproves, approves,
-        marks it worked by hand, or closes it (Done shows the 50 most recent; a closed ticket can't be reopened).
+        marks it worked by hand, or closes it (Done shows the 50 most recent; a closed ticket can't be dragged back).
+
+        Ctrl+Z undoes your last approve, back to proposed, reject, queue move, close, won't do, board move or link
+        change, newest first, by writing the opposite change (a close is undone by reopening the ticket with its old
+        ref). Nothing is deleted: the ticket's history shows both, and an 'undo' entry says what was undone. A change
+        someone else has changed again since isn't undone.
 
         In a list
           Up / Down            move between tickets
@@ -377,6 +388,7 @@ public partial class MainWindow : Window
           Ctrl+1 / 2 / 3 / 4   Repos / Queue / Audit / Board
           Work filter          Queued (/allocate takes it next), Needs approval, Blocked (waiting on other tickets)
           Ctrl+F               search          Ctrl+N   new ticket
+          Ctrl+Z               undo the last change
           F5                   refresh         Ctrl+Shift+S   sync (commit and push the database)
           Ctrl+Plus / Minus / 0   zoom         Esc   close details or clear search
 
