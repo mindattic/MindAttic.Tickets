@@ -18,7 +18,7 @@ public sealed partial class MainViewModel
     public ICommand ExportCommand { get; private set; } = null!;
 
     private void InitExport() =>
-        ExportCommand = new RelayCommand(async () => await ExportAsync(), () => snapshot is not null && !IsAuditView);
+        ExportCommand = new RelayCommand(async () => await ExportAsync(), () => snapshot is not null && ShowsTicketFilters);
 
     /// <summary>The rows shown, in their order: the Queue's, the Board's columns left to right, else the Repos list's.</summary>
     private IEnumerable<TicketRowViewModel> ShownRows() =>
@@ -36,7 +36,8 @@ public sealed partial class MainViewModel
     /// <summary>Asks where to save, then writes the shown tickets there as CSV or markdown (by the file's extension).</summary>
     public async Task ExportAsync()
     {
-        if (snapshot is null || IsAuditView) return;
+        // Audit and Activity list findings and events, not tickets: nothing to export.
+        if (snapshot is null || !ShowsTicketFilters) return;
         var count = ShownRows().Count();
         var name = $"tickets-{SelectedView.ToLowerInvariant()}-{DateTime.Now.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)}.csv";
         if (Dialogs.SaveFile($"Export {count} ticket(s)", name, ExportFilter) is not { } path) return;

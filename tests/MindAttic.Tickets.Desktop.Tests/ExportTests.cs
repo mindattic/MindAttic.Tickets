@@ -75,13 +75,15 @@ public sealed class ExportTests
     }
 
     [Test]
-    public async Task Cancelling_writes_nothing_and_audit_has_nothing_to_export()
+    public async Task Cancelling_writes_nothing_and_audit_and_activity_have_nothing_to_export()
     {
         dialogs.Path = null;
         await model.ExportAsync();
         Assert.That(Directory.GetFiles(root), Is.Empty);
 
         model.SelectedView = MainViewModel.AuditView;
+        Assert.That(model.ExportCommand.CanExecute(null), Is.False);
+        model.SelectedView = MainViewModel.ActivityView;
         Assert.That(model.ExportCommand.CanExecute(null), Is.False);
     }
 }
