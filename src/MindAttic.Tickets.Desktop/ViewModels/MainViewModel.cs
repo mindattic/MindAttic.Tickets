@@ -313,7 +313,7 @@ public sealed partial class MainViewModel : ObservableObject
             if (request != detailRequest) return;
             // A refresh keeps an older version on screen if one was stepped to; on the current one, it follows new saves.
             int? keep = quiet && Detail is { IsCurrentVersion: false } shown && string.Equals(shown.Id, id, StringComparison.OrdinalIgnoreCase) ? shown.VersionNumber : null;
-            Detail = d is null ? null : new DetailViewModel(d, keep);
+            Detail = d is null ? null : new DetailViewModel(d, keep, WorkerOf(d.Info.Ticket.Id));
             if (!quiet && Detail is { } v) StatusMessage = $"{v.Id}: {v.WorkText}";
         }
         catch (Exception ex) when (ex is IOException or InvalidOperationException or System.Data.Common.DbException)

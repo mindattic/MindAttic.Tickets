@@ -55,7 +55,11 @@ public sealed class TicketRowViewModel(string id) : ObservableObject
 
     public string WorkerText => Worker?.Text ?? "";
 
-    public string WorkerTip => Worker is { } w ? (w.Why is { Length: > 0 } why ? why + ". " : "") + "Opens the Orchestrator on this ticket's live work (O)." : "";
+    /// <summary>Why it's orphaned (if it is), its worktree, session and since when (M.TIX-T76), and what the link does.</summary>
+    public string WorkerTip => Worker is { } w
+        ? string.Join("\n", new[] { w.Why is { Length: > 0 } why ? why + "." : null, w.Detail(DateTime.UtcNow) is { Length: > 0 } d ? d : null,
+            "Opens the Orchestrator on this ticket's live work (O)." }.Where(s => s is not null))
+        : "";
 
     public string WorkerName => Worker is { } w ? $"{Id} is being worked: {w.Text.TrimStart('▶', '⚠', ' ')}. Opens the Orchestrator on it." : "";
 

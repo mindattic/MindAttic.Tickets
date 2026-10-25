@@ -115,6 +115,35 @@ public sealed class ReposQueueAuditTests
     }
 
     [Test]
+    public void A_claimed_row_shows_its_worktree_and_since_when()
+    {
+        var row = QueueRow("AL-T2");
+        Assert.That(row.Worker!.Worktree, Is.EqualTo("AL-T2"));
+        Assert.That(row.WorkerText, Does.Contain("in AL-T2").And.Contain("since "));
+        Assert.That(row.WorkerTip, Does.Contain(@"Worktree D:\wt\AL-T2").And.Contain("Since 2026-10-2").And.Contain("Session sess-1"));
+        Assert.That(model.TicketRows.Single(r => r.Id == "AL-T2").WorkerText, Is.EqualTo(row.WorkerText), "the Repos tab's row shows it too");
+    }
+
+    [Test]
+    public async Task The_detail_pane_shows_the_claims_agent_worktree_and_since()
+    {
+        Assert.That(await model.OpenTicketAsync("AL-T2"), Is.True);
+        var d = model.Detail!;
+        Assert.That(d.HasWorker, Is.True);
+        Assert.That(d.ClaimText, Is.EqualTo("Claimed by Ryan (Ryan@Example.com) on opus."));
+        Assert.That(d.ClaimWorktree, Is.EqualTo(@"D:\wt\AL-T2"));
+        Assert.That(d.ClaimSince, Does.StartWith("2026-10-2").And.Contain(" ago)"));
+        Assert.That(d.ClaimSession, Is.EqualTo("sess-1"));
+        Assert.That(d.ClaimSpoken, Does.Contain("Worktree").And.Contain("Since"));
+
+        Assert.That(await model.OpenTicketAsync("AL-T1"), Is.True);
+        Assert.That((model.Detail!.HasWorker, model.Detail.ClaimText), Is.EqualTo((false, "")), "nobody has claimed it");
+
+        Assert.That(await model.OpenTicketAsync("BE-T1"), Is.True);
+        Assert.That(model.Detail!.ClaimText, Does.StartWith("Orphaned").And.Contain("its CLI exited"));
+    }
+
+    [Test]
     public void An_orphaned_ticket_says_so_and_only_orphaned_entries_count()
     {
         Assert.That(QueueRow("BE-T1").Worker, Is.Not.Null.And.Property(nameof(Worker.Orphaned)).True);

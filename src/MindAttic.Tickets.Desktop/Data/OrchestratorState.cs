@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.IO;
 using System.Text.Json;
 using Microsoft.Data.Sqlite;
@@ -12,9 +13,41 @@ namespace MindAttic.Tickets.Desktop.Data;
 public sealed record Worker(string TicketId, string Repo, string? Person, string? Login, string? Model, bool Orphaned,
     string? Directory = null, string? Session = null, DateTime? StartedUtc = null, string? Why = null)
 {
-    /// <summary>One line for the Queue: "Ryan · ryandebraal@mindattic.com · opus", with "orphaned" when its worker is gone.</summary>
+    /// <summary>
+    /// One line for a row: "Ryan · ryandebraal@mindattic.com · opus · in M.TIX-T76 · since 10-25 14:02", with "orphaned" when
+    /// its worker is gone (M.TIX-T76 added the worktree and since).
+    /// </summary>
     public string Text => string.Join(" · ", new[] { Orphaned ? "⚠ orphaned" : "▶ " + (Person ?? Login ?? "a CLI"),
-        Orphaned ? Person ?? Login : Person is null ? null : Login, Model }.Where(s => !string.IsNullOrWhiteSpace(s)));
+        Orphaned ? Person ?? Login : Person is null ? null : Login, Model,
+        Worktree is { } wt ? "in " + wt : null,
+        StartedUtc is { } t ? "since " + t.ToLocalTime().ToString("MM-dd HH:mm", CultureInfo.InvariantCulture) : null }
+        .Where(s => !string.IsNullOrWhiteSpace(s)));
+
+    /// <summary>The worktree's folder name (the last part of <see cref="Directory"/>), or null when none is known.</summary>
+    public string? Worktree => Directory?.TrimEnd('\\', '/') is { Length: > 0 } d ? Path.GetFileName(d) is { Length: > 0 } leaf ? leaf : d : null;
+
+    /// <summary>Who's working it, in words: "Ryan (ryan@…) on opus", or the login alone, or "a CLI".</summary>
+    public string Agent =>
+        (Person is { } p ? Login is { } l ? $"{p} ({l})" : p : Login ?? "a CLI") + (Model is { Length: > 0 } m ? $" on {m}" : "");
+
+    /// <summary>"2026-10-25 14:02 (3h 12m ago)" in local time, or empty when the Orchestrator didn't record a start.</summary>
+    public string SinceText(DateTime nowUtc) => StartedUtc is not { } t ? ""
+        : t.ToLocalTime().ToString("yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture) + $" ({Ago(nowUtc - t)})";
+
+    /// <summary>The row's tooltip detail: the full worktree path and the start time, each on its own line.</summary>
+    public string Detail(DateTime nowUtc) => string.Join("\n", new[]
+    {
+        Directory is { Length: > 0 } d ? "Worktree " + d : null,
+        StartedUtc is null ? null : "Since " + SinceText(nowUtc),
+        Session is { Length: > 0 } s ? "Session " + s : null,
+    }.Where(s => s is not null));
+
+    private static string Ago(TimeSpan span) =>
+        span < TimeSpan.Zero ? "just now"
+        : span.TotalMinutes < 1 ? "under a minute ago"
+        : span.TotalHours < 1 ? $"{(int)span.TotalMinutes}m ago"
+        : span.TotalDays < 1 ? $"{(int)span.TotalHours}h {span.Minutes}m ago"
+        : $"{(int)span.TotalDays}d {span.Hours}h ago";
 
     /// <summary>What <c>MindAttic.Orchestrator.exe --show</c> is given to open this work: the ticket, whose live work it finds.</summary>
     public string ShowTarget => TicketId;

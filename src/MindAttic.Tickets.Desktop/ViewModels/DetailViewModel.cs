@@ -32,9 +32,11 @@ public sealed class DetailViewModel : ObservableObject
     private IReadOnlyList<LinkLine> links;
 
     /// <param name="version">The version to show (1 is as filed); null for the current one.</param>
-    public DetailViewModel(TicketDetail d, int? version = null)
+    /// <param name="worker">Who the Orchestrator's assignments say is working it now (M.TIX-T76); null when nobody is.</param>
+    public DetailViewModel(TicketDetail d, int? version = null, Worker? worker = null)
     {
         Source = d;
+        Worker = worker;
         index = d.Versions.Count == 0 ? -1 : version is { } v ? Math.Clamp(v - 1, 0, d.Versions.Count - 1) : d.Versions.Count - 1;
         links = LinkLines(Shown?.Links ?? d.Links);
         History = [.. d.History.Select(e => new HistoryLine(When(e.At), Describe(e)))];
@@ -143,6 +145,34 @@ public sealed class DetailViewModel : ObservableObject
             .. Work.Session is { } session ? [new OrchestratorTarget($"Session {session}", session)] : Array.Empty<OrchestratorTarget>(),
             new OrchestratorTarget($"{Id} in the Orchestrator", Id),
         ];
+
+    // ── Claim (M.TIX-T76): the Orchestrator's assignment for it — the agent, its worktree, and since when ──
+
+    /// <summary>The Orchestrator's worker on this ticket, as last read; null when it has none.</summary>
+    public Worker? Worker { get; }
+
+    public bool HasWorker => Worker is not null;
+
+    /// <summary>"Claimed by Ryan (ryan@…) on opus", or that its worker died and left it orphaned.</summary>
+    public string ClaimText => Worker is not { } w ? ""
+        : w.Orphaned ? $"Orphaned: {((w.Person ?? w.Login) is { } who ? who + "'s" : "its")} worker is gone{(w.Why is { Length: > 0 } why ? $" ({why})" : "")}."
+        : $"Claimed by {w.Agent}.";
+
+    /// <summary>The worktree it's being worked in (the full path), or empty.</summary>
+    public string ClaimWorktree => Worker?.Directory ?? "";
+
+    /// <summary>When the Orchestrator dispatched it, local, with how long ago; empty when it didn't record it.</summary>
+    public string ClaimSince => Worker?.SinceText(DateTime.UtcNow) ?? "";
+
+    public string ClaimSession => Worker?.Session ?? "";
+
+    /// <summary>All of the claim in one sentence, for a screen reader.</summary>
+    public string ClaimSpoken => Worker is null ? "" : string.Join(" ", new[]
+    {
+        ClaimText,
+        ClaimWorktree.Length > 0 ? $"Worktree {ClaimWorktree}." : null,
+        ClaimSince.Length > 0 ? $"Since {ClaimSince}." : null,
+    }.Where(s => s is not null));
 
     private static string Tokens(long n) =>
         n >= 1_000_000_000 ? (n / 1e9).ToString("0.#", CultureInfo.InvariantCulture) + "B"

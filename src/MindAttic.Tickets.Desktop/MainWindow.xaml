@@ -484,6 +484,20 @@
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
                         </StackPanel>
+                        <!-- Claimed (M.TIX-T76): the Orchestrator's assignment, its agent, worktree and since when; opens the Orchestrator on it. -->
+                        <StackPanel Margin="0,8,0,0" Visibility="{Binding HasWorker, Converter={StaticResource Visible}}"
+                                    AutomationProperties.Name="{Binding ClaimSpoken}">
+                            <TextBlock Text="{Binding ClaimText}" TextWrapping="Wrap" />
+                            <TextBlock Style="{StaticResource Muted}" TextWrapping="Wrap" Text="{Binding ClaimWorktree, StringFormat='Worktree {0}'}"
+                                       Visibility="{Binding ClaimWorktree, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
+                            <TextBlock Style="{StaticResource Muted}" TextWrapping="Wrap" Text="{Binding ClaimSince, StringFormat='Since {0}'}"
+                                       Visibility="{Binding ClaimSince, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
+                            <TextBlock Style="{StaticResource Muted}" TextWrapping="Wrap" Text="{Binding ClaimSession, StringFormat='Session {0}'}"
+                                       Visibility="{Binding ClaimSession, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
+                            <Button Style="{StaticResource LinkBtn}" HorizontalAlignment="Left" Margin="0,2" Content="Open its live work in the Orchestrator"
+                                    Command="{Binding DataContext.ShowWorkerCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding Id}"
+                                    AutomationProperties.Name="{Binding Id, StringFormat='Open the live work on {0} in the Orchestrator'}" ToolTip="Open the Orchestrator on it" />
+                        </StackPanel>
 
                         <Grid Margin="0,12,0,0">
                             <Grid.ColumnDefinitions>
