@@ -113,6 +113,7 @@ public sealed partial class MainViewModel
                 "Ref: test, commit or story (optional; keeps the current ref when empty)", Initial: "", Ok: "Close"));
             if (answer is null) return false;
             reference = answer.Text;
+            ownCloses.Add(row.Id); // no toast for this window's own close
         }
         var title = Board.Title(to);
         var done = to switch

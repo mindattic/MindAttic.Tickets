@@ -34,6 +34,7 @@ public partial class MainWindow : Window
         CommandBindings.Add(new CommandBinding(WindowCommands.ShowTickets, (_, _) => { model.SelectedView = MainViewModel.TicketsView; FocusList(); }));
         CommandBindings.Add(new CommandBinding(WindowCommands.ShowAudit, (_, _) => model.SelectedView = MainViewModel.AuditView));
         CommandBindings.Add(new CommandBinding(WindowCommands.ShowBoard, (_, _) => { model.SelectedView = MainViewModel.BoardView; FocusList(); }));
+        CommandBindings.Add(new CommandBinding(WindowCommands.ShowActivity, (_, _) => { model.SelectedView = MainViewModel.ActivityView; FocusActivity(); }));
         CommandBindings.Add(new CommandBinding(WindowCommands.Help, (_, _) => ShowHelp()));
         CommandBindings.Add(new CommandBinding(WindowCommands.Undo, async (_, _) =>
         {
@@ -42,6 +43,17 @@ public partial class MainWindow : Window
             if (!model.Busy) await model.UndoAsync();
         }));
         CommandBindings.Add(new CommandBinding(WindowCommands.CommandPalette, async (_, _) => await ShowPaletteAsync()));
+
+        // A toast (M.TIX-T84) goes by itself after a while; ✕ or opening it removes it sooner.
+        model.Toasts.CollectionChanged += (_, e) =>
+        {
+            foreach (var toast in e.NewItems?.OfType<ActivityToast>() ?? [])
+            {
+                var timer = new DispatcherTimer(DispatcherPriority.Background, Dispatcher) { Interval = MainViewModel.ToastLifetime };
+                timer.Tick += (_, _) => { timer.Stop(); model.DismissToast(toast); };
+                timer.Start();
+            }
+        };
 
         model.PropertyChanged += (_, e) =>
         {
@@ -135,6 +147,14 @@ public partial class MainWindow : Window
             else list.Focus();
         });
     }
+
+    private void FocusActivity() => Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
+    {
+        if (ActivityList.SelectedItem is null && ActivityList.Items.Count > 0) ActivityList.SelectedIndex = 0;
+        ActivityList.UpdateLayout();
+        if (ActivityList.SelectedItem is { } item && ActivityList.ItemContainerGenerator.ContainerFromItem(item) is ListBoxItem selected) selected.Focus();
+        else ActivityList.Focus();
+    });
 
     private void FocusRow(TicketRowViewModel row)
     {
@@ -434,6 +454,8 @@ public partial class MainWindow : Window
         GitHub issues labelled 'orchestrator' and CI failures on main, and files them only when you click File. The
         Board shows tickets as cards in Proposed, Approved, In progress and Done: moving a card unapproves, approves,
         marks it worked by hand, or closes it (Done shows the 50 most recent; a closed ticket can't be dragged back).
+        Activity is every ticket change in every repo as it happens, newest first; when an agent closes a ticket, a
+        toast says so (click it to open the ticket).
 
         Ctrl+Z undoes your last approve, back to proposed, reject, queue move, close, won't do, board move or link
         change, newest first, by writing the opposite change (a close is undone by reopening the ticket with its old
@@ -462,7 +484,7 @@ public partial class MainWindow : Window
         Anywhere
           Ctrl+K               command palette: type part of a ticket or story ID or text, or a command's
                                name; Up / Down choose, Enter runs (> commands only, # tickets and stories only)
-          Ctrl+1 / 2 / 3 / 4   Repos / Queue / Audit / Board
+          Ctrl+1 / 2 / 3 / 4 / 5   Repos / Queue / Audit / Board / Activity
           Work filter          Queued (/allocate takes it next), Needs approval, Blocked (waiting on other tickets)
           Ctrl+F               search          Ctrl+N   new ticket
           Ctrl+Z               undo the last change

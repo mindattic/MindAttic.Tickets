@@ -85,6 +85,7 @@ public sealed partial class MainViewModel
         var answer = Dialogs.Ask(new Prompt($"Reject {rows.Count} tickets", $"{IdList(rows)}\n\nRejecting closes each one as wont-do, with this reason as its ref. Why?",
             "Reason", Ok: "Reject all"));
         if (answer is null) return;
+        foreach (var r in rows) ownCloses.Add(r.Id); // no toast for this window's own closes
         await RunBulk(rows, "Rejected", ids => store.RejectMany(ids, answer.Text), r => r.IsOpen);
     }
 
@@ -99,7 +100,8 @@ public sealed partial class MainViewModel
             wontDo ? "Reason (becomes each one's ref)" : "Ref: test, commit or story (optional; each keeps its current ref when empty)",
             TextRequired: wontDo, Initial: "", Ok: rows.Count == 1 ? verb : verb + " all"));
         if (answer is null) return;
-        await RunBulk(rows, wontDo ? "Closed as wont-do" : "Closed", ids => store.CloseMany(ids, status, answer.Text), r => r.IsOpen);
+        foreach (var r in rows) ownCloses.Add(r.Id); // no toast for this window's own closes
+        await RunBulk(rows, wontDo ? "Closed as wont-do" : "Closed",ids => store.CloseMany(ids, status, answer.Text), r => r.IsOpen);
     }
 
     /// <summary>Sets the rows' type (what labels a ticket until it has labels of its own), with one reason recorded on each.</summary>

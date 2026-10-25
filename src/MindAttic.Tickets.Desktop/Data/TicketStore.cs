@@ -200,6 +200,9 @@ public sealed class TicketStore(string root)
         };
     });
 
+    /// <summary>The workspace's ticket changes after event <paramref name="after"/>, newest first, at most <paramref name="limit"/> (M.TIX-T84).</summary>
+    public IReadOnlyList<MindAttic.Tickets.Data.ActivityEvent> Activity(long after, int limit) => Read(db => db.Activity(after, limit));
+
     /// <summary>Appends a note to the ticket, by <see cref="Environment.UserName"/> (or <c>$MINDATTIC_TICKETS_AUTHOR</c>).</summary>
     public void AddNote(string id, string markdown) => Write($"note on {id}", db => db.AddNote(id,
         Environment.GetEnvironmentVariable("MINDATTIC_TICKETS_AUTHOR") is { Length: > 0 } a ? a.Trim() : Environment.UserName, markdown), render: false);

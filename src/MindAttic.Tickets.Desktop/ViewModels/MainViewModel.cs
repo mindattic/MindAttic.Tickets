@@ -40,7 +40,7 @@ public sealed partial class MainViewModel : ObservableObject
         this.store = store;
         this.settings = settings;
         Dialogs = dialogs ?? new NoDialogs();
-        selectedView = settings.View switch { TicketsView or "Tickets" => TicketsView, AuditView => AuditView, BoardView => BoardView, _ => QueueView };
+        selectedView = settings.View switch { TicketsView or "Tickets" => TicketsView, AuditView => AuditView, BoardView => BoardView, ActivityView => ActivityView, _ => QueueView };
         InitOrchestrator(orchestrator);
         InitQuery();
         zoom = Math.Clamp(settings.Zoom, MinZoom, MaxZoom);
@@ -80,7 +80,7 @@ public sealed partial class MainViewModel : ObservableObject
 
     // ── What's shown ────────────────────────────────────────────────────────
 
-    public IReadOnlyList<string> Views { get; } = [ReposView, QueueView, AuditView, BoardView];
+    public IReadOnlyList<string> Views { get; } = [ReposView, QueueView, AuditView, BoardView, ActivityView];
 
     public string SelectedView
     {
@@ -92,6 +92,7 @@ public sealed partial class MainViewModel : ObservableObject
             Raise(nameof(IsTicketsView));
             Raise(nameof(IsAuditView));
             Raise(nameof(IsBoardView));
+            Raise(nameof(IsActivityView));
             Raise(nameof(ShowsTicketFilters));
             settings.View = value;
             settings.Save();
@@ -211,7 +212,12 @@ public sealed partial class MainViewModel : ObservableObject
     public ICommand ToggleSortCommand { get; }
 
     /// <summary>The row a command acts on: its parameter, else the selection in the current view.</summary>
-    private TicketRowViewModel? Target(object? p) => p as TicketRowViewModel ?? (IsQueueView ? SelectedQueueRow : IsBoardView ? SelectedBoardRow : SelectedTicketRow);
+    private TicketRowViewModel? Target(object? p) => p as TicketRowViewModel ??
+        (IsQueueView ? SelectedQueueRow : IsBoardView ? SelectedBoardRow : IsActivityView ? DetailRow : SelectedTicketRow);
+
+    /// <summary>The listed row of the ticket the detail pane shows (Activity lists changes, not tickets).</summary>
+    private TicketRowViewModel? DetailRow => Detail is { } d
+        ? QueueRows.Concat(TicketRows).FirstOrDefault(r => r.Id.Equals(d.Id, StringComparison.OrdinalIgnoreCase)) : null;
 
     private TicketRowViewModel? QueueTarget(object? p) => p as TicketRowViewModel ?? (IsQueueView ? SelectedQueueRow : null);
 
@@ -236,6 +242,7 @@ public sealed partial class MainViewModel : ObservableObject
             SyncLabelChoices(s.LabelNames);
             ApplyFilters();
             if (Detail is { } d) await ShowDetailAsync(d.Id, quiet: true);
+            await RefreshActivityAsync();
             LastRefresh = s.Read.ToString("HH:mm:ss", CultureInfo.InvariantCulture);
             CommandManager.InvalidateRequerySuggested();
             _ = RefreshGitAsync();
@@ -276,6 +283,7 @@ public sealed partial class MainViewModel : ObservableObject
         ApplyBoard(s, Match);
         ApplyAudit();
         ApplyHygiene(s);
+        ApplyActivity();
 
         var ready = s.Queue.Count(t => t.Ticket.Type == "fix" || t.Approval == TicketsDb.Approved);
         var blocked = s.Queue.Count(t => t.Blocked);
@@ -283,6 +291,7 @@ public sealed partial class MainViewModel : ObservableObject
         Headline = $"{s.Queue.Count} open · {ready} ready for /allocate · {s.Queue.Count - ready} awaiting approval · {blocked} blocked · {working} being worked · {s.Repos.Count} repos";
         StatusMessage = IsQueueView ? $"Queue: {QueueRows.Count} of {s.Queue.Count} open tickets shown."
             : IsBoardView ? $"Board: {string.Join(", ", BoardColumns.Select(c => $"{c.Rows.Count} {c.Title.ToLowerInvariant()}"))} shown."
+            : IsActivityView ? ActivityStatus
             : IsAuditView ? $"Audit: {HygieneRows.Count} closed tickets to double-check, {DriftRows.Count} drifted, {MissingRows.Count} missing, {DuplicateRows.Count} duplicate groups shown."
             : $"Repos: {TicketRows.Count} of {s.Tickets.Count} tickets shown.";
     }
@@ -366,8 +375,8 @@ public sealed partial class MainViewModel : ObservableObject
     public void GoTo(string? id)
     {
         if (id is null || snapshot is null) return;
-        // Audit has no ticket list: a hygiene finding's ticket opens in Repos.
-        if (IsAuditView && snapshot.Tickets.Any(t => t.Ticket.Id.Equals(id, StringComparison.OrdinalIgnoreCase))) SelectedView = TicketsView;
+        // Audit and Activity have no ticket list: a finding's or a change's ticket opens in Repos.
+        if ((IsAuditView || IsActivityView) &&snapshot.Tickets.Any(t => t.Ticket.Id.Equals(id, StringComparison.OrdinalIgnoreCase))) SelectedView = TicketsView;
         if (snapshot.Tickets.All(t => !t.Ticket.Id.Equals(id, StringComparison.OrdinalIgnoreCase)))
         {
             // A story (a link's other end) opens in its own window (M.TIX-T81).
@@ -491,6 +500,7 @@ public sealed partial class MainViewModel : ObservableObject
         if (row is null) return;
         var answer = Dialogs.Ask(new Prompt($"Reject {row.Id}", $"{row.Summary}\n\nRejecting closes it as wont-do. Why?", "Reason", Ok: "Reject"));
         if (answer is null) return;
+        ownCloses.Add(row.Id); // the feed shows it; no toast for this window's own close
         await Undoable(() => store.Reject(row.Id, answer.Text), $"{row.Id} rejected and closed as wont-do.");
     }
 
@@ -523,6 +533,7 @@ public sealed partial class MainViewModel : ObservableObject
             status == TicketRules.WontDo ? "Reason (becomes its ref)" : "Ref: test, commit or story (optional; keeps the current ref when empty)",
             TextRequired: status == TicketRules.WontDo, Initial: "", Ok: verb));
         if (answer is null) return;
+        ownCloses.Add(d.Id); // the feed shows it; no toast for this window's own close
         await Undoable(() => store.Close(d.Id, status, answer.Text), $"{d.Id} {status}.");
     }
 
