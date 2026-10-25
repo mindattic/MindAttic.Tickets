@@ -24314,6 +24314,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15328, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15329, 'RTB-T244', '2026-10-25T17:42:47Z', 'repo', 'RogueTraderBrevity', 'RogueTrader.Brevity');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15330, 'RTB-T245', '2026-10-25T17:42:47Z', 'repo', 'RogueTraderBrevity', 'RogueTrader.Brevity');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15331, 'RTB-T246', '2026-10-25T17:42:47Z', 'repo', 'RogueTraderBrevity', 'RogueTrader.Brevity');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15332, 'M.ORCH-T802', '2026-10-25T17:50:37Z', 'working', 'ryandebraal@mindattic.com (ddefd224-ff9a-422d-b6e9-218728189540)', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z');
@@ -25797,7 +25798,6 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('USOD-
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('USOD-T9', 'approved', 0, '2026-10-22T23:02:27Z');
 
 -- ticket_work
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T802', NULL, 0, 'ryandebraal@mindattic.com', 'ddefd224-ff9a-422d-b6e9-218728189540', '2026-10-25T05:54:07Z', '2026-10-25T05:54:07Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAU-T9', NULL, 0, 'ryandebraal@mindattic.com', 'ddefd224-ff9a-422d-b6e9-218728189540', '2026-10-25T06:57:35Z', '2026-10-25T06:57:35Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T172', NULL, 0, 'honey@mindattic.com', '12795dbb-cadb-4053-a46e-bb2241b3f3bc', '2026-10-25T06:25:55Z', '2026-10-25T06:25:55Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T176', NULL, 0, 'honey@mindattic.com', '12795dbb-cadb-4053-a46e-bb2241b3f3bc', '2026-10-25T06:26:15Z', '2026-10-25T06:26:15Z');
