@@ -97,7 +97,7 @@ public sealed class ReposQueueAuditTests
     [Test]
     public void The_tabs_are_Repos_Queue_Audit_and_the_old_Tickets_view_opens_as_Repos()
     {
-        Assert.That(model.Views, Is.EqualTo(new[] { "Repos", "Queue", "Audit" }));
+        Assert.That(model.Views, Is.EqualTo(new[] { "Repos", "Queue", "Audit", "Board" }));
         var old = new MainViewModel(new TicketStore(root), new DesktopSettings { View = "Tickets" }, orchestrator: new OrchestratorState(orchDb));
         Assert.That(old.SelectedView, Is.EqualTo(MainViewModel.ReposView));
         Assert.That(old.IsTicketsView, Is.True);

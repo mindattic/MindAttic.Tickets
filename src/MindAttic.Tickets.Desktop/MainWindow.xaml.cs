@@ -32,6 +32,7 @@ public partial class MainWindow : Window
         CommandBindings.Add(new CommandBinding(WindowCommands.ShowQueue, (_, _) => { model.SelectedView = MainViewModel.QueueView; FocusList(); }));
         CommandBindings.Add(new CommandBinding(WindowCommands.ShowTickets, (_, _) => { model.SelectedView = MainViewModel.TicketsView; FocusList(); }));
         CommandBindings.Add(new CommandBinding(WindowCommands.ShowAudit, (_, _) => model.SelectedView = MainViewModel.AuditView));
+        CommandBindings.Add(new CommandBinding(WindowCommands.ShowBoard, (_, _) => { model.SelectedView = MainViewModel.BoardView; FocusList(); }));
         CommandBindings.Add(new CommandBinding(WindowCommands.Help, (_, _) => ShowHelp()));
 
         model.PropertyChanged += (_, e) =>
@@ -79,11 +80,38 @@ public partial class MainWindow : Window
 
     private ListBox CurrentList => model.IsQueueView ? QueueList : TicketList; // Audit has no ticket list: Repos' stands in
 
+    /// <summary>The list a row lives in: on the Board, its column's; else the current view's.</summary>
+    private ListBox ListOf(TicketRowViewModel? row)
+    {
+        if (!model.IsBoardView) return CurrentList;
+        var column = (row is null ? null : model.ColumnHolding(row))
+                     ?? (model.SelectedBoardRow is { } sel ? model.ColumnHolding(sel) : null)
+                     ?? model.BoardColumns.FirstOrDefault(c => c.Rows.Count > 0) ?? model.BoardColumns[0];
+        return BoardList(column) ?? CurrentList;
+    }
+
+    /// <summary>The ListBox showing a Board column's cards (null before the Board is first laid out).</summary>
+    private ListBox? BoardList(BoardColumnViewModel column)
+    {
+        UpdateLayout();
+        return Descendants<ListBox>(this).FirstOrDefault(l => ReferenceEquals(l.DataContext, column));
+    }
+
+    private static IEnumerable<T> Descendants<T>(DependencyObject root) where T : DependencyObject
+    {
+        for (var i = 0; i < VisualTreeHelper.GetChildrenCount(root); i++)
+        {
+            var child = VisualTreeHelper.GetChild(root, i);
+            if (child is T t) yield return t;
+            foreach (var d in Descendants<T>(child)) yield return d;
+        }
+    }
+
     private void FocusList()
     {
         Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
         {
-            var list = CurrentList;
+            var list = ListOf(null);
             if (list.SelectedItem is null && list.Items.Count > 0) list.SelectedIndex = 0; // so the action bar has a ticket to act on
             list.UpdateLayout();
             if (list.SelectedItem is { } item && list.ItemContainerGenerator.ContainerFromItem(item) is ListBoxItem selected) selected.Focus();
@@ -93,7 +121,8 @@ public partial class MainWindow : Window
 
     private void FocusRow(TicketRowViewModel row)
     {
-        var list = CurrentList;
+        var list = ListOf(row);
+        if (model.IsBoardView) list.SelectedItem = row;
         list.ScrollIntoView(row);
         list.UpdateLayout();
         (list.ItemContainerGenerator.ContainerFromItem(row) as ListBoxItem)?.Focus();
@@ -212,6 +241,104 @@ public partial class MainWindow : Window
         if (row is not null) row.IsDropTarget = true;
     }
 
+    // ── Board (M.TIX-T77): drag a card to another column, or Alt+Left / Alt+Right (2.5.7) ──
+
+    private TicketRowViewModel? boardDragRow;
+    private BoardColumnViewModel? boardDropOn;
+
+    private void OnBoardSelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (!ReferenceEquals(e.OriginalSource, sender) || sender is not ListBox { SelectedItem: TicketRowViewModel row } list) return;
+        // One selection across the board: picking a card in one column clears the others.
+        foreach (var other in model.BoardColumns.Select(BoardList))
+            if (other is not null && !ReferenceEquals(other, list)) other.SelectedItem = null;
+        model.SelectedBoardRow = row;
+    }
+
+    private async void OnBoardKeyDown(object sender, KeyEventArgs e)
+    {
+        if (sender is not ListBox { SelectedItem: TicketRowViewModel row, DataContext: BoardColumnViewModel column } || e.OriginalSource is not ListBoxItem) return;
+        var key = e.Key == Key.System ? e.SystemKey : e.Key;
+        var mods = Keyboard.Modifiers;
+        switch (key)
+        {
+            case Key.Left or Key.Right when mods == ModifierKeys.Alt:
+                e.Handled = true;
+                await model.MoveCardByAsync(row, key == Key.Left ? -1 : +1);
+                break;
+            case Key.Left or Key.Right when mods == ModifierKeys.None:
+                e.Handled = true;
+                FocusColumn((int)column.Column, key == Key.Left ? -1 : +1);
+                break;
+            default:
+                e.Handled = await RowKey(key, row);
+                break;
+        }
+    }
+
+    /// <summary>Moves focus from the column at <paramref name="from"/> by <paramref name="delta"/> columns to that column's selected
+    /// (else first) card, passing over empty columns; nothing past either end.</summary>
+    private void FocusColumn(int from, int delta)
+    {
+        for (var i = from + delta; i >= 0 && i < model.BoardColumns.Count; i += delta)
+        {
+            var column = model.BoardColumns[i];
+            if (column.Rows.Count == 0) continue;
+            if (BoardList(column) is not { } list) return;
+            if (list.SelectedItem is null) list.SelectedIndex = 0;
+            list.ScrollIntoView(list.SelectedItem!);
+            list.UpdateLayout();
+            (list.ItemContainerGenerator.ContainerFromItem(list.SelectedItem) as ListBoxItem)?.Focus();
+            return;
+        }
+    }
+
+    private void OnBoardMouseDown(object sender, MouseButtonEventArgs e)
+    {
+        dragStart = e.GetPosition((IInputElement)sender);
+        boardDragRow = RowAt(e.OriginalSource as DependencyObject);
+    }
+
+    private void OnBoardMouseMove(object sender, MouseEventArgs e)
+    {
+        if (boardDragRow is null || e.LeftButton != MouseButtonState.Pressed || sender is not ListBox list) return;
+        var d = e.GetPosition(list) - dragStart;
+        if (Math.Abs(d.X) < SystemParameters.MinimumHorizontalDragDistance && Math.Abs(d.Y) < SystemParameters.MinimumVerticalDragDistance) return;
+        var row = boardDragRow;
+        boardDragRow = null;
+        DragDrop.DoDragDrop(list, new DataObject(typeof(TicketRowViewModel), row), DragDropEffects.Move);
+        SetBoardDropTarget(null);
+    }
+
+    private void OnBoardDragOver(object sender, DragEventArgs e)
+    {
+        var column = (sender as FrameworkElement)?.DataContext as BoardColumnViewModel;
+        var row = e.Data.GetData(typeof(TicketRowViewModel)) as TicketRowViewModel;
+        var from = row is null ? null : model.ColumnHolding(row);
+        var allowed = column is not null && row is { IsOpen: true } && from is not null && !ReferenceEquals(from, column);
+        e.Effects = allowed ? DragDropEffects.Move : DragDropEffects.None;
+        SetBoardDropTarget(allowed ? column : null);
+        e.Handled = true;
+    }
+
+    private void OnBoardDragLeave(object sender, DragEventArgs e) => SetBoardDropTarget(null);
+
+    private async void OnBoardDrop(object sender, DragEventArgs e)
+    {
+        SetBoardDropTarget(null);
+        if ((sender as FrameworkElement)?.DataContext is not BoardColumnViewModel column || e.Data.GetData(typeof(TicketRowViewModel)) is not TicketRowViewModel row) return;
+        e.Handled = true;
+        await model.MoveCardAsync(row, column.Column);
+    }
+
+    private void SetBoardDropTarget(BoardColumnViewModel? column)
+    {
+        if (ReferenceEquals(boardDropOn, column)) return;
+        if (boardDropOn is not null) boardDropOn.IsDropTarget = false;
+        boardDropOn = column;
+        if (column is not null) column.IsDropTarget = true;
+    }
+
     private static TicketRowViewModel? RowAt(DependencyObject? source) =>
         (Ancestor<ListBoxItem>(source)?.DataContext) as TicketRowViewModel;
 
@@ -228,7 +355,9 @@ public partial class MainWindow : Window
         first; /allocate works fixes and approved tickets, and a ticket being worked shows who has it (click to open the
         Orchestrator on it). Audit shows closed tickets to double-check (closed with no Ref, or that a later ticket says
         came back) and the Orchestrator's drift and duplicate-code findings. GitHub intake shows what it would file from
-        GitHub issues labelled 'orchestrator' and CI failures on main, and files them only when you click File.
+        GitHub issues labelled 'orchestrator' and CI failures on main, and files them only when you click File. The
+        Board shows tickets as cards in Proposed, Approved, In progress and Done: moving a card unapproves, approves,
+        marks it worked by hand, or closes it (Done shows the 50 most recent; a closed ticket can't be reopened).
 
         In a list
           Up / Down            move between tickets
@@ -240,8 +369,12 @@ public partial class MainWindow : Window
           Enter or F6          go to the detail pane
           Left / Right         older / newer version of the ticket shown
 
+        On the Board
+          Left / Right         the next column's cards
+          Alt+Left / Alt+Right move the card to the column before or after (or drag it)
+
         Anywhere
-          Ctrl+1 / 2 / 3       Repos / Queue / Audit
+          Ctrl+1 / 2 / 3 / 4   Repos / Queue / Audit / Board
           Work filter          Queued (/allocate takes it next), Needs approval, Blocked (waiting on other tickets)
           Ctrl+F               search          Ctrl+N   new ticket
           F5                   refresh         Ctrl+Shift+S   sync (commit and push the database)

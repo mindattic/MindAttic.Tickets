@@ -14,6 +14,9 @@ public sealed record TicketInfo(string Repo, Ticket Ticket, string Approval, lon
 {
     public IReadOnlyList<string> Blockers { get; init; } = Blockers ?? [];
 
+    /// <summary>A session is recorded as working it in the ticket database (<c>ticket_work</c>; M.TIX-T134).</summary>
+    public bool Working { get; init; }
+
     public bool IsOpen => Ticket.Status == TicketRules.Open;
 
     /// <summary>Open and waiting on another open ticket.</summary>
@@ -78,13 +81,16 @@ public sealed class TicketStore(string root)
         var states = db.QueueStates();
         var tickets = db.Tickets();
         var blockers = OpenBlockers(tickets.Select(x => x.Ticket), db.AllLinks());
+        var work = db.WorkStates();
         IReadOnlyList<string> BlockersOf(string id) => blockers.TryGetValue(id, out var b) ? b : [];
+        bool WorkingOn(string id) => work.TryGetValue(id, out var w) && w.IsWorking;
         TicketInfo Info(string repo, Ticket t) =>
-            states.TryGetValue(t.Id, out var s) ? new(repo, t, s.Approval, s.Priority, BlockersOf(t.Id)) : new(repo, t, TicketsDb.Proposed, 0, BlockersOf(t.Id));
+            (states.TryGetValue(t.Id, out var s) ? new TicketInfo(repo, t, s.Approval, s.Priority, BlockersOf(t.Id)) : new TicketInfo(repo, t, TicketsDb.Proposed, 0, BlockersOf(t.Id)))
+            with { Working = WorkingOn(t.Id) };
         return new Snapshot(
             [.. db.Repos().Select(r => r.Name)],
             [.. tickets.Select(x => Info(x.Repo, x.Ticket))],
-            [.. db.Queue().Select(q => new TicketInfo(q.Repo, q.Ticket, q.Approval, q.Priority, BlockersOf(q.Ticket.Id)))],
+            [.. db.Queue().Select(q => new TicketInfo(q.Repo, q.Ticket, q.Approval, q.Priority, BlockersOf(q.Ticket.Id)) { Working = WorkingOn(q.Ticket.Id) })],
             DateTime.Now)
         {
             Hygiene = TicketHygiene.Check(tickets),
@@ -155,6 +161,35 @@ public sealed class TicketStore(string root)
     public void CorrectType(string id, string type, string reason) => Write($"correct {id} to {type}: {reason}", db => db.CorrectType(id, type, reason));
     public void AddLink(string from, string to, string kind) => Write($"link {from} {kind} {to}", db => db.AddLink(from, to, kind), render: false);
     public void RemoveLink(string from, string to, string kind) => Write($"unlink {from} {kind} {to}", db => db.RemoveLink(from, to, kind), render: false);
+
+    /// <summary>
+    /// Moves a card on the Board (M.TIX-T77) by changing what its column stands for: Proposed unapproves it, Approved approves
+    /// it, In progress approves it and records it as worked by hand (<see cref="Board.HandSession"/>), Done closes it with
+    /// <paramref name="reference"/> (optional). Leaving In progress clears the work record. A closed ticket stays closed:
+    /// tickets are append-only, so a card can't leave Done (file a new ticket instead).
+    /// </summary>
+    public void MoveCard(string id, BoardColumn to, string? reference = null) =>
+        Write($"board: {id} to {Board.Title(to)}", db =>
+        {
+            var found = db.Ticket(id) ?? throw new KeyNotFoundException($"No ticket {id}.");
+            if (found.Ticket.Status != TicketRules.Open)
+            {
+                if (to == BoardColumn.Done) return;
+                throw new InvalidOperationException($"{found.Ticket.Id} is {found.Ticket.Status}; a closed ticket can't be reopened (tickets are append-only). File a new ticket instead.");
+            }
+            var t = found.Ticket.Id;
+            if (to != BoardColumn.InProgress) db.ClearWorking(t);
+            switch (to)
+            {
+                case BoardColumn.Proposed: db.Unapprove(t); break;
+                case BoardColumn.Approved: db.Approve(t); break;
+                case BoardColumn.InProgress:
+                    if (db.QueueState(t).Approval != TicketsDb.Approved) db.Approve(t);
+                    if (!db.Work(t).IsWorking) db.SetWorking(t, null, Board.HandSession);
+                    break;
+                case BoardColumn.Done: db.Close(t, TicketRules.Closed, reference); break;
+            }
+        }, render: to == BoardColumn.Done);
 
     public Ticket Add(string repo, string type, string summary, string reference)
     {

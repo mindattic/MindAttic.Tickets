@@ -13,6 +13,7 @@ public static class WindowCommands
     public static readonly RoutedCommand ShowQueue = new(nameof(ShowQueue), typeof(WindowCommands));
     public static readonly RoutedCommand ShowTickets = new(nameof(ShowTickets), typeof(WindowCommands));
     public static readonly RoutedCommand ShowAudit = new(nameof(ShowAudit), typeof(WindowCommands));
+    public static readonly RoutedCommand ShowBoard = new(nameof(ShowBoard), typeof(WindowCommands));
     public static readonly RoutedCommand Help = new(nameof(Help), typeof(WindowCommands));
 }
 

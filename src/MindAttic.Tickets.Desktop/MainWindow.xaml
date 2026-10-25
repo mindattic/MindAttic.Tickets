@@ -18,6 +18,7 @@
         <KeyBinding Key="D1" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowTickets}" />
         <KeyBinding Key="D2" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowQueue}" />
         <KeyBinding Key="D3" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowAudit}" />
+        <KeyBinding Key="D4" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowBoard}" />
         <KeyBinding Key="F1" Command="{x:Static vm:WindowCommands.Help}" />
         <KeyBinding Key="Escape" Command="{x:Static vm:WindowCommands.Escape}" />
         <KeyBinding Key="OemPlus" Modifiers="Control" Command="{Binding ZoomInCommand}" />
@@ -149,6 +150,25 @@
                 </StackPanel>
             </Grid>
         </DataTemplate>
+
+        <!-- One card on the Board (M.TIX-T77): the ticket in brief. Moves are by drag, or Alt+Left / Alt+Right. -->
+        <DataTemplate x:Key="BoardCardTemplate" DataType="{x:Type vm:TicketRowViewModel}">
+            <StackPanel>
+                <DockPanel>
+                    <TextBlock DockPanel.Dock="Right" Text="{Binding Type}" Style="{StaticResource Muted}" VerticalAlignment="Center" Margin="6,0,0,0" />
+                    <TextBlock Text="{Binding Id}" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
+                </DockPanel>
+                <TextBlock Text="{Binding Summary}" TextWrapping="Wrap" MaxHeight="54" TextTrimming="CharacterEllipsis" Margin="0,3,0,0" ToolTip="{Binding Summary}" />
+                <WrapPanel Margin="0,5,0,0">
+                    <TextBlock Text="{Binding ApprovalText}" Style="{StaticResource ApprovalText}" Margin="0,0,8,0" />
+                    <TextBlock Text="{Binding StatusText}" Style="{StaticResource StatusText}" Margin="0,0,8,0" />
+                    <TextBlock Text="⏸ blocked" FontSize="12" Foreground="{DynamicResource StateRejected}" ToolTip="{Binding BlockedText}"
+                               Visibility="{Binding BlockedText, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
+                </WrapPanel>
+                <TextBlock Text="{Binding WorkerText}" Style="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,3,0,0"
+                           Visibility="{Binding WorkerText, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
+            </StackPanel>
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>
@@ -188,7 +208,7 @@
                 <Label Style="{StaticResource FilterLabel}" Content="View" Target="{Binding ElementName=ViewChoice}" />
                 <ListBox x:Name="ViewChoice" Style="{StaticResource PillChoice}" ItemsSource="{Binding Views}"
                          SelectedItem="{Binding SelectedView}" AutomationProperties.Name="View"
-                         ToolTip="Repos: every repo with its tickets and git state (Ctrl+1). Queue: open tickets in the order /allocate takes them (Ctrl+2). Audit: closed tickets to double-check, and the Orchestrator's drift and duplicate-code findings (Ctrl+3)." />
+                         ToolTip="Repos: every repo with its tickets and git state (Ctrl+1). Queue: open tickets in the order /allocate takes them (Ctrl+2). Audit: closed tickets to double-check, and the Orchestrator's drift and duplicate-code findings (Ctrl+3). Board: tickets as cards in Proposed, Approved, In progress and Done; moving a card changes its approval or status (Ctrl+4)." />
             </StackPanel>
             <StackPanel Margin="0,0,12,6">
                 <Label Style="{StaticResource FilterLabel}" Content="_Search (Ctrl+F)" Target="{Binding ElementName=SearchBox}" />
@@ -369,6 +389,55 @@
                     </GridView>
                 </ListView.View>
             </ListView>
+
+            <!-- ── Board (M.TIX-T77): a column per stage; moving a card changes its approval, work record or status ── -->
+            <Grid Margin="20,0,12,0" Visibility="{Binding IsBoardView, Converter={StaticResource Visible}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <TextBlock Style="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,0,0,8"
+                           Text="Drag a card to another column, or select it and press Alt+Left / Alt+Right. Proposed unapproves it, Approved approves it, In progress approves it and marks it worked by hand, Done closes it (asking for an optional ref). A closed ticket can't be reopened. Left / Right move between columns." />
+                <ItemsControl Grid.Row="1" ItemsSource="{Binding BoardColumns}" Focusable="False">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Rows="1" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type vm:BoardColumnViewModel}">
+                            <Border Background="{DynamicResource MaPane}" CornerRadius="6" Padding="8" Margin="0,0,8,0" BorderThickness="2">
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Setter Property="BorderBrush" Value="{DynamicResource MaChromeBorder}" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsDropTarget}" Value="True">
+                                                <Setter Property="BorderBrush" Value="{DynamicResource MaFocus}" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                                <DockPanel>
+                                    <TextBlock DockPanel.Dock="Top" Text="{Binding Heading}" FontWeight="SemiBold" Margin="2,0,0,8"
+                                               AutomationProperties.HeadingLevel="Level2" TextWrapping="Wrap" />
+                                    <Grid>
+                                        <ListBox Style="{StaticResource RowList}" ItemsSource="{Binding Rows}" ItemTemplate="{StaticResource BoardCardTemplate}"
+                                                 AllowDrop="True" AutomationProperties.Name="{Binding Title, StringFormat='{}{0} column'}"
+                                                 SelectionChanged="OnBoardSelectionChanged" PreviewKeyDown="OnBoardKeyDown"
+                                                 PreviewMouseLeftButtonDown="OnBoardMouseDown" PreviewMouseMove="OnBoardMouseMove"
+                                                 DragOver="OnBoardDragOver" DragLeave="OnBoardDragLeave" Drop="OnBoardDrop" />
+                                        <TextBlock Style="{StaticResource Muted}" Text="No tickets." HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" IsHitTestVisible="False">
+                                            <TextBlock.Visibility>
+                                                <Binding Path="Rows.Count" Converter="{x:Static vm:Converters.ZeroToVisible}" />
+                                            </TextBlock.Visibility>
+                                        </TextBlock>
+                                    </Grid>
+                                </DockPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
 
             <!-- ── Audit: the Orchestrator's findings, read-only (M.TIX-T135) ── -->
             <ScrollViewer Margin="20,0,12,0" VerticalScrollBarVisibility="Auto" Focusable="False"

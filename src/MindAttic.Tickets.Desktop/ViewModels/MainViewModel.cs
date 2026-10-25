@@ -39,7 +39,7 @@ public sealed partial class MainViewModel : ObservableObject
         this.store = store;
         this.settings = settings;
         Dialogs = dialogs ?? new NoDialogs();
-        selectedView = settings.View switch { TicketsView or "Tickets" => TicketsView, AuditView => AuditView, _ => QueueView };
+        selectedView = settings.View switch { TicketsView or "Tickets" => TicketsView, AuditView => AuditView, BoardView => BoardView, _ => QueueView };
         InitOrchestrator(orchestrator);
         zoom = Math.Clamp(settings.Zoom, MinZoom, MaxZoom);
         groupByRepo = settings.GroupByRepo;
@@ -71,7 +71,7 @@ public sealed partial class MainViewModel : ObservableObject
 
     // ── What's shown ────────────────────────────────────────────────────────
 
-    public IReadOnlyList<string> Views { get; } = [ReposView, QueueView, AuditView];
+    public IReadOnlyList<string> Views { get; } = [ReposView, QueueView, AuditView, BoardView];
 
     public string SelectedView
     {
@@ -82,6 +82,7 @@ public sealed partial class MainViewModel : ObservableObject
             Raise(nameof(IsQueueView));
             Raise(nameof(IsTicketsView));
             Raise(nameof(IsAuditView));
+            Raise(nameof(IsBoardView));
             Raise(nameof(ShowsTicketFilters));
             settings.View = value;
             settings.Save();
@@ -193,7 +194,7 @@ public sealed partial class MainViewModel : ObservableObject
     public ICommand ToggleSortCommand { get; }
 
     /// <summary>The row a command acts on: its parameter, else the selection in the current view.</summary>
-    private TicketRowViewModel? Target(object? p) => p as TicketRowViewModel ?? (IsQueueView ? SelectedQueueRow : SelectedTicketRow);
+    private TicketRowViewModel? Target(object? p) => p as TicketRowViewModel ?? (IsQueueView ? SelectedQueueRow : IsBoardView ? SelectedBoardRow : SelectedTicketRow);
 
     private TicketRowViewModel? QueueTarget(object? p) => p as TicketRowViewModel ?? (IsQueueView ? SelectedQueueRow : null);
 
@@ -249,6 +250,7 @@ public sealed partial class MainViewModel : ObservableObject
         var tickets = s.Tickets.Where(Match)
             .Where(t => StatusFilter != AnyStatus ? t.Ticket.Status == StatusFilter : ShowArchived || t.Ticket.Status == TicketRules.Open);
         TicketRows.SyncBy(Sort(tickets), t => t.Ticket.Id, r => r.Id, NewRow, UpdateRow);
+        ApplyBoard(s, Match);
         ApplyAudit();
         ApplyHygiene(s);
 
@@ -257,6 +259,7 @@ public sealed partial class MainViewModel : ObservableObject
         var working = s.Queue.Count(t => WorkerOf(t.Ticket.Id) is { Orphaned: false });
         Headline = $"{s.Queue.Count} open · {ready} ready for /allocate · {s.Queue.Count - ready} awaiting approval · {blocked} blocked · {working} being worked · {s.Repos.Count} repos";
         StatusMessage = IsQueueView ? $"Queue: {QueueRows.Count} of {s.Queue.Count} open tickets shown."
+            : IsBoardView ? $"Board: {string.Join(", ", BoardColumns.Select(c => $"{c.Rows.Count} {c.Title.ToLowerInvariant()}"))} shown."
             : IsAuditView ? $"Audit: {HygieneRows.Count} closed tickets to double-check, {DriftRows.Count} drifted, {MissingRows.Count} missing, {DuplicateRows.Count} duplicate groups shown."
             : $"Repos: {TicketRows.Count} of {s.Tickets.Count} tickets shown.";
     }
@@ -346,6 +349,13 @@ public sealed partial class MainViewModel : ObservableObject
             Announcement = StatusMessage;
             return;
         }
+        if (IsBoardView && BoardColumns.SelectMany(c => c.Rows).FirstOrDefault(r => r.Id.Equals(id, StringComparison.OrdinalIgnoreCase)) is { } card)
+        {
+            SelectedBoardRow = card;
+            FocusRow?.Invoke(card);
+            return;
+        }
+        if (IsBoardView) SelectedView = TicketsView; // not on the board (filtered, or an older closed ticket): Repos lists it
         var row = (IsQueueView ? QueueRows : TicketRows).FirstOrDefault(r => r.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
         if (row is null)
         {
