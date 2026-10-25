@@ -266,6 +266,7 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
         // history and the commits that mention it.
         var (approval, priority) = db.QueueState(t.Id);
         var work = db.Work(t.Id);
+        var labels = db.Labels(t.Id);
         // Its commits (M.TIX-T85): those whose subject names it, in its repo, each linked to GitHub; --diff adds their patches.
         var repoPath = settings.Workspace.Find(repo)?.Path;
         var commits = repoPath is null ? [] : TicketCommits.Find(t.Id, repoPath);
@@ -281,7 +282,7 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
                 requires = db.Requires(t.Id), links = links.Select(l => new { from = l.From, kind = l.Kind, to = l.To, note = l.Note }),
                 history = history.Select(e => new { at = e.At, field = e.Field, old = e.Old, @new = e.New }),
                 notes = notes.Select(n => new { seq = n.Seq, author = n.Author, at = n.At, markdown = n.Markdown }),
-                approval, priority, assignee = work.Assignee, reserved = work.Reserved,
+                approval,priority, assignee = work.Assignee, reserved = work.Reserved, labels,
                 working = work.IsWorking ? new { login = work.Login, session = work.Session, since = work.Since } : null,
                 commits = commits.Select(c => new { hash = c.Hash, shortHash = c.ShortHash, date = c.Date, author = c.Author, subject = c.Subject, url = c.Url }),
                 diff,
@@ -294,6 +295,7 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
         AnsiConsole.MarkupLine($"[grey]Queue:[/] {Output.Esc(approval)}, priority {priority.ToString(System.Globalization.CultureInfo.InvariantCulture)}" +
             (work.Assignee is { } who ? $" · [grey]assigned to[/] {Output.Esc(who)}" : "") +
             (work.Reserved > 0 ? $" · {Output.Esc(TokenText.Format(work.Reserved))} [grey]reserved[/]" : ""));
+        if (labels.Count > 0) AnsiConsole.MarkupLine($"[grey]Labels:[/] {Output.Esc(string.Join(", ", labels))}");
         if (work.IsWorking)
             AnsiConsole.MarkupLine($"[grey]Being worked:[/] {Output.Esc(work.Login ?? "unknown login")}{(work.Session is { } s ? Output.Esc($" ({s})") : "")}" +
                 (work.Since is { } since ? $" [grey]since {Output.Esc(since)}[/]" : ""));

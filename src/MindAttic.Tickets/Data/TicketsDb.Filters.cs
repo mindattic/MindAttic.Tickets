@@ -49,26 +49,13 @@ public sealed partial class TicketsDb
     private static SavedFilter ReadFilter(DbDataReader r) => new(r.GetString(0), r.GetString(1), r.GetString(2));
 
     /// <summary>
-    /// Each ticket's labels, for a query's <c>label:</c>, from the <c>ticket_labels</c> table (ticket_id, label) once labels
-    /// exist (M.TIX-T74); empty until then, when <c>label:</c> matches nothing.
-    /// </summary>
-    public IReadOnlyDictionary<string, IReadOnlyCollection<string>> TicketLabels()
-    {
-        List<(string Id, string Label)> rows;
-        try { rows = Rows("SELECT ticket_id, label FROM ticket_labels", r => (r.GetString(0), r.GetString(1))); }
-        catch (DbException) { return new Dictionary<string, IReadOnlyCollection<string>>(StringComparer.OrdinalIgnoreCase); }
-        return rows.GroupBy(x => x.Id, StringComparer.OrdinalIgnoreCase)
-            .ToDictionary(g => g.Key, g => (IReadOnlyCollection<string>)[.. g.Select(x => x.Label).Distinct(StringComparer.OrdinalIgnoreCase)], StringComparer.OrdinalIgnoreCase);
-    }
-
-    /// <summary>
     /// The tickets <paramref name="query"/> matches (optionally in one repo), in repo then log order, each with its approval
     /// and labels.
     /// </summary>
     public IReadOnlyList<TicketFacts> Find(TicketQuery query, string? repo = null)
     {
         var states = QueueStates();
-        var labels = TicketLabels();
+        var labels = AllLabels();
         return [.. Tickets(repo)
             .Select(x => new TicketFacts(x.Repo, x.Ticket, states.TryGetValue(x.Ticket.Id, out var s) ? s.Approval : Proposed, labels.GetValueOrDefault(x.Ticket.Id)))
             .Where(query.Matches)];

@@ -88,7 +88,7 @@ public sealed class TicketQueryTests
                 Assert.That(db.DeleteFilter("MINE"), Is.True);
                 Assert.That(db.DeleteFilter("mine"), Is.False);
                 Assert.That(db.FindFilter("mine"), Is.Null);
-                Assert.That(db.TicketLabels(), Is.Empty, "no labels table yet: label: matches nothing");
+                Assert.That(db.AllLabels(), Is.Empty, "no labels yet: label: matches nothing");
             }
         }
         finally

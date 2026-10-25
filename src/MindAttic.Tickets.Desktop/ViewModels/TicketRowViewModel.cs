@@ -13,7 +13,7 @@ public sealed class TicketRowViewModel(string id) : ObservableObject
     private long? estimate;
     private int rank;
     private bool isDropTarget;
-    private IReadOnlyList<string> blockers = [];
+    private IReadOnlyList<string> blockers = [], ticketLabels = [];
     private RepoHeaderViewModel? repoHeader;
     private Worker? worker;
 
@@ -35,6 +35,12 @@ public sealed class TicketRowViewModel(string id) : ObservableObject
 
     /// <summary>The open tickets this one waits on (its <c>requires</c> links, all the way down).</summary>
     public IReadOnlyList<string> Blockers { get => blockers; private set => Set(ref blockers, value); }
+
+    /// <summary>Its labels, shown as chips (M.TIX-T74).</summary>
+    public IReadOnlyList<string> TicketLabels { get => ticketLabels; private set { if (Set(ref ticketLabels, value)) Raise(nameof(LabelsText)); } }
+
+    /// <summary>Its labels in one line ("ui, component:desktop"); empty when it has none.</summary>
+    public string LabelsText => string.Join(", ", TicketLabels);
 
     public bool IsBlocked => IsOpen && Blockers.Count > 0;
 
@@ -84,7 +90,8 @@ public sealed class TicketRowViewModel(string id) : ObservableObject
     /// <summary>What a screen reader says for the row: everything a sighted user reads off it, in one sentence.</summary>
     public string SpokenName =>
         (Rank > 0 ? $"Position {Rank}. " : "") + $"{Id}, {Type}, {Status}, {Approval}" +
-        (Priority != 0 ? $", priority {Priority}" : "") + (Estimate is not null ? $", estimated {EstimateText.TrimStart('~')}" : "") + (IsBlocked ? $", {BlockedText.TrimStart('⏸', ' ')}" : "") + $", {Repo}: {Summary}";
+        (Priority != 0 ? $", priority {Priority}" : "") + (Estimate is not null ? $", estimated {EstimateText.TrimStart('~')}" : "") + (IsBlocked ? $", {BlockedText.TrimStart('⏸', ' ')}" : "") +
+        (TicketLabels.Count > 0 ? $", labels {LabelsText}" : "") + $", {Repo}: {Summary}";
 
     public void Update(TicketInfo t)
     {
@@ -98,6 +105,7 @@ public sealed class TicketRowViewModel(string id) : ObservableObject
         Priority = t.Priority;
         Estimate = t.Estimate;
         if (!Blockers.SequenceEqual(t.Blockers, StringComparer.OrdinalIgnoreCase)) Blockers = t.Blockers;
+        if (!TicketLabels.SequenceEqual(t.Labels, StringComparer.Ordinal)) TicketLabels = t.Labels;
         Raise(nameof(IsBlocked));
         Raise(nameof(BlockedText));
         Raise(nameof(MayWork));

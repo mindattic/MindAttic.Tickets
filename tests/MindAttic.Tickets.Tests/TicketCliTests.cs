@@ -145,6 +145,9 @@ public sealed class TicketCliTests
     [TestCase("working", "AA-T1", "--login", "a@b.co")]
     [TestCase("hygiene")]
     [TestCase("note", "AA-T1", "a note")]
+    [TestCase("label", "add", "AA-T1", "ui")]
+    [TestCase("label", "remove", "AA-T1", "ui")]
+    [TestCase("label", "list")]
     public void Every_ticket_subcommand_rejects_an_option_it_doesnt_know_instead_of_silently_ignoring_it(string subcommand, params string[] args)
     {
         MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | fix | open | one | — |\n| AA-T2 | 2026-10-01 | fix | open | two | — |\n");
@@ -266,7 +269,39 @@ public sealed class TicketCliTests
         Assert.That(Json("--repo", "b").Select(x => x.GetProperty("id").GetString()), Is.EqualTo(new[] { "BB-T1" }));
         Assert.That(Json("--status", "open", "--type", "fix").Count, Is.EqualTo(2));
         Assert.That(Json("--since", "2026-10-01").Select(x => x.GetProperty("id").GetString()), Is.EqualTo(new[] { "AA-T2", "BB-T1" }));
-        Assert.That(Json()[0].EnumerateObject().Select(p => p.Name), Is.EqualTo(new[] { "repo", "id", "date", "type", "status", "summary", "ref" }));
+        Assert.That(Json()[0].EnumerateObject().Select(p => p.Name), Is.EqualTo(new[] { "repo", "id", "date", "type", "status", "summary", "ref", "labels" }));
+        Assert.That(Run("ticket", "list", "--label", "ui").Code, Is.EqualTo(1), "labels live in the ticket database, which this workspace hasn't got");
+    }
+
+    [Test]
+    public void Labels_are_added_removed_listed_and_filter_the_list()
+    {
+        MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | feature | open | one | — |\n| AA-T2 | 2026-10-01 | fix | open | two | — |\n");
+        Directory.CreateDirectory(Path.Combine(root, "MindAttic.Tickets", ".git"));
+        Run("db", "migrate", "--cutover");
+
+        Assert.That(Run("ticket", "label", "add", "AA-T1", "UI", "component:desktop").Out.Trim(), Is.EqualTo("AA-T1 labels: component:desktop, ui"));
+        Assert.That(Run("ticket", "label", "add", "AA-T2", "ui").Code, Is.Zero);
+        Assert.That(Run("ticket", "label", "add", "AA-T2", "bad label").Code, Is.EqualTo(1));
+        Assert.That(Run("ticket", "label", "add", "AA-T99", "ui").Code, Is.EqualTo(1));
+
+        List<string?> Ids(params string[] filter) =>
+            [.. JsonDocument.Parse(Run(["ticket", "list", "--json", .. filter]).Out).RootElement.EnumerateArray().Select(x => x.GetProperty("id").GetString())];
+        Assert.That(Ids("--label", "ui"), Is.EqualTo(new[] { "AA-T1", "AA-T2" }));
+        Assert.That(Ids("--label", "UI", "--label", "component:desktop"), Is.EqualTo(new[] { "AA-T1" }), "every label named");
+        Assert.That(Run("ticket", "list", "--label", "no good").Code, Is.Not.Zero);
+        Assert.That(Run("ticket", "list").Out, Does.Contain("component:desktop,"));
+
+        Assert.That(Run("ticket", "label", "remove", "AA-T1", "ui").Out.Trim(), Is.EqualTo("AA-T1 labels: component:desktop"));
+        Assert.That(Ids("--label", "ui"), Is.EqualTo(new[] { "AA-T2" }));
+        Assert.That(Run("ticket", "label", "list", "AA-T1").Out.Trim(), Is.EqualTo("AA-T1 labels: component:desktop"));
+        var counts = JsonDocument.Parse(Run("ticket", "label", "list", "--json").Out).RootElement.EnumerateArray()
+            .Select(x => (x.GetProperty("label").GetString(), x.GetProperty("tickets").GetInt64())).ToList();
+        Assert.That(counts, Is.EqualTo(new[] { ("component:desktop", 1L), ("ui", 1L) }));
+
+        var show = JsonDocument.Parse(Run("ticket", "show", "AA-T1", "--json").Out).RootElement;
+        Assert.That(show.GetProperty("labels").EnumerateArray().Select(x => x.GetString()), Is.EqualTo(new[] { "component:desktop" }));
+        Assert.That(Run("ticket", "show", "AA-T1").Out, Does.Contain("Labels: component:desktop"));
     }
 
     [Test]

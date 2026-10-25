@@ -189,8 +189,17 @@ public sealed class TicketListCommand : Command<TicketListCommand.Settings>
         [Description("A saved filter's query (see 'tickets filter list'); combined with --query when both are given.")]
         public string? Filter { get; init; }
 
+        [CommandOption("--label <LABEL>")]
+        [Description("Only tickets with this label (repeatable: tickets with every one named). A component is a 'component:' label.")]
+        public string[] Label { get; init; } = [];
+
         [CommandOption("--json")]
         public bool Json { get; init; }
+
+        public override ValidationResult Validate() =>
+            Label.FirstOrDefault(l => TicketsDb.NormalizeLabel(l) is null) is { } bad
+                ? ValidationResult.Error($"--label \"{bad}\" isn't a label (a letter or digit first, then letters, digits and - _ . : /)")
+                : ValidationResult.Success();
     }
 
     public override int Execute(CommandContext context, Settings settings)
@@ -199,10 +208,20 @@ public sealed class TicketListCommand : Command<TicketListCommand.Settings>
         if (!string.IsNullOrWhiteSpace(settings.Repo))
             repos = [.. repos.Where(r => r.Name.Equals(settings.Repo, StringComparison.OrdinalIgnoreCase))];
 
+        // Labels live only in the ticket database (M.TIX-T74).
+        IReadOnlyDictionary<string, IReadOnlyList<string>> labels;
+        using (var db = TicketsDb.OpenIfMigrated(settings.Workspace.Root))
+            labels = db?.AllLabels() ?? (settings.Label.Length > 0
+                ? throw new InvalidOperationException("Labels live in the ticket database, and this workspace isn't migrated to it yet; run 'tickets db migrate'.")
+                : new Dictionary<string, IReadOnlyList<string>>());
+        IReadOnlyList<string> LabelsOf(string id) => labels.TryGetValue(id, out var l) ? l : [];
+        var wanted = settings.Label.Select(l => TicketsDb.NormalizeLabel(l)!).ToList();
+
         var rows = WorkspaceTickets.All(repos)
             .Where(x => settings.Status is null || x.Ticket.Status == settings.Status)
             .Where(x => settings.Type is null || x.Ticket.Type == settings.Type)
             .Where(x => settings.Since is null || string.CompareOrdinal(x.Ticket.Date, settings.Since) >= 0)
+            .Where(x => wanted.All(LabelsOf(x.Ticket.Id).Contains))
             .ToList();
 
         if (!string.IsNullOrWhiteSpace(settings.Query) || !string.IsNullOrWhiteSpace(settings.Filter))
@@ -219,10 +238,9 @@ public sealed class TicketListCommand : Command<TicketListCommand.Settings>
             var query = TicketQuery.Parse(text);
             // Approval and labels live only in the database; before migration every ticket is proposed and unlabelled.
             var states = db?.QueueStates();
-            var labels = db?.TicketLabels();
             rows = [.. rows.Where(x => query.Matches(new TicketFacts(x.Repo.Name, x.Ticket,
                 states is not null && states.TryGetValue(x.Ticket.Id, out var s) ? s.Approval : TicketsDb.Proposed,
-                labels?.GetValueOrDefault(x.Ticket.Id))))];
+                labels.GetValueOrDefault(x.Ticket.Id))))];
         }
 
         if (settings.Json)
@@ -230,13 +248,13 @@ public sealed class TicketListCommand : Command<TicketListCommand.Settings>
             Console.WriteLine(JsonSerializer.Serialize(rows.Select(x => new
             {
                 repo = x.Repo.Name, id = x.Ticket.Id, date = x.Ticket.Date, type = x.Ticket.Type,
-                status = x.Ticket.Status, summary = x.Ticket.Summary, @ref = x.Ticket.Ref,
+                status = x.Ticket.Status, summary = x.Ticket.Summary, @ref = x.Ticket.Ref, labels = LabelsOf(x.Ticket.Id),
             }), new JsonSerializerOptions { WriteIndented = true }));
             return 0;
         }
 
         var table = new Table().Border(TableBorder.Rounded)
-            .AddColumns("Repo", "ID", "Date", "Type", "Status", "Summary");
+            .AddColumns("Repo", "ID", "Date", "Type", "Status", "Summary", "Labels");
         foreach (var x in rows)
         {
             var status = x.Ticket.Status switch
@@ -246,7 +264,7 @@ public sealed class TicketListCommand : Command<TicketListCommand.Settings>
                 _ => $"[grey]{Output.Esc(x.Ticket.Status)}[/]",
             };
             table.AddRow(Output.Esc(x.Repo.Name), Output.Esc(x.Ticket.Id), Output.Esc(x.Ticket.Date),
-                Output.Esc(x.Ticket.Type), status, Output.Esc(x.Ticket.Summary));
+                Output.Esc(x.Ticket.Type), status, Output.Esc(x.Ticket.Summary), Output.Esc(string.Join(", ", LabelsOf(x.Ticket.Id))));
         }
         AnsiConsole.Write(table);
         AnsiConsole.MarkupLine($"[grey]{rows.Count} ticket(s)[/]");

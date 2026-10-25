@@ -159,6 +159,7 @@ public sealed partial class TicketsDb
         Exec("UPDATE ticket_work SET ticket_id = $n WHERE ticket_id = $o COLLATE NOCASE", tx, ("$n", newId), ("$o", oldId));
         Exec("UPDATE ticket_notes SET ticket_id = $n WHERE ticket_id = $o COLLATE NOCASE", tx, ("$n", newId), ("$o", oldId));
         Exec("UPDATE ticket_descriptions SET ticket_id = $n WHERE ticket_id = $o COLLATE NOCASE", tx, ("$n", newId), ("$o", oldId));
+        Exec("UPDATE ticket_labels SET ticket_id = $n WHERE ticket_id = $o COLLATE NOCASE", tx, ("$n", newId), ("$o", oldId));
         RetargetLinks(oldId, newId, tx);
         RecordId("ticket", oldId, newId, reason, tx);
         Exec("INSERT INTO ticket_events (ticket_id, at, field, old, new) VALUES ($id, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), 'id', $o, $n)", tx,

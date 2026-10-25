@@ -37,6 +37,13 @@ app.Configure(config =>
         t.AddCommand<TicketReserveCommand>("reserve").WithDescription("Set aside tokens for a ticket so background work can't spend them first (0 releases).");
         t.AddCommand<TicketWorkingCommand>("working").WithDescription("Record the session working a ticket now (--login, --session) or --clear it; the Orchestrator writes it, Tickets Desktop links back.");
         t.AddCommand<TicketNoteCommand>("note").WithDescription("Append a comment to a ticket: tickets ticket note <ID> \"markdown\" [--author X] (- reads it from stdin). Notes are never changed or deleted.");
+        t.AddBranch("label", l =>
+        {
+            l.SetDescription("Ticket labels and components (a component is a 'component:' label); 'tickets ticket list --label X' filters by them.");
+            l.AddCommand<TicketLabelAddCommand>("add").WithDescription("Label a ticket: label add <ID> <LABEL>... (recorded in its history).");
+            l.AddCommand<TicketLabelRemoveCommand>("remove").WithDescription("Take labels off a ticket: label remove <ID> <LABEL>...");
+            l.AddCommand<TicketLabelListCommand>("list").WithDescription("A ticket's labels, or with no ID every label in use and how many tickets carry it.");
+        });
         t.AddCommand<TicketHygieneCommand>("hygiene").WithDescription("Closed tickets that may not be done: no Ref cited, or a later ticket says it came back.");
         t.AddCommand<TicketIntakeCommand>("intake").WithDescription("File GitHub issues labelled orchestrator and CI failures on main as tickets (--dry-run to preview).");
     });

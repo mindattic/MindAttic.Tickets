@@ -169,6 +169,9 @@ public sealed class DetailViewModel : ObservableObject
 
     public IReadOnlyList<string> Blockers => Source.OpenBlockers;
 
+    /// <summary>Its labels as they are now (M.TIX-T74), shown as chips; labels aren't versioned.</summary>
+    public IReadOnlyList<string> TicketLabels => Source.Info.Labels;
+
     // ── Work (M.TIX-T134): assignee, reservation, and the session working it, which links back to the Orchestrator ──
 
     public TicketWork Work => Source.Work;

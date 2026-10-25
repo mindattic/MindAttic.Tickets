@@ -225,6 +225,12 @@ public sealed class TicketsServer(string connectionString)
             body nvarchar(max) NOT NULL,
             updated nvarchar(64) NOT NULL);
         """,
+        $"""
+        CREATE TABLE ticket_labels (
+            ticket_id nvarchar(450) COLLATE {NoCase} NOT NULL, label nvarchar(64) NOT NULL, added nvarchar(64) NOT NULL,
+            PRIMARY KEY (ticket_id, label));
+        CREATE INDEX ticket_labels_by_label ON ticket_labels (label);
+        """,
         """
         CREATE TABLE repo_renames (
             seq bigint IDENTITY(1,1) PRIMARY KEY, old_name nvarchar(450) NOT NULL, new_name nvarchar(450) NOT NULL, at nvarchar(64) NOT NULL, reason nvarchar(max) NOT NULL);

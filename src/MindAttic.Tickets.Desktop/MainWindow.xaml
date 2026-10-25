@@ -128,10 +128,23 @@
                                 Visibility="{Binding BlockedText, Converter={x:Static vm:Converters.EmptyToCollapsed}}">
                             <TextBlock Text="{Binding BlockedText}" FontSize="12" Foreground="{DynamicResource StateRejected}" />
                         </Border>
-                        <TextBlock Style="{StaticResource Muted}" VerticalAlignment="Center"
+                        <TextBlock Style="{StaticResource Muted}" VerticalAlignment="Center" Margin="0,0,8,0"
                                    Text="{Binding Priority, StringFormat='priority {0}'}" />
                         <TextBlock Style="{StaticResource Muted}" VerticalAlignment="Center" Margin="10,0,0,0" Text="{Binding EstimateText}"
                                    Visibility="{Binding EstimateText, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
+                        <!-- Its labels (M.TIX-T74): a '#' marks each, so they read as labels without colour. -->
+                        <ItemsControl ItemsSource="{Binding TicketLabels}" Focusable="False" VerticalAlignment="Center">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate><WrapPanel /></ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Style="{StaticResource Chip}" BorderBrush="{DynamicResource MaControlBorder}">
+                                        <TextBlock Text="{Binding StringFormat='#{0}'}" FontSize="12" Foreground="{DynamicResource MaMuted}" />
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
                     </WrapPanel>
                     <!-- Its live worker, from the Orchestrator's state: opens the Orchestrator on it (M.TIX-T135). -->
                     <Button Style="{StaticResource LinkBtn}" HorizontalAlignment="Left" Margin="0,4,0,0" Focusable="False"
@@ -264,6 +277,12 @@
                 <ComboBox x:Name="WorkBox" Style="{StaticResource Combo}" MinWidth="150" ItemsSource="{Binding WorkChoices}"
                           SelectedItem="{Binding WorkFilter}" AutomationProperties.Name="Work filter"
                           ToolTip="Queued: open, a fix or approved, and not blocked (what /allocate takes next). Needs approval: open and not yet approved. Blocked: waiting on other open tickets." />
+            </StackPanel>
+            <StackPanel Margin="0,0,12,6" Visibility="{Binding ShowsTicketFilters, Converter={StaticResource Visible}}">
+                <Label Style="{StaticResource FilterLabel}" Content="_Label" Target="{Binding ElementName=LabelBox}" />
+                <ComboBox x:Name="LabelBox" Style="{StaticResource Combo}" MinWidth="150" ItemsSource="{Binding LabelChoices}"
+                          SelectedItem="{Binding LabelFilter}" AutomationProperties.Name="Label filter"
+                          ToolTip="Only tickets with this label. A component is a 'component:' label. Add labels from a ticket's details, or 'tickets ticket label add'." />
             </StackPanel>
             <StackPanel Margin="0,0,12,6" Visibility="{Binding IsTicketsView, Converter={StaticResource Visible}}">
                 <Label Style="{StaticResource FilterLabel}" Content="Stat_us" Target="{Binding ElementName=StatusBox}" />
@@ -435,6 +454,11 @@
                             </GridViewColumn.Header>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate><TextBlock Text="{Binding Summary}" TextTrimming="CharacterEllipsis" ToolTip="{Binding Summary}" /></DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="180" Header="Labels">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate><TextBlock Text="{Binding LabelsText}" Style="{StaticResource Muted}" TextTrimming="CharacterEllipsis" ToolTip="{Binding LabelsText}" /></DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                     </GridView>
@@ -705,9 +729,38 @@
                                     Command="{Binding DataContext.AddNoteCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
                             <Button Style="{StaticResource MaButton}" Content="Estimate…" Margin="0,0,6,6" ToolTip="Set its effort estimate in tokens: within a priority the queue runs the smallest first (empty clears)"
                                     Command="{Binding DataContext.EstimateCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
+                            <Button Style="{StaticResource MaButton}" Content="Add label…" Margin="0,0,6,6" ToolTip="Label it (a component is a 'component:' label)"
+                                    Command="{Binding DataContext.AddLabelCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
                         </WrapPanel>
                         <TextBlock Text="{Binding Error}" Style="{StaticResource ErrorText}"
                                    Visibility="{Binding Error, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
+
+                        <!-- Labels (M.TIX-T74): click one to filter by it, ✕ takes it off. -->
+                        <TextBlock Text="LABELS" Style="{StaticResource SectionLabel}" />
+                        <TextBlock Text="No labels." Style="{StaticResource Muted}">
+                            <TextBlock.Visibility>
+                                <Binding Path="TicketLabels.Count" Converter="{x:Static vm:Converters.ZeroToVisible}" />
+                            </TextBlock.Visibility>
+                        </TextBlock>
+                        <ItemsControl ItemsSource="{Binding TicketLabels}" Focusable="False">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate><WrapPanel /></ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Style="{StaticResource Chip}" BorderBrush="{DynamicResource MaControlBorder}" Margin="0,0,6,6">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button Style="{StaticResource LinkBtn}" Content="{Binding}" VerticalAlignment="Center"
+                                                    Command="{Binding DataContext.FilterByLabelCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}"
+                                                    AutomationProperties.Name="{Binding StringFormat='Label {0}: show tickets with it'}" ToolTip="Show only tickets with this label" />
+                                            <Button Style="{StaticResource MaToolButton}" Content="&#x2715;" Width="22" Height="22" FontSize="9" Margin="6,0,0,0" VerticalAlignment="Center"
+                                                    Command="{Binding DataContext.RemoveLabelCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}"
+                                                    AutomationProperties.Name="{Binding StringFormat='Remove label {0}'}" ToolTip="Remove this label" />
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
 
                         <DockPanel>
                             <Border DockPanel.Dock="Right" Style="{StaticResource ChangedMark}" Tag="{Binding LinksChanged}" Margin="0,16,0,6" VerticalAlignment="Bottom"

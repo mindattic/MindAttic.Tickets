@@ -19,7 +19,7 @@ public sealed partial class MainViewModel : ObservableObject
 {
     /// <summary>The tabs. <see cref="TicketsView"/> is the Repos tab (it was "Tickets" before M.TIX-T135).</summary>
     public const string QueueView = "Queue", TicketsView = "Repos", ReposView = TicketsView, AuditView = "Audit";
-    public const string AllRepos = "All repos", AnyStatus = "Any status", AnyType = "Any type", AnyApproval = "Any approval";
+    public const string AllRepos = "All repos", AnyStatus = "Any status", AnyType = "Any type", AnyApproval = "Any approval", AnyLabel = "Any label";
 
     /// <summary>The work filter (M.TIX-T133): where an open ticket stands with /allocate.</summary>
     public const string AnyWork = "Any", Queued = "Queued", NeedsApproval = "Needs approval", Blocked = "Blocked";
@@ -28,7 +28,7 @@ public sealed partial class MainViewModel : ObservableObject
     private readonly DesktopSettings settings;
     private Snapshot? snapshot;
     private string selectedView;
-    private string search = "", repoFilter = AllRepos, statusFilter = AnyStatus, typeFilter = AnyType, approvalFilter = AnyApproval, workFilter = AnyWork;
+    private string search = "", repoFilter = AllRepos, statusFilter = AnyStatus, typeFilter = AnyType, approvalFilter = AnyApproval, workFilter = AnyWork, labelFilter = AnyLabel;
     private string sortBy = "ID";
     private bool sortDescending, showArchived, busy, groupByRepo;
     private TicketRowViewModel? selectedQueueRow, selectedTicketRow;
@@ -119,6 +119,12 @@ public sealed partial class MainViewModel : ObservableObject
     public string ApprovalFilter { get => approvalFilter; set { if (Set(ref approvalFilter, value ?? AnyApproval)) ApplyFilters(); } }
     public string WorkFilter { get => workFilter; set { if (Set(ref workFilter, value ?? AnyWork)) ApplyFilters(); } }
 
+    /// <summary>Every label in use, after <see cref="AnyLabel"/> (M.TIX-T74).</summary>
+    public ObservableCollection<string> LabelChoices { get; } = [AnyLabel];
+
+    /// <summary>Only tickets with this label (M.TIX-T74); a component is a <c>component:</c> label.</summary>
+    public string LabelFilter { get => labelFilter; set { if (Set(ref labelFilter, value ?? AnyLabel)) ApplyFilters(); } }
+
     /// <summary>
     /// Tickets listed under a heading per repo, each repo's tickets together (the owner: "organized by repos, and each repo
     /// has tickets"); the sort then orders tickets within each repo. Remembered between runs.
@@ -139,7 +145,7 @@ public sealed partial class MainViewModel : ObservableObject
     public string SortBy { get => sortBy; set { if (Set(ref sortBy, value ?? "ID")) ApplyFilters(); } }
     public bool SortDescending { get => sortDescending; set { if (Set(ref sortDescending, value)) ApplyFilters(); } }
 
-    public bool IsFiltered => Search.Length > 0 || !parsedQuery.IsEmpty || RepoFilter != AllRepos || TypeFilter != AnyType || ApprovalFilter != AnyApproval || WorkFilter != AnyWork;
+    public bool IsFiltered => Search.Length > 0 || !parsedQuery.IsEmpty || RepoFilter != AllRepos || TypeFilter != AnyType || ApprovalFilter != AnyApproval || WorkFilter != AnyWork || LabelFilter != AnyLabel;
 
     public TicketRowViewModel? SelectedQueueRow
     {
@@ -227,6 +233,7 @@ public sealed partial class MainViewModel : ObservableObject
             snapshot = s;
             SyncSavedFilters(s);
             foreach (var r in s.Repos.Where(r => !RepoChoices.Contains(r))) RepoChoices.Add(r);
+            SyncLabelChoices(s.LabelNames);
             ApplyFilters();
             if (Detail is { } d) await ShowDetailAsync(d.Id, quiet: true);
             LastRefresh = s.Read.ToString("HH:mm:ss", CultureInfo.InvariantCulture);
@@ -252,9 +259,10 @@ public sealed partial class MainViewModel : ObservableObject
             (ApprovalFilter == AnyApproval || t.Approval == ApprovalFilter) &&
             WorkMatch(t) &&
             QueryMatch(t) &&
+            (LabelFilter == AnyLabel || t.Labels.Contains(LabelFilter, StringComparer.Ordinal)) &&
             (Search.Length == 0 || t.Ticket.Id.Contains(Search, StringComparison.OrdinalIgnoreCase) ||
              t.Ticket.Summary.Contains(Search, StringComparison.OrdinalIgnoreCase) || t.Ticket.Ref.Contains(Search, StringComparison.OrdinalIgnoreCase) ||
-             t.Repo.Contains(Search, StringComparison.OrdinalIgnoreCase));
+             t.Repo.Contains(Search, StringComparison.OrdinalIgnoreCase) || t.Labels.Any(l => l.Contains(Search, StringComparison.OrdinalIgnoreCase)));
 
         ApplyRepoHeaders(s);
         QueueRows.SyncBy(s.Queue.Where(Match), t => t.Ticket.Id, r => r.Id, NewRow, UpdateRow);
@@ -388,9 +396,9 @@ public sealed partial class MainViewModel : ObservableObject
     /// <summary>Clears search and every filter and shows archived tickets, without re-filtering (the caller does).</summary>
     private void ClearFilters()
     {
-        search = ""; repoFilter = AllRepos; typeFilter = AnyType; approvalFilter = AnyApproval; workFilter = AnyWork; statusFilter = AnyStatus; showArchived = true;
+        search = ""; repoFilter = AllRepos; typeFilter = AnyType; approvalFilter = AnyApproval; workFilter = AnyWork; labelFilter = AnyLabel; statusFilter = AnyStatus; showArchived = true;
         query = ""; queryError = ""; parsedQuery = TicketQuery.All; selectedSavedFilter = NoSavedFilter;
-        foreach (var p in new[] { nameof(Search), nameof(RepoFilter), nameof(TypeFilter), nameof(ApprovalFilter), nameof(WorkFilter), nameof(StatusFilter), nameof(ShowArchived),
+        foreach (var p in new[] { nameof(Search), nameof(RepoFilter), nameof(TypeFilter), nameof(ApprovalFilter), nameof(WorkFilter), nameof(LabelFilter), nameof(StatusFilter), nameof(ShowArchived),
                      nameof(Query), nameof(QueryError), nameof(SelectedSavedFilter) }) Raise(p);
     }
 

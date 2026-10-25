@@ -19,9 +19,8 @@ public sealed record TicketInfo(string Repo, Ticket Ticket, string Approval, lon
 
     /// <summary>A session is recorded as working it in the ticket database (<c>ticket_work</c>; M.TIX-T134).</summary>
     public bool Working { get; init; }
-
-    /// <summary>Its labels, for a query's <c>label:</c> (M.TIX-T78).</summary>
-    public IReadOnlyCollection<string> Labels { get; init; } = [];
+    /// <summary>Its labels, sorted (M.TIX-T74), also what a query's <c>label:</c> matches (M.TIX-T78); a component is a <c>component:</c> label.</summary>
+    public IReadOnlyList<string> Labels { get; init; } = [];
 
     /// <summary>What a <see cref="TicketQuery"/> is matched against.</summary>
     public TicketFacts Facts => new(Repo, Ticket, Approval, Labels);
@@ -60,6 +59,9 @@ public sealed record Snapshot(IReadOnlyList<string> Repos, IReadOnlyList<TicketI
 
     /// <summary>Every repo's stories, epics and backlog items, for the command palette's jump (M.TIX-T81).</summary>
     public IReadOnlyList<StoredStory> Stories { get; init; } = [];
+
+    /// <summary>Every label in use, sorted (M.TIX-T74): the label filter's choices.</summary>
+    public IReadOnlyList<string> LabelNames { get; init; } = [];
 }
 
 /// <summary>A story as the command palette opens it (M.TIX-T81): its rows (one per repo holding the ID) and its links.</summary>
@@ -112,11 +114,11 @@ public sealed class TicketStore(string root)
         var tickets = db.Tickets();
         var blockers = OpenBlockers(tickets.Select(x => x.Ticket), db.AllLinks());
         var work = db.WorkStates();
-        var labels = db.TicketLabels();
+        var labels = db.AllLabels();
         IReadOnlyList<string> BlockersOf(string id) => blockers.TryGetValue(id, out var b) ? b : [];
-        IReadOnlyCollection<string> LabelsOf(string id) => labels.TryGetValue(id, out var l) ? l : [];
         bool WorkingOn(string id) => work.TryGetValue(id, out var w) && w.IsWorking;
         long? EstimateOf(string id) => estimates.TryGetValue(id, out var e) ? e : null;
+        IReadOnlyList<string> LabelsOf(string id) => labels.TryGetValue(id, out var l) ? l : [];
         TicketInfo Info(string repo, Ticket t) =>
             (states.TryGetValue(t.Id, out var s) ? new TicketInfo(repo, t, s.Approval, s.Priority, BlockersOf(t.Id)) : new TicketInfo(repo, t, TicketsDb.Proposed, 0, BlockersOf(t.Id)))
             with { Working = WorkingOn(t.Id), Estimate = EstimateOf(t.Id), Labels = LabelsOf(t.Id) };
@@ -129,6 +131,7 @@ public sealed class TicketStore(string root)
             Hygiene = TicketHygiene.Check(tickets),
             SavedFilters = db.SavedFilters(),
             Stories = [.. db.Stories().Where(s => s.Id.Length > 0)],
+            LabelNames = [.. db.LabelCounts().Select(c => c.Label)],
         };
     });
 
@@ -183,7 +186,7 @@ public sealed class TicketStore(string root)
             .Where(l => l.Kind == "requires" && string.Equals(l.To, found.Ticket.Id, StringComparison.OrdinalIgnoreCase))
             .Select(l => l.From)
             .Where(d => db.Ticket(d) is { } t && t.Ticket.Status == TicketRules.Open).ToList();
-        return new TicketDetail(new TicketInfo(found.Repo, found.Ticket, approval, priority, blockers) { Estimate = db.Estimate(found.Ticket.Id) }, db.History(found.Ticket.Id), links, blockers)
+        return new TicketDetail(new TicketInfo(found.Repo, found.Ticket, approval, priority, blockers) { Estimate = db.Estimate(found.Ticket.Id), Labels = db.Labels(found.Ticket.Id) }, db.History(found.Ticket.Id), links, blockers)
         {
             OpenDependents = dependents,
             Work = db.Work(found.Ticket.Id),
@@ -219,6 +222,9 @@ public sealed class TicketStore(string root)
     public void CorrectSummary(string id, string summary, string reason) => Write($"reword {id} to '{summary}': {reason}", db => db.CorrectSummary(id, summary, reason));
     public void SetDescription(string id, string? body) =>
         Write($"{(string.IsNullOrWhiteSpace(body) ? "clear" : "set")} {id}'s description", db => db.SetDescription(id, body), render: false);
+    public void AddLabels(string id, IReadOnlyList<string> labels) =>
+        Write($"label {id} {string.Join(" ", labels)}", db => db.AddLabels(id, labels), render: false);
+    public void RemoveLabel(string id, string label) => Write($"unlabel {id} {label}", db => db.RemoveLabels(id, [label]), render: false);
     public TicketChange AddLink(string from, string to, string kind) => Change($"link {from} {kind} {to}", [from], db => db.AddLink(from, to, kind), render: false);
     public TicketChange RemoveLink(string from, string to, string kind) => Change($"unlink {from} {kind} {to}", [from], db => db.RemoveLink(from, to, kind), render: false);
     public void SaveFilter(string name, string query) => Write($"save filter {name}: {query}", db => db.SaveFilter(name, query), render: false);
