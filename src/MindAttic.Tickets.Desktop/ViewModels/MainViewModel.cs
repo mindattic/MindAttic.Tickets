@@ -278,7 +278,8 @@ public sealed partial class MainViewModel : ObservableObject
             "Approval" => t => t.Approval,
             "Priority" => t => t.Priority,
             "Summary" => t => t.Ticket.Summary.ToUpperInvariant(),
-            _ => t => t.Repo.ToUpperInvariant(),
+            // An ID is its repo then its number (T9 before T10), so descending reverses both, not just the repo.
+            _ => t => (t.Repo.ToUpperInvariant(), TicketRules.ParseNumber(t.Ticket.Id) ?? 0),
         };
         // Grouped by repo, each repo's tickets stay together (the list's headings follow the rows' order), sorted within it.
         IOrderedEnumerable<TicketInfo> ordered;
