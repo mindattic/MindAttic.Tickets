@@ -2,6 +2,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
 using System.Windows.Input;
+using MindAttic.Components.Wpf.Mvvm;
 using MindAttic.Tickets.Desktop.Data;
 
 namespace MindAttic.Tickets.Desktop.ViewModels;

@@ -1,5 +1,6 @@
 using System.Globalization;
 using System.Windows.Input;
+using MindAttic.Components.Wpf.Mvvm;
 using MindAttic.Tickets.Data;
 using MindAttic.Tickets.Desktop.Data;
 using MindAttic.Tickets.Log;

@@ -1,6 +1,6 @@
 using System.Windows;
+using MindAttic.Components.Wpf.Controls;
 using MindAttic.Tickets.Desktop.Data;
-using MindAttic.Tickets.Desktop.Theme;
 using MindAttic.Tickets.Desktop.ViewModels;
 
 namespace MindAttic.Tickets.Desktop;
@@ -15,10 +15,10 @@ namespace MindAttic.Tickets.Desktop;
 public partial class App : Application
 {
     // WCAG 1.4.13: a tooltip stays up until the pointer or focus leaves or Esc is pressed, rather than vanishing after 5s.
-    static App() => System.Windows.Controls.ToolTipService.ShowDurationProperty.OverrideMetadata(
-        typeof(DependencyObject), new FrameworkPropertyMetadata(int.MaxValue));
+    static App() => MaToolTips.KeepOpen();
 
     private readonly CancellationTokenSource stopListening = new();
+    private IDisposable? highContrast;
 
     protected override void OnStartup(StartupEventArgs e)
     {
@@ -33,7 +33,9 @@ public partial class App : Application
         var args = e.Args;
         var at = Array.FindIndex(args, a => a.Equals("--root", StringComparison.OrdinalIgnoreCase));
         var root = at >= 0 && at + 1 < args.Length ? args[at + 1] : Workspace.DefaultRoot;
-        HighContrast.Track(this, force: args.Contains("--high-contrast", StringComparer.OrdinalIgnoreCase));
+        highContrast = MaHighContrast.Track(this, force: args.Contains("--high-contrast", StringComparer.OrdinalIgnoreCase),
+            backgrounds: ["MaPane", "MaChanged"],
+            foregrounds: ["FieldBorder", "StateApproved", "StateProposed", "StateRejected", "StateOpen", "StateClosed", "StateWontDo"]);
 
         log.Information("Started {Version} on {Root}{Ticket}", typeof(App).Assembly.GetName().Version, root,
             ticket is null ? "" : $", opening {ticket}");
@@ -51,6 +53,7 @@ public partial class App : Application
     protected override void OnExit(ExitEventArgs e)
     {
         stopListening.Cancel();
+        highContrast?.Dispose();
         TicketsLog.Stop();
         base.OnExit(e);
     }

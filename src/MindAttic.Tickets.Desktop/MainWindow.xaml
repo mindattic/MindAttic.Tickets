@@ -138,16 +138,16 @@
                             AutomationProperties.Name="{Binding WorkerName}" ToolTip="{Binding WorkerTip}" />
                 </StackPanel>
                 <StackPanel Grid.Column="3" Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,0">
-                    <Button Style="{StaticResource IconBtn}" Content="&#x2714;" Focusable="False" Margin="0,0,4,0"
+                    <Button Style="{StaticResource MaToolButton}" Content="&#x2714;" Focusable="False" Margin="0,0,4,0"
                             Command="{Binding DataContext.ApproveCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}"
                             AutomationProperties.Name="{Binding Id, StringFormat='Approve {0}'}" ToolTip="Approve (A)" />
-                    <Button Style="{StaticResource IconBtn}" Content="&#x2716;" Focusable="False" Margin="0,0,10,0"
+                    <Button Style="{StaticResource MaToolButton}" Content="&#x2716;" Focusable="False" Margin="0,0,10,0"
                             Command="{Binding DataContext.RejectCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}"
                             AutomationProperties.Name="{Binding Id, StringFormat='Reject {0}'}" ToolTip="Reject: closes it as wont-do (R)" />
-                    <Button Style="{StaticResource IconBtn}" Content="&#x25B2;" Focusable="False" Margin="0,0,4,0"
+                    <Button Style="{StaticResource MaToolButton}" Content="&#x25B2;" Focusable="False" Margin="0,0,4,0"
                             Command="{Binding DataContext.MoveUpCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}"
                             AutomationProperties.Name="{Binding Id, StringFormat='Move {0} up'}" ToolTip="Move up (Alt+Up)" />
-                    <Button Style="{StaticResource IconBtn}" Content="&#x25BC;" Focusable="False"
+                    <Button Style="{StaticResource MaToolButton}" Content="&#x25BC;" Focusable="False"
                             Command="{Binding DataContext.MoveDownCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}"
                             AutomationProperties.Name="{Binding Id, StringFormat='Move {0} down'}" ToolTip="Move down (Alt+Down)" />
                 </StackPanel>
@@ -188,15 +188,15 @@
         <!-- Header: title, queue summary, and the actions every view shares (always in this place: 3.2.6). -->
         <DockPanel Margin="20,16,20,8">
             <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center">
-                <Button Style="{StaticResource PrimaryBtn}" Content="_New ticket" Command="{Binding NewTicketCommand}" Margin="0,0,8,0"
+                <Button Style="{StaticResource MaPrimaryButton}" Content="_New ticket" Command="{Binding NewTicketCommand}" Margin="0,0,8,0"
                         ToolTip="File a new ticket (Ctrl+N)" />
-                <Button Style="{StaticResource Btn}" Content="S_ync" Command="{Binding SyncCommand}" Margin="0,0,8,0"
+                <Button Style="{StaticResource MaButton}" Content="S_ync" Command="{Binding SyncCommand}" Margin="0,0,8,0"
                         ToolTip="Commit and push the ticket database: runs 'tickets db sync' (Ctrl+Shift+S)" />
-                <Button Style="{StaticResource Btn}" Content="_GitHub intake…" Command="{Binding IntakeCommand}" Margin="0,0,8,0"
+                <Button Style="{StaticResource MaButton}" Content="_GitHub intake…" Command="{Binding IntakeCommand}" Margin="0,0,8,0"
                         ToolTip="File GitHub issues labelled 'orchestrator' and CI failures on main as tickets: shows a dry run first and files only when you click File ('tickets ticket intake')" />
-                <Button Style="{StaticResource Btn}" Content="_Refresh" Command="{Binding RefreshCommand}" Margin="0,0,8,0"
+                <Button Style="{StaticResource MaButton}" Content="_Refresh" Command="{Binding RefreshCommand}" Margin="0,0,8,0"
                         ToolTip="Read the database again (F5). It also refreshes by itself when agents change tickets." />
-                <Button Style="{StaticResource Btn}" Content="_Help" Command="{x:Static vm:WindowCommands.Help}"
+                <Button Style="{StaticResource MaButton}" Content="_Help" Command="{x:Static vm:WindowCommands.Help}"
                         ToolTip="Keyboard shortcuts and how the queue works (F1)" />
             </StackPanel>
             <StackPanel VerticalAlignment="Center">
@@ -209,7 +209,7 @@
         <WrapPanel Grid.Row="1" Margin="20,4,20,10">
             <StackPanel Margin="0,0,18,6">
                 <Label Style="{StaticResource FilterLabel}" Content="View" Target="{Binding ElementName=ViewChoice}" />
-                <ListBox x:Name="ViewChoice" Style="{StaticResource PillChoice}" ItemsSource="{Binding Views}"
+                <ListBox x:Name="ViewChoice" Style="{StaticResource MaPillChoice}" ItemsSource="{Binding Views}"
                          SelectedItem="{Binding SelectedView}" AutomationProperties.Name="View"
                          ToolTip="Repos: every repo with its tickets and git state (Ctrl+1). Queue: open tickets in the order /allocate takes them (Ctrl+2). Audit: closed tickets to double-check, and the Orchestrator's drift and duplicate-code findings (Ctrl+3). Board: tickets as cards in Proposed, Approved, In progress and Done; moving a card changes its approval or status (Ctrl+4)." />
             </StackPanel>
@@ -233,9 +233,9 @@
                     <ComboBox x:Name="SavedFilterBox" Style="{StaticResource Combo}" MinWidth="150" ItemsSource="{Binding SavedFilterChoices}"
                               SelectedItem="{Binding SelectedSavedFilter}" AutomationProperties.Name="Saved filter"
                               ToolTip="Named queries kept in the ticket database (also 'tickets filter list' and 'tickets ticket list --filter')." />
-                    <Button Style="{StaticResource Btn}" Content="Save…" Command="{Binding SaveFilterCommand}" Margin="6,0,0,0"
+                    <Button Style="{StaticResource MaButton}" Content="Save…" Command="{Binding SaveFilterCommand}" Margin="6,0,0,0"
                             ToolTip="Save the query as a named filter" />
-                    <Button Style="{StaticResource Btn}" Content="Delete" Command="{Binding DeleteFilterCommand}" Margin="6,0,0,0"
+                    <Button Style="{StaticResource MaButton}" Content="Delete" Command="{Binding DeleteFilterCommand}" Margin="6,0,0,0"
                             ToolTip="Delete the picked saved filter" />
                 </StackPanel>
             </StackPanel>
@@ -295,13 +295,13 @@
                 </Grid.RowDefinitions>
                 <DockPanel Margin="0,0,0,8">
                     <WrapPanel DockPanel.Dock="Right">
-                        <Button Style="{StaticResource Btn}" Content="Approve" Command="{Binding ApproveCommand}" Margin="0,0,6,4" ToolTip="Approve the selected ticket (A)" />
-                        <Button Style="{StaticResource Btn}" Content="Unapprove" Command="{Binding UnapproveCommand}" Margin="0,0,6,4" ToolTip="Back to proposed (U)" />
-                        <Button Style="{StaticResource Btn}" Content="Reject…" Command="{Binding RejectCommand}" Margin="0,0,14,4" ToolTip="Reject: closes it as wont-do with your reason (R)" />
-                        <Button Style="{StaticResource Btn}" Content="To top" Command="{Binding MoveTopCommand}" Margin="0,0,6,4" ToolTip="Move to the top (Alt+Home)" />
-                        <Button Style="{StaticResource IconBtn}" Content="&#x25B2;" Command="{Binding MoveUpCommand}" Margin="0,0,6,4"
+                        <Button Style="{StaticResource MaButton}" Content="Approve" Command="{Binding ApproveCommand}" Margin="0,0,6,4" ToolTip="Approve the selected ticket (A)" />
+                        <Button Style="{StaticResource MaButton}" Content="Unapprove" Command="{Binding UnapproveCommand}" Margin="0,0,6,4" ToolTip="Back to proposed (U)" />
+                        <Button Style="{StaticResource MaButton}" Content="Reject…" Command="{Binding RejectCommand}" Margin="0,0,14,4" ToolTip="Reject: closes it as wont-do with your reason (R)" />
+                        <Button Style="{StaticResource MaButton}" Content="To top" Command="{Binding MoveTopCommand}" Margin="0,0,6,4" ToolTip="Move to the top (Alt+Home)" />
+                        <Button Style="{StaticResource MaToolButton}" Content="&#x25B2;" Command="{Binding MoveUpCommand}" Margin="0,0,6,4"
                                 AutomationProperties.Name="Move up" ToolTip="Move up (Alt+Up)" />
-                        <Button Style="{StaticResource IconBtn}" Content="&#x25BC;" Command="{Binding MoveDownCommand}" Margin="0,0,0,4"
+                        <Button Style="{StaticResource MaToolButton}" Content="&#x25BC;" Command="{Binding MoveDownCommand}" Margin="0,0,0,4"
                                 AutomationProperties.Name="Move down" ToolTip="Move down (Alt+Down)" />
                     </WrapPanel>
                     <TextBlock Style="{StaticResource Muted}" TextWrapping="Wrap" VerticalAlignment="Center" Margin="0,0,12,4"
@@ -536,20 +536,20 @@
                 <ScrollViewer x:Name="DetailPane" VerticalScrollBarVisibility="Auto" Focusable="False" DataContext="{Binding Detail}" PreviewKeyDown="OnDetailKeyDown">
                     <StackPanel Margin="20,16,20,20">
                         <DockPanel>
-                            <Button DockPanel.Dock="Right" Style="{StaticResource IconBtn}" Content="&#x2715;" VerticalAlignment="Top"
+                            <Button DockPanel.Dock="Right" Style="{StaticResource MaToolButton}" Content="&#x2715;" VerticalAlignment="Top"
                                     Command="{Binding DataContext.CloseDetailCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                                     AutomationProperties.Name="Close details" ToolTip="Close details (Esc)" />
-                            <TextBlock x:Name="DetailTitle" Text="{Binding Id}" Style="{StaticResource PaneTitle}" Focusable="True" FocusVisualStyle="{StaticResource FocusRing}" />
+                            <TextBlock x:Name="DetailTitle" Text="{Binding Id}" Style="{StaticResource PaneTitle}" Focusable="True" FocusVisualStyle="{StaticResource MaFocusRing}" />
                         </DockPanel>
 
                         <!-- Versions (M.TIX-T137): the arrows, or Left / Right, step through every save; the rightmost is the ticket now. -->
-                        <Border Style="{StaticResource Card}" Margin="0,10,0,0" Padding="6,6"
+                        <Border Style="{StaticResource MaCard}" Margin="0,10,0,0" Padding="6,6"
                                 Visibility="{Binding HasVersions, Converter={StaticResource Visible}}">
                             <DockPanel>
-                                <Button DockPanel.Dock="Left" Style="{StaticResource IconBtn}" Content="&#x25C0;" VerticalAlignment="Center"
+                                <Button DockPanel.Dock="Left" Style="{StaticResource MaToolButton}" Content="&#x25C0;" VerticalAlignment="Center"
                                         Command="{Binding DataContext.OlderVersionCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                                         AutomationProperties.Name="Older version" ToolTip="Older version (Left)" />
-                                <Button DockPanel.Dock="Right" Style="{StaticResource IconBtn}" Content="&#x25B6;" VerticalAlignment="Center"
+                                <Button DockPanel.Dock="Right" Style="{StaticResource MaToolButton}" Content="&#x25B6;" VerticalAlignment="Center"
                                         Command="{Binding DataContext.NewerVersionCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                                         AutomationProperties.Name="Newer version" ToolTip="Newer version (Right)" />
                                 <StackPanel Margin="10,0">
@@ -648,33 +648,33 @@
 
                         <TextBlock Text="ACTIONS" Style="{StaticResource SectionLabel}" />
                         <WrapPanel>
-                            <Button Style="{StaticResource Btn}" Content="Approve" Margin="0,0,6,6"
+                            <Button Style="{StaticResource MaButton}" Content="Approve" Margin="0,0,6,6"
                                     Command="{Binding DataContext.ApproveCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
-                            <Button Style="{StaticResource Btn}" Content="Reject…" Margin="0,0,6,6"
+                            <Button Style="{StaticResource MaButton}" Content="Reject…" Margin="0,0,6,6"
                                     Command="{Binding DataContext.RejectCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
-                            <Button Style="{StaticResource Btn}" Content="Close…" Margin="0,0,6,6" ToolTip="Close as done, optionally setting its ref"
+                            <Button Style="{StaticResource MaButton}" Content="Close…" Margin="0,0,6,6" ToolTip="Close as done, optionally setting its ref"
                                     Command="{Binding DataContext.CloseTicketCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
-                            <Button Style="{StaticResource Btn}" Content="Won't do…" Margin="0,0,6,6"
+                            <Button Style="{StaticResource MaButton}" Content="Won't do…" Margin="0,0,6,6"
                                     Command="{Binding DataContext.WontDoCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
-                            <Button Style="{StaticResource Btn}" Content="Set ref…" Margin="0,0,6,6" ToolTip="Set its ref (test, commit or story) without closing it"
+                            <Button Style="{StaticResource MaButton}" Content="Set ref…" Margin="0,0,6,6" ToolTip="Set its ref (test, commit or story) without closing it"
                                     Command="{Binding DataContext.SetRefCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
-                            <Button Style="{StaticResource Btn}" Content="Correct type…" Margin="0,0,6,6"
+                            <Button Style="{StaticResource MaButton}" Content="Correct type…" Margin="0,0,6,6"
                                     Command="{Binding DataContext.CorrectTypeCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
-                            <Button Style="{StaticResource Btn}" Content="Reword summary…" Margin="0,0,6,6" ToolTip="Correct its summary; the old wording stays in its history"
+                            <Button Style="{StaticResource MaButton}" Content="Reword summary…" Margin="0,0,6,6" ToolTip="Correct its summary; the old wording stays in its history"
                                     Command="{Binding DataContext.CorrectSummaryCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
-                            <Button Style="{StaticResource Btn}" Content="Edit description…" Margin="0,0,6,6" ToolTip="Its markdown description, kept apart from the summary"
+                            <Button Style="{StaticResource MaButton}" Content="Edit description…" Margin="0,0,6,6" ToolTip="Its markdown description, kept apart from the summary"
                                     Command="{Binding DataContext.EditDescriptionCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
-                            <Button Style="{StaticResource Btn}" Content="Add link…" Margin="0,0,6,6"
+                            <Button Style="{StaticResource MaButton}" Content="Add link…" Margin="0,0,6,6"
                                     Command="{Binding DataContext.AddLinkCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
-                            <Button Style="{StaticResource Btn}" Content="Assign…" Margin="0,0,6,6" ToolTip="Assign it to a member's login: it's dispatched only on that login"
+                            <Button Style="{StaticResource MaButton}" Content="Assign…" Margin="0,0,6,6" ToolTip="Assign it to a member's login: it's dispatched only on that login"
                                     Command="{Binding DataContext.AssignCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
-                            <Button Style="{StaticResource Btn}" Content="Unassign" Margin="0,0,6,6" ToolTip="Take it off its member: it's handed out like any unassigned ticket"
+                            <Button Style="{StaticResource MaButton}" Content="Unassign" Margin="0,0,6,6" ToolTip="Take it off its member: it's handed out like any unassigned ticket"
                                     Command="{Binding DataContext.UnassignCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
-                            <Button Style="{StaticResource Btn}" Content="Reserve…" Margin="0,0,6,6" ToolTip="Set aside tokens for it (0 releases)"
+                            <Button Style="{StaticResource MaButton}" Content="Reserve…" Margin="0,0,6,6" ToolTip="Set aside tokens for it (0 releases)"
                                     Command="{Binding DataContext.ReserveCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
-                            <Button Style="{StaticResource Btn}" Content="Add note…" Margin="0,0,6,6" ToolTip="Append a comment to it (notes are never edited or deleted)"
+                            <Button Style="{StaticResource MaButton}" Content="Add note…" Margin="0,0,6,6" ToolTip="Append a comment to it (notes are never edited or deleted)"
                                     Command="{Binding DataContext.AddNoteCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
-                            <Button Style="{StaticResource Btn}" Content="Estimate…" Margin="0,0,6,6" ToolTip="Set its effort estimate in tokens: within a priority the queue runs the smallest first (empty clears)"
+                            <Button Style="{StaticResource MaButton}" Content="Estimate…" Margin="0,0,6,6" ToolTip="Set its effort estimate in tokens: within a priority the queue runs the smallest first (empty clears)"
                                     Command="{Binding DataContext.EstimateCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
                         </WrapPanel>
                         <TextBlock Text="{Binding Error}" Style="{StaticResource ErrorText}"
@@ -696,7 +696,7 @@
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate DataType="{x:Type vm:LinkLine}">
                                     <DockPanel Margin="0,2">
-                                        <Button DockPanel.Dock="Right" Style="{StaticResource IconBtn}" Content="&#x2715;" Width="26" Height="26" FontSize="10"
+                                        <Button DockPanel.Dock="Right" Style="{StaticResource MaToolButton}" Content="&#x2715;" Width="26" Height="26" FontSize="10"
                                                 Visibility="{Binding DataContext.IsCurrentVersion, RelativeSource={RelativeSource AncestorType=ItemsControl}, Converter={StaticResource Visible}}"
                                                 Command="{Binding DataContext.RemoveLinkCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}"
                                                 AutomationProperties.Name="{Binding SpokenName, StringFormat='Remove link: {0}'}" ToolTip="Remove this link" />
@@ -744,7 +744,7 @@
                                                                     ToolTip="{Binding Summary}" AutomationProperties.Name="{Binding SpokenName}"
                                                                     Command="{Binding DataContext.GoToCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding Id}">
                                                                 <Button.Style>
-                                                                    <Style TargetType="Button" BasedOn="{StaticResource Btn}">
+                                                                    <Style TargetType="Button" BasedOn="{StaticResource MaButton}">
                                                                         <Style.Triggers>
                                                                             <DataTrigger Binding="{Binding IsOpen}" Value="False">
                                                                                 <Setter Property="Foreground" Value="{DynamicResource MaMuted}" />

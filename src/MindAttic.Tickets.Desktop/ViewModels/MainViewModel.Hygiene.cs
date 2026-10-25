@@ -2,6 +2,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 using System.Windows.Input;
+using MindAttic.Components.Wpf.Mvvm;
 using MindAttic.Tickets.Desktop.Data;
 using MindAttic.Tickets.Log;
 

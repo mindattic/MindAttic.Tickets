@@ -1,3 +1,4 @@
+using MindAttic.Components.Wpf.Mvvm;
 using MindAttic.Tickets.Desktop.Data;
 
 namespace MindAttic.Tickets.Desktop.ViewModels;

@@ -13,10 +13,10 @@ namespace MindAttic.Tickets.Desktop.Tests;
 
 /// <summary>
 /// M.TIX-T71: a screen reader hears a name for every control that has no visible text of its own (WCAG 4.1.2,
-/// 2.5.3), using the project's real Theme/Styles.xaml so a regression there (the AutomationProperties.Name setter
-/// on RowItem/GridRow, or the HelpText setter on Btn/IconBtn) fails this test rather than only showing up under
-/// Narrator. Follows the STA-thread harness and UIElementAutomationPeer/peer.GetName() pattern from
-/// MindAttic.Components.Wpf.Tests.MaThemeTests.
+/// 2.5.3), using the project's real Theme/Styles.xaml (which merges MindAttic.Components.Wpf's Theme.xaml itself,
+/// M.TIX-T91) so a regression there (the AutomationProperties.Name setter on RowItem/GridRow, or the HelpText
+/// setter on MaButton/MaToolButton) fails this test rather than only showing up under Narrator. Follows the
+/// STA-thread harness and UIElementAutomationPeer/peer.GetName() pattern from MindAttic.Components.Wpf.Tests.MaThemeTests.
 /// </summary>
 public sealed class AutomationNameTests
 {
@@ -114,9 +114,9 @@ public sealed class AutomationNameTests
         finally { window.Close(); }
     });
 
-    [TestCase("Btn")]
-    [TestCase("IconBtn")]
-    [TestCase("PrimaryBtn")]
+    [TestCase("MaButton")]
+    [TestCase("MaToolButton")]
+    [TestCase("MaPrimaryButton")]
     public void A_glyph_only_button_still_announces_a_name_and_its_role(string styleKey) => Sta(() =>
     {
         var button = new Button { Content = "✔" };

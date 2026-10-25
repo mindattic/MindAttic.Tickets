@@ -1,6 +1,7 @@
 using System.Collections.ObjectModel;
 using System.IO;
 using Microsoft.Data.Sqlite;
+using MindAttic.Components.Wpf.Mvvm;
 using MindAttic.Tickets.Data;
 using MindAttic.Tickets.Desktop.Data;
 using MindAttic.Tickets.Desktop.ViewModels;

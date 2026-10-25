@@ -1,25 +1,24 @@
-<!-- Tickets Desktop's controls. Every brush is a DynamicResource from Colors.xaml so high contrast swaps them live, and
-     every focusable control shows a 3:1 focus cue (2.4.7) and is at least 24x24 (2.5.8). -->
+<!-- Tickets Desktop's own controls: those MindAttic.Components.Wpf (M.COMP-T11) has no equivalent for: Combo, Check,
+     RowList/RowItem (a drag-reorderable ListBox with a drop marker; the package's MaRowList is a plain ItemsControl
+     with no drag support) and the Tickets grid view (GridHeader/GridRow) and Chip. Everything else (buttons, cards,
+     the focus ring, text fields, pills) comes from the package's Theme.xaml, merged before this dictionary in
+     App.xaml; this dictionary also merges it itself (below) so its own styles can reference the package's keys (e.g.
+     Field's BasedOn, and the focus ring on Check and LinkBtn): a StaticResource inside a merged ResourceDictionary
+     file only sees keys in its own file or in dictionaries it merges itself, not sibling files merged elsewhere.
+     Every brush is a DynamicResource from Colors.xaml so high contrast swaps them live, and every focusable control
+     shows a 3:1 focus cue (2.4.7) and is at least 24x24 (2.5.8). -->
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MindAttic.Components.Wpf;component/Theme.xaml" />
+    </ResourceDictionary.MergedDictionaries>
 
     <BooleanToVisibilityConverter x:Key="Visible" />
 
-    <!-- A 2px ring just outside the control; the system's default dotted line is invisible on the dark chrome. -->
-    <Style x:Key="FocusRing">
-        <Setter Property="Control.Template">
-            <Setter.Value>
-                <ControlTemplate>
-                    <Border Margin="-3" BorderBrush="{DynamicResource MaFocus}" BorderThickness="2" CornerRadius="7" SnapsToDevicePixels="True" />
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
     <!-- Tooltips: MindAttic.Components.Wpf's own implicit ToolTip style (Theme.xaml, merged before this dictionary in
          App.xaml) now covers the wrap-and-max-width look this used to define locally; a style here would just shadow
-         it and let Tickets' tooltips drift from Orchestrator's. Still stay up until dismissed (App's static
-         constructor, WCAG 1.4.13). -->
+         it and let Tickets' tooltips drift from Orchestrator's. Still stay up until dismissed (ctl:MaToolTips.KeepOpen(),
+         called from App's static constructor, WCAG 1.4.13). -->
 
     <Style x:Key="Heading" TargetType="TextBlock">
         <Setter Property="FontSize" Value="15" />
@@ -53,78 +52,14 @@
         <Setter Property="AutomationProperties.LiveSetting" Value="Assertive" />
     </Style>
 
-    <Style x:Key="Card" TargetType="Border">
-        <Setter Property="Background" Value="{DynamicResource MaSurface}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource MaChromeBorder}" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="CornerRadius" Value="6" />
-        <Setter Property="Padding" Value="12,10" />
-    </Style>
-
-    <!-- ── Buttons ───────────────────────────────────────────────────────── -->
-    <Style x:Key="Btn" TargetType="ButtonBase">
-        <Setter Property="Foreground" Value="{DynamicResource MaText}" />
-        <Setter Property="Background" Value="{DynamicResource MaSurface}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource MaControlBorder}" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Padding" Value="12,5" />
-        <Setter Property="MinHeight" Value="30" />
-        <Setter Property="MinWidth" Value="30" />
-        <Setter Property="Cursor" Value="Hand" />
-        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusRing}" />
-        <Setter Property="AutomationProperties.HelpText" Value="{Binding ToolTip, RelativeSource={RelativeSource Self}}" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="ButtonBase">
-                    <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" RecognizesAccessKey="True" />
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource MaHover}" />
-                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource FieldBorder}" />
-                        </Trigger>
-                        <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource MaFocus}" />
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <!-- Disabled controls are exempt from contrast (1.4.3), but stay readable. -->
-                            <Setter Property="Opacity" Value="0.55" />
-                            <Setter Property="Cursor" Value="Arrow" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="PrimaryBtn" TargetType="ButtonBase" BasedOn="{StaticResource Btn}">
-        <Setter Property="Foreground" Value="{DynamicResource MaOnAccent}" />
-        <Setter Property="Background" Value="{DynamicResource MaAccent}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource MaAccent}" />
-        <Setter Property="FontWeight" Value="SemiBold" />
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource MaAccentHover}" />
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-
-    <!-- A glyph-only button: always given an AutomationProperties.Name and a tooltip where it's used. -->
-    <Style x:Key="IconBtn" TargetType="ButtonBase" BasedOn="{StaticResource Btn}">
-        <Setter Property="Padding" Value="0" />
-        <Setter Property="Width" Value="30" />
-        <Setter Property="Height" Value="30" />
-        <Setter Property="FontFamily" Value="Segoe UI Symbol" />
-    </Style>
-
-    <!-- A ticket ID that jumps to that ticket. -->
+    <!-- Card, Btn, PrimaryBtn and IconBtn moved into MindAttic.Components.Wpf as MaCard, MaButton, MaPrimaryButton and
+         MaToolButton (M.COMP-T11, M.TIX-T91): views reference those directly now. LinkBtn stays here: the package
+         has no plain-text link-style button (MaHyperlink is for a Hyperlink inside flow text, not a Button). -->
     <Style x:Key="LinkBtn" TargetType="Button">
         <Setter Property="Foreground" Value="{DynamicResource MaFocus}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="MinHeight" Value="24" />
-        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusRing}" />
+        <Setter Property="FocusVisualStyle" Value="{StaticResource MaFocusRing}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -137,35 +72,14 @@
     </Style>
 
     <!-- ── Inputs ────────────────────────────────────────────────────────── -->
-    <Style x:Key="Field" TargetType="TextBox">
-        <Setter Property="Background" Value="{DynamicResource MaSurface}" />
-        <Setter Property="Foreground" Value="{DynamicResource MaText}" />
+    <!-- Rebased on the package's MaTextBox (M.COMP-T11, M.TIX-T91), keeping only the overrides that differ from it:
+         its own BorderBrush token (FieldBorder, not MaFieldBorder: Tickets' own colour, unaffected by this move),
+         and the taller Padding/MinHeight this views were built around (MaTextBox's defaults would shrink them). -->
+    <Style x:Key="Field" TargetType="TextBox" BasedOn="{StaticResource MaTextBox}">
         <Setter Property="BorderBrush" Value="{DynamicResource FieldBorder}" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="CaretBrush" Value="{DynamicResource MaText}" />
-        <Setter Property="SelectionBrush" Value="{DynamicResource MaAccent}" />
         <Setter Property="Padding" Value="8,5" />
         <Setter Property="MinHeight" Value="30" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="TextBox">
-                    <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4" SnapsToDevicePixels="True">
-                        <ScrollViewer x:Name="PART_ContentHost" Margin="{TemplateBinding Padding}" Focusable="False"
-                                      HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"
-                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource MaFocus}" />
-                            <Setter TargetName="Bd" Property="BorderThickness" Value="2" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
     </Style>
 
     <Style x:Key="ComboItem" TargetType="ComboBoxItem">
@@ -254,7 +168,7 @@
         <Setter Property="Foreground" Value="{DynamicResource MaText}" />
         <Setter Property="MinHeight" Value="30" />
         <Setter Property="Cursor" Value="Hand" />
-        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusRing}" />
+        <Setter Property="FocusVisualStyle" Value="{StaticResource MaFocusRing}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="CheckBox">
@@ -279,49 +193,8 @@
     </Style>
 
     <!-- ── Choice rows ───────────────────────────────────────────────────── -->
-    <!-- A single-choice pill row (the view switcher): a ListBox, so it's one tab stop with arrow keys between pills. -->
-    <Style x:Key="PillChoice" TargetType="ListBox">
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
-        <Setter Property="ItemsPanel">
-            <Setter.Value>
-                <ItemsPanelTemplate>
-                    <WrapPanel />
-                </ItemsPanelTemplate>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="ItemContainerStyle">
-            <Setter.Value>
-                <Style TargetType="ListBoxItem">
-                    <Setter Property="Foreground" Value="{DynamicResource MaText}" />
-                    <Setter Property="Cursor" Value="Hand" />
-                    <Setter Property="FocusVisualStyle" Value="{StaticResource FocusRing}" />
-                    <Setter Property="MinHeight" Value="32" />
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="ListBoxItem">
-                                <Border x:Name="Bd" Background="{DynamicResource MaChrome}" BorderBrush="{DynamicResource MaControlBorder}"
-                                        BorderThickness="1" CornerRadius="14" Padding="14,5" Margin="0,0,6,0">
-                                    <ContentPresenter VerticalAlignment="Center" />
-                                </Border>
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter TargetName="Bd" Property="Background" Value="{DynamicResource MaHover}" />
-                                    </Trigger>
-                                    <Trigger Property="IsSelected" Value="True">
-                                        <Setter TargetName="Bd" Property="Background" Value="{DynamicResource MaAccent}" />
-                                        <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource MaAccent}" />
-                                        <Setter Property="Foreground" Value="{DynamicResource MaOnAccent}" />
-                                    </Trigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Setter.Value>
-        </Setter>
-    </Style>
+    <!-- The view switcher's pill row moved into MindAttic.Components.Wpf as MaPillChoice (M.COMP-T11, M.TIX-T91);
+         views reference it directly now. -->
 
     <!-- A list of ticket rows: arrow keys move, the selected row is outlined (not colour alone: a 2px border and the
          marker bar), and each row reads as one sentence to a screen reader. -->

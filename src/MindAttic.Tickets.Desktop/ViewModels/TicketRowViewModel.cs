@@ -1,3 +1,4 @@
+using MindAttic.Components.Wpf.Mvvm;
 using MindAttic.Tickets.Data;
 using MindAttic.Tickets.Desktop.Data;
 using MindAttic.Tickets.Log;
