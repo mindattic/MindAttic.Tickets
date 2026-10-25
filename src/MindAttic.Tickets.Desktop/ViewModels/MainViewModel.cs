@@ -362,8 +362,8 @@ public sealed partial class MainViewModel : ObservableObject
         if (IsAuditView && snapshot.Tickets.Any(t => t.Ticket.Id.Equals(id, StringComparison.OrdinalIgnoreCase))) SelectedView = TicketsView;
         if (snapshot.Tickets.All(t => !t.Ticket.Id.Equals(id, StringComparison.OrdinalIgnoreCase)))
         {
-            StatusMessage = $"{id} isn't a ticket (stories open in a later version).";
-            Announcement = StatusMessage;
+            // A story (a link's other end) opens in its own window (M.TIX-T81).
+            _ = ShowStoryAsync(id);
             return;
         }
         if (IsBoardView && BoardColumns.SelectMany(c => c.Rows).FirstOrDefault(r => r.Id.Equals(id, StringComparison.OrdinalIgnoreCase)) is { } card)

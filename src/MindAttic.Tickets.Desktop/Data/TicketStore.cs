@@ -57,6 +57,15 @@ public sealed record Snapshot(IReadOnlyList<string> Repos, IReadOnlyList<TicketI
 
     /// <summary>The named queries kept in the database, for the filter bar (M.TIX-T78).</summary>
     public IReadOnlyList<SavedFilter> SavedFilters { get; init; } = [];
+
+    /// <summary>Every repo's stories, epics and backlog items, for the command palette's jump (M.TIX-T81).</summary>
+    public IReadOnlyList<StoredStory> Stories { get; init; } = [];
+}
+
+/// <summary>A story as the command palette opens it (M.TIX-T81): its rows (one per repo holding the ID) and its links.</summary>
+public sealed record StoryDetail(IReadOnlyList<StoredStory> Rows, IReadOnlyList<Link> Links)
+{
+    public StoredStory Story => Rows[0];
 }
 
 /// <summary>A ticket's detail: history and links (both directions) and what it's waiting for.</summary>
@@ -119,8 +128,13 @@ public sealed class TicketStore(string root)
         {
             Hygiene = TicketHygiene.Check(tickets),
             SavedFilters = db.SavedFilters(),
+            Stories = [.. db.Stories().Where(s => s.Id.Length > 0)],
         };
     });
+
+    /// <summary>The story <paramref name="id"/> and its links (both directions), or null when there's no such story.</summary>
+    public StoryDetail? Story(string id) => Read(db =>
+        db.Story(id.Trim()) is { Count: > 0 } rows ? new StoryDetail(rows, db.Links(rows[0].Id)) : null);
 
     /// <summary>
     /// Each open ticket's open blockers: the open tickets its <c>requires</c> links reach, directly or through others

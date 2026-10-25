@@ -18,6 +18,7 @@ public static class WindowCommands
 
     /// <summary>Ctrl+Z: undoes the last ticket change (M.TIX-T80), except in a text box, which keeps its own undo.</summary>
     public static readonly RoutedCommand Undo = new(nameof(Undo), typeof(WindowCommands));
+    public static readonly RoutedCommand CommandPalette = new(nameof(CommandPalette), typeof(WindowCommands));
 }
 
 public static class Converters

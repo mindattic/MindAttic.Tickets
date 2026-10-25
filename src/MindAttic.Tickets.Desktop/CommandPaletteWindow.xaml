@@ -1,0 +1,70 @@
+<Window x:Class="MindAttic.Tickets.Desktop.CommandPaletteWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="clr-namespace:MindAttic.Components.Wpf.Controls;assembly=MindAttic.Components.Wpf"
+        xmlns:vm="clr-namespace:MindAttic.Tickets.Desktop.ViewModels"
+        mc:MaWindow.DarkTitleBar="True"
+        Title="Command palette" Width="640" Height="460" MinWidth="360" MinHeight="220" ResizeMode="CanResize" ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner" Icon="/logo.ico"
+        Background="{DynamicResource MaPane}" Foreground="{DynamicResource MaText}" FontFamily="Segoe UI" FontSize="13"
+        TextOptions.TextFormattingMode="Display" UseLayoutRounding="True">
+    <!-- M.TIX-T81. Focus stays in the search box: Up/Down, Page Up/Down and Ctrl+Home/End move the selection, Enter runs it,
+         Esc closes. Each change of the list or the selection is said through the live region below (WCAG 4.1.3), and the
+         list itself can be tabbed into and read entry by entry. -->
+    <DockPanel Margin="16,14,16,14">
+        <Label DockPanel.Dock="Top" Content="_Type a command, ticket or story (&gt; commands only, # tickets and stories only)"
+               Target="{Binding ElementName=QueryBox}" Foreground="{DynamicResource MaMuted}" Padding="0,0,0,4" />
+        <TextBox x:Name="QueryBox" DockPanel.Dock="Top" Style="{StaticResource Field}" MinHeight="34"
+                 Text="{Binding Query, UpdateSourceTrigger=PropertyChanged}" PreviewKeyDown="OnQueryKeyDown"
+                 AutomationProperties.Name="Command palette: type a command, ticket ID or story ID"
+                 AutomationProperties.HelpText="Up and Down choose a result, Enter runs it, Escape closes." />
+        <TextBlock x:Name="SummaryText" DockPanel.Dock="Top" Style="{StaticResource Muted}" Margin="0,6,0,6" Text="{Binding Summary}" />
+        <TextBlock x:Name="Announcer" DockPanel.Dock="Bottom" Width="1" Height="1" Opacity="0" Focusable="False"
+                   AutomationProperties.LiveSetting="Assertive" AutomationProperties.Name="Command palette announcement" />
+        <ListBox x:Name="ResultList" ItemsSource="{Binding Results}" SelectedItem="{Binding Selected}"
+                 Background="Transparent" BorderThickness="0" Foreground="{DynamicResource MaText}"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled" KeyboardNavigation.TabNavigation="Once"
+                 VirtualizingPanel.IsVirtualizing="True" AutomationProperties.Name="Results"
+                 MouseDoubleClick="OnResultDoubleClick" KeyDown="OnResultKeyDown">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="AutomationProperties.Name" Value="{Binding SpokenName}" />
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <Border x:Name="Bd" Background="Transparent" BorderBrush="Transparent" BorderThickness="2" CornerRadius="5" Padding="8,5" Margin="0,0,0,2">
+                                    <ContentPresenter />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="Bd" Property="Background" Value="{DynamicResource MaHover}" />
+                                    </Trigger>
+                                    <!-- Selected: an outline and a surface, not colour alone. -->
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Bd" Property="Background" Value="{DynamicResource MaSurface}" />
+                                        <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource MaFocus}" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <TextBlock DockPanel.Dock="Left" Text="{Binding KindText}" Width="70" Foreground="{DynamicResource MaMuted}" FontSize="12" VerticalAlignment="Top" Margin="0,1,0,0" />
+                        <TextBlock DockPanel.Dock="Right" Text="{Binding Shortcut}" Foreground="{DynamicResource MaMuted}" FontSize="12" Margin="12,1,0,0" VerticalAlignment="Top" />
+                        <StackPanel>
+                            <TextBlock Text="{Binding Heading}" TextTrimming="CharacterEllipsis" />
+                            <TextBlock Text="{Binding Detail}" Foreground="{DynamicResource MaMuted}" FontSize="12" TextTrimming="CharacterEllipsis"
+                                       Visibility="{Binding Detail, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
+                        </StackPanel>
+                    </DockPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </DockPanel>
+</Window>

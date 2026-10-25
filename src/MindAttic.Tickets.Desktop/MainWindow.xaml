@@ -21,6 +21,8 @@
         <KeyBinding Key="D4" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowBoard}" />
         <KeyBinding Key="F1" Command="{x:Static vm:WindowCommands.Help}" />
         <KeyBinding Key="Z" Modifiers="Control" Command="{x:Static vm:WindowCommands.Undo}" />
+        <KeyBinding Key="K" Modifiers="Control" Command="{x:Static vm:WindowCommands.CommandPalette}" />
+        <KeyBinding Key="P" Modifiers="Control+Shift" Command="{x:Static vm:WindowCommands.CommandPalette}" />
         <KeyBinding Key="Escape" Command="{x:Static vm:WindowCommands.Escape}" />
         <KeyBinding Key="OemPlus" Modifiers="Control" Command="{Binding ZoomInCommand}" />
         <KeyBinding Key="Add" Modifiers="Control" Command="{Binding ZoomInCommand}" />
@@ -196,6 +198,9 @@
                         ToolTip="File GitHub issues labelled 'orchestrator' and CI failures on main as tickets: shows a dry run first and files only when you click File ('tickets ticket intake')" />
                 <Button Style="{StaticResource MaButton}" Content="_Refresh" Command="{Binding RefreshCommand}" Margin="0,0,8,0"
                         ToolTip="Read the database again (F5). It also refreshes by itself when agents change tickets." />
+                <Button Style="{StaticResource MaButton}" Content="Commands…" Command="{x:Static vm:WindowCommands.CommandPalette}" Margin="0,0,8,0"
+                        AutomationProperties.Name="Command palette" AutomationProperties.AcceleratorKey="Ctrl+K"
+                        ToolTip="Jump to any ticket or story, or run any command, by typing part of its name (Ctrl+K)" />
                 <Button Style="{StaticResource MaButton}" Content="_Help" Command="{x:Static vm:WindowCommands.Help}"
                         ToolTip="Keyboard shortcuts and how the queue works (F1)" />
             </StackPanel>

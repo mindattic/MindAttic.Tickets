@@ -41,6 +41,7 @@ public partial class MainWindow : Window
             if (Keyboard.FocusedElement is System.Windows.Controls.Primitives.TextBoxBase) return;
             if (!model.Busy) await model.UndoAsync();
         }));
+        CommandBindings.Add(new CommandBinding(WindowCommands.CommandPalette, async (_, _) => await ShowPaletteAsync()));
 
         model.PropertyChanged += (_, e) =>
         {
@@ -389,6 +390,40 @@ public partial class MainWindow : Window
         return d as T;
     }
 
+    // ── Command palette (Ctrl+K, M.TIX-T81) ──────────────────────────────────
+
+    private bool paletteOpen;
+
+    /// <summary>Opens the palette over the window's own commands, the model's and every ticket and story, then runs the choice.</summary>
+    private async Task ShowPaletteAsync()
+    {
+        if (paletteOpen) return;
+        paletteOpen = true;
+        PaletteItem? chosen;
+        try
+        {
+            var palette = new CommandPaletteWindow(new CommandPaletteViewModel(model.PaletteItems(WindowPaletteCommands()))) { Owner = this };
+            chosen = palette.ShowDialog() == true ? palette.Result : null;
+        }
+        finally { paletteOpen = false; }
+        if (chosen is null) return;
+        await chosen.Run();
+        // A command that doesn't move focus itself leaves it on the list it acted on, not on whatever had it before.
+        if (chosen.Kind == PaletteKind.Command && Keyboard.FocusedElement is not TextBox) FocusList();
+    }
+
+    private IEnumerable<PaletteItem> WindowPaletteCommands()
+    {
+        PaletteItem Routed(string title, RoutedCommand command, string shortcut) =>
+            new(PaletteKind.Command, title, title, "", () => { command.Execute(null, this); return Task.CompletedTask; }, shortcut);
+        yield return Routed("Show Repos", WindowCommands.ShowTickets, "Ctrl+1");
+        yield return Routed("Show the Queue", WindowCommands.ShowQueue, "Ctrl+2");
+        yield return Routed("Show Audit", WindowCommands.ShowAudit, "Ctrl+3");
+        yield return Routed("Show the Board", WindowCommands.ShowBoard, "Ctrl+4");
+        yield return Routed("Search tickets", WindowCommands.FocusSearch, "Ctrl+F");
+        yield return Routed("Keyboard shortcuts and help", WindowCommands.Help, "F1");
+    }
+
     private void ShowHelp() => MessageBox.Show(this,
         """
         Repos lists every repo's tickets under its name, with its git state and a Start link that opens the Orchestrator
@@ -425,6 +460,8 @@ public partial class MainWindow : Window
           Alt+Left / Alt+Right move the card to the column before or after (or drag it)
 
         Anywhere
+          Ctrl+K               command palette: type part of a ticket or story ID or text, or a command's
+                               name; Up / Down choose, Enter runs (> commands only, # tickets and stories only)
           Ctrl+1 / 2 / 3 / 4   Repos / Queue / Audit / Board
           Work filter          Queued (/allocate takes it next), Needs approval, Blocked (waiting on other tickets)
           Ctrl+F               search          Ctrl+N   new ticket
