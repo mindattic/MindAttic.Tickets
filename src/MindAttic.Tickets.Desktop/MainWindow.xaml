@@ -295,15 +295,15 @@
                     AutomationProperties.Name="Bulk actions on the selected tickets">
                 <WrapPanel>
                     <TextBlock Text="{Binding SelectionText}" FontWeight="SemiBold" VerticalAlignment="Center" Margin="0,0,14,4" />
-                    <Button Style="{StaticResource Btn}" Content="Approve" Command="{Binding ApproveCommand}" Margin="0,0,6,4" ToolTip="Approve every selected open ticket (A)" />
-                    <Button Style="{StaticResource Btn}" Content="Unapprove" Command="{Binding UnapproveCommand}" Margin="0,0,6,4" ToolTip="Put every selected ticket back to proposed (U)" />
-                    <Button Style="{StaticResource Btn}" Content="Reject…" Command="{Binding RejectCommand}" Margin="0,0,6,4" ToolTip="Reject every selected open ticket with one reason: each closes as wont-do (R)" />
-                    <Button Style="{StaticResource Btn}" Content="Close…" Command="{Binding CloseRowsCommand}" Margin="0,0,6,4" ToolTip="Close every selected open ticket, with an optional ref (C)" />
-                    <Button Style="{StaticResource Btn}" Content="Won't do…" Command="{Binding WontDoRowsCommand}" Margin="0,0,6,4" ToolTip="Close every selected open ticket as wont-do, with a reason (W)" />
-                    <Button Style="{StaticResource Btn}" Content="Set type…" Command="{Binding SetTypeRowsCommand}" Margin="0,0,14,4" ToolTip="Set the type of every selected ticket, recorded on each with a reason (T)" />
-                    <Button Style="{StaticResource Btn}" Content="To top" Command="{Binding MoveTopCommand}" Margin="0,0,6,4" ToolTip="Move the selected tickets to the top of the queue, in their order (Alt+Home)" />
-                    <Button Style="{StaticResource Btn}" Content="To bottom" Command="{Binding MoveBottomCommand}" Margin="0,0,14,4" ToolTip="Move the selected tickets to the bottom of the queue, in their order (Alt+End)" />
-                    <Button Style="{StaticResource Btn}" Content="Clear selection" Command="{Binding ClearSelectionCommand}" Margin="0,0,0,4" ToolTip="Select just one ticket again (Esc)" />
+                    <Button Style="{StaticResource MaButton}" Content="Approve" Command="{Binding ApproveCommand}" Margin="0,0,6,4" ToolTip="Approve every selected open ticket (A)" />
+                    <Button Style="{StaticResource MaButton}" Content="Unapprove" Command="{Binding UnapproveCommand}" Margin="0,0,6,4" ToolTip="Put every selected ticket back to proposed (U)" />
+                    <Button Style="{StaticResource MaButton}" Content="Reject…" Command="{Binding RejectCommand}" Margin="0,0,6,4" ToolTip="Reject every selected open ticket with one reason: each closes as wont-do (R)" />
+                    <Button Style="{StaticResource MaButton}" Content="Close…" Command="{Binding CloseRowsCommand}" Margin="0,0,6,4" ToolTip="Close every selected open ticket, with an optional ref (C)" />
+                    <Button Style="{StaticResource MaButton}" Content="Won't do…" Command="{Binding WontDoRowsCommand}" Margin="0,0,6,4" ToolTip="Close every selected open ticket as wont-do, with a reason (W)" />
+                    <Button Style="{StaticResource MaButton}" Content="Set type…" Command="{Binding SetTypeRowsCommand}" Margin="0,0,14,4" ToolTip="Set the type of every selected ticket, recorded on each with a reason (T)" />
+                    <Button Style="{StaticResource MaButton}" Content="To top" Command="{Binding MoveTopCommand}" Margin="0,0,6,4" ToolTip="Move the selected tickets to the top of the queue, in their order (Alt+Home)" />
+                    <Button Style="{StaticResource MaButton}" Content="To bottom" Command="{Binding MoveBottomCommand}" Margin="0,0,14,4" ToolTip="Move the selected tickets to the bottom of the queue, in their order (Alt+End)" />
+                    <Button Style="{StaticResource MaButton}" Content="Clear selection" Command="{Binding ClearSelectionCommand}" Margin="0,0,0,4" ToolTip="Select just one ticket again (Esc)" />
                 </WrapPanel>
             </Border>
             <Grid>

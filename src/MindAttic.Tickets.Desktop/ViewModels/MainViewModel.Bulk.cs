@@ -1,4 +1,5 @@
 using System.Windows.Input;
+using MindAttic.Components.Wpf.Mvvm;
 using MindAttic.Tickets.Desktop.Data;
 using MindAttic.Tickets.Log;
 
