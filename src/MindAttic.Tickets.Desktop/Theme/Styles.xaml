@@ -16,22 +16,10 @@
         </Setter>
     </Style>
 
-    <!-- Tooltips stay up until dismissed (App's static constructor, 1.4.13) and follow the theme. -->
-    <Style TargetType="ToolTip">
-        <Setter Property="Background" Value="{DynamicResource MaChrome}" />
-        <Setter Property="Foreground" Value="{DynamicResource MaText}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource MaControlBorder}" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Padding" Value="8,5" />
-        <Setter Property="MaxWidth" Value="420" />
-        <Setter Property="ContentTemplate">
-            <Setter.Value>
-                <DataTemplate>
-                    <TextBlock Text="{Binding}" TextWrapping="Wrap" />
-                </DataTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
+    <!-- Tooltips: MindAttic.Components.Wpf's own implicit ToolTip style (Theme.xaml, merged before this dictionary in
+         App.xaml) now covers the wrap-and-max-width look this used to define locally; a style here would just shadow
+         it and let Tickets' tooltips drift from Orchestrator's. Still stay up until dismissed (App's static
+         constructor, WCAG 1.4.13). -->
 
     <Style x:Key="Heading" TargetType="TextBlock">
         <Setter Property="FontSize" Value="15" />

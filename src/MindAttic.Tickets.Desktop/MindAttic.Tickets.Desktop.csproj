@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MindAttic.Components.Wpf" Version="19.0.0" />
+    <PackageReference Include="MindAttic.Components.Wpf" Version="23.0.0" />
     <PackageReference Include="MindAttic.Log" Version="3.0.0" />
     <PackageReference Include="MindAttic.Vault" Version="6.0.0" />
   </ItemGroup>
