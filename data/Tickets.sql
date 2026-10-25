@@ -24328,6 +24328,11 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15340, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15341, 'RB-T172', '2026-10-25T18:25:59Z', 'working', 'honey@mindattic.com (12795dbb-cadb-4053-a46e-bb2241b3f3bc)', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15342, 'RB-T176', '2026-10-25T18:25:59Z', 'working', 'honey@mindattic.com (12795dbb-cadb-4053-a46e-bb2241b3f3bc)', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15343, 'RB-T179', '2026-10-25T18:25:59Z', 'working', 'honey@mindattic.com (12795dbb-cadb-4053-a46e-bb2241b3f3bc)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15344, 'RB-T188', '2026-10-25T18:27:54Z', 'working', 'honey@mindattic.com (12795dbb-cadb-4053-a46e-bb2241b3f3bc)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15345, 'RB-T189', '2026-10-25T18:27:55Z', 'working', 'honey@mindattic.com (12795dbb-cadb-4053-a46e-bb2241b3f3bc)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15346, 'RB-T190', '2026-10-25T18:27:55Z', 'working', 'honey@mindattic.com (12795dbb-cadb-4053-a46e-bb2241b3f3bc)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15347, 'RB-T191', '2026-10-25T18:27:55Z', 'working', 'honey@mindattic.com (12795dbb-cadb-4053-a46e-bb2241b3f3bc)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15348, 'RB-T192', '2026-10-25T18:29:28Z', 'working', 'honey@mindattic.com (12795dbb-cadb-4053-a46e-bb2241b3f3bc)', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z');
@@ -25812,11 +25817,6 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('USOD-
 
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAU-T9', NULL, 0, 'ryandebraal@mindattic.com', 'ddefd224-ff9a-422d-b6e9-218728189540', '2026-10-25T06:57:35Z', '2026-10-25T06:57:35Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T188', NULL, 0, 'honey@mindattic.com', '12795dbb-cadb-4053-a46e-bb2241b3f3bc', '2026-10-25T06:27:27Z', '2026-10-25T06:27:27Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T189', NULL, 0, 'honey@mindattic.com', '12795dbb-cadb-4053-a46e-bb2241b3f3bc', '2026-10-25T06:27:30Z', '2026-10-25T06:27:30Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T190', NULL, 0, 'honey@mindattic.com', '12795dbb-cadb-4053-a46e-bb2241b3f3bc', '2026-10-25T06:27:34Z', '2026-10-25T06:27:34Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T191', NULL, 0, 'honey@mindattic.com', '12795dbb-cadb-4053-a46e-bb2241b3f3bc', '2026-10-25T06:27:37Z', '2026-10-25T06:27:37Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T192', NULL, 0, 'honey@mindattic.com', '12795dbb-cadb-4053-a46e-bb2241b3f3bc', '2026-10-25T06:29:18Z', '2026-10-25T06:29:18Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T111', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:34:40Z');
