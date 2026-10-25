@@ -39,6 +39,15 @@ internal static class Output
 {
     public static string Esc(string? s) => Markup.Escape(s ?? "");
 
+    /// <summary>Whether Spectre will actually render color (it already skips colored markup under NO_COLOR or a
+    /// redirected/non-terminal output). Spectre's own decoration styles like [bold] keep emitting raw ANSI even then,
+    /// so a heading needs this check itself rather than relying on Spectre to no-op it (M.TIX-T153).</summary>
+    public static bool ColorsEnabled => AnsiConsole.Profile.Capabilities.ColorSystem != ColorSystem.NoColors;
+
+    /// <summary>A section heading, bold only when colors are enabled, so plain-text output isn't split by ANSI
+    /// codes around the word (M.TIX-T153).</summary>
+    public static string Heading(string text) => ColorsEnabled ? $"[bold]{text}[/]" : text;
+
     /// <summary>One link as seen from <paramref name="id"/>: outgoing as "kind → to", incoming as "← kind from".</summary>
     public static string LinkLine(Link l, string id) => l.From.Equals(id, StringComparison.OrdinalIgnoreCase)
         ? $"  [cyan]{Esc(l.Kind)}[/] → {Esc(l.To)}"

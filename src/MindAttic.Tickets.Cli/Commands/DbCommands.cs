@@ -314,14 +314,14 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
                 : $"  [grey]{Output.Esc(e.At)} {Output.Esc(e.Field)}: {Output.Esc(e.Old ?? "")} → {Output.Esc(e.New ?? "")}[/]");
         if (notes.Count > 0)
         {
-            AnsiConsole.MarkupLine($"[bold]Notes[/] ({notes.Count.ToString(System.Globalization.CultureInfo.InvariantCulture)})");
+            AnsiConsole.MarkupLine($"{Output.Heading("Notes")} ({notes.Count.ToString(System.Globalization.CultureInfo.InvariantCulture)})");
             foreach (var n in notes)
             {
                 AnsiConsole.MarkupLine($"  [grey]{Output.Esc(n.At)} {Output.Esc(n.Author)}:[/]");
                 foreach (var line in n.Markdown.Replace("\r\n", "\n", StringComparison.Ordinal).Split('\n')) AnsiConsole.WriteLine("    " + line);
             }
         }
-        AnsiConsole.MarkupLine(commits.Count == 0 ? "[grey]No commits name it.[/]" : $"[bold]Commits[/] ({commits.Count.ToString(System.Globalization.CultureInfo.InvariantCulture)})");
+        AnsiConsole.MarkupLine(commits.Count == 0 ? "[grey]No commits name it.[/]" : $"{Output.Heading("Commits")} ({commits.Count.ToString(System.Globalization.CultureInfo.InvariantCulture)})");
         foreach (var c in commits) AnsiConsole.MarkupLine(Output.CommitLine(c));
         if (!string.IsNullOrEmpty(diff)) AnsiConsole.WriteLine(diff);
         return 0;
