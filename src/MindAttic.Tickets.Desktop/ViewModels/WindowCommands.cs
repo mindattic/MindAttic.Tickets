@@ -16,7 +16,11 @@ public static class WindowCommands
     public static readonly RoutedCommand ShowBoard = new(nameof(ShowBoard), typeof(WindowCommands));
     public static readonly RoutedCommand ShowActivity = new(nameof(ShowActivity), typeof(WindowCommands));
     public static readonly RoutedCommand ShowStats = new(nameof(ShowStats), typeof(WindowCommands));
+    public static readonly RoutedCommand ShowStories = new(nameof(ShowStories), typeof(WindowCommands));
     public static readonly RoutedCommand Help = new(nameof(Help), typeof(WindowCommands));
+
+    /// <summary>Ctrl+S: saves the story being edited in the Stories view (M.TIX-T82).</summary>
+    public static readonly RoutedCommand SaveStory = new(nameof(SaveStory), typeof(WindowCommands));
 
     /// <summary>Ctrl+Z: undoes the last ticket change (M.TIX-T80), except in a text box, which keeps its own undo.</summary>
     public static readonly RoutedCommand Undo = new(nameof(Undo), typeof(WindowCommands));

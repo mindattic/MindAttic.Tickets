@@ -22,6 +22,8 @@
         <KeyBinding Key="D4" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowBoard}" />
         <KeyBinding Key="D5" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowActivity}" />
         <KeyBinding Key="D6" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowStats}" />
+        <KeyBinding Key="D7" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowStories}" />
+        <KeyBinding Key="S" Modifiers="Control" Command="{x:Static vm:WindowCommands.SaveStory}" />
         <KeyBinding Key="F1" Command="{x:Static vm:WindowCommands.Help}" />
         <KeyBinding Key="Z" Modifiers="Control" Command="{x:Static vm:WindowCommands.Undo}" />
         <KeyBinding Key="K" Modifiers="Control" Command="{x:Static vm:WindowCommands.CommandPalette}" />
@@ -235,7 +237,7 @@
                 <Label Style="{StaticResource FilterLabel}" Content="View" Target="{Binding ElementName=ViewChoice}" />
                 <ListBox x:Name="ViewChoice" Style="{StaticResource MaPillChoice}" ItemsSource="{Binding Views}"
                          SelectedItem="{Binding SelectedView}" AutomationProperties.Name="View"
-                         ToolTip="Repos: every repo with its tickets and git state (Ctrl+1). Queue: open tickets in the order /allocate takes them (Ctrl+2). Audit: closed tickets to double-check, and the Orchestrator's drift and duplicate-code findings (Ctrl+3). Board: tickets as cards in Proposed, Approved, In progress and Done; moving a card changes its approval or status (Ctrl+4). Activity: every ticket change across the workspace as it happens, newest first (Ctrl+5). Stats: throughput, cycle time and open tickets by repo and type over time, as tables (Ctrl+6)." />
+                         ToolTip="Repos: every repo with its tickets and git state (Ctrl+1). Queue: open tickets in the order /allocate takes them (Ctrl+2). Audit: closed tickets to double-check, and the Orchestrator's drift and duplicate-code findings (Ctrl+3). Board: tickets as cards in Proposed, Approved, In progress and Done; moving a card changes its approval or status (Ctrl+4). Activity: every ticket change across the workspace as it happens, newest first (Ctrl+5). Stats: throughput, cycle time and open tickets by repo and type over time, as tables (Ctrl+6). Stories: every repo's user stories under their epics, to edit their text, status, acceptance and evidence and link the tickets that implement them (Ctrl+7)." />
             </StackPanel>
             <StackPanel Margin="0,0,12,6">
                 <Label Style="{StaticResource FilterLabel}" Content="_Search (Ctrl+F)" Target="{Binding ElementName=SearchBox}" />
@@ -289,6 +291,16 @@
                 <ComboBox x:Name="LabelBox" Style="{StaticResource Combo}" MinWidth="150" ItemsSource="{Binding LabelChoices}"
                           SelectedItem="{Binding LabelFilter}" AutomationProperties.Name="Label filter"
                           ToolTip="Only tickets with this label. A component is a 'component:' label. Add labels from a ticket's details, or 'tickets ticket label add'." />
+            </StackPanel>
+            <!-- Stories (M.TIX-T82): their own status filter and grouping; search and repo narrow them too. -->
+            <StackPanel Margin="0,0,12,6" Visibility="{Binding IsStoriesView, Converter={StaticResource Visible}}">
+                <Label Style="{StaticResource FilterLabel}" Content="Story stat_us" Target="{Binding ElementName=StoryStatusBox}" />
+                <ComboBox x:Name="StoryStatusBox" Style="{StaticResource Combo}" MinWidth="130" ItemsSource="{Binding StoryStatusChoices}"
+                          SelectedItem="{Binding StoryStatusFilter}" AutomationProperties.Name="Story status filter" />
+            </StackPanel>
+            <StackPanel Margin="0,0,12,6" VerticalAlignment="Bottom" Visibility="{Binding IsStoriesView, Converter={StaticResource Visible}}">
+                <CheckBox Style="{StaticResource Check}" Content="_Group by epic" IsChecked="{Binding GroupByEpic}" Margin="0,0,0,6"
+                          ToolTip="List each epic's stories under a heading with its title, and New story and Rename buttons." />
             </StackPanel>
             <StackPanel Margin="0,0,12,6" Visibility="{Binding IsTicketsView, Converter={StaticResource Visible}}">
                 <Label Style="{StaticResource FilterLabel}" Content="Stat_us" Target="{Binding ElementName=StatusBox}" />
@@ -640,6 +652,79 @@
                 </TextBlock>
             </Grid>
 
+            <!-- Stories (M.TIX-T82): every repo's stories under their epics; the selected one opens in the editor beside the list. -->
+            <Grid Margin="20,0,12,0" Visibility="{Binding IsStoriesView, Converter={StaticResource Visible}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <DockPanel Margin="0,0,0,8">
+                    <WrapPanel DockPanel.Dock="Right">
+                        <Button Style="{StaticResource MaButton}" Content="New stor_y&#x2026;" Command="{Binding NewStoryCommand}" Margin="0,0,6,4"
+                                ToolTip="Add a story under an epic of the repo shown; it opens in the editor" />
+                        <Button Style="{StaticResource MaButton}" Content="New e_pic&#x2026;" Command="{Binding NewEpicCommand}" Margin="0,0,0,4"
+                                ToolTip="Add an epic (its key and title) to a repo" />
+                    </WrapPanel>
+                    <TextBlock Style="{StaticResource Muted}" TextWrapping="Wrap" VerticalAlignment="Center" Margin="0,0,12,4"
+                               Text="Each repo's user stories, in their epics' order. Select one to edit its statement, status, acceptance and evidence (Ctrl+S saves, Esc goes back to the list) and the tickets that implement it. Saving rewrites the repo's USER_STORIES.md view." />
+                </DockPanel>
+                <ListBox x:Name="StoryList" Grid.Row="1" Style="{StaticResource RowList}" ItemsSource="{Binding StoryRows}"
+                         SelectedItem="{Binding SelectedStoryRow}" AutomationProperties.Name="Stories, by epic"
+                         PreviewKeyDown="OnStoriesKeyDown"
+                         VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling" VirtualizingPanel.IsVirtualizingWhenGrouping="True">
+                    <!-- Group by epic: a heading per epic (MainWindow sets the grouping) with its own New story and Rename. -->
+                    <ListBox.GroupStyle>
+                        <GroupStyle>
+                            <GroupStyle.HeaderTemplate>
+                                <DataTemplate>
+                                    <WrapPanel Margin="4,12,0,4">
+                                        <TextBlock Text="{Binding Name.Heading}" FontWeight="SemiBold" FontSize="14" AutomationProperties.HeadingLevel="Level2" VerticalAlignment="Center" />
+                                        <TextBlock Text="{Binding ItemCount, StringFormat='  {0} stories'}" Style="{StaticResource Muted}" VerticalAlignment="Center" />
+                                        <Button Style="{StaticResource LinkBtn}" Content="New story" Margin="14,0,0,0" VerticalAlignment="Center"
+                                                Visibility="{Binding Name.IsEpic, Converter={StaticResource Visible}}"
+                                                Command="{Binding DataContext.NewStoryCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding Name}"
+                                                AutomationProperties.Name="{Binding Name.NewStoryName}" ToolTip="Add a story to this epic" />
+                                        <Button Style="{StaticResource LinkBtn}" Content="Rename" Margin="12,0,0,0" VerticalAlignment="Center"
+                                                Visibility="{Binding Name.IsEpic, Converter={StaticResource Visible}}"
+                                                Command="{Binding DataContext.RenameEpicCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding Name}"
+                                                AutomationProperties.Name="{Binding Name.RenameName}" ToolTip="Rename this epic; its stories keep their IDs" />
+                                    </WrapPanel>
+                                </DataTemplate>
+                            </GroupStyle.HeaderTemplate>
+                        </GroupStyle>
+                    </ListBox.GroupStyle>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="{x:Type vm:StoryRowViewModel}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" MinWidth="150" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Margin="0,0,14,0">
+                                    <TextBlock Text="{Binding Id}" FontWeight="SemiBold" />
+                                    <TextBlock Text="{Binding Repo}" Style="{StaticResource Muted}" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock Text="{Binding Statement}" TextWrapping="Wrap" MaxHeight="54" TextTrimming="CharacterEllipsis" ToolTip="{Binding Statement}" />
+                                    <WrapPanel Margin="0,4,0,0">
+                                        <TextBlock Text="{Binding StatusText}" FontSize="12" Margin="0,0,10,0" />
+                                        <TextBlock Text="{Binding ImplementersText}" Style="{StaticResource Muted}" Margin="0,0,10,0" />
+                                        <TextBlock Text="unsaved edits" FontSize="12" FontWeight="SemiBold" Foreground="{DynamicResource StateProposed}"
+                                                   Visibility="{Binding IsEdited, Converter={StaticResource Visible}}" />
+                                    </WrapPanel>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <TextBlock Grid.Row="1" Style="{StaticResource Muted}" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,40,0,0"
+                           Text="No stories match." AutomationProperties.LiveSetting="Polite" IsHitTestVisible="False">
+                    <TextBlock.Visibility>
+                        <Binding Path="StoryRows.Count" Converter="{x:Static vm:Converters.ZeroToVisible}" />
+                    </TextBlock.Visibility>
+                </TextBlock>
+            </Grid>
+
             <!-- Toasts (M.TIX-T84): an agent closed a ticket. Bottom right, over the lists; each goes by itself, or with âœ•;
                  clicking one opens its ticket. The announcer says each one too (4.1.3). -->
             <ItemsControl Grid.Column="0" ItemsSource="{Binding Toasts}" Focusable="False" Panel.ZIndex="10"
@@ -704,7 +789,7 @@
 
             <!-- ── Detail pane ── -->
             <Border Grid.Column="1" Width="430" Background="{DynamicResource MaPane}" BorderBrush="{DynamicResource MaChromeBorder}" BorderThickness="1,0,0,0"
-                    Visibility="{Binding IsDetailOpen, Converter={StaticResource Visible}}">
+                    Visibility="{Binding ShowsDetailPane, Converter={StaticResource Visible}}">
                 <ScrollViewer x:Name="DetailPane" VerticalScrollBarVisibility="Auto" Focusable="False" DataContext="{Binding Detail}" PreviewKeyDown="OnDetailKeyDown">
                     <StackPanel Margin="20,16,20,20">
                         <DockPanel>
@@ -1029,6 +1114,109 @@
                                         <TextBlock Text="{Binding When}" Style="{StaticResource Muted}" />
                                         <TextBlock Text="{Binding Text}" TextWrapping="Wrap" />
                                     </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+
+            <!-- Story editor (M.TIX-T82): where the ticket detail pane goes, in the Stories view. Edits are kept until Save (Ctrl+S)
+                 or Revert; a story changed elsewhere meanwhile isn't overwritten. -->
+            <Border Grid.Column="1" Width="460" Background="{DynamicResource MaPane}" BorderBrush="{DynamicResource MaChromeBorder}" BorderThickness="1,0,0,0"
+                    Visibility="{Binding ShowsStoryEditor, Converter={StaticResource Visible}}">
+                <ScrollViewer x:Name="StoryEditorPane" VerticalScrollBarVisibility="Auto" Focusable="False" DataContext="{Binding StoryEditor}">
+                    <StackPanel Margin="20,16,20,20">
+                        <DockPanel>
+                            <Button DockPanel.Dock="Right" Style="{StaticResource MaToolButton}" Content="&#x2715;" VerticalAlignment="Top"
+                                    Command="{Binding DataContext.CloseStoryCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                    AutomationProperties.Name="Close the story" ToolTip="Close the story (Esc); unsaved edits are kept" />
+                            <TextBlock x:Name="StoryTitle" Text="{Binding Id}" Style="{StaticResource PaneTitle}" Focusable="True" FocusVisualStyle="{StaticResource MaFocusRing}" />
+                        </DockPanel>
+                        <TextBlock Text="{Binding Repo}" Style="{StaticResource Muted}" Margin="0,2,0,0" />
+                        <WrapPanel Margin="0,4,0,0">
+                            <TextBlock Text="{Binding EpicText}" TextWrapping="Wrap" VerticalAlignment="Center" Margin="0,0,12,0" />
+                            <Button Style="{StaticResource LinkBtn}" Content="Rename epic" VerticalAlignment="Center"
+                                    Visibility="{Binding Epic.IsEpic, Converter={StaticResource Visible}, FallbackValue=Collapsed}"
+                                    Command="{Binding DataContext.RenameEpicCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding Epic}"
+                                    AutomationProperties.Name="{Binding Epic.RenameName}" ToolTip="Rename the epic; its stories keep their IDs" />
+                        </WrapPanel>
+
+                        <Label Style="{StaticResource FilterLabel}" Content="St_atus" Target="{Binding ElementName=StoryStatus}" Margin="0,12,0,0" />
+                        <ComboBox x:Name="StoryStatus" Style="{StaticResource Combo}" HorizontalAlignment="Left" MinWidth="140"
+                                  ItemsSource="{Binding StatusChoices}" SelectedItem="{Binding Status}" AutomationProperties.Name="Story status" />
+
+                        <Label Style="{StaticResource FilterLabel}" Content="Story statemen_t" Target="{Binding ElementName=StoryStatement}" Margin="0,12,0,0" />
+                        <TextBox x:Name="StoryStatement" Style="{StaticResource Field}" Text="{Binding Statement, UpdateSourceTrigger=PropertyChanged}"
+                                 TextWrapping="Wrap" AcceptsReturn="False" MinHeight="54" IsReadOnly="{Binding IsTable}"
+                                 AutomationProperties.Name="Story statement" ToolTip="As a ..., I can ..., so that ..." />
+                        <TextBlock Style="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,2,0,0" Text="A story table row keeps its text in the table's cells: only its status is edited here."
+                                   Visibility="{Binding IsTable, Converter={StaticResource Visible}}" />
+
+                        <Label Style="{StaticResource FilterLabel}" Content="A_cceptance" Target="{Binding ElementName=StoryAcceptance}" Margin="0,12,0,0" />
+                        <TextBox x:Name="StoryAcceptance" Style="{StaticResource Field}" Text="{Binding Acceptance, UpdateSourceTrigger=PropertyChanged}"
+                                 TextWrapping="Wrap" AcceptsReturn="False" MinHeight="54" IsEnabled="{Binding CanEditText}"
+                                 AutomationProperties.Name="Acceptance criteria" ToolTip="What has to be true for it to be done" />
+
+                        <Label Style="{StaticResource FilterLabel}" Content="E_vidence" Target="{Binding ElementName=StoryEvidence}" Margin="0,12,0,0" />
+                        <TextBox x:Name="StoryEvidence" Style="{StaticResource Field}" Text="{Binding Evidence, UpdateSourceTrigger=PropertyChanged}"
+                                 TextWrapping="Wrap" AcceptsReturn="False" MinHeight="38" IsEnabled="{Binding CanEditText}"
+                                 AutomationProperties.Name="Evidence" ToolTip="Where it's shown done: a test, commit or file" />
+
+                        <WrapPanel Margin="0,12,0,0">
+                            <Button Style="{StaticResource MaPrimaryButton}" Content="Save" Margin="0,0,6,6" AutomationProperties.AcceleratorKey="Ctrl+S"
+                                    Command="{Binding DataContext.SaveStoryCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                    ToolTip="Save the story (Ctrl+S): rewrites the repo's USER_STORIES.md view" />
+                            <Button Style="{StaticResource MaButton}" Content="Revert" Margin="0,0,12,6"
+                                    Command="{Binding DataContext.RevertStoryCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                    ToolTip="Drop the edits: back to the story as saved" />
+                            <TextBlock Text="{Binding DirtyText}" Style="{StaticResource Muted}" VerticalAlignment="Center" Margin="0,0,0,6"
+                                       AutomationProperties.LiveSetting="Polite" />
+                        </WrapPanel>
+                        <TextBlock Text="{Binding Error}" Style="{StaticResource ErrorText}" TextWrapping="Wrap"
+                                   Visibility="{Binding Error, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
+
+                        <TextBlock Text="IMPLEMENTED BY" Style="{StaticResource SectionLabel}" />
+                        <TextBlock Text="No tickets implement it yet." Style="{StaticResource Muted}">
+                            <TextBlock.Visibility>
+                                <Binding Path="Implementers.Count" Converter="{x:Static vm:Converters.ZeroToVisible}" />
+                            </TextBlock.Visibility>
+                        </TextBlock>
+                        <ItemsControl ItemsSource="{Binding Implementers}" Focusable="False">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate DataType="{x:Type vm:ImplementerLine}">
+                                    <DockPanel Margin="0,2">
+                                        <Button DockPanel.Dock="Right" Style="{StaticResource MaToolButton}" Content="&#x2715;" Width="26" Height="26" FontSize="10"
+                                                Command="{Binding DataContext.RemoveImplementerCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}"
+                                                AutomationProperties.Name="{Binding TicketId, StringFormat='Remove {0} as implementing it'}" ToolTip="Remove this link (Ctrl+Z puts it back)" />
+                                        <Button Style="{StaticResource LinkBtn}" Content="{Binding TicketId}" VerticalAlignment="Center" Width="100" HorizontalContentAlignment="Left"
+                                                Command="{Binding DataContext.GoToCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding TicketId}"
+                                                AutomationProperties.Name="{Binding SpokenName, StringFormat='{}{0}: go to it'}" ToolTip="Open the ticket" />
+                                        <TextBlock Text="{Binding State}" Style="{StaticResource Muted}" DockPanel.Dock="Right" VerticalAlignment="Center" Margin="6,0" />
+                                        <TextBlock Text="{Binding Summary}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" ToolTip="{Binding Summary}" />
+                                    </DockPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <Button Style="{StaticResource MaButton}" Content="Add implementing ticket&#x2026;" HorizontalAlignment="Left" Margin="0,6,0,0"
+                                Command="{Binding DataContext.AddImplementerCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                ToolTip="Link a ticket as implementing this story ('TICKET implements STORY'); Ctrl+Z undoes it" />
+
+                        <TextBlock Text="OTHER LINKS" Style="{StaticResource SectionLabel}" />
+                        <TextBlock Text="No other links." Style="{StaticResource Muted}">
+                            <TextBlock.Visibility>
+                                <Binding Path="Links.Count" Converter="{x:Static vm:Converters.ZeroToVisible}" />
+                            </TextBlock.Visibility>
+                        </TextBlock>
+                        <ItemsControl ItemsSource="{Binding Links}" Focusable="False">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate DataType="{x:Type vm:LinkLine}">
+                                    <DockPanel Margin="0,2">
+                                        <TextBlock Text="{Binding Phrase}" Style="{StaticResource Muted}" Width="110" VerticalAlignment="Center" />
+                                        <Button Style="{StaticResource LinkBtn}" Content="{Binding Other}" HorizontalAlignment="Left"
+                                                Command="{Binding DataContext.GoToCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding Other}"
+                                                AutomationProperties.Name="{Binding SpokenName, StringFormat='{}{0}: go to it'}" />
+                                    </DockPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>

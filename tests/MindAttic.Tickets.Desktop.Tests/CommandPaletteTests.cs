@@ -154,7 +154,9 @@ public sealed class CommandPaletteTests
     {
         model.GoTo("AL-US-A1");
 
-        Assert.That(() => dialogs.Asked?.Title, Is.EqualTo("AL-US-A1").After(5000, 20));
+        // It opens in the Stories view's editor (M.TIX-T82).
+        Assert.That(model.SelectedView, Is.EqualTo(MainViewModel.StoriesView));
+        Assert.That(() => model.StoryEditor?.Id, Is.EqualTo("AL-US-A1").After(5000, 20));
     }
 
     [Test]

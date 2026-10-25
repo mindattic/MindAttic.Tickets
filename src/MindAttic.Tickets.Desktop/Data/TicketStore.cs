@@ -57,7 +57,7 @@ public sealed record Snapshot(IReadOnlyList<string> Repos, IReadOnlyList<TicketI
     /// <summary>The named queries kept in the database, for the filter bar (M.TIX-T78).</summary>
     public IReadOnlyList<SavedFilter> SavedFilters { get; init; } = [];
 
-    /// <summary>Every repo's stories, epics and backlog items, for the command palette's jump (M.TIX-T81).</summary>
+    /// <summary>Every repo's stories, epics and backlog items with an ID, in file order, for the command palette's jump (M.TIX-T81) and the Stories view (M.TIX-T82).</summary>
     public IReadOnlyList<StoredStory> Stories { get; init; } = [];
 
     /// <summary>Every label in use, sorted (M.TIX-T74): the label filter's choices.</summary>
@@ -65,9 +65,15 @@ public sealed record Snapshot(IReadOnlyList<string> Repos, IReadOnlyList<TicketI
 
     /// <summary>Every ticket's created and status history, oldest first, for the Stats tab's metrics (M.TIX-T86).</summary>
     public IReadOnlyList<TicketEvent> StatusHistory { get; init; } = [];
+
+    /// <summary>Every repo's epics, in file order (M.TIX-T82).</summary>
+    public IReadOnlyList<StoredEpic> Epics { get; init; } = [];
+
+    /// <summary>The tickets that implement each story (its <c>implements</c> links), by story ID without case.</summary>
+    public IReadOnlyDictionary<string, IReadOnlyList<string>> Implementers { get; init; } = new Dictionary<string, IReadOnlyList<string>>();
 }
 
-/// <summary>A story as the command palette opens it (M.TIX-T81): its rows (one per repo holding the ID) and its links.</summary>
+/// <summary>A story as the command palette and the Stories view open it (M.TIX-T81, M.TIX-T82): its rows (one per repo holding the ID) and its links.</summary>
 public sealed record StoryDetail(IReadOnlyList<StoredStory> Rows, IReadOnlyList<Link> Links)
 {
     public StoredStory Story => Rows[0];
@@ -115,7 +121,8 @@ public sealed class TicketStore(string root)
         var states = db.QueueStates();
         var estimates = db.Estimates();
         var tickets = db.Tickets();
-        var blockers = OpenBlockers(tickets.Select(x => x.Ticket), db.AllLinks());
+        var links = db.AllLinks();
+        var blockers = OpenBlockers(tickets.Select(x => x.Ticket), links);
         var work = db.WorkStates();
         var labels = db.AllLabels();
         IReadOnlyList<string> BlockersOf(string id) => blockers.TryGetValue(id, out var b) ? b : [];
@@ -136,12 +143,35 @@ public sealed class TicketStore(string root)
             Stories = [.. db.Stories().Where(s => s.Id.Length > 0)],
             LabelNames = [.. db.LabelCounts().Select(c => c.Label)],
             StatusHistory = db.StatusHistory(),
+            Epics = db.Epics(),
+            Implementers = links.Where(l => l.Kind == "implements")
+                .GroupBy(l => l.To, StringComparer.OrdinalIgnoreCase)
+                .ToDictionary(g => g.Key, g => (IReadOnlyList<string>)[.. g.Select(l => l.From).Distinct(StringComparer.OrdinalIgnoreCase)], StringComparer.OrdinalIgnoreCase),
         };
     });
 
     /// <summary>The story <paramref name="id"/> and its links (both directions), or null when there's no such story.</summary>
     public StoryDetail? Story(string id) => Read(db =>
         db.Story(id.Trim()) is { Count: > 0 } rows ? new StoryDetail(rows, db.Links(rows[0].Id)) : null);
+
+    /// <summary>The story <paramref name="id"/> of <paramref name="repo"/> with its links, or null when there's no such story (M.TIX-T82).</summary>
+    public StoryDetail? StoryIn(string repo, string id) => Read(db =>
+        db.Story(id.Trim()).FirstOrDefault(s => s.Repo.Equals(repo, StringComparison.OrdinalIgnoreCase)) is { } s ? new StoryDetail([s], db.Links(s.Id)) : null);
+
+    /// <summary>Saves a story's statement, status, acceptance and evidence (M.TIX-T82); the repo's view is re-rendered.</summary>
+    public void UpdateStory(string repo, string id, string statement, string? status, string? acceptance, string? evidence) =>
+        Write($"story {id} saved", db => db.UpdateStory(id, repo, statement, status, acceptance, evidence));
+
+    /// <summary>Adds a story under <paramref name="epic"/>; returns its new ID.</summary>
+    public string AddStory(string repo, string epic, string text, string status)
+    {
+        var id = "";
+        Write($"new story in {repo} epic {epic}: {text}", db => id = db.AddStory(repo, epic, text, status));
+        return id;
+    }
+
+    public void AddEpic(string repo, string key, string title) => Write($"new epic {key} in {repo}: {title}", db => db.AddEpic(repo, key, title));
+    public void EditEpic(string repo, string key, string title) => Write($"epic {key} of {repo} renamed: {title}", db => db.EditEpic(repo, key, title));
 
     /// <summary>
     /// Each open ticket's open blockers: the open tickets its <c>requires</c> links reach, directly or through others

@@ -968,24 +968,14 @@ public sealed partial class TicketsDb : IDisposable
         return id;
     }
 
-    /// <summary>Rewrites a story's text (its bullet becomes one line; ID, glyph and suffix are kept).</summary>
+    /// <summary>
+    /// Rewrites a story's text (its bullet becomes one line; ID, glyph and suffix are kept). Its evidence and acceptance are
+    /// read from the new text, as an import would read them.
+    /// </summary>
     public void EditStory(string id, string text, string? repo = null)
     {
         if (string.IsNullOrWhiteSpace(text)) throw new ArgumentException("A story needs text.", nameof(text));
-        var s = Story(id).Where(x => repo is null || x.Repo.Equals(repo, StringComparison.OrdinalIgnoreCase)).ToList() switch
-        {
-            [var one] => one,
-            [] => throw new KeyNotFoundException($"No story {id}{(repo is null ? "" : " in " + repo)}."),
-            _ => throw new InvalidOperationException($"More than one story is {id}; pass --repo."),
-        };
-        if (s.Source == "table") throw new InvalidOperationException($"{id} is a table row; edit table stories with a new row instead.");
-        var indent = s.Source == "sub-bullet" ? "  " : "";
-        var suffix = s.Suffix.Length > 0 ? " " + s.Suffix : "";
-        using var tx = Begin();
-        Exec("UPDATE stories SET text = $t, evidence = NULL, acceptance = NULL WHERE uid = $u", tx, ("$t", OneLine(text)), ("$u", s.Uid));
-        Exec("UPDATE blocks SET text = $x WHERE repo = $r AND kind = 'story' AND ref = $u", tx,
-            ("$x", $"{indent}- **{s.Id} {s.Glyph}{suffix}** {OneLine(text)}"), ("$r", s.Repo), ("$u", s.Uid.ToString(CultureInfo.InvariantCulture)));
-        tx.Commit();
+        WriteStoryText(OneStory(id, repo), text);
     }
 
     /// <summary>Adds an <c>## Epic KEY — title</c> section just before the repo's ticket log.</summary>

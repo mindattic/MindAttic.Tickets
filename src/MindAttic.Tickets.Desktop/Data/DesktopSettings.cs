@@ -16,6 +16,7 @@ public sealed class DesktopSettings
     public string? LastRepo { get; set; }
     public string LastType { get; set; } = "feature";
     public bool GroupByRepo { get; set; } = true;
+    public bool GroupStoriesByEpic { get; set; } = true;
 
     [System.Text.Json.Serialization.JsonIgnore]
     public string? Path { get; private set; }

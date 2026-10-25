@@ -40,10 +40,11 @@ public sealed partial class MainViewModel : ObservableObject
         this.store = store;
         this.settings = settings;
         Dialogs = dialogs ?? new NoDialogs();
-        selectedView = settings.View switch { TicketsView or "Tickets" => TicketsView, AuditView => AuditView, BoardView => BoardView, ActivityView => ActivityView, StatsView => StatsView, _ => QueueView };
+        selectedView = settings.View switch { TicketsView or "Tickets" => TicketsView, AuditView => AuditView, BoardView => BoardView, ActivityView => ActivityView, StatsView => StatsView, StoriesView => StoriesView, _ => QueueView };
         InitOrchestrator(orchestrator);
         InitQuery();
         InitExport();
+        InitStories();
         zoom = Math.Clamp(settings.Zoom, MinZoom, MaxZoom);
         groupByRepo = settings.GroupByRepo;
 
@@ -81,7 +82,7 @@ public sealed partial class MainViewModel : ObservableObject
 
     // ── What's shown ────────────────────────────────────────────────────────
 
-    public IReadOnlyList<string> Views { get; } = [ReposView, QueueView, AuditView, BoardView, ActivityView, StatsView];
+    public IReadOnlyList<string> Views { get; } = [ReposView, QueueView, AuditView, BoardView, ActivityView, StatsView, StoriesView];
 
     public string SelectedView
     {
@@ -95,6 +96,9 @@ public sealed partial class MainViewModel : ObservableObject
             Raise(nameof(IsBoardView));
             Raise(nameof(IsActivityView));
             Raise(nameof(IsStatsView));
+            Raise(nameof(IsStoriesView));
+            Raise(nameof(ShowsStoryEditor));
+            Raise(nameof(ShowsDetailPane));
             Raise(nameof(ShowsTicketFilters));
             settings.View = value;
             settings.Save();
@@ -169,6 +173,7 @@ public sealed partial class MainViewModel : ObservableObject
         {
             if (!Set(ref detail, value)) return;
             Raise(nameof(IsDetailOpen));
+            Raise(nameof(ShowsDetailPane));
             CommandManager.InvalidateRequerySuggested();
         }
     }
@@ -245,6 +250,7 @@ public sealed partial class MainViewModel : ObservableObject
             ApplyFilters();
             if (Detail is { } d) await ShowDetailAsync(d.Id, quiet: true);
             await RefreshActivityAsync();
+            if (StoryEditor is { } ed) await LoadStoryAsync(ed.Repo, ed.Id, quiet: true);
             LastRefresh = s.Read.ToString("HH:mm:ss", CultureInfo.InvariantCulture);
             CommandManager.InvalidateRequerySuggested();
             _ = RefreshGitAsync();
@@ -283,6 +289,7 @@ public sealed partial class MainViewModel : ObservableObject
             .Where(t => StatusFilter != AnyStatus ? t.Ticket.Status == StatusFilter : ShowArchived || queryPicksStatus || t.Ticket.Status == TicketRules.Open);
         TicketRows.SyncBy(Sort(tickets), t => t.Ticket.Id, r => r.Id, NewRow, UpdateRow);
         ApplyBoard(s, Match);
+        ApplyStories(s);
         ApplyAudit();
         ApplyHygiene(s);
         ApplyActivity();
@@ -296,6 +303,7 @@ public sealed partial class MainViewModel : ObservableObject
             : IsBoardView ? $"Board: {string.Join(", ", BoardColumns.Select(c => $"{c.Rows.Count} {c.Title.ToLowerInvariant()}"))} shown."
             : IsActivityView ? ActivityStatus
             : IsStatsView ? $"Stats: {Metrics?.Periods.Count ?? 0} {StatsBy.ToLowerInvariant()}s, {Metrics?.Periods.Sum(p => p.Closed) ?? 0} closed, {Metrics?.Periods.LastOrDefault()?.OpenAtEnd ?? 0} open now."
+            : IsStoriesView ? $"Stories: {StoryRows.Count} of {s.Stories.Count} stories shown."
             : IsAuditView ? $"Audit: {HygieneRows.Count} closed tickets to double-check, {DriftRows.Count} drifted, {MissingRows.Count} missing, {DuplicateRows.Count} duplicate groups shown."
             : $"Repos: {TicketRows.Count} of {s.Tickets.Count} tickets shown.";
     }
@@ -383,8 +391,8 @@ public sealed partial class MainViewModel : ObservableObject
         if ((IsAuditView || IsActivityView) &&snapshot.Tickets.Any(t => t.Ticket.Id.Equals(id, StringComparison.OrdinalIgnoreCase))) SelectedView = TicketsView;
         if (snapshot.Tickets.All(t => !t.Ticket.Id.Equals(id, StringComparison.OrdinalIgnoreCase)))
         {
-            // A story (a link's other end) opens in its own window (M.TIX-T81).
-            _ = ShowStoryAsync(id);
+            // A story opens in the Stories view, where it can be edited (M.TIX-T82); one that can't (no such row) shows its summary (M.TIX-T81).
+            if (!OpenStory(id)) _ = ShowStoryAsync(id);
             return;
         }
         if (IsBoardView && BoardColumns.SelectMany(c => c.Rows).FirstOrDefault(r => r.Id.Equals(id, StringComparison.OrdinalIgnoreCase)) is { } card)
@@ -393,6 +401,7 @@ public sealed partial class MainViewModel : ObservableObject
             FocusRow?.Invoke(card);
             return;
         }
+        if (IsStoriesView) SelectedView = TicketsView; // Stories lists no tickets: Repos does
         if (IsBoardView) SelectedView = TicketsView; // not on the board (filtered, or an older closed ticket): Repos lists it
         var row = (IsQueueView ? QueueRows : TicketRows).FirstOrDefault(r => r.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
         if (row is null)

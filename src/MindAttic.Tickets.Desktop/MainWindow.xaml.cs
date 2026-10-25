@@ -36,6 +36,12 @@ public partial class MainWindow : Window
         CommandBindings.Add(new CommandBinding(WindowCommands.ShowBoard, (_, _) => { model.SelectedView = MainViewModel.BoardView; FocusList(); }));
         CommandBindings.Add(new CommandBinding(WindowCommands.ShowActivity, (_, _) => { model.SelectedView = MainViewModel.ActivityView; FocusActivity(); }));
         CommandBindings.Add(new CommandBinding(WindowCommands.ShowStats, (_, _) => model.SelectedView = MainViewModel.StatsView));
+        CommandBindings.Add(new CommandBinding(WindowCommands.ShowStories, (_, _) => { model.SelectedView = MainViewModel.StoriesView; FocusStories(); }));
+        CommandBindings.Add(new CommandBinding(WindowCommands.SaveStory, async (_, _) =>
+        {
+            // A text box commits its text on every keystroke, so what's typed is what's saved.
+            if (model.IsStoriesView && model.SaveStoryCommand.CanExecute(null)) await model.SaveStoryAsync();
+        }));
         CommandBindings.Add(new CommandBinding(WindowCommands.Help, (_, _) => ShowHelp()));
         CommandBindings.Add(new CommandBinding(WindowCommands.Undo, async (_, _) =>
         {
@@ -60,9 +66,12 @@ public partial class MainWindow : Window
         {
             if (e.PropertyName == nameof(MainViewModel.Announcement)) Announce(model.Announcement);
             if (e.PropertyName == nameof(MainViewModel.GroupByRepo)) ApplyGrouping();
+            if (e.PropertyName == nameof(MainViewModel.GroupByEpic)) ApplyStoryGrouping();
             if (e.PropertyName == nameof(MainViewModel.SelectedView)) SyncSelection();
         };
         ApplyGrouping();
+        ApplyStoryGrouping();
+        model.FocusStory += row => Dispatcher.BeginInvoke(DispatcherPriority.Background, () => FocusStoryRow(row));
         model.ClearSelectionRequested += () =>
         {
             var list = CurrentList;
@@ -95,6 +104,14 @@ public partial class MainWindow : Window
         var view = System.Windows.Data.CollectionViewSource.GetDefaultView(model.TicketRows);
         view.GroupDescriptions.Clear();
         if (model.GroupByRepo) view.GroupDescriptions.Add(new System.Windows.Data.PropertyGroupDescription(nameof(TicketRowViewModel.RepoHeader)));
+    }
+
+    /// <summary>Lists the Stories view's stories under a heading per epic, or not (M.TIX-T82); they're in epic order either way.</summary>
+    private void ApplyStoryGrouping()
+    {
+        var view = System.Windows.Data.CollectionViewSource.GetDefaultView(model.StoryRows);
+        view.GroupDescriptions.Clear();
+        if (model.GroupByEpic) view.GroupDescriptions.Add(new System.Windows.Data.PropertyGroupDescription(nameof(StoryRowViewModel.Group)));
     }
 
     /// <summary>A second start handed over <paramref name="id"/> (<c>--ticket</c>): come forward and open it.</summary>
@@ -157,6 +174,29 @@ public partial class MainWindow : Window
         else ActivityList.Focus();
     });
 
+    /// <summary>Focuses the Stories list on its selected (else first) story, without opening one that isn't selected yet.</summary>
+    private void FocusStories() => Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
+    {
+        StoryList.UpdateLayout();
+        var item = StoryList.SelectedItem ?? (StoryList.Items.Count > 0 ? StoryList.Items[0] : null);
+        if (item is not null && StoryList.ItemContainerGenerator.ContainerFromItem(item) is ListBoxItem container) container.Focus();
+        else StoryList.Focus();
+    });
+
+    private void FocusStoryRow(StoryRowViewModel row)
+    {
+        StoryList.ScrollIntoView(row);
+        StoryList.UpdateLayout();
+        (StoryList.ItemContainerGenerator.ContainerFromItem(row) as ListBoxItem)?.Focus();
+    }
+
+    /// <summary>Enter or F6 on a story goes to its editor; the editor's fields then follow by Tab.</summary>
+    private void OnStoriesKeyDown(object sender, KeyEventArgs e)
+    {
+        if (Keyboard.Modifiers != ModifierKeys.None || e.OriginalSource is not ListBoxItem || !model.IsStoryEditorOpen) return;
+        if (e.Key is Key.Enter or Key.F6) { e.Handled = true; StoryTitle.Focus(); }
+    }
+
     private void FocusRow(TicketRowViewModel row)
     {
         var list = ListOf(row);
@@ -176,13 +216,23 @@ public partial class MainWindow : Window
     /// <summary>Hands the current list's selection to the model, in the list's order (the order a bulk move keeps).</summary>
     private void SyncSelection()
     {
-        if (model.IsBoardView || model.IsAuditView) { model.SelectedRows = []; return; }
+        if (model.IsBoardView || model.IsAuditView || model.IsStoriesView) { model.SelectedRows = []; return; }
         var list = CurrentList;
         model.SelectedRows = [.. list.SelectedItems.OfType<TicketRowViewModel>().OrderBy(r => list.Items.IndexOf(r))];
     }
 
     private void OnEscape()
     {
+        // In the Stories view, Esc in the editor goes back to the story in the list (its edits are kept); in the list it closes the editor.
+        if (model.IsStoriesView && !SearchBox.IsKeyboardFocusWithin)
+        {
+            if (StoryEditorPane.IsKeyboardFocusWithin)
+            {
+                if (model.SelectedStoryRow is { } row) FocusStoryRow(row); else FocusStories();
+                return;
+            }
+            if (model.IsStoryEditorOpen) { model.CloseStoryCommand.Execute(null); FocusStories(); return; }
+        }
         if (model.IsMultiSelect && !SearchBox.IsKeyboardFocusWithin) { model.ClearSelectionCommand.Execute(null); return; }
         if (SearchBox.IsKeyboardFocusWithin && model.Search.Length > 0) model.Search = "";
         else if (model.IsDetailOpen) { model.CloseDetailCommand.Execute(null); FocusList(); }
@@ -443,6 +493,7 @@ public partial class MainWindow : Window
         yield return Routed("Show the Board", WindowCommands.ShowBoard, "Ctrl+4");
         yield return Routed("Show Activity", WindowCommands.ShowActivity, "Ctrl+5");
         yield return Routed("Show Stats", WindowCommands.ShowStats, "Ctrl+6");
+        yield return Routed("Show Stories", WindowCommands.ShowStories, "Ctrl+7");
         yield return Routed("Search tickets", WindowCommands.FocusSearch, "Ctrl+F");
         yield return Routed("Keyboard shortcuts and help", WindowCommands.Help, "F1");
     }
@@ -480,9 +531,14 @@ public partial class MainWindow : Window
         toast says so (click it to open the ticket).
         Stats shows ticket metrics from the tickets' history, as tables: tickets filed, closed and open per day, week or
         month, cycle time (filed to closed) by type, and the tickets open at the end of each period by repo and by type.
+        Stories lists every repo's user stories under their epics (filter
+        them by repo, search and story status): select one to edit its statement, status, acceptance and evidence, and
+        Save (Ctrl+S) writes it and rewrites the repo's USER_STORIES.md view, or Revert drops the edits. A story changed
+        elsewhere since you opened it isn't overwritten. Add the tickets that implement it, add stories and epics, or
+        rename an epic there too. A story ID clicked anywhere opens it in Stories.
 
         Ctrl+Z undoes your last approve, back to proposed, reject, queue move, close, won't do, board move or link
-        change, newest first, by writing the opposite change (a close is undone by reopening the ticket with its old
+        change (a story's implementing ticket too), newest first, by writing the opposite change (a close is undone by reopening the ticket with its old
         ref). Nothing is deleted: the ticket's history shows both, and an 'undo' entry says what was undone. A change
         someone else has changed again since isn't undone.
 
@@ -505,10 +561,15 @@ public partial class MainWindow : Window
           Left / Right         the next column's cards
           Alt+Left / Alt+Right move the card to the column before or after (or drag it)
 
+        In Stories
+          Up / Down            move between stories (the selected one opens in the editor)
+          Enter or F6          go to the editor          Esc   back to the list (edits are kept)
+          Ctrl+S               save the story            Revert drops the edits
+
         Anywhere
-          Ctrl+K               command palette: type part of a ticket or story ID or text, or a command's
+          Ctrl+K              command palette: type part of a ticket or story ID or text, or a command's
                                name; Up / Down choose, Enter runs (> commands only, # tickets and stories only)
-          Ctrl+1 / 2 / 3 / 4 / 5 / 6   Repos / Queue / Audit / Board / Activity / Stats
+          Ctrl+1 / 2 / 3 / 4 / 5 / 6 / 7   Repos / Queue / Audit / Board / Activity / Stats / Stories
           Work filter          Queued (/allocate takes it next), Needs approval, Blocked (waiting on other tickets)
           Ctrl+F               search          Ctrl+N   new ticket
           Ctrl+Z               undo the last change

@@ -140,6 +140,44 @@ public sealed partial class StoryDocument
         _ => throw new ArgumentException($"Unknown story status '{status}' (done, partial or planned).", nameof(status)),
     };
 
+    /// <summary>
+    /// A story's body split into its statement, its acceptance (<c>*Acceptance: …*</c>, the first) and its evidence
+    /// (<c>*(…)*</c>, the last, as the parser reads them), each without its markers; whitespace runs in the statement become
+    /// one space. <see cref="ComposeStory"/> puts them back together.
+    /// </summary>
+    public static (string Statement, string? Acceptance, string? Evidence) SplitStory(string body)
+    {
+        var cuts = new List<(int At, int Length)>();
+        string? acceptance = null, evidence = null;
+        if (Acceptance().Match(body) is { Success: true } a)
+        {
+            acceptance = a.Groups["a"].Value.Trim();
+            cuts.Add((a.Index, a.Length));
+        }
+        if (Evidence().Matches(body) is { Count: > 0 } ms && ms[^1] is var e && !cuts.Any(c => e.Index < c.At + c.Length && c.At < e.Index + e.Length))
+        {
+            evidence = e.Groups["e"].Value.Trim();
+            cuts.Add((e.Index, e.Length));
+        }
+        var text = body;
+        foreach (var (at, length) in cuts.OrderByDescending(c => c.At)) text = text.Remove(at, length);
+        return (string.Join(" ", text.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries)), acceptance, evidence);
+    }
+
+    /// <summary>
+    /// A story's body from its parts: the statement, then <c>*Acceptance: …*</c> and <c>*(…)*</c> when given. Acceptance and
+    /// evidence can't hold a <c>*</c> (it would end their italics early, and the parser would read something else back).
+    /// </summary>
+    public static string ComposeStory(string statement, string? acceptance, string? evidence)
+    {
+        static string? Clean(string? s) => string.IsNullOrWhiteSpace(s) ? null : string.Join(" ", s.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries));
+        var (st, ac, ev) = (Clean(statement), Clean(acceptance), Clean(evidence));
+        if (st is null) throw new ArgumentException("A story needs text.", nameof(statement));
+        if (ac?.Contains('*') == true) throw new ArgumentException("Acceptance can't contain '*'.", nameof(acceptance));
+        if (ev?.Contains('*') == true) throw new ArgumentException("Evidence can't contain '*'.", nameof(evidence));
+        return string.Join(" ", new[] { st, ac is null ? null : $"*Acceptance: {ac}*", ev is null ? null : $"*({ev})*" }.Where(p => p is not null));
+    }
+
     [GeneratedRegex(@"^## Epic ([A-Za-z0-9]+)\s*[—–:-]\s*(.*?)(?:\s*\{#([^}]+)\})?\s*$")]
     internal static partial Regex EpicHeading();
 

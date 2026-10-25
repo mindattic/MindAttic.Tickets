@@ -285,7 +285,7 @@ public sealed class DetailViewModel : ObservableObject
     /// <summary>The last action's error, shown beside the actions and announced (3.3.1).</summary>
     public string Error { get => error; set => Set(ref error, value); }
 
-    private static string Outgoing(string kind) => kind switch
+    internal static string Outgoing(string kind) => kind switch
     {
         "requires" => "Waits for",
         "related" => "Related to",
@@ -297,7 +297,7 @@ public sealed class DetailViewModel : ObservableObject
         _ => kind,
     };
 
-    private static string Incoming(string kind) => kind switch
+    internal static string Incoming(string kind) => kind switch
     {
         "requires" => "Needed by",
         "related" => "Related to",
