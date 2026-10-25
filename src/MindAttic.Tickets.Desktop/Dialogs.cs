@@ -17,4 +17,10 @@ public sealed class Dialogs(Window owner) : IDialogs
         var w = new NewTicketWindow(repos, repo, type) { Owner = owner };
         return w.ShowDialog() == true ? w.Result : null;
     }
+
+    public string? SaveFile(string title, string fileName, string filter)
+    {
+        var d = new Microsoft.Win32.SaveFileDialog { Title = title, FileName = fileName, Filter = filter, AddExtension = true, OverwritePrompt = true };
+        return d.ShowDialog(owner) == true ? d.FileName : null;
+    }
 }

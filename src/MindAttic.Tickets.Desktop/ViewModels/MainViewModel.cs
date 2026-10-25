@@ -43,6 +43,7 @@ public sealed partial class MainViewModel : ObservableObject
         selectedView = settings.View switch { TicketsView or "Tickets" => TicketsView, AuditView => AuditView, BoardView => BoardView, ActivityView => ActivityView, _ => QueueView };
         InitOrchestrator(orchestrator);
         InitQuery();
+        InitExport();
         zoom = Math.Clamp(settings.Zoom, MinZoom, MaxZoom);
         groupByRepo = settings.GroupByRepo;
 

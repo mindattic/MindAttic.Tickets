@@ -274,6 +274,32 @@ public sealed class TicketCliTests
     }
 
     [Test]
+    public void List_exports_the_filtered_list_as_csv_or_markdown()
+    {
+        MakeRepo("A", "AA", "| AA-T1 | 2026-09-01 | fix | open | crash, \"badly\" | r1 |\n| AA-T2 | 2026-10-05 | chore | closed | new | x |\n");
+        MakeRepo("B", "BB", "| BB-T1 | 2026-10-06 | fix | open | other | r2 |\n");
+
+        var csv = Run("ticket", "list", "--format", "csv", "--type", "fix");
+        Assert.That(csv.Code, Is.Zero, csv.Out);
+        var lines = csv.Out.Split("\r\n", StringSplitOptions.RemoveEmptyEntries);
+        Assert.That(lines[0], Is.EqualTo("Repo,ID,Date,Type,Status,Summary,Ref,Labels"));
+        Assert.That(lines.Skip(1), Is.EqualTo(new[] { "A,AA-T1,2026-09-01,fix,open,\"crash, \"\"badly\"\"\",r1,", "B,BB-T1,2026-10-06,fix,open,other,r2," }));
+
+        var md = Run("ticket", "list", "--format", "md", "--repo", "A").Out;
+        Assert.That(md, Does.StartWith("| Repo | ID | Date | Type | Status | Summary | Ref | Labels |\n|---|---|---|---|---|---|---|---|\n"));
+        Assert.That(md, Does.Contain("| A | AA-T2 | 2026-10-05 | chore | closed | new | x |  |").And.Not.Contain("BB-T1"));
+
+        var file = Path.Combine(root, "out.csv");
+        var written = Run("ticket", "list", "--status", "open", "--output", file);
+        Assert.That(written.Code, Is.Zero, written.Out);
+        Assert.That(File.ReadAllText(file), Does.StartWith("Repo,ID,").And.Contain("AA-T1").And.Not.Contain("AA-T2"), "the extension picks csv");
+
+        Assert.That(Run("ticket", "list", "--format", "xml").Code, Is.Not.Zero);
+        Assert.That(Run("ticket", "list", "--json", "--format", "csv").Code, Is.Not.Zero);
+        Assert.That(Run("ticket", "list", "--output", Path.Combine(root, "out.txt")).Code, Is.Not.Zero, "a table can't go to a file");
+    }
+
+    [Test]
     public void Labels_are_added_removed_listed_and_filter_the_list()
     {
         MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | feature | open | one | — |\n| AA-T2 | 2026-10-01 | fix | open | two | — |\n");

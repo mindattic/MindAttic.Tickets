@@ -196,10 +196,31 @@ public sealed class TicketListCommand : Command<TicketListCommand.Settings>
         [CommandOption("--json")]
         public bool Json { get; init; }
 
+        [CommandOption("--format <FORMAT>")]
+        [Description("table (default) | json | csv | md: csv and md export the filtered list (M.TIX-T87).")]
+        public string? Format { get; init; }
+
+        [CommandOption("--output <PATH>")]
+        [Description("Write the list to this file (UTF-8) instead of standard output; its extension (.csv, .md) picks the format when --format isn't given.")]
+        public string? Output { get; init; }
+
+        /// <summary>The format asked for: --format, else --json, else the --output file's extension, else table.</summary>
+        internal string EffectiveFormat =>
+            Format?.Trim().ToLowerInvariant() is { Length: > 0 } f ? (f == "markdown" ? TicketExport.Markdown : f)
+            : Json ? "json"
+            : Output is not null && TicketExport.FormatOf(Output) is { } byExt ? byExt
+            : "table";
+
         public override ValidationResult Validate() =>
             Label.FirstOrDefault(l => TicketsDb.NormalizeLabel(l) is null) is { } bad
                 ? ValidationResult.Error($"--label \"{bad}\" isn't a label (a letter or digit first, then letters, digits and - _ . : /)")
-                : ValidationResult.Success();
+            : EffectiveFormat is not ("table" or "json" or TicketExport.Csv or TicketExport.Markdown)
+                ? ValidationResult.Error("--format must be table, json, csv or md")
+            : Json && Format is not null && EffectiveFormat != "json"
+                ? ValidationResult.Error("--json and --format disagree")
+            : Output is not null && EffectiveFormat == "table"
+                ? ValidationResult.Error("--output needs --format json, csv or md (or a .csv or .md file name)")
+            : ValidationResult.Success();
     }
 
     public override int Execute(CommandContext context, Settings settings)
@@ -243,13 +264,23 @@ public sealed class TicketListCommand : Command<TicketListCommand.Settings>
                 labels.GetValueOrDefault(x.Ticket.Id))))];
         }
 
-        if (settings.Json)
+        var format = settings.EffectiveFormat;
+        if (format != "table")
         {
-            Console.WriteLine(JsonSerializer.Serialize(rows.Select(x => new
+            var text = format == "json"
+                ? JsonSerializer.Serialize(rows.Select(x => new
+                {
+                    repo = x.Repo.Name, id = x.Ticket.Id, date = x.Ticket.Date, type = x.Ticket.Type,
+                    status = x.Ticket.Status, summary = x.Ticket.Summary, @ref = x.Ticket.Ref, labels = LabelsOf(x.Ticket.Id),
+                }), new JsonSerializerOptions { WriteIndented = true }) + Environment.NewLine
+                : TicketExport.Write(format, rows.Select(x => new ExportRow(x.Repo.Name, x.Ticket, LabelsOf(x.Ticket.Id))));
+            if (settings.Output is { } path)
             {
-                repo = x.Repo.Name, id = x.Ticket.Id, date = x.Ticket.Date, type = x.Ticket.Type,
-                status = x.Ticket.Status, summary = x.Ticket.Summary, @ref = x.Ticket.Ref, labels = LabelsOf(x.Ticket.Id),
-            }), new JsonSerializerOptions { WriteIndented = true }));
+                File.WriteAllText(path, text, new System.Text.UTF8Encoding(encoderShouldEmitUTF8Identifier: format == TicketExport.Csv));
+                // stderr, so a pipeline reading stdout sees nothing but the export.
+                Console.Error.WriteLine($"{rows.Count} ticket(s) written to {Path.GetFullPath(path)}");
+            }
+            else Console.Write(text);
             return 0;
         }
 

@@ -20,4 +20,8 @@ public interface IDialogs
 
     /// <summary>Null when cancelled.</summary>
     NewTicket? NewTicket(IReadOnlyList<string> repos, string? repo, string type);
+
+    /// <summary>A file to save to (M.TIX-T87's Export), <paramref name="fileName"/> suggested; null when cancelled. <paramref name="filter"/>
+    /// is a file dialog filter ("CSV (*.csv)|*.csv|…").</summary>
+    string? SaveFile(string title, string fileName, string filter) => null;
 }

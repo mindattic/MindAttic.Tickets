@@ -14,6 +14,7 @@
         <KeyBinding Key="F5" Command="{Binding RefreshCommand}" />
         <KeyBinding Key="N" Modifiers="Control" Command="{Binding NewTicketCommand}" />
         <KeyBinding Key="S" Modifiers="Control+Shift" Command="{Binding SyncCommand}" />
+        <KeyBinding Key="E" Modifiers="Control" Command="{Binding ExportCommand}" />
         <KeyBinding Key="F" Modifiers="Control" Command="{x:Static vm:WindowCommands.FocusSearch}" />
         <KeyBinding Key="D1" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowTickets}" />
         <KeyBinding Key="D2" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowQueue}" />
@@ -210,6 +211,9 @@
                         ToolTip="Commit and push the ticket database: runs 'tickets db sync' (Ctrl+Shift+S)" />
                 <Button Style="{StaticResource MaButton}" Content="_GitHub intakeâ€¦" Command="{Binding IntakeCommand}" Margin="0,0,8,0"
                         ToolTip="File GitHub issues labelled 'orchestrator' and CI failures on main as tickets: shows a dry run first and files only when you click File ('tickets ticket intake')" />
+                <Button Style="{StaticResource MaButton}" Content="_Export…" Command="{Binding ExportCommand}" Margin="0,0,8,0"
+                        AutomationProperties.AcceleratorKey="Ctrl+E"
+                        ToolTip="Save the tickets this view shows, with its filters, query and sort, as CSV or markdown (Ctrl+E); 'tickets ticket list --format csv|md' does the same from the CLI" />
                 <Button Style="{StaticResource MaButton}" Content="_Refresh" Command="{Binding RefreshCommand}" Margin="0,0,8,0"
                         ToolTip="Read the database again (F5). It also refreshes by itself when agents change tickets." />
                 <Button Style="{StaticResource MaButton}" Content="Commandsâ€¦" Command="{x:Static vm:WindowCommands.CommandPalette}" Margin="0,0,8,0"

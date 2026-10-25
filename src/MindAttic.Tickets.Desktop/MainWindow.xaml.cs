@@ -488,6 +488,7 @@ public partial class MainWindow : Window
           Work filter          Queued (/allocate takes it next), Needs approval, Blocked (waiting on other tickets)
           Ctrl+F               search          Ctrl+N   new ticket
           Ctrl+Z               undo the last change
+          Ctrl+E               export the tickets shown (filters, query and sort applied) as CSV or markdown
           F5                   refresh         Ctrl+Shift+S   sync (commit and push the database)
           Ctrl+Plus / Minus / 0   zoom         Esc   close details or clear search
 
