@@ -50,12 +50,15 @@ public sealed partial class MainViewModel : ObservableObject
         RefreshCommand = new RelayCommand(async () => { await RefreshAsync(); await RefreshGitAsync(force: true); });
         NewTicketCommand = new RelayCommand(async () => await NewTicketAsync(), () => snapshot is not null);
         SyncCommand = new RelayCommand(async () => await SyncAsync(), () => !busy);
-        ApproveCommand = new RelayCommand(async p => await ApproveAsync(Target(p)), p => Target(p) is { IsOpen: true });
-        UnapproveCommand = new RelayCommand(async p => await UnapproveAsync(Target(p)), p => Target(p) is { IsOpen: true, Approval: TicketsDb.Approved });
-        RejectCommand = new RelayCommand(async p => await RejectAsync(Target(p)), p => Target(p) is { IsOpen: true });
+        // A button in a row acts on that row; the action bar's act on the selection, every selected ticket when several are (M.TIX-T79).
+        ApproveCommand = new RelayCommand(async p => await ApproveRowsAsync(Targets(p)), p => Targets(p).Any(r => r.IsOpen));
+        UnapproveCommand = new RelayCommand(async p => await UnapproveRowsAsync(Targets(p)), p => Targets(p).Any(r => r is { IsOpen: true, Approval: TicketsDb.Approved }));
+        RejectCommand = new RelayCommand(async p => await RejectRowsAsync(Targets(p)), p => Targets(p).Any(r => r.IsOpen));
+        InitBulk();
         MoveUpCommand = new RelayCommand(async p => await MoveByAsync(QueueTarget(p), -1), p => QueueTarget(p) is { } r && QueueRows.IndexOf(r) > 0);
         MoveDownCommand = new RelayCommand(async p => await MoveByAsync(QueueTarget(p), +1), p => QueueTarget(p) is { } r && QueueRows.IndexOf(r) is var i && i >= 0 && i < QueueRows.Count - 1);
-        MoveTopCommand = new RelayCommand(async p => await MoveToAsync(QueueTarget(p), 0), p => QueueTarget(p) is { } r && QueueRows.IndexOf(r) > 0);
+        MoveTopCommand = new RelayCommand(async p => { if (p is null && IsMultiSelect) await MoveRowsAsync(SelectedRows, toTop: true); else await MoveToAsync(QueueTarget(p), 0); },
+            p => p is null && IsMultiSelect ? IsQueueView : QueueTarget(p) is { } r && QueueRows.IndexOf(r) > 0);
         CloseDetailCommand = new RelayCommand(() => Detail = null, () => Detail is not null);
         CloseTicketCommand = new RelayCommand(async () => await CloseTicketAsync(TicketRules.Closed), () => Detail is { IsOpen: true });
         WontDoCommand = new RelayCommand(async () => await CloseTicketAsync(TicketRules.WontDo), () => Detail is { IsOpen: true });
@@ -439,14 +442,16 @@ public sealed partial class MainViewModel : ObservableObject
 
     // ── Actions ─────────────────────────────────────────────────────────────
 
-    /// <summary>Runs a database change off the UI thread, then refreshes and announces <paramref name="done"/>.</summary>
-    private async Task<bool> Do(Action work, string done)
+    /// <summary>Runs a database change off the UI thread, then refreshes and announces <paramref name="done"/> (or, when given,
+    /// what <paramref name="doneText"/> says once the change is made: a bulk action's tally).</summary>
+    private async Task<bool> Do(Action work, string done, Func<string>? doneText = null)
     {
         if (Detail is { } d) d.Error = "";
         Busy = true;
         try
         {
             await Task.Run(work);
+            if (doneText is not null) done = doneText();
             await RefreshAsync();
             StatusMessage = done;
             Announcement = done;

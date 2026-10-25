@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Threading;
 using MindAttic.Tickets.Desktop.Data;
 using MindAttic.Tickets.Desktop.ViewModels;
+using MindAttic.Tickets.Log;
 
 namespace MindAttic.Tickets.Desktop;
 
@@ -45,8 +46,17 @@ public partial class MainWindow : Window
         {
             if (e.PropertyName == nameof(MainViewModel.Announcement)) Announce(model.Announcement);
             if (e.PropertyName == nameof(MainViewModel.GroupByRepo)) ApplyGrouping();
+            if (e.PropertyName == nameof(MainViewModel.SelectedView)) SyncSelection();
         };
         ApplyGrouping();
+        model.ClearSelectionRequested += () =>
+        {
+            var list = CurrentList;
+            var keep = list.SelectedItem;
+            list.SelectedItems.Clear();
+            if (keep is not null) list.SelectedItem = keep;
+            SyncSelection();
+        };
         model.FocusRow += row => Dispatcher.BeginInvoke(DispatcherPriority.Background, () => FocusRow(row));
 
         // Agents change tickets all the time: follow the database file (settled for a second, since one change is several
@@ -134,8 +144,24 @@ public partial class MainWindow : Window
         (list.ItemContainerGenerator.ContainerFromItem(row) as ListBoxItem)?.Focus();
     }
 
+    // ── Multi-select (M.TIX-T79): Shift/Ctrl+click, Shift+Up/Down, Ctrl+Space, Ctrl+A ──
+
+    private void OnListSelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (ReferenceEquals(e.OriginalSource, sender)) SyncSelection();
+    }
+
+    /// <summary>Hands the current list's selection to the model, in the list's order (the order a bulk move keeps).</summary>
+    private void SyncSelection()
+    {
+        if (model.IsBoardView || model.IsAuditView) { model.SelectedRows = []; return; }
+        var list = CurrentList;
+        model.SelectedRows = [.. list.SelectedItems.OfType<TicketRowViewModel>().OrderBy(r => list.Items.IndexOf(r))];
+    }
+
     private void OnEscape()
     {
+        if (model.IsMultiSelect && !SearchBox.IsKeyboardFocusWithin) { model.ClearSelectionCommand.Execute(null); return; }
         if (SearchBox.IsKeyboardFocusWithin && model.Search.Length > 0) model.Search = "";
         else if (model.IsDetailOpen) { model.CloseDetailCommand.Execute(null); FocusList(); }
         else if (model.Search.Length > 0) model.Search = "";
@@ -157,30 +183,39 @@ public partial class MainWindow : Window
         if (model.SelectedQueueRow is not { } row || e.OriginalSource is not ListBoxItem) return;
         var alt = Keyboard.Modifiers == ModifierKeys.Alt;
         var key = e.Key == Key.System ? e.SystemKey : e.Key;
+        // With several selected, Alt+Home / Alt+End move them all, together; Alt+Up / Down still move one place at a time.
+        var focused = (e.OriginalSource as ListBoxItem)?.DataContext as TicketRowViewModel ?? row;
+        var many = model.RowsFor(focused) is { Count: > 1 } sel ? sel : null;
         switch (key)
         {
             case Key.Up when alt: e.Handled = true; await model.MoveByAsync(row, -1); break;
             case Key.Down when alt: e.Handled = true; await model.MoveByAsync(row, +1); break;
-            case Key.Home when alt: e.Handled = true; await model.MoveToAsync(row, 0); break;
-            case Key.End when alt: e.Handled = true; await model.MoveToAsync(row, model.QueueRows.Count - 1); break;
-            default: e.Handled = await RowKey(key, row); break;
+            case Key.Home when alt: e.Handled = true; if (many is not null) await model.MoveRowsAsync(many, toTop: true); else await model.MoveToAsync(row, 0); break;
+            case Key.End when alt: e.Handled = true; if (many is not null) await model.MoveRowsAsync(many, toTop: false); else await model.MoveToAsync(row, model.QueueRows.Count - 1); break;
+            default: e.Handled = await RowKey(key, focused); break;
         }
     }
 
     private async void OnTicketsKeyDown(object sender, KeyEventArgs e)
     {
-        if (model.SelectedTicketRow is not { } row || e.OriginalSource is not ListBoxItem) return;
-        e.Handled = await RowKey(e.Key == Key.System ? e.SystemKey : e.Key, row);
+        if (model.SelectedTicketRow is not { } row || e.OriginalSource is not ListBoxItem item) return;
+        e.Handled = await RowKey(e.Key == Key.System ? e.SystemKey : e.Key, item.DataContext as TicketRowViewModel ?? row);
     }
 
+    /// <summary>A key on a row: the action takes every selected ticket when the row is one of several selected (M.TIX-T79).</summary>
     private async Task<bool> RowKey(Key key, TicketRowViewModel row)
     {
         if (Keyboard.Modifiers != ModifierKeys.None) return false;
+        var rows = model.RowsFor(row);
+        var anyOpen = rows.Any(r => r.IsOpen);
         switch (key)
         {
-            case Key.A when row.IsOpen: await model.ApproveAsync(row); return true;
-            case Key.U when row.IsOpen: await model.UnapproveAsync(row); return true;
-            case Key.R or Key.Delete when row.IsOpen: await model.RejectAsync(row); return true;
+            case Key.A when anyOpen: await model.ApproveRowsAsync(rows); return true;
+            case Key.U when anyOpen: await model.UnapproveRowsAsync(rows); return true;
+            case Key.R or Key.Delete when anyOpen: await model.RejectRowsAsync(rows); return true;
+            case Key.C when anyOpen: await model.CloseRowsAsync(rows, TicketRules.Closed); return true;
+            case Key.W when anyOpen: await model.CloseRowsAsync(rows, TicketRules.WontDo); return true;
+            case Key.T: await model.SetTypeRowsAsync(rows); return true;
             case Key.O when row.Worker is not null: model.ShowWorker(row); return true;
             case Key.Enter or Key.F6 when model.IsDetailOpen: DetailTitle.Focus(); return true;
             case Key.Left when model.IsDetailOpen: model.StepVersion(-1); return true;
@@ -376,6 +411,11 @@ public partial class MainWindow : Window
           Alt+Home / Alt+End   move it to the top or bottom
           A                    approve        U   back to proposed
           R or Delete          reject (closes it as wont-do, with a reason)
+          C / W                close (optional ref) / won't do (with a reason)
+          T                    set the type (with a reason)
+          Shift+Up / Down      select several (or Shift/Ctrl+click; Ctrl+Space toggles one, Ctrl+A all);
+                               every key above then acts on each selected ticket, recorded on each,
+                               Alt+Home / Alt+End move them all to the top or bottom, Esc clears the selection
           O                    open the Orchestrator on the ticket's live worker
           Enter or F6          go to the detail pane
           Left / Right         older / newer version of the ticket shown

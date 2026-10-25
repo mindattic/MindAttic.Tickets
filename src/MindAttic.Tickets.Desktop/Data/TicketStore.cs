@@ -254,6 +254,109 @@ public sealed class TicketStore(string root)
             }
         }, render: to == BoardColumn.Done);
 
+    // ── Bulk actions (M.TIX-T79): each ticket is changed, and recorded in its own history, on its own ──
+
+    /// <summary>Approves each open ticket in <paramref name="ids"/>.</summary>
+    public BulkResult ApproveMany(IReadOnlyList<string> ids) => Bulk("approve", ids, (db, id) => db.Approve(id), render: false);
+
+    /// <summary>Puts each ticket in <paramref name="ids"/> back to proposed.</summary>
+    public BulkResult UnapproveMany(IReadOnlyList<string> ids) => Bulk("unapprove", ids, (db, id) => db.Unapprove(id), render: false);
+
+    /// <summary>Rejects each open ticket in <paramref name="ids"/> (closed as wont-do), all with the one <paramref name="reason"/>.</summary>
+    public BulkResult RejectMany(IReadOnlyList<string> ids, string reason)
+    {
+        if (string.IsNullOrWhiteSpace(reason)) throw new ArgumentException("A rejection needs a reason.", nameof(reason));
+        return Bulk($"reject ({reason.Trim()})", ids, (db, id) => db.Reject(id, reason));
+    }
+
+    /// <summary>Closes each open ticket in <paramref name="ids"/> as <paramref name="status"/>, setting <paramref name="reference"/>
+    /// as its ref when one is given; a ticket that's already closed is left as it is and reported.</summary>
+    public BulkResult CloseMany(IReadOnlyList<string> ids, string status, string? reference)
+    {
+        if (status == TicketRules.WontDo && string.IsNullOrWhiteSpace(reference)) throw new ArgumentException("Won't do needs a reason.", nameof(reference));
+        return Bulk($"{status} ({reference})", ids, (db, id) =>
+        {
+            var t = db.Ticket(id) ?? throw new KeyNotFoundException($"No ticket {id}.");
+            if (t.Ticket.Status != TicketRules.Open) throw new InvalidOperationException($"{t.Ticket.Id} is already {t.Ticket.Status}.");
+            db.Close(t.Ticket.Id, status, reference);
+        });
+    }
+
+    /// <summary>Sets the type of each ticket in <paramref name="ids"/> (its label until tickets have labels of their own), each
+    /// correction recorded in its history with <paramref name="reason"/>; one already of that type is left as it is.</summary>
+    public BulkResult SetTypeMany(IReadOnlyList<string> ids, string type, string reason)
+    {
+        if (!TicketRules.Types.Contains(type)) throw new ArgumentException($"Unknown type '{type}' (expected {string.Join("/", TicketRules.Types)}).", nameof(type));
+        if (string.IsNullOrWhiteSpace(reason)) throw new ArgumentException("A type change needs a reason.", nameof(reason));
+        // Not recorded for undo: a type correction runs its own transaction (it lifts the append-only trigger) and isn't undoable.
+        return Bulk($"type {type} ({reason.Trim()})", ids, (db, id) => db.CorrectType(id, type, reason), record: false);
+    }
+
+    /// <summary>
+    /// Moves the open tickets in <paramref name="ids"/> to the top of the queue (or the bottom), keeping their order: each gets a
+    /// priority just above every other open ticket's (or just below), first-named highest. Only priorities that change are
+    /// written, each recorded in its ticket's history; the rest of the queue keeps theirs.
+    /// </summary>
+    public BulkResult MoveMany(IReadOnlyList<string> ids, bool toTop)
+    {
+        var moving = new HashSet<string>(ids, StringComparer.OrdinalIgnoreCase);
+        long? edge = null;
+        var next = 0;
+        return Bulk(toTop ? "move to the top" : "move to the bottom", ids, (db, id) =>
+        {
+            var t = db.Ticket(id) ?? throw new KeyNotFoundException($"No ticket {id}.");
+            if (t.Ticket.Status != TicketRules.Open) throw new InvalidOperationException($"{t.Ticket.Id} is {t.Ticket.Status}; only open tickets are in the queue.");
+            if (edge is null)
+            {
+                var others = db.Queue().Where(q => !moving.Contains(q.Ticket.Id)).Select(q => q.Priority).ToList();
+                var openMoving = moving.Count(x => db.Ticket(x) is { } m && m.Ticket.Status == TicketRules.Open);
+                // The first one moved gets the edge, the next one below it, and so on.
+                edge = others.Count == 0 ? (toTop ? openMoving : 0) : toTop ? others.Max() + openMoving : others.Min() - 1;
+            }
+            db.SetPriority(t.Ticket.Id, edge.Value - next);
+            next++;
+        }, render: false);
+    }
+
+    /// <summary>
+    /// Runs <paramref name="each"/> for every ticket in <paramref name="ids"/> in one database session, each its own change (and
+    /// its own history), so one ticket that can't take it (closed, gone) doesn't stop the rest: it's reported in the result.
+    /// </summary>
+    private BulkResult Bulk(string what, IReadOnlyList<string> ids, Action<TicketsDb, string> each, bool render = true, bool record = true)
+    {
+        var done = new List<string>();
+        var failed = new List<BulkFailure>();
+        TicketChange? change = null;
+        var label = $"bulk {what} of {ids.Count} ticket(s)";
+        Write(label, db =>
+        {
+            var unique = ids.Distinct(StringComparer.OrdinalIgnoreCase).ToList();
+            // Record what it changed to every ticket that exists, so the whole batch can be undone in one go (M.TIX-T80).
+            var known = record ? unique.Where(id => db.Ticket(id) is not null).ToList() : [];
+            if (known.Count > 0) change = db.Record(label, known, Run);
+            else Run();
+
+            void Run()
+            {
+                foreach (var id in unique)
+                {
+                    try
+                    {
+                        each(db, id);
+                        done.Add(id);
+                        Log.Information("{What:l} {Id} (bulk)", what, id);
+                    }
+                    catch (Exception ex) when (ex is ArgumentException or InvalidOperationException or KeyNotFoundException or System.Data.Common.DbException)
+                    {
+                        failed.Add(new BulkFailure(id, ex.Message));
+                        Log.Warning("{What:l} {Id} (bulk) failed: {Message:l}", what, id, ex.Message);
+                    }
+                }
+            }
+        }, render);
+        return new BulkResult(done, failed) { Change = change };
+    }
+
     public Ticket Add(string repo, string type, string summary, string reference, string? description = null)
     {
         Ticket t = null!;
