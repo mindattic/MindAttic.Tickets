@@ -24067,6 +24067,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15081, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15082, 'RTB-T246', '2026-10-25T12:22:17Z', 'working', 'waffle@mindattic.com (b74d07e9-e3e7-44d0-83dd-71a7f557c566)', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15083, 'RTB-T6', '2026-10-25T12:22:43Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15084, 'RTB-T6', '2026-10-25T12:22:43Z', 'ref', '—', 'all 1,393 chunks imported: 39,650 lines, 1,263,733 -> 408,983 words (32%); 0 uncached; mod rebuilt');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15085, 'U.INC-T35', '2026-10-25T15:43:04Z', 'working', 'ryandebraal@mindattic.com (40d95301-df3b-4ba7-82c1-d81c11082641)', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z');
@@ -25701,7 +25702,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.INC-T35', NULL, 0, 'ryandebraal@mindattic.com', '40d95301-df3b-4ba7-82c1-d81c11082641', '2026-10-25T03:42:43Z', '2026-10-25T03:42:43Z');
 
 -- repo_renames
 INSERT INTO repo_renames (seq, old_name, new_name, at, reason) VALUES (1, 'GTFO.AbsurdWeapons', 'GTFO.EZ.AbsurdWeapons', '2026-10-19T02:14:58Z', 'Renamed under GTFO.EZ, its core mod, before release (G.EZ-T77)');
