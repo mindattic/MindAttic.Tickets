@@ -144,6 +144,7 @@ public sealed class TicketCliTests
     [TestCase("reserve", "AA-T1", "2M")]
     [TestCase("working", "AA-T1", "--login", "a@b.co")]
     [TestCase("hygiene")]
+    [TestCase("note", "AA-T1", "a note")]
     public void Every_ticket_subcommand_rejects_an_option_it_doesnt_know_instead_of_silently_ignoring_it(string subcommand, params string[] args)
     {
         MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | fix | open | one | — |\n| AA-T2 | 2026-10-01 | fix | open | two | — |\n");
@@ -186,6 +187,27 @@ public sealed class TicketCliTests
         Assert.That(show.GetProperty("requires").EnumerateArray().Select(x => x.GetString()), Is.EqualTo(new[] { "AA-T2" }));
         var queue = JsonDocument.Parse(Run("ticket", "queue", "--json").Out).RootElement.EnumerateArray().First();
         Assert.That(queue.GetProperty("assignee").GetString(), Is.EqualTo("ryan@example.com"));
+    }
+
+    [Test]
+    public void Ticket_note_appends_a_comment_that_show_lists()
+    {
+        MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | feature | open | one | — |\n");
+        Directory.CreateDirectory(Path.Combine(root, "MindAttic.Tickets", ".git"));
+        Run("db", "migrate", "--cutover");
+
+        var added = Run("ticket", "note", "aa-t1", "First **finding**", "--author", "ryan");
+        Assert.That(added.Code, Is.Zero, added.Out);
+        Assert.That(added.Out, Does.StartWith("AA-T1 note 1 by ryan at "));
+        Assert.That(Run("ticket", "note", "AA-T1", "second").Code, Is.Zero, "the author defaults");
+        Assert.That(Run("ticket", "note", "AA-T99", "x").Code, Is.EqualTo(1));
+        Assert.That(Run("ticket", "note", "AA-T1", " ").Code, Is.EqualTo(1));
+
+        var notes = JsonDocument.Parse(Run("ticket", "show", "AA-T1", "--json").Out).RootElement.GetProperty("notes").EnumerateArray().ToList();
+        Assert.That(notes.Select(n => n.GetProperty("markdown").GetString()), Is.EqualTo(new[] { "First **finding**", "second" }));
+        Assert.That(notes[0].GetProperty("author").GetString(), Is.EqualTo("ryan"));
+        Assert.That(notes[1].GetProperty("author").GetString(), Is.Not.Empty);
+        Assert.That(Run("ticket", "show", "AA-T1").Out, Does.Contain("Notes (2)").And.Contain("First **finding**"));
     }
 
     [Test]

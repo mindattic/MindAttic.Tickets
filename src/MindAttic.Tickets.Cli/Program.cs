@@ -33,6 +33,7 @@ app.Configure(config =>
         t.AddCommand<TicketBlockCommand>("block").WithDescription("Make a ticket wait for others (--by X-T1, repeatable), or --clear it.");
         t.AddCommand<TicketReserveCommand>("reserve").WithDescription("Set aside tokens for a ticket so background work can't spend them first (0 releases).");
         t.AddCommand<TicketWorkingCommand>("working").WithDescription("Record the session working a ticket now (--login, --session) or --clear it; the Orchestrator writes it, Tickets Desktop links back.");
+        t.AddCommand<TicketNoteCommand>("note").WithDescription("Append a comment to a ticket: tickets ticket note <ID> \"markdown\" [--author X] (- reads it from stdin). Notes are never changed or deleted.");
         t.AddCommand<TicketHygieneCommand>("hygiene").WithDescription("Closed tickets that may not be done: no Ref cited, or a later ticket says it came back.");
         t.AddCommand<TicketIntakeCommand>("intake").WithDescription("File GitHub issues labelled orchestrator and CI failures on main as tickets (--dry-run to preview).");
     });

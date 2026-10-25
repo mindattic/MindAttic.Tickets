@@ -241,6 +241,17 @@ public sealed partial class TicketsDb : IDisposable
                 assignee TEXT, reserved INTEGER NOT NULL DEFAULT 0,
                 login TEXT, session TEXT, since TEXT,
                 updated TEXT NOT NULL);
+            -- M.TIX-T72: comments on a ticket, append-only (never deleted; only ticket_id moves, when the ticket's ID is
+            -- reassigned). No foreign key, as ticket_queue, so Import's per-repo ticket rebuild keeps them.
+            CREATE TABLE IF NOT EXISTS ticket_notes (
+                seq INTEGER PRIMARY KEY, ticket_id TEXT NOT NULL COLLATE NOCASE,
+                author TEXT NOT NULL, at TEXT NOT NULL, markdown TEXT NOT NULL);
+            CREATE INDEX IF NOT EXISTS ticket_notes_by_ticket ON ticket_notes (ticket_id, seq);
+            CREATE TRIGGER IF NOT EXISTS ticket_notes_no_delete BEFORE DELETE ON ticket_notes
+            BEGIN SELECT RAISE(ABORT, 'ticket notes are never deleted'); END;
+            CREATE TRIGGER IF NOT EXISTS ticket_notes_no_update BEFORE UPDATE OF seq, author, at, markdown ON ticket_notes
+            WHEN NEW.seq IS NOT OLD.seq OR NEW.author IS NOT OLD.author OR NEW.at IS NOT OLD.at OR NEW.markdown IS NOT OLD.markdown
+            BEGIN SELECT RAISE(ABORT, 'ticket notes are append-only'); END;
 
             -- Append-only: a ticket is never deleted, and only its status and ref ever change.
             CREATE TRIGGER IF NOT EXISTS tickets_no_delete BEFORE DELETE ON tickets
@@ -1058,7 +1069,7 @@ public sealed partial class TicketsDb : IDisposable
         foreach (var (table, order) in new[]
         {
             ("meta", "key"), ("repos", "name"), ("epics", "repo, key"), ("stories", "uid"), ("backlog_items", "uid"), ("backlog_refs", "item_uid, story_id"),
-            ("tickets", "repo, ordinal"), ("ticket_events", "seq"), ("ticket_queue", "ticket_id"), ("ticket_work", "ticket_id"), ("repo_renames", "seq"), ("id_history", "seq"), ("links", "from_id, to_id, kind"), ("blocks", "repo, ordinal"),
+            ("tickets", "repo, ordinal"), ("ticket_events", "seq"), ("ticket_queue", "ticket_id"), ("ticket_work", "ticket_id"), ("ticket_notes", "seq"), ("repo_renames", "seq"), ("id_history", "seq"), ("links", "from_id, to_id, kind"), ("blocks", "repo, ordinal"),
         })
         {
             sb.Append("\n-- ").Append(table).Append('\n');

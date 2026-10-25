@@ -143,7 +143,7 @@ public sealed partial class TicketsDb
 
     /// <summary>Every table, parents before children (the order rows go in and the order the dump lists them).</summary>
     internal static readonly string[] TableOrder =
-        ["meta", "repos", "epics", "stories", "backlog_items", "backlog_refs", "tickets", "ticket_events", "ticket_queue", "ticket_work", "repo_renames", "id_history", "links", "blocks"];
+        ["meta", "repos", "epics", "stories", "backlog_items", "backlog_refs", "tickets", "ticket_events", "ticket_queue", "ticket_work", "ticket_notes", "repo_renames", "id_history", "links", "blocks"];
 
     /// <summary>Copies <paramref name="tables"/> from <paramref name="source"/> into the SQLite file at <paramref name="file"/>,
     /// replacing them, in one transaction with its guard triggers lifted and put back before it commits.</summary>
@@ -164,7 +164,8 @@ public sealed partial class TicketsDb
     }
 
     private static readonly string[] TriggerNames =
-        ["tickets_no_delete", "tickets_append_only", "tickets_history", "repo_renames_no_delete", "repo_renames_no_update", "id_history_no_delete", "id_history_no_update"];
+        ["tickets_no_delete", "tickets_append_only", "tickets_history", "repo_renames_no_delete", "repo_renames_no_update", "id_history_no_delete", "id_history_no_update",
+         "ticket_notes_no_delete", "ticket_notes_no_update"];
 
     private static List<(string Column, object? Value)[]> ReadAll(DbConnection connection, DbTransaction? tx, string table)
     {
@@ -379,7 +380,8 @@ public sealed partial class TicketsDb
     }
 
     private static string TriggerTable(string trigger) =>
-        trigger.StartsWith("tickets_", StringComparison.Ordinal) ? "tickets" : trigger.StartsWith("repo_renames", StringComparison.Ordinal) ? "repo_renames" : "id_history";
+        trigger.StartsWith("tickets_", StringComparison.Ordinal) ? "tickets" : trigger.StartsWith("repo_renames", StringComparison.Ordinal) ? "repo_renames"
+            : trigger.StartsWith("ticket_notes", StringComparison.Ordinal) ? "ticket_notes" : "id_history";
 
     private static object? ScalarOn(DbConnection connection, DbTransaction? tx, string sql)
     {

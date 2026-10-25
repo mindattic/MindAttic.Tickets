@@ -43,7 +43,11 @@ public sealed class DetailViewModel : ObservableObject
         index = d.Versions.Count == 0 ? -1 : version is { } v ? Math.Clamp(v - 1, 0, d.Versions.Count - 1) : d.Versions.Count - 1;
         links = LinkLines(Shown?.Links ?? d.Links);
         History = [.. d.History.Select(e => new HistoryLine(When(e.At), Describe(e)))];
+        Notes = [.. d.Notes.Select(n => new HistoryLine($"{When(n.At)} · {n.Author}", n.Markdown))];
     }
+
+    /// <summary>The ticket's comments, oldest first (M.TIX-T72): when and who, then the markdown as written.</summary>
+    public IReadOnlyList<HistoryLine> Notes { get; }
 
     public TicketDetail Source { get; }
 

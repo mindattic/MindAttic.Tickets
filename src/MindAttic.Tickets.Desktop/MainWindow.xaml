@@ -566,6 +566,8 @@
                                     Command="{Binding DataContext.UnassignCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
                             <Button Style="{StaticResource Btn}" Content="Reserve…" Margin="0,0,6,6" ToolTip="Set aside tokens for it (0 releases)"
                                     Command="{Binding DataContext.ReserveCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
+                            <Button Style="{StaticResource Btn}" Content="Add note…" Margin="0,0,6,6" ToolTip="Append a comment to it (notes are never edited or deleted)"
+                                    Command="{Binding DataContext.AddNoteCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
                         </WrapPanel>
                         <TextBlock Text="{Binding Error}" Style="{StaticResource ErrorText}"
                                    Visibility="{Binding Error, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
@@ -609,6 +611,23 @@
                                                 Command="{Binding DataContext.GoToCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding Other}"
                                                 AutomationProperties.Name="{Binding SpokenName, StringFormat='{}{0}: go to it'}" />
                                     </DockPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <TextBlock Text="NOTES" Style="{StaticResource SectionLabel}" />
+                        <TextBlock Text="No notes." Style="{StaticResource Muted}">
+                            <TextBlock.Visibility>
+                                <Binding Path="Notes.Count" Converter="{x:Static vm:Converters.ZeroToVisible}" />
+                            </TextBlock.Visibility>
+                        </TextBlock>
+                        <ItemsControl ItemsSource="{Binding Notes}" Focusable="False">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate DataType="{x:Type vm:HistoryLine}">
+                                    <StackPanel Margin="0,0,0,8">
+                                        <TextBlock Text="{Binding When}" Style="{StaticResource Muted}" />
+                                        <TextBlock Text="{Binding Text}" TextWrapping="Wrap" />
+                                    </StackPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>

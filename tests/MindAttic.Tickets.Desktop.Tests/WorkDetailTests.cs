@@ -87,6 +87,20 @@ public sealed class WorkDetailTests
     }
 
     [Test]
+    public async Task Notes_are_shown_and_added_from_the_detail_pane()
+    {
+        using (var db = TicketsDb.Open(TicketsDb.DefaultPath(root))) db.AddNote("AL-T1", "kim", "From the CLI");
+        await model.OpenTicketAsync("AL-T1");
+        Assert.That(model.Detail!.Notes.Select(n => n.Text), Is.EqualTo(new[] { "From the CLI" }));
+        Assert.That(model.Detail.Notes[0].When, Does.EndWith(" · kim"));
+
+        answers.Enqueue(new PromptAnswer(null, "From **Desktop**"));
+        model.AddNoteCommand.Execute(null);
+        await WaitFor(() => model.Detail?.Notes.Count == 2);
+        Assert.That(model.Detail!.Notes[1].Text, Is.EqualTo("From **Desktop**"));
+    }
+
+    [Test]
     public void The_orchestrator_link_is_harmless_without_the_exe_and_never_passes_an_option()
     {
         Assert.That(OrchestratorLink.Arguments("AL-T1"), Is.EqualTo(new[] { "--show", "AL-T1" }));

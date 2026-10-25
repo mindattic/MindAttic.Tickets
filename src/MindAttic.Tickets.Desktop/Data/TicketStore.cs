@@ -55,6 +55,9 @@ public sealed record TicketDetail(TicketInfo Info, IReadOnlyList<TicketEvent> Hi
 
     /// <summary>The open tickets that require this one directly: while it's open, it blocks them (M.TIX-T68).</summary>
     public IReadOnlyList<string> OpenDependents { get; init; } = [];
+
+    /// <summary>Its comments, oldest first (M.TIX-T72).</summary>
+    public IReadOnlyList<TicketNote> Notes { get; init; } = [];
 }
 
 /// <summary>
@@ -131,8 +134,13 @@ public sealed class TicketStore(string root)
             OpenDependents = dependents,
             Work = db.Work(found.Ticket.Id),
             Versions = db.Versions(found.Ticket.Id),
+            Notes = db.Notes(found.Ticket.Id),
         };
     });
+
+    /// <summary>Appends a note to the ticket, by <see cref="Environment.UserName"/> (or <c>$MINDATTIC_TICKETS_AUTHOR</c>).</summary>
+    public void AddNote(string id, string markdown) => Write($"note on {id}", db => db.AddNote(id,
+        Environment.GetEnvironmentVariable("MINDATTIC_TICKETS_AUTHOR") is { Length: > 0 } a ? a.Trim() : Environment.UserName, markdown), render: false);
 
     public void Approve(string id) => Write($"approve {id}", db => db.Approve(id), render: false);
     public void Assign(string id, string email) => Write($"assign {id} to {email}", db => db.Assign(id, email), render: false);

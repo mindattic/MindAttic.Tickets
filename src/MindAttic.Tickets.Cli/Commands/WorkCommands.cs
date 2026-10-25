@@ -178,6 +178,38 @@ public sealed class TicketWorkingCommand : Command<TicketWorkingCommand.Settings
     }
 }
 
+/// <summary><c>tickets ticket note &lt;ID&gt; &lt;MARKDOWN&gt; [--author X]</c> (M.TIX-T72): appends a comment to a ticket; notes are
+/// never changed or deleted, and <c>tickets ticket show</c> and Tickets Desktop list them.</summary>
+public sealed class TicketNoteCommand : Command<TicketNoteCommand.Settings>
+{
+    public sealed class Settings : WorkspaceSettings
+    {
+        [CommandArgument(0, "<ID>")]
+        public string Id { get; init; } = "";
+
+        [CommandArgument(1, "<MARKDOWN>")]
+        [Description("The note, as markdown. Pass - to read it from standard input.")]
+        public string Markdown { get; init; } = "";
+
+        [CommandOption("--author <NAME>")]
+        [Description("Who wrote it. Default: $MINDATTIC_TICKETS_AUTHOR, else this machine's user name.")]
+        public string? Author { get; init; }
+    }
+
+    /// <summary>The author a note gets when none is given.</summary>
+    public static string DefaultAuthor() =>
+        Environment.GetEnvironmentVariable("MINDATTIC_TICKETS_AUTHOR") is { Length: > 0 } a ? a.Trim() : Environment.UserName;
+
+    public override int Execute(CommandContext context, Settings settings)
+    {
+        var markdown = settings.Markdown == "-" ? Console.In.ReadToEnd() : settings.Markdown;
+        using var db = Db.Open(settings);
+        var note = db.AddNote(settings.Id, settings.Author ?? DefaultAuthor(), markdown);
+        Console.WriteLine($"{note.TicketId} note {note.Seq.ToString(CultureInfo.InvariantCulture)} by {note.Author} at {note.At}");
+        return 0;
+    }
+}
+
 /// <summary><c>tickets ticket hygiene</c>: closed tickets that may not really be done.</summary>
 public sealed class TicketHygieneCommand : Command<TicketHygieneCommand.Settings>
 {

@@ -90,6 +90,7 @@ tickets ticket assign  <CODE-Tn> [<email>] [--unassign | --redelegate]
 tickets ticket block   <CODE-Tn> [--by <CODE-Tm> ...] [--clear]
 tickets ticket reserve <CODE-Tn> <TOKENS>          # like 2M or 500k; 0 releases
 tickets ticket working <CODE-Tn> [--login <email>] [--session <id>] | --clear
+tickets ticket note <CODE-Tn> "<markdown>" [--author <name>]   # append-only comment (- reads stdin); show lists them
 tickets ticket hygiene [--repo X] [--json]
 tickets ticket intake  [--repo X] [--dry-run]
 tickets codes check

@@ -261,6 +261,7 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
         if (settings.Versions || settings.Version is not null) return ShowVersions(db, t, settings);
         var links = db.Links(t.Id);
         var history = db.History(t.Id);
+        var notes = db.Notes(t.Id);
         // The end-to-end view (M.TIX-T134, taken over from orchestrator show): the row, its queue and work state, links,
         // history and the commits that mention it.
         var (approval, priority) = db.QueueState(t.Id);
@@ -274,6 +275,7 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
                 formerIds = db.IdHistory(t.Id).Select(c => c.OldId),
                 requires = db.Requires(t.Id), links = links.Select(l => new { from = l.From, kind = l.Kind, to = l.To, note = l.Note }),
                 history = history.Select(e => new { at = e.At, field = e.Field, old = e.Old, @new = e.New }),
+                notes = notes.Select(n => new { seq = n.Seq, author = n.Author, at = n.At, markdown = n.Markdown }),
                 approval, priority, assignee = work.Assignee, reserved = work.Reserved,
                 working = work.IsWorking ? new { login = work.Login, session = work.Session, since = work.Since } : null,
                 commits,
@@ -294,6 +296,15 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
         foreach (var l in links) AnsiConsole.MarkupLine(Output.LinkLine(l, t.Id));
         foreach (var e in history)
             AnsiConsole.MarkupLine($"  [grey]{Output.Esc(e.At)} {Output.Esc(e.Field)}: {Output.Esc(e.Old ?? "")} → {Output.Esc(e.New ?? "")}[/]");
+        if (notes.Count > 0)
+        {
+            AnsiConsole.MarkupLine($"[bold]Notes[/] ({notes.Count.ToString(System.Globalization.CultureInfo.InvariantCulture)})");
+            foreach (var n in notes)
+            {
+                AnsiConsole.MarkupLine($"  [grey]{Output.Esc(n.At)} {Output.Esc(n.Author)}:[/]");
+                foreach (var line in n.Markdown.Replace("\r\n", "\n", StringComparison.Ordinal).Split('\n')) AnsiConsole.WriteLine("    " + line);
+            }
+        }
         AnsiConsole.MarkupLine(commits.Length == 0 ? "[grey]No commits mention it.[/]" : "[bold]Commits[/]");
         if (commits.Length > 0) AnsiConsole.WriteLine(commits);
         return 0;

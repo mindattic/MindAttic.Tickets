@@ -9,7 +9,19 @@ namespace MindAttic.Tickets.Desktop.ViewModels;
 /// </summary>
 public sealed partial class MainViewModel
 {
-    private ICommand? assignCommand, unassignCommand, reserveCommand, openInOrchestratorCommand;
+    private ICommand? assignCommand, unassignCommand, reserveCommand, openInOrchestratorCommand, addNoteCommand;
+
+    /// <summary>Appends a comment to the ticket (M.TIX-T72); notes are never changed or deleted.</summary>
+    public ICommand AddNoteCommand => addNoteCommand ??= new RelayCommand(async () => await AddNoteAsync(), () => Detail is not null);
+
+    private async Task AddNoteAsync()
+    {
+        if (Detail is not { } d) return;
+        var answer = Dialogs.Ask(new Prompt($"Add a note to {d.Id}", "Notes are kept forever: they can't be edited or deleted afterwards.",
+            "Note (markdown)", Ok: "Add note"));
+        if (answer is null || string.IsNullOrWhiteSpace(answer.Text)) return;
+        await Do(() => store.AddNote(d.Id, answer.Text), $"Note added to {d.Id}.");
+    }
 
     public ICommand AssignCommand => assignCommand ??= new RelayCommand(async () => await AssignAsync(), () => Detail is { IsOpen: true });
     public ICommand UnassignCommand => unassignCommand ??= new RelayCommand(async () => await UnassignAsync(), () => Detail is { IsAssigned: true });

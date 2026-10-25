@@ -212,6 +212,12 @@ public sealed class TicketsServer(string connectionString)
             login nvarchar(450) NULL, session nvarchar(450) NULL, since nvarchar(64) NULL,
             updated nvarchar(64) NOT NULL);
         """,
+        $"""
+        CREATE TABLE ticket_notes (
+            seq bigint IDENTITY(1,1) PRIMARY KEY, ticket_id nvarchar(450) COLLATE {NoCase} NOT NULL,
+            author nvarchar(450) NOT NULL, at nvarchar(64) NOT NULL, markdown nvarchar(max) NOT NULL);
+        CREATE INDEX ticket_notes_by_ticket ON ticket_notes (ticket_id, seq);
+        """,
         """
         CREATE TABLE repo_renames (
             seq bigint IDENTITY(1,1) PRIMARY KEY, old_name nvarchar(450) NOT NULL, new_name nvarchar(450) NOT NULL, at nvarchar(64) NOT NULL, reason nvarchar(max) NOT NULL);
@@ -276,6 +282,19 @@ public sealed class TicketsServer(string connectionString)
             CREATE TRIGGER id_history_no_update ON id_history INSTEAD OF UPDATE AS
             BEGIN IF EXISTS (SELECT 1 FROM deleted) THROW 50000, 'ID history is append-only', 1; END
             """),
+        // M.TIX-T72: a note is never deleted or rewritten; only its ticket_id moves, when the ticket's ID is reassigned.
+        ("ticket_notes_no_delete", """
+            CREATE TRIGGER ticket_notes_no_delete ON ticket_notes INSTEAD OF DELETE AS
+            BEGIN IF EXISTS (SELECT 1 FROM deleted) THROW 50000, 'ticket notes are never deleted', 1; END
+            """),
+        ("ticket_notes_no_update", """
+            CREATE TRIGGER ticket_notes_no_update ON ticket_notes AFTER UPDATE AS
+            BEGIN
+                IF EXISTS (SELECT 1 FROM deleted d LEFT JOIN inserted i ON i.seq = d.seq
+                           WHERE i.seq IS NULL OR i.author <> d.author OR i.at <> d.at OR i.markdown <> d.markdown)
+                    THROW 50000, 'ticket notes are append-only', 1;
+            END
+            """),
     ];
 
     /// <summary>The tables a <c>REFERENCES</c> points out of, whose checks a repo rename or an ID reassignment holds off within
@@ -297,5 +316,5 @@ public sealed class TicketsServer(string connectionString)
     ];
 
     /// <summary>The tables with identity keys, for copying rows in with their keys.</summary>
-    internal static readonly HashSet<string> Identities = new(StringComparer.OrdinalIgnoreCase) { "stories", "backlog_items", "ticket_events", "repo_renames", "id_history" };
+    internal static readonly HashSet<string> Identities = new(StringComparer.OrdinalIgnoreCase) { "stories", "backlog_items", "ticket_events", "ticket_notes", "repo_renames", "id_history" };
 }
