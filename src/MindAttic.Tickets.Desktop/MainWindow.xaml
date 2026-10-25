@@ -778,6 +778,30 @@
                             </Expander>
                         </StackPanel>
 
+                        <!-- Commits (M.TIX-T85): those whose subject names it, newest first; each opens on GitHub. -->
+                        <TextBlock Text="COMMITS" Style="{StaticResource SectionLabel}" />
+                        <TextBlock Text="No commits name it." Style="{StaticResource Muted}">
+                            <TextBlock.Visibility>
+                                <Binding Path="Commits.Count" Converter="{x:Static vm:Converters.ZeroToVisible}" />
+                            </TextBlock.Visibility>
+                        </TextBlock>
+                        <ItemsControl ItemsSource="{Binding Commits}" Focusable="False">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate DataType="{x:Type vm:CommitLine}">
+                                    <StackPanel Margin="0,0,0,8">
+                                        <Button Style="{StaticResource LinkBtn}" Content="{Binding Hash}" HorizontalAlignment="Left"
+                                                Command="{Binding DataContext.OpenCommitCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}"
+                                                Visibility="{Binding HasUrl, Converter={StaticResource Visible}}"
+                                                AutomationProperties.Name="{Binding SpokenName}" ToolTip="{Binding Url}" />
+                                        <TextBlock Text="{Binding Hash}" FontFamily="Cascadia Mono, Consolas"
+                                                   Visibility="{Binding HasUrl, Converter={x:Static vm:Converters.TrueToCollapsed}}" />
+                                        <TextBlock Text="{Binding When}" Style="{StaticResource Muted}" />
+                                        <TextBlock Text="{Binding Subject}" TextWrapping="Wrap" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
                         <TextBlock Text="NOTES" Style="{StaticResource SectionLabel}" />
                         <TextBlock Text="No notes." Style="{StaticResource Muted}">
                             <TextBlock.Visibility>

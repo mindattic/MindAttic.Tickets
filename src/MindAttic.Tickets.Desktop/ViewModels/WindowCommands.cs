@@ -21,6 +21,7 @@ public static class Converters
 {
     public static readonly IValueConverter EmptyToCollapsed = new Converter(v => string.IsNullOrEmpty(v as string) ? Visibility.Collapsed : Visibility.Visible);
     public static readonly IValueConverter ZeroToVisible = new Converter(v => v is 0 ? Visibility.Visible : Visibility.Collapsed);
+    public static readonly IValueConverter TrueToCollapsed = new Converter(v => v is true ? Visibility.Collapsed : Visibility.Visible);
 
     private sealed class Converter(Func<object?, object> convert) : IValueConverter
     {

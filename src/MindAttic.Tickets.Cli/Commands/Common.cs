@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using MindAttic.Vault.Credentials;
 using MindAttic.Tickets.Data;
+using MindAttic.Tickets.Log;
 using MindAttic.Tickets.Repos;
 using Spectre.Console;
 using Spectre.Console.Cli;
@@ -42,6 +43,11 @@ internal static class Output
     public static string LinkLine(Link l, string id) => l.From.Equals(id, StringComparison.OrdinalIgnoreCase)
         ? $"  [cyan]{Esc(l.Kind)}[/] → {Esc(l.To)}"
         : $"  ← [cyan]{Esc(l.Kind)}[/] {Esc(l.From)}";
+
+    /// <summary>One of a ticket's commits (M.TIX-T85): short hash, when, who and the subject, then its GitHub page when it has one.</summary>
+    public static string CommitLine(TicketCommit c) =>
+        $"  [yellow]{Esc(c.ShortHash)}[/] [grey]{Esc(c.Date)} {Esc(c.Author)}[/]  {Esc(c.Subject)}" +
+        (c.Url is { } url ? $"{Environment.NewLine}    [link={Esc(url)}]{Esc(url)}[/]" : "");
 
     /// <summary>The GitHub index, or null (with a printed reason) when there's no token or the call fails.</summary>
     public static IReadOnlyDictionary<string, GitHubRepoInfo>? TryGitHub(bool required, IEnumerable<string>? localSlugs = null)

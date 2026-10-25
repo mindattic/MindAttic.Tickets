@@ -78,6 +78,9 @@ public sealed record TicketDetail(TicketInfo Info, IReadOnlyList<TicketEvent> Hi
     public DependencyGraph? Graph { get; init; }
     /// <summary>Its markdown description, kept apart from the one-line summary (M.TIX-T73); null when it has none.</summary>
     public string? Description { get; init; }
+
+    /// <summary>The commits whose subject names it, in its repo, newest first, each linked to GitHub when it can be (M.TIX-T85).</summary>
+    public IReadOnlyList<TicketCommit> Commits { get; init; } = [];
 }
 
 /// <summary>
@@ -146,7 +149,16 @@ public sealed class TicketStore(string root)
         return result;
     }
 
-    public TicketDetail? Detail(string id) => Read(db =>
+    public TicketDetail? Detail(string id) =>
+        // git runs after the database is closed, so a slow log never holds the file open (M.TIX-T85).
+        DetailFromDb(id) is not { } d ? null : d with { Commits = Commits(d.Info.Repo, d.Info.Ticket.Id) };
+
+    /// <summary>The commits whose subject names <paramref name="id"/> in <paramref name="repo"/>'s folder (M.TIX-T85); empty
+    /// when the repo isn't in the workspace.</summary>
+    public IReadOnlyList<TicketCommit> Commits(string repo, string id) =>
+        new Workspace(Root).Find(repo) is { } r ? TicketCommits.Find(id, r.Path) : [];
+
+    private TicketDetail? DetailFromDb(string id) => Read(db =>
     {
         if (db.Ticket(id) is not { } found) return null;
         var (approval, priority) = db.QueueState(found.Ticket.Id);

@@ -36,6 +36,17 @@ public sealed record GraphRow(string Label, IReadOnlyList<GraphChip> Chips)
     public bool IsSelf => Chips.Count == 1 && Chips[0].IsSelf;
 }
 
+/// <summary>One of the ticket's commits (M.TIX-T85), as the detail pane lists it; <see cref="Url"/> is its GitHub page, or null.</summary>
+public sealed record CommitLine(TicketCommit Commit)
+{
+    public string Hash => Commit.ShortHash;
+    public string When => $"{Commit.Date} · {Commit.Author}";
+    public string Subject => Commit.Subject;
+    public string? Url => Commit.Url;
+    public bool HasUrl => Url is not null;
+    public string SpokenName => $"Commit {Hash}, {When}: {Subject}" + (HasUrl ? ": open it on GitHub" : "");
+}
+
 /// <summary>A link that opens the Orchestrator on <see cref="Target"/> (a login's email, a session id or a ticket id).</summary>
 public sealed record OrchestratorTarget(string Text, string Target)
 {
@@ -63,7 +74,11 @@ public sealed class DetailViewModel : ObservableObject
         links = LinkLines(Shown?.Links ?? d.Links);
         History = [.. d.History.Select(e => new HistoryLine(When(e.At), Describe(e)))];
         Notes = [.. d.Notes.Select(n => new HistoryLine($"{When(n.At)} · {n.Author}", n.Markdown))];
+        Commits = [.. d.Commits.Select(c => new CommitLine(c))];
     }
+
+    /// <summary>The commits whose subject names it, newest first (M.TIX-T85); each opens on GitHub when its repo is there.</summary>
+    public IReadOnlyList<CommitLine> Commits { get; }
 
     /// <summary>The ticket's comments, oldest first (M.TIX-T72): when and who, then the markdown as written.</summary>
     public IReadOnlyList<HistoryLine> Notes { get; }

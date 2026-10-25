@@ -68,6 +68,26 @@ public sealed class DetailPaneTests
     }
 
     [Test]
+    public async Task Lists_its_commits_and_opens_one_on_GitHub()
+    {
+        var d = await Open("AL-T1");
+        Assert.That(d.Commits, Is.Empty, "Alpha's .git is only a folder here: no commits, and no error");
+
+        var linked = new TicketCommit("abc1234def", "abc1234", "2026-10-25 10:00", "Tess", "Do it (AL-T1)", "https://github.com/o/alpha/commit/abc1234def");
+        var local = new TicketCommit("fed4321cba", "fed4321", "2026-10-24 09:00", "Tess", "Start it (AL-T1)", null);
+        var shown = new DetailViewModel(d.Source with { Commits = [linked, local] });
+        Assert.That(shown.Commits.Select(c => (c.Hash, c.Subject, c.HasUrl)), Is.EqualTo(new[] { ("abc1234", "Do it (AL-T1)", true), ("fed4321", "Start it (AL-T1)", false) }));
+        Assert.That(shown.Commits[0].SpokenName, Does.Contain("open it on GitHub"));
+
+        var opened = new List<string>();
+        model.OpenUrl = url => { opened.Add(url); return null; };
+        Assert.That(model.OpenCommitCommand.CanExecute(shown.Commits[1]), Is.False, "a commit with no GitHub page has nothing to open");
+        model.OpenCommitCommand.Execute(shown.Commits[0]);
+        Assert.That(opened, Is.EqualTo(new[] { "https://github.com/o/alpha/commit/abc1234def" }));
+        Assert.That(model.StatusMessage, Does.Contain("abc1234"));
+    }
+
+    [Test]
     public async Task Shows_the_tickets_fields_and_history()
     {
         var d = await Open("AL-T1");

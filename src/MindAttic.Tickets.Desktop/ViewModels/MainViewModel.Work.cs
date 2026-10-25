@@ -88,6 +88,34 @@ public sealed partial class MainViewModel
         await Do(() => store.SetEstimate(d.Id, tokens), tokens is { } n ? $"{d.Id} is estimated at {n:N0} tokens." : $"{d.Id}'s estimate is cleared.");
     }
 
+    private ICommand? openCommitCommand;
+
+    /// <summary>Opens one of the ticket's commits on GitHub (M.TIX-T85); the parameter is its <see cref="CommitLine"/>.</summary>
+    public ICommand OpenCommitCommand => openCommitCommand ??= new RelayCommand(p => OpenCommit(p as CommitLine), p => p is CommitLine { HasUrl: true });
+
+    /// <summary>Opens a URL in the default browser, returning why it couldn't (null when it did); replaced in tests.</summary>
+    public Func<string, string?> OpenUrl { get; set; } = url =>
+    {
+        try
+        {
+            using var _ = System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(url) { UseShellExecute = true });
+            return null;
+        }
+        catch (Exception ex) when (ex is System.ComponentModel.Win32Exception or InvalidOperationException)
+        {
+            return $"Couldn't open {url}: {ex.Message}";
+        }
+    };
+
+    private void OpenCommit(CommitLine? commit)
+    {
+        if (commit?.Url is not { } url) return;
+        var why = OpenUrl(url);
+        StatusMessage = why ?? $"Opened commit {commit.Hash} on GitHub.";
+        Announcement = StatusMessage;
+        if (why is not null && Detail is { } d) d.Error = why;
+    }
+
     private void OpenInOrchestrator(string? target)
     {
         if (target is null) return;

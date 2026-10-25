@@ -234,6 +234,27 @@ public sealed class TicketCliTests
     }
 
     [Test]
+    public void Show_lists_the_commits_whose_subject_names_the_ticket_with_their_GitHub_links()
+    {
+        var a = MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | feature | open | one | — |\n");
+        Git(a, "remote", "add", "origin", "https://github.com/mindattic/A.git");
+        Git(a, "-c", "user.email=t@t", "-c", "user.name=t", "commit", "-q", "--allow-empty", "-m", "Do the thing (AA-T1)");
+        Git(a, "-c", "user.email=t@t", "-c", "user.name=t", "commit", "-q", "--allow-empty", "-m", "Something else (AA-T12)");
+        var hash = Tickets.Git.Run(a, "rev-parse", "HEAD~1").Output.Trim();
+        Directory.CreateDirectory(Path.Combine(root, "MindAttic.Tickets", ".git"));
+        Run("db", "migrate", "--cutover");
+
+        var text = Run("ticket", "show", "AA-T1");
+        Assert.That(text.Code, Is.Zero, text.Out);
+        Assert.That(text.Out, Does.Contain("Commits (1)").And.Contain("Do the thing (AA-T1)")
+            .And.Contain($"https://github.com/mindattic/a/commit/{hash}").And.Not.Contain("AA-T12"));
+
+        var commits = JsonDocument.Parse(Run("ticket", "show", "AA-T1", "--json").Out).RootElement.GetProperty("commits").EnumerateArray().ToList();
+        Assert.That(commits.Select(c => (c.GetProperty("hash").GetString(), c.GetProperty("url").GetString())),
+            Is.EqualTo(new[] { (hash, $"https://github.com/mindattic/a/commit/{hash}") }));
+    }
+
+    [Test]
     public void List_filters_and_emits_the_documented_json()
     {
         MakeRepo("A", "AA", "| AA-T1 | 2026-09-01 | fix | open | old | — |\n| AA-T2 | 2026-10-05 | chore | closed | new | x |\n");

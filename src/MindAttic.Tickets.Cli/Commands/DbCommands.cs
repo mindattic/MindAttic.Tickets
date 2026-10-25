@@ -237,7 +237,7 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
         public bool Json { get; init; }
 
         [CommandOption("--diff")]
-        [Description("Show each commit's full diff, not just the files it touched.")]
+        [Description("Also show the full diff of each commit that mentions it.")]
         public bool Diff { get; init; }
 
         [CommandOption("--versions")]
@@ -266,7 +266,10 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
         // history and the commits that mention it.
         var (approval, priority) = db.QueueState(t.Id);
         var work = db.Work(t.Id);
-        var commits = settings.Workspace.Find(repo) is { } r ? TicketCommits.Log(t.Id, r.Path, settings.Diff) : "";
+        // Its commits (M.TIX-T85): those whose subject names it, in its repo, each linked to GitHub; --diff adds their patches.
+        var repoPath = settings.Workspace.Find(repo)?.Path;
+        var commits = repoPath is null ? [] : TicketCommits.Find(t.Id, repoPath);
+        var diff = settings.Diff && repoPath is not null ? TicketCommits.Log(t.Id, repoPath, diff: true) : null;
         var description = db.Description(t.Id);
         if (settings.Json)
         {
@@ -280,7 +283,8 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
                 notes = notes.Select(n => new { seq = n.Seq, author = n.Author, at = n.At, markdown = n.Markdown }),
                 approval, priority, assignee = work.Assignee, reserved = work.Reserved,
                 working = work.IsWorking ? new { login = work.Login, session = work.Session, since = work.Since } : null,
-                commits,
+                commits = commits.Select(c => new { hash = c.Hash, shortHash = c.ShortHash, date = c.Date, author = c.Author, subject = c.Subject, url = c.Url }),
+                diff,
             }, new JsonSerializerOptions { WriteIndented = true }));
             return 0;
         }
@@ -315,8 +319,9 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
                 foreach (var line in n.Markdown.Replace("\r\n", "\n", StringComparison.Ordinal).Split('\n')) AnsiConsole.WriteLine("    " + line);
             }
         }
-        AnsiConsole.MarkupLine(commits.Length == 0 ? "[grey]No commits mention it.[/]" : "[bold]Commits[/]");
-        if (commits.Length > 0) AnsiConsole.WriteLine(commits);
+        AnsiConsole.MarkupLine(commits.Count == 0 ? "[grey]No commits name it.[/]" : $"[bold]Commits[/] ({commits.Count.ToString(System.Globalization.CultureInfo.InvariantCulture)})");
+        foreach (var c in commits) AnsiConsole.MarkupLine(Output.CommitLine(c));
+        if (!string.IsNullOrEmpty(diff)) AnsiConsole.WriteLine(diff);
         return 0;
     }
 
