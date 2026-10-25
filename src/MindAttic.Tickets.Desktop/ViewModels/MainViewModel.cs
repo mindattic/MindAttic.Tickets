@@ -521,8 +521,11 @@ public sealed partial class MainViewModel : ObservableObject
         string? id = null;
         if (await Do(() => id = store.Add(n.Repo, n.Type, n.Summary, n.Ref).Id, $"Filed {n.Repo} ticket.") && id is not null)
         {
-            StatusMessage = Announcement = $"Filed {id}.";
             GoTo(id);
+            // Selecting the row starts a detail load that reports the ticket's readiness in the status bar; a quiet load
+            // supersedes it, so "Filed" is what's shown and announced.
+            await ShowDetailAsync(id, quiet: true);
+            StatusMessage = Announcement = $"Filed {id}.";
         }
     }
 
