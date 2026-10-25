@@ -97,3 +97,24 @@ if (-not $SkipCli -and (Test-Path (Join-Path $repo 'tools\install.ps1'))) {
 
 Write-Host "Installed $exe"
 if ($Launch) { Start-Process $exe }
+
+# Deploying Tickets also deploys Orchestrator (its deploy.ps1 does the same back here).
+# MINDATTIC_DEPLOY_CHAIN stops Tickets -> Orchestrator -> Tickets from looping.
+if (-not $env:MINDATTIC_DEPLOY_CHAIN) {
+  $orchDeploy = Join-Path $repo '..\MindAttic.Orchestrator\deploy.ps1'
+  if (Test-Path $orchDeploy) {
+    Write-Host "Deploying MindAttic.Orchestrator too ($orchDeploy)..."
+    $chainArgs = @{}
+    if ($Force) { $chainArgs['Force'] = $true }
+    $env:MINDATTIC_DEPLOY_CHAIN = '1'
+    try {
+      & $orchDeploy @chainArgs
+      if ($LASTEXITCODE -ne 0) { throw "MindAttic.Orchestrator deploy failed (exit code $LASTEXITCODE)" }
+      Write-Host "MindAttic.Orchestrator deployed"
+    } finally {
+      Remove-Item Env:\MINDATTIC_DEPLOY_CHAIN -ErrorAction SilentlyContinue
+    }
+  } else {
+    Write-Host "MindAttic.Orchestrator checkout not found at $orchDeploy; skipping its deploy."
+  }
+}
