@@ -37,8 +37,8 @@ public sealed partial class MainViewModel
 
     public bool IsAuditView => SelectedView == AuditView;
 
-    /// <summary>The ticket filters (type, approval, work) apply to Repos, Queue and Board, not Audit or Activity.</summary>
-    public bool ShowsTicketFilters => !IsAuditView && !IsActivityView;
+    /// <summary>The ticket filters (type, approval, work) apply to Repos, Queue and Board, not Audit, Activity or Stats.</summary>
+    public bool ShowsTicketFilters => !IsAuditView && !IsActivityView && !IsStatsView;
 
     public ObservableCollection<DriftFinding> DriftRows { get; } = [];
     public ObservableCollection<MissingFinding> MissingRows { get; } = [];

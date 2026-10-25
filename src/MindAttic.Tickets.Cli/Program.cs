@@ -46,6 +46,7 @@ app.Configure(config =>
             l.AddCommand<TicketLabelListCommand>("list").WithDescription("A ticket's labels, or with no ID every label in use and how many tickets carry it.");
         });
         t.AddCommand<TicketHygieneCommand>("hygiene").WithDescription("Closed tickets that may not be done: no Ref cited, or a later ticket says it came back.");
+        t.AddCommand<TicketStatsCommand>("stats").WithDescription("Ticket metrics from ticket_events: throughput and cycle time per period, and open tickets by repo and type over time (--by day|week|month, --periods N, --repo, --type, --json).");
         t.AddCommand<TicketIntakeCommand>("intake").WithDescription("File GitHub issues labelled orchestrator and CI failures on main as tickets (--dry-run to preview).");
     });
 

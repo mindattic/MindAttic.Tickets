@@ -730,6 +730,11 @@ public sealed partial class TicketsDb : IDisposable
         [.. Rows("SELECT ticket_id, at, field, old, new FROM ticket_events WHERE ticket_id = $id COLLATE NOCASE ORDER BY seq",
             r => new TicketEvent(r.GetString(0), r.GetString(1), r.GetString(2), r.IsDBNull(3) ? null : r.GetString(3), r.IsDBNull(4) ? null : r.GetString(4)), ("$id", id))];
 
+    /// <summary>Every ticket's <c>created</c> and <c>status</c> history, oldest first: what <see cref="TicketStats"/> reads (M.TIX-T86).</summary>
+    public IReadOnlyList<TicketEvent> StatusHistory() =>
+        [.. Rows("SELECT ticket_id, at, field, old, new FROM ticket_events WHERE field IN ('created', 'status') ORDER BY seq",
+            r => new TicketEvent(r.GetString(0), r.GetString(1), r.GetString(2), r.IsDBNull(3) ? null : r.GetString(3), r.IsDBNull(4) ? null : r.GetString(4)))];
+
     // ── Repo rename ─────────────────────────────────────────────────────────
 
     /// <summary>

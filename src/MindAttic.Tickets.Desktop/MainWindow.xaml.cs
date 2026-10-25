@@ -35,6 +35,7 @@ public partial class MainWindow : Window
         CommandBindings.Add(new CommandBinding(WindowCommands.ShowAudit, (_, _) => model.SelectedView = MainViewModel.AuditView));
         CommandBindings.Add(new CommandBinding(WindowCommands.ShowBoard, (_, _) => { model.SelectedView = MainViewModel.BoardView; FocusList(); }));
         CommandBindings.Add(new CommandBinding(WindowCommands.ShowActivity, (_, _) => { model.SelectedView = MainViewModel.ActivityView; FocusActivity(); }));
+        CommandBindings.Add(new CommandBinding(WindowCommands.ShowStats, (_, _) => model.SelectedView = MainViewModel.StatsView));
         CommandBindings.Add(new CommandBinding(WindowCommands.Help, (_, _) => ShowHelp()));
         CommandBindings.Add(new CommandBinding(WindowCommands.Undo, async (_, _) =>
         {
@@ -440,8 +441,29 @@ public partial class MainWindow : Window
         yield return Routed("Show the Queue", WindowCommands.ShowQueue, "Ctrl+2");
         yield return Routed("Show Audit", WindowCommands.ShowAudit, "Ctrl+3");
         yield return Routed("Show the Board", WindowCommands.ShowBoard, "Ctrl+4");
+        yield return Routed("Show Activity", WindowCommands.ShowActivity, "Ctrl+5");
+        yield return Routed("Show Stats", WindowCommands.ShowStats, "Ctrl+6");
         yield return Routed("Search tickets", WindowCommands.FocusSearch, "Ctrl+F");
         yield return Routed("Keyboard shortcuts and help", WindowCommands.Help, "F1");
+    }
+    /// <summary>A Stats table's generated column (M.TIX-T86): headed by its column's caption (its name is c0, c1, ... so it
+    /// binds), and numbers right-aligned.</summary>
+    internal static void OnStatsColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+    {
+        if (sender is DataGrid { ItemsSource: System.Data.DataView { Table: { } table } } && table.Columns[e.PropertyName] is { } column)
+            e.Column.Header = column.Caption;
+        if (e.PropertyType == typeof(int) && e.Column is DataGridTextColumn text)
+            text.ElementStyle = new Style(typeof(TextBlock)) { Setters = { new Setter(TextBlock.TextAlignmentProperty, TextAlignment.Right) } };
+    }
+
+    private void OnStatsAutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e) => OnStatsColumn(sender, e);
+
+    /// <summary>The wheel over a Stats table scrolls the tab, not the table's own (never-needed) vertical scroller.</summary>
+    private void OnStatsMouseWheel(object sender, MouseWheelEventArgs e)
+    {
+        if (sender is not ScrollViewer scroller) return;
+        scroller.ScrollToVerticalOffset(scroller.VerticalOffset - e.Delta / 3.0);
+        e.Handled = true;
     }
 
     private void ShowHelp() => MessageBox.Show(this,
@@ -456,6 +478,8 @@ public partial class MainWindow : Window
         marks it worked by hand, or closes it (Done shows the 50 most recent; a closed ticket can't be dragged back).
         Activity is every ticket change in every repo as it happens, newest first; when an agent closes a ticket, a
         toast says so (click it to open the ticket).
+        Stats shows ticket metrics from the tickets' history, as tables: tickets filed, closed and open per day, week or
+        month, cycle time (filed to closed) by type, and the tickets open at the end of each period by repo and by type.
 
         Ctrl+Z undoes your last approve, back to proposed, reject, queue move, close, won't do, board move or link
         change, newest first, by writing the opposite change (a close is undone by reopening the ticket with its old
@@ -484,7 +508,7 @@ public partial class MainWindow : Window
         Anywhere
           Ctrl+K               command palette: type part of a ticket or story ID or text, or a command's
                                name; Up / Down choose, Enter runs (> commands only, # tickets and stories only)
-          Ctrl+1 / 2 / 3 / 4 / 5   Repos / Queue / Audit / Board / Activity
+          Ctrl+1 / 2 / 3 / 4 / 5 / 6   Repos / Queue / Audit / Board / Activity / Stats
           Work filter          Queued (/allocate takes it next), Needs approval, Blocked (waiting on other tickets)
           Ctrl+F               search          Ctrl+N   new ticket
           Ctrl+Z               undo the last change

@@ -62,6 +62,9 @@ public sealed record Snapshot(IReadOnlyList<string> Repos, IReadOnlyList<TicketI
 
     /// <summary>Every label in use, sorted (M.TIX-T74): the label filter's choices.</summary>
     public IReadOnlyList<string> LabelNames { get; init; } = [];
+
+    /// <summary>Every ticket's created and status history, oldest first, for the Stats tab's metrics (M.TIX-T86).</summary>
+    public IReadOnlyList<TicketEvent> StatusHistory { get; init; } = [];
 }
 
 /// <summary>A story as the command palette opens it (M.TIX-T81): its rows (one per repo holding the ID) and its links.</summary>
@@ -132,6 +135,7 @@ public sealed class TicketStore(string root)
             SavedFilters = db.SavedFilters(),
             Stories = [.. db.Stories().Where(s => s.Id.Length > 0)],
             LabelNames = [.. db.LabelCounts().Select(c => c.Label)],
+            StatusHistory = db.StatusHistory(),
         };
     });
 

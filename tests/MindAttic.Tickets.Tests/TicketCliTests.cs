@@ -216,6 +216,38 @@ public sealed class TicketCliTests
     }
 
     [Test]
+    public void Ticket_stats_json_reports_throughput_cycle_time_and_open_by_repo_and_type()
+    {
+        MakeRepo("A", "AA", "| AA-T1 | 2026-01-05 | fix | open | one | — |\n| AA-T2 | 2026-01-05 | feature | open | two | — |\n" +
+                            "| AA-T3 | 2026-01-05 | fix | closed | three | — |\n");
+        Directory.CreateDirectory(Path.Combine(root, "MindAttic.Tickets", ".git"));
+        Run("db", "migrate", "--cutover");
+        Assert.That(Run("ticket", "close", "AA-T1").Code, Is.Zero);
+
+        var result = Run("ticket", "stats", "--by", "day", "--periods", "3", "--json");
+        Assert.That(result.Code, Is.Zero, result.Out);
+        var json = JsonDocument.Parse(result.Out).RootElement;
+        Assert.That(json.GetProperty("by").GetString(), Is.EqualTo("day"));
+        var periods = json.GetProperty("periods").EnumerateArray().ToList();
+        Assert.That(periods, Has.Count.EqualTo(3));
+        Assert.That(periods.Sum(p => p.GetProperty("closed").GetInt32()), Is.EqualTo(1), "AA-T1 closed today");
+        Assert.That(periods[^1].GetProperty("openAtEnd").GetInt32(), Is.EqualTo(1), "AA-T2 is still open");
+        var all = json.GetProperty("cycleTime").EnumerateArray().First();
+        Assert.That((all.GetProperty("type").GetString(), all.GetProperty("closed").GetInt32()), Is.EqualTo(("all", 1)));
+        Assert.That(json.GetProperty("openByRepo").EnumerateArray().Select(s => s.GetProperty("repo").GetString()), Is.EqualTo(new[] { "A" }));
+        Assert.That(json.GetProperty("openByType").EnumerateArray().Select(s => s.GetProperty("type").GetString()), Is.EquivalentTo(new[] { "fix", "feature" }));
+        Assert.That(json.GetProperty("closedBeforeHistory").GetInt32(), Is.EqualTo(1), "AA-T3 was imported already closed");
+
+        var narrowed = JsonDocument.Parse(Run("ticket", "stats", "--type", "feature", "--json").Out).RootElement;
+        Assert.That(narrowed.GetProperty("periods").EnumerateArray().Count(), Is.EqualTo(8), "8 weeks by default");
+        Assert.That(narrowed.GetProperty("periods").EnumerateArray().Sum(p => p.GetProperty("closed").GetInt32()), Is.Zero);
+
+        Assert.That(Run("ticket", "stats", "--by", "year").Code, Is.Not.Zero);
+        Assert.That(Run("ticket", "stats", "--repo", "Nope").Code, Is.Not.Zero);
+        Assert.That(Run("ticket", "stats").Out, Does.Contain("Throughput").And.Contain("Cycle time"));
+    }
+
+    [Test]
     public void Ticket_note_appends_a_comment_that_show_lists()
     {
         MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | feature | open | one | — |\n");

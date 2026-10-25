@@ -315,4 +315,71 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <!-- ── Stats tables (M.TIX-T86) ──────────────────────────────────────────
+         A read-only DataGrid: a real table with column headers, so a screen reader reads each cell with its row and
+         column (1.3.1). MindAttic.Components.Wpf has no DataGrid style. Arrow keys move between cells; the focused cell
+         carries the 3:1 focus ring (2.4.7). -->
+    <Style x:Key="StatsTableHeader" TargetType="DataGridColumnHeader">
+        <Setter Property="Background" Value="{DynamicResource MaChrome}" />
+        <Setter Property="Foreground" Value="{DynamicResource MaMuted}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MaChromeBorder}" />
+        <Setter Property="BorderThickness" Value="0,0,1,1" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Padding" Value="8,6" />
+        <Setter Property="MinHeight" Value="28" />
+    </Style>
+
+    <Style x:Key="StatsTableCell" TargetType="DataGridCell">
+        <Setter Property="Foreground" Value="{DynamicResource MaText}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="MinHeight" Value="26" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="DataGridCell">
+                    <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}" Padding="6,3" SnapsToDevicePixels="True">
+                        <ContentPresenter VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource MaSurface}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource MaFocus}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="StatsTable" TargetType="DataGrid">
+        <Setter Property="IsReadOnly" Value="True" />
+        <Setter Property="AutoGenerateColumns" Value="True" />
+        <Setter Property="CanUserAddRows" Value="False" />
+        <Setter Property="CanUserDeleteRows" Value="False" />
+        <Setter Property="CanUserReorderColumns" Value="False" />
+        <Setter Property="CanUserResizeRows" Value="False" />
+        <Setter Property="HeadersVisibility" Value="Column" />
+        <Setter Property="SelectionUnit" Value="Cell" />
+        <Setter Property="SelectionMode" Value="Single" />
+        <Setter Property="GridLinesVisibility" Value="Horizontal" />
+        <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource MaChromeBorder}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="RowBackground" Value="Transparent" />
+        <Setter Property="AlternatingRowBackground" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource MaText}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MaChromeBorder}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Margin" Value="0,4,0,16" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ColumnHeaderStyle" Value="{StaticResource StatsTableHeader}" />
+        <Setter Property="CellStyle" Value="{StaticResource StatsTableCell}" />
+    </Style>
 </ResourceDictionary>

@@ -40,7 +40,7 @@ public sealed partial class MainViewModel : ObservableObject
         this.store = store;
         this.settings = settings;
         Dialogs = dialogs ?? new NoDialogs();
-        selectedView = settings.View switch { TicketsView or "Tickets" => TicketsView, AuditView => AuditView, BoardView => BoardView, ActivityView => ActivityView, _ => QueueView };
+        selectedView = settings.View switch { TicketsView or "Tickets" => TicketsView, AuditView => AuditView, BoardView => BoardView, ActivityView => ActivityView, StatsView => StatsView, _ => QueueView };
         InitOrchestrator(orchestrator);
         InitQuery();
         InitExport();
@@ -81,7 +81,7 @@ public sealed partial class MainViewModel : ObservableObject
 
     // ── What's shown ────────────────────────────────────────────────────────
 
-    public IReadOnlyList<string> Views { get; } = [ReposView, QueueView, AuditView, BoardView, ActivityView];
+    public IReadOnlyList<string> Views { get; } = [ReposView, QueueView, AuditView, BoardView, ActivityView, StatsView];
 
     public string SelectedView
     {
@@ -94,6 +94,7 @@ public sealed partial class MainViewModel : ObservableObject
             Raise(nameof(IsAuditView));
             Raise(nameof(IsBoardView));
             Raise(nameof(IsActivityView));
+            Raise(nameof(IsStatsView));
             Raise(nameof(ShowsTicketFilters));
             settings.View = value;
             settings.Save();
@@ -285,6 +286,7 @@ public sealed partial class MainViewModel : ObservableObject
         ApplyAudit();
         ApplyHygiene(s);
         ApplyActivity();
+        ApplyStats(s);
 
         var ready = s.Queue.Count(t => t.Ticket.Type == "fix" || t.Approval == TicketsDb.Approved);
         var blocked = s.Queue.Count(t => t.Blocked);
@@ -293,6 +295,7 @@ public sealed partial class MainViewModel : ObservableObject
         StatusMessage = IsQueueView ? $"Queue: {QueueRows.Count} of {s.Queue.Count} open tickets shown."
             : IsBoardView ? $"Board: {string.Join(", ", BoardColumns.Select(c => $"{c.Rows.Count} {c.Title.ToLowerInvariant()}"))} shown."
             : IsActivityView ? ActivityStatus
+            : IsStatsView ? $"Stats: {Metrics?.Periods.Count ?? 0} {StatsBy.ToLowerInvariant()}s, {Metrics?.Periods.Sum(p => p.Closed) ?? 0} closed, {Metrics?.Periods.LastOrDefault()?.OpenAtEnd ?? 0} open now."
             : IsAuditView ? $"Audit: {HygieneRows.Count} closed tickets to double-check, {DriftRows.Count} drifted, {MissingRows.Count} missing, {DuplicateRows.Count} duplicate groups shown."
             : $"Repos: {TicketRows.Count} of {s.Tickets.Count} tickets shown.";
     }

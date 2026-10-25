@@ -21,6 +21,7 @@
         <KeyBinding Key="D3" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowAudit}" />
         <KeyBinding Key="D4" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowBoard}" />
         <KeyBinding Key="D5" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowActivity}" />
+        <KeyBinding Key="D6" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowStats}" />
         <KeyBinding Key="F1" Command="{x:Static vm:WindowCommands.Help}" />
         <KeyBinding Key="Z" Modifiers="Control" Command="{x:Static vm:WindowCommands.Undo}" />
         <KeyBinding Key="K" Modifiers="Control" Command="{x:Static vm:WindowCommands.CommandPalette}" />
@@ -234,7 +235,7 @@
                 <Label Style="{StaticResource FilterLabel}" Content="View" Target="{Binding ElementName=ViewChoice}" />
                 <ListBox x:Name="ViewChoice" Style="{StaticResource MaPillChoice}" ItemsSource="{Binding Views}"
                          SelectedItem="{Binding SelectedView}" AutomationProperties.Name="View"
-                         ToolTip="Repos: every repo with its tickets and git state (Ctrl+1). Queue: open tickets in the order /allocate takes them (Ctrl+2). Audit: closed tickets to double-check, and the Orchestrator's drift and duplicate-code findings (Ctrl+3). Board: tickets as cards in Proposed, Approved, In progress and Done; moving a card changes its approval or status (Ctrl+4). Activity: every ticket change across the workspace as it happens, newest first (Ctrl+5)." />
+                         ToolTip="Repos: every repo with its tickets and git state (Ctrl+1). Queue: open tickets in the order /allocate takes them (Ctrl+2). Audit: closed tickets to double-check, and the Orchestrator's drift and duplicate-code findings (Ctrl+3). Board: tickets as cards in Proposed, Approved, In progress and Done; moving a card changes its approval or status (Ctrl+4). Activity: every ticket change across the workspace as it happens, newest first (Ctrl+5). Stats: throughput, cycle time and open tickets by repo and type over time, as tables (Ctrl+6)." />
             </StackPanel>
             <StackPanel Margin="0,0,12,6">
                 <Label Style="{StaticResource FilterLabel}" Content="_Search (Ctrl+F)" Target="{Binding ElementName=SearchBox}" />
@@ -667,6 +668,41 @@
             </ItemsControl>
 
             <!-- â”€â”€ Detail pane â”€â”€ -->
+            <!-- ── Stats (M.TIX-T86): ticket metrics as real tables (a DataGrid each, with column headers, read as a table) ── -->
+            <ScrollViewer Margin="20,0,12,0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Focusable="False"
+                          PreviewMouseWheel="OnStatsMouseWheel" Visibility="{Binding IsStatsView, Converter={StaticResource Visible}}">
+                <StackPanel>
+                    <WrapPanel>
+                        <StackPanel Margin="0,0,12,6">
+                            <Label Style="{StaticResource FilterLabel}" Content="_Period" Target="{Binding ElementName=StatsByBox}" />
+                            <ComboBox x:Name="StatsByBox" Style="{StaticResource Combo}" MinWidth="110" ItemsSource="{Binding StatsByChoices}"
+                                      SelectedItem="{Binding StatsBy}" AutomationProperties.Name="Period"
+                                      ToolTip="Day: the last 14 days. Week: the last 8 weeks, Monday to Sunday. Month: the last 6 months. All in UTC." />
+                        </StackPanel>
+                    </WrapPanel>
+                    <TextBlock Text="{Binding StatsSummary}" Style="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,0,0,4" />
+
+                    <TextBlock Text="THROUGHPUT: FILED, CLOSED AND OPEN PER PERIOD" Style="{StaticResource SectionLabel}" AutomationProperties.HeadingLevel="Level2" />
+                    <DataGrid Style="{StaticResource StatsTable}" ItemsSource="{Binding ThroughputTable}" AutoGeneratingColumn="OnStatsAutoGeneratingColumn"
+                              AutomationProperties.Name="Throughput: tickets filed, closed, closed as wont-do, and open at the end of each period" />
+
+                    <TextBlock Text="CYCLE TIME: FILED TO CLOSED, BY TYPE" Style="{StaticResource SectionLabel}" AutomationProperties.HeadingLevel="Level2" />
+                    <TextBlock Style="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,0,0,4"
+                               Text="Tickets closed in these periods: how long each was open, from filing to closing (m minutes, h hours, d days). Wont-do and tickets filed already closed aren't counted." />
+                    <DataGrid Style="{StaticResource StatsTable}" ItemsSource="{Binding CycleTable}" AutoGeneratingColumn="OnStatsAutoGeneratingColumn"
+                              AutomationProperties.Name="Cycle time by type: how many closed, and the median, mean and 85th percentile time from filing to closing" />
+
+                    <TextBlock Text="OPEN AT THE END OF EACH PERIOD, BY REPO" Style="{StaticResource SectionLabel}" AutomationProperties.HeadingLevel="Level2" />
+                    <DataGrid Style="{StaticResource StatsTable}" ItemsSource="{Binding OpenByRepoTable}" AutoGeneratingColumn="OnStatsAutoGeneratingColumn"
+                              AutomationProperties.Name="Open tickets by repo: a row per repo, a column per period" />
+
+                    <TextBlock Text="OPEN AT THE END OF EACH PERIOD, BY TYPE" Style="{StaticResource SectionLabel}" AutomationProperties.HeadingLevel="Level2" />
+                    <DataGrid Style="{StaticResource StatsTable}" ItemsSource="{Binding OpenByTypeTable}" AutoGeneratingColumn="OnStatsAutoGeneratingColumn"
+                              AutomationProperties.Name="Open tickets by type: a row per type, a column per period" />
+                </StackPanel>
+            </ScrollViewer>
+
+            <!-- ── Detail pane ── -->
             <Border Grid.Column="1" Width="430" Background="{DynamicResource MaPane}" BorderBrush="{DynamicResource MaChromeBorder}" BorderThickness="1,0,0,0"
                     Visibility="{Binding IsDetailOpen, Converter={StaticResource Visible}}">
                 <ScrollViewer x:Name="DetailPane" VerticalScrollBarVisibility="Auto" Focusable="False" DataContext="{Binding Detail}" PreviewKeyDown="OnDetailKeyDown">
