@@ -17,6 +17,25 @@ public sealed record LinkLine(string Phrase, string Other, Link Link, bool Block
     public string SpokenName => State.Length == 0 ? $"{Phrase} {Other}" : $"{Phrase} {Other}, {State}";
 }
 
+/// <summary>
+/// One ticket drawn in the dependency graph (M.TIX-T83): <see cref="Blocking"/> marks one that holds work up now, drawn in
+/// the error colour and said in <see cref="State"/>; <see cref="IsSelf"/> the ticket the graph is around.
+/// </summary>
+public sealed record GraphChip(string Id, string State, bool Blocking, bool IsOpen, bool IsSelf, string Summary)
+{
+    public string Text => $"{Id} · {State}";
+    public string SpokenName => (IsSelf ? "This ticket, " : "") + $"{Id}, {State}" + (Summary.Length > 0 ? $": {Summary}" : "") + (IsSelf ? "" : ": go to it");
+}
+
+/// <summary>
+/// One row of the drawn dependency graph: what it waits for, farthest first, above the ticket, and what waits for it,
+/// nearest first, below it, so the requires arrows all point up.
+/// </summary>
+public sealed record GraphRow(string Label, IReadOnlyList<GraphChip> Chips)
+{
+    public bool IsSelf => Chips.Count == 1 && Chips[0].IsSelf;
+}
+
 /// <summary>A link that opens the Orchestrator on <see cref="Target"/> (a login's email, a session id or a ticket id).</summary>
 public sealed record OrchestratorTarget(string Text, string Target)
 {
@@ -203,6 +222,41 @@ public sealed class DetailViewModel : ObservableObject
             ? new LinkLine(Incoming(l.Kind), l.From, l, Blocking: true, State: "blocked by this")
             : new LinkLine(Incoming(l.Kind), l.From, l);
     })];
+
+    // ── Dependency graph (M.TIX-T83): the requires chains both ways, as they are now, drawn and as a text list ──
+
+    public DependencyGraph Graph => Source.Graph ?? DependencyGraph.Empty(Id);
+
+    public bool HasDependencies => !Graph.IsEmpty;
+
+    /// <summary>The drawn graph's rows, top to bottom: farthest prerequisites, …, this ticket, …, farthest dependents.</summary>
+    public IReadOnlyList<GraphRow> GraphRows
+    {
+        get
+        {
+            if (Graph.IsEmpty) return [];
+            static string Steps(int n) => n == 1 ? "" : $", {n} steps";
+            GraphChip Chip(DependencyNode n, bool upstream) =>
+                new(n.Id, n.StateText(upstream), n.Blocking, n.IsOpen, IsSelf: false, n.Summary ?? "");
+            var rows = new List<GraphRow>();
+            rows.AddRange(DependencyGraph.Layers(Graph.Upstream).Reverse()
+                .Select(layer => new GraphRow("Waits for" + Steps(layer[0].Depth), [.. layer.Select(n => Chip(n, upstream: true))])));
+            rows.Add(new GraphRow("This ticket", [new GraphChip(Id, Source.Info.Ticket.Status + (IsBlocked ? ", blocked" : ""), false, IsOpen, IsSelf: true, Source.Info.Ticket.Summary)]));
+            rows.AddRange(DependencyGraph.Layers(Graph.Downstream)
+                .Select(layer => new GraphRow("Needed by" + Steps(layer[0].Depth), [.. layer.Select(n => Chip(n, upstream: false))])));
+            return rows;
+        }
+    }
+
+    /// <summary>The graph as a text list, one ticket a line, indented by steps: the drawn graph's text alternative.</summary>
+    public string DependencyText => string.Join(Environment.NewLine, Graph.TextLines());
+
+    /// <summary>The graph in one sentence: how many it waits for and blocks.</summary>
+    public string DependencySummary =>
+        $"Waits for {Count(Graph.Upstream)}, {Graph.Blockers.Count} of them open and blocking it. " +
+        $"Needed by {Count(Graph.Downstream)}, {Graph.Blocked.Count} of them blocked by it.";
+
+    private static int Count(IEnumerable<DependencyNode> side) => side.Where(n => !n.Repeat && !n.Cycle).Select(n => n.Id).Distinct(StringComparer.OrdinalIgnoreCase).Count();
 
     public IReadOnlyList<HistoryLine> History { get; }
 

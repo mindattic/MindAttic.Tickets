@@ -61,6 +61,9 @@ public sealed record TicketDetail(TicketInfo Info, IReadOnlyList<TicketEvent> Hi
 
     /// <summary>Its comments, oldest first (M.TIX-T72).</summary>
     public IReadOnlyList<TicketNote> Notes { get; init; } = [];
+
+    /// <summary>Its requires chains both ways, as they are now (M.TIX-T83); empty when nothing waits either way.</summary>
+    public DependencyGraph? Graph { get; init; }
 }
 
 /// <summary>
@@ -141,6 +144,10 @@ public sealed class TicketStore(string root)
             Work = db.Work(found.Ticket.Id),
             Versions = db.Versions(found.Ticket.Id),
             Notes = db.Notes(found.Ticket.Id),
+            // Only read every ticket and link when a requires link touches it: most tickets have none.
+            Graph = links.Any(l => l.Kind == "requires")
+                ? DependencyGraph.Build(found.Ticket.Id, db.Tickets().Select(x => x.Ticket), db.AllLinks())
+                : DependencyGraph.Empty(found.Ticket.Id),
         };
     });
 

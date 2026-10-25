@@ -47,6 +47,7 @@ $ tickets ticket list --status open
 - Approve, unapprove, reject and reorder (move up/down/to top) queued tickets; file a new ticket (Ctrl+N); close, mark wont-do, correct a ticket's type, add a link, assign it to a member's login or reserve tokens for it from its detail pane.
 - A ticket being worked shows its login and session as links that open the Orchestrator on them (`MindAttic.Orchestrator.exe --show <email|session|ticket>`; nothing happens beyond a message when the Orchestrator isn't installed).
 - A ticket's detail pane steps through every version of it with its ◀ ▶ arrows (or Left/Right), the rightmost the current one: each shows its version number and time, with what it changed from the version before marked.
+- A ticket with `requires` links shows a Dependencies section: its chains both ways drawn in rows (what it waits for above it, farthest first; what waits for it below), what holds work up now outlined in red and said in words, each ticket a button that goes to it, and the same graph as an indented text list for screen readers (`tickets ticket graph` prints it too).
 - A Sync button (Ctrl+Shift+S) runs `tickets db sync` and shows the result; F5 refreshes.
 - `MindAttic.Tickets.Desktop.exe --root <dir> --ticket <ID>` opens on that ticket, selected with its detail pane open (an open one in the Queue, to approve, move or close; a closed one in Repos). Started again while the window is open, it hands the id to that window and brings it forward. The Orchestrator dashboard's ticket links start it this way.
 - `deploy.ps1` publishes it as a self-contained exe to `C:\Apps\MindAttic.Tickets.Desktop` with Desktop and Start-menu shortcuts (and reinstalls the `tickets` CLI alongside it, via `tools/install.ps1`, unless `-SkipCli`).
@@ -78,6 +79,7 @@ tickets ticket close   <CODE-Tn> [--repo X] [--ref ...] [--wont-do]
 tickets ticket correct <CODE-Tn> --type feature|fix|chore|docs|interview --reason "..."
 tickets ticket reassign <CODE-Tn> <CODE-Tm> --reason "..."   # the old ID is kept in id_history and still resolves
 tickets ticket show    <CODE-Tn> [--json] [--diff] [--versions | --version N]
+tickets ticket graph   <CODE-Tn> [--json]   # requires chains both ways as an indented tree, blockers marked
 tickets ticket link    <FROM> requires|related|follow-up-of|supersedes|duplicates|implements|part-of <TO> [--remove] [--note "..."]
 tickets ticket list    [--repo X] [--status S] [--type T] [--since YYYY-MM-DD] [--json]
 tickets ticket verify  [--repo X]

@@ -360,6 +360,56 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
     }
 }
 
+/// <summary>
+/// <c>tickets ticket graph &lt;ID&gt;</c> (M.TIX-T83): the ticket's requires chains both ways as an indented tree, what blocks
+/// it and what it blocks marked; plain text, so it reads the same to a screen reader.
+/// </summary>
+public sealed class TicketGraphCommand : Command<TicketGraphCommand.Settings>
+{
+    public sealed class Settings : WorkspaceSettings
+    {
+        [CommandArgument(0, "<ID>")]
+        public string Id { get; init; } = "";
+
+        [CommandOption("--json")]
+        public bool Json { get; init; }
+    }
+
+    public override int Execute(CommandContext context, Settings settings)
+    {
+        using var db = Db.Open(settings);
+        var (_, t) = db.Ticket(settings.Id) ?? throw new KeyNotFoundException($"No ticket {settings.Id}.");
+        var graph = DependencyGraph.Build(t.Id, db.Tickets().Select(x => x.Ticket), db.AllLinks());
+        if (settings.Json)
+        {
+            static object Node(DependencyNode n) => new
+            {
+                id = n.Id, depth = n.Depth, status = n.Status, summary = n.Summary, blocking = n.Blocking, repeat = n.Repeat, cycle = n.Cycle,
+            };
+            Console.WriteLine(JsonSerializer.Serialize(new
+            {
+                id = graph.Id, status = t.Status, summary = t.Summary, blockers = graph.Blockers, blocked = graph.Blocked,
+                waitsFor = graph.Upstream.Select(Node), neededBy = graph.Downstream.Select(Node),
+            }, new JsonSerializerOptions { WriteIndented = true }));
+            return 0;
+        }
+        var lines = graph.TextLines();
+        AnsiConsole.MarkupLine($"[bold]{Output.Esc(lines[0])}[/]");
+        void Side(string header, IReadOnlyList<DependencyNode> nodes, bool upstream)
+        {
+            AnsiConsole.MarkupLine($"[grey]{Output.Esc(header)}[/]");
+            foreach (var n in nodes)
+            {
+                var text = Output.Esc(new string(' ', n.Depth * 2) + n.Text(upstream));
+                AnsiConsole.MarkupLine(n.Blocking && !n.Repeat && !n.Cycle ? $"[red]{text}[/]" : n.IsOpen ? text : $"[grey]{text}[/]");
+            }
+        }
+        Side(lines[1], graph.Upstream, upstream: true);
+        Side(lines[2 + graph.Upstream.Count], graph.Downstream, upstream: false);
+        return 0;
+    }
+}
+
 public sealed class TicketCorrectCommand : Command<TicketCorrectCommand.Settings>
 {
     public sealed class Settings : WorkspaceSettings

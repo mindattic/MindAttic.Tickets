@@ -190,6 +190,29 @@ public sealed class TicketCliTests
     }
 
     [Test]
+    public void Ticket_graph_prints_the_requires_chains_both_ways_with_blockers_marked()
+    {
+        MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | feature | open | one | — |\n| AA-T2 | 2026-10-01 | fix | open | two | — |\n" +
+                            "| AA-T3 | 2026-10-01 | fix | closed | three | — |\n| AA-T4 | 2026-10-01 | feature | open | four | — |\n");
+        Directory.CreateDirectory(Path.Combine(root, "MindAttic.Tickets", ".git"));
+        Run("db", "migrate", "--cutover");
+        Run("ticket", "link", "AA-T1", "requires", "AA-T2");
+        Run("ticket", "link", "AA-T2", "requires", "AA-T3");
+        Run("ticket", "link", "AA-T4", "requires", "AA-T1");
+
+        var text = Run("ticket", "graph", "aa-t1");
+        Assert.That(text.Code, Is.Zero);
+        Assert.That(text.Out, Does.Contain("Waits for (1 open blocker):").And.Contain("  AA-T2, open, blocking: two")
+            .And.Contain("    AA-T3, closed: three").And.Contain("Needed by (1 blocked by it):").And.Contain("  AA-T4, open, blocked by it: four"));
+
+        var json = JsonDocument.Parse(Run("ticket", "graph", "AA-T1", "--json").Out).RootElement;
+        Assert.That(json.GetProperty("blockers").EnumerateArray().Select(x => x.GetString()), Is.EqualTo(new[] { "AA-T2" }));
+        Assert.That(json.GetProperty("waitsFor").EnumerateArray().Select(x => (x.GetProperty("id").GetString(), x.GetProperty("depth").GetInt32())),
+            Is.EqualTo(new[] { ("AA-T2", 1), ("AA-T3", 2) }));
+        Assert.That(Run("ticket", "graph", "AA-T99").Code, Is.EqualTo(1));
+    }
+
+    [Test]
     public void Ticket_note_appends_a_comment_that_show_lists()
     {
         MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | feature | open | one | — |\n");

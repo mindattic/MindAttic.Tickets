@@ -684,6 +684,62 @@
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
 
+                        <!-- Dependency graph (M.TIX-T83): the requires chains both ways, farthest prerequisites on top, what holds work up
+                             in the error colour and in words, with the same graph as an indented text list for screen readers. -->
+                        <StackPanel Visibility="{Binding HasDependencies, Converter={StaticResource Visible}}">
+                            <TextBlock Text="DEPENDENCIES" Style="{StaticResource SectionLabel}" />
+                            <TextBlock Text="{Binding DependencySummary}" Style="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,0,0,6" />
+                            <ItemsControl ItemsSource="{Binding GraphRows}" Focusable="False" AutomationProperties.Name="Dependency graph">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type vm:GraphRow}">
+                                        <StackPanel>
+                                            <DockPanel Margin="0,2">
+                                                <TextBlock Text="{Binding Label}" Style="{StaticResource Muted}" Width="110" VerticalAlignment="Center" />
+                                                <ItemsControl ItemsSource="{Binding Chips}" Focusable="False">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate><WrapPanel /></ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate DataType="{x:Type vm:GraphChip}">
+                                                            <Button Content="{Binding Text}" Margin="0,0,6,4" Padding="8,2" MinHeight="26" FontSize="12"
+                                                                    ToolTip="{Binding Summary}" AutomationProperties.Name="{Binding SpokenName}"
+                                                                    Command="{Binding DataContext.GoToCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding Id}">
+                                                                <Button.Style>
+                                                                    <Style TargetType="Button" BasedOn="{StaticResource Btn}">
+                                                                        <Style.Triggers>
+                                                                            <DataTrigger Binding="{Binding IsOpen}" Value="False">
+                                                                                <Setter Property="Foreground" Value="{DynamicResource MaMuted}" />
+                                                                            </DataTrigger>
+                                                                            <DataTrigger Binding="{Binding IsSelf}" Value="True">
+                                                                                <Setter Property="BorderBrush" Value="{DynamicResource MaFocus}" />
+                                                                                <Setter Property="FontWeight" Value="SemiBold" />
+                                                                            </DataTrigger>
+                                                                            <DataTrigger Binding="{Binding Blocking}" Value="True">
+                                                                                <Setter Property="BorderBrush" Value="{DynamicResource MaRec}" />
+                                                                                <Setter Property="BorderThickness" Value="2" />
+                                                                                <Setter Property="Foreground" Value="{DynamicResource MaRec}" />
+                                                                                <Setter Property="FontWeight" Value="SemiBold" />
+                                                                            </DataTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </Button.Style>
+                                                            </Button>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </DockPanel>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                            <TextBlock Text="Each row waits for the rows above it; a red outline holds work up now." Style="{StaticResource Muted}" Margin="0,2,0,6" />
+                            <Expander Header="As a text list" Foreground="{DynamicResource MaText}" AutomationProperties.Name="Dependency graph as a text list">
+                                <TextBox Text="{Binding DependencyText, Mode=OneWay}" IsReadOnly="True" TextWrapping="NoWrap" FontFamily="Consolas" FontSize="12"
+                                         Background="Transparent" Foreground="{DynamicResource MaText}" BorderThickness="0" Margin="0,4,0,0"
+                                         HorizontalScrollBarVisibility="Auto" AutomationProperties.Name="Dependency graph, one ticket a line, indented by steps" />
+                            </Expander>
+                        </StackPanel>
+
                         <TextBlock Text="NOTES" Style="{StaticResource SectionLabel}" />
                         <TextBlock Text="No notes." Style="{StaticResource Muted}">
                             <TextBlock.Visibility>

@@ -20,6 +20,7 @@ app.Configure(config =>
         t.AddCommand<TicketCloseCommand>("close").WithDescription("Move a ticket to closed (or wont-do).");
         t.AddCommand<TicketListCommand>("list").WithDescription("List tickets across the workspace (or one repo).");
         t.AddCommand<TicketShowCommand>("show").WithDescription("One ticket: its row, links (prerequisites included) and history; --versions lists every version, --version N shows one.");
+        t.AddCommand<TicketGraphCommand>("graph").WithDescription("A ticket's requires chains both ways as an indented tree: what it waits for and what waits for it, blockers marked (--json for the nodes).");
         t.AddCommand<TicketLinkCommand>("link").WithDescription("Link two tickets or stories: tickets ticket link A requires B (--remove to unlink).");
         t.AddCommand<TicketCorrectCommand>("correct").WithDescription("Correct a ticket's type to the standard vocabulary (recorded in its history).");
         t.AddCommand<TicketReassignCommand>("reassign").WithDescription("Give a ticket a new ID; the old one is kept in its history and still resolves.");

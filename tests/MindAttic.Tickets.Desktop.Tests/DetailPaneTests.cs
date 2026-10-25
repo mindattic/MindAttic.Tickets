@@ -87,6 +87,30 @@ public sealed class DetailPaneTests
     }
 
     [Test]
+    public async Task Dependency_graph_draws_the_requires_chains_with_blockers_and_a_text_list()
+    {
+        var d = await Open("AL-T1");
+        Assert.That(d.HasDependencies, Is.True);
+        // Rows top to bottom: what it waits for, the ticket, what waits for it; the open prerequisite is the blocker.
+        Assert.That(d.GraphRows.Select(r => (r.Label, string.Join(" ", r.Chips.Select(c => c.Id + (c.Blocking ? "!" : ""))))), Is.EqualTo(new[]
+        {
+            ("Waits for", "AL-T2! AL-T3"), ("This ticket", "AL-T1"), ("Needed by", "AL-T4!"),
+        }));
+        Assert.That(d.GraphRows[0].Chips[0].SpokenName, Is.EqualTo("AL-T2, open, blocking: alpha two: go to it"));
+        Assert.That(d.DependencySummary, Is.EqualTo("Waits for 2, 1 of them open and blocking it. Needed by 1, 1 of them blocked by it."));
+        Assert.That(d.DependencyText.Split(Environment.NewLine), Is.EqualTo(new[]
+        {
+            "AL-T1, open: alpha one", "Waits for (1 open blocker):", "  AL-T2, open, blocking: alpha two", "  AL-T3, closed: alpha done",
+            "Needed by (1 blocked by it):", "  AL-T4, open, blocked by it: alpha four",
+        }));
+
+        // A ticket no requires link touches has no graph section.
+        using (var db = TicketsDb.Open(dbPath)) db.Add("Alpha", "fix", TicketRules.Open, "alone", "");
+        await model.RefreshAsync();
+        Assert.That((await Open("AL-T5")).HasDependencies, Is.False);
+    }
+
+    [Test]
     public async Task Links_show_both_ways_with_what_blocks_and_what_is_blocked()
     {
         var d = await Open("AL-T1");
