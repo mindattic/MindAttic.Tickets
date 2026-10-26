@@ -6467,6 +6467,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T830', 'MindAttic.Orchestrator', 830, '2026-10-25', 'fix', 'closed', 'Two failures the full test suite surfaced after T822/T826: LibraryOnlyXamlTests flagged the new LoginTabScroller as a raw ScrollViewer with no library style, and TerminalPanesTests'' Current-work/Terminals/Tickets order check didn''t account for the chart (UtilizationSection) T826 inserted between Terminals and Tickets', 'LibraryOnlyXamlTests.Every_xaml_element_is_a_library_control_or_library_styled, TerminalPanesTests.The_panel_sits_between_the_person_s_Current_work_and_their_Tickets', 829, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T831', 'MindAttic.Orchestrator', 831, '2026-10-25', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.TerminalPanesTests.The_panel_sits_between_the_person_s_Current_work_and_their_Tickets — Assert.That(body.IndexOf("UserTickets"), Is.EqualTo(body.IndexOf("TerminalsPanel") + 1)) Expected: 3 But was: 4 (landed on main since the last green run: tickets M.ORCH-T826, M.ORCH-T827, M.ORCH-T822, M.ORCH-T824, M.ORCH-T823 in ddffc196 Reorder the dashboard: Stats, Current work, Terminals, then the 5-hour chart (M.ORCH-T826); a51aebc8 Fix TabSwitchTests after T822 nested the login tab strip in a ScrollViewer (M.ORCH-T827); bb3db456 Login tab strip scrolls instead of overflowing off-screen when it''s too wide (M.ORCH-T822); acf80f04 Ctrl+Left/Ctrl+Right switch CLI tabs within a login, from anywhere (M.ORCH-T824); 3ce2af8d Fix a signed-in member getting a duplicate tab when their own account also owns a live session (M.ORCH-T823))', 'passes on main@2593b83', 830, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T832', 'MindAttic.Orchestrator', 832, '2026-10-25', 'fix', 'open', 'deploy.ps1''s new M.ORCH-T815 chain to MindAttic.Tickets'' deploy.ps1 doesn''t pass -SkipCli, so every Orchestrator launch (which runs deploy.ps1) now also reinstalls the tickets CLI, undoing M.TIX-T126''s fix for slow launches; pass SkipCli = $true when Orchestrator''s own -Launch is set', '—', 831, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T833', 'MindAttic.Orchestrator', 833, '2026-10-25', 'fix', 'closed', 'Terminals panel: arrow keys don''t reach a CLI''s interactive menu, WPF intercepts them first', '2671f626', 832, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T834', 'MindAttic.Orchestrator', 834, '2026-10-25', 'fix', 'open', 'Current-work card shows nothing useful for a no-ticket agent: headline reads ''No ticket: working on what you typed'' and the activity line is a raw last-tool-call dump instead of what the agent is doing. Capture the first line of the session''s opening prompt onto TranscriptSession (mirroring SubagentActivity.Task) and show it as the brief description when TicketId is null.', '—', 833, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T1', 'MindAttic.Psst', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.PSST-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T2', 'MindAttic.Psst', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for ContactBook (Contacts/Contact.cs): Find matches name case-insensitively before phone, falls back to 10-digit phone match across formats (+1, dashes, parens), returns null for blank or unmatched input; WithAdded rejects blank name/phone and case-insensitive duplicate names and leaves the original book unchanged; WithoutContact removes only the first case-insensitive match and returns null when absent - this is how psst sms resolves recipients, so a wrong match texts the wrong person', '865fde2', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T3', 'MindAttic.Psst', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched', '—', 2, '| M.PSST-T3 | 2026-10-14 | chore | open | NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched | — |');
@@ -24854,6 +24856,11 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15833, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15834, 'M.TIX-T155', '2026-10-26T00:12:59Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15835, 'M.TIX-T155', '2026-10-26T00:12:59Z', 'ref', 'main@df2b6e1', 'HygieneIntakeTests.A_findings_ticket_link_opens_it_in_Repos @ main 3fc4ee9');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15836, 'M.TIX-T155', '2026-10-26T00:13:09Z', 'working', 'waffle@mindattic.com (e08ca7df-269c-47b1-9b95-05607dcdfddc)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15837, 'M.ORCH-T833', '2026-10-26T00:34:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15838, 'M.ORCH-T834', '2026-10-26T00:39:56Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15839, 'M.ORCH-T834', '2026-10-26T00:40:01Z', 'working', NULL, 'f2ae84bf-6015-4156-92ce-6959311959d4');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15840, 'M.ORCH-T833', '2026-10-26T00:40:34Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (15841, 'M.ORCH-T833', '2026-10-26T00:40:34Z', 'ref', '—', '2671f626');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z', NULL);
@@ -26402,6 +26409,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T814', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:03Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T815', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:04Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T817', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:52:39Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T834', NULL, 0, NULL, 'f2ae84bf-6015-4156-92ce-6959311959d4', '2026-10-26T00:40:01Z', '2026-10-26T00:40:01Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T118', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:59:15Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T147', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:59:15Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T148', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T23:40:41Z');
@@ -26596,6 +26604,45 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 -- ticket_notes
 
 -- ticket_descriptions
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T833', 'Symptom: Inside the Orchestrator''s embedded Terminals panel (TerminalPanesHost), when a CLI running
+in a pane shows an interactive, arrow-key-driven menu (e.g. a selection list or permission prompt),
+the Up/Down/Left/Right keys don''t reach the CLI. It looks like the WPF app is intercepting/consuming
+them before the terminal control sees them, so the menu can''t be navigated at all. The same CLI run
+directly in a real Windows Terminal window does not have this problem.
+
+Cause (to confirm): the panel hosts Microsoft.Terminal.Wpf''s TermControl via the
+EasyWindowsTerminalControl NuGet wrapper (EasyTerminalControl, see
+src/MindAttic.Orchestrator.Wpf/ViewModels/TerminalsViewModel.cs:26), which is an HwndHost around a
+native ConPTY-backed window. By design, plain Left/Right are meant to reach the CLI''s own cursor —
+see the comment at TerminalsViewModel.cs:282-283, which is exactly why Ctrl+Left/Ctrl+Right were
+added for switching dashboard terminal tabs instead of plain Left/Right. No code in the Wpf project
+ever calls Focus()/Keyboard.Focus() on the EasyTerminalControl (grepped — only DashboardWindow.cs
+calls window-level Focus()), so keyboard focus may not reliably land on the terminal''s native HWND
+after opening a pane or switching TerminalTabs'' SelectedPane, especially since Microsoft.Terminal.Wpf
+does not implement IKeyboardInputSink''s TranslateAccelerator correctly for all paths, which is a
+known class of bug for this control when hosted inside WPF: WPF''s own keyboard navigation/focus scope
+can claim directional keys at the HwndHost boundary before the native window gets them, with no
+visible symptom besides keys silently not reaching the hosted terminal.
+
+Repro:
+1. Open a CLI in the Orchestrator''s Terminals panel that shows an arrow-key menu (e.g. Claude Code''s
+   own `/model` picker, or any TUI list).
+2. Click into the terminal pane.
+3. Press Up/Down/Left/Right — the menu does not move.
+
+Suggested fix directions:
+- Explicitly set keyboard focus onto TerminalPaneViewModel.Control when a pane is opened
+  (TerminalsViewModel.Open) and whenever TerminalTabs.SelectedPane changes (PersonTerminalsViewModel /
+  MainWindow.xaml.cs), not just on mouse click.
+- Verify EasyTerminalControl/TermControl''s IKeyboardInputSink implementation actually forwards
+  WM_KEYDOWN for arrow keys to the ConPTY child instead of letting WPF''s focus/keyboard-navigation
+  layer consume them; may need `KeyboardNavigation.SetDirectionalNavigation(TerminalPanesHost,
+  KeyboardNavigationMode.None)` or an explicit PreviewKeyDown handler on TerminalFrame/
+  TerminalPanesHost that re-routes arrow keys to the focused terminal when e.printed.Handled stays
+  false.
+- Check whether MaTabControl''s TerminalTabs strip itself still holds keyboard focus (tabs are real
+  TabItems, and TabControl handles Left/Right natively) after a tab is clicked/selected, stealing the
+  arrow keys before they ever reach the terminal pane below it.', '2026-10-26T00:34:37Z');
 
 -- ticket_labels
 
