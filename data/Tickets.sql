@@ -26272,6 +26272,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17082, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17083, 'U.RICO-T50', '2026-10-26T13:57:37Z', 'ref', 'UR-US-PAR10', '3e44e97 (SoundEffectTests, SoundTests)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17084, 'U.RICO-T50', '2026-10-26T13:57:51Z', 'working', 'honey@mindattic.com (069b8f3a-083e-419e-a4c0-48bc816cfb6f)', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17085, 'U.HARE-T62', '2026-10-26T13:58:08Z', 'working', NULL, 'honey@mindattic.com (069b8f3a-083e-419e-a4c0-48bc816cfb6f)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17086, 'U.RICO-T27', '2026-10-26T14:07:41Z', 'working', NULL, 'honey@mindattic.com (069b8f3a-083e-419e-a4c0-48bc816cfb6f)');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z', NULL);
@@ -28155,6 +28156,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.HARE-T62', NULL, 0, 'honey@mindattic.com', '069b8f3a-083e-419e-a4c0-48bc816cfb6f', '2026-10-26T13:58:08Z', '2026-10-26T13:58:08Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.RICO-T27', NULL, 0, 'honey@mindattic.com', '069b8f3a-083e-419e-a4c0-48bc816cfb6f', '2026-10-26T14:07:41Z', '2026-10-26T14:07:41Z');
 
 -- ticket_notes
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (1, 'U.HARE-T54', 'ryand', '2026-10-26T04:52:58Z', 'From U.HARE-T52 (7d24220): leaving the arena past the 400 px buffer zone (LeaveArena command) currently costs a life only on the ship (PlayerHealth out-of-bounds path / ShipHealth). When this ticket wires LIVES into the session, route that out-of-bounds loss through the same session lives so both deaths count the same.');
