@@ -70,6 +70,12 @@ public static class TicketHandoff
             catch (IOException ex)
             {
                 TicketsLog.For("Handoff").Warning(ex, "A ticket handoff failed");
+                try { await Task.Delay(500, stop); } catch (OperationCanceledException) { return; }
+            }
+            catch (Exception ex)
+            {
+                TicketsLog.For("Handoff").Error(ex, "A ticket handoff failed unexpectedly");
+                try { await Task.Delay(500, stop); } catch (OperationCanceledException) { return; }
             }
         }
     }
