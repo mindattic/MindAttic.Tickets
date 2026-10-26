@@ -116,7 +116,8 @@ public partial class MainWindow : Window
         {
             busRefresh.Stop();
             busFirstPending = null;
-            await model.RefreshAsync();
+            try { await model.RefreshAsync(); }
+            catch (Exception ex) { TicketsLog.For("Bus").Error(ex, "Refreshing after a bus event failed"); }
         };
         bus.TicketChanged += _ => Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
         {
@@ -134,7 +135,8 @@ public partial class MainWindow : Window
         bus.OpenTicketRequested += id => Dispatcher.BeginInvoke(async () =>
         {
             TicketsLog.For("Bus").Information("Asked to open {Ticket} by the Orchestrator", id);
-            await OpenTicketAsync(id);
+            try { await OpenTicketAsync(id); }
+            catch (Exception ex) { TicketsLog.For("Bus").Error(ex, "Opening {Ticket} for the Orchestrator failed", id); }
         });
         model.ShowWorkerOnBus = bus.TryShowWorker;
         Closed += (_, _) => { busRefresh.Stop(); bus.Dispose(); };

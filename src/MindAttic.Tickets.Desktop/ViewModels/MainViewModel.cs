@@ -409,7 +409,8 @@ public sealed partial class MainViewModel : ObservableObject
             ClearFilters();
             SelectedView = TicketsView;
             ApplyFilters();
-            row = TicketRows.First(r => r.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
+            row = TicketRows.FirstOrDefault(r => r.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
+            if (row is null) return; // the ticket isn't in the list (gone, or the list is stale)
         }
         if (IsQueueView) SelectedQueueRow = row; else SelectedTicketRow = row;
         FocusRow?.Invoke(row);

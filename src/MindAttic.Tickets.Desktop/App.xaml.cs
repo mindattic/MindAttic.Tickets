@@ -27,7 +27,7 @@ public partial class App : Application
         var ticket = TicketHandoff.TicketArg(e.Args);
         TicketsLog.Start("Desktop");
         var log = TicketsLog.For("App");
-        DispatcherUnhandledException += (_, x) => log.Fatal(x.Exception, "Unhandled on the UI thread");
+        DispatcherUnhandledException += (_, x) => { log.Fatal(x.Exception, "Unhandled on the UI thread"); x.Handled = true; };
         AppDomain.CurrentDomain.UnhandledException += (_, x) => log.Fatal(x.ExceptionObject as Exception, "Unhandled");
         TaskScheduler.UnobservedTaskException += (_, x) => log.Error(x.Exception, "Unobserved task exception");
 
