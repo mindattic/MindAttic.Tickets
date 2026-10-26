@@ -103,7 +103,9 @@ public sealed class HygieneIntakeTests
         model.GoTo("AL-T1");
         Assert.That(model.IsTicketsView, Is.True);
         Assert.That(model.SelectedTicketRow?.Id, Is.EqualTo("AL-T1"));
-        await Task.Delay(200);
+        // The selection loads the detail off the UI thread, and that load runs git for the ticket's commits (M.TIX-T85): a
+        // fixed short wait loses the race on a busy machine (M.TIX-T151, M.TIX-T155), so wait for it as the other tests do.
+        for (var i = 0; i < 250 && model.Detail?.Id != "AL-T1"; i++) await Task.Delay(20);
         Assert.That(model.Detail?.Id, Is.EqualTo("AL-T1"));
     }
 
