@@ -8127,7 +8127,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T23', 'Unity.Hare', 23, '2026-10-21', 'feature', 'closed', 'Implement pickup drops and collection (carrot, coin, chip, cartridge)', '15377a4 PickupTests, PickupViewTests', 22, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T24', 'Unity.Hare', 24, '2026-10-21', 'feature', 'open', 'Implement garage/upgrade screen and weapon/ship upgrade purchases', 'UH-US-H2', 23, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T25', 'Unity.Hare', 25, '2026-10-21', 'feature', 'closed', 'Implement gameplay HUD (health, energy, weapon GUI, speedometer)', '46107d8 (Core GameHudTests, PlayMode GameHudPlayTests)', 24, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T26', 'Unity.Hare', 26, '2026-10-21', 'feature', 'open', 'Implement title screen and menu navigation (quickstart, campaign, quit, yes/no dialog)', 'UH-US-I2', 25, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T26', 'Unity.Hare', 26, '2026-10-21', 'feature', 'closed', 'Implement title screen and menu navigation (quickstart, campaign, quit, yes/no dialog)', 'a64c87b TitleRoomPlayTests', 25, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T27', 'Unity.Hare', 27, '2026-10-21', 'feature', 'closed', 'Implement floating text, tips and alert popups', 'd8075e9', 26, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T28', 'Unity.Hare', 28, '2026-10-21', 'feature', 'open', 'Implement story/cutscene system (conversation, typewriter reveal, scenario loading)', 'UH-US-J1', 27, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T29', 'Unity.Hare', 29, '2026-10-21', 'feature', 'open', 'Implement music playback and random track selection (jukebox)', 'UH-US-K1', 28, NULL);
@@ -26262,6 +26262,9 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17072, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17073, 'U.HARE-T26', '2026-10-26T13:22:13Z', 'working', NULL, 'honey@mindattic.com (069b8f3a-083e-419e-a4c0-48bc816cfb6f)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17074, 'U.RICO-T50', '2026-10-26T13:32:27Z', 'working', NULL, 'honey@mindattic.com (069b8f3a-083e-419e-a4c0-48bc816cfb6f)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17075, 'U.OVW-T22', '2026-10-26T13:32:50Z', 'working', NULL, 'honey@mindattic.com (069b8f3a-083e-419e-a4c0-48bc816cfb6f)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17076, 'U.HARE-T26', '2026-10-26T13:47:11Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17077, 'U.HARE-T26', '2026-10-26T13:47:11Z', 'ref', 'UH-US-I2', 'a64c87b TitleRoomPlayTests');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17078, 'U.HARE-T26', '2026-10-26T13:47:43Z', 'working', 'honey@mindattic.com (069b8f3a-083e-419e-a4c0-48bc816cfb6f)', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z', NULL);
@@ -28144,7 +28147,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.HARE-T26', NULL, 0, 'honey@mindattic.com', '069b8f3a-083e-419e-a4c0-48bc816cfb6f', '2026-10-26T13:22:13Z', '2026-10-26T13:22:13Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.OVW-T22', NULL, 0, 'honey@mindattic.com', '069b8f3a-083e-419e-a4c0-48bc816cfb6f', '2026-10-26T13:32:50Z', '2026-10-26T13:32:50Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.RICO-T50', NULL, 0, 'honey@mindattic.com', '069b8f3a-083e-419e-a4c0-48bc816cfb6f', '2026-10-26T13:32:27Z', '2026-10-26T13:32:27Z');
 
