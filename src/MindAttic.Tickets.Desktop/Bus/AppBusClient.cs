@@ -149,21 +149,26 @@ public sealed partial class AppBusClient : IDisposable
     {
         AppPresence? p;
         lock (gate) p = presences.GetValueOrDefault(app);
-        if (p is null || !p.Handles.Contains(kind, StringComparer.OrdinalIgnoreCase) || !IsAlive(p.Pid)) return null;
+        if (p is null || !p.Handles.Contains(kind, StringComparer.OrdinalIgnoreCase) || !IsAlive(p)) return null;
         return p;
     }
 
-    private static bool IsAlive(int pid)
+    private static readonly TimeSpan StartSlack = TimeSpan.FromSeconds(2);
+
+    /// <summary>Whether the process that said <paramref name="presence"/> still runs: its pid does, and not as a process started
+    /// after it was said (a reused pid; M.TIX-T168, as M.ORCH-T1010). A presence with no time is judged by its pid alone.</summary>
+    private static bool IsAlive(AppPresence presence)
     {
-        if (pid <= 0) return false;
+        if (presence.Pid <= 0) return false;
         try
         {
-            using var proc = Process.GetProcessById(pid);
-            return !proc.HasExited;
+            using var proc = Process.GetProcessById(presence.Pid);
+            if (proc.HasExited) return false;
+            return presence.AtUtc == default || proc.StartTime.ToUniversalTime() <= presence.AtUtc.ToUniversalTime() + StartSlack;
         }
-        catch (Exception ex) when (ex is ArgumentException or InvalidOperationException or System.ComponentModel.Win32Exception)
+        catch (Exception ex) when (ex is ArgumentException or InvalidOperationException or System.ComponentModel.Win32Exception or NotSupportedException)
         {
-            return ex is System.ComponentModel.Win32Exception; // access denied: it exists
+            return ex is System.ComponentModel.Win32Exception; // access denied: it exists (its start time can't be read)
         }
     }
 
