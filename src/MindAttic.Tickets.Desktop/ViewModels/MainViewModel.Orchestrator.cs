@@ -105,10 +105,22 @@ public sealed partial class MainViewModel
 
     /// <summary>Shows who's working a ticket: in the dashboard over the app bus when it's listening, else by starting the
     /// Orchestrator on it (<c>--show &lt;ticket&gt;</c>, through <see cref="OpenOrchestrator"/>).</summary>
-    public void ShowWorker(object? p)
+    public void ShowWorker(object? p) => _ = ShowWorkerAsync(p);
+
+    /// <summary>The bus send (a process lookup and a pipe connect) runs off the UI thread (M.TIX-T166); the result comes back to it.</summary>
+    private async Task ShowWorkerAsync(object? p)
     {
         if (WorkedTicket(p) is not { } t) return;
-        if (ShowWorkerOnBus?.Invoke(t.Id, t.Work.Login ?? t.Worker?.Login, t.Work.Session ?? t.Worker?.Session) == true)
+        var login = t.Work.Login ?? t.Worker?.Login;
+        var session = t.Work.Session ?? t.Worker?.Session;
+        var onBus = ShowWorkerOnBus;
+        var sent = false;
+        if (onBus is not null)
+        {
+            try { sent = await Task.Run(() => onBus(t.Id, login, session)); }
+            catch (Exception ex) { TicketsLog.For("Bus").Warning(ex, "Asking the Orchestrator to show {Ticket} failed", t.Id); }
+        }
+        if (sent)
         {
             StatusMessage = Announcement = $"Asked the Orchestrator to show who's working {t.Id}.";
             return;
