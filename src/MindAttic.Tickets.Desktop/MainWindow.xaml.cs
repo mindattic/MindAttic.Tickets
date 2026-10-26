@@ -20,6 +20,8 @@ public partial class MainWindow : Window
 
     /// <summary>How long a burst of the app bus's ticket events is gathered before one refresh.</summary>
     private static readonly TimeSpan BusSettle = TimeSpan.FromMilliseconds(400);
+    private static readonly TimeSpan BusMaxWait = TimeSpan.FromSeconds(3); // a steady stream of events can't starve the refresh
+    private DateTime? busFirstPending;
 
     private readonly MainViewModel model;
     private DatabaseWatch? watch;
@@ -113,10 +115,13 @@ public partial class MainWindow : Window
         busRefresh.Tick += async (_, _) =>
         {
             busRefresh.Stop();
+            busFirstPending = null;
             await model.RefreshAsync();
         };
         bus.TicketChanged += _ => Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
         {
+            busFirstPending ??= DateTime.UtcNow;
+            if (DateTime.UtcNow - busFirstPending.Value >= BusMaxWait && busRefresh.IsEnabled) return; // overdue: let it fire
             busRefresh.Stop(); // restart the settle: the refresh runs once, after the burst's last event
             busRefresh.Start();
         });
