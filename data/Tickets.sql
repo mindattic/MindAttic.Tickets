@@ -7723,6 +7723,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T249', 'RogueTrader.Brevity', 249, '2026-10-25', 'docs', 'closed', 'Re-render docs/USER_STORIES.md from the ticket database to pick up already-closed tickets (T4, T7, T238, T247) and the repo rename to RogueTrader.Brevity', 'MindAttic.Tickets/data/Tickets.db', 248, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T250', 'RogueTrader.Brevity', 250, '2026-10-26', 'fix', 'open', 'Fix stilted over-shortened dialogue: restore natural grammar and word choice (e.g. Medineh''s broken English, incinerate->burn), list every change', '—', 249, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T251', 'RogueTrader.Brevity', 251, '2026-10-26', 'docs', 'closed', 'Credit Nexus user BoethiahQueen in the attributions for reporting the stilted-dialogue problem', '—', 250, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T252', 'RogueTrader.Brevity', 252, '2026-10-26', 'chore', 'closed', 'Build on RogueTrader.Shared: game paths, references, packaging, LocalizationOverlay and BlueprintArchive from the shared source', '5651d66', 251, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T1', 'RogueTrader.Overwatch', 1, '2026-10-26', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T2', 'RogueTrader.Overwatch', 2, '2026-10-26', 'feature', 'closed', 'Create the RogueTrader.Overwatch repo: Overwatch abilities on every ranged weapon for heroes and enemies (Reaction Shot, Overwatch, Suppression)', '3d014c5', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T3', 'RogueTrader.Overwatch', 3, '2026-10-26', 'chore', 'closed', 'Build the mod without Unity: script that assembles the Owlcat mod folder (manifest, settings, blueprints, patches, enGB) and installs/enables it', '5873bbc', 2, NULL);
@@ -7741,9 +7742,10 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T16', 'RogueTrader.Overwatch', 16, '2026-10-26', 'docs', 'open', 'Nexus Mods page: header, logo, summary and BBCode description in docs/NEXUS_PAGE.md', '—', 15, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T17', 'RogueTrader.Overwatch', 17, '2026-10-26', 'fix', 'closed', 'Ship only the hotbar icons in the mod, not the Nexus header and logo', '0fe4406', 16, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T18', 'RogueTrader.Overwatch', 18, '2026-10-26', 'feature', 'open', 'Put Reflex Shot, Overwatch and Suppression on every party member''s ability bar (last 3 slots, else later rows), greyed out without a ranged weapon in the active set', '—', 17, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T19', 'RogueTrader.Overwatch', 19, '2026-10-26', 'docs', 'open', 'In-game validation guide (docs/TESTING.md) covering every rule and equip situation, with README, DESIGN and Nexus page brought up to date', '—', 18, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T19', 'RogueTrader.Overwatch', 19, '2026-10-26', 'docs', 'closed', 'In-game validation guide (docs/TESTING.md) covering every rule and equip situation, with README, DESIGN and Nexus page brought up to date', 'ffca20e', 18, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T20', 'RogueTrader.Overwatch', 20, '2026-10-26', 'chore', 'closed', 'Build on RogueTrader.Shared: game paths, references, packaging, sprite loading and logging from the shared source', 'd7e8fc7', 19, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T1', 'RogueTrader.Shared', 1, '2026-10-26', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T2', 'RogueTrader.Shared', 2, '2026-10-26', 'feature', 'open', 'Create RogueTrader.Shared: source-shared build setup and helpers for Rogue Trader mods (Brevity, Overwatch, future ones)', '—', 1, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T2', 'RogueTrader.Shared', 2, '2026-10-26', 'feature', 'closed', 'Create RogueTrader.Shared: source-shared build setup and helpers for Rogue Trader mods (Brevity, Overwatch, future ones)', '311f523', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RN-T1', 'RusNet', 1, '2026-10-25', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RN-T2', 'RusNet', 2, '2026-10-25', 'chore', 'closed', 'Scaffold RusNet: local-network inventory scanner (Python core, standardized JSON schema v1, self-contained interactive HTML viewer, Python + .NET WebView2 desktop hosts)', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RN-T3', 'RusNet', 3, '2026-10-25', 'fix', 'closed', 'Fix 4 defects found by /bughunt: mDNS query missing the unicast-response (QU) bit so it returned nothing; OS donut slice/legend filtered every host out (wrong field); network-map leaked internal x/y onto host objects into Copy-as-JSON; dead gw placeholder in the psutil interface path', '—', 2, NULL);
@@ -27534,6 +27536,22 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17782, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17783, 'RTO-T19', '2026-10-26T21:01:00Z', 'working', '559bfeb4-c911-401d-a829-8db86597eb44', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17784, 'RTS-T2', '2026-10-26T21:01:21Z', 'working', NULL, '559bfeb4-c911-401d-a829-8db86597eb44');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17785, 'RTS-T2', '2026-10-26T21:02:18Z', 'working', '559bfeb4-c911-401d-a829-8db86597eb44', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17786, 'RTB-T252', '2026-10-26T21:10:29Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17787, 'RTB-T252', '2026-10-26T21:10:30Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17788, 'RTO-T20', '2026-10-26T21:10:31Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17789, 'RTO-T20', '2026-10-26T21:10:33Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17790, 'RTO-T20', '2026-10-26T21:10:51Z', 'working', NULL, '559bfeb4-c911-401d-a829-8db86597eb44');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17791, 'RTB-T252', '2026-10-26T21:10:51Z', 'working', NULL, '559bfeb4-c911-401d-a829-8db86597eb44');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17792, 'RTO-T19', '2026-10-26T21:10:52Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17793, 'RTO-T19', '2026-10-26T21:10:52Z', 'ref', '—', 'ffca20e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17794, 'RTS-T2', '2026-10-26T21:12:21Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17795, 'RTS-T2', '2026-10-26T21:12:21Z', 'ref', '—', '311f523');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17796, 'RTO-T20', '2026-10-26T21:12:24Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17797, 'RTO-T20', '2026-10-26T21:12:24Z', 'ref', '—', 'd7e8fc7');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17798, 'RTB-T252', '2026-10-26T21:12:28Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17799, 'RTB-T252', '2026-10-26T21:12:28Z', 'ref', '—', '5651d66');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17800, 'RTB-T252', '2026-10-26T21:12:48Z', 'working', '559bfeb4-c911-401d-a829-8db86597eb44', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17801, 'RTO-T20', '2026-10-26T21:12:48Z', 'working', '559bfeb4-c911-401d-a829-8db86597eb44', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z', NULL);
@@ -28639,6 +28657,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTB-T244', 'approved', 0, '2026-10-25T07:34:38Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTB-T245', 'approved', 0, '2026-10-25T07:34:38Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTB-T246', 'approved', 0, '2026-10-25T07:34:38Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTB-T252', 'approved', 0, '2026-10-26T21:10:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTO-T10', 'approved', 0, '2026-10-26T18:26:05Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTO-T11', 'approved', 0, '2026-10-26T18:26:07Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTO-T12', 'rejected', 0, '2026-10-26T19:23:56Z', NULL);
@@ -28648,6 +28667,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTO-T18', 'approved', 0, '2026-10-26T20:59:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTO-T19', 'approved', 0, '2026-10-26T20:59:54Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTO-T2', 'approved', 0, '2026-10-26T18:13:43Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTO-T20', 'approved', 0, '2026-10-26T21:10:33Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTO-T3', 'approved', 0, '2026-10-26T18:25:48Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTO-T4', 'approved', 0, '2026-10-26T18:25:51Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTO-T5', 'approved', 0, '2026-10-26T18:25:53Z', NULL);
