@@ -8437,6 +8437,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAU-T9', 'Unity.Shared', 9, '2026-10-24', 'fix', 'open', 'MAU-T4 names the pre-rename repo in its own publish line and Pages URL (''Publish MindAttic.Unity docs ... https://mindattic.github.io/MindAttic.Unity/ returns 200''); the repo is now Unity.Shared (MAU-T5/T6). Fix both to Unity.Shared. Found while correcting MAT-T51''s stale-name tickets.', '—', 8, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAU-T10', 'Unity.Shared', 10, '2026-10-24', 'docs', 'closed', 'Update USER_STORIES.md', '—', 9, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAU-T11', 'Unity.Shared', 11, '2026-10-24', 'feature', 'closed', 'Add a CLI-mute flag for every MindAttic Unity game: a -muted command-line switch and MINDATTIC_CLI_MUTED=1 environment variable, read during this package''s startup self-rooting (before the first scene loads, same timing as the existing -profiles-root/MINDATTIC_PROFILES_ROOT override). When set, forces all audio off in memory for that session only (music/SFX volumes report muted via CommonSettings) WITHOUT ever writing to the player''s saved settings.json -- a session override, not a profile change. Purpose: so a CLI/agent launching a game instance during development doesn''t blast audio. Document in README.md''s ''Root override for tests and automation'' section, same style as the existing profiles-root override (CLI switch + env var).', 'd2f188e ProfilesFacadeTests.SessionMuteReportsMutedWithoutTouchingSettingsJson', 10, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAU-T12', 'Unity.Shared', 12, '2026-10-25', 'chore', 'open', 'Track and close out the --muted CLI-mute rollout across every MindAttic Unity game: Unity.Shared''s session mute (MAU-T11) is merged and pushed; finish the per-game verify/wire-up tickets (Unity.Chain, Unity.Cursory, Unity.Eve, Unity.GridGame, Unity.Hare, Unity.Incognito, Unity.Overworld, Unity.ProjectVania, Unity.Ricochet, Unity.SpaceGod, Unity.QuickDuel) so every game is silent by default when launched for development or test automation', '—', 11, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('USOD-T1', 'Unity.SongOfDawn', 1, '2026-10-22', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('USOD-T2', 'Unity.SongOfDawn', 2, '2026-10-22', 'chore', 'closed', 'Bootstrap Unity.SongOfDawn: Unity 6 (6000.4.3f1) project scaffold, engine-free Core + NUnit Core.Tests with CI, AGENTS/CLAUDE pointers, README, and docs/RECONSTRUCTION.md + docs/BIBLE.md reverse-engineered from the 2013 GameMaker: Studio source', 'acafd09', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('USOD-T3', 'Unity.SongOfDawn', 3, '2026-10-22', 'chore', 'wont-do', 'Import every original asset from SongOfDawn.gmx into Assets/Unity.SongOfDawn/{Art,Audio}/Original: 8 sprites (pivot = GM origin, PPU 1, bilinear per option_interpolate, no compression), bg_black, all 16 WAVs incl. orphan sfx_Bb/sfx_Eb (PCM, decompress on load, preload); EditMode test asserts sizes/pivots and that the key PNG alpha matches the opaque areas in RECONSTRUCTION §4.1', 'port cancelled by user; repo deleted', 2, NULL);
@@ -25312,6 +25313,11 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (16225, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (16226, 'M.ORCH-T872', '2026-10-26T03:33:06Z', 'working', NULL, 'pdftransferjr@mindattic.com (b8600565-24f0-4d01-900d-e3e8aad1ded0)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (16227, 'M.ORCH-T863', '2026-10-26T03:33:38Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (16228, 'M.ORCH-T863', '2026-10-26T03:33:38Z', 'ref', '—', '000dd0e8');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (16229, 'M.ORCH-T886', '2026-10-26T03:33:58Z', 'working', 'pdftransferjr@mindattic.com (b8600565-24f0-4d01-900d-e3e8aad1ded0)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (16230, 'M.ORCH-T863', '2026-10-26T03:34:45Z', 'working', 'pdftransferjr@mindattic.com (b8600565-24f0-4d01-900d-e3e8aad1ded0)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (16231, 'MAU-T12', '2026-10-26T03:39:33Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (16232, 'MAU-T12', '2026-10-26T03:39:46Z', 'working', NULL, '069b8f3a-083e-419e-a4c0-48bc816cfb6f');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (16233, 'MAU-T12', '2026-10-26T03:39:47Z', 'approval', 'proposed', 'approved');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z', NULL);
@@ -26038,6 +26044,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('MAT-T53', 'approved', 0, '2026-10-24T05:53:11Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('MAT-T9', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('MAU-T11', 'approved', 5, '2026-10-25T06:27:52Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('MAU-T12', 'approved', 0, '2026-10-26T03:39:47Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('MAU-T2', 'approved', 0, '2026-10-19T16:18:09Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('MAU-T3', 'approved', 0, '2026-10-21T14:34:27Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('MAU-T4', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
@@ -26938,9 +26945,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T855', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T03:08:52Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T857', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T03:08:40Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T858', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:50:33Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T863', NULL, 0, 'pdftransferjr@mindattic.com', 'b8600565-24f0-4d01-900d-e3e8aad1ded0', '2026-10-26T03:25:24Z', '2026-10-26T03:25:24Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T872', NULL, 0, 'pdftransferjr@mindattic.com', 'b8600565-24f0-4d01-900d-e3e8aad1ded0', '2026-10-26T03:33:06Z', '2026-10-26T03:33:06Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T886', NULL, 0, 'pdftransferjr@mindattic.com', 'b8600565-24f0-4d01-900d-e3e8aad1ded0', '2026-10-26T03:31:52Z', '2026-10-26T03:31:52Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.SCHD-T22', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:44Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T118', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:59:15Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T147', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:59:15Z');
@@ -26994,6 +26999,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T91', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T23:09:54Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T58', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:02:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAU-T12', NULL, 0, NULL, '069b8f3a-083e-419e-a4c0-48bc816cfb6f', '2026-10-26T03:39:46Z', '2026-10-26T03:39:46Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T172', NULL, 0, 'waffle@mindattic.com', 'eb0acdfa-f603-4f4a-9519-d9c5ba825666', '2026-10-26T03:23:12Z', '2026-10-26T03:23:12Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T176', NULL, 0, 'waffle@mindattic.com', 'eb0acdfa-f603-4f4a-9519-d9c5ba825666', '2026-10-26T03:24:37Z', '2026-10-26T03:24:37Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T179', NULL, 0, 'waffle@mindattic.com', 'eb0acdfa-f603-4f4a-9519-d9c5ba825666', '2026-10-26T03:24:38Z', '2026-10-26T03:24:38Z');
@@ -27958,6 +27964,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T191', 'GG-T188', 're
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T191', 'GG-T189', 'requires', 'orchestrator block');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T192', 'UM-T74', 'requires', 'orchestrator block');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T205', 'MAU-T11', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T205', 'MAU-T12', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T34', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T36', 'GG-T35', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T41', 'GG-T42', 'requires', NULL);
@@ -28721,6 +28728,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAB-T2', 'M.TIX-T14', 'r
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAT-T4', 'M.SCHD-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAT-T40', 'MAT-T38', 'supersedes', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAT-T49', 'M.LNCH-T74', 'requires', 'MAT-T49''s regenerate-after-Cryptography-fix step needs M.LNCH-T74 done first');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAU-T11', 'MAU-T12', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MB-T12', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MB-T2', 'MB-US-F1', 'implements', 'migrated: story named in ticket');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MB-US-A1', 'MB-EPIC-A', 'part-of', 'migrated: story under its epic');
@@ -29211,6 +29219,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.CHN-T62', 'U.CHN-US-V2
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.CHN-T63', 'U.CHN-T62', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.CHN-T63', 'U.CHN-US-V3', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.CHN-T74', 'MAU-T11', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.CHN-T74', 'MAU-T12', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.CHN-US-A1', 'U.CHN-EPIC-A', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.CHN-US-A2', 'U.CHN-EPIC-A', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.CHN-US-A3', 'U.CHN-EPIC-A', 'part-of', 'story under its epic');
@@ -29254,6 +29263,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.CHN-US-V3', 'U.CHN-EPI
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.EVE-T11', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.EVE-T26', 'UM-T74', 'requires', 'orchestrator block');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.EVE-T31', 'MAU-T11', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.EVE-T31', 'MAU-T12', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.HARE-T17', 'U.HARE-T16', 'requires', 'build order (UH-T34)');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.HARE-T18', 'U.HARE-T56', 'requires', 'build order (UH-T34)');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.HARE-T19', 'U.HARE-T28', 'requires', 'build order (UH-T34)');
@@ -29338,6 +29348,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.HARE-T70', 'U.HARE-T69
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.HARE-T71', 'U.HARE-T70', 'requires', 'build order (UH-T34)');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.HARE-T77', 'U.HARE-T40', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.HARE-T80', 'MAU-T11', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.HARE-T80', 'MAU-T12', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.HARE-US-A1', 'U.HARE-EPIC-A', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.HARE-US-A2', 'U.HARE-EPIC-A', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.HARE-US-A3', 'U.HARE-EPIC-A', 'part-of', 'story under its epic');
@@ -29426,6 +29437,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-T35', 'U.INC-T34',
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-T39', 'U.INC-T29', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-T4', 'U.INC-T3', 'requires', 'camera needs player facing/position first');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-T40', 'MAU-T11', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-T40', 'MAU-T12', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-T5', 'U.INC-T3', 'requires', 'eye cursor needs the player object to exist');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-T6', 'U.INC-T5', 'requires', 'mode cycling needs the eye cursor''s mode plumbing');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-T7', 'U.INC-T6', 'requires', 'hacking overlay is a pointer-mode interaction');
@@ -29505,6 +29517,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.OVW-T37', 'U.OVW-US-A3
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.OVW-T38', 'U.OVW-T6', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.OVW-T39', 'U.OVW-T5', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.OVW-T42', 'MAU-T11', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.OVW-T42', 'MAU-T12', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.OVW-T5', 'U.OVW-US-A1', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.OVW-T6', 'U.OVW-T39', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.OVW-T6', 'U.OVW-T5', 'requires', NULL);
@@ -29600,6 +29613,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.RICO-T59', 'U.RICO-T58
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.RICO-T65', 'U.RICO-T34', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.RICO-T68', 'U.RICO-T35', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.RICO-T71', 'MAU-T11', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.RICO-T71', 'MAU-T12', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.RICO-US-CORE1', 'U.RICO-EPIC-CORE', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.RICO-US-CORE2', 'U.RICO-EPIC-CORE', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.RICO-US-CORE3', 'U.RICO-EPIC-CORE', 'part-of', 'story under its epic');
@@ -29811,6 +29825,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.SPC-T505', 'U.SPC-T508
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.SPC-T507', 'U.SPC-T508', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.SPC-T534', 'U.SPC-T533', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.SPC-T536', 'MAU-T11', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.SPC-T536', 'MAU-T12', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.SPC-T55', 'U.SPC-T54', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.SPC-T60', 'U.SPC-T59', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.SPC-T62', 'U.SPC-T61', 'requires', NULL);
@@ -29859,6 +29874,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.VAN-T24', 'U.VAN-T9', 
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.VAN-T25', 'U.VAN-T10', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.VAN-T26', 'U.VAN-T4', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.VAN-T29', 'MAU-T11', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.VAN-T29', 'MAU-T12', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.VAN-T4', 'U.VAN-US-A1', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.VAN-T5', 'U.VAN-T26', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.VAN-T5', 'U.VAN-T4', 'requires', NULL);
@@ -29907,6 +29923,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('UC-T3', 'UM-T10', 'requi
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UC-T34', 'UC-T33', 'requires', 'orchestrator block');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UC-T4', 'UC-T3', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UC-T43', 'MAU-T11', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('UC-T43', 'MAU-T12', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UC-T5', 'UC-T4', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UC-T6', 'UC-T5', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UC-T7', 'UC-T6', 'requires', NULL);
@@ -30030,6 +30047,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('UQD-T52', 'UQD-T51', 're
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UQD-T53', 'UQD-T52', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UQD-T54', 'UQD-T53', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UQD-T61', 'MAU-T11', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('UQD-T61', 'MAU-T12', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UQD-US-P1', 'UQD-EPIC-P', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UQD-US-P10', 'UQD-EPIC-P', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UQD-US-P11', 'UQD-EPIC-P', 'part-of', 'story under its epic');
