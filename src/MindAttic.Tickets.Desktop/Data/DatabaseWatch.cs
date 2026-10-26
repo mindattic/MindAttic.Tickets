@@ -33,9 +33,11 @@ public sealed class DatabaseWatch : IDisposable
     }
 
     /// <summary>
-    /// The app bus connected (true: stop watching and polling, the bus pushes each change) or dropped (false: watch and poll
+    /// The app bus connected (true: stop watching and poll only every 60 s, the bus pushes each change) or dropped (false: watch and poll
     /// again, and report a change now, for whatever the bus carried while it was down or before it connected).
     /// </summary>
+    private static readonly TimeSpan BusPoll = TimeSpan.FromSeconds(60);
+
     public void SetBusConnected(bool connected)
     {
         lock (gate)
@@ -44,7 +46,7 @@ public sealed class DatabaseWatch : IDisposable
             busConnected = connected;
             if (watcher is not null) watcher.EnableRaisingEvents = !connected;
             if (connected) settleTimer.Change(Timeout.InfiniteTimeSpan, Timeout.InfiniteTimeSpan);
-            pollTimer.Change(connected ? Timeout.InfiniteTimeSpan : poll, connected ? Timeout.InfiniteTimeSpan : poll);
+            pollTimer.Change(connected ? BusPoll : poll, connected ? BusPoll : poll); // slow safety net while the bus is up
         }
         if (!connected) Touched();
     }
