@@ -7731,6 +7731,9 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T12', 'RogueTrader.Overwatch', 12, '2026-10-26', 'feature', 'wont-do', 'Drag-to-size Overwatch cone (Gears Tactics style) via C#, after the data-only types are tested', 'Merged into RTO-T6 Overwatch (draggable cone is part of it) per user 2026-10-26', 11, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T13', 'RogueTrader.Overwatch', 13, '2026-10-26', 'fix', 'closed', 'Overwatch shot count is lost on save/load: an active Overwatch reloads with 1 shot instead of the AP-based count', '542091f', 12, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T14', 'RogueTrader.Overwatch', 14, '2026-10-26', 'chore', 'closed', 'Rename Reaction Shot to Reflex Shot (in-game name, files, docs)', '7afa83f', 13, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T15', 'RogueTrader.Overwatch', 15, '2026-10-26', 'feature', 'open', 'Release 1.0.0: dist zip of the Owlcat mod folder, built by dotnet build -c Release', '—', 14, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T16', 'RogueTrader.Overwatch', 16, '2026-10-26', 'docs', 'open', 'Nexus Mods page: header, logo, summary and BBCode description in docs/NEXUS_PAGE.md', '—', 15, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T17', 'RogueTrader.Overwatch', 17, '2026-10-26', 'fix', 'closed', 'Ship only the hotbar icons in the mod, not the Nexus header and logo', '0fe4406', 16, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RN-T1', 'RusNet', 1, '2026-10-25', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RN-T2', 'RusNet', 2, '2026-10-25', 'chore', 'closed', 'Scaffold RusNet: local-network inventory scanner (Python core, standardized JSON schema v1, self-contained interactive HTML viewer, Python + .NET WebView2 desktop hosts)', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RN-T3', 'RusNet', 3, '2026-10-25', 'fix', 'closed', 'Fix 4 defects found by /bughunt: mDNS query missing the unicast-response (QU) bit so it returned nothing; OS donut slice/legend filtered every host out (wrong field); network-map leaked internal x/y onto host objects into Copy-as-JSON; dead gw placeholder in the psutil interface path', '—', 2, NULL);
@@ -27499,6 +27502,14 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17760, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17761, 'RTO-T14', '2026-10-26T20:39:55Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17762, 'RTO-T14', '2026-10-26T20:39:55Z', 'ref', '—', '7afa83f');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17763, 'RTO-T5', '2026-10-26T20:39:57Z', 'summary', 'Reaction Shot: XCOM 2 style, fire once at the first enemy that moves or acts within range, then end', 'Reflex Shot: XCOM 2 style, fire once at the first enemy that moves or acts within range, then end (corrected: Renamed to Reflex Shot by the user (RTO-T14))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17764, 'RB-T208', '2026-10-26T20:53:33Z', 'working', 'waffle@mindattic.com (eb0acdfa-f603-4f4a-9519-d9c5ba825666)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17765, 'RTO-T15', '2026-10-26T20:53:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17766, 'RTO-T15', '2026-10-26T20:53:58Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17767, 'RTO-T16', '2026-10-26T20:53:58Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17768, 'RTO-T16', '2026-10-26T20:53:59Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17769, 'RTO-T17', '2026-10-26T20:54:00Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17770, 'RTO-T17', '2026-10-26T20:54:56Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17771, 'RTO-T17', '2026-10-26T20:54:56Z', 'ref', '—', '0fe4406');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z', NULL);
@@ -28608,6 +28619,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTO-T11', 'approved', 0, '2026-10-26T18:26:07Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTO-T12', 'rejected', 0, '2026-10-26T19:23:56Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTO-T14', 'approved', 0, '2026-10-26T20:39:36Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTO-T15', 'approved', 0, '2026-10-26T20:53:58Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTO-T16', 'approved', 0, '2026-10-26T20:53:59Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTO-T2', 'approved', 0, '2026-10-26T18:13:43Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTO-T3', 'approved', 0, '2026-10-26T18:25:48Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTO-T4', 'approved', 0, '2026-10-26T18:25:51Z', NULL);
@@ -29282,7 +29295,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T58', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:02:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T195', NULL, 0, 'waffle@mindattic.com', 'eb0acdfa-f603-4f4a-9519-d9c5ba825666', '2026-10-26T18:37:07Z', '2026-10-26T18:37:07Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T208', NULL, 0, 'waffle@mindattic.com', 'eb0acdfa-f603-4f4a-9519-d9c5ba825666', '2026-10-26T08:53:04Z', '2026-10-26T08:53:04Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T111', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:34:40Z');
