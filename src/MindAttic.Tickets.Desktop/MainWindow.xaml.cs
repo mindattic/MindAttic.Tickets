@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
+using MindAttic.Tickets.Desktop.Bus;
 using MindAttic.Tickets.Desktop.Data;
 using MindAttic.Tickets.Desktop.ViewModels;
 using MindAttic.Tickets.Log;
@@ -17,8 +18,13 @@ public partial class MainWindow : Window
     private static readonly TimeSpan PollInterval = TimeSpan.FromSeconds(30);
     private static readonly TimeSpan SettleDelay = TimeSpan.FromSeconds(1);
 
+    /// <summary>How long a burst of the app bus's ticket events is gathered before one refresh.</summary>
+    private static readonly TimeSpan BusSettle = TimeSpan.FromMilliseconds(400);
+
     private readonly MainViewModel model;
     private DatabaseWatch? watch;
+    private DispatcherTimer? busRefresh;
+    private bool busConnected;
 
     /// <param name="ticket">The ticket <c>--ticket</c> names, opened once the list has loaded; null for none.</param>
     public MainWindow(MainViewModel model, string? ticket = null)
@@ -90,9 +96,44 @@ public partial class MainWindow : Window
             await model.RefreshAsync();
             watch = new DatabaseWatch(model.DbPath, SettleDelay, PollInterval,
                 () => Dispatcher.BeginInvoke(DispatcherPriority.Background, async () => await model.RefreshAsync()));
+            if (busConnected) watch.SetBusConnected(true);
             if (ticket is null || !await model.OpenTicketAsync(ticket)) FocusList();
         };
         Closed += (_, _) => watch?.Dispose();
+    }
+
+    /// <summary>
+    /// Joins the Orchestrator's app bus (M.TIX-T158): its ticket events refresh the lists (a burst coalesced into one refresh),
+    /// standing in for the file watch and the poll while it's connected; its <c>open-ticket</c> requests open the ticket as
+    /// <c>--ticket</c> does; and the Show who's working this action asks the dashboard over it.
+    /// </summary>
+    public void AttachBus(AppBusClient bus)
+    {
+        busRefresh = new DispatcherTimer(DispatcherPriority.Background, Dispatcher) { Interval = BusSettle };
+        busRefresh.Tick += async (_, _) =>
+        {
+            busRefresh.Stop();
+            await model.RefreshAsync();
+        };
+        bus.TicketChanged += _ => Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
+        {
+            busRefresh.Stop(); // restart the settle: the refresh runs once, after the burst's last event
+            busRefresh.Start();
+        });
+        bus.ConnectionChanged += up => Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
+        {
+            busConnected = up;
+            watch?.SetBusConnected(up);
+            if (up) { busRefresh.Stop(); busRefresh.Start(); } // catch up on what changed while it was down
+        });
+        bus.OpenTicketRequested += id => Dispatcher.BeginInvoke(async () =>
+        {
+            TicketsLog.For("Bus").Information("Asked to open {Ticket} by the Orchestrator", id);
+            await OpenTicketAsync(id);
+        });
+        model.ShowWorkerOnBus = bus.TryShowWorker;
+        Closed += (_, _) => { busRefresh.Stop(); bus.Dispose(); };
+        bus.Start();
     }
 
     /// <summary>

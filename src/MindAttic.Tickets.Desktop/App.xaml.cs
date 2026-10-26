@@ -1,5 +1,6 @@
 using System.Windows;
 using MindAttic.Components.Wpf.Controls;
+using MindAttic.Tickets.Desktop.Bus;
 using MindAttic.Tickets.Desktop.Data;
 using MindAttic.Tickets.Desktop.ViewModels;
 
@@ -10,7 +11,7 @@ namespace MindAttic.Tickets.Desktop;
 /// One window per user: a second start brings the first one forward, handing it its <c>--ticket</c> if it has one
 /// (<see cref="Program"/> does that before this app is built).
 /// <c>--root DIR</c> picks the workspace; <c>--ticket ID</c> selects that ticket and opens its detail pane (the
-/// Orchestrator dashboard's ticket links start it this way); <c>--high-contrast</c> forces the high-contrast colours (to check them without changing the Windows theme).
+/// Orchestrator dashboard's ticket links start it this way, when it isn't on the app bus to ask it there); <c>--high-contrast</c> forces the high-contrast colours (to check them without changing the Windows theme).
 /// </summary>
 public partial class App : Application
 {
@@ -42,6 +43,7 @@ public partial class App : Application
         var window = new MainWindow(new MainViewModel(new TicketStore(root), DesktopSettings.Load()), ticket);
         MainWindow = window;
         window.Show();
+        window.AttachBus(new AppBusClient()); // the Orchestrator's app bus (M.TIX-T158); harmless when no daemon runs
 
         _ = TicketHandoff.ListenAsync(id => Dispatcher.BeginInvoke(async () =>
         {

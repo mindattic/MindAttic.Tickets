@@ -831,6 +831,11 @@
                         <!-- Being worked (M.TIX-T134): its login and session link back to the Orchestrator, which runs the work. -->
                         <StackPanel Margin="0,8,0,0" Visibility="{Binding IsWorking, Converter={StaticResource Visible}}">
                             <TextBlock Text="{Binding WorkingText}" TextWrapping="Wrap" />
+                            <!-- M.TIX-T158: asks the dashboard over the app bus to select the person and CLI tab working it. -->
+                            <Button Style="{StaticResource LinkBtn}" HorizontalAlignment="Left" Margin="0,2" Content="Show who's working this"
+                                    Visibility="{Binding ShowsWorkerInWorkPanel, Converter={StaticResource Visible}}"
+                                    Command="{Binding DataContext.ShowWorkerCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding Id}"
+                                    AutomationProperties.Name="{Binding Id, StringFormat='Show who is working {0} in the Orchestrator'}" ToolTip="Show the person and CLI tab working it in the Orchestrator" />
                             <ItemsControl ItemsSource="{Binding OrchestratorTargets}" Focusable="False">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate DataType="{x:Type vm:OrchestratorTarget}">
@@ -851,9 +856,9 @@
                                        Visibility="{Binding ClaimSince, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
                             <TextBlock Style="{StaticResource Muted}" TextWrapping="Wrap" Text="{Binding ClaimSession, StringFormat='Session {0}'}"
                                        Visibility="{Binding ClaimSession, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
-                            <Button Style="{StaticResource LinkBtn}" HorizontalAlignment="Left" Margin="0,2" Content="Open its live work in the Orchestrator"
+                            <Button Style="{StaticResource LinkBtn}" HorizontalAlignment="Left" Margin="0,2" Content="Show who's working this"
                                     Command="{Binding DataContext.ShowWorkerCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding Id}"
-                                    AutomationProperties.Name="{Binding Id, StringFormat='Open the live work on {0} in the Orchestrator'}" ToolTip="Open the Orchestrator on it" />
+                                    AutomationProperties.Name="{Binding Id, StringFormat='Show who is working {0} in the Orchestrator'}" ToolTip="Show the person and CLI tab working it in the Orchestrator" />
                         </StackPanel>
 
                         <Grid Margin="0,12,0,0">

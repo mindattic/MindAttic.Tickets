@@ -3,6 +3,7 @@ using System.Globalization;
 using System.IO;
 using System.Windows.Input;
 using MindAttic.Components.Wpf.Mvvm;
+using MindAttic.Tickets.Data;
 using MindAttic.Tickets.Desktop.Data;
 
 namespace MindAttic.Tickets.Desktop.ViewModels;
@@ -58,7 +59,7 @@ public sealed partial class MainViewModel
     private void InitOrchestrator(OrchestratorState? state)
     {
         orchestratorState = state ?? OrchestratorState.For(store.Root);
-        ShowWorkerCommand = new RelayCommand(p => ShowWorker(p), p => WorkerFrom(p) is not null);
+        ShowWorkerCommand = new RelayCommand(p => ShowWorker(p), p => WorkedTicket(p) is not null);
         StartCliCommand = new RelayCommand(p => StartCli(p), p => RepoFrom(p) is not null);
     }
 
@@ -77,12 +78,43 @@ public sealed partial class MainViewModel
         _ => null,
     };
 
-    /// <summary>Opens the Orchestrator on a ticket's live work (<c>--show &lt;ticket&gt;</c>, through <see cref="OpenOrchestrator"/>).</summary>
+    /// <summary>
+    /// Asks the Orchestrator's dashboard over the app bus to show who's working a ticket (M.TIX-T158: <c>show-worker</c> with the
+    /// ticket's id, login and session); the dashboard selects that person and CLI tab and comes forward. Null (the tests, or no
+    /// bus) or false (the dashboard isn't listening) falls back to starting the Orchestrator on it.
+    /// </summary>
+    public Func<string, string?, string?, bool>? ShowWorkerOnBus { get; set; }
+
+    /// <summary>The ticket a Show who's working this action is for, with its session from <c>ticket_work</c> and the
+    /// Orchestrator's worker: null when nobody works or has claimed it.</summary>
+    private (string Id, TicketWork Work, Worker? Worker)? WorkedTicket(object? p)
+    {
+        var id = p switch
+        {
+            Worker w => w.TicketId,
+            TicketRowViewModel r => r.Id,
+            DetailViewModel d => d.Id,
+            string s when s.Length > 0 => s,
+            _ => null,
+        };
+        if (id is null) return null;
+        var worker = WorkerFrom(p) ?? WorkerOf(id);
+        var work = Detail is { } det && det.Id.Equals(id, StringComparison.OrdinalIgnoreCase) ? det.Work : TicketWork.None;
+        return worker is null && !work.IsWorking ? null : (id, work, worker);
+    }
+
+    /// <summary>Shows who's working a ticket: in the dashboard over the app bus when it's listening, else by starting the
+    /// Orchestrator on it (<c>--show &lt;ticket&gt;</c>, through <see cref="OpenOrchestrator"/>).</summary>
     public void ShowWorker(object? p)
     {
-        if (WorkerFrom(p) is not { } w) return;
-        var failed = OpenOrchestrator(w.ShowTarget);
-        StatusMessage = Announcement = failed ?? $"Opened the Orchestrator on {w.TicketId}.";
+        if (WorkedTicket(p) is not { } t) return;
+        if (ShowWorkerOnBus?.Invoke(t.Id, t.Work.Login ?? t.Worker?.Login, t.Work.Session ?? t.Worker?.Session) == true)
+        {
+            StatusMessage = Announcement = $"Asked the Orchestrator to show who's working {t.Id}.";
+            return;
+        }
+        var failed = OpenOrchestrator(t.Worker?.ShowTarget ?? t.Id);
+        StatusMessage = Announcement = failed ?? $"Opened the Orchestrator on {t.Id}.";
     }
 
     /// <summary>Opens the Orchestrator to start a CLI in a repo (<c>--start &lt;repo&gt;</c>).</summary>

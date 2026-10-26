@@ -202,6 +202,10 @@ public sealed class DetailViewModel : ObservableObject
 
     public bool HasWorker => Worker is not null;
 
+    /// <summary>Whether the work panel carries the Show who's working this action (M.TIX-T158): a session works it but the
+    /// Orchestrator's state has no worker on it (when it has one, the claim panel carries the action).</summary>
+    public bool ShowsWorkerInWorkPanel => IsWorking && !HasWorker;
+
     /// <summary>"Claimed by Ryan (ryan@…) on opus", or that its worker died and left it orphaned.</summary>
     public string ClaimText => Worker is not { } w ? ""
         : w.Orphaned ? $"Orphaned: {((w.Person ?? w.Login) is { } who ? who + "'s" : "its")} worker is gone{(w.Why is { Length: > 0 } why ? $" ({why})" : "")}."
