@@ -65,7 +65,8 @@ public sealed partial class AppBusClient : IDisposable
                 backoff = FirstBackoff;
                 SetConnected(true);
                 log.Information("Connected to the Orchestrator's app bus");
-                SendPresence();
+                for (var attempt = 1; attempt <= 3 && !SendPresence(); attempt++) // the daemon's inbox may be busy for a moment
+                    if (attempt < 3) await Task.Delay(250, ct);
                 using var reader = new StreamReader(pipe, Utf8);
                 while (true)
                 {
