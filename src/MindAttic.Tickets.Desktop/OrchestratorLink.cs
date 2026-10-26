@@ -15,12 +15,16 @@ public static partial class OrchestratorLink
     /// <summary>Set to the Orchestrator's exe to use it instead of the usual install places.</summary>
     public const string ExeEnvVar = "MINDATTIC_ORCHESTRATOR_EXE";
 
-    /// <summary>Where the Orchestrator is installed: the variable, else C:\Apps, else its per-user install.</summary>
+    /// <summary>Where the Orchestrator is installed: the variable, else C:\Apps, else its per-user install; the dashboard
+    /// installs as MindAttic.Orchestrator.Desktop.exe (tried first), the old MindAttic.Orchestrator.exe is legacy.</summary>
     public static IEnumerable<string> Candidates()
     {
         if (Environment.GetEnvironmentVariable(ExeEnvVar) is { Length: > 0 } env) yield return env;
+        var perUser = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Programs", "MindAttic.Orchestrator");
+        yield return @"C:\Apps\MindAttic.Orchestrator\MindAttic.Orchestrator.Desktop.exe";
+        yield return Path.Combine(perUser, "MindAttic.Orchestrator.Desktop.exe");
         yield return @"C:\Apps\MindAttic.Orchestrator\MindAttic.Orchestrator.exe";
-        yield return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Programs", "MindAttic.Orchestrator", "MindAttic.Orchestrator.exe");
+        yield return Path.Combine(perUser, "MindAttic.Orchestrator.exe");
     }
 
     /// <summary>The installed Orchestrator, or null.</summary>
