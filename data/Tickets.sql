@@ -6583,8 +6583,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T932', 'MindAttic.Orchestrator', 932, '2026-10-26', 'chore', 'closed', 'Versioned TermHost protocol and side-by-side installs: running sessions keep their host binary, and old versions are cleaned up once unused (M.ORCH-T922 phase 2)', '7d813e78', 931, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T933', 'MindAttic.Orchestrator', 933, '2026-10-26', 'feature', 'closed', 'Team gateway: an ASP.NET Core TLS WebSocket service bridging local TermHost pipes to remote viewers authenticated with MindAttic.Authentication (M.ORCH-T922 phase 3)', 'd172ab6a', 932, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T934', 'MindAttic.Orchestrator', 934, '2026-10-26', 'feature', 'closed', 'Viewing ACL and audit: watch and interact grants from members and org_members, read-only by default, every attach and remote input logged (M.ORCH-T922 phase 3)', '40802f96', 933, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T935', 'MindAttic.Orchestrator', 935, '2026-10-26', 'feature', 'open', 'Broadcast secret hygiene: an opt-in masker for token-shaped strings on remote CLI streams, a being-watched banner and pause broadcast (M.ORCH-T922 phase 3)', '—', 934, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T936', 'MindAttic.Orchestrator', 936, '2026-10-26', 'feature', 'open', 'Team wall: a dashboard grid of every member''s live CLIs through the team gateway (M.ORCH-T922 phase 3)', '—', 935, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T935', 'MindAttic.Orchestrator', 935, '2026-10-26', 'feature', 'closed', 'Broadcast secret hygiene: an opt-in masker for token-shaped strings on remote CLI streams, a being-watched banner and pause broadcast (M.ORCH-T922 phase 3)', '9afdb2c1', 934, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T936', 'MindAttic.Orchestrator', 936, '2026-10-26', 'feature', 'closed', 'Team wall: a dashboard grid of every member''s live CLIs through the team gateway (M.ORCH-T922 phase 3)', '065adcbf', 935, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T937', 'MindAttic.Orchestrator', 937, '2026-10-26', 'chore', 'closed', 'Structured activity feed: evaluate stream-json, hooks and Remote Control as a low-bandwidth what-is-everyone-doing view beside the real terminals (M.ORCH-T922 phase 4)', 'c08ad629', 936, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T938', 'MindAttic.Orchestrator', 938, '2026-10-26', 'fix', 'wont-do', 'Fails on main: MindAttic.Orchestrator.Tests.HookScriptTests.What_orchestrator_next_holds_back_isnt_work_to_push_on_to — nothing held: it''s work Assert.That(Asked("h1"), Does.Contain("\"block\"")) Expected: String containing ""block"" But was: <string.Empty> (landed on main since the last green run: tickets M.ORCH-T905, M.ORCH-T892, M.ORCH-T904, M.ORCH-T901, M.ORCH-T896, MAT-T59, M.ORCH-T561, M.ORCH-T890, M.ORCH-T897, M.ORCH-T898, M.ORCH-T895, M.ORCH-T894, M.ORCH-T879, M.ORCH-T872, M.ORCH-T849, M.ORCH-T887 in 2e17a7e9 Restore MainWindow.xaml''s CRLF line endings that the previous commit''s edit converted to LF (M.ORCH-T905); 457b4114 Hide the top-right key (API key switch) and pause buttons; their commands and code stay, only the buttons are collapsed (M.ORCH-T905); 49f177a5 Have each login''s generated statusline say usage-written on the daemon''s status inbox after it writes its claude-usage.json, as the shared one now does, and drop the daemon''s look at the usage files from every 5s to a 60s safety check for a writer that doesn''t say (M.ORCH-T892); d269f473 Skip filing a Fails-on-main ticket for a test whose fix landed after the run''s commit: a closed ticket for it whose commit isn''t an ancestor of the run is logged as fixed since this run started (M.ORCH-T904); 4c50eaf3 Context gate: keep next''s timeout at 30s, well inside the Stop hook''s 60s (M.ORCH-T901); dfb06f4c Context gate: push a stop back only when orchestrator next really hands something out; let the CLI stop when next can''t be read, and give next 40s not 6 (M.ORCH-T901); 0233fe77 Restore CRLF line endings in Allocate.cs so the diff is only the reworded prompt (M.ORCH-T896); 0d54b15d Restore LF line endings in Allocate.cs and MainlineTestsTests.cs after the reword (M.ORCH-T896); cb03292c Reword the claim prompt as numbered steps so committing is one step of several (Sonnet subagents stopped after it, ''not pushed, as instructed''), and make it build-only per MAT-T59: no tests, plain git commit instead of /commit (whose gate runs the suite, so a subagent skips it); the daemon runs the full suite on main after landing (M.ORCH-T561) (M.ORCH-T896); 4980d446 Update TabStatusTests for M.ORCH-T890''s tab icon: assert the flashing TabStoppedIcon and code-behind Flash with reduced motion, not the removed busy blink handlers (M.ORCH-T897); dd463747 Fix SettingsModalTests top-right strip: expect the Tickets button beside the cog, which opens Tickets Desktop not Settings (M.ORCH-T898); 32b8385d Fix DashboardAlignmentTests gutter test to resolve StaticResource margins from Themes/Spacing.xaml, where T853 moved the spacing scale out of App.xaml (M.ORCH-T895); b90330cd Make the resource-names test follow App.xaml''s merged dictionaries (Themes/Spacing.xaml) (M.ORCH-T894); e4852036 Subscribe the dashboard to the app bus: ticket ids open in a listening Tickets Desktop over the bus, Tickets Desktop''s "show who is working X" selects that person and CLI tab, and ticket events refresh the Queue instead of a poll (M.ORCH-T879); 94705792 Carry ticket events on the status bus: the daemon publishes every ticket change from the ticket database''s change feed, and the Orchestrator publishes its own claims and releases as it makes them (M.ORCH-T879); bc6d311f Flash the person tab''s status icon as a pause once every open CLI of that login is idle (no turn, subagent, claim or prompt, judged as orchestrator busy does), steady green play while any works, steady pause with none open; opacity pulse honours reduced motion, word kept in tooltip and accessible name (M.ORCH-T890); a395638b Lay pushed snapshot figures straight onto the dashboard and drop its stream-up poll to a 5-minute heartbeat (M.ORCH-T872); b33ddd15 Give the daemon a status inbox the hooks write to directly, instead of it noticing their files (M.ORCH-T872); 9c54d60e Carry each snapshot''s own figures on the status stream in an extensible kind/version/payload envelope (M.ORCH-T872); 11ddc58a Expect the Queue status strip in the tab-strip test: QueueStatusTabs (M.ORCH-T849) is a bare library MaTabControl with no colour of its own (M.ORCH-T887))', 'duplicate of M.ORCH-T907..T921 (fixed in 833e8d84; this run at 2e17a7e9 predates it)', 937, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T939', 'MindAttic.Orchestrator', 939, '2026-10-26', 'fix', 'wont-do', 'Fails on main: MindAttic.Orchestrator.Tests.HookScriptTests.A_goal_turn_is_not_nudged_until_goal_clear_or_its_stop_summary_ends_the_goal — /goal clear ends the goal Assert.That(Stopped("g1"), Does.Contain("\"block\"")) Expected: String containing ""block"" But was: <string.Empty> (landed on main since the last green run: tickets M.ORCH-T905, M.ORCH-T892, M.ORCH-T904, M.ORCH-T901, M.ORCH-T896, MAT-T59, M.ORCH-T561, M.ORCH-T890, M.ORCH-T897, M.ORCH-T898, M.ORCH-T895, M.ORCH-T894, M.ORCH-T879, M.ORCH-T872, M.ORCH-T849, M.ORCH-T887 in 2e17a7e9 Restore MainWindow.xaml''s CRLF line endings that the previous commit''s edit converted to LF (M.ORCH-T905); 457b4114 Hide the top-right key (API key switch) and pause buttons; their commands and code stay, only the buttons are collapsed (M.ORCH-T905); 49f177a5 Have each login''s generated statusline say usage-written on the daemon''s status inbox after it writes its claude-usage.json, as the shared one now does, and drop the daemon''s look at the usage files from every 5s to a 60s safety check for a writer that doesn''t say (M.ORCH-T892); d269f473 Skip filing a Fails-on-main ticket for a test whose fix landed after the run''s commit: a closed ticket for it whose commit isn''t an ancestor of the run is logged as fixed since this run started (M.ORCH-T904); 4c50eaf3 Context gate: keep next''s timeout at 30s, well inside the Stop hook''s 60s (M.ORCH-T901); dfb06f4c Context gate: push a stop back only when orchestrator next really hands something out; let the CLI stop when next can''t be read, and give next 40s not 6 (M.ORCH-T901); 0233fe77 Restore CRLF line endings in Allocate.cs so the diff is only the reworded prompt (M.ORCH-T896); 0d54b15d Restore LF line endings in Allocate.cs and MainlineTestsTests.cs after the reword (M.ORCH-T896); cb03292c Reword the claim prompt as numbered steps so committing is one step of several (Sonnet subagents stopped after it, ''not pushed, as instructed''), and make it build-only per MAT-T59: no tests, plain git commit instead of /commit (whose gate runs the suite, so a subagent skips it); the daemon runs the full suite on main after landing (M.ORCH-T561) (M.ORCH-T896); 4980d446 Update TabStatusTests for M.ORCH-T890''s tab icon: assert the flashing TabStoppedIcon and code-behind Flash with reduced motion, not the removed busy blink handlers (M.ORCH-T897); dd463747 Fix SettingsModalTests top-right strip: expect the Tickets button beside the cog, which opens Tickets Desktop not Settings (M.ORCH-T898); 32b8385d Fix DashboardAlignmentTests gutter test to resolve StaticResource margins from Themes/Spacing.xaml, where T853 moved the spacing scale out of App.xaml (M.ORCH-T895); b90330cd Make the resource-names test follow App.xaml''s merged dictionaries (Themes/Spacing.xaml) (M.ORCH-T894); e4852036 Subscribe the dashboard to the app bus: ticket ids open in a listening Tickets Desktop over the bus, Tickets Desktop''s "show who is working X" selects that person and CLI tab, and ticket events refresh the Queue instead of a poll (M.ORCH-T879); 94705792 Carry ticket events on the status bus: the daemon publishes every ticket change from the ticket database''s change feed, and the Orchestrator publishes its own claims and releases as it makes them (M.ORCH-T879); bc6d311f Flash the person tab''s status icon as a pause once every open CLI of that login is idle (no turn, subagent, claim or prompt, judged as orchestrator busy does), steady green play while any works, steady pause with none open; opacity pulse honours reduced motion, word kept in tooltip and accessible name (M.ORCH-T890); a395638b Lay pushed snapshot figures straight onto the dashboard and drop its stream-up poll to a 5-minute heartbeat (M.ORCH-T872); b33ddd15 Give the daemon a status inbox the hooks write to directly, instead of it noticing their files (M.ORCH-T872); 9c54d60e Carry each snapshot''s own figures on the status stream in an extensible kind/version/payload envelope (M.ORCH-T872); 11ddc58a Expect the Queue status strip in the tab-strip test: QueueStatusTabs (M.ORCH-T849) is a bare library MaTabControl with no colour of its own (M.ORCH-T887))', 'duplicate of M.ORCH-T907..T921 (fixed in 833e8d84; this run at 2e17a7e9 predates it)', 938, NULL);
@@ -6617,6 +6617,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T966', 'MindAttic.Orchestrator', 966, '2026-10-26', 'fix', 'closed', 'A dashboard Terminals tab whose relay connection drops (host pipe broken, another viewer took the session, transient error) never reconnects: RelayConnection should retry with backoff while the host is alive (TermSessions.Get), show ''reconnecting'', and mark the tab ended only when the host is gone (follow-up of M.ORCH-T926)', '38252024', 965, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T967', 'MindAttic.Orchestrator', 967, '2026-10-26', 'fix', 'closed', 'deploy.ps1 and the Installer don''t publish or install MindAttic.Orchestrator.Gateway (M.ORCH-T933) or TermViewer/TermHost beside the app consistently: publish the gateway with the app (side by side like TermHost, T932), so ''orchestrator gateway on'' finds it; never stop a running gateway''s remote viewers more than needed', '9f904ade', 966, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T968', 'MindAttic.Orchestrator', 968, '2026-10-26', 'fix', 'closed', 'Shorten the person (login) tab text to exactly: ''<Name> 5hr: <n>% | wk: <n>%'' (e.g. ''Jordan 5hr: 29% | wk: 15%''), percents rounded at display only', 'd05ad6b0', 967, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T969', 'MindAttic.Orchestrator', 969, '2026-10-26', 'fix', 'open', 'StatusStream.InboxPipeName (Core/Status/StatusStream.cs:155) builds the inbox pipe name with PipeName.Replace(''-status-'',''-status-in-''), which also rewrites a user name that sanitizes to contain ''-status-'', so clients that build the name directly (Tickets.Desktop) send to a different pipe: build the inbox name from its parts (found by bughunt)', '—', 968, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T970', 'MindAttic.Orchestrator', 970, '2026-10-26', 'fix', 'open', 'Fails on main: MindAttic.Orchestrator.Tests.GatewayTests.A_watch_grant_forces_a_read_only_stream_and_the_audit_records_the_attach_and_detach — System.InvalidOperationException : Incomplete handshake, status code: 404 (landed on main since the last green run: tickets M.ORCH-T934, M.ORCH-T931 in 579cd732 Add NUnit tests for the gateway''s grants and audit: the owner always interacts, same-org members watch, non-members and other orgs get nothing, interact grants need an unexpired expiry, session grants stay on their session, /sessions and attach enforce it, input is audited as counts never content, a revoke closes the stream, and term_grants/term_audit round trip with each spooled record imported once (M.ORCH-T934); f9fcb672 Add the team gateway''s viewing ACL and audit: a term_grants table (SQLite step 16, SQL Server schema 5) where same-org members watch by default and interact needs a grant per person or per session with an expiry, AclGrants enforcing it on GET /sessions and on stream attach (watch forces read-only; a revoked grant closes the stream with 1008), term_audit records of every attach, detach, refusal and remote input as counts and sizes only, and orchestrator gateway grant/revoke/grants/audit/token, with members'' tokens minted by the owner since MindAttic.Authentication still needs a DbContext, cookies and Vault secrets (M.ORCH-T934); 4f11ba6c Pop out any hosted CLI into a TermViewer window beside its dashboard tab, interactive or watch only: Pop out items on the CLI tab menu, TermViewer --stay never folds back and --watch sends a read-only Hello, Take size and a WATCH ONLY tag in the window (M.ORCH-T931))', 'main@40802f9', 969, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T1', 'MindAttic.Psst', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.PSST-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T2', 'MindAttic.Psst', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for ContactBook (Contacts/Contact.cs): Find matches name case-insensitively before phone, falls back to 10-digit phone match across formats (+1, dashes, parens), returns null for blank or unmatched input; WithAdded rejects blank name/phone and case-insensitive duplicate names and leaves the original book unchanged; WithoutContact removes only the first case-insensitive match and returns null when absent - this is how psst sms resolves recipients, so a wrong match texts the wrong person', '865fde2', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T3', 'MindAttic.Psst', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched', '—', 2, '| M.PSST-T3 | 2026-10-14 | chore | open | NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched | — |');
@@ -6838,6 +6840,12 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T157', 'MindAttic.Tickets', 157, '2026-10-25', 'fix', 'open', 'Start the Orchestrator dashboard by its new name MindAttic.Orchestrator.Desktop.exe (M.ORCH-T844 renamed it; the old MindAttic.Orchestrator.exe is only kept as a legacy fallback)', '—', 156, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T158', 'MindAttic.Tickets', 158, '2026-10-25', 'feature', 'closed', 'Tickets.Desktop joins the shared Orchestrator<->Tickets message bus (M.ORCH-T879): publish ticket changes as they happen, refresh its lists live from the bus instead of polling, and handle ''open ticket X'' / ''show who is working X'' links in both directions', '0fdf966', 157, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T159', 'MindAttic.Tickets', 159, '2026-10-25', 'feature', 'open', 'Record link changes in ticket_events (AddLink/RemoveLink write none today), so the Orchestrator''s app bus (M.ORCH-T879) publishes ''linked'' ticket events for every link added or removed', '—', 158, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T160', 'MindAttic.Tickets', 160, '2026-10-26', 'fix', 'closed', 'OrchestratorLink.Candidates() (OrchestratorLink.cs:22) only looks for MindAttic.Orchestrator.exe, but the dashboard installs as MindAttic.Orchestrator.Desktop.exe (old name is legacy only), so ''Show who''s working this'' and the Repos tab Start link report ''The Orchestrator isn''t installed'' when the dashboard isn''t on the bus: try .Desktop.exe first in C:\Apps and %LOCALAPPDATA%\Programs, then the legacy name (found by bughunt)', 'bf96926', 159, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T161', 'MindAttic.Tickets', 161, '2026-10-26', 'fix', 'closed', 'App.xaml.cs:30 DispatcherUnhandledException only logs and never sets Handled, and the new bus paths (busRefresh tick MainWindow.xaml.cs:113, OpenTicketRequested :129) can throw outside RefreshAsync''s catch (e.g. MainViewModel.GoTo TicketRows.First at :412 for a row not loaded), killing Tickets.Desktop from a bus message: set Handled and wrap both handlers (found by bughunt)', 'cec8902', 160, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T162', 'MindAttic.Tickets', 162, '2026-10-26', 'fix', 'closed', 'While the bus is connected the file watcher and poll stand down entirely (MainWindow.xaml.cs:97, DatabaseWatch.SetBusConnected), but ticket events carry no store identity and only cover writes the daemon''s change feed sees, so a different --root, a git pull replacing the DB or a restore leaves the lists stale: keep a slow safety poll (about 60s) while connected (found by bughunt)', '39884ea', 161, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T163', 'MindAttic.Tickets', 163, '2026-10-26', 'fix', 'closed', 'AppBusClient.cs:68 sends app-present once with a 100ms timeout and ignores failure, so if the daemon''s inbox is busy at connect the presence is lost for the whole connection and the dashboard falls back to starting a new Tickets process: retry a few times (found by bughunt)', '10aa5dc', 162, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T164', 'MindAttic.Tickets', 164, '2026-10-26', 'fix', 'closed', 'The bus refresh debounce (MainWindow.xaml.cs:118) restarts on every ticket event, so a steady trickle faster than 400ms starves the refresh indefinitely: add a max wait (force a refresh after about 3s) (found by bughunt)', '1398712', 163, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T165', 'MindAttic.Tickets', 165, '2026-10-26', 'fix', 'closed', 'TicketHandoff.ListenAsync (TicketHandoff.cs:60) loops immediately after an IOException (CPU spin and log flood) and a non-IO exception silently ends the listener: add a short delay in the catch and keep listening (found by bughunt)', 'a872372', 164, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.VALT-T1', 'MindAttic.Vault', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.VALT-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.VALT-T2', 'MindAttic.Vault', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for Dashboard HealthMonitorStore (MindAttic.Vault.Dashboard/Services/HealthMonitorStore.cs; add a Dashboard ProjectReference to MindAttic.Vault.Tests first): RecordUptime running percentage per provider and case-insensitive ids, Previous returns null before first commit, Commit replaces snapshots and evicts providers missing from the fresh set, sets LastSweepUtc, clears SweepInProgress and fires OnChanged, Snapshots ordered trusted-first then alphabetical, TrustedPanelHealthy false when no trusted snapshots exist or any trusted one is not Healthy - this is the headline confidence verdict the dashboard leads with', 'MindAttic.Vault.Tests/HealthMonitorStoreTests.cs', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.VALT-T3', 'MindAttic.Vault', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for Dashboard AlertDispatcher (Services/AlertDispatcher.cs): with a fake IHttpClientFactory/HttpMessageHandler verify every non-blank webhook gets a JSON POST with provider, displayName, status, previous, diagnosis, detail, atUtc fields; blank webhook urls skipped; no channels configured means no work; a webhook that throws or returns non-2xx is logged and does not stop other webhooks or fault DispatchAsync; email channel skipped when Host is blank or To is empty, and an SMTP failure is swallowed - alerts must be best-effort and isolated so one bad channel never breaks a sweep', '—', 2, '| M.VALT-T3 | 2026-10-14 | chore | open | NUnit tests for Dashboard AlertDispatcher (Services/AlertDispatcher.cs): with a fake IHttpClientFactory/HttpMessageHandler verify every non-blank webhook gets a JSON POST with provider, displayName, status, previous, diagnosis, detail, atUtc fields; blank webhook urls skipped; no channels configured means no work; a webhook that throws or returns non-2xx is logged and does not stop other webhooks or fault DispatchAsync; email channel skipped when Host is blank or To is empty, and an SMTP failure is swallowed - alerts must be best-effort and isolated so one bad channel never breaks a sweep | — |');
@@ -7615,6 +7623,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T247', 'RogueTrader.Brevity', 247, '2026-10-25', 'fix', 'closed', 'Restore lines the 30% cap cut too far: Calcazar''s and Argenta''s prayers and Ulfar''s poems in full, Calligos''s suspicion of the xenos, two Afterlight plot points; released as 1.0.1', '.brevity/review.txt; dist/RogueTraderBrevity-1.0.1.zip', 246, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T248', 'RogueTrader.Brevity', 248, '2026-10-25', 'fix', 'closed', 'Replace the NSFW dev-name placeholder on the Nexus before/after images'' Rogue Trader portrait plate with ''Rogue Trader'', matching one clean border across all 15 screenshots', 'assets/*_WarGovernor_RM_dialog_*.png', 247, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T249', 'RogueTrader.Brevity', 249, '2026-10-25', 'docs', 'closed', 'Re-render docs/USER_STORIES.md from the ticket database to pick up already-closed tickets (T4, T7, T238, T247) and the repo rename to RogueTrader.Brevity', 'MindAttic.Tickets/data/Tickets.db', 248, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T250', 'RogueTrader.Brevity', 250, '2026-10-26', 'fix', 'open', 'Fix stilted over-shortened dialogue: restore natural grammar and word choice (e.g. Medineh''s broken English, incinerate->burn), list every change', '—', 249, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T1', 'RogueTrader.Overwatch', 1, '2026-10-26', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T2', 'RogueTrader.Overwatch', 2, '2026-10-26', 'feature', 'open', 'Create the RogueTrader.Overwatch repo: an Overwatch skill for every firearm-wielding enemy (adjustable cone like Gears Tactics/Zero Company, else XCOM 2 style)', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RN-T1', 'RusNet', 1, '2026-10-25', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
@@ -26521,6 +26530,300 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17302, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17303, 'RTO-T2', '2026-10-26T17:49:50Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17304, 'UM-T82', '2026-10-26T17:50:26Z', 'working', 'honey@mindattic.com (a1460c92-572a-4fdb-a95f-25ed871d6bdd)', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17305, 'RTO-T2', '2026-10-26T17:50:26Z', 'working', NULL, '559bfeb4-c911-401d-a829-8db86597eb44');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17306, 'M.ORCH-T936', '2026-10-26T17:56:10Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17307, 'M.ORCH-T936', '2026-10-26T17:56:10Z', 'ref', '—', '065adcbf');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17308, 'M.ORCH-T935', '2026-10-26T17:57:57Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17309, 'M.ORCH-T935', '2026-10-26T17:57:57Z', 'ref', '—', '9afdb2c1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17310, 'RTO-T2', '2026-10-26T17:59:44Z', 'description', NULL, '## Story
+
+As a player, every hero (and enemy) holding a ranged weapon has an **Overwatch** button on the
+weapon''s action bar. It works like a built-in ability: it follows the game''s rules, uses the
+engine''s own overwatch mechanic, and has a matching icon. Best case it''s a cone you can lengthen or
+shorten (Gears Tactics / Zero Company); fallback is XCOM 2 style overwatch.
+
+## Repo setup (still to do, in a RogueTrader.Overwatch window)
+
+- Local folder `D:\Projects\MindAttic\RogueTrader.Overwatch` exists with `git init -b main` and the
+  ticket view `docs/USER_STORIES.md`; nothing committed yet.
+- Add: `AGENTS.md` (thin pointer to `..\mindattic-agent-standard\AGENTS.md` + project context,
+  same shape as RogueTrader.Brevity''s), `README.md`, `.gitignore` (bin/ obj/ .vs/ dist/ and the
+  Unity Library/ Temp/ Logs/ UserSettings/), `docs/DESIGN.md` holding the findings below.
+- GitHub: create `mindattic/RogueTrader.Overwatch` (Brevity is public), push, then run
+  `mindattic-agent-standard/clone-repo.ps1 -Repo RogueTrader.Overwatch` to tag it `wip` and
+  refresh the Launcher.
+
+## Findings (from the modding template''s blueprints, 2026-10-26)
+
+Source: `<game>\Modding\WhRtModificationTemplate.tar` → `WhRtModificationTemplate/Blueprints/**/*.jbp`.
+
+**The engine already has cone overwatch.** No trigger buffs needed:
+
+- `AbilityEffectOverwatch` component (`Mode: Overwatch`, `HitsPerTarget: HitOnce`,
+  `UseFirstWeaponAbility: true`) turns an ability into an overwatch zone. Every ability in the
+  game declares `UsingInOverwatchArea` (`WillCauseAttack` etc.), so moving/acting inside a zone
+  triggering a shot is a live engine rule.
+- `Weapons/Abilities/Overwatch_BasicAbility.jbp` (`1d271e9472c142ecaa86103caa940010`): live
+  (not ShadowDeleted), 2 AP, `WarhammerEndTurn` with `clearMPInsteadOfEndingTurn: true`,
+  `WarhammerAbilityAttackDelivery` with a Custom pattern →
+  `Weapons/Abilities/AttackTemplates/OverwatchCone_AttackTemplate.jbp`
+  (`8fbb90e7352a4aab843d913ac5ddc00a`, `BlueprintAttackPattern`, `Type: Cone`, radius 8, angle 30).
+  **Nothing references it**, and its name/description keys aren''t in `enGB.json`; no icon.
+- Cut Veteran prototype (all `ShadowDeleted: true`, so not in the shipped game — copy, don''t
+  reference): `VeteranOverwatchAbility` = `AbilityVariants` over cones 8/30, 8/90, 12/60, 12/90
+  and lines 8, 12 (`VeteranOverwatchCone*.jbp`, `VeteranOverwatchLine*.jbp`, patterns in
+  `VeteranOverwatchPattern*.jbp`). Each variant also has `AbilityCasterHasWeaponWithRangeType:
+  Ranged`. This is Owlcat''s own "short-wide vs long-narrow" overwatch choice.
+- `Spacecombat/Abilities/MasterOfOrdnance_Overwatch.jbp` is the only other live user (ship
+  combat), no icon.
+
+**Getting it onto every ranged weapon''s bar.** Weapon blueprints carry 5 ability slots
+(`WeaponAbilities` / `AbilityContainer.Ability1..5`: Type, Mode, m_Ability, m_FXSettings, AP);
+slot abilities show on the action bar only while that weapon is equipped, for any wielder.
+Items inherit slots from prototypes (`Weapons/Weapons/Prototypes/Ranged/...`, e.g.
+`RangedWeaponBasicSolid_Prototype_Item`: 1 SingleShot, 2 Burst, 3 Reload, 4–5 empty).
+- 488 blueprints declare `m_Range: Ranged`; 38 are prototypes.
+- Slot 5 is filled on only 4 items (VindictorFlamer, InsatiableVindictorFlamer,
+  UndertakerVindictorFlamer, ExperimentalAssaultRifle); only 2 items override slot 5.
+- Slot types in use: SingleShot, Burst, AOE, Reload, Custom, None. Overwatch goes in as
+  `Custom` unless the enum has a better fit (check the game''s managed DLL).
+- Plan: `.jbp_patch` each ranged prototype''s slot 5 → the mod''s Overwatch ability; handle the 4
+  slot-5 items by hand (slot 4 if free).
+
+**Pasted-guide claims that don''t hold:** `AddInitiatorUnitMovementTrigger` and
+`AddTargetAttackRollTrigger` appear in 0 blueprints; "Rogue Trader lacks a turn-interrupt
+engine" is wrong (see `AbilityEffectOverwatch`). Its setup steps (template, Unity 6000.0.52f1,
+Modification Tools → Setup project / Create Mod Directory, `.jbp_patch`, Modifications folder,
+Shift+F10) still need checking against the template, not assumed.
+
+## Plan
+
+1. **XCOM 2 baseline, data-only:** new Overwatch ability cloned from `Overwatch_BasicAbility`
+   (own GUID, own strings, icon), cone pattern from `OverwatchCone_AttackTemplate`; patch onto
+   every ranged weapon''s slot 5. Test in a skirmish: zone shows, enemies moving in get shot, AP
+   cost / end-turn behaviour feels native.
+2. **Adjustable cone, still data-only:** make it an `AbilityVariants` parent (like the cut
+   Veteran one) with Short/Wide, Medium, Long/Narrow cones (and Line), each sized off the weapon
+   — the in-game picker is the variant flyout.
+3. **Drag-to-size cone (stretch):** truly continuous length needs C# in the mod''s Scripts
+   assembly (custom targeting that builds the pattern from cursor distance). Only after 1–2 work.
+4. **Enemy AI:** enemies get the button via their weapons, but the AI must be told when to use
+   it (brain/AI action blueprints) — research the real class names first.
+5. **Icon:** none to reuse; user can generate one (match the game''s ability-icon style/size —
+   pull a few existing weapon-ability icons from the template''s assets as reference).
+
+## Acceptance
+
+- Every ranged weapon shows Overwatch on its bar when equipped (heroes and enemies); melee-only
+  doesn''t.
+- Firing works out of turn when a target moves or acts in the cone; uses the weapon''s normal attack.
+- Name, description and icon look native; mod toggles cleanly in Owlcat''s mod manager.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17311, 'RTO-T2', '2026-10-26T18:00:14Z', 'working', '559bfeb4-c911-401d-a829-8db86597eb44', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17312, 'RTB-T250', '2026-10-26T18:01:12Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17313, 'RTB-T250', '2026-10-26T18:01:31Z', 'working', NULL, '838ba4db-9019-42a7-a7f0-b061c9a2b528');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17314, 'M.TIX-T160', '2026-10-26T18:01:56Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17315, 'M.TIX-T161', '2026-10-26T18:01:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17316, 'M.TIX-T162', '2026-10-26T18:01:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17317, 'M.TIX-T163', '2026-10-26T18:02:00Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17318, 'M.TIX-T164', '2026-10-26T18:02:01Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17319, 'M.TIX-T165', '2026-10-26T18:02:03Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17320, 'M.ORCH-T969', '2026-10-26T18:02:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17321, 'M.ORCH-T969', '2026-10-26T18:02:28Z', 'working', NULL, 'b8600565-24f0-4d01-900d-e3e8aad1ded0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17322, 'M.TIX-T160', '2026-10-26T18:02:29Z', 'working', NULL, 'b8600565-24f0-4d01-900d-e3e8aad1ded0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17323, 'M.TIX-T161', '2026-10-26T18:02:29Z', 'working', NULL, 'b8600565-24f0-4d01-900d-e3e8aad1ded0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17324, 'M.TIX-T162', '2026-10-26T18:02:29Z', 'working', NULL, 'b8600565-24f0-4d01-900d-e3e8aad1ded0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17325, 'M.TIX-T163', '2026-10-26T18:02:30Z', 'working', NULL, 'b8600565-24f0-4d01-900d-e3e8aad1ded0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17326, 'M.TIX-T164', '2026-10-26T18:02:30Z', 'working', NULL, 'b8600565-24f0-4d01-900d-e3e8aad1ded0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17327, 'M.TIX-T165', '2026-10-26T18:02:30Z', 'working', NULL, 'b8600565-24f0-4d01-900d-e3e8aad1ded0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17328, 'M.ORCH-T969', '2026-10-26T18:02:49Z', 'working', 'b8600565-24f0-4d01-900d-e3e8aad1ded0', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17329, 'M.TIX-T160', '2026-10-26T18:02:49Z', 'working', 'b8600565-24f0-4d01-900d-e3e8aad1ded0', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17330, 'M.TIX-T161', '2026-10-26T18:02:49Z', 'working', 'b8600565-24f0-4d01-900d-e3e8aad1ded0', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17331, 'M.TIX-T162', '2026-10-26T18:02:50Z', 'working', 'b8600565-24f0-4d01-900d-e3e8aad1ded0', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17332, 'M.TIX-T163', '2026-10-26T18:02:50Z', 'working', 'b8600565-24f0-4d01-900d-e3e8aad1ded0', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17333, 'M.TIX-T164', '2026-10-26T18:02:50Z', 'working', 'b8600565-24f0-4d01-900d-e3e8aad1ded0', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17334, 'M.TIX-T165', '2026-10-26T18:02:51Z', 'working', 'b8600565-24f0-4d01-900d-e3e8aad1ded0', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17335, 'RTO-T2', '2026-10-26T18:03:47Z', 'description', '## Story
+
+As a player, every hero (and enemy) holding a ranged weapon has an **Overwatch** button on the
+weapon''s action bar. It works like a built-in ability: it follows the game''s rules, uses the
+engine''s own overwatch mechanic, and has a matching icon. Best case it''s a cone you can lengthen or
+shorten (Gears Tactics / Zero Company); fallback is XCOM 2 style overwatch.
+
+## Repo setup (still to do, in a RogueTrader.Overwatch window)
+
+- Local folder `D:\Projects\MindAttic\RogueTrader.Overwatch` exists with `git init -b main` and the
+  ticket view `docs/USER_STORIES.md`; nothing committed yet.
+- Add: `AGENTS.md` (thin pointer to `..\mindattic-agent-standard\AGENTS.md` + project context,
+  same shape as RogueTrader.Brevity''s), `README.md`, `.gitignore` (bin/ obj/ .vs/ dist/ and the
+  Unity Library/ Temp/ Logs/ UserSettings/), `docs/DESIGN.md` holding the findings below.
+- GitHub: create `mindattic/RogueTrader.Overwatch` (Brevity is public), push, then run
+  `mindattic-agent-standard/clone-repo.ps1 -Repo RogueTrader.Overwatch` to tag it `wip` and
+  refresh the Launcher.
+
+## Findings (from the modding template''s blueprints, 2026-10-26)
+
+Source: `<game>\Modding\WhRtModificationTemplate.tar` → `WhRtModificationTemplate/Blueprints/**/*.jbp`.
+
+**The engine already has cone overwatch.** No trigger buffs needed:
+
+- `AbilityEffectOverwatch` component (`Mode: Overwatch`, `HitsPerTarget: HitOnce`,
+  `UseFirstWeaponAbility: true`) turns an ability into an overwatch zone. Every ability in the
+  game declares `UsingInOverwatchArea` (`WillCauseAttack` etc.), so moving/acting inside a zone
+  triggering a shot is a live engine rule.
+- `Weapons/Abilities/Overwatch_BasicAbility.jbp` (`1d271e9472c142ecaa86103caa940010`): live
+  (not ShadowDeleted), 2 AP, `WarhammerEndTurn` with `clearMPInsteadOfEndingTurn: true`,
+  `WarhammerAbilityAttackDelivery` with a Custom pattern →
+  `Weapons/Abilities/AttackTemplates/OverwatchCone_AttackTemplate.jbp`
+  (`8fbb90e7352a4aab843d913ac5ddc00a`, `BlueprintAttackPattern`, `Type: Cone`, radius 8, angle 30).
+  **Nothing references it**, and its name/description keys aren''t in `enGB.json`; no icon.
+- Cut Veteran prototype (all `ShadowDeleted: true`, so not in the shipped game — copy, don''t
+  reference): `VeteranOverwatchAbility` = `AbilityVariants` over cones 8/30, 8/90, 12/60, 12/90
+  and lines 8, 12 (`VeteranOverwatchCone*.jbp`, `VeteranOverwatchLine*.jbp`, patterns in
+  `VeteranOverwatchPattern*.jbp`). Each variant also has `AbilityCasterHasWeaponWithRangeType:
+  Ranged`. This is Owlcat''s own "short-wide vs long-narrow" overwatch choice.
+- `Spacecombat/Abilities/MasterOfOrdnance_Overwatch.jbp` is the only other live user (ship
+  combat), no icon.
+
+**Getting it onto every ranged weapon''s bar.** Weapon blueprints carry 5 ability slots
+(`WeaponAbilities` / `AbilityContainer.Ability1..5`: Type, Mode, m_Ability, m_FXSettings, AP);
+slot abilities show on the action bar only while that weapon is equipped, for any wielder.
+Items inherit slots from prototypes (`Weapons/Weapons/Prototypes/Ranged/...`, e.g.
+`RangedWeaponBasicSolid_Prototype_Item`: 1 SingleShot, 2 Burst, 3 Reload, 4–5 empty).
+- 488 blueprints declare `m_Range: Ranged`; 38 are prototypes.
+- Slot 5 is filled on only 4 items (VindictorFlamer, InsatiableVindictorFlamer,
+  UndertakerVindictorFlamer, ExperimentalAssaultRifle); only 2 items override slot 5.
+- Slot types in use: SingleShot, Burst, AOE, Reload, Custom, None. Overwatch goes in as
+  `Custom` unless the enum has a better fit (check the game''s managed DLL).
+- Plan: `.jbp_patch` each ranged prototype''s slot 5 → the mod''s Overwatch ability; handle the 4
+  slot-5 items by hand (slot 4 if free).
+
+**Pasted-guide claims that don''t hold:** `AddInitiatorUnitMovementTrigger` and
+`AddTargetAttackRollTrigger` appear in 0 blueprints; "Rogue Trader lacks a turn-interrupt
+engine" is wrong (see `AbilityEffectOverwatch`). Its setup steps (template, Unity 6000.0.52f1,
+Modification Tools → Setup project / Create Mod Directory, `.jbp_patch`, Modifications folder,
+Shift+F10) still need checking against the template, not assumed.
+
+## Plan
+
+1. **XCOM 2 baseline, data-only:** new Overwatch ability cloned from `Overwatch_BasicAbility`
+   (own GUID, own strings, icon), cone pattern from `OverwatchCone_AttackTemplate`; patch onto
+   every ranged weapon''s slot 5. Test in a skirmish: zone shows, enemies moving in get shot, AP
+   cost / end-turn behaviour feels native.
+2. **Adjustable cone, still data-only:** make it an `AbilityVariants` parent (like the cut
+   Veteran one) with Short/Wide, Medium, Long/Narrow cones (and Line), each sized off the weapon
+   — the in-game picker is the variant flyout.
+3. **Drag-to-size cone (stretch):** truly continuous length needs C# in the mod''s Scripts
+   assembly (custom targeting that builds the pattern from cursor distance). Only after 1–2 work.
+4. **Enemy AI:** enemies get the button via their weapons, but the AI must be told when to use
+   it (brain/AI action blueprints) — research the real class names first.
+5. **Icon:** none to reuse; user can generate one (match the game''s ability-icon style/size —
+   pull a few existing weapon-ability icons from the template''s assets as reference).
+
+## Acceptance
+
+- Every ranged weapon shows Overwatch on its bar when equipped (heroes and enemies); melee-only
+  doesn''t.
+- Firing works out of turn when a target moves or acts in the cone; uses the weapon''s normal attack.
+- Name, description and icon look native; mod toggles cleanly in Owlcat''s mod manager.', '## Story
+
+As a player, every hero (and enemy) holding a ranged weapon has an **Overwatch** button on the
+weapon''s action bar. It works like a built-in ability: it follows the game''s rules, uses the
+engine''s own overwatch mechanic, and has a matching icon. Best case it''s a cone you can lengthen or
+shorten (Gears Tactics / Zero Company); fallback is XCOM 2 style overwatch.
+
+## Repo setup (still to do, in a RogueTrader.Overwatch window)
+
+- Local folder `D:\Projects\MindAttic\RogueTrader.Overwatch` exists with `git init -b main` and the
+  ticket view `docs/USER_STORIES.md`; nothing committed yet.
+- Add: `AGENTS.md` (thin pointer to `..\mindattic-agent-standard\AGENTS.md` + project context,
+  same shape as RogueTrader.Brevity''s), `README.md`, `.gitignore` (bin/ obj/ .vs/ dist/ and the
+  Unity Library/ Temp/ Logs/ UserSettings/), `docs/DESIGN.md` holding the findings below.
+- GitHub: create `mindattic/RogueTrader.Overwatch` (Brevity is public), push, then run
+  `mindattic-agent-standard/clone-repo.ps1 -Repo RogueTrader.Overwatch` to tag it `wip` and
+  refresh the Launcher.
+
+## Findings (from the modding template''s blueprints, 2026-10-26)
+
+Source: `<game>\Modding\WhRtModificationTemplate.tar` → `WhRtModificationTemplate/Blueprints/**/*.jbp`.
+
+**The engine already has cone overwatch.** No trigger buffs needed:
+
+- `AbilityEffectOverwatch` component (`Mode: Overwatch`, `HitsPerTarget: HitOnce`,
+  `UseFirstWeaponAbility: true`) turns an ability into an overwatch zone. Every ability in the
+  game declares `UsingInOverwatchArea` (`WillCauseAttack` etc.), so moving/acting inside a zone
+  triggering a shot is a live engine rule.
+- `Weapons/Abilities/Overwatch_BasicAbility.jbp` (`1d271e9472c142ecaa86103caa940010`): live
+  (not ShadowDeleted), 2 AP, `WarhammerEndTurn` with `clearMPInsteadOfEndingTurn: true`,
+  `WarhammerAbilityAttackDelivery` with a Custom pattern →
+  `Weapons/Abilities/AttackTemplates/OverwatchCone_AttackTemplate.jbp`
+  (`8fbb90e7352a4aab843d913ac5ddc00a`, `BlueprintAttackPattern`, `Type: Cone`, radius 8, angle 30).
+  **Nothing references it**, and its name/description keys aren''t in `enGB.json`; no icon.
+- Cut Veteran prototype (all `ShadowDeleted: true`, so not in the shipped game — copy, don''t
+  reference): `VeteranOverwatchAbility` = `AbilityVariants` over cones 8/30, 8/90, 12/60, 12/90
+  and lines 8, 12 (`VeteranOverwatchCone*.jbp`, `VeteranOverwatchLine*.jbp`, patterns in
+  `VeteranOverwatchPattern*.jbp`). Each variant also has `AbilityCasterHasWeaponWithRangeType:
+  Ranged`. This is Owlcat''s own "short-wide vs long-narrow" overwatch choice.
+- `Spacecombat/Abilities/MasterOfOrdnance_Overwatch.jbp` is the only other live user (ship
+  combat), no icon.
+
+**Getting it onto every ranged weapon''s bar.** Weapon blueprints carry 5 ability slots
+(`WeaponAbilities` / `AbilityContainer.Ability1..5`: Type, Mode, m_Ability, m_FXSettings, AP);
+slot abilities show on the action bar only while that weapon is equipped, for any wielder.
+Items inherit slots from prototypes (`Weapons/Weapons/Prototypes/Ranged/...`, e.g.
+`RangedWeaponBasicSolid_Prototype_Item`: 1 SingleShot, 2 Burst, 3 Reload, 4–5 empty).
+- 488 blueprints declare `m_Range: Ranged`; 38 are prototypes.
+- Slot 5 is filled on only 4 items (VindictorFlamer, InsatiableVindictorFlamer,
+  UndertakerVindictorFlamer, ExperimentalAssaultRifle); only 2 items override slot 5.
+- Slot types in use: SingleShot, Burst, AOE, Reload, Custom, None. Overwatch goes in as
+  `Custom` unless the enum has a better fit (check the game''s managed DLL).
+- Plan: `.jbp_patch` each ranged prototype''s slot 5 → the mod''s Overwatch ability; handle the 4
+  slot-5 items by hand (slot 4 if free).
+
+**Pasted-guide claims that don''t hold:** `AddInitiatorUnitMovementTrigger` and
+`AddTargetAttackRollTrigger` appear in 0 blueprints; so do its AI names `BlueprintAiCastSpell`,
+`AiBaseScoreFormula` and `BrainStandard` (the real AI type is `BlueprintBrain`, 680 blueprints;
+`ContextActionCastSpell`, `ContextActionApplyBuff`, `AbilityEffectRunAction` are real); "Rogue Trader lacks a turn-interrupt
+engine" is wrong (see `AbilityEffectOverwatch`). Its setup steps (template, Unity 6000.0.52f1,
+Modification Tools → Setup project / Create Mod Directory, `.jbp_patch`, Modifications folder,
+Shift+F10) still need checking against the template, not assumed.
+
+## Plan
+
+1. **XCOM 2 baseline, data-only:** new Overwatch ability cloned from `Overwatch_BasicAbility`
+   (own GUID, own strings, icon), cone pattern from `OverwatchCone_AttackTemplate`; patch onto
+   every ranged weapon''s slot 5. Test in a skirmish: zone shows, enemies moving in get shot, AP
+   cost / end-turn behaviour feels native.
+2. **Adjustable cone, still data-only:** make it an `AbilityVariants` parent (like the cut
+   Veteran one) with Short/Wide, Medium, Long/Narrow cones (and Line), each sized off the weapon
+   — the in-game picker is the variant flyout.
+3. **Drag-to-size cone (stretch):** truly continuous length needs C# in the mod''s Scripts
+   assembly (custom targeting that builds the pattern from cursor distance). Only after 1–2 work.
+4. **Enemy AI:** enemies get the button via their weapons, but the AI must be told when to use
+   it (brain/AI action blueprints) — research the real class names first.
+5. **Icon:** none to reuse; user can generate one (match the game''s ability-icon style/size —
+   pull a few existing weapon-ability icons from the template''s assets as reference).
+
+## Acceptance
+
+- Every ranged weapon shows Overwatch on its bar when equipped (heroes and enemies); melee-only
+  doesn''t.
+- Firing works out of turn when a target moves or acts in the cone; uses the weapon''s normal attack.
+- Name, description and icon look native; mod toggles cleanly in Owlcat''s mod manager.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17336, 'RTB-T250', '2026-10-26T18:03:53Z', 'working', '838ba4db-9019-42a7-a7f0-b061c9a2b528', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17337, 'M.ORCH-T970', '2026-10-26T18:03:54Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17338, 'M.COMP-T117', '2026-10-26T18:03:54Z', 'priority', '802', '612');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17339, 'M.ORCH-T970', '2026-10-26T18:03:55Z', 'priority', '0', '611');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17340, 'M.TIX-T160', '2026-10-26T18:04:06Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17341, 'M.TIX-T160', '2026-10-26T18:04:06Z', 'ref', '—', 'bf96926');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17342, 'M.TIX-T161', '2026-10-26T18:04:08Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17343, 'M.TIX-T161', '2026-10-26T18:04:08Z', 'ref', '—', 'cec8902');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17344, 'M.TIX-T162', '2026-10-26T18:04:13Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17345, 'M.TIX-T162', '2026-10-26T18:04:13Z', 'ref', '—', '39884ea');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17346, 'M.TIX-T163', '2026-10-26T18:04:21Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17347, 'M.TIX-T163', '2026-10-26T18:04:21Z', 'ref', '—', '10aa5dc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17348, 'M.TIX-T164', '2026-10-26T18:04:25Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17349, 'M.TIX-T164', '2026-10-26T18:04:25Z', 'ref', '—', '1398712');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17350, 'M.TIX-T165', '2026-10-26T18:04:29Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (17351, 'M.TIX-T165', '2026-10-26T18:04:29Z', 'ref', '—', 'a872372');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z', NULL);
@@ -26774,7 +27077,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T112', 'proposed', -1, '2026-10-24T17:52:32Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T113', 'proposed', -1, '2026-10-24T17:52:34Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T114', 'approved', 0, '2026-10-24T18:58:57Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T117', 'proposed', 802, '2026-10-26T05:51:12Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T117', 'proposed', 612, '2026-10-26T18:03:54Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T12', 'approved', 0, '2026-10-20T16:16:37Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T15', 'approved', 0, '2026-10-20T12:44:38Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T18', 'rejected', 0, '2026-10-20T16:03:42Z', NULL);
@@ -27179,6 +27482,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T958', 'proposed', 801, '2026-10-26T05:51:12Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T960', 'approved', 0, '2026-10-26T16:05:21Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T968', 'approved', 0, '2026-10-26T17:18:48Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T970', 'proposed', 611, '2026-10-26T18:03:55Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T98', 'proposed', 100, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.PSST-T13', 'approved', 5, '2026-10-21T04:35:36Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.PSST-T14', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
@@ -28424,7 +28728,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTO-T2', NULL, 0, NULL, '559bfeb4-c911-401d-a829-8db86597eb44', '2026-10-26T17:50:26Z', '2026-10-26T17:50:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.OVW-T23', NULL, 0, NULL, 'a1460c92-572a-4fdb-a95f-25ed871d6bdd', '2026-10-26T17:41:45Z', '2026-10-26T17:41:45Z');
 
 -- ticket_notes
@@ -28498,6 +28801,91 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T207', 'L
 - **HandleAnimEvent 0x103d88e0**: event 2100 (0x834) shakes the view at its Bip01 (amplitude 16, frequency 2, duration 2, radius 1500, 0x101cdba0); event 2101 (0x835) plays the activity''s sound (0x103d8df0: smash_door_1/2 for the smashes and the death into/attack/outof, squeezethough_front_quick/slow_1/2 for the squeezes, Skylight_Smash_1/2 for the roof jump down, fence_leap_1/2, patio_leap, Jump_Landing_1 for the platform jumps and ACT_LEAP, Roar_Long_1, death_finale (attenuation 0x8c), Air_Sniff_1 for ACT_SNIFFING, the NPC''s idle/alert sounds for ACT_ROAR_SHORT/ACT_DEATH_ATTACK/ACT_DESTROY_STAIRS); events 2050..2053 the footsteps (werewolf_footstep_sounds/_shakes, both 0 by default). The import (tools/sbox_import) lists only event 1003 per sequence: these need the events too, and NpcAnimator to hand them on.
 - **UpdateFakeHull 0x103d93b0**: while it moves (+0x5f2d) the Bip01 box (the hull x 1.25 about the bone) pushes and hurts the player it overlaps: knockback 0x79/0x7a/0x7b by the player''s side, 20 damage at most once a second (+0x66f4), the push 500 along its own move.
 - **SnapToAnimationPoint 0x103d9f90**: the port stands in the hint''s end entity for the Bip01 root where the sequence ends (no root motion is played).', '2026-10-26T06:21:59Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RTO-T2', '## Story
+
+As a player, every hero (and enemy) holding a ranged weapon has an **Overwatch** button on the
+weapon''s action bar. It works like a built-in ability: it follows the game''s rules, uses the
+engine''s own overwatch mechanic, and has a matching icon. Best case it''s a cone you can lengthen or
+shorten (Gears Tactics / Zero Company); fallback is XCOM 2 style overwatch.
+
+## Repo setup (still to do, in a RogueTrader.Overwatch window)
+
+- Local folder `D:\Projects\MindAttic\RogueTrader.Overwatch` exists with `git init -b main` and the
+  ticket view `docs/USER_STORIES.md`; nothing committed yet.
+- Add: `AGENTS.md` (thin pointer to `..\mindattic-agent-standard\AGENTS.md` + project context,
+  same shape as RogueTrader.Brevity''s), `README.md`, `.gitignore` (bin/ obj/ .vs/ dist/ and the
+  Unity Library/ Temp/ Logs/ UserSettings/), `docs/DESIGN.md` holding the findings below.
+- GitHub: create `mindattic/RogueTrader.Overwatch` (Brevity is public), push, then run
+  `mindattic-agent-standard/clone-repo.ps1 -Repo RogueTrader.Overwatch` to tag it `wip` and
+  refresh the Launcher.
+
+## Findings (from the modding template''s blueprints, 2026-10-26)
+
+Source: `<game>\Modding\WhRtModificationTemplate.tar` → `WhRtModificationTemplate/Blueprints/**/*.jbp`.
+
+**The engine already has cone overwatch.** No trigger buffs needed:
+
+- `AbilityEffectOverwatch` component (`Mode: Overwatch`, `HitsPerTarget: HitOnce`,
+  `UseFirstWeaponAbility: true`) turns an ability into an overwatch zone. Every ability in the
+  game declares `UsingInOverwatchArea` (`WillCauseAttack` etc.), so moving/acting inside a zone
+  triggering a shot is a live engine rule.
+- `Weapons/Abilities/Overwatch_BasicAbility.jbp` (`1d271e9472c142ecaa86103caa940010`): live
+  (not ShadowDeleted), 2 AP, `WarhammerEndTurn` with `clearMPInsteadOfEndingTurn: true`,
+  `WarhammerAbilityAttackDelivery` with a Custom pattern →
+  `Weapons/Abilities/AttackTemplates/OverwatchCone_AttackTemplate.jbp`
+  (`8fbb90e7352a4aab843d913ac5ddc00a`, `BlueprintAttackPattern`, `Type: Cone`, radius 8, angle 30).
+  **Nothing references it**, and its name/description keys aren''t in `enGB.json`; no icon.
+- Cut Veteran prototype (all `ShadowDeleted: true`, so not in the shipped game — copy, don''t
+  reference): `VeteranOverwatchAbility` = `AbilityVariants` over cones 8/30, 8/90, 12/60, 12/90
+  and lines 8, 12 (`VeteranOverwatchCone*.jbp`, `VeteranOverwatchLine*.jbp`, patterns in
+  `VeteranOverwatchPattern*.jbp`). Each variant also has `AbilityCasterHasWeaponWithRangeType:
+  Ranged`. This is Owlcat''s own "short-wide vs long-narrow" overwatch choice.
+- `Spacecombat/Abilities/MasterOfOrdnance_Overwatch.jbp` is the only other live user (ship
+  combat), no icon.
+
+**Getting it onto every ranged weapon''s bar.** Weapon blueprints carry 5 ability slots
+(`WeaponAbilities` / `AbilityContainer.Ability1..5`: Type, Mode, m_Ability, m_FXSettings, AP);
+slot abilities show on the action bar only while that weapon is equipped, for any wielder.
+Items inherit slots from prototypes (`Weapons/Weapons/Prototypes/Ranged/...`, e.g.
+`RangedWeaponBasicSolid_Prototype_Item`: 1 SingleShot, 2 Burst, 3 Reload, 4–5 empty).
+- 488 blueprints declare `m_Range: Ranged`; 38 are prototypes.
+- Slot 5 is filled on only 4 items (VindictorFlamer, InsatiableVindictorFlamer,
+  UndertakerVindictorFlamer, ExperimentalAssaultRifle); only 2 items override slot 5.
+- Slot types in use: SingleShot, Burst, AOE, Reload, Custom, None. Overwatch goes in as
+  `Custom` unless the enum has a better fit (check the game''s managed DLL).
+- Plan: `.jbp_patch` each ranged prototype''s slot 5 → the mod''s Overwatch ability; handle the 4
+  slot-5 items by hand (slot 4 if free).
+
+**Pasted-guide claims that don''t hold:** `AddInitiatorUnitMovementTrigger` and
+`AddTargetAttackRollTrigger` appear in 0 blueprints; so do its AI names `BlueprintAiCastSpell`,
+`AiBaseScoreFormula` and `BrainStandard` (the real AI type is `BlueprintBrain`, 680 blueprints;
+`ContextActionCastSpell`, `ContextActionApplyBuff`, `AbilityEffectRunAction` are real); "Rogue Trader lacks a turn-interrupt
+engine" is wrong (see `AbilityEffectOverwatch`). Its setup steps (template, Unity 6000.0.52f1,
+Modification Tools → Setup project / Create Mod Directory, `.jbp_patch`, Modifications folder,
+Shift+F10) still need checking against the template, not assumed.
+
+## Plan
+
+1. **XCOM 2 baseline, data-only:** new Overwatch ability cloned from `Overwatch_BasicAbility`
+   (own GUID, own strings, icon), cone pattern from `OverwatchCone_AttackTemplate`; patch onto
+   every ranged weapon''s slot 5. Test in a skirmish: zone shows, enemies moving in get shot, AP
+   cost / end-turn behaviour feels native.
+2. **Adjustable cone, still data-only:** make it an `AbilityVariants` parent (like the cut
+   Veteran one) with Short/Wide, Medium, Long/Narrow cones (and Line), each sized off the weapon
+   — the in-game picker is the variant flyout.
+3. **Drag-to-size cone (stretch):** truly continuous length needs C# in the mod''s Scripts
+   assembly (custom targeting that builds the pattern from cursor distance). Only after 1–2 work.
+4. **Enemy AI:** enemies get the button via their weapons, but the AI must be told when to use
+   it (brain/AI action blueprints) — research the real class names first.
+5. **Icon:** none to reuse; user can generate one (match the game''s ability-icon style/size —
+   pull a few existing weapon-ability icons from the template''s assets as reference).
+
+## Acceptance
+
+- Every ranged weapon shows Overwatch on its bar when equipped (heroes and enemies); melee-only
+  doesn''t.
+- Firing works out of turn when a target moves or acts in the cone; uses the weapon''s normal attack.
+- Name, description and icon look native; mod toggles cleanly in Owlcat''s mod manager.', '2026-10-26T18:03:47Z');
 
 -- ticket_labels
 
