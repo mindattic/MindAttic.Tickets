@@ -6856,16 +6856,18 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1166', 'MindAttic.Orchestrator', 1166, '2026-10-27', 'feature', 'closed', 'Collapse the dead vertical gap above the 5-hour utilization panel', '5087e4d9', 1165, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1167', 'MindAttic.Orchestrator', 1167, '2026-10-27', 'feature', 'closed', 'Stack notifications as hoverable circles on the dashboard''s right edge', 'dfb07815', 1166, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1168', 'MindAttic.Orchestrator', 1168, '2026-10-27', 'feature', 'closed', 'Show 5hr-limit and weekly-limit percentage boxes with progress bars on the utilization panel', '4b76dadfb3f61a3b8f466ecd176cf90cbcce5edd', 1167, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1169', 'MindAttic.Orchestrator', 1169, '2026-10-27', 'fix', 'open', 'Utilization chart''s bottom axis labels clip under the status footer bar', '—', 1168, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1169', 'MindAttic.Orchestrator', 1169, '2026-10-27', 'fix', 'closed', 'Utilization chart''s bottom axis labels clip under the status footer bar', 'cfecd6a661175efc34c2c0d224f34f09a93c53d6', 1168, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1170', 'MindAttic.Orchestrator', 1170, '2026-10-27', 'feature', 'closed', 'Restore fallback-viewer tabs to their original Dashboard position/order on reattach', '35f0571735659bfbb2a0ebab5c9336b426b4b521', 1169, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1171', 'MindAttic.Orchestrator', 1171, '2026-10-27', 'feature', 'open', 'CLI tabs auto-size to content width, no wrap, with overflow arrows like the user tabs', '—', 1170, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1171', 'MindAttic.Orchestrator', 1171, '2026-10-27', 'feature', 'closed', 'CLI tabs auto-size to content width, no wrap, with overflow arrows like the user tabs', '—', 1170, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1172', 'MindAttic.Orchestrator', 1172, '2026-10-27', 'fix', 'closed', 'A CLI tab''s initials badge is redundant under its user''s Launcher tab: show it only on the Launcher tab, not on every CLI tab', '35f05717', 1171, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1173', 'MindAttic.Orchestrator', 1173, '2026-10-27', 'feature', 'open', 'Person-tab status icon: gray zzz box idle, green play-arrow box busy, orange ? box awaiting input', '—', 1172, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1174', 'MindAttic.Orchestrator', 1174, '2026-10-27', 'fix', 'open', 'Fails on main: MindAttic.Orchestrator.Tests.MainlineTestsTests.A_fix_commit_that_never_landed_on_the_mainline_does_not_count_as_fixed_since — System.InvalidOperationException : Sequence contains more than one matching element (landed on main since the last green run: tickets M.ORCH-T1093, M.ORCH-T758, M.ORCH-T813 in 31ccd80f fix: require a fix commit to be on origin/<mainline> before FixedSince counts it (M.ORCH-T1093); 4d5e1e0b Org dispatch, the rest: the idle-claims nudge judges each org on its own logins'' windows and room and puts a claim whose CLI is gone only to an /allocate CLI of its org (as the orphan hand-back now does), an org none of whose members runs /allocate has its tickets started in a tab on one of its logins (OrgReach), and the background-agent half of allocate starts only the global login''s org''s tickets (M.ORCH-T758); 10b2fe4f Stop the meter probe backing off 15 minutes on a recoverable refresh failure (M.ORCH-T813))', 'main@06dbd35', 1173, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1175', 'MindAttic.Orchestrator', 1175, '2026-10-27', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.ClaudeMeterProbeTests.A_login_with_a_CLI_running_is_not_refreshed_and_a_refused_refresh_says_so_and_backs_off — Assert.That(probe.NextAskUtc, Is.GreaterThanOrEqualTo(Now + ClaudeMeterProbe.NoMeterBackoff)) Expected: greater than or equal to 2026-10-17 11:15:00 But was: 2026-10-17 11:02:00 (landed on main since the last green run: tickets M.ORCH-T1093, M.ORCH-T758, M.ORCH-T813 in 31ccd80f fix: require a fix commit to be on origin/<mainline> before FixedSince counts it (M.ORCH-T1093); 4d5e1e0b Org dispatch, the rest: the idle-claims nudge judges each org on its own logins'' windows and room and puts a claim whose CLI is gone only to an /allocate CLI of its org (as the orphan hand-back now does), an org none of whose members runs /allocate has its tickets started in a tab on one of its logins (OrgReach), and the background-agent half of allocate starts only the global login''s org''s tickets (M.ORCH-T758); 10b2fe4f Stop the meter probe backing off 15 minutes on a recoverable refresh failure (M.ORCH-T813))', 'f4368ead', 1174, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1176', 'MindAttic.Orchestrator', 1176, '2026-10-27', 'feature', 'open', 'Drop the ''[Claude]'' suffix from CLI tab titles', '—', 1175, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1176', 'MindAttic.Orchestrator', 1176, '2026-10-27', 'feature', 'closed', 'Drop the ''[Claude]'' suffix from CLI tab titles', '—', 1175, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1177', 'MindAttic.Orchestrator', 1177, '2026-10-27', 'fix', 'open', 'Ended CLI tabs pile up in the dashboard for inactive members instead of being cleaned up or hidden', '—', 1176, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1178', 'MindAttic.Orchestrator', 1178, '2026-10-27', 'fix', 'open', 'Shared-checkout commit-by-path can sweep or drop another agent''s in-flight edit to the same file: whoever commits a path first takes whatever is currently in the working tree for it, including or instead of the other agent''s uncommitted work', '—', 1177, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1179', 'MindAttic.Orchestrator', 1179, '2026-10-27', 'feature', 'open', 'Lay the notification badges out as a horizontal row instead of a right-edge stack', '—', 1178, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1180', 'MindAttic.Orchestrator', 1180, '2026-10-27', 'feature', 'open', 'Merge the notification badges into the 5hr/weekly limit boxes'' row, above the utilization panel', '—', 1179, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T1', 'MindAttic.Psst', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.PSST-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T2', 'MindAttic.Psst', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for ContactBook (Contacts/Contact.cs): Find matches name case-insensitively before phone, falls back to 10-digit phone match across formats (+1, dashes, parens), returns null for blank or unmatched input; WithAdded rejects blank name/phone and case-insensitive duplicate names and leaves the original book unchanged; WithoutContact removes only the first case-insensitive match and returns null when absent - this is how psst sms resolves recipients, so a wrong match texts the wrong person', '865fde2', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T3', 'MindAttic.Psst', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched', '—', 2, '| M.PSST-T3 | 2026-10-14 | chore | open | NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched | — |');
@@ -32840,6 +32842,14 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20096, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20097, 'M.ORCH-T1178', '2026-10-27T21:50:19Z', 'working', '2dd2b796-793e-4c61-836e-de83457d1291', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20098, 'M.ORCH-T1167', '2026-10-27T21:51:18Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20099, 'M.ORCH-T1167', '2026-10-27T21:51:18Z', 'ref', '—', 'dfb07815');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20100, 'M.ORCH-T1176', '2026-10-27T21:53:38Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20101, 'M.ORCH-T1176', '2026-10-27T21:54:11Z', 'working', '917a274a-4195-4013-9702-e78bc332cbbe', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20102, 'M.ORCH-T1179', '2026-10-27T21:55:24Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20103, 'M.ORCH-T1180', '2026-10-27T21:57:13Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20104, 'M.ORCH-T1169', '2026-10-27T21:57:58Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20105, 'M.ORCH-T1169', '2026-10-27T21:57:58Z', 'ref', '—', 'cfecd6a661175efc34c2c0d224f34f09a93c53d6');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20106, 'M.ORCH-T1169', '2026-10-27T21:58:18Z', 'working', '2dd2b796-793e-4c61-836e-de83457d1291', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20107, 'M.ORCH-T1171', '2026-10-27T21:59:30Z', 'status', 'open', 'closed');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z', NULL);
@@ -34716,9 +34726,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1169', NULL, 0, NULL, '2dd2b796-793e-4c61-836e-de83457d1291', '2026-10-27T21:45:25Z', '2026-10-27T21:45:25Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1174', NULL, 0, NULL, '2dd2b796-793e-4c61-836e-de83457d1291', '2026-10-27T21:48:09Z', '2026-10-27T21:48:09Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1176', NULL, 0, NULL, '917a274a-4195-4013-9702-e78bc332cbbe', '2026-10-27T21:45:25Z', '2026-10-27T21:45:25Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T768', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
@@ -35081,6 +35089,23 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (76, 'M.O
 Root cause (M.ORCH-T1149''s ''commit only your own paths by name'' fix does NOT cover this): it only stops OTHER agents'' staged/unrelated files from riding along on a commit. It does nothing when two agents are both legitimately editing the SAME file for different tickets at the same time in the one shared working tree — ''git commit -- path'' always takes the path''s current full content, and ''git pull --rebase --autostash'' stashes/pops the WHOLE working tree (not per-agent), so a pop or an interleaved pull/commit sequence from one agent can carry, overwrite, or drop another agent''s concurrent edit to that same file with no conflict or error surfaced to either side.
 
 Needs a real fix, not just a note: e.g. serialize access to a given path across concurrently-running subagents in the same checkout (a lock file or queue keyed by path), so two tickets touching the same file never overlap; or require an agent to snapshot/diff its own target file''s content immediately before its own commit/pull and abort with a loud error if that path doesn''t match what it last wrote. Whatever the mechanism, it needs to make this failure LOUD (abort/retry) rather than silent (lost work or silently bundled commits), since right now neither agent in either case above had any way to know what happened.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (77, 'M.ORCH-T1179', 'ryand', '2026-10-27T21:55:30Z', '![badges row mock](../data/attachments/M.ORCH-T1179/badges-row.png)
+
+Supersedes the right-edge stack shipped in M.ORCH-T1167 (commit dfb07815).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (78, 'M.ORCH-T1180', 'ryand', '2026-10-27T21:57:19Z', '![badges merged into limit-boxes row](../data/attachments/M.ORCH-T1180/badges-merged-row.png)
+
+Supersedes M.ORCH-T1179 (standalone badges row), before it landed. Also moves where M.ORCH-T1168 placed the 5hr/weekly limit boxes: out of the utilization card''s own header, into this shared row.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (79, 'M.ORCH-T1180', 'ryand', '2026-10-27T22:00:05Z', '![full picture: merged row + unclipped chart](../data/attachments/M.ORCH-T1180/full-chart-context.png)
+
+Context, not a new change: this just shows the merged badges/limit-boxes row sitting above the
+5-hour utilization panel with its chart rendered in full (gridlines at 0/25/50/75/100%, hourly
+time-axis labels, target/pace/projection reference lines, the ''now NN%'' end label). All of that
+chart rendering already exists in the shared MaLineChart control
+(D:\Projects\MindAttic\MindAttic.Components\dotnet\src\MindAttic.Components.Wpf\Controls\MaLineChart.cs,
+PercentTicks/axis/reference-line drawing) — it just wasn''t visible in the earlier before/after
+mockups because the chart was being clipped (M.ORCH-T1169, already fixed) and the row above it
+hadn''t merged yet (this ticket). No new chart work needed; use this image as the end-to-end visual
+to check against once the merged row lands.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.LNCH-T88', 'Seen live: opening the Launcher as api-key@mindattic.vault printed ''isn''t signed in on this machine yet. Signing it in first (orchestrator login --account api-key@mindattic.vault)...'' and opened a claude.ai OAuth browser flow, exactly like a normal Team member who''s never signed in.
@@ -37090,6 +37115,65 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1173
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1177', 'Erin has a long row of ''ended'' orch-test-* CLI tabs in the dashboard even though she hasn''t been active in days. Ended sessions should either be pruned after some time of inactivity, or collapsed/hidden from the main tab row instead of accumulating indefinitely.
 
 ![image 1](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/_inbox/45cf52c0-6fa6-40aa-8b74-97a3411645e5/2026-10-27-image-1.png)', '2026-10-27T21:49:12Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1179', '## Story
+
+M.ORCH-T1167 built the notification badges as a vertical stack of circles pinned to the window''s
+right edge. Waffle looked at it and wants a different layout instead: the new reference screenshot
+shows the same solid-orange circles laid out as a single horizontal row, left-aligned, spanning
+the full-width strip directly below the CLI prompt/input box and directly above the "5-hour
+utilization" panel label — i.e. in the same gap that M.ORCH-T1166 was collapsing, not on the right
+edge.
+
+## Acceptance
+
+- Replace the vertical right-edge stack from M.ORCH-T1167 with a horizontal row of the same
+  circular badges, left-aligned, sitting in the strip between the terminal/prompt area and the
+  "5-hour utilization" panel.
+- Keep everything else from T1167: same `Toasts` data source, same per-item `Accent` coloring,
+  same hover tooltip showing the notification''s title/body, same click-to-open/dismiss behavior.
+- Wrap or scroll sensibly if there are more notifications than fit one row''s width.
+- Make sure this doesn''t reopen the dead-space gap that M.ORCH-T1166 just closed — the row should
+  take only the height it needs (one row of small circles), not reserve extra space.
+
+## Reference
+
+New mock: [badges row](image-4.png), showing the circles as a horizontal row where the old
+whitespace used to be. Supersedes the right-edge layout shipped in M.ORCH-T1167.', '2026-10-27T21:55:24Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1180', '## Story
+
+Waffle refined the notification-badge layout again (second revision; see M.ORCH-T1179, which is
+being superseded by this ticket before it even landed). The new mock shows the badges no longer
+in their own standalone row — instead they sit in the *same* row as the "5hr limit"/"Weekly limit"
+boxes from M.ORCH-T1168: badges first (left of the two boxes), then "5hr limit", then "Weekly
+limit", all right-aligned together as one group. The "5-hour utilization" panel''s own label now
+sits on its own line below that combined row, above the chart.
+
+So, top to bottom in that strip (all right-aligned on one row, the label on its own row under it):
+
+```
+                                    [●][●][●][●][●][●][●][●]  [5hr limit: 66%▓▓▓]  [Weekly limit: 22%▓▓▓]
+5-hour utilization
+<chart>
+<caption>
+```
+
+## Acceptance
+
+- Badges (from M.ORCH-T1179/M.ORCH-T1167: same `Toasts` source, same per-item `Accent` coloring,
+  same hover tooltip, same click behavior) move into the same row as the "5hr limit"/"Weekly
+  limit" boxes (M.ORCH-T1168), positioned to their left, all right-aligned as one group.
+- That combined row sits above the "5-hour utilization" panel, not inside its header — the
+  "5-hour utilization" label drops to its own line directly above the chart.
+- No reintroduction of dead space: the combined row should take only the height one row of small
+  badges/boxes needs.
+- Wrap or scroll the badges horizontally if there isn''t room for all of them before the limit
+  boxes, same as M.ORCH-T1179 called for.
+
+## Reference
+
+Latest mock: [badges + limit boxes merged row](image-5.png). Supersedes the standalone badges row
+in M.ORCH-T1179 and changes where M.ORCH-T1168 placed the limit boxes (same row, now shared with
+the badges, and moved out of the card''s own header).', '2026-10-27T21:57:13Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T833', 'Symptom: Inside the Orchestrator''s embedded Terminals panel (TerminalPanesHost), when a CLI running
 in a pane shows an interactive, arrow-key-driven menu (e.g. a selection list or permission prompt),
 the Up/Down/Left/Right keys don''t reach the CLI. It looks like the WPF app is intercepting/consuming
