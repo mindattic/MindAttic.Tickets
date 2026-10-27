@@ -7503,6 +7503,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T284', 'Prose', 284, '2026-10-27', 'fix', 'closed', 'KDP new-listing message answers AI-generated content No when only the translations option is set', '7689099ed', 283, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T285', 'Prose', 285, '2026-10-27', 'chore', 'closed', 'Raise every Prose Claude hook timeout to 5 minutes: the machine bogs down under load and the 10s UserPromptSubmit factory-reminder hook timed out, discarding its output', '.claude/settings.json', 284, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T286', 'Prose', 286, '2026-10-27', 'chore', 'closed', 'Regenerate book and chapter slugs from their titles and point repo references at the new slugs (author 2026-10-27)', '—', 285, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T287', 'Prose', 287, '2026-10-27', 'fix', 'closed', 'Entity rename never relabels continuity claims: ContinuityService.RelabelEntityName matched only the hyphenated id, claims store N form (found by bughunt)', '2f6d3cf59', 286, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -32373,6 +32374,11 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19689, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19690, 'M.TIX-T223', '2026-10-27T17:33:45Z', 'ref', 'main@7e8ccd3', 'passes on main@5a02c02');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19691, 'RB-T243', '2026-10-27T17:34:32Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19692, 'RB-T243', '2026-10-27T17:35:09Z', 'working', NULL, '9f764f65-2476-439c-a92b-d92e504f8c27');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19693, 'PRS-T287', '2026-10-27T17:46:27Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19694, 'PRS-T287', '2026-10-27T17:46:49Z', 'working', NULL, '52d32bc1-0939-4dbe-8425-35585a84452a');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19695, 'PRS-T287', '2026-10-27T17:50:34Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19696, 'PRS-T287', '2026-10-27T17:50:34Z', 'ref', '—', '2f6d3cf59');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19697, 'PRS-T287', '2026-10-27T17:51:11Z', 'working', '52d32bc1-0939-4dbe-8425-35585a84452a', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z', NULL);
