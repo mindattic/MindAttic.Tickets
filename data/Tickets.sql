@@ -6803,6 +6803,23 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1125', 'MindAttic.Orchestrator', 1125, '2026-10-27', 'fix', 'closed', 'Hard stops leak: an exempt command''s turn skipped the 5-hour and weekly stops, the hooks'' fallback stop was a fixed 99%, a failing off-tick refresh retried every second, a failed meter write waited 4 minutes, a login''s weekly stop wasn''t held to its reset', '34d46cbc', 1124, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1126', 'MindAttic.Orchestrator', 1126, '2026-10-27', 'fix', 'closed', 'A key on a ticket link threw, focus bounced to the terminal every refresh, billing credit could wipe settings, one bad state file broke every waker, stale /allocate nudges lingered, login prep raced on a shared temp file, a busy token store re-minted a valid token, a move could land on the wrong CLI', '40d1e9ad', 1125, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1127', 'MindAttic.Orchestrator', 1127, '2026-10-27', 'feature', 'open', 'Research spike, plan and implementation plan: org members connect their own machines to a central Orchestrator (hub and spoke), everyone''s CLIs visible and shareable, today''s single-machine setup unchanged', '—', 1126, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1128', 'MindAttic.Orchestrator', 1128, '2026-10-27', 'feature', 'open', 'Hub 0.1 — Hub seams: `IClaims`, `IPolicySource`, `IMeterSink`, `IOrgDirectory`, `ISessionDirectory` with Local implementations over today''s code, plus `OrchestratorSettings.Hub` (Mode `Off` by default); no behaviour change', '—', 1127, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1129', 'MindAttic.Orchestrator', 1129, '2026-10-27', 'feature', 'open', 'Hub 0.2 — `MindAttic.Orchestrator.Hub.Contracts`: a dependency-free library with `HubProtocol`, `HubEnvelope` and the payload records, with round-trip and version-skip tests', '—', 1128, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1130', 'MindAttic.Orchestrator', 1130, '2026-10-27', 'feature', 'open', 'Hub 1.3 — `MindAttic.Orchestrator.Hub` service: Kestrel TLS, MindAttic.Authentication sign-in, a devices table, `/enroll`, `/device/token` and a `/spoke` WebSocket with hello, welcome and heartbeat', '—', 1129, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1131', 'MindAttic.Orchestrator', 1131, '2026-10-27', 'feature', 'open', 'Hub 1.4 — Spoke `HubLink`: a CNG device key, a signed-challenge token, a reconnecting control socket, a `hub_outbox`, and a `HubLinkSupervisor` in the daemon', '—', 1130, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1132', 'MindAttic.Orchestrator', 1132, '2026-10-27', 'feature', 'open', 'Hub 1.5 — `orchestrator hub host\|join\|status\|leave\|devices` and a dashboard hub chip; a `HubSupervisor` runs the hub in Host mode', '—', 1131, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1133', 'MindAttic.Orchestrator', 1133, '2026-10-27', 'feature', 'open', 'Hub 2.6 — Presence and meters: spokes push CLIs, masked sessions, meter readings and agent summaries; the hub merges them per login and serves `/org/presence` and `/org/usage`', '—', 1132, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1134', 'MindAttic.Orchestrator', 1134, '2026-10-27', 'feature', 'open', 'Hub 2.7 — Org view in the dashboard and `/org usage` across machines; remote people read-only; the hub is the store of record for members and orgs (`hub import-org`)', '—', 1133, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1135', 'MindAttic.Orchestrator', 1135, '2026-10-27', 'feature', 'open', 'Hub 3.8 — Gateway outbound mode (`HubDialer`) and the hub `StreamRelay`: per-stream outbound sockets spliced to viewers, no inbound port on spokes', '—', 1134, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1136', 'MindAttic.Orchestrator', 1136, '2026-10-27', 'feature', 'open', 'Hub 3.9 — Grants and audit at the hub, with signed `open-stream` decisions re-checked by the spoke''s gateway; `gateway grant\|revoke\|audit` go to the hub when joined', '—', 1135, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1137', 'MindAttic.Orchestrator', 1137, '2026-10-27', 'feature', 'open', 'Hub 3.10 — Owner consent for interact: a first-use toast per grant on the owner''s machine, watch-only on timeout; no deflate on interactive remote streams', '—', 1136, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1138', 'MindAttic.Orchestrator', 1138, '2026-10-27', 'feature', 'open', 'Hub 3.11 — Team Wall and TermViewer through the hub (`--hub`), listing org sessions beside peer remotes', '—', 1137, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1139', 'MindAttic.Orchestrator', 1139, '2026-10-27', 'feature', 'open', 'Hub 4.12 — Hub Tickets API and replica feed; spokes keep `data/Tickets.db` as a hub-fed replica for the hooks; DB git sync only on the hub', '—', 1138, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1140', 'MindAttic.Orchestrator', 1140, '2026-10-27', 'feature', 'open', 'Hub 4.13 — Ticket leases: claim, renew, complete and release with epoch fencing and offline grace; `orchestrator next --claim` goes through the hub when joined', '—', 1139, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1141', 'MindAttic.Orchestrator', 1141, '2026-10-27', 'feature', 'open', 'Hub 5.15 — Central policy push (cutoffs, allowances, pace target, routing) with offline fallback to the last policy, then the defaults', '—', 1140, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1142', 'MindAttic.Orchestrator', 1142, '2026-10-27', 'feature', 'open', 'Hub 5.16 — Per-login allowance split across devices when one Claude login is live on several machines', '—', 1141, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1143', 'MindAttic.Orchestrator', 1143, '2026-10-27', 'feature', 'open', 'Hub 5.17 — Opt-in remote dispatch (`Hub.AcceptDispatch`) plus cross-machine rebalance and API-key failover to key-holder spokes only', '—', 1142, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1144', 'MindAttic.Orchestrator', 1144, '2026-10-27', 'feature', 'open', 'Hub 6.18 — Hub deploy, backup, pin rotation, revocation UI, rate limits, an optional cloud relay, and version-skew and chaos tests', '—', 1143, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T1', 'MindAttic.Psst', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.PSST-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T2', 'MindAttic.Psst', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for ContactBook (Contacts/Contact.cs): Find matches name case-insensitively before phone, falls back to 10-digit phone match across formats (+1, dashes, parens), returns null for blank or unmatched input; WithAdded rejects blank name/phone and case-insensitive duplicate names and leaves the original book unchanged; WithoutContact removes only the first case-insensitive match and returns null when absent - this is how psst sms resolves recipients, so a wrong match texts the wrong person', '865fde2', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T3', 'MindAttic.Psst', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched', '—', 2, '| M.PSST-T3 | 2026-10-14 | chore | open | NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched | — |');
@@ -7038,6 +7055,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T170', 'MindAttic.Tickets', 170, '2026-10-27', 'feature', 'open', 'Add ''workflow story renumber'' and a duplicate-story-ID check to ''workflow db check'', so repos can fix stories that share an ID (Prose PRS-US-H7 / H7a-H7c exist twice, PRS-T55)', '—', 169, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T171', 'MindAttic.Tickets', 171, '2026-10-27', 'fix', 'closed', 'Fix MainWindow.xaml mojibake (double-encoded …, ──, ·, ✕, ⏸ glyphs from a past cp1252/UTF-8 round-trip) and tofu dropdown chevrons/checkmarks by falling back from Segoe MDL2 Assets to Segoe Fluent Icons', 'bda14fa', 170, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T172', 'MindAttic.Tickets', 172, '2026-10-27', 'fix', 'closed', 'deploy.ps1 builds the newer of main/origin-main from a clean detached worktree, not the working tree, so agents'' pushed-from-worktree work deploys even when this checkout hasn''t pulled, and uncommitted edits never do', '0437d69', 171, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T173', 'MindAttic.Tickets', 173, '2026-10-27', 'feature', 'open', 'Hub 4.14 — Write through the hub API when the machine has joined a hub; read-only with a clear message otherwise', '—', 172, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.VALT-T1', 'MindAttic.Vault', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.VALT-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.VALT-T2', 'MindAttic.Vault', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for Dashboard HealthMonitorStore (MindAttic.Vault.Dashboard/Services/HealthMonitorStore.cs; add a Dashboard ProjectReference to MindAttic.Vault.Tests first): RecordUptime running percentage per provider and case-insensitive ids, Previous returns null before first commit, Commit replaces snapshots and evicts providers missing from the fresh set, sets LastSweepUtc, clears SweepInProgress and fires OnChanged, Snapshots ordered trusted-first then alphabetical, TrustedPanelHealthy false when no trusted snapshots exist or any trusted one is not Healthy - this is the headline confidence verdict the dashboard leads with', 'MindAttic.Vault.Tests/HealthMonitorStoreTests.cs', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.VALT-T3', 'MindAttic.Vault', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for Dashboard AlertDispatcher (Services/AlertDispatcher.cs): with a fake IHttpClientFactory/HttpMessageHandler verify every non-blank webhook gets a JSON POST with provider, displayName, status, previous, diagnosis, detail, atUtc fields; blank webhook urls skipped; no channels configured means no work; a webhook that throws or returns non-2xx is logged and does not stop other webhooks or fault DispatchAsync; email channel skipped when Host is blank or To is empty, and an SMTP failure is swallowed - alerts must be best-effort and isolated so one bad channel never breaks a sweep', '—', 2, '| M.VALT-T3 | 2026-10-14 | chore | open | NUnit tests for Dashboard AlertDispatcher (Services/AlertDispatcher.cs): with a fake IHttpClientFactory/HttpMessageHandler verify every non-blank webhook gets a JSON POST with provider, displayName, status, previous, diagnosis, detail, atUtc fields; blank webhook urls skipped; no channels configured means no work; a webhook that throws or returns non-2xx is logged and does not stop other webhooks or fault DispatchAsync; email channel skipped when Host is blank or To is empty, and an SMTP failure is swallowed - alerts must be best-effort and isolated so one bad channel never breaks a sweep | — |');
@@ -7647,6 +7665,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T237', 'REA.Bloodlines', 237, '2026-10-27', 'fix', 'open', 'la_confession_1 (Confession) closes the game a second after it loads, with nothing logged: its pole dancers'' and DJ''s scripted_sequences are each their own m_iszNextScript, and when the play fails the hand-over re-possessed the NPC in the same call, recursing until the stack overflowed; the next script now takes the NPC on the next frame', '—', 236, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T238', 'REA.Bloodlines', 238, '2026-10-27', 'fix', 'open', 'NPCs idle through scripted performances (la_confession_1''s pole dancers'' lap_dance_02..04, its DJ''s operate_panel, and the like): those sequences live in include banks and the import kept only core/combat included sequences; it now also keeps every included sequence a map''s scripted_sequence or SetAnimation, or a script''s SetAnimation, names', '—', 237, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T239', 'REA.Bloodlines', 239, '2026-10-27', 'fix', 'open', 'The dialogue panel always shows its dev readouts (voice/gesture/shot line, mouth meter and the last six condition-trace lines) under the replies; the original shows only the NPC text and replies, so these should show only under bl_debug_overlay', '—', 238, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T240', 'REA.Bloodlines', 240, '2026-10-27', 'fix', 'open', 'A save could be written with the player dead (map change, dialogue end, trigger_autosave, save slots), so loading it gave Final Death within two seconds; Source''s CSaveRestore::IsValidSave refuses with ''Can''t savegame with a dead player'', and SaveGame.Write now does too', '—', 239, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T241', 'REA.Bloodlines', 241, '2026-10-27', 'fix', 'open', 'game_sign popups were laid out on a 2048x1024 canvas stretched to the screen width: a sign with a smaller background (death.txt, 512x128) filled the screen with its text at the top left, and at 32:9 the canvas ran 2560 px tall on a 1440 px screen; each sign now uses its own background size, scaled to fit the screen''s width and height', '—', 240, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T1', 'RogueTrader.Brevity', 1, '2026-10-24', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T2', 'RogueTrader.Brevity', 2, '2026-10-24', 'fix', 'closed', 'Repo has no commits, so the launcher''s pull fails with ''no such ref was fetched''; add the first commit (AGENTS.md pointer, .gitignore, commit hooks) and push main', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T3', 'RogueTrader.Brevity', 3, '2026-10-24', 'feature', 'closed', 'Phase 1 dialogue export: a mod built from Owlcat''s template that walks the dialogue blueprints (BlueprintCue, BlueprintAnswer, BlueprintBookPage) and writes dialogue.jsonl with each line''s string key, speaker, dialogue tree, previous line, skill check/conviction markers and voiced flag, so the LLM simplify pass gets context', '—', 2, NULL);
@@ -29050,6 +29070,394 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18957, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18958, 'PRS-T267', '2026-10-27T15:49:04Z', 'working', NULL, '52d32bc1-0939-4dbe-8425-35585a84452a');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18959, 'RB-T239', '2026-10-27T15:50:15Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18960, 'RB-T239', '2026-10-27T15:53:07Z', 'working', NULL, '9f764f65-2476-439c-a92b-d92e504f8c27');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18961, 'M.ORCH-T1127', '2026-10-27T16:03:04Z', 'link', NULL, 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError implements');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18962, 'M.ORCH-T1128', '2026-10-27T16:03:12Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18963, 'M.ORCH-T1128', '2026-10-27T16:03:20Z', 'link', NULL, 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18964, 'M.ORCH-T1128', '2026-10-27T16:03:26Z', 'link', NULL, 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18965, 'M.ORCH-T1128', '2026-10-27T16:03:35Z', 'label', NULL, 'hub-and-spoke');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18966, 'M.ORCH-T1129', '2026-10-27T16:03:38Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18967, 'M.ORCH-T1129', '2026-10-27T16:03:50Z', 'link', NULL, 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18968, 'M.ORCH-T1129', '2026-10-27T16:03:57Z', 'link', NULL, 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18969, 'M.ORCH-T1129', '2026-10-27T16:04:10Z', 'label', NULL, 'hub-and-spoke');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18970, 'M.ORCH-T1130', '2026-10-27T16:04:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18971, 'M.ORCH-T1130', '2026-10-27T16:04:29Z', 'link', NULL, 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18972, 'M.ORCH-T1130', '2026-10-27T16:04:34Z', 'link', NULL, 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18973, 'M.ORCH-T1130', '2026-10-27T16:04:42Z', 'label', NULL, 'hub-and-spoke');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18974, 'M.ORCH-T1131', '2026-10-27T16:04:44Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18975, 'M.ORCH-T1131', '2026-10-27T16:04:46Z', 'link', NULL, 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18976, 'M.ORCH-T1131', '2026-10-27T16:04:51Z', 'link', NULL, 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18977, 'M.ORCH-T1131', '2026-10-27T16:04:55Z', 'label', NULL, 'hub-and-spoke');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18978, 'M.ORCH-T1132', '2026-10-27T16:04:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18979, 'M.ORCH-T1132', '2026-10-27T16:05:02Z', 'link', NULL, 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18980, 'M.ORCH-T1132', '2026-10-27T16:05:05Z', 'link', NULL, 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18981, 'M.ORCH-T1132', '2026-10-27T16:05:08Z', 'label', NULL, 'hub-and-spoke');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18982, 'M.ORCH-T1133', '2026-10-27T16:05:11Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18983, 'M.ORCH-T1133', '2026-10-27T16:05:14Z', 'link', NULL, 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18984, 'M.ORCH-T1133', '2026-10-27T16:05:16Z', 'link', NULL, 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18985, 'M.ORCH-T1133', '2026-10-27T16:05:18Z', 'label', NULL, 'hub-and-spoke');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18986, 'M.ORCH-T1134', '2026-10-27T16:05:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18987, 'M.ORCH-T1134', '2026-10-27T16:05:25Z', 'link', NULL, 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18988, 'M.ORCH-T1134', '2026-10-27T16:05:28Z', 'link', NULL, 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18989, 'M.ORCH-T1134', '2026-10-27T16:05:33Z', 'label', NULL, 'hub-and-spoke');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18990, 'M.ORCH-T1135', '2026-10-27T16:05:36Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18991, 'M.ORCH-T1135', '2026-10-27T16:05:38Z', 'link', NULL, 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18992, 'M.ORCH-T1135', '2026-10-27T16:05:40Z', 'link', NULL, 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18993, 'M.ORCH-T1135', '2026-10-27T16:05:42Z', 'label', NULL, 'hub-and-spoke');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18994, 'M.ORCH-T1136', '2026-10-27T16:05:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18995, 'M.ORCH-T1136', '2026-10-27T16:05:44Z', 'link', NULL, 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18996, 'M.ORCH-T1136', '2026-10-27T16:05:49Z', 'link', NULL, 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18997, 'M.ORCH-T1136', '2026-10-27T16:05:51Z', 'label', NULL, 'hub-and-spoke');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18998, 'M.ORCH-T1137', '2026-10-27T16:05:52Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18999, 'M.ORCH-T1137', '2026-10-27T16:05:53Z', 'link', NULL, 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19000, 'M.ORCH-T1137', '2026-10-27T16:05:56Z', 'link', NULL, 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19001, 'M.ORCH-T1137', '2026-10-27T16:05:58Z', 'label', NULL, 'hub-and-spoke');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19002, 'M.ORCH-T1138', '2026-10-27T16:05:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19003, 'M.ORCH-T1138', '2026-10-27T16:06:01Z', 'link', NULL, 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19004, 'M.ORCH-T1138', '2026-10-27T16:06:05Z', 'link', NULL, 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19005, 'M.ORCH-T1138', '2026-10-27T16:06:09Z', 'label', NULL, 'hub-and-spoke');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19006, 'M.ORCH-T1139', '2026-10-27T16:06:12Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19007, 'M.ORCH-T1139', '2026-10-27T16:06:19Z', 'link', NULL, 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19008, 'M.ORCH-T1139', '2026-10-27T16:06:29Z', 'link', NULL, 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19009, 'M.ORCH-T1139', '2026-10-27T16:06:37Z', 'label', NULL, 'hub-and-spoke');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19010, 'M.ORCH-T1140', '2026-10-27T16:06:45Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19011, 'M.ORCH-T1140', '2026-10-27T16:06:56Z', 'link', NULL, 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19012, 'M.ORCH-T1140', '2026-10-27T16:07:03Z', 'link', NULL, 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19013, 'M.ORCH-T1140', '2026-10-27T16:07:11Z', 'label', NULL, 'hub-and-spoke');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19014, 'M.TIX-T173', '2026-10-27T16:07:14Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19015, 'M.TIX-T173', '2026-10-27T16:07:18Z', 'link', NULL, 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19016, 'M.TIX-T173', '2026-10-27T16:07:21Z', 'link', NULL, 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19017, 'M.TIX-T173', '2026-10-27T16:07:23Z', 'label', NULL, 'hub-and-spoke');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19018, 'M.ORCH-T1141', '2026-10-27T16:07:24Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19019, 'M.ORCH-T1141', '2026-10-27T16:07:26Z', 'link', NULL, 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19020, 'M.ORCH-T1141', '2026-10-27T16:07:29Z', 'link', NULL, 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19021, 'M.ORCH-T1141', '2026-10-27T16:07:31Z', 'label', NULL, 'hub-and-spoke');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19022, 'M.ORCH-T1142', '2026-10-27T16:07:32Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19023, 'M.ORCH-T1142', '2026-10-27T16:07:36Z', 'link', NULL, 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19024, 'M.ORCH-T1142', '2026-10-27T16:07:40Z', 'link', NULL, 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19025, 'M.ORCH-T1142', '2026-10-27T16:07:42Z', 'label', NULL, 'hub-and-spoke');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19026, 'M.ORCH-T1143', '2026-10-27T16:07:44Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19027, 'M.ORCH-T1143', '2026-10-27T16:07:47Z', 'link', NULL, 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19028, 'M.ORCH-T1143', '2026-10-27T16:07:52Z', 'link', NULL, 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19029, 'M.ORCH-T1143', '2026-10-27T16:07:55Z', 'label', NULL, 'hub-and-spoke');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19030, 'M.ORCH-T1144', '2026-10-27T16:07:56Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19031, 'M.ORCH-T1144', '2026-10-27T16:07:57Z', 'link', NULL, 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19032, 'M.ORCH-T1144', '2026-10-27T16:07:59Z', 'link', NULL, 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19033, 'M.ORCH-T1144', '2026-10-27T16:08:01Z', 'label', NULL, 'hub-and-spoke');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19034, 'M.ORCH-T1144', '2026-10-27T16:08:02Z', 'link', NULL, 'requires M.ORCH-T1141');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19035, 'M.ORCH-T1141', '2026-10-27T16:08:03Z', 'link', NULL, 'M.ORCH-T1144 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19036, 'M.ORCH-T1144', '2026-10-27T16:08:04Z', 'link', NULL, 'requires M.ORCH-T1142');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19037, 'M.ORCH-T1142', '2026-10-27T16:08:04Z', 'link', NULL, 'M.ORCH-T1144 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19038, 'M.ORCH-T1144', '2026-10-27T16:08:07Z', 'link', NULL, 'requires M.ORCH-T1143');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19039, 'M.ORCH-T1143', '2026-10-27T16:08:08Z', 'link', NULL, 'M.ORCH-T1144 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19040, 'M.ORCH-T1141', '2026-10-27T16:08:11Z', 'link', NULL, 'requires M.ORCH-T1139');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19041, 'M.ORCH-T1139', '2026-10-27T16:08:11Z', 'link', NULL, 'M.ORCH-T1141 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19042, 'M.ORCH-T1141', '2026-10-27T16:08:12Z', 'link', NULL, 'requires M.ORCH-T1140');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19043, 'M.ORCH-T1140', '2026-10-27T16:08:13Z', 'link', NULL, 'M.ORCH-T1141 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19044, 'M.ORCH-T1141', '2026-10-27T16:08:14Z', 'link', NULL, 'requires M.TIX-T173');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19045, 'M.TIX-T173', '2026-10-27T16:08:14Z', 'link', NULL, 'M.ORCH-T1141 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19046, 'M.ORCH-T1142', '2026-10-27T16:08:15Z', 'link', NULL, 'requires M.ORCH-T1139');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19047, 'M.ORCH-T1139', '2026-10-27T16:08:15Z', 'link', NULL, 'M.ORCH-T1142 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19048, 'M.ORCH-T1142', '2026-10-27T16:08:17Z', 'link', NULL, 'requires M.ORCH-T1140');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19049, 'M.ORCH-T1140', '2026-10-27T16:08:17Z', 'link', NULL, 'M.ORCH-T1142 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19050, 'M.ORCH-T1142', '2026-10-27T16:08:19Z', 'link', NULL, 'requires M.TIX-T173');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19051, 'M.TIX-T173', '2026-10-27T16:08:19Z', 'link', NULL, 'M.ORCH-T1142 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19052, 'M.ORCH-T1143', '2026-10-27T16:08:20Z', 'link', NULL, 'requires M.ORCH-T1139');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19053, 'M.ORCH-T1139', '2026-10-27T16:08:20Z', 'link', NULL, 'M.ORCH-T1143 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19054, 'M.ORCH-T1143', '2026-10-27T16:08:21Z', 'link', NULL, 'requires M.ORCH-T1140');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19055, 'M.ORCH-T1140', '2026-10-27T16:08:22Z', 'link', NULL, 'M.ORCH-T1143 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19056, 'M.ORCH-T1143', '2026-10-27T16:08:23Z', 'link', NULL, 'requires M.TIX-T173');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19057, 'M.TIX-T173', '2026-10-27T16:08:23Z', 'link', NULL, 'M.ORCH-T1143 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19058, 'M.ORCH-T1139', '2026-10-27T16:08:24Z', 'link', NULL, 'requires M.ORCH-T1133');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19059, 'M.ORCH-T1133', '2026-10-27T16:08:25Z', 'link', NULL, 'M.ORCH-T1139 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19060, 'M.ORCH-T1139', '2026-10-27T16:08:26Z', 'link', NULL, 'requires M.ORCH-T1134');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19061, 'M.ORCH-T1134', '2026-10-27T16:08:26Z', 'link', NULL, 'M.ORCH-T1139 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19062, 'M.ORCH-T1139', '2026-10-27T16:08:27Z', 'link', NULL, 'requires M.ORCH-T1135');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19063, 'M.ORCH-T1135', '2026-10-27T16:08:28Z', 'link', NULL, 'M.ORCH-T1139 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19064, 'M.ORCH-T1139', '2026-10-27T16:08:30Z', 'link', NULL, 'requires M.ORCH-T1136');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19065, 'M.ORCH-T1136', '2026-10-27T16:08:30Z', 'link', NULL, 'M.ORCH-T1139 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19066, 'M.ORCH-T1139', '2026-10-27T16:08:33Z', 'link', NULL, 'requires M.ORCH-T1137');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19067, 'M.ORCH-T1137', '2026-10-27T16:08:33Z', 'link', NULL, 'M.ORCH-T1139 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19068, 'M.ORCH-T1139', '2026-10-27T16:08:35Z', 'link', NULL, 'requires M.ORCH-T1138');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19069, 'M.ORCH-T1138', '2026-10-27T16:08:35Z', 'link', NULL, 'M.ORCH-T1139 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19070, 'M.ORCH-T1140', '2026-10-27T16:08:38Z', 'link', NULL, 'requires M.ORCH-T1133');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19071, 'M.ORCH-T1133', '2026-10-27T16:08:39Z', 'link', NULL, 'M.ORCH-T1140 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19072, 'M.ORCH-T1140', '2026-10-27T16:08:44Z', 'link', NULL, 'requires M.ORCH-T1134');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19073, 'M.ORCH-T1134', '2026-10-27T16:08:46Z', 'link', NULL, 'M.ORCH-T1140 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19074, 'RB-T240', '2026-10-27T16:08:47Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19075, 'M.ORCH-T1140', '2026-10-27T16:08:52Z', 'link', NULL, 'requires M.ORCH-T1135');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19076, 'M.ORCH-T1135', '2026-10-27T16:08:54Z', 'link', NULL, 'M.ORCH-T1140 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19077, 'M.ORCH-T1140', '2026-10-27T16:09:01Z', 'link', NULL, 'requires M.ORCH-T1136');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19078, 'M.ORCH-T1136', '2026-10-27T16:09:02Z', 'link', NULL, 'M.ORCH-T1140 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19079, 'M.ORCH-T1140', '2026-10-27T16:09:09Z', 'link', NULL, 'requires M.ORCH-T1137');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19080, 'M.ORCH-T1137', '2026-10-27T16:09:11Z', 'link', NULL, 'M.ORCH-T1140 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19081, 'M.ORCH-T1140', '2026-10-27T16:09:24Z', 'link', NULL, 'requires M.ORCH-T1138');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19082, 'M.ORCH-T1138', '2026-10-27T16:09:30Z', 'link', NULL, 'M.ORCH-T1140 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19083, 'M.TIX-T173', '2026-10-27T16:09:40Z', 'link', NULL, 'requires M.ORCH-T1133');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19084, 'M.ORCH-T1133', '2026-10-27T16:09:44Z', 'link', NULL, 'M.TIX-T173 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19085, 'M.TIX-T173', '2026-10-27T16:09:54Z', 'link', NULL, 'requires M.ORCH-T1134');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19086, 'M.ORCH-T1134', '2026-10-27T16:09:58Z', 'link', NULL, 'M.TIX-T173 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19087, 'M.TIX-T173', '2026-10-27T16:10:03Z', 'link', NULL, 'requires M.ORCH-T1135');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19088, 'M.ORCH-T1135', '2026-10-27T16:10:05Z', 'link', NULL, 'M.TIX-T173 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19089, 'M.TIX-T173', '2026-10-27T16:10:08Z', 'link', NULL, 'requires M.ORCH-T1136');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19090, 'M.ORCH-T1136', '2026-10-27T16:10:09Z', 'link', NULL, 'M.TIX-T173 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19091, 'M.TIX-T173', '2026-10-27T16:10:11Z', 'link', NULL, 'requires M.ORCH-T1137');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19092, 'M.ORCH-T1137', '2026-10-27T16:10:11Z', 'link', NULL, 'M.TIX-T173 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19093, 'M.TIX-T173', '2026-10-27T16:10:13Z', 'link', NULL, 'requires M.ORCH-T1138');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19094, 'M.ORCH-T1138', '2026-10-27T16:10:14Z', 'link', NULL, 'M.TIX-T173 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19095, 'M.ORCH-T1135', '2026-10-27T16:10:16Z', 'link', NULL, 'requires M.ORCH-T1130');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19096, 'M.ORCH-T1130', '2026-10-27T16:10:16Z', 'link', NULL, 'M.ORCH-T1135 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19097, 'M.ORCH-T1135', '2026-10-27T16:10:18Z', 'link', NULL, 'requires M.ORCH-T1131');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19098, 'M.ORCH-T1131', '2026-10-27T16:10:18Z', 'link', NULL, 'M.ORCH-T1135 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19099, 'M.ORCH-T1135', '2026-10-27T16:10:21Z', 'link', NULL, 'requires M.ORCH-T1132');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19100, 'M.ORCH-T1132', '2026-10-27T16:10:21Z', 'link', NULL, 'M.ORCH-T1135 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19101, 'M.ORCH-T1136', '2026-10-27T16:10:23Z', 'link', NULL, 'requires M.ORCH-T1130');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19102, 'M.ORCH-T1130', '2026-10-27T16:10:24Z', 'link', NULL, 'M.ORCH-T1136 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19103, 'M.ORCH-T1136', '2026-10-27T16:10:26Z', 'link', NULL, 'requires M.ORCH-T1131');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19104, 'M.ORCH-T1131', '2026-10-27T16:10:27Z', 'link', NULL, 'M.ORCH-T1136 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19105, 'M.ORCH-T1136', '2026-10-27T16:10:30Z', 'link', NULL, 'requires M.ORCH-T1132');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19106, 'M.ORCH-T1132', '2026-10-27T16:10:31Z', 'link', NULL, 'M.ORCH-T1136 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19107, 'M.ORCH-T1137', '2026-10-27T16:10:34Z', 'link', NULL, 'requires M.ORCH-T1130');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19108, 'M.ORCH-T1130', '2026-10-27T16:10:34Z', 'link', NULL, 'M.ORCH-T1137 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19109, 'M.ORCH-T1137', '2026-10-27T16:10:36Z', 'link', NULL, 'requires M.ORCH-T1131');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19110, 'M.ORCH-T1131', '2026-10-27T16:10:36Z', 'link', NULL, 'M.ORCH-T1137 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19111, 'M.ORCH-T1137', '2026-10-27T16:10:37Z', 'link', NULL, 'requires M.ORCH-T1132');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19112, 'M.ORCH-T1132', '2026-10-27T16:10:38Z', 'link', NULL, 'M.ORCH-T1137 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19113, 'M.ORCH-T1138', '2026-10-27T16:10:39Z', 'link', NULL, 'requires M.ORCH-T1130');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19114, 'M.ORCH-T1130', '2026-10-27T16:10:39Z', 'link', NULL, 'M.ORCH-T1138 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19115, 'M.ORCH-T1138', '2026-10-27T16:10:40Z', 'link', NULL, 'requires M.ORCH-T1131');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19116, 'M.ORCH-T1131', '2026-10-27T16:10:41Z', 'link', NULL, 'M.ORCH-T1138 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19117, 'RB-T241', '2026-10-27T16:10:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19118, 'M.ORCH-T1138', '2026-10-27T16:10:46Z', 'link', NULL, 'requires M.ORCH-T1132');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19119, 'M.ORCH-T1132', '2026-10-27T16:10:46Z', 'link', NULL, 'M.ORCH-T1138 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19120, 'M.ORCH-T1133', '2026-10-27T16:10:47Z', 'link', NULL, 'requires M.ORCH-T1130');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19121, 'M.ORCH-T1130', '2026-10-27T16:10:47Z', 'link', NULL, 'M.ORCH-T1133 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19122, 'M.ORCH-T1133', '2026-10-27T16:10:49Z', 'link', NULL, 'requires M.ORCH-T1131');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19123, 'M.ORCH-T1131', '2026-10-27T16:10:49Z', 'link', NULL, 'M.ORCH-T1133 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19124, 'M.ORCH-T1133', '2026-10-27T16:10:50Z', 'link', NULL, 'requires M.ORCH-T1132');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19125, 'M.ORCH-T1132', '2026-10-27T16:10:50Z', 'link', NULL, 'M.ORCH-T1133 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19126, 'M.ORCH-T1134', '2026-10-27T16:10:52Z', 'link', NULL, 'requires M.ORCH-T1130');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19127, 'M.ORCH-T1130', '2026-10-27T16:10:52Z', 'link', NULL, 'M.ORCH-T1134 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19128, 'M.ORCH-T1134', '2026-10-27T16:10:54Z', 'link', NULL, 'requires M.ORCH-T1131');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19129, 'M.ORCH-T1131', '2026-10-27T16:10:54Z', 'link', NULL, 'M.ORCH-T1134 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19130, 'M.ORCH-T1134', '2026-10-27T16:10:57Z', 'link', NULL, 'requires M.ORCH-T1132');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19131, 'M.ORCH-T1132', '2026-10-27T16:10:57Z', 'link', NULL, 'M.ORCH-T1134 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19132, 'M.ORCH-T1130', '2026-10-27T16:10:59Z', 'link', NULL, 'requires M.ORCH-T1128');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19133, 'M.ORCH-T1128', '2026-10-27T16:10:59Z', 'link', NULL, 'M.ORCH-T1130 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19134, 'M.ORCH-T1130', '2026-10-27T16:11:00Z', 'link', NULL, 'requires M.ORCH-T1129');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19135, 'M.ORCH-T1129', '2026-10-27T16:11:00Z', 'link', NULL, 'M.ORCH-T1130 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19136, 'M.ORCH-T1131', '2026-10-27T16:11:02Z', 'link', NULL, 'requires M.ORCH-T1128');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19137, 'M.ORCH-T1128', '2026-10-27T16:11:02Z', 'link', NULL, 'M.ORCH-T1131 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19138, 'M.ORCH-T1131', '2026-10-27T16:11:03Z', 'link', NULL, 'requires M.ORCH-T1129');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19139, 'M.ORCH-T1129', '2026-10-27T16:11:04Z', 'link', NULL, 'M.ORCH-T1131 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19140, 'M.ORCH-T1132', '2026-10-27T16:11:05Z', 'link', NULL, 'requires M.ORCH-T1128');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19141, 'M.ORCH-T1128', '2026-10-27T16:11:05Z', 'link', NULL, 'M.ORCH-T1132 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19142, 'RB-T241', '2026-10-27T16:11:06Z', 'working', NULL, '9f764f65-2476-439c-a92b-d92e504f8c27');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19143, 'RB-T240', '2026-10-27T16:11:06Z', 'working', NULL, '9f764f65-2476-439c-a92b-d92e504f8c27');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19144, 'M.ORCH-T1132', '2026-10-27T16:11:07Z', 'link', NULL, 'requires M.ORCH-T1129');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19145, 'M.ORCH-T1129', '2026-10-27T16:11:08Z', 'link', NULL, 'M.ORCH-T1132 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19146, 'M.ORCH-T1128', '2026-10-27T16:11:11Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19147, 'M.ORCH-T1129', '2026-10-27T16:11:12Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19148, 'M.ORCH-T1130', '2026-10-27T16:11:12Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19149, 'M.ORCH-T1131', '2026-10-27T16:11:13Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19150, 'M.ORCH-T1132', '2026-10-27T16:11:13Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19151, 'M.ORCH-T1133', '2026-10-27T16:11:13Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19152, 'M.ORCH-T1134', '2026-10-27T16:11:13Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19153, 'M.ORCH-T1135', '2026-10-27T16:11:14Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19154, 'M.ORCH-T1136', '2026-10-27T16:11:14Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19155, 'M.ORCH-T1137', '2026-10-27T16:11:15Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19156, 'M.ORCH-T1138', '2026-10-27T16:11:15Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19157, 'M.ORCH-T1139', '2026-10-27T16:11:15Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19158, 'M.ORCH-T1140', '2026-10-27T16:11:16Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19159, 'M.TIX-T173', '2026-10-27T16:11:17Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19160, 'M.ORCH-T1141', '2026-10-27T16:11:19Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19161, 'M.ORCH-T1142', '2026-10-27T16:11:21Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19162, 'M.ORCH-T1143', '2026-10-27T16:11:23Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19163, 'M.ORCH-T1144', '2026-10-27T16:11:26Z', 'approval', 'proposed', 'approved');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z', NULL);
@@ -29441,6 +29849,23 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1106', 'proposed', 593, '2026-10-27T06:16:19Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1107', 'proposed', 592, '2026-10-27T06:16:20Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1113', 'proposed', 591, '2026-10-27T06:16:20Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1128', 'approved', 0, '2026-10-27T16:11:11Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1129', 'approved', 0, '2026-10-27T16:11:12Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1130', 'approved', 0, '2026-10-27T16:11:12Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1131', 'approved', 0, '2026-10-27T16:11:13Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1132', 'approved', 0, '2026-10-27T16:11:13Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1133', 'approved', 0, '2026-10-27T16:11:13Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1134', 'approved', 0, '2026-10-27T16:11:13Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1135', 'approved', 0, '2026-10-27T16:11:14Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1136', 'approved', 0, '2026-10-27T16:11:14Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1137', 'approved', 0, '2026-10-27T16:11:15Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1138', 'approved', 0, '2026-10-27T16:11:15Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1139', 'approved', 0, '2026-10-27T16:11:15Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1140', 'approved', 0, '2026-10-27T16:11:16Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1141', 'approved', 0, '2026-10-27T16:11:19Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1142', 'approved', 0, '2026-10-27T16:11:21Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1143', 'approved', 0, '2026-10-27T16:11:23Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1144', 'approved', 0, '2026-10-27T16:11:26Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T172', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T181', 'approved', 0, '2026-10-20T17:30:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T182', 'approved', 0, '2026-10-20T17:30:39Z', NULL);
@@ -29780,6 +30205,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.TIX-T158', 'approved', 0, '2026-10-26T03:05:48Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.TIX-T159', 'approved', 0, '2026-10-26T19:26:04Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.TIX-T17', 'proposed', 60, '2026-10-18T08:37:30Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.TIX-T173', 'approved', 0, '2026-10-27T16:11:17Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.TIX-T19', 'proposed', 160, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.TIX-T20', 'proposed', 170, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.TIX-T21', 'proposed', 230, '2026-10-18T08:37:30Z', NULL);
@@ -30943,6 +31369,8 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T277', NULL, 0, NULL, '52d32bc1-0939-4dbe-8425-35585a84452a', '2026-10-27T15:48:53Z', '2026-10-27T15:48:53Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T278', NULL, 0, NULL, '52d32bc1-0939-4dbe-8425-35585a84452a', '2026-10-27T15:48:53Z', '2026-10-27T15:48:53Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T239', NULL, 0, NULL, '9f764f65-2476-439c-a92b-d92e504f8c27', '2026-10-27T15:53:07Z', '2026-10-27T15:53:07Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T240', NULL, 0, NULL, '9f764f65-2476-439c-a92b-d92e504f8c27', '2026-10-27T16:11:06Z', '2026-10-27T16:11:06Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T241', NULL, 0, NULL, '9f764f65-2476-439c-a92b-d92e504f8c27', '2026-10-27T16:11:06Z', '2026-10-27T16:11:06Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T111', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:34:40Z');
@@ -31260,6 +31688,1053 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1124
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1125', 'Found by /bughunt 2026-10-27 (G1, G2, B1, B3, B4; B2 needs the user). The pace gate''s exempt early-exit ran before hold_at_stop(), so /allocate typed at the cutoff ran a full round past it, subagents included. claude_stop() used StopPercent = 99, not the login''s own cutoff, when the daemon is stale. OffTickRefresh set lastUtc only on success. ClaudeMeterProbe left nextUtc 4 min out when Write threw. AccountPacer didn''t apply HoldWeeklyStop per login.', '2026-10-27T15:20:55Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1126', 'Found by /bughunt 2026-10-27 (W1, W2, N2, N4, N5, N6 in part, N7 in part, C1, C5 message). TerminalPaneViewModel.Of called VisualTreeHelper.GetParent on a ContentElement (since 2a0e159b). PinTerminalFocus read a null FocusedElement as lost. billing credit saved LoadSettings()''s defaults. ContextCycler.Read let FormatException/ArgumentOutOfRange escape. AllocateWaker''s early returns skipped CliNudges.Retain. AccountDirs used one fixed .tmp. LoginTokens treated the store-lock timeout as no token. MoveLocks preferred any same-repo CLI over the moved one''s own session. orchestrator start hid the picker''s reason.', '2026-10-27T15:21:14Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1127', 'The user (2026-10-27): ''The Team Wall is amazing, but right now all those users are logged into one computer, so how to expand this so that users in the organization are able to connect to their account into MindAttic.Orchestrator.Desktop and work on their tickets in an environment where everyones CLIS are visible and shareable? This is a major architectural enhancement and deserves a research spike, then a Plan, then an implementation plan that allows the current way to keep functioning as it is but in the future it allows remote connections to a central Wheel and spoke architecture.'' Deliverables: docs/design/hub-and-spoke/ (1) research spike, (2) plan, (3) implementation plan in phases, each phase shippable with the local-only mode unchanged. Approved by the user''s own request; implementation tickets are filed from the plan and wait for the user''s approval.', '2026-10-27T15:32:05Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1128', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 1 of 18, phase 0. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 0: seams and contracts (no behaviour change)
+
+**Goal.** Put an interface wherever the hub will later decide, with a Local implementation that is today''s code.
+
+**Code:**
+
+- New `src/MindAttic.Orchestrator.Hub.Contracts` (net10.0, no dependencies, like `Term`):
+  - `HubProtocol` (`Version`, `Supported`, `Negotiate`, the same shape as `TermProtocol`);
+  - `HubEnvelope` (`kind`, `v`, `seq`, `ack`, `at`, `payload`: `StatusEnvelope` plus sequencing);
+  - payload records: `SpokeHello`, `HubWelcome`, `Heartbeat`, `LeaseGrant`, `LeaseRenewal`, `PolicySnapshot`,
+    `OpenStream`, `SessionInfo`;
+  - `MeterReading` moves here, or is mirrored here, from `Status/StatusStream.cs`.
+- Core seams (`Core/Hub/`), each with a `Local*` implementation:
+
+| Seam | Today''s code |
+|---|---|
+| `IClaims` | `Allocate.Next`, `Dispatcher` and `DispatchLease`, as they run today |
+| `IPolicySource` | Settings, `UsageCutoffs`, `WeeklyAllowances`, `OrgRouting.Load` |
+| `IMeterSink` | A no-op |
+| `IOrgDirectory` | `MemberRoster`, `Organizations` |
+| `ISessionDirectory` | `TermSessions` plus `TeamWall`''s gateway merge |
+
+- Wiring:
+  - `NextCommand` (`Cli/PlanningCommands.cs`) calls `IClaims`;
+  - `AccountPacer` reads `IPolicySource`;
+  - `TeamWallWindow` reads `ISessionDirectory`.
+- `OrchestratorSettings.Hub`: `Mode` (`Off|Host|Join`), `Url`, `Pin`, `DeviceId`, `OfflineGraceMinutes` (120),
+  `AcceptDispatch` (false). It is shown in Settings as read-only "Off" for now.
+
+**Protocol.** Contracts only, nothing on the wire.
+
+**Migration.** None, beyond an absent `Hub` settings block meaning `Off`.
+
+**Tests:**
+
+- The full existing suite passes untouched.
+- Contract round-trip tests (JSON, unknown kind skipped, newer `v` skipped).
+- A test that `Off` builds only `Local*` seams.
+
+**Risks.** Seams drawn in the wrong place. Mitigate by drawing them exactly at today''s function boundaries and not
+refactoring the logic behind them.
+
+**Effort.** 4 to 6 days.', '2026-10-27T16:03:12Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1129', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 2 of 18, phase 0. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 0: seams and contracts (no behaviour change)
+
+**Goal.** Put an interface wherever the hub will later decide, with a Local implementation that is today''s code.
+
+**Code:**
+
+- New `src/MindAttic.Orchestrator.Hub.Contracts` (net10.0, no dependencies, like `Term`):
+  - `HubProtocol` (`Version`, `Supported`, `Negotiate`, the same shape as `TermProtocol`);
+  - `HubEnvelope` (`kind`, `v`, `seq`, `ack`, `at`, `payload`: `StatusEnvelope` plus sequencing);
+  - payload records: `SpokeHello`, `HubWelcome`, `Heartbeat`, `LeaseGrant`, `LeaseRenewal`, `PolicySnapshot`,
+    `OpenStream`, `SessionInfo`;
+  - `MeterReading` moves here, or is mirrored here, from `Status/StatusStream.cs`.
+- Core seams (`Core/Hub/`), each with a `Local*` implementation:
+
+| Seam | Today''s code |
+|---|---|
+| `IClaims` | `Allocate.Next`, `Dispatcher` and `DispatchLease`, as they run today |
+| `IPolicySource` | Settings, `UsageCutoffs`, `WeeklyAllowances`, `OrgRouting.Load` |
+| `IMeterSink` | A no-op |
+| `IOrgDirectory` | `MemberRoster`, `Organizations` |
+| `ISessionDirectory` | `TermSessions` plus `TeamWall`''s gateway merge |
+
+- Wiring:
+  - `NextCommand` (`Cli/PlanningCommands.cs`) calls `IClaims`;
+  - `AccountPacer` reads `IPolicySource`;
+  - `TeamWallWindow` reads `ISessionDirectory`.
+- `OrchestratorSettings.Hub`: `Mode` (`Off|Host|Join`), `Url`, `Pin`, `DeviceId`, `OfflineGraceMinutes` (120),
+  `AcceptDispatch` (false). It is shown in Settings as read-only "Off" for now.
+
+**Protocol.** Contracts only, nothing on the wire.
+
+**Migration.** None, beyond an absent `Hub` settings block meaning `Off`.
+
+**Tests:**
+
+- The full existing suite passes untouched.
+- Contract round-trip tests (JSON, unknown kind skipped, newer `v` skipped).
+- A test that `Off` builds only `Local*` seams.
+
+**Risks.** Seams drawn in the wrong place. Mitigate by drawing them exactly at today''s function boundaries and not
+refactoring the logic behind them.
+
+**Effort.** 4 to 6 days.', '2026-10-27T16:03:38Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1130', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 3 of 18, phase 1. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 1: hub service, member sign-in, device enrollment, control link (dark)
+
+**Goal.** A spoke can enroll with a hub and hold a live, authenticated, reconnecting control socket. Nothing is decided
+remotely yet.
+
+**Code:**
+
+- New `src/MindAttic.Orchestrator.Hub` (ASP.NET Core, Kestrel):
+  - TLS from `GatewayCertificates`, moved to a shared helper or referenced;
+  - hosts MindAttic.Authentication (`AddMindAtticAuthentication` over a `HubDbContext` with the auth schema; pepper and
+    KEK from `MindAttic:Vault:Security:*` on the hub machine);
+  - endpoints `/health`, `/enroll/start`, `/enroll/complete`, `/device/token` and `/spoke` (WebSocket);
+  - a `devices(id, member, name, public_key, enrolled_utc, last_seen_utc, version, revoked_utc)` table;
+  - presence in memory, with `last_seen` persisted.
+- Core `Hub/HubLink.cs`, the daemon''s client:
+  - the device key in CNG (`CngKey`, `AllowExport = None`, Microsoft Software or Platform KSP);
+  - a challenge signature, then a token;
+  - the socket with backoff and jitter (0.5 s to 60 s);
+  - a heartbeat on each daemon tick;
+  - a `hub_outbox` table in `orchestrator.db` (Volatile, so it never lands in the git dump).
+- `Daemon`: `HubLinkSupervisor`, shaped like `GatewaySupervisor`, starts and stops the link to match `Hub.Mode`.
+- A `HubSupervisor` runs the hub process in `Host` mode. It is separate from the daemon, so a daemon redeploy never
+  drops the hub.
+- CLI `Cli/HubCommands.cs`:
+  - `orchestrator hub host [--bind --port]`;
+  - `orchestrator hub join <url>` (opens the enrollment page; the pin is learned, not typed);
+  - `orchestrator hub status`, `orchestrator hub leave`;
+  - `orchestrator hub devices [--revoke <id>]`.
+- Dashboard: a hub status chip (Off, Connected, Offline since…).
+
+**Protocol.** Control protocol v1: `hello` → `welcome`, then `heartbeat` and `ack`, then `bye`. The hub refuses
+`protocol < N-1` with `update-required`.
+
+**Migration.**
+
+- New hub DB: SQLite by default, or SQL Server through the `DATA_STORES.md` pattern with `hub db migrate`.
+- On the spoke: an `orchestrator.db` migration adds `hub_outbox`.
+
+**Tests:**
+
+- Hub integration tests with `WebApplicationFactory`: enroll, token, connect, revoke mid-session (the socket closes
+  with 1008), a version refusal.
+- `HubLink` reconnect against a hub that is killed and restarted.
+- With `Off`, no socket and no process are created (asserted).
+
+**Risks.**
+
+- MindAttic.Authentication assumes a browser app, but it is browser-based here too (enrollment).
+- CNG keys on machines without a TPM fall back to the software KSP. That is fine.
+- Hosting the hub on a member''s desktop means it sleeps, so document that the hub machine should not sleep.
+
+**Effort.** 2 to 3 weeks.', '2026-10-27T16:04:20Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1131', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 4 of 18, phase 1. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 1: hub service, member sign-in, device enrollment, control link (dark)
+
+**Goal.** A spoke can enroll with a hub and hold a live, authenticated, reconnecting control socket. Nothing is decided
+remotely yet.
+
+**Code:**
+
+- New `src/MindAttic.Orchestrator.Hub` (ASP.NET Core, Kestrel):
+  - TLS from `GatewayCertificates`, moved to a shared helper or referenced;
+  - hosts MindAttic.Authentication (`AddMindAtticAuthentication` over a `HubDbContext` with the auth schema; pepper and
+    KEK from `MindAttic:Vault:Security:*` on the hub machine);
+  - endpoints `/health`, `/enroll/start`, `/enroll/complete`, `/device/token` and `/spoke` (WebSocket);
+  - a `devices(id, member, name, public_key, enrolled_utc, last_seen_utc, version, revoked_utc)` table;
+  - presence in memory, with `last_seen` persisted.
+- Core `Hub/HubLink.cs`, the daemon''s client:
+  - the device key in CNG (`CngKey`, `AllowExport = None`, Microsoft Software or Platform KSP);
+  - a challenge signature, then a token;
+  - the socket with backoff and jitter (0.5 s to 60 s);
+  - a heartbeat on each daemon tick;
+  - a `hub_outbox` table in `orchestrator.db` (Volatile, so it never lands in the git dump).
+- `Daemon`: `HubLinkSupervisor`, shaped like `GatewaySupervisor`, starts and stops the link to match `Hub.Mode`.
+- A `HubSupervisor` runs the hub process in `Host` mode. It is separate from the daemon, so a daemon redeploy never
+  drops the hub.
+- CLI `Cli/HubCommands.cs`:
+  - `orchestrator hub host [--bind --port]`;
+  - `orchestrator hub join <url>` (opens the enrollment page; the pin is learned, not typed);
+  - `orchestrator hub status`, `orchestrator hub leave`;
+  - `orchestrator hub devices [--revoke <id>]`.
+- Dashboard: a hub status chip (Off, Connected, Offline since…).
+
+**Protocol.** Control protocol v1: `hello` → `welcome`, then `heartbeat` and `ack`, then `bye`. The hub refuses
+`protocol < N-1` with `update-required`.
+
+**Migration.**
+
+- New hub DB: SQLite by default, or SQL Server through the `DATA_STORES.md` pattern with `hub db migrate`.
+- On the spoke: an `orchestrator.db` migration adds `hub_outbox`.
+
+**Tests:**
+
+- Hub integration tests with `WebApplicationFactory`: enroll, token, connect, revoke mid-session (the socket closes
+  with 1008), a version refusal.
+- `HubLink` reconnect against a hub that is killed and restarted.
+- With `Off`, no socket and no process are created (asserted).
+
+**Risks.**
+
+- MindAttic.Authentication assumes a browser app, but it is browser-based here too (enrollment).
+- CNG keys on machines without a TPM fall back to the software KSP. That is fine.
+- Hosting the hub on a member''s desktop means it sleeps, so document that the hub machine should not sleep.
+
+**Effort.** 2 to 3 weeks.', '2026-10-27T16:04:44Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1132', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 5 of 18, phase 1. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 1: hub service, member sign-in, device enrollment, control link (dark)
+
+**Goal.** A spoke can enroll with a hub and hold a live, authenticated, reconnecting control socket. Nothing is decided
+remotely yet.
+
+**Code:**
+
+- New `src/MindAttic.Orchestrator.Hub` (ASP.NET Core, Kestrel):
+  - TLS from `GatewayCertificates`, moved to a shared helper or referenced;
+  - hosts MindAttic.Authentication (`AddMindAtticAuthentication` over a `HubDbContext` with the auth schema; pepper and
+    KEK from `MindAttic:Vault:Security:*` on the hub machine);
+  - endpoints `/health`, `/enroll/start`, `/enroll/complete`, `/device/token` and `/spoke` (WebSocket);
+  - a `devices(id, member, name, public_key, enrolled_utc, last_seen_utc, version, revoked_utc)` table;
+  - presence in memory, with `last_seen` persisted.
+- Core `Hub/HubLink.cs`, the daemon''s client:
+  - the device key in CNG (`CngKey`, `AllowExport = None`, Microsoft Software or Platform KSP);
+  - a challenge signature, then a token;
+  - the socket with backoff and jitter (0.5 s to 60 s);
+  - a heartbeat on each daemon tick;
+  - a `hub_outbox` table in `orchestrator.db` (Volatile, so it never lands in the git dump).
+- `Daemon`: `HubLinkSupervisor`, shaped like `GatewaySupervisor`, starts and stops the link to match `Hub.Mode`.
+- A `HubSupervisor` runs the hub process in `Host` mode. It is separate from the daemon, so a daemon redeploy never
+  drops the hub.
+- CLI `Cli/HubCommands.cs`:
+  - `orchestrator hub host [--bind --port]`;
+  - `orchestrator hub join <url>` (opens the enrollment page; the pin is learned, not typed);
+  - `orchestrator hub status`, `orchestrator hub leave`;
+  - `orchestrator hub devices [--revoke <id>]`.
+- Dashboard: a hub status chip (Off, Connected, Offline since…).
+
+**Protocol.** Control protocol v1: `hello` → `welcome`, then `heartbeat` and `ack`, then `bye`. The hub refuses
+`protocol < N-1` with `update-required`.
+
+**Migration.**
+
+- New hub DB: SQLite by default, or SQL Server through the `DATA_STORES.md` pattern with `hub db migrate`.
+- On the spoke: an `orchestrator.db` migration adds `hub_outbox`.
+
+**Tests:**
+
+- Hub integration tests with `WebApplicationFactory`: enroll, token, connect, revoke mid-session (the socket closes
+  with 1008), a version refusal.
+- `HubLink` reconnect against a hub that is killed and restarted.
+- With `Off`, no socket and no process are created (asserted).
+
+**Risks.**
+
+- MindAttic.Authentication assumes a browser app, but it is browser-based here too (enrollment).
+- CNG keys on machines without a TPM fall back to the software KSP. That is fine.
+- Hosting the hub on a member''s desktop means it sleeps, so document that the hub machine should not sleep.
+
+**Effort.** 2 to 3 weeks.', '2026-10-27T16:04:57Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1133', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 6 of 18, phase 2. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 2: presence and meters (read-only org view)
+
+**Goal.** From any joined machine, see every member, their machines, their CLIs and their meters. No remote control.
+
+**Code:**
+
+- Each spoke heartbeat carries:
+  - `CliRoster` rows (pid, repo, login, `/allocate` on or off);
+  - `TermSessionRecord`s with titles masked through `SecretMasker` (no command line, cwd, config dir or pipe, as
+    `/sessions` already leaves them out);
+  - `MeterReading`s;
+  - `AgentBoard` summaries (ticket and phase).
+- The hub merges per login and stores `usage_samples` and `pace_ledger` rows tagged with the device.
+- Hub endpoints `GET /org/presence` and `GET /org/usage`.
+- `IOrgDirectory` and `ISessionDirectory` get Hub implementations in `Join` and `Host`.
+- Dashboard: remote people''s tabs show read-only, badged with their machine. `/org usage` (`Cli/OrgCommands.cs`) prints
+  every member''s table across machines.
+- The hub pushes members and orgs as the existing `StateBus` kinds (`members`, `orgs`).
+- Hub-to-spoke login mapping: a report for a login that isn''t in the member''s `org_members` rows is dropped and audited.
+
+**Protocol.** Heartbeat payload v1. Meter readings collapse to the latest per login in the outbox.
+
+**Migration.**
+
+- `members`, `organizations` and `org_members` are copied once into the hub DB from the host machine''s
+  `orchestrator.db` (`hub import-org`).
+- In `Join`, a spoke''s local tables become a cache.
+
+**Tests:**
+
+- Merge rules: the freshest reading wins; the highest within a window; a stale reading is ignored.
+- An unmapped login is dropped.
+- An outbox replay after an offline period has no duplicates (idempotency id).
+- The dashboard view model shows a remote person read-only.
+
+**Risks.** The roster drifting between hub and spoke. The hub is the store of record, and the spoke tables are
+overwritten from `welcome` and the deltas.
+
+**Effort.** ~2 weeks.', '2026-10-27T16:05:11Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1134', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 7 of 18, phase 2. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 2: presence and meters (read-only org view)
+
+**Goal.** From any joined machine, see every member, their machines, their CLIs and their meters. No remote control.
+
+**Code:**
+
+- Each spoke heartbeat carries:
+  - `CliRoster` rows (pid, repo, login, `/allocate` on or off);
+  - `TermSessionRecord`s with titles masked through `SecretMasker` (no command line, cwd, config dir or pipe, as
+    `/sessions` already leaves them out);
+  - `MeterReading`s;
+  - `AgentBoard` summaries (ticket and phase).
+- The hub merges per login and stores `usage_samples` and `pace_ledger` rows tagged with the device.
+- Hub endpoints `GET /org/presence` and `GET /org/usage`.
+- `IOrgDirectory` and `ISessionDirectory` get Hub implementations in `Join` and `Host`.
+- Dashboard: remote people''s tabs show read-only, badged with their machine. `/org usage` (`Cli/OrgCommands.cs`) prints
+  every member''s table across machines.
+- The hub pushes members and orgs as the existing `StateBus` kinds (`members`, `orgs`).
+- Hub-to-spoke login mapping: a report for a login that isn''t in the member''s `org_members` rows is dropped and audited.
+
+**Protocol.** Heartbeat payload v1. Meter readings collapse to the latest per login in the outbox.
+
+**Migration.**
+
+- `members`, `organizations` and `org_members` are copied once into the hub DB from the host machine''s
+  `orchestrator.db` (`hub import-org`).
+- In `Join`, a spoke''s local tables become a cache.
+
+**Tests:**
+
+- Merge rules: the freshest reading wins; the highest within a window; a stale reading is ignored.
+- An unmapped login is dropped.
+- An outbox replay after an offline period has no duplicates (idempotency id).
+- The dashboard view model shows a remote person read-only.
+
+**Risks.** The roster drifting between hub and spoke. The hub is the store of record, and the spoke tables are
+overwritten from `welcome` and the deltas.
+
+**Effort.** ~2 weeks.', '2026-10-27T16:05:20Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1135', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 8 of 18, phase 3. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 3: terminal streams through the hub (Team Wall at org scale)
+
+**Goal.** Watch any shared CLI in the org from any joined machine, with no inbound port on spokes. Interact works with a
+grant and owner consent.
+
+**Code:**
+
+- Gateway outbound mode:
+  - `Gateway/HubDialer.cs` receives `open-stream` (by way of the daemon''s `HubLink`, or the gateway''s own control
+    socket; decide in the phase) and dials `wss://hub/streams/attach/{streamId}`;
+  - it wraps that socket in the existing `TermBridge` and `StreamMasker` path, unchanged.
+- Hub `StreamRelay`:
+  - matches the viewer socket to the spoke socket by `streamId` (a 10 s rendezvous timeout);
+  - splices binary messages without re-encoding;
+  - enforces the level (it drops Input, Resize and TakeSize for watchers, as `TermBridge` does);
+  - rechecks access every 10 s and closes with 1008 on revoke.
+- Grants move to the hub:
+  - `term_grants` and `term_audit` live in the hub DB;
+  - `orchestrator gateway grant|revoke|grants|audit` call the hub when joined;
+  - the spoke''s `acl.json` (`TermGatewayAcl`) is written from the hub''s pushes, so the gateway''s own check stays in
+    place as defence in depth;
+  - each `open-stream` carries the hub''s signature over `{streamId, session, viewer, level, expires}`, which the spoke
+    verifies with the hub key it pinned at enrollment.
+- Owner consent for interact:
+  - on the first use of each grant, the spoke''s dashboard toasts "<viewer> wants to type into <tab>: Allow for <grant
+    span> / Deny", with the answer kept for that grant;
+  - with no answer in 30 s, the viewer gets watch only.
+- Compression: offered to watchers only. Interactive remote streams negotiate no deflate (the CRIME/BREACH note in
+  T934 and T935).
+- Team Wall: `ISessionDirectory` (Hub) lists `/org/sessions`. `GatewayClient` gains a hub base URL, and the tiles and
+  TermViewer `--remote` get a `--hub` form. Peer remotes are still listed beside them.
+
+**Protocol.**
+
+- Control: `open-stream` and `close-stream`.
+- Stream sockets: TermHost frames unchanged (TermProtocol 1 and 2), one frame per message.
+- The hub never synthesizes frames, except `Paused`, which already comes only from the gateway.
+
+**Migration.** `orchestrator hub import-grants` copies the host''s `term_grants` once. Existing peer-to-peer tokens are
+untouched.
+
+**Tests:**
+
+- Relay splice end to end in-process: hub, a fake spoke and a stub TermHost from the `--unlisted` smoke pattern.
+- A watcher''s input dropped at the hub *and* at the spoke.
+- An unshared session answers 404 through the hub.
+- A pause mid-stream gives a `Paused` frame.
+- A revoke closes within 10 s.
+- A consent timeout falls back to watch.
+- A wrong signature on `open-stream` is refused by the spoke.
+- No byte of a fake `sk-ant-` token reaches the viewer (the T935 smoke test, through the hub).
+
+**Risks.**
+
+- Latency through the relay: plus one RTT. For typing, that is fine under ~100 ms.
+- Hub bandwidth: about 36 KB/s for 12 working CLIs, with bursts to ~360 KB/s (the spike''s estimates), which is
+  trivial.
+- A later "direct when reachable" optimization (the Tailscale-style peer path) stays possible, because the peer gateway
+  still exists.
+
+**Effort.** 2 to 3 weeks.', '2026-10-27T16:05:36Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1136', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 9 of 18, phase 3. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 3: terminal streams through the hub (Team Wall at org scale)
+
+**Goal.** Watch any shared CLI in the org from any joined machine, with no inbound port on spokes. Interact works with a
+grant and owner consent.
+
+**Code:**
+
+- Gateway outbound mode:
+  - `Gateway/HubDialer.cs` receives `open-stream` (by way of the daemon''s `HubLink`, or the gateway''s own control
+    socket; decide in the phase) and dials `wss://hub/streams/attach/{streamId}`;
+  - it wraps that socket in the existing `TermBridge` and `StreamMasker` path, unchanged.
+- Hub `StreamRelay`:
+  - matches the viewer socket to the spoke socket by `streamId` (a 10 s rendezvous timeout);
+  - splices binary messages without re-encoding;
+  - enforces the level (it drops Input, Resize and TakeSize for watchers, as `TermBridge` does);
+  - rechecks access every 10 s and closes with 1008 on revoke.
+- Grants move to the hub:
+  - `term_grants` and `term_audit` live in the hub DB;
+  - `orchestrator gateway grant|revoke|grants|audit` call the hub when joined;
+  - the spoke''s `acl.json` (`TermGatewayAcl`) is written from the hub''s pushes, so the gateway''s own check stays in
+    place as defence in depth;
+  - each `open-stream` carries the hub''s signature over `{streamId, session, viewer, level, expires}`, which the spoke
+    verifies with the hub key it pinned at enrollment.
+- Owner consent for interact:
+  - on the first use of each grant, the spoke''s dashboard toasts "<viewer> wants to type into <tab>: Allow for <grant
+    span> / Deny", with the answer kept for that grant;
+  - with no answer in 30 s, the viewer gets watch only.
+- Compression: offered to watchers only. Interactive remote streams negotiate no deflate (the CRIME/BREACH note in
+  T934 and T935).
+- Team Wall: `ISessionDirectory` (Hub) lists `/org/sessions`. `GatewayClient` gains a hub base URL, and the tiles and
+  TermViewer `--remote` get a `--hub` form. Peer remotes are still listed beside them.
+
+**Protocol.**
+
+- Control: `open-stream` and `close-stream`.
+- Stream sockets: TermHost frames unchanged (TermProtocol 1 and 2), one frame per message.
+- The hub never synthesizes frames, except `Paused`, which already comes only from the gateway.
+
+**Migration.** `orchestrator hub import-grants` copies the host''s `term_grants` once. Existing peer-to-peer tokens are
+untouched.
+
+**Tests:**
+
+- Relay splice end to end in-process: hub, a fake spoke and a stub TermHost from the `--unlisted` smoke pattern.
+- A watcher''s input dropped at the hub *and* at the spoke.
+- An unshared session answers 404 through the hub.
+- A pause mid-stream gives a `Paused` frame.
+- A revoke closes within 10 s.
+- A consent timeout falls back to watch.
+- A wrong signature on `open-stream` is refused by the spoke.
+- No byte of a fake `sk-ant-` token reaches the viewer (the T935 smoke test, through the hub).
+
+**Risks.**
+
+- Latency through the relay: plus one RTT. For typing, that is fine under ~100 ms.
+- Hub bandwidth: about 36 KB/s for 12 working CLIs, with bursts to ~360 KB/s (the spike''s estimates), which is
+  trivial.
+- A later "direct when reachable" optimization (the Tailscale-style peer path) stays possible, because the peer gateway
+  still exists.
+
+**Effort.** 2 to 3 weeks.', '2026-10-27T16:05:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1137', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 10 of 18, phase 3. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 3: terminal streams through the hub (Team Wall at org scale)
+
+**Goal.** Watch any shared CLI in the org from any joined machine, with no inbound port on spokes. Interact works with a
+grant and owner consent.
+
+**Code:**
+
+- Gateway outbound mode:
+  - `Gateway/HubDialer.cs` receives `open-stream` (by way of the daemon''s `HubLink`, or the gateway''s own control
+    socket; decide in the phase) and dials `wss://hub/streams/attach/{streamId}`;
+  - it wraps that socket in the existing `TermBridge` and `StreamMasker` path, unchanged.
+- Hub `StreamRelay`:
+  - matches the viewer socket to the spoke socket by `streamId` (a 10 s rendezvous timeout);
+  - splices binary messages without re-encoding;
+  - enforces the level (it drops Input, Resize and TakeSize for watchers, as `TermBridge` does);
+  - rechecks access every 10 s and closes with 1008 on revoke.
+- Grants move to the hub:
+  - `term_grants` and `term_audit` live in the hub DB;
+  - `orchestrator gateway grant|revoke|grants|audit` call the hub when joined;
+  - the spoke''s `acl.json` (`TermGatewayAcl`) is written from the hub''s pushes, so the gateway''s own check stays in
+    place as defence in depth;
+  - each `open-stream` carries the hub''s signature over `{streamId, session, viewer, level, expires}`, which the spoke
+    verifies with the hub key it pinned at enrollment.
+- Owner consent for interact:
+  - on the first use of each grant, the spoke''s dashboard toasts "<viewer> wants to type into <tab>: Allow for <grant
+    span> / Deny", with the answer kept for that grant;
+  - with no answer in 30 s, the viewer gets watch only.
+- Compression: offered to watchers only. Interactive remote streams negotiate no deflate (the CRIME/BREACH note in
+  T934 and T935).
+- Team Wall: `ISessionDirectory` (Hub) lists `/org/sessions`. `GatewayClient` gains a hub base URL, and the tiles and
+  TermViewer `--remote` get a `--hub` form. Peer remotes are still listed beside them.
+
+**Protocol.**
+
+- Control: `open-stream` and `close-stream`.
+- Stream sockets: TermHost frames unchanged (TermProtocol 1 and 2), one frame per message.
+- The hub never synthesizes frames, except `Paused`, which already comes only from the gateway.
+
+**Migration.** `orchestrator hub import-grants` copies the host''s `term_grants` once. Existing peer-to-peer tokens are
+untouched.
+
+**Tests:**
+
+- Relay splice end to end in-process: hub, a fake spoke and a stub TermHost from the `--unlisted` smoke pattern.
+- A watcher''s input dropped at the hub *and* at the spoke.
+- An unshared session answers 404 through the hub.
+- A pause mid-stream gives a `Paused` frame.
+- A revoke closes within 10 s.
+- A consent timeout falls back to watch.
+- A wrong signature on `open-stream` is refused by the spoke.
+- No byte of a fake `sk-ant-` token reaches the viewer (the T935 smoke test, through the hub).
+
+**Risks.**
+
+- Latency through the relay: plus one RTT. For typing, that is fine under ~100 ms.
+- Hub bandwidth: about 36 KB/s for 12 working CLIs, with bursts to ~360 KB/s (the spike''s estimates), which is
+  trivial.
+- A later "direct when reachable" optimization (the Tailscale-style peer path) stays possible, because the peer gateway
+  still exists.
+
+**Effort.** 2 to 3 weeks.', '2026-10-27T16:05:52Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1138', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 11 of 18, phase 3. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 3: terminal streams through the hub (Team Wall at org scale)
+
+**Goal.** Watch any shared CLI in the org from any joined machine, with no inbound port on spokes. Interact works with a
+grant and owner consent.
+
+**Code:**
+
+- Gateway outbound mode:
+  - `Gateway/HubDialer.cs` receives `open-stream` (by way of the daemon''s `HubLink`, or the gateway''s own control
+    socket; decide in the phase) and dials `wss://hub/streams/attach/{streamId}`;
+  - it wraps that socket in the existing `TermBridge` and `StreamMasker` path, unchanged.
+- Hub `StreamRelay`:
+  - matches the viewer socket to the spoke socket by `streamId` (a 10 s rendezvous timeout);
+  - splices binary messages without re-encoding;
+  - enforces the level (it drops Input, Resize and TakeSize for watchers, as `TermBridge` does);
+  - rechecks access every 10 s and closes with 1008 on revoke.
+- Grants move to the hub:
+  - `term_grants` and `term_audit` live in the hub DB;
+  - `orchestrator gateway grant|revoke|grants|audit` call the hub when joined;
+  - the spoke''s `acl.json` (`TermGatewayAcl`) is written from the hub''s pushes, so the gateway''s own check stays in
+    place as defence in depth;
+  - each `open-stream` carries the hub''s signature over `{streamId, session, viewer, level, expires}`, which the spoke
+    verifies with the hub key it pinned at enrollment.
+- Owner consent for interact:
+  - on the first use of each grant, the spoke''s dashboard toasts "<viewer> wants to type into <tab>: Allow for <grant
+    span> / Deny", with the answer kept for that grant;
+  - with no answer in 30 s, the viewer gets watch only.
+- Compression: offered to watchers only. Interactive remote streams negotiate no deflate (the CRIME/BREACH note in
+  T934 and T935).
+- Team Wall: `ISessionDirectory` (Hub) lists `/org/sessions`. `GatewayClient` gains a hub base URL, and the tiles and
+  TermViewer `--remote` get a `--hub` form. Peer remotes are still listed beside them.
+
+**Protocol.**
+
+- Control: `open-stream` and `close-stream`.
+- Stream sockets: TermHost frames unchanged (TermProtocol 1 and 2), one frame per message.
+- The hub never synthesizes frames, except `Paused`, which already comes only from the gateway.
+
+**Migration.** `orchestrator hub import-grants` copies the host''s `term_grants` once. Existing peer-to-peer tokens are
+untouched.
+
+**Tests:**
+
+- Relay splice end to end in-process: hub, a fake spoke and a stub TermHost from the `--unlisted` smoke pattern.
+- A watcher''s input dropped at the hub *and* at the spoke.
+- An unshared session answers 404 through the hub.
+- A pause mid-stream gives a `Paused` frame.
+- A revoke closes within 10 s.
+- A consent timeout falls back to watch.
+- A wrong signature on `open-stream` is refused by the spoke.
+- No byte of a fake `sk-ant-` token reaches the viewer (the T935 smoke test, through the hub).
+
+**Risks.**
+
+- Latency through the relay: plus one RTT. For typing, that is fine under ~100 ms.
+- Hub bandwidth: about 36 KB/s for 12 working CLIs, with bursts to ~360 KB/s (the spike''s estimates), which is
+  trivial.
+- A later "direct when reachable" optimization (the Tailscale-style peer path) stays possible, because the peer gateway
+  still exists.
+
+**Effort.** 2 to 3 weeks.', '2026-10-27T16:05:59Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1139', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 12 of 18, phase 4. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 4: shared tickets and leases
+
+**Goal.** Every joined spoke works the same queue with no double claims. Tickets Desktop and the hooks keep working from
+a local replica.
+
+**Code:**
+
+- Hub Tickets API over `TicketsDb`:
+  - `GET /tickets?since=<cursor>` (the replica feed);
+  - `POST /tickets/{id}/notes|status|assign|approve`;
+  - authorized by role and org.
+- The hub''s `IClaims` implementation:
+  - `Allocate.Next` runs **on the hub**, with the spoke''s reported `LoginRoom`s and allocate CLIs from the heartbeat;
+  - it writes `leases(ticket, member, device, login, session, lease_id, epoch, expires_utc, grace_until_utc)`,
+    `assignments` and `ticket_work` in one transaction (`TicketsDb`''s write lock).
+- Spoke:
+  - `NextCommand` in `Join` sends `claim` through `HubLink`, a local request over the daemon''s inbox, with a 10 s
+    timeout and a plain "hub unreachable: nothing claimed" message;
+  - worktree creation and `Dispatcher` stay local;
+  - renewals ride on the heartbeat;
+  - the ticket-close path sends `complete {leaseId, epoch, commit}`.
+- Replica: the spoke applies the feed into `data/Tickets.db` through `TicketsDb` (the file the hooks read with stdlib
+  sqlite3). Its local writes are refused in `Join` unless they come from the replica writer.
+- Git sync: `Daemon.SyncTicketsDbIfDue` and `SyncOrchestratorDbIfDue` are skipped when `Mode = Join`. Only the hub
+  machine syncs.
+- Cross-repo work in MindAttic.Tickets (its own ticket):
+  - a `TicketsDb` remote-writer hook, so the `tickets` CLI and Tickets Desktop write through the hub API when
+    `Join` is configured (read from the Orchestrator''s hub settings or its own);
+  - otherwise they are read-only with a clear message.
+
+**Protocol.**
+
+- `claim`, `lease-grant`, `renew` (on the heartbeat), `complete`, `release`, `lease-lost`.
+- `replica-delta {cursor, rows}`.
+
+**Lease rules (from `2-plan.md` §4.3):**
+
+- A lease lives 3 heartbeats.
+- An expired lease is held for the offline grace (`Hub.OfflineGraceMinutes`) before the ticket is queued again.
+- A stale epoch is refused.
+- A spoke told `lease-lost` stops that ticket''s subagent the way `AgentAbort` does, and keeps its worktree.
+
+**Migration.**
+
+- `hub import-tickets` points the hub''s `TicketsDb` at the host''s SQL Server database. Same machine, so it is a
+  config change, not a copy.
+- Joined spokes'' `data/Tickets.db` is rebuilt from the feed on first join, and the old file is kept as `.prejoin`.
+
+**Tests:**
+
+- Two fake spokes claim at once and get no duplicates.
+- A spoke going offline keeps its lease through the grace, then the ticket is requeued.
+- A stale-epoch complete is refused.
+- The replica converges after deltas are missed.
+- Hooks read the replica (the existing hook tests point at a replica file).
+- `Off` and `Host` still claim locally with today''s semantics, and the existing `Allocate` tests are unchanged.
+
+**Risks.** **The highest of any phase.**
+
+- Concurrency bugs in claims.
+- Tickets Desktop writing to a replica.
+- Moving git-sync ownership.
+
+Mitigations: ship dark; run `Host` mode on the main machine alone for a week, where leases are local but go through the
+hub; then add one remote spoke.
+
+**Effort.** 3 to 4 weeks, plus about 1 week in MindAttic.Tickets.', '2026-10-27T16:06:12Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1140', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 13 of 18, phase 4. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 4: shared tickets and leases
+
+**Goal.** Every joined spoke works the same queue with no double claims. Tickets Desktop and the hooks keep working from
+a local replica.
+
+**Code:**
+
+- Hub Tickets API over `TicketsDb`:
+  - `GET /tickets?since=<cursor>` (the replica feed);
+  - `POST /tickets/{id}/notes|status|assign|approve`;
+  - authorized by role and org.
+- The hub''s `IClaims` implementation:
+  - `Allocate.Next` runs **on the hub**, with the spoke''s reported `LoginRoom`s and allocate CLIs from the heartbeat;
+  - it writes `leases(ticket, member, device, login, session, lease_id, epoch, expires_utc, grace_until_utc)`,
+    `assignments` and `ticket_work` in one transaction (`TicketsDb`''s write lock).
+- Spoke:
+  - `NextCommand` in `Join` sends `claim` through `HubLink`, a local request over the daemon''s inbox, with a 10 s
+    timeout and a plain "hub unreachable: nothing claimed" message;
+  - worktree creation and `Dispatcher` stay local;
+  - renewals ride on the heartbeat;
+  - the ticket-close path sends `complete {leaseId, epoch, commit}`.
+- Replica: the spoke applies the feed into `data/Tickets.db` through `TicketsDb` (the file the hooks read with stdlib
+  sqlite3). Its local writes are refused in `Join` unless they come from the replica writer.
+- Git sync: `Daemon.SyncTicketsDbIfDue` and `SyncOrchestratorDbIfDue` are skipped when `Mode = Join`. Only the hub
+  machine syncs.
+- Cross-repo work in MindAttic.Tickets (its own ticket):
+  - a `TicketsDb` remote-writer hook, so the `tickets` CLI and Tickets Desktop write through the hub API when
+    `Join` is configured (read from the Orchestrator''s hub settings or its own);
+  - otherwise they are read-only with a clear message.
+
+**Protocol.**
+
+- `claim`, `lease-grant`, `renew` (on the heartbeat), `complete`, `release`, `lease-lost`.
+- `replica-delta {cursor, rows}`.
+
+**Lease rules (from `2-plan.md` §4.3):**
+
+- A lease lives 3 heartbeats.
+- An expired lease is held for the offline grace (`Hub.OfflineGraceMinutes`) before the ticket is queued again.
+- A stale epoch is refused.
+- A spoke told `lease-lost` stops that ticket''s subagent the way `AgentAbort` does, and keeps its worktree.
+
+**Migration.**
+
+- `hub import-tickets` points the hub''s `TicketsDb` at the host''s SQL Server database. Same machine, so it is a
+  config change, not a copy.
+- Joined spokes'' `data/Tickets.db` is rebuilt from the feed on first join, and the old file is kept as `.prejoin`.
+
+**Tests:**
+
+- Two fake spokes claim at once and get no duplicates.
+- A spoke going offline keeps its lease through the grace, then the ticket is requeued.
+- A stale-epoch complete is refused.
+- The replica converges after deltas are missed.
+- Hooks read the replica (the existing hook tests point at a replica file).
+- `Off` and `Host` still claim locally with today''s semantics, and the existing `Allocate` tests are unchanged.
+
+**Risks.** **The highest of any phase.**
+
+- Concurrency bugs in claims.
+- Tickets Desktop writing to a replica.
+- Moving git-sync ownership.
+
+Mitigations: ship dark; run `Host` mode on the main machine alone for a week, where leases are local but go through the
+hub; then add one remote spoke.
+
+**Effort.** 3 to 4 weeks, plus about 1 week in MindAttic.Tickets.', '2026-10-27T16:06:45Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1141', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 15 of 18, phase 5. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 5: central policy and cross-machine dispatch
+
+**Goal.** The org''s pacing policy is set once and holds on every spoke. Work can be dispatched to a member''s machine
+that has opted in.
+
+**Code:**
+
+- Policy: `org limit`, `org allow`, `PaceTargetPercent`, `RepoOrgs` and the weekly reserve are written at the hub (the
+  CLI and Settings modal call the hub when joined) and pushed as `PolicySnapshot`.
+- `IPolicySource` (Hub) feeds `AccountPacer` and `TicketPins`.
+- With no snapshot, the spoke uses the defaults (`UsageCutoffs.Default*`).
+- Allowance split: when one login is live on more than one device, the hub divides the login''s subagent allowance by
+  active CLIs across the devices (the `SubagentShare` rule) and pushes `allowanceShare`. `AccountPacer` writes its
+  share into `rl-status.json`.
+- Remote dispatch:
+  - the hub sends `dispatch {ticket, login, prompt}` only to spokes with `Hub.AcceptDispatch = true`, a setting the
+    member sets on their own machine;
+  - the spoke runs the existing `Dispatcher` and Launcher path on its own login;
+  - the hub never turns `/allocate` on in any CLI.
+- Rebalance and failover:
+  - `AccountRebalancer` decisions that cross machines become hub reassignments of *tickets*, never moves of a CLI to
+    another person''s login (T681''s rule);
+  - API-key failover reassigns the ticket to the API-key person on a key-holder spoke (`Hub.KeyHolder = true`, set by
+    an admin);
+  - `ApiSpend` is reported by that spoke.
+
+**Protocol.** `policy` v1, `allowance-share`, `dispatch` and `dispatch-result`.
+
+**Migration.** `hub import-policy` copies `usage-cutoffs`, allowances and settings once.
+
+**Tests:**
+
+- The policy applies after a push.
+- An offline spoke falls back to the last policy, then to the defaults.
+- Two devices on one login split the allowance and never exceed it together.
+- Dispatch is refused to a spoke that didn''t opt in.
+- Failover never targets another person''s login.
+
+**Risks.** Policy lag. Hard stops use Claude''s own account-wide percent locally, so lag can only delay a *raised*
+allowance, never break a cutoff.
+
+**Effort.** 2 to 3 weeks.', '2026-10-27T16:07:24Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1142', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 16 of 18, phase 5. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 5: central policy and cross-machine dispatch
+
+**Goal.** The org''s pacing policy is set once and holds on every spoke. Work can be dispatched to a member''s machine
+that has opted in.
+
+**Code:**
+
+- Policy: `org limit`, `org allow`, `PaceTargetPercent`, `RepoOrgs` and the weekly reserve are written at the hub (the
+  CLI and Settings modal call the hub when joined) and pushed as `PolicySnapshot`.
+- `IPolicySource` (Hub) feeds `AccountPacer` and `TicketPins`.
+- With no snapshot, the spoke uses the defaults (`UsageCutoffs.Default*`).
+- Allowance split: when one login is live on more than one device, the hub divides the login''s subagent allowance by
+  active CLIs across the devices (the `SubagentShare` rule) and pushes `allowanceShare`. `AccountPacer` writes its
+  share into `rl-status.json`.
+- Remote dispatch:
+  - the hub sends `dispatch {ticket, login, prompt}` only to spokes with `Hub.AcceptDispatch = true`, a setting the
+    member sets on their own machine;
+  - the spoke runs the existing `Dispatcher` and Launcher path on its own login;
+  - the hub never turns `/allocate` on in any CLI.
+- Rebalance and failover:
+  - `AccountRebalancer` decisions that cross machines become hub reassignments of *tickets*, never moves of a CLI to
+    another person''s login (T681''s rule);
+  - API-key failover reassigns the ticket to the API-key person on a key-holder spoke (`Hub.KeyHolder = true`, set by
+    an admin);
+  - `ApiSpend` is reported by that spoke.
+
+**Protocol.** `policy` v1, `allowance-share`, `dispatch` and `dispatch-result`.
+
+**Migration.** `hub import-policy` copies `usage-cutoffs`, allowances and settings once.
+
+**Tests:**
+
+- The policy applies after a push.
+- An offline spoke falls back to the last policy, then to the defaults.
+- Two devices on one login split the allowance and never exceed it together.
+- Dispatch is refused to a spoke that didn''t opt in.
+- Failover never targets another person''s login.
+
+**Risks.** Policy lag. Hard stops use Claude''s own account-wide percent locally, so lag can only delay a *raised*
+allowance, never break a cutoff.
+
+**Effort.** 2 to 3 weeks.', '2026-10-27T16:07:32Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1143', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 17 of 18, phase 5. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 5: central policy and cross-machine dispatch
+
+**Goal.** The org''s pacing policy is set once and holds on every spoke. Work can be dispatched to a member''s machine
+that has opted in.
+
+**Code:**
+
+- Policy: `org limit`, `org allow`, `PaceTargetPercent`, `RepoOrgs` and the weekly reserve are written at the hub (the
+  CLI and Settings modal call the hub when joined) and pushed as `PolicySnapshot`.
+- `IPolicySource` (Hub) feeds `AccountPacer` and `TicketPins`.
+- With no snapshot, the spoke uses the defaults (`UsageCutoffs.Default*`).
+- Allowance split: when one login is live on more than one device, the hub divides the login''s subagent allowance by
+  active CLIs across the devices (the `SubagentShare` rule) and pushes `allowanceShare`. `AccountPacer` writes its
+  share into `rl-status.json`.
+- Remote dispatch:
+  - the hub sends `dispatch {ticket, login, prompt}` only to spokes with `Hub.AcceptDispatch = true`, a setting the
+    member sets on their own machine;
+  - the spoke runs the existing `Dispatcher` and Launcher path on its own login;
+  - the hub never turns `/allocate` on in any CLI.
+- Rebalance and failover:
+  - `AccountRebalancer` decisions that cross machines become hub reassignments of *tickets*, never moves of a CLI to
+    another person''s login (T681''s rule);
+  - API-key failover reassigns the ticket to the API-key person on a key-holder spoke (`Hub.KeyHolder = true`, set by
+    an admin);
+  - `ApiSpend` is reported by that spoke.
+
+**Protocol.** `policy` v1, `allowance-share`, `dispatch` and `dispatch-result`.
+
+**Migration.** `hub import-policy` copies `usage-cutoffs`, allowances and settings once.
+
+**Tests:**
+
+- The policy applies after a push.
+- An offline spoke falls back to the last policy, then to the defaults.
+- Two devices on one login split the allowance and never exceed it together.
+- Dispatch is refused to a spoke that didn''t opt in.
+- Failover never targets another person''s login.
+
+**Risks.** Policy lag. Hard stops use Claude''s own account-wide percent locally, so lag can only delay a *raised*
+allowance, never break a cutoff.
+
+**Effort.** 2 to 3 weeks.', '2026-10-27T16:07:44Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1144', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 18 of 18, phase 6. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 6: hardening, deployment and the dedicated hub
+
+**Goal.** Run the hub off a member''s desktop and operate it safely.
+
+**Code and ops:**
+
+- `deploy.ps1` publishes `Hub`, and the gateway too (its publish was left out of T928).
+- Hub backup: the SQL Server and SQLite pattern in `DATA_STORES.md`.
+- A runbook for moving the hub to a dedicated tailnet box. Spokes re-pin by `hub join --rotate-pin`, signed by the old
+  key.
+- An optional cloud relay in front of the hub for members off the tailnet (Tailscale Funnel or an Azure container).
+  Same protocol.
+- Rate limits on `/enroll` and `/device/token`.
+- A device revocation UI in the dashboard.
+- A hub audit viewer.
+- Version-skew tests: spoke N-1 against hub N.
+- Chaos tests: hub kill, spoke sleep, clock skew.
+
+**Effort.** 1 to 2 weeks.', '2026-10-27T16:07:56Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T833', 'Symptom: Inside the Orchestrator''s embedded Terminals panel (TerminalPanesHost), when a CLI running
 in a pane shows an interactive, arrow-key-driven menu (e.g. a selection list or permission prompt),
 the Up/Down/Left/Right keys don''t reach the CLI. It looks like the WPF app is intercepting/consuming
@@ -31307,6 +32782,85 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T859'
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T860', 'Symptom: the 5-hour and weekly percent meters only update on the dashboard''s poll interval, so they read out of date between refreshes. Ask: replace (or supplement) the polling refresh with a push -- the pace ledger / daemon notifies the dashboard the moment a new reading lands, and the UI updates immediately off that message rather than waiting for its next poll tick. Acceptance: every percent shown on screen reflects the latest known reading as soon as it''s available, not up to one poll interval stale.', '2026-10-26T02:25:10Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T171', 'MainWindow.xaml had ~36 lines of double-encoded UTF-8 (e.g. Content="Rejectâ€¦" instead of "Reject…"), decoded back to the correct code points (verified the cp1252->UTF-8 round trip recovers the original characters) and rewritten in place. Confirmed via repo-wide grep that no other source file carries the same corruption, and data/Tickets.sql''s ''â€™''/''â€”'' occurrences are historical ticket text quoting an unrelated Orchestrator encoding bug (M.ORCH-T708/T695), not corruption here. Separately, Theme/Styles.xaml hardcoded FontFamily="Segoe MDL2 Assets" for the ComboBox dropdown chevron (&#xE70D;) and CheckBox checkmark (&#xE73E;), which renders as an empty box (tofu) when that font isn''t present; added "Segoe Fluent Icons, Segoe MDL2 Assets" as a fallback list since both fonts share these glyph code points.', '2026-10-27T14:35:45Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T172', 'Replaces the old Test-Stale (installed exe vs. source file mtimes) with: fetch origin, pick the newer of main/origin-main (origin-main when diverged, warning if main has unpushed build-input changes), stamp staleness by the git tree ids of the build inputs at that commit (so a ticket-db sync doesn''t trigger a republish), and dotnet publish from a temporary --detach worktree of that commit (cleaned up in a finally), so a dirty working tree or stale bin/obj never reach the install.', '2026-10-27T15:22:15Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T173', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 14 of 18, phase 4. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 4: shared tickets and leases
+
+**Goal.** Every joined spoke works the same queue with no double claims. Tickets Desktop and the hooks keep working from
+a local replica.
+
+**Code:**
+
+- Hub Tickets API over `TicketsDb`:
+  - `GET /tickets?since=<cursor>` (the replica feed);
+  - `POST /tickets/{id}/notes|status|assign|approve`;
+  - authorized by role and org.
+- The hub''s `IClaims` implementation:
+  - `Allocate.Next` runs **on the hub**, with the spoke''s reported `LoginRoom`s and allocate CLIs from the heartbeat;
+  - it writes `leases(ticket, member, device, login, session, lease_id, epoch, expires_utc, grace_until_utc)`,
+    `assignments` and `ticket_work` in one transaction (`TicketsDb`''s write lock).
+- Spoke:
+  - `NextCommand` in `Join` sends `claim` through `HubLink`, a local request over the daemon''s inbox, with a 10 s
+    timeout and a plain "hub unreachable: nothing claimed" message;
+  - worktree creation and `Dispatcher` stay local;
+  - renewals ride on the heartbeat;
+  - the ticket-close path sends `complete {leaseId, epoch, commit}`.
+- Replica: the spoke applies the feed into `data/Tickets.db` through `TicketsDb` (the file the hooks read with stdlib
+  sqlite3). Its local writes are refused in `Join` unless they come from the replica writer.
+- Git sync: `Daemon.SyncTicketsDbIfDue` and `SyncOrchestratorDbIfDue` are skipped when `Mode = Join`. Only the hub
+  machine syncs.
+- Cross-repo work in MindAttic.Tickets (its own ticket):
+  - a `TicketsDb` remote-writer hook, so the `tickets` CLI and Tickets Desktop write through the hub API when
+    `Join` is configured (read from the Orchestrator''s hub settings or its own);
+  - otherwise they are read-only with a clear message.
+
+**Protocol.**
+
+- `claim`, `lease-grant`, `renew` (on the heartbeat), `complete`, `release`, `lease-lost`.
+- `replica-delta {cursor, rows}`.
+
+**Lease rules (from `2-plan.md` §4.3):**
+
+- A lease lives 3 heartbeats.
+- An expired lease is held for the offline grace (`Hub.OfflineGraceMinutes`) before the ticket is queued again.
+- A stale epoch is refused.
+- A spoke told `lease-lost` stops that ticket''s subagent the way `AgentAbort` does, and keeps its worktree.
+
+**Migration.**
+
+- `hub import-tickets` points the hub''s `TicketsDb` at the host''s SQL Server database. Same machine, so it is a
+  config change, not a copy.
+- Joined spokes'' `data/Tickets.db` is rebuilt from the feed on first join, and the old file is kept as `.prejoin`.
+
+**Tests:**
+
+- Two fake spokes claim at once and get no duplicates.
+- A spoke going offline keeps its lease through the grace, then the ticket is requeued.
+- A stale-epoch complete is refused.
+- The replica converges after deltas are missed.
+- Hooks read the replica (the existing hook tests point at a replica file).
+- `Off` and `Host` still claim locally with today''s semantics, and the existing `Allocate` tests are unchanged.
+
+**Risks.** **The highest of any phase.**
+
+- Concurrency bugs in claims.
+- Tickets Desktop writing to a replica.
+- Moving git-sync ownership.
+
+Mitigations: ship dark; run `Host` mode on the main machine alone for a week, where leases are local but go through the
+hub; then add one remote spoke.
+
+**Effort.** 3 to 4 weeks, plus about 1 week in MindAttic.Tickets.', '2026-10-27T16:07:14Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('MAT-T65', 'The user (2026-10-27): ''NO! always same worktree/branch'', ''never ever EVER make separate branches'', ''ALWAYS LAYER CODE ON TOP; this is a GOLDEN RULE'', ''write it globally''. Written into MINDATTIC_AGENT.md (local, untracked), mindattic-agent-standard/AGENTS.md (Branches) and shared/commands/test.md (fix subagents no longer get their own worktrees).', '2026-10-27T15:00:11Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('MAT-T66', 'The user (2026-10-27): ''Make sure any request becomes a new ticket, or is appended to an existing ticket so that every action that writes code in the system is aligned to a ticket GLOBAL GOLDEN RULE''. Written into MINDATTIC_AGENT.md (local) and mindattic-agent-standard/AGENTS.md.', '2026-10-27T15:24:35Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T206', 'RB-T172 verified in the editor (sm_hub_1, sm_pier_1, sp_soc_2): pedlight_flash, lightbar, arcade screens and oilriga frames on g_tColor; blackwater water_normal frames on g_tNormal; sewer_water and surf offsets; fire_pallet selfillum flicker; clouds.vmat g_vTexCoordScrollSpeed 0.043,0.025. Not reachable from the maps imported so far: clublight, TV screens, highlights. Import a map that uses them, play, read the attributes with sbox-cli run_csharp.', '2026-10-26T05:18:06Z');
@@ -31530,6 +33084,24 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UQD-T69', 'O
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UQD-T70', 'DuelController today forks every property and command between MatchSession and IOnlineDuelSource. Introduce IDuelAuthority in Runtime (Core types only), LocalDuelAuthority (MatchSession + AI tick) and OnlineDuelAuthority (wraps IOnlineDuelSource, holds the verdict gating now in DuelController); DuelController delegates to the current one. No behaviour change.', '2026-10-27T03:18:31Z');
 
 -- ticket_labels
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1128', 'hub-and-spoke', '2026-10-27T16:03:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1129', 'hub-and-spoke', '2026-10-27T16:04:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1130', 'hub-and-spoke', '2026-10-27T16:04:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1131', 'hub-and-spoke', '2026-10-27T16:04:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1132', 'hub-and-spoke', '2026-10-27T16:05:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1133', 'hub-and-spoke', '2026-10-27T16:05:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1134', 'hub-and-spoke', '2026-10-27T16:05:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1135', 'hub-and-spoke', '2026-10-27T16:05:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1136', 'hub-and-spoke', '2026-10-27T16:05:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1137', 'hub-and-spoke', '2026-10-27T16:05:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1138', 'hub-and-spoke', '2026-10-27T16:06:09Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1139', 'hub-and-spoke', '2026-10-27T16:06:37Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1140', 'hub-and-spoke', '2026-10-27T16:07:11Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1141', 'hub-and-spoke', '2026-10-27T16:07:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1142', 'hub-and-spoke', '2026-10-27T16:07:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1143', 'hub-and-spoke', '2026-10-27T16:07:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1144', 'hub-and-spoke', '2026-10-27T16:08:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.TIX-T173', 'hub-and-spoke', '2026-10-27T16:07:23Z');
 
 -- repo_renames
 INSERT INTO repo_renames (seq, old_name, new_name, at, reason) VALUES (1, 'GTFO.AbsurdWeapons', 'GTFO.EZ.AbsurdWeapons', '2026-10-19T02:14:58Z', 'Renamed under GTFO.EZ, its core mod, before release (G.EZ-T77)');
@@ -32842,6 +34414,258 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.MDIA-T5', 'M.TIX-T14',
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1057', 'M.PSST-T25', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1070', 'M.ORCH-T854', 'duplicates', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1070', 'M.ORCH-T879', 'duplicates', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1128', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1128', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1129', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1129', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1130', 'M.ORCH-T1128', 'requires', 'phase 0 before phase 1');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1130', 'M.ORCH-T1129', 'requires', 'phase 0 before phase 1');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1130', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1130', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1131', 'M.ORCH-T1128', 'requires', 'phase 0 before phase 1');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1131', 'M.ORCH-T1129', 'requires', 'phase 0 before phase 1');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1131', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1131', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1132', 'M.ORCH-T1128', 'requires', 'phase 0 before phase 1');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1132', 'M.ORCH-T1129', 'requires', 'phase 0 before phase 1');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1132', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1132', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1133', 'M.ORCH-T1130', 'requires', 'phase 1 before phase 2');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1133', 'M.ORCH-T1131', 'requires', 'phase 1 before phase 2');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1133', 'M.ORCH-T1132', 'requires', 'phase 1 before phase 2');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1133', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1133', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1134', 'M.ORCH-T1130', 'requires', 'phase 1 before phase 2');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1134', 'M.ORCH-T1131', 'requires', 'phase 1 before phase 2');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1134', 'M.ORCH-T1132', 'requires', 'phase 1 before phase 2');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1134', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1134', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1135', 'M.ORCH-T1130', 'requires', 'phase 1 before phase 3');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1135', 'M.ORCH-T1131', 'requires', 'phase 1 before phase 3');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1135', 'M.ORCH-T1132', 'requires', 'phase 1 before phase 3');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1135', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1135', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1136', 'M.ORCH-T1130', 'requires', 'phase 1 before phase 3');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1136', 'M.ORCH-T1131', 'requires', 'phase 1 before phase 3');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1136', 'M.ORCH-T1132', 'requires', 'phase 1 before phase 3');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1136', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1136', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1137', 'M.ORCH-T1130', 'requires', 'phase 1 before phase 3');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1137', 'M.ORCH-T1131', 'requires', 'phase 1 before phase 3');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1137', 'M.ORCH-T1132', 'requires', 'phase 1 before phase 3');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1137', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1137', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1138', 'M.ORCH-T1130', 'requires', 'phase 1 before phase 3');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1138', 'M.ORCH-T1131', 'requires', 'phase 1 before phase 3');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1138', 'M.ORCH-T1132', 'requires', 'phase 1 before phase 3');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1138', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1138', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1139', 'M.ORCH-T1133', 'requires', 'phase 2 before phase 4');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1139', 'M.ORCH-T1134', 'requires', 'phase 2 before phase 4');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1139', 'M.ORCH-T1135', 'requires', 'phase 3 before phase 4');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1139', 'M.ORCH-T1136', 'requires', 'phase 3 before phase 4');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1139', 'M.ORCH-T1137', 'requires', 'phase 3 before phase 4');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1139', 'M.ORCH-T1138', 'requires', 'phase 3 before phase 4');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1139', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1139', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1140', 'M.ORCH-T1133', 'requires', 'phase 2 before phase 4');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1140', 'M.ORCH-T1134', 'requires', 'phase 2 before phase 4');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1140', 'M.ORCH-T1135', 'requires', 'phase 3 before phase 4');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1140', 'M.ORCH-T1136', 'requires', 'phase 3 before phase 4');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1140', 'M.ORCH-T1137', 'requires', 'phase 3 before phase 4');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1140', 'M.ORCH-T1138', 'requires', 'phase 3 before phase 4');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1140', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1140', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1141', 'M.ORCH-T1139', 'requires', 'phase 4 before phase 5');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1141', 'M.ORCH-T1140', 'requires', 'phase 4 before phase 5');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1141', 'M.TIX-T173', 'requires', 'phase 4 before phase 5');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1141', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1141', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1142', 'M.ORCH-T1139', 'requires', 'phase 4 before phase 5');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1142', 'M.ORCH-T1140', 'requires', 'phase 4 before phase 5');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1142', 'M.TIX-T173', 'requires', 'phase 4 before phase 5');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1142', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1142', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1143', 'M.ORCH-T1139', 'requires', 'phase 4 before phase 5');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1143', 'M.ORCH-T1140', 'requires', 'phase 4 before phase 5');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1143', 'M.TIX-T173', 'requires', 'phase 4 before phase 5');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1143', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1143', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1144', 'M.ORCH-T1141', 'requires', 'phase 5 before phase 6');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1144', 'M.ORCH-T1142', 'requires', 'phase 5 before phase 6');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1144', 'M.ORCH-T1143', 'requires', 'phase 5 before phase 6');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1144', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1144', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T13', 'M.ORCH-T40', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T180', 'M.TIX-T65', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T181', 'M.COMP-T11', 'requires', NULL);
@@ -32970,6 +34794,24 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T117', 'M.ORCH-T50
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T135', 'M.TIX-T133', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T158', 'M.ORCH-T879', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T17', 'M.TIX-T18', 'related', 'migrated: named in ref');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T173', 'M.ORCH-T1133', 'requires', 'phase 2 before phase 4');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T173', 'M.ORCH-T1134', 'requires', 'phase 2 before phase 4');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T173', 'M.ORCH-T1135', 'requires', 'phase 3 before phase 4');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T173', 'M.ORCH-T1136', 'requires', 'phase 3 before phase 4');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T173', 'M.ORCH-T1137', 'requires', 'phase 3 before phase 4');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T173', 'M.ORCH-T1138', 'requires', 'phase 3 before phase 4');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T173', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T173', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T20', 'M.TIX-T18', 'supersedes', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T20', 'M.TIX-T19', 'supersedes', 'migrated: superseded by in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T23', 'M.TIX-T27', 'related', NULL);
@@ -34515,6 +36357,12 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('USOD-T6', 'USOD-T5', 're
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('USOD-T7', 'USOD-T6', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('USOD-T8', 'USOD-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('USOD-T9', 'USOD-T8', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', 'M.ORCH-T1127', 'implements', 'the plan this epic carries');
 
 -- blocks
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('AutoWebNav', 0, 'raw', NULL, '---
