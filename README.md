@@ -54,7 +54,7 @@ $ tickets ticket list --status open
 - Command palette (Ctrl+K, or the Commands… button): one box to jump to any ticket or story by ID or text, fuzzily, or run any command that can run now by name (`>` lists commands only, `#` tickets and stories only). Up/Down choose and Enter runs without leaving the box; a screen reader hears the result count and the selected entry as they change. A story opens with its text and links, and any linked ticket opens from there.
 - A Sync button (Ctrl+Shift+S) runs `tickets db sync` and shows the result; F5 refreshes.
 - `MindAttic.Tickets.Desktop.exe --root <dir> --ticket <ID>` opens on that ticket, selected with its detail pane open (an open one in the Queue, to approve, move or close; a closed one in Repos). Started again while the window is open, it hands the id to that window and brings it forward. The Orchestrator dashboard's ticket links start it this way.
-- `deploy.ps1` publishes it as a self-contained exe to `C:\Apps\MindAttic.Tickets.Desktop` with Desktop and Start-menu shortcuts (and reinstalls the `tickets` CLI alongside it, via `tools/install.ps1`, unless `-SkipCli`). The shortcuts open the install folder's `deploy.bat`, which asks first: `1) Deploy & Run` republishes (`-Republish`) and opens the app; `2) Run` just opens the installed app. `deploy.ps1 -LauncherOnly` rewrites that launcher and the shortcuts without building anything.
+- `run.ps1` publishes it as a self-contained exe to `C:\Apps\MindAttic.Tickets.Desktop` with Desktop and Start-menu shortcuts (and reinstalls the `tickets` CLI alongside it, via `tools/install.ps1`, unless `-SkipCli`). The shortcuts open the install folder's `run.bat`, which asks first: `1) Deploy & Run` republishes (`-Republish`) and opens the app; `2) Run` just opens the installed app. `run.ps1 -LauncherOnly` rewrites that launcher and the shortcuts without building anything.
 
 **Workspace jobs**
 - `repos status` shows each repo's uncommitted, unpushed and stashed work, ignored files that no build regenerates, and its GitHub state (archived, `work-in-progress` topic). Origins that predate a repo rename are resolved through GitHub's redirect.
@@ -158,7 +158,7 @@ tests/MindAttic.Tickets.Tests/    NUnit 4
 tests/MindAttic.Tickets.Desktop.Tests/  NUnit 4: Tickets Desktop's view model and store against a temporary database
 tools/codex.ps1                    Codex doctor + digest
 tools/install.ps1                  packs the library and CLI and installs `tickets` as a global tool
-deploy.ps1                         publishes Tickets Desktop and (re)creates its shortcuts
+run.ps1                            publishes Tickets Desktop and (re)creates its shortcuts
 ```
 
 ## Building and testing
@@ -173,7 +173,7 @@ The repo-level tests run real `git` against temporary repos; nothing touches the
 
 Install the CLI as a global `tickets` tool with `powershell -File tools/install.ps1` (packs the library and CLI to
 `C:\LocalNuGet` and installs or updates the tool from there). Publish and install Tickets Desktop, with its Desktop
-and Start-menu shortcuts, with `powershell -File deploy.ps1` (add `-Launch` to open it when done).
+and Start-menu shortcuts, with `powershell -File run.ps1` (add `-Launch` to open it when done).
 
 ## Limitations
 

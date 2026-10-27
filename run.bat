@@ -1,5 +1,5 @@
 @echo off
-rem Builds Tickets Desktop, installs it to C:\Apps\MindAttic.Tickets.Desktop and makes its desktop icon (deploy.ps1).
+rem Builds Tickets Desktop, installs it to C:\Apps\MindAttic.Tickets.Desktop and makes its desktop icon (run.ps1).
 set "APPS=C:\Apps"
 if not exist "%APPS%" set "APPS=%LOCALAPPDATA%\Programs"
 set "APP_EXE=%APPS%\MindAttic.Tickets.Desktop\MindAttic.Tickets.Desktop.exe"
@@ -11,7 +11,7 @@ echo.
 choice /c 12 /n /m "  Choose 1 or 2: "
 if errorlevel 2 goto run
 :deploy
-powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0deploy.ps1" -Republish -Launch %*
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0run.ps1" -Republish -Launch %*
 if errorlevel 1 (
     echo Deploy failed.
     if exist "%APP_EXE%" (
