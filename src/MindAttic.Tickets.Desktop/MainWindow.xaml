@@ -81,6 +81,20 @@
             </Style.Triggers>
         </Style>
 
+        <!-- An implementing ticket, as a small chip under a story row (M.TIX-T185): its id, clickable, outlined in its
+             ticket status colour. -->
+        <Style x:Key="ImplementerChip" TargetType="Border" BasedOn="{StaticResource Chip}">
+            <Setter Property="BorderBrush" Value="{DynamicResource StateOpen}" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding State}" Value="closed">
+                    <Setter Property="BorderBrush" Value="{DynamicResource StateClosed}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State}" Value="wont-do">
+                    <Setter Property="BorderBrush" Value="{DynamicResource StateWontDo}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
         <Style x:Key="FieldName" TargetType="TextBlock" BasedOn="{StaticResource Muted}">
             <Setter Property="Margin" Value="0,3,12,3" />
         </Style>
@@ -672,25 +686,60 @@
                          SelectedItem="{Binding SelectedStoryRow}" AutomationProperties.Name="Stories, by epic"
                          PreviewKeyDown="OnStoriesKeyDown"
                          VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling" VirtualizingPanel.IsVirtualizingWhenGrouping="True">
-                    <!-- Group by epic: a heading per epic (MainWindow sets the grouping) with its own New story and Rename. -->
+                    <!-- Group by epic: a heading per epic (MainWindow sets the grouping) with its own New story and Rename,
+                         a rollup of its implementing tickets' progress, what to work on next, and a collapse toggle that's
+                         remembered between runs (M.TIX-T182, M.TIX-T183, M.TIX-T184, M.TIX-T187). -->
                     <ListBox.GroupStyle>
                         <GroupStyle>
                             <GroupStyle.HeaderTemplate>
                                 <DataTemplate>
-                                    <WrapPanel Margin="4,12,0,4">
-                                        <TextBlock Text="{Binding Name.Heading}" FontWeight="SemiBold" FontSize="14" AutomationProperties.HeadingLevel="Level2" VerticalAlignment="Center" />
-                                        <TextBlock Text="{Binding ItemCount, StringFormat='  {0} stories'}" Style="{StaticResource Muted}" VerticalAlignment="Center" />
-                                        <Button Style="{StaticResource LinkBtn}" Content="New story" Margin="14,0,0,0" VerticalAlignment="Center"
-                                                Visibility="{Binding Name.IsEpic, Converter={StaticResource Visible}}"
-                                                Command="{Binding DataContext.NewStoryCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding Name}"
-                                                AutomationProperties.Name="{Binding Name.NewStoryName}" ToolTip="Add a story to this epic" />
-                                        <Button Style="{StaticResource LinkBtn}" Content="Rename" Margin="12,0,0,0" VerticalAlignment="Center"
-                                                Visibility="{Binding Name.IsEpic, Converter={StaticResource Visible}}"
-                                                Command="{Binding DataContext.RenameEpicCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding Name}"
-                                                AutomationProperties.Name="{Binding Name.RenameName}" ToolTip="Rename this epic; its stories keep their IDs" />
-                                    </WrapPanel>
+                                    <StackPanel Margin="4,12,0,4">
+                                        <WrapPanel>
+                                            <Button Style="{StaticResource MaToolButton}" Width="22" Height="22" FontSize="11" Margin="0,0,4,0"
+                                                    Command="{Binding DataContext.ToggleEpicCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding Name}"
+                                                    Content="{Binding Name.ChevronGlyph}" AutomationProperties.Name="{Binding Name.ToggleName}"
+                                                    ToolTip="Expand or collapse this group" />
+                                            <TextBlock Text="{Binding Name.Heading}" FontWeight="SemiBold" FontSize="14" AutomationProperties.HeadingLevel="Level2" VerticalAlignment="Center" />
+                                            <TextBlock Text="{Binding ItemCount, StringFormat='  {0} stories'}" Style="{StaticResource Muted}" VerticalAlignment="Center" />
+                                            <TextBlock Text="{Binding Name.RollupText, StringFormat='  ·  {0}'}" Style="{StaticResource Muted}" VerticalAlignment="Center"
+                                                       Visibility="{Binding Name.IsEpic, Converter={StaticResource Visible}}" />
+                                            <Border Style="{StaticResource Chip}" BorderBrush="{DynamicResource StateRejected}" Margin="10,0,0,0"
+                                                    Visibility="{Binding Name.BlockedCount, Converter={x:Static vm:Converters.PositiveToVisible}}"
+                                                    ToolTip="Open implementing tickets waiting on another open ticket">
+                                                <TextBlock Text="{Binding Name.BlockedCount, StringFormat='{}{0} blocked'}" FontSize="12" Foreground="{DynamicResource StateRejected}" />
+                                            </Border>
+                                            <Button Style="{StaticResource LinkBtn}" Content="New story" Margin="14,0,0,0" VerticalAlignment="Center"
+                                                    Visibility="{Binding Name.IsEpic, Converter={StaticResource Visible}}"
+                                                    Command="{Binding DataContext.NewStoryCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding Name}"
+                                                    AutomationProperties.Name="{Binding Name.NewStoryName}" ToolTip="Add a story to this epic" />
+                                            <Button Style="{StaticResource LinkBtn}" Content="Rename" Margin="12,0,0,0" VerticalAlignment="Center"
+                                                    Visibility="{Binding Name.IsEpic, Converter={StaticResource Visible}}"
+                                                    Command="{Binding DataContext.RenameEpicCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding Name}"
+                                                    AutomationProperties.Name="{Binding Name.RenameName}" ToolTip="Rename this epic; its stories keep their IDs" />
+                                        </WrapPanel>
+                                        <ProgressBar Style="{StaticResource MaProgressBar}" Minimum="0" Maximum="1" Value="{Binding Name.DoneFraction, Mode=OneWay}"
+                                                     Width="200" HorizontalAlignment="Left" Margin="30,4,0,0" ToolTip="{Binding Name.RollupText}"
+                                                     AutomationProperties.Name="{Binding Name.RollupText}"
+                                                     Visibility="{Binding Name.IsEpic, Converter={StaticResource Visible}}" />
+                                        <TextBlock Text="{Binding Name.NextUpText}" Style="{StaticResource Muted}" Margin="30,2,0,0"
+                                                   Visibility="{Binding Name.NextUpText, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
+                                    </StackPanel>
                                 </DataTemplate>
                             </GroupStyle.HeaderTemplate>
+                            <GroupStyle.ContainerStyle>
+                                <Style TargetType="{x:Type GroupItem}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type GroupItem}">
+                                                <StackPanel>
+                                                    <ContentPresenter />
+                                                    <ItemsPresenter Visibility="{Binding Name.IsExpanded, Converter={StaticResource Visible}}" />
+                                                </StackPanel>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </GroupStyle.ContainerStyle>
                         </GroupStyle>
                     </ListBox.GroupStyle>
                     <ListBox.ItemTemplate>
@@ -708,10 +757,30 @@
                                     <TextBlock Text="{Binding Statement}" TextWrapping="Wrap" MaxHeight="54" TextTrimming="CharacterEllipsis" ToolTip="{Binding Statement}" />
                                     <WrapPanel Margin="0,4,0,0">
                                         <TextBlock Text="{Binding StatusText}" FontSize="12" Margin="0,0,10,0" />
-                                        <TextBlock Text="{Binding ImplementersText}" Style="{StaticResource Muted}" Margin="0,0,10,0" />
                                         <TextBlock Text="unsaved edits" FontSize="12" FontWeight="SemiBold" Foreground="{DynamicResource StateProposed}"
                                                    Visibility="{Binding IsEdited, Converter={StaticResource Visible}}" />
                                     </WrapPanel>
+                                    <!-- Implementing tickets as chips (M.TIX-T185), not just the muted ImplementersText a screen reader
+                                         still gets via AutomationProperties.Name below. -->
+                                    <TextBlock Text="No implementing tickets" Style="{StaticResource Muted}" Margin="0,4,0,0"
+                                               Visibility="{Binding Implementers.Count, Converter={x:Static vm:Converters.ZeroToVisible}}" />
+                                    <ItemsControl ItemsSource="{Binding Implementers}" Focusable="False" Margin="0,4,0,0"
+                                                  AutomationProperties.Name="{Binding ImplementersText}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <WrapPanel />
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate DataType="{x:Type vm:ImplementerLine}">
+                                                <Border Style="{StaticResource ImplementerChip}">
+                                                    <Button Style="{StaticResource LinkBtn}" Content="{Binding TicketId}" VerticalAlignment="Center"
+                                                            Command="{Binding DataContext.GoToCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding TicketId}"
+                                                            AutomationProperties.Name="{Binding SpokenName, StringFormat='{}{0}: go to it'}" ToolTip="{Binding Summary}" />
+                                                </Border>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
                                 </StackPanel>
                             </Grid>
                         </DataTemplate>

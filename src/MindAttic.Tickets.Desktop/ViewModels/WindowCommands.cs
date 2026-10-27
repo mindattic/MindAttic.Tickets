@@ -33,6 +33,9 @@ public static class Converters
     public static readonly IValueConverter ZeroToVisible = new Converter(v => v is 0 ? Visibility.Visible : Visibility.Collapsed);
     public static readonly IValueConverter TrueToCollapsed = new Converter(v => v is true ? Visibility.Collapsed : Visibility.Visible);
 
+    /// <summary>Visible for an int greater than zero (an epic's blocked-ticket count badge); Collapsed for zero or less.</summary>
+    public static readonly IValueConverter PositiveToVisible = new Converter(v => v is int n && n > 0 ? Visibility.Visible : Visibility.Collapsed);
+
     private sealed class Converter(Func<object?, object> convert) : IValueConverter
     {
         public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture) => convert(value);

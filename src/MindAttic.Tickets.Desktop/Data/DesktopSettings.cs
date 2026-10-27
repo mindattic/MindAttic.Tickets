@@ -18,6 +18,9 @@ public sealed class DesktopSettings
     public bool GroupByRepo { get; set; } = true;
     public bool GroupStoriesByEpic { get; set; } = true;
 
+    /// <summary>Epic group keys ("Repo|Key", upper-invariant) collapsed in the Stories view (M.TIX-T182); absent means expanded.</summary>
+    public HashSet<string> CollapsedEpics { get; set; } = [];
+
     [System.Text.Json.Serialization.JsonIgnore]
     public string? Path { get; private set; }
 

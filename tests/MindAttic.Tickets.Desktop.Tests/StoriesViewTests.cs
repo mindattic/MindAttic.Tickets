@@ -17,6 +17,7 @@ public sealed class StoriesViewTests
 {
     private string root = "", alpha = "";
     private MainViewModel model = null!;
+    private DesktopSettings settings = null!;
     private readonly Queue<PromptAnswer?> answers = new();
 
     private sealed class Answers(Queue<PromptAnswer?> q) : IDialogs
@@ -54,7 +55,8 @@ public sealed class StoriesViewTests
             db.Import([new Repo("Alpha", alpha), new Repo("Beta", beta)]);
             db.AddLink("AL-T1", "AL-US-A1", "implements");
         }
-        model = new MainViewModel(new TicketStore(root), new DesktopSettings(), new Answers(answers)) { SelectedView = MainViewModel.StoriesView };
+        settings = new DesktopSettings();
+        model = new MainViewModel(new TicketStore(root), settings, new Answers(answers)) { SelectedView = MainViewModel.StoriesView };
         await model.RefreshAsync();
     }
 
@@ -87,13 +89,53 @@ public sealed class StoriesViewTests
     public void Lists_every_repos_stories_in_epic_order_with_their_epic_and_implementers()
     {
         Assert.That(Ids, Is.EqualTo(new[] { "AL-US-A1", "AL-US-A2", "AL-US-B1", "BE-US-A1" }));
-        Assert.That(Row("AL-US-B1").Group, Is.EqualTo(new EpicGroup("Alpha", "B", "Extras", Row("AL-US-B1").Group.Id)));
-        Assert.That(Row("AL-US-B1").Group.Heading, Does.Contain("Epic B").And.Contain("Extras"));
+        var group = Row("AL-US-B1").Group;
+        Assert.That((group.Repo, group.Key, group.Title), Is.EqualTo(("Alpha", "B", "Extras")));
+        Assert.That(group.Heading, Does.Contain("Epic B").And.Contain("Extras"));
         Assert.That(Row("AL-US-A1").ImplementersText, Is.EqualTo("Implemented by AL-T1"));
         Assert.That(Row("AL-US-A2").ImplementersText, Is.EqualTo("No implementing tickets"));
         Assert.That(Row("AL-US-A1").Statement, Is.EqualTo("As a user, I can start."), "the list shows the statement without its acceptance");
         Assert.That(model.StatusMessage, Does.StartWith("Stories: 4 of 4"));
         Assert.That(model.ShowsTicketFilters, Is.False);
+    }
+
+    [Test]
+    public async Task Epic_rollup_counts_every_implementing_ticket_and_names_what_to_work_on_next()
+    {
+        // Epic A has two stories; only AL-US-A1 has an implementer (AL-T1, open, not yet approved: not queued yet).
+        var epicA = Row("AL-US-A1").Group;
+        Assert.That((epicA.OpenCount, epicA.ClosedCount, epicA.WontDoCount), Is.EqualTo((1, 0, 0)), "AL-T1 counts once for the whole epic, not per story");
+        Assert.That(epicA.DoneFraction, Is.EqualTo(0));
+        Assert.That(epicA.NextUpText, Is.EqualTo(""), "not approved yet: /allocate wouldn't take it, so it isn't 'next up'");
+
+        using (var db = TicketsDb.Open(TicketsDb.DefaultPath(root))) db.Approve("AL-T1");
+        await model.RefreshAsync();
+        epicA = Row("AL-US-A1").Group;
+        Assert.That(epicA.NextUpText, Does.Contain("AL-T1"));
+
+        using (var db = TicketsDb.Open(TicketsDb.DefaultPath(root))) db.Close("AL-T1", TicketRules.Closed, "done");
+        await model.RefreshAsync();
+        epicA = Row("AL-US-A1").Group;
+        Assert.That((epicA.OpenCount, epicA.ClosedCount), Is.EqualTo((0, 1)));
+        Assert.That(epicA.DoneFraction, Is.EqualTo(1));
+        Assert.That(epicA.NextUpText, Is.EqualTo(""), "nothing open left to work on");
+
+        // Epic B's only story has no implementer at all.
+        var epicB = Row("AL-US-B1").Group;
+        Assert.That(epicB.TotalCount, Is.EqualTo(0));
+        Assert.That(epicB.RollupText, Is.EqualTo("No implementing tickets yet"));
+    }
+
+    [Test]
+    public void Toggling_an_epics_expand_state_is_remembered_across_a_refresh()
+    {
+        var epicA = Row("AL-US-A1").Group;
+        Assert.That(epicA.IsExpanded, Is.True, "expanded by default");
+
+        model.ToggleEpicCommand.Execute(epicA);
+        Assert.That(epicA.IsExpanded, Is.False);
+        Assert.That(settings.CollapsedEpics, Does.Contain(epicA.GroupKey));
+        Assert.That(model.StoryRows, Has.Some.Matches<StoryRowViewModel>(r => r.Group == epicA), "the same group instance, not a new one");
     }
 
     [Test]

@@ -86,18 +86,33 @@ public sealed partial class MainViewModel
     public ICommand AddImplementerCommand { get; private set; } = null!;
     public ICommand RemoveImplementerCommand { get; private set; } = null!;
     public ICommand CloseStoryCommand { get; private set; } = null!;
+    public ICommand ToggleEpicCommand { get; private set; } = null!;
+
+    /// <summary>One EpicGroupViewModel per epic, kept and updated in place across refreshes (keyed by its GroupKey) so
+    /// IsExpanded survives a reload (M.TIX-T182).</summary>
+    private readonly Dictionary<string, EpicGroupViewModel> epicGroups = new(StringComparer.OrdinalIgnoreCase);
 
     private void InitStories()
     {
         groupByEpic = settings.GroupStoriesByEpic;
         SaveStoryCommand = new RelayCommand(async () => await SaveStoryAsync(), () => StoryEditor is { IsDirty: true } && !Busy);
         RevertStoryCommand = new RelayCommand(RevertStory, () => StoryEditor is { IsDirty: true });
-        NewStoryCommand = new RelayCommand(async p => await NewStoryAsync(p as EpicGroup), _ => snapshot is not null);
+        NewStoryCommand = new RelayCommand(async p => await NewStoryAsync(p as EpicGroupViewModel), _ => snapshot is not null);
         NewEpicCommand = new RelayCommand(async () => await NewEpicAsync(), () => snapshot is not null);
-        RenameEpicCommand = new RelayCommand(async p => await RenameEpicAsync(p as EpicGroup), p => (p as EpicGroup ?? StoryEditor?.Epic) is { IsEpic: true });
+        RenameEpicCommand = new RelayCommand(async p => await RenameEpicAsync(p as EpicGroupViewModel), p => (p as EpicGroupViewModel ?? StoryEditor?.Epic) is { IsEpic: true });
         AddImplementerCommand = new RelayCommand(async () => await AddImplementerAsync(), () => StoryEditor is not null);
         RemoveImplementerCommand = new RelayCommand(async p => await RemoveImplementerAsync(p as ImplementerLine), p => p is ImplementerLine);
         CloseStoryCommand = new RelayCommand(() => { SelectedStoryRow = null; StoryEditor = null; }, () => StoryEditor is not null);
+        ToggleEpicCommand = new RelayCommand(p => ToggleEpic(p as EpicGroupViewModel), p => p is EpicGroupViewModel);
+    }
+
+    /// <summary>Flips an epic's expand state and remembers it (M.TIX-T182).</summary>
+    private void ToggleEpic(EpicGroupViewModel? g)
+    {
+        if (g is null) return;
+        g.IsExpanded = !g.IsExpanded;
+        if (g.IsExpanded) settings.CollapsedEpics.Remove(g.GroupKey); else settings.CollapsedEpics.Add(g.GroupKey);
+        settings.Save();
     }
 
     private void OnEditorChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -110,12 +125,37 @@ public sealed partial class MainViewModel
 
     // ── The list ────────────────────────────────────────────────────────────
 
-    private EpicGroup GroupOf(Snapshot s, StoredStory story) =>
-        story.Epic is { Length: > 0 } key && s.Epics.FirstOrDefault(e => e.Repo.Equals(story.Repo, StringComparison.OrdinalIgnoreCase) && e.Key.Equals(key, StringComparison.OrdinalIgnoreCase)) is { } e
-            ? new EpicGroup(e.Repo, e.Key, e.Title, e.Id)
-            : new EpicGroup(story.Repo, "", "", "");
+    private EpicGroupViewModel GroupOf(Snapshot s, StoredStory story)
+    {
+        var (repo, key, title, id) = story.Epic is { Length: > 0 } k &&
+            s.Epics.FirstOrDefault(e => e.Repo.Equals(story.Repo, StringComparison.OrdinalIgnoreCase) && e.Key.Equals(k, StringComparison.OrdinalIgnoreCase)) is { } e
+                ? (e.Repo, e.Key, e.Title, e.Id)
+                : (story.Repo, "", "", "");
+        var groupKey = $"{repo}|{key}".ToUpperInvariant();
+        if (epicGroups.TryGetValue(groupKey, out var g)) { g.Retitle(title); return g; }
+        g = new EpicGroupViewModel(repo, key, title, id) { IsExpanded = !settings.CollapsedEpics.Contains(groupKey) };
+        epicGroups[groupKey] = g;
+        return g;
+    }
 
-    private IReadOnlyList<string> ImplementersOf(Snapshot s, string storyId) => s.Implementers.TryGetValue(storyId, out var ids) ? ids : [];
+    /// <summary>Every ticket that implements any story of the epic <paramref name="g"/>, resolved against the snapshot.</summary>
+    private IReadOnlyList<TicketInfo> ImplementingTickets(Snapshot s, EpicGroupViewModel g) =>
+        [.. s.Stories.Where(st => GroupKeyOf(s, st) == g.GroupKey)
+            .SelectMany(st => ImplementersOf(s, st.Id))
+            .Select(l => l.TicketId).Distinct(StringComparer.OrdinalIgnoreCase)
+            .Select(id => s.Tickets.FirstOrDefault(t => t.Ticket.Id.Equals(id, StringComparison.OrdinalIgnoreCase)))
+            .Where(t => t is not null)!];
+
+    private string GroupKeyOf(Snapshot s, StoredStory story) => GroupOf(s, story).GroupKey;
+
+    /// <summary>The tickets that implement <paramref name="storyId"/>, each with its summary and status, for the story
+    /// row's ticket chips (M.TIX-T185) and its accessible <c>ImplementersText</c> summary.</summary>
+    private IReadOnlyList<ImplementerLine> ImplementersOf(Snapshot s, string storyId) =>
+        s.Implementers.TryGetValue(storyId, out var ids)
+            ? [.. ids.Select(id => s.Tickets.FirstOrDefault(t => t.Ticket.Id.Equals(id, StringComparison.OrdinalIgnoreCase)) is { } info
+                ? new ImplementerLine(info.Ticket.Id, storyId, info.Ticket.Summary, info.Ticket.Status)
+                : new ImplementerLine(id, storyId, "", "not a ticket here"))]
+            : [];
 
     private void ApplyStories(Snapshot s)
     {
@@ -133,7 +173,7 @@ public sealed partial class MainViewModel
             var g = GroupOf(s, st);
             return st.Id.Contains(Search, StringComparison.OrdinalIgnoreCase) || st.Text.Contains(Search, StringComparison.OrdinalIgnoreCase) ||
                    st.Repo.Contains(Search, StringComparison.OrdinalIgnoreCase) || g.Title.Contains(Search, StringComparison.OrdinalIgnoreCase) ||
-                   ImplementersOf(s, st.Id).Any(t => t.Contains(Search, StringComparison.OrdinalIgnoreCase));
+                   ImplementersOf(s, st.Id).Any(l => l.TicketId.Contains(Search, StringComparison.OrdinalIgnoreCase));
         }
 
         var shown = s.Stories.Where(Match)
@@ -144,6 +184,10 @@ public sealed partial class MainViewModel
             st => new StoryRowViewModel(st, GroupOf(s, st), ImplementersOf(s, st.Id)) { IsEdited = drafts.ContainsKey(StoryRowViewModel.KeyOf(st.Repo, st.Id)) },
             (row, st) => { row.Update(st, GroupOf(s, st), ImplementersOf(s, st.Id)); row.IsEdited = drafts.ContainsKey(row.Key); });
         if (selectedStoryRow is { } sel && !StoryRows.Contains(sel)) { selectedStoryRow = null; Raise(nameof(SelectedStoryRow)); }
+
+        // Every epic's rollup, from ALL its stories (not just those the current filter shows), so filtering never
+        // shrinks an epic's reported progress (M.TIX-T183).
+        foreach (var g in s.Stories.Select(st => GroupOf(s, st)).Distinct()) g.UpdateCounts(ImplementingTickets(s, g));
     }
 
     /// <summary>Clears what hides stories (search, repo, story status), without re-filtering (the caller does).</summary>
@@ -272,7 +316,7 @@ public sealed partial class MainViewModel
     }
 
     /// <summary>The repo a new story or epic goes in: <paramref name="group"/>'s, the story shown, the repo filter, else asked.</summary>
-    private string? RepoForNew(EpicGroup? group, string what)
+    private string? RepoForNew(EpicGroupViewModel? group, string what)
     {
         var repo = group?.Repo ?? StoryEditor?.Repo ?? (RepoFilter != AllRepos ? RepoFilter : null);
         if (repo is not null || snapshot is null) return repo;
@@ -281,7 +325,7 @@ public sealed partial class MainViewModel
     }
 
     /// <summary>Adds a story (planned) under an epic of the repo; the new story opens in the editor.</summary>
-    public async Task NewStoryAsync(EpicGroup? group = null)
+    public async Task NewStoryAsync(EpicGroupViewModel? group = null)
     {
         if (snapshot is null || RepoForNew(group, "New story") is not { } repo) return;
         var epics = snapshot.Epics.Where(e => e.Repo.Equals(repo, StringComparison.OrdinalIgnoreCase)).ToList();
@@ -322,7 +366,7 @@ public sealed partial class MainViewModel
     }
 
     /// <summary>Renames <paramref name="group"/>'s epic, or the shown story's.</summary>
-    public async Task RenameEpicAsync(EpicGroup? group = null)
+    public async Task RenameEpicAsync(EpicGroupViewModel? group = null)
     {
         if ((group ?? StoryEditor?.Epic) is not { IsEpic: true } epic) return;
         var answer = Dialogs.Ask(new Prompt($"Rename epic {epic.Key} of {epic.Repo}", "Its stories keep their IDs.", "Title", Initial: epic.Title, Ok: "Rename"));
