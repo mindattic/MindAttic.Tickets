@@ -17,3 +17,5 @@ TestResults/
 data/*.db-journal
 data/*.db-wal
 data/*.db-shm
+# Database backups the tool writes beside the file (<file>.<UTC stamp>.bak) stay local.
+data/*.bak
