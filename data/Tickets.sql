@@ -7348,6 +7348,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T235', 'Prose', 235, '2026-10-27', 'fix', 'open', 'NarrativeFork arc scorer read the oldest half of story context, not the tail', '—', 234, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T236', 'Prose', 236, '2026-10-27', 'fix', 'open', 'NarrativeChart onscreen inference matched first names as substrings (bearing -> Bear)', '—', 235, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T237', 'Prose', 237, '2026-10-27', 'fix', 'open', 'add-alias position used row count; collides after a deleted middle alias', '—', 236, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T238', 'Prose', 238, '2026-10-27', 'fix', 'open', 'ContinuityExtraction ParseCandidate threw on non-string JSON values (numeric age), aborting the extraction', '—', 237, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -28694,6 +28695,15 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18664, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18665, 'PRS-T233', '2026-10-27T06:51:07Z', 'working', NULL, '52d32bc1-0939-4dbe-8425-35585a84452a');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18666, 'PRS-T232', '2026-10-27T06:51:09Z', 'working', NULL, '52d32bc1-0939-4dbe-8425-35585a84452a');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18667, 'PRS-T231', '2026-10-27T06:51:11Z', 'working', NULL, '52d32bc1-0939-4dbe-8425-35585a84452a');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18668, 'PRS-T231', '2026-10-27T07:05:00Z', 'working', '52d32bc1-0939-4dbe-8425-35585a84452a', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18669, 'PRS-T232', '2026-10-27T07:05:00Z', 'working', '52d32bc1-0939-4dbe-8425-35585a84452a', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18670, 'PRS-T233', '2026-10-27T07:05:01Z', 'working', '52d32bc1-0939-4dbe-8425-35585a84452a', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18671, 'PRS-T234', '2026-10-27T07:05:01Z', 'working', '52d32bc1-0939-4dbe-8425-35585a84452a', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18672, 'PRS-T235', '2026-10-27T07:05:01Z', 'working', '52d32bc1-0939-4dbe-8425-35585a84452a', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18673, 'PRS-T236', '2026-10-27T07:05:02Z', 'working', '52d32bc1-0939-4dbe-8425-35585a84452a', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18674, 'PRS-T237', '2026-10-27T07:05:02Z', 'working', '52d32bc1-0939-4dbe-8425-35585a84452a', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18675, 'PRS-T238', '2026-10-27T07:09:21Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18676, 'PRS-T238', '2026-10-27T07:09:41Z', 'working', NULL, '52d32bc1-0939-4dbe-8425-35585a84452a');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z', NULL);
@@ -30566,13 +30576,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T133', NULL, 0, 'pdftransferjr@mindattic.com', '52d32bc1-0939-4dbe-8425-35585a84452a', '2026-10-27T06:24:45Z', '2026-10-27T06:24:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T217', NULL, 0, 'pdftransferjr@mindattic.com', '52d32bc1-0939-4dbe-8425-35585a84452a', '2026-10-27T06:32:29Z', '2026-10-27T06:32:29Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T220', NULL, 0, 'pdftransferjr@mindattic.com', '52d32bc1-0939-4dbe-8425-35585a84452a', '2026-10-27T06:32:18Z', '2026-10-27T06:32:18Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T231', NULL, 0, NULL, '52d32bc1-0939-4dbe-8425-35585a84452a', '2026-10-27T06:51:11Z', '2026-10-27T06:51:11Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T232', NULL, 0, NULL, '52d32bc1-0939-4dbe-8425-35585a84452a', '2026-10-27T06:51:09Z', '2026-10-27T06:51:09Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T233', NULL, 0, NULL, '52d32bc1-0939-4dbe-8425-35585a84452a', '2026-10-27T06:51:07Z', '2026-10-27T06:51:07Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T234', NULL, 0, NULL, '52d32bc1-0939-4dbe-8425-35585a84452a', '2026-10-27T06:51:06Z', '2026-10-27T06:51:06Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T235', NULL, 0, NULL, '52d32bc1-0939-4dbe-8425-35585a84452a', '2026-10-27T06:51:06Z', '2026-10-27T06:51:06Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T236', NULL, 0, NULL, '52d32bc1-0939-4dbe-8425-35585a84452a', '2026-10-27T06:51:05Z', '2026-10-27T06:51:05Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T237', NULL, 0, NULL, '52d32bc1-0939-4dbe-8425-35585a84452a', '2026-10-27T06:51:04Z', '2026-10-27T06:51:04Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T238', NULL, 0, NULL, '52d32bc1-0939-4dbe-8425-35585a84452a', '2026-10-27T07:09:41Z', '2026-10-27T07:09:41Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T226', NULL, 0, NULL, '9f764f65-2476-439c-a92b-d92e504f8c27', '2026-10-27T05:03:01Z', '2026-10-27T05:03:02Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T227', NULL, 0, NULL, '9f764f65-2476-439c-a92b-d92e504f8c27', '2026-10-27T05:07:23Z', '2026-10-27T05:07:23Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T228', NULL, 0, NULL, '9f764f65-2476-439c-a92b-d92e504f8c27', '2026-10-27T05:07:23Z', '2026-10-27T05:07:23Z');
