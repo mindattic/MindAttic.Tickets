@@ -6742,16 +6742,19 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1067', 'MindAttic.Orchestrator', 1067, '2026-10-26', 'fix', 'closed', 'deploy.ps1 must always deploy the latest origin/main: build from a fresh clean worktree at origin/main, never from whatever (stale, diverged, dirty) checkout it was run in', '—', 1066, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1068', 'MindAttic.Orchestrator', 1068, '2026-10-26', 'chore', 'closed', '/test: full Orchestrator suite on origin/main before the TermHost deploy', '—', 1067, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1069', 'MindAttic.Orchestrator', 1069, '2026-10-26', 'fix', 'open', 'Ctrl+V (paste) does not work in CLI pane; Alt+V for images does', '—', 1068, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1070', 'MindAttic.Orchestrator', 1070, '2026-10-26', 'feature', 'open', 'Message stream: push-based 5h/weekly usage updates to CLI tabs, bidirectional relay to Tickets Desktop', '—', 1069, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1071', 'MindAttic.Orchestrator', 1071, '2026-10-26', 'feature', 'open', 'Show the signed-in user''s name on each project CLI tab', '—', 1070, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1072', 'MindAttic.Orchestrator', 1072, '2026-10-26', 'feature', 'open', 'CLI terminal pane fills the remainder of the screen under the tab strip', '—', 1071, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1070', 'MindAttic.Orchestrator', 1070, '2026-10-26', 'feature', 'closed', 'Message stream: push-based 5h/weekly usage updates to CLI tabs, bidirectional relay to Tickets Desktop', 'M.ORCH-T854,M.ORCH-T872,M.ORCH-T879,M.ORCH-T891,M.ORCH-T906,M.TIX-T158,M.TIX-T162; see docs/app-bus.md', 1069, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1071', 'MindAttic.Orchestrator', 1071, '2026-10-26', 'feature', 'closed', 'Show the signed-in user''s name on each project CLI tab', '—', 1070, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1072', 'MindAttic.Orchestrator', 1072, '2026-10-26', 'feature', 'closed', 'CLI terminal pane fills the remainder of the screen under the tab strip', '6a8c49f5', 1071, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1073', 'MindAttic.Orchestrator', 1073, '2026-10-26', 'feature', 'open', 'Usage graph panel: 5h utilization/limit and weekly limit as filling percentage bars, below the CLI', '—', 1072, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1074', 'MindAttic.Orchestrator', 1074, '2026-10-26', 'feature', 'open', 'Per-user ticket queue panel (Active/Pending/Closed tabs) below the usage graph', '—', 1073, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1075', 'MindAttic.Orchestrator', 1075, '2026-10-26', 'chore', 'open', 'Standardize look and feel: one gutter/padding/margin scale across the app', '—', 1074, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1076', 'MindAttic.Orchestrator', 1076, '2026-10-26', 'chore', 'open', 'Audit launcher/CLI process isolation: each opened CLI has its own PID, one crashing must not lose another''s work', '—', 1075, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1075', 'MindAttic.Orchestrator', 1075, '2026-10-26', 'chore', 'closed', 'Standardize look and feel: one gutter/padding/margin scale across the app', '2d811776', 1074, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1076', 'MindAttic.Orchestrator', 1076, '2026-10-26', 'chore', 'closed', 'Audit launcher/CLI process isolation: each opened CLI has its own PID, one crashing must not lose another''s work', '—', 1075, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1077', 'MindAttic.Orchestrator', 1077, '2026-10-26', 'chore', 'open', 'Full MindAttic.Log integration pass across the app', '—', 1076, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1078', 'MindAttic.Orchestrator', 1078, '2026-10-26', 'chore', 'open', 'Exhaustive documentation and commenting pass', '—', 1077, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1079', 'MindAttic.Orchestrator', 1079, '2026-10-26', 'chore', 'open', 'Dead code / garbage collection pass', '—', 1078, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1080', 'MindAttic.Orchestrator', 1080, '2026-10-26', 'chore', 'open', 'Remove the global Pause/Resume button and all GlobalPause code (kills every CLI, Resume restarts work from scratch)', '—', 1079, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1081', 'MindAttic.Orchestrator', 1081, '2026-10-26', 'feature', 'open', 'API key: remove the key icon; the API key is its own user tab showing remaining usage credits ($) instead of 5h/weekly limits', '—', 1080, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1082', 'MindAttic.Orchestrator', 1082, '2026-10-26', 'feature', 'open', 'API key tab: credit spend-down graph showing the balance burning toward $0', '—', 1081, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T1', 'MindAttic.Psst', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.PSST-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T2', 'MindAttic.Psst', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for ContactBook (Contacts/Contact.cs): Find matches name case-insensitively before phone, falls back to 10-digit phone match across formats (+1, dashes, parens), returns null for blank or unmatched input; WithAdded rejects blank name/phone and case-insensitive duplicate names and leaves the original book unchanged; WithoutContact removes only the first case-insensitive match and returns null when absent - this is how psst sms resolves recipients, so a wrong match texts the wrong person', '865fde2', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T3', 'MindAttic.Psst', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched', '—', 2, '| M.PSST-T3 | 2026-10-14 | chore | open | NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched | — |');
@@ -27932,6 +27935,76 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18106, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18107, 'M.ORCH-T1077', '2026-10-27T02:01:47Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18108, 'M.ORCH-T1078', '2026-10-27T02:01:48Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18109, 'M.ORCH-T1079', '2026-10-27T02:01:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18110, 'M.ORCH-T1075', '2026-10-27T02:06:28Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18111, 'M.ORCH-T1075', '2026-10-27T02:06:28Z', 'ref', '—', '2d811776');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18112, 'M.ORCH-T1070', '2026-10-27T02:08:43Z', 'description', NULL, 'Investigated this ticket''s full scope before writing any code, and found it is already built and
+shipped, end to end, across tickets that landed concurrently with (and mostly before) this one was
+filed. No new code is needed; closing as satisfied by existing work rather than duplicating it.
+
+**What already exists (Orchestrator side):**
+
+- `src/MindAttic.Orchestrator.Core/Status/AppBus.cs`, `AppBusHub.cs`, `StateBus.cs`,
+  `StatusEnvelope.cs`, `StatusStream.cs` — a daemon-hub, two-named-pipe (NDJSON, one line per
+  message) bus: `mindattic-orchestrator-status-<user>` (daemon → every subscriber) and
+  `mindattic-orchestrator-status-in-<user>` (any writer → daemon inbox). Documented in full,
+  wire-format and all, in `docs/app-bus.md`.
+- Push-based 5h/weekly usage per login (requirement 1): `StatusMessage.Usage` carries
+  `MeterReading`s; `MainViewModel.Stream.cs` (M.ORCH-T854) applies them straight to each login''s
+  tab the instant they land, with `SnapshotFigures` (M.ORCH-T872) doing the same for the rest of a
+  snapshot. The dashboard''s poll stands down while the stream is live and is only a safety net.
+- Bidirectional ticket relay (requirement 2): `AppBus.Ticket`/`TicketBusEvent` (M.ORCH-T879). The
+  daemon publishes every ticket-database change from its change feed; Orchestrator also publishes
+  its own claims/releases as it makes them. `MainWindow.xaml.cs` subscribes
+  (`bus.On<TicketBusEvent>(AppBus.Ticket, ...)`) and calls
+  `MainViewModel.ReloadTicketQueues()` — the inbound subscription point other view models hook
+  into. Each login''s tab already exposes `QueueTabs` (Active/Pending/Closed/Won''t do), refreshed
+  at once on a pushed ticket event, not on a timer.
+- `AppBus.OpenTicket`/`ShowWorker`/`Presence` complete the two-way relay: Orchestrator asks
+  Tickets.Desktop to show a ticket; Tickets.Desktop asks Orchestrator who is working one;
+  `AppPresence` lets either side know whether the other is listening before sending.
+- Resilience (requirement 3): `AppBusClient.Publish` never throws and is best-effort with no
+  daemon running; `StatusStreamClient` reconnects with 1s→10s backoff and a 65s silence watchdog;
+  the dashboard''s `DispatcherTimer` poll is the explicit fallback display path while the stream is
+  down, exactly as required — this was already exercised and audited (fallback viewers, M.ORCH-T960).
+
+**What already exists (Tickets.Desktop side, sibling repo D:\Projects\MindAttic\MindAttic.Tickets):**
+
+- M.TIX-T158 ("Join Tickets.Desktop to the Orchestrator''s app bus") implements the exact client
+  docs/app-bus.md specifies: subscribes, reconnects with the same backoff/watchdog, sends
+  `app-present` handling `open-ticket` on every connect, coalesces ticket events into a 400ms
+  refresh, stands its own file-watch/poll down while the bus is up, sends `show-worker`.
+- M.TIX-T162 added a 60s safety poll on top, matching the "degrade to polling, never crash" posture
+  this ticket asked for.
+
+**What this means for the tickets that were queued to build on this one:**
+
+- M.ORCH-T1073 (usage graph panel): the 5h/weekly percentages it needs are already pushed and
+  already live on each login''s tab view model (`LiveFiveHour`/`LiveWeek`/`BudgetFill` in
+  `MainViewModel.Stream.cs`). A pane-level panel can look up its own login''s tab via
+  `Root.LoginTabs` (each `TerminalPaneViewModel.Login` already carries the login email) and bind to
+  those existing, already-pushed properties. No new stream plumbing needed.
+- M.ORCH-T1074 (per-user ticket queue panel): `QueueTabs`/`QueueTickets` already exist per login
+  tab (`MainViewModel.Assigned.cs`), already refreshed instantly by the same `AppBus.Ticket` push.
+  Same story: bind to what''s already there.
+
+Linked as duplicates of M.ORCH-T879 (the app-bus contract) and M.ORCH-T854 (the usage push), the two
+tickets whose landed work covers this one''s stated scope.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18113, 'M.ORCH-T1070', '2026-10-27T02:08:47Z', 'link', NULL, 'duplicates M.ORCH-T879');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18114, 'M.ORCH-T879', '2026-10-27T02:08:48Z', 'link', NULL, 'M.ORCH-T1070 duplicates');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18115, 'M.ORCH-T1070', '2026-10-27T02:08:50Z', 'link', NULL, 'duplicates M.ORCH-T854');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18116, 'M.ORCH-T854', '2026-10-27T02:08:50Z', 'link', NULL, 'M.ORCH-T1070 duplicates');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18117, 'M.ORCH-T1070', '2026-10-27T02:08:56Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18118, 'M.ORCH-T1070', '2026-10-27T02:08:56Z', 'ref', '—', 'M.ORCH-T854,M.ORCH-T872,M.ORCH-T879,M.ORCH-T891,M.ORCH-T906,M.TIX-T158,M.TIX-T162; see docs/app-bus.md');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18119, 'M.ORCH-T1071', '2026-10-27T02:09:27Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18120, 'M.ORCH-T1072', '2026-10-27T02:11:28Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18121, 'M.ORCH-T1072', '2026-10-27T02:11:28Z', 'ref', '—', '6a8c49f5');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18122, 'M.ORCH-T1080', '2026-10-27T02:12:27Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18123, 'M.ORCH-T1080', '2026-10-27T02:12:46Z', 'working', NULL, 'e0755ba3-94c4-4671-9df1-e5ce8a82f2e1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18124, 'M.ORCH-T1076', '2026-10-27T02:12:54Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18125, 'M.ORCH-T1081', '2026-10-27T02:13:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18126, 'M.ORCH-T1082', '2026-10-27T02:13:41Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18127, 'M.ORCH-T1081', '2026-10-27T02:13:59Z', 'working', NULL, 'e0755ba3-94c4-4671-9df1-e5ce8a82f2e1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18128, 'M.ORCH-T1082', '2026-10-27T02:14:00Z', 'working', NULL, 'e0755ba3-94c4-4671-9df1-e5ce8a82f2e1');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z', NULL);
@@ -29656,6 +29729,9 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1080', NULL, 0, NULL, 'e0755ba3-94c4-4671-9df1-e5ce8a82f2e1', '2026-10-27T02:12:46Z', '2026-10-27T02:12:46Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1081', NULL, 0, NULL, 'e0755ba3-94c4-4671-9df1-e5ce8a82f2e1', '2026-10-27T02:13:59Z', '2026-10-27T02:13:59Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1082', NULL, 0, NULL, 'e0755ba3-94c4-4671-9df1-e5ce8a82f2e1', '2026-10-27T02:14:00Z', '2026-10-27T02:14:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T768', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
@@ -29952,6 +30028,58 @@ RECONSTRUCTION 13 corrections: FPS colour red (255,0,25) not yellow; options box
 DESIGN: Core InterfaceControl (options, hero screen, FPS per player; game-wide pause stopping Game.Advance); new hud.json sections; TurnBarsView beside StatusBoxView; hide-cursor hook on WorldViewPresenter; LoadingScreen overlay (real play holds the picture briefly; scripted runs skip unless -overworld-loading). Record those last two in the BIBLE.');
 
 -- ticket_descriptions
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1070', 'Investigated this ticket''s full scope before writing any code, and found it is already built and
+shipped, end to end, across tickets that landed concurrently with (and mostly before) this one was
+filed. No new code is needed; closing as satisfied by existing work rather than duplicating it.
+
+**What already exists (Orchestrator side):**
+
+- `src/MindAttic.Orchestrator.Core/Status/AppBus.cs`, `AppBusHub.cs`, `StateBus.cs`,
+  `StatusEnvelope.cs`, `StatusStream.cs` — a daemon-hub, two-named-pipe (NDJSON, one line per
+  message) bus: `mindattic-orchestrator-status-<user>` (daemon → every subscriber) and
+  `mindattic-orchestrator-status-in-<user>` (any writer → daemon inbox). Documented in full,
+  wire-format and all, in `docs/app-bus.md`.
+- Push-based 5h/weekly usage per login (requirement 1): `StatusMessage.Usage` carries
+  `MeterReading`s; `MainViewModel.Stream.cs` (M.ORCH-T854) applies them straight to each login''s
+  tab the instant they land, with `SnapshotFigures` (M.ORCH-T872) doing the same for the rest of a
+  snapshot. The dashboard''s poll stands down while the stream is live and is only a safety net.
+- Bidirectional ticket relay (requirement 2): `AppBus.Ticket`/`TicketBusEvent` (M.ORCH-T879). The
+  daemon publishes every ticket-database change from its change feed; Orchestrator also publishes
+  its own claims/releases as it makes them. `MainWindow.xaml.cs` subscribes
+  (`bus.On<TicketBusEvent>(AppBus.Ticket, ...)`) and calls
+  `MainViewModel.ReloadTicketQueues()` — the inbound subscription point other view models hook
+  into. Each login''s tab already exposes `QueueTabs` (Active/Pending/Closed/Won''t do), refreshed
+  at once on a pushed ticket event, not on a timer.
+- `AppBus.OpenTicket`/`ShowWorker`/`Presence` complete the two-way relay: Orchestrator asks
+  Tickets.Desktop to show a ticket; Tickets.Desktop asks Orchestrator who is working one;
+  `AppPresence` lets either side know whether the other is listening before sending.
+- Resilience (requirement 3): `AppBusClient.Publish` never throws and is best-effort with no
+  daemon running; `StatusStreamClient` reconnects with 1s→10s backoff and a 65s silence watchdog;
+  the dashboard''s `DispatcherTimer` poll is the explicit fallback display path while the stream is
+  down, exactly as required — this was already exercised and audited (fallback viewers, M.ORCH-T960).
+
+**What already exists (Tickets.Desktop side, sibling repo D:\Projects\MindAttic\MindAttic.Tickets):**
+
+- M.TIX-T158 ("Join Tickets.Desktop to the Orchestrator''s app bus") implements the exact client
+  docs/app-bus.md specifies: subscribes, reconnects with the same backoff/watchdog, sends
+  `app-present` handling `open-ticket` on every connect, coalesces ticket events into a 400ms
+  refresh, stands its own file-watch/poll down while the bus is up, sends `show-worker`.
+- M.TIX-T162 added a 60s safety poll on top, matching the "degrade to polling, never crash" posture
+  this ticket asked for.
+
+**What this means for the tickets that were queued to build on this one:**
+
+- M.ORCH-T1073 (usage graph panel): the 5h/weekly percentages it needs are already pushed and
+  already live on each login''s tab view model (`LiveFiveHour`/`LiveWeek`/`BudgetFill` in
+  `MainViewModel.Stream.cs`). A pane-level panel can look up its own login''s tab via
+  `Root.LoginTabs` (each `TerminalPaneViewModel.Login` already carries the login email) and bind to
+  those existing, already-pushed properties. No new stream plumbing needed.
+- M.ORCH-T1074 (per-user ticket queue panel): `QueueTabs`/`QueueTickets` already exist per login
+  tab (`MainViewModel.Assigned.cs`), already refreshed instantly by the same `AppBus.Ticket` push.
+  Same story: bind to what''s already there.
+
+Linked as duplicates of M.ORCH-T879 (the app-bus contract) and M.ORCH-T854 (the usage push), the two
+tickets whose landed work covers this one''s stated scope.', '2026-10-27T02:08:43Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T833', 'Symptom: Inside the Orchestrator''s embedded Terminals panel (TerminalPanesHost), when a CLI running
 in a pane shows an interactive, arrow-key-driven menu (e.g. a selection list or permission prompt),
 the Up/Down/Left/Right keys don''t reach the CLI. It looks like the WPF app is intercepting/consuming
@@ -31520,6 +31648,8 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LOGS-US-G1', 'M.LOGS-E
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LOGS-US-G2', 'M.LOGS-EPIC-G', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.MDIA-T5', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1057', 'M.PSST-T25', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1070', 'M.ORCH-T854', 'duplicates', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1070', 'M.ORCH-T879', 'duplicates', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T13', 'M.ORCH-T40', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T180', 'M.TIX-T65', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T181', 'M.COMP-T11', 'requires', NULL);
