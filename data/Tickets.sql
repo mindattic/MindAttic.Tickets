@@ -28997,6 +28997,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18918, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18919, 'M.ORCH-T1092', '2026-10-27T15:24:13Z', 'status', 'open', 'wont-do');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18920, 'M.ORCH-T1092', '2026-10-27T15:24:13Z', 'ref', '—', 'duplicate of M.ORCH-T1124 (0170065a)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18921, 'MAT-T66', '2026-10-27T15:24:35Z', 'created', NULL, 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18922, 'M.TIX-T172', '2026-10-27T15:26:23Z', 'working', 'b8fc93e3-3927-435c-bd4e-ede6fd36744e', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z', NULL);
@@ -30820,7 +30821,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T148', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T23:40:41Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T150', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T09:16:18Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T156', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:46Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T172', NULL, 0, NULL, 'b8fc93e3-3927-435c-bd4e-ede6fd36744e', '2026-10-27T15:23:45Z', '2026-10-27T15:23:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T31', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:58:38Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T32', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:58:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T33', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:58:46Z');
@@ -31105,6 +31105,7 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (46, 'M.O
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (47, 'M.ORCH-T1116', 'Claude', '2026-10-27T14:18:08Z', 'The user''s screenshot from the prompt this ticket came from: ![image 9](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/M.ORCH-T1116/2026-10-27-image-9.png)');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (48, 'M.ORCH-T1118', 'Claude', '2026-10-27T14:41:32Z', 'The user''s screenshot from the prompt this ticket came from (Amy''s tab vs her /usage): ![image 10](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/M.ORCH-T1118/2026-10-27-image-10.png)');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (49, 'M.ORCH-T1120', 'Claude', '2026-10-27T14:57:28Z', 'The user''s screenshot: ![image 11](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/M.ORCH-T1120/2026-10-27-image-11.png)');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (50, 'M.ORCH-T1122', 'Claude', '2026-10-27T15:25:24Z', 'The user, again: ''change /allocate to stop creating worktrees''. Landed so far: the stray worktree''s M.ORCH-T1091 (117cf9f8); M.ORCH-T1092 was a duplicate of M.ORCH-T1124; T643''s and T779''s review fixes were already on main in other forms; T834 (wont-do) discarded.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.LNCH-T88', 'Seen live: opening the Launcher as api-key@mindattic.vault printed ''isn''t signed in on this machine yet. Signing it in first (orchestrator login --account api-key@mindattic.vault)...'' and opened a claude.ai OAuth browser flow, exactly like a normal Team member who''s never signed in.
