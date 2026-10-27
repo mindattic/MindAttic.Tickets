@@ -29049,6 +29049,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18956, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18957, 'PRS-T268', '2026-10-27T15:49:03Z', 'working', NULL, '52d32bc1-0939-4dbe-8425-35585a84452a');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18958, 'PRS-T267', '2026-10-27T15:49:04Z', 'working', NULL, '52d32bc1-0939-4dbe-8425-35585a84452a');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18959, 'RB-T239', '2026-10-27T15:50:15Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18960, 'RB-T239', '2026-10-27T15:53:07Z', 'working', NULL, '9f764f65-2476-439c-a92b-d92e504f8c27');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z', NULL);
@@ -30941,6 +30942,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T276', NULL, 0, NULL, '52d32bc1-0939-4dbe-8425-35585a84452a', '2026-10-27T15:48:53Z', '2026-10-27T15:48:53Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T277', NULL, 0, NULL, '52d32bc1-0939-4dbe-8425-35585a84452a', '2026-10-27T15:48:53Z', '2026-10-27T15:48:53Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T278', NULL, 0, NULL, '52d32bc1-0939-4dbe-8425-35585a84452a', '2026-10-27T15:48:53Z', '2026-10-27T15:48:53Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T239', NULL, 0, NULL, '9f764f65-2476-439c-a92b-d92e504f8c27', '2026-10-27T15:53:07Z', '2026-10-27T15:53:07Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T111', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:34:40Z');
@@ -31168,6 +31170,7 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (47, 'M.O
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (48, 'M.ORCH-T1118', 'Claude', '2026-10-27T14:41:32Z', 'The user''s screenshot from the prompt this ticket came from (Amy''s tab vs her /usage): ![image 10](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/M.ORCH-T1118/2026-10-27-image-10.png)');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (49, 'M.ORCH-T1120', 'Claude', '2026-10-27T14:57:28Z', 'The user''s screenshot: ![image 11](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/M.ORCH-T1120/2026-10-27-image-11.png)');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (50, 'M.ORCH-T1122', 'Claude', '2026-10-27T15:25:24Z', 'The user, again: ''change /allocate to stop creating worktrees''. Landed so far: the stray worktree''s M.ORCH-T1091 (117cf9f8); M.ORCH-T1092 was a duplicate of M.ORCH-T1124; T643''s and T779''s review fixes were already on main in other forms; T834 (wont-do) discarded.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (51, 'M.ORCH-T1127', 'Claude', '2026-10-27T16:01:44Z', 'The user (2026-10-27): ''make this an epic with all tickets underneath it and approve the tickets but not the epic; so none of them can start until the epic is started; save this entire plan into the epic ticket''.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.LNCH-T88', 'Seen live: opening the Launcher as api-key@mindattic.vault printed ''isn''t signed in on this machine yet. Signing it in first (orchestrator login --account api-key@mindattic.vault)...'' and opened a claude.ai OAuth browser flow, exactly like a normal Team member who''s never signed in.
