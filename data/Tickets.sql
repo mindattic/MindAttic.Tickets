@@ -7363,6 +7363,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T249', 'Prose', 249, '2026-10-27', 'fix', 'open', 'Markdown export writes a beat linked to two chapters twice', '—', 248, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T250', 'Prose', 250, '2026-10-27', 'fix', 'open', 'ProseLessonStore.Add and operator key pool overwrite the store when the stored row is unreadable', '—', 249, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T251', 'Prose', 251, '2026-10-27', 'fix', 'open', 'SemanticIndexService rebuilds an empty index on every call', '—', 250, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T252', 'Prose', 252, '2026-10-27', 'fix', 'open', 'LogIssueService caps faults at 20000 entries so older issues read as resolved', '—', 251, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T253', 'Prose', 253, '2026-10-27', 'fix', 'open', 'RepetitionLintService airless-run misses: wrong end beat, unreported when metrics gap or book end', '—', 252, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -28829,6 +28831,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18782, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18783, 'PRS-T249', '2026-10-27T09:21:28Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18784, 'PRS-T250', '2026-10-27T09:23:26Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18785, 'PRS-T251', '2026-10-27T09:25:29Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18786, 'PRS-T252', '2026-10-27T09:27:27Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18787, 'PRS-T253', '2026-10-27T09:29:30Z', 'created', NULL, 'open');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z', NULL);
