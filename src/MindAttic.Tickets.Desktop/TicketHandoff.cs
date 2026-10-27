@@ -15,6 +15,9 @@ public static class TicketHandoff
     /// <summary>The pipe the window open in this Windows session listens on.</summary>
     public static string PipeName { get; } = $"MindAttic.Tickets.Desktop.{Process.GetCurrentProcess().SessionId}";
 
+    /// <summary>How long a client has to send its id once connected.</summary>
+    internal static readonly TimeSpan ReadTimeout = TimeSpan.FromSeconds(5);
+
     /// <summary>The id after <c>--ticket</c> (or in <c>--ticket=ID</c>), trimmed and upper-cased; null when there isn't one.</summary>
     public static string? TicketArg(IReadOnlyList<string> args)
     {
@@ -63,13 +66,27 @@ public static class TicketHandoff
                     PipeTransmissionMode.Byte, PipeOptions.Asynchronous | PipeOptions.CurrentUserOnly);
                 await pipe.WaitForConnectionAsync(stop);
                 using var reader = new StreamReader(pipe, Encoding.UTF8);
-                var id = (await reader.ReadToEndAsync(stop)).Trim();
+                using var slow = CancellationTokenSource.CreateLinkedTokenSource(stop);
+                slow.CancelAfter(ReadTimeout); // a client that connects and never writes mustn't block every later handoff
+                string id;
+                try { id = (await reader.ReadToEndAsync(slow.Token)).Trim(); }
+                catch (OperationCanceledException) when (!stop.IsCancellationRequested)
+                {
+                    TicketsLog.For("Handoff").Warning("A ticket handoff client sent nothing within {Seconds}s: dropped it", ReadTimeout.TotalSeconds);
+                    continue;
+                }
                 if (id.Length > 0 && id.Length <= 64) received(id.ToUpperInvariant());
             }
             catch (OperationCanceledException) { return; }
             catch (IOException ex)
             {
                 TicketsLog.For("Handoff").Warning(ex, "A ticket handoff failed");
+                try { await Task.Delay(500, stop); } catch (OperationCanceledException) { return; }
+            }
+            catch (Exception ex)
+            {
+                TicketsLog.For("Handoff").Error(ex, "A ticket handoff failed unexpectedly");
+                try { await Task.Delay(500, stop); } catch (OperationCanceledException) { return; }
             }
         }
     }

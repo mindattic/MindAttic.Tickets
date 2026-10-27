@@ -846,14 +846,31 @@ public sealed partial class TicketsDb : IDisposable
         if (string.Equals(from, to, StringComparison.OrdinalIgnoreCase)) throw new ArgumentException("An item can't link to itself.");
         if (kind == "requires" && Requires(to, transitive: true).Contains(from, StringComparer.OrdinalIgnoreCase))
             throw new InvalidOperationException($"{to} already (indirectly) requires {from}; that would be a cycle.");
-        AddLinkCore(from, to, kind, note);
+        if (AddLinkCore(from, to, kind, note)) LinkEvent(from, to, kind, added: true);
     }
 
-    private void AddLinkCore(string from, string to, string kind, string? note) =>
-        Exec("INSERT OR IGNORE INTO links (from_id, to_id, kind, note) VALUES ($f, $t, $k, $n)", null, ("$f", from), ("$t", to), ("$k", kind), ("$n", note));
+    private bool AddLinkCore(string from, string to, string kind, string? note) =>
+        Exec("INSERT OR IGNORE INTO links (from_id, to_id, kind, note) VALUES ($f, $t, $k, $n)", null, ("$f", from), ("$t", to), ("$k", kind), ("$n", note)) > 0;
 
-    public bool RemoveLink(string from, string to, string kind) =>
-        Exec("DELETE FROM links WHERE from_id = $f COLLATE NOCASE AND to_id = $t COLLATE NOCASE AND kind = $k", null, ("$f", CurrentId(from)), ("$t", CurrentId(to)), ("$k", kind)) > 0;
+    public bool RemoveLink(string from, string to, string kind)
+    {
+        (from, to) = (CurrentId(from), CurrentId(to));
+        var removed = Exec("DELETE FROM links WHERE from_id = $f COLLATE NOCASE AND to_id = $t COLLATE NOCASE AND kind = $k", null, ("$f", from), ("$t", to), ("$k", kind)) > 0;
+        if (removed) LinkEvent(from, to, kind, added: false);
+        return removed;
+    }
+
+    /// <summary>
+    /// History for a link added or removed (M.TIX-T159), as a <c>link</c> event on each end that is a ticket (a link may end at an epic
+    /// or story, which has no ticket row): the FROM ticket's reads "kind other" and the TO ticket's "other kind", set as <c>new</c> when
+    /// the link was added and as <c>old</c> when it was removed.
+    /// </summary>
+    private void LinkEvent(string from, string to, string kind, bool added)
+    {
+        foreach (var (self, text) in new[] { (from, $"{kind} {to}"), (to, $"{from} {kind}") })
+            if (Ticket(self) is { } t)
+                Event(t.Ticket.Id, "link", added ? null : text, added ? text : null);
+    }
 
     /// <summary>Every link touching <paramref name="id"/>, in either direction.</summary>
     public IReadOnlyList<Link> Links(string id) =>

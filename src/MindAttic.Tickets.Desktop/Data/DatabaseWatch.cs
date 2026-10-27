@@ -8,25 +8,53 @@ namespace MindAttic.Tickets.Desktop.Data;
 /// a change notification is missed. On SQL Server the file is still rewritten after every change, so the watch holds there
 /// too. A watcher that fails (its buffer overflowed, the folder went away during a checkout) is started again, and the
 /// change it may have missed is reported. <c>changed</c> runs on the thread pool; the window marshals it to the UI thread.
+/// While the Orchestrator's app bus is connected (M.TIX-T158) it pushes every ticket change, so the watch and the poll stand
+/// down (<see cref="SetBusConnected"/>) and come back, with one catch-up refresh, when the bus drops.
 /// </summary>
 public sealed class DatabaseWatch : IDisposable
 {
     private readonly string path;
-    private readonly TimeSpan settle;
+    private readonly TimeSpan settle, poll;
     private readonly Action changed;
     private readonly Timer settleTimer, pollTimer;
     private readonly Lock gate = new();
     private FileSystemWatcher? watcher;
-    private bool disposed;
+    private bool disposed, busConnected;
 
     public DatabaseWatch(string path, TimeSpan settle, TimeSpan poll, Action changed)
     {
         this.path = Path.GetFullPath(path);
         this.settle = settle;
+        this.poll = poll;
         this.changed = changed;
         settleTimer = new Timer(_ => Fire());
         pollTimer = new Timer(_ => { if (!Watching) Watch(); Fire(); }, null, poll, poll); // the folder may exist by now
         Watch();
+    }
+
+    /// <summary>
+    /// The app bus connected (true: stop watching and poll only every 60 s, the bus pushes each change) or dropped (false: watch and poll
+    /// again, and report a change now, for whatever the bus carried while it was down or before it connected).
+    /// </summary>
+    private static readonly TimeSpan BusPoll = TimeSpan.FromSeconds(60);
+
+    public void SetBusConnected(bool connected)
+    {
+        lock (gate)
+        {
+            if (disposed || busConnected == connected) return;
+            busConnected = connected;
+            if (watcher is not null) watcher.EnableRaisingEvents = !connected;
+            if (connected) settleTimer.Change(Timeout.InfiniteTimeSpan, Timeout.InfiniteTimeSpan);
+            pollTimer.Change(connected ? BusPoll : poll, connected ? BusPoll : poll); // slow safety net while the bus is up
+        }
+        if (!connected) Touched();
+    }
+
+    /// <summary>Whether the app bus is standing in for the watch and the poll.</summary>
+    public bool BusConnected
+    {
+        get { lock (gate) return busConnected; }
     }
 
     /// <summary>Whether a file watcher is running (false while the database's folder doesn't exist; the poll still runs).</summary>
@@ -52,7 +80,7 @@ public sealed class DatabaseWatch : IDisposable
             w.Created += (_, _) => Touched();
             w.Renamed += (_, _) => Touched();
             w.Error += (_, _) => { Watch(); Touched(); };
-            w.EnableRaisingEvents = true;
+            w.EnableRaisingEvents = !busConnected;
             watcher = w;
         }
     }

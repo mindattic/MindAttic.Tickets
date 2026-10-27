@@ -95,6 +95,28 @@ public sealed class TicketsDbTests
     }
 
     [Test]
+    public void A_link_added_or_removed_is_recorded_as_a_link_event_on_both_tickets()
+    {
+        var (db, _) = Migrated();
+        using (db)
+        {
+            var start = db.Activity(0, 1000).Select(e => e.Seq).DefaultIfEmpty(0).Max();
+            db.AddLink("AL-T2", "BE-T1", "related");
+            db.AddLink("AL-T2", "BE-T1", "related"); // already there: no second event
+            var added = db.Activity(start, 1000).Where(e => e.Field == "link").ToList();
+            Assert.That(added.Select(e => (e.TicketId, e.Old, e.New)),
+                Is.EquivalentTo(new (string, string?, string?)[] { ("AL-T2", null, "related BE-T1"), ("BE-T1", null, "AL-T2 related") }));
+
+            var mid = db.Activity(start, 1000).Max(e => e.Seq);
+            Assert.That(db.RemoveLink("AL-T2", "BE-T1", "related"), Is.True);
+            Assert.That(db.RemoveLink("AL-T2", "BE-T1", "related"), Is.False);
+            var removed = db.Activity(mid, 1000).Where(e => e.Field == "link").ToList();
+            Assert.That(removed.Select(e => (e.TicketId, e.Old, e.New)),
+                Is.EquivalentTo(new (string, string?, string?)[] { ("AL-T2", "related BE-T1", null), ("BE-T1", "AL-T2 related", null) }));
+        }
+    }
+
+    [Test]
     public void Tickets_are_append_only_with_history_and_new_ones_take_the_next_number()
     {
         var (db, repos) = Migrated();
