@@ -7359,6 +7359,10 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T245', 'Prose', 245, '2026-10-27', 'fix', 'open', 'EventLogService caches a failed load as an empty log and deletes legacy events.json before saving', '—', 244, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T246', 'Prose', 246, '2026-10-27', 'fix', 'open', 'DocContextStack force-pinned docs (score 999) never evict', '—', 245, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T247', 'Prose', 247, '2026-10-27', 'fix', 'open', 'TunedRead and ledger adjudication delete existing findings for candidates that could not be judged', '—', 246, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T248', 'Prose', 248, '2026-10-27', 'fix', 'open', 'SettingsService wipes unrelated settings when Settings.json read fails', '—', 247, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T249', 'Prose', 249, '2026-10-27', 'fix', 'open', 'Markdown export writes a beat linked to two chapters twice', '—', 248, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T250', 'Prose', 250, '2026-10-27', 'fix', 'open', 'ProseLessonStore.Add and operator key pool overwrite the store when the stored row is unreadable', '—', 249, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T251', 'Prose', 251, '2026-10-27', 'fix', 'open', 'SemanticIndexService rebuilds an empty index on every call', '—', 250, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -28821,6 +28825,10 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18778, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18779, 'RB-T236', '2026-10-27T08:39:49Z', 'working', '9f764f65-2476-439c-a92b-d92e504f8c27', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18780, 'RB-T237', '2026-10-27T08:39:49Z', 'working', '9f764f65-2476-439c-a92b-d92e504f8c27', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18781, 'RB-T238', '2026-10-27T08:39:49Z', 'working', '9f764f65-2476-439c-a92b-d92e504f8c27', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18782, 'PRS-T248', '2026-10-27T09:19:34Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18783, 'PRS-T249', '2026-10-27T09:21:28Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18784, 'PRS-T250', '2026-10-27T09:23:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (18785, 'PRS-T251', '2026-10-27T09:25:29Z', 'created', NULL, 'open');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z', NULL);
