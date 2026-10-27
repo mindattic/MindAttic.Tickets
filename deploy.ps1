@@ -2,10 +2,13 @@
 .SYNOPSIS
   Builds Tickets Desktop as one self-contained exe, installs it to C:\Apps\MindAttic.Tickets.Desktop, and (re)creates
   its Desktop and Start-menu shortcuts with the app's icon. Also installs the tickets CLI (tools/install.ps1).
+  It builds the latest checked-in version, not the working tree: it fetches origin, takes the newer of main and
+  origin/main (origin/main when they've diverged), and builds a clean, temporary detached worktree of that commit. Work
+  landed and pushed from a worktree is deployed even when this checkout hasn't pulled it; uncommitted edits never are.
   The shortcuts open the install folder's deploy.bat, which reruns this script with -Launch -SkipCli: every open
-  republishes when a source file is newer than the installed exe, and otherwise just opens it (M.TIX-T126).
+  republishes when the deployed build inputs differ from that commit's, and otherwise just opens it (M.TIX-T126).
 .PARAMETER Force
-  Publish even when the installed exe is newer than every source file.
+  Publish even when the installed exe was already built from the same build inputs.
 .PARAMETER Launch
   Open Tickets Desktop when done.
 .PARAMETER SkipCli
@@ -19,32 +22,68 @@ $apps = if (Test-Path 'C:\Apps') { 'C:\Apps' } else { Join-Path $env:LOCALAPPDAT
 $dest = Join-Path $apps $name
 $exe = Join-Path $dest "$name.exe"
 
-$sourceExts = @('.cs', '.csproj', '.xaml', '.json', '.props', '.targets', '.resx', '.manifest', '.ico', '.png')
-function Test-Stale {
-  if ($Force -or -not (Test-Path $exe)) { return $true }
-  $time = (Get-Item $exe).LastWriteTimeUtc
-  $props = Join-Path $repo 'Directory.Build.props'
-  if ((Test-Path $props) -and (Get-Item $props).LastWriteTimeUtc -gt $time) { return $true }
-  foreach ($dir in (Join-Path $repo "src\$name"), (Join-Path $repo 'src\MindAttic.Tickets')) {
-    $newer = Get-ChildItem -Path $dir -Recurse -File -ErrorAction SilentlyContinue |
-      Where-Object { $_.FullName -notmatch '\\(bin|obj)\\' -and ($sourceExts -contains $_.Extension.ToLowerInvariant()) -and $_.LastWriteTimeUtc -gt $time } |
-      Select-Object -First 1
-    if ($newer) { return $true }
+# Windows PowerShell turns a native command's stderr into a terminating error under 'Stop', so git runs under 'Continue'.
+function Invoke-Git { $ErrorActionPreference = 'Continue'; $out = & git -C $repo @args 2>$null; if ($LASTEXITCODE -ne 0) { return $null }; $out }
+function Test-Ancestor($a, $b) { $ErrorActionPreference = 'Continue'; & git -C $repo merge-base --is-ancestor $a $b 2>$null; $LASTEXITCODE -eq 0 }
+
+# The latest checked-in version: the newer of main and origin/main. Agents land and push from worktrees, so origin/main
+# is often ahead of this checkout; when the two have diverged, origin/main (what's pushed) wins.
+$null = Invoke-Git fetch origin --quiet
+if ($LASTEXITCODE -ne 0) { Write-Host 'git fetch failed; deploying from the last fetched origin/main.' }
+$local = Invoke-Git rev-parse --verify --quiet 'refs/heads/main'
+$remote = Invoke-Git rev-parse --verify --quiet 'refs/remotes/origin/main'
+if (-not $remote) { $commit = $local }
+elseif (-not $local) { $commit = $remote }
+else {
+  if (Test-Ancestor $local $remote) { $commit = $remote }
+  else {
+    if (Test-Ancestor $remote $local) { $commit = $local }
+    else {
+      $commit = $remote
+      $unpushed = Invoke-Git log --oneline "$remote..$local" -- src assets Directory.Build.props global.json NuGet.config
+      if ($unpushed) { Write-Warning "main has unpushed build changes that origin/main lacks; they aren't deployed:`n$($unpushed -join "`n")" }
+    }
   }
-  return $false
+}
+if (-not $commit) { throw 'No main or origin/main commit to deploy.' }
+$short = $commit.Substring(0, 9)
+
+# What the exe is built from: the git tree ids of its build inputs at that commit. A ticket-database sync changes the
+# commit but none of these, so it doesn't republish.
+$buildInputs = "src/$name", 'src/MindAttic.Tickets', 'assets', 'Directory.Build.props', 'global.json', 'NuGet.config'
+$buildKey = ($buildInputs | ForEach-Object { "$_=$(Invoke-Git rev-parse --verify --quiet "${commit}:$_")" }) -join ';'
+$stamp = Join-Path $dest 'deployed-build.txt'
+$deployedKey = if (Test-Path $stamp) { (Get-Content $stamp -TotalCount 1) } else { $null }
+$stale = $Force -or -not (Test-Path $exe) -or $deployedKey -ne $buildKey
+
+# A clean copy of that commit to build from, so uncommitted edits and stale bin/obj never reach the install.
+$snapshot = $null
+function Get-Snapshot {
+  if ($script:snapshot) { return $script:snapshot }
+  $dir = Join-Path ([IO.Path]::GetTempPath()) "MindAttic.Tickets.deploy\$short"
+  # A detached worktree, not a `git archive` copy: the tests find the repo root by its .git.
+  if (Test-Path $dir) { $null = Invoke-Git worktree remove --force $dir; if (Test-Path $dir) { Remove-Item $dir -Recurse -Force } }
+  $null = Invoke-Git worktree prune
+  $null = Invoke-Git worktree add --detach $dir $commit
+  if ($LASTEXITCODE -ne 0) { throw "git worktree add $short failed ($LASTEXITCODE)" }
+  $script:snapshot = $dir
+  $dir
 }
 
-if (Test-Stale) {
+try {
+if ($stale) {
+  $src = Get-Snapshot
   Get-Process $name -ErrorAction SilentlyContinue | Stop-Process -Force
   Start-Sleep -Milliseconds 500
 
-  Write-Host "Publishing $name to $dest"
-  dotnet publish (Join-Path $repo "src\$name\$name.csproj") -c Release -r win-x64 --self-contained true `
+  Write-Host "Publishing $name at $short to $dest"
+  dotnet publish (Join-Path $src "src\$name\$name.csproj") -c Release -r win-x64 --self-contained true `
     -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true `
     -p:DebugType=None -o $dest --nologo -v quiet
   if ($LASTEXITCODE -ne 0) { throw "dotnet publish failed ($LASTEXITCODE)" }
+  Set-Content -Path $stamp -Encoding ascii -Value $buildKey, "commit=$commit"
 } else {
-  Write-Host "$name is up to date."
+  Write-Host "$name is up to date ($short)."
 }
 
 # The shortcuts' launcher: reruns this script from the repo, which republishes only when the source is newer, then opens
@@ -90,9 +129,18 @@ foreach ($old in (Join-Path ([Environment]::GetFolderPath('Desktop')) 'MindAttic
 New-Shortcut (Join-Path ([Environment]::GetFolderPath('Desktop')) 'MindAttic Tickets.lnk')
 New-Shortcut (Join-Path ([Environment]::GetFolderPath('Programs')) 'MindAttic\MindAttic Tickets.lnk')
 
-if (-not $SkipCli -and (Test-Path (Join-Path $repo 'tools\install.ps1'))) {
-  Write-Host 'Installing the tickets CLI'
-  & (Join-Path $repo 'tools\install.ps1')
+if (-not $SkipCli) {
+  $install = Join-Path (Get-Snapshot) 'tools\install.ps1'
+  if (Test-Path $install) {
+    Write-Host "Installing the tickets CLI at $short"
+    & $install
+  }
+}
+} finally {
+  if ($snapshot) {
+    $null = Invoke-Git worktree remove --force $snapshot
+    if (Test-Path $snapshot) { Remove-Item $snapshot -Recurse -Force -ErrorAction SilentlyContinue; $null = Invoke-Git worktree prune }
+  }
 }
 
 Write-Host "Installed $exe"
