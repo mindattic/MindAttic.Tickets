@@ -185,7 +185,7 @@
                 <WrapPanel Margin="0,5,0,0">
                     <TextBlock Text="{Binding ApprovalText}" Style="{StaticResource ApprovalText}" Margin="0,0,8,0" />
                     <TextBlock Text="{Binding StatusText}" Style="{StaticResource StatusText}" Margin="0,0,8,0" />
-                    <TextBlock Text="â¸ blocked" FontSize="12" Foreground="{DynamicResource StateRejected}" ToolTip="{Binding BlockedText}"
+                    <TextBlock Text="⏸ blocked" FontSize="12" Foreground="{DynamicResource StateRejected}" ToolTip="{Binding BlockedText}"
                                Visibility="{Binding BlockedText, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
                 </WrapPanel>
                 <TextBlock Text="{Binding WorkerText}" Style="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,3,0,0"
@@ -212,14 +212,14 @@
                         ToolTip="File a new ticket (Ctrl+N)" />
                 <Button Style="{StaticResource MaButton}" Content="S_ync" Command="{Binding SyncCommand}" Margin="0,0,8,0"
                         ToolTip="Commit and push the ticket database: runs 'tickets db sync' (Ctrl+Shift+S)" />
-                <Button Style="{StaticResource MaButton}" Content="_GitHub intakeâ€¦" Command="{Binding IntakeCommand}" Margin="0,0,8,0"
+                <Button Style="{StaticResource MaButton}" Content="_GitHub intake…" Command="{Binding IntakeCommand}" Margin="0,0,8,0"
                         ToolTip="File GitHub issues labelled 'orchestrator' and CI failures on main as tickets: shows a dry run first and files only when you click File ('tickets ticket intake')" />
                 <Button Style="{StaticResource MaButton}" Content="_Export…" Command="{Binding ExportCommand}" Margin="0,0,8,0"
                         AutomationProperties.AcceleratorKey="Ctrl+E"
                         ToolTip="Save the tickets this view shows, with its filters, query and sort, as CSV or markdown (Ctrl+E); 'tickets ticket list --format csv|md' does the same from the CLI" />
                 <Button Style="{StaticResource MaButton}" Content="_Refresh" Command="{Binding RefreshCommand}" Margin="0,0,8,0"
                         ToolTip="Read the database again (F5). It also refreshes by itself when agents change tickets." />
-                <Button Style="{StaticResource MaButton}" Content="Commandsâ€¦" Command="{x:Static vm:WindowCommands.CommandPalette}" Margin="0,0,8,0"
+                <Button Style="{StaticResource MaButton}" Content="Commands…" Command="{x:Static vm:WindowCommands.CommandPalette}" Margin="0,0,8,0"
                         AutomationProperties.Name="Command palette" AutomationProperties.AcceleratorKey="Ctrl+K"
                         ToolTip="Jump to any ticket or story, or run any command, by typing part of its name (Ctrl+K)" />
                 <Button Style="{StaticResource MaButton}" Content="_Help" Command="{x:Static vm:WindowCommands.Help}"
@@ -259,7 +259,7 @@
                     <ComboBox x:Name="SavedFilterBox" Style="{StaticResource Combo}" MinWidth="150" ItemsSource="{Binding SavedFilterChoices}"
                               SelectedItem="{Binding SelectedSavedFilter}" AutomationProperties.Name="Saved filter"
                               ToolTip="Named queries kept in the ticket database (also 'tickets filter list' and 'tickets ticket list --filter')." />
-                    <Button Style="{StaticResource MaButton}" Content="Saveâ€¦" Command="{Binding SaveFilterCommand}" Margin="6,0,0,0"
+                    <Button Style="{StaticResource MaButton}" Content="Save…" Command="{Binding SaveFilterCommand}" Margin="6,0,0,0"
                             ToolTip="Save the query as a named filter" />
                     <Button Style="{StaticResource MaButton}" Content="Delete" Command="{Binding DeleteFilterCommand}" Margin="6,0,0,0"
                             ToolTip="Delete the picked saved filter" />
@@ -339,17 +339,17 @@
                     <TextBlock Text="{Binding SelectionText}" FontWeight="SemiBold" VerticalAlignment="Center" Margin="0,0,14,4" />
                     <Button Style="{StaticResource MaButton}" Content="Approve" Command="{Binding ApproveCommand}" Margin="0,0,6,4" ToolTip="Approve every selected open ticket (A)" />
                     <Button Style="{StaticResource MaButton}" Content="Unapprove" Command="{Binding UnapproveCommand}" Margin="0,0,6,4" ToolTip="Put every selected ticket back to proposed (U)" />
-                    <Button Style="{StaticResource MaButton}" Content="Rejectâ€¦" Command="{Binding RejectCommand}" Margin="0,0,6,4" ToolTip="Reject every selected open ticket with one reason: each closes as wont-do (R)" />
-                    <Button Style="{StaticResource MaButton}" Content="Closeâ€¦" Command="{Binding CloseRowsCommand}" Margin="0,0,6,4" ToolTip="Close every selected open ticket, with an optional ref (C)" />
-                    <Button Style="{StaticResource MaButton}" Content="Won't doâ€¦" Command="{Binding WontDoRowsCommand}" Margin="0,0,6,4" ToolTip="Close every selected open ticket as wont-do, with a reason (W)" />
-                    <Button Style="{StaticResource MaButton}" Content="Set typeâ€¦" Command="{Binding SetTypeRowsCommand}" Margin="0,0,14,4" ToolTip="Set the type of every selected ticket, recorded on each with a reason (T)" />
+                    <Button Style="{StaticResource MaButton}" Content="Reject…" Command="{Binding RejectCommand}" Margin="0,0,6,4" ToolTip="Reject every selected open ticket with one reason: each closes as wont-do (R)" />
+                    <Button Style="{StaticResource MaButton}" Content="Close…" Command="{Binding CloseRowsCommand}" Margin="0,0,6,4" ToolTip="Close every selected open ticket, with an optional ref (C)" />
+                    <Button Style="{StaticResource MaButton}" Content="Won't do…" Command="{Binding WontDoRowsCommand}" Margin="0,0,6,4" ToolTip="Close every selected open ticket as wont-do, with a reason (W)" />
+                    <Button Style="{StaticResource MaButton}" Content="Set type…" Command="{Binding SetTypeRowsCommand}" Margin="0,0,14,4" ToolTip="Set the type of every selected ticket, recorded on each with a reason (T)" />
                     <Button Style="{StaticResource MaButton}" Content="To top" Command="{Binding MoveTopCommand}" Margin="0,0,6,4" ToolTip="Move the selected tickets to the top of the queue, in their order (Alt+Home)" />
                     <Button Style="{StaticResource MaButton}" Content="To bottom" Command="{Binding MoveBottomCommand}" Margin="0,0,14,4" ToolTip="Move the selected tickets to the bottom of the queue, in their order (Alt+End)" />
                     <Button Style="{StaticResource MaButton}" Content="Clear selection" Command="{Binding ClearSelectionCommand}" Margin="0,0,0,4" ToolTip="Select just one ticket again (Esc)" />
                 </WrapPanel>
             </Border>
             <Grid>
-            <!-- â”€â”€ Queue â”€â”€ -->
+            <!-- ── Queue ── -->
             <Grid Margin="20,0,12,0" Visibility="{Binding IsQueueView, Converter={StaticResource Visible}}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -359,7 +359,7 @@
                     <WrapPanel DockPanel.Dock="Right">
                         <Button Style="{StaticResource MaButton}" Content="Approve" Command="{Binding ApproveCommand}" Margin="0,0,6,4" ToolTip="Approve the selected ticket (A)" />
                         <Button Style="{StaticResource MaButton}" Content="Unapprove" Command="{Binding UnapproveCommand}" Margin="0,0,6,4" ToolTip="Back to proposed (U)" />
-                        <Button Style="{StaticResource MaButton}" Content="Rejectâ€¦" Command="{Binding RejectCommand}" Margin="0,0,14,4" ToolTip="Reject: closes it as wont-do with your reason (R)" />
+                        <Button Style="{StaticResource MaButton}" Content="Reject…" Command="{Binding RejectCommand}" Margin="0,0,14,4" ToolTip="Reject: closes it as wont-do with your reason (R)" />
                         <Button Style="{StaticResource MaButton}" Content="To top" Command="{Binding MoveTopCommand}" Margin="0,0,6,4" ToolTip="Move to the top (Alt+Home)" />
                         <Button Style="{StaticResource MaToolButton}" Content="&#x25B2;" Command="{Binding MoveUpCommand}" Margin="0,0,6,4"
                                 AutomationProperties.Name="Move up" ToolTip="Move up (Alt+Up)" />
@@ -383,7 +383,7 @@
                 </TextBlock>
             </Grid>
 
-            <!-- â”€â”€ Tickets â”€â”€ -->
+            <!-- ── Tickets ── -->
             <ListView x:Name="TicketList" Margin="20,0,12,0" Background="Transparent" BorderThickness="0" Foreground="{DynamicResource MaText}"
                       Visibility="{Binding IsTicketsView, Converter={StaticResource Visible}}"
                       ItemsSource="{Binding TicketRows}" SelectedItem="{Binding SelectedTicketRow}" ItemContainerStyle="{StaticResource GridRow}"
@@ -400,8 +400,8 @@
                                 <WrapPanel Margin="4,12,0,4">
                                     <TextBlock Text="{Binding Name.Name}" FontWeight="SemiBold" FontSize="14" AutomationProperties.HeadingLevel="Level2" VerticalAlignment="Center" />
                                     <TextBlock Text="{Binding ItemCount, StringFormat='  {0} tickets'}" Style="{StaticResource Muted}" VerticalAlignment="Center" />
-                                    <TextBlock Text="{Binding Name.Counts, StringFormat='  Â·  {0}'}" Style="{StaticResource Muted}" VerticalAlignment="Center" />
-                                    <TextBlock Text="{Binding Name.Git, StringFormat='  Â·  git: {0}'}" Style="{StaticResource Muted}" VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding Name.Counts, StringFormat='  ·  {0}'}" Style="{StaticResource Muted}" VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding Name.Git, StringFormat='  ·  git: {0}'}" Style="{StaticResource Muted}" VerticalAlignment="Center" />
                                     <Button Style="{StaticResource LinkBtn}" Content="Start" Margin="14,0,0,0" VerticalAlignment="Center"
                                             Command="{Binding DataContext.StartCliCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding Name}"
                                             AutomationProperties.Name="{Binding Name.StartName}" ToolTip="Open the Orchestrator to start a CLI in this repo" />
@@ -444,7 +444,7 @@
                                 <DataTemplate>
                                     <StackPanel>
                                         <TextBlock Text="{Binding StatusText}" Style="{StaticResource StatusText}" />
-                                        <TextBlock Text="â¸ blocked" FontSize="12" Foreground="{DynamicResource StateRejected}" ToolTip="{Binding BlockedText}"
+                                        <TextBlock Text="⏸ blocked" FontSize="12" Foreground="{DynamicResource StateRejected}" ToolTip="{Binding BlockedText}"
                                                    Visibility="{Binding BlockedText, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
                                     </StackPanel>
                                 </DataTemplate>
@@ -485,7 +485,7 @@
             </Grid>
             </DockPanel>
 
-            <!-- â”€â”€ Board (M.TIX-T77): a column per stage; moving a card changes its approval, work record or status â”€â”€ -->
+            <!-- ── Board (M.TIX-T77): a column per stage; moving a card changes its approval, work record or status ── -->
             <Grid Margin="20,0,12,0" Visibility="{Binding IsBoardView, Converter={StaticResource Visible}}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -534,7 +534,7 @@
                 </ItemsControl>
             </Grid>
 
-            <!-- â”€â”€ Audit: the Orchestrator's findings, read-only (M.TIX-T135) â”€â”€ -->
+            <!-- ── Audit: the Orchestrator's findings, read-only (M.TIX-T135) ── -->
             <ScrollViewer Margin="20,0,12,0" VerticalScrollBarVisibility="Auto" Focusable="False"
                           Visibility="{Binding IsAuditView, Converter={StaticResource Visible}}">
                 <StackPanel>
@@ -568,7 +568,7 @@
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Margin="0,0,0,8">
-                                    <TextBlock TextWrapping="Wrap"><Run Text="{Binding Repo, Mode=OneWay}" FontWeight="SemiBold" /><Run Text="  " /><Run Text="{Binding File, Mode=OneWay}" /><Run Text="  Â·  " /><Run Text="{Binding SimilarityText, Mode=OneWay}" /></TextBlock>
+                                    <TextBlock TextWrapping="Wrap"><Run Text="{Binding Repo, Mode=OneWay}" FontWeight="SemiBold" /><Run Text="  " /><Run Text="{Binding File, Mode=OneWay}" /><Run Text="  ·  " /><Run Text="{Binding SimilarityText, Mode=OneWay}" /></TextBlock>
                                     <TextBox Text="{Binding Path, Mode=OneWay}" IsReadOnly="True" BorderThickness="0" Background="Transparent" Foreground="{DynamicResource MaMuted}" Padding="0" TextWrapping="Wrap" AutomationProperties.Name="Path" />
                                     <TextBlock Style="{StaticResource Muted}" TextWrapping="Wrap"
                                                Text="{Binding CanonicalPath, StringFormat='most repos match {0}'}" />
@@ -581,7 +581,7 @@
                     <ItemsControl ItemsSource="{Binding MissingRows}" Focusable="False">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock TextWrapping="Wrap" Margin="0,0,0,6"><Run Text="{Binding Repo, Mode=OneWay}" FontWeight="SemiBold" /><Run Text="  " /><Run Text="{Binding File, Mode=OneWay}" /><Run Text="  Â·  " /><Run Text="{Binding CountText, Mode=OneWay}" Foreground="{DynamicResource MaMuted}" /></TextBlock>
+                                <TextBlock TextWrapping="Wrap" Margin="0,0,0,6"><Run Text="{Binding Repo, Mode=OneWay}" FontWeight="SemiBold" /><Run Text="  " /><Run Text="{Binding File, Mode=OneWay}" /><Run Text="  ·  " /><Run Text="{Binding CountText, Mode=OneWay}" Foreground="{DynamicResource MaMuted}" /></TextBlock>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
@@ -601,7 +601,7 @@
                 </StackPanel>
             </ScrollViewer>
 
-            <!-- â”€â”€ Activity (M.TIX-T84): every ticket change across the workspace, newest first, live â”€â”€ -->
+            <!-- ── Activity (M.TIX-T84): every ticket change across the workspace, newest first, live ── -->
             <Grid Margin="20,0,12,0" Visibility="{Binding IsActivityView, Converter={StaticResource Visible}}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -725,7 +725,7 @@
                 </TextBlock>
             </Grid>
 
-            <!-- Toasts (M.TIX-T84): an agent closed a ticket. Bottom right, over the lists; each goes by itself, or with âœ•;
+            <!-- Toasts (M.TIX-T84): an agent closed a ticket. Bottom right, over the lists; each goes by itself, or with ✕;
                  clicking one opens its ticket. The announcer says each one too (4.1.3). -->
             <ItemsControl Grid.Column="0" ItemsSource="{Binding Toasts}" Focusable="False" Panel.ZIndex="10"
                           HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,24,12" Width="360"
@@ -752,7 +752,7 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
 
-            <!-- â”€â”€ Detail pane â”€â”€ -->
+            <!-- ── Detail pane ── -->
             <!-- ── Stats (M.TIX-T86): ticket metrics as real tables (a DataGrid each, with column headers, read as a table) ── -->
             <ScrollViewer Margin="20,0,12,0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Focusable="False"
                           PreviewMouseWheel="OnStatsMouseWheel" Visibility="{Binding IsStatsView, Converter={StaticResource Visible}}">
@@ -912,39 +912,39 @@
                         <WrapPanel>
                             <Button Style="{StaticResource MaButton}" Content="Approve" Margin="0,0,6,6"
                                     Command="{Binding DataContext.ApproveCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
-                            <Button Style="{StaticResource MaButton}" Content="Rejectâ€¦" Margin="0,0,6,6"
+                            <Button Style="{StaticResource MaButton}" Content="Reject…" Margin="0,0,6,6"
                                     Command="{Binding DataContext.RejectCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
-                            <Button Style="{StaticResource MaButton}" Content="Closeâ€¦" Margin="0,0,6,6" ToolTip="Close as done, optionally setting its ref"
+                            <Button Style="{StaticResource MaButton}" Content="Close…" Margin="0,0,6,6" ToolTip="Close as done, optionally setting its ref"
                                     Command="{Binding DataContext.CloseTicketCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
-                            <Button Style="{StaticResource MaButton}" Content="Won't doâ€¦" Margin="0,0,6,6"
+                            <Button Style="{StaticResource MaButton}" Content="Won't do…" Margin="0,0,6,6"
                                     Command="{Binding DataContext.WontDoCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
-                            <Button Style="{StaticResource MaButton}" Content="Set refâ€¦" Margin="0,0,6,6" ToolTip="Set its ref (test, commit or story) without closing it"
+                            <Button Style="{StaticResource MaButton}" Content="Set ref…" Margin="0,0,6,6" ToolTip="Set its ref (test, commit or story) without closing it"
                                     Command="{Binding DataContext.SetRefCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
-                            <Button Style="{StaticResource MaButton}" Content="Correct typeâ€¦" Margin="0,0,6,6"
+                            <Button Style="{StaticResource MaButton}" Content="Correct type…" Margin="0,0,6,6"
                                     Command="{Binding DataContext.CorrectTypeCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
-                            <Button Style="{StaticResource MaButton}" Content="Reword summaryâ€¦" Margin="0,0,6,6" ToolTip="Correct its summary; the old wording stays in its history"
+                            <Button Style="{StaticResource MaButton}" Content="Reword summary…" Margin="0,0,6,6" ToolTip="Correct its summary; the old wording stays in its history"
                                     Command="{Binding DataContext.CorrectSummaryCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
-                            <Button Style="{StaticResource MaButton}" Content="Edit descriptionâ€¦" Margin="0,0,6,6" ToolTip="Its markdown description, kept apart from the summary"
+                            <Button Style="{StaticResource MaButton}" Content="Edit description…" Margin="0,0,6,6" ToolTip="Its markdown description, kept apart from the summary"
                                     Command="{Binding DataContext.EditDescriptionCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
-                            <Button Style="{StaticResource MaButton}" Content="Add linkâ€¦" Margin="0,0,6,6"
+                            <Button Style="{StaticResource MaButton}" Content="Add link…" Margin="0,0,6,6"
                                     Command="{Binding DataContext.AddLinkCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
-                            <Button Style="{StaticResource MaButton}" Content="Assignâ€¦" Margin="0,0,6,6" ToolTip="Assign it to a member's login: it's dispatched only on that login"
+                            <Button Style="{StaticResource MaButton}" Content="Assign…" Margin="0,0,6,6" ToolTip="Assign it to a member's login: it's dispatched only on that login"
                                     Command="{Binding DataContext.AssignCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
                             <Button Style="{StaticResource MaButton}" Content="Unassign" Margin="0,0,6,6" ToolTip="Take it off its member: it's handed out like any unassigned ticket"
                                     Command="{Binding DataContext.UnassignCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
-                            <Button Style="{StaticResource MaButton}" Content="Reserveâ€¦" Margin="0,0,6,6" ToolTip="Set aside tokens for it (0 releases)"
+                            <Button Style="{StaticResource MaButton}" Content="Reserve…" Margin="0,0,6,6" ToolTip="Set aside tokens for it (0 releases)"
                                     Command="{Binding DataContext.ReserveCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
-                            <Button Style="{StaticResource MaButton}" Content="Add noteâ€¦" Margin="0,0,6,6" ToolTip="Append a comment to it (notes are never edited or deleted)"
+                            <Button Style="{StaticResource MaButton}" Content="Add note…" Margin="0,0,6,6" ToolTip="Append a comment to it (notes are never edited or deleted)"
                                     Command="{Binding DataContext.AddNoteCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
-                            <Button Style="{StaticResource MaButton}" Content="Estimateâ€¦" Margin="0,0,6,6" ToolTip="Set its effort estimate in tokens: within a priority the queue runs the smallest first (empty clears)"
+                            <Button Style="{StaticResource MaButton}" Content="Estimate…" Margin="0,0,6,6" ToolTip="Set its effort estimate in tokens: within a priority the queue runs the smallest first (empty clears)"
                                     Command="{Binding DataContext.EstimateCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
-                            <Button Style="{StaticResource MaButton}" Content="Add labelâ€¦" Margin="0,0,6,6" ToolTip="Label it (a component is a 'component:' label)"
+                            <Button Style="{StaticResource MaButton}" Content="Add label…" Margin="0,0,6,6" ToolTip="Label it (a component is a 'component:' label)"
                                     Command="{Binding DataContext.AddLabelCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
                         </WrapPanel>
                         <TextBlock Text="{Binding Error}" Style="{StaticResource ErrorText}"
                                    Visibility="{Binding Error, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
 
-                        <!-- Labels (M.TIX-T74): click one to filter by it, âœ• takes it off. -->
+                        <!-- Labels (M.TIX-T74): click one to filter by it, ✕ takes it off. -->
                         <TextBlock Text="LABELS" Style="{StaticResource SectionLabel}" />
                         <TextBlock Text="No labels." Style="{StaticResource Muted}">
                             <TextBlock.Visibility>
@@ -1239,7 +1239,7 @@
                                ToolTip="{Binding UndoToast}" />
                     <Button Style="{StaticResource MaPrimaryButton}" Content="_Undo" Command="{Binding UndoCommand}"
                             ToolTip="Undo it (Ctrl+Z): writes a compensating change; the history keeps both." />
-                    <Button Style="{StaticResource MaToolButton}" Content="âœ•" Margin="8,0,0,0" Command="{Binding DismissUndoToastCommand}"
+                    <Button Style="{StaticResource MaToolButton}" Content="✕" Margin="8,0,0,0" Command="{Binding DismissUndoToastCommand}"
                             AutomationProperties.Name="Dismiss" ToolTip="Dismiss (Ctrl+Z still undoes it)" />
                 </StackPanel>
             </Border>

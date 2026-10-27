@@ -121,7 +121,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
                     <Border Background="Transparent">
-                        <TextBlock Text="&#xE70D;" FontFamily="Segoe MDL2 Assets" FontSize="10" Foreground="{DynamicResource MaText}"
+                        <TextBlock Text="&#xE70D;" FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" FontSize="10" Foreground="{DynamicResource MaText}"
                                    HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0" />
                     </Border>
                 </ControlTemplate>
@@ -183,7 +183,7 @@
                     <StackPanel Orientation="Horizontal" Background="Transparent">
                         <Border x:Name="Box" Width="18" Height="18" CornerRadius="3" BorderThickness="1" VerticalAlignment="Center"
                                 BorderBrush="{DynamicResource FieldBorder}" Background="{DynamicResource MaSurface}">
-                            <TextBlock x:Name="Mark" Text="&#xE73E;" FontFamily="Segoe MDL2 Assets" FontSize="12" Visibility="Collapsed"
+                            <TextBlock x:Name="Mark" Text="&#xE73E;" FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" FontSize="12" Visibility="Collapsed"
                                        Foreground="{DynamicResource MaOnAccent}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
                         <ContentPresenter Margin="8,0,0,0" VerticalAlignment="Center" RecognizesAccessKey="True" />
