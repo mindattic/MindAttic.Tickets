@@ -6853,6 +6853,12 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1163', 'MindAttic.Orchestrator', 1163, '2026-10-27', 'fix', 'closed', 'ClosedTicketSource''s cache reuses a stale close time after a ticket is reopened then reclosed (found by bughunt)', 'ClosedTicketSource.cs', 1162, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1164', 'MindAttic.Orchestrator', 1164, '2026-10-27', 'fix', 'closed', 'Scheduler.LastActivityUtc skips subagent transcripts for legacy worktree assignments, unlike TicketActivity.Active (found by bughunt)', 'Scheduler.cs', 1163, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1165', 'MindAttic.Orchestrator', 1165, '2026-10-27', 'feature', 'open', 'Hovering a CLI terminal scrolls its own buffer; leaving it returns the wheel to the WPF page', '—', 1164, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1166', 'MindAttic.Orchestrator', 1166, '2026-10-27', 'feature', 'open', 'Collapse the dead vertical gap above the 5-hour utilization panel', '—', 1165, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1167', 'MindAttic.Orchestrator', 1167, '2026-10-27', 'feature', 'open', 'Stack notifications as hoverable circles on the dashboard''s right edge', '—', 1166, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1168', 'MindAttic.Orchestrator', 1168, '2026-10-27', 'feature', 'open', 'Show 5hr-limit and weekly-limit percentage boxes with progress bars on the utilization panel', '—', 1167, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1169', 'MindAttic.Orchestrator', 1169, '2026-10-27', 'fix', 'open', 'Utilization chart''s bottom axis labels clip under the status footer bar', '—', 1168, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1170', 'MindAttic.Orchestrator', 1170, '2026-10-27', 'feature', 'open', 'Restore fallback-viewer tabs to their original Dashboard position/order on reattach', 'M.ORCH-T1040,M.ORCH-T1050,M.ORCH-T960', 1169, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1171', 'MindAttic.Orchestrator', 1171, '2026-10-27', 'feature', 'open', 'CLI tabs auto-size to content width, no wrap, with overflow arrows like the user tabs', '—', 1170, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T1', 'MindAttic.Psst', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.PSST-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T2', 'MindAttic.Psst', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for ContactBook (Contacts/Contact.cs): Find matches name case-insensitively before phone, falls back to 10-digit phone match across formats (+1, dashes, parens), returns null for blank or unmatched input; WithAdded rejects blank name/phone and case-insensitive duplicate names and leaves the original book unchanged; WithoutContact removes only the first case-insensitive match and returns null when absent - this is how psst sms resolves recipients, so a wrong match texts the wrong person', '865fde2', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T3', 'MindAttic.Psst', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched', '—', 2, '| M.PSST-T3 | 2026-10-14 | chore | open | NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched | — |');
@@ -7771,7 +7777,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T219', 'REA.Bloodlines', 219, '2026-10-26', 'fix', 'open', 'Character creation and every BitmapText screen show garbled, jumping glyphs whenever the UI renders at a scale other than the one its glyph styles were built at (window resize, non-1080p capture): each glyph''s cut from its font page is a background-position baked in screen pixels from ScaleToScreen; cut glyphs with an overflow-hidden box and a CSS-px page image instead', '—', 218, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T220', 'REA.Bloodlines', 220, '2026-10-26', 'fix', 'closed', 'Character creation''s labels overflow their boxes (Reset Stats, Male/Female, clan names, trait names): the sheet''s fixed-width columns (clans 200px, middle 520px, traits 3x230px) are flex-shrunk below their content on narrow windows, so hover boxes end up smaller than their words', 'be61cc4', 219, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T221', 'REA.Bloodlines', 221, '2026-10-26', 'fix', 'closed', 'The standalone game starts every new game in the devtest room and spawns map NPCs and item models as stand-ins: FrontEnd.ScenePath, MapSpawner, ThrownGrenade and the game menu''s quit test FileExists on the .scene/.vmdl source, which an export never ships (only the compiled _c); GameData.ResourceExists accepts either', 'bc9682de21a7f1d5d2132c6ae7857ec4b8336601', 220, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T222', 'REA.Bloodlines', 222, '2026-10-26', 'fix', 'open', 'A NullReferenceException in MoveModeWalk.UpdateMove (PlayerController.OnFixedUpdate) on every world start: CreatePlayer destroyed the controller''s stock walk mode after an enabled create, leaving the controller holding the destroyed mode for its first tick; the player is now built disabled with BloodlinesWalkMode as its only move mode', '—', 221, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T222', 'REA.Bloodlines', 222, '2026-10-26', 'fix', 'closed', 'A NullReferenceException in MoveModeWalk.UpdateMove (PlayerController.OnFixedUpdate) on every world start: CreatePlayer destroyed the controller''s stock walk mode after an enabled create, leaving the controller holding the destroyed mode for its first tick; the player is now built disabled with BloodlinesWalkMode as its only move mode', '7ac3ab1', 221, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T223', 'REA.Bloodlines', 223, '2026-10-26', 'fix', 'open', 'A new game never lands in the devtest room: without sp_theatre it starts at the next opening map that was imported (sp_tutorial_1, then sm_pawnshop_1) or stays on the title menu; NewGame.FirstScene/StartWith removed', '—', 222, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T224', 'REA.Bloodlines', 224, '2026-10-26', 'fix', 'closed', 'Loading sm_pawnshop_1 throws ''Unable to create joint'' from PhysicsJoint.CreateHinge in PhysConstraint.TryCreate on FixedUpdate (Physics.cs:1072), repeatedly', '24a6e41', 223, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T225', 'REA.Bloodlines', 225, '2026-10-26', 'fix', 'closed', 'In-game screens'' labels overflow their boxes: character screen trait names under their dots, rows overlapping, the Health/Humanity/Masquerade/Experience header colliding, feat values over names, the hint under Cancel/Accept; save/load slot details cut off; the map''s district button and footer; boxes size to the bitmap-font labels instead of fixed widths', 'e9989bdb7b1b93222544ad9cc29bb8a651337963', 224, NULL);
@@ -32767,6 +32773,17 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20036, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20037, 'RB-T220', '2026-10-27T21:19:28Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20038, 'RB-T220', '2026-10-27T21:19:28Z', 'ref', '—', 'be61cc4');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20039, 'RB-T220', '2026-10-27T21:19:39Z', 'working', 'honey@mindattic.com (45cf52c0-6fa6-40aa-8b74-97a3411645e5)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20040, 'RB-T222', '2026-10-27T21:23:59Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20041, 'RB-T222', '2026-10-27T21:23:59Z', 'ref', '—', '7ac3ab1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20042, 'RB-T222', '2026-10-27T21:24:06Z', 'working', 'honey@mindattic.com (45cf52c0-6fa6-40aa-8b74-97a3411645e5)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20043, 'M.ORCH-T1166', '2026-10-27T21:24:15Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20044, 'M.ORCH-T1167', '2026-10-27T21:24:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20045, 'M.ORCH-T1168', '2026-10-27T21:24:18Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20046, 'M.ORCH-T1169', '2026-10-27T21:24:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20047, 'M.ORCH-T1170', '2026-10-27T21:24:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20048, 'M.ORCH-T1170', '2026-10-27T21:25:06Z', 'working', NULL, 'ffcba427-145a-46bc-88a2-8481f4a1270a');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20049, 'M.ORCH-T1171', '2026-10-27T21:29:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20050, 'M.ORCH-T1171', '2026-10-27T21:29:44Z', 'working', NULL, '917a274a-4195-4013-9702-e78bc332cbbe');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z', NULL);
@@ -34642,6 +34659,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1069', NULL, 0, NULL, '2dd2b796-793e-4c61-836e-de83457d1291', '2026-10-27T21:17:12Z', '2026-10-27T21:17:12Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1170', NULL, 0, NULL, 'ffcba427-145a-46bc-88a2-8481f4a1270a', '2026-10-27T21:25:06Z', '2026-10-27T21:25:06Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1171', NULL, 0, NULL, '917a274a-4195-4013-9702-e78bc332cbbe', '2026-10-27T21:29:44Z', '2026-10-27T21:29:44Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T768', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
@@ -34725,7 +34744,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T133', NULL, 0, 'pdftransferjr@mindattic.com', '52d32bc1-0939-4dbe-8425-35585a84452a', '2026-10-27T06:24:45Z', '2026-10-27T06:24:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T219', NULL, 0, 'honey@mindattic.com', '45cf52c0-6fa6-40aa-8b74-97a3411645e5', '2026-10-27T21:12:03Z', '2026-10-27T21:12:03Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T222', NULL, 0, 'honey@mindattic.com', '45cf52c0-6fa6-40aa-8b74-97a3411645e5', '2026-10-27T21:11:28Z', '2026-10-27T21:11:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T223', NULL, 0, 'honey@mindattic.com', '45cf52c0-6fa6-40aa-8b74-97a3411645e5', '2026-10-27T21:05:16Z', '2026-10-27T21:05:16Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T229', NULL, 0, 'honey@mindattic.com', '45cf52c0-6fa6-40aa-8b74-97a3411645e5', '2026-10-27T20:34:14Z', '2026-10-27T20:34:14Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
@@ -34973,6 +34991,28 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (65, 'M.O
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (66, 'M.ORCH-T1051', 'ryand', '2026-10-27T20:03:52Z', 'Duplicate of M.ORCH-T1061: same test (BusyClisTests.What_names_no_cli_refuses_nothing_while_every_open_cli_is_hosted), same assertion failure, opened the same day from a stale test-gate baseline. T1061 already renamed/fixed the test on main in commit 359eaffd (Update the stale BusyClisTests case to M.ORCH-T1042''s rule), which is an ancestor of current HEAD. No code change needed; closing as already fixed.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (67, 'M.ORCH-T815', 'ryand', '2026-10-27T21:11:07Z', 'Not re-implemented (2026-10-27): superseded. The chain landed in 78b3d4f1, then the user asked for independent deploys and it was removed by M.ORCH-T1147 (d5dfa3c3/28901387) and M.TIX-T174 (7e8ccd3); DeployScriptTests now asserts run.ps1 never chains into Tickets. Recommend closing as won''t-do.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (68, 'M.ORCH-T1114', 'ryand', '2026-10-27T21:15:47Z', 'Root cause: the pace gate''s exempt early-exit (for /allocate and other exempt commands) ran before hold_at_stop() in pace-gate.py, so an exempt turn typed near the cutoff, with its subagents sharing the session, ran a full ticket round past the 99% stop -- exactly how honey''s window (held/refused calls alongside it) still reached 100%. Found independently by /bughunt 2026-10-27 as M.ORCH-T1125 (its G1) and already fixed and landed on main in commit 34d46cbc (hold_at_stop() now runs before the exempt check, and is never skipped by it), together with the related hole where the hooks'' fallback 5-hour stop used the fixed STOP_PERCENT=99 instead of the login''s own cutoff while the daemon''s status was stale (M.ORCH-T1125''s G2) -- also relevant here since the window ran overnight. Verified that fix is in this checkout''s history (ancestor of HEAD) and its tests (HookScriptTests: An_exempt_commands_turn_skips_every_pace_gate_until_it_stops_and_is_logged_as_exempt; The_hooks_own_5_hour_stop_is_the_logins_cutoff_from_its_status_not_a_fixed_99) cover exactly this scenario. No further code change needed for this ticket; closing as the same hole, already plugged.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (69, 'M.ORCH-T1166', 'ryand', '2026-10-27T21:24:33Z', '![whitespace crop](../data/attachments/M.ORCH-T1166/whitespace-crop.png)
+![before](../data/attachments/M.ORCH-T1166/before.png)
+![after](../data/attachments/M.ORCH-T1166/after.png)
+
+Related: M.ORCH-T1167 (notification circles that go where this whitespace used to be), M.ORCH-T1168 (limit boxes), M.ORCH-T1169 (footer-clip side effect).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (70, 'M.ORCH-T1167', 'ryand', '2026-10-27T21:24:33Z', '![before](../data/attachments/M.ORCH-T1167/before.png)
+![after](../data/attachments/M.ORCH-T1167/after.png)
+
+Related: M.ORCH-T1166 (removes the whitespace this stack visually replaces).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (71, 'M.ORCH-T1168', 'ryand', '2026-10-27T21:24:34Z', '![before](../data/attachments/M.ORCH-T1168/before.png)
+![after](../data/attachments/M.ORCH-T1168/after.png)
+
+Related: M.ORCH-T1169 (its chart-label clipping may be a side effect of this panel''s new header row).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (72, 'M.ORCH-T1169', 'ryand', '2026-10-27T21:24:34Z', '![before](../data/attachments/M.ORCH-T1169/before.png)
+![after](../data/attachments/M.ORCH-T1169/after.png)
+
+Related: M.ORCH-T1166, M.ORCH-T1168 (likely cause of the clipping).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (73, 'M.ORCH-T1171', 'ryand', '2026-10-27T21:29:30Z', 'Reference screenshot of user tabs (WA: Launcher / Orchestrator [Claude]) showing the desired auto-sized, no-wrap look with scroll arrows for overflow:
+
+![user tabs reference](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/M.ORCH-T1171/2026-10-27-image-1.png)
+
+Request: CLI tabs currently stretch/wrap; make them only as wide as their content (longest tab sets nothing special, each tab sizes to its own text), disable wrapping, and add the same left/right overflow arrows the user tabs already have.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.LNCH-T88', 'Seen live: opening the Launcher as api-key@mindattic.vault printed ''isn''t signed in on this machine yet. Signing it in first (orchestrator login --account api-key@mindattic.vault)...'' and opened a claude.ai OAuth browser flow, exactly like a normal Team member who''s never signed in.
@@ -36871,6 +36911,113 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1149
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1150', 'The user (2026-10-27): ''if user closes the last tab they have open, a new Launcher logged into them should spawn''. Approved by the user in the same request.', '2026-10-27T17:09:26Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1153', 'Left by M.ORCH-T1150 (3ddea600): each capped retry (one per 30s) opened a new Launcher tab and left the previous, ended one until the user closed it. The user (2026-10-27): ''fix''.', '2026-10-27T18:12:48Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1165', 'Scrolling the mouse wheel while the cursor is over a Terminals-tab CLI should scroll that terminal''s own scrollback, even when the terminal doesn''t hold Win32 keyboard focus (WM_MOUSEWHEEL normally routes by focus, not cursor position, so a hover-only scroll currently goes nowhere). Moving the mouse off the terminal should leave wheel scrolling to the surrounding WPF page (AgentsBody) as today. Mirror TerminalKeyboard''s approach (TerminalKeyboard.cs): forward the wheel message straight to the terminal''s HwndHost window when the cursor is over it, via a window-level PreviewMouseWheel handler.', '2026-10-27T21:17:29Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1166', '## Story
+
+In the dashboard window, below the active login''s CLI transcript panel, there is a large dead
+vertical gap before the "5-hour utilization" panel starts. In the "before" screenshot the
+transcript box ends around y≈700 but the "5-hour utilization" label doesn''t appear until
+y≈823 — roughly 120px of empty dark background with nothing in it. The "after" screenshot shows
+this gap collapsed: the "5-hour utilization" label sits right under the transcript box (y≈748),
+~75px higher than before.
+
+## Acceptance
+
+- Remove the fixed/dead vertical space between the CLI transcript panel and the "5-hour
+  utilization" panel so the utilization panel sits directly under the transcript with only normal
+  panel padding between them.
+- No change to the utilization panel''s own internal content or height — only the gap above it
+  shrinks.
+- Verify at the default window size and after resizing taller/shorter that the gap doesn''t
+  reappear or get clipped.
+
+## Reference
+
+Before/after comparison: [before](image-2.png) vs [after](image-3.png). Close-up crop of the
+exact dead-space region being removed: [whitespace crop](image-1.png).', '2026-10-27T21:24:15Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1167', '## Story
+
+The "after" screenshot shows a new vertical stack of solid orange circles running down the far
+right edge of the dashboard window (roughly 8 circles, evenly spaced, starting near the tab row
+and continuing down past the transcript panel). They don''t exist at all in the "before"
+screenshot — that strip is just empty background. These are meant to be notification indicators:
+one circle per pending/unread notification, stacked rather than shown inline or as text, and each
+one should show its notification''s content on mouseover (tooltip or flyout), not require a click.
+
+## Acceptance
+
+- Add a vertical stack of circular notification badges pinned to the right edge of the main
+  window, one per active notification, newest-on-top (or oldest-on-top — confirm ordering with
+  Waffle before finishing).
+- Hovering a circle shows that notification''s message (tooltip/flyout), without navigating away
+  or requiring a click.
+- Circles use a color to indicate severity/state (the mock shows solid orange for all of them —
+  confirm whether color should vary by notification type).
+- Stack scrolls or truncates sensibly if there are more notifications than fit the window height.
+- This replaces whatever currently surfaces these notifications (if anything) — don''t leave a
+  duplicate notification path alongside the new circles.
+
+## Reference
+
+Before/after comparison: [before](image-2.png) vs [after](image-3.png), where the stacked orange
+circles are visible along the right edge.', '2026-10-27T21:24:17Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1168', '## Story
+
+The "after" screenshot adds two small stat boxes in the header row of the "5-hour utilization"
+panel, right-aligned next to the panel title:
+- "5hr limit: 66%" with a thin horizontal progress bar underneath, filled orange.
+- "Weekly limit: 22%" with the same style of progress bar, filled green.
+
+Neither box exists in the "before" screenshot — that row is otherwise blank.
+
+## Acceptance
+
+- Add two boxes to the 5-hour utilization panel''s header row: "5hr limit: {pct}%" and
+  "Weekly limit: {pct}%", each with its own labeled percentage and a thin progress bar beneath it.
+- Progress bar fill color reflects status (the mock shows orange for 5hr limit at 66% and green
+  for weekly limit at 22% — confirm the color thresholds against the existing pacing
+  config/thresholds already used elsewhere in the dashboard, e.g. the 98%/90% cutoffs).
+- Values are the same live figures already computed for pacing (5-hour window % and weekly %),
+  just surfaced here as a compact readout — no new calculation.
+
+## Reference
+
+Before/after comparison: [before](image-2.png) vs [after](image-3.png), boxes visible top-right
+of the "5-hour utilization" panel in the after shot.', '2026-10-27T21:24:18Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1169', '## Symptom
+
+In the "after" screenshot, the utilization chart''s bottom axis labels — "48% target" (blue, bottom
+left) and "100.0% at reset" (red, bottom right) — sit right at the window''s bottom edge and are
+partially overlapped/clipped by the status footer bar ("69 repos under D:\Projects\MindAttic" /
+"F5 refresh · Ctrl+Tab next login · Ctrl +/- zoom · Esc close"). In the "before" screenshot the
+equivalent label ("131.3% at reset") has clear space above the footer and isn''t clipped.
+
+## Cause
+
+Likely surfaced by the other layout changes in this same mock (collapsing the dead whitespace
+above the panel, per [[whitespace ticket]], and/or adding the new limit boxes to the panel header,
+per [[limit boxes ticket]]) pushing the chart''s plot area height/position without reserving room
+for its bottom labels above the fixed footer.
+
+## Test
+
+- At the default window size, the utilization chart''s bottom labels must be fully visible above
+  the footer bar with normal padding, at both low and high percentage values (long strings like
+  "131.3% at reset").
+- Resize the window shorter and confirm the chart area shrinks/scrolls rather than letting its
+  labels clip under the footer.
+
+## Reference
+
+Before/after comparison: [before](image-2.png) vs [after](image-3.png) — look at the bottom-left
+and bottom-right corners of the utilization panel in the after shot.', '2026-10-27T21:24:20Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1170', 'When Orchestrator.Desktop crashes, FallbackViewers (M.ORCH-T960) spawns a standalone ViewerWindow per live hosted session. When the Dashboard restarts and a session folds back (ViewerWindow.Fold(), src/MindAttic.Orchestrator.TermViewer/ViewerWindow.cs:227-229,276-278,298-302), TerminalsViewModel.Reattach() (src/MindAttic.Orchestrator.Core/.../TerminalsViewModel.cs:784-812) just does Panes.Add(pane) (line 803), appending the tab at the end of the ObservableCollection<TerminalPaneViewModel> Panes. There is no concept of original tab index/order anywhere: PaneRequest/TermPaneFile sidecar (src/MindAttic.Orchestrator.Core/Sessions/TerminalPanes.cs, TermPaneFile.cs) carries title/command/login/badge/IsMenu but no order field, and orchestrator.db has no such column either. Order of reattachment is whatever TermSessions.Enumerate() registry read or arrival order of term-session bus messages yields - not the tab''s pre-crash position. (Contrast: the separate RestoreTabs path in MainViewModel.Restore.cs/SessionRestore.cs DOES preserve relative order + SelectedTab for tabs whose TermHost died - but that path explicitly excludes still-live hosted sessions per SessionRestoreStore.Unhosted, leaving them to the order-blind Reattach().)
+
+Story: As the user, when Orchestrator.Desktop crashes and CLIs spin up in their own fallback windows, I want those CLIs to reload back into their original tab positions in the Dashboard once I restart Orchestrator.Desktop, instead of reattaching in arbitrary registry/arrival order.
+
+Acceptance: 
+- Each tab''s position/index within its owner''s tab list is captured and persisted (e.g. an order field on the pane sidecar or a DB column) at the time it is created/reordered.
+- On fold-back/reattach (TerminalsViewModel.Reattach and friends), the pane is inserted at its original index rather than appended, so after a Dashboard crash+restart the tab strip looks the same as it did before the crash.
+- Works across multiple simultaneous fallback windows (multiple CLIs crash-displaced at once) - all reattach into their original relative order.', '2026-10-27T21:24:49Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T833', 'Symptom: Inside the Orchestrator''s embedded Terminals panel (TerminalPanesHost), when a CLI running
 in a pane shows an interactive, arrow-key-driven menu (e.g. a selection list or permission prompt),
 the Up/Down/Left/Right keys don''t reach the CLI. It looks like the WPF app is intercepting/consuming
