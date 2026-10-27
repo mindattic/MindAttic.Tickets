@@ -5180,6 +5180,9 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAT-T64', 'MindAttic.Agency', 64, '2026-10-26', 'chore', 'closed', 'Add /tests back as a global alias of /test (a thin forwarder, not a copy)', '—', 63, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAT-T65', 'MindAttic.Agency', 65, '2026-10-27', 'docs', 'closed', 'GOLDEN RULE in the global agent standard: always layer code on top of main, never a separate branch or worktree', '—', 64, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAT-T66', 'MindAttic.Agency', 66, '2026-10-27', 'docs', 'closed', 'GOLDEN RULE in the global agent standard: every request becomes a ticket or is appended to one, so every code-writing action is aligned to a ticket', '—', 65, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAT-T67', 'MindAttic.Agency', 67, '2026-10-27', 'feature', 'open', 'Every MindAttic deploy.ps1/deploy.bat launcher opens a menu first: 1) Deploy & Run, 2) Run, so a Desktop double-click can skip the full redeploy', '—', 66, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAT-T68', 'MindAttic.Agency', 68, '2026-10-27', 'chore', 'open', 'Rename every MindAttic deploy.ps1 to run.ps1 and deploy.bat to run.bat, and update everything that names them', '—', 67, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAT-T69', 'MindAttic.Agency', 69, '2026-10-27', 'chore', 'open', 'Point every MindAttic Desktop shortcut at the renamed run.bat launchers', '—', 68, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.AUTH-T1', 'MindAttic.Authentication', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.AUTH-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.AUTH-T2', 'MindAttic.Authentication', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for AuthenticationService.LoginAsync core pipeline (Services/AuthenticationService.cs; only its alert side effects are tested today): account- or IP-throttled login calls VerifyDecoy, audits Throttled/Locked and returns Failed without a user lookup; unknown and inactive users both run the decoy and audit UnknownUser vs Disabled; bad password records failures on both Account and Ip scopes and audits BadPassword; success resets both throttles, applies ApplyRehash only when Verify reports NeedsRehash, stamps LastLoginUtc, creates an AuthSession with hashed IP, 512-char-truncated user agent and AbsoluteExpiry = now + AbsoluteTimeout; MfaEnabled users get MfaRequired with no session and no claims; claims include NameIdentifier, UserId, Name, Role, SecurityStamp, SessionId, amr=pwd, plus MustChangePassword/MustEnrollMfa flags only when set - this is the login gate, so regressions here are security bugs', 'fed920d', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.AUTH-T3', 'MindAttic.Authentication', 3, '2026-10-14', 'chore', 'closed', 'NUnit tests for AuthenticationService.ConfirmMfaAsync (Services/AuthenticationService.cs): missing, inactive or non-MFA user returns Failed; locked account audits MfaChallenge Throttled; valid TOTP succeeds and persists LastTotpStepUsed so the same code cannot be replayed; TOTP with no enabled secret or an unprotectable (tampered) SecretEncrypted fails without throwing; recovery code is trimmed, matched against unused codes only, marks UsedUtc and cannot be reused; failure records Account+Ip failures and audits MfaBad; success resets throttles, creates a session, audits RecoveryUsed vs MfaChallenge, and returns claims with amr pwd and mfa - second-factor correctness and replay protection', 'AuthenticationServiceConfirmMfaTests', 2, NULL);
@@ -6797,7 +6800,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1119', 'MindAttic.Orchestrator', 1119, '2026-10-27', 'fix', 'closed', 'Ryan''s and Erin''s usage readings are hours stale: the meter probe can''t read them and the tabs show old figures as current', 'f5909f33', 1118, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1120', 'MindAttic.Orchestrator', 1120, '2026-10-27', 'feature', 'closed', 'A person tab''s hover shows only their cutoffs and the weekly reset', 'd0e823e7', 1119, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1121', 'MindAttic.Orchestrator', 1121, '2026-10-27', 'fix', 'closed', 'Tests and deploy.ps1 broken by tonight''s dashboard changes: removed tiles, content-sized tabs, the borderless CLI frame, the paste test, a non-git deploy folder', 'e0298ebd', 1120, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1122', 'MindAttic.Orchestrator', 1122, '2026-10-27', 'feature', 'open', 'No more worktrees: /allocate and every dispatcher work in the repo''s own checkout on main, and every stray worktree branch is merged onto main and removed', '—', 1121, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1122', 'MindAttic.Orchestrator', 1122, '2026-10-27', 'feature', 'closed', 'No more worktrees: /allocate and every dispatcher work in the repo''s own checkout on main, and every stray worktree branch is merged onto main and removed', 'c751991d', 1121, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1123', 'MindAttic.Orchestrator', 1123, '2026-10-27', 'fix', 'closed', 'TermHost and the relay: a viewer''s size is capped, every viewer gets the CLI''s last output and exit, a watch-only link never sends input, pipe handles don''t leak, the UTF-8 decoder resets on reattach', '859cba39', 1122, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1124', 'MindAttic.Orchestrator', 1124, '2026-10-27', 'fix', 'closed', 'Scheduling: the cool-off abort matches subagents to their tickets, an unreadable stories file isn''t ''no tickets'', a finished test run held open by a grandchild isn''t a timeout, an auto-picked login''s account is recorded, a busy ticket DB doesn''t abort the tick, the DB cache refreshes for SQL Server', '0170065a', 1123, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1125', 'MindAttic.Orchestrator', 1125, '2026-10-27', 'fix', 'closed', 'Hard stops leak: an exempt command''s turn skipped the 5-hour and weekly stops, the hooks'' fallback stop was a fixed 99%, a failing off-tick refresh retried every second, a failed meter write waited 4 minutes, a login''s weekly stop wasn''t held to its reset', '34d46cbc', 1124, NULL);
@@ -6820,6 +6823,9 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1142', 'MindAttic.Orchestrator', 1142, '2026-10-27', 'feature', 'open', 'Hub 5.16 — Per-login allowance split across devices when one Claude login is live on several machines', '—', 1141, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1143', 'MindAttic.Orchestrator', 1143, '2026-10-27', 'feature', 'open', 'Hub 5.17 — Opt-in remote dispatch (`Hub.AcceptDispatch`) plus cross-machine rebalance and API-key failover to key-holder spokes only', '—', 1142, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1144', 'MindAttic.Orchestrator', 1144, '2026-10-27', 'feature', 'open', 'Hub 6.18 — Hub deploy, backup, pin rotation, revocation UI, rate limits, an optional cloud relay, and version-skew and chaos tests', '—', 1143, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1145', 'MindAttic.Orchestrator', 1145, '2026-10-27', 'feature', 'open', 'EPIC: Hub and spoke: org members connect their own machines to a central Orchestrator hub; everyone''s CLIs visible and shareable; today''s single-machine mode unchanged', '—', 1144, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1146', 'MindAttic.Orchestrator', 1146, '2026-10-27', 'feature', 'open', 'An epic gates its tickets: a ticket that requires an epic (label ''epic'') may start once the epic is approved, and the epic itself is never dispatched as work', '—', 1145, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1147', 'MindAttic.Orchestrator', 1147, '2026-10-27', 'feature', 'open', 'Orchestrator and Tickets deploy independently: deploy.ps1 no longer chains into MindAttic.Tickets'' deploy', '—', 1146, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T1', 'MindAttic.Psst', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.PSST-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T2', 'MindAttic.Psst', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for ContactBook (Contacts/Contact.cs): Find matches name case-insensitively before phone, falls back to 10-digit phone match across formats (+1, dashes, parens), returns null for blank or unmatched input; WithAdded rejects blank name/phone and case-insensitive duplicate names and leaves the original book unchanged; WithoutContact removes only the first case-insensitive match and returns null when absent - this is how psst sms resolves recipients, so a wrong match texts the wrong person', '865fde2', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T3', 'MindAttic.Psst', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched', '—', 2, '| M.PSST-T3 | 2026-10-14 | chore | open | NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched | — |');
@@ -7056,6 +7062,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T171', 'MindAttic.Tickets', 171, '2026-10-27', 'fix', 'closed', 'Fix MainWindow.xaml mojibake (double-encoded …, ──, ·, ✕, ⏸ glyphs from a past cp1252/UTF-8 round-trip) and tofu dropdown chevrons/checkmarks by falling back from Segoe MDL2 Assets to Segoe Fluent Icons', 'bda14fa', 170, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T172', 'MindAttic.Tickets', 172, '2026-10-27', 'fix', 'closed', 'deploy.ps1 builds the newer of main/origin-main from a clean detached worktree, not the working tree, so agents'' pushed-from-worktree work deploys even when this checkout hasn''t pulled, and uncommitted edits never do', '0437d69', 171, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T173', 'MindAttic.Tickets', 173, '2026-10-27', 'feature', 'open', 'Hub 4.14 — Write through the hub API when the machine has joined a hub; read-only with a clear message otherwise', '—', 172, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T174', 'MindAttic.Tickets', 174, '2026-10-27', 'feature', 'open', 'Tickets and Orchestrator deploy independently: Tickets'' deploy.ps1 no longer chains into MindAttic.Orchestrator''s deploy', '—', 173, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.VALT-T1', 'MindAttic.Vault', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.VALT-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.VALT-T2', 'MindAttic.Vault', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for Dashboard HealthMonitorStore (MindAttic.Vault.Dashboard/Services/HealthMonitorStore.cs; add a Dashboard ProjectReference to MindAttic.Vault.Tests first): RecordUptime running percentage per provider and case-insensitive ids, Previous returns null before first commit, Commit replaces snapshots and evicts providers missing from the fresh set, sets LastSweepUtc, clears SweepInProgress and fires OnChanged, Snapshots ordered trusted-first then alphabetical, TrustedPanelHealthy false when no trusted snapshots exist or any trusted one is not Healthy - this is the headline confidence verdict the dashboard leads with', 'MindAttic.Vault.Tests/HealthMonitorStoreTests.cs', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.VALT-T3', 'MindAttic.Vault', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for Dashboard AlertDispatcher (Services/AlertDispatcher.cs): with a fake IHttpClientFactory/HttpMessageHandler verify every non-blank webhook gets a JSON POST with provider, displayName, status, previous, diagnosis, detail, atUtc fields; blank webhook urls skipped; no channels configured means no work; a webhook that throws or returns non-2xx is logged and does not stop other webhooks or fault DispatchAsync; email channel skipped when Host is blank or To is empty, and an SMTP failure is swallowed - alerts must be best-effort and isolated so one bad channel never breaks a sweep', '—', 2, '| M.VALT-T3 | 2026-10-14 | chore | open | NUnit tests for Dashboard AlertDispatcher (Services/AlertDispatcher.cs): with a fake IHttpClientFactory/HttpMessageHandler verify every non-blank webhook gets a JSON POST with provider, displayName, status, previous, diagnosis, detail, atUtc fields; blank webhook urls skipped; no channels configured means no work; a webhook that throws or returns non-2xx is logged and does not stop other webhooks or fault DispatchAsync; email channel skipped when Host is blank or To is empty, and an SMTP failure is swallowed - alerts must be best-effort and isolated so one bad channel never breaks a sweep | — |');
@@ -7426,6 +7433,12 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T276', 'Prose', 276, '2026-10-27', 'fix', 'open', 'NounConsistencyService files a violation under the wrong rule key when two rules share a deprecated name', '—', 275, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T277', 'Prose', 277, '2026-10-27', 'fix', 'open', 'NodeReviewService segmented review drops cheap-model, cloud model and model-map options when it reroutes a large node', '—', 276, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T278', 'Prose', 278, '2026-10-27', 'fix', 'open', 'ChapterRepository.SaveChapter resets tone, pace, in-world date and recording state of every legacy beat on each save', '—', 277, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T279', 'Prose', 279, '2026-10-27', 'fix', 'open', 'prose --auto-correct-nightly --json exits 0 when a stage failed while the text mode exits 1', '—', 278, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T280', 'Prose', 280, '2026-10-27', 'fix', 'open', 'prose --import-md rewrites every beat that carries entity tags as changed and drops its hand-placed tags', '—', 279, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T281', 'Prose', 281, '2026-10-27', 'fix', 'open', 'prose --import-cover --book-code validates the node but never records the association', '—', 280, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T282', 'Prose', 282, '2026-10-27', 'fix', 'open', 'prose --migrate-canon-docs mishandles {#anchor} headings in CRLF markdown', '—', 281, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T283', 'Prose', 283, '2026-10-27', 'fix', 'open', 'prose --reembed --markdown --force deletes every universe''s markdown embeddings but rebuilds only the current universe''s', '—', 282, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T284', 'Prose', 284, '2026-10-27', 'fix', 'open', 'KDP new-listing message answers AI-generated content No when only the translations option is set', '—', 283, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -29458,6 +29471,2464 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19160, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19161, 'M.ORCH-T1142', '2026-10-27T16:11:21Z', 'approval', 'proposed', 'approved');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19162, 'M.ORCH-T1143', '2026-10-27T16:11:23Z', 'approval', 'proposed', 'approved');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19163, 'M.ORCH-T1144', '2026-10-27T16:11:26Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19164, 'M.ORCH-T1145', '2026-10-27T16:13:45Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19165, 'M.ORCH-T1145', '2026-10-27T16:14:01Z', 'label', NULL, 'epic');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19166, 'M.ORCH-T1145', '2026-10-27T16:14:01Z', 'label', NULL, 'hub-and-spoke');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19167, 'M.ORCH-T1145', '2026-10-27T16:14:03Z', 'link', NULL, 'implements M.ORCH-T1127');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19168, 'M.ORCH-T1127', '2026-10-27T16:14:03Z', 'link', NULL, 'M.ORCH-T1145 implements');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19169, 'M.ORCH-T1128', '2026-10-27T16:14:06Z', 'link', 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19170, 'M.ORCH-T1128', '2026-10-27T16:14:08Z', 'link', 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19171, 'M.ORCH-T1128', '2026-10-27T16:14:11Z', 'link', NULL, 'part-of M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19172, 'M.ORCH-T1145', '2026-10-27T16:14:12Z', 'link', NULL, 'M.ORCH-T1128 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19173, 'M.ORCH-T1128', '2026-10-27T16:14:18Z', 'link', NULL, 'requires M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19174, 'M.ORCH-T1145', '2026-10-27T16:14:20Z', 'link', NULL, 'M.ORCH-T1128 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19175, 'M.ORCH-T1128', '2026-10-27T16:14:33Z', 'description', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 1 of 18, phase 0. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 0: seams and contracts (no behaviour change)
+
+**Goal.** Put an interface wherever the hub will later decide, with a Local implementation that is today''s code.
+
+**Code:**
+
+- New `src/MindAttic.Orchestrator.Hub.Contracts` (net10.0, no dependencies, like `Term`):
+  - `HubProtocol` (`Version`, `Supported`, `Negotiate`, the same shape as `TermProtocol`);
+  - `HubEnvelope` (`kind`, `v`, `seq`, `ack`, `at`, `payload`: `StatusEnvelope` plus sequencing);
+  - payload records: `SpokeHello`, `HubWelcome`, `Heartbeat`, `LeaseGrant`, `LeaseRenewal`, `PolicySnapshot`,
+    `OpenStream`, `SessionInfo`;
+  - `MeterReading` moves here, or is mirrored here, from `Status/StatusStream.cs`.
+- Core seams (`Core/Hub/`), each with a `Local*` implementation:
+
+| Seam | Today''s code |
+|---|---|
+| `IClaims` | `Allocate.Next`, `Dispatcher` and `DispatchLease`, as they run today |
+| `IPolicySource` | Settings, `UsageCutoffs`, `WeeklyAllowances`, `OrgRouting.Load` |
+| `IMeterSink` | A no-op |
+| `IOrgDirectory` | `MemberRoster`, `Organizations` |
+| `ISessionDirectory` | `TermSessions` plus `TeamWall`''s gateway merge |
+
+- Wiring:
+  - `NextCommand` (`Cli/PlanningCommands.cs`) calls `IClaims`;
+  - `AccountPacer` reads `IPolicySource`;
+  - `TeamWallWindow` reads `ISessionDirectory`.
+- `OrchestratorSettings.Hub`: `Mode` (`Off|Host|Join`), `Url`, `Pin`, `DeviceId`, `OfflineGraceMinutes` (120),
+  `AcceptDispatch` (false). It is shown in Settings as read-only "Off" for now.
+
+**Protocol.** Contracts only, nothing on the wire.
+
+**Migration.** None, beyond an absent `Hub` settings block meaning `Off`.
+
+**Tests:**
+
+- The full existing suite passes untouched.
+- Contract round-trip tests (JSON, unknown kind skipped, newer `v` skipped).
+- A test that `Off` builds only `Local*` seams.
+
+**Risks.** Seams drawn in the wrong place. Mitigate by drawing them exactly at today''s function boundaries and not
+refactoring the logic behind them.
+
+**Effort.** 4 to 6 days.', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 1 of 18, phase 0. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 0: seams and contracts (no behaviour change)
+
+**Goal.** Put an interface wherever the hub will later decide, with a Local implementation that is today''s code.
+
+**Code:**
+
+- New `src/MindAttic.Orchestrator.Hub.Contracts` (net10.0, no dependencies, like `Term`):
+  - `HubProtocol` (`Version`, `Supported`, `Negotiate`, the same shape as `TermProtocol`);
+  - `HubEnvelope` (`kind`, `v`, `seq`, `ack`, `at`, `payload`: `StatusEnvelope` plus sequencing);
+  - payload records: `SpokeHello`, `HubWelcome`, `Heartbeat`, `LeaseGrant`, `LeaseRenewal`, `PolicySnapshot`,
+    `OpenStream`, `SessionInfo`;
+  - `MeterReading` moves here, or is mirrored here, from `Status/StatusStream.cs`.
+- Core seams (`Core/Hub/`), each with a `Local*` implementation:
+
+| Seam | Today''s code |
+|---|---|
+| `IClaims` | `Allocate.Next`, `Dispatcher` and `DispatchLease`, as they run today |
+| `IPolicySource` | Settings, `UsageCutoffs`, `WeeklyAllowances`, `OrgRouting.Load` |
+| `IMeterSink` | A no-op |
+| `IOrgDirectory` | `MemberRoster`, `Organizations` |
+| `ISessionDirectory` | `TermSessions` plus `TeamWall`''s gateway merge |
+
+- Wiring:
+  - `NextCommand` (`Cli/PlanningCommands.cs`) calls `IClaims`;
+  - `AccountPacer` reads `IPolicySource`;
+  - `TeamWallWindow` reads `ISessionDirectory`.
+- `OrchestratorSettings.Hub`: `Mode` (`Off|Host|Join`), `Url`, `Pin`, `DeviceId`, `OfflineGraceMinutes` (120),
+  `AcceptDispatch` (false). It is shown in Settings as read-only "Off" for now.
+
+**Protocol.** Contracts only, nothing on the wire.
+
+**Migration.** None, beyond an absent `Hub` settings block meaning `Off`.
+
+**Tests:**
+
+- The full existing suite passes untouched.
+- Contract round-trip tests (JSON, unknown kind skipped, newer `v` skipped).
+- A test that `Off` builds only `Local*` seams.
+
+**Risks.** Seams drawn in the wrong place. Mitigate by drawing them exactly at today''s function boundaries and not
+refactoring the logic behind them.
+
+**Effort.** 4 to 6 days.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19176, 'M.ORCH-T1129', '2026-10-27T16:14:41Z', 'link', 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19177, 'M.ORCH-T1129', '2026-10-27T16:14:47Z', 'link', 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19178, 'M.ORCH-T1129', '2026-10-27T16:14:51Z', 'link', NULL, 'part-of M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19179, 'M.ORCH-T1145', '2026-10-27T16:14:55Z', 'link', NULL, 'M.ORCH-T1129 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19180, 'M.ORCH-T1129', '2026-10-27T16:15:05Z', 'link', NULL, 'requires M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19181, 'M.ORCH-T1145', '2026-10-27T16:15:10Z', 'link', NULL, 'M.ORCH-T1129 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19182, 'M.ORCH-T1129', '2026-10-27T16:15:22Z', 'description', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 2 of 18, phase 0. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 0: seams and contracts (no behaviour change)
+
+**Goal.** Put an interface wherever the hub will later decide, with a Local implementation that is today''s code.
+
+**Code:**
+
+- New `src/MindAttic.Orchestrator.Hub.Contracts` (net10.0, no dependencies, like `Term`):
+  - `HubProtocol` (`Version`, `Supported`, `Negotiate`, the same shape as `TermProtocol`);
+  - `HubEnvelope` (`kind`, `v`, `seq`, `ack`, `at`, `payload`: `StatusEnvelope` plus sequencing);
+  - payload records: `SpokeHello`, `HubWelcome`, `Heartbeat`, `LeaseGrant`, `LeaseRenewal`, `PolicySnapshot`,
+    `OpenStream`, `SessionInfo`;
+  - `MeterReading` moves here, or is mirrored here, from `Status/StatusStream.cs`.
+- Core seams (`Core/Hub/`), each with a `Local*` implementation:
+
+| Seam | Today''s code |
+|---|---|
+| `IClaims` | `Allocate.Next`, `Dispatcher` and `DispatchLease`, as they run today |
+| `IPolicySource` | Settings, `UsageCutoffs`, `WeeklyAllowances`, `OrgRouting.Load` |
+| `IMeterSink` | A no-op |
+| `IOrgDirectory` | `MemberRoster`, `Organizations` |
+| `ISessionDirectory` | `TermSessions` plus `TeamWall`''s gateway merge |
+
+- Wiring:
+  - `NextCommand` (`Cli/PlanningCommands.cs`) calls `IClaims`;
+  - `AccountPacer` reads `IPolicySource`;
+  - `TeamWallWindow` reads `ISessionDirectory`.
+- `OrchestratorSettings.Hub`: `Mode` (`Off|Host|Join`), `Url`, `Pin`, `DeviceId`, `OfflineGraceMinutes` (120),
+  `AcceptDispatch` (false). It is shown in Settings as read-only "Off" for now.
+
+**Protocol.** Contracts only, nothing on the wire.
+
+**Migration.** None, beyond an absent `Hub` settings block meaning `Off`.
+
+**Tests:**
+
+- The full existing suite passes untouched.
+- Contract round-trip tests (JSON, unknown kind skipped, newer `v` skipped).
+- A test that `Off` builds only `Local*` seams.
+
+**Risks.** Seams drawn in the wrong place. Mitigate by drawing them exactly at today''s function boundaries and not
+refactoring the logic behind them.
+
+**Effort.** 4 to 6 days.', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 2 of 18, phase 0. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 0: seams and contracts (no behaviour change)
+
+**Goal.** Put an interface wherever the hub will later decide, with a Local implementation that is today''s code.
+
+**Code:**
+
+- New `src/MindAttic.Orchestrator.Hub.Contracts` (net10.0, no dependencies, like `Term`):
+  - `HubProtocol` (`Version`, `Supported`, `Negotiate`, the same shape as `TermProtocol`);
+  - `HubEnvelope` (`kind`, `v`, `seq`, `ack`, `at`, `payload`: `StatusEnvelope` plus sequencing);
+  - payload records: `SpokeHello`, `HubWelcome`, `Heartbeat`, `LeaseGrant`, `LeaseRenewal`, `PolicySnapshot`,
+    `OpenStream`, `SessionInfo`;
+  - `MeterReading` moves here, or is mirrored here, from `Status/StatusStream.cs`.
+- Core seams (`Core/Hub/`), each with a `Local*` implementation:
+
+| Seam | Today''s code |
+|---|---|
+| `IClaims` | `Allocate.Next`, `Dispatcher` and `DispatchLease`, as they run today |
+| `IPolicySource` | Settings, `UsageCutoffs`, `WeeklyAllowances`, `OrgRouting.Load` |
+| `IMeterSink` | A no-op |
+| `IOrgDirectory` | `MemberRoster`, `Organizations` |
+| `ISessionDirectory` | `TermSessions` plus `TeamWall`''s gateway merge |
+
+- Wiring:
+  - `NextCommand` (`Cli/PlanningCommands.cs`) calls `IClaims`;
+  - `AccountPacer` reads `IPolicySource`;
+  - `TeamWallWindow` reads `ISessionDirectory`.
+- `OrchestratorSettings.Hub`: `Mode` (`Off|Host|Join`), `Url`, `Pin`, `DeviceId`, `OfflineGraceMinutes` (120),
+  `AcceptDispatch` (false). It is shown in Settings as read-only "Off" for now.
+
+**Protocol.** Contracts only, nothing on the wire.
+
+**Migration.** None, beyond an absent `Hub` settings block meaning `Off`.
+
+**Tests:**
+
+- The full existing suite passes untouched.
+- Contract round-trip tests (JSON, unknown kind skipped, newer `v` skipped).
+- A test that `Off` builds only `Local*` seams.
+
+**Risks.** Seams drawn in the wrong place. Mitigate by drawing them exactly at today''s function boundaries and not
+refactoring the logic behind them.
+
+**Effort.** 4 to 6 days.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19183, 'M.ORCH-T1130', '2026-10-27T16:15:41Z', 'link', 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19184, 'M.ORCH-T1130', '2026-10-27T16:15:45Z', 'link', 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19185, 'M.ORCH-T1130', '2026-10-27T16:15:50Z', 'link', NULL, 'part-of M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19186, 'M.ORCH-T1145', '2026-10-27T16:15:51Z', 'link', NULL, 'M.ORCH-T1130 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19187, 'M.ORCH-T1130', '2026-10-27T16:15:58Z', 'link', NULL, 'requires M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19188, 'M.ORCH-T1145', '2026-10-27T16:15:59Z', 'link', NULL, 'M.ORCH-T1130 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19189, 'M.ORCH-T1130', '2026-10-27T16:16:07Z', 'description', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 3 of 18, phase 1. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 1: hub service, member sign-in, device enrollment, control link (dark)
+
+**Goal.** A spoke can enroll with a hub and hold a live, authenticated, reconnecting control socket. Nothing is decided
+remotely yet.
+
+**Code:**
+
+- New `src/MindAttic.Orchestrator.Hub` (ASP.NET Core, Kestrel):
+  - TLS from `GatewayCertificates`, moved to a shared helper or referenced;
+  - hosts MindAttic.Authentication (`AddMindAtticAuthentication` over a `HubDbContext` with the auth schema; pepper and
+    KEK from `MindAttic:Vault:Security:*` on the hub machine);
+  - endpoints `/health`, `/enroll/start`, `/enroll/complete`, `/device/token` and `/spoke` (WebSocket);
+  - a `devices(id, member, name, public_key, enrolled_utc, last_seen_utc, version, revoked_utc)` table;
+  - presence in memory, with `last_seen` persisted.
+- Core `Hub/HubLink.cs`, the daemon''s client:
+  - the device key in CNG (`CngKey`, `AllowExport = None`, Microsoft Software or Platform KSP);
+  - a challenge signature, then a token;
+  - the socket with backoff and jitter (0.5 s to 60 s);
+  - a heartbeat on each daemon tick;
+  - a `hub_outbox` table in `orchestrator.db` (Volatile, so it never lands in the git dump).
+- `Daemon`: `HubLinkSupervisor`, shaped like `GatewaySupervisor`, starts and stops the link to match `Hub.Mode`.
+- A `HubSupervisor` runs the hub process in `Host` mode. It is separate from the daemon, so a daemon redeploy never
+  drops the hub.
+- CLI `Cli/HubCommands.cs`:
+  - `orchestrator hub host [--bind --port]`;
+  - `orchestrator hub join <url>` (opens the enrollment page; the pin is learned, not typed);
+  - `orchestrator hub status`, `orchestrator hub leave`;
+  - `orchestrator hub devices [--revoke <id>]`.
+- Dashboard: a hub status chip (Off, Connected, Offline since…).
+
+**Protocol.** Control protocol v1: `hello` → `welcome`, then `heartbeat` and `ack`, then `bye`. The hub refuses
+`protocol < N-1` with `update-required`.
+
+**Migration.**
+
+- New hub DB: SQLite by default, or SQL Server through the `DATA_STORES.md` pattern with `hub db migrate`.
+- On the spoke: an `orchestrator.db` migration adds `hub_outbox`.
+
+**Tests:**
+
+- Hub integration tests with `WebApplicationFactory`: enroll, token, connect, revoke mid-session (the socket closes
+  with 1008), a version refusal.
+- `HubLink` reconnect against a hub that is killed and restarted.
+- With `Off`, no socket and no process are created (asserted).
+
+**Risks.**
+
+- MindAttic.Authentication assumes a browser app, but it is browser-based here too (enrollment).
+- CNG keys on machines without a TPM fall back to the software KSP. That is fine.
+- Hosting the hub on a member''s desktop means it sleeps, so document that the hub machine should not sleep.
+
+**Effort.** 2 to 3 weeks.', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 3 of 18, phase 1. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 1: hub service, member sign-in, device enrollment, control link (dark)
+
+**Goal.** A spoke can enroll with a hub and hold a live, authenticated, reconnecting control socket. Nothing is decided
+remotely yet.
+
+**Code:**
+
+- New `src/MindAttic.Orchestrator.Hub` (ASP.NET Core, Kestrel):
+  - TLS from `GatewayCertificates`, moved to a shared helper or referenced;
+  - hosts MindAttic.Authentication (`AddMindAtticAuthentication` over a `HubDbContext` with the auth schema; pepper and
+    KEK from `MindAttic:Vault:Security:*` on the hub machine);
+  - endpoints `/health`, `/enroll/start`, `/enroll/complete`, `/device/token` and `/spoke` (WebSocket);
+  - a `devices(id, member, name, public_key, enrolled_utc, last_seen_utc, version, revoked_utc)` table;
+  - presence in memory, with `last_seen` persisted.
+- Core `Hub/HubLink.cs`, the daemon''s client:
+  - the device key in CNG (`CngKey`, `AllowExport = None`, Microsoft Software or Platform KSP);
+  - a challenge signature, then a token;
+  - the socket with backoff and jitter (0.5 s to 60 s);
+  - a heartbeat on each daemon tick;
+  - a `hub_outbox` table in `orchestrator.db` (Volatile, so it never lands in the git dump).
+- `Daemon`: `HubLinkSupervisor`, shaped like `GatewaySupervisor`, starts and stops the link to match `Hub.Mode`.
+- A `HubSupervisor` runs the hub process in `Host` mode. It is separate from the daemon, so a daemon redeploy never
+  drops the hub.
+- CLI `Cli/HubCommands.cs`:
+  - `orchestrator hub host [--bind --port]`;
+  - `orchestrator hub join <url>` (opens the enrollment page; the pin is learned, not typed);
+  - `orchestrator hub status`, `orchestrator hub leave`;
+  - `orchestrator hub devices [--revoke <id>]`.
+- Dashboard: a hub status chip (Off, Connected, Offline since…).
+
+**Protocol.** Control protocol v1: `hello` → `welcome`, then `heartbeat` and `ack`, then `bye`. The hub refuses
+`protocol < N-1` with `update-required`.
+
+**Migration.**
+
+- New hub DB: SQLite by default, or SQL Server through the `DATA_STORES.md` pattern with `hub db migrate`.
+- On the spoke: an `orchestrator.db` migration adds `hub_outbox`.
+
+**Tests:**
+
+- Hub integration tests with `WebApplicationFactory`: enroll, token, connect, revoke mid-session (the socket closes
+  with 1008), a version refusal.
+- `HubLink` reconnect against a hub that is killed and restarted.
+- With `Off`, no socket and no process are created (asserted).
+
+**Risks.**
+
+- MindAttic.Authentication assumes a browser app, but it is browser-based here too (enrollment).
+- CNG keys on machines without a TPM fall back to the software KSP. That is fine.
+- Hosting the hub on a member''s desktop means it sleeps, so document that the hub machine should not sleep.
+
+**Effort.** 2 to 3 weeks.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19190, 'MAT-T67', '2026-10-27T16:16:10Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19191, 'M.ORCH-T1131', '2026-10-27T16:16:14Z', 'link', 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19192, 'MAT-T68', '2026-10-27T16:16:14Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19193, 'M.ORCH-T1131', '2026-10-27T16:16:15Z', 'link', 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19194, 'M.ORCH-T1131', '2026-10-27T16:16:17Z', 'link', NULL, 'part-of M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19195, 'M.ORCH-T1145', '2026-10-27T16:16:17Z', 'link', NULL, 'M.ORCH-T1131 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19196, 'MAT-T69', '2026-10-27T16:16:18Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19197, 'M.ORCH-T1131', '2026-10-27T16:16:20Z', 'link', NULL, 'requires M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19198, 'MAT-T68', '2026-10-27T16:16:20Z', 'link', NULL, 'requires MAT-T67');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19199, 'M.ORCH-T1145', '2026-10-27T16:16:21Z', 'link', NULL, 'M.ORCH-T1131 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19200, 'MAT-T67', '2026-10-27T16:16:21Z', 'link', NULL, 'MAT-T68 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19201, 'MAT-T69', '2026-10-27T16:16:23Z', 'link', NULL, 'requires MAT-T68');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19202, 'M.ORCH-T1131', '2026-10-27T16:16:24Z', 'description', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 4 of 18, phase 1. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 1: hub service, member sign-in, device enrollment, control link (dark)
+
+**Goal.** A spoke can enroll with a hub and hold a live, authenticated, reconnecting control socket. Nothing is decided
+remotely yet.
+
+**Code:**
+
+- New `src/MindAttic.Orchestrator.Hub` (ASP.NET Core, Kestrel):
+  - TLS from `GatewayCertificates`, moved to a shared helper or referenced;
+  - hosts MindAttic.Authentication (`AddMindAtticAuthentication` over a `HubDbContext` with the auth schema; pepper and
+    KEK from `MindAttic:Vault:Security:*` on the hub machine);
+  - endpoints `/health`, `/enroll/start`, `/enroll/complete`, `/device/token` and `/spoke` (WebSocket);
+  - a `devices(id, member, name, public_key, enrolled_utc, last_seen_utc, version, revoked_utc)` table;
+  - presence in memory, with `last_seen` persisted.
+- Core `Hub/HubLink.cs`, the daemon''s client:
+  - the device key in CNG (`CngKey`, `AllowExport = None`, Microsoft Software or Platform KSP);
+  - a challenge signature, then a token;
+  - the socket with backoff and jitter (0.5 s to 60 s);
+  - a heartbeat on each daemon tick;
+  - a `hub_outbox` table in `orchestrator.db` (Volatile, so it never lands in the git dump).
+- `Daemon`: `HubLinkSupervisor`, shaped like `GatewaySupervisor`, starts and stops the link to match `Hub.Mode`.
+- A `HubSupervisor` runs the hub process in `Host` mode. It is separate from the daemon, so a daemon redeploy never
+  drops the hub.
+- CLI `Cli/HubCommands.cs`:
+  - `orchestrator hub host [--bind --port]`;
+  - `orchestrator hub join <url>` (opens the enrollment page; the pin is learned, not typed);
+  - `orchestrator hub status`, `orchestrator hub leave`;
+  - `orchestrator hub devices [--revoke <id>]`.
+- Dashboard: a hub status chip (Off, Connected, Offline since…).
+
+**Protocol.** Control protocol v1: `hello` → `welcome`, then `heartbeat` and `ack`, then `bye`. The hub refuses
+`protocol < N-1` with `update-required`.
+
+**Migration.**
+
+- New hub DB: SQLite by default, or SQL Server through the `DATA_STORES.md` pattern with `hub db migrate`.
+- On the spoke: an `orchestrator.db` migration adds `hub_outbox`.
+
+**Tests:**
+
+- Hub integration tests with `WebApplicationFactory`: enroll, token, connect, revoke mid-session (the socket closes
+  with 1008), a version refusal.
+- `HubLink` reconnect against a hub that is killed and restarted.
+- With `Off`, no socket and no process are created (asserted).
+
+**Risks.**
+
+- MindAttic.Authentication assumes a browser app, but it is browser-based here too (enrollment).
+- CNG keys on machines without a TPM fall back to the software KSP. That is fine.
+- Hosting the hub on a member''s desktop means it sleeps, so document that the hub machine should not sleep.
+
+**Effort.** 2 to 3 weeks.', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 4 of 18, phase 1. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 1: hub service, member sign-in, device enrollment, control link (dark)
+
+**Goal.** A spoke can enroll with a hub and hold a live, authenticated, reconnecting control socket. Nothing is decided
+remotely yet.
+
+**Code:**
+
+- New `src/MindAttic.Orchestrator.Hub` (ASP.NET Core, Kestrel):
+  - TLS from `GatewayCertificates`, moved to a shared helper or referenced;
+  - hosts MindAttic.Authentication (`AddMindAtticAuthentication` over a `HubDbContext` with the auth schema; pepper and
+    KEK from `MindAttic:Vault:Security:*` on the hub machine);
+  - endpoints `/health`, `/enroll/start`, `/enroll/complete`, `/device/token` and `/spoke` (WebSocket);
+  - a `devices(id, member, name, public_key, enrolled_utc, last_seen_utc, version, revoked_utc)` table;
+  - presence in memory, with `last_seen` persisted.
+- Core `Hub/HubLink.cs`, the daemon''s client:
+  - the device key in CNG (`CngKey`, `AllowExport = None`, Microsoft Software or Platform KSP);
+  - a challenge signature, then a token;
+  - the socket with backoff and jitter (0.5 s to 60 s);
+  - a heartbeat on each daemon tick;
+  - a `hub_outbox` table in `orchestrator.db` (Volatile, so it never lands in the git dump).
+- `Daemon`: `HubLinkSupervisor`, shaped like `GatewaySupervisor`, starts and stops the link to match `Hub.Mode`.
+- A `HubSupervisor` runs the hub process in `Host` mode. It is separate from the daemon, so a daemon redeploy never
+  drops the hub.
+- CLI `Cli/HubCommands.cs`:
+  - `orchestrator hub host [--bind --port]`;
+  - `orchestrator hub join <url>` (opens the enrollment page; the pin is learned, not typed);
+  - `orchestrator hub status`, `orchestrator hub leave`;
+  - `orchestrator hub devices [--revoke <id>]`.
+- Dashboard: a hub status chip (Off, Connected, Offline since…).
+
+**Protocol.** Control protocol v1: `hello` → `welcome`, then `heartbeat` and `ack`, then `bye`. The hub refuses
+`protocol < N-1` with `update-required`.
+
+**Migration.**
+
+- New hub DB: SQLite by default, or SQL Server through the `DATA_STORES.md` pattern with `hub db migrate`.
+- On the spoke: an `orchestrator.db` migration adds `hub_outbox`.
+
+**Tests:**
+
+- Hub integration tests with `WebApplicationFactory`: enroll, token, connect, revoke mid-session (the socket closes
+  with 1008), a version refusal.
+- `HubLink` reconnect against a hub that is killed and restarted.
+- With `Off`, no socket and no process are created (asserted).
+
+**Risks.**
+
+- MindAttic.Authentication assumes a browser app, but it is browser-based here too (enrollment).
+- CNG keys on machines without a TPM fall back to the software KSP. That is fine.
+- Hosting the hub on a member''s desktop means it sleeps, so document that the hub machine should not sleep.
+
+**Effort.** 2 to 3 weeks.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19203, 'MAT-T68', '2026-10-27T16:16:25Z', 'link', NULL, 'MAT-T69 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19204, 'MAT-T67', '2026-10-27T16:16:28Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19205, 'MAT-T68', '2026-10-27T16:16:29Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19206, 'M.ORCH-T1132', '2026-10-27T16:16:30Z', 'link', 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19207, 'MAT-T69', '2026-10-27T16:16:30Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19208, 'M.ORCH-T1132', '2026-10-27T16:16:31Z', 'link', 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19209, 'M.ORCH-T1132', '2026-10-27T16:16:33Z', 'link', NULL, 'part-of M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19210, 'M.ORCH-T1145', '2026-10-27T16:16:33Z', 'link', NULL, 'M.ORCH-T1132 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19211, 'M.ORCH-T1132', '2026-10-27T16:16:35Z', 'link', NULL, 'requires M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19212, 'M.ORCH-T1145', '2026-10-27T16:16:35Z', 'link', NULL, 'M.ORCH-T1132 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19213, 'M.ORCH-T1132', '2026-10-27T16:16:38Z', 'description', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 5 of 18, phase 1. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 1: hub service, member sign-in, device enrollment, control link (dark)
+
+**Goal.** A spoke can enroll with a hub and hold a live, authenticated, reconnecting control socket. Nothing is decided
+remotely yet.
+
+**Code:**
+
+- New `src/MindAttic.Orchestrator.Hub` (ASP.NET Core, Kestrel):
+  - TLS from `GatewayCertificates`, moved to a shared helper or referenced;
+  - hosts MindAttic.Authentication (`AddMindAtticAuthentication` over a `HubDbContext` with the auth schema; pepper and
+    KEK from `MindAttic:Vault:Security:*` on the hub machine);
+  - endpoints `/health`, `/enroll/start`, `/enroll/complete`, `/device/token` and `/spoke` (WebSocket);
+  - a `devices(id, member, name, public_key, enrolled_utc, last_seen_utc, version, revoked_utc)` table;
+  - presence in memory, with `last_seen` persisted.
+- Core `Hub/HubLink.cs`, the daemon''s client:
+  - the device key in CNG (`CngKey`, `AllowExport = None`, Microsoft Software or Platform KSP);
+  - a challenge signature, then a token;
+  - the socket with backoff and jitter (0.5 s to 60 s);
+  - a heartbeat on each daemon tick;
+  - a `hub_outbox` table in `orchestrator.db` (Volatile, so it never lands in the git dump).
+- `Daemon`: `HubLinkSupervisor`, shaped like `GatewaySupervisor`, starts and stops the link to match `Hub.Mode`.
+- A `HubSupervisor` runs the hub process in `Host` mode. It is separate from the daemon, so a daemon redeploy never
+  drops the hub.
+- CLI `Cli/HubCommands.cs`:
+  - `orchestrator hub host [--bind --port]`;
+  - `orchestrator hub join <url>` (opens the enrollment page; the pin is learned, not typed);
+  - `orchestrator hub status`, `orchestrator hub leave`;
+  - `orchestrator hub devices [--revoke <id>]`.
+- Dashboard: a hub status chip (Off, Connected, Offline since…).
+
+**Protocol.** Control protocol v1: `hello` → `welcome`, then `heartbeat` and `ack`, then `bye`. The hub refuses
+`protocol < N-1` with `update-required`.
+
+**Migration.**
+
+- New hub DB: SQLite by default, or SQL Server through the `DATA_STORES.md` pattern with `hub db migrate`.
+- On the spoke: an `orchestrator.db` migration adds `hub_outbox`.
+
+**Tests:**
+
+- Hub integration tests with `WebApplicationFactory`: enroll, token, connect, revoke mid-session (the socket closes
+  with 1008), a version refusal.
+- `HubLink` reconnect against a hub that is killed and restarted.
+- With `Off`, no socket and no process are created (asserted).
+
+**Risks.**
+
+- MindAttic.Authentication assumes a browser app, but it is browser-based here too (enrollment).
+- CNG keys on machines without a TPM fall back to the software KSP. That is fine.
+- Hosting the hub on a member''s desktop means it sleeps, so document that the hub machine should not sleep.
+
+**Effort.** 2 to 3 weeks.', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 5 of 18, phase 1. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 1: hub service, member sign-in, device enrollment, control link (dark)
+
+**Goal.** A spoke can enroll with a hub and hold a live, authenticated, reconnecting control socket. Nothing is decided
+remotely yet.
+
+**Code:**
+
+- New `src/MindAttic.Orchestrator.Hub` (ASP.NET Core, Kestrel):
+  - TLS from `GatewayCertificates`, moved to a shared helper or referenced;
+  - hosts MindAttic.Authentication (`AddMindAtticAuthentication` over a `HubDbContext` with the auth schema; pepper and
+    KEK from `MindAttic:Vault:Security:*` on the hub machine);
+  - endpoints `/health`, `/enroll/start`, `/enroll/complete`, `/device/token` and `/spoke` (WebSocket);
+  - a `devices(id, member, name, public_key, enrolled_utc, last_seen_utc, version, revoked_utc)` table;
+  - presence in memory, with `last_seen` persisted.
+- Core `Hub/HubLink.cs`, the daemon''s client:
+  - the device key in CNG (`CngKey`, `AllowExport = None`, Microsoft Software or Platform KSP);
+  - a challenge signature, then a token;
+  - the socket with backoff and jitter (0.5 s to 60 s);
+  - a heartbeat on each daemon tick;
+  - a `hub_outbox` table in `orchestrator.db` (Volatile, so it never lands in the git dump).
+- `Daemon`: `HubLinkSupervisor`, shaped like `GatewaySupervisor`, starts and stops the link to match `Hub.Mode`.
+- A `HubSupervisor` runs the hub process in `Host` mode. It is separate from the daemon, so a daemon redeploy never
+  drops the hub.
+- CLI `Cli/HubCommands.cs`:
+  - `orchestrator hub host [--bind --port]`;
+  - `orchestrator hub join <url>` (opens the enrollment page; the pin is learned, not typed);
+  - `orchestrator hub status`, `orchestrator hub leave`;
+  - `orchestrator hub devices [--revoke <id>]`.
+- Dashboard: a hub status chip (Off, Connected, Offline since…).
+
+**Protocol.** Control protocol v1: `hello` → `welcome`, then `heartbeat` and `ack`, then `bye`. The hub refuses
+`protocol < N-1` with `update-required`.
+
+**Migration.**
+
+- New hub DB: SQLite by default, or SQL Server through the `DATA_STORES.md` pattern with `hub db migrate`.
+- On the spoke: an `orchestrator.db` migration adds `hub_outbox`.
+
+**Tests:**
+
+- Hub integration tests with `WebApplicationFactory`: enroll, token, connect, revoke mid-session (the socket closes
+  with 1008), a version refusal.
+- `HubLink` reconnect against a hub that is killed and restarted.
+- With `Off`, no socket and no process are created (asserted).
+
+**Risks.**
+
+- MindAttic.Authentication assumes a browser app, but it is browser-based here too (enrollment).
+- CNG keys on machines without a TPM fall back to the software KSP. That is fine.
+- Hosting the hub on a member''s desktop means it sleeps, so document that the hub machine should not sleep.
+
+**Effort.** 2 to 3 weeks.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19214, 'M.ORCH-T1133', '2026-10-27T16:16:42Z', 'link', 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19215, 'M.ORCH-T1133', '2026-10-27T16:16:44Z', 'link', 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19216, 'M.ORCH-T1133', '2026-10-27T16:16:46Z', 'link', NULL, 'part-of M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19217, 'M.ORCH-T1145', '2026-10-27T16:16:46Z', 'link', NULL, 'M.ORCH-T1133 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19218, 'M.ORCH-T1133', '2026-10-27T16:16:48Z', 'link', NULL, 'requires M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19219, 'M.ORCH-T1145', '2026-10-27T16:16:48Z', 'link', NULL, 'M.ORCH-T1133 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19220, 'M.ORCH-T1133', '2026-10-27T16:16:50Z', 'description', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 6 of 18, phase 2. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 2: presence and meters (read-only org view)
+
+**Goal.** From any joined machine, see every member, their machines, their CLIs and their meters. No remote control.
+
+**Code:**
+
+- Each spoke heartbeat carries:
+  - `CliRoster` rows (pid, repo, login, `/allocate` on or off);
+  - `TermSessionRecord`s with titles masked through `SecretMasker` (no command line, cwd, config dir or pipe, as
+    `/sessions` already leaves them out);
+  - `MeterReading`s;
+  - `AgentBoard` summaries (ticket and phase).
+- The hub merges per login and stores `usage_samples` and `pace_ledger` rows tagged with the device.
+- Hub endpoints `GET /org/presence` and `GET /org/usage`.
+- `IOrgDirectory` and `ISessionDirectory` get Hub implementations in `Join` and `Host`.
+- Dashboard: remote people''s tabs show read-only, badged with their machine. `/org usage` (`Cli/OrgCommands.cs`) prints
+  every member''s table across machines.
+- The hub pushes members and orgs as the existing `StateBus` kinds (`members`, `orgs`).
+- Hub-to-spoke login mapping: a report for a login that isn''t in the member''s `org_members` rows is dropped and audited.
+
+**Protocol.** Heartbeat payload v1. Meter readings collapse to the latest per login in the outbox.
+
+**Migration.**
+
+- `members`, `organizations` and `org_members` are copied once into the hub DB from the host machine''s
+  `orchestrator.db` (`hub import-org`).
+- In `Join`, a spoke''s local tables become a cache.
+
+**Tests:**
+
+- Merge rules: the freshest reading wins; the highest within a window; a stale reading is ignored.
+- An unmapped login is dropped.
+- An outbox replay after an offline period has no duplicates (idempotency id).
+- The dashboard view model shows a remote person read-only.
+
+**Risks.** The roster drifting between hub and spoke. The hub is the store of record, and the spoke tables are
+overwritten from `welcome` and the deltas.
+
+**Effort.** ~2 weeks.', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 6 of 18, phase 2. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 2: presence and meters (read-only org view)
+
+**Goal.** From any joined machine, see every member, their machines, their CLIs and their meters. No remote control.
+
+**Code:**
+
+- Each spoke heartbeat carries:
+  - `CliRoster` rows (pid, repo, login, `/allocate` on or off);
+  - `TermSessionRecord`s with titles masked through `SecretMasker` (no command line, cwd, config dir or pipe, as
+    `/sessions` already leaves them out);
+  - `MeterReading`s;
+  - `AgentBoard` summaries (ticket and phase).
+- The hub merges per login and stores `usage_samples` and `pace_ledger` rows tagged with the device.
+- Hub endpoints `GET /org/presence` and `GET /org/usage`.
+- `IOrgDirectory` and `ISessionDirectory` get Hub implementations in `Join` and `Host`.
+- Dashboard: remote people''s tabs show read-only, badged with their machine. `/org usage` (`Cli/OrgCommands.cs`) prints
+  every member''s table across machines.
+- The hub pushes members and orgs as the existing `StateBus` kinds (`members`, `orgs`).
+- Hub-to-spoke login mapping: a report for a login that isn''t in the member''s `org_members` rows is dropped and audited.
+
+**Protocol.** Heartbeat payload v1. Meter readings collapse to the latest per login in the outbox.
+
+**Migration.**
+
+- `members`, `organizations` and `org_members` are copied once into the hub DB from the host machine''s
+  `orchestrator.db` (`hub import-org`).
+- In `Join`, a spoke''s local tables become a cache.
+
+**Tests:**
+
+- Merge rules: the freshest reading wins; the highest within a window; a stale reading is ignored.
+- An unmapped login is dropped.
+- An outbox replay after an offline period has no duplicates (idempotency id).
+- The dashboard view model shows a remote person read-only.
+
+**Risks.** The roster drifting between hub and spoke. The hub is the store of record, and the spoke tables are
+overwritten from `welcome` and the deltas.
+
+**Effort.** ~2 weeks.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19221, 'M.ORCH-T1134', '2026-10-27T16:16:54Z', 'link', 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19222, 'M.ORCH-T1134', '2026-10-27T16:16:55Z', 'link', 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19223, 'M.ORCH-T1134', '2026-10-27T16:16:56Z', 'link', NULL, 'part-of M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19224, 'M.ORCH-T1122', '2026-10-27T16:16:56Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19225, 'M.ORCH-T1122', '2026-10-27T16:16:56Z', 'ref', '—', 'c751991d');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19226, 'M.ORCH-T1145', '2026-10-27T16:16:56Z', 'link', NULL, 'M.ORCH-T1134 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19227, 'M.ORCH-T1134', '2026-10-27T16:16:58Z', 'link', NULL, 'requires M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19228, 'M.ORCH-T1145', '2026-10-27T16:16:58Z', 'link', NULL, 'M.ORCH-T1134 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19229, 'M.ORCH-T1134', '2026-10-27T16:17:00Z', 'description', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 7 of 18, phase 2. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 2: presence and meters (read-only org view)
+
+**Goal.** From any joined machine, see every member, their machines, their CLIs and their meters. No remote control.
+
+**Code:**
+
+- Each spoke heartbeat carries:
+  - `CliRoster` rows (pid, repo, login, `/allocate` on or off);
+  - `TermSessionRecord`s with titles masked through `SecretMasker` (no command line, cwd, config dir or pipe, as
+    `/sessions` already leaves them out);
+  - `MeterReading`s;
+  - `AgentBoard` summaries (ticket and phase).
+- The hub merges per login and stores `usage_samples` and `pace_ledger` rows tagged with the device.
+- Hub endpoints `GET /org/presence` and `GET /org/usage`.
+- `IOrgDirectory` and `ISessionDirectory` get Hub implementations in `Join` and `Host`.
+- Dashboard: remote people''s tabs show read-only, badged with their machine. `/org usage` (`Cli/OrgCommands.cs`) prints
+  every member''s table across machines.
+- The hub pushes members and orgs as the existing `StateBus` kinds (`members`, `orgs`).
+- Hub-to-spoke login mapping: a report for a login that isn''t in the member''s `org_members` rows is dropped and audited.
+
+**Protocol.** Heartbeat payload v1. Meter readings collapse to the latest per login in the outbox.
+
+**Migration.**
+
+- `members`, `organizations` and `org_members` are copied once into the hub DB from the host machine''s
+  `orchestrator.db` (`hub import-org`).
+- In `Join`, a spoke''s local tables become a cache.
+
+**Tests:**
+
+- Merge rules: the freshest reading wins; the highest within a window; a stale reading is ignored.
+- An unmapped login is dropped.
+- An outbox replay after an offline period has no duplicates (idempotency id).
+- The dashboard view model shows a remote person read-only.
+
+**Risks.** The roster drifting between hub and spoke. The hub is the store of record, and the spoke tables are
+overwritten from `welcome` and the deltas.
+
+**Effort.** ~2 weeks.', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 7 of 18, phase 2. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 2: presence and meters (read-only org view)
+
+**Goal.** From any joined machine, see every member, their machines, their CLIs and their meters. No remote control.
+
+**Code:**
+
+- Each spoke heartbeat carries:
+  - `CliRoster` rows (pid, repo, login, `/allocate` on or off);
+  - `TermSessionRecord`s with titles masked through `SecretMasker` (no command line, cwd, config dir or pipe, as
+    `/sessions` already leaves them out);
+  - `MeterReading`s;
+  - `AgentBoard` summaries (ticket and phase).
+- The hub merges per login and stores `usage_samples` and `pace_ledger` rows tagged with the device.
+- Hub endpoints `GET /org/presence` and `GET /org/usage`.
+- `IOrgDirectory` and `ISessionDirectory` get Hub implementations in `Join` and `Host`.
+- Dashboard: remote people''s tabs show read-only, badged with their machine. `/org usage` (`Cli/OrgCommands.cs`) prints
+  every member''s table across machines.
+- The hub pushes members and orgs as the existing `StateBus` kinds (`members`, `orgs`).
+- Hub-to-spoke login mapping: a report for a login that isn''t in the member''s `org_members` rows is dropped and audited.
+
+**Protocol.** Heartbeat payload v1. Meter readings collapse to the latest per login in the outbox.
+
+**Migration.**
+
+- `members`, `organizations` and `org_members` are copied once into the hub DB from the host machine''s
+  `orchestrator.db` (`hub import-org`).
+- In `Join`, a spoke''s local tables become a cache.
+
+**Tests:**
+
+- Merge rules: the freshest reading wins; the highest within a window; a stale reading is ignored.
+- An unmapped login is dropped.
+- An outbox replay after an offline period has no duplicates (idempotency id).
+- The dashboard view model shows a remote person read-only.
+
+**Risks.** The roster drifting between hub and spoke. The hub is the store of record, and the spoke tables are
+overwritten from `welcome` and the deltas.
+
+**Effort.** ~2 weeks.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19230, 'M.ORCH-T1135', '2026-10-27T16:17:04Z', 'link', 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19231, 'M.ORCH-T1135', '2026-10-27T16:17:06Z', 'link', 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19232, 'M.ORCH-T1135', '2026-10-27T16:17:09Z', 'link', NULL, 'part-of M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19233, 'M.ORCH-T1145', '2026-10-27T16:17:09Z', 'link', NULL, 'M.ORCH-T1135 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19234, 'M.ORCH-T1135', '2026-10-27T16:17:12Z', 'link', NULL, 'requires M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19235, 'M.ORCH-T1145', '2026-10-27T16:17:13Z', 'link', NULL, 'M.ORCH-T1135 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19236, 'M.ORCH-T1135', '2026-10-27T16:17:20Z', 'description', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 8 of 18, phase 3. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 3: terminal streams through the hub (Team Wall at org scale)
+
+**Goal.** Watch any shared CLI in the org from any joined machine, with no inbound port on spokes. Interact works with a
+grant and owner consent.
+
+**Code:**
+
+- Gateway outbound mode:
+  - `Gateway/HubDialer.cs` receives `open-stream` (by way of the daemon''s `HubLink`, or the gateway''s own control
+    socket; decide in the phase) and dials `wss://hub/streams/attach/{streamId}`;
+  - it wraps that socket in the existing `TermBridge` and `StreamMasker` path, unchanged.
+- Hub `StreamRelay`:
+  - matches the viewer socket to the spoke socket by `streamId` (a 10 s rendezvous timeout);
+  - splices binary messages without re-encoding;
+  - enforces the level (it drops Input, Resize and TakeSize for watchers, as `TermBridge` does);
+  - rechecks access every 10 s and closes with 1008 on revoke.
+- Grants move to the hub:
+  - `term_grants` and `term_audit` live in the hub DB;
+  - `orchestrator gateway grant|revoke|grants|audit` call the hub when joined;
+  - the spoke''s `acl.json` (`TermGatewayAcl`) is written from the hub''s pushes, so the gateway''s own check stays in
+    place as defence in depth;
+  - each `open-stream` carries the hub''s signature over `{streamId, session, viewer, level, expires}`, which the spoke
+    verifies with the hub key it pinned at enrollment.
+- Owner consent for interact:
+  - on the first use of each grant, the spoke''s dashboard toasts "<viewer> wants to type into <tab>: Allow for <grant
+    span> / Deny", with the answer kept for that grant;
+  - with no answer in 30 s, the viewer gets watch only.
+- Compression: offered to watchers only. Interactive remote streams negotiate no deflate (the CRIME/BREACH note in
+  T934 and T935).
+- Team Wall: `ISessionDirectory` (Hub) lists `/org/sessions`. `GatewayClient` gains a hub base URL, and the tiles and
+  TermViewer `--remote` get a `--hub` form. Peer remotes are still listed beside them.
+
+**Protocol.**
+
+- Control: `open-stream` and `close-stream`.
+- Stream sockets: TermHost frames unchanged (TermProtocol 1 and 2), one frame per message.
+- The hub never synthesizes frames, except `Paused`, which already comes only from the gateway.
+
+**Migration.** `orchestrator hub import-grants` copies the host''s `term_grants` once. Existing peer-to-peer tokens are
+untouched.
+
+**Tests:**
+
+- Relay splice end to end in-process: hub, a fake spoke and a stub TermHost from the `--unlisted` smoke pattern.
+- A watcher''s input dropped at the hub *and* at the spoke.
+- An unshared session answers 404 through the hub.
+- A pause mid-stream gives a `Paused` frame.
+- A revoke closes within 10 s.
+- A consent timeout falls back to watch.
+- A wrong signature on `open-stream` is refused by the spoke.
+- No byte of a fake `sk-ant-` token reaches the viewer (the T935 smoke test, through the hub).
+
+**Risks.**
+
+- Latency through the relay: plus one RTT. For typing, that is fine under ~100 ms.
+- Hub bandwidth: about 36 KB/s for 12 working CLIs, with bursts to ~360 KB/s (the spike''s estimates), which is
+  trivial.
+- A later "direct when reachable" optimization (the Tailscale-style peer path) stays possible, because the peer gateway
+  still exists.
+
+**Effort.** 2 to 3 weeks.', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 8 of 18, phase 3. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 3: terminal streams through the hub (Team Wall at org scale)
+
+**Goal.** Watch any shared CLI in the org from any joined machine, with no inbound port on spokes. Interact works with a
+grant and owner consent.
+
+**Code:**
+
+- Gateway outbound mode:
+  - `Gateway/HubDialer.cs` receives `open-stream` (by way of the daemon''s `HubLink`, or the gateway''s own control
+    socket; decide in the phase) and dials `wss://hub/streams/attach/{streamId}`;
+  - it wraps that socket in the existing `TermBridge` and `StreamMasker` path, unchanged.
+- Hub `StreamRelay`:
+  - matches the viewer socket to the spoke socket by `streamId` (a 10 s rendezvous timeout);
+  - splices binary messages without re-encoding;
+  - enforces the level (it drops Input, Resize and TakeSize for watchers, as `TermBridge` does);
+  - rechecks access every 10 s and closes with 1008 on revoke.
+- Grants move to the hub:
+  - `term_grants` and `term_audit` live in the hub DB;
+  - `orchestrator gateway grant|revoke|grants|audit` call the hub when joined;
+  - the spoke''s `acl.json` (`TermGatewayAcl`) is written from the hub''s pushes, so the gateway''s own check stays in
+    place as defence in depth;
+  - each `open-stream` carries the hub''s signature over `{streamId, session, viewer, level, expires}`, which the spoke
+    verifies with the hub key it pinned at enrollment.
+- Owner consent for interact:
+  - on the first use of each grant, the spoke''s dashboard toasts "<viewer> wants to type into <tab>: Allow for <grant
+    span> / Deny", with the answer kept for that grant;
+  - with no answer in 30 s, the viewer gets watch only.
+- Compression: offered to watchers only. Interactive remote streams negotiate no deflate (the CRIME/BREACH note in
+  T934 and T935).
+- Team Wall: `ISessionDirectory` (Hub) lists `/org/sessions`. `GatewayClient` gains a hub base URL, and the tiles and
+  TermViewer `--remote` get a `--hub` form. Peer remotes are still listed beside them.
+
+**Protocol.**
+
+- Control: `open-stream` and `close-stream`.
+- Stream sockets: TermHost frames unchanged (TermProtocol 1 and 2), one frame per message.
+- The hub never synthesizes frames, except `Paused`, which already comes only from the gateway.
+
+**Migration.** `orchestrator hub import-grants` copies the host''s `term_grants` once. Existing peer-to-peer tokens are
+untouched.
+
+**Tests:**
+
+- Relay splice end to end in-process: hub, a fake spoke and a stub TermHost from the `--unlisted` smoke pattern.
+- A watcher''s input dropped at the hub *and* at the spoke.
+- An unshared session answers 404 through the hub.
+- A pause mid-stream gives a `Paused` frame.
+- A revoke closes within 10 s.
+- A consent timeout falls back to watch.
+- A wrong signature on `open-stream` is refused by the spoke.
+- No byte of a fake `sk-ant-` token reaches the viewer (the T935 smoke test, through the hub).
+
+**Risks.**
+
+- Latency through the relay: plus one RTT. For typing, that is fine under ~100 ms.
+- Hub bandwidth: about 36 KB/s for 12 working CLIs, with bursts to ~360 KB/s (the spike''s estimates), which is
+  trivial.
+- A later "direct when reachable" optimization (the Tailscale-style peer path) stays possible, because the peer gateway
+  still exists.
+
+**Effort.** 2 to 3 weeks.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19237, 'M.ORCH-T1136', '2026-10-27T16:17:32Z', 'link', 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19238, 'M.ORCH-T1136', '2026-10-27T16:17:39Z', 'link', 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19239, 'M.ORCH-T1136', '2026-10-27T16:17:45Z', 'link', NULL, 'part-of M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19240, 'M.ORCH-T1145', '2026-10-27T16:17:51Z', 'link', NULL, 'M.ORCH-T1136 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19241, 'M.ORCH-T1136', '2026-10-27T16:18:02Z', 'link', NULL, 'requires M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19242, 'M.ORCH-T1145', '2026-10-27T16:18:07Z', 'link', NULL, 'M.ORCH-T1136 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19243, 'M.ORCH-T1136', '2026-10-27T16:18:19Z', 'description', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 9 of 18, phase 3. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 3: terminal streams through the hub (Team Wall at org scale)
+
+**Goal.** Watch any shared CLI in the org from any joined machine, with no inbound port on spokes. Interact works with a
+grant and owner consent.
+
+**Code:**
+
+- Gateway outbound mode:
+  - `Gateway/HubDialer.cs` receives `open-stream` (by way of the daemon''s `HubLink`, or the gateway''s own control
+    socket; decide in the phase) and dials `wss://hub/streams/attach/{streamId}`;
+  - it wraps that socket in the existing `TermBridge` and `StreamMasker` path, unchanged.
+- Hub `StreamRelay`:
+  - matches the viewer socket to the spoke socket by `streamId` (a 10 s rendezvous timeout);
+  - splices binary messages without re-encoding;
+  - enforces the level (it drops Input, Resize and TakeSize for watchers, as `TermBridge` does);
+  - rechecks access every 10 s and closes with 1008 on revoke.
+- Grants move to the hub:
+  - `term_grants` and `term_audit` live in the hub DB;
+  - `orchestrator gateway grant|revoke|grants|audit` call the hub when joined;
+  - the spoke''s `acl.json` (`TermGatewayAcl`) is written from the hub''s pushes, so the gateway''s own check stays in
+    place as defence in depth;
+  - each `open-stream` carries the hub''s signature over `{streamId, session, viewer, level, expires}`, which the spoke
+    verifies with the hub key it pinned at enrollment.
+- Owner consent for interact:
+  - on the first use of each grant, the spoke''s dashboard toasts "<viewer> wants to type into <tab>: Allow for <grant
+    span> / Deny", with the answer kept for that grant;
+  - with no answer in 30 s, the viewer gets watch only.
+- Compression: offered to watchers only. Interactive remote streams negotiate no deflate (the CRIME/BREACH note in
+  T934 and T935).
+- Team Wall: `ISessionDirectory` (Hub) lists `/org/sessions`. `GatewayClient` gains a hub base URL, and the tiles and
+  TermViewer `--remote` get a `--hub` form. Peer remotes are still listed beside them.
+
+**Protocol.**
+
+- Control: `open-stream` and `close-stream`.
+- Stream sockets: TermHost frames unchanged (TermProtocol 1 and 2), one frame per message.
+- The hub never synthesizes frames, except `Paused`, which already comes only from the gateway.
+
+**Migration.** `orchestrator hub import-grants` copies the host''s `term_grants` once. Existing peer-to-peer tokens are
+untouched.
+
+**Tests:**
+
+- Relay splice end to end in-process: hub, a fake spoke and a stub TermHost from the `--unlisted` smoke pattern.
+- A watcher''s input dropped at the hub *and* at the spoke.
+- An unshared session answers 404 through the hub.
+- A pause mid-stream gives a `Paused` frame.
+- A revoke closes within 10 s.
+- A consent timeout falls back to watch.
+- A wrong signature on `open-stream` is refused by the spoke.
+- No byte of a fake `sk-ant-` token reaches the viewer (the T935 smoke test, through the hub).
+
+**Risks.**
+
+- Latency through the relay: plus one RTT. For typing, that is fine under ~100 ms.
+- Hub bandwidth: about 36 KB/s for 12 working CLIs, with bursts to ~360 KB/s (the spike''s estimates), which is
+  trivial.
+- A later "direct when reachable" optimization (the Tailscale-style peer path) stays possible, because the peer gateway
+  still exists.
+
+**Effort.** 2 to 3 weeks.', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 9 of 18, phase 3. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 3: terminal streams through the hub (Team Wall at org scale)
+
+**Goal.** Watch any shared CLI in the org from any joined machine, with no inbound port on spokes. Interact works with a
+grant and owner consent.
+
+**Code:**
+
+- Gateway outbound mode:
+  - `Gateway/HubDialer.cs` receives `open-stream` (by way of the daemon''s `HubLink`, or the gateway''s own control
+    socket; decide in the phase) and dials `wss://hub/streams/attach/{streamId}`;
+  - it wraps that socket in the existing `TermBridge` and `StreamMasker` path, unchanged.
+- Hub `StreamRelay`:
+  - matches the viewer socket to the spoke socket by `streamId` (a 10 s rendezvous timeout);
+  - splices binary messages without re-encoding;
+  - enforces the level (it drops Input, Resize and TakeSize for watchers, as `TermBridge` does);
+  - rechecks access every 10 s and closes with 1008 on revoke.
+- Grants move to the hub:
+  - `term_grants` and `term_audit` live in the hub DB;
+  - `orchestrator gateway grant|revoke|grants|audit` call the hub when joined;
+  - the spoke''s `acl.json` (`TermGatewayAcl`) is written from the hub''s pushes, so the gateway''s own check stays in
+    place as defence in depth;
+  - each `open-stream` carries the hub''s signature over `{streamId, session, viewer, level, expires}`, which the spoke
+    verifies with the hub key it pinned at enrollment.
+- Owner consent for interact:
+  - on the first use of each grant, the spoke''s dashboard toasts "<viewer> wants to type into <tab>: Allow for <grant
+    span> / Deny", with the answer kept for that grant;
+  - with no answer in 30 s, the viewer gets watch only.
+- Compression: offered to watchers only. Interactive remote streams negotiate no deflate (the CRIME/BREACH note in
+  T934 and T935).
+- Team Wall: `ISessionDirectory` (Hub) lists `/org/sessions`. `GatewayClient` gains a hub base URL, and the tiles and
+  TermViewer `--remote` get a `--hub` form. Peer remotes are still listed beside them.
+
+**Protocol.**
+
+- Control: `open-stream` and `close-stream`.
+- Stream sockets: TermHost frames unchanged (TermProtocol 1 and 2), one frame per message.
+- The hub never synthesizes frames, except `Paused`, which already comes only from the gateway.
+
+**Migration.** `orchestrator hub import-grants` copies the host''s `term_grants` once. Existing peer-to-peer tokens are
+untouched.
+
+**Tests:**
+
+- Relay splice end to end in-process: hub, a fake spoke and a stub TermHost from the `--unlisted` smoke pattern.
+- A watcher''s input dropped at the hub *and* at the spoke.
+- An unshared session answers 404 through the hub.
+- A pause mid-stream gives a `Paused` frame.
+- A revoke closes within 10 s.
+- A consent timeout falls back to watch.
+- A wrong signature on `open-stream` is refused by the spoke.
+- No byte of a fake `sk-ant-` token reaches the viewer (the T935 smoke test, through the hub).
+
+**Risks.**
+
+- Latency through the relay: plus one RTT. For typing, that is fine under ~100 ms.
+- Hub bandwidth: about 36 KB/s for 12 working CLIs, with bursts to ~360 KB/s (the spike''s estimates), which is
+  trivial.
+- A later "direct when reachable" optimization (the Tailscale-style peer path) stays possible, because the peer gateway
+  still exists.
+
+**Effort.** 2 to 3 weeks.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19244, 'M.ORCH-T1137', '2026-10-27T16:18:34Z', 'link', 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19245, 'M.ORCH-T1137', '2026-10-27T16:18:41Z', 'link', 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19246, 'M.ORCH-T1137', '2026-10-27T16:18:47Z', 'link', NULL, 'part-of M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19247, 'M.ORCH-T1145', '2026-10-27T16:18:51Z', 'link', NULL, 'M.ORCH-T1137 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19248, 'M.ORCH-T1137', '2026-10-27T16:18:57Z', 'link', NULL, 'requires M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19249, 'M.ORCH-T1145', '2026-10-27T16:18:59Z', 'link', NULL, 'M.ORCH-T1137 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19250, 'M.ORCH-T1137', '2026-10-27T16:19:05Z', 'description', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 10 of 18, phase 3. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 3: terminal streams through the hub (Team Wall at org scale)
+
+**Goal.** Watch any shared CLI in the org from any joined machine, with no inbound port on spokes. Interact works with a
+grant and owner consent.
+
+**Code:**
+
+- Gateway outbound mode:
+  - `Gateway/HubDialer.cs` receives `open-stream` (by way of the daemon''s `HubLink`, or the gateway''s own control
+    socket; decide in the phase) and dials `wss://hub/streams/attach/{streamId}`;
+  - it wraps that socket in the existing `TermBridge` and `StreamMasker` path, unchanged.
+- Hub `StreamRelay`:
+  - matches the viewer socket to the spoke socket by `streamId` (a 10 s rendezvous timeout);
+  - splices binary messages without re-encoding;
+  - enforces the level (it drops Input, Resize and TakeSize for watchers, as `TermBridge` does);
+  - rechecks access every 10 s and closes with 1008 on revoke.
+- Grants move to the hub:
+  - `term_grants` and `term_audit` live in the hub DB;
+  - `orchestrator gateway grant|revoke|grants|audit` call the hub when joined;
+  - the spoke''s `acl.json` (`TermGatewayAcl`) is written from the hub''s pushes, so the gateway''s own check stays in
+    place as defence in depth;
+  - each `open-stream` carries the hub''s signature over `{streamId, session, viewer, level, expires}`, which the spoke
+    verifies with the hub key it pinned at enrollment.
+- Owner consent for interact:
+  - on the first use of each grant, the spoke''s dashboard toasts "<viewer> wants to type into <tab>: Allow for <grant
+    span> / Deny", with the answer kept for that grant;
+  - with no answer in 30 s, the viewer gets watch only.
+- Compression: offered to watchers only. Interactive remote streams negotiate no deflate (the CRIME/BREACH note in
+  T934 and T935).
+- Team Wall: `ISessionDirectory` (Hub) lists `/org/sessions`. `GatewayClient` gains a hub base URL, and the tiles and
+  TermViewer `--remote` get a `--hub` form. Peer remotes are still listed beside them.
+
+**Protocol.**
+
+- Control: `open-stream` and `close-stream`.
+- Stream sockets: TermHost frames unchanged (TermProtocol 1 and 2), one frame per message.
+- The hub never synthesizes frames, except `Paused`, which already comes only from the gateway.
+
+**Migration.** `orchestrator hub import-grants` copies the host''s `term_grants` once. Existing peer-to-peer tokens are
+untouched.
+
+**Tests:**
+
+- Relay splice end to end in-process: hub, a fake spoke and a stub TermHost from the `--unlisted` smoke pattern.
+- A watcher''s input dropped at the hub *and* at the spoke.
+- An unshared session answers 404 through the hub.
+- A pause mid-stream gives a `Paused` frame.
+- A revoke closes within 10 s.
+- A consent timeout falls back to watch.
+- A wrong signature on `open-stream` is refused by the spoke.
+- No byte of a fake `sk-ant-` token reaches the viewer (the T935 smoke test, through the hub).
+
+**Risks.**
+
+- Latency through the relay: plus one RTT. For typing, that is fine under ~100 ms.
+- Hub bandwidth: about 36 KB/s for 12 working CLIs, with bursts to ~360 KB/s (the spike''s estimates), which is
+  trivial.
+- A later "direct when reachable" optimization (the Tailscale-style peer path) stays possible, because the peer gateway
+  still exists.
+
+**Effort.** 2 to 3 weeks.', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 10 of 18, phase 3. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 3: terminal streams through the hub (Team Wall at org scale)
+
+**Goal.** Watch any shared CLI in the org from any joined machine, with no inbound port on spokes. Interact works with a
+grant and owner consent.
+
+**Code:**
+
+- Gateway outbound mode:
+  - `Gateway/HubDialer.cs` receives `open-stream` (by way of the daemon''s `HubLink`, or the gateway''s own control
+    socket; decide in the phase) and dials `wss://hub/streams/attach/{streamId}`;
+  - it wraps that socket in the existing `TermBridge` and `StreamMasker` path, unchanged.
+- Hub `StreamRelay`:
+  - matches the viewer socket to the spoke socket by `streamId` (a 10 s rendezvous timeout);
+  - splices binary messages without re-encoding;
+  - enforces the level (it drops Input, Resize and TakeSize for watchers, as `TermBridge` does);
+  - rechecks access every 10 s and closes with 1008 on revoke.
+- Grants move to the hub:
+  - `term_grants` and `term_audit` live in the hub DB;
+  - `orchestrator gateway grant|revoke|grants|audit` call the hub when joined;
+  - the spoke''s `acl.json` (`TermGatewayAcl`) is written from the hub''s pushes, so the gateway''s own check stays in
+    place as defence in depth;
+  - each `open-stream` carries the hub''s signature over `{streamId, session, viewer, level, expires}`, which the spoke
+    verifies with the hub key it pinned at enrollment.
+- Owner consent for interact:
+  - on the first use of each grant, the spoke''s dashboard toasts "<viewer> wants to type into <tab>: Allow for <grant
+    span> / Deny", with the answer kept for that grant;
+  - with no answer in 30 s, the viewer gets watch only.
+- Compression: offered to watchers only. Interactive remote streams negotiate no deflate (the CRIME/BREACH note in
+  T934 and T935).
+- Team Wall: `ISessionDirectory` (Hub) lists `/org/sessions`. `GatewayClient` gains a hub base URL, and the tiles and
+  TermViewer `--remote` get a `--hub` form. Peer remotes are still listed beside them.
+
+**Protocol.**
+
+- Control: `open-stream` and `close-stream`.
+- Stream sockets: TermHost frames unchanged (TermProtocol 1 and 2), one frame per message.
+- The hub never synthesizes frames, except `Paused`, which already comes only from the gateway.
+
+**Migration.** `orchestrator hub import-grants` copies the host''s `term_grants` once. Existing peer-to-peer tokens are
+untouched.
+
+**Tests:**
+
+- Relay splice end to end in-process: hub, a fake spoke and a stub TermHost from the `--unlisted` smoke pattern.
+- A watcher''s input dropped at the hub *and* at the spoke.
+- An unshared session answers 404 through the hub.
+- A pause mid-stream gives a `Paused` frame.
+- A revoke closes within 10 s.
+- A consent timeout falls back to watch.
+- A wrong signature on `open-stream` is refused by the spoke.
+- No byte of a fake `sk-ant-` token reaches the viewer (the T935 smoke test, through the hub).
+
+**Risks.**
+
+- Latency through the relay: plus one RTT. For typing, that is fine under ~100 ms.
+- Hub bandwidth: about 36 KB/s for 12 working CLIs, with bursts to ~360 KB/s (the spike''s estimates), which is
+  trivial.
+- A later "direct when reachable" optimization (the Tailscale-style peer path) stays possible, because the peer gateway
+  still exists.
+
+**Effort.** 2 to 3 weeks.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19251, 'M.ORCH-T1138', '2026-10-27T16:19:12Z', 'link', 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19252, 'M.ORCH-T1138', '2026-10-27T16:19:14Z', 'link', 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19253, 'M.ORCH-T1138', '2026-10-27T16:19:16Z', 'link', NULL, 'part-of M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19254, 'M.ORCH-T1145', '2026-10-27T16:19:17Z', 'link', NULL, 'M.ORCH-T1138 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19255, 'M.ORCH-T1138', '2026-10-27T16:19:20Z', 'link', NULL, 'requires M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19256, 'M.ORCH-T1145', '2026-10-27T16:19:20Z', 'link', NULL, 'M.ORCH-T1138 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19257, 'M.ORCH-T1138', '2026-10-27T16:19:24Z', 'description', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 11 of 18, phase 3. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 3: terminal streams through the hub (Team Wall at org scale)
+
+**Goal.** Watch any shared CLI in the org from any joined machine, with no inbound port on spokes. Interact works with a
+grant and owner consent.
+
+**Code:**
+
+- Gateway outbound mode:
+  - `Gateway/HubDialer.cs` receives `open-stream` (by way of the daemon''s `HubLink`, or the gateway''s own control
+    socket; decide in the phase) and dials `wss://hub/streams/attach/{streamId}`;
+  - it wraps that socket in the existing `TermBridge` and `StreamMasker` path, unchanged.
+- Hub `StreamRelay`:
+  - matches the viewer socket to the spoke socket by `streamId` (a 10 s rendezvous timeout);
+  - splices binary messages without re-encoding;
+  - enforces the level (it drops Input, Resize and TakeSize for watchers, as `TermBridge` does);
+  - rechecks access every 10 s and closes with 1008 on revoke.
+- Grants move to the hub:
+  - `term_grants` and `term_audit` live in the hub DB;
+  - `orchestrator gateway grant|revoke|grants|audit` call the hub when joined;
+  - the spoke''s `acl.json` (`TermGatewayAcl`) is written from the hub''s pushes, so the gateway''s own check stays in
+    place as defence in depth;
+  - each `open-stream` carries the hub''s signature over `{streamId, session, viewer, level, expires}`, which the spoke
+    verifies with the hub key it pinned at enrollment.
+- Owner consent for interact:
+  - on the first use of each grant, the spoke''s dashboard toasts "<viewer> wants to type into <tab>: Allow for <grant
+    span> / Deny", with the answer kept for that grant;
+  - with no answer in 30 s, the viewer gets watch only.
+- Compression: offered to watchers only. Interactive remote streams negotiate no deflate (the CRIME/BREACH note in
+  T934 and T935).
+- Team Wall: `ISessionDirectory` (Hub) lists `/org/sessions`. `GatewayClient` gains a hub base URL, and the tiles and
+  TermViewer `--remote` get a `--hub` form. Peer remotes are still listed beside them.
+
+**Protocol.**
+
+- Control: `open-stream` and `close-stream`.
+- Stream sockets: TermHost frames unchanged (TermProtocol 1 and 2), one frame per message.
+- The hub never synthesizes frames, except `Paused`, which already comes only from the gateway.
+
+**Migration.** `orchestrator hub import-grants` copies the host''s `term_grants` once. Existing peer-to-peer tokens are
+untouched.
+
+**Tests:**
+
+- Relay splice end to end in-process: hub, a fake spoke and a stub TermHost from the `--unlisted` smoke pattern.
+- A watcher''s input dropped at the hub *and* at the spoke.
+- An unshared session answers 404 through the hub.
+- A pause mid-stream gives a `Paused` frame.
+- A revoke closes within 10 s.
+- A consent timeout falls back to watch.
+- A wrong signature on `open-stream` is refused by the spoke.
+- No byte of a fake `sk-ant-` token reaches the viewer (the T935 smoke test, through the hub).
+
+**Risks.**
+
+- Latency through the relay: plus one RTT. For typing, that is fine under ~100 ms.
+- Hub bandwidth: about 36 KB/s for 12 working CLIs, with bursts to ~360 KB/s (the spike''s estimates), which is
+  trivial.
+- A later "direct when reachable" optimization (the Tailscale-style peer path) stays possible, because the peer gateway
+  still exists.
+
+**Effort.** 2 to 3 weeks.', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 11 of 18, phase 3. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 3: terminal streams through the hub (Team Wall at org scale)
+
+**Goal.** Watch any shared CLI in the org from any joined machine, with no inbound port on spokes. Interact works with a
+grant and owner consent.
+
+**Code:**
+
+- Gateway outbound mode:
+  - `Gateway/HubDialer.cs` receives `open-stream` (by way of the daemon''s `HubLink`, or the gateway''s own control
+    socket; decide in the phase) and dials `wss://hub/streams/attach/{streamId}`;
+  - it wraps that socket in the existing `TermBridge` and `StreamMasker` path, unchanged.
+- Hub `StreamRelay`:
+  - matches the viewer socket to the spoke socket by `streamId` (a 10 s rendezvous timeout);
+  - splices binary messages without re-encoding;
+  - enforces the level (it drops Input, Resize and TakeSize for watchers, as `TermBridge` does);
+  - rechecks access every 10 s and closes with 1008 on revoke.
+- Grants move to the hub:
+  - `term_grants` and `term_audit` live in the hub DB;
+  - `orchestrator gateway grant|revoke|grants|audit` call the hub when joined;
+  - the spoke''s `acl.json` (`TermGatewayAcl`) is written from the hub''s pushes, so the gateway''s own check stays in
+    place as defence in depth;
+  - each `open-stream` carries the hub''s signature over `{streamId, session, viewer, level, expires}`, which the spoke
+    verifies with the hub key it pinned at enrollment.
+- Owner consent for interact:
+  - on the first use of each grant, the spoke''s dashboard toasts "<viewer> wants to type into <tab>: Allow for <grant
+    span> / Deny", with the answer kept for that grant;
+  - with no answer in 30 s, the viewer gets watch only.
+- Compression: offered to watchers only. Interactive remote streams negotiate no deflate (the CRIME/BREACH note in
+  T934 and T935).
+- Team Wall: `ISessionDirectory` (Hub) lists `/org/sessions`. `GatewayClient` gains a hub base URL, and the tiles and
+  TermViewer `--remote` get a `--hub` form. Peer remotes are still listed beside them.
+
+**Protocol.**
+
+- Control: `open-stream` and `close-stream`.
+- Stream sockets: TermHost frames unchanged (TermProtocol 1 and 2), one frame per message.
+- The hub never synthesizes frames, except `Paused`, which already comes only from the gateway.
+
+**Migration.** `orchestrator hub import-grants` copies the host''s `term_grants` once. Existing peer-to-peer tokens are
+untouched.
+
+**Tests:**
+
+- Relay splice end to end in-process: hub, a fake spoke and a stub TermHost from the `--unlisted` smoke pattern.
+- A watcher''s input dropped at the hub *and* at the spoke.
+- An unshared session answers 404 through the hub.
+- A pause mid-stream gives a `Paused` frame.
+- A revoke closes within 10 s.
+- A consent timeout falls back to watch.
+- A wrong signature on `open-stream` is refused by the spoke.
+- No byte of a fake `sk-ant-` token reaches the viewer (the T935 smoke test, through the hub).
+
+**Risks.**
+
+- Latency through the relay: plus one RTT. For typing, that is fine under ~100 ms.
+- Hub bandwidth: about 36 KB/s for 12 working CLIs, with bursts to ~360 KB/s (the spike''s estimates), which is
+  trivial.
+- A later "direct when reachable" optimization (the Tailscale-style peer path) stays possible, because the peer gateway
+  still exists.
+
+**Effort.** 2 to 3 weeks.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19258, 'M.ORCH-T1139', '2026-10-27T16:19:32Z', 'link', 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19259, 'M.ORCH-T1139', '2026-10-27T16:19:35Z', 'link', 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19260, 'M.ORCH-T1139', '2026-10-27T16:19:38Z', 'link', NULL, 'part-of M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19261, 'M.ORCH-T1145', '2026-10-27T16:19:39Z', 'link', NULL, 'M.ORCH-T1139 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19262, 'M.ORCH-T1139', '2026-10-27T16:19:41Z', 'link', NULL, 'requires M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19263, 'M.ORCH-T1145', '2026-10-27T16:19:42Z', 'link', NULL, 'M.ORCH-T1139 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19264, 'M.ORCH-T1139', '2026-10-27T16:19:45Z', 'description', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 12 of 18, phase 4. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 4: shared tickets and leases
+
+**Goal.** Every joined spoke works the same queue with no double claims. Tickets Desktop and the hooks keep working from
+a local replica.
+
+**Code:**
+
+- Hub Tickets API over `TicketsDb`:
+  - `GET /tickets?since=<cursor>` (the replica feed);
+  - `POST /tickets/{id}/notes|status|assign|approve`;
+  - authorized by role and org.
+- The hub''s `IClaims` implementation:
+  - `Allocate.Next` runs **on the hub**, with the spoke''s reported `LoginRoom`s and allocate CLIs from the heartbeat;
+  - it writes `leases(ticket, member, device, login, session, lease_id, epoch, expires_utc, grace_until_utc)`,
+    `assignments` and `ticket_work` in one transaction (`TicketsDb`''s write lock).
+- Spoke:
+  - `NextCommand` in `Join` sends `claim` through `HubLink`, a local request over the daemon''s inbox, with a 10 s
+    timeout and a plain "hub unreachable: nothing claimed" message;
+  - worktree creation and `Dispatcher` stay local;
+  - renewals ride on the heartbeat;
+  - the ticket-close path sends `complete {leaseId, epoch, commit}`.
+- Replica: the spoke applies the feed into `data/Tickets.db` through `TicketsDb` (the file the hooks read with stdlib
+  sqlite3). Its local writes are refused in `Join` unless they come from the replica writer.
+- Git sync: `Daemon.SyncTicketsDbIfDue` and `SyncOrchestratorDbIfDue` are skipped when `Mode = Join`. Only the hub
+  machine syncs.
+- Cross-repo work in MindAttic.Tickets (its own ticket):
+  - a `TicketsDb` remote-writer hook, so the `tickets` CLI and Tickets Desktop write through the hub API when
+    `Join` is configured (read from the Orchestrator''s hub settings or its own);
+  - otherwise they are read-only with a clear message.
+
+**Protocol.**
+
+- `claim`, `lease-grant`, `renew` (on the heartbeat), `complete`, `release`, `lease-lost`.
+- `replica-delta {cursor, rows}`.
+
+**Lease rules (from `2-plan.md` §4.3):**
+
+- A lease lives 3 heartbeats.
+- An expired lease is held for the offline grace (`Hub.OfflineGraceMinutes`) before the ticket is queued again.
+- A stale epoch is refused.
+- A spoke told `lease-lost` stops that ticket''s subagent the way `AgentAbort` does, and keeps its worktree.
+
+**Migration.**
+
+- `hub import-tickets` points the hub''s `TicketsDb` at the host''s SQL Server database. Same machine, so it is a
+  config change, not a copy.
+- Joined spokes'' `data/Tickets.db` is rebuilt from the feed on first join, and the old file is kept as `.prejoin`.
+
+**Tests:**
+
+- Two fake spokes claim at once and get no duplicates.
+- A spoke going offline keeps its lease through the grace, then the ticket is requeued.
+- A stale-epoch complete is refused.
+- The replica converges after deltas are missed.
+- Hooks read the replica (the existing hook tests point at a replica file).
+- `Off` and `Host` still claim locally with today''s semantics, and the existing `Allocate` tests are unchanged.
+
+**Risks.** **The highest of any phase.**
+
+- Concurrency bugs in claims.
+- Tickets Desktop writing to a replica.
+- Moving git-sync ownership.
+
+Mitigations: ship dark; run `Host` mode on the main machine alone for a week, where leases are local but go through the
+hub; then add one remote spoke.
+
+**Effort.** 3 to 4 weeks, plus about 1 week in MindAttic.Tickets.', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 12 of 18, phase 4. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 4: shared tickets and leases
+
+**Goal.** Every joined spoke works the same queue with no double claims. Tickets Desktop and the hooks keep working from
+a local replica.
+
+**Code:**
+
+- Hub Tickets API over `TicketsDb`:
+  - `GET /tickets?since=<cursor>` (the replica feed);
+  - `POST /tickets/{id}/notes|status|assign|approve`;
+  - authorized by role and org.
+- The hub''s `IClaims` implementation:
+  - `Allocate.Next` runs **on the hub**, with the spoke''s reported `LoginRoom`s and allocate CLIs from the heartbeat;
+  - it writes `leases(ticket, member, device, login, session, lease_id, epoch, expires_utc, grace_until_utc)`,
+    `assignments` and `ticket_work` in one transaction (`TicketsDb`''s write lock).
+- Spoke:
+  - `NextCommand` in `Join` sends `claim` through `HubLink`, a local request over the daemon''s inbox, with a 10 s
+    timeout and a plain "hub unreachable: nothing claimed" message;
+  - worktree creation and `Dispatcher` stay local;
+  - renewals ride on the heartbeat;
+  - the ticket-close path sends `complete {leaseId, epoch, commit}`.
+- Replica: the spoke applies the feed into `data/Tickets.db` through `TicketsDb` (the file the hooks read with stdlib
+  sqlite3). Its local writes are refused in `Join` unless they come from the replica writer.
+- Git sync: `Daemon.SyncTicketsDbIfDue` and `SyncOrchestratorDbIfDue` are skipped when `Mode = Join`. Only the hub
+  machine syncs.
+- Cross-repo work in MindAttic.Tickets (its own ticket):
+  - a `TicketsDb` remote-writer hook, so the `tickets` CLI and Tickets Desktop write through the hub API when
+    `Join` is configured (read from the Orchestrator''s hub settings or its own);
+  - otherwise they are read-only with a clear message.
+
+**Protocol.**
+
+- `claim`, `lease-grant`, `renew` (on the heartbeat), `complete`, `release`, `lease-lost`.
+- `replica-delta {cursor, rows}`.
+
+**Lease rules (from `2-plan.md` §4.3):**
+
+- A lease lives 3 heartbeats.
+- An expired lease is held for the offline grace (`Hub.OfflineGraceMinutes`) before the ticket is queued again.
+- A stale epoch is refused.
+- A spoke told `lease-lost` stops that ticket''s subagent the way `AgentAbort` does, and keeps its worktree.
+
+**Migration.**
+
+- `hub import-tickets` points the hub''s `TicketsDb` at the host''s SQL Server database. Same machine, so it is a
+  config change, not a copy.
+- Joined spokes'' `data/Tickets.db` is rebuilt from the feed on first join, and the old file is kept as `.prejoin`.
+
+**Tests:**
+
+- Two fake spokes claim at once and get no duplicates.
+- A spoke going offline keeps its lease through the grace, then the ticket is requeued.
+- A stale-epoch complete is refused.
+- The replica converges after deltas are missed.
+- Hooks read the replica (the existing hook tests point at a replica file).
+- `Off` and `Host` still claim locally with today''s semantics, and the existing `Allocate` tests are unchanged.
+
+**Risks.** **The highest of any phase.**
+
+- Concurrency bugs in claims.
+- Tickets Desktop writing to a replica.
+- Moving git-sync ownership.
+
+Mitigations: ship dark; run `Host` mode on the main machine alone for a week, where leases are local but go through the
+hub; then add one remote spoke.
+
+**Effort.** 3 to 4 weeks, plus about 1 week in MindAttic.Tickets.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19265, 'M.ORCH-T1140', '2026-10-27T16:19:53Z', 'link', 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19266, 'M.ORCH-T1140', '2026-10-27T16:19:55Z', 'link', 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19267, 'M.ORCH-T1140', '2026-10-27T16:19:58Z', 'link', NULL, 'part-of M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19268, 'M.ORCH-T1145', '2026-10-27T16:19:59Z', 'link', NULL, 'M.ORCH-T1140 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19269, 'M.ORCH-T1140', '2026-10-27T16:20:01Z', 'link', NULL, 'requires M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19270, 'M.ORCH-T1145', '2026-10-27T16:20:02Z', 'link', NULL, 'M.ORCH-T1140 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19271, 'M.ORCH-T1140', '2026-10-27T16:20:05Z', 'description', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 13 of 18, phase 4. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 4: shared tickets and leases
+
+**Goal.** Every joined spoke works the same queue with no double claims. Tickets Desktop and the hooks keep working from
+a local replica.
+
+**Code:**
+
+- Hub Tickets API over `TicketsDb`:
+  - `GET /tickets?since=<cursor>` (the replica feed);
+  - `POST /tickets/{id}/notes|status|assign|approve`;
+  - authorized by role and org.
+- The hub''s `IClaims` implementation:
+  - `Allocate.Next` runs **on the hub**, with the spoke''s reported `LoginRoom`s and allocate CLIs from the heartbeat;
+  - it writes `leases(ticket, member, device, login, session, lease_id, epoch, expires_utc, grace_until_utc)`,
+    `assignments` and `ticket_work` in one transaction (`TicketsDb`''s write lock).
+- Spoke:
+  - `NextCommand` in `Join` sends `claim` through `HubLink`, a local request over the daemon''s inbox, with a 10 s
+    timeout and a plain "hub unreachable: nothing claimed" message;
+  - worktree creation and `Dispatcher` stay local;
+  - renewals ride on the heartbeat;
+  - the ticket-close path sends `complete {leaseId, epoch, commit}`.
+- Replica: the spoke applies the feed into `data/Tickets.db` through `TicketsDb` (the file the hooks read with stdlib
+  sqlite3). Its local writes are refused in `Join` unless they come from the replica writer.
+- Git sync: `Daemon.SyncTicketsDbIfDue` and `SyncOrchestratorDbIfDue` are skipped when `Mode = Join`. Only the hub
+  machine syncs.
+- Cross-repo work in MindAttic.Tickets (its own ticket):
+  - a `TicketsDb` remote-writer hook, so the `tickets` CLI and Tickets Desktop write through the hub API when
+    `Join` is configured (read from the Orchestrator''s hub settings or its own);
+  - otherwise they are read-only with a clear message.
+
+**Protocol.**
+
+- `claim`, `lease-grant`, `renew` (on the heartbeat), `complete`, `release`, `lease-lost`.
+- `replica-delta {cursor, rows}`.
+
+**Lease rules (from `2-plan.md` §4.3):**
+
+- A lease lives 3 heartbeats.
+- An expired lease is held for the offline grace (`Hub.OfflineGraceMinutes`) before the ticket is queued again.
+- A stale epoch is refused.
+- A spoke told `lease-lost` stops that ticket''s subagent the way `AgentAbort` does, and keeps its worktree.
+
+**Migration.**
+
+- `hub import-tickets` points the hub''s `TicketsDb` at the host''s SQL Server database. Same machine, so it is a
+  config change, not a copy.
+- Joined spokes'' `data/Tickets.db` is rebuilt from the feed on first join, and the old file is kept as `.prejoin`.
+
+**Tests:**
+
+- Two fake spokes claim at once and get no duplicates.
+- A spoke going offline keeps its lease through the grace, then the ticket is requeued.
+- A stale-epoch complete is refused.
+- The replica converges after deltas are missed.
+- Hooks read the replica (the existing hook tests point at a replica file).
+- `Off` and `Host` still claim locally with today''s semantics, and the existing `Allocate` tests are unchanged.
+
+**Risks.** **The highest of any phase.**
+
+- Concurrency bugs in claims.
+- Tickets Desktop writing to a replica.
+- Moving git-sync ownership.
+
+Mitigations: ship dark; run `Host` mode on the main machine alone for a week, where leases are local but go through the
+hub; then add one remote spoke.
+
+**Effort.** 3 to 4 weeks, plus about 1 week in MindAttic.Tickets.', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 13 of 18, phase 4. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 4: shared tickets and leases
+
+**Goal.** Every joined spoke works the same queue with no double claims. Tickets Desktop and the hooks keep working from
+a local replica.
+
+**Code:**
+
+- Hub Tickets API over `TicketsDb`:
+  - `GET /tickets?since=<cursor>` (the replica feed);
+  - `POST /tickets/{id}/notes|status|assign|approve`;
+  - authorized by role and org.
+- The hub''s `IClaims` implementation:
+  - `Allocate.Next` runs **on the hub**, with the spoke''s reported `LoginRoom`s and allocate CLIs from the heartbeat;
+  - it writes `leases(ticket, member, device, login, session, lease_id, epoch, expires_utc, grace_until_utc)`,
+    `assignments` and `ticket_work` in one transaction (`TicketsDb`''s write lock).
+- Spoke:
+  - `NextCommand` in `Join` sends `claim` through `HubLink`, a local request over the daemon''s inbox, with a 10 s
+    timeout and a plain "hub unreachable: nothing claimed" message;
+  - worktree creation and `Dispatcher` stay local;
+  - renewals ride on the heartbeat;
+  - the ticket-close path sends `complete {leaseId, epoch, commit}`.
+- Replica: the spoke applies the feed into `data/Tickets.db` through `TicketsDb` (the file the hooks read with stdlib
+  sqlite3). Its local writes are refused in `Join` unless they come from the replica writer.
+- Git sync: `Daemon.SyncTicketsDbIfDue` and `SyncOrchestratorDbIfDue` are skipped when `Mode = Join`. Only the hub
+  machine syncs.
+- Cross-repo work in MindAttic.Tickets (its own ticket):
+  - a `TicketsDb` remote-writer hook, so the `tickets` CLI and Tickets Desktop write through the hub API when
+    `Join` is configured (read from the Orchestrator''s hub settings or its own);
+  - otherwise they are read-only with a clear message.
+
+**Protocol.**
+
+- `claim`, `lease-grant`, `renew` (on the heartbeat), `complete`, `release`, `lease-lost`.
+- `replica-delta {cursor, rows}`.
+
+**Lease rules (from `2-plan.md` §4.3):**
+
+- A lease lives 3 heartbeats.
+- An expired lease is held for the offline grace (`Hub.OfflineGraceMinutes`) before the ticket is queued again.
+- A stale epoch is refused.
+- A spoke told `lease-lost` stops that ticket''s subagent the way `AgentAbort` does, and keeps its worktree.
+
+**Migration.**
+
+- `hub import-tickets` points the hub''s `TicketsDb` at the host''s SQL Server database. Same machine, so it is a
+  config change, not a copy.
+- Joined spokes'' `data/Tickets.db` is rebuilt from the feed on first join, and the old file is kept as `.prejoin`.
+
+**Tests:**
+
+- Two fake spokes claim at once and get no duplicates.
+- A spoke going offline keeps its lease through the grace, then the ticket is requeued.
+- A stale-epoch complete is refused.
+- The replica converges after deltas are missed.
+- Hooks read the replica (the existing hook tests point at a replica file).
+- `Off` and `Host` still claim locally with today''s semantics, and the existing `Allocate` tests are unchanged.
+
+**Risks.** **The highest of any phase.**
+
+- Concurrency bugs in claims.
+- Tickets Desktop writing to a replica.
+- Moving git-sync ownership.
+
+Mitigations: ship dark; run `Host` mode on the main machine alone for a week, where leases are local but go through the
+hub; then add one remote spoke.
+
+**Effort.** 3 to 4 weeks, plus about 1 week in MindAttic.Tickets.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19272, 'M.ORCH-T1141', '2026-10-27T16:20:10Z', 'link', 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19273, 'M.ORCH-T1141', '2026-10-27T16:20:11Z', 'link', 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19274, 'M.ORCH-T1141', '2026-10-27T16:20:13Z', 'link', NULL, 'part-of M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19275, 'M.ORCH-T1145', '2026-10-27T16:20:13Z', 'link', NULL, 'M.ORCH-T1141 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19276, 'M.ORCH-T1141', '2026-10-27T16:20:15Z', 'link', NULL, 'requires M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19277, 'M.ORCH-T1145', '2026-10-27T16:20:15Z', 'link', NULL, 'M.ORCH-T1141 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19278, 'M.ORCH-T1141', '2026-10-27T16:20:16Z', 'description', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 15 of 18, phase 5. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 5: central policy and cross-machine dispatch
+
+**Goal.** The org''s pacing policy is set once and holds on every spoke. Work can be dispatched to a member''s machine
+that has opted in.
+
+**Code:**
+
+- Policy: `org limit`, `org allow`, `PaceTargetPercent`, `RepoOrgs` and the weekly reserve are written at the hub (the
+  CLI and Settings modal call the hub when joined) and pushed as `PolicySnapshot`.
+- `IPolicySource` (Hub) feeds `AccountPacer` and `TicketPins`.
+- With no snapshot, the spoke uses the defaults (`UsageCutoffs.Default*`).
+- Allowance split: when one login is live on more than one device, the hub divides the login''s subagent allowance by
+  active CLIs across the devices (the `SubagentShare` rule) and pushes `allowanceShare`. `AccountPacer` writes its
+  share into `rl-status.json`.
+- Remote dispatch:
+  - the hub sends `dispatch {ticket, login, prompt}` only to spokes with `Hub.AcceptDispatch = true`, a setting the
+    member sets on their own machine;
+  - the spoke runs the existing `Dispatcher` and Launcher path on its own login;
+  - the hub never turns `/allocate` on in any CLI.
+- Rebalance and failover:
+  - `AccountRebalancer` decisions that cross machines become hub reassignments of *tickets*, never moves of a CLI to
+    another person''s login (T681''s rule);
+  - API-key failover reassigns the ticket to the API-key person on a key-holder spoke (`Hub.KeyHolder = true`, set by
+    an admin);
+  - `ApiSpend` is reported by that spoke.
+
+**Protocol.** `policy` v1, `allowance-share`, `dispatch` and `dispatch-result`.
+
+**Migration.** `hub import-policy` copies `usage-cutoffs`, allowances and settings once.
+
+**Tests:**
+
+- The policy applies after a push.
+- An offline spoke falls back to the last policy, then to the defaults.
+- Two devices on one login split the allowance and never exceed it together.
+- Dispatch is refused to a spoke that didn''t opt in.
+- Failover never targets another person''s login.
+
+**Risks.** Policy lag. Hard stops use Claude''s own account-wide percent locally, so lag can only delay a *raised*
+allowance, never break a cutoff.
+
+**Effort.** 2 to 3 weeks.', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 15 of 18, phase 5. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 5: central policy and cross-machine dispatch
+
+**Goal.** The org''s pacing policy is set once and holds on every spoke. Work can be dispatched to a member''s machine
+that has opted in.
+
+**Code:**
+
+- Policy: `org limit`, `org allow`, `PaceTargetPercent`, `RepoOrgs` and the weekly reserve are written at the hub (the
+  CLI and Settings modal call the hub when joined) and pushed as `PolicySnapshot`.
+- `IPolicySource` (Hub) feeds `AccountPacer` and `TicketPins`.
+- With no snapshot, the spoke uses the defaults (`UsageCutoffs.Default*`).
+- Allowance split: when one login is live on more than one device, the hub divides the login''s subagent allowance by
+  active CLIs across the devices (the `SubagentShare` rule) and pushes `allowanceShare`. `AccountPacer` writes its
+  share into `rl-status.json`.
+- Remote dispatch:
+  - the hub sends `dispatch {ticket, login, prompt}` only to spokes with `Hub.AcceptDispatch = true`, a setting the
+    member sets on their own machine;
+  - the spoke runs the existing `Dispatcher` and Launcher path on its own login;
+  - the hub never turns `/allocate` on in any CLI.
+- Rebalance and failover:
+  - `AccountRebalancer` decisions that cross machines become hub reassignments of *tickets*, never moves of a CLI to
+    another person''s login (T681''s rule);
+  - API-key failover reassigns the ticket to the API-key person on a key-holder spoke (`Hub.KeyHolder = true`, set by
+    an admin);
+  - `ApiSpend` is reported by that spoke.
+
+**Protocol.** `policy` v1, `allowance-share`, `dispatch` and `dispatch-result`.
+
+**Migration.** `hub import-policy` copies `usage-cutoffs`, allowances and settings once.
+
+**Tests:**
+
+- The policy applies after a push.
+- An offline spoke falls back to the last policy, then to the defaults.
+- Two devices on one login split the allowance and never exceed it together.
+- Dispatch is refused to a spoke that didn''t opt in.
+- Failover never targets another person''s login.
+
+**Risks.** Policy lag. Hard stops use Claude''s own account-wide percent locally, so lag can only delay a *raised*
+allowance, never break a cutoff.
+
+**Effort.** 2 to 3 weeks.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19279, 'M.ORCH-T1142', '2026-10-27T16:20:19Z', 'link', 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19280, 'M.ORCH-T1142', '2026-10-27T16:20:20Z', 'link', 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19281, 'M.ORCH-T1142', '2026-10-27T16:20:21Z', 'link', NULL, 'part-of M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19282, 'M.ORCH-T1145', '2026-10-27T16:20:21Z', 'link', NULL, 'M.ORCH-T1142 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19283, 'M.ORCH-T1142', '2026-10-27T16:20:24Z', 'link', NULL, 'requires M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19284, 'M.ORCH-T1145', '2026-10-27T16:20:25Z', 'link', NULL, 'M.ORCH-T1142 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19285, 'M.ORCH-T1142', '2026-10-27T16:20:26Z', 'description', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 16 of 18, phase 5. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 5: central policy and cross-machine dispatch
+
+**Goal.** The org''s pacing policy is set once and holds on every spoke. Work can be dispatched to a member''s machine
+that has opted in.
+
+**Code:**
+
+- Policy: `org limit`, `org allow`, `PaceTargetPercent`, `RepoOrgs` and the weekly reserve are written at the hub (the
+  CLI and Settings modal call the hub when joined) and pushed as `PolicySnapshot`.
+- `IPolicySource` (Hub) feeds `AccountPacer` and `TicketPins`.
+- With no snapshot, the spoke uses the defaults (`UsageCutoffs.Default*`).
+- Allowance split: when one login is live on more than one device, the hub divides the login''s subagent allowance by
+  active CLIs across the devices (the `SubagentShare` rule) and pushes `allowanceShare`. `AccountPacer` writes its
+  share into `rl-status.json`.
+- Remote dispatch:
+  - the hub sends `dispatch {ticket, login, prompt}` only to spokes with `Hub.AcceptDispatch = true`, a setting the
+    member sets on their own machine;
+  - the spoke runs the existing `Dispatcher` and Launcher path on its own login;
+  - the hub never turns `/allocate` on in any CLI.
+- Rebalance and failover:
+  - `AccountRebalancer` decisions that cross machines become hub reassignments of *tickets*, never moves of a CLI to
+    another person''s login (T681''s rule);
+  - API-key failover reassigns the ticket to the API-key person on a key-holder spoke (`Hub.KeyHolder = true`, set by
+    an admin);
+  - `ApiSpend` is reported by that spoke.
+
+**Protocol.** `policy` v1, `allowance-share`, `dispatch` and `dispatch-result`.
+
+**Migration.** `hub import-policy` copies `usage-cutoffs`, allowances and settings once.
+
+**Tests:**
+
+- The policy applies after a push.
+- An offline spoke falls back to the last policy, then to the defaults.
+- Two devices on one login split the allowance and never exceed it together.
+- Dispatch is refused to a spoke that didn''t opt in.
+- Failover never targets another person''s login.
+
+**Risks.** Policy lag. Hard stops use Claude''s own account-wide percent locally, so lag can only delay a *raised*
+allowance, never break a cutoff.
+
+**Effort.** 2 to 3 weeks.', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 16 of 18, phase 5. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 5: central policy and cross-machine dispatch
+
+**Goal.** The org''s pacing policy is set once and holds on every spoke. Work can be dispatched to a member''s machine
+that has opted in.
+
+**Code:**
+
+- Policy: `org limit`, `org allow`, `PaceTargetPercent`, `RepoOrgs` and the weekly reserve are written at the hub (the
+  CLI and Settings modal call the hub when joined) and pushed as `PolicySnapshot`.
+- `IPolicySource` (Hub) feeds `AccountPacer` and `TicketPins`.
+- With no snapshot, the spoke uses the defaults (`UsageCutoffs.Default*`).
+- Allowance split: when one login is live on more than one device, the hub divides the login''s subagent allowance by
+  active CLIs across the devices (the `SubagentShare` rule) and pushes `allowanceShare`. `AccountPacer` writes its
+  share into `rl-status.json`.
+- Remote dispatch:
+  - the hub sends `dispatch {ticket, login, prompt}` only to spokes with `Hub.AcceptDispatch = true`, a setting the
+    member sets on their own machine;
+  - the spoke runs the existing `Dispatcher` and Launcher path on its own login;
+  - the hub never turns `/allocate` on in any CLI.
+- Rebalance and failover:
+  - `AccountRebalancer` decisions that cross machines become hub reassignments of *tickets*, never moves of a CLI to
+    another person''s login (T681''s rule);
+  - API-key failover reassigns the ticket to the API-key person on a key-holder spoke (`Hub.KeyHolder = true`, set by
+    an admin);
+  - `ApiSpend` is reported by that spoke.
+
+**Protocol.** `policy` v1, `allowance-share`, `dispatch` and `dispatch-result`.
+
+**Migration.** `hub import-policy` copies `usage-cutoffs`, allowances and settings once.
+
+**Tests:**
+
+- The policy applies after a push.
+- An offline spoke falls back to the last policy, then to the defaults.
+- Two devices on one login split the allowance and never exceed it together.
+- Dispatch is refused to a spoke that didn''t opt in.
+- Failover never targets another person''s login.
+
+**Risks.** Policy lag. Hard stops use Claude''s own account-wide percent locally, so lag can only delay a *raised*
+allowance, never break a cutoff.
+
+**Effort.** 2 to 3 weeks.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19286, 'M.ORCH-T1143', '2026-10-27T16:20:30Z', 'link', 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19287, 'M.ORCH-T1143', '2026-10-27T16:20:31Z', 'link', 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19288, 'M.ORCH-T1143', '2026-10-27T16:20:32Z', 'link', NULL, 'part-of M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19289, 'M.ORCH-T1145', '2026-10-27T16:20:32Z', 'link', NULL, 'M.ORCH-T1143 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19290, 'M.ORCH-T1143', '2026-10-27T16:20:33Z', 'link', NULL, 'requires M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19291, 'M.ORCH-T1145', '2026-10-27T16:20:34Z', 'link', NULL, 'M.ORCH-T1143 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19292, 'M.ORCH-T1143', '2026-10-27T16:20:37Z', 'description', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 17 of 18, phase 5. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 5: central policy and cross-machine dispatch
+
+**Goal.** The org''s pacing policy is set once and holds on every spoke. Work can be dispatched to a member''s machine
+that has opted in.
+
+**Code:**
+
+- Policy: `org limit`, `org allow`, `PaceTargetPercent`, `RepoOrgs` and the weekly reserve are written at the hub (the
+  CLI and Settings modal call the hub when joined) and pushed as `PolicySnapshot`.
+- `IPolicySource` (Hub) feeds `AccountPacer` and `TicketPins`.
+- With no snapshot, the spoke uses the defaults (`UsageCutoffs.Default*`).
+- Allowance split: when one login is live on more than one device, the hub divides the login''s subagent allowance by
+  active CLIs across the devices (the `SubagentShare` rule) and pushes `allowanceShare`. `AccountPacer` writes its
+  share into `rl-status.json`.
+- Remote dispatch:
+  - the hub sends `dispatch {ticket, login, prompt}` only to spokes with `Hub.AcceptDispatch = true`, a setting the
+    member sets on their own machine;
+  - the spoke runs the existing `Dispatcher` and Launcher path on its own login;
+  - the hub never turns `/allocate` on in any CLI.
+- Rebalance and failover:
+  - `AccountRebalancer` decisions that cross machines become hub reassignments of *tickets*, never moves of a CLI to
+    another person''s login (T681''s rule);
+  - API-key failover reassigns the ticket to the API-key person on a key-holder spoke (`Hub.KeyHolder = true`, set by
+    an admin);
+  - `ApiSpend` is reported by that spoke.
+
+**Protocol.** `policy` v1, `allowance-share`, `dispatch` and `dispatch-result`.
+
+**Migration.** `hub import-policy` copies `usage-cutoffs`, allowances and settings once.
+
+**Tests:**
+
+- The policy applies after a push.
+- An offline spoke falls back to the last policy, then to the defaults.
+- Two devices on one login split the allowance and never exceed it together.
+- Dispatch is refused to a spoke that didn''t opt in.
+- Failover never targets another person''s login.
+
+**Risks.** Policy lag. Hard stops use Claude''s own account-wide percent locally, so lag can only delay a *raised*
+allowance, never break a cutoff.
+
+**Effort.** 2 to 3 weeks.', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 17 of 18, phase 5. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 5: central policy and cross-machine dispatch
+
+**Goal.** The org''s pacing policy is set once and holds on every spoke. Work can be dispatched to a member''s machine
+that has opted in.
+
+**Code:**
+
+- Policy: `org limit`, `org allow`, `PaceTargetPercent`, `RepoOrgs` and the weekly reserve are written at the hub (the
+  CLI and Settings modal call the hub when joined) and pushed as `PolicySnapshot`.
+- `IPolicySource` (Hub) feeds `AccountPacer` and `TicketPins`.
+- With no snapshot, the spoke uses the defaults (`UsageCutoffs.Default*`).
+- Allowance split: when one login is live on more than one device, the hub divides the login''s subagent allowance by
+  active CLIs across the devices (the `SubagentShare` rule) and pushes `allowanceShare`. `AccountPacer` writes its
+  share into `rl-status.json`.
+- Remote dispatch:
+  - the hub sends `dispatch {ticket, login, prompt}` only to spokes with `Hub.AcceptDispatch = true`, a setting the
+    member sets on their own machine;
+  - the spoke runs the existing `Dispatcher` and Launcher path on its own login;
+  - the hub never turns `/allocate` on in any CLI.
+- Rebalance and failover:
+  - `AccountRebalancer` decisions that cross machines become hub reassignments of *tickets*, never moves of a CLI to
+    another person''s login (T681''s rule);
+  - API-key failover reassigns the ticket to the API-key person on a key-holder spoke (`Hub.KeyHolder = true`, set by
+    an admin);
+  - `ApiSpend` is reported by that spoke.
+
+**Protocol.** `policy` v1, `allowance-share`, `dispatch` and `dispatch-result`.
+
+**Migration.** `hub import-policy` copies `usage-cutoffs`, allowances and settings once.
+
+**Tests:**
+
+- The policy applies after a push.
+- An offline spoke falls back to the last policy, then to the defaults.
+- Two devices on one login split the allowance and never exceed it together.
+- Dispatch is refused to a spoke that didn''t opt in.
+- Failover never targets another person''s login.
+
+**Risks.** Policy lag. Hard stops use Claude''s own account-wide percent locally, so lag can only delay a *raised*
+allowance, never break a cutoff.
+
+**Effort.** 2 to 3 weeks.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19293, 'M.ORCH-T1144', '2026-10-27T16:20:42Z', 'link', 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19294, 'M.ORCH-T1144', '2026-10-27T16:20:44Z', 'link', 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19295, 'M.ORCH-T1144', '2026-10-27T16:20:45Z', 'link', NULL, 'part-of M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19296, 'M.ORCH-T1145', '2026-10-27T16:20:45Z', 'link', NULL, 'M.ORCH-T1144 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19297, 'M.ORCH-T1144', '2026-10-27T16:20:46Z', 'link', NULL, 'requires M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19298, 'M.ORCH-T1145', '2026-10-27T16:20:47Z', 'link', NULL, 'M.ORCH-T1144 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19299, 'M.ORCH-T1144', '2026-10-27T16:20:51Z', 'description', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 18 of 18, phase 6. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 6: hardening, deployment and the dedicated hub
+
+**Goal.** Run the hub off a member''s desktop and operate it safely.
+
+**Code and ops:**
+
+- `deploy.ps1` publishes `Hub`, and the gateway too (its publish was left out of T928).
+- Hub backup: the SQL Server and SQLite pattern in `DATA_STORES.md`.
+- A runbook for moving the hub to a dedicated tailnet box. Spokes re-pin by `hub join --rotate-pin`, signed by the old
+  key.
+- An optional cloud relay in front of the hub for members off the tailnet (Tailscale Funnel or an Azure container).
+  Same protocol.
+- Rate limits on `/enroll` and `/device/token`.
+- A device revocation UI in the dashboard.
+- A hub audit viewer.
+- Version-skew tests: spoke N-1 against hub N.
+- Chaos tests: hub kill, spoke sleep, clock skew.
+
+**Effort.** 1 to 2 weeks.', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 18 of 18, phase 6. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 6: hardening, deployment and the dedicated hub
+
+**Goal.** Run the hub off a member''s desktop and operate it safely.
+
+**Code and ops:**
+
+- `deploy.ps1` publishes `Hub`, and the gateway too (its publish was left out of T928).
+- Hub backup: the SQL Server and SQLite pattern in `DATA_STORES.md`.
+- A runbook for moving the hub to a dedicated tailnet box. Spokes re-pin by `hub join --rotate-pin`, signed by the old
+  key.
+- An optional cloud relay in front of the hub for members off the tailnet (Tailscale Funnel or an Azure container).
+  Same protocol.
+- Rate limits on `/enroll` and `/device/token`.
+- A device revocation UI in the dashboard.
+- A hub audit viewer.
+- Version-skew tests: spoke N-1 against hub N.
+- Chaos tests: hub kill, spoke sleep, clock skew.
+
+**Effort.** 1 to 2 weeks.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19300, 'M.TIX-T173', '2026-10-27T16:20:56Z', 'link', 'part-of tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19301, 'M.TIX-T173', '2026-10-27T16:20:59Z', 'link', 'requires tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19302, 'M.TIX-T173', '2026-10-27T16:21:01Z', 'link', NULL, 'part-of M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19303, 'M.ORCH-T1145', '2026-10-27T16:21:03Z', 'link', NULL, 'M.TIX-T173 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19304, 'M.TIX-T173', '2026-10-27T16:21:12Z', 'link', NULL, 'requires M.ORCH-T1145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19305, 'M.ORCH-T1145', '2026-10-27T16:21:17Z', 'link', NULL, 'M.TIX-T173 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19306, 'M.TIX-T173', '2026-10-27T16:21:28Z', 'description', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 14 of 18, phase 4. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 4: shared tickets and leases
+
+**Goal.** Every joined spoke works the same queue with no double claims. Tickets Desktop and the hooks keep working from
+a local replica.
+
+**Code:**
+
+- Hub Tickets API over `TicketsDb`:
+  - `GET /tickets?since=<cursor>` (the replica feed);
+  - `POST /tickets/{id}/notes|status|assign|approve`;
+  - authorized by role and org.
+- The hub''s `IClaims` implementation:
+  - `Allocate.Next` runs **on the hub**, with the spoke''s reported `LoginRoom`s and allocate CLIs from the heartbeat;
+  - it writes `leases(ticket, member, device, login, session, lease_id, epoch, expires_utc, grace_until_utc)`,
+    `assignments` and `ticket_work` in one transaction (`TicketsDb`''s write lock).
+- Spoke:
+  - `NextCommand` in `Join` sends `claim` through `HubLink`, a local request over the daemon''s inbox, with a 10 s
+    timeout and a plain "hub unreachable: nothing claimed" message;
+  - worktree creation and `Dispatcher` stay local;
+  - renewals ride on the heartbeat;
+  - the ticket-close path sends `complete {leaseId, epoch, commit}`.
+- Replica: the spoke applies the feed into `data/Tickets.db` through `TicketsDb` (the file the hooks read with stdlib
+  sqlite3). Its local writes are refused in `Join` unless they come from the replica writer.
+- Git sync: `Daemon.SyncTicketsDbIfDue` and `SyncOrchestratorDbIfDue` are skipped when `Mode = Join`. Only the hub
+  machine syncs.
+- Cross-repo work in MindAttic.Tickets (its own ticket):
+  - a `TicketsDb` remote-writer hook, so the `tickets` CLI and Tickets Desktop write through the hub API when
+    `Join` is configured (read from the Orchestrator''s hub settings or its own);
+  - otherwise they are read-only with a clear message.
+
+**Protocol.**
+
+- `claim`, `lease-grant`, `renew` (on the heartbeat), `complete`, `release`, `lease-lost`.
+- `replica-delta {cursor, rows}`.
+
+**Lease rules (from `2-plan.md` §4.3):**
+
+- A lease lives 3 heartbeats.
+- An expired lease is held for the offline grace (`Hub.OfflineGraceMinutes`) before the ticket is queued again.
+- A stale epoch is refused.
+- A spoke told `lease-lost` stops that ticket''s subagent the way `AgentAbort` does, and keeps its worktree.
+
+**Migration.**
+
+- `hub import-tickets` points the hub''s `TicketsDb` at the host''s SQL Server database. Same machine, so it is a
+  config change, not a copy.
+- Joined spokes'' `data/Tickets.db` is rebuilt from the feed on first join, and the old file is kept as `.prejoin`.
+
+**Tests:**
+
+- Two fake spokes claim at once and get no duplicates.
+- A spoke going offline keeps its lease through the grace, then the ticket is requeued.
+- A stale-epoch complete is refused.
+- The replica converges after deltas are missed.
+- Hooks read the replica (the existing hook tests point at a replica file).
+- `Off` and `Host` still claim locally with today''s semantics, and the existing `Allocate` tests are unchanged.
+
+**Risks.** **The highest of any phase.**
+
+- Concurrency bugs in claims.
+- Tickets Desktop writing to a replica.
+- Moving git-sync ownership.
+
+Mitigations: ship dark; run `Host` mode on the main machine alone for a week, where leases are local but go through the
+hub; then add one remote spoke.
+
+**Effort.** 3 to 4 weeks, plus about 1 week in MindAttic.Tickets.', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 14 of 18, phase 4. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+At line:5 char:10
++ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError; this phase''s section:
+
+## Phase 4: shared tickets and leases
+
+**Goal.** Every joined spoke works the same queue with no double claims. Tickets Desktop and the hooks keep working from
+a local replica.
+
+**Code:**
+
+- Hub Tickets API over `TicketsDb`:
+  - `GET /tickets?since=<cursor>` (the replica feed);
+  - `POST /tickets/{id}/notes|status|assign|approve`;
+  - authorized by role and org.
+- The hub''s `IClaims` implementation:
+  - `Allocate.Next` runs **on the hub**, with the spoke''s reported `LoginRoom`s and allocate CLIs from the heartbeat;
+  - it writes `leases(ticket, member, device, login, session, lease_id, epoch, expires_utc, grace_until_utc)`,
+    `assignments` and `ticket_work` in one transaction (`TicketsDb`''s write lock).
+- Spoke:
+  - `NextCommand` in `Join` sends `claim` through `HubLink`, a local request over the daemon''s inbox, with a 10 s
+    timeout and a plain "hub unreachable: nothing claimed" message;
+  - worktree creation and `Dispatcher` stay local;
+  - renewals ride on the heartbeat;
+  - the ticket-close path sends `complete {leaseId, epoch, commit}`.
+- Replica: the spoke applies the feed into `data/Tickets.db` through `TicketsDb` (the file the hooks read with stdlib
+  sqlite3). Its local writes are refused in `Join` unless they come from the replica writer.
+- Git sync: `Daemon.SyncTicketsDbIfDue` and `SyncOrchestratorDbIfDue` are skipped when `Mode = Join`. Only the hub
+  machine syncs.
+- Cross-repo work in MindAttic.Tickets (its own ticket):
+  - a `TicketsDb` remote-writer hook, so the `tickets` CLI and Tickets Desktop write through the hub API when
+    `Join` is configured (read from the Orchestrator''s hub settings or its own);
+  - otherwise they are read-only with a clear message.
+
+**Protocol.**
+
+- `claim`, `lease-grant`, `renew` (on the heartbeat), `complete`, `release`, `lease-lost`.
+- `replica-delta {cursor, rows}`.
+
+**Lease rules (from `2-plan.md` §4.3):**
+
+- A lease lives 3 heartbeats.
+- An expired lease is held for the offline grace (`Hub.OfflineGraceMinutes`) before the ticket is queued again.
+- A stale epoch is refused.
+- A spoke told `lease-lost` stops that ticket''s subagent the way `AgentAbort` does, and keeps its worktree.
+
+**Migration.**
+
+- `hub import-tickets` points the hub''s `TicketsDb` at the host''s SQL Server database. Same machine, so it is a
+  config change, not a copy.
+- Joined spokes'' `data/Tickets.db` is rebuilt from the feed on first join, and the old file is kept as `.prejoin`.
+
+**Tests:**
+
+- Two fake spokes claim at once and get no duplicates.
+- A spoke going offline keeps its lease through the grace, then the ticket is requeued.
+- A stale-epoch complete is refused.
+- The replica converges after deltas are missed.
+- Hooks read the replica (the existing hook tests point at a replica file).
+- `Off` and `Host` still claim locally with today''s semantics, and the existing `Allocate` tests are unchanged.
+
+**Risks.** **The highest of any phase.**
+
+- Concurrency bugs in claims.
+- Tickets Desktop writing to a replica.
+- Moving git-sync ownership.
+
+Mitigations: ship dark; run `Host` mode on the main machine alone for a week, where leases are local but go through the
+hub; then add one remote spoke.
+
+**Effort.** 3 to 4 weeks, plus about 1 week in MindAttic.Tickets.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19307, 'M.ORCH-T1146', '2026-10-27T16:22:18Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19308, 'M.ORCH-T1147', '2026-10-27T16:22:30Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19309, 'M.TIX-T174', '2026-10-27T16:22:34Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19310, 'PRS-T279', '2026-10-27T16:23:28Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19311, 'PRS-T280', '2026-10-27T16:23:42Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19312, 'PRS-T281', '2026-10-27T16:23:58Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19313, 'PRS-T282', '2026-10-27T16:24:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19314, 'PRS-T283', '2026-10-27T16:24:27Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (19315, 'PRS-T284', '2026-10-27T16:24:36Z', 'created', NULL, 'open');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z', NULL);
@@ -30290,6 +32761,9 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('MAT-T48', 'approved', 0, '2026-10-24T10:20:41Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('MAT-T52', 'approved', 0, '2026-10-24T05:52:27Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('MAT-T53', 'approved', 0, '2026-10-24T05:53:11Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('MAT-T67', 'approved', 0, '2026-10-27T16:16:28Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('MAT-T68', 'approved', 0, '2026-10-27T16:16:29Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('MAT-T69', 'approved', 0, '2026-10-27T16:16:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('MAT-T9', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('MAU-T11', 'approved', 5, '2026-10-25T06:27:52Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('MAU-T12', 'approved', 0, '2026-10-26T03:39:47Z', NULL);
@@ -31688,12 +34162,7 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1124
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1125', 'Found by /bughunt 2026-10-27 (G1, G2, B1, B3, B4; B2 needs the user). The pace gate''s exempt early-exit ran before hold_at_stop(), so /allocate typed at the cutoff ran a full round past it, subagents included. claude_stop() used StopPercent = 99, not the login''s own cutoff, when the daemon is stale. OffTickRefresh set lastUtc only on success. ClaudeMeterProbe left nextUtc 4 min out when Write threw. AccountPacer didn''t apply HoldWeeklyStop per login.', '2026-10-27T15:20:55Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1126', 'Found by /bughunt 2026-10-27 (W1, W2, N2, N4, N5, N6 in part, N7 in part, C1, C5 message). TerminalPaneViewModel.Of called VisualTreeHelper.GetParent on a ContentElement (since 2a0e159b). PinTerminalFocus read a null FocusedElement as lost. billing credit saved LoadSettings()''s defaults. ContextCycler.Read let FormatException/ArgumentOutOfRange escape. AllocateWaker''s early returns skipped CliNudges.Retain. AccountDirs used one fixed .tmp. LoginTokens treated the store-lock timeout as no token. MoveLocks preferred any same-repo CLI over the moved one''s own session. orchestrator start hid the picker''s reason.', '2026-10-27T15:21:14Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1127', 'The user (2026-10-27): ''The Team Wall is amazing, but right now all those users are logged into one computer, so how to expand this so that users in the organization are able to connect to their account into MindAttic.Orchestrator.Desktop and work on their tickets in an environment where everyones CLIS are visible and shareable? This is a major architectural enhancement and deserves a research spike, then a Plan, then an implementation plan that allows the current way to keep functioning as it is but in the future it allows remote connections to a central Wheel and spoke architecture.'' Deliverables: docs/design/hub-and-spoke/ (1) research spike, (2) plan, (3) implementation plan in phases, each phase shippable with the local-only mode unchanged. Approved by the user''s own request; implementation tickets are filed from the plan and wait for the user''s approval.', '2026-10-27T15:32:05Z');
-INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1128', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 1 of 18, phase 0. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1128', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 1 of 18, phase 0. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
 At line:5 char:10
 + $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
 +          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -31742,13 +34211,8 @@ At line:5 char:10
 **Risks.** Seams drawn in the wrong place. Mitigate by drawing them exactly at today''s function boundaries and not
 refactoring the logic behind them.
 
-**Effort.** 4 to 6 days.', '2026-10-27T16:03:12Z');
-INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1129', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 2 of 18, phase 0. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+**Effort.** 4 to 6 days.', '2026-10-27T16:14:33Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1129', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 2 of 18, phase 0. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
 At line:5 char:10
 + $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
 +          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -31797,13 +34261,8 @@ At line:5 char:10
 **Risks.** Seams drawn in the wrong place. Mitigate by drawing them exactly at today''s function boundaries and not
 refactoring the logic behind them.
 
-**Effort.** 4 to 6 days.', '2026-10-27T16:03:38Z');
-INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1130', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 3 of 18, phase 1. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+**Effort.** 4 to 6 days.', '2026-10-27T16:15:22Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1130', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 3 of 18, phase 1. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
 At line:5 char:10
 + $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
 +          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -31861,13 +34320,8 @@ remotely yet.
 - CNG keys on machines without a TPM fall back to the software KSP. That is fine.
 - Hosting the hub on a member''s desktop means it sleeps, so document that the hub machine should not sleep.
 
-**Effort.** 2 to 3 weeks.', '2026-10-27T16:04:20Z');
-INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1131', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 4 of 18, phase 1. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+**Effort.** 2 to 3 weeks.', '2026-10-27T16:16:07Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1131', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 4 of 18, phase 1. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
 At line:5 char:10
 + $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
 +          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -31925,13 +34379,8 @@ remotely yet.
 - CNG keys on machines without a TPM fall back to the software KSP. That is fine.
 - Hosting the hub on a member''s desktop means it sleeps, so document that the hub machine should not sleep.
 
-**Effort.** 2 to 3 weeks.', '2026-10-27T16:04:44Z');
-INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1132', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 5 of 18, phase 1. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+**Effort.** 2 to 3 weeks.', '2026-10-27T16:16:24Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1132', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 5 of 18, phase 1. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
 At line:5 char:10
 + $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
 +          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -31989,13 +34438,8 @@ remotely yet.
 - CNG keys on machines without a TPM fall back to the software KSP. That is fine.
 - Hosting the hub on a member''s desktop means it sleeps, so document that the hub machine should not sleep.
 
-**Effort.** 2 to 3 weeks.', '2026-10-27T16:04:57Z');
-INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1133', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 6 of 18, phase 2. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+**Effort.** 2 to 3 weeks.', '2026-10-27T16:16:38Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1133', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 6 of 18, phase 2. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
 At line:5 char:10
 + $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
 +          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -32040,13 +34484,8 @@ At line:5 char:10
 **Risks.** The roster drifting between hub and spoke. The hub is the store of record, and the spoke tables are
 overwritten from `welcome` and the deltas.
 
-**Effort.** ~2 weeks.', '2026-10-27T16:05:11Z');
-INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1134', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 7 of 18, phase 2. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+**Effort.** ~2 weeks.', '2026-10-27T16:16:50Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1134', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 7 of 18, phase 2. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
 At line:5 char:10
 + $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
 +          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -32091,13 +34530,8 @@ At line:5 char:10
 **Risks.** The roster drifting between hub and spoke. The hub is the store of record, and the spoke tables are
 overwritten from `welcome` and the deltas.
 
-**Effort.** ~2 weeks.', '2026-10-27T16:05:20Z');
-INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1135', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 8 of 18, phase 3. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+**Effort.** ~2 weeks.', '2026-10-27T16:17:00Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1135', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 8 of 18, phase 3. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
 At line:5 char:10
 + $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
 +          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -32164,13 +34598,8 @@ untouched.
 - A later "direct when reachable" optimization (the Tailscale-style peer path) stays possible, because the peer gateway
   still exists.
 
-**Effort.** 2 to 3 weeks.', '2026-10-27T16:05:36Z');
-INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1136', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 9 of 18, phase 3. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+**Effort.** 2 to 3 weeks.', '2026-10-27T16:17:20Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1136', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 9 of 18, phase 3. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
 At line:5 char:10
 + $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
 +          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -32237,13 +34666,8 @@ untouched.
 - A later "direct when reachable" optimization (the Tailscale-style peer path) stays possible, because the peer gateway
   still exists.
 
-**Effort.** 2 to 3 weeks.', '2026-10-27T16:05:43Z');
-INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1137', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 10 of 18, phase 3. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+**Effort.** 2 to 3 weeks.', '2026-10-27T16:18:19Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1137', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 10 of 18, phase 3. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
 At line:5 char:10
 + $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
 +          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -32310,13 +34734,8 @@ untouched.
 - A later "direct when reachable" optimization (the Tailscale-style peer path) stays possible, because the peer gateway
   still exists.
 
-**Effort.** 2 to 3 weeks.', '2026-10-27T16:05:52Z');
-INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1138', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 11 of 18, phase 3. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+**Effort.** 2 to 3 weeks.', '2026-10-27T16:19:05Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1138', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 11 of 18, phase 3. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
 At line:5 char:10
 + $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
 +          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -32383,13 +34802,8 @@ untouched.
 - A later "direct when reachable" optimization (the Tailscale-style peer path) stays possible, because the peer gateway
   still exists.
 
-**Effort.** 2 to 3 weeks.', '2026-10-27T16:05:59Z');
-INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1139', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 12 of 18, phase 4. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+**Effort.** 2 to 3 weeks.', '2026-10-27T16:19:24Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1139', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 12 of 18, phase 4. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
 At line:5 char:10
 + $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
 +          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -32462,13 +34876,8 @@ a local replica.
 Mitigations: ship dark; run `Host` mode on the main machine alone for a week, where leases are local but go through the
 hub; then add one remote spoke.
 
-**Effort.** 3 to 4 weeks, plus about 1 week in MindAttic.Tickets.', '2026-10-27T16:06:12Z');
-INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1140', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 13 of 18, phase 4. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+**Effort.** 3 to 4 weeks, plus about 1 week in MindAttic.Tickets.', '2026-10-27T16:19:45Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1140', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 13 of 18, phase 4. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
 At line:5 char:10
 + $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
 +          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -32541,13 +34950,8 @@ a local replica.
 Mitigations: ship dark; run `Host` mode on the main machine alone for a week, where leases are local but go through the
 hub; then add one remote spoke.
 
-**Effort.** 3 to 4 weeks, plus about 1 week in MindAttic.Tickets.', '2026-10-27T16:06:45Z');
-INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1141', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 15 of 18, phase 5. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+**Effort.** 3 to 4 weeks, plus about 1 week in MindAttic.Tickets.', '2026-10-27T16:20:05Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1141', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 15 of 18, phase 5. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
 At line:5 char:10
 + $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
 +          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -32595,13 +34999,8 @@ that has opted in.
 **Risks.** Policy lag. Hard stops use Claude''s own account-wide percent locally, so lag can only delay a *raised*
 allowance, never break a cutoff.
 
-**Effort.** 2 to 3 weeks.', '2026-10-27T16:07:24Z');
-INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1142', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 16 of 18, phase 5. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+**Effort.** 2 to 3 weeks.', '2026-10-27T16:20:16Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1142', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 16 of 18, phase 5. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
 At line:5 char:10
 + $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
 +          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -32649,13 +35048,8 @@ that has opted in.
 **Risks.** Policy lag. Hard stops use Claude''s own account-wide percent locally, so lag can only delay a *raised*
 allowance, never break a cutoff.
 
-**Effort.** 2 to 3 weeks.', '2026-10-27T16:07:32Z');
-INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1143', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 17 of 18, phase 5. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+**Effort.** 2 to 3 weeks.', '2026-10-27T16:20:26Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1143', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 17 of 18, phase 5. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
 At line:5 char:10
 + $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
 +          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -32703,13 +35097,8 @@ that has opted in.
 **Risks.** Policy lag. Hard stops use Claude''s own account-wide percent locally, so lag can only delay a *raised*
 allowance, never break a cutoff.
 
-**Effort.** 2 to 3 weeks.', '2026-10-27T16:07:44Z');
-INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1144', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 18 of 18, phase 6. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+**Effort.** 2 to 3 weeks.', '2026-10-27T16:20:37Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1144', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 18 of 18, phase 6. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
 At line:5 char:10
 + $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
 +          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -32734,7 +35123,850 @@ At line:5 char:10
 - Version-skew tests: spoke N-1 against hub N.
 - Chaos tests: hub kill, spoke sleep, clock skew.
 
-**Effort.** 1 to 2 weeks.', '2026-10-27T16:07:56Z');
+**Effort.** 1 to 2 weeks.', '2026-10-27T16:20:51Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1145', '**Epic.** Approving this ticket starts the epic; every ticket under it is approved already and waits for it (they require it). The plan below is the whole of docs/design/hub-and-spoke/ as of e2443513, from M.ORCH-T1127.
+
+---
+
+# Spike: members'' own machines on one Orchestrator (M.ORCH-T1127)
+
+**Question.** Today every org login (`~/.claude-accounts/<email>`) runs on one machine. How do members connect from their
+own machines to one central Orchestrator, work their own tickets, and see and share each other''s CLIs, while the
+single-machine setup keeps working exactly as it does now?
+
+**Short answer.** About half of it already exists. TermHost, the relay protocol, the Gateway and the team wall already
+let one machine watch another''s CLIs, with grants, masking and audit. What is missing is a **centre**: one place that owns
+identity, the ticket queue and claims, the org''s policy and the merged view. Machines also have to reach that centre
+without opening inbound ports. Read `2-plan.md` for the design and `3-implementation-plan.md` for the phases.
+
+---
+
+## 1. What exists today, and how far it goes
+
+| Piece | Where | Already remote-capable? |
+|---|---|---|
+| **TermHost**: one detached process per CLI that owns its ConPTY, replay ring and headless VT screen (libghostty-vt) | `src/MindAttic.Orchestrator.TermHost` (`TermSession`, `ViewerPolicy`, `Replay/HeadlessScreen`) | Yes, locally. Several viewers, size ownership, watch/interact Hello (protocol 2) |
+| **Session registry**: one `terms\<id>.json` per host, plus the `term-session` bus kind | `Term/TermSessions.cs`, `TermSessionRecord`, `TermBus` | Machine-local only (`%LOCALAPPDATA%`, pid liveness) |
+| **Relay protocol**: `u8 kind \| u32 len \| payload`; Hello, Replay, Output, Size, Input, TakeSize, Typing, Paused | `Term/TermProtocol.cs` (`Version` 2, `Supported` [1,2], `Negotiate`) | Yes: the same frames run over a pipe or a WebSocket |
+| **Viewer**: a bare `TerminalControl` driven by `RelayConnection` over any frame `Stream` | `Term.Wpf/RelayConnection.cs`, `RelayTerminal`; `Core/Sessions/WebSocketFrameStream.cs` | Yes |
+| **Gateway**: Kestrel, TLS, WebSocket bridge from a local pipe to remote viewers | `Gateway/GatewayApp.cs` (`/health`, `/auth/token`, `/sessions`, `/sessions/{id}/stream`), `TermBridge` | **Yes, peer to peer. It is an inbound listener on each owner''s machine** |
+| **Gateway tokens**: `v1.<payload>.<sig>`, HMAC-SHA256 under the owner''s `signing.key`; member tokens minted by the owner | `Term/TermGatewayTokens.cs`, `Gateway/GatewayTokens.cs`, `Cli/GatewayCommand.cs` | The owner hand-carries each token. There is no member sign-in |
+| **ACL**: active member, same-org watch by default, `term_grants` raise access to interact with an expiry; rechecked every 10 s | `Term/TermGatewayAcl.cs` (`acl.json`), `Gateway/GatewayGrants.cs`, `Core/Sessions/TermGrants.cs`, `Cli/GatewayAclCommands.cs` | Decided on the owner''s machine from that machine''s `orchestrator.db` snapshot |
+| **Broadcast hygiene**: opt-in share, `SecretMasker`/`StreamMasker` (token shapes plus Vault values), pause, "being watched" | `Term/TermBroadcast.cs`, `Gateway/StreamMasker.cs`, `VaultSecrets.cs`, `Term/TermWatchers.cs` | Yes. Masking runs **before bytes leave the owner''s machine** |
+| **Certificates**: thumbprint, PFX, or a self-signed dev certificate with SHA-256 pinning | `Gateway/GatewayCertificates.cs` | Yes. The pin is passed out of band |
+| **Audit**: attach, detach, refused, input counts; never content | `Gateway/GatewayAudit.cs` → `term_audit` (migration 16) | Stored on the owner''s machine |
+| **Team wall**: merges the local registry with each remote gateway''s `/sessions`; read-only tiles; TermViewer pop-out | `Wpf/TeamWallWindow.cs`, `TeamWallTile.cs`, `MainWindow.TeamWall.cs`; `Core/Sessions/TeamWall.cs`, `GatewayClient.cs`; `TermViewer/RemoteViewer.cs` | Yes, but as a **mesh**: each viewer adds each teammate''s gateway by hand (`gateway remote add`) |
+| **Daemon**: a 15 s tick that measures, paces, steers, dispatches, supervises the gateway, and git-syncs the DBs | `Core/Daemon.cs`, `Sessions/GatewaySupervisor.cs` | Machine-local. Its status bus and inbox are `CurrentUserOnly` named pipes (`Status/StatusStream.cs`, `StatusInbox.cs`) |
+| **Envelope convention**: `{kind, v, at, pid, payload}`; unknown kinds and newer versions are skipped | `Status/StatusEnvelope.cs`, `AppBus`, `StateBus` (members, orgs, settings) | Already transport-agnostic, so it can be reused on the wire |
+| **Pacing**: per-login budget, pace and allowance from that login''s own `claude-usage.json`; hard cutoffs 98% (5 h) and 90% (week) | `Budget/AccountPacer.cs`, `Pacer.cs`, `UsageCutoff.cs`, `ClaudeMeterProbe.cs`; hooks read `<configDir>/rl-status.json` | Local. The hooks need an answer in milliseconds, so it must stay local |
+| **Meter reading** as a record | `Status/StatusStream.cs` `MeterReading` (email, 5 h and weekly percent, resets, source) | Ready to send over the wire |
+| **Members and orgs** | `members`, `organizations`, `org_members` (`Budget/MemberRoster.cs`, `Sessions/Organizations.cs`, `OrgRouting.cs`) | Data only. A member is entered by hand and holds no secret to sign in with |
+| **Claims**: `orchestrator next --claim` → `Allocate.Next` → `Dispatcher`, recorded in `assignments`; one feeder per machine via `DispatchLease` (`leases` row, pid plus start time) | `Cli/PlanningCommands.cs`, `Scheduling/Allocate.cs`, `Dispatcher.cs`, `DispatchLease.cs` | **Single machine.** A lease is a pid on this box, and a claim has no expiry |
+| **Ticket DB**: `TicketsDb` on SQLite or the SQL Server store of record; `data/Tickets.db` is always a complete copy for the hooks; `ticket_work(assignee, reserved, login, session, since)` | `MindAttic.Tickets/Data/TicketsDb*.cs`, `TicketsServer.cs` | SQL Server is `localhost` with a Windows sign-in. Nothing remote |
+| **Git sync of the DBs**: `data/orchestrator.db` and `.sql` every 10 min, `data/Tickets.db` the same way | `Daemon.SyncOrchestratorDbIfDue`, `SyncTicketsDbIfDue` | The only cross-machine sharing today, and **unsafe with two writers** (binary SQLite merge) |
+| **Credentials**: per-login folders; `setup-token` long-lived tokens sealed with DPAPI in the Vault; the Vault API key read at launch | `Sessions/AccountDirs.cs`, `LoginTokens.cs`, `Billing/ApiKeyPerson.cs`, `BillingSwitch.cs` | Bound to this Windows user by design (DPAPI) |
+
+**Verdict.** The terminal plane is about 80% done. The control plane (identity, tickets, policy, presence) is 0%
+done for more than one machine. The gateway''s design choices hold up and should be kept: mask at the source, owner
+consent, read-only by default, grants with an expiry, and an audit that records counts but never content. Its topology
+should not be kept: an inbound listener per machine with hand-carried tokens and pins.
+
+## 2. The hard problems
+
+### 2.1 Identity and auth per member
+
+- Today a member is a row in `members` with no credential. Gateway tokens are minted by the *owner* and handed over by
+  hand (`gateway token <who>`).
+- The hub needs a real sign-in. The prior spike already chose the way (`docs/spikes/cli-host-viewer.md` § Authentication):
+  host **MindAttic.Authentication** (Argon2id, TOTP, lockout, audit) in a central web app. That app needs an EF
+  `DbContext` and `MindAttic:Vault:Security:*`, and a central hub can have both.
+- Two identities are separate, and the design must not mix them up:
+  - the **member** is a person, signed in to the hub;
+  - the **device** is a spoke machine. It is enrolled once by a signed-in member and holds a non-exportable key.
+- A spoke acts *as its device, on behalf of its member*.
+- A Claude login (`org_members.login`) is something a member *owns*. The hub can''t verify Claude credentials it never
+  sees, so it trusts a spoke''s report only for logins that an admin mapped to that spoke''s member.
+
+### 2.2 Where the CLIs physically run
+
+- **On each member''s machine.** That machine is the only place that has their repos, their Claude sign-in, their
+  Windows session (which `claude /login` needs for its browser) and their DPAPI scope.
+- Running members'' CLIs on the hub would mean copying everyone''s OAuth tokens to one box. It would also break "a
+  person''s own Claude use always wins" (their local use and the hub''s would share one meter with no local arbiter), and
+  it would make the hub a code-execution host for everyone.
+- So the hub runs **no member CLIs**. The hub machine may also be a spoke, which is today''s machine exactly.
+
+### 2.3 Claude logins and credentials never leave the member''s machine
+
+- `~/.claude-accounts/<email>` (`.credentials.json`, `.claude.json`), the `LoginTokens` Vault bucket and `setup-token`
+  tokens stay on the spoke. DPAPI enforces that already.
+- The hub receives only derived facts:
+  - meter percents and resets;
+  - signed-in yes/no;
+  - session metadata, with titles masked.
+- Anything the hub asks a spoke to do (start a CLI on login X, move a CLI) is carried out by the spoke''s own Launcher
+  and `TermLauncher`, with its own credentials.
+
+### 2.4 The Vault API key
+
+- The key (`LlmCredentialStore`, provider `Claude`) and the API-key person (`ApiKeyPerson`, `api-key@mindattic.vault`)
+  bill money, not a seat.
+- Copying the key to every spoke multiplies how widely it is exposed. Sending it from the hub at launch makes the hub a
+  key-distribution server.
+- **Recommendation:** the key stays only on spokes designated as **key holders**, which is today the hub machine.
+- A remote member''s failover (`AccountRebalancer`, T664/T681) becomes "reassign the ticket to the API-key person on a
+  key-holder spoke", not "restart the member''s CLI on the key".
+- `ApiSpend` is reported by the key holder.
+
+### 2.5 Pacing and cutoffs from spokes'' meters
+
+- The hooks'' hard stop (`AgentGate`, reading `rl-status.json`) must answer in milliseconds and must keep working
+  offline. So **enforcement stays on the spoke**.
+- **Policy** belongs centrally:
+  - per-member cutoffs (`org limit`), allowances (`org allow`) and `PaceTargetPercent`;
+  - org routing.
+- **Merging** belongs centrally too, when one Claude account is used from two machines. That is common: a laptop and a
+  desktop. Claude''s meter is account-wide, so the two spokes see the same percent. The subagent allowance is the only
+  per-machine split that needs the hub, and it uses the same `allowance ÷ active CLIs` share rule that `SubagentShare`
+  uses today.
+- **Failure mode:** an offline spoke keeps enforcing the last policy it received. With none, it uses the defaults (98 /
+  90, `UsageCutoffs.Default*`). Claude''s own percent is account-wide, so the hard stop stays correct even with no hub.
+
+### 2.6 The ticket DB, claims and leases
+
+- A claim today is an `assignments` row plus `ticket_work.login/session`, written by whichever CLI ran
+  `next --claim`. Only one feeder runs per machine, through the `DispatchLease` pid lease.
+- Across machines, two spokes can claim the same ticket, and a pid lease means nothing on another machine.
+- Options:
+  - point every spoke at the SQL Server store of record directly;
+  - put a hub API in front of it;
+  - keep git-synced SQLite.
+- Direct SQL exposes the database across NAT and puts credentials on every spoke. It also gives no per-member
+  authorization, and `TicketsDb`''s write lock is a single-database lock. Git-synced SQLite can''t merge binary writes.
+  **So use the hub API.**
+- Claims become **leases**: `{ticket, member, device, login, session, leaseId, expiresUtc, epoch}`.
+  - A spoke renews its leases on every heartbeat.
+  - A lease that expires is not reassigned until an **offline grace** passes. The spoke may still be working: its CLI
+    runs locally, and git is the real integration point.
+  - The `epoch` (a fencing token) lets the hub reject a stale spoke''s "done", or its renewal of a lease the hub has
+    already reassigned.
+- Hooks and Tickets Desktop keep reading a local `Tickets.db` **replica**, which the hub feeds.
+- Only the hub git-syncs the DB files. The spokes'' `SyncTicketsDbIfDue` and `SyncOrchestratorDbIfDue` must turn off,
+  or two machines will commit `data/Tickets.db` over each other.
+
+### 2.7 Live terminal streaming and sharing
+
+- This is already solved peer to peer. The open question is the path.
+  - **Hub relay.** Viewer → hub → spoke. It works across NAT, and the hub enforces grants centrally. The hub sees
+    masked bytes.
+  - **Direct.** Viewer → spoke gateway, as today. It needs reachability.
+- **Keep the decisions where they are safe:**
+  - **masking stays on the spoke**: only it holds the Vault values that `VaultSecrets` masks;
+  - **share, pause and kill stay on the spoke** (`broadcast.json`): the owner''s local "no" beats any hub grant;
+  - **grants and audit move to the hub**, with the spoke re-checking a signed decision as defence in depth.
+- **Interact** is remote input into a CLI that can run tools on the owner''s machine. That is remote code execution by
+  design. It needs:
+  - an explicit grant with an expiry (as now);
+  - owner presence: a local consent toast the first time each grant is used ("Erin wants to type into U.SPC. Allow 1 h?");
+  - the existing "being watched" banner.
+- Compression and secrets: `permessage-deflate` beside attacker-chosen input is the CRIME/BREACH shape (already flagged
+  under T934/T935). Turn compression off for interactive remote streams. Keep it for watchers.
+
+### 2.8 NAT, firewalls and transport
+
+- Members are behind home NATs, so **spokes must dial out**. The hub is the only listener (TCP 443, or 7443 on a
+  tailnet).
+- Transport options:
+
+| Option | For | Against |
+|---|---|---|
+| Raw WebSocket (what the gateway uses) | We already have the frame codec, `WebSocketFrameStream`, `TermBridge`, TLS pinning and deflate. Passes proxies on 443 | We write our own request and response correlation and reconnect logic |
+| SignalR | Reconnect, groups, MessagePack, .NET on both ends | A hub-method model over our binary frames; its reconnect replays nothing; one more framework |
+| gRPC bidi streaming | Typed contracts, HTTP/2 multiplexing, deadlines | Awkward through corporate proxies; HTTP/2 head-of-line blocking when many terminals share one connection; a new toolchain (protobuf) |
+
+- **Pick raw WebSocket with two kinds of socket:**
+  - one long-lived **control** socket per spoke, carrying versioned JSON envelopes (`StatusEnvelope`''s shape);
+  - one **stream** socket per watched session, opened by the spoke *on demand* when the hub asks, carrying
+    TermHost frames unchanged.
+- One socket per stream avoids head-of-line blocking and reuses `TermBridge` almost verbatim.
+- TLS: the hub uses a real certificate where it can (a Tailscale `tailscale cert`, or Let''s Encrypt on a public name),
+  otherwise the dev certificate. Spokes **pin** the hub''s SPKI hash, learned at enrollment, so a pin is never typed in.
+
+### 2.9 Offline spokes and reconnection
+
+- A spoke must never depend on the hub to *keep working*. Its CLIs, hooks and local pacing run on, and only remote
+  visibility and new claims stop.
+- The spoke keeps an **outbox** (a SQLite table) of meter readings, ticket transitions, lease renewals and audit
+  records. Each item carries an idempotency id and is replayed on reconnect. Meter readings are collapsed to the
+  latest per login.
+- Reconnect backs off (0.5 s up to 60 s, with jitter). The spoke resumes with
+  `hello {deviceId, lastAckedSeq, leases[]}`, and the hub answers with the leases it still honours.
+- The hub shows a spoke as online, stale (no heartbeat for over 45 s) or offline, with when it was last seen.
+
+### 2.10 Security and abuse
+
+- **Threats:**
+  - a stolen device key;
+  - a malicious member using interact to type into someone''s CLI;
+  - a spoke lying about meters (which only affects its own logins) or claiming tickets outside its org;
+  - a compromised hub, which could send interact frames to every spoke.
+- **Mitigations:**
+  - device keys are non-exportable (CNG/TPM where available) and revocable at the hub;
+  - access tokens last 15 minutes;
+  - every spoke action is authorized against its member''s org and role;
+  - interact needs owner consent on the spoke, so **a hub compromise can''t type into a CLI the owner hasn''t approved
+    locally**;
+  - every frame of input is counted in the audit;
+  - rate limits on enrollment and sign-in (`/auth/token` already returns 429).
+- Masking is best effort. Sharing stays opt-in per session (`TermBroadcast`), as now.
+
+### 2.11 Versioning between hub and spokes
+
+- Members upgrade at different times. Reuse the patterns that already exist:
+  - `TermProtocol.Negotiate`, which picks the highest version both sides speak;
+  - envelope `kind` + `v`, where unknown kinds and newer versions are skipped;
+  - `TermHostInstalls`'' side-by-side binaries.
+- The hub supports the current control protocol and the one before it (N and N-1). A spoke older than that gets a
+  clear "update to join" refusal and keeps running locally.
+- Capabilities are announced in `hello` (`["meters","streams","leases","dispatch"]`), so a phase can ship without a
+  flag day.
+
+## 3. Options compared
+
+### Where the hub runs
+
+| Option | For | Against | Verdict |
+|---|---|---|---|
+| **On one member''s machine** (today''s main PC) | No new infrastructure; it already has SQL Server, the Vault, both DBs and the API key | Its sleep, reboot or redeploy takes the hub down; it needs an inbound port (a tailnet makes this easy) | **First home**, behind Tailscale. The hub is its own process, so it can move later |
+| **Dedicated always-on server** (mini PC or VM on the tailnet) | Uptime; no member''s desktop is in the critical path | One more box to run and patch; SQL Server and the Vault have to live there too | **Target home** once more than about 3 members join |
+| **Cloud relay or hosted hub** (Azure App Service or a container) | Reachable from anywhere with no VPN; managed TLS | Org data and (masked) terminal bytes leave the premises; cost; the Vault and SQL move to the cloud | **Only** for members who can''t join the tailnet, as a relay in front of the same hub |
+
+### Spokes push or hub pulls
+
+- **Spokes push** over their outbound control socket: meters, presence, sessions and ticket changes as they happen. The
+  hub never opens a connection to a spoke.
+- **The hub pulls only through that same socket.** It sends requests such as "open stream X" or "start ticket T on
+  login L", and the spoke answers or dials back. This is the only shape that works behind NAT, and it is what GitHub''s
+  runners, Teleport agents and Tailscale''s DERP fallback all do.
+
+## 4. Prior art worth copying
+
+| System | What to copy |
+|---|---|
+| **The existing Gateway** (first) | Mask at the source; owner opt-in share and pause; read-only by default; grants with an expiry; access rechecked every 10 s; audit with counts, never content; certificate pinning; one frame per WebSocket message. Keep `TermBridge` and `StreamMasker` as they are and move them behind an outbound dial |
+| **GitHub Actions self-hosted runners** | Enrollment: a short-lived registration token, the runner makes its own key pair, then signed JWTs for its access tokens. **Outbound long-poll only**. Jobs are leased and renewed, and a runner that goes quiet loses its job after a timeout. This is almost exactly our spoke and ticket lease |
+| **Teleport** | Reverse-tunnel agents; **moderated sessions** (a session needs a moderator present) as the model for interact consent; per-session audit |
+| **tmate / upterm** | Separate read-only and read-write join paths; identity-pinned joiners (`--github-user`); a relay for NAT |
+| **VS Live Share** | The host owns everything and guests only stream; read-only by default; the host approves each guest; "follow" mode; a cloud relay with direct LAN as an optimization |
+| **Tailscale** | A central coordination server for identity and policy, while data moves peer to peer, with a relay (DERP) only as fallback. Our hub is the coordination server, and a later phase can let a viewer go direct to a reachable spoke |
+| **Kubernetes kubelet** | Node heartbeats as Lease objects, and node conditions (Ready, Unknown). Workloads keep running on a node that loses the control plane |
+
+## 5. Conclusions for the plan
+
+1. The hub is a new process, `MindAttic.Orchestrator.Hub`. It is **not** the daemon: the daemon is redeployed often
+   and is per-user and per-machine. The hub owns identity, devices, the ticket store of record, leases, policy,
+   presence, the grants and audit, and the stream relay.
+2. The spoke is today''s machine, unchanged, plus one link: a `HubLink` in the daemon for control, and the gateway in
+   **outbound** mode for streams.
+3. Enforcement (hooks, masking, share and pause, consent) stays on the spoke. Decisions and merged views live on the
+   hub.
+4. Single-machine mode is "hub off". The seams are pass-throughs to today''s code, so nothing changes until a setting
+   is flipped.
+
+
+---
+
+# Plan: the hub ("wheel") and its spokes (M.ORCH-T1127)
+
+The research is in `1-research-spike.md`, and the phases are in `3-implementation-plan.md`. This document is the target
+architecture.
+
+## 1. The shape in one paragraph
+
+- **One hub.** `MindAttic.Orchestrator.Hub` is an ASP.NET Core service on an always-on machine, reachable over a
+  tailnet or a public TLS name. It is the org''s single source of truth for:
+  - who is in the org;
+  - which devices belong to whom;
+  - the ticket queue and who holds which ticket;
+  - the org''s pacing policy;
+  - who may watch or type into what.
+- **Many spokes.** A spoke is a member''s machine running today''s Orchestrator: the daemon, TermHost, the dashboard, the
+  Launcher and the hooks. It adds one **outbound** link to the hub.
+- **CLIs, Claude logins, credentials and masking stay on the spoke.**
+- **The hub relays and decides. The spoke executes and enforces.**
+- Today''s setup is a hub that is switched off. Later it can be a hub and a spoke on the same machine.
+
+## 2. Roles: what runs where
+
+| Concern | Hub | Spoke |
+|---|---|---|
+| Member sign-in (MindAttic.Authentication: password, TOTP) | **Owns** | Opens the browser to the hub |
+| Device enrollment and keys | Records each public key, revokes, issues 15-minute access tokens | Generates and holds a non-exportable key (CNG; TPM when present) |
+| Members, orgs, `org_members`, roles | **Store of record** | Read-only cache pushed by the hub (`StateBus` kinds) |
+| Tickets (`TicketsDb` on the hub''s SQL Server or SQLite) | **Store of record** and the Tickets API | Local `Tickets.db` **replica** for the hooks and Tickets Desktop; writes go through the hub |
+| Claims | **Leases** with renewal and fencing | Holds its leases, renews them on heartbeat, and works the ticket locally |
+| Claude logins, `.credentials.json`, `setup-token` tokens | Never sees them | **Owns** them (DPAPI, local Vault) |
+| CLIs (TermHost, ConPTY, claude.exe) | None for members. The hub machine may also run a spoke | **Runs them all** |
+| Meter readings (`MeterReading`) | Merges them per login, keeps the history (`usage_samples`, `pace_ledger`), shows the org view | Reads Claude''s meter (statusline, `ClaudeMeterProbe`) and pushes what it read |
+| Pacing policy (`PaceTargetPercent`, `org limit`, `org allow`, routing) | **Decides** and pushes it | Caches it. `AccountPacer` and the hooks **enforce** it locally and offline |
+| Subagent allowance for a login used on two spokes | Splits it (the `SubagentShare` rule across devices) | Enforces its share |
+| Vault API key | Never holds it | Only on **key-holder** spokes (designated by an admin) |
+| Terminal stream relay | Splices a viewer socket to a spoke socket; enforces grants; audits | Dials out per stream; **masks**, applies share, pause and consent |
+| Grants (`term_grants`) and audit (`term_audit`) | **Store of record** | Re-checks the hub''s signed decision; buffers audit records in the outbox |
+| Git sync of `data/*.db` | Only the hub machine commits | Off while joined |
+| Dashboard (Orchestrator.Desktop) | Serves its data over the API | Runs it. In join mode it shows the whole org, with remote people read-only unless granted |
+
+## 3. Components
+
+```mermaid
+flowchart LR
+  subgraph HUB[Hub machine]
+    H[MindAttic.Orchestrator.Hub<br/>Kestrel TLS :443/7443]
+    A[(MindAttic.Authentication<br/>EF DbContext)]
+    T[(TicketsDb<br/>store of record)]
+    O[(orchestrator hub DB<br/>members, devices, leases,<br/>policy, grants, audit, meters)]
+    H --- A
+    H --- T
+    H --- O
+    HS[Hub machine''s own spoke<br/>= today''s setup]
+  end
+  subgraph S1[Member machine: spoke]
+    D1[Daemon + HubLink<br/>control socket]
+    G1[Gateway, outbound mode<br/>stream sockets]
+    TH1[TermHost x N<br/>claude.exe]
+    W1[Orchestrator.Desktop<br/>Team Wall]
+    R1[(Tickets.db replica<br/>rl-status.json, outbox)]
+    D1 --- R1
+    G1 ---|pipe| TH1
+  end
+  D1 -- wss control, outbound --> H
+  G1 -- wss per stream, outbound --> H
+  W1 -- wss viewer --> H
+  HS -- loopback --> H
+```
+
+New pieces:
+
+- **`MindAttic.Orchestrator.Hub`.** A new project. It references `Hub.Contracts`, `Term` and `MindAttic.Tickets`, and it
+  hosts MindAttic.Authentication.
+- **`MindAttic.Orchestrator.Hub.Contracts`.** A new library with no dependencies, like `Term`. It holds the envelope
+  records, the lease and policy types, and the protocol version. The hub, the daemon, the gateway and the CLI all
+  reference it.
+- **`HubLink`** in Core. The daemon''s client: one control socket, an outbox and a heartbeat. Behind it sit the seams
+  of §6.
+- **Gateway outbound mode.** The same `TermBridge` and `StreamMasker`, but the WebSocket is dialled *to* the hub
+  instead of accepted. The inbound peer mode stays as it is.
+
+## 4. Data and control flows
+
+### 4.1 Enrollment, once per device
+
+```mermaid
+sequenceDiagram
+  participant M as Member (browser)
+  participant D as Desktop / orchestrator CLI
+  participant H as Hub
+  D->>H: GET /enroll/start (no auth) -> enrollment code + hub SPKI pin
+  D->>M: open https://hub/enroll?code=...
+  M->>H: sign in (password + TOTP), approve "Ryan''s laptop"
+  D->>D: generate device key (CNG, non-exportable)
+  D->>H: POST /enroll/complete {code, publicKey, deviceName, spokeVersion}
+  H-->>D: deviceId, memberEmail, hub pin confirmed
+  Note over D: stores deviceId + pin in settings (no secret)
+```
+
+### 4.2 Connect and heartbeat
+
+- The spoke sends a challenge signed with its device key to `POST /device/token` and gets a 15-minute access token.
+- It opens `wss://hub/spoke` and sends:
+  `hello {protocol, capabilities[], deviceId, spokeVersion, lastAckedSeq, leases[]}`.
+- The hub answers: `welcome {protocol, policy, members, orgs, honouredLeases[], replicaCursor}`.
+- Every 15 s, the daemon tick''s own cadence, the spoke sends:
+  `heartbeat {sessions[], clis[], meters[], leaseRenewals[]}`.
+- The hub answers with deltas: policy, grants and the ticket replica.
+
+### 4.3 Claiming a ticket
+
+```mermaid
+sequenceDiagram
+  participant C as CLI (/allocate) on spoke
+  participant L as HubLink (spoke)
+  participant H as Hub
+  C->>L: orchestrator next --claim (repos, login, room)
+  L->>H: claim {device, login, repos, count, room}
+  H->>H: Allocate rules: org routing, pins, priority, fair share;<br/>one transaction: lease rows + ticket_work
+  H-->>L: leases [{ticket, leaseId, epoch, expiresUtc}]
+  L->>L: worktree + Dispatcher (local, as today)
+  loop each heartbeat
+    L->>H: renew [leaseId, epoch]
+  end
+  C->>L: ticket closed (commit pushed)
+  L->>H: complete {leaseId, epoch, commit}
+  H-->>L: ok (or stale-epoch: lease was reassigned)
+```
+
+**Lease rules:**
+
+- A lease lives 3 heartbeat intervals past its last renewal.
+- An expired lease is held through an **offline grace** (a setting, 2 h by default) before the ticket is queued
+  again.
+- A renewal or a completion with an old epoch is refused, and the spoke is told so plainly.
+
+### 4.4 Watching or interacting
+
+```mermaid
+sequenceDiagram
+  participant V as Viewer (Team Wall, any spoke)
+  participant H as Hub
+  participant S as Owner''s spoke (HubLink + Gateway)
+  participant TH as TermHost
+  V->>H: GET /org/sessions (member token)
+  H-->>V: sessions the viewer may see (grants x share)
+  V->>H: wss /streams/{device}/{session}?mode=watch
+  H->>S: control: open-stream {streamId, session, viewer, level, sig}
+  S->>S: check share/pause (broadcast.json), check signed level,<br/>interact? -> consent toast if first use of this grant
+  S->>H: wss /streams/attach/{streamId} (outbound)
+  S->>TH: pipe Hello (watch: 0x0 read-only)
+  TH-->>S: Replay/Output frames
+  S-->>H: masked frames
+  H-->>V: frames (splice, no re-encode)
+```
+
+### 4.5 Pacing
+
+- **The spoke** reads Claude''s meter as it does today and pushes `MeterReading`s.
+- **The hub** merges them per login, keeping the freshest reading, or the highest within a window, as the statusline
+  file does. It then pushes `policy {cutoffs, allowances, paceTarget, allowanceShare[login→device]}`.
+- **`AccountPacer` on the spoke** computes `rl-status.json` from its local meter and the policy, and its hooks enforce
+  it.
+- **With no hub:** the last policy, or the defaults.
+
+## 5. The trust model
+
+- **The hub is trusted for decisions, not for execution.**
+  - It can refuse, assign or revoke.
+  - It can''t read a credential, read an unmasked secret, unpause a paused session, share an unshared one, or type into
+    a CLI whose owner hasn''t consented on their own machine.
+- **A spoke is trusted for its own member''s logins only.**
+  - Its reports about a login that isn''t mapped to its member are dropped and audited.
+  - Its claims are limited to its member''s org (`OrgRouting`).
+- **The owner''s local switches always win** over anything from the hub: share, pause, mask, consent and kill. This
+  matches "a person''s own Claude use always wins".
+- **Members'' tokens:**
+  - members get short-lived hub tokens from their sign-in;
+  - devices get short-lived tokens from their key;
+  - the existing owner-minted gateway tokens keep working for peer-to-peer mode.
+- **The audit lives at the hub:** every attach, refusal, consent, input batch, claim, lease loss, enrollment and
+  revocation.
+
+## 6. Single-machine mode is "hub and spoke on one machine"
+
+New setting `OrchestratorSettings.Hub.Mode`:
+
+| Mode | What runs | Behaviour |
+|---|---|---|
+| `Off` (**default**) | Exactly today''s processes | Every seam (`IClaims`, `IPolicySource`, `IMeterSink`, `IOrgDirectory`, `ISessionDirectory`) is its **Local** implementation, a pass-through to today''s `Allocate`, `DispatchLease`, `TicketsDb`, `AccountPacer` and `TermSessions`. No socket and no new process |
+| `Host` | Today''s processes, the hub service on this machine, and this machine''s spoke over loopback | This machine is the hub and also a spoke. Remote spokes may join. Local behaviour is unchanged, apart from claims becoming leases (still local) |
+| `Join` | Today''s processes plus a `HubLink` to a remote hub | Claims, policy and the org view come from the hub. The DB git sync is off. Local enforcement is unchanged |
+
+The rule: **in `Off`, the diff is dead code.** A Local seam must behave the same as today''s code, so the existing test
+suite runs unchanged against it.
+
+## 7. Non-goals
+
+- Running members'' CLIs on the hub, or on anyone''s machine other than their own.
+- Moving or copying Claude credentials, `setup-token` tokens or the Vault key off a machine that holds them.
+- End-to-end encryption that hides masked terminal bytes from the hub. The hub is org infrastructure. This can be
+  revisited later.
+- A browser or mobile viewer. `/remote-control` already covers phones.
+- Multi-hub, federation between orgs, or high-availability clustering of the hub. One hub, backed up.
+- Replacing git as the code integration point, or syncing working trees between machines.
+- Throttling or protecting machines from load. Per the owner''s rules, only the hard cutoffs stop work.
+- Changing how `/allocate` is turned on. The hub never turns `/allocate` on in a CLI. Remote dispatch to a member''s
+  machine needs that member''s own opt-in setting on their spoke.
+- Non-Windows spokes. TermHost is ConPTY-only today.
+
+
+---
+
+# Implementation plan: hub and spoke (M.ORCH-T1127)
+
+The design is in `2-plan.md`.
+
+**Ground rules for every phase:**
+
+- `Hub.Mode = Off` is the default, and in `Off` behaviour is byte-for-byte today''s.
+- Each phase ships on its own. A phase may sit dark behind the setting.
+- No phase removes the peer-to-peer gateway (`gateway remote add`). It keeps working beside the hub until a later,
+  separate decision.
+- Effort is focused engineering time for one agent-assisted developer.
+
+---
+
+## Phase 0: seams and contracts (no behaviour change)
+
+**Goal.** Put an interface wherever the hub will later decide, with a Local implementation that is today''s code.
+
+**Code:**
+
+- New `src/MindAttic.Orchestrator.Hub.Contracts` (net10.0, no dependencies, like `Term`):
+  - `HubProtocol` (`Version`, `Supported`, `Negotiate`, the same shape as `TermProtocol`);
+  - `HubEnvelope` (`kind`, `v`, `seq`, `ack`, `at`, `payload`: `StatusEnvelope` plus sequencing);
+  - payload records: `SpokeHello`, `HubWelcome`, `Heartbeat`, `LeaseGrant`, `LeaseRenewal`, `PolicySnapshot`,
+    `OpenStream`, `SessionInfo`;
+  - `MeterReading` moves here, or is mirrored here, from `Status/StatusStream.cs`.
+- Core seams (`Core/Hub/`), each with a `Local*` implementation:
+
+| Seam | Today''s code |
+|---|---|
+| `IClaims` | `Allocate.Next`, `Dispatcher` and `DispatchLease`, as they run today |
+| `IPolicySource` | Settings, `UsageCutoffs`, `WeeklyAllowances`, `OrgRouting.Load` |
+| `IMeterSink` | A no-op |
+| `IOrgDirectory` | `MemberRoster`, `Organizations` |
+| `ISessionDirectory` | `TermSessions` plus `TeamWall`''s gateway merge |
+
+- Wiring:
+  - `NextCommand` (`Cli/PlanningCommands.cs`) calls `IClaims`;
+  - `AccountPacer` reads `IPolicySource`;
+  - `TeamWallWindow` reads `ISessionDirectory`.
+- `OrchestratorSettings.Hub`: `Mode` (`Off|Host|Join`), `Url`, `Pin`, `DeviceId`, `OfflineGraceMinutes` (120),
+  `AcceptDispatch` (false). It is shown in Settings as read-only "Off" for now.
+
+**Protocol.** Contracts only, nothing on the wire.
+
+**Migration.** None, beyond an absent `Hub` settings block meaning `Off`.
+
+**Tests:**
+
+- The full existing suite passes untouched.
+- Contract round-trip tests (JSON, unknown kind skipped, newer `v` skipped).
+- A test that `Off` builds only `Local*` seams.
+
+**Risks.** Seams drawn in the wrong place. Mitigate by drawing them exactly at today''s function boundaries and not
+refactoring the logic behind them.
+
+**Effort.** 4 to 6 days.
+
+## Phase 1: hub service, member sign-in, device enrollment, control link (dark)
+
+**Goal.** A spoke can enroll with a hub and hold a live, authenticated, reconnecting control socket. Nothing is decided
+remotely yet.
+
+**Code:**
+
+- New `src/MindAttic.Orchestrator.Hub` (ASP.NET Core, Kestrel):
+  - TLS from `GatewayCertificates`, moved to a shared helper or referenced;
+  - hosts MindAttic.Authentication (`AddMindAtticAuthentication` over a `HubDbContext` with the auth schema; pepper and
+    KEK from `MindAttic:Vault:Security:*` on the hub machine);
+  - endpoints `/health`, `/enroll/start`, `/enroll/complete`, `/device/token` and `/spoke` (WebSocket);
+  - a `devices(id, member, name, public_key, enrolled_utc, last_seen_utc, version, revoked_utc)` table;
+  - presence in memory, with `last_seen` persisted.
+- Core `Hub/HubLink.cs`, the daemon''s client:
+  - the device key in CNG (`CngKey`, `AllowExport = None`, Microsoft Software or Platform KSP);
+  - a challenge signature, then a token;
+  - the socket with backoff and jitter (0.5 s to 60 s);
+  - a heartbeat on each daemon tick;
+  - a `hub_outbox` table in `orchestrator.db` (Volatile, so it never lands in the git dump).
+- `Daemon`: `HubLinkSupervisor`, shaped like `GatewaySupervisor`, starts and stops the link to match `Hub.Mode`.
+- A `HubSupervisor` runs the hub process in `Host` mode. It is separate from the daemon, so a daemon redeploy never
+  drops the hub.
+- CLI `Cli/HubCommands.cs`:
+  - `orchestrator hub host [--bind --port]`;
+  - `orchestrator hub join <url>` (opens the enrollment page; the pin is learned, not typed);
+  - `orchestrator hub status`, `orchestrator hub leave`;
+  - `orchestrator hub devices [--revoke <id>]`.
+- Dashboard: a hub status chip (Off, Connected, Offline since…).
+
+**Protocol.** Control protocol v1: `hello` → `welcome`, then `heartbeat` and `ack`, then `bye`. The hub refuses
+`protocol < N-1` with `update-required`.
+
+**Migration.**
+
+- New hub DB: SQLite by default, or SQL Server through the `DATA_STORES.md` pattern with `hub db migrate`.
+- On the spoke: an `orchestrator.db` migration adds `hub_outbox`.
+
+**Tests:**
+
+- Hub integration tests with `WebApplicationFactory`: enroll, token, connect, revoke mid-session (the socket closes
+  with 1008), a version refusal.
+- `HubLink` reconnect against a hub that is killed and restarted.
+- With `Off`, no socket and no process are created (asserted).
+
+**Risks.**
+
+- MindAttic.Authentication assumes a browser app, but it is browser-based here too (enrollment).
+- CNG keys on machines without a TPM fall back to the software KSP. That is fine.
+- Hosting the hub on a member''s desktop means it sleeps, so document that the hub machine should not sleep.
+
+**Effort.** 2 to 3 weeks.
+
+## Phase 2: presence and meters (read-only org view)
+
+**Goal.** From any joined machine, see every member, their machines, their CLIs and their meters. No remote control.
+
+**Code:**
+
+- Each spoke heartbeat carries:
+  - `CliRoster` rows (pid, repo, login, `/allocate` on or off);
+  - `TermSessionRecord`s with titles masked through `SecretMasker` (no command line, cwd, config dir or pipe, as
+    `/sessions` already leaves them out);
+  - `MeterReading`s;
+  - `AgentBoard` summaries (ticket and phase).
+- The hub merges per login and stores `usage_samples` and `pace_ledger` rows tagged with the device.
+- Hub endpoints `GET /org/presence` and `GET /org/usage`.
+- `IOrgDirectory` and `ISessionDirectory` get Hub implementations in `Join` and `Host`.
+- Dashboard: remote people''s tabs show read-only, badged with their machine. `/org usage` (`Cli/OrgCommands.cs`) prints
+  every member''s table across machines.
+- The hub pushes members and orgs as the existing `StateBus` kinds (`members`, `orgs`).
+- Hub-to-spoke login mapping: a report for a login that isn''t in the member''s `org_members` rows is dropped and audited.
+
+**Protocol.** Heartbeat payload v1. Meter readings collapse to the latest per login in the outbox.
+
+**Migration.**
+
+- `members`, `organizations` and `org_members` are copied once into the hub DB from the host machine''s
+  `orchestrator.db` (`hub import-org`).
+- In `Join`, a spoke''s local tables become a cache.
+
+**Tests:**
+
+- Merge rules: the freshest reading wins; the highest within a window; a stale reading is ignored.
+- An unmapped login is dropped.
+- An outbox replay after an offline period has no duplicates (idempotency id).
+- The dashboard view model shows a remote person read-only.
+
+**Risks.** The roster drifting between hub and spoke. The hub is the store of record, and the spoke tables are
+overwritten from `welcome` and the deltas.
+
+**Effort.** ~2 weeks.
+
+## Phase 3: terminal streams through the hub (Team Wall at org scale)
+
+**Goal.** Watch any shared CLI in the org from any joined machine, with no inbound port on spokes. Interact works with a
+grant and owner consent.
+
+**Code:**
+
+- Gateway outbound mode:
+  - `Gateway/HubDialer.cs` receives `open-stream` (by way of the daemon''s `HubLink`, or the gateway''s own control
+    socket; decide in the phase) and dials `wss://hub/streams/attach/{streamId}`;
+  - it wraps that socket in the existing `TermBridge` and `StreamMasker` path, unchanged.
+- Hub `StreamRelay`:
+  - matches the viewer socket to the spoke socket by `streamId` (a 10 s rendezvous timeout);
+  - splices binary messages without re-encoding;
+  - enforces the level (it drops Input, Resize and TakeSize for watchers, as `TermBridge` does);
+  - rechecks access every 10 s and closes with 1008 on revoke.
+- Grants move to the hub:
+  - `term_grants` and `term_audit` live in the hub DB;
+  - `orchestrator gateway grant|revoke|grants|audit` call the hub when joined;
+  - the spoke''s `acl.json` (`TermGatewayAcl`) is written from the hub''s pushes, so the gateway''s own check stays in
+    place as defence in depth;
+  - each `open-stream` carries the hub''s signature over `{streamId, session, viewer, level, expires}`, which the spoke
+    verifies with the hub key it pinned at enrollment.
+- Owner consent for interact:
+  - on the first use of each grant, the spoke''s dashboard toasts "<viewer> wants to type into <tab>: Allow for <grant
+    span> / Deny", with the answer kept for that grant;
+  - with no answer in 30 s, the viewer gets watch only.
+- Compression: offered to watchers only. Interactive remote streams negotiate no deflate (the CRIME/BREACH note in
+  T934 and T935).
+- Team Wall: `ISessionDirectory` (Hub) lists `/org/sessions`. `GatewayClient` gains a hub base URL, and the tiles and
+  TermViewer `--remote` get a `--hub` form. Peer remotes are still listed beside them.
+
+**Protocol.**
+
+- Control: `open-stream` and `close-stream`.
+- Stream sockets: TermHost frames unchanged (TermProtocol 1 and 2), one frame per message.
+- The hub never synthesizes frames, except `Paused`, which already comes only from the gateway.
+
+**Migration.** `orchestrator hub import-grants` copies the host''s `term_grants` once. Existing peer-to-peer tokens are
+untouched.
+
+**Tests:**
+
+- Relay splice end to end in-process: hub, a fake spoke and a stub TermHost from the `--unlisted` smoke pattern.
+- A watcher''s input dropped at the hub *and* at the spoke.
+- An unshared session answers 404 through the hub.
+- A pause mid-stream gives a `Paused` frame.
+- A revoke closes within 10 s.
+- A consent timeout falls back to watch.
+- A wrong signature on `open-stream` is refused by the spoke.
+- No byte of a fake `sk-ant-` token reaches the viewer (the T935 smoke test, through the hub).
+
+**Risks.**
+
+- Latency through the relay: plus one RTT. For typing, that is fine under ~100 ms.
+- Hub bandwidth: about 36 KB/s for 12 working CLIs, with bursts to ~360 KB/s (the spike''s estimates), which is
+  trivial.
+- A later "direct when reachable" optimization (the Tailscale-style peer path) stays possible, because the peer gateway
+  still exists.
+
+**Effort.** 2 to 3 weeks.
+
+## Phase 4: shared tickets and leases
+
+**Goal.** Every joined spoke works the same queue with no double claims. Tickets Desktop and the hooks keep working from
+a local replica.
+
+**Code:**
+
+- Hub Tickets API over `TicketsDb`:
+  - `GET /tickets?since=<cursor>` (the replica feed);
+  - `POST /tickets/{id}/notes|status|assign|approve`;
+  - authorized by role and org.
+- The hub''s `IClaims` implementation:
+  - `Allocate.Next` runs **on the hub**, with the spoke''s reported `LoginRoom`s and allocate CLIs from the heartbeat;
+  - it writes `leases(ticket, member, device, login, session, lease_id, epoch, expires_utc, grace_until_utc)`,
+    `assignments` and `ticket_work` in one transaction (`TicketsDb`''s write lock).
+- Spoke:
+  - `NextCommand` in `Join` sends `claim` through `HubLink`, a local request over the daemon''s inbox, with a 10 s
+    timeout and a plain "hub unreachable: nothing claimed" message;
+  - worktree creation and `Dispatcher` stay local;
+  - renewals ride on the heartbeat;
+  - the ticket-close path sends `complete {leaseId, epoch, commit}`.
+- Replica: the spoke applies the feed into `data/Tickets.db` through `TicketsDb` (the file the hooks read with stdlib
+  sqlite3). Its local writes are refused in `Join` unless they come from the replica writer.
+- Git sync: `Daemon.SyncTicketsDbIfDue` and `SyncOrchestratorDbIfDue` are skipped when `Mode = Join`. Only the hub
+  machine syncs.
+- Cross-repo work in MindAttic.Tickets (its own ticket):
+  - a `TicketsDb` remote-writer hook, so the `tickets` CLI and Tickets Desktop write through the hub API when
+    `Join` is configured (read from the Orchestrator''s hub settings or its own);
+  - otherwise they are read-only with a clear message.
+
+**Protocol.**
+
+- `claim`, `lease-grant`, `renew` (on the heartbeat), `complete`, `release`, `lease-lost`.
+- `replica-delta {cursor, rows}`.
+
+**Lease rules (from `2-plan.md` §4.3):**
+
+- A lease lives 3 heartbeats.
+- An expired lease is held for the offline grace (`Hub.OfflineGraceMinutes`) before the ticket is queued again.
+- A stale epoch is refused.
+- A spoke told `lease-lost` stops that ticket''s subagent the way `AgentAbort` does, and keeps its worktree.
+
+**Migration.**
+
+- `hub import-tickets` points the hub''s `TicketsDb` at the host''s SQL Server database. Same machine, so it is a
+  config change, not a copy.
+- Joined spokes'' `data/Tickets.db` is rebuilt from the feed on first join, and the old file is kept as `.prejoin`.
+
+**Tests:**
+
+- Two fake spokes claim at once and get no duplicates.
+- A spoke going offline keeps its lease through the grace, then the ticket is requeued.
+- A stale-epoch complete is refused.
+- The replica converges after deltas are missed.
+- Hooks read the replica (the existing hook tests point at a replica file).
+- `Off` and `Host` still claim locally with today''s semantics, and the existing `Allocate` tests are unchanged.
+
+**Risks.** **The highest of any phase.**
+
+- Concurrency bugs in claims.
+- Tickets Desktop writing to a replica.
+- Moving git-sync ownership.
+
+Mitigations: ship dark; run `Host` mode on the main machine alone for a week, where leases are local but go through the
+hub; then add one remote spoke.
+
+**Effort.** 3 to 4 weeks, plus about 1 week in MindAttic.Tickets.
+
+## Phase 5: central policy and cross-machine dispatch
+
+**Goal.** The org''s pacing policy is set once and holds on every spoke. Work can be dispatched to a member''s machine
+that has opted in.
+
+**Code:**
+
+- Policy: `org limit`, `org allow`, `PaceTargetPercent`, `RepoOrgs` and the weekly reserve are written at the hub (the
+  CLI and Settings modal call the hub when joined) and pushed as `PolicySnapshot`.
+- `IPolicySource` (Hub) feeds `AccountPacer` and `TicketPins`.
+- With no snapshot, the spoke uses the defaults (`UsageCutoffs.Default*`).
+- Allowance split: when one login is live on more than one device, the hub divides the login''s subagent allowance by
+  active CLIs across the devices (the `SubagentShare` rule) and pushes `allowanceShare`. `AccountPacer` writes its
+  share into `rl-status.json`.
+- Remote dispatch:
+  - the hub sends `dispatch {ticket, login, prompt}` only to spokes with `Hub.AcceptDispatch = true`, a setting the
+    member sets on their own machine;
+  - the spoke runs the existing `Dispatcher` and Launcher path on its own login;
+  - the hub never turns `/allocate` on in any CLI.
+- Rebalance and failover:
+  - `AccountRebalancer` decisions that cross machines become hub reassignments of *tickets*, never moves of a CLI to
+    another person''s login (T681''s rule);
+  - API-key failover reassigns the ticket to the API-key person on a key-holder spoke (`Hub.KeyHolder = true`, set by
+    an admin);
+  - `ApiSpend` is reported by that spoke.
+
+**Protocol.** `policy` v1, `allowance-share`, `dispatch` and `dispatch-result`.
+
+**Migration.** `hub import-policy` copies `usage-cutoffs`, allowances and settings once.
+
+**Tests:**
+
+- The policy applies after a push.
+- An offline spoke falls back to the last policy, then to the defaults.
+- Two devices on one login split the allowance and never exceed it together.
+- Dispatch is refused to a spoke that didn''t opt in.
+- Failover never targets another person''s login.
+
+**Risks.** Policy lag. Hard stops use Claude''s own account-wide percent locally, so lag can only delay a *raised*
+allowance, never break a cutoff.
+
+**Effort.** 2 to 3 weeks.
+
+## Phase 6: hardening, deployment and the dedicated hub
+
+**Goal.** Run the hub off a member''s desktop and operate it safely.
+
+**Code and ops:**
+
+- `deploy.ps1` publishes `Hub`, and the gateway too (its publish was left out of T928).
+- Hub backup: the SQL Server and SQLite pattern in `DATA_STORES.md`.
+- A runbook for moving the hub to a dedicated tailnet box. Spokes re-pin by `hub join --rotate-pin`, signed by the old
+  key.
+- An optional cloud relay in front of the hub for members off the tailnet (Tailscale Funnel or an Azure container).
+  Same protocol.
+- Rate limits on `/enroll` and `/device/token`.
+- A device revocation UI in the dashboard.
+- A hub audit viewer.
+- Version-skew tests: spoke N-1 against hub N.
+- Chaos tests: hub kill, spoke sleep, clock skew.
+
+**Effort.** 1 to 2 weeks.
+
+## Order and total
+
+The phases run in order 0 → 1 → 2 → 3 → 4 → 5 → 6.
+
+- Phases 2 and 3 can run in parallel once 1 lands.
+- Phase 3 alone already delivers "everyone''s CLIs visible and shareable" across machines.
+- Phase 4 delivers "work their tickets" across machines.
+
+Total: about 12 to 17 weeks.
+
+## Proposed tickets (not filed; awaiting approval)
+
+| # | Phase | Ticket summary |
+|---|---|---|
+| 1 | 0 | Hub seams: `IClaims`, `IPolicySource`, `IMeterSink`, `IOrgDirectory`, `ISessionDirectory` with Local implementations over today''s code, plus `OrchestratorSettings.Hub` (Mode `Off` by default); no behaviour change |
+| 2 | 0 | `MindAttic.Orchestrator.Hub.Contracts`: a dependency-free library with `HubProtocol`, `HubEnvelope` and the payload records, with round-trip and version-skip tests |
+| 3 | 1 | `MindAttic.Orchestrator.Hub` service: Kestrel TLS, MindAttic.Authentication sign-in, a devices table, `/enroll`, `/device/token` and a `/spoke` WebSocket with hello, welcome and heartbeat |
+| 4 | 1 | Spoke `HubLink`: a CNG device key, a signed-challenge token, a reconnecting control socket, a `hub_outbox`, and a `HubLinkSupervisor` in the daemon |
+| 5 | 1 | `orchestrator hub host\|join\|status\|leave\|devices` and a dashboard hub chip; a `HubSupervisor` runs the hub in Host mode |
+| 6 | 2 | Presence and meters: spokes push CLIs, masked sessions, meter readings and agent summaries; the hub merges them per login and serves `/org/presence` and `/org/usage` |
+| 7 | 2 | Org view in the dashboard and `/org usage` across machines; remote people read-only; the hub is the store of record for members and orgs (`hub import-org`) |
+| 8 | 3 | Gateway outbound mode (`HubDialer`) and the hub `StreamRelay`: per-stream outbound sockets spliced to viewers, no inbound port on spokes |
+| 9 | 3 | Grants and audit at the hub, with signed `open-stream` decisions re-checked by the spoke''s gateway; `gateway grant\|revoke\|audit` go to the hub when joined |
+| 10 | 3 | Owner consent for interact: a first-use toast per grant on the owner''s machine, watch-only on timeout; no deflate on interactive remote streams |
+| 11 | 3 | Team Wall and TermViewer through the hub (`--hub`), listing org sessions beside peer remotes |
+| 12 | 4 | Hub Tickets API and replica feed; spokes keep `data/Tickets.db` as a hub-fed replica for the hooks; DB git sync only on the hub |
+| 13 | 4 | Ticket leases: claim, renew, complete and release with epoch fencing and offline grace; `orchestrator next --claim` goes through the hub when joined |
+| 14 | 4 | (MindAttic.Tickets) Write through the hub API when the machine has joined a hub; read-only with a clear message otherwise |
+| 15 | 5 | Central policy push (cutoffs, allowances, pace target, routing) with offline fallback to the last policy, then the defaults |
+| 16 | 5 | Per-login allowance split across devices when one Claude login is live on several machines |
+| 17 | 5 | Opt-in remote dispatch (`Hub.AcceptDispatch`) plus cross-machine rebalance and API-key failover to key-holder spokes only |
+| 18 | 6 | Hub deploy, backup, pin rotation, revocation UI, rate limits, an optional cloud relay, and version-skew and chaos tests |', '2026-10-27T16:13:45Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1146', 'The user (2026-10-27): ''make this an epic with all tickets underneath it and approve the tickets but not the epic; so none of them can start until the epic is started''. Today a requires link waits until its target closes, so children requiring their epic would wait forever. Rule: a requires link whose target carries the ''epic'' label is satisfied once that epic is approved (started), not closed; an ''epic''-labelled ticket is never queued as work; it closes when its children are done. First user: EPIC M.ORCH-T1145 (hub and spoke) and its 18 children.', '2026-10-27T16:22:18Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1147', 'The user (2026-10-27): ''separate the joined Tickets and Orchestrator deployments together, that was a bad idea they should both be able to deploy independently of each other''. Remove the sibling chain (M.ORCH-T832/T1100) from deploy.ps1, MINDATTIC_DEPLOY_CHAIN included, and its tests; Tickets'' own deploy.ps1 gets the same change under its own ticket.', '2026-10-27T16:22:30Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T833', 'Symptom: Inside the Orchestrator''s embedded Terminals panel (TerminalPanesHost), when a CLI running
 in a pane shows an interactive, arrow-key-driven menu (e.g. a selection list or permission prompt),
 the Up/Down/Left/Right keys don''t reach the CLI. It looks like the WPF app is intercepting/consuming
@@ -32782,12 +36014,7 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T859'
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T860', 'Symptom: the 5-hour and weekly percent meters only update on the dashboard''s poll interval, so they read out of date between refreshes. Ask: replace (or supplement) the polling refresh with a push -- the pace ledger / daemon notifies the dashboard the moment a new reading lands, and the UI updates immediately off that message rather than waiting for its next poll tick. Acceptance: every percent shown on screen reflects the latest known reading as soon as it''s available, not up to one poll interval stale.', '2026-10-26T02:25:10Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T171', 'MainWindow.xaml had ~36 lines of double-encoded UTF-8 (e.g. Content="Rejectâ€¦" instead of "Reject…"), decoded back to the correct code points (verified the cp1252->UTF-8 round trip recovers the original characters) and rewritten in place. Confirmed via repo-wide grep that no other source file carries the same corruption, and data/Tickets.sql''s ''â€™''/''â€”'' occurrences are historical ticket text quoting an unrelated Orchestrator encoding bug (M.ORCH-T708/T695), not corruption here. Separately, Theme/Styles.xaml hardcoded FontFamily="Segoe MDL2 Assets" for the ComboBox dropdown chevron (&#xE70D;) and CheckBox checkmark (&#xE73E;), which renders as an empty box (tofu) when that font isn''t present; added "Segoe Fluent Icons, Segoe MDL2 Assets" as a fallback list since both fonts share these glyph code points.', '2026-10-27T14:35:45Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T172', 'Replaces the old Test-Stale (installed exe vs. source file mtimes) with: fetch origin, pick the newer of main/origin-main (origin-main when diverged, warning if main has unpushed build-input changes), stamp staleness by the git tree ids of the build inputs at that commit (so a ticket-db sync doesn''t trigger a republish), and dotnet publish from a temporary --detach worktree of that commit (cleaned up in a finally), so a dirty working tree or stale bin/obj never reach the install.', '2026-10-27T15:22:15Z');
-INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T173', 'Part of the epic tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError (hub and spoke), plan ticket 14 of 18, phase 4. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T173', 'Part of the epic M.ORCH-T1145 (hub and spoke), plan ticket 14 of 18, phase 4. It waits for the epic to be started (approved) and for the phase before it. The whole plan is in tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
 At line:5 char:10
 + $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
 +          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -32860,9 +36087,13 @@ a local replica.
 Mitigations: ship dark; run `Host` mode on the main machine alone for a week, where leases are local but go through the
 hub; then add one remote spoke.
 
-**Effort.** 3 to 4 weeks, plus about 1 week in MindAttic.Tickets.', '2026-10-27T16:07:14Z');
+**Effort.** 3 to 4 weeks, plus about 1 week in MindAttic.Tickets.', '2026-10-27T16:21:28Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T174', 'The user (2026-10-27): ''they should both be able to deploy independently of each other''. Remove the chain back to the Orchestrator''s deploy.ps1 (and MINDATTIC_DEPLOY_CHAIN). The Orchestrator side is M.ORCH-T1147.', '2026-10-27T16:22:34Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('MAT-T65', 'The user (2026-10-27): ''NO! always same worktree/branch'', ''never ever EVER make separate branches'', ''ALWAYS LAYER CODE ON TOP; this is a GOLDEN RULE'', ''write it globally''. Written into MINDATTIC_AGENT.md (local, untracked), mindattic-agent-standard/AGENTS.md (Branches) and shared/commands/test.md (fix subagents no longer get their own worktrees).', '2026-10-27T15:00:11Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('MAT-T66', 'The user (2026-10-27): ''Make sure any request becomes a new ticket, or is appended to an existing ticket so that every action that writes code in the system is aligned to a ticket GLOBAL GOLDEN RULE''. Written into MINDATTIC_AGENT.md (local) and mindattic-agent-standard/AGENTS.md.', '2026-10-27T15:24:35Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('MAT-T67', 'The user (2026-10-27): refactor all deploy.ps1 and deploy.bat in all MindAttic projects to have a Menu that says 1.) Deploy & Run 2.) Run - so double-clicking the desktop icon lets them choose, before it copies over the whole version, whether to redeploy or just run the deployed app. Covers each repo''s deploy.ps1 and the launcher .bat it generates in C:\Apps (and repo-root deploy.bat for the Unity/REA repos). Step 1 of 3.', '2026-10-27T16:16:10Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('MAT-T68', 'The user (2026-10-27): rename every deploy.ps1 to run.ps1 and every deploy.bat to run.bat. Includes the generated C:\Apps launchers and references (the global /deploy router, MindAttic.Deploy/Launcher, docs). Existing run.bat files that would collide get a different name first. Step 2 of 3; requires step 1.', '2026-10-27T16:16:14Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('MAT-T69', 'The user (2026-10-27): update the Desktop shortcuts for all MindAttic shortcuts after the deploy -> run rename. Step 3 of 3; requires step 2.', '2026-10-27T16:16:18Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T206', 'RB-T172 verified in the editor (sm_hub_1, sm_pier_1, sp_soc_2): pedlight_flash, lightbar, arcade screens and oilriga frames on g_tColor; blackwater water_normal frames on g_tNormal; sewer_water and surf offsets; fire_pallet selfillum flicker; clouds.vmat g_vTexCoordScrollSpeed 0.043,0.025. Not reachable from the maps imported so far: clublight, TV screens, highlights. Import a map that uses them, play, read the attributes with sbox-cli run_csharp.', '2026-10-26T05:18:06Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T207', 'Left out of RB-T193 (the werewolf''s hint navigation), all in vampire.dll''s CNPC_VWerewolf:
 
@@ -33101,6 +36332,8 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1141', 'hub
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1142', 'hub-and-spoke', '2026-10-27T16:07:42Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1143', 'hub-and-spoke', '2026-10-27T16:07:55Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1144', 'hub-and-spoke', '2026-10-27T16:08:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1145', 'epic', '2026-10-27T16:14:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1145', 'hub-and-spoke', '2026-10-27T16:14:01Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.TIX-T173', 'hub-and-spoke', '2026-10-27T16:07:23Z');
 
 -- repo_renames
@@ -34414,258 +37647,89 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.MDIA-T5', 'M.TIX-T14',
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1057', 'M.PSST-T25', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1070', 'M.ORCH-T854', 'duplicates', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1070', 'M.ORCH-T879', 'duplicates', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1128', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1128', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1129', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1129', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1128', 'M.ORCH-T1145', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1128', 'M.ORCH-T1145', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1129', 'M.ORCH-T1145', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1129', 'M.ORCH-T1145', 'requires', 'waits for the epic to start');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1130', 'M.ORCH-T1128', 'requires', 'phase 0 before phase 1');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1130', 'M.ORCH-T1129', 'requires', 'phase 0 before phase 1');
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1130', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1130', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1130', 'M.ORCH-T1145', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1130', 'M.ORCH-T1145', 'requires', 'waits for the epic to start');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1131', 'M.ORCH-T1128', 'requires', 'phase 0 before phase 1');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1131', 'M.ORCH-T1129', 'requires', 'phase 0 before phase 1');
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1131', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1131', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1131', 'M.ORCH-T1145', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1131', 'M.ORCH-T1145', 'requires', 'waits for the epic to start');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1132', 'M.ORCH-T1128', 'requires', 'phase 0 before phase 1');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1132', 'M.ORCH-T1129', 'requires', 'phase 0 before phase 1');
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1132', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1132', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1132', 'M.ORCH-T1145', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1132', 'M.ORCH-T1145', 'requires', 'waits for the epic to start');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1133', 'M.ORCH-T1130', 'requires', 'phase 1 before phase 2');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1133', 'M.ORCH-T1131', 'requires', 'phase 1 before phase 2');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1133', 'M.ORCH-T1132', 'requires', 'phase 1 before phase 2');
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1133', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1133', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1133', 'M.ORCH-T1145', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1133', 'M.ORCH-T1145', 'requires', 'waits for the epic to start');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1134', 'M.ORCH-T1130', 'requires', 'phase 1 before phase 2');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1134', 'M.ORCH-T1131', 'requires', 'phase 1 before phase 2');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1134', 'M.ORCH-T1132', 'requires', 'phase 1 before phase 2');
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1134', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1134', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1134', 'M.ORCH-T1145', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1134', 'M.ORCH-T1145', 'requires', 'waits for the epic to start');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1135', 'M.ORCH-T1130', 'requires', 'phase 1 before phase 3');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1135', 'M.ORCH-T1131', 'requires', 'phase 1 before phase 3');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1135', 'M.ORCH-T1132', 'requires', 'phase 1 before phase 3');
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1135', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1135', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1135', 'M.ORCH-T1145', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1135', 'M.ORCH-T1145', 'requires', 'waits for the epic to start');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1136', 'M.ORCH-T1130', 'requires', 'phase 1 before phase 3');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1136', 'M.ORCH-T1131', 'requires', 'phase 1 before phase 3');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1136', 'M.ORCH-T1132', 'requires', 'phase 1 before phase 3');
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1136', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1136', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1136', 'M.ORCH-T1145', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1136', 'M.ORCH-T1145', 'requires', 'waits for the epic to start');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1137', 'M.ORCH-T1130', 'requires', 'phase 1 before phase 3');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1137', 'M.ORCH-T1131', 'requires', 'phase 1 before phase 3');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1137', 'M.ORCH-T1132', 'requires', 'phase 1 before phase 3');
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1137', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1137', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1137', 'M.ORCH-T1145', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1137', 'M.ORCH-T1145', 'requires', 'waits for the epic to start');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1138', 'M.ORCH-T1130', 'requires', 'phase 1 before phase 3');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1138', 'M.ORCH-T1131', 'requires', 'phase 1 before phase 3');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1138', 'M.ORCH-T1132', 'requires', 'phase 1 before phase 3');
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1138', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1138', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1138', 'M.ORCH-T1145', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1138', 'M.ORCH-T1145', 'requires', 'waits for the epic to start');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1139', 'M.ORCH-T1133', 'requires', 'phase 2 before phase 4');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1139', 'M.ORCH-T1134', 'requires', 'phase 2 before phase 4');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1139', 'M.ORCH-T1135', 'requires', 'phase 3 before phase 4');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1139', 'M.ORCH-T1136', 'requires', 'phase 3 before phase 4');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1139', 'M.ORCH-T1137', 'requires', 'phase 3 before phase 4');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1139', 'M.ORCH-T1138', 'requires', 'phase 3 before phase 4');
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1139', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1139', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1139', 'M.ORCH-T1145', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1139', 'M.ORCH-T1145', 'requires', 'waits for the epic to start');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1140', 'M.ORCH-T1133', 'requires', 'phase 2 before phase 4');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1140', 'M.ORCH-T1134', 'requires', 'phase 2 before phase 4');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1140', 'M.ORCH-T1135', 'requires', 'phase 3 before phase 4');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1140', 'M.ORCH-T1136', 'requires', 'phase 3 before phase 4');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1140', 'M.ORCH-T1137', 'requires', 'phase 3 before phase 4');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1140', 'M.ORCH-T1138', 'requires', 'phase 3 before phase 4');
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1140', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1140', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1140', 'M.ORCH-T1145', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1140', 'M.ORCH-T1145', 'requires', 'waits for the epic to start');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1141', 'M.ORCH-T1139', 'requires', 'phase 4 before phase 5');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1141', 'M.ORCH-T1140', 'requires', 'phase 4 before phase 5');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1141', 'M.ORCH-T1145', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1141', 'M.ORCH-T1145', 'requires', 'waits for the epic to start');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1141', 'M.TIX-T173', 'requires', 'phase 4 before phase 5');
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1141', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1141', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1142', 'M.ORCH-T1139', 'requires', 'phase 4 before phase 5');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1142', 'M.ORCH-T1140', 'requires', 'phase 4 before phase 5');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1142', 'M.ORCH-T1145', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1142', 'M.ORCH-T1145', 'requires', 'waits for the epic to start');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1142', 'M.TIX-T173', 'requires', 'phase 4 before phase 5');
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1142', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1142', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1143', 'M.ORCH-T1139', 'requires', 'phase 4 before phase 5');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1143', 'M.ORCH-T1140', 'requires', 'phase 4 before phase 5');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1143', 'M.ORCH-T1145', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1143', 'M.ORCH-T1145', 'requires', 'waits for the epic to start');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1143', 'M.TIX-T173', 'requires', 'phase 4 before phase 5');
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1143', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1143', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1144', 'M.ORCH-T1141', 'requires', 'phase 5 before phase 6');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1144', 'M.ORCH-T1142', 'requires', 'phase 5 before phase 6');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1144', 'M.ORCH-T1143', 'requires', 'phase 5 before phase 6');
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1144', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1144', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1144', 'M.ORCH-T1145', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1144', 'M.ORCH-T1145', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1145', 'M.ORCH-T1127', 'implements', 'the plan this epic carries');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T13', 'M.ORCH-T40', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T180', 'M.TIX-T65', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T181', 'M.COMP-T11', 'requires', NULL);
@@ -34800,18 +37864,8 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T173', 'M.ORCH-T11
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T173', 'M.ORCH-T1136', 'requires', 'phase 3 before phase 4');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T173', 'M.ORCH-T1137', 'requires', 'phase 3 before phase 4');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T173', 'M.ORCH-T1138', 'requires', 'phase 3 before phase 4');
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T173', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T173', 'tickets : warning: 1 open ticket(s) read like this one; filing it anyway:
-At line:5 char:10
-+ $epic = (tickets ticket new --repo MindAttic.Orchestrator --type feat ...
-+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: 1 open...ling it anyway::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError', 'requires', 'waits for the epic to start');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T173', 'M.ORCH-T1145', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T173', 'M.ORCH-T1145', 'requires', 'waits for the epic to start');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T20', 'M.TIX-T18', 'supersedes', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T20', 'M.TIX-T19', 'supersedes', 'migrated: superseded by in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T23', 'M.TIX-T27', 'related', NULL);
@@ -34939,6 +37993,8 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAT-T4', 'M.SCHD-T2', 'r
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAT-T40', 'MAT-T38', 'supersedes', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAT-T49', 'M.LNCH-T74', 'requires', 'MAT-T49''s regenerate-after-Cryptography-fix step needs M.LNCH-T74 done first');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAT-T60', 'M.ORCH-T879', 'related', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAT-T68', 'MAT-T67', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAT-T69', 'MAT-T68', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAU-T11', 'MAU-T12', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MB-T12', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MB-T2', 'MB-US-F1', 'implements', 'migrated: story named in ticket');
