@@ -16,8 +16,7 @@
 .PARAMETER SkipCli
   Don't reinstall the tickets CLI global tool.
 .PARAMETER Republish
-  Publish even when nothing looks changed, like -Force, but without forcing the chained Orchestrator deploy (the
-  launcher's Deploy & Run uses it).
+  Publish even when nothing looks changed, like -Force (the launcher's Deploy & Run uses it).
 .PARAMETER LauncherOnly
   Only write the launcher and point the shortcuts at it, then exit: nothing is fetched, built, stopped or installed.
 #>
@@ -193,26 +192,4 @@ if (-not $SkipCli) {
 
 Write-Host "Installed $exe"
 if ($Launch) { Start-Process $exe }
-
-# Deploying Tickets also deploys Orchestrator (its run.ps1 does the same back here).
-# MINDATTIC_DEPLOY_CHAIN stops Tickets -> Orchestrator -> Tickets from looping.
-if (-not $env:MINDATTIC_DEPLOY_CHAIN) {
-  $orchDeploy = Join-Path $repo '..\MindAttic.Orchestrator\run.ps1'
-  # deploy.ps1: an Orchestrator checkout from before the deploy -> run rename (MAT-T68).
-  if (-not (Test-Path $orchDeploy)) { $orchDeploy = Join-Path $repo '..\MindAttic.Orchestrator\deploy.ps1' }
-  if (Test-Path $orchDeploy) {
-    Write-Host "Deploying MindAttic.Orchestrator too ($orchDeploy)..."
-    $chainArgs = @{}
-    if ($Force) { $chainArgs['Force'] = $true }
-    $env:MINDATTIC_DEPLOY_CHAIN = '1'
-    try {
-      & $orchDeploy @chainArgs
-      if ($LASTEXITCODE -ne 0) { throw "MindAttic.Orchestrator deploy failed (exit code $LASTEXITCODE)" }
-      Write-Host "MindAttic.Orchestrator deployed"
-    } finally {
-      Remove-Item Env:\MINDATTIC_DEPLOY_CHAIN -ErrorAction SilentlyContinue
-    }
-  } else {
-    Write-Host "MindAttic.Orchestrator checkout not found at $orchDeploy; skipping its deploy."
-  }
-}
+# Tickets deploys on its own: it no longer chains into MindAttic.Orchestrator's deploy, nor it into this one (M.TIX-T174).
