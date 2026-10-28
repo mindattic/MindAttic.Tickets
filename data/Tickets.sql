@@ -5442,7 +5442,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T122', 'MindAttic.Components', 122, '2026-10-27', 'feature', 'open', 'Component spec format: one spec per component (name, MindAttic.Components.Tokens styling, visual states, editable properties and events) as the single source for its Web, Blazor and WPF siblings', '—', 121, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T123', 'MindAttic.Components', 123, '2026-10-27', 'feature', 'open', 'Component generator: from each spec, emit the shared HTML/CSS/JS used by MindAttic.Components.Web and the WPF control (XAML + code-behind) in MindAttic.Components.Wpf with the same look, states and properties; the build fails when any sibling drifts from its spec', '—', 122, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T124', 'MindAttic.Components', 124, '2026-10-27', 'feature', 'open', 'MindAttic.Components.Blazor (Razor class library): thin .razor wrappers over the generated shared markup and CSS, exposing the spec''s properties as parameters and its events as EventCallbacks, with no second copy of the markup', '—', 123, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T125', 'MindAttic.Components', 125, '2026-10-27', 'feature', 'open', 'Bring every component Orchestrator.Desktop and Tickets.Desktop use under a spec, so each has generated Web, Blazor and WPF siblings that stay in sync', '—', 124, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T125', 'MindAttic.Components', 125, '2026-10-27', 'feature', 'open', 'Sign-off: every Ma* component and style Orchestrator and Tickets use is spec''d (M.COMP-T138..T143) with generated or surface-checked Web, Blazor and WPF siblings, the parity harness green, and Tokens, Mvvm, Wpf and Blazor published as their v2 majors', '—', 124, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T126', 'MindAttic.Components', 126, '2026-10-27', 'fix', 'open', 'MaPickerTests.Up_Down_Home_and_End_change_the_choice_while_it_stays_closed and MaHyperlinkTests.Keyboard_focus_underlines_the_link_and_losing_it_removes_the_underline fail on main: keyboard-focus assertions come back false (found by /tests)', '—', 125, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T127', 'MindAttic.Components', 127, '2026-10-27', 'docs', 'open', 'Components v2 design record (docs/design/v2-components.md): tokens, spec, generator, siblings and the WPF compatibility contract', '—', 126, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T128', 'MindAttic.Components', 128, '2026-10-27', 'chore', 'open', 'Add global.json pinning the .NET SDK band 10.0.2xx (rollForward latestFeature) so Components.Blazor and the generator build on the same SDK as the apps', '—', 127, NULL);
@@ -6921,15 +6921,15 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1194', 'MindAttic.Orchestrator', 1194, '2026-10-27', 'feature', 'closed', 'Show subagent-slot load (lambda) on each person''s tab, alongside 5hr/wk', '3cd2d0f', 1193, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1195', 'MindAttic.Orchestrator', 1195, '2026-10-27', 'chore', 'closed', 'Cut v1: let in-flight tickets land, commit the remaining outstanding changes, and tag v1.0.0 so everything after it is v2', 'tag v1.0.0 = 58736702; full suites: Orchestrator 2262/2264 then fixed (T1183, T1202), Tickets 421/421; Orchestrator and Tickets redeployed and checked live', 1194, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1196', 'MindAttic.Orchestrator', 1196, '2026-10-27', 'feature', 'open', 'MAUI & RELAY', '—', 1195, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1197', 'MindAttic.Orchestrator', 1197, '2026-10-27', 'chore', 'open', 'Move the non-UI logic still inside the WPF view models into MindAttic.Orchestrator.Core, so the WPF and Maui shells share one engine', '—', 1196, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1197', 'MindAttic.Orchestrator', 1197, '2026-10-27', 'chore', 'open', 'Move the dashboard view models (MainViewModel partials, TerminalsViewModel, SettingsViewModel, RepoTileViewModel, Palette, Queue) and MainWindow/App code-behind logic (status-stream and app-bus subscriptions, refresh and TermHost-resync timers, PaneBroker, session restore, tab sizing) into MindAttic.Orchestrator.Presentation; brushes become tones and the WPF views bind unchanged', '—', 1196, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1198', 'MindAttic.Orchestrator', 1198, '2026-10-27', 'feature', 'open', 'Scaffold MindAttic.Orchestrator.Desktop.Maui (.NET MAUI Blazor Hybrid, Windows) producing MindAttic.Orchestrator.Desktop.Maui.exe on Orchestrator.Core and MindAttic.Components.Blazor, beside the WPF exe', '—', 1197, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1199', 'MindAttic.Orchestrator', 1199, '2026-10-27', 'feature', 'open', 'Port every Orchestrator.Desktop screen to the Maui shell at exact WPF parity (same look, same editable settings), screen by screen', '—', 1198, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1199', 'MindAttic.Orchestrator', 1199, '2026-10-27', 'feature', 'open', 'Sign-off: every Orchestrator.Desktop screen is ported to the Maui shell at WPF parity (M.ORCH-T1227..T1233), with the binding-coverage, library-only Razor and screen-parity gates green', '—', 1198, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1200', 'MindAttic.Orchestrator', 1200, '2026-10-27', 'chore', 'open', 'run.ps1 publishes and deploys both Orchestrator desktop exes (WPF and Maui) side by side', '—', 1199, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1201', 'MindAttic.Orchestrator', 1201, '2026-10-27', 'feature', 'open', 'Both Maui shells join the app bus over MindAttic.Relay (open a ticket, show its worker) and interoperate with the WPF shells', '—', 1200, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1201', 'MindAttic.Orchestrator', 1201, '2026-10-27', 'feature', 'open', 'Move the shared Presentation app-bus clients onto MindAttic.Relay, so all four shells (WPF and Maui of Orchestrator and Tickets) use it, with the named-pipe bus kept as a permanent fallback (nothing depends on Relay to keep working); open-ticket and show-worker still reach exactly one shell', '—', 1200, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1202', 'MindAttic.Orchestrator', 1202, '2026-10-27', 'fix', 'closed', 'Toast_dots_are_bound_to_the_view_models_toast_list_and_open_command expects Style NotificationDot but the dots are MaToolButton since T1186 (found by /tests)', '58736702; LibraryControlsTests.Toast_dots_are_bound_to_the_view_models_toast_list_and_open_command', 1201, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1203', 'MindAttic.Orchestrator', 1203, '2026-10-27', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.LibraryControlsTests.Toast_dots_are_bound_to_the_view_models_toast_list_and_open_command — Assert.That((string?)button.Attribute("Style"), Is.EqualTo("{StaticResource NotificationDot}")) Expected string length 32 but was 29. Strings differ at index 16. Expected: "{StaticResource NotificationDot}" But was: "{StaticResource MaToolButton}" ---------------------------^ (landed on main since the last green run: tickets M.ORCH-T1165, M.ORCH-T1173, M.ORCH-T1181, M.ORCH-T1177, M.ORCH-T1194, M.ORCH-T1191, M.ORCH-T1188, M.ORCH-T1178, M.ORCH-T1180, M.ORCH-T1190, M.ORCH-T1189, M.ORCH-T1167, M.ORCH-T1185, M.ORCH-T1171, M.ORCH-T1187, M.ORCH-T1093, M.ORCH-T1174, M.ORCH-T1192, M.ORCH-T1169, M.ORCH-T1176 in 52de43e8 Wheel over an unfocused CLI terminal scrolls its own scrollback; off a terminal the page scrolls as before (M.ORCH-T1165); 36c179d2 TabActivity doc: idle is a gray zzz box, busy a green play-arrow box (M.ORCH-T1173); e21d16d5 Gutter test: the toast row now scrolls with the body (folded into the utilization header by T1167/T1180) (M.ORCH-T1181); 25dfa4ae Prune ended CLI tabs after 24 hours so an inactive member''s page stops piling up dead tabs (M.ORCH-T1177); 3cd2d0f8 Person tabs show a third figure, Î»: Z%, next to 5hr/wk (M.ORCH-T1194); 8d6aeb19 Band the 5hr/weekly limit boxes'' figures and bars by the raw percentage (M.ORCH-T1191); e5d64c2e Tab status badges (zzz/play/?) use MaOnAccent for their text instead of a hardcoded Foreground=White, so the library''s own accent-fill text colour stays theme-aware in light and dark/high-contrast (M.ORCH-T1188); 29acd379 Shared-checkout commit-by-path (M.ORCH-T1178); 0a285cd3 Exempt the capped ToastDots notification strip from Every_body_is_one_virtualized_list: M.ORCH-T1180 merged it into the limit-box header row, nesting it inside AgentsBody for the first time, but it''s bounded by MaxToasts and was never one of VirtualizedBody''s managed rows (M.ORCH-T1190); 77e389cd Update TabStatusTests'' tab-strip assertions to match M.ORCH-T1173''s boxed status badges (TabIdleBadge/TabBusyBadge/TabAskingBadge bound to ShowsIdleBadge/ShowsBusyBadge/TabNeedsYou) instead of the plain icon TextBlocks it was still pinned to (M.ORCH-T1189); ed3bf99b Update LibraryControlsTests for the notification-dot redesign instead of the old McToastHost row, since M.ORCH-T1167/T1180 deliberately replaced it and the test was simply stale (M.ORCH-T1185); 70640253 Update the stale direct-parent check for TerminalTabs to an ancestor check: M.ORCH-T1171 wrapped it in a scroller row (ScrollViewer) inside TerminalsPanel for no-wrap overflow, so its immediate parent is now that ScrollViewer rather than TerminalsPanel itself, but it still lives inside the panel (M.ORCH-T1187); 9e885465 Test asserts one Closed and one Open ticket for the test name instead of Single(), since M.ORCH-T1093''s fix correctly leaves a stale closed ticket alongside a freshly filed one (M.ORCH-T1174); 460ebcc3 A failed Launcher-respawn attempt permanently disables it for that login: launchersOpened was marked before the open succeeded and never cleared on failure, so every later refresh''s retry skipped that login forever (M.ORCH-T1192); 0d8d6bed Merge the notification badges into the 5hr/weekly limit boxes'' row, above the title (M.ORCH-T1180); 620e0364 CLI tabs only as wide as their longest tab, no wrap, with the same overflow arrows as the login tabs (M.ORCH-T1171); cfecd6a6 fix: let the utilization chart''s bottom labels clear the status footer (M.ORCH-T1169); d0f476dc Drop the CLI tab''s own ''[Claude]'' label and update the tests that pinned the old generated title (M.ORCH-T1176); f46947f8 Drop the ''[Claude]'' suffix from a generated tab title: every tab was one until other providers are told apart some other way (icons, once they''re further along); a non-Claude provider keeps its bracket (M.ORCH-T1176); dfb07815 Stack notifications as hoverable circles on the dashboard''s right edge (M.ORCH-T1167))', 'passes on main@19b11cc', 1202, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1204', 'MindAttic.Orchestrator', 1204, '2026-10-27', 'feature', 'closed', 'SessionStart banner reports this CLI''s crossrepo on/off state alongside pacing and allocation', 'HookScriptTests: SessionStart_reports_this_clis_pacing_and_allocation_after_the_billing_line', 1203, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1205', 'MindAttic.Orchestrator', 1205, '2026-10-27', 'chore', 'open', 'Rename MindAttic.Orchestrator.Desktop.exe to MindAttic.Orchestrator.Desktop.Wpf.exe', '—', 1204, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1205', 'MindAttic.Orchestrator', 1205, '2026-10-27', 'chore', 'open', 'Rename MindAttic.Orchestrator.Desktop.exe to MindAttic.Orchestrator.Desktop.Wpf.exe, leaving a small forwarding MindAttic.Orchestrator.Desktop.exe (as LegacyExeName does today) and updating Installer, run.ps1, the DashboardWindow process lookup, the extraction pruner, InstallerTests, README and docs; single-instance and pipe names stay unchanged', '—', 1204, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1206', 'MindAttic.Orchestrator', 1206, '2026-10-27', 'fix', 'closed', 'Tab status badges (zzz/play/?) render at inconsistent box sizes across tabs; normalize to one common size', '2f7d198c', 1205, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1207', 'MindAttic.Orchestrator', 1207, '2026-10-27', 'fix', 'closed', 'Global login''s tab ("my") reads 5hr/wk/lambda stuck at 0% while the per-account tab (Honey) shows live non-zero usage', '6aa6d758', 1206, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1208', 'MindAttic.Orchestrator', 1208, '2026-10-27', 'feature', 'closed', 'Default CLI pane height in a CLI tab: 50% of window height, floor 500px', '6782bbe6', 1207, NULL);
@@ -6965,6 +6965,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1238', 'MindAttic.Orchestrator', 1238, '2026-10-27', 'feature', 'open', 'Keep WPF and Maui in sync from now on: an AgentGate commit check (Orchestrator and Tickets) that refuses a commit changing one shell''s views without the other''s unless the ticket carries a single-shell label with a reason, the agent standard stating ''every UI ticket lands in Presentation + WPF + Razor in one commit'', and the feature ticket template gaining a ''Shells: both'' line', '—', 1237, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1239', 'MindAttic.Orchestrator', 1239, '2026-10-27', 'docs', 'open', 'Contributor guide for both apps: how to add a screen, setting or command so it lands in both shells (Presentation view model → WPF view → Razor view → keymap → fixture → parity tests), linked from both READMEs', '—', 1238, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1240', 'MindAttic.Orchestrator', 1240, '2026-10-27', 'chore', 'open', 'Release v2.0.0: /test green in Components, Tickets and Orchestrator; both shells of both apps deployed side by side and checked live (open ticket, show worker, terminals, settings round-trip, WPF-only machine unchanged); tag v2.0.0 in Orchestrator and Tickets; README and docs updated', '—', 1239, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1241', 'MindAttic.Orchestrator', 1241, '2026-10-27', 'fix', 'open', 'Fails on main: MindAttic.Orchestrator.Tests.SettingsModalTests.Settings_fills_80_percent_of_its_container — Assert.That(code, Does.Contain("Root.SizeChanged += (_, _) => SizeSettings();")) Expected: String containing "Root.SizeChanged += (_, _) => SizeSettings();" But was: "using System.Collections.Specialized; using System.Runtime.InteropServices; using System.Windows; using System.Windows.Automation;... (landed on main since the last green run: tickets M.ORCH-T1209, M.ORCH-T1208, M.ORCH-T1206 in 1ffc369d Drop the terminal pane''s redundant bottom margin, doubling the gutter before the body (M.ORCH-T1209); 6782bbe6 Default CLI pane height: half the window''s height, floored at 500px (M.ORCH-T1208); 2f7d198c Tab status badges get a fixed footprint so the tab strip doesn''t jitter (M.ORCH-T1206))', 'main@084a4bf', 1240, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T1', 'MindAttic.Psst', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.PSST-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T2', 'MindAttic.Psst', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for ContactBook (Contacts/Contact.cs): Find matches name case-insensitively before phone, falls back to 10-digit phone match across formats (+1, dashes, parens), returns null for blank or unmatched input; WithAdded rejects blank name/phone and case-insensitive duplicate names and leaves the original book unchanged; WithoutContact removes only the first case-insensitive match and returns null when absent - this is how psst sms resolves recipients, so a wrong match texts the wrong person', '865fde2', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T3', 'MindAttic.Psst', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched', '—', 2, '| M.PSST-T3 | 2026-10-14 | chore | open | NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched | — |');
@@ -7042,7 +7043,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T19', 'MindAttic.Scheduler', 19, '2026-10-21', 'docs', 'closed', 'Update USER_STORIES.md', '—', 18, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T20', 'MindAttic.Scheduler', 20, '2026-10-22', 'docs', 'closed', 'Update USER_STORIES.md', '—', 19, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T21', 'MindAttic.Scheduler', 21, '2026-10-24', 'docs', 'closed', 'Update USER_STORIES.md', '—', 20, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T22', 'MindAttic.Scheduler', 22, '2026-10-25', 'chore', 'open', 'Point the Orchestrator.Daemon job (jobs.json, install.Tests.ps1, SCHEDULED_TASK_AUDIT.md) at C:\Apps\MindAttic.Orchestrator\MindAttic.Orchestrator.Desktop.exe after the Orchestrator dashboard exe rename (M.ORCH-T844)', '—', 21, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T22', 'MindAttic.Scheduler', 22, '2026-10-25', 'chore', 'open', 'Point the Orchestrator.Daemon job (jobs.json, install.Tests.ps1, SCHEDULED_TASK_AUDIT.md) at C:\Apps\MindAttic.Orchestrator\MindAttic.Orchestrator.Daemon.exe once the daemon has its own exe (M.ORCH-T1216); the old path keeps working through the forwarder', '—', 21, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T23', 'MindAttic.Scheduler', 23, '2026-10-25', 'fix', 'open', 'Start the Orchestrator dashboard by its new name MindAttic.Orchestrator.Desktop.exe (M.ORCH-T844 renamed it; the old MindAttic.Orchestrator.exe is only kept as a legacy fallback)', '—', 22, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TELE-T1', 'MindAttic.Telemetry', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.TELE-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TELE-T2', 'MindAttic.Telemetry', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for TelemetryReader edge cases (TelemetryReader.cs): Read skips blank lines, parses kind case-insensitively, yields null Name when name is missing or null, keeps the seq=-1 recovered SessionEnd; Flatten carries _turnIndex/_wave/_accepted from the turn, skips turns with no events array or a non-object payload, unwraps ints as long, non-integers as double, nested objects/arrays as JsonElement - analysis scripts depend on this flattening being stable', 'cc04c1b', 1, NULL);
@@ -7282,11 +7283,11 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T221', 'MindAttic.Tickets', 221, '2026-10-27', 'chore', 'open', 'Run a screen-reader (NVDA) pass specifically on the new epic tree and dependency chips', '—', 220, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T222', 'MindAttic.Tickets', 222, '2026-10-27', 'fix', 'open', 'Audit icon-only buttons for a missing AutomationProperties.Name', '—', 221, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T223', 'MindAttic.Tickets', 223, '2026-10-27', 'fix', 'closed', 'Fails on main: MindAttic.Tickets.Desktop.Tests.ActivityFeedTests.An_agent_closing_a_ticket_toasts_who_closed_what_and_opening_the_toast_shows_the_ticket — Assert.That(model.Detail?.Id, Is.EqualTo("BE-T1")) Expected: "BE-T1" But was: null (landed on main since the last green run: tickets M.TIX-T174 in 7e8ccd3 Tickets deploys on its own: run.ps1 no longer chains into MindAttic.Orchestrator''s deploy (M.TIX-T174))', 'passes on main@5a02c02', 222, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T224', 'MindAttic.Tickets', 224, '2026-10-27', 'chore', 'open', 'Move the non-UI logic still inside Tickets.Desktop''s view models into the MindAttic.Tickets library, so the WPF and Maui shells share it', '—', 223, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T224', 'MindAttic.Tickets', 224, '2026-10-27', 'chore', 'open', 'Move Tickets.Desktop''s view models (15 MainViewModel partials, DetailViewModel, StoryViewModels, CommandPalette, row and header view models) and MainWindow code-behind logic (bus-refresh coalescing, DatabaseWatch lifetime, toast lifetimes, queue and board reorder rules) into MindAttic.Tickets.Desktop.Presentation, the 24 key bindings into a shared keymap; the WPF views bind unchanged', '—', 223, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T225', 'MindAttic.Tickets', 225, '2026-10-27', 'feature', 'open', 'Scaffold MindAttic.Tickets.Desktop.Maui (.NET MAUI Blazor Hybrid, Windows) producing MindAttic.Tickets.Desktop.Maui.exe on the MindAttic.Tickets library and MindAttic.Components.Blazor, beside the WPF exe', '—', 224, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T226', 'MindAttic.Tickets', 226, '2026-10-27', 'feature', 'open', 'Port every Tickets.Desktop screen to the Maui shell at exact WPF parity (same look, same editable settings), screen by screen', '—', 225, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T226', 'MindAttic.Tickets', 226, '2026-10-27', 'feature', 'open', 'Sign-off: every Tickets.Desktop screen is ported to the Maui shell at WPF parity (M.TIX-T241..T246), with the accessibility, binding-coverage, library-only Razor and screen-parity gates green', '—', 225, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T227', 'MindAttic.Tickets', 227, '2026-10-27', 'chore', 'open', 'Tickets'' deploy publishes both Tickets desktop exes (WPF and Maui) side by side', '—', 226, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T228', 'MindAttic.Tickets', 228, '2026-10-27', 'chore', 'open', 'Rename MindAttic.Tickets.Desktop.exe to MindAttic.Tickets.Desktop.Wpf.exe', '—', 227, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T228', 'MindAttic.Tickets', 228, '2026-10-27', 'chore', 'open', 'Rename MindAttic.Tickets.Desktop.exe to MindAttic.Tickets.Desktop.Wpf.exe, leaving a small forwarding MindAttic.Tickets.Desktop.exe: fix the pack:// URI in Theme/Styles.xaml first, then update run.ps1 (kill, publish and build inputs), run.bat, shortcuts, InternalsVisibleTo, slnx, README and the path-based tests; the mutex and handoff pipe names stay unchanged', '—', 227, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T229', 'MindAttic.Tickets', 229, '2026-10-27', 'fix', 'closed', 'TicketsDb.Close() lets any non-fix ticket close as done regardless of its approval state; gate it programmatically', '5df968e', 228, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T230', 'MindAttic.Tickets', 230, '2026-10-27', 'fix', 'closed', 'Fails on main: MindAttic.Tickets.Tests.TicketsDbTests.Tickets_are_append_only_with_history_and_new_ones_take_the_next_number — Assert.That(db.History("AL-T1").Select(e => (e.Field, e.Old, e.New)), Is.EqualTo(new[] { ("status", (string?)"open", (string?)"closed"), ("ref", "—", "the test") })) Expected is <System.ValueTuple`3[System.String,System.String,System.String][2]>, actual is <System.Linq.Enumerable+IListSelectItera... (landed on main since the last green run: tickets M.TIX-T229 in 5df968e TicketsDb.Close refuses to close a non-fix ticket as done unless it''s approved (M.TIX-T229))', 'passes on main@bcc5843', 229, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T231', 'MindAttic.Tickets', 231, '2026-10-27', 'chore', 'open', 'Pin the .NET SDK band for v2: global.json to 10.0.2xx (rollForward latestFeature) and document the maui-windows workload requirement in README', '—', 230, NULL);
@@ -37713,6 +37714,1174 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21092, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21093, 'M.TIX-T233', '2026-10-28T01:26:57Z', 'link', NULL, 'part-of M.ORCH-T1196');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21094, 'M.ORCH-T1196', '2026-10-28T01:26:58Z', 'link', NULL, 'M.TIX-T233 part-of');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21095, 'M.TIX-T233', '2026-10-28T01:26:59Z', 'link', NULL, 'requires M.COMP-T133');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21096, 'M.COMP-T133', '2026-10-28T01:26:59Z', 'link', NULL, 'M.TIX-T233 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21097, 'M.ORCH-T1220', '2026-10-28T01:27:00Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21098, 'M.ORCH-T1196', '2026-10-28T01:27:00Z', 'link', NULL, 'M.ORCH-T1220 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21099, 'M.ORCH-T1220', '2026-10-28T01:27:01Z', 'link', NULL, 'requires M.ORCH-T1219');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21100, 'M.ORCH-T1219', '2026-10-28T01:27:01Z', 'link', NULL, 'M.ORCH-T1220 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21101, 'M.ORCH-T1220', '2026-10-28T01:27:02Z', 'link', NULL, 'requires M.ORCH-T1213');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21102, 'M.ORCH-T1213', '2026-10-28T01:27:02Z', 'link', NULL, 'M.ORCH-T1220 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21103, 'M.ORCH-T1221', '2026-10-28T01:27:03Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21104, 'M.ORCH-T1196', '2026-10-28T01:27:03Z', 'link', NULL, 'M.ORCH-T1221 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21105, 'M.ORCH-T1221', '2026-10-28T01:27:04Z', 'link', NULL, 'requires M.ORCH-T1197');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21106, 'M.ORCH-T1197', '2026-10-28T01:27:04Z', 'link', NULL, 'M.ORCH-T1221 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21107, 'M.ORCH-T1222', '2026-10-28T01:27:05Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21108, 'M.ORCH-T1196', '2026-10-28T01:27:06Z', 'link', NULL, 'M.ORCH-T1222 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21109, 'M.ORCH-T1222', '2026-10-28T01:27:06Z', 'link', NULL, 'requires M.ORCH-T1197');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21110, 'M.ORCH-T1197', '2026-10-28T01:27:07Z', 'link', NULL, 'M.ORCH-T1222 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21111, 'M.ORCH-T1223', '2026-10-28T01:27:07Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21112, 'M.ORCH-T1196', '2026-10-28T01:27:08Z', 'link', NULL, 'M.ORCH-T1223 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21113, 'M.ORCH-T1223', '2026-10-28T01:27:09Z', 'link', NULL, 'requires M.ORCH-T1197');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21114, 'M.ORCH-T1197', '2026-10-28T01:27:09Z', 'link', NULL, 'M.ORCH-T1223 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21115, 'M.ORCH-T1223', '2026-10-28T01:27:10Z', 'link', NULL, 'requires M.ORCH-T1221');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21116, 'M.ORCH-T1221', '2026-10-28T01:27:10Z', 'link', NULL, 'M.ORCH-T1223 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21117, 'M.ORCH-T1223', '2026-10-28T01:27:11Z', 'link', NULL, 'requires M.ORCH-T1222');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21118, 'M.ORCH-T1222', '2026-10-28T01:27:11Z', 'link', NULL, 'M.ORCH-T1223 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21119, 'M.ORCH-T1224', '2026-10-28T01:27:12Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21120, 'M.ORCH-T1196', '2026-10-28T01:27:12Z', 'link', NULL, 'M.ORCH-T1224 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21121, 'M.ORCH-T1224', '2026-10-28T01:27:13Z', 'link', NULL, 'requires M.ORCH-T1223');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21122, 'M.ORCH-T1223', '2026-10-28T01:27:14Z', 'link', NULL, 'M.ORCH-T1224 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21123, 'M.ORCH-T1225', '2026-10-28T01:27:15Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21124, 'M.ORCH-T1196', '2026-10-28T01:27:15Z', 'link', NULL, 'M.ORCH-T1225 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21125, 'M.ORCH-T1225', '2026-10-28T01:27:16Z', 'link', NULL, 'requires M.ORCH-T1224');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21126, 'M.ORCH-T1224', '2026-10-28T01:27:16Z', 'link', NULL, 'M.ORCH-T1225 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21127, 'M.TIX-T234', '2026-10-28T01:27:17Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21128, 'M.ORCH-T1196', '2026-10-28T01:27:17Z', 'link', NULL, 'M.TIX-T234 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21129, 'M.TIX-T234', '2026-10-28T01:27:18Z', 'link', NULL, 'requires M.TIX-T233');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21130, 'M.TIX-T233', '2026-10-28T01:27:18Z', 'link', NULL, 'M.TIX-T234 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21131, 'M.TIX-T234', '2026-10-28T01:27:19Z', 'link', NULL, 'requires M.ORCH-T1213');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21132, 'M.ORCH-T1213', '2026-10-28T01:27:19Z', 'link', NULL, 'M.TIX-T234 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21133, 'M.TIX-T235', '2026-10-28T01:27:20Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21134, 'M.ORCH-T1196', '2026-10-28T01:27:20Z', 'link', NULL, 'M.TIX-T235 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21135, 'M.TIX-T235', '2026-10-28T01:27:21Z', 'link', NULL, 'requires M.TIX-T224');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21136, 'M.TIX-T224', '2026-10-28T01:27:22Z', 'link', NULL, 'M.TIX-T235 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21137, 'M.TIX-T236', '2026-10-28T01:27:22Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21138, 'M.ORCH-T1196', '2026-10-28T01:27:23Z', 'link', NULL, 'M.TIX-T236 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21139, 'M.TIX-T236', '2026-10-28T01:27:24Z', 'link', NULL, 'requires M.TIX-T224');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21140, 'M.TIX-T224', '2026-10-28T01:27:24Z', 'link', NULL, 'M.TIX-T236 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21141, 'M.TIX-T237', '2026-10-28T01:27:25Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21142, 'M.ORCH-T1196', '2026-10-28T01:27:25Z', 'link', NULL, 'M.TIX-T237 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21143, 'M.TIX-T237', '2026-10-28T01:27:26Z', 'link', NULL, 'requires M.TIX-T224');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21144, 'M.TIX-T224', '2026-10-28T01:27:27Z', 'link', NULL, 'M.TIX-T237 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21145, 'M.TIX-T238', '2026-10-28T01:27:28Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21146, 'M.ORCH-T1196', '2026-10-28T01:27:28Z', 'link', NULL, 'M.TIX-T238 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21147, 'M.TIX-T238', '2026-10-28T01:27:29Z', 'link', NULL, 'requires M.TIX-T237');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21148, 'M.TIX-T237', '2026-10-28T01:27:29Z', 'link', NULL, 'M.TIX-T238 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21149, 'M.TIX-T239', '2026-10-28T01:27:30Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21150, 'M.ORCH-T1196', '2026-10-28T01:27:30Z', 'link', NULL, 'M.TIX-T239 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21151, 'M.TIX-T239', '2026-10-28T01:27:31Z', 'link', NULL, 'requires M.TIX-T238');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21152, 'M.TIX-T238', '2026-10-28T01:27:31Z', 'link', NULL, 'M.TIX-T239 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21153, 'M.COMP-T135', '2026-10-28T01:27:32Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21154, 'M.ORCH-T1196', '2026-10-28T01:27:32Z', 'link', NULL, 'M.COMP-T135 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21155, 'M.COMP-T135', '2026-10-28T01:27:33Z', 'link', NULL, 'requires M.COMP-T123');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21156, 'M.COMP-T123', '2026-10-28T01:27:33Z', 'link', NULL, 'M.COMP-T135 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21157, 'M.COMP-T135', '2026-10-28T01:27:34Z', 'link', NULL, 'requires M.COMP-T124');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21158, 'M.COMP-T124', '2026-10-28T01:27:34Z', 'link', NULL, 'M.COMP-T135 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21159, 'M.COMP-T136', '2026-10-28T01:27:35Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21160, 'M.ORCH-T1196', '2026-10-28T01:27:35Z', 'link', NULL, 'M.COMP-T136 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21161, 'M.COMP-T136', '2026-10-28T01:27:36Z', 'link', NULL, 'requires M.COMP-T135');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21162, 'M.COMP-T135', '2026-10-28T01:27:37Z', 'link', NULL, 'M.COMP-T136 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21163, 'M.COMP-T136', '2026-10-28T01:27:37Z', 'link', NULL, 'requires M.COMP-T132');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21164, 'M.COMP-T132', '2026-10-28T01:27:38Z', 'link', NULL, 'M.COMP-T136 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21165, 'M.COMP-T137', '2026-10-28T01:27:39Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21166, 'M.ORCH-T1196', '2026-10-28T01:27:39Z', 'link', NULL, 'M.COMP-T137 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21167, 'M.COMP-T137', '2026-10-28T01:27:40Z', 'link', NULL, 'requires M.COMP-T123');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21168, 'M.COMP-T123', '2026-10-28T01:27:40Z', 'link', NULL, 'M.COMP-T137 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21169, 'M.COMP-T138', '2026-10-28T01:27:41Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21170, 'M.ORCH-T1196', '2026-10-28T01:27:41Z', 'link', NULL, 'M.COMP-T138 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21171, 'M.COMP-T138', '2026-10-28T01:27:42Z', 'link', NULL, 'requires M.COMP-T123');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21172, 'M.COMP-T123', '2026-10-28T01:27:42Z', 'link', NULL, 'M.COMP-T138 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21173, 'M.COMP-T138', '2026-10-28T01:27:43Z', 'link', NULL, 'requires M.COMP-T124');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21174, 'M.COMP-T124', '2026-10-28T01:27:43Z', 'link', NULL, 'M.COMP-T138 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21175, 'M.COMP-T138', '2026-10-28T01:27:44Z', 'link', NULL, 'requires M.COMP-T136');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21176, 'M.COMP-T136', '2026-10-28T01:27:45Z', 'link', NULL, 'M.COMP-T138 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21177, 'M.COMP-T138', '2026-10-28T01:27:45Z', 'link', NULL, 'requires M.COMP-T119');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21178, 'M.COMP-T119', '2026-10-28T01:27:46Z', 'link', NULL, 'M.COMP-T138 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21179, 'M.COMP-T139', '2026-10-28T01:27:46Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21180, 'M.ORCH-T1196', '2026-10-28T01:27:47Z', 'link', NULL, 'M.COMP-T139 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21181, 'M.COMP-T139', '2026-10-28T01:27:48Z', 'link', NULL, 'requires M.COMP-T123');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21182, 'M.COMP-T123', '2026-10-28T01:27:48Z', 'link', NULL, 'M.COMP-T139 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21183, 'M.COMP-T139', '2026-10-28T01:27:49Z', 'link', NULL, 'requires M.COMP-T124');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21184, 'M.COMP-T124', '2026-10-28T01:27:49Z', 'link', NULL, 'M.COMP-T139 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21185, 'M.COMP-T139', '2026-10-28T01:27:50Z', 'link', NULL, 'requires M.COMP-T136');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21186, 'M.COMP-T136', '2026-10-28T01:27:50Z', 'link', NULL, 'M.COMP-T139 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21187, 'M.COMP-T139', '2026-10-28T01:27:51Z', 'link', NULL, 'requires M.COMP-T118');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21188, 'M.COMP-T118', '2026-10-28T01:27:51Z', 'link', NULL, 'M.COMP-T139 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21189, 'M.COMP-T139', '2026-10-28T01:27:52Z', 'link', NULL, 'requires M.COMP-T120');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21190, 'M.COMP-T120', '2026-10-28T01:27:52Z', 'link', NULL, 'M.COMP-T139 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21191, 'M.COMP-T139', '2026-10-28T01:27:53Z', 'link', NULL, 'requires M.COMP-T121');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21192, 'M.COMP-T121', '2026-10-28T01:27:53Z', 'link', NULL, 'M.COMP-T139 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21193, 'M.COMP-T140', '2026-10-28T01:27:54Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21194, 'M.ORCH-T1196', '2026-10-28T01:27:54Z', 'link', NULL, 'M.COMP-T140 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21195, 'M.COMP-T140', '2026-10-28T01:27:55Z', 'link', NULL, 'requires M.COMP-T123');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21196, 'M.COMP-T123', '2026-10-28T01:27:56Z', 'link', NULL, 'M.COMP-T140 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21197, 'M.COMP-T140', '2026-10-28T01:27:56Z', 'link', NULL, 'requires M.COMP-T124');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21198, 'M.COMP-T124', '2026-10-28T01:27:57Z', 'link', NULL, 'M.COMP-T140 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21199, 'M.COMP-T140', '2026-10-28T01:27:57Z', 'link', NULL, 'requires M.COMP-T136');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21200, 'M.COMP-T136', '2026-10-28T01:27:58Z', 'link', NULL, 'M.COMP-T140 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21201, 'M.COMP-T140', '2026-10-28T01:27:59Z', 'link', NULL, 'requires M.COMP-T55');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21202, 'M.COMP-T55', '2026-10-28T01:27:59Z', 'link', NULL, 'M.COMP-T140 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21203, 'M.COMP-T141', '2026-10-28T01:28:00Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21204, 'M.ORCH-T1196', '2026-10-28T01:28:00Z', 'link', NULL, 'M.COMP-T141 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21205, 'M.COMP-T141', '2026-10-28T01:28:01Z', 'link', NULL, 'requires M.COMP-T123');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21206, 'M.COMP-T123', '2026-10-28T01:28:01Z', 'link', NULL, 'M.COMP-T141 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21207, 'M.COMP-T141', '2026-10-28T01:28:02Z', 'link', NULL, 'requires M.COMP-T124');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21208, 'M.COMP-T124', '2026-10-28T01:28:02Z', 'link', NULL, 'M.COMP-T141 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21209, 'M.COMP-T141', '2026-10-28T01:28:03Z', 'link', NULL, 'requires M.COMP-T136');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21210, 'M.COMP-T136', '2026-10-28T01:28:04Z', 'link', NULL, 'M.COMP-T141 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21211, 'M.COMP-T141', '2026-10-28T01:28:04Z', 'link', NULL, 'requires M.COMP-T59');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21212, 'M.COMP-T59', '2026-10-28T01:28:05Z', 'link', NULL, 'M.COMP-T141 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21213, 'M.COMP-T142', '2026-10-28T01:28:06Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21214, 'M.ORCH-T1196', '2026-10-28T01:28:06Z', 'link', NULL, 'M.COMP-T142 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21215, 'M.COMP-T142', '2026-10-28T01:28:07Z', 'link', NULL, 'requires M.COMP-T123');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21216, 'M.COMP-T123', '2026-10-28T01:28:07Z', 'link', NULL, 'M.COMP-T142 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21217, 'M.COMP-T142', '2026-10-28T01:28:08Z', 'link', NULL, 'requires M.COMP-T124');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21218, 'M.COMP-T124', '2026-10-28T01:28:08Z', 'link', NULL, 'M.COMP-T142 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21219, 'M.COMP-T142', '2026-10-28T01:28:09Z', 'link', NULL, 'requires M.COMP-T136');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21220, 'M.COMP-T136', '2026-10-28T01:28:09Z', 'link', NULL, 'M.COMP-T142 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21221, 'M.COMP-T143', '2026-10-28T01:28:10Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21222, 'M.ORCH-T1196', '2026-10-28T01:28:10Z', 'link', NULL, 'M.COMP-T143 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21223, 'M.COMP-T143', '2026-10-28T01:28:11Z', 'link', NULL, 'requires M.COMP-T123');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21224, 'M.COMP-T123', '2026-10-28T01:28:12Z', 'link', NULL, 'M.COMP-T143 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21225, 'M.COMP-T143', '2026-10-28T01:28:12Z', 'link', NULL, 'requires M.COMP-T124');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21226, 'M.COMP-T124', '2026-10-28T01:28:13Z', 'link', NULL, 'M.COMP-T143 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21227, 'M.COMP-T143', '2026-10-28T01:28:14Z', 'link', NULL, 'requires M.COMP-T136');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21228, 'M.COMP-T136', '2026-10-28T01:28:14Z', 'link', NULL, 'M.COMP-T143 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21229, 'M.COMP-T144', '2026-10-28T01:28:15Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21230, 'M.ORCH-T1196', '2026-10-28T01:28:15Z', 'link', NULL, 'M.COMP-T144 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21231, 'M.COMP-T144', '2026-10-28T01:28:16Z', 'link', NULL, 'requires M.COMP-T125');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21232, 'M.COMP-T125', '2026-10-28T01:28:16Z', 'link', NULL, 'M.COMP-T144 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21233, 'M.ORCH-T1226', '2026-10-28T01:28:17Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21234, 'M.ORCH-T1196', '2026-10-28T01:28:17Z', 'link', NULL, 'M.ORCH-T1226 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21235, 'M.ORCH-T1226', '2026-10-28T01:28:18Z', 'link', NULL, 'requires M.COMP-T125');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21236, 'M.COMP-T125', '2026-10-28T01:28:18Z', 'link', NULL, 'M.ORCH-T1226 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21237, 'M.ORCH-T1226', '2026-10-28T01:28:19Z', 'link', NULL, 'requires M.ORCH-T1225');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21238, 'M.ORCH-T1225', '2026-10-28T01:28:19Z', 'link', NULL, 'M.ORCH-T1226 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21239, 'M.TIX-T240', '2026-10-28T01:28:20Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21240, 'M.ORCH-T1196', '2026-10-28T01:28:21Z', 'link', NULL, 'M.TIX-T240 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21241, 'M.TIX-T240', '2026-10-28T01:28:21Z', 'link', NULL, 'requires M.COMP-T125');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21242, 'M.COMP-T125', '2026-10-28T01:28:22Z', 'link', NULL, 'M.TIX-T240 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21243, 'M.TIX-T240', '2026-10-28T01:28:22Z', 'link', NULL, 'requires M.TIX-T239');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21244, 'M.TIX-T239', '2026-10-28T01:28:23Z', 'link', NULL, 'M.TIX-T240 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21245, 'M.ORCH-T1227', '2026-10-28T01:28:24Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21246, 'M.ORCH-T1196', '2026-10-28T01:28:24Z', 'link', NULL, 'M.ORCH-T1227 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21247, 'M.ORCH-T1227', '2026-10-28T01:28:25Z', 'link', NULL, 'requires M.ORCH-T1198');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21248, 'M.ORCH-T1198', '2026-10-28T01:28:25Z', 'link', NULL, 'M.ORCH-T1227 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21249, 'M.ORCH-T1227', '2026-10-28T01:28:26Z', 'link', NULL, 'requires M.ORCH-T1221');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21250, 'M.ORCH-T1221', '2026-10-28T01:28:26Z', 'link', NULL, 'M.ORCH-T1227 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21251, 'M.ORCH-T1227', '2026-10-28T01:28:27Z', 'link', NULL, 'requires M.ORCH-T1222');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21252, 'M.ORCH-T1222', '2026-10-28T01:28:27Z', 'link', NULL, 'M.ORCH-T1227 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21253, 'M.ORCH-T1228', '2026-10-28T01:28:28Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21254, 'M.ORCH-T1196', '2026-10-28T01:28:28Z', 'link', NULL, 'M.ORCH-T1228 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21255, 'M.ORCH-T1228', '2026-10-28T01:28:29Z', 'link', NULL, 'requires M.ORCH-T1198');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21256, 'M.ORCH-T1198', '2026-10-28T01:28:29Z', 'link', NULL, 'M.ORCH-T1228 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21257, 'M.ORCH-T1228', '2026-10-28T01:28:30Z', 'link', NULL, 'requires M.ORCH-T1226');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21258, 'M.ORCH-T1226', '2026-10-28T01:28:31Z', 'link', NULL, 'M.ORCH-T1228 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21259, 'M.ORCH-T1228', '2026-10-28T01:28:32Z', 'link', NULL, 'requires M.ORCH-T1224');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21260, 'M.ORCH-T1224', '2026-10-28T01:28:32Z', 'link', NULL, 'M.ORCH-T1228 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21261, 'M.ORCH-T1229', '2026-10-28T01:28:33Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21262, 'M.ORCH-T1196', '2026-10-28T01:28:33Z', 'link', NULL, 'M.ORCH-T1229 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21263, 'M.ORCH-T1229', '2026-10-28T01:28:34Z', 'link', NULL, 'requires M.ORCH-T1198');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21264, 'M.ORCH-T1198', '2026-10-28T01:28:34Z', 'link', NULL, 'M.ORCH-T1229 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21265, 'M.ORCH-T1229', '2026-10-28T01:28:35Z', 'link', NULL, 'requires M.ORCH-T1226');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21266, 'M.ORCH-T1226', '2026-10-28T01:28:35Z', 'link', NULL, 'M.ORCH-T1229 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21267, 'M.ORCH-T1229', '2026-10-28T01:28:36Z', 'link', NULL, 'requires M.ORCH-T1224');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21268, 'M.ORCH-T1224', '2026-10-28T01:28:37Z', 'link', NULL, 'M.ORCH-T1229 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21269, 'M.ORCH-T1230', '2026-10-28T01:28:38Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21270, 'M.ORCH-T1196', '2026-10-28T01:28:38Z', 'link', NULL, 'M.ORCH-T1230 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21271, 'M.ORCH-T1230', '2026-10-28T01:28:39Z', 'link', NULL, 'requires M.ORCH-T1198');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21272, 'M.ORCH-T1198', '2026-10-28T01:28:39Z', 'link', NULL, 'M.ORCH-T1230 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21273, 'M.ORCH-T1230', '2026-10-28T01:28:40Z', 'link', NULL, 'requires M.ORCH-T1226');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21274, 'M.ORCH-T1226', '2026-10-28T01:28:40Z', 'link', NULL, 'M.ORCH-T1230 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21275, 'M.ORCH-T1230', '2026-10-28T01:28:41Z', 'link', NULL, 'requires M.ORCH-T1224');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21276, 'M.ORCH-T1224', '2026-10-28T01:28:41Z', 'link', NULL, 'M.ORCH-T1230 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21277, 'M.ORCH-T1231', '2026-10-28T01:28:42Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21278, 'M.ORCH-T1196', '2026-10-28T01:28:42Z', 'link', NULL, 'M.ORCH-T1231 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21279, 'M.ORCH-T1231', '2026-10-28T01:28:43Z', 'link', NULL, 'requires M.ORCH-T1198');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21280, 'M.ORCH-T1198', '2026-10-28T01:28:43Z', 'link', NULL, 'M.ORCH-T1231 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21281, 'M.ORCH-T1231', '2026-10-28T01:28:44Z', 'link', NULL, 'requires M.ORCH-T1226');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21282, 'M.ORCH-T1226', '2026-10-28T01:28:45Z', 'link', NULL, 'M.ORCH-T1231 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21283, 'M.ORCH-T1231', '2026-10-28T01:28:45Z', 'link', NULL, 'requires M.ORCH-T1224');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21284, 'M.ORCH-T1224', '2026-10-28T01:28:46Z', 'link', NULL, 'M.ORCH-T1231 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21285, 'M.ORCH-T1231', '2026-10-28T01:28:47Z', 'link', NULL, 'requires M.ORCH-T1227');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21286, 'M.ORCH-T1227', '2026-10-28T01:28:47Z', 'link', NULL, 'M.ORCH-T1231 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21287, 'M.ORCH-T1232', '2026-10-28T01:28:48Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21288, 'M.ORCH-T1196', '2026-10-28T01:28:48Z', 'link', NULL, 'M.ORCH-T1232 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21289, 'M.ORCH-T1232', '2026-10-28T01:28:49Z', 'link', NULL, 'requires M.ORCH-T1198');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21290, 'M.ORCH-T1198', '2026-10-28T01:28:49Z', 'link', NULL, 'M.ORCH-T1232 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21291, 'M.ORCH-T1232', '2026-10-28T01:28:50Z', 'link', NULL, 'requires M.ORCH-T1226');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21292, 'M.ORCH-T1226', '2026-10-28T01:28:50Z', 'link', NULL, 'M.ORCH-T1232 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21293, 'M.ORCH-T1232', '2026-10-28T01:28:51Z', 'link', NULL, 'requires M.ORCH-T1224');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21294, 'M.ORCH-T1224', '2026-10-28T01:28:51Z', 'link', NULL, 'M.ORCH-T1232 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21295, 'M.ORCH-T1233', '2026-10-28T01:28:52Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21296, 'M.ORCH-T1196', '2026-10-28T01:28:52Z', 'link', NULL, 'M.ORCH-T1233 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21297, 'M.ORCH-T1233', '2026-10-28T01:28:53Z', 'link', NULL, 'requires M.ORCH-T1198');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21298, 'M.ORCH-T1198', '2026-10-28T01:28:54Z', 'link', NULL, 'M.ORCH-T1233 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21299, 'M.ORCH-T1233', '2026-10-28T01:28:54Z', 'link', NULL, 'requires M.ORCH-T1226');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21300, 'M.ORCH-T1226', '2026-10-28T01:28:55Z', 'link', NULL, 'M.ORCH-T1233 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21301, 'M.ORCH-T1233', '2026-10-28T01:28:56Z', 'link', NULL, 'requires M.ORCH-T1224');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21302, 'M.ORCH-T1224', '2026-10-28T01:28:56Z', 'link', NULL, 'M.ORCH-T1233 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21303, 'M.ORCH-T1234', '2026-10-28T01:28:57Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21304, 'M.ORCH-T1196', '2026-10-28T01:28:57Z', 'link', NULL, 'M.ORCH-T1234 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21305, 'M.ORCH-T1234', '2026-10-28T01:28:58Z', 'link', NULL, 'requires M.ORCH-T1198');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21306, 'M.ORCH-T1198', '2026-10-28T01:28:58Z', 'link', NULL, 'M.ORCH-T1234 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21307, 'M.ORCH-T1235', '2026-10-28T01:28:59Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21308, 'M.ORCH-T1196', '2026-10-28T01:28:59Z', 'link', NULL, 'M.ORCH-T1235 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21309, 'M.ORCH-T1235', '2026-10-28T01:29:00Z', 'link', NULL, 'requires M.ORCH-T1228');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21310, 'M.ORCH-T1228', '2026-10-28T01:29:00Z', 'link', NULL, 'M.ORCH-T1235 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21311, 'M.ORCH-T1235', '2026-10-28T01:29:01Z', 'link', NULL, 'requires M.ORCH-T1229');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21312, 'M.ORCH-T1229', '2026-10-28T01:29:01Z', 'link', NULL, 'M.ORCH-T1235 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21313, 'M.ORCH-T1235', '2026-10-28T01:29:02Z', 'link', NULL, 'requires M.ORCH-T1230');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21314, 'M.ORCH-T1230', '2026-10-28T01:29:03Z', 'link', NULL, 'M.ORCH-T1235 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21315, 'M.ORCH-T1235', '2026-10-28T01:29:03Z', 'link', NULL, 'requires M.ORCH-T1231');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21316, 'M.ORCH-T1231', '2026-10-28T01:29:04Z', 'link', NULL, 'M.ORCH-T1235 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21317, 'M.ORCH-T1235', '2026-10-28T01:29:05Z', 'link', NULL, 'requires M.ORCH-T1232');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21318, 'M.ORCH-T1232', '2026-10-28T01:29:05Z', 'link', NULL, 'M.ORCH-T1235 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21319, 'M.ORCH-T1235', '2026-10-28T01:29:06Z', 'link', NULL, 'requires M.ORCH-T1233');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21320, 'M.ORCH-T1233', '2026-10-28T01:29:06Z', 'link', NULL, 'M.ORCH-T1235 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21321, 'M.ORCH-T1236', '2026-10-28T01:29:07Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21322, 'M.ORCH-T1196', '2026-10-28T01:29:07Z', 'link', NULL, 'M.ORCH-T1236 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21323, 'M.ORCH-T1236', '2026-10-28T01:29:08Z', 'link', NULL, 'requires M.ORCH-T1228');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21324, 'M.ORCH-T1228', '2026-10-28T01:29:08Z', 'link', NULL, 'M.ORCH-T1236 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21325, 'M.ORCH-T1236', '2026-10-28T01:29:09Z', 'link', NULL, 'requires M.ORCH-T1229');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21326, 'M.ORCH-T1229', '2026-10-28T01:29:09Z', 'link', NULL, 'M.ORCH-T1236 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21327, 'M.ORCH-T1236', '2026-10-28T01:29:10Z', 'link', NULL, 'requires M.ORCH-T1230');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21328, 'M.ORCH-T1230', '2026-10-28T01:29:11Z', 'link', NULL, 'M.ORCH-T1236 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21329, 'M.ORCH-T1236', '2026-10-28T01:29:11Z', 'link', NULL, 'requires M.ORCH-T1231');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21330, 'M.ORCH-T1231', '2026-10-28T01:29:12Z', 'link', NULL, 'M.ORCH-T1236 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21331, 'M.ORCH-T1236', '2026-10-28T01:29:13Z', 'link', NULL, 'requires M.ORCH-T1232');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21332, 'M.ORCH-T1232', '2026-10-28T01:29:13Z', 'link', NULL, 'M.ORCH-T1236 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21333, 'M.ORCH-T1236', '2026-10-28T01:29:14Z', 'link', NULL, 'requires M.ORCH-T1233');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21334, 'M.ORCH-T1233', '2026-10-28T01:29:14Z', 'link', NULL, 'M.ORCH-T1236 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21335, 'M.ORCH-T1236', '2026-10-28T01:29:15Z', 'link', NULL, 'requires M.ORCH-T1225');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21336, 'M.ORCH-T1225', '2026-10-28T01:29:15Z', 'link', NULL, 'M.ORCH-T1236 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21337, 'M.TIX-T241', '2026-10-28T01:29:16Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21338, 'M.ORCH-T1196', '2026-10-28T01:29:16Z', 'link', NULL, 'M.TIX-T241 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21339, 'M.TIX-T241', '2026-10-28T01:29:17Z', 'link', NULL, 'requires M.TIX-T225');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21340, 'M.TIX-T225', '2026-10-28T01:29:17Z', 'link', NULL, 'M.TIX-T241 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21341, 'M.TIX-T241', '2026-10-28T01:29:18Z', 'link', NULL, 'requires M.TIX-T240');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21342, 'M.TIX-T240', '2026-10-28T01:29:19Z', 'link', NULL, 'M.TIX-T241 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21343, 'M.TIX-T241', '2026-10-28T01:29:19Z', 'link', NULL, 'requires M.TIX-T238');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21344, 'M.TIX-T238', '2026-10-28T01:29:20Z', 'link', NULL, 'M.TIX-T241 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21345, 'M.TIX-T242', '2026-10-28T01:29:20Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21346, 'M.ORCH-T1196', '2026-10-28T01:29:21Z', 'link', NULL, 'M.TIX-T242 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21347, 'M.TIX-T242', '2026-10-28T01:29:22Z', 'link', NULL, 'requires M.TIX-T225');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21348, 'M.TIX-T225', '2026-10-28T01:29:22Z', 'link', NULL, 'M.TIX-T242 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21349, 'M.TIX-T242', '2026-10-28T01:29:23Z', 'link', NULL, 'requires M.TIX-T240');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21350, 'M.TIX-T240', '2026-10-28T01:29:23Z', 'link', NULL, 'M.TIX-T242 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21351, 'M.TIX-T242', '2026-10-28T01:29:24Z', 'link', NULL, 'requires M.TIX-T238');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21352, 'M.TIX-T238', '2026-10-28T01:29:24Z', 'link', NULL, 'M.TIX-T242 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21353, 'M.TIX-T243', '2026-10-28T01:29:25Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21354, 'M.ORCH-T1196', '2026-10-28T01:29:25Z', 'link', NULL, 'M.TIX-T243 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21355, 'M.TIX-T243', '2026-10-28T01:29:26Z', 'link', NULL, 'requires M.TIX-T225');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21356, 'M.TIX-T225', '2026-10-28T01:29:26Z', 'link', NULL, 'M.TIX-T243 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21357, 'M.TIX-T243', '2026-10-28T01:29:27Z', 'link', NULL, 'requires M.TIX-T240');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21358, 'M.TIX-T240', '2026-10-28T01:29:27Z', 'link', NULL, 'M.TIX-T243 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21359, 'M.TIX-T243', '2026-10-28T01:29:28Z', 'link', NULL, 'requires M.TIX-T238');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21360, 'M.TIX-T238', '2026-10-28T01:29:29Z', 'link', NULL, 'M.TIX-T243 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21361, 'M.TIX-T244', '2026-10-28T01:29:29Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21362, 'M.ORCH-T1196', '2026-10-28T01:29:30Z', 'link', NULL, 'M.TIX-T244 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21363, 'M.TIX-T244', '2026-10-28T01:29:31Z', 'link', NULL, 'requires M.TIX-T225');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21364, 'M.TIX-T225', '2026-10-28T01:29:31Z', 'link', NULL, 'M.TIX-T244 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21365, 'M.TIX-T244', '2026-10-28T01:29:32Z', 'link', NULL, 'requires M.TIX-T240');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21366, 'M.TIX-T240', '2026-10-28T01:29:32Z', 'link', NULL, 'M.TIX-T244 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21367, 'M.TIX-T244', '2026-10-28T01:29:33Z', 'link', NULL, 'requires M.TIX-T238');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21368, 'M.TIX-T238', '2026-10-28T01:29:33Z', 'link', NULL, 'M.TIX-T244 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21369, 'M.TIX-T245', '2026-10-28T01:29:34Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21370, 'M.ORCH-T1196', '2026-10-28T01:29:34Z', 'link', NULL, 'M.TIX-T245 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21371, 'M.TIX-T245', '2026-10-28T01:29:35Z', 'link', NULL, 'requires M.TIX-T225');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21372, 'M.TIX-T225', '2026-10-28T01:29:36Z', 'link', NULL, 'M.TIX-T245 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21373, 'M.TIX-T245', '2026-10-28T01:29:37Z', 'link', NULL, 'requires M.TIX-T240');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21374, 'M.TIX-T240', '2026-10-28T01:29:37Z', 'link', NULL, 'M.TIX-T245 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21375, 'M.TIX-T245', '2026-10-28T01:29:38Z', 'link', NULL, 'requires M.TIX-T238');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21376, 'M.TIX-T238', '2026-10-28T01:29:38Z', 'link', NULL, 'M.TIX-T245 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21377, 'M.TIX-T246', '2026-10-28T01:29:39Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21378, 'M.ORCH-T1196', '2026-10-28T01:29:39Z', 'link', NULL, 'M.TIX-T246 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21379, 'M.TIX-T246', '2026-10-28T01:29:40Z', 'link', NULL, 'requires M.TIX-T225');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21380, 'M.TIX-T225', '2026-10-28T01:29:40Z', 'link', NULL, 'M.TIX-T246 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21381, 'M.TIX-T246', '2026-10-28T01:29:41Z', 'link', NULL, 'requires M.TIX-T240');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21382, 'M.TIX-T240', '2026-10-28T01:29:42Z', 'link', NULL, 'M.TIX-T246 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21383, 'M.TIX-T246', '2026-10-28T01:29:43Z', 'link', NULL, 'requires M.TIX-T238');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21384, 'M.TIX-T238', '2026-10-28T01:29:43Z', 'link', NULL, 'M.TIX-T246 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21385, 'M.TIX-T247', '2026-10-28T01:29:44Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21386, 'M.ORCH-T1196', '2026-10-28T01:29:44Z', 'link', NULL, 'M.TIX-T247 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21387, 'M.TIX-T247', '2026-10-28T01:29:45Z', 'link', NULL, 'requires M.TIX-T241');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21388, 'M.TIX-T241', '2026-10-28T01:29:45Z', 'link', NULL, 'M.TIX-T247 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21389, 'M.TIX-T247', '2026-10-28T01:29:46Z', 'link', NULL, 'requires M.TIX-T242');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21390, 'M.TIX-T242', '2026-10-28T01:29:46Z', 'link', NULL, 'M.TIX-T247 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21391, 'M.TIX-T247', '2026-10-28T01:29:47Z', 'link', NULL, 'requires M.TIX-T243');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21392, 'M.TIX-T243', '2026-10-28T01:29:48Z', 'link', NULL, 'M.TIX-T247 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21393, 'M.TIX-T247', '2026-10-28T01:29:48Z', 'link', NULL, 'requires M.TIX-T244');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21394, 'M.TIX-T244', '2026-10-28T01:29:49Z', 'link', NULL, 'M.TIX-T247 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21395, 'M.TIX-T247', '2026-10-28T01:29:50Z', 'link', NULL, 'requires M.TIX-T245');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21396, 'M.TIX-T245', '2026-10-28T01:29:50Z', 'link', NULL, 'M.TIX-T247 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21397, 'M.TIX-T247', '2026-10-28T01:29:51Z', 'link', NULL, 'requires M.TIX-T246');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21398, 'M.TIX-T246', '2026-10-28T01:29:51Z', 'link', NULL, 'M.TIX-T247 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21399, 'M.TIX-T248', '2026-10-28T01:29:53Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21400, 'M.ORCH-T1196', '2026-10-28T01:29:53Z', 'link', NULL, 'M.TIX-T248 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21401, 'M.TIX-T248', '2026-10-28T01:29:54Z', 'link', NULL, 'requires M.TIX-T225');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21402, 'M.TIX-T225', '2026-10-28T01:29:54Z', 'link', NULL, 'M.TIX-T248 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21403, 'M.TIX-T249', '2026-10-28T01:29:55Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21404, 'M.ORCH-T1196', '2026-10-28T01:29:55Z', 'link', NULL, 'M.TIX-T249 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21405, 'M.TIX-T249', '2026-10-28T01:29:56Z', 'link', NULL, 'requires M.TIX-T241');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21406, 'M.TIX-T241', '2026-10-28T01:29:57Z', 'link', NULL, 'M.TIX-T249 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21407, 'M.TIX-T249', '2026-10-28T01:29:58Z', 'link', NULL, 'requires M.TIX-T242');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21408, 'M.TIX-T242', '2026-10-28T01:29:58Z', 'link', NULL, 'M.TIX-T249 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21409, 'M.TIX-T249', '2026-10-28T01:29:59Z', 'link', NULL, 'requires M.TIX-T243');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21410, 'M.TIX-T243', '2026-10-28T01:30:00Z', 'link', NULL, 'M.TIX-T249 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21411, 'M.TIX-T249', '2026-10-28T01:30:01Z', 'link', NULL, 'requires M.TIX-T244');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21412, 'M.TIX-T244', '2026-10-28T01:30:01Z', 'link', NULL, 'M.TIX-T249 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21413, 'M.TIX-T249', '2026-10-28T01:30:02Z', 'link', NULL, 'requires M.TIX-T245');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21414, 'M.TIX-T245', '2026-10-28T01:30:02Z', 'link', NULL, 'M.TIX-T249 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21415, 'M.TIX-T249', '2026-10-28T01:30:03Z', 'link', NULL, 'requires M.TIX-T246');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21416, 'M.TIX-T246', '2026-10-28T01:30:03Z', 'link', NULL, 'M.TIX-T249 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21417, 'M.TIX-T250', '2026-10-28T01:30:04Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21418, 'M.ORCH-T1196', '2026-10-28T01:30:05Z', 'link', NULL, 'M.TIX-T250 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21419, 'M.TIX-T250', '2026-10-28T01:30:05Z', 'link', NULL, 'requires M.TIX-T241');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21420, 'M.TIX-T241', '2026-10-28T01:30:06Z', 'link', NULL, 'M.TIX-T250 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21421, 'M.TIX-T250', '2026-10-28T01:30:07Z', 'link', NULL, 'requires M.TIX-T242');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21422, 'M.TIX-T242', '2026-10-28T01:30:07Z', 'link', NULL, 'M.TIX-T250 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21423, 'M.TIX-T250', '2026-10-28T01:30:08Z', 'link', NULL, 'requires M.TIX-T243');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21424, 'M.TIX-T243', '2026-10-28T01:30:08Z', 'link', NULL, 'M.TIX-T250 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21425, 'M.TIX-T250', '2026-10-28T01:30:09Z', 'link', NULL, 'requires M.TIX-T244');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21426, 'M.TIX-T244', '2026-10-28T01:30:09Z', 'link', NULL, 'M.TIX-T250 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21427, 'M.TIX-T250', '2026-10-28T01:30:10Z', 'link', NULL, 'requires M.TIX-T245');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21428, 'M.TIX-T245', '2026-10-28T01:30:10Z', 'link', NULL, 'M.TIX-T250 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21429, 'M.TIX-T250', '2026-10-28T01:30:11Z', 'link', NULL, 'requires M.TIX-T246');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21430, 'M.TIX-T246', '2026-10-28T01:30:12Z', 'link', NULL, 'M.TIX-T250 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21431, 'M.TIX-T250', '2026-10-28T01:30:13Z', 'link', NULL, 'requires M.TIX-T239');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21432, 'M.TIX-T239', '2026-10-28T01:30:13Z', 'link', NULL, 'M.TIX-T250 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21433, 'M.ORCH-T1237', '2026-10-28T01:30:14Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21434, 'M.ORCH-T1196', '2026-10-28T01:30:14Z', 'link', NULL, 'M.ORCH-T1237 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21435, 'M.ORCH-T1237', '2026-10-28T01:30:15Z', 'link', NULL, 'requires M.TIX-T228');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21436, 'M.TIX-T228', '2026-10-28T01:30:15Z', 'link', NULL, 'M.ORCH-T1237 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21437, 'M.ORCH-T1237', '2026-10-28T01:30:16Z', 'link', NULL, 'requires M.ORCH-T1217');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21438, 'M.ORCH-T1217', '2026-10-28T01:30:16Z', 'link', NULL, 'M.ORCH-T1237 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21439, 'M.TIX-T251', '2026-10-28T01:30:17Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21440, 'M.ORCH-T1196', '2026-10-28T01:30:18Z', 'link', NULL, 'M.TIX-T251 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21441, 'M.TIX-T251', '2026-10-28T01:30:18Z', 'link', NULL, 'requires M.ORCH-T1205');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21442, 'M.ORCH-T1205', '2026-10-28T01:30:19Z', 'link', NULL, 'M.TIX-T251 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21443, 'M.TIX-T251', '2026-10-28T01:30:20Z', 'link', NULL, 'requires M.TIX-T232');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21444, 'M.TIX-T232', '2026-10-28T01:30:20Z', 'link', NULL, 'M.TIX-T251 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21445, 'M.LNCH-T89', '2026-10-28T01:30:21Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21446, 'M.ORCH-T1196', '2026-10-28T01:30:21Z', 'link', NULL, 'M.LNCH-T89 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21447, 'M.LNCH-T89', '2026-10-28T01:30:22Z', 'link', NULL, 'requires M.ORCH-T1205');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21448, 'M.ORCH-T1205', '2026-10-28T01:30:22Z', 'link', NULL, 'M.LNCH-T89 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21449, 'M.CAPT-T79', '2026-10-28T01:30:23Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21450, 'M.ORCH-T1196', '2026-10-28T01:30:23Z', 'link', NULL, 'M.CAPT-T79 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21451, 'M.CAPT-T79', '2026-10-28T01:30:24Z', 'link', NULL, 'requires M.ORCH-T1205');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21452, 'M.ORCH-T1205', '2026-10-28T01:30:24Z', 'link', NULL, 'M.CAPT-T79 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21453, 'M.CAPT-T79', '2026-10-28T01:30:25Z', 'link', NULL, 'requires M.ORCH-T1200');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21454, 'M.ORCH-T1200', '2026-10-28T01:30:25Z', 'link', NULL, 'M.CAPT-T79 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21455, 'M.ORCH-T1238', '2026-10-28T01:30:26Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21456, 'M.ORCH-T1196', '2026-10-28T01:30:27Z', 'link', NULL, 'M.ORCH-T1238 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21457, 'M.ORCH-T1238', '2026-10-28T01:30:28Z', 'link', NULL, 'requires M.ORCH-T1199');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21458, 'M.ORCH-T1199', '2026-10-28T01:30:28Z', 'link', NULL, 'M.ORCH-T1238 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21459, 'M.ORCH-T1238', '2026-10-28T01:30:29Z', 'link', NULL, 'requires M.TIX-T226');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21460, 'M.TIX-T226', '2026-10-28T01:30:29Z', 'link', NULL, 'M.ORCH-T1238 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21461, 'M.ORCH-T1239', '2026-10-28T01:30:30Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21462, 'M.ORCH-T1196', '2026-10-28T01:30:30Z', 'link', NULL, 'M.ORCH-T1239 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21463, 'M.ORCH-T1239', '2026-10-28T01:30:31Z', 'link', NULL, 'requires M.ORCH-T1199');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21464, 'M.ORCH-T1199', '2026-10-28T01:30:31Z', 'link', NULL, 'M.ORCH-T1239 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21465, 'M.ORCH-T1239', '2026-10-28T01:30:32Z', 'link', NULL, 'requires M.TIX-T226');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21466, 'M.TIX-T226', '2026-10-28T01:30:32Z', 'link', NULL, 'M.ORCH-T1239 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21467, 'M.ORCH-T1240', '2026-10-28T01:30:33Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21468, 'M.ORCH-T1196', '2026-10-28T01:30:33Z', 'link', NULL, 'M.ORCH-T1240 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21469, 'M.ORCH-T1240', '2026-10-28T01:30:34Z', 'link', NULL, 'requires M.ORCH-T1199');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21470, 'M.ORCH-T1199', '2026-10-28T01:30:34Z', 'link', NULL, 'M.ORCH-T1240 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21471, 'M.ORCH-T1240', '2026-10-28T01:30:35Z', 'link', NULL, 'requires M.TIX-T226');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21472, 'M.TIX-T226', '2026-10-28T01:30:36Z', 'link', NULL, 'M.ORCH-T1240 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21473, 'M.ORCH-T1240', '2026-10-28T01:30:36Z', 'link', NULL, 'requires M.ORCH-T1200');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21474, 'M.ORCH-T1200', '2026-10-28T01:30:37Z', 'link', NULL, 'M.ORCH-T1240 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21475, 'M.ORCH-T1240', '2026-10-28T01:30:38Z', 'link', NULL, 'requires M.TIX-T227');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21476, 'M.TIX-T227', '2026-10-28T01:30:38Z', 'link', NULL, 'M.ORCH-T1240 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21477, 'M.ORCH-T1240', '2026-10-28T01:30:39Z', 'link', NULL, 'requires M.ORCH-T1201');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21478, 'M.ORCH-T1201', '2026-10-28T01:30:39Z', 'link', NULL, 'M.ORCH-T1240 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21479, 'M.ORCH-T1240', '2026-10-28T01:30:40Z', 'link', NULL, 'requires M.ORCH-T1238');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21480, 'M.ORCH-T1238', '2026-10-28T01:30:40Z', 'link', NULL, 'M.ORCH-T1240 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21481, 'M.ORCH-T1240', '2026-10-28T01:30:41Z', 'link', NULL, 'requires M.ORCH-T1239');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21482, 'M.ORCH-T1239', '2026-10-28T01:30:41Z', 'link', NULL, 'M.ORCH-T1240 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21483, 'M.ORCH-T1240', '2026-10-28T01:30:42Z', 'link', NULL, 'requires M.COMP-T144');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21484, 'M.COMP-T144', '2026-10-28T01:30:43Z', 'link', NULL, 'M.ORCH-T1240 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21485, 'M.ORCH-T1240', '2026-10-28T01:30:44Z', 'link', NULL, 'requires M.ORCH-T1235');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21486, 'M.ORCH-T1235', '2026-10-28T01:30:44Z', 'link', NULL, 'M.ORCH-T1240 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21487, 'M.ORCH-T1240', '2026-10-28T01:30:45Z', 'link', NULL, 'requires M.TIX-T249');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21488, 'M.TIX-T249', '2026-10-28T01:30:45Z', 'link', NULL, 'M.ORCH-T1240 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21489, 'M.ORCH-T1240', '2026-10-28T01:30:46Z', 'link', NULL, 'requires M.ORCH-T1236');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21490, 'M.ORCH-T1236', '2026-10-28T01:30:46Z', 'link', NULL, 'M.ORCH-T1240 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21491, 'M.ORCH-T1240', '2026-10-28T01:30:47Z', 'link', NULL, 'requires M.TIX-T250');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21492, 'M.TIX-T250', '2026-10-28T01:30:47Z', 'link', NULL, 'M.ORCH-T1240 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21493, 'M.ORCH-T1240', '2026-10-28T01:30:48Z', 'link', NULL, 'requires M.ORCH-T1234');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21494, 'M.ORCH-T1234', '2026-10-28T01:30:49Z', 'link', NULL, 'M.ORCH-T1240 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21495, 'M.ORCH-T1240', '2026-10-28T01:30:49Z', 'link', NULL, 'requires M.TIX-T248');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21496, 'M.TIX-T248', '2026-10-28T01:30:50Z', 'link', NULL, 'M.ORCH-T1240 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21497, 'M.ORCH-T1240', '2026-10-28T01:30:51Z', 'link', NULL, 'requires M.TIX-T247');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21498, 'M.TIX-T247', '2026-10-28T01:30:51Z', 'link', NULL, 'M.ORCH-T1240 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21499, 'M.ORCH-T1240', '2026-10-28T01:30:52Z', 'link', NULL, 'requires M.CAPT-T79');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21500, 'M.CAPT-T79', '2026-10-28T01:30:52Z', 'link', NULL, 'M.ORCH-T1240 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21501, 'M.ORCH-T1240', '2026-10-28T01:30:53Z', 'link', NULL, 'requires M.LNCH-T89');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21502, 'M.LNCH-T89', '2026-10-28T01:30:53Z', 'link', NULL, 'M.ORCH-T1240 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21503, 'M.ORCH-T1240', '2026-10-28T01:30:54Z', 'link', NULL, 'requires M.ORCH-T1237');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21504, 'M.ORCH-T1237', '2026-10-28T01:30:54Z', 'link', NULL, 'M.ORCH-T1240 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21505, 'M.ORCH-T1240', '2026-10-28T01:30:55Z', 'link', NULL, 'requires M.TIX-T251');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21506, 'M.TIX-T251', '2026-10-28T01:30:55Z', 'link', NULL, 'M.ORCH-T1240 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21507, 'M.ORCH-T1240', '2026-10-28T01:30:56Z', 'link', NULL, 'requires M.SCHD-T22');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21508, 'M.SCHD-T22', '2026-10-28T01:30:56Z', 'link', NULL, 'M.ORCH-T1240 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21509, 'M.COMP-T64', '2026-10-28T01:30:57Z', 'link', NULL, 'part-of M.COMP-T138');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21510, 'M.COMP-T138', '2026-10-28T01:30:58Z', 'link', NULL, 'M.COMP-T64 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21511, 'M.COMP-T81', '2026-10-28T01:30:58Z', 'link', NULL, 'part-of M.COMP-T138');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21512, 'M.COMP-T138', '2026-10-28T01:30:59Z', 'link', NULL, 'M.COMP-T81 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21513, 'M.COMP-T70', '2026-10-28T01:30:59Z', 'link', NULL, 'part-of M.COMP-T138');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21514, 'M.COMP-T138', '2026-10-28T01:31:00Z', 'link', NULL, 'M.COMP-T70 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21515, 'M.COMP-T87', '2026-10-28T01:31:01Z', 'link', NULL, 'part-of M.COMP-T138');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21516, 'M.COMP-T138', '2026-10-28T01:31:01Z', 'link', NULL, 'M.COMP-T87 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21517, 'M.COMP-T125', '2026-10-28T01:31:02Z', 'link', NULL, 'requires M.COMP-T138');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21518, 'M.COMP-T138', '2026-10-28T01:31:02Z', 'link', NULL, 'M.COMP-T125 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21519, 'M.COMP-T68', '2026-10-28T01:31:03Z', 'link', NULL, 'part-of M.COMP-T139');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21520, 'M.COMP-T139', '2026-10-28T01:31:03Z', 'link', NULL, 'M.COMP-T68 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21521, 'M.COMP-T85', '2026-10-28T01:31:04Z', 'link', NULL, 'part-of M.COMP-T139');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21522, 'M.COMP-T139', '2026-10-28T01:31:04Z', 'link', NULL, 'M.COMP-T85 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21523, 'M.COMP-T72', '2026-10-28T01:31:05Z', 'link', NULL, 'part-of M.COMP-T139');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21524, 'M.COMP-T139', '2026-10-28T01:31:06Z', 'link', NULL, 'M.COMP-T72 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21525, 'M.COMP-T89', '2026-10-28T01:31:06Z', 'link', NULL, 'part-of M.COMP-T139');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21526, 'M.COMP-T139', '2026-10-28T01:31:07Z', 'link', NULL, 'M.COMP-T89 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21527, 'M.COMP-T125', '2026-10-28T01:31:07Z', 'link', NULL, 'requires M.COMP-T139');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21528, 'M.COMP-T139', '2026-10-28T01:31:08Z', 'link', NULL, 'M.COMP-T125 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21529, 'M.COMP-T125', '2026-10-28T01:31:09Z', 'link', NULL, 'requires M.COMP-T140');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21530, 'M.COMP-T140', '2026-10-28T01:31:09Z', 'link', NULL, 'M.COMP-T125 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21531, 'M.COMP-T61', '2026-10-28T01:31:10Z', 'link', NULL, 'part-of M.COMP-T141');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21532, 'M.COMP-T141', '2026-10-28T01:31:10Z', 'link', NULL, 'M.COMP-T61 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21533, 'M.COMP-T78', '2026-10-28T01:31:11Z', 'link', NULL, 'part-of M.COMP-T141');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21534, 'M.COMP-T141', '2026-10-28T01:31:11Z', 'link', NULL, 'M.COMP-T78 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21535, 'M.COMP-T62', '2026-10-28T01:31:12Z', 'link', NULL, 'part-of M.COMP-T141');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21536, 'M.COMP-T141', '2026-10-28T01:31:12Z', 'link', NULL, 'M.COMP-T62 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21537, 'M.COMP-T79', '2026-10-28T01:31:13Z', 'link', NULL, 'part-of M.COMP-T141');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21538, 'M.COMP-T141', '2026-10-28T01:31:13Z', 'link', NULL, 'M.COMP-T79 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21539, 'M.COMP-T66', '2026-10-28T01:31:14Z', 'link', NULL, 'part-of M.COMP-T141');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21540, 'M.COMP-T141', '2026-10-28T01:31:14Z', 'link', NULL, 'M.COMP-T66 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21541, 'M.COMP-T83', '2026-10-28T01:31:15Z', 'link', NULL, 'part-of M.COMP-T141');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21542, 'M.COMP-T141', '2026-10-28T01:31:16Z', 'link', NULL, 'M.COMP-T83 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21543, 'M.COMP-T67', '2026-10-28T01:31:17Z', 'link', NULL, 'part-of M.COMP-T141');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21544, 'M.COMP-T141', '2026-10-28T01:31:17Z', 'link', NULL, 'M.COMP-T67 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21545, 'M.COMP-T84', '2026-10-28T01:31:18Z', 'link', NULL, 'part-of M.COMP-T141');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21546, 'M.COMP-T141', '2026-10-28T01:31:18Z', 'link', NULL, 'M.COMP-T84 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21547, 'M.COMP-T74', '2026-10-28T01:31:19Z', 'link', NULL, 'part-of M.COMP-T141');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21548, 'M.COMP-T141', '2026-10-28T01:31:19Z', 'link', NULL, 'M.COMP-T74 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21549, 'M.COMP-T91', '2026-10-28T01:31:20Z', 'link', NULL, 'part-of M.COMP-T141');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21550, 'M.COMP-T141', '2026-10-28T01:31:20Z', 'link', NULL, 'M.COMP-T91 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21551, 'M.COMP-T75', '2026-10-28T01:31:21Z', 'link', NULL, 'part-of M.COMP-T141');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21552, 'M.COMP-T141', '2026-10-28T01:31:22Z', 'link', NULL, 'M.COMP-T75 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21553, 'M.COMP-T92', '2026-10-28T01:31:22Z', 'link', NULL, 'part-of M.COMP-T141');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21554, 'M.COMP-T141', '2026-10-28T01:31:23Z', 'link', NULL, 'M.COMP-T92 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21555, 'M.COMP-T125', '2026-10-28T01:31:24Z', 'link', NULL, 'requires M.COMP-T141');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21556, 'M.COMP-T141', '2026-10-28T01:31:24Z', 'link', NULL, 'M.COMP-T125 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21557, 'M.COMP-T71', '2026-10-28T01:31:25Z', 'link', NULL, 'part-of M.COMP-T142');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21558, 'M.COMP-T142', '2026-10-28T01:31:25Z', 'link', NULL, 'M.COMP-T71 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21559, 'M.COMP-T88', '2026-10-28T01:31:26Z', 'link', NULL, 'part-of M.COMP-T142');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21560, 'M.COMP-T142', '2026-10-28T01:31:26Z', 'link', NULL, 'M.COMP-T88 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21561, 'M.COMP-T73', '2026-10-28T01:31:27Z', 'link', NULL, 'part-of M.COMP-T142');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21562, 'M.COMP-T142', '2026-10-28T01:31:28Z', 'link', NULL, 'M.COMP-T73 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21563, 'M.COMP-T90', '2026-10-28T01:31:29Z', 'link', NULL, 'part-of M.COMP-T142');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21564, 'M.COMP-T142', '2026-10-28T01:31:29Z', 'link', NULL, 'M.COMP-T90 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21565, 'M.COMP-T63', '2026-10-28T01:31:30Z', 'link', NULL, 'part-of M.COMP-T142');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21566, 'M.COMP-T142', '2026-10-28T01:31:30Z', 'link', NULL, 'M.COMP-T63 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21567, 'M.COMP-T80', '2026-10-28T01:31:31Z', 'link', NULL, 'part-of M.COMP-T142');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21568, 'M.COMP-T142', '2026-10-28T01:31:31Z', 'link', NULL, 'M.COMP-T80 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21569, 'M.COMP-T76', '2026-10-28T01:31:32Z', 'link', NULL, 'part-of M.COMP-T142');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21570, 'M.COMP-T142', '2026-10-28T01:31:32Z', 'link', NULL, 'M.COMP-T76 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21571, 'M.COMP-T93', '2026-10-28T01:31:33Z', 'link', NULL, 'part-of M.COMP-T142');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21572, 'M.COMP-T142', '2026-10-28T01:31:33Z', 'link', NULL, 'M.COMP-T93 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21573, 'M.COMP-T125', '2026-10-28T01:31:34Z', 'link', NULL, 'requires M.COMP-T142');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21574, 'M.COMP-T142', '2026-10-28T01:31:34Z', 'link', NULL, 'M.COMP-T125 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21575, 'M.COMP-T65', '2026-10-28T01:31:35Z', 'link', NULL, 'part-of M.COMP-T143');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21576, 'M.COMP-T143', '2026-10-28T01:31:36Z', 'link', NULL, 'M.COMP-T65 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21577, 'M.COMP-T82', '2026-10-28T01:31:36Z', 'link', NULL, 'part-of M.COMP-T143');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21578, 'M.COMP-T143', '2026-10-28T01:31:37Z', 'link', NULL, 'M.COMP-T82 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21579, 'M.COMP-T69', '2026-10-28T01:31:38Z', 'link', NULL, 'part-of M.COMP-T143');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21580, 'M.COMP-T143', '2026-10-28T01:31:38Z', 'link', NULL, 'M.COMP-T69 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21581, 'M.COMP-T86', '2026-10-28T01:31:39Z', 'link', NULL, 'part-of M.COMP-T143');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21582, 'M.COMP-T143', '2026-10-28T01:31:39Z', 'link', NULL, 'M.COMP-T86 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21583, 'M.COMP-T125', '2026-10-28T01:31:40Z', 'link', NULL, 'requires M.COMP-T143');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21584, 'M.COMP-T143', '2026-10-28T01:31:40Z', 'link', NULL, 'M.COMP-T125 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21585, 'M.COMP-T122', '2026-10-28T01:31:41Z', 'link', NULL, 'requires M.COMP-T134');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21586, 'M.COMP-T134', '2026-10-28T01:31:41Z', 'link', NULL, 'M.COMP-T122 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21587, 'M.COMP-T122', '2026-10-28T01:31:42Z', 'link', NULL, 'requires M.COMP-T127');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21588, 'M.COMP-T127', '2026-10-28T01:31:43Z', 'link', NULL, 'M.COMP-T122 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21589, 'M.ORCH-T1241', '2026-10-28T01:31:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21590, 'M.ORCH-T1241', '2026-10-28T01:31:43Z', 'priority', '0', '702');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21591, 'M.COMP-T123', '2026-10-28T01:31:43Z', 'link', NULL, 'requires M.COMP-T131');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21592, 'M.COMP-T131', '2026-10-28T01:31:44Z', 'link', NULL, 'M.COMP-T123 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21593, 'M.COMP-T123', '2026-10-28T01:31:45Z', 'link', NULL, 'requires M.COMP-T132');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21594, 'M.COMP-T132', '2026-10-28T01:31:45Z', 'link', NULL, 'M.COMP-T123 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21595, 'M.COMP-T124', '2026-10-28T01:31:47Z', 'link', NULL, 'requires M.COMP-T134');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21596, 'M.COMP-T134', '2026-10-28T01:31:48Z', 'link', NULL, 'M.COMP-T124 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21597, 'M.COMP-T124', '2026-10-28T01:31:49Z', 'link', NULL, 'requires M.COMP-T133');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21598, 'M.COMP-T133', '2026-10-28T01:31:49Z', 'link', NULL, 'M.COMP-T124 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21599, 'M.COMP-T125', '2026-10-28T01:31:51Z', 'link', NULL, 'requires M.COMP-T136');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21600, 'M.COMP-T136', '2026-10-28T01:31:51Z', 'link', NULL, 'M.COMP-T125 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21601, 'M.COMP-T125', '2026-10-28T01:31:52Z', 'link', NULL, 'requires M.COMP-T137');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21602, 'M.COMP-T137', '2026-10-28T01:31:52Z', 'link', NULL, 'M.COMP-T125 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21603, 'M.COMP-T117', '2026-10-28T01:31:53Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21604, 'M.ORCH-T1196', '2026-10-28T01:31:53Z', 'link', NULL, 'M.COMP-T117 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21605, 'M.COMP-T126', '2026-10-28T01:31:54Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21606, 'M.ORCH-T1196', '2026-10-28T01:31:54Z', 'link', NULL, 'M.COMP-T126 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21607, 'M.ORCH-T1197', '2026-10-28T01:31:56Z', 'link', NULL, 'requires M.ORCH-T1220');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21608, 'M.ORCH-T1220', '2026-10-28T01:31:56Z', 'link', NULL, 'M.ORCH-T1197 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21609, 'M.ORCH-T1198', '2026-10-28T01:31:57Z', 'link', NULL, 'requires M.ORCH-T1217');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21610, 'M.ORCH-T1217', '2026-10-28T01:31:57Z', 'link', NULL, 'M.ORCH-T1198 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21611, 'M.ORCH-T1198', '2026-10-28T01:31:58Z', 'link', NULL, 'requires M.ORCH-T1218');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21612, 'M.ORCH-T1218', '2026-10-28T01:31:58Z', 'link', NULL, 'M.ORCH-T1198 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21613, 'M.ORCH-T1198', '2026-10-28T01:31:59Z', 'link', NULL, 'requires M.ORCH-T1214');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21614, 'M.ORCH-T1214', '2026-10-28T01:31:59Z', 'link', NULL, 'M.ORCH-T1198 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21615, 'M.ORCH-T1198', '2026-10-28T01:32:00Z', 'link', NULL, 'requires M.ORCH-T1221');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21616, 'M.ORCH-T1221', '2026-10-28T01:32:00Z', 'link', NULL, 'M.ORCH-T1198 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21617, 'M.ORCH-T1198', '2026-10-28T01:32:01Z', 'link', NULL, 'requires M.ORCH-T1222');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21618, 'M.ORCH-T1222', '2026-10-28T01:32:02Z', 'link', NULL, 'M.ORCH-T1198 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21619, 'M.ORCH-T1198', '2026-10-28T01:32:02Z', 'link', NULL, 'requires M.ORCH-T1223');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21620, 'M.ORCH-T1223', '2026-10-28T01:32:03Z', 'link', NULL, 'M.ORCH-T1198 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21621, 'M.ORCH-T1199', '2026-10-28T01:32:04Z', 'link', NULL, 'requires M.ORCH-T1228');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21622, 'M.ORCH-T1228', '2026-10-28T01:32:04Z', 'link', NULL, 'M.ORCH-T1199 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21623, 'M.ORCH-T1199', '2026-10-28T01:32:05Z', 'link', NULL, 'requires M.ORCH-T1229');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21624, 'M.ORCH-T1229', '2026-10-28T01:32:05Z', 'link', NULL, 'M.ORCH-T1199 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21625, 'M.ORCH-T1199', '2026-10-28T01:32:06Z', 'link', NULL, 'requires M.ORCH-T1230');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21626, 'M.ORCH-T1230', '2026-10-28T01:32:07Z', 'link', NULL, 'M.ORCH-T1199 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21627, 'M.ORCH-T1199', '2026-10-28T01:32:08Z', 'link', NULL, 'requires M.ORCH-T1231');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21628, 'M.ORCH-T1231', '2026-10-28T01:32:08Z', 'link', NULL, 'M.ORCH-T1199 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21629, 'M.ORCH-T1199', '2026-10-28T01:32:09Z', 'link', NULL, 'requires M.ORCH-T1232');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21630, 'M.ORCH-T1232', '2026-10-28T01:32:09Z', 'link', NULL, 'M.ORCH-T1199 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21631, 'M.ORCH-T1199', '2026-10-28T01:32:10Z', 'link', NULL, 'requires M.ORCH-T1233');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21632, 'M.ORCH-T1233', '2026-10-28T01:32:11Z', 'link', NULL, 'M.ORCH-T1199 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21633, 'M.ORCH-T1199', '2026-10-28T01:32:12Z', 'link', NULL, 'requires M.ORCH-T1234');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21634, 'M.ORCH-T1234', '2026-10-28T01:32:13Z', 'link', NULL, 'M.ORCH-T1199 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21635, 'M.ORCH-T1199', '2026-10-28T01:32:14Z', 'link', NULL, 'requires M.ORCH-T1235');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21636, 'M.ORCH-T1235', '2026-10-28T01:32:14Z', 'link', NULL, 'M.ORCH-T1199 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21637, 'M.ORCH-T1199', '2026-10-28T01:32:15Z', 'link', NULL, 'requires M.ORCH-T1236');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21638, 'M.ORCH-T1236', '2026-10-28T01:32:15Z', 'link', NULL, 'M.ORCH-T1199 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21639, 'M.ORCH-T1199', '2026-10-28T01:32:16Z', 'link', NULL, 'requires M.ORCH-T1227');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21640, 'M.ORCH-T1227', '2026-10-28T01:32:17Z', 'link', NULL, 'M.ORCH-T1199 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21641, 'M.ORCH-T1200', '2026-10-28T01:32:18Z', 'link', NULL, 'requires M.ORCH-T1205');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21642, 'M.ORCH-T1205', '2026-10-28T01:32:18Z', 'link', NULL, 'M.ORCH-T1200 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21643, 'M.ORCH-T1200', '2026-10-28T01:32:19Z', 'link', NULL, 'requires M.ORCH-T1216');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21644, 'M.ORCH-T1216', '2026-10-28T01:32:19Z', 'link', NULL, 'M.ORCH-T1200 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21645, 'M.ORCH-T1205', '2026-10-28T01:32:20Z', 'link', NULL, 'requires M.ORCH-T1216');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21646, 'M.ORCH-T1216', '2026-10-28T01:32:20Z', 'link', NULL, 'M.ORCH-T1205 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21647, 'M.ORCH-T1205', '2026-10-28T01:32:21Z', 'link', NULL, 'requires M.ORCH-T1217');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21648, 'M.ORCH-T1217', '2026-10-28T01:32:22Z', 'link', NULL, 'M.ORCH-T1205 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21649, 'M.ORCH-T1205', '2026-10-28T01:32:23Z', 'link', NULL, 'requires M.ORCH-T1213');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21650, 'M.ORCH-T1213', '2026-10-28T01:32:23Z', 'link', NULL, 'M.ORCH-T1205 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21651, 'M.TIX-T224', '2026-10-28T01:32:24Z', 'link', NULL, 'requires M.TIX-T234');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21652, 'M.TIX-T234', '2026-10-28T01:32:24Z', 'link', NULL, 'M.TIX-T224 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21653, 'M.TIX-T225', '2026-10-28T01:32:25Z', 'link', NULL, 'requires M.TIX-T232');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21654, 'M.TIX-T232', '2026-10-28T01:32:25Z', 'link', NULL, 'M.TIX-T225 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21655, 'M.TIX-T225', '2026-10-28T01:32:26Z', 'link', NULL, 'requires M.TIX-T236');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21656, 'M.TIX-T236', '2026-10-28T01:32:26Z', 'link', NULL, 'M.TIX-T225 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21657, 'M.TIX-T225', '2026-10-28T01:32:27Z', 'link', NULL, 'requires M.TIX-T231');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21658, 'M.TIX-T231', '2026-10-28T01:32:28Z', 'link', NULL, 'M.TIX-T225 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21659, 'M.TIX-T225', '2026-10-28T01:32:28Z', 'link', NULL, 'requires M.TIX-T235');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21660, 'M.TIX-T235', '2026-10-28T01:32:29Z', 'link', NULL, 'M.TIX-T225 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21661, 'M.TIX-T225', '2026-10-28T01:32:30Z', 'link', NULL, 'requires M.TIX-T237');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21662, 'M.TIX-T237', '2026-10-28T01:32:30Z', 'link', NULL, 'M.TIX-T225 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21663, 'M.TIX-T226', '2026-10-28T01:32:31Z', 'link', NULL, 'requires M.TIX-T241');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21664, 'M.TIX-T241', '2026-10-28T01:32:31Z', 'link', NULL, 'M.TIX-T226 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21665, 'M.TIX-T226', '2026-10-28T01:32:32Z', 'link', NULL, 'requires M.TIX-T242');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21666, 'M.TIX-T242', '2026-10-28T01:32:32Z', 'link', NULL, 'M.TIX-T226 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21667, 'M.TIX-T226', '2026-10-28T01:32:33Z', 'link', NULL, 'requires M.TIX-T243');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21668, 'M.TIX-T243', '2026-10-28T01:32:33Z', 'link', NULL, 'M.TIX-T226 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21669, 'M.TIX-T226', '2026-10-28T01:32:34Z', 'link', NULL, 'requires M.TIX-T244');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21670, 'M.TIX-T244', '2026-10-28T01:32:35Z', 'link', NULL, 'M.TIX-T226 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21671, 'M.TIX-T226', '2026-10-28T01:32:36Z', 'link', NULL, 'requires M.TIX-T245');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21672, 'M.TIX-T245', '2026-10-28T01:32:36Z', 'link', NULL, 'M.TIX-T226 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21673, 'M.TIX-T226', '2026-10-28T01:32:37Z', 'link', NULL, 'requires M.TIX-T246');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21674, 'M.TIX-T246', '2026-10-28T01:32:37Z', 'link', NULL, 'M.TIX-T226 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21675, 'M.TIX-T226', '2026-10-28T01:32:38Z', 'link', NULL, 'requires M.TIX-T247');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21676, 'M.TIX-T247', '2026-10-28T01:32:38Z', 'link', NULL, 'M.TIX-T226 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21677, 'M.TIX-T226', '2026-10-28T01:32:39Z', 'link', NULL, 'requires M.TIX-T248');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21678, 'M.TIX-T248', '2026-10-28T01:32:39Z', 'link', NULL, 'M.TIX-T226 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21679, 'M.TIX-T226', '2026-10-28T01:32:40Z', 'link', NULL, 'requires M.TIX-T249');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21680, 'M.TIX-T249', '2026-10-28T01:32:40Z', 'link', NULL, 'M.TIX-T226 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21681, 'M.TIX-T226', '2026-10-28T01:32:41Z', 'link', NULL, 'requires M.TIX-T250');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21682, 'M.TIX-T250', '2026-10-28T01:32:42Z', 'link', NULL, 'M.TIX-T226 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21683, 'M.TIX-T227', '2026-10-28T01:32:42Z', 'link', NULL, 'requires M.TIX-T228');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21684, 'M.TIX-T228', '2026-10-28T01:32:43Z', 'link', NULL, 'M.TIX-T227 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21685, 'M.TIX-T228', '2026-10-28T01:32:44Z', 'link', NULL, 'requires M.ORCH-T1213');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21686, 'M.ORCH-T1213', '2026-10-28T01:32:44Z', 'link', NULL, 'M.TIX-T228 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21687, 'M.TIX-T228', '2026-10-28T01:32:45Z', 'link', NULL, 'requires M.TIX-T232');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21688, 'M.TIX-T232', '2026-10-28T01:32:45Z', 'link', NULL, 'M.TIX-T228 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21689, 'M.SCHD-T22', '2026-10-28T01:32:46Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21690, 'M.ORCH-T1196', '2026-10-28T01:32:46Z', 'link', NULL, 'M.SCHD-T22 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21691, 'M.SCHD-T22', '2026-10-28T01:32:47Z', 'link', NULL, 'requires M.ORCH-T1216');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21692, 'M.ORCH-T1216', '2026-10-28T01:32:47Z', 'link', NULL, 'M.SCHD-T22 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21693, 'M.RLY-T8', '2026-10-28T01:32:48Z', 'link', NULL, 'requires M.ORCH-T1218');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21694, 'M.ORCH-T1218', '2026-10-28T01:32:49Z', 'link', NULL, 'M.RLY-T8 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21695, 'M.RLY-T8', '2026-10-28T01:32:49Z', 'link', NULL, 'requires M.TIX-T232');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21696, 'M.TIX-T232', '2026-10-28T01:32:50Z', 'link', NULL, 'M.RLY-T8 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21697, 'M.RLY-T8', '2026-10-28T01:32:51Z', 'link', NULL, 'requires M.ORCH-T1197');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21698, 'M.ORCH-T1197', '2026-10-28T01:32:51Z', 'link', NULL, 'M.RLY-T8 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21699, 'M.RLY-T8', '2026-10-28T01:32:52Z', 'link', NULL, 'requires M.TIX-T224');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21700, 'M.TIX-T224', '2026-10-28T01:32:52Z', 'link', NULL, 'M.RLY-T8 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21701, 'M.RLY-T13', '2026-10-28T01:32:53Z', 'link', NULL, 'requires M.ORCH-T1197');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21702, 'M.ORCH-T1197', '2026-10-28T01:32:53Z', 'link', NULL, 'M.RLY-T13 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21703, 'M.RLY-T12', '2026-10-28T01:32:54Z', 'link', NULL, 'requires M.ORCH-T1199');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21704, 'M.ORCH-T1199', '2026-10-28T01:32:55Z', 'link', NULL, 'M.RLY-T12 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21705, 'M.RLY-T17', '2026-10-28T01:32:56Z', 'link', NULL, 'requires M.ORCH-T1199');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21706, 'M.ORCH-T1199', '2026-10-28T01:32:56Z', 'link', NULL, 'M.RLY-T17 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21707, 'M.RLY-T19', '2026-10-28T01:32:57Z', 'link', NULL, 'requires M.ORCH-T1199');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21708, 'M.ORCH-T1199', '2026-10-28T01:32:57Z', 'link', NULL, 'M.RLY-T19 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21709, 'M.RLY-T22', '2026-10-28T01:32:58Z', 'link', NULL, 'requires M.ORCH-T1199');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21710, 'M.ORCH-T1199', '2026-10-28T01:32:58Z', 'link', NULL, 'M.RLY-T22 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21711, 'M.RLY-T23', '2026-10-28T01:32:59Z', 'link', NULL, 'requires M.ORCH-T1199');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21712, 'M.ORCH-T1199', '2026-10-28T01:32:59Z', 'link', NULL, 'M.RLY-T23 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21713, 'M.RLY-T26', '2026-10-28T01:33:00Z', 'link', NULL, 'requires M.TIX-T226');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21714, 'M.TIX-T226', '2026-10-28T01:33:00Z', 'link', NULL, 'M.RLY-T26 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21715, 'M.COMP-T55', '2026-10-28T01:33:01Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21716, 'M.ORCH-T1196', '2026-10-28T01:33:01Z', 'link', NULL, 'M.COMP-T55 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21717, 'M.COMP-T59', '2026-10-28T01:33:02Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21718, 'M.ORCH-T1196', '2026-10-28T01:33:03Z', 'link', NULL, 'M.COMP-T59 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21719, 'M.COMP-T118', '2026-10-28T01:33:03Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21720, 'M.ORCH-T1196', '2026-10-28T01:33:04Z', 'link', NULL, 'M.COMP-T118 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21721, 'M.COMP-T119', '2026-10-28T01:33:05Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21722, 'M.ORCH-T1196', '2026-10-28T01:33:05Z', 'link', NULL, 'M.COMP-T119 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21723, 'M.COMP-T120', '2026-10-28T01:33:06Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21724, 'M.ORCH-T1196', '2026-10-28T01:33:06Z', 'link', NULL, 'M.COMP-T120 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21725, 'M.COMP-T121', '2026-10-28T01:33:07Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21726, 'M.ORCH-T1196', '2026-10-28T01:33:07Z', 'link', NULL, 'M.COMP-T121 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21727, 'M.ORCH-T1197', '2026-10-28T01:34:08Z', 'summary', 'Move the non-UI logic still inside the WPF view models into MindAttic.Orchestrator.Core, so the WPF and Maui shells share one engine', 'Move the dashboard view models (MainViewModel partials, TerminalsViewModel, SettingsViewModel, RepoTileViewModel, Palette, Queue) and MainWindow/App code-behind logic (status-stream and app-bus subscriptions, refresh and TermHost-resync timers, PaneBroker, session restore, tab sizing) into MindAttic.Orchestrator.Presentation; brushes become tones and the WPF views bind unchanged (corrected: MAUI & RELAY audit (M.ORCH-T1212))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21728, 'M.TIX-T224', '2026-10-28T01:34:10Z', 'summary', 'Move the non-UI logic still inside Tickets.Desktop''s view models into the MindAttic.Tickets library, so the WPF and Maui shells share it', 'Move Tickets.Desktop''s view models (15 MainViewModel partials, DetailViewModel, StoryViewModels, CommandPalette, row and header view models) and MainWindow code-behind logic (bus-refresh coalescing, DatabaseWatch lifetime, toast lifetimes, queue and board reorder rules) into MindAttic.Tickets.Desktop.Presentation, the 24 key bindings into a shared keymap; the WPF views bind unchanged (corrected: MAUI & RELAY audit (M.ORCH-T1212))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21729, 'M.ORCH-T1205', '2026-10-28T01:34:11Z', 'summary', 'Rename MindAttic.Orchestrator.Desktop.exe to MindAttic.Orchestrator.Desktop.Wpf.exe', 'Rename MindAttic.Orchestrator.Desktop.exe to MindAttic.Orchestrator.Desktop.Wpf.exe, leaving a small forwarding MindAttic.Orchestrator.Desktop.exe (as LegacyExeName does today) and updating Installer, run.ps1, the DashboardWindow process lookup, the extraction pruner, InstallerTests, README and docs; single-instance and pipe names stay unchanged (corrected: MAUI & RELAY audit (M.ORCH-T1212))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21730, 'M.TIX-T228', '2026-10-28T01:34:12Z', 'summary', 'Rename MindAttic.Tickets.Desktop.exe to MindAttic.Tickets.Desktop.Wpf.exe', 'Rename MindAttic.Tickets.Desktop.exe to MindAttic.Tickets.Desktop.Wpf.exe, leaving a small forwarding MindAttic.Tickets.Desktop.exe: fix the pack:// URI in Theme/Styles.xaml first, then update run.ps1 (kill, publish and build inputs), run.bat, shortcuts, InternalsVisibleTo, slnx, README and the path-based tests; the mutex and handoff pipe names stay unchanged (corrected: MAUI & RELAY audit (M.ORCH-T1212))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21731, 'M.ORCH-T1199', '2026-10-28T01:34:14Z', 'summary', 'Port every Orchestrator.Desktop screen to the Maui shell at exact WPF parity (same look, same editable settings), screen by screen', 'Sign-off: every Orchestrator.Desktop screen is ported to the Maui shell at WPF parity (M.ORCH-T1227..T1233), with the binding-coverage, library-only Razor and screen-parity gates green (corrected: MAUI & RELAY audit (M.ORCH-T1212))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21732, 'M.TIX-T226', '2026-10-28T01:34:17Z', 'summary', 'Port every Tickets.Desktop screen to the Maui shell at exact WPF parity (same look, same editable settings), screen by screen', 'Sign-off: every Tickets.Desktop screen is ported to the Maui shell at WPF parity (M.TIX-T241..T246), with the accessibility, binding-coverage, library-only Razor and screen-parity gates green (corrected: MAUI & RELAY audit (M.ORCH-T1212))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21733, 'M.ORCH-T1201', '2026-10-28T01:34:18Z', 'summary', 'Both Maui shells join the app bus over MindAttic.Relay (open a ticket, show its worker) and interoperate with the WPF shells', 'Move the shared Presentation app-bus clients onto MindAttic.Relay, so all four shells (WPF and Maui of Orchestrator and Tickets) use it, with the named-pipe bus kept as a permanent fallback (nothing depends on Relay to keep working); open-ticket and show-worker still reach exactly one shell (corrected: MAUI & RELAY audit (M.ORCH-T1212))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21734, 'M.COMP-T125', '2026-10-28T01:34:20Z', 'summary', 'Bring every component Orchestrator.Desktop and Tickets.Desktop use under a spec, so each has generated Web, Blazor and WPF siblings that stay in sync', 'Sign-off: every Ma* component and style Orchestrator and Tickets use is spec''d (M.COMP-T138..T143) with generated or surface-checked Web, Blazor and WPF siblings, the parity harness green, and Tokens, Mvvm, Wpf and Blazor published as their v2 majors (corrected: MAUI & RELAY audit (M.ORCH-T1212))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21735, 'M.SCHD-T22', '2026-10-28T01:34:21Z', 'summary', 'Point the Orchestrator.Daemon job (jobs.json, install.Tests.ps1, SCHEDULED_TASK_AUDIT.md) at C:\Apps\MindAttic.Orchestrator\MindAttic.Orchestrator.Desktop.exe after the Orchestrator dashboard exe rename (M.ORCH-T844)', 'Point the Orchestrator.Daemon job (jobs.json, install.Tests.ps1, SCHEDULED_TASK_AUDIT.md) at C:\Apps\MindAttic.Orchestrator\MindAttic.Orchestrator.Daemon.exe once the daemon has its own exe (M.ORCH-T1216); the old path keeps working through the forwarder (corrected: MAUI & RELAY audit (M.ORCH-T1212))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21736, 'M.COMP-T122', '2026-10-28T01:34:23Z', 'description', NULL, 'Define the spec file (for example `specs/<Component>.spec.json` with a JSON schema) as M.COMP-T127 sets out. It holds:
+- name and the WPF/Web/Blazor names;
+- kind: a keyed style on a stock type, a control class, or surface-only;
+- properties (name, type, default, which are bindable, matching WPF dependency property names);
+- events, parts (the `PART_*` names) and states;
+- the tokens used per part and state;
+- sample data for the galleries.
+
+**Done when:**
+- The schema is committed and validated in CI.
+- Three pilot specs (MaButton, MaBadge, MaModal) describe today''s WPF exactly: the M.COMP-T131 baseline agrees with them.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21737, 'M.COMP-T123', '2026-10-28T01:34:23Z', 'description', NULL, 'The generator is a .NET tool in the repo. From each spec it emits:
+- the WPF keyed style or template into the generated part of Theme.xaml;
+- the shared HTML/CSS/JS into `web/components/<Name>/`, committed;
+- the Blazor wrapper inputs.
+
+An MSBuild target in the Wpf and Blazor projects runs it in `--check` mode, so a sibling edited by hand without its spec fails the compile (TreatWarningsAsErrors is already on).
+
+**Done when:**
+- Regenerating the three pilot specs leaves the WPF render baseline (M.COMP-T132) and the API baseline (M.COMP-T131) unchanged.
+- A hand edit to a generated file fails the build.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21738, 'M.COMP-T124', '2026-10-28T01:34:24Z', 'description', NULL, 'A Razor class library, `MindAttic.Components.Blazor` (`net10.0`). It contains:
+- thin `.razor` wrappers over the generated markup and CSS, with spec properties as `[Parameter]`s and spec events as `EventCallback`s;
+- static assets under `_content/MindAttic.Components.Blazor/`, including `ma-tokens.css`;
+- a theme service (dark, light, high contrast) that mirrors MaTheme and MaHighContrast;
+- an `IUiDispatcher` implementation for `MindAttic.Components.Mvvm`;
+- bUnit tests.
+
+It must not break the `.razor` copies Tutor and Ideas keep by hand.
+
+**Done when:** the pilot components render in the gallery, and the package is published with `publish.ps1`.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21739, 'M.ORCH-T1198', '2026-10-28T01:34:25Z', 'description', NULL, '`MindAttic.Orchestrator.Desktop.Maui` is a MAUI Blazor Hybrid host. It is:
+- Windows-only (`net10.0-windows10.0.19041.0`), unpackaged, with the Windows App SDK self-contained;
+- a host for the host-agnostic Razor screen library `MindAttic.Orchestrator.Desktop.Ui`, over `MindAttic.Orchestrator.Presentation` and `MindAttic.Components.Blazor`.
+
+It provides:
+- its own single-instance name and the shell-aware app-bus presence (M.ORCH-T1217, T1218);
+- window size and position persistence and a dark title bar;
+- MindAttic.Log crash logging and a check for the WebView2 runtime;
+- a clean start when the daemon is absent, and a start-up time budget that is measured and recorded.
+
+**Done when:**
+- The exe opens next to the WPF dashboard, both run at once without interfering, and it shows a placeholder frame bound to the real MainViewModel.
+- WPF behaviour is unchanged.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21740, 'M.ORCH-T1200', '2026-10-28T01:34:25Z', 'description', NULL, '`run.ps1 -Republish` publishes both shells. It:
+- adds the Maui and Ui projects to the build inputs;
+- publishes the Maui shell as a folder (unpackaged MAUI doesn''t support single-file) to `C:\Apps\MindAttic.Orchestrator\Maui\`;
+- writes a second shortcut;
+- stops and starts both shells by path through Installer;
+- keeps the `orchestrator busy` check and the TermHost survival on redeploy;
+- has the run.bat menu cover both shells.
+
+**Done when:** one republish updates WPF, Maui, the daemon and the CLI, and a WPF-only machine behaves as before.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21741, 'M.TIX-T225', '2026-10-28T01:34:26Z', 'description', NULL, '`MindAttic.Tickets.Desktop.Maui` is a MAUI Blazor Hybrid host. It is Windows-only, unpackaged and self-contained, and runs over `MindAttic.Tickets.Desktop.Presentation` and `MindAttic.Components.Blazor`, with the screens in a host-agnostic Razor library.
+
+It has:
+- its own single-instance name and handoff pipe (`--ticket` handoff), with shell-aware app-bus presence (M.TIX-T232);
+- per-shell settings (M.TIX-T236) and incremental refresh (M.TIX-T235);
+- Vault and Log wired the same way as WPF.
+
+**Done when:** it opens next to the WPF Tickets Desktop, both run at once without interfering, and it shows a placeholder frame bound to the real MainViewModel.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21742, 'M.TIX-T227', '2026-10-28T01:34:28Z', 'description', NULL, '`run.ps1` and `tools/install.ps1` publish both shells:
+- the Maui project goes into the build inputs, as a folder publish to `C:\Apps\MindAttic.Tickets.Desktop\Maui\`;
+- a second shortcut;
+- the kill-before-publish step covers both exe names;
+- `install.ps1`''s test gate includes the Presentation and Maui test projects.
+
+**Done when:** one republish updates both shells and the CLI.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21743, 'M.RLY-T10', '2026-10-28T01:34:34Z', 'link', 'requires M.RLY-T2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21744, 'M.RLY-T2', '2026-10-28T01:34:35Z', 'link', 'M.RLY-T10 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21745, 'M.RLY-T11', '2026-10-28T01:34:36Z', 'link', 'requires M.RLY-T2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21746, 'M.RLY-T2', '2026-10-28T01:34:36Z', 'link', 'M.RLY-T11 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21747, 'M.RLY-T12', '2026-10-28T01:34:37Z', 'link', 'requires M.RLY-T2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21748, 'M.RLY-T2', '2026-10-28T01:34:38Z', 'link', 'M.RLY-T12 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21749, 'M.RLY-T13', '2026-10-28T01:34:38Z', 'link', 'requires M.RLY-T2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21750, 'M.RLY-T2', '2026-10-28T01:34:39Z', 'link', 'M.RLY-T13 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21751, 'M.RLY-T14', '2026-10-28T01:34:40Z', 'link', 'requires M.RLY-T2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21752, 'M.RLY-T2', '2026-10-28T01:34:40Z', 'link', 'M.RLY-T14 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21753, 'M.RLY-T15', '2026-10-28T01:34:42Z', 'link', 'requires M.RLY-T2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21754, 'M.RLY-T2', '2026-10-28T01:34:42Z', 'link', 'M.RLY-T15 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21755, 'M.RLY-T16', '2026-10-28T01:34:43Z', 'link', 'requires M.RLY-T2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21756, 'M.RLY-T2', '2026-10-28T01:34:43Z', 'link', 'M.RLY-T16 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21757, 'M.RLY-T17', '2026-10-28T01:34:45Z', 'link', 'requires M.RLY-T2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21758, 'M.RLY-T2', '2026-10-28T01:34:45Z', 'link', 'M.RLY-T17 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21759, 'M.RLY-T18', '2026-10-28T01:34:47Z', 'link', 'requires M.RLY-T2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21760, 'M.RLY-T2', '2026-10-28T01:34:47Z', 'link', 'M.RLY-T18 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21761, 'M.RLY-T19', '2026-10-28T01:34:48Z', 'link', 'requires M.RLY-T2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21762, 'M.RLY-T2', '2026-10-28T01:34:49Z', 'link', 'M.RLY-T19 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21763, 'M.RLY-T20', '2026-10-28T01:34:49Z', 'link', 'requires M.RLY-T2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21764, 'M.RLY-T2', '2026-10-28T01:34:50Z', 'link', 'M.RLY-T20 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21765, 'M.RLY-T21', '2026-10-28T01:34:50Z', 'link', 'requires M.RLY-T2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21766, 'M.RLY-T2', '2026-10-28T01:34:51Z', 'link', 'M.RLY-T21 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21767, 'M.RLY-T22', '2026-10-28T01:34:51Z', 'link', 'requires M.RLY-T2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21768, 'M.RLY-T2', '2026-10-28T01:34:52Z', 'link', 'M.RLY-T22 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21769, 'M.RLY-T23', '2026-10-28T01:34:52Z', 'link', 'requires M.RLY-T2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21770, 'M.RLY-T2', '2026-10-28T01:34:53Z', 'link', 'M.RLY-T23 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21771, 'M.RLY-T24', '2026-10-28T01:34:53Z', 'link', 'requires M.RLY-T2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21772, 'M.RLY-T2', '2026-10-28T01:34:54Z', 'link', 'M.RLY-T24 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21773, 'M.RLY-T25', '2026-10-28T01:34:54Z', 'link', 'requires M.RLY-T2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21774, 'M.RLY-T2', '2026-10-28T01:34:55Z', 'link', 'M.RLY-T25 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21775, 'M.RLY-T26', '2026-10-28T01:34:55Z', 'link', 'requires M.RLY-T2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21776, 'M.RLY-T2', '2026-10-28T01:34:56Z', 'link', 'M.RLY-T26 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21777, 'M.RLY-T27', '2026-10-28T01:34:56Z', 'link', 'requires M.RLY-T2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21778, 'M.RLY-T2', '2026-10-28T01:34:57Z', 'link', 'M.RLY-T27 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21779, 'M.RLY-T28', '2026-10-28T01:34:57Z', 'link', 'requires M.RLY-T2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21780, 'M.RLY-T2', '2026-10-28T01:34:58Z', 'link', 'M.RLY-T28 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21781, 'M.RLY-T29', '2026-10-28T01:34:58Z', 'link', 'requires M.RLY-T2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21782, 'M.RLY-T2', '2026-10-28T01:34:59Z', 'link', 'M.RLY-T29 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21783, 'M.RLY-T3', '2026-10-28T01:35:00Z', 'link', 'requires M.RLY-T2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21784, 'M.RLY-T2', '2026-10-28T01:35:00Z', 'link', 'M.RLY-T3 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21785, 'M.RLY-T30', '2026-10-28T01:35:01Z', 'link', 'requires M.RLY-T2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21786, 'M.RLY-T2', '2026-10-28T01:35:01Z', 'link', 'M.RLY-T30 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21787, 'M.RLY-T4', '2026-10-28T01:35:02Z', 'link', 'requires M.RLY-T2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21788, 'M.RLY-T2', '2026-10-28T01:35:02Z', 'link', 'M.RLY-T4 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21789, 'M.RLY-T5', '2026-10-28T01:35:03Z', 'link', 'requires M.RLY-T2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21790, 'M.RLY-T2', '2026-10-28T01:35:03Z', 'link', 'M.RLY-T5 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21791, 'M.RLY-T6', '2026-10-28T01:35:04Z', 'link', 'requires M.RLY-T2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21792, 'M.RLY-T2', '2026-10-28T01:35:04Z', 'link', 'M.RLY-T6 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21793, 'M.RLY-T7', '2026-10-28T01:35:05Z', 'link', 'requires M.RLY-T2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21794, 'M.RLY-T2', '2026-10-28T01:35:05Z', 'link', 'M.RLY-T7 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21795, 'M.RLY-T8', '2026-10-28T01:35:06Z', 'link', 'requires M.RLY-T2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21796, 'M.RLY-T2', '2026-10-28T01:35:06Z', 'link', 'M.RLY-T8 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21797, 'M.RLY-T9', '2026-10-28T01:35:07Z', 'link', 'requires M.RLY-T2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21798, 'M.RLY-T2', '2026-10-28T01:35:07Z', 'link', 'M.RLY-T9 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21799, 'M.ORCH-T1196', '2026-10-28T01:35:08Z', 'description', 'v2, cross-repo: Maui Blazor Hybrid editions of Orchestrator.Desktop and Tickets.Desktop at exact WPF parity, built on one component spec that generates matching Web, Blazor and WPF components in MindAttic.Components, plus MindAttic.Relay; build order is set by the requires links.', 'v2, cross-repo: Maui Blazor Hybrid editions of Orchestrator.Desktop and Tickets.Desktop at exact WPF parity, built on one component spec that generates matching Web, Blazor and WPF components in MindAttic.Components, plus MindAttic.Relay.
+
+**Ground rules (M.ORCH-T1213):**
+- The WPF apps stay fully working and backwards compatible at every step, proven by the WPF baselines and API freeze.
+- Both shells bind the same Presentation view models.
+- Every UI change lands in both shells in one commit (M.ORCH-T1238).
+- Parity is enforced by the binding-coverage gates and the screen and component parity harnesses.
+
+**Sequence** (ordered by the requires links; tickets at the same depth can run side by side):
+
+1. **M.COMP-T55**: WPF: a virtualizing list (MaVirtualList style or control): MaList/MaRowList use the non-virtualizing MaStackPanel in an ItemsControl with no scroll vi…
+2. **M.COMP-T59**: Add a real right-click context menu WPF control (e.g. MindAttic.Components.Wpf.Controls.ContextMenu), styled to match the existing DropdownMenu''s dark…
+3. **M.COMP-T117**: Fails on main: MindAttic.Components.Wpf.Tests.MaMessageBoxTests.MindAttic.Components.Wpf.Tests.MaMessageBoxTests.The_package_is_version_22 — Assert.Eq…
+4. **M.COMP-T118**: Add a combo box, checkbox, a drag-reorderable row list (MaRowList is a plain ItemsControl with no drag support), a GridView header/row style and a chi…
+5. **M.COMP-T119**: MaStatCard/MaSmallStat (Theme.xaml:334) hard-codes Height=74, which clips tiles that carry more than a label+value: Orchestrator''s 5-Hour/Weekly/Cut O…
+6. **M.COMP-T120**: Add MaCombo: a themed ComboBox style (chevron glyph with a Segoe Fluent Icons, Segoe MDL2 Assets font fallback) so consumer apps stop duplicating thei…
+7. **M.COMP-T121**: Add MaCheck: a themed CheckBox style (checkmark glyph with a Segoe Fluent Icons, Segoe MDL2 Assets font fallback) so consumer apps stop duplicating th…
+8. **M.COMP-T126**: MaPickerTests.Up_Down_Home_and_End_change_the_choice_while_it_stays_closed and MaHyperlinkTests.Keyboard_focus_underlines_the_link_and_losing_it_remov…
+9. **M.ORCH-T1213**: v2 architecture decision record (docs/design/v2-maui-relay.md): settle every cross-cutting choice for MAUI & RELAY before any code
+10. **M.ORCH-T1215**: Delete the five zero-byte .cs files committed at the repo root (App.xaml.cs, AccountRebalancer.cs, DropdownMenu.cs, MaHighContrast.cs, MaMessageBox.cs…
+11. **M.RLY-T3**: Relay server: install a pinned NATS server with JetStream as a Windows service on each machine (loopback-only, TLS, local CA, credentials required), w…
+12. **M.RLY-T4**: MindAttic.Relay.Contracts: Protocol Buffers message definitions with generated C# types, the envelope header names (Nats-Msg-Id, Relay-Type, Relay-Ver…
+13. **M.COMP-T127**: Components v2 design record (docs/design/v2-components.md): tokens, spec, generator, siblings and the WPF compatibility contract
+14. **M.ORCH-T1214**: Pin the .NET SDK band for v2: global.json to 10.0.2xx (rollForward latestFeature) and document the maui-windows 10.0.20 workload requirement in README
+15. **M.ORCH-T1216**: Split the daemon out of the dashboard exe: a headless MindAttic.Orchestrator.Daemon.exe (no WPF) runs Core.Daemon; MindAttic.Orchestrator.Desktop.exe …
+16. **M.RLY-T5**: MindAttic.Relay.Client: the one client every app uses (PublishAsync, SubscribeAsync with durable consumers and ack-after-handler, RequestAsync, ServeA…
+17. **M.RLY-T6**: Relay security: operator/account/user credentials with per-app subject permissions, credentials stored in MindAttic.Vault, `relay creds issue|revoke|l…
+18. **M.RLY-T14**: Hub 0.2: Orchestrator and Tickets hub messages defined in MindAttic.Relay.Contracts (presence, meter reading, session info, lease, policy snapshot, at…
+19. **M.TIX-T231**: Pin the .NET SDK band for v2: global.json to 10.0.2xx (rollForward latestFeature) and document the maui-windows workload requirement in README
+20. **M.COMP-T128**: Add global.json pinning the .NET SDK band 10.0.2xx (rollForward latestFeature) so Components.Blazor and the generator build on the same SDK as the app…
+21. **M.ORCH-T1217**: Two dashboards can run at once: per-shell single-instance names, a Preferred dashboard setting (WPF by default) used by the daemon, CLI, Launcher and …
+22. **M.RLY-T7**: MindAttic.Relay.Outbox: save a database change and its outgoing message in one EF Core transaction, then a background dispatcher publishes it with Nat…
+23. **M.RLY-T10**: Across machines: a hub Relay server accepts leaf connections that spokes dial out (TLS, or WebSocket on 443), each spoke keeps its own JetStream domai…
+24. **M.SCHD-T22**: Point the Orchestrator.Daemon job (jobs.json, install.Tests.ps1, SCHEDULED_TASK_AUDIT.md) at C:\Apps\MindAttic.Orchestrator\MindAttic.Orchestrator.Dae…
+25. **M.COMP-T129**: CI for MindAttic.Components: a GitHub Actions windows workflow that runs dotnet test on the slnx plus the web parity and package Playwright suites on …
+26. **M.ORCH-T1205**: Rename MindAttic.Orchestrator.Desktop.exe to MindAttic.Orchestrator.Desktop.Wpf.exe, leaving a small forwarding MindAttic.Orchestrator.Desktop.exe (as…
+27. **M.ORCH-T1218**: App bus v1.1, shell-aware: AppPresence gains shell (wpf|maui) and focusedAtUtc, presences are keyed by app+pid, and open-ticket/show-worker go to exac…
+28. **M.RLY-T9**: Second user: KdpPublish announces `prose.book.published` (slug, ASIN, Amazon URL, KDP title id) through the outbox in the same transaction that writes…
+29. **M.RLY-T11**: Device credentials and auth callout: a hub service issues each enrolled device a short-lived NATS user credential, and decides per-connection permissi…
+30. **M.COMP-T130**: Generalise dotnet/tools/publish-wpf.ps1 into publish.ps1 <Package> for every package (Tokens, Mvvm, Wpf, Blazor) with the same guards (on origin/main,…
+31. **M.COMP-T131**: Freeze the WPF public surface: a baseline test snapshotting the Theme.xaml pack URI, every style key with its TargetType and BasedOn, the control clas…
+32. **M.COMP-T132**: WPF render baseline: render every control and keyed style in each state (normal, hover, pressed, focused, disabled, checked, selected) × Dark/Light/hi…
+33. **M.LNCH-T89**: Follow the Orchestrator dashboard exe rename (M.ORCH-T1205): MainMenuCommand starts MindAttic.Orchestrator.Desktop.Wpf.exe, falling back to the old na…
+34. **M.TIX-T232**: App bus v1.1 in Tickets: update the copied contract (Bus/AppBus.cs) to the shell-aware presence, announce shell and focus changes, and honour single-t…
+35. **M.COMP-T133**: MindAttic.Components.Mvvm 1.0.0 (net10.0, no WPF): ObservableObject, RelayCommand/AsyncRelayCommand with explicit RaiseCanExecuteChanged, CollectionSy…
+36. **M.COMP-T134**: tokens.json as the one token source: the 27 Ma* colours (Dark/Light) plus new typography, spacing, radius, border, elevation, motion and icon-map toke…
+37. **M.TIX-T228**: Rename MindAttic.Tickets.Desktop.exe to MindAttic.Tickets.Desktop.Wpf.exe, leaving a small forwarding MindAttic.Tickets.Desktop.exe: fix the pack:// U…
+38. **M.TIX-T251**: Follow the Orchestrator exe rename: OrchestratorLink starts MindAttic.Orchestrator.Desktop.Wpf.exe (then the forwarder, then legacy names) and respect…
+39. **M.COMP-T122**: Component spec format: one spec per component (name, MindAttic.Components.Tokens styling, visual states, editable properties and events) as the single…
+40. **M.ORCH-T1219**: Adopt MindAttic.Components.Wpf 24 + MindAttic.Components.Mvvm 1 in the dashboard with no visual or behaviour change (all existing tests green)
+41. **M.ORCH-T1237**: Follow the Tickets exe rename: OrchestratorOptions.TicketsDesktopExe and TicketsApp.Name (window lookup and %LOCALAPPDATA% fallback) point at MindAtti…
+42. **M.TIX-T233**: Adopt MindAttic.Components.Wpf 24 + MindAttic.Components.Mvvm 1 in Tickets Desktop with no visual or behaviour change (all existing tests green)
+43. **M.COMP-T123**: Component generator: from each spec, emit the shared HTML/CSS/JS used by MindAttic.Components.Web and the WPF control (XAML + code-behind) in MindAtti…
+44. **M.ORCH-T1220**: Create MindAttic.Orchestrator.Presentation (UI-neutral, no UseWPF) with the services the view models need: IUiDispatcher, IUiTimer (replaces Dispatche…
+45. **M.TIX-T234**: Create MindAttic.Tickets.Desktop.Presentation (UI-neutral): move Data/ and Bus/ unchanged and add IUiDispatcher, IUiTimer, IDialogs (with SaveFile), I…
+46. **M.COMP-T124**: MindAttic.Components.Blazor (Razor class library): thin .razor wrappers over the generated shared markup and CSS, exposing the spec''s properties as pa…
+47. **M.COMP-T137**: Reconcile the existing site web components that share names with app components (Button, Modal, Textbox, Tag, Menu, ToolButton, ProgressBar, ThemeTogg…
+48. **M.ORCH-T1197**: Move the dashboard view models (MainViewModel partials, TerminalsViewModel, SettingsViewModel, RepoTileViewModel, Palette, Queue) and MainWindow/App c…
+49. **M.TIX-T224**: Move Tickets.Desktop''s view models (15 MainViewModel partials, DetailViewModel, StoryViewModels, CommandPalette, row and header view models) and MainW…
+50. **M.COMP-T135**: Component gallery: one Blazor/Web gallery page and one WPF gallery window that show every spec''d component in every state and theme from the spec''s sa…
+51. **M.ORCH-T1221**: Decouple TerminalPaneViewModel from the WPF terminal controls: the view model keeps only session state (TermHost id, connection, replay, size owner, e…
+52. **M.ORCH-T1222**: One shared command and keymap table in Presentation (commands, gestures, and TerminalKeyboard''s gating rules for when a key goes to the terminal or th…
+53. **M.RLY-T8**: First users: move AppBus between Orchestrator.Desktop and Tickets.Desktop onto Relay (ticket changed as an event, open-ticket and show-worker as comma…
+54. **M.RLY-T13**: Hub 0.1: hub seams in Orchestrator Core (IClaims, IPolicySource, IMeterSink, IOrgDirectory, ISessionDirectory) with Local implementations over today''s…
+55. **M.TIX-T235**: Incremental refresh: after the first full Snapshot load, apply changes by ticket id (from app-bus ticket events or a changed-since query on ticket_eve…
+56. **M.TIX-T236**: Two Tickets desktops at once: per-shell settings files (desktop.json migrated once into desktop.wpf.json/desktop.maui.json plus a shared part), refres…
+57. **M.TIX-T237**: Move the view-model tests (StoriesViewTests and the other 24 view-model-level files) to a UI-neutral MindAttic.Tickets.Desktop.Presentation.Tests proj…
+58. **M.COMP-T136**: Cross-sibling visual parity harness: render each spec''d component/state/theme in WPF (CRND) and in Blazor/Web (Playwright on the gallery in Chromium a…
+59. **M.ORCH-T1223**: Move the view-model tests to a UI-neutral MindAttic.Orchestrator.Presentation.Tests project (no STA, no WPF); WPF-only tests (LibraryOnlyXaml, Dashboa…
+60. **M.RLY-T15**: Hub 1.3: MindAttic.Orchestrator.Hub service on the hub machine: MindAttic.Authentication member sign-in, device enrollment page using Relay device cre…
+61. **M.RLY-T16**: Hub 1.4: spoke side of joining: the daemon supervises the machine''s Relay leaf link (Relay join), publishes presence each tick, and its state survives…
+62. **M.TIX-T225**: Scaffold MindAttic.Tickets.Desktop.Maui (.NET MAUI Blazor Hybrid, Windows) producing MindAttic.Tickets.Desktop.Maui.exe on the MindAttic.Tickets libra…
+63. **M.TIX-T238**: Deterministic fixture mode for Tickets Desktop: a committed anonymised fixture Tickets.db (~5,500 rows, epics, stories, queue, history) opened via MIN…
+64. **M.COMP-T138**: Spec the basic styles: buttons (MaToolButton, MaTextButton, MaButton, MaPrimaryButton, MaTileButton, MaStatCard, MaSmallStat, MaPillToggle, MaPinToggl…
+65. **M.COMP-T139**: Spec the inputs: MaTextBox/MaTextArea (placeholder), MaPicker (popup and keys), MaPillChoice, MaCombo, MaCheck and the chip, GridView header/row and d…
+66. **M.COMP-T140**: Spec lists and layout: MaList, MaRowList, MaTileList, MaStackPanel, MaTileGrid (UniformRows/Balanced as CSS grid), MaScrollArea gutter, and the virtua…
+67. **M.COMP-T141**: Spec overlays and feedback: MaModal (focus trap and restore), MaMessageBox (an in-window modal in Blazor), MaToast/MaToastHost (aria-live polite), too…
+68. **M.COMP-T142**: Spec navigation and chrome: MaTabControl/MaTabItem, MaThemeToggle, MaAccentTile, MaLink/MaHyperlink, MaHighContrast (forced-colors and system colours)…
+69. **M.COMP-T143**: Spec the drawn controls as hand-written siblings checked by spec surface: MaLineChart as SVG (same axes, grid, series colours, hit areas) and MaSpinne…
+70. **M.ORCH-T1198**: Scaffold MindAttic.Orchestrator.Desktop.Maui (.NET MAUI Blazor Hybrid, Windows) producing MindAttic.Orchestrator.Desktop.Maui.exe on Orchestrator.Core…
+71. **M.ORCH-T1224**: Deterministic fixture mode for the dashboard (--fixture <file>): canned logins, usage, meters, tickets, repos and terminals with recorded VT output, a…
+72. **M.TIX-T227**: Tickets'' deploy publishes both Tickets desktop exes (WPF and Maui) side by side
+73. **M.TIX-T239**: Capture the WPF Tickets Desktop baseline: screenshots of all seven tabs, the detail pane, New ticket, Prompt and Command palette in fixture mode at th…
+74. **M.TIX-T248**: Library-only Razor rule for Tickets Desktop.Maui: a test that fails any raw HTML element, inline style or literal colour in its Razor views outside Mi…
+75. **M.COMP-T125**: Sign-off: every Ma* component and style Orchestrator and Tickets use is spec''d (M.COMP-T138..T143) with generated or surface-checked Web, Blazor and W…
+76. **M.ORCH-T1200**: run.ps1 publishes and deploys both Orchestrator desktop exes (WPF and Maui) side by side
+77. **M.ORCH-T1225**: Capture the WPF dashboard baseline: screenshots of every screen, modal and window in fixture mode at three window sizes × Dark/Light/high contrast, co…
+78. **M.ORCH-T1227**: Maui terminal surface: an xterm.js Blazor component fed by TermHost frames (Replay, Live, Output, Modes, Exit, Size) over a JS-interop bridge on the e…
+79. **M.ORCH-T1234**: Library-only Razor rule: a test like LibraryOnlyXamlTests that fails any raw HTML element, inline style or literal colour in the dashboard''s Razor vie…
+80. **M.CAPT-T79**: Follow the Orchestrator dashboard exe rename and the Maui shell: AppWindows finds the host window under MindAttic.Orchestrator.Desktop.Wpf.exe and Min…
+81. **M.COMP-T144**: Contributor guide: how to add or change a component in v2 (spec first, regenerate, update the WPF baseline only on purpose, parity report, publish ord…
+82. **M.ORCH-T1226**: Adopt the spec-generated MindAttic.Components.Wpf major in the dashboard: no visual change against the WPF baseline (docs/parity/wpf-baseline) and eve…
+83. **M.TIX-T240**: Adopt the spec-generated MindAttic.Components.Wpf major in Tickets Desktop, retiring the local styles in Theme/Styles.xaml that the library now covers…
+84. **M.ORCH-T1228**: Port the dashboard frame to Maui: window, header stat tiles, Users | Repos | Misc tabs, toasts and FlashWindowEx equivalent, theme toggle, high contra…
+85. **M.ORCH-T1229**: Port the Users tab to Maui: login cards, usage, API-burn and utilisation charts, accounts, billing, orgs and reminders
+86. **M.ORCH-T1230**: Port the Repos tabs to Maui: Queue (virtualised), Audit, repo tiles, assigned work, phases and ticket pins
+87. **M.ORCH-T1231**: Port the terminals area to Maui: tab strip, tab status and blinking (TabBlinker), tab picker, pop-out, session restore, move, broadcast keys and launc…
+88. **M.ORCH-T1232**: Port the Settings and User settings modals to Maui with every setting editable the same way, the same validation and the same CLI round-trip
+89. **M.ORCH-T1233**: Port the secondary windows and dialogs to Maui: Team Wall (a second MAUI window), Build workspace, the command palette, folder picker and message boxe…
+90. **M.TIX-T241**: Port the Tickets Desktop frame to Maui: window, the seven tabs, toasts, zoom, high contrast, the command palette and the 24 keyboard shortcuts from th…
+91. **M.TIX-T242**: Port the Repos tab to Maui: the virtualised 5,500+ row list with grouping, filters, saved filters, labels and bulk actions, fed by incremental refresh
+92. **M.TIX-T243**: Port Queue and Board to Maui, including drag-to-reorder (HTML5 drag and drop, same rules as WPF''s DoDragDrop)
+93. **M.TIX-T244**: Port Audit, Activity and Stats to Maui (the stats table read-only with right-aligned numbers, as in WPF)
+94. **M.TIX-T245**: Port Stories to Maui: epics with chevrons and rollups, progress, Next up, implementer chips, editing with the changed-elsewhere conflict, implements l…
+95. **M.TIX-T246**: Port the detail pane, New ticket, Prompt and export/save dialogs to Maui
+96. **M.ORCH-T1235**: Binding-coverage gate: a test that every public property and command on the Presentation view models is used by both the WPF XAML and the Razor views,…
+97. **M.ORCH-T1236**: Screen parity harness for the dashboard: drive both shells in fixture mode, capture every screen, modal and window at the baseline sizes and themes, c…
+98. **M.TIX-T247**: Accessibility parity in the Maui shell: the AutomationNameTests rules (spoken row names, glyph-only buttons announce a name and role, polite live regi…
+99. **M.TIX-T249**: Binding-coverage gate for Tickets: every public property and command on the Presentation view models is used by both the WPF XAML and the Razor views,…
+100. **M.TIX-T250**: Screen parity harness for Tickets Desktop: both shells in fixture mode, every tab and dialog at the baseline sizes and themes, WPF↔Maui and WPF↔baseli…
+101. **M.ORCH-T1199**: Sign-off: every Orchestrator.Desktop screen is ported to the Maui shell at WPF parity (M.ORCH-T1227..T1233), with the binding-coverage, library-only R…
+102. **M.TIX-T226**: Sign-off: every Tickets.Desktop screen is ported to the Maui shell at WPF parity (M.TIX-T241..T246), with the accessibility, binding-coverage, library…
+103. **M.ORCH-T1201**: Move the shared Presentation app-bus clients onto MindAttic.Relay, so all four shells (WPF and Maui of Orchestrator and Tickets) use it, with the name…
+104. **M.ORCH-T1238**: Keep WPF and Maui in sync from now on: an AgentGate commit check (Orchestrator and Tickets) that refuses a commit changing one shell''s views without t…
+105. **M.ORCH-T1239**: Contributor guide for both apps: how to add a screen, setting or command so it lands in both shells (Presentation view model → WPF view → Razor view →…
+106. **M.RLY-T12**: Relay monitoring: `relay tail <subject>`, `relay dead-letters [--replay]`, stream and consumer lag, and a Relay page in Orchestrator.Desktop showing s…
+107. **M.RLY-T17**: Hub 1.5: `orchestrator hub host|join|status|leave|devices` as thin wrappers over `relay join|leave|status` plus the hub service, and a dashboard hub c…
+108. **M.ORCH-T1240**: Release v2.0.0: /test green in Components, Tickets and Orchestrator; both shells of both apps deployed side by side and checked live (open ticket, sho…
+109. **M.RLY-T18**: Hub 2.6: presence and meters over Relay: spokes publish CLI roster, masked sessions, meter readings and agent summaries; the hub merges meters per log…
+110. **M.RLY-T19**: Hub 2.7: org view in the dashboard and `/org usage` across machines, remote people read-only; members and orgs live at the hub and reach spokes throug…
+111. **M.RLY-T20**: Hub 3.8: terminal streams over Relay: the spoke publishes masked TermHost frames on `term.<device>.<session>.out`, viewers attach by command (replay f…
+112. **M.RLY-T21**: Hub 3.9: grants and audit at the hub, enforced by Relay auth callout (expiring per-viewer permissions on term subjects), with the spoke re-checking th…
+113. **M.RLY-T22**: Hub 3.10: owner consent for interact: a first-use toast per grant on the owner''s machine, watch-only on 30 s timeout; the spoke only reads `.in` for a…
+114. **M.RLY-T23**: Hub 3.11: Team Wall and TermViewer through Relay (`--hub`), listing org sessions from the presence bucket beside peer-to-peer remotes
+115. **M.RLY-T24**: Hub 4.12: Tickets over Relay: the hub''s TicketsDb is the store of record, every change is a `tix.ticket.changed` event on the TIX stream, each spoke''s…
+116. **M.RLY-T25**: Hub 4.13: ticket leases on Relay: `tix.cmd.claim` runs Allocate on the hub; leases live in the `leases` KV bucket where each renewal and completion is…
+117. **M.RLY-T26**: Hub 4.14 (MindAttic.Tickets): the tickets CLI and Tickets Desktop send writes as Relay commands to the hub when the machine has joined; read-only with…
+118. **M.RLY-T27**: Hub 5.15: central pacing policy in the hub''s `policy` KV bucket (cutoffs, allowances, pace target, routing, weekly reserve), mirrored to every spoke s…
+119. **M.RLY-T28**: Hub 5.16: per-login allowance split across devices when one Claude login is live on several machines, published as `AllowanceShare` entries in the pol…
+120. **M.RLY-T29**: Hub 5.17: opt-in remote dispatch (a spoke serves `orch.cmd.dispatch.<device>` only when its owner set AcceptDispatch) plus cross-machine rebalance and…
+121. **M.RLY-T30**: Hub 6.18: operations: deploy the hub service and the hub Relay server, JetStream and hub DB backups, operator and certificate key rotation, device rev…');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21800, 'M.COMP-T55', '2026-10-28T01:35:25Z', 'link', NULL, 'requires M.COMP-T129');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21801, 'M.COMP-T129', '2026-10-28T01:35:26Z', 'link', NULL, 'M.COMP-T55 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21802, 'M.COMP-T59', '2026-10-28T01:35:26Z', 'link', NULL, 'requires M.COMP-T129');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21803, 'M.COMP-T129', '2026-10-28T01:35:27Z', 'link', NULL, 'M.COMP-T59 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21804, 'M.COMP-T118', '2026-10-28T01:35:28Z', 'link', NULL, 'requires M.COMP-T129');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21805, 'M.COMP-T129', '2026-10-28T01:35:28Z', 'link', NULL, 'M.COMP-T118 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21806, 'M.COMP-T119', '2026-10-28T01:35:29Z', 'link', NULL, 'requires M.COMP-T129');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21807, 'M.COMP-T129', '2026-10-28T01:35:29Z', 'link', NULL, 'M.COMP-T119 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21808, 'M.COMP-T120', '2026-10-28T01:35:30Z', 'link', NULL, 'requires M.COMP-T129');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21809, 'M.COMP-T129', '2026-10-28T01:35:30Z', 'link', NULL, 'M.COMP-T120 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21810, 'M.COMP-T121', '2026-10-28T01:35:31Z', 'link', NULL, 'requires M.COMP-T129');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21811, 'M.COMP-T129', '2026-10-28T01:35:31Z', 'link', NULL, 'M.COMP-T121 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21812, 'M.ORCH-T1196', '2026-10-28T01:35:33Z', 'description', 'v2, cross-repo: Maui Blazor Hybrid editions of Orchestrator.Desktop and Tickets.Desktop at exact WPF parity, built on one component spec that generates matching Web, Blazor and WPF components in MindAttic.Components, plus MindAttic.Relay.
+
+**Ground rules (M.ORCH-T1213):**
+- The WPF apps stay fully working and backwards compatible at every step, proven by the WPF baselines and API freeze.
+- Both shells bind the same Presentation view models.
+- Every UI change lands in both shells in one commit (M.ORCH-T1238).
+- Parity is enforced by the binding-coverage gates and the screen and component parity harnesses.
+
+**Sequence** (ordered by the requires links; tickets at the same depth can run side by side):
+
+1. **M.COMP-T55**: WPF: a virtualizing list (MaVirtualList style or control): MaList/MaRowList use the non-virtualizing MaStackPanel in an ItemsControl with no scroll vi…
+2. **M.COMP-T59**: Add a real right-click context menu WPF control (e.g. MindAttic.Components.Wpf.Controls.ContextMenu), styled to match the existing DropdownMenu''s dark…
+3. **M.COMP-T117**: Fails on main: MindAttic.Components.Wpf.Tests.MaMessageBoxTests.MindAttic.Components.Wpf.Tests.MaMessageBoxTests.The_package_is_version_22 — Assert.Eq…
+4. **M.COMP-T118**: Add a combo box, checkbox, a drag-reorderable row list (MaRowList is a plain ItemsControl with no drag support), a GridView header/row style and a chi…
+5. **M.COMP-T119**: MaStatCard/MaSmallStat (Theme.xaml:334) hard-codes Height=74, which clips tiles that carry more than a label+value: Orchestrator''s 5-Hour/Weekly/Cut O…
+6. **M.COMP-T120**: Add MaCombo: a themed ComboBox style (chevron glyph with a Segoe Fluent Icons, Segoe MDL2 Assets font fallback) so consumer apps stop duplicating thei…
+7. **M.COMP-T121**: Add MaCheck: a themed CheckBox style (checkmark glyph with a Segoe Fluent Icons, Segoe MDL2 Assets font fallback) so consumer apps stop duplicating th…
+8. **M.COMP-T126**: MaPickerTests.Up_Down_Home_and_End_change_the_choice_while_it_stays_closed and MaHyperlinkTests.Keyboard_focus_underlines_the_link_and_losing_it_remov…
+9. **M.ORCH-T1213**: v2 architecture decision record (docs/design/v2-maui-relay.md): settle every cross-cutting choice for MAUI & RELAY before any code
+10. **M.ORCH-T1215**: Delete the five zero-byte .cs files committed at the repo root (App.xaml.cs, AccountRebalancer.cs, DropdownMenu.cs, MaHighContrast.cs, MaMessageBox.cs…
+11. **M.RLY-T3**: Relay server: install a pinned NATS server with JetStream as a Windows service on each machine (loopback-only, TLS, local CA, credentials required), w…
+12. **M.RLY-T4**: MindAttic.Relay.Contracts: Protocol Buffers message definitions with generated C# types, the envelope header names (Nats-Msg-Id, Relay-Type, Relay-Ver…
+13. **M.COMP-T127**: Components v2 design record (docs/design/v2-components.md): tokens, spec, generator, siblings and the WPF compatibility contract
+14. **M.ORCH-T1214**: Pin the .NET SDK band for v2: global.json to 10.0.2xx (rollForward latestFeature) and document the maui-windows 10.0.20 workload requirement in README
+15. **M.ORCH-T1216**: Split the daemon out of the dashboard exe: a headless MindAttic.Orchestrator.Daemon.exe (no WPF) runs Core.Daemon; MindAttic.Orchestrator.Desktop.exe …
+16. **M.RLY-T5**: MindAttic.Relay.Client: the one client every app uses (PublishAsync, SubscribeAsync with durable consumers and ack-after-handler, RequestAsync, ServeA…
+17. **M.RLY-T6**: Relay security: operator/account/user credentials with per-app subject permissions, credentials stored in MindAttic.Vault, `relay creds issue|revoke|l…
+18. **M.RLY-T14**: Hub 0.2: Orchestrator and Tickets hub messages defined in MindAttic.Relay.Contracts (presence, meter reading, session info, lease, policy snapshot, at…
+19. **M.TIX-T231**: Pin the .NET SDK band for v2: global.json to 10.0.2xx (rollForward latestFeature) and document the maui-windows workload requirement in README
+20. **M.COMP-T128**: Add global.json pinning the .NET SDK band 10.0.2xx (rollForward latestFeature) so Components.Blazor and the generator build on the same SDK as the app…
+21. **M.ORCH-T1217**: Two dashboards can run at once: per-shell single-instance names, a Preferred dashboard setting (WPF by default) used by the daemon, CLI, Launcher and …
+22. **M.RLY-T7**: MindAttic.Relay.Outbox: save a database change and its outgoing message in one EF Core transaction, then a background dispatcher publishes it with Nat…
+23. **M.RLY-T10**: Across machines: a hub Relay server accepts leaf connections that spokes dial out (TLS, or WebSocket on 443), each spoke keeps its own JetStream domai…
+24. **M.SCHD-T22**: Point the Orchestrator.Daemon job (jobs.json, install.Tests.ps1, SCHEDULED_TASK_AUDIT.md) at C:\Apps\MindAttic.Orchestrator\MindAttic.Orchestrator.Dae…
+25. **M.COMP-T129**: CI for MindAttic.Components: a GitHub Actions windows workflow that runs dotnet test on the slnx plus the web parity and package Playwright suites on …
+26. **M.ORCH-T1205**: Rename MindAttic.Orchestrator.Desktop.exe to MindAttic.Orchestrator.Desktop.Wpf.exe, leaving a small forwarding MindAttic.Orchestrator.Desktop.exe (as…
+27. **M.ORCH-T1218**: App bus v1.1, shell-aware: AppPresence gains shell (wpf|maui) and focusedAtUtc, presences are keyed by app+pid, and open-ticket/show-worker go to exac…
+28. **M.RLY-T9**: Second user: KdpPublish announces `prose.book.published` (slug, ASIN, Amazon URL, KDP title id) through the outbox in the same transaction that writes…
+29. **M.RLY-T11**: Device credentials and auth callout: a hub service issues each enrolled device a short-lived NATS user credential, and decides per-connection permissi…
+30. **M.COMP-T130**: Generalise dotnet/tools/publish-wpf.ps1 into publish.ps1 <Package> for every package (Tokens, Mvvm, Wpf, Blazor) with the same guards (on origin/main,…
+31. **M.COMP-T131**: Freeze the WPF public surface: a baseline test snapshotting the Theme.xaml pack URI, every style key with its TargetType and BasedOn, the control clas…
+32. **M.COMP-T132**: WPF render baseline: render every control and keyed style in each state (normal, hover, pressed, focused, disabled, checked, selected) × Dark/Light/hi…
+33. **M.LNCH-T89**: Follow the Orchestrator dashboard exe rename (M.ORCH-T1205): MainMenuCommand starts MindAttic.Orchestrator.Desktop.Wpf.exe, falling back to the old na…
+34. **M.TIX-T232**: App bus v1.1 in Tickets: update the copied contract (Bus/AppBus.cs) to the shell-aware presence, announce shell and focus changes, and honour single-t…
+35. **M.COMP-T133**: MindAttic.Components.Mvvm 1.0.0 (net10.0, no WPF): ObservableObject, RelayCommand/AsyncRelayCommand with explicit RaiseCanExecuteChanged, CollectionSy…
+36. **M.COMP-T134**: tokens.json as the one token source: the 27 Ma* colours (Dark/Light) plus new typography, spacing, radius, border, elevation, motion and icon-map toke…
+37. **M.TIX-T228**: Rename MindAttic.Tickets.Desktop.exe to MindAttic.Tickets.Desktop.Wpf.exe, leaving a small forwarding MindAttic.Tickets.Desktop.exe: fix the pack:// U…
+38. **M.TIX-T251**: Follow the Orchestrator exe rename: OrchestratorLink starts MindAttic.Orchestrator.Desktop.Wpf.exe (then the forwarder, then legacy names) and respect…
+39. **M.COMP-T122**: Component spec format: one spec per component (name, MindAttic.Components.Tokens styling, visual states, editable properties and events) as the single…
+40. **M.ORCH-T1219**: Adopt MindAttic.Components.Wpf 24 + MindAttic.Components.Mvvm 1 in the dashboard with no visual or behaviour change (all existing tests green)
+41. **M.ORCH-T1237**: Follow the Tickets exe rename: OrchestratorOptions.TicketsDesktopExe and TicketsApp.Name (window lookup and %LOCALAPPDATA% fallback) point at MindAtti…
+42. **M.TIX-T233**: Adopt MindAttic.Components.Wpf 24 + MindAttic.Components.Mvvm 1 in Tickets Desktop with no visual or behaviour change (all existing tests green)
+43. **M.COMP-T123**: Component generator: from each spec, emit the shared HTML/CSS/JS used by MindAttic.Components.Web and the WPF control (XAML + code-behind) in MindAtti…
+44. **M.ORCH-T1220**: Create MindAttic.Orchestrator.Presentation (UI-neutral, no UseWPF) with the services the view models need: IUiDispatcher, IUiTimer (replaces Dispatche…
+45. **M.TIX-T234**: Create MindAttic.Tickets.Desktop.Presentation (UI-neutral): move Data/ and Bus/ unchanged and add IUiDispatcher, IUiTimer, IDialogs (with SaveFile), I…
+46. **M.COMP-T124**: MindAttic.Components.Blazor (Razor class library): thin .razor wrappers over the generated shared markup and CSS, exposing the spec''s properties as pa…
+47. **M.COMP-T137**: Reconcile the existing site web components that share names with app components (Button, Modal, Textbox, Tag, Menu, ToolButton, ProgressBar, ThemeTogg…
+48. **M.ORCH-T1197**: Move the dashboard view models (MainViewModel partials, TerminalsViewModel, SettingsViewModel, RepoTileViewModel, Palette, Queue) and MainWindow/App c…
+49. **M.TIX-T224**: Move Tickets.Desktop''s view models (15 MainViewModel partials, DetailViewModel, StoryViewModels, CommandPalette, row and header view models) and MainW…
+50. **M.COMP-T135**: Component gallery: one Blazor/Web gallery page and one WPF gallery window that show every spec''d component in every state and theme from the spec''s sa…
+51. **M.ORCH-T1221**: Decouple TerminalPaneViewModel from the WPF terminal controls: the view model keeps only session state (TermHost id, connection, replay, size owner, e…
+52. **M.ORCH-T1222**: One shared command and keymap table in Presentation (commands, gestures, and TerminalKeyboard''s gating rules for when a key goes to the terminal or th…
+53. **M.RLY-T8**: First users: move AppBus between Orchestrator.Desktop and Tickets.Desktop onto Relay (ticket changed as an event, open-ticket and show-worker as comma…
+54. **M.RLY-T13**: Hub 0.1: hub seams in Orchestrator Core (IClaims, IPolicySource, IMeterSink, IOrgDirectory, ISessionDirectory) with Local implementations over today''s…
+55. **M.TIX-T235**: Incremental refresh: after the first full Snapshot load, apply changes by ticket id (from app-bus ticket events or a changed-since query on ticket_eve…
+56. **M.TIX-T236**: Two Tickets desktops at once: per-shell settings files (desktop.json migrated once into desktop.wpf.json/desktop.maui.json plus a shared part), refres…
+57. **M.TIX-T237**: Move the view-model tests (StoriesViewTests and the other 24 view-model-level files) to a UI-neutral MindAttic.Tickets.Desktop.Presentation.Tests proj…
+58. **M.COMP-T136**: Cross-sibling visual parity harness: render each spec''d component/state/theme in WPF (CRND) and in Blazor/Web (Playwright on the gallery in Chromium a…
+59. **M.ORCH-T1223**: Move the view-model tests to a UI-neutral MindAttic.Orchestrator.Presentation.Tests project (no STA, no WPF); WPF-only tests (LibraryOnlyXaml, Dashboa…
+60. **M.RLY-T15**: Hub 1.3: MindAttic.Orchestrator.Hub service on the hub machine: MindAttic.Authentication member sign-in, device enrollment page using Relay device cre…
+61. **M.RLY-T16**: Hub 1.4: spoke side of joining: the daemon supervises the machine''s Relay leaf link (Relay join), publishes presence each tick, and its state survives…
+62. **M.TIX-T225**: Scaffold MindAttic.Tickets.Desktop.Maui (.NET MAUI Blazor Hybrid, Windows) producing MindAttic.Tickets.Desktop.Maui.exe on the MindAttic.Tickets libra…
+63. **M.TIX-T238**: Deterministic fixture mode for Tickets Desktop: a committed anonymised fixture Tickets.db (~5,500 rows, epics, stories, queue, history) opened via MIN…
+64. **M.COMP-T138**: Spec the basic styles: buttons (MaToolButton, MaTextButton, MaButton, MaPrimaryButton, MaTileButton, MaStatCard, MaSmallStat, MaPillToggle, MaPinToggl…
+65. **M.COMP-T139**: Spec the inputs: MaTextBox/MaTextArea (placeholder), MaPicker (popup and keys), MaPillChoice, MaCombo, MaCheck and the chip, GridView header/row and d…
+66. **M.COMP-T140**: Spec lists and layout: MaList, MaRowList, MaTileList, MaStackPanel, MaTileGrid (UniformRows/Balanced as CSS grid), MaScrollArea gutter, and the virtua…
+67. **M.COMP-T141**: Spec overlays and feedback: MaModal (focus trap and restore), MaMessageBox (an in-window modal in Blazor), MaToast/MaToastHost (aria-live polite), too…
+68. **M.COMP-T142**: Spec navigation and chrome: MaTabControl/MaTabItem, MaThemeToggle, MaAccentTile, MaLink/MaHyperlink, MaHighContrast (forced-colors and system colours)…
+69. **M.COMP-T143**: Spec the drawn controls as hand-written siblings checked by spec surface: MaLineChart as SVG (same axes, grid, series colours, hit areas) and MaSpinne…
+70. **M.ORCH-T1198**: Scaffold MindAttic.Orchestrator.Desktop.Maui (.NET MAUI Blazor Hybrid, Windows) producing MindAttic.Orchestrator.Desktop.Maui.exe on Orchestrator.Core…
+71. **M.ORCH-T1224**: Deterministic fixture mode for the dashboard (--fixture <file>): canned logins, usage, meters, tickets, repos and terminals with recorded VT output, a…
+72. **M.TIX-T227**: Tickets'' deploy publishes both Tickets desktop exes (WPF and Maui) side by side
+73. **M.TIX-T239**: Capture the WPF Tickets Desktop baseline: screenshots of all seven tabs, the detail pane, New ticket, Prompt and Command palette in fixture mode at th…
+74. **M.TIX-T248**: Library-only Razor rule for Tickets Desktop.Maui: a test that fails any raw HTML element, inline style or literal colour in its Razor views outside Mi…
+75. **M.COMP-T125**: Sign-off: every Ma* component and style Orchestrator and Tickets use is spec''d (M.COMP-T138..T143) with generated or surface-checked Web, Blazor and W…
+76. **M.ORCH-T1200**: run.ps1 publishes and deploys both Orchestrator desktop exes (WPF and Maui) side by side
+77. **M.ORCH-T1225**: Capture the WPF dashboard baseline: screenshots of every screen, modal and window in fixture mode at three window sizes × Dark/Light/high contrast, co…
+78. **M.ORCH-T1227**: Maui terminal surface: an xterm.js Blazor component fed by TermHost frames (Replay, Live, Output, Modes, Exit, Size) over a JS-interop bridge on the e…
+79. **M.ORCH-T1234**: Library-only Razor rule: a test like LibraryOnlyXamlTests that fails any raw HTML element, inline style or literal colour in the dashboard''s Razor vie…
+80. **M.CAPT-T79**: Follow the Orchestrator dashboard exe rename and the Maui shell: AppWindows finds the host window under MindAttic.Orchestrator.Desktop.Wpf.exe and Min…
+81. **M.COMP-T144**: Contributor guide: how to add or change a component in v2 (spec first, regenerate, update the WPF baseline only on purpose, parity report, publish ord…
+82. **M.ORCH-T1226**: Adopt the spec-generated MindAttic.Components.Wpf major in the dashboard: no visual change against the WPF baseline (docs/parity/wpf-baseline) and eve…
+83. **M.TIX-T240**: Adopt the spec-generated MindAttic.Components.Wpf major in Tickets Desktop, retiring the local styles in Theme/Styles.xaml that the library now covers…
+84. **M.ORCH-T1228**: Port the dashboard frame to Maui: window, header stat tiles, Users | Repos | Misc tabs, toasts and FlashWindowEx equivalent, theme toggle, high contra…
+85. **M.ORCH-T1229**: Port the Users tab to Maui: login cards, usage, API-burn and utilisation charts, accounts, billing, orgs and reminders
+86. **M.ORCH-T1230**: Port the Repos tabs to Maui: Queue (virtualised), Audit, repo tiles, assigned work, phases and ticket pins
+87. **M.ORCH-T1231**: Port the terminals area to Maui: tab strip, tab status and blinking (TabBlinker), tab picker, pop-out, session restore, move, broadcast keys and launc…
+88. **M.ORCH-T1232**: Port the Settings and User settings modals to Maui with every setting editable the same way, the same validation and the same CLI round-trip
+89. **M.ORCH-T1233**: Port the secondary windows and dialogs to Maui: Team Wall (a second MAUI window), Build workspace, the command palette, folder picker and message boxe…
+90. **M.TIX-T241**: Port the Tickets Desktop frame to Maui: window, the seven tabs, toasts, zoom, high contrast, the command palette and the 24 keyboard shortcuts from th…
+91. **M.TIX-T242**: Port the Repos tab to Maui: the virtualised 5,500+ row list with grouping, filters, saved filters, labels and bulk actions, fed by incremental refresh
+92. **M.TIX-T243**: Port Queue and Board to Maui, including drag-to-reorder (HTML5 drag and drop, same rules as WPF''s DoDragDrop)
+93. **M.TIX-T244**: Port Audit, Activity and Stats to Maui (the stats table read-only with right-aligned numbers, as in WPF)
+94. **M.TIX-T245**: Port Stories to Maui: epics with chevrons and rollups, progress, Next up, implementer chips, editing with the changed-elsewhere conflict, implements l…
+95. **M.TIX-T246**: Port the detail pane, New ticket, Prompt and export/save dialogs to Maui
+96. **M.ORCH-T1235**: Binding-coverage gate: a test that every public property and command on the Presentation view models is used by both the WPF XAML and the Razor views,…
+97. **M.ORCH-T1236**: Screen parity harness for the dashboard: drive both shells in fixture mode, capture every screen, modal and window at the baseline sizes and themes, c…
+98. **M.TIX-T247**: Accessibility parity in the Maui shell: the AutomationNameTests rules (spoken row names, glyph-only buttons announce a name and role, polite live regi…
+99. **M.TIX-T249**: Binding-coverage gate for Tickets: every public property and command on the Presentation view models is used by both the WPF XAML and the Razor views,…
+100. **M.TIX-T250**: Screen parity harness for Tickets Desktop: both shells in fixture mode, every tab and dialog at the baseline sizes and themes, WPF↔Maui and WPF↔baseli…
+101. **M.ORCH-T1199**: Sign-off: every Orchestrator.Desktop screen is ported to the Maui shell at WPF parity (M.ORCH-T1227..T1233), with the binding-coverage, library-only R…
+102. **M.TIX-T226**: Sign-off: every Tickets.Desktop screen is ported to the Maui shell at WPF parity (M.TIX-T241..T246), with the accessibility, binding-coverage, library…
+103. **M.ORCH-T1201**: Move the shared Presentation app-bus clients onto MindAttic.Relay, so all four shells (WPF and Maui of Orchestrator and Tickets) use it, with the name…
+104. **M.ORCH-T1238**: Keep WPF and Maui in sync from now on: an AgentGate commit check (Orchestrator and Tickets) that refuses a commit changing one shell''s views without t…
+105. **M.ORCH-T1239**: Contributor guide for both apps: how to add a screen, setting or command so it lands in both shells (Presentation view model → WPF view → Razor view →…
+106. **M.RLY-T12**: Relay monitoring: `relay tail <subject>`, `relay dead-letters [--replay]`, stream and consumer lag, and a Relay page in Orchestrator.Desktop showing s…
+107. **M.RLY-T17**: Hub 1.5: `orchestrator hub host|join|status|leave|devices` as thin wrappers over `relay join|leave|status` plus the hub service, and a dashboard hub c…
+108. **M.ORCH-T1240**: Release v2.0.0: /test green in Components, Tickets and Orchestrator; both shells of both apps deployed side by side and checked live (open ticket, sho…
+109. **M.RLY-T18**: Hub 2.6: presence and meters over Relay: spokes publish CLI roster, masked sessions, meter readings and agent summaries; the hub merges meters per log…
+110. **M.RLY-T19**: Hub 2.7: org view in the dashboard and `/org usage` across machines, remote people read-only; members and orgs live at the hub and reach spokes throug…
+111. **M.RLY-T20**: Hub 3.8: terminal streams over Relay: the spoke publishes masked TermHost frames on `term.<device>.<session>.out`, viewers attach by command (replay f…
+112. **M.RLY-T21**: Hub 3.9: grants and audit at the hub, enforced by Relay auth callout (expiring per-viewer permissions on term subjects), with the spoke re-checking th…
+113. **M.RLY-T22**: Hub 3.10: owner consent for interact: a first-use toast per grant on the owner''s machine, watch-only on 30 s timeout; the spoke only reads `.in` for a…
+114. **M.RLY-T23**: Hub 3.11: Team Wall and TermViewer through Relay (`--hub`), listing org sessions from the presence bucket beside peer-to-peer remotes
+115. **M.RLY-T24**: Hub 4.12: Tickets over Relay: the hub''s TicketsDb is the store of record, every change is a `tix.ticket.changed` event on the TIX stream, each spoke''s…
+116. **M.RLY-T25**: Hub 4.13: ticket leases on Relay: `tix.cmd.claim` runs Allocate on the hub; leases live in the `leases` KV bucket where each renewal and completion is…
+117. **M.RLY-T26**: Hub 4.14 (MindAttic.Tickets): the tickets CLI and Tickets Desktop send writes as Relay commands to the hub when the machine has joined; read-only with…
+118. **M.RLY-T27**: Hub 5.15: central pacing policy in the hub''s `policy` KV bucket (cutoffs, allowances, pace target, routing, weekly reserve), mirrored to every spoke s…
+119. **M.RLY-T28**: Hub 5.16: per-login allowance split across devices when one Claude login is live on several machines, published as `AllowanceShare` entries in the pol…
+120. **M.RLY-T29**: Hub 5.17: opt-in remote dispatch (a spoke serves `orch.cmd.dispatch.<device>` only when its owner set AcceptDispatch) plus cross-machine rebalance and…
+121. **M.RLY-T30**: Hub 6.18: operations: deploy the hub service and the hub Relay server, JetStream and hub DB backups, operator and certificate key rotation, device rev…', 'v2, cross-repo: Maui Blazor Hybrid editions of Orchestrator.Desktop and Tickets.Desktop at exact WPF parity, built on one component spec that generates matching Web, Blazor and WPF components in MindAttic.Components, plus MindAttic.Relay.
+
+**Ground rules (M.ORCH-T1213):**
+- The WPF apps stay fully working and backwards compatible at every step, proven by the WPF baselines and API freeze.
+- Both shells bind the same Presentation view models.
+- Every UI change lands in both shells in one commit (M.ORCH-T1238).
+- Parity is enforced by the binding-coverage gates and the screen and component parity harnesses.
+
+**Sequence** (ordered by the requires links; tickets at the same depth can run side by side):
+
+1. **M.COMP-T117**: Fails on main: MindAttic.Components.Wpf.Tests.MaMessageBoxTests.MindAttic.Components.Wpf.Tests.MaMessageBoxTests.The_package_is_version_22 — Assert.Eq…
+2. **M.COMP-T126**: MaPickerTests.Up_Down_Home_and_End_change_the_choice_while_it_stays_closed and MaHyperlinkTests.Keyboard_focus_underlines_the_link_and_losing_it_remov…
+3. **M.ORCH-T1213**: v2 architecture decision record (docs/design/v2-maui-relay.md): settle every cross-cutting choice for MAUI & RELAY before any code
+4. **M.ORCH-T1215**: Delete the five zero-byte .cs files committed at the repo root (App.xaml.cs, AccountRebalancer.cs, DropdownMenu.cs, MaHighContrast.cs, MaMessageBox.cs…
+5. **M.RLY-T3**: Relay server: install a pinned NATS server with JetStream as a Windows service on each machine (loopback-only, TLS, local CA, credentials required), w…
+6. **M.RLY-T4**: MindAttic.Relay.Contracts: Protocol Buffers message definitions with generated C# types, the envelope header names (Nats-Msg-Id, Relay-Type, Relay-Ver…
+7. **M.COMP-T127**: Components v2 design record (docs/design/v2-components.md): tokens, spec, generator, siblings and the WPF compatibility contract
+8. **M.ORCH-T1214**: Pin the .NET SDK band for v2: global.json to 10.0.2xx (rollForward latestFeature) and document the maui-windows 10.0.20 workload requirement in README
+9. **M.ORCH-T1216**: Split the daemon out of the dashboard exe: a headless MindAttic.Orchestrator.Daemon.exe (no WPF) runs Core.Daemon; MindAttic.Orchestrator.Desktop.exe …
+10. **M.RLY-T5**: MindAttic.Relay.Client: the one client every app uses (PublishAsync, SubscribeAsync with durable consumers and ack-after-handler, RequestAsync, ServeA…
+11. **M.RLY-T6**: Relay security: operator/account/user credentials with per-app subject permissions, credentials stored in MindAttic.Vault, `relay creds issue|revoke|l…
+12. **M.RLY-T14**: Hub 0.2: Orchestrator and Tickets hub messages defined in MindAttic.Relay.Contracts (presence, meter reading, session info, lease, policy snapshot, at…
+13. **M.TIX-T231**: Pin the .NET SDK band for v2: global.json to 10.0.2xx (rollForward latestFeature) and document the maui-windows workload requirement in README
+14. **M.COMP-T128**: Add global.json pinning the .NET SDK band 10.0.2xx (rollForward latestFeature) so Components.Blazor and the generator build on the same SDK as the app…
+15. **M.ORCH-T1217**: Two dashboards can run at once: per-shell single-instance names, a Preferred dashboard setting (WPF by default) used by the daemon, CLI, Launcher and …
+16. **M.RLY-T7**: MindAttic.Relay.Outbox: save a database change and its outgoing message in one EF Core transaction, then a background dispatcher publishes it with Nat…
+17. **M.RLY-T10**: Across machines: a hub Relay server accepts leaf connections that spokes dial out (TLS, or WebSocket on 443), each spoke keeps its own JetStream domai…
+18. **M.SCHD-T22**: Point the Orchestrator.Daemon job (jobs.json, install.Tests.ps1, SCHEDULED_TASK_AUDIT.md) at C:\Apps\MindAttic.Orchestrator\MindAttic.Orchestrator.Dae…
+19. **M.COMP-T129**: CI for MindAttic.Components: a GitHub Actions windows workflow that runs dotnet test on the slnx plus the web parity and package Playwright suites on …
+20. **M.ORCH-T1205**: Rename MindAttic.Orchestrator.Desktop.exe to MindAttic.Orchestrator.Desktop.Wpf.exe, leaving a small forwarding MindAttic.Orchestrator.Desktop.exe (as…
+21. **M.ORCH-T1218**: App bus v1.1, shell-aware: AppPresence gains shell (wpf|maui) and focusedAtUtc, presences are keyed by app+pid, and open-ticket/show-worker go to exac…
+22. **M.RLY-T9**: Second user: KdpPublish announces `prose.book.published` (slug, ASIN, Amazon URL, KDP title id) through the outbox in the same transaction that writes…
+23. **M.RLY-T11**: Device credentials and auth callout: a hub service issues each enrolled device a short-lived NATS user credential, and decides per-connection permissi…
+24. **M.COMP-T55**: WPF: a virtualizing list (MaVirtualList style or control): MaList/MaRowList use the non-virtualizing MaStackPanel in an ItemsControl with no scroll vi…
+25. **M.COMP-T59**: Add a real right-click context menu WPF control (e.g. MindAttic.Components.Wpf.Controls.ContextMenu), styled to match the existing DropdownMenu''s dark…
+26. **M.COMP-T118**: Add a combo box, checkbox, a drag-reorderable row list (MaRowList is a plain ItemsControl with no drag support), a GridView header/row style and a chi…
+27. **M.COMP-T119**: MaStatCard/MaSmallStat (Theme.xaml:334) hard-codes Height=74, which clips tiles that carry more than a label+value: Orchestrator''s 5-Hour/Weekly/Cut O…
+28. **M.COMP-T120**: Add MaCombo: a themed ComboBox style (chevron glyph with a Segoe Fluent Icons, Segoe MDL2 Assets font fallback) so consumer apps stop duplicating thei…
+29. **M.COMP-T121**: Add MaCheck: a themed CheckBox style (checkmark glyph with a Segoe Fluent Icons, Segoe MDL2 Assets font fallback) so consumer apps stop duplicating th…
+30. **M.COMP-T130**: Generalise dotnet/tools/publish-wpf.ps1 into publish.ps1 <Package> for every package (Tokens, Mvvm, Wpf, Blazor) with the same guards (on origin/main,…
+31. **M.COMP-T131**: Freeze the WPF public surface: a baseline test snapshotting the Theme.xaml pack URI, every style key with its TargetType and BasedOn, the control clas…
+32. **M.COMP-T132**: WPF render baseline: render every control and keyed style in each state (normal, hover, pressed, focused, disabled, checked, selected) × Dark/Light/hi…
+33. **M.LNCH-T89**: Follow the Orchestrator dashboard exe rename (M.ORCH-T1205): MainMenuCommand starts MindAttic.Orchestrator.Desktop.Wpf.exe, falling back to the old na…
+34. **M.TIX-T232**: App bus v1.1 in Tickets: update the copied contract (Bus/AppBus.cs) to the shell-aware presence, announce shell and focus changes, and honour single-t…
+35. **M.COMP-T133**: MindAttic.Components.Mvvm 1.0.0 (net10.0, no WPF): ObservableObject, RelayCommand/AsyncRelayCommand with explicit RaiseCanExecuteChanged, CollectionSy…
+36. **M.COMP-T134**: tokens.json as the one token source: the 27 Ma* colours (Dark/Light) plus new typography, spacing, radius, border, elevation, motion and icon-map toke…
+37. **M.TIX-T228**: Rename MindAttic.Tickets.Desktop.exe to MindAttic.Tickets.Desktop.Wpf.exe, leaving a small forwarding MindAttic.Tickets.Desktop.exe: fix the pack:// U…
+38. **M.TIX-T251**: Follow the Orchestrator exe rename: OrchestratorLink starts MindAttic.Orchestrator.Desktop.Wpf.exe (then the forwarder, then legacy names) and respect…
+39. **M.COMP-T122**: Component spec format: one spec per component (name, MindAttic.Components.Tokens styling, visual states, editable properties and events) as the single…
+40. **M.ORCH-T1219**: Adopt MindAttic.Components.Wpf 24 + MindAttic.Components.Mvvm 1 in the dashboard with no visual or behaviour change (all existing tests green)
+41. **M.ORCH-T1237**: Follow the Tickets exe rename: OrchestratorOptions.TicketsDesktopExe and TicketsApp.Name (window lookup and %LOCALAPPDATA% fallback) point at MindAtti…
+42. **M.TIX-T233**: Adopt MindAttic.Components.Wpf 24 + MindAttic.Components.Mvvm 1 in Tickets Desktop with no visual or behaviour change (all existing tests green)
+43. **M.COMP-T123**: Component generator: from each spec, emit the shared HTML/CSS/JS used by MindAttic.Components.Web and the WPF control (XAML + code-behind) in MindAtti…
+44. **M.ORCH-T1220**: Create MindAttic.Orchestrator.Presentation (UI-neutral, no UseWPF) with the services the view models need: IUiDispatcher, IUiTimer (replaces Dispatche…
+45. **M.TIX-T234**: Create MindAttic.Tickets.Desktop.Presentation (UI-neutral): move Data/ and Bus/ unchanged and add IUiDispatcher, IUiTimer, IDialogs (with SaveFile), I…
+46. **M.COMP-T124**: MindAttic.Components.Blazor (Razor class library): thin .razor wrappers over the generated shared markup and CSS, exposing the spec''s properties as pa…
+47. **M.COMP-T137**: Reconcile the existing site web components that share names with app components (Button, Modal, Textbox, Tag, Menu, ToolButton, ProgressBar, ThemeTogg…
+48. **M.ORCH-T1197**: Move the dashboard view models (MainViewModel partials, TerminalsViewModel, SettingsViewModel, RepoTileViewModel, Palette, Queue) and MainWindow/App c…
+49. **M.TIX-T224**: Move Tickets.Desktop''s view models (15 MainViewModel partials, DetailViewModel, StoryViewModels, CommandPalette, row and header view models) and MainW…
+50. **M.COMP-T135**: Component gallery: one Blazor/Web gallery page and one WPF gallery window that show every spec''d component in every state and theme from the spec''s sa…
+51. **M.ORCH-T1221**: Decouple TerminalPaneViewModel from the WPF terminal controls: the view model keeps only session state (TermHost id, connection, replay, size owner, e…
+52. **M.ORCH-T1222**: One shared command and keymap table in Presentation (commands, gestures, and TerminalKeyboard''s gating rules for when a key goes to the terminal or th…
+53. **M.RLY-T8**: First users: move AppBus between Orchestrator.Desktop and Tickets.Desktop onto Relay (ticket changed as an event, open-ticket and show-worker as comma…
+54. **M.RLY-T13**: Hub 0.1: hub seams in Orchestrator Core (IClaims, IPolicySource, IMeterSink, IOrgDirectory, ISessionDirectory) with Local implementations over today''s…
+55. **M.TIX-T235**: Incremental refresh: after the first full Snapshot load, apply changes by ticket id (from app-bus ticket events or a changed-since query on ticket_eve…
+56. **M.TIX-T236**: Two Tickets desktops at once: per-shell settings files (desktop.json migrated once into desktop.wpf.json/desktop.maui.json plus a shared part), refres…
+57. **M.TIX-T237**: Move the view-model tests (StoriesViewTests and the other 24 view-model-level files) to a UI-neutral MindAttic.Tickets.Desktop.Presentation.Tests proj…
+58. **M.COMP-T136**: Cross-sibling visual parity harness: render each spec''d component/state/theme in WPF (CRND) and in Blazor/Web (Playwright on the gallery in Chromium a…
+59. **M.ORCH-T1223**: Move the view-model tests to a UI-neutral MindAttic.Orchestrator.Presentation.Tests project (no STA, no WPF); WPF-only tests (LibraryOnlyXaml, Dashboa…
+60. **M.RLY-T15**: Hub 1.3: MindAttic.Orchestrator.Hub service on the hub machine: MindAttic.Authentication member sign-in, device enrollment page using Relay device cre…
+61. **M.RLY-T16**: Hub 1.4: spoke side of joining: the daemon supervises the machine''s Relay leaf link (Relay join), publishes presence each tick, and its state survives…
+62. **M.TIX-T225**: Scaffold MindAttic.Tickets.Desktop.Maui (.NET MAUI Blazor Hybrid, Windows) producing MindAttic.Tickets.Desktop.Maui.exe on the MindAttic.Tickets libra…
+63. **M.TIX-T238**: Deterministic fixture mode for Tickets Desktop: a committed anonymised fixture Tickets.db (~5,500 rows, epics, stories, queue, history) opened via MIN…
+64. **M.COMP-T138**: Spec the basic styles: buttons (MaToolButton, MaTextButton, MaButton, MaPrimaryButton, MaTileButton, MaStatCard, MaSmallStat, MaPillToggle, MaPinToggl…
+65. **M.COMP-T139**: Spec the inputs: MaTextBox/MaTextArea (placeholder), MaPicker (popup and keys), MaPillChoice, MaCombo, MaCheck and the chip, GridView header/row and d…
+66. **M.COMP-T140**: Spec lists and layout: MaList, MaRowList, MaTileList, MaStackPanel, MaTileGrid (UniformRows/Balanced as CSS grid), MaScrollArea gutter, and the virtua…
+67. **M.COMP-T141**: Spec overlays and feedback: MaModal (focus trap and restore), MaMessageBox (an in-window modal in Blazor), MaToast/MaToastHost (aria-live polite), too…
+68. **M.COMP-T142**: Spec navigation and chrome: MaTabControl/MaTabItem, MaThemeToggle, MaAccentTile, MaLink/MaHyperlink, MaHighContrast (forced-colors and system colours)…
+69. **M.COMP-T143**: Spec the drawn controls as hand-written siblings checked by spec surface: MaLineChart as SVG (same axes, grid, series colours, hit areas) and MaSpinne…
+70. **M.ORCH-T1198**: Scaffold MindAttic.Orchestrator.Desktop.Maui (.NET MAUI Blazor Hybrid, Windows) producing MindAttic.Orchestrator.Desktop.Maui.exe on Orchestrator.Core…
+71. **M.ORCH-T1224**: Deterministic fixture mode for the dashboard (--fixture <file>): canned logins, usage, meters, tickets, repos and terminals with recorded VT output, a…
+72. **M.TIX-T227**: Tickets'' deploy publishes both Tickets desktop exes (WPF and Maui) side by side
+73. **M.TIX-T239**: Capture the WPF Tickets Desktop baseline: screenshots of all seven tabs, the detail pane, New ticket, Prompt and Command palette in fixture mode at th…
+74. **M.TIX-T248**: Library-only Razor rule for Tickets Desktop.Maui: a test that fails any raw HTML element, inline style or literal colour in its Razor views outside Mi…
+75. **M.COMP-T125**: Sign-off: every Ma* component and style Orchestrator and Tickets use is spec''d (M.COMP-T138..T143) with generated or surface-checked Web, Blazor and W…
+76. **M.ORCH-T1200**: run.ps1 publishes and deploys both Orchestrator desktop exes (WPF and Maui) side by side
+77. **M.ORCH-T1225**: Capture the WPF dashboard baseline: screenshots of every screen, modal and window in fixture mode at three window sizes × Dark/Light/high contrast, co…
+78. **M.ORCH-T1227**: Maui terminal surface: an xterm.js Blazor component fed by TermHost frames (Replay, Live, Output, Modes, Exit, Size) over a JS-interop bridge on the e…
+79. **M.ORCH-T1234**: Library-only Razor rule: a test like LibraryOnlyXamlTests that fails any raw HTML element, inline style or literal colour in the dashboard''s Razor vie…
+80. **M.CAPT-T79**: Follow the Orchestrator dashboard exe rename and the Maui shell: AppWindows finds the host window under MindAttic.Orchestrator.Desktop.Wpf.exe and Min…
+81. **M.COMP-T144**: Contributor guide: how to add or change a component in v2 (spec first, regenerate, update the WPF baseline only on purpose, parity report, publish ord…
+82. **M.ORCH-T1226**: Adopt the spec-generated MindAttic.Components.Wpf major in the dashboard: no visual change against the WPF baseline (docs/parity/wpf-baseline) and eve…
+83. **M.TIX-T240**: Adopt the spec-generated MindAttic.Components.Wpf major in Tickets Desktop, retiring the local styles in Theme/Styles.xaml that the library now covers…
+84. **M.ORCH-T1228**: Port the dashboard frame to Maui: window, header stat tiles, Users | Repos | Misc tabs, toasts and FlashWindowEx equivalent, theme toggle, high contra…
+85. **M.ORCH-T1229**: Port the Users tab to Maui: login cards, usage, API-burn and utilisation charts, accounts, billing, orgs and reminders
+86. **M.ORCH-T1230**: Port the Repos tabs to Maui: Queue (virtualised), Audit, repo tiles, assigned work, phases and ticket pins
+87. **M.ORCH-T1231**: Port the terminals area to Maui: tab strip, tab status and blinking (TabBlinker), tab picker, pop-out, session restore, move, broadcast keys and launc…
+88. **M.ORCH-T1232**: Port the Settings and User settings modals to Maui with every setting editable the same way, the same validation and the same CLI round-trip
+89. **M.ORCH-T1233**: Port the secondary windows and dialogs to Maui: Team Wall (a second MAUI window), Build workspace, the command palette, folder picker and message boxe…
+90. **M.TIX-T241**: Port the Tickets Desktop frame to Maui: window, the seven tabs, toasts, zoom, high contrast, the command palette and the 24 keyboard shortcuts from th…
+91. **M.TIX-T242**: Port the Repos tab to Maui: the virtualised 5,500+ row list with grouping, filters, saved filters, labels and bulk actions, fed by incremental refresh
+92. **M.TIX-T243**: Port Queue and Board to Maui, including drag-to-reorder (HTML5 drag and drop, same rules as WPF''s DoDragDrop)
+93. **M.TIX-T244**: Port Audit, Activity and Stats to Maui (the stats table read-only with right-aligned numbers, as in WPF)
+94. **M.TIX-T245**: Port Stories to Maui: epics with chevrons and rollups, progress, Next up, implementer chips, editing with the changed-elsewhere conflict, implements l…
+95. **M.TIX-T246**: Port the detail pane, New ticket, Prompt and export/save dialogs to Maui
+96. **M.ORCH-T1235**: Binding-coverage gate: a test that every public property and command on the Presentation view models is used by both the WPF XAML and the Razor views,…
+97. **M.ORCH-T1236**: Screen parity harness for the dashboard: drive both shells in fixture mode, capture every screen, modal and window at the baseline sizes and themes, c…
+98. **M.TIX-T247**: Accessibility parity in the Maui shell: the AutomationNameTests rules (spoken row names, glyph-only buttons announce a name and role, polite live regi…
+99. **M.TIX-T249**: Binding-coverage gate for Tickets: every public property and command on the Presentation view models is used by both the WPF XAML and the Razor views,…
+100. **M.TIX-T250**: Screen parity harness for Tickets Desktop: both shells in fixture mode, every tab and dialog at the baseline sizes and themes, WPF↔Maui and WPF↔baseli…
+101. **M.ORCH-T1199**: Sign-off: every Orchestrator.Desktop screen is ported to the Maui shell at WPF parity (M.ORCH-T1227..T1233), with the binding-coverage, library-only R…
+102. **M.TIX-T226**: Sign-off: every Tickets.Desktop screen is ported to the Maui shell at WPF parity (M.TIX-T241..T246), with the accessibility, binding-coverage, library…
+103. **M.ORCH-T1201**: Move the shared Presentation app-bus clients onto MindAttic.Relay, so all four shells (WPF and Maui of Orchestrator and Tickets) use it, with the name…
+104. **M.ORCH-T1238**: Keep WPF and Maui in sync from now on: an AgentGate commit check (Orchestrator and Tickets) that refuses a commit changing one shell''s views without t…
+105. **M.ORCH-T1239**: Contributor guide for both apps: how to add a screen, setting or command so it lands in both shells (Presentation view model → WPF view → Razor view →…
+106. **M.RLY-T12**: Relay monitoring: `relay tail <subject>`, `relay dead-letters [--replay]`, stream and consumer lag, and a Relay page in Orchestrator.Desktop showing s…
+107. **M.RLY-T17**: Hub 1.5: `orchestrator hub host|join|status|leave|devices` as thin wrappers over `relay join|leave|status` plus the hub service, and a dashboard hub c…
+108. **M.ORCH-T1240**: Release v2.0.0: /test green in Components, Tickets and Orchestrator; both shells of both apps deployed side by side and checked live (open ticket, sho…
+109. **M.RLY-T18**: Hub 2.6: presence and meters over Relay: spokes publish CLI roster, masked sessions, meter readings and agent summaries; the hub merges meters per log…
+110. **M.RLY-T19**: Hub 2.7: org view in the dashboard and `/org usage` across machines, remote people read-only; members and orgs live at the hub and reach spokes throug…
+111. **M.RLY-T20**: Hub 3.8: terminal streams over Relay: the spoke publishes masked TermHost frames on `term.<device>.<session>.out`, viewers attach by command (replay f…
+112. **M.RLY-T21**: Hub 3.9: grants and audit at the hub, enforced by Relay auth callout (expiring per-viewer permissions on term subjects), with the spoke re-checking th…
+113. **M.RLY-T22**: Hub 3.10: owner consent for interact: a first-use toast per grant on the owner''s machine, watch-only on 30 s timeout; the spoke only reads `.in` for a…
+114. **M.RLY-T23**: Hub 3.11: Team Wall and TermViewer through Relay (`--hub`), listing org sessions from the presence bucket beside peer-to-peer remotes
+115. **M.RLY-T24**: Hub 4.12: Tickets over Relay: the hub''s TicketsDb is the store of record, every change is a `tix.ticket.changed` event on the TIX stream, each spoke''s…
+116. **M.RLY-T25**: Hub 4.13: ticket leases on Relay: `tix.cmd.claim` runs Allocate on the hub; leases live in the `leases` KV bucket where each renewal and completion is…
+117. **M.RLY-T26**: Hub 4.14 (MindAttic.Tickets): the tickets CLI and Tickets Desktop send writes as Relay commands to the hub when the machine has joined; read-only with…
+118. **M.RLY-T27**: Hub 5.15: central pacing policy in the hub''s `policy` KV bucket (cutoffs, allowances, pace target, routing, weekly reserve), mirrored to every spoke s…
+119. **M.RLY-T28**: Hub 5.16: per-login allowance split across devices when one Claude login is live on several machines, published as `AllowanceShare` entries in the pol…
+120. **M.RLY-T29**: Hub 5.17: opt-in remote dispatch (a spoke serves `orch.cmd.dispatch.<device>` only when its owner set AcceptDispatch) plus cross-machine rebalance and…
+121. **M.RLY-T30**: Hub 6.18: operations: deploy the hub service and the hub Relay server, JetStream and hub DB backups, operator and certificate key rotation, device rev…');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z', NULL);
@@ -38147,6 +39316,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1203', 'proposed', 702, '2026-10-27T23:27:27Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1208', 'approved', 0, '2026-10-28T01:05:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1211', 'approved', 0, '2026-10-28T00:42:38Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1241', 'proposed', 702, '2026-10-28T01:31:43Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T172', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T181', 'approved', 0, '2026-10-20T17:30:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T182', 'approved', 0, '2026-10-20T17:30:39Z', NULL);
@@ -40046,12 +41216,54 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (87, 'M.T
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (88, 'GGC-T26', 'ryand', '2026-10-28T00:43:12Z', 'Root cause: GGC-T20 renamed GridGameCaravan -> TownWalker (repo, ProjectSettings productName, run.bat/run.ps1), and tools/run.ps1 refreshes the Desktop shortcut''s IconLocation to the post-rename target (C:\Apps\TownWalker\TownWalker.exe) unconditionally, before the Unity build/deploy step. Nobody has re-run a successful deploy since GGC-T20, so C:\Apps\TownWalker was never created; the only real, working build remains the pre-rename copy at C:\Apps\GridGameCaravan\GridGameCaravan.exe (hash 5BE81B3F...C8B12C, same as other working Unity apps'' icon). Fixed live shortcut R:\Desktop\TownWalker.lnk: IconLocation now C:\Apps\GridGameCaravan\GridGameCaravan.exe,0 (verified Test-Path True after re-reading the .lnk via WScript.Shell). Fixed root cause in TownWalker repo commit 2e03be4 (tools/run.ps1): the pre-build shortcut write now only overwrites IconLocation if the target exe already exists (so a rename/stale-deploy window can''t blank out a working icon), and a new post-publish step re-aims the icon once the freshly built exe is confirmed on disk, so the next successful TownWalker deploy will auto-correct the icon to C:\Apps\TownWalker\TownWalker.exe without any manual follow-up. No separate ticket needed; fix lived entirely in TownWalker''s own tools/run.ps1 under GGC-T26.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (89, 'MAU-T14', 'ryand', '2026-10-28T00:43:12Z', 'Extracted the full multi-resolution standard Unity icon (16/24/32/48/64/96/128/192/256 px, all 32-bit) from Unity.Eve.exe''s RT_GROUP_ICON/RT_ICON PE resources via REA''s PE resource parser, reassembled a valid ICO, and saved it as Unity.Shared/assets/unity-standard.ico with assets/README.md documenting its purpose and usage; linked from the main README.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (90, 'U.CHN-T97', 'ryand', '2026-10-28T00:45:56Z', 'Root cause found: Assets/Unity.Chain/Art/Icon/battle.png (the custom player icon ProjectSettingsBuilder.ApplyIcon bakes in) was a fully transparent 256x256 PNG -- not a Unity-version/template issue. Extracted the full multi-res standard Unity icon (16-256px) from C:\Apps\Unity.Eve\Unity.Eve.exe''s RT_ICON resources via REA PE parsing, reassembled a proper .ico, decoded the 256px frame, and overwrote battle.png with it so the existing build pipeline (tools/build.ps1 -> ProjectSettingsBuilder.Apply -> PlayerSettings.SetIcons) bakes it on every future build -- no post-build rcedit patch needed. Ran tools/run.ps1 -Force to rebuild+republish: C:\Apps\Unity.Chain\Unity.Chain.exe and repo Builds/Windows/Unity.Chain.exe now both sha256 f5f89e9274138376082f14b0c10f7bd7e3437e10511dfb00ee6dc14cc98e33d0, icon resource verified non-blank (full 16/24/32/48/64/96/128/192/256 RT_ICON set, matches standard Unity cube visually). Desktop shortcut R:\Desktop\Unity.Chain.lnk already pointed IconLocation at the deployed exe,0 (confirmed correct, untouched). Reverted unrelated Assets/Scenes/Main.unity, Splash.unity, DefaultVolumeProfile.asset, ChainURP.asset, UniversalRenderPipelineGlobalSettings.asset that tools/build.ps1''s SceneBuilder/ProjectSettingsBuilder regenerated as a side effect of the rebuild (serialization drift, unrelated to this ticket) so only battle.png is committed. Note: repo also had pre-existing unrelated dirty state (README.md staged, docs/USER_STORIES.md merge-conflicted, untracked .vsconfig) from other in-flight work -- left untouched.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (91, 'M.RLY-T8', 'ryand', '2026-10-28T01:34:29Z', 'MAUI & RELAY audit: carry the shell-aware presence from app bus v1.1 (M.ORCH-T1218, M.TIX-T232), and move the bus clients that now live in the Presentation libraries (M.ORCH-T1197, M.TIX-T224). The named-pipe bus stays as a **permanent** fallback, not ''until both apps ship'': WPF-only machines and machines without the Relay service must keep working.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (92, 'M.COMP-T117', 'ryand', '2026-10-28T01:34:29Z', 'MAUI & RELAY audit: rather than renaming the test to 23, make it read the expected major from the csproj''s <Version>, so the frequent v2 bumps don''t break it each time. CI (M.COMP-T129) needs this green.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (93, 'M.COMP-T126', 'ryand', '2026-10-28T01:34:30Z', 'MAUI & RELAY audit: CI (M.COMP-T129) needs this green. Make the focus tests hermetic (activate the off-screen window, or assert through FocusManager on a focused scope) instead of skipping them.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (94, 'M.COMP-T60', 'ryand', '2026-10-28T01:34:30Z', 'MAUI & RELAY audit: AddressBar is used by neither Orchestrator nor Tickets, so it is out of scope for v2.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (95, 'M.COMP-T77', 'ryand', '2026-10-28T01:34:31Z', 'MAUI & RELAY audit: AddressBar is used by neither Orchestrator nor Tickets, so it is out of scope for v2.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (96, 'M.RLY-T12', 'ryand', '2026-10-28T01:34:31Z', 'MAUI & RELAY audit: this ticket''s UI lands in both dashboard shells, as a Presentation view model plus a WPF view plus a Razor view in one commit (M.ORCH-T1238), so it waits for the Maui sign-off M.ORCH-T1199.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (97, 'M.RLY-T17', 'ryand', '2026-10-28T01:34:31Z', 'MAUI & RELAY audit: this ticket''s UI lands in both dashboard shells, as a Presentation view model plus a WPF view plus a Razor view in one commit (M.ORCH-T1238), so it waits for the Maui sign-off M.ORCH-T1199.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (98, 'M.RLY-T19', 'ryand', '2026-10-28T01:34:32Z', 'MAUI & RELAY audit: this ticket''s UI lands in both dashboard shells, as a Presentation view model plus a WPF view plus a Razor view in one commit (M.ORCH-T1238), so it waits for the Maui sign-off M.ORCH-T1199.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (99, 'M.RLY-T22', 'ryand', '2026-10-28T01:34:32Z', 'MAUI & RELAY audit: this ticket''s UI lands in both dashboard shells, as a Presentation view model plus a WPF view plus a Razor view in one commit (M.ORCH-T1238), so it waits for the Maui sign-off M.ORCH-T1199.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (100, 'M.RLY-T23', 'ryand', '2026-10-28T01:34:33Z', 'MAUI & RELAY audit: this ticket''s UI lands in both dashboard shells, as a Presentation view model plus a WPF view plus a Razor view in one commit (M.ORCH-T1238), so it waits for the Maui sign-off M.ORCH-T1199.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (101, 'M.RLY-T26', 'ryand', '2026-10-28T01:34:33Z', 'MAUI & RELAY audit: the read-only state and the hub writes land in both Tickets shells through the shared Presentation layer, so this waits for the Maui sign-off M.TIX-T226.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GGC-T26', 'TownWalker.lnk''s IconLocation is C:\Apps\TownWalker\TownWalker.exe,0, but TownWalker actually deploys to C:\Apps\GridGameCaravan\GridGameCaravan.exe (which already carries the correct standard Unity icon). Repoint the shortcut''s icon at the real deployed exe so the Desktop icon renders instead of falling back to a generic one.', '2026-10-28T00:38:52Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.CAPT-T79', 'This keeps `/capture` working from a CLI hosted in either shell.
 
 **Done when:** the capture tests cover both exe names.', '2026-10-28T01:26:08Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.COMP-T122', 'Define the spec file (for example `specs/<Component>.spec.json` with a JSON schema) as M.COMP-T127 sets out. It holds:
+- name and the WPF/Web/Blazor names;
+- kind: a keyed style on a stock type, a control class, or surface-only;
+- properties (name, type, default, which are bindable, matching WPF dependency property names);
+- events, parts (the `PART_*` names) and states;
+- the tokens used per part and state;
+- sample data for the galleries.
+
+**Done when:**
+- The schema is committed and validated in CI.
+- Three pilot specs (MaButton, MaBadge, MaModal) describe today''s WPF exactly: the M.COMP-T131 baseline agrees with them.', '2026-10-28T01:34:23Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.COMP-T123', 'The generator is a .NET tool in the repo. From each spec it emits:
+- the WPF keyed style or template into the generated part of Theme.xaml;
+- the shared HTML/CSS/JS into `web/components/<Name>/`, committed;
+- the Blazor wrapper inputs.
+
+An MSBuild target in the Wpf and Blazor projects runs it in `--check` mode, so a sibling edited by hand without its spec fails the compile (TreatWarningsAsErrors is already on).
+
+**Done when:**
+- Regenerating the three pilot specs leaves the WPF render baseline (M.COMP-T132) and the API baseline (M.COMP-T131) unchanged.
+- A hand edit to a generated file fails the build.', '2026-10-28T01:34:23Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.COMP-T124', 'A Razor class library, `MindAttic.Components.Blazor` (`net10.0`). It contains:
+- thin `.razor` wrappers over the generated markup and CSS, with spec properties as `[Parameter]`s and spec events as `EventCallback`s;
+- static assets under `_content/MindAttic.Components.Blazor/`, including `ma-tokens.css`;
+- a theme service (dark, light, high contrast) that mirrors MaTheme and MaHighContrast;
+- an `IUiDispatcher` implementation for `MindAttic.Components.Mvvm`;
+- bUnit tests.
+
+It must not break the `.razor` copies Tutor and Ideas keep by hand.
+
+**Done when:** the pilot components render in the gallery, and the package is published with `publish.ps1`.', '2026-10-28T01:34:24Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.COMP-T127', 'Decide and record, building on M.ORCH-T1196''s architecture record:
 
 - **One token source:** `tokens.json` generates `MaPalette.cs`, the `Theme.xaml` and `Light.xaml` brush blocks, and `ma-tokens.css` (`--ma-*` variables).
@@ -42234,7 +43446,159 @@ Design:
   to fit the third figure. (The code comment at MainViewModel.TabStatus.cs:93 claiming "the tab
   is a fixed 230 wide" is stale since T1096 superseded it -- worth a one-line fix alongside
   this ticket.)', '2026-10-27T22:58:53Z');
-INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1196', 'v2, cross-repo: Maui Blazor Hybrid editions of Orchestrator.Desktop and Tickets.Desktop at exact WPF parity, built on one component spec that generates matching Web, Blazor and WPF components in MindAttic.Components, plus MindAttic.Relay; build order is set by the requires links.', '2026-10-28T01:07:12Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1196', 'v2, cross-repo: Maui Blazor Hybrid editions of Orchestrator.Desktop and Tickets.Desktop at exact WPF parity, built on one component spec that generates matching Web, Blazor and WPF components in MindAttic.Components, plus MindAttic.Relay.
+
+**Ground rules (M.ORCH-T1213):**
+- The WPF apps stay fully working and backwards compatible at every step, proven by the WPF baselines and API freeze.
+- Both shells bind the same Presentation view models.
+- Every UI change lands in both shells in one commit (M.ORCH-T1238).
+- Parity is enforced by the binding-coverage gates and the screen and component parity harnesses.
+
+**Sequence** (ordered by the requires links; tickets at the same depth can run side by side):
+
+1. **M.COMP-T117**: Fails on main: MindAttic.Components.Wpf.Tests.MaMessageBoxTests.MindAttic.Components.Wpf.Tests.MaMessageBoxTests.The_package_is_version_22 — Assert.Eq…
+2. **M.COMP-T126**: MaPickerTests.Up_Down_Home_and_End_change_the_choice_while_it_stays_closed and MaHyperlinkTests.Keyboard_focus_underlines_the_link_and_losing_it_remov…
+3. **M.ORCH-T1213**: v2 architecture decision record (docs/design/v2-maui-relay.md): settle every cross-cutting choice for MAUI & RELAY before any code
+4. **M.ORCH-T1215**: Delete the five zero-byte .cs files committed at the repo root (App.xaml.cs, AccountRebalancer.cs, DropdownMenu.cs, MaHighContrast.cs, MaMessageBox.cs…
+5. **M.RLY-T3**: Relay server: install a pinned NATS server with JetStream as a Windows service on each machine (loopback-only, TLS, local CA, credentials required), w…
+6. **M.RLY-T4**: MindAttic.Relay.Contracts: Protocol Buffers message definitions with generated C# types, the envelope header names (Nats-Msg-Id, Relay-Type, Relay-Ver…
+7. **M.COMP-T127**: Components v2 design record (docs/design/v2-components.md): tokens, spec, generator, siblings and the WPF compatibility contract
+8. **M.ORCH-T1214**: Pin the .NET SDK band for v2: global.json to 10.0.2xx (rollForward latestFeature) and document the maui-windows 10.0.20 workload requirement in README
+9. **M.ORCH-T1216**: Split the daemon out of the dashboard exe: a headless MindAttic.Orchestrator.Daemon.exe (no WPF) runs Core.Daemon; MindAttic.Orchestrator.Desktop.exe …
+10. **M.RLY-T5**: MindAttic.Relay.Client: the one client every app uses (PublishAsync, SubscribeAsync with durable consumers and ack-after-handler, RequestAsync, ServeA…
+11. **M.RLY-T6**: Relay security: operator/account/user credentials with per-app subject permissions, credentials stored in MindAttic.Vault, `relay creds issue|revoke|l…
+12. **M.RLY-T14**: Hub 0.2: Orchestrator and Tickets hub messages defined in MindAttic.Relay.Contracts (presence, meter reading, session info, lease, policy snapshot, at…
+13. **M.TIX-T231**: Pin the .NET SDK band for v2: global.json to 10.0.2xx (rollForward latestFeature) and document the maui-windows workload requirement in README
+14. **M.COMP-T128**: Add global.json pinning the .NET SDK band 10.0.2xx (rollForward latestFeature) so Components.Blazor and the generator build on the same SDK as the app…
+15. **M.ORCH-T1217**: Two dashboards can run at once: per-shell single-instance names, a Preferred dashboard setting (WPF by default) used by the daemon, CLI, Launcher and …
+16. **M.RLY-T7**: MindAttic.Relay.Outbox: save a database change and its outgoing message in one EF Core transaction, then a background dispatcher publishes it with Nat…
+17. **M.RLY-T10**: Across machines: a hub Relay server accepts leaf connections that spokes dial out (TLS, or WebSocket on 443), each spoke keeps its own JetStream domai…
+18. **M.SCHD-T22**: Point the Orchestrator.Daemon job (jobs.json, install.Tests.ps1, SCHEDULED_TASK_AUDIT.md) at C:\Apps\MindAttic.Orchestrator\MindAttic.Orchestrator.Dae…
+19. **M.COMP-T129**: CI for MindAttic.Components: a GitHub Actions windows workflow that runs dotnet test on the slnx plus the web parity and package Playwright suites on …
+20. **M.ORCH-T1205**: Rename MindAttic.Orchestrator.Desktop.exe to MindAttic.Orchestrator.Desktop.Wpf.exe, leaving a small forwarding MindAttic.Orchestrator.Desktop.exe (as…
+21. **M.ORCH-T1218**: App bus v1.1, shell-aware: AppPresence gains shell (wpf|maui) and focusedAtUtc, presences are keyed by app+pid, and open-ticket/show-worker go to exac…
+22. **M.RLY-T9**: Second user: KdpPublish announces `prose.book.published` (slug, ASIN, Amazon URL, KDP title id) through the outbox in the same transaction that writes…
+23. **M.RLY-T11**: Device credentials and auth callout: a hub service issues each enrolled device a short-lived NATS user credential, and decides per-connection permissi…
+24. **M.COMP-T55**: WPF: a virtualizing list (MaVirtualList style or control): MaList/MaRowList use the non-virtualizing MaStackPanel in an ItemsControl with no scroll vi…
+25. **M.COMP-T59**: Add a real right-click context menu WPF control (e.g. MindAttic.Components.Wpf.Controls.ContextMenu), styled to match the existing DropdownMenu''s dark…
+26. **M.COMP-T118**: Add a combo box, checkbox, a drag-reorderable row list (MaRowList is a plain ItemsControl with no drag support), a GridView header/row style and a chi…
+27. **M.COMP-T119**: MaStatCard/MaSmallStat (Theme.xaml:334) hard-codes Height=74, which clips tiles that carry more than a label+value: Orchestrator''s 5-Hour/Weekly/Cut O…
+28. **M.COMP-T120**: Add MaCombo: a themed ComboBox style (chevron glyph with a Segoe Fluent Icons, Segoe MDL2 Assets font fallback) so consumer apps stop duplicating thei…
+29. **M.COMP-T121**: Add MaCheck: a themed CheckBox style (checkmark glyph with a Segoe Fluent Icons, Segoe MDL2 Assets font fallback) so consumer apps stop duplicating th…
+30. **M.COMP-T130**: Generalise dotnet/tools/publish-wpf.ps1 into publish.ps1 <Package> for every package (Tokens, Mvvm, Wpf, Blazor) with the same guards (on origin/main,…
+31. **M.COMP-T131**: Freeze the WPF public surface: a baseline test snapshotting the Theme.xaml pack URI, every style key with its TargetType and BasedOn, the control clas…
+32. **M.COMP-T132**: WPF render baseline: render every control and keyed style in each state (normal, hover, pressed, focused, disabled, checked, selected) × Dark/Light/hi…
+33. **M.LNCH-T89**: Follow the Orchestrator dashboard exe rename (M.ORCH-T1205): MainMenuCommand starts MindAttic.Orchestrator.Desktop.Wpf.exe, falling back to the old na…
+34. **M.TIX-T232**: App bus v1.1 in Tickets: update the copied contract (Bus/AppBus.cs) to the shell-aware presence, announce shell and focus changes, and honour single-t…
+35. **M.COMP-T133**: MindAttic.Components.Mvvm 1.0.0 (net10.0, no WPF): ObservableObject, RelayCommand/AsyncRelayCommand with explicit RaiseCanExecuteChanged, CollectionSy…
+36. **M.COMP-T134**: tokens.json as the one token source: the 27 Ma* colours (Dark/Light) plus new typography, spacing, radius, border, elevation, motion and icon-map toke…
+37. **M.TIX-T228**: Rename MindAttic.Tickets.Desktop.exe to MindAttic.Tickets.Desktop.Wpf.exe, leaving a small forwarding MindAttic.Tickets.Desktop.exe: fix the pack:// U…
+38. **M.TIX-T251**: Follow the Orchestrator exe rename: OrchestratorLink starts MindAttic.Orchestrator.Desktop.Wpf.exe (then the forwarder, then legacy names) and respect…
+39. **M.COMP-T122**: Component spec format: one spec per component (name, MindAttic.Components.Tokens styling, visual states, editable properties and events) as the single…
+40. **M.ORCH-T1219**: Adopt MindAttic.Components.Wpf 24 + MindAttic.Components.Mvvm 1 in the dashboard with no visual or behaviour change (all existing tests green)
+41. **M.ORCH-T1237**: Follow the Tickets exe rename: OrchestratorOptions.TicketsDesktopExe and TicketsApp.Name (window lookup and %LOCALAPPDATA% fallback) point at MindAtti…
+42. **M.TIX-T233**: Adopt MindAttic.Components.Wpf 24 + MindAttic.Components.Mvvm 1 in Tickets Desktop with no visual or behaviour change (all existing tests green)
+43. **M.COMP-T123**: Component generator: from each spec, emit the shared HTML/CSS/JS used by MindAttic.Components.Web and the WPF control (XAML + code-behind) in MindAtti…
+44. **M.ORCH-T1220**: Create MindAttic.Orchestrator.Presentation (UI-neutral, no UseWPF) with the services the view models need: IUiDispatcher, IUiTimer (replaces Dispatche…
+45. **M.TIX-T234**: Create MindAttic.Tickets.Desktop.Presentation (UI-neutral): move Data/ and Bus/ unchanged and add IUiDispatcher, IUiTimer, IDialogs (with SaveFile), I…
+46. **M.COMP-T124**: MindAttic.Components.Blazor (Razor class library): thin .razor wrappers over the generated shared markup and CSS, exposing the spec''s properties as pa…
+47. **M.COMP-T137**: Reconcile the existing site web components that share names with app components (Button, Modal, Textbox, Tag, Menu, ToolButton, ProgressBar, ThemeTogg…
+48. **M.ORCH-T1197**: Move the dashboard view models (MainViewModel partials, TerminalsViewModel, SettingsViewModel, RepoTileViewModel, Palette, Queue) and MainWindow/App c…
+49. **M.TIX-T224**: Move Tickets.Desktop''s view models (15 MainViewModel partials, DetailViewModel, StoryViewModels, CommandPalette, row and header view models) and MainW…
+50. **M.COMP-T135**: Component gallery: one Blazor/Web gallery page and one WPF gallery window that show every spec''d component in every state and theme from the spec''s sa…
+51. **M.ORCH-T1221**: Decouple TerminalPaneViewModel from the WPF terminal controls: the view model keeps only session state (TermHost id, connection, replay, size owner, e…
+52. **M.ORCH-T1222**: One shared command and keymap table in Presentation (commands, gestures, and TerminalKeyboard''s gating rules for when a key goes to the terminal or th…
+53. **M.RLY-T8**: First users: move AppBus between Orchestrator.Desktop and Tickets.Desktop onto Relay (ticket changed as an event, open-ticket and show-worker as comma…
+54. **M.RLY-T13**: Hub 0.1: hub seams in Orchestrator Core (IClaims, IPolicySource, IMeterSink, IOrgDirectory, ISessionDirectory) with Local implementations over today''s…
+55. **M.TIX-T235**: Incremental refresh: after the first full Snapshot load, apply changes by ticket id (from app-bus ticket events or a changed-since query on ticket_eve…
+56. **M.TIX-T236**: Two Tickets desktops at once: per-shell settings files (desktop.json migrated once into desktop.wpf.json/desktop.maui.json plus a shared part), refres…
+57. **M.TIX-T237**: Move the view-model tests (StoriesViewTests and the other 24 view-model-level files) to a UI-neutral MindAttic.Tickets.Desktop.Presentation.Tests proj…
+58. **M.COMP-T136**: Cross-sibling visual parity harness: render each spec''d component/state/theme in WPF (CRND) and in Blazor/Web (Playwright on the gallery in Chromium a…
+59. **M.ORCH-T1223**: Move the view-model tests to a UI-neutral MindAttic.Orchestrator.Presentation.Tests project (no STA, no WPF); WPF-only tests (LibraryOnlyXaml, Dashboa…
+60. **M.RLY-T15**: Hub 1.3: MindAttic.Orchestrator.Hub service on the hub machine: MindAttic.Authentication member sign-in, device enrollment page using Relay device cre…
+61. **M.RLY-T16**: Hub 1.4: spoke side of joining: the daemon supervises the machine''s Relay leaf link (Relay join), publishes presence each tick, and its state survives…
+62. **M.TIX-T225**: Scaffold MindAttic.Tickets.Desktop.Maui (.NET MAUI Blazor Hybrid, Windows) producing MindAttic.Tickets.Desktop.Maui.exe on the MindAttic.Tickets libra…
+63. **M.TIX-T238**: Deterministic fixture mode for Tickets Desktop: a committed anonymised fixture Tickets.db (~5,500 rows, epics, stories, queue, history) opened via MIN…
+64. **M.COMP-T138**: Spec the basic styles: buttons (MaToolButton, MaTextButton, MaButton, MaPrimaryButton, MaTileButton, MaStatCard, MaSmallStat, MaPillToggle, MaPinToggl…
+65. **M.COMP-T139**: Spec the inputs: MaTextBox/MaTextArea (placeholder), MaPicker (popup and keys), MaPillChoice, MaCombo, MaCheck and the chip, GridView header/row and d…
+66. **M.COMP-T140**: Spec lists and layout: MaList, MaRowList, MaTileList, MaStackPanel, MaTileGrid (UniformRows/Balanced as CSS grid), MaScrollArea gutter, and the virtua…
+67. **M.COMP-T141**: Spec overlays and feedback: MaModal (focus trap and restore), MaMessageBox (an in-window modal in Blazor), MaToast/MaToastHost (aria-live polite), too…
+68. **M.COMP-T142**: Spec navigation and chrome: MaTabControl/MaTabItem, MaThemeToggle, MaAccentTile, MaLink/MaHyperlink, MaHighContrast (forced-colors and system colours)…
+69. **M.COMP-T143**: Spec the drawn controls as hand-written siblings checked by spec surface: MaLineChart as SVG (same axes, grid, series colours, hit areas) and MaSpinne…
+70. **M.ORCH-T1198**: Scaffold MindAttic.Orchestrator.Desktop.Maui (.NET MAUI Blazor Hybrid, Windows) producing MindAttic.Orchestrator.Desktop.Maui.exe on Orchestrator.Core…
+71. **M.ORCH-T1224**: Deterministic fixture mode for the dashboard (--fixture <file>): canned logins, usage, meters, tickets, repos and terminals with recorded VT output, a…
+72. **M.TIX-T227**: Tickets'' deploy publishes both Tickets desktop exes (WPF and Maui) side by side
+73. **M.TIX-T239**: Capture the WPF Tickets Desktop baseline: screenshots of all seven tabs, the detail pane, New ticket, Prompt and Command palette in fixture mode at th…
+74. **M.TIX-T248**: Library-only Razor rule for Tickets Desktop.Maui: a test that fails any raw HTML element, inline style or literal colour in its Razor views outside Mi…
+75. **M.COMP-T125**: Sign-off: every Ma* component and style Orchestrator and Tickets use is spec''d (M.COMP-T138..T143) with generated or surface-checked Web, Blazor and W…
+76. **M.ORCH-T1200**: run.ps1 publishes and deploys both Orchestrator desktop exes (WPF and Maui) side by side
+77. **M.ORCH-T1225**: Capture the WPF dashboard baseline: screenshots of every screen, modal and window in fixture mode at three window sizes × Dark/Light/high contrast, co…
+78. **M.ORCH-T1227**: Maui terminal surface: an xterm.js Blazor component fed by TermHost frames (Replay, Live, Output, Modes, Exit, Size) over a JS-interop bridge on the e…
+79. **M.ORCH-T1234**: Library-only Razor rule: a test like LibraryOnlyXamlTests that fails any raw HTML element, inline style or literal colour in the dashboard''s Razor vie…
+80. **M.CAPT-T79**: Follow the Orchestrator dashboard exe rename and the Maui shell: AppWindows finds the host window under MindAttic.Orchestrator.Desktop.Wpf.exe and Min…
+81. **M.COMP-T144**: Contributor guide: how to add or change a component in v2 (spec first, regenerate, update the WPF baseline only on purpose, parity report, publish ord…
+82. **M.ORCH-T1226**: Adopt the spec-generated MindAttic.Components.Wpf major in the dashboard: no visual change against the WPF baseline (docs/parity/wpf-baseline) and eve…
+83. **M.TIX-T240**: Adopt the spec-generated MindAttic.Components.Wpf major in Tickets Desktop, retiring the local styles in Theme/Styles.xaml that the library now covers…
+84. **M.ORCH-T1228**: Port the dashboard frame to Maui: window, header stat tiles, Users | Repos | Misc tabs, toasts and FlashWindowEx equivalent, theme toggle, high contra…
+85. **M.ORCH-T1229**: Port the Users tab to Maui: login cards, usage, API-burn and utilisation charts, accounts, billing, orgs and reminders
+86. **M.ORCH-T1230**: Port the Repos tabs to Maui: Queue (virtualised), Audit, repo tiles, assigned work, phases and ticket pins
+87. **M.ORCH-T1231**: Port the terminals area to Maui: tab strip, tab status and blinking (TabBlinker), tab picker, pop-out, session restore, move, broadcast keys and launc…
+88. **M.ORCH-T1232**: Port the Settings and User settings modals to Maui with every setting editable the same way, the same validation and the same CLI round-trip
+89. **M.ORCH-T1233**: Port the secondary windows and dialogs to Maui: Team Wall (a second MAUI window), Build workspace, the command palette, folder picker and message boxe…
+90. **M.TIX-T241**: Port the Tickets Desktop frame to Maui: window, the seven tabs, toasts, zoom, high contrast, the command palette and the 24 keyboard shortcuts from th…
+91. **M.TIX-T242**: Port the Repos tab to Maui: the virtualised 5,500+ row list with grouping, filters, saved filters, labels and bulk actions, fed by incremental refresh
+92. **M.TIX-T243**: Port Queue and Board to Maui, including drag-to-reorder (HTML5 drag and drop, same rules as WPF''s DoDragDrop)
+93. **M.TIX-T244**: Port Audit, Activity and Stats to Maui (the stats table read-only with right-aligned numbers, as in WPF)
+94. **M.TIX-T245**: Port Stories to Maui: epics with chevrons and rollups, progress, Next up, implementer chips, editing with the changed-elsewhere conflict, implements l…
+95. **M.TIX-T246**: Port the detail pane, New ticket, Prompt and export/save dialogs to Maui
+96. **M.ORCH-T1235**: Binding-coverage gate: a test that every public property and command on the Presentation view models is used by both the WPF XAML and the Razor views,…
+97. **M.ORCH-T1236**: Screen parity harness for the dashboard: drive both shells in fixture mode, capture every screen, modal and window at the baseline sizes and themes, c…
+98. **M.TIX-T247**: Accessibility parity in the Maui shell: the AutomationNameTests rules (spoken row names, glyph-only buttons announce a name and role, polite live regi…
+99. **M.TIX-T249**: Binding-coverage gate for Tickets: every public property and command on the Presentation view models is used by both the WPF XAML and the Razor views,…
+100. **M.TIX-T250**: Screen parity harness for Tickets Desktop: both shells in fixture mode, every tab and dialog at the baseline sizes and themes, WPF↔Maui and WPF↔baseli…
+101. **M.ORCH-T1199**: Sign-off: every Orchestrator.Desktop screen is ported to the Maui shell at WPF parity (M.ORCH-T1227..T1233), with the binding-coverage, library-only R…
+102. **M.TIX-T226**: Sign-off: every Tickets.Desktop screen is ported to the Maui shell at WPF parity (M.TIX-T241..T246), with the accessibility, binding-coverage, library…
+103. **M.ORCH-T1201**: Move the shared Presentation app-bus clients onto MindAttic.Relay, so all four shells (WPF and Maui of Orchestrator and Tickets) use it, with the name…
+104. **M.ORCH-T1238**: Keep WPF and Maui in sync from now on: an AgentGate commit check (Orchestrator and Tickets) that refuses a commit changing one shell''s views without t…
+105. **M.ORCH-T1239**: Contributor guide for both apps: how to add a screen, setting or command so it lands in both shells (Presentation view model → WPF view → Razor view →…
+106. **M.RLY-T12**: Relay monitoring: `relay tail <subject>`, `relay dead-letters [--replay]`, stream and consumer lag, and a Relay page in Orchestrator.Desktop showing s…
+107. **M.RLY-T17**: Hub 1.5: `orchestrator hub host|join|status|leave|devices` as thin wrappers over `relay join|leave|status` plus the hub service, and a dashboard hub c…
+108. **M.ORCH-T1240**: Release v2.0.0: /test green in Components, Tickets and Orchestrator; both shells of both apps deployed side by side and checked live (open ticket, sho…
+109. **M.RLY-T18**: Hub 2.6: presence and meters over Relay: spokes publish CLI roster, masked sessions, meter readings and agent summaries; the hub merges meters per log…
+110. **M.RLY-T19**: Hub 2.7: org view in the dashboard and `/org usage` across machines, remote people read-only; members and orgs live at the hub and reach spokes throug…
+111. **M.RLY-T20**: Hub 3.8: terminal streams over Relay: the spoke publishes masked TermHost frames on `term.<device>.<session>.out`, viewers attach by command (replay f…
+112. **M.RLY-T21**: Hub 3.9: grants and audit at the hub, enforced by Relay auth callout (expiring per-viewer permissions on term subjects), with the spoke re-checking th…
+113. **M.RLY-T22**: Hub 3.10: owner consent for interact: a first-use toast per grant on the owner''s machine, watch-only on 30 s timeout; the spoke only reads `.in` for a…
+114. **M.RLY-T23**: Hub 3.11: Team Wall and TermViewer through Relay (`--hub`), listing org sessions from the presence bucket beside peer-to-peer remotes
+115. **M.RLY-T24**: Hub 4.12: Tickets over Relay: the hub''s TicketsDb is the store of record, every change is a `tix.ticket.changed` event on the TIX stream, each spoke''s…
+116. **M.RLY-T25**: Hub 4.13: ticket leases on Relay: `tix.cmd.claim` runs Allocate on the hub; leases live in the `leases` KV bucket where each renewal and completion is…
+117. **M.RLY-T26**: Hub 4.14 (MindAttic.Tickets): the tickets CLI and Tickets Desktop send writes as Relay commands to the hub when the machine has joined; read-only with…
+118. **M.RLY-T27**: Hub 5.15: central pacing policy in the hub''s `policy` KV bucket (cutoffs, allowances, pace target, routing, weekly reserve), mirrored to every spoke s…
+119. **M.RLY-T28**: Hub 5.16: per-login allowance split across devices when one Claude login is live on several machines, published as `AllowanceShare` entries in the pol…
+120. **M.RLY-T29**: Hub 5.17: opt-in remote dispatch (a spoke serves `orch.cmd.dispatch.<device>` only when its owner set AcceptDispatch) plus cross-machine rebalance and…
+121. **M.RLY-T30**: Hub 6.18: operations: deploy the hub service and the hub Relay server, JetStream and hub DB backups, operator and certificate key rotation, device rev…', '2026-10-28T01:35:33Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1198', '`MindAttic.Orchestrator.Desktop.Maui` is a MAUI Blazor Hybrid host. It is:
+- Windows-only (`net10.0-windows10.0.19041.0`), unpackaged, with the Windows App SDK self-contained;
+- a host for the host-agnostic Razor screen library `MindAttic.Orchestrator.Desktop.Ui`, over `MindAttic.Orchestrator.Presentation` and `MindAttic.Components.Blazor`.
+
+It provides:
+- its own single-instance name and the shell-aware app-bus presence (M.ORCH-T1217, T1218);
+- window size and position persistence and a dark title bar;
+- MindAttic.Log crash logging and a check for the WebView2 runtime;
+- a clean start when the daemon is absent, and a start-up time budget that is measured and recorded.
+
+**Done when:**
+- The exe opens next to the WPF dashboard, both run at once without interfering, and it shows a placeholder frame bound to the real MainViewModel.
+- WPF behaviour is unchanged.', '2026-10-28T01:34:25Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1200', '`run.ps1 -Republish` publishes both shells. It:
+- adds the Maui and Ui projects to the build inputs;
+- publishes the Maui shell as a folder (unpackaged MAUI doesn''t support single-file) to `C:\Apps\MindAttic.Orchestrator\Maui\`;
+- writes a second shortcut;
+- stops and starts both shells by path through Installer;
+- keeps the `orchestrator busy` check and the TermHost survival on redeploy;
+- has the run.bat menu cover both shells.
+
+**Done when:** one republish updates WPF, Maui, the daemon and the CLI, and a WPF-only machine behaves as before.', '2026-10-28T01:34:25Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1213', 'Write `docs/design/v2-maui-relay.md`. Every later v2 ticket cites it. Decide and record:
 
 - **Shell host:** a .NET MAUI Blazor Hybrid exe that is Windows-only (`net10.0-windows10.0.19041.0` only, no Android/iOS/Mac), unpackaged (`WindowsPackageType=None`), with the Windows App SDK self-contained.
@@ -42873,6 +44237,21 @@ hub; then add one remote spoke.
 **Effort.** 3 to 4 weeks, plus about 1 week in MindAttic.Tickets.', '2026-10-27T22:51:05Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T174', 'The user (2026-10-27): ''they should both be able to deploy independently of each other''. Remove the chain back to the Orchestrator''s deploy.ps1 (and MINDATTIC_DEPLOY_CHAIN). The Orchestrator side is M.ORCH-T1147.', '2026-10-27T16:22:34Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T175', 'Umbrella ticket for a 50-item backlog (filed as part-of children) covering: (A) moving one-off local WPF styles into the shared MindAttic.Components.Wpf package instead of duplicating them per-app; (B) a real epic + sub-ticket visualization in the Stories view (rollup counts, progress, execution-order chips) instead of a bare story count; (C) seamless ticket creation/execution-ordering workflow; (D) a look-and-feel polish pass; (E/F/G/H) navigation, board/queue refinement, command-palette completeness and accessibility.', '2026-10-27T17:00:12Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T225', '`MindAttic.Tickets.Desktop.Maui` is a MAUI Blazor Hybrid host. It is Windows-only, unpackaged and self-contained, and runs over `MindAttic.Tickets.Desktop.Presentation` and `MindAttic.Components.Blazor`, with the screens in a host-agnostic Razor library.
+
+It has:
+- its own single-instance name and handoff pipe (`--ticket` handoff), with shell-aware app-bus presence (M.TIX-T232);
+- per-shell settings (M.TIX-T236) and incremental refresh (M.TIX-T235);
+- Vault and Log wired the same way as WPF.
+
+**Done when:** it opens next to the WPF Tickets Desktop, both run at once without interfering, and it shows a placeholder frame bound to the real MainViewModel.', '2026-10-28T01:34:26Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T227', '`run.ps1` and `tools/install.ps1` publish both shells:
+- the Maui project goes into the build inputs, as a folder publish to `C:\Apps\MindAttic.Tickets.Desktop\Maui\`;
+- a second shortcut;
+- the kill-before-publish step covers both exe names;
+- `install.ps1`''s test gate includes the Presentation and Maui test projects.
+
+**Done when:** one republish updates both shells and the CLI.', '2026-10-28T01:34:28Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T231', 'Same as M.ORCH''s pin, so the Tickets Desktop.Maui project and `tools/install.ps1` build on the same SDK band.
 
 **Done when:** `global.json` pins 10.0.2xx and the README lists the workload.', '2026-10-28T01:23:41Z');
@@ -44302,6 +45681,9 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.AUTH-US-G1', 'M.AUTH-E
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.AUTH-US-G2', 'M.AUTH-EPIC-G', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.AUTH-US-G3', 'M.AUTH-EPIC-G', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.AUTH-US-G4', 'M.AUTH-EPIC-G', 'part-of', 'migrated: story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T79', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T79', 'M.ORCH-T1200', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T79', 'M.ORCH-T1205', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-US-T1', 'M.CAPT-EPIC-T', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-US-T10', 'M.CAPT-EPIC-T', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-US-T2', 'M.CAPT-EPIC-T', 'part-of', 'story under its epic');
@@ -44312,23 +45694,47 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-US-T6', 'M.CAPT-E
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-US-T7', 'M.CAPT-EPIC-T', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-US-T8', 'M.CAPT-EPIC-T', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-US-T9', 'M.CAPT-EPIC-T', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T117', 'M.ORCH-T1196', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T118', 'M.COMP-T100', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T118', 'M.COMP-T107', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T118', 'M.COMP-T129', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T118', 'M.COMP-T94', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T118', 'M.ORCH-T1196', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T118', 'M.TIX-T91', 'follow-up-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T119', 'M.COMP-T129', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T119', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T120', 'M.COMP-T129', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T120', 'M.ORCH-T1196', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T120', 'M.TIX-T175', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T121', 'M.COMP-T129', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T121', 'M.ORCH-T1196', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T121', 'M.TIX-T175', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T122', 'M.COMP-T127', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T122', 'M.COMP-T134', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T122', 'M.ORCH-T1196', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T122', 'M.ORCH-US-A2', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T123', 'M.COMP-T122', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T123', 'M.COMP-T131', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T123', 'M.COMP-T132', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T123', 'M.ORCH-T1196', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T123', 'M.ORCH-US-A2', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T124', 'M.COMP-T123', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T124', 'M.COMP-T133', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T124', 'M.COMP-T134', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T124', 'M.ORCH-T1196', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T124', 'M.ORCH-US-A2', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T125', 'M.COMP-T123', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T125', 'M.COMP-T124', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T125', 'M.COMP-T136', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T125', 'M.COMP-T137', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T125', 'M.COMP-T138', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T125', 'M.COMP-T139', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T125', 'M.COMP-T140', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T125', 'M.COMP-T141', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T125', 'M.COMP-T142', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T125', 'M.COMP-T143', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T125', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T126', 'M.ORCH-T1196', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T127', 'M.ORCH-T1196', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T127', 'M.ORCH-T1213', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T128', 'M.COMP-T127', 'requires', NULL);
@@ -44351,8 +45757,84 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T134', 'M.COMP-T1
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T134', 'M.COMP-T131', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T134', 'M.COMP-T132', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T134', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T135', 'M.COMP-T123', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T135', 'M.COMP-T124', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T135', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T136', 'M.COMP-T132', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T136', 'M.COMP-T135', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T136', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T137', 'M.COMP-T123', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T137', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T138', 'M.COMP-T119', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T138', 'M.COMP-T123', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T138', 'M.COMP-T124', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T138', 'M.COMP-T136', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T138', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T139', 'M.COMP-T118', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T139', 'M.COMP-T120', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T139', 'M.COMP-T121', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T139', 'M.COMP-T123', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T139', 'M.COMP-T124', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T139', 'M.COMP-T136', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T139', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T140', 'M.COMP-T123', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T140', 'M.COMP-T124', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T140', 'M.COMP-T136', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T140', 'M.COMP-T55', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T140', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T141', 'M.COMP-T123', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T141', 'M.COMP-T124', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T141', 'M.COMP-T136', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T141', 'M.COMP-T59', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T141', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T142', 'M.COMP-T123', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T142', 'M.COMP-T124', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T142', 'M.COMP-T136', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T142', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T143', 'M.COMP-T123', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T143', 'M.COMP-T124', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T143', 'M.COMP-T136', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T143', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T144', 'M.COMP-T125', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T144', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T55', 'M.COMP-T129', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T55', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T59', 'M.COMP-T129', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T59', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T61', 'M.COMP-T141', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T62', 'M.COMP-T141', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T62', 'M.COMP-T59', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T63', 'M.COMP-T142', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T64', 'M.COMP-T138', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T65', 'M.COMP-T143', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T66', 'M.COMP-T141', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T67', 'M.COMP-T141', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T68', 'M.COMP-T139', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T69', 'M.COMP-T143', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T70', 'M.COMP-T138', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T71', 'M.COMP-T142', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T72', 'M.COMP-T139', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T73', 'M.COMP-T142', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T74', 'M.COMP-T141', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T75', 'M.COMP-T141', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T76', 'M.COMP-T142', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T78', 'M.COMP-T141', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T79', 'M.COMP-T141', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T79', 'M.COMP-T59', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T80', 'M.COMP-T142', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T81', 'M.COMP-T138', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T82', 'M.COMP-T143', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T83', 'M.COMP-T141', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T84', 'M.COMP-T141', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T85', 'M.COMP-T139', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T86', 'M.COMP-T143', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T87', 'M.COMP-T138', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T88', 'M.COMP-T142', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T89', 'M.COMP-T139', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T90', 'M.COMP-T142', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T91', 'M.COMP-T141', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T92', 'M.COMP-T141', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T93', 'M.COMP-T142', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CRYP-T2', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.DPLY-T7', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.DPLY-US-A1', 'M.DPLY-EPIC-A', 'part-of', 'migrated: story under its epic');
@@ -44505,6 +45987,8 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T77', 'M.ORCH-T81
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T82', 'M.ORCH-T922', 'follow-up-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T82', 'M.ORCH-T924', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T83', 'M.LNCH-T82', 'follow-up-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T89', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T89', 'M.ORCH-T1205', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-US-A1', 'M.LNCH-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-US-A2', 'M.LNCH-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-US-A3', 'M.LNCH-EPIC-A', 'part-of', 'migrated: story under its epic');
@@ -44644,19 +46128,41 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1144', 'M.ORCH-T
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1145', 'M.ORCH-T1127', 'implements', 'the plan this epic carries');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1196', 'M.ORCH-T1195', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1197', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1197', 'M.ORCH-T1220', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1198', 'M.COMP-T124', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1198', 'M.ORCH-T1196', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1198', 'M.ORCH-T1197', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1198', 'M.ORCH-T1214', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1198', 'M.ORCH-T1217', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1198', 'M.ORCH-T1218', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1198', 'M.ORCH-T1221', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1198', 'M.ORCH-T1222', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1198', 'M.ORCH-T1223', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1199', 'M.COMP-T125', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1199', 'M.ORCH-T1196', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1199', 'M.ORCH-T1198', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1199', 'M.ORCH-T1227', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1199', 'M.ORCH-T1228', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1199', 'M.ORCH-T1229', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1199', 'M.ORCH-T1230', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1199', 'M.ORCH-T1231', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1199', 'M.ORCH-T1232', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1199', 'M.ORCH-T1233', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1199', 'M.ORCH-T1234', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1199', 'M.ORCH-T1235', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1199', 'M.ORCH-T1236', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1200', 'M.ORCH-T1196', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1200', 'M.ORCH-T1198', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1200', 'M.ORCH-T1205', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1200', 'M.ORCH-T1216', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1201', 'M.ORCH-T1196', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1201', 'M.ORCH-T1199', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1201', 'M.RLY-T8', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1201', 'M.TIX-T226', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1205', 'M.ORCH-T1196', 'part-of', 'Actually part of the real epic ticket (M.ORCH-T1196, labelled epic), not the stories-doc anchor M.ORCH-EPIC-A');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1205', 'M.ORCH-T1213', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1205', 'M.ORCH-T1216', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1205', 'M.ORCH-T1217', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1213', 'M.ORCH-T1196', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1214', 'M.ORCH-T1196', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1214', 'M.ORCH-T1213', 'requires', NULL);
@@ -44670,6 +46176,100 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1218', 'M.ORCH-T
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1218', 'M.ORCH-T1217', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1219', 'M.COMP-T133', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1219', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1220', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1220', 'M.ORCH-T1213', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1220', 'M.ORCH-T1219', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1221', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1221', 'M.ORCH-T1197', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1222', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1222', 'M.ORCH-T1197', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1223', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1223', 'M.ORCH-T1197', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1223', 'M.ORCH-T1221', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1223', 'M.ORCH-T1222', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1224', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1224', 'M.ORCH-T1223', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1225', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1225', 'M.ORCH-T1224', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1226', 'M.COMP-T125', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1226', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1226', 'M.ORCH-T1225', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1227', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1227', 'M.ORCH-T1198', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1227', 'M.ORCH-T1221', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1227', 'M.ORCH-T1222', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1228', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1228', 'M.ORCH-T1198', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1228', 'M.ORCH-T1224', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1228', 'M.ORCH-T1226', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1229', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1229', 'M.ORCH-T1198', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1229', 'M.ORCH-T1224', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1229', 'M.ORCH-T1226', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1230', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1230', 'M.ORCH-T1198', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1230', 'M.ORCH-T1224', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1230', 'M.ORCH-T1226', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1231', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1231', 'M.ORCH-T1198', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1231', 'M.ORCH-T1224', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1231', 'M.ORCH-T1226', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1231', 'M.ORCH-T1227', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1232', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1232', 'M.ORCH-T1198', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1232', 'M.ORCH-T1224', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1232', 'M.ORCH-T1226', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1233', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1233', 'M.ORCH-T1198', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1233', 'M.ORCH-T1224', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1233', 'M.ORCH-T1226', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1234', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1234', 'M.ORCH-T1198', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1235', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1235', 'M.ORCH-T1228', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1235', 'M.ORCH-T1229', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1235', 'M.ORCH-T1230', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1235', 'M.ORCH-T1231', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1235', 'M.ORCH-T1232', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1235', 'M.ORCH-T1233', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1236', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1236', 'M.ORCH-T1225', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1236', 'M.ORCH-T1228', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1236', 'M.ORCH-T1229', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1236', 'M.ORCH-T1230', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1236', 'M.ORCH-T1231', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1236', 'M.ORCH-T1232', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1236', 'M.ORCH-T1233', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1237', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1237', 'M.ORCH-T1217', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1237', 'M.TIX-T228', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1238', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1238', 'M.ORCH-T1199', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1238', 'M.TIX-T226', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1239', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1239', 'M.ORCH-T1199', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1239', 'M.TIX-T226', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1240', 'M.CAPT-T79', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1240', 'M.COMP-T144', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1240', 'M.LNCH-T89', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1240', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1240', 'M.ORCH-T1199', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1240', 'M.ORCH-T1200', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1240', 'M.ORCH-T1201', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1240', 'M.ORCH-T1234', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1240', 'M.ORCH-T1235', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1240', 'M.ORCH-T1236', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1240', 'M.ORCH-T1237', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1240', 'M.ORCH-T1238', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1240', 'M.ORCH-T1239', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1240', 'M.SCHD-T22', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1240', 'M.TIX-T226', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1240', 'M.TIX-T227', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1240', 'M.TIX-T247', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1240', 'M.TIX-T248', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1240', 'M.TIX-T249', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1240', 'M.TIX-T250', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1240', 'M.TIX-T251', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T13', 'M.ORCH-T40', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T180', 'M.TIX-T65', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T181', 'M.COMP-T11', 'requires', NULL);
@@ -44786,21 +46386,18 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.PSST-US-D3', 'M.PSST-E
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.PSST-US-D4', 'M.PSST-EPIC-D', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.PSST-US-E1', 'M.PSST-EPIC-E', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T10', 'M.RLY-T2', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T10', 'M.RLY-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T10', 'M.RLY-T5', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T10', 'M.RLY-T6', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T11', 'M.RLY-T10', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T11', 'M.RLY-T2', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T11', 'M.RLY-T2', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T12', 'M.ORCH-T1199', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T12', 'M.RLY-T2', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T12', 'M.RLY-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T12', 'M.RLY-T5', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T13', 'M.ORCH-T1128', 'supersedes', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T13', 'M.ORCH-T1197', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T13', 'M.RLY-T2', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T13', 'M.RLY-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T14', 'M.ORCH-T1129', 'supersedes', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T14', 'M.RLY-T2', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T14', 'M.RLY-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T14', 'M.RLY-T4', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T15', 'M.ORCH-T1130', 'supersedes', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T15', 'M.RLY-T10', 'requires', NULL);
@@ -44808,31 +46405,28 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T15', 'M.RLY-T11',
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T15', 'M.RLY-T13', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T15', 'M.RLY-T14', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T15', 'M.RLY-T2', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T15', 'M.RLY-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T16', 'M.ORCH-T1131', 'supersedes', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T16', 'M.RLY-T10', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T16', 'M.RLY-T13', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T16', 'M.RLY-T14', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T16', 'M.RLY-T2', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T16', 'M.RLY-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T17', 'M.ORCH-T1132', 'supersedes', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T17', 'M.ORCH-T1199', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T17', 'M.RLY-T10', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T17', 'M.RLY-T13', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T17', 'M.RLY-T14', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T17', 'M.RLY-T2', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T17', 'M.RLY-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T18', 'M.ORCH-T1133', 'supersedes', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T18', 'M.RLY-T15', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T18', 'M.RLY-T16', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T18', 'M.RLY-T17', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T18', 'M.RLY-T2', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T18', 'M.RLY-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T19', 'M.ORCH-T1134', 'supersedes', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T19', 'M.ORCH-T1199', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T19', 'M.RLY-T15', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T19', 'M.RLY-T16', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T19', 'M.RLY-T17', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T19', 'M.RLY-T2', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T19', 'M.RLY-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T2', 'M.ORCH-T1145', 'supersedes', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T2', 'M.ORCH-T1196', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T20', 'M.ORCH-T1135', 'supersedes', NULL);
@@ -44840,30 +46434,27 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T20', 'M.RLY-T15',
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T20', 'M.RLY-T16', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T20', 'M.RLY-T17', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T20', 'M.RLY-T2', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T20', 'M.RLY-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T21', 'M.ORCH-T1136', 'supersedes', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T21', 'M.RLY-T15', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T21', 'M.RLY-T16', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T21', 'M.RLY-T17', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T21', 'M.RLY-T2', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T21', 'M.RLY-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T22', 'M.ORCH-T1137', 'supersedes', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T22', 'M.ORCH-T1199', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T22', 'M.RLY-T15', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T22', 'M.RLY-T16', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T22', 'M.RLY-T17', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T22', 'M.RLY-T2', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T22', 'M.RLY-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T23', 'M.ORCH-T1138', 'supersedes', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T23', 'M.ORCH-T1199', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T23', 'M.RLY-T15', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T23', 'M.RLY-T16', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T23', 'M.RLY-T17', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T23', 'M.RLY-T2', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T23', 'M.RLY-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T24', 'M.ORCH-T1139', 'supersedes', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T24', 'M.RLY-T18', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T24', 'M.RLY-T19', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T24', 'M.RLY-T2', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T24', 'M.RLY-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T24', 'M.RLY-T20', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T24', 'M.RLY-T21', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T24', 'M.RLY-T22', 'requires', NULL);
@@ -44872,7 +46463,6 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T25', 'M.ORCH-T114
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T25', 'M.RLY-T18', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T25', 'M.RLY-T19', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T25', 'M.RLY-T2', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T25', 'M.RLY-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T25', 'M.RLY-T20', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T25', 'M.RLY-T21', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T25', 'M.RLY-T22', 'requires', NULL);
@@ -44880,62 +46470,57 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T25', 'M.RLY-T23',
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T26', 'M.RLY-T18', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T26', 'M.RLY-T19', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T26', 'M.RLY-T2', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T26', 'M.RLY-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T26', 'M.RLY-T20', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T26', 'M.RLY-T21', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T26', 'M.RLY-T22', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T26', 'M.RLY-T23', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T26', 'M.RLY-T8', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T26', 'M.TIX-T173', 'supersedes', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T26', 'M.TIX-T226', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T27', 'M.ORCH-T1141', 'supersedes', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T27', 'M.RLY-T2', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T27', 'M.RLY-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T27', 'M.RLY-T24', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T27', 'M.RLY-T25', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T27', 'M.RLY-T26', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T28', 'M.ORCH-T1142', 'supersedes', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T28', 'M.RLY-T2', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T28', 'M.RLY-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T28', 'M.RLY-T24', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T28', 'M.RLY-T25', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T28', 'M.RLY-T26', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T29', 'M.ORCH-T1143', 'supersedes', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T29', 'M.RLY-T2', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T29', 'M.RLY-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T29', 'M.RLY-T24', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T29', 'M.RLY-T25', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T29', 'M.RLY-T26', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T3', 'M.RLY-T2', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T3', 'M.RLY-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T30', 'M.ORCH-T1144', 'supersedes', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T30', 'M.RLY-T2', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T30', 'M.RLY-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T30', 'M.RLY-T27', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T30', 'M.RLY-T28', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T30', 'M.RLY-T29', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T4', 'M.RLY-T2', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T4', 'M.RLY-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T5', 'M.RLY-T2', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T5', 'M.RLY-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T5', 'M.RLY-T3', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T5', 'M.RLY-T4', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T6', 'M.RLY-T2', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T6', 'M.RLY-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T6', 'M.RLY-T3', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T7', 'M.RLY-T2', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T7', 'M.RLY-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T7', 'M.RLY-T5', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T8', 'M.ORCH-T1197', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T8', 'M.ORCH-T1218', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T8', 'M.RLY-T2', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T8', 'M.RLY-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T8', 'M.RLY-T5', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T8', 'M.RLY-T6', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T8', 'M.TIX-T224', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T8', 'M.TIX-T232', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T9', 'M.RLY-T2', 'part-of', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T9', 'M.RLY-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T9', 'M.RLY-T6', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.RLY-T9', 'M.RLY-T7', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T10', 'M.SCHD-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T11', 'M.SCHD-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T12', 'M.SCHD-T2', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T22', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T22', 'M.ORCH-T1216', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T4', 'M.SCHD-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T5', 'M.SCHD-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T6', 'M.SCHD-T2', 'requires', NULL);
@@ -45008,15 +46593,34 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T220', 'M.TIX-T175
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T221', 'M.TIX-T175', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T222', 'M.TIX-T175', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T224', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T224', 'M.TIX-T234', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T225', 'M.COMP-T124', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T225', 'M.ORCH-T1196', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T225', 'M.TIX-T224', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T225', 'M.TIX-T231', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T225', 'M.TIX-T232', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T225', 'M.TIX-T235', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T225', 'M.TIX-T236', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T225', 'M.TIX-T237', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T226', 'M.COMP-T125', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T226', 'M.ORCH-T1196', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T226', 'M.TIX-T225', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T226', 'M.TIX-T241', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T226', 'M.TIX-T242', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T226', 'M.TIX-T243', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T226', 'M.TIX-T244', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T226', 'M.TIX-T245', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T226', 'M.TIX-T246', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T226', 'M.TIX-T247', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T226', 'M.TIX-T248', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T226', 'M.TIX-T249', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T226', 'M.TIX-T250', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T227', 'M.ORCH-T1196', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T227', 'M.TIX-T225', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T227', 'M.TIX-T228', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T228', 'M.ORCH-T1196', 'part-of', 'Actually part of the real epic ticket (M.ORCH-T1196, labelled epic), not the stories-doc anchor M.ORCH-EPIC-A');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T228', 'M.ORCH-T1213', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T228', 'M.TIX-T232', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T23', 'M.TIX-T27', 'related', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T231', 'M.ORCH-T1196', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T231', 'M.ORCH-T1213', 'requires', NULL);
@@ -45024,7 +46628,74 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T232', 'M.ORCH-T11
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T232', 'M.ORCH-T1218', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T233', 'M.COMP-T133', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T233', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T234', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T234', 'M.ORCH-T1213', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T234', 'M.TIX-T233', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T235', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T235', 'M.TIX-T224', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T236', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T236', 'M.TIX-T224', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T237', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T237', 'M.TIX-T224', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T238', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T238', 'M.TIX-T237', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T239', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T239', 'M.TIX-T238', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T24', 'M.TIX-T21', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T240', 'M.COMP-T125', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T240', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T240', 'M.TIX-T239', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T241', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T241', 'M.TIX-T225', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T241', 'M.TIX-T238', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T241', 'M.TIX-T240', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T242', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T242', 'M.TIX-T225', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T242', 'M.TIX-T238', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T242', 'M.TIX-T240', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T243', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T243', 'M.TIX-T225', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T243', 'M.TIX-T238', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T243', 'M.TIX-T240', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T244', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T244', 'M.TIX-T225', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T244', 'M.TIX-T238', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T244', 'M.TIX-T240', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T245', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T245', 'M.TIX-T225', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T245', 'M.TIX-T238', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T245', 'M.TIX-T240', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T246', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T246', 'M.TIX-T225', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T246', 'M.TIX-T238', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T246', 'M.TIX-T240', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T247', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T247', 'M.TIX-T241', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T247', 'M.TIX-T242', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T247', 'M.TIX-T243', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T247', 'M.TIX-T244', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T247', 'M.TIX-T245', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T247', 'M.TIX-T246', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T248', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T248', 'M.TIX-T225', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T249', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T249', 'M.TIX-T241', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T249', 'M.TIX-T242', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T249', 'M.TIX-T243', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T249', 'M.TIX-T244', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T249', 'M.TIX-T245', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T249', 'M.TIX-T246', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T250', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T250', 'M.TIX-T239', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T250', 'M.TIX-T241', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T250', 'M.TIX-T242', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T250', 'M.TIX-T243', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T250', 'M.TIX-T244', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T250', 'M.TIX-T245', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T250', 'M.TIX-T246', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T251', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T251', 'M.ORCH-T1205', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T251', 'M.TIX-T232', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T26', 'M.LNCH-T23', 'related', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T27', 'M.TIX-T24', 'supersedes', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T28', 'M.TIX-T16', 'follow-up-of', NULL);
