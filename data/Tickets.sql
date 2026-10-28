@@ -5317,6 +5317,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T76', 'MindAttic.Capture', 76, '2026-10-27', 'fix', 'closed', 'Fails on main: MindAttic.Capture.Tests.EngineTests.Valve_stops_and_exports_the_session_when_a_limit_is_crossed — Assert.That(Probe(stem + "_Video.mkv", "format=duration"), Is.EqualTo(3.0).Within(1.0)) Expected: 3.0d +/- 1.0d But was: 5.5330000000000004d Off by: -2.5330000000000004d (landed on main since the last green run: tickets MAT-T67, MAT-T68 in 7b89c2e Capture''s launcher menu shows: the shortcut opens it in a normal window, and it is written in CRLF so its goto labels resolve (MAT-T67); b79895b Rename every deploy.ps1 -> run.ps1 and deploy.bat -> run.bat (MAT-T68); 8b1a0b3 Every launcher opens a menu first: 1) Deploy & Run 2) Run (MAT-T67))', 'passes on main@19f2b66', 75, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T77', 'MindAttic.Capture', 77, '2026-10-27', 'feature', 'closed', '/capture slash command: screenshot the app hosting the current CLI (MindAttic.Orchestrator.Desktop.exe or the solo terminal) and copy it to the clipboard', '448dbba; AppWindowsTests, ClipboardWriterTests in tests/MindAttic.Capture.Windows.Tests/WindowsTests.cs; verified end-to-end against the real Orchestrator window and clipboard', 76, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T78', 'MindAttic.Capture', 78, '2026-10-27', 'fix', 'closed', 'run.ps1 Test-Stale: malformed regex ''\(bin|obj)\'' (unescaped backslash) throws ''Too many )''s'', breaking every run.ps1 invocation', 'found and fixed while landing M.CAPT-T77', 77, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T79', 'MindAttic.Capture', 79, '2026-10-27', 'chore', 'open', 'Follow the Orchestrator dashboard exe rename and the Maui shell: AppWindows finds the host window under MindAttic.Orchestrator.Desktop.Wpf.exe and MindAttic.Orchestrator.Desktop.Maui.exe (APP_EXE from either run.bat), with WindowsTests updated', '—', 78, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T1', 'MindAttic.Components', 1, '2026-10-13', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.COMP-T1 | 2026-10-13 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T2', 'MindAttic.Components', 2, '2026-10-13', 'feature', 'closed', 'Sand theme dunes build 90% slower (SAND_PILE 1.5 -> 0.15) so the scene stays open longer', 'web/themes/Sand/sand.js', 1, '| M.COMP-T2 | 2026-10-13 | feature | closed | Sand theme dunes build 90% slower (SAND_PILE 1.5 -> 0.15) so the scene stays open longer | web/themes/Sand/sand.js |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T3', 'MindAttic.Components', 3, '2026-10-13', 'fix', 'closed', 'Site build pins the newest V<n> tag of the repo by default; sites.json cdnTag removed so a hand rebuild can''t repin a stale tag', 'web/build/build-sites.mjs; web/tests/package (183 passed)', 2, '| M.COMP-T3 | 2026-10-13 | fix | closed | Site build pins the newest V<n> tag of the repo by default; sites.json cdnTag removed so a hand rebuild can''t repin a stale tag | web/build/build-sites.mjs; web/tests/package (183 passed) |');
@@ -5443,6 +5444,24 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T124', 'MindAttic.Components', 124, '2026-10-27', 'feature', 'open', 'MindAttic.Components.Blazor (Razor class library): thin .razor wrappers over the generated shared markup and CSS, exposing the spec''s properties as parameters and its events as EventCallbacks, with no second copy of the markup', '—', 123, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T125', 'MindAttic.Components', 125, '2026-10-27', 'feature', 'open', 'Bring every component Orchestrator.Desktop and Tickets.Desktop use under a spec, so each has generated Web, Blazor and WPF siblings that stay in sync', '—', 124, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T126', 'MindAttic.Components', 126, '2026-10-27', 'fix', 'open', 'MaPickerTests.Up_Down_Home_and_End_change_the_choice_while_it_stays_closed and MaHyperlinkTests.Keyboard_focus_underlines_the_link_and_losing_it_removes_the_underline fail on main: keyboard-focus assertions come back false (found by /tests)', '—', 125, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T127', 'MindAttic.Components', 127, '2026-10-27', 'docs', 'open', 'Components v2 design record (docs/design/v2-components.md): tokens, spec, generator, siblings and the WPF compatibility contract', '—', 126, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T128', 'MindAttic.Components', 128, '2026-10-27', 'chore', 'open', 'Add global.json pinning the .NET SDK band 10.0.2xx (rollForward latestFeature) so Components.Blazor and the generator build on the same SDK as the apps', '—', 127, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T129', 'MindAttic.Components', 129, '2026-10-27', 'chore', 'open', 'CI for MindAttic.Components: a GitHub Actions windows workflow that runs dotnet test on the slnx plus the web parity and package Playwright suites on every push to main; publish refuses a red commit', '—', 128, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T130', 'MindAttic.Components', 130, '2026-10-27', 'chore', 'open', 'Generalise dotnet/tools/publish-wpf.ps1 into publish.ps1 <Package> for every package (Tokens, Mvvm, Wpf, Blazor) with the same guards (on origin/main, CI green, never overwrite a version, whole majors), Pester-tested', '—', 129, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T131', 'MindAttic.Components', 131, '2026-10-27', 'chore', 'open', 'Freeze the WPF public surface: a baseline test snapshotting the Theme.xaml pack URI, every style key with its TargetType and BasedOn, the control classes, the ~80 dependency properties (name, type, default), attached-property owners, PART_ names and the Mvvm types; it fails on any removal or change', '—', 130, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T132', 'MindAttic.Components', 132, '2026-10-27', 'chore', 'open', 'WPF render baseline: render every control and keyed style in each state (normal, hover, pressed, focused, disabled, checked, selected) × Dark/Light/high contrast off-screen with RenderTargetBitmap, commit the PNGs, fail on a diff above tolerance', '—', 131, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T133', 'MindAttic.Components', 133, '2026-10-27', 'feature', 'open', 'MindAttic.Components.Mvvm 1.0.0 (net10.0, no WPF): ObservableObject, RelayCommand/AsyncRelayCommand with explicit RaiseCanExecuteChanged, CollectionSync, ZoomLevel and IUiDispatcher; MindAttic.Components.Wpf.Mvvm keeps every public type (deriving from the neutral ones, RelayCommand still hooking CommandManager.RequerySuggested) so WPF consumers compile unchanged; Wpf 24.0.0', '—', 132, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T134', 'MindAttic.Components', 134, '2026-10-27', 'feature', 'open', 'tokens.json as the one token source: the 27 Ma* colours (Dark/Light) plus new typography, spacing, radius, border, elevation, motion and icon-map tokens extracted from Theme.xaml''s literals; it generates MaPalette.cs, the Theme.xaml/Light.xaml brush blocks (identical output) and ma-tokens.css (--ma-*, dark/light, forced-colors); Tokens 2.0.0', '—', 133, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T135', 'MindAttic.Components', 135, '2026-10-27', 'feature', 'open', 'Component gallery: one Blazor/Web gallery page and one WPF gallery window that show every spec''d component in every state and theme from the spec''s sample data', '—', 134, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T136', 'MindAttic.Components', 136, '2026-10-27', 'feature', 'open', 'Cross-sibling visual parity harness: render each spec''d component/state/theme in WPF (CRND) and in Blazor/Web (Playwright on the gallery in Chromium at the same DPI and fonts), compare layout metrics (size, padding, font size, radius, colour) exactly and pixels within a perceptual tolerance, publish an HTML report; CI fails on drift', '—', 135, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T137', 'MindAttic.Components', 137, '2026-10-27', 'feature', 'open', 'Reconcile the existing site web components that share names with app components (Button, Modal, Textbox, Tag, Menu, ToolButton, ProgressBar, ThemeToggle, Tooltip) with their spec''d siblings, per the v2 components design, with the live sites'' parity tests (web/tests/parity) green and the asset manifest updated', '—', 136, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T138', 'MindAttic.Components', 138, '2026-10-27', 'feature', 'open', 'Spec the basic styles: buttons (MaToolButton, MaTextButton, MaButton, MaPrimaryButton, MaTileButton, MaStatCard, MaSmallStat, MaPillToggle, MaPinToggle), text (MaHeading, MaSectionLabel, MaMutedText, MaStatValue, MaTileSubtitle), MaFocusRing, cards and borders, MaBadge/MaTag, MaSeparator, MaProgressBar, MaStatusLight, scroll bars: generated Web/Blazor/WPF siblings', '—', 137, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T139', 'MindAttic.Components', 139, '2026-10-27', 'feature', 'open', 'Spec the inputs: MaTextBox/MaTextArea (placeholder), MaPicker (popup and keys), MaPillChoice, MaCombo, MaCheck and the chip, GridView header/row and drag-reorder row list: generated siblings with keyboard behaviour matched', '—', 138, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T140', 'MindAttic.Components', 140, '2026-10-27', 'feature', 'open', 'Spec lists and layout: MaList, MaRowList, MaTileList, MaStackPanel, MaTileGrid (UniformRows/Balanced as CSS grid), MaScrollArea gutter, and the virtualizing list (Blazor Virtualize, WPF recycling panel) sized for 5,500+ rows', '—', 139, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T141', 'MindAttic.Components', 141, '2026-10-27', 'feature', 'open', 'Spec overlays and feedback: MaModal (focus trap and restore), MaMessageBox (an in-window modal in Blazor), MaToast/MaToastHost (aria-live polite), tooltips (MaToolTips.KeepOpen, MaxWidth 420 wrap), DropdownMenu and the new ContextMenu: hand-written where needed, checked against the spec surface', '—', 140, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T142', 'MindAttic.Components', 142, '2026-10-27', 'feature', 'open', 'Spec navigation and chrome: MaTabControl/MaTabItem, MaThemeToggle, MaAccentTile, MaLink/MaHyperlink, MaHighContrast (forced-colors and system colours) and MaWindow (dark title bar via the MAUI Windows title bar instead of dwmapi)', '—', 141, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T143', 'MindAttic.Components', 143, '2026-10-27', 'feature', 'open', 'Spec the drawn controls as hand-written siblings checked by spec surface: MaLineChart as SVG (same axes, grid, series colours, hit areas) and MaSpinner as CSS animation; AddressBar is out of scope (neither app uses it)', '—', 142, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T144', 'MindAttic.Components', 144, '2026-10-27', 'docs', 'open', 'Contributor guide: how to add or change a component in v2 (spec first, regenerate, update the WPF baseline only on purpose, parity report, publish order), linked from README', '—', 143, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CRYP-T1', 'MindAttic.Cryptography', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.CRYP-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CRYP-T2', 'MindAttic.Cryptography', 2, '2026-10-15', 'chore', 'closed', 'Remove duplicate command copies (/quickload, /quicksave) now centralized at the user level (~/.claude/commands)', 'M.FLOW-T14', 1, '| M.CRYP-T2 | 2026-10-15 | chore | closed | Remove duplicate command copies (/quickload, /quicksave) now centralized at the user level (~/.claude/commands) | M.FLOW-T14 |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CRYP-T3', 'MindAttic.Cryptography', 3, '2026-10-16', 'chore', 'closed', 'install.ps1 adds this repo''s 9 .prose/commands stubs for the shared global commands, so any LLM client finds them', 'mindattic-agent-standard/install.ps1 run 2026-10-16', 2, NULL);
@@ -5628,6 +5647,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LNCH-T86', 'MindAttic.Launcher', 86, '2026-10-26', 'fix', 'closed', 'The Launcher''s TermHost path doesn''t apply the API-key person''s pane setup that PaneRequest.ApiKeySetup does (TerminalPanes.cs:97-104): it neither sets MINDATTIC_CLAUDE_BILLING nor strips CLAUDE_CODE_OAUTH_TOKEN/ANTHROPIC_AUTH_TOKEN, so an inherited OAuth token can take precedence over the API key for CLIs on the API-key login; mirror ApiKeySetup (found by bughunt pass 2)', '5743715', 85, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LNCH-T87', 'MindAttic.Launcher', 87, '2026-10-26', 'fix', 'closed', 'The Launcher''s ClaudeRestartGate (Services/ClaudeRestartGate.cs:~38) requires state==''idle'', so a CLI whose Stop hook was cut off after the Orchestrator''s ''deciding'' save (M.ORCH-T1036) is never restarted or resumed; treat a ''deciding'' mark older than 75s as idle, matching the Orchestrator (found by bughunt pass 3)', '0c5856a', 86, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LNCH-T88', 'MindAttic.Launcher', 88, '2026-10-26', 'fix', 'wont-do', 'AccountScope.Ensure sends the API-key login (api-key@mindattic.vault) through the claude.ai OAuth sign-in flow instead of recognizing it''s Vault-key-based', '1c51228', 87, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LNCH-T89', 'MindAttic.Launcher', 89, '2026-10-27', 'chore', 'open', 'Follow the Orchestrator dashboard exe rename (M.ORCH-T1205): MainMenuCommand starts MindAttic.Orchestrator.Desktop.Wpf.exe, falling back to the old name, and honours the Preferred dashboard setting', '—', 88, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LEGN-T1', 'MindAttic.Legion', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.LEGN-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LEGN-T2', 'MindAttic.Legion', 2, '2026-10-13', 'fix', 'closed', 'Restore LlmProviderCatalog to live-verified model ids (all 13 providers) and expand the default trusted/voting set from 4 to 9 providers', 'M.LEGN-LAW-5, ActiveProviderIds_DefaultAllowedSet_IsTheTrustedProviders, AskCommandTests.TrustedProviderIds_MatchesCatalogDefaultSet', 1, '| M.LEGN-T2 | 2026-10-13 | fix | closed | Restore LlmProviderCatalog to live-verified model ids (all 13 providers) and expand the default trusted/voting set from 4 to 9 providers | M.LEGN-LAW-5, ActiveProviderIds_DefaultAllowedSet_IsTheTrustedProviders, AskCommandTests.TrustedProviderIds_MatchesCatalogDefaultSet |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LEGN-T3', 'MindAttic.Legion', 3, '2026-10-14', 'chore', 'closed', 'NUnit tests for LegionConfig (Models/LegionConfig.cs): LoadFromDirectory walks up parent dirs to find legion.json (stops after 12 levels, null when absent or path invalid), LoadFromFile tolerates comments/trailing commas/case-insensitive keys and returns null on malformed JSON, ApplyTo replaces AllowedProviderIds only when voters is non-empty (case-insensitive set), sets JudgeProviderId only when non-blank, merges models/apiKeys skipping blank keys or values, applies maxConcurrency; this is how every project declares its voter panel and the CLI vote command depends on it', 'MindAttic.Legion.Tests/LegionConfigTests.cs (cdea439)', 2, NULL);
@@ -6917,6 +6937,34 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1210', 'MindAttic.Orchestrator', 1210, '2026-10-27', 'fix', 'closed', 'Scheduler/Snapshot.MayWork ignores part-of-epic membership: a ticket part-of an unapproved epic can still be queued and dispatched', 'c07006c2', 1209, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1211', 'MindAttic.Orchestrator', 1211, '2026-10-27', 'chore', 'closed', 'Bump MindAttic.Tickets package dependency to 5.0.0 for the Close approval gate (M.TIX-T229)', '5281ae76', 1210, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1212', 'MindAttic.Orchestrator', 1212, '2026-10-27', 'chore', 'open', 'Audit the MAUI & RELAY epic (M.ORCH-T1196) end to end: find missing details and architectural gaps (WPF backward compatibility, WPF/Maui kept in sync going forward) and file the missing tickets so the whole epic runs as one ordered sequence', '—', 1211, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1213', 'MindAttic.Orchestrator', 1213, '2026-10-27', 'docs', 'open', 'v2 architecture decision record (docs/design/v2-maui-relay.md): settle every cross-cutting choice for MAUI & RELAY before any code', '—', 1212, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1214', 'MindAttic.Orchestrator', 1214, '2026-10-27', 'chore', 'open', 'Pin the .NET SDK band for v2: global.json to 10.0.2xx (rollForward latestFeature) and document the maui-windows 10.0.20 workload requirement in README', '—', 1213, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1215', 'MindAttic.Orchestrator', 1215, '2026-10-27', 'chore', 'open', 'Delete the five zero-byte .cs files committed at the repo root (App.xaml.cs, AccountRebalancer.cs, DropdownMenu.cs, MaHighContrast.cs, MaMessageBox.cs) before the v2 project moves', '—', 1214, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1216', 'MindAttic.Orchestrator', 1216, '2026-10-27', 'feature', 'open', 'Split the daemon out of the dashboard exe: a headless MindAttic.Orchestrator.Daemon.exe (no WPF) runs Core.Daemon; MindAttic.Orchestrator.Desktop.exe --daemon and the legacy MindAttic.Orchestrator.exe forwarding keep working by handing off to it', '—', 1215, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1217', 'MindAttic.Orchestrator', 1217, '2026-10-27', 'feature', 'open', 'Two dashboards can run at once: per-shell single-instance names, a Preferred dashboard setting (WPF by default) used by the daemon, CLI, Launcher and Tickets, FallbackViewers.IsUp seeing either shell, one PaneBroker owner, terminal size owned by the last-focused viewer, per-shell session-restore files, Installer stopping/starting both by path', '—', 1216, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1218', 'MindAttic.Orchestrator', 1218, '2026-10-27', 'feature', 'open', 'App bus v1.1, shell-aware: AppPresence gains shell (wpf|maui) and focusedAtUtc, presences are keyed by app+pid, and open-ticket/show-worker go to exactly one target (the preferred shell if present, else the most recently focused); additive and readable by v1 clients; docs/app-bus.md updated', '—', 1217, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1219', 'MindAttic.Orchestrator', 1219, '2026-10-27', 'chore', 'open', 'Adopt MindAttic.Components.Wpf 24 + MindAttic.Components.Mvvm 1 in the dashboard with no visual or behaviour change (all existing tests green)', '—', 1218, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1220', 'MindAttic.Orchestrator', 1220, '2026-10-27', 'feature', 'open', 'Create MindAttic.Orchestrator.Presentation (UI-neutral, no UseWPF) with the services the view models need: IUiDispatcher, IUiTimer (replaces DispatcherTimer), IDialogs (message box, confirm, folder picker), IClipboard, IWindowShell (show, activate, flash) and a Tone enum instead of Brush; WPF implementations live in the Wpf project', '—', 1219, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1221', 'MindAttic.Orchestrator', 1221, '2026-10-27', 'feature', 'open', 'Decouple TerminalPaneViewModel from the WPF terminal controls: the view model keeps only session state (TermHost id, connection, replay, size owner, ended, badge, tone), and a per-shell ITerminalSurface factory creates RelayTerminal/EasyTerminalControl in WPF and the xterm.js surface in Maui', '—', 1220, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1222', 'MindAttic.Orchestrator', 1222, '2026-10-27', 'feature', 'open', 'One shared command and keymap table in Presentation (commands, gestures, and TerminalKeyboard''s gating rules for when a key goes to the terminal or the window) that the WPF window registers from now and the Maui shell will too', '—', 1221, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1223', 'MindAttic.Orchestrator', 1223, '2026-10-27', 'chore', 'open', 'Move the view-model tests to a UI-neutral MindAttic.Orchestrator.Presentation.Tests project (no STA, no WPF); WPF-only tests (LibraryOnlyXaml, DashboardAlignment, TerminalPanes HWND, TabSwitch, …) stay in the WPF test project', '—', 1222, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1224', 'MindAttic.Orchestrator', 1224, '2026-10-27', 'feature', 'open', 'Deterministic fixture mode for the dashboard (--fixture <file>): canned logins, usage, meters, tickets, repos and terminals with recorded VT output, a frozen clock and no daemon, so any shell renders identical, reproducible screens', '—', 1223, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1225', 'MindAttic.Orchestrator', 1225, '2026-10-27', 'chore', 'open', 'Capture the WPF dashboard baseline: screenshots of every screen, modal and window in fixture mode at three window sizes × Dark/Light/high contrast, committed under docs/parity/wpf-baseline with a script to regenerate', '—', 1224, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1226', 'MindAttic.Orchestrator', 1226, '2026-10-27', 'chore', 'open', 'Adopt the spec-generated MindAttic.Components.Wpf major in the dashboard: no visual change against the WPF baseline (docs/parity/wpf-baseline) and every WPF test green', '—', 1225, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1227', 'MindAttic.Orchestrator', 1227, '2026-10-27', 'feature', 'open', 'Maui terminal surface: an xterm.js Blazor component fed by TermHost frames (Replay, Live, Output, Modes, Exit, Size) over a JS-interop bridge on the existing pipe protocol, matching the WPF terminal''s behaviour (key routing and gating, wheel over unfocused panes, selection copy and paste rules, broadcast keys, size ownership, replay on attach, ended state, Cascadia Mono and the same colour scheme)', '—', 1226, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1228', 'MindAttic.Orchestrator', 1228, '2026-10-27', 'feature', 'open', 'Port the dashboard frame to Maui: window, header stat tiles, Users | Repos | Misc tabs, toasts and FlashWindowEx equivalent, theme toggle, high contrast and zoom, using the shared keymap', '—', 1227, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1229', 'MindAttic.Orchestrator', 1229, '2026-10-27', 'feature', 'open', 'Port the Users tab to Maui: login cards, usage, API-burn and utilisation charts, accounts, billing, orgs and reminders', '—', 1228, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1230', 'MindAttic.Orchestrator', 1230, '2026-10-27', 'feature', 'open', 'Port the Repos tabs to Maui: Queue (virtualised), Audit, repo tiles, assigned work, phases and ticket pins', '—', 1229, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1231', 'MindAttic.Orchestrator', 1231, '2026-10-27', 'feature', 'open', 'Port the terminals area to Maui: tab strip, tab status and blinking (TabBlinker), tab picker, pop-out, session restore, move, broadcast keys and launcher respawn on the xterm.js surface', '—', 1230, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1232', 'MindAttic.Orchestrator', 1232, '2026-10-27', 'feature', 'open', 'Port the Settings and User settings modals to Maui with every setting editable the same way, the same validation and the same CLI round-trip', '—', 1231, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1233', 'MindAttic.Orchestrator', 1233, '2026-10-27', 'feature', 'open', 'Port the secondary windows and dialogs to Maui: Team Wall (a second MAUI window), Build workspace, the command palette, folder picker and message boxes', '—', 1232, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1234', 'MindAttic.Orchestrator', 1234, '2026-10-27', 'chore', 'open', 'Library-only Razor rule: a test like LibraryOnlyXamlTests that fails any raw HTML element, inline style or literal colour in the dashboard''s Razor views outside MindAttic.Components.Blazor', '—', 1233, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1235', 'MindAttic.Orchestrator', 1235, '2026-10-27', 'chore', 'open', 'Binding-coverage gate: a test that every public property and command on the Presentation view models is used by both the WPF XAML and the Razor views, or listed with a reason in a per-shell exemption file; surfacing a member in only one shell fails the build', '—', 1234, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1236', 'MindAttic.Orchestrator', 1236, '2026-10-27', 'chore', 'open', 'Screen parity harness for the dashboard: drive both shells in fixture mode, capture every screen, modal and window at the baseline sizes and themes, compare WPF↔Maui and WPF↔baseline (layout metrics strict, pixels within tolerance, the DashboardAlignment rules for gutters and equal tiles), HTML report; fails on drift', '—', 1235, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1237', 'MindAttic.Orchestrator', 1237, '2026-10-27', 'chore', 'open', 'Follow the Tickets exe rename: OrchestratorOptions.TicketsDesktopExe and TicketsApp.Name (window lookup and %LOCALAPPDATA% fallback) point at MindAttic.Tickets.Desktop.Wpf.exe (falling back to the forwarder name), plus a TicketsDesktopMauiExe and Preferred-dashboard-aware launch', '—', 1236, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1238', 'MindAttic.Orchestrator', 1238, '2026-10-27', 'feature', 'open', 'Keep WPF and Maui in sync from now on: an AgentGate commit check (Orchestrator and Tickets) that refuses a commit changing one shell''s views without the other''s unless the ticket carries a single-shell label with a reason, the agent standard stating ''every UI ticket lands in Presentation + WPF + Razor in one commit'', and the feature ticket template gaining a ''Shells: both'' line', '—', 1237, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1239', 'MindAttic.Orchestrator', 1239, '2026-10-27', 'docs', 'open', 'Contributor guide for both apps: how to add a screen, setting or command so it lands in both shells (Presentation view model → WPF view → Razor view → keymap → fixture → parity tests), linked from both READMEs', '—', 1238, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1240', 'MindAttic.Orchestrator', 1240, '2026-10-27', 'chore', 'open', 'Release v2.0.0: /test green in Components, Tickets and Orchestrator; both shells of both apps deployed side by side and checked live (open ticket, show worker, terminals, settings round-trip, WPF-only machine unchanged); tag v2.0.0 in Orchestrator and Tickets; README and docs updated', '—', 1239, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T1', 'MindAttic.Psst', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.PSST-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T2', 'MindAttic.Psst', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for ContactBook (Contacts/Contact.cs): Find matches name case-insensitively before phone, falls back to 10-digit phone match across formats (+1, dashes, parens), returns null for blank or unmatched input; WithAdded rejects blank name/phone and case-insensitive duplicate names and leaves the original book unchanged; WithoutContact removes only the first case-insensitive match and returns null when absent - this is how psst sms resolves recipients, so a wrong match texts the wrong person', '865fde2', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T3', 'MindAttic.Psst', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched', '—', 2, '| M.PSST-T3 | 2026-10-14 | chore | open | NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched | — |');
@@ -7241,6 +7289,27 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T228', 'MindAttic.Tickets', 228, '2026-10-27', 'chore', 'open', 'Rename MindAttic.Tickets.Desktop.exe to MindAttic.Tickets.Desktop.Wpf.exe', '—', 227, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T229', 'MindAttic.Tickets', 229, '2026-10-27', 'fix', 'closed', 'TicketsDb.Close() lets any non-fix ticket close as done regardless of its approval state; gate it programmatically', '5df968e', 228, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T230', 'MindAttic.Tickets', 230, '2026-10-27', 'fix', 'closed', 'Fails on main: MindAttic.Tickets.Tests.TicketsDbTests.Tickets_are_append_only_with_history_and_new_ones_take_the_next_number — Assert.That(db.History("AL-T1").Select(e => (e.Field, e.Old, e.New)), Is.EqualTo(new[] { ("status", (string?)"open", (string?)"closed"), ("ref", "—", "the test") })) Expected is <System.ValueTuple`3[System.String,System.String,System.String][2]>, actual is <System.Linq.Enumerable+IListSelectItera... (landed on main since the last green run: tickets M.TIX-T229 in 5df968e TicketsDb.Close refuses to close a non-fix ticket as done unless it''s approved (M.TIX-T229))', 'passes on main@bcc5843', 229, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T231', 'MindAttic.Tickets', 231, '2026-10-27', 'chore', 'open', 'Pin the .NET SDK band for v2: global.json to 10.0.2xx (rollForward latestFeature) and document the maui-windows workload requirement in README', '—', 230, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T232', 'MindAttic.Tickets', 232, '2026-10-27', 'feature', 'open', 'App bus v1.1 in Tickets: update the copied contract (Bus/AppBus.cs) to the shell-aware presence, announce shell and focus changes, and honour single-target open-ticket requests; a golden-fixture test keeps the copy identical to Orchestrator.Core''s contract', '—', 231, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T233', 'MindAttic.Tickets', 233, '2026-10-27', 'chore', 'open', 'Adopt MindAttic.Components.Wpf 24 + MindAttic.Components.Mvvm 1 in Tickets Desktop with no visual or behaviour change (all existing tests green)', '—', 232, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T234', 'MindAttic.Tickets', 234, '2026-10-27', 'feature', 'open', 'Create MindAttic.Tickets.Desktop.Presentation (UI-neutral): move Data/ and Bus/ unchanged and add IUiDispatcher, IUiTimer, IDialogs (with SaveFile), IUrlOpener and IClipboard; replace the 14 CommandManager.InvalidateRequerySuggested calls with explicit RaiseCanExecuteChanged', '—', 233, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T235', 'MindAttic.Tickets', 235, '2026-10-27', 'feature', 'open', 'Incremental refresh: after the first full Snapshot load, apply changes by ticket id (from app-bus ticket events or a changed-since query on ticket_events) instead of reloading all 5,500+ tickets, history and hygiene on every change', '—', 234, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T236', 'MindAttic.Tickets', 236, '2026-10-27', 'feature', 'open', 'Two Tickets desktops at once: per-shell settings files (desktop.json migrated once into desktop.wpf.json/desktop.maui.json plus a shared part), refreshes not duplicated, and undo refusing to revert a ticket another process changed since (as Stories already does)', '—', 235, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T237', 'MindAttic.Tickets', 237, '2026-10-27', 'chore', 'open', 'Move the view-model tests (StoriesViewTests and the other 24 view-model-level files) to a UI-neutral MindAttic.Tickets.Desktop.Presentation.Tests project; AutomationNameTests and StatsViewTests stay in the WPF test project', '—', 236, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T238', 'MindAttic.Tickets', 238, '2026-10-27', 'feature', 'open', 'Deterministic fixture mode for Tickets Desktop: a committed anonymised fixture Tickets.db (~5,500 rows, epics, stories, queue, history) opened via MINDATTIC_TICKETS_DB, plus a frozen clock and no app bus, so both shells render identical screens', '—', 237, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T239', 'MindAttic.Tickets', 239, '2026-10-27', 'chore', 'open', 'Capture the WPF Tickets Desktop baseline: screenshots of all seven tabs, the detail pane, New ticket, Prompt and Command palette in fixture mode at three sizes × Dark/Light/high contrast, committed under docs/parity/wpf-baseline with a regenerate script', '—', 238, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T240', 'MindAttic.Tickets', 240, '2026-10-27', 'chore', 'open', 'Adopt the spec-generated MindAttic.Components.Wpf major in Tickets Desktop, retiring the local styles in Theme/Styles.xaml that the library now covers: no visual change against the WPF baseline and every test green', '—', 239, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T241', 'MindAttic.Tickets', 241, '2026-10-27', 'feature', 'open', 'Port the Tickets Desktop frame to Maui: window, the seven tabs, toasts, zoom, high contrast, the command palette and the 24 keyboard shortcuts from the shared keymap', '—', 240, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T242', 'MindAttic.Tickets', 242, '2026-10-27', 'feature', 'open', 'Port the Repos tab to Maui: the virtualised 5,500+ row list with grouping, filters, saved filters, labels and bulk actions, fed by incremental refresh', '—', 241, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T243', 'MindAttic.Tickets', 243, '2026-10-27', 'feature', 'open', 'Port Queue and Board to Maui, including drag-to-reorder (HTML5 drag and drop, same rules as WPF''s DoDragDrop)', '—', 242, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T244', 'MindAttic.Tickets', 244, '2026-10-27', 'feature', 'open', 'Port Audit, Activity and Stats to Maui (the stats table read-only with right-aligned numbers, as in WPF)', '—', 243, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T245', 'MindAttic.Tickets', 245, '2026-10-27', 'feature', 'open', 'Port Stories to Maui: epics with chevrons and rollups, progress, Next up, implementer chips, editing with the changed-elsewhere conflict, implements link/unlink and undo', '—', 244, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T246', 'MindAttic.Tickets', 246, '2026-10-27', 'feature', 'open', 'Port the detail pane, New ticket, Prompt and export/save dialogs to Maui', '—', 245, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T247', 'MindAttic.Tickets', 247, '2026-10-27', 'chore', 'open', 'Accessibility parity in the Maui shell: the AutomationNameTests rules (spoken row names, glyph-only buttons announce a name and role, polite live region) as aria checks in bUnit tests', '—', 246, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T248', 'MindAttic.Tickets', 248, '2026-10-27', 'chore', 'open', 'Library-only Razor rule for Tickets Desktop.Maui: a test that fails any raw HTML element, inline style or literal colour in its Razor views outside MindAttic.Components.Blazor', '—', 247, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T249', 'MindAttic.Tickets', 249, '2026-10-27', 'chore', 'open', 'Binding-coverage gate for Tickets: every public property and command on the Presentation view models is used by both the WPF XAML and the Razor views, or exempted with a reason; surfacing a member in only one shell fails the build', '—', 248, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T250', 'MindAttic.Tickets', 250, '2026-10-27', 'chore', 'open', 'Screen parity harness for Tickets Desktop: both shells in fixture mode, every tab and dialog at the baseline sizes and themes, WPF↔Maui and WPF↔baseline compared (metrics strict, pixels within tolerance), HTML report; fails on drift', '—', 249, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T251', 'MindAttic.Tickets', 251, '2026-10-27', 'chore', 'open', 'Follow the Orchestrator exe rename: OrchestratorLink starts MindAttic.Orchestrator.Desktop.Wpf.exe (then the forwarder, then legacy names) and respects the Preferred dashboard setting; comments in OrchestratorState and Bus/AppBus updated', '—', 250, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.VALT-T1', 'MindAttic.Vault', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.VALT-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.VALT-T2', 'MindAttic.Vault', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for Dashboard HealthMonitorStore (MindAttic.Vault.Dashboard/Services/HealthMonitorStore.cs; add a Dashboard ProjectReference to MindAttic.Vault.Tests first): RecordUptime running percentage per provider and case-insensitive ids, Previous returns null before first commit, Commit replaces snapshots and evicts providers missing from the fresh set, sets LastSweepUtc, clears SweepInProgress and fires OnChanged, Snapshots ordered trusted-first then alphabetical, TrustedPanelHealthy false when no trusted snapshots exist or any trusted one is not Healthy - this is the headline confidence verdict the dashboard leads with', 'MindAttic.Vault.Tests/HealthMonitorStoreTests.cs', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.VALT-T3', 'MindAttic.Vault', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for Dashboard AlertDispatcher (Services/AlertDispatcher.cs): with a fake IHttpClientFactory/HttpMessageHandler verify every non-blank webhook gets a JSON POST with provider, displayName, status, previous, diagnosis, detail, atUtc fields; blank webhook urls skipped; no channels configured means no work; a webhook that throws or returns non-2xx is logged and does not stop other webhooks or fault DispatchAsync; email channel skipped when Host is blank or To is empty, and an SMTP failure is swallowed - alerts must be best-effort and isolated so one bad channel never breaks a sweep', '—', 2, '| M.VALT-T3 | 2026-10-14 | chore | open | NUnit tests for Dashboard AlertDispatcher (Services/AlertDispatcher.cs): with a fake IHttpClientFactory/HttpMessageHandler verify every non-blank webhook gets a JSON POST with provider, displayName, status, previous, diagnosis, detail, atUtc fields; blank webhook urls skipped; no channels configured means no work; a webhook that throws or returns non-2xx is logged and does not stop other webhooks or fault DispatchAsync; email channel skipped when Host is blank or To is empty, and an SMTP failure is swallowed - alerts must be best-effort and isolated so one bad channel never breaks a sweep | — |');
@@ -37494,6 +37563,156 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20942, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20943, 'M.ORCH-T1208', '2026-10-28T01:14:23Z', 'ref', '—', '6782bbe6');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20944, 'M.ORCH-T1209', '2026-10-28T01:15:02Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20945, 'M.ORCH-T1209', '2026-10-28T01:15:02Z', 'ref', '—', '1ffc369d');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20946, 'M.ORCH-T1213', '2026-10-28T01:23:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20947, 'M.COMP-T127', '2026-10-28T01:23:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20948, 'M.ORCH-T1214', '2026-10-28T01:23:40Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20949, 'M.TIX-T231', '2026-10-28T01:23:41Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20950, 'M.COMP-T128', '2026-10-28T01:23:42Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20951, 'M.ORCH-T1215', '2026-10-28T01:23:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20952, 'M.COMP-T129', '2026-10-28T01:23:44Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20953, 'M.COMP-T130', '2026-10-28T01:23:45Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20954, 'M.COMP-T131', '2026-10-28T01:23:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20955, 'M.COMP-T132', '2026-10-28T01:23:47Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20956, 'M.ORCH-T1216', '2026-10-28T01:23:48Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20957, 'M.ORCH-T1217', '2026-10-28T01:23:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20958, 'M.ORCH-T1218', '2026-10-28T01:23:50Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20959, 'M.TIX-T232', '2026-10-28T01:23:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20960, 'M.COMP-T133', '2026-10-28T01:23:53Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20961, 'M.COMP-T134', '2026-10-28T01:23:54Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20962, 'M.ORCH-T1219', '2026-10-28T01:23:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20963, 'M.TIX-T233', '2026-10-28T01:24:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20964, 'M.ORCH-T1220', '2026-10-28T01:24:07Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20965, 'M.ORCH-T1221', '2026-10-28T01:24:12Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20966, 'M.ORCH-T1222', '2026-10-28T01:24:14Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20967, 'M.ORCH-T1223', '2026-10-28T01:24:18Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20968, 'M.ORCH-T1224', '2026-10-28T01:24:35Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20969, 'M.ORCH-T1225', '2026-10-28T01:24:44Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20970, 'M.TIX-T234', '2026-10-28T01:24:48Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20971, 'M.TIX-T235', '2026-10-28T01:24:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20972, 'M.TIX-T236', '2026-10-28T01:24:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20973, 'M.TIX-T237', '2026-10-28T01:24:58Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20974, 'M.TIX-T238', '2026-10-28T01:25:01Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20975, 'M.TIX-T239', '2026-10-28T01:25:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20976, 'M.COMP-T135', '2026-10-28T01:25:07Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20977, 'M.COMP-T136', '2026-10-28T01:25:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20978, 'M.COMP-T137', '2026-10-28T01:25:16Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20979, 'M.COMP-T138', '2026-10-28T01:25:21Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20980, 'M.COMP-T139', '2026-10-28T01:25:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20981, 'M.COMP-T140', '2026-10-28T01:25:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20982, 'M.COMP-T141', '2026-10-28T01:25:38Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20983, 'M.COMP-T142', '2026-10-28T01:25:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20984, 'M.COMP-T143', '2026-10-28T01:25:40Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20985, 'M.COMP-T144', '2026-10-28T01:25:41Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20986, 'M.ORCH-T1226', '2026-10-28T01:25:42Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20987, 'M.TIX-T240', '2026-10-28T01:25:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20988, 'M.ORCH-T1227', '2026-10-28T01:25:44Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20989, 'M.ORCH-T1228', '2026-10-28T01:25:45Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20990, 'M.ORCH-T1229', '2026-10-28T01:25:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20991, 'M.ORCH-T1230', '2026-10-28T01:25:47Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20992, 'M.ORCH-T1231', '2026-10-28T01:25:48Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20993, 'M.ORCH-T1232', '2026-10-28T01:25:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20994, 'M.ORCH-T1233', '2026-10-28T01:25:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20995, 'M.ORCH-T1234', '2026-10-28T01:25:52Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20996, 'M.ORCH-T1235', '2026-10-28T01:25:53Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20997, 'M.ORCH-T1236', '2026-10-28T01:25:54Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20998, 'M.TIX-T241', '2026-10-28T01:25:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (20999, 'M.TIX-T242', '2026-10-28T01:25:56Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21000, 'M.TIX-T243', '2026-10-28T01:25:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21001, 'M.TIX-T244', '2026-10-28T01:25:58Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21002, 'M.TIX-T245', '2026-10-28T01:25:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21003, 'M.TIX-T246', '2026-10-28T01:26:00Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21004, 'M.TIX-T247', '2026-10-28T01:26:01Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21005, 'M.TIX-T248', '2026-10-28T01:26:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21006, 'M.TIX-T249', '2026-10-28T01:26:03Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21007, 'M.TIX-T250', '2026-10-28T01:26:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21008, 'M.ORCH-T1237', '2026-10-28T01:26:05Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21009, 'M.TIX-T251', '2026-10-28T01:26:06Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21010, 'M.LNCH-T89', '2026-10-28T01:26:07Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21011, 'M.CAPT-T79', '2026-10-28T01:26:08Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21012, 'M.ORCH-T1238', '2026-10-28T01:26:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21013, 'M.ORCH-T1239', '2026-10-28T01:26:10Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21014, 'M.ORCH-T1240', '2026-10-28T01:26:11Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21015, 'M.ORCH-T1213', '2026-10-28T01:26:13Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21016, 'M.ORCH-T1196', '2026-10-28T01:26:13Z', 'link', NULL, 'M.ORCH-T1213 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21017, 'M.COMP-T127', '2026-10-28T01:26:14Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21018, 'M.ORCH-T1196', '2026-10-28T01:26:14Z', 'link', NULL, 'M.COMP-T127 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21019, 'M.COMP-T127', '2026-10-28T01:26:15Z', 'link', NULL, 'requires M.ORCH-T1213');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21020, 'M.ORCH-T1213', '2026-10-28T01:26:15Z', 'link', NULL, 'M.COMP-T127 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21021, 'M.ORCH-T1214', '2026-10-28T01:26:16Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21022, 'M.ORCH-T1196', '2026-10-28T01:26:16Z', 'link', NULL, 'M.ORCH-T1214 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21023, 'M.ORCH-T1214', '2026-10-28T01:26:17Z', 'link', NULL, 'requires M.ORCH-T1213');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21024, 'M.ORCH-T1213', '2026-10-28T01:26:17Z', 'link', NULL, 'M.ORCH-T1214 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21025, 'M.TIX-T231', '2026-10-28T01:26:18Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21026, 'M.ORCH-T1196', '2026-10-28T01:26:19Z', 'link', NULL, 'M.TIX-T231 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21027, 'M.TIX-T231', '2026-10-28T01:26:20Z', 'link', NULL, 'requires M.ORCH-T1213');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21028, 'M.ORCH-T1213', '2026-10-28T01:26:20Z', 'link', NULL, 'M.TIX-T231 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21029, 'M.COMP-T128', '2026-10-28T01:26:21Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21030, 'M.ORCH-T1196', '2026-10-28T01:26:21Z', 'link', NULL, 'M.COMP-T128 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21031, 'M.COMP-T128', '2026-10-28T01:26:22Z', 'link', NULL, 'requires M.COMP-T127');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21032, 'M.COMP-T127', '2026-10-28T01:26:22Z', 'link', NULL, 'M.COMP-T128 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21033, 'M.ORCH-T1215', '2026-10-28T01:26:23Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21034, 'M.ORCH-T1196', '2026-10-28T01:26:23Z', 'link', NULL, 'M.ORCH-T1215 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21035, 'M.COMP-T129', '2026-10-28T01:26:24Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21036, 'M.ORCH-T1196', '2026-10-28T01:26:25Z', 'link', NULL, 'M.COMP-T129 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21037, 'M.COMP-T129', '2026-10-28T01:26:25Z', 'link', NULL, 'requires M.COMP-T117');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21038, 'M.COMP-T117', '2026-10-28T01:26:26Z', 'link', NULL, 'M.COMP-T129 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21039, 'M.COMP-T129', '2026-10-28T01:26:26Z', 'link', NULL, 'requires M.COMP-T126');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21040, 'M.COMP-T126', '2026-10-28T01:26:27Z', 'link', NULL, 'M.COMP-T129 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21041, 'M.COMP-T129', '2026-10-28T01:26:27Z', 'link', NULL, 'requires M.COMP-T128');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21042, 'M.COMP-T128', '2026-10-28T01:26:28Z', 'link', NULL, 'M.COMP-T129 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21043, 'M.COMP-T130', '2026-10-28T01:26:29Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21044, 'M.ORCH-T1196', '2026-10-28T01:26:29Z', 'link', NULL, 'M.COMP-T130 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21045, 'M.COMP-T130', '2026-10-28T01:26:30Z', 'link', NULL, 'requires M.COMP-T129');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21046, 'M.COMP-T129', '2026-10-28T01:26:30Z', 'link', NULL, 'M.COMP-T130 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21047, 'M.COMP-T131', '2026-10-28T01:26:31Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21048, 'M.ORCH-T1196', '2026-10-28T01:26:31Z', 'link', NULL, 'M.COMP-T131 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21049, 'M.COMP-T131', '2026-10-28T01:26:32Z', 'link', NULL, 'requires M.COMP-T129');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21050, 'M.COMP-T129', '2026-10-28T01:26:32Z', 'link', NULL, 'M.COMP-T131 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21051, 'M.COMP-T132', '2026-10-28T01:26:33Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21052, 'M.ORCH-T1196', '2026-10-28T01:26:33Z', 'link', NULL, 'M.COMP-T132 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21053, 'M.COMP-T132', '2026-10-28T01:26:34Z', 'link', NULL, 'requires M.COMP-T129');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21054, 'M.COMP-T129', '2026-10-28T01:26:34Z', 'link', NULL, 'M.COMP-T132 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21055, 'M.ORCH-T1216', '2026-10-28T01:26:35Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21056, 'M.ORCH-T1196', '2026-10-28T01:26:35Z', 'link', NULL, 'M.ORCH-T1216 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21057, 'M.ORCH-T1216', '2026-10-28T01:26:36Z', 'link', NULL, 'requires M.ORCH-T1213');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21058, 'M.ORCH-T1213', '2026-10-28T01:26:37Z', 'link', NULL, 'M.ORCH-T1216 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21059, 'M.ORCH-T1216', '2026-10-28T01:26:38Z', 'link', NULL, 'requires M.ORCH-T1215');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21060, 'M.ORCH-T1215', '2026-10-28T01:26:38Z', 'link', NULL, 'M.ORCH-T1216 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21061, 'M.ORCH-T1217', '2026-10-28T01:26:39Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21062, 'M.ORCH-T1196', '2026-10-28T01:26:39Z', 'link', NULL, 'M.ORCH-T1217 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21063, 'M.ORCH-T1217', '2026-10-28T01:26:40Z', 'link', NULL, 'requires M.ORCH-T1216');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21064, 'M.ORCH-T1216', '2026-10-28T01:26:40Z', 'link', NULL, 'M.ORCH-T1217 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21065, 'M.ORCH-T1218', '2026-10-28T01:26:41Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21066, 'M.ORCH-T1196', '2026-10-28T01:26:42Z', 'link', NULL, 'M.ORCH-T1218 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21067, 'M.ORCH-T1218', '2026-10-28T01:26:43Z', 'link', NULL, 'requires M.ORCH-T1217');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21068, 'M.ORCH-T1217', '2026-10-28T01:26:43Z', 'link', NULL, 'M.ORCH-T1218 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21069, 'M.TIX-T232', '2026-10-28T01:26:44Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21070, 'M.ORCH-T1196', '2026-10-28T01:26:44Z', 'link', NULL, 'M.TIX-T232 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21071, 'M.TIX-T232', '2026-10-28T01:26:45Z', 'link', NULL, 'requires M.ORCH-T1218');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21072, 'M.ORCH-T1218', '2026-10-28T01:26:45Z', 'link', NULL, 'M.TIX-T232 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21073, 'M.COMP-T133', '2026-10-28T01:26:46Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21074, 'M.ORCH-T1196', '2026-10-28T01:26:46Z', 'link', NULL, 'M.COMP-T133 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21075, 'M.COMP-T133', '2026-10-28T01:26:47Z', 'link', NULL, 'requires M.COMP-T130');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21076, 'M.COMP-T130', '2026-10-28T01:26:48Z', 'link', NULL, 'M.COMP-T133 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21077, 'M.COMP-T133', '2026-10-28T01:26:49Z', 'link', NULL, 'requires M.COMP-T131');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21078, 'M.COMP-T131', '2026-10-28T01:26:49Z', 'link', NULL, 'M.COMP-T133 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21079, 'M.COMP-T133', '2026-10-28T01:26:50Z', 'link', NULL, 'requires M.COMP-T127');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21080, 'M.COMP-T127', '2026-10-28T01:26:50Z', 'link', NULL, 'M.COMP-T133 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21081, 'M.COMP-T134', '2026-10-28T01:26:51Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21082, 'M.ORCH-T1196', '2026-10-28T01:26:51Z', 'link', NULL, 'M.COMP-T134 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21083, 'M.COMP-T134', '2026-10-28T01:26:52Z', 'link', NULL, 'requires M.COMP-T131');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21084, 'M.COMP-T131', '2026-10-28T01:26:52Z', 'link', NULL, 'M.COMP-T134 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21085, 'M.COMP-T134', '2026-10-28T01:26:53Z', 'link', NULL, 'requires M.COMP-T132');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21086, 'M.COMP-T132', '2026-10-28T01:26:53Z', 'link', NULL, 'M.COMP-T134 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21087, 'M.COMP-T134', '2026-10-28T01:26:54Z', 'link', NULL, 'requires M.COMP-T127');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21088, 'M.COMP-T127', '2026-10-28T01:26:54Z', 'link', NULL, 'M.COMP-T134 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21089, 'M.ORCH-T1219', '2026-10-28T01:26:55Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21090, 'M.ORCH-T1196', '2026-10-28T01:26:56Z', 'link', NULL, 'M.ORCH-T1219 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21091, 'M.ORCH-T1219', '2026-10-28T01:26:56Z', 'link', NULL, 'requires M.COMP-T133');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21092, 'M.COMP-T133', '2026-10-28T01:26:57Z', 'link', NULL, 'M.ORCH-T1219 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21093, 'M.TIX-T233', '2026-10-28T01:26:57Z', 'link', NULL, 'part-of M.ORCH-T1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21094, 'M.ORCH-T1196', '2026-10-28T01:26:58Z', 'link', NULL, 'M.TIX-T233 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21095, 'M.TIX-T233', '2026-10-28T01:26:59Z', 'link', NULL, 'requires M.COMP-T133');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z', NULL);
@@ -39830,11 +40049,120 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (90, 'U.C
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GGC-T26', 'TownWalker.lnk''s IconLocation is C:\Apps\TownWalker\TownWalker.exe,0, but TownWalker actually deploys to C:\Apps\GridGameCaravan\GridGameCaravan.exe (which already carries the correct standard Unity icon). Repoint the shortcut''s icon at the real deployed exe so the Desktop icon renders instead of falling back to a generic one.', '2026-10-28T00:38:52Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.CAPT-T79', 'This keeps `/capture` working from a CLI hosted in either shell.
+
+**Done when:** the capture tests cover both exe names.', '2026-10-28T01:26:08Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.COMP-T127', 'Decide and record, building on M.ORCH-T1196''s architecture record:
+
+- **One token source:** `tokens.json` generates `MaPalette.cs`, the `Theme.xaml` and `Light.xaml` brush blocks, and `ma-tokens.css` (`--ma-*` variables).
+  - The 16 web site themes (`--bg`, `--accent`, …) and Unity are left untouched, so the live sites don''t change.
+  - New token kinds: typography, spacing, radii, border widths, elevation, motion durations, and an icon map (name to Segoe Fluent codepoint, so WPF and WebView2 show the same glyphs).
+- **Spec format:**
+  - Each spec covers properties, events, parts and states.
+  - WPF states map onto the template triggers. Theme.xaml uses no VisualStateManager today, and that doesn''t change.
+  - A *surface-only* mode covers hand-written siblings (MaLineChart, MaSpinner, MaWindow, MaMessageBox, DropdownMenu, MaTileGrid, MaHighContrast). The spec checks their API and tokens, not their markup.
+- **WPF compatibility contract.** These never break:
+  - the `pack://…/MindAttic.Components.Wpf;component/Theme.xaml` URI;
+  - the style keys, their TargetTypes and `BasedOn` chains;
+  - the control class names, dependency property names, attached-property owners, and `PART_*` names;
+  - the `MindAttic.Components.Wpf.Mvvm` types.
+  - Styles stay keyed styles on stock types.
+- **Web delivery:** generated output is committed under `web/components/`. There is still no runtime build step, and releases are still cut as `V<n>` tags.
+  - Decide how the existing site components with the same names (Button, Modal, Textbox, Tag, Menu, ToolButton, ProgressBar, ThemeToggle, Tooltip) relate to the app siblings: migrate them with the site parity tests green, or give the app siblings distinct names.
+- **Package names:** `MindAttic.Components.Blazor`, chosen so it doesn''t clash with the planned per-theme `MindAttic.Components.Blazor.*` packages or the `.razor` copies Tutor and Ideas keep by hand. Also `MindAttic.Components.Mvvm` and `MindAttic.Components.Tokens` 2.
+- **Versioning cadence** while the generator rolls out.', '2026-10-28T01:23:39Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.COMP-T128', '**Done when:** `global.json` exists at the repo root and `dotnet build MindAttic.Components.slnx` resolves 10.0.2xx.', '2026-10-28T01:23:42Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.COMP-T129', 'The generator''s "the build fails on drift" promise needs a real gate. Today no CI runs the .NET tests, and main is red: M.COMP-T117 and M.COMP-T126.
+
+**Done when:**
+- The workflow is green on main.
+- `publish-wpf.ps1` (and its later generalisation) refuses a commit whose CI run is not green.', '2026-10-28T01:23:44Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.COMP-T130', 'Tokens 1.0.0 has never been published. v2 adds Mvvm and Blazor packages, and all of them must reach `C:\LocalNuGet` the same safe way.
+
+**Done when:** `publish.ps1 Wpf` behaves exactly like `publish-wpf.ps1` (kept as a wrapper), and the Pester tests cover every package.', '2026-10-28T01:23:45Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.COMP-T131', 'This makes "backwards compatible for WPF" mechanical for the 9 consumer projects (Orchestrator, Tickets, and seven apps still on 19.0.0).
+
+**Done when:**
+- The baseline file is committed and the test is green.
+- Additions pass after an explicit baseline update.
+- Removals and renames fail.', '2026-10-28T01:23:46Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.COMP-T132', 'This proves the generator and token moves leave the WPF look unchanged. It uses OffScreenWindow, per TestWindowHygieneTests, and is deterministic: fixed DPI, fixed fonts, no animations.
+
+**Done when:** the baseline set is committed and the test reproduces it with no diff.', '2026-10-28T01:23:47Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.COMP-T133', 'Both apps'' view models use `MindAttic.Components.Wpf.Mvvm`, which is WPF-bound. That is what stops them being shared with Maui.
+
+**Done when:**
+- The neutral package builds for `net10.0`.
+- The WPF types still pass every existing test, and the CAPI baseline is unchanged except for additions.
+- Both packages are published with `publish.ps1`.', '2026-10-28T01:23:53Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.COMP-T134', 'Today the colours are typed twice: in C#, and by hand in XAML. They are not in CSS at all, and sizes, spacing and fonts live only as literals in Theme.xaml. Parity across three siblings needs every one of those values in one place.
+
+**Done when:**
+- Regenerating produces byte-identical brush blocks, and XamlPaletteTests, CAPI and CRND are green.
+- `ma-tokens.css` is committed and the site themes are untouched.
+- Tokens 2.0.0 and a Wpf major are published.', '2026-10-28T01:23:54Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.COMP-T135', 'The parity harness and hand checks need the same content rendered by every sibling.
+
+**Done when:** both galleries list every spec''d component and can be opened with a query or argument selecting one component, state and theme.', '2026-10-28T01:25:07Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.COMP-T136', '"Same look" needs to be measured. WPF ClearType and Chromium text never match pixel for pixel, so layout metrics are compared strictly and pixels loosely.
+
+**Done when:** the harness runs in CI and catches a deliberately altered padding in one sibling.', '2026-10-28T01:25:09Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.COMP-T137', 'mindattic.com, ryandebraal.com, mindatticcares.com, Hyperspace, Psst, Tutor and RusNet consume `web/` by tag, so they must not change look by accident.
+
+**Done when:** the reconciliation is done, the site parity tests are green, and a new `V<n>` tag is cut.', '2026-10-28T01:25:16Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.COMP-T138', 'Each component gets a spec. Its Web, Blazor and WPF siblings come from the generator, or are hand-written in surface-only mode, and a bUnit test covers the Blazor sibling.
+
+**Done when:**
+- CAPI and CRND are green, so the WPF look and API are unchanged.
+- CPAR is green for every component in the group.
+- The components appear in both galleries.
+
+This supersedes the older hand-written parity tickets M.COMP-T64, M.COMP-T81, M.COMP-T70, M.COMP-T87; they''re delivered through the spec instead.', '2026-10-28T01:25:21Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.COMP-T139', 'Each component gets a spec. Its Web, Blazor and WPF siblings come from the generator, or are hand-written in surface-only mode, and a bUnit test covers the Blazor sibling.
+
+**Done when:**
+- CAPI and CRND are green, so the WPF look and API are unchanged.
+- CPAR is green for every component in the group.
+- The components appear in both galleries.
+
+This supersedes the older hand-written parity tickets M.COMP-T68, M.COMP-T85, M.COMP-T72, M.COMP-T89; they''re delivered through the spec instead.', '2026-10-28T01:25:26Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.COMP-T140', 'Each component gets a spec. Its Web, Blazor and WPF siblings come from the generator, or are hand-written in surface-only mode, and a bUnit test covers the Blazor sibling.
+
+**Done when:**
+- CAPI and CRND are green, so the WPF look and API are unchanged.
+- CPAR is green for every component in the group.
+- The components appear in both galleries.', '2026-10-28T01:25:37Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.COMP-T141', 'Each component gets a spec. Its Web, Blazor and WPF siblings come from the generator, or are hand-written in surface-only mode, and a bUnit test covers the Blazor sibling.
+
+**Done when:**
+- CAPI and CRND are green, so the WPF look and API are unchanged.
+- CPAR is green for every component in the group.
+- The components appear in both galleries.
+
+This supersedes the older hand-written parity tickets M.COMP-T61, M.COMP-T78, M.COMP-T62, M.COMP-T79, M.COMP-T66, M.COMP-T83, M.COMP-T67, M.COMP-T84, M.COMP-T74, M.COMP-T91, M.COMP-T75, M.COMP-T92; they''re delivered through the spec instead.', '2026-10-28T01:25:38Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.COMP-T142', 'Each component gets a spec. Its Web, Blazor and WPF siblings come from the generator, or are hand-written in surface-only mode, and a bUnit test covers the Blazor sibling.
+
+**Done when:**
+- CAPI and CRND are green, so the WPF look and API are unchanged.
+- CPAR is green for every component in the group.
+- The components appear in both galleries.
+
+This supersedes the older hand-written parity tickets M.COMP-T71, M.COMP-T88, M.COMP-T73, M.COMP-T90, M.COMP-T63, M.COMP-T80, M.COMP-T76, M.COMP-T93; they''re delivered through the spec instead.', '2026-10-28T01:25:39Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.COMP-T143', 'Each component gets a spec. Its Web, Blazor and WPF siblings come from the generator, or are hand-written in surface-only mode, and a bUnit test covers the Blazor sibling.
+
+**Done when:**
+- CAPI and CRND are green, so the WPF look and API are unchanged.
+- CPAR is green for every component in the group.
+- The components appear in both galleries.
+
+This supersedes the older hand-written parity tickets M.COMP-T65, M.COMP-T82, M.COMP-T69, M.COMP-T86; they''re delivered through the spec instead.', '2026-10-28T01:25:40Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.COMP-T144', '**Done when:** the guide walks through one real component end to end.', '2026-10-28T01:25:41Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.LNCH-T88', 'Seen live: opening the Launcher as api-key@mindattic.vault printed ''isn''t signed in on this machine yet. Signing it in first (orchestrator login --account api-key@mindattic.vault)...'' and opened a claude.ai OAuth browser flow, exactly like a normal Team member who''s never signed in.
 
 Cause: AccountScope.IsSignedIn (Services/AccountScope.cs) only checks .claude.json''s oauthAccount.emailAddress. The API-key login (MindAttic.Orchestrator.Core''s ApiKeyPerson) never gets an oauthAccount — ApiKeyPerson.EnsureConfig only sets hasCompletedOnboarding and approves the Vault key in customApiKeyResponses.approved. So AccountScope.Ensure always thinks it''s never signed in and runs ''orchestrator login --account'', which drives a real claude.ai OAuth sign-in for an email that was never meant to have a claude.ai account.
 
 Fix: AccountScope (or AccountScope.Ensure) needs to special-case api-key@mindattic.vault: treat it as ''signed in'' when its .claude.json has the Vault key''s tail approved in customApiKeyResponses.approved (ClaudeKeyChoice''s format in MindAttic.Orchestrator.Core), not when there''s an oauthAccount. Never run the claude.ai OAuth flow for this login; preparing its folder is MindAttic.Orchestrator.Core''s ApiKeyPerson.Prepare, which the Orchestrator''s own OpenLauncherPaneAsync already calls before opening its Launcher pane (MainViewModel.Tabs.cs) -- this path (MindAttic.Launcher launched standalone with --account api-key@mindattic.vault, not through the Orchestrator''s Open Launcher) is the one that skips it.', '2026-10-27T02:58:48Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.LNCH-T89', '**Done when:** the Launcher opens the dashboard with only the renamed exe installed.', '2026-10-28T01:26:07Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1070', 'Investigated this ticket''s full scope before writing any code, and found it is already built and
 shipped, end to end, across tickets that landed concurrently with (and mostly before) this one was
 filed. No new code is needed; closing as satisfied by existing work rather than duplicating it.
@@ -41907,6 +42235,125 @@ Design:
   is a fixed 230 wide" is stale since T1096 superseded it -- worth a one-line fix alongside
   this ticket.)', '2026-10-27T22:58:53Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1196', 'v2, cross-repo: Maui Blazor Hybrid editions of Orchestrator.Desktop and Tickets.Desktop at exact WPF parity, built on one component spec that generates matching Web, Blazor and WPF components in MindAttic.Components, plus MindAttic.Relay; build order is set by the requires links.', '2026-10-28T01:07:12Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1213', 'Write `docs/design/v2-maui-relay.md`. Every later v2 ticket cites it. Decide and record:
+
+- **Shell host:** a .NET MAUI Blazor Hybrid exe that is Windows-only (`net10.0-windows10.0.19041.0` only, no Android/iOS/Mac), unpackaged (`WindowsPackageType=None`), with the Windows App SDK self-contained.
+  - The screens live in a host-agnostic Razor class library, so the host is a thin shell and could be swapped (for example to WPF BlazorWebView) without touching the screens.
+  - Read MediaButler''s history: its csproj says an "old MAUI shell" was replaced by WPF BlazorWebView. Record why, and how v2 avoids the same problem.
+- **Shared logic:** one UI-neutral Presentation library per app holds every view model. Both shells bind to the same view models, so any logic change reaches both shells at once.
+  - The MVVM base types become `MindAttic.Components.Mvvm` (no `CommandManager`).
+  - View models expose semantic tones, not `Brush`.
+  - Dispatcher, timer, dialogs, clipboard and window behaviour sit behind interfaces.
+- **Terminals:** the Maui shell renders terminals with xterm.js fed by the existing TermHost pipe protocol. WPF keeps the Windows Terminal renderer. Record what "same look" means for a terminal: font, colour scheme, cursor, selection.
+- **Processes:**
+  - The daemon gets its own exe.
+  - Which helper exes stay WPF-only (TermViewer).
+  - The two-dashboard model: a *preferred dashboard* setting, per-shell single-instance names, and one owner for PaneBroker and terminal size.
+- **App identity:**
+  - The single-instance and handoff names never change.
+  - App-bus presence becomes shell-aware.
+  - Requests are delivered to exactly one shell.
+- **Exe renames** (`*.Desktop.Wpf.exe`): keep a small forwarding exe under the old name, so the Scheduler, Launcher, Capture, shortcuts and old scripts keep working.
+- **Parity definition:**
+  - Every view-model member is bound in both shells.
+  - One shared keymap.
+  - Screen screenshots match within a stated tolerance, plus layout metrics. Pixel-exact is impossible because WPF and Chromium render text differently.
+- **Toolchain:** the .NET 10 SDK band (10.0.2xx) with `maui-windows` 10.0.20. Not the 11.0 RC.
+- **Release flow:** pack to `C:\LocalNuGet`, then a separate bump ticket in each consuming repo. Whole-number versions only.
+- **Out of scope:** an Inno Setup installer, non-Windows targets, and new features in only one shell.', '2026-10-28T01:23:37Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1214', 'Today `rollForward: latestMajor` would build on the 11.0 RC or a later GA as soon as one is installed. The MAUI workload is tied to the SDK band.
+
+**Done when:** `global.json` pins 10.0.2xx, `dotnet --version` in the repo resolves to it, and the README lists the workload command (`dotnet workload install maui-windows`).', '2026-10-28T01:23:40Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1215', 'They aren''t compiled, but they confuse moves and searches.
+
+**Done when:** they are gone and the solution builds.', '2026-10-28T01:23:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1216', 'Today `App.RunDaemon` runs the daemon inside the WPF exe, so the daemon depends on the WPF shell. The Maui shell and the exe rename both need it standalone.
+
+**Done when:**
+- The new exe holds the daemon mutex.
+- The old `--daemon` entry points (WPF exe, `MindAttic.Orchestrator.exe`, the CLI daemon command) start or forward to it, so `jobs.json` keeps working unchanged.
+- `run.ps1` and Installer publish it, then stop and restart it by path. TermHosts survive the redeploy.
+- `InstallerTests` cover the new exe and the forwarding.', '2026-10-28T01:23:48Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1217', 'Today everything assumes one dashboard:
+- `SingleInstance.Claim(DashboardName)`;
+- `FallbackViewers.IsUp` checks only the WPF name;
+- both shells would serve the PaneBroker pipe;
+- `SessionRestore` assumes a single writer;
+- `StopInstalledCopies` matches by exe name.
+
+**Done when:**
+- With only WPF installed, behaviour is unchanged (the existing tests are green).
+- A fake second shell in tests gets its own instance, never steals Launcher panes, and doesn''t trigger TermViewer windows.
+- The setting appears in the Settings modal and the CLI (`orchestrator settings`).', '2026-10-28T01:23:49Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1218', 'Today presence is a dictionary keyed by app id, and `open-ticket` is broadcast with `To="tickets-desktop"`. With two Tickets shells running, both would open the ticket, and whichever announced last would win the foreground grant.
+
+**Done when:**
+- Contract tests cover old and new readers.
+- Golden JSON fixtures are shared with M.TIX''s copy of the contract.
+- The daemon routes requests to a single shell.', '2026-10-28T01:23:50Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1219', 'This is a separate release step, so the Presentation move starts from the published packages.
+
+**Done when:** the PackageReferences are bumped, the build is clean, and the WPF tests are green.', '2026-10-28T01:23:55Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1220', 'This lets the view models move without dragging WPF along. `MainViewModel.Accounts.cs` showing `MaMessageBox` and `TabStatus`''s 40 ms `DispatcherTimer` are the patterns to replace.
+
+**Done when:** the project and its interfaces exist, WPF implements them, and nothing moves yet beyond what the interfaces need.', '2026-10-28T01:24:07Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1221', 'Today the view model exposes `FrameworkElement Control`, `RelayTerminal`, `EasyTerminalControl` and `Brush`, and runs `DispatcherTimer`s.
+
+**Done when:** the view model has no `System.Windows` references, WPF terminals behave exactly as before, and the TerminalPanes tests are green.', '2026-10-28T01:24:12Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1222', 'Two hand-kept key tables would drift. Generating both shells'' bindings from one table keeps them in sync.
+
+**Done when:** MainWindow''s key bindings come from the table, and a test lists every gesture and its command.', '2026-10-28T01:24:15Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1223', 'About 229 tests reference the Wpf namespace only to reach view models. Once they''re moved, the logic is tested once for both shells.
+
+**Done when:** the full test count is unchanged across both projects and everything is green.', '2026-10-28T01:24:18Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1224', 'This is the oracle for every parity comparison and for screenshots in tests.
+
+**Done when:**
+- `MindAttic.Orchestrator.Desktop.exe --fixture docs/parity/fixture.json` shows every tab, modal and window with fixed content.
+- Two runs give identical screenshots.', '2026-10-28T01:24:35Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1225', 'This freezes v1''s look before Maui work starts. It is the reference both for "WPF unchanged" and for Maui parity.
+
+**Done when:** the baseline set and the capture script are committed.', '2026-10-28T01:24:44Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1226', 'This proves the generated library is a drop-in for the shipped WPF app before any Maui screen depends on it.
+
+**Done when:** baseline screenshots show no diff above tolerance.', '2026-10-28T01:25:42Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1227', 'This is the largest single port item. Batch output per animation frame so heavy CLI output doesn''t flood JS interop. Use IME-safe input.
+
+**Done when:**
+- A fixture session and a live CLI render and behave the same in both shells.
+- WPF and Maui can view the same TermHost at once without fighting over its size.
+- Throughput is measured (MB/s with no dropped frames) and recorded.', '2026-10-28T01:25:44Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1228', 'The Razor views bind the same Presentation view models as WPF and use only MindAttic.Components.Blazor.
+
+**Done when:** the screen matches the WPF baseline in fixture mode within the parity tolerance, and its bUnit tests are green.', '2026-10-28T01:25:45Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1229', 'The Razor views bind the same Presentation view models as WPF and use only MindAttic.Components.Blazor.
+
+**Done when:** the screen matches the WPF baseline in fixture mode within the parity tolerance, and its bUnit tests are green.', '2026-10-28T01:25:46Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1230', 'The Razor views bind the same Presentation view models as WPF and use only MindAttic.Components.Blazor.
+
+**Done when:** the screen matches the WPF baseline in fixture mode within the parity tolerance, and its bUnit tests are green.', '2026-10-28T01:25:47Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1231', 'The Razor views bind the same Presentation view models as WPF and use only MindAttic.Components.Blazor.
+
+**Done when:** the screen matches the WPF baseline in fixture mode within the parity tolerance, and its bUnit tests are green.', '2026-10-28T01:25:48Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1232', 'The Razor views bind the same Presentation view models as WPF and use only MindAttic.Components.Blazor.
+
+**Done when:** the screen matches the WPF baseline in fixture mode within the parity tolerance, and its bUnit tests are green.', '2026-10-28T01:25:49Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1233', 'The Razor views bind the same Presentation view models as WPF and use only MindAttic.Components.Blazor.
+
+**Done when:** the screen matches the WPF baseline in fixture mode within the parity tolerance, and its bUnit tests are green.', '2026-10-28T01:25:51Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1234', 'This keeps the Maui shell on the shared components, the same way WPF is held to the library today.
+
+**Done when:** the test is green on the shell and catches a planted `<button style=…>`.', '2026-10-28T01:25:52Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1235', 'This is the mechanical guarantee that the two shells stay in sync going forward.
+
+**Done when:** the gate is green, and adding a bound property to only one shell makes it fail.', '2026-10-28T01:25:53Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1236', '**Done when:** the harness runs from one script, the report is green, and an intentionally shifted tile in one shell fails it.', '2026-10-28T01:25:54Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1237', '**Done when:** opening a ticket starts or foregrounds the right Tickets shell, and the TicketsDesktop tests are green.', '2026-10-28T01:26:05Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1238', 'This is the workflow half of "always kept in sync going forward". The build half is OCOV/TCOV and the parity harnesses.
+
+**Done when:** AgentGate tests cover refusal and the label exemption, and `mindattic-agent-standard` documents the rule.', '2026-10-28T01:26:09Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1239', '**Done when:** the guide walks through one real setting end to end in both apps.', '2026-10-28T01:26:10Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1240', '**Done when:** the tags are pushed and the live check list in the ticket notes is all ticked.', '2026-10-28T01:26:11Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T833', 'Symptom: Inside the Orchestrator''s embedded Terminals panel (TerminalPanesHost), when a CLI running
 in a pane shows an interactive, arrow-key-driven menu (e.g. a selection list or permission prompt),
 the Up/Down/Left/Right keys don''t reach the CLI. It looks like the WPF app is intercepting/consuming
@@ -42426,6 +42873,48 @@ hub; then add one remote spoke.
 **Effort.** 3 to 4 weeks, plus about 1 week in MindAttic.Tickets.', '2026-10-27T22:51:05Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T174', 'The user (2026-10-27): ''they should both be able to deploy independently of each other''. Remove the chain back to the Orchestrator''s deploy.ps1 (and MINDATTIC_DEPLOY_CHAIN). The Orchestrator side is M.ORCH-T1147.', '2026-10-27T16:22:34Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T175', 'Umbrella ticket for a 50-item backlog (filed as part-of children) covering: (A) moving one-off local WPF styles into the shared MindAttic.Components.Wpf package instead of duplicating them per-app; (B) a real epic + sub-ticket visualization in the Stories view (rollup counts, progress, execution-order chips) instead of a bare story count; (C) seamless ticket creation/execution-ordering workflow; (D) a look-and-feel polish pass; (E/F/G/H) navigation, board/queue refinement, command-palette completeness and accessibility.', '2026-10-27T17:00:12Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T231', 'Same as M.ORCH''s pin, so the Tickets Desktop.Maui project and `tools/install.ps1` build on the same SDK band.
+
+**Done when:** `global.json` pins 10.0.2xx and the README lists the workload.', '2026-10-28T01:23:41Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T232', '**Done when:**
+- Tickets Desktop (WPF) announces `shell: wpf` and sends a focus update on activation.
+- It ignores requests not addressed to it.
+- The golden JSON fixtures match M.ORCH''s byte for byte.', '2026-10-28T01:23:52Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T233', '**Done when:** the PackageReferences are bumped, the build is clean, and the Desktop tests are green.', '2026-10-28T01:24:02Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T234', '**Done when:** the project exists, `Data`/`Bus` live there, WPF implements the interfaces, and the Desktop tests are green.', '2026-10-28T01:24:48Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T235', 'Every refresh today reloads everything through `Task.Run(store.Load)`. A Blazor list re-rendering 5,500 rows per change would be visibly slow, and both shells benefit.
+
+**Done when:** a single ticket change refreshes only that row, and a test shows the full reload happens only at start-up or on a schema or sync change.', '2026-10-28T01:24:51Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T236', 'Today both shells would write `%LOCALAPPDATA%\MindAttic\Tickets\desktop.json` (last writer wins), and each shell''s undo stack could overwrite the other shell''s later edit.
+
+**Done when:** tests run two view-model instances against one database and cover settings isolation and an undo conflict.', '2026-10-28T01:24:55Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T237', '**Done when:** the test count is unchanged and everything is green.', '2026-10-28T01:24:58Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T238', '**Done when:** `--fixture` opens it read-only and two runs give identical screenshots.', '2026-10-28T01:25:01Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T239', '**Done when:** the baseline set is committed.', '2026-10-28T01:25:04Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T240', '**Done when:** baseline screenshots show no diff above tolerance and `Theme/Styles.xaml` keeps only app-specific keys.', '2026-10-28T01:25:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T241', 'The Razor views bind the same Presentation view models as WPF and use only MindAttic.Components.Blazor.
+
+**Done when:** the screen matches the WPF baseline in fixture mode within the parity tolerance, and its bUnit tests are green.', '2026-10-28T01:25:55Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T242', 'The Razor views bind the same Presentation view models as WPF and use only MindAttic.Components.Blazor.
+
+**Done when:** the screen matches the WPF baseline in fixture mode within the parity tolerance, and its bUnit tests are green.', '2026-10-28T01:25:56Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T243', 'The Razor views bind the same Presentation view models as WPF and use only MindAttic.Components.Blazor.
+
+**Done when:** the screen matches the WPF baseline in fixture mode within the parity tolerance, and its bUnit tests are green.', '2026-10-28T01:25:57Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T244', 'The Razor views bind the same Presentation view models as WPF and use only MindAttic.Components.Blazor.
+
+**Done when:** the screen matches the WPF baseline in fixture mode within the parity tolerance, and its bUnit tests are green.', '2026-10-28T01:25:58Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T245', 'The Razor views bind the same Presentation view models as WPF and use only MindAttic.Components.Blazor.
+
+**Done when:** the screen matches the WPF baseline in fixture mode within the parity tolerance, and its bUnit tests are green.', '2026-10-28T01:25:59Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T246', 'The Razor views bind the same Presentation view models as WPF and use only MindAttic.Components.Blazor.
+
+**Done when:** the screen matches the WPF baseline in fixture mode within the parity tolerance, and its bUnit tests are green.', '2026-10-28T01:26:00Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T247', '**Done when:** every WPF accessibility rule has a Blazor test and both are green.', '2026-10-28T01:26:01Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T248', '**Done when:** the test is green and catches a planted violation.', '2026-10-28T01:26:02Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T249', '**Done when:** the gate is green and catches a member bound in only one shell.', '2026-10-28T01:26:03Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T250', '**Done when:** the harness runs from one script and its report is green.', '2026-10-28T01:26:04Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T251', '**Done when:** Tickets'' ''show worker'' and ''open dashboard'' still work with only the renamed exe installed.', '2026-10-28T01:26:06Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('MAT-T65', 'The user (2026-10-27): ''NO! always same worktree/branch'', ''never ever EVER make separate branches'', ''ALWAYS LAYER CODE ON TOP; this is a GOLDEN RULE'', ''write it globally''. Written into MINDATTIC_AGENT.md (local, untracked), mindattic-agent-standard/AGENTS.md (Branches) and shared/commands/test.md (fix subagents no longer get their own worktrees).', '2026-10-27T15:00:11Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('MAT-T66', 'The user (2026-10-27): ''Make sure any request becomes a new ticket, or is appended to an existing ticket so that every action that writes code in the system is aligned to a ticket GLOBAL GOLDEN RULE''. Written into MINDATTIC_AGENT.md (local) and mindattic-agent-standard/AGENTS.md.', '2026-10-27T15:24:35Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('MAT-T67', 'The user (2026-10-27): refactor all deploy.ps1 and deploy.bat in all MindAttic projects to have a Menu that says 1.) Deploy & Run 2.) Run - so double-clicking the desktop icon lets them choose, before it copies over the whole version, whether to redeploy or just run the deployed app. Covers each repo''s deploy.ps1 and the launcher .bat it generates in C:\Apps (and repo-root deploy.bat for the Unity/REA repos). Step 1 of 3.', '2026-10-27T16:16:10Z');
@@ -43840,6 +44329,28 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T124', 'M.ORCH-US
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T125', 'M.COMP-T123', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T125', 'M.COMP-T124', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T125', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T127', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T127', 'M.ORCH-T1213', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T128', 'M.COMP-T127', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T128', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T129', 'M.COMP-T117', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T129', 'M.COMP-T126', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T129', 'M.COMP-T128', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T129', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T130', 'M.COMP-T129', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T130', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T131', 'M.COMP-T129', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T131', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T132', 'M.COMP-T129', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T132', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T133', 'M.COMP-T127', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T133', 'M.COMP-T130', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T133', 'M.COMP-T131', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T133', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T134', 'M.COMP-T127', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T134', 'M.COMP-T131', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T134', 'M.COMP-T132', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T134', 'M.ORCH-T1196', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T62', 'M.COMP-T59', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.COMP-T79', 'M.COMP-T59', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CRYP-T2', 'M.TIX-T14', 'related', 'migrated: named in ref');
@@ -44146,6 +44657,19 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1201', 'M.ORCH-T
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1201', 'M.RLY-T8', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1201', 'M.TIX-T226', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1205', 'M.ORCH-T1196', 'part-of', 'Actually part of the real epic ticket (M.ORCH-T1196, labelled epic), not the stories-doc anchor M.ORCH-EPIC-A');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1213', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1214', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1214', 'M.ORCH-T1213', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1215', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1216', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1216', 'M.ORCH-T1213', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1216', 'M.ORCH-T1215', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1217', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1217', 'M.ORCH-T1216', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1218', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1218', 'M.ORCH-T1217', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1219', 'M.COMP-T133', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1219', 'M.ORCH-T1196', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T13', 'M.ORCH-T40', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T180', 'M.TIX-T65', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T181', 'M.COMP-T11', 'requires', NULL);
@@ -44494,6 +45018,12 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T227', 'M.ORCH-T11
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T227', 'M.TIX-T225', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T228', 'M.ORCH-T1196', 'part-of', 'Actually part of the real epic ticket (M.ORCH-T1196, labelled epic), not the stories-doc anchor M.ORCH-EPIC-A');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T23', 'M.TIX-T27', 'related', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T231', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T231', 'M.ORCH-T1213', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T232', 'M.ORCH-T1196', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T232', 'M.ORCH-T1218', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T233', 'M.COMP-T133', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T233', 'M.ORCH-T1196', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T24', 'M.TIX-T21', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T26', 'M.LNCH-T23', 'related', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T27', 'M.TIX-T24', 'supersedes', NULL);
