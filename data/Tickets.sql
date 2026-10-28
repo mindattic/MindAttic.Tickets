@@ -42429,6 +42429,10 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22741, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22742, 'RB-T264', '2026-10-28T04:38:26Z', 'working', 'bc754ee7-b2e2-4870-b745-42c627ec13c1', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22743, 'U.HARE-T24', '2026-10-28T04:38:27Z', 'working', '2825e89a-daff-4fa9-bdbd-36e47a65193e', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22744, 'RB-T246', '2026-10-28T04:39:03Z', 'working', 'bc754ee7-b2e2-4870-b745-42c627ec13c1', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22745, 'PRS-T330', '2026-10-28T04:42:56Z', 'working', NULL, 'waffle@mindattic.com (d4268080-1c9c-4b9d-afb5-57bb891992d7)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22746, 'PRS-T330', '2026-10-28T04:43:08Z', 'working', 'waffle@mindattic.com (d4268080-1c9c-4b9d-afb5-57bb891992d7)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22747, 'PRS-T332', '2026-10-28T04:51:38Z', 'working', NULL, 'waffle@mindattic.com (d4268080-1c9c-4b9d-afb5-57bb891992d7)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22748, 'PRS-T332', '2026-10-28T04:51:44Z', 'working', 'waffle@mindattic.com (d4268080-1c9c-4b9d-afb5-57bb891992d7)', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
