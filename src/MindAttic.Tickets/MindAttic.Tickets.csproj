@@ -5,7 +5,7 @@
     <RootNamespace>MindAttic.Tickets</RootNamespace>
     <AssemblyName>MindAttic.Tickets</AssemblyName>
     <!-- HOUSE-LAW-1: whole-number versions only; bump the major. -->
-    <Version>5.0.0</Version>
+    <Version>6.0.0</Version>
     <PackageId>MindAttic.Tickets</PackageId>
     <Description>Workspace ticket engine and repo job runner for MindAttic: every repo's stories and tickets live in one SQLite database (data/Tickets.db).</Description>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>

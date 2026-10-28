@@ -47,11 +47,7 @@ public sealed class BulkActionTests
         using (var db = TicketsDb.Open(dbPath))
         {
             db.Import([new Repo("Alpha", alpha)]);
-            // A chore closed out of band (M.TIX-T229 needs it approved to close as done); the fixture wants it already
-            // closed but never approved, so it's unapproved again right after.
-            db.Approve("AL-T4");
             db.Close("AL-T4", TicketRules.Closed, "old-ref");
-            db.Unapprove("AL-T4");
         }
         model = new MainViewModel(new TicketStore(root), new DesktopSettings(), new Answers(this)) { SelectedView = MainViewModel.ReposView, ShowArchived = true };
         await model.RefreshAsync();
@@ -118,8 +114,6 @@ public sealed class BulkActionTests
     [Test]
     public async Task Closing_several_leaves_an_already_closed_one_alone()
     {
-        // AL-T1 (feature) and AL-T5 (chore): M.TIX-T229 refuses to close either as done until it's approved.
-        using (var db = TicketsDb.Open(dbPath)) { db.Approve("AL-T1"); db.Approve("AL-T5"); }
         answers.Enqueue(new PromptAnswer(null, "abc1234"));
         await model.CloseRowsAsync(Select("AL-T1", "AL-T4", "AL-T5"), TicketRules.Closed);
 
@@ -133,7 +127,6 @@ public sealed class BulkActionTests
     [Test]
     public void Closing_through_the_store_reports_an_already_closed_ticket_and_closes_the_rest()
     {
-        using (var db = TicketsDb.Open(dbPath)) db.Approve("AL-T5"); // a chore: M.TIX-T229 refuses to close one as done until it's approved
         var result = new TicketStore(root).CloseMany(["AL-T4", "AL-T5", "AL-T99"], TicketRules.Closed, "ref");
         Assert.That(result.Done, Is.EqualTo(new[] { "AL-T5" }));
         Assert.That(result.Failed.Select(f => f.Id), Is.EquivalentTo(new[] { "AL-T4", "AL-T99" }));
