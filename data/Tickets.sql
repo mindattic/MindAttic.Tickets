@@ -7789,7 +7789,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T336', 'Prose', 336, '2026-10-27', 'chore', 'closed', 'Season 1 pass, Vultures at the Door: wheel it against the other Season 1 books and Cyberocracy, But/Therefore re-read, fix its misattributions, tie its threads into Cyberocracy; archive first, hand splices, read back, Descriptions restated. Also settle PRS-T209 (the unnamed vehicle) by deciding.', 'Season 1 pass applied by hand 2026-10-27/28: reader card, archive, splices verified by read-back, Descriptions current', 335, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T337', 'Prose', 337, '2026-10-27', 'chore', 'closed', 'Season 1 pass, Read the Room: wheel it against the other Season 1 books and Cyberocracy, But/Therefore re-read, fix its misattributions, tie its threads into Cyberocracy; archive first, hand splices, read back, Descriptions restated.', 'Season 1 pass applied by hand 2026-10-27/28: reader card, archive, splices verified by read-back, Descriptions current', 336, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T338', 'Prose', 338, '2026-10-28', 'chore', 'closed', 'GLMZ canon widened (author 2026-10-28): Attendance, Between the Lines, Crimson & Chrome, Magenta & Gunmetal, Neon & Rust, The Way Down, The Way Up are canon; place them on the universe timeline and list their conflicts with Season 1', 'Rulings recorded (canon widened, Yemina restored, Rook crew off-stage); timeline 1.25-1.78 set; Pieces/The Ur reconciled with Attendance (2225 folder, woman courier, Yemina''s cases first), The Way Down (Rafi at 19), Crimson & Chrome (Reads racked); BTL anachronism fixed', 337, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T339', 'Prose', 339, '2026-10-28', 'docs', 'open', 'List GLMZ canon action heroes: every character who fights in a fight scene, with a description and the book codes they appear in', '—', 338, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T339', 'Prose', 339, '2026-10-28', 'docs', 'closed', 'List GLMZ canon action heroes: every character who fights in a fight scene, with a description and the book codes they appear in', 'Answered in session: 19 fighters (16 heroes, 3 antagonists) with descriptions and book codes, from fight-scene scan of all 22 canon books plus reader cards', 338, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T340', 'Prose', 340, '2026-10-28', 'fix', 'closed', 'GLMZ: retire the clan rank ''Brave'' (author: cultural appropriation) and replace Glim''s knapped stone knife with a cheap street blade (author: cheap weapons are everywhere)', '107 beats in Underclan/Pieces/Wells/The Ur: Brave->Climber (Climb-master), glass knife->ceramic Mission-drop-bag folder; Descriptions and 11 character records fixed; two laws recorded', 339, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -42500,6 +42501,346 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22809, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22810, 'RB-T264', '2026-10-28T06:44:23Z', 'working', 'waffle@mindattic.com (bc754ee7-b2e2-4870-b745-42c627ec13c1)', 'bc754ee7-b2e2-4870-b745-42c627ec13c1');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22811, 'RB-T234', '2026-10-28T06:44:23Z', 'working', 'waffle@mindattic.com (bc754ee7-b2e2-4870-b745-42c627ec13c1)', 'bc754ee7-b2e2-4870-b745-42c627ec13c1');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22812, 'PRS-T338', '2026-10-28T06:44:24Z', 'working', 'd4268080-1c9c-4b9d-afb5-57bb891992d7', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22813, 'RB-T234', '2026-10-28T06:44:50Z', 'description', '
+
+## Progress note (2026-10-27, first attempt aborted by pacing; nothing committed)
+
+Recovered from vampire.dll, with notes in work/t234 (range.txt, ov*.txt, base.txt, fp.txt, vt*.txt, fields.txt, gs/) and the Ghidra project copy in work/ghidra-t234:
+- CNPC_VCamera has no sweep. The sweep, FOV and alarm are security_camera (CSecCamera, already ported in RB-T114).
+- VCamera: spawned non-solid with FOV 0.2; ideal state pinned to 3 (Alert); passes a seen enemy to its squad (SquadNewEnemy 0x103161a0); schedule 342 (SCHED_VCAMERA_WAIT_INFINITE); only the player is a valid enemy, and it skips the notarget check.
+- npc_VCameraSecurity sees only through its linked_camera''s player-spotted test and FOV check (0x1020cd30, 0x1020cc60), and removes itself when that camera is gone. Only la_museum_1 uses it.
+- OnFoundPlayer fires from CAI_BaseNPC::GatherEnemyConditions (0x10270b20) the first time line of sight to the current enemy passes, when that enemy is the player. Flag 0x20000 limits it to once until the enemy is lost.
+
+Still to do:
+1. Find how a camera acquires the player as its enemy (player_reaction is D_NU 0).
+2. Port the above into NpcAi/NpcBrain. Today the port fires OnFoundPlayer only on entering combat.', '
+
+## Progress note (2026-10-27, first attempt aborted by pacing; nothing committed)
+
+Recovered from vampire.dll, with notes in work/t234 (range.txt, ov*.txt, base.txt, fp.txt, vt*.txt, fields.txt, gs/) and the Ghidra project copy in work/ghidra-t234:
+- CNPC_VCamera has no sweep. The sweep, FOV and alarm are security_camera (CSecCamera, already ported in RB-T114).
+- VCamera: spawned non-solid with FOV 0.2; ideal state pinned to 3 (Alert); passes a seen enemy to its squad (SquadNewEnemy 0x103161a0); schedule 342 (SCHED_VCAMERA_WAIT_INFINITE); only the player is a valid enemy, and it skips the notarget check.
+- npc_VCameraSecurity sees only through its linked_camera''s player-spotted test and FOV check (0x1020cd30, 0x1020cc60), and removes itself when that camera is gone. Only la_museum_1 uses it.
+- OnFoundPlayer fires from CAI_BaseNPC::GatherEnemyConditions (0x10270b20) the first time line of sight to the current enemy passes, when that enemy is the player. Flag 0x20000 limits it to once until the enemy is lost.
+
+Still to do:
+1. Find how a camera acquires the player as its enemy (player_reaction is D_NU 0).
+2. Port the above into NpcAi/NpcBrain. Today the port fires OnFoundPlayer only on entering combat.
+
+## Progress note 2 (2026-10-28, aborted by pacing; nothing committed)
+
+- **Enemy acquisition:** most npc_VCamera entities carry `player_reaction` `D_HT 5` or `D_HT 10`. The `D_NU` cameras (ch_zhaos_1, ch_fishmarket_1, sp_giovanni_1, sp_soc_2, la_dane_1, hw_609_1) never take the player as their enemy unless a script changes the relationship.
+- **GatherEnemyConditions (0x10270b20):**
+  - found: fires `OnFoundPlayer` (+0x5e9c), then `OnFoundEnemy` (+0x5e54);
+  - after 10 consecutive unseen checks: fires `OnLostPlayerLOS` (+0x5eb4), then `OnLostEnemyLOS` (+0x5e6c);
+  - the port never fires `OnFoundEnemy`, which 98 map outputs use.
+- **Squad alert:** CNPC_VCamera 0x10368f80 calls `SquadNewEnemy`. Squad members with no enemy, or with an unseen one, take the player as their enemy.
+- **Plan:**
+  1. `src/Bloodlines.Rules/Ai/NpcBrain.cs`:
+     - fire `OnFoundPlayer` on first sight, not only when combat starts;
+     - fire it once, then fire the lost-LOS outputs after 10 unseen checks;
+     - persist that state;
+     - add a "player just became the enemy" flag.
+  2. `src/Bloodlines.Sbox/Code/Combat/NpcAi.cs`, for cameras:
+     - view-cone threshold 0.2 instead of 0.35, with no "already engaged" bypass;
+     - the player is the only possible enemy;
+     - never act, attack or move;
+     - fire `OnFoundEnemy` and the lost-LOS outputs;
+     - make the squad hostile to the player.
+  3. npc_VCameraSecurity:
+     - sees only through its `linked_camera` (enabled, seeing the player, passing the view-cone test);
+     - kills itself once that camera is gone;
+     - needs helpers on `SecurityCameraEntity` (`Code/Runtime/CameraFeeds.cs`) and a view-cone-only method on `SecurityCameraLogic` (`src/Bloodlines.Data/Maps/SecurityCamera.cs`).
+  4. Open questions:
+     - how the untracked copy in `src/Bloodlines.Sbox/Code/Shared` is synced before a build;
+     - the `OnFoundPlayer` timing change affects all NPCs, so check CombatAiTests and NpcAiInputTests.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22814, 'PRS-T339', '2026-10-28T06:44:51Z', 'working', NULL, 'd4268080-1c9c-4b9d-afb5-57bb891992d7');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22815, 'RB-T246', '2026-10-28T06:45:05Z', 'working', 'waffle@mindattic.com (bc754ee7-b2e2-4870-b745-42c627ec13c1)', 'bc754ee7-b2e2-4870-b745-42c627ec13c1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22816, 'RB-T264', '2026-10-28T06:45:10Z', 'description', 'Walkthrough knowledge base for the playing agent: the critical path and side quests of Bloodlines as data the agent follows and checks against.
+
+- Derive from the game''s own data (quest states and journal, dialogue files, map Python scripts, changelevels; docs/DIALOGUE.md, docs/MAPS.md, docs/RULES.md) and cross-check with public walkthroughs (fandom wiki, GameFAQs): per chapter (Santa Monica, Downtown LA, Hollywood, Chinatown, endgame) the ordered objectives, which map/NPC/item each needs, how to tell it is done (quest state, item, global), branches and per-clan differences (Nosferatu cannot walk the streets, Malkavian dialogue, Ventrue feeding), and the endings.
+- Store it as docs/data/walkthrough/*.json (summaries in our own words; no copied walkthrough text, no game dialogue text beyond identifiers) plus a loader in tools/autoplay usable by the agent ("what is my next objective given this state").
+- Also list recommended builds per clan to test (melee, firearms, stealth, social/persuasion, discipline-heavy).
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+## Progress note (2026-10-27, first attempt aborted by pacing; nothing committed)
+
+**Uncommitted work in the checkout:**
+- `tools/walkthrough/extract.py`: an identifier-only index of the extracted game.
+- Generated from a run before the last fix: `docs/data/walkthrough/quests.json` (70 quests, their states and setters), `story_states.json` (29 `G.Story_State` values) and `maps.json` (108 maps: hubs, scripts, exits).
+
+**Redo the edit that didn''t apply, then rerun the extractor:**
+- Read only the next, condition and action columns of a dialogue row.
+- Match quest titles case-insensitively (`Allplague`, `Werewolf blood`).
+- Mark Plus-only setters (`G.Patch_Plus`) as `patch_plus`.
+
+**Research findings, not yet written down:**
+- **Critical path:** `Story_State` runs 0 to 125, chapter by chapter, from the haven and Mercurio to Caine''s cab.
+- **Endings:** the cab sets the route: 100 Kuei-jin, 105 Sabbat, 110 LaCroix, 115 Anarch, 120 Camarilla/Tremere, 125 Independent. The LaCroix talk then sets `Prince` quest states 3 to 11: 10 is keeping the key, 11 is the Plus-only wolf ending. Check the outcomes against public walkthroughs.
+- **Clan differences:**
+  - Nosferatu seen in Masquerade zones cause a breach, and they leave the museum and the Giovanni mansion through manholes instead of the cab.
+  - Malkavians have their own dialogue column and a TV newscaster scene in the haven.
+  - Ventrue feed only on blue bloods.
+
+**Still to do:**
+- Hand-write `critical_path.json`, `side_quests.json`, `clans.json`, `endings.json` and `builds.json`.
+- Write a next-objective loader in `tools/walkthrough/walkthrough.py`.
+- Write `docs/AUTOPLAY.md`, pointing to AutoGamePlay''s `docs/DESIGN.md`, which has landed (AGP-T2, cb40d44).', 'Walkthrough knowledge base for the playing agent: the critical path and side quests of Bloodlines as data the agent follows and checks against.
+
+- Derive from the game''s own data (quest states and journal, dialogue files, map Python scripts, changelevels; docs/DIALOGUE.md, docs/MAPS.md, docs/RULES.md) and cross-check with public walkthroughs (fandom wiki, GameFAQs): per chapter (Santa Monica, Downtown LA, Hollywood, Chinatown, endgame) the ordered objectives, which map/NPC/item each needs, how to tell it is done (quest state, item, global), branches and per-clan differences (Nosferatu cannot walk the streets, Malkavian dialogue, Ventrue feeding), and the endings.
+- Store it as docs/data/walkthrough/*.json (summaries in our own words; no copied walkthrough text, no game dialogue text beyond identifiers) plus a loader in tools/autoplay usable by the agent ("what is my next objective given this state").
+- Also list recommended builds per clan to test (melee, firearms, stealth, social/persuasion, discipline-heavy).
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+## Progress note (2026-10-27, first attempt aborted by pacing; nothing committed)
+
+**Uncommitted work in the checkout:**
+- `tools/walkthrough/extract.py`: an identifier-only index of the extracted game.
+- Generated from a run before the last fix: `docs/data/walkthrough/quests.json` (70 quests, their states and setters), `story_states.json` (29 `G.Story_State` values) and `maps.json` (108 maps: hubs, scripts, exits).
+
+**Redo the edit that didn''t apply, then rerun the extractor:**
+- Read only the next, condition and action columns of a dialogue row.
+- Match quest titles case-insensitively (`Allplague`, `Werewolf blood`).
+- Mark Plus-only setters (`G.Patch_Plus`) as `patch_plus`.
+
+**Research findings, not yet written down:**
+- **Critical path:** `Story_State` runs 0 to 125, chapter by chapter, from the haven and Mercurio to Caine''s cab.
+- **Endings:** the cab sets the route: 100 Kuei-jin, 105 Sabbat, 110 LaCroix, 115 Anarch, 120 Camarilla/Tremere, 125 Independent. The LaCroix talk then sets `Prince` quest states 3 to 11: 10 is keeping the key, 11 is the Plus-only wolf ending. Check the outcomes against public walkthroughs.
+- **Clan differences:**
+  - Nosferatu seen in Masquerade zones cause a breach, and they leave the museum and the Giovanni mansion through manholes instead of the cab.
+  - Malkavians have their own dialogue column and a TV newscaster scene in the haven.
+  - Ventrue feed only on blue bloods.
+
+**Still to do:**
+- Hand-write `critical_path.json`, `side_quests.json`, `clans.json`, `endings.json` and `builds.json`.
+- Write a next-objective loader in `tools/walkthrough/walkthrough.py`.
+- Write `docs/AUTOPLAY.md`, pointing to AutoGamePlay''s `docs/DESIGN.md`, which has landed (AGP-T2, cb40d44).
+
+## Progress note 2 (2026-10-28, aborted by pacing; uncommitted files in the checkout)
+
+**On disk, not committed:**
+- `tools/walkthrough/extract.py`:
+  - the three fixes are applied: only the next/condition/action dialogue columns, quest titles matched regardless of case, `patch_plus` marking;
+  - output: 70 quests, 29 story states, 108 maps;
+  - 3 `SetQuest` targets match no quest file: arthur knox 8, lacroix 1, lacroix 5.
+- `docs/data/walkthrough/{quests,story_states,maps}.json` are regenerated.
+- `docs/data/walkthrough/critical_path.json` is written by hand: 6 chapters, with done-conditions on Story_State 0-125.
+  - Still to verify: the order in Hollywood (King''s Way, then the Warrens) and the endgame order.
+
+**Still to do:**
+- `side_quests.json` (the draft was lost);
+- `clans.json` and `builds.json`;
+- `endings.json`, whose research is done:
+
+  | Story_State | Ending | Set at | Condition |
+  |---|---|---|---|
+  | 100 | Kuei-jin | caine.dlg#362 | |
+  | 105 | Sabbat | caine.dlg#284 | `G.Player_Sabbat == 3`, from andrei.dlg#227 |
+  | 110 | LaCroix | caine.dlg#421 | |
+  | 115 | Anarch | caine.dlg#511 | |
+  | 120 | Camarilla | caine.dlg#352 | |
+  | 125 | Independent | caine.dlg#282 | `G.Player_Sabbat < 3` |
+
+  After the ending, the Prince quest records the outcome:
+  - 5 Sabbat;
+  - 4 and 6-9 Plus-only;
+  - 10 keep the key;
+  - 11 wolf (`G.Lucky_Wolf > 0`).
+- The loader `tools/walkthrough/walkthrough.py`, with `next`, `validate` and `list` commands. `critical_path.json` describes a condition format that only this loader will provide.
+- `docs/AUTOPLAY.md`, pointing at AutoGamePlay''s `docs/DESIGN.md`.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22817, 'PRS-T339', '2026-10-28T06:45:59Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22818, 'PRS-T339', '2026-10-28T06:45:59Z', 'ref', '—', 'Answered in session: 19 fighters (16 heroes, 3 antagonists) with descriptions and book codes, from fight-scene scan of all 22 canon books plus reader cards');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22819, 'PRS-T339', '2026-10-28T06:46:12Z', 'working', 'd4268080-1c9c-4b9d-afb5-57bb891992d7', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22820, 'PRS-T340', '2026-10-28T06:49:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22821, 'PRS-T340', '2026-10-28T06:49:38Z', 'working', NULL, 'd4268080-1c9c-4b9d-afb5-57bb891992d7');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22822, 'RB-T246', '2026-10-28T06:52:42Z', 'description', 'AutoPlay bridge skeleton in the s&box runtime (the basic-capability tickets each add their own actions on top): one C# entry point that an outside agent drives through sbox-cli run_csharp to observe and act at object level.
+
+- Gate it behind a convar (e.g. bl_autoplay) so normal play is untouched.
+- **Observe**: one call returning compact JSON: map, game time, player (position, angles, health, blood, humanity, masquerade, xp, money, clan, attributes/abilities/disciplines, equipped weapon, inventory), nearby entities (class, targetname, position, distance, visible/line-of-sight, interactable/usable, hostile, health), the active dialogue (speaker, line, numbered options), open UI screens and their clickable elements by stable id, quest log entries, combat state, loading/cinematic state, and the script/engine errors logged since the last observe.
+- **Act**: teleport; goto entity/position (navmesh pathing, reports arrival or blocked), face/look-at, use/interact, attack target (melee/ranged), cast discipline, feed, choose dialogue option, continue, press UI element by id, open/close screens, crouch/jump/sneak, wait N seconds, quicksave/quickload/named save/load (SaveSlots), set time scale.
+- Read-only helpers for agents: list landmarks/changelevels/quest-relevant entities of the map.
+Document the API in docs/AUTOPLAY.md and build it in the editor (0 errors).
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### Concrete hooks found by the runtime survey (2026-10-27)
+
+- **Input injection.** Use a `GameObjectSystem` on `Stage.StartUpdate`/`StartFixedUpdate` ordered *after* `OptionsSystem` (`Code/Options/OptionsSystem.cs`, order -1000). OptionsSystem rewrites `Input.SetAction`, `AnalogMove` and `AnalogLook` from raw keys every frame, so anything injected earlier is lost.
+- **Discipline hotkeys** are read with raw `Input.Keyboard.Pressed` in `PlayerCombat.DisciplineKeys`. Route them through actions or call the methods directly.
+- **Actions** (call the public methods):
+  - `PlayerCombat`: `Attack`, `Reload`, `Select(i)`, `Holster`, `TryFeed`, `FeedFor(s)`, `ActivateDiscipline(name)`, `UseSelectedDiscipline`, `UseHotkey(i)`, `CastTargeted`.
+  - Dialogue: `DialoguePanel.Current.Session.Choose(i)` and `Continue()`.
+  - `SaveSlots.Save`/`Load`; `FrontEnd.StartNewGame`/`LoadGame`/`NewGame`; `NewGameIntro.Start(NewGameIntro.Default(template, female), movies)`.
+  - `Cinematics.MoveTo(entity, pos, yaw)` to teleport; `PlayerController.EyeAngles` to look; `BloodlinesWorld.FireInput` and `ConsoleCommand`.
+- **State:**
+  - `BloodlinesWorld.Current`: `MapName`, `Player`, `AllEntities()`, `ScriptLog` (lines starting "! " are errors), `SinceStart`.
+  - `BloodlinesCharacter`: `Sheet`, `Items`, `Quests`, `Money`, `ClanCode`. On the sheet, `Health` counts damage: dead when `Health >= MaxHealth`.
+  - `PlayerCombat`: `Weapon`, `Target`, `IsFeeding`.
+  - Also `CombatDirector.Current` (`Npcs`, `NavReady`), `GameScreens.Current`, `LoadingScreen.Current`, `CinematicDirector.Current` (`CameraActive`, `Immobilized`) and `DialoguePresentation.Current`.
+- **UI element registry.** Character creation (`CharacterCreationPanel`: `PickClan`, `Buy`, `DoneClicked`), `GameMenu.razor`, `CharacterScreens.razor` and `BarterScreen.razor` handlers are private. Add a small registry where each clickable element registers a stable id and a click action, so the bridge can list and press them. Don''t use reflection.
+- **Exported build.** It has no automation channel today. AGP-T14''s WebSocket bridge is meant to fix that; until it lands, use `sbox-cli run_csharp` in editor play mode (`tools/sbox_import/playtest.py`''s `Session` shows the pattern).
+
+## Progress note (2026-10-27, first attempt aborted by pacing; nothing committed)
+
+The unfinished drafts were moved to `work/t246/` (`AutoPlay.cs`, `AutoPlayUi.cs`), because the s&box editor compiles `Code/` automatically and `AutoPlay.cs` calls a missing `AutoPlaySystem`. Move them back to `src/Bloodlines.Sbox/Code/AutoPlay/` and finish them.
+
+- **`AutoPlayUi.cs`**: a registry of UI elements by stable id (id, label, whether pressable, click action).
+- **`AutoPlay.cs`**:
+  - the `bl_autoplay` convar, off by default;
+  - `Observe()`, the compact JSON state;
+  - `MapInfo()`;
+  - `Act({"do":...})`, which covers teleport, face, goto, use, attack, reload, select, holster, discipline, cast, hotkey, feed, talk, choose, continue, press, screen, hold, crouch, jump, wait, cancel, the save commands, timescale, fire and console.
+  - It was edited by script after the last read: re-read it before building.
+
+**Still to do:**
+1. **`AutoPlaySystem.cs`** (the write was refused): a `GameObjectSystem` at order -900, after `OptionsSystem`''s -1000, that runs goto, hold and wait by injecting input. For now goto is a straight-line walk reporting arrived, blocked or timeout; RB-T273 replaces it with NavMesh pathing.
+2. **`Combat/CombatDirector.cs`**, around line 411: multiply by `AutoPlay.WorldTimeScale`.
+3. **`FrontEnd/MenuButton.razor`**: register each button as `menu.<slug>` and add a public click method.
+4. **`docs/AUTOPLAY.md`**: the API write-up.
+5. **Build**: least sure of `IPressable.Tooltip.Title` and of `JsonNode` passing the s&box whitelist.
+6. Land and close.', 'AutoPlay bridge skeleton in the s&box runtime (the basic-capability tickets each add their own actions on top): one C# entry point that an outside agent drives through sbox-cli run_csharp to observe and act at object level.
+
+- Gate it behind a convar (e.g. bl_autoplay) so normal play is untouched.
+- **Observe**: one call returning compact JSON: map, game time, player (position, angles, health, blood, humanity, masquerade, xp, money, clan, attributes/abilities/disciplines, equipped weapon, inventory), nearby entities (class, targetname, position, distance, visible/line-of-sight, interactable/usable, hostile, health), the active dialogue (speaker, line, numbered options), open UI screens and their clickable elements by stable id, quest log entries, combat state, loading/cinematic state, and the script/engine errors logged since the last observe.
+- **Act**: teleport; goto entity/position (navmesh pathing, reports arrival or blocked), face/look-at, use/interact, attack target (melee/ranged), cast discipline, feed, choose dialogue option, continue, press UI element by id, open/close screens, crouch/jump/sneak, wait N seconds, quicksave/quickload/named save/load (SaveSlots), set time scale.
+- Read-only helpers for agents: list landmarks/changelevels/quest-relevant entities of the map.
+Document the API in docs/AUTOPLAY.md and build it in the editor (0 errors).
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### Concrete hooks found by the runtime survey (2026-10-27)
+
+- **Input injection.** Use a `GameObjectSystem` on `Stage.StartUpdate`/`StartFixedUpdate` ordered *after* `OptionsSystem` (`Code/Options/OptionsSystem.cs`, order -1000). OptionsSystem rewrites `Input.SetAction`, `AnalogMove` and `AnalogLook` from raw keys every frame, so anything injected earlier is lost.
+- **Discipline hotkeys** are read with raw `Input.Keyboard.Pressed` in `PlayerCombat.DisciplineKeys`. Route them through actions or call the methods directly.
+- **Actions** (call the public methods):
+  - `PlayerCombat`: `Attack`, `Reload`, `Select(i)`, `Holster`, `TryFeed`, `FeedFor(s)`, `ActivateDiscipline(name)`, `UseSelectedDiscipline`, `UseHotkey(i)`, `CastTargeted`.
+  - Dialogue: `DialoguePanel.Current.Session.Choose(i)` and `Continue()`.
+  - `SaveSlots.Save`/`Load`; `FrontEnd.StartNewGame`/`LoadGame`/`NewGame`; `NewGameIntro.Start(NewGameIntro.Default(template, female), movies)`.
+  - `Cinematics.MoveTo(entity, pos, yaw)` to teleport; `PlayerController.EyeAngles` to look; `BloodlinesWorld.FireInput` and `ConsoleCommand`.
+- **State:**
+  - `BloodlinesWorld.Current`: `MapName`, `Player`, `AllEntities()`, `ScriptLog` (lines starting "! " are errors), `SinceStart`.
+  - `BloodlinesCharacter`: `Sheet`, `Items`, `Quests`, `Money`, `ClanCode`. On the sheet, `Health` counts damage: dead when `Health >= MaxHealth`.
+  - `PlayerCombat`: `Weapon`, `Target`, `IsFeeding`.
+  - Also `CombatDirector.Current` (`Npcs`, `NavReady`), `GameScreens.Current`, `LoadingScreen.Current`, `CinematicDirector.Current` (`CameraActive`, `Immobilized`) and `DialoguePresentation.Current`.
+- **UI element registry.** Character creation (`CharacterCreationPanel`: `PickClan`, `Buy`, `DoneClicked`), `GameMenu.razor`, `CharacterScreens.razor` and `BarterScreen.razor` handlers are private. Add a small registry where each clickable element registers a stable id and a click action, so the bridge can list and press them. Don''t use reflection.
+- **Exported build.** It has no automation channel today. AGP-T14''s WebSocket bridge is meant to fix that; until it lands, use `sbox-cli run_csharp` in editor play mode (`tools/sbox_import/playtest.py`''s `Session` shows the pattern).
+
+## Progress note (2026-10-27, first attempt aborted by pacing; nothing committed)
+
+The unfinished drafts were moved to `work/t246/` (`AutoPlay.cs`, `AutoPlayUi.cs`), because the s&box editor compiles `Code/` automatically and `AutoPlay.cs` calls a missing `AutoPlaySystem`. Move them back to `src/Bloodlines.Sbox/Code/AutoPlay/` and finish them.
+
+- **`AutoPlayUi.cs`**: a registry of UI elements by stable id (id, label, whether pressable, click action).
+- **`AutoPlay.cs`**:
+  - the `bl_autoplay` convar, off by default;
+  - `Observe()`, the compact JSON state;
+  - `MapInfo()`;
+  - `Act({"do":...})`, which covers teleport, face, goto, use, attack, reload, select, holster, discipline, cast, hotkey, feed, talk, choose, continue, press, screen, hold, crouch, jump, wait, cancel, the save commands, timescale, fire and console.
+  - It was edited by script after the last read: re-read it before building.
+
+**Still to do:**
+1. **`AutoPlaySystem.cs`** (the write was refused): a `GameObjectSystem` at order -900, after `OptionsSystem`''s -1000, that runs goto, hold and wait by injecting input. For now goto is a straight-line walk reporting arrived, blocked or timeout; RB-T273 replaces it with NavMesh pathing.
+2. **`Combat/CombatDirector.cs`**, around line 411: multiply by `AutoPlay.WorldTimeScale`.
+3. **`FrontEnd/MenuButton.razor`**: register each button as `menu.<slug>` and add a public click method.
+4. **`docs/AUTOPLAY.md`**: the API write-up.
+5. **Build**: least sure of `IPressable.Tooltip.Title` and of `JsonNode` passing the s&box whitelist.
+6. Land and close.
+
+## Progress note 2 (2026-10-28, aborted by pacing; uncommitted and not yet compiled)
+
+**In the checkout:**
+- `Code/AutoPlay/AutoPlay.cs` and `AutoPlayUi.cs`, restored from work/t246.
+- New `Code/AutoPlay/AutoPlaySystem.cs`:
+  - a GameObjectSystem with order -900, after OptionsSystem''s -1000;
+  - a single-job input injector with goto, hold and wait;
+  - goto is a straight-line walk that reports arrived, blocked (moved under 8 units in 1.5 s), timeout or lost;
+  - held input is released one frame after a job ends.
+- `Code/Combat/CombatDirector.cs` (about line 411): TimeScale is multiplied by `AutoPlay.WorldTimeScale`, which stays 1 unless autoplay is on.
+- `Code/FrontEnd/MenuButton.razor`:
+  - each button registers as `menu.<slug of its label>` and unregisters in OnDeleted;
+  - a public `PressButton()` holds the click logic, and OnClick calls it.
+
+**Still to do:**
+1. Compile in the editor to zero errors. `dotnet build` fails on duplicate assembly attributes from the obj/ folders under the Code/Shared junctions, so use the editor''s compile_status. The helper is scratchpad `editor_build.py`.
+2. Check that `IPressable.Tooltip.Title` and `Panel.IsValid` exist.
+3. Write `docs/AUTOPLAY.md`.
+4. Commit those 6 paths, then land and close.
+
+An editor (PID 12756) may have been left running.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22823, 'PRS-T340', '2026-10-28T06:53:47Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22824, 'PRS-T340', '2026-10-28T06:53:47Z', 'ref', '—', '107 beats in Underclan/Pieces/Wells/The Ur: Brave->Climber (Climb-master), glass knife->ceramic Mission-drop-bag folder; Descriptions and 11 character records fixed; two laws recorded');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22825, 'PRS-T340', '2026-10-28T06:53:55Z', 'working', 'd4268080-1c9c-4b9d-afb5-57bb891992d7', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -44573,7 +44914,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T58', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:02:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T234', NULL, 0, NULL, 'bc754ee7-b2e2-4870-b745-42c627ec13c1', '2026-10-28T06:44:23Z', '2026-10-28T06:44:23Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T246', NULL, 0, 'waffle@mindattic.com', 'bc754ee7-b2e2-4870-b745-42c627ec13c1', '2026-10-28T06:38:18Z', '2026-10-28T06:38:18Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T246', NULL, 0, NULL, 'bc754ee7-b2e2-4870-b745-42c627ec13c1', '2026-10-28T06:45:05Z', '2026-10-28T06:45:05Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T264', NULL, 0, NULL, 'bc754ee7-b2e2-4870-b745-42c627ec13c1', '2026-10-28T06:44:23Z', '2026-10-28T06:44:23Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
@@ -48452,7 +48793,35 @@ Recovered from vampire.dll, with notes in work/t234 (range.txt, ov*.txt, base.tx
 
 Still to do:
 1. Find how a camera acquires the player as its enemy (player_reaction is D_NU 0).
-2. Port the above into NpcAi/NpcBrain. Today the port fires OnFoundPlayer only on entering combat.', '2026-10-28T03:55:10Z');
+2. Port the above into NpcAi/NpcBrain. Today the port fires OnFoundPlayer only on entering combat.
+
+## Progress note 2 (2026-10-28, aborted by pacing; nothing committed)
+
+- **Enemy acquisition:** most npc_VCamera entities carry `player_reaction` `D_HT 5` or `D_HT 10`. The `D_NU` cameras (ch_zhaos_1, ch_fishmarket_1, sp_giovanni_1, sp_soc_2, la_dane_1, hw_609_1) never take the player as their enemy unless a script changes the relationship.
+- **GatherEnemyConditions (0x10270b20):**
+  - found: fires `OnFoundPlayer` (+0x5e9c), then `OnFoundEnemy` (+0x5e54);
+  - after 10 consecutive unseen checks: fires `OnLostPlayerLOS` (+0x5eb4), then `OnLostEnemyLOS` (+0x5e6c);
+  - the port never fires `OnFoundEnemy`, which 98 map outputs use.
+- **Squad alert:** CNPC_VCamera 0x10368f80 calls `SquadNewEnemy`. Squad members with no enemy, or with an unseen one, take the player as their enemy.
+- **Plan:**
+  1. `src/Bloodlines.Rules/Ai/NpcBrain.cs`:
+     - fire `OnFoundPlayer` on first sight, not only when combat starts;
+     - fire it once, then fire the lost-LOS outputs after 10 unseen checks;
+     - persist that state;
+     - add a "player just became the enemy" flag.
+  2. `src/Bloodlines.Sbox/Code/Combat/NpcAi.cs`, for cameras:
+     - view-cone threshold 0.2 instead of 0.35, with no "already engaged" bypass;
+     - the player is the only possible enemy;
+     - never act, attack or move;
+     - fire `OnFoundEnemy` and the lost-LOS outputs;
+     - make the squad hostile to the player.
+  3. npc_VCameraSecurity:
+     - sees only through its `linked_camera` (enabled, seeing the player, passing the view-cone test);
+     - kills itself once that camera is gone;
+     - needs helpers on `SecurityCameraEntity` (`Code/Runtime/CameraFeeds.cs`) and a view-cone-only method on `SecurityCameraLogic` (`src/Bloodlines.Data/Maps/SecurityCamera.cs`).
+  4. Open questions:
+     - how the untracked copy in `src/Bloodlines.Sbox/Code/Shared` is synced before a build;
+     - the `OnFoundPlayer` timing change affects all NPCs, so check CombatAiTests and NpcAiInputTests.', '2026-10-28T06:44:50Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T242', '## Story
 As a player on any modern display, the game runs correctly at my monitor''s aspect ratio.
 
@@ -48550,7 +48919,29 @@ The unfinished drafts were moved to `work/t246/` (`AutoPlay.cs`, `AutoPlayUi.cs`
 3. **`FrontEnd/MenuButton.razor`**: register each button as `menu.<slug>` and add a public click method.
 4. **`docs/AUTOPLAY.md`**: the API write-up.
 5. **Build**: least sure of `IPressable.Tooltip.Title` and of `JsonNode` passing the s&box whitelist.
-6. Land and close.', '2026-10-28T04:09:19Z');
+6. Land and close.
+
+## Progress note 2 (2026-10-28, aborted by pacing; uncommitted and not yet compiled)
+
+**In the checkout:**
+- `Code/AutoPlay/AutoPlay.cs` and `AutoPlayUi.cs`, restored from work/t246.
+- New `Code/AutoPlay/AutoPlaySystem.cs`:
+  - a GameObjectSystem with order -900, after OptionsSystem''s -1000;
+  - a single-job input injector with goto, hold and wait;
+  - goto is a straight-line walk that reports arrived, blocked (moved under 8 units in 1.5 s), timeout or lost;
+  - held input is released one frame after a job ends.
+- `Code/Combat/CombatDirector.cs` (about line 411): TimeScale is multiplied by `AutoPlay.WorldTimeScale`, which stays 1 unless autoplay is on.
+- `Code/FrontEnd/MenuButton.razor`:
+  - each button registers as `menu.<slug of its label>` and unregisters in OnDeleted;
+  - a public `PressButton()` holds the click logic, and OnClick calls it.
+
+**Still to do:**
+1. Compile in the editor to zero errors. `dotnet build` fails on duplicate assembly attributes from the obj/ folders under the Code/Shared junctions, so use the editor''s compile_status. The helper is scratchpad `editor_build.py`.
+2. Check that `IPressable.Tooltip.Title` and `Panel.IsValid` exist.
+3. Write `docs/AUTOPLAY.md`.
+4. Commit those 6 paths, then land and close.
+
+An editor (PID 12756) may have been left running.', '2026-10-28T06:52:42Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T247', 'Autoplay basic capability: launch: start the port from a cold editor (or the exported build) and reach the title menu, reporting load time and any log errors
 
 The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
@@ -49240,7 +49631,40 @@ Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGa
 **Still to do:**
 - Hand-write `critical_path.json`, `side_quests.json`, `clans.json`, `endings.json` and `builds.json`.
 - Write a next-objective loader in `tools/walkthrough/walkthrough.py`.
-- Write `docs/AUTOPLAY.md`, pointing to AutoGamePlay''s `docs/DESIGN.md`, which has landed (AGP-T2, cb40d44).', '2026-10-28T04:08:25Z');
+- Write `docs/AUTOPLAY.md`, pointing to AutoGamePlay''s `docs/DESIGN.md`, which has landed (AGP-T2, cb40d44).
+
+## Progress note 2 (2026-10-28, aborted by pacing; uncommitted files in the checkout)
+
+**On disk, not committed:**
+- `tools/walkthrough/extract.py`:
+  - the three fixes are applied: only the next/condition/action dialogue columns, quest titles matched regardless of case, `patch_plus` marking;
+  - output: 70 quests, 29 story states, 108 maps;
+  - 3 `SetQuest` targets match no quest file: arthur knox 8, lacroix 1, lacroix 5.
+- `docs/data/walkthrough/{quests,story_states,maps}.json` are regenerated.
+- `docs/data/walkthrough/critical_path.json` is written by hand: 6 chapters, with done-conditions on Story_State 0-125.
+  - Still to verify: the order in Hollywood (King''s Way, then the Warrens) and the endgame order.
+
+**Still to do:**
+- `side_quests.json` (the draft was lost);
+- `clans.json` and `builds.json`;
+- `endings.json`, whose research is done:
+
+  | Story_State | Ending | Set at | Condition |
+  |---|---|---|---|
+  | 100 | Kuei-jin | caine.dlg#362 | |
+  | 105 | Sabbat | caine.dlg#284 | `G.Player_Sabbat == 3`, from andrei.dlg#227 |
+  | 110 | LaCroix | caine.dlg#421 | |
+  | 115 | Anarch | caine.dlg#511 | |
+  | 120 | Camarilla | caine.dlg#352 | |
+  | 125 | Independent | caine.dlg#282 | `G.Player_Sabbat < 3` |
+
+  After the ending, the Prince quest records the outcome:
+  - 5 Sabbat;
+  - 4 and 6-9 Plus-only;
+  - 10 keep the key;
+  - 11 wolf (`G.Lucky_Wolf > 0`).
+- The loader `tools/walkthrough/walkthrough.py`, with `next`, `validate` and `list` commands. `critical_path.json` describes a condition format that only this loader will provide.
+- `docs/AUTOPLAY.md`, pointing at AutoGamePlay''s `docs/DESIGN.md`.', '2026-10-28T06:45:10Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T265', 'Visual parity harness: capture matching viewpoints in the original game and in the port and diff them, so visual discrepancies become tickets.
 
 - Original side: launch Vampire.exe from the install setup.ps1 owns (never the GOG folder; if no owned install exists, make one with setup.ps1 or copy the GOG install into work/ read-only-source) with -game Unofficial_Patch -dev -console and command-line commands (map, setpos, setang, cl_drawhud, screenshot/jpeg, quit) to capture a list of viewpoints per map; screenshots go under work/visual/original/.
