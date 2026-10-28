@@ -42842,6 +42842,9 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22823, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22824, 'PRS-T340', '2026-10-28T06:53:47Z', 'ref', '—', '107 beats in Underclan/Pieces/Wells/The Ur: Brave->Climber (Climb-master), glass knife->ceramic Mission-drop-bag folder; Descriptions and 11 character records fixed; two laws recorded');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22825, 'PRS-T340', '2026-10-28T06:53:55Z', 'working', 'd4268080-1c9c-4b9d-afb5-57bb891992d7', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22826, 'RB-T234', '2026-10-28T07:14:42Z', 'working', 'bc754ee7-b2e2-4870-b745-42c627ec13c1', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22827, 'RB-T264', '2026-10-28T07:15:12Z', 'working', 'bc754ee7-b2e2-4870-b745-42c627ec13c1', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22828, 'RB-T246', '2026-10-28T07:22:42Z', 'working', 'bc754ee7-b2e2-4870-b745-42c627ec13c1', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22829, 'AGP-T4', '2026-10-28T07:23:40Z', 'working', 'bc754ee7-b2e2-4870-b745-42c627ec13c1', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -44831,7 +44834,6 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('USOD-T9', 'approved', 0, '2026-10-22T23:02:27Z', NULL);
 
 -- ticket_work
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('AGP-T4', NULL, 0, NULL, 'bc754ee7-b2e2-4870-b745-42c627ec13c1', '2026-10-28T06:39:03Z', '2026-10-28T06:39:03Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
@@ -44914,8 +44916,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T91', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T23:09:54Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T58', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:02:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T246', NULL, 0, NULL, 'bc754ee7-b2e2-4870-b745-42c627ec13c1', '2026-10-28T06:45:05Z', '2026-10-28T06:45:05Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T264', NULL, 0, NULL, 'bc754ee7-b2e2-4870-b745-42c627ec13c1', '2026-10-28T06:44:23Z', '2026-10-28T06:44:23Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T111', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:34:40Z');
