@@ -8061,9 +8061,9 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T255', 'REA.Bloodlines', 255, '2026-10-27', 'feature', 'open', 'Autoplay basic capability: open and close each in-game screen (pause, character sheet, inventory, quest log, map) and read its contents', '—', 254, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T256', 'REA.Bloodlines', 256, '2026-10-27', 'feature', 'open', 'Autoplay basic capability: quicksave, quickload and named save/load through the bridge, verifying the restored state matches (map, position, stats, inventory, quest states)', '—', 255, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T257', 'REA.Bloodlines', 257, '2026-10-27', 'feature', 'closed', 'Autoplay basic capability: navigate: go to a named entity or landmark in the same map by pathfinding (navmesh / node graph), reporting arrival, blocked or no path', 'b4400a2', 256, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T258', 'REA.Bloodlines', 258, '2026-10-27', 'feature', 'open', 'Autoplay basic capability: take a level transition (door / changelevel trigger) and arrive on the right landmark of the next map', '—', 257, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T258', 'REA.Bloodlines', 258, '2026-10-27', 'feature', 'closed', 'Autoplay basic capability: take a level transition (door / changelevel trigger) and arrive on the right landmark of the next map', 'aa73aaa', 257, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T259', 'REA.Bloodlines', 259, '2026-10-27', 'feature', 'open', 'Autoplay basic capability: fight: target, melee and ranged attack an NPC, block/dodge, read health of both, detect death; feed on a victim', '—', 258, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T260', 'REA.Bloodlines', 260, '2026-10-27', 'feature', 'open', 'Autoplay basic capability: use a discipline (activate, read blood cost and effect, deactivate)', '—', 259, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T260', 'REA.Bloodlines', 260, '2026-10-27', 'feature', 'closed', 'Autoplay basic capability: use a discipline (activate, read blood cost and effect, deactivate)', '9c0305e', 259, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T261', 'REA.Bloodlines', 261, '2026-10-27', 'feature', 'open', 'Autoplay basic capability: die and reload: detect player death / Final Death screen and recover from the last save', '—', 260, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T262', 'REA.Bloodlines', 262, '2026-10-27', 'feature', 'closed', 'Faster-than-real-time play for automated runs: correct behaviour at 4x-16x game speed (time scale convar + bridge), skip/fast-forward movies and voice waits under bl_autoplay', '5503b139cb32a33f31feb46899e53afd36b06eac', 261, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T263', 'REA.Bloodlines', 263, '2026-10-27', 'feature', 'wont-do', 'AutoGamePlay library (tools/autoplay): game-agnostic core (observations, actions, adapter protocol, episode recorder, checkpoints, stuck/softlock/exception/visual detectors, deduping bug reporter, CLI) plus the Bloodlines s&box adapter', 'superseded by AGP-T12 (AutoGamePlay repo)', 262, NULL);
@@ -8079,6 +8079,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T273', 'REA.Bloodlines', 273, '2026-10-27', 'feature', 'closed', 'Player path-follow for autoplay: go to an entity/landmark over the NavMesh (widened to the whole map) with AiNodeGraph.Plan fallback, reporting arrived / blocked / no path', 'b4400a2', 272, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T274', 'REA.Bloodlines', 274, '2026-10-27', 'feature', 'open', 'Original-game reference capture for autoplay: drive the original Bloodlines (owned install, never the GOG folder) through AutoGamePlay''s Source 1 adapter to capture matching viewpoints and behaviour references', '—', 273, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T275', 'REA.Bloodlines', 275, '2026-10-27', 'feature', 'open', 'Bloodlines extension for the AutoGamePlay s&box bridge: register the bloodlines.* namespace (dialogue, quests, clan/sheet, disciplines, feeding, screens, UI registry) on top of AGP''s generic bridge library', '—', 274, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T276', 'REA.Bloodlines', 276, '2026-10-28', 'fix', 'open', 'Autoplay goto cannot walk the haven stairs in sm_pawnshop_1 to back_door: NavMesh Partial and the node graph stalls at the stair top (found by autoplay)', '—', 275, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T1', 'RogueTrader.Brevity', 1, '2026-10-24', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T2', 'RogueTrader.Brevity', 2, '2026-10-24', 'fix', 'closed', 'Repo has no commits, so the launcher''s pull fails with ''no such ref was fetched''; add the first commit (AGENTS.md pointer, .gitignore, commit hooks) and push main', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T3', 'RogueTrader.Brevity', 3, '2026-10-24', 'feature', 'closed', 'Phase 1 dialogue export: a mod built from Owlcat''s template that walks the dialogue blueprints (BlueprintCue, BlueprintAnswer, BlueprintBookPage) and writes dialogue.jsonl with each line''s string key, speaker, dialogue tree, previous line, skill check/conviction markers and voiced flag, so the LLM simplify pass gets context', '—', 2, NULL);
@@ -43393,6 +43394,15 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23336, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23337, 'RB-T257', '2026-10-28T16:29:28Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23338, 'RB-T257', '2026-10-28T16:29:28Z', 'ref', '—', 'b4400a2');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23339, 'RB-T257', '2026-10-28T16:29:46Z', 'working', 'ohleo199@mindattic.com (9a09255a-43ca-4cfa-84d8-258b4a81afb4)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23340, 'RB-T260', '2026-10-28T16:35:34Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23341, 'RB-T260', '2026-10-28T16:35:34Z', 'ref', '—', '9c0305e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23342, 'RB-T260', '2026-10-28T16:35:49Z', 'working', 'ohleo199@mindattic.com (9a09255a-43ca-4cfa-84d8-258b4a81afb4)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23343, 'RB-T276', '2026-10-28T16:38:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23344, 'RB-T276', '2026-10-28T16:39:11Z', 'working', NULL, '9a09255a-43ca-4cfa-84d8-258b4a81afb4');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23345, 'RB-T258', '2026-10-28T16:41:35Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23346, 'RB-T258', '2026-10-28T16:41:35Z', 'ref', '—', 'aa73aaa');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23347, 'RB-T258', '2026-10-28T16:41:41Z', 'working', 'ohleo199@mindattic.com (9a09255a-43ca-4cfa-84d8-258b4a81afb4)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23348, 'RB-T276', '2026-10-28T16:42:09Z', 'working', '9a09255a-43ca-4cfa-84d8-258b4a81afb4', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -45483,9 +45493,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T58', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:02:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T256', NULL, 0, 'ohleo199@mindattic.com', '9a09255a-43ca-4cfa-84d8-258b4a81afb4', '2026-10-28T16:28:23Z', '2026-10-28T16:28:23Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T258', NULL, 0, 'ohleo199@mindattic.com', '9a09255a-43ca-4cfa-84d8-258b4a81afb4', '2026-10-28T16:28:17Z', '2026-10-28T16:28:17Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T259', NULL, 0, 'ohleo199@mindattic.com', '9a09255a-43ca-4cfa-84d8-258b4a81afb4', '2026-10-28T16:27:23Z', '2026-10-28T16:27:23Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T260', NULL, 0, 'ohleo199@mindattic.com', '9a09255a-43ca-4cfa-84d8-258b4a81afb4', '2026-10-28T16:27:23Z', '2026-10-28T16:27:23Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T261', NULL, 0, 'ohleo199@mindattic.com', '9a09255a-43ca-4cfa-84d8-258b4a81afb4', '2026-10-28T16:27:22Z', '2026-10-28T16:27:22Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
@@ -50583,6 +50591,31 @@ Where this ticket''s text says `tools/autoplay` or a Python library, read it as 
 - the campaign runs.
 
 Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.', '2026-10-28T03:54:19Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T276', '## Symptom
+
+Found by the RB-T258 autoplay run (2026-10-28, editor play mode, `FrontEnd.StartNewGame("sm_pawnshop_1", 0)`).
+From the new-game spot in the haven apartment (about -1928,-2592,153), `{"do":"transition","trigger":"HavenTeleport1"}`
+(and a plain `goto` to `back_door`, -1749,-3145,-62) cannot walk down to the back door:
+
+- the NavMesh path is `Partial` (built over the whole map while bl_autoplay is on);
+- the node graph route (4 waypoints: -1928,-2592,153 / -1804,-2640,153 / -1804,-2704,153 / the door) stalls
+  at waypoint 3 (-1804,-2704,153), the top of the stairs, then the re-plan finds no route at all
+  ("no node near an end, the ends are within local reach, or they are not joined").
+
+The job ends `no_path` at -1803.8,-2657.5,144. Teleporting to the foot of the stairs (-1850,-3150,-100) and
+running the same transition works (walks, opens the door, arrives on `haven1` in sm_hub_1).
+An earlier RB-T262 measurement hit a similar `blocked` goto towards `haven_bum_male` from this map.
+
+## Expected
+
+As in the original, the player walks from the bed down the stairs to the back door; the bridge''s
+goto/transition should find and follow that route.
+
+## Likely cause
+
+The imported haven''s stairs are not joined in the s&box NavMesh (step height / stair collision) and
+the AI node graph does not link the landing to the stairwell nodes; worth checking
+`CombatDirector.BuildNav` agent settings against the stair geometry.', '2026-10-28T16:38:59Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RTO-T10', 'Icons that look native.
 
 For test builds, point `m_Icon {guid, fileid}` at existing game sprites (a data-only mod can reference any game asset; FieldOverride supports UnityEngine.Object by guid/fileid), one distinct icon per Overwatch type. Final art: the user can generate icons (or take them from another game); match RT ability-icon size and style using a few weapon-ability icons from the template as reference. Custom sprites need the Unity template build (Content → Bundles).', '2026-10-26T18:26:03Z');
