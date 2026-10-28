@@ -127,7 +127,8 @@ public sealed class TicketsDbTests
             db.Approve("AL-T1"); // a feature: M.TIX-T229 refuses to close one as done until it's approved
             db.Close("AL-T1", reference: "the test");
             Assert.That(db.Ticket("al-t1")!.Value.Ticket, Has.Property("Status").EqualTo("closed").And.Property("Ref").EqualTo("the test"));
-            Assert.That(db.History("AL-T1").Select(e => (e.Field, e.Old, e.New)), Is.EqualTo(new[] { ("status", (string?)"open", (string?)"closed"), ("ref", "—", "the test") }));
+            Assert.That(db.History("AL-T1").Select(e => (e.Field, e.Old, e.New)), Is.EqualTo(new[]
+                { ("approval", (string?)"proposed", "approved"), ("status", "open", "closed"), ("ref", "—", "the test") }));
             Assert.That(db.History("AL-T3").Single().Field, Is.EqualTo("created"));
 
             var text = System.Text.Encoding.UTF8.GetString(db.Export("Alpha")!);
