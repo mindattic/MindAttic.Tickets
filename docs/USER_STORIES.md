@@ -386,3 +386,4 @@ updated: 2026-10-12
 | M.TIX-T254 | 2026-10-27 | chore | closed | Add M.ORCH-T1207, M.ORCH-T1209, b3013112-4954-4b7f-a402-9a9cccf14195; Update Tickets.db, Tickets.sql, USER_STORIES.md | — |
 | M.TIX-T255 | 2026-10-27 | chore | open | Rename MindAttic.Tickets.Desktop.exe to MindAttic.Tickets.Desktop.Wpf.exe (the Maui shell is MindAttic.Tickets.Desktop.Maui.exe), leaving a small forwarding MindAttic.Tickets.Desktop.exe: fix the pack:// URI in Theme/Styles.xaml first, then run.ps1 (kill, publish and build inputs), run.bat, shortcuts, InternalsVisibleTo, slnx, README and the path-based tests; the mutex and handoff pipe names stay unchanged | — |
 | M.TIX-T256 | 2026-10-27 | chore | closed | Add M.LNCH-T91, 95f12735-fa84-4cc7-9362-95dfd22013c7; Update Tickets.db, Tickets.sql, USER_STORIES.md | — |
+| M.TIX-T257 | 2026-10-27 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
