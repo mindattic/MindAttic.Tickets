@@ -43376,6 +43376,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23319, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23320, 'RB-T262', '2026-10-28T16:00:51Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23321, 'RB-T262', '2026-10-28T16:00:51Z', 'ref', '—', '5503b139cb32a33f31feb46899e53afd36b06eac');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23322, 'RB-T262', '2026-10-28T16:01:07Z', 'working', 'ohleo199@mindattic.com (9a09255a-43ca-4cfa-84d8-258b4a81afb4)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23323, 'U.OVW-T46', '2026-10-28T16:22:59Z', 'working', '2825e89a-daff-4fa9-bdbd-36e47a65193e', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23324, 'U.OVW-T47', '2026-10-28T16:22:59Z', 'working', '2825e89a-daff-4fa9-bdbd-36e47a65193e', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -45607,8 +45609,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.EVE-T41', NULL, 0, NULL, '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T15:54:44Z', '2026-10-28T15:54:44Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.OVW-T46', NULL, 0, NULL, '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T15:52:26Z', '2026-10-28T15:52:26Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.OVW-T47', NULL, 0, NULL, '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T15:52:25Z', '2026-10-28T15:52:25Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.RICO-T143', NULL, 0, NULL, '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T15:56:27Z', '2026-10-28T15:56:27Z');
 
 -- ticket_notes
