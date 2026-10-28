@@ -124,6 +124,7 @@ public sealed class TicketsDbTests
         {
             var t = db.Add("Alpha", "fix", "open", "a new one", "");
             Assert.That(t.Id, Is.EqualTo("AL-T3"));
+            db.Approve("AL-T1"); // a feature: M.TIX-T229 refuses to close one as done until it's approved
             db.Close("AL-T1", reference: "the test");
             Assert.That(db.Ticket("al-t1")!.Value.Ticket, Has.Property("Status").EqualTo("closed").And.Property("Ref").EqualTo("the test"));
             Assert.That(db.History("AL-T1").Select(e => (e.Field, e.Old, e.New)), Is.EqualTo(new[] { ("status", (string?)"open", (string?)"closed"), ("ref", "—", "the test") }));
@@ -253,6 +254,7 @@ public sealed class TicketsDbTests
             Assert.That(db.Render(ws), Is.Empty, "unchanged: nothing rewritten");
             Assert.That(db.StaleViews(ws), Is.Empty);
 
+            db.Approve("AL-T1"); // a feature: M.TIX-T229 refuses to close one as done until it's approved
             db.Close("AL-T1", reference: "done");
             Assert.That(db.StaleViews(ws), Is.EqualTo(new[] { "Alpha" }));
             db.Render(ws);

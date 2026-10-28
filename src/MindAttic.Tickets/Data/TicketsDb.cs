@@ -612,12 +612,25 @@ public sealed partial class TicketsDb : IDisposable
         return t;
     }
 
-    /// <summary>Moves a ticket to closed or wont-do, setting Ref when one is given.</summary>
+    /// <summary>
+    /// Moves a ticket to closed or wont-do, setting Ref when one is given. Closing as done (<see cref="TicketRules.Closed"/>)
+    /// is refused for a ticket that isn't a fix and isn't <see cref="Approved"/> yet (M.TIX-T229): the same "fix, or your
+    /// yes" rule the Orchestrator's scheduler enforces before it ever dispatches one, held here too so nothing can mark an
+    /// unapproved ticket done by any other route (the CLI, Tickets Desktop, or a direct call into this library). Closing as
+    /// wont-do is never refused: declining a ticket needs no permission, approved or not.
+    /// </summary>
     public Ticket Close(string id, string status = TicketRules.Closed, string? reference = null)
     {
         if (status is not (TicketRules.Closed or TicketRules.WontDo))
             throw new ArgumentException($"Close to '{TicketRules.Closed}' or '{TicketRules.WontDo}', not '{status}'.", nameof(status));
         var t = Ticket(id)?.Ticket ?? throw new KeyNotFoundException($"No ticket {id}.");
+        if (status == TicketRules.Closed && !t.Type.Equals("fix", StringComparison.OrdinalIgnoreCase))
+        {
+            var approval = QueueState(id).Approval;
+            if (approval != Approved)
+                throw new InvalidOperationException(
+                    $"{id} is a {t.Type}, still {approval}: only a fix may close as done without your yes. Approve it first (tickets ticket approve {id}), or close it as wont-do to decline it.");
+        }
         var updated = t with { Status = status, Ref = string.IsNullOrWhiteSpace(reference) ? t.Ref : reference.Trim() };
         Exec("UPDATE tickets SET status = $s, ref = $ref WHERE id = $id", null, ("$s", updated.Status), ("$ref", updated.Ref), ("$id", t.Id));
         return updated;
