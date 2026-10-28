@@ -4372,7 +4372,7 @@ INSERT INTO backlog_refs (item_uid, story_id) VALUES (82, 'TUT-US-A6');
 
 -- tickets
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('AGP-T1', 'AutoGamePlay', 1, '2026-10-27', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('AGP-T2', 'AutoGamePlay', 2, '2026-10-27', 'docs', 'open', 'Scaffold AutoGamePlay (agent pointers, README, .gitignore) and write its design docs: DESIGN.md (architecture and decisions), PRIOR_ART.md (research with links and licences), ROADMAP.md', '—', 1, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('AGP-T2', 'AutoGamePlay', 2, '2026-10-27', 'docs', 'closed', 'Scaffold AutoGamePlay (agent pointers, README, .gitignore) and write its design docs: DESIGN.md (architecture and decisions), PRIOR_ART.md (research with links and licences), ROADMAP.md', 'cb40d44', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('AGP-T3', 'AutoGamePlay', 3, '2026-10-27', 'docs', 'open', 'PlayScript language specification (docs/PLAYSCRIPT.md): grammar in EBNF, units, selectors, verbs, modifiers, control flow, skills/routes, watch/Expect, extension namespaces, step results and the run report format', '—', 2, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('AGP-T4', 'AutoGamePlay', 4, '2026-10-27', 'feature', 'open', 'Core model and adapter capability contract (AutoGamePlay.Core) plus the Fake in-memory 3D test game (AutoGamePlay.Adapters.Fake)', '—', 3, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('AGP-T5', 'AutoGamePlay', 5, '2026-10-27', 'feature', 'open', 'PlayScript lexer, parser and AST with round-trip printing, precise error messages and the C# fluent builder producing the same AST', '—', 4, NULL);
@@ -7771,6 +7771,22 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T319', 'Prose', 319, '2026-10-27', 'chore', 'closed', 'Regenerate docs/USER_STORIES.md from the ticket database to pick up this session''s closes (PRS-T291-T318)', 'ea88384622536351da1e865ba20f1801792a1070', 318, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T320', 'Prose', 320, '2026-10-27', 'feature', 'closed', 'Book schema: drop useless Status column, add UniverseId FK and decimal Timeline ordering field', '2fb6f06b3 ae1df7797', 319, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T321', 'Prose', 321, '2026-10-27', 'docs', 'closed', 'Update USER_STORIES.md, TRNY-brief.md, ENTOS_HISTORY.md', '—', 320, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T322', 'Prose', 322, '2026-10-27', 'chore', 'open', 'GLMZ Season 1: twelve canon books on timeline 1.0-1.9 interconnected and culminating in Cyberocracy, via GLMZ wheel + But/Therefore + misattribution fixes; one ticket per book (author 2026-10-27)', 'author 2026-10-27', 321, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T323', 'Prose', 323, '2026-10-27', 'chore', 'open', 'Season 1 timeline: set Node.Timeline for the twelve Season 1 books in in-story order across 1.0-1.8x and the Cyberocracy trilogy at 1.9x, from each book''s stated years; non-Season-1 GLMZ books left unplaced', 'PRS-T322', 322, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T324', 'Prose', 324, '2026-10-27', 'chore', 'open', 'Season 1 event mining: read Attendance, Between the Lines, Crimson & Chrome, Magenta & Gunmetal, Neon & Rust, The Way Down, The Way Up for events Season 1 books can cite or be caused by; list them, no edits to those books', 'PRS-T322', 323, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T325', 'Prose', 325, '2026-10-27', 'fix', 'open', 'Season 1 misattribution census: across the twelve Season 1 books and Cyberocracy, find lines given to the wrong speaker or POV and entity tags bound to the wrong character or to common words; each found item is fixed under its book''s Season 1 ticket', 'PRS-T322', 324, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T326', 'Prose', 326, '2026-10-27', 'chore', 'open', 'Season 1 pass, Bushido Coda: wheel it against the other Season 1 books and Cyberocracy, But/Therefore re-read, fix its misattributions, tie its threads into Cyberocracy; archive first, hand splices, read back, Descriptions restated. Also settle open questions PRS-T189-T194, T210, T211 by deciding (no author ask).', 'PRS-T322', 325, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T327', 'Prose', 327, '2026-10-27', 'chore', 'open', 'Season 1 pass, Critical Mass: wheel it against the other Season 1 books and Cyberocracy, But/Therefore re-read, fix its misattributions, tie its threads into Cyberocracy; archive first, hand splices, read back, Descriptions restated. Also settle PRS-T212 (Cinderfall slug track state) by deciding.', 'PRS-T322', 326, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T328', 'Prose', 328, '2026-10-27', 'chore', 'open', 'Season 1 pass, Death Whispers in a Cat''s Ear: wheel it against the other Season 1 books and Cyberocracy, But/Therefore re-read, fix its misattributions, tie its threads into Cyberocracy; archive first, hand splices, read back, Descriptions restated. Includes PRS-T19 (The Read ability vs archetype tags).', 'PRS-T322', 327, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T329', 'Prose', 329, '2026-10-27', 'chore', 'open', 'Season 1 pass, Mnemosync: wheel it against the other Season 1 books and Cyberocracy, But/Therefore re-read, fix its misattributions, tie its threads into Cyberocracy; archive first, hand splices, read back, Descriptions restated.', 'PRS-T322', 328, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T330', 'Prose', 330, '2026-10-27', 'chore', 'open', 'Season 1 pass, Pixel: wheel it against the other Season 1 books and Cyberocracy, But/Therefore re-read, fix its misattributions, tie its threads into Cyberocracy; archive first, hand splices, read back, Descriptions restated.', 'PRS-T322', 329, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T331', 'Prose', 331, '2026-10-27', 'chore', 'open', 'Season 1 pass, Sparrow: wheel it against the other Season 1 books and Cyberocracy, But/Therefore re-read, fix its misattributions, tie its threads into Cyberocracy; archive first, hand splices, read back, Descriptions restated. Also settle PRS-T208 and PRS-T213 by deciding.', 'PRS-T322', 330, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T332', 'Prose', 332, '2026-10-27', 'chore', 'open', 'Season 1 pass, Steppin'' Razor: wheel it against the other Season 1 books and Cyberocracy, But/Therefore re-read, fix its misattributions, tie its threads into Cyberocracy; archive first, hand splices, read back, Descriptions restated.', 'PRS-T322', 331, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T333', 'Prose', 333, '2026-10-27', 'chore', 'open', 'Season 1 pass, Testament: wheel it against the other Season 1 books and Cyberocracy, But/Therefore re-read, fix its misattributions, tie its threads into Cyberocracy; archive first, hand splices, read back, Descriptions restated. Includes Testament''s never-reconciled Descriptions.', 'PRS-T322', 332, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T334', 'Prose', 334, '2026-10-27', 'chore', 'open', 'Season 1 pass, The Long Cut: wheel it against the other Season 1 books and Cyberocracy, But/Therefore re-read, fix its misattributions, tie its threads into Cyberocracy; archive first, hand splices, read back, Descriptions restated. Also settle PRS-T207 (Renata implant years) by deciding.', 'PRS-T322', 333, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T335', 'Prose', 335, '2026-10-27', 'chore', 'open', 'Season 1 pass, Underclan: wheel it against the other Season 1 books and Cyberocracy, But/Therefore re-read, fix its misattributions, tie its threads into Cyberocracy; archive first, hand splices, read back, Descriptions restated.', 'PRS-T322', 334, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T336', 'Prose', 336, '2026-10-27', 'chore', 'open', 'Season 1 pass, Vultures at the Door: wheel it against the other Season 1 books and Cyberocracy, But/Therefore re-read, fix its misattributions, tie its threads into Cyberocracy; archive first, hand splices, read back, Descriptions restated. Also settle PRS-T209 (the unnamed vehicle) by deciding.', 'PRS-T322', 335, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T337', 'Prose', 337, '2026-10-27', 'chore', 'open', 'Season 1 pass, Read the Room: wheel it against the other Season 1 books and Cyberocracy, But/Therefore re-read, fix its misattributions, tie its threads into Cyberocracy; archive first, hand splices, read back, Descriptions restated.', 'PRS-T322', 336, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -8015,7 +8031,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T242', 'REA.Bloodlines', 242, '2026-10-27', 'feature', 'closed', 'The game runs at every modern aspect ratio: 16:9, 21:9, 32:9, 16:10 (Steam Deck 1280x800) and 4:3, at their common resolutions, with Hor+ FOV and a UI that neither stretches, clips nor overflows', 'a9f6d18', 241, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T243', 'REA.Bloodlines', 243, '2026-10-27', 'fix', 'closed', 'At 4:3 (640x480) the HUD''s discipline key list (the port''s own [X] Potence 0/1 readout, not an original HUD element) overlapped the dialogue box''s right edge; it now hides while a conversation is open', 'ef1b5db', 242, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T244', 'REA.Bloodlines', 244, '2026-10-27', 'chore', 'closed', 'Add 2 file(s); Update 12 file(s)', '—', 243, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T245', 'REA.Bloodlines', 245, '2026-10-27', 'docs', 'open', 'AutoGamePlay design: survey existing LLM game-playing / game-testing libraries and Bloodlines walkthrough and visual references, and write docs/AUTOPLAY.md (architecture, bridge, speed, saves, visual parity, campaign plan)', '—', 244, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T245', 'REA.Bloodlines', 245, '2026-10-27', 'docs', 'wont-do', 'AutoGamePlay design: survey existing LLM game-playing / game-testing libraries and Bloodlines walkthrough and visual references, and write docs/AUTOPLAY.md (architecture, bridge, speed, saves, visual parity, campaign plan)', 'superseded by AGP-T2 (AutoGamePlay repo)', 244, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T246', 'REA.Bloodlines', 246, '2026-10-27', 'feature', 'open', 'AutoPlay bridge skeleton in the s&box runtime: bl_autoplay-gated observe (compact JSON state) and act dispatch that an agent drives through sbox-cli run_csharp', '—', 245, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T247', 'REA.Bloodlines', 247, '2026-10-27', 'feature', 'open', 'Autoplay basic capability: launch: start the port from a cold editor (or the exported build) and reach the title menu, reporting load time and any log errors', '—', 246, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T248', 'REA.Bloodlines', 248, '2026-10-27', 'feature', 'open', 'Autoplay basic capability: skip the intro movies and any skippable cinematic (Esc/click as in the original), and detect when a movie is playing', '—', 247, NULL);
@@ -8033,7 +8049,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T260', 'REA.Bloodlines', 260, '2026-10-27', 'feature', 'open', 'Autoplay basic capability: use a discipline (activate, read blood cost and effect, deactivate)', '—', 259, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T261', 'REA.Bloodlines', 261, '2026-10-27', 'feature', 'open', 'Autoplay basic capability: die and reload: detect player death / Final Death screen and recover from the last save', '—', 260, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T262', 'REA.Bloodlines', 262, '2026-10-27', 'feature', 'open', 'Faster-than-real-time play for automated runs: correct behaviour at 4x-16x game speed (time scale convar + bridge), skip/fast-forward movies and voice waits under bl_autoplay', '—', 261, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T263', 'REA.Bloodlines', 263, '2026-10-27', 'feature', 'open', 'AutoGamePlay library (tools/autoplay): game-agnostic core (observations, actions, adapter protocol, episode recorder, checkpoints, stuck/softlock/exception/visual detectors, deduping bug reporter, CLI) plus the Bloodlines s&box adapter', '—', 262, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T263', 'REA.Bloodlines', 263, '2026-10-27', 'feature', 'wont-do', 'AutoGamePlay library (tools/autoplay): game-agnostic core (observations, actions, adapter protocol, episode recorder, checkpoints, stuck/softlock/exception/visual detectors, deduping bug reporter, CLI) plus the Bloodlines s&box adapter', 'superseded by AGP-T12 (AutoGamePlay repo)', 262, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T264', 'REA.Bloodlines', 264, '2026-10-27', 'feature', 'open', 'Walkthrough knowledge base for the playing agent: critical path, side quests, per-clan differences, endings and test builds as docs/data/walkthrough/*.json with a next-objective loader', '—', 263, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T265', 'REA.Bloodlines', 265, '2026-10-27', 'feature', 'open', 'Visual parity harness: matching viewpoints captured in the original game (owned install) and in the port, SSIM diff report, and a fix ticket per real visual discrepancy on every hub map', '—', 264, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T266', 'REA.Bloodlines', 266, '2026-10-27', 'feature', 'open', 'Autoplay UI coverage pass: press every button and visit every screen of the port, compare with the original, file a fix ticket per bug', '—', 265, NULL);
@@ -8043,6 +8059,9 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T270', 'REA.Bloodlines', 270, '2026-10-27', 'feature', 'open', 'Autoplay campaign run, Brujah melee build: play the Chinatown chapter end to end at accelerated speed, planning it into step tickets and filing every bug', '—', 269, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T271', 'REA.Bloodlines', 271, '2026-10-27', 'feature', 'open', 'Autoplay campaign run, Brujah melee build: play the endgame, and every ending reachable from the last shared save end to end at accelerated speed, planning it into step tickets and filing every bug', '—', 270, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T272', 'REA.Bloodlines', 272, '2026-10-27', 'feature', 'open', 'After the Brujah campaign: file and approve the campaign-run tickets for the other six clans with different builds, and make the AutoGamePlay core adoptable by other games', '—', 271, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T273', 'REA.Bloodlines', 273, '2026-10-27', 'feature', 'open', 'Player path-follow for autoplay: go to an entity/landmark over the NavMesh (widened to the whole map) with AiNodeGraph.Plan fallback, reporting arrived / blocked / no path', '—', 272, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T274', 'REA.Bloodlines', 274, '2026-10-27', 'feature', 'open', 'Original-game reference capture for autoplay: drive the original Bloodlines (owned install, never the GOG folder) through AutoGamePlay''s Source 1 adapter to capture matching viewpoints and behaviour references', '—', 273, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T275', 'REA.Bloodlines', 275, '2026-10-27', 'feature', 'open', 'Bloodlines extension for the AutoGamePlay s&box bridge: register the bloodlines.* namespace (dialogue, quests, clan/sheet, disciplines, feeding, screens, UI registry) on top of AGP''s generic bridge library', '—', 274, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T1', 'RogueTrader.Brevity', 1, '2026-10-24', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T2', 'RogueTrader.Brevity', 2, '2026-10-24', 'fix', 'closed', 'Repo has no commits, so the launcher''s pull fails with ''no such ref was fetched''; add the first commit (AGENTS.md pointer, .gitignore, commit hooks) and push main', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T3', 'RogueTrader.Brevity', 3, '2026-10-24', 'feature', 'closed', 'Phase 1 dialogue export: a mod built from Owlcat''s template that walks the dialogue blueprints (BlueprintCue, BlueprintAnswer, BlueprintBookPage) and writes dialogue.jsonl with each line''s string key, speaker, dialogue tree, previous line, skill check/conviction markers and voiced flag, so the LLM simplify pass gets context', '—', 2, NULL);
@@ -8866,7 +8885,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T176', 'Unity.GridGame', 176, '2026-10-21', 'feature', 'closed', 'Onboarding step 3, Alchemy potions: add an Empty Bottle item sold cheaply by the Merchant, and Alchemy recipes that brew potions from an Empty Bottle plus materials looted from enemies (the 36 monster trophies no recipe uses today: wolf pelt, bat wing, frog gland, swamp ichor...), always cheaper than buying the potion. The Alchemist joins after the player has looted enough for their first brew; guided prompt brews one. EconomyLoopTests'' orphan check must pass.', '27b2d54 EconomyLoopTests.Bottle_recipes_brew_from_loot_for_less_than_buying_the_potion', 175, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T177', 'Unity.GridGame', 177, '2026-10-21', 'feature', 'closed', 'Onboarding step 4, forge the first weapon: the Blacksmith''s Forge tab opens with a guaranteed-affordable starter weapon recipe from early drops; guided prompt forges it and equips it on the hero it suits.', '8ebc887 (EconomyLoopTests.The_first_forge_equips_the_starter_weapon_on_the_hero_it_suits)', 176, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T178', 'Unity.GridGame', 178, '2026-10-21', 'feature', 'closed', 'Onboarding step 5, forge armor: armor recipes (from the new armor sets, see the armor-content ticket) open at the Forge after the first weapon; guided prompt forges and equips one piece.', '6e1e9f0 (EconomyLoopTests.Armor_recipes_open_after_the_first_weapon_and_the_first_piece_is_worn)', 177, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T179', 'Unity.GridGame', 179, '2026-10-21', 'feature', 'open', 'Onboarding step 6, enchant armor for passive effects: a new class of armor enchants that grant passives (regen, poison immunity, +move, thorns, mana on hit... reusing the Passive ability kind), alongside today''s six weapon-only elemental enchants. The Enchantress joins after the first armor piece; guided prompt enchants it.', 'owner direction 2026-10-21 (epic W)', 178, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T179', 'Unity.GridGame', 179, '2026-10-21', 'feature', 'closed', 'Onboarding step 6, enchant armor for passive effects: a new class of armor enchants that grant passives (regen, poison immunity, +move, thorns, mana on hit... reusing the Passive ability kind), alongside today''s six weapon-only elemental enchants. The Enchantress joins after the first armor piece; guided prompt enchants it.', '11cabc53d10cae530477866ea31173d5095f7092', 178, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T180', 'Unity.GridGame', 180, '2026-10-21', 'feature', 'open', 'Onboarding step 7, train a new skill: after armor enchanting, the Learn screen (gold-bought abilities, US-231) is introduced; guided prompt trains a new skill and slots it on the ability bar. Completes the onboarding chain.', 'owner direction 2026-10-21 (epic W)', 179, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T181', 'Unity.GridGame', 181, '2026-10-21', 'feature', 'closed', '100 unique weapons: today there are 13 base weapons (130 rows only because of +1/+2/+3 and enchant variants). Author 87 more base weapons across every weapon class (Simple/Martial/Arcane, GG-T52) and role, each with a distinct stat profile or on-hit trait, a source (drop, shop or forge recipe) and art icon; upgrade/enchant variants generated as today. Content validation + EconomyLoopTests stay green.', '54a2115 WeaponRosterTests', 180, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T182', 'Unity.GridGame', 182, '2026-10-21', 'feature', 'closed', '100 unique armor pieces in 20 named five-piece sets (head/torso/legs/gloves/boots) with 2- and 5-piece set bonuses, spread across Light/Medium/Heavy weights (GG-T52) and the campaign''s level range; each with a source (drop, shop or forge recipe). Today: 37 pieces, no sets. Set bonuses resolve in Core with tests; Equip/Status screens show set progress.', '0639742', 181, NULL);
@@ -8962,7 +8981,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T64', 'Unity.Hare', 64, '2026-10-23', 'feature', 'closed', 'Wire the game modes (gm_quickstart, gm_campaign, gm_generator): obj_btn_quickstart straight into the arena, obj_btn_campaign through story and map, the generator via obj_btn_diff0, obj_btn_diff100 and obj_btn_level09 (level_enemygenerator: generate_enemy_list at the chosen difficulty and the wormhole emitter until the list is spent), load_level''s setting/objective/composition selection, and scenario to level mapping (scenario 1 levels 1-5, others 6-10). Includes obj_btn_map, obj_btn_shaft and obj_btn_upgrade navigation.', '285512e11d0ca6e368c0769346a059741395c3e5', 63, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T65', 'Unity.Hare', 65, '2026-10-23', 'feature', 'open', 'Persist the GameSession campaign state (scenario and level reached, COINS, SKILLPOINTS, upgrades bought in the garage, best scores) under the Unity.Shared profile''s Saves folder with a versioned format and safe writes, and load it when the campaign is chosen. The original keeps these only in globals and loses them on restart; this is a deliberate addition the BIBLE must record.', 'UH-US-O12', 64, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T66', 'Unity.Hare', 66, '2026-10-23', 'feature', 'closed', 'Port obj_helper and create_helper: spawned at the player (sfx_hawk) by the arrow-key presses, flying at 4 px/step along player.image_angle, steered 2 degrees/step (turn_speed grows with speed), accelerating and braking with the keys, a mouse-follow solo toggle (Enter), the smoke trail every 40 steps and sparks while turning, collecting pickups (obj_carrot and obj_coin collide with obj_helper), and exploding as an obj_rocket_explosion on a hit. Only one helper at a time.', '15940da', 65, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T67', 'Unity.Hare', 67, '2026-10-23', 'feature', 'open', 'Port obj_flashbomb (key F in obj_player) and the obj_rabbit_schematic flash: a view-sized white flash that blinks 12 times at rate 6 steps (alpha 0.8), expanding circles (radius +10/+8/+6 per step), every par_enemy inside the circle and in view becoming an obj_rocket_explosion, every par_projectile an obj_tinyexplosion, burst_alpha fading to destroy, with sfx_flashbomb. Confirm in play whether the original limits its use (the source has no ammo or cooldown).', 'UH-US-R2', 66, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T67', 'Unity.Hare', 67, '2026-10-23', 'feature', 'closed', 'Port obj_flashbomb (key F in obj_player) and the obj_rabbit_schematic flash: a view-sized white flash that blinks 12 times at rate 6 steps (alpha 0.8), expanding circles (radius +10/+8/+6 per step), every par_enemy inside the circle and in view becoming an obj_rocket_explosion, every par_projectile an obj_tinyexplosion, burst_alpha fading to destroy, with sfx_flashbomb. Confirm in play whether the original limits its use (the source has no ammo or cooldown).', 'f009df2', 66, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T68', 'Unity.Hare', 68, '2026-10-23', 'feature', 'open', 'Port obj_scrapmental and the obj_shrapnel_* family (level_08, objective o_defeat): the spr_schrapnel_eye boss that creeps toward the player at 1 px/step beyond 100 px, spins, floats up and down (undulate), fires 12-16 spr_sliver bullets every 4-8 s, spawns a sawblade or dagger every 3-6 s; 36 obj_shrapnel_piece hull pieces orbiting on its undulating radius (20 points each when shot loose, then flying off at 8-12 px/step), the obj_shrapnel_harpoon grappling arms that rotate then fire at 8 px/step with a line to the boss, obj_shrapnel_back fading out on death, and the o_defeat completion. Supersedes UH-T32: room_boss1 is never entered and obj_structure1 does not exist in HARE.gmx.', 'UH-US-R3', 67, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T69', 'Unity.Hare', 69, '2026-10-23', 'docs', 'open', 'Port datafiles/credits.txt (for example the Jim Rogers minigun sound from soundbible.com) and the music track credits into an in-game credits screen reachable from the title, and into docs/CREDITS.md, checking the licence of every sound, font and sprite that ships. Keeps the repo honest about third-party assets before any release.', 'UH-US-O13', 68, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T70', 'Unity.Hare', 70, '2026-10-23', 'chore', 'open', 'Add the Unity.Hare.Tests.PlayMode asmdef and tests (bootstrap loads, a level starts, a kill scores, a level completes, the campaign flows from title to results), adopt the shared MindAttic capture package for scripted screenshots of every room and mode, and a tools script that runs the scripted full run and stores the images, so ''done means verified by play'' (AGENTS.md rule 7) is repeatable. Adds the kit''s NetSessionTest/NetBotTest once UH-T35 lands.', 'UH-US-S1', 69, NULL);
@@ -9333,7 +9352,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T49', 'Unity.Ricochet', 49, '2026-10-23', 'feature', 'closed', 'HUD details (obj_icon_weapon_* x6, obj_item_* x6 with their _off and _selected sprites, obj_lbl_count_*, obj_infinity, obj_weapon_icon, obj_hover_icon, obj_displaybox, mouseover_message_draw, mouseover_powerup_draw, obj_degree, obj_degree_gui, draw_angle, obj_turnarrow, obj_guide, obj_indicator_extrabounce, draw_iteminfo, draw_weaponinfo, draw_scores, draw_turntime, obj_healthbar, obj_bar1-16 health sprites, obj_circle1-16 and obj_square1-16 seat markers): icons for every weapon and item in off, normal and selected states with their remaining counts (the infinity sign for unlimited), a tooltip with the weapon or item name and what it does on hover, the angle readout with the degree symbol, a turn arrow over the active tank, the guide ring around the player to move, and the extra-bounce indicator', 'db3bb3b (HudDetailTests, HudLooksTests)', 48, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T50', 'Unity.Ricochet', 50, '2026-10-23', 'feature', 'closed', 'Sound effects (sfx_* in sound/, 70 non-voice cues): replace Core/Sound.cs''s four synthesised cues with the original''s recordings, mapped through an engine-free SoundCue enum with the full set: fire per weapon (cannon, laser, shotgun, grenade, railgun, vortex, shrink ray, teleporter, redirector), bounce per weapon, the laser loop, explosion and crash, six grenade fuses and the grenade beep, shatter, shrink, teleport, powerup and powerup activate, redirector shoot and grow, vortex shoot, suck and blow, turn and countdown beeps, select, click, switch, type, disabled, engine on, loop and off, flyover, whoosh, static, zoom, sonar ping, applause and woot, with the profile''s sfx volume and mute applied', '3e44e97 (SoundEffectTests, SoundTests)', 49, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T51', 'Unity.Ricochet', 51, '2026-10-23', 'feature', 'closed', 'Announcer voices and portraits (obj_announcer, obj_announcer_portrait, obj_box_announcements, obj_speaker, spr_profile_*, spr_portrait_dummy, play_random_announcement, random_{announce,baxter,doctor,rye,scottish,sid,sly,vlad}_{welcome,win,lose}, random_welcome_number, random_win_number, random_lose_number, sfx_*_welcome1-10 / win1-10 / lose1-10, 210 recordings): the rebuild speaks written lines only; import each announcer''s 30 recordings, play the line chosen by the existing no-repeat draw when its card appears, keep the written line as the caption (and as the fallback when muted), and give every announcer a portrait (the original shared spr_profile_dummy between four of them; draw four new portraits or tint the dummy so each is distinct)', '8a07042', 50, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T52', 'Unity.Ricochet', 52, '2026-10-23', 'feature', 'open', 'Title and main menu presentation (obj_titlescreen, obj_letter_R/I/C/O/C2/H/E/T, obj_letter_parent, obj_mainmenu, bg_titlescreen, obj_btn_start/quit/settings/credits/controls/howtoplay/config/default, spr_button*, spr_btn_*, obj_jukebox): the title''s nine letters drop in and animate, the main menu repeats them, buttons use the original''s art with hover and back states, and the original''s setup panel on the title (players, polygons, shapes, rotation, overlap, turn time, goal, bounces) is reachable from Start as the first setup screen; a fullscreen toggle on start is not carried (the window setting is the player''s)', 'UR-US-PAR12', 51, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T52', 'Unity.Ricochet', 52, '2026-10-23', 'feature', 'closed', 'Title and main menu presentation (obj_titlescreen, obj_letter_R/I/C/O/C2/H/E/T, obj_letter_parent, obj_mainmenu, bg_titlescreen, obj_btn_start/quit/settings/credits/controls/howtoplay/config/default, spr_button*, spr_btn_*, obj_jukebox): the title''s nine letters drop in and animate, the main menu repeats them, buttons use the original''s art with hover and back states, and the original''s setup panel on the title (players, polygons, shapes, rotation, overlap, turn time, goal, bounces) is reachable from Start as the first setup screen; a fullscreen toggle on start is not carried (the window setting is the player''s)', 'a60ebab', 51, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T53', 'Unity.Ricochet', 53, '2026-10-23', 'feature', 'open', 'Room fades (obj_fade, obj_fade_game, obj_fade_mainmenu, obj_fade_maproom, obj_fade_settings, obj_fade_controls, obj_fade_credits, obj_fade_endgame, obj_fade_howtoplay, obj_fade_multiplayer, obj_fade_splashscreen): one reusable fade-in and fade-out for every screen change, with the screen-change click (sfx_select, sfx_click)', 'UR-US-PAR13', 52, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T54', 'Unity.Ricochet', 54, '2026-10-23', 'feature', 'open', 'Controls and how-to-play art (obj_Controls, obj_keyboardlayout, spr_keyboardlayout, bg_controls, spr_controls, spr_howtoplay, spr_howtoplay1, obj_howtoplay, obj_howtoplayimage, obj_slide, obj_btn_nextslide, obj_btn_lastslide, obj_mouse, spr_mouse): the keyboard layout image with the keys highlighted, the mouse picture, the ten slides'' images and next and last slide buttons with the page count, redrawn for this game''s controls (the Input System bindings, after the rebind screen)', 'UR-US-PAR14', 53, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T55', 'Unity.Ricochet', 55, '2026-10-23', 'feature', 'open', 'Credits roll (obj_credits, obj_creditsimage, spr_creditsimage, fnt_credits, obj_btn_back_credits): the credits scroll over the picture instead of a static list, written in this project''s own words and crediting the original and the house kit', 'UR-US-PAR15', 54, NULL);
@@ -9387,7 +9406,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T103', 'Unity.Ricochet', 103, '2026-10-26', 'fix', 'open', 'Match the original (owner rule: port faithfully, found by the parity audit): the shield wall is 128 px long and set 60 px ahead of the tank (spawn_shieldwall), not 2.2 units (about 190 px) long 1 unit ahead', '—', 102, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T104', 'Unity.Ricochet', 104, '2026-10-26', 'fix', 'closed', 'Match the original (owner rule: port faithfully, found by the parity audit): a standing redirector spins (tick(spin), from 1 degree a step, reversed by each bounce in flight) until its owner fires or teleports, when pause_redirector=yes freezes it (redirector_stop) and no keeps it turning; it sends one shot on and then fades away (obj_redirector''s fade), and next_player destroys it; not a fixed redirector that lasts the round and turns 30 degrees a turn', '445a238c92eedb3e4077f36c9ee11611340b40c5', 103, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T105', 'Unity.Ricochet', 105, '2026-10-26', 'fix', 'closed', 'Match the original (owner rule: port faithfully, found by the parity audit): the laser flies at bulletSpeed like a cannon shell (shoot_laser.gml), not 3 times faster, so its flight-time points match', '8e4c12c', 104, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T106', 'Unity.Ricochet', 106, '2026-10-26', 'fix', 'open', 'Match the original (owner rule: port faithfully, found by the parity audit): PageUp and PageDown make the border thicker or thinner and roll the level again (obj_game''s key events 33/34), not only a practice reroll', '—', 105, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T106', 'Unity.Ricochet', 106, '2026-10-26', 'fix', 'closed', 'Match the original (owner rule: port faithfully, found by the parity audit): PageUp and PageDown make the border thicker or thinner and roll the level again (obj_game''s key events 33/34), not only a practice reroll', 'f51bdcd', 105, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T107', 'Unity.Ricochet', 107, '2026-10-26', 'fix', 'closed', 'Match the original (owner rule: port faithfully, found by the parity audit): the pause after a shot lands before the next turn is 50 steps (obj_endturn, about 0.83 s), not 1.25 s', '05fe3b9', 106, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T108', 'Unity.Ricochet', 108, '2026-10-26', 'fix', 'closed', 'Match the original (owner rule: port faithfully, found by the parity audit): the default announcer is Baxter (config.ini), not Sly', 'c5f92b8', 107, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T109', 'Unity.Ricochet', 109, '2026-10-26', 'fix', 'closed', 'Match the original (owner rule: port faithfully, found by the parity audit): the setup''s ranges are the original''s: turn time 5-30 s, shapes 5-40 in steps of 5, the damage choices 5/10/25/33/50/100; the in-game Settings screen shows only the original''s settings (the tuning registry''s health, points, shot speed, pellets, grass and other dials stay data, not player-facing controls)', 'f017157', 108, NULL);
@@ -9401,11 +9420,13 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T117', 'Unity.Ricochet', 117, '2026-10-26', 'feature', 'open', 'SPIKE (future enhancement, after the matching fix restores the original): try up to 16 seats for networked matches as a data option that is never the default', '—', 116, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T118', 'Unity.Ricochet', 118, '2026-10-26', 'feature', 'open', 'SPIKE (future enhancement, after the matching fix restores the original): try a map room with hand-laid maps as an optional screen that is never the default flow', '—', 117, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T119', 'Unity.Ricochet', 119, '2026-10-27', 'docs', 'closed', 'Update USER_STORIES.md', '—', 118, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T120', 'Unity.Ricochet', 120, '2026-10-27', 'fix', 'open', 'menu.json help text still calls the laser three times as fast; since U.RICO-T105 it flies at shell speed, so fix the wording in Assets/StreamingAssets/Settings/menu.json', '—', 119, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T120', 'Unity.Ricochet', 120, '2026-10-27', 'fix', 'closed', 'menu.json help text still calls the laser three times as fast; since U.RICO-T105 it flies at shell speed, so fix the wording in Assets/StreamingAssets/Settings/menu.json', 'a60ebab', 119, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T121', 'Unity.Ricochet', 121, '2026-10-27', 'fix', 'closed', 'Fails on main: Ricochet.Core.Tests.SetupMemoryTests.TheMatchRulesPackIntoWordsAndComeBackTheSame — Assert.That((back.TurnSeconds, back.MaxBounces, back.WeaponDamage, back.PauseRedirector, back.WeaponOn(Weapon.Grenade), back.WeaponCount(Weapon.Laser), back.ItemOn(Item.AimAssist), back.ItemCount(Item.AimAssist), back.DropOn(DropKind.Weapon)), Is.EqualTo((35, 9, 40, false, false, 7, false, 10, fa... (landed on main since the last green run: tickets U.RICO-T109, U.RICO-T105 in f017157 Settings match the original: turn time 5-30 s, damage choices 5/10/25/33/50/100 (U.RICO-T109); 8e4c12c Laser flies at a shell''s speed like the original''s shoot_laser.gml, not 3x (U.RICO-T105))', '0f8aef82970865d02b3137e57192f62ad80268cb', 120, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T122', 'Unity.Ricochet', 122, '2026-10-27', 'fix', 'open', 'Fails on main: Ricochet.Core.Tests.VolleyTests.TheLaserFliesTheCannonsPath_ThreeTimesAsFast — Assert.That(laser.Speed, Is.EqualTo(ShotRules.Default.Speed * 3)) Expected: 54.0d But was: 18.0d (landed on main since the last green run: tickets U.RICO-T109, U.RICO-T105 in f017157 Settings match the original: turn time 5-30 s, damage choices 5/10/25/33/50/100 (U.RICO-T109); 8e4c12c Laser flies at a shell''s speed like the original''s shoot_laser.gml, not 3x (U.RICO-T105))', 'main@f017157', 121, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T122', 'Unity.Ricochet', 122, '2026-10-27', 'fix', 'closed', 'Fails on main: Ricochet.Core.Tests.VolleyTests.TheLaserFliesTheCannonsPath_ThreeTimesAsFast — Assert.That(laser.Speed, Is.EqualTo(ShotRules.Default.Speed * 3)) Expected: 54.0d But was: 18.0d (landed on main since the last green run: tickets U.RICO-T109, U.RICO-T105 in f017157 Settings match the original: turn time 5-30 s, damage choices 5/10/25/33/50/100 (U.RICO-T109); 8e4c12c Laser flies at a shell''s speed like the original''s shoot_laser.gml, not 3x (U.RICO-T105))', '973ec45', 121, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T123', 'Unity.Ricochet', 123, '2026-10-27', 'fix', 'closed', 'Fails on main: Ricochet.Core.Tests.SetupMemoryTests.TheMatchRulesGoIntoTheRecord_AndComeBackThroughItsAndTheVoteText — Assert.That((back.TurnSeconds, back.MaxBounces, back.WeaponDamage, back.PauseRedirector), Is.EqualTo((35, 9, 40, false))) Expected: (35, 9, 40, False) But was: (30, 9, 40, False) (landed on main since the last green run: tickets U.RICO-T109, U.RICO-T105 in f017157 Settings match the original: turn time 5-30 s, damage choices 5/10/25/33/50/100 (U.RICO-T109); 8e4c12c Laser flies at a shell''s speed like the original''s shoot_laser.gml, not 3x (U.RICO-T105))', 'passes on main@0f8aef8', 122, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T124', 'Unity.Ricochet', 124, '2026-10-27', 'fix', 'open', 'Fails on main: Ricochet.Core.Tests.SetupMemoryTests.TheRulesReachTheMatchShotArsenalDropAndHazardRules — Assert.That((match.TurnSeconds, match.WeaponDamage, shot.MaxBounces), Is.EqualTo((35.0, 40, 9))) Expected: (35.0d, 40, 9) But was: (30.0d, 40, 9) (landed on main since the last green run: tickets U.RICO-T109, U.RICO-T105 in f017157 Settings match the original: turn time 5-30 s, damage choices 5/10/25/33/50/100 (U.RICO-T109); 8e4c12c Laser flies at a shell''s speed like the original''s shoot_laser.gml, not 3x (U.RICO-T105))', 'main@f017157', 123, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T124', 'Unity.Ricochet', 124, '2026-10-27', 'fix', 'closed', 'Fails on main: Ricochet.Core.Tests.SetupMemoryTests.TheRulesReachTheMatchShotArsenalDropAndHazardRules — Assert.That((match.TurnSeconds, match.WeaponDamage, shot.MaxBounces), Is.EqualTo((35.0, 40, 9))) Expected: (35.0d, 40, 9) But was: (30.0d, 40, 9) (landed on main since the last green run: tickets U.RICO-T109, U.RICO-T105 in f017157 Settings match the original: turn time 5-30 s, damage choices 5/10/25/33/50/100 (U.RICO-T109); 8e4c12c Laser flies at a shell''s speed like the original''s shoot_laser.gml, not 3x (U.RICO-T105))', 'fbabc83', 123, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T125', 'Unity.Ricochet', 125, '2026-10-27', 'fix', 'closed', 'Fails on main: Ricochet.Core.Tests.TitleAndStartTests.ALetterTurnsBackPastAnEdge_AndShowsTheMirrorLetterMovingLeft — Assert.That(r.Sprite(3), Is.EqualTo("spr_letter_O")) String lengths are both 12. Strings differ at index 11. Expected: "spr_letter_O" But was: "spr_letter_C" ----------------------^ (landed on main since the last green run: tickets U.RICO-T52, U.RICO-T104, U.RICO-T121, U.RICO-T109, U.RICO-T105 in a60ebab Title and main menu: drifting RICOCHET letters on the title and main menu, the title''s setup panel as the Start screen, jukebox music (U.RICO-T52); 445a238 Standing redirector spins until its owner fires, fades after one shot, and next turn destroys it (U.RICO-T104); 0f8aef8 Setup memory tests use a 25 s turn: the settings cap is now 30 s (U.RICO-T121); f017157 Settings match the original: turn time 5-30 s, damage choices 5/10/25/33/50/100 (U.RICO-T109); 8e4c12c Laser flies at a shell''s speed like the original''s shoot_laser.gml, not 3x (U.RICO-T105))', 'f96aa7a', 124, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T126', 'Unity.Ricochet', 126, '2026-10-27', 'fix', 'open', 'Laid hazards and practice dummies keep fixed places, so a thick border (PageDown, U.RICO-T106) can leave them outside the inset playfield: place them inside LevelGenerator.Inset''s area', '—', 125, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAU-T1', 'Unity.Shared', 1, '2026-10-19', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAU-T2', 'Unity.Shared', 2, '2026-10-19', 'feature', 'closed', 'Create the MindAttic.Unity package (owner 2026-10-19): multiple player profiles, each with its own settings file as in GridGame2026, in ONE common format defined here and reused by every MindAttic Unity game (first users GridGameGaiden and UnitySpace), plus a home for shared Unity helpers. Package: package.json name com.mindattic.unity, consumed by games as "file:../../MindAttic.Unity" in Packages/manifest.json (owner chose local package). Two assemblies: (1) MindAttic.Unity.Core, ENGINE-FREE (noEngineReferences, compiles under plain dotnet netstandard2.1) so games'' engine-free Core/Meta layers and their dotnet test projects can use it; (2) MindAttic.Unity.Runtime, thin, supplies Application.persistentDataPath as the root. THE STANDARD, written in README as a versioned spec: <persistentDataPath>/Profiles/current.txt names the profile in use; Profiles/<Name>/settings.json is that profile''s ONE settings file (owner chose single JSON over UnitySpace''s file-per-setting); Profiles/<Name>/Saves/ holds the game''s own save files. settings.json = {"format":"mindattic.settings","version":1,"common":{musicVolume,sfxVolume,muteMusic,muteSfx,reduceMotion,language},"game":{...game-owned...}}. Unknown fields in common and game survive a load/save round-trip; missing file/keys fall back to defaults; damaged JSON is moved aside (settings.json.bad-<timestamp>) and defaults used, never a crash; writes are atomic (temp + replace). Profile API: list, current, select, create (name rules as UnitySpace''s ProfileStore.IsValidName: one folder on every platform, <=64 chars), rename, delete = move to Profiles/.trash (HOUSE-LAW-2 soft-disable), root override for tests/automation. JSON: do not ship a second Newtonsoft (GridGameGaiden bundles its own Newtonsoft.Json.dll; check UnitySpace) - choose an approach that works in both (e.g. an injected codec interface) and document it. Port the good parts of UnitySpace''s uncommitted Assets/UnitySpace/Core/Persistence/Profiles.cs and GridGame2026''s ProfileHelper/FolderHelper (archived repo mindattic/GridGame2026); do NOT edit UnitySpace or GridGameGaiden from this ticket. Repo basics: AGENTS.md/CLAUDE.md forwarders like sibling repos, README per codex-standard/README-STYLE.md, MIT LICENSE, a dotnet NUnit test project for the format (round-trip incl. unknown keys, defaults, damaged file, atomic write, name rules, current/select/create/rename/delete-to-trash, root override), a v1.0.0 tag once green.', 'tests/Core.Tests (89 passing: JsonTests, SettingsTests.RoundTripKeepsUnknownFieldsInCommonGameAndTopLevel/DamagedFileIsMovedAsideAndDefaultsUsed/SaveIsAtomicAndLeavesNoTempFile/FailedWriteLeavesTheOldFileIntact, ProfileStoreTests, ProfilesFacadeTests.TheOneLineIdentityApiReadsAndWritesNameAndColour); Unity 6000.4.3f1 batchmode smoke; c8b90c0; tag v1.0.0', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAU-T3', 'Unity.Shared', 3, '2026-10-19', 'chore', 'closed', 'Convert tracked source files to LF line endings via .gitattributes, per HOUSE-LAW-13 (low priority)', 'git ls-files --eol all i/lf; b57b99a', 2, NULL);
@@ -40239,8 +40260,2176 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22405, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22406, 'AGP-T6', '2026-10-28T03:51:16Z', 'link', NULL, 'requires AGP-T5');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22407, 'AGP-T5', '2026-10-28T03:51:16Z', 'link', NULL, 'AGP-T6 requires');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22408, 'AGP-T7', '2026-10-28T03:51:17Z', 'link', NULL, 'requires AGP-T4');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22409, 'AGP-T4', '2026-10-28T03:51:17Z', 'link', NULL, 'AGP-T7 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22410, 'AGP-T8', '2026-10-28T03:51:18Z', 'link', NULL, 'requires AGP-T4');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22411, 'AGP-T4', '2026-10-28T03:51:18Z', 'link', NULL, 'AGP-T8 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22412, 'AGP-T9', '2026-10-28T03:51:19Z', 'link', NULL, 'requires AGP-T4');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22413, 'AGP-T4', '2026-10-28T03:51:19Z', 'link', NULL, 'AGP-T9 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22414, 'AGP-T10', '2026-10-28T03:51:21Z', 'link', NULL, 'requires AGP-T4');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22415, 'AGP-T4', '2026-10-28T03:51:21Z', 'link', NULL, 'AGP-T10 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22416, 'AGP-T11', '2026-10-28T03:51:22Z', 'link', NULL, 'requires AGP-T4');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22417, 'AGP-T4', '2026-10-28T03:51:22Z', 'link', NULL, 'AGP-T11 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22418, 'AGP-T12', '2026-10-28T03:51:23Z', 'link', NULL, 'requires AGP-T6');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22419, 'AGP-T6', '2026-10-28T03:51:24Z', 'link', NULL, 'AGP-T12 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22420, 'AGP-T12', '2026-10-28T03:51:25Z', 'link', NULL, 'requires AGP-T7');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22421, 'AGP-T7', '2026-10-28T03:51:25Z', 'link', NULL, 'AGP-T12 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22422, 'U.HARE-T67', '2026-10-28T03:51:26Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22423, 'U.HARE-T67', '2026-10-28T03:51:26Z', 'ref', 'UH-US-R2', 'f009df2');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22424, 'AGP-T12', '2026-10-28T03:51:26Z', 'link', NULL, 'requires AGP-T8');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22425, 'AGP-T8', '2026-10-28T03:51:26Z', 'link', NULL, 'AGP-T12 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22426, 'U.HARE-T64', '2026-10-28T03:51:27Z', 'working', 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22427, 'AGP-T12', '2026-10-28T03:51:27Z', 'link', NULL, 'requires AGP-T9');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22428, 'U.RICO-T104', '2026-10-28T03:51:27Z', 'working', '2825e89a-daff-4fa9-bdbd-36e47a65193e', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22429, 'AGP-T9', '2026-10-28T03:51:28Z', 'link', NULL, 'AGP-T12 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22430, 'AGP-T12', '2026-10-28T03:51:29Z', 'link', NULL, 'requires AGP-T10');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22431, 'AGP-T10', '2026-10-28T03:51:29Z', 'link', NULL, 'AGP-T12 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22432, 'AGP-T12', '2026-10-28T03:51:30Z', 'link', NULL, 'requires AGP-T11');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22433, 'AGP-T11', '2026-10-28T03:51:30Z', 'link', NULL, 'AGP-T12 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22434, 'AGP-T13', '2026-10-28T03:51:31Z', 'link', NULL, 'requires AGP-T4');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22435, 'AGP-T4', '2026-10-28T03:51:32Z', 'link', NULL, 'AGP-T13 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22436, 'AGP-T14', '2026-10-28T03:51:32Z', 'link', NULL, 'requires AGP-T12');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22437, 'AGP-T12', '2026-10-28T03:51:33Z', 'link', NULL, 'AGP-T14 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22438, 'AGP-T15', '2026-10-28T03:51:34Z', 'link', NULL, 'requires AGP-T12');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22439, 'AGP-T12', '2026-10-28T03:51:34Z', 'link', NULL, 'AGP-T15 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22440, 'AGP-T15', '2026-10-28T03:51:35Z', 'link', NULL, 'requires AGP-T13');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22441, 'AGP-T13', '2026-10-28T03:51:35Z', 'link', NULL, 'AGP-T15 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22442, 'AGP-T16', '2026-10-28T03:51:36Z', 'link', NULL, 'requires AGP-T12');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22443, 'AGP-T12', '2026-10-28T03:51:36Z', 'link', NULL, 'AGP-T16 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22444, 'AGP-T16', '2026-10-28T03:51:37Z', 'link', NULL, 'requires AGP-T13');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22445, 'AGP-T13', '2026-10-28T03:51:38Z', 'link', NULL, 'AGP-T16 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22446, 'AGP-T17', '2026-10-28T03:51:39Z', 'link', NULL, 'requires AGP-T4');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22447, 'AGP-T4', '2026-10-28T03:51:39Z', 'link', NULL, 'AGP-T17 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22448, 'U.HARE-T67', '2026-10-28T03:51:53Z', 'working', 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22449, 'AGP-T2', '2026-10-28T03:52:36Z', 'description', 'Scaffold the repo and move the approved AutoGamePlay plan into docs/DESIGN.md, docs/PRIOR_ART.md and docs/ROADMAP.md.
+
+## Context
+
+AutoGamePlay (AGP) is the engine-agnostic toolkit that lets an LLM agent (a Claude subagent driving the `agp` CLI) play and playtest first- and third-person PC games: it runs PlayScript (the gameplay scripting language, e.g. `Player.MoveForward(20m).TurnLeft(90)`), executes it with fast reflex controllers while the game is unpaused, pauses the game while the LLM thinks, watches with oracles, keeps frames in a budgeted in-RAM ring buffer, and files deduped bug tickets with evidence. The first consumer is REA.Bloodlines (the s&box port of Vampire: The Masquerade - Bloodlines, epic RB-T245..RB-T272); it must also work for Source 1, GZDoom, and later Unreal (UE4SS), Cyberpunk (CET) and EDuke32. Read docs/DESIGN.md (architecture, decisions), docs/PRIOR_ART.md and docs/ROADMAP.md first; keep the docs current with what you build. No game-specific code in this repo: game specifics live in the game''s own repo as an extension namespace. C#/.NET 10, nullable on, whole-number versions; any in-process LLM call goes through MindAttic.Legion (HOUSE-LAW-4). xUnit tests run against the Fake adapter.', 'Scaffold AutoGamePlay and write its design docs from the approved plan below (owner-approved 2026-10-27 in the REA.Bloodlines session).
+
+## Deliverables (one commit, ending "(AGP-T2)")
+
+- `AGENTS.md`: the standard MindAttic pointer, followed by project context:
+  - stay engine- and game-agnostic: engine code in `src/AutoGamePlay.Adapters.<Engine>`, game code in the game''s own repo as an extension namespace;
+  - never commit game content (game files, IWADs, screenshots or frames of commercial games, saves); evidence and run state go to a per-game folder outside the repo (REA.Bloodlines: `work/autoplay/`);
+  - .NET 10, whole-number versions, in-process LLM calls only through MindAttic.Legion.
+- `CLAUDE.md` forwarder, like MindAttic.Relay''s.
+- `.gitignore`: bin/obj/.vs/TestResults, `runs/`, `evidence/`, `*.wad`, `*.pk3`, `.claude/quicksave.md`.
+- `README.md` in the AutoWebNav style: one-line pitch, an ASCII architecture diagram, a PlayScript example, adapters and status, links to the docs.
+- `docs/DESIGN.md`: the plan''s Context, Architecture, Design decisions, PlayScript sketch, agent loop, Verification and Risks, expanded and written for a reader new to the project.
+- `docs/PRIOR_ART.md`: the research below, with links and licences (mark unverified licences as unverified).
+- `docs/ROADMAP.md`: AGP-T3 to AGP-T17 in dependency order, plus the REA.Bloodlines consumer epic (RB-T245 to RB-T272).
+- Run `D:\Projects\MindAttic\MindAttic.Agency\shared\docs-site\adopt-docs-site.ps1 -Repo AutoGamePlay -Api` for the GitHub Pages docs site (HOUSE-LAW-14).
+
+Already done by the REA.Bloodlines session:
+- the private GitHub repo `mindattic/AutoGamePlay` with an MIT LICENSE;
+- the clone through `clone-repo.ps1`, `wip` topic included;
+- `.agent/commands` pointers, the commit-msg hook and ticket registration (code AGP).
+
+# Approved plan
+
+# AutoGamePlay: LLM-played, self-ticketing playtests (Bloodlines first, any FPS/TPS game after)
+
+## Context
+
+**What the owner wants:**
+- An AI that plays the Bloodlines s&box port the way a human would: every button, then the whole campaign as each clan with several builds. It runs faster than real time, reloads saves, and compares the port with the original game (walkthroughs, YouTube, the original running from the owned install). Every bug becomes a ticket, and /allocate fixes, tests and closes it, all night, within pacing.
+- The machinery lives in a new, fully documented, engine-agnostic **AutoGamePlay** git repo. It targets first- and third-person games for now: Source/Source 2, Unreal, idTech/GZDoom, Build/EDuke32, REDengine/Cyberpunk.
+- A universal gameplay scripting language, e.g. `MoveForward(20m).TurnLeft(90)...`, that both drives the game and watches for bugs.
+- Basic capabilities first, because the port is "barely playable". Goals then expand into step tickets, so thousands of tickets accumulate before closures overtake them: "a marathon, not a sprint".
+- Screenshots must not kill the frame rate or fill the disk.
+
+**What exists today:**
+- The port is driven only through `sbox-cli` in editor play mode: `tools/sbox_import/compile.py` provides `Mcp`/`Editor`, and `playtest.py` provides `Session.cs()`, `ensure_playing()` and `wait_world()`.
+- Rich state is already reachable:
+  - `BloodlinesWorld.Current`, `BloodlinesCharacter.Sheet`, `PlayerCombat`.
+  - `DialoguePanel.Current.Session`, `GameScreens`, `FrontEnd`, `SaveSlots`.
+  - `CombatDirector` NavMesh and `AiNodeGraph`, plus about 25 `bl_*` ConCmds.
+- Gaps:
+  - No time-scale control: `CombatDirector.OnUpdate` overwrites `Scene.TimeScale` every frame, and `GameMenu` sets it to 0 while paused.
+  - Real-time clocks in IntroMovies, DialoguePresentation, InfoBar, toasts, Terminal and CinematicOverlay.
+  - Private razor button handlers (character creation, menus).
+  - Discipline hotkeys read raw `Input.Keyboard`.
+  - No player path-follow.
+  - No automation channel in the exported build.
+- Draft tickets RB-T245 to RB-T272 are filed and set back to *proposed*. RB-T234 (VCamera) stays queued, with notes in `work/t234`.
+
+**What prior art teaches** (research summary; links will be in AGP `docs/PRIOR_ART.md`):
+- Slow LLMs fail at real-time play unless the game pauses while they think (VideoGameBench "Lite").
+- Text state beats pixels (BALROG).
+- Hierarchical control works: slow mind, fast reflex executor (HLA, Lumine: 5 Hz in, 30 Hz out; Claude Plays Pokémon''s navigator tool).
+- Keep a verified skill library (Voyager, Cradle).
+- Use multiple test oracles and balance progress against exploration (Wuji, EA SEED).
+- Off-the-shelf VLMs are weak glitch spotters (GlitchBench), so use cheap triage first.
+- Building blocks:
+  - Frames: windows-capture (Windows Graphics Capture).
+  - Frame timing: PresentMon.
+  - Input: SendInput scan codes and raw mouse deltas.
+  - Engine timescale over speedhacks (host_timescale, UE4SS time dilation, GZDoom ZScript, CET).
+  - A dev sandbox: ViZDoom/GZDoom.
+
+## Architecture
+
+```
+ Claude subagent (slow mind: plans, writes PlayScript, judges, files tickets)
+        │  agp CLI: observe | run <script> | act | save/load | shot | bug | memory
+        ▼
+ AutoGamePlay host (C#/.NET 10)  ── pauses game (timescale 0) while the LLM thinks
+   ├─ PlayScript engine: parse → AST → executor ticking at 30–60 Hz (fast mind)
+   ├─ Reflex controllers: aim PID, path follower, strafe/circle, stuck recovery,
+   │                      key-hold watchdog (release-all on exit/crash)
+   ├─ Watchers/oracles (always on): crash, hang, stuck, out-of-bounds, NaN, log errors,
+   │                      frame-time spikes, frozen frame, error-texture heuristics, Expect()
+   ├─ Perception: state-first; frames into an in-RAM ring buffer (low-res, few fps), persisted
+   │                      only on bug/explicit shot, under a per-run disk quota
+   ├─ Bugs: fingerprint → dedupe vs open tickets → evidence bundle → IBugSink (tickets CLI)
+   └─ Memory: per-game knowledge store (routes, skills, facts, calibration), structured JSON
+        │  capability-negotiated adapter interface
+        ▼
+ Engine adapters ── s&box (WebSocket bridge component) · Source 1 (console + SendInput + pixels)
+                    · GZDoom (ZScript mod) · later Unreal (UE4SS Lua), Cyberpunk (CET), EDuke32 (CON)
+        ▼
+ Game-specific extension (lives in the game''s repo): REA.Bloodlines AutoPlay bridge
+   (dialogue, quests, disciplines, screens, clans) exposed as namespaced extra state/actions
+```
+
+### Design decisions
+
+1. **C#/.NET 10 core** follows the house norm, AutoWebNav''s layout, and s&box being C#. Any in-process LLM call goes through MindAttic.Legion (HOUSE-LAW-4). The main "LLM" is the Claude subagent driving the `agp` CLI, so the core needs no LLM SDK.
+2. **State first, pixels second.**
+   - Every adapter declares its capabilities: `Input` (required), `PlayerState`, `Entities`, `Teleport`, `TimeScale`, `SaveLoad`, `Console`, `Frames`, `Ui`.
+   - Missing capabilities degrade gracefully. For example, without `PlayerState` the position and heading estimate comes from frames, the console''s `getpos`, or memory reads as a last resort.
+3. **Real-time control is the executor''s job, never the LLM''s.**
+   - `MoveForward(20m)` holds Forward through the adapter and closes the loop on measured distance.
+   - `TurnLeft(90)` drives a yaw PID to the target heading, using calibrated counts per degree.
+   - The game runs at 1–8x while a script executes and sits at timescale 0 between scripts. LLM latency therefore costs no game time.
+   - Every finding records the timescale, and anything found at more than 1x is re-checked at 1x before filing.
+4. **Frame budget.**
+   - No per-step screenshots by default.
+   - Frames go into a ring buffer in RAM: about 10 s at 4 fps and 640×360, roughly 2–4 MB, captured through Windows Graphics Capture or the engine''s own screenshot call.
+   - Frames are persisted (JPEG) only when a watcher fires, an `Expect` fails, the script calls `Shot()`, or for visual-parity viewpoints.
+   - Each run has a disk quota (default 500 MB) and prunes the oldest non-evidence frames.
+   - Capture cost is measured with PresentMon and the capture rate auto-throttles if it costs more than 5% of FPS.
+5. **Adapter transport.**
+   - A local WebSocket JSON-lines protocol: the AGP host is the server and the game connects as a client. That works under s&box''s API whitelist (WebSocket client allowed, raw sockets not) and in exported builds, which fills the "no automation channel" gap.
+   - `sbox-cli run_csharp` stays as the editor fallback and bootstrapper.
+   - Fallbacks: Source 1 uses its console (`-dev -console`, command-line `+cmds`, keystrokes), GZDoom uses `netevent` plus a log file, Unreal uses the UE4SS Lua socket or a file.
+6. **Bloodlines specifics stay in REA.Bloodlines.** It implements the generic s&box bridge, adds a `bloodlines.*` extension namespace (dialogue, quests, clans, disciplines, screens), and holds its own PlayScript skill and route library and walkthrough data.
+
+## PlayScript: the universal gameplay scripting language
+
+PlayScript is one AST with two front ends:
+- a text DSL (`.play` files and inline `agp run "<script>"`), which is what Claude writes;
+- a C# fluent builder, which tests and adapters use.
+
+Both read the same way.
+
+```
+Player.MoveForward(20m).TurnLeft(90)
+  .MoveTo(Entity("Mercurio")).Until(Near(2m)).Timeout(30s)
+  .LookAt(Entity("Mercurio")).Use()
+  .Say(2).Say(1)
+  .Checkpoint("met_mercurio")
+  .Expect(Quest("mercurio") >= 1)
+
+skill ClearRoom(radius = 15m):
+  while Any(Hostile, within: radius):
+    Player.Target(Nearest(Hostile)).CircleStrafe(3m).Attack().Until(Target.Dead).Timeout(20s)
+
+route haven_to_bar: Waypoints(Landmark("sm_haven_exit"), Pos(120m, 4m, 0), Door("bar_front"))
+watch always: Expect(Player.Health > 0), Expect(NoNewErrors), Expect(Progress within 15s)
+```
+
+| Category | Elements |
+|---|---|
+| Units | m, cm, s, ms, deg; adapters convert to engine units (Source inch = 0.0254 m) |
+| Selectors | `Entity(name)`, `Nearest(filter)`, `Class("npc_*")`, `Landmark`, `Door`, `Pos(x,y,z)`, `Ui("New Game")`, `Hostile`, `Usable` |
+| Movement | `MoveForward/Back/Left/Right(d)`, `Run`, `Walk`, `Sneak`, `Jump`, `Crouch`, `MoveTo(sel)`, `Follow(route)` |
+| Looking | `TurnLeft/Right(deg)`, `LookUp/Down(deg)`, `LookAt(sel)`, `Face(heading)` |
+| Interaction | `Use`, `Attack`, `Block`, `Reload`, `Select(slot)`, `Press(action, dur)`, `Hold`/`Release` (raw escape hatch) |
+| UI | `Click(Ui(...))`, `Say(n)`, `Continue`, `OpenScreen(name)`, `Type(text)` |
+| Modifiers | `.Until(cond)`, `.While(cond)`, `.Timeout(t)`, `.Retry(n)`, `.OrElse(chain)`, `.Speed(x)` |
+| Control | `if`/`while`/`repeat`, `try`/`recover`, `skill` definitions with parameters, `route` definitions |
+| State and checks | `Checkpoint(name)` (named save), `Load(name)`, `Shot(tag)`, `Expect(cond)`, `watch` blocks, `Bug(summary)` |
+
+**Execution:**
+- Each verb is a resumable step with explicit success, failure and blocked results.
+- The run returns a compact report: steps done, where it stopped and why, a state delta, watcher hits, and evidence paths.
+- Adapters expose extensions as namespaced verbs, e.g. `bloodlines.Feed()`, `bloodlines.Discipline("Celerity")`.
+- Skills and routes that work three times are promoted into the game''s memory library, in the Voyager style.
+
+## How an agent session plays (the loop the docs teach)
+
+1. **Resume.** Load the run log and memory, then `agp load <save>`.
+2. **Observe.** The compact text state, about 2–4 KB: player, nearby entities, UI, quest delta, errors. Frames are taken only when the agent judges vision is needed, e.g. a visual check or confusion.
+3. **Plan the next sub-goal** from the ticket and the walkthrough data. Write or pick a PlayScript and run it with the game unpaused at the script''s speed.
+4. **Read the report.**
+   - On a watcher or Expect hit: `agp bug` files the defect. It is deduped and carries evidence: save, position, script, frames.
+   - Then decide whether to work around it (reload or another route) or block.
+5. **Checkpoint** on progress. Every N minutes, write the run log and memory so a fresh session can resume.
+6. **Planning rule for goal tickets.** A goal ticket first splits into step tickets (linked with `requires`, approved under the epic''s standing approval). It stays open until they close.
+
+## Repos and work breakdown
+
+### A. New repo `mindattic/AutoGamePlay`
+
+**Setup:** private, MIT licence file. Ticket code **AGP**, registered with `tickets repos rollout tickets --apply`.
+
+**Steps:** `gh repo create` → `mindattic-agent-standard\clone-repo.ps1 -Repo AutoGamePlay` → `install.ps1` + `install-commit-hooks.ps1` → `adopt-docs-site.ps1 -Repo AutoGamePlay -Api`.
+
+**Layout** (AutoWebNav-style: a core with no host dependency, hosts and adapters as separate projects):
+- `src/AutoGamePlay.Core`: model, capabilities, units, session.
+- `AutoGamePlay.PlayScript`: lexer, parser, AST, builder, executor.
+- `AutoGamePlay.Control`: PIDs, path follow, watchdog, calibration.
+- `AutoGamePlay.Perception`: ring buffer, quota, cheap detectors.
+- `AutoGamePlay.Oracles`
+- `AutoGamePlay.Bugs`: fingerprint, dedupe, `IBugSink`, `TicketsCliSink`.
+- `AutoGamePlay.Memory`
+- `AutoGamePlay.Windows`: SendInput daemon, WGC capture, process launch/attach, PresentMon.
+- `AutoGamePlay.Cli` (`agp`)
+- Adapters:
+  - `AutoGamePlay.Adapters.Fake`: an in-memory 3D test world.
+  - `.Sbox`: the host side, plus a drop-in s&box bridge component library.
+  - `.Source1`
+  - `.GZDoom`
+  - stubs and docs for `.Unreal` (UE4SS), `.Cyberpunk` (CET) and `.EDuke32` (CON).
+- `tests/` (xUnit with the Fake adapter).
+
+**Docs** (the "1000-page plan" lives here as the living spec):
+- README, `DESIGN.md`, `PRIOR_ART.md`
+- `PLAYSCRIPT.md` (grammar in EBNF plus reference), `ADAPTERS.md` (capability contract and an authoring guide), `PERCEPTION.md` (budgets), `ORACLES.md`, `BUGS.md`, `MEMORY.md`
+- `PLAYBOOK.md` (how an LLM plays; the loop above), `SPEED.md`, one `ENGINES/<engine>.md` per engine, `ROADMAP.md`
+
+**Tickets, in order** (each is a ticket; `requires` links follow the order):
+1. AGP-T2: scaffold the repo and write DESIGN, PRIOR_ART and ROADMAP, moving this plan''s content in and expanding it.
+2. PlayScript spec, `PLAYSCRIPT.md`.
+3. Core model and capability contract, plus the Fake adapter.
+4. PlayScript parser and AST.
+5. Executor with modifiers and watch blocks.
+6. Reflex controllers and the key-hold watchdog.
+7. Oracles.
+8. Perception ring buffer and quota.
+9. Bug reporter with dedupe and the tickets sink.
+10. Memory store, and the skill/route library format.
+11. The `agp` CLI.
+12. Windows backends: SendInput, Windows Graphics Capture, PresentMon.
+13. s&box adapter and bridge library (WebSocket; verify the whitelist first).
+14. Source 1 adapter, which drives the original Bloodlines from the owned install for visual parity.
+15. GZDoom adapter: an engine-agnostic proof on a free, deterministic sandbox.
+16. Unreal, Cyberpunk and EDuke32 adapter design docs and stubs.
+
+### B. REA.Bloodlines (re-scope the proposed RB-T245 to RB-T272)
+
+**Supersede:**
+- RB-T245 (design) is replaced by AGP-T2 plus an RB `docs/AUTOPLAY.md` that holds only the Bloodlines integration.
+- RB-T263 (library) is replaced by AGP tickets 3–11.
+
+**Re-scope RB-T246, the bridge.** Build it on the AGP s&box bridge library:
+- A `GameObjectSystem` that injects `Input.AnalogMove`/`AnalogLook`/`SetAction` after `OptionsSystem`''s -1000 stage.
+- State snapshots from `BloodlinesWorld`, `BloodlinesCharacter`, `PlayerCombat`, `DialoguePanel.Session`, `GameScreens` and `LoadingScreen`.
+- Actions calling the existing public methods: `PlayerCombat.Attack`/`FeedFor`/`ActivateDiscipline`, `Session.Choose`/`Continue`, `SaveSlots.Save`/`Load`, `FrontEnd.StartNewGame`, `Cinematics.MoveTo`.
+- A UI element registry so `Ui("New Game")` and `CharacterCreationPanel` buttons are clickable by stable id, instead of reflecting into private razor methods.
+- Discipline hotkeys routed through actions rather than raw `Input.Keyboard`.
+
+**Keep, plus additions to RB-T262 (speed):**
+- An autoplay speed multiplier applied inside `CombatDirector.OnUpdate` and `GameMenu`, which today own `Scene.TimeScale`.
+- The real-time clocks listed above moved to game time, or made skippable under autoplay.
+- `IntroMovies.Current` and skip.
+- The `Time()` wall-clock note.
+
+**Add new RB tickets:**
+- Player path-follow over the NavMesh plus `AiNodeGraph.Plan`, with NavMesh bounds widened to the whole map.
+- Original-game reference capture through the AGP Source 1 adapter, using the owned install from `setup.ps1` and never the GOG folder.
+
+**Keep:**
+- Basics RB-T247 to RB-T261, re-pointed to "implement as PlayScript verbs and skills plus bridge support, verify, ticket defects".
+- Walkthrough data RB-T264.
+- Visual parity RB-T265, now using AGP Perception and the Source 1 adapter.
+- UI coverage RB-T266.
+- Brujah runs RB-T267 to RB-T271.
+- Fan-out RB-T272, minus its library-extraction half, which is now AGP.
+
+**Ticket growth:** a goal ticket plans its steps into new tickets, and bugs come in as `fix` tickets that need no approval. /allocate works them all. The workspace memory `project_autogameplay_marathon` records the strategy.
+
+## Order of execution once approved
+
+1. Create the AGP repo and register its ticket code. Add a pointer in RB `docs/AUTOPLAY.md`.
+2. Re-scope the RB tickets: edit descriptions, mark RB-T245/T263 superseded, add the new ones and the links. File the AGP tickets with links.
+3. Approve the chain (the owner asked for the whole epic). /allocate then runs it:
+   - AGP 1–11 and RB bridge/speed in parallel where independent, then the basics, then the campaign.
+4. Cross-repo: this CLI''s /allocate covers REA.Bloodlines only. The owner runs `/allocate on -repo=REA.Bloodlines,AutoGamePlay` (or `/crossrepo`) so the AGP tickets get worked. Agents can''t turn that on themselves.
+
+## Verification
+
+- **AGP unit tests:** parser round-trips, and the executor against the Fake adapter (MoveForward(20m) ends within tolerance; TurnLeft(90) gives heading +90±1°; Until/Timeout/OrElse semantics). Oracles fire on scripted stuck, NaN and error cases. Ring buffer stays inside its quota. Dedupe collapses repeated fingerprints. All run with `dotnet test` in CI.
+- **s&box end to end:** in editor play mode, `agp run "Player.MoveForward(5m).TurnLeft(90).Jump().Checkpoint(''t'')"` on devtest. Then `agp load t` restores the position. A forced error files exactly one deduped ticket with evidence. Capture costs under 5% FPS (PresentMon).
+- **Engine-agnostic proof:** the same movement script passes on GZDoom and on the original Bloodlines (Source 1 adapter) with only the adapter changed.
+- **Speed:** devtest and one hub reach the same end state at 1x and 8x; the measured ratio goes into `SPEED.md`.
+- **Campaign:** progress is measured by tickets closed and chapters reached in the campaign log. The marathon is healthy when, per week, fix closures overtake new filings.
+
+## Risks / limits (documented honestly in DESIGN.md)
+
+- s&box API whitelist: WebSocket client availability must be verified first (AGP ticket 13). The fallback is `run_csharp` in the editor only.
+- Timescale side effects can create bugs that are not real, which is why findings are re-checked at 1x.
+- Mouse sensitivity and acceleration need per-game calibration.
+- Anti-cheat makes online games out of scope: offline single-player only.
+- Commercial-engine adapters (Unreal, Cyberpunk) depend on mod loaders that break when the game patches, so pin the game builds.
+- LLM context per session is finite, so progress lives in saves, the run log and the memory store, never in the conversation.
+
+
+# Prior-art research (2026-10-27; source for docs/PRIOR_ART.md)
+
+Licences come from mirrors or package indexes unless noted; verify each before relying on it.
+
+## LLM/VLM game agents
+
+| Project | Link | Licence | What we take from it |
+|---|---|---|---|
+| Cradle (BAAI) | https://github.com/BAAI-Agents/Cradle, https://arxiv.org/abs/2403.03186 | MIT (unverified) | Closest prior design: screenshot in, keyboard and mouse out, on real PC games. Its loop has info gathering, self-reflection, task inference, skill curation (code skills), action planning and memory. Dormant since Nov 2024. |
+| VideoGameBench | https://opencv.org/videogamebench/ | ? | Frontier models nearly fail in real time. Its "Lite" mode pauses the game while the model thinks; we pause or slow-mo the game while the LLM thinks. |
+| lmgame-Bench / GamingAgent | https://github.com/lmgame-org/GamingAgent, https://arxiv.org/abs/2505.15146 | ? | A Gym-style interface, plus a harness that can be switched on and off to measure what it adds. |
+| BALROG | https://arxiv.org/abs/2411.13543 | ? | Models do worse with images than with text. We read state first and use pixels second. |
+| Voyager | https://github.com/MineDojo/Voyager | MIT | An automatic curriculum, a library of verified code skills, and self-verification. Source of our skill library and promotion rules. |
+| SIMA / SIMA 2 (DeepMind) | https://deepmind.google/blog/sima-2-an-agent-that-plays-reasons-and-learns-with-you-in-virtual-3d-worlds/ | closed | Language instructions over keyboard and mouse in 3D games. One model generates tasks and another scores them. |
+| NVIDIA NitroGen | https://nitrogen.minedojo.org/ | NVIDIA licence | An open vision-action model (gamepad). A possible future fast reflex layer; weak on mouse and keyboard. |
+| Lumine (ByteDance) | https://arxiv.org/html/2511.08892v1 | paper | Hierarchy evidence: 5 Hz perception, 30 Hz keyboard and mouse output, and it "thinks only when needed". Completed hours-long quests. |
+| Claude Plays Pokemon | https://latent.space/reading/claude-plays-pokemon/ | n/a | A minimal loop, summarised history, a memory knowledge base, and a navigator tool (the LLM picks the destination, code walks there). Pitfall: unstructured notes, so we use structured memory. |
+| HLA, hierarchical control | https://arxiv.org/pdf/2312.15224, survey https://arxiv.org/pdf/2404.02039 | papers | A slow mind (LLM), a fast mind (macro actions) and an executor (high-frequency scripts). This is our architecture. |
+| Anthropic/OpenAI computer use | vendor docs | n/a | Fine for menus. Too slow and too absolute-cursor-based for mouse-look combat. |
+
+## Automated game testing
+
+- **Unreal Automation and Gauntlet** (Epic docs). Needs project or source access, so we take only its ideas: a session launcher, a TestController, log and crash parsing, artifact collection.
+- **AltTester** (Unity SDK GPL-3.0; Unreal SDK has a free Lite and a paid Pro tier) and **GameDriver** (commercial). Both need an SDK inside the game. We take their object-query API idea for in-engine bridges.
+- **EA SEED**: curiosity-driven RL coverage (https://arxiv.org/pdf/2103.13798) and CCPT (https://arxiv.org/pdf/2202.10057). We take coverage heatmaps from position logs and "explore around a known route".
+- **Ubisoft La Forge**: deep RL for navigation in AAA games, a reachability check without a navmesh. Also related: 3D navigation testing (https://arxiv.org/pdf/2009.07015) and CA2 (https://arxiv.org/pdf/2605.13918).
+- **Wuji** (NetEase, ASE 2019). A test agent must balance progress against exploration, and uses several oracles (crash, stuck, abnormal state).
+- **Visual bug detection**:
+  - GlitchBench (CVPR 2024, https://glitchbench.github.io): off-the-shelf VLMs do poorly at spotting glitches.
+  - VideoGameBunny (WACV 2025): a small model tuned on game images beats a large general one.
+  - Zero-shot CLIP retrieval of bug videos, VideoGameQA-Bench, and bug frame retrieval (https://arxiv.org/pdf/2508.04895).
+  - What we do: cheap triage (hashes, SSIM, CLIP or a small VLM) first, and only flagged frames go to the LLM.
+
+## Windows tooling
+
+- **Input**:
+  - SendInput with scan codes and relative `MOUSEEVENTF_MOVE`. pydirectinput (https://github.com/learncodebygaming/pydirectinput, MIT, unverified) shows the method. Pitfalls: enhance pointer precision, the LLMHF_INJECTED flag, needing focus.
+  - Interception (kernel driver): opt-in only, because anti-cheat flags it.
+  - ViGEmBus/vgamepad: end of life since Aug 2023; optional backend only.
+  - Write our own small native input daemon with release-all on exit.
+- **Capture**:
+  - windows-capture (https://github.com/NiiightmareXD/windows-capture, MIT, unverified; WGC plus DXGI, single window, hardware encoder).
+  - DXcam/BetterCam (Desktop Duplication).
+  - Pitfalls: exclusive fullscreen (force borderless), HDR, per-frame PNG writes killing FPS.
+  - Evaluate MindAttic.Capture.Windows first.
+- **Frame timing**: PresentMon (MIT), ETW CSV output, for hitch and stall detection.
+- **Memory**: pymem-style reads as a last resort; pointer chains break on patches.
+- **Speed hacks**: Cheat Engine hooks timeGetTime, GetTickCount and QueryPerformanceCounter; speedhack-rs (https://github.com/Hirtol/speedhack-rs) is a clean reference. Prefer the engine''s timescale. Fixed-tick physics caps the speed-up; audio, video and network break.
+
+## Engine hooks
+
+- **Source**:
+  - `host_timescale` (needs `sv_cheats 1`), getpos/setpos/setang, save/load, `con_logfile`.
+  - `-dev -console` and `+cmds` on the command line.
+- **s&box**:
+  - `Scene.TimeScale`.
+  - An in-game component bridge. Verify the API whitelist for a WebSocket client.
+  - `sbox-cli run_csharp` (MCP) in the editor.
+- **Unreal**:
+  - `slomo` (often stripped from shipping builds).
+  - RE-UE4SS (https://github.com/UE4SS-RE/RE-UE4SS, MIT): Lua hooks, time dilation, console unlock.
+  - Its AOB signatures can break on patches.
+- **GZDoom**: ZScript EventHandler with netevent, and the console log.
+- **ViZDoom** (https://vizdoom.farama.org/, MIT for its own code): a deterministic sandbox with ground-truth buffers.
+- **EDuke32**: CON scripting and gamevars (https://wiki.eduke32.com/wiki/Scripting).
+- **Cyberpunk 2077**: Cyber Engine Tweaks (Lua; MIT, unverified) and redscript. No anti-cheat in single player.
+
+## Pitfalls to design for
+
+- Anti-cheat: offline single player only.
+- Timescale artefacts: re-check every finding at 1x.
+- Mouse sensitivity and acceleration: calibrate per game.
+- Fragile hooks: pin game builds.
+- A stuck held key after a crash: watchdog release-all.
+- Capture cost: in-RAM ring buffer and quota.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22450, 'AGP-T2', '2026-10-28T03:53:37Z', 'link', NULL, 'supersedes RB-T245');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22451, 'RB-T245', '2026-10-28T03:53:38Z', 'link', NULL, 'AGP-T2 supersedes');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22452, 'RB-T245', '2026-10-28T03:53:40Z', 'status', 'open', 'wont-do');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22453, 'RB-T245', '2026-10-28T03:53:40Z', 'ref', '—', 'superseded by AGP-T2 (AutoGamePlay repo)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22454, 'AGP-T12', '2026-10-28T03:53:41Z', 'link', NULL, 'supersedes RB-T263');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22455, 'RB-T263', '2026-10-28T03:53:41Z', 'link', NULL, 'AGP-T12 supersedes');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22456, 'RB-T263', '2026-10-28T03:53:43Z', 'status', 'open', 'wont-do');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22457, 'RB-T263', '2026-10-28T03:53:43Z', 'ref', '—', 'superseded by AGP-T12 (AutoGamePlay repo)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22458, 'RB-T246', '2026-10-28T03:53:44Z', 'description', 'AutoPlay bridge skeleton in the s&box runtime (the basic-capability tickets each add their own actions on top): one C# entry point that an outside agent drives through sbox-cli run_csharp to observe and act at object level.
+
+- Gate it behind a convar (e.g. bl_autoplay) so normal play is untouched.
+- **Observe**: one call returning compact JSON: map, game time, player (position, angles, health, blood, humanity, masquerade, xp, money, clan, attributes/abilities/disciplines, equipped weapon, inventory), nearby entities (class, targetname, position, distance, visible/line-of-sight, interactable/usable, hostile, health), the active dialogue (speaker, line, numbered options), open UI screens and their clickable elements by stable id, quest log entries, combat state, loading/cinematic state, and the script/engine errors logged since the last observe.
+- **Act**: teleport; goto entity/position (navmesh pathing, reports arrival or blocked), face/look-at, use/interact, attack target (melee/ranged), cast discipline, feed, choose dialogue option, continue, press UI element by id, open/close screens, crouch/jump/sneak, wait N seconds, quicksave/quickload/named save/load (SaveSlots), set time scale.
+- Read-only helpers for agents: list landmarks/changelevels/quest-relevant entities of the map.
+Document the API in docs/AUTOPLAY.md and build it in the editor (0 errors).
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', 'AutoPlay bridge skeleton in the s&box runtime (the basic-capability tickets each add their own actions on top): one C# entry point that an outside agent drives through sbox-cli run_csharp to observe and act at object level.
+
+- Gate it behind a convar (e.g. bl_autoplay) so normal play is untouched.
+- **Observe**: one call returning compact JSON: map, game time, player (position, angles, health, blood, humanity, masquerade, xp, money, clan, attributes/abilities/disciplines, equipped weapon, inventory), nearby entities (class, targetname, position, distance, visible/line-of-sight, interactable/usable, hostile, health), the active dialogue (speaker, line, numbered options), open UI screens and their clickable elements by stable id, quest log entries, combat state, loading/cinematic state, and the script/engine errors logged since the last observe.
+- **Act**: teleport; goto entity/position (navmesh pathing, reports arrival or blocked), face/look-at, use/interact, attack target (melee/ranged), cast discipline, feed, choose dialogue option, continue, press UI element by id, open/close screens, crouch/jump/sneak, wait N seconds, quicksave/quickload/named save/load (SaveSlots), set time scale.
+- Read-only helpers for agents: list landmarks/changelevels/quest-relevant entities of the map.
+Document the API in docs/AUTOPLAY.md and build it in the editor (0 errors).
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### Concrete hooks found by the runtime survey (2026-10-27)
+
+- **Input injection.** Use a `GameObjectSystem` on `Stage.StartUpdate`/`StartFixedUpdate` ordered *after* `OptionsSystem` (`Code/Options/OptionsSystem.cs`, order -1000). OptionsSystem rewrites `Input.SetAction`, `AnalogMove` and `AnalogLook` from raw keys every frame, so anything injected earlier is lost.
+- **Discipline hotkeys** are read with raw `Input.Keyboard.Pressed` in `PlayerCombat.DisciplineKeys`. Route them through actions or call the methods directly.
+- **Actions** (call the public methods):
+  - `PlayerCombat`: `Attack`, `Reload`, `Select(i)`, `Holster`, `TryFeed`, `FeedFor(s)`, `ActivateDiscipline(name)`, `UseSelectedDiscipline`, `UseHotkey(i)`, `CastTargeted`.
+  - Dialogue: `DialoguePanel.Current.Session.Choose(i)` and `Continue()`.
+  - `SaveSlots.Save`/`Load`; `FrontEnd.StartNewGame`/`LoadGame`/`NewGame`; `NewGameIntro.Start(NewGameIntro.Default(template, female), movies)`.
+  - `Cinematics.MoveTo(entity, pos, yaw)` to teleport; `PlayerController.EyeAngles` to look; `BloodlinesWorld.FireInput` and `ConsoleCommand`.
+- **State:**
+  - `BloodlinesWorld.Current`: `MapName`, `Player`, `AllEntities()`, `ScriptLog` (lines starting "! " are errors), `SinceStart`.
+  - `BloodlinesCharacter`: `Sheet`, `Items`, `Quests`, `Money`, `ClanCode`. On the sheet, `Health` counts damage: dead when `Health >= MaxHealth`.
+  - `PlayerCombat`: `Weapon`, `Target`, `IsFeeding`.
+  - Also `CombatDirector.Current` (`Npcs`, `NavReady`), `GameScreens.Current`, `LoadingScreen.Current`, `CinematicDirector.Current` (`CameraActive`, `Immobilized`) and `DialoguePresentation.Current`.
+- **UI element registry.** Character creation (`CharacterCreationPanel`: `PickClan`, `Buy`, `DoneClicked`), `GameMenu.razor`, `CharacterScreens.razor` and `BarterScreen.razor` handlers are private. Add a small registry where each clickable element registers a stable id and a click action, so the bridge can list and press them. Don''t use reflection.
+- **Exported build.** It has no automation channel today. AGP-T14''s WebSocket bridge is meant to fix that; until it lands, use `sbox-cli run_csharp` in editor play mode (`tools/sbox_import/playtest.py`''s `Session` shows the pattern).');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22459, 'RB-T262', '2026-10-28T03:53:45Z', 'description', 'Faster-than-real-time play for automated runs: make the s&box port run correctly at 4x-16x game speed and let automation skip waiting.
+
+- A time-scale control (Scene.TimeScale or equivalent) exposed as a convar and through the AutoPlay bridge; verify physics, AI think/schedules, animations, scripted sequences, dialogue/voice timing, timers in map Python scripts and the loading screen stay consistent at speed (measure: devtest plus one hub map at 1x vs 8x reach the same state). Fix every place that uses real time where game time is meant.
+- Automation shortcuts behind the autoplay convar: skip or fast-forward movies/cinematics, don''t wait for voice lines to finish in dialogue, minimal frame rendering when no screenshot is needed if the engine allows it.
+- Record measured speedups and known caveats in docs/AUTOPLAY.md.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', 'Faster-than-real-time play for automated runs: make the s&box port run correctly at 4x-16x game speed and let automation skip waiting.
+
+- A time-scale control (Scene.TimeScale or equivalent) exposed as a convar and through the AutoPlay bridge; verify physics, AI think/schedules, animations, scripted sequences, dialogue/voice timing, timers in map Python scripts and the loading screen stay consistent at speed (measure: devtest plus one hub map at 1x vs 8x reach the same state). Fix every place that uses real time where game time is meant.
+- Automation shortcuts behind the autoplay convar: skip or fast-forward movies/cinematics, don''t wait for voice lines to finish in dialogue, minimal frame rendering when no screenshot is needed if the engine allows it.
+- Record measured speedups and known caveats in docs/AUTOPLAY.md.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### Concrete hooks found by the runtime survey (2026-10-27)
+
+- **`Scene.TimeScale` is owned by two places.**
+  - `CombatDirector.OnUpdate` (about line 411) overwrites it every frame with Celerity times `SoundSchemeManager.EngineScale`.
+  - `GameMenu` sets it to 0 while a pausing screen is open, then restores it.
+  - Apply the autoplay multiplier there; don''t fight them from outside. A multiplier of 0 is also how AutoGamePlay pauses the game while the LLM thinks.
+- **Real-time clocks that won''t speed up:**
+  - `IntroMovies._started` (movie playback itself);
+  - `DialoguePresentation._lineClock` (voice and lip timing);
+  - the `InfoBar` queue;
+  - `GameMenu` toasts;
+  - `TerminalScreen`;
+  - `CinematicOverlay` sign timers.
+  Move each to game time, or make it skippable under autoplay.
+- **Python `Time()`** (`BloodlinesWorld.Time()`, about line 651) returns wall-clock Unix time. Check what the original returns and whether scripts rely on it.
+- **Movies.** `IntroMovies` has no static `Current`. Add one so the bridge can detect a playing movie and skip it.
+- **Script timers** (`BloodlinesWorld.Schedule`/`ScheduleTask`/`ScheduleOutput`), the AI and movers already use scaled `Time.Now`.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22460, 'RB-T247', '2026-10-28T03:53:47Z', 'description', 'Autoplay basic capability: launch: start the port from a cold editor (or the exported build) and reach the title menu, reporting load time and any log errors
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', 'Autoplay basic capability: launch: start the port from a cold editor (or the exported build) and reach the title menu, reporting load time and any log errors
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22461, 'RB-T248', '2026-10-28T03:53:48Z', 'description', 'Autoplay basic capability: skip the intro movies and any skippable cinematic (Esc/click as in the original), and detect when a movie is playing
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', 'Autoplay basic capability: skip the intro movies and any skippable cinematic (Esc/click as in the original), and detect when a movie is playing
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22462, 'RB-T249', '2026-10-28T03:53:49Z', 'description', 'Autoplay basic capability: start a new game and complete character creation for one clan (questionnaire and quick pick), ending in control of the player in the first map
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', 'Autoplay basic capability: start a new game and complete character creation for one clan (questionnaire and quick pick), ending in control of the player in the first map
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22463, 'RB-T250', '2026-10-28T03:53:50Z', 'description', 'Autoplay basic capability: look around: turn left/right and look up/down by given angles, read the camera angles back, screenshot each direction
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', 'Autoplay basic capability: look around: turn left/right and look up/down by given angles, read the camera angles back, screenshot each direction
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22464, 'RB-T251', '2026-10-28T03:53:52Z', 'description', 'Autoplay basic capability: move: walk/run forward, back, strafe, by distance, detecting blocked movement and arrival
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', 'Autoplay basic capability: move: walk/run forward, back, strafe, by distance, detecting blocked movement and arrival
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22465, 'RB-T252', '2026-10-28T03:53:53Z', 'description', 'Autoplay basic capability: jump and crouch (and crouch-walk/sneak), checking height, landing and collision
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', 'Autoplay basic capability: jump and crouch (and crouch-walk/sneak), checking height, landing and collision
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22466, 'RB-T253', '2026-10-28T03:53:55Z', 'description', 'Autoplay basic capability: use/interact with the nearest usable entity (door, button, item pickup, container), reporting what happened
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', 'Autoplay basic capability: use/interact with the nearest usable entity (door, button, item pickup, container), reporting what happened
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22467, 'RB-T254', '2026-10-28T03:53:57Z', 'description', 'Autoplay basic capability: talk: start a dialogue with an NPC, read the line and numbered options, choose options to the end of the conversation
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', 'Autoplay basic capability: talk: start a dialogue with an NPC, read the line and numbered options, choose options to the end of the conversation
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22468, 'RB-T255', '2026-10-28T03:53:58Z', 'description', 'Autoplay basic capability: open and close each in-game screen (pause, character sheet, inventory, quest log, map) and read its contents
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', 'Autoplay basic capability: open and close each in-game screen (pause, character sheet, inventory, quest log, map) and read its contents
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22469, 'RB-T256', '2026-10-28T03:54:00Z', 'description', 'Autoplay basic capability: quicksave, quickload and named save/load through the bridge, verifying the restored state matches (map, position, stats, inventory, quest states)
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', 'Autoplay basic capability: quicksave, quickload and named save/load through the bridge, verifying the restored state matches (map, position, stats, inventory, quest states)
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22470, 'RB-T257', '2026-10-28T03:54:01Z', 'description', 'Autoplay basic capability: navigate: go to a named entity or landmark in the same map by pathfinding (navmesh / node graph), reporting arrival, blocked or no path
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', 'Autoplay basic capability: navigate: go to a named entity or landmark in the same map by pathfinding (navmesh / node graph), reporting arrival, blocked or no path
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22471, 'RB-T258', '2026-10-28T03:54:02Z', 'description', 'Autoplay basic capability: take a level transition (door / changelevel trigger) and arrive on the right landmark of the next map
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', 'Autoplay basic capability: take a level transition (door / changelevel trigger) and arrive on the right landmark of the next map
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22472, 'RB-T259', '2026-10-28T03:54:03Z', 'description', 'Autoplay basic capability: fight: target, melee and ranged attack an NPC, block/dodge, read health of both, detect death; feed on a victim
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', 'Autoplay basic capability: fight: target, melee and ranged attack an NPC, block/dodge, read health of both, detect death; feed on a victim
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22473, 'RB-T260', '2026-10-28T03:54:05Z', 'description', 'Autoplay basic capability: use a discipline (activate, read blood cost and effect, deactivate)
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', 'Autoplay basic capability: use a discipline (activate, read blood cost and effect, deactivate)
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22474, 'RB-T261', '2026-10-28T03:54:06Z', 'description', 'Autoplay basic capability: die and reload: detect player death / Final Death screen and recover from the last save
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', 'Autoplay basic capability: die and reload: detect player death / Final Death screen and recover from the last save
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22475, 'RB-T264', '2026-10-28T03:54:07Z', 'description', 'Walkthrough knowledge base for the playing agent: the critical path and side quests of Bloodlines as data the agent follows and checks against.
+
+- Derive from the game''s own data (quest states and journal, dialogue files, map Python scripts, changelevels; docs/DIALOGUE.md, docs/MAPS.md, docs/RULES.md) and cross-check with public walkthroughs (fandom wiki, GameFAQs): per chapter (Santa Monica, Downtown LA, Hollywood, Chinatown, endgame) the ordered objectives, which map/NPC/item each needs, how to tell it is done (quest state, item, global), branches and per-clan differences (Nosferatu cannot walk the streets, Malkavian dialogue, Ventrue feeding), and the endings.
+- Store it as docs/data/walkthrough/*.json (summaries in our own words; no copied walkthrough text, no game dialogue text beyond identifiers) plus a loader in tools/autoplay usable by the agent ("what is my next objective given this state").
+- Also list recommended builds per clan to test (melee, firearms, stealth, social/persuasion, discipline-heavy).', 'Walkthrough knowledge base for the playing agent: the critical path and side quests of Bloodlines as data the agent follows and checks against.
+
+- Derive from the game''s own data (quest states and journal, dialogue files, map Python scripts, changelevels; docs/DIALOGUE.md, docs/MAPS.md, docs/RULES.md) and cross-check with public walkthroughs (fandom wiki, GameFAQs): per chapter (Santa Monica, Downtown LA, Hollywood, Chinatown, endgame) the ordered objectives, which map/NPC/item each needs, how to tell it is done (quest state, item, global), branches and per-clan differences (Nosferatu cannot walk the streets, Malkavian dialogue, Ventrue feeding), and the endings.
+- Store it as docs/data/walkthrough/*.json (summaries in our own words; no copied walkthrough text, no game dialogue text beyond identifiers) plus a loader in tools/autoplay usable by the agent ("what is my next objective given this state").
+- Also list recommended builds per clan to test (melee, firearms, stealth, social/persuasion, discipline-heavy).
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22476, 'RB-T265', '2026-10-28T03:54:08Z', 'description', 'Visual parity harness: capture matching viewpoints in the original game and in the port and diff them, so visual discrepancies become tickets.
+
+- Original side: launch Vampire.exe from the install setup.ps1 owns (never the GOG folder; if no owned install exists, make one with setup.ps1 or copy the GOG install into work/ read-only-source) with -game Unofficial_Patch -dev -console and command-line commands (map, setpos, setang, cl_drawhud, screenshot/jpeg, quit) to capture a list of viewpoints per map; screenshots go under work/visual/original/.
+- Port side: same viewpoints through the AutoPlay bridge (teleport + camera_screenshot), under work/visual/port/.
+- Viewpoint sets: landmarks, spawn points, a few hand-picked per hub map; same FOV and resolution; HUD on and off.
+- Diff report (SSIM / perceptual, per region) under work/visual/report.html; review the worst pairs by eye (Read the images) and file fix tickets for real discrepancies (missing props, wrong textures/materials, lighting, fog, skybox, decals, models, HUD layout/fonts), not for expected engine differences, which are listed in docs/AUTOPLAY.md.
+- Run it over every hub map at least, and file the tickets.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', 'Visual parity harness: capture matching viewpoints in the original game and in the port and diff them, so visual discrepancies become tickets.
+
+- Original side: launch Vampire.exe from the install setup.ps1 owns (never the GOG folder; if no owned install exists, make one with setup.ps1 or copy the GOG install into work/ read-only-source) with -game Unofficial_Patch -dev -console and command-line commands (map, setpos, setang, cl_drawhud, screenshot/jpeg, quit) to capture a list of viewpoints per map; screenshots go under work/visual/original/.
+- Port side: same viewpoints through the AutoPlay bridge (teleport + camera_screenshot), under work/visual/port/.
+- Viewpoint sets: landmarks, spawn points, a few hand-picked per hub map; same FOV and resolution; HUD on and off.
+- Diff report (SSIM / perceptual, per region) under work/visual/report.html; review the worst pairs by eye (Read the images) and file fix tickets for real discrepancies (missing props, wrong textures/materials, lighting, fog, skybox, decals, models, HUD layout/fonts), not for expected engine differences, which are listed in docs/AUTOPLAY.md.
+- Run it over every hub map at least, and file the tickets.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22477, 'RB-T266', '2026-10-28T03:54:09Z', 'description', 'Autoplay UI coverage pass: press every button and visit every screen of the port, compare with the original, and file a fix ticket per bug.
+
+Title menu (new game, load, options and every option page, credits, quit), character creation for every clan (questionnaire and quick pick, attribute/ability/discipline point-buy, back/next, clan descriptions, portraits), the opening, HUD, pause menu, save/load (save, overwrite, delete, load from title and in game), quick save/load, character sheet and experience spending, inventory (equip, drop, use, examine), quest log, map screen, dialogue UI (option kinds, persuasion/seduction/intimidation), shops/barter, computers/e-mail and lockpicking/hacking, taxi/travel screens, death and Final Death screens, key rebinding. For each: does it work, does it look like the original (compare with original-game screenshots from the visual parity harness or by running the owned install), is the text correct, and are there no exceptions in the s&box logs. Keep a coverage checklist in docs/AUTOPLAY.md.
+
+
+## Planning rule for goal tickets
+
+A goal ticket (a chapter, a quest, a UI area) is worked by first planning it: break it into the concrete steps needed (travel to X, talk to Y, get item Z, win fight W, ...), file each step that is not trivially doable now as its own ticket (feature for a missing capability or strategy, fix for a defect), link this ticket to them (tickets ticket link <this> requires <step>), and approve the step tickets (standing owner approval for this epic, 2026-10-27). Work what can be done now; leave this ticket open until its steps are closed. Expect the ticket count to grow a lot before it shrinks: that is intended.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', 'Autoplay UI coverage pass: press every button and visit every screen of the port, compare with the original, and file a fix ticket per bug.
+
+Title menu (new game, load, options and every option page, credits, quit), character creation for every clan (questionnaire and quick pick, attribute/ability/discipline point-buy, back/next, clan descriptions, portraits), the opening, HUD, pause menu, save/load (save, overwrite, delete, load from title and in game), quick save/load, character sheet and experience spending, inventory (equip, drop, use, examine), quest log, map screen, dialogue UI (option kinds, persuasion/seduction/intimidation), shops/barter, computers/e-mail and lockpicking/hacking, taxi/travel screens, death and Final Death screens, key rebinding. For each: does it work, does it look like the original (compare with original-game screenshots from the visual parity harness or by running the owned install), is the text correct, and are there no exceptions in the s&box logs. Keep a coverage checklist in docs/AUTOPLAY.md.
+
+
+## Planning rule for goal tickets
+
+A goal ticket (a chapter, a quest, a UI area) is worked by first planning it: break it into the concrete steps needed (travel to X, talk to Y, get item Z, win fight W, ...), file each step that is not trivially doable now as its own ticket (feature for a missing capability or strategy, fix for a defect), link this ticket to them (tickets ticket link <this> requires <step>), and approve the step tickets (standing owner approval for this epic, 2026-10-27). Work what can be done now; leave this ticket open until its steps are closed. Expect the ticket count to grow a lot before it shrinks: that is intended.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22478, 'RB-T267', '2026-10-28T03:54:11Z', 'description', 'Autoplay campaign run: play the Santa Monica chapter (tutorial through leaving for Downtown) as a Brujah (melee combat build) from start to end through the AutoGamePlay CLI, at accelerated game speed, as a human player would, and file every bug as its own fix ticket.
+
+- Start from the previous chapter''s end save for this clan/build if it exists (work/autoplay/saves/), else from a new game. Follow the walkthrough knowledge base: critical path first, then the chapter''s side quests; use the clan''s distinctive options (disciplines, dialogue, feeding, stealth vs combat).
+- Checkpoint-save often; on death, softlock or a broken quest, reload and try another route, and ticket the cause.
+- File a fix ticket for every defect: crashes/exceptions, broken quests or dialogue, wrong rules/stats, AI misbehaviour, stuck navigation, missing/wrong visuals or sounds compared with the original (spot-check against the owned original install or the visual harness), UI faults. Keep each ticket small, with map, position, save name and repro steps.
+- At the chapter end, write the named save work/autoplay/saves/<clan>_<build>_<next chapter>, and add the run summary (time, game speed, bugs filed) to docs/AUTOPLAY.md''s campaign log.
+- If the run is blocked by a bug, file that bug as a fix ticket, link this ticket to it (tickets ticket link <this> requires <bug>), say so, and leave this ticket open so it resumes after the fix.
+
+
+## Planning rule for goal tickets
+
+A goal ticket (a chapter, a quest, a UI area) is worked by first planning it: break it into the concrete steps needed (travel to X, talk to Y, get item Z, win fight W, ...), file each step that is not trivially doable now as its own ticket (feature for a missing capability or strategy, fix for a defect), link this ticket to them (tickets ticket link <this> requires <step>), and approve the step tickets (standing owner approval for this epic, 2026-10-27). Work what can be done now; leave this ticket open until its steps are closed. Expect the ticket count to grow a lot before it shrinks: that is intended.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', 'Autoplay campaign run: play the Santa Monica chapter (tutorial through leaving for Downtown) as a Brujah (melee combat build) from start to end through the AutoGamePlay CLI, at accelerated game speed, as a human player would, and file every bug as its own fix ticket.
+
+- Start from the previous chapter''s end save for this clan/build if it exists (work/autoplay/saves/), else from a new game. Follow the walkthrough knowledge base: critical path first, then the chapter''s side quests; use the clan''s distinctive options (disciplines, dialogue, feeding, stealth vs combat).
+- Checkpoint-save often; on death, softlock or a broken quest, reload and try another route, and ticket the cause.
+- File a fix ticket for every defect: crashes/exceptions, broken quests or dialogue, wrong rules/stats, AI misbehaviour, stuck navigation, missing/wrong visuals or sounds compared with the original (spot-check against the owned original install or the visual harness), UI faults. Keep each ticket small, with map, position, save name and repro steps.
+- At the chapter end, write the named save work/autoplay/saves/<clan>_<build>_<next chapter>, and add the run summary (time, game speed, bugs filed) to docs/AUTOPLAY.md''s campaign log.
+- If the run is blocked by a bug, file that bug as a fix ticket, link this ticket to it (tickets ticket link <this> requires <bug>), say so, and leave this ticket open so it resumes after the fix.
+
+
+## Planning rule for goal tickets
+
+A goal ticket (a chapter, a quest, a UI area) is worked by first planning it: break it into the concrete steps needed (travel to X, talk to Y, get item Z, win fight W, ...), file each step that is not trivially doable now as its own ticket (feature for a missing capability or strategy, fix for a defect), link this ticket to them (tickets ticket link <this> requires <step>), and approve the step tickets (standing owner approval for this epic, 2026-10-27). Work what can be done now; leave this ticket open until its steps are closed. Expect the ticket count to grow a lot before it shrinks: that is intended.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22479, 'RB-T268', '2026-10-28T03:54:12Z', 'description', 'Autoplay campaign run: play the Downtown LA chapter as a Brujah (melee combat build) from start to end through the AutoGamePlay CLI, at accelerated game speed, as a human player would, and file every bug as its own fix ticket.
+
+- Start from the previous chapter''s end save for this clan/build if it exists (work/autoplay/saves/), else from a new game. Follow the walkthrough knowledge base: critical path first, then the chapter''s side quests; use the clan''s distinctive options (disciplines, dialogue, feeding, stealth vs combat).
+- Checkpoint-save often; on death, softlock or a broken quest, reload and try another route, and ticket the cause.
+- File a fix ticket for every defect: crashes/exceptions, broken quests or dialogue, wrong rules/stats, AI misbehaviour, stuck navigation, missing/wrong visuals or sounds compared with the original (spot-check against the owned original install or the visual harness), UI faults. Keep each ticket small, with map, position, save name and repro steps.
+- At the chapter end, write the named save work/autoplay/saves/<clan>_<build>_<next chapter>, and add the run summary (time, game speed, bugs filed) to docs/AUTOPLAY.md''s campaign log.
+- If the run is blocked by a bug, file that bug as a fix ticket, link this ticket to it (tickets ticket link <this> requires <bug>), say so, and leave this ticket open so it resumes after the fix.
+
+
+## Planning rule for goal tickets
+
+A goal ticket (a chapter, a quest, a UI area) is worked by first planning it: break it into the concrete steps needed (travel to X, talk to Y, get item Z, win fight W, ...), file each step that is not trivially doable now as its own ticket (feature for a missing capability or strategy, fix for a defect), link this ticket to them (tickets ticket link <this> requires <step>), and approve the step tickets (standing owner approval for this epic, 2026-10-27). Work what can be done now; leave this ticket open until its steps are closed. Expect the ticket count to grow a lot before it shrinks: that is intended.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', 'Autoplay campaign run: play the Downtown LA chapter as a Brujah (melee combat build) from start to end through the AutoGamePlay CLI, at accelerated game speed, as a human player would, and file every bug as its own fix ticket.
+
+- Start from the previous chapter''s end save for this clan/build if it exists (work/autoplay/saves/), else from a new game. Follow the walkthrough knowledge base: critical path first, then the chapter''s side quests; use the clan''s distinctive options (disciplines, dialogue, feeding, stealth vs combat).
+- Checkpoint-save often; on death, softlock or a broken quest, reload and try another route, and ticket the cause.
+- File a fix ticket for every defect: crashes/exceptions, broken quests or dialogue, wrong rules/stats, AI misbehaviour, stuck navigation, missing/wrong visuals or sounds compared with the original (spot-check against the owned original install or the visual harness), UI faults. Keep each ticket small, with map, position, save name and repro steps.
+- At the chapter end, write the named save work/autoplay/saves/<clan>_<build>_<next chapter>, and add the run summary (time, game speed, bugs filed) to docs/AUTOPLAY.md''s campaign log.
+- If the run is blocked by a bug, file that bug as a fix ticket, link this ticket to it (tickets ticket link <this> requires <bug>), say so, and leave this ticket open so it resumes after the fix.
+
+
+## Planning rule for goal tickets
+
+A goal ticket (a chapter, a quest, a UI area) is worked by first planning it: break it into the concrete steps needed (travel to X, talk to Y, get item Z, win fight W, ...), file each step that is not trivially doable now as its own ticket (feature for a missing capability or strategy, fix for a defect), link this ticket to them (tickets ticket link <this> requires <step>), and approve the step tickets (standing owner approval for this epic, 2026-10-27). Work what can be done now; leave this ticket open until its steps are closed. Expect the ticket count to grow a lot before it shrinks: that is intended.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22480, 'RB-T269', '2026-10-28T03:54:13Z', 'description', 'Autoplay campaign run: play the Hollywood chapter as a Brujah (melee combat build) from start to end through the AutoGamePlay CLI, at accelerated game speed, as a human player would, and file every bug as its own fix ticket.
+
+- Start from the previous chapter''s end save for this clan/build if it exists (work/autoplay/saves/), else from a new game. Follow the walkthrough knowledge base: critical path first, then the chapter''s side quests; use the clan''s distinctive options (disciplines, dialogue, feeding, stealth vs combat).
+- Checkpoint-save often; on death, softlock or a broken quest, reload and try another route, and ticket the cause.
+- File a fix ticket for every defect: crashes/exceptions, broken quests or dialogue, wrong rules/stats, AI misbehaviour, stuck navigation, missing/wrong visuals or sounds compared with the original (spot-check against the owned original install or the visual harness), UI faults. Keep each ticket small, with map, position, save name and repro steps.
+- At the chapter end, write the named save work/autoplay/saves/<clan>_<build>_<next chapter>, and add the run summary (time, game speed, bugs filed) to docs/AUTOPLAY.md''s campaign log.
+- If the run is blocked by a bug, file that bug as a fix ticket, link this ticket to it (tickets ticket link <this> requires <bug>), say so, and leave this ticket open so it resumes after the fix.
+
+
+## Planning rule for goal tickets
+
+A goal ticket (a chapter, a quest, a UI area) is worked by first planning it: break it into the concrete steps needed (travel to X, talk to Y, get item Z, win fight W, ...), file each step that is not trivially doable now as its own ticket (feature for a missing capability or strategy, fix for a defect), link this ticket to them (tickets ticket link <this> requires <step>), and approve the step tickets (standing owner approval for this epic, 2026-10-27). Work what can be done now; leave this ticket open until its steps are closed. Expect the ticket count to grow a lot before it shrinks: that is intended.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', 'Autoplay campaign run: play the Hollywood chapter as a Brujah (melee combat build) from start to end through the AutoGamePlay CLI, at accelerated game speed, as a human player would, and file every bug as its own fix ticket.
+
+- Start from the previous chapter''s end save for this clan/build if it exists (work/autoplay/saves/), else from a new game. Follow the walkthrough knowledge base: critical path first, then the chapter''s side quests; use the clan''s distinctive options (disciplines, dialogue, feeding, stealth vs combat).
+- Checkpoint-save often; on death, softlock or a broken quest, reload and try another route, and ticket the cause.
+- File a fix ticket for every defect: crashes/exceptions, broken quests or dialogue, wrong rules/stats, AI misbehaviour, stuck navigation, missing/wrong visuals or sounds compared with the original (spot-check against the owned original install or the visual harness), UI faults. Keep each ticket small, with map, position, save name and repro steps.
+- At the chapter end, write the named save work/autoplay/saves/<clan>_<build>_<next chapter>, and add the run summary (time, game speed, bugs filed) to docs/AUTOPLAY.md''s campaign log.
+- If the run is blocked by a bug, file that bug as a fix ticket, link this ticket to it (tickets ticket link <this> requires <bug>), say so, and leave this ticket open so it resumes after the fix.
+
+
+## Planning rule for goal tickets
+
+A goal ticket (a chapter, a quest, a UI area) is worked by first planning it: break it into the concrete steps needed (travel to X, talk to Y, get item Z, win fight W, ...), file each step that is not trivially doable now as its own ticket (feature for a missing capability or strategy, fix for a defect), link this ticket to them (tickets ticket link <this> requires <step>), and approve the step tickets (standing owner approval for this epic, 2026-10-27). Work what can be done now; leave this ticket open until its steps are closed. Expect the ticket count to grow a lot before it shrinks: that is intended.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22481, 'RB-T270', '2026-10-28T03:54:14Z', 'description', 'Autoplay campaign run: play the Chinatown chapter as a Brujah (melee combat build) from start to end through the AutoGamePlay CLI, at accelerated game speed, as a human player would, and file every bug as its own fix ticket.
+
+- Start from the previous chapter''s end save for this clan/build if it exists (work/autoplay/saves/), else from a new game. Follow the walkthrough knowledge base: critical path first, then the chapter''s side quests; use the clan''s distinctive options (disciplines, dialogue, feeding, stealth vs combat).
+- Checkpoint-save often; on death, softlock or a broken quest, reload and try another route, and ticket the cause.
+- File a fix ticket for every defect: crashes/exceptions, broken quests or dialogue, wrong rules/stats, AI misbehaviour, stuck navigation, missing/wrong visuals or sounds compared with the original (spot-check against the owned original install or the visual harness), UI faults. Keep each ticket small, with map, position, save name and repro steps.
+- At the chapter end, write the named save work/autoplay/saves/<clan>_<build>_<next chapter>, and add the run summary (time, game speed, bugs filed) to docs/AUTOPLAY.md''s campaign log.
+- If the run is blocked by a bug, file that bug as a fix ticket, link this ticket to it (tickets ticket link <this> requires <bug>), say so, and leave this ticket open so it resumes after the fix.
+
+
+## Planning rule for goal tickets
+
+A goal ticket (a chapter, a quest, a UI area) is worked by first planning it: break it into the concrete steps needed (travel to X, talk to Y, get item Z, win fight W, ...), file each step that is not trivially doable now as its own ticket (feature for a missing capability or strategy, fix for a defect), link this ticket to them (tickets ticket link <this> requires <step>), and approve the step tickets (standing owner approval for this epic, 2026-10-27). Work what can be done now; leave this ticket open until its steps are closed. Expect the ticket count to grow a lot before it shrinks: that is intended.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', 'Autoplay campaign run: play the Chinatown chapter as a Brujah (melee combat build) from start to end through the AutoGamePlay CLI, at accelerated game speed, as a human player would, and file every bug as its own fix ticket.
+
+- Start from the previous chapter''s end save for this clan/build if it exists (work/autoplay/saves/), else from a new game. Follow the walkthrough knowledge base: critical path first, then the chapter''s side quests; use the clan''s distinctive options (disciplines, dialogue, feeding, stealth vs combat).
+- Checkpoint-save often; on death, softlock or a broken quest, reload and try another route, and ticket the cause.
+- File a fix ticket for every defect: crashes/exceptions, broken quests or dialogue, wrong rules/stats, AI misbehaviour, stuck navigation, missing/wrong visuals or sounds compared with the original (spot-check against the owned original install or the visual harness), UI faults. Keep each ticket small, with map, position, save name and repro steps.
+- At the chapter end, write the named save work/autoplay/saves/<clan>_<build>_<next chapter>, and add the run summary (time, game speed, bugs filed) to docs/AUTOPLAY.md''s campaign log.
+- If the run is blocked by a bug, file that bug as a fix ticket, link this ticket to it (tickets ticket link <this> requires <bug>), say so, and leave this ticket open so it resumes after the fix.
+
+
+## Planning rule for goal tickets
+
+A goal ticket (a chapter, a quest, a UI area) is worked by first planning it: break it into the concrete steps needed (travel to X, talk to Y, get item Z, win fight W, ...), file each step that is not trivially doable now as its own ticket (feature for a missing capability or strategy, fix for a defect), link this ticket to them (tickets ticket link <this> requires <step>), and approve the step tickets (standing owner approval for this epic, 2026-10-27). Work what can be done now; leave this ticket open until its steps are closed. Expect the ticket count to grow a lot before it shrinks: that is intended.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22482, 'RB-T271', '2026-10-28T03:54:15Z', 'description', 'Autoplay campaign run: play the endgame, and every ending reachable from the last shared save as a Brujah (melee combat build) from start to end through the AutoGamePlay CLI, at accelerated game speed, as a human player would, and file every bug as its own fix ticket.
+
+- Start from the previous chapter''s end save for this clan/build if it exists (work/autoplay/saves/), else from a new game. Follow the walkthrough knowledge base: critical path first, then the chapter''s side quests; use the clan''s distinctive options (disciplines, dialogue, feeding, stealth vs combat).
+- Checkpoint-save often; on death, softlock or a broken quest, reload and try another route, and ticket the cause.
+- File a fix ticket for every defect: crashes/exceptions, broken quests or dialogue, wrong rules/stats, AI misbehaviour, stuck navigation, missing/wrong visuals or sounds compared with the original (spot-check against the owned original install or the visual harness), UI faults. Keep each ticket small, with map, position, save name and repro steps.
+- At the chapter end, write the named save work/autoplay/saves/<clan>_<build>_<next chapter>, and add the run summary (time, game speed, bugs filed) to docs/AUTOPLAY.md''s campaign log.
+- If the run is blocked by a bug, file that bug as a fix ticket, link this ticket to it (tickets ticket link <this> requires <bug>), say so, and leave this ticket open so it resumes after the fix.
+
+
+## Planning rule for goal tickets
+
+A goal ticket (a chapter, a quest, a UI area) is worked by first planning it: break it into the concrete steps needed (travel to X, talk to Y, get item Z, win fight W, ...), file each step that is not trivially doable now as its own ticket (feature for a missing capability or strategy, fix for a defect), link this ticket to them (tickets ticket link <this> requires <step>), and approve the step tickets (standing owner approval for this epic, 2026-10-27). Work what can be done now; leave this ticket open until its steps are closed. Expect the ticket count to grow a lot before it shrinks: that is intended.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', 'Autoplay campaign run: play the endgame, and every ending reachable from the last shared save as a Brujah (melee combat build) from start to end through the AutoGamePlay CLI, at accelerated game speed, as a human player would, and file every bug as its own fix ticket.
+
+- Start from the previous chapter''s end save for this clan/build if it exists (work/autoplay/saves/), else from a new game. Follow the walkthrough knowledge base: critical path first, then the chapter''s side quests; use the clan''s distinctive options (disciplines, dialogue, feeding, stealth vs combat).
+- Checkpoint-save often; on death, softlock or a broken quest, reload and try another route, and ticket the cause.
+- File a fix ticket for every defect: crashes/exceptions, broken quests or dialogue, wrong rules/stats, AI misbehaviour, stuck navigation, missing/wrong visuals or sounds compared with the original (spot-check against the owned original install or the visual harness), UI faults. Keep each ticket small, with map, position, save name and repro steps.
+- At the chapter end, write the named save work/autoplay/saves/<clan>_<build>_<next chapter>, and add the run summary (time, game speed, bugs filed) to docs/AUTOPLAY.md''s campaign log.
+- If the run is blocked by a bug, file that bug as a fix ticket, link this ticket to it (tickets ticket link <this> requires <bug>), say so, and leave this ticket open so it resumes after the fix.
+
+
+## Planning rule for goal tickets
+
+A goal ticket (a chapter, a quest, a UI area) is worked by first planning it: break it into the concrete steps needed (travel to X, talk to Y, get item Z, win fight W, ...), file each step that is not trivially doable now as its own ticket (feature for a missing capability or strategy, fix for a defect), link this ticket to them (tickets ticket link <this> requires <step>), and approve the step tickets (standing owner approval for this epic, 2026-10-27). Work what can be done now; leave this ticket open until its steps are closed. Expect the ticket count to grow a lot before it shrinks: that is intended.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22483, 'RB-T272', '2026-10-28T03:54:17Z', 'description', 'After the first full campaign (Brujah melee) completes, file the remaining autoplay campaign-run tickets: one per chapter (Santa Monica, Downtown LA, Hollywood, Chinatown, endgame) for each of Gangrel, Malkavian, Nosferatu, Toreador, Tremere and Ventrue, each clan with a different build from the walkthrough knowledge base''s list (firearms, stealth, social, discipline-heavy), linked so each chapter requires the previous one of the same clan, with the same description as the Brujah run tickets. Approve them (the owner asked for every clan on 2026-10-27). Then make the game-agnostic core of tools/autoplay adoptable by another game (its own README, versioned API, adapter guide), and propose in docs/AUTOPLAY.md how to move it to its own repo (do not create the repo).
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', 'After the first full campaign (Brujah melee) completes, file the remaining autoplay campaign-run tickets: one per chapter (Santa Monica, Downtown LA, Hollywood, Chinatown, endgame) for each of Gangrel, Malkavian, Nosferatu, Toreador, Tremere and Ventrue, each clan with a different build from the walkthrough knowledge base''s list (firearms, stealth, social, discipline-heavy), linked so each chapter requires the previous one of the same clan, with the same description as the Brujah run tickets. Approve them (the owner asked for every clan on 2026-10-27). (The reusable library is now the AutoGamePlay repo; nothing to extract here.)
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22484, 'RB-T273', '2026-10-28T03:54:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22485, 'RB-T274', '2026-10-28T03:54:18Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22486, 'RB-T275', '2026-10-28T03:54:19Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22487, 'RB-T275', '2026-10-28T03:54:20Z', 'link', NULL, 'requires RB-T246');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22488, 'RB-T246', '2026-10-28T03:54:21Z', 'link', NULL, 'RB-T275 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22489, 'RB-T275', '2026-10-28T03:54:22Z', 'link', NULL, 'requires AGP-T14');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22490, 'AGP-T14', '2026-10-28T03:54:22Z', 'link', NULL, 'RB-T275 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22491, 'RB-T257', '2026-10-28T03:54:23Z', 'link', NULL, 'requires RB-T273');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22492, 'RB-T273', '2026-10-28T03:54:23Z', 'link', NULL, 'RB-T257 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22493, 'RB-T273', '2026-10-28T03:54:24Z', 'link', NULL, 'requires RB-T246');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22494, 'RB-T246', '2026-10-28T03:54:24Z', 'link', NULL, 'RB-T273 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22495, 'RB-T274', '2026-10-28T03:54:25Z', 'link', NULL, 'requires AGP-T15');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22496, 'AGP-T15', '2026-10-28T03:54:25Z', 'link', NULL, 'RB-T274 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22497, 'RB-T265', '2026-10-28T03:54:26Z', 'link', NULL, 'requires RB-T274');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22498, 'RB-T274', '2026-10-28T03:54:26Z', 'link', NULL, 'RB-T265 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22499, 'RB-T265', '2026-10-28T03:54:27Z', 'link', NULL, 'requires AGP-T9');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22500, 'AGP-T9', '2026-10-28T03:54:28Z', 'link', NULL, 'RB-T265 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22501, 'RB-T265', '2026-10-28T03:54:28Z', 'link', 'requires RB-T263', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22502, 'RB-T263', '2026-10-28T03:54:29Z', 'link', 'RB-T265 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22503, 'RB-T265', '2026-10-28T03:54:29Z', 'link', NULL, 'requires AGP-T12');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22504, 'AGP-T12', '2026-10-28T03:54:30Z', 'link', NULL, 'RB-T265 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22505, 'RB-T265', '2026-10-28T03:54:31Z', 'link', NULL, 'requires RB-T275');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22506, 'RB-T275', '2026-10-28T03:54:31Z', 'link', NULL, 'RB-T265 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22507, 'RB-T266', '2026-10-28T03:54:32Z', 'link', 'requires RB-T263', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22508, 'RB-T263', '2026-10-28T03:54:32Z', 'link', 'RB-T266 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22509, 'RB-T266', '2026-10-28T03:54:33Z', 'link', NULL, 'requires AGP-T12');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22510, 'AGP-T12', '2026-10-28T03:54:33Z', 'link', NULL, 'RB-T266 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22511, 'RB-T266', '2026-10-28T03:54:34Z', 'link', NULL, 'requires RB-T275');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22512, 'RB-T275', '2026-10-28T03:54:34Z', 'link', NULL, 'RB-T266 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22513, 'RB-T267', '2026-10-28T03:54:35Z', 'link', 'requires RB-T263', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22514, 'RB-T263', '2026-10-28T03:54:35Z', 'link', 'RB-T267 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22515, 'RB-T267', '2026-10-28T03:54:36Z', 'link', NULL, 'requires AGP-T12');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22516, 'AGP-T12', '2026-10-28T03:54:36Z', 'link', NULL, 'RB-T267 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22517, 'RB-T267', '2026-10-28T03:54:37Z', 'link', NULL, 'requires RB-T275');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22518, 'RB-T275', '2026-10-28T03:54:38Z', 'link', NULL, 'RB-T267 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22519, 'RB-T246', '2026-10-28T03:54:39Z', 'link', 'requires RB-T245', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22520, 'RB-T245', '2026-10-28T03:54:39Z', 'link', 'RB-T246 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22521, 'RB-T264', '2026-10-28T03:54:40Z', 'link', 'requires RB-T245', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22522, 'RB-T245', '2026-10-28T03:54:40Z', 'link', 'RB-T264 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22523, 'RB-T268', '2026-10-28T03:54:41Z', 'link', 'requires RB-T263', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22524, 'RB-T263', '2026-10-28T03:54:42Z', 'link', 'RB-T268 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22525, 'RB-T269', '2026-10-28T03:54:42Z', 'link', 'requires RB-T263', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22526, 'RB-T263', '2026-10-28T03:54:43Z', 'link', 'RB-T269 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22527, 'RB-T270', '2026-10-28T03:54:43Z', 'link', 'requires RB-T263', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22528, 'RB-T263', '2026-10-28T03:54:44Z', 'link', 'RB-T270 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22529, 'RB-T271', '2026-10-28T03:54:44Z', 'link', 'requires RB-T263', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22530, 'RB-T263', '2026-10-28T03:54:45Z', 'link', 'RB-T271 requires', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22531, 'RB-T246', '2026-10-28T03:54:59Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22532, 'RB-T247', '2026-10-28T03:54:59Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22533, 'RB-T248', '2026-10-28T03:55:00Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22534, 'RB-T249', '2026-10-28T03:55:00Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22535, 'RB-T250', '2026-10-28T03:55:00Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22536, 'RB-T251', '2026-10-28T03:55:00Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22537, 'RB-T252', '2026-10-28T03:55:01Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22538, 'RB-T253', '2026-10-28T03:55:01Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22539, 'RB-T254', '2026-10-28T03:55:01Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22540, 'RB-T255', '2026-10-28T03:55:01Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22541, 'RB-T256', '2026-10-28T03:55:01Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22542, 'RB-T257', '2026-10-28T03:55:02Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22543, 'RB-T258', '2026-10-28T03:55:02Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22544, 'RB-T259', '2026-10-28T03:55:02Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22545, 'RB-T260', '2026-10-28T03:55:02Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22546, 'RB-T261', '2026-10-28T03:55:02Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22547, 'RB-T262', '2026-10-28T03:55:02Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22548, 'RB-T264', '2026-10-28T03:55:03Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22549, 'RB-T265', '2026-10-28T03:55:03Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22550, 'RB-T266', '2026-10-28T03:55:03Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22551, 'RB-T267', '2026-10-28T03:55:03Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22552, 'RB-T268', '2026-10-28T03:55:03Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22553, 'RB-T269', '2026-10-28T03:55:04Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22554, 'RB-T270', '2026-10-28T03:55:04Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22555, 'RB-T271', '2026-10-28T03:55:04Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22556, 'RB-T272', '2026-10-28T03:55:04Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22557, 'RB-T273', '2026-10-28T03:55:04Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22558, 'RB-T274', '2026-10-28T03:55:04Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22559, 'RB-T275', '2026-10-28T03:55:05Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22560, 'AGP-T2', '2026-10-28T03:55:05Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22561, 'AGP-T3', '2026-10-28T03:55:06Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22562, 'AGP-T4', '2026-10-28T03:55:06Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22563, 'AGP-T5', '2026-10-28T03:55:06Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22564, 'AGP-T6', '2026-10-28T03:55:06Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22565, 'AGP-T7', '2026-10-28T03:55:07Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22566, 'AGP-T8', '2026-10-28T03:55:07Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22567, 'AGP-T9', '2026-10-28T03:55:07Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22568, 'AGP-T10', '2026-10-28T03:55:07Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22569, 'AGP-T11', '2026-10-28T03:55:07Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22570, 'AGP-T12', '2026-10-28T03:55:08Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22571, 'AGP-T13', '2026-10-28T03:55:08Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22572, 'AGP-T14', '2026-10-28T03:55:08Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22573, 'AGP-T15', '2026-10-28T03:55:08Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22574, 'AGP-T16', '2026-10-28T03:55:08Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22575, 'AGP-T17', '2026-10-28T03:55:08Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22576, 'RB-T234', '2026-10-28T03:55:10Z', 'description', NULL, '
+
+## Progress note (2026-10-27, first attempt aborted by pacing; nothing committed)
+
+Recovered from vampire.dll, with notes in work/t234 (range.txt, ov*.txt, base.txt, fp.txt, vt*.txt, fields.txt, gs/) and the Ghidra project copy in work/ghidra-t234:
+- CNPC_VCamera has no sweep. The sweep, FOV and alarm are security_camera (CSecCamera, already ported in RB-T114).
+- VCamera: spawned non-solid with FOV 0.2; ideal state pinned to 3 (Alert); passes a seen enemy to its squad (SquadNewEnemy 0x103161a0); schedule 342 (SCHED_VCAMERA_WAIT_INFINITE); only the player is a valid enemy, and it skips the notarget check.
+- npc_VCameraSecurity sees only through its linked_camera''s player-spotted test and FOV check (0x1020cd30, 0x1020cc60), and removes itself when that camera is gone. Only la_museum_1 uses it.
+- OnFoundPlayer fires from CAI_BaseNPC::GatherEnemyConditions (0x10270b20) the first time line of sight to the current enemy passes, when that enemy is the player. Flag 0x20000 limits it to once until the enemy is lost.
+
+Still to do:
+1. Find how a camera acquires the player as its enemy (player_reaction is D_NU 0).
+2. Port the above into NpcAi/NpcBrain. Today the port fires OnFoundPlayer only on entering combat.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22577, 'U.RICO-T52', '2026-10-28T03:55:40Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22578, 'U.RICO-T52', '2026-10-28T03:55:40Z', 'ref', 'UR-US-PAR12', 'a60ebab');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22579, 'U.RICO-T52', '2026-10-28T03:55:54Z', 'working', 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22580, 'U.RICO-T120', '2026-10-28T03:55:57Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22581, 'U.RICO-T120', '2026-10-28T03:55:57Z', 'ref', '—', 'a60ebab');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22582, 'U.RICO-T120', '2026-10-28T03:56:08Z', 'working', 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22583, 'U.RICO-T125', '2026-10-28T03:57:10Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22584, 'M.COMP-T117', '2026-10-28T03:57:11Z', 'priority', '708', '707');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22585, 'M.IDEA-T27', '2026-10-28T03:57:11Z', 'priority', '707', '706');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22586, 'M.ORCH-T1241', '2026-10-28T03:57:11Z', 'priority', '706', '705');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22587, 'U.RICO-T124', '2026-10-28T03:57:12Z', 'priority', '702', '703');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22588, 'U.RICO-T125', '2026-10-28T03:57:12Z', 'priority', '0', '702');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22589, 'GG-T179', '2026-10-28T03:59:05Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22590, 'GG-T179', '2026-10-28T03:59:05Z', 'ref', 'owner direction 2026-10-21 (epic W)', '11cabc53d10cae530477866ea31173d5095f7092');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22591, 'GG-T179', '2026-10-28T03:59:11Z', 'working', 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22592, 'U.RICO-T122', '2026-10-28T03:59:54Z', 'working', NULL, 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22593, 'RB-T234', '2026-10-28T04:00:30Z', 'working', NULL, 'honey@mindattic.com (a5fb6ccb-d3f6-438f-a6b5-01f0b3b57e11)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22594, 'PRS-T322', '2026-10-28T04:00:54Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22595, 'U.RICO-T122', '2026-10-28T04:00:55Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22596, 'U.RICO-T122', '2026-10-28T04:00:55Z', 'ref', 'main@f017157', '973ec45');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22597, 'U.RICO-T122', '2026-10-28T04:01:02Z', 'working', 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22598, 'U.RICO-T124', '2026-10-28T04:01:03Z', 'working', NULL, 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22599, 'PRS-T323', '2026-10-28T04:01:07Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22600, 'PRS-T323', '2026-10-28T04:01:08Z', 'link', NULL, 'part-of PRS-T322');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22601, 'PRS-T322', '2026-10-28T04:01:08Z', 'link', NULL, 'PRS-T323 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22602, 'PRS-T324', '2026-10-28T04:01:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22603, 'PRS-T324', '2026-10-28T04:01:10Z', 'link', NULL, 'part-of PRS-T322');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22604, 'PRS-T322', '2026-10-28T04:01:10Z', 'link', NULL, 'PRS-T324 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22605, 'PRS-T325', '2026-10-28T04:01:11Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22606, 'PRS-T325', '2026-10-28T04:01:13Z', 'link', NULL, 'part-of PRS-T322');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22607, 'PRS-T322', '2026-10-28T04:01:13Z', 'link', NULL, 'PRS-T325 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22608, 'PRS-T326', '2026-10-28T04:01:14Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22609, 'PRS-T326', '2026-10-28T04:01:15Z', 'link', NULL, 'part-of PRS-T322');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22610, 'PRS-T322', '2026-10-28T04:01:16Z', 'link', NULL, 'PRS-T326 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22611, 'PRS-T326', '2026-10-28T04:01:17Z', 'link', NULL, 'requires PRS-T323');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22612, 'PRS-T323', '2026-10-28T04:01:17Z', 'link', NULL, 'PRS-T326 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22613, 'PRS-T185', '2026-10-28T04:01:18Z', 'link', NULL, 'requires PRS-T326');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22614, 'PRS-T326', '2026-10-28T04:01:18Z', 'link', NULL, 'PRS-T185 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22615, 'PRS-T327', '2026-10-28T04:01:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22616, 'PRS-T328', '2026-10-28T04:01:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22617, 'PRS-T327', '2026-10-28T04:01:24Z', 'link', NULL, 'part-of PRS-T322');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22618, 'PRS-T322', '2026-10-28T04:01:24Z', 'link', NULL, 'PRS-T327 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22619, 'PRS-T327', '2026-10-28T04:01:25Z', 'link', NULL, 'requires PRS-T323');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22620, 'PRS-T323', '2026-10-28T04:01:25Z', 'link', NULL, 'PRS-T327 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22621, 'PRS-T185', '2026-10-28T04:01:26Z', 'link', NULL, 'requires PRS-T327');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22622, 'PRS-T327', '2026-10-28T04:01:26Z', 'link', NULL, 'PRS-T185 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22623, 'PRS-T329', '2026-10-28T04:01:27Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22624, 'PRS-T330', '2026-10-28T04:01:30Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22625, 'PRS-T329', '2026-10-28T04:01:31Z', 'link', NULL, 'part-of PRS-T322');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22626, 'PRS-T322', '2026-10-28T04:01:31Z', 'link', NULL, 'PRS-T329 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22627, 'PRS-T329', '2026-10-28T04:01:32Z', 'link', NULL, 'requires PRS-T323');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22628, 'PRS-T323', '2026-10-28T04:01:33Z', 'link', NULL, 'PRS-T329 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22629, 'PRS-T185', '2026-10-28T04:01:33Z', 'link', NULL, 'requires PRS-T329');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22630, 'PRS-T329', '2026-10-28T04:01:34Z', 'link', NULL, 'PRS-T185 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22631, 'PRS-T331', '2026-10-28T04:01:35Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22632, 'PRS-T332', '2026-10-28T04:01:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22633, 'PRS-T333', '2026-10-28T04:01:40Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22634, 'PRS-T334', '2026-10-28T04:01:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22635, 'PRS-T331', '2026-10-28T04:01:44Z', 'link', NULL, 'part-of PRS-T322');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22636, 'PRS-T322', '2026-10-28T04:01:45Z', 'link', NULL, 'PRS-T331 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22637, 'PRS-T331', '2026-10-28T04:01:45Z', 'link', NULL, 'requires PRS-T323');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22638, 'PRS-T323', '2026-10-28T04:01:46Z', 'link', NULL, 'PRS-T331 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22639, 'PRS-T185', '2026-10-28T04:01:47Z', 'link', NULL, 'requires PRS-T331');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22640, 'PRS-T331', '2026-10-28T04:01:47Z', 'link', NULL, 'PRS-T185 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22641, 'RB-T246', '2026-10-28T04:01:47Z', 'working', NULL, 'waffle@mindattic.com (bc754ee7-b2e2-4870-b745-42c627ec13c1)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22642, 'AGP-T2', '2026-10-28T04:01:48Z', 'working', NULL, 'waffle@mindattic.com (bc754ee7-b2e2-4870-b745-42c627ec13c1)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22643, 'PRS-T335', '2026-10-28T04:01:48Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22644, 'RB-T264', '2026-10-28T04:01:48Z', 'working', NULL, 'waffle@mindattic.com (bc754ee7-b2e2-4870-b745-42c627ec13c1)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22645, 'PRS-T336', '2026-10-28T04:01:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22646, 'PRS-T337', '2026-10-28T04:01:54Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22647, 'U.RICO-T124', '2026-10-28T04:01:56Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22648, 'U.RICO-T124', '2026-10-28T04:01:56Z', 'ref', 'main@f017157', 'fbabc83');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22649, 'PRS-T185', '2026-10-28T04:01:57Z', 'link', NULL, 'part-of PRS-T322');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22650, 'PRS-T322', '2026-10-28T04:01:57Z', 'link', NULL, 'PRS-T185 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22651, 'PRS-T322', '2026-10-28T04:01:58Z', 'link', NULL, 'related PRS-T230');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22652, 'PRS-T230', '2026-10-28T04:01:58Z', 'link', NULL, 'PRS-T322 related');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22653, 'PRS-T322', '2026-10-28T04:01:59Z', 'link', NULL, 'related PRS-T257');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22654, 'PRS-T257', '2026-10-28T04:01:59Z', 'link', NULL, 'PRS-T322 related');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22655, 'PRS-T328', '2026-10-28T04:02:15Z', 'link', NULL, 'part-of PRS-T322');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22656, 'PRS-T322', '2026-10-28T04:02:16Z', 'link', NULL, 'PRS-T328 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22657, 'PRS-T328', '2026-10-28T04:02:16Z', 'link', NULL, 'requires PRS-T323');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22658, 'PRS-T323', '2026-10-28T04:02:17Z', 'link', NULL, 'PRS-T328 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22659, 'U.RICO-T124', '2026-10-28T04:02:17Z', 'working', 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22660, 'PRS-T185', '2026-10-28T04:02:18Z', 'link', NULL, 'requires PRS-T328');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22661, 'PRS-T328', '2026-10-28T04:02:18Z', 'link', NULL, 'PRS-T185 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22662, 'PRS-T330', '2026-10-28T04:02:22Z', 'link', NULL, 'part-of PRS-T322');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22663, 'PRS-T322', '2026-10-28T04:02:22Z', 'link', NULL, 'PRS-T330 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22664, 'PRS-T330', '2026-10-28T04:02:23Z', 'link', NULL, 'requires PRS-T323');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22665, 'PRS-T323', '2026-10-28T04:02:23Z', 'link', NULL, 'PRS-T330 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22666, 'PRS-T185', '2026-10-28T04:02:24Z', 'link', NULL, 'requires PRS-T330');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22667, 'PRS-T330', '2026-10-28T04:02:25Z', 'link', NULL, 'PRS-T185 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22668, 'PRS-T332', '2026-10-28T04:02:27Z', 'link', NULL, 'part-of PRS-T322');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22669, 'PRS-T322', '2026-10-28T04:02:28Z', 'link', NULL, 'PRS-T332 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22670, 'PRS-T332', '2026-10-28T04:02:29Z', 'link', NULL, 'requires PRS-T323');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22671, 'PRS-T323', '2026-10-28T04:02:29Z', 'link', NULL, 'PRS-T332 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22672, 'PRS-T185', '2026-10-28T04:02:30Z', 'link', NULL, 'requires PRS-T332');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22673, 'PRS-T332', '2026-10-28T04:02:30Z', 'link', NULL, 'PRS-T185 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22674, 'PRS-T333', '2026-10-28T04:02:31Z', 'link', NULL, 'part-of PRS-T322');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22675, 'PRS-T322', '2026-10-28T04:02:31Z', 'link', NULL, 'PRS-T333 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22676, 'PRS-T333', '2026-10-28T04:02:32Z', 'link', NULL, 'requires PRS-T323');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22677, 'PRS-T323', '2026-10-28T04:02:32Z', 'link', NULL, 'PRS-T333 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22678, 'PRS-T185', '2026-10-28T04:02:33Z', 'link', NULL, 'requires PRS-T333');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22679, 'PRS-T333', '2026-10-28T04:02:34Z', 'link', NULL, 'PRS-T185 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22680, 'PRS-T334', '2026-10-28T04:02:35Z', 'link', NULL, 'part-of PRS-T322');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22681, 'PRS-T322', '2026-10-28T04:02:35Z', 'link', NULL, 'PRS-T334 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22682, 'PRS-T334', '2026-10-28T04:02:36Z', 'link', NULL, 'requires PRS-T323');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22683, 'PRS-T323', '2026-10-28T04:02:36Z', 'link', NULL, 'PRS-T334 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22684, 'PRS-T185', '2026-10-28T04:02:37Z', 'link', NULL, 'requires PRS-T334');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22685, 'PRS-T334', '2026-10-28T04:02:38Z', 'link', NULL, 'PRS-T185 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22686, 'PRS-T335', '2026-10-28T04:02:38Z', 'link', NULL, 'part-of PRS-T322');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22687, 'PRS-T322', '2026-10-28T04:02:39Z', 'link', NULL, 'PRS-T335 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22688, 'PRS-T335', '2026-10-28T04:02:40Z', 'link', NULL, 'requires PRS-T323');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22689, 'PRS-T323', '2026-10-28T04:02:40Z', 'link', NULL, 'PRS-T335 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22690, 'PRS-T185', '2026-10-28T04:02:41Z', 'link', NULL, 'requires PRS-T335');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22691, 'PRS-T335', '2026-10-28T04:02:41Z', 'link', NULL, 'PRS-T185 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22692, 'PRS-T336', '2026-10-28T04:02:42Z', 'link', NULL, 'part-of PRS-T322');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22693, 'PRS-T322', '2026-10-28T04:02:42Z', 'link', NULL, 'PRS-T336 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22694, 'PRS-T336', '2026-10-28T04:02:43Z', 'link', NULL, 'requires PRS-T323');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22695, 'PRS-T323', '2026-10-28T04:02:44Z', 'link', NULL, 'PRS-T336 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22696, 'PRS-T185', '2026-10-28T04:02:45Z', 'link', NULL, 'requires PRS-T336');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22697, 'PRS-T336', '2026-10-28T04:02:45Z', 'link', NULL, 'PRS-T185 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22698, 'PRS-T337', '2026-10-28T04:02:46Z', 'link', NULL, 'part-of PRS-T322');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22699, 'PRS-T322', '2026-10-28T04:02:46Z', 'link', NULL, 'PRS-T337 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22700, 'PRS-T337', '2026-10-28T04:02:47Z', 'link', NULL, 'requires PRS-T323');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22701, 'PRS-T323', '2026-10-28T04:02:48Z', 'link', NULL, 'PRS-T337 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22702, 'PRS-T185', '2026-10-28T04:02:49Z', 'link', NULL, 'requires PRS-T337');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22703, 'PRS-T337', '2026-10-28T04:02:49Z', 'link', NULL, 'PRS-T185 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22704, 'U.RICO-T106', '2026-10-28T04:03:06Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22705, 'U.RICO-T106', '2026-10-28T04:03:06Z', 'ref', '—', 'f51bdcd');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22706, 'U.RICO-T126', '2026-10-28T04:03:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22707, 'U.RICO-T125', '2026-10-28T04:03:19Z', 'working', NULL, 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22708, 'U.HARE-T24', '2026-10-28T04:03:19Z', 'working', NULL, 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22709, 'U.RICO-T106', '2026-10-28T04:03:25Z', 'working', 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22710, 'U.RICO-T126', '2026-10-28T04:03:26Z', 'working', NULL, '2825e89a-daff-4fa9-bdbd-36e47a65193e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22711, 'U.HARE-T68', '2026-10-28T04:03:44Z', 'working', NULL, 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22712, 'U.RICO-T125', '2026-10-28T04:04:04Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22713, 'U.RICO-T125', '2026-10-28T04:04:04Z', 'ref', 'main@a60ebab', 'f96aa7a');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22714, 'U.RICO-T126', '2026-10-28T04:04:07Z', 'working', '2825e89a-daff-4fa9-bdbd-36e47a65193e', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22715, 'U.RICO-T53', '2026-10-28T04:04:12Z', 'working', NULL, 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22716, 'U.RICO-T125', '2026-10-28T04:04:32Z', 'working', 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22717, 'AGP-T2', '2026-10-28T04:06:14Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22718, 'AGP-T2', '2026-10-28T04:06:14Z', 'ref', '—', 'cb40d44');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22719, 'AGP-T2', '2026-10-28T04:06:37Z', 'working', 'waffle@mindattic.com (bc754ee7-b2e2-4870-b745-42c627ec13c1)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22720, 'U.HARE-T24', '2026-10-28T04:07:49Z', 'working', 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)', '2825e89a-daff-4fa9-bdbd-36e47a65193e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22721, 'U.HARE-T68', '2026-10-28T04:07:49Z', 'working', 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)', '2825e89a-daff-4fa9-bdbd-36e47a65193e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22722, 'U.RICO-T53', '2026-10-28T04:07:50Z', 'working', 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)', '2825e89a-daff-4fa9-bdbd-36e47a65193e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22723, 'RB-T264', '2026-10-28T04:07:50Z', 'working', 'waffle@mindattic.com (bc754ee7-b2e2-4870-b745-42c627ec13c1)', 'bc754ee7-b2e2-4870-b745-42c627ec13c1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22724, 'RB-T264', '2026-10-28T04:08:25Z', 'description', 'Walkthrough knowledge base for the playing agent: the critical path and side quests of Bloodlines as data the agent follows and checks against.
+
+- Derive from the game''s own data (quest states and journal, dialogue files, map Python scripts, changelevels; docs/DIALOGUE.md, docs/MAPS.md, docs/RULES.md) and cross-check with public walkthroughs (fandom wiki, GameFAQs): per chapter (Santa Monica, Downtown LA, Hollywood, Chinatown, endgame) the ordered objectives, which map/NPC/item each needs, how to tell it is done (quest state, item, global), branches and per-clan differences (Nosferatu cannot walk the streets, Malkavian dialogue, Ventrue feeding), and the endings.
+- Store it as docs/data/walkthrough/*.json (summaries in our own words; no copied walkthrough text, no game dialogue text beyond identifiers) plus a loader in tools/autoplay usable by the agent ("what is my next objective given this state").
+- Also list recommended builds per clan to test (melee, firearms, stealth, social/persuasion, discipline-heavy).
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.', 'Walkthrough knowledge base for the playing agent: the critical path and side quests of Bloodlines as data the agent follows and checks against.
+
+- Derive from the game''s own data (quest states and journal, dialogue files, map Python scripts, changelevels; docs/DIALOGUE.md, docs/MAPS.md, docs/RULES.md) and cross-check with public walkthroughs (fandom wiki, GameFAQs): per chapter (Santa Monica, Downtown LA, Hollywood, Chinatown, endgame) the ordered objectives, which map/NPC/item each needs, how to tell it is done (quest state, item, global), branches and per-clan differences (Nosferatu cannot walk the streets, Malkavian dialogue, Ventrue feeding), and the endings.
+- Store it as docs/data/walkthrough/*.json (summaries in our own words; no copied walkthrough text, no game dialogue text beyond identifiers) plus a loader in tools/autoplay usable by the agent ("what is my next objective given this state").
+- Also list recommended builds per clan to test (melee, firearms, stealth, social/persuasion, discipline-heavy).
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+## Progress note (2026-10-27, first attempt aborted by pacing; nothing committed)
+
+**Uncommitted work in the checkout:**
+- `tools/walkthrough/extract.py`: an identifier-only index of the extracted game.
+- Generated from a run before the last fix: `docs/data/walkthrough/quests.json` (70 quests, their states and setters), `story_states.json` (29 `G.Story_State` values) and `maps.json` (108 maps: hubs, scripts, exits).
+
+**Redo the edit that didn''t apply, then rerun the extractor:**
+- Read only the next, condition and action columns of a dialogue row.
+- Match quest titles case-insensitively (`Allplague`, `Werewolf blood`).
+- Mark Plus-only setters (`G.Patch_Plus`) as `patch_plus`.
+
+**Research findings, not yet written down:**
+- **Critical path:** `Story_State` runs 0 to 125, chapter by chapter, from the haven and Mercurio to Caine''s cab.
+- **Endings:** the cab sets the route: 100 Kuei-jin, 105 Sabbat, 110 LaCroix, 115 Anarch, 120 Camarilla/Tremere, 125 Independent. The LaCroix talk then sets `Prince` quest states 3 to 11: 10 is keeping the key, 11 is the Plus-only wolf ending. Check the outcomes against public walkthroughs.
+- **Clan differences:**
+  - Nosferatu seen in Masquerade zones cause a breach, and they leave the museum and the Giovanni mansion through manholes instead of the cab.
+  - Malkavians have their own dialogue column and a TV newscaster scene in the haven.
+  - Ventrue feed only on blue bloods.
+
+**Still to do:**
+- Hand-write `critical_path.json`, `side_quests.json`, `clans.json`, `endings.json` and `builds.json`.
+- Write a next-objective loader in `tools/walkthrough/walkthrough.py`.
+- Write `docs/AUTOPLAY.md`, pointing to AutoGamePlay''s `docs/DESIGN.md`, which has landed (AGP-T2, cb40d44).');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22725, 'RB-T246', '2026-10-28T04:08:32Z', 'working', 'waffle@mindattic.com (bc754ee7-b2e2-4870-b745-42c627ec13c1)', 'bc754ee7-b2e2-4870-b745-42c627ec13c1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22726, 'RB-T246', '2026-10-28T04:09:19Z', 'description', 'AutoPlay bridge skeleton in the s&box runtime (the basic-capability tickets each add their own actions on top): one C# entry point that an outside agent drives through sbox-cli run_csharp to observe and act at object level.
+
+- Gate it behind a convar (e.g. bl_autoplay) so normal play is untouched.
+- **Observe**: one call returning compact JSON: map, game time, player (position, angles, health, blood, humanity, masquerade, xp, money, clan, attributes/abilities/disciplines, equipped weapon, inventory), nearby entities (class, targetname, position, distance, visible/line-of-sight, interactable/usable, hostile, health), the active dialogue (speaker, line, numbered options), open UI screens and their clickable elements by stable id, quest log entries, combat state, loading/cinematic state, and the script/engine errors logged since the last observe.
+- **Act**: teleport; goto entity/position (navmesh pathing, reports arrival or blocked), face/look-at, use/interact, attack target (melee/ranged), cast discipline, feed, choose dialogue option, continue, press UI element by id, open/close screens, crouch/jump/sneak, wait N seconds, quicksave/quickload/named save/load (SaveSlots), set time scale.
+- Read-only helpers for agents: list landmarks/changelevels/quest-relevant entities of the map.
+Document the API in docs/AUTOPLAY.md and build it in the editor (0 errors).
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### Concrete hooks found by the runtime survey (2026-10-27)
+
+- **Input injection.** Use a `GameObjectSystem` on `Stage.StartUpdate`/`StartFixedUpdate` ordered *after* `OptionsSystem` (`Code/Options/OptionsSystem.cs`, order -1000). OptionsSystem rewrites `Input.SetAction`, `AnalogMove` and `AnalogLook` from raw keys every frame, so anything injected earlier is lost.
+- **Discipline hotkeys** are read with raw `Input.Keyboard.Pressed` in `PlayerCombat.DisciplineKeys`. Route them through actions or call the methods directly.
+- **Actions** (call the public methods):
+  - `PlayerCombat`: `Attack`, `Reload`, `Select(i)`, `Holster`, `TryFeed`, `FeedFor(s)`, `ActivateDiscipline(name)`, `UseSelectedDiscipline`, `UseHotkey(i)`, `CastTargeted`.
+  - Dialogue: `DialoguePanel.Current.Session.Choose(i)` and `Continue()`.
+  - `SaveSlots.Save`/`Load`; `FrontEnd.StartNewGame`/`LoadGame`/`NewGame`; `NewGameIntro.Start(NewGameIntro.Default(template, female), movies)`.
+  - `Cinematics.MoveTo(entity, pos, yaw)` to teleport; `PlayerController.EyeAngles` to look; `BloodlinesWorld.FireInput` and `ConsoleCommand`.
+- **State:**
+  - `BloodlinesWorld.Current`: `MapName`, `Player`, `AllEntities()`, `ScriptLog` (lines starting "! " are errors), `SinceStart`.
+  - `BloodlinesCharacter`: `Sheet`, `Items`, `Quests`, `Money`, `ClanCode`. On the sheet, `Health` counts damage: dead when `Health >= MaxHealth`.
+  - `PlayerCombat`: `Weapon`, `Target`, `IsFeeding`.
+  - Also `CombatDirector.Current` (`Npcs`, `NavReady`), `GameScreens.Current`, `LoadingScreen.Current`, `CinematicDirector.Current` (`CameraActive`, `Immobilized`) and `DialoguePresentation.Current`.
+- **UI element registry.** Character creation (`CharacterCreationPanel`: `PickClan`, `Buy`, `DoneClicked`), `GameMenu.razor`, `CharacterScreens.razor` and `BarterScreen.razor` handlers are private. Add a small registry where each clickable element registers a stable id and a click action, so the bridge can list and press them. Don''t use reflection.
+- **Exported build.** It has no automation channel today. AGP-T14''s WebSocket bridge is meant to fix that; until it lands, use `sbox-cli run_csharp` in editor play mode (`tools/sbox_import/playtest.py`''s `Session` shows the pattern).', 'AutoPlay bridge skeleton in the s&box runtime (the basic-capability tickets each add their own actions on top): one C# entry point that an outside agent drives through sbox-cli run_csharp to observe and act at object level.
+
+- Gate it behind a convar (e.g. bl_autoplay) so normal play is untouched.
+- **Observe**: one call returning compact JSON: map, game time, player (position, angles, health, blood, humanity, masquerade, xp, money, clan, attributes/abilities/disciplines, equipped weapon, inventory), nearby entities (class, targetname, position, distance, visible/line-of-sight, interactable/usable, hostile, health), the active dialogue (speaker, line, numbered options), open UI screens and their clickable elements by stable id, quest log entries, combat state, loading/cinematic state, and the script/engine errors logged since the last observe.
+- **Act**: teleport; goto entity/position (navmesh pathing, reports arrival or blocked), face/look-at, use/interact, attack target (melee/ranged), cast discipline, feed, choose dialogue option, continue, press UI element by id, open/close screens, crouch/jump/sneak, wait N seconds, quicksave/quickload/named save/load (SaveSlots), set time scale.
+- Read-only helpers for agents: list landmarks/changelevels/quest-relevant entities of the map.
+Document the API in docs/AUTOPLAY.md and build it in the editor (0 errors).
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### Concrete hooks found by the runtime survey (2026-10-27)
+
+- **Input injection.** Use a `GameObjectSystem` on `Stage.StartUpdate`/`StartFixedUpdate` ordered *after* `OptionsSystem` (`Code/Options/OptionsSystem.cs`, order -1000). OptionsSystem rewrites `Input.SetAction`, `AnalogMove` and `AnalogLook` from raw keys every frame, so anything injected earlier is lost.
+- **Discipline hotkeys** are read with raw `Input.Keyboard.Pressed` in `PlayerCombat.DisciplineKeys`. Route them through actions or call the methods directly.
+- **Actions** (call the public methods):
+  - `PlayerCombat`: `Attack`, `Reload`, `Select(i)`, `Holster`, `TryFeed`, `FeedFor(s)`, `ActivateDiscipline(name)`, `UseSelectedDiscipline`, `UseHotkey(i)`, `CastTargeted`.
+  - Dialogue: `DialoguePanel.Current.Session.Choose(i)` and `Continue()`.
+  - `SaveSlots.Save`/`Load`; `FrontEnd.StartNewGame`/`LoadGame`/`NewGame`; `NewGameIntro.Start(NewGameIntro.Default(template, female), movies)`.
+  - `Cinematics.MoveTo(entity, pos, yaw)` to teleport; `PlayerController.EyeAngles` to look; `BloodlinesWorld.FireInput` and `ConsoleCommand`.
+- **State:**
+  - `BloodlinesWorld.Current`: `MapName`, `Player`, `AllEntities()`, `ScriptLog` (lines starting "! " are errors), `SinceStart`.
+  - `BloodlinesCharacter`: `Sheet`, `Items`, `Quests`, `Money`, `ClanCode`. On the sheet, `Health` counts damage: dead when `Health >= MaxHealth`.
+  - `PlayerCombat`: `Weapon`, `Target`, `IsFeeding`.
+  - Also `CombatDirector.Current` (`Npcs`, `NavReady`), `GameScreens.Current`, `LoadingScreen.Current`, `CinematicDirector.Current` (`CameraActive`, `Immobilized`) and `DialoguePresentation.Current`.
+- **UI element registry.** Character creation (`CharacterCreationPanel`: `PickClan`, `Buy`, `DoneClicked`), `GameMenu.razor`, `CharacterScreens.razor` and `BarterScreen.razor` handlers are private. Add a small registry where each clickable element registers a stable id and a click action, so the bridge can list and press them. Don''t use reflection.
+- **Exported build.** It has no automation channel today. AGP-T14''s WebSocket bridge is meant to fix that; until it lands, use `sbox-cli run_csharp` in editor play mode (`tools/sbox_import/playtest.py`''s `Session` shows the pattern).
+
+## Progress note (2026-10-27, first attempt aborted by pacing; nothing committed)
+
+The unfinished drafts were moved to `work/t246/` (`AutoPlay.cs`, `AutoPlayUi.cs`), because the s&box editor compiles `Code/` automatically and `AutoPlay.cs` calls a missing `AutoPlaySystem`. Move them back to `src/Bloodlines.Sbox/Code/AutoPlay/` and finish them.
+
+- **`AutoPlayUi.cs`**: a registry of UI elements by stable id (id, label, whether pressable, click action).
+- **`AutoPlay.cs`**:
+  - the `bl_autoplay` convar, off by default;
+  - `Observe()`, the compact JSON state;
+  - `MapInfo()`;
+  - `Act({"do":...})`, which covers teleport, face, goto, use, attack, reload, select, holster, discipline, cast, hotkey, feed, talk, choose, continue, press, screen, hold, crouch, jump, wait, cancel, the save commands, timescale, fire and console.
+  - It was edited by script after the last read: re-read it before building.
+
+**Still to do:**
+1. **`AutoPlaySystem.cs`** (the write was refused): a `GameObjectSystem` at order -900, after `OptionsSystem`''s -1000, that runs goto, hold and wait by injecting input. For now goto is a straight-line walk reporting arrived, blocked or timeout; RB-T273 replaces it with NavMesh pathing.
+2. **`Combat/CombatDirector.cs`**, around line 411: multiply by `AutoPlay.WorldTimeScale`.
+3. **`FrontEnd/MenuButton.razor`**: register each button as `menu.<slug>` and add a public click method.
+4. **`docs/AUTOPLAY.md`**: the API write-up.
+5. **Build**: least sure of `IPressable.Tooltip.Title` and of `JsonNode` passing the s&box whitelist.
+6. Land and close.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22727, 'AGP-T4', '2026-10-28T04:09:21Z', 'working', NULL, 'waffle@mindattic.com (bc754ee7-b2e2-4870-b745-42c627ec13c1)');
 
 -- ticket_queue
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T11', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T12', 'approved', 0, '2026-10-28T03:55:08Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T13', 'approved', 0, '2026-10-28T03:55:08Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T14', 'approved', 0, '2026-10-28T03:55:08Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T15', 'approved', 0, '2026-10-28T03:55:08Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T16', 'approved', 0, '2026-10-28T03:55:08Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T17', 'approved', 0, '2026-10-28T03:55:08Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T2', 'approved', 0, '2026-10-28T03:55:05Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T3', 'approved', 0, '2026-10-28T03:55:06Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T4', 'approved', 0, '2026-10-28T03:55:06Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T5', 'approved', 0, '2026-10-28T03:55:06Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T6', 'approved', 0, '2026-10-28T03:55:06Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T7', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T8', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T9', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T15', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T16', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
@@ -40495,7 +42684,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T112', 'proposed', -1, '2026-10-24T17:52:32Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T113', 'proposed', -1, '2026-10-24T17:52:34Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T114', 'approved', 0, '2026-10-24T18:58:57Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T117', 'proposed', 708, '2026-10-28T03:16:23Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T117', 'proposed', 707, '2026-10-28T03:57:11Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T12', 'approved', 0, '2026-10-20T16:16:37Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T120', 'proposed', 0, '2026-10-28T02:39:06Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T121', 'proposed', 0, '2026-10-28T02:39:07Z', NULL);
@@ -40554,7 +42743,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.IDEA-T19', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.IDEA-T20', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.IDEA-T23', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.IDEA-T27', 'proposed', 707, '2026-10-28T03:16:24Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.IDEA-T27', 'proposed', 706, '2026-10-28T03:57:11Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.IDEA-T5', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LEGN-T17', 'approved', 5, '2026-10-21T04:35:36Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LEGN-T18', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
@@ -40674,7 +42863,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1208', 'approved', 0, '2026-10-28T01:05:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1211', 'approved', 0, '2026-10-28T00:42:38Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1212', 'approved', 0, '2026-10-28T02:02:05Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1241', 'proposed', 706, '2026-10-28T03:16:24Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1241', 'proposed', 705, '2026-10-28T03:57:11Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T172', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T181', 'approved', 0, '2026-10-20T17:30:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T182', 'approved', 0, '2026-10-20T17:30:39Z', NULL);
@@ -41313,35 +43502,38 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T24', 'approved', 0, '2026-10-22T00:16:20Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T242', 'approved', 0, '2026-10-27T16:45:42Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T245', 'proposed', 0, '2026-10-28T03:07:50Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T246', 'proposed', 0, '2026-10-28T03:07:50Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T247', 'proposed', 0, '2026-10-28T03:07:51Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T248', 'proposed', 0, '2026-10-28T03:07:51Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T249', 'proposed', 0, '2026-10-28T03:07:51Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T246', 'approved', 0, '2026-10-28T03:54:59Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T247', 'approved', 0, '2026-10-28T03:54:59Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T248', 'approved', 0, '2026-10-28T03:55:00Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T249', 'approved', 0, '2026-10-28T03:55:00Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T25', 'approved', 0, '2026-10-22T00:16:20Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T250', 'proposed', 0, '2026-10-28T03:07:51Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T251', 'proposed', 0, '2026-10-28T03:07:52Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T252', 'proposed', 0, '2026-10-28T03:07:52Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T253', 'proposed', 0, '2026-10-28T03:07:52Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T254', 'proposed', 0, '2026-10-28T03:07:52Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T255', 'proposed', 0, '2026-10-28T03:07:52Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T256', 'proposed', 0, '2026-10-28T03:07:52Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T257', 'proposed', 0, '2026-10-28T03:07:53Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T258', 'proposed', 0, '2026-10-28T03:07:53Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T259', 'proposed', 0, '2026-10-28T03:07:53Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T250', 'approved', 0, '2026-10-28T03:55:00Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T251', 'approved', 0, '2026-10-28T03:55:00Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T252', 'approved', 0, '2026-10-28T03:55:01Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T253', 'approved', 0, '2026-10-28T03:55:01Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T254', 'approved', 0, '2026-10-28T03:55:01Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T255', 'approved', 0, '2026-10-28T03:55:01Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T256', 'approved', 0, '2026-10-28T03:55:01Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T257', 'approved', 0, '2026-10-28T03:55:02Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T258', 'approved', 0, '2026-10-28T03:55:02Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T259', 'approved', 0, '2026-10-28T03:55:02Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T26', 'approved', 0, '2026-10-22T00:16:20Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T260', 'proposed', 0, '2026-10-28T03:07:53Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T261', 'proposed', 0, '2026-10-28T03:07:53Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T262', 'proposed', 0, '2026-10-28T03:07:54Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T260', 'approved', 0, '2026-10-28T03:55:02Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T261', 'approved', 0, '2026-10-28T03:55:02Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T262', 'approved', 0, '2026-10-28T03:55:02Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T263', 'proposed', 0, '2026-10-28T03:07:54Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T264', 'proposed', 0, '2026-10-28T03:07:54Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T265', 'proposed', 0, '2026-10-28T03:07:54Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T266', 'proposed', 0, '2026-10-28T03:07:54Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T267', 'proposed', 0, '2026-10-28T03:07:55Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T268', 'proposed', 0, '2026-10-28T03:07:55Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T269', 'proposed', 0, '2026-10-28T03:07:55Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T270', 'proposed', 0, '2026-10-28T03:07:55Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T271', 'proposed', 0, '2026-10-28T03:07:55Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T272', 'proposed', 0, '2026-10-28T03:07:55Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T264', 'approved', 0, '2026-10-28T03:55:03Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T265', 'approved', 0, '2026-10-28T03:55:03Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T266', 'approved', 0, '2026-10-28T03:55:03Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T267', 'approved', 0, '2026-10-28T03:55:03Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T268', 'approved', 0, '2026-10-28T03:55:03Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T269', 'approved', 0, '2026-10-28T03:55:04Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T270', 'approved', 0, '2026-10-28T03:55:04Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T271', 'approved', 0, '2026-10-28T03:55:04Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T272', 'approved', 0, '2026-10-28T03:55:04Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T273', 'approved', 0, '2026-10-28T03:55:04Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T274', 'approved', 0, '2026-10-28T03:55:04Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T275', 'approved', 0, '2026-10-28T03:55:05Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T3', 'approved', 0, '2026-10-21T20:15:47Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T32', 'approved', 0, '2026-10-22T13:22:49Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T33', 'approved', 0, '2026-10-22T13:22:49Z', NULL);
@@ -41841,7 +44033,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.RICO-T121', 'proposed', 705, '2026-10-28T03:16:24Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.RICO-T122', 'proposed', 704, '2026-10-28T03:16:25Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.RICO-T123', 'proposed', 703, '2026-10-28T03:16:25Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.RICO-T124', 'proposed', 702, '2026-10-28T03:16:25Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.RICO-T124', 'proposed', 703, '2026-10-28T03:57:12Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.RICO-T125', 'proposed', 702, '2026-10-28T03:57:12Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.RICO-T13', 'approved', 0, '2026-10-22T22:53:20Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.RICO-T14', 'approved', 0, '2026-10-22T22:53:20Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.RICO-T15', 'approved', 0, '2026-10-22T22:54:18Z', NULL);
@@ -42208,7 +44401,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('USOD-T9', 'approved', 0, '2026-10-22T23:02:27Z', NULL);
 
 -- ticket_work
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T179', NULL, 0, 'waffle@mindattic.com', '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T03:46:30Z', '2026-10-28T03:46:30Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('AGP-T4', NULL, 0, 'waffle@mindattic.com', 'bc754ee7-b2e2-4870-b745-42c627ec13c1', '2026-10-28T04:09:21Z', '2026-10-28T04:09:21Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
@@ -42292,6 +44485,9 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T58', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:02:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T133', NULL, 0, 'pdftransferjr@mindattic.com', '52d32bc1-0939-4dbe-8425-35585a84452a', '2026-10-27T06:24:45Z', '2026-10-27T06:24:45Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T234', NULL, 0, 'honey@mindattic.com', 'a5fb6ccb-d3f6-438f-a6b5-01f0b3b57e11', '2026-10-28T04:00:30Z', '2026-10-28T04:00:30Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T246', NULL, 0, NULL, 'bc754ee7-b2e2-4870-b745-42c627ec13c1', '2026-10-28T04:08:32Z', '2026-10-28T04:08:32Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T264', NULL, 0, NULL, 'bc754ee7-b2e2-4870-b745-42c627ec13c1', '2026-10-28T04:07:50Z', '2026-10-28T04:07:50Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T111', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:34:40Z');
@@ -42433,12 +44629,9 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.HARE-T64', NULL, 0, 'waffle@mindattic.com', '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T03:46:29Z', '2026-10-28T03:46:29Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.HARE-T67', NULL, 0, 'waffle@mindattic.com', '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T03:46:29Z', '2026-10-28T03:46:29Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.RICO-T104', NULL, 0, NULL, '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T03:19:12Z', '2026-10-28T03:19:12Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.RICO-T106', NULL, 0, 'waffle@mindattic.com', '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T03:13:22Z', '2026-10-28T03:13:22Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.RICO-T120', NULL, 0, 'waffle@mindattic.com', '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T03:15:51Z', '2026-10-28T03:15:51Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.RICO-T52', NULL, 0, 'waffle@mindattic.com', '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T03:46:29Z', '2026-10-28T03:46:29Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.HARE-T24', NULL, 0, NULL, '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T04:07:49Z', '2026-10-28T04:07:49Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.HARE-T68', NULL, 0, NULL, '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T04:07:49Z', '2026-10-28T04:07:49Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.RICO-T53', NULL, 0, NULL, '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T04:07:50Z', '2026-10-28T04:07:50Z');
 
 -- ticket_notes
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (1, 'U.HARE-T54', 'ryand', '2026-10-26T04:52:58Z', 'From U.HARE-T52 (7d24220): leaving the arena past the 400 px buffer zone (LeaveArena command) currently costs a life only on the ship (PlayerHealth out-of-bounds path / ShipHealth). When this ticket wires LIVES into the session, route that out-of-bounds loss through the same session lives so both deaths count the same.');
@@ -42632,6 +44825,9 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (104, 'M.
 ![image 2](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/M.LNCH-T91/2026-10-27-image-2.png)');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (105, 'M.ORCH-T1196', 'ryand', '2026-10-28T02:35:07Z', 'Correction to note 103: the exe renames stand. The WPF exes become MindAttic.{Project}.Desktop.Wpf.exe (M.ORCH-T1245, M.TIX-T255, which supersede the wont-do T1205/T228), and the new ones are Desktop.Maui.exe. M.LNCH-T89 and M.CAPT-T79 are right as written and now require M.ORCH-T1245. There''s no shared v2.0.0: each repo takes its own next major at the MAUI release (M.ORCH-T1240).');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (106, 'M.ORCH-T1196', 'ryand', '2026-10-28T02:39:21Z', 'On hold until the user says go (M.ORCH-T1248). Nothing in MAUI or RELAY is approved. The epics'' three fix tickets (M.COMP-T117, T119, T126) need no approval, so they''re blocked by M.COMP-T127 (the Components design record) to keep them from being picked up on their own.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (107, 'U.HARE-T68', 'ryand', '2026-10-28T04:08:15Z', 'Aborted attempt 2026-10-28 (research done, no code written). Plan: EnemyKind.Scrapmental=10 (EnemyCatalog + GameContent.json entry, EnemyWorld.Spawn and EnemyViews.Create cases; generator picks 1-9 only); BodyPart values for hull pieces and harpoons; new non-kill score event (20 per piece shot loose, 500 at boss death) via an EnemyDirector.Scored hook to ArenaRoom; dead boss stays the original''s 10 s then is removed, which completes the level (LevelTargets.Register(obj_scrapmental) already exists); optional rocket velocity on the rocket-hit command for knockback; obj_shrapnel_back is view-only. Fix and record in BIBLE: loose pieces crawl at 1 px/step (keep 8-12); on death pieces drift right instead of flying out along their angles; the dead boss is invisible but still chases, hurts and can be re-killed for 500 + 24 pickups (make inert); removal by laser/railgun/flamer/flashbomb leaves harpoons and back plate behind (clean up); pieces leave below room_width instead of room_height. GML extraction helper used: gmlobj.ps1.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (108, 'U.RICO-T53', 'ryand', '2026-10-28T04:08:21Z', 'Aborted attempt 2026-10-28, uncommitted on disk: new Core/Menu/RoomFade.cs (pure fade logic: out of black 0.01/frame ~1.67 s, and fade-to-black-then-change); menu.json fadeSeconds read in DataReaders.cs onto MenuData (DataTypes.cs); new Runtime/ScreenFade.cs (black overlay, fades every menu/lobby/game screen change, plays sfx_click in LateUpdate, Cover() helper); UiSounds.cs PressedFrame. TODO: fix double click (buttons act on release: record release frame too, PointerClickedOn(frame), use it in ScreenFade.LateUpdate); wire ScreenFade.Create() in Game.Start after GameAudio.Create(), map room start via ScreenFade.Cover (HostFromMapRoom), ScreenFade.Open() in EndgameRecap.Show; headless Unity compile and commit .meta for the 2 new .cs; BIBLE Room fades entry and RECONSTRUCTION row. Original: sfx_click on every room-change button; sfx_select only for less/more steppers (already done).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (109, 'U.HARE-T24', 'ryand', '2026-10-28T04:08:29Z', 'Aborted attempt 2026-10-28, uncommitted on disk in Assets/Unity.Hare/: Core/Content/UpgradeCatalog.cs (rewritten: rows, upgrade list, effects, points per mission), new Core/Weapons/ShipUpgrades.cs (no .meta), GunRack.cs (Upgrades, vulcan/shotgun fire-wait multipliers), PlayerCommands.cs (FitUpgrades), PlayerShip.cs (Upgrades). Original: 5 skill points, never awarded more; 1 point per upgrade; never saved (//Write to Ini here); rows Vulcan Rate of Fire 1 node (x528 y352, +5% rate), Shotgun Reload 3 (x528/576/624 y480, wrong description), Shotgun Spread 3 (x720/768/816 y480, -5% spread), Missile Power 3 (x528/576/624 y608, bigger blast); icons x464 hover-description; ''Skill Points x N'' at (room_width-200, room_height-60); re-buying a filled node spends another point. Gap choices: 2 more vulcan nodes x576/624; real Reload description; no double buy; missile +10% blast each; +1 point first win of each map mission; save purchases; points = 5 + missions won - bought. TODO: CampaignProgress.cs save v2 with upgrade list (still read v1) and fix Tests/Core.Tests/MapTests.cs:614; GameContent.json upgrades data; UpgradeScreen.cs hover/buy/points; UpgradeRoom.cs drawing; RoomFlowDirector.cs points/award/purchase/save; ArenaRoom.cs fit upgrades; Shotgun.cs spread; AirWeaponLoadout/Rocket/RocketExplosion blast scale; BIBLE V49 + D27, RECONSTRUCTION row; build, commit, land, close.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
@@ -42674,11 +44870,353 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T17', 'R
 ## Context
 
 AutoGamePlay (AGP) is the engine-agnostic toolkit that lets an LLM agent (a Claude subagent driving the `agp` CLI) play and playtest first- and third-person PC games: it runs PlayScript (the gameplay scripting language, e.g. `Player.MoveForward(20m).TurnLeft(90)`), executes it with fast reflex controllers while the game is unpaused, pauses the game while the LLM thinks, watches with oracles, keeps frames in a budgeted in-RAM ring buffer, and files deduped bug tickets with evidence. The first consumer is REA.Bloodlines (the s&box port of Vampire: The Masquerade - Bloodlines, epic RB-T245..RB-T272); it must also work for Source 1, GZDoom, and later Unreal (UE4SS), Cyberpunk (CET) and EDuke32. Read docs/DESIGN.md (architecture, decisions), docs/PRIOR_ART.md and docs/ROADMAP.md first; keep the docs current with what you build. No game-specific code in this repo: game specifics live in the game''s own repo as an extension namespace. C#/.NET 10, nullable on, whole-number versions; any in-process LLM call goes through MindAttic.Legion (HOUSE-LAW-4). xUnit tests run against the Fake adapter.', '2026-10-28T03:51:09Z');
-INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T2', 'Scaffold the repo and move the approved AutoGamePlay plan into docs/DESIGN.md, docs/PRIOR_ART.md and docs/ROADMAP.md.
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T2', 'Scaffold AutoGamePlay and write its design docs from the approved plan below (owner-approved 2026-10-27 in the REA.Bloodlines session).
+
+## Deliverables (one commit, ending "(AGP-T2)")
+
+- `AGENTS.md`: the standard MindAttic pointer, followed by project context:
+  - stay engine- and game-agnostic: engine code in `src/AutoGamePlay.Adapters.<Engine>`, game code in the game''s own repo as an extension namespace;
+  - never commit game content (game files, IWADs, screenshots or frames of commercial games, saves); evidence and run state go to a per-game folder outside the repo (REA.Bloodlines: `work/autoplay/`);
+  - .NET 10, whole-number versions, in-process LLM calls only through MindAttic.Legion.
+- `CLAUDE.md` forwarder, like MindAttic.Relay''s.
+- `.gitignore`: bin/obj/.vs/TestResults, `runs/`, `evidence/`, `*.wad`, `*.pk3`, `.claude/quicksave.md`.
+- `README.md` in the AutoWebNav style: one-line pitch, an ASCII architecture diagram, a PlayScript example, adapters and status, links to the docs.
+- `docs/DESIGN.md`: the plan''s Context, Architecture, Design decisions, PlayScript sketch, agent loop, Verification and Risks, expanded and written for a reader new to the project.
+- `docs/PRIOR_ART.md`: the research below, with links and licences (mark unverified licences as unverified).
+- `docs/ROADMAP.md`: AGP-T3 to AGP-T17 in dependency order, plus the REA.Bloodlines consumer epic (RB-T245 to RB-T272).
+- Run `D:\Projects\MindAttic\MindAttic.Agency\shared\docs-site\adopt-docs-site.ps1 -Repo AutoGamePlay -Api` for the GitHub Pages docs site (HOUSE-LAW-14).
+
+Already done by the REA.Bloodlines session:
+- the private GitHub repo `mindattic/AutoGamePlay` with an MIT LICENSE;
+- the clone through `clone-repo.ps1`, `wip` topic included;
+- `.agent/commands` pointers, the commit-msg hook and ticket registration (code AGP).
+
+# Approved plan
+
+# AutoGamePlay: LLM-played, self-ticketing playtests (Bloodlines first, any FPS/TPS game after)
 
 ## Context
 
-AutoGamePlay (AGP) is the engine-agnostic toolkit that lets an LLM agent (a Claude subagent driving the `agp` CLI) play and playtest first- and third-person PC games: it runs PlayScript (the gameplay scripting language, e.g. `Player.MoveForward(20m).TurnLeft(90)`), executes it with fast reflex controllers while the game is unpaused, pauses the game while the LLM thinks, watches with oracles, keeps frames in a budgeted in-RAM ring buffer, and files deduped bug tickets with evidence. The first consumer is REA.Bloodlines (the s&box port of Vampire: The Masquerade - Bloodlines, epic RB-T245..RB-T272); it must also work for Source 1, GZDoom, and later Unreal (UE4SS), Cyberpunk (CET) and EDuke32. Read docs/DESIGN.md (architecture, decisions), docs/PRIOR_ART.md and docs/ROADMAP.md first; keep the docs current with what you build. No game-specific code in this repo: game specifics live in the game''s own repo as an extension namespace. C#/.NET 10, nullable on, whole-number versions; any in-process LLM call goes through MindAttic.Legion (HOUSE-LAW-4). xUnit tests run against the Fake adapter.', '2026-10-28T03:49:59Z');
+**What the owner wants:**
+- An AI that plays the Bloodlines s&box port the way a human would: every button, then the whole campaign as each clan with several builds. It runs faster than real time, reloads saves, and compares the port with the original game (walkthroughs, YouTube, the original running from the owned install). Every bug becomes a ticket, and /allocate fixes, tests and closes it, all night, within pacing.
+- The machinery lives in a new, fully documented, engine-agnostic **AutoGamePlay** git repo. It targets first- and third-person games for now: Source/Source 2, Unreal, idTech/GZDoom, Build/EDuke32, REDengine/Cyberpunk.
+- A universal gameplay scripting language, e.g. `MoveForward(20m).TurnLeft(90)...`, that both drives the game and watches for bugs.
+- Basic capabilities first, because the port is "barely playable". Goals then expand into step tickets, so thousands of tickets accumulate before closures overtake them: "a marathon, not a sprint".
+- Screenshots must not kill the frame rate or fill the disk.
+
+**What exists today:**
+- The port is driven only through `sbox-cli` in editor play mode: `tools/sbox_import/compile.py` provides `Mcp`/`Editor`, and `playtest.py` provides `Session.cs()`, `ensure_playing()` and `wait_world()`.
+- Rich state is already reachable:
+  - `BloodlinesWorld.Current`, `BloodlinesCharacter.Sheet`, `PlayerCombat`.
+  - `DialoguePanel.Current.Session`, `GameScreens`, `FrontEnd`, `SaveSlots`.
+  - `CombatDirector` NavMesh and `AiNodeGraph`, plus about 25 `bl_*` ConCmds.
+- Gaps:
+  - No time-scale control: `CombatDirector.OnUpdate` overwrites `Scene.TimeScale` every frame, and `GameMenu` sets it to 0 while paused.
+  - Real-time clocks in IntroMovies, DialoguePresentation, InfoBar, toasts, Terminal and CinematicOverlay.
+  - Private razor button handlers (character creation, menus).
+  - Discipline hotkeys read raw `Input.Keyboard`.
+  - No player path-follow.
+  - No automation channel in the exported build.
+- Draft tickets RB-T245 to RB-T272 are filed and set back to *proposed*. RB-T234 (VCamera) stays queued, with notes in `work/t234`.
+
+**What prior art teaches** (research summary; links will be in AGP `docs/PRIOR_ART.md`):
+- Slow LLMs fail at real-time play unless the game pauses while they think (VideoGameBench "Lite").
+- Text state beats pixels (BALROG).
+- Hierarchical control works: slow mind, fast reflex executor (HLA, Lumine: 5 Hz in, 30 Hz out; Claude Plays Pokémon''s navigator tool).
+- Keep a verified skill library (Voyager, Cradle).
+- Use multiple test oracles and balance progress against exploration (Wuji, EA SEED).
+- Off-the-shelf VLMs are weak glitch spotters (GlitchBench), so use cheap triage first.
+- Building blocks:
+  - Frames: windows-capture (Windows Graphics Capture).
+  - Frame timing: PresentMon.
+  - Input: SendInput scan codes and raw mouse deltas.
+  - Engine timescale over speedhacks (host_timescale, UE4SS time dilation, GZDoom ZScript, CET).
+  - A dev sandbox: ViZDoom/GZDoom.
+
+## Architecture
+
+```
+ Claude subagent (slow mind: plans, writes PlayScript, judges, files tickets)
+        │  agp CLI: observe | run <script> | act | save/load | shot | bug | memory
+        ▼
+ AutoGamePlay host (C#/.NET 10)  ── pauses game (timescale 0) while the LLM thinks
+   ├─ PlayScript engine: parse → AST → executor ticking at 30–60 Hz (fast mind)
+   ├─ Reflex controllers: aim PID, path follower, strafe/circle, stuck recovery,
+   │                      key-hold watchdog (release-all on exit/crash)
+   ├─ Watchers/oracles (always on): crash, hang, stuck, out-of-bounds, NaN, log errors,
+   │                      frame-time spikes, frozen frame, error-texture heuristics, Expect()
+   ├─ Perception: state-first; frames into an in-RAM ring buffer (low-res, few fps), persisted
+   │                      only on bug/explicit shot, under a per-run disk quota
+   ├─ Bugs: fingerprint → dedupe vs open tickets → evidence bundle → IBugSink (tickets CLI)
+   └─ Memory: per-game knowledge store (routes, skills, facts, calibration), structured JSON
+        │  capability-negotiated adapter interface
+        ▼
+ Engine adapters ── s&box (WebSocket bridge component) · Source 1 (console + SendInput + pixels)
+                    · GZDoom (ZScript mod) · later Unreal (UE4SS Lua), Cyberpunk (CET), EDuke32 (CON)
+        ▼
+ Game-specific extension (lives in the game''s repo): REA.Bloodlines AutoPlay bridge
+   (dialogue, quests, disciplines, screens, clans) exposed as namespaced extra state/actions
+```
+
+### Design decisions
+
+1. **C#/.NET 10 core** follows the house norm, AutoWebNav''s layout, and s&box being C#. Any in-process LLM call goes through MindAttic.Legion (HOUSE-LAW-4). The main "LLM" is the Claude subagent driving the `agp` CLI, so the core needs no LLM SDK.
+2. **State first, pixels second.**
+   - Every adapter declares its capabilities: `Input` (required), `PlayerState`, `Entities`, `Teleport`, `TimeScale`, `SaveLoad`, `Console`, `Frames`, `Ui`.
+   - Missing capabilities degrade gracefully. For example, without `PlayerState` the position and heading estimate comes from frames, the console''s `getpos`, or memory reads as a last resort.
+3. **Real-time control is the executor''s job, never the LLM''s.**
+   - `MoveForward(20m)` holds Forward through the adapter and closes the loop on measured distance.
+   - `TurnLeft(90)` drives a yaw PID to the target heading, using calibrated counts per degree.
+   - The game runs at 1–8x while a script executes and sits at timescale 0 between scripts. LLM latency therefore costs no game time.
+   - Every finding records the timescale, and anything found at more than 1x is re-checked at 1x before filing.
+4. **Frame budget.**
+   - No per-step screenshots by default.
+   - Frames go into a ring buffer in RAM: about 10 s at 4 fps and 640×360, roughly 2–4 MB, captured through Windows Graphics Capture or the engine''s own screenshot call.
+   - Frames are persisted (JPEG) only when a watcher fires, an `Expect` fails, the script calls `Shot()`, or for visual-parity viewpoints.
+   - Each run has a disk quota (default 500 MB) and prunes the oldest non-evidence frames.
+   - Capture cost is measured with PresentMon and the capture rate auto-throttles if it costs more than 5% of FPS.
+5. **Adapter transport.**
+   - A local WebSocket JSON-lines protocol: the AGP host is the server and the game connects as a client. That works under s&box''s API whitelist (WebSocket client allowed, raw sockets not) and in exported builds, which fills the "no automation channel" gap.
+   - `sbox-cli run_csharp` stays as the editor fallback and bootstrapper.
+   - Fallbacks: Source 1 uses its console (`-dev -console`, command-line `+cmds`, keystrokes), GZDoom uses `netevent` plus a log file, Unreal uses the UE4SS Lua socket or a file.
+6. **Bloodlines specifics stay in REA.Bloodlines.** It implements the generic s&box bridge, adds a `bloodlines.*` extension namespace (dialogue, quests, clans, disciplines, screens), and holds its own PlayScript skill and route library and walkthrough data.
+
+## PlayScript: the universal gameplay scripting language
+
+PlayScript is one AST with two front ends:
+- a text DSL (`.play` files and inline `agp run "<script>"`), which is what Claude writes;
+- a C# fluent builder, which tests and adapters use.
+
+Both read the same way.
+
+```
+Player.MoveForward(20m).TurnLeft(90)
+  .MoveTo(Entity("Mercurio")).Until(Near(2m)).Timeout(30s)
+  .LookAt(Entity("Mercurio")).Use()
+  .Say(2).Say(1)
+  .Checkpoint("met_mercurio")
+  .Expect(Quest("mercurio") >= 1)
+
+skill ClearRoom(radius = 15m):
+  while Any(Hostile, within: radius):
+    Player.Target(Nearest(Hostile)).CircleStrafe(3m).Attack().Until(Target.Dead).Timeout(20s)
+
+route haven_to_bar: Waypoints(Landmark("sm_haven_exit"), Pos(120m, 4m, 0), Door("bar_front"))
+watch always: Expect(Player.Health > 0), Expect(NoNewErrors), Expect(Progress within 15s)
+```
+
+| Category | Elements |
+|---|---|
+| Units | m, cm, s, ms, deg; adapters convert to engine units (Source inch = 0.0254 m) |
+| Selectors | `Entity(name)`, `Nearest(filter)`, `Class("npc_*")`, `Landmark`, `Door`, `Pos(x,y,z)`, `Ui("New Game")`, `Hostile`, `Usable` |
+| Movement | `MoveForward/Back/Left/Right(d)`, `Run`, `Walk`, `Sneak`, `Jump`, `Crouch`, `MoveTo(sel)`, `Follow(route)` |
+| Looking | `TurnLeft/Right(deg)`, `LookUp/Down(deg)`, `LookAt(sel)`, `Face(heading)` |
+| Interaction | `Use`, `Attack`, `Block`, `Reload`, `Select(slot)`, `Press(action, dur)`, `Hold`/`Release` (raw escape hatch) |
+| UI | `Click(Ui(...))`, `Say(n)`, `Continue`, `OpenScreen(name)`, `Type(text)` |
+| Modifiers | `.Until(cond)`, `.While(cond)`, `.Timeout(t)`, `.Retry(n)`, `.OrElse(chain)`, `.Speed(x)` |
+| Control | `if`/`while`/`repeat`, `try`/`recover`, `skill` definitions with parameters, `route` definitions |
+| State and checks | `Checkpoint(name)` (named save), `Load(name)`, `Shot(tag)`, `Expect(cond)`, `watch` blocks, `Bug(summary)` |
+
+**Execution:**
+- Each verb is a resumable step with explicit success, failure and blocked results.
+- The run returns a compact report: steps done, where it stopped and why, a state delta, watcher hits, and evidence paths.
+- Adapters expose extensions as namespaced verbs, e.g. `bloodlines.Feed()`, `bloodlines.Discipline("Celerity")`.
+- Skills and routes that work three times are promoted into the game''s memory library, in the Voyager style.
+
+## How an agent session plays (the loop the docs teach)
+
+1. **Resume.** Load the run log and memory, then `agp load <save>`.
+2. **Observe.** The compact text state, about 2–4 KB: player, nearby entities, UI, quest delta, errors. Frames are taken only when the agent judges vision is needed, e.g. a visual check or confusion.
+3. **Plan the next sub-goal** from the ticket and the walkthrough data. Write or pick a PlayScript and run it with the game unpaused at the script''s speed.
+4. **Read the report.**
+   - On a watcher or Expect hit: `agp bug` files the defect. It is deduped and carries evidence: save, position, script, frames.
+   - Then decide whether to work around it (reload or another route) or block.
+5. **Checkpoint** on progress. Every N minutes, write the run log and memory so a fresh session can resume.
+6. **Planning rule for goal tickets.** A goal ticket first splits into step tickets (linked with `requires`, approved under the epic''s standing approval). It stays open until they close.
+
+## Repos and work breakdown
+
+### A. New repo `mindattic/AutoGamePlay`
+
+**Setup:** private, MIT licence file. Ticket code **AGP**, registered with `tickets repos rollout tickets --apply`.
+
+**Steps:** `gh repo create` → `mindattic-agent-standard\clone-repo.ps1 -Repo AutoGamePlay` → `install.ps1` + `install-commit-hooks.ps1` → `adopt-docs-site.ps1 -Repo AutoGamePlay -Api`.
+
+**Layout** (AutoWebNav-style: a core with no host dependency, hosts and adapters as separate projects):
+- `src/AutoGamePlay.Core`: model, capabilities, units, session.
+- `AutoGamePlay.PlayScript`: lexer, parser, AST, builder, executor.
+- `AutoGamePlay.Control`: PIDs, path follow, watchdog, calibration.
+- `AutoGamePlay.Perception`: ring buffer, quota, cheap detectors.
+- `AutoGamePlay.Oracles`
+- `AutoGamePlay.Bugs`: fingerprint, dedupe, `IBugSink`, `TicketsCliSink`.
+- `AutoGamePlay.Memory`
+- `AutoGamePlay.Windows`: SendInput daemon, WGC capture, process launch/attach, PresentMon.
+- `AutoGamePlay.Cli` (`agp`)
+- Adapters:
+  - `AutoGamePlay.Adapters.Fake`: an in-memory 3D test world.
+  - `.Sbox`: the host side, plus a drop-in s&box bridge component library.
+  - `.Source1`
+  - `.GZDoom`
+  - stubs and docs for `.Unreal` (UE4SS), `.Cyberpunk` (CET) and `.EDuke32` (CON).
+- `tests/` (xUnit with the Fake adapter).
+
+**Docs** (the "1000-page plan" lives here as the living spec):
+- README, `DESIGN.md`, `PRIOR_ART.md`
+- `PLAYSCRIPT.md` (grammar in EBNF plus reference), `ADAPTERS.md` (capability contract and an authoring guide), `PERCEPTION.md` (budgets), `ORACLES.md`, `BUGS.md`, `MEMORY.md`
+- `PLAYBOOK.md` (how an LLM plays; the loop above), `SPEED.md`, one `ENGINES/<engine>.md` per engine, `ROADMAP.md`
+
+**Tickets, in order** (each is a ticket; `requires` links follow the order):
+1. AGP-T2: scaffold the repo and write DESIGN, PRIOR_ART and ROADMAP, moving this plan''s content in and expanding it.
+2. PlayScript spec, `PLAYSCRIPT.md`.
+3. Core model and capability contract, plus the Fake adapter.
+4. PlayScript parser and AST.
+5. Executor with modifiers and watch blocks.
+6. Reflex controllers and the key-hold watchdog.
+7. Oracles.
+8. Perception ring buffer and quota.
+9. Bug reporter with dedupe and the tickets sink.
+10. Memory store, and the skill/route library format.
+11. The `agp` CLI.
+12. Windows backends: SendInput, Windows Graphics Capture, PresentMon.
+13. s&box adapter and bridge library (WebSocket; verify the whitelist first).
+14. Source 1 adapter, which drives the original Bloodlines from the owned install for visual parity.
+15. GZDoom adapter: an engine-agnostic proof on a free, deterministic sandbox.
+16. Unreal, Cyberpunk and EDuke32 adapter design docs and stubs.
+
+### B. REA.Bloodlines (re-scope the proposed RB-T245 to RB-T272)
+
+**Supersede:**
+- RB-T245 (design) is replaced by AGP-T2 plus an RB `docs/AUTOPLAY.md` that holds only the Bloodlines integration.
+- RB-T263 (library) is replaced by AGP tickets 3–11.
+
+**Re-scope RB-T246, the bridge.** Build it on the AGP s&box bridge library:
+- A `GameObjectSystem` that injects `Input.AnalogMove`/`AnalogLook`/`SetAction` after `OptionsSystem`''s -1000 stage.
+- State snapshots from `BloodlinesWorld`, `BloodlinesCharacter`, `PlayerCombat`, `DialoguePanel.Session`, `GameScreens` and `LoadingScreen`.
+- Actions calling the existing public methods: `PlayerCombat.Attack`/`FeedFor`/`ActivateDiscipline`, `Session.Choose`/`Continue`, `SaveSlots.Save`/`Load`, `FrontEnd.StartNewGame`, `Cinematics.MoveTo`.
+- A UI element registry so `Ui("New Game")` and `CharacterCreationPanel` buttons are clickable by stable id, instead of reflecting into private razor methods.
+- Discipline hotkeys routed through actions rather than raw `Input.Keyboard`.
+
+**Keep, plus additions to RB-T262 (speed):**
+- An autoplay speed multiplier applied inside `CombatDirector.OnUpdate` and `GameMenu`, which today own `Scene.TimeScale`.
+- The real-time clocks listed above moved to game time, or made skippable under autoplay.
+- `IntroMovies.Current` and skip.
+- The `Time()` wall-clock note.
+
+**Add new RB tickets:**
+- Player path-follow over the NavMesh plus `AiNodeGraph.Plan`, with NavMesh bounds widened to the whole map.
+- Original-game reference capture through the AGP Source 1 adapter, using the owned install from `setup.ps1` and never the GOG folder.
+
+**Keep:**
+- Basics RB-T247 to RB-T261, re-pointed to "implement as PlayScript verbs and skills plus bridge support, verify, ticket defects".
+- Walkthrough data RB-T264.
+- Visual parity RB-T265, now using AGP Perception and the Source 1 adapter.
+- UI coverage RB-T266.
+- Brujah runs RB-T267 to RB-T271.
+- Fan-out RB-T272, minus its library-extraction half, which is now AGP.
+
+**Ticket growth:** a goal ticket plans its steps into new tickets, and bugs come in as `fix` tickets that need no approval. /allocate works them all. The workspace memory `project_autogameplay_marathon` records the strategy.
+
+## Order of execution once approved
+
+1. Create the AGP repo and register its ticket code. Add a pointer in RB `docs/AUTOPLAY.md`.
+2. Re-scope the RB tickets: edit descriptions, mark RB-T245/T263 superseded, add the new ones and the links. File the AGP tickets with links.
+3. Approve the chain (the owner asked for the whole epic). /allocate then runs it:
+   - AGP 1–11 and RB bridge/speed in parallel where independent, then the basics, then the campaign.
+4. Cross-repo: this CLI''s /allocate covers REA.Bloodlines only. The owner runs `/allocate on -repo=REA.Bloodlines,AutoGamePlay` (or `/crossrepo`) so the AGP tickets get worked. Agents can''t turn that on themselves.
+
+## Verification
+
+- **AGP unit tests:** parser round-trips, and the executor against the Fake adapter (MoveForward(20m) ends within tolerance; TurnLeft(90) gives heading +90±1°; Until/Timeout/OrElse semantics). Oracles fire on scripted stuck, NaN and error cases. Ring buffer stays inside its quota. Dedupe collapses repeated fingerprints. All run with `dotnet test` in CI.
+- **s&box end to end:** in editor play mode, `agp run "Player.MoveForward(5m).TurnLeft(90).Jump().Checkpoint(''t'')"` on devtest. Then `agp load t` restores the position. A forced error files exactly one deduped ticket with evidence. Capture costs under 5% FPS (PresentMon).
+- **Engine-agnostic proof:** the same movement script passes on GZDoom and on the original Bloodlines (Source 1 adapter) with only the adapter changed.
+- **Speed:** devtest and one hub reach the same end state at 1x and 8x; the measured ratio goes into `SPEED.md`.
+- **Campaign:** progress is measured by tickets closed and chapters reached in the campaign log. The marathon is healthy when, per week, fix closures overtake new filings.
+
+## Risks / limits (documented honestly in DESIGN.md)
+
+- s&box API whitelist: WebSocket client availability must be verified first (AGP ticket 13). The fallback is `run_csharp` in the editor only.
+- Timescale side effects can create bugs that are not real, which is why findings are re-checked at 1x.
+- Mouse sensitivity and acceleration need per-game calibration.
+- Anti-cheat makes online games out of scope: offline single-player only.
+- Commercial-engine adapters (Unreal, Cyberpunk) depend on mod loaders that break when the game patches, so pin the game builds.
+- LLM context per session is finite, so progress lives in saves, the run log and the memory store, never in the conversation.
+
+
+# Prior-art research (2026-10-27; source for docs/PRIOR_ART.md)
+
+Licences come from mirrors or package indexes unless noted; verify each before relying on it.
+
+## LLM/VLM game agents
+
+| Project | Link | Licence | What we take from it |
+|---|---|---|---|
+| Cradle (BAAI) | https://github.com/BAAI-Agents/Cradle, https://arxiv.org/abs/2403.03186 | MIT (unverified) | Closest prior design: screenshot in, keyboard and mouse out, on real PC games. Its loop has info gathering, self-reflection, task inference, skill curation (code skills), action planning and memory. Dormant since Nov 2024. |
+| VideoGameBench | https://opencv.org/videogamebench/ | ? | Frontier models nearly fail in real time. Its "Lite" mode pauses the game while the model thinks; we pause or slow-mo the game while the LLM thinks. |
+| lmgame-Bench / GamingAgent | https://github.com/lmgame-org/GamingAgent, https://arxiv.org/abs/2505.15146 | ? | A Gym-style interface, plus a harness that can be switched on and off to measure what it adds. |
+| BALROG | https://arxiv.org/abs/2411.13543 | ? | Models do worse with images than with text. We read state first and use pixels second. |
+| Voyager | https://github.com/MineDojo/Voyager | MIT | An automatic curriculum, a library of verified code skills, and self-verification. Source of our skill library and promotion rules. |
+| SIMA / SIMA 2 (DeepMind) | https://deepmind.google/blog/sima-2-an-agent-that-plays-reasons-and-learns-with-you-in-virtual-3d-worlds/ | closed | Language instructions over keyboard and mouse in 3D games. One model generates tasks and another scores them. |
+| NVIDIA NitroGen | https://nitrogen.minedojo.org/ | NVIDIA licence | An open vision-action model (gamepad). A possible future fast reflex layer; weak on mouse and keyboard. |
+| Lumine (ByteDance) | https://arxiv.org/html/2511.08892v1 | paper | Hierarchy evidence: 5 Hz perception, 30 Hz keyboard and mouse output, and it "thinks only when needed". Completed hours-long quests. |
+| Claude Plays Pokemon | https://latent.space/reading/claude-plays-pokemon/ | n/a | A minimal loop, summarised history, a memory knowledge base, and a navigator tool (the LLM picks the destination, code walks there). Pitfall: unstructured notes, so we use structured memory. |
+| HLA, hierarchical control | https://arxiv.org/pdf/2312.15224, survey https://arxiv.org/pdf/2404.02039 | papers | A slow mind (LLM), a fast mind (macro actions) and an executor (high-frequency scripts). This is our architecture. |
+| Anthropic/OpenAI computer use | vendor docs | n/a | Fine for menus. Too slow and too absolute-cursor-based for mouse-look combat. |
+
+## Automated game testing
+
+- **Unreal Automation and Gauntlet** (Epic docs). Needs project or source access, so we take only its ideas: a session launcher, a TestController, log and crash parsing, artifact collection.
+- **AltTester** (Unity SDK GPL-3.0; Unreal SDK has a free Lite and a paid Pro tier) and **GameDriver** (commercial). Both need an SDK inside the game. We take their object-query API idea for in-engine bridges.
+- **EA SEED**: curiosity-driven RL coverage (https://arxiv.org/pdf/2103.13798) and CCPT (https://arxiv.org/pdf/2202.10057). We take coverage heatmaps from position logs and "explore around a known route".
+- **Ubisoft La Forge**: deep RL for navigation in AAA games, a reachability check without a navmesh. Also related: 3D navigation testing (https://arxiv.org/pdf/2009.07015) and CA2 (https://arxiv.org/pdf/2605.13918).
+- **Wuji** (NetEase, ASE 2019). A test agent must balance progress against exploration, and uses several oracles (crash, stuck, abnormal state).
+- **Visual bug detection**:
+  - GlitchBench (CVPR 2024, https://glitchbench.github.io): off-the-shelf VLMs do poorly at spotting glitches.
+  - VideoGameBunny (WACV 2025): a small model tuned on game images beats a large general one.
+  - Zero-shot CLIP retrieval of bug videos, VideoGameQA-Bench, and bug frame retrieval (https://arxiv.org/pdf/2508.04895).
+  - What we do: cheap triage (hashes, SSIM, CLIP or a small VLM) first, and only flagged frames go to the LLM.
+
+## Windows tooling
+
+- **Input**:
+  - SendInput with scan codes and relative `MOUSEEVENTF_MOVE`. pydirectinput (https://github.com/learncodebygaming/pydirectinput, MIT, unverified) shows the method. Pitfalls: enhance pointer precision, the LLMHF_INJECTED flag, needing focus.
+  - Interception (kernel driver): opt-in only, because anti-cheat flags it.
+  - ViGEmBus/vgamepad: end of life since Aug 2023; optional backend only.
+  - Write our own small native input daemon with release-all on exit.
+- **Capture**:
+  - windows-capture (https://github.com/NiiightmareXD/windows-capture, MIT, unverified; WGC plus DXGI, single window, hardware encoder).
+  - DXcam/BetterCam (Desktop Duplication).
+  - Pitfalls: exclusive fullscreen (force borderless), HDR, per-frame PNG writes killing FPS.
+  - Evaluate MindAttic.Capture.Windows first.
+- **Frame timing**: PresentMon (MIT), ETW CSV output, for hitch and stall detection.
+- **Memory**: pymem-style reads as a last resort; pointer chains break on patches.
+- **Speed hacks**: Cheat Engine hooks timeGetTime, GetTickCount and QueryPerformanceCounter; speedhack-rs (https://github.com/Hirtol/speedhack-rs) is a clean reference. Prefer the engine''s timescale. Fixed-tick physics caps the speed-up; audio, video and network break.
+
+## Engine hooks
+
+- **Source**:
+  - `host_timescale` (needs `sv_cheats 1`), getpos/setpos/setang, save/load, `con_logfile`.
+  - `-dev -console` and `+cmds` on the command line.
+- **s&box**:
+  - `Scene.TimeScale`.
+  - An in-game component bridge. Verify the API whitelist for a WebSocket client.
+  - `sbox-cli run_csharp` (MCP) in the editor.
+- **Unreal**:
+  - `slomo` (often stripped from shipping builds).
+  - RE-UE4SS (https://github.com/UE4SS-RE/RE-UE4SS, MIT): Lua hooks, time dilation, console unlock.
+  - Its AOB signatures can break on patches.
+- **GZDoom**: ZScript EventHandler with netevent, and the console log.
+- **ViZDoom** (https://vizdoom.farama.org/, MIT for its own code): a deterministic sandbox with ground-truth buffers.
+- **EDuke32**: CON scripting and gamevars (https://wiki.eduke32.com/wiki/Scripting).
+- **Cyberpunk 2077**: Cyber Engine Tweaks (Lua; MIT, unverified) and redscript. No anti-cheat in single player.
+
+## Pitfalls to design for
+
+- Anti-cheat: offline single player only.
+- Timescale artefacts: re-check every finding at 1x.
+- Mouse sensitivity and acceleration: calibrate per game.
+- Fragile hooks: pin game builds.
+- A stuck held key after a crash: watchdog release-all.
+- Capture cost: in-RAM ring buffer and quota.', '2026-10-28T03:52:36Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T3', 'Write the complete PlayScript spec from docs/DESIGN.md''s sketch: lexical rules (units m/cm/s/ms/deg, strings, numbers, identifiers), EBNF grammar for chains, modifiers (.Until/.While/.Timeout/.Retry/.OrElse/.Speed), statements (if/while/repeat/try-recover), definitions (skill with parameters and defaults, route), watch blocks and Expect, Checkpoint/Load/Shot/Bug, adapter extension verbs (namespace.Verb), the semantics of each verb (what success, failure and blocked mean, tolerances), how conditions are evaluated against observations, and the run report JSON schema. Include many worked examples (FPS and TPS), and the C# fluent builder equivalents so both front ends read alike. Spec only; implementation is later tickets.
 
 ## Context
@@ -45807,12 +48345,30 @@ Scope:
 - CLI: remove/replace every --status-based filter and setter on list-books/clone-book etc.; add a Timeline get/set command with bisection-insert + restripe, scoped per Universe + integer bracket.
 - Hub API + MCP tool schemas: drop Status from node projections, add Timeline.
 - Do NOT attempt to actually assign real Timeline values to the 37 existing GLMZ books in this ticket -- that''s a separate literary-chronology campaign, book by book, author in the loop. This ticket only builds the schema + tooling.', '2026-10-27T22:13:24Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T322', 'Author 2026-10-27: Season 1 of GLMZ is twelve books on the universe timeline 1.0-1.9: Bushido Coda, Critical Mass, Death Whispers in a Cat''s Ear, Mnemosync, Pixel, Sparrow, Steppin'' Razor, Testament, The Long Cut, Underclan, Vultures at the Door, Read the Room. They culminate in the Cyberocracy trilogy (Pieces, Wells, The Ur), where everything is revealed. Every other GLMZ story (Attendance, Between the Lines, Crimson & Chrome, Magenta & Gunmetal, Neon & Rust, The Way Down, The Way Up, and the rest) is now an event for consideration: material Season 1 may draw on, not a book to bring up to Season 1 standard.
+
+Method per book: the GLMZ wheel (that book read against the current text of every other Season 1 book and Cyberocracy) plus the But/Therefore lens (no AND THEN joins), plus fixing misattributions (lines given to the wrong speaker or POV, entity tags bound to the wrong character or to common words). Archive before edits, hand splices, read back, restate Descriptions on every changed beat.
+
+No-conflict rule: one session holds one book ticket at a time (claim it before touching the book); Cyberocracy tickets wait on all twelve.', '2026-10-28T04:00:54Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T206', 'RB-T172 verified in the editor (sm_hub_1, sm_pier_1, sp_soc_2): pedlight_flash, lightbar, arcade screens and oilriga frames on g_tColor; blackwater water_normal frames on g_tNormal; sewer_water and surf offsets; fire_pallet selfillum flicker; clouds.vmat g_vTexCoordScrollSpeed 0.043,0.025. Not reachable from the maps imported so far: clublight, TV screens, highlights. Import a map that uses them, play, read the attributes with sbox-cli run_csharp.', '2026-10-26T05:18:06Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T207', 'Left out of RB-T193 (the werewolf''s hint navigation), all in vampire.dll''s CNPC_VWerewolf:
 
 - **HandleAnimEvent 0x103d88e0**: event 2100 (0x834) shakes the view at its Bip01 (amplitude 16, frequency 2, duration 2, radius 1500, 0x101cdba0); event 2101 (0x835) plays the activity''s sound (0x103d8df0: smash_door_1/2 for the smashes and the death into/attack/outof, squeezethough_front_quick/slow_1/2 for the squeezes, Skylight_Smash_1/2 for the roof jump down, fence_leap_1/2, patio_leap, Jump_Landing_1 for the platform jumps and ACT_LEAP, Roar_Long_1, death_finale (attenuation 0x8c), Air_Sniff_1 for ACT_SNIFFING, the NPC''s idle/alert sounds for ACT_ROAR_SHORT/ACT_DEATH_ATTACK/ACT_DESTROY_STAIRS); events 2050..2053 the footsteps (werewolf_footstep_sounds/_shakes, both 0 by default). The import (tools/sbox_import) lists only event 1003 per sequence: these need the events too, and NpcAnimator to hand them on.
 - **UpdateFakeHull 0x103d93b0**: while it moves (+0x5f2d) the Bip01 box (the hull x 1.25 about the bone) pushes and hurts the player it overlaps: knockback 0x79/0x7a/0x7b by the player''s side, 20 damage at most once a second (+0x66f4), the push 500 along its own move.
 - **SnapToAnimationPoint 0x103d9f90**: the port stands in the hint''s end entity for the Bip01 root where the sequence ends (no root motion is played).', '2026-10-26T06:21:59Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T234', '
+
+## Progress note (2026-10-27, first attempt aborted by pacing; nothing committed)
+
+Recovered from vampire.dll, with notes in work/t234 (range.txt, ov*.txt, base.txt, fp.txt, vt*.txt, fields.txt, gs/) and the Ghidra project copy in work/ghidra-t234:
+- CNPC_VCamera has no sweep. The sweep, FOV and alarm are security_camera (CSecCamera, already ported in RB-T114).
+- VCamera: spawned non-solid with FOV 0.2; ideal state pinned to 3 (Alert); passes a seen enemy to its squad (SquadNewEnemy 0x103161a0); schedule 342 (SCHED_VCAMERA_WAIT_INFINITE); only the player is a valid enemy, and it skips the notarget check.
+- npc_VCameraSecurity sees only through its linked_camera''s player-spotted test and FOV check (0x1020cd30, 0x1020cc60), and removes itself when that camera is gone. Only la_museum_1 uses it.
+- OnFoundPlayer fires from CAI_BaseNPC::GatherEnemyConditions (0x10270b20) the first time line of sight to the current enemy passes, when that enemy is the player. Flag 0x20000 limits it to once until the enemy is lost.
+
+Still to do:
+1. Find how a camera acquires the player as its enemy (player_reaction is D_NU 0).
+2. Port the above into NpcAi/NpcBrain. Today the port fires OnFoundPlayer only on entering combat.', '2026-10-28T03:55:10Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T242', '## Story
 As a player on any modern display, the game runs correctly at my monitor''s aspect ratio.
 
@@ -45857,7 +48413,60 @@ Document the API in docs/AUTOPLAY.md and build it in the editor (0 errors).
 
 The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
 
-Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:04:36Z');
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### Concrete hooks found by the runtime survey (2026-10-27)
+
+- **Input injection.** Use a `GameObjectSystem` on `Stage.StartUpdate`/`StartFixedUpdate` ordered *after* `OptionsSystem` (`Code/Options/OptionsSystem.cs`, order -1000). OptionsSystem rewrites `Input.SetAction`, `AnalogMove` and `AnalogLook` from raw keys every frame, so anything injected earlier is lost.
+- **Discipline hotkeys** are read with raw `Input.Keyboard.Pressed` in `PlayerCombat.DisciplineKeys`. Route them through actions or call the methods directly.
+- **Actions** (call the public methods):
+  - `PlayerCombat`: `Attack`, `Reload`, `Select(i)`, `Holster`, `TryFeed`, `FeedFor(s)`, `ActivateDiscipline(name)`, `UseSelectedDiscipline`, `UseHotkey(i)`, `CastTargeted`.
+  - Dialogue: `DialoguePanel.Current.Session.Choose(i)` and `Continue()`.
+  - `SaveSlots.Save`/`Load`; `FrontEnd.StartNewGame`/`LoadGame`/`NewGame`; `NewGameIntro.Start(NewGameIntro.Default(template, female), movies)`.
+  - `Cinematics.MoveTo(entity, pos, yaw)` to teleport; `PlayerController.EyeAngles` to look; `BloodlinesWorld.FireInput` and `ConsoleCommand`.
+- **State:**
+  - `BloodlinesWorld.Current`: `MapName`, `Player`, `AllEntities()`, `ScriptLog` (lines starting "! " are errors), `SinceStart`.
+  - `BloodlinesCharacter`: `Sheet`, `Items`, `Quests`, `Money`, `ClanCode`. On the sheet, `Health` counts damage: dead when `Health >= MaxHealth`.
+  - `PlayerCombat`: `Weapon`, `Target`, `IsFeeding`.
+  - Also `CombatDirector.Current` (`Npcs`, `NavReady`), `GameScreens.Current`, `LoadingScreen.Current`, `CinematicDirector.Current` (`CameraActive`, `Immobilized`) and `DialoguePresentation.Current`.
+- **UI element registry.** Character creation (`CharacterCreationPanel`: `PickClan`, `Buy`, `DoneClicked`), `GameMenu.razor`, `CharacterScreens.razor` and `BarterScreen.razor` handlers are private. Add a small registry where each clickable element registers a stable id and a click action, so the bridge can list and press them. Don''t use reflection.
+- **Exported build.** It has no automation channel today. AGP-T14''s WebSocket bridge is meant to fix that; until it lands, use `sbox-cli run_csharp` in editor play mode (`tools/sbox_import/playtest.py`''s `Session` shows the pattern).
+
+## Progress note (2026-10-27, first attempt aborted by pacing; nothing committed)
+
+The unfinished drafts were moved to `work/t246/` (`AutoPlay.cs`, `AutoPlayUi.cs`), because the s&box editor compiles `Code/` automatically and `AutoPlay.cs` calls a missing `AutoPlaySystem`. Move them back to `src/Bloodlines.Sbox/Code/AutoPlay/` and finish them.
+
+- **`AutoPlayUi.cs`**: a registry of UI elements by stable id (id, label, whether pressable, click action).
+- **`AutoPlay.cs`**:
+  - the `bl_autoplay` convar, off by default;
+  - `Observe()`, the compact JSON state;
+  - `MapInfo()`;
+  - `Act({"do":...})`, which covers teleport, face, goto, use, attack, reload, select, holster, discipline, cast, hotkey, feed, talk, choose, continue, press, screen, hold, crouch, jump, wait, cancel, the save commands, timescale, fire and console.
+  - It was edited by script after the last read: re-read it before building.
+
+**Still to do:**
+1. **`AutoPlaySystem.cs`** (the write was refused): a `GameObjectSystem` at order -900, after `OptionsSystem`''s -1000, that runs goto, hold and wait by injecting input. For now goto is a straight-line walk reporting arrived, blocked or timeout; RB-T273 replaces it with NavMesh pathing.
+2. **`Combat/CombatDirector.cs`**, around line 411: multiply by `AutoPlay.WorldTimeScale`.
+3. **`FrontEnd/MenuButton.razor`**: register each button as `menu.<slug>` and add a public click method.
+4. **`docs/AUTOPLAY.md`**: the API write-up.
+5. **Build**: least sure of `IPressable.Tooltip.Title` and of `JsonNode` passing the s&box whitelist.
+6. Land and close.', '2026-10-28T04:09:19Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T247', 'Autoplay basic capability: launch: start the port from a cold editor (or the exported build) and reach the title menu, reporting load time and any log errors
 
 The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
@@ -45872,7 +48481,31 @@ The port is barely playable yet, so the playtest campaign starts with basic capa
 
 The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
 
-Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:04:39Z');
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.', '2026-10-28T03:53:47Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T248', 'Autoplay basic capability: skip the intro movies and any skippable cinematic (Esc/click as in the original), and detect when a movie is playing
 
 The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
@@ -45887,7 +48520,31 @@ The port is barely playable yet, so the playtest campaign starts with basic capa
 
 The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
 
-Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:04:42Z');
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.', '2026-10-28T03:53:48Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T249', 'Autoplay basic capability: start a new game and complete character creation for one clan (questionnaire and quick pick), ending in control of the player in the first map
 
 The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
@@ -45902,7 +48559,31 @@ The port is barely playable yet, so the playtest campaign starts with basic capa
 
 The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
 
-Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:04:44Z');
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.', '2026-10-28T03:53:49Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T250', 'Autoplay basic capability: look around: turn left/right and look up/down by given angles, read the camera angles back, screenshot each direction
 
 The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
@@ -45917,7 +48598,31 @@ The port is barely playable yet, so the playtest campaign starts with basic capa
 
 The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
 
-Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:04:47Z');
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.', '2026-10-28T03:53:50Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T251', 'Autoplay basic capability: move: walk/run forward, back, strafe, by distance, detecting blocked movement and arrival
 
 The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
@@ -45932,7 +48637,31 @@ The port is barely playable yet, so the playtest campaign starts with basic capa
 
 The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
 
-Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:04:50Z');
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.', '2026-10-28T03:53:52Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T252', 'Autoplay basic capability: jump and crouch (and crouch-walk/sneak), checking height, landing and collision
 
 The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
@@ -45947,7 +48676,31 @@ The port is barely playable yet, so the playtest campaign starts with basic capa
 
 The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
 
-Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:04:53Z');
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.', '2026-10-28T03:53:53Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T253', 'Autoplay basic capability: use/interact with the nearest usable entity (door, button, item pickup, container), reporting what happened
 
 The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
@@ -45962,7 +48715,31 @@ The port is barely playable yet, so the playtest campaign starts with basic capa
 
 The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
 
-Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:04:55Z');
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.', '2026-10-28T03:53:55Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T254', 'Autoplay basic capability: talk: start a dialogue with an NPC, read the line and numbered options, choose options to the end of the conversation
 
 The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
@@ -45977,7 +48754,31 @@ The port is barely playable yet, so the playtest campaign starts with basic capa
 
 The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
 
-Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:04:58Z');
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.', '2026-10-28T03:53:57Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T255', 'Autoplay basic capability: open and close each in-game screen (pause, character sheet, inventory, quest log, map) and read its contents
 
 The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
@@ -45992,7 +48793,31 @@ The port is barely playable yet, so the playtest campaign starts with basic capa
 
 The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
 
-Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:05:01Z');
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.', '2026-10-28T03:53:58Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T256', 'Autoplay basic capability: quicksave, quickload and named save/load through the bridge, verifying the restored state matches (map, position, stats, inventory, quest states)
 
 The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
@@ -46007,7 +48832,31 @@ The port is barely playable yet, so the playtest campaign starts with basic capa
 
 The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
 
-Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:05:03Z');
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.', '2026-10-28T03:54:00Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T257', 'Autoplay basic capability: navigate: go to a named entity or landmark in the same map by pathfinding (navmesh / node graph), reporting arrival, blocked or no path
 
 The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
@@ -46022,7 +48871,31 @@ The port is barely playable yet, so the playtest campaign starts with basic capa
 
 The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
 
-Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:05:06Z');
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.', '2026-10-28T03:54:01Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T258', 'Autoplay basic capability: take a level transition (door / changelevel trigger) and arrive on the right landmark of the next map
 
 The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
@@ -46037,7 +48910,31 @@ The port is barely playable yet, so the playtest campaign starts with basic capa
 
 The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
 
-Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:05:09Z');
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.', '2026-10-28T03:54:02Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T259', 'Autoplay basic capability: fight: target, melee and ranged attack an NPC, block/dodge, read health of both, detect death; feed on a victim
 
 The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
@@ -46052,7 +48949,31 @@ The port is barely playable yet, so the playtest campaign starts with basic capa
 
 The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
 
-Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:05:12Z');
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.', '2026-10-28T03:54:03Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T260', 'Autoplay basic capability: use a discipline (activate, read blood cost and effect, deactivate)
 
 The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
@@ -46067,7 +48988,31 @@ The port is barely playable yet, so the playtest campaign starts with basic capa
 
 The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
 
-Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:05:15Z');
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.', '2026-10-28T03:54:05Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T261', 'Autoplay basic capability: die and reload: detect player death / Final Death screen and recover from the last save
 
 The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
@@ -46082,7 +49027,31 @@ The port is barely playable yet, so the playtest campaign starts with basic capa
 
 The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
 
-Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:05:18Z');
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### How to implement under AutoGamePlay
+
+Implement this capability on both sides:
+- in the RB bridge (RB-T246): the observation fields and actions it needs;
+- as PlayScript verbs or skills: the generic verb comes from AutoGamePlay; Bloodlines-specific ones go in the `bloodlines.*` namespace or this repo''s skill library.
+
+Verify it by running a PlayScript through `agp` once AGP-T12 (the CLI) and AGP-T14 (the s&box adapter) have landed. Until then, call `sbox-cli run_csharp` directly. Record the result in `docs/AUTOPLAY.md`''s capability checklist.', '2026-10-28T03:54:06Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T262', 'Faster-than-real-time play for automated runs: make the s&box port run correctly at 4x-16x game speed and let automation skip waiting.
 
 - A time-scale control (Scene.TimeScale or equivalent) exposed as a convar and through the AutoPlay bridge; verify physics, AI think/schedules, animations, scripted sequences, dialogue/voice timing, timers in map Python scripts and the loading screen stay consistent at speed (measure: devtest plus one hub map at 1x vs 8x reach the same state). Fix every place that uses real time where game time is meant.
@@ -46094,7 +49063,41 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T262', 'F
 
 The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
 
-Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:05:21Z');
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+### Concrete hooks found by the runtime survey (2026-10-27)
+
+- **`Scene.TimeScale` is owned by two places.**
+  - `CombatDirector.OnUpdate` (about line 411) overwrites it every frame with Celerity times `SoundSchemeManager.EngineScale`.
+  - `GameMenu` sets it to 0 while a pausing screen is open, then restores it.
+  - Apply the autoplay multiplier there; don''t fight them from outside. A multiplier of 0 is also how AutoGamePlay pauses the game while the LLM thinks.
+- **Real-time clocks that won''t speed up:**
+  - `IntroMovies._started` (movie playback itself);
+  - `DialoguePresentation._lineClock` (voice and lip timing);
+  - the `InfoBar` queue;
+  - `GameMenu` toasts;
+  - `TerminalScreen`;
+  - `CinematicOverlay` sign timers.
+  Move each to game time, or make it skippable under autoplay.
+- **Python `Time()`** (`BloodlinesWorld.Time()`, about line 651) returns wall-clock Unix time. Check what the original returns and whether scripts rely on it.
+- **Movies.** `IntroMovies` has no static `Current`. Add one so the bridge can detect a playing movie and skip it.
+- **Script timers** (`BloodlinesWorld.Schedule`/`ScheduleTask`/`ScheduleOutput`), the AI and movers already use scaled `Time.Now`.', '2026-10-28T03:53:45Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T263', 'Build the reusable AutoGamePlay library (Python, tools/autoplay/) with a game-agnostic core and the Bloodlines s&box adapter, per docs/AUTOPLAY.md.
 
 - Core package (no Bloodlines imports): Observation / Action types, GameAdapter protocol, Episode runner and recorder (JSONL step trace + screenshots under work/autoplay/<run>/), checkpoint policy (save every N steps and before risky actions; reload on death/softlock), detectors (stuck: no progress in position/objective for T; softlock: no usable action; exceptions/errors in logs; falling out of world; missing textures/models heuristics such as checkerboard or error model in the screenshot; T-pose / NPC at origin), BugReporter (fingerprint + dedupe against open tickets via tickets ticket list --json, files a fix ticket with repro: map, position, save name, steps, screenshot path under work/).
@@ -46113,7 +49116,47 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T264', 'W
 
 - Derive from the game''s own data (quest states and journal, dialogue files, map Python scripts, changelevels; docs/DIALOGUE.md, docs/MAPS.md, docs/RULES.md) and cross-check with public walkthroughs (fandom wiki, GameFAQs): per chapter (Santa Monica, Downtown LA, Hollywood, Chinatown, endgame) the ordered objectives, which map/NPC/item each needs, how to tell it is done (quest state, item, global), branches and per-clan differences (Nosferatu cannot walk the streets, Malkavian dialogue, Ventrue feeding), and the endings.
 - Store it as docs/data/walkthrough/*.json (summaries in our own words; no copied walkthrough text, no game dialogue text beyond identifiers) plus a loader in tools/autoplay usable by the agent ("what is my next objective given this state").
-- Also list recommended builds per clan to test (melee, firearms, stealth, social/persuasion, discipline-heavy).', '2026-10-28T03:05:32Z');
+- Also list recommended builds per clan to test (melee, firearms, stealth, social/persuasion, discipline-heavy).
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.
+
+## Progress note (2026-10-27, first attempt aborted by pacing; nothing committed)
+
+**Uncommitted work in the checkout:**
+- `tools/walkthrough/extract.py`: an identifier-only index of the extracted game.
+- Generated from a run before the last fix: `docs/data/walkthrough/quests.json` (70 quests, their states and setters), `story_states.json` (29 `G.Story_State` values) and `maps.json` (108 maps: hubs, scripts, exits).
+
+**Redo the edit that didn''t apply, then rerun the extractor:**
+- Read only the next, condition and action columns of a dialogue row.
+- Match quest titles case-insensitively (`Allplague`, `Werewolf blood`).
+- Mark Plus-only setters (`G.Patch_Plus`) as `patch_plus`.
+
+**Research findings, not yet written down:**
+- **Critical path:** `Story_State` runs 0 to 125, chapter by chapter, from the haven and Mercurio to Caine''s cab.
+- **Endings:** the cab sets the route: 100 Kuei-jin, 105 Sabbat, 110 LaCroix, 115 Anarch, 120 Camarilla/Tremere, 125 Independent. The LaCroix talk then sets `Prince` quest states 3 to 11: 10 is keeping the key, 11 is the Plus-only wolf ending. Check the outcomes against public walkthroughs.
+- **Clan differences:**
+  - Nosferatu seen in Masquerade zones cause a breach, and they leave the museum and the Giovanni mansion through manholes instead of the cab.
+  - Malkavians have their own dialogue column and a TV newscaster scene in the haven.
+  - Ventrue feed only on blue bloods.
+
+**Still to do:**
+- Hand-write `critical_path.json`, `side_quests.json`, `clans.json`, `endings.json` and `builds.json`.
+- Write a next-objective loader in `tools/walkthrough/walkthrough.py`.
+- Write `docs/AUTOPLAY.md`, pointing to AutoGamePlay''s `docs/DESIGN.md`, which has landed (AGP-T2, cb40d44).', '2026-10-28T04:08:25Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T265', 'Visual parity harness: capture matching viewpoints in the original game and in the port and diff them, so visual discrepancies become tickets.
 
 - Original side: launch Vampire.exe from the install setup.ps1 owns (never the GOG folder; if no owned install exists, make one with setup.ps1 or copy the GOG install into work/ read-only-source) with -game Unofficial_Patch -dev -console and command-line commands (map, setpos, setang, cl_drawhud, screenshot/jpeg, quit) to capture a list of viewpoints per map; screenshots go under work/visual/original/.
@@ -46127,7 +49170,23 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T265', 'V
 
 The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
 
-Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:05:34Z');
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.', '2026-10-28T03:54:08Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T266', 'Autoplay UI coverage pass: press every button and visit every screen of the port, compare with the original, and file a fix ticket per bug.
 
 Title menu (new game, load, options and every option page, credits, quit), character creation for every clan (questionnaire and quick pick, attribute/ability/discipline point-buy, back/next, clan descriptions, portraits), the opening, HUD, pause menu, save/load (save, overwrite, delete, load from title and in game), quick save/load, character sheet and experience spending, inventory (equip, drop, use, examine), quest log, map screen, dialogue UI (option kinds, persuasion/seduction/intimidation), shops/barter, computers/e-mail and lockpicking/hacking, taxi/travel screens, death and Final Death screens, key rebinding. For each: does it work, does it look like the original (compare with original-game screenshots from the visual parity harness or by running the owned install), is the text correct, and are there no exceptions in the s&box logs. Keep a coverage checklist in docs/AUTOPLAY.md.
@@ -46142,7 +49201,23 @@ A goal ticket (a chapter, a quest, a UI area) is worked by first planning it: br
 
 The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
 
-Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:05:37Z');
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.', '2026-10-28T03:54:09Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T267', 'Autoplay campaign run: play the Santa Monica chapter (tutorial through leaving for Downtown) as a Brujah (melee combat build) from start to end through the AutoGamePlay CLI, at accelerated game speed, as a human player would, and file every bug as its own fix ticket.
 
 - Start from the previous chapter''s end save for this clan/build if it exists (work/autoplay/saves/), else from a new game. Follow the walkthrough knowledge base: critical path first, then the chapter''s side quests; use the clan''s distinctive options (disciplines, dialogue, feeding, stealth vs combat).
@@ -46161,7 +49236,23 @@ A goal ticket (a chapter, a quest, a UI area) is worked by first planning it: br
 
 The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
 
-Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:05:40Z');
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.', '2026-10-28T03:54:11Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T268', 'Autoplay campaign run: play the Downtown LA chapter as a Brujah (melee combat build) from start to end through the AutoGamePlay CLI, at accelerated game speed, as a human player would, and file every bug as its own fix ticket.
 
 - Start from the previous chapter''s end save for this clan/build if it exists (work/autoplay/saves/), else from a new game. Follow the walkthrough knowledge base: critical path first, then the chapter''s side quests; use the clan''s distinctive options (disciplines, dialogue, feeding, stealth vs combat).
@@ -46180,7 +49271,23 @@ A goal ticket (a chapter, a quest, a UI area) is worked by first planning it: br
 
 The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
 
-Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:06:02Z');
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.', '2026-10-28T03:54:12Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T269', 'Autoplay campaign run: play the Hollywood chapter as a Brujah (melee combat build) from start to end through the AutoGamePlay CLI, at accelerated game speed, as a human player would, and file every bug as its own fix ticket.
 
 - Start from the previous chapter''s end save for this clan/build if it exists (work/autoplay/saves/), else from a new game. Follow the walkthrough knowledge base: critical path first, then the chapter''s side quests; use the clan''s distinctive options (disciplines, dialogue, feeding, stealth vs combat).
@@ -46199,7 +49306,23 @@ A goal ticket (a chapter, a quest, a UI area) is worked by first planning it: br
 
 The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
 
-Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:06:26Z');
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.', '2026-10-28T03:54:13Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T270', 'Autoplay campaign run: play the Chinatown chapter as a Brujah (melee combat build) from start to end through the AutoGamePlay CLI, at accelerated game speed, as a human player would, and file every bug as its own fix ticket.
 
 - Start from the previous chapter''s end save for this clan/build if it exists (work/autoplay/saves/), else from a new game. Follow the walkthrough knowledge base: critical path first, then the chapter''s side quests; use the clan''s distinctive options (disciplines, dialogue, feeding, stealth vs combat).
@@ -46218,7 +49341,23 @@ A goal ticket (a chapter, a quest, a UI area) is worked by first planning it: br
 
 The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
 
-Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:06:49Z');
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.', '2026-10-28T03:54:14Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T271', 'Autoplay campaign run: play the endgame, and every ending reachable from the last shared save as a Brujah (melee combat build) from start to end through the AutoGamePlay CLI, at accelerated game speed, as a human player would, and file every bug as its own fix ticket.
 
 - Start from the previous chapter''s end save for this clan/build if it exists (work/autoplay/saves/), else from a new game. Follow the walkthrough knowledge base: critical path first, then the chapter''s side quests; use the clan''s distinctive options (disciplines, dialogue, feeding, stealth vs combat).
@@ -46237,15 +49376,110 @@ A goal ticket (a chapter, a quest, a UI area) is worked by first planning it: br
 
 The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
 
-Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:07:11Z');
-INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T272', 'After the first full campaign (Brujah melee) completes, file the remaining autoplay campaign-run tickets: one per chapter (Santa Monica, Downtown LA, Hollywood, Chinatown, endgame) for each of Gangrel, Malkavian, Nosferatu, Toreador, Tremere and Ventrue, each clan with a different build from the walkthrough knowledge base''s list (firearms, stealth, social, discipline-heavy), linked so each chapter requires the previous one of the same clan, with the same description as the Brujah run tickets. Approve them (the owner asked for every clan on 2026-10-27). Then make the game-agnostic core of tools/autoplay adoptable by another game (its own README, versioned API, adapter guide), and propose in docs/AUTOPLAY.md how to move it to its own repo (do not create the repo).
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.', '2026-10-28T03:54:15Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T272', 'After the first full campaign (Brujah melee) completes, file the remaining autoplay campaign-run tickets: one per chapter (Santa Monica, Downtown LA, Hollywood, Chinatown, endgame) for each of Gangrel, Malkavian, Nosferatu, Toreador, Tremere and Ventrue, each clan with a different build from the walkthrough knowledge base''s list (firearms, stealth, social, discipline-heavy), linked so each chapter requires the previous one of the same clan, with the same description as the Brujah run tickets. Approve them (the owner asked for every clan on 2026-10-27). (The reusable library is now the AutoGamePlay repo; nothing to extract here.)
 
 
 ## Shared context (AutoGamePlay / playtest epic)
 
 The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
 
-Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:07:35Z');
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.', '2026-10-28T03:54:17Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T273', 'CombatDirector.BuildNav only covers the bounds of NPCs, hints and the player. Widen it to the whole map, or add a player-specific build, under the autoplay convar.
+
+Then expose path queries to the bridge:
+- `Scene.NavMesh.CalculatePath` (the pattern is in `Runtime/SceneEntities.cs`, around line 654);
+- `AiNodeGraph.Plan(from, to)` as the fallback (`CombatDirector.Graph`; null when the map''s `.ain` file is missing).
+
+AutoGamePlay''s path follower (AGP-T7) then walks the returned waypoints with its reflex controller. Nothing drives the player along a path today. Report arrived, blocked or no path, with the reason.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.', '2026-10-28T03:54:17Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T274', 'Use AGP-T15, the Source 1 adapter, to run `Vampire.exe -game Unofficial_Patch -dev -console` from the install `setup.ps1` owns. If no owned install exists yet, make one with setup.ps1; never write into `D:\Games\Vampire The Masquerade Bloodlines`.
+
+Capture per map:
+- setpos/setang viewpoints: landmarks, spawn points and hand-picked hub views, with the HUD on and off;
+- short behaviour references (an NPC''s idle, a door opening, combat feel) as small frame sets.
+
+Everything goes under `work/visual/original/`, with a manifest the visual parity harness (RB-T265) reads. Record the method in `docs/AUTOPLAY.md`.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.', '2026-10-28T03:54:18Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T275', 'Once AGP-T14 lands, adopt its s&box bridge library in `src/Bloodlines.Sbox`. Register the Bloodlines extension state and verbs from RB-T246''s hook list, so that `agp observe`/`agp run` work in the port, in the editor and in the exported build. Replace RB-T246''s interim `run_csharp` entry points where the library covers them.
+
+## Re-scope after the approved AutoGamePlay plan (2026-10-27)
+
+The game-agnostic machinery lives in the separate **AutoGamePlay** repo (`D:\Projects\MindAttic\AutoGamePlay`, ticket code AGP; design in its docs/DESIGN.md, from AGP-T2). It provides:
+- PlayScript, the gameplay scripting language, for example `Player.MoveForward(20m).TurnLeft(90).MoveTo(Entity("x")).Until(Near(2m))`;
+- the executor with reflex controllers (the game pauses while the LLM thinks and runs at 1-8x during a script);
+- oracles, a budgeted in-RAM frame ring buffer, a bug reporter that dedupes, the memory store and skill library, and the `agp` CLI;
+- engine adapters, including the generic s&box bridge library (AGP-T14) and a Source 1 adapter for the original game (AGP-T15).
+
+Where this ticket''s text says `tools/autoplay` or a Python library, read it as AutoGamePlay. This repo keeps only the Bloodlines side:
+- the bridge''s `bloodlines.*` extension (dialogue, quests, clans, disciplines, screens);
+- the s&box runtime hooks;
+- Bloodlines PlayScript skills and routes, and the walkthrough data;
+- the campaign runs.
+
+Write the Bloodlines integration notes in `docs/AUTOPLAY.md` and point to AutoGamePlay''s docs for everything generic. Do not edit the AutoGamePlay repo from this one: if something is missing there, file an AGP ticket (`tickets ticket new --repo AutoGamePlay ...`) and link to it.', '2026-10-28T03:54:19Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RTO-T10', 'Icons that look native.
 
 For test builds, point `m_Icon {guid, fileid}` at existing game sprites (a data-only mod can reference any game asset; FieldOverride supports UnityEngine.Object by guid/fileid), one distinct icon per Overwatch type. Final art: the user can generate icons (or take them from another game); match RT ability-icon size and style using a few weapon-ability icons from the template as reference. Custom sprites need the Unity template build (Content → Bundles).', '2026-10-26T18:26:03Z');
@@ -47118,12 +50352,31 @@ INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (599, 'epi
 INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (600, 'code', 'UNI', 'U.CHN', '2026-10-24T18:56:00Z', 'User requested renaming all Unity.Chain tickets to the U.CHN code');
 
 -- links
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('AGP-T10', 'AGP-T4', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('AGP-T11', 'AGP-T4', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('AGP-T12', 'AGP-T10', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('AGP-T12', 'AGP-T11', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('AGP-T12', 'AGP-T6', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('AGP-T12', 'AGP-T7', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('AGP-T12', 'AGP-T8', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('AGP-T12', 'AGP-T9', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('AGP-T12', 'RB-T263', 'supersedes', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('AGP-T13', 'AGP-T4', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('AGP-T14', 'AGP-T12', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('AGP-T15', 'AGP-T12', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('AGP-T15', 'AGP-T13', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('AGP-T16', 'AGP-T12', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('AGP-T16', 'AGP-T13', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('AGP-T17', 'AGP-T4', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('AGP-T2', 'RB-T245', 'supersedes', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AGP-T3', 'AGP-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AGP-T4', 'AGP-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AGP-T5', 'AGP-T3', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AGP-T5', 'AGP-T4', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AGP-T6', 'AGP-T5', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AGP-T7', 'AGP-T4', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('AGP-T8', 'AGP-T4', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('AGP-T9', 'AGP-T4', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AUT-T12', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AUT-T20', 'M.SCHD-T4', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AWN-T7', 'M.TIX-T14', 'related', 'migrated: named in ref');
@@ -48906,10 +52159,52 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T185', 'PRS-T181', '
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T185', 'PRS-T182', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T185', 'PRS-T183', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T185', 'PRS-T184', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T185', 'PRS-T322', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T185', 'PRS-T326', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T185', 'PRS-T327', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T185', 'PRS-T328', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T185', 'PRS-T329', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T185', 'PRS-T330', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T185', 'PRS-T331', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T185', 'PRS-T332', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T185', 'PRS-T333', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T185', 'PRS-T334', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T185', 'PRS-T335', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T185', 'PRS-T336', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T185', 'PRS-T337', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T187', 'M.SCHD-T11', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T22', 'PRS-T3', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T24', 'PRS-T257', 'requires', 'blocked by hand');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T27', 'PRS-T24', 'related', 'migrated: named in ref');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T322', 'PRS-T230', 'related', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T322', 'PRS-T257', 'related', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T323', 'PRS-T322', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T324', 'PRS-T322', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T325', 'PRS-T322', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T326', 'PRS-T322', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T326', 'PRS-T323', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T327', 'PRS-T322', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T327', 'PRS-T323', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T328', 'PRS-T322', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T328', 'PRS-T323', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T329', 'PRS-T322', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T329', 'PRS-T323', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T330', 'PRS-T322', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T330', 'PRS-T323', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T331', 'PRS-T322', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T331', 'PRS-T323', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T332', 'PRS-T322', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T332', 'PRS-T323', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T333', 'PRS-T322', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T333', 'PRS-T323', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T334', 'PRS-T322', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T334', 'PRS-T323', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T335', 'PRS-T322', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T335', 'PRS-T323', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T336', 'PRS-T322', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T336', 'PRS-T323', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T337', 'PRS-T322', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T337', 'PRS-T323', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T47', 'PRS-US-Q1', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T48', 'PRS-US-Q2', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T49', 'PRS-US-Q3', 'implements', NULL);
@@ -49055,7 +52350,6 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-US-U9', 'PRS-EPIC-U'
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T120', 'RB-T119', 'requires', 'orchestrator block');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T131', 'RB-T135', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T156', 'RB-T111', 'requires', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T246', 'RB-T245', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T247', 'RB-T246', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T248', 'RB-T246', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T249', 'RB-T246', 'requires', NULL);
@@ -49067,6 +52361,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T254', 'RB-T246', 're
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T255', 'RB-T246', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T256', 'RB-T246', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T257', 'RB-T246', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T257', 'RB-T273', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T258', 'RB-T246', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T259', 'RB-T246', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T260', 'RB-T246', 'requires', NULL);
@@ -49078,9 +52373,13 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T263', 'RB-T248', 're
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T263', 'RB-T249', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T263', 'RB-T250', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T263', 'RB-T251', 'requires', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T264', 'RB-T245', 'requires', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T265', 'RB-T263', 'requires', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T266', 'RB-T263', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T265', 'AGP-T12', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T265', 'AGP-T9', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T265', 'RB-T274', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T265', 'RB-T275', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T266', 'AGP-T12', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T266', 'RB-T275', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'AGP-T12', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'RB-T247', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'RB-T248', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'RB-T249', 'requires', NULL);
@@ -49097,8 +52396,8 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'RB-T259', 're
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'RB-T260', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'RB-T261', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'RB-T262', 'requires', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'RB-T263', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'RB-T264', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'RB-T275', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T247', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T248', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T249', 'requires', NULL);
@@ -49115,7 +52414,6 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T259', 're
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T260', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T261', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T262', 'requires', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T263', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T264', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T267', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T269', 'RB-T247', 'requires', NULL);
@@ -49134,7 +52432,6 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T269', 'RB-T259', 're
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T269', 'RB-T260', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T269', 'RB-T261', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T269', 'RB-T262', 'requires', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T269', 'RB-T263', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T269', 'RB-T264', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T269', 'RB-T268', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T270', 'RB-T247', 'requires', NULL);
@@ -49153,7 +52450,6 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T270', 'RB-T259', 're
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T270', 'RB-T260', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T270', 'RB-T261', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T270', 'RB-T262', 'requires', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T270', 'RB-T263', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T270', 'RB-T264', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T270', 'RB-T269', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T271', 'RB-T247', 'requires', NULL);
@@ -49172,10 +52468,13 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T271', 'RB-T259', 're
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T271', 'RB-T260', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T271', 'RB-T261', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T271', 'RB-T262', 'requires', NULL);
-INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T271', 'RB-T263', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T271', 'RB-T264', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T271', 'RB-T270', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T272', 'RB-T271', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T273', 'RB-T246', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T274', 'AGP-T15', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T275', 'AGP-T14', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T275', 'RB-T246', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T37', 'RB-T35', 'requires', 'orchestrator block');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RTB-T238', 'RTB-T6', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RTB-T238', 'RTB-T7', 'requires', 'blocked by hand');
