@@ -42878,6 +42878,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22859, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22860, 'U.HARE-T65', '2026-10-28T13:08:24Z', 'working', 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)', '2825e89a-daff-4fa9-bdbd-36e47a65193e');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22861, 'U.RICO-T54', '2026-10-28T13:08:42Z', 'working', NULL, 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22862, 'U.RICO-T54', '2026-10-28T13:09:06Z', 'working', 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)', '2825e89a-daff-4fa9-bdbd-36e47a65193e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22863, 'AGP-T4', '2026-10-28T13:22:09Z', 'working', 'bc754ee7-b2e2-4870-b745-42c627ec13c1', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -44867,7 +44868,6 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('USOD-T9', 'approved', 0, '2026-10-22T23:02:27Z', NULL);
 
 -- ticket_work
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('AGP-T4', NULL, 0, NULL, 'bc754ee7-b2e2-4870-b745-42c627ec13c1', '2026-10-28T12:52:01Z', '2026-10-28T12:52:01Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
