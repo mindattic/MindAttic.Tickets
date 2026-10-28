@@ -7992,6 +7992,34 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T242', 'REA.Bloodlines', 242, '2026-10-27', 'feature', 'closed', 'The game runs at every modern aspect ratio: 16:9, 21:9, 32:9, 16:10 (Steam Deck 1280x800) and 4:3, at their common resolutions, with Hor+ FOV and a UI that neither stretches, clips nor overflows', 'a9f6d18', 241, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T243', 'REA.Bloodlines', 243, '2026-10-27', 'fix', 'closed', 'At 4:3 (640x480) the HUD''s discipline key list (the port''s own [X] Potence 0/1 readout, not an original HUD element) overlapped the dialogue box''s right edge; it now hides while a conversation is open', 'ef1b5db', 242, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T244', 'REA.Bloodlines', 244, '2026-10-27', 'chore', 'closed', 'Add 2 file(s); Update 12 file(s)', '—', 243, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T245', 'REA.Bloodlines', 245, '2026-10-27', 'docs', 'open', 'AutoGamePlay design: survey existing LLM game-playing / game-testing libraries and Bloodlines walkthrough and visual references, and write docs/AUTOPLAY.md (architecture, bridge, speed, saves, visual parity, campaign plan)', '—', 244, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T246', 'REA.Bloodlines', 246, '2026-10-27', 'feature', 'open', 'AutoPlay bridge skeleton in the s&box runtime: bl_autoplay-gated observe (compact JSON state) and act dispatch that an agent drives through sbox-cli run_csharp', '—', 245, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T247', 'REA.Bloodlines', 247, '2026-10-27', 'feature', 'open', 'Autoplay basic capability: launch: start the port from a cold editor (or the exported build) and reach the title menu, reporting load time and any log errors', '—', 246, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T248', 'REA.Bloodlines', 248, '2026-10-27', 'feature', 'open', 'Autoplay basic capability: skip the intro movies and any skippable cinematic (Esc/click as in the original), and detect when a movie is playing', '—', 247, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T249', 'REA.Bloodlines', 249, '2026-10-27', 'feature', 'open', 'Autoplay basic capability: start a new game and complete character creation for one clan (questionnaire and quick pick), ending in control of the player in the first map', '—', 248, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T250', 'REA.Bloodlines', 250, '2026-10-27', 'feature', 'open', 'Autoplay basic capability: look around: turn left/right and look up/down by given angles, read the camera angles back, screenshot each direction', '—', 249, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T251', 'REA.Bloodlines', 251, '2026-10-27', 'feature', 'open', 'Autoplay basic capability: move: walk/run forward, back, strafe, by distance, detecting blocked movement and arrival', '—', 250, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T252', 'REA.Bloodlines', 252, '2026-10-27', 'feature', 'open', 'Autoplay basic capability: jump and crouch (and crouch-walk/sneak), checking height, landing and collision', '—', 251, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T253', 'REA.Bloodlines', 253, '2026-10-27', 'feature', 'open', 'Autoplay basic capability: use/interact with the nearest usable entity (door, button, item pickup, container), reporting what happened', '—', 252, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T254', 'REA.Bloodlines', 254, '2026-10-27', 'feature', 'open', 'Autoplay basic capability: talk: start a dialogue with an NPC, read the line and numbered options, choose options to the end of the conversation', '—', 253, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T255', 'REA.Bloodlines', 255, '2026-10-27', 'feature', 'open', 'Autoplay basic capability: open and close each in-game screen (pause, character sheet, inventory, quest log, map) and read its contents', '—', 254, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T256', 'REA.Bloodlines', 256, '2026-10-27', 'feature', 'open', 'Autoplay basic capability: quicksave, quickload and named save/load through the bridge, verifying the restored state matches (map, position, stats, inventory, quest states)', '—', 255, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T257', 'REA.Bloodlines', 257, '2026-10-27', 'feature', 'open', 'Autoplay basic capability: navigate: go to a named entity or landmark in the same map by pathfinding (navmesh / node graph), reporting arrival, blocked or no path', '—', 256, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T258', 'REA.Bloodlines', 258, '2026-10-27', 'feature', 'open', 'Autoplay basic capability: take a level transition (door / changelevel trigger) and arrive on the right landmark of the next map', '—', 257, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T259', 'REA.Bloodlines', 259, '2026-10-27', 'feature', 'open', 'Autoplay basic capability: fight: target, melee and ranged attack an NPC, block/dodge, read health of both, detect death; feed on a victim', '—', 258, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T260', 'REA.Bloodlines', 260, '2026-10-27', 'feature', 'open', 'Autoplay basic capability: use a discipline (activate, read blood cost and effect, deactivate)', '—', 259, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T261', 'REA.Bloodlines', 261, '2026-10-27', 'feature', 'open', 'Autoplay basic capability: die and reload: detect player death / Final Death screen and recover from the last save', '—', 260, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T262', 'REA.Bloodlines', 262, '2026-10-27', 'feature', 'open', 'Faster-than-real-time play for automated runs: correct behaviour at 4x-16x game speed (time scale convar + bridge), skip/fast-forward movies and voice waits under bl_autoplay', '—', 261, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T263', 'REA.Bloodlines', 263, '2026-10-27', 'feature', 'open', 'AutoGamePlay library (tools/autoplay): game-agnostic core (observations, actions, adapter protocol, episode recorder, checkpoints, stuck/softlock/exception/visual detectors, deduping bug reporter, CLI) plus the Bloodlines s&box adapter', '—', 262, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T264', 'REA.Bloodlines', 264, '2026-10-27', 'feature', 'open', 'Walkthrough knowledge base for the playing agent: critical path, side quests, per-clan differences, endings and test builds as docs/data/walkthrough/*.json with a next-objective loader', '—', 263, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T265', 'REA.Bloodlines', 265, '2026-10-27', 'feature', 'open', 'Visual parity harness: matching viewpoints captured in the original game (owned install) and in the port, SSIM diff report, and a fix ticket per real visual discrepancy on every hub map', '—', 264, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T266', 'REA.Bloodlines', 266, '2026-10-27', 'feature', 'open', 'Autoplay UI coverage pass: press every button and visit every screen of the port, compare with the original, file a fix ticket per bug', '—', 265, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T267', 'REA.Bloodlines', 267, '2026-10-27', 'feature', 'open', 'Autoplay campaign run, Brujah melee build: play the Santa Monica chapter (tutorial through leaving for Downtown) end to end at accelerated speed, planning it into step tickets and filing every bug', '—', 266, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T268', 'REA.Bloodlines', 268, '2026-10-27', 'feature', 'open', 'Autoplay campaign run, Brujah melee build: play the Downtown LA chapter end to end at accelerated speed, planning it into step tickets and filing every bug', '—', 267, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T269', 'REA.Bloodlines', 269, '2026-10-27', 'feature', 'open', 'Autoplay campaign run, Brujah melee build: play the Hollywood chapter end to end at accelerated speed, planning it into step tickets and filing every bug', '—', 268, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T270', 'REA.Bloodlines', 270, '2026-10-27', 'feature', 'open', 'Autoplay campaign run, Brujah melee build: play the Chinatown chapter end to end at accelerated speed, planning it into step tickets and filing every bug', '—', 269, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T271', 'REA.Bloodlines', 271, '2026-10-27', 'feature', 'open', 'Autoplay campaign run, Brujah melee build: play the endgame, and every ending reachable from the last shared save end to end at accelerated speed, planning it into step tickets and filing every bug', '—', 270, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T272', 'REA.Bloodlines', 272, '2026-10-27', 'feature', 'open', 'After the Brujah campaign: file and approve the campaign-run tickets for the other six clans with different builds, and make the AutoGamePlay core adoptable by other games', '—', 271, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T1', 'RogueTrader.Brevity', 1, '2026-10-24', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T2', 'RogueTrader.Brevity', 2, '2026-10-24', 'fix', 'closed', 'Repo has no commits, so the launcher''s pull fails with ''no such ref was fetched''; add the first commit (AGENTS.md pointer, .gitignore, commit hooks) and push main', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T3', 'RogueTrader.Brevity', 3, '2026-10-24', 'feature', 'closed', 'Phase 1 dialogue export: a mod built from Owlcat''s template that walks the dialogue blueprints (BlueprintCue, BlueprintAnswer, BlueprintBookPage) and writes dialogue.jsonl with each line''s string key, speaker, dialogue tree, previous line, skill check/conviction markers and voiced flag, so the LLM simplify pass gets context', '—', 2, NULL);
@@ -39781,6 +39809,337 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22003, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22004, 'U.RICO-T110', '2026-10-28T02:58:48Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22005, 'U.RICO-T110', '2026-10-28T02:58:48Z', 'ref', '—', '9a61e5d');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22006, 'U.RICO-T110', '2026-10-28T02:58:58Z', 'working', 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22007, 'U.HARE-T64', '2026-10-28T02:59:31Z', 'working', 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)', '2825e89a-daff-4fa9-bdbd-36e47a65193e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22008, 'U.HARE-T67', '2026-10-28T02:59:31Z', 'working', 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)', '2825e89a-daff-4fa9-bdbd-36e47a65193e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22009, 'U.RICO-T52', '2026-10-28T02:59:32Z', 'working', 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)', '2825e89a-daff-4fa9-bdbd-36e47a65193e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22010, 'GG-T179', '2026-10-28T03:00:01Z', 'working', 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)', '2825e89a-daff-4fa9-bdbd-36e47a65193e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22011, 'RB-T234', '2026-10-28T03:00:57Z', 'working', 'waffle@mindattic.com (bc754ee7-b2e2-4870-b745-42c627ec13c1)', 'bc754ee7-b2e2-4870-b745-42c627ec13c1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22012, 'RB-T245', '2026-10-28T03:04:34Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22013, 'RB-T245', '2026-10-28T03:04:35Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22014, 'RB-T246', '2026-10-28T03:04:36Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22015, 'RB-T246', '2026-10-28T03:04:37Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22016, 'RB-T246', '2026-10-28T03:04:38Z', 'link', NULL, 'requires RB-T245');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22017, 'RB-T245', '2026-10-28T03:04:38Z', 'link', NULL, 'RB-T246 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22018, 'RB-T247', '2026-10-28T03:04:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22019, 'RB-T247', '2026-10-28T03:04:40Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22020, 'RB-T247', '2026-10-28T03:04:40Z', 'link', NULL, 'requires RB-T246');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22021, 'RB-T246', '2026-10-28T03:04:41Z', 'link', NULL, 'RB-T247 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22022, 'RB-T248', '2026-10-28T03:04:42Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22023, 'RB-T248', '2026-10-28T03:04:42Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22024, 'RB-T248', '2026-10-28T03:04:43Z', 'link', NULL, 'requires RB-T246');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22025, 'RB-T246', '2026-10-28T03:04:44Z', 'link', NULL, 'RB-T248 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22026, 'RB-T249', '2026-10-28T03:04:44Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22027, 'RB-T249', '2026-10-28T03:04:45Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22028, 'RB-T249', '2026-10-28T03:04:46Z', 'link', NULL, 'requires RB-T246');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22029, 'RB-T246', '2026-10-28T03:04:46Z', 'link', NULL, 'RB-T249 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22030, 'RB-T250', '2026-10-28T03:04:47Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22031, 'RB-T250', '2026-10-28T03:04:48Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22032, 'RB-T250', '2026-10-28T03:04:49Z', 'link', NULL, 'requires RB-T246');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22033, 'RB-T246', '2026-10-28T03:04:49Z', 'link', NULL, 'RB-T250 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22034, 'RB-T251', '2026-10-28T03:04:50Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22035, 'RB-T251', '2026-10-28T03:04:51Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22036, 'RB-T251', '2026-10-28T03:04:52Z', 'link', NULL, 'requires RB-T246');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22037, 'RB-T246', '2026-10-28T03:04:52Z', 'link', NULL, 'RB-T251 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22038, 'RB-T252', '2026-10-28T03:04:53Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22039, 'RB-T252', '2026-10-28T03:04:53Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22040, 'RB-T252', '2026-10-28T03:04:54Z', 'link', NULL, 'requires RB-T246');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22041, 'RB-T246', '2026-10-28T03:04:54Z', 'link', NULL, 'RB-T252 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22042, 'RB-T253', '2026-10-28T03:04:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22043, 'RB-T253', '2026-10-28T03:04:56Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22044, 'RB-T253', '2026-10-28T03:04:57Z', 'link', NULL, 'requires RB-T246');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22045, 'RB-T246', '2026-10-28T03:04:57Z', 'link', NULL, 'RB-T253 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22046, 'RB-T254', '2026-10-28T03:04:58Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22047, 'RB-T254', '2026-10-28T03:04:59Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22048, 'RB-T254', '2026-10-28T03:05:00Z', 'link', NULL, 'requires RB-T246');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22049, 'RB-T246', '2026-10-28T03:05:00Z', 'link', NULL, 'RB-T254 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22050, 'RB-T255', '2026-10-28T03:05:01Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22051, 'RB-T255', '2026-10-28T03:05:02Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22052, 'RB-T255', '2026-10-28T03:05:02Z', 'link', NULL, 'requires RB-T246');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22053, 'RB-T246', '2026-10-28T03:05:03Z', 'link', NULL, 'RB-T255 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22054, 'RB-T256', '2026-10-28T03:05:03Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22055, 'RB-T256', '2026-10-28T03:05:04Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22056, 'RB-T256', '2026-10-28T03:05:05Z', 'link', NULL, 'requires RB-T246');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22057, 'RB-T246', '2026-10-28T03:05:05Z', 'link', NULL, 'RB-T256 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22058, 'RB-T257', '2026-10-28T03:05:06Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22059, 'RB-T257', '2026-10-28T03:05:07Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22060, 'RB-T257', '2026-10-28T03:05:08Z', 'link', NULL, 'requires RB-T246');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22061, 'RB-T246', '2026-10-28T03:05:08Z', 'link', NULL, 'RB-T257 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22062, 'RB-T258', '2026-10-28T03:05:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22063, 'RB-T258', '2026-10-28T03:05:10Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22064, 'RB-T258', '2026-10-28T03:05:11Z', 'link', NULL, 'requires RB-T246');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22065, 'RB-T246', '2026-10-28T03:05:11Z', 'link', NULL, 'RB-T258 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22066, 'RB-T259', '2026-10-28T03:05:12Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22067, 'RB-T259', '2026-10-28T03:05:13Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22068, 'RB-T259', '2026-10-28T03:05:14Z', 'link', NULL, 'requires RB-T246');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22069, 'RB-T246', '2026-10-28T03:05:14Z', 'link', NULL, 'RB-T259 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22070, 'RB-T260', '2026-10-28T03:05:15Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22071, 'RB-T260', '2026-10-28T03:05:16Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22072, 'RB-T260', '2026-10-28T03:05:17Z', 'link', NULL, 'requires RB-T246');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22073, 'RB-T246', '2026-10-28T03:05:17Z', 'link', NULL, 'RB-T260 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22074, 'RB-T261', '2026-10-28T03:05:18Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22075, 'RB-T261', '2026-10-28T03:05:19Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22076, 'RB-T261', '2026-10-28T03:05:20Z', 'link', NULL, 'requires RB-T246');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22077, 'RB-T246', '2026-10-28T03:05:20Z', 'link', NULL, 'RB-T261 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22078, 'RB-T262', '2026-10-28T03:05:21Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22079, 'RB-T262', '2026-10-28T03:05:22Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22080, 'RB-T262', '2026-10-28T03:05:22Z', 'link', NULL, 'requires RB-T246');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22081, 'RB-T246', '2026-10-28T03:05:23Z', 'link', NULL, 'RB-T262 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22082, 'RB-T263', '2026-10-28T03:05:23Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22083, 'RB-T263', '2026-10-28T03:05:24Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22084, 'RB-T263', '2026-10-28T03:05:25Z', 'link', NULL, 'requires RB-T245');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22085, 'RB-T245', '2026-10-28T03:05:25Z', 'link', NULL, 'RB-T263 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22086, 'RB-T263', '2026-10-28T03:05:26Z', 'link', NULL, 'requires RB-T247');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22087, 'RB-T247', '2026-10-28T03:05:27Z', 'link', NULL, 'RB-T263 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22088, 'RB-T263', '2026-10-28T03:05:27Z', 'link', NULL, 'requires RB-T248');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22089, 'RB-T248', '2026-10-28T03:05:28Z', 'link', NULL, 'RB-T263 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22090, 'RB-T263', '2026-10-28T03:05:28Z', 'link', NULL, 'requires RB-T249');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22091, 'RB-T249', '2026-10-28T03:05:29Z', 'link', NULL, 'RB-T263 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22092, 'RB-T263', '2026-10-28T03:05:30Z', 'link', NULL, 'requires RB-T250');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22093, 'RB-T250', '2026-10-28T03:05:30Z', 'link', NULL, 'RB-T263 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22094, 'RB-T263', '2026-10-28T03:05:31Z', 'link', NULL, 'requires RB-T251');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22095, 'RB-T251', '2026-10-28T03:05:31Z', 'link', NULL, 'RB-T263 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22096, 'RB-T264', '2026-10-28T03:05:32Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22097, 'RB-T264', '2026-10-28T03:05:33Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22098, 'RB-T264', '2026-10-28T03:05:33Z', 'link', NULL, 'requires RB-T245');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22099, 'RB-T245', '2026-10-28T03:05:34Z', 'link', NULL, 'RB-T264 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22100, 'RB-T265', '2026-10-28T03:05:34Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22101, 'RB-T265', '2026-10-28T03:05:35Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22102, 'RB-T265', '2026-10-28T03:05:36Z', 'link', NULL, 'requires RB-T263');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22103, 'RB-T263', '2026-10-28T03:05:36Z', 'link', NULL, 'RB-T265 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22104, 'RB-T266', '2026-10-28T03:05:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22105, 'RB-T266', '2026-10-28T03:05:38Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22106, 'RB-T266', '2026-10-28T03:05:39Z', 'link', NULL, 'requires RB-T263');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22107, 'RB-T263', '2026-10-28T03:05:39Z', 'link', NULL, 'RB-T266 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22108, 'RB-T267', '2026-10-28T03:05:40Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22109, 'RB-T267', '2026-10-28T03:05:41Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22110, 'RB-T267', '2026-10-28T03:05:42Z', 'link', NULL, 'requires RB-T263');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22111, 'RB-T263', '2026-10-28T03:05:42Z', 'link', NULL, 'RB-T267 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22112, 'RB-T267', '2026-10-28T03:05:43Z', 'link', NULL, 'requires RB-T264');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22113, 'RB-T264', '2026-10-28T03:05:43Z', 'link', NULL, 'RB-T267 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22114, 'RB-T267', '2026-10-28T03:05:44Z', 'link', NULL, 'requires RB-T262');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22115, 'RB-T262', '2026-10-28T03:05:45Z', 'link', NULL, 'RB-T267 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22116, 'RB-T267', '2026-10-28T03:05:46Z', 'link', NULL, 'requires RB-T247');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22117, 'RB-T247', '2026-10-28T03:05:46Z', 'link', NULL, 'RB-T267 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22118, 'RB-T267', '2026-10-28T03:05:47Z', 'link', NULL, 'requires RB-T248');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22119, 'RB-T248', '2026-10-28T03:05:47Z', 'link', NULL, 'RB-T267 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22120, 'RB-T267', '2026-10-28T03:05:48Z', 'link', NULL, 'requires RB-T249');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22121, 'RB-T249', '2026-10-28T03:05:48Z', 'link', NULL, 'RB-T267 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22122, 'RB-T267', '2026-10-28T03:05:49Z', 'link', NULL, 'requires RB-T250');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22123, 'RB-T250', '2026-10-28T03:05:49Z', 'link', NULL, 'RB-T267 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22124, 'RB-T267', '2026-10-28T03:05:50Z', 'link', NULL, 'requires RB-T251');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22125, 'RB-T251', '2026-10-28T03:05:50Z', 'link', NULL, 'RB-T267 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22126, 'RB-T267', '2026-10-28T03:05:51Z', 'link', NULL, 'requires RB-T252');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22127, 'RB-T252', '2026-10-28T03:05:51Z', 'link', NULL, 'RB-T267 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22128, 'RB-T267', '2026-10-28T03:05:52Z', 'link', NULL, 'requires RB-T253');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22129, 'RB-T253', '2026-10-28T03:05:53Z', 'link', NULL, 'RB-T267 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22130, 'RB-T267', '2026-10-28T03:05:53Z', 'link', NULL, 'requires RB-T254');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22131, 'RB-T254', '2026-10-28T03:05:54Z', 'link', NULL, 'RB-T267 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22132, 'RB-T267', '2026-10-28T03:05:54Z', 'link', NULL, 'requires RB-T255');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22133, 'RB-T255', '2026-10-28T03:05:55Z', 'link', NULL, 'RB-T267 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22134, 'RB-T267', '2026-10-28T03:05:56Z', 'link', NULL, 'requires RB-T256');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22135, 'RB-T256', '2026-10-28T03:05:56Z', 'link', NULL, 'RB-T267 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22136, 'RB-T267', '2026-10-28T03:05:57Z', 'link', NULL, 'requires RB-T257');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22137, 'RB-T257', '2026-10-28T03:05:57Z', 'link', NULL, 'RB-T267 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22138, 'RB-T267', '2026-10-28T03:05:58Z', 'link', NULL, 'requires RB-T258');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22139, 'RB-T258', '2026-10-28T03:05:58Z', 'link', NULL, 'RB-T267 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22140, 'RB-T267', '2026-10-28T03:05:59Z', 'link', NULL, 'requires RB-T259');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22141, 'RB-T259', '2026-10-28T03:05:59Z', 'link', NULL, 'RB-T267 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22142, 'RB-T267', '2026-10-28T03:06:00Z', 'link', NULL, 'requires RB-T260');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22143, 'RB-T260', '2026-10-28T03:06:00Z', 'link', NULL, 'RB-T267 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22144, 'RB-T267', '2026-10-28T03:06:01Z', 'link', NULL, 'requires RB-T261');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22145, 'RB-T261', '2026-10-28T03:06:01Z', 'link', NULL, 'RB-T267 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22146, 'RB-T268', '2026-10-28T03:06:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22147, 'RB-T268', '2026-10-28T03:06:03Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22148, 'RB-T268', '2026-10-28T03:06:04Z', 'link', NULL, 'requires RB-T263');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22149, 'RB-T263', '2026-10-28T03:06:04Z', 'link', NULL, 'RB-T268 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22150, 'RB-T268', '2026-10-28T03:06:05Z', 'link', NULL, 'requires RB-T264');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22151, 'RB-T264', '2026-10-28T03:06:05Z', 'link', NULL, 'RB-T268 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22152, 'RB-T268', '2026-10-28T03:06:06Z', 'link', NULL, 'requires RB-T262');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22153, 'RB-T262', '2026-10-28T03:06:06Z', 'link', NULL, 'RB-T268 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22154, 'RB-T268', '2026-10-28T03:06:07Z', 'link', NULL, 'requires RB-T247');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22155, 'RB-T247', '2026-10-28T03:06:07Z', 'link', NULL, 'RB-T268 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22156, 'RB-T268', '2026-10-28T03:06:08Z', 'link', NULL, 'requires RB-T248');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22157, 'RB-T248', '2026-10-28T03:06:08Z', 'link', NULL, 'RB-T268 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22158, 'RB-T268', '2026-10-28T03:06:09Z', 'link', NULL, 'requires RB-T249');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22159, 'RB-T249', '2026-10-28T03:06:09Z', 'link', NULL, 'RB-T268 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22160, 'RB-T268', '2026-10-28T03:06:10Z', 'link', NULL, 'requires RB-T250');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22161, 'RB-T250', '2026-10-28T03:06:11Z', 'link', NULL, 'RB-T268 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22162, 'RB-T268', '2026-10-28T03:06:11Z', 'link', NULL, 'requires RB-T251');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22163, 'RB-T251', '2026-10-28T03:06:12Z', 'link', NULL, 'RB-T268 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22164, 'RB-T268', '2026-10-28T03:06:13Z', 'link', NULL, 'requires RB-T252');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22165, 'RB-T252', '2026-10-28T03:06:13Z', 'link', NULL, 'RB-T268 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22166, 'RB-T268', '2026-10-28T03:06:14Z', 'link', NULL, 'requires RB-T253');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22167, 'RB-T253', '2026-10-28T03:06:14Z', 'link', NULL, 'RB-T268 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22168, 'RB-T268', '2026-10-28T03:06:15Z', 'link', NULL, 'requires RB-T254');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22169, 'RB-T254', '2026-10-28T03:06:15Z', 'link', NULL, 'RB-T268 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22170, 'RB-T268', '2026-10-28T03:06:16Z', 'link', NULL, 'requires RB-T255');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22171, 'RB-T255', '2026-10-28T03:06:16Z', 'link', NULL, 'RB-T268 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22172, 'RB-T268', '2026-10-28T03:06:17Z', 'link', NULL, 'requires RB-T256');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22173, 'RB-T256', '2026-10-28T03:06:17Z', 'link', NULL, 'RB-T268 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22174, 'RB-T268', '2026-10-28T03:06:19Z', 'link', NULL, 'requires RB-T257');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22175, 'RB-T257', '2026-10-28T03:06:19Z', 'link', NULL, 'RB-T268 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22176, 'RB-T268', '2026-10-28T03:06:20Z', 'link', NULL, 'requires RB-T258');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22177, 'RB-T258', '2026-10-28T03:06:20Z', 'link', NULL, 'RB-T268 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22178, 'RB-T268', '2026-10-28T03:06:21Z', 'link', NULL, 'requires RB-T259');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22179, 'RB-T259', '2026-10-28T03:06:21Z', 'link', NULL, 'RB-T268 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22180, 'RB-T268', '2026-10-28T03:06:22Z', 'link', NULL, 'requires RB-T260');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22181, 'RB-T260', '2026-10-28T03:06:23Z', 'link', NULL, 'RB-T268 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22182, 'RB-T268', '2026-10-28T03:06:23Z', 'link', NULL, 'requires RB-T261');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22183, 'RB-T261', '2026-10-28T03:06:24Z', 'link', NULL, 'RB-T268 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22184, 'RB-T268', '2026-10-28T03:06:25Z', 'link', NULL, 'requires RB-T267');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22185, 'RB-T267', '2026-10-28T03:06:25Z', 'link', NULL, 'RB-T268 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22186, 'RB-T269', '2026-10-28T03:06:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22187, 'RB-T269', '2026-10-28T03:06:26Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22188, 'RB-T269', '2026-10-28T03:06:27Z', 'link', NULL, 'requires RB-T263');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22189, 'RB-T263', '2026-10-28T03:06:28Z', 'link', NULL, 'RB-T269 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22190, 'RB-T269', '2026-10-28T03:06:28Z', 'link', NULL, 'requires RB-T264');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22191, 'RB-T264', '2026-10-28T03:06:29Z', 'link', NULL, 'RB-T269 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22192, 'RB-T269', '2026-10-28T03:06:30Z', 'link', NULL, 'requires RB-T262');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22193, 'RB-T262', '2026-10-28T03:06:30Z', 'link', NULL, 'RB-T269 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22194, 'RB-T269', '2026-10-28T03:06:31Z', 'link', NULL, 'requires RB-T247');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22195, 'RB-T247', '2026-10-28T03:06:31Z', 'link', NULL, 'RB-T269 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22196, 'RB-T269', '2026-10-28T03:06:32Z', 'link', NULL, 'requires RB-T248');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22197, 'RB-T248', '2026-10-28T03:06:32Z', 'link', NULL, 'RB-T269 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22198, 'RB-T269', '2026-10-28T03:06:33Z', 'link', NULL, 'requires RB-T249');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22199, 'RB-T249', '2026-10-28T03:06:33Z', 'link', NULL, 'RB-T269 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22200, 'RB-T269', '2026-10-28T03:06:34Z', 'link', NULL, 'requires RB-T250');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22201, 'RB-T250', '2026-10-28T03:06:34Z', 'link', NULL, 'RB-T269 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22202, 'RB-T269', '2026-10-28T03:06:35Z', 'link', NULL, 'requires RB-T251');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22203, 'RB-T251', '2026-10-28T03:06:35Z', 'link', NULL, 'RB-T269 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22204, 'RB-T269', '2026-10-28T03:06:36Z', 'link', NULL, 'requires RB-T252');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22205, 'RB-T252', '2026-10-28T03:06:37Z', 'link', NULL, 'RB-T269 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22206, 'RB-T269', '2026-10-28T03:06:38Z', 'link', NULL, 'requires RB-T253');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22207, 'RB-T253', '2026-10-28T03:06:38Z', 'link', NULL, 'RB-T269 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22208, 'RB-T269', '2026-10-28T03:06:39Z', 'link', NULL, 'requires RB-T254');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22209, 'RB-T254', '2026-10-28T03:06:39Z', 'link', NULL, 'RB-T269 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22210, 'RB-T269', '2026-10-28T03:06:40Z', 'link', NULL, 'requires RB-T255');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22211, 'RB-T255', '2026-10-28T03:06:40Z', 'link', NULL, 'RB-T269 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22212, 'RB-T269', '2026-10-28T03:06:41Z', 'link', NULL, 'requires RB-T256');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22213, 'RB-T256', '2026-10-28T03:06:41Z', 'link', NULL, 'RB-T269 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22214, 'RB-T269', '2026-10-28T03:06:42Z', 'link', NULL, 'requires RB-T257');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22215, 'RB-T257', '2026-10-28T03:06:42Z', 'link', NULL, 'RB-T269 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22216, 'RB-T269', '2026-10-28T03:06:43Z', 'link', NULL, 'requires RB-T258');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22217, 'RB-T258', '2026-10-28T03:06:43Z', 'link', NULL, 'RB-T269 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22218, 'RB-T269', '2026-10-28T03:06:44Z', 'link', NULL, 'requires RB-T259');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22219, 'RB-T259', '2026-10-28T03:06:45Z', 'link', NULL, 'RB-T269 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22220, 'RB-T269', '2026-10-28T03:06:45Z', 'link', NULL, 'requires RB-T260');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22221, 'RB-T260', '2026-10-28T03:06:46Z', 'link', NULL, 'RB-T269 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22222, 'RB-T269', '2026-10-28T03:06:47Z', 'link', NULL, 'requires RB-T261');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22223, 'RB-T261', '2026-10-28T03:06:47Z', 'link', NULL, 'RB-T269 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22224, 'RB-T269', '2026-10-28T03:06:48Z', 'link', NULL, 'requires RB-T268');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22225, 'RB-T268', '2026-10-28T03:06:48Z', 'link', NULL, 'RB-T269 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22226, 'RB-T270', '2026-10-28T03:06:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22227, 'RB-T270', '2026-10-28T03:06:50Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22228, 'RB-T270', '2026-10-28T03:06:51Z', 'link', NULL, 'requires RB-T263');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22229, 'RB-T263', '2026-10-28T03:06:51Z', 'link', NULL, 'RB-T270 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22230, 'RB-T270', '2026-10-28T03:06:52Z', 'link', NULL, 'requires RB-T264');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22231, 'RB-T264', '2026-10-28T03:06:52Z', 'link', NULL, 'RB-T270 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22232, 'RB-T270', '2026-10-28T03:06:53Z', 'link', NULL, 'requires RB-T262');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22233, 'RB-T262', '2026-10-28T03:06:53Z', 'link', NULL, 'RB-T270 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22234, 'RB-T270', '2026-10-28T03:06:54Z', 'link', NULL, 'requires RB-T247');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22235, 'RB-T247', '2026-10-28T03:06:54Z', 'link', NULL, 'RB-T270 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22236, 'RB-T270', '2026-10-28T03:06:55Z', 'link', NULL, 'requires RB-T248');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22237, 'RB-T248', '2026-10-28T03:06:55Z', 'link', NULL, 'RB-T270 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22238, 'RB-T270', '2026-10-28T03:06:56Z', 'link', NULL, 'requires RB-T249');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22239, 'RB-T249', '2026-10-28T03:06:56Z', 'link', NULL, 'RB-T270 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22240, 'RB-T270', '2026-10-28T03:06:57Z', 'link', NULL, 'requires RB-T250');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22241, 'RB-T250', '2026-10-28T03:06:57Z', 'link', NULL, 'RB-T270 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22242, 'RB-T270', '2026-10-28T03:06:58Z', 'link', NULL, 'requires RB-T251');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22243, 'RB-T251', '2026-10-28T03:06:59Z', 'link', NULL, 'RB-T270 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22244, 'RB-T270', '2026-10-28T03:06:59Z', 'link', NULL, 'requires RB-T252');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22245, 'RB-T252', '2026-10-28T03:07:00Z', 'link', NULL, 'RB-T270 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22246, 'RB-T270', '2026-10-28T03:07:01Z', 'link', NULL, 'requires RB-T253');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22247, 'RB-T253', '2026-10-28T03:07:01Z', 'link', NULL, 'RB-T270 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22248, 'RB-T270', '2026-10-28T03:07:02Z', 'link', NULL, 'requires RB-T254');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22249, 'RB-T254', '2026-10-28T03:07:02Z', 'link', NULL, 'RB-T270 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22250, 'RB-T270', '2026-10-28T03:07:03Z', 'link', NULL, 'requires RB-T255');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22251, 'RB-T255', '2026-10-28T03:07:03Z', 'link', NULL, 'RB-T270 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22252, 'RB-T270', '2026-10-28T03:07:04Z', 'link', NULL, 'requires RB-T256');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22253, 'RB-T256', '2026-10-28T03:07:04Z', 'link', NULL, 'RB-T270 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22254, 'RB-T270', '2026-10-28T03:07:05Z', 'link', NULL, 'requires RB-T257');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22255, 'RB-T257', '2026-10-28T03:07:05Z', 'link', NULL, 'RB-T270 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22256, 'RB-T270', '2026-10-28T03:07:06Z', 'link', NULL, 'requires RB-T258');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22257, 'RB-T258', '2026-10-28T03:07:06Z', 'link', NULL, 'RB-T270 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22258, 'RB-T270', '2026-10-28T03:07:07Z', 'link', NULL, 'requires RB-T259');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22259, 'RB-T259', '2026-10-28T03:07:07Z', 'link', NULL, 'RB-T270 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22260, 'RB-T270', '2026-10-28T03:07:08Z', 'link', NULL, 'requires RB-T260');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22261, 'RB-T260', '2026-10-28T03:07:09Z', 'link', NULL, 'RB-T270 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22262, 'RB-T270', '2026-10-28T03:07:09Z', 'link', NULL, 'requires RB-T261');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22263, 'RB-T261', '2026-10-28T03:07:10Z', 'link', NULL, 'RB-T270 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22264, 'RB-T270', '2026-10-28T03:07:10Z', 'link', NULL, 'requires RB-T269');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22265, 'RB-T269', '2026-10-28T03:07:11Z', 'link', NULL, 'RB-T270 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22266, 'RB-T271', '2026-10-28T03:07:11Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22267, 'RB-T271', '2026-10-28T03:07:12Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22268, 'RB-T271', '2026-10-28T03:07:13Z', 'link', NULL, 'requires RB-T263');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22269, 'RB-T263', '2026-10-28T03:07:13Z', 'link', NULL, 'RB-T271 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22270, 'RB-T271', '2026-10-28T03:07:14Z', 'link', NULL, 'requires RB-T264');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22271, 'RB-T264', '2026-10-28T03:07:14Z', 'link', NULL, 'RB-T271 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22272, 'RB-T271', '2026-10-28T03:07:15Z', 'link', NULL, 'requires RB-T262');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22273, 'RB-T262', '2026-10-28T03:07:16Z', 'link', NULL, 'RB-T271 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22274, 'RB-T271', '2026-10-28T03:07:16Z', 'link', NULL, 'requires RB-T247');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22275, 'RB-T247', '2026-10-28T03:07:17Z', 'link', NULL, 'RB-T271 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22276, 'RB-T271', '2026-10-28T03:07:18Z', 'link', NULL, 'requires RB-T248');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22277, 'RB-T248', '2026-10-28T03:07:18Z', 'link', NULL, 'RB-T271 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22278, 'RB-T271', '2026-10-28T03:07:19Z', 'link', NULL, 'requires RB-T249');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22279, 'RB-T249', '2026-10-28T03:07:19Z', 'link', NULL, 'RB-T271 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22280, 'RB-T271', '2026-10-28T03:07:20Z', 'link', NULL, 'requires RB-T250');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22281, 'RB-T250', '2026-10-28T03:07:20Z', 'link', NULL, 'RB-T271 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22282, 'RB-T271', '2026-10-28T03:07:21Z', 'link', NULL, 'requires RB-T251');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22283, 'RB-T251', '2026-10-28T03:07:21Z', 'link', NULL, 'RB-T271 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22284, 'RB-T271', '2026-10-28T03:07:22Z', 'link', NULL, 'requires RB-T252');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22285, 'RB-T252', '2026-10-28T03:07:22Z', 'link', NULL, 'RB-T271 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22286, 'RB-T271', '2026-10-28T03:07:23Z', 'link', NULL, 'requires RB-T253');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22287, 'RB-T253', '2026-10-28T03:07:23Z', 'link', NULL, 'RB-T271 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22288, 'RB-T271', '2026-10-28T03:07:25Z', 'link', NULL, 'requires RB-T254');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22289, 'RB-T254', '2026-10-28T03:07:25Z', 'link', NULL, 'RB-T271 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22290, 'RB-T271', '2026-10-28T03:07:26Z', 'link', NULL, 'requires RB-T255');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22291, 'RB-T255', '2026-10-28T03:07:26Z', 'link', NULL, 'RB-T271 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22292, 'RB-T271', '2026-10-28T03:07:27Z', 'link', NULL, 'requires RB-T256');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22293, 'RB-T256', '2026-10-28T03:07:28Z', 'link', NULL, 'RB-T271 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22294, 'RB-T271', '2026-10-28T03:07:28Z', 'link', NULL, 'requires RB-T257');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22295, 'RB-T257', '2026-10-28T03:07:29Z', 'link', NULL, 'RB-T271 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22296, 'RB-T271', '2026-10-28T03:07:29Z', 'link', NULL, 'requires RB-T258');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22297, 'RB-T258', '2026-10-28T03:07:30Z', 'link', NULL, 'RB-T271 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22298, 'RB-T271', '2026-10-28T03:07:31Z', 'link', NULL, 'requires RB-T259');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22299, 'RB-T259', '2026-10-28T03:07:31Z', 'link', NULL, 'RB-T271 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22300, 'RB-T271', '2026-10-28T03:07:32Z', 'link', NULL, 'requires RB-T260');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22301, 'RB-T260', '2026-10-28T03:07:32Z', 'link', NULL, 'RB-T271 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22302, 'RB-T271', '2026-10-28T03:07:33Z', 'link', NULL, 'requires RB-T261');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22303, 'RB-T261', '2026-10-28T03:07:33Z', 'link', NULL, 'RB-T271 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22304, 'RB-T271', '2026-10-28T03:07:34Z', 'link', NULL, 'requires RB-T270');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22305, 'RB-T270', '2026-10-28T03:07:34Z', 'link', NULL, 'RB-T271 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22306, 'RB-T272', '2026-10-28T03:07:35Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22307, 'RB-T272', '2026-10-28T03:07:36Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22308, 'RB-T272', '2026-10-28T03:07:37Z', 'link', NULL, 'requires RB-T271');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22309, 'RB-T271', '2026-10-28T03:07:37Z', 'link', NULL, 'RB-T272 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22310, 'RB-T245', '2026-10-28T03:07:50Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22311, 'RB-T246', '2026-10-28T03:07:50Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22312, 'RB-T247', '2026-10-28T03:07:51Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22313, 'RB-T248', '2026-10-28T03:07:51Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22314, 'RB-T249', '2026-10-28T03:07:51Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22315, 'RB-T250', '2026-10-28T03:07:51Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22316, 'RB-T251', '2026-10-28T03:07:52Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22317, 'RB-T252', '2026-10-28T03:07:52Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22318, 'RB-T253', '2026-10-28T03:07:52Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22319, 'RB-T254', '2026-10-28T03:07:52Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22320, 'RB-T255', '2026-10-28T03:07:52Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22321, 'RB-T256', '2026-10-28T03:07:52Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22322, 'RB-T257', '2026-10-28T03:07:53Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22323, 'RB-T258', '2026-10-28T03:07:53Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22324, 'RB-T259', '2026-10-28T03:07:53Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22325, 'RB-T260', '2026-10-28T03:07:53Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22326, 'RB-T261', '2026-10-28T03:07:53Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22327, 'RB-T262', '2026-10-28T03:07:54Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22328, 'RB-T263', '2026-10-28T03:07:54Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22329, 'RB-T264', '2026-10-28T03:07:54Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22330, 'RB-T265', '2026-10-28T03:07:54Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22331, 'RB-T266', '2026-10-28T03:07:54Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22332, 'RB-T267', '2026-10-28T03:07:55Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22333, 'RB-T268', '2026-10-28T03:07:55Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22334, 'RB-T269', '2026-10-28T03:07:55Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22335, 'RB-T270', '2026-10-28T03:07:55Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22336, 'RB-T271', '2026-10-28T03:07:55Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22337, 'RB-T272', '2026-10-28T03:07:55Z', 'approval', 'approved', 'proposed');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z', NULL);
@@ -40854,8 +41213,36 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T234', 'approved', 0, '2026-10-28T02:54:17Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T24', 'approved', 0, '2026-10-22T00:16:20Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T242', 'approved', 0, '2026-10-27T16:45:42Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T245', 'proposed', 0, '2026-10-28T03:07:50Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T246', 'proposed', 0, '2026-10-28T03:07:50Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T247', 'proposed', 0, '2026-10-28T03:07:51Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T248', 'proposed', 0, '2026-10-28T03:07:51Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T249', 'proposed', 0, '2026-10-28T03:07:51Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T25', 'approved', 0, '2026-10-22T00:16:20Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T250', 'proposed', 0, '2026-10-28T03:07:51Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T251', 'proposed', 0, '2026-10-28T03:07:52Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T252', 'proposed', 0, '2026-10-28T03:07:52Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T253', 'proposed', 0, '2026-10-28T03:07:52Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T254', 'proposed', 0, '2026-10-28T03:07:52Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T255', 'proposed', 0, '2026-10-28T03:07:52Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T256', 'proposed', 0, '2026-10-28T03:07:52Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T257', 'proposed', 0, '2026-10-28T03:07:53Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T258', 'proposed', 0, '2026-10-28T03:07:53Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T259', 'proposed', 0, '2026-10-28T03:07:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T26', 'approved', 0, '2026-10-22T00:16:20Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T260', 'proposed', 0, '2026-10-28T03:07:53Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T261', 'proposed', 0, '2026-10-28T03:07:53Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T262', 'proposed', 0, '2026-10-28T03:07:54Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T263', 'proposed', 0, '2026-10-28T03:07:54Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T264', 'proposed', 0, '2026-10-28T03:07:54Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T265', 'proposed', 0, '2026-10-28T03:07:54Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T266', 'proposed', 0, '2026-10-28T03:07:54Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T267', 'proposed', 0, '2026-10-28T03:07:55Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T268', 'proposed', 0, '2026-10-28T03:07:55Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T269', 'proposed', 0, '2026-10-28T03:07:55Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T270', 'proposed', 0, '2026-10-28T03:07:55Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T271', 'proposed', 0, '2026-10-28T03:07:55Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T272', 'proposed', 0, '2026-10-28T03:07:55Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T3', 'approved', 0, '2026-10-21T20:15:47Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T32', 'approved', 0, '2026-10-22T13:22:49Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T33', 'approved', 0, '2026-10-22T13:22:49Z', NULL);
@@ -41718,7 +42105,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('USOD-T9', 'approved', 0, '2026-10-22T23:02:27Z', NULL);
 
 -- ticket_work
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T179', NULL, 0, 'waffle@mindattic.com', '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T02:55:20Z', '2026-10-28T02:55:20Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T179', NULL, 0, NULL, '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T03:00:01Z', '2026-10-28T03:00:01Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
@@ -41802,7 +42189,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T58', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:02:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T133', NULL, 0, 'pdftransferjr@mindattic.com', '52d32bc1-0939-4dbe-8425-35585a84452a', '2026-10-27T06:24:45Z', '2026-10-27T06:24:45Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T234', NULL, 0, 'waffle@mindattic.com', 'bc754ee7-b2e2-4870-b745-42c627ec13c1', '2026-10-28T02:54:19Z', '2026-10-28T02:54:19Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T234', NULL, 0, NULL, 'bc754ee7-b2e2-4870-b745-42c627ec13c1', '2026-10-28T03:00:57Z', '2026-10-28T03:00:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T111', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:34:40Z');
@@ -41944,9 +42331,9 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.HARE-T64', NULL, 0, 'waffle@mindattic.com', '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T02:51:22Z', '2026-10-28T02:51:22Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.HARE-T67', NULL, 0, 'waffle@mindattic.com', '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T02:52:45Z', '2026-10-28T02:52:45Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.RICO-T52', NULL, 0, 'waffle@mindattic.com', '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T02:54:02Z', '2026-10-28T02:54:02Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.HARE-T64', NULL, 0, NULL, '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T02:59:31Z', '2026-10-28T02:59:31Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.HARE-T67', NULL, 0, NULL, '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T02:59:31Z', '2026-10-28T02:59:31Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.RICO-T52', NULL, 0, NULL, '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T02:59:32Z', '2026-10-28T02:59:32Z');
 
 -- ticket_notes
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (1, 'U.HARE-T54', 'ryand', '2026-10-26T04:52:58Z', 'From U.HARE-T52 (7d24220): leaving the arena past the 400 px buffer zone (LeaveArena command) currently costs a life only on the ship (PlayerHealth out-of-bounds path / ShipHealth). When this ticket wires LIVES into the session, route that out-of-bounds loss through the same session lives so both deaths count the same.');
@@ -45259,6 +45646,421 @@ Each resolution below is checked in play (menu, character creation, HUD, dialogu
 - 2D UI (front end, HUD, dialogue, signs, in-game screens) keeps its proportions: no stretched art, no text clipped or overflowing its box, nothing off screen, hover boxes fit their words.
 - Tall aspects (16:10, 4:3) fit everything vertically; ultrawide keeps the UI in a centred design area where the original''s layout assumes one.
 - The options screen lists the resolutions the display offers.', '2026-10-27T16:45:28Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T245', 'Research existing work and write the design for the AutoGamePlay library and the Bloodlines playtest campaign, as docs/AUTOPLAY.md.
+
+1. Survey prior art online (WebSearch/WebFetch) and record what to reuse vs. build, with links and licences: LLM/VLM game-playing agents (e.g. Cradle/BAAI general computer control, VideoGameBench, lmgame-Bench / GamingAgent, Voyager / MineDojo, SIMA-style agents, BALROG), game-testing bots and automation (input injection such as vgamepad/pydirectinput, Unity/Unreal automated test frameworks, GameDriver/AltTester-style object-level drivers, s&box''s own test and editor-automation APIs), visual regression (SSIM / perceptual diff, per-viewpoint screenshot comparison). Prefer object-level state through the engine (we own the runtime) over pixel-only control; pixels are for the visual checks.
+2. Reference material for Bloodlines: text walkthroughs (fandom wiki, GameFAQs, PCGamingWiki, Unofficial Patch notes), clan-specific differences (Nosferatu sewer routing and masquerade, Malkavian dialogue, Ventrue feeding restriction, Tremere/Thaumaturgy, Animalism/Protean), longplay videos per clan on YouTube for spot checks (do not download or commit video; note timestamps for reference). The best visual reference is the original game itself running from the owned install: design how to capture matching viewpoints there (Source 2004 engine: -dev -console, setpos/setang/screenshot/host_timescale through the command line, screenshots landing in the owned install, never the GOG folder).
+3. Write docs/AUTOPLAY.md: architecture (game-agnostic core: Observation, Action vocabulary, GameAdapter protocol with observe/act/save/load/set_speed/screenshot, Episode recorder writing JSONL traces + frames under work/autoplay/, detectors for stuck/softlock/exception/visual anomalies, BugReporter that dedupes and files tickets), the Bloodlines s&box adapter (C# bridge + sbox-cli), how a Claude subagent plays (a step loop: observe compact text state + screenshot, choose a high-level action, act, every N steps checkpoint-save), game-speed strategy, save-state library (chapter-start saves per clan/build so later tickets start mid-campaign), the visual-parity method, and the campaign plan (clans x builds x chapters, UI coverage). Note limits honestly.
+4. Commit docs/AUTOPLAY.md only. The follow-up tickets of this epic are already filed; if the research changes their scope, note it in docs/AUTOPLAY.md under "Ticket notes" (by ticket id) rather than refiling.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:04:34Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T246', 'AutoPlay bridge skeleton in the s&box runtime (the basic-capability tickets each add their own actions on top): one C# entry point that an outside agent drives through sbox-cli run_csharp to observe and act at object level.
+
+- Gate it behind a convar (e.g. bl_autoplay) so normal play is untouched.
+- **Observe**: one call returning compact JSON: map, game time, player (position, angles, health, blood, humanity, masquerade, xp, money, clan, attributes/abilities/disciplines, equipped weapon, inventory), nearby entities (class, targetname, position, distance, visible/line-of-sight, interactable/usable, hostile, health), the active dialogue (speaker, line, numbered options), open UI screens and their clickable elements by stable id, quest log entries, combat state, loading/cinematic state, and the script/engine errors logged since the last observe.
+- **Act**: teleport; goto entity/position (navmesh pathing, reports arrival or blocked), face/look-at, use/interact, attack target (melee/ranged), cast discipline, feed, choose dialogue option, continue, press UI element by id, open/close screens, crouch/jump/sneak, wait N seconds, quicksave/quickload/named save/load (SaveSlots), set time scale.
+- Read-only helpers for agents: list landmarks/changelevels/quest-relevant entities of the map.
+Document the API in docs/AUTOPLAY.md and build it in the editor (0 errors).
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:04:36Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T247', 'Autoplay basic capability: launch: start the port from a cold editor (or the exported build) and reach the title menu, reporting load time and any log errors
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:04:39Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T248', 'Autoplay basic capability: skip the intro movies and any skippable cinematic (Esc/click as in the original), and detect when a movie is playing
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:04:42Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T249', 'Autoplay basic capability: start a new game and complete character creation for one clan (questionnaire and quick pick), ending in control of the player in the first map
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:04:44Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T250', 'Autoplay basic capability: look around: turn left/right and look up/down by given angles, read the camera angles back, screenshot each direction
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:04:47Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T251', 'Autoplay basic capability: move: walk/run forward, back, strafe, by distance, detecting blocked movement and arrival
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:04:50Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T252', 'Autoplay basic capability: jump and crouch (and crouch-walk/sneak), checking height, landing and collision
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:04:53Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T253', 'Autoplay basic capability: use/interact with the nearest usable entity (door, button, item pickup, container), reporting what happened
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:04:55Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T254', 'Autoplay basic capability: talk: start a dialogue with an NPC, read the line and numbered options, choose options to the end of the conversation
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:04:58Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T255', 'Autoplay basic capability: open and close each in-game screen (pause, character sheet, inventory, quest log, map) and read its contents
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:05:01Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T256', 'Autoplay basic capability: quicksave, quickload and named save/load through the bridge, verifying the restored state matches (map, position, stats, inventory, quest states)
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:05:03Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T257', 'Autoplay basic capability: navigate: go to a named entity or landmark in the same map by pathfinding (navmesh / node graph), reporting arrival, blocked or no path
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:05:06Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T258', 'Autoplay basic capability: take a level transition (door / changelevel trigger) and arrive on the right landmark of the next map
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:05:09Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T259', 'Autoplay basic capability: fight: target, melee and ranged attack an NPC, block/dodge, read health of both, detect death; feed on a victim
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:05:12Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T260', 'Autoplay basic capability: use a discipline (activate, read blood cost and effect, deactivate)
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:05:15Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T261', 'Autoplay basic capability: die and reload: detect player death / Final Death screen and recover from the last save
+
+The port is barely playable yet, so the playtest campaign starts with basic capabilities, one ticket each, before any goal-driven play. This ticket:
+
+1. Add (or finish) the AutoPlay bridge action(s) and observation fields this capability needs, so an agent can do it through sbox-cli run_csharp without a human (see docs/AUTOPLAY.md for the bridge API; extend it, keep it consistent).
+2. Do it in the running port (editor play mode, or the exported build if the editor path cannot exercise it), with a screenshot before/after under work/autoplay/basics/ and a check of the s&box logs.
+3. Compare with the original game where it matters (feel, look, timing, keys from scripts/kb_def.lst).
+4. Fix small defects in this ticket''s own scope; file each larger defect or discrepancy as its own fix ticket ("... (found by autoplay)") and link this ticket to it (tickets ticket link <this> requires <bug>) when it blocks the capability. Close this ticket only when the capability works end to end through the bridge; record the result in docs/AUTOPLAY.md''s capability checklist.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:05:18Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T262', 'Faster-than-real-time play for automated runs: make the s&box port run correctly at 4x-16x game speed and let automation skip waiting.
+
+- A time-scale control (Scene.TimeScale or equivalent) exposed as a convar and through the AutoPlay bridge; verify physics, AI think/schedules, animations, scripted sequences, dialogue/voice timing, timers in map Python scripts and the loading screen stay consistent at speed (measure: devtest plus one hub map at 1x vs 8x reach the same state). Fix every place that uses real time where game time is meant.
+- Automation shortcuts behind the autoplay convar: skip or fast-forward movies/cinematics, don''t wait for voice lines to finish in dialogue, minimal frame rendering when no screenshot is needed if the engine allows it.
+- Record measured speedups and known caveats in docs/AUTOPLAY.md.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:05:21Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T263', 'Build the reusable AutoGamePlay library (Python, tools/autoplay/) with a game-agnostic core and the Bloodlines s&box adapter, per docs/AUTOPLAY.md.
+
+- Core package (no Bloodlines imports): Observation / Action types, GameAdapter protocol, Episode runner and recorder (JSONL step trace + screenshots under work/autoplay/<run>/), checkpoint policy (save every N steps and before risky actions; reload on death/softlock), detectors (stuck: no progress in position/objective for T; softlock: no usable action; exceptions/errors in logs; falling out of world; missing textures/models heuristics such as checkerboard or error model in the screenshot; T-pose / NPC at origin), BugReporter (fingerprint + dedupe against open tickets via tickets ticket list --json, files a fix ticket with repro: map, position, save name, steps, screenshot path under work/).
+- A CLI the playing agent calls step by step: autoplay observe, autoplay act <action> [args], autoplay save/load <name>, autoplay shot, autoplay bug <summary>, autoplay run --script <goal file> for scripted segments.
+- Bloodlines adapter: talks to the RB AutoPlay bridge through sbox-cli; starts/attaches editor play mode; maps actions to bridge calls; reads the s&box logs.
+- An adapter-authoring guide and a minimal fake in-memory game adapter used by unit tests, proving the core is game-agnostic; unit tests for the core with the fake adapter.
+- Smoke run: new game -> first map, walk, talk, save, reload, all through the CLI; record the trace.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:05:23Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T264', 'Walkthrough knowledge base for the playing agent: the critical path and side quests of Bloodlines as data the agent follows and checks against.
+
+- Derive from the game''s own data (quest states and journal, dialogue files, map Python scripts, changelevels; docs/DIALOGUE.md, docs/MAPS.md, docs/RULES.md) and cross-check with public walkthroughs (fandom wiki, GameFAQs): per chapter (Santa Monica, Downtown LA, Hollywood, Chinatown, endgame) the ordered objectives, which map/NPC/item each needs, how to tell it is done (quest state, item, global), branches and per-clan differences (Nosferatu cannot walk the streets, Malkavian dialogue, Ventrue feeding), and the endings.
+- Store it as docs/data/walkthrough/*.json (summaries in our own words; no copied walkthrough text, no game dialogue text beyond identifiers) plus a loader in tools/autoplay usable by the agent ("what is my next objective given this state").
+- Also list recommended builds per clan to test (melee, firearms, stealth, social/persuasion, discipline-heavy).', '2026-10-28T03:05:32Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T265', 'Visual parity harness: capture matching viewpoints in the original game and in the port and diff them, so visual discrepancies become tickets.
+
+- Original side: launch Vampire.exe from the install setup.ps1 owns (never the GOG folder; if no owned install exists, make one with setup.ps1 or copy the GOG install into work/ read-only-source) with -game Unofficial_Patch -dev -console and command-line commands (map, setpos, setang, cl_drawhud, screenshot/jpeg, quit) to capture a list of viewpoints per map; screenshots go under work/visual/original/.
+- Port side: same viewpoints through the AutoPlay bridge (teleport + camera_screenshot), under work/visual/port/.
+- Viewpoint sets: landmarks, spawn points, a few hand-picked per hub map; same FOV and resolution; HUD on and off.
+- Diff report (SSIM / perceptual, per region) under work/visual/report.html; review the worst pairs by eye (Read the images) and file fix tickets for real discrepancies (missing props, wrong textures/materials, lighting, fog, skybox, decals, models, HUD layout/fonts), not for expected engine differences, which are listed in docs/AUTOPLAY.md.
+- Run it over every hub map at least, and file the tickets.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:05:34Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T266', 'Autoplay UI coverage pass: press every button and visit every screen of the port, compare with the original, and file a fix ticket per bug.
+
+Title menu (new game, load, options and every option page, credits, quit), character creation for every clan (questionnaire and quick pick, attribute/ability/discipline point-buy, back/next, clan descriptions, portraits), the opening, HUD, pause menu, save/load (save, overwrite, delete, load from title and in game), quick save/load, character sheet and experience spending, inventory (equip, drop, use, examine), quest log, map screen, dialogue UI (option kinds, persuasion/seduction/intimidation), shops/barter, computers/e-mail and lockpicking/hacking, taxi/travel screens, death and Final Death screens, key rebinding. For each: does it work, does it look like the original (compare with original-game screenshots from the visual parity harness or by running the owned install), is the text correct, and are there no exceptions in the s&box logs. Keep a coverage checklist in docs/AUTOPLAY.md.
+
+
+## Planning rule for goal tickets
+
+A goal ticket (a chapter, a quest, a UI area) is worked by first planning it: break it into the concrete steps needed (travel to X, talk to Y, get item Z, win fight W, ...), file each step that is not trivially doable now as its own ticket (feature for a missing capability or strategy, fix for a defect), link this ticket to them (tickets ticket link <this> requires <step>), and approve the step tickets (standing owner approval for this epic, 2026-10-27). Work what can be done now; leave this ticket open until its steps are closed. Expect the ticket count to grow a lot before it shrinks: that is intended.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:05:37Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T267', 'Autoplay campaign run: play the Santa Monica chapter (tutorial through leaving for Downtown) as a Brujah (melee combat build) from start to end through the AutoGamePlay CLI, at accelerated game speed, as a human player would, and file every bug as its own fix ticket.
+
+- Start from the previous chapter''s end save for this clan/build if it exists (work/autoplay/saves/), else from a new game. Follow the walkthrough knowledge base: critical path first, then the chapter''s side quests; use the clan''s distinctive options (disciplines, dialogue, feeding, stealth vs combat).
+- Checkpoint-save often; on death, softlock or a broken quest, reload and try another route, and ticket the cause.
+- File a fix ticket for every defect: crashes/exceptions, broken quests or dialogue, wrong rules/stats, AI misbehaviour, stuck navigation, missing/wrong visuals or sounds compared with the original (spot-check against the owned original install or the visual harness), UI faults. Keep each ticket small, with map, position, save name and repro steps.
+- At the chapter end, write the named save work/autoplay/saves/<clan>_<build>_<next chapter>, and add the run summary (time, game speed, bugs filed) to docs/AUTOPLAY.md''s campaign log.
+- If the run is blocked by a bug, file that bug as a fix ticket, link this ticket to it (tickets ticket link <this> requires <bug>), say so, and leave this ticket open so it resumes after the fix.
+
+
+## Planning rule for goal tickets
+
+A goal ticket (a chapter, a quest, a UI area) is worked by first planning it: break it into the concrete steps needed (travel to X, talk to Y, get item Z, win fight W, ...), file each step that is not trivially doable now as its own ticket (feature for a missing capability or strategy, fix for a defect), link this ticket to them (tickets ticket link <this> requires <step>), and approve the step tickets (standing owner approval for this epic, 2026-10-27). Work what can be done now; leave this ticket open until its steps are closed. Expect the ticket count to grow a lot before it shrinks: that is intended.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:05:40Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T268', 'Autoplay campaign run: play the Downtown LA chapter as a Brujah (melee combat build) from start to end through the AutoGamePlay CLI, at accelerated game speed, as a human player would, and file every bug as its own fix ticket.
+
+- Start from the previous chapter''s end save for this clan/build if it exists (work/autoplay/saves/), else from a new game. Follow the walkthrough knowledge base: critical path first, then the chapter''s side quests; use the clan''s distinctive options (disciplines, dialogue, feeding, stealth vs combat).
+- Checkpoint-save often; on death, softlock or a broken quest, reload and try another route, and ticket the cause.
+- File a fix ticket for every defect: crashes/exceptions, broken quests or dialogue, wrong rules/stats, AI misbehaviour, stuck navigation, missing/wrong visuals or sounds compared with the original (spot-check against the owned original install or the visual harness), UI faults. Keep each ticket small, with map, position, save name and repro steps.
+- At the chapter end, write the named save work/autoplay/saves/<clan>_<build>_<next chapter>, and add the run summary (time, game speed, bugs filed) to docs/AUTOPLAY.md''s campaign log.
+- If the run is blocked by a bug, file that bug as a fix ticket, link this ticket to it (tickets ticket link <this> requires <bug>), say so, and leave this ticket open so it resumes after the fix.
+
+
+## Planning rule for goal tickets
+
+A goal ticket (a chapter, a quest, a UI area) is worked by first planning it: break it into the concrete steps needed (travel to X, talk to Y, get item Z, win fight W, ...), file each step that is not trivially doable now as its own ticket (feature for a missing capability or strategy, fix for a defect), link this ticket to them (tickets ticket link <this> requires <step>), and approve the step tickets (standing owner approval for this epic, 2026-10-27). Work what can be done now; leave this ticket open until its steps are closed. Expect the ticket count to grow a lot before it shrinks: that is intended.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:06:02Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T269', 'Autoplay campaign run: play the Hollywood chapter as a Brujah (melee combat build) from start to end through the AutoGamePlay CLI, at accelerated game speed, as a human player would, and file every bug as its own fix ticket.
+
+- Start from the previous chapter''s end save for this clan/build if it exists (work/autoplay/saves/), else from a new game. Follow the walkthrough knowledge base: critical path first, then the chapter''s side quests; use the clan''s distinctive options (disciplines, dialogue, feeding, stealth vs combat).
+- Checkpoint-save often; on death, softlock or a broken quest, reload and try another route, and ticket the cause.
+- File a fix ticket for every defect: crashes/exceptions, broken quests or dialogue, wrong rules/stats, AI misbehaviour, stuck navigation, missing/wrong visuals or sounds compared with the original (spot-check against the owned original install or the visual harness), UI faults. Keep each ticket small, with map, position, save name and repro steps.
+- At the chapter end, write the named save work/autoplay/saves/<clan>_<build>_<next chapter>, and add the run summary (time, game speed, bugs filed) to docs/AUTOPLAY.md''s campaign log.
+- If the run is blocked by a bug, file that bug as a fix ticket, link this ticket to it (tickets ticket link <this> requires <bug>), say so, and leave this ticket open so it resumes after the fix.
+
+
+## Planning rule for goal tickets
+
+A goal ticket (a chapter, a quest, a UI area) is worked by first planning it: break it into the concrete steps needed (travel to X, talk to Y, get item Z, win fight W, ...), file each step that is not trivially doable now as its own ticket (feature for a missing capability or strategy, fix for a defect), link this ticket to them (tickets ticket link <this> requires <step>), and approve the step tickets (standing owner approval for this epic, 2026-10-27). Work what can be done now; leave this ticket open until its steps are closed. Expect the ticket count to grow a lot before it shrinks: that is intended.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:06:26Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T270', 'Autoplay campaign run: play the Chinatown chapter as a Brujah (melee combat build) from start to end through the AutoGamePlay CLI, at accelerated game speed, as a human player would, and file every bug as its own fix ticket.
+
+- Start from the previous chapter''s end save for this clan/build if it exists (work/autoplay/saves/), else from a new game. Follow the walkthrough knowledge base: critical path first, then the chapter''s side quests; use the clan''s distinctive options (disciplines, dialogue, feeding, stealth vs combat).
+- Checkpoint-save often; on death, softlock or a broken quest, reload and try another route, and ticket the cause.
+- File a fix ticket for every defect: crashes/exceptions, broken quests or dialogue, wrong rules/stats, AI misbehaviour, stuck navigation, missing/wrong visuals or sounds compared with the original (spot-check against the owned original install or the visual harness), UI faults. Keep each ticket small, with map, position, save name and repro steps.
+- At the chapter end, write the named save work/autoplay/saves/<clan>_<build>_<next chapter>, and add the run summary (time, game speed, bugs filed) to docs/AUTOPLAY.md''s campaign log.
+- If the run is blocked by a bug, file that bug as a fix ticket, link this ticket to it (tickets ticket link <this> requires <bug>), say so, and leave this ticket open so it resumes after the fix.
+
+
+## Planning rule for goal tickets
+
+A goal ticket (a chapter, a quest, a UI area) is worked by first planning it: break it into the concrete steps needed (travel to X, talk to Y, get item Z, win fight W, ...), file each step that is not trivially doable now as its own ticket (feature for a missing capability or strategy, fix for a defect), link this ticket to them (tickets ticket link <this> requires <step>), and approve the step tickets (standing owner approval for this epic, 2026-10-27). Work what can be done now; leave this ticket open until its steps are closed. Expect the ticket count to grow a lot before it shrinks: that is intended.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:06:49Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T271', 'Autoplay campaign run: play the endgame, and every ending reachable from the last shared save as a Brujah (melee combat build) from start to end through the AutoGamePlay CLI, at accelerated game speed, as a human player would, and file every bug as its own fix ticket.
+
+- Start from the previous chapter''s end save for this clan/build if it exists (work/autoplay/saves/), else from a new game. Follow the walkthrough knowledge base: critical path first, then the chapter''s side quests; use the clan''s distinctive options (disciplines, dialogue, feeding, stealth vs combat).
+- Checkpoint-save often; on death, softlock or a broken quest, reload and try another route, and ticket the cause.
+- File a fix ticket for every defect: crashes/exceptions, broken quests or dialogue, wrong rules/stats, AI misbehaviour, stuck navigation, missing/wrong visuals or sounds compared with the original (spot-check against the owned original install or the visual harness), UI faults. Keep each ticket small, with map, position, save name and repro steps.
+- At the chapter end, write the named save work/autoplay/saves/<clan>_<build>_<next chapter>, and add the run summary (time, game speed, bugs filed) to docs/AUTOPLAY.md''s campaign log.
+- If the run is blocked by a bug, file that bug as a fix ticket, link this ticket to it (tickets ticket link <this> requires <bug>), say so, and leave this ticket open so it resumes after the fix.
+
+
+## Planning rule for goal tickets
+
+A goal ticket (a chapter, a quest, a UI area) is worked by first planning it: break it into the concrete steps needed (travel to X, talk to Y, get item Z, win fight W, ...), file each step that is not trivially doable now as its own ticket (feature for a missing capability or strategy, fix for a defect), link this ticket to them (tickets ticket link <this> requires <step>), and approve the step tickets (standing owner approval for this epic, 2026-10-27). Work what can be done now; leave this ticket open until its steps are closed. Expect the ticket count to grow a lot before it shrinks: that is intended.
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:07:11Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T272', 'After the first full campaign (Brujah melee) completes, file the remaining autoplay campaign-run tickets: one per chapter (Santa Monica, Downtown LA, Hollywood, Chinatown, endgame) for each of Gangrel, Malkavian, Nosferatu, Toreador, Tremere and Ventrue, each clan with a different build from the walkthrough knowledge base''s list (firearms, stealth, social, discipline-heavy), linked so each chapter requires the previous one of the same clan, with the same description as the Brujah run tickets. Approve them (the owner asked for every clan on 2026-10-27). Then make the game-agnostic core of tools/autoplay adoptable by another game (its own README, versioned API, adapter guide), and propose in docs/AUTOPLAY.md how to move it to its own repo (do not create the repo).
+
+
+## Shared context (AutoGamePlay / playtest epic)
+
+The owner asked (2026-10-27) for the port to be validated by an AI that plays it end to end: every button, the whole campaign as each clan with different builds, at faster-than-real-time game speed, using save games to reload, filing every bug or visual/gameplay discrepancy versus the original as its own `fix` ticket (`tickets ticket new --type fix --summary "... (found by autoplay)"`), so /allocate fixes, tests and closes them. Alongside, build a reusable, game-agnostic **AutoGamePlay** library that lets an LLM agent observe a game, decide the next action, detect bugs and file them; Bloodlines on s&box is its first adapter.
+
+Ground rules: never write into the GOG game folder (use the install setup.ps1 owns, or -ExistingInstall read-only); game assets, screenshots and captured frames stay under `work/` (never committed; tools/guard/no_game_files.py). Existing building blocks: `sbox-cli` drives the open editor (run_csharp, play_start, open_scene, camera_screenshot {"includeUi":true}; docs/SBOX.md "Automation"), tools/sbox_import/playtest.py (map loads and transitions through run_csharp), SaveSlots/quicksave (bl_save, F9/F12), the s&box logs at D:\Games\Steam\steamapps\common\sbox\logs. Design and decisions live in docs/AUTOPLAY.md (written by the first ticket of this epic): read it first and keep it current.', '2026-10-28T03:07:35Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RTO-T10', 'Icons that look native.
 
 For test builds, point `m_Icon {guid, fileid}` at existing game sprites (a data-only mod can reference any game asset; FieldOverride supports UnityEngine.Object by guid/fileid), one distinct icon per Overwatch type. Final art: the user can generate icons (or take them from another game); match RT ability-icon size and style using a few weapon-ability icons from the template as reference. Custom sprites need the Unity template build (Content → Bundles).', '2026-10-26T18:26:03Z');
@@ -48062,6 +48864,127 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-US-U9', 'PRS-EPIC-U'
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T120', 'RB-T119', 'requires', 'orchestrator block');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T131', 'RB-T135', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T156', 'RB-T111', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T246', 'RB-T245', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T247', 'RB-T246', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T248', 'RB-T246', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T249', 'RB-T246', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T250', 'RB-T246', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T251', 'RB-T246', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T252', 'RB-T246', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T253', 'RB-T246', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T254', 'RB-T246', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T255', 'RB-T246', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T256', 'RB-T246', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T257', 'RB-T246', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T258', 'RB-T246', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T259', 'RB-T246', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T260', 'RB-T246', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T261', 'RB-T246', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T262', 'RB-T246', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T263', 'RB-T245', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T263', 'RB-T247', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T263', 'RB-T248', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T263', 'RB-T249', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T263', 'RB-T250', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T263', 'RB-T251', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T264', 'RB-T245', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T265', 'RB-T263', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T266', 'RB-T263', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'RB-T247', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'RB-T248', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'RB-T249', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'RB-T250', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'RB-T251', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'RB-T252', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'RB-T253', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'RB-T254', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'RB-T255', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'RB-T256', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'RB-T257', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'RB-T258', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'RB-T259', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'RB-T260', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'RB-T261', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'RB-T262', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'RB-T263', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T267', 'RB-T264', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T247', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T248', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T249', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T250', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T251', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T252', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T253', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T254', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T255', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T256', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T257', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T258', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T259', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T260', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T261', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T262', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T263', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T264', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T268', 'RB-T267', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T269', 'RB-T247', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T269', 'RB-T248', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T269', 'RB-T249', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T269', 'RB-T250', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T269', 'RB-T251', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T269', 'RB-T252', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T269', 'RB-T253', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T269', 'RB-T254', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T269', 'RB-T255', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T269', 'RB-T256', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T269', 'RB-T257', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T269', 'RB-T258', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T269', 'RB-T259', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T269', 'RB-T260', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T269', 'RB-T261', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T269', 'RB-T262', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T269', 'RB-T263', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T269', 'RB-T264', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T269', 'RB-T268', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T270', 'RB-T247', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T270', 'RB-T248', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T270', 'RB-T249', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T270', 'RB-T250', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T270', 'RB-T251', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T270', 'RB-T252', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T270', 'RB-T253', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T270', 'RB-T254', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T270', 'RB-T255', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T270', 'RB-T256', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T270', 'RB-T257', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T270', 'RB-T258', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T270', 'RB-T259', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T270', 'RB-T260', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T270', 'RB-T261', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T270', 'RB-T262', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T270', 'RB-T263', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T270', 'RB-T264', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T270', 'RB-T269', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T271', 'RB-T247', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T271', 'RB-T248', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T271', 'RB-T249', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T271', 'RB-T250', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T271', 'RB-T251', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T271', 'RB-T252', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T271', 'RB-T253', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T271', 'RB-T254', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T271', 'RB-T255', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T271', 'RB-T256', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T271', 'RB-T257', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T271', 'RB-T258', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T271', 'RB-T259', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T271', 'RB-T260', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T271', 'RB-T261', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T271', 'RB-T262', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T271', 'RB-T263', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T271', 'RB-T264', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T271', 'RB-T270', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T272', 'RB-T271', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T37', 'RB-T35', 'requires', 'orchestrator block');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RTB-T238', 'RTB-T6', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RTB-T238', 'RTB-T7', 'requires', 'blocked by hand');
