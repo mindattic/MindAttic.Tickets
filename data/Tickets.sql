@@ -42412,6 +42412,23 @@ The unfinished drafts were moved to `work/t246/` (`AutoPlay.cs`, `AutoPlayUi.cs`
 5. **Build**: least sure of `IPressable.Tooltip.Title` and of `JsonNode` passing the s&box whitelist.
 6. Land and close.');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22727, 'AGP-T4', '2026-10-28T04:09:21Z', 'working', NULL, 'waffle@mindattic.com (bc754ee7-b2e2-4870-b745-42c627ec13c1)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22728, 'PRS-T322', '2026-10-28T04:35:15Z', 'working', NULL, 'waffle@mindattic.com (d4268080-1c9c-4b9d-afb5-57bb891992d7)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22729, 'PRS-T325', '2026-10-28T04:35:16Z', 'working', NULL, 'waffle@mindattic.com (d4268080-1c9c-4b9d-afb5-57bb891992d7)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22730, 'PRS-T326', '2026-10-28T04:35:16Z', 'working', NULL, 'waffle@mindattic.com (d4268080-1c9c-4b9d-afb5-57bb891992d7)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22731, 'PRS-T322', '2026-10-28T04:35:17Z', 'working', 'waffle@mindattic.com (d4268080-1c9c-4b9d-afb5-57bb891992d7)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22732, 'PRS-T327', '2026-10-28T04:35:17Z', 'working', NULL, 'waffle@mindattic.com (d4268080-1c9c-4b9d-afb5-57bb891992d7)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22733, 'PRS-T325', '2026-10-28T04:35:17Z', 'working', 'waffle@mindattic.com (d4268080-1c9c-4b9d-afb5-57bb891992d7)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22734, 'PRS-T326', '2026-10-28T04:35:18Z', 'working', 'waffle@mindattic.com (d4268080-1c9c-4b9d-afb5-57bb891992d7)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22735, 'PRS-T328', '2026-10-28T04:35:18Z', 'working', NULL, 'waffle@mindattic.com (d4268080-1c9c-4b9d-afb5-57bb891992d7)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22736, 'PRS-T329', '2026-10-28T04:35:19Z', 'working', NULL, 'waffle@mindattic.com (d4268080-1c9c-4b9d-afb5-57bb891992d7)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22737, 'PRS-T327', '2026-10-28T04:35:42Z', 'working', 'waffle@mindattic.com (d4268080-1c9c-4b9d-afb5-57bb891992d7)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22738, 'PRS-T328', '2026-10-28T04:35:42Z', 'working', 'waffle@mindattic.com (d4268080-1c9c-4b9d-afb5-57bb891992d7)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22739, 'PRS-T329', '2026-10-28T04:35:42Z', 'working', 'waffle@mindattic.com (d4268080-1c9c-4b9d-afb5-57bb891992d7)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22740, 'U.HARE-T68', '2026-10-28T04:38:12Z', 'working', '2825e89a-daff-4fa9-bdbd-36e47a65193e', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22741, 'U.RICO-T53', '2026-10-28T04:38:12Z', 'working', '2825e89a-daff-4fa9-bdbd-36e47a65193e', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22742, 'RB-T264', '2026-10-28T04:38:26Z', 'working', 'bc754ee7-b2e2-4870-b745-42c627ec13c1', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22743, 'U.HARE-T24', '2026-10-28T04:38:27Z', 'working', '2825e89a-daff-4fa9-bdbd-36e47a65193e', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22744, 'RB-T246', '2026-10-28T04:39:03Z', 'working', 'bc754ee7-b2e2-4870-b745-42c627ec13c1', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -44486,8 +44503,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T133', NULL, 0, 'pdftransferjr@mindattic.com', '52d32bc1-0939-4dbe-8425-35585a84452a', '2026-10-27T06:24:45Z', '2026-10-27T06:24:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T234', NULL, 0, 'honey@mindattic.com', 'a5fb6ccb-d3f6-438f-a6b5-01f0b3b57e11', '2026-10-28T04:00:30Z', '2026-10-28T04:00:30Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T246', NULL, 0, NULL, 'bc754ee7-b2e2-4870-b745-42c627ec13c1', '2026-10-28T04:08:32Z', '2026-10-28T04:08:32Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T264', NULL, 0, NULL, 'bc754ee7-b2e2-4870-b745-42c627ec13c1', '2026-10-28T04:07:50Z', '2026-10-28T04:07:50Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T111', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:34:40Z');
@@ -44629,9 +44644,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.HARE-T24', NULL, 0, NULL, '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T04:07:49Z', '2026-10-28T04:07:49Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.HARE-T68', NULL, 0, NULL, '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T04:07:49Z', '2026-10-28T04:07:49Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.RICO-T53', NULL, 0, NULL, '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T04:07:50Z', '2026-10-28T04:07:50Z');
 
 -- ticket_notes
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (1, 'U.HARE-T54', 'ryand', '2026-10-26T04:52:58Z', 'From U.HARE-T52 (7d24220): leaving the arena past the 400 px buffer zone (LeaveArena command) currently costs a life only on the ship (PlayerHealth out-of-bounds path / ShipHealth). When this ticket wires LIVES into the session, route that out-of-bounds loss through the same session lives so both deaths count the same.');
