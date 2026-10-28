@@ -9340,7 +9340,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T107', 'Unity.Ricochet', 107, '2026-10-26', 'fix', 'closed', 'Match the original (owner rule: port faithfully, found by the parity audit): the pause after a shot lands before the next turn is 50 steps (obj_endturn, about 0.83 s), not 1.25 s', '05fe3b9', 106, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T108', 'Unity.Ricochet', 108, '2026-10-26', 'fix', 'closed', 'Match the original (owner rule: port faithfully, found by the parity audit): the default announcer is Baxter (config.ini), not Sly', 'c5f92b8', 107, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T109', 'Unity.Ricochet', 109, '2026-10-26', 'fix', 'open', 'Match the original (owner rule: port faithfully, found by the parity audit): the setup''s ranges are the original''s: turn time 5-30 s, shapes 5-40 in steps of 5, the damage choices 5/10/25/33/50/100; the in-game Settings screen shows only the original''s settings (the tuning registry''s health, points, shot speed, pellets, grass and other dials stay data, not player-facing controls)', '—', 108, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T110', 'Unity.Ricochet', 110, '2026-10-26', 'fix', 'open', 'Match the original (owner rule: port faithfully, found by the parity audit): random names come from the original''s pools, names_f.ini and names_m.ini (about 5,300 first names, read as data), not a short built-in list', '—', 109, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T110', 'Unity.Ricochet', 110, '2026-10-26', 'fix', 'closed', 'Match the original (owner rule: port faithfully, found by the parity audit): random names come from the original''s pools, names_f.ini and names_m.ini (about 5,300 first names, read as data), not a short built-in list', '9a61e5d', 109, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T111', 'Unity.Ricochet', 111, '2026-10-26', 'feature', 'open', 'SPIKE (future enhancement, after the matching fix restores the original): try the electric arcs, laser gates and foliage as a level data option that is never the default (U.RICO fix for the hazards first)', '—', 110, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T112', 'Unity.Ricochet', 112, '2026-10-26', 'feature', 'open', 'SPIKE (future enhancement, after the matching fix restores the original): try the rebuild''s even 5-pellet shotgun at 0.35 of a hit each as a data option that is never the default', '—', 111, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T113', 'Unity.Ricochet', 113, '2026-10-26', 'feature', 'open', 'SPIKE (future enhancement, after the matching fix restores the original): try a grenade that passes through tanks and blasts everyone within its radius as a data option that is never the default', '—', 112, NULL);
@@ -39771,6 +39771,16 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21993, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21994, 'M.ORCH-T1248', '2026-10-28T02:39:27Z', 'ref', '—', 'no approved tickets left in M.ORCH-T1196 or M.RLY-T2');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21995, 'M.ORCH-T1248', '2026-10-28T02:39:37Z', 'working', '9fbee764-d61e-4970-8756-3e4cc82c29f6', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21996, 'M.ORCH-T1249', '2026-10-28T02:42:10Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21997, 'U.HARE-T64', '2026-10-28T02:51:22Z', 'working', NULL, 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21998, 'U.HARE-T67', '2026-10-28T02:52:45Z', 'working', NULL, 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (21999, 'U.RICO-T52', '2026-10-28T02:54:02Z', 'working', NULL, 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22000, 'RB-T234', '2026-10-28T02:54:17Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22001, 'RB-T234', '2026-10-28T02:54:19Z', 'working', NULL, 'waffle@mindattic.com (bc754ee7-b2e2-4870-b745-42c627ec13c1)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22002, 'GG-T179', '2026-10-28T02:55:20Z', 'working', NULL, 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22003, 'U.RICO-T110', '2026-10-28T02:55:21Z', 'working', NULL, 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22004, 'U.RICO-T110', '2026-10-28T02:58:48Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22005, 'U.RICO-T110', '2026-10-28T02:58:48Z', 'ref', '—', '9a61e5d');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (22006, 'U.RICO-T110', '2026-10-28T02:58:58Z', 'working', 'waffle@mindattic.com (2825e89a-daff-4fa9-bdbd-36e47a65193e)', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z', NULL);
@@ -40841,6 +40851,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T217', 'approved', 0, '2026-10-27T00:09:50Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T22', 'approved', 0, '2026-10-22T00:05:04Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T23', 'approved', 0, '2026-10-22T00:05:05Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T234', 'approved', 0, '2026-10-28T02:54:17Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T24', 'approved', 0, '2026-10-22T00:16:20Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T242', 'approved', 0, '2026-10-27T16:45:42Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T25', 'approved', 0, '2026-10-22T00:16:20Z', NULL);
@@ -41707,6 +41718,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('USOD-T9', 'approved', 0, '2026-10-22T23:02:27Z', NULL);
 
 -- ticket_work
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T179', NULL, 0, 'waffle@mindattic.com', '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T02:55:20Z', '2026-10-28T02:55:20Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
@@ -41790,6 +41802,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T58', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:02:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T133', NULL, 0, 'pdftransferjr@mindattic.com', '52d32bc1-0939-4dbe-8425-35585a84452a', '2026-10-27T06:24:45Z', '2026-10-27T06:24:45Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RB-T234', NULL, 0, 'waffle@mindattic.com', 'bc754ee7-b2e2-4870-b745-42c627ec13c1', '2026-10-28T02:54:19Z', '2026-10-28T02:54:19Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T111', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:34:40Z');
@@ -41931,6 +41944,9 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.HARE-T64', NULL, 0, 'waffle@mindattic.com', '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T02:51:22Z', '2026-10-28T02:51:22Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.HARE-T67', NULL, 0, 'waffle@mindattic.com', '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T02:52:45Z', '2026-10-28T02:52:45Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.RICO-T52', NULL, 0, 'waffle@mindattic.com', '2825e89a-daff-4fa9-bdbd-36e47a65193e', '2026-10-28T02:54:02Z', '2026-10-28T02:54:02Z');
 
 -- ticket_notes
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (1, 'U.HARE-T54', 'ryand', '2026-10-26T04:52:58Z', 'From U.HARE-T52 (7d24220): leaving the arena past the 400 px buffer zone (LeaveArena command) currently costs a life only on the ship (PlayerHealth out-of-bounds path / ShipHealth). When this ticket wires LIVES into the session, route that out-of-bounds loss through the same session lives so both deaths count the same.');
