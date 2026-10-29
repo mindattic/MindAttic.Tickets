@@ -8443,6 +8443,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T53', 'RogueTrader.Overwatch', 53, '2026-10-29', 'fix', 'open', 'AbilityCasterHasWeaponWithRangeType crashes (NullReferenceException) for a caster with any empty additional limb, greying out all three abilities; confirmed on Pasqal (mechadendrites)', '—', 52, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T54', 'RogueTrader.Overwatch', 54, '2026-10-29', 'feature', 'open', 'Overwatch: snap-shot accuracy penalty that grows with the cone''s reach, shown via an Overwatched debuff on every enemy currently inside the cone', '—', 53, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T55', 'RogueTrader.Overwatch', 55, '2026-10-29', 'feature', 'open', 'Reflex Shot''s circle never reaches past the equipped weapon''s own max range, instead of a flat 10 cells for every weapon', '—', 54, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T56', 'RogueTrader.Overwatch', 56, '2026-10-29', 'feature', 'open', 'A yellow LineRenderer outline traces the boundary of an active Reflex Shot circle or Overwatch cone, since the game''s shared red area highlight is hard to see', '—', 55, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T1', 'RogueTrader.Shared', 1, '2026-10-26', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T2', 'RogueTrader.Shared', 2, '2026-10-26', 'feature', 'closed', 'Create RogueTrader.Shared: source-shared build setup and helpers for Rogue Trader mods (Brevity, Overwatch, future ones)', '311f523', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T3', 'RogueTrader.Shared', 3, '2026-10-26', 'fix', 'closed', 'Release zips drop empty folders an Owlcat mod needs (Bundles), and mods built from a worktree can''t find RogueTrader.Shared', 'bf259fb', 2, NULL);
@@ -43867,6 +43868,9 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23730, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23731, 'RTO-T55', '2026-10-29T14:31:23Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23732, 'RTO-T55', '2026-10-29T14:31:28Z', 'working', NULL, 'd17c534a-d467-4102-881c-9973a1940bbc');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23733, 'RTO-T55', '2026-10-29T14:32:48Z', 'working', 'd17c534a-d467-4102-881c-9973a1940bbc', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23734, 'RTO-T56', '2026-10-29T14:43:23Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23735, 'RTO-T56', '2026-10-29T14:43:31Z', 'working', NULL, 'd17c534a-d467-4102-881c-9973a1940bbc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23736, 'RTO-T56', '2026-10-29T14:43:53Z', 'working', 'd17c534a-d467-4102-881c-9973a1940bbc', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
