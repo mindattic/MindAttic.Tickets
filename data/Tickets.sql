@@ -8452,6 +8452,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T60', 'RogueTrader.Overwatch', 60, '2026-10-29', 'fix', 'open', 'Reflex Shot circle stays 10 cells regardless of the weapon''s range (RTO-T55 not taking effect, tooltip still says 10)', '—', 59, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T61', 'RogueTrader.Overwatch', 61, '2026-10-29', 'fix', 'open', 'Yellow outline (RTO-T56) never draws, during preview or after cast', '—', 60, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T62', 'RogueTrader.Overwatch', 62, '2026-10-29', 'feature', 'open', 'Reflex Shot: circle radius = the weapon''s full range (no 10-cell ceiling), with a distance aim penalty scaling to -33 at full range', '—', 61, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T63', 'RogueTrader.Overwatch', 63, '2026-10-29', 'fix', 'open', 'Outline traces a convex hull through cell centres instead of the actual tile edges of the Reflex Shot/Overwatch area', '—', 62, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T1', 'RogueTrader.Shared', 1, '2026-10-26', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T2', 'RogueTrader.Shared', 2, '2026-10-26', 'feature', 'closed', 'Create RogueTrader.Shared: source-shared build setup and helpers for Rogue Trader mods (Brevity, Overwatch, future ones)', '311f523', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T3', 'RogueTrader.Shared', 3, '2026-10-26', 'fix', 'closed', 'Release zips drop empty folders an Owlcat mod needs (Bundles), and mods built from a worktree can''t find RogueTrader.Shared', 'bf259fb', 2, NULL);
@@ -43923,6 +43924,9 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23756, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23757, 'RTO-T60', '2026-10-29T16:03:14Z', 'working', 'd17c534a-d467-4102-881c-9973a1940bbc', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23758, 'RTO-T61', '2026-10-29T16:03:14Z', 'working', 'd17c534a-d467-4102-881c-9973a1940bbc', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23759, 'RTO-T62', '2026-10-29T16:05:40Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23760, 'RTO-T62', '2026-10-29T16:06:53Z', 'working', NULL, 'd17c534a-d467-4102-881c-9973a1940bbc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23761, 'RTO-T62', '2026-10-29T16:07:08Z', 'working', 'd17c534a-d467-4102-881c-9973a1940bbc', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23762, 'RTO-T63', '2026-10-29T16:16:33Z', 'created', NULL, 'open');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
