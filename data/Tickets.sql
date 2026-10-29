@@ -7033,7 +7033,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1265', 'MindAttic.Orchestrator', 1265, '2026-10-28', 'chore', 'closed', 'Update orchestrator.db, orchestrator.sql', '—', 1264, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1266', 'MindAttic.Orchestrator', 1266, '2026-10-28', 'fix', 'closed', 'Launcher: remove large empty gap between CLI pane and 5-hour utilization graph', '6aee9a86', 1265, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1267', 'MindAttic.Orchestrator', 1267, '2026-10-28', 'fix', 'closed', 'Launcher tab strip: show lambda percent even at 0% (currently hidden, only Sigma shows)', '3a2cd743', 1266, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1268', 'MindAttic.Orchestrator', 1268, '2026-10-28', 'fix', 'open', 'Remove gap between CLI tab strip and usage graph', '—', 1267, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1268', 'MindAttic.Orchestrator', 1268, '2026-10-28', 'fix', 'closed', 'Remove gap between CLI tab strip and usage graph', '—', 1267, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1269', 'MindAttic.Orchestrator', 1269, '2026-10-28', 'fix', 'closed', 'Widen CLI (terminal) tabs by 10px so the CLI tab bar''s row lines up with the login tab bar above it', '—', 1268, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1270', 'MindAttic.Orchestrator', 1270, '2026-10-28', 'fix', 'closed', 'Tab status badges: spinner while busy, plain ''?'' while asking (replacing the CLI-count digit and the count/? flash from M.ORCH-T1261)', '—', 1269, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1271', 'MindAttic.Orchestrator', 1271, '2026-10-28', 'fix', 'closed', 'CLI tab''s close ''x'' needs 10px margin off the tab''s right edge', '—', 1270, NULL);
@@ -43789,6 +43789,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23667, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23668, 'RTO-T52', '2026-10-29T03:48:05Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23669, 'RTO-T52', '2026-10-29T03:48:15Z', 'working', NULL, 'd17c534a-d467-4102-881c-9973a1940bbc');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23670, 'RTO-T52', '2026-10-29T03:48:28Z', 'working', 'd17c534a-d467-4102-881c-9973a1940bbc', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23671, 'M.ORCH-T1268', '2026-10-29T03:56:54Z', 'status', 'open', 'closed');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
