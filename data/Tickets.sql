@@ -8479,6 +8479,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T78', 'RogueTrader.Overwatch', 78, '2026-10-29', 'fix', 'open', 'Hit-chance labels use the game''s own hit-percentage text colour instead of a red-to-green gradient', '—', 77, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T79', 'RogueTrader.Overwatch', 79, '2026-10-29', 'fix', 'open', 'Bughunt: enemy AI ignores off-hand ranged weapons; drop temporary diag logging and unused LockedRadius', '—', 78, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T80', 'RogueTrader.Overwatch', 80, '2026-10-29', 'fix', 'open', 'Hit-chance preview: labels off-centre and unlike the game''s hit-chance UI; show above the overwatch target icon in the game''s own style', '—', 79, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T81', 'RogueTrader.Overwatch', 81, '2026-10-29', 'fix', 'open', 'Suppression''s cosmetic shots fly into the target; aim them at points around it so they always visibly miss', '—', 80, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T82', 'RogueTrader.Overwatch', 82, '2026-10-29', 'feature', 'open', 'Reflex Shot: 33% base hit chance + modifiers, 33% damage + modifiers, 1 AP, ends turn', '—', 81, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T1', 'RogueTrader.Shared', 1, '2026-10-26', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T2', 'RogueTrader.Shared', 2, '2026-10-26', 'feature', 'closed', 'Create RogueTrader.Shared: source-shared build setup and helpers for Rogue Trader mods (Brevity, Overwatch, future ones)', '311f523', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T3', 'RogueTrader.Shared', 3, '2026-10-26', 'fix', 'closed', 'Release zips drop empty folders an Owlcat mod needs (Bundles), and mods built from a worktree can''t find RogueTrader.Shared', 'bf259fb', 2, NULL);
@@ -45353,6 +45355,11 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24756, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24757, 'RTO-T80', '2026-10-29T18:48:38Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24758, 'RTO-T80', '2026-10-29T18:48:45Z', 'working', NULL, '721a740d-08ad-4884-9031-1a8354b8bed1');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24759, 'RTO-T80', '2026-10-29T18:52:21Z', 'working', '721a740d-08ad-4884-9031-1a8354b8bed1', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24760, 'RTO-T81', '2026-10-29T22:15:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24761, 'RTO-T81', '2026-10-29T22:16:04Z', 'working', NULL, '721a740d-08ad-4884-9031-1a8354b8bed1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24762, 'RTO-T81', '2026-10-29T22:16:29Z', 'working', '721a740d-08ad-4884-9031-1a8354b8bed1', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24763, 'RTO-T82', '2026-10-29T22:18:35Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24764, 'RTO-T82', '2026-10-29T22:18:47Z', 'working', NULL, '721a740d-08ad-4884-9031-1a8354b8bed1');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -47607,6 +47614,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTO-T82', NULL, 0, NULL, '721a740d-08ad-4884-9031-1a8354b8bed1', '2026-10-29T22:18:47Z', '2026-10-29T22:18:47Z');
 
 -- ticket_notes
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (1, 'U.HARE-T54', 'ryand', '2026-10-26T04:52:58Z', 'From U.HARE-T52 (7d24220): leaving the arena past the 400 px buffer zone (LeaveArena command) currently costs a life only on the ship (PlayerHealth out-of-bounds path / ShipHealth). When this ticket wires LIVES into the session, route that out-of-bounds loss through the same session lives so both deaths count the same.');
