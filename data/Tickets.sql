@@ -8447,6 +8447,11 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T55', 'RogueTrader.Overwatch', 55, '2026-10-29', 'feature', 'open', 'Reflex Shot''s circle never reaches past the equipped weapon''s own max range, instead of a flat 10 cells for every weapon', '—', 54, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T56', 'RogueTrader.Overwatch', 56, '2026-10-29', 'feature', 'open', 'A yellow LineRenderer outline traces the boundary of an active Reflex Shot circle or Overwatch cone, since the game''s shared red area highlight is hard to see', '—', 55, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T57', 'RogueTrader.Overwatch', 57, '2026-10-29', 'chore', 'open', 'Build prints the installed DLL''s last-write time after every deploy, so it''s obvious whether a restart will pick up stale or current code', '—', 56, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T58', 'RogueTrader.Overwatch', 58, '2026-10-29', 'fix', 'open', 'Suppression''s Suppressed debuff appears on the caster instead of the targeted enemy', '—', 57, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T59', 'RogueTrader.Overwatch', 59, '2026-10-29', 'fix', 'open', 'Overwatched debuff shows on enemies only while casting, then disappears; only the caster keeps an icon', '—', 58, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T60', 'RogueTrader.Overwatch', 60, '2026-10-29', 'fix', 'open', 'Reflex Shot circle stays 10 cells regardless of the weapon''s range (RTO-T55 not taking effect, tooltip still says 10)', '—', 59, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T61', 'RogueTrader.Overwatch', 61, '2026-10-29', 'fix', 'open', 'Yellow outline (RTO-T56) never draws, during preview or after cast', '—', 60, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T62', 'RogueTrader.Overwatch', 62, '2026-10-29', 'feature', 'open', 'Reflex Shot: circle radius = the weapon''s full range (no 10-cell ceiling), with a distance aim penalty scaling to -33 at full range', '—', 61, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T1', 'RogueTrader.Shared', 1, '2026-10-26', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T2', 'RogueTrader.Shared', 2, '2026-10-26', 'feature', 'closed', 'Create RogueTrader.Shared: source-shared build setup and helpers for Rogue Trader mods (Brevity, Overwatch, future ones)', '311f523', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T3', 'RogueTrader.Shared', 3, '2026-10-26', 'fix', 'closed', 'Release zips drop empty folders an Owlcat mod needs (Bundles), and mods built from a worktree can''t find RogueTrader.Shared', 'bf259fb', 2, NULL);
@@ -43905,6 +43910,19 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23743, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23744, 'M.ORCH-T1290', '2026-10-29T15:39:56Z', 'ref', '—', 'bughunt sweep: src/ (run 1) + tests/, run.ps1, prototypes/T923-relay (run 2); see M.ORCH-T1291 for the one item split out');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23745, 'M.ORCH-T1291', '2026-10-29T15:40:01Z', 'working', NULL, '68dba16b-e76c-449b-9acd-373e1da85c6e');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23746, 'M.ORCH-T1291', '2026-10-29T15:40:14Z', 'working', '68dba16b-e76c-449b-9acd-373e1da85c6e', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23747, 'RTO-T58', '2026-10-29T16:01:56Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23748, 'RTO-T59', '2026-10-29T16:01:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23749, 'RTO-T60', '2026-10-29T16:01:58Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23750, 'RTO-T61', '2026-10-29T16:01:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23751, 'RTO-T61', '2026-10-29T16:02:14Z', 'working', NULL, 'd17c534a-d467-4102-881c-9973a1940bbc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23752, 'RTO-T60', '2026-10-29T16:02:14Z', 'working', NULL, 'd17c534a-d467-4102-881c-9973a1940bbc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23753, 'RTO-T59', '2026-10-29T16:02:15Z', 'working', NULL, 'd17c534a-d467-4102-881c-9973a1940bbc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23754, 'RTO-T58', '2026-10-29T16:02:15Z', 'working', NULL, 'd17c534a-d467-4102-881c-9973a1940bbc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23755, 'RTO-T58', '2026-10-29T16:03:13Z', 'working', 'd17c534a-d467-4102-881c-9973a1940bbc', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23756, 'RTO-T59', '2026-10-29T16:03:13Z', 'working', 'd17c534a-d467-4102-881c-9973a1940bbc', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23757, 'RTO-T60', '2026-10-29T16:03:14Z', 'working', 'd17c534a-d467-4102-881c-9973a1940bbc', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23758, 'RTO-T61', '2026-10-29T16:03:14Z', 'working', 'd17c534a-d467-4102-881c-9973a1940bbc', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23759, 'RTO-T62', '2026-10-29T16:05:40Z', 'created', NULL, 'open');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
