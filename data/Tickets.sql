@@ -8440,6 +8440,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T50', 'RogueTrader.Overwatch', 50, '2026-10-28', 'feature', 'open', 'Suppression''s real shot flags IsAttackOfOpportunity so AOO-specific talents/feats apply to it, not just a normal attack', '—', 49, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T51', 'RogueTrader.Overwatch', 51, '2026-10-28', 'feature', 'open', 'Reflex Shot, Overwatch and Suppression cost +1 AP to cast when the active ranged weapon is Heavy (WeaponHeaviness.Heavy)', '—', 50, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T52', 'RogueTrader.Overwatch', 52, '2026-10-28', 'feature', 'open', 'Release 3.0.0: bump version for the Suppression AOO fix (RTO-T50) and weapon-size AP cost balance change (RTO-T51)', '—', 51, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T53', 'RogueTrader.Overwatch', 53, '2026-10-29', 'fix', 'open', 'AbilityCasterHasWeaponWithRangeType crashes (NullReferenceException) for a caster with any empty additional limb, greying out all three abilities; confirmed on Pasqal (mechadendrites)', '—', 52, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T1', 'RogueTrader.Shared', 1, '2026-10-26', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T2', 'RogueTrader.Shared', 2, '2026-10-26', 'feature', 'closed', 'Create RogueTrader.Shared: source-shared build setup and helpers for Rogue Trader mods (Brevity, Overwatch, future ones)', '311f523', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T3', 'RogueTrader.Shared', 3, '2026-10-26', 'fix', 'closed', 'Release zips drop empty folders an Owlcat mod needs (Bundles), and mods built from a worktree can''t find RogueTrader.Shared', 'bf259fb', 2, NULL);
@@ -43855,6 +43856,9 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23721, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23722, 'M.ORCH-T1288', '2026-10-29T04:46:57Z', 'working', '6857671d-d2f1-4209-8d5f-3d35bbca01e3', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23723, 'M.ORCH-T1289', '2026-10-29T04:46:57Z', 'working', '6857671d-d2f1-4209-8d5f-3d35bbca01e3', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23724, 'AGP-T14', '2026-10-29T05:36:41Z', 'working', 'ohleo199@mindattic.com (9a09255a-43ca-4cfa-84d8-258b4a81afb4)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23725, 'RTO-T53', '2026-10-29T14:19:54Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23726, 'RTO-T53', '2026-10-29T14:20:02Z', 'working', NULL, 'd17c534a-d467-4102-881c-9973a1940bbc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23727, 'RTO-T53', '2026-10-29T14:20:55Z', 'working', 'd17c534a-d467-4102-881c-9973a1940bbc', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
