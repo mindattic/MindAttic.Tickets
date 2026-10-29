@@ -8465,6 +8465,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T71', 'RogueTrader.Overwatch', 71, '2026-10-29', 'feature', 'open', 'While aiming Overwatch or Reflex Shot, show each enemy inside the area its projected hit chance, including our modifiers', '—', 70, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T72', 'RogueTrader.Overwatch', 72, '2026-10-29', 'feature', 'open', 'Reflex Shot: flat -33 reaction penalty on every shot (replaces the distance-scaled penalty), plus the facing modifier', '—', 71, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T73', 'RogueTrader.Overwatch', 73, '2026-10-29', 'fix', 'open', 'Bughunt: exhaustive sweep of the mod''s source, blueprints and localization; fix every confirmed bug', '—', 72, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T74', 'RogueTrader.Overwatch', 74, '2026-10-29', 'fix', 'open', 'Bughunt pass 2: review the pass-1 fixes, cross-patch interactions, save/load and uninstall safety, design-doc consistency', '—', 73, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T1', 'RogueTrader.Shared', 1, '2026-10-26', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T2', 'RogueTrader.Shared', 2, '2026-10-26', 'feature', 'closed', 'Create RogueTrader.Shared: source-shared build setup and helpers for Rogue Trader mods (Brevity, Overwatch, future ones)', '311f523', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T3', 'RogueTrader.Shared', 3, '2026-10-26', 'fix', 'closed', 'Release zips drop empty folders an Owlcat mod needs (Bundles), and mods built from a worktree can''t find RogueTrader.Shared', 'bf259fb', 2, NULL);
@@ -44570,6 +44571,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24018, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24019, 'M.RLY-T2', '2026-10-29T17:26:45Z', 'approval', 'proposed', 'approved');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24020, 'M.ORCH-T1292', '2026-10-29T17:27:23Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24021, 'M.ORCH-T1292', '2026-10-29T17:27:23Z', 'ref', '—', 'M.RLY-T2, M.ORCH-T1201');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24022, 'RTO-T74', '2026-10-29T17:27:38Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24023, 'M.LNCH-T92', '2026-10-29T17:28:13Z', 'working', '387d4e08-68fd-4962-a82c-ee7f5fffef9f', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -46586,7 +46589,6 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T92', NULL, 0, NULL, '387d4e08-68fd-4962-a82c-ee7f5fffef9f', '2026-10-29T17:23:03Z', '2026-10-29T17:23:03Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T768', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
