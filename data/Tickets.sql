@@ -7024,11 +7024,11 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1256', 'MindAttic.Orchestrator', 1256, '2026-10-28', 'feature', 'closed', 'Global setting to include/exclude the Launcher pane from Team Wall; capitalize ''Team Wall'' as a feature name everywhere', '591bf1dc', 1255, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1257', 'MindAttic.Orchestrator', 1257, '2026-10-28', 'fix', 'closed', 'User CLI tab titles must fall back Name -> email prefix -> Initials; the Launcher tab must always use Initials', 'df2618c6', 1256, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1258', 'MindAttic.Orchestrator', 1258, '2026-10-28', 'fix', 'open', 'The /crossrepo argument list is not respected: /allocate -repo=Unity.* widened the CLI scope to every Unity repo, so subagents worked and closed Unity.SpaceGod, Unity.GridGame and Unity.Eve tickets the /crossrepo list never named; intersect /allocate and orchestrator next repos with /crossrepo and enforce it in the claim, edit and close gates', '—', 1257, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1259', 'MindAttic.Orchestrator', 1259, '2026-10-28', 'fix', 'open', 'Fails on main: MindAttic.Orchestrator.Tests.AccountDirsTests.A_logins_name_belongs_to_its_email_not_its_folder — nor when nobody''s known to be signed in Assert.That(LoginLook.For(ClaudeDir, null).Alias, Is.EqualTo("claude")) Expected string length 6 but was 2. Strings differ at index 0. Expected: "claude" But was: "CL" -----------^ (landed on main since the last green run: tickets M.ORCH-T1256, M.ORCH-T1255, M.ORCH-T1257, M.ORCH-T1254, M.ORCH-T1251, M.ORCH-T1250, M.ORCH-T1242, M.ORCH-T1209, M.ORCH-T1208, M.ORCH-T1206 in 3edf5ae9 Capitalize Team Wall as the feature''s proper name throughout (M.ORCH-T1256); e2794ff0 Add a global setting for symbol vs word tab trailing-text labels (M.ORCH-T1255); df2618c6 A login''s name falls back to its initials, never the literal word "claude" (M.ORCH-T1257); 406232cf Dashboard: a login over its own cutoff keeps its tab and gets a lock icon instead of vanishing (M.ORCH-T1254); a6735860 Drop the duplicate 5hr figure from the tab trailing text, label weekly Sigma (M.ORCH-T1251); 0babfde7 Size CLI tabs uniformly too, both strips at 10px side padding (M.ORCH-T1250); 20509877 Bump MindAttic.Tickets to 6.0.0: closes no longer need approval (M.ORCH-T1242); 1ffc369d Drop the terminal pane''s redundant bottom margin, doubling the gutter before the body (M.ORCH-T1209); 6782bbe6 Default CLI pane height: half the window''s height, floored at 500px (M.ORCH-T1208); 2f7d198c Tab status badges get a fixed footprint so the tab strip doesn''t jitter (M.ORCH-T1206))', 'main@45fbf01', 1258, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1259', 'MindAttic.Orchestrator', 1259, '2026-10-28', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.AccountDirsTests.A_logins_name_belongs_to_its_email_not_its_folder — nor when nobody''s known to be signed in Assert.That(LoginLook.For(ClaudeDir, null).Alias, Is.EqualTo("claude")) Expected string length 6 but was 2. Strings differ at index 0. Expected: "claude" But was: "CL" -----------^ (landed on main since the last green run: tickets M.ORCH-T1256, M.ORCH-T1255, M.ORCH-T1257, M.ORCH-T1254, M.ORCH-T1251, M.ORCH-T1250, M.ORCH-T1242, M.ORCH-T1209, M.ORCH-T1208, M.ORCH-T1206 in 3edf5ae9 Capitalize Team Wall as the feature''s proper name throughout (M.ORCH-T1256); e2794ff0 Add a global setting for symbol vs word tab trailing-text labels (M.ORCH-T1255); df2618c6 A login''s name falls back to its initials, never the literal word "claude" (M.ORCH-T1257); 406232cf Dashboard: a login over its own cutoff keeps its tab and gets a lock icon instead of vanishing (M.ORCH-T1254); a6735860 Drop the duplicate 5hr figure from the tab trailing text, label weekly Sigma (M.ORCH-T1251); 0babfde7 Size CLI tabs uniformly too, both strips at 10px side padding (M.ORCH-T1250); 20509877 Bump MindAttic.Tickets to 6.0.0: closes no longer need approval (M.ORCH-T1242); 1ffc369d Drop the terminal pane''s redundant bottom margin, doubling the gutter before the body (M.ORCH-T1209); 6782bbe6 Default CLI pane height: half the window''s height, floored at 500px (M.ORCH-T1208); 2f7d198c Tab status badges get a fixed footprint so the tab strip doesn''t jitter (M.ORCH-T1206))', 'tests/MindAttic.Orchestrator.Tests/AccountDirsTests.cs:276 — the assertion was stale against the intentional M.ORCH-T1257 behavior change (df2618c6); updated to expect the initials badge, not the literal word claude', 1258, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1260', 'MindAttic.Orchestrator', 1260, '2026-10-28', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.TabStatusTests.The_strip_shows_the_light_and_week_left_and_the_API_key_switch_lives_on_its_tab — Assert.That(strip, Does.Contain("x:Name=\"TabIdleBadge\"").And.Contain("Content=\"zzz\"").And.Contain("Background=\"{DynamicResource MaMuted}\"") .And.Contain("{Binding ShowsIdleBadge").And.Contain("x:Name=\"TabBusyBadge\"").And.Contain("Content=\"&#xE768;\"") .And.Contain("Background=\"{DynamicR... (landed on main since the last green run: tickets M.ORCH-T1256, M.ORCH-T1255, M.ORCH-T1257, M.ORCH-T1254, M.ORCH-T1251, M.ORCH-T1250, M.ORCH-T1242, M.ORCH-T1209, M.ORCH-T1208, M.ORCH-T1206 in 3edf5ae9 Capitalize Team Wall as the feature''s proper name throughout (M.ORCH-T1256); e2794ff0 Add a global setting for symbol vs word tab trailing-text labels (M.ORCH-T1255); df2618c6 A login''s name falls back to its initials, never the literal word "claude" (M.ORCH-T1257); 406232cf Dashboard: a login over its own cutoff keeps its tab and gets a lock icon instead of vanishing (M.ORCH-T1254); a6735860 Drop the duplicate 5hr figure from the tab trailing text, label weekly Sigma (M.ORCH-T1251); 0babfde7 Size CLI tabs uniformly too, both strips at 10px side padding (M.ORCH-T1250); 20509877 Bump MindAttic.Tickets to 6.0.0: closes no longer need approval (M.ORCH-T1242); 1ffc369d Drop the terminal pane''s redundant bottom margin, doubling the gutter before the body (M.ORCH-T1209); 6782bbe6 Default CLI pane height: half the window''s height, floored at 500px (M.ORCH-T1208); 2f7d198c Tab status badges get a fixed footprint so the tab strip doesn''t jitter (M.ORCH-T1206))', 'passes on main@9583381', 1259, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1261', 'MindAttic.Orchestrator', 1261, '2026-10-28', 'feature', 'closed', 'User icon shows active CLI count, sleep/paused/needs-input states', 'src/MindAttic.Orchestrator.Wpf/MainWindow.xaml, ViewModels/MainViewModel.TabStatus.cs, ViewModels/TabBlinker.cs, tests/TabStatusTests.cs; aa7379df', 1260, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1262', 'MindAttic.Orchestrator', 1262, '2026-10-28', 'chore', 'closed', 'Remove Initials Badge from the Launcher tab in each user''s CLI tab bar', 'tests pass (42/42); src/MindAttic.Orchestrator.Wpf/MainWindow.xaml, ViewModels/TerminalsViewModel.cs, tests/TerminalPanesTests.cs', 1261, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1263', 'MindAttic.Orchestrator', 1263, '2026-10-28', 'fix', 'open', 'Fails on main: MindAttic.Orchestrator.Tests.LibraryOnlyXamlTests.Every_xaml_element_is_a_library_control_or_library_styled — Assert.That(Violations(files), Is.Empty) Expected: <empty> But was: < "MainWindow.xaml:845 <RadioButton>: neither a library control nor library-styled", "MainWindow.xaml:848 <RadioButton>: neither a library control nor library-styled" > (landed on main since the last green run: tickets M.ORCH-T1256, M.ORCH-T1255, M.ORCH-T1257, M.ORCH-T1254, M.ORCH-T1251, M.ORCH-T1250, M.ORCH-T1242, M.ORCH-T1209, M.ORCH-T1208, M.ORCH-T1206 in 591bf1dc Add a global setting to include/exclude the Launcher pane from Team Wall (M.ORCH-T1256); 3edf5ae9 Capitalize Team Wall as the feature''s proper name throughout (M.ORCH-T1256); e2794ff0 Add a global setting for symbol vs word tab trailing-text labels (M.ORCH-T1255); df2618c6 A login''s name falls back to its initials, never the literal word "claude" (M.ORCH-T1257); 406232cf Dashboard: a login over its own cutoff keeps its tab and gets a lock icon instead of vanishing (M.ORCH-T1254); a6735860 Drop the duplicate 5hr figure from the tab trailing text, label weekly Sigma (M.ORCH-T1251); 0babfde7 Size CLI tabs uniformly too, both strips at 10px side padding (M.ORCH-T1250); 20509877 Bump MindAttic.Tickets to 6.0.0: closes no longer need approval (M.ORCH-T1242); 1ffc369d Drop the terminal pane''s redundant bottom margin, doubling the gutter before the body (M.ORCH-T1209); 6782bbe6 Default CLI pane height: half the window''s height, floored at 500px (M.ORCH-T1208); 2f7d198c Tab status badges get a fixed footprint so the tab strip doesn''t jitter (M.ORCH-T1206))', 'main@37d7649', 1262, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1263', 'MindAttic.Orchestrator', 1263, '2026-10-28', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.LibraryOnlyXamlTests.Every_xaml_element_is_a_library_control_or_library_styled — Assert.That(Violations(files), Is.Empty) Expected: <empty> But was: < "MainWindow.xaml:845 <RadioButton>: neither a library control nor library-styled", "MainWindow.xaml:848 <RadioButton>: neither a library control nor library-styled" > (landed on main since the last green run: tickets M.ORCH-T1256, M.ORCH-T1255, M.ORCH-T1257, M.ORCH-T1254, M.ORCH-T1251, M.ORCH-T1250, M.ORCH-T1242, M.ORCH-T1209, M.ORCH-T1208, M.ORCH-T1206 in 591bf1dc Add a global setting to include/exclude the Launcher pane from Team Wall (M.ORCH-T1256); 3edf5ae9 Capitalize Team Wall as the feature''s proper name throughout (M.ORCH-T1256); e2794ff0 Add a global setting for symbol vs word tab trailing-text labels (M.ORCH-T1255); df2618c6 A login''s name falls back to its initials, never the literal word "claude" (M.ORCH-T1257); 406232cf Dashboard: a login over its own cutoff keeps its tab and gets a lock icon instead of vanishing (M.ORCH-T1254); a6735860 Drop the duplicate 5hr figure from the tab trailing text, label weekly Sigma (M.ORCH-T1251); 0babfde7 Size CLI tabs uniformly too, both strips at 10px side padding (M.ORCH-T1250); 20509877 Bump MindAttic.Tickets to 6.0.0: closes no longer need approval (M.ORCH-T1242); 1ffc369d Drop the terminal pane''s redundant bottom margin, doubling the gutter before the body (M.ORCH-T1209); 6782bbe6 Default CLI pane height: half the window''s height, floored at 500px (M.ORCH-T1208); 2f7d198c Tab status badges get a fixed footprint so the tab strip doesn''t jitter (M.ORCH-T1206))', 'src/MindAttic.Orchestrator.Wpf/MainWindow.xaml: replaced the two raw RadioButtons with the standard single ToggleButton/MaPillToggle pattern used by every other boolean setting in this file; removed the now-unused Converters.Invert', 1262, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1264', 'MindAttic.Orchestrator', 1264, '2026-10-28', 'fix', 'closed', 'Honey''s tab shows only Sigma, with no 5-hour/lambda figure at all, instead of 0%', 'src/MindAttic.Orchestrator.Wpf/ViewModels/MainViewModel.TabStatus.cs, tests/TabStatusTests.cs; 24a29961', 1263, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1265', 'MindAttic.Orchestrator', 1265, '2026-10-28', 'chore', 'closed', 'Update orchestrator.db, orchestrator.sql', '—', 1264, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1266', 'MindAttic.Orchestrator', 1266, '2026-10-28', 'fix', 'closed', 'Launcher: remove large empty gap between CLI pane and 5-hour utilization graph', '6aee9a86', 1265, NULL);
@@ -7041,8 +7041,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1273', 'MindAttic.Orchestrator', 1273, '2026-10-28', 'fix', 'closed', 'Settings: SymbolTabLabels (Sigma/lambda vs words toggle) doesn''t take effect', '—', 1272, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1274', 'MindAttic.Orchestrator', 1274, '2026-10-28', 'feature', 'open', 'Add a Font setting (current font vs Outfit), applied app-wide', '—', 1273, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1275', 'MindAttic.Orchestrator', 1275, '2026-10-28', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.LibraryOnlyXamlTests.The_dashboard_keeps_no_style_or_panel_of_its_own — Assert.That(keys, Is.EquivalentTo(new[] { "TicketLink" })) Expected: equivalent to < "TicketLink" > But was: < "TicketLink", "MaSpinnerGlyph" > Extra (1): < "MaSpinnerGlyph" > (landed on main since the last green run: tickets M.ORCH-T1273, M.ORCH-T1272, M.ORCH-T1266, M.ORCH-T1267, M.ORCH-T1264, M.ORCH-T1261, M.ORCH-T1262, M.ORCH-T1256, M.ORCH-T1255, M.ORCH-T1257, M.ORCH-T1254, M.ORCH-T1251, M.ORCH-T1250, M.ORCH-T1242, M.ORCH-T1209, M.ORCH-T1208, M.ORCH-T1206 in 0fa052e6 Apply the global login''s tab first in a refresh, not by its display order (M.ORCH-T1273); ab14d0fe Tab strip: wider CLI tabs, 20x20 status icons on both strips, spinner/?/zzz badges, per-CLI status, close button inset 10px (M.ORCH-T1272); 6aee9a86 Launcher: reclaim the hosted terminal''s size on resize, not only on focus (M.ORCH-T1266); 3a2cd743 Always show the lambda figure in a tab''s trailing text, 0% while unread (M.ORCH-T1267); 24a29961 Show the lambda figure for logins with no configured 5-hour budget, not just a real one (M.ORCH-T1264); aa7379df Show a user tab''s open CLI count instead of a play arrow, flashing to "?" when one needs you (M.ORCH-T1261); 442e5e47 Remove the redundant Initials Badge from the Launcher tab (M.ORCH-T1262); 591bf1dc Add a global setting to include/exclude the Launcher pane from Team Wall (M.ORCH-T1256); 3edf5ae9 Capitalize Team Wall as the feature''s proper name throughout (M.ORCH-T1256); e2794ff0 Add a global setting for symbol vs word tab trailing-text labels (M.ORCH-T1255); df2618c6 A login''s name falls back to its initials, never the literal word "claude" (M.ORCH-T1257); 406232cf Dashboard: a login over its own cutoff keeps its tab and gets a lock icon instead of vanishing (M.ORCH-T1254); a6735860 Drop the duplicate 5hr figure from the tab trailing text, label weekly Sigma (M.ORCH-T1251); 0babfde7 Size CLI tabs uniformly too, both strips at 10px side padding (M.ORCH-T1250); 20509877 Bump MindAttic.Tickets to 6.0.0: closes no longer need approval (M.ORCH-T1242); 1ffc369d Drop the terminal pane''s redundant bottom margin, doubling the gutter before the body (M.ORCH-T1209); 6782bbe6 Default CLI pane height: half the window''s height, floored at 500px (M.ORCH-T1208); 2f7d198c Tab status badges get a fixed footprint so the tab strip doesn''t jitter (M.ORCH-T1206))', 'passes on main@1ead689', 1274, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1276', 'MindAttic.Orchestrator', 1276, '2026-10-28', 'fix', 'open', 'LoginLook.For returns the folder initials (CL) instead of the login alias (claude) when nobody is signed in', '—', 1275, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1277', 'MindAttic.Orchestrator', 1277, '2026-10-28', 'fix', 'open', 'Two RadioButtons in MainWindow.xaml are plain WPF controls, not library-styled (LibraryOnlyXamlTests)', '—', 1276, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1276', 'MindAttic.Orchestrator', 1276, '2026-10-28', 'fix', 'wont-do', 'LoginLook.For returns the folder initials (CL) instead of the login alias (claude) when nobody is signed in', 'duplicate of M.ORCH-T1259 (same regression, same assertion)', 1275, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1277', 'MindAttic.Orchestrator', 1277, '2026-10-28', 'fix', 'wont-do', 'Two RadioButtons in MainWindow.xaml are plain WPF controls, not library-styled (LibraryOnlyXamlTests)', 'duplicate of M.ORCH-T1263 (same regression, same assertion)', 1276, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1278', 'MindAttic.Orchestrator', 1278, '2026-10-28', 'fix', 'closed', 'TerminalCopy: swallowRepeats is a static field shared across every terminal pane instead of per-pane state', '—', 1277, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1279', 'MindAttic.Orchestrator', 1279, '2026-10-28', 'fix', 'closed', 'SettingsViewModel.ReloadIfUnedited omits AlertTo, silently discarding an unsaved Text-to edit', '—', 1278, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1280', 'MindAttic.Orchestrator', 1280, '2026-10-28', 'fix', 'closed', 'MainViewModel.Accounts ApplyAccounts returns early on AccountRoster.Load failure, skipping RaiseOwnNumbers', '—', 1279, NULL);
@@ -8457,6 +8457,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T65', 'RogueTrader.Overwatch', 65, '2026-10-29', 'feature', 'open', 'Suppression: a glowing red line from each suppressor to its Suppressed target for as long as the debuff lasts', '—', 64, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T66', 'RogueTrader.Overwatch', 66, '2026-10-29', 'feature', 'open', 'Suppression cosmetic fire: continuous firing animation for the whole suppression, no projectiles or misses, purely a visual cue', '—', 65, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T67', 'RogueTrader.Overwatch', 67, '2026-10-29', 'feature', 'open', 'Taking any damage interrupts the unit''s Suppression, Overwatch and Reflex Shot; cosmetic suppression fire shoots projectiles at the target that deliver nothing', '—', 66, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T68', 'RogueTrader.Overwatch', 68, '2026-10-29', 'fix', 'open', 'Outline vanishes about a second into target selection; it must stay for the whole selection and while Overwatch/Reflex Shot is active', '—', 67, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T69', 'RogueTrader.Overwatch', 69, '2026-10-29', 'feature', 'open', 'Suppressor holds a firing/aiming pose toward the target for as long as Suppression lasts', '—', 68, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T1', 'RogueTrader.Shared', 1, '2026-10-26', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T2', 'RogueTrader.Shared', 2, '2026-10-26', 'feature', 'closed', 'Create RogueTrader.Shared: source-shared build setup and helpers for Rogue Trader mods (Brevity, Overwatch, future ones)', '311f523', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T3', 'RogueTrader.Shared', 3, '2026-10-26', 'fix', 'closed', 'Release zips drop empty folders an Owlcat mod needs (Bundles), and mods built from a worktree can''t find RogueTrader.Shared', 'bf259fb', 2, NULL);
@@ -43977,6 +43979,190 @@ MindAttic.Orchestrator.TermHost/.Gateway/.TermViewer (M.ORCH-T928, T932, T936, T
 and more), so this prototype may simply be obsolete now rather than worth keeping buildable. Needs
 a call: update RelayViewer to the current TerminalPaneViewModel API, or retire prototypes/T923-relay
 entirely.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23778, 'M.RLY-T2', '2026-10-29T16:28:04Z', 'description', 'Runs after MAUI: every ticket here waits for the MAUI release (M.ORCH-T1240).
+
+EPIC: MindAttic.Relay, one message exchange for every MindAttic app and machine (NATS + JetStream), and hub and spoke built on it: members'' machines joined into one Orchestrator, everyone''s CLIs visible and shareable, single-machine mode unchanged.
+
+**Rules:**
+- App-facing work is written once into the shared Presentation layer, so all four shells (WPF and Maui of Orchestrator and Tickets) get it together.
+- UI work lands in both shells in one commit (M.ORCH-T1238).
+- The named-pipe bus stays as a permanent fallback: nothing depends on Relay to keep working.
+
+**Sequence** (ordered by the requires links; tickets at the same depth can run side by side):
+
+1. **M.RLY-T3**: Relay server: install a pinned NATS server with JetStream as a Windows service on each machine (loopback-only, TLS, local CA, credentials required), w…
+2. **M.RLY-T4**: MindAttic.Relay.Contracts: Protocol Buffers message definitions with generated C# types, the envelope header names (Nats-Msg-Id, Relay-Type, Relay-Ver…
+3. **M.RLY-T13**: Hub 0.1: hub seams in Orchestrator Core (IClaims, IPolicySource, IMeterSink, IOrgDirectory, ISessionDirectory) with Local implementations over today''s…
+4. **M.RLY-T5**: MindAttic.Relay.Client: the one client every app uses (PublishAsync, SubscribeAsync with durable consumers and ack-after-handler, RequestAsync, ServeA…
+5. **M.RLY-T6**: Relay security: operator/account/user credentials with per-app subject permissions, credentials stored in MindAttic.Vault, `relay creds issue|revoke|l…
+6. **M.RLY-T14**: Hub 0.2: Orchestrator and Tickets hub messages defined in MindAttic.Relay.Contracts (presence, meter reading, session info, lease, policy snapshot, at…
+7. **M.RLY-T7**: MindAttic.Relay.Outbox: save a database change and its outgoing message in one EF Core transaction, then a background dispatcher publishes it with Nat…
+8. **M.RLY-T8**: First users: move AppBus between Orchestrator.Desktop and Tickets.Desktop onto Relay (ticket changed as an event, open-ticket and show-worker as comma…
+9. **M.RLY-T10**: Across machines: a hub Relay server accepts leaf connections that spokes dial out (TLS, or WebSocket on 443), each spoke keeps its own JetStream domai…
+10. **M.RLY-T12**: Relay monitoring: `relay tail <subject>`, `relay dead-letters [--replay]`, stream and consumer lag, and a Relay page in Orchestrator.Desktop showing s…
+11. **M.ORCH-T1201**: Move the shared Presentation app-bus clients onto MindAttic.Relay, so all four shells (WPF and Maui of Orchestrator and Tickets) use it, with the name…
+12. **M.RLY-T9**: Second user: KdpPublish announces `prose.book.published` (slug, ASIN, Amazon URL, KDP title id) through the outbox in the same transaction that writes…
+13. **M.RLY-T11**: Device credentials and auth callout: a hub service issues each enrolled device a short-lived NATS user credential, and decides per-connection permissi…
+14. **M.RLY-T16**: Hub 1.4: spoke side of joining: the daemon supervises the machine''s Relay leaf link (Relay join), publishes presence each tick, and its state survives…
+15. **M.RLY-T17**: Hub 1.5: `orchestrator hub host|join|status|leave|devices` as thin wrappers over `relay join|leave|status` plus the hub service, and a dashboard hub c…
+16. **M.RLY-T15**: Hub 1.3: MindAttic.Orchestrator.Hub service on the hub machine: MindAttic.Authentication member sign-in, device enrollment page using Relay device cre…
+17. **M.RLY-T18**: Hub 2.6: presence and meters over Relay: spokes publish CLI roster, masked sessions, meter readings and agent summaries; the hub merges meters per log…
+18. **M.RLY-T19**: Hub 2.7: org view in the dashboard and `/org usage` across machines, remote people read-only; members and orgs live at the hub and reach spokes throug…
+19. **M.RLY-T20**: Hub 3.8: terminal streams over Relay: the spoke publishes masked TermHost frames on `term.<device>.<session>.out`, viewers attach by command (replay f…
+20. **M.RLY-T21**: Hub 3.9: grants and audit at the hub, enforced by Relay auth callout (expiring per-viewer permissions on term subjects), with the spoke re-checking th…
+21. **M.RLY-T22**: Hub 3.10: owner consent for interact: a first-use toast per grant on the owner''s machine, watch-only on 30 s timeout; the spoke only reads `.in` for a…
+22. **M.RLY-T23**: Hub 3.11: Team Wall and TermViewer through Relay (`--hub`), listing org sessions from the presence bucket beside peer-to-peer remotes
+23. **M.RLY-T24**: Hub 4.12: Tickets over Relay: the hub''s TicketsDb is the store of record, every change is a `tix.ticket.changed` event on the TIX stream, each spoke''s…
+24. **M.RLY-T25**: Hub 4.13: ticket leases on Relay: `tix.cmd.claim` runs Allocate on the hub; leases live in the `leases` KV bucket where each renewal and completion is…
+25. **M.RLY-T26**: Hub 4.14 (MindAttic.Tickets): the tickets CLI and Tickets Desktop send writes as Relay commands to the hub when the machine has joined; read-only with…
+26. **M.RLY-T27**: Hub 5.15: central pacing policy in the hub''s `policy` KV bucket (cutoffs, allowances, pace target, routing, weekly reserve), mirrored to every spoke s…
+27. **M.RLY-T28**: Hub 5.16: per-login allowance split across devices when one Claude login is live on several machines, published as `AllowanceShare` entries in the pol…
+28. **M.RLY-T29**: Hub 5.17: opt-in remote dispatch (a spoke serves `orch.cmd.dispatch.<device>` only when its owner set AcceptDispatch) plus cross-machine rebalance and…
+29. **M.RLY-T30**: Hub 6.18: operations: deploy the hub service and the hub Relay server, JetStream and hub DB backups, operator and certificate key rotation, device rev…', 'Runs after MAUI: every ticket here waits for the MAUI release (M.ORCH-T1240).
+
+EPIC: MindAttic.Relay, push notifications between and within every MindAttic app and machine
+(NATS + JetStream as the message bus), and hub and spoke built on it: members'' machines joined
+into one Orchestrator, everyone''s CLIs visible and shareable, single-machine mode unchanged.
+
+In other words: a publish/subscribe event bus so a change in one app or on one machine pushes in
+real time to every other app/machine that needs to know, instead of each one polling. Concretely:
+a ticket changing state pushes `tix.ticket.changed`; a login''s meter reading, presence and session
+list push to the hub; a watched terminal''s frames push to viewers; policy changes push down to
+spokes. JetStream durability means a spoke that was offline catches up on reconnect instead of
+missing what happened while it was gone.
+
+**Rules:**
+- App-facing work is written once into the shared Presentation layer, so all four shells (WPF and
+  Maui of Orchestrator and Tickets) get it together.
+- UI work lands in both shells in one commit (M.ORCH-T1238).
+- The named-pipe bus stays as a permanent fallback: nothing depends on Relay to keep working.
+
+**Sequence** (ordered by the requires links; tickets at the same depth can run side by side):
+
+1. **M.RLY-T3**: Relay server: install a pinned NATS server with JetStream as a Windows service on
+   each machine (loopback-only, TLS, local CA, credentials required), w…
+2. **M.RLY-T4**: MindAttic.Relay.Contracts: Protocol Buffers message definitions with generated C#
+   types, the envelope header names (Nats-Msg-Id, Relay-Type, Relay-Ver…
+3. **M.RLY-T13**: Hub 0.1: hub seams in Orchestrator Core (IClaims, IPolicySource, IMeterSink,
+   IOrgDirectory, ISessionDirectory) with Local implementations over today''s…
+4. **M.RLY-T5**: MindAttic.Relay.Client: the one client every app uses (PublishAsync, SubscribeAsync
+   with durable consumers and ack-after-handler, RequestAsync, ServeA…
+5. **M.RLY-T6**: Relay security: operator/account/user credentials with per-app subject permissions,
+   credentials stored in MindAttic.Vault, `relay creds issue|revoke|l…
+6. **M.RLY-T14**: Hub 0.2: Orchestrator and Tickets hub messages defined in MindAttic.Relay.Contracts
+   (presence, meter reading, session info, lease, policy snapshot, at…
+7. **M.RLY-T7**: MindAttic.Relay.Outbox: save a database change and its outgoing message in one EF
+   Core transaction, then a background dispatcher publishes it with Nat…
+8. **M.RLY-T8**: First users: move AppBus between Orchestrator.Desktop and Tickets.Desktop onto
+   Relay (ticket changed as an event, open-ticket and show-worker as comma…
+9. **M.RLY-T10**: Across machines: a hub Relay server accepts leaf connections that spokes dial out
+   (TLS, or WebSocket on 443), each spoke keeps its own JetStream domai…
+10. **M.RLY-T12**: Relay monitoring: `relay tail <subject>`, `relay dead-letters [--replay]`, stream
+    and consumer lag, and a Relay page in Orchestrator.Desktop showing s…
+11. **M.ORCH-T1201**: Move the shared Presentation app-bus clients onto MindAttic.Relay, so all four
+    shells (WPF and Maui of Orchestrator and Tickets) use it, with the name…
+12. **M.RLY-T9**: Second user: KdpPublish announces `prose.book.published` (slug, ASIN, Amazon URL,
+    KDP title id) through the outbox in the same transaction that writes…
+13. **M.RLY-T11**: Device credentials and auth callout: a hub service issues each enrolled device a
+    short-lived NATS user credential, and decides per-connection permissi…
+14. **M.RLY-T16**: Hub 1.4: spoke side of joining: the daemon supervises the machine''s Relay leaf
+    link (Relay join), publishes presence each tick, and its state survives…
+15. **M.RLY-T17**: Hub 1.5: `orchestrator hub host|join|status|leave|devices` as thin wrappers over
+    `relay join|leave|status` plus the hub service, and a dashboard hub c…
+16. **M.RLY-T15**: Hub 1.3: MindAttic.Orchestrator.Hub service on the hub machine: MindAttic.Authentication
+    member sign-in, device enrollment page using Relay device cre…
+17. **M.RLY-T18**: Hub 2.6: presence and meters over Relay: spokes publish CLI roster, masked sessions,
+    meter readings and agent summaries; the hub merges meters per log…
+18. **M.RLY-T19**: Hub 2.7: org view in the dashboard and `/org usage` across machines, remote people
+    read-only; members and orgs live at the hub and reach spokes throug…
+19. **M.RLY-T20**: Hub 3.8: terminal streams over Relay: the spoke publishes masked TermHost frames on
+    `term.<device>.<session>.out`, viewers attach by command (replay f…
+20. **M.RLY-T21**: Hub 3.9: grants and audit at the hub, enforced by Relay auth callout (expiring
+    per-viewer permissions on term subjects), with the spoke re-checking th…
+21. **M.RLY-T22**: Hub 3.10: owner consent for interact: a first-use toast per grant on the owner''s
+    machine, watch-only on 30 s timeout; the spoke only reads `.in` for a…
+22. **M.RLY-T23**: Hub 3.11: Team Wall and TermViewer through Relay (`--hub`), listing org sessions
+    from the presence bucket beside peer-to-peer remotes
+23. **M.RLY-T24**: Hub 4.12: Tickets over Relay: the hub''s TicketsDb is the store of record, every
+    change is a `tix.ticket.changed` event on the TIX stream, each spoke''s…
+24. **M.RLY-T25**: Hub 4.13: ticket leases on Relay: `tix.cmd.claim` runs Allocate on the hub; leases
+    live in the `leases` KV bucket where each renewal and completion is…
+25. **M.RLY-T26**: Hub 4.14 (MindAttic.Tickets): the tickets CLI and Tickets Desktop send writes as
+    Relay commands to the hub when the machine has joined; read-only with…
+26. **M.RLY-T27**: Hub 5.15: central pacing policy in the hub''s `policy` KV bucket (cutoffs,
+    allowances, pace target, routing, weekly reserve), mirrored to every spoke s…
+27. **M.RLY-T28**: Hub 5.16: per-login allowance split across devices when one Claude login is live
+    on several machines, published as `AllowanceShare` entries in the pol…
+28. **M.RLY-T29**: Hub 5.17: opt-in remote dispatch (a spoke serves `orch.cmd.dispatch.<device>` only
+    when its owner set AcceptDispatch) plus cross-machine rebalance and…
+29. **M.RLY-T30**: Hub 6.18: operations: deploy the hub service and the hub Relay server, JetStream
+    and hub DB backups, operator and certificate key rotation, device rev…');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23779, 'M.ORCH-T1276', '2026-10-29T16:30:10Z', 'status', 'open', 'wont-do');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23780, 'M.ORCH-T1276', '2026-10-29T16:30:10Z', 'ref', '—', 'duplicate of M.ORCH-T1259 (same regression, same assertion)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23781, 'M.ORCH-T1277', '2026-10-29T16:30:11Z', 'status', 'open', 'wont-do');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23782, 'M.ORCH-T1277', '2026-10-29T16:30:11Z', 'ref', '—', 'duplicate of M.ORCH-T1263 (same regression, same assertion)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23783, 'M.ORCH-T1259', '2026-10-29T16:30:43Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23784, 'M.ORCH-T1259', '2026-10-29T16:30:43Z', 'ref', 'main@45fbf01', 'tests/MindAttic.Orchestrator.Tests/AccountDirsTests.cs:276 — the assertion was stale against the intentional M.ORCH-T1257 behavior change (df2618c6); updated to expect the initials badge, not the literal word claude');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23785, 'M.ORCH-T1263', '2026-10-29T16:30:47Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23786, 'M.ORCH-T1263', '2026-10-29T16:30:47Z', 'ref', 'main@37d7649', 'src/MindAttic.Orchestrator.Wpf/MainWindow.xaml: replaced the two raw RadioButtons with the standard single ToggleButton/MaPillToggle pattern used by every other boolean setting in this file; removed the now-unused Converters.Invert');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23787, 'M.ORCH-T1290', '2026-10-29T16:31:03Z', 'description', 'Exhaustive /bughunt sweep (no time budget), two runs:
+
+Run 1 (src/全, 438 files via 6 parallel domain reviewers): fixed GatewaySupervisor PID-reuse
+race, TermGrants owner case-sensitivity, StatusStream pipe-leak race, WebSocketFrameStream CTS
+leak, AgentGate non-atomic Kimi-hook write, HostOptions PATH search loop order, CLI pluralization,
+a stale LoginLook test assertion, and a raw RadioButton XAML convention violation. All fixed;
+full solution build + 2285/2285 tests green.
+
+Run 2 (previously-uncovered scope: tests/ helpers, run.ps1, .github/workflows, prototypes/T923-relay):
+tests/ helpers and run.ps1 clean (already hardened). prototypes/T923-relay (throwaway spike, not in
+the .slnx) had real bugs, fixed: Ring.Append skipped reset-detection for chunk>=capacity,
+Host.AcceptLoopAsync could die silently on pipe-construction failure, Host.WriteInput raced across
+overlapping viewer handoffs, Protocol.Sanitize collided distinct session ids, Program.cs had the
+same PATH-search loop-order bug as HostOptions, and MainWindow''s win32-input-mode fast path dropped
+the Shift modifier on arrow/Home/End/Page keys. TermHostStub builds clean after the fixes.
+
+RelayViewer.csproj itself does NOT build (pre-existing, unrelated to any of the above): it links
+src/MindAttic.Orchestrator.Wpf/TerminalPaste.cs directly, and that file now calls members
+TerminalPaneViewModel no longer has (Ended, SetLocalBracketed, Of, Bracketed, WriteInput), having
+drifted since the real TermHost/Gateway implementation (T928/T932/T936/T960/T967/T1028...) shipped
+past this Phase-0 spike. Filed separately rather than fixed here since whether to keep maintaining
+this prototype or retire it is a product call, not a bugfix.', 'Exhaustive /bughunt sweep (no time budget), two runs. The two test failures the sweep''s build/test
+pass surfaced (LoginLook claude/CL, the RadioButton XAML violation) turned out to duplicate
+pre-existing open tickets M.ORCH-T1259 and M.ORCH-T1263 (closed separately, with two auto-filed
+duplicates M.ORCH-T1276/T1277 closed as wont-do); not re-described here to avoid tracking the same
+fix twice.
+
+Run 1 (src/, 438 files via 6 parallel domain reviewers), fixed here:
+- GatewaySupervisor: DefaultStop/DefaultRunningExe killed/queried a pid by name only, no start-time
+  identity check (PID-reuse race) — now compares Process.StartTime like every other kill routine.
+- TermGrants: owner compared case-sensitively in the SQL upsert key and Revoke''s WHERE, but
+  case-insensitively in List()''s C# — normalized to lowercase on write, LOWER(owner) in Revoke.
+- StatusStream: Task.Run passed the daemon''s shutdown token as its own cancellation arg, which could
+  skip FeedAsync entirely (and leak the just-accepted pipe) if ct was already canceled — dropped.
+- WebSocketFrameStream: the CancellationTokenSource was Cancel()ed in Dispose() but never Dispose()d.
+- AgentGate.AppendKimiHook: wrote config.toml via plain File.WriteAllText instead of this file''s own
+  WriteReplacing temp-file-then-rename helper.
+- HostOptions.FindOnPath: PATH search looped extension-outer/directory-inner instead of the real
+  per-directory-then-per-extension order.
+- CLI Format.Sessions: missing pluralization ("2 Claude tab").
+Full solution build + 2285/2285 tests green.
+
+Run 2 (previously-uncovered scope: tests/ helpers, run.ps1, .github/workflows, prototypes/T923-relay):
+tests/ helpers and run.ps1 clean (already hardened). prototypes/T923-relay (throwaway spike, not in
+the .slnx; remote-CLI-terminal-viewing Phase-0, M.ORCH-T922/923 — unrelated to the MindAttic.Relay
+NATS epic, M.RLY-T2) had real bugs, fixed: Ring.Append skipped reset-detection for chunk>=capacity,
+Host.AcceptLoopAsync could die silently on pipe-construction failure, Host.WriteInput raced across
+overlapping viewer handoffs, Protocol.Sanitize collided distinct session ids, Program.cs had the
+same PATH-search loop-order bug as HostOptions, and MainWindow''s win32-input-mode fast path dropped
+the Shift modifier on arrow/Home/End/Page keys. TermHostStub builds clean after the fixes.
+
+RelayViewer.csproj itself does NOT build (pre-existing, unrelated to any of the above, filed
+separately as M.ORCH-T1291): it links src/MindAttic.Orchestrator.Wpf/TerminalPaste.cs directly, and
+that file now calls members TerminalPaneViewModel no longer has, having drifted since the real
+TermHost/Gateway/TermViewer implementation shipped past this Phase-0 spike.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23788, 'RTO-T68', '2026-10-29T16:36:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23789, 'RTO-T68', '2026-10-29T16:36:33Z', 'working', NULL, 'd17c534a-d467-4102-881c-9973a1940bbc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23790, 'RTO-T69', '2026-10-29T16:37:12Z', 'created', NULL, 'open');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -46215,6 +46401,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTO-T68', NULL, 0, NULL, 'd17c534a-d467-4102-881c-9973a1940bbc', '2026-10-29T16:36:33Z', '2026-10-29T16:36:33Z');
 
 -- ticket_notes
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (1, 'U.HARE-T54', 'ryand', '2026-10-26T04:52:58Z', 'From U.HARE-T52 (7d24220): leaving the arena past the 400 px buffer zone (LeaveArena command) currently costs a life only on the ship (PlayerHealth out-of-bounds path / ShipHealth). When this ticket wires LIVES into the session, route that out-of-bounds loss through the same session lives so both deaths count the same.');
@@ -49450,28 +49637,40 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1289
 Held off (needs human input, not fixed): ViewerWindow.cs EndCli''s confirm-dialog can be force-closed by the owning window closing mid-prompt, silently never killing the CLI -- the correct behavior (force-kill anyway vs. cancel the close vs. something else) is a product decision. Also held off: ViewerWindow.cs''s ReconnectingChanged isn''t wired up like its sibling RemoteViewerWindow (feature-parity gap, not a defect) -- would need to interact with the existing ShowNotSent save/restore mechanism, not a trivial change.
 
 Full solution build clean; full test suite 2283/2285 (the 2 failures are the pre-existing, already-ticketed M.ORCH-T1276/T1277, unrelated).', '2026-10-29T04:44:23Z');
-INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1290', 'Exhaustive /bughunt sweep (no time budget), two runs:
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1290', 'Exhaustive /bughunt sweep (no time budget), two runs. The two test failures the sweep''s build/test
+pass surfaced (LoginLook claude/CL, the RadioButton XAML violation) turned out to duplicate
+pre-existing open tickets M.ORCH-T1259 and M.ORCH-T1263 (closed separately, with two auto-filed
+duplicates M.ORCH-T1276/T1277 closed as wont-do); not re-described here to avoid tracking the same
+fix twice.
 
-Run 1 (src/全, 438 files via 6 parallel domain reviewers): fixed GatewaySupervisor PID-reuse
-race, TermGrants owner case-sensitivity, StatusStream pipe-leak race, WebSocketFrameStream CTS
-leak, AgentGate non-atomic Kimi-hook write, HostOptions PATH search loop order, CLI pluralization,
-a stale LoginLook test assertion, and a raw RadioButton XAML convention violation. All fixed;
-full solution build + 2285/2285 tests green.
+Run 1 (src/, 438 files via 6 parallel domain reviewers), fixed here:
+- GatewaySupervisor: DefaultStop/DefaultRunningExe killed/queried a pid by name only, no start-time
+  identity check (PID-reuse race) — now compares Process.StartTime like every other kill routine.
+- TermGrants: owner compared case-sensitively in the SQL upsert key and Revoke''s WHERE, but
+  case-insensitively in List()''s C# — normalized to lowercase on write, LOWER(owner) in Revoke.
+- StatusStream: Task.Run passed the daemon''s shutdown token as its own cancellation arg, which could
+  skip FeedAsync entirely (and leak the just-accepted pipe) if ct was already canceled — dropped.
+- WebSocketFrameStream: the CancellationTokenSource was Cancel()ed in Dispose() but never Dispose()d.
+- AgentGate.AppendKimiHook: wrote config.toml via plain File.WriteAllText instead of this file''s own
+  WriteReplacing temp-file-then-rename helper.
+- HostOptions.FindOnPath: PATH search looped extension-outer/directory-inner instead of the real
+  per-directory-then-per-extension order.
+- CLI Format.Sessions: missing pluralization ("2 Claude tab").
+Full solution build + 2285/2285 tests green.
 
 Run 2 (previously-uncovered scope: tests/ helpers, run.ps1, .github/workflows, prototypes/T923-relay):
 tests/ helpers and run.ps1 clean (already hardened). prototypes/T923-relay (throwaway spike, not in
-the .slnx) had real bugs, fixed: Ring.Append skipped reset-detection for chunk>=capacity,
+the .slnx; remote-CLI-terminal-viewing Phase-0, M.ORCH-T922/923 — unrelated to the MindAttic.Relay
+NATS epic, M.RLY-T2) had real bugs, fixed: Ring.Append skipped reset-detection for chunk>=capacity,
 Host.AcceptLoopAsync could die silently on pipe-construction failure, Host.WriteInput raced across
 overlapping viewer handoffs, Protocol.Sanitize collided distinct session ids, Program.cs had the
 same PATH-search loop-order bug as HostOptions, and MainWindow''s win32-input-mode fast path dropped
 the Shift modifier on arrow/Home/End/Page keys. TermHostStub builds clean after the fixes.
 
-RelayViewer.csproj itself does NOT build (pre-existing, unrelated to any of the above): it links
-src/MindAttic.Orchestrator.Wpf/TerminalPaste.cs directly, and that file now calls members
-TerminalPaneViewModel no longer has (Ended, SetLocalBracketed, Of, Bracketed, WriteInput), having
-drifted since the real TermHost/Gateway implementation (T928/T932/T936/T960/T967/T1028...) shipped
-past this Phase-0 spike. Filed separately rather than fixed here since whether to keep maintaining
-this prototype or retire it is a product call, not a bugfix.', '2026-10-29T15:39:43Z');
+RelayViewer.csproj itself does NOT build (pre-existing, unrelated to any of the above, filed
+separately as M.ORCH-T1291): it links src/MindAttic.Orchestrator.Wpf/TerminalPaste.cs directly, and
+that file now calls members TerminalPaneViewModel no longer has, having drifted since the real
+TermHost/Gateway/TermViewer implementation shipped past this Phase-0 spike.', '2026-10-29T16:31:03Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1291', 'Found while running /bughunt (M.ORCH-T1290). Not the MindAttic.Relay NATS epic (M.RLY-T2) -
 unrelated namesake. This is prototypes/T923-relay, the Phase-0 spike for remote CLI terminal
 viewing (M.ORCH-T922/T923): TermHostStub owns a CLI on a ConPTY and serves it over a named pipe;
@@ -49669,44 +49868,83 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.RLY-T19', 
 **Gate.** Part of the MindAttic.Relay epic; it waits for the epic to be approved and for the tickets it requires. Architecture: docs/design/relay.md in MindAttic.Relay.', '2026-10-27T22:45:19Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.RLY-T2', 'Runs after MAUI: every ticket here waits for the MAUI release (M.ORCH-T1240).
 
-EPIC: MindAttic.Relay, one message exchange for every MindAttic app and machine (NATS + JetStream), and hub and spoke built on it: members'' machines joined into one Orchestrator, everyone''s CLIs visible and shareable, single-machine mode unchanged.
+EPIC: MindAttic.Relay, push notifications between and within every MindAttic app and machine
+(NATS + JetStream as the message bus), and hub and spoke built on it: members'' machines joined
+into one Orchestrator, everyone''s CLIs visible and shareable, single-machine mode unchanged.
+
+In other words: a publish/subscribe event bus so a change in one app or on one machine pushes in
+real time to every other app/machine that needs to know, instead of each one polling. Concretely:
+a ticket changing state pushes `tix.ticket.changed`; a login''s meter reading, presence and session
+list push to the hub; a watched terminal''s frames push to viewers; policy changes push down to
+spokes. JetStream durability means a spoke that was offline catches up on reconnect instead of
+missing what happened while it was gone.
 
 **Rules:**
-- App-facing work is written once into the shared Presentation layer, so all four shells (WPF and Maui of Orchestrator and Tickets) get it together.
+- App-facing work is written once into the shared Presentation layer, so all four shells (WPF and
+  Maui of Orchestrator and Tickets) get it together.
 - UI work lands in both shells in one commit (M.ORCH-T1238).
 - The named-pipe bus stays as a permanent fallback: nothing depends on Relay to keep working.
 
 **Sequence** (ordered by the requires links; tickets at the same depth can run side by side):
 
-1. **M.RLY-T3**: Relay server: install a pinned NATS server with JetStream as a Windows service on each machine (loopback-only, TLS, local CA, credentials required), w…
-2. **M.RLY-T4**: MindAttic.Relay.Contracts: Protocol Buffers message definitions with generated C# types, the envelope header names (Nats-Msg-Id, Relay-Type, Relay-Ver…
-3. **M.RLY-T13**: Hub 0.1: hub seams in Orchestrator Core (IClaims, IPolicySource, IMeterSink, IOrgDirectory, ISessionDirectory) with Local implementations over today''s…
-4. **M.RLY-T5**: MindAttic.Relay.Client: the one client every app uses (PublishAsync, SubscribeAsync with durable consumers and ack-after-handler, RequestAsync, ServeA…
-5. **M.RLY-T6**: Relay security: operator/account/user credentials with per-app subject permissions, credentials stored in MindAttic.Vault, `relay creds issue|revoke|l…
-6. **M.RLY-T14**: Hub 0.2: Orchestrator and Tickets hub messages defined in MindAttic.Relay.Contracts (presence, meter reading, session info, lease, policy snapshot, at…
-7. **M.RLY-T7**: MindAttic.Relay.Outbox: save a database change and its outgoing message in one EF Core transaction, then a background dispatcher publishes it with Nat…
-8. **M.RLY-T8**: First users: move AppBus between Orchestrator.Desktop and Tickets.Desktop onto Relay (ticket changed as an event, open-ticket and show-worker as comma…
-9. **M.RLY-T10**: Across machines: a hub Relay server accepts leaf connections that spokes dial out (TLS, or WebSocket on 443), each spoke keeps its own JetStream domai…
-10. **M.RLY-T12**: Relay monitoring: `relay tail <subject>`, `relay dead-letters [--replay]`, stream and consumer lag, and a Relay page in Orchestrator.Desktop showing s…
-11. **M.ORCH-T1201**: Move the shared Presentation app-bus clients onto MindAttic.Relay, so all four shells (WPF and Maui of Orchestrator and Tickets) use it, with the name…
-12. **M.RLY-T9**: Second user: KdpPublish announces `prose.book.published` (slug, ASIN, Amazon URL, KDP title id) through the outbox in the same transaction that writes…
-13. **M.RLY-T11**: Device credentials and auth callout: a hub service issues each enrolled device a short-lived NATS user credential, and decides per-connection permissi…
-14. **M.RLY-T16**: Hub 1.4: spoke side of joining: the daemon supervises the machine''s Relay leaf link (Relay join), publishes presence each tick, and its state survives…
-15. **M.RLY-T17**: Hub 1.5: `orchestrator hub host|join|status|leave|devices` as thin wrappers over `relay join|leave|status` plus the hub service, and a dashboard hub c…
-16. **M.RLY-T15**: Hub 1.3: MindAttic.Orchestrator.Hub service on the hub machine: MindAttic.Authentication member sign-in, device enrollment page using Relay device cre…
-17. **M.RLY-T18**: Hub 2.6: presence and meters over Relay: spokes publish CLI roster, masked sessions, meter readings and agent summaries; the hub merges meters per log…
-18. **M.RLY-T19**: Hub 2.7: org view in the dashboard and `/org usage` across machines, remote people read-only; members and orgs live at the hub and reach spokes throug…
-19. **M.RLY-T20**: Hub 3.8: terminal streams over Relay: the spoke publishes masked TermHost frames on `term.<device>.<session>.out`, viewers attach by command (replay f…
-20. **M.RLY-T21**: Hub 3.9: grants and audit at the hub, enforced by Relay auth callout (expiring per-viewer permissions on term subjects), with the spoke re-checking th…
-21. **M.RLY-T22**: Hub 3.10: owner consent for interact: a first-use toast per grant on the owner''s machine, watch-only on 30 s timeout; the spoke only reads `.in` for a…
-22. **M.RLY-T23**: Hub 3.11: Team Wall and TermViewer through Relay (`--hub`), listing org sessions from the presence bucket beside peer-to-peer remotes
-23. **M.RLY-T24**: Hub 4.12: Tickets over Relay: the hub''s TicketsDb is the store of record, every change is a `tix.ticket.changed` event on the TIX stream, each spoke''s…
-24. **M.RLY-T25**: Hub 4.13: ticket leases on Relay: `tix.cmd.claim` runs Allocate on the hub; leases live in the `leases` KV bucket where each renewal and completion is…
-25. **M.RLY-T26**: Hub 4.14 (MindAttic.Tickets): the tickets CLI and Tickets Desktop send writes as Relay commands to the hub when the machine has joined; read-only with…
-26. **M.RLY-T27**: Hub 5.15: central pacing policy in the hub''s `policy` KV bucket (cutoffs, allowances, pace target, routing, weekly reserve), mirrored to every spoke s…
-27. **M.RLY-T28**: Hub 5.16: per-login allowance split across devices when one Claude login is live on several machines, published as `AllowanceShare` entries in the pol…
-28. **M.RLY-T29**: Hub 5.17: opt-in remote dispatch (a spoke serves `orch.cmd.dispatch.<device>` only when its owner set AcceptDispatch) plus cross-machine rebalance and…
-29. **M.RLY-T30**: Hub 6.18: operations: deploy the hub service and the hub Relay server, JetStream and hub DB backups, operator and certificate key rotation, device rev…', '2026-10-28T02:35:01Z');
+1. **M.RLY-T3**: Relay server: install a pinned NATS server with JetStream as a Windows service on
+   each machine (loopback-only, TLS, local CA, credentials required), w…
+2. **M.RLY-T4**: MindAttic.Relay.Contracts: Protocol Buffers message definitions with generated C#
+   types, the envelope header names (Nats-Msg-Id, Relay-Type, Relay-Ver…
+3. **M.RLY-T13**: Hub 0.1: hub seams in Orchestrator Core (IClaims, IPolicySource, IMeterSink,
+   IOrgDirectory, ISessionDirectory) with Local implementations over today''s…
+4. **M.RLY-T5**: MindAttic.Relay.Client: the one client every app uses (PublishAsync, SubscribeAsync
+   with durable consumers and ack-after-handler, RequestAsync, ServeA…
+5. **M.RLY-T6**: Relay security: operator/account/user credentials with per-app subject permissions,
+   credentials stored in MindAttic.Vault, `relay creds issue|revoke|l…
+6. **M.RLY-T14**: Hub 0.2: Orchestrator and Tickets hub messages defined in MindAttic.Relay.Contracts
+   (presence, meter reading, session info, lease, policy snapshot, at…
+7. **M.RLY-T7**: MindAttic.Relay.Outbox: save a database change and its outgoing message in one EF
+   Core transaction, then a background dispatcher publishes it with Nat…
+8. **M.RLY-T8**: First users: move AppBus between Orchestrator.Desktop and Tickets.Desktop onto
+   Relay (ticket changed as an event, open-ticket and show-worker as comma…
+9. **M.RLY-T10**: Across machines: a hub Relay server accepts leaf connections that spokes dial out
+   (TLS, or WebSocket on 443), each spoke keeps its own JetStream domai…
+10. **M.RLY-T12**: Relay monitoring: `relay tail <subject>`, `relay dead-letters [--replay]`, stream
+    and consumer lag, and a Relay page in Orchestrator.Desktop showing s…
+11. **M.ORCH-T1201**: Move the shared Presentation app-bus clients onto MindAttic.Relay, so all four
+    shells (WPF and Maui of Orchestrator and Tickets) use it, with the name…
+12. **M.RLY-T9**: Second user: KdpPublish announces `prose.book.published` (slug, ASIN, Amazon URL,
+    KDP title id) through the outbox in the same transaction that writes…
+13. **M.RLY-T11**: Device credentials and auth callout: a hub service issues each enrolled device a
+    short-lived NATS user credential, and decides per-connection permissi…
+14. **M.RLY-T16**: Hub 1.4: spoke side of joining: the daemon supervises the machine''s Relay leaf
+    link (Relay join), publishes presence each tick, and its state survives…
+15. **M.RLY-T17**: Hub 1.5: `orchestrator hub host|join|status|leave|devices` as thin wrappers over
+    `relay join|leave|status` plus the hub service, and a dashboard hub c…
+16. **M.RLY-T15**: Hub 1.3: MindAttic.Orchestrator.Hub service on the hub machine: MindAttic.Authentication
+    member sign-in, device enrollment page using Relay device cre…
+17. **M.RLY-T18**: Hub 2.6: presence and meters over Relay: spokes publish CLI roster, masked sessions,
+    meter readings and agent summaries; the hub merges meters per log…
+18. **M.RLY-T19**: Hub 2.7: org view in the dashboard and `/org usage` across machines, remote people
+    read-only; members and orgs live at the hub and reach spokes throug…
+19. **M.RLY-T20**: Hub 3.8: terminal streams over Relay: the spoke publishes masked TermHost frames on
+    `term.<device>.<session>.out`, viewers attach by command (replay f…
+20. **M.RLY-T21**: Hub 3.9: grants and audit at the hub, enforced by Relay auth callout (expiring
+    per-viewer permissions on term subjects), with the spoke re-checking th…
+21. **M.RLY-T22**: Hub 3.10: owner consent for interact: a first-use toast per grant on the owner''s
+    machine, watch-only on 30 s timeout; the spoke only reads `.in` for a…
+22. **M.RLY-T23**: Hub 3.11: Team Wall and TermViewer through Relay (`--hub`), listing org sessions
+    from the presence bucket beside peer-to-peer remotes
+23. **M.RLY-T24**: Hub 4.12: Tickets over Relay: the hub''s TicketsDb is the store of record, every
+    change is a `tix.ticket.changed` event on the TIX stream, each spoke''s…
+24. **M.RLY-T25**: Hub 4.13: ticket leases on Relay: `tix.cmd.claim` runs Allocate on the hub; leases
+    live in the `leases` KV bucket where each renewal and completion is…
+25. **M.RLY-T26**: Hub 4.14 (MindAttic.Tickets): the tickets CLI and Tickets Desktop send writes as
+    Relay commands to the hub when the machine has joined; read-only with…
+26. **M.RLY-T27**: Hub 5.15: central pacing policy in the hub''s `policy` KV bucket (cutoffs,
+    allowances, pace target, routing, weekly reserve), mirrored to every spoke s…
+27. **M.RLY-T28**: Hub 5.16: per-login allowance split across devices when one Claude login is live
+    on several machines, published as `AllowanceShare` entries in the pol…
+28. **M.RLY-T29**: Hub 5.17: opt-in remote dispatch (a spoke serves `orch.cmd.dispatch.<device>` only
+    when its owner set AcceptDispatch) plus cross-machine rebalance and…
+29. **M.RLY-T30**: Hub 6.18: operations: deploy the hub service and the hub Relay server, JetStream
+    and hub DB backups, operator and certificate key rotation, device rev…', '2026-10-29T16:28:04Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.RLY-T20', '**Scope** (cross-repo: work happens in MindAttic.Orchestrator (run with /crossrepo))
 - Spoke: per shared session, the existing `TermBridge` + `StreamMasker` path publishes frames (unchanged TermProtocol
   1/2 framing, one frame per message) instead of writing to a WebSocket.
