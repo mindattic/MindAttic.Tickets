@@ -45352,6 +45352,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24755, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24756, 'RTO-T79', '2026-10-29T18:43:56Z', 'working', '721a740d-08ad-4884-9031-1a8354b8bed1', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24757, 'RTO-T80', '2026-10-29T18:48:38Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24758, 'RTO-T80', '2026-10-29T18:48:45Z', 'working', NULL, '721a740d-08ad-4884-9031-1a8354b8bed1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24759, 'RTO-T80', '2026-10-29T18:52:21Z', 'working', '721a740d-08ad-4884-9031-1a8354b8bed1', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -47606,7 +47607,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTO-T80', NULL, 0, NULL, '721a740d-08ad-4884-9031-1a8354b8bed1', '2026-10-29T18:48:45Z', '2026-10-29T18:48:45Z');
 
 -- ticket_notes
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (1, 'U.HARE-T54', 'ryand', '2026-10-26T04:52:58Z', 'From U.HARE-T52 (7d24220): leaving the arena past the 400 px buffer zone (LeaveArena command) currently costs a life only on the ship (PlayerHealth out-of-bounds path / ShipHealth). When this ticket wires LIVES into the session, route that out-of-bounds loss through the same session lives so both deaths count the same.');
