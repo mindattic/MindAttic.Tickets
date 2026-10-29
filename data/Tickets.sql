@@ -8453,6 +8453,10 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T61', 'RogueTrader.Overwatch', 61, '2026-10-29', 'fix', 'open', 'Yellow outline (RTO-T56) never draws, during preview or after cast', '—', 60, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T62', 'RogueTrader.Overwatch', 62, '2026-10-29', 'feature', 'open', 'Reflex Shot: circle radius = the weapon''s full range (no 10-cell ceiling), with a distance aim penalty scaling to -33 at full range', '—', 61, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T63', 'RogueTrader.Overwatch', 63, '2026-10-29', 'fix', 'open', 'Outline traces a convex hull through cell centres instead of the actual tile edges of the Reflex Shot/Overwatch area', '—', 62, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T64', 'RogueTrader.Overwatch', 64, '2026-10-29', 'fix', 'open', 'Outline is partial and too thick: draw one thin line per boundary tile edge instead of chained loops', '—', 63, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T65', 'RogueTrader.Overwatch', 65, '2026-10-29', 'feature', 'open', 'Suppression: a glowing red line from each suppressor to its Suppressed target for as long as the debuff lasts', '—', 64, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T66', 'RogueTrader.Overwatch', 66, '2026-10-29', 'feature', 'open', 'Suppression cosmetic fire: continuous firing animation for the whole suppression, no projectiles or misses, purely a visual cue', '—', 65, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T67', 'RogueTrader.Overwatch', 67, '2026-10-29', 'feature', 'open', 'Taking any damage interrupts the unit''s Suppression, Overwatch and Reflex Shot; cosmetic suppression fire shoots projectiles at the target that deliver nothing', '—', 66, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T1', 'RogueTrader.Shared', 1, '2026-10-26', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T2', 'RogueTrader.Shared', 2, '2026-10-26', 'feature', 'closed', 'Create RogueTrader.Shared: source-shared build setup and helpers for Rogue Trader mods (Brevity, Overwatch, future ones)', '311f523', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T3', 'RogueTrader.Shared', 3, '2026-10-26', 'fix', 'closed', 'Release zips drop empty folders an Owlcat mod needs (Bundles), and mods built from a worktree can''t find RogueTrader.Shared', 'bf259fb', 2, NULL);
@@ -43927,6 +43931,52 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23759, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23760, 'RTO-T62', '2026-10-29T16:06:53Z', 'working', NULL, 'd17c534a-d467-4102-881c-9973a1940bbc');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23761, 'RTO-T62', '2026-10-29T16:07:08Z', 'working', 'd17c534a-d467-4102-881c-9973a1940bbc', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23762, 'RTO-T63', '2026-10-29T16:16:33Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23763, 'RTO-T63', '2026-10-29T16:17:19Z', 'working', NULL, 'd17c534a-d467-4102-881c-9973a1940bbc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23764, 'RTO-T63', '2026-10-29T16:17:46Z', 'working', 'd17c534a-d467-4102-881c-9973a1940bbc', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23765, 'RTO-T64', '2026-10-29T16:18:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23766, 'RTO-T64', '2026-10-29T16:18:54Z', 'working', NULL, 'd17c534a-d467-4102-881c-9973a1940bbc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23767, 'RTO-T64', '2026-10-29T16:19:18Z', 'working', 'd17c534a-d467-4102-881c-9973a1940bbc', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23768, 'RTO-T65', '2026-10-29T16:20:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23769, 'RTO-T65', '2026-10-29T16:21:15Z', 'working', NULL, 'd17c534a-d467-4102-881c-9973a1940bbc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23770, 'RTO-T65', '2026-10-29T16:21:39Z', 'working', 'd17c534a-d467-4102-881c-9973a1940bbc', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23771, 'RTO-T66', '2026-10-29T16:21:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23772, 'RTO-T66', '2026-10-29T16:21:53Z', 'working', NULL, 'd17c534a-d467-4102-881c-9973a1940bbc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23773, 'RTO-T66', '2026-10-29T16:22:19Z', 'working', 'd17c534a-d467-4102-881c-9973a1940bbc', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23774, 'RTO-T67', '2026-10-29T16:23:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23775, 'RTO-T67', '2026-10-29T16:24:13Z', 'working', NULL, 'd17c534a-d467-4102-881c-9973a1940bbc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23776, 'RTO-T67', '2026-10-29T16:24:40Z', 'working', 'd17c534a-d467-4102-881c-9973a1940bbc', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23777, 'M.ORCH-T1291', '2026-10-29T16:26:29Z', 'description', 'Found while running /bughunt (M.ORCH-T1290). RelayViewer.csproj links
+src/MindAttic.Orchestrator.Wpf/TerminalPaste.cs directly (the prototype''s README says it "touches
+nothing of the real app", but this one file is shared). That file now references members
+TerminalPaneViewModel no longer exposes: Ended, SetLocalBracketed, Of, Bracketed, WriteInput, plus
+OrchestratorLog and RelayInput are no longer in scope. `dotnet build RelayViewer/RelayViewer.csproj`
+fails with 8 CS1061/CS0117/CS0103 errors.
+
+This predates M.ORCH-T1290''s fixes (confirmed via git stash: fails identically before and after).
+TermHostStub builds and runs fine; only RelayViewer is affected.
+
+The real TermHost/Gateway/TermViewer implementation that followed this Phase-0 spike already
+shipped (M.ORCH-T928, T932, T936, T960, T967, T1028, and more), so this prototype may simply be
+obsolete now rather than worth keeping buildable. Needs a call: update RelayViewer to the current
+TerminalPaneViewModel API, or retire prototypes/T923-relay entirely.', 'Found while running /bughunt (M.ORCH-T1290). Not the MindAttic.Relay NATS epic (M.RLY-T2) -
+unrelated namesake. This is prototypes/T923-relay, the Phase-0 spike for remote CLI terminal
+viewing (M.ORCH-T922/T923): TermHostStub owns a CLI on a ConPTY and serves it over a named pipe;
+RelayViewer is the WPF viewer that attaches to watch/type into it.
+
+RelayViewer.csproj links src/MindAttic.Orchestrator.Wpf/TerminalPaste.cs directly (the prototype''s
+README says it "touches nothing of the real app", but this one file is shared). That file now
+references members TerminalPaneViewModel no longer exposes: Ended, SetLocalBracketed, Of,
+Bracketed, WriteInput, plus OrchestratorLog and RelayInput are no longer in scope.
+`dotnet build RelayViewer/RelayViewer.csproj` fails with 8 CS1061/CS0117/CS0103 errors.
+
+This predates M.ORCH-T1290''s fixes (confirmed via git stash: fails identically before and after).
+TermHostStub builds and runs fine; only RelayViewer is affected.
+
+The remote-terminal-viewing job this spike was prototyping already shipped for real as
+MindAttic.Orchestrator.TermHost/.Gateway/.TermViewer (M.ORCH-T928, T932, T936, T960, T967, T1028,
+and more), so this prototype may simply be obsolete now rather than worth keeping buildable. Needs
+a call: update RelayViewer to the current TerminalPaneViewModel API, or retire prototypes/T923-relay
+entirely.');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -49422,20 +49472,25 @@ TerminalPaneViewModel no longer has (Ended, SetLocalBracketed, Of, Bracketed, Wr
 drifted since the real TermHost/Gateway implementation (T928/T932/T936/T960/T967/T1028...) shipped
 past this Phase-0 spike. Filed separately rather than fixed here since whether to keep maintaining
 this prototype or retire it is a product call, not a bugfix.', '2026-10-29T15:39:43Z');
-INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1291', 'Found while running /bughunt (M.ORCH-T1290). RelayViewer.csproj links
-src/MindAttic.Orchestrator.Wpf/TerminalPaste.cs directly (the prototype''s README says it "touches
-nothing of the real app", but this one file is shared). That file now references members
-TerminalPaneViewModel no longer exposes: Ended, SetLocalBracketed, Of, Bracketed, WriteInput, plus
-OrchestratorLog and RelayInput are no longer in scope. `dotnet build RelayViewer/RelayViewer.csproj`
-fails with 8 CS1061/CS0117/CS0103 errors.
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1291', 'Found while running /bughunt (M.ORCH-T1290). Not the MindAttic.Relay NATS epic (M.RLY-T2) -
+unrelated namesake. This is prototypes/T923-relay, the Phase-0 spike for remote CLI terminal
+viewing (M.ORCH-T922/T923): TermHostStub owns a CLI on a ConPTY and serves it over a named pipe;
+RelayViewer is the WPF viewer that attaches to watch/type into it.
+
+RelayViewer.csproj links src/MindAttic.Orchestrator.Wpf/TerminalPaste.cs directly (the prototype''s
+README says it "touches nothing of the real app", but this one file is shared). That file now
+references members TerminalPaneViewModel no longer exposes: Ended, SetLocalBracketed, Of,
+Bracketed, WriteInput, plus OrchestratorLog and RelayInput are no longer in scope.
+`dotnet build RelayViewer/RelayViewer.csproj` fails with 8 CS1061/CS0117/CS0103 errors.
 
 This predates M.ORCH-T1290''s fixes (confirmed via git stash: fails identically before and after).
 TermHostStub builds and runs fine; only RelayViewer is affected.
 
-The real TermHost/Gateway/TermViewer implementation that followed this Phase-0 spike already
-shipped (M.ORCH-T928, T932, T936, T960, T967, T1028, and more), so this prototype may simply be
-obsolete now rather than worth keeping buildable. Needs a call: update RelayViewer to the current
-TerminalPaneViewModel API, or retire prototypes/T923-relay entirely.', '2026-10-29T15:39:51Z');
+The remote-terminal-viewing job this spike was prototyping already shipped for real as
+MindAttic.Orchestrator.TermHost/.Gateway/.TermViewer (M.ORCH-T928, T932, T936, T960, T967, T1028,
+and more), so this prototype may simply be obsolete now rather than worth keeping buildable. Needs
+a call: update RelayViewer to the current TerminalPaneViewModel API, or retire prototypes/T923-relay
+entirely.', '2026-10-29T16:26:29Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T833', 'Symptom: Inside the Orchestrator''s embedded Terminals panel (TerminalPanesHost), when a CLI running
 in a pane shows an interactive, arrow-key-driven menu (e.g. a selection list or permission prompt),
 the Up/Down/Left/Right keys don''t reach the CLI. It looks like the WPF app is intercepting/consuming
