@@ -8490,6 +8490,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T89', 'RogueTrader.Overwatch', 89, '2026-10-29', 'chore', 'open', '3.0.0 balance pass and fixes: commit RTO-T79..T88 together (changes interleave in the same files)', '—', 88, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T90', 'RogueTrader.Overwatch', 90, '2026-10-29', 'feature', 'open', 'Suppressed AI units know they are pinned: they avoid leaving their square and shoot back from where they stand', '—', 89, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T91', 'RogueTrader.Overwatch', 91, '2026-10-29', 'feature', 'open', 'Overwatch is the next best thing to a direct shot: shots = AP left after paying its own cost / attack cost (1 to 2), so it never matches shooting directly', '—', 90, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T92', 'RogueTrader.Overwatch', 92, '2026-10-29', 'fix', 'open', 'Spanish Overwatch description: use ''que te quedarían'' for consistent tense', '—', 91, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T1', 'RogueTrader.Shared', 1, '2026-10-26', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T2', 'RogueTrader.Shared', 2, '2026-10-26', 'feature', 'closed', 'Create RogueTrader.Shared: source-shared build setup and helpers for Rogue Trader mods (Brevity, Overwatch, future ones)', '311f523', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T3', 'RogueTrader.Shared', 3, '2026-10-26', 'fix', 'closed', 'Release zips drop empty folders an Owlcat mod needs (Bundles), and mods built from a worktree can''t find RogueTrader.Shared', 'bf259fb', 2, NULL);
@@ -45397,6 +45398,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24789, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24790, 'RTO-T89', '2026-10-29T22:40:49Z', 'working', '721a740d-08ad-4884-9031-1a8354b8bed1', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24791, 'RTO-T90', '2026-10-29T22:40:49Z', 'working', '721a740d-08ad-4884-9031-1a8354b8bed1', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24792, 'RTO-T91', '2026-10-29T22:40:50Z', 'working', '721a740d-08ad-4884-9031-1a8354b8bed1', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24793, 'RTO-T92', '2026-10-29T22:44:01Z', 'created', NULL, 'open');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
