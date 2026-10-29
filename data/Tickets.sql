@@ -7055,7 +7055,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1287', 'MindAttic.Orchestrator', 1287, '2026-10-28', 'fix', 'closed', 'AuditNews.Between permanently suppresses a finding that was once custom from ever being reported as new drift', '—', 1286, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1288', 'MindAttic.Orchestrator', 1288, '2026-10-28', 'fix', 'closed', 'BillingSwitch''s shared mutable state (config/asked/told/noted/enforcedUtc) raced between the dashboard''s billing toggle and the periodic status refresh', '—', 1287, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1289', 'MindAttic.Orchestrator', 1289, '2026-10-28', 'fix', 'closed', 'Terminal-hosting infra: native handle/stream leaks, a dropped-keystroke race, an unguarded socket.Abort, a key-file race, an unbounded dictionary leak, and related cleanup gaps', '—', 1288, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1290', 'MindAttic.Orchestrator', 1290, '2026-10-29', 'fix', 'open', 'Fix bugs found by an exhaustive /bughunt sweep of the whole repo', '—', 1289, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1290', 'MindAttic.Orchestrator', 1290, '2026-10-29', 'fix', 'closed', 'Fix bugs found by an exhaustive /bughunt sweep of the whole repo', 'bughunt sweep: src/ (run 1) + tests/, run.ps1, prototypes/T923-relay (run 2); see M.ORCH-T1291 for the one item split out', 1289, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1291', 'MindAttic.Orchestrator', 1291, '2026-10-29', 'chore', 'open', 'prototypes/T923-relay: RelayViewer.csproj doesn''t build, TerminalPaste.cs drifted from TerminalPaneViewModel', '—', 1290, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T1', 'MindAttic.Psst', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.PSST-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T2', 'MindAttic.Psst', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for ContactBook (Contacts/Contact.cs): Find matches name case-insensitively before phone, falls back to 10-digit phone match across formats (+1, dashes, parens), returns null for blank or unmatched input; WithAdded rejects blank name/phone and case-insensitive duplicate names and leaves the original book unchanged; WithoutContact removes only the first case-insensitive match and returns null when absent - this is how psst sms resolves recipients, so a wrong match texts the wrong person', '865fde2', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T3', 'MindAttic.Psst', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched', '—', 2, '| M.PSST-T3 | 2026-10-14 | chore | open | NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched | — |');
@@ -43877,6 +43878,33 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23737, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23738, 'M.ORCH-T1290', '2026-10-29T15:28:28Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23739, 'M.ORCH-T1290', '2026-10-29T15:28:40Z', 'working', NULL, '68dba16b-e76c-449b-9acd-373e1da85c6e');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23740, 'M.ORCH-T1290', '2026-10-29T15:30:12Z', 'working', '68dba16b-e76c-449b-9acd-373e1da85c6e', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23741, 'M.ORCH-T1290', '2026-10-29T15:39:43Z', 'description', 'Running /bughunt with no time budget: one exhaustive read-only pass across all tracked source, then fixing everything confirmed. Findings and fixes get noted here as the search completes.', 'Exhaustive /bughunt sweep (no time budget), two runs:
+
+Run 1 (src/全, 438 files via 6 parallel domain reviewers): fixed GatewaySupervisor PID-reuse
+race, TermGrants owner case-sensitivity, StatusStream pipe-leak race, WebSocketFrameStream CTS
+leak, AgentGate non-atomic Kimi-hook write, HostOptions PATH search loop order, CLI pluralization,
+a stale LoginLook test assertion, and a raw RadioButton XAML convention violation. All fixed;
+full solution build + 2285/2285 tests green.
+
+Run 2 (previously-uncovered scope: tests/ helpers, run.ps1, .github/workflows, prototypes/T923-relay):
+tests/ helpers and run.ps1 clean (already hardened). prototypes/T923-relay (throwaway spike, not in
+the .slnx) had real bugs, fixed: Ring.Append skipped reset-detection for chunk>=capacity,
+Host.AcceptLoopAsync could die silently on pipe-construction failure, Host.WriteInput raced across
+overlapping viewer handoffs, Protocol.Sanitize collided distinct session ids, Program.cs had the
+same PATH-search loop-order bug as HostOptions, and MainWindow''s win32-input-mode fast path dropped
+the Shift modifier on arrow/Home/End/Page keys. TermHostStub builds clean after the fixes.
+
+RelayViewer.csproj itself does NOT build (pre-existing, unrelated to any of the above): it links
+src/MindAttic.Orchestrator.Wpf/TerminalPaste.cs directly, and that file now calls members
+TerminalPaneViewModel no longer has (Ended, SetLocalBracketed, Of, Bracketed, WriteInput), having
+drifted since the real TermHost/Gateway implementation (T928/T932/T936/T960/T967/T1028...) shipped
+past this Phase-0 spike. Filed separately rather than fixed here since whether to keep maintaining
+this prototype or retire it is a product call, not a bugfix.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23742, 'M.ORCH-T1291', '2026-10-29T15:39:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23743, 'M.ORCH-T1290', '2026-10-29T15:39:56Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23744, 'M.ORCH-T1290', '2026-10-29T15:39:56Z', 'ref', '—', 'bughunt sweep: src/ (run 1) + tests/, run.ps1, prototypes/T923-relay (run 2); see M.ORCH-T1291 for the one item split out');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23745, 'M.ORCH-T1291', '2026-10-29T15:40:01Z', 'working', NULL, '68dba16b-e76c-449b-9acd-373e1da85c6e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (23746, 'M.ORCH-T1291', '2026-10-29T15:40:14Z', 'working', '68dba16b-e76c-449b-9acd-373e1da85c6e', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -49350,7 +49378,42 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1289
 Held off (needs human input, not fixed): ViewerWindow.cs EndCli''s confirm-dialog can be force-closed by the owning window closing mid-prompt, silently never killing the CLI -- the correct behavior (force-kill anyway vs. cancel the close vs. something else) is a product decision. Also held off: ViewerWindow.cs''s ReconnectingChanged isn''t wired up like its sibling RemoteViewerWindow (feature-parity gap, not a defect) -- would need to interact with the existing ShowNotSent save/restore mechanism, not a trivial change.
 
 Full solution build clean; full test suite 2283/2285 (the 2 failures are the pre-existing, already-ticketed M.ORCH-T1276/T1277, unrelated).', '2026-10-29T04:44:23Z');
-INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1290', 'Running /bughunt with no time budget: one exhaustive read-only pass across all tracked source, then fixing everything confirmed. Findings and fixes get noted here as the search completes.', '2026-10-29T15:28:28Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1290', 'Exhaustive /bughunt sweep (no time budget), two runs:
+
+Run 1 (src/全, 438 files via 6 parallel domain reviewers): fixed GatewaySupervisor PID-reuse
+race, TermGrants owner case-sensitivity, StatusStream pipe-leak race, WebSocketFrameStream CTS
+leak, AgentGate non-atomic Kimi-hook write, HostOptions PATH search loop order, CLI pluralization,
+a stale LoginLook test assertion, and a raw RadioButton XAML convention violation. All fixed;
+full solution build + 2285/2285 tests green.
+
+Run 2 (previously-uncovered scope: tests/ helpers, run.ps1, .github/workflows, prototypes/T923-relay):
+tests/ helpers and run.ps1 clean (already hardened). prototypes/T923-relay (throwaway spike, not in
+the .slnx) had real bugs, fixed: Ring.Append skipped reset-detection for chunk>=capacity,
+Host.AcceptLoopAsync could die silently on pipe-construction failure, Host.WriteInput raced across
+overlapping viewer handoffs, Protocol.Sanitize collided distinct session ids, Program.cs had the
+same PATH-search loop-order bug as HostOptions, and MainWindow''s win32-input-mode fast path dropped
+the Shift modifier on arrow/Home/End/Page keys. TermHostStub builds clean after the fixes.
+
+RelayViewer.csproj itself does NOT build (pre-existing, unrelated to any of the above): it links
+src/MindAttic.Orchestrator.Wpf/TerminalPaste.cs directly, and that file now calls members
+TerminalPaneViewModel no longer has (Ended, SetLocalBracketed, Of, Bracketed, WriteInput), having
+drifted since the real TermHost/Gateway implementation (T928/T932/T936/T960/T967/T1028...) shipped
+past this Phase-0 spike. Filed separately rather than fixed here since whether to keep maintaining
+this prototype or retire it is a product call, not a bugfix.', '2026-10-29T15:39:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1291', 'Found while running /bughunt (M.ORCH-T1290). RelayViewer.csproj links
+src/MindAttic.Orchestrator.Wpf/TerminalPaste.cs directly (the prototype''s README says it "touches
+nothing of the real app", but this one file is shared). That file now references members
+TerminalPaneViewModel no longer exposes: Ended, SetLocalBracketed, Of, Bracketed, WriteInput, plus
+OrchestratorLog and RelayInput are no longer in scope. `dotnet build RelayViewer/RelayViewer.csproj`
+fails with 8 CS1061/CS0117/CS0103 errors.
+
+This predates M.ORCH-T1290''s fixes (confirmed via git stash: fails identically before and after).
+TermHostStub builds and runs fine; only RelayViewer is affected.
+
+The real TermHost/Gateway/TermViewer implementation that followed this Phase-0 spike already
+shipped (M.ORCH-T928, T932, T936, T960, T967, T1028, and more), so this prototype may simply be
+obsolete now rather than worth keeping buildable. Needs a call: update RelayViewer to the current
+TerminalPaneViewModel API, or retire prototypes/T923-relay entirely.', '2026-10-29T15:39:51Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T833', 'Symptom: Inside the Orchestrator''s embedded Terminals panel (TerminalPanesHost), when a CLI running
 in a pane shows an interactive, arrow-key-driven menu (e.g. a selection list or permission prompt),
 the Up/Down/Left/Right keys don''t reach the CLI. It looks like the WPF app is intercepting/consuming
