@@ -493,6 +493,7 @@ INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('IdiotProof', 'R',
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('IdiotProof', 'S', 'Adaptive auto-strategy generation from observed behavior (planned)', 'Epic-S', 6);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('IdiotProof', 'T', 'Autonomous market-event research scanner', 'Epic-T', 7);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('IdiotProof', 'U', 'Options: buy the idea, sell the hype', 'Epic-U', 8);
+INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('IdiotProof', 'W', 'Command line & Hub — drive every IdiotProof service from the CLI and MCP through one Hub', NULL, 14);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MediaButler', 'A', 'Classify a messy library', NULL, 0);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MediaButler', 'B', 'Rename & canonicalize (local)', NULL, 1);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MediaButler', 'C', 'FileBot enrichment', NULL, 2);
@@ -5055,6 +5056,267 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T27', 'IdiotProof', 27, '2026-10-20', 'docs', 'open', 'Publish IdiotProof docs to GitHub Pages via the shared Agency DocFX pipeline: run adopt-docs-site.ps1 (README.md as home page, docs/*.md as articles, API reference only where the code builds in CI), enable Pages with build_type=workflow, set the repo homepage URL, retire tools/build-readme.ps1 and README.htm, confirm the docs Actions run is green and https://mindattic.github.io/IdiotProof/ returns 200. Depends on MAT-T8.', '—', 26, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T28', 'IdiotProof', 28, '2026-10-22', 'docs', 'closed', 'Update USER_STORIES.md', '—', 27, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T29', 'IdiotProof', 29, '2026-10-24', 'docs', 'closed', 'Update USER_STORIES.md', '—', 28, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T30', 'IdiotProof', 30, '2026-10-30', 'feature', 'closed', 'Create IdiotProof.Core class library (net10.0) in IdiotProof.slnx, referencing Models/Shared/Scripting/Strategies/Brokers/DataFeeds/Engine/Indicators', '03bd8f5', 29, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T31', 'IdiotProof', 31, '2026-10-30', 'feature', 'open', 'Enable GenerateDocumentationFile for every library via Directory.Build.props (CS1591 suppressed) so XML doc comments ship for the knowledge index', '—', 30, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T32', 'IdiotProof', 32, '2026-10-30', 'feature', 'closed', 'Move AppDbContext and every Data/* entity from IdiotProof.Blazor to IdiotProof.Core (namespaces unchanged in this move)', '2193f54', 31, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T33', 'IdiotProof', 33, '2026-10-30', 'feature', 'closed', 'Move EF Migrations + AppDbContextFactory to IdiotProof.Core with MigrationsAssembly set; migration IDs and snapshot unchanged', '2193f54', 32, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T34', 'IdiotProof', 34, '2026-10-30', 'feature', 'closed', 'Introduce IOwnerContext (current owner GUID) — web resolves from the NameIdentifier claim, Hub/CLI from --user, persisted default, or the single AuthUsers row', '4f8bd99 OwnerResolverTests', 33, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T35', 'IdiotProof', 35, '2026-10-30', 'feature', 'closed', 'Introduce IClaudeKeyContext replacing SignedInClaudeKey''s AuthenticationStateProvider dependency for StrategyScriptGenerator, GapperInterpreter, ResearchService', '67a067f UserClaudeKeyRoutingTests.OwnerKey_HeadlessFrontDoors_UseTheOperationOwnersKey_ElseTheHostKey', 34, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T36', 'IdiotProof', 36, '2026-10-30', 'feature', 'closed', 'Introduce IStaticCatalogSource replacing IWebHostEnvironment in GapperProfileService; gapper-profiles.json and sp-index-events.json resolve from a shared content path', 'f50836a', 35, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T37', 'IdiotProof', 37, '2026-10-30', 'feature', 'open', 'Move strategy services to Core: StrategyRepository, ConditionProgressRepository, StrategyScriptGenerator, DslGlossary, SqlWorkspaceStore', '—', 36, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T38', 'IdiotProof', 38, '2026-10-30', 'feature', 'closed', 'Move broker/account services to Core: UserBrokerResolver, AlpacaVaultKeys, AccountSummaryService, LiveModeElevationService, TradingStateService', '8e75754', 37, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T39', 'IdiotProof', 39, '2026-10-30', 'feature', 'closed', 'Move risk + LLM services to Core: RiskGuardianService, LlmVotingService (+AddSignalVotingPanel), UserClaudeKeyResolver, FakeLlmHandler', '4406f04', 38, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T40', 'IdiotProof', 40, '2026-10-30', 'feature', 'open', 'Move research services to Core: ResearchService, EdgarService, Form4Parser, CorporateActionDetector, RegulatoryScanner, IndexEventScanner, UsSpendsService, AlpacaNewsService, CatalystExtractor, ClaimVectorService, ClaimCorrelationService, SignificanceScorer, OutcomeBackfillService, TickerUniverseService, AsyncThrottle', '—', 39, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T41', 'IdiotProof', 41, '2026-10-30', 'feature', 'open', 'Move remaining non-UI services to Core: OptionsTradingService, TradeDiaryRepository, AuditLogRepository, SettingsRepository, UserPreferencesService, UserKeyService, EmailDomainBlocklistService, LiveBarRepository, GapperProfileService, GapperInterpreter, EasternTime, DevCredentials', '—', 40, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T42', 'IdiotProof', 42, '2026-10-30', 'feature', 'open', 'AddIdiotProofCore(config): one DI graph — connection-string chain, Vault buckets, AppSettings overlay, shared DataProtection key ring, MindAttic.Authentication, every Core service', '—', 41, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T43', 'IdiotProof', 43, '2026-10-30', 'feature', 'open', 'Lift BrokerRouter + IMarketDataFeed construction (IDIOTPROOF_BROKER/FEED/ALPACA_FEED/STREAMING knobs) from Monitor/Program.cs into AddIdiotProofTrading()', '—', 42, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T44', 'IdiotProof', 44, '2026-10-30', 'feature', 'open', 'Move MonitorWorker, MonitorLeaderLease, DirectionalOrders, scanners (AutoGapper, PremarketFade, BeBexDecay), StrategyReplay*, ReplayFeatures/Templates, StrategyDataset, StrategyScanner, EmailSmsAlertSender into Core (Monitoring namespace) so any host can run them', '—', 43, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T45', 'IdiotProof', 45, '2026-10-30', 'feature', 'open', 'Re-point IdiotProof.Blazor Program.cs to AddIdiotProofCore; pushers, ToastService, LogAlertService stay in Blazor', '—', 44, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T46', 'IdiotProof', 46, '2026-10-30', 'feature', 'open', 'Re-point IdiotProof.Monitor to AddIdiotProofCore/AddIdiotProofTrading and drop its IdiotProof.Blazor project reference', '—', 45, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T47', 'IdiotProof', 47, '2026-10-30', 'feature', 'open', 'Re-point IdiotProof.ResearchScanner to AddIdiotProofCore and drop its IdiotProof.Blazor project reference', '—', 46, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T48', 'IdiotProof', 48, '2026-10-30', 'feature', 'open', 'Re-point Blazor.Tests and Monitor.Tests at IdiotProof.Core; add IdiotProof.Core.Tests project (NUnit)', '—', 47, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T49', 'IdiotProof', 49, '2026-10-30', 'feature', 'open', 'Rename moved namespaces IdiotProof.Blazor.Data/Services -> IdiotProof.Core.Data/Services across the solution', '—', 48, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T50', 'IdiotProof', 50, '2026-10-30', 'feature', 'open', 'Delete stale IdiotProof.sln (slnx is canonical) and fix any script that names it', '—', 49, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T51', 'IdiotProof', 51, '2026-10-30', 'feature', 'open', 'Create IdiotProof.Operations library: [Operation("noun verb")], [Option], [Argument], IOperation<TArgs> contract, risk class (Read/Write/Money/Destructive)', '—', 50, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T52', 'IdiotProof', 52, '2026-10-30', 'feature', 'open', 'OperationContext: owner, IServiceProvider scope, caller (cli/mcp/blazor), output mode, cancellation, ET clock', '—', 51, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T53', 'IdiotProof', 53, '2026-10-30', 'feature', 'open', 'OperationResult: status, data payload, human render, exit code, ConfirmationRequired variant', '—', 52, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T54', 'IdiotProof', 54, '2026-10-30', 'feature', 'open', 'OperationCatalog: reflect all operations, validate unique names + descriptions + arg docs, emit catalog JSON schema per op', '—', 53, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T55', 'IdiotProof', 55, '2026-10-30', 'feature', 'open', 'Args binder: JSON -> typed args record with validation errors mapped to exit 2', '—', 54, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T56', 'IdiotProof', 56, '2026-10-30', 'feature', 'open', 'Text render kit: tables, key/value blocks, money/percent formatting, ET-only time display, color only on a TTY', '—', 55, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T57', 'IdiotProof', 57, '2026-10-30', 'feature', 'open', 'Create IdiotProof.Cli (idiotproof.exe): argv `noun verb --flags` parser bound to the catalog', '—', 56, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T58', 'IdiotProof', 58, '2026-10-30', 'feature', 'open', 'Global flags --json --user --mode --quiet --yes(no-op for Live) and stdin ''-'' for any text argument', '—', 57, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T59', 'IdiotProof', 59, '2026-10-30', 'feature', 'open', 'Generated help: `idiotproof help`, `idiotproof <noun> --help`, `idiotproof <noun> <verb> --help` from the catalog', '—', 58, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T60', 'IdiotProof', 60, '2026-10-30', 'feature', 'open', 'Offline catalog: CLI references IdiotProof.Operations so help, agent bootstrap and docs export work with the Hub down', '—', 59, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T61', 'IdiotProof', 61, '2026-10-30', 'feature', 'open', 'Exit-code contract 0 ok / 1 fail / 2 usage / 3 blocked by a gate / 4 confirmation required — documented and tested', '—', 60, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T62', 'IdiotProof', 62, '2026-10-30', 'feature', 'open', 'idiotproof.cmd shim at repo root (dotnet run fallback, published exe preferred)', '—', 61, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T63', 'IdiotProof', 63, '2026-10-30', 'feature', 'open', 'Owner resolution in CLI: --user, `users use` persisted default in %APPDATA%\MindAttic\IdiotProof\cli.json, single-user fallback', '—', 62, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T64', 'IdiotProof', 64, '2026-10-30', 'feature', 'open', '`agent bootstrap [--json]`: Hub health, owner, catalog paths, protocol doc, laws summary — runs without the Hub', '—', 63, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T65', 'IdiotProof', 65, '2026-10-30', 'feature', 'open', 'Catalog completeness test: every operation has description, arg docs, JSON render; no name collisions', '—', 64, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T66', 'IdiotProof', 66, '2026-10-30', 'feature', 'open', 'Create IdiotProof.Hub (ASP.NET Core minimal API, Kestrel bound to 127.0.0.1:5910) using AddIdiotProofCore', '—', 65, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T67', 'IdiotProof', 67, '2026-10-30', 'feature', 'open', '/api/health and /api/version endpoints (build, commit, uptime, db, feed, broker)', '—', 66, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T68', 'IdiotProof', 68, '2026-10-30', 'feature', 'open', 'Hub API key: generated once, stored in Vault Tokens bucket ''idiotproof-hub''; HubKeyFilter guards every mutating endpoint', '—', 67, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T69', 'IdiotProof', 69, '2026-10-30', 'feature', 'open', 'CLI HubClient: fail-closed health gate, X-IdiotProof-Key header, slow-op notice after 8s, 2h timeout, structured error output', '—', 68, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T70', 'IdiotProof', 70, '2026-10-30', 'feature', 'open', '/api/op dispatch endpoint (operation name + JSON args) and /api/catalog', '—', 69, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T71', 'IdiotProof', 71, '2026-10-30', 'feature', 'open', 'CommandLedger entity + migration: op, redacted args, owner, caller, exit code, duration, UTC timestamp', '—', 70, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T72', 'IdiotProof', 72, '2026-10-30', 'feature', 'open', 'SecretRedactor for ledger args (keys, secrets, passwords, tokens)', '—', 71, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T73', 'IdiotProof', 73, '2026-10-30', 'feature', 'open', 'Ledger write on every /api/op call', '—', 72, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T74', 'IdiotProof', 74, '2026-10-30', 'feature', 'open', 'Host MonitorWorker in the Hub as an IHostedService with the SQL leader lease and SupervisedLoop unchanged', '—', 73, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T75', 'IdiotProof', 75, '2026-10-30', 'feature', 'open', 'Host AutoGapperScanner, PremarketFadeScanner and BeBexDecayScanner in the Hub with their existing enable flags', '—', 74, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T76', 'IdiotProof', 76, '2026-10-30', 'feature', 'open', 'Windows Service hosting (UseWindowsService) that runs as the USER (LocalDB + DataProtection are user-scoped)', '—', 75, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T77', 'IdiotProof', 77, '2026-10-30', 'feature', 'open', 'Single-instance guard + clear error when port 5910 is taken', '—', 76, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T78', 'IdiotProof', 78, '2026-10-30', 'feature', 'open', 'Hub logging to MindAttic.Log file + /api/logs tail endpoint', '—', 77, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T79', 'IdiotProof', 79, '2026-10-30', 'feature', 'open', 'Graceful shutdown: drain in-flight ops, stop the Monitor loop cleanly, release the lease', '—', 78, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T80', 'IdiotProof', 80, '2026-10-30', 'feature', 'open', 'Monitor pause/resume flag (SettingsKv) honored at the top of each tick', '—', 79, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T81', 'IdiotProof', 81, '2026-10-30', 'feature', 'open', 'IdiotProof.Monitor exe becomes a shim that runs the Hub host (backward-compatible start.bat)', '—', 80, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T82', 'IdiotProof', 82, '2026-10-30', 'feature', 'open', 'SessionStart hook (.claude/settings.json) that starts the Hub when it is not running', '—', 81, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T83', 'IdiotProof', 83, '2026-10-30', 'feature', 'open', '`hub status|start|stop|logs|version` operations + CLI-side start/stop of the local process', '—', 82, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T84', 'IdiotProof', 84, '2026-10-30', 'feature', 'open', '`hub install-service|uninstall-service` operations', '—', 83, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T85', 'IdiotProof', 85, '2026-10-30', 'feature', 'open', 'OrderIntent model: asset (equity/option), side, qty/notional, type, limit, TIF, extended hours, BrokerMode, origin (monitor/manual/options/flatten), strategyId', '—', 84, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T86', 'IdiotProof', 86, '2026-10-30', 'feature', 'open', 'TransactionGateway.SubmitAsync skeleton with ordered, individually-tested gate steps and a GateVerdict trail', '—', 85, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T87', 'IdiotProof', 87, '2026-10-30', 'feature', 'open', 'Gate step: owner + BrokerMode resolution via UserBrokerResolver (IP-LAW-3, Sandbox default, never another user''s keys)', '—', 86, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T88', 'IdiotProof', 88, '2026-10-30', 'feature', 'open', 'Gate step: Mock-feed guard refuses non-Sandbox entries (IP-LAW-9)', '—', 87, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T89', 'IdiotProof', 89, '2026-10-30', 'feature', 'open', 'Gate step: RiskGuardian (stop required on entries, size/limits, daily breaker; exits honor kill-switch) (IP-LAW-2)', '—', 88, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T90', 'IdiotProof', 90, '2026-10-30', 'feature', 'open', 'Gate step: LLM voter panel for automated entries only (IP-LAW-1)', '—', 89, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T91', 'IdiotProof', 91, '2026-10-30', 'feature', 'open', 'ConfirmationStore: 6-char single-use code, 120s TTL, bound to SHA-256 of the exact intent, persisted PendingConfirmation table', '—', 90, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T92', 'IdiotProof', 92, '2026-10-30', 'feature', 'open', 'Live preview: cost, worst-case loss, account, buying power after, gate verdicts — returned with exit 4', '—', 91, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T93', 'IdiotProof', 93, '2026-10-30', 'feature', 'open', 'Every gateway outcome writes TradeDiary (fills), AuditLog (all) and CommandLedger linkage', '—', 92, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T94', 'IdiotProof', 94, '2026-10-30', 'feature', 'open', 'Reroute MonitorWorker entries and exits through the gateway with behavior-parity tests', '—', 93, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T95', 'IdiotProof', 95, '2026-10-30', 'feature', 'open', 'Reroute DirectionalOrders flatten / test-order through the gateway', '—', 94, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T96', 'IdiotProof', 96, '2026-10-30', 'feature', 'open', 'Reroute OptionsTradingService orders through the gateway (Blazor keeps password elevation; CLI/MCP use confirm codes)', '—', 95, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T97', 'IdiotProof', 97, '2026-10-30', 'feature', 'open', 'Activating a strategy in Live mode (or switching it to Live) requires a confirm code', '—', 96, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T98', 'IdiotProof', 98, '2026-10-30', 'feature', 'open', 'Gateway law tests: one test per law/step, including expired/edited-intent confirm refusal', '—', 97, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T99', 'IdiotProof', 99, '2026-10-30', 'feature', 'open', 'BIBLE: add laws ''Every order goes through TransactionGateway'' and ''Live from CLI/MCP needs a confirm code''', '—', 98, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T100', 'IdiotProof', 100, '2026-10-30', 'feature', 'open', '`account summary [--mode]` (equity, cash, buying power, day P&L) for sandbox/paper/live', '—', 99, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T101', 'IdiotProof', 101, '2026-10-30', 'feature', 'open', '`account buying-power` and `account pdt` (day-trade count, PDT flag)', '—', 100, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T102', 'IdiotProof', 102, '2026-10-30', 'feature', 'open', '`account activities [--since]` (fills, dividends, fees)', '—', 101, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T103', 'IdiotProof', 103, '2026-10-30', 'feature', 'open', '`account clock` and `account calendar` (market session in ET)', '—', 102, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T104', 'IdiotProof', 104, '2026-10-30', 'feature', 'open', '`positions list [--mode]` with unrealized P&L', '—', 103, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T105', 'IdiotProof', 105, '2026-10-30', 'feature', 'open', '`positions show <symbol>` incl. owning strategy and diary row', '—', 104, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T106', 'IdiotProof', 106, '2026-10-30', 'feature', 'open', '`positions reconcile` (broker vs strategy bookkeeping, read-only report)', '—', 105, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T107', 'IdiotProof', 107, '2026-10-30', 'feature', 'open', '`orders list [--status]` and `orders show <id>`', '—', 106, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T108', 'IdiotProof', 108, '2026-10-30', 'feature', 'open', '`orders cancel <id>` and `orders cancel-all [--symbol]` through the gateway', '—', 107, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T109', 'IdiotProof', 109, '2026-10-30', 'feature', 'open', '`orders history [--days]`', '—', 108, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T110', 'IdiotProof', 110, '2026-10-30', 'feature', 'open', '`trade buy|sell <symbol> <qty> [--limit] [--stop] [--target] [--mode]` through the gateway', '—', 109, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T111', 'IdiotProof', 111, '2026-10-30', 'feature', 'open', '`trade short|cover <symbol> <qty>` through the gateway', '—', 110, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T112', 'IdiotProof', 112, '2026-10-30', 'feature', 'open', '`trade flatten --symbol|--strategy|--all [--mode]`', '—', 111, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T113', 'IdiotProof', 113, '2026-10-30', 'feature', 'open', '`trade preview …` (dry run: every gate verdict, no order)', '—', 112, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T114', 'IdiotProof', 114, '2026-10-30', 'feature', 'open', '`trade confirm <code>` executes a pending Live intent', '—', 113, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T115', 'IdiotProof', 115, '2026-10-30', 'feature', 'open', '`trade pending` lists unexpired Live confirmations', '—', 114, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T116', 'IdiotProof', 116, '2026-10-30', 'feature', 'open', '`trade notional <symbol> <$>` (fractional/notional buy) through the gateway', '—', 115, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T117', 'IdiotProof', 117, '2026-10-30', 'feature', 'open', 'Create IdiotProof.Mcp (stdio, ModelContextProtocol SDK, logs to file — stdout is the wire)', '—', 116, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T118', 'IdiotProof', 118, '2026-10-30', 'feature', 'open', 'Generate one MCP tool per operation from the catalog (snake_case noun_verb, JSON schema from the args record)', '—', 117, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T119', 'IdiotProof', 119, '2026-10-30', 'feature', 'open', 'HubInvoker forwarding with structured errors: hub_unreachable, hub_timeout, hub_http_error, usage_error', '—', 118, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T120', 'IdiotProof', 120, '2026-10-30', 'feature', 'open', 'Tool annotations from operation risk class (readOnlyHint / destructiveHint / idempotentHint)', '—', 119, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T121', 'IdiotProof', 121, '2026-10-30', 'feature', 'open', 'ConfirmationRequired tool result tells the assistant to show the preview and ask the user before calling trade_confirm', '—', 120, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T122', 'IdiotProof', 122, '2026-10-30', 'feature', 'open', 'MCP resources: BIBLE, user stories, operation catalog, protocol doc', '—', 121, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T123', 'IdiotProof', 123, '2026-10-30', 'feature', 'open', 'tools/register-mcp.ps1 (`claude mcp add idiotproof …` against the Release build) + README', '—', 122, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T124', 'IdiotProof', 124, '2026-10-30', 'feature', 'open', '.claude/settings.json allow-list for read-only idiotproof tools; trade_confirm and destructive tools stay prompt-only', '—', 123, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T125', 'IdiotProof', 125, '2026-10-30', 'feature', 'open', 'SessionStart hook keeps IdiotProof.Mcp Release build current so the schema is never stale', '—', 124, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T126', 'IdiotProof', 126, '2026-10-30', 'feature', 'open', 'MCP schema test: every operation round-trips catalog -> tool schema -> binder', '—', 125, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T127', 'IdiotProof', 127, '2026-10-30', 'feature', 'open', 'StrategyStamp short id IP-XXXX-XXXX (base32 of SHA-256 of the canonical JSON)', '—', 126, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T128', 'IdiotProof', 128, '2026-10-30', 'feature', 'open', 'Stamp header block: symbol, direction, session, BrokerMode, qty/notional, id', '—', 127, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T129', 'IdiotProof', 129, '2026-10-30', 'feature', 'open', 'Stamp phase flow: Setup -> Filters -> Entry -> Order -> Risk -> Exit boxes with every condition line', '—', 128, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T130', 'IdiotProof', 130, '2026-10-30', 'feature', 'open', 'Stamp branch forks for If/ElseIf/Else conditional blocks', '—', 129, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T131', 'IdiotProof', 131, '2026-10-30', 'feature', 'open', 'Stamp exit ladder: stop, TP targets, trailing, peak giveback@arm, sell-by', '—', 130, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T132', 'IdiotProof', 132, '2026-10-30', 'feature', 'open', 'Stamp fingerprint: 17x9 drunken-bishop randomart over the canon hash', '—', 131, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T133', 'IdiotProof', 133, '2026-10-30', 'feature', 'open', 'Stamp armored payload: BEGIN/END IDIOTPROOF STRATEGY, deflate + base64url + CRC32, fail-closed decode', '—', 132, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T134', 'IdiotProof', 134, '2026-10-30', 'feature', 'open', 'Terminal QR of the payload (QRCoder, Unicode half-blocks) behind --qr', '—', 133, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T135', 'IdiotProof', 135, '2026-10-30', 'feature', 'open', 'Stamp box-drawing variant behind --unicode (ASCII is the default)', '—', 134, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T136', 'IdiotProof', 136, '2026-10-30', 'feature', 'open', 'Golden-file tests for every sample strategy + stamp -> import round trip yields an identical canon hash', '—', 135, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T137', 'IdiotProof', 137, '2026-10-30', 'feature', 'open', '`strategy list [--active] [--mode] [--symbol]` with live ConditionProgress badges', '—', 136, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T138', 'IdiotProof', 138, '2026-10-30', 'feature', 'open', 'MonitorCli commands forward to the equivalent operations (status, set-keys, flatten, replay, scan, …)', '—', 137, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T139', 'IdiotProof', 139, '2026-10-30', 'feature', 'open', '`strategy show <id|symbol>` (fields, canon summary, position, progress)', '—', 138, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T140', 'IdiotProof', 140, '2026-10-30', 'feature', 'open', '`strategy stamp <id> [--qr] [--unicode]`', '—', 139, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T141', 'IdiotProof', 141, '2026-10-30', 'feature', 'open', '`strategy export <id> --format json|script|stamp`', '—', 140, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T142', 'IdiotProof', 142, '2026-10-30', 'feature', 'open', '`strategy import --stamp|--json|--script <file|->` through StrategyRepository (fail-closed canon)', '—', 141, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T143', 'IdiotProof', 143, '2026-10-30', 'feature', 'open', '`strategy create --script|--json` with validation and Sandbox default', '—', 142, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T144', 'IdiotProof', 144, '2026-10-30', 'feature', 'open', '`strategy from-text "<plain English>" [--ticker] [--mode]` via StrategyScriptGenerator + Legion; shows stamp before saving', '—', 143, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T145', 'IdiotProof', 145, '2026-10-30', 'feature', 'open', '`strategy set <id> --field value` field-level edits (stop, target, qty, notional, times) re-canonicalized', '—', 144, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T146', 'IdiotProof', 146, '2026-10-30', 'feature', 'open', '`strategy validate <id|--script>` (parse, canon, phase rules, risk preview)', '—', 145, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T147', 'IdiotProof', 147, '2026-10-30', 'feature', 'open', '`strategy activate|deactivate <id>` respecting PositionOpen and gapper caps (IP-LAW-11)', '—', 146, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T148', 'IdiotProof', 148, '2026-10-30', 'feature', 'open', '`strategy mode <id> sandbox|paper|live` (live requires confirm code)', '—', 147, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T149', 'IdiotProof', 149, '2026-10-30', 'feature', 'open', '`strategy delete <id>` (soft-disable per house law, refuses open positions)', '—', 148, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T150', 'IdiotProof', 150, '2026-10-30', 'feature', 'open', '`strategy progress <id> [--watch]` live condition N/M + first failing verb', '—', 149, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T151', 'IdiotProof', 151, '2026-10-30', 'feature', 'open', '`strategy quarantine` lists quarantined strategies with reasons', '—', 150, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T152', 'IdiotProof', 152, '2026-10-30', 'feature', 'open', '`strategy resync-canon` (port of MonitorCli resync-canon)', '—', 151, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T153', 'IdiotProof', 153, '2026-10-30', 'feature', 'open', '`strategy clone <id> [--symbol]`', '—', 152, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T154', 'IdiotProof', 154, '2026-10-30', 'feature', 'open', '`strategy diff <a> <b>` (canon-level diff)', '—', 153, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T155', 'IdiotProof', 155, '2026-10-30', 'feature', 'open', '`strategy history <id>` (audit + diary trail)', '—', 154, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T156', 'IdiotProof', 156, '2026-10-30', 'feature', 'open', '`strategy from-watchlist <file>` (port of create-strategies)', '—', 155, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T157', 'IdiotProof', 157, '2026-10-30', 'feature', 'open', '`strategy rename <id> <name>`', '—', 156, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T158', 'IdiotProof', 158, '2026-10-30', 'feature', 'open', '`strategy samples` lists and shows built-in sample strategies', '—', 157, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T159', 'IdiotProof', 159, '2026-10-30', 'feature', 'open', '`strategy explain <id>` plain-English narrative generated deterministically from the canon', '—', 158, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T160', 'IdiotProof', 160, '2026-10-30', 'feature', 'open', '`strategy fires <id>` recent gate verdicts (why it did/didn''t fire)', '—', 159, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T161', 'IdiotProof', 161, '2026-10-30', 'feature', 'open', '`strategy bulk activate|deactivate --all|--symbol` (quick actions)', '—', 160, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T162', 'IdiotProof', 162, '2026-10-30', 'feature', 'open', '`gapper profiles` lists the static profile catalog', '—', 161, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T163', 'IdiotProof', 163, '2026-10-30', 'feature', 'open', '`gapper profile show <name>`', '—', 162, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T164', 'IdiotProof', 164, '2026-10-30', 'feature', 'open', '`gapper tune <symbol> --profile <name> [--gap --stop --giveback --sell-by …]` generates the gapper strategy via GapperScriptFactory', '—', 163, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T165', 'IdiotProof', 165, '2026-10-30', 'feature', 'open', '`gapper arm|disarm <symbol|id>` honoring one-per-symbol and the 3-gapper cap', '—', 164, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T166', 'IdiotProof', 166, '2026-10-30', 'feature', 'open', '`gapper list` queued gappers with live state', '—', 165, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T167', 'IdiotProof', 167, '2026-10-30', 'feature', 'open', '`gapper from-transcript <file|->` -> candidate cards (re-validated, not queued until `gapper arm`)', '—', 166, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T168', 'IdiotProof', 168, '2026-10-30', 'feature', 'open', '`gapper backtest-day <symbol> <date> [--profile]` with MFE/MAE, giveback grid, hindsight suggestion', '—', 167, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T169', 'IdiotProof', 169, '2026-10-30', 'feature', 'open', '`gapper auto status` (scan metrics from AutoGapperScan/Candidate)', '—', 168, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T170', 'IdiotProof', 170, '2026-10-30', 'feature', 'open', '`gapper auto enable|disable` (paper-only, owner-scoped)', '—', 169, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T171', 'IdiotProof', 171, '2026-10-30', 'feature', 'open', '`gapper auto candidates [--date]`', '—', 170, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T172', 'IdiotProof', 172, '2026-10-30', 'feature', 'open', '`gapper premarket-fade [run|status]` (port of MonitorCli premarket-fade)', '—', 171, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T173', 'IdiotProof', 173, '2026-10-30', 'feature', 'open', '`gapper be-bex status` (BeBexDecayScanner arm/disarm state)', '—', 172, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T174', 'IdiotProof', 174, '2026-10-30', 'feature', 'open', '`gapper apply-tuned <backtest-id>` applies a backtest''s tuned profile on explicit command', '—', 173, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T175', 'IdiotProof', 175, '2026-10-30', 'feature', 'open', '`gapper caps` shows active-gapper counts vs caps', '—', 174, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T176', 'IdiotProof', 176, '2026-10-30', 'feature', 'open', '`replay run <symbol> <date> [--strategy|--profile|--family]` (port of replay)', '—', 175, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T177', 'IdiotProof', 177, '2026-10-30', 'feature', 'open', '`replay live <symbol>` (port of replay-live)', '—', 176, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T178', 'IdiotProof', 178, '2026-10-30', 'feature', 'open', '`replay all <date>` (port of replay-all)', '—', 177, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T179', 'IdiotProof', 179, '2026-10-30', 'feature', 'open', '`replay list [--symbol] [--since]`', '—', 178, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T180', 'IdiotProof', 180, '2026-10-30', 'feature', 'open', '`replay show <run-id>` trades and per-bar features', '—', 179, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T181', 'IdiotProof', 181, '2026-10-30', 'feature', 'open', '`replay regen` regenerates the HTML archive (no FTP)', '—', 180, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T182', 'IdiotProof', 182, '2026-10-30', 'feature', 'open', '`replay families` lists built-in families with descriptions', '—', 181, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T183', 'IdiotProof', 183, '2026-10-30', 'feature', 'open', '`replay compare <run-a> <run-b>`', '—', 182, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T184', 'IdiotProof', 184, '2026-10-30', 'feature', 'open', '`backtest run <strategy|--script> --from --to` via StrategyBacktester', '—', 183, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T185', 'IdiotProof', 185, '2026-10-30', 'feature', 'open', '`backtest conditions <run>` per-candle ConditionTable', '—', 184, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T186', 'IdiotProof', 186, '2026-10-30', 'feature', 'open', '`scan movers [--date] [--replay]` (port of scan)', '—', 185, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T187', 'IdiotProof', 187, '2026-10-30', 'feature', 'open', '`dataset export [--out]` ML-ready CSVs (port of replay-export)', '—', 186, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T188', 'IdiotProof', 188, '2026-10-30', 'feature', 'open', '`options level [--mode]` Alpaca options trading level', '—', 187, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T189', 'IdiotProof', 189, '2026-10-30', 'feature', 'open', '`options chain <symbol> [--expiry] [--horizon] [--strikes]`', '—', 188, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T190', 'IdiotProof', 190, '2026-10-30', 'feature', 'open', '`options quote <occ>`', '—', 189, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T191', 'IdiotProof', 191, '2026-10-30', 'feature', 'open', '`options greeks <occ>` (badge Model when IV solved locally)', '—', 190, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T192', 'IdiotProof', 192, '2026-10-30', 'feature', 'open', '`options value <occ> [--spot]` intrinsic/extrinsic/breakeven/DTE/Black-Scholes', '—', 191, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T193', 'IdiotProof', 193, '2026-10-30', 'feature', 'open', '`options iv <occ>` implied-vol solve', '—', 192, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T194', 'IdiotProof', 194, '2026-10-30', 'feature', 'open', '`options buy <occ> <contracts> [--limit] [--mode]` through the gateway (level-gated)', '—', 193, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T195', 'IdiotProof', 195, '2026-10-30', 'feature', 'open', '`options sell <occ> <contracts>` through the gateway (level-gated)', '—', 194, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T196', 'IdiotProof', 196, '2026-10-30', 'feature', 'open', '`options close <occ>`', '—', 195, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T197', 'IdiotProof', 197, '2026-10-30', 'feature', 'open', '`options positions [--mode]`', '—', 196, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T198', 'IdiotProof', 198, '2026-10-30', 'feature', 'open', '`options signals` SellSignalEvaluator nudges on open long options', '—', 197, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T199', 'IdiotProof', 199, '2026-10-30', 'feature', 'open', '`options glossary [term]` from OptionsGlossary', '—', 198, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T200', 'IdiotProof', 200, '2026-10-30', 'feature', 'open', '`market quote <symbol...>` latest trade/quote', '—', 199, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T201', 'IdiotProof', 201, '2026-10-30', 'feature', 'open', '`market bars <symbol> [--tf] [--from --to]`', '—', 200, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T202', 'IdiotProof', 202, '2026-10-30', 'feature', 'open', '`market prev-close <symbol>`', '—', 201, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T203', 'IdiotProof', 203, '2026-10-30', 'feature', 'open', '`market movers [--top]`', '—', 202, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T204', 'IdiotProof', 204, '2026-10-30', 'feature', 'open', '`market news <symbol> [--limit]` via AlpacaNewsService', '—', 203, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T205', 'IdiotProof', 205, '2026-10-30', 'feature', 'open', '`market feed status|switch <sip|iex|mock>` (switch refuses mock while non-Sandbox strategies are active)', '—', 204, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T206', 'IdiotProof', 206, '2026-10-30', 'feature', 'open', '`market stream status` websocket health', '—', 205, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T207', 'IdiotProof', 207, '2026-10-30', 'feature', 'open', '`indicators compute <symbol> <rsi|ema|atr|macd|vwap|adx|…> [--period]`', '—', 206, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T208', 'IdiotProof', 208, '2026-10-30', 'feature', 'open', '`indicators snapshot <symbol>` full IndicatorSnapshot (gap, window high/low, pivots)', '—', 207, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T209', 'IdiotProof', 209, '2026-10-30', 'feature', 'open', '`dsl verbs [--phase]` reflected verb catalog (IP-LAW-4)', '—', 208, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T210', 'IdiotProof', 210, '2026-10-30', 'feature', 'open', '`dsl glossary [verb]` from DslGlossary', '—', 209, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T211', 'IdiotProof', 211, '2026-10-30', 'feature', 'open', '`dsl parse <script|->` -> canon JSON', '—', 210, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T212', 'IdiotProof', 212, '2026-10-30', 'feature', 'open', '`dsl format <json|->` -> IdiotScript text', '—', 211, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T213', 'IdiotProof', 213, '2026-10-30', 'feature', 'open', '`dsl validate <script|->` phase rules, fail-closed reasons', '—', 212, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T214', 'IdiotProof', 214, '2026-10-30', 'feature', 'open', '`market scan-universe [--filter]` TrackedTicker price/volume screen', '—', 213, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T215', 'IdiotProof', 215, '2026-10-30', 'feature', 'open', '`market candlesticks <symbol>` CandlestickPatterns detected on recent bars', '—', 214, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T216', 'IdiotProof', 216, '2026-10-30', 'feature', 'open', '`risk show` the six RiskGuardian limits', '—', 215, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T217', 'IdiotProof', 217, '2026-10-30', 'feature', 'open', '`risk set --max-loss-per-trade … ` edits limits (2-minute TTL refresh, daily counter preserved)', '—', 216, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T218', 'IdiotProof', 218, '2026-10-30', 'feature', 'open', '`risk status` daily realized P&L, breaker state, remaining room', '—', 217, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T219', 'IdiotProof', 219, '2026-10-30', 'feature', 'open', '`risk kill-switch on|off` (off requires confirm code)', '—', 218, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T220', 'IdiotProof', 220, '2026-10-30', 'feature', 'open', '`risk check <symbol> --entry --stop --qty` dry-run ValidateTrade', '—', 219, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T221', 'IdiotProof', 221, '2026-10-30', 'feature', 'open', '`llm panel` voters, lenses, which have keys, threshold', '—', 220, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T222', 'IdiotProof', 222, '2026-10-30', 'feature', 'open', '`llm vote <strategy-id>` dry-run vote on the current candidate (no order)', '—', 221, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T223', 'IdiotProof', 223, '2026-10-30', 'feature', 'open', '`llm keys` owner/host Claude key resolution status (never prints secrets)', '—', 222, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T224', 'IdiotProof', 224, '2026-10-30', 'feature', 'open', '`llm voting enable|disable` owner-level toggle', '—', 223, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T225', 'IdiotProof', 225, '2026-10-30', 'feature', 'open', '`llm threshold <0..1>` consensus threshold setting', '—', 224, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T226', 'IdiotProof', 226, '2026-10-30', 'feature', 'open', '`research scan [--tickers] [--batch]` runs one ResearchScanner pass in the Hub (not on the Monitor loop)', '—', 225, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T227', 'IdiotProof', 227, '2026-10-30', 'feature', 'open', '`research claims [--ticker] [--since] [--min-score] [--macro]` ranked feed', '—', 226, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T228', 'IdiotProof', 228, '2026-10-30', 'feature', 'open', '`research claim <id>` full claim with sources and score breakdown', '—', 227, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T229', 'IdiotProof', 229, '2026-10-30', 'feature', 'open', '`research ticker <symbol>` everything known about one ticker', '—', 228, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T230', 'IdiotProof', 230, '2026-10-30', 'feature', 'open', '`research macro` macro/regulatory claims', '—', 229, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T231', 'IdiotProof', 231, '2026-10-30', 'feature', 'open', '`research index-events` S&P add/remove events', '—', 230, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T232', 'IdiotProof', 232, '2026-10-30', 'feature', 'open', '`research insiders <symbol>` Form 4 transactions', '—', 231, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T233', 'IdiotProof', 233, '2026-10-30', 'feature', 'open', '`research universe list|refresh`', '—', 232, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T234', 'IdiotProof', 234, '2026-10-30', 'feature', 'open', '`research backfill` runs OutcomeBackfillService', '—', 233, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T235', 'IdiotProof', 235, '2026-10-30', 'feature', 'open', '`research score <claim-id>` explains the SignificanceScorer components', '—', 234, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T236', 'IdiotProof', 236, '2026-10-30', 'feature', 'open', '`research analyze <symbol|url>` on-demand CatalystExtractor via Legion', '—', 235, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T237', 'IdiotProof', 237, '2026-10-30', 'feature', 'open', '`research similar <claim-id>` ClaimCorrelationService neighbors', '—', 236, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T238', 'IdiotProof', 238, '2026-10-30', 'feature', 'open', '`diary list [--since] [--mode] [--symbol]`', '—', 237, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T239', 'IdiotProof', 239, '2026-10-30', 'feature', 'open', '`diary show <id>`', '—', 238, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T240', 'IdiotProof', 240, '2026-10-30', 'feature', 'open', '`diary pnl --day|--week|--month [--by strategy|symbol]`', '—', 239, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T241', 'IdiotProof', 241, '2026-10-30', 'feature', 'open', '`diary stats` win rate, expectancy, avg R, MFE/MAE', '—', 240, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T242', 'IdiotProof', 242, '2026-10-30', 'feature', 'open', '`diary export --csv <file>`', '—', 241, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T243', 'IdiotProof', 243, '2026-10-30', 'feature', 'open', '`audit list [--since] [--kind]` and `audit search <text>`', '—', 242, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T244', 'IdiotProof', 244, '2026-10-30', 'feature', 'open', '`audit tail [--follow]`', '—', 243, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T245', 'IdiotProof', 245, '2026-10-30', 'feature', 'open', '`ledger list [--op] [--since]` CommandLedger browser', '—', 244, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T246', 'IdiotProof', 246, '2026-10-30', 'feature', 'open', '`keys status` which broker/LLM keys resolve (Vault vs DB), never printing secrets', '—', 245, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T247', 'IdiotProof', 247, '2026-10-30', 'feature', 'open', '`keys set alpaca-paper|alpaca-live` writes the Vault Brokers bucket, validates prefix + live probe (port of set-keys)', '—', 246, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T248', 'IdiotProof', 248, '2026-10-30', 'feature', 'open', '`keys opt-in alpaca|off` DefaultBroker opt-in (IP-LAW-3)', '—', 247, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T249', 'IdiotProof', 249, '2026-10-30', 'feature', 'open', '`keys probe [--mode]` account round-trip test', '—', 248, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T250', 'IdiotProof', 250, '2026-10-30', 'feature', 'open', '`settings list|get|set` SettingsKv with SettingsMetadata validation', '—', 249, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T251', 'IdiotProof', 251, '2026-10-30', 'feature', 'open', '`prefs get|set` UserPreferences', '—', 250, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T252', 'IdiotProof', 252, '2026-10-30', 'feature', 'open', '`watchlist list|add|remove`', '—', 251, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T253', 'IdiotProof', 253, '2026-10-30', 'feature', 'open', '`users list`', '—', 252, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T254', 'IdiotProof', 254, '2026-10-30', 'feature', 'open', '`users create <email>` (blocklist + MindAttic.Authentication; port of create-account)', '—', 253, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T255', 'IdiotProof', 255, '2026-10-30', 'feature', 'open', '`users whoami` and `users use <email|guid>`', '—', 254, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T256', 'IdiotProof', 256, '2026-10-30', 'feature', 'open', '`monitor status|heartbeat|lease`', '—', 255, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T257', 'IdiotProof', 257, '2026-10-30', 'feature', 'open', '`monitor pause|resume|tick-once [--dry]` (tick-once never places orders)', '—', 256, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T258', 'IdiotProof', 258, '2026-10-30', 'feature', 'open', '`monitor tail` progress + gate verdict stream', '—', 257, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T259', 'IdiotProof', 259, '2026-10-30', 'feature', 'open', 'KnowledgeIndex core: markdown section/anchor parser ({#IP-§n}, {#IP-LAW-n}, IP-US-*)', '—', 258, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T260', 'IdiotProof', 260, '2026-10-30', 'feature', 'open', 'Index docs/BIBLE.md, BIBLE.digest.md, AMENDMENTS.md, README.md', '—', 259, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T261', 'IdiotProof', 261, '2026-10-30', 'feature', 'open', 'Index docs/USER_STORIES.md stories and the ticket table', '—', 260, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T262', 'IdiotProof', 262, '2026-10-30', 'feature', 'open', 'Index XML doc comments from every library (type/member -> summary, remarks)', '—', 261, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T263', 'IdiotProof', 263, '2026-10-30', 'feature', 'open', 'Symbol -> source path:line map built at Hub start from the repo checkout', '—', 262, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T264', 'IdiotProof', 264, '2026-10-30', 'feature', 'open', 'Ticket history via `tickets ticket list/show --json` (read-only)', '—', 263, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T265', 'IdiotProof', 265, '2026-10-30', 'feature', 'open', 'Index static catalogs: gapper profiles, index events, legion.json voters, settings metadata', '—', 264, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T266', 'IdiotProof', 266, '2026-10-30', 'feature', 'open', '`docs search <text>` ranked across every index', '—', 265, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T267', 'IdiotProof', 267, '2026-10-30', 'feature', 'open', '`docs law <n>`, `docs section <§n>`, `docs story <id>`', '—', 266, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T268', 'IdiotProof', 268, '2026-10-30', 'feature', 'open', '`docs explain <Type|Member>` XML docs + path:line + callers', '—', 267, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T269', 'IdiotProof', 269, '2026-10-30', 'feature', 'open', '`docs ticket <IP-Tn>`', '—', 268, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T270', 'IdiotProof', 270, '2026-10-30', 'feature', 'open', '`docs dsl <verb>` verb docs + example from the reflected catalog', '—', 269, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T271', 'IdiotProof', 271, '2026-10-30', 'feature', 'open', 'docs/agent/IDIOTPROOF_PROTOCOL.md: how an assistant drives IdiotProof (bootstrap, intent -> op mapping, Live confirm etiquette, ET times)', '—', 270, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T272', 'IdiotProof', 272, '2026-10-30', 'feature', 'open', '`agent export` writes docs/CLI_COMMANDS.md, docs/MCP_TOOLS.md, docs/agent/operation-catalog.json', '—', 271, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T273', 'IdiotProof', 273, '2026-10-30', 'feature', 'open', 'AGENTS.md project context points at the protocol doc and bootstrap command', '—', 272, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T274', 'IdiotProof', 274, '2026-10-30', 'feature', 'open', 'BIBLE §4 rewrite: Hub architecture, front doors (CLI/MCP/Blazor), transaction gateway, stamp', '—', 273, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T275', 'IdiotProof', 275, '2026-10-30', 'feature', 'open', 'BIBLE §3/§6/§7 updates (no longer ''Monitor console'' only; verified state cites new tests)', '—', 274, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T276', 'IdiotProof', 276, '2026-10-30', 'feature', 'open', 'Epic W user stories filed via `tickets story` and USER_STORIES regenerated', '—', 275, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T277', 'IdiotProof', 277, '2026-10-30', 'feature', 'open', 'BIBLE digest regenerated via tools/codex.ps1 and doctor passes', '—', 276, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T278', 'IdiotProof', 278, '2026-10-30', 'feature', 'open', 'docs/agent/cli-hub-backlog.json: the filed backlog with ticket IDs and dependencies', '—', 277, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T279', 'IdiotProof', 279, '2026-10-30', 'feature', 'open', 'Blazor IOwnerContext adapter from the auth claim', '—', 278, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T280', 'IdiotProof', 280, '2026-10-30', 'feature', 'open', 'Blazor IClaudeKeyContext adapter (replaces SignedInClaudeKey wiring)', '—', 279, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T281', 'IdiotProof', 281, '2026-10-30', 'feature', 'open', 'Blazor manual order paths go through TransactionGateway', '—', 280, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T282', 'IdiotProof', 282, '2026-10-30', 'feature', 'open', 'Blazor Options page orders through the gateway (password elevation kept)', '—', 281, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T283', 'IdiotProof', 283, '2026-10-30', 'feature', 'open', 'Blazor Activity page shows CommandLedger rows from CLI/MCP', '—', 282, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T284', 'IdiotProof', 284, '2026-10-30', 'feature', 'open', 'Blazor strategy detail renders the ASCII stamp', '—', 283, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T285', 'IdiotProof', 285, '2026-10-30', 'feature', 'open', 'run.ps1 publishes Hub, Cli and Mcp to C:\Apps\IdiotProof\ (never invoked without the user)', '—', 284, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T286', 'IdiotProof', 286, '2026-10-30', 'feature', 'open', 'tools/publish-all.ps1 includes the new projects', '—', 285, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T287', 'IdiotProof', 287, '2026-10-30', 'feature', 'open', 'start.bat starts the Hub (which hosts the Monitor) instead of the Monitor exe', '—', 286, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T288', 'IdiotProof', 288, '2026-10-30', 'feature', 'open', 'tools/install-hub-service.ps1 registers the Hub Windows Service as the current user', '—', 287, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T289', 'IdiotProof', 289, '2026-10-30', 'feature', 'open', 'idiotproof.exe on PATH from C:\Apps\IdiotProof\ (installer step, idempotent)', '—', 288, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T290', 'IdiotProof', 290, '2026-10-30', 'feature', 'open', 'README: CLI quick start, MCP registration, Live confirm flow', '—', 289, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T1', 'JellyFinPoster', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| JFP-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T2', 'JellyFinPoster', 2, '2026-10-16', 'chore', 'closed', 'install.ps1 adds this repo''s 9 .prose/commands stubs for the shared global commands, so any LLM client finds them', 'mindattic-agent-standard/install.ps1 run 2026-10-16', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T3', 'JellyFinPoster', 3, '2026-10-16', 'chore', 'closed', 'Bug hunt: run an exhaustive /bughunt over the whole repo and fix every real bug found (each fix under its own fix ticket), then hunt again; close this only when a full pass finds nothing', '9a5f84c', 2, NULL);
@@ -5573,6 +5835,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.HELP-T10', 'MindAttic.Helpers', 10, '2026-10-20', 'docs', 'open', 'Publish MindAttic.Helpers docs to GitHub Pages via the shared Agency DocFX pipeline: run adopt-docs-site.ps1 (README.md as home page, docs/*.md as articles, API reference only where the code builds in CI), enable Pages with build_type=workflow, set the repo homepage URL, retire tools/build-readme.ps1 and README.htm, confirm the docs Actions run is green and https://mindattic.github.io/MindAttic.Helpers/ returns 200. Depends on MAT-T8.', '—', 9, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.HELP-T11', 'MindAttic.Helpers', 11, '2026-10-22', 'docs', 'closed', 'Update USER_STORIES.md', '—', 10, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.HELP-T12', 'MindAttic.Helpers', 12, '2026-10-24', 'docs', 'closed', 'Update USER_STORIES.md', '—', 11, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.HELP-T13', 'MindAttic.Helpers', 13, '2026-10-30', 'feature', 'closed', 'AsciiAligner: port ascii_align.py into MindAttic.Helpers.Ascii as a dependency-free C# library + dotnet-tool CLI wrapper', '4ee92ad', 12, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.IDEA-T1', 'MindAttic.Ideas', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.IDEA-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.IDEA-T2', 'MindAttic.Ideas', 2, '2026-10-13', 'chore', 'closed', 'Move tools\deploy.ps1 to root deploy.ps1: rebuild only on change, -Force/-Launch, generate C:\Apps\Ideas\deploy.bat (replaces launch.bat); run.bat kept', 'deploy.ps1', 1, '| M.IDEA-T2 | 2026-10-13 | chore | closed | Move tools\deploy.ps1 to root deploy.ps1: rebuild only on change, -Force/-Launch, generate C:\Apps\Ideas\deploy.bat (replaces launch.bat); run.bat kept | deploy.ps1 |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.IDEA-T3', 'MindAttic.Ideas', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for InstanceConfigService (src/MindAttic.Ideas.Core/Services/InstanceConfigService.cs, zero coverage): GetInstancesAsync tree order page/theme/theme-Uses plugins/page plugins/body tags with correct Depth and InstanceSource, page ThemeKey overriding site DefaultThemeKey, plugin dedupe between theme [Uses] and page selection, fallback to the site plugins.default setting when ActivePluginsJson is empty (SiteDefaultPlugin), body tags only scanned for Data pages, untagged tags resolving Component then Plugin, unresolved citizens shown as (not installed) with Resolved=false; SaveSettingsAsync returning the stale-instance and not-installed errors, slot saves writing widgetRef Kind.key@version, and tag saves dropping unknown/invalid values while preserving an unchanged hand-written attribute that does not type-check - this is the admin settings editor that rewrites author BodyHtml', '—', 2, '| M.IDEA-T3 | 2026-10-14 | chore | open | NUnit tests for InstanceConfigService (src/MindAttic.Ideas.Core/Services/InstanceConfigService.cs, zero coverage): GetInstancesAsync tree order page/theme/theme-Uses plugins/page plugins/body tags with correct Depth and InstanceSource, page ThemeKey overriding site DefaultThemeKey, plugin dedupe between theme [Uses] and page selection, fallback to the site plugins.default setting when ActivePluginsJson is empty (SiteDefaultPlugin), body tags only scanned for Data pages, untagged tags resolving Component then Plugin, unresolved citizens shown as (not installed) with Resolved=false; SaveSettingsAsync returning the stale-instance and not-installed errors, slot saves writing widgetRef Kind.key@version, and tag saves dropping unknown/invalid values while preserving an unchanged hand-written attribute that does not type-check - this is the admin settings editor that rewrites author BodyHtml | — |');
@@ -7076,6 +7339,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1303', 'MindAttic.Orchestrator', 1303, '2026-10-30', 'fix', 'open', 'CLI terminal extends past the bottom of the app window; needs a bottom buffer', '—', 1302, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1304', 'MindAttic.Orchestrator', 1304, '2026-10-30', 'feature', 'wont-do', 'Move the 5-hour and weekly utilization charts into right-click modal popups (5hr Limit / Weekly Limit) on each login tab', 'superseded by M.ORCH-T1302 (scrolling-body layout); user reversed modal approach', 1303, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1305', 'MindAttic.Orchestrator', 1305, '2026-10-30', 'feature', 'closed', 'ascii_align.py: a checked-in script that pads ASCII box diagrams to perfect right-edge alignment', '11836d73', 1304, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1306', 'MindAttic.Orchestrator', 1306, '2026-10-30', 'chore', 'open', 'Retire tools/ascii_align.py now that MindAttic.Helpers.Ascii.AsciiAligner is the canonical, cross-repo ASCII aligner', '—', 1305, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T1', 'MindAttic.Psst', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.PSST-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T2', 'MindAttic.Psst', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for ContactBook (Contacts/Contact.cs): Find matches name case-insensitively before phone, falls back to 10-digit phone match across formats (+1, dashes, parens), returns null for blank or unmatched input; WithAdded rejects blank name/phone and case-insensitive duplicate names and leaves the original book unchanged; WithoutContact removes only the first case-insensitive match and returns null when absent - this is how psst sms resolves recipients, so a wrong match texts the wrong person', '865fde2', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T3', 'MindAttic.Psst', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched', '—', 2, '| M.PSST-T3 | 2026-10-14 | chore | open | NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched | — |');
@@ -7981,8 +8245,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T454', 'Prose', 454, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: Milwaukee: Halcyon Garrison Complex, the Velvet Tine, Fenris''s city', '—', 453, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T455', 'Prose', 455, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: the Iowa Exclusion Zone: Ironclad Agrisystems and the 340 Behemoths that feed a third of the continent; seen only from the edge', '—', 454, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T456', 'Prose', 456, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: below: the Warm, the Old Deep, the bore: the underground as its own country (Underclan)', '—', 455, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T457', 'Prose', 457, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: The Long Cut is set in Austin (a relocation camp and its north grid), outside the GLMZ: move it inside, or rule it a sanctioned exception', '—', 456, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T458', 'Prose', 458, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: audit every scene set outside the GLMZ in all 22 books (Austin, Tunis platform, Rotterdam lane, others)', '—', 457, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T457', 'Prose', 457, '2026-10-30', 'chore', 'wont-do', 'GLMZ P1 geography: The Long Cut is set in Austin (a relocation camp and its north grid), outside the GLMZ: move it inside, or rule it a sanctioned exception', 'Wrong premise: Austin is a Chicago West Side district inside the GLMZ (book pairs it with Garfield)', 456, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T458', 'Prose', 458, '2026-10-30', 'chore', 'wont-do', 'GLMZ P1 geography: audit every scene set outside the GLMZ in all 22 books (Austin, Tunis platform, Rotterdam lane, others)', 'Replaced by PRS-T793 (dropped Austin, which is inside the GLMZ)', 457, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T459', 'Prose', 459, '2026-10-30', 'chore', 'open', 'GLMZ P1 coasts: the coasts fell, never explained: sweep every book for any line that explains or investigates it', '—', 458, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T460', 'Prose', 460, '2026-10-30', 'chore', 'open', 'GLMZ P1 coasts: record the coast-fall as history fact (what is known, what is not) on the timeline record', '—', 459, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T461', 'Prose', 461, '2026-10-30', 'chore', 'open', 'GLMZ P1 corponations: Halcyon Combine: give it a king, a court, a tithe and a sincere creed; consolidate its records', '—', 460, NULL);
@@ -8317,6 +8581,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T790', 'Prose', 790, '2026-10-30', 'chore', 'open', 'GLMZ P5 22 The Ur: final full read (F5), every beat, fixes by hand', '—', 789, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T791', 'Prose', 791, '2026-10-30', 'chore', 'open', 'GLMZ P5 22 The Ur: records batch (F1), summaries current (F3), names resolved (F4)', '—', 790, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T792', 'Prose', 792, '2026-10-30', 'chore', 'open', 'GLMZ P5: Season 1 close: every book through Phase 5, then the author decides exports', '—', 791, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T793', 'Prose', 793, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: audit every scene set outside the GLMZ in all 22 books (Tunis platform, Rotterdam lane, others)', '—', 792, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T794', 'Prose', 794, '2026-10-30', 'chore', 'open', 'GLMZ: rename the Austin district to Cicero in every book and record (author 2026-10-30)', '—', 793, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -48730,6 +48996,621 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27627, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27628, 'M.ORCH-T1305', '2026-10-30T17:54:24Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27629, 'M.ORCH-T1305', '2026-10-30T17:54:24Z', 'ref', '—', '11836d73');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27630, 'M.ORCH-T1305', '2026-10-30T17:54:29Z', 'working', 'e6dc6e2f-c8dd-4aa8-8551-c5d162e1b1a8', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27631, 'IP-T30', '2026-10-30T19:17:40Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27632, 'IP-T31', '2026-10-30T19:17:41Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27633, 'IP-T32', '2026-10-30T19:17:42Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27634, 'IP-T33', '2026-10-30T19:17:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27635, 'IP-T34', '2026-10-30T19:17:45Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27636, 'IP-T35', '2026-10-30T19:17:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27637, 'IP-T36', '2026-10-30T19:17:47Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27638, 'IP-T37', '2026-10-30T19:17:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27639, 'IP-T38', '2026-10-30T19:17:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27640, 'IP-T39', '2026-10-30T19:17:53Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27641, 'IP-T40', '2026-10-30T19:17:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27642, 'IP-T41', '2026-10-30T19:17:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27643, 'IP-T42', '2026-10-30T19:17:58Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27644, 'IP-T43', '2026-10-30T19:17:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27645, 'IP-T44', '2026-10-30T19:18:01Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27646, 'IP-T45', '2026-10-30T19:18:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27647, 'IP-T46', '2026-10-30T19:18:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27648, 'IP-T47', '2026-10-30T19:18:05Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27649, 'IP-T48', '2026-10-30T19:18:06Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27650, 'IP-T49', '2026-10-30T19:18:08Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27651, 'IP-T50', '2026-10-30T19:18:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27652, 'IP-T51', '2026-10-30T19:18:10Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27653, 'IP-T52', '2026-10-30T19:18:11Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27654, 'IP-T53', '2026-10-30T19:18:12Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27655, 'IP-T54', '2026-10-30T19:18:14Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27656, 'IP-T55', '2026-10-30T19:18:15Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27657, 'IP-T56', '2026-10-30T19:18:16Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27658, 'IP-T57', '2026-10-30T19:18:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27659, 'IP-T58', '2026-10-30T19:18:19Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27660, 'IP-T59', '2026-10-30T19:18:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27661, 'IP-T60', '2026-10-30T19:18:21Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27662, 'IP-T61', '2026-10-30T19:18:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27663, 'IP-T62', '2026-10-30T19:18:23Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27664, 'IP-T63', '2026-10-30T19:18:24Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27665, 'IP-T64', '2026-10-30T19:18:25Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27666, 'IP-T65', '2026-10-30T19:18:27Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27667, 'IP-T66', '2026-10-30T19:18:28Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27668, 'IP-T67', '2026-10-30T19:18:29Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27669, 'IP-T68', '2026-10-30T19:18:30Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27670, 'IP-T69', '2026-10-30T19:18:31Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27671, 'IP-T70', '2026-10-30T19:18:32Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27672, 'IP-T71', '2026-10-30T19:18:33Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27673, 'IP-T72', '2026-10-30T19:18:34Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27674, 'IP-T73', '2026-10-30T19:18:36Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27675, 'PRS-T457', '2026-10-30T19:18:36Z', 'status', 'open', 'wont-do');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27676, 'PRS-T457', '2026-10-30T19:18:36Z', 'ref', '—', 'Wrong premise: Austin is a Chicago West Side district inside the GLMZ (book pairs it with Garfield)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27677, 'IP-T74', '2026-10-30T19:18:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27678, 'IP-T75', '2026-10-30T19:18:38Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27679, 'IP-T76', '2026-10-30T19:18:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27680, 'IP-T77', '2026-10-30T19:18:41Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27681, 'IP-T78', '2026-10-30T19:18:42Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27682, 'IP-T79', '2026-10-30T19:18:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27683, 'IP-T80', '2026-10-30T19:18:45Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27684, 'IP-T81', '2026-10-30T19:18:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27685, 'IP-T82', '2026-10-30T19:18:47Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27686, 'IP-T83', '2026-10-30T19:18:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27687, 'IP-T84', '2026-10-30T19:18:50Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27688, 'PRS-T793', '2026-10-30T19:18:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27689, 'IP-T85', '2026-10-30T19:18:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27690, 'PRS-T793', '2026-10-30T19:18:52Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27691, 'PRS-T793', '2026-10-30T19:18:52Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27692, 'PRS-T793', '2026-10-30T19:18:52Z', 'label', NULL, 'seq:0066');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27693, 'PRS-T793', '2026-10-30T19:18:52Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27694, 'IP-T86', '2026-10-30T19:18:53Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27695, 'PRS-T458', '2026-10-30T19:18:53Z', 'status', 'open', 'wont-do');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27696, 'PRS-T458', '2026-10-30T19:18:53Z', 'ref', '—', 'Replaced by PRS-T793 (dropped Austin, which is inside the GLMZ)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27697, 'IP-T87', '2026-10-30T19:18:54Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27698, 'IP-T88', '2026-10-30T19:18:56Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27699, 'IP-T89', '2026-10-30T19:18:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27700, 'IP-T90', '2026-10-30T19:18:58Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27701, 'IP-T91', '2026-10-30T19:18:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27702, 'IP-T92', '2026-10-30T19:19:01Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27703, 'IP-T93', '2026-10-30T19:19:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27704, 'PRS-T793', '2026-10-30T19:19:02Z', 'working', NULL, 'faf7d526-0cf8-4d25-9ad6-d948bee9d6e0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27705, 'IP-T94', '2026-10-30T19:19:03Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27706, 'IP-T95', '2026-10-30T19:19:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27707, 'IP-T96', '2026-10-30T19:19:05Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27708, 'IP-T97', '2026-10-30T19:19:07Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27709, 'IP-T98', '2026-10-30T19:19:08Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27710, 'IP-T99', '2026-10-30T19:19:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27711, 'IP-T100', '2026-10-30T19:19:10Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27712, 'IP-T101', '2026-10-30T19:19:11Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27713, 'IP-T102', '2026-10-30T19:19:12Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27714, 'IP-T103', '2026-10-30T19:19:13Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27715, 'IP-T104', '2026-10-30T19:19:15Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27716, 'IP-T105', '2026-10-30T19:19:16Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27717, 'PRS-T793', '2026-10-30T19:19:17Z', 'working', 'faf7d526-0cf8-4d25-9ad6-d948bee9d6e0', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27718, 'IP-T106', '2026-10-30T19:19:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27719, 'IP-T107', '2026-10-30T19:19:19Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27720, 'IP-T108', '2026-10-30T19:19:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27721, 'IP-T109', '2026-10-30T19:19:21Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27722, 'IP-T110', '2026-10-30T19:19:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27723, 'IP-T111', '2026-10-30T19:19:23Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27724, 'IP-T112', '2026-10-30T19:19:25Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27725, 'IP-T113', '2026-10-30T19:19:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27726, 'IP-T114', '2026-10-30T19:19:27Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27727, 'IP-T115', '2026-10-30T19:19:28Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27728, 'IP-T116', '2026-10-30T19:19:30Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27729, 'IP-T117', '2026-10-30T19:19:31Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27730, 'PRS-T794', '2026-10-30T19:19:32Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27731, 'IP-T118', '2026-10-30T19:19:32Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27732, 'PRS-T794', '2026-10-30T19:19:33Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27733, 'PRS-T794', '2026-10-30T19:19:33Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27734, 'PRS-T794', '2026-10-30T19:19:33Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27735, 'PRS-T794', '2026-10-30T19:19:33Z', 'label', NULL, 'seq:0065');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27736, 'PRS-T794', '2026-10-30T19:19:33Z', 'label', NULL, 'book:the-long-cut');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27737, 'IP-T119', '2026-10-30T19:19:34Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27738, 'IP-T120', '2026-10-30T19:19:35Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27739, 'IP-T121', '2026-10-30T19:19:36Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27740, 'IP-T122', '2026-10-30T19:19:38Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27741, 'IP-T123', '2026-10-30T19:19:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27742, 'IP-T124', '2026-10-30T19:19:40Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27743, 'IP-T125', '2026-10-30T19:19:41Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27744, 'IP-T126', '2026-10-30T19:19:42Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27745, 'IP-T127', '2026-10-30T19:19:44Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27746, 'IP-T128', '2026-10-30T19:19:45Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27747, 'IP-T129', '2026-10-30T19:19:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27748, 'PRS-T794', '2026-10-30T19:19:47Z', 'working', NULL, 'faf7d526-0cf8-4d25-9ad6-d948bee9d6e0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27749, 'IP-T130', '2026-10-30T19:19:48Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27750, 'IP-T131', '2026-10-30T19:19:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27751, 'IP-T132', '2026-10-30T19:19:50Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27752, 'IP-T133', '2026-10-30T19:19:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27753, 'IP-T134', '2026-10-30T19:19:52Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27754, 'IP-T135', '2026-10-30T19:20:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27755, 'IP-T136', '2026-10-30T19:20:19Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27756, 'IP-T137', '2026-10-30T19:20:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27757, 'IP-T138', '2026-10-30T19:20:21Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27758, 'IP-T139', '2026-10-30T19:20:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27759, 'IP-T140', '2026-10-30T19:20:23Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27760, 'IP-T141', '2026-10-30T19:20:24Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27761, 'IP-T142', '2026-10-30T19:20:25Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27762, 'M.HELP-T13', '2026-10-30T19:20:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27763, 'IP-T143', '2026-10-30T19:20:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27764, 'IP-T144', '2026-10-30T19:20:28Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27765, 'IP-T145', '2026-10-30T19:20:29Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27766, 'IP-T146', '2026-10-30T19:20:30Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27767, 'IP-T147', '2026-10-30T19:20:32Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27768, 'IP-T148', '2026-10-30T19:20:33Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27769, 'IP-T149', '2026-10-30T19:20:34Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27770, 'IP-T150', '2026-10-30T19:20:35Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27771, 'IP-T151', '2026-10-30T19:20:36Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27772, 'IP-T152', '2026-10-30T19:20:38Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27773, 'IP-T153', '2026-10-30T19:20:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27774, 'IP-T154', '2026-10-30T19:20:40Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27775, 'IP-T155', '2026-10-30T19:20:42Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27776, 'IP-T156', '2026-10-30T19:20:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27777, 'IP-T157', '2026-10-30T19:20:48Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27778, 'IP-T158', '2026-10-30T19:20:50Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27779, 'IP-T159', '2026-10-30T19:20:52Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27780, 'IP-T160', '2026-10-30T19:20:53Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27781, 'IP-T161', '2026-10-30T19:20:54Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27782, 'IP-T162', '2026-10-30T19:20:56Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27783, 'IP-T163', '2026-10-30T19:20:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27784, 'M.HELP-T13', '2026-10-30T19:20:58Z', 'working', NULL, 'e6dc6e2f-c8dd-4aa8-8551-c5d162e1b1a8');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27785, 'IP-T164', '2026-10-30T19:20:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27786, 'IP-T165', '2026-10-30T19:21:01Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27787, 'IP-T166', '2026-10-30T19:21:05Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27788, 'IP-T167', '2026-10-30T19:21:06Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27789, 'IP-T168', '2026-10-30T19:21:08Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27790, 'IP-T169', '2026-10-30T19:21:10Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27791, 'IP-T170', '2026-10-30T19:21:12Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27792, 'IP-T171', '2026-10-30T19:21:13Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27793, 'IP-T172', '2026-10-30T19:21:15Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27794, 'IP-T173', '2026-10-30T19:21:16Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27795, 'IP-T174', '2026-10-30T19:21:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27796, 'IP-T175', '2026-10-30T19:21:18Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27797, 'IP-T176', '2026-10-30T19:21:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27798, 'IP-T177', '2026-10-30T19:21:21Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27799, 'IP-T178', '2026-10-30T19:21:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27800, 'IP-T179', '2026-10-30T19:21:23Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27801, 'IP-T180', '2026-10-30T19:21:24Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27802, 'IP-T30', '2026-10-30T19:21:26Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27803, 'IP-T30', '2026-10-30T19:21:26Z', 'ref', '—', '03bd8f5');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27804, 'IP-T181', '2026-10-30T19:21:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27805, 'IP-T182', '2026-10-30T19:21:28Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27806, 'IP-T183', '2026-10-30T19:21:29Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27807, 'IP-T184', '2026-10-30T19:21:30Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27808, 'IP-T185', '2026-10-30T19:21:32Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27809, 'IP-T186', '2026-10-30T19:21:35Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27810, 'IP-T187', '2026-10-30T19:21:38Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27811, 'IP-T188', '2026-10-30T19:21:40Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27812, 'IP-T189', '2026-10-30T19:21:42Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27813, 'IP-T190', '2026-10-30T19:21:44Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27814, 'IP-T191', '2026-10-30T19:21:47Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27815, 'IP-T192', '2026-10-30T19:21:48Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27816, 'IP-T193', '2026-10-30T19:21:50Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27817, 'IP-T194', '2026-10-30T19:21:52Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27818, 'IP-T195', '2026-10-30T19:21:54Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27819, 'IP-T196', '2026-10-30T19:21:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27820, 'IP-T197', '2026-10-30T19:21:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27821, 'IP-T198', '2026-10-30T19:21:58Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27822, 'IP-T199', '2026-10-30T19:21:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27823, 'IP-T200', '2026-10-30T19:22:00Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27824, 'IP-T201', '2026-10-30T19:22:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27825, 'IP-T202', '2026-10-30T19:22:03Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27826, 'IP-T203', '2026-10-30T19:22:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27827, 'IP-T204', '2026-10-30T19:22:05Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27828, 'IP-T205', '2026-10-30T19:22:06Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27829, 'IP-T206', '2026-10-30T19:22:08Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27830, 'IP-T207', '2026-10-30T19:22:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27831, 'IP-T208', '2026-10-30T19:22:11Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27832, 'IP-T209', '2026-10-30T19:22:12Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27833, 'IP-T210', '2026-10-30T19:22:14Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27834, 'IP-T211', '2026-10-30T19:22:15Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27835, 'IP-T212', '2026-10-30T19:22:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27836, 'IP-T213', '2026-10-30T19:22:18Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27837, 'IP-T214', '2026-10-30T19:22:19Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27838, 'IP-T215', '2026-10-30T19:22:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27839, 'IP-T216', '2026-10-30T19:22:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27840, 'IP-T217', '2026-10-30T19:22:23Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27841, 'IP-T218', '2026-10-30T19:22:24Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27842, 'IP-T219', '2026-10-30T19:22:25Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27843, 'IP-T220', '2026-10-30T19:22:27Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27844, 'IP-T221', '2026-10-30T19:22:28Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27845, 'IP-T222', '2026-10-30T19:22:29Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27846, 'IP-T223', '2026-10-30T19:22:30Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27847, 'IP-T32', '2026-10-30T19:22:31Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27848, 'IP-T32', '2026-10-30T19:22:31Z', 'ref', '—', '2193f54');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27849, 'IP-T224', '2026-10-30T19:22:32Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27850, 'IP-T225', '2026-10-30T19:22:33Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27851, 'IP-T33', '2026-10-30T19:22:33Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27852, 'IP-T33', '2026-10-30T19:22:33Z', 'ref', '—', '2193f54');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27853, 'IP-T226', '2026-10-30T19:22:34Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27854, 'IP-T227', '2026-10-30T19:22:36Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27855, 'IP-T228', '2026-10-30T19:22:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27856, 'IP-T229', '2026-10-30T19:22:38Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27857, 'IP-T230', '2026-10-30T19:22:40Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27858, 'IP-T231', '2026-10-30T19:22:42Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27859, 'IP-T232', '2026-10-30T19:22:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27860, 'IP-T233', '2026-10-30T19:22:44Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27861, 'IP-T234', '2026-10-30T19:22:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27862, 'IP-T235', '2026-10-30T19:22:47Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27863, 'IP-T236', '2026-10-30T19:22:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27864, 'IP-T237', '2026-10-30T19:22:50Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27865, 'IP-T238', '2026-10-30T19:22:52Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27866, 'IP-T239', '2026-10-30T19:22:53Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27867, 'IP-T240', '2026-10-30T19:22:54Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27868, 'IP-T241', '2026-10-30T19:22:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27869, 'IP-T242', '2026-10-30T19:22:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27870, 'IP-T243', '2026-10-30T19:22:58Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27871, 'IP-T244', '2026-10-30T19:22:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27872, 'IP-T245', '2026-10-30T19:23:00Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27873, 'IP-T246', '2026-10-30T19:23:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27874, 'IP-T247', '2026-10-30T19:23:03Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27875, 'IP-T248', '2026-10-30T19:23:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27876, 'IP-T249', '2026-10-30T19:23:05Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27877, 'IP-T250', '2026-10-30T19:23:07Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27878, 'IP-T251', '2026-10-30T19:23:08Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27879, 'IP-T252', '2026-10-30T19:23:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27880, 'IP-T253', '2026-10-30T19:23:10Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27881, 'IP-T254', '2026-10-30T19:23:12Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27882, 'IP-T255', '2026-10-30T19:23:13Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27883, 'IP-T256', '2026-10-30T19:23:14Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27884, 'IP-T257', '2026-10-30T19:23:16Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27885, 'IP-T258', '2026-10-30T19:23:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27886, 'IP-T259', '2026-10-30T19:23:19Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27887, 'IP-T260', '2026-10-30T19:23:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27888, 'IP-T261', '2026-10-30T19:23:21Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27889, 'IP-T262', '2026-10-30T19:23:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27890, 'IP-T263', '2026-10-30T19:23:24Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27891, 'IP-T264', '2026-10-30T19:23:25Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27892, 'IP-T265', '2026-10-30T19:23:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27893, 'IP-T266', '2026-10-30T19:23:27Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27894, 'IP-T267', '2026-10-30T19:23:29Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27895, 'IP-T268', '2026-10-30T19:23:30Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27896, 'IP-T269', '2026-10-30T19:23:31Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27897, 'IP-T270', '2026-10-30T19:23:32Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27898, 'IP-T271', '2026-10-30T19:23:33Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27899, 'IP-T272', '2026-10-30T19:23:35Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27900, 'IP-T273', '2026-10-30T19:23:36Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27901, 'IP-T274', '2026-10-30T19:23:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27902, 'IP-T275', '2026-10-30T19:23:38Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27903, 'IP-T276', '2026-10-30T19:23:40Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27904, 'IP-T277', '2026-10-30T19:23:41Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27905, 'IP-T278', '2026-10-30T19:23:42Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27906, 'IP-T279', '2026-10-30T19:23:44Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27907, 'IP-T280', '2026-10-30T19:23:45Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27908, 'IP-T281', '2026-10-30T19:23:47Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27909, 'IP-T282', '2026-10-30T19:23:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27910, 'IP-T283', '2026-10-30T19:23:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27911, 'IP-T284', '2026-10-30T19:23:54Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27912, 'IP-T285', '2026-10-30T19:23:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27913, 'IP-T286', '2026-10-30T19:24:03Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27914, 'IP-T287', '2026-10-30T19:24:06Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27915, 'IP-T288', '2026-10-30T19:24:08Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27916, 'IP-T289', '2026-10-30T19:24:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27917, 'IP-T290', '2026-10-30T19:24:11Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27918, 'IP-T30', '2026-10-30T19:24:13Z', 'priority', '0', '1261');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27919, 'IP-T31', '2026-10-30T19:24:15Z', 'priority', '0', '1260');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27920, 'IP-T32', '2026-10-30T19:24:16Z', 'priority', '0', '1259');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27921, 'IP-T32', '2026-10-30T19:24:17Z', 'link', NULL, 'requires IP-T30');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27922, 'IP-T30', '2026-10-30T19:24:17Z', 'link', NULL, 'IP-T32 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27923, 'IP-T33', '2026-10-30T19:24:18Z', 'priority', '0', '1258');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27924, 'IP-T33', '2026-10-30T19:24:19Z', 'link', NULL, 'requires IP-T32');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27925, 'IP-T32', '2026-10-30T19:24:20Z', 'link', NULL, 'IP-T33 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27926, 'IP-T34', '2026-10-30T19:24:21Z', 'priority', '0', '1257');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27927, 'IP-T34', '2026-10-30T19:24:21Z', 'link', NULL, 'requires IP-T30');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27928, 'IP-T30', '2026-10-30T19:24:22Z', 'link', NULL, 'IP-T34 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27929, 'IP-T35', '2026-10-30T19:24:23Z', 'priority', '0', '1256');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27930, 'IP-T35', '2026-10-30T19:24:24Z', 'link', NULL, 'requires IP-T34');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27931, 'IP-T34', '2026-10-30T19:24:24Z', 'link', NULL, 'IP-T35 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27932, 'IP-T36', '2026-10-30T19:24:26Z', 'priority', '0', '1255');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27933, 'IP-T36', '2026-10-30T19:24:27Z', 'link', NULL, 'requires IP-T30');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27934, 'IP-T30', '2026-10-30T19:24:27Z', 'link', NULL, 'IP-T36 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27935, 'IP-T37', '2026-10-30T19:24:28Z', 'priority', '0', '1254');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27936, 'IP-T37', '2026-10-30T19:24:29Z', 'link', NULL, 'requires IP-T32');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27937, 'IP-T32', '2026-10-30T19:24:29Z', 'link', NULL, 'IP-T37 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27938, 'IP-T37', '2026-10-30T19:24:30Z', 'link', NULL, 'requires IP-T35');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27939, 'IP-T35', '2026-10-30T19:24:31Z', 'link', NULL, 'IP-T37 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27940, 'IP-T38', '2026-10-30T19:24:32Z', 'priority', '0', '1253');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27941, 'IP-T38', '2026-10-30T19:24:33Z', 'link', NULL, 'requires IP-T32');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27942, 'IP-T32', '2026-10-30T19:24:33Z', 'link', NULL, 'IP-T38 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27943, 'IP-T36', '2026-10-30T19:24:34Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27944, 'IP-T36', '2026-10-30T19:24:34Z', 'ref', '—', 'f50836a');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27945, 'IP-T39', '2026-10-30T19:24:34Z', 'priority', '0', '1252');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27946, 'IP-T39', '2026-10-30T19:24:35Z', 'link', NULL, 'requires IP-T32');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27947, 'IP-T32', '2026-10-30T19:24:35Z', 'link', NULL, 'IP-T39 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27948, 'IP-T39', '2026-10-30T19:24:36Z', 'link', NULL, 'requires IP-T35');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27949, 'IP-T35', '2026-10-30T19:24:37Z', 'link', NULL, 'IP-T39 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27950, 'IP-T40', '2026-10-30T19:24:38Z', 'priority', '0', '1251');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27951, 'IP-T40', '2026-10-30T19:24:39Z', 'link', NULL, 'requires IP-T32');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27952, 'IP-T32', '2026-10-30T19:24:39Z', 'link', NULL, 'IP-T40 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27953, 'IP-T40', '2026-10-30T19:24:41Z', 'link', NULL, 'requires IP-T35');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27954, 'IP-T35', '2026-10-30T19:24:41Z', 'link', NULL, 'IP-T40 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27955, 'IP-T40', '2026-10-30T19:24:42Z', 'link', NULL, 'requires IP-T36');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27956, 'IP-T36', '2026-10-30T19:24:43Z', 'link', NULL, 'IP-T40 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27957, 'IP-T41', '2026-10-30T19:24:44Z', 'priority', '0', '1250');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27958, 'IP-T41', '2026-10-30T19:24:45Z', 'link', NULL, 'requires IP-T32');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27959, 'IP-T32', '2026-10-30T19:24:45Z', 'link', NULL, 'IP-T41 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27960, 'IP-T41', '2026-10-30T19:24:46Z', 'link', NULL, 'requires IP-T36');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27961, 'IP-T36', '2026-10-30T19:24:47Z', 'link', NULL, 'IP-T41 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27962, 'IP-T42', '2026-10-30T19:24:48Z', 'priority', '0', '1249');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27963, 'IP-T42', '2026-10-30T19:24:49Z', 'link', NULL, 'requires IP-T37');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27964, 'IP-T37', '2026-10-30T19:24:49Z', 'link', NULL, 'IP-T42 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27965, 'IP-T42', '2026-10-30T19:24:50Z', 'link', NULL, 'requires IP-T38');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27966, 'IP-T38', '2026-10-30T19:24:50Z', 'link', NULL, 'IP-T42 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27967, 'IP-T42', '2026-10-30T19:24:51Z', 'link', NULL, 'requires IP-T39');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27968, 'IP-T39', '2026-10-30T19:24:52Z', 'link', NULL, 'IP-T42 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27969, 'IP-T42', '2026-10-30T19:24:53Z', 'link', NULL, 'requires IP-T40');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27970, 'IP-T40', '2026-10-30T19:24:53Z', 'link', NULL, 'IP-T42 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27971, 'IP-T42', '2026-10-30T19:24:54Z', 'link', NULL, 'requires IP-T41');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27972, 'IP-T41', '2026-10-30T19:24:55Z', 'link', NULL, 'IP-T42 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27973, 'IP-T43', '2026-10-30T19:24:56Z', 'priority', '0', '1248');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27974, 'IP-T43', '2026-10-30T19:24:57Z', 'link', NULL, 'requires IP-T42');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27975, 'IP-T42', '2026-10-30T19:24:57Z', 'link', NULL, 'IP-T43 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27976, 'IP-T44', '2026-10-30T19:24:58Z', 'priority', '0', '1247');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27977, 'IP-T44', '2026-10-30T19:24:59Z', 'link', NULL, 'requires IP-T43');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27978, 'IP-T43', '2026-10-30T19:24:59Z', 'link', NULL, 'IP-T44 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27979, 'IP-T45', '2026-10-30T19:25:00Z', 'priority', '0', '1246');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27980, 'IP-T45', '2026-10-30T19:25:01Z', 'link', NULL, 'requires IP-T42');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27981, 'IP-T42', '2026-10-30T19:25:01Z', 'link', NULL, 'IP-T45 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27982, 'IP-T46', '2026-10-30T19:25:02Z', 'priority', '0', '1245');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27983, 'IP-T46', '2026-10-30T19:25:03Z', 'link', NULL, 'requires IP-T44');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27984, 'IP-T44', '2026-10-30T19:25:04Z', 'link', NULL, 'IP-T46 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27985, 'IP-T47', '2026-10-30T19:25:04Z', 'priority', '0', '1244');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27986, 'IP-T47', '2026-10-30T19:25:05Z', 'link', NULL, 'requires IP-T42');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27987, 'IP-T42', '2026-10-30T19:25:06Z', 'link', NULL, 'IP-T47 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27988, 'IP-T48', '2026-10-30T19:25:07Z', 'priority', '0', '1243');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27989, 'IP-T48', '2026-10-30T19:25:08Z', 'link', NULL, 'requires IP-T45');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27990, 'IP-T45', '2026-10-30T19:25:08Z', 'link', NULL, 'IP-T48 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27991, 'IP-T48', '2026-10-30T19:25:09Z', 'link', NULL, 'requires IP-T46');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27992, 'IP-T46', '2026-10-30T19:25:09Z', 'link', NULL, 'IP-T48 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27993, 'IP-T49', '2026-10-30T19:25:10Z', 'priority', '0', '1242');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27994, 'IP-T49', '2026-10-30T19:25:11Z', 'link', NULL, 'requires IP-T48');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27995, 'IP-T48', '2026-10-30T19:25:11Z', 'link', NULL, 'IP-T49 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27996, 'IP-T50', '2026-10-30T19:25:12Z', 'priority', '0', '1241');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27997, 'IP-T50', '2026-10-30T19:25:13Z', 'link', NULL, 'requires IP-T30');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27998, 'IP-T30', '2026-10-30T19:25:13Z', 'link', NULL, 'IP-T50 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (27999, 'IP-T51', '2026-10-30T19:25:14Z', 'priority', '0', '1240');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28000, 'IP-T51', '2026-10-30T19:25:15Z', 'link', NULL, 'requires IP-T42');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28001, 'IP-T42', '2026-10-30T19:25:16Z', 'link', NULL, 'IP-T51 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28002, 'IP-T52', '2026-10-30T19:25:17Z', 'priority', '0', '1239');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28003, 'IP-T52', '2026-10-30T19:25:17Z', 'link', NULL, 'requires IP-T51');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28004, 'IP-T51', '2026-10-30T19:25:18Z', 'link', NULL, 'IP-T52 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28005, 'IP-T52', '2026-10-30T19:25:19Z', 'link', NULL, 'requires IP-T34');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28006, 'IP-T34', '2026-10-30T19:25:19Z', 'link', NULL, 'IP-T52 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28007, 'IP-T53', '2026-10-30T19:25:20Z', 'priority', '0', '1238');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28008, 'IP-T53', '2026-10-30T19:25:21Z', 'link', NULL, 'requires IP-T51');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28009, 'IP-T51', '2026-10-30T19:25:21Z', 'link', NULL, 'IP-T53 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28010, 'IP-T54', '2026-10-30T19:25:22Z', 'priority', '0', '1237');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28011, 'IP-T54', '2026-10-30T19:25:23Z', 'link', NULL, 'requires IP-T51');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28012, 'IP-T51', '2026-10-30T19:25:24Z', 'link', NULL, 'IP-T54 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28013, 'IP-T55', '2026-10-30T19:25:24Z', 'priority', '0', '1236');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28014, 'IP-T55', '2026-10-30T19:25:25Z', 'link', NULL, 'requires IP-T54');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28015, 'IP-T54', '2026-10-30T19:25:26Z', 'link', NULL, 'IP-T55 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28016, 'IP-T56', '2026-10-30T19:25:27Z', 'priority', '0', '1235');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28017, 'IP-T56', '2026-10-30T19:25:28Z', 'link', NULL, 'requires IP-T53');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28018, 'IP-T53', '2026-10-30T19:25:28Z', 'link', NULL, 'IP-T56 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28019, 'IP-T57', '2026-10-30T19:25:29Z', 'priority', '0', '1234');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28020, 'IP-T57', '2026-10-30T19:25:30Z', 'link', NULL, 'requires IP-T54');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28021, 'IP-T54', '2026-10-30T19:25:30Z', 'link', NULL, 'IP-T57 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28022, 'IP-T58', '2026-10-30T19:25:31Z', 'priority', '0', '1233');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28023, 'IP-T58', '2026-10-30T19:25:32Z', 'link', NULL, 'requires IP-T57');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28024, 'IP-T57', '2026-10-30T19:25:33Z', 'link', NULL, 'IP-T58 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28025, 'IP-T59', '2026-10-30T19:25:34Z', 'priority', '0', '1232');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28026, 'IP-T59', '2026-10-30T19:25:35Z', 'link', NULL, 'requires IP-T57');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28027, 'IP-T57', '2026-10-30T19:25:36Z', 'link', NULL, 'IP-T59 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28028, 'IP-T60', '2026-10-30T19:25:40Z', 'priority', '0', '1231');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28029, 'IP-T60', '2026-10-30T19:25:42Z', 'link', NULL, 'requires IP-T59');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28030, 'IP-T59', '2026-10-30T19:25:43Z', 'link', NULL, 'IP-T60 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28031, 'IP-T61', '2026-10-30T19:25:45Z', 'priority', '0', '1230');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28032, 'IP-T61', '2026-10-30T19:25:47Z', 'link', NULL, 'requires IP-T53');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28033, 'IP-T53', '2026-10-30T19:25:48Z', 'link', NULL, 'IP-T61 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28034, 'IP-T61', '2026-10-30T19:25:49Z', 'link', NULL, 'requires IP-T57');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28035, 'IP-T57', '2026-10-30T19:25:50Z', 'link', NULL, 'IP-T61 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28036, 'IP-T62', '2026-10-30T19:25:52Z', 'priority', '0', '1229');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28037, 'IP-T62', '2026-10-30T19:25:53Z', 'link', NULL, 'requires IP-T57');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28038, 'IP-T57', '2026-10-30T19:25:54Z', 'link', NULL, 'IP-T62 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28039, 'IP-T63', '2026-10-30T19:25:55Z', 'priority', '0', '1228');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28040, 'IP-T63', '2026-10-30T19:25:57Z', 'link', NULL, 'requires IP-T58');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28041, 'IP-T58', '2026-10-30T19:25:57Z', 'link', NULL, 'IP-T63 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28042, 'IP-T64', '2026-10-30T19:25:58Z', 'priority', '0', '1227');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28043, 'IP-T64', '2026-10-30T19:26:00Z', 'link', NULL, 'requires IP-T60');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28044, 'IP-T60', '2026-10-30T19:26:00Z', 'link', NULL, 'IP-T64 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28045, 'IP-T65', '2026-10-30T19:26:01Z', 'priority', '0', '1226');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28046, 'IP-T65', '2026-10-30T19:26:02Z', 'link', NULL, 'requires IP-T54');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28047, 'IP-T54', '2026-10-30T19:26:02Z', 'link', NULL, 'IP-T65 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28048, 'IP-T66', '2026-10-30T19:26:03Z', 'priority', '0', '1225');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28049, 'IP-T66', '2026-10-30T19:26:04Z', 'link', NULL, 'requires IP-T42');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28050, 'IP-T42', '2026-10-30T19:26:05Z', 'link', NULL, 'IP-T66 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28051, 'IP-T67', '2026-10-30T19:26:06Z', 'priority', '0', '1224');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28052, 'IP-T67', '2026-10-30T19:26:06Z', 'link', NULL, 'requires IP-T66');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28053, 'IP-T66', '2026-10-30T19:26:07Z', 'link', NULL, 'IP-T67 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28054, 'IP-T34', '2026-10-30T19:26:08Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28055, 'IP-T34', '2026-10-30T19:26:08Z', 'ref', '—', '4f8bd99 OwnerResolverTests');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28056, 'IP-T68', '2026-10-30T19:26:08Z', 'priority', '0', '1223');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28057, 'IP-T68', '2026-10-30T19:26:09Z', 'link', NULL, 'requires IP-T66');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28058, 'IP-T66', '2026-10-30T19:26:09Z', 'link', NULL, 'IP-T68 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28059, 'IP-T69', '2026-10-30T19:26:10Z', 'priority', '0', '1222');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28060, 'IP-T69', '2026-10-30T19:26:11Z', 'link', NULL, 'requires IP-T57');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28061, 'IP-T57', '2026-10-30T19:26:11Z', 'link', NULL, 'IP-T69 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28062, 'IP-T69', '2026-10-30T19:26:12Z', 'link', NULL, 'requires IP-T68');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28063, 'IP-T68', '2026-10-30T19:26:13Z', 'link', NULL, 'IP-T69 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28064, 'IP-T70', '2026-10-30T19:26:14Z', 'priority', '0', '1221');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28065, 'IP-T70', '2026-10-30T19:26:16Z', 'link', NULL, 'requires IP-T68');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28066, 'IP-T68', '2026-10-30T19:26:18Z', 'link', NULL, 'IP-T70 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28067, 'IP-T70', '2026-10-30T19:26:20Z', 'link', NULL, 'requires IP-T55');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28068, 'IP-T55', '2026-10-30T19:26:20Z', 'link', NULL, 'IP-T70 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28069, 'IP-T71', '2026-10-30T19:26:21Z', 'priority', '0', '1220');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28070, 'IP-T71', '2026-10-30T19:26:22Z', 'link', NULL, 'requires IP-T33');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28071, 'IP-T33', '2026-10-30T19:26:23Z', 'link', NULL, 'IP-T71 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28072, 'IP-T72', '2026-10-30T19:26:24Z', 'priority', '0', '1219');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28073, 'IP-T72', '2026-10-30T19:26:25Z', 'link', NULL, 'requires IP-T71');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28074, 'IP-T71', '2026-10-30T19:26:26Z', 'link', NULL, 'IP-T72 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28075, 'IP-T73', '2026-10-30T19:26:26Z', 'priority', '0', '1218');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28076, 'IP-T73', '2026-10-30T19:26:27Z', 'link', NULL, 'requires IP-T70');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28077, 'IP-T70', '2026-10-30T19:26:28Z', 'link', NULL, 'IP-T73 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28078, 'IP-T73', '2026-10-30T19:26:29Z', 'link', NULL, 'requires IP-T72');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28079, 'IP-T72', '2026-10-30T19:26:29Z', 'link', NULL, 'IP-T73 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28080, 'IP-T74', '2026-10-30T19:26:30Z', 'priority', '0', '1217');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28081, 'IP-T74', '2026-10-30T19:26:31Z', 'link', NULL, 'requires IP-T44');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28082, 'IP-T44', '2026-10-30T19:26:31Z', 'link', NULL, 'IP-T74 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28083, 'IP-T74', '2026-10-30T19:26:32Z', 'link', NULL, 'requires IP-T66');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28084, 'IP-T66', '2026-10-30T19:26:33Z', 'link', NULL, 'IP-T74 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28085, 'IP-T75', '2026-10-30T19:26:34Z', 'priority', '0', '1216');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28086, 'IP-T75', '2026-10-30T19:26:35Z', 'link', NULL, 'requires IP-T74');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28087, 'IP-T74', '2026-10-30T19:26:36Z', 'link', NULL, 'IP-T75 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28088, 'IP-T76', '2026-10-30T19:26:40Z', 'priority', '0', '1215');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28089, 'IP-T76', '2026-10-30T19:26:42Z', 'link', NULL, 'requires IP-T74');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28090, 'IP-T74', '2026-10-30T19:26:42Z', 'link', NULL, 'IP-T76 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28091, 'IP-T77', '2026-10-30T19:26:43Z', 'priority', '0', '1214');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28092, 'IP-T77', '2026-10-30T19:26:44Z', 'link', NULL, 'requires IP-T66');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28093, 'IP-T66', '2026-10-30T19:26:45Z', 'link', NULL, 'IP-T77 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28094, 'IP-T78', '2026-10-30T19:26:46Z', 'priority', '0', '1213');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28095, 'IP-T78', '2026-10-30T19:26:47Z', 'link', NULL, 'requires IP-T66');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28096, 'IP-T66', '2026-10-30T19:26:48Z', 'link', NULL, 'IP-T78 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28097, 'IP-T79', '2026-10-30T19:26:49Z', 'priority', '0', '1212');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28098, 'IP-T79', '2026-10-30T19:26:50Z', 'link', NULL, 'requires IP-T74');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28099, 'IP-T74', '2026-10-30T19:26:51Z', 'link', NULL, 'IP-T79 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28100, 'IP-T80', '2026-10-30T19:26:52Z', 'priority', '0', '1211');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28101, 'IP-T80', '2026-10-30T19:26:53Z', 'link', NULL, 'requires IP-T74');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28102, 'IP-T74', '2026-10-30T19:26:53Z', 'link', NULL, 'IP-T80 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28103, 'IP-T81', '2026-10-30T19:26:54Z', 'priority', '0', '1210');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28104, 'IP-T81', '2026-10-30T19:26:55Z', 'link', NULL, 'requires IP-T74');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28105, 'IP-T74', '2026-10-30T19:26:55Z', 'link', NULL, 'IP-T81 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28106, 'IP-T82', '2026-10-30T19:26:56Z', 'priority', '0', '1209');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28107, 'IP-T82', '2026-10-30T19:26:57Z', 'link', NULL, 'requires IP-T67');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28108, 'IP-T67', '2026-10-30T19:26:57Z', 'link', NULL, 'IP-T82 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28109, 'IP-T83', '2026-10-30T19:26:59Z', 'priority', '0', '1208');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28110, 'IP-T38', '2026-10-30T19:26:59Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28111, 'IP-T38', '2026-10-30T19:26:59Z', 'ref', '—', '8e75754');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28112, 'IP-T83', '2026-10-30T19:27:00Z', 'link', NULL, 'requires IP-T67');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28113, 'IP-T67', '2026-10-30T19:27:00Z', 'link', NULL, 'IP-T83 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28114, 'IP-T83', '2026-10-30T19:27:02Z', 'link', NULL, 'requires IP-T57');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28115, 'IP-T57', '2026-10-30T19:27:02Z', 'link', NULL, 'IP-T83 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28116, 'IP-T84', '2026-10-30T19:27:03Z', 'priority', '0', '1207');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28117, 'IP-T84', '2026-10-30T19:27:04Z', 'link', NULL, 'requires IP-T76');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28118, 'IP-T76', '2026-10-30T19:27:04Z', 'link', NULL, 'IP-T84 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28119, 'IP-T84', '2026-10-30T19:27:05Z', 'link', NULL, 'requires IP-T83');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28120, 'IP-T83', '2026-10-30T19:27:06Z', 'link', NULL, 'IP-T84 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28121, 'IP-T85', '2026-10-30T19:27:07Z', 'priority', '0', '1206');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28122, 'IP-T85', '2026-10-30T19:27:10Z', 'link', NULL, 'requires IP-T42');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28123, 'IP-T42', '2026-10-30T19:27:11Z', 'link', NULL, 'IP-T85 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28124, 'IP-T86', '2026-10-30T19:27:13Z', 'priority', '0', '1205');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28125, 'IP-T86', '2026-10-30T19:27:15Z', 'link', NULL, 'requires IP-T85');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28126, 'IP-T85', '2026-10-30T19:27:15Z', 'link', NULL, 'IP-T86 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28127, 'IP-T87', '2026-10-30T19:27:16Z', 'priority', '0', '1204');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28128, 'IP-T87', '2026-10-30T19:27:18Z', 'link', NULL, 'requires IP-T86');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28129, 'IP-T86', '2026-10-30T19:27:18Z', 'link', NULL, 'IP-T87 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28130, 'IP-T88', '2026-10-30T19:27:20Z', 'priority', '0', '1203');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28131, 'IP-T88', '2026-10-30T19:27:21Z', 'link', NULL, 'requires IP-T86');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28132, 'IP-T86', '2026-10-30T19:27:21Z', 'link', NULL, 'IP-T88 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28133, 'IP-T89', '2026-10-30T19:27:22Z', 'priority', '0', '1202');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28134, 'IP-T89', '2026-10-30T19:27:24Z', 'link', NULL, 'requires IP-T86');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28135, 'IP-T86', '2026-10-30T19:27:24Z', 'link', NULL, 'IP-T89 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28136, 'IP-T90', '2026-10-30T19:27:26Z', 'priority', '0', '1201');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28137, 'IP-T90', '2026-10-30T19:27:27Z', 'link', NULL, 'requires IP-T86');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28138, 'IP-T86', '2026-10-30T19:27:27Z', 'link', NULL, 'IP-T90 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28139, 'IP-T91', '2026-10-30T19:27:28Z', 'priority', '0', '1200');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28140, 'IP-T91', '2026-10-30T19:27:29Z', 'link', NULL, 'requires IP-T86');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28141, 'IP-T86', '2026-10-30T19:27:30Z', 'link', NULL, 'IP-T91 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28142, 'IP-T91', '2026-10-30T19:27:31Z', 'link', NULL, 'requires IP-T33');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28143, 'IP-T33', '2026-10-30T19:27:31Z', 'link', NULL, 'IP-T91 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28144, 'IP-T92', '2026-10-30T19:27:32Z', 'priority', '0', '1199');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28145, 'IP-T92', '2026-10-30T19:27:33Z', 'link', NULL, 'requires IP-T91');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28146, 'IP-T91', '2026-10-30T19:27:33Z', 'link', NULL, 'IP-T92 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28147, 'IP-T39', '2026-10-30T19:27:34Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28148, 'IP-T39', '2026-10-30T19:27:34Z', 'ref', '—', '4406f04');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28149, 'IP-T93', '2026-10-30T19:27:34Z', 'priority', '0', '1198');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28150, 'IP-T93', '2026-10-30T19:27:36Z', 'link', NULL, 'requires IP-T86');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28151, 'IP-T86', '2026-10-30T19:27:36Z', 'link', NULL, 'IP-T93 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28152, 'IP-T93', '2026-10-30T19:27:37Z', 'link', NULL, 'requires IP-T71');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28153, 'IP-T71', '2026-10-30T19:27:37Z', 'link', NULL, 'IP-T93 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28154, 'IP-T94', '2026-10-30T19:27:38Z', 'priority', '0', '1197');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28155, 'IP-T94', '2026-10-30T19:27:39Z', 'link', NULL, 'requires IP-T89');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28156, 'IP-T89', '2026-10-30T19:27:40Z', 'link', NULL, 'IP-T94 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28157, 'IP-T94', '2026-10-30T19:27:41Z', 'link', NULL, 'requires IP-T90');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28158, 'IP-T90', '2026-10-30T19:27:41Z', 'link', NULL, 'IP-T94 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28159, 'IP-T94', '2026-10-30T19:27:42Z', 'link', NULL, 'requires IP-T74');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28160, 'IP-T74', '2026-10-30T19:27:42Z', 'link', NULL, 'IP-T94 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28161, 'IP-T95', '2026-10-30T19:27:43Z', 'priority', '0', '1196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28162, 'IP-T95', '2026-10-30T19:27:44Z', 'link', NULL, 'requires IP-T94');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28163, 'IP-T94', '2026-10-30T19:27:45Z', 'link', NULL, 'IP-T95 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28164, 'IP-T96', '2026-10-30T19:27:46Z', 'priority', '0', '1195');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28165, 'IP-T96', '2026-10-30T19:27:47Z', 'link', NULL, 'requires IP-T91');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28166, 'IP-T91', '2026-10-30T19:27:47Z', 'link', NULL, 'IP-T96 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28167, 'IP-T97', '2026-10-30T19:27:49Z', 'priority', '0', '1194');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28168, 'IP-T97', '2026-10-30T19:27:50Z', 'link', NULL, 'requires IP-T91');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28169, 'IP-T91', '2026-10-30T19:27:50Z', 'link', NULL, 'IP-T97 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28170, 'IP-T98', '2026-10-30T19:27:51Z', 'priority', '0', '1193');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28171, 'IP-T98', '2026-10-30T19:27:52Z', 'link', NULL, 'requires IP-T97');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28172, 'IP-T97', '2026-10-30T19:27:53Z', 'link', NULL, 'IP-T98 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28173, 'IP-T99', '2026-10-30T19:27:53Z', 'priority', '0', '1192');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28174, 'IP-T99', '2026-10-30T19:27:54Z', 'link', NULL, 'requires IP-T98');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28175, 'IP-T98', '2026-10-30T19:27:55Z', 'link', NULL, 'IP-T99 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28176, 'IP-T100', '2026-10-30T19:27:56Z', 'priority', '0', '1191');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28177, 'IP-T100', '2026-10-30T19:27:57Z', 'link', NULL, 'requires IP-T56');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28178, 'IP-T56', '2026-10-30T19:27:57Z', 'link', NULL, 'IP-T100 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28179, 'IP-T100', '2026-10-30T19:27:58Z', 'link', NULL, 'requires IP-T70');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28180, 'IP-T70', '2026-10-30T19:27:59Z', 'link', NULL, 'IP-T100 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28181, 'IP-T101', '2026-10-30T19:28:00Z', 'priority', '0', '1190');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28182, 'IP-T101', '2026-10-30T19:28:01Z', 'link', NULL, 'requires IP-T100');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28183, 'IP-T100', '2026-10-30T19:28:01Z', 'link', NULL, 'IP-T101 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28184, 'IP-T102', '2026-10-30T19:28:02Z', 'priority', '0', '1189');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28185, 'IP-T102', '2026-10-30T19:28:03Z', 'link', NULL, 'requires IP-T100');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28186, 'IP-T100', '2026-10-30T19:28:04Z', 'link', NULL, 'IP-T102 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28187, 'IP-T103', '2026-10-30T19:28:05Z', 'priority', '0', '1188');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28188, 'IP-T103', '2026-10-30T19:28:06Z', 'link', NULL, 'requires IP-T100');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28189, 'IP-T100', '2026-10-30T19:28:07Z', 'link', NULL, 'IP-T103 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28190, 'IP-T104', '2026-10-30T19:28:11Z', 'priority', '0', '1187');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28191, 'IP-T104', '2026-10-30T19:28:13Z', 'link', NULL, 'requires IP-T100');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28192, 'IP-T100', '2026-10-30T19:28:13Z', 'link', NULL, 'IP-T104 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28193, 'IP-T105', '2026-10-30T19:28:15Z', 'priority', '0', '1186');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28194, 'IP-T105', '2026-10-30T19:28:17Z', 'link', NULL, 'requires IP-T104');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28195, 'IP-T104', '2026-10-30T19:28:17Z', 'link', NULL, 'IP-T105 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28196, 'IP-T106', '2026-10-30T19:28:19Z', 'priority', '0', '1185');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28197, 'IP-T106', '2026-10-30T19:28:20Z', 'link', NULL, 'requires IP-T104');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28198, 'IP-T104', '2026-10-30T19:28:20Z', 'link', NULL, 'IP-T106 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28199, 'IP-T107', '2026-10-30T19:28:21Z', 'priority', '0', '1184');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28200, 'IP-T107', '2026-10-30T19:28:22Z', 'link', NULL, 'requires IP-T100');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28201, 'IP-T100', '2026-10-30T19:28:23Z', 'link', NULL, 'IP-T107 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28202, 'IP-T108', '2026-10-30T19:28:24Z', 'priority', '0', '1183');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28203, 'IP-T108', '2026-10-30T19:28:25Z', 'link', NULL, 'requires IP-T107');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28204, 'IP-T107', '2026-10-30T19:28:25Z', 'link', NULL, 'IP-T108 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28205, 'IP-T108', '2026-10-30T19:28:27Z', 'link', NULL, 'requires IP-T93');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28206, 'IP-T93', '2026-10-30T19:28:28Z', 'link', NULL, 'IP-T108 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28207, 'IP-T109', '2026-10-30T19:28:28Z', 'priority', '0', '1182');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28208, 'IP-T109', '2026-10-30T19:28:30Z', 'link', NULL, 'requires IP-T107');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28209, 'IP-T107', '2026-10-30T19:28:30Z', 'link', NULL, 'IP-T109 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28210, 'IP-T110', '2026-10-30T19:28:31Z', 'priority', '0', '1181');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28211, 'IP-T110', '2026-10-30T19:28:32Z', 'link', NULL, 'requires IP-T92');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28212, 'IP-T92', '2026-10-30T19:28:32Z', 'link', NULL, 'IP-T110 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28213, 'IP-T110', '2026-10-30T19:28:33Z', 'link', NULL, 'requires IP-T100');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28214, 'IP-T100', '2026-10-30T19:28:34Z', 'link', NULL, 'IP-T110 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28215, 'IP-T111', '2026-10-30T19:28:35Z', 'priority', '0', '1180');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28216, 'IP-T111', '2026-10-30T19:28:36Z', 'link', NULL, 'requires IP-T110');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28217, 'IP-T110', '2026-10-30T19:28:36Z', 'link', NULL, 'IP-T111 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28218, 'IP-T112', '2026-10-30T19:28:37Z', 'priority', '0', '1179');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28219, 'M.HELP-T13', '2026-10-30T19:28:37Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28220, 'M.HELP-T13', '2026-10-30T19:28:37Z', 'ref', '—', '4ee92ad');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28221, 'IP-T112', '2026-10-30T19:28:38Z', 'link', NULL, 'requires IP-T95');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28222, 'IP-T35', '2026-10-30T19:28:38Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28223, 'IP-T35', '2026-10-30T19:28:38Z', 'ref', '—', '67a067f UserClaudeKeyRoutingTests.OwnerKey_HeadlessFrontDoors_UseTheOperationOwnersKey_ElseTheHostKey');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28224, 'IP-T95', '2026-10-30T19:28:38Z', 'link', NULL, 'IP-T112 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28225, 'IP-T113', '2026-10-30T19:28:40Z', 'priority', '0', '1178');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28226, 'IP-T113', '2026-10-30T19:28:40Z', 'link', NULL, 'requires IP-T110');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28227, 'IP-T110', '2026-10-30T19:28:41Z', 'link', NULL, 'IP-T113 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28228, 'IP-T114', '2026-10-30T19:28:42Z', 'priority', '0', '1177');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28229, 'IP-T114', '2026-10-30T19:28:43Z', 'link', NULL, 'requires IP-T110');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28230, 'IP-T110', '2026-10-30T19:28:43Z', 'link', NULL, 'IP-T114 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28231, 'IP-T115', '2026-10-30T19:28:47Z', 'priority', '0', '1176');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28232, 'IP-T115', '2026-10-30T19:28:50Z', 'link', NULL, 'requires IP-T114');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28233, 'IP-T114', '2026-10-30T19:28:51Z', 'link', NULL, 'IP-T115 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28234, 'M.ORCH-T1306', '2026-10-30T19:28:52Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28235, 'IP-T116', '2026-10-30T19:28:53Z', 'priority', '0', '1175');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28236, 'IP-T116', '2026-10-30T19:28:55Z', 'link', NULL, 'requires IP-T110');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28237, 'IP-T110', '2026-10-30T19:28:55Z', 'link', NULL, 'IP-T116 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28238, 'IP-T117', '2026-10-30T19:28:57Z', 'priority', '0', '1174');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28239, 'IP-T117', '2026-10-30T19:28:58Z', 'link', NULL, 'requires IP-T54');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28240, 'IP-T54', '2026-10-30T19:28:59Z', 'link', NULL, 'IP-T117 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28241, 'IP-T118', '2026-10-30T19:29:00Z', 'priority', '0', '1173');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28242, 'IP-T118', '2026-10-30T19:29:01Z', 'link', NULL, 'requires IP-T117');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28243, 'IP-T117', '2026-10-30T19:29:02Z', 'link', NULL, 'IP-T118 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28244, 'IP-T119', '2026-10-30T19:29:05Z', 'priority', '0', '1172');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28245, 'IP-T119', '2026-10-30T19:29:07Z', 'link', NULL, 'requires IP-T118');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -48934,12 +49815,102 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T97', 'approved', 10, '2026-10-19T15:50:50Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T98', 'proposed', 20, '2026-10-19T16:16:56Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T99', 'approved', -2, '2026-10-22T02:51:54Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T100', 'proposed', 1191, '2026-10-30T19:27:56Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T101', 'proposed', 1190, '2026-10-30T19:28:00Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T102', 'proposed', 1189, '2026-10-30T19:28:02Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T103', 'proposed', 1188, '2026-10-30T19:28:05Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T104', 'proposed', 1187, '2026-10-30T19:28:11Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T105', 'proposed', 1186, '2026-10-30T19:28:15Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T106', 'proposed', 1185, '2026-10-30T19:28:19Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T107', 'proposed', 1184, '2026-10-30T19:28:21Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T108', 'proposed', 1183, '2026-10-30T19:28:24Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T109', 'proposed', 1182, '2026-10-30T19:28:28Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T110', 'proposed', 1181, '2026-10-30T19:28:31Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T111', 'proposed', 1180, '2026-10-30T19:28:35Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T112', 'proposed', 1179, '2026-10-30T19:28:37Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T113', 'proposed', 1178, '2026-10-30T19:28:40Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T114', 'proposed', 1177, '2026-10-30T19:28:42Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T115', 'proposed', 1176, '2026-10-30T19:28:47Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T116', 'proposed', 1175, '2026-10-30T19:28:53Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T117', 'proposed', 1174, '2026-10-30T19:28:57Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T118', 'proposed', 1173, '2026-10-30T19:29:00Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T119', 'proposed', 1172, '2026-10-30T19:29:05Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T19', 'approved', 5, '2026-10-21T04:35:32Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T20', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T21', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T22', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T25', 'approved', 0, '2026-10-19T01:44:33Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T27', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T30', 'proposed', 1261, '2026-10-30T19:24:13Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T31', 'proposed', 1260, '2026-10-30T19:24:15Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T32', 'proposed', 1259, '2026-10-30T19:24:16Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T33', 'proposed', 1258, '2026-10-30T19:24:18Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T34', 'proposed', 1257, '2026-10-30T19:24:21Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T35', 'proposed', 1256, '2026-10-30T19:24:23Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T36', 'proposed', 1255, '2026-10-30T19:24:26Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T37', 'proposed', 1254, '2026-10-30T19:24:28Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T38', 'proposed', 1253, '2026-10-30T19:24:32Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T39', 'proposed', 1252, '2026-10-30T19:24:34Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T40', 'proposed', 1251, '2026-10-30T19:24:38Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T41', 'proposed', 1250, '2026-10-30T19:24:44Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T42', 'proposed', 1249, '2026-10-30T19:24:48Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T43', 'proposed', 1248, '2026-10-30T19:24:56Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T44', 'proposed', 1247, '2026-10-30T19:24:58Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T45', 'proposed', 1246, '2026-10-30T19:25:00Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T46', 'proposed', 1245, '2026-10-30T19:25:02Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T47', 'proposed', 1244, '2026-10-30T19:25:04Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T48', 'proposed', 1243, '2026-10-30T19:25:07Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T49', 'proposed', 1242, '2026-10-30T19:25:10Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T50', 'proposed', 1241, '2026-10-30T19:25:12Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T51', 'proposed', 1240, '2026-10-30T19:25:14Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T52', 'proposed', 1239, '2026-10-30T19:25:17Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T53', 'proposed', 1238, '2026-10-30T19:25:20Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T54', 'proposed', 1237, '2026-10-30T19:25:22Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T55', 'proposed', 1236, '2026-10-30T19:25:24Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T56', 'proposed', 1235, '2026-10-30T19:25:27Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T57', 'proposed', 1234, '2026-10-30T19:25:29Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T58', 'proposed', 1233, '2026-10-30T19:25:31Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T59', 'proposed', 1232, '2026-10-30T19:25:34Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T60', 'proposed', 1231, '2026-10-30T19:25:40Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T61', 'proposed', 1230, '2026-10-30T19:25:45Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T62', 'proposed', 1229, '2026-10-30T19:25:52Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T63', 'proposed', 1228, '2026-10-30T19:25:55Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T64', 'proposed', 1227, '2026-10-30T19:25:58Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T65', 'proposed', 1226, '2026-10-30T19:26:01Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T66', 'proposed', 1225, '2026-10-30T19:26:03Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T67', 'proposed', 1224, '2026-10-30T19:26:06Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T68', 'proposed', 1223, '2026-10-30T19:26:08Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T69', 'proposed', 1222, '2026-10-30T19:26:10Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T70', 'proposed', 1221, '2026-10-30T19:26:14Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T71', 'proposed', 1220, '2026-10-30T19:26:21Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T72', 'proposed', 1219, '2026-10-30T19:26:24Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T73', 'proposed', 1218, '2026-10-30T19:26:26Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T74', 'proposed', 1217, '2026-10-30T19:26:30Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T75', 'proposed', 1216, '2026-10-30T19:26:34Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T76', 'proposed', 1215, '2026-10-30T19:26:40Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T77', 'proposed', 1214, '2026-10-30T19:26:43Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T78', 'proposed', 1213, '2026-10-30T19:26:46Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T79', 'proposed', 1212, '2026-10-30T19:26:49Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T80', 'proposed', 1211, '2026-10-30T19:26:52Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T81', 'proposed', 1210, '2026-10-30T19:26:54Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T82', 'proposed', 1209, '2026-10-30T19:26:56Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T83', 'proposed', 1208, '2026-10-30T19:26:59Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T84', 'proposed', 1207, '2026-10-30T19:27:03Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T85', 'proposed', 1206, '2026-10-30T19:27:07Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T86', 'proposed', 1205, '2026-10-30T19:27:13Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T87', 'proposed', 1204, '2026-10-30T19:27:16Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T88', 'proposed', 1203, '2026-10-30T19:27:20Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T89', 'proposed', 1202, '2026-10-30T19:27:22Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T90', 'proposed', 1201, '2026-10-30T19:27:26Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T91', 'proposed', 1200, '2026-10-30T19:27:28Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T92', 'proposed', 1199, '2026-10-30T19:27:32Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T93', 'proposed', 1198, '2026-10-30T19:27:34Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T94', 'proposed', 1197, '2026-10-30T19:27:38Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T95', 'proposed', 1196, '2026-10-30T19:27:43Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T96', 'proposed', 1195, '2026-10-30T19:27:46Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T97', 'proposed', 1194, '2026-10-30T19:27:49Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T98', 'proposed', 1193, '2026-10-30T19:27:51Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T99', 'proposed', 1192, '2026-10-30T19:27:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('JFP-T10', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('JFP-T15', 'approved', 0, '2026-10-21T04:47:33Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('JFP-T3', 'approved', 5, '2026-10-21T04:35:32Z', NULL);
@@ -50792,6 +51763,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('USOD-T9', 'approved', 0, '2026-10-22T23:02:27Z', NULL);
 
 -- ticket_work
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.HELP-T13', NULL, 0, NULL, 'e6dc6e2f-c8dd-4aa8-8551-c5d162e1b1a8', '2026-10-30T19:20:58Z', '2026-10-30T19:20:58Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
@@ -50874,6 +51846,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T91', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T23:09:54Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T58', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:02:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T794', NULL, 0, NULL, 'faf7d526-0cf8-4d25-9ad6-d948bee9d6e0', '2026-10-30T19:19:47Z', '2026-10-30T19:19:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T111', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:34:40Z');
@@ -51271,6 +52244,9 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (159, 'M.
 Follow-up to M.ORCH-T1302: now that the terminal scrolls inside AgentsBody, SizeTerminalRow sizes TerminalFrame to AgentsBody.ActualHeight - AgentsBodyScrollHandle (24px). The screenshot shows the terminal''s bottom edge running past the window''s visible bottom instead of leaving a clear scroll handle/buffer. Need a bigger and/or more reliable bottom buffer so the terminal never touches or crosses the window''s bottom edge.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (160, 'M.ORCH-T1304', 'ryand', '2026-10-30T16:51:35Z', 'User reversed this approach: charts/tickets stay inline in the scrolling body below the CLI (per M.ORCH-T1302''s layout), not in right-click modal popups. No modal code was ever committed or left uncommitted in the working tree to revert. Closing as wont-do / superseded.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (161, 'M.ORCH-T1304', 'ryand', '2026-10-30T17:38:33Z', 'Correction: this CLI''s own working tree did have the modal work uncommitted (Utilization.cs''s WeeklyUtilizationSeries, Model.cs/StatusAggregator.cs wiring, MainWindow.xaml''s two MaModal popups and PinnedLimitBar_Click/context-menu changes, MainViewModel.LoginCards.cs/Phases.cs chart-open commands and WeeklyUtilization, AccountsViewTests.cs/UtilizationChartLayoutTests.cs and the untracked WeeklyUtilizationSeriesTests.cs). Discarded all of it with git checkout/rm, none committed. HEAD is still on cbe4a663 (M.ORCH-T1302) plus unrelated db-sync commits; working tree clean aside from the usual data/orchestrator.db, data/orchestrator.sql and docs/USER_STORIES.md sync noise.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (162, 'PRS-T794', 'ryand', '2026-10-30T19:19:51Z', 'Author''s map: Cicero sits directly south of Austin, beside Oak Park. ![image 1](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/PRS-T794/2026-10-30-image-1.png)');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (163, 'IP-T33', 'ryand', '2026-10-30T19:22:32Z', 'Landed with IP-T32 in 2193f54: EF finds migrations in the DbContext''s assembly, so Data and Migrations had to move in one commit. No MigrationsAssembly override needed; dotnet ef --project IdiotProof.Core --startup-project IdiotProof.Blazor.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (164, 'IP-T38', 'ryand', '2026-10-30T19:27:01Z', 'TradingStateService moved with IP-T39 instead (depends on LlmVotingResult). UserKeyService pulled forward from IP-T41.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
@@ -51696,6 +52672,2347 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T9', 'Au
 
 AutoGamePlay (AGP) is the engine-agnostic toolkit that lets an LLM agent (a Claude subagent driving the `agp` CLI) play and playtest first- and third-person PC games: it runs PlayScript (the gameplay scripting language, e.g. `Player.MoveForward(20m).TurnLeft(90)`), executes it with fast reflex controllers while the game is unpaused, pauses the game while the LLM thinks, watches with oracles, keeps frames in a budgeted in-RAM ring buffer, and files deduped bug tickets with evidence. The first consumer is REA.Bloodlines (the s&box port of Vampire: The Masquerade - Bloodlines, epic RB-T245..RB-T272); it must also work for Source 1, GZDoom, and later Unreal (UE4SS), Cyberpunk (CET) and EDuke32. Read docs/DESIGN.md (architecture, decisions), docs/PRIOR_ART.md and docs/ROADMAP.md first; keep the docs current with what you build. No game-specific code in this repo: game specifics live in the game''s own repo as an extension namespace. C#/.NET 10, nullable on, whole-number versions; any in-process LLM call goes through MindAttic.Legion (HOUSE-LAW-4). xUnit tests run against the Fake adapter.', '2026-10-28T03:51:00Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GGC-T26', 'TownWalker.lnk''s IconLocation is C:\Apps\TownWalker\TownWalker.exe,0, but TownWalker actually deploys to C:\Apps\GridGameCaravan\GridGameCaravan.exe (which already carries the correct standard Unity icon). Repoint the shortcut''s icon at the real deployed exe so the Desktop icon renders instead of falling back to a generic one.', '2026-10-28T00:38:52Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T100', '**Epic W — Command line & Hub** / W19 Account & trading operations (`W19.01`)
+
+`account summary [--mode]` (equity, cash, buying power, day P&L) for sandbox/paper/live
+
+Requires: W2.06, W1.04 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:10Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T101', '**Epic W — Command line & Hub** / W19 Account & trading operations (`W19.02`)
+
+`account buying-power` and `account pdt` (day-trade count, PDT flag)
+
+Requires: W19.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:11Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T102', '**Epic W — Command line & Hub** / W19 Account & trading operations (`W19.03`)
+
+`account activities [--since]` (fills, dividends, fees)
+
+Requires: W19.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:12Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T103', '**Epic W — Command line & Hub** / W19 Account & trading operations (`W19.04`)
+
+`account clock` and `account calendar` (market session in ET)
+
+Requires: W19.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:13Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T104', '**Epic W — Command line & Hub** / W19 Account & trading operations (`W19.05`)
+
+`positions list [--mode]` with unrealized P&L
+
+Requires: W19.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:15Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T105', '**Epic W — Command line & Hub** / W19 Account & trading operations (`W19.06`)
+
+`positions show <symbol>` incl. owning strategy and diary row
+
+Requires: W19.05 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:16Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T106', '**Epic W — Command line & Hub** / W19 Account & trading operations (`W19.07`)
+
+`positions reconcile` (broker vs strategy bookkeeping, read-only report)
+
+Requires: W19.05 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:17Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T107', '**Epic W — Command line & Hub** / W19 Account & trading operations (`W19.08`)
+
+`orders list [--status]` and `orders show <id>`
+
+Requires: W19.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:19Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T108', '**Epic W — Command line & Hub** / W19 Account & trading operations (`W19.09`)
+
+`orders cancel <id>` and `orders cancel-all [--symbol]` through the gateway
+
+Requires: W19.08, W4.09 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:20Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T109', '**Epic W — Command line & Hub** / W19 Account & trading operations (`W19.10`)
+
+`orders history [--days]`
+
+Requires: W19.08 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:21Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T110', '**Epic W — Command line & Hub** / W19 Account & trading operations (`W19.11`)
+
+`trade buy|sell <symbol> <qty> [--limit] [--stop] [--target] [--mode]` through the gateway
+
+Requires: W4.08, W19.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:22Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T111', '**Epic W — Command line & Hub** / W19 Account & trading operations (`W19.12`)
+
+`trade short|cover <symbol> <qty>` through the gateway
+
+Requires: W19.11 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:23Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T112', '**Epic W — Command line & Hub** / W19 Account & trading operations (`W19.13`)
+
+`trade flatten --symbol|--strategy|--all [--mode]`
+
+Requires: W4.11 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:25Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T113', '**Epic W — Command line & Hub** / W19 Account & trading operations (`W19.14`)
+
+`trade preview …` (dry run: every gate verdict, no order)
+
+Requires: W19.11 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:26Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T114', '**Epic W — Command line & Hub** / W19 Account & trading operations (`W19.15`)
+
+`trade confirm <code>` executes a pending Live intent
+
+Requires: W19.11 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:27Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T115', '**Epic W — Command line & Hub** / W19 Account & trading operations (`W19.16`)
+
+`trade pending` lists unexpired Live confirmations
+
+Requires: W19.15 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:28Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T116', '**Epic W — Command line & Hub** / W19 Account & trading operations (`W19.17`)
+
+`trade notional <symbol> <$>` (fractional/notional buy) through the gateway
+
+Requires: W19.11 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:30Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T117', '**Epic W — Command line & Hub** / W3 MCP server (`W3.01`)
+
+Create IdiotProof.Mcp (stdio, ModelContextProtocol SDK, logs to file — stdout is the wire)
+
+Requires: W2.04 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:31Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T118', '**Epic W — Command line & Hub** / W3 MCP server (`W3.02`)
+
+Generate one MCP tool per operation from the catalog (snake_case noun_verb, JSON schema from the args record)
+
+Requires: W3.01 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:32Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T119', '**Epic W — Command line & Hub** / W3 MCP server (`W3.03`)
+
+HubInvoker forwarding with structured errors: hub_unreachable, hub_timeout, hub_http_error, usage_error
+
+Requires: W3.02, W1.04 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:34Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T120', '**Epic W — Command line & Hub** / W3 MCP server (`W3.04`)
+
+Tool annotations from operation risk class (readOnlyHint / destructiveHint / idempotentHint)
+
+Requires: W3.02 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:35Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T121', '**Epic W — Command line & Hub** / W3 MCP server (`W3.05`)
+
+ConfirmationRequired tool result tells the assistant to show the preview and ask the user before calling trade_confirm
+
+Requires: W3.03, W4.08 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:36Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T122', '**Epic W — Command line & Hub** / W3 MCP server (`W3.06`)
+
+MCP resources: BIBLE, user stories, operation catalog, protocol doc
+
+Requires: W3.01 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:38Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T123', '**Epic W — Command line & Hub** / W3 MCP server (`W3.07`)
+
+tools/register-mcp.ps1 (`claude mcp add idiotproof …` against the Release build) + README
+
+Requires: W3.03 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:39Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T124', '**Epic W — Command line & Hub** / W3 MCP server (`W3.08`)
+
+.claude/settings.json allow-list for read-only idiotproof tools; trade_confirm and destructive tools stay prompt-only
+
+Requires: W3.07 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:40Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T125', '**Epic W — Command line & Hub** / W3 MCP server (`W3.09`)
+
+SessionStart hook keeps IdiotProof.Mcp Release build current so the schema is never stale
+
+Requires: W3.07 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:41Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T126', '**Epic W — Command line & Hub** / W3 MCP server (`W3.10`)
+
+MCP schema test: every operation round-trips catalog -> tool schema -> binder
+
+Requires: W3.02 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:42Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T127', '**Epic W — Command line & Hub** / W5 ASCII strategy stamp (`W5.01`)
+
+StrategyStamp short id IP-XXXX-XXXX (base32 of SHA-256 of the canonical JSON)
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:44Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T128', '**Epic W — Command line & Hub** / W5 ASCII strategy stamp (`W5.02`)
+
+Stamp header block: symbol, direction, session, BrokerMode, qty/notional, id
+
+Requires: W5.01 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:45Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T129', '**Epic W — Command line & Hub** / W5 ASCII strategy stamp (`W5.03`)
+
+Stamp phase flow: Setup -> Filters -> Entry -> Order -> Risk -> Exit boxes with every condition line
+
+Requires: W5.02 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:46Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T130', '**Epic W — Command line & Hub** / W5 ASCII strategy stamp (`W5.04`)
+
+Stamp branch forks for If/ElseIf/Else conditional blocks
+
+Requires: W5.03 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:48Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T131', '**Epic W — Command line & Hub** / W5 ASCII strategy stamp (`W5.05`)
+
+Stamp exit ladder: stop, TP targets, trailing, peak giveback@arm, sell-by
+
+Requires: W5.03 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:49Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T132', '**Epic W — Command line & Hub** / W5 ASCII strategy stamp (`W5.06`)
+
+Stamp fingerprint: 17x9 drunken-bishop randomart over the canon hash
+
+Requires: W5.01 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:50Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T133', '**Epic W — Command line & Hub** / W5 ASCII strategy stamp (`W5.07`)
+
+Stamp armored payload: BEGIN/END IDIOTPROOF STRATEGY, deflate + base64url + CRC32, fail-closed decode
+
+Requires: W5.01 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:51Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T134', '**Epic W — Command line & Hub** / W5 ASCII strategy stamp (`W5.08`)
+
+Terminal QR of the payload (QRCoder, Unicode half-blocks) behind --qr
+
+Requires: W5.07 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:52Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T135', '**Epic W — Command line & Hub** / W5 ASCII strategy stamp (`W5.09`)
+
+Stamp box-drawing variant behind --unicode (ASCII is the default)
+
+Requires: W5.05 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:17Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T136', '**Epic W — Command line & Hub** / W5 ASCII strategy stamp (`W5.10`)
+
+Golden-file tests for every sample strategy + stamp -> import round trip yields an identical canon hash
+
+Requires: W5.07, W5.05 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:19Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T137', '**Epic W — Command line & Hub** / W6 Strategy operations (`W6.01`)
+
+`strategy list [--active] [--mode] [--symbol]` with live ConditionProgress badges
+
+Requires: W1.04, W2.06 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:20Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T138', '**Epic W — Command line & Hub** / W1 Hub host + Monitor absorption (`W1.16`)
+
+MonitorCli commands forward to the equivalent operations (status, set-keys, flatten, replay, scan, …)
+
+Requires: W1.04, W6.01 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:21Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T139', '**Epic W — Command line & Hub** / W6 Strategy operations (`W6.02`)
+
+`strategy show <id|symbol>` (fields, canon summary, position, progress)
+
+Requires: W6.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:22Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T140', '**Epic W — Command line & Hub** / W6 Strategy operations (`W6.03`)
+
+`strategy stamp <id> [--qr] [--unicode]`
+
+Requires: W6.02, W5.10 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:23Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T141', '**Epic W — Command line & Hub** / W6 Strategy operations (`W6.04`)
+
+`strategy export <id> --format json|script|stamp`
+
+Requires: W6.02, W5.07 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:24Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T142', '**Epic W — Command line & Hub** / W6 Strategy operations (`W6.05`)
+
+`strategy import --stamp|--json|--script <file|->` through StrategyRepository (fail-closed canon)
+
+Requires: W6.04 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:25Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T143', '**Epic W — Command line & Hub** / W6 Strategy operations (`W6.06`)
+
+`strategy create --script|--json` with validation and Sandbox default
+
+Requires: W6.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:26Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T144', '**Epic W — Command line & Hub** / W6 Strategy operations (`W6.07`)
+
+`strategy from-text "<plain English>" [--ticker] [--mode]` via StrategyScriptGenerator + Legion; shows stamp before saving
+
+Requires: W6.06, W0.06 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:28Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T145', '**Epic W — Command line & Hub** / W6 Strategy operations (`W6.08`)
+
+`strategy set <id> --field value` field-level edits (stop, target, qty, notional, times) re-canonicalized
+
+Requires: W6.06 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:29Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T146', '**Epic W — Command line & Hub** / W6 Strategy operations (`W6.09`)
+
+`strategy validate <id|--script>` (parse, canon, phase rules, risk preview)
+
+Requires: W6.06 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:30Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T147', '**Epic W — Command line & Hub** / W6 Strategy operations (`W6.10`)
+
+`strategy activate|deactivate <id>` respecting PositionOpen and gapper caps (IP-LAW-11)
+
+Requires: W6.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:32Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T148', '**Epic W — Command line & Hub** / W6 Strategy operations (`W6.11`)
+
+`strategy mode <id> sandbox|paper|live` (live requires confirm code)
+
+Requires: W6.10, W4.13 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:33Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T149', '**Epic W — Command line & Hub** / W6 Strategy operations (`W6.12`)
+
+`strategy delete <id>` (soft-disable per house law, refuses open positions)
+
+Requires: W6.10 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:34Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T150', '**Epic W — Command line & Hub** / W6 Strategy operations (`W6.13`)
+
+`strategy progress <id> [--watch]` live condition N/M + first failing verb
+
+Requires: W6.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:35Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T151', '**Epic W — Command line & Hub** / W6 Strategy operations (`W6.14`)
+
+`strategy quarantine` lists quarantined strategies with reasons
+
+Requires: W6.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:36Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T152', '**Epic W — Command line & Hub** / W6 Strategy operations (`W6.15`)
+
+`strategy resync-canon` (port of MonitorCli resync-canon)
+
+Requires: W6.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:38Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T153', '**Epic W — Command line & Hub** / W6 Strategy operations (`W6.16`)
+
+`strategy clone <id> [--symbol]`
+
+Requires: W6.06 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:39Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T154', '**Epic W — Command line & Hub** / W6 Strategy operations (`W6.17`)
+
+`strategy diff <a> <b>` (canon-level diff)
+
+Requires: W6.02 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:40Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T155', '**Epic W — Command line & Hub** / W6 Strategy operations (`W6.18`)
+
+`strategy history <id>` (audit + diary trail)
+
+Requires: W6.02 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:42Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T156', '**Epic W — Command line & Hub** / W6 Strategy operations (`W6.19`)
+
+`strategy from-watchlist <file>` (port of create-strategies)
+
+Requires: W6.06 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:46Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T157', '**Epic W — Command line & Hub** / W6 Strategy operations (`W6.20`)
+
+`strategy rename <id> <name>`
+
+Requires: W6.08 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:48Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T158', '**Epic W — Command line & Hub** / W6 Strategy operations (`W6.21`)
+
+`strategy samples` lists and shows built-in sample strategies
+
+Requires: W6.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:50Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T159', '**Epic W — Command line & Hub** / W6 Strategy operations (`W6.22`)
+
+`strategy explain <id>` plain-English narrative generated deterministically from the canon
+
+Requires: W6.02 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:52Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T160', '**Epic W — Command line & Hub** / W6 Strategy operations (`W6.23`)
+
+`strategy fires <id>` recent gate verdicts (why it did/didn''t fire)
+
+Requires: W6.18 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:53Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T161', '**Epic W — Command line & Hub** / W6 Strategy operations (`W6.24`)
+
+`strategy bulk activate|deactivate --all|--symbol` (quick actions)
+
+Requires: W6.10 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:54Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T162', '**Epic W — Command line & Hub** / W7 Gapper operations (`W7.01`)
+
+`gapper profiles` lists the static profile catalog
+
+Requires: W1.04, W0.07 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:56Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T163', '**Epic W — Command line & Hub** / W7 Gapper operations (`W7.02`)
+
+`gapper profile show <name>`
+
+Requires: W7.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:57Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T164', '**Epic W — Command line & Hub** / W7 Gapper operations (`W7.03`)
+
+`gapper tune <symbol> --profile <name> [--gap --stop --giveback --sell-by …]` generates the gapper strategy via GapperScriptFactory
+
+Requires: W7.02, W6.06 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:20:59Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T165', '**Epic W — Command line & Hub** / W7 Gapper operations (`W7.04`)
+
+`gapper arm|disarm <symbol|id>` honoring one-per-symbol and the 3-gapper cap
+
+Requires: W7.03, W6.10 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:01Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T166', '**Epic W — Command line & Hub** / W7 Gapper operations (`W7.05`)
+
+`gapper list` queued gappers with live state
+
+Requires: W7.04 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:05Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T167', '**Epic W — Command line & Hub** / W7 Gapper operations (`W7.06`)
+
+`gapper from-transcript <file|->` -> candidate cards (re-validated, not queued until `gapper arm`)
+
+Requires: W7.03, W0.06 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:06Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T168', '**Epic W — Command line & Hub** / W7 Gapper operations (`W7.07`)
+
+`gapper backtest-day <symbol> <date> [--profile]` with MFE/MAE, giveback grid, hindsight suggestion
+
+Requires: W7.03 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:08Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T169', '**Epic W — Command line & Hub** / W7 Gapper operations (`W7.08`)
+
+`gapper auto status` (scan metrics from AutoGapperScan/Candidate)
+
+Requires: W1.09 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:10Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T170', '**Epic W — Command line & Hub** / W7 Gapper operations (`W7.09`)
+
+`gapper auto enable|disable` (paper-only, owner-scoped)
+
+Requires: W7.08 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:12Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T171', '**Epic W — Command line & Hub** / W7 Gapper operations (`W7.10`)
+
+`gapper auto candidates [--date]`
+
+Requires: W7.08 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:13Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T172', '**Epic W — Command line & Hub** / W7 Gapper operations (`W7.11`)
+
+`gapper premarket-fade [run|status]` (port of MonitorCli premarket-fade)
+
+Requires: W1.09 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:15Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T173', '**Epic W — Command line & Hub** / W7 Gapper operations (`W7.12`)
+
+`gapper be-bex status` (BeBexDecayScanner arm/disarm state)
+
+Requires: W1.09 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:16Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T174', '**Epic W — Command line & Hub** / W7 Gapper operations (`W7.13`)
+
+`gapper apply-tuned <backtest-id>` applies a backtest''s tuned profile on explicit command
+
+Requires: W7.07 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:17Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T175', '**Epic W — Command line & Hub** / W7 Gapper operations (`W7.14`)
+
+`gapper caps` shows active-gapper counts vs caps
+
+Requires: W7.05 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:18Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T176', '**Epic W — Command line & Hub** / W8 Replay / backtest / scan operations (`W8.01`)
+
+`replay run <symbol> <date> [--strategy|--profile|--family]` (port of replay)
+
+Requires: W1.04, W0.15 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:20Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T177', '**Epic W — Command line & Hub** / W8 Replay / backtest / scan operations (`W8.02`)
+
+`replay live <symbol>` (port of replay-live)
+
+Requires: W8.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:21Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T178', '**Epic W — Command line & Hub** / W8 Replay / backtest / scan operations (`W8.03`)
+
+`replay all <date>` (port of replay-all)
+
+Requires: W8.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:22Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T179', '**Epic W — Command line & Hub** / W8 Replay / backtest / scan operations (`W8.04`)
+
+`replay list [--symbol] [--since]`
+
+Requires: W8.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:23Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T180', '**Epic W — Command line & Hub** / W8 Replay / backtest / scan operations (`W8.05`)
+
+`replay show <run-id>` trades and per-bar features
+
+Requires: W8.04 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:24Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T181', '**Epic W — Command line & Hub** / W8 Replay / backtest / scan operations (`W8.06`)
+
+`replay regen` regenerates the HTML archive (no FTP)
+
+Requires: W8.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:26Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T182', '**Epic W — Command line & Hub** / W8 Replay / backtest / scan operations (`W8.07`)
+
+`replay families` lists built-in families with descriptions
+
+Requires: W8.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:28Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T183', '**Epic W — Command line & Hub** / W8 Replay / backtest / scan operations (`W8.08`)
+
+`replay compare <run-a> <run-b>`
+
+Requires: W8.05 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:29Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T184', '**Epic W — Command line & Hub** / W8 Replay / backtest / scan operations (`W8.09`)
+
+`backtest run <strategy|--script> --from --to` via StrategyBacktester
+
+Requires: W8.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:30Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T185', '**Epic W — Command line & Hub** / W8 Replay / backtest / scan operations (`W8.10`)
+
+`backtest conditions <run>` per-candle ConditionTable
+
+Requires: W8.09 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:32Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T186', '**Epic W — Command line & Hub** / W8 Replay / backtest / scan operations (`W8.11`)
+
+`scan movers [--date] [--replay]` (port of scan)
+
+Requires: W8.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:35Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T187', '**Epic W — Command line & Hub** / W8 Replay / backtest / scan operations (`W8.12`)
+
+`dataset export [--out]` ML-ready CSVs (port of replay-export)
+
+Requires: W8.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:38Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T188', '**Epic W — Command line & Hub** / W9 Options operations (`W9.01`)
+
+`options level [--mode]` Alpaca options trading level
+
+Requires: W1.04 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:40Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T189', '**Epic W — Command line & Hub** / W9 Options operations (`W9.02`)
+
+`options chain <symbol> [--expiry] [--horizon] [--strikes]`
+
+Requires: W9.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:42Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T190', '**Epic W — Command line & Hub** / W9 Options operations (`W9.03`)
+
+`options quote <occ>`
+
+Requires: W9.02 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:44Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T191', '**Epic W — Command line & Hub** / W9 Options operations (`W9.04`)
+
+`options greeks <occ>` (badge Model when IV solved locally)
+
+Requires: W9.03 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:47Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T192', '**Epic W — Command line & Hub** / W9 Options operations (`W9.05`)
+
+`options value <occ> [--spot]` intrinsic/extrinsic/breakeven/DTE/Black-Scholes
+
+Requires: W9.03 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:48Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T193', '**Epic W — Command line & Hub** / W9 Options operations (`W9.06`)
+
+`options iv <occ>` implied-vol solve
+
+Requires: W9.05 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:50Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T194', '**Epic W — Command line & Hub** / W9 Options operations (`W9.07`)
+
+`options buy <occ> <contracts> [--limit] [--mode]` through the gateway (level-gated)
+
+Requires: W9.03, W4.12 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:52Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T195', '**Epic W — Command line & Hub** / W9 Options operations (`W9.08`)
+
+`options sell <occ> <contracts>` through the gateway (level-gated)
+
+Requires: W9.07 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:54Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T196', '**Epic W — Command line & Hub** / W9 Options operations (`W9.09`)
+
+`options close <occ>`
+
+Requires: W9.07 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:55Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T197', '**Epic W — Command line & Hub** / W9 Options operations (`W9.10`)
+
+`options positions [--mode]`
+
+Requires: W9.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:57Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T198', '**Epic W — Command line & Hub** / W9 Options operations (`W9.11`)
+
+`options signals` SellSignalEvaluator nudges on open long options
+
+Requires: W9.10 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:58Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T199', '**Epic W — Command line & Hub** / W9 Options operations (`W9.12`)
+
+`options glossary [term]` from OptionsGlossary
+
+Requires: W1.04 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:21:59Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T200', '**Epic W — Command line & Hub** / W10 Market, indicators, DSL operations (`W10.01`)
+
+`market quote <symbol...>` latest trade/quote
+
+Requires: W1.04 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:00Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T201', '**Epic W — Command line & Hub** / W10 Market, indicators, DSL operations (`W10.02`)
+
+`market bars <symbol> [--tf] [--from --to]`
+
+Requires: W10.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:02Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T202', '**Epic W — Command line & Hub** / W10 Market, indicators, DSL operations (`W10.03`)
+
+`market prev-close <symbol>`
+
+Requires: W10.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:03Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T203', '**Epic W — Command line & Hub** / W10 Market, indicators, DSL operations (`W10.04`)
+
+`market movers [--top]`
+
+Requires: W10.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:04Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T204', '**Epic W — Command line & Hub** / W10 Market, indicators, DSL operations (`W10.05`)
+
+`market news <symbol> [--limit]` via AlpacaNewsService
+
+Requires: W10.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:05Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T205', '**Epic W — Command line & Hub** / W10 Market, indicators, DSL operations (`W10.06`)
+
+`market feed status|switch <sip|iex|mock>` (switch refuses mock while non-Sandbox strategies are active)
+
+Requires: W10.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:06Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T206', '**Epic W — Command line & Hub** / W10 Market, indicators, DSL operations (`W10.07`)
+
+`market stream status` websocket health
+
+Requires: W10.06 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:08Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T207', '**Epic W — Command line & Hub** / W10 Market, indicators, DSL operations (`W10.08`)
+
+`indicators compute <symbol> <rsi|ema|atr|macd|vwap|adx|…> [--period]`
+
+Requires: W10.02 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:09Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T208', '**Epic W — Command line & Hub** / W10 Market, indicators, DSL operations (`W10.09`)
+
+`indicators snapshot <symbol>` full IndicatorSnapshot (gap, window high/low, pivots)
+
+Requires: W10.08 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:11Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T209', '**Epic W — Command line & Hub** / W10 Market, indicators, DSL operations (`W10.10`)
+
+`dsl verbs [--phase]` reflected verb catalog (IP-LAW-4)
+
+Requires: W1.04 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:12Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T210', '**Epic W — Command line & Hub** / W10 Market, indicators, DSL operations (`W10.11`)
+
+`dsl glossary [verb]` from DslGlossary
+
+Requires: W10.10 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:14Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T211', '**Epic W — Command line & Hub** / W10 Market, indicators, DSL operations (`W10.12`)
+
+`dsl parse <script|->` -> canon JSON
+
+Requires: W10.10 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:15Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T212', '**Epic W — Command line & Hub** / W10 Market, indicators, DSL operations (`W10.13`)
+
+`dsl format <json|->` -> IdiotScript text
+
+Requires: W10.12 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:17Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T213', '**Epic W — Command line & Hub** / W10 Market, indicators, DSL operations (`W10.14`)
+
+`dsl validate <script|->` phase rules, fail-closed reasons
+
+Requires: W10.12 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:18Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T214', '**Epic W — Command line & Hub** / W10 Market, indicators, DSL operations (`W10.15`)
+
+`market scan-universe [--filter]` TrackedTicker price/volume screen
+
+Requires: W10.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:19Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T215', '**Epic W — Command line & Hub** / W10 Market, indicators, DSL operations (`W10.16`)
+
+`market candlesticks <symbol>` CandlestickPatterns detected on recent bars
+
+Requires: W10.02 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:20Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T216', '**Epic W — Command line & Hub** / W11 Risk & LLM operations (`W11.01`)
+
+`risk show` the six RiskGuardian limits
+
+Requires: W1.04 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:22Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T217', '**Epic W — Command line & Hub** / W11 Risk & LLM operations (`W11.02`)
+
+`risk set --max-loss-per-trade … ` edits limits (2-minute TTL refresh, daily counter preserved)
+
+Requires: W11.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:23Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T218', '**Epic W — Command line & Hub** / W11 Risk & LLM operations (`W11.03`)
+
+`risk status` daily realized P&L, breaker state, remaining room
+
+Requires: W11.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:24Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T219', '**Epic W — Command line & Hub** / W11 Risk & LLM operations (`W11.04`)
+
+`risk kill-switch on|off` (off requires confirm code)
+
+Requires: W11.03, W4.07 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:25Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T220', '**Epic W — Command line & Hub** / W11 Risk & LLM operations (`W11.05`)
+
+`risk check <symbol> --entry --stop --qty` dry-run ValidateTrade
+
+Requires: W11.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:27Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T221', '**Epic W — Command line & Hub** / W11 Risk & LLM operations (`W11.06`)
+
+`llm panel` voters, lenses, which have keys, threshold
+
+Requires: W1.04 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:28Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T222', '**Epic W — Command line & Hub** / W11 Risk & LLM operations (`W11.07`)
+
+`llm vote <strategy-id>` dry-run vote on the current candidate (no order)
+
+Requires: W11.06 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:29Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T223', '**Epic W — Command line & Hub** / W11 Risk & LLM operations (`W11.08`)
+
+`llm keys` owner/host Claude key resolution status (never prints secrets)
+
+Requires: W11.06 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:30Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T224', '**Epic W — Command line & Hub** / W11 Risk & LLM operations (`W11.09`)
+
+`llm voting enable|disable` owner-level toggle
+
+Requires: W11.06 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:32Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T225', '**Epic W — Command line & Hub** / W11 Risk & LLM operations (`W11.10`)
+
+`llm threshold <0..1>` consensus threshold setting
+
+Requires: W11.06 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:33Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T226', '**Epic W — Command line & Hub** / W12 Research operations (`W12.01`)
+
+`research scan [--tickers] [--batch]` runs one ResearchScanner pass in the Hub (not on the Monitor loop)
+
+Requires: W1.04, W0.11 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:34Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T227', '**Epic W — Command line & Hub** / W12 Research operations (`W12.02`)
+
+`research claims [--ticker] [--since] [--min-score] [--macro]` ranked feed
+
+Requires: W12.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:36Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T228', '**Epic W — Command line & Hub** / W12 Research operations (`W12.03`)
+
+`research claim <id>` full claim with sources and score breakdown
+
+Requires: W12.02 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:37Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T229', '**Epic W — Command line & Hub** / W12 Research operations (`W12.04`)
+
+`research ticker <symbol>` everything known about one ticker
+
+Requires: W12.02 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:38Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T230', '**Epic W — Command line & Hub** / W12 Research operations (`W12.05`)
+
+`research macro` macro/regulatory claims
+
+Requires: W12.02 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:40Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T231', '**Epic W — Command line & Hub** / W12 Research operations (`W12.06`)
+
+`research index-events` S&P add/remove events
+
+Requires: W12.02 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:42Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T232', '**Epic W — Command line & Hub** / W12 Research operations (`W12.07`)
+
+`research insiders <symbol>` Form 4 transactions
+
+Requires: W12.02 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T233', '**Epic W — Command line & Hub** / W12 Research operations (`W12.08`)
+
+`research universe list|refresh`
+
+Requires: W12.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:44Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T234', '**Epic W — Command line & Hub** / W12 Research operations (`W12.09`)
+
+`research backfill` runs OutcomeBackfillService
+
+Requires: W12.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:46Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T235', '**Epic W — Command line & Hub** / W12 Research operations (`W12.10`)
+
+`research score <claim-id>` explains the SignificanceScorer components
+
+Requires: W12.03 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:47Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T236', '**Epic W — Command line & Hub** / W12 Research operations (`W12.11`)
+
+`research analyze <symbol|url>` on-demand CatalystExtractor via Legion
+
+Requires: W12.01, W0.06 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:49Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T237', '**Epic W — Command line & Hub** / W12 Research operations (`W12.12`)
+
+`research similar <claim-id>` ClaimCorrelationService neighbors
+
+Requires: W12.03 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:50Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T238', '**Epic W — Command line & Hub** / W13 Diary, audit, ledger operations (`W13.01`)
+
+`diary list [--since] [--mode] [--symbol]`
+
+Requires: W1.04 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:52Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T239', '**Epic W — Command line & Hub** / W13 Diary, audit, ledger operations (`W13.02`)
+
+`diary show <id>`
+
+Requires: W13.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:53Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T240', '**Epic W — Command line & Hub** / W13 Diary, audit, ledger operations (`W13.03`)
+
+`diary pnl --day|--week|--month [--by strategy|symbol]`
+
+Requires: W13.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:54Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T241', '**Epic W — Command line & Hub** / W13 Diary, audit, ledger operations (`W13.04`)
+
+`diary stats` win rate, expectancy, avg R, MFE/MAE
+
+Requires: W13.03 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:55Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T242', '**Epic W — Command line & Hub** / W13 Diary, audit, ledger operations (`W13.05`)
+
+`diary export --csv <file>`
+
+Requires: W13.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:57Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T243', '**Epic W — Command line & Hub** / W13 Diary, audit, ledger operations (`W13.06`)
+
+`audit list [--since] [--kind]` and `audit search <text>`
+
+Requires: W1.04 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:58Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T244', '**Epic W — Command line & Hub** / W13 Diary, audit, ledger operations (`W13.07`)
+
+`audit tail [--follow]`
+
+Requires: W13.06 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:22:59Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T245', '**Epic W — Command line & Hub** / W13 Diary, audit, ledger operations (`W13.08`)
+
+`ledger list [--op] [--since]` CommandLedger browser
+
+Requires: W1.07 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:00Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T246', '**Epic W — Command line & Hub** / W14 Keys, settings, users, watchlist, monitor operations (`W14.01`)
+
+`keys status` which broker/LLM keys resolve (Vault vs DB), never printing secrets
+
+Requires: W1.04 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:02Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T247', '**Epic W — Command line & Hub** / W14 Keys, settings, users, watchlist, monitor operations (`W14.02`)
+
+`keys set alpaca-paper|alpaca-live` writes the Vault Brokers bucket, validates prefix + live probe (port of set-keys)
+
+Requires: W14.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:03Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T248', '**Epic W — Command line & Hub** / W14 Keys, settings, users, watchlist, monitor operations (`W14.03`)
+
+`keys opt-in alpaca|off` DefaultBroker opt-in (IP-LAW-3)
+
+Requires: W14.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:04Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T249', '**Epic W — Command line & Hub** / W14 Keys, settings, users, watchlist, monitor operations (`W14.04`)
+
+`keys probe [--mode]` account round-trip test
+
+Requires: W14.01 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:05Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T250', '**Epic W — Command line & Hub** / W14 Keys, settings, users, watchlist, monitor operations (`W14.05`)
+
+`settings list|get|set` SettingsKv with SettingsMetadata validation
+
+Requires: W1.04 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:07Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T251', '**Epic W — Command line & Hub** / W14 Keys, settings, users, watchlist, monitor operations (`W14.06`)
+
+`prefs get|set` UserPreferences
+
+Requires: W14.05 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:08Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T252', '**Epic W — Command line & Hub** / W14 Keys, settings, users, watchlist, monitor operations (`W14.07`)
+
+`watchlist list|add|remove`
+
+Requires: W14.06 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:09Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T253', '**Epic W — Command line & Hub** / W14 Keys, settings, users, watchlist, monitor operations (`W14.08`)
+
+`users list`
+
+Requires: W1.04 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:10Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T254', '**Epic W — Command line & Hub** / W14 Keys, settings, users, watchlist, monitor operations (`W14.09`)
+
+`users create <email>` (blocklist + MindAttic.Authentication; port of create-account)
+
+Requires: W14.08 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:12Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T255', '**Epic W — Command line & Hub** / W14 Keys, settings, users, watchlist, monitor operations (`W14.10`)
+
+`users whoami` and `users use <email|guid>`
+
+Requires: W14.08, W2.14 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:13Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T256', '**Epic W — Command line & Hub** / W14 Keys, settings, users, watchlist, monitor operations (`W14.11`)
+
+`monitor status|heartbeat|lease`
+
+Requires: W1.14 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:14Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T257', '**Epic W — Command line & Hub** / W14 Keys, settings, users, watchlist, monitor operations (`W14.12`)
+
+`monitor pause|resume|tick-once [--dry]` (tick-once never places orders)
+
+Requires: W14.11 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:16Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T258', '**Epic W — Command line & Hub** / W14 Keys, settings, users, watchlist, monitor operations (`W14.13`)
+
+`monitor tail` progress + gate verdict stream
+
+Requires: W14.11 (linked).
+
+Done when: handler + typed args record + human and JSON render, catalog entry shows in generated CLI/MCP docs, NUnit test of the handler (EF InMemory / Sandbox broker), `dotnet build IdiotProof.slnx` clean.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:17Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T259', '**Epic W — Command line & Hub** / W15 Knowledge index + docs operations (`W15.01`)
+
+KnowledgeIndex core: markdown section/anchor parser ({#IP-§n}, {#IP-LAW-n}, IP-US-*)
+
+Requires: W1.01 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:19Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T260', '**Epic W — Command line & Hub** / W15 Knowledge index + docs operations (`W15.02`)
+
+Index docs/BIBLE.md, BIBLE.digest.md, AMENDMENTS.md, README.md
+
+Requires: W15.01 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:20Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T261', '**Epic W — Command line & Hub** / W15 Knowledge index + docs operations (`W15.03`)
+
+Index docs/USER_STORIES.md stories and the ticket table
+
+Requires: W15.01 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:21Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T262', '**Epic W — Command line & Hub** / W15 Knowledge index + docs operations (`W15.04`)
+
+Index XML doc comments from every library (type/member -> summary, remarks)
+
+Requires: W15.01, W0.02 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:22Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T263', '**Epic W — Command line & Hub** / W15 Knowledge index + docs operations (`W15.05`)
+
+Symbol -> source path:line map built at Hub start from the repo checkout
+
+Requires: W15.04 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:24Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T264', '**Epic W — Command line & Hub** / W15 Knowledge index + docs operations (`W15.06`)
+
+Ticket history via `tickets ticket list/show --json` (read-only)
+
+Requires: W15.01 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:25Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T265', '**Epic W — Command line & Hub** / W15 Knowledge index + docs operations (`W15.07`)
+
+Index static catalogs: gapper profiles, index events, legion.json voters, settings metadata
+
+Requires: W15.01 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:26Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T266', '**Epic W — Command line & Hub** / W15 Knowledge index + docs operations (`W15.08`)
+
+`docs search <text>` ranked across every index
+
+Requires: W15.02, W15.03, W15.04 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:27Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T267', '**Epic W — Command line & Hub** / W15 Knowledge index + docs operations (`W15.09`)
+
+`docs law <n>`, `docs section <§n>`, `docs story <id>`
+
+Requires: W15.02, W15.03 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:29Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T268', '**Epic W — Command line & Hub** / W15 Knowledge index + docs operations (`W15.10`)
+
+`docs explain <Type|Member>` XML docs + path:line + callers
+
+Requires: W15.05 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:30Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T269', '**Epic W — Command line & Hub** / W15 Knowledge index + docs operations (`W15.11`)
+
+`docs ticket <IP-Tn>`
+
+Requires: W15.06 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:31Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T270', '**Epic W — Command line & Hub** / W15 Knowledge index + docs operations (`W15.12`)
+
+`docs dsl <verb>` verb docs + example from the reflected catalog
+
+Requires: W15.04, W10.10 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:32Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T271', '**Epic W — Command line & Hub** / W16 Agent docs (`W16.01`)
+
+docs/agent/IDIOTPROOF_PROTOCOL.md: how an assistant drives IdiotProof (bootstrap, intent -> op mapping, Live confirm etiquette, ET times)
+
+Requires: W2.15 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:33Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T272', '**Epic W — Command line & Hub** / W16 Agent docs (`W16.02`)
+
+`agent export` writes docs/CLI_COMMANDS.md, docs/MCP_TOOLS.md, docs/agent/operation-catalog.json
+
+Requires: W2.16, W3.02 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:35Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T273', '**Epic W — Command line & Hub** / W16 Agent docs (`W16.03`)
+
+AGENTS.md project context points at the protocol doc and bootstrap command
+
+Requires: W16.01 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:36Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T274', '**Epic W — Command line & Hub** / W16 Agent docs (`W16.04`)
+
+BIBLE §4 rewrite: Hub architecture, front doors (CLI/MCP/Blazor), transaction gateway, stamp
+
+Requires: W4.15, W3.10 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:37Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T275', '**Epic W — Command line & Hub** / W16 Agent docs (`W16.05`)
+
+BIBLE §3/§6/§7 updates (no longer ''Monitor console'' only; verified state cites new tests)
+
+Requires: W16.04 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:38Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T276', '**Epic W — Command line & Hub** / W16 Agent docs (`W16.06`)
+
+Epic W user stories filed via `tickets story` and USER_STORIES regenerated
+
+Requires: W16.04 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:40Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T277', '**Epic W — Command line & Hub** / W16 Agent docs (`W16.07`)
+
+BIBLE digest regenerated via tools/codex.ps1 and doctor passes
+
+Requires: W16.05 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:41Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T278', '**Epic W — Command line & Hub** / W16 Agent docs (`W16.08`)
+
+docs/agent/cli-hub-backlog.json: the filed backlog with ticket IDs and dependencies
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:42Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T279', '**Epic W — Command line & Hub** / W17 Blazor re-pointing (`W17.01`)
+
+Blazor IOwnerContext adapter from the auth claim
+
+Requires: W0.16, W0.05 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:44Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T280', '**Epic W — Command line & Hub** / W17 Blazor re-pointing (`W17.02`)
+
+Blazor IClaudeKeyContext adapter (replaces SignedInClaudeKey wiring)
+
+Requires: W0.16, W0.06 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:45Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T281', '**Epic W — Command line & Hub** / W17 Blazor re-pointing (`W17.03`)
+
+Blazor manual order paths go through TransactionGateway
+
+Requires: W4.09, W0.16 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:47Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T282', '**Epic W — Command line & Hub** / W17 Blazor re-pointing (`W17.04`)
+
+Blazor Options page orders through the gateway (password elevation kept)
+
+Requires: W4.12, W17.03 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:49Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T283', '**Epic W — Command line & Hub** / W17 Blazor re-pointing (`W17.05`)
+
+Blazor Activity page shows CommandLedger rows from CLI/MCP
+
+Requires: W1.07 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:51Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T284', '**Epic W — Command line & Hub** / W17 Blazor re-pointing (`W17.06`)
+
+Blazor strategy detail renders the ASCII stamp
+
+Requires: W5.10 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:54Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T285', '**Epic W — Command line & Hub** / W18 Publish / run (`W18.01`)
+
+run.ps1 publishes Hub, Cli and Mcp to C:\Apps\IdiotProof\ (never invoked without the user)
+
+Requires: W1.15, W3.07 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:23:59Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T286', '**Epic W — Command line & Hub** / W18 Publish / run (`W18.02`)
+
+tools/publish-all.ps1 includes the new projects
+
+Requires: W18.01 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:24:03Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T287', '**Epic W — Command line & Hub** / W18 Publish / run (`W18.03`)
+
+start.bat starts the Hub (which hosts the Monitor) instead of the Monitor exe
+
+Requires: W18.01 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:24:06Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T288', '**Epic W — Command line & Hub** / W18 Publish / run (`W18.04`)
+
+tools/install-hub-service.ps1 registers the Hub Windows Service as the current user
+
+Requires: W1.19 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:24:08Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T289', '**Epic W — Command line & Hub** / W18 Publish / run (`W18.05`)
+
+idiotproof.exe on PATH from C:\Apps\IdiotProof\ (installer step, idempotent)
+
+Requires: W18.01 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:24:09Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T290', '**Epic W — Command line & Hub** / W18 Publish / run (`W18.06`)
+
+README: CLI quick start, MCP registration, Live confirm flow
+
+Requires: W16.02 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:24:11Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T30', '**Epic W — Command line & Hub** / W0 Foundation: extract IdiotProof.Core (`W0.01`)
+
+Create IdiotProof.Core class library (net10.0) in IdiotProof.slnx, referencing Models/Shared/Scripting/Strategies/Brokers/DataFeeds/Engine/Indicators
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:17:40Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T31', '**Epic W — Command line & Hub** / W0 Foundation: extract IdiotProof.Core (`W0.02`)
+
+Enable GenerateDocumentationFile for every library via Directory.Build.props (CS1591 suppressed) so XML doc comments ship for the knowledge index
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:17:41Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T32', '**Epic W — Command line & Hub** / W0 Foundation: extract IdiotProof.Core (`W0.03`)
+
+Move AppDbContext and every Data/* entity from IdiotProof.Blazor to IdiotProof.Core (namespaces unchanged in this move)
+
+Requires: W0.01 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:17:42Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T33', '**Epic W — Command line & Hub** / W0 Foundation: extract IdiotProof.Core (`W0.04`)
+
+Move EF Migrations + AppDbContextFactory to IdiotProof.Core with MigrationsAssembly set; migration IDs and snapshot unchanged
+
+Requires: W0.03 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:17:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T34', '**Epic W — Command line & Hub** / W0 Foundation: extract IdiotProof.Core (`W0.05`)
+
+Introduce IOwnerContext (current owner GUID) — web resolves from the NameIdentifier claim, Hub/CLI from --user, persisted default, or the single AuthUsers row
+
+Requires: W0.01 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:17:45Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T35', '**Epic W — Command line & Hub** / W0 Foundation: extract IdiotProof.Core (`W0.06`)
+
+Introduce IClaudeKeyContext replacing SignedInClaudeKey''s AuthenticationStateProvider dependency for StrategyScriptGenerator, GapperInterpreter, ResearchService
+
+Requires: W0.05 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:17:46Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T36', '**Epic W — Command line & Hub** / W0 Foundation: extract IdiotProof.Core (`W0.07`)
+
+Introduce IStaticCatalogSource replacing IWebHostEnvironment in GapperProfileService; gapper-profiles.json and sp-index-events.json resolve from a shared content path
+
+Requires: W0.01 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:17:47Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T37', '**Epic W — Command line & Hub** / W0 Foundation: extract IdiotProof.Core (`W0.08`)
+
+Move strategy services to Core: StrategyRepository, ConditionProgressRepository, StrategyScriptGenerator, DslGlossary, SqlWorkspaceStore
+
+Requires: W0.03, W0.06 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:17:49Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T38', '**Epic W — Command line & Hub** / W0 Foundation: extract IdiotProof.Core (`W0.09`)
+
+Move broker/account services to Core: UserBrokerResolver, AlpacaVaultKeys, AccountSummaryService, LiveModeElevationService, TradingStateService
+
+Requires: W0.03 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:17:51Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T39', '**Epic W — Command line & Hub** / W0 Foundation: extract IdiotProof.Core (`W0.10`)
+
+Move risk + LLM services to Core: RiskGuardianService, LlmVotingService (+AddSignalVotingPanel), UserClaudeKeyResolver, FakeLlmHandler
+
+Requires: W0.03, W0.06 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:17:53Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T40', '**Epic W — Command line & Hub** / W0 Foundation: extract IdiotProof.Core (`W0.11`)
+
+Move research services to Core: ResearchService, EdgarService, Form4Parser, CorporateActionDetector, RegulatoryScanner, IndexEventScanner, UsSpendsService, AlpacaNewsService, CatalystExtractor, ClaimVectorService, ClaimCorrelationService, SignificanceScorer, OutcomeBackfillService, TickerUniverseService, AsyncThrottle
+
+Requires: W0.03, W0.06, W0.07 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:17:55Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T41', '**Epic W — Command line & Hub** / W0 Foundation: extract IdiotProof.Core (`W0.12`)
+
+Move remaining non-UI services to Core: OptionsTradingService, TradeDiaryRepository, AuditLogRepository, SettingsRepository, UserPreferencesService, UserKeyService, EmailDomainBlocklistService, LiveBarRepository, GapperProfileService, GapperInterpreter, EasternTime, DevCredentials
+
+Requires: W0.03, W0.07 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:17:57Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T42', '**Epic W — Command line & Hub** / W0 Foundation: extract IdiotProof.Core (`W0.13`)
+
+AddIdiotProofCore(config): one DI graph — connection-string chain, Vault buckets, AppSettings overlay, shared DataProtection key ring, MindAttic.Authentication, every Core service
+
+Requires: W0.08, W0.09, W0.10, W0.11, W0.12 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:17:58Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T43', '**Epic W — Command line & Hub** / W0 Foundation: extract IdiotProof.Core (`W0.14`)
+
+Lift BrokerRouter + IMarketDataFeed construction (IDIOTPROOF_BROKER/FEED/ALPACA_FEED/STREAMING knobs) from Monitor/Program.cs into AddIdiotProofTrading()
+
+Requires: W0.13 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:17:59Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T44', '**Epic W — Command line & Hub** / W0 Foundation: extract IdiotProof.Core (`W0.15`)
+
+Move MonitorWorker, MonitorLeaderLease, DirectionalOrders, scanners (AutoGapper, PremarketFade, BeBexDecay), StrategyReplay*, ReplayFeatures/Templates, StrategyDataset, StrategyScanner, EmailSmsAlertSender into Core (Monitoring namespace) so any host can run them
+
+Requires: W0.14 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:01Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T45', '**Epic W — Command line & Hub** / W0 Foundation: extract IdiotProof.Core (`W0.16`)
+
+Re-point IdiotProof.Blazor Program.cs to AddIdiotProofCore; pushers, ToastService, LogAlertService stay in Blazor
+
+Requires: W0.13 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:02Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T46', '**Epic W — Command line & Hub** / W0 Foundation: extract IdiotProof.Core (`W0.17`)
+
+Re-point IdiotProof.Monitor to AddIdiotProofCore/AddIdiotProofTrading and drop its IdiotProof.Blazor project reference
+
+Requires: W0.15 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:04Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T47', '**Epic W — Command line & Hub** / W0 Foundation: extract IdiotProof.Core (`W0.18`)
+
+Re-point IdiotProof.ResearchScanner to AddIdiotProofCore and drop its IdiotProof.Blazor project reference
+
+Requires: W0.13 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:05Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T48', '**Epic W — Command line & Hub** / W0 Foundation: extract IdiotProof.Core (`W0.19`)
+
+Re-point Blazor.Tests and Monitor.Tests at IdiotProof.Core; add IdiotProof.Core.Tests project (NUnit)
+
+Requires: W0.16, W0.17 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:06Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T49', '**Epic W — Command line & Hub** / W0 Foundation: extract IdiotProof.Core (`W0.20`)
+
+Rename moved namespaces IdiotProof.Blazor.Data/Services -> IdiotProof.Core.Data/Services across the solution
+
+Requires: W0.19 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:08Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T50', '**Epic W — Command line & Hub** / W0 Foundation: extract IdiotProof.Core (`W0.21`)
+
+Delete stale IdiotProof.sln (slnx is canonical) and fix any script that names it
+
+Requires: W0.01 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:09Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T51', '**Epic W — Command line & Hub** / W2 Operation framework + CLI client (`W2.01`)
+
+Create IdiotProof.Operations library: [Operation("noun verb")], [Option], [Argument], IOperation<TArgs> contract, risk class (Read/Write/Money/Destructive)
+
+Requires: W0.13 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:10Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T52', '**Epic W — Command line & Hub** / W2 Operation framework + CLI client (`W2.02`)
+
+OperationContext: owner, IServiceProvider scope, caller (cli/mcp/blazor), output mode, cancellation, ET clock
+
+Requires: W2.01, W0.05 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:11Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T53', '**Epic W — Command line & Hub** / W2 Operation framework + CLI client (`W2.03`)
+
+OperationResult: status, data payload, human render, exit code, ConfirmationRequired variant
+
+Requires: W2.01 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:12Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T54', '**Epic W — Command line & Hub** / W2 Operation framework + CLI client (`W2.04`)
+
+OperationCatalog: reflect all operations, validate unique names + descriptions + arg docs, emit catalog JSON schema per op
+
+Requires: W2.01 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:14Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T55', '**Epic W — Command line & Hub** / W2 Operation framework + CLI client (`W2.05`)
+
+Args binder: JSON -> typed args record with validation errors mapped to exit 2
+
+Requires: W2.04 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:15Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T56', '**Epic W — Command line & Hub** / W2 Operation framework + CLI client (`W2.06`)
+
+Text render kit: tables, key/value blocks, money/percent formatting, ET-only time display, color only on a TTY
+
+Requires: W2.03 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:16Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T57', '**Epic W — Command line & Hub** / W2 Operation framework + CLI client (`W2.07`)
+
+Create IdiotProof.Cli (idiotproof.exe): argv `noun verb --flags` parser bound to the catalog
+
+Requires: W2.04 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:17Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T58', '**Epic W — Command line & Hub** / W2 Operation framework + CLI client (`W2.09`)
+
+Global flags --json --user --mode --quiet --yes(no-op for Live) and stdin ''-'' for any text argument
+
+Requires: W2.07 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:19Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T59', '**Epic W — Command line & Hub** / W2 Operation framework + CLI client (`W2.10`)
+
+Generated help: `idiotproof help`, `idiotproof <noun> --help`, `idiotproof <noun> <verb> --help` from the catalog
+
+Requires: W2.07 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:20Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T60', '**Epic W — Command line & Hub** / W2 Operation framework + CLI client (`W2.11`)
+
+Offline catalog: CLI references IdiotProof.Operations so help, agent bootstrap and docs export work with the Hub down
+
+Requires: W2.10 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:21Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T61', '**Epic W — Command line & Hub** / W2 Operation framework + CLI client (`W2.12`)
+
+Exit-code contract 0 ok / 1 fail / 2 usage / 3 blocked by a gate / 4 confirmation required — documented and tested
+
+Requires: W2.03, W2.07 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:22Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T62', '**Epic W — Command line & Hub** / W2 Operation framework + CLI client (`W2.13`)
+
+idiotproof.cmd shim at repo root (dotnet run fallback, published exe preferred)
+
+Requires: W2.07 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:23Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T63', '**Epic W — Command line & Hub** / W2 Operation framework + CLI client (`W2.14`)
+
+Owner resolution in CLI: --user, `users use` persisted default in %APPDATA%\MindAttic\IdiotProof\cli.json, single-user fallback
+
+Requires: W2.09 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:24Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T64', '**Epic W — Command line & Hub** / W2 Operation framework + CLI client (`W2.15`)
+
+`agent bootstrap [--json]`: Hub health, owner, catalog paths, protocol doc, laws summary — runs without the Hub
+
+Requires: W2.11 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:26Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T65', '**Epic W — Command line & Hub** / W2 Operation framework + CLI client (`W2.16`)
+
+Catalog completeness test: every operation has description, arg docs, JSON render; no name collisions
+
+Requires: W2.04 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:27Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T66', '**Epic W — Command line & Hub** / W1 Hub host + Monitor absorption (`W1.01`)
+
+Create IdiotProof.Hub (ASP.NET Core minimal API, Kestrel bound to 127.0.0.1:5910) using AddIdiotProofCore
+
+Requires: W0.13 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:28Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T67', '**Epic W — Command line & Hub** / W1 Hub host + Monitor absorption (`W1.02`)
+
+/api/health and /api/version endpoints (build, commit, uptime, db, feed, broker)
+
+Requires: W1.01 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:29Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T68', '**Epic W — Command line & Hub** / W1 Hub host + Monitor absorption (`W1.03`)
+
+Hub API key: generated once, stored in Vault Tokens bucket ''idiotproof-hub''; HubKeyFilter guards every mutating endpoint
+
+Requires: W1.01 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:30Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T69', '**Epic W — Command line & Hub** / W2 Operation framework + CLI client (`W2.08`)
+
+CLI HubClient: fail-closed health gate, X-IdiotProof-Key header, slow-op notice after 8s, 2h timeout, structured error output
+
+Requires: W2.07, W1.03 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:31Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T70', '**Epic W — Command line & Hub** / W1 Hub host + Monitor absorption (`W1.04`)
+
+/api/op dispatch endpoint (operation name + JSON args) and /api/catalog
+
+Requires: W1.03, W2.05 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:32Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T71', '**Epic W — Command line & Hub** / W1 Hub host + Monitor absorption (`W1.05`)
+
+CommandLedger entity + migration: op, redacted args, owner, caller, exit code, duration, UTC timestamp
+
+Requires: W0.04 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:33Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T72', '**Epic W — Command line & Hub** / W1 Hub host + Monitor absorption (`W1.06`)
+
+SecretRedactor for ledger args (keys, secrets, passwords, tokens)
+
+Requires: W1.05 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:34Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T73', '**Epic W — Command line & Hub** / W1 Hub host + Monitor absorption (`W1.07`)
+
+Ledger write on every /api/op call
+
+Requires: W1.04, W1.06 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:36Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T74', '**Epic W — Command line & Hub** / W1 Hub host + Monitor absorption (`W1.08`)
+
+Host MonitorWorker in the Hub as an IHostedService with the SQL leader lease and SupervisedLoop unchanged
+
+Requires: W0.15, W1.01 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:37Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T75', '**Epic W — Command line & Hub** / W1 Hub host + Monitor absorption (`W1.09`)
+
+Host AutoGapperScanner, PremarketFadeScanner and BeBexDecayScanner in the Hub with their existing enable flags
+
+Requires: W1.08 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:38Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T76', '**Epic W — Command line & Hub** / W1 Hub host + Monitor absorption (`W1.10`)
+
+Windows Service hosting (UseWindowsService) that runs as the USER (LocalDB + DataProtection are user-scoped)
+
+Requires: W1.08 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:39Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T77', '**Epic W — Command line & Hub** / W1 Hub host + Monitor absorption (`W1.11`)
+
+Single-instance guard + clear error when port 5910 is taken
+
+Requires: W1.01 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:41Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T78', '**Epic W — Command line & Hub** / W1 Hub host + Monitor absorption (`W1.12`)
+
+Hub logging to MindAttic.Log file + /api/logs tail endpoint
+
+Requires: W1.01 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:42Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T79', '**Epic W — Command line & Hub** / W1 Hub host + Monitor absorption (`W1.13`)
+
+Graceful shutdown: drain in-flight ops, stop the Monitor loop cleanly, release the lease
+
+Requires: W1.08 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T80', '**Epic W — Command line & Hub** / W1 Hub host + Monitor absorption (`W1.14`)
+
+Monitor pause/resume flag (SettingsKv) honored at the top of each tick
+
+Requires: W1.08 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:45Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T81', '**Epic W — Command line & Hub** / W1 Hub host + Monitor absorption (`W1.15`)
+
+IdiotProof.Monitor exe becomes a shim that runs the Hub host (backward-compatible start.bat)
+
+Requires: W1.08 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:46Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T82', '**Epic W — Command line & Hub** / W1 Hub host + Monitor absorption (`W1.17`)
+
+SessionStart hook (.claude/settings.json) that starts the Hub when it is not running
+
+Requires: W1.02 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:47Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T83', '**Epic W — Command line & Hub** / W1 Hub host + Monitor absorption (`W1.18`)
+
+`hub status|start|stop|logs|version` operations + CLI-side start/stop of the local process
+
+Requires: W1.02, W2.07 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:49Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T84', '**Epic W — Command line & Hub** / W1 Hub host + Monitor absorption (`W1.19`)
+
+`hub install-service|uninstall-service` operations
+
+Requires: W1.10, W1.18 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:50Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T85', '**Epic W — Command line & Hub** / W4 Transaction gateway (`W4.01`)
+
+OrderIntent model: asset (equity/option), side, qty/notional, type, limit, TIF, extended hours, BrokerMode, origin (monitor/manual/options/flatten), strategyId
+
+Requires: W0.13 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:51Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T86', '**Epic W — Command line & Hub** / W4 Transaction gateway (`W4.02`)
+
+TransactionGateway.SubmitAsync skeleton with ordered, individually-tested gate steps and a GateVerdict trail
+
+Requires: W4.01 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:53Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T87', '**Epic W — Command line & Hub** / W4 Transaction gateway (`W4.03`)
+
+Gate step: owner + BrokerMode resolution via UserBrokerResolver (IP-LAW-3, Sandbox default, never another user''s keys)
+
+Requires: W4.02 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:54Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T88', '**Epic W — Command line & Hub** / W4 Transaction gateway (`W4.04`)
+
+Gate step: Mock-feed guard refuses non-Sandbox entries (IP-LAW-9)
+
+Requires: W4.02 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:56Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T89', '**Epic W — Command line & Hub** / W4 Transaction gateway (`W4.05`)
+
+Gate step: RiskGuardian (stop required on entries, size/limits, daily breaker; exits honor kill-switch) (IP-LAW-2)
+
+Requires: W4.02 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:57Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T90', '**Epic W — Command line & Hub** / W4 Transaction gateway (`W4.06`)
+
+Gate step: LLM voter panel for automated entries only (IP-LAW-1)
+
+Requires: W4.02 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:58Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T91', '**Epic W — Command line & Hub** / W4 Transaction gateway (`W4.07`)
+
+ConfirmationStore: 6-char single-use code, 120s TTL, bound to SHA-256 of the exact intent, persisted PendingConfirmation table
+
+Requires: W4.02, W0.04 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:59Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T92', '**Epic W — Command line & Hub** / W4 Transaction gateway (`W4.08`)
+
+Live preview: cost, worst-case loss, account, buying power after, gate verdicts — returned with exit 4
+
+Requires: W4.07 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:01Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T93', '**Epic W — Command line & Hub** / W4 Transaction gateway (`W4.09`)
+
+Every gateway outcome writes TradeDiary (fills), AuditLog (all) and CommandLedger linkage
+
+Requires: W4.02, W1.05 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:02Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T94', '**Epic W — Command line & Hub** / W4 Transaction gateway (`W4.10`)
+
+Reroute MonitorWorker entries and exits through the gateway with behavior-parity tests
+
+Requires: W4.05, W4.06, W1.08 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:03Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T95', '**Epic W — Command line & Hub** / W4 Transaction gateway (`W4.11`)
+
+Reroute DirectionalOrders flatten / test-order through the gateway
+
+Requires: W4.10 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:04Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T96', '**Epic W — Command line & Hub** / W4 Transaction gateway (`W4.12`)
+
+Reroute OptionsTradingService orders through the gateway (Blazor keeps password elevation; CLI/MCP use confirm codes)
+
+Requires: W4.07 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:05Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T97', '**Epic W — Command line & Hub** / W4 Transaction gateway (`W4.13`)
+
+Activating a strategy in Live mode (or switching it to Live) requires a confirm code
+
+Requires: W4.07 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:07Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T98', '**Epic W — Command line & Hub** / W4 Transaction gateway (`W4.14`)
+
+Gateway law tests: one test per law/step, including expired/edited-intent confirm refusal
+
+Requires: W4.13 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:08Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T99', '**Epic W — Command line & Hub** / W4 Transaction gateway (`W4.15`)
+
+BIBLE: add laws ''Every order goes through TransactionGateway'' and ''Live from CLI/MCP needs a confirm code''
+
+Requires: W4.14 (linked).
+
+Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
+
+Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:19:09Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.CAPT-T79', 'This keeps `/capture` working from a CLI hosted in either shell.
 
 **Done when:** the capture tests cover both exe names.', '2026-10-28T01:26:08Z');
@@ -51840,6 +55157,7 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.COMP-T147'
 ![reference](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/_inbox/6857671d-d2f1-4209-8d5f-3d35bbca01e3/2026-10-28-image-6.png)
 
 Needs design input from the user on: which property picks the variant (e.g. a Kind/Variant enum: Ring vs Badge), what the badge-variant''s default colors are (background + glyph color, vs MaSpinner''s current MaAccent ring), what glyph to use (e.g. a refresh/sync icon), and whether it keeps the same off-UI-thread worker-dispatcher approach the ring uses (M.COMP-T33) or can run as a simple RenderTransform+Storyboard animation since a small UI element spinning is cheaper than the ring''s continuous redraw.', '2026-10-29T03:32:12Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.HELP-T13', 'MindAttic.Orchestrator/tools/ascii_align.py (M.ORCH-T1305) pads ASCII box/table diagrams to perfect right-edge alignment, for use by Claude as a pre-presentation validation/fix step. Since the ecosystem is .NET and MindAttic.Helpers is the shared dependency-free library referenced by any repo''s CLI, port the same logic (align block by its own blank-line-separated group, extend an existing trailing rule/fill run, pad content rows before their wall char) into MindAttic.Helpers.Ascii.AsciiAligner with an Align(string) API mirroring the Python align_text, plus NUnit tests mirroring the 7 Python unit tests. Also publish a thin dotnet-tool console wrapper (e.g. ascii-align --check/--write) so it''s shell-invokable the same way the Python script was, installable once globally across repos. Once the C# version is verified, retire the Python files in MindAttic.Orchestrator/tools.', '2026-10-30T19:20:26Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.LNCH-T88', 'Seen live: opening the Launcher as api-key@mindattic.vault printed ''isn''t signed in on this machine yet. Signing it in first (orchestrator login --account api-key@mindattic.vault)...'' and opened a claude.ai OAuth browser flow, exactly like a normal Team member who''s never signed in.
 
 Cause: AccountScope.IsSignedIn (Services/AccountScope.cs) only checks .claude.json''s oauthAccount.emailAddress. The API-key login (MindAttic.Orchestrator.Core''s ApiKeyPerson) never gets an oauthAccount — ApiKeyPerson.EnsureConfig only sets hasCompletedOnboarding and approves the Vault key in customApiKeyResponses.approved. So AccountScope.Ensure always thinks it''s never signed in and runs ''orchestrator login --account'', which drives a real claude.ai OAuth sign-in for an email that was never meant to have a claude.ai account.
@@ -54357,6 +57675,7 @@ on the global tab, not per login; tab selection exists (`MainViewModel.Tabs.cs` 
    badge) fine?', '2026-10-29T18:10:53Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1299', 'Only AgentsBody (row 4) scrolls. Scrolling while the cursor is over the login tabs, CLI tabs, terminal, or pinned limit-bar pills (rows 0-3) does nothing, so the 5-hour chart and Tickets below feel unreachable. Forward PreviewMouseWheel from the whole window into AgentsBody so one scroll gesture works anywhere, not just when hovering the body.', '2026-10-30T02:54:00Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1305', 'LLMs reliably miscount characters when hand-aligning ASCII box/table diagrams, so the right-hand border drifts. Rather than relying on prompt instructions (unreliable, since the root cause is token-level counting), add a small dependency-free script under tools/ that takes raw ASCII art and pads every line in a block to the same width so box borders land in the same column, plus a --check mode to validate without rewriting. Use it before presenting any ASCII diagram.', '2026-10-30T17:51:37Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1306', 'M.ORCH-T1305''s Python script was a single-repo stopgap. It has been faithfully ported to MindAttic.Helpers.Ascii.AsciiAligner (M.HELP-T13, commit 4ee92ad in MindAttic.Helpers) with mirrored NUnit tests (23/23 passing) and a dotnet-tool CLI wrapper (ascii-align), so every repo''s CLI can use the same in-process .NET library instead of needing Python installed. Remove tools/ascii_align.py and tools/test_ascii_align.py from this repo, and the now-unused __pycache__/ .gitignore entry.', '2026-10-30T19:28:52Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T833', 'Symptom: Inside the Orchestrator''s embedded Terminals panel (TerminalPanesHost), when a CLI running
 in a pane shows an interactive, arrow-key-driven menu (e.g. a selection list or permission prompt),
 the Up/Down/Left/Right keys don''t reach the CLI. It looks like the WPF app is intercepting/consuming
@@ -57518,6 +60837,19 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T792', '
 
 Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
 ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T17:00:04Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T793', 'Rule 8 (elsewhere stays offstage): find every scene actually set outside the GLMZ in all 22 books (Tunis platform, Rotterdam lane, others). Austin and Garfield are Chicago West Side districts inside the GLMZ, so they are not on this list. Each scene found either moves into the GLMZ or shrinks to a passing mention.
+
+Replaces PRS-T458, which wrongly listed Austin.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads.', '2026-10-30T19:18:51Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T794', 'Author 2026-10-30: "Just make it Cicero instead of Austin it''s right next door and less confusing."
+
+Austin (the Chicago West Side district inside the GLMZ) read as Austin, Texas. Rename the district to Cicero everywhere:
+- the place record and every record whose name carries it (Austin Relocation Camp Surgical Program, The Austin Threshold, Austin Sovereign Utilities if it is the same district)
+- every prose mention in every GLMZ book (The Long Cut carries most; The Ur, Wells, Pieces and others a few)
+- beat summaries that name it
+Pairings with Garfield stay (Cicero/Garfield seam). Archive each book before its prose changes. No re-read now (write before read); phase 5 covers it.', '2026-10-30T19:19:32Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T206', 'RB-T172 verified in the editor (sm_hub_1, sm_pier_1, sp_soc_2): pedlight_flash, lightbar, arcade screens and oilriga frames on g_tColor; blackwater water_normal frames on g_tNormal; sewer_water and surf offsets; fire_pallet selfillum flicker; clouds.vmat g_vTexCoordScrollSpeed 0.043,0.025. Not reachable from the maps imported so far: clublight, TV screens, highlights. Import a map that uses them, play, read the attributes with sbox-cli run_csharp.', '2026-10-26T05:18:06Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T207', 'Left out of RB-T193 (the werewolf''s hint navigation), all in vampire.dll''s CNPC_VWerewolf:
 
@@ -61131,6 +64463,15 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T792', 'glmz-vi
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T792', 'phase:5-final', '2026-10-30T17:00:05Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T792', 'seq:0400', '2026-10-30T17:00:05Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T792', 'theme:process', '2026-10-30T17:00:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T793', 'glmz-vision', '2026-10-30T19:18:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T793', 'phase:1-world', '2026-10-30T19:18:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T793', 'seq:0066', '2026-10-30T19:18:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T793', 'theme:geography', '2026-10-30T19:18:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T794', 'book:the-long-cut', '2026-10-30T19:19:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T794', 'glmz-vision', '2026-10-30T19:19:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T794', 'phase:1-world', '2026-10-30T19:19:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T794', 'seq:0065', '2026-10-30T19:19:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T794', 'theme:geography', '2026-10-30T19:19:33Z');
 
 -- repo_renames
 INSERT INTO repo_renames (seq, old_name, new_name, at, reason) VALUES (1, 'GTFO.AbsurdWeapons', 'GTFO.EZ.AbsurdWeapons', '2026-10-19T02:14:58Z', 'Renamed under GTFO.EZ, its core mod, before release (G.EZ-T77)');
@@ -62130,8 +65471,121 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('H9g', 'PRS-EPIC-H', 'par
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('H9g', 'PRS-US-H9', 'part-of', 'migrated: sub-story');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('H9h', 'PRS-EPIC-H', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('H9h', 'PRS-US-H9', 'part-of', 'migrated: sub-story');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T100', 'IP-T56', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T100', 'IP-T70', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T101', 'IP-T100', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T102', 'IP-T100', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T103', 'IP-T100', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T104', 'IP-T100', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T105', 'IP-T104', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T106', 'IP-T104', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T107', 'IP-T100', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T108', 'IP-T107', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T108', 'IP-T93', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T109', 'IP-T107', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T110', 'IP-T100', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T110', 'IP-T92', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T111', 'IP-T110', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T112', 'IP-T95', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T113', 'IP-T110', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T114', 'IP-T110', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T115', 'IP-T114', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T116', 'IP-T110', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T117', 'IP-T54', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T118', 'IP-T117', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T119', 'IP-T118', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T17', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T25', 'M.SCHD-T8', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T32', 'IP-T30', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T33', 'IP-T32', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T34', 'IP-T30', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T35', 'IP-T34', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T36', 'IP-T30', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T37', 'IP-T32', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T37', 'IP-T35', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T38', 'IP-T32', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T39', 'IP-T32', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T39', 'IP-T35', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T40', 'IP-T32', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T40', 'IP-T35', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T40', 'IP-T36', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T41', 'IP-T32', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T41', 'IP-T36', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T42', 'IP-T37', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T42', 'IP-T38', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T42', 'IP-T39', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T42', 'IP-T40', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T42', 'IP-T41', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T43', 'IP-T42', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T44', 'IP-T43', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T45', 'IP-T42', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T46', 'IP-T44', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T47', 'IP-T42', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T48', 'IP-T45', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T48', 'IP-T46', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T49', 'IP-T48', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T50', 'IP-T30', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T51', 'IP-T42', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T52', 'IP-T34', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T52', 'IP-T51', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T53', 'IP-T51', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T54', 'IP-T51', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T55', 'IP-T54', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T56', 'IP-T53', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T57', 'IP-T54', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T58', 'IP-T57', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T59', 'IP-T57', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T60', 'IP-T59', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T61', 'IP-T53', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T61', 'IP-T57', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T62', 'IP-T57', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T63', 'IP-T58', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T64', 'IP-T60', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T65', 'IP-T54', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T66', 'IP-T42', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T67', 'IP-T66', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T68', 'IP-T66', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T69', 'IP-T57', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T69', 'IP-T68', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T70', 'IP-T55', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T70', 'IP-T68', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T71', 'IP-T33', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T72', 'IP-T71', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T73', 'IP-T70', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T73', 'IP-T72', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T74', 'IP-T44', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T74', 'IP-T66', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T75', 'IP-T74', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T76', 'IP-T74', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T77', 'IP-T66', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T78', 'IP-T66', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T79', 'IP-T74', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T80', 'IP-T74', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T81', 'IP-T74', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T82', 'IP-T67', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T83', 'IP-T57', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T83', 'IP-T67', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T84', 'IP-T76', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T84', 'IP-T83', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T85', 'IP-T42', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T86', 'IP-T85', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T87', 'IP-T86', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T88', 'IP-T86', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T89', 'IP-T86', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T90', 'IP-T86', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T91', 'IP-T33', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T91', 'IP-T86', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T92', 'IP-T91', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T93', 'IP-T71', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T93', 'IP-T86', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T94', 'IP-T74', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T94', 'IP-T89', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T94', 'IP-T90', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T95', 'IP-T94', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T96', 'IP-T91', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T97', 'IP-T91', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T98', 'IP-T97', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-T99', 'IP-T98', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-US-A1', 'IP-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-US-A2', 'IP-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('IP-US-A3', 'IP-EPIC-A', 'part-of', 'migrated: story under its epic');
@@ -66006,7 +69460,10 @@ INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('IdiotProof', 134, '
    the regex parser.');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('IdiotProof', 135, 'backlog', '24', '6. **Epic S** — adaptive auto-strategy generation.');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('IdiotProof', 136, 'raw', NULL, '');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('IdiotProof', 137, 'tickets', NULL, '## Tickets
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('IdiotProof', 137, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('IdiotProof', 138, 'epic', 'W', '## Epic W — Command line & Hub — drive every IdiotProof service from the CLI and MCP through one Hub');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('IdiotProof', 139, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('IdiotProof', 140, 'tickets', NULL, '## Tickets
 > Permanent log of every change and fix — this repo''s ticket system. Rows are append-only: never
 > delete or reword one; only move its Status (open → closed / wont-do) and fill in Ref. Status is
 > a word, not a glyph, so tickets don''t count toward the story index. Keep this section last.
