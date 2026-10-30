@@ -8617,7 +8617,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T816', 'Prose', 816, '2026-10-30', 'chore', 'open', 'GLMZ P3 Wells: the vertical city (Tiers as class and level, skyless streets under the tiers, footprint patrols)', '—', 815, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T817', 'Prose', 817, '2026-10-30', 'chore', 'open', 'GLMZ P3 The Ur: the vertical city (Tiers as class and level, skyless streets under the tiers, footprint patrols)', '—', 816, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T818', 'Prose', 818, '2026-10-30', 'chore', 'open', 'GLMZ P1 world: give every CorpoNation a Tier (ground work low; parent one Tier above its subsidiaries)', '—', 817, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T819', 'Prose', 819, '2026-10-30', 'feature', 'open', 'CorpoNation hierarchy schema: a real Tier field, ownership tables down to ground level, private forces, and the chain/tree/forces queries', '—', 818, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T819', 'Prose', 819, '2026-10-30', 'feature', 'closed', 'CorpoNation hierarchy schema: a real Tier field, ownership tables down to ground level, private forces, and the chain/tree/forces queries', '490b6a5ab', 818, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T820', 'Prose', 820, '2026-10-30', 'chore', 'open', 'GLMZ P1 world: clear the old Tier and Zone usages out of the CorpoNation records', '—', 819, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
@@ -50590,6 +50590,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29183, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29184, 'IP-T295', '2026-10-30T20:32:41Z', 'working', NULL, 'df7997fa-d41b-461b-a88b-098887d5ffaf');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29185, 'IP-T295', '2026-10-30T20:37:31Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29186, 'IP-T295', '2026-10-30T20:37:35Z', 'working', 'df7997fa-d41b-461b-a88b-098887d5ffaf', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29187, 'PRS-T819', '2026-10-30T20:40:40Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29188, 'PRS-T819', '2026-10-30T20:40:40Z', 'ref', '—', '490b6a5ab');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
