@@ -5077,12 +5077,12 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T48', 'IdiotProof', 48, '2026-10-30', 'feature', 'closed', 'Re-point Blazor.Tests and Monitor.Tests at IdiotProof.Core; add IdiotProof.Core.Tests project (NUnit)', '4769b94', 47, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T49', 'IdiotProof', 49, '2026-10-30', 'feature', 'open', 'Rename moved namespaces IdiotProof.Blazor.Data/Services -> IdiotProof.Core.Data/Services across the solution', '—', 48, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T50', 'IdiotProof', 50, '2026-10-30', 'feature', 'closed', 'Delete stale IdiotProof.sln (slnx is canonical) and fix any script that names it', '7a09e4e', 49, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T51', 'IdiotProof', 51, '2026-10-30', 'feature', 'open', 'Create IdiotProof.Operations library: [Operation("noun verb")], [Option], [Argument], IOperation<TArgs> contract, risk class (Read/Write/Money/Destructive)', '—', 50, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T52', 'IdiotProof', 52, '2026-10-30', 'feature', 'open', 'OperationContext: owner, IServiceProvider scope, caller (cli/mcp/blazor), output mode, cancellation, ET clock', '—', 51, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T53', 'IdiotProof', 53, '2026-10-30', 'feature', 'open', 'OperationResult: status, data payload, human render, exit code, ConfirmationRequired variant', '—', 52, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T54', 'IdiotProof', 54, '2026-10-30', 'feature', 'open', 'OperationCatalog: reflect all operations, validate unique names + descriptions + arg docs, emit catalog JSON schema per op', '—', 53, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T55', 'IdiotProof', 55, '2026-10-30', 'feature', 'open', 'Args binder: JSON -> typed args record with validation errors mapped to exit 2', '—', 54, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T56', 'IdiotProof', 56, '2026-10-30', 'feature', 'open', 'Text render kit: tables, key/value blocks, money/percent formatting, ET-only time display, color only on a TTY', '—', 55, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T51', 'IdiotProof', 51, '2026-10-30', 'feature', 'closed', 'Create IdiotProof.Operations library: [Operation("noun verb")], [Option], [Argument], IOperation<TArgs> contract, risk class (Read/Write/Money/Destructive)', 'cb745b8', 50, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T52', 'IdiotProof', 52, '2026-10-30', 'feature', 'closed', 'OperationContext: owner, IServiceProvider scope, caller (cli/mcp/blazor), output mode, cancellation, ET clock', 'cb745b8', 51, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T53', 'IdiotProof', 53, '2026-10-30', 'feature', 'closed', 'OperationResult: status, data payload, human render, exit code, ConfirmationRequired variant', 'cb745b8', 52, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T54', 'IdiotProof', 54, '2026-10-30', 'feature', 'closed', 'OperationCatalog: reflect all operations, validate unique names + descriptions + arg docs, emit catalog JSON schema per op', 'cb745b8', 53, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T55', 'IdiotProof', 55, '2026-10-30', 'feature', 'closed', 'Args binder: JSON -> typed args record with validation errors mapped to exit 2', 'a71e952', 54, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T56', 'IdiotProof', 56, '2026-10-30', 'feature', 'closed', 'Text render kit: tables, key/value blocks, money/percent formatting, ET-only time display, color only on a TTY', '79eda16', 55, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T57', 'IdiotProof', 57, '2026-10-30', 'feature', 'open', 'Create IdiotProof.Cli (idiotproof.exe): argv `noun verb --flags` parser bound to the catalog', '—', 56, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T58', 'IdiotProof', 58, '2026-10-30', 'feature', 'open', 'Global flags --json --user --mode --quiet --yes(no-op for Live) and stdin ''-'' for any text argument', '—', 57, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T59', 'IdiotProof', 59, '2026-10-30', 'feature', 'open', 'Generated help: `idiotproof help`, `idiotproof <noun> --help`, `idiotproof <noun> <verb> --help` from the catalog', '—', 58, NULL);
@@ -5091,15 +5091,15 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T62', 'IdiotProof', 62, '2026-10-30', 'feature', 'open', 'idiotproof.cmd shim at repo root (dotnet run fallback, published exe preferred)', '—', 61, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T63', 'IdiotProof', 63, '2026-10-30', 'feature', 'open', 'Owner resolution in CLI: --user, `users use` persisted default in %APPDATA%\MindAttic\IdiotProof\cli.json, single-user fallback', '—', 62, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T64', 'IdiotProof', 64, '2026-10-30', 'feature', 'open', '`agent bootstrap [--json]`: Hub health, owner, catalog paths, protocol doc, laws summary — runs without the Hub', '—', 63, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T65', 'IdiotProof', 65, '2026-10-30', 'feature', 'open', 'Catalog completeness test: every operation has description, arg docs, JSON render; no name collisions', '—', 64, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T66', 'IdiotProof', 66, '2026-10-30', 'feature', 'open', 'Create IdiotProof.Hub (ASP.NET Core minimal API, Kestrel bound to 127.0.0.1:5910) using AddIdiotProofCore', '—', 65, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T67', 'IdiotProof', 67, '2026-10-30', 'feature', 'open', '/api/health and /api/version endpoints (build, commit, uptime, db, feed, broker)', '—', 66, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T68', 'IdiotProof', 68, '2026-10-30', 'feature', 'open', 'Hub API key: generated once, stored in Vault Tokens bucket ''idiotproof-hub''; HubKeyFilter guards every mutating endpoint', '—', 67, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T65', 'IdiotProof', 65, '2026-10-30', 'feature', 'closed', 'Catalog completeness test: every operation has description, arg docs, JSON render; no name collisions', '3444682', 64, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T66', 'IdiotProof', 66, '2026-10-30', 'feature', 'closed', 'Create IdiotProof.Hub (ASP.NET Core minimal API, Kestrel bound to 127.0.0.1:5910) using AddIdiotProofCore', 'c4193c3', 65, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T67', 'IdiotProof', 67, '2026-10-30', 'feature', 'closed', '/api/health and /api/version endpoints (build, commit, uptime, db, feed, broker)', 'c4193c3', 66, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T68', 'IdiotProof', 68, '2026-10-30', 'feature', 'closed', 'Hub API key: generated once, stored in Vault Tokens bucket ''idiotproof-hub''; HubKeyFilter guards every mutating endpoint', 'c4193c3', 67, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T69', 'IdiotProof', 69, '2026-10-30', 'feature', 'open', 'CLI HubClient: fail-closed health gate, X-IdiotProof-Key header, slow-op notice after 8s, 2h timeout, structured error output', '—', 68, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T70', 'IdiotProof', 70, '2026-10-30', 'feature', 'open', '/api/op dispatch endpoint (operation name + JSON args) and /api/catalog', '—', 69, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T71', 'IdiotProof', 71, '2026-10-30', 'feature', 'open', 'CommandLedger entity + migration: op, redacted args, owner, caller, exit code, duration, UTC timestamp', '—', 70, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T72', 'IdiotProof', 72, '2026-10-30', 'feature', 'open', 'SecretRedactor for ledger args (keys, secrets, passwords, tokens)', '—', 71, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T73', 'IdiotProof', 73, '2026-10-30', 'feature', 'open', 'Ledger write on every /api/op call', '—', 72, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T70', 'IdiotProof', 70, '2026-10-30', 'feature', 'closed', '/api/op dispatch endpoint (operation name + JSON args) and /api/catalog', 'c4193c3', 69, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T71', 'IdiotProof', 71, '2026-10-30', 'feature', 'closed', 'CommandLedger entity + migration: op, redacted args, owner, caller, exit code, duration, UTC timestamp', 'c49a127', 70, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T72', 'IdiotProof', 72, '2026-10-30', 'feature', 'closed', 'SecretRedactor for ledger args (keys, secrets, passwords, tokens)', '9531ab4 SecretRedactorTests', 71, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T73', 'IdiotProof', 73, '2026-10-30', 'feature', 'closed', 'Ledger write on every /api/op call', 'c4193c3', 72, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T74', 'IdiotProof', 74, '2026-10-30', 'feature', 'open', 'Host MonitorWorker in the Hub as an IHostedService with the SQL leader lease and SupervisedLoop unchanged', '—', 73, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T75', 'IdiotProof', 75, '2026-10-30', 'feature', 'open', 'Host AutoGapperScanner, PremarketFadeScanner and BeBexDecayScanner in the Hub with their existing enable flags', '—', 74, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T76', 'IdiotProof', 76, '2026-10-30', 'feature', 'open', 'Windows Service hosting (UseWindowsService) that runs as the USER (LocalDB + DataProtection are user-scoped)', '—', 75, NULL);
@@ -5111,13 +5111,13 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T82', 'IdiotProof', 82, '2026-10-30', 'feature', 'open', 'SessionStart hook (.claude/settings.json) that starts the Hub when it is not running', '—', 81, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T83', 'IdiotProof', 83, '2026-10-30', 'feature', 'open', '`hub status|start|stop|logs|version` operations + CLI-side start/stop of the local process', '—', 82, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T84', 'IdiotProof', 84, '2026-10-30', 'feature', 'open', '`hub install-service|uninstall-service` operations', '—', 83, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T85', 'IdiotProof', 85, '2026-10-30', 'feature', 'open', 'OrderIntent model: asset (equity/option), side, qty/notional, type, limit, TIF, extended hours, BrokerMode, origin (monitor/manual/options/flatten), strategyId', '—', 84, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T85', 'IdiotProof', 85, '2026-10-30', 'feature', 'closed', 'OrderIntent model: asset (equity/option), side, qty/notional, type, limit, TIF, extended hours, BrokerMode, origin (monitor/manual/options/flatten), strategyId', 'df5f2f2 ConfirmationStoreTests.Hash_ChangesWithAnyOrderField_ButNotWithTheNote', 84, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T86', 'IdiotProof', 86, '2026-10-30', 'feature', 'open', 'TransactionGateway.SubmitAsync skeleton with ordered, individually-tested gate steps and a GateVerdict trail', '—', 85, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T87', 'IdiotProof', 87, '2026-10-30', 'feature', 'open', 'Gate step: owner + BrokerMode resolution via UserBrokerResolver (IP-LAW-3, Sandbox default, never another user''s keys)', '—', 86, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T88', 'IdiotProof', 88, '2026-10-30', 'feature', 'open', 'Gate step: Mock-feed guard refuses non-Sandbox entries (IP-LAW-9)', '—', 87, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T89', 'IdiotProof', 89, '2026-10-30', 'feature', 'open', 'Gate step: RiskGuardian (stop required on entries, size/limits, daily breaker; exits honor kill-switch) (IP-LAW-2)', '—', 88, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T90', 'IdiotProof', 90, '2026-10-30', 'feature', 'open', 'Gate step: LLM voter panel for automated entries only (IP-LAW-1)', '—', 89, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T91', 'IdiotProof', 91, '2026-10-30', 'feature', 'open', 'ConfirmationStore: 6-char single-use code, 120s TTL, bound to SHA-256 of the exact intent, persisted PendingConfirmation table', '—', 90, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T91', 'IdiotProof', 91, '2026-10-30', 'feature', 'closed', 'ConfirmationStore: 6-char single-use code, 120s TTL, bound to SHA-256 of the exact intent, persisted PendingConfirmation table', 'fe72a2a ConfirmationStoreTests', 90, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T92', 'IdiotProof', 92, '2026-10-30', 'feature', 'open', 'Live preview: cost, worst-case loss, account, buying power after, gate verdicts — returned with exit 4', '—', 91, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T93', 'IdiotProof', 93, '2026-10-30', 'feature', 'open', 'Every gateway outcome writes TradeDiary (fills), AuditLog (all) and CommandLedger linkage', '—', 92, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T94', 'IdiotProof', 94, '2026-10-30', 'feature', 'open', 'Reroute MonitorWorker entries and exits through the gateway with behavior-parity tests', '—', 93, NULL);
@@ -5153,16 +5153,16 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T124', 'IdiotProof', 124, '2026-10-30', 'feature', 'open', '.claude/settings.json allow-list for read-only idiotproof tools; trade_confirm and destructive tools stay prompt-only', '—', 123, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T125', 'IdiotProof', 125, '2026-10-30', 'feature', 'open', 'SessionStart hook keeps IdiotProof.Mcp Release build current so the schema is never stale', '—', 124, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T126', 'IdiotProof', 126, '2026-10-30', 'feature', 'open', 'MCP schema test: every operation round-trips catalog -> tool schema -> binder', '—', 125, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T127', 'IdiotProof', 127, '2026-10-30', 'feature', 'open', 'StrategyStamp short id IP-XXXX-XXXX (base32 of SHA-256 of the canonical JSON)', '—', 126, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T128', 'IdiotProof', 128, '2026-10-30', 'feature', 'open', 'Stamp header block: symbol, direction, session, BrokerMode, qty/notional, id', '—', 127, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T129', 'IdiotProof', 129, '2026-10-30', 'feature', 'open', 'Stamp phase flow: Setup -> Filters -> Entry -> Order -> Risk -> Exit boxes with every condition line', '—', 128, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T130', 'IdiotProof', 130, '2026-10-30', 'feature', 'open', 'Stamp branch forks for If/ElseIf/Else conditional blocks', '—', 129, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T131', 'IdiotProof', 131, '2026-10-30', 'feature', 'open', 'Stamp exit ladder: stop, TP targets, trailing, peak giveback@arm, sell-by', '—', 130, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T132', 'IdiotProof', 132, '2026-10-30', 'feature', 'open', 'Stamp fingerprint: 17x9 drunken-bishop randomart over the canon hash', '—', 131, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T133', 'IdiotProof', 133, '2026-10-30', 'feature', 'open', 'Stamp armored payload: BEGIN/END IDIOTPROOF STRATEGY, deflate + base64url + CRC32, fail-closed decode', '—', 132, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T134', 'IdiotProof', 134, '2026-10-30', 'feature', 'open', 'Terminal QR of the payload (QRCoder, Unicode half-blocks) behind --qr', '—', 133, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T135', 'IdiotProof', 135, '2026-10-30', 'feature', 'open', 'Stamp box-drawing variant behind --unicode (ASCII is the default)', '—', 134, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T136', 'IdiotProof', 136, '2026-10-30', 'feature', 'open', 'Golden-file tests for every sample strategy + stamp -> import round trip yields an identical canon hash', '—', 135, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T127', 'IdiotProof', 127, '2026-10-30', 'feature', 'closed', 'StrategyStamp short id IP-XXXX-XXXX (base32 of SHA-256 of the canonical JSON)', '463a343', 126, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T128', 'IdiotProof', 128, '2026-10-30', 'feature', 'closed', 'Stamp header block: symbol, direction, session, BrokerMode, qty/notional, id', '463a343', 127, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T129', 'IdiotProof', 129, '2026-10-30', 'feature', 'closed', 'Stamp phase flow: Setup -> Filters -> Entry -> Order -> Risk -> Exit boxes with every condition line', '463a343', 128, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T130', 'IdiotProof', 130, '2026-10-30', 'feature', 'closed', 'Stamp branch forks for If/ElseIf/Else conditional blocks', '463a343', 129, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T131', 'IdiotProof', 131, '2026-10-30', 'feature', 'closed', 'Stamp exit ladder: stop, TP targets, trailing, peak giveback@arm, sell-by', '463a343', 130, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T132', 'IdiotProof', 132, '2026-10-30', 'feature', 'closed', 'Stamp fingerprint: 17x9 drunken-bishop randomart over the canon hash', '463a343', 131, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T133', 'IdiotProof', 133, '2026-10-30', 'feature', 'closed', 'Stamp armored payload: BEGIN/END IDIOTPROOF STRATEGY, deflate + base64url + CRC32, fail-closed decode', '463a343', 132, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T134', 'IdiotProof', 134, '2026-10-30', 'feature', 'closed', 'Terminal QR of the payload (QRCoder, Unicode half-blocks) behind --qr', '090e38f', 133, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T135', 'IdiotProof', 135, '2026-10-30', 'feature', 'closed', 'Stamp box-drawing variant behind --unicode (ASCII is the default)', '463a343', 134, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T136', 'IdiotProof', 136, '2026-10-30', 'feature', 'closed', 'Golden-file tests for every sample strategy + stamp -> import round trip yields an identical canon hash', 'a744d8b', 135, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T137', 'IdiotProof', 137, '2026-10-30', 'feature', 'open', '`strategy list [--active] [--mode] [--symbol]` with live ConditionProgress badges', '—', 136, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T138', 'IdiotProof', 138, '2026-10-30', 'feature', 'open', 'MonitorCli commands forward to the equivalent operations (status, set-keys, flatten, replay, scan, …)', '—', 137, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T139', 'IdiotProof', 139, '2026-10-30', 'feature', 'open', '`strategy show <id|symbol>` (fields, canon summary, position, progress)', '—', 138, NULL);
@@ -7342,6 +7342,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1304', 'MindAttic.Orchestrator', 1304, '2026-10-30', 'feature', 'wont-do', 'Move the 5-hour and weekly utilization charts into right-click modal popups (5hr Limit / Weekly Limit) on each login tab', 'superseded by M.ORCH-T1302 (scrolling-body layout); user reversed modal approach', 1303, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1305', 'MindAttic.Orchestrator', 1305, '2026-10-30', 'feature', 'closed', 'ascii_align.py: a checked-in script that pads ASCII box diagrams to perfect right-edge alignment', '11836d73', 1304, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1306', 'MindAttic.Orchestrator', 1306, '2026-10-30', 'chore', 'closed', 'Retire tools/ascii_align.py now that MindAttic.Helpers.Ascii.AsciiAligner is the canonical, cross-repo ASCII aligner', 'c87339d', 1305, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1307', 'MindAttic.Orchestrator', 1307, '2026-10-30', 'fix', 'open', 'Fails on main: MindAttic.Orchestrator.Tests.TerminalPanesTests.A_gated_window_key_matches_nothing_while_a_terminal_holds_focus — elsewhere the window''s Esc still acts Assert.That(gesture.Matches(target, esc), Is.True) Expected: True But was: False (landed on main since the last green run: tickets M.ORCH-T1306 in c87339d2 Retire tools/ascii_align.py: superseded by MindAttic.Helpers.Ascii.AsciiAligner (M.ORCH-T1306))', 'main@2aebb0e', 1306, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T1', 'MindAttic.Psst', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.PSST-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T2', 'MindAttic.Psst', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for ContactBook (Contacts/Contact.cs): Find matches name case-insensitively before phone, falls back to 10-digit phone match across formats (+1, dashes, parens), returns null for blank or unmatched input; WithAdded rejects blank name/phone and case-insensitive duplicate names and leaves the original book unchanged; WithoutContact removes only the first case-insensitive match and returns null when absent - this is how psst sms resolves recipients, so a wrong match texts the wrong person', '865fde2', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T3', 'MindAttic.Psst', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched', '—', 2, '| M.PSST-T3 | 2026-10-14 | chore | open | NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched | — |');
@@ -8585,6 +8586,29 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T792', 'Prose', 792, '2026-10-30', 'chore', 'open', 'GLMZ P5: Season 1 close: every book through Phase 5, then the author decides exports', '—', 791, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T793', 'Prose', 793, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: audit every scene set outside the GLMZ in all 22 books (Tunis platform, Rotterdam lane, others)', '—', 792, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T794', 'Prose', 794, '2026-10-30', 'chore', 'closed', 'GLMZ: rename the Austin district to Cicero in every book and record (author 2026-10-30)', '26e41bcd3', 793, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T795', 'Prose', 795, '2026-10-30', 'chore', 'open', 'GLMZ P1 world: the vertical city (The Deep, skyless Seams under the decks, Tiers 1-5 all rich, aeroblocs) as law and world facts', '—', 794, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T796', 'Prose', 796, '2026-10-30', 'chore', 'open', 'GLMZ P3 Steppin'' Razor: the vertical city (Tiers as class and level, skyless streets under the tiers, footprint patrols)', '—', 795, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T797', 'Prose', 797, '2026-10-30', 'chore', 'open', 'GLMZ P3 Pixel: the vertical city (Tiers as class and level, skyless streets under the tiers, footprint patrols)', '—', 796, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T798', 'Prose', 798, '2026-10-30', 'chore', 'open', 'GLMZ P3 Testament: the vertical city (Tiers as class and level, skyless streets under the tiers, footprint patrols)', '—', 797, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T799', 'Prose', 799, '2026-10-30', 'chore', 'open', 'GLMZ P3 Attendance: the vertical city (Tiers as class and level, skyless streets under the tiers, footprint patrols)', '—', 798, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T800', 'Prose', 800, '2026-10-30', 'chore', 'open', 'GLMZ P3 Between the Lines: the vertical city (Tiers as class and level, skyless streets under the tiers, footprint patrols)', '—', 799, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T801', 'Prose', 801, '2026-10-30', 'chore', 'open', 'GLMZ P3 Death Whispers in a Cat''s Ear: the vertical city (Tiers as class and level, skyless streets under the tiers, footprint patrols)', '—', 800, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T802', 'Prose', 802, '2026-10-30', 'chore', 'open', 'GLMZ P3 Critical Mass: the vertical city (Tiers as class and level, skyless streets under the tiers, footprint patrols)', '—', 801, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T803', 'Prose', 803, '2026-10-30', 'chore', 'open', 'GLMZ P3 The Long Cut: the vertical city (Tiers as class and level, skyless streets under the tiers, footprint patrols)', '—', 802, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T804', 'Prose', 804, '2026-10-30', 'chore', 'open', 'GLMZ P3 Sparrow: the vertical city (Tiers as class and level, skyless streets under the tiers, footprint patrols)', '—', 803, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T805', 'Prose', 805, '2026-10-30', 'chore', 'open', 'GLMZ P3 Magenta & Gunmetal: the vertical city (Tiers as class and level, skyless streets under the tiers, footprint patrols)', '—', 804, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T806', 'Prose', 806, '2026-10-30', 'chore', 'open', 'GLMZ P3 Vultures at the Door: the vertical city (Tiers as class and level, skyless streets under the tiers, footprint patrols)', '—', 805, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T807', 'Prose', 807, '2026-10-30', 'chore', 'open', 'GLMZ P3 Bushido Coda: the vertical city (Tiers as class and level, skyless streets under the tiers, footprint patrols)', '—', 806, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T808', 'Prose', 808, '2026-10-30', 'chore', 'open', 'GLMZ P3 Underclan: the vertical city (Tiers as class and level, skyless streets under the tiers, footprint patrols)', '—', 807, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T809', 'Prose', 809, '2026-10-30', 'chore', 'open', 'GLMZ P3 The Way Up: the vertical city (Tiers as class and level, skyless streets under the tiers, footprint patrols)', '—', 808, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T810', 'Prose', 810, '2026-10-30', 'chore', 'open', 'GLMZ P3 Neon & Rust: the vertical city (Tiers as class and level, skyless streets under the tiers, footprint patrols)', '—', 809, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T811', 'Prose', 811, '2026-10-30', 'chore', 'open', 'GLMZ P3 Crimson & Chrome: the vertical city (Tiers as class and level, skyless streets under the tiers, footprint patrols)', '—', 810, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T812', 'Prose', 812, '2026-10-30', 'chore', 'open', 'GLMZ P3 The Way Down: the vertical city (Tiers as class and level, skyless streets under the tiers, footprint patrols)', '—', 811, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T813', 'Prose', 813, '2026-10-30', 'chore', 'open', 'GLMZ P3 Mnemosync: the vertical city (Tiers as class and level, skyless streets under the tiers, footprint patrols)', '—', 812, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T814', 'Prose', 814, '2026-10-30', 'chore', 'open', 'GLMZ P3 Read the Room: the vertical city (Tiers as class and level, skyless streets under the tiers, footprint patrols)', '—', 813, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T815', 'Prose', 815, '2026-10-30', 'chore', 'open', 'GLMZ P3 Pieces: the vertical city (Tiers as class and level, skyless streets under the tiers, footprint patrols)', '—', 814, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T816', 'Prose', 816, '2026-10-30', 'chore', 'open', 'GLMZ P3 Wells: the vertical city (Tiers as class and level, skyless streets under the tiers, footprint patrols)', '—', 815, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T817', 'Prose', 817, '2026-10-30', 'chore', 'open', 'GLMZ P3 The Ur: the vertical city (Tiers as class and level, skyless streets under the tiers, footprint patrols)', '—', 816, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -9217,7 +9241,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T91', 'RogueTrader.Overwatch', 91, '2026-10-29', 'feature', 'closed', 'Overwatch is the next best thing to a direct shot: shots = AP left after paying its own cost / attack cost (1 to 2), so it never matches shooting directly', 'commits 6869221 9ea8b85 1a3c33e 84b99df', 90, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T92', 'RogueTrader.Overwatch', 92, '2026-10-29', 'fix', 'closed', 'Spanish Overwatch description: use ''que te quedarían'' for consistent tense', 'commits 6869221 9ea8b85 1a3c33e 84b99df', 91, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T93', 'RogueTrader.Overwatch', 93, '2026-10-30', 'fix', 'closed', 'Reflex Shot and Overwatch should respect rounds in the chamber and not fire with an empty magazine', '—', 92, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T94', 'RogueTrader.Overwatch', 94, '2026-10-30', 'feature', 'open', 'Pipe Reflex Shot''s triggered shot through Attack of Opportunity like Overwatch and Suppression already are, and rebalance all three for it', '—', 93, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T94', 'RogueTrader.Overwatch', 94, '2026-10-30', 'feature', 'closed', 'Pipe Reflex Shot''s triggered shot through Attack of Opportunity like Overwatch and Suppression already are, and rebalance all three for it', '—', 93, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T1', 'RogueTrader.Shared', 1, '2026-10-26', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T2', 'RogueTrader.Shared', 2, '2026-10-26', 'feature', 'closed', 'Create RogueTrader.Shared: source-shared build setup and helpers for Rogue Trader mods (Brevity, Overwatch, future ones)', '311f523', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T3', 'RogueTrader.Shared', 3, '2026-10-26', 'fix', 'closed', 'Release zips drop empty folders an Owlcat mod needs (Bundles), and mods built from a worktree can''t find RogueTrader.Shared', 'bf259fb', 2, NULL);
@@ -50232,6 +50256,204 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28859, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28860, 'IP-T292', '2026-10-30T19:48:19Z', 'working', 'df7997fa-d41b-461b-a88b-098887d5ffaf', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28861, 'IP-T291', '2026-10-30T19:49:18Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28862, 'IP-T291', '2026-10-30T19:49:18Z', 'ref', '—', '0780271');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28863, 'IP-T291', '2026-10-30T19:49:54Z', 'working', 'df7997fa-d41b-461b-a88b-098887d5ffaf', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28864, 'RTO-T94', '2026-10-30T19:50:41Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28865, 'RTO-T94', '2026-10-30T19:50:47Z', 'working', '8e10d3d7-6913-43f7-a57a-a774eb73fe40', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28866, 'IP-T71', '2026-10-30T19:52:26Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28867, 'IP-T71', '2026-10-30T19:52:26Z', 'ref', '—', 'c49a127');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28868, 'IP-T72', '2026-10-30T19:52:29Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28869, 'IP-T72', '2026-10-30T19:52:29Z', 'ref', '—', '9531ab4 SecretRedactorTests');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28870, 'IP-T51', '2026-10-30T19:52:41Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28871, 'IP-T51', '2026-10-30T19:52:41Z', 'ref', '—', 'cb745b8');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28872, 'IP-T52', '2026-10-30T19:52:48Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28873, 'IP-T52', '2026-10-30T19:52:48Z', 'ref', '—', 'cb745b8');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28874, 'IP-T53', '2026-10-30T19:52:57Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28875, 'IP-T53', '2026-10-30T19:52:57Z', 'ref', '—', 'cb745b8');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28876, 'IP-T54', '2026-10-30T19:53:03Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28877, 'IP-T54', '2026-10-30T19:53:03Z', 'ref', '—', 'cb745b8');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28878, 'IP-T55', '2026-10-30T19:53:12Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28879, 'IP-T55', '2026-10-30T19:53:12Z', 'ref', '—', 'a71e952');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28880, 'IP-T56', '2026-10-30T19:53:21Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28881, 'IP-T56', '2026-10-30T19:53:21Z', 'ref', '—', '79eda16');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28882, 'IP-T127', '2026-10-30T19:53:25Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28883, 'IP-T127', '2026-10-30T19:53:25Z', 'ref', '—', '463a343');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28884, 'IP-T128', '2026-10-30T19:53:30Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28885, 'IP-T128', '2026-10-30T19:53:30Z', 'ref', '—', '463a343');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28886, 'IP-T129', '2026-10-30T19:53:39Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28887, 'IP-T129', '2026-10-30T19:53:39Z', 'ref', '—', '463a343');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28888, 'IP-T65', '2026-10-30T19:53:39Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28889, 'IP-T65', '2026-10-30T19:53:39Z', 'ref', '—', '3444682');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28890, 'IP-T130', '2026-10-30T19:53:46Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28891, 'IP-T130', '2026-10-30T19:53:46Z', 'ref', '—', '463a343');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28892, 'IP-T131', '2026-10-30T19:53:55Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28893, 'IP-T131', '2026-10-30T19:53:55Z', 'ref', '—', '463a343');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28894, 'IP-T132', '2026-10-30T19:54:04Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28895, 'IP-T132', '2026-10-30T19:54:04Z', 'ref', '—', '463a343');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28896, 'IP-T133', '2026-10-30T19:54:12Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28897, 'IP-T133', '2026-10-30T19:54:12Z', 'ref', '—', '463a343');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28898, 'IP-T135', '2026-10-30T19:54:17Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28899, 'IP-T135', '2026-10-30T19:54:17Z', 'ref', '—', '463a343');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28900, 'IP-T134', '2026-10-30T19:54:24Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28901, 'IP-T134', '2026-10-30T19:54:24Z', 'ref', '—', '090e38f');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28902, 'M.ORCH-T1307', '2026-10-30T19:54:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28903, 'M.COMP-T117', '2026-10-30T19:54:28Z', 'priority', '100018', '100004');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28904, 'IP-T136', '2026-10-30T19:54:30Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28905, 'IP-T136', '2026-10-30T19:54:30Z', 'ref', '—', 'a744d8b');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28906, 'M.IDEA-T27', '2026-10-30T19:54:30Z', 'priority', '100017', '100003');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28907, 'M.ORCH-T1307', '2026-10-30T19:54:31Z', 'priority', '0', '100002');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28908, 'IP-T85', '2026-10-30T19:55:23Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28909, 'IP-T85', '2026-10-30T19:55:23Z', 'ref', '—', 'df5f2f2 ConfirmationStoreTests.Hash_ChangesWithAnyOrderField_ButNotWithTheNote');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28910, 'IP-T91', '2026-10-30T19:55:25Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28911, 'IP-T91', '2026-10-30T19:55:25Z', 'ref', '—', 'fe72a2a ConfirmationStoreTests');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28912, 'PRS-T795', '2026-10-30T19:55:31Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28913, 'PRS-T795', '2026-10-30T19:55:32Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28914, 'PRS-T795', '2026-10-30T19:55:32Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28915, 'PRS-T795', '2026-10-30T19:55:32Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28916, 'PRS-T795', '2026-10-30T19:55:32Z', 'label', NULL, 'needs:author');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28917, 'PRS-T795', '2026-10-30T19:55:32Z', 'label', NULL, 'seq:0064');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28918, 'PRS-T795', '2026-10-30T19:55:42Z', 'working', NULL, 'faf7d526-0cf8-4d25-9ad6-d948bee9d6e0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28919, 'IP-T66', '2026-10-30T19:58:37Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28920, 'IP-T66', '2026-10-30T19:58:37Z', 'ref', '—', 'c4193c3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28921, 'IP-T67', '2026-10-30T19:58:38Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28922, 'IP-T67', '2026-10-30T19:58:38Z', 'ref', '—', 'c4193c3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28923, 'IP-T68', '2026-10-30T19:58:39Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28924, 'IP-T68', '2026-10-30T19:58:39Z', 'ref', '—', 'c4193c3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28925, 'IP-T70', '2026-10-30T19:58:40Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28926, 'IP-T70', '2026-10-30T19:58:40Z', 'ref', '—', 'c4193c3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28927, 'PRS-T796', '2026-10-30T19:58:41Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28928, 'IP-T73', '2026-10-30T19:58:42Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28929, 'IP-T73', '2026-10-30T19:58:42Z', 'ref', '—', 'c4193c3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28930, 'PRS-T796', '2026-10-30T19:58:42Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28931, 'PRS-T796', '2026-10-30T19:58:42Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28932, 'PRS-T796', '2026-10-30T19:58:42Z', 'label', NULL, 'book:srzr');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28933, 'PRS-T796', '2026-10-30T19:58:42Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28934, 'PRS-T796', '2026-10-30T19:58:42Z', 'label', NULL, 'seq:0152');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28935, 'PRS-T797', '2026-10-30T19:58:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28936, 'PRS-T797', '2026-10-30T19:58:45Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28937, 'PRS-T797', '2026-10-30T19:58:45Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28938, 'PRS-T797', '2026-10-30T19:58:45Z', 'label', NULL, 'book:pxl');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28939, 'PRS-T797', '2026-10-30T19:58:45Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28940, 'PRS-T797', '2026-10-30T19:58:45Z', 'label', NULL, 'seq:0160');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28941, 'PRS-T798', '2026-10-30T19:58:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28942, 'PRS-T798', '2026-10-30T19:58:47Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28943, 'PRS-T798', '2026-10-30T19:58:47Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28944, 'PRS-T798', '2026-10-30T19:58:47Z', 'label', NULL, 'book:test');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28945, 'PRS-T798', '2026-10-30T19:58:47Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28946, 'PRS-T798', '2026-10-30T19:58:47Z', 'label', NULL, 'seq:0168');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28947, 'PRS-T799', '2026-10-30T19:58:48Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28948, 'PRS-T799', '2026-10-30T19:58:49Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28949, 'PRS-T799', '2026-10-30T19:58:49Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28950, 'PRS-T799', '2026-10-30T19:58:49Z', 'label', NULL, 'book:atte');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28951, 'PRS-T799', '2026-10-30T19:58:49Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28952, 'PRS-T799', '2026-10-30T19:58:49Z', 'label', NULL, 'seq:0176');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28953, 'PRS-T800', '2026-10-30T19:58:50Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28954, 'PRS-T800', '2026-10-30T19:58:51Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28955, 'PRS-T800', '2026-10-30T19:58:51Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28956, 'PRS-T800', '2026-10-30T19:58:51Z', 'label', NULL, 'book:btl');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28957, 'PRS-T800', '2026-10-30T19:58:51Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28958, 'PRS-T800', '2026-10-30T19:58:51Z', 'label', NULL, 'seq:0184');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28959, 'PRS-T801', '2026-10-30T19:58:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28960, 'PRS-T801', '2026-10-30T19:58:53Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28961, 'PRS-T801', '2026-10-30T19:58:53Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28962, 'PRS-T801', '2026-10-30T19:58:53Z', 'label', NULL, 'book:dwiace');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28963, 'PRS-T801', '2026-10-30T19:58:53Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28964, 'PRS-T801', '2026-10-30T19:58:53Z', 'label', NULL, 'seq:0192');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28965, 'PRS-T802', '2026-10-30T19:58:53Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28966, 'PRS-T802', '2026-10-30T19:58:55Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28967, 'PRS-T802', '2026-10-30T19:58:55Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28968, 'PRS-T802', '2026-10-30T19:58:55Z', 'label', NULL, 'book:crit');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28969, 'PRS-T802', '2026-10-30T19:58:55Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28970, 'PRS-T802', '2026-10-30T19:58:55Z', 'label', NULL, 'seq:0200');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28971, 'PRS-T803', '2026-10-30T19:58:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28972, 'PRS-T803', '2026-10-30T19:58:56Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28973, 'PRS-T803', '2026-10-30T19:58:56Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28974, 'PRS-T803', '2026-10-30T19:58:56Z', 'label', NULL, 'book:tlc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28975, 'PRS-T803', '2026-10-30T19:58:56Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28976, 'PRS-T803', '2026-10-30T19:58:56Z', 'label', NULL, 'seq:0208');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28977, 'PRS-T804', '2026-10-30T19:58:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28978, 'PRS-T804', '2026-10-30T19:58:58Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28979, 'PRS-T804', '2026-10-30T19:58:58Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28980, 'PRS-T804', '2026-10-30T19:58:58Z', 'label', NULL, 'book:sprw');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28981, 'PRS-T804', '2026-10-30T19:58:58Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28982, 'PRS-T804', '2026-10-30T19:58:58Z', 'label', NULL, 'seq:0216');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28983, 'PRS-T805', '2026-10-30T19:58:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28984, 'PRS-T805', '2026-10-30T19:59:00Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28985, 'PRS-T805', '2026-10-30T19:59:00Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28986, 'PRS-T805', '2026-10-30T19:59:00Z', 'label', NULL, 'book:mxg');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28987, 'PRS-T805', '2026-10-30T19:59:00Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28988, 'PRS-T805', '2026-10-30T19:59:00Z', 'label', NULL, 'seq:0224');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28989, 'PRS-T806', '2026-10-30T19:59:01Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28990, 'PRS-T806', '2026-10-30T19:59:02Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28991, 'PRS-T806', '2026-10-30T19:59:02Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28992, 'PRS-T806', '2026-10-30T19:59:02Z', 'label', NULL, 'book:vatd');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28993, 'PRS-T806', '2026-10-30T19:59:02Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28994, 'PRS-T806', '2026-10-30T19:59:02Z', 'label', NULL, 'seq:0232');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28995, 'PRS-T807', '2026-10-30T19:59:03Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28996, 'PRS-T807', '2026-10-30T19:59:04Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28997, 'PRS-T807', '2026-10-30T19:59:04Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28998, 'PRS-T807', '2026-10-30T19:59:04Z', 'label', NULL, 'book:bcoda');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (28999, 'PRS-T807', '2026-10-30T19:59:04Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29000, 'PRS-T807', '2026-10-30T19:59:04Z', 'label', NULL, 'seq:0240');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29001, 'PRS-T808', '2026-10-30T19:59:05Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29002, 'PRS-T808', '2026-10-30T19:59:06Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29003, 'PRS-T808', '2026-10-30T19:59:06Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29004, 'PRS-T808', '2026-10-30T19:59:06Z', 'label', NULL, 'book:undr');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29005, 'PRS-T808', '2026-10-30T19:59:06Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29006, 'PRS-T808', '2026-10-30T19:59:06Z', 'label', NULL, 'seq:0248');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29007, 'PRS-T809', '2026-10-30T19:59:07Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29008, 'PRS-T809', '2026-10-30T19:59:08Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29009, 'PRS-T809', '2026-10-30T19:59:08Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29010, 'PRS-T809', '2026-10-30T19:59:08Z', 'label', NULL, 'book:twu');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29011, 'PRS-T809', '2026-10-30T19:59:08Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29012, 'PRS-T809', '2026-10-30T19:59:08Z', 'label', NULL, 'seq:0256');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29013, 'PRS-T810', '2026-10-30T19:59:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29014, 'PRS-T810', '2026-10-30T19:59:10Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29015, 'PRS-T810', '2026-10-30T19:59:10Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29016, 'PRS-T810', '2026-10-30T19:59:10Z', 'label', NULL, 'book:nxr');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29017, 'PRS-T810', '2026-10-30T19:59:10Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29018, 'PRS-T810', '2026-10-30T19:59:10Z', 'label', NULL, 'seq:0264');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29019, 'PRS-T811', '2026-10-30T19:59:11Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29020, 'PRS-T811', '2026-10-30T19:59:12Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29021, 'PRS-T811', '2026-10-30T19:59:12Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29022, 'PRS-T811', '2026-10-30T19:59:12Z', 'label', NULL, 'book:cxc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29023, 'PRS-T811', '2026-10-30T19:59:12Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29024, 'PRS-T811', '2026-10-30T19:59:12Z', 'label', NULL, 'seq:0272');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29025, 'PRS-T812', '2026-10-30T19:59:13Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29026, 'PRS-T812', '2026-10-30T19:59:14Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29027, 'PRS-T812', '2026-10-30T19:59:14Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29028, 'PRS-T812', '2026-10-30T19:59:14Z', 'label', NULL, 'book:twd');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29029, 'PRS-T812', '2026-10-30T19:59:14Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29030, 'PRS-T812', '2026-10-30T19:59:14Z', 'label', NULL, 'seq:0280');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29031, 'PRS-T813', '2026-10-30T19:59:15Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29032, 'PRS-T813', '2026-10-30T19:59:16Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29033, 'PRS-T813', '2026-10-30T19:59:16Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29034, 'PRS-T813', '2026-10-30T19:59:16Z', 'label', NULL, 'book:mnemo');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29035, 'PRS-T813', '2026-10-30T19:59:16Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29036, 'PRS-T813', '2026-10-30T19:59:16Z', 'label', NULL, 'seq:0288');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29037, 'PRS-T814', '2026-10-30T19:59:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29038, 'PRS-T814', '2026-10-30T19:59:18Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29039, 'PRS-T814', '2026-10-30T19:59:18Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29040, 'PRS-T814', '2026-10-30T19:59:18Z', 'label', NULL, 'book:rtr');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29041, 'PRS-T814', '2026-10-30T19:59:18Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29042, 'PRS-T814', '2026-10-30T19:59:18Z', 'label', NULL, 'seq:0296');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29043, 'PRS-T815', '2026-10-30T19:59:18Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29044, 'PRS-T815', '2026-10-30T19:59:20Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29045, 'PRS-T815', '2026-10-30T19:59:20Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29046, 'PRS-T815', '2026-10-30T19:59:20Z', 'label', NULL, 'book:pieces');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29047, 'PRS-T815', '2026-10-30T19:59:20Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29048, 'PRS-T815', '2026-10-30T19:59:20Z', 'label', NULL, 'seq:0304');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29049, 'PRS-T816', '2026-10-30T19:59:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29050, 'PRS-T816', '2026-10-30T19:59:21Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29051, 'PRS-T816', '2026-10-30T19:59:21Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29052, 'PRS-T816', '2026-10-30T19:59:21Z', 'label', NULL, 'book:wells');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29053, 'PRS-T816', '2026-10-30T19:59:21Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29054, 'PRS-T816', '2026-10-30T19:59:21Z', 'label', NULL, 'seq:0312');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29055, 'PRS-T817', '2026-10-30T19:59:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29056, 'PRS-T817', '2026-10-30T19:59:23Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29057, 'PRS-T817', '2026-10-30T19:59:23Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29058, 'PRS-T817', '2026-10-30T19:59:23Z', 'label', NULL, 'book:the-ur');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29059, 'PRS-T817', '2026-10-30T19:59:23Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29060, 'PRS-T817', '2026-10-30T19:59:23Z', 'label', NULL, 'seq:0320');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -50772,7 +50994,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T112', 'proposed', -1, '2026-10-24T17:52:32Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T113', 'proposed', -1, '2026-10-24T17:52:34Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T114', 'approved', 0, '2026-10-24T18:58:57Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T117', 'proposed', 100018, '2026-10-29T18:26:32Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T117', 'proposed', 100004, '2026-10-30T19:54:28Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T12', 'approved', 0, '2026-10-20T16:16:37Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T120', 'proposed', 0, '2026-10-28T02:39:06Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T121', 'proposed', 0, '2026-10-28T02:39:07Z', NULL);
@@ -50831,7 +51053,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.IDEA-T19', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.IDEA-T20', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.IDEA-T23', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.IDEA-T27', 'proposed', 100017, '2026-10-29T18:26:33Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.IDEA-T27', 'proposed', 100003, '2026-10-30T19:54:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.IDEA-T5', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LEGN-T17', 'approved', 5, '2026-10-21T04:35:36Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LEGN-T18', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
@@ -50960,6 +51182,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1263', 'proposed', 100003, '2026-10-29T03:29:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1275', 'proposed', 100002, '2026-10-29T03:29:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1298', 'approved', 0, '2026-10-29T18:27:29Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1307', 'proposed', 100002, '2026-10-30T19:54:31Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T172', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T181', 'approved', 0, '2026-10-20T17:30:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T182', 'approved', 0, '2026-10-20T17:30:39Z', NULL);
@@ -52555,7 +52778,6 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('USOD-T9', 'approved', 0, '2026-10-22T23:02:27Z', NULL);
 
 -- ticket_work
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T291', NULL, 0, NULL, 'df7997fa-d41b-461b-a88b-098887d5ffaf', '2026-10-30T19:47:40Z', '2026-10-30T19:47:40Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
@@ -52638,6 +52860,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T91', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T23:09:54Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T58', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:02:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T795', NULL, 0, NULL, 'faf7d526-0cf8-4d25-9ad6-d948bee9d6e0', '2026-10-30T19:55:42Z', '2026-10-30T19:55:42Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T111', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:34:40Z');
@@ -52779,7 +53002,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTO-T94', NULL, 0, NULL, '8e10d3d7-6913-43f7-a57a-a774eb73fe40', '2026-10-30T19:41:13Z', '2026-10-30T19:41:13Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.OVW-T26', NULL, 0, 'shampoo1232@mindattic.com', '12fd3110-ee17-448d-84de-55fa5e99f3f9', '2026-10-30T15:49:13Z', '2026-10-30T15:49:13Z');
 
 -- ticket_notes
@@ -53040,6 +53262,22 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (162, 'PR
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (163, 'IP-T33', 'ryand', '2026-10-30T19:22:32Z', 'Landed with IP-T32 in 2193f54: EF finds migrations in the DbContext''s assembly, so Data and Migrations had to move in one commit. No MigrationsAssembly override needed; dotnet ef --project IdiotProof.Core --startup-project IdiotProof.Blazor.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (164, 'IP-T38', 'ryand', '2026-10-30T19:27:01Z', 'TradingStateService moved with IP-T39 instead (depends on LlmVotingResult). UserKeyService pulled forward from IP-T41.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (165, 'RTO-T93', 'ryand', '2026-10-30T19:40:43Z', 'Fixed: AbilityCasterMainWeaponHasAmmo added to ReflexShot_Ability and Overwatch_Ability blueprints, redone via Harmony prefix to check the active ranged weapon (Abilities.RangedWeapon) instead of the stock main/off-hand-only lookup. Overwatch''s in-flight shots (including the follow-up) are already gated by AbilityOnTrigger.IsAvailable since it''s the weapon''s own real attack ability.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (166, 'RTO-T94', 'ryand', '2026-10-30T19:50:41Z', 'Implemented: Reflex Shot''s triggered shot now flags IsAttackOfOpportunity=true via a new shared Harmony patch (Abilities_AttackOfOpportunity on PartOverwatch.TryTriggerAttack) that both Reflex Shot and Overwatch funnel through, replacing the clone-swap that used to live only in OverwatchCone_ChooseShots. All three (Reflex Shot, Overwatch, Suppression) now also gate each triggered shot on the base game''s own per-round attack-of-opportunity budget (PartUnitCombatState.CanAttackOfOpportunity/AttacksOfOpportunityMadeThisTurnCount, the AttackOfOpportunityCount stat -- the same Combat-Reflexes-style economy melee threats already use), spending one reaction only when a shot actually queues. Player characters and Elite+ enemies are exempt from that budget in the base game already, so this only reins in regular enemy mooks, matching how I chose to reuse the ruleset''s own reaction economy rather than inventing a new limiter (considered XCOM''s per-overwatcher model but this mod''s own shot-budget/re-shot rules already cover that angle).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (167, 'IP-T51', 'ryand', '2026-10-30T19:52:40Z', 'Landed in cb745b8 together with IP-T51..T54 (the contract types reference each other: OperationContext carries the OperationDescriptor, IOperation returns OperationResult). Tests: OperationContractTests, OperationCatalogTests.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (168, 'IP-T52', 'ryand', '2026-10-30T19:52:47Z', 'Landed in cb745b8 together with IP-T51..T54 (the contract types reference each other: OperationContext carries the OperationDescriptor, IOperation returns OperationResult). Tests: OperationContractTests, OperationCatalogTests.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (169, 'IP-T53', 'ryand', '2026-10-30T19:52:55Z', 'Landed in cb745b8 together with IP-T51..T54 (the contract types reference each other: OperationContext carries the OperationDescriptor, IOperation returns OperationResult). Tests: OperationContractTests, OperationCatalogTests.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (170, 'IP-T54', 'ryand', '2026-10-30T19:53:02Z', 'Landed in cb745b8 together with IP-T51..T54 (the contract types reference each other: OperationContext carries the OperationDescriptor, IOperation returns OperationResult). Tests: OperationContractTests, OperationCatalogTests.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (171, 'IP-T127', 'ryand', '2026-10-30T19:53:29Z', 'Landed in 463a343 together with IP-T127..T133/T135: one coupled renderer (StrategyStamp.cs + Stamp/*.cs). Tests in a744d8b (IP-T136).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (172, 'IP-T128', 'ryand', '2026-10-30T19:53:38Z', 'Landed in 463a343 together with IP-T127..T133/T135: one coupled renderer (StrategyStamp.cs + Stamp/*.cs). Tests in a744d8b (IP-T136).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (173, 'IP-T129', 'ryand', '2026-10-30T19:53:43Z', 'Landed in 463a343 together with IP-T127..T133/T135: one coupled renderer (StrategyStamp.cs + Stamp/*.cs). Tests in a744d8b (IP-T136).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (174, 'IP-T130', 'ryand', '2026-10-30T19:53:55Z', 'Landed in 463a343 together with IP-T127..T133/T135: one coupled renderer (StrategyStamp.cs + Stamp/*.cs). Tests in a744d8b (IP-T136).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (175, 'IP-T131', 'ryand', '2026-10-30T19:54:03Z', 'Landed in 463a343 together with IP-T127..T133/T135: one coupled renderer (StrategyStamp.cs + Stamp/*.cs). Tests in a744d8b (IP-T136).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (176, 'IP-T132', 'ryand', '2026-10-30T19:54:11Z', 'Landed in 463a343 together with IP-T127..T133/T135: one coupled renderer (StrategyStamp.cs + Stamp/*.cs). Tests in a744d8b (IP-T136).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (177, 'IP-T133', 'ryand', '2026-10-30T19:54:16Z', 'Landed in 463a343 together with IP-T127..T133/T135: one coupled renderer (StrategyStamp.cs + Stamp/*.cs). Tests in a744d8b (IP-T136).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (178, 'IP-T135', 'ryand', '2026-10-30T19:54:23Z', 'Landed in 463a343 together with IP-T127..T133/T135: one coupled renderer (StrategyStamp.cs + Stamp/*.cs). Tests in a744d8b (IP-T136).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (179, 'IP-T74', 'ryand', '2026-10-30T19:58:43Z', 'Wired in c4193c3 (Hub calls AddIdiotProofMonitor unless IDIOTPROOF_HUB_MONITOR=0). Not yet run with the Monitor hosted — close after a live-hours Hub run shows the lease + ticks.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (180, 'IP-T76', 'ryand', '2026-10-30T19:58:44Z', 'AddWindowsService wired in c4193c3; service install/run-as-user verification belongs with IP-T84.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (181, 'IP-T77', 'ryand', '2026-10-30T19:58:44Z', 'Port-in-use path prints a clear message in c4193c3 (Kestrel bind is the single-instance guard). Needs a test with two Hubs.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
@@ -61645,6 +61883,199 @@ Austin (the Chicago West Side district inside the GLMZ) read as Austin, Texas. R
 - every prose mention in every GLMZ book (The Long Cut carries most; The Ur, Wells, Pieces and others a few)
 - beat summaries that name it
 Pairings with Garfield stay (Cicero/Garfield seam). Archive each book before its prose changes. No re-read now (write before read); phase 5 covers it.', '2026-10-30T19:19:32Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T795', 'The vertical city. The author''s words, 2026-10-30, verbatim:
+
+1. "explain how the higher tiers of the GLMZ are super structures supported on struts that sit above the ground so that there are neighboorhood devoid of sky, the arcologies are high enough off the ground supported by think pillars which allow them to share the same horizontal space, but be above the ground; so not only do corponations live around the Seams, they live above them; spot lights and lamps making artificial suns and complex security networks to monitor their ''footprints''; sometimes tiers exist on tip of other tiers, or across multiple tiers, showing that even living above the ground doesn''t gaurentee you a clear view of the sky; freedom is a icy blue sky in Feburary cloudless skies"
+2. "so GLMZ goes as down under ground to The Deep, the place and the entity and up to the seams and up to Tiered CorpoNations; and then even Aeroblocs that simply sit suspended in the sky for the ultra wealthy; thats atleast 6 layers of rich above ground dwelling poverty"
+3. "Tier 1: Millionaires; still wage slaves; Tier 2: Billionaires, middle managers; Tier 3: C-Suite; Tier 4: Actual royalty and dynasties (think Saudi Price levels of oppulance); Tier 5: ???"
+4. "drone/robot patrols" (the footprint security)
+
+The stack, bottom to top: The Deep (place and entity) > the Seams in shadow (under the decks, no sky, floodlight suns, watched footprints) > the open Seams > Tier 1 > Tier 2 > Tier 3 > Tier 4 > aeroblocs. The Seams hold no Tier.
+
+Open author calls (needs:author):
+- What Tier 5 is (proposed: a rumor on the page, SuperMinds as the truth revealed in Cyberocracy).
+- What the structures are called: "tiers" or "decks" (architecture: pilotis, platforms over air rights, Metabolist "artificial ground", Isozaki''s City in the Air, Friedman''s Ville Spatiale).
+
+Then:
+- Record the words above as a universe law (no pattern).
+- Rewrite the world facts: geography (vertical stack, pillars, footprints, artificial suns, drone and robot patrols, decks over decks, the February sky as freedom); the Tier system (all Tiers are rich, the Seams are untiered); UBC goes to the untiered; Pulse sponsorship; rename the neuretic grades (Standard/Extend/Prime/Atlas) so "Tier" means class only; drop "Tier vs Altitude are independent".
+- File the per-book sweep tickets (old "Tier" usage, skyless streets, footprint patrols) for phase 3.', '2026-10-30T19:55:31Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T796', 'Bring Steppin'' Razor into line with the vertical city (laws 01a18e63 and 01a18e63-cae7, world facts "The vertical city"):
+- "Tier" means a citizen''s class AND the tier they live on: Tier 1 millionaires (still wage slaves), Tier 2 billionaires/middle managers, Tier 3 the C-suite, Tier 4 royalty and dynasties, Tier 5 a rumor never resolved. The Seams are untiered. Fix every old use (a "Tier 1 resident" on UBC, Tier as a neuretic grade: use Standard, Extend, Prime, Atlas).
+- Street scenes under a tier have no sky: the tier''s underside for a ceiling, floodlights and lamp arrays as artificial suns, the footprint watched by cameras, sensor grids, drone and robot patrols. Show it where the book is on the ground; one or two precise images, no exposition.
+- Stacked tiers are one corporate family, parent on top; separate CorpoNations never touch, even vertically.
+- The sky is rationed: an icy blue, cloudless February sky is freedom. Use it once at most, where it is earned.
+Hand splices only; archive the book first; restate each edited beat''s summary. No read now (write before read); phase 5 covers it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION). ORDER: writing before reading.', '2026-10-30T19:58:41Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T797', 'Bring Pixel into line with the vertical city (laws 01a18e63 and 01a18e63-cae7, world facts "The vertical city"):
+- "Tier" means a citizen''s class AND the tier they live on: Tier 1 millionaires (still wage slaves), Tier 2 billionaires/middle managers, Tier 3 the C-suite, Tier 4 royalty and dynasties, Tier 5 a rumor never resolved. The Seams are untiered. Fix every old use (a "Tier 1 resident" on UBC, Tier as a neuretic grade: use Standard, Extend, Prime, Atlas).
+- Street scenes under a tier have no sky: the tier''s underside for a ceiling, floodlights and lamp arrays as artificial suns, the footprint watched by cameras, sensor grids, drone and robot patrols. Show it where the book is on the ground; one or two precise images, no exposition.
+- Stacked tiers are one corporate family, parent on top; separate CorpoNations never touch, even vertically.
+- The sky is rationed: an icy blue, cloudless February sky is freedom. Use it once at most, where it is earned.
+Hand splices only; archive the book first; restate each edited beat''s summary. No read now (write before read); phase 5 covers it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION). ORDER: writing before reading.', '2026-10-30T19:58:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T798', 'Bring Testament into line with the vertical city (laws 01a18e63 and 01a18e63-cae7, world facts "The vertical city"):
+- "Tier" means a citizen''s class AND the tier they live on: Tier 1 millionaires (still wage slaves), Tier 2 billionaires/middle managers, Tier 3 the C-suite, Tier 4 royalty and dynasties, Tier 5 a rumor never resolved. The Seams are untiered. Fix every old use (a "Tier 1 resident" on UBC, Tier as a neuretic grade: use Standard, Extend, Prime, Atlas).
+- Street scenes under a tier have no sky: the tier''s underside for a ceiling, floodlights and lamp arrays as artificial suns, the footprint watched by cameras, sensor grids, drone and robot patrols. Show it where the book is on the ground; one or two precise images, no exposition.
+- Stacked tiers are one corporate family, parent on top; separate CorpoNations never touch, even vertically.
+- The sky is rationed: an icy blue, cloudless February sky is freedom. Use it once at most, where it is earned.
+Hand splices only; archive the book first; restate each edited beat''s summary. No read now (write before read); phase 5 covers it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION). ORDER: writing before reading.', '2026-10-30T19:58:46Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T799', 'Bring Attendance into line with the vertical city (laws 01a18e63 and 01a18e63-cae7, world facts "The vertical city"):
+- "Tier" means a citizen''s class AND the tier they live on: Tier 1 millionaires (still wage slaves), Tier 2 billionaires/middle managers, Tier 3 the C-suite, Tier 4 royalty and dynasties, Tier 5 a rumor never resolved. The Seams are untiered. Fix every old use (a "Tier 1 resident" on UBC, Tier as a neuretic grade: use Standard, Extend, Prime, Atlas).
+- Street scenes under a tier have no sky: the tier''s underside for a ceiling, floodlights and lamp arrays as artificial suns, the footprint watched by cameras, sensor grids, drone and robot patrols. Show it where the book is on the ground; one or two precise images, no exposition.
+- Stacked tiers are one corporate family, parent on top; separate CorpoNations never touch, even vertically.
+- The sky is rationed: an icy blue, cloudless February sky is freedom. Use it once at most, where it is earned.
+Hand splices only; archive the book first; restate each edited beat''s summary. No read now (write before read); phase 5 covers it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION). ORDER: writing before reading.', '2026-10-30T19:58:48Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T800', 'Bring Between the Lines into line with the vertical city (laws 01a18e63 and 01a18e63-cae7, world facts "The vertical city"):
+- "Tier" means a citizen''s class AND the tier they live on: Tier 1 millionaires (still wage slaves), Tier 2 billionaires/middle managers, Tier 3 the C-suite, Tier 4 royalty and dynasties, Tier 5 a rumor never resolved. The Seams are untiered. Fix every old use (a "Tier 1 resident" on UBC, Tier as a neuretic grade: use Standard, Extend, Prime, Atlas).
+- Street scenes under a tier have no sky: the tier''s underside for a ceiling, floodlights and lamp arrays as artificial suns, the footprint watched by cameras, sensor grids, drone and robot patrols. Show it where the book is on the ground; one or two precise images, no exposition.
+- Stacked tiers are one corporate family, parent on top; separate CorpoNations never touch, even vertically.
+- The sky is rationed: an icy blue, cloudless February sky is freedom. Use it once at most, where it is earned.
+Hand splices only; archive the book first; restate each edited beat''s summary. No read now (write before read); phase 5 covers it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION). ORDER: writing before reading.', '2026-10-30T19:58:50Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T801', 'Bring Death Whispers in a Cat''s Ear into line with the vertical city (laws 01a18e63 and 01a18e63-cae7, world facts "The vertical city"):
+- "Tier" means a citizen''s class AND the tier they live on: Tier 1 millionaires (still wage slaves), Tier 2 billionaires/middle managers, Tier 3 the C-suite, Tier 4 royalty and dynasties, Tier 5 a rumor never resolved. The Seams are untiered. Fix every old use (a "Tier 1 resident" on UBC, Tier as a neuretic grade: use Standard, Extend, Prime, Atlas).
+- Street scenes under a tier have no sky: the tier''s underside for a ceiling, floodlights and lamp arrays as artificial suns, the footprint watched by cameras, sensor grids, drone and robot patrols. Show it where the book is on the ground; one or two precise images, no exposition.
+- Stacked tiers are one corporate family, parent on top; separate CorpoNations never touch, even vertically.
+- The sky is rationed: an icy blue, cloudless February sky is freedom. Use it once at most, where it is earned.
+Hand splices only; archive the book first; restate each edited beat''s summary. No read now (write before read); phase 5 covers it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION). ORDER: writing before reading.', '2026-10-30T19:58:51Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T802', 'Bring Critical Mass into line with the vertical city (laws 01a18e63 and 01a18e63-cae7, world facts "The vertical city"):
+- "Tier" means a citizen''s class AND the tier they live on: Tier 1 millionaires (still wage slaves), Tier 2 billionaires/middle managers, Tier 3 the C-suite, Tier 4 royalty and dynasties, Tier 5 a rumor never resolved. The Seams are untiered. Fix every old use (a "Tier 1 resident" on UBC, Tier as a neuretic grade: use Standard, Extend, Prime, Atlas).
+- Street scenes under a tier have no sky: the tier''s underside for a ceiling, floodlights and lamp arrays as artificial suns, the footprint watched by cameras, sensor grids, drone and robot patrols. Show it where the book is on the ground; one or two precise images, no exposition.
+- Stacked tiers are one corporate family, parent on top; separate CorpoNations never touch, even vertically.
+- The sky is rationed: an icy blue, cloudless February sky is freedom. Use it once at most, where it is earned.
+Hand splices only; archive the book first; restate each edited beat''s summary. No read now (write before read); phase 5 covers it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION). ORDER: writing before reading.', '2026-10-30T19:58:53Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T803', 'Bring The Long Cut into line with the vertical city (laws 01a18e63 and 01a18e63-cae7, world facts "The vertical city"):
+- "Tier" means a citizen''s class AND the tier they live on: Tier 1 millionaires (still wage slaves), Tier 2 billionaires/middle managers, Tier 3 the C-suite, Tier 4 royalty and dynasties, Tier 5 a rumor never resolved. The Seams are untiered. Fix every old use (a "Tier 1 resident" on UBC, Tier as a neuretic grade: use Standard, Extend, Prime, Atlas).
+- Street scenes under a tier have no sky: the tier''s underside for a ceiling, floodlights and lamp arrays as artificial suns, the footprint watched by cameras, sensor grids, drone and robot patrols. Show it where the book is on the ground; one or two precise images, no exposition.
+- Stacked tiers are one corporate family, parent on top; separate CorpoNations never touch, even vertically.
+- The sky is rationed: an icy blue, cloudless February sky is freedom. Use it once at most, where it is earned.
+Hand splices only; archive the book first; restate each edited beat''s summary. No read now (write before read); phase 5 covers it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION). ORDER: writing before reading.', '2026-10-30T19:58:55Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T804', 'Bring Sparrow into line with the vertical city (laws 01a18e63 and 01a18e63-cae7, world facts "The vertical city"):
+- "Tier" means a citizen''s class AND the tier they live on: Tier 1 millionaires (still wage slaves), Tier 2 billionaires/middle managers, Tier 3 the C-suite, Tier 4 royalty and dynasties, Tier 5 a rumor never resolved. The Seams are untiered. Fix every old use (a "Tier 1 resident" on UBC, Tier as a neuretic grade: use Standard, Extend, Prime, Atlas).
+- Street scenes under a tier have no sky: the tier''s underside for a ceiling, floodlights and lamp arrays as artificial suns, the footprint watched by cameras, sensor grids, drone and robot patrols. Show it where the book is on the ground; one or two precise images, no exposition.
+- Stacked tiers are one corporate family, parent on top; separate CorpoNations never touch, even vertically.
+- The sky is rationed: an icy blue, cloudless February sky is freedom. Use it once at most, where it is earned.
+Hand splices only; archive the book first; restate each edited beat''s summary. No read now (write before read); phase 5 covers it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION). ORDER: writing before reading.', '2026-10-30T19:58:57Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T805', 'Bring Magenta & Gunmetal into line with the vertical city (laws 01a18e63 and 01a18e63-cae7, world facts "The vertical city"):
+- "Tier" means a citizen''s class AND the tier they live on: Tier 1 millionaires (still wage slaves), Tier 2 billionaires/middle managers, Tier 3 the C-suite, Tier 4 royalty and dynasties, Tier 5 a rumor never resolved. The Seams are untiered. Fix every old use (a "Tier 1 resident" on UBC, Tier as a neuretic grade: use Standard, Extend, Prime, Atlas).
+- Street scenes under a tier have no sky: the tier''s underside for a ceiling, floodlights and lamp arrays as artificial suns, the footprint watched by cameras, sensor grids, drone and robot patrols. Show it where the book is on the ground; one or two precise images, no exposition.
+- Stacked tiers are one corporate family, parent on top; separate CorpoNations never touch, even vertically.
+- The sky is rationed: an icy blue, cloudless February sky is freedom. Use it once at most, where it is earned.
+Hand splices only; archive the book first; restate each edited beat''s summary. No read now (write before read); phase 5 covers it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION). ORDER: writing before reading.', '2026-10-30T19:58:59Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T806', 'Bring Vultures at the Door into line with the vertical city (laws 01a18e63 and 01a18e63-cae7, world facts "The vertical city"):
+- "Tier" means a citizen''s class AND the tier they live on: Tier 1 millionaires (still wage slaves), Tier 2 billionaires/middle managers, Tier 3 the C-suite, Tier 4 royalty and dynasties, Tier 5 a rumor never resolved. The Seams are untiered. Fix every old use (a "Tier 1 resident" on UBC, Tier as a neuretic grade: use Standard, Extend, Prime, Atlas).
+- Street scenes under a tier have no sky: the tier''s underside for a ceiling, floodlights and lamp arrays as artificial suns, the footprint watched by cameras, sensor grids, drone and robot patrols. Show it where the book is on the ground; one or two precise images, no exposition.
+- Stacked tiers are one corporate family, parent on top; separate CorpoNations never touch, even vertically.
+- The sky is rationed: an icy blue, cloudless February sky is freedom. Use it once at most, where it is earned.
+Hand splices only; archive the book first; restate each edited beat''s summary. No read now (write before read); phase 5 covers it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION). ORDER: writing before reading.', '2026-10-30T19:59:01Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T807', 'Bring Bushido Coda into line with the vertical city (laws 01a18e63 and 01a18e63-cae7, world facts "The vertical city"):
+- "Tier" means a citizen''s class AND the tier they live on: Tier 1 millionaires (still wage slaves), Tier 2 billionaires/middle managers, Tier 3 the C-suite, Tier 4 royalty and dynasties, Tier 5 a rumor never resolved. The Seams are untiered. Fix every old use (a "Tier 1 resident" on UBC, Tier as a neuretic grade: use Standard, Extend, Prime, Atlas).
+- Street scenes under a tier have no sky: the tier''s underside for a ceiling, floodlights and lamp arrays as artificial suns, the footprint watched by cameras, sensor grids, drone and robot patrols. Show it where the book is on the ground; one or two precise images, no exposition.
+- Stacked tiers are one corporate family, parent on top; separate CorpoNations never touch, even vertically.
+- The sky is rationed: an icy blue, cloudless February sky is freedom. Use it once at most, where it is earned.
+Hand splices only; archive the book first; restate each edited beat''s summary. No read now (write before read); phase 5 covers it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION). ORDER: writing before reading.', '2026-10-30T19:59:03Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T808', 'Bring Underclan into line with the vertical city (laws 01a18e63 and 01a18e63-cae7, world facts "The vertical city"):
+- "Tier" means a citizen''s class AND the tier they live on: Tier 1 millionaires (still wage slaves), Tier 2 billionaires/middle managers, Tier 3 the C-suite, Tier 4 royalty and dynasties, Tier 5 a rumor never resolved. The Seams are untiered. Fix every old use (a "Tier 1 resident" on UBC, Tier as a neuretic grade: use Standard, Extend, Prime, Atlas).
+- Street scenes under a tier have no sky: the tier''s underside for a ceiling, floodlights and lamp arrays as artificial suns, the footprint watched by cameras, sensor grids, drone and robot patrols. Show it where the book is on the ground; one or two precise images, no exposition.
+- Stacked tiers are one corporate family, parent on top; separate CorpoNations never touch, even vertically.
+- The sky is rationed: an icy blue, cloudless February sky is freedom. Use it once at most, where it is earned.
+Hand splices only; archive the book first; restate each edited beat''s summary. No read now (write before read); phase 5 covers it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION). ORDER: writing before reading.', '2026-10-30T19:59:05Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T809', 'Bring The Way Up into line with the vertical city (laws 01a18e63 and 01a18e63-cae7, world facts "The vertical city"):
+- "Tier" means a citizen''s class AND the tier they live on: Tier 1 millionaires (still wage slaves), Tier 2 billionaires/middle managers, Tier 3 the C-suite, Tier 4 royalty and dynasties, Tier 5 a rumor never resolved. The Seams are untiered. Fix every old use (a "Tier 1 resident" on UBC, Tier as a neuretic grade: use Standard, Extend, Prime, Atlas).
+- Street scenes under a tier have no sky: the tier''s underside for a ceiling, floodlights and lamp arrays as artificial suns, the footprint watched by cameras, sensor grids, drone and robot patrols. Show it where the book is on the ground; one or two precise images, no exposition.
+- Stacked tiers are one corporate family, parent on top; separate CorpoNations never touch, even vertically.
+- The sky is rationed: an icy blue, cloudless February sky is freedom. Use it once at most, where it is earned.
+Hand splices only; archive the book first; restate each edited beat''s summary. No read now (write before read); phase 5 covers it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION). ORDER: writing before reading.', '2026-10-30T19:59:07Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T810', 'Bring Neon & Rust into line with the vertical city (laws 01a18e63 and 01a18e63-cae7, world facts "The vertical city"):
+- "Tier" means a citizen''s class AND the tier they live on: Tier 1 millionaires (still wage slaves), Tier 2 billionaires/middle managers, Tier 3 the C-suite, Tier 4 royalty and dynasties, Tier 5 a rumor never resolved. The Seams are untiered. Fix every old use (a "Tier 1 resident" on UBC, Tier as a neuretic grade: use Standard, Extend, Prime, Atlas).
+- Street scenes under a tier have no sky: the tier''s underside for a ceiling, floodlights and lamp arrays as artificial suns, the footprint watched by cameras, sensor grids, drone and robot patrols. Show it where the book is on the ground; one or two precise images, no exposition.
+- Stacked tiers are one corporate family, parent on top; separate CorpoNations never touch, even vertically.
+- The sky is rationed: an icy blue, cloudless February sky is freedom. Use it once at most, where it is earned.
+Hand splices only; archive the book first; restate each edited beat''s summary. No read now (write before read); phase 5 covers it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION). ORDER: writing before reading.', '2026-10-30T19:59:09Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T811', 'Bring Crimson & Chrome into line with the vertical city (laws 01a18e63 and 01a18e63-cae7, world facts "The vertical city"):
+- "Tier" means a citizen''s class AND the tier they live on: Tier 1 millionaires (still wage slaves), Tier 2 billionaires/middle managers, Tier 3 the C-suite, Tier 4 royalty and dynasties, Tier 5 a rumor never resolved. The Seams are untiered. Fix every old use (a "Tier 1 resident" on UBC, Tier as a neuretic grade: use Standard, Extend, Prime, Atlas).
+- Street scenes under a tier have no sky: the tier''s underside for a ceiling, floodlights and lamp arrays as artificial suns, the footprint watched by cameras, sensor grids, drone and robot patrols. Show it where the book is on the ground; one or two precise images, no exposition.
+- Stacked tiers are one corporate family, parent on top; separate CorpoNations never touch, even vertically.
+- The sky is rationed: an icy blue, cloudless February sky is freedom. Use it once at most, where it is earned.
+Hand splices only; archive the book first; restate each edited beat''s summary. No read now (write before read); phase 5 covers it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION). ORDER: writing before reading.', '2026-10-30T19:59:11Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T812', 'Bring The Way Down into line with the vertical city (laws 01a18e63 and 01a18e63-cae7, world facts "The vertical city"):
+- "Tier" means a citizen''s class AND the tier they live on: Tier 1 millionaires (still wage slaves), Tier 2 billionaires/middle managers, Tier 3 the C-suite, Tier 4 royalty and dynasties, Tier 5 a rumor never resolved. The Seams are untiered. Fix every old use (a "Tier 1 resident" on UBC, Tier as a neuretic grade: use Standard, Extend, Prime, Atlas).
+- Street scenes under a tier have no sky: the tier''s underside for a ceiling, floodlights and lamp arrays as artificial suns, the footprint watched by cameras, sensor grids, drone and robot patrols. Show it where the book is on the ground; one or two precise images, no exposition.
+- Stacked tiers are one corporate family, parent on top; separate CorpoNations never touch, even vertically.
+- The sky is rationed: an icy blue, cloudless February sky is freedom. Use it once at most, where it is earned.
+Hand splices only; archive the book first; restate each edited beat''s summary. No read now (write before read); phase 5 covers it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION). ORDER: writing before reading.', '2026-10-30T19:59:13Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T813', 'Bring Mnemosync into line with the vertical city (laws 01a18e63 and 01a18e63-cae7, world facts "The vertical city"):
+- "Tier" means a citizen''s class AND the tier they live on: Tier 1 millionaires (still wage slaves), Tier 2 billionaires/middle managers, Tier 3 the C-suite, Tier 4 royalty and dynasties, Tier 5 a rumor never resolved. The Seams are untiered. Fix every old use (a "Tier 1 resident" on UBC, Tier as a neuretic grade: use Standard, Extend, Prime, Atlas).
+- Street scenes under a tier have no sky: the tier''s underside for a ceiling, floodlights and lamp arrays as artificial suns, the footprint watched by cameras, sensor grids, drone and robot patrols. Show it where the book is on the ground; one or two precise images, no exposition.
+- Stacked tiers are one corporate family, parent on top; separate CorpoNations never touch, even vertically.
+- The sky is rationed: an icy blue, cloudless February sky is freedom. Use it once at most, where it is earned.
+Hand splices only; archive the book first; restate each edited beat''s summary. No read now (write before read); phase 5 covers it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION). ORDER: writing before reading.', '2026-10-30T19:59:15Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T814', 'Bring Read the Room into line with the vertical city (laws 01a18e63 and 01a18e63-cae7, world facts "The vertical city"):
+- "Tier" means a citizen''s class AND the tier they live on: Tier 1 millionaires (still wage slaves), Tier 2 billionaires/middle managers, Tier 3 the C-suite, Tier 4 royalty and dynasties, Tier 5 a rumor never resolved. The Seams are untiered. Fix every old use (a "Tier 1 resident" on UBC, Tier as a neuretic grade: use Standard, Extend, Prime, Atlas).
+- Street scenes under a tier have no sky: the tier''s underside for a ceiling, floodlights and lamp arrays as artificial suns, the footprint watched by cameras, sensor grids, drone and robot patrols. Show it where the book is on the ground; one or two precise images, no exposition.
+- Stacked tiers are one corporate family, parent on top; separate CorpoNations never touch, even vertically.
+- The sky is rationed: an icy blue, cloudless February sky is freedom. Use it once at most, where it is earned.
+Hand splices only; archive the book first; restate each edited beat''s summary. No read now (write before read); phase 5 covers it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION). ORDER: writing before reading.', '2026-10-30T19:59:17Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T815', 'Bring Pieces into line with the vertical city (laws 01a18e63 and 01a18e63-cae7, world facts "The vertical city"):
+- "Tier" means a citizen''s class AND the tier they live on: Tier 1 millionaires (still wage slaves), Tier 2 billionaires/middle managers, Tier 3 the C-suite, Tier 4 royalty and dynasties, Tier 5 a rumor never resolved. The Seams are untiered. Fix every old use (a "Tier 1 resident" on UBC, Tier as a neuretic grade: use Standard, Extend, Prime, Atlas).
+- Street scenes under a tier have no sky: the tier''s underside for a ceiling, floodlights and lamp arrays as artificial suns, the footprint watched by cameras, sensor grids, drone and robot patrols. Show it where the book is on the ground; one or two precise images, no exposition.
+- Stacked tiers are one corporate family, parent on top; separate CorpoNations never touch, even vertically.
+- The sky is rationed: an icy blue, cloudless February sky is freedom. Use it once at most, where it is earned.
+Hand splices only; archive the book first; restate each edited beat''s summary. No read now (write before read); phase 5 covers it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION). ORDER: writing before reading.', '2026-10-30T19:59:18Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T816', 'Bring Wells into line with the vertical city (laws 01a18e63 and 01a18e63-cae7, world facts "The vertical city"):
+- "Tier" means a citizen''s class AND the tier they live on: Tier 1 millionaires (still wage slaves), Tier 2 billionaires/middle managers, Tier 3 the C-suite, Tier 4 royalty and dynasties, Tier 5 a rumor never resolved. The Seams are untiered. Fix every old use (a "Tier 1 resident" on UBC, Tier as a neuretic grade: use Standard, Extend, Prime, Atlas).
+- Street scenes under a tier have no sky: the tier''s underside for a ceiling, floodlights and lamp arrays as artificial suns, the footprint watched by cameras, sensor grids, drone and robot patrols. Show it where the book is on the ground; one or two precise images, no exposition.
+- Stacked tiers are one corporate family, parent on top; separate CorpoNations never touch, even vertically.
+- The sky is rationed: an icy blue, cloudless February sky is freedom. Use it once at most, where it is earned.
+Hand splices only; archive the book first; restate each edited beat''s summary. No read now (write before read); phase 5 covers it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION). ORDER: writing before reading.', '2026-10-30T19:59:20Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T817', 'Bring The Ur into line with the vertical city (laws 01a18e63 and 01a18e63-cae7, world facts "The vertical city"):
+- "Tier" means a citizen''s class AND the tier they live on: Tier 1 millionaires (still wage slaves), Tier 2 billionaires/middle managers, Tier 3 the C-suite, Tier 4 royalty and dynasties, Tier 5 a rumor never resolved. The Seams are untiered. Fix every old use (a "Tier 1 resident" on UBC, Tier as a neuretic grade: use Standard, Extend, Prime, Atlas).
+- Street scenes under a tier have no sky: the tier''s underside for a ceiling, floodlights and lamp arrays as artificial suns, the footprint watched by cameras, sensor grids, drone and robot patrols. Show it where the book is on the ground; one or two precise images, no exposition.
+- Stacked tiers are one corporate family, parent on top; separate CorpoNations never touch, even vertically.
+- The sky is rationed: an icy blue, cloudless February sky is freedom. Use it once at most, where it is earned.
+Hand splices only; archive the book first; restate each edited beat''s summary. No read now (write before read); phase 5 covers it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION). ORDER: writing before reading.', '2026-10-30T19:59:22Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T206', 'RB-T172 verified in the editor (sm_hub_1, sm_pier_1, sp_soc_2): pedlight_flash, lightbar, arcade screens and oilriga frames on g_tColor; blackwater water_normal frames on g_tNormal; sewer_water and surf offsets; fire_pallet selfillum flicker; clouds.vmat g_vTexCoordScrollSpeed 0.043,0.025. Not reachable from the maps imported so far: clublight, TV screens, highlights. Import a map that uses them, play, read the attributes with sbox-cli run_csharp.', '2026-10-26T05:18:06Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T207', 'Left out of RB-T193 (the werewolf''s hint navigation), all in vampire.dll''s CNPC_VWerewolf:
 
@@ -65267,6 +65698,121 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T794', 'glmz-vi
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T794', 'phase:1-world', '2026-10-30T19:19:33Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T794', 'seq:0065', '2026-10-30T19:19:33Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T794', 'theme:geography', '2026-10-30T19:19:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T795', 'glmz-vision', '2026-10-30T19:55:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T795', 'needs:author', '2026-10-30T19:55:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T795', 'phase:1-world', '2026-10-30T19:55:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T795', 'seq:0064', '2026-10-30T19:55:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T795', 'theme:geography', '2026-10-30T19:55:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T796', 'book:srzr', '2026-10-30T19:58:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T796', 'glmz-vision', '2026-10-30T19:58:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T796', 'phase:3-books', '2026-10-30T19:58:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T796', 'seq:0152', '2026-10-30T19:58:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T796', 'theme:geography', '2026-10-30T19:58:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T797', 'book:pxl', '2026-10-30T19:58:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T797', 'glmz-vision', '2026-10-30T19:58:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T797', 'phase:3-books', '2026-10-30T19:58:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T797', 'seq:0160', '2026-10-30T19:58:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T797', 'theme:geography', '2026-10-30T19:58:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T798', 'book:test', '2026-10-30T19:58:47Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T798', 'glmz-vision', '2026-10-30T19:58:47Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T798', 'phase:3-books', '2026-10-30T19:58:47Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T798', 'seq:0168', '2026-10-30T19:58:47Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T798', 'theme:geography', '2026-10-30T19:58:47Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T799', 'book:atte', '2026-10-30T19:58:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T799', 'glmz-vision', '2026-10-30T19:58:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T799', 'phase:3-books', '2026-10-30T19:58:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T799', 'seq:0176', '2026-10-30T19:58:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T799', 'theme:geography', '2026-10-30T19:58:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T800', 'book:btl', '2026-10-30T19:58:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T800', 'glmz-vision', '2026-10-30T19:58:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T800', 'phase:3-books', '2026-10-30T19:58:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T800', 'seq:0184', '2026-10-30T19:58:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T800', 'theme:geography', '2026-10-30T19:58:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T801', 'book:dwiace', '2026-10-30T19:58:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T801', 'glmz-vision', '2026-10-30T19:58:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T801', 'phase:3-books', '2026-10-30T19:58:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T801', 'seq:0192', '2026-10-30T19:58:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T801', 'theme:geography', '2026-10-30T19:58:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T802', 'book:crit', '2026-10-30T19:58:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T802', 'glmz-vision', '2026-10-30T19:58:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T802', 'phase:3-books', '2026-10-30T19:58:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T802', 'seq:0200', '2026-10-30T19:58:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T802', 'theme:geography', '2026-10-30T19:58:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T803', 'book:tlc', '2026-10-30T19:58:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T803', 'glmz-vision', '2026-10-30T19:58:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T803', 'phase:3-books', '2026-10-30T19:58:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T803', 'seq:0208', '2026-10-30T19:58:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T803', 'theme:geography', '2026-10-30T19:58:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T804', 'book:sprw', '2026-10-30T19:58:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T804', 'glmz-vision', '2026-10-30T19:58:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T804', 'phase:3-books', '2026-10-30T19:58:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T804', 'seq:0216', '2026-10-30T19:58:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T804', 'theme:geography', '2026-10-30T19:58:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T805', 'book:mxg', '2026-10-30T19:59:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T805', 'glmz-vision', '2026-10-30T19:59:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T805', 'phase:3-books', '2026-10-30T19:59:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T805', 'seq:0224', '2026-10-30T19:59:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T805', 'theme:geography', '2026-10-30T19:59:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T806', 'book:vatd', '2026-10-30T19:59:02Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T806', 'glmz-vision', '2026-10-30T19:59:02Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T806', 'phase:3-books', '2026-10-30T19:59:02Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T806', 'seq:0232', '2026-10-30T19:59:02Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T806', 'theme:geography', '2026-10-30T19:59:02Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T807', 'book:bcoda', '2026-10-30T19:59:04Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T807', 'glmz-vision', '2026-10-30T19:59:04Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T807', 'phase:3-books', '2026-10-30T19:59:04Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T807', 'seq:0240', '2026-10-30T19:59:04Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T807', 'theme:geography', '2026-10-30T19:59:04Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T808', 'book:undr', '2026-10-30T19:59:06Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T808', 'glmz-vision', '2026-10-30T19:59:06Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T808', 'phase:3-books', '2026-10-30T19:59:06Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T808', 'seq:0248', '2026-10-30T19:59:06Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T808', 'theme:geography', '2026-10-30T19:59:06Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T809', 'book:twu', '2026-10-30T19:59:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T809', 'glmz-vision', '2026-10-30T19:59:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T809', 'phase:3-books', '2026-10-30T19:59:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T809', 'seq:0256', '2026-10-30T19:59:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T809', 'theme:geography', '2026-10-30T19:59:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T810', 'book:nxr', '2026-10-30T19:59:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T810', 'glmz-vision', '2026-10-30T19:59:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T810', 'phase:3-books', '2026-10-30T19:59:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T810', 'seq:0264', '2026-10-30T19:59:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T810', 'theme:geography', '2026-10-30T19:59:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T811', 'book:cxc', '2026-10-30T19:59:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T811', 'glmz-vision', '2026-10-30T19:59:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T811', 'phase:3-books', '2026-10-30T19:59:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T811', 'seq:0272', '2026-10-30T19:59:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T811', 'theme:geography', '2026-10-30T19:59:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T812', 'book:twd', '2026-10-30T19:59:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T812', 'glmz-vision', '2026-10-30T19:59:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T812', 'phase:3-books', '2026-10-30T19:59:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T812', 'seq:0280', '2026-10-30T19:59:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T812', 'theme:geography', '2026-10-30T19:59:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T813', 'book:mnemo', '2026-10-30T19:59:16Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T813', 'glmz-vision', '2026-10-30T19:59:16Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T813', 'phase:3-books', '2026-10-30T19:59:16Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T813', 'seq:0288', '2026-10-30T19:59:16Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T813', 'theme:geography', '2026-10-30T19:59:16Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T814', 'book:rtr', '2026-10-30T19:59:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T814', 'glmz-vision', '2026-10-30T19:59:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T814', 'phase:3-books', '2026-10-30T19:59:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T814', 'seq:0296', '2026-10-30T19:59:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T814', 'theme:geography', '2026-10-30T19:59:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T815', 'book:pieces', '2026-10-30T19:59:20Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T815', 'glmz-vision', '2026-10-30T19:59:20Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T815', 'phase:3-books', '2026-10-30T19:59:20Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T815', 'seq:0304', '2026-10-30T19:59:20Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T815', 'theme:geography', '2026-10-30T19:59:20Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T816', 'book:wells', '2026-10-30T19:59:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T816', 'glmz-vision', '2026-10-30T19:59:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T816', 'phase:3-books', '2026-10-30T19:59:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T816', 'seq:0312', '2026-10-30T19:59:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T816', 'theme:geography', '2026-10-30T19:59:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T817', 'book:the-ur', '2026-10-30T19:59:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T817', 'glmz-vision', '2026-10-30T19:59:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T817', 'phase:3-books', '2026-10-30T19:59:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T817', 'seq:0320', '2026-10-30T19:59:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T817', 'theme:geography', '2026-10-30T19:59:23Z');
 
 -- repo_renames
 INSERT INTO repo_renames (seq, old_name, new_name, at, reason) VALUES (1, 'GTFO.AbsurdWeapons', 'GTFO.EZ.AbsurdWeapons', '2026-10-19T02:14:58Z', 'Renamed under GTFO.EZ, its core mod, before release (G.EZ-T77)');
