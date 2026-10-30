@@ -7899,6 +7899,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T376', 'Prose', 376, '2026-10-29', 'fix', 'closed', 'BookRepository/ChapterRepository.ResolveCharacterIdByName silently picks an arbitrary character on an ambiguous name', '568ed7d6a', 375, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T377', 'Prose', 377, '2026-10-29', 'fix', 'closed', 'LocalReviewLlm.CallAsync reports the original response''s status/reason after its context-overflow retry fails differently', '568ed7d6a', 376, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T378', 'Prose', 378, '2026-10-30', 'docs', 'closed', 'Log the Eat the Rich round (core tenet, 5 laws, 156 splices across 22 GLMZ books) in GLMZ_CONSOLIDATION.md', '—', 377, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T379', 'Prose', 379, '2026-10-30', 'fix', 'closed', 'Fix old GLMZ defects flagged by the Eat the Rich readers (cop words, lawyer, wrong year, doubled word, banned images)', '—', 378, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -45767,6 +45768,9 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25082, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25083, 'U.HARE-T113', '2026-10-30T05:33:52Z', 'working', '90be2624-ab61-45bb-8010-60c3ad5fbfcf', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25084, 'PRS-T378', '2026-10-30T06:05:28Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25085, 'PRS-T378', '2026-10-30T06:05:37Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25086, 'PRS-T379', '2026-10-30T14:02:33Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25087, 'PRS-T379', '2026-10-30T14:02:43Z', 'working', NULL, 'faf7d526-0cf8-4d25-9ad6-d948bee9d6e0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25088, 'PRS-T379', '2026-10-30T14:07:40Z', 'status', 'open', 'closed');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -47880,6 +47884,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T91', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T23:09:54Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T58', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:02:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T379', NULL, 0, NULL, 'faf7d526-0cf8-4d25-9ad6-d948bee9d6e0', '2026-10-30T14:02:43Z', '2026-10-30T14:02:43Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T111', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:34:40Z');
