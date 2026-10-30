@@ -7898,6 +7898,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T375', 'Prose', 375, '2026-10-29', 'fix', 'closed', 'EpisodeGeneratorService.IsSectionNumeral misclassifies an ellipsis-only paragraph as a roman-numeral marker and drops it', '568ed7d6a', 374, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T376', 'Prose', 376, '2026-10-29', 'fix', 'closed', 'BookRepository/ChapterRepository.ResolveCharacterIdByName silently picks an arbitrary character on an ambiguous name', '568ed7d6a', 375, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T377', 'Prose', 377, '2026-10-29', 'fix', 'closed', 'LocalReviewLlm.CallAsync reports the original response''s status/reason after its context-overflow retry fails differently', '568ed7d6a', 376, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T378', 'Prose', 378, '2026-10-30', 'docs', 'closed', 'Log the Eat the Rich round (core tenet, 5 laws, 156 splices across 22 GLMZ books) in GLMZ_CONSOLIDATION.md', '—', 377, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -45764,6 +45765,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25080, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25081, 'U.HARE-T110', '2026-10-30T05:33:15Z', 'ref', '—', '9cce896');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25082, 'U.HARE-T110', '2026-10-30T05:33:26Z', 'working', 'ryandebraal@mindattic.com (90be2624-ab61-45bb-8010-60c3ad5fbfcf)', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25083, 'U.HARE-T113', '2026-10-30T05:33:52Z', 'working', '90be2624-ab61-45bb-8010-60c3ad5fbfcf', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25084, 'PRS-T378', '2026-10-30T06:05:28Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25085, 'PRS-T378', '2026-10-30T06:05:37Z', 'status', 'open', 'closed');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
