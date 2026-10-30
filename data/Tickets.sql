@@ -7912,7 +7912,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T387', 'Prose', 387, '2026-10-30', 'chore', 'closed', 'The Long Cut: read the 2 never-read beats', '—', 386, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T388', 'Prose', 388, '2026-10-30', 'chore', 'closed', 'The Long Cut: settle the read note on the departure beat order (#10568)', '—', 387, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T389', 'Prose', 389, '2026-10-30', 'chore', 'closed', 'Bushido Coda chapter 1: clear the factory capture', '—', 388, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T390', 'Prose', 390, '2026-10-30', 'chore', 'open', 'Halcyon: Combine is the CorpoNation, Civil Security is its paramilitary outfit (author ruling); fix records and tags', '—', 389, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T390', 'Prose', 390, '2026-10-30', 'chore', 'closed', 'Halcyon: Combine is the CorpoNation, Civil Security is its paramilitary outfit (author ruling); fix records and tags', '—', 389, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T391', 'Prose', 391, '2026-10-30', 'fix', 'closed', 'Testament #22214: Brandt''s message reads as a testament with a hidden name the book never pays off; make it the summons it is', '—', 390, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
@@ -45862,6 +45862,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25162, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25163, 'U.HARE-T113', '2026-10-30T15:53:54Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25164, 'U.HARE-T113', '2026-10-30T15:53:54Z', 'ref', 'U.HARE-T110', 'ece9412');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25165, 'U.HARE-T113', '2026-10-30T15:54:08Z', 'working', 'shampoo1232@mindattic.com (12fd3110-ee17-448d-84de-55fa5e99f3f9)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25166, 'PRS-T390', '2026-10-30T15:59:36Z', 'status', 'open', 'closed');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
