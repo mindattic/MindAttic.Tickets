@@ -7074,7 +7074,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1301', 'MindAttic.Orchestrator', 1301, '2026-10-29', 'feature', 'closed', 'Strip the dashboard to the login tab strip, the CLI tab strip and the CLI only: hide the limit bars, stats, chart, tickets and footer', '8a7403c4', 1300, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1302', 'MindAttic.Orchestrator', 1302, '2026-10-29', 'feature', 'closed', 'Add a scrollbar to the app so the user can scroll down to the bottom', '—', 1301, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1303', 'MindAttic.Orchestrator', 1303, '2026-10-30', 'fix', 'open', 'CLI terminal extends past the bottom of the app window; needs a bottom buffer', '—', 1302, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1304', 'MindAttic.Orchestrator', 1304, '2026-10-30', 'feature', 'open', 'Move the 5-hour and weekly utilization charts into right-click modal popups (5hr Limit / Weekly Limit) on each login tab', '—', 1303, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1304', 'MindAttic.Orchestrator', 1304, '2026-10-30', 'feature', 'wont-do', 'Move the 5-hour and weekly utilization charts into right-click modal popups (5hr Limit / Weekly Limit) on each login tab', 'superseded by M.ORCH-T1302 (scrolling-body layout); user reversed modal approach', 1303, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T1', 'MindAttic.Psst', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.PSST-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T2', 'MindAttic.Psst', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for ContactBook (Contacts/Contact.cs): Find matches name case-insensitively before phone, falls back to 10-digit phone match across formats (+1, dashes, parens), returns null for blank or unmatched input; WithAdded rejects blank name/phone and case-insensitive duplicate names and leaves the original book unchanged; WithoutContact removes only the first case-insensitive match and returns null when absent - this is how psst sms resolves recipients, so a wrong match texts the wrong person', '865fde2', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T3', 'MindAttic.Psst', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched', '—', 2, '| M.PSST-T3 | 2026-10-14 | chore | open | NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched | — |');
@@ -7915,6 +7915,280 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T390', 'Prose', 390, '2026-10-30', 'chore', 'closed', 'Halcyon: Combine is the CorpoNation, Civil Security is its paramilitary outfit (author ruling); fix records and tags', '—', 389, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T391', 'Prose', 391, '2026-10-30', 'fix', 'closed', 'Testament #22214: Brandt''s message reads as a testament with a hidden name the book never pays off; make it the summons it is', '—', 390, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T392', 'Prose', 392, '2026-10-30', 'chore', 'open', 'GLMZ vision: turn all remaining GLMZ work into ordered, labeled tickets (writing first, reading last) toward one original cyberpunk universe', '—', 391, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T393', 'Prose', 393, '2026-10-30', 'docs', 'open', 'GLMZ P0 rule 01: Writing before reading: confirm, then record as a universe law', '—', 392, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T394', 'Prose', 394, '2026-10-30', 'docs', 'open', 'GLMZ P0 rule 02: One change, one ticket: confirm, then record as a universe law', '—', 393, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T395', 'Prose', 395, '2026-10-30', 'docs', 'open', 'GLMZ P0 rule 03: Canon before prose: confirm, then record as a universe law', '—', 394, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T396', 'Prose', 396, '2026-10-30', 'docs', 'open', 'GLMZ P0 rule 04: The singular point: confirm, then record as a universe law', '—', 395, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T397', 'Prose', 397, '2026-10-30', 'docs', 'open', 'GLMZ P0 rule 05: Kyle is the spine: confirm, then record as a universe law', '—', 396, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T398', 'Prose', 398, '2026-10-30', 'docs', 'open', 'GLMZ P0 rule 06: Every lead is a new window: confirm, then record as a universe law', '—', 397, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T399', 'Prose', 399, '2026-10-30', 'docs', 'open', 'GLMZ P0 rule 07: The coasts fell; nobody says why: confirm, then record as a universe law', '—', 398, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T400', 'Prose', 400, '2026-10-30', 'docs', 'open', 'GLMZ P0 rule 08: Elsewhere stays offstage: confirm, then record as a universe law', '—', 399, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T401', 'Prose', 401, '2026-10-30', 'docs', 'open', 'GLMZ P0 rule 09: One diaspora, no quarters: confirm, then record as a universe law', '—', 400, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T402', 'Prose', 402, '2026-10-30', 'docs', 'open', 'GLMZ P0 rule 10: Villains believe: confirm, then record as a universe law', '—', 401, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T403', 'Prose', 403, '2026-10-30', 'docs', 'open', 'GLMZ P0 rule 11: Minds on a spectrum: confirm, then record as a universe law', '—', 402, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T404', 'Prose', 404, '2026-10-30', 'docs', 'open', 'GLMZ P0 rule 12: Lowest lows, highest highs: confirm, then record as a universe law', '—', 403, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T405', 'Prose', 405, '2026-10-30', 'docs', 'open', 'GLMZ P0 rule 13: Neon action is earned: confirm, then record as a universe law', '—', 404, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T406', 'Prose', 406, '2026-10-30', 'docs', 'open', 'GLMZ P0 rule 14: Love triangles are structural: confirm, then record as a universe law', '—', 405, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T407', 'Prose', 407, '2026-10-30', 'docs', 'open', 'GLMZ P0 rule 15: Wholly original: confirm, then record as a universe law', '—', 406, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T408', 'Prose', 408, '2026-10-30', 'docs', 'open', 'GLMZ P0 rule 16: Records follow prose: confirm, then record as a universe law', '—', 407, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T409', 'Prose', 409, '2026-10-30', 'docs', 'open', 'GLMZ P0 rule 17: Laugh or you''d cry: confirm, then record as a universe law', '—', 408, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T410', 'Prose', 410, '2026-10-30', 'chore', 'open', 'GLMZ P0: label the already-open GLMZ tickets into this plan (book, phase) so nothing runs outside it', '—', 409, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T411', 'Prose', 411, '2026-10-30', 'chore', 'open', 'GLMZ P1 machine-mind: define the spectrum of minds as one canon ladder and record it', '—', 410, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T412', 'Prose', 412, '2026-10-30', 'chore', 'open', 'GLMZ P1 machine-mind: build the emergence timeline: when and where each machine mind woke', '—', 411, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T413', 'Prose', 413, '2026-10-30', 'chore', 'open', 'GLMZ P1 machine-mind: The Deep: place it on the ladder, give it a want, and record it', '—', 412, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T414', 'Prose', 414, '2026-10-30', 'chore', 'open', 'GLMZ P1 machine-mind: OBERON: place it on the ladder, give it a want, and record it', '—', 413, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T415', 'Prose', 415, '2026-10-30', 'chore', 'open', 'GLMZ P1 machine-mind: Green: place it on the ladder, give it a want, and record it', '—', 414, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T416', 'Prose', 416, '2026-10-30', 'chore', 'open', 'GLMZ P1 machine-mind: the Ur: place it on the ladder, give it a want, and record it', '—', 415, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T417', 'Prose', 417, '2026-10-30', 'chore', 'open', 'GLMZ P1 machine-mind: the Consensus: place it on the ladder, give it a want, and record it', '—', 416, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T418', 'Prose', 418, '2026-10-30', 'chore', 'open', 'GLMZ P1 machine-mind: the Cabal: place it on the ladder, give it a want, and record it', '—', 417, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T419', 'Prose', 419, '2026-10-30', 'chore', 'open', 'GLMZ P1 machine-mind: Cinderblock Ai and Oracle Drift: place it on the ladder, give it a want, and record it', '—', 418, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T420', 'Prose', 420, '2026-10-30', 'chore', 'open', 'GLMZ P1 machine-mind: sweep ''rogue AI'' vs ''Free'' vocabulary across all 22 books', '—', 419, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T421', 'Prose', 421, '2026-10-30', 'chore', 'open', 'GLMZ P1 machine-mind: Synthetic Personhood law: confirm what a Tier-3 Synthetic Person can own, vote, be and lose', '—', 420, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T422', 'Prose', 422, '2026-10-30', 'chore', 'open', 'GLMZ P1 machine-mind: the strays: canon for gene-modded and machine strays (lumen mice, glow-rats, Silver Pigeons, sentinel cats)', '—', 421, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T423', 'Prose', 423, '2026-10-30', 'chore', 'open', 'GLMZ P1 nano: one canonical nanotech rules record: what swarms can do, what they cannot, who owns them', '—', 422, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T424', 'Prose', 424, '2026-10-30', 'chore', 'open', 'GLMZ P1 nano: the Substrate: coverage map (core vs Seams), who runs it, what a lapse looks like', '—', 423, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T425', 'Prose', 425, '2026-10-30', 'chore', 'open', 'GLMZ P1 nano: consolidate the nano CorpoNation records (Axiom BioNanics, Cascadia BioNano, Cauldron x2, Fractum, Glyph, Meridian Nano-Defense, Null Dynamics, Oma, Threadline, Vexor, Pale Substrate, Chengdu Institute)', '—', 424, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T426', 'Prose', 426, '2026-10-30', 'chore', 'open', 'GLMZ P1 nano: counter-nano and the Bloom Quarter: decide the canon of nano disasters the street remembers', '—', 425, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T427', 'Prose', 427, '2026-10-30', 'chore', 'open', 'GLMZ P1 cyberware: neuretics canon: everyone has them; what tiers, what they do, what they cost to keep', '—', 426, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T428', 'Prose', 428, '2026-10-30', 'chore', 'open', 'GLMZ P1 cyberware: chassis and augmentation tiers (Tier 1-5, Caryatid-class, reinforced bone) as one table on a record', '—', 427, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T429', 'Prose', 429, '2026-10-30', 'chore', 'open', 'GLMZ P1 cyberware: licensing and compliance locks: how a CorpoNation leashes an augmented body', '—', 428, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T430', 'Prose', 430, '2026-10-30', 'chore', 'open', 'GLMZ P1 cyberware: NeoCortex: the Access Initiative, the hardware, and Kyle''s 2215 install as canon', '—', 429, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T431', 'Prose', 431, '2026-10-30', 'chore', 'open', 'GLMZ P1 cyberware: Kyle''s array and the low harmonic: what the reader may know by each book', '—', 430, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T432', 'Prose', 432, '2026-10-30', 'chore', 'open', 'GLMZ P1 genemods: genemod canon: who can buy what, what it costs, what it marks you as', '—', 431, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T433', 'Prose', 433, '2026-10-30', 'chore', 'open', 'GLMZ P1 genemods: Crucible Genomics and the Phenotype District: make it a place the books can stand in', '—', 432, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T434', 'Prose', 434, '2026-10-30', 'chore', 'open', 'GLMZ P1 genemods: Lacuna, Helix, Hansei: consolidate the genetics houses and give each a creed', '—', 433, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T435', 'Prose', 435, '2026-10-30', 'chore', 'open', 'GLMZ P1 genemods: the 2197 children: what was done to them, as canon every book agrees on', '—', 434, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T436', 'Prose', 436, '2026-10-30', 'chore', 'open', 'GLMZ P1 hyperreality: hyperreality canon: overlays, signs hanging in the air, ad tiers, the Volume, Simspace', '—', 435, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T437', 'Prose', 437, '2026-10-30', 'chore', 'open', 'GLMZ P1 hyperreality: the Volume: the broadcast sky, who owns it, what the heirs say on it', '—', 436, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T438', 'Prose', 438, '2026-10-30', 'chore', 'open', 'GLMZ P1 hyperreality: ad and product canon: a short list of recurring absurd products and slogans', '—', 437, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T439', 'Prose', 439, '2026-10-30', 'chore', 'open', 'GLMZ P1 hyperreality: the unmeshed and the dead zones: who lives outside the overlay and how it looks', '—', 438, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T440', 'Prose', 440, '2026-10-30', 'chore', 'open', 'GLMZ P1 diaspora: language: the street creole: which words from which tongues (Mandarin ''xie xie'', Spanish, Yoruba, Japanese, Tagalog, Arabic...) and who uses them; a small lexicon on vocabulary records', '—', 439, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T441', 'Prose', 441, '2026-10-30', 'chore', 'open', 'GLMZ P1 diaspora: food: the noodle stall, rat meat in the Warm, cultured protein, Koji Press; a recurring menu that mixes everything', '—', 440, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T442', 'Prose', 442, '2026-10-30', 'chore', 'open', 'GLMZ P1 diaspora: faith: shrines, saints, the Deep''s acolytes, temple and storefront church side by side; what people pray to in a dying city', '—', 441, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T443', 'Prose', 443, '2026-10-30', 'chore', 'open', 'GLMZ P1 diaspora: crews and gangs: Lotus Syndicate, Vultures, Underbelly, the Orvenne House; each blends East and West in structure and code; none is a lift of yakuza/triad/cartel tropes', '—', 442, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T444', 'Prose', 444, '2026-10-30', 'chore', 'open', 'GLMZ P1 diaspora: names: a naming census of every character: does the cast read as one diaspora? Flag clusters and stereotypes', '—', 443, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T445', 'Prose', 445, '2026-10-30', 'chore', 'open', 'GLMZ P1 diaspora: music: Pulse Rock, Seam radio, Fenris; the soundscape of the street', '—', 444, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T446', 'Prose', 446, '2026-10-30', 'chore', 'open', 'GLMZ P1 diaspora: script and signage: what languages the hyperreality signs and graffiti use, and in what mix', '—', 445, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T447', 'Prose', 447, '2026-10-30', 'chore', 'open', 'GLMZ P1 diaspora: honour and debt: the shared code of the street (favours, debts, face, the second-man rule) that every crew understands', '—', 446, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T448', 'Prose', 448, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: the extent: the GLMZ as the sprawl that swallowed the Midwest: Milwaukee to Cleveland (~500 km), the lakes, its edges', '—', 447, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T449', 'Prose', 449, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: the Seams map: where the Gray Zones run between CorpoNations; a short canonical list of named Seams districts', '—', 448, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T450', 'Prose', 450, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: Chicago core: the Loop, the Struts, the arcology legs, the underlevels', '—', 449, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T451', 'Prose', 451, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: the lakes and the Ur-606 black pyramid: what is seen from every shore', '—', 450, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T452', 'Prose', 452, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: Gary and the Ashgrave/Slagworks belt: the most polluted sovereign ground; who lives there', '—', 451, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T453', 'Prose', 453, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: the Detroit corridor: Rictus, Cinderblock, Nightshade, Pale Lantern; Detroit is inside the GLMZ (ruling)', '—', 452, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T454', 'Prose', 454, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: Milwaukee: Halcyon Garrison Complex, the Velvet Tine, Fenris''s city', '—', 453, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T455', 'Prose', 455, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: the Iowa Exclusion Zone: Ironclad Agrisystems and the 340 Behemoths that feed a third of the continent; seen only from the edge', '—', 454, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T456', 'Prose', 456, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: below: the Warm, the Old Deep, the bore: the underground as its own country (Underclan)', '—', 455, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T457', 'Prose', 457, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: The Long Cut is set in Austin (a relocation camp and its north grid), outside the GLMZ: move it inside, or rule it a sanctioned exception', '—', 456, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T458', 'Prose', 458, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: audit every scene set outside the GLMZ in all 22 books (Austin, Tunis platform, Rotterdam lane, others)', '—', 457, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T459', 'Prose', 459, '2026-10-30', 'chore', 'open', 'GLMZ P1 coasts: the coasts fell, never explained: sweep every book for any line that explains or investigates it', '—', 458, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T460', 'Prose', 460, '2026-10-30', 'chore', 'open', 'GLMZ P1 coasts: record the coast-fall as history fact (what is known, what is not) on the timeline record', '—', 459, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T461', 'Prose', 461, '2026-10-30', 'chore', 'open', 'GLMZ P1 corponations: Halcyon Combine: give it a king, a court, a tithe and a sincere creed; consolidate its records', '—', 460, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T462', 'Prose', 462, '2026-10-30', 'chore', 'open', 'GLMZ P1 corponations: Arcturus Defense Solutions: give it a king, a court, a tithe and a sincere creed; consolidate its records', '—', 461, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T463', 'Prose', 463, '2026-10-30', 'chore', 'open', 'GLMZ P1 corponations: Axiom: give it a king, a court, a tithe and a sincere creed; consolidate its records', '—', 462, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T464', 'Prose', 464, '2026-10-30', 'chore', 'open', 'GLMZ P1 corponations: Meridian: give it a king, a court, a tithe and a sincere creed; consolidate its records', '—', 463, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T465', 'Prose', 465, '2026-10-30', 'chore', 'open', 'GLMZ P1 corponations: Tessera: give it a king, a court, a tithe and a sincere creed; consolidate its records', '—', 464, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T466', 'Prose', 466, '2026-10-30', 'chore', 'open', 'GLMZ P1 corponations: Ringo Corponation: give it a king, a court, a tithe and a sincere creed; consolidate its records', '—', 465, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T467', 'Prose', 467, '2026-10-30', 'chore', 'open', 'GLMZ P1 corponations: Zheng-dao Bioelectric: give it a king, a court, a tithe and a sincere creed; consolidate its records', '—', 466, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T468', 'Prose', 468, '2026-10-30', 'chore', 'open', 'GLMZ P1 corponations: Helix Biosystems: give it a king, a court, a tithe and a sincere creed; consolidate its records', '—', 467, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T469', 'Prose', 469, '2026-10-30', 'chore', 'open', 'GLMZ P1 corponations: Lazarus Pharmaceuticals: give it a king, a court, a tithe and a sincere creed; consolidate its records', '—', 468, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T470', 'Prose', 470, '2026-10-30', 'chore', 'open', 'GLMZ P1 corponations: Remedios MedTech and MidNorth Medical: give it a king, a court, a tithe and a sincere creed; consolidate its records', '—', 469, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T471', 'Prose', 471, '2026-10-30', 'chore', 'open', 'GLMZ P1 corponations: Ouroboros Energy: give it a king, a court, a tithe and a sincere creed; consolidate its records', '—', 470, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T472', 'Prose', 472, '2026-10-30', 'chore', 'open', 'GLMZ P1 corponations: Carrion (Defense Works and the Vultures): give it a king, a court, a tithe and a sincere creed; consolidate its records', '—', 471, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T473', 'Prose', 473, '2026-10-30', 'chore', 'open', 'GLMZ P1 corponations: record hygiene: the CorpoNation with a blank name, empty stubs (AgriCore, Cellvault, DataEast...), and duplicates', '—', 472, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T474', 'Prose', 474, '2026-10-30', 'chore', 'open', 'GLMZ P1 corponations: fashion and product brands filed as CorpoNations (Ironmoth, Thornback, Hexline, Thornfield, Mekong Form, Velasca, Greymark, Casque & Veil...) become brands or subsidiaries', '—', 473, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T475', 'Prose', 475, '2026-10-30', 'chore', 'open', 'GLMZ P1 corponations: the Alaska Native corporations and other far charters: confirm they are elsewhere-only (mentioned in passing, never visited)', '—', 474, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T476', 'Prose', 476, '2026-10-30', 'chore', 'open', 'GLMZ P1 corponations: the feudal map: which CorpoNations border which Seams, and who is at war with whom', '—', 475, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T477', 'Prose', 477, '2026-10-30', 'chore', 'open', 'GLMZ P1 economy: money: Φ credits, credsticks, UBC as scrip, the quanta allotment sold forward', '—', 476, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T478', 'Prose', 478, '2026-10-30', 'chore', 'open', 'GLMZ P1 economy: the Tier system: Tier 1-5 citizenship and what each buys', '—', 477, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T479', 'Prose', 479, '2026-10-30', 'chore', 'open', 'GLMZ P1 economy: sponsorship and the citizenship lottery: how anyone climbs; how rarely', '—', 478, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T480', 'Prose', 480, '2026-10-30', 'chore', 'open', 'GLMZ P1 economy: taxes: the Air Tax and the tithe; who pays what to whom', '—', 479, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T481', 'Prose', 481, '2026-10-30', 'chore', 'open', 'GLMZ P1 timeline: one master history record: 2096 transfer and Blue Massacre, Schism era 2090s-2140s, Corridor Consolidation 2190s, 2197 children, through 2231', '—', 480, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T482', 'Prose', 482, '2026-10-30', 'chore', 'open', 'GLMZ P1 timeline: verify every book''s Node.Timeline value and in-book dates against the master record', '—', 481, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T483', 'Prose', 483, '2026-10-30', 'chore', 'open', 'GLMZ P1 timeline: character ages across the season: one pass over every lead''s birth year vs each book', '—', 482, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T484', 'Prose', 484, '2026-10-30', 'chore', 'open', 'GLMZ P1 dimensional: Schisms, apertures and the live-well drilling: the rules every book obeys, never the explanation', '—', 483, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T485', 'Prose', 485, '2026-10-30', 'chore', 'open', 'GLMZ P1 dimensional: Season 2 hook: the fifth ascending object (Sparrow logs it, Elias ''NOT RELAYED'')', '—', 484, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T486', 'Prose', 486, '2026-10-30', 'chore', 'open', 'GLMZ P2 kyle: Kyle Ellen Corbin''s season spine: his arc from Bushido Coda to the Cyberocracy finale on one page', '—', 485, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T487', 'Prose', 487, '2026-10-30', 'chore', 'open', 'GLMZ P2 kyle: Kyle''s touchpoint in every book he is not in: a person, place, object or rumour per book', '—', 486, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T488', 'Prose', 488, '2026-10-30', 'chore', 'open', 'GLMZ P2 kyle: Kyle''s record audit: ages, NeoCortex 2215 at 16, Silence, the bike, apartment 2D, Mrs. Chen, no family', '—', 487, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T489', 'Prose', 489, '2026-10-30', 'chore', 'open', 'GLMZ P2 kyle: Silence: the blade''s canon (forty inches, hung on a field, the name he will not dig for)', '—', 488, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T490', 'Prose', 490, '2026-10-30', 'chore', 'open', 'GLMZ P2 kyle: Kyle''s lowest low and highest high across the season: name the two scenes', '—', 489, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T491', 'Prose', 491, '2026-10-30', 'chore', 'open', 'GLMZ P2 kyle: Kyle''s voice: what makes his close-third different from every other lead', '—', 490, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T492', 'Prose', 492, '2026-10-30', 'chore', 'open', 'GLMZ P2 kyle: Kyle''s crew and circle (Sable, Pixel, Mrs. Chen, Vey, Boost and the kids, Sift): who they are to him by each book', '—', 491, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T493', 'Prose', 493, '2026-10-30', 'chore', 'open', 'GLMZ P2 kyle: the retrocausal secret: what each book may show of the entity without revealing it is Kyle', '—', 492, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T494', 'Prose', 494, '2026-10-30', 'chore', 'open', 'GLMZ P2 perspective: Pixel: what new window on the world this character opens, and is it unique', '—', 493, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T495', 'Prose', 495, '2026-10-30', 'chore', 'open', 'GLMZ P2 perspective: Bear (Boris): what new window on the world this character opens, and is it unique', '—', 494, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T496', 'Prose', 496, '2026-10-30', 'chore', 'open', 'GLMZ P2 perspective: Sasha Vo: what new window on the world this character opens, and is it unique', '—', 495, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T497', 'Prose', 497, '2026-10-30', 'chore', 'open', 'GLMZ P2 perspective: Ekow: what new window on the world this character opens, and is it unique', '—', 496, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T498', 'Prose', 498, '2026-10-30', 'chore', 'open', 'GLMZ P2 perspective: Doc Stash: what new window on the world this character opens, and is it unique', '—', 497, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T499', 'Prose', 499, '2026-10-30', 'chore', 'open', 'GLMZ P2 perspective: Ledger: what new window on the world this character opens, and is it unique', '—', 498, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T500', 'Prose', 500, '2026-10-30', 'chore', 'open', 'GLMZ P2 perspective: Glim: what new window on the world this character opens, and is it unique', '—', 499, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T501', 'Prose', 501, '2026-10-30', 'chore', 'open', 'GLMZ P2 perspective: Faith Larson: what new window on the world this character opens, and is it unique', '—', 500, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T502', 'Prose', 502, '2026-10-30', 'chore', 'open', 'GLMZ P2 perspective: Yemina Fola: what new window on the world this character opens, and is it unique', '—', 501, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T503', 'Prose', 503, '2026-10-30', 'chore', 'open', 'GLMZ P2 perspective: Rennick: what new window on the world this character opens, and is it unique', '—', 502, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T504', 'Prose', 504, '2026-10-30', 'chore', 'open', 'GLMZ P2 perspective: Idris: what new window on the world this character opens, and is it unique', '—', 503, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T505', 'Prose', 505, '2026-10-30', 'chore', 'open', 'GLMZ P2 perspective: Elias: what new window on the world this character opens, and is it unique', '—', 504, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T506', 'Prose', 506, '2026-10-30', 'chore', 'open', 'GLMZ P2 perspective: Sparrow: what new window on the world this character opens, and is it unique', '—', 505, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T507', 'Prose', 507, '2026-10-30', 'chore', 'open', 'GLMZ P2 perspective: Vox: what new window on the world this character opens, and is it unique', '—', 506, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T508', 'Prose', 508, '2026-10-30', 'chore', 'open', 'GLMZ P2 perspective: Rook: what new window on the world this character opens, and is it unique', '—', 507, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T509', 'Prose', 509, '2026-10-30', 'chore', 'open', 'GLMZ P2 perspective: Palesa: what new window on the world this character opens, and is it unique', '—', 508, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T510', 'Prose', 510, '2026-10-30', 'chore', 'open', 'GLMZ P2 perspective: Rampart (Reza Solano): what new window on the world this character opens, and is it unique', '—', 509, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T511', 'Prose', 511, '2026-10-30', 'chore', 'open', 'GLMZ P2 perspective: Cutout (Tavi Jeong): what new window on the world this character opens, and is it unique', '—', 510, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T512', 'Prose', 512, '2026-10-30', 'chore', 'open', 'GLMZ P2 perspective: Rafi Sarkissian: what new window on the world this character opens, and is it unique', '—', 511, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T513', 'Prose', 513, '2026-10-30', 'chore', 'open', 'GLMZ P2 perspective: Ethan (Fenris): what new window on the world this character opens, and is it unique', '—', 512, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T514', 'Prose', 514, '2026-10-30', 'chore', 'open', 'GLMZ P2 perspective: Sable: what new window on the world this character opens, and is it unique', '—', 513, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T515', 'Prose', 515, '2026-10-30', 'chore', 'open', 'GLMZ P2 perspective: Mrs. Chen: what new window on the world this character opens, and is it unique', '—', 514, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T516', 'Prose', 516, '2026-10-30', 'chore', 'open', 'GLMZ P2 perspective: Lydia Roth: what new window on the world this character opens, and is it unique', '—', 515, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T517', 'Prose', 517, '2026-10-30', 'chore', 'open', 'GLMZ P2 perspective: Hana Morimoto: what new window on the world this character opens, and is it unique', '—', 516, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T518', 'Prose', 518, '2026-10-30', 'chore', 'open', 'GLMZ P2 perspective: Nine, Seven and One: what new window on the world this character opens, and is it unique', '—', 517, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T519', 'Prose', 519, '2026-10-30', 'chore', 'open', 'GLMZ P2 villains: Mr. Able: make the villainy morally ambiguous: the reason a reader could hold', '—', 518, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T520', 'Prose', 520, '2026-10-30', 'chore', 'open', 'GLMZ P2 villains: the Assessor: make the villainy morally ambiguous: the reason a reader could hold', '—', 519, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T521', 'Prose', 521, '2026-10-30', 'chore', 'open', 'GLMZ P2 villains: Colonel Brandt: make the villainy morally ambiguous: the reason a reader could hold', '—', 520, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T522', 'Prose', 522, '2026-10-30', 'chore', 'open', 'GLMZ P2 villains: OBERON: make the villainy morally ambiguous: the reason a reader could hold', '—', 521, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T523', 'Prose', 523, '2026-10-30', 'chore', 'open', 'GLMZ P2 villains: Declan Iyengar: make the villainy morally ambiguous: the reason a reader could hold', '—', 522, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T524', 'Prose', 524, '2026-10-30', 'chore', 'open', 'GLMZ P2 villains: Kline and the Office: make the villainy morally ambiguous: the reason a reader could hold', '—', 523, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T525', 'Prose', 525, '2026-10-30', 'chore', 'open', 'GLMZ P2 villains: Remedios MedTech: make the villainy morally ambiguous: the reason a reader could hold', '—', 524, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T526', 'Prose', 526, '2026-10-30', 'chore', 'open', 'GLMZ P2 villains: the Vultures and Carrion: make the villainy morally ambiguous: the reason a reader could hold', '—', 525, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T527', 'Prose', 527, '2026-10-30', 'chore', 'open', 'GLMZ P2 villains: the Cabal: make the villainy morally ambiguous: the reason a reader could hold', '—', 526, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T528', 'Prose', 528, '2026-10-30', 'chore', 'open', 'GLMZ P2 villains: Halcyon Civil Security: make the villainy morally ambiguous: the reason a reader could hold', '—', 527, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T529', 'Prose', 529, '2026-10-30', 'chore', 'open', 'GLMZ P2 villains: Axiom: make the villainy morally ambiguous: the reason a reader could hold', '—', 528, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T530', 'Prose', 530, '2026-10-30', 'chore', 'open', 'GLMZ P2 love: audit every romantic thread in the 22 books: who, where, and whether it resolves', '—', 529, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T531', 'Prose', 531, '2026-10-30', 'chore', 'open', 'GLMZ P2 love: decide Season 1''s love triangles (three or four), each forcing a choice that moves the plot', '—', 530, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T532', 'Prose', 532, '2026-10-30', 'chore', 'open', 'GLMZ P2 love: plant each approved triangle across its books: first spark, the turn, the choice', '—', 531, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T533', 'Prose', 533, '2026-10-30', 'chore', 'open', 'GLMZ P2 love: the cost of love in a dying city: one recurring image per triangle that the finale pays off', '—', 532, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T534', 'Prose', 534, '2026-10-30', 'chore', 'open', 'GLMZ P2 ensemble: the team of nine (Kyle, Pixel, Bear, Sasha, Ekow, Stash, Ledger, Glim, Faith): supersede the old roster rulings', '—', 533, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T535', 'Prose', 535, '2026-10-30', 'chore', 'open', 'GLMZ P2 ensemble: no series-only characters: census Cyberocracy''s cast against the 19 earlier books', '—', 534, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T536', 'Prose', 536, '2026-10-30', 'chore', 'open', 'GLMZ P2 ensemble: the synthetic cast: give each machine character (OBERON, the Deep, Green, the Speaker, Lord Long Legs, the strays) a voice and a want', '—', 535, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T537', 'Prose', 537, '2026-10-30', 'chore', 'open', 'GLMZ P3 01 Steppin'' Razor: its thread into the singular point', '—', 536, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T538', 'Prose', 538, '2026-10-30', 'chore', 'open', 'GLMZ P3 01 Steppin'' Razor: Kyle''s touch', '—', 537, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T539', 'Prose', 539, '2026-10-30', 'chore', 'open', 'GLMZ P3 01 Steppin'' Razor: villain ambiguity', '—', 538, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T540', 'Prose', 540, '2026-10-30', 'chore', 'open', 'GLMZ P3 01 Steppin'' Razor: lowest low and highest high', '—', 539, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T541', 'Prose', 541, '2026-10-30', 'chore', 'open', 'GLMZ P3 01 Steppin'' Razor: neon action is earned', '—', 540, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T542', 'Prose', 542, '2026-10-30', 'chore', 'open', 'GLMZ P3 01 Steppin'' Razor: one diaspora on the street', '—', 541, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T543', 'Prose', 543, '2026-10-30', 'chore', 'open', 'GLMZ P3 01 Steppin'' Razor: machine minds and the strays', '—', 542, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T544', 'Prose', 544, '2026-10-30', 'chore', 'open', 'GLMZ P3 01 Steppin'' Razor: apply the Phase 1 world canon', '—', 543, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T545', 'Prose', 545, '2026-10-30', 'chore', 'open', 'GLMZ P3 02 Pixel: its thread into the singular point', '—', 544, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T546', 'Prose', 546, '2026-10-30', 'chore', 'open', 'GLMZ P3 02 Pixel: Kyle''s touch', '—', 545, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T547', 'Prose', 547, '2026-10-30', 'chore', 'open', 'GLMZ P3 02 Pixel: villain ambiguity', '—', 546, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T548', 'Prose', 548, '2026-10-30', 'chore', 'open', 'GLMZ P3 02 Pixel: lowest low and highest high', '—', 547, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T549', 'Prose', 549, '2026-10-30', 'chore', 'open', 'GLMZ P3 02 Pixel: neon action is earned', '—', 548, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T550', 'Prose', 550, '2026-10-30', 'chore', 'open', 'GLMZ P3 02 Pixel: one diaspora on the street', '—', 549, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T551', 'Prose', 551, '2026-10-30', 'chore', 'open', 'GLMZ P3 02 Pixel: machine minds and the strays', '—', 550, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T552', 'Prose', 552, '2026-10-30', 'chore', 'open', 'GLMZ P3 02 Pixel: apply the Phase 1 world canon', '—', 551, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T553', 'Prose', 553, '2026-10-30', 'chore', 'open', 'GLMZ P3 03 Testament: its thread into the singular point', '—', 552, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T554', 'Prose', 554, '2026-10-30', 'chore', 'open', 'GLMZ P3 03 Testament: Kyle''s touch', '—', 553, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T555', 'Prose', 555, '2026-10-30', 'chore', 'open', 'GLMZ P3 03 Testament: villain ambiguity', '—', 554, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T556', 'Prose', 556, '2026-10-30', 'chore', 'open', 'GLMZ P3 03 Testament: lowest low and highest high', '—', 555, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T557', 'Prose', 557, '2026-10-30', 'chore', 'open', 'GLMZ P3 03 Testament: neon action is earned', '—', 556, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T558', 'Prose', 558, '2026-10-30', 'chore', 'open', 'GLMZ P3 03 Testament: one diaspora on the street', '—', 557, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T559', 'Prose', 559, '2026-10-30', 'chore', 'open', 'GLMZ P3 03 Testament: machine minds and the strays', '—', 558, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T560', 'Prose', 560, '2026-10-30', 'chore', 'open', 'GLMZ P3 03 Testament: apply the Phase 1 world canon', '—', 559, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T561', 'Prose', 561, '2026-10-30', 'chore', 'open', 'GLMZ P3 04 Attendance: its thread into the singular point', '—', 560, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T562', 'Prose', 562, '2026-10-30', 'chore', 'open', 'GLMZ P3 04 Attendance: Kyle''s touch', '—', 561, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T563', 'Prose', 563, '2026-10-30', 'chore', 'open', 'GLMZ P3 04 Attendance: villain ambiguity', '—', 562, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T564', 'Prose', 564, '2026-10-30', 'chore', 'open', 'GLMZ P3 04 Attendance: lowest low and highest high', '—', 563, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T565', 'Prose', 565, '2026-10-30', 'chore', 'open', 'GLMZ P3 04 Attendance: neon action is earned', '—', 564, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T566', 'Prose', 566, '2026-10-30', 'chore', 'open', 'GLMZ P3 04 Attendance: one diaspora on the street', '—', 565, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T567', 'Prose', 567, '2026-10-30', 'chore', 'open', 'GLMZ P3 04 Attendance: machine minds and the strays', '—', 566, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T568', 'Prose', 568, '2026-10-30', 'chore', 'open', 'GLMZ P3 04 Attendance: apply the Phase 1 world canon', '—', 567, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T569', 'Prose', 569, '2026-10-30', 'chore', 'open', 'GLMZ P3 05 Between the Lines: its thread into the singular point', '—', 568, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T570', 'Prose', 570, '2026-10-30', 'chore', 'open', 'GLMZ P3 05 Between the Lines: Kyle''s touch', '—', 569, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T571', 'Prose', 571, '2026-10-30', 'chore', 'open', 'GLMZ P3 05 Between the Lines: villain ambiguity', '—', 570, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T572', 'Prose', 572, '2026-10-30', 'chore', 'open', 'GLMZ P3 05 Between the Lines: lowest low and highest high', '—', 571, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T573', 'Prose', 573, '2026-10-30', 'chore', 'open', 'GLMZ P3 05 Between the Lines: neon action is earned', '—', 572, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T574', 'Prose', 574, '2026-10-30', 'chore', 'open', 'GLMZ P3 05 Between the Lines: one diaspora on the street', '—', 573, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T575', 'Prose', 575, '2026-10-30', 'chore', 'open', 'GLMZ P3 05 Between the Lines: machine minds and the strays', '—', 574, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T576', 'Prose', 576, '2026-10-30', 'chore', 'open', 'GLMZ P3 05 Between the Lines: apply the Phase 1 world canon', '—', 575, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T577', 'Prose', 577, '2026-10-30', 'chore', 'open', 'GLMZ P3 06 Death Whispers in a Cat''s Ear: its thread into the singular point', '—', 576, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T578', 'Prose', 578, '2026-10-30', 'chore', 'open', 'GLMZ P3 06 Death Whispers in a Cat''s Ear: Kyle''s touch', '—', 577, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T579', 'Prose', 579, '2026-10-30', 'chore', 'open', 'GLMZ P3 06 Death Whispers in a Cat''s Ear: villain ambiguity', '—', 578, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T580', 'Prose', 580, '2026-10-30', 'chore', 'open', 'GLMZ P3 06 Death Whispers in a Cat''s Ear: lowest low and highest high', '—', 579, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T581', 'Prose', 581, '2026-10-30', 'chore', 'open', 'GLMZ P3 06 Death Whispers in a Cat''s Ear: neon action is earned', '—', 580, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T582', 'Prose', 582, '2026-10-30', 'chore', 'open', 'GLMZ P3 06 Death Whispers in a Cat''s Ear: one diaspora on the street', '—', 581, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T583', 'Prose', 583, '2026-10-30', 'chore', 'open', 'GLMZ P3 06 Death Whispers in a Cat''s Ear: machine minds and the strays', '—', 582, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T584', 'Prose', 584, '2026-10-30', 'chore', 'open', 'GLMZ P3 06 Death Whispers in a Cat''s Ear: apply the Phase 1 world canon', '—', 583, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T585', 'Prose', 585, '2026-10-30', 'chore', 'open', 'GLMZ P3 07 Critical Mass: its thread into the singular point', '—', 584, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T586', 'Prose', 586, '2026-10-30', 'chore', 'open', 'GLMZ P3 07 Critical Mass: Kyle''s touch', '—', 585, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T587', 'Prose', 587, '2026-10-30', 'chore', 'open', 'GLMZ P3 07 Critical Mass: villain ambiguity', '—', 586, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T588', 'Prose', 588, '2026-10-30', 'chore', 'open', 'GLMZ P3 07 Critical Mass: lowest low and highest high', '—', 587, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T589', 'Prose', 589, '2026-10-30', 'chore', 'open', 'GLMZ P3 07 Critical Mass: neon action is earned', '—', 588, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T590', 'Prose', 590, '2026-10-30', 'chore', 'open', 'GLMZ P3 07 Critical Mass: one diaspora on the street', '—', 589, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T591', 'Prose', 591, '2026-10-30', 'chore', 'open', 'GLMZ P3 07 Critical Mass: machine minds and the strays', '—', 590, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T592', 'Prose', 592, '2026-10-30', 'chore', 'open', 'GLMZ P3 07 Critical Mass: apply the Phase 1 world canon', '—', 591, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T593', 'Prose', 593, '2026-10-30', 'chore', 'open', 'GLMZ P3 08 The Long Cut: its thread into the singular point', '—', 592, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T594', 'Prose', 594, '2026-10-30', 'chore', 'open', 'GLMZ P3 08 The Long Cut: Kyle''s touch', '—', 593, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T595', 'Prose', 595, '2026-10-30', 'chore', 'open', 'GLMZ P3 08 The Long Cut: villain ambiguity', '—', 594, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T596', 'Prose', 596, '2026-10-30', 'chore', 'open', 'GLMZ P3 08 The Long Cut: lowest low and highest high', '—', 595, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T597', 'Prose', 597, '2026-10-30', 'chore', 'open', 'GLMZ P3 08 The Long Cut: neon action is earned', '—', 596, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T598', 'Prose', 598, '2026-10-30', 'chore', 'open', 'GLMZ P3 08 The Long Cut: one diaspora on the street', '—', 597, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T599', 'Prose', 599, '2026-10-30', 'chore', 'open', 'GLMZ P3 08 The Long Cut: machine minds and the strays', '—', 598, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T600', 'Prose', 600, '2026-10-30', 'chore', 'open', 'GLMZ P3 08 The Long Cut: apply the Phase 1 world canon', '—', 599, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T601', 'Prose', 601, '2026-10-30', 'chore', 'open', 'GLMZ P3 09 Sparrow: its thread into the singular point', '—', 600, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T602', 'Prose', 602, '2026-10-30', 'chore', 'open', 'GLMZ P3 09 Sparrow: Kyle''s touch', '—', 601, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T603', 'Prose', 603, '2026-10-30', 'chore', 'open', 'GLMZ P3 09 Sparrow: villain ambiguity', '—', 602, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T604', 'Prose', 604, '2026-10-30', 'chore', 'open', 'GLMZ P3 09 Sparrow: lowest low and highest high', '—', 603, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T605', 'Prose', 605, '2026-10-30', 'chore', 'open', 'GLMZ P3 09 Sparrow: neon action is earned', '—', 604, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T606', 'Prose', 606, '2026-10-30', 'chore', 'open', 'GLMZ P3 09 Sparrow: one diaspora on the street', '—', 605, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T607', 'Prose', 607, '2026-10-30', 'chore', 'open', 'GLMZ P3 09 Sparrow: machine minds and the strays', '—', 606, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T608', 'Prose', 608, '2026-10-30', 'chore', 'open', 'GLMZ P3 09 Sparrow: apply the Phase 1 world canon', '—', 607, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T609', 'Prose', 609, '2026-10-30', 'chore', 'open', 'GLMZ P3 10 Magenta & Gunmetal: its thread into the singular point', '—', 608, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T610', 'Prose', 610, '2026-10-30', 'chore', 'open', 'GLMZ P3 10 Magenta & Gunmetal: Kyle''s touch', '—', 609, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T611', 'Prose', 611, '2026-10-30', 'chore', 'open', 'GLMZ P3 10 Magenta & Gunmetal: villain ambiguity', '—', 610, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T612', 'Prose', 612, '2026-10-30', 'chore', 'open', 'GLMZ P3 10 Magenta & Gunmetal: lowest low and highest high', '—', 611, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T613', 'Prose', 613, '2026-10-30', 'chore', 'open', 'GLMZ P3 10 Magenta & Gunmetal: neon action is earned', '—', 612, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T614', 'Prose', 614, '2026-10-30', 'chore', 'open', 'GLMZ P3 10 Magenta & Gunmetal: one diaspora on the street', '—', 613, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T615', 'Prose', 615, '2026-10-30', 'chore', 'open', 'GLMZ P3 10 Magenta & Gunmetal: machine minds and the strays', '—', 614, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T616', 'Prose', 616, '2026-10-30', 'chore', 'open', 'GLMZ P3 10 Magenta & Gunmetal: apply the Phase 1 world canon', '—', 615, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T617', 'Prose', 617, '2026-10-30', 'chore', 'open', 'GLMZ P3 11 Vultures at the Door: its thread into the singular point', '—', 616, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T618', 'Prose', 618, '2026-10-30', 'chore', 'open', 'GLMZ P3 11 Vultures at the Door: Kyle''s touch', '—', 617, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T619', 'Prose', 619, '2026-10-30', 'chore', 'open', 'GLMZ P3 11 Vultures at the Door: villain ambiguity', '—', 618, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T620', 'Prose', 620, '2026-10-30', 'chore', 'open', 'GLMZ P3 11 Vultures at the Door: lowest low and highest high', '—', 619, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T621', 'Prose', 621, '2026-10-30', 'chore', 'open', 'GLMZ P3 11 Vultures at the Door: neon action is earned', '—', 620, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T622', 'Prose', 622, '2026-10-30', 'chore', 'open', 'GLMZ P3 11 Vultures at the Door: one diaspora on the street', '—', 621, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T623', 'Prose', 623, '2026-10-30', 'chore', 'open', 'GLMZ P3 11 Vultures at the Door: machine minds and the strays', '—', 622, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T624', 'Prose', 624, '2026-10-30', 'chore', 'open', 'GLMZ P3 11 Vultures at the Door: apply the Phase 1 world canon', '—', 623, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T625', 'Prose', 625, '2026-10-30', 'chore', 'open', 'GLMZ P3 12 Bushido Coda: its thread into the singular point', '—', 624, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T626', 'Prose', 626, '2026-10-30', 'chore', 'open', 'GLMZ P3 12 Bushido Coda: Kyle''s touch', '—', 625, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T627', 'Prose', 627, '2026-10-30', 'chore', 'open', 'GLMZ P3 12 Bushido Coda: villain ambiguity', '—', 626, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T628', 'Prose', 628, '2026-10-30', 'chore', 'open', 'GLMZ P3 12 Bushido Coda: lowest low and highest high', '—', 627, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T629', 'Prose', 629, '2026-10-30', 'chore', 'open', 'GLMZ P3 12 Bushido Coda: neon action is earned', '—', 628, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T630', 'Prose', 630, '2026-10-30', 'chore', 'open', 'GLMZ P3 12 Bushido Coda: one diaspora on the street', '—', 629, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T631', 'Prose', 631, '2026-10-30', 'chore', 'open', 'GLMZ P3 12 Bushido Coda: machine minds and the strays', '—', 630, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T632', 'Prose', 632, '2026-10-30', 'chore', 'open', 'GLMZ P3 12 Bushido Coda: apply the Phase 1 world canon', '—', 631, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T633', 'Prose', 633, '2026-10-30', 'chore', 'open', 'GLMZ P3 13 Underclan: its thread into the singular point', '—', 632, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T634', 'Prose', 634, '2026-10-30', 'chore', 'open', 'GLMZ P3 13 Underclan: Kyle''s touch', '—', 633, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T635', 'Prose', 635, '2026-10-30', 'chore', 'open', 'GLMZ P3 13 Underclan: villain ambiguity', '—', 634, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T636', 'Prose', 636, '2026-10-30', 'chore', 'open', 'GLMZ P3 13 Underclan: lowest low and highest high', '—', 635, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T637', 'Prose', 637, '2026-10-30', 'chore', 'open', 'GLMZ P3 13 Underclan: neon action is earned', '—', 636, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T638', 'Prose', 638, '2026-10-30', 'chore', 'open', 'GLMZ P3 13 Underclan: one diaspora on the street', '—', 637, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T639', 'Prose', 639, '2026-10-30', 'chore', 'open', 'GLMZ P3 13 Underclan: machine minds and the strays', '—', 638, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T640', 'Prose', 640, '2026-10-30', 'chore', 'open', 'GLMZ P3 13 Underclan: apply the Phase 1 world canon', '—', 639, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T641', 'Prose', 641, '2026-10-30', 'chore', 'open', 'GLMZ P3 14 The Way Up: its thread into the singular point', '—', 640, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T642', 'Prose', 642, '2026-10-30', 'chore', 'open', 'GLMZ P3 14 The Way Up: Kyle''s touch', '—', 641, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T643', 'Prose', 643, '2026-10-30', 'chore', 'open', 'GLMZ P3 14 The Way Up: villain ambiguity', '—', 642, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T644', 'Prose', 644, '2026-10-30', 'chore', 'open', 'GLMZ P3 14 The Way Up: lowest low and highest high', '—', 643, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T645', 'Prose', 645, '2026-10-30', 'chore', 'open', 'GLMZ P3 14 The Way Up: neon action is earned', '—', 644, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T646', 'Prose', 646, '2026-10-30', 'chore', 'open', 'GLMZ P3 14 The Way Up: one diaspora on the street', '—', 645, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T647', 'Prose', 647, '2026-10-30', 'chore', 'open', 'GLMZ P3 14 The Way Up: machine minds and the strays', '—', 646, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T648', 'Prose', 648, '2026-10-30', 'chore', 'open', 'GLMZ P3 14 The Way Up: apply the Phase 1 world canon', '—', 647, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T649', 'Prose', 649, '2026-10-30', 'chore', 'open', 'GLMZ P3 15 Neon & Rust: its thread into the singular point', '—', 648, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T650', 'Prose', 650, '2026-10-30', 'chore', 'open', 'GLMZ P3 15 Neon & Rust: Kyle''s touch', '—', 649, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T651', 'Prose', 651, '2026-10-30', 'chore', 'open', 'GLMZ P3 15 Neon & Rust: villain ambiguity', '—', 650, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T652', 'Prose', 652, '2026-10-30', 'chore', 'open', 'GLMZ P3 15 Neon & Rust: lowest low and highest high', '—', 651, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T653', 'Prose', 653, '2026-10-30', 'chore', 'open', 'GLMZ P3 15 Neon & Rust: neon action is earned', '—', 652, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T654', 'Prose', 654, '2026-10-30', 'chore', 'open', 'GLMZ P3 15 Neon & Rust: one diaspora on the street', '—', 653, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T655', 'Prose', 655, '2026-10-30', 'chore', 'open', 'GLMZ P3 15 Neon & Rust: machine minds and the strays', '—', 654, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T656', 'Prose', 656, '2026-10-30', 'chore', 'open', 'GLMZ P3 15 Neon & Rust: apply the Phase 1 world canon', '—', 655, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T657', 'Prose', 657, '2026-10-30', 'chore', 'open', 'GLMZ P3 16 Crimson & Chrome: its thread into the singular point', '—', 656, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T658', 'Prose', 658, '2026-10-30', 'chore', 'open', 'GLMZ P3 16 Crimson & Chrome: Kyle''s touch', '—', 657, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T659', 'Prose', 659, '2026-10-30', 'chore', 'open', 'GLMZ P3 16 Crimson & Chrome: villain ambiguity', '—', 658, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T660', 'Prose', 660, '2026-10-30', 'chore', 'open', 'GLMZ P3 16 Crimson & Chrome: lowest low and highest high', '—', 659, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T661', 'Prose', 661, '2026-10-30', 'chore', 'open', 'GLMZ P3 16 Crimson & Chrome: neon action is earned', '—', 660, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T662', 'Prose', 662, '2026-10-30', 'chore', 'open', 'GLMZ P3 16 Crimson & Chrome: one diaspora on the street', '—', 661, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T663', 'Prose', 663, '2026-10-30', 'chore', 'open', 'GLMZ P3 16 Crimson & Chrome: machine minds and the strays', '—', 662, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T664', 'Prose', 664, '2026-10-30', 'chore', 'open', 'GLMZ P3 16 Crimson & Chrome: apply the Phase 1 world canon', '—', 663, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T665', 'Prose', 665, '2026-10-30', 'chore', 'open', 'GLMZ P3 17 The Way Down: its thread into the singular point', '—', 664, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T666', 'Prose', 666, '2026-10-30', 'chore', 'open', 'GLMZ P3 17 The Way Down: Kyle''s touch', '—', 665, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -45929,6 +46203,1535 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25228, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25229, 'U.VAN-T33', '2026-10-30T16:39:22Z', 'working', 'shampoo1232@mindattic.com (12fd3110-ee17-448d-84de-55fa5e99f3f9)', '12fd3110-ee17-448d-84de-55fa5e99f3f9');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25230, 'PRS-T392', '2026-10-30T16:42:06Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25231, 'PRS-T392', '2026-10-30T16:43:48Z', 'working', NULL, 'faf7d526-0cf8-4d25-9ad6-d948bee9d6e0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25232, 'PRS-T393', '2026-10-30T16:47:34Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25233, 'PRS-T393', '2026-10-30T16:47:35Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25234, 'PRS-T393', '2026-10-30T16:47:35Z', 'label', NULL, 'phase:0-rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25235, 'PRS-T393', '2026-10-30T16:47:35Z', 'label', NULL, 'theme:rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25236, 'PRS-T393', '2026-10-30T16:47:35Z', 'label', NULL, 'needs:author');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25237, 'PRS-T393', '2026-10-30T16:47:35Z', 'label', NULL, 'seq:0001');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25238, 'PRS-T394', '2026-10-30T16:47:42Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25239, 'PRS-T394', '2026-10-30T16:47:43Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25240, 'PRS-T394', '2026-10-30T16:47:43Z', 'label', NULL, 'phase:0-rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25241, 'PRS-T394', '2026-10-30T16:47:43Z', 'label', NULL, 'theme:rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25242, 'PRS-T394', '2026-10-30T16:47:43Z', 'label', NULL, 'needs:author');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25243, 'PRS-T394', '2026-10-30T16:47:43Z', 'label', NULL, 'seq:0002');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25244, 'PRS-T395', '2026-10-30T16:47:44Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25245, 'PRS-T395', '2026-10-30T16:47:45Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25246, 'PRS-T395', '2026-10-30T16:47:45Z', 'label', NULL, 'phase:0-rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25247, 'PRS-T395', '2026-10-30T16:47:45Z', 'label', NULL, 'theme:rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25248, 'PRS-T395', '2026-10-30T16:47:45Z', 'label', NULL, 'needs:author');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25249, 'PRS-T395', '2026-10-30T16:47:45Z', 'label', NULL, 'seq:0003');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25250, 'PRS-T396', '2026-10-30T16:47:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25251, 'PRS-T396', '2026-10-30T16:47:47Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25252, 'PRS-T396', '2026-10-30T16:47:47Z', 'label', NULL, 'phase:0-rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25253, 'PRS-T396', '2026-10-30T16:47:47Z', 'label', NULL, 'theme:rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25254, 'PRS-T396', '2026-10-30T16:47:47Z', 'label', NULL, 'needs:author');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25255, 'PRS-T396', '2026-10-30T16:47:47Z', 'label', NULL, 'seq:0004');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25256, 'PRS-T397', '2026-10-30T16:47:47Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25257, 'PRS-T397', '2026-10-30T16:47:48Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25258, 'PRS-T397', '2026-10-30T16:47:48Z', 'label', NULL, 'phase:0-rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25259, 'PRS-T397', '2026-10-30T16:47:48Z', 'label', NULL, 'theme:rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25260, 'PRS-T397', '2026-10-30T16:47:48Z', 'label', NULL, 'needs:author');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25261, 'PRS-T397', '2026-10-30T16:47:48Z', 'label', NULL, 'seq:0005');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25262, 'PRS-T398', '2026-10-30T16:47:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25263, 'PRS-T398', '2026-10-30T16:47:50Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25264, 'PRS-T398', '2026-10-30T16:47:50Z', 'label', NULL, 'phase:0-rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25265, 'PRS-T398', '2026-10-30T16:47:50Z', 'label', NULL, 'theme:rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25266, 'PRS-T398', '2026-10-30T16:47:50Z', 'label', NULL, 'needs:author');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25267, 'PRS-T398', '2026-10-30T16:47:50Z', 'label', NULL, 'seq:0006');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25268, 'PRS-T399', '2026-10-30T16:47:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25269, 'PRS-T399', '2026-10-30T16:47:52Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25270, 'PRS-T399', '2026-10-30T16:47:52Z', 'label', NULL, 'phase:0-rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25271, 'PRS-T399', '2026-10-30T16:47:52Z', 'label', NULL, 'theme:rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25272, 'PRS-T399', '2026-10-30T16:47:52Z', 'label', NULL, 'needs:author');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25273, 'PRS-T399', '2026-10-30T16:47:52Z', 'label', NULL, 'seq:0007');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25274, 'PRS-T400', '2026-10-30T16:47:53Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25275, 'PRS-T400', '2026-10-30T16:47:54Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25276, 'PRS-T400', '2026-10-30T16:47:54Z', 'label', NULL, 'phase:0-rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25277, 'PRS-T400', '2026-10-30T16:47:54Z', 'label', NULL, 'theme:rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25278, 'PRS-T400', '2026-10-30T16:47:54Z', 'label', NULL, 'needs:author');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25279, 'PRS-T400', '2026-10-30T16:47:54Z', 'label', NULL, 'seq:0008');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25280, 'PRS-T401', '2026-10-30T16:47:54Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25281, 'PRS-T401', '2026-10-30T16:47:56Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25282, 'PRS-T401', '2026-10-30T16:47:56Z', 'label', NULL, 'phase:0-rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25283, 'PRS-T401', '2026-10-30T16:47:56Z', 'label', NULL, 'theme:rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25284, 'PRS-T401', '2026-10-30T16:47:56Z', 'label', NULL, 'needs:author');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25285, 'PRS-T401', '2026-10-30T16:47:56Z', 'label', NULL, 'seq:0009');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25286, 'PRS-T402', '2026-10-30T16:47:56Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25287, 'PRS-T402', '2026-10-30T16:47:57Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25288, 'PRS-T402', '2026-10-30T16:47:57Z', 'label', NULL, 'phase:0-rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25289, 'PRS-T402', '2026-10-30T16:47:57Z', 'label', NULL, 'theme:rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25290, 'PRS-T402', '2026-10-30T16:47:57Z', 'label', NULL, 'needs:author');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25291, 'PRS-T402', '2026-10-30T16:47:57Z', 'label', NULL, 'seq:0010');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25292, 'PRS-T403', '2026-10-30T16:47:58Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25293, 'PRS-T403', '2026-10-30T16:47:59Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25294, 'PRS-T403', '2026-10-30T16:47:59Z', 'label', NULL, 'phase:0-rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25295, 'PRS-T403', '2026-10-30T16:47:59Z', 'label', NULL, 'theme:rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25296, 'PRS-T403', '2026-10-30T16:47:59Z', 'label', NULL, 'needs:author');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25297, 'PRS-T403', '2026-10-30T16:47:59Z', 'label', NULL, 'seq:0011');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25298, 'PRS-T404', '2026-10-30T16:48:00Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25299, 'PRS-T404', '2026-10-30T16:48:01Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25300, 'PRS-T404', '2026-10-30T16:48:01Z', 'label', NULL, 'phase:0-rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25301, 'PRS-T404', '2026-10-30T16:48:01Z', 'label', NULL, 'theme:rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25302, 'PRS-T404', '2026-10-30T16:48:01Z', 'label', NULL, 'needs:author');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25303, 'PRS-T404', '2026-10-30T16:48:01Z', 'label', NULL, 'seq:0012');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25304, 'PRS-T405', '2026-10-30T16:48:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25305, 'PRS-T405', '2026-10-30T16:48:03Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25306, 'PRS-T405', '2026-10-30T16:48:03Z', 'label', NULL, 'phase:0-rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25307, 'PRS-T405', '2026-10-30T16:48:03Z', 'label', NULL, 'theme:rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25308, 'PRS-T405', '2026-10-30T16:48:03Z', 'label', NULL, 'needs:author');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25309, 'PRS-T405', '2026-10-30T16:48:03Z', 'label', NULL, 'seq:0013');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25310, 'PRS-T406', '2026-10-30T16:48:03Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25311, 'PRS-T406', '2026-10-30T16:48:04Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25312, 'PRS-T406', '2026-10-30T16:48:04Z', 'label', NULL, 'phase:0-rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25313, 'PRS-T406', '2026-10-30T16:48:04Z', 'label', NULL, 'theme:rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25314, 'PRS-T406', '2026-10-30T16:48:04Z', 'label', NULL, 'needs:author');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25315, 'PRS-T406', '2026-10-30T16:48:04Z', 'label', NULL, 'seq:0014');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25316, 'PRS-T407', '2026-10-30T16:48:05Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25317, 'PRS-T407', '2026-10-30T16:48:06Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25318, 'PRS-T407', '2026-10-30T16:48:06Z', 'label', NULL, 'phase:0-rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25319, 'PRS-T407', '2026-10-30T16:48:06Z', 'label', NULL, 'theme:rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25320, 'PRS-T407', '2026-10-30T16:48:06Z', 'label', NULL, 'needs:author');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25321, 'PRS-T407', '2026-10-30T16:48:06Z', 'label', NULL, 'seq:0015');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25322, 'PRS-T408', '2026-10-30T16:48:07Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25323, 'PRS-T408', '2026-10-30T16:48:08Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25324, 'PRS-T408', '2026-10-30T16:48:08Z', 'label', NULL, 'phase:0-rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25325, 'PRS-T408', '2026-10-30T16:48:08Z', 'label', NULL, 'theme:rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25326, 'PRS-T408', '2026-10-30T16:48:08Z', 'label', NULL, 'needs:author');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25327, 'PRS-T408', '2026-10-30T16:48:08Z', 'label', NULL, 'seq:0016');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25328, 'PRS-T409', '2026-10-30T16:48:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25329, 'PRS-T409', '2026-10-30T16:48:10Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25330, 'PRS-T409', '2026-10-30T16:48:10Z', 'label', NULL, 'phase:0-rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25331, 'PRS-T409', '2026-10-30T16:48:10Z', 'label', NULL, 'theme:rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25332, 'PRS-T409', '2026-10-30T16:48:10Z', 'label', NULL, 'needs:author');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25333, 'PRS-T409', '2026-10-30T16:48:10Z', 'label', NULL, 'seq:0017');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25334, 'PRS-T392', '2026-10-30T16:48:10Z', 'working', 'faf7d526-0cf8-4d25-9ad6-d948bee9d6e0', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25335, 'PRS-T410', '2026-10-30T16:48:11Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25336, 'PRS-T410', '2026-10-30T16:48:12Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25337, 'PRS-T410', '2026-10-30T16:48:12Z', 'label', NULL, 'phase:0-rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25338, 'PRS-T410', '2026-10-30T16:48:12Z', 'label', NULL, 'theme:process');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25339, 'PRS-T410', '2026-10-30T16:48:12Z', 'label', NULL, 'seq:0018');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25340, 'PRS-T411', '2026-10-30T16:48:12Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25341, 'PRS-T411', '2026-10-30T16:48:13Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25342, 'PRS-T411', '2026-10-30T16:48:13Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25343, 'PRS-T411', '2026-10-30T16:48:13Z', 'label', NULL, 'theme:machine-mind');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25344, 'PRS-T411', '2026-10-30T16:48:13Z', 'label', NULL, 'seq:0019');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25345, 'PRS-T412', '2026-10-30T16:48:14Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25346, 'PRS-T412', '2026-10-30T16:48:15Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25347, 'PRS-T412', '2026-10-30T16:48:15Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25348, 'PRS-T412', '2026-10-30T16:48:15Z', 'label', NULL, 'theme:machine-mind');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25349, 'PRS-T412', '2026-10-30T16:48:15Z', 'label', NULL, 'seq:0020');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25350, 'PRS-T413', '2026-10-30T16:48:16Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25351, 'PRS-T413', '2026-10-30T16:48:17Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25352, 'PRS-T413', '2026-10-30T16:48:17Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25353, 'PRS-T413', '2026-10-30T16:48:17Z', 'label', NULL, 'theme:machine-mind');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25354, 'PRS-T413', '2026-10-30T16:48:17Z', 'label', NULL, 'seq:0021');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25355, 'PRS-T414', '2026-10-30T16:48:18Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25356, 'PRS-T414', '2026-10-30T16:48:19Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25357, 'PRS-T414', '2026-10-30T16:48:19Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25358, 'PRS-T414', '2026-10-30T16:48:19Z', 'label', NULL, 'theme:machine-mind');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25359, 'PRS-T414', '2026-10-30T16:48:19Z', 'label', NULL, 'seq:0022');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25360, 'PRS-T415', '2026-10-30T16:48:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25361, 'PRS-T415', '2026-10-30T16:48:21Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25362, 'PRS-T415', '2026-10-30T16:48:21Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25363, 'PRS-T415', '2026-10-30T16:48:21Z', 'label', NULL, 'theme:machine-mind');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25364, 'PRS-T415', '2026-10-30T16:48:21Z', 'label', NULL, 'seq:0023');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25365, 'PRS-T416', '2026-10-30T16:48:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25366, 'PRS-T416', '2026-10-30T16:48:23Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25367, 'PRS-T416', '2026-10-30T16:48:23Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25368, 'PRS-T416', '2026-10-30T16:48:23Z', 'label', NULL, 'theme:machine-mind');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25369, 'PRS-T416', '2026-10-30T16:48:23Z', 'label', NULL, 'needs:author');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25370, 'PRS-T416', '2026-10-30T16:48:23Z', 'label', NULL, 'seq:0024');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25371, 'PRS-T417', '2026-10-30T16:48:23Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25372, 'PRS-T417', '2026-10-30T16:48:25Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25373, 'PRS-T417', '2026-10-30T16:48:25Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25374, 'PRS-T417', '2026-10-30T16:48:25Z', 'label', NULL, 'theme:machine-mind');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25375, 'PRS-T417', '2026-10-30T16:48:25Z', 'label', NULL, 'needs:author');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25376, 'PRS-T417', '2026-10-30T16:48:25Z', 'label', NULL, 'seq:0025');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25377, 'PRS-T418', '2026-10-30T16:48:25Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25378, 'PRS-T418', '2026-10-30T16:48:26Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25379, 'PRS-T418', '2026-10-30T16:48:26Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25380, 'PRS-T418', '2026-10-30T16:48:26Z', 'label', NULL, 'theme:machine-mind');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25381, 'PRS-T418', '2026-10-30T16:48:26Z', 'label', NULL, 'needs:author');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25382, 'PRS-T418', '2026-10-30T16:48:26Z', 'label', NULL, 'seq:0026');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25383, 'PRS-T419', '2026-10-30T16:48:27Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25384, 'PRS-T419', '2026-10-30T16:48:28Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25385, 'PRS-T419', '2026-10-30T16:48:28Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25386, 'PRS-T419', '2026-10-30T16:48:28Z', 'label', NULL, 'theme:machine-mind');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25387, 'PRS-T419', '2026-10-30T16:48:28Z', 'label', NULL, 'seq:0027');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25388, 'PRS-T420', '2026-10-30T16:48:29Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25389, 'PRS-T420', '2026-10-30T16:48:30Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25390, 'PRS-T420', '2026-10-30T16:48:30Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25391, 'PRS-T420', '2026-10-30T16:48:30Z', 'label', NULL, 'theme:machine-mind');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25392, 'PRS-T420', '2026-10-30T16:48:30Z', 'label', NULL, 'seq:0028');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25393, 'PRS-T421', '2026-10-30T16:48:30Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25394, 'PRS-T421', '2026-10-30T16:48:31Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25395, 'PRS-T421', '2026-10-30T16:48:31Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25396, 'PRS-T421', '2026-10-30T16:48:31Z', 'label', NULL, 'theme:machine-mind');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25397, 'PRS-T421', '2026-10-30T16:48:31Z', 'label', NULL, 'needs:author');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25398, 'PRS-T421', '2026-10-30T16:48:31Z', 'label', NULL, 'seq:0029');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25399, 'PRS-T422', '2026-10-30T16:48:32Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25400, 'PRS-T422', '2026-10-30T16:48:33Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25401, 'PRS-T422', '2026-10-30T16:48:33Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25402, 'PRS-T422', '2026-10-30T16:48:33Z', 'label', NULL, 'theme:machine-mind');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25403, 'PRS-T422', '2026-10-30T16:48:33Z', 'label', NULL, 'seq:0030');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25404, 'PRS-T423', '2026-10-30T16:48:34Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25405, 'PRS-T423', '2026-10-30T16:48:35Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25406, 'PRS-T423', '2026-10-30T16:48:35Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25407, 'PRS-T423', '2026-10-30T16:48:35Z', 'label', NULL, 'theme:nano');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25408, 'PRS-T423', '2026-10-30T16:48:35Z', 'label', NULL, 'seq:0031');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25409, 'PRS-T424', '2026-10-30T16:48:36Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25410, 'PRS-T424', '2026-10-30T16:48:37Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25411, 'PRS-T424', '2026-10-30T16:48:37Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25412, 'PRS-T424', '2026-10-30T16:48:37Z', 'label', NULL, 'theme:nano');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25413, 'PRS-T424', '2026-10-30T16:48:37Z', 'label', NULL, 'seq:0032');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25414, 'PRS-T425', '2026-10-30T16:48:38Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25415, 'PRS-T425', '2026-10-30T16:48:39Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25416, 'PRS-T425', '2026-10-30T16:48:39Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25417, 'PRS-T425', '2026-10-30T16:48:39Z', 'label', NULL, 'theme:nano');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25418, 'PRS-T425', '2026-10-30T16:48:39Z', 'label', NULL, 'seq:0033');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25419, 'PRS-T426', '2026-10-30T16:48:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25420, 'PRS-T426', '2026-10-30T16:48:40Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25421, 'PRS-T426', '2026-10-30T16:48:40Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25422, 'PRS-T426', '2026-10-30T16:48:40Z', 'label', NULL, 'theme:nano');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25423, 'PRS-T426', '2026-10-30T16:48:40Z', 'label', NULL, 'seq:0034');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25424, 'PRS-T427', '2026-10-30T16:48:41Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25425, 'PRS-T427', '2026-10-30T16:48:42Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25426, 'PRS-T427', '2026-10-30T16:48:42Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25427, 'PRS-T427', '2026-10-30T16:48:42Z', 'label', NULL, 'theme:cyberware');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25428, 'PRS-T427', '2026-10-30T16:48:42Z', 'label', NULL, 'seq:0035');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25429, 'PRS-T428', '2026-10-30T16:48:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25430, 'PRS-T428', '2026-10-30T16:48:44Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25431, 'PRS-T428', '2026-10-30T16:48:44Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25432, 'PRS-T428', '2026-10-30T16:48:44Z', 'label', NULL, 'theme:cyberware');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25433, 'PRS-T428', '2026-10-30T16:48:44Z', 'label', NULL, 'seq:0036');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25434, 'PRS-T429', '2026-10-30T16:48:45Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25435, 'PRS-T429', '2026-10-30T16:48:46Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25436, 'PRS-T429', '2026-10-30T16:48:46Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25437, 'PRS-T429', '2026-10-30T16:48:46Z', 'label', NULL, 'theme:cyberware');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25438, 'PRS-T429', '2026-10-30T16:48:46Z', 'label', NULL, 'seq:0037');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25439, 'PRS-T430', '2026-10-30T16:48:47Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25440, 'PRS-T430', '2026-10-30T16:48:48Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25441, 'PRS-T430', '2026-10-30T16:48:48Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25442, 'PRS-T430', '2026-10-30T16:48:48Z', 'label', NULL, 'theme:cyberware');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25443, 'PRS-T430', '2026-10-30T16:48:48Z', 'label', NULL, 'seq:0038');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25444, 'PRS-T431', '2026-10-30T16:48:48Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25445, 'PRS-T431', '2026-10-30T16:48:49Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25446, 'PRS-T431', '2026-10-30T16:48:49Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25447, 'PRS-T431', '2026-10-30T16:48:49Z', 'label', NULL, 'theme:cyberware');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25448, 'PRS-T431', '2026-10-30T16:48:49Z', 'label', NULL, 'needs:author');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25449, 'PRS-T431', '2026-10-30T16:48:49Z', 'label', NULL, 'seq:0039');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25450, 'PRS-T432', '2026-10-30T16:48:50Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25451, 'PRS-T432', '2026-10-30T16:48:51Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25452, 'PRS-T432', '2026-10-30T16:48:51Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25453, 'PRS-T432', '2026-10-30T16:48:51Z', 'label', NULL, 'theme:genemods');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25454, 'PRS-T432', '2026-10-30T16:48:51Z', 'label', NULL, 'seq:0040');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25455, 'PRS-T433', '2026-10-30T16:48:52Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25456, 'PRS-T433', '2026-10-30T16:48:53Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25457, 'PRS-T433', '2026-10-30T16:48:53Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25458, 'PRS-T433', '2026-10-30T16:48:53Z', 'label', NULL, 'theme:genemods');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25459, 'PRS-T433', '2026-10-30T16:48:53Z', 'label', NULL, 'seq:0041');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25460, 'PRS-T434', '2026-10-30T16:48:53Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25461, 'PRS-T434', '2026-10-30T16:48:54Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25462, 'PRS-T434', '2026-10-30T16:48:54Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25463, 'PRS-T434', '2026-10-30T16:48:54Z', 'label', NULL, 'theme:genemods');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25464, 'PRS-T434', '2026-10-30T16:48:54Z', 'label', NULL, 'seq:0042');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25465, 'PRS-T435', '2026-10-30T16:48:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25466, 'PRS-T435', '2026-10-30T16:48:56Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25467, 'PRS-T435', '2026-10-30T16:48:56Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25468, 'PRS-T435', '2026-10-30T16:48:56Z', 'label', NULL, 'theme:genemods');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25469, 'PRS-T435', '2026-10-30T16:48:56Z', 'label', NULL, 'seq:0043');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25470, 'PRS-T436', '2026-10-30T16:48:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25471, 'PRS-T436', '2026-10-30T16:48:58Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25472, 'PRS-T436', '2026-10-30T16:48:58Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25473, 'PRS-T436', '2026-10-30T16:48:58Z', 'label', NULL, 'theme:hyperreality');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25474, 'PRS-T436', '2026-10-30T16:48:58Z', 'label', NULL, 'seq:0044');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25475, 'PRS-T437', '2026-10-30T16:48:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25476, 'PRS-T437', '2026-10-30T16:49:00Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25477, 'PRS-T437', '2026-10-30T16:49:00Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25478, 'PRS-T437', '2026-10-30T16:49:00Z', 'label', NULL, 'theme:hyperreality');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25479, 'PRS-T437', '2026-10-30T16:49:00Z', 'label', NULL, 'seq:0045');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25480, 'PRS-T438', '2026-10-30T16:49:00Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25481, 'PRS-T438', '2026-10-30T16:49:01Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25482, 'PRS-T438', '2026-10-30T16:49:01Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25483, 'PRS-T438', '2026-10-30T16:49:01Z', 'label', NULL, 'theme:hyperreality');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25484, 'PRS-T438', '2026-10-30T16:49:01Z', 'label', NULL, 'seq:0046');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25485, 'PRS-T439', '2026-10-30T16:49:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25486, 'PRS-T439', '2026-10-30T16:49:03Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25487, 'PRS-T439', '2026-10-30T16:49:03Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25488, 'PRS-T439', '2026-10-30T16:49:03Z', 'label', NULL, 'theme:hyperreality');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25489, 'PRS-T439', '2026-10-30T16:49:03Z', 'label', NULL, 'seq:0047');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25490, 'PRS-T440', '2026-10-30T16:49:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25491, 'PRS-T440', '2026-10-30T16:49:05Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25492, 'PRS-T440', '2026-10-30T16:49:05Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25493, 'PRS-T440', '2026-10-30T16:49:05Z', 'label', NULL, 'theme:diaspora');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25494, 'PRS-T440', '2026-10-30T16:49:05Z', 'label', NULL, 'seq:0048');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25495, 'PRS-T441', '2026-10-30T16:49:06Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25496, 'PRS-T441', '2026-10-30T16:49:07Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25497, 'PRS-T441', '2026-10-30T16:49:07Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25498, 'PRS-T441', '2026-10-30T16:49:07Z', 'label', NULL, 'theme:diaspora');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25499, 'PRS-T441', '2026-10-30T16:49:07Z', 'label', NULL, 'seq:0049');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25500, 'PRS-T442', '2026-10-30T16:49:07Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25501, 'PRS-T442', '2026-10-30T16:49:09Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25502, 'PRS-T442', '2026-10-30T16:49:09Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25503, 'PRS-T442', '2026-10-30T16:49:09Z', 'label', NULL, 'theme:diaspora');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25504, 'PRS-T442', '2026-10-30T16:49:09Z', 'label', NULL, 'seq:0050');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25505, 'PRS-T443', '2026-10-30T16:49:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25506, 'PRS-T443', '2026-10-30T16:49:10Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25507, 'PRS-T443', '2026-10-30T16:49:10Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25508, 'PRS-T443', '2026-10-30T16:49:10Z', 'label', NULL, 'theme:diaspora');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25509, 'PRS-T443', '2026-10-30T16:49:10Z', 'label', NULL, 'seq:0051');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25510, 'PRS-T444', '2026-10-30T16:49:11Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25511, 'PRS-T444', '2026-10-30T16:49:12Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25512, 'PRS-T444', '2026-10-30T16:49:12Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25513, 'PRS-T444', '2026-10-30T16:49:12Z', 'label', NULL, 'theme:diaspora');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25514, 'PRS-T444', '2026-10-30T16:49:12Z', 'label', NULL, 'seq:0052');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25515, 'PRS-T445', '2026-10-30T16:49:13Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25516, 'PRS-T445', '2026-10-30T16:49:14Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25517, 'PRS-T445', '2026-10-30T16:49:14Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25518, 'PRS-T445', '2026-10-30T16:49:14Z', 'label', NULL, 'theme:diaspora');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25519, 'PRS-T445', '2026-10-30T16:49:14Z', 'label', NULL, 'seq:0053');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25520, 'PRS-T446', '2026-10-30T16:49:15Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25521, 'PRS-T446', '2026-10-30T16:49:16Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25522, 'PRS-T446', '2026-10-30T16:49:16Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25523, 'PRS-T446', '2026-10-30T16:49:16Z', 'label', NULL, 'theme:diaspora');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25524, 'PRS-T446', '2026-10-30T16:49:16Z', 'label', NULL, 'seq:0054');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25525, 'PRS-T447', '2026-10-30T16:49:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25526, 'PRS-T447', '2026-10-30T16:49:18Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25527, 'PRS-T447', '2026-10-30T16:49:18Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25528, 'PRS-T447', '2026-10-30T16:49:18Z', 'label', NULL, 'theme:diaspora');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25529, 'PRS-T447', '2026-10-30T16:49:18Z', 'label', NULL, 'seq:0055');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25530, 'PRS-T448', '2026-10-30T16:49:18Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25531, 'PRS-T448', '2026-10-30T16:49:19Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25532, 'PRS-T448', '2026-10-30T16:49:19Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25533, 'PRS-T448', '2026-10-30T16:49:19Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25534, 'PRS-T448', '2026-10-30T16:49:19Z', 'label', NULL, 'seq:0056');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25535, 'PRS-T449', '2026-10-30T16:49:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25536, 'PRS-T449', '2026-10-30T16:49:21Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25537, 'PRS-T449', '2026-10-30T16:49:21Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25538, 'PRS-T449', '2026-10-30T16:49:21Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25539, 'PRS-T449', '2026-10-30T16:49:21Z', 'label', NULL, 'seq:0057');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25540, 'PRS-T450', '2026-10-30T16:49:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25541, 'PRS-T450', '2026-10-30T16:49:23Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25542, 'PRS-T450', '2026-10-30T16:49:23Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25543, 'PRS-T450', '2026-10-30T16:49:23Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25544, 'PRS-T450', '2026-10-30T16:49:23Z', 'label', NULL, 'seq:0058');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25545, 'PRS-T451', '2026-10-30T16:49:24Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25546, 'PRS-T451', '2026-10-30T16:49:25Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25547, 'PRS-T451', '2026-10-30T16:49:25Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25548, 'PRS-T451', '2026-10-30T16:49:25Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25549, 'PRS-T451', '2026-10-30T16:49:25Z', 'label', NULL, 'seq:0059');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25550, 'PRS-T452', '2026-10-30T16:49:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25551, 'PRS-T452', '2026-10-30T16:49:27Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25552, 'PRS-T452', '2026-10-30T16:49:27Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25553, 'PRS-T452', '2026-10-30T16:49:27Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25554, 'PRS-T452', '2026-10-30T16:49:27Z', 'label', NULL, 'seq:0060');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25555, 'PRS-T453', '2026-10-30T16:49:28Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25556, 'PRS-T453', '2026-10-30T16:49:29Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25557, 'PRS-T453', '2026-10-30T16:49:29Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25558, 'PRS-T453', '2026-10-30T16:49:29Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25559, 'PRS-T453', '2026-10-30T16:49:29Z', 'label', NULL, 'seq:0061');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25560, 'PRS-T454', '2026-10-30T16:49:30Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25561, 'PRS-T454', '2026-10-30T16:49:31Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25562, 'PRS-T454', '2026-10-30T16:49:31Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25563, 'PRS-T454', '2026-10-30T16:49:31Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25564, 'PRS-T454', '2026-10-30T16:49:31Z', 'label', NULL, 'seq:0062');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25565, 'PRS-T455', '2026-10-30T16:49:31Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25566, 'PRS-T455', '2026-10-30T16:49:32Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25567, 'PRS-T455', '2026-10-30T16:49:32Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25568, 'PRS-T455', '2026-10-30T16:49:32Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25569, 'PRS-T455', '2026-10-30T16:49:32Z', 'label', NULL, 'seq:0063');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25570, 'PRS-T456', '2026-10-30T16:49:33Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25571, 'PRS-T456', '2026-10-30T16:49:34Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25572, 'PRS-T456', '2026-10-30T16:49:34Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25573, 'PRS-T456', '2026-10-30T16:49:34Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25574, 'PRS-T456', '2026-10-30T16:49:34Z', 'label', NULL, 'seq:0064');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25575, 'PRS-T457', '2026-10-30T16:49:35Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25576, 'PRS-T457', '2026-10-30T16:49:36Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25577, 'PRS-T457', '2026-10-30T16:49:36Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25578, 'PRS-T457', '2026-10-30T16:49:36Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25579, 'PRS-T457', '2026-10-30T16:49:36Z', 'label', NULL, 'needs:author');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25580, 'PRS-T457', '2026-10-30T16:49:36Z', 'label', NULL, 'seq:0065');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25581, 'PRS-T458', '2026-10-30T16:49:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25582, 'PRS-T458', '2026-10-30T16:49:38Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25583, 'PRS-T458', '2026-10-30T16:49:38Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25584, 'PRS-T458', '2026-10-30T16:49:38Z', 'label', NULL, 'theme:geography');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25585, 'PRS-T458', '2026-10-30T16:49:38Z', 'label', NULL, 'seq:0066');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25586, 'PRS-T459', '2026-10-30T16:49:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25587, 'PRS-T459', '2026-10-30T16:49:40Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25588, 'PRS-T459', '2026-10-30T16:49:40Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25589, 'PRS-T459', '2026-10-30T16:49:40Z', 'label', NULL, 'theme:coasts');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25590, 'PRS-T459', '2026-10-30T16:49:40Z', 'label', NULL, 'seq:0067');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25591, 'PRS-T460', '2026-10-30T16:49:41Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25592, 'PRS-T460', '2026-10-30T16:49:42Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25593, 'PRS-T460', '2026-10-30T16:49:42Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25594, 'PRS-T460', '2026-10-30T16:49:42Z', 'label', NULL, 'theme:coasts');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25595, 'PRS-T460', '2026-10-30T16:49:42Z', 'label', NULL, 'seq:0068');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25596, 'PRS-T461', '2026-10-30T16:49:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25597, 'PRS-T461', '2026-10-30T16:49:44Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25598, 'PRS-T461', '2026-10-30T16:49:44Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25599, 'PRS-T461', '2026-10-30T16:49:44Z', 'label', NULL, 'theme:corponations');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25600, 'PRS-T461', '2026-10-30T16:49:44Z', 'label', NULL, 'seq:0069');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25601, 'PRS-T462', '2026-10-30T16:49:44Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25602, 'PRS-T462', '2026-10-30T16:49:45Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25603, 'PRS-T462', '2026-10-30T16:49:45Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25604, 'PRS-T462', '2026-10-30T16:49:45Z', 'label', NULL, 'theme:corponations');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25605, 'PRS-T462', '2026-10-30T16:49:45Z', 'label', NULL, 'seq:0070');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25606, 'PRS-T463', '2026-10-30T16:49:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25607, 'PRS-T463', '2026-10-30T16:49:47Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25608, 'PRS-T463', '2026-10-30T16:49:47Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25609, 'PRS-T463', '2026-10-30T16:49:47Z', 'label', NULL, 'theme:corponations');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25610, 'PRS-T463', '2026-10-30T16:49:47Z', 'label', NULL, 'seq:0071');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25611, 'PRS-T464', '2026-10-30T16:49:48Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25612, 'PRS-T464', '2026-10-30T16:49:49Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25613, 'PRS-T464', '2026-10-30T16:49:49Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25614, 'PRS-T464', '2026-10-30T16:49:49Z', 'label', NULL, 'theme:corponations');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25615, 'PRS-T464', '2026-10-30T16:49:49Z', 'label', NULL, 'seq:0072');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25616, 'PRS-T465', '2026-10-30T16:49:50Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25617, 'PRS-T465', '2026-10-30T16:49:51Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25618, 'PRS-T465', '2026-10-30T16:49:51Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25619, 'PRS-T465', '2026-10-30T16:49:51Z', 'label', NULL, 'theme:corponations');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25620, 'PRS-T465', '2026-10-30T16:49:51Z', 'label', NULL, 'seq:0073');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25621, 'PRS-T466', '2026-10-30T16:49:52Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25622, 'PRS-T466', '2026-10-30T16:49:53Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25623, 'PRS-T466', '2026-10-30T16:49:53Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25624, 'PRS-T466', '2026-10-30T16:49:53Z', 'label', NULL, 'theme:corponations');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25625, 'PRS-T466', '2026-10-30T16:49:53Z', 'label', NULL, 'seq:0074');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25626, 'PRS-T467', '2026-10-30T16:49:53Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25627, 'PRS-T467', '2026-10-30T16:49:54Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25628, 'PRS-T467', '2026-10-30T16:49:54Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25629, 'PRS-T467', '2026-10-30T16:49:54Z', 'label', NULL, 'theme:corponations');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25630, 'PRS-T467', '2026-10-30T16:49:54Z', 'label', NULL, 'seq:0075');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25631, 'PRS-T468', '2026-10-30T16:49:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25632, 'PRS-T468', '2026-10-30T16:49:56Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25633, 'PRS-T468', '2026-10-30T16:49:56Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25634, 'PRS-T468', '2026-10-30T16:49:56Z', 'label', NULL, 'theme:corponations');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25635, 'PRS-T468', '2026-10-30T16:49:56Z', 'label', NULL, 'seq:0076');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25636, 'PRS-T469', '2026-10-30T16:49:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25637, 'PRS-T469', '2026-10-30T16:49:58Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25638, 'PRS-T469', '2026-10-30T16:49:58Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25639, 'PRS-T469', '2026-10-30T16:49:58Z', 'label', NULL, 'theme:corponations');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25640, 'PRS-T469', '2026-10-30T16:49:58Z', 'label', NULL, 'seq:0077');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25641, 'PRS-T470', '2026-10-30T16:49:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25642, 'PRS-T470', '2026-10-30T16:50:00Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25643, 'PRS-T470', '2026-10-30T16:50:00Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25644, 'PRS-T470', '2026-10-30T16:50:00Z', 'label', NULL, 'theme:corponations');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25645, 'PRS-T470', '2026-10-30T16:50:00Z', 'label', NULL, 'seq:0078');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25646, 'PRS-T471', '2026-10-30T16:50:00Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25647, 'PRS-T471', '2026-10-30T16:50:01Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25648, 'PRS-T471', '2026-10-30T16:50:01Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25649, 'PRS-T471', '2026-10-30T16:50:01Z', 'label', NULL, 'theme:corponations');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25650, 'PRS-T471', '2026-10-30T16:50:01Z', 'label', NULL, 'seq:0079');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25651, 'PRS-T472', '2026-10-30T16:50:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25652, 'PRS-T472', '2026-10-30T16:50:03Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25653, 'PRS-T472', '2026-10-30T16:50:03Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25654, 'PRS-T472', '2026-10-30T16:50:03Z', 'label', NULL, 'theme:corponations');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25655, 'PRS-T472', '2026-10-30T16:50:03Z', 'label', NULL, 'seq:0080');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25656, 'PRS-T473', '2026-10-30T16:50:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25657, 'PRS-T473', '2026-10-30T16:50:05Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25658, 'PRS-T473', '2026-10-30T16:50:05Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25659, 'PRS-T473', '2026-10-30T16:50:05Z', 'label', NULL, 'theme:corponations');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25660, 'PRS-T473', '2026-10-30T16:50:05Z', 'label', NULL, 'seq:0081');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25661, 'PRS-T474', '2026-10-30T16:50:06Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25662, 'PRS-T474', '2026-10-30T16:50:07Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25663, 'PRS-T474', '2026-10-30T16:50:07Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25664, 'PRS-T474', '2026-10-30T16:50:07Z', 'label', NULL, 'theme:corponations');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25665, 'PRS-T474', '2026-10-30T16:50:07Z', 'label', NULL, 'seq:0082');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25666, 'PRS-T475', '2026-10-30T16:50:07Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25667, 'PRS-T475', '2026-10-30T16:50:08Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25668, 'PRS-T475', '2026-10-30T16:50:08Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25669, 'PRS-T475', '2026-10-30T16:50:08Z', 'label', NULL, 'theme:corponations');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25670, 'PRS-T475', '2026-10-30T16:50:08Z', 'label', NULL, 'seq:0083');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25671, 'PRS-T476', '2026-10-30T16:50:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25672, 'PRS-T476', '2026-10-30T16:50:10Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25673, 'PRS-T476', '2026-10-30T16:50:10Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25674, 'PRS-T476', '2026-10-30T16:50:10Z', 'label', NULL, 'theme:corponations');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25675, 'PRS-T476', '2026-10-30T16:50:10Z', 'label', NULL, 'seq:0084');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25676, 'PRS-T477', '2026-10-30T16:50:11Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25677, 'PRS-T477', '2026-10-30T16:50:12Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25678, 'PRS-T477', '2026-10-30T16:50:12Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25679, 'PRS-T477', '2026-10-30T16:50:12Z', 'label', NULL, 'theme:economy');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25680, 'PRS-T477', '2026-10-30T16:50:12Z', 'label', NULL, 'seq:0085');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25681, 'PRS-T478', '2026-10-30T16:50:13Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25682, 'PRS-T478', '2026-10-30T16:50:14Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25683, 'PRS-T478', '2026-10-30T16:50:14Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25684, 'PRS-T478', '2026-10-30T16:50:14Z', 'label', NULL, 'theme:economy');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25685, 'PRS-T478', '2026-10-30T16:50:14Z', 'label', NULL, 'seq:0086');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25686, 'PRS-T479', '2026-10-30T16:50:14Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25687, 'PRS-T479', '2026-10-30T16:50:15Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25688, 'PRS-T479', '2026-10-30T16:50:15Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25689, 'PRS-T479', '2026-10-30T16:50:15Z', 'label', NULL, 'theme:economy');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25690, 'PRS-T479', '2026-10-30T16:50:15Z', 'label', NULL, 'seq:0087');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25691, 'PRS-T480', '2026-10-30T16:50:16Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25692, 'PRS-T480', '2026-10-30T16:50:17Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25693, 'PRS-T480', '2026-10-30T16:50:17Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25694, 'PRS-T480', '2026-10-30T16:50:17Z', 'label', NULL, 'theme:economy');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25695, 'PRS-T480', '2026-10-30T16:50:17Z', 'label', NULL, 'seq:0088');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25696, 'PRS-T481', '2026-10-30T16:50:18Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25697, 'PRS-T481', '2026-10-30T16:50:19Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25698, 'PRS-T481', '2026-10-30T16:50:19Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25699, 'PRS-T481', '2026-10-30T16:50:19Z', 'label', NULL, 'theme:timeline');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25700, 'PRS-T481', '2026-10-30T16:50:19Z', 'label', NULL, 'seq:0089');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25701, 'PRS-T482', '2026-10-30T16:50:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25702, 'PRS-T482', '2026-10-30T16:50:21Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25703, 'PRS-T482', '2026-10-30T16:50:21Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25704, 'PRS-T482', '2026-10-30T16:50:21Z', 'label', NULL, 'theme:timeline');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25705, 'PRS-T482', '2026-10-30T16:50:21Z', 'label', NULL, 'seq:0090');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25706, 'PRS-T483', '2026-10-30T16:50:21Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25707, 'PRS-T483', '2026-10-30T16:50:22Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25708, 'PRS-T483', '2026-10-30T16:50:22Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25709, 'PRS-T483', '2026-10-30T16:50:22Z', 'label', NULL, 'theme:timeline');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25710, 'PRS-T483', '2026-10-30T16:50:22Z', 'label', NULL, 'seq:0091');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25711, 'PRS-T484', '2026-10-30T16:50:23Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25712, 'PRS-T484', '2026-10-30T16:50:24Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25713, 'PRS-T484', '2026-10-30T16:50:24Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25714, 'PRS-T484', '2026-10-30T16:50:24Z', 'label', NULL, 'theme:dimensional');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25715, 'PRS-T484', '2026-10-30T16:50:24Z', 'label', NULL, 'seq:0092');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25716, 'PRS-T485', '2026-10-30T16:50:25Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25717, 'PRS-T485', '2026-10-30T16:50:26Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25718, 'PRS-T485', '2026-10-30T16:50:26Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25719, 'PRS-T485', '2026-10-30T16:50:26Z', 'label', NULL, 'theme:dimensional');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25720, 'PRS-T485', '2026-10-30T16:50:26Z', 'label', NULL, 'needs:author');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25721, 'PRS-T485', '2026-10-30T16:50:26Z', 'label', NULL, 'seq:0093');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25722, 'PRS-T486', '2026-10-30T16:50:27Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25723, 'PRS-T486', '2026-10-30T16:50:28Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25724, 'PRS-T486', '2026-10-30T16:50:28Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25725, 'PRS-T486', '2026-10-30T16:50:28Z', 'label', NULL, 'theme:kyle');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25726, 'PRS-T486', '2026-10-30T16:50:28Z', 'label', NULL, 'seq:0094');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25727, 'PRS-T487', '2026-10-30T16:50:28Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25728, 'PRS-T487', '2026-10-30T16:50:30Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25729, 'PRS-T487', '2026-10-30T16:50:30Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25730, 'PRS-T487', '2026-10-30T16:50:30Z', 'label', NULL, 'theme:kyle');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25731, 'PRS-T487', '2026-10-30T16:50:30Z', 'label', NULL, 'seq:0095');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25732, 'PRS-T488', '2026-10-30T16:50:31Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25733, 'PRS-T488', '2026-10-30T16:50:32Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25734, 'PRS-T488', '2026-10-30T16:50:32Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25735, 'PRS-T488', '2026-10-30T16:50:32Z', 'label', NULL, 'theme:kyle');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25736, 'PRS-T488', '2026-10-30T16:50:32Z', 'label', NULL, 'seq:0096');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25737, 'PRS-T489', '2026-10-30T16:50:33Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25738, 'PRS-T489', '2026-10-30T16:50:34Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25739, 'PRS-T489', '2026-10-30T16:50:34Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25740, 'PRS-T489', '2026-10-30T16:50:34Z', 'label', NULL, 'theme:kyle');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25741, 'PRS-T489', '2026-10-30T16:50:34Z', 'label', NULL, 'seq:0097');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25742, 'PRS-T490', '2026-10-30T16:50:35Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25743, 'PRS-T490', '2026-10-30T16:50:36Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25744, 'PRS-T490', '2026-10-30T16:50:36Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25745, 'PRS-T490', '2026-10-30T16:50:36Z', 'label', NULL, 'theme:kyle');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25746, 'PRS-T490', '2026-10-30T16:50:36Z', 'label', NULL, 'seq:0098');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25747, 'PRS-T491', '2026-10-30T16:50:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25748, 'PRS-T491', '2026-10-30T16:50:38Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25749, 'PRS-T491', '2026-10-30T16:50:38Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25750, 'PRS-T491', '2026-10-30T16:50:38Z', 'label', NULL, 'theme:kyle');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25751, 'PRS-T491', '2026-10-30T16:50:38Z', 'label', NULL, 'seq:0099');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25752, 'PRS-T492', '2026-10-30T16:50:38Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25753, 'PRS-T492', '2026-10-30T16:50:39Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25754, 'PRS-T492', '2026-10-30T16:50:39Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25755, 'PRS-T492', '2026-10-30T16:50:39Z', 'label', NULL, 'theme:kyle');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25756, 'PRS-T492', '2026-10-30T16:50:39Z', 'label', NULL, 'seq:0100');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25757, 'PRS-T493', '2026-10-30T16:50:40Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25758, 'PRS-T493', '2026-10-30T16:50:41Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25759, 'PRS-T493', '2026-10-30T16:50:41Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25760, 'PRS-T493', '2026-10-30T16:50:41Z', 'label', NULL, 'theme:kyle');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25761, 'PRS-T493', '2026-10-30T16:50:41Z', 'label', NULL, 'needs:author');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25762, 'PRS-T493', '2026-10-30T16:50:41Z', 'label', NULL, 'seq:0101');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25763, 'PRS-T494', '2026-10-30T16:50:42Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25764, 'PRS-T494', '2026-10-30T16:50:43Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25765, 'PRS-T494', '2026-10-30T16:50:43Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25766, 'PRS-T494', '2026-10-30T16:50:43Z', 'label', NULL, 'theme:perspective');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25767, 'PRS-T494', '2026-10-30T16:50:43Z', 'label', NULL, 'seq:0102');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25768, 'PRS-T495', '2026-10-30T16:50:44Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25769, 'PRS-T495', '2026-10-30T16:50:45Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25770, 'PRS-T495', '2026-10-30T16:50:45Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25771, 'PRS-T495', '2026-10-30T16:50:45Z', 'label', NULL, 'theme:perspective');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25772, 'PRS-T495', '2026-10-30T16:50:45Z', 'label', NULL, 'seq:0103');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25773, 'PRS-T496', '2026-10-30T16:50:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25774, 'PRS-T496', '2026-10-30T16:50:47Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25775, 'PRS-T496', '2026-10-30T16:50:47Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25776, 'PRS-T496', '2026-10-30T16:50:47Z', 'label', NULL, 'theme:perspective');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25777, 'PRS-T496', '2026-10-30T16:50:47Z', 'label', NULL, 'seq:0104');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25778, 'PRS-T497', '2026-10-30T16:50:47Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25779, 'PRS-T497', '2026-10-30T16:50:49Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25780, 'PRS-T497', '2026-10-30T16:50:49Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25781, 'PRS-T497', '2026-10-30T16:50:49Z', 'label', NULL, 'theme:perspective');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25782, 'PRS-T497', '2026-10-30T16:50:49Z', 'label', NULL, 'seq:0105');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25783, 'PRS-T498', '2026-10-30T16:50:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25784, 'PRS-T498', '2026-10-30T16:50:51Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25785, 'PRS-T498', '2026-10-30T16:50:51Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25786, 'PRS-T498', '2026-10-30T16:50:51Z', 'label', NULL, 'theme:perspective');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25787, 'PRS-T498', '2026-10-30T16:50:51Z', 'label', NULL, 'seq:0106');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25788, 'PRS-T499', '2026-10-30T16:50:52Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25789, 'PRS-T499', '2026-10-30T16:50:53Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25790, 'PRS-T499', '2026-10-30T16:50:53Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25791, 'PRS-T499', '2026-10-30T16:50:53Z', 'label', NULL, 'theme:perspective');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25792, 'PRS-T499', '2026-10-30T16:50:53Z', 'label', NULL, 'seq:0107');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25793, 'PRS-T500', '2026-10-30T16:50:53Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25794, 'PRS-T500', '2026-10-30T16:50:55Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25795, 'PRS-T500', '2026-10-30T16:50:55Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25796, 'PRS-T500', '2026-10-30T16:50:55Z', 'label', NULL, 'theme:perspective');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25797, 'PRS-T500', '2026-10-30T16:50:55Z', 'label', NULL, 'seq:0108');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25798, 'PRS-T501', '2026-10-30T16:50:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25799, 'PRS-T501', '2026-10-30T16:50:56Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25800, 'PRS-T501', '2026-10-30T16:50:56Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25801, 'PRS-T501', '2026-10-30T16:50:56Z', 'label', NULL, 'theme:perspective');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25802, 'PRS-T501', '2026-10-30T16:50:56Z', 'label', NULL, 'seq:0109');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25803, 'PRS-T502', '2026-10-30T16:50:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25804, 'PRS-T502', '2026-10-30T16:50:58Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25805, 'PRS-T502', '2026-10-30T16:50:58Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25806, 'PRS-T502', '2026-10-30T16:50:58Z', 'label', NULL, 'theme:perspective');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25807, 'PRS-T502', '2026-10-30T16:50:58Z', 'label', NULL, 'seq:0110');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25808, 'PRS-T503', '2026-10-30T16:50:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25809, 'PRS-T503', '2026-10-30T16:51:00Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25810, 'PRS-T503', '2026-10-30T16:51:00Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25811, 'PRS-T503', '2026-10-30T16:51:00Z', 'label', NULL, 'theme:perspective');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25812, 'PRS-T503', '2026-10-30T16:51:00Z', 'label', NULL, 'seq:0111');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25813, 'PRS-T504', '2026-10-30T16:51:01Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25814, 'PRS-T504', '2026-10-30T16:51:02Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25815, 'PRS-T504', '2026-10-30T16:51:02Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25816, 'PRS-T504', '2026-10-30T16:51:02Z', 'label', NULL, 'theme:perspective');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25817, 'PRS-T504', '2026-10-30T16:51:02Z', 'label', NULL, 'seq:0112');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25818, 'PRS-T505', '2026-10-30T16:51:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25819, 'PRS-T505', '2026-10-30T16:51:03Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25820, 'PRS-T505', '2026-10-30T16:51:03Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25821, 'PRS-T505', '2026-10-30T16:51:03Z', 'label', NULL, 'theme:perspective');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25822, 'PRS-T505', '2026-10-30T16:51:03Z', 'label', NULL, 'seq:0113');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25823, 'PRS-T506', '2026-10-30T16:51:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25824, 'PRS-T506', '2026-10-30T16:51:05Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25825, 'PRS-T506', '2026-10-30T16:51:05Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25826, 'PRS-T506', '2026-10-30T16:51:05Z', 'label', NULL, 'theme:perspective');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25827, 'PRS-T506', '2026-10-30T16:51:05Z', 'label', NULL, 'seq:0114');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25828, 'PRS-T507', '2026-10-30T16:51:06Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25829, 'PRS-T507', '2026-10-30T16:51:07Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25830, 'PRS-T507', '2026-10-30T16:51:07Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25831, 'PRS-T507', '2026-10-30T16:51:07Z', 'label', NULL, 'theme:perspective');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25832, 'PRS-T507', '2026-10-30T16:51:07Z', 'label', NULL, 'seq:0115');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25833, 'PRS-T508', '2026-10-30T16:51:08Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25834, 'PRS-T508', '2026-10-30T16:51:09Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25835, 'PRS-T508', '2026-10-30T16:51:09Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25836, 'PRS-T508', '2026-10-30T16:51:09Z', 'label', NULL, 'theme:perspective');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25837, 'PRS-T508', '2026-10-30T16:51:09Z', 'label', NULL, 'seq:0116');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25838, 'PRS-T509', '2026-10-30T16:51:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25839, 'PRS-T509', '2026-10-30T16:51:10Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25840, 'PRS-T509', '2026-10-30T16:51:10Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25841, 'PRS-T509', '2026-10-30T16:51:10Z', 'label', NULL, 'theme:perspective');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25842, 'PRS-T509', '2026-10-30T16:51:10Z', 'label', NULL, 'seq:0117');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25843, 'PRS-T510', '2026-10-30T16:51:11Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25844, 'PRS-T510', '2026-10-30T16:51:12Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25845, 'PRS-T510', '2026-10-30T16:51:12Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25846, 'PRS-T510', '2026-10-30T16:51:12Z', 'label', NULL, 'theme:perspective');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25847, 'PRS-T510', '2026-10-30T16:51:12Z', 'label', NULL, 'seq:0118');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25848, 'PRS-T511', '2026-10-30T16:51:13Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25849, 'PRS-T511', '2026-10-30T16:51:14Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25850, 'PRS-T511', '2026-10-30T16:51:14Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25851, 'PRS-T511', '2026-10-30T16:51:14Z', 'label', NULL, 'theme:perspective');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25852, 'PRS-T511', '2026-10-30T16:51:14Z', 'label', NULL, 'seq:0119');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25853, 'PRS-T512', '2026-10-30T16:51:15Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25854, 'PRS-T512', '2026-10-30T16:51:16Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25855, 'PRS-T512', '2026-10-30T16:51:16Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25856, 'PRS-T512', '2026-10-30T16:51:16Z', 'label', NULL, 'theme:perspective');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25857, 'PRS-T512', '2026-10-30T16:51:16Z', 'label', NULL, 'seq:0120');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25858, 'PRS-T513', '2026-10-30T16:51:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25859, 'PRS-T513', '2026-10-30T16:51:18Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25860, 'PRS-T513', '2026-10-30T16:51:18Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25861, 'PRS-T513', '2026-10-30T16:51:18Z', 'label', NULL, 'theme:perspective');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25862, 'PRS-T513', '2026-10-30T16:51:18Z', 'label', NULL, 'seq:0121');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25863, 'PRS-T514', '2026-10-30T16:51:18Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25864, 'PRS-T514', '2026-10-30T16:51:19Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25865, 'PRS-T514', '2026-10-30T16:51:19Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25866, 'PRS-T514', '2026-10-30T16:51:19Z', 'label', NULL, 'theme:perspective');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25867, 'PRS-T514', '2026-10-30T16:51:19Z', 'label', NULL, 'seq:0122');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25868, 'PRS-T515', '2026-10-30T16:51:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25869, 'PRS-T515', '2026-10-30T16:51:21Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25870, 'PRS-T515', '2026-10-30T16:51:21Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25871, 'PRS-T515', '2026-10-30T16:51:21Z', 'label', NULL, 'theme:perspective');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25872, 'PRS-T515', '2026-10-30T16:51:21Z', 'label', NULL, 'seq:0123');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25873, 'PRS-T516', '2026-10-30T16:51:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25874, 'PRS-T516', '2026-10-30T16:51:23Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25875, 'PRS-T516', '2026-10-30T16:51:23Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25876, 'PRS-T516', '2026-10-30T16:51:23Z', 'label', NULL, 'theme:perspective');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25877, 'PRS-T516', '2026-10-30T16:51:23Z', 'label', NULL, 'seq:0124');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25878, 'PRS-T517', '2026-10-30T16:51:24Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25879, 'PRS-T517', '2026-10-30T16:51:25Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25880, 'PRS-T517', '2026-10-30T16:51:25Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25881, 'PRS-T517', '2026-10-30T16:51:25Z', 'label', NULL, 'theme:perspective');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25882, 'PRS-T517', '2026-10-30T16:51:25Z', 'label', NULL, 'seq:0125');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25883, 'PRS-T518', '2026-10-30T16:51:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25884, 'PRS-T518', '2026-10-30T16:51:27Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25885, 'PRS-T518', '2026-10-30T16:51:27Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25886, 'PRS-T518', '2026-10-30T16:51:27Z', 'label', NULL, 'theme:perspective');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25887, 'PRS-T518', '2026-10-30T16:51:27Z', 'label', NULL, 'seq:0126');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25888, 'PRS-T519', '2026-10-30T16:51:28Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25889, 'PRS-T519', '2026-10-30T16:51:29Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25890, 'PRS-T519', '2026-10-30T16:51:29Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25891, 'PRS-T519', '2026-10-30T16:51:29Z', 'label', NULL, 'theme:villains');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25892, 'PRS-T519', '2026-10-30T16:51:29Z', 'label', NULL, 'seq:0127');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25893, 'PRS-T520', '2026-10-30T16:51:29Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25894, 'PRS-T520', '2026-10-30T16:51:30Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25895, 'PRS-T520', '2026-10-30T16:51:30Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25896, 'PRS-T520', '2026-10-30T16:51:30Z', 'label', NULL, 'theme:villains');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25897, 'PRS-T520', '2026-10-30T16:51:30Z', 'label', NULL, 'seq:0128');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25898, 'PRS-T521', '2026-10-30T16:51:31Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25899, 'PRS-T521', '2026-10-30T16:51:32Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25900, 'PRS-T521', '2026-10-30T16:51:32Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25901, 'PRS-T521', '2026-10-30T16:51:32Z', 'label', NULL, 'theme:villains');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25902, 'PRS-T521', '2026-10-30T16:51:32Z', 'label', NULL, 'seq:0129');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25903, 'PRS-T522', '2026-10-30T16:51:33Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25904, 'PRS-T522', '2026-10-30T16:51:34Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25905, 'PRS-T522', '2026-10-30T16:51:34Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25906, 'PRS-T522', '2026-10-30T16:51:34Z', 'label', NULL, 'theme:villains');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25907, 'PRS-T522', '2026-10-30T16:51:34Z', 'label', NULL, 'seq:0130');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25908, 'PRS-T523', '2026-10-30T16:51:35Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25909, 'PRS-T523', '2026-10-30T16:51:36Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25910, 'PRS-T523', '2026-10-30T16:51:36Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25911, 'PRS-T523', '2026-10-30T16:51:36Z', 'label', NULL, 'theme:villains');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25912, 'PRS-T523', '2026-10-30T16:51:36Z', 'label', NULL, 'seq:0131');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25913, 'PRS-T524', '2026-10-30T16:51:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25914, 'M.ORCH-T1304', '2026-10-30T16:51:37Z', 'status', 'open', 'wont-do');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25915, 'M.ORCH-T1304', '2026-10-30T16:51:37Z', 'ref', '—', 'superseded by M.ORCH-T1302 (scrolling-body layout); user reversed modal approach');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25916, 'PRS-T524', '2026-10-30T16:51:38Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25917, 'PRS-T524', '2026-10-30T16:51:38Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25918, 'PRS-T524', '2026-10-30T16:51:38Z', 'label', NULL, 'theme:villains');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25919, 'PRS-T524', '2026-10-30T16:51:38Z', 'label', NULL, 'seq:0132');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25920, 'PRS-T525', '2026-10-30T16:51:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25921, 'PRS-T525', '2026-10-30T16:51:40Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25922, 'PRS-T525', '2026-10-30T16:51:40Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25923, 'PRS-T525', '2026-10-30T16:51:40Z', 'label', NULL, 'theme:villains');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25924, 'PRS-T525', '2026-10-30T16:51:40Z', 'label', NULL, 'seq:0133');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25925, 'PRS-T526', '2026-10-30T16:51:41Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25926, 'PRS-T526', '2026-10-30T16:51:42Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25927, 'PRS-T526', '2026-10-30T16:51:42Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25928, 'PRS-T526', '2026-10-30T16:51:42Z', 'label', NULL, 'theme:villains');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25929, 'PRS-T526', '2026-10-30T16:51:42Z', 'label', NULL, 'seq:0134');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25930, 'PRS-T527', '2026-10-30T16:51:42Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25931, 'PRS-T527', '2026-10-30T16:51:43Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25932, 'PRS-T527', '2026-10-30T16:51:43Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25933, 'PRS-T527', '2026-10-30T16:51:43Z', 'label', NULL, 'theme:villains');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25934, 'PRS-T527', '2026-10-30T16:51:43Z', 'label', NULL, 'seq:0135');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25935, 'PRS-T528', '2026-10-30T16:51:44Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25936, 'PRS-T528', '2026-10-30T16:51:45Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25937, 'PRS-T528', '2026-10-30T16:51:45Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25938, 'PRS-T528', '2026-10-30T16:51:45Z', 'label', NULL, 'theme:villains');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25939, 'PRS-T528', '2026-10-30T16:51:45Z', 'label', NULL, 'seq:0136');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25940, 'PRS-T529', '2026-10-30T16:51:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25941, 'PRS-T529', '2026-10-30T16:51:47Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25942, 'PRS-T529', '2026-10-30T16:51:47Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25943, 'PRS-T529', '2026-10-30T16:51:47Z', 'label', NULL, 'theme:villains');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25944, 'PRS-T529', '2026-10-30T16:51:47Z', 'label', NULL, 'seq:0137');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25945, 'PRS-T530', '2026-10-30T16:51:48Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25946, 'PRS-T530', '2026-10-30T16:51:49Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25947, 'PRS-T530', '2026-10-30T16:51:49Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25948, 'PRS-T530', '2026-10-30T16:51:49Z', 'label', NULL, 'theme:love');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25949, 'PRS-T530', '2026-10-30T16:51:49Z', 'label', NULL, 'seq:0138');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25950, 'PRS-T531', '2026-10-30T16:51:50Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25951, 'PRS-T531', '2026-10-30T16:51:51Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25952, 'PRS-T531', '2026-10-30T16:51:51Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25953, 'PRS-T531', '2026-10-30T16:51:51Z', 'label', NULL, 'theme:love');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25954, 'PRS-T531', '2026-10-30T16:51:51Z', 'label', NULL, 'needs:author');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25955, 'PRS-T531', '2026-10-30T16:51:51Z', 'label', NULL, 'seq:0139');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25956, 'PRS-T532', '2026-10-30T16:51:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25957, 'PRS-T532', '2026-10-30T16:51:52Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25958, 'PRS-T532', '2026-10-30T16:51:52Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25959, 'PRS-T532', '2026-10-30T16:51:52Z', 'label', NULL, 'theme:love');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25960, 'PRS-T532', '2026-10-30T16:51:52Z', 'label', NULL, 'seq:0140');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25961, 'PRS-T533', '2026-10-30T16:51:53Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25962, 'PRS-T533', '2026-10-30T16:51:54Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25963, 'PRS-T533', '2026-10-30T16:51:54Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25964, 'PRS-T533', '2026-10-30T16:51:54Z', 'label', NULL, 'theme:love');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25965, 'PRS-T533', '2026-10-30T16:51:54Z', 'label', NULL, 'seq:0141');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25966, 'PRS-T534', '2026-10-30T16:51:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25967, 'PRS-T534', '2026-10-30T16:51:56Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25968, 'PRS-T534', '2026-10-30T16:51:56Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25969, 'PRS-T534', '2026-10-30T16:51:56Z', 'label', NULL, 'theme:ensemble');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25970, 'PRS-T534', '2026-10-30T16:51:56Z', 'label', NULL, 'seq:0142');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25971, 'PRS-T535', '2026-10-30T16:51:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25972, 'PRS-T535', '2026-10-30T16:51:58Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25973, 'PRS-T535', '2026-10-30T16:51:58Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25974, 'PRS-T535', '2026-10-30T16:51:58Z', 'label', NULL, 'theme:ensemble');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25975, 'PRS-T535', '2026-10-30T16:51:58Z', 'label', NULL, 'seq:0143');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25976, 'PRS-T536', '2026-10-30T16:51:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25977, 'PRS-T536', '2026-10-30T16:52:00Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25978, 'PRS-T536', '2026-10-30T16:52:00Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25979, 'PRS-T536', '2026-10-30T16:52:00Z', 'label', NULL, 'theme:ensemble');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25980, 'PRS-T536', '2026-10-30T16:52:00Z', 'label', NULL, 'seq:0144');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25981, 'PRS-T537', '2026-10-30T16:52:01Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25982, 'PRS-T537', '2026-10-30T16:52:02Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25983, 'PRS-T537', '2026-10-30T16:52:02Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25984, 'PRS-T537', '2026-10-30T16:52:02Z', 'label', NULL, 'book:srzr');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25985, 'PRS-T537', '2026-10-30T16:52:02Z', 'label', NULL, 'theme:thread');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25986, 'PRS-T537', '2026-10-30T16:52:02Z', 'label', NULL, 'seq:0145');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25987, 'PRS-T538', '2026-10-30T16:52:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25988, 'PRS-T538', '2026-10-30T16:52:03Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25989, 'PRS-T538', '2026-10-30T16:52:03Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25990, 'PRS-T538', '2026-10-30T16:52:03Z', 'label', NULL, 'book:srzr');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25991, 'PRS-T538', '2026-10-30T16:52:03Z', 'label', NULL, 'theme:kyle');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25992, 'PRS-T538', '2026-10-30T16:52:03Z', 'label', NULL, 'seq:0146');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25993, 'PRS-T539', '2026-10-30T16:52:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25994, 'PRS-T539', '2026-10-30T16:52:05Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25995, 'PRS-T539', '2026-10-30T16:52:05Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25996, 'PRS-T539', '2026-10-30T16:52:05Z', 'label', NULL, 'book:srzr');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25997, 'PRS-T539', '2026-10-30T16:52:05Z', 'label', NULL, 'theme:villain');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25998, 'PRS-T539', '2026-10-30T16:52:05Z', 'label', NULL, 'seq:0147');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25999, 'PRS-T540', '2026-10-30T16:52:06Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26000, 'PRS-T540', '2026-10-30T16:52:07Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26001, 'PRS-T540', '2026-10-30T16:52:07Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26002, 'PRS-T540', '2026-10-30T16:52:07Z', 'label', NULL, 'book:srzr');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26003, 'PRS-T540', '2026-10-30T16:52:07Z', 'label', NULL, 'theme:spectrum');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26004, 'PRS-T540', '2026-10-30T16:52:07Z', 'label', NULL, 'seq:0148');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26005, 'PRS-T541', '2026-10-30T16:52:08Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26006, 'PRS-T541', '2026-10-30T16:52:10Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26007, 'PRS-T541', '2026-10-30T16:52:10Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26008, 'PRS-T541', '2026-10-30T16:52:10Z', 'label', NULL, 'book:srzr');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26009, 'PRS-T541', '2026-10-30T16:52:10Z', 'label', NULL, 'theme:action');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26010, 'PRS-T541', '2026-10-30T16:52:10Z', 'label', NULL, 'seq:0149');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26011, 'PRS-T542', '2026-10-30T16:52:11Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26012, 'PRS-T542', '2026-10-30T16:52:12Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26013, 'PRS-T542', '2026-10-30T16:52:12Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26014, 'PRS-T542', '2026-10-30T16:52:12Z', 'label', NULL, 'book:srzr');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26015, 'PRS-T542', '2026-10-30T16:52:12Z', 'label', NULL, 'theme:diaspora');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26016, 'PRS-T542', '2026-10-30T16:52:12Z', 'label', NULL, 'seq:0150');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26017, 'PRS-T543', '2026-10-30T16:52:13Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26018, 'PRS-T543', '2026-10-30T16:52:14Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26019, 'PRS-T543', '2026-10-30T16:52:14Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26020, 'PRS-T543', '2026-10-30T16:52:14Z', 'label', NULL, 'book:srzr');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26021, 'PRS-T543', '2026-10-30T16:52:14Z', 'label', NULL, 'theme:minds');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26022, 'PRS-T543', '2026-10-30T16:52:14Z', 'label', NULL, 'seq:0151');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26023, 'PRS-T544', '2026-10-30T16:52:15Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26024, 'PRS-T544', '2026-10-30T16:52:16Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26025, 'PRS-T544', '2026-10-30T16:52:16Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26026, 'PRS-T544', '2026-10-30T16:52:16Z', 'label', NULL, 'book:srzr');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26027, 'PRS-T544', '2026-10-30T16:52:16Z', 'label', NULL, 'theme:canon');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26028, 'PRS-T544', '2026-10-30T16:52:16Z', 'label', NULL, 'seq:0152');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26029, 'PRS-T545', '2026-10-30T16:52:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26030, 'PRS-T545', '2026-10-30T16:52:18Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26031, 'PRS-T545', '2026-10-30T16:52:18Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26032, 'PRS-T545', '2026-10-30T16:52:18Z', 'label', NULL, 'book:pxl');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26033, 'PRS-T545', '2026-10-30T16:52:18Z', 'label', NULL, 'theme:thread');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26034, 'PRS-T545', '2026-10-30T16:52:18Z', 'label', NULL, 'seq:0153');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26035, 'PRS-T546', '2026-10-30T16:52:18Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26036, 'PRS-T546', '2026-10-30T16:52:20Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26037, 'PRS-T546', '2026-10-30T16:52:20Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26038, 'PRS-T546', '2026-10-30T16:52:20Z', 'label', NULL, 'book:pxl');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26039, 'PRS-T546', '2026-10-30T16:52:20Z', 'label', NULL, 'theme:kyle');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26040, 'PRS-T546', '2026-10-30T16:52:20Z', 'label', NULL, 'seq:0154');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26041, 'PRS-T547', '2026-10-30T16:52:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26042, 'PRS-T547', '2026-10-30T16:52:21Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26043, 'PRS-T547', '2026-10-30T16:52:21Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26044, 'PRS-T547', '2026-10-30T16:52:21Z', 'label', NULL, 'book:pxl');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26045, 'PRS-T547', '2026-10-30T16:52:21Z', 'label', NULL, 'theme:villain');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26046, 'PRS-T547', '2026-10-30T16:52:21Z', 'label', NULL, 'seq:0155');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26047, 'PRS-T548', '2026-10-30T16:52:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26048, 'PRS-T548', '2026-10-30T16:52:23Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26049, 'PRS-T548', '2026-10-30T16:52:23Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26050, 'PRS-T548', '2026-10-30T16:52:23Z', 'label', NULL, 'book:pxl');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26051, 'PRS-T548', '2026-10-30T16:52:23Z', 'label', NULL, 'theme:spectrum');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26052, 'PRS-T548', '2026-10-30T16:52:23Z', 'label', NULL, 'seq:0156');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26053, 'PRS-T549', '2026-10-30T16:52:24Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26054, 'PRS-T549', '2026-10-30T16:52:25Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26055, 'PRS-T549', '2026-10-30T16:52:25Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26056, 'PRS-T549', '2026-10-30T16:52:25Z', 'label', NULL, 'book:pxl');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26057, 'PRS-T549', '2026-10-30T16:52:25Z', 'label', NULL, 'theme:action');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26058, 'PRS-T549', '2026-10-30T16:52:25Z', 'label', NULL, 'seq:0157');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26059, 'PRS-T550', '2026-10-30T16:52:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26060, 'PRS-T550', '2026-10-30T16:52:27Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26061, 'PRS-T550', '2026-10-30T16:52:27Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26062, 'PRS-T550', '2026-10-30T16:52:27Z', 'label', NULL, 'book:pxl');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26063, 'PRS-T550', '2026-10-30T16:52:27Z', 'label', NULL, 'theme:diaspora');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26064, 'PRS-T550', '2026-10-30T16:52:27Z', 'label', NULL, 'seq:0158');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26065, 'PRS-T551', '2026-10-30T16:52:28Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26066, 'PRS-T551', '2026-10-30T16:52:29Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26067, 'PRS-T551', '2026-10-30T16:52:29Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26068, 'PRS-T551', '2026-10-30T16:52:29Z', 'label', NULL, 'book:pxl');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26069, 'PRS-T551', '2026-10-30T16:52:29Z', 'label', NULL, 'theme:minds');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26070, 'PRS-T551', '2026-10-30T16:52:29Z', 'label', NULL, 'seq:0159');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26071, 'PRS-T552', '2026-10-30T16:52:29Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26072, 'PRS-T552', '2026-10-30T16:52:31Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26073, 'PRS-T552', '2026-10-30T16:52:31Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26074, 'PRS-T552', '2026-10-30T16:52:31Z', 'label', NULL, 'book:pxl');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26075, 'PRS-T552', '2026-10-30T16:52:31Z', 'label', NULL, 'theme:canon');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26076, 'PRS-T552', '2026-10-30T16:52:31Z', 'label', NULL, 'seq:0160');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26077, 'PRS-T553', '2026-10-30T16:52:31Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26078, 'PRS-T553', '2026-10-30T16:52:32Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26079, 'PRS-T553', '2026-10-30T16:52:32Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26080, 'PRS-T553', '2026-10-30T16:52:32Z', 'label', NULL, 'book:test');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26081, 'PRS-T553', '2026-10-30T16:52:32Z', 'label', NULL, 'theme:thread');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26082, 'PRS-T553', '2026-10-30T16:52:32Z', 'label', NULL, 'seq:0161');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26083, 'PRS-T554', '2026-10-30T16:52:33Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26084, 'PRS-T554', '2026-10-30T16:52:34Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26085, 'PRS-T554', '2026-10-30T16:52:34Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26086, 'PRS-T554', '2026-10-30T16:52:34Z', 'label', NULL, 'book:test');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26087, 'PRS-T554', '2026-10-30T16:52:34Z', 'label', NULL, 'theme:kyle');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26088, 'PRS-T554', '2026-10-30T16:52:34Z', 'label', NULL, 'seq:0162');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26089, 'PRS-T555', '2026-10-30T16:52:35Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26090, 'PRS-T555', '2026-10-30T16:52:36Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26091, 'PRS-T555', '2026-10-30T16:52:36Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26092, 'PRS-T555', '2026-10-30T16:52:36Z', 'label', NULL, 'book:test');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26093, 'PRS-T555', '2026-10-30T16:52:36Z', 'label', NULL, 'theme:villain');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26094, 'PRS-T555', '2026-10-30T16:52:36Z', 'label', NULL, 'seq:0163');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26095, 'PRS-T556', '2026-10-30T16:52:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26096, 'PRS-T556', '2026-10-30T16:52:38Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26097, 'PRS-T556', '2026-10-30T16:52:38Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26098, 'PRS-T556', '2026-10-30T16:52:38Z', 'label', NULL, 'book:test');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26099, 'PRS-T556', '2026-10-30T16:52:38Z', 'label', NULL, 'theme:spectrum');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26100, 'PRS-T556', '2026-10-30T16:52:38Z', 'label', NULL, 'seq:0164');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26101, 'PRS-T557', '2026-10-30T16:52:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26102, 'PRS-T557', '2026-10-30T16:52:40Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26103, 'PRS-T557', '2026-10-30T16:52:40Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26104, 'PRS-T557', '2026-10-30T16:52:40Z', 'label', NULL, 'book:test');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26105, 'PRS-T557', '2026-10-30T16:52:40Z', 'label', NULL, 'theme:action');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26106, 'PRS-T557', '2026-10-30T16:52:40Z', 'label', NULL, 'seq:0165');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26107, 'PRS-T558', '2026-10-30T16:52:41Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26108, 'PRS-T558', '2026-10-30T16:52:42Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26109, 'PRS-T558', '2026-10-30T16:52:42Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26110, 'PRS-T558', '2026-10-30T16:52:42Z', 'label', NULL, 'book:test');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26111, 'PRS-T558', '2026-10-30T16:52:42Z', 'label', NULL, 'theme:diaspora');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26112, 'PRS-T558', '2026-10-30T16:52:42Z', 'label', NULL, 'seq:0166');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26113, 'PRS-T559', '2026-10-30T16:52:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26114, 'PRS-T559', '2026-10-30T16:52:44Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26115, 'PRS-T559', '2026-10-30T16:52:44Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26116, 'PRS-T559', '2026-10-30T16:52:44Z', 'label', NULL, 'book:test');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26117, 'PRS-T559', '2026-10-30T16:52:44Z', 'label', NULL, 'theme:minds');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26118, 'PRS-T559', '2026-10-30T16:52:44Z', 'label', NULL, 'seq:0167');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26119, 'PRS-T560', '2026-10-30T16:52:45Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26120, 'PRS-T560', '2026-10-30T16:52:46Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26121, 'PRS-T560', '2026-10-30T16:52:46Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26122, 'PRS-T560', '2026-10-30T16:52:46Z', 'label', NULL, 'book:test');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26123, 'PRS-T560', '2026-10-30T16:52:46Z', 'label', NULL, 'theme:canon');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26124, 'PRS-T560', '2026-10-30T16:52:46Z', 'label', NULL, 'seq:0168');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26125, 'PRS-T561', '2026-10-30T16:52:47Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26126, 'PRS-T561', '2026-10-30T16:52:48Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26127, 'PRS-T561', '2026-10-30T16:52:48Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26128, 'PRS-T561', '2026-10-30T16:52:48Z', 'label', NULL, 'book:atte');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26129, 'PRS-T561', '2026-10-30T16:52:48Z', 'label', NULL, 'theme:thread');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26130, 'PRS-T561', '2026-10-30T16:52:48Z', 'label', NULL, 'seq:0169');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26131, 'PRS-T562', '2026-10-30T16:52:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26132, 'PRS-T562', '2026-10-30T16:52:50Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26133, 'PRS-T562', '2026-10-30T16:52:50Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26134, 'PRS-T562', '2026-10-30T16:52:50Z', 'label', NULL, 'book:atte');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26135, 'PRS-T562', '2026-10-30T16:52:50Z', 'label', NULL, 'theme:kyle');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26136, 'PRS-T562', '2026-10-30T16:52:50Z', 'label', NULL, 'seq:0170');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26137, 'PRS-T563', '2026-10-30T16:52:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26138, 'PRS-T563', '2026-10-30T16:52:52Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26139, 'PRS-T563', '2026-10-30T16:52:52Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26140, 'PRS-T563', '2026-10-30T16:52:52Z', 'label', NULL, 'book:atte');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26141, 'PRS-T563', '2026-10-30T16:52:52Z', 'label', NULL, 'theme:villain');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26142, 'PRS-T563', '2026-10-30T16:52:52Z', 'label', NULL, 'seq:0171');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26143, 'PRS-T564', '2026-10-30T16:52:52Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26144, 'PRS-T564', '2026-10-30T16:52:54Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26145, 'PRS-T564', '2026-10-30T16:52:54Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26146, 'PRS-T564', '2026-10-30T16:52:54Z', 'label', NULL, 'book:atte');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26147, 'PRS-T564', '2026-10-30T16:52:54Z', 'label', NULL, 'theme:spectrum');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26148, 'PRS-T564', '2026-10-30T16:52:54Z', 'label', NULL, 'seq:0172');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26149, 'PRS-T565', '2026-10-30T16:52:54Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26150, 'PRS-T565', '2026-10-30T16:52:55Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26151, 'PRS-T565', '2026-10-30T16:52:55Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26152, 'PRS-T565', '2026-10-30T16:52:55Z', 'label', NULL, 'book:atte');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26153, 'PRS-T565', '2026-10-30T16:52:55Z', 'label', NULL, 'theme:action');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26154, 'PRS-T565', '2026-10-30T16:52:55Z', 'label', NULL, 'seq:0173');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26155, 'PRS-T566', '2026-10-30T16:52:56Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26156, 'PRS-T566', '2026-10-30T16:52:57Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26157, 'PRS-T566', '2026-10-30T16:52:57Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26158, 'PRS-T566', '2026-10-30T16:52:57Z', 'label', NULL, 'book:atte');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26159, 'PRS-T566', '2026-10-30T16:52:57Z', 'label', NULL, 'theme:diaspora');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26160, 'PRS-T566', '2026-10-30T16:52:57Z', 'label', NULL, 'seq:0174');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26161, 'PRS-T567', '2026-10-30T16:52:58Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26162, 'PRS-T567', '2026-10-30T16:52:59Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26163, 'PRS-T567', '2026-10-30T16:52:59Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26164, 'PRS-T567', '2026-10-30T16:52:59Z', 'label', NULL, 'book:atte');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26165, 'PRS-T567', '2026-10-30T16:52:59Z', 'label', NULL, 'theme:minds');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26166, 'PRS-T567', '2026-10-30T16:52:59Z', 'label', NULL, 'seq:0175');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26167, 'PRS-T568', '2026-10-30T16:53:00Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26168, 'PRS-T568', '2026-10-30T16:53:01Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26169, 'PRS-T568', '2026-10-30T16:53:01Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26170, 'PRS-T568', '2026-10-30T16:53:01Z', 'label', NULL, 'book:atte');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26171, 'PRS-T568', '2026-10-30T16:53:01Z', 'label', NULL, 'theme:canon');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26172, 'PRS-T568', '2026-10-30T16:53:01Z', 'label', NULL, 'seq:0176');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26173, 'PRS-T569', '2026-10-30T16:53:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26174, 'PRS-T569', '2026-10-30T16:53:03Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26175, 'PRS-T569', '2026-10-30T16:53:03Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26176, 'PRS-T569', '2026-10-30T16:53:03Z', 'label', NULL, 'book:btl');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26177, 'PRS-T569', '2026-10-30T16:53:03Z', 'label', NULL, 'theme:thread');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26178, 'PRS-T569', '2026-10-30T16:53:03Z', 'label', NULL, 'seq:0177');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26179, 'PRS-T570', '2026-10-30T16:53:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26180, 'PRS-T570', '2026-10-30T16:53:05Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26181, 'PRS-T570', '2026-10-30T16:53:05Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26182, 'PRS-T570', '2026-10-30T16:53:05Z', 'label', NULL, 'book:btl');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26183, 'PRS-T570', '2026-10-30T16:53:05Z', 'label', NULL, 'theme:kyle');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26184, 'PRS-T570', '2026-10-30T16:53:05Z', 'label', NULL, 'seq:0178');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26185, 'PRS-T571', '2026-10-30T16:53:06Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26186, 'PRS-T571', '2026-10-30T16:53:07Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26187, 'PRS-T571', '2026-10-30T16:53:07Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26188, 'PRS-T571', '2026-10-30T16:53:07Z', 'label', NULL, 'book:btl');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26189, 'PRS-T571', '2026-10-30T16:53:07Z', 'label', NULL, 'theme:villain');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26190, 'PRS-T571', '2026-10-30T16:53:07Z', 'label', NULL, 'seq:0179');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26191, 'PRS-T572', '2026-10-30T16:53:08Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26192, 'PRS-T572', '2026-10-30T16:53:09Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26193, 'PRS-T572', '2026-10-30T16:53:09Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26194, 'PRS-T572', '2026-10-30T16:53:09Z', 'label', NULL, 'book:btl');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26195, 'PRS-T572', '2026-10-30T16:53:09Z', 'label', NULL, 'theme:spectrum');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26196, 'PRS-T572', '2026-10-30T16:53:09Z', 'label', NULL, 'seq:0180');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26197, 'PRS-T573', '2026-10-30T16:53:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26198, 'PRS-T573', '2026-10-30T16:53:10Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26199, 'PRS-T573', '2026-10-30T16:53:10Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26200, 'PRS-T573', '2026-10-30T16:53:10Z', 'label', NULL, 'book:btl');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26201, 'PRS-T573', '2026-10-30T16:53:10Z', 'label', NULL, 'theme:action');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26202, 'PRS-T573', '2026-10-30T16:53:10Z', 'label', NULL, 'seq:0181');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26203, 'PRS-T574', '2026-10-30T16:53:11Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26204, 'PRS-T574', '2026-10-30T16:53:12Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26205, 'PRS-T574', '2026-10-30T16:53:12Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26206, 'PRS-T574', '2026-10-30T16:53:12Z', 'label', NULL, 'book:btl');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26207, 'PRS-T574', '2026-10-30T16:53:12Z', 'label', NULL, 'theme:diaspora');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26208, 'PRS-T574', '2026-10-30T16:53:12Z', 'label', NULL, 'seq:0182');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26209, 'PRS-T575', '2026-10-30T16:53:13Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26210, 'PRS-T575', '2026-10-30T16:53:14Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26211, 'PRS-T575', '2026-10-30T16:53:14Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26212, 'PRS-T575', '2026-10-30T16:53:14Z', 'label', NULL, 'book:btl');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26213, 'PRS-T575', '2026-10-30T16:53:14Z', 'label', NULL, 'theme:minds');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26214, 'PRS-T575', '2026-10-30T16:53:14Z', 'label', NULL, 'seq:0183');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26215, 'PRS-T576', '2026-10-30T16:53:15Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26216, 'PRS-T576', '2026-10-30T16:53:16Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26217, 'PRS-T576', '2026-10-30T16:53:16Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26218, 'PRS-T576', '2026-10-30T16:53:16Z', 'label', NULL, 'book:btl');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26219, 'PRS-T576', '2026-10-30T16:53:16Z', 'label', NULL, 'theme:canon');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26220, 'PRS-T576', '2026-10-30T16:53:16Z', 'label', NULL, 'seq:0184');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26221, 'PRS-T577', '2026-10-30T16:53:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26222, 'PRS-T577', '2026-10-30T16:53:18Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26223, 'PRS-T577', '2026-10-30T16:53:18Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26224, 'PRS-T577', '2026-10-30T16:53:18Z', 'label', NULL, 'book:dwiace');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26225, 'PRS-T577', '2026-10-30T16:53:18Z', 'label', NULL, 'theme:thread');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26226, 'PRS-T577', '2026-10-30T16:53:18Z', 'label', NULL, 'seq:0185');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26227, 'PRS-T578', '2026-10-30T16:53:19Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26228, 'PRS-T578', '2026-10-30T16:53:20Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26229, 'PRS-T578', '2026-10-30T16:53:20Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26230, 'PRS-T578', '2026-10-30T16:53:20Z', 'label', NULL, 'book:dwiace');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26231, 'PRS-T578', '2026-10-30T16:53:20Z', 'label', NULL, 'theme:kyle');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26232, 'PRS-T578', '2026-10-30T16:53:20Z', 'label', NULL, 'seq:0186');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26233, 'PRS-T579', '2026-10-30T16:53:21Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26234, 'PRS-T579', '2026-10-30T16:53:22Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26235, 'PRS-T579', '2026-10-30T16:53:22Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26236, 'PRS-T579', '2026-10-30T16:53:22Z', 'label', NULL, 'book:dwiace');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26237, 'PRS-T579', '2026-10-30T16:53:22Z', 'label', NULL, 'theme:villain');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26238, 'PRS-T579', '2026-10-30T16:53:22Z', 'label', NULL, 'seq:0187');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26239, 'PRS-T580', '2026-10-30T16:53:23Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26240, 'PRS-T580', '2026-10-30T16:53:24Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26241, 'PRS-T580', '2026-10-30T16:53:24Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26242, 'PRS-T580', '2026-10-30T16:53:24Z', 'label', NULL, 'book:dwiace');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26243, 'PRS-T580', '2026-10-30T16:53:24Z', 'label', NULL, 'theme:spectrum');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26244, 'PRS-T580', '2026-10-30T16:53:24Z', 'label', NULL, 'seq:0188');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26245, 'PRS-T581', '2026-10-30T16:53:24Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26246, 'PRS-T581', '2026-10-30T16:53:25Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26247, 'PRS-T581', '2026-10-30T16:53:25Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26248, 'PRS-T581', '2026-10-30T16:53:25Z', 'label', NULL, 'book:dwiace');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26249, 'PRS-T581', '2026-10-30T16:53:25Z', 'label', NULL, 'theme:action');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26250, 'PRS-T581', '2026-10-30T16:53:25Z', 'label', NULL, 'seq:0189');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26251, 'PRS-T582', '2026-10-30T16:53:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26252, 'PRS-T582', '2026-10-30T16:53:27Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26253, 'PRS-T582', '2026-10-30T16:53:27Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26254, 'PRS-T582', '2026-10-30T16:53:27Z', 'label', NULL, 'book:dwiace');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26255, 'PRS-T582', '2026-10-30T16:53:27Z', 'label', NULL, 'theme:diaspora');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26256, 'PRS-T582', '2026-10-30T16:53:27Z', 'label', NULL, 'seq:0190');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26257, 'PRS-T583', '2026-10-30T16:53:28Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26258, 'PRS-T583', '2026-10-30T16:53:29Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26259, 'PRS-T583', '2026-10-30T16:53:29Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26260, 'PRS-T583', '2026-10-30T16:53:29Z', 'label', NULL, 'book:dwiace');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26261, 'PRS-T583', '2026-10-30T16:53:29Z', 'label', NULL, 'theme:minds');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26262, 'PRS-T583', '2026-10-30T16:53:29Z', 'label', NULL, 'seq:0191');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26263, 'PRS-T584', '2026-10-30T16:53:30Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26264, 'PRS-T584', '2026-10-30T16:53:31Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26265, 'PRS-T584', '2026-10-30T16:53:31Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26266, 'PRS-T584', '2026-10-30T16:53:31Z', 'label', NULL, 'book:dwiace');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26267, 'PRS-T584', '2026-10-30T16:53:31Z', 'label', NULL, 'theme:canon');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26268, 'PRS-T584', '2026-10-30T16:53:31Z', 'label', NULL, 'seq:0192');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26269, 'PRS-T585', '2026-10-30T16:53:32Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26270, 'PRS-T585', '2026-10-30T16:53:33Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26271, 'PRS-T585', '2026-10-30T16:53:33Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26272, 'PRS-T585', '2026-10-30T16:53:33Z', 'label', NULL, 'book:crit');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26273, 'PRS-T585', '2026-10-30T16:53:33Z', 'label', NULL, 'theme:thread');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26274, 'PRS-T585', '2026-10-30T16:53:33Z', 'label', NULL, 'seq:0193');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26275, 'PRS-T586', '2026-10-30T16:53:33Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26276, 'PRS-T586', '2026-10-30T16:53:35Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26277, 'PRS-T586', '2026-10-30T16:53:35Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26278, 'PRS-T586', '2026-10-30T16:53:35Z', 'label', NULL, 'book:crit');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26279, 'PRS-T586', '2026-10-30T16:53:35Z', 'label', NULL, 'theme:kyle');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26280, 'PRS-T586', '2026-10-30T16:53:35Z', 'label', NULL, 'seq:0194');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26281, 'PRS-T587', '2026-10-30T16:53:35Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26282, 'PRS-T587', '2026-10-30T16:53:36Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26283, 'PRS-T587', '2026-10-30T16:53:36Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26284, 'PRS-T587', '2026-10-30T16:53:36Z', 'label', NULL, 'book:crit');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26285, 'PRS-T587', '2026-10-30T16:53:36Z', 'label', NULL, 'theme:villain');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26286, 'PRS-T587', '2026-10-30T16:53:36Z', 'label', NULL, 'seq:0195');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26287, 'PRS-T588', '2026-10-30T16:53:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26288, 'PRS-T588', '2026-10-30T16:53:38Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26289, 'PRS-T588', '2026-10-30T16:53:38Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26290, 'PRS-T588', '2026-10-30T16:53:38Z', 'label', NULL, 'book:crit');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26291, 'PRS-T588', '2026-10-30T16:53:38Z', 'label', NULL, 'theme:spectrum');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26292, 'PRS-T588', '2026-10-30T16:53:38Z', 'label', NULL, 'seq:0196');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26293, 'PRS-T589', '2026-10-30T16:53:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26294, 'PRS-T589', '2026-10-30T16:53:40Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26295, 'PRS-T589', '2026-10-30T16:53:40Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26296, 'PRS-T589', '2026-10-30T16:53:40Z', 'label', NULL, 'book:crit');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26297, 'PRS-T589', '2026-10-30T16:53:40Z', 'label', NULL, 'theme:action');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26298, 'PRS-T589', '2026-10-30T16:53:40Z', 'label', NULL, 'seq:0197');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26299, 'PRS-T590', '2026-10-30T16:53:41Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26300, 'PRS-T590', '2026-10-30T16:53:42Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26301, 'PRS-T590', '2026-10-30T16:53:42Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26302, 'PRS-T590', '2026-10-30T16:53:42Z', 'label', NULL, 'book:crit');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26303, 'PRS-T590', '2026-10-30T16:53:42Z', 'label', NULL, 'theme:diaspora');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26304, 'PRS-T590', '2026-10-30T16:53:42Z', 'label', NULL, 'seq:0198');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26305, 'PRS-T591', '2026-10-30T16:53:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26306, 'PRS-T591', '2026-10-30T16:53:44Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26307, 'PRS-T591', '2026-10-30T16:53:44Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26308, 'PRS-T591', '2026-10-30T16:53:44Z', 'label', NULL, 'book:crit');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26309, 'PRS-T591', '2026-10-30T16:53:44Z', 'label', NULL, 'theme:minds');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26310, 'PRS-T591', '2026-10-30T16:53:44Z', 'label', NULL, 'seq:0199');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26311, 'PRS-T592', '2026-10-30T16:53:44Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26312, 'PRS-T592', '2026-10-30T16:53:45Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26313, 'PRS-T592', '2026-10-30T16:53:45Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26314, 'PRS-T592', '2026-10-30T16:53:45Z', 'label', NULL, 'book:crit');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26315, 'PRS-T592', '2026-10-30T16:53:45Z', 'label', NULL, 'theme:canon');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26316, 'PRS-T592', '2026-10-30T16:53:45Z', 'label', NULL, 'seq:0200');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26317, 'PRS-T593', '2026-10-30T16:53:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26318, 'PRS-T593', '2026-10-30T16:53:48Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26319, 'PRS-T593', '2026-10-30T16:53:48Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26320, 'PRS-T593', '2026-10-30T16:53:48Z', 'label', NULL, 'book:tlc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26321, 'PRS-T593', '2026-10-30T16:53:48Z', 'label', NULL, 'theme:thread');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26322, 'PRS-T593', '2026-10-30T16:53:48Z', 'label', NULL, 'seq:0201');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26323, 'PRS-T594', '2026-10-30T16:53:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26324, 'PRS-T594', '2026-10-30T16:53:50Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26325, 'PRS-T594', '2026-10-30T16:53:50Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26326, 'PRS-T594', '2026-10-30T16:53:50Z', 'label', NULL, 'book:tlc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26327, 'PRS-T594', '2026-10-30T16:53:50Z', 'label', NULL, 'theme:kyle');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26328, 'PRS-T594', '2026-10-30T16:53:50Z', 'label', NULL, 'seq:0202');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26329, 'PRS-T595', '2026-10-30T16:53:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26330, 'PRS-T595', '2026-10-30T16:53:52Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26331, 'PRS-T595', '2026-10-30T16:53:52Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26332, 'PRS-T595', '2026-10-30T16:53:52Z', 'label', NULL, 'book:tlc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26333, 'PRS-T595', '2026-10-30T16:53:52Z', 'label', NULL, 'theme:villain');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26334, 'PRS-T595', '2026-10-30T16:53:52Z', 'label', NULL, 'seq:0203');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26335, 'PRS-T596', '2026-10-30T16:53:52Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26336, 'PRS-T596', '2026-10-30T16:53:53Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26337, 'PRS-T596', '2026-10-30T16:53:53Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26338, 'PRS-T596', '2026-10-30T16:53:53Z', 'label', NULL, 'book:tlc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26339, 'PRS-T596', '2026-10-30T16:53:53Z', 'label', NULL, 'theme:spectrum');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26340, 'PRS-T596', '2026-10-30T16:53:53Z', 'label', NULL, 'seq:0204');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26341, 'PRS-T597', '2026-10-30T16:53:54Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26342, 'PRS-T597', '2026-10-30T16:53:55Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26343, 'PRS-T597', '2026-10-30T16:53:55Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26344, 'PRS-T597', '2026-10-30T16:53:55Z', 'label', NULL, 'book:tlc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26345, 'PRS-T597', '2026-10-30T16:53:55Z', 'label', NULL, 'theme:action');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26346, 'PRS-T597', '2026-10-30T16:53:55Z', 'label', NULL, 'seq:0205');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26347, 'PRS-T598', '2026-10-30T16:53:56Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26348, 'PRS-T598', '2026-10-30T16:53:57Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26349, 'PRS-T598', '2026-10-30T16:53:57Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26350, 'PRS-T598', '2026-10-30T16:53:57Z', 'label', NULL, 'book:tlc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26351, 'PRS-T598', '2026-10-30T16:53:57Z', 'label', NULL, 'theme:diaspora');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26352, 'PRS-T598', '2026-10-30T16:53:57Z', 'label', NULL, 'seq:0206');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26353, 'PRS-T599', '2026-10-30T16:53:58Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26354, 'PRS-T599', '2026-10-30T16:53:59Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26355, 'PRS-T599', '2026-10-30T16:53:59Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26356, 'PRS-T599', '2026-10-30T16:53:59Z', 'label', NULL, 'book:tlc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26357, 'PRS-T599', '2026-10-30T16:53:59Z', 'label', NULL, 'theme:minds');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26358, 'PRS-T599', '2026-10-30T16:53:59Z', 'label', NULL, 'seq:0207');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26359, 'PRS-T600', '2026-10-30T16:54:00Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26360, 'PRS-T600', '2026-10-30T16:54:01Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26361, 'PRS-T600', '2026-10-30T16:54:01Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26362, 'PRS-T600', '2026-10-30T16:54:01Z', 'label', NULL, 'book:tlc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26363, 'PRS-T600', '2026-10-30T16:54:01Z', 'label', NULL, 'theme:canon');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26364, 'PRS-T600', '2026-10-30T16:54:01Z', 'label', NULL, 'seq:0208');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26365, 'PRS-T601', '2026-10-30T16:54:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26366, 'PRS-T601', '2026-10-30T16:54:03Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26367, 'PRS-T601', '2026-10-30T16:54:03Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26368, 'PRS-T601', '2026-10-30T16:54:03Z', 'label', NULL, 'book:sprw');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26369, 'PRS-T601', '2026-10-30T16:54:03Z', 'label', NULL, 'theme:thread');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26370, 'PRS-T601', '2026-10-30T16:54:03Z', 'label', NULL, 'seq:0209');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26371, 'PRS-T602', '2026-10-30T16:54:03Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26372, 'PRS-T602', '2026-10-30T16:54:04Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26373, 'PRS-T602', '2026-10-30T16:54:04Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26374, 'PRS-T602', '2026-10-30T16:54:04Z', 'label', NULL, 'book:sprw');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26375, 'PRS-T602', '2026-10-30T16:54:04Z', 'label', NULL, 'theme:kyle');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26376, 'PRS-T602', '2026-10-30T16:54:04Z', 'label', NULL, 'seq:0210');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26377, 'PRS-T603', '2026-10-30T16:54:05Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26378, 'PRS-T603', '2026-10-30T16:54:06Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26379, 'PRS-T603', '2026-10-30T16:54:06Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26380, 'PRS-T603', '2026-10-30T16:54:06Z', 'label', NULL, 'book:sprw');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26381, 'PRS-T603', '2026-10-30T16:54:06Z', 'label', NULL, 'theme:villain');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26382, 'PRS-T603', '2026-10-30T16:54:06Z', 'label', NULL, 'seq:0211');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26383, 'PRS-T604', '2026-10-30T16:54:07Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26384, 'PRS-T604', '2026-10-30T16:54:08Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26385, 'PRS-T604', '2026-10-30T16:54:08Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26386, 'PRS-T604', '2026-10-30T16:54:08Z', 'label', NULL, 'book:sprw');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26387, 'PRS-T604', '2026-10-30T16:54:08Z', 'label', NULL, 'theme:spectrum');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26388, 'PRS-T604', '2026-10-30T16:54:08Z', 'label', NULL, 'seq:0212');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26389, 'PRS-T605', '2026-10-30T16:54:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26390, 'PRS-T605', '2026-10-30T16:54:10Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26391, 'PRS-T605', '2026-10-30T16:54:10Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26392, 'PRS-T605', '2026-10-30T16:54:10Z', 'label', NULL, 'book:sprw');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26393, 'PRS-T605', '2026-10-30T16:54:10Z', 'label', NULL, 'theme:action');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26394, 'PRS-T605', '2026-10-30T16:54:10Z', 'label', NULL, 'seq:0213');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26395, 'PRS-T606', '2026-10-30T16:54:11Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26396, 'PRS-T606', '2026-10-30T16:54:12Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26397, 'PRS-T606', '2026-10-30T16:54:12Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26398, 'PRS-T606', '2026-10-30T16:54:12Z', 'label', NULL, 'book:sprw');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26399, 'PRS-T606', '2026-10-30T16:54:12Z', 'label', NULL, 'theme:diaspora');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26400, 'PRS-T606', '2026-10-30T16:54:12Z', 'label', NULL, 'seq:0214');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26401, 'PRS-T607', '2026-10-30T16:54:12Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26402, 'PRS-T607', '2026-10-30T16:54:14Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26403, 'PRS-T607', '2026-10-30T16:54:14Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26404, 'PRS-T607', '2026-10-30T16:54:14Z', 'label', NULL, 'book:sprw');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26405, 'PRS-T607', '2026-10-30T16:54:14Z', 'label', NULL, 'theme:minds');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26406, 'PRS-T607', '2026-10-30T16:54:14Z', 'label', NULL, 'seq:0215');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26407, 'PRS-T608', '2026-10-30T16:54:14Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26408, 'PRS-T608', '2026-10-30T16:54:15Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26409, 'PRS-T608', '2026-10-30T16:54:15Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26410, 'PRS-T608', '2026-10-30T16:54:15Z', 'label', NULL, 'book:sprw');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26411, 'PRS-T608', '2026-10-30T16:54:15Z', 'label', NULL, 'theme:canon');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26412, 'PRS-T608', '2026-10-30T16:54:15Z', 'label', NULL, 'seq:0216');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26413, 'PRS-T609', '2026-10-30T16:54:16Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26414, 'PRS-T609', '2026-10-30T16:54:17Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26415, 'PRS-T609', '2026-10-30T16:54:17Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26416, 'PRS-T609', '2026-10-30T16:54:17Z', 'label', NULL, 'book:mxg');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26417, 'PRS-T609', '2026-10-30T16:54:17Z', 'label', NULL, 'theme:thread');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26418, 'PRS-T609', '2026-10-30T16:54:17Z', 'label', NULL, 'seq:0217');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26419, 'PRS-T610', '2026-10-30T16:54:18Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26420, 'PRS-T610', '2026-10-30T16:54:19Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26421, 'PRS-T610', '2026-10-30T16:54:19Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26422, 'PRS-T610', '2026-10-30T16:54:19Z', 'label', NULL, 'book:mxg');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26423, 'PRS-T610', '2026-10-30T16:54:19Z', 'label', NULL, 'theme:kyle');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26424, 'PRS-T610', '2026-10-30T16:54:19Z', 'label', NULL, 'seq:0218');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26425, 'PRS-T611', '2026-10-30T16:54:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26426, 'PRS-T611', '2026-10-30T16:54:21Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26427, 'PRS-T611', '2026-10-30T16:54:21Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26428, 'PRS-T611', '2026-10-30T16:54:21Z', 'label', NULL, 'book:mxg');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26429, 'PRS-T611', '2026-10-30T16:54:21Z', 'label', NULL, 'theme:villain');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26430, 'PRS-T611', '2026-10-30T16:54:21Z', 'label', NULL, 'seq:0219');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26431, 'PRS-T612', '2026-10-30T16:54:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26432, 'PRS-T612', '2026-10-30T16:54:23Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26433, 'PRS-T612', '2026-10-30T16:54:23Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26434, 'PRS-T612', '2026-10-30T16:54:23Z', 'label', NULL, 'book:mxg');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26435, 'PRS-T612', '2026-10-30T16:54:23Z', 'label', NULL, 'theme:spectrum');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26436, 'PRS-T612', '2026-10-30T16:54:23Z', 'label', NULL, 'seq:0220');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26437, 'PRS-T613', '2026-10-30T16:54:23Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26438, 'PRS-T613', '2026-10-30T16:54:24Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26439, 'PRS-T613', '2026-10-30T16:54:24Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26440, 'PRS-T613', '2026-10-30T16:54:24Z', 'label', NULL, 'book:mxg');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26441, 'PRS-T613', '2026-10-30T16:54:24Z', 'label', NULL, 'theme:action');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26442, 'PRS-T613', '2026-10-30T16:54:24Z', 'label', NULL, 'seq:0221');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26443, 'PRS-T614', '2026-10-30T16:54:25Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26444, 'PRS-T614', '2026-10-30T16:54:26Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26445, 'PRS-T614', '2026-10-30T16:54:26Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26446, 'PRS-T614', '2026-10-30T16:54:26Z', 'label', NULL, 'book:mxg');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26447, 'PRS-T614', '2026-10-30T16:54:26Z', 'label', NULL, 'theme:diaspora');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26448, 'PRS-T614', '2026-10-30T16:54:26Z', 'label', NULL, 'seq:0222');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26449, 'PRS-T615', '2026-10-30T16:54:27Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26450, 'PRS-T615', '2026-10-30T16:54:28Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26451, 'PRS-T615', '2026-10-30T16:54:28Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26452, 'PRS-T615', '2026-10-30T16:54:28Z', 'label', NULL, 'book:mxg');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26453, 'PRS-T615', '2026-10-30T16:54:28Z', 'label', NULL, 'theme:minds');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26454, 'PRS-T615', '2026-10-30T16:54:28Z', 'label', NULL, 'seq:0223');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26455, 'PRS-T616', '2026-10-30T16:54:29Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26456, 'PRS-T616', '2026-10-30T16:54:30Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26457, 'PRS-T616', '2026-10-30T16:54:30Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26458, 'PRS-T616', '2026-10-30T16:54:30Z', 'label', NULL, 'book:mxg');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26459, 'PRS-T616', '2026-10-30T16:54:30Z', 'label', NULL, 'theme:canon');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26460, 'PRS-T616', '2026-10-30T16:54:30Z', 'label', NULL, 'seq:0224');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26461, 'PRS-T617', '2026-10-30T16:54:30Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26462, 'PRS-T617', '2026-10-30T16:54:31Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26463, 'PRS-T617', '2026-10-30T16:54:31Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26464, 'PRS-T617', '2026-10-30T16:54:31Z', 'label', NULL, 'book:vatd');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26465, 'PRS-T617', '2026-10-30T16:54:31Z', 'label', NULL, 'theme:thread');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26466, 'PRS-T617', '2026-10-30T16:54:31Z', 'label', NULL, 'seq:0225');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26467, 'PRS-T618', '2026-10-30T16:54:32Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26468, 'PRS-T618', '2026-10-30T16:54:33Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26469, 'PRS-T618', '2026-10-30T16:54:33Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26470, 'PRS-T618', '2026-10-30T16:54:33Z', 'label', NULL, 'book:vatd');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26471, 'PRS-T618', '2026-10-30T16:54:33Z', 'label', NULL, 'theme:kyle');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26472, 'PRS-T618', '2026-10-30T16:54:33Z', 'label', NULL, 'seq:0226');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26473, 'PRS-T619', '2026-10-30T16:54:34Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26474, 'PRS-T619', '2026-10-30T16:54:35Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26475, 'PRS-T619', '2026-10-30T16:54:35Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26476, 'PRS-T619', '2026-10-30T16:54:35Z', 'label', NULL, 'book:vatd');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26477, 'PRS-T619', '2026-10-30T16:54:35Z', 'label', NULL, 'theme:villain');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26478, 'PRS-T619', '2026-10-30T16:54:35Z', 'label', NULL, 'seq:0227');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26479, 'PRS-T620', '2026-10-30T16:54:36Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26480, 'PRS-T620', '2026-10-30T16:54:37Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26481, 'PRS-T620', '2026-10-30T16:54:37Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26482, 'PRS-T620', '2026-10-30T16:54:37Z', 'label', NULL, 'book:vatd');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26483, 'PRS-T620', '2026-10-30T16:54:37Z', 'label', NULL, 'theme:spectrum');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26484, 'PRS-T620', '2026-10-30T16:54:37Z', 'label', NULL, 'seq:0228');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26485, 'PRS-T621', '2026-10-30T16:54:38Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26486, 'PRS-T621', '2026-10-30T16:54:39Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26487, 'PRS-T621', '2026-10-30T16:54:39Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26488, 'PRS-T621', '2026-10-30T16:54:39Z', 'label', NULL, 'book:vatd');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26489, 'PRS-T621', '2026-10-30T16:54:39Z', 'label', NULL, 'theme:action');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26490, 'PRS-T621', '2026-10-30T16:54:39Z', 'label', NULL, 'seq:0229');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26491, 'PRS-T622', '2026-10-30T16:54:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26492, 'PRS-T622', '2026-10-30T16:54:41Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26493, 'PRS-T622', '2026-10-30T16:54:41Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26494, 'PRS-T622', '2026-10-30T16:54:41Z', 'label', NULL, 'book:vatd');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26495, 'PRS-T622', '2026-10-30T16:54:41Z', 'label', NULL, 'theme:diaspora');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26496, 'PRS-T622', '2026-10-30T16:54:41Z', 'label', NULL, 'seq:0230');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26497, 'PRS-T623', '2026-10-30T16:54:41Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26498, 'PRS-T623', '2026-10-30T16:54:43Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26499, 'PRS-T623', '2026-10-30T16:54:43Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26500, 'PRS-T623', '2026-10-30T16:54:43Z', 'label', NULL, 'book:vatd');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26501, 'PRS-T623', '2026-10-30T16:54:43Z', 'label', NULL, 'theme:minds');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26502, 'PRS-T623', '2026-10-30T16:54:43Z', 'label', NULL, 'seq:0231');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26503, 'PRS-T624', '2026-10-30T16:54:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26504, 'PRS-T624', '2026-10-30T16:54:44Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26505, 'PRS-T624', '2026-10-30T16:54:44Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26506, 'PRS-T624', '2026-10-30T16:54:44Z', 'label', NULL, 'book:vatd');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26507, 'PRS-T624', '2026-10-30T16:54:44Z', 'label', NULL, 'theme:canon');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26508, 'PRS-T624', '2026-10-30T16:54:44Z', 'label', NULL, 'seq:0232');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26509, 'PRS-T625', '2026-10-30T16:54:45Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26510, 'PRS-T625', '2026-10-30T16:54:46Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26511, 'PRS-T625', '2026-10-30T16:54:46Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26512, 'PRS-T625', '2026-10-30T16:54:46Z', 'label', NULL, 'book:bcoda');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26513, 'PRS-T625', '2026-10-30T16:54:46Z', 'label', NULL, 'theme:thread');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26514, 'PRS-T625', '2026-10-30T16:54:46Z', 'label', NULL, 'seq:0233');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26515, 'PRS-T626', '2026-10-30T16:54:47Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26516, 'PRS-T626', '2026-10-30T16:54:48Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26517, 'PRS-T626', '2026-10-30T16:54:48Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26518, 'PRS-T626', '2026-10-30T16:54:48Z', 'label', NULL, 'book:bcoda');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26519, 'PRS-T626', '2026-10-30T16:54:48Z', 'label', NULL, 'theme:kyle');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26520, 'PRS-T626', '2026-10-30T16:54:48Z', 'label', NULL, 'seq:0234');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26521, 'PRS-T627', '2026-10-30T16:54:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26522, 'PRS-T627', '2026-10-30T16:54:50Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26523, 'PRS-T627', '2026-10-30T16:54:50Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26524, 'PRS-T627', '2026-10-30T16:54:50Z', 'label', NULL, 'book:bcoda');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26525, 'PRS-T627', '2026-10-30T16:54:50Z', 'label', NULL, 'theme:villain');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26526, 'PRS-T627', '2026-10-30T16:54:50Z', 'label', NULL, 'seq:0235');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26527, 'PRS-T628', '2026-10-30T16:54:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26528, 'PRS-T628', '2026-10-30T16:54:52Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26529, 'PRS-T628', '2026-10-30T16:54:52Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26530, 'PRS-T628', '2026-10-30T16:54:52Z', 'label', NULL, 'book:bcoda');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26531, 'PRS-T628', '2026-10-30T16:54:52Z', 'label', NULL, 'theme:spectrum');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26532, 'PRS-T628', '2026-10-30T16:54:52Z', 'label', NULL, 'seq:0236');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26533, 'PRS-T629', '2026-10-30T16:54:53Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26534, 'PRS-T629', '2026-10-30T16:54:54Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26535, 'PRS-T629', '2026-10-30T16:54:54Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26536, 'PRS-T629', '2026-10-30T16:54:54Z', 'label', NULL, 'book:bcoda');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26537, 'PRS-T629', '2026-10-30T16:54:54Z', 'label', NULL, 'theme:action');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26538, 'PRS-T629', '2026-10-30T16:54:54Z', 'label', NULL, 'seq:0237');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26539, 'PRS-T630', '2026-10-30T16:54:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26540, 'PRS-T630', '2026-10-30T16:54:56Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26541, 'PRS-T630', '2026-10-30T16:54:56Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26542, 'PRS-T630', '2026-10-30T16:54:56Z', 'label', NULL, 'book:bcoda');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26543, 'PRS-T630', '2026-10-30T16:54:56Z', 'label', NULL, 'theme:diaspora');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26544, 'PRS-T630', '2026-10-30T16:54:56Z', 'label', NULL, 'seq:0238');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26545, 'PRS-T631', '2026-10-30T16:54:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26546, 'PRS-T631', '2026-10-30T16:54:58Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26547, 'PRS-T631', '2026-10-30T16:54:58Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26548, 'PRS-T631', '2026-10-30T16:54:58Z', 'label', NULL, 'book:bcoda');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26549, 'PRS-T631', '2026-10-30T16:54:58Z', 'label', NULL, 'theme:minds');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26550, 'PRS-T631', '2026-10-30T16:54:58Z', 'label', NULL, 'seq:0239');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26551, 'PRS-T632', '2026-10-30T16:54:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26552, 'PRS-T632', '2026-10-30T16:55:00Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26553, 'PRS-T632', '2026-10-30T16:55:00Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26554, 'PRS-T632', '2026-10-30T16:55:00Z', 'label', NULL, 'book:bcoda');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26555, 'PRS-T632', '2026-10-30T16:55:00Z', 'label', NULL, 'theme:canon');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26556, 'PRS-T632', '2026-10-30T16:55:00Z', 'label', NULL, 'seq:0240');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26557, 'PRS-T633', '2026-10-30T16:55:01Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26558, 'PRS-T633', '2026-10-30T16:55:02Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26559, 'PRS-T633', '2026-10-30T16:55:02Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26560, 'PRS-T633', '2026-10-30T16:55:02Z', 'label', NULL, 'book:undr');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26561, 'PRS-T633', '2026-10-30T16:55:02Z', 'label', NULL, 'theme:thread');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26562, 'PRS-T633', '2026-10-30T16:55:02Z', 'label', NULL, 'seq:0241');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26563, 'PRS-T634', '2026-10-30T16:55:03Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26564, 'PRS-T634', '2026-10-30T16:55:04Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26565, 'PRS-T634', '2026-10-30T16:55:04Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26566, 'PRS-T634', '2026-10-30T16:55:04Z', 'label', NULL, 'book:undr');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26567, 'PRS-T634', '2026-10-30T16:55:04Z', 'label', NULL, 'theme:kyle');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26568, 'PRS-T634', '2026-10-30T16:55:04Z', 'label', NULL, 'seq:0242');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26569, 'PRS-T635', '2026-10-30T16:55:05Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26570, 'PRS-T635', '2026-10-30T16:55:06Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26571, 'PRS-T635', '2026-10-30T16:55:06Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26572, 'PRS-T635', '2026-10-30T16:55:06Z', 'label', NULL, 'book:undr');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26573, 'PRS-T635', '2026-10-30T16:55:06Z', 'label', NULL, 'theme:villain');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26574, 'PRS-T635', '2026-10-30T16:55:06Z', 'label', NULL, 'seq:0243');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26575, 'PRS-T636', '2026-10-30T16:55:06Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26576, 'PRS-T636', '2026-10-30T16:55:08Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26577, 'PRS-T636', '2026-10-30T16:55:08Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26578, 'PRS-T636', '2026-10-30T16:55:08Z', 'label', NULL, 'book:undr');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26579, 'PRS-T636', '2026-10-30T16:55:08Z', 'label', NULL, 'theme:spectrum');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26580, 'PRS-T636', '2026-10-30T16:55:08Z', 'label', NULL, 'seq:0244');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26581, 'PRS-T637', '2026-10-30T16:55:08Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26582, 'PRS-T637', '2026-10-30T16:55:10Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26583, 'PRS-T637', '2026-10-30T16:55:10Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26584, 'PRS-T637', '2026-10-30T16:55:10Z', 'label', NULL, 'book:undr');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26585, 'PRS-T637', '2026-10-30T16:55:10Z', 'label', NULL, 'theme:action');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26586, 'PRS-T637', '2026-10-30T16:55:10Z', 'label', NULL, 'seq:0245');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26587, 'PRS-T638', '2026-10-30T16:55:10Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26588, 'PRS-T638', '2026-10-30T16:55:11Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26589, 'PRS-T638', '2026-10-30T16:55:11Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26590, 'PRS-T638', '2026-10-30T16:55:11Z', 'label', NULL, 'book:undr');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26591, 'PRS-T638', '2026-10-30T16:55:11Z', 'label', NULL, 'theme:diaspora');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26592, 'PRS-T638', '2026-10-30T16:55:11Z', 'label', NULL, 'seq:0246');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26593, 'PRS-T639', '2026-10-30T16:55:12Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26594, 'PRS-T639', '2026-10-30T16:55:13Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26595, 'PRS-T639', '2026-10-30T16:55:13Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26596, 'PRS-T639', '2026-10-30T16:55:13Z', 'label', NULL, 'book:undr');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26597, 'PRS-T639', '2026-10-30T16:55:13Z', 'label', NULL, 'theme:minds');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26598, 'PRS-T639', '2026-10-30T16:55:13Z', 'label', NULL, 'seq:0247');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26599, 'PRS-T640', '2026-10-30T16:55:14Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26600, 'PRS-T640', '2026-10-30T16:55:15Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26601, 'PRS-T640', '2026-10-30T16:55:15Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26602, 'PRS-T640', '2026-10-30T16:55:15Z', 'label', NULL, 'book:undr');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26603, 'PRS-T640', '2026-10-30T16:55:15Z', 'label', NULL, 'theme:canon');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26604, 'PRS-T640', '2026-10-30T16:55:15Z', 'label', NULL, 'seq:0248');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26605, 'PRS-T641', '2026-10-30T16:55:16Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26606, 'PRS-T641', '2026-10-30T16:55:17Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26607, 'PRS-T641', '2026-10-30T16:55:17Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26608, 'PRS-T641', '2026-10-30T16:55:17Z', 'label', NULL, 'book:twu');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26609, 'PRS-T641', '2026-10-30T16:55:17Z', 'label', NULL, 'theme:thread');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26610, 'PRS-T641', '2026-10-30T16:55:17Z', 'label', NULL, 'seq:0249');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26611, 'PRS-T642', '2026-10-30T16:55:18Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26612, 'PRS-T642', '2026-10-30T16:55:19Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26613, 'PRS-T642', '2026-10-30T16:55:19Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26614, 'PRS-T642', '2026-10-30T16:55:19Z', 'label', NULL, 'book:twu');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26615, 'PRS-T642', '2026-10-30T16:55:19Z', 'label', NULL, 'theme:kyle');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26616, 'PRS-T642', '2026-10-30T16:55:19Z', 'label', NULL, 'seq:0250');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26617, 'PRS-T643', '2026-10-30T16:55:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26618, 'PRS-T643', '2026-10-30T16:55:21Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26619, 'PRS-T643', '2026-10-30T16:55:21Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26620, 'PRS-T643', '2026-10-30T16:55:21Z', 'label', NULL, 'book:twu');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26621, 'PRS-T643', '2026-10-30T16:55:21Z', 'label', NULL, 'theme:villain');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26622, 'PRS-T643', '2026-10-30T16:55:21Z', 'label', NULL, 'seq:0251');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26623, 'PRS-T644', '2026-10-30T16:55:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26624, 'PRS-T644', '2026-10-30T16:55:23Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26625, 'PRS-T644', '2026-10-30T16:55:23Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26626, 'PRS-T644', '2026-10-30T16:55:23Z', 'label', NULL, 'book:twu');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26627, 'PRS-T644', '2026-10-30T16:55:23Z', 'label', NULL, 'theme:spectrum');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26628, 'PRS-T644', '2026-10-30T16:55:23Z', 'label', NULL, 'seq:0252');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26629, 'PRS-T645', '2026-10-30T16:55:23Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26630, 'PRS-T645', '2026-10-30T16:55:24Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26631, 'PRS-T645', '2026-10-30T16:55:24Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26632, 'PRS-T645', '2026-10-30T16:55:24Z', 'label', NULL, 'book:twu');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26633, 'PRS-T645', '2026-10-30T16:55:24Z', 'label', NULL, 'theme:action');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26634, 'PRS-T645', '2026-10-30T16:55:24Z', 'label', NULL, 'seq:0253');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26635, 'PRS-T646', '2026-10-30T16:55:25Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26636, 'PRS-T646', '2026-10-30T16:55:26Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26637, 'PRS-T646', '2026-10-30T16:55:26Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26638, 'PRS-T646', '2026-10-30T16:55:26Z', 'label', NULL, 'book:twu');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26639, 'PRS-T646', '2026-10-30T16:55:26Z', 'label', NULL, 'theme:diaspora');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26640, 'PRS-T646', '2026-10-30T16:55:26Z', 'label', NULL, 'seq:0254');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26641, 'PRS-T647', '2026-10-30T16:55:27Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26642, 'PRS-T647', '2026-10-30T16:55:28Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26643, 'PRS-T647', '2026-10-30T16:55:28Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26644, 'PRS-T647', '2026-10-30T16:55:28Z', 'label', NULL, 'book:twu');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26645, 'PRS-T647', '2026-10-30T16:55:28Z', 'label', NULL, 'theme:minds');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26646, 'PRS-T647', '2026-10-30T16:55:28Z', 'label', NULL, 'seq:0255');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26647, 'PRS-T648', '2026-10-30T16:55:29Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26648, 'PRS-T648', '2026-10-30T16:55:30Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26649, 'PRS-T648', '2026-10-30T16:55:30Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26650, 'PRS-T648', '2026-10-30T16:55:30Z', 'label', NULL, 'book:twu');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26651, 'PRS-T648', '2026-10-30T16:55:30Z', 'label', NULL, 'theme:canon');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26652, 'PRS-T648', '2026-10-30T16:55:30Z', 'label', NULL, 'seq:0256');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26653, 'PRS-T649', '2026-10-30T16:55:31Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26654, 'PRS-T649', '2026-10-30T16:55:32Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26655, 'PRS-T649', '2026-10-30T16:55:32Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26656, 'PRS-T649', '2026-10-30T16:55:32Z', 'label', NULL, 'book:nxr');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26657, 'PRS-T649', '2026-10-30T16:55:32Z', 'label', NULL, 'theme:thread');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26658, 'PRS-T649', '2026-10-30T16:55:32Z', 'label', NULL, 'seq:0257');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26659, 'PRS-T650', '2026-10-30T16:55:32Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26660, 'PRS-T650', '2026-10-30T16:55:33Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26661, 'PRS-T650', '2026-10-30T16:55:33Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26662, 'PRS-T650', '2026-10-30T16:55:33Z', 'label', NULL, 'book:nxr');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26663, 'PRS-T650', '2026-10-30T16:55:33Z', 'label', NULL, 'theme:kyle');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26664, 'PRS-T650', '2026-10-30T16:55:33Z', 'label', NULL, 'seq:0258');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26665, 'PRS-T651', '2026-10-30T16:55:34Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26666, 'PRS-T651', '2026-10-30T16:55:35Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26667, 'PRS-T651', '2026-10-30T16:55:35Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26668, 'PRS-T651', '2026-10-30T16:55:35Z', 'label', NULL, 'book:nxr');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26669, 'PRS-T651', '2026-10-30T16:55:35Z', 'label', NULL, 'theme:villain');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26670, 'PRS-T651', '2026-10-30T16:55:35Z', 'label', NULL, 'seq:0259');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26671, 'PRS-T652', '2026-10-30T16:55:36Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26672, 'PRS-T652', '2026-10-30T16:55:37Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26673, 'PRS-T652', '2026-10-30T16:55:37Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26674, 'PRS-T652', '2026-10-30T16:55:37Z', 'label', NULL, 'book:nxr');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26675, 'PRS-T652', '2026-10-30T16:55:37Z', 'label', NULL, 'theme:spectrum');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26676, 'PRS-T652', '2026-10-30T16:55:37Z', 'label', NULL, 'seq:0260');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26677, 'PRS-T653', '2026-10-30T16:55:38Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26678, 'PRS-T653', '2026-10-30T16:55:39Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26679, 'PRS-T653', '2026-10-30T16:55:39Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26680, 'PRS-T653', '2026-10-30T16:55:39Z', 'label', NULL, 'book:nxr');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26681, 'PRS-T653', '2026-10-30T16:55:39Z', 'label', NULL, 'theme:action');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26682, 'PRS-T653', '2026-10-30T16:55:39Z', 'label', NULL, 'seq:0261');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26683, 'PRS-T654', '2026-10-30T16:55:40Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26684, 'PRS-T654', '2026-10-30T16:55:41Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26685, 'PRS-T654', '2026-10-30T16:55:41Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26686, 'PRS-T654', '2026-10-30T16:55:41Z', 'label', NULL, 'book:nxr');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26687, 'PRS-T654', '2026-10-30T16:55:41Z', 'label', NULL, 'theme:diaspora');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26688, 'PRS-T654', '2026-10-30T16:55:41Z', 'label', NULL, 'seq:0262');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26689, 'PRS-T655', '2026-10-30T16:55:41Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26690, 'PRS-T655', '2026-10-30T16:55:42Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26691, 'PRS-T655', '2026-10-30T16:55:42Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26692, 'PRS-T655', '2026-10-30T16:55:42Z', 'label', NULL, 'book:nxr');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26693, 'PRS-T655', '2026-10-30T16:55:42Z', 'label', NULL, 'theme:minds');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26694, 'PRS-T655', '2026-10-30T16:55:42Z', 'label', NULL, 'seq:0263');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26695, 'PRS-T656', '2026-10-30T16:55:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26696, 'PRS-T656', '2026-10-30T16:55:44Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26697, 'PRS-T656', '2026-10-30T16:55:44Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26698, 'PRS-T656', '2026-10-30T16:55:44Z', 'label', NULL, 'book:nxr');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26699, 'PRS-T656', '2026-10-30T16:55:44Z', 'label', NULL, 'theme:canon');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26700, 'PRS-T656', '2026-10-30T16:55:44Z', 'label', NULL, 'seq:0264');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26701, 'PRS-T657', '2026-10-30T16:55:45Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26702, 'PRS-T657', '2026-10-30T16:55:46Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26703, 'PRS-T657', '2026-10-30T16:55:46Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26704, 'PRS-T657', '2026-10-30T16:55:46Z', 'label', NULL, 'book:cxc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26705, 'PRS-T657', '2026-10-30T16:55:46Z', 'label', NULL, 'theme:thread');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26706, 'PRS-T657', '2026-10-30T16:55:46Z', 'label', NULL, 'seq:0265');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26707, 'PRS-T658', '2026-10-30T16:55:47Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26708, 'PRS-T658', '2026-10-30T16:55:48Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26709, 'PRS-T658', '2026-10-30T16:55:48Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26710, 'PRS-T658', '2026-10-30T16:55:48Z', 'label', NULL, 'book:cxc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26711, 'PRS-T658', '2026-10-30T16:55:48Z', 'label', NULL, 'theme:kyle');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26712, 'PRS-T658', '2026-10-30T16:55:48Z', 'label', NULL, 'seq:0266');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26713, 'PRS-T659', '2026-10-30T16:55:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26714, 'PRS-T659', '2026-10-30T16:55:50Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26715, 'PRS-T659', '2026-10-30T16:55:50Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26716, 'PRS-T659', '2026-10-30T16:55:50Z', 'label', NULL, 'book:cxc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26717, 'PRS-T659', '2026-10-30T16:55:50Z', 'label', NULL, 'theme:villain');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26718, 'PRS-T659', '2026-10-30T16:55:50Z', 'label', NULL, 'seq:0267');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26719, 'PRS-T660', '2026-10-30T16:55:50Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26720, 'PRS-T660', '2026-10-30T16:55:51Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26721, 'PRS-T660', '2026-10-30T16:55:51Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26722, 'PRS-T660', '2026-10-30T16:55:51Z', 'label', NULL, 'book:cxc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26723, 'PRS-T660', '2026-10-30T16:55:51Z', 'label', NULL, 'theme:spectrum');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26724, 'PRS-T660', '2026-10-30T16:55:51Z', 'label', NULL, 'seq:0268');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26725, 'PRS-T661', '2026-10-30T16:55:52Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26726, 'PRS-T661', '2026-10-30T16:55:53Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26727, 'PRS-T661', '2026-10-30T16:55:53Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26728, 'PRS-T661', '2026-10-30T16:55:53Z', 'label', NULL, 'book:cxc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26729, 'PRS-T661', '2026-10-30T16:55:53Z', 'label', NULL, 'theme:action');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26730, 'PRS-T661', '2026-10-30T16:55:53Z', 'label', NULL, 'seq:0269');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26731, 'PRS-T662', '2026-10-30T16:55:54Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26732, 'PRS-T662', '2026-10-30T16:55:55Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26733, 'PRS-T662', '2026-10-30T16:55:55Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26734, 'PRS-T662', '2026-10-30T16:55:55Z', 'label', NULL, 'book:cxc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26735, 'PRS-T662', '2026-10-30T16:55:55Z', 'label', NULL, 'theme:diaspora');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26736, 'PRS-T662', '2026-10-30T16:55:55Z', 'label', NULL, 'seq:0270');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26737, 'PRS-T663', '2026-10-30T16:55:56Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26738, 'PRS-T663', '2026-10-30T16:55:57Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26739, 'PRS-T663', '2026-10-30T16:55:57Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26740, 'PRS-T663', '2026-10-30T16:55:57Z', 'label', NULL, 'book:cxc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26741, 'PRS-T663', '2026-10-30T16:55:57Z', 'label', NULL, 'theme:minds');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26742, 'PRS-T663', '2026-10-30T16:55:57Z', 'label', NULL, 'seq:0271');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26743, 'PRS-T664', '2026-10-30T16:55:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26744, 'PRS-T664', '2026-10-30T16:55:59Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26745, 'PRS-T664', '2026-10-30T16:55:59Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26746, 'PRS-T664', '2026-10-30T16:55:59Z', 'label', NULL, 'book:cxc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26747, 'PRS-T664', '2026-10-30T16:55:59Z', 'label', NULL, 'theme:canon');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26748, 'PRS-T664', '2026-10-30T16:55:59Z', 'label', NULL, 'seq:0272');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26749, 'PRS-T665', '2026-10-30T16:56:00Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26750, 'PRS-T665', '2026-10-30T16:56:01Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26751, 'PRS-T665', '2026-10-30T16:56:01Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26752, 'PRS-T665', '2026-10-30T16:56:01Z', 'label', NULL, 'book:twd');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26753, 'PRS-T665', '2026-10-30T16:56:01Z', 'label', NULL, 'theme:thread');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26754, 'PRS-T665', '2026-10-30T16:56:01Z', 'label', NULL, 'seq:0273');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26755, 'PRS-T666', '2026-10-30T16:56:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26756, 'PRS-T666', '2026-10-30T16:56:03Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26757, 'PRS-T666', '2026-10-30T16:56:03Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26758, 'PRS-T666', '2026-10-30T16:56:03Z', 'label', NULL, 'book:twd');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26759, 'PRS-T666', '2026-10-30T16:56:03Z', 'label', NULL, 'theme:kyle');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (26760, 'PRS-T666', '2026-10-30T16:56:03Z', 'label', NULL, 'seq:0274');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -48073,7 +49876,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T91', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T23:09:54Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T58', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:02:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T392', NULL, 0, NULL, 'faf7d526-0cf8-4d25-9ad6-d948bee9d6e0', '2026-10-30T16:43:48Z', '2026-10-30T16:43:48Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T111', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:34:40Z');
@@ -48483,6 +50285,7 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (158, 'M.
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (159, 'M.ORCH-T1303', 'ryand', '2026-10-30T14:34:07Z', 'Screenshot: ![image 1](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/M.ORCH-T1303/2026-10-30-image-1.png)
 
 Follow-up to M.ORCH-T1302: now that the terminal scrolls inside AgentsBody, SizeTerminalRow sizes TerminalFrame to AgentsBody.ActualHeight - AgentsBodyScrollHandle (24px). The screenshot shows the terminal''s bottom edge running past the window''s visible bottom instead of leaving a clear scroll handle/buffer. Need a bigger and/or more reliable bottom buffer so the terminal never touches or crosses the window''s bottom edge.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (160, 'M.ORCH-T1304', 'ryand', '2026-10-30T16:51:35Z', 'User reversed this approach: charts/tickets stay inline in the scrolling body below the CLI (per M.ORCH-T1302''s layout), not in right-click modal popups. No modal code was ever committed or left uncommitted in the working tree to revert. Closing as wont-do / superseded.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
@@ -52357,6 +54160,1690 @@ src/Prose.ObserverUi/Components/Tabs/DcmVizTab.razor''s OnRunSelected calls api.
 
 ## Test
 No automated test added (bughunt pass PRS-T133). Verified by direct code reading: OnRunSelected now wraps both calls in the same try/catch pattern as OnPayload, plus catch (HttpRequestException) for the Hub call.', '2026-10-30T03:35:10Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T393', 'Proposed course-keeping rule (Claude, from the author''s vision):
+
+**Writing before reading.** No full read (F5) or record verification (F1) of a book while any open ticket would change its prose. Reads are Phase 5, last, once per book. Re-reading after every splice is waste the very next story undoes.
+
+Done when: the author confirms or edits it, and it is recorded as a universe-wide law with no pattern (a permission or guidance law never carries one).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:47:34Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T394', 'Proposed course-keeping rule (Claude, from the author''s vision):
+
+**One change, one ticket.** No prose, record or ruling edit without an open ticket that names it. The commit or ticket close cites the ticket. Nothing is done ''while I''m in there''.
+
+Done when: the author confirms or edits it, and it is recorded as a universe-wide law with no pattern (a permission or guidance law never carries one).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:47:42Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T395', 'Proposed course-keeping rule (Claude, from the author''s vision):
+
+**Canon before prose.** World and cast decisions (Phases 1-2) settle before the book splices that depend on them. A book ticket that needs an open canon call waits for it.
+
+Done when: the author confirms or edits it, and it is recorded as a universe-wide law with no pattern (a permission or guidance law never carries one).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:47:44Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T396', 'Proposed course-keeping rule (Claude, from the author''s vision):
+
+**The singular point.** Every GLMZ book leads to one point: the Cyberocracy finale (the cut, the Hole closed 11 June 2231). Each book leaves at least one thread the trilogy picks up, and nothing in any book contradicts the finale.
+
+Done when: the author confirms or edits it, and it is recorded as a universe-wide law with no pattern (a permission or guidance law never carries one).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:47:46Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T397', 'Proposed course-keeping rule (Claude, from the author''s vision):
+
+**Kyle is the spine.** Kyle Ellen Corbin is the main character. Books he is not in still touch his world: a person, place, object or rumour of his. Never a forced cameo; never a hint that Bushido Coda''s entity is Kyle.
+
+Done when: the author confirms or edits it, and it is recorded as a universe-wide law with no pattern (a permission or guidance law never carries one).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:47:47Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T398', 'Proposed course-keeping rule (Claude, from the author''s vision):
+
+**Every lead is a new window.** No two leads see the GLMZ the same way. Each book''s lead owns a class, trade, body or kind of mind that no other lead has, and the prose is filtered through it.
+
+Done when: the author confirms or edits it, and it is recorded as a universe-wide law with no pattern (a permission or guidance law never carries one).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:47:49Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T399', 'Proposed course-keeping rule (Claude, from the author''s vision):
+
+**The coasts fell; nobody says why.** Both American coastlines are gone and the GLMZ is the hub of the world. The reason is never explained, guessed at by narration, or investigated. Characters may hold rumours; the book never confirms one.
+
+Done when: the author confirms or edits it, and it is recorded as a universe-wide law with no pattern (a permission or guidance law never carries one).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:47:51Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T400', 'Proposed course-keeping rule (Claude, from the author''s vision):
+
+**Elsewhere stays offstage.** Other places appear only in passing: a mention, old history, or a mission one night in the dark where the place itself is left unexamined. No full scene examines a place outside the GLMZ.
+
+Done when: the author confirms or edits it, and it is recorded as a universe-wide law with no pattern (a permission or guidance law never carries one).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:47:53Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T401', 'Proposed course-keeping rule (Claude, from the author''s vision):
+
+**One diaspora, no quarters.** East and West are blended everywhere: food, scripts, faiths, slang, names, gangs. No ethnic enclave districts, no exoticism, no ''mysterious East''. It is everyone''s city.
+
+Done when: the author confirms or edits it, and it is recorded as a universe-wide law with no pattern (a permission or guidance law never carries one).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:47:54Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T402', 'Proposed course-keeping rule (Claude, from the author''s vision):
+
+**Villains believe.** Every antagonist has a reason a reader could hold. Morally ambiguous, sincere, never cartoon. The arcology-sincerity rule of the Eat the Rich law extends to every villain.
+
+Done when: the author confirms or edits it, and it is recorded as a universe-wide law with no pattern (a permission or guidance law never carries one).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:47:56Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T403', 'Proposed course-keeping rule (Claude, from the author''s vision):
+
+**Minds on a spectrum.** Machine intelligence is graded: tools, strays, neuretic ghosts, Synthetic Persons, SuperMinds. Their emergence is the season''s secret engine. ''Rogue AI'' is the corporate slur; allies say ''Free''.
+
+Done when: the author confirms or edits it, and it is recorded as a universe-wide law with no pattern (a permission or guidance law never carries one).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:47:58Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T404', 'Proposed course-keeping rule (Claude, from the author''s vision):
+
+**Lowest lows, highest highs.** Every book shows at least one bottom (the Seams, the Warm, the gutter) and one top (an arcology, a SuperMind, the sky) through a character''s senses, never a narrator survey.
+
+Done when: the author confirms or edits it, and it is recorded as a universe-wide law with no pattern (a permission or guidance law never carries one).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:00Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T405', 'Proposed course-keeping rule (Claude, from the author''s vision):
+
+**Neon action is earned.** Every action set-piece changes the plot (BUT / THEREFORE, never AND THEN) and costs the body something that is still sore later.
+
+Done when: the author confirms or edits it, and it is recorded as a universe-wide law with no pattern (a permission or guidance law never carries one).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:02Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T406', 'Proposed course-keeping rule (Claude, from the author''s vision):
+
+**Love triangles are structural.** Each triangle forces a choice that moves the plot. No triangle is resolved off the page or forgotten between books.
+
+Done when: the author confirms or edits it, and it is recorded as a universe-wide law with no pattern (a permission or guidance law never carries one).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:03Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T407', 'Proposed course-keeping rule (Claude, from the author''s vision):
+
+**Wholly original.** No names, gangs, tech, places or set-pieces lifted from existing cyberpunk (Neuromancer, Snow Crash, Akira, Ghost in the Shell, Blade Runner, Cyberpunk 2077, Shadowrun, Deus Ex). Homage in theme only.
+
+Done when: the author confirms or edits it, and it is recorded as a universe-wide law with no pattern (a permission or guidance law never carries one).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:05Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T408', 'Proposed course-keeping rule (Claude, from the author''s vision):
+
+**Records follow prose.** Entity records are updated in one batch per book after its prose phase and before its Phase 5 read, so a record edit never un-reads a book twice.
+
+Done when: the author confirms or edits it, and it is recorded as a universe-wide law with no pattern (a permission or guidance law never carries one).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:07Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T409', 'Proposed course-keeping rule (Claude, from the author''s vision):
+
+**Laugh or you''d cry.** The tone law (01a18b31) holds for every new line: darker than Neuromancer, more madcap than Snow Crash, the joke in the character''s mouth or eye.
+
+Done when: the author confirms or edits it, and it is recorded as a universe-wide law with no pattern (a permission or guidance law never carries one).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:09Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T410', 'Open GLMZ tickets that predate this plan (PRS-T3, T14, T19, T22, T77, T185, T189-T214, T225, T230, T257, T322) get phase and book labels, or are closed as superseded by the matching new ticket with a note. Done when `tickets ticket list --label glmz-vision` shows every live GLMZ item.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:11Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T411', 'Tools > strays (lumen mice, glow-rats, Silver Pigeons, sentinel cats) > neuretic ghosts > Synthetic Persons (Tier-3, e.g. OBERON SS-A23) > SuperMinds. Fix the ''Supermind'' vocabulary record (019d6143-aafd) to state the ladder; every book uses the same words.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:12Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T412', 'One dated sequence across the season: OBERON incorporates itself, the Deep under Chicago, Green woken 2226 (first word of its own June 2231), the Ur, the Consensus and the Cabal. Record dates on the entities; flag every book line that contradicts them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:14Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T413', 'Underclan''s god, the SuperMind of the city''s forgotten machinery; entity and place; no contact with the Ur, Consensus or Cabal (rulings). Decide (author where marked) whether it is a SuperMind, what it wants, what it fears, and which books it touches. Write it to the entity record.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:16Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T414', 'Tier-3 Synthetic Person, founder-owner-CEO of the Halcyon Combine; the machine as king. Decide (author where marked) whether it is a SuperMind, what it wants, what it fears, and which books it touches. Write it to the entity record.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:18Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T415', 'woken 2226; first word of its own June 2231. Decide (author where marked) whether it is a SuperMind, what it wants, what it fears, and which books it touches. Write it to the entity record.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:20Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T416', 'the lake presence at the heart of the finale; decide what it is on the ladder without explaining it away. Decide (author where marked) whether it is a SuperMind, what it wants, what it fears, and which books it touches. Write it to the entity record.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:22Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T417', 'the official ruling body; human, machine or both? Decide (author where marked) whether it is a SuperMind, what it wants, what it fears, and which books it touches. Write it to the entity record.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:23Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T418', 'pulls the strings; the season''s unconfirmed author-truth (AI cabal, dimensional mining) stays unconfirmed. Decide (author where marked) whether it is a SuperMind, what it wants, what it fears, and which books it touches. Write it to the entity record.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:25Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T419', 'corporate substrates (the largest civilian AI substrate; the Stillpoint under Superior). Are they minds, or cages for minds? Decide (author where marked) whether it is a SuperMind, what it wants, what it fears, and which books it touches. Write it to the entity record.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:27Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T420', 'Corporate and arcology voices say ''rogue AI''; allies of free machines say ''Free''. List every use per book; mis-voiced lines become Phase 3 book tickets.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:29Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T421', 'One record or ruling settles the legal status (OBERON holds a charter). Books that touch it (Cyberocracy, Halcyon) must agree.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:30Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T422', 'One record per stray kind (origin, lifespan, light, behaviour), so every book''s stray agrees. Glow-rats ~2x rat lifespan (ruling).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:32Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T423', 'Nanite swarms eat what they''re allowed to; smart dust; marker dust; the Substrate. One rules record every book obeys; list contradictions.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:34Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T424', 'Charge 4/8 of Eat the Rich depends on it (covers the core, barely the Seams; a lapse nobody fixes is murder). Record and audit.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:36Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T425', 'Many are empty stubs. Decide which are real players, which become subsidiaries, which are retired; fill sector and territory for the keepers.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:38Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T426', 'Bloom Sciences (Class V research), the Bloom Quarter in Magenta & Gunmetal. One remembered disaster the whole city fears, referenced in passing across books.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:39Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T427', 'Author: ''everyone has neuretics''. Record the baseline, the tiers, maintenance debt, and the overlay. Sweep books for device-law slips (typing on AR fields: PRS-T189).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:41Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T428', 'Bear is Tier five; Halcyon operators Caryatid-class. One canonical tier record so every book''s body agrees.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T429', 'Halcyon''s licence lock (Bear seven years in 2231), MidNorth''s licence review (The Long Cut). One mechanism, recorded.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:45Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T430', 'Charge 5 (charity is a leash) and Kyle''s origin both rest on it. Record and cross-check BCODA and Mnemosync.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:47Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T431', 'Pixel flags a harmonic older than the hardware (BCODA #20480). Decide what each book may reveal, never confirming the entity-is-Kyle secret.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:48Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T432', 'Helix designer genetics vs Crucible''s labour biology. Record the class line genemods draw (the rich buy beauty and years; the poor are bred for work).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:50Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T433', 'A residential zone of long-term biological workforce subjects. Decide which book visits it or mentions it; record.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:52Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T434', 'Hansei BioSystems is a stub. Decide keepers and their sincere self-image.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:53Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T435', 'Attendance, Sparrow''s eleven days, Cyberocracy''s lowered children. One record of the event.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:55Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T436', 'Record the rules (who sees what, what a skin costs, what the unmeshed see). DataEast Simspace junkies on drips. Every book obeys.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:57Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T437', 'Charge 2 uses it. Record owners (Mirrorwell, Vantablack, Waxwing) and the house style.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:48:59Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T438', 'The madcap layer (CramIt Bran ''YOU EARNED THIS MORNING'', ''Breathe Like You Belong''). Record recurring brands so books reuse, not reinvent; retire one-offs.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:00Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T439', 'Austin dead-zone handsets, fugitives, the Underclan. Record the experience of a world with the skin off.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:02Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T440', 'Decide the canon for language, record it on vocabulary or entity records, and list book lines that break the one-diaspora rule as Phase 3 tickets.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:04Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T441', 'Decide the canon for food, record it on vocabulary or entity records, and list book lines that break the one-diaspora rule as Phase 3 tickets.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:06Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T442', 'Decide the canon for faith, record it on vocabulary or entity records, and list book lines that break the one-diaspora rule as Phase 3 tickets.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:07Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T443', 'Decide the canon for crews and gangs, record it on vocabulary or entity records, and list book lines that break the one-diaspora rule as Phase 3 tickets.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:09Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T444', 'Decide the canon for names, record it on vocabulary or entity records, and list book lines that break the one-diaspora rule as Phase 3 tickets.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:11Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T445', 'Decide the canon for music, record it on vocabulary or entity records, and list book lines that break the one-diaspora rule as Phase 3 tickets.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:13Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T446', 'Decide the canon for script and signage, record it on vocabulary or entity records, and list book lines that break the one-diaspora rule as Phase 3 tickets.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:15Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T447', 'Decide the canon for honour and debt, record it on vocabulary or entity records, and list book lines that break the one-diaspora rule as Phase 3 tickets.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:17Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T448', 'Record the extent on place records with consistent names, distances and look; list contradictions across books.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:18Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T449', 'Record the Seams map on place records with consistent names, distances and look; list contradictions across books.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:20Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T450', 'Record Chicago core on place records with consistent names, distances and look; list contradictions across books.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:22Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T451', 'Record the lakes and the Ur-606 black pyramid on place records with consistent names, distances and look; list contradictions across books.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:24Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T452', 'Record Gary and the Ashgrave/Slagworks belt on place records with consistent names, distances and look; list contradictions across books.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:26Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T453', 'Record the Detroit corridor on place records with consistent names, distances and look; list contradictions across books.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:28Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T454', 'Record Milwaukee on place records with consistent names, distances and look; list contradictions across books.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:30Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T455', 'Record the Iowa Exclusion Zone on place records with consistent names, distances and look; list contradictions across books.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:31Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T456', 'Record below on place records with consistent names, distances and look; list contradictions across books.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:33Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T457', 'Rule 8 (elsewhere stays offstage) and the vision put every story in the GLMZ. The Long Cut spends whole chapters in Austin. Options: relocate the camp and grid into the GLMZ (rename only, plot intact), or record an exception.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:35Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T458', 'List each, with how long the page stays there. Passing mentions stay; examined scenes become Phase 3 tickets or exceptions.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:37Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T459', 'Rumours in a character''s mouth are allowed; narration that confirms a cause is not. List hits as book tickets.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:39Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T460', 'Dates of the fall as the world remembers them, the refugee wave into the GLMZ, and the hub-of-the-world aftermath. No cause.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:41Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T461', 'OBERON''s CorpoNation; remove the PLACEHOLDER-NAME tag (author confirmed the name 2026-10-30); its court and tithe. Per the Eat the Rich tapestry law: the chief lives AS a king, citizens are vassals who think they are free. Record chief (title per charter), seat, soldiers, tithe, creed, and which books it touches.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T462', 'the 2096 transfer, ArcSec, Arcturus Civil; the king behind the street''s only law. Per the Eat the Rich tapestry law: the chief lives AS a king, citizens are vassals who think they are free. Record chief (title per charter), seat, soldiers, tithe, creed, and which books it touches.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:44Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T463', 'four Axiom records (Axiom, BioNanics, Industrial, Interior Compliance): consolidate into one house with subsidiaries. Per the Eat the Rich tapestry law: the chief lives AS a king, citizens are vassals who think they are free. Record chief (title per charter), seat, soldiers, tithe, creed, and which books it touches.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:46Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T464', 'six Meridian records (Infrastructure, Intermodal, Nano-Defense, Orbital, Provisional, the Compact): one house or several?. Per the Eat the Rich tapestry law: the chief lives AS a king, citizens are vassals who think they are free. Record chief (title per charter), seat, soldiers, tithe, creed, and which books it touches.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:48Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T465', 'Tessera Corponation vs Tessera Industries: one house with arms. Per the Eat the Rich tapestry law: the chief lives AS a king, citizens are vassals who think they are free. Record chief (title per charter), seat, soldiers, tithe, creed, and which books it touches.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:50Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T466', 'fuel, retail, transit, pharmacy: the company that owns the corner store. Per the Eat the Rich tapestry law: the chief lives AS a king, citizens are vassals who think they are free. Record chief (title per charter), seat, soldiers, tithe, creed, and which books it touches.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:52Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T467', 'the largest charter; East-West AI house. Per the Eat the Rich tapestry law: the chief lives AS a king, citizens are vassals who think they are free. Record chief (title per charter), seat, soldiers, tithe, creed, and which books it touches.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:53Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T468', 'life extension: the rich living decades longer. Per the Eat the Rich tapestry law: the chief lives AS a king, citizens are vassals who think they are free. Record chief (title per charter), seat, soldiers, tithe, creed, and which books it touches.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:55Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T469', 'biological dependency engineering; 2,400 micro-clinics. Per the Eat the Rich tapestry law: the chief lives AS a king, citizens are vassals who think they are free. Record chief (title per charter), seat, soldiers, tithe, creed, and which books it touches.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:57Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T470', 'The Long Cut''s antagonists; decide parent houses. Per the Eat the Rich tapestry law: the chief lives AS a king, citizens are vassals who think they are free. Record chief (title per charter), seat, soldiers, tithe, creed, and which books it touches.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:49:59Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T471', 'the Ring; who gets power in a brownout. Per the Eat the Rich tapestry law: the chief lives AS a king, citizens are vassals who think they are free. Record chief (title per charter), seat, soldiers, tithe, creed, and which books it touches.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:00Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T472', 'the Carrion Yards and the depot; Vultures at the Door. Per the Eat the Rich tapestry law: the chief lives AS a king, citizens are vassals who think they are free. Record chief (title per charter), seat, soldiers, tithe, creed, and which books it touches.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:02Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T473', 'Merge, fill or retire each, with deprecated-name rules so old tags resolve.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:04Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T474', 'Retype or reparent; keep their flavour for the madcap layer.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:06Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T475', 'Rule 8. They make the world feel global; check no book examines them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:07Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T476', 'One adjacency list on place/corponation edges, so Block Wars and turf lines agree across books.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:09Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T477', 'Record the canon for money with numbers the books can share; list contradictions as book tickets.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:11Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T478', 'Record the canon for the Tier system with numbers the books can share; list contradictions as book tickets.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:13Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T479', 'Record the canon for sponsorship and the citizenship lottery with numbers the books can share; list contradictions as book tickets.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:14Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T480', 'Record the canon for taxes with numbers the books can share; list contradictions as book tickets.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:16Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T481', 'Every book''s backstory dates check against it. MXG #7152 ''city police intelligence dissolved 2208'' vs the 2096 transfer: settle.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:18Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T482', 'SRZR 2217 ... The Ur 2231. Fix the values or file book tickets for the prose.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:20Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T483', 'Kyle NeoCortex 2215 at 16 (27 in 2226, 31 in 2230); Glim''s age by book; Sasha''s array. Records first, then book tickets.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:21Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T484', 'Schisms are doors; the 35th & Halsted aperture closed early 2227, a Class 3 thin spot still feeds; Halsted last closes 11 June 2231. Record rules; keep the author-truth unconfirmed.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:23Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T485', 'Decide what Season 1 may plant toward it, if anything, and where.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:25Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T486', 'What he wants, what he fears, what he refuses, what he becomes (''Cinq''). Recorded on his character record; every book ticket for Kyle checks against it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:27Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T487', 'A decision table on the record (not a side doc): for each of the 22 books, the one thread that touches Kyle''s world. Feeds the Phase 3 ''Kyle'' ticket of each book.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:28Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T488', 'One clean record matching all books and the existing BCODA rulings (hands never cut off, no family, Sift = Null = Ñu, ...).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:31Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T489', 'Record on the weapon entity; every book that mentions it agrees.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:33Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T490', 'Rule 12 for the main character. If either is missing or weak, file the book ticket that writes it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:35Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T491', 'A short voice note on his record (rhythm, what he notices, what he never says). Used by every writer of a Kyle scene.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:37Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T492', 'Settles PRS-T194 (Boost''s crew timing) and relationship states book by book.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:38Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T493', 'Standing ruling: never hint in Bushido Coda that the entity is Kyle. Decide the reveal map for the season.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:40Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T494', 'Pixel (her book), Bushido Coda, Cyberocracy: the across-the-hall tech, the Assessor''s escapee. Name the class, trade, body or mind only Pixel brings (rule 6), their lowest low and highest high, and their voice. Write it to the character record; file Phase 3 tickets where a book blurs it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:42Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T495', 'Testament, The Way Up, Cyberocracy: the giant soldier who counts the dead; dies counting in The Ur. Name the class, trade, body or mind only Bear (Boris) brings (rule 6), their lowest low and highest high, and their voice. Write it to the character record; file Phase 3 tickets where a book blurs it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:44Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T496', 'Steppin'' Razor, Cyberocracy: recovered from the road, the array, the guns she names. Name the class, trade, body or mind only Sasha Vo brings (rule 6), their lowest low and highest high, and their voice. Write it to the character record; file Phase 3 tickets where a book blurs it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:46Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T497', 'Vultures at the Door, Cyberocracy: lean, killed Bram Osei, brings the lowered children up. Name the class, trade, body or mind only Ekow brings (rule 6), their lowest low and highest high, and their voice. Write it to the character record; file Phase 3 tickets where a book blurs it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:47Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T498', 'The Long Cut, Cyberocracy: the trauma surgeon who followed up the 428. Name the class, trade, body or mind only Doc Stash brings (rule 6), their lowest low and highest high, and their voice. Write it to the character record; file Phase 3 tickets where a book blurs it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:49Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T499', 'met Kyle 2224; Cyberocracy''s records mind. Name the class, trade, body or mind only Ledger brings (rule 6), their lowest low and highest high, and their voice. Write it to the character record; file Phase 3 tickets where a book blurs it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:52Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T500', 'Underclan, Cyberocracy: Hauler of the Underclan, Luma the glow-rat, the knock code. Name the class, trade, body or mind only Glim brings (rule 6), their lowest low and highest high, and their voice. Write it to the character record; file Phase 3 tickets where a book blurs it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:53Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T501', 'Read the Room, Cyberocracy: the team''s Read; her lattice never sealed. Name the class, trade, body or mind only Faith Larson brings (rule 6), their lowest low and highest high, and their voice. Write it to the character record; file Phase 3 tickets where a book blurs it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:55Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T502', 'Attendance: carried the cases first, handed the box to Selvamani. Name the class, trade, body or mind only Yemina Fola brings (rule 6), their lowest low and highest high, and their voice. Write it to the character record; file Phase 3 tickets where a book blurs it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:57Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T503', 'Death Whispers in a Cat''s Ear: the investigator who sees it everywhere. Name the class, trade, body or mind only Rennick brings (rule 6), their lowest low and highest high, and their voice. Write it to the character record; file Phase 3 tickets where a book blurs it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:50:59Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T504', 'Between the Lines: the checkpoint officer who crossed the Seam. Name the class, trade, body or mind only Idris brings (rule 6), their lowest low and highest high, and their voice. Write it to the character record; file Phase 3 tickets where a book blurs it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:01Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T505', 'Sparrow, Cyberocracy: seventeen years indoors, the guy in the chair. Name the class, trade, body or mind only Elias brings (rule 6), their lowest low and highest high, and their voice. Write it to the character record; file Phase 3 tickets where a book blurs it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:02Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T506', 'Sparrow, Cyberocracy: terse lowercase, watched forty-two years. Name the class, trade, body or mind only Sparrow brings (rule 6), their lowest low and highest high, and their voice. Write it to the character record; file Phase 3 tickets where a book blurs it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:04Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T507', 'Magenta & Gunmetal: the array rig. Name the class, trade, body or mind only Vox brings (rule 6), their lowest low and highest high, and their voice. Write it to the character record; file Phase 3 tickets where a book blurs it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:06Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T508', 'Neon & Rust and Rook''s crew: canon but offstage by Pieces. Name the class, trade, body or mind only Rook brings (rule 6), their lowest low and highest high, and their voice. Write it to the character record; file Phase 3 tickets where a book blurs it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:08Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T509', 'Crimson & Chrome. Name the class, trade, body or mind only Palesa brings (rule 6), their lowest low and highest high, and their voice. Write it to the character record; file Phase 3 tickets where a book blurs it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:09Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T510', 'The Way Up, The Way Down, Cyberocracy: Bear''s student. Name the class, trade, body or mind only Rampart (Reza Solano) brings (rule 6), their lowest low and highest high, and their voice. Write it to the character record; file Phase 3 tickets where a book blurs it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:11Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T511', 'The Way Up, The Way Down, Cyberocracy: Bear''s student; the twin pistols question. Name the class, trade, body or mind only Cutout (Tavi Jeong) brings (rule 6), their lowest low and highest high, and their voice. Write it to the character record; file Phase 3 tickets where a book blurs it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:13Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T512', 'The Way Down, Cyberocracy: sent to Bear by Cutout. Name the class, trade, body or mind only Rafi Sarkissian brings (rule 6), their lowest low and highest high, and their voice. Write it to the character record; file Phase 3 tickets where a book blurs it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:15Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T513', 'Read the Room, the Fenris albums: the singer who absorbed the GLMZ''s truth. Name the class, trade, body or mind only Ethan (Fenris) brings (rule 6), their lowest low and highest high, and their voice. Write it to the character record; file Phase 3 tickets where a book blurs it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:17Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T514', 'Bushido Coda: Kyle''s board since 2219, rents Vey''s cage. Name the class, trade, body or mind only Sable brings (rule 6), their lowest low and highest high, and their voice. Write it to the character record; file Phase 3 tickets where a book blurs it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:18Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T515', 'Bushido Coda, The Ur: the counter, the noodles, 79, the granddaughter. Name the class, trade, body or mind only Mrs. Chen brings (rule 6), their lowest low and highest high, and their voice. Write it to the character record; file Phase 3 tickets where a book blurs it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:20Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T516', 'The Long Cut, Cyberocracy: the NCID agent and witness. Name the class, trade, body or mind only Lydia Roth brings (rule 6), their lowest low and highest high, and their voice. Write it to the character record; file Phase 3 tickets where a book blurs it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:22Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T517', 'Testament: the advocate who named the forty-three. Name the class, trade, body or mind only Hana Morimoto brings (rule 6), their lowest low and highest high, and their voice. Write it to the character record; file Phase 3 tickets where a book blurs it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:24Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T518', 'Cyberocracy: the 2197 children grown. Name the class, trade, body or mind only Nine, Seven and One brings (rule 6), their lowest low and highest high, and their voice. Write it to the character record; file Phase 3 tickets where a book blurs it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:26Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T519', 'the Continuity Office; dies at the landing registry reading 17 keys. State the antagonist''s sincere case, the one good they do, and the line they cross. Record it; file book tickets for scenes where they twirl a moustache.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:28Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T520', 'Pixel''s hunter; climbs Faith as anchor and dies breathing. State the antagonist''s sincere case, the one good they do, and the line they cross. Record it; file book tickets for scenes where they twirl a moustache.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:29Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T521', 'Testament: signed off on forty-three; ''retired, no division'' yet commands operators all day. State the antagonist''s sincere case, the one good they do, and the line they cross. Record it; file book tickets for scenes where they twirl a moustache.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:31Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T522', 'the machine king of the Halcyon Combine. State the antagonist''s sincere case, the one good they do, and the line they cross. Record it; file book tickets for scenes where they twirl a moustache.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:33Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T523', 'Testament: the warm voice with paperwork attached. State the antagonist''s sincere case, the one good they do, and the line they cross. Record it; file book tickets for scenes where they twirl a moustache.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:35Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T524', 'Bushido Coda''s corporate antagonists. State the antagonist''s sincere case, the one good they do, and the line they cross. Record it; file book tickets for scenes where they twirl a moustache.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:37Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T525', 'The Long Cut: the 428, the 67 dead, the governor protocol that saved 1,200. State the antagonist''s sincere case, the one good they do, and the line they cross. Record it; file book tickets for scenes where they twirl a moustache.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:39Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T526', 'Vultures at the Door. State the antagonist''s sincere case, the one good they do, and the line they cross. Record it; file book tickets for scenes where they twirl a moustache.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:41Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T527', 'the unseen hand. State the antagonist''s sincere case, the one good they do, and the line they cross. Record it; file book tickets for scenes where they twirl a moustache.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:42Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T528', 'the Combine''s soldiers: the Internal Review Authority''s two sealed findings. State the antagonist''s sincere case, the one good they do, and the line they cross. Record it; file book tickets for scenes where they twirl a moustache.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:44Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T529', 'company towns, trunk lines; Bushido Coda and Pixel. State the antagonist''s sincere case, the one good they do, and the line they cross. Record it; file book tickets for scenes where they twirl a moustache.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:46Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T530', 'A list of existing threads (Kyle and Pixel across the hall, Faith and Ethan, others) as input to the triangles decision.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:48Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T531', 'Candidates come from the audit. Each triangle: the three, the choice, the book where it lands, the cost. Rule 14.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:50Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T532', 'Becomes Phase 3 tickets per book once the triangles are decided.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:51Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T533', 'So the finale''s choices land.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:53Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T534', 'Rulings 6e10, bf05, 63d9, cd18 still describe older rosters. Supersede with the current nine plus Elias and Sparrow in the chair.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:55Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T535', 'Every Cyberocracy character must originate in an earlier book (ruling). List any that do not.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:57Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T536', 'Machines are characters, not set dressing (rule 11).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:51:59Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T537', '**Steppin'' Razor** (2217; lead: Sasha; the earliest book; the Halcyon Combine''s live-well drilling as antagonist).
+
+Name the thread(s) this book hands to Cyberocracy and the finale. If the thread is weak or missing, write the splice that plants it (in the book''s own POV, no exposition).
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:01Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T538', '**Steppin'' Razor** (2217; lead: Sasha; the earliest book; the Halcyon Combine''s live-well drilling as antagonist).
+
+Apply the Phase 2 Kyle-touchpoint decision for this book (or confirm Kyle''s arc beats if it is his book). Never a forced cameo.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:02Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T539', '**Steppin'' Razor** (2217; lead: Sasha; the earliest book; the Halcyon Combine''s live-well drilling as antagonist).
+
+Apply the Phase 2 villain decisions: give this book''s antagonist the reason a reader could hold, in scene, through the lead''s eyes.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:04Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T540', '**Steppin'' Razor** (2217; lead: Sasha; the earliest book; the Halcyon Combine''s live-well drilling as antagonist).
+
+Confirm one bottom and one top are on the page through the lead''s senses (rule 12). Write what is missing.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:06Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T541', '**Steppin'' Razor** (2217; lead: Sasha; the earliest book; the Halcyon Combine''s live-well drilling as antagonist).
+
+Every set-piece changes the plot (BUT/THEREFORE) and costs the body. Cut or rework any AND-THEN action; add the cost where it is free.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:08Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T542', '**Steppin'' Razor** (2217; lead: Sasha; the earliest book; the Halcyon Combine''s live-well drilling as antagonist).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:11Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T543', '**Steppin'' Razor** (2217; lead: Sasha; the earliest book; the Halcyon Combine''s live-well drilling as antagonist).
+
+Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:13Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T544', '**Steppin'' Razor** (2217; lead: Sasha; the earliest book; the Halcyon Combine''s live-well drilling as antagonist).
+
+Nano, cyberware, genemods, hyperreality, economy, geography and coast-fall decisions: fix every line in this book that now contradicts a recorded decision. Hand splices, book archived first.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:15Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T545', '**Pixel** (autumn 2223; lead: Pixel; Pixel''s origin and the Assessor).
+
+Name the thread(s) this book hands to Cyberocracy and the finale. If the thread is weak or missing, write the splice that plants it (in the book''s own POV, no exposition).
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:17Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T546', '**Pixel** (autumn 2223; lead: Pixel; Pixel''s origin and the Assessor).
+
+Apply the Phase 2 Kyle-touchpoint decision for this book (or confirm Kyle''s arc beats if it is his book). Never a forced cameo.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:18Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T547', '**Pixel** (autumn 2223; lead: Pixel; Pixel''s origin and the Assessor).
+
+Apply the Phase 2 villain decisions: give this book''s antagonist the reason a reader could hold, in scene, through the lead''s eyes.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:20Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T548', '**Pixel** (autumn 2223; lead: Pixel; Pixel''s origin and the Assessor).
+
+Confirm one bottom and one top are on the page through the lead''s senses (rule 12). Write what is missing.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:22Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T549', '**Pixel** (autumn 2223; lead: Pixel; Pixel''s origin and the Assessor).
+
+Every set-piece changes the plot (BUT/THEREFORE) and costs the body. Cut or rework any AND-THEN action; add the cost where it is free.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:24Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T550', '**Pixel** (autumn 2223; lead: Pixel; Pixel''s origin and the Assessor).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:26Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T551', '**Pixel** (autumn 2223; lead: Pixel; Pixel''s origin and the Assessor).
+
+Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:28Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T552', '**Pixel** (autumn 2223; lead: Pixel; Pixel''s origin and the Assessor).
+
+Nano, cyberware, genemods, hyperreality, economy, geography and coast-fall decisions: fix every line in this book that now contradicts a recorded decision. Hand splices, book archived first.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:30Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T553', '**Testament** (Oct-Dec 2224; lead: Bear; Bear''s hearing over the forty-three).
+
+Name the thread(s) this book hands to Cyberocracy and the finale. If the thread is weak or missing, write the splice that plants it (in the book''s own POV, no exposition).
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:31Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T554', '**Testament** (Oct-Dec 2224; lead: Bear; Bear''s hearing over the forty-three).
+
+Apply the Phase 2 Kyle-touchpoint decision for this book (or confirm Kyle''s arc beats if it is his book). Never a forced cameo.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:33Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T555', '**Testament** (Oct-Dec 2224; lead: Bear; Bear''s hearing over the forty-three).
+
+Apply the Phase 2 villain decisions: give this book''s antagonist the reason a reader could hold, in scene, through the lead''s eyes.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:35Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T556', '**Testament** (Oct-Dec 2224; lead: Bear; Bear''s hearing over the forty-three).
+
+Confirm one bottom and one top are on the page through the lead''s senses (rule 12). Write what is missing.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:37Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T557', '**Testament** (Oct-Dec 2224; lead: Bear; Bear''s hearing over the forty-three).
+
+Every set-piece changes the plot (BUT/THEREFORE) and costs the body. Cut or rework any AND-THEN action; add the cost where it is free.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:39Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T558', '**Testament** (Oct-Dec 2224; lead: Bear; Bear''s hearing over the forty-three).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:41Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T559', '**Testament** (Oct-Dec 2224; lead: Bear; Bear''s hearing over the forty-three).
+
+Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T560', '**Testament** (Oct-Dec 2224; lead: Bear; Bear''s hearing over the forty-three).
+
+Nano, cyberware, genemods, hyperreality, economy, geography and coast-fall decisions: fix every line in this book that now contradicts a recorded decision. Hand splices, book archived first.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:45Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T561', '**Attendance** (2225; lead: Yemina Fola; the 2197 children and Case 48).
+
+Name the thread(s) this book hands to Cyberocracy and the finale. If the thread is weak or missing, write the splice that plants it (in the book''s own POV, no exposition).
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:47Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T562', '**Attendance** (2225; lead: Yemina Fola; the 2197 children and Case 48).
+
+Apply the Phase 2 Kyle-touchpoint decision for this book (or confirm Kyle''s arc beats if it is his book). Never a forced cameo.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:49Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T563', '**Attendance** (2225; lead: Yemina Fola; the 2197 children and Case 48).
+
+Apply the Phase 2 villain decisions: give this book''s antagonist the reason a reader could hold, in scene, through the lead''s eyes.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:51Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T564', '**Attendance** (2225; lead: Yemina Fola; the 2197 children and Case 48).
+
+Confirm one bottom and one top are on the page through the lead''s senses (rule 12). Write what is missing.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:52Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T565', '**Attendance** (2225; lead: Yemina Fola; the 2197 children and Case 48).
+
+Every set-piece changes the plot (BUT/THEREFORE) and costs the body. Cut or rework any AND-THEN action; add the cost where it is free.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:54Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T566', '**Attendance** (2225; lead: Yemina Fola; the 2197 children and Case 48).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:56Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T567', '**Attendance** (2225; lead: Yemina Fola; the 2197 children and Case 48).
+
+Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:58Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T568', '**Attendance** (2225; lead: Yemina Fola; the 2197 children and Case 48).
+
+Nano, cyberware, genemods, hyperreality, economy, geography and coast-fall decisions: fix every line in this book that now contradicts a recorded decision. Hand splices, book archived first.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:00Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T569', '**Between the Lines** (2225; lead: Idris; a checkpoint officer crossing to the Gray Zone side).
+
+Name the thread(s) this book hands to Cyberocracy and the finale. If the thread is weak or missing, write the splice that plants it (in the book''s own POV, no exposition).
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:02Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T570', '**Between the Lines** (2225; lead: Idris; a checkpoint officer crossing to the Gray Zone side).
+
+Apply the Phase 2 Kyle-touchpoint decision for this book (or confirm Kyle''s arc beats if it is his book). Never a forced cameo.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:04Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T571', '**Between the Lines** (2225; lead: Idris; a checkpoint officer crossing to the Gray Zone side).
+
+Apply the Phase 2 villain decisions: give this book''s antagonist the reason a reader could hold, in scene, through the lead''s eyes.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:06Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T572', '**Between the Lines** (2225; lead: Idris; a checkpoint officer crossing to the Gray Zone side).
+
+Confirm one bottom and one top are on the page through the lead''s senses (rule 12). Write what is missing.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:08Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T573', '**Between the Lines** (2225; lead: Idris; a checkpoint officer crossing to the Gray Zone side).
+
+Every set-piece changes the plot (BUT/THEREFORE) and costs the body. Cut or rework any AND-THEN action; add the cost where it is free.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:09Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T574', '**Between the Lines** (2225; lead: Idris; a checkpoint officer crossing to the Gray Zone side).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:11Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T575', '**Between the Lines** (2225; lead: Idris; a checkpoint officer crossing to the Gray Zone side).
+
+Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:13Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T576', '**Between the Lines** (2225; lead: Idris; a checkpoint officer crossing to the Gray Zone side).
+
+Nano, cyberware, genemods, hyperreality, economy, geography and coast-fall decisions: fix every line in this book that now contradicts a recorded decision. Hand splices, book archived first.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:15Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T577', '**Death Whispers in a Cat''s Ear** (Sep 2225; lead: Rennick; the investigator and TRIBUTARY).
+
+Name the thread(s) this book hands to Cyberocracy and the finale. If the thread is weak or missing, write the splice that plants it (in the book''s own POV, no exposition).
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:17Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T578', '**Death Whispers in a Cat''s Ear** (Sep 2225; lead: Rennick; the investigator and TRIBUTARY).
+
+Apply the Phase 2 Kyle-touchpoint decision for this book (or confirm Kyle''s arc beats if it is his book). Never a forced cameo.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:19Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T579', '**Death Whispers in a Cat''s Ear** (Sep 2225; lead: Rennick; the investigator and TRIBUTARY).
+
+Apply the Phase 2 villain decisions: give this book''s antagonist the reason a reader could hold, in scene, through the lead''s eyes.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:21Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T580', '**Death Whispers in a Cat''s Ear** (Sep 2225; lead: Rennick; the investigator and TRIBUTARY).
+
+Confirm one bottom and one top are on the page through the lead''s senses (rule 12). Write what is missing.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:23Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T581', '**Death Whispers in a Cat''s Ear** (Sep 2225; lead: Rennick; the investigator and TRIBUTARY).
+
+Every set-piece changes the plot (BUT/THEREFORE) and costs the body. Cut or rework any AND-THEN action; add the cost where it is free.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:24Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T582', '**Death Whispers in a Cat''s Ear** (Sep 2225; lead: Rennick; the investigator and TRIBUTARY).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:26Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T583', '**Death Whispers in a Cat''s Ear** (Sep 2225; lead: Rennick; the investigator and TRIBUTARY).
+
+Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:28Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T584', '**Death Whispers in a Cat''s Ear** (Sep 2225; lead: Rennick; the investigator and TRIBUTARY).
+
+Nano, cyberware, genemods, hyperreality, economy, geography and coast-fall decisions: fix every line in this book that now contradicts a recorded decision. Hand splices, book archived first.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:30Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T585', '**Critical Mass** (Dec 2225-2226; lead: its lead; the reaction that goes critical).
+
+Name the thread(s) this book hands to Cyberocracy and the finale. If the thread is weak or missing, write the splice that plants it (in the book''s own POV, no exposition).
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:32Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T586', '**Critical Mass** (Dec 2225-2226; lead: its lead; the reaction that goes critical).
+
+Apply the Phase 2 Kyle-touchpoint decision for this book (or confirm Kyle''s arc beats if it is his book). Never a forced cameo.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:33Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T587', '**Critical Mass** (Dec 2225-2226; lead: its lead; the reaction that goes critical).
+
+Apply the Phase 2 villain decisions: give this book''s antagonist the reason a reader could hold, in scene, through the lead''s eyes.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:35Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T588', '**Critical Mass** (Dec 2225-2226; lead: its lead; the reaction that goes critical).
+
+Confirm one bottom and one top are on the page through the lead''s senses (rule 12). Write what is missing.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:37Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T589', '**Critical Mass** (Dec 2225-2226; lead: its lead; the reaction that goes critical).
+
+Every set-piece changes the plot (BUT/THEREFORE) and costs the body. Cut or rework any AND-THEN action; add the cost where it is free.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:39Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T590', '**Critical Mass** (Dec 2225-2226; lead: its lead; the reaction that goes critical).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:41Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T591', '**Critical Mass** (Dec 2225-2226; lead: its lead; the reaction that goes critical).
+
+Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T592', '**Critical Mass** (Dec 2225-2226; lead: its lead; the reaction that goes critical).
+
+Nano, cyberware, genemods, hyperreality, economy, geography and coast-fall decisions: fix every line in this book that now contradicts a recorded decision. Hand splices, book archived first.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:44Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T593', '**The Long Cut** (Jan 2226; lead: Stash; Renata''s device and the Remedios trial).
+
+Name the thread(s) this book hands to Cyberocracy and the finale. If the thread is weak or missing, write the splice that plants it (in the book''s own POV, no exposition).
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:46Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T594', '**The Long Cut** (Jan 2226; lead: Stash; Renata''s device and the Remedios trial).
+
+Apply the Phase 2 Kyle-touchpoint decision for this book (or confirm Kyle''s arc beats if it is his book). Never a forced cameo.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:49Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T595', '**The Long Cut** (Jan 2226; lead: Stash; Renata''s device and the Remedios trial).
+
+Apply the Phase 2 villain decisions: give this book''s antagonist the reason a reader could hold, in scene, through the lead''s eyes.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:51Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T596', '**The Long Cut** (Jan 2226; lead: Stash; Renata''s device and the Remedios trial).
+
+Confirm one bottom and one top are on the page through the lead''s senses (rule 12). Write what is missing.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:52Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T597', '**The Long Cut** (Jan 2226; lead: Stash; Renata''s device and the Remedios trial).
+
+Every set-piece changes the plot (BUT/THEREFORE) and costs the body. Cut or rework any AND-THEN action; add the cost where it is free.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:54Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T598', '**The Long Cut** (Jan 2226; lead: Stash; Renata''s device and the Remedios trial).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:56Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T599', '**The Long Cut** (Jan 2226; lead: Stash; Renata''s device and the Remedios trial).
+
+Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:58Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T600', '**The Long Cut** (Jan 2226; lead: Stash; Renata''s device and the Remedios trial).
+
+Nano, cyberware, genemods, hyperreality, economy, geography and coast-fall decisions: fix every line in this book that now contradicts a recorded decision. Hand splices, book archived first.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:00Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T601', '**Sparrow** (Mar-Jul 2226; lead: Elias and Sparrow; the watchers and the mass driver).
+
+Name the thread(s) this book hands to Cyberocracy and the finale. If the thread is weak or missing, write the splice that plants it (in the book''s own POV, no exposition).
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:02Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T602', '**Sparrow** (Mar-Jul 2226; lead: Elias and Sparrow; the watchers and the mass driver).
+
+Apply the Phase 2 Kyle-touchpoint decision for this book (or confirm Kyle''s arc beats if it is his book). Never a forced cameo.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:03Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T603', '**Sparrow** (Mar-Jul 2226; lead: Elias and Sparrow; the watchers and the mass driver).
+
+Apply the Phase 2 villain decisions: give this book''s antagonist the reason a reader could hold, in scene, through the lead''s eyes.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:05Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T604', '**Sparrow** (Mar-Jul 2226; lead: Elias and Sparrow; the watchers and the mass driver).
+
+Confirm one bottom and one top are on the page through the lead''s senses (rule 12). Write what is missing.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:07Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T605', '**Sparrow** (Mar-Jul 2226; lead: Elias and Sparrow; the watchers and the mass driver).
+
+Every set-piece changes the plot (BUT/THEREFORE) and costs the body. Cut or rework any AND-THEN action; add the cost where it is free.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:09Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T606', '**Sparrow** (Mar-Jul 2226; lead: Elias and Sparrow; the watchers and the mass driver).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:11Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T607', '**Sparrow** (Mar-Jul 2226; lead: Elias and Sparrow; the watchers and the mass driver).
+
+Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:12Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T608', '**Sparrow** (Mar-Jul 2226; lead: Elias and Sparrow; the watchers and the mass driver).
+
+Nano, cyberware, genemods, hyperreality, economy, geography and coast-fall decisions: fix every line in this book that now contradicts a recorded decision. Hand splices, book archived first.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:14Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T609', '**Magenta & Gunmetal** (2226; lead: Vox; the Bloom Quarter and Rook''s crew).
+
+Name the thread(s) this book hands to Cyberocracy and the finale. If the thread is weak or missing, write the splice that plants it (in the book''s own POV, no exposition).
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:16Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T610', '**Magenta & Gunmetal** (2226; lead: Vox; the Bloom Quarter and Rook''s crew).
+
+Apply the Phase 2 Kyle-touchpoint decision for this book (or confirm Kyle''s arc beats if it is his book). Never a forced cameo.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:18Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T611', '**Magenta & Gunmetal** (2226; lead: Vox; the Bloom Quarter and Rook''s crew).
+
+Apply the Phase 2 villain decisions: give this book''s antagonist the reason a reader could hold, in scene, through the lead''s eyes.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:20Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T612', '**Magenta & Gunmetal** (2226; lead: Vox; the Bloom Quarter and Rook''s crew).
+
+Confirm one bottom and one top are on the page through the lead''s senses (rule 12). Write what is missing.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:22Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T613', '**Magenta & Gunmetal** (2226; lead: Vox; the Bloom Quarter and Rook''s crew).
+
+Every set-piece changes the plot (BUT/THEREFORE) and costs the body. Cut or rework any AND-THEN action; add the cost where it is free.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:23Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T614', '**Magenta & Gunmetal** (2226; lead: Vox; the Bloom Quarter and Rook''s crew).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:25Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T615', '**Magenta & Gunmetal** (2226; lead: Vox; the Bloom Quarter and Rook''s crew).
+
+Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:27Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T616', '**Magenta & Gunmetal** (2226; lead: Vox; the Bloom Quarter and Rook''s crew).
+
+Nano, cyberware, genemods, hyperreality, economy, geography and coast-fall decisions: fix every line in this book that now contradicts a recorded decision. Hand splices, book archived first.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:29Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T617', '**Vultures at the Door** (2226; lead: Ekow; the Carrion depot and Bram Osei).
+
+Name the thread(s) this book hands to Cyberocracy and the finale. If the thread is weak or missing, write the splice that plants it (in the book''s own POV, no exposition).
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:30Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T618', '**Vultures at the Door** (2226; lead: Ekow; the Carrion depot and Bram Osei).
+
+Apply the Phase 2 Kyle-touchpoint decision for this book (or confirm Kyle''s arc beats if it is his book). Never a forced cameo.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:32Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T619', '**Vultures at the Door** (2226; lead: Ekow; the Carrion depot and Bram Osei).
+
+Apply the Phase 2 villain decisions: give this book''s antagonist the reason a reader could hold, in scene, through the lead''s eyes.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:34Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T620', '**Vultures at the Door** (2226; lead: Ekow; the Carrion depot and Bram Osei).
+
+Confirm one bottom and one top are on the page through the lead''s senses (rule 12). Write what is missing.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:36Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T621', '**Vultures at the Door** (2226; lead: Ekow; the Carrion depot and Bram Osei).
+
+Every set-piece changes the plot (BUT/THEREFORE) and costs the body. Cut or rework any AND-THEN action; add the cost where it is free.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:38Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T622', '**Vultures at the Door** (2226; lead: Ekow; the Carrion depot and Bram Osei).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:39Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T623', '**Vultures at the Door** (2226; lead: Ekow; the Carrion depot and Bram Osei).
+
+Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:41Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T624', '**Vultures at the Door** (2226; lead: Ekow; the Carrion depot and Bram Osei).
+
+Nano, cyberware, genemods, hyperreality, economy, geography and coast-fall decisions: fix every line in this book that now contradicts a recorded decision. Hand splices, book archived first.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T625', '**Bushido Coda** (Sep 2226-early 2227; lead: Kyle; the main character''s book, the aperture at 35th & Halsted).
+
+Name the thread(s) this book hands to Cyberocracy and the finale. If the thread is weak or missing, write the splice that plants it (in the book''s own POV, no exposition).
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:45Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T626', '**Bushido Coda** (Sep 2226-early 2227; lead: Kyle; the main character''s book, the aperture at 35th & Halsted).
+
+Bushido Coda is Kyle''s book: check his arc beats against the Phase 2 Kyle spine, voice note and lowest/highest scenes; fix drift.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:47Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T627', '**Bushido Coda** (Sep 2226-early 2227; lead: Kyle; the main character''s book, the aperture at 35th & Halsted).
+
+Apply the Phase 2 villain decisions: give this book''s antagonist the reason a reader could hold, in scene, through the lead''s eyes.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:49Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T628', '**Bushido Coda** (Sep 2226-early 2227; lead: Kyle; the main character''s book, the aperture at 35th & Halsted).
+
+Confirm one bottom and one top are on the page through the lead''s senses (rule 12). Write what is missing.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:51Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T629', '**Bushido Coda** (Sep 2226-early 2227; lead: Kyle; the main character''s book, the aperture at 35th & Halsted).
+
+Every set-piece changes the plot (BUT/THEREFORE) and costs the body. Cut or rework any AND-THEN action; add the cost where it is free.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:53Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T630', '**Bushido Coda** (Sep 2226-early 2227; lead: Kyle; the main character''s book, the aperture at 35th & Halsted).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:55Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T631', '**Bushido Coda** (Sep 2226-early 2227; lead: Kyle; the main character''s book, the aperture at 35th & Halsted).
+
+Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:57Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T632', '**Bushido Coda** (Sep 2226-early 2227; lead: Kyle; the main character''s book, the aperture at 35th & Halsted).
+
+Nano, cyberware, genemods, hyperreality, economy, geography and coast-fall decisions: fix every line in this book that now contradicts a recorded decision. Hand splices, book archived first.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:59Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T633', '**Underclan** (2227; lead: Glim; the people below and the Deep).
+
+Name the thread(s) this book hands to Cyberocracy and the finale. If the thread is weak or missing, write the splice that plants it (in the book''s own POV, no exposition).
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:01Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T634', '**Underclan** (2227; lead: Glim; the people below and the Deep).
+
+Apply the Phase 2 Kyle-touchpoint decision for this book (or confirm Kyle''s arc beats if it is his book). Never a forced cameo.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:03Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T635', '**Underclan** (2227; lead: Glim; the people below and the Deep).
+
+Apply the Phase 2 villain decisions: give this book''s antagonist the reason a reader could hold, in scene, through the lead''s eyes.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:05Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T636', '**Underclan** (2227; lead: Glim; the people below and the Deep).
+
+Confirm one bottom and one top are on the page through the lead''s senses (rule 12). Write what is missing.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:06Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T637', '**Underclan** (2227; lead: Glim; the people below and the Deep).
+
+Every set-piece changes the plot (BUT/THEREFORE) and costs the body. Cut or rework any AND-THEN action; add the cost where it is free.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:08Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T638', '**Underclan** (2227; lead: Glim; the people below and the Deep).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:10Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T639', '**Underclan** (2227; lead: Glim; the people below and the Deep).
+
+Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:12Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T640', '**Underclan** (2227; lead: Glim; the people below and the Deep).
+
+Nano, cyberware, genemods, hyperreality, economy, geography and coast-fall decisions: fix every line in this book that now contradicts a recorded decision. Hand splices, book archived first.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:14Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T641', '**The Way Up** (2227-2230; lead: Rampart and Cutout; Bear''s students).
+
+Name the thread(s) this book hands to Cyberocracy and the finale. If the thread is weak or missing, write the splice that plants it (in the book''s own POV, no exposition).
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:16Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T642', '**The Way Up** (2227-2230; lead: Rampart and Cutout; Bear''s students).
+
+Apply the Phase 2 Kyle-touchpoint decision for this book (or confirm Kyle''s arc beats if it is his book). Never a forced cameo.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:18Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T643', '**The Way Up** (2227-2230; lead: Rampart and Cutout; Bear''s students).
+
+Apply the Phase 2 villain decisions: give this book''s antagonist the reason a reader could hold, in scene, through the lead''s eyes.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:20Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T644', '**The Way Up** (2227-2230; lead: Rampart and Cutout; Bear''s students).
+
+Confirm one bottom and one top are on the page through the lead''s senses (rule 12). Write what is missing.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:22Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T645', '**The Way Up** (2227-2230; lead: Rampart and Cutout; Bear''s students).
+
+Every set-piece changes the plot (BUT/THEREFORE) and costs the body. Cut or rework any AND-THEN action; add the cost where it is free.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:23Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T646', '**The Way Up** (2227-2230; lead: Rampart and Cutout; Bear''s students).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:25Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T647', '**The Way Up** (2227-2230; lead: Rampart and Cutout; Bear''s students).
+
+Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:27Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T648', '**The Way Up** (2227-2230; lead: Rampart and Cutout; Bear''s students).
+
+Nano, cyberware, genemods, hyperreality, economy, geography and coast-fall decisions: fix every line in this book that now contradicts a recorded decision. Hand splices, book archived first.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:29Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T649', '**Neon & Rust** (late 2227; lead: Rook; Rook''s notebook).
+
+Name the thread(s) this book hands to Cyberocracy and the finale. If the thread is weak or missing, write the splice that plants it (in the book''s own POV, no exposition).
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:31Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T650', '**Neon & Rust** (late 2227; lead: Rook; Rook''s notebook).
+
+Apply the Phase 2 Kyle-touchpoint decision for this book (or confirm Kyle''s arc beats if it is his book). Never a forced cameo.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:32Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T651', '**Neon & Rust** (late 2227; lead: Rook; Rook''s notebook).
+
+Apply the Phase 2 villain decisions: give this book''s antagonist the reason a reader could hold, in scene, through the lead''s eyes.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:34Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T652', '**Neon & Rust** (late 2227; lead: Rook; Rook''s notebook).
+
+Confirm one bottom and one top are on the page through the lead''s senses (rule 12). Write what is missing.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:36Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T653', '**Neon & Rust** (late 2227; lead: Rook; Rook''s notebook).
+
+Every set-piece changes the plot (BUT/THEREFORE) and costs the body. Cut or rework any AND-THEN action; add the cost where it is free.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:38Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T654', '**Neon & Rust** (late 2227; lead: Rook; Rook''s notebook).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:40Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T655', '**Neon & Rust** (late 2227; lead: Rook; Rook''s notebook).
+
+Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:41Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T656', '**Neon & Rust** (late 2227; lead: Rook; Rook''s notebook).
+
+Nano, cyberware, genemods, hyperreality, economy, geography and coast-fall decisions: fix every line in this book that now contradicts a recorded decision. Hand splices, book archived first.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T657', '**Crimson & Chrome** (2229; lead: Palesa; the cradle and the manifest).
+
+Name the thread(s) this book hands to Cyberocracy and the finale. If the thread is weak or missing, write the splice that plants it (in the book''s own POV, no exposition).
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:45Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T658', '**Crimson & Chrome** (2229; lead: Palesa; the cradle and the manifest).
+
+Apply the Phase 2 Kyle-touchpoint decision for this book (or confirm Kyle''s arc beats if it is his book). Never a forced cameo.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:47Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T659', '**Crimson & Chrome** (2229; lead: Palesa; the cradle and the manifest).
+
+Apply the Phase 2 villain decisions: give this book''s antagonist the reason a reader could hold, in scene, through the lead''s eyes.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:49Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T660', '**Crimson & Chrome** (2229; lead: Palesa; the cradle and the manifest).
+
+Confirm one bottom and one top are on the page through the lead''s senses (rule 12). Write what is missing.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:50Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T661', '**Crimson & Chrome** (2229; lead: Palesa; the cradle and the manifest).
+
+Every set-piece changes the plot (BUT/THEREFORE) and costs the body. Cut or rework any AND-THEN action; add the cost where it is free.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:52Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T662', '**Crimson & Chrome** (2229; lead: Palesa; the cradle and the manifest).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:54Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T663', '**Crimson & Chrome** (2229; lead: Palesa; the cradle and the manifest).
+
+Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:56Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T664', '**Crimson & Chrome** (2229; lead: Palesa; the cradle and the manifest).
+
+Nano, cyberware, genemods, hyperreality, economy, geography and coast-fall decisions: fix every line in this book that now contradicts a recorded decision. Hand splices, book archived first.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:57Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T665', '**The Way Down** (April 2230; lead: Rafi and Cutout; Ashgrave Spire).
+
+Name the thread(s) this book hands to Cyberocracy and the finale. If the thread is weak or missing, write the splice that plants it (in the book''s own POV, no exposition).
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:56:00Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T666', '**The Way Down** (April 2230; lead: Rafi and Cutout; Ashgrave Spire).
+
+Apply the Phase 2 Kyle-touchpoint decision for this book (or confirm Kyle''s arc beats if it is his book). Never a forced cameo.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:56:02Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T206', 'RB-T172 verified in the editor (sm_hub_1, sm_pier_1, sp_soc_2): pedlight_flash, lightbar, arcade screens and oilriga frames on g_tColor; blackwater water_normal frames on g_tNormal; sewer_water and surf offsets; fire_pallet selfillum flicker; clouds.vmat g_vTexCoordScrollSpeed 0.043,0.025. Not reachable from the maps imported so far: clublight, TV screens, highlights. Import a map that uses them, play, read the attributes with sbox-cli run_csharp.', '2026-10-26T05:18:06Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T207', 'Left out of RB-T193 (the werewolf''s hint navigation), all in vampire.dll''s CNPC_VWerewolf:
 
@@ -53996,6 +57483,1258 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1145', 'epi
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1145', 'hub-and-spoke', '2026-10-27T16:14:01Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1196', 'epic', '2026-10-28T00:20:50Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.TIX-T173', 'hub-and-spoke', '2026-10-27T16:07:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T393', 'glmz-vision', '2026-10-30T16:47:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T393', 'needs:author', '2026-10-30T16:47:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T393', 'phase:0-rules', '2026-10-30T16:47:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T393', 'seq:0001', '2026-10-30T16:47:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T393', 'theme:rules', '2026-10-30T16:47:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T394', 'glmz-vision', '2026-10-30T16:47:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T394', 'needs:author', '2026-10-30T16:47:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T394', 'phase:0-rules', '2026-10-30T16:47:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T394', 'seq:0002', '2026-10-30T16:47:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T394', 'theme:rules', '2026-10-30T16:47:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T395', 'glmz-vision', '2026-10-30T16:47:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T395', 'needs:author', '2026-10-30T16:47:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T395', 'phase:0-rules', '2026-10-30T16:47:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T395', 'seq:0003', '2026-10-30T16:47:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T395', 'theme:rules', '2026-10-30T16:47:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T396', 'glmz-vision', '2026-10-30T16:47:47Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T396', 'needs:author', '2026-10-30T16:47:47Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T396', 'phase:0-rules', '2026-10-30T16:47:47Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T396', 'seq:0004', '2026-10-30T16:47:47Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T396', 'theme:rules', '2026-10-30T16:47:47Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T397', 'glmz-vision', '2026-10-30T16:47:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T397', 'needs:author', '2026-10-30T16:47:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T397', 'phase:0-rules', '2026-10-30T16:47:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T397', 'seq:0005', '2026-10-30T16:47:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T397', 'theme:rules', '2026-10-30T16:47:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T398', 'glmz-vision', '2026-10-30T16:47:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T398', 'needs:author', '2026-10-30T16:47:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T398', 'phase:0-rules', '2026-10-30T16:47:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T398', 'seq:0006', '2026-10-30T16:47:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T398', 'theme:rules', '2026-10-30T16:47:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T399', 'glmz-vision', '2026-10-30T16:47:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T399', 'needs:author', '2026-10-30T16:47:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T399', 'phase:0-rules', '2026-10-30T16:47:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T399', 'seq:0007', '2026-10-30T16:47:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T399', 'theme:rules', '2026-10-30T16:47:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T400', 'glmz-vision', '2026-10-30T16:47:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T400', 'needs:author', '2026-10-30T16:47:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T400', 'phase:0-rules', '2026-10-30T16:47:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T400', 'seq:0008', '2026-10-30T16:47:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T400', 'theme:rules', '2026-10-30T16:47:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T401', 'glmz-vision', '2026-10-30T16:47:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T401', 'needs:author', '2026-10-30T16:47:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T401', 'phase:0-rules', '2026-10-30T16:47:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T401', 'seq:0009', '2026-10-30T16:47:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T401', 'theme:rules', '2026-10-30T16:47:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T402', 'glmz-vision', '2026-10-30T16:47:57Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T402', 'needs:author', '2026-10-30T16:47:57Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T402', 'phase:0-rules', '2026-10-30T16:47:57Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T402', 'seq:0010', '2026-10-30T16:47:57Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T402', 'theme:rules', '2026-10-30T16:47:57Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T403', 'glmz-vision', '2026-10-30T16:47:59Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T403', 'needs:author', '2026-10-30T16:47:59Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T403', 'phase:0-rules', '2026-10-30T16:47:59Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T403', 'seq:0011', '2026-10-30T16:47:59Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T403', 'theme:rules', '2026-10-30T16:47:59Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T404', 'glmz-vision', '2026-10-30T16:48:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T404', 'needs:author', '2026-10-30T16:48:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T404', 'phase:0-rules', '2026-10-30T16:48:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T404', 'seq:0012', '2026-10-30T16:48:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T404', 'theme:rules', '2026-10-30T16:48:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T405', 'glmz-vision', '2026-10-30T16:48:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T405', 'needs:author', '2026-10-30T16:48:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T405', 'phase:0-rules', '2026-10-30T16:48:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T405', 'seq:0013', '2026-10-30T16:48:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T405', 'theme:rules', '2026-10-30T16:48:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T406', 'glmz-vision', '2026-10-30T16:48:04Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T406', 'needs:author', '2026-10-30T16:48:04Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T406', 'phase:0-rules', '2026-10-30T16:48:04Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T406', 'seq:0014', '2026-10-30T16:48:04Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T406', 'theme:rules', '2026-10-30T16:48:04Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T407', 'glmz-vision', '2026-10-30T16:48:06Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T407', 'needs:author', '2026-10-30T16:48:06Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T407', 'phase:0-rules', '2026-10-30T16:48:06Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T407', 'seq:0015', '2026-10-30T16:48:06Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T407', 'theme:rules', '2026-10-30T16:48:06Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T408', 'glmz-vision', '2026-10-30T16:48:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T408', 'needs:author', '2026-10-30T16:48:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T408', 'phase:0-rules', '2026-10-30T16:48:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T408', 'seq:0016', '2026-10-30T16:48:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T408', 'theme:rules', '2026-10-30T16:48:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T409', 'glmz-vision', '2026-10-30T16:48:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T409', 'needs:author', '2026-10-30T16:48:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T409', 'phase:0-rules', '2026-10-30T16:48:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T409', 'seq:0017', '2026-10-30T16:48:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T409', 'theme:rules', '2026-10-30T16:48:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T410', 'glmz-vision', '2026-10-30T16:48:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T410', 'phase:0-rules', '2026-10-30T16:48:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T410', 'seq:0018', '2026-10-30T16:48:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T410', 'theme:process', '2026-10-30T16:48:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T411', 'glmz-vision', '2026-10-30T16:48:13Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T411', 'phase:1-world', '2026-10-30T16:48:13Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T411', 'seq:0019', '2026-10-30T16:48:13Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T411', 'theme:machine-mind', '2026-10-30T16:48:13Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T412', 'glmz-vision', '2026-10-30T16:48:15Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T412', 'phase:1-world', '2026-10-30T16:48:15Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T412', 'seq:0020', '2026-10-30T16:48:15Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T412', 'theme:machine-mind', '2026-10-30T16:48:15Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T413', 'glmz-vision', '2026-10-30T16:48:17Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T413', 'phase:1-world', '2026-10-30T16:48:17Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T413', 'seq:0021', '2026-10-30T16:48:17Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T413', 'theme:machine-mind', '2026-10-30T16:48:17Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T414', 'glmz-vision', '2026-10-30T16:48:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T414', 'phase:1-world', '2026-10-30T16:48:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T414', 'seq:0022', '2026-10-30T16:48:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T414', 'theme:machine-mind', '2026-10-30T16:48:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T415', 'glmz-vision', '2026-10-30T16:48:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T415', 'phase:1-world', '2026-10-30T16:48:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T415', 'seq:0023', '2026-10-30T16:48:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T415', 'theme:machine-mind', '2026-10-30T16:48:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T416', 'glmz-vision', '2026-10-30T16:48:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T416', 'needs:author', '2026-10-30T16:48:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T416', 'phase:1-world', '2026-10-30T16:48:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T416', 'seq:0024', '2026-10-30T16:48:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T416', 'theme:machine-mind', '2026-10-30T16:48:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T417', 'glmz-vision', '2026-10-30T16:48:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T417', 'needs:author', '2026-10-30T16:48:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T417', 'phase:1-world', '2026-10-30T16:48:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T417', 'seq:0025', '2026-10-30T16:48:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T417', 'theme:machine-mind', '2026-10-30T16:48:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T418', 'glmz-vision', '2026-10-30T16:48:26Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T418', 'needs:author', '2026-10-30T16:48:26Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T418', 'phase:1-world', '2026-10-30T16:48:26Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T418', 'seq:0026', '2026-10-30T16:48:26Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T418', 'theme:machine-mind', '2026-10-30T16:48:26Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T419', 'glmz-vision', '2026-10-30T16:48:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T419', 'phase:1-world', '2026-10-30T16:48:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T419', 'seq:0027', '2026-10-30T16:48:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T419', 'theme:machine-mind', '2026-10-30T16:48:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T420', 'glmz-vision', '2026-10-30T16:48:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T420', 'phase:1-world', '2026-10-30T16:48:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T420', 'seq:0028', '2026-10-30T16:48:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T420', 'theme:machine-mind', '2026-10-30T16:48:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T421', 'glmz-vision', '2026-10-30T16:48:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T421', 'needs:author', '2026-10-30T16:48:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T421', 'phase:1-world', '2026-10-30T16:48:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T421', 'seq:0029', '2026-10-30T16:48:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T421', 'theme:machine-mind', '2026-10-30T16:48:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T422', 'glmz-vision', '2026-10-30T16:48:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T422', 'phase:1-world', '2026-10-30T16:48:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T422', 'seq:0030', '2026-10-30T16:48:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T422', 'theme:machine-mind', '2026-10-30T16:48:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T423', 'glmz-vision', '2026-10-30T16:48:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T423', 'phase:1-world', '2026-10-30T16:48:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T423', 'seq:0031', '2026-10-30T16:48:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T423', 'theme:nano', '2026-10-30T16:48:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T424', 'glmz-vision', '2026-10-30T16:48:37Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T424', 'phase:1-world', '2026-10-30T16:48:37Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T424', 'seq:0032', '2026-10-30T16:48:37Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T424', 'theme:nano', '2026-10-30T16:48:37Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T425', 'glmz-vision', '2026-10-30T16:48:39Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T425', 'phase:1-world', '2026-10-30T16:48:39Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T425', 'seq:0033', '2026-10-30T16:48:39Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T425', 'theme:nano', '2026-10-30T16:48:39Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T426', 'glmz-vision', '2026-10-30T16:48:40Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T426', 'phase:1-world', '2026-10-30T16:48:40Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T426', 'seq:0034', '2026-10-30T16:48:40Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T426', 'theme:nano', '2026-10-30T16:48:40Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T427', 'glmz-vision', '2026-10-30T16:48:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T427', 'phase:1-world', '2026-10-30T16:48:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T427', 'seq:0035', '2026-10-30T16:48:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T427', 'theme:cyberware', '2026-10-30T16:48:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T428', 'glmz-vision', '2026-10-30T16:48:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T428', 'phase:1-world', '2026-10-30T16:48:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T428', 'seq:0036', '2026-10-30T16:48:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T428', 'theme:cyberware', '2026-10-30T16:48:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T429', 'glmz-vision', '2026-10-30T16:48:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T429', 'phase:1-world', '2026-10-30T16:48:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T429', 'seq:0037', '2026-10-30T16:48:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T429', 'theme:cyberware', '2026-10-30T16:48:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T430', 'glmz-vision', '2026-10-30T16:48:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T430', 'phase:1-world', '2026-10-30T16:48:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T430', 'seq:0038', '2026-10-30T16:48:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T430', 'theme:cyberware', '2026-10-30T16:48:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T431', 'glmz-vision', '2026-10-30T16:48:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T431', 'needs:author', '2026-10-30T16:48:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T431', 'phase:1-world', '2026-10-30T16:48:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T431', 'seq:0039', '2026-10-30T16:48:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T431', 'theme:cyberware', '2026-10-30T16:48:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T432', 'glmz-vision', '2026-10-30T16:48:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T432', 'phase:1-world', '2026-10-30T16:48:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T432', 'seq:0040', '2026-10-30T16:48:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T432', 'theme:genemods', '2026-10-30T16:48:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T433', 'glmz-vision', '2026-10-30T16:48:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T433', 'phase:1-world', '2026-10-30T16:48:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T433', 'seq:0041', '2026-10-30T16:48:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T433', 'theme:genemods', '2026-10-30T16:48:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T434', 'glmz-vision', '2026-10-30T16:48:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T434', 'phase:1-world', '2026-10-30T16:48:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T434', 'seq:0042', '2026-10-30T16:48:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T434', 'theme:genemods', '2026-10-30T16:48:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T435', 'glmz-vision', '2026-10-30T16:48:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T435', 'phase:1-world', '2026-10-30T16:48:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T435', 'seq:0043', '2026-10-30T16:48:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T435', 'theme:genemods', '2026-10-30T16:48:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T436', 'glmz-vision', '2026-10-30T16:48:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T436', 'phase:1-world', '2026-10-30T16:48:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T436', 'seq:0044', '2026-10-30T16:48:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T436', 'theme:hyperreality', '2026-10-30T16:48:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T437', 'glmz-vision', '2026-10-30T16:49:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T437', 'phase:1-world', '2026-10-30T16:49:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T437', 'seq:0045', '2026-10-30T16:49:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T437', 'theme:hyperreality', '2026-10-30T16:49:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T438', 'glmz-vision', '2026-10-30T16:49:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T438', 'phase:1-world', '2026-10-30T16:49:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T438', 'seq:0046', '2026-10-30T16:49:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T438', 'theme:hyperreality', '2026-10-30T16:49:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T439', 'glmz-vision', '2026-10-30T16:49:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T439', 'phase:1-world', '2026-10-30T16:49:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T439', 'seq:0047', '2026-10-30T16:49:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T439', 'theme:hyperreality', '2026-10-30T16:49:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T440', 'glmz-vision', '2026-10-30T16:49:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T440', 'phase:1-world', '2026-10-30T16:49:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T440', 'seq:0048', '2026-10-30T16:49:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T440', 'theme:diaspora', '2026-10-30T16:49:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T441', 'glmz-vision', '2026-10-30T16:49:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T441', 'phase:1-world', '2026-10-30T16:49:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T441', 'seq:0049', '2026-10-30T16:49:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T441', 'theme:diaspora', '2026-10-30T16:49:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T442', 'glmz-vision', '2026-10-30T16:49:09Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T442', 'phase:1-world', '2026-10-30T16:49:09Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T442', 'seq:0050', '2026-10-30T16:49:09Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T442', 'theme:diaspora', '2026-10-30T16:49:09Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T443', 'glmz-vision', '2026-10-30T16:49:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T443', 'phase:1-world', '2026-10-30T16:49:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T443', 'seq:0051', '2026-10-30T16:49:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T443', 'theme:diaspora', '2026-10-30T16:49:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T444', 'glmz-vision', '2026-10-30T16:49:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T444', 'phase:1-world', '2026-10-30T16:49:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T444', 'seq:0052', '2026-10-30T16:49:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T444', 'theme:diaspora', '2026-10-30T16:49:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T445', 'glmz-vision', '2026-10-30T16:49:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T445', 'phase:1-world', '2026-10-30T16:49:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T445', 'seq:0053', '2026-10-30T16:49:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T445', 'theme:diaspora', '2026-10-30T16:49:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T446', 'glmz-vision', '2026-10-30T16:49:16Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T446', 'phase:1-world', '2026-10-30T16:49:16Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T446', 'seq:0054', '2026-10-30T16:49:16Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T446', 'theme:diaspora', '2026-10-30T16:49:16Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T447', 'glmz-vision', '2026-10-30T16:49:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T447', 'phase:1-world', '2026-10-30T16:49:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T447', 'seq:0055', '2026-10-30T16:49:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T447', 'theme:diaspora', '2026-10-30T16:49:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T448', 'glmz-vision', '2026-10-30T16:49:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T448', 'phase:1-world', '2026-10-30T16:49:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T448', 'seq:0056', '2026-10-30T16:49:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T448', 'theme:geography', '2026-10-30T16:49:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T449', 'glmz-vision', '2026-10-30T16:49:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T449', 'phase:1-world', '2026-10-30T16:49:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T449', 'seq:0057', '2026-10-30T16:49:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T449', 'theme:geography', '2026-10-30T16:49:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T450', 'glmz-vision', '2026-10-30T16:49:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T450', 'phase:1-world', '2026-10-30T16:49:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T450', 'seq:0058', '2026-10-30T16:49:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T450', 'theme:geography', '2026-10-30T16:49:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T451', 'glmz-vision', '2026-10-30T16:49:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T451', 'phase:1-world', '2026-10-30T16:49:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T451', 'seq:0059', '2026-10-30T16:49:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T451', 'theme:geography', '2026-10-30T16:49:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T452', 'glmz-vision', '2026-10-30T16:49:27Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T452', 'phase:1-world', '2026-10-30T16:49:27Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T452', 'seq:0060', '2026-10-30T16:49:27Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T452', 'theme:geography', '2026-10-30T16:49:27Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T453', 'glmz-vision', '2026-10-30T16:49:29Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T453', 'phase:1-world', '2026-10-30T16:49:29Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T453', 'seq:0061', '2026-10-30T16:49:29Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T453', 'theme:geography', '2026-10-30T16:49:29Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T454', 'glmz-vision', '2026-10-30T16:49:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T454', 'phase:1-world', '2026-10-30T16:49:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T454', 'seq:0062', '2026-10-30T16:49:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T454', 'theme:geography', '2026-10-30T16:49:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T455', 'glmz-vision', '2026-10-30T16:49:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T455', 'phase:1-world', '2026-10-30T16:49:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T455', 'seq:0063', '2026-10-30T16:49:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T455', 'theme:geography', '2026-10-30T16:49:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T456', 'glmz-vision', '2026-10-30T16:49:34Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T456', 'phase:1-world', '2026-10-30T16:49:34Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T456', 'seq:0064', '2026-10-30T16:49:34Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T456', 'theme:geography', '2026-10-30T16:49:34Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T457', 'glmz-vision', '2026-10-30T16:49:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T457', 'needs:author', '2026-10-30T16:49:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T457', 'phase:1-world', '2026-10-30T16:49:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T457', 'seq:0065', '2026-10-30T16:49:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T457', 'theme:geography', '2026-10-30T16:49:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T458', 'glmz-vision', '2026-10-30T16:49:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T458', 'phase:1-world', '2026-10-30T16:49:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T458', 'seq:0066', '2026-10-30T16:49:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T458', 'theme:geography', '2026-10-30T16:49:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T459', 'glmz-vision', '2026-10-30T16:49:40Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T459', 'phase:1-world', '2026-10-30T16:49:40Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T459', 'seq:0067', '2026-10-30T16:49:40Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T459', 'theme:coasts', '2026-10-30T16:49:40Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T460', 'glmz-vision', '2026-10-30T16:49:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T460', 'phase:1-world', '2026-10-30T16:49:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T460', 'seq:0068', '2026-10-30T16:49:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T460', 'theme:coasts', '2026-10-30T16:49:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T461', 'glmz-vision', '2026-10-30T16:49:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T461', 'phase:1-world', '2026-10-30T16:49:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T461', 'seq:0069', '2026-10-30T16:49:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T461', 'theme:corponations', '2026-10-30T16:49:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T462', 'glmz-vision', '2026-10-30T16:49:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T462', 'phase:1-world', '2026-10-30T16:49:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T462', 'seq:0070', '2026-10-30T16:49:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T462', 'theme:corponations', '2026-10-30T16:49:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T463', 'glmz-vision', '2026-10-30T16:49:47Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T463', 'phase:1-world', '2026-10-30T16:49:47Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T463', 'seq:0071', '2026-10-30T16:49:47Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T463', 'theme:corponations', '2026-10-30T16:49:47Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T464', 'glmz-vision', '2026-10-30T16:49:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T464', 'phase:1-world', '2026-10-30T16:49:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T464', 'seq:0072', '2026-10-30T16:49:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T464', 'theme:corponations', '2026-10-30T16:49:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T465', 'glmz-vision', '2026-10-30T16:49:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T465', 'phase:1-world', '2026-10-30T16:49:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T465', 'seq:0073', '2026-10-30T16:49:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T465', 'theme:corponations', '2026-10-30T16:49:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T466', 'glmz-vision', '2026-10-30T16:49:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T466', 'phase:1-world', '2026-10-30T16:49:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T466', 'seq:0074', '2026-10-30T16:49:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T466', 'theme:corponations', '2026-10-30T16:49:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T467', 'glmz-vision', '2026-10-30T16:49:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T467', 'phase:1-world', '2026-10-30T16:49:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T467', 'seq:0075', '2026-10-30T16:49:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T467', 'theme:corponations', '2026-10-30T16:49:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T468', 'glmz-vision', '2026-10-30T16:49:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T468', 'phase:1-world', '2026-10-30T16:49:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T468', 'seq:0076', '2026-10-30T16:49:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T468', 'theme:corponations', '2026-10-30T16:49:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T469', 'glmz-vision', '2026-10-30T16:49:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T469', 'phase:1-world', '2026-10-30T16:49:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T469', 'seq:0077', '2026-10-30T16:49:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T469', 'theme:corponations', '2026-10-30T16:49:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T470', 'glmz-vision', '2026-10-30T16:50:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T470', 'phase:1-world', '2026-10-30T16:50:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T470', 'seq:0078', '2026-10-30T16:50:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T470', 'theme:corponations', '2026-10-30T16:50:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T471', 'glmz-vision', '2026-10-30T16:50:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T471', 'phase:1-world', '2026-10-30T16:50:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T471', 'seq:0079', '2026-10-30T16:50:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T471', 'theme:corponations', '2026-10-30T16:50:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T472', 'glmz-vision', '2026-10-30T16:50:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T472', 'phase:1-world', '2026-10-30T16:50:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T472', 'seq:0080', '2026-10-30T16:50:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T472', 'theme:corponations', '2026-10-30T16:50:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T473', 'glmz-vision', '2026-10-30T16:50:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T473', 'phase:1-world', '2026-10-30T16:50:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T473', 'seq:0081', '2026-10-30T16:50:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T473', 'theme:corponations', '2026-10-30T16:50:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T474', 'glmz-vision', '2026-10-30T16:50:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T474', 'phase:1-world', '2026-10-30T16:50:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T474', 'seq:0082', '2026-10-30T16:50:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T474', 'theme:corponations', '2026-10-30T16:50:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T475', 'glmz-vision', '2026-10-30T16:50:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T475', 'phase:1-world', '2026-10-30T16:50:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T475', 'seq:0083', '2026-10-30T16:50:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T475', 'theme:corponations', '2026-10-30T16:50:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T476', 'glmz-vision', '2026-10-30T16:50:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T476', 'phase:1-world', '2026-10-30T16:50:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T476', 'seq:0084', '2026-10-30T16:50:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T476', 'theme:corponations', '2026-10-30T16:50:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T477', 'glmz-vision', '2026-10-30T16:50:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T477', 'phase:1-world', '2026-10-30T16:50:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T477', 'seq:0085', '2026-10-30T16:50:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T477', 'theme:economy', '2026-10-30T16:50:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T478', 'glmz-vision', '2026-10-30T16:50:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T478', 'phase:1-world', '2026-10-30T16:50:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T478', 'seq:0086', '2026-10-30T16:50:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T478', 'theme:economy', '2026-10-30T16:50:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T479', 'glmz-vision', '2026-10-30T16:50:15Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T479', 'phase:1-world', '2026-10-30T16:50:15Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T479', 'seq:0087', '2026-10-30T16:50:15Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T479', 'theme:economy', '2026-10-30T16:50:15Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T480', 'glmz-vision', '2026-10-30T16:50:17Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T480', 'phase:1-world', '2026-10-30T16:50:17Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T480', 'seq:0088', '2026-10-30T16:50:17Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T480', 'theme:economy', '2026-10-30T16:50:17Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T481', 'glmz-vision', '2026-10-30T16:50:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T481', 'phase:1-world', '2026-10-30T16:50:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T481', 'seq:0089', '2026-10-30T16:50:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T481', 'theme:timeline', '2026-10-30T16:50:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T482', 'glmz-vision', '2026-10-30T16:50:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T482', 'phase:1-world', '2026-10-30T16:50:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T482', 'seq:0090', '2026-10-30T16:50:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T482', 'theme:timeline', '2026-10-30T16:50:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T483', 'glmz-vision', '2026-10-30T16:50:22Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T483', 'phase:1-world', '2026-10-30T16:50:22Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T483', 'seq:0091', '2026-10-30T16:50:22Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T483', 'theme:timeline', '2026-10-30T16:50:22Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T484', 'glmz-vision', '2026-10-30T16:50:24Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T484', 'phase:1-world', '2026-10-30T16:50:24Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T484', 'seq:0092', '2026-10-30T16:50:24Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T484', 'theme:dimensional', '2026-10-30T16:50:24Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T485', 'glmz-vision', '2026-10-30T16:50:26Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T485', 'needs:author', '2026-10-30T16:50:26Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T485', 'phase:1-world', '2026-10-30T16:50:26Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T485', 'seq:0093', '2026-10-30T16:50:26Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T485', 'theme:dimensional', '2026-10-30T16:50:26Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T486', 'glmz-vision', '2026-10-30T16:50:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T486', 'phase:2-cast', '2026-10-30T16:50:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T486', 'seq:0094', '2026-10-30T16:50:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T486', 'theme:kyle', '2026-10-30T16:50:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T487', 'glmz-vision', '2026-10-30T16:50:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T487', 'phase:2-cast', '2026-10-30T16:50:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T487', 'seq:0095', '2026-10-30T16:50:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T487', 'theme:kyle', '2026-10-30T16:50:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T488', 'glmz-vision', '2026-10-30T16:50:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T488', 'phase:2-cast', '2026-10-30T16:50:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T488', 'seq:0096', '2026-10-30T16:50:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T488', 'theme:kyle', '2026-10-30T16:50:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T489', 'glmz-vision', '2026-10-30T16:50:34Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T489', 'phase:2-cast', '2026-10-30T16:50:34Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T489', 'seq:0097', '2026-10-30T16:50:34Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T489', 'theme:kyle', '2026-10-30T16:50:34Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T490', 'glmz-vision', '2026-10-30T16:50:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T490', 'phase:2-cast', '2026-10-30T16:50:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T490', 'seq:0098', '2026-10-30T16:50:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T490', 'theme:kyle', '2026-10-30T16:50:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T491', 'glmz-vision', '2026-10-30T16:50:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T491', 'phase:2-cast', '2026-10-30T16:50:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T491', 'seq:0099', '2026-10-30T16:50:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T491', 'theme:kyle', '2026-10-30T16:50:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T492', 'glmz-vision', '2026-10-30T16:50:39Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T492', 'phase:2-cast', '2026-10-30T16:50:39Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T492', 'seq:0100', '2026-10-30T16:50:39Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T492', 'theme:kyle', '2026-10-30T16:50:39Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T493', 'glmz-vision', '2026-10-30T16:50:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T493', 'needs:author', '2026-10-30T16:50:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T493', 'phase:2-cast', '2026-10-30T16:50:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T493', 'seq:0101', '2026-10-30T16:50:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T493', 'theme:kyle', '2026-10-30T16:50:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T494', 'glmz-vision', '2026-10-30T16:50:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T494', 'phase:2-cast', '2026-10-30T16:50:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T494', 'seq:0102', '2026-10-30T16:50:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T494', 'theme:perspective', '2026-10-30T16:50:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T495', 'glmz-vision', '2026-10-30T16:50:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T495', 'phase:2-cast', '2026-10-30T16:50:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T495', 'seq:0103', '2026-10-30T16:50:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T495', 'theme:perspective', '2026-10-30T16:50:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T496', 'glmz-vision', '2026-10-30T16:50:47Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T496', 'phase:2-cast', '2026-10-30T16:50:47Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T496', 'seq:0104', '2026-10-30T16:50:47Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T496', 'theme:perspective', '2026-10-30T16:50:47Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T497', 'glmz-vision', '2026-10-30T16:50:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T497', 'phase:2-cast', '2026-10-30T16:50:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T497', 'seq:0105', '2026-10-30T16:50:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T497', 'theme:perspective', '2026-10-30T16:50:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T498', 'glmz-vision', '2026-10-30T16:50:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T498', 'phase:2-cast', '2026-10-30T16:50:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T498', 'seq:0106', '2026-10-30T16:50:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T498', 'theme:perspective', '2026-10-30T16:50:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T499', 'glmz-vision', '2026-10-30T16:50:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T499', 'phase:2-cast', '2026-10-30T16:50:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T499', 'seq:0107', '2026-10-30T16:50:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T499', 'theme:perspective', '2026-10-30T16:50:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T500', 'glmz-vision', '2026-10-30T16:50:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T500', 'phase:2-cast', '2026-10-30T16:50:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T500', 'seq:0108', '2026-10-30T16:50:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T500', 'theme:perspective', '2026-10-30T16:50:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T501', 'glmz-vision', '2026-10-30T16:50:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T501', 'phase:2-cast', '2026-10-30T16:50:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T501', 'seq:0109', '2026-10-30T16:50:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T501', 'theme:perspective', '2026-10-30T16:50:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T502', 'glmz-vision', '2026-10-30T16:50:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T502', 'phase:2-cast', '2026-10-30T16:50:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T502', 'seq:0110', '2026-10-30T16:50:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T502', 'theme:perspective', '2026-10-30T16:50:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T503', 'glmz-vision', '2026-10-30T16:51:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T503', 'phase:2-cast', '2026-10-30T16:51:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T503', 'seq:0111', '2026-10-30T16:51:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T503', 'theme:perspective', '2026-10-30T16:51:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T504', 'glmz-vision', '2026-10-30T16:51:02Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T504', 'phase:2-cast', '2026-10-30T16:51:02Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T504', 'seq:0112', '2026-10-30T16:51:02Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T504', 'theme:perspective', '2026-10-30T16:51:02Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T505', 'glmz-vision', '2026-10-30T16:51:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T505', 'phase:2-cast', '2026-10-30T16:51:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T505', 'seq:0113', '2026-10-30T16:51:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T505', 'theme:perspective', '2026-10-30T16:51:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T506', 'glmz-vision', '2026-10-30T16:51:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T506', 'phase:2-cast', '2026-10-30T16:51:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T506', 'seq:0114', '2026-10-30T16:51:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T506', 'theme:perspective', '2026-10-30T16:51:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T507', 'glmz-vision', '2026-10-30T16:51:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T507', 'phase:2-cast', '2026-10-30T16:51:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T507', 'seq:0115', '2026-10-30T16:51:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T507', 'theme:perspective', '2026-10-30T16:51:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T508', 'glmz-vision', '2026-10-30T16:51:09Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T508', 'phase:2-cast', '2026-10-30T16:51:09Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T508', 'seq:0116', '2026-10-30T16:51:09Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T508', 'theme:perspective', '2026-10-30T16:51:09Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T509', 'glmz-vision', '2026-10-30T16:51:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T509', 'phase:2-cast', '2026-10-30T16:51:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T509', 'seq:0117', '2026-10-30T16:51:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T509', 'theme:perspective', '2026-10-30T16:51:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T510', 'glmz-vision', '2026-10-30T16:51:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T510', 'phase:2-cast', '2026-10-30T16:51:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T510', 'seq:0118', '2026-10-30T16:51:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T510', 'theme:perspective', '2026-10-30T16:51:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T511', 'glmz-vision', '2026-10-30T16:51:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T511', 'phase:2-cast', '2026-10-30T16:51:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T511', 'seq:0119', '2026-10-30T16:51:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T511', 'theme:perspective', '2026-10-30T16:51:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T512', 'glmz-vision', '2026-10-30T16:51:16Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T512', 'phase:2-cast', '2026-10-30T16:51:16Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T512', 'seq:0120', '2026-10-30T16:51:16Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T512', 'theme:perspective', '2026-10-30T16:51:16Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T513', 'glmz-vision', '2026-10-30T16:51:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T513', 'phase:2-cast', '2026-10-30T16:51:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T513', 'seq:0121', '2026-10-30T16:51:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T513', 'theme:perspective', '2026-10-30T16:51:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T514', 'glmz-vision', '2026-10-30T16:51:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T514', 'phase:2-cast', '2026-10-30T16:51:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T514', 'seq:0122', '2026-10-30T16:51:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T514', 'theme:perspective', '2026-10-30T16:51:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T515', 'glmz-vision', '2026-10-30T16:51:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T515', 'phase:2-cast', '2026-10-30T16:51:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T515', 'seq:0123', '2026-10-30T16:51:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T515', 'theme:perspective', '2026-10-30T16:51:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T516', 'glmz-vision', '2026-10-30T16:51:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T516', 'phase:2-cast', '2026-10-30T16:51:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T516', 'seq:0124', '2026-10-30T16:51:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T516', 'theme:perspective', '2026-10-30T16:51:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T517', 'glmz-vision', '2026-10-30T16:51:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T517', 'phase:2-cast', '2026-10-30T16:51:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T517', 'seq:0125', '2026-10-30T16:51:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T517', 'theme:perspective', '2026-10-30T16:51:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T518', 'glmz-vision', '2026-10-30T16:51:27Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T518', 'phase:2-cast', '2026-10-30T16:51:27Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T518', 'seq:0126', '2026-10-30T16:51:27Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T518', 'theme:perspective', '2026-10-30T16:51:27Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T519', 'glmz-vision', '2026-10-30T16:51:29Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T519', 'phase:2-cast', '2026-10-30T16:51:29Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T519', 'seq:0127', '2026-10-30T16:51:29Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T519', 'theme:villains', '2026-10-30T16:51:29Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T520', 'glmz-vision', '2026-10-30T16:51:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T520', 'phase:2-cast', '2026-10-30T16:51:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T520', 'seq:0128', '2026-10-30T16:51:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T520', 'theme:villains', '2026-10-30T16:51:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T521', 'glmz-vision', '2026-10-30T16:51:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T521', 'phase:2-cast', '2026-10-30T16:51:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T521', 'seq:0129', '2026-10-30T16:51:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T521', 'theme:villains', '2026-10-30T16:51:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T522', 'glmz-vision', '2026-10-30T16:51:34Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T522', 'phase:2-cast', '2026-10-30T16:51:34Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T522', 'seq:0130', '2026-10-30T16:51:34Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T522', 'theme:villains', '2026-10-30T16:51:34Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T523', 'glmz-vision', '2026-10-30T16:51:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T523', 'phase:2-cast', '2026-10-30T16:51:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T523', 'seq:0131', '2026-10-30T16:51:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T523', 'theme:villains', '2026-10-30T16:51:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T524', 'glmz-vision', '2026-10-30T16:51:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T524', 'phase:2-cast', '2026-10-30T16:51:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T524', 'seq:0132', '2026-10-30T16:51:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T524', 'theme:villains', '2026-10-30T16:51:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T525', 'glmz-vision', '2026-10-30T16:51:40Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T525', 'phase:2-cast', '2026-10-30T16:51:40Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T525', 'seq:0133', '2026-10-30T16:51:40Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T525', 'theme:villains', '2026-10-30T16:51:40Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T526', 'glmz-vision', '2026-10-30T16:51:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T526', 'phase:2-cast', '2026-10-30T16:51:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T526', 'seq:0134', '2026-10-30T16:51:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T526', 'theme:villains', '2026-10-30T16:51:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T527', 'glmz-vision', '2026-10-30T16:51:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T527', 'phase:2-cast', '2026-10-30T16:51:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T527', 'seq:0135', '2026-10-30T16:51:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T527', 'theme:villains', '2026-10-30T16:51:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T528', 'glmz-vision', '2026-10-30T16:51:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T528', 'phase:2-cast', '2026-10-30T16:51:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T528', 'seq:0136', '2026-10-30T16:51:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T528', 'theme:villains', '2026-10-30T16:51:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T529', 'glmz-vision', '2026-10-30T16:51:47Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T529', 'phase:2-cast', '2026-10-30T16:51:47Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T529', 'seq:0137', '2026-10-30T16:51:47Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T529', 'theme:villains', '2026-10-30T16:51:47Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T530', 'glmz-vision', '2026-10-30T16:51:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T530', 'phase:2-cast', '2026-10-30T16:51:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T530', 'seq:0138', '2026-10-30T16:51:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T530', 'theme:love', '2026-10-30T16:51:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T531', 'glmz-vision', '2026-10-30T16:51:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T531', 'needs:author', '2026-10-30T16:51:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T531', 'phase:2-cast', '2026-10-30T16:51:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T531', 'seq:0139', '2026-10-30T16:51:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T531', 'theme:love', '2026-10-30T16:51:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T532', 'glmz-vision', '2026-10-30T16:51:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T532', 'phase:2-cast', '2026-10-30T16:51:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T532', 'seq:0140', '2026-10-30T16:51:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T532', 'theme:love', '2026-10-30T16:51:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T533', 'glmz-vision', '2026-10-30T16:51:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T533', 'phase:2-cast', '2026-10-30T16:51:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T533', 'seq:0141', '2026-10-30T16:51:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T533', 'theme:love', '2026-10-30T16:51:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T534', 'glmz-vision', '2026-10-30T16:51:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T534', 'phase:2-cast', '2026-10-30T16:51:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T534', 'seq:0142', '2026-10-30T16:51:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T534', 'theme:ensemble', '2026-10-30T16:51:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T535', 'glmz-vision', '2026-10-30T16:51:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T535', 'phase:2-cast', '2026-10-30T16:51:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T535', 'seq:0143', '2026-10-30T16:51:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T535', 'theme:ensemble', '2026-10-30T16:51:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T536', 'glmz-vision', '2026-10-30T16:52:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T536', 'phase:2-cast', '2026-10-30T16:52:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T536', 'seq:0144', '2026-10-30T16:52:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T536', 'theme:ensemble', '2026-10-30T16:52:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T537', 'book:srzr', '2026-10-30T16:52:02Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T537', 'glmz-vision', '2026-10-30T16:52:02Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T537', 'phase:3-books', '2026-10-30T16:52:02Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T537', 'seq:0145', '2026-10-30T16:52:02Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T537', 'theme:thread', '2026-10-30T16:52:02Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T538', 'book:srzr', '2026-10-30T16:52:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T538', 'glmz-vision', '2026-10-30T16:52:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T538', 'phase:3-books', '2026-10-30T16:52:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T538', 'seq:0146', '2026-10-30T16:52:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T538', 'theme:kyle', '2026-10-30T16:52:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T539', 'book:srzr', '2026-10-30T16:52:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T539', 'glmz-vision', '2026-10-30T16:52:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T539', 'phase:3-books', '2026-10-30T16:52:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T539', 'seq:0147', '2026-10-30T16:52:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T539', 'theme:villain', '2026-10-30T16:52:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T540', 'book:srzr', '2026-10-30T16:52:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T540', 'glmz-vision', '2026-10-30T16:52:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T540', 'phase:3-books', '2026-10-30T16:52:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T540', 'seq:0148', '2026-10-30T16:52:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T540', 'theme:spectrum', '2026-10-30T16:52:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T541', 'book:srzr', '2026-10-30T16:52:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T541', 'glmz-vision', '2026-10-30T16:52:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T541', 'phase:3-books', '2026-10-30T16:52:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T541', 'seq:0149', '2026-10-30T16:52:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T541', 'theme:action', '2026-10-30T16:52:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T542', 'book:srzr', '2026-10-30T16:52:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T542', 'glmz-vision', '2026-10-30T16:52:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T542', 'phase:3-books', '2026-10-30T16:52:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T542', 'seq:0150', '2026-10-30T16:52:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T542', 'theme:diaspora', '2026-10-30T16:52:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T543', 'book:srzr', '2026-10-30T16:52:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T543', 'glmz-vision', '2026-10-30T16:52:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T543', 'phase:3-books', '2026-10-30T16:52:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T543', 'seq:0151', '2026-10-30T16:52:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T543', 'theme:minds', '2026-10-30T16:52:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T544', 'book:srzr', '2026-10-30T16:52:16Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T544', 'glmz-vision', '2026-10-30T16:52:16Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T544', 'phase:3-books', '2026-10-30T16:52:16Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T544', 'seq:0152', '2026-10-30T16:52:16Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T544', 'theme:canon', '2026-10-30T16:52:16Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T545', 'book:pxl', '2026-10-30T16:52:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T545', 'glmz-vision', '2026-10-30T16:52:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T545', 'phase:3-books', '2026-10-30T16:52:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T545', 'seq:0153', '2026-10-30T16:52:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T545', 'theme:thread', '2026-10-30T16:52:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T546', 'book:pxl', '2026-10-30T16:52:20Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T546', 'glmz-vision', '2026-10-30T16:52:20Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T546', 'phase:3-books', '2026-10-30T16:52:20Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T546', 'seq:0154', '2026-10-30T16:52:20Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T546', 'theme:kyle', '2026-10-30T16:52:20Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T547', 'book:pxl', '2026-10-30T16:52:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T547', 'glmz-vision', '2026-10-30T16:52:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T547', 'phase:3-books', '2026-10-30T16:52:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T547', 'seq:0155', '2026-10-30T16:52:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T547', 'theme:villain', '2026-10-30T16:52:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T548', 'book:pxl', '2026-10-30T16:52:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T548', 'glmz-vision', '2026-10-30T16:52:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T548', 'phase:3-books', '2026-10-30T16:52:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T548', 'seq:0156', '2026-10-30T16:52:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T548', 'theme:spectrum', '2026-10-30T16:52:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T549', 'book:pxl', '2026-10-30T16:52:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T549', 'glmz-vision', '2026-10-30T16:52:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T549', 'phase:3-books', '2026-10-30T16:52:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T549', 'seq:0157', '2026-10-30T16:52:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T549', 'theme:action', '2026-10-30T16:52:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T550', 'book:pxl', '2026-10-30T16:52:27Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T550', 'glmz-vision', '2026-10-30T16:52:27Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T550', 'phase:3-books', '2026-10-30T16:52:27Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T550', 'seq:0158', '2026-10-30T16:52:27Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T550', 'theme:diaspora', '2026-10-30T16:52:27Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T551', 'book:pxl', '2026-10-30T16:52:29Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T551', 'glmz-vision', '2026-10-30T16:52:29Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T551', 'phase:3-books', '2026-10-30T16:52:29Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T551', 'seq:0159', '2026-10-30T16:52:29Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T551', 'theme:minds', '2026-10-30T16:52:29Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T552', 'book:pxl', '2026-10-30T16:52:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T552', 'glmz-vision', '2026-10-30T16:52:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T552', 'phase:3-books', '2026-10-30T16:52:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T552', 'seq:0160', '2026-10-30T16:52:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T552', 'theme:canon', '2026-10-30T16:52:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T553', 'book:test', '2026-10-30T16:52:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T553', 'glmz-vision', '2026-10-30T16:52:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T553', 'phase:3-books', '2026-10-30T16:52:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T553', 'seq:0161', '2026-10-30T16:52:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T553', 'theme:thread', '2026-10-30T16:52:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T554', 'book:test', '2026-10-30T16:52:34Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T554', 'glmz-vision', '2026-10-30T16:52:34Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T554', 'phase:3-books', '2026-10-30T16:52:34Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T554', 'seq:0162', '2026-10-30T16:52:34Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T554', 'theme:kyle', '2026-10-30T16:52:34Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T555', 'book:test', '2026-10-30T16:52:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T555', 'glmz-vision', '2026-10-30T16:52:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T555', 'phase:3-books', '2026-10-30T16:52:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T555', 'seq:0163', '2026-10-30T16:52:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T555', 'theme:villain', '2026-10-30T16:52:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T556', 'book:test', '2026-10-30T16:52:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T556', 'glmz-vision', '2026-10-30T16:52:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T556', 'phase:3-books', '2026-10-30T16:52:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T556', 'seq:0164', '2026-10-30T16:52:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T556', 'theme:spectrum', '2026-10-30T16:52:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T557', 'book:test', '2026-10-30T16:52:40Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T557', 'glmz-vision', '2026-10-30T16:52:40Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T557', 'phase:3-books', '2026-10-30T16:52:40Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T557', 'seq:0165', '2026-10-30T16:52:40Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T557', 'theme:action', '2026-10-30T16:52:40Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T558', 'book:test', '2026-10-30T16:52:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T558', 'glmz-vision', '2026-10-30T16:52:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T558', 'phase:3-books', '2026-10-30T16:52:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T558', 'seq:0166', '2026-10-30T16:52:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T558', 'theme:diaspora', '2026-10-30T16:52:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T559', 'book:test', '2026-10-30T16:52:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T559', 'glmz-vision', '2026-10-30T16:52:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T559', 'phase:3-books', '2026-10-30T16:52:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T559', 'seq:0167', '2026-10-30T16:52:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T559', 'theme:minds', '2026-10-30T16:52:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T560', 'book:test', '2026-10-30T16:52:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T560', 'glmz-vision', '2026-10-30T16:52:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T560', 'phase:3-books', '2026-10-30T16:52:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T560', 'seq:0168', '2026-10-30T16:52:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T560', 'theme:canon', '2026-10-30T16:52:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T561', 'book:atte', '2026-10-30T16:52:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T561', 'glmz-vision', '2026-10-30T16:52:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T561', 'phase:3-books', '2026-10-30T16:52:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T561', 'seq:0169', '2026-10-30T16:52:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T561', 'theme:thread', '2026-10-30T16:52:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T562', 'book:atte', '2026-10-30T16:52:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T562', 'glmz-vision', '2026-10-30T16:52:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T562', 'phase:3-books', '2026-10-30T16:52:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T562', 'seq:0170', '2026-10-30T16:52:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T562', 'theme:kyle', '2026-10-30T16:52:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T563', 'book:atte', '2026-10-30T16:52:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T563', 'glmz-vision', '2026-10-30T16:52:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T563', 'phase:3-books', '2026-10-30T16:52:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T563', 'seq:0171', '2026-10-30T16:52:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T563', 'theme:villain', '2026-10-30T16:52:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T564', 'book:atte', '2026-10-30T16:52:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T564', 'glmz-vision', '2026-10-30T16:52:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T564', 'phase:3-books', '2026-10-30T16:52:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T564', 'seq:0172', '2026-10-30T16:52:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T564', 'theme:spectrum', '2026-10-30T16:52:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T565', 'book:atte', '2026-10-30T16:52:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T565', 'glmz-vision', '2026-10-30T16:52:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T565', 'phase:3-books', '2026-10-30T16:52:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T565', 'seq:0173', '2026-10-30T16:52:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T565', 'theme:action', '2026-10-30T16:52:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T566', 'book:atte', '2026-10-30T16:52:57Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T566', 'glmz-vision', '2026-10-30T16:52:57Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T566', 'phase:3-books', '2026-10-30T16:52:57Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T566', 'seq:0174', '2026-10-30T16:52:57Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T566', 'theme:diaspora', '2026-10-30T16:52:57Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T567', 'book:atte', '2026-10-30T16:52:59Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T567', 'glmz-vision', '2026-10-30T16:52:59Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T567', 'phase:3-books', '2026-10-30T16:52:59Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T567', 'seq:0175', '2026-10-30T16:52:59Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T567', 'theme:minds', '2026-10-30T16:52:59Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T568', 'book:atte', '2026-10-30T16:53:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T568', 'glmz-vision', '2026-10-30T16:53:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T568', 'phase:3-books', '2026-10-30T16:53:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T568', 'seq:0176', '2026-10-30T16:53:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T568', 'theme:canon', '2026-10-30T16:53:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T569', 'book:btl', '2026-10-30T16:53:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T569', 'glmz-vision', '2026-10-30T16:53:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T569', 'phase:3-books', '2026-10-30T16:53:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T569', 'seq:0177', '2026-10-30T16:53:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T569', 'theme:thread', '2026-10-30T16:53:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T570', 'book:btl', '2026-10-30T16:53:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T570', 'glmz-vision', '2026-10-30T16:53:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T570', 'phase:3-books', '2026-10-30T16:53:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T570', 'seq:0178', '2026-10-30T16:53:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T570', 'theme:kyle', '2026-10-30T16:53:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T571', 'book:btl', '2026-10-30T16:53:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T571', 'glmz-vision', '2026-10-30T16:53:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T571', 'phase:3-books', '2026-10-30T16:53:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T571', 'seq:0179', '2026-10-30T16:53:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T571', 'theme:villain', '2026-10-30T16:53:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T572', 'book:btl', '2026-10-30T16:53:09Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T572', 'glmz-vision', '2026-10-30T16:53:09Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T572', 'phase:3-books', '2026-10-30T16:53:09Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T572', 'seq:0180', '2026-10-30T16:53:09Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T572', 'theme:spectrum', '2026-10-30T16:53:09Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T573', 'book:btl', '2026-10-30T16:53:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T573', 'glmz-vision', '2026-10-30T16:53:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T573', 'phase:3-books', '2026-10-30T16:53:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T573', 'seq:0181', '2026-10-30T16:53:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T573', 'theme:action', '2026-10-30T16:53:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T574', 'book:btl', '2026-10-30T16:53:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T574', 'glmz-vision', '2026-10-30T16:53:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T574', 'phase:3-books', '2026-10-30T16:53:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T574', 'seq:0182', '2026-10-30T16:53:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T574', 'theme:diaspora', '2026-10-30T16:53:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T575', 'book:btl', '2026-10-30T16:53:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T575', 'glmz-vision', '2026-10-30T16:53:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T575', 'phase:3-books', '2026-10-30T16:53:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T575', 'seq:0183', '2026-10-30T16:53:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T575', 'theme:minds', '2026-10-30T16:53:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T576', 'book:btl', '2026-10-30T16:53:16Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T576', 'glmz-vision', '2026-10-30T16:53:16Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T576', 'phase:3-books', '2026-10-30T16:53:16Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T576', 'seq:0184', '2026-10-30T16:53:16Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T576', 'theme:canon', '2026-10-30T16:53:16Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T577', 'book:dwiace', '2026-10-30T16:53:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T577', 'glmz-vision', '2026-10-30T16:53:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T577', 'phase:3-books', '2026-10-30T16:53:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T577', 'seq:0185', '2026-10-30T16:53:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T577', 'theme:thread', '2026-10-30T16:53:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T578', 'book:dwiace', '2026-10-30T16:53:20Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T578', 'glmz-vision', '2026-10-30T16:53:20Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T578', 'phase:3-books', '2026-10-30T16:53:20Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T578', 'seq:0186', '2026-10-30T16:53:20Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T578', 'theme:kyle', '2026-10-30T16:53:20Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T579', 'book:dwiace', '2026-10-30T16:53:22Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T579', 'glmz-vision', '2026-10-30T16:53:22Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T579', 'phase:3-books', '2026-10-30T16:53:22Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T579', 'seq:0187', '2026-10-30T16:53:22Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T579', 'theme:villain', '2026-10-30T16:53:22Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T580', 'book:dwiace', '2026-10-30T16:53:24Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T580', 'glmz-vision', '2026-10-30T16:53:24Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T580', 'phase:3-books', '2026-10-30T16:53:24Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T580', 'seq:0188', '2026-10-30T16:53:24Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T580', 'theme:spectrum', '2026-10-30T16:53:24Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T581', 'book:dwiace', '2026-10-30T16:53:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T581', 'glmz-vision', '2026-10-30T16:53:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T581', 'phase:3-books', '2026-10-30T16:53:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T581', 'seq:0189', '2026-10-30T16:53:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T581', 'theme:action', '2026-10-30T16:53:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T582', 'book:dwiace', '2026-10-30T16:53:27Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T582', 'glmz-vision', '2026-10-30T16:53:27Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T582', 'phase:3-books', '2026-10-30T16:53:27Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T582', 'seq:0190', '2026-10-30T16:53:27Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T582', 'theme:diaspora', '2026-10-30T16:53:27Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T583', 'book:dwiace', '2026-10-30T16:53:29Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T583', 'glmz-vision', '2026-10-30T16:53:29Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T583', 'phase:3-books', '2026-10-30T16:53:29Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T583', 'seq:0191', '2026-10-30T16:53:29Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T583', 'theme:minds', '2026-10-30T16:53:29Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T584', 'book:dwiace', '2026-10-30T16:53:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T584', 'glmz-vision', '2026-10-30T16:53:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T584', 'phase:3-books', '2026-10-30T16:53:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T584', 'seq:0192', '2026-10-30T16:53:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T584', 'theme:canon', '2026-10-30T16:53:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T585', 'book:crit', '2026-10-30T16:53:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T585', 'glmz-vision', '2026-10-30T16:53:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T585', 'phase:3-books', '2026-10-30T16:53:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T585', 'seq:0193', '2026-10-30T16:53:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T585', 'theme:thread', '2026-10-30T16:53:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T586', 'book:crit', '2026-10-30T16:53:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T586', 'glmz-vision', '2026-10-30T16:53:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T586', 'phase:3-books', '2026-10-30T16:53:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T586', 'seq:0194', '2026-10-30T16:53:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T586', 'theme:kyle', '2026-10-30T16:53:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T587', 'book:crit', '2026-10-30T16:53:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T587', 'glmz-vision', '2026-10-30T16:53:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T587', 'phase:3-books', '2026-10-30T16:53:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T587', 'seq:0195', '2026-10-30T16:53:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T587', 'theme:villain', '2026-10-30T16:53:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T588', 'book:crit', '2026-10-30T16:53:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T588', 'glmz-vision', '2026-10-30T16:53:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T588', 'phase:3-books', '2026-10-30T16:53:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T588', 'seq:0196', '2026-10-30T16:53:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T588', 'theme:spectrum', '2026-10-30T16:53:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T589', 'book:crit', '2026-10-30T16:53:40Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T589', 'glmz-vision', '2026-10-30T16:53:40Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T589', 'phase:3-books', '2026-10-30T16:53:40Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T589', 'seq:0197', '2026-10-30T16:53:40Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T589', 'theme:action', '2026-10-30T16:53:40Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T590', 'book:crit', '2026-10-30T16:53:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T590', 'glmz-vision', '2026-10-30T16:53:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T590', 'phase:3-books', '2026-10-30T16:53:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T590', 'seq:0198', '2026-10-30T16:53:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T590', 'theme:diaspora', '2026-10-30T16:53:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T591', 'book:crit', '2026-10-30T16:53:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T591', 'glmz-vision', '2026-10-30T16:53:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T591', 'phase:3-books', '2026-10-30T16:53:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T591', 'seq:0199', '2026-10-30T16:53:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T591', 'theme:minds', '2026-10-30T16:53:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T592', 'book:crit', '2026-10-30T16:53:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T592', 'glmz-vision', '2026-10-30T16:53:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T592', 'phase:3-books', '2026-10-30T16:53:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T592', 'seq:0200', '2026-10-30T16:53:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T592', 'theme:canon', '2026-10-30T16:53:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T593', 'book:tlc', '2026-10-30T16:53:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T593', 'glmz-vision', '2026-10-30T16:53:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T593', 'phase:3-books', '2026-10-30T16:53:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T593', 'seq:0201', '2026-10-30T16:53:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T593', 'theme:thread', '2026-10-30T16:53:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T594', 'book:tlc', '2026-10-30T16:53:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T594', 'glmz-vision', '2026-10-30T16:53:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T594', 'phase:3-books', '2026-10-30T16:53:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T594', 'seq:0202', '2026-10-30T16:53:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T594', 'theme:kyle', '2026-10-30T16:53:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T595', 'book:tlc', '2026-10-30T16:53:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T595', 'glmz-vision', '2026-10-30T16:53:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T595', 'phase:3-books', '2026-10-30T16:53:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T595', 'seq:0203', '2026-10-30T16:53:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T595', 'theme:villain', '2026-10-30T16:53:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T596', 'book:tlc', '2026-10-30T16:53:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T596', 'glmz-vision', '2026-10-30T16:53:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T596', 'phase:3-books', '2026-10-30T16:53:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T596', 'seq:0204', '2026-10-30T16:53:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T596', 'theme:spectrum', '2026-10-30T16:53:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T597', 'book:tlc', '2026-10-30T16:53:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T597', 'glmz-vision', '2026-10-30T16:53:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T597', 'phase:3-books', '2026-10-30T16:53:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T597', 'seq:0205', '2026-10-30T16:53:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T597', 'theme:action', '2026-10-30T16:53:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T598', 'book:tlc', '2026-10-30T16:53:57Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T598', 'glmz-vision', '2026-10-30T16:53:57Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T598', 'phase:3-books', '2026-10-30T16:53:57Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T598', 'seq:0206', '2026-10-30T16:53:57Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T598', 'theme:diaspora', '2026-10-30T16:53:57Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T599', 'book:tlc', '2026-10-30T16:53:59Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T599', 'glmz-vision', '2026-10-30T16:53:59Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T599', 'phase:3-books', '2026-10-30T16:53:59Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T599', 'seq:0207', '2026-10-30T16:53:59Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T599', 'theme:minds', '2026-10-30T16:53:59Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T600', 'book:tlc', '2026-10-30T16:54:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T600', 'glmz-vision', '2026-10-30T16:54:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T600', 'phase:3-books', '2026-10-30T16:54:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T600', 'seq:0208', '2026-10-30T16:54:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T600', 'theme:canon', '2026-10-30T16:54:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T601', 'book:sprw', '2026-10-30T16:54:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T601', 'glmz-vision', '2026-10-30T16:54:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T601', 'phase:3-books', '2026-10-30T16:54:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T601', 'seq:0209', '2026-10-30T16:54:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T601', 'theme:thread', '2026-10-30T16:54:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T602', 'book:sprw', '2026-10-30T16:54:04Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T602', 'glmz-vision', '2026-10-30T16:54:04Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T602', 'phase:3-books', '2026-10-30T16:54:04Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T602', 'seq:0210', '2026-10-30T16:54:04Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T602', 'theme:kyle', '2026-10-30T16:54:04Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T603', 'book:sprw', '2026-10-30T16:54:06Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T603', 'glmz-vision', '2026-10-30T16:54:06Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T603', 'phase:3-books', '2026-10-30T16:54:06Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T603', 'seq:0211', '2026-10-30T16:54:06Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T603', 'theme:villain', '2026-10-30T16:54:06Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T604', 'book:sprw', '2026-10-30T16:54:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T604', 'glmz-vision', '2026-10-30T16:54:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T604', 'phase:3-books', '2026-10-30T16:54:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T604', 'seq:0212', '2026-10-30T16:54:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T604', 'theme:spectrum', '2026-10-30T16:54:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T605', 'book:sprw', '2026-10-30T16:54:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T605', 'glmz-vision', '2026-10-30T16:54:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T605', 'phase:3-books', '2026-10-30T16:54:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T605', 'seq:0213', '2026-10-30T16:54:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T605', 'theme:action', '2026-10-30T16:54:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T606', 'book:sprw', '2026-10-30T16:54:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T606', 'glmz-vision', '2026-10-30T16:54:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T606', 'phase:3-books', '2026-10-30T16:54:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T606', 'seq:0214', '2026-10-30T16:54:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T606', 'theme:diaspora', '2026-10-30T16:54:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T607', 'book:sprw', '2026-10-30T16:54:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T607', 'glmz-vision', '2026-10-30T16:54:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T607', 'phase:3-books', '2026-10-30T16:54:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T607', 'seq:0215', '2026-10-30T16:54:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T607', 'theme:minds', '2026-10-30T16:54:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T608', 'book:sprw', '2026-10-30T16:54:15Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T608', 'glmz-vision', '2026-10-30T16:54:15Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T608', 'phase:3-books', '2026-10-30T16:54:15Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T608', 'seq:0216', '2026-10-30T16:54:15Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T608', 'theme:canon', '2026-10-30T16:54:15Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T609', 'book:mxg', '2026-10-30T16:54:17Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T609', 'glmz-vision', '2026-10-30T16:54:17Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T609', 'phase:3-books', '2026-10-30T16:54:17Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T609', 'seq:0217', '2026-10-30T16:54:17Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T609', 'theme:thread', '2026-10-30T16:54:17Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T610', 'book:mxg', '2026-10-30T16:54:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T610', 'glmz-vision', '2026-10-30T16:54:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T610', 'phase:3-books', '2026-10-30T16:54:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T610', 'seq:0218', '2026-10-30T16:54:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T610', 'theme:kyle', '2026-10-30T16:54:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T611', 'book:mxg', '2026-10-30T16:54:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T611', 'glmz-vision', '2026-10-30T16:54:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T611', 'phase:3-books', '2026-10-30T16:54:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T611', 'seq:0219', '2026-10-30T16:54:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T611', 'theme:villain', '2026-10-30T16:54:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T612', 'book:mxg', '2026-10-30T16:54:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T612', 'glmz-vision', '2026-10-30T16:54:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T612', 'phase:3-books', '2026-10-30T16:54:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T612', 'seq:0220', '2026-10-30T16:54:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T612', 'theme:spectrum', '2026-10-30T16:54:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T613', 'book:mxg', '2026-10-30T16:54:24Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T613', 'glmz-vision', '2026-10-30T16:54:24Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T613', 'phase:3-books', '2026-10-30T16:54:24Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T613', 'seq:0221', '2026-10-30T16:54:24Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T613', 'theme:action', '2026-10-30T16:54:24Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T614', 'book:mxg', '2026-10-30T16:54:26Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T614', 'glmz-vision', '2026-10-30T16:54:26Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T614', 'phase:3-books', '2026-10-30T16:54:26Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T614', 'seq:0222', '2026-10-30T16:54:26Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T614', 'theme:diaspora', '2026-10-30T16:54:26Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T615', 'book:mxg', '2026-10-30T16:54:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T615', 'glmz-vision', '2026-10-30T16:54:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T615', 'phase:3-books', '2026-10-30T16:54:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T615', 'seq:0223', '2026-10-30T16:54:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T615', 'theme:minds', '2026-10-30T16:54:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T616', 'book:mxg', '2026-10-30T16:54:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T616', 'glmz-vision', '2026-10-30T16:54:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T616', 'phase:3-books', '2026-10-30T16:54:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T616', 'seq:0224', '2026-10-30T16:54:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T616', 'theme:canon', '2026-10-30T16:54:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T617', 'book:vatd', '2026-10-30T16:54:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T617', 'glmz-vision', '2026-10-30T16:54:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T617', 'phase:3-books', '2026-10-30T16:54:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T617', 'seq:0225', '2026-10-30T16:54:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T617', 'theme:thread', '2026-10-30T16:54:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T618', 'book:vatd', '2026-10-30T16:54:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T618', 'glmz-vision', '2026-10-30T16:54:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T618', 'phase:3-books', '2026-10-30T16:54:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T618', 'seq:0226', '2026-10-30T16:54:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T618', 'theme:kyle', '2026-10-30T16:54:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T619', 'book:vatd', '2026-10-30T16:54:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T619', 'glmz-vision', '2026-10-30T16:54:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T619', 'phase:3-books', '2026-10-30T16:54:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T619', 'seq:0227', '2026-10-30T16:54:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T619', 'theme:villain', '2026-10-30T16:54:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T620', 'book:vatd', '2026-10-30T16:54:37Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T620', 'glmz-vision', '2026-10-30T16:54:37Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T620', 'phase:3-books', '2026-10-30T16:54:37Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T620', 'seq:0228', '2026-10-30T16:54:37Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T620', 'theme:spectrum', '2026-10-30T16:54:37Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T621', 'book:vatd', '2026-10-30T16:54:39Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T621', 'glmz-vision', '2026-10-30T16:54:39Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T621', 'phase:3-books', '2026-10-30T16:54:39Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T621', 'seq:0229', '2026-10-30T16:54:39Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T621', 'theme:action', '2026-10-30T16:54:39Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T622', 'book:vatd', '2026-10-30T16:54:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T622', 'glmz-vision', '2026-10-30T16:54:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T622', 'phase:3-books', '2026-10-30T16:54:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T622', 'seq:0230', '2026-10-30T16:54:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T622', 'theme:diaspora', '2026-10-30T16:54:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T623', 'book:vatd', '2026-10-30T16:54:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T623', 'glmz-vision', '2026-10-30T16:54:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T623', 'phase:3-books', '2026-10-30T16:54:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T623', 'seq:0231', '2026-10-30T16:54:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T623', 'theme:minds', '2026-10-30T16:54:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T624', 'book:vatd', '2026-10-30T16:54:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T624', 'glmz-vision', '2026-10-30T16:54:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T624', 'phase:3-books', '2026-10-30T16:54:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T624', 'seq:0232', '2026-10-30T16:54:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T624', 'theme:canon', '2026-10-30T16:54:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T625', 'book:bcoda', '2026-10-30T16:54:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T625', 'glmz-vision', '2026-10-30T16:54:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T625', 'phase:3-books', '2026-10-30T16:54:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T625', 'seq:0233', '2026-10-30T16:54:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T625', 'theme:thread', '2026-10-30T16:54:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T626', 'book:bcoda', '2026-10-30T16:54:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T626', 'glmz-vision', '2026-10-30T16:54:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T626', 'phase:3-books', '2026-10-30T16:54:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T626', 'seq:0234', '2026-10-30T16:54:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T626', 'theme:kyle', '2026-10-30T16:54:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T627', 'book:bcoda', '2026-10-30T16:54:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T627', 'glmz-vision', '2026-10-30T16:54:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T627', 'phase:3-books', '2026-10-30T16:54:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T627', 'seq:0235', '2026-10-30T16:54:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T627', 'theme:villain', '2026-10-30T16:54:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T628', 'book:bcoda', '2026-10-30T16:54:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T628', 'glmz-vision', '2026-10-30T16:54:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T628', 'phase:3-books', '2026-10-30T16:54:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T628', 'seq:0236', '2026-10-30T16:54:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T628', 'theme:spectrum', '2026-10-30T16:54:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T629', 'book:bcoda', '2026-10-30T16:54:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T629', 'glmz-vision', '2026-10-30T16:54:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T629', 'phase:3-books', '2026-10-30T16:54:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T629', 'seq:0237', '2026-10-30T16:54:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T629', 'theme:action', '2026-10-30T16:54:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T630', 'book:bcoda', '2026-10-30T16:54:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T630', 'glmz-vision', '2026-10-30T16:54:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T630', 'phase:3-books', '2026-10-30T16:54:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T630', 'seq:0238', '2026-10-30T16:54:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T630', 'theme:diaspora', '2026-10-30T16:54:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T631', 'book:bcoda', '2026-10-30T16:54:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T631', 'glmz-vision', '2026-10-30T16:54:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T631', 'phase:3-books', '2026-10-30T16:54:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T631', 'seq:0239', '2026-10-30T16:54:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T631', 'theme:minds', '2026-10-30T16:54:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T632', 'book:bcoda', '2026-10-30T16:55:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T632', 'glmz-vision', '2026-10-30T16:55:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T632', 'phase:3-books', '2026-10-30T16:55:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T632', 'seq:0240', '2026-10-30T16:55:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T632', 'theme:canon', '2026-10-30T16:55:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T633', 'book:undr', '2026-10-30T16:55:02Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T633', 'glmz-vision', '2026-10-30T16:55:02Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T633', 'phase:3-books', '2026-10-30T16:55:02Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T633', 'seq:0241', '2026-10-30T16:55:02Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T633', 'theme:thread', '2026-10-30T16:55:02Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T634', 'book:undr', '2026-10-30T16:55:04Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T634', 'glmz-vision', '2026-10-30T16:55:04Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T634', 'phase:3-books', '2026-10-30T16:55:04Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T634', 'seq:0242', '2026-10-30T16:55:04Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T634', 'theme:kyle', '2026-10-30T16:55:04Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T635', 'book:undr', '2026-10-30T16:55:06Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T635', 'glmz-vision', '2026-10-30T16:55:06Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T635', 'phase:3-books', '2026-10-30T16:55:06Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T635', 'seq:0243', '2026-10-30T16:55:06Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T635', 'theme:villain', '2026-10-30T16:55:06Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T636', 'book:undr', '2026-10-30T16:55:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T636', 'glmz-vision', '2026-10-30T16:55:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T636', 'phase:3-books', '2026-10-30T16:55:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T636', 'seq:0244', '2026-10-30T16:55:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T636', 'theme:spectrum', '2026-10-30T16:55:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T637', 'book:undr', '2026-10-30T16:55:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T637', 'glmz-vision', '2026-10-30T16:55:09Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T637', 'phase:3-books', '2026-10-30T16:55:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T637', 'seq:0245', '2026-10-30T16:55:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T637', 'theme:action', '2026-10-30T16:55:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T638', 'book:undr', '2026-10-30T16:55:11Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T638', 'glmz-vision', '2026-10-30T16:55:11Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T638', 'phase:3-books', '2026-10-30T16:55:11Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T638', 'seq:0246', '2026-10-30T16:55:11Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T638', 'theme:diaspora', '2026-10-30T16:55:11Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T639', 'book:undr', '2026-10-30T16:55:13Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T639', 'glmz-vision', '2026-10-30T16:55:13Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T639', 'phase:3-books', '2026-10-30T16:55:13Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T639', 'seq:0247', '2026-10-30T16:55:13Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T639', 'theme:minds', '2026-10-30T16:55:13Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T640', 'book:undr', '2026-10-30T16:55:15Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T640', 'glmz-vision', '2026-10-30T16:55:15Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T640', 'phase:3-books', '2026-10-30T16:55:15Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T640', 'seq:0248', '2026-10-30T16:55:15Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T640', 'theme:canon', '2026-10-30T16:55:15Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T641', 'book:twu', '2026-10-30T16:55:17Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T641', 'glmz-vision', '2026-10-30T16:55:17Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T641', 'phase:3-books', '2026-10-30T16:55:17Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T641', 'seq:0249', '2026-10-30T16:55:17Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T641', 'theme:thread', '2026-10-30T16:55:17Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T642', 'book:twu', '2026-10-30T16:55:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T642', 'glmz-vision', '2026-10-30T16:55:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T642', 'phase:3-books', '2026-10-30T16:55:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T642', 'seq:0250', '2026-10-30T16:55:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T642', 'theme:kyle', '2026-10-30T16:55:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T643', 'book:twu', '2026-10-30T16:55:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T643', 'glmz-vision', '2026-10-30T16:55:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T643', 'phase:3-books', '2026-10-30T16:55:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T643', 'seq:0251', '2026-10-30T16:55:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T643', 'theme:villain', '2026-10-30T16:55:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T644', 'book:twu', '2026-10-30T16:55:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T644', 'glmz-vision', '2026-10-30T16:55:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T644', 'phase:3-books', '2026-10-30T16:55:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T644', 'seq:0252', '2026-10-30T16:55:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T644', 'theme:spectrum', '2026-10-30T16:55:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T645', 'book:twu', '2026-10-30T16:55:24Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T645', 'glmz-vision', '2026-10-30T16:55:24Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T645', 'phase:3-books', '2026-10-30T16:55:24Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T645', 'seq:0253', '2026-10-30T16:55:24Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T645', 'theme:action', '2026-10-30T16:55:24Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T646', 'book:twu', '2026-10-30T16:55:26Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T646', 'glmz-vision', '2026-10-30T16:55:26Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T646', 'phase:3-books', '2026-10-30T16:55:26Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T646', 'seq:0254', '2026-10-30T16:55:26Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T646', 'theme:diaspora', '2026-10-30T16:55:26Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T647', 'book:twu', '2026-10-30T16:55:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T647', 'glmz-vision', '2026-10-30T16:55:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T647', 'phase:3-books', '2026-10-30T16:55:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T647', 'seq:0255', '2026-10-30T16:55:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T647', 'theme:minds', '2026-10-30T16:55:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T648', 'book:twu', '2026-10-30T16:55:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T648', 'glmz-vision', '2026-10-30T16:55:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T648', 'phase:3-books', '2026-10-30T16:55:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T648', 'seq:0256', '2026-10-30T16:55:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T648', 'theme:canon', '2026-10-30T16:55:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T649', 'book:nxr', '2026-10-30T16:55:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T649', 'glmz-vision', '2026-10-30T16:55:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T649', 'phase:3-books', '2026-10-30T16:55:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T649', 'seq:0257', '2026-10-30T16:55:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T649', 'theme:thread', '2026-10-30T16:55:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T650', 'book:nxr', '2026-10-30T16:55:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T650', 'glmz-vision', '2026-10-30T16:55:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T650', 'phase:3-books', '2026-10-30T16:55:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T650', 'seq:0258', '2026-10-30T16:55:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T650', 'theme:kyle', '2026-10-30T16:55:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T651', 'book:nxr', '2026-10-30T16:55:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T651', 'glmz-vision', '2026-10-30T16:55:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T651', 'phase:3-books', '2026-10-30T16:55:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T651', 'seq:0259', '2026-10-30T16:55:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T651', 'theme:villain', '2026-10-30T16:55:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T652', 'book:nxr', '2026-10-30T16:55:37Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T652', 'glmz-vision', '2026-10-30T16:55:37Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T652', 'phase:3-books', '2026-10-30T16:55:37Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T652', 'seq:0260', '2026-10-30T16:55:37Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T652', 'theme:spectrum', '2026-10-30T16:55:37Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T653', 'book:nxr', '2026-10-30T16:55:39Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T653', 'glmz-vision', '2026-10-30T16:55:39Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T653', 'phase:3-books', '2026-10-30T16:55:39Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T653', 'seq:0261', '2026-10-30T16:55:39Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T653', 'theme:action', '2026-10-30T16:55:39Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T654', 'book:nxr', '2026-10-30T16:55:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T654', 'glmz-vision', '2026-10-30T16:55:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T654', 'phase:3-books', '2026-10-30T16:55:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T654', 'seq:0262', '2026-10-30T16:55:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T654', 'theme:diaspora', '2026-10-30T16:55:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T655', 'book:nxr', '2026-10-30T16:55:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T655', 'glmz-vision', '2026-10-30T16:55:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T655', 'phase:3-books', '2026-10-30T16:55:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T655', 'seq:0263', '2026-10-30T16:55:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T655', 'theme:minds', '2026-10-30T16:55:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T656', 'book:nxr', '2026-10-30T16:55:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T656', 'glmz-vision', '2026-10-30T16:55:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T656', 'phase:3-books', '2026-10-30T16:55:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T656', 'seq:0264', '2026-10-30T16:55:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T656', 'theme:canon', '2026-10-30T16:55:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T657', 'book:cxc', '2026-10-30T16:55:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T657', 'glmz-vision', '2026-10-30T16:55:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T657', 'phase:3-books', '2026-10-30T16:55:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T657', 'seq:0265', '2026-10-30T16:55:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T657', 'theme:thread', '2026-10-30T16:55:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T658', 'book:cxc', '2026-10-30T16:55:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T658', 'glmz-vision', '2026-10-30T16:55:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T658', 'phase:3-books', '2026-10-30T16:55:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T658', 'seq:0266', '2026-10-30T16:55:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T658', 'theme:kyle', '2026-10-30T16:55:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T659', 'book:cxc', '2026-10-30T16:55:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T659', 'glmz-vision', '2026-10-30T16:55:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T659', 'phase:3-books', '2026-10-30T16:55:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T659', 'seq:0267', '2026-10-30T16:55:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T659', 'theme:villain', '2026-10-30T16:55:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T660', 'book:cxc', '2026-10-30T16:55:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T660', 'glmz-vision', '2026-10-30T16:55:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T660', 'phase:3-books', '2026-10-30T16:55:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T660', 'seq:0268', '2026-10-30T16:55:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T660', 'theme:spectrum', '2026-10-30T16:55:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T661', 'book:cxc', '2026-10-30T16:55:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T661', 'glmz-vision', '2026-10-30T16:55:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T661', 'phase:3-books', '2026-10-30T16:55:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T661', 'seq:0269', '2026-10-30T16:55:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T661', 'theme:action', '2026-10-30T16:55:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T662', 'book:cxc', '2026-10-30T16:55:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T662', 'glmz-vision', '2026-10-30T16:55:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T662', 'phase:3-books', '2026-10-30T16:55:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T662', 'seq:0270', '2026-10-30T16:55:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T662', 'theme:diaspora', '2026-10-30T16:55:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T663', 'book:cxc', '2026-10-30T16:55:57Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T663', 'glmz-vision', '2026-10-30T16:55:57Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T663', 'phase:3-books', '2026-10-30T16:55:57Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T663', 'seq:0271', '2026-10-30T16:55:57Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T663', 'theme:minds', '2026-10-30T16:55:57Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T664', 'book:cxc', '2026-10-30T16:55:59Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T664', 'glmz-vision', '2026-10-30T16:55:59Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T664', 'phase:3-books', '2026-10-30T16:55:59Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T664', 'seq:0272', '2026-10-30T16:55:59Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T664', 'theme:canon', '2026-10-30T16:55:59Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T665', 'book:twd', '2026-10-30T16:56:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T665', 'glmz-vision', '2026-10-30T16:56:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T665', 'phase:3-books', '2026-10-30T16:56:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T665', 'seq:0273', '2026-10-30T16:56:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T665', 'theme:thread', '2026-10-30T16:56:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T666', 'book:twd', '2026-10-30T16:56:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T666', 'glmz-vision', '2026-10-30T16:56:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T666', 'phase:3-books', '2026-10-30T16:56:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T666', 'seq:0274', '2026-10-30T16:56:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T666', 'theme:kyle', '2026-10-30T16:56:03Z');
 
 -- repo_renames
 INSERT INTO repo_renames (seq, old_name, new_name, at, reason) VALUES (1, 'GTFO.AbsurdWeapons', 'GTFO.EZ.AbsurdWeapons', '2026-10-19T02:14:58Z', 'Renamed under GTFO.EZ, its core mod, before release (G.EZ-T77)');
