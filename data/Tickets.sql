@@ -9280,10 +9280,11 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T106', 'Unity.Rea.Hare', 106, '2026-10-28', 'chore', 'closed', 'Update DefaultVolumeProfile.asset, UniversalRP-2D.asset, UniversalRenderPipelineGlobalSettings.asset, BIBLE.md, USER_STORIES.md', '—', 105, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T107', 'Unity.Rea.Hare', 107, '2026-10-29', 'chore', 'open', 'Rename Unity.Hare to Unity.Rea.Hare everywhere: folder, GitHub, namespaces, docs, deployments (identifies it as reverse-engineered)', '—', 106, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T108', 'Unity.Rea.Hare', 108, '2026-10-29', 'chore', 'closed', 'Rename repo to Unity.Rea.Hare: GitHub, local folder, in-repo asmdef/asset tree, ticket DB key', '2a6b1bb', 107, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T109', 'Unity.Rea.Hare', 109, '2026-10-30', 'fix', 'open', 'Weapon sounds the original plays are never played (found by U.HARE-T33): Q/E weapon switches play no sfx_switch (next_ground_weapon/next_air_weapon line 1; GroundWeaponLoadout/AirWeaponLoadout raise Switched but nothing subscribes), the mine launch plays no sfx_fire_grenade (shoot_mine; MineLauncher.cs, AirWeaponLoadout.cs:121-131), the rocket no sfx_set_rocket (shoot_rocket.gml:11), and only the vulcan plays sfx_empty_clip on a dry fire (fire_primary.gml:54,84, fire_secondary.gml:32,52; PerchedWeapon.OutOfAmmo and AirWeaponLoadout.DryFired have no subscribers). Play each at the moment the original does through HareAudio', '—', 108, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T110', 'Unity.Rea.Hare', 110, '2026-10-30', 'fix', 'open', 'Enemy and mine effects raised as events but never drawn or played (found by U.HARE-T33): obj_mine Alarm 0''s ef_ring and sfx_beep on arming (Mine.Activated, Scripts/Weapons/Mine.cs:110-114, has only a test subscriber), the dagger''s launch ef_ring and Alarm 2 smoke every 20 steps (Core DaggerLaunched/SmokePuffRaised -> Dagger.Launched/SmokePuff, no case in EnemyDirector.PlayEvent), and EnemyMine.Armed/Pinged (Scripts/Enemies/EnemyMine.cs:66-67). Wire them through GmlEffects/HareAudio, then check the other enemies'' Core effect events the same way (meatball spray, trilobyte smoke trail, phalanx sparks) against HARE.gmx', '—', 109, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T111', 'Unity.Rea.Hare', 111, '2026-10-30', 'fix', 'open', 'Score carries over after a won map mission (found by U.HARE-T33): ArenaRoom.AdvanceLevel (Scripts/Arena/ArenaRoom.cs:464-473) returns to room_map via LevelSetup.RoomAfterLevel before it runs AdvanceLevel(resetScore), so the exit off the top''s current_score = 0 and level_complete = false (V31) never happen, and ChooseMission does not zero the score either; level_10 (ResetScore false, 18000-point goal) then starts with the previous mission''s score. Run the reset before going back to the map and add a test', '—', 110, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T109', 'Unity.Rea.Hare', 109, '2026-10-30', 'fix', 'closed', 'Weapon sounds the original plays are never played (found by U.HARE-T33): Q/E weapon switches play no sfx_switch (next_ground_weapon/next_air_weapon line 1; GroundWeaponLoadout/AirWeaponLoadout raise Switched but nothing subscribes), the mine launch plays no sfx_fire_grenade (shoot_mine; MineLauncher.cs, AirWeaponLoadout.cs:121-131), the rocket no sfx_set_rocket (shoot_rocket.gml:11), and only the vulcan plays sfx_empty_clip on a dry fire (fire_primary.gml:54,84, fire_secondary.gml:32,52; PerchedWeapon.OutOfAmmo and AirWeaponLoadout.DryFired have no subscribers). Play each at the moment the original does through HareAudio', 'db54628', 108, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T110', 'Unity.Rea.Hare', 110, '2026-10-30', 'fix', 'closed', 'Enemy and mine effects raised as events but never drawn or played (found by U.HARE-T33): obj_mine Alarm 0''s ef_ring and sfx_beep on arming (Mine.Activated, Scripts/Weapons/Mine.cs:110-114, has only a test subscriber), the dagger''s launch ef_ring and Alarm 2 smoke every 20 steps (Core DaggerLaunched/SmokePuffRaised -> Dagger.Launched/SmokePuff, no case in EnemyDirector.PlayEvent), and EnemyMine.Armed/Pinged (Scripts/Enemies/EnemyMine.cs:66-67). Wire them through GmlEffects/HareAudio, then check the other enemies'' Core effect events the same way (meatball spray, trilobyte smoke trail, phalanx sparks) against HARE.gmx', '9cce896', 109, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T111', 'Unity.Rea.Hare', 111, '2026-10-30', 'fix', 'closed', 'Score carries over after a won map mission (found by U.HARE-T33): ArenaRoom.AdvanceLevel (Scripts/Arena/ArenaRoom.cs:464-473) returns to room_map via LevelSetup.RoomAfterLevel before it runs AdvanceLevel(resetScore), so the exit off the top''s current_score = 0 and level_complete = false (V31) never happen, and ChooseMission does not zero the score either; level_10 (ResetScore false, 18000-point goal) then starts with the previous mission''s score. Run the reset before going back to the map and add a test', 'c75ca0c', 110, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T112', 'Unity.Rea.Hare', 112, '2026-10-30', 'fix', 'closed', 'CreditsView hard-codes its entries instead of reading the imported credits.txt (found by U.HARE-T33): REVERSE_ENGINEERING.md says Audio/credits.txt is mirrored for the credits screen (U.HARE-T69), but Scripts/UI/CreditsView.cs:29-43 has its own list and HareAudioManifest.Credits is read only by tests; build the screen from the manifest''s credits. Also fix the BIBLE reference in CreditsView.cs:20 and TitleRoom.cs:186 (the credits screen is V52, not V50)', '238173e', 111, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T113', 'Unity.Rea.Hare', 113, '2026-10-30', 'fix', 'open', 'obj_phalanx''s per-step ef_spark (gold, below) was never ported to Core: PhalanxEnemy.StepEvent has no spark event at all, so Phalanx never has anything to wire through GmlEffects (found auditing U.HARE-T110)', 'U.HARE-T110', 112, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.INC-T1', 'Unity.Rea.Incognito', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.INC-T2', 'Unity.Rea.Incognito', 2, '2026-10-21', 'chore', 'closed', 'Bootstrap Unity 6 project, workspace docs, and reverse-engineering notes from the 2013 GameMaker source', 'eae442c', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.INC-T3', 'Unity.Rea.Incognito', 3, '2026-10-21', 'feature', 'closed', 'Port player locomotion: triangle-wave walk bob, sprint acceleration/friction, and facing flip', '923bc95', 2, NULL);
@@ -45718,6 +45719,51 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25067, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25068, 'U.HARE-T112', '2026-10-30T05:26:30Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25069, 'U.HARE-T112', '2026-10-30T05:26:30Z', 'ref', '—', '238173e');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25070, 'U.HARE-T112', '2026-10-30T05:26:47Z', 'working', 'ryandebraal@mindattic.com (90be2624-ab61-45bb-8010-60c3ad5fbfcf)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25071, 'U.HARE-T109', '2026-10-30T05:30:28Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25072, 'U.HARE-T109', '2026-10-30T05:30:28Z', 'ref', '—', 'db54628');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25073, 'U.HARE-T109', '2026-10-30T05:30:34Z', 'working', 'ryandebraal@mindattic.com (90be2624-ab61-45bb-8010-60c3ad5fbfcf)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25074, 'U.HARE-T111', '2026-10-30T05:31:15Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25075, 'U.HARE-T111', '2026-10-30T05:31:15Z', 'ref', '—', 'c75ca0c');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25076, 'U.HARE-T111', '2026-10-30T05:31:26Z', 'working', 'ryandebraal@mindattic.com (90be2624-ab61-45bb-8010-60c3ad5fbfcf)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25077, 'U.HARE-T113', '2026-10-30T05:32:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25078, 'U.HARE-T113', '2026-10-30T05:32:39Z', 'description', '## Symptom
+
+<!-- What goes wrong, and how to see it. -->
+
+## Cause
+
+<!-- Why it happens, once known. -->
+
+## Test
+
+<!-- The test that fails before the fix and passes after. -->', '## Symptom
+
+obj_phalanx never trails sparks in the rebuild. Nothing in Core or presentation raises or draws
+an effect for it.
+
+## Cause
+
+`R:\Projects\_PRE_2022\_PRE_2021\_PRE_2020\GameMaker\gmlHARE\HARE.gmx\objects\obj_phalanx.object.gmx`''s
+Step event ends with an unconditional `effect_create_below(ef_spark, x, y, 0, c_gold)` every step
+while moving (after the distance_to_object(player)/move_towards_point block). `PhalanxEnemy.StepEvent`
+in `Assets/Unity.Rea.Hare/Core/Enemies/PhalanxEnemy.cs` has no equivalent: it never emits a spark
+event, so this is a missing Core feature, not just an unwired presentation event (unlike
+U.HARE-T110''s dagger/mine cases, where Core already raised the event and only the drawing was
+missing). Needs: a new EnemyEvent type (e.g. PhalanxSparked) raised once a step from
+PhalanxEnemy.StepEvent, a case in EnemyDirector.PlayEvent calling
+`GmlEffects.CreateBelow(GmlEffectKind.Spark, at, 0, <gold>)`, and Core tests asserting the event
+fires every step while the phalanx moves.
+
+## Test
+
+A new Core test on PhalanxEnemy (e.g. in Tests/Core.Tests) asserting a PhalanxSparked event (or
+equivalent) is emitted each step, and an EditMode/PlayMode check that EnemyDirector.PlayEvent
+draws it via GmlEffects.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25079, 'U.HARE-T113', '2026-10-30T05:32:39Z', 'working', NULL, '90be2624-ab61-45bb-8010-60c3ad5fbfcf');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25080, 'U.HARE-T110', '2026-10-30T05:33:15Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25081, 'U.HARE-T110', '2026-10-30T05:33:15Z', 'ref', '—', '9cce896');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25082, 'U.HARE-T110', '2026-10-30T05:33:26Z', 'working', 'ryandebraal@mindattic.com (90be2624-ab61-45bb-8010-60c3ad5fbfcf)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25083, 'U.HARE-T113', '2026-10-30T05:33:52Z', 'working', '90be2624-ab61-45bb-8010-60c3ad5fbfcf', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -47972,9 +48018,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.HARE-T109', NULL, 0, 'ryandebraal@mindattic.com', '90be2624-ab61-45bb-8010-60c3ad5fbfcf', '2026-10-30T05:25:28Z', '2026-10-30T05:25:28Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.HARE-T110', NULL, 0, 'ryandebraal@mindattic.com', '90be2624-ab61-45bb-8010-60c3ad5fbfcf', '2026-10-30T05:24:57Z', '2026-10-30T05:24:57Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.HARE-T111', NULL, 0, 'ryandebraal@mindattic.com', '90be2624-ab61-45bb-8010-60c3ad5fbfcf', '2026-10-30T05:24:43Z', '2026-10-30T05:24:43Z');
 
 -- ticket_notes
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (1, 'U.HARE-T54', 'ryand', '2026-10-26T04:52:58Z', 'From U.HARE-T52 (7d24220): leaving the arena past the 400 px buffer zone (LeaveArena command) currently costs a life only on the ship (PlayerHealth out-of-bounds path / ShipHealth). When this ticket wires LIVES into the session, route that out-of-bounds loss through the same session lives so both deaths count the same.');
@@ -53613,6 +53656,29 @@ Scope (all of it, in this repo''s own checkout on main):
 - Deployments: update CI/CD configs, build/deploy scripts, store/itch.io listing references, and any other repo (e.g. MindAttic.Orchestrator, MindAttic.Tickets, MindAttic.Launcher, MindAttic.Browser) that hardcodes the old folder or repo name Unity.Hare
 - Verify the project still builds and tests pass after the rename
 - Do not leave a mix of old/new names; commit the new name throughout', '2026-10-29T17:28:57Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.HARE-T113', '## Symptom
+
+obj_phalanx never trails sparks in the rebuild. Nothing in Core or presentation raises or draws
+an effect for it.
+
+## Cause
+
+`R:\Projects\_PRE_2022\_PRE_2021\_PRE_2020\GameMaker\gmlHARE\HARE.gmx\objects\obj_phalanx.object.gmx`''s
+Step event ends with an unconditional `effect_create_below(ef_spark, x, y, 0, c_gold)` every step
+while moving (after the distance_to_object(player)/move_towards_point block). `PhalanxEnemy.StepEvent`
+in `Assets/Unity.Rea.Hare/Core/Enemies/PhalanxEnemy.cs` has no equivalent: it never emits a spark
+event, so this is a missing Core feature, not just an unwired presentation event (unlike
+U.HARE-T110''s dagger/mine cases, where Core already raised the event and only the drawing was
+missing). Needs: a new EnemyEvent type (e.g. PhalanxSparked) raised once a step from
+PhalanxEnemy.StepEvent, a case in EnemyDirector.PlayEvent calling
+`GmlEffects.CreateBelow(GmlEffectKind.Spark, at, 0, <gold>)`, and Core tests asserting the event
+fires every step while the phalanx moves.
+
+## Test
+
+A new Core test on PhalanxEnemy (e.g. in Tests/Core.Tests) asserting a PhalanxSparked event (or
+equivalent) is emitted each step, and an EditMode/PlayMode check that EnemyDirector.PlayEvent
+draws it via GmlEffects.', '2026-10-30T05:32:39Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.INC-T45', 'Rename this project everywhere to identify it as reverse-engineered: Unity.Incognito -> Unity.Rea.Incognito.
 
 Scope (all of it, in this repo''s own checkout on main):
