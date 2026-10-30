@@ -7876,6 +7876,19 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T356', 'Prose', 356, '2026-10-29', 'fix', 'open', 'BeatWriteOrchestrator''s double-contradiction exception pairs a stale verdict with the wrong attempt''s text', 'PRS-T133', 355, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T357', 'Prose', 357, '2026-10-29', 'fix', 'open', 'set_beat_contributions throws unguarded exceptions on malformed linesJson instead of a structured error', 'PRS-T133', 356, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T358', 'Prose', 358, '2026-10-29', 'fix', 'open', 'Three Hub-forwarding MCP tools throw an unhandled TaskCanceledException on a Hub timeout', 'PRS-T133', 357, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T359', 'Prose', 359, '2026-10-29', 'fix', 'closed', 'create_legacy_chapter leaves Chapter.Number null when appended to a book with no explicit number', '0eb269319', 358, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T360', 'Prose', 360, '2026-10-29', 'fix', 'closed', 'FactorySessionService''s 10-second session-id cache has an unguarded race (singleton tuple field)', '0eb269319', 359, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T361', 'Prose', 361, '2026-10-29', 'fix', 'closed', 'QuoteRepository.Save never resyncs a quote''s Slug when its text changes', '0eb269319', 360, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T362', 'Prose', 362, '2026-10-29', 'fix', 'closed', 'EditorPanel.GetPanel crashes instead of returning an empty panel when every persona is excluded', '0eb269319', 361, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T363', 'Prose', 363, '2026-10-29', 'fix', 'closed', 'FamilyGeneratorService.PickSpouseDonorAsync ignores the seeded Random, breaking reproducible proposals', '0eb269319', 362, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T364', 'Prose', 364, '2026-10-29', 'fix', 'closed', 'EpisodeSeedService (singleton) shares one non-thread-safe Random instance across concurrent draws', '0eb269319', 363, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T365', 'Prose', 365, '2026-10-29', 'fix', 'closed', 'SyncSubtitleTool splices an unescaped titleId into a JS string literal (code-injection class)', '0eb269319', 364, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T366', 'Prose', 366, '2026-10-29', 'fix', 'closed', 'prose --simulate-collision never checks the beat it found actually belongs to the named book', '0eb269319', 365, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T367', 'Prose', 367, '2026-10-29', 'fix', 'closed', 'WorkerModeCli''s entity-ballot prompt silently ignores the includeProse/proseCount flag', '0eb269319', 366, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T368', 'Prose', 368, '2026-10-29', 'fix', 'closed', 'WriterShell''s ''Merge into the beat before'' discards unsaved edits instead of saving first', '0eb269319', 367, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T369', 'Prose', 369, '2026-10-29', 'fix', 'closed', 'WriterShell''s Disconnected status never clears after a successful Blazor Server reconnect', '0eb269319', 368, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T370', 'Prose', 370, '2026-10-29', 'fix', 'closed', 'Four ObserverUi tabs crash the Blazor circuit on a Hub transport failure instead of showing it', '0eb269319', 369, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T371', 'Prose', 371, '2026-10-29', 'fix', 'closed', 'DcmVizTab''s history-run selector can crash the circuit on a dropped connection or Hub failure', '0eb269319', 370, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -45529,6 +45542,73 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24904, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24905, 'PRS-T133', '2026-10-30T03:29:48Z', 'ref', 'exhaustive pass at 2d27b7976aff62c75a22f788a985f0ef907fc3b3 found no real bugs: build clean (0 warnings/errors besides pre-existing System.Security.Cryptography.Pkcs 10.0.0 transitive NuGet advisory, an infra/SDK decision, not a code defect, left unfixed and flagged); grep+read sweep across Prose.Core/Cli/Mcp/Hub/Writer*/ObserverUi for SQL injection, hardcoded secrets, swallowed exceptions, infinite loops, div-by-zero, resource leaks, async/await misuse, event-subscription leaks, EF Core gotchas, and the newest/most complex code (BookTimelineCli bisection+restripe, Node.Status split migration) turned up nothing actionable; no open fix tickets from a prior pass', 'CORRECTION: a parallel bughunt sub-search closed this early, before the sweep finished and before siblings'' fixes landed -- the ticket''s own closing condition (full pass finds nothing) was not actually met. Fix landed since: PRS-T347 (includeArchived=false no-op across 29 Data/*Mapper.cs LoadAll methods) at 0ee83c61e. Still open from concurrent bughunt passes in this same checkout as of this note: PRS-T348, PRS-T349, PRS-T350, PRS-T351, PRS-T352, PRS-T353, PRS-T354. Treat PRS-T133 as still in progress until those are closed and one more full pass finds nothing; this CLI has no reopen command, so the status field could not be corrected back to open.');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24906, 'PRS-T357', '2026-10-30T03:30:51Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24907, 'PRS-T358', '2026-10-30T03:30:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24908, 'PRS-T358', '2026-10-30T03:31:33Z', 'working', NULL, '02889e88-a4db-44a6-a372-1006a24f19e2');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24909, 'PRS-T357', '2026-10-30T03:31:33Z', 'working', NULL, '02889e88-a4db-44a6-a372-1006a24f19e2');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24910, 'PRS-T359', '2026-10-30T03:32:13Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24911, 'PRS-T360', '2026-10-30T03:32:19Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24912, 'PRS-T360', '2026-10-30T03:32:26Z', 'working', NULL, '02889e88-a4db-44a6-a372-1006a24f19e2');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24913, 'PRS-T359', '2026-10-30T03:32:27Z', 'working', NULL, '02889e88-a4db-44a6-a372-1006a24f19e2');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24914, 'PRS-T361', '2026-10-30T03:34:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24915, 'PRS-T362', '2026-10-30T03:34:33Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24916, 'PRS-T361', '2026-10-30T03:34:34Z', 'working', NULL, '02889e88-a4db-44a6-a372-1006a24f19e2');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24917, 'PRS-T363', '2026-10-30T03:34:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24918, 'PRS-T364', '2026-10-30T03:34:40Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24919, 'PRS-T365', '2026-10-30T03:34:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24920, 'PRS-T366', '2026-10-30T03:34:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24921, 'PRS-T367', '2026-10-30T03:34:53Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24922, 'PRS-T368', '2026-10-30T03:34:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24923, 'PRS-T369', '2026-10-30T03:35:01Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24924, 'PRS-T370', '2026-10-30T03:35:06Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24925, 'PRS-T371', '2026-10-30T03:35:10Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24926, 'PRS-T371', '2026-10-30T03:35:27Z', 'working', NULL, '02889e88-a4db-44a6-a372-1006a24f19e2');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24927, 'PRS-T370', '2026-10-30T03:35:27Z', 'working', NULL, '02889e88-a4db-44a6-a372-1006a24f19e2');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24928, 'PRS-T369', '2026-10-30T03:35:28Z', 'working', NULL, '02889e88-a4db-44a6-a372-1006a24f19e2');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24929, 'PRS-T368', '2026-10-30T03:35:28Z', 'working', NULL, '02889e88-a4db-44a6-a372-1006a24f19e2');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24930, 'PRS-T367', '2026-10-30T03:35:28Z', 'working', NULL, '02889e88-a4db-44a6-a372-1006a24f19e2');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24931, 'PRS-T366', '2026-10-30T03:35:29Z', 'working', NULL, '02889e88-a4db-44a6-a372-1006a24f19e2');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24932, 'PRS-T365', '2026-10-30T03:35:29Z', 'working', NULL, '02889e88-a4db-44a6-a372-1006a24f19e2');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24933, 'PRS-T364', '2026-10-30T03:35:29Z', 'working', NULL, '02889e88-a4db-44a6-a372-1006a24f19e2');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24934, 'PRS-T363', '2026-10-30T03:35:30Z', 'working', NULL, '02889e88-a4db-44a6-a372-1006a24f19e2');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24935, 'PRS-T362', '2026-10-30T03:35:30Z', 'working', NULL, '02889e88-a4db-44a6-a372-1006a24f19e2');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24936, 'PRS-T359', '2026-10-30T03:37:51Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24937, 'PRS-T359', '2026-10-30T03:37:51Z', 'ref', '—', '0eb269319');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24938, 'PRS-T360', '2026-10-30T03:37:52Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24939, 'PRS-T360', '2026-10-30T03:37:52Z', 'ref', '—', '0eb269319');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24940, 'PRS-T361', '2026-10-30T03:37:53Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24941, 'PRS-T361', '2026-10-30T03:37:53Z', 'ref', '—', '0eb269319');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24942, 'PRS-T362', '2026-10-30T03:37:54Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24943, 'PRS-T362', '2026-10-30T03:37:54Z', 'ref', '—', '0eb269319');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24944, 'PRS-T363', '2026-10-30T03:37:55Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24945, 'PRS-T363', '2026-10-30T03:37:55Z', 'ref', '—', '0eb269319');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24946, 'PRS-T364', '2026-10-30T03:37:56Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24947, 'PRS-T364', '2026-10-30T03:37:56Z', 'ref', '—', '0eb269319');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24948, 'PRS-T359', '2026-10-30T03:37:56Z', 'working', '02889e88-a4db-44a6-a372-1006a24f19e2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24949, 'PRS-T360', '2026-10-30T03:37:56Z', 'working', '02889e88-a4db-44a6-a372-1006a24f19e2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24950, 'PRS-T365', '2026-10-30T03:37:57Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24951, 'PRS-T365', '2026-10-30T03:37:57Z', 'ref', '—', '0eb269319');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24952, 'PRS-T366', '2026-10-30T03:37:58Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24953, 'PRS-T366', '2026-10-30T03:37:58Z', 'ref', '—', '0eb269319');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24954, 'PRS-T367', '2026-10-30T03:37:59Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24955, 'PRS-T367', '2026-10-30T03:37:59Z', 'ref', '—', '0eb269319');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24956, 'PRS-T368', '2026-10-30T03:38:00Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24957, 'PRS-T368', '2026-10-30T03:38:00Z', 'ref', '—', '0eb269319');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24958, 'PRS-T369', '2026-10-30T03:38:01Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24959, 'PRS-T369', '2026-10-30T03:38:01Z', 'ref', '—', '0eb269319');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24960, 'PRS-T370', '2026-10-30T03:38:02Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24961, 'PRS-T370', '2026-10-30T03:38:02Z', 'ref', '—', '0eb269319');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24962, 'PRS-T371', '2026-10-30T03:38:03Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24963, 'PRS-T371', '2026-10-30T03:38:03Z', 'ref', '—', '0eb269319');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24964, 'PRS-T361', '2026-10-30T03:38:11Z', 'working', '02889e88-a4db-44a6-a372-1006a24f19e2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24965, 'PRS-T362', '2026-10-30T03:38:11Z', 'working', '02889e88-a4db-44a6-a372-1006a24f19e2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24966, 'PRS-T363', '2026-10-30T03:38:12Z', 'working', '02889e88-a4db-44a6-a372-1006a24f19e2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24967, 'PRS-T364', '2026-10-30T03:38:12Z', 'working', '02889e88-a4db-44a6-a372-1006a24f19e2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24968, 'PRS-T365', '2026-10-30T03:38:12Z', 'working', '02889e88-a4db-44a6-a372-1006a24f19e2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24969, 'PRS-T366', '2026-10-30T03:38:13Z', 'working', '02889e88-a4db-44a6-a372-1006a24f19e2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24970, 'PRS-T367', '2026-10-30T03:38:13Z', 'working', '02889e88-a4db-44a6-a372-1006a24f19e2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24971, 'PRS-T368', '2026-10-30T03:38:13Z', 'working', '02889e88-a4db-44a6-a372-1006a24f19e2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24972, 'PRS-T369', '2026-10-30T03:38:14Z', 'working', '02889e88-a4db-44a6-a372-1006a24f19e2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24973, 'PRS-T370', '2026-10-30T03:38:14Z', 'working', '02889e88-a4db-44a6-a372-1006a24f19e2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (24974, 'PRS-T371', '2026-10-30T03:38:14Z', 'working', '02889e88-a4db-44a6-a372-1006a24f19e2', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -47651,6 +47731,8 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T354', NULL, 0, NULL, '02889e88-a4db-44a6-a372-1006a24f19e2', '2026-10-30T03:24:48Z', '2026-10-30T03:24:48Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T355', NULL, 0, NULL, '02889e88-a4db-44a6-a372-1006a24f19e2', '2026-10-30T03:25:45Z', '2026-10-30T03:25:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T356', NULL, 0, NULL, '02889e88-a4db-44a6-a372-1006a24f19e2', '2026-10-30T03:27:48Z', '2026-10-30T03:27:48Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T357', NULL, 0, NULL, '02889e88-a4db-44a6-a372-1006a24f19e2', '2026-10-30T03:31:33Z', '2026-10-30T03:31:33Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T358', NULL, 0, NULL, '02889e88-a4db-44a6-a372-1006a24f19e2', '2026-10-30T03:31:33Z', '2026-10-30T03:31:33Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T111', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:34:40Z');
@@ -51810,6 +51892,110 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T355', '
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T356', 'GenerateAndSaveAsync (src/Prose.Core/Composition/Orchestration/BeatWriteOrchestrator.cs, ~lines 259-288): when the first draft contradicts an established fact, the contradiction-retry succeeds (preview reassigned to retryPreview at line 269) but the local ''verdict'' variable describing the ORIGINAL draft''s contradiction is never updated. If that corrected preview then fails the free draft gate and its own fix-retry (''again'') introduces a NEW contradiction, the code throws NarrativeContradictionRejectedException(verdict, preview.GeneratedText, againVerdict, again.GeneratedText) -- pairing the stale, original-attempt ''verdict'' with ''preview.GeneratedText'', which by this point is actually the corrected retry text, not the text ''verdict'' was computed against. The exception''s FirstVerdict/FirstAttemptText are therefore mismatched, describing two different generations as if they were one. Trigger: a beat generation whose first draft contradicts a fact, whose contradiction-corrected retry then fails the draft gate, whose gate-fix retry introduces a new contradiction. Fix: reassign ''verdict = retryVerdict'' alongside ''preview = retryPreview'' so the two always describe the same generation.', '2026-10-30T03:26:48Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T357', 'SetBeatContributionsImpl (src/Prose.Mcp/Tools.Contributions.cs, ~lines 31-50) parses linesJson with JsonDocument.Parse and no try/catch; if linesJson isn''t valid JSON or isn''t a JSON object, EnumerateObject() throws InvalidOperationException unguarded. Inside the loop, each edge entry''s relation/target are read with unguarded e.GetProperty("relation")/e.GetProperty("target") (plus an unguarded EnumerateArray() if "edges" isn''t actually an array), throwing KeyNotFoundException/InvalidOperationException when an edge entry omits a field. Every other malformed-input path in this same method (bad_entity_id) returns a clean structured JSON error instead, matching the established convention elsewhere in this server (e.g. Tools.Combat.cs''s ParseSides/ParseResources try/catch). Trigger: call set_beat_contributions with an empty string, malformed JSON, non-object JSON, or an edge entry missing relation/target. Fix: wrap the parsing block in try/catch (JsonException, InvalidOperationException, KeyNotFoundException) and return a structured bad_lines_json error.', '2026-10-30T03:30:51Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T358', 'LinkEntities, GraphSnapshot, and GraphStats (src/Prose.Mcp/Tools.Hub.cs) each catch only HttpRequestException around their call on the shared ''ProseHub'' HttpClient, unlike HubInvoker.InvokeAsync (src/Prose.Mcp/HubInvoker.cs), which explicitly also catches TaskCanceledException with a comment noting ''HttpClient.Timeout surfaces as TaskCanceledException, not HttpRequestException''. Trigger: a Hub call through any of these three tools that times out (or is cancelled) throws an unhandled TaskCanceledException instead of returning the same clean hub_timeout/hub_unreachable JSON every other Hub-forwarded tool in this server returns. Fix: add a catch (TaskCanceledException ex) block to each, mirroring HubInvoker''s hub_timeout error shape.', '2026-10-30T03:30:55Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T359', '## Symptom
+Calling the MCP tool `create_legacy_chapter` with a `bookId` but no `number` (default 0) correctly splices the new chapter into the book''s `ChapterIds` at the append position, but the chapter''s own `Number` field is persisted as null and echoed back as null in the tool''s response.
+
+## Cause
+`WritingTools.CreateLegacyChapterImpl` (src/Prose.Mcp/Tools.Writing.cs) sets `chapter.Number = number > 0 ? number : null;` before computing the splice position, and never backfills it afterward. The sibling tool `AddChapterToBookImpl`, which does the identical append, correctly computes `chapter.Number = number > 0 ? number : pos + 1;`.
+
+## Test
+No automated test added (bughunt pass PRS-T133; the orchestrator''s own test suite run covers regressions). Verified by direct code reading: after the fix, the block that splices the chapter into `book.ChapterIds` now backfills and re-saves `chapter.Number = pos + 1` whenever `number <= 0`, matching `AddChapterToBookImpl`''s formula.', '2026-10-30T03:32:13Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T360', '## Symptom
+Under concurrent Hub traffic (an MCP call and a CLI command, or two concurrent MCP calls), `FactorySessionService.CurrentSessionIdAsync` can return a session id paired with a stale timestamp (or vice versa), stamping a command/decision ledger row''s Actor with the wrong session.
+
+## Cause
+`FactorySessionService` is registered as a singleton. Its 10-second cache is a plain, unlocked `(DateTime At, Guid? Id)` tuple field read and written from multiple call sites with no synchronization — a struct this size has no atomicity guarantee, so a concurrent reader can observe a torn pair.
+
+## Test
+No automated test added (bughunt pass PRS-T133). Verified by direct code reading: all four read/write sites of `currentCache` (in `StartAsync`, `EndAsync`, and both branches of `CurrentSessionIdAsync`) now go through a dedicated `lock (currentCacheLock)`.', '2026-10-30T03:32:19Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T361', '## Symptom
+Editing an existing quote''s text via QuoteRepository.Save updates the Entities.Name to the new text but leaves Entities.Slug at whatever it was generated from at creation time. GetBySlug for that quote goes stale, and the slug-collision check never re-runs for edited quotes.
+
+## Cause
+src/Prose.Core/Services/Repositories.cs, QuoteRepository.Save''s existing-entity branch unconditionally did `existingEntity.Name = item.Quote;` with no Slug update — unlike every other EfRepository<T>.Save override in the same file (CharacterRepository etc.), which guards the name-changed case with `if (!string.Equals(existingEntity.Name, name, ...)) { ...Slug = ResolveXSlug(...); }`.
+
+## Test
+No automated test added (bughunt pass PRS-T133). Verified by direct code reading: the existing-entity branch now mirrors CharacterRepository''s pattern, calling ResolveQuoteSlug when the quote text actually changed.', '2026-10-30T03:34:26Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T362', '## Symptom
+NodeReviewService.CreateDisjointGroupAsync throws an unhandled ArgumentException ("min cannot be greater than max") instead of its own friendly "No un-used enriched personas left" error, once enough disjoint focus groups exist that excludeIds covers the whole persona pool.
+
+## Cause
+src/Prose.Core/Services/EditorPanel.cs, GetPanel(int count, IReadOnlySet<string> excludeIds) computes `Math.Clamp(count, 1, pool.Count)` after filtering the pool, but never checks for pool.Count == 0 first — Math.Clamp(count, 1, 0) throws. The caller''s own `if (personas.Count == 0) throw ...` check never gets a chance to run.
+
+## Test
+No automated test added (bughunt pass PRS-T133). Verified by direct code reading: GetPanel now returns an empty list immediately when the filtered pool is empty, before the Math.Clamp call, letting the caller''s friendly error fire as intended.', '2026-10-30T03:34:33Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T363', '## Symptom
+ProposeAsync''s doc comment promises "pass a seeded Random for reproducible proposals," but calling it twice with the same seed can still produce different spouse/aunt-uncle-spouse heritage, because that one draw is non-deterministic even under a fixed seed.
+
+## Cause
+src/Prose.Core/Services/FamilyGeneratorService.cs, PickSpouseDonorAsync used `Random.Shared.Next(candidates.Count)` instead of the caller-supplied `rng` that every other draw in the file threads through. The method didn''t even accept an `rng` parameter.
+
+## Test
+No automated test added (bughunt pass PRS-T133). Verified by direct code reading: PickSpouseDonorAsync now takes a Random rng parameter (passed from both call sites) and draws from it instead of Random.Shared.', '2026-10-30T03:34:37Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T364', '## Symptom
+Concurrent calls to EpisodeSeedService.DrawAsync (the service is a DI singleton) share one `System.Random` instance field with no locking. System.Random is not thread-safe; concurrent .Next() calls can corrupt its internal state and skew the draw (e.g. repeated 0s).
+
+## Cause
+src/Prose.Core/Services/EpisodeSeedService.cs declared `private readonly Random rng = new();` on a class registered via `services.AddSingleton<EpisodeSeedService>()`.
+
+## Test
+No automated test added (bughunt pass PRS-T133). Verified by direct code reading: the private field is removed and both call sites (template selection, PickRandomEntityIdAsync''s skip) now use Random.Shared, .NET''s thread-safe shared instance designed for exactly this.', '2026-10-30T03:34:40Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T365', '## Symptom
+SyncSubtitleTool.InvokeAsync builds a browser-automation navigation script by directly interpolating a regex-extracted `titleId` into a single-quoted JavaScript string literal: `$"window.location.href = ''...kindle/{titleId}/details''; ''''"`. A titleId containing a literal apostrophe (a valid, unencoded RFC 3986 path sub-delimiter) breaks out of the string literal.
+
+## Cause
+src/Prose.Core/Services/Operator/KdpTools/SyncSubtitleTool.cs was modeled on FindAndOpenBookTool.TryDirectTitleIdAsync per its own doc comment, but didn''t carry over that method''s escaping technique (JsonSerializer.Serialize + Uri.EscapeDataString before interpolating into the eval''d script).
+
+## Test
+No automated test added (bughunt pass PRS-T133). Verified by direct code reading: the navigation URL is now built the same way as FindAndOpenBookTool — Uri.EscapeDataString(titleId.Trim()) then JsonSerializer.Serialize of the whole URL, interpolated as a JSON literal rather than inside hand-written quotes.', '2026-10-30T03:34:46Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T366', '## Symptom
+`prose --simulate-collision --slug <bookA> --beat-number <N>` can silently run its collision computation on a beat belonging to a different book than the one named by --slug, while printing bookA''s title in the output — a misleading result with no error, even though --slug looks like a required, load-bearing argument.
+
+## Cause
+src/Prose.Cli/Cli/SimulateCollisionCli.cs looked up the beat by `Beat.Number` alone (global, not scoped to any book) and resolved the --slug node completely independently; nothing checked that the resolved beat actually belongs to the resolved node''s book.
+
+## Test
+No automated test added (bughunt pass PRS-T133). Verified by direct code reading: after resolving both the beat and the node, the command now computes the node''s leaf descendant ids and confirms the beat has a BeatNodes row under one of them, erroring out with a clear message if not.', '2026-10-30T03:34:49Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T367', '## Symptom
+When entity-review work runs through `--worker-mode` (a remote GPU worker), the "first proseCount ballots get a fuller prose-upgrade review" feature (mirroring ReviewEntityCli''s --prose N) does nothing: every ballot gets the identical short-review prompt regardless of proseCount.
+
+## Cause
+src/Prose.Cli/Cli/WorkerModeCli.cs computes `i < proseCount` and passes it as `includeProse` to BuildEntityBallotUserMsg, but that method''s body ignored the parameter entirely.
+
+## Test
+No automated test added (bughunt pass PRS-T133). Verified by direct code reading: BuildEntityBallotUserMsg now appends an instruction asking for a fuller, more detailed written review when includeProse is true.', '2026-10-30T03:34:53Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T368', '## Symptom
+Typing unsaved text in the open beat (before the ~20s autosave fires) and then choosing "Merge into the beat before" silently discards the edit — the merge operates on the STORED beat text, and the editor then reloads from the database.
+
+## Cause
+src/Prose.WriterUi/Components/WriterShell.razor''s JoinPreviousAsync had no Dirty/SaveAsync guard before calling Writer.JoinWithPreviousAsync, unlike the sibling SplitAtCaretAsync, which explicitly saves first with a comment explaining exactly this risk ("splitting stored text the author has already edited past would silently discard the edit") — the same reasoning applies to a join, but the guard was never added here.
+
+## Test
+No automated test added (bughunt pass PRS-T133). Verified by direct code reading: JoinPreviousAsync now saves (and bails out on a save failure/conflict) before calling StructuralAsync, exactly as SplitAtCaretAsync does.', '2026-10-30T03:34:57Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T369', '## Symptom
+After a transient Blazor Server circuit disconnect that the browser''s own automatic reconnect resumes (same circuit, same component field values), the status-bar dot and ''Disconnected'' label stay stuck forever even though every JS interop call works again.
+
+## Cause
+src/Prose.WriterUi/Components/WriterShell.razor sets `connected = false` in six places on JSDisconnectedException, but nothing ever set it back to true on a successful call afterward.
+
+## Test
+No automated test added (bughunt pass PRS-T133). Verified by direct code reading: JsVoidAsync — the shell''s most frequently-called JS entry point, exercised on ordinary editing actions — now sets `connected = true` immediately after a successful JS.InvokeVoidAsync call, giving the status a self-healing signal the next time any such call succeeds.', '2026-10-30T03:35:01Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T370', '## Symptom
+When the Hub returns a non-2xx response (bad/missing X-Prose-Key, Hub restarting, a 500), ObserverHttpClient deliberately throws HttpRequestException so the failure is visible — but RepositoriesTab, BeatsTab, BeatArchiveTab and DashboardTab each call it with no try/catch, so the exception escapes the component''s lifecycle method and takes the whole Blazor circuit down instead of showing the error message the exception carries.
+
+## Cause
+src/Prose.ObserverUi/Components/Tabs/RepositoriesTab.razor (OnInitializedAsync, BrowseAsync), BeatsTab.razor (LoadAsync), BeatArchiveTab.razor (LoadAsync) and DashboardTab.razor (RefreshAsync) each call an ObserverHttpClient method with no exception handling.
+
+## Test
+No automated test added (bughunt pass PRS-T133). Verified by direct code reading: all four components now wrap their Hub calls in try/catch (HttpRequestException ex), store the message in a new ''error'' field, and render it with the existing ''err'' CSS class pattern BeatsTab/BeatArchiveTab already used for their ''not found'' message.', '2026-10-30T03:35:06Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T371', '## Symptom
+Picking a run from the History dropdown while the Blazor circuit is disconnected/reconnecting, or while the Hub call fails, throws an unhandled exception out of the @onchange handler instead of being silently absorbed like the identical render call three lines above it.
+
+## Cause
+src/Prose.ObserverUi/Components/Tabs/DcmVizTab.razor''s OnRunSelected calls api.GetDcmRunPayloadAsync and js.InvokeVoidAsync("dcmVizInterop.render", ...) with no try/catch, while the sibling OnPayload handler explicitly wraps the identical render call in catch (JSDisconnectedException) {} catch (JSException) {}.
+
+## Test
+No automated test added (bughunt pass PRS-T133). Verified by direct code reading: OnRunSelected now wraps both calls in the same try/catch pattern as OnPayload, plus catch (HttpRequestException) for the Hub call.', '2026-10-30T03:35:10Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T206', 'RB-T172 verified in the editor (sm_hub_1, sm_pier_1, sp_soc_2): pedlight_flash, lightbar, arcade screens and oilriga frames on g_tColor; blackwater water_normal frames on g_tNormal; sewer_water and surf offsets; fire_pallet selfillum flicker; clouds.vmat g_vTexCoordScrollSpeed 0.043,0.025. Not reachable from the maps imported so far: clublight, TV screens, highlights. Import a map that uses them, play, read the attributes with sbox-cli run_csharp.', '2026-10-26T05:18:06Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T207', 'Left out of RB-T193 (the werewolf''s hint navigation), all in vampire.dll''s CNPC_VWerewolf:
 
