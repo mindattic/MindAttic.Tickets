@@ -45697,6 +45697,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25050, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25051, 'M.ORCH-T1301', '2026-10-30T04:15:31Z', 'working', 'dc4525fa-8595-4483-b5b6-a47fad3135a0', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25052, 'M.ORCH-T1302', '2026-10-30T04:39:40Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25053, 'M.ORCH-T1302', '2026-10-30T04:39:49Z', 'working', NULL, 'b49f8d31-c264-4c1c-90d6-a134180d4ec6');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25054, 'U.HARE-T33', '2026-10-30T05:06:38Z', 'working', NULL, 'ryandebraal@mindattic.com (90be2624-ab61-45bb-8010-60c3ad5fbfcf)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (25055, 'M.ORCH-T1302', '2026-10-30T05:08:26Z', 'working', 'b49f8d31-c264-4c1c-90d6-a134180d4ec6', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -47729,7 +47731,6 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1302', NULL, 0, NULL, 'b49f8d31-c264-4c1c-90d6-a134180d4ec6', '2026-10-30T04:39:49Z', '2026-10-30T04:39:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T768', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
@@ -47952,6 +47953,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.HARE-T33', NULL, 0, 'ryandebraal@mindattic.com', '90be2624-ab61-45bb-8010-60c3ad5fbfcf', '2026-10-30T05:06:38Z', '2026-10-30T05:06:38Z');
 
 -- ticket_notes
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (1, 'U.HARE-T54', 'ryand', '2026-10-26T04:52:58Z', 'From U.HARE-T52 (7d24220): leaving the arena past the 400 px buffer zone (LeaveArena command) currently costs a life only on the ship (PlayerHealth out-of-bounds path / ShipHealth). When this ticket wires LIVES into the session, route that out-of-bounds loss through the same session lives so both deaths count the same.');
