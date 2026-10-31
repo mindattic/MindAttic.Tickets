@@ -5126,11 +5126,11 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T97', 'IdiotProof', 97, '2026-10-30', 'feature', 'closed', 'Activating a strategy in Live mode (or switching it to Live) requires a confirm code', '2ec16b9', 96, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T98', 'IdiotProof', 98, '2026-10-30', 'feature', 'open', 'Gateway law tests: one test per law/step, including expired/edited-intent confirm refusal', '—', 97, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T99', 'IdiotProof', 99, '2026-10-30', 'feature', 'open', 'BIBLE: add laws ''Every order goes through TransactionGateway'' and ''Live from CLI/MCP needs a confirm code''', '—', 98, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T100', 'IdiotProof', 100, '2026-10-30', 'feature', 'open', '`account summary [--mode]` (equity, cash, buying power, day P&L) for sandbox/paper/live', '—', 99, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T100', 'IdiotProof', 100, '2026-10-30', 'feature', 'closed', '`account summary [--mode]` (equity, cash, buying power, day P&L) for sandbox/paper/live', '—', 99, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T101', 'IdiotProof', 101, '2026-10-30', 'feature', 'open', '`account buying-power` and `account pdt` (day-trade count, PDT flag)', '—', 100, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T102', 'IdiotProof', 102, '2026-10-30', 'feature', 'open', '`account activities [--since]` (fills, dividends, fees)', '—', 101, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T103', 'IdiotProof', 103, '2026-10-30', 'feature', 'open', '`account clock` and `account calendar` (market session in ET)', '—', 102, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T104', 'IdiotProof', 104, '2026-10-30', 'feature', 'open', '`positions list [--mode]` with unrealized P&L', '—', 103, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T104', 'IdiotProof', 104, '2026-10-30', 'feature', 'closed', '`positions list [--mode]` with unrealized P&L', '—', 103, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T105', 'IdiotProof', 105, '2026-10-30', 'feature', 'open', '`positions show <symbol>` incl. owning strategy and diary row', '—', 104, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T106', 'IdiotProof', 106, '2026-10-30', 'feature', 'open', '`positions reconcile` (broker vs strategy bookkeeping, read-only report)', '—', 105, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T107', 'IdiotProof', 107, '2026-10-30', 'feature', 'open', '`orders list [--status]` and `orders show <id>`', '—', 106, NULL);
@@ -5324,6 +5324,37 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T295', 'IdiotProof', 295, '2026-10-30', 'chore', 'closed', 'Clear out all strategies (user request): back up every Strategies row, then delete them and their ConditionProgress rows', '—', 294, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T296', 'IdiotProof', 296, '2026-10-30', 'fix', 'closed', 'idiotproof hub start hangs when its output is piped: the detached cmd.exe inherits the CLI''s stdout handle', '—', 295, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T297', 'IdiotProof', 297, '2026-10-30', 'feature', 'closed', 'market chart <symbol>: Hub operation that pulls multi-session bars from the market data feed and renders an AsciiCandleChart (premarket/regular/after-hours per day, ET)', '—', 296, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T298', 'IdiotProof', 298, '2026-10-30', 'feature', 'closed', 'AlpacaApi raw REST client (trading paper/live + market data, every verb, paging, 429 retry, typed errors) and AlpacaApiFactory per owner/mode behind the IP-LAW-3 consent gate', '—', 297, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T299', 'IdiotProof', 299, '2026-10-30', 'feature', 'open', '`account config [--mode]` show and `account config set <key> <value>` (PATCH /v2/account/configurations: dtbp_check, pdt_check, no_shorting, fractional_trading, max_margin_multiplier, max_options_trading_level, trade_confirm_email, suspend_trade, ptp_no_exception_entry); Live set needs a confirmation code', '—', 298, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T300', 'IdiotProof', 300, '2026-10-30', 'feature', 'open', '`account history [--period 1D|1W|1M|3M|1A|all] [--timeframe] [--extended] [--mode]` portfolio history (GET /v2/account/portfolio/history) with a Braille equity chart and true day P&L (profit_loss, excludes deposits)', '—', 299, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T301', 'IdiotProof', 301, '2026-10-30', 'feature', 'open', '`orders place` full Alpaca order surface through TransactionGateway: market/limit/stop/stop_limit/trailing_stop (trail_percent|trail_price), TIF day/gtc/opg/cls/ioc/fok, extended_hours, notional and fractional qty, client_order_id, position_intent', '—', 300, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T302', 'IdiotProof', 302, '2026-10-30', 'feature', 'open', '`orders bracket|oco|oto` order classes (take_profit, stop_loss with limit) through TransactionGateway', '—', 301, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T303', 'IdiotProof', 303, '2026-10-30', 'feature', 'open', '`orders replace <id> [--qty] [--limit] [--stop] [--trail] [--tif]` (PATCH /v2/orders/{id}) through TransactionGateway', '—', 302, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T304', 'IdiotProof', 304, '2026-10-30', 'feature', 'open', '`orders show --client-id <id>` (GET /v2/orders:by_client_order_id) and nested leg display for bracket/OCO orders', '—', 303, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T305', 'IdiotProof', 305, '2026-10-30', 'feature', 'open', '`positions close <symbol> [--qty|--percentage] [--mode]` (DELETE /v2/positions/{symbol}) as an exit through TransactionGateway', '—', 304, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T306', 'IdiotProof', 306, '2026-10-30', 'feature', 'open', '`positions close-all [--cancel-orders] [--mode]` (DELETE /v2/positions) through TransactionGateway; Live needs a confirmation code', '—', 305, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T307', 'IdiotProof', 307, '2026-10-30', 'feature', 'open', '`options exercise <occ>` and `options do-not-exercise <occ>` (POST /v2/positions/{id}/exercise|do-not-exercise) through TransactionGateway with Live confirm codes', '—', 306, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T308', 'IdiotProof', 308, '2026-10-30', 'feature', 'open', '`options spread` multi-leg (order_class mleg, up to 4 legs, ratio_qty, position_intent) through TransactionGateway', '—', 307, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T309', 'IdiotProof', 309, '2026-10-30', 'feature', 'open', '`options contracts <underlying> [--expiry] [--type call|put] [--strike-min/max] [--status]` and `options contract <occ|id>` (GET /v2/options/contracts)', '—', 308, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T310', 'IdiotProof', 310, '2026-10-30', 'feature', 'open', '`options bars|trades|latest|snapshot <occ>` options market data (v1beta1/options bars, trades, latest trades/quotes, snapshots, exchanges, conditions)', '—', 309, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T311', 'IdiotProof', 311, '2026-10-30', 'feature', 'open', '`assets list [--class us_equity|us_option|crypto] [--exchange] [--status] [--attributes]` and `assets show <symbol>` (tradable, shortable, easy_to_borrow, marginable, fractionable, maintenance margin)', '—', 310, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T312', 'IdiotProof', 312, '2026-10-30', 'feature', 'open', '`assets bonds [--type treasuries|corporates]` fixed-income assets and `market bond-prices` (Trading + Market Data fixed income endpoints)', '—', 311, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T313', 'IdiotProof', 313, '2026-10-30', 'feature', 'open', '`corporate-actions list [--types] [--symbol] [--since --until]` and `corporate-actions show <id>` (Trading API announcements + Market Data v1/corporate-actions: splits, dividends, mergers, spinoffs)', '—', 312, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T314', 'IdiotProof', 314, '2026-10-30', 'feature', 'open', '`watchlists list|show|create|rename|add|remove|delete` Alpaca server-side watchlists (/v2/watchlists by id and by name)', '—', 313, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T315', 'IdiotProof', 315, '2026-10-30', 'feature', 'open', '`crypto buy|sell <pair> <qty|--notional>` crypto orders (BTC/USD etc, gtc/ioc, fractional) through TransactionGateway; `crypto positions`', '—', 314, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T316', 'IdiotProof', 316, '2026-10-30', 'feature', 'open', '`crypto bars|trades|quotes|latest|orderbook|snapshot <pair>` crypto market data (v1beta3/crypto/us) and `market chart` support for crypto pairs (24h sessions)', '—', 315, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T317', 'IdiotProof', 317, '2026-10-30', 'feature', 'open', '`crypto wallets|transfers|whitelist|fee-estimate` crypto funding (/v2/wallets...) read ops; any withdrawal/transfer is a money movement behind a confirmation code even on paper', '—', 316, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T318', 'IdiotProof', 318, '2026-10-30', 'feature', 'open', '`market trades|quotes <symbol> [--from --to] [--limit]` historical stock trades and quotes (v2/stocks/{s}/trades|quotes, multi-symbol)', '—', 317, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T319', 'IdiotProof', 319, '2026-10-30', 'feature', 'open', '`market snapshot <symbol...>` (latest trade, latest quote, minute bar, daily bar, prev daily bar) and `market latest bar|trade|quote`', '—', 318, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T320', 'IdiotProof', 320, '2026-10-30', 'feature', 'open', '`market auctions <symbol>`, `market conditions <trade|quote>`, `market exchanges`, `market meta` reference data', '—', 319, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T321', 'IdiotProof', 321, '2026-10-30', 'feature', 'open', '`market most-actives [--by volume|trades] [--top]` screener (v1beta1/screener/stocks/most-actives) alongside movers (IP-T203)', '—', 320, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T322', 'IdiotProof', 322, '2026-10-30', 'feature', 'open', '`market fx [--currencies]` latest and historical forex rates (v1beta1/forex/latest/rates, /rates)', '—', 321, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T323', 'IdiotProof', 323, '2026-10-30', 'feature', 'open', '`market logo <symbol>` (v1beta1/logos) saved to a file, with path and size', '—', 322, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T324', 'IdiotProof', 324, '2026-10-30', 'feature', 'open', 'Hub streaming: server-sent events from the Hub (`/api/stream`) so long-running ops can push lines; CLI renders them live, MCP returns a bounded window', '—', 323, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T325', 'IdiotProof', 325, '2026-10-30', 'feature', 'open', '`orders stream` Alpaca trade_updates websocket (fills, partial fills, cancels, replaces) hosted in the Hub: writes TradeDiary/Audit rows for every fill (ties IP-T93) and streams to the CLI', '—', 324, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T326', 'IdiotProof', 326, '2026-10-30', 'feature', 'open', '`market watch <symbol...>` live stocks/crypto/options/news websocket tape through the Hub (trades, quotes, bars, statuses, LULD)', '—', 325, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T327', 'IdiotProof', 327, '2026-10-30', 'feature', 'open', '`alpaca raw <GET|POST|PATCH|PUT|DELETE> <path> [--body json] [--data] [--mode]` escape hatch for any Alpaca endpoint; refuses order/position/exercise/funding mutations (points to the gated ops) and Live mutations need a code', '—', 326, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T328', 'IdiotProof', 328, '2026-10-30', 'feature', 'open', 'docs/ALPACA_COVERAGE.md: every Alpaca Trading + Market Data endpoint mapped to its idiotproof operation (or alpaca raw), with an NUnit test that fails when an inventoried endpoint has no operation', '—', 327, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T1', 'JellyFinPoster', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| JFP-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T2', 'JellyFinPoster', 2, '2026-10-16', 'chore', 'closed', 'install.ps1 adds this repo''s 9 .prose/commands stubs for the shared global commands, so any LLM client finds them', 'mindattic-agent-standard/install.ps1 run 2026-10-16', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T3', 'JellyFinPoster', 3, '2026-10-16', 'chore', 'closed', 'Bug hunt: run an exhaustive /bughunt over the whole repo and fix every real bug found (each fix under its own fix ticket), then hunt again; close this only when a full pass finds nothing', '9a5f84c', 2, NULL);
@@ -9181,7 +9212,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T13', 'RogueTrader.Overwatch', 13, '2026-10-26', 'fix', 'closed', 'Overwatch shot count is lost on save/load: an active Overwatch reloads with 1 shot instead of the AP-based count', '542091f', 12, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T14', 'RogueTrader.Overwatch', 14, '2026-10-26', 'chore', 'closed', 'Rename Reaction Shot to Reflex Shot (in-game name, files, docs)', '7afa83f', 13, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T15', 'RogueTrader.Overwatch', 15, '2026-10-26', 'feature', 'closed', 'Release 1.0.0: dist zip of the Owlcat mod folder, built by dotnet build -c Release', 'dist/RogueTrader.Overwatch-1.0.0.zip, built by dotnet build -c Release; confirmed in game', 14, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T16', 'RogueTrader.Overwatch', 16, '2026-10-26', 'docs', 'open', 'Nexus Mods page: header, logo, summary and BBCode description in docs/NEXUS_PAGE.md', '—', 15, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T16', 'RogueTrader.Overwatch', 16, '2026-10-26', 'docs', 'closed', 'Nexus Mods page: header, logo, summary and BBCode description in docs/NEXUS_PAGE.md', '—', 15, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T17', 'RogueTrader.Overwatch', 17, '2026-10-26', 'fix', 'closed', 'Ship only the hotbar icons in the mod, not the Nexus header and logo', '0fe4406', 16, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T18', 'RogueTrader.Overwatch', 18, '2026-10-26', 'feature', 'closed', 'Put Reflex Shot, Overwatch and Suppression on every party member''s ability bar (last 3 slots, else later rows), greyed out without a ranged weapon in the active set', 'Confirmed in game by the user, 2026-10-26', 17, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T19', 'RogueTrader.Overwatch', 19, '2026-10-26', 'docs', 'closed', 'In-game validation guide (docs/TESTING.md) covering every rule and equip situation, with README, DESIGN and Nexus page brought up to date', 'ffca20e', 18, NULL);
@@ -9215,35 +9246,35 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T47', 'RogueTrader.Overwatch', 47, '2026-10-27', 'docs', 'closed', 'README: add a dedicated Languages section listing all 8 supported UI languages', '—', 46, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T48', 'RogueTrader.Overwatch', 48, '2026-10-27', 'docs', 'closed', 'NEXUS_PAGE.md: drop the stray trailing comma after Simplified Chinese in the Localization list', '—', 47, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T49', 'RogueTrader.Overwatch', 49, '2026-10-27', 'docs', 'closed', 'Restore full NEXUS_PAGE.md structure, with a proper Localization section', '—', 48, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T50', 'RogueTrader.Overwatch', 50, '2026-10-28', 'feature', 'open', 'Suppression''s real shot flags IsAttackOfOpportunity so AOO-specific talents/feats apply to it, not just a normal attack', '—', 49, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T51', 'RogueTrader.Overwatch', 51, '2026-10-28', 'feature', 'open', 'Reflex Shot, Overwatch and Suppression cost +1 AP to cast when the active ranged weapon is Heavy (WeaponHeaviness.Heavy)', '—', 50, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T52', 'RogueTrader.Overwatch', 52, '2026-10-28', 'feature', 'open', 'Release 3.0.0: bump version for the Suppression AOO fix (RTO-T50) and weapon-size AP cost balance change (RTO-T51)', '—', 51, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T53', 'RogueTrader.Overwatch', 53, '2026-10-29', 'fix', 'open', 'AbilityCasterHasWeaponWithRangeType crashes (NullReferenceException) for a caster with any empty additional limb, greying out all three abilities; confirmed on Pasqal (mechadendrites)', '—', 52, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T54', 'RogueTrader.Overwatch', 54, '2026-10-29', 'feature', 'open', 'Overwatch: snap-shot accuracy penalty that grows with the cone''s reach, shown via an Overwatched debuff on every enemy currently inside the cone', '—', 53, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T55', 'RogueTrader.Overwatch', 55, '2026-10-29', 'feature', 'open', 'Reflex Shot''s circle never reaches past the equipped weapon''s own max range, instead of a flat 10 cells for every weapon', '—', 54, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T56', 'RogueTrader.Overwatch', 56, '2026-10-29', 'feature', 'open', 'A yellow LineRenderer outline traces the boundary of an active Reflex Shot circle or Overwatch cone, since the game''s shared red area highlight is hard to see', '—', 55, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T57', 'RogueTrader.Overwatch', 57, '2026-10-29', 'chore', 'open', 'Build prints the installed DLL''s last-write time after every deploy, so it''s obvious whether a restart will pick up stale or current code', '—', 56, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T58', 'RogueTrader.Overwatch', 58, '2026-10-29', 'fix', 'open', 'Suppression''s Suppressed debuff appears on the caster instead of the targeted enemy', '—', 57, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T59', 'RogueTrader.Overwatch', 59, '2026-10-29', 'fix', 'open', 'Overwatched debuff shows on enemies only while casting, then disappears; only the caster keeps an icon', '—', 58, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T60', 'RogueTrader.Overwatch', 60, '2026-10-29', 'fix', 'open', 'Reflex Shot circle stays 10 cells regardless of the weapon''s range (RTO-T55 not taking effect, tooltip still says 10)', '—', 59, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T61', 'RogueTrader.Overwatch', 61, '2026-10-29', 'fix', 'open', 'Yellow outline (RTO-T56) never draws, during preview or after cast', '—', 60, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T62', 'RogueTrader.Overwatch', 62, '2026-10-29', 'feature', 'open', 'Reflex Shot: circle radius = the weapon''s full range (no 10-cell ceiling), with a distance aim penalty scaling to -33 at full range', '—', 61, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T63', 'RogueTrader.Overwatch', 63, '2026-10-29', 'fix', 'open', 'Outline traces a convex hull through cell centres instead of the actual tile edges of the Reflex Shot/Overwatch area', '—', 62, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T64', 'RogueTrader.Overwatch', 64, '2026-10-29', 'fix', 'open', 'Outline is partial and too thick: draw one thin line per boundary tile edge instead of chained loops', '—', 63, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T65', 'RogueTrader.Overwatch', 65, '2026-10-29', 'feature', 'open', 'Suppression: a glowing red line from each suppressor to its Suppressed target for as long as the debuff lasts', '—', 64, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T66', 'RogueTrader.Overwatch', 66, '2026-10-29', 'feature', 'open', 'Suppression cosmetic fire: continuous firing animation for the whole suppression, no projectiles or misses, purely a visual cue', '—', 65, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T67', 'RogueTrader.Overwatch', 67, '2026-10-29', 'feature', 'open', 'Taking any damage interrupts the unit''s Suppression, Overwatch and Reflex Shot; cosmetic suppression fire shoots projectiles at the target that deliver nothing', '—', 66, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T68', 'RogueTrader.Overwatch', 68, '2026-10-29', 'fix', 'open', 'Outline vanishes about a second into target selection; it must stay for the whole selection and while Overwatch/Reflex Shot is active', '—', 67, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T69', 'RogueTrader.Overwatch', 69, '2026-10-29', 'feature', 'open', 'Suppressor holds a firing/aiming pose toward the target for as long as Suppression lasts', '—', 68, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T70', 'RogueTrader.Overwatch', 70, '2026-10-29', 'fix', 'open', 'Outline gaps across height changes: add vertical connector lines at corners where boundary edges meet at different heights', '—', 69, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T71', 'RogueTrader.Overwatch', 71, '2026-10-29', 'feature', 'open', 'While aiming Overwatch or Reflex Shot, show each enemy inside the area its projected hit chance, including our modifiers', '—', 70, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T72', 'RogueTrader.Overwatch', 72, '2026-10-29', 'feature', 'open', 'Reflex Shot: flat -33 reaction penalty on every shot (replaces the distance-scaled penalty), plus the facing modifier', '—', 71, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T50', 'RogueTrader.Overwatch', 50, '2026-10-28', 'feature', 'closed', 'Suppression''s real shot flags IsAttackOfOpportunity so AOO-specific talents/feats apply to it, not just a normal attack', 'commit f52f1c3', 49, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T51', 'RogueTrader.Overwatch', 51, '2026-10-28', 'feature', 'closed', 'Reflex Shot, Overwatch and Suppression cost +1 AP to cast when the active ranged weapon is Heavy (WeaponHeaviness.Heavy)', 'commit f52f1c3', 50, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T52', 'RogueTrader.Overwatch', 52, '2026-10-28', 'feature', 'closed', 'Release 3.0.0: bump version for the Suppression AOO fix (RTO-T50) and weapon-size AP cost balance change (RTO-T51)', 'commit f52f1c3', 51, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T53', 'RogueTrader.Overwatch', 53, '2026-10-29', 'fix', 'closed', 'AbilityCasterHasWeaponWithRangeType crashes (NullReferenceException) for a caster with any empty additional limb, greying out all three abilities; confirmed on Pasqal (mechadendrites)', 'commit f52f1c3', 52, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T54', 'RogueTrader.Overwatch', 54, '2026-10-29', 'feature', 'closed', 'Overwatch: snap-shot accuracy penalty that grows with the cone''s reach, shown via an Overwatched debuff on every enemy currently inside the cone', 'commit f52f1c3', 53, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T55', 'RogueTrader.Overwatch', 55, '2026-10-29', 'feature', 'closed', 'Reflex Shot''s circle never reaches past the equipped weapon''s own max range, instead of a flat 10 cells for every weapon', 'commit f52f1c3', 54, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T56', 'RogueTrader.Overwatch', 56, '2026-10-29', 'feature', 'closed', 'A yellow LineRenderer outline traces the boundary of an active Reflex Shot circle or Overwatch cone, since the game''s shared red area highlight is hard to see', 'commit f52f1c3', 55, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T57', 'RogueTrader.Overwatch', 57, '2026-10-29', 'chore', 'closed', 'Build prints the installed DLL''s last-write time after every deploy, so it''s obvious whether a restart will pick up stale or current code', 'commit f52f1c3', 56, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T58', 'RogueTrader.Overwatch', 58, '2026-10-29', 'fix', 'closed', 'Suppression''s Suppressed debuff appears on the caster instead of the targeted enemy', 'commit f52f1c3', 57, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T59', 'RogueTrader.Overwatch', 59, '2026-10-29', 'fix', 'closed', 'Overwatched debuff shows on enemies only while casting, then disappears; only the caster keeps an icon', 'commit f52f1c3', 58, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T60', 'RogueTrader.Overwatch', 60, '2026-10-29', 'fix', 'closed', 'Reflex Shot circle stays 10 cells regardless of the weapon''s range (RTO-T55 not taking effect, tooltip still says 10)', 'commit f52f1c3', 59, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T61', 'RogueTrader.Overwatch', 61, '2026-10-29', 'fix', 'closed', 'Yellow outline (RTO-T56) never draws, during preview or after cast', 'commit f52f1c3', 60, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T62', 'RogueTrader.Overwatch', 62, '2026-10-29', 'feature', 'closed', 'Reflex Shot: circle radius = the weapon''s full range (no 10-cell ceiling), with a distance aim penalty scaling to -33 at full range', 'commit f52f1c3', 61, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T63', 'RogueTrader.Overwatch', 63, '2026-10-29', 'fix', 'closed', 'Outline traces a convex hull through cell centres instead of the actual tile edges of the Reflex Shot/Overwatch area', 'commit f52f1c3', 62, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T64', 'RogueTrader.Overwatch', 64, '2026-10-29', 'fix', 'closed', 'Outline is partial and too thick: draw one thin line per boundary tile edge instead of chained loops', 'commit f52f1c3', 63, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T65', 'RogueTrader.Overwatch', 65, '2026-10-29', 'feature', 'closed', 'Suppression: a glowing red line from each suppressor to its Suppressed target for as long as the debuff lasts', 'commit f52f1c3', 64, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T66', 'RogueTrader.Overwatch', 66, '2026-10-29', 'feature', 'closed', 'Suppression cosmetic fire: continuous firing animation for the whole suppression, no projectiles or misses, purely a visual cue', 'commit f52f1c3', 65, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T67', 'RogueTrader.Overwatch', 67, '2026-10-29', 'feature', 'closed', 'Taking any damage interrupts the unit''s Suppression, Overwatch and Reflex Shot; cosmetic suppression fire shoots projectiles at the target that deliver nothing', 'commit f52f1c3', 66, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T68', 'RogueTrader.Overwatch', 68, '2026-10-29', 'fix', 'closed', 'Outline vanishes about a second into target selection; it must stay for the whole selection and while Overwatch/Reflex Shot is active', 'commit f52f1c3', 67, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T69', 'RogueTrader.Overwatch', 69, '2026-10-29', 'feature', 'closed', 'Suppressor holds a firing/aiming pose toward the target for as long as Suppression lasts', 'commit f52f1c3', 68, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T70', 'RogueTrader.Overwatch', 70, '2026-10-29', 'fix', 'closed', 'Outline gaps across height changes: add vertical connector lines at corners where boundary edges meet at different heights', 'commit f52f1c3', 69, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T71', 'RogueTrader.Overwatch', 71, '2026-10-29', 'feature', 'wont-do', 'While aiming Overwatch or Reflex Shot, show each enemy inside the area its projected hit chance, including our modifiers', 'superseded by RTO-T80 (overtip gauge instead of custom labels)', 70, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T72', 'RogueTrader.Overwatch', 72, '2026-10-29', 'feature', 'wont-do', 'Reflex Shot: flat -33 reaction penalty on every shot (replaces the distance-scaled penalty), plus the facing modifier', 'superseded by RTO-T82: flat -33 reaction penalty replaced by the aim-modifier/base-hit-chance redesign', 71, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T73', 'RogueTrader.Overwatch', 73, '2026-10-29', 'fix', 'open', 'Bughunt: exhaustive sweep of the mod''s source, blueprints and localization; fix every confirmed bug', '—', 72, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T74', 'RogueTrader.Overwatch', 74, '2026-10-29', 'fix', 'open', 'Bughunt pass 2: review the pass-1 fixes, cross-patch interactions, save/load and uninstall safety, design-doc consistency', '—', 73, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T75', 'RogueTrader.Overwatch', 75, '2026-10-29', 'docs', 'open', 'Bring all docs, README, Nexus page, changelog and in-game ability text in line with the 3.0.0 rules; Overwatch penalty 1-30 so the debuff rank equals it', '—', 74, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T76', 'RogueTrader.Overwatch', 76, '2026-10-29', 'feature', 'open', 'Overwatch shots = AP before casting / weapon attack cost, capped at 2; outlines 50% transparent, yellow for Reflex Shot, blue for Overwatch', '—', 75, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T77', 'RogueTrader.Overwatch', 77, '2026-10-29', 'fix', 'open', 'Hit-chance labels overlap the game''s overhead unit icon: raise them above it and use a smaller font', '—', 76, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T78', 'RogueTrader.Overwatch', 78, '2026-10-29', 'fix', 'open', 'Hit-chance labels use the game''s own hit-percentage text colour instead of a red-to-green gradient', '—', 77, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T75', 'RogueTrader.Overwatch', 75, '2026-10-29', 'docs', 'closed', 'Bring all docs, README, Nexus page, changelog and in-game ability text in line with the 3.0.0 rules; Overwatch penalty 1-30 so the debuff rank equals it', 'commit 6869221', 74, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T76', 'RogueTrader.Overwatch', 76, '2026-10-29', 'feature', 'closed', 'Overwatch shots = AP before casting / weapon attack cost, capped at 2; outlines 50% transparent, yellow for Reflex Shot, blue for Overwatch', 'commit f52f1c3 (outline transparency); commit 6869221 (shot formula, RTO-T91)', 75, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T77', 'RogueTrader.Overwatch', 77, '2026-10-29', 'fix', 'wont-do', 'Hit-chance labels overlap the game''s overhead unit icon: raise them above it and use a smaller font', 'superseded by RTO-T80: no custom label exists to reposition, game''s own overtip gauge is used', 76, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T78', 'RogueTrader.Overwatch', 78, '2026-10-29', 'fix', 'wont-do', 'Hit-chance labels use the game''s own hit-percentage text colour instead of a red-to-green gradient', 'superseded by RTO-T80: no custom label exists to recolor, game''s own overtip gauge is used', 77, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T79', 'RogueTrader.Overwatch', 79, '2026-10-29', 'fix', 'closed', 'Bughunt: enemy AI ignores off-hand ranged weapons; drop temporary diag logging and unused LockedRadius', 'commits 6869221 9ea8b85 1a3c33e 84b99df', 78, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T80', 'RogueTrader.Overwatch', 80, '2026-10-29', 'fix', 'closed', 'Hit-chance preview: labels off-centre and unlike the game''s hit-chance UI; show above the overwatch target icon in the game''s own style', 'commits 6869221 9ea8b85 1a3c33e 84b99df', 79, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T81', 'RogueTrader.Overwatch', 81, '2026-10-29', 'fix', 'closed', 'Suppression''s cosmetic shots fly into the target; aim them at points around it so they always visibly miss', 'commits 6869221 9ea8b85 1a3c33e 84b99df', 80, NULL);
@@ -50623,6 +50654,151 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29208, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29209, 'PRS-T822', '2026-10-31T02:35:44Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29210, 'PRS-T821', '2026-10-31T02:35:54Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29211, 'PRS-T821', '2026-10-31T02:35:54Z', 'ref', '—', '1c8204c73');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29212, 'IP-T100', '2026-10-31T02:51:40Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29213, 'IP-T104', '2026-10-31T02:51:41Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29214, 'IP-T298', '2026-10-31T02:54:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29215, 'IP-T298', '2026-10-31T02:55:01Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29216, 'IP-T299', '2026-10-31T02:55:35Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29217, 'IP-T300', '2026-10-31T02:55:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29218, 'IP-T301', '2026-10-31T02:55:38Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29219, 'IP-T302', '2026-10-31T02:55:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29220, 'IP-T303', '2026-10-31T02:55:41Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29221, 'IP-T304', '2026-10-31T02:55:42Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29222, 'IP-T305', '2026-10-31T02:55:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29223, 'IP-T306', '2026-10-31T02:55:44Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29224, 'IP-T307', '2026-10-31T02:55:45Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29225, 'IP-T308', '2026-10-31T02:55:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29226, 'IP-T309', '2026-10-31T02:55:47Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29227, 'IP-T310', '2026-10-31T02:55:48Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29228, 'IP-T311', '2026-10-31T02:55:50Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29229, 'IP-T312', '2026-10-31T02:55:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29230, 'IP-T313', '2026-10-31T02:55:52Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29231, 'IP-T314', '2026-10-31T02:55:53Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29232, 'IP-T315', '2026-10-31T02:55:54Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29233, 'IP-T316', '2026-10-31T02:55:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29234, 'IP-T317', '2026-10-31T02:55:56Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29235, 'IP-T318', '2026-10-31T02:55:58Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29236, 'IP-T319', '2026-10-31T02:55:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29237, 'IP-T320', '2026-10-31T02:56:00Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29238, 'IP-T321', '2026-10-31T02:56:01Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29239, 'IP-T322', '2026-10-31T02:56:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29240, 'IP-T323', '2026-10-31T02:56:03Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29241, 'IP-T324', '2026-10-31T02:56:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29242, 'IP-T325', '2026-10-31T02:56:05Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29243, 'IP-T326', '2026-10-31T02:56:06Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29244, 'IP-T327', '2026-10-31T02:56:08Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29245, 'IP-T328', '2026-10-31T02:56:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29246, 'IP-T101', '2026-10-31T02:56:20Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29247, 'IP-T102', '2026-10-31T02:56:20Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29248, 'IP-T103', '2026-10-31T02:56:20Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29249, 'IP-T105', '2026-10-31T02:56:21Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29250, 'IP-T106', '2026-10-31T02:56:21Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29251, 'IP-T107', '2026-10-31T02:56:21Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29252, 'IP-T108', '2026-10-31T02:56:21Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29253, 'IP-T109', '2026-10-31T02:56:22Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29254, 'IP-T112', '2026-10-31T02:56:22Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29255, 'IP-T116', '2026-10-31T02:56:22Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29256, 'IP-T188', '2026-10-31T02:56:22Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29257, 'IP-T189', '2026-10-31T02:56:23Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29258, 'IP-T190', '2026-10-31T02:56:23Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29259, 'IP-T191', '2026-10-31T02:56:23Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29260, 'IP-T192', '2026-10-31T02:56:23Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29261, 'IP-T193', '2026-10-31T02:56:23Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29262, 'IP-T194', '2026-10-31T02:56:24Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29263, 'IP-T195', '2026-10-31T02:56:24Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29264, 'IP-T196', '2026-10-31T02:56:24Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29265, 'IP-T197', '2026-10-31T02:56:24Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29266, 'IP-T200', '2026-10-31T02:56:25Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29267, 'IP-T201', '2026-10-31T02:56:25Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29268, 'IP-T202', '2026-10-31T02:56:25Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29269, 'IP-T203', '2026-10-31T02:56:25Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29270, 'IP-T204', '2026-10-31T02:56:25Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29271, 'IP-T206', '2026-10-31T02:56:26Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29272, 'IP-T299', '2026-10-31T02:56:26Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29273, 'IP-T300', '2026-10-31T02:56:26Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29274, 'IP-T301', '2026-10-31T02:56:26Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29275, 'IP-T302', '2026-10-31T02:56:26Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29276, 'IP-T303', '2026-10-31T02:56:27Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29277, 'IP-T304', '2026-10-31T02:56:27Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29278, 'IP-T305', '2026-10-31T02:56:27Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29279, 'IP-T306', '2026-10-31T02:56:27Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29280, 'IP-T307', '2026-10-31T02:56:28Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29281, 'IP-T308', '2026-10-31T02:56:28Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29282, 'IP-T309', '2026-10-31T02:56:28Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29283, 'IP-T310', '2026-10-31T02:56:28Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29284, 'IP-T311', '2026-10-31T02:56:29Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29285, 'IP-T312', '2026-10-31T02:56:29Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29286, 'IP-T313', '2026-10-31T02:56:29Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29287, 'IP-T314', '2026-10-31T02:56:29Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29288, 'IP-T315', '2026-10-31T02:56:29Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29289, 'IP-T316', '2026-10-31T02:56:30Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29290, 'IP-T317', '2026-10-31T02:56:30Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29291, 'IP-T318', '2026-10-31T02:56:30Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29292, 'IP-T319', '2026-10-31T02:56:30Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29293, 'IP-T320', '2026-10-31T02:56:31Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29294, 'IP-T321', '2026-10-31T02:56:31Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29295, 'IP-T322', '2026-10-31T02:56:31Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29296, 'IP-T323', '2026-10-31T02:56:31Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29297, 'IP-T324', '2026-10-31T02:56:31Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29298, 'IP-T325', '2026-10-31T02:56:32Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29299, 'IP-T326', '2026-10-31T02:56:32Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29300, 'IP-T327', '2026-10-31T02:56:32Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29301, 'IP-T328', '2026-10-31T02:56:32Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29302, 'RTO-T50', '2026-10-31T02:56:56Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29303, 'RTO-T50', '2026-10-31T02:56:56Z', 'ref', '—', 'commit f52f1c3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29304, 'RTO-T51', '2026-10-31T02:56:57Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29305, 'RTO-T51', '2026-10-31T02:56:57Z', 'ref', '—', 'commit f52f1c3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29306, 'RTO-T53', '2026-10-31T02:56:58Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29307, 'RTO-T53', '2026-10-31T02:56:58Z', 'ref', '—', 'commit f52f1c3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29308, 'RTO-T54', '2026-10-31T02:56:59Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29309, 'RTO-T54', '2026-10-31T02:56:59Z', 'ref', '—', 'commit f52f1c3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29310, 'RTO-T55', '2026-10-31T02:57:00Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29311, 'RTO-T55', '2026-10-31T02:57:00Z', 'ref', '—', 'commit f52f1c3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29312, 'RTO-T56', '2026-10-31T02:57:02Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29313, 'RTO-T56', '2026-10-31T02:57:02Z', 'ref', '—', 'commit f52f1c3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29314, 'RTO-T57', '2026-10-31T02:57:03Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29315, 'RTO-T57', '2026-10-31T02:57:03Z', 'ref', '—', 'commit f52f1c3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29316, 'RTO-T58', '2026-10-31T02:57:04Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29317, 'RTO-T58', '2026-10-31T02:57:04Z', 'ref', '—', 'commit f52f1c3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29318, 'RTO-T59', '2026-10-31T02:57:05Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29319, 'RTO-T59', '2026-10-31T02:57:05Z', 'ref', '—', 'commit f52f1c3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29320, 'RTO-T60', '2026-10-31T02:57:06Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29321, 'RTO-T60', '2026-10-31T02:57:06Z', 'ref', '—', 'commit f52f1c3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29322, 'RTO-T61', '2026-10-31T02:57:07Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29323, 'RTO-T61', '2026-10-31T02:57:07Z', 'ref', '—', 'commit f52f1c3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29324, 'RTO-T62', '2026-10-31T02:57:08Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29325, 'RTO-T62', '2026-10-31T02:57:08Z', 'ref', '—', 'commit f52f1c3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29326, 'RTO-T63', '2026-10-31T02:57:10Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29327, 'RTO-T63', '2026-10-31T02:57:10Z', 'ref', '—', 'commit f52f1c3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29328, 'RTO-T64', '2026-10-31T02:57:11Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29329, 'RTO-T64', '2026-10-31T02:57:11Z', 'ref', '—', 'commit f52f1c3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29330, 'RTO-T65', '2026-10-31T02:57:13Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29331, 'RTO-T65', '2026-10-31T02:57:13Z', 'ref', '—', 'commit f52f1c3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29332, 'RTO-T66', '2026-10-31T02:57:14Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29333, 'RTO-T66', '2026-10-31T02:57:14Z', 'ref', '—', 'commit f52f1c3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29334, 'RTO-T67', '2026-10-31T02:57:15Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29335, 'RTO-T67', '2026-10-31T02:57:15Z', 'ref', '—', 'commit f52f1c3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29336, 'RTO-T68', '2026-10-31T02:57:16Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29337, 'RTO-T68', '2026-10-31T02:57:16Z', 'ref', '—', 'commit f52f1c3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29338, 'RTO-T69', '2026-10-31T02:57:18Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29339, 'RTO-T69', '2026-10-31T02:57:18Z', 'ref', '—', 'commit f52f1c3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29340, 'RTO-T70', '2026-10-31T02:57:19Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29341, 'RTO-T70', '2026-10-31T02:57:19Z', 'ref', '—', 'commit f52f1c3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29342, 'RTO-T52', '2026-10-31T02:57:25Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29343, 'RTO-T52', '2026-10-31T02:57:25Z', 'ref', '—', 'commit f52f1c3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29344, 'RTO-T16', '2026-10-31T02:57:26Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29345, 'RTO-T75', '2026-10-31T02:57:27Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29346, 'RTO-T75', '2026-10-31T02:57:27Z', 'ref', '—', 'commit 6869221');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29347, 'RTO-T71', '2026-10-31T02:57:28Z', 'status', 'open', 'wont-do');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29348, 'RTO-T71', '2026-10-31T02:57:28Z', 'ref', '—', 'superseded by RTO-T80 (overtip gauge instead of custom labels)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29349, 'RTO-T76', '2026-10-31T02:57:30Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29350, 'RTO-T76', '2026-10-31T02:57:30Z', 'ref', '—', 'commit f52f1c3 (outline transparency); commit 6869221 (shot formula, RTO-T91)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29351, 'RTO-T77', '2026-10-31T02:57:31Z', 'status', 'open', 'wont-do');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29352, 'RTO-T77', '2026-10-31T02:57:31Z', 'ref', '—', 'superseded by RTO-T80: no custom label exists to reposition, game''s own overtip gauge is used');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29353, 'RTO-T78', '2026-10-31T02:57:32Z', 'status', 'open', 'wont-do');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29354, 'RTO-T78', '2026-10-31T02:57:32Z', 'ref', '—', 'superseded by RTO-T80: no custom label exists to recolor, game''s own overtip gauge is used');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29355, 'RTO-T72', '2026-10-31T02:57:42Z', 'status', 'open', 'wont-do');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29356, 'RTO-T72', '2026-10-31T02:57:42Z', 'ref', '—', 'superseded by RTO-T82: flat -33 reaction penalty replaced by the aim-modifier/base-hit-chance redesign');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -50828,22 +51004,22 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T98', 'proposed', 20, '2026-10-19T16:16:56Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T99', 'approved', -2, '2026-10-22T02:51:54Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T100', 'proposed', 1191, '2026-10-30T19:27:56Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T101', 'proposed', 1190, '2026-10-30T19:28:00Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T102', 'proposed', 1189, '2026-10-30T19:28:02Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T103', 'proposed', 1188, '2026-10-30T19:28:05Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T101', 'approved', 1190, '2026-10-31T02:56:20Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T102', 'approved', 1189, '2026-10-31T02:56:20Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T103', 'approved', 1188, '2026-10-31T02:56:20Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T104', 'proposed', 1187, '2026-10-30T19:28:11Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T105', 'proposed', 1186, '2026-10-30T19:28:15Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T106', 'proposed', 1185, '2026-10-30T19:28:19Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T107', 'proposed', 1184, '2026-10-30T19:28:21Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T108', 'proposed', 1183, '2026-10-30T19:28:24Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T109', 'proposed', 1182, '2026-10-30T19:28:28Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T105', 'approved', 1186, '2026-10-31T02:56:21Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T106', 'approved', 1185, '2026-10-31T02:56:21Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T107', 'approved', 1184, '2026-10-31T02:56:21Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T108', 'approved', 1183, '2026-10-31T02:56:21Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T109', 'approved', 1182, '2026-10-31T02:56:22Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T110', 'proposed', 1181, '2026-10-30T19:28:31Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T111', 'proposed', 1180, '2026-10-30T19:28:35Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T112', 'proposed', 1179, '2026-10-30T19:28:37Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T112', 'approved', 1179, '2026-10-31T02:56:22Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T113', 'proposed', 1178, '2026-10-30T19:28:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T114', 'proposed', 1177, '2026-10-30T19:28:42Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T115', 'proposed', 1176, '2026-10-30T19:28:47Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T116', 'proposed', 1175, '2026-10-30T19:28:53Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T116', 'approved', 1175, '2026-10-31T02:56:22Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T117', 'proposed', 1174, '2026-10-30T19:28:57Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T118', 'proposed', 1173, '2026-10-30T19:29:00Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T119', 'proposed', 1172, '2026-10-30T19:29:05Z', NULL);
@@ -50915,27 +51091,27 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T185', 'proposed', 1106, '2026-10-30T19:32:22Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T186', 'proposed', 1105, '2026-10-30T19:32:24Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T187', 'proposed', 1104, '2026-10-30T19:32:26Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T188', 'proposed', 1103, '2026-10-30T19:32:29Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T189', 'proposed', 1102, '2026-10-30T19:32:31Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T188', 'approved', 1103, '2026-10-31T02:56:22Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T189', 'approved', 1102, '2026-10-31T02:56:23Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T19', 'approved', 5, '2026-10-21T04:35:32Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T190', 'proposed', 1101, '2026-10-30T19:32:33Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T191', 'proposed', 1100, '2026-10-30T19:32:36Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T192', 'proposed', 1099, '2026-10-30T19:32:39Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T193', 'proposed', 1098, '2026-10-30T19:32:41Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T194', 'proposed', 1097, '2026-10-30T19:32:44Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T195', 'proposed', 1096, '2026-10-30T19:32:48Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T196', 'proposed', 1095, '2026-10-30T19:32:50Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T197', 'proposed', 1094, '2026-10-30T19:32:52Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T190', 'approved', 1101, '2026-10-31T02:56:23Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T191', 'approved', 1100, '2026-10-31T02:56:23Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T192', 'approved', 1099, '2026-10-31T02:56:23Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T193', 'approved', 1098, '2026-10-31T02:56:23Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T194', 'approved', 1097, '2026-10-31T02:56:24Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T195', 'approved', 1096, '2026-10-31T02:56:24Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T196', 'approved', 1095, '2026-10-31T02:56:24Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T197', 'approved', 1094, '2026-10-31T02:56:24Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T198', 'proposed', 1093, '2026-10-30T19:32:55Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T199', 'proposed', 1092, '2026-10-30T19:32:57Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T20', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T200', 'proposed', 1091, '2026-10-30T19:32:59Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T201', 'proposed', 1090, '2026-10-30T19:33:02Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T202', 'proposed', 1089, '2026-10-30T19:33:04Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T203', 'proposed', 1088, '2026-10-30T19:33:06Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T204', 'proposed', 1087, '2026-10-30T19:33:08Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T200', 'approved', 1091, '2026-10-31T02:56:25Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T201', 'approved', 1090, '2026-10-31T02:56:25Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T202', 'approved', 1089, '2026-10-31T02:56:25Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T203', 'approved', 1088, '2026-10-31T02:56:25Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T204', 'approved', 1087, '2026-10-31T02:56:25Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T205', 'proposed', 1086, '2026-10-30T19:33:10Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T206', 'proposed', 1085, '2026-10-30T19:33:13Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T206', 'approved', 1085, '2026-10-31T02:56:26Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T207', 'proposed', 1084, '2026-10-30T19:33:16Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T208', 'proposed', 1083, '2026-10-30T19:33:19Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T209', 'proposed', 1082, '2026-10-30T19:33:22Z', NULL);
@@ -51024,9 +51200,39 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T288', 'proposed', 1003, '2026-10-30T19:36:45Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T289', 'proposed', 1002, '2026-10-30T19:36:47Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T290', 'proposed', 1001, '2026-10-30T19:36:49Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T299', 'approved', 0, '2026-10-31T02:56:26Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T30', 'proposed', 1261, '2026-10-30T19:24:13Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T300', 'approved', 0, '2026-10-31T02:56:26Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T301', 'approved', 0, '2026-10-31T02:56:26Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T302', 'approved', 0, '2026-10-31T02:56:26Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T303', 'approved', 0, '2026-10-31T02:56:27Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T304', 'approved', 0, '2026-10-31T02:56:27Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T305', 'approved', 0, '2026-10-31T02:56:27Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T306', 'approved', 0, '2026-10-31T02:56:27Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T307', 'approved', 0, '2026-10-31T02:56:28Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T308', 'approved', 0, '2026-10-31T02:56:28Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T309', 'approved', 0, '2026-10-31T02:56:28Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T31', 'proposed', 1260, '2026-10-30T19:24:15Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T310', 'approved', 0, '2026-10-31T02:56:28Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T311', 'approved', 0, '2026-10-31T02:56:29Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T312', 'approved', 0, '2026-10-31T02:56:29Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T313', 'approved', 0, '2026-10-31T02:56:29Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T314', 'approved', 0, '2026-10-31T02:56:29Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T315', 'approved', 0, '2026-10-31T02:56:29Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T316', 'approved', 0, '2026-10-31T02:56:30Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T317', 'approved', 0, '2026-10-31T02:56:30Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T318', 'approved', 0, '2026-10-31T02:56:30Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T319', 'approved', 0, '2026-10-31T02:56:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T32', 'proposed', 1259, '2026-10-30T19:24:16Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T320', 'approved', 0, '2026-10-31T02:56:31Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T321', 'approved', 0, '2026-10-31T02:56:31Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T322', 'approved', 0, '2026-10-31T02:56:31Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T323', 'approved', 0, '2026-10-31T02:56:31Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T324', 'approved', 0, '2026-10-31T02:56:31Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T325', 'approved', 0, '2026-10-31T02:56:32Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T326', 'approved', 0, '2026-10-31T02:56:32Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T327', 'approved', 0, '2026-10-31T02:56:32Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T328', 'approved', 0, '2026-10-31T02:56:32Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T33', 'proposed', 1258, '2026-10-30T19:24:18Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T34', 'proposed', 1257, '2026-10-30T19:24:21Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T35', 'proposed', 1256, '2026-10-30T19:24:23Z', NULL);
@@ -55658,6 +55864,10 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T291', 'F
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T292', 'Found smoking IP-T45: DirectoryNotFoundException for bin/Debug/net10.0/wwwroot at Program.cs UseStaticFiles. Fall back to builder.Environment.WebRootPath when {BaseDirectory}/wwwroot is missing, so both dev runs and published exes serve static files.', '2026-10-30T19:47:19Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T296', 'HubProcessControl.Start launches cmd.exe with UseShellExecute=false, so the inheritable stdout/stderr pipe of the caller leaks into the long-lived Hub process tree; ''idiotproof hub start | tail'' or a Claude Bash call never sees EOF. Launch via ShellExecute (no handle inheritance, hidden window) and pass the env vars inline through cmd ''set''.', '2026-10-30T23:33:39Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T297', 'First market-data operation: idiotproof market chart INTC [--days 2] [--bucket N] [--width] [--height]. Data comes through the Hub''s IMarketDataFeed (refuses the Mock feed), sessions PRE 4:00-9:30 / REG 9:30-16:00 / AFTER 16:00-20:00 ET, reference line at each prior regular close, session summary table. Renders via MindAttic.Helpers.Ascii.AsciiCandleChart.', '2026-10-31T01:45:23Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T298', 'Foundation for full Alpaca API coverage through the Hub: IdiotProof.Brokers/AlpacaApi.cs, IdiotProof.Core/Trading/AlpacaApiFactory.cs (singleton), dispatcher maps AlpacaAccessException to Blocked and AlpacaApiException to Failed.', '2026-10-31T02:54:57Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T299', 'Alpaca Trading API account configurations. Read is free; any change on Live goes through the ConfirmationStore code flow.
+
+Full Alpaca API coverage through the Hub (user request 2026-10-30): every operation is a [Operation] in IdiotProof.Operations built on AlpacaApi/AlpacaApiFactory (IP-T298); orders only through TransactionGateway.', '2026-10-31T02:55:35Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T30', '**Epic W — Command line & Hub** / W0 Foundation: extract IdiotProof.Core (`W0.01`)
 
 Create IdiotProof.Core class library (net10.0) in IdiotProof.slnx, referencing Models/Shared/Scripting/Strategies/Brokers/DataFeeds/Engine/Indicators
@@ -55665,6 +55875,27 @@ Create IdiotProof.Core class library (net10.0) in IdiotProof.slnx, referencing M
 Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
 
 Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:17:40Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T300', 'Alpaca portfolio history; render with AsciiCandleChart-style Braille line (add a line-series renderer to MindAttic.Helpers if needed). Fixes ''account summary'' Today including deposits.
+
+Full Alpaca API coverage through the Hub (user request 2026-10-30): every operation is a [Operation] in IdiotProof.Operations built on AlpacaApi/AlpacaApiFactory (IP-T298); orders only through TransactionGateway.', '2026-10-31T02:55:37Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T301', 'Extend OrderRequest/OrderIntent (hash + canonical JSON) and AlpacaBrokerClient serialization; every placement goes through TransactionGateway with Live confirm codes.
+
+Full Alpaca API coverage through the Hub (user request 2026-10-30): every operation is a [Operation] in IdiotProof.Operations built on AlpacaApi/AlpacaApiFactory (IP-T298); orders only through TransactionGateway.', '2026-10-31T02:55:38Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T302', 'Alpaca order_class bracket/oco/oto; gateway risk check uses the stop leg; Live needs a code.
+
+Full Alpaca API coverage through the Hub (user request 2026-10-30): every operation is a [Operation] in IdiotProof.Operations built on AlpacaApi/AlpacaApiFactory (IP-T298); orders only through TransactionGateway.', '2026-10-31T02:55:39Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T303', 'Replacement is an order change: preview + Live confirm code; audit + ledger.
+
+Full Alpaca API coverage through the Hub (user request 2026-10-30): every operation is a [Operation] in IdiotProof.Operations built on AlpacaApi/AlpacaApiFactory (IP-T298); orders only through TransactionGateway.', '2026-10-31T02:55:41Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T305', 'Exits clear the gates; Live still needs a code from CLI/MCP.
+
+Full Alpaca API coverage through the Hub (user request 2026-10-30): every operation is a [Operation] in IdiotProof.Operations built on AlpacaApi/AlpacaApiFactory (IP-T298); orders only through TransactionGateway.', '2026-10-31T02:55:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T306', 'Flatten everything at the broker; lists what would close in the preview.
+
+Full Alpaca API coverage through the Hub (user request 2026-10-30): every operation is a [Operation] in IdiotProof.Operations built on AlpacaApi/AlpacaApiFactory (IP-T298); orders only through TransactionGateway.', '2026-10-31T02:55:44Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T308', 'Level-gated (level 3 for spreads); max-loss preview.
+
+Full Alpaca API coverage through the Hub (user request 2026-10-30): every operation is a [Operation] in IdiotProof.Operations built on AlpacaApi/AlpacaApiFactory (IP-T298); orders only through TransactionGateway.', '2026-10-31T02:55:46Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T31', '**Epic W — Command line & Hub** / W0 Foundation: extract IdiotProof.Core (`W0.02`)
 
 Enable GenerateDocumentationFile for every library via Directory.Build.props (CS1591 suppressed) so XML doc comments ship for the knowledge index
@@ -55672,6 +55903,18 @@ Enable GenerateDocumentationFile for every library via Directory.Build.props (CS
 Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
 
 Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:17:41Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T311', 'GET /v2/assets, /v2/assets/{symbol_or_id}.
+
+Full Alpaca API coverage through the Hub (user request 2026-10-30): every operation is a [Operation] in IdiotProof.Operations built on AlpacaApi/AlpacaApiFactory (IP-T298); orders only through TransactionGateway.', '2026-10-31T02:55:50Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T314', 'Distinct from IdiotProof''s local watchlist (IP-T252).
+
+Full Alpaca API coverage through the Hub (user request 2026-10-30): every operation is a [Operation] in IdiotProof.Operations built on AlpacaApi/AlpacaApiFactory (IP-T298); orders only through TransactionGateway.', '2026-10-31T02:55:53Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T315', 'AssetClass.Crypto in OrderRequest; RiskGuardian rules for crypto; Live confirm codes.
+
+Full Alpaca API coverage through the Hub (user request 2026-10-30): every operation is a [Operation] in IdiotProof.Operations built on AlpacaApi/AlpacaApiFactory (IP-T298); orders only through TransactionGateway.', '2026-10-31T02:55:54Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T317', 'Funding endpoints exist only on eligible live accounts; fail closed with Alpaca''s message otherwise.
+
+Full Alpaca API coverage through the Hub (user request 2026-10-30): every operation is a [Operation] in IdiotProof.Operations built on AlpacaApi/AlpacaApiFactory (IP-T298); orders only through TransactionGateway.', '2026-10-31T02:55:56Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T32', '**Epic W — Command line & Hub** / W0 Foundation: extract IdiotProof.Core (`W0.03`)
 
 Move AppDbContext and every Data/* entity from IdiotProof.Blazor to IdiotProof.Core (namespaces unchanged in this move)
@@ -55681,6 +55924,15 @@ Requires: W0.01 (linked).
 Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
 
 Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:17:42Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T324', 'Needed by trade updates and market data streaming.
+
+Full Alpaca API coverage through the Hub (user request 2026-10-30): every operation is a [Operation] in IdiotProof.Operations built on AlpacaApi/AlpacaApiFactory (IP-T298); orders only through TransactionGateway.', '2026-10-31T02:56:04Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T327', 'Guarantees ''every Alpaca endpoint is reachable'' even before a typed op exists.
+
+Full Alpaca API coverage through the Hub (user request 2026-10-30): every operation is a [Operation] in IdiotProof.Operations built on AlpacaApi/AlpacaApiFactory (IP-T298); orders only through TransactionGateway.', '2026-10-31T02:56:08Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T328', 'Broker API (for broker-dealers) and OAuth Connect noted as out of scope / already wired.
+
+Full Alpaca API coverage through the Hub (user request 2026-10-30): every operation is a [Operation] in IdiotProof.Operations built on AlpacaApi/AlpacaApiFactory (IP-T298); orders only through TransactionGateway.', '2026-10-31T02:56:09Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T33', '**Epic W — Command line & Hub** / W0 Foundation: extract IdiotProof.Core (`W0.04`)
 
 Move EF Migrations + AppDbContextFactory to IdiotProof.Core with MigrationsAssembly set; migration IDs and snapshot unchanged
