@@ -5851,9 +5851,9 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T148', 'MindAttic.Components', 148, '2026-10-30', 'feature', 'wont-do', 'Define a settings-tab contract (ISettingsTab: app id, label, icon, order, Razor component) for Vault Dashboard', 'superseded by Epic E redesign: Desktop (WPF) is the universal tab host, Web is a secured optional host for Razor-kind tabs only', 147, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T149', 'MindAttic.Components', 149, '2026-10-30', 'feature', 'wont-do', 'Shared settings tab-strip/host chrome component (Blazor), themed to match the rest of the family', 'superseded by Epic E redesign: Desktop (WPF) is the universal tab host, Web is a secured optional host for Razor-kind tabs only', 148, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T150', 'MindAttic.Components', 150, '2026-10-30', 'feature', 'wont-do', 'Shared "open my settings" helper for an app''s cog (WPF control/command + Blazor link helper)', 'superseded by Epic E redesign: Desktop (WPF) is the universal tab host, Web is a secured optional host for Razor-kind tabs only', 149, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T151', 'MindAttic.Components', 151, '2026-10-30', 'feature', 'open', 'Settings-tab contract: portable Razor component or native WPF UserControl', 'M.VALT-US-E2', 150, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T151', 'MindAttic.Components', 151, '2026-10-30', 'feature', 'closed', 'Settings-tab contract: portable Razor component or native WPF UserControl', 'M.VALT-US-E2', 150, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T152', 'MindAttic.Components', 152, '2026-10-30', 'feature', 'open', 'Adapt MaTabControl into the shared dynamic tab-strip chrome', 'M.VALT-US-E1', 151, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T153', 'MindAttic.Components', 153, '2026-10-30', 'feature', 'open', 'Shared "open my settings" helper: launch-or-activate MindAttic.Vault.Desktop at a given app''s tab', 'M.VALT-US-E1', 152, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.COMP-T153', 'MindAttic.Components', 153, '2026-10-30', 'feature', 'closed', 'Shared "open my settings" helper: launch-or-activate MindAttic.Vault.Desktop at a given app''s tab', 'M.VALT-US-E1', 152, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CRYP-T1', 'MindAttic.Cryptography', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.CRYP-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CRYP-T2', 'MindAttic.Cryptography', 2, '2026-10-15', 'chore', 'closed', 'Remove duplicate command copies (/quickload, /quicksave) now centralized at the user level (~/.claude/commands)', 'M.FLOW-T14', 1, '| M.CRYP-T2 | 2026-10-15 | chore | closed | Remove duplicate command copies (/quickload, /quicksave) now centralized at the user level (~/.claude/commands) | M.FLOW-T14 |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CRYP-T3', 'MindAttic.Cryptography', 3, '2026-10-16', 'chore', 'closed', 'install.ps1 adds this repo''s 9 .prose/commands stubs for the shared global commands, so any LLM client finds them', 'mindattic-agent-standard/install.ps1 run 2026-10-16', 2, NULL);
@@ -51496,6 +51496,14 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29961, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29962, 'M.COMP-T153', '2026-10-31T11:04:44Z', 'link', NULL, 'IP-T336 requires');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29963, 'IP-T336', '2026-10-31T11:04:45Z', 'link', NULL, 'requires IP-T335');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29964, 'IP-T335', '2026-10-31T11:04:45Z', 'link', NULL, 'IP-T336 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29965, 'M.COMP-T151', '2026-10-31T13:27:18Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29966, 'M.COMP-T153', '2026-10-31T13:27:19Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29967, 'M.VALT-T28', '2026-10-31T13:27:20Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29968, 'M.VALT-T29', '2026-10-31T13:27:20Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29969, 'M.VALT-T30', '2026-10-31T13:27:21Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29970, 'M.VALT-T31', '2026-10-31T13:27:22Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29971, 'M.COMP-T151', '2026-10-31T13:30:36Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29972, 'M.COMP-T153', '2026-10-31T13:30:37Z', 'status', 'open', 'closed');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -52091,6 +52099,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T120', 'proposed', 0, '2026-10-28T02:39:06Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T121', 'proposed', 0, '2026-10-28T02:39:07Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T15', 'approved', 0, '2026-10-20T12:44:38Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T151', 'approved', 0, '2026-10-31T13:27:18Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T153', 'approved', 0, '2026-10-31T13:27:19Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T18', 'rejected', 0, '2026-10-20T16:03:42Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T30', 'approved', 0, '2026-10-20T16:16:36Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T31', 'approved', 0, '2026-10-20T16:16:36Z', NULL);
@@ -52761,6 +52771,10 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T12', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T13', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T16', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T28', 'approved', 0, '2026-10-31T13:27:20Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T29', 'approved', 0, '2026-10-31T13:27:20Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T30', 'approved', 0, '2026-10-31T13:27:21Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T31', 'approved', 0, '2026-10-31T13:27:22Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.WEB-T10', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.WEB-T14', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.WEB-T7', 'approved', 5, '2026-10-21T04:35:37Z', NULL);
