@@ -15,6 +15,13 @@ public static class Program
     [STAThread]
     public static int Main(string[] args)
     {
+        // Install step: import desktop.json / seed defaults and write the manifest MindAttic Vault renders.
+        if (args.Contains(MindAttic.Vault.Settings.Manifest.SettingsManifestCommand.Switch, StringComparer.OrdinalIgnoreCase))
+        {
+            Console.WriteLine(Data.DesktopSettings.Load().Path);
+            return 0;
+        }
+
         using var single = new Mutex(true, SingleInstance, out var first);
         if (!first)
         {
