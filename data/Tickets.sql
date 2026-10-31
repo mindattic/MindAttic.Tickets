@@ -5321,9 +5321,9 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T273', 'IdiotProof', 273, '2026-10-30', 'feature', 'closed', 'AGENTS.md project context points at the protocol doc and bootstrap command', '—', 272, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T274', 'IdiotProof', 274, '2026-10-30', 'feature', 'closed', 'BIBLE §4 rewrite: Hub architecture, front doors (CLI/MCP/Blazor), transaction gateway, stamp', '—', 273, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T275', 'IdiotProof', 275, '2026-10-30', 'feature', 'closed', 'BIBLE §3/§6/§7 updates (no longer ''Monitor console'' only; verified state cites new tests)', '—', 274, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T276', 'IdiotProof', 276, '2026-10-30', 'feature', 'open', 'Epic W user stories filed via `tickets story` and USER_STORIES regenerated', '—', 275, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T277', 'IdiotProof', 277, '2026-10-30', 'feature', 'open', 'BIBLE digest regenerated via tools/codex.ps1 and doctor passes', '—', 276, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T278', 'IdiotProof', 278, '2026-10-30', 'feature', 'open', 'docs/agent/cli-hub-backlog.json: the filed backlog with ticket IDs and dependencies', '—', 277, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T276', 'IdiotProof', 276, '2026-10-30', 'feature', 'closed', 'Epic W user stories filed via `tickets story` and USER_STORIES regenerated', '—', 275, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T277', 'IdiotProof', 277, '2026-10-30', 'feature', 'closed', 'BIBLE digest regenerated via tools/codex.ps1 and doctor passes', '—', 276, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T278', 'IdiotProof', 278, '2026-10-30', 'feature', 'closed', 'docs/agent/cli-hub-backlog.json: the filed backlog with ticket IDs and dependencies', '—', 277, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T279', 'IdiotProof', 279, '2026-10-30', 'feature', 'open', 'Blazor IOwnerContext adapter from the auth claim', '—', 278, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T280', 'IdiotProof', 280, '2026-10-30', 'feature', 'open', 'Blazor IClaudeKeyContext adapter (replaces SignedInClaudeKey wiring)', '—', 279, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T281', 'IdiotProof', 281, '2026-10-30', 'feature', 'closed', 'Blazor manual order paths go through TransactionGateway', '—', 280, NULL);
@@ -51418,6 +51418,9 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29892, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29893, 'IP-T328', '2026-10-31T04:52:43Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29894, 'IP-T274', '2026-10-31T04:58:09Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29895, 'IP-T275', '2026-10-31T05:00:33Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29896, 'IP-T276', '2026-10-31T05:03:49Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29897, 'IP-T277', '2026-10-31T05:06:05Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29898, 'IP-T278', '2026-10-31T05:07:20Z', 'status', 'open', 'closed');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
