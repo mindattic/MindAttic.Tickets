@@ -7700,7 +7700,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T166', 'MindAttic.Tickets', 166, '2026-10-26', 'fix', 'closed', 'Tickets.Desktop''s AppBusClient TryShowWorker, Send and Present run synchronously on the UI thread from ShowWorkerCommand (Process.GetProcessById plus pipe.Connect(100)), freezing the window up to about 100ms or more per click when the daemon is busy; run them off the UI thread (found by bughunt pass 2)', 'a65356a', 165, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T167', 'MindAttic.Tickets', 167, '2026-10-26', 'fix', 'closed', 'TicketHandoff.ListenAsync reads with ReadToEndAsync and no timeout after WaitForConnectionAsync on a single server instance, so a client that connects and never writes or closes blocks every later --ticket handoff and second-start until Tickets.Desktop restarts; add a read timeout (found by bughunt pass 2)', '6a6b8fd', 166, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T168', 'MindAttic.Tickets', 168, '2026-10-26', 'fix', 'closed', 'Tickets.Desktop''s AppBusClient.Present/IsAlive trusts a dashboard presence by pid alone while the daemon retains the last presence (the M.ORCH-T1010 start-time check exists only on the Orchestrator side), so after the dashboard exits and its pid is reused, ''Show who''s working this'' sends show-worker to nobody and reports success instead of starting the Orchestrator; check the presence''s process start time (found by bughunt pass 2)', '0d68c5e', 167, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T169', 'MindAttic.Tickets', 169, '2026-10-26', 'fix', 'open', '''tickets ticket --help'' crashes listing commands: Could not find color or style ''--author'' (an option name in a description is parsed as Spectre markup)', '—', 168, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T169', 'MindAttic.Tickets', 169, '2026-10-26', 'fix', 'closed', '''tickets ticket --help'' crashes listing commands: Could not find color or style ''--author'' (an option name in a description is parsed as Spectre markup)', 'TicketCliTests.Help_lists_every_command_without_crashing_on_markup_in_a_description', 168, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T170', 'MindAttic.Tickets', 170, '2026-10-27', 'feature', 'open', 'Add ''workflow story renumber'' and a duplicate-story-ID check to ''workflow db check'', so repos can fix stories that share an ID (Prose PRS-US-H7 / H7a-H7c exist twice, PRS-T55)', '—', 169, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T171', 'MindAttic.Tickets', 171, '2026-10-27', 'fix', 'closed', 'Fix MainWindow.xaml mojibake (double-encoded …, ──, ·, ✕, ⏸ glyphs from a past cp1252/UTF-8 round-trip) and tofu dropdown chevrons/checkmarks by falling back from Segoe MDL2 Assets to Segoe Fluent Icons', 'bda14fa', 170, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T172', 'MindAttic.Tickets', 172, '2026-10-27', 'fix', 'closed', 'deploy.ps1 builds the newer of main/origin-main from a clean detached worktree, not the working tree, so agents'' pushed-from-worktree work deploys even when this checkout hasn''t pulled, and uncommitted edits never do', '0437d69', 171, NULL);
@@ -51504,6 +51504,14 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29969, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29970, 'M.VALT-T31', '2026-10-31T13:27:22Z', 'approval', 'proposed', 'approved');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29971, 'M.COMP-T151', '2026-10-31T13:30:36Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29972, 'M.COMP-T153', '2026-10-31T13:30:37Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29973, 'M.COMP-T151', '2026-10-31T13:37:24Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29974, 'M.COMP-T153', '2026-10-31T13:37:24Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29975, 'M.VALT-T28', '2026-10-31T13:37:25Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29976, 'M.VALT-T29', '2026-10-31T13:37:25Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29977, 'M.VALT-T30', '2026-10-31T13:37:26Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29978, 'M.VALT-T31', '2026-10-31T13:37:26Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29979, 'M.TIX-T169', '2026-10-31T13:37:29Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29980, 'M.TIX-T169', '2026-10-31T13:37:29Z', 'ref', '—', 'TicketCliTests.Help_lists_every_command_without_crashing_on_markup_in_a_description');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -52099,8 +52107,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T120', 'proposed', 0, '2026-10-28T02:39:06Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T121', 'proposed', 0, '2026-10-28T02:39:07Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T15', 'approved', 0, '2026-10-20T12:44:38Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T151', 'approved', 0, '2026-10-31T13:27:18Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T153', 'approved', 0, '2026-10-31T13:27:19Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T151', 'proposed', 0, '2026-10-31T13:37:24Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T153', 'proposed', 0, '2026-10-31T13:37:24Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T18', 'rejected', 0, '2026-10-20T16:03:42Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T30', 'approved', 0, '2026-10-20T16:16:36Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T31', 'approved', 0, '2026-10-20T16:16:36Z', NULL);
@@ -52771,10 +52779,10 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T12', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T13', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T16', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T28', 'approved', 0, '2026-10-31T13:27:20Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T29', 'approved', 0, '2026-10-31T13:27:20Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T30', 'approved', 0, '2026-10-31T13:27:21Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T31', 'approved', 0, '2026-10-31T13:27:22Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T28', 'proposed', 0, '2026-10-31T13:37:25Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T29', 'proposed', 0, '2026-10-31T13:37:25Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T30', 'proposed', 0, '2026-10-31T13:37:26Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T31', 'proposed', 0, '2026-10-31T13:37:26Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.WEB-T10', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.WEB-T14', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.WEB-T7', 'approved', 5, '2026-10-21T04:35:37Z', NULL);
@@ -54479,6 +54487,8 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (272, 'IP
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (273, 'IP-T20', 'ryand', '2026-10-31T06:04:59Z', '2026-10-31 overnight run: full build green after all waves; the full dotnet test run was stopped by Claude Code because the machine was critically low on memory (not a test failure). Re-run in the morning: dotnet test IdiotProof.slnx (or /test).');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (274, 'IP-T21', 'ryand', '2026-10-31T06:05:00Z', 'Not started overnight: the 5-hour usage window reached its stop before a slot freed. Brief ready (night_brief.md in the session scratchpad); scope: dead code + stale comments/docs after the Core move and IP-T49 rename; no money-path logic changes.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (275, 'IP-T19', 'ryand', '2026-10-31T06:05:00Z', 'Not started overnight (usage window at its stop). Run /bughunt after IP-T21 and IP-T20.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (276, 'M.COMP-T151', 'ryand', '2026-10-31T13:39:01Z', 'Closed in error: the work was reverted in a9391c4 at the user''s request (the Vault.Web/Desktop plan is dropped). Treat as not done.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (277, 'M.COMP-T153', 'ryand', '2026-10-31T13:39:02Z', 'Closed in error: the work was reverted in a9391c4 at the user''s request (the Vault.Web/Desktop plan is dropped). Treat as not done.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
