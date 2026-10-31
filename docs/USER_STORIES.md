@@ -395,3 +395,5 @@ updated: 2026-10-12
 | M.TIX-T263 | 2026-10-30 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
 | M.TIX-T264 | 2026-10-30 | fix | closed | ticket verify dumps a corrupted link's raw multi-line text to the console instead of reporting it cleanly; AddLink doesn't validate an endpoint looks like an ID at all | src/MindAttic.Tickets/Data/TicketsDb.cs, tests/MindAttic.Tickets.Tests/TicketsDbTests.cs: Check_and_fix_handle_a_links_endpoint_that_is_not_an_id_at_all |
 | M.TIX-T265 | 2026-10-31 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
+| M.TIX-T266 | 2026-10-31 | feature | closed | LAMP: move MindAttic.Tickets.Desktop's app-level settings and keys to MindAttic.Vault.Desktop (manifest, LoadOrSeed, shared named keys, cog opens Vault) | afc53dd LampDesktopSettingsTests (Desktop.Tests 200/200) |
+| M.TIX-T267 | 2026-10-31 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
