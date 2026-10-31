@@ -30,6 +30,15 @@ public sealed class TicketCliTests
     private (int Code, string Out) Run(params string[] args) => RunWithInput(null, args);
 
     [Test]
+    public void Help_lists_every_command_without_crashing_on_markup_in_a_description()
+    {
+        var help = RunRaw("ticket", "--help");
+        Assert.That(help.Code, Is.Zero, help.Out);
+        Assert.That(help.Out, Does.Not.Contain("Could not find color or style"));
+        Assert.That(help.Out, Does.Contain("note"));
+    }
+
+    [Test]
     public void Every_command_is_logged_to_mindattic_log_with_its_outcome()
     {
         MakeRepo("A", "AA", "| AA-T1 | 2026-10-01 | fix | open | one | — |\n");
@@ -47,6 +56,24 @@ public sealed class TicketCliTests
         Assert.That(rows.Any(x => x.Item3.StartsWith("tickets ticket close AA-T1 ", StringComparison.Ordinal) && x.Item3.EndsWith("exited 0", StringComparison.Ordinal)));
         Assert.That(rows.Any(x => x.Item1 == 4 && x.Item3.StartsWith("tickets ticket close AA-T99", StringComparison.Ordinal) && x.Item3.Contains("failed", StringComparison.Ordinal)),
             "the failure is an Error row");
+    }
+
+    private (int Code, string Out) RunRaw(params string[] args)
+    {
+        var psi = new ProcessStartInfo("dotnet") { RedirectStandardInput = true, RedirectStandardOutput = true, RedirectStandardError = true, UseShellExecute = false, WorkingDirectory = root };
+        psi.ArgumentList.Add(Path.Combine(AppContext.BaseDirectory, "tickets.dll"));
+        foreach (var a in args) psi.ArgumentList.Add(a);
+        psi.Environment.Remove("MINDATTIC_TICKETS_DB");
+        psi.Environment["COLUMNS"] = "400";
+        psi.Environment["NO_COLOR"] = "1";
+        psi.Environment[Tickets.Repos.GitHubRepoIndex.FileEnvVar] = Path.Combine(root, "github.json");
+        psi.Environment["MINDATTIC_TICKETS_LOG_DB"] = LogDb;
+        using var p = Process.Start(psi)!;
+        p.StandardInput.Close();
+        var err = p.StandardError.ReadToEndAsync();
+        var output = p.StandardOutput.ReadToEnd();
+        p.WaitForExit();
+        return (p.ExitCode, output + err.Result);
     }
 
     private (int Code, string Out) RunWithInput(string? input, params string[] args)
