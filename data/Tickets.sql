@@ -8625,7 +8625,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T818', 'Prose', 818, '2026-10-30', 'chore', 'open', 'GLMZ P1 world: give every CorpoNation a Tier (ground work low; parent one Tier above its subsidiaries)', '—', 817, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T819', 'Prose', 819, '2026-10-30', 'feature', 'closed', 'CorpoNation hierarchy schema: a real Tier field, ownership tables down to ground level, private forces, and the chain/tree/forces queries', '490b6a5ab', 818, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T820', 'Prose', 820, '2026-10-30', 'chore', 'open', 'GLMZ P1 world: clear the old Tier and Zone usages out of the CorpoNation records', '—', 819, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T821', 'Prose', 821, '2026-10-30', 'feature', 'open', 'GLMZ: no two unrelated characters share a surname; rename every duplicate, unseen characters first', '—', 820, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T821', 'Prose', 821, '2026-10-30', 'feature', 'closed', 'GLMZ: no two unrelated characters share a surname; rename every duplicate, unseen characters first', '1c8204c73', 820, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T822', 'Prose', 822, '2026-10-30', 'feature', 'open', 'GLMZ surnames, part 2: synthetic twins, performers, document names, and the draft-book clashes', '—', 821, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -50619,6 +50620,9 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29205, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29206, 'M.HELP-T19', '2026-10-31T02:02:57Z', 'working', NULL, 'df7997fa-d41b-461b-a88b-098887d5ffaf');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29207, 'IP-T297', '2026-10-31T02:05:46Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29208, 'M.HELP-T19', '2026-10-31T02:07:35Z', 'working', 'df7997fa-d41b-461b-a88b-098887d5ffaf', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29209, 'PRS-T822', '2026-10-31T02:35:44Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29210, 'PRS-T821', '2026-10-31T02:35:54Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29211, 'PRS-T821', '2026-10-31T02:35:54Z', 'ref', '—', '1c8204c73');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -62344,6 +62348,13 @@ Work:
 3. Rename the characters that never appear in prose (record, aliases, and every record that names them).
 4. Rename the ones that appear: archive each book, rename the tags, hand-edit every untagged mention, restate the summaries, and add a noun rule blocking the old name.
 5. Check: no two unrelated characters share a surname.', '2026-10-31T01:41:11Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T822', 'Follow-up to the character surname pass (law ONE SURNAME, ONE FAMILY, 01a18f9f). The character records are clean except for families, duplicate records of one person, and draft-book clashes. Still to do:
+
+1. Synthetic-person records (entity type synthetic, about 70) twin many characters. Twins of renamed characters still carry the old name: Maya Chen (now Maya Tsai), Harlan Cross and Director Harlan Cross (now McDowell), Marcus Okafor-7, Lumen Park (now Lumen Alameda), Soledad Reyes (now Soledad Corona), Sergeant Major Yuki Tanaka (now Nilsen), Dr. Cassandra Webb (now Ingram), Dr. Vikram Hesse-Nakamura (character now Barth), The Consensus of David Park, Nia Okafor-Bright (character Nia Bright).
+2. Tangled twins: character records whose description is about the synthetic of another first name (Coraline Abram describes Celeste Abram; Brigid Carrigan/Maeve; Brennan Drum/Felix; Yuna Glass/Petra; Cassian Roundtree/Felix; Camille Solace/Petra; Rei Nakano/Rei Vasquez-Nakano; Alexander Sterling/Alexander Roth-Sterling). Decide whether each pair is one person, then merge or separate.
+3. Performers in entertainment records (about 147 names, such as Søren Achebe-Nazari or Lev Okonkwo-Brandt) and people named in documents and news (about 50) carry character surnames.
+4. Draft-only clashes (Iron & Silk, Ballast, Standing Contract; drafts are untouched without the author''s word): Emre Farhat-Adeyemi, Wen Castellanos, Sigrun Ferreira, Yusuf Tran-Okonkwo, Adelaide Nnodu-Park, Park Gi-su, Marcus Webb.
+5. docs/universes/GLMZ.md: the markdown sync tagged the word "Christian" (Amish line) as a character; not committed.', '2026-10-31T02:35:44Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T206', 'RB-T172 verified in the editor (sm_hub_1, sm_pier_1, sp_soc_2): pedlight_flash, lightbar, arcade screens and oilriga frames on g_tColor; blackwater water_normal frames on g_tNormal; sewer_water and surf offsets; fire_pallet selfillum flicker; clouds.vmat g_vTexCoordScrollSpeed 0.043,0.025. Not reachable from the maps imported so far: clublight, TV screens, highlights. Import a map that uses them, play, read the attributes with sbox-cli run_csharp.', '2026-10-26T05:18:06Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T207', 'Left out of RB-T193 (the werewolf''s hint navigation), all in vampire.dll''s CNPC_VWerewolf:
 
