@@ -100,7 +100,7 @@ public sealed class DbCheckCommand : Command<DbCheckCommand.Settings>
     public sealed class Settings : WorkspaceSettings
     {
         [CommandOption("--fix")]
-        [Description("First repair links with stray whitespace in an endpoint (trim it, or remove a blank or duplicate one); each change is printed and logged in the ticket's history.")]
+        [Description("First repair links with a broken endpoint (stray whitespace: trim it, or remove a blank, duplicate or otherwise-invalid one); each change is printed and logged in the ticket's history.")]
         public bool Fix { get; init; }
     }
 

@@ -226,6 +226,40 @@ public sealed class TicketsDbTests
     }
 
     [Test]
+    public void Check_and_fix_handle_a_links_endpoint_that_is_not_an_id_at_all()
+    {
+        var (db, _) = Migrated();
+        using (db)
+        {
+            // What a script that captures a command's merged stdout/stderr (PowerShell's $(...) under 2>&1, say)
+            // can leave behind (M.TIX-T264): many lines of someone else's output, not an ID, with no leading or
+            // trailing whitespace at all, so the stray-whitespace repair above doesn't catch it.
+            const string garbage = "tickets : warning: 1 open ticket(s) read like this one; filing it anyway:\r\nAt line:5 char:10\r\n+ $epic = (tickets ticket new --repo Orchestrator --type feat ...)";
+            db.Plant("INSERT INTO links (from_id, to_id, kind) VALUES ($g, 'AL-T1', 'implements')", ("$g", garbage));
+
+            // Reported, but never dumped raw: one line, no embedded CR/LF of its own.
+            var problems = db.Check();
+            Assert.That(problems, Has.Count.EqualTo(1));
+            Assert.That(problems[0], Does.Contain("implements AL-T1"));
+            Assert.That(problems[0], Does.Contain("not a valid ID"));
+            Assert.That(problems[0], Does.Not.Contains('\r'));
+            Assert.That(problems[0], Does.Not.Contains('\n'));
+
+            var fixes = db.RepairLinks();
+            Assert.That(fixes, Has.Count.EqualTo(1));
+            Assert.That(fixes[0], Does.Contain("removed (not a valid ID)"));
+            Assert.That(fixes[0], Does.Not.Contains('\r'));
+            Assert.That(fixes[0], Does.Not.Contains('\n'));
+            Assert.That(db.Check(), Is.Empty);
+            Assert.That(db.RepairLinks(), Is.Empty, "a second run has nothing to do");
+
+            // And AddLink refuses to let more of it in to begin with.
+            Assert.That(() => db.AddLink(garbage, "AL-T1", "implements"), Throws.ArgumentException);
+            Assert.That(() => db.AddLink("AL-T1", garbage, "implements"), Throws.ArgumentException);
+        }
+    }
+
+    [Test]
     public void A_story_status_change_updates_its_row_and_its_markdown()
     {
         var (db, _) = Migrated();

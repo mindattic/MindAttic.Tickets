@@ -844,6 +844,12 @@ public sealed partial class TicketsDb : IDisposable
         // Trim: a CR from a CRLF script would otherwise land in the ID and the link would point at nothing.
         (from, to) = (from.Trim(), to.Trim());
         if (from.Length == 0 || to.Length == 0) throw new ArgumentException("A link needs both ends.");
+        // A script that captures a command's merged stdout/stderr (PowerShell's $(...) under 2>&1, say) and passes
+        // the whole blob as an ID fails this: the garbage lands in the middle, not just the edges, so the trim above
+        // doesn't catch it. Reject it here instead of letting it into the links table, where every report that walks
+        // links (ticket verify, db check) would otherwise print it back out (M.TIX-T264).
+        if (!LooksLikeAnId(from)) throw new ArgumentException($"'{Truncated(from)}' doesn't look like a ticket, story or epic ID.", nameof(from));
+        if (!LooksLikeAnId(to)) throw new ArgumentException($"'{Truncated(to)}' doesn't look like a ticket, story or epic ID.", nameof(to));
         (from, to) = (CurrentId(from), CurrentId(to)); // a former ID links the item it became
         if (!LinkKinds.Contains(kind)) throw new ArgumentException($"Unknown link kind '{kind}' (expected {string.Join(", ", LinkKinds)}).", nameof(kind));
         if (string.Equals(from, to, StringComparison.OrdinalIgnoreCase)) throw new ArgumentException("An item can't link to itself.");
@@ -1100,37 +1106,44 @@ public sealed partial class TicketsDb : IDisposable
         return problems;
     }
 
-    // An endpoint with stray whitespace (a CR from a CRLF script, say) prints the same as a good ID; say so.
+    // An endpoint with stray whitespace (a CR from a CRLF script, say) prints the same as a good ID; say so. One
+    // that isn't a valid ID at all (another command's captured output, say, M.TIX-T264) is shown escaped and
+    // capped, never dumped raw: it can be arbitrarily long and carry real newlines of its own.
     private static string Shown(string id) =>
-        id.Trim() == id ? id : id.Trim().Length == 0 ? "(blank; run 'tickets db check --fix')" : $"{id.Trim()} (stray whitespace; run 'tickets db check --fix')";
+        id.Trim() != id
+            ? (id.Trim().Length == 0 ? "(blank; run 'tickets db check --fix')" : $"{Escaped(id.Trim())} (stray whitespace; run 'tickets db check --fix')")
+            : LooksLikeAnId(id) ? id : $"{Truncated(id)} (not a valid ID; run 'tickets db check --fix')";
 
     /// <summary>
-    /// Repairs links whose endpoint has stray whitespace: a blank endpoint is removed, a padded one is trimmed (removed
-    /// instead when the trimmed link already exists), each change going in the from-ticket's history; and a story's
-    /// part-of link to its epic under an old repo code moves to the current CODE-EPIC-KEY. Every change is returned.
+    /// Repairs links whose endpoint has stray whitespace or isn't a valid ID at all: a blank or garbled endpoint is
+    /// removed, a padded one is trimmed (removed instead when the trimmed link already exists), each change going
+    /// in the from-ticket's history; and a story's part-of link to its epic under an old repo code moves to the
+    /// current CODE-EPIC-KEY. Every change is returned.
     /// </summary>
     public IReadOnlyList<string> RepairLinks()
     {
         var log = new List<string>();
         var tickets = Rows("SELECT id FROM tickets", r => r.GetString(0)).ToHashSet(StringComparer.OrdinalIgnoreCase);
-        var padded = AllLinks().Where(l => l.From.Trim() != l.From || l.To.Trim() != l.To).ToList();
+        var broken = AllLinks().Where(l => l.From.Trim() != l.From || l.To.Trim() != l.To || !LooksLikeAnId(l.From.Trim()) || !LooksLikeAnId(l.To.Trim())).ToList();
         using var tx = Begin();
-        foreach (var l in padded)
+        foreach (var l in broken)
         {
             var (from, to) = (l.From.Trim(), l.To.Trim());
             Exec("DELETE FROM links WHERE from_id = $f AND to_id = $t AND kind = $k", tx, ("$f", l.From), ("$t", l.To), ("$k", l.Kind));
             string what;
             if (from.Length == 0 || to.Length == 0 || string.Equals(from, to, StringComparison.OrdinalIgnoreCase))
                 what = "removed (blank endpoint)";
+            else if (!LooksLikeAnId(from) || !LooksLikeAnId(to))
+                what = "removed (not a valid ID)";
             else if (Exec("INSERT OR IGNORE INTO links (from_id, to_id, kind, note) VALUES ($f, $t, $k, $n)", tx, ("$f", from), ("$t", to), ("$k", l.Kind), ("$n", l.Note)) > 0)
                 what = $"trimmed to {from} {l.Kind} {to}";
             else
                 what = "removed (the trimmed link already exists)";
-            var line = $"link {Escaped(l.From)} {l.Kind} {Escaped(l.To)}: {what}";
+            var line = $"link {Truncated(l.From)} {l.Kind} {Truncated(l.To)}: {what}";
             log.Add(line);
             if (tickets.Contains(from))
                 Exec("INSERT INTO ticket_events (ticket_id, at, field, old, new) VALUES ($id, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), 'link', $o, $n)", tx,
-                    ("$id", tickets.First(t => string.Equals(t, from, StringComparison.OrdinalIgnoreCase))), ("$o", $"{l.Kind} {Escaped(l.To)}"), ("$n", what.StartsWith("trimmed") ? $"{l.Kind} {to}" : null));
+                    ("$id", tickets.First(t => string.Equals(t, from, StringComparison.OrdinalIgnoreCase))), ("$o", $"{l.Kind} {Truncated(l.To)}"), ("$n", what.StartsWith("trimmed") ? $"{l.Kind} {to}" : null));
         }
         // A story's part-of link to its epic under a code its repo no longer has (Prose's SS-EPIC-G, its code now PRS):
         // retarget it to the repo's current CODE-EPIC-KEY when that epic exists.
@@ -1163,6 +1176,20 @@ public sealed partial class TicketsDb : IDisposable
             r => ($"{r.GetString(0)}-EPIC-{r.GetString(2)}", r.GetString(1), r.GetString(2)));
 
     private static string Escaped(string id) => id.Replace("\r", "\\r").Replace("\n", "\\n").Replace("\t", "\\t");
+
+    // Real IDs (tickets, stories CODE-US-n, epics CODE-EPIC-KEY) are short and drawn from a small character set. A
+    // script that captures a command's merged stdout/stderr (PowerShell's $(...) under 2>&1, say) and passes the
+    // whole blob as an ID fails this: it's long, and carries whitespace, control characters or punctuation no real
+    // ID uses (M.TIX-T264).
+    private static bool LooksLikeAnId(string id) => id.Length is > 0 and <= 80 && id.All(c => char.IsLetterOrDigit(c) || c is '-' or '.' or '_');
+
+    // A safe, length-capped form of an endpoint for messages and history: escaped first (so a lone stray CR still
+    // shows as \r, same as ever), then capped, since it may not be an ID at all and can be arbitrarily long.
+    private static string Truncated(string s)
+    {
+        var escaped = Escaped(s);
+        return escaped.Length <= 60 ? escaped : escaped[..60] + "…";
+    }
 
     /// <summary>
     /// A readable, deterministic SQL dump of the whole database (one INSERT per row, in key order), committed
