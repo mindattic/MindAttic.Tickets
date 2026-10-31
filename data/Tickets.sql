@@ -5094,7 +5094,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T46', 'IdiotProof', 46, '2026-10-30', 'feature', 'closed', 'Re-point IdiotProof.Monitor to AddIdiotProofCore/AddIdiotProofTrading and drop its IdiotProof.Blazor project reference', 'c400572', 45, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T47', 'IdiotProof', 47, '2026-10-30', 'feature', 'closed', 'Re-point IdiotProof.ResearchScanner to AddIdiotProofCore and drop its IdiotProof.Blazor project reference', 'd10b93d', 46, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T48', 'IdiotProof', 48, '2026-10-30', 'feature', 'closed', 'Re-point Blazor.Tests and Monitor.Tests at IdiotProof.Core; add IdiotProof.Core.Tests project (NUnit)', '4769b94', 47, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T49', 'IdiotProof', 49, '2026-10-30', 'feature', 'open', 'Rename moved namespaces IdiotProof.Blazor.Data/Services -> IdiotProof.Core.Data/Services across the solution', '—', 48, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T49', 'IdiotProof', 49, '2026-10-30', 'feature', 'closed', 'Rename moved namespaces IdiotProof.Blazor.Data/Services -> IdiotProof.Core.Data/Services across the solution', '—', 48, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T50', 'IdiotProof', 50, '2026-10-30', 'feature', 'closed', 'Delete stale IdiotProof.sln (slnx is canonical) and fix any script that names it', '7a09e4e', 49, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T51', 'IdiotProof', 51, '2026-10-30', 'feature', 'closed', 'Create IdiotProof.Operations library: [Operation("noun verb")], [Option], [Argument], IOperation<TArgs> contract, risk class (Read/Write/Money/Destructive)', 'cb745b8', 50, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T52', 'IdiotProof', 52, '2026-10-30', 'feature', 'closed', 'OperationContext: owner, IServiceProvider scope, caller (cli/mcp/blazor), output mode, cancellation, ET clock', 'cb745b8', 51, NULL);
@@ -51459,6 +51459,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29930, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29931, 'IP-T341', '2026-10-31T05:41:29Z', 'working', 'df7997fa-d41b-461b-a88b-098887d5ffaf', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29932, 'IP-T206', '2026-10-31T05:42:51Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29933, 'IP-T8', '2026-10-31T05:43:55Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (29934, 'IP-T49', '2026-10-31T05:51:19Z', 'status', 'open', 'closed');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
