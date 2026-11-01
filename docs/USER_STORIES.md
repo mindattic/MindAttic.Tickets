@@ -427,3 +427,5 @@ updated: 2026-10-12
 | M.TIX-T295 | 2026-11-01 | chore | closed | Sync generated/live files | — |
 | M.TIX-T296 | 2026-11-01 | chore | closed | Sync generated/live files | — |
 | M.TIX-T297 | 2026-11-01 | chore | closed | Sync generated/live files | — |
+| M.TIX-T298 | 2026-11-01 | chore | closed | Sync generated/live files | — |
+| M.TIX-T299 | 2026-11-01 | chore | closed | Sync generated/live files | — |
