@@ -162,6 +162,9 @@ if ($stale) {
     -p:DebugType=None -o $dest --nologo -v quiet
   if ($LASTEXITCODE -ne 0) { throw "dotnet publish failed ($LASTEXITCODE)" }
   Set-Content -Path $stamp -Encoding ascii -Value $buildKey, "commit=$commit"
+  # LAMP step 7 (M.TIX-T271): refresh settings.manifest.json so MindAttic Vault shows this build's settings.
+  $manifest = Start-Process -FilePath $exe -ArgumentList '--write-settings-manifest' -WorkingDirectory $dest -Wait -PassThru -WindowStyle Hidden
+  if ($manifest.ExitCode -ne 0) { Write-Host "(--write-settings-manifest exited $($manifest.ExitCode); Tickets Desktop writes it on its next start)" }
 } else {
   Write-Host "$name is up to date ($short)."
 }
