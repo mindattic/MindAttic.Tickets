@@ -403,3 +403,4 @@ updated: 2026-10-12
 | M.TIX-T271 | 2026-10-31 | fix | closed | run.ps1 doesn't run the published exe with --write-settings-manifest (LAMP playbook step 7), so after a redeploy MindAttic Vault keeps showing the old settings manifest until the app next runs (found verifying M.VALT-T73) | 9d413d5 LampDesktopSettingsTests.RunPs1_WritesTheSettingsManifestAfterPublishing |
 | M.TIX-T272 | 2026-10-31 | chore | closed | Vault tab named after the repo: SettingsApp DisplayName 'Tickets Desktop' -> 'MindAttic.Tickets' | M.VALT-T75 92240ad |
 | M.TIX-T273 | 2026-10-31 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
+| M.TIX-T274 | 2026-10-31 | chore | closed | Add 20 file(s); Update 2 file(s) | — |
