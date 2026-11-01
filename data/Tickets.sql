@@ -8954,6 +8954,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T838', 'Prose', 838, '2026-10-31', 'docs', 'closed', 'Update USER_STORIES.md', '—', 837, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T839', 'Prose', 839, '2026-10-31', 'docs', 'closed', 'Update USER_STORIES.md', '—', 838, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T840', 'Prose', 840, '2026-10-31', 'docs', 'closed', 'Update USER_STORIES.md', '—', 839, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T841', 'Prose', 841, '2026-10-31', 'docs', 'closed', 'Update USER_STORIES.md', '—', 840, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -53118,6 +53119,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31306, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31307, 'PRS-T727', '2026-11-01T04:34:17Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31308, 'PRS-T727', '2026-11-01T04:34:17Z', 'ref', '—', 'Already resolved: grep-beats (case-sensitive and insensitive) found zero occurrences of ''Tunis'' or ''Tunisia'' anywhere in the corpus. Sparrow''s platform scene (#4209) is already GLMZ-internal -- the Science Cooperative''s lake platform three miles off the Chicago shore, not an overseas location. The scene was already brought home to the GLMZ before this ticket was filed; nothing left to fix.');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31309, 'M.ORCH-T1344', '2026-11-01T04:34:21Z', 'created', NULL, 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31310, 'PRS-T841', '2026-11-01T04:34:31Z', 'created', NULL, 'closed');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
