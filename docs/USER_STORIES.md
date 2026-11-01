@@ -410,3 +410,5 @@ updated: 2026-10-12
 | M.TIX-T278 | 2026-10-31 | chore | closed | Sync generated/live files | — |
 | M.TIX-T279 | 2026-11-01 | chore | closed | Sync generated/live files | — |
 | M.TIX-T280 | 2026-11-01 | chore | closed | Sync generated/live files | — |
+| M.TIX-T281 | 2026-11-01 | chore | closed | Sync generated/live files | — |
+| M.TIX-T282 | 2026-11-01 | chore | closed | Sync generated/live files | — |
