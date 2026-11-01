@@ -11,7 +11,7 @@ namespace MindAttic.Tickets.Desktop.Data;
 /// A per-machine MindAttic Vault settings app in <c>%LOCALAPPDATA%\MindAttic\Tickets\settings.json</c>, so the
 /// defaults can be set in MindAttic.Vault.Desktop; the app keeps remembering your last choices into it.
 /// </summary>
-[SettingsApp(AppId, "Tickets Desktop", Local = true, Icon = "ticket",
+[SettingsApp(AppId, "MindAttic.Tickets", Local = true, Icon = "ticket",
     Description = "Where Tickets Desktop starts and what a new ticket defaults to. It also remembers your last choices here.")]
 public sealed class DesktopSettings
 {
