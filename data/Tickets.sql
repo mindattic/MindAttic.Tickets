@@ -4265,14 +4265,15 @@ INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref
 INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1380, 'Mods.Cyberpunk2077.ShootDodge', 'C2SD-US-D1', NULL, 'D', NULL, NULL, 'planned', '⬜', '', 'As V, I want twin pistols and a Max Payne style trench coat added to my inventory when the mod loads, so I have the signature loadout without hunting for it.', NULL, NULL, 'bullet', 0);
 INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1381, 'Mods.Cyberpunk2077.ShootDodge', 'C2SD-US-D2', NULL, 'D', NULL, NULL, 'planned', '⬜', '', 'As V, I want the mod to recognize a dedicated Shootdodge input combo (aim held + jump + a movement direction) without misfiring during normal play, so the move triggers only when I mean it to.', NULL, NULL, 'bullet', 1);
 INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1382, 'Mods.Cyberpunk2077.ShootDodge', 'C2SD-US-D3', NULL, 'D', NULL, NULL, 'planned', '⬜', '', 'As V, I want the mod''s state machine to show my current Shootdodge state (NONE/DIVING/AIRBORNE/PRONE/GETUP) at all times, so every later mechanic is built and debugged against one known state.', NULL, NULL, 'bullet', 2);
-INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1383, 'Mods.Cyberpunk2077.ShootDodge', 'C2SD-US-D4', NULL, 'D', NULL, NULL, 'planned', '⬜', '', 'As V, I want the input combo to launch me into a horizontal dive toward my aim direction, so I leave the ground the way Max Payne does.', NULL, NULL, 'bullet', 3);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1383, 'Mods.Cyberpunk2077.ShootDodge', 'C2SD-US-D4', NULL, 'D', NULL, NULL, 'planned', '⬜', '', 'As V, I want the input combo to launch me into a horizontal leap in the direction I''m moving, locked for the whole dive, so I leave the ground the way Max Payne does.', NULL, NULL, 'bullet', 3);
 INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1384, 'Mods.Cyberpunk2077.ShootDodge', 'C2SD-US-D5', NULL, 'D', NULL, NULL, 'planned', '⬜', '', 'As V, I want world time to slow dramatically for the duration of the dive, so the moment feels like Max Payne''s bullet-time instead of an ordinary jump.', NULL, NULL, 'bullet', 4);
 INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1385, 'Mods.Cyberpunk2077.ShootDodge', 'C2SD-US-D6', NULL, 'D', NULL, NULL, 'planned', '⬜', '', 'As V, I want my aim turn-speed and weapon fire-rate to stay at normal speed while the world is slowed, so I can place shots precisely instead of fighting slow-motion input.', NULL, NULL, 'bullet', 5);
-INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1386, 'Mods.Cyberpunk2077.ShootDodge', 'C2SD-US-D7', NULL, 'D', NULL, NULL, 'planned', '⬜', '', 'As V, I want the mod to detect the exact moment I hit the ground after a dive and read whether I''m holding a movement input, so the landing can branch correctly.', NULL, NULL, 'bullet', 6);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1386, 'Mods.Cyberpunk2077.ShootDodge', 'C2SD-US-D7', NULL, 'D', NULL, NULL, 'planned', '⬜', '', 'As V, I want the mod to detect the exact moment I hit the ground after a dive, so slow-mo ends there and I''m put down prone.', NULL, NULL, 'bullet', 6);
 INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1387, 'Mods.Cyberpunk2077.ShootDodge', 'C2SD-US-D8', NULL, 'D', NULL, NULL, 'planned', '⬜', '', 'As V, I want to land prone and keep firing from the ground when I land without holding movement, so I can keep shooting from the floor like Max Payne.', NULL, NULL, 'bullet', 7);
-INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1388, 'Mods.Cyberpunk2077.ShootDodge', 'C2SD-US-D9', NULL, 'D', NULL, NULL, 'planned', '⬜', '', 'As V, I want to scramble back to my feet when I land holding movement, so the dive flows back into normal play instead of stopping dead.', NULL, NULL, 'bullet', 8);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1388, 'Mods.Cyberpunk2077.ShootDodge', 'C2SD-US-D9', NULL, 'D', NULL, NULL, 'planned', '⬜', '', 'As V, lying on the ground after a dive, I want to press a movement input to scramble back to my feet, so the dive flows back into normal play when I choose.', NULL, NULL, 'bullet', 8);
 INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1389, 'Mods.Cyberpunk2077.ShootDodge', 'C2SD-US-D10', NULL, 'D', NULL, NULL, 'planned', '⬜', '', 'As V, I want the Shootdodge restricted to pistols, revolvers and small SMGs, so I can''t trigger it while carrying a sniper rifle or a heavy weapon.', NULL, NULL, 'bullet', 9);
 INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1390, 'Mods.Cyberpunk2077.ShootDodge', 'C2SD-US-D11', NULL, 'D', NULL, NULL, 'planned', '⬜', '', 'As V, I want camera FOV pull-back, a whoosh cue, and a muffled low-pass on music/ambience during the dive, so the move reads as cinematic rather than a glitch.', NULL, NULL, 'bullet', 10);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1391, 'Mods.Cyberpunk2077.ShootDodge', 'C2SD-US-D12', NULL, 'D', NULL, NULL, 'planned', '⬜', '', 'As V, I want a Max Payne style bullet-time meter that the dive''s slow-mo drains and that refills the way Max Payne''s does, so I can''t stay in slow-mo forever and have to earn it back.', NULL, NULL, 'bullet', 11);
 
 -- backlog_items
 INSERT INTO backlog_items (uid, repo, ordinal, text) VALUES (1, 'ChiMesh', 19, '1. **CM-US-A1/A2** — order parts, assemble three nodes (gates everything physical).');
@@ -7728,18 +7729,19 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.WEB-T16', 'MindAttic.Web', 16, '2026-10-24', 'docs', 'closed', 'Update USER_STORIES.md', '—', 15, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T1', 'Mods.Cyberpunk2077.ShootDodge', 1, '2026-11-01', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T2', 'Mods.Cyberpunk2077.ShootDodge', 2, '2026-11-01', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 1, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T3', 'Mods.Cyberpunk2077.ShootDodge', 3, '2026-11-01', 'chore', 'open', 'Scaffold new repo: Cyberpunk 2077 mod for Max Payne 2 style Shootdodge (dive, bullet-time, prone/get-up) plus twin pistols + trench coat loadout', '—', 2, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T3', 'Mods.Cyberpunk2077.ShootDodge', 3, '2026-11-01', 'chore', 'closed', 'Scaffold new repo: Cyberpunk 2077 mod for Max Payne 2 style Shootdodge (dive, bullet-time, prone/get-up) plus twin pistols + trench coat loadout', '7fd712eebb5ef5b40fe6e6e1b5120afbf0c4e96e', 2, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T4', 'Mods.Cyberpunk2077.ShootDodge', 4, '2026-11-01', 'feature', 'open', 'Grant twin pistols + Max Payne style trench coat on mod load', 'C2SD-US-D1', 3, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T5', 'Mods.Cyberpunk2077.ShootDodge', 5, '2026-11-01', 'feature', 'open', 'Shootdodge input detection: aim+jump+move combo, debounced against normal play', 'C2SD-US-D2', 4, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T5', 'Mods.Cyberpunk2077.ShootDodge', 5, '2026-11-01', 'feature', 'closed', 'Shootdodge input detection: aim+jump+move combo, debounced against normal play', 'ac06f0e', 4, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T6', 'Mods.Cyberpunk2077.ShootDodge', 6, '2026-11-01', 'feature', 'open', 'Formalize Shootdodge state machine (NONE/DIVING/AIRBORNE/PRONE/GETUP) + debug overlay', 'C2SD-US-D3', 5, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T7', 'Mods.Cyberpunk2077.ShootDodge', 7, '2026-11-01', 'feature', 'open', 'Dive trigger: launch V into a horizontal leap toward aim direction', 'C2SD-US-D4', 6, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T7', 'Mods.Cyberpunk2077.ShootDodge', 7, '2026-11-01', 'feature', 'open', 'Dive trigger: launch V into a horizontal leap in the held movement direction, locked for the whole dive', 'C2SD-US-D4', 6, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T8', 'Mods.Cyberpunk2077.ShootDodge', 8, '2026-11-01', 'feature', 'open', 'Bullet-time: world time dilation for the duration of the dive', 'C2SD-US-D5', 7, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T9', 'Mods.Cyberpunk2077.ShootDodge', 9, '2026-11-01', 'feature', 'open', 'Responsive aim+fire during slow-mo: exempt player turn-speed and fire-rate from the dilation', 'C2SD-US-D6', 8, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T10', 'Mods.Cyberpunk2077.ShootDodge', 10, '2026-11-01', 'feature', 'open', 'Ground-contact detection: detect landing and read held movement input', 'C2SD-US-D7', 9, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T10', 'Mods.Cyberpunk2077.ShootDodge', 10, '2026-11-01', 'feature', 'open', 'Ground-contact detection: detect landing, always go prone, record held movement input', 'C2SD-US-D7', 9, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T11', 'Mods.Cyberpunk2077.ShootDodge', 11, '2026-11-01', 'feature', 'open', 'Prone-and-shoot state: land prone, keep free-aim firing from the ground', 'C2SD-US-D8', 10, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T12', 'Mods.Cyberpunk2077.ShootDodge', 12, '2026-11-01', 'feature', 'open', 'Get-up recovery: scramble back to normal stance when landing with movement held', 'C2SD-US-D9', 11, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T12', 'Mods.Cyberpunk2077.ShootDodge', 12, '2026-11-01', 'feature', 'open', 'Get-up recovery: from prone, a movement input scrambles V back to their feet', 'C2SD-US-D9', 11, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T13', 'Mods.Cyberpunk2077.ShootDodge', 13, '2026-11-01', 'feature', 'open', 'Weapon restriction: gate the dive trigger to pistols/revolvers/small SMGs only', 'C2SD-US-D10', 12, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T14', 'Mods.Cyberpunk2077.ShootDodge', 14, '2026-11-01', 'feature', 'open', 'Camera + audio polish: FOV pull-back, whoosh cue, music/ambience low-pass during the dive', 'C2SD-US-D11', 13, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T15', 'Mods.Cyberpunk2077.ShootDodge', 15, '2026-11-01', 'feature', 'open', 'Bullet-time meter: Max Payne 2 style hourglass that the dive drains and that refills the way MP2''s does', '—', 14, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T1', 'Mods.Cyberpunk2077.WebSlinger', 1, '2026-11-01', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T2', 'Mods.Cyberpunk2077.WebSlinger', 2, '2026-11-01', 'feature', 'closed', 'Scaffold new repo: Cyberpunk 2077 mod for Mantis Blade wall-climb, wall-run/jump, and Spider-Man 2 style webslinging', '7aad643ac7c88e810331b43e6e85a40b41323aaf', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T3', 'Mods.Cyberpunk2077.WebSlinger', 3, '2026-11-01', 'chore', 'closed', 'Rename repo to Mods.Cyberpunk2077.WebSlinger for mod organization (GitHub + folder + refs)', '36d0a7610a8d43186a58b5ea925f2190e04bf613', 2, NULL);
@@ -55062,6 +55064,298 @@ As V, I want camera FOV pull-back, a whoosh cue, and a muffled low-pass on music
 - [ ] Music/ambient tracks get a low-pass filter / volume duck while DIVING/AIRBORNE, restored on landing.
 - [ ] All three effects are toggleable independently in the debug overlay so each can be verified in isolation.
 - [ ] Verify in-game: run a dive -> prone and a dive -> get-up; confirm all three effects start on dive entry and cleanly revert on landing, both paths.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32888, 'C2SD-T3', '2026-11-01T20:44:24Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32889, 'C2SD-T3', '2026-11-01T20:44:24Z', 'ref', '—', '7fd712eebb5ef5b40fe6e6e1b5120afbf0c4e96e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32890, 'C2SD-T3', '2026-11-01T20:44:45Z', 'working', '1432d062-9a94-466f-ad51-9451c4f99b4b', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32891, 'C2SD-T5', '2026-11-01T20:45:20Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32892, 'C2SD-T5', '2026-11-01T20:45:20Z', 'ref', 'C2SD-US-D2', 'ac06f0e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32893, 'C2SD-T4', '2026-11-01T20:45:24Z', 'working', 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32894, 'C2SD-T5', '2026-11-01T20:45:35Z', 'working', 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32895, 'C2SD-T4', '2026-11-01T20:45:36Z', 'working', NULL, '6e82fb1a-2202-410b-93b9-327c9f6ad258');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32896, 'C2SD-T4', '2026-11-01T20:45:47Z', 'priority', '0', '-10');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32897, 'C2SD-T7', '2026-11-01T20:47:31Z', 'summary', 'Dive trigger: launch V into a horizontal leap toward aim direction', 'Dive trigger: launch V into a horizontal leap in the held movement direction, locked for the whole dive (corrected: User spec: perfect first-person recreation of Max Payne 2''s shootdodge (leap in a fixed direction, slow-mo, shoot, land prone, keep shooting or stand up))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32898, 'C2SD-T7', '2026-11-01T20:47:32Z', 'description', '## Story
+
+As V, I want the input combo to launch me into a horizontal dive toward my aim direction, so I leave the ground the way Max Payne does.
+
+## Acceptance
+
+- [ ] A detected T5 combo while in state NONE transitions to DIVING and applies an impulse that sends V airborne, horizontally, toward the camera/aim direction.
+- [ ] The initial leap reuses an existing game animation/impulse (a custom .animgraph dive pose is explicitly out of scope here; open question captured in docs/DESIGN.md for a later pass).
+- [ ] The dive cannot be re-triggered mid-air: the state guard only allows the transition from NONE.
+- [ ] Verify in-game: trigger the combo from standing; V leaves the ground toward the aim direction and the overlay reads DIVING; repeating the combo mid-air does nothing.', '## Story
+
+As V, I want the input combo to launch me into a horizontal leap in the direction I''m moving, locked for the whole dive, so I leave the ground the way Max Payne does.
+
+## Acceptance
+
+- [ ] A detected T5 combo while in state NONE transitions to DIVING and applies an impulse that sends V airborne, horizontally, in the **held movement direction relative to the camera** (forward, back, left, right or a diagonal), not the aim direction.
+- [ ] The direction is captured at launch and fixed for the whole dive: movement input in the air does not steer it. The camera and aim stay free so V can turn and shoot anywhere while flying.
+- [ ] The camera stays first person throughout (no third-person switch).
+- [ ] The initial leap reuses an existing game animation/impulse (a custom .animgraph dive pose is out of scope; open question captured in docs/DESIGN.md for a later pass).
+- [ ] The dive cannot be re-triggered mid-air: the state guard only allows the transition from NONE.
+- [ ] Verify in-game: trigger the combo while strafing left, then right, then backpedalling; V leaves the ground that way each time while you can look and aim elsewhere, the path doesn''t bend when you press other directions mid-air, and the overlay reads DIVING; repeating the combo mid-air does nothing.
+
+## Reference: the target move (user spec, 2026-11-01)
+
+A perfect first-person recreation of Max Payne 2''s shootdodge:
+1. **Leap in a fixed direction.** The dive goes the way V is moving (the held movement direction relative to the camera: forward, back, left, right, diagonals), locked at launch. It can''t be steered mid-air; only the aim is free.
+2. **Time slows.** Every enemy, projectile and the world slows; V''s aim and fire stay responsive so you shoot while everyone else is slow.
+3. **Hit the ground prone.** Every dive ends lying on the ground; slow-mo ends on impact.
+4. **Then choose:** keep shooting from the ground, or press a movement input to stand back up.
+
+The camera stays first person the whole time, prone included. Never switch to third person.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32899, 'C2SD-T10', '2026-11-01T20:47:33Z', 'summary', 'Ground-contact detection: detect landing and read held movement input', 'Ground-contact detection: detect landing, always go prone, record held movement input (corrected: User spec: perfect first-person recreation of Max Payne 2''s shootdodge (leap in a fixed direction, slow-mo, shoot, land prone, keep shooting or stand up))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32900, 'C2SD-T10', '2026-11-01T20:47:34Z', 'description', '## Story
+
+As V, I want the mod to detect the exact moment I hit the ground after a dive and read whether I''m holding a movement input, so the landing can branch correctly.
+
+## Acceptance
+
+- [ ] Mod detects the frame V''s collision transitions from airborne to grounded while in DIVING/AIRBORNE.
+- [ ] On that frame, it reads whether a movement input is currently held and stores the flag for the next transition (T11/T12).
+- [ ] Grazing a low obstacle mid-dive without ending the airborne arc does not count as a landing (no false positive).
+- [ ] Verify in-game: dive and land; the overlay logs exactly one landing event per dive, with the correct held/not-held movement flag in both cases.', '## Story
+
+As V, I want the mod to detect the exact moment I hit the ground after a dive, so slow-mo ends there and I''m put down prone.
+
+## Acceptance
+
+- [ ] Mod detects the frame V''s collision transitions from airborne to grounded while in DIVING/AIRBORNE.
+- [ ] That frame always transitions AIRBORNE -> PRONE (handed to T11); every dive ends on the ground, whatever input is held.
+- [ ] It also records whether a movement input is held at impact, so T12 can stand V up right after the impact instead of waiting for a fresh press.
+- [ ] Grazing a low obstacle mid-dive without ending the airborne arc does not count as a landing (no false positive).
+- [ ] Verify in-game: dive and land; the overlay logs exactly one landing event per dive, with the correct held/not-held movement flag in both cases.
+
+## Reference: the target move (user spec, 2026-11-01)
+
+A perfect first-person recreation of Max Payne 2''s shootdodge:
+1. **Leap in a fixed direction.** The dive goes the way V is moving (the held movement direction relative to the camera: forward, back, left, right, diagonals), locked at launch. It can''t be steered mid-air; only the aim is free.
+2. **Time slows.** Every enemy, projectile and the world slows; V''s aim and fire stay responsive so you shoot while everyone else is slow.
+3. **Hit the ground prone.** Every dive ends lying on the ground; slow-mo ends on impact.
+4. **Then choose:** keep shooting from the ground, or press a movement input to stand back up.
+
+The camera stays first person the whole time, prone included. Never switch to third person.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32901, 'C2SD-T12', '2026-11-01T20:47:35Z', 'summary', 'Get-up recovery: scramble back to normal stance when landing with movement held', 'Get-up recovery: from prone, a movement input scrambles V back to their feet (corrected: User spec: perfect first-person recreation of Max Payne 2''s shootdodge (leap in a fixed direction, slow-mo, shoot, land prone, keep shooting or stand up))');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32902, 'C2SD-T12', '2026-11-01T20:47:37Z', 'description', '## Story
+
+As V, I want to scramble back to my feet when I land holding movement, so the dive flows back into normal play instead of stopping dead.
+
+## Acceptance
+
+- [ ] Landing with movement held (T10) transitions AIRBORNE -> GETUP -> NONE, playing a stand/scramble animation rather than a hard snap to idle.
+- [ ] Full normal movement control returns only once GETUP completes.
+- [ ] From PRONE (T11), pressing a movement/stand input also runs the same GETUP transition back to NONE.
+- [ ] Verify in-game: dive and land while still holding forward — V scrambles up smoothly and regains control; separately, stand up out of PRONE on command and confirm the same transition.', '## Story
+
+As V, lying on the ground after a dive, I want to press a movement input to scramble back to my feet, so the dive flows back into normal play when I choose.
+
+## Acceptance
+
+- [ ] From PRONE, pressing a movement input transitions PRONE -> GETUP -> NONE, playing a stand/scramble rather than a hard snap to idle.
+- [ ] If movement was already held at impact (T10''s flag), V still hits the ground first, then gets up right after the impact with no fresh press needed.
+- [ ] Without a movement input, V stays prone and keeps shooting (T11); there is no timer.
+- [ ] Full normal movement control returns only once GETUP completes; the camera stays first person throughout.
+- [ ] Verify in-game: dive, land, shoot from the ground, then press forward and V gets up; separately, dive and keep holding forward through the landing: V hits the ground, then scrambles straight up.
+
+## Reference: the target move (user spec, 2026-11-01)
+
+A perfect first-person recreation of Max Payne 2''s shootdodge:
+1. **Leap in a fixed direction.** The dive goes the way V is moving (the held movement direction relative to the camera: forward, back, left, right, diagonals), locked at launch. It can''t be steered mid-air; only the aim is free.
+2. **Time slows.** Every enemy, projectile and the world slows; V''s aim and fire stay responsive so you shoot while everyone else is slow.
+3. **Hit the ground prone.** Every dive ends lying on the ground; slow-mo ends on impact.
+4. **Then choose:** keep shooting from the ground, or press a movement input to stand back up.
+
+The camera stays first person the whole time, prone included. Never switch to third person.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32903, 'C2SD-T6', '2026-11-01T20:48:12Z', 'description', '## Story
+
+As V, I want the mod''s state machine to show my current Shootdodge state (NONE/DIVING/AIRBORNE/PRONE/GETUP) at all times, so every later mechanic is built and debugged against one known state.
+
+## Acceptance
+
+- [ ] ImGui debug overlay always displays the current state: NONE, DIVING, AIRBORNE, PRONE, or GETUP.
+- [ ] State defaults to NONE on load and on any uncaught edge case (never gets stuck in a non-NONE state with no mechanic driving it).
+- [ ] All transitions are defined in one centralized table/function, not scattered ad hoc checks across the script.
+- [ ] Verify in-game: state overlay reads NONE throughout a normal play session (the T5 combo is detected but not yet wired to any transition).', '## Story
+
+As V, I want the mod''s state machine to show my current Shootdodge state (NONE/DIVING/AIRBORNE/PRONE/GETUP) at all times, so every later mechanic is built and debugged against one known state.
+
+## Acceptance
+
+- [ ] ImGui debug overlay always displays the current state: NONE, DIVING, AIRBORNE, PRONE, or GETUP.
+- [ ] State defaults to NONE on load and on any uncaught edge case (never gets stuck in a non-NONE state with no mechanic driving it).
+- [ ] All transitions are defined in one centralized table/function, not scattered ad hoc checks across the script.
+- [ ] Verify in-game: state overlay reads NONE throughout a normal play session (the T5 combo is detected but not yet wired to any transition).
+
+## Reference: the target move (user spec, 2026-11-01)
+
+A perfect first-person recreation of Max Payne 2''s shootdodge:
+1. **Leap in a fixed direction.** The dive goes the way V is moving (the held movement direction relative to the camera: forward, back, left, right, diagonals), locked at launch. It can''t be steered mid-air; only the aim is free.
+2. **Time slows.** Every enemy, projectile and the world slows; V''s aim and fire stay responsive so you shoot while everyone else is slow.
+3. **Hit the ground prone.** Every dive ends lying on the ground; slow-mo ends on impact.
+4. **Then choose:** keep shooting from the ground, or press a movement input to stand back up.
+
+The camera stays first person the whole time, prone included. Never switch to third person.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32904, 'C2SD-T8', '2026-11-01T20:48:13Z', 'description', '## Story
+
+As V, I want world time to slow dramatically for the duration of the dive, so the moment feels like Max Payne''s bullet-time instead of an ordinary jump.
+
+## Acceptance
+
+- [ ] Entering DIVING sets a world time dilation factor (default 0.2, configurable) via the game''s time system.
+- [ ] Dilation reliably reverts to 1.0 the instant the state leaves DIVING/AIRBORNE (landing, death, or pause/menu), with no stuck slow-mo.
+- [ ] Opening the game''s pause menu mid-dive and resuming does not leave dilation stuck active.
+- [ ] Verify in-game: trigger the dive, observe the world visibly slow; confirm dilation clears within one frame of landing, and also clears correctly after a mid-dive pause/resume.', '## Story
+
+As V, I want world time to slow dramatically for the duration of the dive, so the moment feels like Max Payne''s bullet-time instead of an ordinary jump.
+
+## Acceptance
+
+- [ ] Entering DIVING sets a world time dilation factor (default 0.2, configurable) via the game''s time system.
+- [ ] Dilation reliably reverts to 1.0 the instant the state leaves DIVING/AIRBORNE (landing, death, or pause/menu), with no stuck slow-mo.
+- [ ] Opening the game''s pause menu mid-dive and resuming does not leave dilation stuck active.
+- [ ] Verify in-game: trigger the dive, observe the world visibly slow; confirm dilation clears within one frame of landing, and also clears correctly after a mid-dive pause/resume.
+
+## Reference: the target move (user spec, 2026-11-01)
+
+A perfect first-person recreation of Max Payne 2''s shootdodge:
+1. **Leap in a fixed direction.** The dive goes the way V is moving (the held movement direction relative to the camera: forward, back, left, right, diagonals), locked at launch. It can''t be steered mid-air; only the aim is free.
+2. **Time slows.** Every enemy, projectile and the world slows; V''s aim and fire stay responsive so you shoot while everyone else is slow.
+3. **Hit the ground prone.** Every dive ends lying on the ground; slow-mo ends on impact.
+4. **Then choose:** keep shooting from the ground, or press a movement input to stand back up.
+
+The camera stays first person the whole time, prone included. Never switch to third person.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32905, 'C2SD-T9', '2026-11-01T20:48:13Z', 'description', '## Story
+
+As V, I want my aim turn-speed and weapon fire-rate to stay at normal speed while the world is slowed, so I can place shots precisely instead of fighting slow-motion input.
+
+## Acceptance
+
+- [ ] Camera/aim turn rate is restored to (or exempted from) the global T8 dilation factor while DIVING/AIRBORNE.
+- [ ] Weapon fire rate and shoot-input polling are exempted from the dilation; shots fire at normal cadence.
+- [ ] Non-exempted systems (enemies, projectiles, environment, V''s own fall arc) remain visibly slowed for contrast — only aim and fire are sped back up.
+- [ ] Verify in-game: fire a pistol during the dive; shot cadence matches normal (non-dive) fire rate while the surrounding world is still visibly slow-motion.', '## Story
+
+As V, I want my aim turn-speed and weapon fire-rate to stay at normal speed while the world is slowed, so I can place shots precisely instead of fighting slow-motion input.
+
+## Acceptance
+
+- [ ] Camera/aim turn rate is restored to (or exempted from) the global T8 dilation factor while DIVING/AIRBORNE.
+- [ ] Weapon fire rate and shoot-input polling are exempted from the dilation; shots fire at normal cadence.
+- [ ] Non-exempted systems (enemies, projectiles, environment, V''s own fall arc) remain visibly slowed for contrast — only aim and fire are sped back up.
+- [ ] Verify in-game: fire a pistol during the dive; shot cadence matches normal (non-dive) fire rate while the surrounding world is still visibly slow-motion.
+
+## Reference: the target move (user spec, 2026-11-01)
+
+A perfect first-person recreation of Max Payne 2''s shootdodge:
+1. **Leap in a fixed direction.** The dive goes the way V is moving (the held movement direction relative to the camera: forward, back, left, right, diagonals), locked at launch. It can''t be steered mid-air; only the aim is free.
+2. **Time slows.** Every enemy, projectile and the world slows; V''s aim and fire stay responsive so you shoot while everyone else is slow.
+3. **Hit the ground prone.** Every dive ends lying on the ground; slow-mo ends on impact.
+4. **Then choose:** keep shooting from the ground, or press a movement input to stand back up.
+
+The camera stays first person the whole time, prone included. Never switch to third person.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32906, 'C2SD-T11', '2026-11-01T20:48:14Z', 'description', '## Story
+
+As V, I want to land prone and keep firing from the ground when I land without holding movement, so I can keep shooting from the floor like Max Payne.
+
+## Acceptance
+
+- [ ] Landing with no movement held (T10) transitions AIRBORNE -> PRONE.
+- [ ] While PRONE, V can free-aim and fire in any horizontal direction without standing up first.
+- [ ] PRONE persists until the player presses a stand/move input (handed to T12''s get-up transition) — not on a timer.
+- [ ] Verify in-game: dive, release movement before landing; V ends up prone and can aim/fire 360 degrees from the ground.', '## Story
+
+As V, I want to land prone and keep firing from the ground when I land without holding movement, so I can keep shooting from the floor like Max Payne.
+
+## Acceptance
+
+- [ ] Landing with no movement held (T10) transitions AIRBORNE -> PRONE.
+- [ ] While PRONE, V can free-aim and fire in any horizontal direction without standing up first.
+- [ ] PRONE persists until the player presses a stand/move input (handed to T12''s get-up transition) — not on a timer.
+- [ ] Verify in-game: dive, release movement before landing; V ends up prone and can aim/fire 360 degrees from the ground.
+
+## Reference: the target move (user spec, 2026-11-01)
+
+A perfect first-person recreation of Max Payne 2''s shootdodge:
+1. **Leap in a fixed direction.** The dive goes the way V is moving (the held movement direction relative to the camera: forward, back, left, right, diagonals), locked at launch. It can''t be steered mid-air; only the aim is free.
+2. **Time slows.** Every enemy, projectile and the world slows; V''s aim and fire stay responsive so you shoot while everyone else is slow.
+3. **Hit the ground prone.** Every dive ends lying on the ground; slow-mo ends on impact.
+4. **Then choose:** keep shooting from the ground, or press a movement input to stand back up.
+
+The camera stays first person the whole time, prone included. Never switch to third person.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32907, 'C2SD-T13', '2026-11-01T20:48:15Z', 'description', '## Story
+
+As V, I want the Shootdodge restricted to pistols, revolvers and small SMGs, so I can''t trigger it while carrying a sniper rifle or a heavy weapon.
+
+## Acceptance
+
+- [ ] T5''s input detection checks the currently equipped weapon''s type before arming the combo.
+- [ ] Pistols, revolvers, and small SMGs (explicit allow-list) permit the dive; rifles, shotguns, LMGs, sniper rifles, melee weapons and fists block it.
+- [ ] Switching weapons mid-session immediately updates whether the combo is armed — no restart needed.
+- [ ] Verify in-game: attempt the combo with a sniper rifle equipped (no trigger), then switch to a pistol and confirm it triggers normally.', '## Story
+
+As V, I want the Shootdodge restricted to pistols, revolvers and small SMGs, so I can''t trigger it while carrying a sniper rifle or a heavy weapon.
+
+## Acceptance
+
+- [ ] T5''s input detection checks the currently equipped weapon''s type before arming the combo.
+- [ ] Pistols, revolvers, and small SMGs (explicit allow-list) permit the dive; rifles, shotguns, LMGs, sniper rifles, melee weapons and fists block it.
+- [ ] Switching weapons mid-session immediately updates whether the combo is armed — no restart needed.
+- [ ] Verify in-game: attempt the combo with a sniper rifle equipped (no trigger), then switch to a pistol and confirm it triggers normally.
+
+## Reference: the target move (user spec, 2026-11-01)
+
+A perfect first-person recreation of Max Payne 2''s shootdodge:
+1. **Leap in a fixed direction.** The dive goes the way V is moving (the held movement direction relative to the camera: forward, back, left, right, diagonals), locked at launch. It can''t be steered mid-air; only the aim is free.
+2. **Time slows.** Every enemy, projectile and the world slows; V''s aim and fire stay responsive so you shoot while everyone else is slow.
+3. **Hit the ground prone.** Every dive ends lying on the ground; slow-mo ends on impact.
+4. **Then choose:** keep shooting from the ground, or press a movement input to stand back up.
+
+The camera stays first person the whole time, prone included. Never switch to third person.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32908, 'C2SD-T14', '2026-11-01T20:48:16Z', 'description', '## Story
+
+As V, I want camera FOV pull-back, a whoosh cue, and a muffled low-pass on music/ambience during the dive, so the move reads as cinematic rather than a glitch.
+
+## Acceptance
+
+- [ ] Camera FOV pulls back by a configurable amount for the duration of DIVING/AIRBORNE and restores on landing.
+- [ ] A whoosh sound effect plays once on dive entry.
+- [ ] Music/ambient tracks get a low-pass filter / volume duck while DIVING/AIRBORNE, restored on landing.
+- [ ] All three effects are toggleable independently in the debug overlay so each can be verified in isolation.
+- [ ] Verify in-game: run a dive -> prone and a dive -> get-up; confirm all three effects start on dive entry and cleanly revert on landing, both paths.', '## Story
+
+As V, I want camera FOV pull-back, a whoosh cue, and a muffled low-pass on music/ambience during the dive, so the move reads as cinematic rather than a glitch.
+
+## Acceptance
+
+- [ ] Camera FOV pulls back by a configurable amount for the duration of DIVING/AIRBORNE and restores on landing.
+- [ ] A whoosh sound effect plays once on dive entry.
+- [ ] Music/ambient tracks get a low-pass filter / volume duck while DIVING/AIRBORNE, restored on landing.
+- [ ] All three effects are toggleable independently in the debug overlay so each can be verified in isolation.
+- [ ] Verify in-game: run a dive -> prone and a dive -> get-up; confirm all three effects start on dive entry and cleanly revert on landing, both paths.
+
+## Reference: the target move (user spec, 2026-11-01)
+
+A perfect first-person recreation of Max Payne 2''s shootdodge:
+1. **Leap in a fixed direction.** The dive goes the way V is moving (the held movement direction relative to the camera: forward, back, left, right, diagonals), locked at launch. It can''t be steered mid-air; only the aim is free.
+2. **Time slows.** Every enemy, projectile and the world slows; V''s aim and fire stay responsive so you shoot while everyone else is slow.
+3. **Hit the ground prone.** Every dive ends lying on the ground; slow-mo ends on impact.
+4. **Then choose:** keep shooting from the ground, or press a movement input to stand back up.
+
+The camera stays first person the whole time, prone included. Never switch to third person.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32909, 'C2SD-T15', '2026-11-01T20:48:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32910, 'C2SD-T15', '2026-11-01T20:48:33Z', 'link', NULL, 'implements C2SD-US-D12');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32911, 'C2SD-T15', '2026-11-01T20:48:35Z', 'link', NULL, 'requires C2SD-T8');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32912, 'C2SD-T8', '2026-11-01T20:48:35Z', 'link', NULL, 'C2SD-T15 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32913, 'C2SD-T14', '2026-11-01T20:48:36Z', 'link', NULL, 'requires C2SD-T15');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32914, 'C2SD-T15', '2026-11-01T20:48:37Z', 'link', NULL, 'C2SD-T14 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32915, 'C2SD-T4', '2026-11-01T20:48:37Z', 'link', NULL, 'requires C2SD-T15');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32916, 'C2SD-T15', '2026-11-01T20:48:38Z', 'link', NULL, 'C2SD-T4 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32917, 'C2SD-T15', '2026-11-01T20:48:39Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32918, 'C2SD-T15', '2026-11-01T20:48:42Z', 'working', NULL, '6e82fb1a-2202-410b-93b9-327c9f6ad258');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32919, 'C2SD-T15', '2026-11-01T20:48:57Z', 'working', '6e82fb1a-2202-410b-93b9-327c9f6ad258', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32920, 'C2SD-T6', '2026-11-01T20:51:15Z', 'working', NULL, 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32921, 'C2WS-T4', '2026-11-01T20:52:13Z', 'working', NULL, 'ryandebraal@mindattic.com (808ce091-f94c-467d-a7d1-b6562cc81444)');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -55105,8 +55399,9 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T12', 'approved', 0, '2026-11-01T20:41:28Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T13', 'approved', 0, '2026-11-01T20:41:28Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T14', 'approved', 0, '2026-11-01T20:41:28Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T15', 'approved', 0, '2026-11-01T20:48:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T3', 'approved', 0, '2026-11-01T20:41:25Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T4', 'approved', 0, '2026-11-01T20:41:26Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T4', 'approved', -10, '2026-11-01T20:45:47Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T5', 'approved', 0, '2026-11-01T20:41:26Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T6', 'approved', 0, '2026-11-01T20:41:26Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T7', 'approved', 0, '2026-11-01T20:41:27Z', NULL);
@@ -57535,9 +57830,9 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('USOD-T9', 'approved', 0, '2026-10-22T23:02:27Z', NULL);
 
 -- ticket_work
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2SD-T3', NULL, 0, NULL, '1432d062-9a94-466f-ad51-9451c4f99b4b', '2026-11-01T20:39:16Z', '2026-11-01T20:39:16Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2SD-T4', NULL, 0, 'ryandebraal@mindattic.com', '6e82fb1a-2202-410b-93b9-327c9f6ad258', '2026-11-01T20:41:46Z', '2026-11-01T20:41:46Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2SD-T5', NULL, 0, 'ryandebraal@mindattic.com', '6e82fb1a-2202-410b-93b9-327c9f6ad258', '2026-11-01T20:41:30Z', '2026-11-01T20:41:30Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2SD-T4', NULL, 0, NULL, '6e82fb1a-2202-410b-93b9-327c9f6ad258', '2026-11-01T20:45:36Z', '2026-11-01T20:45:36Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2SD-T6', NULL, 0, 'ryandebraal@mindattic.com', '6e82fb1a-2202-410b-93b9-327c9f6ad258', '2026-11-01T20:51:15Z', '2026-11-01T20:51:15Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2WS-T4', NULL, 0, 'ryandebraal@mindattic.com', '808ce091-f94c-467d-a7d1-b6562cc81444', '2026-11-01T20:52:13Z', '2026-11-01T20:52:13Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
@@ -58713,14 +59008,25 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AWN-T19', '#
 <!-- A checklist of what must be true for it to be done. -->', '2026-10-31T18:29:19Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2SD-T10', '## Story
 
-As V, I want the mod to detect the exact moment I hit the ground after a dive and read whether I''m holding a movement input, so the landing can branch correctly.
+As V, I want the mod to detect the exact moment I hit the ground after a dive, so slow-mo ends there and I''m put down prone.
 
 ## Acceptance
 
 - [ ] Mod detects the frame V''s collision transitions from airborne to grounded while in DIVING/AIRBORNE.
-- [ ] On that frame, it reads whether a movement input is currently held and stores the flag for the next transition (T11/T12).
+- [ ] That frame always transitions AIRBORNE -> PRONE (handed to T11); every dive ends on the ground, whatever input is held.
+- [ ] It also records whether a movement input is held at impact, so T12 can stand V up right after the impact instead of waiting for a fresh press.
 - [ ] Grazing a low obstacle mid-dive without ending the airborne arc does not count as a landing (no false positive).
-- [ ] Verify in-game: dive and land; the overlay logs exactly one landing event per dive, with the correct held/not-held movement flag in both cases.', '2026-11-01T20:42:01Z');
+- [ ] Verify in-game: dive and land; the overlay logs exactly one landing event per dive, with the correct held/not-held movement flag in both cases.
+
+## Reference: the target move (user spec, 2026-11-01)
+
+A perfect first-person recreation of Max Payne 2''s shootdodge:
+1. **Leap in a fixed direction.** The dive goes the way V is moving (the held movement direction relative to the camera: forward, back, left, right, diagonals), locked at launch. It can''t be steered mid-air; only the aim is free.
+2. **Time slows.** Every enemy, projectile and the world slows; V''s aim and fire stay responsive so you shoot while everyone else is slow.
+3. **Hit the ground prone.** Every dive ends lying on the ground; slow-mo ends on impact.
+4. **Then choose:** keep shooting from the ground, or press a movement input to stand back up.
+
+The camera stays first person the whole time, prone included. Never switch to third person.', '2026-11-01T20:47:34Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2SD-T11', '## Story
 
 As V, I want to land prone and keep firing from the ground when I land without holding movement, so I can keep shooting from the floor like Max Payne.
@@ -58730,17 +59036,38 @@ As V, I want to land prone and keep firing from the ground when I land without h
 - [ ] Landing with no movement held (T10) transitions AIRBORNE -> PRONE.
 - [ ] While PRONE, V can free-aim and fire in any horizontal direction without standing up first.
 - [ ] PRONE persists until the player presses a stand/move input (handed to T12''s get-up transition) — not on a timer.
-- [ ] Verify in-game: dive, release movement before landing; V ends up prone and can aim/fire 360 degrees from the ground.', '2026-11-01T20:42:06Z');
+- [ ] Verify in-game: dive, release movement before landing; V ends up prone and can aim/fire 360 degrees from the ground.
+
+## Reference: the target move (user spec, 2026-11-01)
+
+A perfect first-person recreation of Max Payne 2''s shootdodge:
+1. **Leap in a fixed direction.** The dive goes the way V is moving (the held movement direction relative to the camera: forward, back, left, right, diagonals), locked at launch. It can''t be steered mid-air; only the aim is free.
+2. **Time slows.** Every enemy, projectile and the world slows; V''s aim and fire stay responsive so you shoot while everyone else is slow.
+3. **Hit the ground prone.** Every dive ends lying on the ground; slow-mo ends on impact.
+4. **Then choose:** keep shooting from the ground, or press a movement input to stand back up.
+
+The camera stays first person the whole time, prone included. Never switch to third person.', '2026-11-01T20:48:14Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2SD-T12', '## Story
 
-As V, I want to scramble back to my feet when I land holding movement, so the dive flows back into normal play instead of stopping dead.
+As V, lying on the ground after a dive, I want to press a movement input to scramble back to my feet, so the dive flows back into normal play when I choose.
 
 ## Acceptance
 
-- [ ] Landing with movement held (T10) transitions AIRBORNE -> GETUP -> NONE, playing a stand/scramble animation rather than a hard snap to idle.
-- [ ] Full normal movement control returns only once GETUP completes.
-- [ ] From PRONE (T11), pressing a movement/stand input also runs the same GETUP transition back to NONE.
-- [ ] Verify in-game: dive and land while still holding forward — V scrambles up smoothly and regains control; separately, stand up out of PRONE on command and confirm the same transition.', '2026-11-01T20:42:07Z');
+- [ ] From PRONE, pressing a movement input transitions PRONE -> GETUP -> NONE, playing a stand/scramble rather than a hard snap to idle.
+- [ ] If movement was already held at impact (T10''s flag), V still hits the ground first, then gets up right after the impact with no fresh press needed.
+- [ ] Without a movement input, V stays prone and keeps shooting (T11); there is no timer.
+- [ ] Full normal movement control returns only once GETUP completes; the camera stays first person throughout.
+- [ ] Verify in-game: dive, land, shoot from the ground, then press forward and V gets up; separately, dive and keep holding forward through the landing: V hits the ground, then scrambles straight up.
+
+## Reference: the target move (user spec, 2026-11-01)
+
+A perfect first-person recreation of Max Payne 2''s shootdodge:
+1. **Leap in a fixed direction.** The dive goes the way V is moving (the held movement direction relative to the camera: forward, back, left, right, diagonals), locked at launch. It can''t be steered mid-air; only the aim is free.
+2. **Time slows.** Every enemy, projectile and the world slows; V''s aim and fire stay responsive so you shoot while everyone else is slow.
+3. **Hit the ground prone.** Every dive ends lying on the ground; slow-mo ends on impact.
+4. **Then choose:** keep shooting from the ground, or press a movement input to stand back up.
+
+The camera stays first person the whole time, prone included. Never switch to third person.', '2026-11-01T20:47:37Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2SD-T13', '## Story
 
 As V, I want the Shootdodge restricted to pistols, revolvers and small SMGs, so I can''t trigger it while carrying a sniper rifle or a heavy weapon.
@@ -58750,7 +59077,17 @@ As V, I want the Shootdodge restricted to pistols, revolvers and small SMGs, so 
 - [ ] T5''s input detection checks the currently equipped weapon''s type before arming the combo.
 - [ ] Pistols, revolvers, and small SMGs (explicit allow-list) permit the dive; rifles, shotguns, LMGs, sniper rifles, melee weapons and fists block it.
 - [ ] Switching weapons mid-session immediately updates whether the combo is armed — no restart needed.
-- [ ] Verify in-game: attempt the combo with a sniper rifle equipped (no trigger), then switch to a pistol and confirm it triggers normally.', '2026-11-01T20:42:08Z');
+- [ ] Verify in-game: attempt the combo with a sniper rifle equipped (no trigger), then switch to a pistol and confirm it triggers normally.
+
+## Reference: the target move (user spec, 2026-11-01)
+
+A perfect first-person recreation of Max Payne 2''s shootdodge:
+1. **Leap in a fixed direction.** The dive goes the way V is moving (the held movement direction relative to the camera: forward, back, left, right, diagonals), locked at launch. It can''t be steered mid-air; only the aim is free.
+2. **Time slows.** Every enemy, projectile and the world slows; V''s aim and fire stay responsive so you shoot while everyone else is slow.
+3. **Hit the ground prone.** Every dive ends lying on the ground; slow-mo ends on impact.
+4. **Then choose:** keep shooting from the ground, or press a movement input to stand back up.
+
+The camera stays first person the whole time, prone included. Never switch to third person.', '2026-11-01T20:48:15Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2SD-T14', '## Story
 
 As V, I want camera FOV pull-back, a whoosh cue, and a muffled low-pass on music/ambience during the dive, so the move reads as cinematic rather than a glitch.
@@ -58761,7 +59098,44 @@ As V, I want camera FOV pull-back, a whoosh cue, and a muffled low-pass on music
 - [ ] A whoosh sound effect plays once on dive entry.
 - [ ] Music/ambient tracks get a low-pass filter / volume duck while DIVING/AIRBORNE, restored on landing.
 - [ ] All three effects are toggleable independently in the debug overlay so each can be verified in isolation.
-- [ ] Verify in-game: run a dive -> prone and a dive -> get-up; confirm all three effects start on dive entry and cleanly revert on landing, both paths.', '2026-11-01T20:42:09Z');
+- [ ] Verify in-game: run a dive -> prone and a dive -> get-up; confirm all three effects start on dive entry and cleanly revert on landing, both paths.
+
+## Reference: the target move (user spec, 2026-11-01)
+
+A perfect first-person recreation of Max Payne 2''s shootdodge:
+1. **Leap in a fixed direction.** The dive goes the way V is moving (the held movement direction relative to the camera: forward, back, left, right, diagonals), locked at launch. It can''t be steered mid-air; only the aim is free.
+2. **Time slows.** Every enemy, projectile and the world slows; V''s aim and fire stay responsive so you shoot while everyone else is slow.
+3. **Hit the ground prone.** Every dive ends lying on the ground; slow-mo ends on impact.
+4. **Then choose:** keep shooting from the ground, or press a movement input to stand back up.
+
+The camera stays first person the whole time, prone included. Never switch to third person.', '2026-11-01T20:48:16Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2SD-T15', '## Story
+
+As V, I want a Max Payne style bullet-time meter that the dive''s slow-mo drains and that refills the way Max Payne''s does, so I can''t stay in slow-mo forever and have to earn it back.
+
+## Acceptance
+
+- [ ] **Research first:** confirm exactly how Max Payne 2''s bullet-time meter (the hourglass) behaves, from the game''s manual, wikis or gameplay footage, and write the findings with sources into docs/DESIGN.md before coding. Settle at least these points:
+  - what drains it and at what rate;
+  - how it refills (kills, any passive regeneration, its rate, any cap);
+  - whether a shootdodge costs meter;
+  - what a shootdodge does when the meter is empty (a dive at normal speed, or no dive).
+  Match Max Payne 2 on every point; don''t invent a different economy.
+- [ ] The meter has a maximum and starts full on load. Its level persists across save/load if that''s feasible; otherwise it starts full, and DESIGN.md says why.
+- [ ] Bullet time (T8) is gated and drained by the meter as Max Payne 2 does; when the meter runs out mid-dive, the world returns to normal speed cleanly with no stuck dilation.
+- [ ] Refill happens the way Max Payne 2''s does (e.g. enemy kills add meter), using the game''s real kill events, not a guess. Every rate and amount lives in one config table.
+- [ ] A HUD meter, in the hourglass spirit, is always visible in game (not only in the debug overlay). The debug overlay also shows the exact value.
+- [ ] Verify in-game: chain dives until the meter is empty and confirm slow-mo stops being granted the way Max Payne 2 behaves; kill enemies and watch the meter refill by the researched amounts.
+
+## Reference: the target move (user spec, 2026-11-01)
+
+A perfect first-person recreation of Max Payne 2''s shootdodge:
+1. **Leap in a fixed direction.** The dive goes the way V is moving (the held movement direction relative to the camera: forward, back, left, right, diagonals), locked at launch. It can''t be steered mid-air; only the aim is free.
+2. **Time slows.** Every enemy, projectile and the world slows; V''s aim and fire stay responsive so you shoot while everyone else is slow.
+3. **Hit the ground prone.** Every dive ends lying on the ground; slow-mo ends on impact.
+4. **Then choose:** keep shooting from the ground, or press a movement input to stand back up.
+
+The camera stays first person the whole time, prone included. Never switch to third person.', '2026-11-01T20:48:17Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2SD-T4', '## Story
 
 As V, I want twin pistols and a Max Payne style trench coat added to my inventory when the mod loads, so I have the signature loadout without hunting for it.
@@ -58791,17 +59165,39 @@ As V, I want the mod''s state machine to show my current Shootdodge state (NONE/
 - [ ] ImGui debug overlay always displays the current state: NONE, DIVING, AIRBORNE, PRONE, or GETUP.
 - [ ] State defaults to NONE on load and on any uncaught edge case (never gets stuck in a non-NONE state with no mechanic driving it).
 - [ ] All transitions are defined in one centralized table/function, not scattered ad hoc checks across the script.
-- [ ] Verify in-game: state overlay reads NONE throughout a normal play session (the T5 combo is detected but not yet wired to any transition).', '2026-11-01T20:41:46Z');
+- [ ] Verify in-game: state overlay reads NONE throughout a normal play session (the T5 combo is detected but not yet wired to any transition).
+
+## Reference: the target move (user spec, 2026-11-01)
+
+A perfect first-person recreation of Max Payne 2''s shootdodge:
+1. **Leap in a fixed direction.** The dive goes the way V is moving (the held movement direction relative to the camera: forward, back, left, right, diagonals), locked at launch. It can''t be steered mid-air; only the aim is free.
+2. **Time slows.** Every enemy, projectile and the world slows; V''s aim and fire stay responsive so you shoot while everyone else is slow.
+3. **Hit the ground prone.** Every dive ends lying on the ground; slow-mo ends on impact.
+4. **Then choose:** keep shooting from the ground, or press a movement input to stand back up.
+
+The camera stays first person the whole time, prone included. Never switch to third person.', '2026-11-01T20:48:12Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2SD-T7', '## Story
 
-As V, I want the input combo to launch me into a horizontal dive toward my aim direction, so I leave the ground the way Max Payne does.
+As V, I want the input combo to launch me into a horizontal leap in the direction I''m moving, locked for the whole dive, so I leave the ground the way Max Payne does.
 
 ## Acceptance
 
-- [ ] A detected T5 combo while in state NONE transitions to DIVING and applies an impulse that sends V airborne, horizontally, toward the camera/aim direction.
-- [ ] The initial leap reuses an existing game animation/impulse (a custom .animgraph dive pose is explicitly out of scope here; open question captured in docs/DESIGN.md for a later pass).
+- [ ] A detected T5 combo while in state NONE transitions to DIVING and applies an impulse that sends V airborne, horizontally, in the **held movement direction relative to the camera** (forward, back, left, right or a diagonal), not the aim direction.
+- [ ] The direction is captured at launch and fixed for the whole dive: movement input in the air does not steer it. The camera and aim stay free so V can turn and shoot anywhere while flying.
+- [ ] The camera stays first person throughout (no third-person switch).
+- [ ] The initial leap reuses an existing game animation/impulse (a custom .animgraph dive pose is out of scope; open question captured in docs/DESIGN.md for a later pass).
 - [ ] The dive cannot be re-triggered mid-air: the state guard only allows the transition from NONE.
-- [ ] Verify in-game: trigger the combo from standing; V leaves the ground toward the aim direction and the overlay reads DIVING; repeating the combo mid-air does nothing.', '2026-11-01T20:41:47Z');
+- [ ] Verify in-game: trigger the combo while strafing left, then right, then backpedalling; V leaves the ground that way each time while you can look and aim elsewhere, the path doesn''t bend when you press other directions mid-air, and the overlay reads DIVING; repeating the combo mid-air does nothing.
+
+## Reference: the target move (user spec, 2026-11-01)
+
+A perfect first-person recreation of Max Payne 2''s shootdodge:
+1. **Leap in a fixed direction.** The dive goes the way V is moving (the held movement direction relative to the camera: forward, back, left, right, diagonals), locked at launch. It can''t be steered mid-air; only the aim is free.
+2. **Time slows.** Every enemy, projectile and the world slows; V''s aim and fire stay responsive so you shoot while everyone else is slow.
+3. **Hit the ground prone.** Every dive ends lying on the ground; slow-mo ends on impact.
+4. **Then choose:** keep shooting from the ground, or press a movement input to stand back up.
+
+The camera stays first person the whole time, prone included. Never switch to third person.', '2026-11-01T20:47:32Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2SD-T8', '## Story
 
 As V, I want world time to slow dramatically for the duration of the dive, so the moment feels like Max Payne''s bullet-time instead of an ordinary jump.
@@ -58811,7 +59207,17 @@ As V, I want world time to slow dramatically for the duration of the dive, so th
 - [ ] Entering DIVING sets a world time dilation factor (default 0.2, configurable) via the game''s time system.
 - [ ] Dilation reliably reverts to 1.0 the instant the state leaves DIVING/AIRBORNE (landing, death, or pause/menu), with no stuck slow-mo.
 - [ ] Opening the game''s pause menu mid-dive and resuming does not leave dilation stuck active.
-- [ ] Verify in-game: trigger the dive, observe the world visibly slow; confirm dilation clears within one frame of landing, and also clears correctly after a mid-dive pause/resume.', '2026-11-01T20:41:48Z');
+- [ ] Verify in-game: trigger the dive, observe the world visibly slow; confirm dilation clears within one frame of landing, and also clears correctly after a mid-dive pause/resume.
+
+## Reference: the target move (user spec, 2026-11-01)
+
+A perfect first-person recreation of Max Payne 2''s shootdodge:
+1. **Leap in a fixed direction.** The dive goes the way V is moving (the held movement direction relative to the camera: forward, back, left, right, diagonals), locked at launch. It can''t be steered mid-air; only the aim is free.
+2. **Time slows.** Every enemy, projectile and the world slows; V''s aim and fire stay responsive so you shoot while everyone else is slow.
+3. **Hit the ground prone.** Every dive ends lying on the ground; slow-mo ends on impact.
+4. **Then choose:** keep shooting from the ground, or press a movement input to stand back up.
+
+The camera stays first person the whole time, prone included. Never switch to third person.', '2026-11-01T20:48:13Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2SD-T9', '## Story
 
 As V, I want my aim turn-speed and weapon fire-rate to stay at normal speed while the world is slowed, so I can place shots precisely instead of fighting slow-motion input.
@@ -58821,7 +59227,17 @@ As V, I want my aim turn-speed and weapon fire-rate to stay at normal speed whil
 - [ ] Camera/aim turn rate is restored to (or exempted from) the global T8 dilation factor while DIVING/AIRBORNE.
 - [ ] Weapon fire rate and shoot-input polling are exempted from the dilation; shots fire at normal cadence.
 - [ ] Non-exempted systems (enemies, projectiles, environment, V''s own fall arc) remain visibly slowed for contrast — only aim and fire are sped back up.
-- [ ] Verify in-game: fire a pistol during the dive; shot cadence matches normal (non-dive) fire rate while the surrounding world is still visibly slow-motion.', '2026-11-01T20:41:50Z');
+- [ ] Verify in-game: fire a pistol during the dive; shot cadence matches normal (non-dive) fire rate while the surrounding world is still visibly slow-motion.
+
+## Reference: the target move (user spec, 2026-11-01)
+
+A perfect first-person recreation of Max Payne 2''s shootdodge:
+1. **Leap in a fixed direction.** The dive goes the way V is moving (the held movement direction relative to the camera: forward, back, left, right, diagonals), locked at launch. It can''t be steered mid-air; only the aim is free.
+2. **Time slows.** Every enemy, projectile and the world slows; V''s aim and fire stay responsive so you shoot while everyone else is slow.
+3. **Hit the ground prone.** Every dive ends lying on the ground; slow-mo ends on impact.
+4. **Then choose:** keep shooting from the ground, or press a movement input to stand back up.
+
+The camera stays first person the whole time, prone included. Never switch to third person.', '2026-11-01T20:48:13Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T10', '## Story
 
 As V, I want a wall-run to naturally end after a few seconds (or sooner if I stop being fast
@@ -72538,7 +72954,20 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T12', 'C2SD-T10', '
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T13', 'C2SD-T7', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T14', 'C2SD-T11', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T14', 'C2SD-T12', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T14', 'C2SD-T15', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T15', 'C2SD-T8', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T15', 'C2SD-US-D12', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T2', 'C2SD-T1', 'duplicates', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T4', 'C2SD-T10', 'requires', 'blocked by hand');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T4', 'C2SD-T11', 'requires', 'blocked by hand');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T4', 'C2SD-T12', 'requires', 'blocked by hand');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T4', 'C2SD-T13', 'requires', 'blocked by hand');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T4', 'C2SD-T14', 'requires', 'blocked by hand');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T4', 'C2SD-T15', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T4', 'C2SD-T6', 'requires', 'blocked by hand');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T4', 'C2SD-T7', 'requires', 'blocked by hand');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T4', 'C2SD-T8', 'requires', 'blocked by hand');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T4', 'C2SD-T9', 'requires', 'blocked by hand');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T6', 'C2SD-T5', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T7', 'C2SD-T6', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T8', 'C2SD-T7', 'requires', NULL);
@@ -72546,6 +72975,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T9', 'C2SD-T8', 're
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-US-D1', 'C2SD-EPIC-D', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-US-D10', 'C2SD-EPIC-D', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-US-D11', 'C2SD-EPIC-D', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-US-D12', 'C2SD-EPIC-D', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-US-D2', 'C2SD-EPIC-D', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-US-D3', 'C2SD-EPIC-D', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-US-D4', 'C2SD-EPIC-D', 'part-of', 'story under its epic');
@@ -79335,16 +79765,17 @@ INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.ShootDodge', 3, 'story', '1380', '- **C2SD-US-D1 ⬜** As V, I want twin pistols and a Max Payne style trench coat added to my inventory when the mod loads, so I have the signature loadout without hunting for it.');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.ShootDodge', 4, 'story', '1381', '- **C2SD-US-D2 ⬜** As V, I want the mod to recognize a dedicated Shootdodge input combo (aim held + jump + a movement direction) without misfiring during normal play, so the move triggers only when I mean it to.');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.ShootDodge', 5, 'story', '1382', '- **C2SD-US-D3 ⬜** As V, I want the mod''s state machine to show my current Shootdodge state (NONE/DIVING/AIRBORNE/PRONE/GETUP) at all times, so every later mechanic is built and debugged against one known state.');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.ShootDodge', 6, 'story', '1383', '- **C2SD-US-D4 ⬜** As V, I want the input combo to launch me into a horizontal dive toward my aim direction, so I leave the ground the way Max Payne does.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.ShootDodge', 6, 'story', '1383', '- **C2SD-US-D4 ⬜** As V, I want the input combo to launch me into a horizontal leap in the direction I''m moving, locked for the whole dive, so I leave the ground the way Max Payne does.');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.ShootDodge', 7, 'story', '1384', '- **C2SD-US-D5 ⬜** As V, I want world time to slow dramatically for the duration of the dive, so the moment feels like Max Payne''s bullet-time instead of an ordinary jump.');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.ShootDodge', 8, 'story', '1385', '- **C2SD-US-D6 ⬜** As V, I want my aim turn-speed and weapon fire-rate to stay at normal speed while the world is slowed, so I can place shots precisely instead of fighting slow-motion input.');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.ShootDodge', 9, 'story', '1386', '- **C2SD-US-D7 ⬜** As V, I want the mod to detect the exact moment I hit the ground after a dive and read whether I''m holding a movement input, so the landing can branch correctly.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.ShootDodge', 9, 'story', '1386', '- **C2SD-US-D7 ⬜** As V, I want the mod to detect the exact moment I hit the ground after a dive, so slow-mo ends there and I''m put down prone.');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.ShootDodge', 10, 'story', '1387', '- **C2SD-US-D8 ⬜** As V, I want to land prone and keep firing from the ground when I land without holding movement, so I can keep shooting from the floor like Max Payne.');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.ShootDodge', 11, 'story', '1388', '- **C2SD-US-D9 ⬜** As V, I want to scramble back to my feet when I land holding movement, so the dive flows back into normal play instead of stopping dead.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.ShootDodge', 11, 'story', '1388', '- **C2SD-US-D9 ⬜** As V, lying on the ground after a dive, I want to press a movement input to scramble back to my feet, so the dive flows back into normal play when I choose.');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.ShootDodge', 12, 'story', '1389', '- **C2SD-US-D10 ⬜** As V, I want the Shootdodge restricted to pistols, revolvers and small SMGs, so I can''t trigger it while carrying a sniper rifle or a heavy weapon.');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.ShootDodge', 13, 'story', '1390', '- **C2SD-US-D11 ⬜** As V, I want camera FOV pull-back, a whoosh cue, and a muffled low-pass on music/ambience during the dive, so the move reads as cinematic rather than a glitch.');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.ShootDodge', 14, 'raw', NULL, '');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.ShootDodge', 15, 'tickets', NULL, '## Tickets
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.ShootDodge', 14, 'story', '1391', '- **C2SD-US-D12 ⬜** As V, I want a Max Payne style bullet-time meter that the dive''s slow-mo drains and that refills the way Max Payne''s does, so I can''t stay in slow-mo forever and have to earn it back.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.ShootDodge', 15, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.ShootDodge', 16, 'tickets', NULL, '## Tickets
 > Permanent log of every change and fix — this repo''s ticket system. Rows are append-only: never
 > delete or reword one; only move its Status (open → closed / wont-do) and fill in Ref. Status is
 > a word, not a glyph, so tickets don''t count toward the story index. Keep this section last.
