@@ -10400,7 +10400,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.CHN-T102', 'Unity.Rea.Chain', 102, '2026-10-31', 'docs', 'closed', 'Update USER_STORIES.md', '—', 101, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.CHN-T103', 'Unity.Rea.Chain', 103, '2026-11-01', 'fix', 'closed', 'HitShapeTests: Mace rectangle-vs-circle hit detection wrong on 2 cases (Mace_RectangleHitsAnEnemyItsEdgeIsInside, Mace_RectangleMissesWhereTheCircleHits) (found by /test)', 'f5b8f75', 102, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.CHN-T104', 'Unity.Rea.Chain', 104, '2026-11-01', 'fix', 'closed', 'SteerInputTests.SteeredStick_FliesTheAngelThroughTheWorld: stick-to-distance conversion off by 0.117 (expected 4.617, got 4.5) (found by /test)', '13d9aca', 103, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.CHN-T105', 'Unity.Rea.Chain', 105, '2026-11-01', 'docs', 'open', 'Update USER_STORIES.md', '—', 104, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.CHN-T105', 'Unity.Rea.Chain', 105, '2026-11-01', 'docs', 'closed', 'Update USER_STORIES.md', '46e9960', 104, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T1', 'Unity.Rea.Hare', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T2', 'Unity.Rea.Hare', 2, '2026-10-21', 'chore', 'closed', 'Scaffold Unity.Hare project (folders, .gitignore, Unity version, docs layout)', '71b3ce1', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T3', 'Unity.Rea.Hare', 3, '2026-10-21', 'docs', 'closed', 'Write reverse-engineering notes for gmlHARE/gmlRabbit object, script and room catalog', '19d3c0f', 2, NULL);
@@ -53719,6 +53719,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31737, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31738, 'U.CHN-T104', '2026-11-01T07:39:34Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31739, 'U.CHN-T104', '2026-11-01T07:39:34Z', 'ref', '—', '13d9aca');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31740, 'U.CHN-T105', '2026-11-01T07:41:48Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31741, 'U.CHN-T105', '2026-11-01T07:41:57Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31742, 'U.CHN-T105', '2026-11-01T07:41:57Z', 'ref', '—', '46e9960');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
