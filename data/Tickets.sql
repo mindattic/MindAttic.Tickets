@@ -7749,17 +7749,18 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T14', 'Mods.Cyberpunk2077.ShootDodge', 14, '2026-11-01', 'feature', 'closed', 'Camera + audio polish: FOV pull-back, whoosh cue, music/ambience low-pass during the dive', 'b6b96dc99d965432c1c2de4755f0cc8900a030d3', 13, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T15', 'Mods.Cyberpunk2077.ShootDodge', 15, '2026-11-01', 'feature', 'closed', 'Bullet-time meter: Max Payne 2 style hourglass that the dive drains and that refills the way MP2''s does', '223ceb6a', 14, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T16', 'Mods.Cyberpunk2077.ShootDodge', 16, '2026-11-01', 'fix', 'closed', 'init.lua ''Enabled'' (line 126) and ''Bullet-time'' (line 163) checkboxes read ImGui.Checkbox''s returns swapped: CET returns (value, pressed), so the flag is true only on the click frame and the whole mod stays effectively off', 'ac9944b5c8fccf337d26f2aaaf7b1be8f7094474', 15, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T17', 'Mods.Cyberpunk2077.ShootDodge', 17, '2026-11-01', 'docs', 'open', 'Full documentation set like the RogueTrader.* mods: README usage guide, docs/NEXUS_PAGE.md, docs/TESTING.md', '—', 16, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T18', 'Mods.Cyberpunk2077.ShootDodge', 18, '2026-11-01', 'fix', 'open', 'init.lua:192 onDraw draws the debug window every frame without tracking onOverlayOpen/onOverlayClose, so the debug panel stays over gameplay with the CET overlay closed; only the hourglass HUD should draw then (found by bughunt)', '—', 17, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T17', 'Mods.Cyberpunk2077.ShootDodge', 17, '2026-11-01', 'docs', 'closed', 'Full documentation set like the RogueTrader.* mods: README usage guide, docs/NEXUS_PAGE.md, docs/TESTING.md', '856de32', 16, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T18', 'Mods.Cyberpunk2077.ShootDodge', 18, '2026-11-01', 'fix', 'closed', 'init.lua:192 onDraw draws the debug window every frame without tracking onOverlayOpen/onOverlayClose, so the debug panel stays over gameplay with the CET overlay closed; only the hourglass HUD should draw then (found by bughunt)', '3cfd4424afe8f35c0612d2d74b5950fe9342ea4a', 17, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T19', 'Mods.Cyberpunk2077.ShootDodge', 19, '2026-11-01', 'fix', 'closed', 'DiveDriver.lua:107-145 dive timers (4 s cap, 0.6 s no-lift-off) keep advancing while the game is paused (TimeScale() returns 1 once slow-mo is lifted), so pausing mid-dive aborts it on resume: no prone, no slow-mo (found by bughunt)', 'e01586e', 18, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T20', 'Mods.Cyberpunk2077.ShootDodge', 20, '2026-11-01', 'fix', 'closed', 'Dive.lua:149 touchdown only counts once airTime >= minAirSec, so a dive that comes down in under 0.15 s (low ceiling, onto a step) never lands and sits in AIRBORNE slow-mo until the 4 s timeout, ending in NONE instead of prone (found by bughunt)', '855e54a', 19, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T21', 'Mods.Cyberpunk2077.ShootDodge', 21, '2026-11-01', 'fix', 'closed', 'Input.lua:166 Input.Reset() only runs on onShutdown, never on save load/session start, so held aim (with its old aimSince) and stale move axes carry into a loaded save and the combo can fire without aiming (found by bughunt)', '2435523d72fa91e13cc30f164b1f857f0fc33a15', 20, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T22', 'Mods.Cyberpunk2077.ShootDodge', 22, '2026-11-01', 'fix', 'open', 'BulletTimeMeter.lua:128 Bullet Time mode drains the meter on self.mode alone, while BulletTime:Wanted (BulletTime.lua:59,64) grants no slow-mo when the Bullet-time checkbox is off or the factor is 1.0, so the hourglass empties with no slow-mo at all (found by bughunt)', '—', 21, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T22', 'Mods.Cyberpunk2077.ShootDodge', 22, '2026-11-01', 'fix', 'closed', 'BulletTimeMeter.lua:128 Bullet Time mode drains the meter on self.mode alone, while BulletTime:Wanted (BulletTime.lua:59,64) grants no slow-mo when the Bullet-time checkbox is off or the factor is 1.0, so the hourglass empties with no slow-mo at all (found by bughunt)', '67ef55404042e09c612f1fbd795044c1bef317ef', 21, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T23', 'Mods.Cyberpunk2077.ShootDodge', 23, '2026-11-01', 'fix', 'closed', 'BulletTimeMeterDriver.lua:112-119 meter session tied to QuestTrackerGameController init/uninit: a mid-session HUD rebuild cancels Bullet Time mode and stops saving, and a Restore before the save''s facts are readable resets the meter to full then Persist overwrites the real saved level (found by bughunt)', '0ff22150faf8a5e64160c8bece35c61017d93105', 22, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T24', 'Mods.Cyberpunk2077.ShootDodge', 24, '2026-11-01', 'fix', 'closed', 'BulletTimeDriver.lua:149-156 a CET reload during slow-mo leaves the old weapon''s individual time-dilation exemption on for good (the fresh module''s exemptWeapon is nil, so Clear() can''t unset it), so that weapon ignores later game slow-mo like Kerenzikov (found by bughunt)', '926bec9', 23, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T25', 'Mods.Cyberpunk2077.ShootDodge', 25, '2026-11-01', 'fix', 'closed', 'LoadoutDriver.lua:79,83 ignores Game.AddToInventory''s success return and writes the shootdodge_mp2_loadout save fact anyway, so a failed add (bad item ID after a patch, refused add) marks the loadout granted for good and V never gets the missing pieces (found by bughunt)', '795920568430ae9850093e79c379176920ff5d11', 24, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T26', 'Mods.Cyberpunk2077.ShootDodge', 26, '2026-11-01', 'fix', 'closed', 'ProneDriver.lua stand-up on jump (Prone.End.jump) + GetUpDriver.lua:78: the jump press is only observed, not consumed, so it also runs the game''s real jump and V hops out of prone instead of scrambling up; count only movement as stand-up or block the jump during PRONE/GETUP (found by bughunt)', '8843ddfa6a691cdc32f00010baa4ae0027efd5d0', 25, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T27', 'Mods.Cyberpunk2077.ShootDodge', 27, '2026-11-01', 'feature', 'open', 'Vortex-ready release zip + once-per-save in-game text message explaining the mod in Max Payne''s over-the-top noir voice, using real sourced Max Payne quotes', '—', 26, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T28', 'Mods.Cyberpunk2077.ShootDodge', 28, '2026-11-01', 'docs', 'closed', 'Research Cyberpunk 2077 akimbo/dual-wield pistol mods for Max Payne''s twin Berettas: what exists, does it work on 2.x, recommend support or not', 'c554b04', 27, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T1', 'Mods.Cyberpunk2077.WebSlinger', 1, '2026-11-01', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T2', 'Mods.Cyberpunk2077.WebSlinger', 2, '2026-11-01', 'feature', 'closed', 'Scaffold new repo: Cyberpunk 2077 mod for Mantis Blade wall-climb, wall-run/jump, and Spider-Man 2 style webslinging', '7aad643ac7c88e810331b43e6e85a40b41323aaf', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T3', 'Mods.Cyberpunk2077.WebSlinger', 3, '2026-11-01', 'chore', 'closed', 'Rename repo to Mods.Cyberpunk2077.WebSlinger for mod organization (GitHub + folder + refs)', '36d0a7610a8d43186a58b5ea925f2190e04bf613', 2, NULL);
@@ -7926,6 +7927,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.EZ-T104', 'Mods.GTFO.EZ', 104, '2026-11-01', 'chore', 'closed', 'Rename repo to Mods.GTFO.EZ for mod organization (GitHub + folder + refs)', '2fef06c30513f65ef92a4b20efd7581077e8948d', 103, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.EZ-T105', 'Mods.GTFO.EZ', 105, '2026-11-01', 'fix', 'closed', 'Verify/bug-hunt bot turret hotkeys (Shift+E deploy, Z recall-all), refresh docs, cut v19 release', 'Exhaustive bug hunt of DeployPickupHotkeys.cs/SentryInstantPlacementPatch.cs/BotSentryEquipPatch.cs and the rest of src/: no real bugs found, Shift+E/Z/X behavior matches documented and previously-confirmed-in-play design. Closed via G.EZ-T106 (v19 release, 8134471).', 104, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.EZ-T106', 'Mods.GTFO.EZ', 106, '2026-11-01', 'chore', 'closed', 'Cut v19 release: bump VERSION/manifest, rebuild and repackage dist/', '8134471 on main; dist/GTFO.EZ-19.0.0.zip built, dotnet build 0 warnings/0 errors', 105, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.EZ-T107', 'Mods.GTFO.EZ', 107, '2026-11-01', 'feature', 'open', 'X becomes quick-drop-all (one turret per press: bots first, then your own, at your current position/orientation); Z also recalls your own placed turret, not just bots''', '—', 106, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAI-T1', 'Mods.GTFO.EZ.AbsurdItems', 1, '2026-10-18', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAI-T2', 'Mods.GTFO.EZ.AbsurdItems', 2, '2026-10-18', 'fix', 'closed', 'Push initial project scaffolding so origin/main exists and pull stops failing', '3309db6', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAI-T3', 'Mods.GTFO.EZ.AbsurdItems', 3, '2026-10-18', 'feature', 'closed', 'v1: GTFO.AbsurdItems mod - artifact buffs (from GTFO.EZ), Hand Grenade and Stim Pack (from GTFO.AbsurdWeapons), kits as loot in lockers and out in the open (Loot Mix + shared KitLoot), plus the shared Insert/Delete toggles', '73ec87c', 2, NULL);
@@ -7954,8 +7956,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAI-T26', 'Mods.GTFO.EZ.AbsurdItems', 26, '2026-10-24', 'chore', 'closed', 'Cut the v17 release: bump submodule to GTFO.EZ.Shared''s Order cleanup, join CrashTestDummies/SkipDrop into the vN scheme, bump VERSION/manifest, rebuild and repackage dist/', 'package/manifest.json', 25, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAI-T27', 'Mods.GTFO.EZ.AbsurdItems', 27, '2026-10-26', 'chore', 'closed', 'Cut the v18 release: moves in step with the GTFO.* family''s version number, bump VERSION/manifest, rebuild and repackage dist/', 'package/CHANGELOG.md', 26, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAI-T28', 'Mods.GTFO.EZ.AbsurdItems', 28, '2026-11-01', 'chore', 'closed', 'Rename repo to Mods.GTFO.EZ.AbsurdItems for mod organization (GitHub + folder + refs)', '682bb84cd5f98af41d4ac4b723f1559fddb80226', 27, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAI-T29', 'Mods.GTFO.EZ.AbsurdItems', 29, '2026-11-01', 'fix', 'open', 'Verify/bug-hunt kits-as-loot balance, grenades out in the open, artifact glow/buffs; refresh docs, cut v19 release', '—', 28, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAI-T30', 'Mods.GTFO.EZ.AbsurdItems', 30, '2026-11-01', 'chore', 'open', 'Cut the v19 release: bug-hunt pass found no new issues in kits/grenades/artifacts, bump VERSION/manifest, rebuild and repackage dist/', '—', 29, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAI-T29', 'Mods.GTFO.EZ.AbsurdItems', 29, '2026-11-01', 'fix', 'closed', 'Verify/bug-hunt kits-as-loot balance, grenades out in the open, artifact glow/buffs; refresh docs, cut v19 release', 'No real bugs found in kits-as-loot/grenades-out-in-the-open/artifact glow+buffs after exhaustive review (incl. reflecting Modules-ASM.dll to confirm ePickupItemStatus only has PickedUp/PlacedInLevel); docs already accurate; v19 cut under GAI-T30 (2cb80f7)', 28, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAI-T30', 'Mods.GTFO.EZ.AbsurdItems', 30, '2026-11-01', 'chore', 'closed', 'Cut the v19 release: bug-hunt pass found no new issues in kits/grenades/artifacts, bump VERSION/manifest, rebuild and repackage dist/', '2cb80f7 on main; dotnet build 0 warnings/0 errors; dist/GTFO.EZ.AbsurdItems-19.0.0.zip built', 29, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAM-T1', 'Mods.GTFO.EZ.AbsurdMoves', 1, '2026-10-18', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAM-T2', 'Mods.GTFO.EZ.AbsurdMoves', 2, '2026-10-18', 'feature', 'closed', 'Dodge (Shift + double-tap W/A/S/D) moved here from GTFO.EZ, with a Dodge Enabled on/off toggle in the .cfg', 'Release build clean (0 warnings)', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAM-T3', 'Mods.GTFO.EZ.AbsurdMoves', 3, '2026-10-18', 'feature', 'closed', 'Bullet Time (tap Left Alt: enemies slow to a crawl, muffled sound) moved here from GTFO.AbsurdWeapons, keeping its Enabled toggle in the .cfg', 'Release build clean (0 warnings)', 2, NULL);
@@ -55793,6 +55795,228 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33087, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33088, 'C2SD-T23', '2026-11-01T21:53:54Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33089, 'C2SD-T23', '2026-11-01T21:53:54Z', 'ref', '—', '0ff22150faf8a5e64160c8bece35c61017d93105');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33090, 'C2SD-T22', '2026-11-01T21:54:04Z', 'working', NULL, 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33091, 'C2SD-T23', '2026-11-01T21:54:31Z', 'working', 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33092, 'GAI-T30', '2026-11-01T21:54:31Z', 'working', '9478b8c8-9962-4f97-a313-1dfd60f2195a', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33093, 'GAI-T30', '2026-11-01T21:54:33Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33094, 'GAI-T30', '2026-11-01T21:54:33Z', 'ref', '—', '2cb80f7 on main; dotnet build 0 warnings/0 errors; dist/GTFO.EZ.AbsurdItems-19.0.0.zip built');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33095, 'GAI-T29', '2026-11-01T21:54:35Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33096, 'GAI-T29', '2026-11-01T21:54:35Z', 'ref', '—', 'No real bugs found in kits-as-loot/grenades-out-in-the-open/artifact glow+buffs after exhaustive review (incl. reflecting Modules-ASM.dll to confirm ePickupItemStatus only has PickedUp/PlacedInLevel); docs already accurate; v19 cut under GAI-T30 (2cb80f7)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33097, 'C2SD-T22', '2026-11-01T21:54:50Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33098, 'C2SD-T22', '2026-11-01T21:54:50Z', 'ref', '—', '67ef55404042e09c612f1fbd795044c1bef317ef');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33099, 'C2SD-T22', '2026-11-01T21:55:06Z', 'working', 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33100, 'C2WS-T8', '2026-11-01T21:55:07Z', 'description', '## Story
+
+As V, I want to grab on and climb a wall with my Mantis Blades when I hit it head-on (or stop too
+slowly to wall-run), so that I''m not just bounced off every flat surface.
+
+## Acceptance
+
+- [ ] `TriggerWallLatch()` requires Mantis Blades equipped (check the game''s existing
+      equipment/stance API); if not equipped, falls back to today''s normal collision behavior and
+      logs why it declined to latch.
+- [ ] Entering `CLIMBING` disables fall damage and normal gravity for V (document the exact
+      property/flag toggled in `docs/DESIGN.md`) and zeroes residual velocity into the wall.
+- [ ] Directional input while `CLIMBING` moves V along the wall''s surface plane (up/down/strafe),
+      and moving past the wall''s physical edge exits back to `NONE` instead of clipping through it.
+- [ ] Jump input while `CLIMBING` performs a climb-jump: exits `CLIMBING`, applies an
+      outward+upward impulse, returns to `NONE`.
+- [ ] Verified: climb at least 10m up a building face, strafe both directions without unintentionally
+      sliding off, then climb-jump off cleanly into a normal fall.', '## Story
+
+As V, I want to grab onto and climb a wall when I hit it head-on (or stop too slowly to wall-run), so that I''m not just bounced off every flat surface. This is a built-in ability of the mod, not gated behind any equipped cyberware -- it works for any player out of the box, no Mantis Blades or Monowire required in V''s actual loadout.
+
+## Acceptance
+
+- [ ] `TriggerWallLatch()` has **no equipment check of any kind**: it never queries Mantis Blades, Monowire, or any other cyberware slot. The mod grants this ability permanently and unconditionally, regardless of what V has equipped.
+- [ ] Entering `CLIMBING` disables fall damage and normal gravity for V (document the exact property/flag toggled in `docs/DESIGN.md`) and zeroes residual velocity into the wall.
+- [ ] Directional input while `CLIMBING` moves V along the wall''s surface plane (up/down/strafe), and moving past the wall''s physical edge exits back to `NONE` instead of clipping through it.
+- [ ] Jump input while `CLIMBING` performs a climb-jump: exits `CLIMBING`, applies an outward+upward impulse, returns to `NONE` -- from there the player can either latch onto a facing wall again (chain, see C2WS-T11) or fire a new web-sling (C2WS-T6/T12).
+- [ ] Verified: climb at least 10m up a building face, strafe both directions without unintentionally sliding off, then climb-jump off cleanly into a normal fall -- with nothing equipped in V''s cyberware slots.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33101, 'C2SD-T18', '2026-11-01T21:55:07Z', 'working', NULL, 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33102, 'C2WS-T9', '2026-11-01T21:55:31Z', 'description', '## Story
+
+As V, I want to keep running when I glance off a wall at an angle and I''m moving fast enough, so
+that traversal feels like Spider-Man 2''s wall-runs instead of just bouncing off.
+
+## Acceptance
+
+Reference implementation (adapt as needed, keep the magic numbers as named tunables):
+
+```lua
+function InitiateWallRun(wallNormal, currentVelocity)
+    IsWallHanging = false
+    local wallParallelDir = Vector4.new(-wallNormal.y, wallNormal.x, 0, 0)
+    if currentVelocity:Dot(wallParallelDir) < 0 then
+        wallParallelDir = Vector4.new(wallNormal.y, -wallNormal.x, 0, 0)
+    end
+    local wallRunSpeed = math.max(currentVelocity:Length(), 15.0)
+    local wallRunVelocity = wallParallelDir * wallRunSpeed
+    local stickyForce = wallNormal * -1.5
+    local finalVelocity = wallRunVelocity + stickyForce
+    finalVelocity.z = 2.5
+    Player:GetLocomotionComponent():SetLinearVelocity(finalVelocity)
+    Game.GetCameraSystem():SetCameraTilt(10.0, 0.3)
+end
+```
+
+- [ ] `InitiateWallRun(wallNormal, currentVelocity)` computes the wall-parallel direction as the
+      perpendicular of `wallNormal`, picking the sign that matches V''s existing travel direction.
+- [ ] `wallRunSpeed = max(currentVelocity:Length(), 15.0)` (tunable minimum); final velocity =
+      `wallParallelDir * wallRunSpeed + wallNormal * -1.5` (tunable sticky force) with Z pinned to
+      `+2.5` (tunable anti-gravity-drag) for the duration of the run.
+- [ ] `Player:GetLocomotionComponent():SetLinearVelocity(...)` is re-applied every tick of the run
+      (a new `UpdateWallHangPhysics`, called from `onUpdate` while `WALLRUNNING`) — not just once on
+      entry — confirmed V doesn''t slip off the wall geometry mid-run.
+- [ ] Camera tilt (`SetCameraTilt(10.0, 0.3)`, tunable) plays on entry and resets to neutral on exit.
+- [ ] Verified: wall-run along a straight building face for at least 3 seconds without sliding off or
+      clipping through the wall.', '## Story
+
+As V, I want to keep running when I glance off a wall at an angle and I''m moving fast enough, so that traversal feels like Spider-Man 2''s wall-runs instead of just bouncing off. I also want a deliberate, player-initiated way to start a wall-run -- press the jump key while looking (or moving) toward a wall to my left or right and start running along it, Titanfall-style -- not just the automatic physics routing from a swing impact. This is a built-in ability, not gated behind any equipped cyberware.
+
+## Acceptance
+
+Reference implementation (adapt as needed, keep the magic numbers as named tunables):
+
+```lua
+function InitiateWallRun(wallNormal, currentVelocity)
+    IsWallHanging = false
+    local wallParallelDir = Vector4.new(-wallNormal.y, wallNormal.x, 0, 0)
+    if currentVelocity:Dot(wallParallelDir) < 0 then
+        wallParallelDir = Vector4.new(wallNormal.y, -wallNormal.x, 0, 0)
+    end
+    local wallRunSpeed = math.max(currentVelocity:Length(), 15.0)
+    local wallRunVelocity = wallParallelDir * wallRunSpeed
+    local stickyForce = wallNormal * -1.5
+    local finalVelocity = wallRunVelocity + stickyForce
+    finalVelocity.z = 2.5
+    Player:GetLocomotionComponent():SetLinearVelocity(finalVelocity)
+    Game.GetCameraSystem():SetCameraTilt(10.0, 0.3)
+end
+```
+
+- [ ] `InitiateWallRun(wallNormal, currentVelocity)` computes the wall-parallel direction as the perpendicular of `wallNormal`, picking the sign that matches V''s existing travel direction.
+- [ ] `wallRunSpeed = max(currentVelocity:Length(), 15.0)` (tunable minimum); final velocity = `wallParallelDir * wallRunSpeed + wallNormal * -1.5` (tunable sticky force) with Z pinned to `+2.5` (tunable anti-gravity-drag) for the duration of the run.
+- [ ] `Player:GetLocomotionComponent():SetLinearVelocity(...)` is re-applied every tick of the run (a new `UpdateWallHangPhysics`, called from `onUpdate` while `WALLRUNNING`) -- not just once on entry -- confirmed V doesn''t slip off the wall geometry mid-run.
+- [ ] **Manual, Titanfall-style trigger:** pressing the jump key (same key as a normal jump) while a qualifying wall is within range to V''s left or right (checked via T1''s raycast, perpendicular-ish to V''s facing/travel direction, not straight ahead) starts a wall-run on that wall directly from running/falling on the ground or in open air -- this does not require first having glanced off the wall via a swing impact (C2WS-T7''s routing stays as the automatic in-swing path; this is a second, player-initiated entry point into `WALLRUNNING`).
+- [ ] No equipment check of any kind gates entry into `WALLRUNNING` by either path.
+- [ ] Camera tilt (`SetCameraTilt(10.0, 0.3)`, tunable) plays on entry and resets to neutral on exit.
+- [ ] Verified: (1) wall-run along a straight building face for at least 3 seconds without sliding off or clipping through the wall, entered via a swing impact; (2) separately, approach a wall on foot or mid-air, look/move toward it to one side, press jump, and confirm the manual trigger starts the same wall-run.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33103, 'C2SD-T18', '2026-11-01T21:56:01Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33104, 'C2SD-T18', '2026-11-01T21:56:01Z', 'ref', '—', '3cfd4424afe8f35c0612d2d74b5950fe9342ea4a');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33105, 'C2SD-T18', '2026-11-01T21:56:08Z', 'working', 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33106, 'C2SD-T27', '2026-11-01T21:59:51Z', 'description', '## Goal
+
+Make ShootDodge install cleanly through Nexus Mods'' Vortex (and manual install), and greet the player in game with a text message explaining the mod in Max Payne''s over-the-top noir voice.
+
+## Acceptance
+
+### Vortex / Nexus deployment
+- [ ] Find out how Vortex''s Cyberpunk 2077 extension recognises and installs a mod archive (layout rooted at the game folder: bin/x64/plugins/cyber_engine_tweaks/mods/<Mod>/, r6/..., archive/pc/mod/...). Cite sources in docs/DESIGN.md.
+- [ ] Add a release packaging script (PowerShell, in the repo) that builds dist/ShootDodge-<version>.zip with exactly that layout and only the files the mod needs: no docs, no dev files, and no runtime state like polish_restore.txt.
+- [ ] Ignore dist/ and the runtime files in .gitignore.
+- [ ] The zip installs with Vortex''s "Install from file" and deploys to the right folders without a manual-install prompt. If it can''t be run here, say exactly what was checked and what is left to verify.
+- [ ] Declare the requirements (CET plus whatever else the code really uses) so Nexus/Vortex users see them.
+- [ ] The README''s install section and docs/NEXUS_PAGE.md (file to upload, Vortex instructions, requirements) are updated to match; C2SD-T17 writes those docs first, so build on them.
+
+### In-game text message
+- [ ] Once per save, when the mod first runs, V receives an in-game phone text message (an SMS-style message in the phone/messages UI) explaining what the mod does and how to Shootdodge (aim + jump + direction, slow-mo, land prone, keep shooting or get up, the Bullet Time hotkey and the hourglass).
+- [ ] It must be a real text on the game''s cellphone, in the phone''s Messages UI like any other contact''s SMS (user requirement). An on-screen notification or popup is NOT acceptable. Use whatever really works (e.g. ArchiveXL/Codeware journal-based phone messages or an existing SMS framework mod) and declare any framework as a requirement. No new art assets; new text/journal records are fine. If it is truly impossible, stop and report why instead of shipping a fallback.
+- [ ] Tone: Max Payne''s way-over-the-top, dramatic, hard-boiled noir narration, with similes and fatalism.
+- [ ] Use **actual quotes** from Max Payne / Max Payne 2: find them in real sources and list each quote with its source in DESIGN.md. Keep each quote short, weave a few into otherwise original text, and don''t make any up. Anything paraphrased must not be presented as a quote.
+- [ ] The text comes from Max Payne himself: the sender/contact name is "Max Payne" and the message is in his first-person voice (user requirement). A contact avatar, if supported, uses only an existing in-game image. The message is never re-sent on reload.
+- [ ] TESTING.md gets a section for both the Vortex install and the text message.
+
+## Handoff from the first (stopped) run, 2026-11-01
+
+Uncommitted work is in the checkout: continue it, don''t start over.
+- `modules/IntroMessage.lua` (new): six message pages, the once-per-save fact `shootdodge_intro_message`, and the four verbatim quotes. It must be rewritten: the sender is still "UNKNOWN NUMBER" and the text is not in Max''s first person.
+- `modules/IntroMessageDriver.lua` (new): currently shows an on-screen banner, which the user has ruled out. Rewrite it to send through the phone route below.
+- `init.lua`: adds `version = "0.1.0"`, wires in the driver, and adds an overlay re-read panel.
+- `tools/package.ps1` (new, never run): builds `dist/ShootDodge-<version>.zip` from the tracked .lua files. It must also include .reds files.
+
+Findings:
+- **Vortex:** `Nexus-Mods/game-cyberpunk2077` `src/installer.cet.ts` auto-installs a zip with `init.lua` directly inside `bin/x64/plugins/cyber_engine_tweaks/mods/<Mod>/`.
+- **Phone route:** CET alone can''t add phone messages. Use the **Phone Extension Framework** (Nexus mod 24949, redscript):
+  - subclass `PhoneEventsListener`, then `PushMessageCustom` + `NotifyNewMessageCustom`;
+  - reference: `Y4rd13/david-sandevistan-plus` `DSPViktorPhone.reds`;
+  - the framework source and example are saved in `C:\Users\ryand\AppData\Local\Temp\claude\D--Projects-MindAttic-Mods-Cyberpunk2077-ShootDodge\6e82fb1a-2202-410b-93b9-327c9f6ad258\scratchpad\pe\`;
+  - plan: `r6/scripts/ShootDodge/ShootDodgePhone.reds` with a contact named "Max Payne" and an existing avatar (`PhoneAvatars.Avatar_Unknown` is known to exist), gated on the save fact, plus a small system the Lua side can call.
+- **Quotes**, verified in Wikiquote''s page source:
+  - "The sun went down with practiced bravado." (MP1, Part I, Prologue)
+  - "I don''t know about angels, but it''s fear that gives men wings." (MP1, Part I, Ch. 6)
+  - "When you''re looking down the barrel of a gun, time slows down." (MP2)
+  - "Firing a gun is a binary choice. Either you pull the trigger or you don''t." (MP2)
+- **Requirements to declare:** CET, redscript, Phone Extension, and any of Phone Extension''s own dependencies (not yet checked).
+- **Still to do:**
+  - add `polish_restore.txt` to `.gitignore`;
+  - write the sources into DESIGN.md;
+  - add the README, NEXUS_PAGE and TESTING sections;
+  - build, commit, push and close.', '## Goal
+
+Make ShootDodge install cleanly through Nexus Mods'' Vortex (and manual install), and greet the player in game with a text message explaining the mod in Max Payne''s over-the-top noir voice.
+
+## Acceptance
+
+### Vortex / Nexus deployment
+- [ ] Find out how Vortex''s Cyberpunk 2077 extension recognises and installs a mod archive (layout rooted at the game folder: bin/x64/plugins/cyber_engine_tweaks/mods/<Mod>/, r6/..., archive/pc/mod/...). Cite sources in docs/DESIGN.md.
+- [ ] Add a release packaging script (PowerShell, in the repo) that builds dist/ShootDodge-<version>.zip with exactly that layout and only the files the mod needs: no docs, no dev files, and no runtime state like polish_restore.txt.
+- [ ] Ignore dist/ and the runtime files in .gitignore.
+- [ ] The zip installs with Vortex''s "Install from file" and deploys to the right folders without a manual-install prompt. If it can''t be run here, say exactly what was checked and what is left to verify.
+- [ ] Declare the requirements (CET plus whatever else the code really uses) so Nexus/Vortex users see them.
+- [ ] The README''s install section and docs/NEXUS_PAGE.md (file to upload, Vortex instructions, requirements) are updated to match; C2SD-T17 writes those docs first, so build on them.
+
+### In-game text message
+- [ ] Once per save, when the mod first runs, V receives an in-game phone text message (an SMS-style message in the phone/messages UI) explaining what the mod does and how to Shootdodge (aim + jump + direction, slow-mo, land prone, keep shooting or get up, the Bullet Time hotkey and the hourglass).
+- [ ] It must be a real text on the game''s cellphone, in the phone''s Messages UI like any other contact''s SMS (user requirement). An on-screen notification or popup is NOT acceptable. Use whatever really works (e.g. ArchiveXL/Codeware journal-based phone messages or an existing SMS framework mod) and declare any framework as a requirement. No new art assets; new text/journal records are fine. If it is truly impossible, stop and report why instead of shipping a fallback.
+- [ ] Tone: Max Payne''s way-over-the-top, dramatic, hard-boiled noir narration, with similes and fatalism.
+- [ ] Use **actual quotes** from Max Payne / Max Payne 2: find them in real sources and list each quote with its source in DESIGN.md. Keep each quote short, weave a few into otherwise original text, and don''t make any up. Anything paraphrased must not be presented as a quote.
+- [ ] The text comes from Max Payne himself: the sender/contact name is "Max Payne" and the message is in his first-person voice (user requirement). A contact avatar, if supported, uses only an existing in-game image. The message is never re-sent on reload.
+- [ ] TESTING.md gets a section for both the Vortex install and the text message.
+
+## More quotes (user request, 2026-11-01)
+
+The user loves Max Payne texting V real Max Payne lines. Fit in **as many genuine quotes as you can find that are deep, moody and disturbing**: the fatalistic, nightmare and grief-soaked narration from Max Payne 1 and 2.
+- Make it a thread of several texts from "Max Payne", not one block.
+- The how-to-play explanation stays in it, woven between the quotes in Max''s voice.
+- Every quote must be verified word for word against a real source (e.g. Wikiquote''s page source, game script dumps) and listed with its source in DESIGN.md.
+- Never invent, paraphrase or "improve" a line and present it as a quote. Quality over count: drop anything you can''t verify.
+
+## Handoff from the first (stopped) run, 2026-11-01
+
+Uncommitted work is in the checkout: continue it, don''t start over.
+- `modules/IntroMessage.lua` (new): six message pages, the once-per-save fact `shootdodge_intro_message`, and the four verbatim quotes. It must be rewritten: the sender is still "UNKNOWN NUMBER" and the text is not in Max''s first person.
+- `modules/IntroMessageDriver.lua` (new): currently shows an on-screen banner, which the user has ruled out. Rewrite it to send through the phone route below.
+- `init.lua`: adds `version = "0.1.0"`, wires in the driver, and adds an overlay re-read panel.
+- `tools/package.ps1` (new, never run): builds `dist/ShootDodge-<version>.zip` from the tracked .lua files. It must also include .reds files.
+
+Findings:
+- **Vortex:** `Nexus-Mods/game-cyberpunk2077` `src/installer.cet.ts` auto-installs a zip with `init.lua` directly inside `bin/x64/plugins/cyber_engine_tweaks/mods/<Mod>/`.
+- **Phone route:** CET alone can''t add phone messages. Use the **Phone Extension Framework** (Nexus mod 24949, redscript):
+  - subclass `PhoneEventsListener`, then `PushMessageCustom` + `NotifyNewMessageCustom`;
+  - reference: `Y4rd13/david-sandevistan-plus` `DSPViktorPhone.reds`;
+  - the framework source and example are saved in `C:\Users\ryand\AppData\Local\Temp\claude\D--Projects-MindAttic-Mods-Cyberpunk2077-ShootDodge\6e82fb1a-2202-410b-93b9-327c9f6ad258\scratchpad\pe\`;
+  - plan: `r6/scripts/ShootDodge/ShootDodgePhone.reds` with a contact named "Max Payne" and an existing avatar (`PhoneAvatars.Avatar_Unknown` is known to exist), gated on the save fact, plus a small system the Lua side can call.
+- **Quotes**, verified in Wikiquote''s page source:
+  - "The sun went down with practiced bravado." (MP1, Part I, Prologue)
+  - "I don''t know about angels, but it''s fear that gives men wings." (MP1, Part I, Ch. 6)
+  - "When you''re looking down the barrel of a gun, time slows down." (MP2)
+  - "Firing a gun is a binary choice. Either you pull the trigger or you don''t." (MP2)
+- **Requirements to declare:** CET, redscript, Phone Extension, and any of Phone Extension''s own dependencies (not yet checked).
+- **Still to do:**
+  - add `polish_restore.txt` to `.gitignore`;
+  - write the sources into DESIGN.md;
+  - add the README, NEXUS_PAGE and TESTING sections;
+  - build, commit, push and close.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33107, 'C2SD-T28', '2026-11-01T22:01:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33108, 'C2SD-T28', '2026-11-01T22:01:26Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33109, 'C2SD-T28', '2026-11-01T22:01:28Z', 'working', NULL, 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33110, 'C2SD-T28', '2026-11-01T22:02:39Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33111, 'C2SD-T28', '2026-11-01T22:02:39Z', 'ref', '—', 'c554b04');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33112, 'C2SD-T28', '2026-11-01T22:02:48Z', 'working', 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33113, 'G.EZ-T107', '2026-11-01T22:03:32Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33114, 'C2SD-T17', '2026-11-01T22:03:56Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33115, 'C2SD-T17', '2026-11-01T22:03:56Z', 'ref', '—', '856de32');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33116, 'G.EZ-T107', '2026-11-01T22:04:01Z', 'working', NULL, '9478b8c8-9962-4f97-a313-1dfd60f2195a');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -55839,6 +56063,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T15', 'approved', 0, '2026-11-01T20:48:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T17', 'approved', 0, '2026-11-01T21:44:25Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T27', 'approved', 0, '2026-11-01T21:45:40Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T28', 'approved', 0, '2026-11-01T22:01:26Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T3', 'approved', 0, '2026-11-01T20:41:25Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T4', 'approved', -10, '2026-11-01T20:45:47Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T5', 'approved', 0, '2026-11-01T20:41:26Z', NULL);
@@ -58274,10 +58499,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2SD-T17', NULL, 0, NULL, '6e82fb1a-2202-410b-93b9-327c9f6ad258', '2026-11-01T21:52:55Z', '2026-11-01T21:52:55Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2SD-T22', NULL, 0, 'ryandebraal@mindattic.com', '6e82fb1a-2202-410b-93b9-327c9f6ad258', '2026-11-01T21:54:04Z', '2026-11-01T21:54:04Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2SD-T23', NULL, 0, 'ryandebraal@mindattic.com', '6e82fb1a-2202-410b-93b9-327c9f6ad258', '2026-11-01T21:53:22Z', '2026-11-01T21:53:22Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2SD-T27', NULL, 0, NULL, '6e82fb1a-2202-410b-93b9-327c9f6ad258', '2026-11-01T21:51:39Z', '2026-11-01T21:51:39Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAI-T30', NULL, 0, NULL, '9478b8c8-9962-4f97-a313-1dfd60f2195a', '2026-11-01T21:52:57Z', '2026-11-01T21:52:57Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('G.EZ-T107', NULL, 0, NULL, '9478b8c8-9962-4f97-a313-1dfd60f2195a', '2026-11-01T22:04:01Z', '2026-11-01T22:04:01Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
@@ -59010,6 +59233,9 @@ anchor while roughly facing a qualifying skyline.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (391, 'C2SD-T2', 'ryand', '2026-11-01T20:38:59Z', 'Duplicate: tickets repos rollout tickets --apply had already auto-filed C2SD-T1 with this same summary before this command ran. No separate work was done for this ID.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (392, 'M.DPLY-T21', 'ryand', '2026-11-01T20:57:03Z', 'Follow-up: restored CRLF line endings in README.md/README.htm after sed -i flattened them to LF');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (393, 'C2WS-T17', 'ryand', '2026-11-01T21:51:46Z', 'Clarification: the in-game text must be sent from ''Peter Parker'' himself as the displayed contact/sender -- not ''Spider-Man'' or any other label. He can still write in his friendly-neighborhood-Spider-Man voice and reference the persona/quotes, but the contact name and signature the player sees must read ''Peter Parker.''');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (394, 'C2WS-T8', 'ryand', '2026-11-01T21:55:13Z', 'Design change (2026-11-01, direct user request): dropped the Mantis Blades equip-check gate entirely. These traversal abilities are a permanent part of the player character -- the mod should work out of the box with no cyberware prerequisite. Flavor naming (''Mantis Blade climb'') can stay in docs/comments, but no code may check equipped cyberware before allowing a latch.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (395, 'C2WS-T9', 'ryand', '2026-11-01T21:55:32Z', 'Design change (2026-11-01, direct user request): added a manual, player-initiated wall-run trigger (press jump while looking/moving toward a wall to either side), Titanfall-style, as a second entry path alongside the automatic swing-impact routing from C2WS-T7. No cyberware equip-check gates this -- it''s a permanent player ability, matching the same change made to C2WS-T8''s wall-latch.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (396, 'IDEA-T44', 'ryand', '2026-11-01T22:01:29Z', 'Follow-up fix: MindAttic.Ideas.Abstractions must stay under its original assembly name and namespace — it''s the frozen binary identity every compiled .idea package (including the vendored external Page.Frontpage) links against by exact name. Renaming it broke the app at startup (FileNotFoundException then TypeLoadException). Reverted the Abstractions project''s folder/csproj/AssemblyName and its namespace across all 206 consuming files back to MindAttic.Ideas.Abstractions; repacked all 53 library citizens against it; confirmed the app now boots end-to-end and writes its Vault settings manifest correctly as IdeaCms.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
@@ -59632,6 +59858,14 @@ Make ShootDodge install cleanly through Nexus Mods'' Vortex (and manual install)
 - [ ] The text comes from Max Payne himself: the sender/contact name is "Max Payne" and the message is in his first-person voice (user requirement). A contact avatar, if supported, uses only an existing in-game image. The message is never re-sent on reload.
 - [ ] TESTING.md gets a section for both the Vortex install and the text message.
 
+## More quotes (user request, 2026-11-01)
+
+The user loves Max Payne texting V real Max Payne lines. Fit in **as many genuine quotes as you can find that are deep, moody and disturbing**: the fatalistic, nightmare and grief-soaked narration from Max Payne 1 and 2.
+- Make it a thread of several texts from "Max Payne", not one block.
+- The how-to-play explanation stays in it, woven between the quotes in Max''s voice.
+- Every quote must be verified word for word against a real source (e.g. Wikiquote''s page source, game script dumps) and listed with its source in DESIGN.md.
+- Never invent, paraphrase or "improve" a line and present it as a quote. Quality over count: drop anything you can''t verify.
+
 ## Handoff from the first (stopped) run, 2026-11-01
 
 Uncommitted work is in the checkout: continue it, don''t start over.
@@ -59657,7 +59891,23 @@ Findings:
   - add `polish_restore.txt` to `.gitignore`;
   - write the sources into DESIGN.md;
   - add the README, NEXUS_PAGE and TESTING sections;
-  - build, commit, push and close.', '2026-11-01T21:52:11Z');
+  - build, commit, push and close.', '2026-11-01T21:59:51Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2SD-T28', '## Goal
+
+Max Payne dual-wields Berettas. Vanilla Cyberpunk 2077 has no dual wielding. Find out whether any existing mod adds real akimbo pistols that ShootDodge could support or recommend.
+
+## Acceptance
+
+- [ ] Search Nexus Mods, GitHub and modding communities (r/cyberpunkgame, r/cyberpunkmods, the CP2077 modding Discord''s public wiki, the wiki.redmodding.org pages) for dual-wield/akimbo mods for Cyberpunk 2077. For each one found, record:
+  - its name and link;
+  - whether it is real dual wielding (two guns firing) or cosmetic only;
+  - its requirements;
+  - its last update and whether it works on the current game version (2.x);
+  - its license and permissions;
+  - known issues.
+- [ ] If none exist, say so plainly. Also record any in-game near-equivalents (e.g. weapons or cyberware with a two-gun look) and what building akimbo would take (animations, animgraph, weapon handling), with sources.
+- [ ] Write the findings with sources into docs/DESIGN.md under an "Akimbo / dual wielding" section, ending with a clear recommendation: support mod X as an optional dependency (and what ShootDodge would need to change), or don''t pursue.
+- [ ] Research only: change no mod code. If a viable mod exists, file a follow-up feature ticket describing the integration instead of implementing it.', '2026-11-01T22:01:22Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2SD-T4', '## Story
 
 As V, male or female, I want the exact look and weapons Max Payne wears in Max Payne 2, rebuilt as closely as possible from Cyberpunk 2077''s existing items, so the Shootdodge comes with the signature look.
@@ -59946,26 +60196,18 @@ end
       (3) the same shallow angle below minimum speed latches (fallback).', '2026-11-01T20:28:29Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T8', '## Story
 
-As V, I want to grab on and climb a wall with my Mantis Blades when I hit it head-on (or stop too
-slowly to wall-run), so that I''m not just bounced off every flat surface.
+As V, I want to grab onto and climb a wall when I hit it head-on (or stop too slowly to wall-run), so that I''m not just bounced off every flat surface. This is a built-in ability of the mod, not gated behind any equipped cyberware -- it works for any player out of the box, no Mantis Blades or Monowire required in V''s actual loadout.
 
 ## Acceptance
 
-- [ ] `TriggerWallLatch()` requires Mantis Blades equipped (check the game''s existing
-      equipment/stance API); if not equipped, falls back to today''s normal collision behavior and
-      logs why it declined to latch.
-- [ ] Entering `CLIMBING` disables fall damage and normal gravity for V (document the exact
-      property/flag toggled in `docs/DESIGN.md`) and zeroes residual velocity into the wall.
-- [ ] Directional input while `CLIMBING` moves V along the wall''s surface plane (up/down/strafe),
-      and moving past the wall''s physical edge exits back to `NONE` instead of clipping through it.
-- [ ] Jump input while `CLIMBING` performs a climb-jump: exits `CLIMBING`, applies an
-      outward+upward impulse, returns to `NONE`.
-- [ ] Verified: climb at least 10m up a building face, strafe both directions without unintentionally
-      sliding off, then climb-jump off cleanly into a normal fall.', '2026-11-01T20:28:31Z');
+- [ ] `TriggerWallLatch()` has **no equipment check of any kind**: it never queries Mantis Blades, Monowire, or any other cyberware slot. The mod grants this ability permanently and unconditionally, regardless of what V has equipped.
+- [ ] Entering `CLIMBING` disables fall damage and normal gravity for V (document the exact property/flag toggled in `docs/DESIGN.md`) and zeroes residual velocity into the wall.
+- [ ] Directional input while `CLIMBING` moves V along the wall''s surface plane (up/down/strafe), and moving past the wall''s physical edge exits back to `NONE` instead of clipping through it.
+- [ ] Jump input while `CLIMBING` performs a climb-jump: exits `CLIMBING`, applies an outward+upward impulse, returns to `NONE` -- from there the player can either latch onto a facing wall again (chain, see C2WS-T11) or fire a new web-sling (C2WS-T6/T12).
+- [ ] Verified: climb at least 10m up a building face, strafe both directions without unintentionally sliding off, then climb-jump off cleanly into a normal fall -- with nothing equipped in V''s cyberware slots.', '2026-11-01T21:55:07Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T9', '## Story
 
-As V, I want to keep running when I glance off a wall at an angle and I''m moving fast enough, so
-that traversal feels like Spider-Man 2''s wall-runs instead of just bouncing off.
+As V, I want to keep running when I glance off a wall at an angle and I''m moving fast enough, so that traversal feels like Spider-Man 2''s wall-runs instead of just bouncing off. I also want a deliberate, player-initiated way to start a wall-run -- press the jump key while looking (or moving) toward a wall to my left or right and start running along it, Titanfall-style -- not just the automatic physics routing from a swing impact. This is a built-in ability, not gated behind any equipped cyberware.
 
 ## Acceptance
 
@@ -59988,17 +60230,13 @@ function InitiateWallRun(wallNormal, currentVelocity)
 end
 ```
 
-- [ ] `InitiateWallRun(wallNormal, currentVelocity)` computes the wall-parallel direction as the
-      perpendicular of `wallNormal`, picking the sign that matches V''s existing travel direction.
-- [ ] `wallRunSpeed = max(currentVelocity:Length(), 15.0)` (tunable minimum); final velocity =
-      `wallParallelDir * wallRunSpeed + wallNormal * -1.5` (tunable sticky force) with Z pinned to
-      `+2.5` (tunable anti-gravity-drag) for the duration of the run.
-- [ ] `Player:GetLocomotionComponent():SetLinearVelocity(...)` is re-applied every tick of the run
-      (a new `UpdateWallHangPhysics`, called from `onUpdate` while `WALLRUNNING`) — not just once on
-      entry — confirmed V doesn''t slip off the wall geometry mid-run.
+- [ ] `InitiateWallRun(wallNormal, currentVelocity)` computes the wall-parallel direction as the perpendicular of `wallNormal`, picking the sign that matches V''s existing travel direction.
+- [ ] `wallRunSpeed = max(currentVelocity:Length(), 15.0)` (tunable minimum); final velocity = `wallParallelDir * wallRunSpeed + wallNormal * -1.5` (tunable sticky force) with Z pinned to `+2.5` (tunable anti-gravity-drag) for the duration of the run.
+- [ ] `Player:GetLocomotionComponent():SetLinearVelocity(...)` is re-applied every tick of the run (a new `UpdateWallHangPhysics`, called from `onUpdate` while `WALLRUNNING`) -- not just once on entry -- confirmed V doesn''t slip off the wall geometry mid-run.
+- [ ] **Manual, Titanfall-style trigger:** pressing the jump key (same key as a normal jump) while a qualifying wall is within range to V''s left or right (checked via T1''s raycast, perpendicular-ish to V''s facing/travel direction, not straight ahead) starts a wall-run on that wall directly from running/falling on the ground or in open air -- this does not require first having glanced off the wall via a swing impact (C2WS-T7''s routing stays as the automatic in-swing path; this is a second, player-initiated entry point into `WALLRUNNING`).
+- [ ] No equipment check of any kind gates entry into `WALLRUNNING` by either path.
 - [ ] Camera tilt (`SetCameraTilt(10.0, 0.3)`, tunable) plays on entry and resets to neutral on exit.
-- [ ] Verified: wall-run along a straight building face for at least 3 seconds without sliding off or
-      clipping through the wall.', '2026-11-01T20:28:33Z');
+- [ ] Verified: (1) wall-run along a straight building face for at least 3 seconds without sliding off or clipping through the wall, entered via a swing impact; (2) separately, approach a wall on foot or mid-air, look/move toward it to one side, press jump, and confirm the manual trigger starts the same wall-run.', '2026-11-01T21:55:31Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('CLA-T22', 'LAMP migration for **Claudia** (plan: MindAttic.Vault/docs/rfc/0003-lamp.md, Rollout step 5).
 
 - Move to the new MindAttic.Vault major.
