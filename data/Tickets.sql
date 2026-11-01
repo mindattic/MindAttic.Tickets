@@ -7773,6 +7773,9 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T33', 'Mods.Cyberpunk2077.ShootDodge', 33, '2026-11-01', 'fix', 'closed', 'init.lua:208 overlayOpen starts false, and a CET ''Reload all mods'' done with the overlay open never fires onOverlayOpen, so the ShootDodge debug window stays hidden until the overlay is closed and reopened (found by bughunt)', 'ae0a190', 32, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T34', 'Mods.Cyberpunk2077.ShootDodge', 34, '2026-11-01', 'chore', 'closed', 'Build the v1.0.0 release zip (dist/ShootDodge-1.0.0.zip) with tools/package.ps1', 'c0fd879 dist/ShootDodge-1.0.0.zip', 33, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T35', 'Mods.Cyberpunk2077.ShootDodge', 35, '2026-11-01', 'chore', 'closed', 'Track dist/ in git: dist/ holds the released zips of each version of the mod; un-ignore it and commit dist/ShootDodge-1.0.0.zip', '55c2f5d', 34, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T36', 'Mods.Cyberpunk2077.ShootDodge', 36, '2026-11-01', 'fix', 'closed', 'Bullet Time toggle defaults to Numpad Enter (V summons the vehicle); confirm it''s unused, set it as the CET default if possible; Max Payne''s texts teach the CET steps (open overlay, tick Enabled, Bindings tab, rebind); update docs', 'fbebd54', 35, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T37', 'Mods.Cyberpunk2077.ShootDodge', 37, '2026-11-01', 'feature', 'open', 'Bullet Time mode defaults to Numpad Enter via an Input Loader input action (r6/input XML), with the CET binding kept as fallback/rebind', '—', 36, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T38', 'Mods.Cyberpunk2077.ShootDodge', 38, '2026-11-01', 'feature', 'open', 'In Bullet Time mode, Space is the Shootdodge (no aim needed, held direction or forward) instead of a regular jump', '—', 37, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T1', 'Mods.Cyberpunk2077.WebSlinger', 1, '2026-11-01', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T2', 'Mods.Cyberpunk2077.WebSlinger', 2, '2026-11-01', 'feature', 'closed', 'Scaffold new repo: Cyberpunk 2077 mod for Mantis Blade wall-climb, wall-run/jump, and Spider-Man 2 style webslinging', '7aad643ac7c88e810331b43e6e85a40b41323aaf', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T3', 'Mods.Cyberpunk2077.WebSlinger', 3, '2026-11-01', 'chore', 'closed', 'Rename repo to Mods.Cyberpunk2077.WebSlinger for mod organization (GitHub + folder + refs)', '36d0a7610a8d43186a58b5ea925f2190e04bf613', 2, NULL);
@@ -56220,6 +56223,16 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33248, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33249, 'C2WS-T20', '2026-11-01T23:30:50Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33250, 'C2WS-T20', '2026-11-01T23:30:50Z', 'ref', '—', 'c21a16e');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33251, 'C2WS-T20', '2026-11-01T23:31:15Z', 'working', '808ce091-f94c-467d-a7d1-b6562cc81444', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33252, 'C2SD-T36', '2026-11-01T23:43:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33253, 'C2SD-T36', '2026-11-01T23:43:58Z', 'working', NULL, 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33254, 'C2SD-T36', '2026-11-01T23:45:08Z', 'summary', 'Bullet Time toggle needs a key the game doesn''t use: V (where the user bound it) already summons the vehicle; research CP2077 default bindings, pick a free key (default it if CET allows), recommend it in docs and Max''s text', 'Bullet Time toggle defaults to Numpad Enter (user''s choice; V, where the user bound it, already summons the vehicle): confirm it''s unused, set it as the CET default if possible, update docs and Max''s text (corrected: User chose Numpad Enter as the default key)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33255, 'C2SD-T36', '2026-11-01T23:45:31Z', 'summary', 'Bullet Time toggle defaults to Numpad Enter (user''s choice; V, where the user bound it, already summons the vehicle): confirm it''s unused, set it as the CET default if possible, update docs and Max''s text', 'Bullet Time toggle defaults to Numpad Enter (V summons the vehicle); confirm it''s unused, set it as the CET default if possible; Max Payne''s texts teach the CET steps (open overlay, tick Enabled, Bindings tab, rebind); update docs (corrected: User asked for CET instructions in Max''s phone texts)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33256, 'C2SD-T36', '2026-11-01T23:46:00Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33257, 'C2SD-T36', '2026-11-01T23:46:00Z', 'ref', '—', 'fbebd54');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33258, 'C2SD-T37', '2026-11-01T23:46:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33259, 'C2SD-T38', '2026-11-01T23:46:45Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33260, 'C2SD-T37', '2026-11-01T23:46:46Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33261, 'C2SD-T38', '2026-11-01T23:46:47Z', 'approval', 'proposed', 'approved');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -56269,6 +56282,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T28', 'approved', 0, '2026-11-01T22:01:26Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T3', 'approved', 0, '2026-11-01T20:41:25Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T30', 'approved', 0, '2026-11-01T22:26:23Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T37', 'approved', 0, '2026-11-01T23:46:46Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T38', 'approved', 0, '2026-11-01T23:46:47Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T4', 'approved', -10, '2026-11-01T20:45:47Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T5', 'approved', 0, '2026-11-01T20:41:26Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T6', 'approved', 0, '2026-11-01T20:41:26Z', NULL);
@@ -58704,6 +58719,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('USOD-T9', 'approved', 0, '2026-10-22T23:02:27Z', NULL);
 
 -- ticket_work
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2SD-T36', NULL, 0, 'ryandebraal@mindattic.com', '6e82fb1a-2202-410b-93b9-327c9f6ad258', '2026-11-01T23:43:58Z', '2026-11-01T23:43:58Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2WS-T19', NULL, 0, 'ryandebraal@mindattic.com', '808ce091-f94c-467d-a7d1-b6562cc81444', '2026-11-01T23:29:09Z', '2026-11-01T23:29:09Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
@@ -59443,6 +59459,16 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (396, 'ID
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (397, 'IDEA-T44', 'ryand', '2026-11-01T22:08:45Z', 'Follow-up: the IdeaCmsBrochure component''s in-app brochure/demo page still showed the two-tone ''MindAttic.Ideas'' wordmark (split across 3 styled spans, missed by the text-pattern rename) and two hardcoded asset URLs still pointed at the pre-rename ''ideasbrochure'' key, which would 404 the CSS/JS. Redesigned the hero wordmark as a two-tone ''Idea''+''Cms'' split, renamed the .ibr-hero-ideas CSS class to .ibr-hero-cms, dropped the now-unused dot separator, fixed both asset paths to ''ideacmsbrochure'', and reworded the demo blurb.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (398, 'C2WS-T9', 'ryand', '2026-11-01T22:51:32Z', 'Found during an aborted bug-hunt pass (2026-11-01), before this ticket''s code landed: InitiateWallRun clamps r.speed = max(actualSpeed, WebSlinger.wallrun.MinWallRunSpeed) where MinWallRunSpeed = 15.0, but CheckWallCollisionDuringSwing (C2WS-T7) only requires currentSpeed >= WebSlinger.impact.MinimumWallRunSpeed (8.0) to route into a wall-run. A swing-triggered wall-run entering between 8-15 m/s gets force-boosted up to 15 m/s -- a discontinuous, unintended velocity injection that contradicts the mod''s momentum-conservation design (release/carry velocity is never zeroed or boosted elsewhere). Whoever lands this ticket should fix this before closing it: either lower MinWallRunSpeed to match the 8.0 m/s entry threshold, or only clamp up when the wall-run was entered via the manual Titanfall-style trigger (where there''s no prior swing speed to preserve).');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (399, 'IDEA-T49', 'ryand', '2026-11-01T23:25:52Z', 'Found while interactively testing IDEA-T47 (admin tours) with Playwright against the real running app. Two identical console pageerrors fire on /frontpage load: "Failed to construct ''IntersectionObserver'': rootMargin must be specified in absolute length units or percent." One traces to a script at /frontpage:385, the other to an inline <script> (anonymous:66). Confirmed unrelated to the admin/tour work (driver.js''s own bundle has zero references to rootMargin). Likely a scroll-reveal/lazy-load feature in one of the frontpage''s library widgets (Carousel/Gallery/a .ifp-reveal-style animation) passing a unitless or otherwise malformed rootMargin to the IntersectionObserver constructor. Not fixed — out of scope for the admin tour ticket; needs someone to find the actual call site (grep library/ for IntersectionObserver) and add proper px/% units.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (400, 'C2WS-T19', 'ryand', '2026-11-01T23:37:20Z', 'Search phase: 5 parallel read-only review passes covering the whole 1962-line init.lua against docs/DESIGN.md''s stated invariants. Fix phase: 4 confirmed real bugs fixed directly in the working tree (NOT committed, per /bughunt''s explicit instruction to leave fixes for user review):
+
+1. init.lua ~1289-1307 (setClimbInvulnerable): a failed RemoveGodMode was silently marked as succeeded, permanently stranding the engine''s invulnerability flag on with no retry path. Fixed: leave the tracked flag unchanged on failure so a later call retries.
+2. init.lua ~1406-1415 (CLIMBING onExit, nil player): skipped RemoveGodMode entirely but still cleared the tracked flag -- same permanent-invulnerability risk (reachable via UpdateClimb''s ''lost player'' exit on death/fast-travel/vehicle transition). Fixed the same way.
+3. init.lua ~459-464 (moveWithCollision): the collision-probe ray was derived from a chest-height-raised origin toward an unraised target, skewing the ray steeply downward on near-flat swing ticks and risking a false ''landed'' hit (zeroing momentum) on sloped ground well below V. Fixed: direction now matches the real per-tick displacement; only the origin is raised.
+4. init.lua ~960, ~1164 (wall-run entry vs ongoing speed check): CheckWallCollisionDuringSwing and InitiateWallRun gated entry on full 3D speed, but UpdateWallHangPhysics''s ongoing drop-off check (after a 0.25s grace) compares horizontal-only measuredSpeed -- so a swing impact with a large vertical component could qualify for a wall-run that then immediately self-terminated as ''too slow''. Fixed both entry points to use lateral (2D) speed, matching docs/DESIGN.md''s stated ''minimum lateral speed'' intent.
+
+Flagged but NOT fixed (low-severity, not real defects worth changing per /bughunt''s own exclusion criteria): swingSpeed() is a byte-for-byte duplicate of lengthOf() (cosmetic); StopGrapple''s trailing swing.carry=false is currently-harmless dead code; setLinearVelocity''s pcall only catches thrown errors, not a bool failure return (already a known, documented risk); two unused ''local changed'' captures from ImGui.Checkbox at init.lua:1830/1864 (inert, no behavior impact).
+
+Left OPEN intentionally: fixes are uncommitted in the working tree pending Ryan''s review, not landed/closed per the usual ticket-close convention.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
@@ -60138,6 +60164,57 @@ docs/DESIGN.md has an "Akimbo / dual wielding" section (C2SD-T28):
   - the combo arms;
   - both guns fire at normal cadence during slow-mo;
   - the exemptions clear on landing and on weapon swap.', '2026-11-01T22:26:19Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2SD-T36', '## Problem
+
+The Bullet Time mode toggle is a CET binding (`registerInput` in init.lua:35), unbound by default. The user bound it to V, but V already summons V''s vehicle in Cyberpunk 2077. The toggle needs a key the game doesn''t use for anything.
+
+## Acceptance
+
+- [ ] Research Cyberpunk 2077''s default PC keyboard and mouse bindings for the current game version (2.5), including on foot, in vehicles, menus, photo mode and the 2.5 dual-wield controls. Use a real source: the game''s `r6/config/inputUserMappings.xml` / `inputContexts.xml` (check the user''s install under D:\Games or the Steam library if present), the official controls list, or the modding wiki. Record the sources in docs/DESIGN.md.
+- [ ] Pick a key that is unbound in every gameplay context and comfortable mid-fight. Thumb mouse buttons (Mouse 4/5) or a free keyboard key are good candidates; Max Payne used a mouse button for bullet time. Don''t pick anything the game already uses. Give one alternative as well.
+- [ ] Check whether current CET lets a mod give a binding a default key (registerInput/registerHotkey or the bindings config). If it can, make the chosen key the default. If it can''t, say so in DESIGN.md and keep the binding user-set.
+- [ ] Recommend the chosen key everywhere the binding is explained, and say plainly not to use V (vehicle summon):
+  - README.md;
+  - docs/NEXUS_PAGE.md, both the BBCode description and the notes;
+  - docs/TESTING.md section I;
+  - Max Payne''s phone text in modules/IntroMessage.lua (line ~121). Edit only the non-quote text there and keep every verified quote word for word.
+- [ ] Rebuild `dist/ShootDodge-1.0.0.zip` with tools/package.ps1 if any shipped file changed, and commit the zip (dist/ is tracked).', '2026-11-01T23:43:51Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2SD-T37', '## Goal
+
+The user wants Bullet Time mode on **Numpad Enter** out of the box. CET can''t give a binding a default key (C2SD-T36, see DESIGN.md). Use the game-input route instead: a new input action, loaded through the Input Loader mod (r6/input XML), that is bound to Numpad Enter by default.
+
+## Acceptance
+
+- [ ] Research how Input Loader works (Nexus mod and its GitHub/wiki, plus example mods that use it) and the game''s exact key name for Numpad Enter in input XML (e.g. `IK_NumEnter`; verify, don''t guess). Record the sources in DESIGN.md.
+- [ ] Add `r6/input/ShootDodge.xml` (or the documented path) that defines a ShootDodge Bullet Time action bound to Numpad Enter in the on-foot gameplay context. Lua (or a small redscript listener if that''s what''s needed) toggles Bullet Time mode when that action fires, through the existing `MeterDriver.ToggleMode` path.
+- [ ] Keep the CET binding as well, for rebinding and as the fallback if Input Loader isn''t installed. If the input-XML route depends on Input Loader, missing Input Loader must not break anything: the mod falls back to the CET binding.
+- [ ] Pressing both routes must not toggle twice in one press: debounce them.
+- [ ] Declare Input Loader as a requirement (optional, or required if the default can''t work without it) in README.md, docs/NEXUS_PAGE.md (requirements and BBCode), and tools/package.ps1 (include r6/input/*.xml in the zip).
+- [ ] Update Max''s texts (modules/IntroMessage.lua, non-quote text only) and the docs from "I''d give it Numpad Enter" to "Numpad Enter is the default".
+- [ ] docs/TESTING.md:
+  - Numpad Enter toggles Bullet Time with no binding set;
+  - it toggles once per press;
+  - it still works with Input Loader missing, through the CET binding.
+- [ ] Rebuild dist/ShootDodge-1.0.0.zip with tools/package.ps1 and commit it (dist/ is tracked).', '2026-11-01T23:46:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2SD-T38', '## Story
+
+As V in Bullet Time mode, I want Space to be the Shootdodge instead of a regular jump, so in slow-mo I can just hit Space to dive the way Max Payne does.
+
+## Acceptance
+
+- [ ] **Space triggers the dive:** while Bullet Time mode is on (`MeterDriver.meter.mode`), pressing jump (Space) triggers the Shootdodge without needing aim held. It uses the held movement direction relative to the camera, locked at launch as usual. With no direction held, dive forward; record that choice in DESIGN.md.
+- [ ] **Unchanged:**
+  - outside Bullet Time mode, the existing aim + jump + direction combo works exactly as before, and a plain Space is a normal jump;
+  - the weapon gate (C2SD-T13/T30) still applies in Bullet Time mode: with a disallowed weapon, Space is a normal jump;
+  - the grounded check, the cooldown and the "no dive mid-dive" guard all still apply.
+- [ ] **Interaction with the meter''s mode handling (BulletTimeMeterDriver / C2SD-T15):** starting a dive currently ends Bullet Time mode. Keep that (as in MP2, the dive''s own slow-mo takes over), unless the code shows a better fit; record the decision in DESIGN.md.
+- [ ] **Overlay:** the debug overlay shows "Space = Shootdodge (Bullet Time)" while the mode is on.
+- [ ] **Docs:**
+  - README "how to use";
+  - Nexus BBCode;
+  - TESTING.md, with a new section: in BT mode, Space with and without a direction, with a disallowed weapon, and Space outside BT mode stays a normal jump;
+  - Max''s texts (non-quote text only) mention that in Bullet Time, Space alone sends you flying.
+- [ ] Rebuild dist/ShootDodge-1.0.0.zip with tools/package.ps1 and commit it (dist/ is tracked).', '2026-11-01T23:46:45Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2SD-T4', '## Story
 
 As V, male or female, I want the exact look and weapons Max Payne wears in Max Payne 2, rebuilt as closely as possible from Cyberpunk 2077''s existing items, so the Shootdodge comes with the signature look.
