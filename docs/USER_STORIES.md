@@ -429,3 +429,4 @@ updated: 2026-10-12
 | M.TIX-T297 | 2026-11-01 | chore | closed | Sync generated/live files | — |
 | M.TIX-T298 | 2026-11-01 | chore | closed | Sync generated/live files | — |
 | M.TIX-T299 | 2026-11-01 | chore | closed | Sync generated/live files | — |
+| M.TIX-T300 | 2026-11-01 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
