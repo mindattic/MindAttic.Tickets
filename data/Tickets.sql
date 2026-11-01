@@ -53736,6 +53736,12 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31750, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31751, 'U.CHN-T106', '2026-11-01T08:01:52Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31752, 'U.CHN-T107', '2026-11-01T08:01:59Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31753, 'U.CHN-T108', '2026-11-01T08:02:00Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31754, 'U.CHN-T108', '2026-11-01T08:02:29Z', 'working', NULL, 'dd9a9ad1-6017-443b-954d-d83ea90f8bda');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31755, 'U.CHN-T107', '2026-11-01T08:02:29Z', 'working', NULL, 'dd9a9ad1-6017-443b-954d-d83ea90f8bda');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31756, 'U.CHN-T106', '2026-11-01T08:02:30Z', 'working', NULL, 'dd9a9ad1-6017-443b-954d-d83ea90f8bda');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31757, 'U.CHN-T106', '2026-11-01T08:02:46Z', 'working', 'dd9a9ad1-6017-443b-954d-d83ea90f8bda', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31758, 'U.CHN-T107', '2026-11-01T08:02:47Z', 'working', 'dd9a9ad1-6017-443b-954d-d83ea90f8bda', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31759, 'U.CHN-T108', '2026-11-01T08:02:47Z', 'working', 'dd9a9ad1-6017-443b-954d-d83ea90f8bda', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
