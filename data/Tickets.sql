@@ -4262,7 +4262,7 @@ INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref
 INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1377, 'Mods.Cyberpunk2077.WebSlinger', 'C2WS-US-T8', NULL, 'T', NULL, NULL, 'planned', '⬜', '', 'As V, I want to jump off a wall-climb or wall-run in a chosen direction, so I can chain between two facing walls or launch into open air.', NULL, NULL, 'bullet', 7);
 INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1378, 'Mods.Cyberpunk2077.WebSlinger', 'C2WS-US-T9', NULL, 'T', NULL, NULL, 'planned', '⬜', '', 'As V, I want to fire a new web-sling while airborne off a wall-jump or wall-run, so a single run can chain climb -> run -> jump -> swing with no ground touch.', NULL, NULL, 'bullet', 8);
 INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1379, 'Mods.Cyberpunk2077.WebSlinger', 'C2WS-US-T10', NULL, 'T', NULL, NULL, 'planned', '⬜', '', 'As V, I want visual/camera feedback during these moves, so traversal reads as deliberate parkour rather than a glitch.', NULL, NULL, 'bullet', 9);
-INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1380, 'Mods.Cyberpunk2077.ShootDodge', 'C2SD-US-D1', NULL, 'D', NULL, NULL, 'planned', '⬜', '', 'As V, I want twin pistols and a Max Payne style trench coat added to my inventory when the mod loads, so I have the signature loadout without hunting for it.', NULL, NULL, 'bullet', 0);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1380, 'Mods.Cyberpunk2077.ShootDodge', 'C2SD-US-D1', NULL, 'D', NULL, NULL, 'planned', '⬜', '', 'As V, male or female, I want the exact look and weapons Max Payne wears in Max Payne 2, rebuilt as closely as possible from Cyberpunk 2077''s existing items, so the Shootdodge comes with the signature look.', NULL, NULL, 'bullet', 0);
 INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1381, 'Mods.Cyberpunk2077.ShootDodge', 'C2SD-US-D2', NULL, 'D', NULL, NULL, 'planned', '⬜', '', 'As V, I want the mod to recognize a dedicated Shootdodge input combo (aim held + jump + a movement direction) without misfiring during normal play, so the move triggers only when I mean it to.', NULL, NULL, 'bullet', 1);
 INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1382, 'Mods.Cyberpunk2077.ShootDodge', 'C2SD-US-D3', NULL, 'D', NULL, NULL, 'planned', '⬜', '', 'As V, I want the mod''s state machine to show my current Shootdodge state (NONE/DIVING/AIRBORNE/PRONE/GETUP) at all times, so every later mechanic is built and debugged against one known state.', NULL, NULL, 'bullet', 2);
 INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1383, 'Mods.Cyberpunk2077.ShootDodge', 'C2SD-US-D4', NULL, 'D', NULL, NULL, 'planned', '⬜', '', 'As V, I want the input combo to launch me into a horizontal leap in the direction I''m moving, locked for the whole dive, so I leave the ground the way Max Payne does.', NULL, NULL, 'bullet', 3);
@@ -7234,7 +7234,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1390', 'MindAttic.Orchestrator', 1390, '2026-11-01', 'chore', 'closed', 'Update orchestrator.db, orchestrator.sql', '—', 1389, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1391', 'MindAttic.Orchestrator', 1391, '2026-11-01', 'chore', 'closed', 'Update orchestrator.db, orchestrator.sql', '—', 1390, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1392', 'MindAttic.Orchestrator', 1392, '2026-11-01', 'fix', 'open', 'Restarting Launcher from inside Orchestrator throws an exception', '—', 1391, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1393', 'MindAttic.Orchestrator', 1393, '2026-11-01', 'fix', 'open', 'Tab status icons don''t match actual state: most User/CLI tabs show gray ''ZZ'' instead of green spinner when active', '—', 1392, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1393', 'MindAttic.Orchestrator', 1393, '2026-11-01', 'fix', 'closed', 'Tab status icons don''t match actual state: most User/CLI tabs show gray ''ZZ'' instead of green spinner when active', '4c341a54', 1392, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T1', 'MindAttic.Psst', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.PSST-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T2', 'MindAttic.Psst', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for ContactBook (Contacts/Contact.cs): Find matches name case-insensitively before phone, falls back to 10-digit phone match across formats (+1, dashes, parens), returns null for blank or unmatched input; WithAdded rejects blank name/phone and case-insensitive duplicate names and leaves the original book unchanged; WithoutContact removes only the first case-insensitive match and returns null when absent - this is how psst sms resolves recipients, so a wrong match texts the wrong person', '865fde2', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T3', 'MindAttic.Psst', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched', '—', 2, '| M.PSST-T3 | 2026-10-14 | chore | open | NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched | — |');
@@ -7735,14 +7735,14 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T1', 'Mods.Cyberpunk2077.ShootDodge', 1, '2026-11-01', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T2', 'Mods.Cyberpunk2077.ShootDodge', 2, '2026-11-01', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T3', 'Mods.Cyberpunk2077.ShootDodge', 3, '2026-11-01', 'chore', 'closed', 'Scaffold new repo: Cyberpunk 2077 mod for Max Payne 2 style Shootdodge (dive, bullet-time, prone/get-up) plus twin pistols + trench coat loadout', '7fd712eebb5ef5b40fe6e6e1b5120afbf0c4e96e', 2, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T4', 'Mods.Cyberpunk2077.ShootDodge', 4, '2026-11-01', 'feature', 'open', 'Grant twin pistols + Max Payne style trench coat on mod load', 'C2SD-US-D1', 3, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T4', 'Mods.Cyberpunk2077.ShootDodge', 4, '2026-11-01', 'feature', 'open', 'Max Payne 2 outfit + twin pistols, closest existing items for male and female V, no new assets', 'C2SD-US-D1', 3, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T5', 'Mods.Cyberpunk2077.ShootDodge', 5, '2026-11-01', 'feature', 'closed', 'Shootdodge input detection: aim+jump+move combo, debounced against normal play', 'ac06f0e', 4, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T6', 'Mods.Cyberpunk2077.ShootDodge', 6, '2026-11-01', 'feature', 'closed', 'Formalize Shootdodge state machine (NONE/DIVING/AIRBORNE/PRONE/GETUP) + debug overlay', 'a1bd8b0aa13c44f5f958d12de3c6375bb1f8f8e8', 5, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T7', 'Mods.Cyberpunk2077.ShootDodge', 7, '2026-11-01', 'feature', 'closed', 'Dive trigger: launch V into a horizontal leap in the held movement direction, locked for the whole dive', 'e4c815b', 6, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T8', 'Mods.Cyberpunk2077.ShootDodge', 8, '2026-11-01', 'feature', 'closed', 'Bullet-time: world time dilation for the duration of the dive', '0aa816cd4ae6e400f685ebe0894388d73dabe756', 7, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T9', 'Mods.Cyberpunk2077.ShootDodge', 9, '2026-11-01', 'feature', 'open', 'Responsive aim+fire during slow-mo: exempt player turn-speed and fire-rate from the dilation', 'C2SD-US-D6', 8, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T10', 'Mods.Cyberpunk2077.ShootDodge', 10, '2026-11-01', 'feature', 'open', 'Ground-contact detection: detect landing, always go prone, record held movement input', 'C2SD-US-D7', 9, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T11', 'Mods.Cyberpunk2077.ShootDodge', 11, '2026-11-01', 'feature', 'open', 'Prone-and-shoot state: land prone, keep free-aim firing from the ground', 'C2SD-US-D8', 10, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T9', 'Mods.Cyberpunk2077.ShootDodge', 9, '2026-11-01', 'feature', 'closed', 'Responsive aim+fire during slow-mo: exempt player turn-speed and fire-rate from the dilation', '90d05c1e0d895feebb7bc90efa7de67a0f6be3a0', 8, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T10', 'Mods.Cyberpunk2077.ShootDodge', 10, '2026-11-01', 'feature', 'closed', 'Ground-contact detection: detect landing, always go prone, record held movement input', '4b73b985c70ee31968ca36e625dd47f7f9ccd3f8', 9, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T11', 'Mods.Cyberpunk2077.ShootDodge', 11, '2026-11-01', 'feature', 'closed', 'Prone-and-shoot state: land prone, keep free-aim firing from the ground', '1bab021188a8a8878837e510ad572fa1d195f09c', 10, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T12', 'Mods.Cyberpunk2077.ShootDodge', 12, '2026-11-01', 'feature', 'open', 'Get-up recovery: from prone, a movement input scrambles V back to their feet', 'C2SD-US-D9', 11, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T13', 'Mods.Cyberpunk2077.ShootDodge', 13, '2026-11-01', 'feature', 'closed', 'Weapon restriction: gate the dive trigger to pistols/revolvers/small SMGs only', 'fb9449d', 12, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T14', 'Mods.Cyberpunk2077.ShootDodge', 14, '2026-11-01', 'feature', 'open', 'Camera + audio polish: FOV pull-back, whoosh cue, music/ambience low-pass during the dive', 'C2SD-US-D11', 13, NULL);
@@ -55414,6 +55414,51 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32970, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32971, 'C2SD-T16', '2026-11-01T21:12:03Z', 'working', '6e82fb1a-2202-410b-93b9-327c9f6ad258', 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32972, 'C2SD-T16', '2026-11-01T21:12:38Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32973, 'C2SD-T16', '2026-11-01T21:12:38Z', 'ref', '—', 'ac9944b5c8fccf337d26f2aaaf7b1be8f7094474');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32974, 'C2SD-T4', '2026-11-01T21:13:10Z', 'summary', 'Grant twin pistols + Max Payne style trench coat on mod load', 'Max Payne 2 outfit + twin pistols, closest existing items for male and female V, no new assets (corrected: User spec: exact Max Payne look for both body types, from existing assets only; still runs last)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32975, 'C2SD-T4', '2026-11-01T21:13:12Z', 'description', '## Story
+
+As V, I want twin pistols and a Max Payne style trench coat added to my inventory when the mod loads, so I have the signature loadout without hunting for it.
+
+## Acceptance
+
+- [ ] Mod load grants exactly one trench coat garment item and two pistol-type weapon items to V''s inventory, once per save.
+- [ ] Items reskin existing game archetypes/TweakDB records (via TweakXL), not placeholder debug items, so they equip and render normally.
+- [ ] Grant logic is idempotent: reloading the same save, or restarting CET, never re-grants duplicates.
+- [ ] Verify in-game: load a save with the mod active, open inventory, confirm both pistols and the coat are present and equippable; reload the save and confirm no duplicates appeared.', '## Story
+
+As V, male or female, I want the exact look and weapons Max Payne wears in Max Payne 2, rebuilt as closely as possible from Cyberpunk 2077''s existing items, so the Shootdodge comes with the signature look.
+
+## Acceptance
+
+- [ ] **Research first:** pin down Max Payne 2''s outfit and weapons from reference sources (wiki pages, screenshots, the game''s character model), piece by piece: the coat (cut, length, material, colour), shirt, tie if any, trousers, shoes, and the dual pistols. Write the findings with sources into docs/DESIGN.md.
+- [ ] **No new assets:** use only Cyberpunk 2077''s existing items, meshes and appearances. No new meshes, textures or .archive art. TweakXL records that point at existing appearances, and existing colour variants, are fine.
+- [ ] **Closest match, slot by slot:** for every slot (outer torso, inner torso, legs, feet, plus any other piece the research finds), choose the closest existing item and appearance variant. Record each choice and why in DESIGN.md, with runners-up.
+- [ ] **Both body types:** male V and female V each get the full outfit, using each item''s correct body-gender variant, so it renders correctly on either. Where a piece has no good match for one body type, pick the closest alternative for that body type and say so in DESIGN.md.
+- [ ] **Twin pistols:** grant two of the in-game pistol closest to the Beretta 92 that Max dual-wields, if the research confirms that is MP2''s signature weapon. They must pass the C2SD-T13 weapon gate.
+- [ ] Everything is granted once per save and is idempotent: reloading the save or restarting CET never re-grants duplicates.
+- [ ] Verify in-game on both a male and a female V: everything is in the inventory, equips, and renders; reloading adds no duplicates.
+
+## Earlier work in progress
+
+An earlier, stopped run left a partial attempt (Loadout.lua, r6/tweaks/ShootDodge/loadout.yaml, and an init.lua patch) at
+C:\Users\ryand\AppData\Local\Temp\claude\D--Projects-MindAttic-Mods-Cyberpunk2077-ShootDodge\6e82fb1a-2202-410b-93b9-327c9f6ad258\scratchpad\T4-wip
+Reuse it where it helps. It predates this spec and the current init.lua.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32976, 'C2SD-T16', '2026-11-01T21:13:14Z', 'working', 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32977, 'C2SD-T9', '2026-11-01T21:13:50Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32978, 'C2SD-T9', '2026-11-01T21:13:50Z', 'ref', 'C2SD-US-D6', '90d05c1e0d895feebb7bc90efa7de67a0f6be3a0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32979, 'C2SD-T9', '2026-11-01T21:14:03Z', 'working', 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32980, 'C2SD-T10', '2026-11-01T21:14:07Z', 'working', NULL, 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32981, 'C2SD-T4', '2026-11-01T21:15:53Z', 'working', '6e82fb1a-2202-410b-93b9-327c9f6ad258', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32982, 'C2SD-T10', '2026-11-01T21:18:55Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32983, 'C2SD-T10', '2026-11-01T21:18:55Z', 'ref', 'C2SD-US-D7', '4b73b985c70ee31968ca36e625dd47f7f9ccd3f8');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32984, 'C2SD-T10', '2026-11-01T21:19:23Z', 'working', 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32985, 'C2SD-T12', '2026-11-01T21:19:36Z', 'working', NULL, 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32986, 'C2SD-T11', '2026-11-01T21:19:36Z', 'working', NULL, 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32987, 'M.ORCH-T1393', '2026-11-01T21:20:02Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32988, 'M.ORCH-T1393', '2026-11-01T21:20:02Z', 'ref', '—', '4c341a54');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32989, 'C2SD-T11', '2026-11-01T21:22:26Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32990, 'C2SD-T11', '2026-11-01T21:22:26Z', 'ref', 'C2SD-US-D8', '1bab021188a8a8878837e510ad572fa1d195f09c');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32991, 'C2SD-T11', '2026-11-01T21:22:42Z', 'working', 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -57889,9 +57934,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('USOD-T9', 'approved', 0, '2026-10-22T23:02:27Z', NULL);
 
 -- ticket_work
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2SD-T16', NULL, 0, 'ryandebraal@mindattic.com', '6e82fb1a-2202-410b-93b9-327c9f6ad258', '2026-11-01T21:12:03Z', '2026-11-01T21:12:03Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2SD-T4', NULL, 0, NULL, '6e82fb1a-2202-410b-93b9-327c9f6ad258', '2026-11-01T20:45:36Z', '2026-11-01T20:45:36Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2SD-T9', NULL, 0, 'ryandebraal@mindattic.com', '6e82fb1a-2202-410b-93b9-327c9f6ad258', '2026-11-01T21:11:02Z', '2026-11-01T21:11:02Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2SD-T12', NULL, 0, 'ryandebraal@mindattic.com', '6e82fb1a-2202-410b-93b9-327c9f6ad258', '2026-11-01T21:19:36Z', '2026-11-01T21:19:36Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
@@ -59198,14 +59241,23 @@ A perfect first-person recreation of Max Payne 2''s shootdodge:
 The camera stays first person the whole time, prone included. Never switch to third person.', '2026-11-01T20:48:17Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2SD-T4', '## Story
 
-As V, I want twin pistols and a Max Payne style trench coat added to my inventory when the mod loads, so I have the signature loadout without hunting for it.
+As V, male or female, I want the exact look and weapons Max Payne wears in Max Payne 2, rebuilt as closely as possible from Cyberpunk 2077''s existing items, so the Shootdodge comes with the signature look.
 
 ## Acceptance
 
-- [ ] Mod load grants exactly one trench coat garment item and two pistol-type weapon items to V''s inventory, once per save.
-- [ ] Items reskin existing game archetypes/TweakDB records (via TweakXL), not placeholder debug items, so they equip and render normally.
-- [ ] Grant logic is idempotent: reloading the same save, or restarting CET, never re-grants duplicates.
-- [ ] Verify in-game: load a save with the mod active, open inventory, confirm both pistols and the coat are present and equippable; reload the save and confirm no duplicates appeared.', '2026-11-01T20:41:43Z');
+- [ ] **Research first:** pin down Max Payne 2''s outfit and weapons from reference sources (wiki pages, screenshots, the game''s character model), piece by piece: the coat (cut, length, material, colour), shirt, tie if any, trousers, shoes, and the dual pistols. Write the findings with sources into docs/DESIGN.md.
+- [ ] **No new assets:** use only Cyberpunk 2077''s existing items, meshes and appearances. No new meshes, textures or .archive art. TweakXL records that point at existing appearances, and existing colour variants, are fine.
+- [ ] **Closest match, slot by slot:** for every slot (outer torso, inner torso, legs, feet, plus any other piece the research finds), choose the closest existing item and appearance variant. Record each choice and why in DESIGN.md, with runners-up.
+- [ ] **Both body types:** male V and female V each get the full outfit, using each item''s correct body-gender variant, so it renders correctly on either. Where a piece has no good match for one body type, pick the closest alternative for that body type and say so in DESIGN.md.
+- [ ] **Twin pistols:** grant two of the in-game pistol closest to the Beretta 92 that Max dual-wields, if the research confirms that is MP2''s signature weapon. They must pass the C2SD-T13 weapon gate.
+- [ ] Everything is granted once per save and is idempotent: reloading the save or restarting CET never re-grants duplicates.
+- [ ] Verify in-game on both a male and a female V: everything is in the inventory, equips, and renders; reloading adds no duplicates.
+
+## Earlier work in progress
+
+An earlier, stopped run left a partial attempt (Loadout.lua, r6/tweaks/ShootDodge/loadout.yaml, and an init.lua patch) at
+C:\Users\ryand\AppData\Local\Temp\claude\D--Projects-MindAttic-Mods-Cyberpunk2077-ShootDodge\6e82fb1a-2202-410b-93b9-327c9f6ad258\scratchpad\T4-wip
+Reuse it where it helps. It predates this spec and the current init.lua.', '2026-11-01T21:13:12Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2SD-T5', '## Story
 
 As V, I want the mod to recognize a dedicated Shootdodge input combo (aim held + jump + a movement direction) without misfiring during normal play, so the move triggers only when I mean it to.
@@ -79823,7 +79875,7 @@ _Nothing recorded yet._
 ');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.ShootDodge', 1, 'raw', NULL, '');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.ShootDodge', 2, 'epic', 'D', '## Epic D — Max Payne 2 style Shootdodge: dive, bullet-time, prone/get-up, and signature loadout');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.ShootDodge', 3, 'story', '1380', '- **C2SD-US-D1 ⬜** As V, I want twin pistols and a Max Payne style trench coat added to my inventory when the mod loads, so I have the signature loadout without hunting for it.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.ShootDodge', 3, 'story', '1380', '- **C2SD-US-D1 ⬜** As V, male or female, I want the exact look and weapons Max Payne wears in Max Payne 2, rebuilt as closely as possible from Cyberpunk 2077''s existing items, so the Shootdodge comes with the signature look.');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.ShootDodge', 4, 'story', '1381', '- **C2SD-US-D2 ⬜** As V, I want the mod to recognize a dedicated Shootdodge input combo (aim held + jump + a movement direction) without misfiring during normal play, so the move triggers only when I mean it to.');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.ShootDodge', 5, 'story', '1382', '- **C2SD-US-D3 ⬜** As V, I want the mod''s state machine to show my current Shootdodge state (NONE/DIVING/AIRBORNE/PRONE/GETUP) at all times, so every later mechanic is built and debugged against one known state.');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.ShootDodge', 6, 'story', '1383', '- **C2SD-US-D4 ⬜** As V, I want the input combo to launch me into a horizontal leap in the direction I''m moving, locked for the whole dive, so I leave the ground the way Max Payne does.');
