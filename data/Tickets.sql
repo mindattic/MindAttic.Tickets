@@ -8948,6 +8948,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T837', 'Prose', 837, '2026-10-31', 'docs', 'closed', 'Update USER_STORIES.md', '—', 836, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T838', 'Prose', 838, '2026-10-31', 'docs', 'closed', 'Update USER_STORIES.md', '—', 837, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T839', 'Prose', 839, '2026-10-31', 'docs', 'closed', 'Update USER_STORIES.md', '—', 838, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T840', 'Prose', 840, '2026-10-31', 'docs', 'closed', 'Update USER_STORIES.md', '—', 839, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -53102,6 +53103,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31296, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31297, 'PRS-T728', '2026-11-01T04:31:50Z', 'ref', '—', 'Already resolved: grep-beats found no ''City police'', ''police intelligence'', ''2208'' or ''dissolved 2208'' anywhere in Magenta & Gunmetal (MxG was already in the 2026-10-27 But/Therefore applied-books list, which likely fixed this before the ticket was filed on 2026-10-30). Current MxG prose has zero mentions of city police at all; the universe''s one settled police-history fact (the 2096 Emergency Public Safety Transfer) is intact and consistent across Sparrow/Steppin'' Razor/Vultures at the Door/Testament/Between the Lines. Nothing to splice.');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31298, 'U.RICO-T156', '2026-11-01T04:31:51Z', 'created', NULL, 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31299, 'M.ORCH-T1341', '2026-11-01T04:32:20Z', 'created', NULL, 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31300, 'PRS-T840', '2026-11-01T04:32:32Z', 'created', NULL, 'closed');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
