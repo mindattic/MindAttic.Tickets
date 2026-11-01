@@ -7264,6 +7264,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T27', 'MindAttic.Psst', 27, '2026-10-31', 'feature', 'closed', 'LAMP: move MindAttic.Psst''s app-level settings and keys to MindAttic.Vault.Desktop (manifest, LoadOrSeed, shared named keys, cog opens Vault)', '034b068 full suite 171/171; editing via M.VALT-T62', 26, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T28', 'MindAttic.Psst', 28, '2026-10-31', 'fix', 'closed', 'psst ping''s Sources list names the Vault file as <LLM|Brokers>\providers.json, not the Notifications\providers.json Psst actually reads, and never says whether it was found (found in the LAMP bug hunt)', 'e535996 PsstCliTests.PingSourceLines_NameVaultNotificationsProvidersJson_AndMarkItFound', 27, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T29', 'MindAttic.Psst', 29, '2026-10-31', 'docs', 'closed', 'Update USER_STORIES.md', '—', 28, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T30', 'MindAttic.Psst', 30, '2026-11-01', 'fix', 'open', 'Email-to-SMS Gmail SMTP auth rejected: ''Username and Password not accepted'' (BadCredentials) sending via ryandebraal@gmail.com', '—', 29, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.RLY-T1', 'MindAttic.Relay', 1, '2026-10-27', 'docs', 'closed', 'Scaffold the MindAttic.Relay repo (agent standard files, ticket code M.RLY) and write docs/design/relay.md: the architecture every MindAttic app and machine uses to message each other (NATS + JetStream, subjects, envelope headers, security, delivery rules, outbox, versioning) and how the hub-and-spoke plan maps onto it', 'ba9744e', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.RLY-T2', 'MindAttic.Relay', 2, '2026-10-27', 'feature', 'open', 'RELAY', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.RLY-T3', 'MindAttic.Relay', 3, '2026-10-27', 'feature', 'open', 'Relay server: install a pinned NATS server with JetStream as a Windows service on each machine (loopback-only, TLS, local CA, credentials required), with `relay install|status|uninstall`', '—', 2, NULL);
@@ -7748,13 +7749,24 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T14', 'Mods.Cyberpunk2077.ShootDodge', 14, '2026-11-01', 'feature', 'closed', 'Camera + audio polish: FOV pull-back, whoosh cue, music/ambience low-pass during the dive', 'b6b96dc99d965432c1c2de4755f0cc8900a030d3', 13, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T15', 'Mods.Cyberpunk2077.ShootDodge', 15, '2026-11-01', 'feature', 'closed', 'Bullet-time meter: Max Payne 2 style hourglass that the dive drains and that refills the way MP2''s does', '223ceb6a', 14, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T16', 'Mods.Cyberpunk2077.ShootDodge', 16, '2026-11-01', 'fix', 'closed', 'init.lua ''Enabled'' (line 126) and ''Bullet-time'' (line 163) checkboxes read ImGui.Checkbox''s returns swapped: CET returns (value, pressed), so the flag is true only on the click frame and the whole mod stays effectively off', 'ac9944b5c8fccf337d26f2aaaf7b1be8f7094474', 15, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T17', 'Mods.Cyberpunk2077.ShootDodge', 17, '2026-11-01', 'docs', 'open', 'Full documentation set like the RogueTrader.* mods: README usage guide, docs/NEXUS_PAGE.md, docs/TESTING.md', '—', 16, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T18', 'Mods.Cyberpunk2077.ShootDodge', 18, '2026-11-01', 'fix', 'open', 'init.lua:192 onDraw draws the debug window every frame without tracking onOverlayOpen/onOverlayClose, so the debug panel stays over gameplay with the CET overlay closed; only the hourglass HUD should draw then (found by bughunt)', '—', 17, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T19', 'Mods.Cyberpunk2077.ShootDodge', 19, '2026-11-01', 'fix', 'closed', 'DiveDriver.lua:107-145 dive timers (4 s cap, 0.6 s no-lift-off) keep advancing while the game is paused (TimeScale() returns 1 once slow-mo is lifted), so pausing mid-dive aborts it on resume: no prone, no slow-mo (found by bughunt)', 'e01586e', 18, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T20', 'Mods.Cyberpunk2077.ShootDodge', 20, '2026-11-01', 'fix', 'closed', 'Dive.lua:149 touchdown only counts once airTime >= minAirSec, so a dive that comes down in under 0.15 s (low ceiling, onto a step) never lands and sits in AIRBORNE slow-mo until the 4 s timeout, ending in NONE instead of prone (found by bughunt)', '855e54a', 19, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T21', 'Mods.Cyberpunk2077.ShootDodge', 21, '2026-11-01', 'fix', 'closed', 'Input.lua:166 Input.Reset() only runs on onShutdown, never on save load/session start, so held aim (with its old aimSince) and stale move axes carry into a loaded save and the combo can fire without aiming (found by bughunt)', '2435523d72fa91e13cc30f164b1f857f0fc33a15', 20, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T22', 'Mods.Cyberpunk2077.ShootDodge', 22, '2026-11-01', 'fix', 'open', 'BulletTimeMeter.lua:128 Bullet Time mode drains the meter on self.mode alone, while BulletTime:Wanted (BulletTime.lua:59,64) grants no slow-mo when the Bullet-time checkbox is off or the factor is 1.0, so the hourglass empties with no slow-mo at all (found by bughunt)', '—', 21, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T23', 'Mods.Cyberpunk2077.ShootDodge', 23, '2026-11-01', 'fix', 'closed', 'BulletTimeMeterDriver.lua:112-119 meter session tied to QuestTrackerGameController init/uninit: a mid-session HUD rebuild cancels Bullet Time mode and stops saving, and a Restore before the save''s facts are readable resets the meter to full then Persist overwrites the real saved level (found by bughunt)', '0ff22150faf8a5e64160c8bece35c61017d93105', 22, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T24', 'Mods.Cyberpunk2077.ShootDodge', 24, '2026-11-01', 'fix', 'closed', 'BulletTimeDriver.lua:149-156 a CET reload during slow-mo leaves the old weapon''s individual time-dilation exemption on for good (the fresh module''s exemptWeapon is nil, so Clear() can''t unset it), so that weapon ignores later game slow-mo like Kerenzikov (found by bughunt)', '926bec9', 23, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T25', 'Mods.Cyberpunk2077.ShootDodge', 25, '2026-11-01', 'fix', 'closed', 'LoadoutDriver.lua:79,83 ignores Game.AddToInventory''s success return and writes the shootdodge_mp2_loadout save fact anyway, so a failed add (bad item ID after a patch, refused add) marks the loadout granted for good and V never gets the missing pieces (found by bughunt)', '795920568430ae9850093e79c379176920ff5d11', 24, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T26', 'Mods.Cyberpunk2077.ShootDodge', 26, '2026-11-01', 'fix', 'closed', 'ProneDriver.lua stand-up on jump (Prone.End.jump) + GetUpDriver.lua:78: the jump press is only observed, not consumed, so it also runs the game''s real jump and V hops out of prone instead of scrambling up; count only movement as stand-up or block the jump during PRONE/GETUP (found by bughunt)', '8843ddfa6a691cdc32f00010baa4ae0027efd5d0', 25, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T27', 'Mods.Cyberpunk2077.ShootDodge', 27, '2026-11-01', 'feature', 'open', 'Vortex-ready release zip + once-per-save in-game text message explaining the mod in Max Payne''s over-the-top noir voice, using real sourced Max Payne quotes', '—', 26, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T1', 'Mods.Cyberpunk2077.WebSlinger', 1, '2026-11-01', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T2', 'Mods.Cyberpunk2077.WebSlinger', 2, '2026-11-01', 'feature', 'closed', 'Scaffold new repo: Cyberpunk 2077 mod for Mantis Blade wall-climb, wall-run/jump, and Spider-Man 2 style webslinging', '7aad643ac7c88e810331b43e6e85a40b41323aaf', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T3', 'Mods.Cyberpunk2077.WebSlinger', 3, '2026-11-01', 'chore', 'closed', 'Rename repo to Mods.Cyberpunk2077.WebSlinger for mod organization (GitHub + folder + refs)', '36d0a7610a8d43186a58b5ea925f2190e04bf613', 2, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T4', 'Mods.Cyberpunk2077.WebSlinger', 4, '2026-11-01', 'feature', 'closed', 'Wall-detection raycast utility + debug overlay', '32372669d39915e408ae2f851854bf7cb1969b8c', 3, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T5', 'Mods.Cyberpunk2077.WebSlinger', 5, '2026-11-01', 'feature', 'closed', 'Formalize traversal state machine (NONE/CLIMBING/WALLRUNNING/SLINGING)', '962a87358d466ca3cf918944329753fd42ef93b2', 4, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T6', 'Mods.Cyberpunk2077.WebSlinger', 6, '2026-11-01', 'feature', 'closed', 'Web-sling (grapple) base: aim, fire, swing-arc physics, release', '8586367', 5, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T7', 'Mods.Cyberpunk2077.WebSlinger', 7, '2026-11-01', 'feature', 'open', 'Wall-impact angle check during swing: latch vs. wall-run transition', 'C2WS-US-T4', 6, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T7', 'Mods.Cyberpunk2077.WebSlinger', 7, '2026-11-01', 'feature', 'closed', 'Wall-impact angle check during swing: latch vs. wall-run transition', '8c107f2240cd9067c7add4fe6a7edcf1a54cb63e', 6, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T8', 'Mods.Cyberpunk2077.WebSlinger', 8, '2026-11-01', 'feature', 'open', 'Wall-latch (Mantis Blade climb) + wall-climb movement', 'C2WS-US-T5', 7, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T9', 'Mods.Cyberpunk2077.WebSlinger', 9, '2026-11-01', 'feature', 'open', 'Wall-run physics + sticky force + camera tilt', 'C2WS-US-T6', 8, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T10', 'Mods.Cyberpunk2077.WebSlinger', 10, '2026-11-01', 'feature', 'open', 'Wall-run duration/stamina drop-off', 'C2WS-US-T7', 9, NULL);
@@ -7762,6 +7774,9 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T12', 'Mods.Cyberpunk2077.WebSlinger', 12, '2026-11-01', 'feature', 'open', 'End-to-end re-sling loop: swing -> run -> jump -> swing with no ground touch', 'C2WS-US-T9', 11, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T13', 'Mods.Cyberpunk2077.WebSlinger', 13, '2026-11-01', 'feature', 'open', 'Polish pass: camera tilt easing, impact feedback (stretch, do last)', 'C2WS-US-T10', 12, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T14', 'Mods.Cyberpunk2077.WebSlinger', 14, '2026-11-01', 'docs', 'closed', 'Write up ordered traversal feature breakdown: epic T, 10 stories, 10 linked tickets with explicit acceptance criteria', '—', 13, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T15', 'Mods.Cyberpunk2077.WebSlinger', 15, '2026-11-01', 'chore', 'open', 'Bug hunt pass: run /bughunt across the repo and file fix tickets for any confirmed bugs', '—', 14, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T16', 'Mods.Cyberpunk2077.WebSlinger', 16, '2026-11-01', 'chore', 'open', 'Make the mod Vortex-deployable: correct relative folder layout, a packaging script producing an install-ready zip, and Vortex install docs', '—', 15, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T17', 'Mods.Cyberpunk2077.WebSlinger', 17, '2026-11-01', 'feature', 'open', 'In-game text message from ''Peter Parker'' explaining the WebSlinger mod, in friendly-neighborhood-Spider-Man voice with verified quotes', '—', 16, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.CTD-T1', 'Mods.GTFO.CrashTestDummies', 1, '2026-10-16', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.CTD-T2', 'Mods.GTFO.CrashTestDummies', 2, '2026-10-16', 'chore', 'closed', 'install.ps1 adds this repo''s 15 .prose/commands stubs, AGENTS.md pointer for the shared global commands, so any LLM client finds them', 'mindattic-agent-standard/install.ps1 run 2026-10-16', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.CTD-T3', 'Mods.GTFO.CrashTestDummies', 3, '2026-10-16', 'chore', 'closed', 'Bug hunt: run an exhaustive /bughunt over the whole repo and fix every real bug found (each fix under its own fix ticket), then hunt again; close this only when a full pass finds nothing', '47588d8', 2, NULL);
@@ -7909,6 +7924,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.EZ-T102', 'Mods.GTFO.EZ', 102, '2026-10-26', 'chore', 'closed', 'Cut the v18 release: moves in step with the GTFO.* family''s version number, bump VERSION/manifest, rebuild and repackage dist/', 'package/CHANGELOG.md', 101, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.EZ-T103', 'Mods.GTFO.EZ', 103, '2026-10-30', 'fix', 'closed', 'build.ps1 leaves stale package/*.dll on disk, so a removed dependency ships into dist/ zip', '—', 102, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.EZ-T104', 'Mods.GTFO.EZ', 104, '2026-11-01', 'chore', 'closed', 'Rename repo to Mods.GTFO.EZ for mod organization (GitHub + folder + refs)', '2fef06c30513f65ef92a4b20efd7581077e8948d', 103, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.EZ-T105', 'Mods.GTFO.EZ', 105, '2026-11-01', 'fix', 'closed', 'Verify/bug-hunt bot turret hotkeys (Shift+E deploy, Z recall-all), refresh docs, cut v19 release', 'Exhaustive bug hunt of DeployPickupHotkeys.cs/SentryInstantPlacementPatch.cs/BotSentryEquipPatch.cs and the rest of src/: no real bugs found, Shift+E/Z/X behavior matches documented and previously-confirmed-in-play design. Closed via G.EZ-T106 (v19 release, 8134471).', 104, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.EZ-T106', 'Mods.GTFO.EZ', 106, '2026-11-01', 'chore', 'closed', 'Cut v19 release: bump VERSION/manifest, rebuild and repackage dist/', '8134471 on main; dist/GTFO.EZ-19.0.0.zip built, dotnet build 0 warnings/0 errors', 105, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAI-T1', 'Mods.GTFO.EZ.AbsurdItems', 1, '2026-10-18', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAI-T2', 'Mods.GTFO.EZ.AbsurdItems', 2, '2026-10-18', 'fix', 'closed', 'Push initial project scaffolding so origin/main exists and pull stops failing', '3309db6', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAI-T3', 'Mods.GTFO.EZ.AbsurdItems', 3, '2026-10-18', 'feature', 'closed', 'v1: GTFO.AbsurdItems mod - artifact buffs (from GTFO.EZ), Hand Grenade and Stim Pack (from GTFO.AbsurdWeapons), kits as loot in lockers and out in the open (Loot Mix + shared KitLoot), plus the shared Insert/Delete toggles', '73ec87c', 2, NULL);
@@ -7937,6 +7954,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAI-T26', 'Mods.GTFO.EZ.AbsurdItems', 26, '2026-10-24', 'chore', 'closed', 'Cut the v17 release: bump submodule to GTFO.EZ.Shared''s Order cleanup, join CrashTestDummies/SkipDrop into the vN scheme, bump VERSION/manifest, rebuild and repackage dist/', 'package/manifest.json', 25, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAI-T27', 'Mods.GTFO.EZ.AbsurdItems', 27, '2026-10-26', 'chore', 'closed', 'Cut the v18 release: moves in step with the GTFO.* family''s version number, bump VERSION/manifest, rebuild and repackage dist/', 'package/CHANGELOG.md', 26, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAI-T28', 'Mods.GTFO.EZ.AbsurdItems', 28, '2026-11-01', 'chore', 'closed', 'Rename repo to Mods.GTFO.EZ.AbsurdItems for mod organization (GitHub + folder + refs)', '682bb84cd5f98af41d4ac4b723f1559fddb80226', 27, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAI-T29', 'Mods.GTFO.EZ.AbsurdItems', 29, '2026-11-01', 'fix', 'open', 'Verify/bug-hunt kits-as-loot balance, grenades out in the open, artifact glow/buffs; refresh docs, cut v19 release', '—', 28, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAI-T30', 'Mods.GTFO.EZ.AbsurdItems', 30, '2026-11-01', 'chore', 'open', 'Cut the v19 release: bug-hunt pass found no new issues in kits/grenades/artifacts, bump VERSION/manifest, rebuild and repackage dist/', '—', 29, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAM-T1', 'Mods.GTFO.EZ.AbsurdMoves', 1, '2026-10-18', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAM-T2', 'Mods.GTFO.EZ.AbsurdMoves', 2, '2026-10-18', 'feature', 'closed', 'Dodge (Shift + double-tap W/A/S/D) moved here from GTFO.EZ, with a Dodge Enabled on/off toggle in the .cfg', 'Release build clean (0 warnings)', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAM-T3', 'Mods.GTFO.EZ.AbsurdMoves', 3, '2026-10-18', 'feature', 'closed', 'Bullet Time (tap Left Alt: enemies slow to a crawl, muffled sound) moved here from GTFO.AbsurdWeapons, keeping its Enabled toggle in the .cfg', 'Release build clean (0 warnings)', 2, NULL);
@@ -55470,6 +55489,310 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32999, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33000, 'C2SD-T4', '2026-11-01T21:39:23Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33001, 'C2SD-T4', '2026-11-01T21:39:23Z', 'ref', 'C2SD-US-D1', 'ec18bd4c8505e9115cb4063757d7b4f8c37fbc85');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33002, 'C2SD-T4', '2026-11-01T21:39:39Z', 'working', 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33003, 'C2SD-T17', '2026-11-01T21:44:06Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33004, 'C2SD-T18', '2026-11-01T21:44:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33005, 'C2SD-T19', '2026-11-01T21:44:21Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33006, 'C2SD-T20', '2026-11-01T21:44:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33007, 'C2SD-T21', '2026-11-01T21:44:23Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33008, 'C2SD-T17', '2026-11-01T21:44:25Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33009, 'C2SD-T20', '2026-11-01T21:44:28Z', 'working', NULL, 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33010, 'C2SD-T19', '2026-11-01T21:44:29Z', 'working', NULL, 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33011, 'C2SD-T22', '2026-11-01T21:44:58Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33012, 'C2SD-T23', '2026-11-01T21:45:00Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33013, 'C2SD-T24', '2026-11-01T21:45:01Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33014, 'C2SD-T21', '2026-11-01T21:45:04Z', 'working', NULL, 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33015, 'C2SD-T20', '2026-11-01T21:45:04Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33016, 'C2SD-T20', '2026-11-01T21:45:04Z', 'ref', '—', '855e54a');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33017, 'C2SD-T19', '2026-11-01T21:45:21Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33018, 'C2SD-T19', '2026-11-01T21:45:21Z', 'ref', '—', 'e01586e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33019, 'C2SD-T20', '2026-11-01T21:45:22Z', 'working', 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33020, 'C2SD-T25', '2026-11-01T21:45:27Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33021, 'C2SD-T26', '2026-11-01T21:45:28Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33022, 'C2SD-T27', '2026-11-01T21:45:29Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33023, 'C2SD-T27', '2026-11-01T21:45:38Z', 'link', NULL, 'requires C2SD-T17');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33024, 'C2SD-T19', '2026-11-01T21:45:38Z', 'working', 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33025, 'C2SD-T17', '2026-11-01T21:45:39Z', 'link', NULL, 'C2SD-T27 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33026, 'C2SD-T27', '2026-11-01T21:45:40Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33027, 'C2SD-T27', '2026-11-01T21:45:42Z', 'working', NULL, 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33028, 'C2SD-T26', '2026-11-01T21:46:19Z', 'working', NULL, 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33029, 'C2SD-T21', '2026-11-01T21:46:26Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33030, 'C2SD-T21', '2026-11-01T21:46:26Z', 'ref', '—', '2435523d72fa91e13cc30f164b1f857f0fc33a15');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33031, 'C2SD-T21', '2026-11-01T21:46:39Z', 'working', 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33032, 'C2SD-T26', '2026-11-01T21:46:57Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33033, 'C2SD-T26', '2026-11-01T21:46:57Z', 'ref', '—', '8843ddfa6a691cdc32f00010baa4ae0027efd5d0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33034, 'C2WS-T15', '2026-11-01T21:47:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33035, 'C2WS-T15', '2026-11-01T21:47:09Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33036, 'C2WS-T15', '2026-11-01T21:47:10Z', 'priority', '0', '-1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33037, 'C2SD-T26', '2026-11-01T21:47:13Z', 'working', 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33038, 'C2WS-T15', '2026-11-01T21:47:13Z', 'working', NULL, '808ce091-f94c-467d-a7d1-b6562cc81444');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33039, 'C2SD-T25', '2026-11-01T21:47:15Z', 'working', NULL, 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33040, 'C2WS-T16', '2026-11-01T21:47:16Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33041, 'C2WS-T7', '2026-11-01T21:47:19Z', 'working', NULL, 'ryandebraal@mindattic.com (808ce091-f94c-467d-a7d1-b6562cc81444)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33042, 'C2WS-T16', '2026-11-01T21:47:23Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33043, 'G.EZ-T105', '2026-11-01T21:47:24Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33044, 'GAI-T29', '2026-11-01T21:47:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33045, 'C2WS-T16', '2026-11-01T21:47:29Z', 'working', NULL, '808ce091-f94c-467d-a7d1-b6562cc81444');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33046, 'C2SD-T25', '2026-11-01T21:47:43Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33047, 'C2SD-T25', '2026-11-01T21:47:43Z', 'ref', '—', '795920568430ae9850093e79c379176920ff5d11');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33048, 'G.EZ-T105', '2026-11-01T21:47:46Z', 'working', NULL, '9478b8c8-9962-4f97-a313-1dfd60f2195a');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33049, 'GAI-T29', '2026-11-01T21:47:46Z', 'working', NULL, '9478b8c8-9962-4f97-a313-1dfd60f2195a');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33050, 'C2SD-T24', '2026-11-01T21:47:54Z', 'working', NULL, 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33051, 'C2SD-T25', '2026-11-01T21:48:18Z', 'working', 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33052, 'C2SD-T24', '2026-11-01T21:48:29Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33053, 'C2SD-T24', '2026-11-01T21:48:29Z', 'ref', '—', '926bec9');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33054, 'C2SD-T24', '2026-11-01T21:48:34Z', 'working', 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33055, 'C2WS-T7', '2026-11-01T21:49:12Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33056, 'C2WS-T7', '2026-11-01T21:49:12Z', 'ref', 'C2WS-US-T4', '8c107f2240cd9067c7add4fe6a7edcf1a54cb63e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33057, 'C2WS-T7', '2026-11-01T21:49:25Z', 'working', 'ryandebraal@mindattic.com (808ce091-f94c-467d-a7d1-b6562cc81444)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33058, 'G.EZ-T105', '2026-11-01T21:49:25Z', 'working', '9478b8c8-9962-4f97-a313-1dfd60f2195a', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33059, 'GAI-T29', '2026-11-01T21:49:26Z', 'working', '9478b8c8-9962-4f97-a313-1dfd60f2195a', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33060, 'M.PSST-T30', '2026-11-01T21:50:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33061, 'C2WS-T17', '2026-11-01T21:50:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33062, 'C2SD-T27', '2026-11-01T21:50:45Z', 'description', '## Goal
+
+Make ShootDodge install cleanly through Nexus Mods'' Vortex (and manual install), and greet the player in game with a text message explaining the mod in Max Payne''s over-the-top noir voice.
+
+## Acceptance
+
+### Vortex / Nexus deployment
+- [ ] Find out how Vortex''s Cyberpunk 2077 extension recognises and installs a mod archive (layout rooted at the game folder: bin/x64/plugins/cyber_engine_tweaks/mods/<Mod>/, r6/..., archive/pc/mod/...). Cite sources in docs/DESIGN.md.
+- [ ] Add a release packaging script (PowerShell, in the repo) that builds dist/ShootDodge-<version>.zip with exactly that layout and only the files the mod needs: no docs, no dev files, and no runtime state like polish_restore.txt.
+- [ ] Ignore dist/ and the runtime files in .gitignore.
+- [ ] The zip installs with Vortex''s "Install from file" and deploys to the right folders without a manual-install prompt. If it can''t be run here, say exactly what was checked and what is left to verify.
+- [ ] Declare the requirements (CET plus whatever else the code really uses) so Nexus/Vortex users see them.
+- [ ] The README''s install section and docs/NEXUS_PAGE.md (file to upload, Vortex instructions, requirements) are updated to match; C2SD-T17 writes those docs first, so build on them.
+
+### In-game text message
+- [ ] Once per save, when the mod first runs, V receives an in-game phone text message (an SMS-style message in the phone/messages UI) explaining what the mod does and how to Shootdodge (aim + jump + direction, slow-mo, land prone, keep shooting or get up, the Bullet Time hotkey and the hourglass).
+- [ ] Research which approach really works for a mod-added text message, e.g. ArchiveXL/Codeware/journal-based phone messages or an existing messaging framework, and use it. No new art assets; new text/journal records are fine. If a real phone message is impossible without a framework, add that framework as a declared requirement. Only if no workable route exists, fall back to the game''s on-screen message or notification, and say why in DESIGN.md.
+- [ ] Tone: Max Payne''s way-over-the-top, dramatic, hard-boiled noir narration, with similes and fatalism.
+- [ ] Use **actual quotes** from Max Payne / Max Payne 2: find them in real sources and list each quote with its source in DESIGN.md. Keep each quote short, weave a few into otherwise original text, and don''t make any up. Anything paraphrased must not be presented as a quote.
+- [ ] The sender should fit the fiction (e.g. an unknown number or a noir-ish contact name), and the message is never re-sent on reload.
+- [ ] TESTING.md gets a section for both the Vortex install and the text message.', '## Goal
+
+Make ShootDodge install cleanly through Nexus Mods'' Vortex (and manual install), and greet the player in game with a text message explaining the mod in Max Payne''s over-the-top noir voice.
+
+## Acceptance
+
+### Vortex / Nexus deployment
+- [ ] Find out how Vortex''s Cyberpunk 2077 extension recognises and installs a mod archive (layout rooted at the game folder: bin/x64/plugins/cyber_engine_tweaks/mods/<Mod>/, r6/..., archive/pc/mod/...). Cite sources in docs/DESIGN.md.
+- [ ] Add a release packaging script (PowerShell, in the repo) that builds dist/ShootDodge-<version>.zip with exactly that layout and only the files the mod needs: no docs, no dev files, and no runtime state like polish_restore.txt.
+- [ ] Ignore dist/ and the runtime files in .gitignore.
+- [ ] The zip installs with Vortex''s "Install from file" and deploys to the right folders without a manual-install prompt. If it can''t be run here, say exactly what was checked and what is left to verify.
+- [ ] Declare the requirements (CET plus whatever else the code really uses) so Nexus/Vortex users see them.
+- [ ] The README''s install section and docs/NEXUS_PAGE.md (file to upload, Vortex instructions, requirements) are updated to match; C2SD-T17 writes those docs first, so build on them.
+
+### In-game text message
+- [ ] Once per save, when the mod first runs, V receives an in-game phone text message (an SMS-style message in the phone/messages UI) explaining what the mod does and how to Shootdodge (aim + jump + direction, slow-mo, land prone, keep shooting or get up, the Bullet Time hotkey and the hourglass).
+- [ ] It must be a real text on the game''s cellphone, in the phone''s Messages UI like any other contact''s SMS (user requirement). An on-screen notification or popup is NOT acceptable. Use whatever really works (e.g. ArchiveXL/Codeware journal-based phone messages or an existing SMS framework mod) and declare any framework as a requirement. No new art assets; new text/journal records are fine. If it is truly impossible, stop and report why instead of shipping a fallback.
+- [ ] Tone: Max Payne''s way-over-the-top, dramatic, hard-boiled noir narration, with similes and fatalism.
+- [ ] Use **actual quotes** from Max Payne / Max Payne 2: find them in real sources and list each quote with its source in DESIGN.md. Keep each quote short, weave a few into otherwise original text, and don''t make any up. Anything paraphrased must not be presented as a quote.
+- [ ] The sender should fit the fiction (e.g. an unknown number or a noir-ish contact name), and the message is never re-sent on reload.
+- [ ] TESTING.md gets a section for both the Vortex install and the text message.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33063, 'M.PSST-T30', '2026-11-01T21:50:52Z', 'working', NULL, '808ce091-f94c-467d-a7d1-b6562cc81444');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33064, 'C2WS-T17', '2026-11-01T21:50:52Z', 'working', NULL, '808ce091-f94c-467d-a7d1-b6562cc81444');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33065, 'G.EZ-T106', '2026-11-01T21:51:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33066, 'M.PSST-T30', '2026-11-01T21:51:07Z', 'description', NULL, '## Symptom
+
+ (and presumably `remind`/scheduled sends) fails via the Email-to-SMS transport with:
+
+```
+Email-to-SMS: The SMTP server has unexpectedly disconnected: 5.7.8 Username and Password not accepted. For more information, go to
+5.7.8  https://support.google.com/mail/?p=BadCredentials
+```
+
+Reproduced 2026-11-01 running `psst sms ryan "..."` from Mods.Cyberpunk2077.WebSlinger''s CLI. `psst ping` shows Email-to-SMS configured for `ryandebraal@gmail.com`, fanning out to 8 carrier gateways for +19203764617; the send attempt fails auth before reaching any gateway.
+
+## Cause
+
+Unknown yet. Likely candidates: the stored Gmail App Password in MindAttic.Vault (`%APPDATA%\MindAttic\Notifications\providers.json` and/or `%APPDATA%\MindAttic\Psst\settings.json`) was revoked or expired, or Google changed account security settings (2FA re-enroll invalidates old app passwords). Needs checking against the Google Account''s App Passwords page and the credential actually stored in the Vault chain.
+
+## Test
+
+`psst sms ryan "test"` (or an equivalent `psst ping`-level auth check) completes without the 5.7.8 BadCredentials SMTP error.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33067, 'C2WS-T17', '2026-11-01T21:51:17Z', 'description', NULL, '## Story
+
+As V (the player), I want the mod to send me an in-character, in-game text message from ''Peter Parker'' the first time I use it, so that it''s clear in a fun, on-brand way what the mod does and where its moves come from.
+
+## Verified quotes to use (must keep wording and attribution intact; do not substitute unverified fan-quote-site lines)
+
+1. ''With great power comes great responsibility.'' -- Uncle Ben, *Spider-Man* (2002). Widely corroborated as the film''s most-quoted line (multiple quote sites, study guides).
+2. Exchange at the Moondance Diner: Spider-Man to Mary Jane -- ''You know who I am.'' / ''I do?'' / ''Your friendly neighborhood Spider-Man.'' -- *Spider-Man* (2002). Corroborated by multiple independent transcript/quote sources (no primary shooting script checked, so treat exact punctuation as approximate).
+
+Suggested draft (implementer may tighten for length/tone, but keep both verified lines intact and not reworded):
+
+> Hey -- your friendly neighborhood Spider-Man here. Heard V''s picked up a few of my old tricks around Night City: wall climbs, wall-runs, wall-jumps, and a real web-sling swing instead of that grapple-hook thing. Uncle Ben always told me, ''with great power comes great responsibility'' -- so swing safe out there, V. You know who''s got your back. Your friendly neighborhood Spider-Man.
+
+## Acceptance
+
+- [ ] The message appears inside Cyberpunk 2077''s own in-game text-message / phone UI, sent from a contact displayed as ''Peter Parker'' -- using CET''s exposed API for the game''s messaging/Journal system if one exists.
+- [ ] If CET exposes no suitable API for injecting a real in-game text message, document that gap in `docs/DESIGN.md` (which native/RED4ext API would be needed) and fall back to a CET ImGui overlay styled like a phone text bubble (sender name ''Peter Parker'', the message body above) as an interim -- same pattern C2WS-T4 used when it spiked CET''s raycast support.
+- [ ] Triggered manually via a new debug-panel button (''Send Peter Parker intro text''), not automatically on every load, so it doesn''t spam the player on every session.
+- [ ] Verified in-game: the message (or its overlay fallback) is fully readable, correctly attributed to ''Peter Parker'', and both verified quotes appear unaltered.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33068, 'C2SD-T27', '2026-11-01T21:51:22Z', 'description', '## Goal
+
+Make ShootDodge install cleanly through Nexus Mods'' Vortex (and manual install), and greet the player in game with a text message explaining the mod in Max Payne''s over-the-top noir voice.
+
+## Acceptance
+
+### Vortex / Nexus deployment
+- [ ] Find out how Vortex''s Cyberpunk 2077 extension recognises and installs a mod archive (layout rooted at the game folder: bin/x64/plugins/cyber_engine_tweaks/mods/<Mod>/, r6/..., archive/pc/mod/...). Cite sources in docs/DESIGN.md.
+- [ ] Add a release packaging script (PowerShell, in the repo) that builds dist/ShootDodge-<version>.zip with exactly that layout and only the files the mod needs: no docs, no dev files, and no runtime state like polish_restore.txt.
+- [ ] Ignore dist/ and the runtime files in .gitignore.
+- [ ] The zip installs with Vortex''s "Install from file" and deploys to the right folders without a manual-install prompt. If it can''t be run here, say exactly what was checked and what is left to verify.
+- [ ] Declare the requirements (CET plus whatever else the code really uses) so Nexus/Vortex users see them.
+- [ ] The README''s install section and docs/NEXUS_PAGE.md (file to upload, Vortex instructions, requirements) are updated to match; C2SD-T17 writes those docs first, so build on them.
+
+### In-game text message
+- [ ] Once per save, when the mod first runs, V receives an in-game phone text message (an SMS-style message in the phone/messages UI) explaining what the mod does and how to Shootdodge (aim + jump + direction, slow-mo, land prone, keep shooting or get up, the Bullet Time hotkey and the hourglass).
+- [ ] It must be a real text on the game''s cellphone, in the phone''s Messages UI like any other contact''s SMS (user requirement). An on-screen notification or popup is NOT acceptable. Use whatever really works (e.g. ArchiveXL/Codeware journal-based phone messages or an existing SMS framework mod) and declare any framework as a requirement. No new art assets; new text/journal records are fine. If it is truly impossible, stop and report why instead of shipping a fallback.
+- [ ] Tone: Max Payne''s way-over-the-top, dramatic, hard-boiled noir narration, with similes and fatalism.
+- [ ] Use **actual quotes** from Max Payne / Max Payne 2: find them in real sources and list each quote with its source in DESIGN.md. Keep each quote short, weave a few into otherwise original text, and don''t make any up. Anything paraphrased must not be presented as a quote.
+- [ ] The sender should fit the fiction (e.g. an unknown number or a noir-ish contact name), and the message is never re-sent on reload.
+- [ ] TESTING.md gets a section for both the Vortex install and the text message.', '## Goal
+
+Make ShootDodge install cleanly through Nexus Mods'' Vortex (and manual install), and greet the player in game with a text message explaining the mod in Max Payne''s over-the-top noir voice.
+
+## Acceptance
+
+### Vortex / Nexus deployment
+- [ ] Find out how Vortex''s Cyberpunk 2077 extension recognises and installs a mod archive (layout rooted at the game folder: bin/x64/plugins/cyber_engine_tweaks/mods/<Mod>/, r6/..., archive/pc/mod/...). Cite sources in docs/DESIGN.md.
+- [ ] Add a release packaging script (PowerShell, in the repo) that builds dist/ShootDodge-<version>.zip with exactly that layout and only the files the mod needs: no docs, no dev files, and no runtime state like polish_restore.txt.
+- [ ] Ignore dist/ and the runtime files in .gitignore.
+- [ ] The zip installs with Vortex''s "Install from file" and deploys to the right folders without a manual-install prompt. If it can''t be run here, say exactly what was checked and what is left to verify.
+- [ ] Declare the requirements (CET plus whatever else the code really uses) so Nexus/Vortex users see them.
+- [ ] The README''s install section and docs/NEXUS_PAGE.md (file to upload, Vortex instructions, requirements) are updated to match; C2SD-T17 writes those docs first, so build on them.
+
+### In-game text message
+- [ ] Once per save, when the mod first runs, V receives an in-game phone text message (an SMS-style message in the phone/messages UI) explaining what the mod does and how to Shootdodge (aim + jump + direction, slow-mo, land prone, keep shooting or get up, the Bullet Time hotkey and the hourglass).
+- [ ] It must be a real text on the game''s cellphone, in the phone''s Messages UI like any other contact''s SMS (user requirement). An on-screen notification or popup is NOT acceptable. Use whatever really works (e.g. ArchiveXL/Codeware journal-based phone messages or an existing SMS framework mod) and declare any framework as a requirement. No new art assets; new text/journal records are fine. If it is truly impossible, stop and report why instead of shipping a fallback.
+- [ ] Tone: Max Payne''s way-over-the-top, dramatic, hard-boiled noir narration, with similes and fatalism.
+- [ ] Use **actual quotes** from Max Payne / Max Payne 2: find them in real sources and list each quote with its source in DESIGN.md. Keep each quote short, weave a few into otherwise original text, and don''t make any up. Anything paraphrased must not be presented as a quote.
+- [ ] The text comes from Max Payne himself: the sender/contact name is "Max Payne" and the message is in his first-person voice (user requirement). A contact avatar, if supported, uses only an existing in-game image. The message is never re-sent on reload.
+- [ ] TESTING.md gets a section for both the Vortex install and the text message.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33069, 'C2SD-T27', '2026-11-01T21:51:39Z', 'working', 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)', '6e82fb1a-2202-410b-93b9-327c9f6ad258');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33070, 'G.EZ-T106', '2026-11-01T21:51:40Z', 'working', NULL, '9478b8c8-9962-4f97-a313-1dfd60f2195a');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33071, 'M.PSST-T30', '2026-11-01T21:51:54Z', 'description', '## Symptom
+
+ (and presumably `remind`/scheduled sends) fails via the Email-to-SMS transport with:
+
+```
+Email-to-SMS: The SMTP server has unexpectedly disconnected: 5.7.8 Username and Password not accepted. For more information, go to
+5.7.8  https://support.google.com/mail/?p=BadCredentials
+```
+
+Reproduced 2026-11-01 running `psst sms ryan "..."` from Mods.Cyberpunk2077.WebSlinger''s CLI. `psst ping` shows Email-to-SMS configured for `ryandebraal@gmail.com`, fanning out to 8 carrier gateways for +19203764617; the send attempt fails auth before reaching any gateway.
+
+## Cause
+
+Unknown yet. Likely candidates: the stored Gmail App Password in MindAttic.Vault (`%APPDATA%\MindAttic\Notifications\providers.json` and/or `%APPDATA%\MindAttic\Psst\settings.json`) was revoked or expired, or Google changed account security settings (2FA re-enroll invalidates old app passwords). Needs checking against the Google Account''s App Passwords page and the credential actually stored in the Vault chain.
+
+## Test
+
+`psst sms ryan "test"` (or an equivalent `psst ping`-level auth check) completes without the 5.7.8 BadCredentials SMTP error.', '## Symptom
+
+`psst sms <contact> "<message>"` (and presumably `remind`/scheduled sends) fails via the Email-to-SMS transport with:
+
+```
+Email-to-SMS: The SMTP server has unexpectedly disconnected: 5.7.8 Username and Password not accepted. For more information, go to
+5.7.8  https://support.google.com/mail/?p=BadCredentials
+```
+
+Reproduced 2026-11-01 running `psst sms ryan "..."` from Mods.Cyberpunk2077.WebSlinger''s CLI. `psst ping` shows Email-to-SMS configured for `ryandebraal@gmail.com`, fanning out to 8 carrier gateways for +19203764617; the send attempt fails auth before reaching any gateway.
+
+## Cause
+
+Unknown yet. Likely candidates: the stored Gmail App Password in MindAttic.Vault (`%APPDATA%\MindAttic\Notifications\providers.json` and/or `%APPDATA%\MindAttic\Psst\settings.json`) was revoked or expired, or Google changed account security settings (2FA re-enroll invalidates old app passwords). Needs checking against the Google Account''s App Passwords page and the credential actually stored in the Vault chain.
+
+## Test
+
+`psst sms ryan "test"` (or an equivalent `psst ping`-level auth check) completes without the 5.7.8 BadCredentials SMTP error.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33072, 'C2WS-T17', '2026-11-01T21:52:04Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33073, 'C2SD-T27', '2026-11-01T21:52:11Z', 'description', '## Goal
+
+Make ShootDodge install cleanly through Nexus Mods'' Vortex (and manual install), and greet the player in game with a text message explaining the mod in Max Payne''s over-the-top noir voice.
+
+## Acceptance
+
+### Vortex / Nexus deployment
+- [ ] Find out how Vortex''s Cyberpunk 2077 extension recognises and installs a mod archive (layout rooted at the game folder: bin/x64/plugins/cyber_engine_tweaks/mods/<Mod>/, r6/..., archive/pc/mod/...). Cite sources in docs/DESIGN.md.
+- [ ] Add a release packaging script (PowerShell, in the repo) that builds dist/ShootDodge-<version>.zip with exactly that layout and only the files the mod needs: no docs, no dev files, and no runtime state like polish_restore.txt.
+- [ ] Ignore dist/ and the runtime files in .gitignore.
+- [ ] The zip installs with Vortex''s "Install from file" and deploys to the right folders without a manual-install prompt. If it can''t be run here, say exactly what was checked and what is left to verify.
+- [ ] Declare the requirements (CET plus whatever else the code really uses) so Nexus/Vortex users see them.
+- [ ] The README''s install section and docs/NEXUS_PAGE.md (file to upload, Vortex instructions, requirements) are updated to match; C2SD-T17 writes those docs first, so build on them.
+
+### In-game text message
+- [ ] Once per save, when the mod first runs, V receives an in-game phone text message (an SMS-style message in the phone/messages UI) explaining what the mod does and how to Shootdodge (aim + jump + direction, slow-mo, land prone, keep shooting or get up, the Bullet Time hotkey and the hourglass).
+- [ ] It must be a real text on the game''s cellphone, in the phone''s Messages UI like any other contact''s SMS (user requirement). An on-screen notification or popup is NOT acceptable. Use whatever really works (e.g. ArchiveXL/Codeware journal-based phone messages or an existing SMS framework mod) and declare any framework as a requirement. No new art assets; new text/journal records are fine. If it is truly impossible, stop and report why instead of shipping a fallback.
+- [ ] Tone: Max Payne''s way-over-the-top, dramatic, hard-boiled noir narration, with similes and fatalism.
+- [ ] Use **actual quotes** from Max Payne / Max Payne 2: find them in real sources and list each quote with its source in DESIGN.md. Keep each quote short, weave a few into otherwise original text, and don''t make any up. Anything paraphrased must not be presented as a quote.
+- [ ] The text comes from Max Payne himself: the sender/contact name is "Max Payne" and the message is in his first-person voice (user requirement). A contact avatar, if supported, uses only an existing in-game image. The message is never re-sent on reload.
+- [ ] TESTING.md gets a section for both the Vortex install and the text message.', '## Goal
+
+Make ShootDodge install cleanly through Nexus Mods'' Vortex (and manual install), and greet the player in game with a text message explaining the mod in Max Payne''s over-the-top noir voice.
+
+## Acceptance
+
+### Vortex / Nexus deployment
+- [ ] Find out how Vortex''s Cyberpunk 2077 extension recognises and installs a mod archive (layout rooted at the game folder: bin/x64/plugins/cyber_engine_tweaks/mods/<Mod>/, r6/..., archive/pc/mod/...). Cite sources in docs/DESIGN.md.
+- [ ] Add a release packaging script (PowerShell, in the repo) that builds dist/ShootDodge-<version>.zip with exactly that layout and only the files the mod needs: no docs, no dev files, and no runtime state like polish_restore.txt.
+- [ ] Ignore dist/ and the runtime files in .gitignore.
+- [ ] The zip installs with Vortex''s "Install from file" and deploys to the right folders without a manual-install prompt. If it can''t be run here, say exactly what was checked and what is left to verify.
+- [ ] Declare the requirements (CET plus whatever else the code really uses) so Nexus/Vortex users see them.
+- [ ] The README''s install section and docs/NEXUS_PAGE.md (file to upload, Vortex instructions, requirements) are updated to match; C2SD-T17 writes those docs first, so build on them.
+
+### In-game text message
+- [ ] Once per save, when the mod first runs, V receives an in-game phone text message (an SMS-style message in the phone/messages UI) explaining what the mod does and how to Shootdodge (aim + jump + direction, slow-mo, land prone, keep shooting or get up, the Bullet Time hotkey and the hourglass).
+- [ ] It must be a real text on the game''s cellphone, in the phone''s Messages UI like any other contact''s SMS (user requirement). An on-screen notification or popup is NOT acceptable. Use whatever really works (e.g. ArchiveXL/Codeware journal-based phone messages or an existing SMS framework mod) and declare any framework as a requirement. No new art assets; new text/journal records are fine. If it is truly impossible, stop and report why instead of shipping a fallback.
+- [ ] Tone: Max Payne''s way-over-the-top, dramatic, hard-boiled noir narration, with similes and fatalism.
+- [ ] Use **actual quotes** from Max Payne / Max Payne 2: find them in real sources and list each quote with its source in DESIGN.md. Keep each quote short, weave a few into otherwise original text, and don''t make any up. Anything paraphrased must not be presented as a quote.
+- [ ] The text comes from Max Payne himself: the sender/contact name is "Max Payne" and the message is in his first-person voice (user requirement). A contact avatar, if supported, uses only an existing in-game image. The message is never re-sent on reload.
+- [ ] TESTING.md gets a section for both the Vortex install and the text message.
+
+## Handoff from the first (stopped) run, 2026-11-01
+
+Uncommitted work is in the checkout: continue it, don''t start over.
+- `modules/IntroMessage.lua` (new): six message pages, the once-per-save fact `shootdodge_intro_message`, and the four verbatim quotes. It must be rewritten: the sender is still "UNKNOWN NUMBER" and the text is not in Max''s first person.
+- `modules/IntroMessageDriver.lua` (new): currently shows an on-screen banner, which the user has ruled out. Rewrite it to send through the phone route below.
+- `init.lua`: adds `version = "0.1.0"`, wires in the driver, and adds an overlay re-read panel.
+- `tools/package.ps1` (new, never run): builds `dist/ShootDodge-<version>.zip` from the tracked .lua files. It must also include .reds files.
+
+Findings:
+- **Vortex:** `Nexus-Mods/game-cyberpunk2077` `src/installer.cet.ts` auto-installs a zip with `init.lua` directly inside `bin/x64/plugins/cyber_engine_tweaks/mods/<Mod>/`.
+- **Phone route:** CET alone can''t add phone messages. Use the **Phone Extension Framework** (Nexus mod 24949, redscript):
+  - subclass `PhoneEventsListener`, then `PushMessageCustom` + `NotifyNewMessageCustom`;
+  - reference: `Y4rd13/david-sandevistan-plus` `DSPViktorPhone.reds`;
+  - the framework source and example are saved in `C:\Users\ryand\AppData\Local\Temp\claude\D--Projects-MindAttic-Mods-Cyberpunk2077-ShootDodge\6e82fb1a-2202-410b-93b9-327c9f6ad258\scratchpad\pe\`;
+  - plan: `r6/scripts/ShootDodge/ShootDodgePhone.reds` with a contact named "Max Payne" and an existing avatar (`PhoneAvatars.Avatar_Unknown` is known to exist), gated on the save fact, plus a small system the Lua side can call.
+- **Quotes**, verified in Wikiquote''s page source:
+  - "The sun went down with practiced bravado." (MP1, Part I, Prologue)
+  - "I don''t know about angels, but it''s fear that gives men wings." (MP1, Part I, Ch. 6)
+  - "When you''re looking down the barrel of a gun, time slows down." (MP2)
+  - "Firing a gun is a binary choice. Either you pull the trigger or you don''t." (MP2)
+- **Requirements to declare:** CET, redscript, Phone Extension, and any of Phone Extension''s own dependencies (not yet checked).
+- **Still to do:**
+  - add `polish_restore.txt` to `.gitignore`;
+  - write the sources into DESIGN.md;
+  - add the README, NEXUS_PAGE and TESTING sections;
+  - build, commit, push and close.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33074, 'C2SD-T17', '2026-11-01T21:52:13Z', 'working', NULL, 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33075, 'G.EZ-T106', '2026-11-01T21:52:16Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33076, 'G.EZ-T106', '2026-11-01T21:52:16Z', 'ref', '—', '8134471 on main; dist/GTFO.EZ-19.0.0.zip built, dotnet build 0 warnings/0 errors');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33077, 'GAI-T30', '2026-11-01T21:52:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33078, 'G.EZ-T105', '2026-11-01T21:52:17Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33079, 'G.EZ-T105', '2026-11-01T21:52:17Z', 'ref', '—', 'Exhaustive bug hunt of DeployPickupHotkeys.cs/SentryInstantPlacementPatch.cs/BotSentryEquipPatch.cs and the rest of src/: no real bugs found, Shift+E/Z/X behavior matches documented and previously-confirmed-in-play design. Closed via G.EZ-T106 (v19 release, 8134471).');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33080, 'C2SD-T17', '2026-11-01T21:52:55Z', 'working', 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)', '6e82fb1a-2202-410b-93b9-327c9f6ad258');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33081, 'GAI-T30', '2026-11-01T21:52:57Z', 'working', NULL, '9478b8c8-9962-4f97-a313-1dfd60f2195a');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33082, 'C2WS-T15', '2026-11-01T21:52:59Z', 'working', '808ce091-f94c-467d-a7d1-b6562cc81444', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33083, 'C2WS-T16', '2026-11-01T21:52:59Z', 'working', '808ce091-f94c-467d-a7d1-b6562cc81444', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33084, 'C2WS-T17', '2026-11-01T21:53:00Z', 'working', '808ce091-f94c-467d-a7d1-b6562cc81444', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33085, 'G.EZ-T106', '2026-11-01T21:53:01Z', 'working', '9478b8c8-9962-4f97-a313-1dfd60f2195a', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33086, 'M.PSST-T30', '2026-11-01T21:53:02Z', 'working', '808ce091-f94c-467d-a7d1-b6562cc81444', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33087, 'C2SD-T23', '2026-11-01T21:53:22Z', 'working', NULL, 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33088, 'C2SD-T23', '2026-11-01T21:53:54Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33089, 'C2SD-T23', '2026-11-01T21:53:54Z', 'ref', '—', '0ff22150faf8a5e64160c8bece35c61017d93105');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33090, 'C2SD-T22', '2026-11-01T21:54:04Z', 'working', NULL, 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -55514,6 +55837,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T13', 'approved', 0, '2026-11-01T20:41:28Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T14', 'approved', 0, '2026-11-01T20:41:28Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T15', 'approved', 0, '2026-11-01T20:48:39Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T17', 'approved', 0, '2026-11-01T21:44:25Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T27', 'approved', 0, '2026-11-01T21:45:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T3', 'approved', 0, '2026-11-01T20:41:25Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T4', 'approved', -10, '2026-11-01T20:45:47Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T5', 'approved', 0, '2026-11-01T20:41:26Z', NULL);
@@ -55525,6 +55850,9 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T11', 'approved', 0, '2026-11-01T20:41:12Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T12', 'approved', 0, '2026-11-01T20:41:13Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T13', 'approved', 0, '2026-11-01T20:41:13Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T15', 'approved', -1, '2026-11-01T21:47:10Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T16', 'approved', 0, '2026-11-01T21:47:23Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T17', 'approved', 0, '2026-11-01T21:52:04Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T4', 'approved', 0, '2026-11-01T20:41:10Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T5', 'approved', 0, '2026-11-01T20:41:11Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T6', 'approved', 0, '2026-11-01T20:41:11Z', NULL);
@@ -57945,6 +58273,11 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('USOD-T9', 'approved', 0, '2026-10-22T23:02:27Z', NULL);
 
 -- ticket_work
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2SD-T17', NULL, 0, NULL, '6e82fb1a-2202-410b-93b9-327c9f6ad258', '2026-11-01T21:52:55Z', '2026-11-01T21:52:55Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2SD-T22', NULL, 0, 'ryandebraal@mindattic.com', '6e82fb1a-2202-410b-93b9-327c9f6ad258', '2026-11-01T21:54:04Z', '2026-11-01T21:54:04Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2SD-T23', NULL, 0, 'ryandebraal@mindattic.com', '6e82fb1a-2202-410b-93b9-327c9f6ad258', '2026-11-01T21:53:22Z', '2026-11-01T21:53:22Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2SD-T27', NULL, 0, NULL, '6e82fb1a-2202-410b-93b9-327c9f6ad258', '2026-11-01T21:51:39Z', '2026-11-01T21:51:39Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAI-T30', NULL, 0, NULL, '9478b8c8-9962-4f97-a313-1dfd60f2195a', '2026-11-01T21:52:57Z', '2026-11-01T21:52:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
@@ -58676,6 +59009,7 @@ swinging continuously through at least 5 consecutive buildings without once fail
 anchor while roughly facing a qualifying skyline.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (391, 'C2SD-T2', 'ryand', '2026-11-01T20:38:59Z', 'Duplicate: tickets repos rollout tickets --apply had already auto-filed C2SD-T1 with this same summary before this command ran. No separate work was done for this ID.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (392, 'M.DPLY-T21', 'ryand', '2026-11-01T20:57:03Z', 'Follow-up: restored CRLF line endings in README.md/README.htm after sed -i flattened them to LF');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (393, 'C2WS-T17', 'ryand', '2026-11-01T21:51:46Z', 'Clarification: the in-game text must be sent from ''Peter Parker'' himself as the displayed contact/sender -- not ''Spider-Man'' or any other label. He can still write in his friendly-neighborhood-Spider-Man voice and reference the persona/quotes, but the contact name and signature the player sees must read ''Peter Parker.''');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
@@ -59249,6 +59583,81 @@ A perfect first-person recreation of Max Payne 2''s shootdodge:
 4. **Then choose:** keep shooting from the ground, or press a movement input to stand back up.
 
 The camera stays first person the whole time, prone included. Never switch to third person.', '2026-11-01T20:48:17Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2SD-T17', '## Goal
+
+Give ShootDodge the same full documentation set as the RogueTrader.* mods. Use D:\Projects\MindAttic\Mods.RogueTrader.Overwatch as the model: read its README.md, docs/NEXUS_PAGE.md, docs/TESTING.md and docs/DESIGN.md first and match their structure, tone and level of detail.
+
+## Acceptance
+
+- [ ] **README.md:** full player and developer documentation:
+  - what the mod is, the Max Payne 2 Shootdodge recreation;
+  - requirements (Cyber Engine Tweaks; any other dependency the code actually uses, such as TweakXL, Codeware or RED4ext; check the code, don''t guess);
+  - install and uninstall;
+  - **how to use it:** the combo (aim held + jump + a movement direction), the leap locked in that direction, slow-mo with full-speed aim and fire, landing prone, keep shooting or press a movement key to get up, the weapon restriction (pistols, revolvers, SMGs);
+  - the bullet-time meter: the separate Bullet Time mode and its unbound CET hotkey (how to bind it), what drains and refills it, the hourglass HUD;
+  - the Max Payne 2 loadout for male and female V, how to equip it, and its limits (no tie, no dual-wielding);
+  - the debug overlay and every setting/slider in it;
+  - known limitations (camera-only prone with the standing hitbox, ambience low-pass events blank by default, gamepad turn speed);
+  - building and packaging for release, testing, and status.
+- [ ] **docs/NEXUS_PAGE.md:** in the same format as Overwatch''s:
+  - a "not published yet" note;
+  - a "Before uploading" checklist pointing at TESTING.md items;
+  - mod name, version, changelog, short summary;
+  - the full description in BBCode;
+  - requirements, install instructions, the category and tags to pick, and the file list or zip to upload;
+  - leave clearly marked placeholders for screenshots. If the repo has no release packaging, define the zip layout (the bin/x64/... tree) in the README and reference it.
+- [ ] **docs/TESTING.md:** the full in-game checklist with lettered sections and expected results, covering every acceptance "Verify in-game" item from tickets C2SD-T4 through C2SD-T16, on a male and a female V where it matters. Include a Results section.
+- [ ] **docs/DESIGN.md:** already exists. Bring it up to date only where it contradicts the code; don''t rewrite it.
+- [ ] Everything must describe what the code actually does now: read the modules for exact defaults, key names and overlay labels; don''t copy them from ticket text.
+- [ ] Leave docs/USER_STORIES.md alone (it''s generated).', '2026-11-01T21:44:06Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2SD-T27', '## Goal
+
+Make ShootDodge install cleanly through Nexus Mods'' Vortex (and manual install), and greet the player in game with a text message explaining the mod in Max Payne''s over-the-top noir voice.
+
+## Acceptance
+
+### Vortex / Nexus deployment
+- [ ] Find out how Vortex''s Cyberpunk 2077 extension recognises and installs a mod archive (layout rooted at the game folder: bin/x64/plugins/cyber_engine_tweaks/mods/<Mod>/, r6/..., archive/pc/mod/...). Cite sources in docs/DESIGN.md.
+- [ ] Add a release packaging script (PowerShell, in the repo) that builds dist/ShootDodge-<version>.zip with exactly that layout and only the files the mod needs: no docs, no dev files, and no runtime state like polish_restore.txt.
+- [ ] Ignore dist/ and the runtime files in .gitignore.
+- [ ] The zip installs with Vortex''s "Install from file" and deploys to the right folders without a manual-install prompt. If it can''t be run here, say exactly what was checked and what is left to verify.
+- [ ] Declare the requirements (CET plus whatever else the code really uses) so Nexus/Vortex users see them.
+- [ ] The README''s install section and docs/NEXUS_PAGE.md (file to upload, Vortex instructions, requirements) are updated to match; C2SD-T17 writes those docs first, so build on them.
+
+### In-game text message
+- [ ] Once per save, when the mod first runs, V receives an in-game phone text message (an SMS-style message in the phone/messages UI) explaining what the mod does and how to Shootdodge (aim + jump + direction, slow-mo, land prone, keep shooting or get up, the Bullet Time hotkey and the hourglass).
+- [ ] It must be a real text on the game''s cellphone, in the phone''s Messages UI like any other contact''s SMS (user requirement). An on-screen notification or popup is NOT acceptable. Use whatever really works (e.g. ArchiveXL/Codeware journal-based phone messages or an existing SMS framework mod) and declare any framework as a requirement. No new art assets; new text/journal records are fine. If it is truly impossible, stop and report why instead of shipping a fallback.
+- [ ] Tone: Max Payne''s way-over-the-top, dramatic, hard-boiled noir narration, with similes and fatalism.
+- [ ] Use **actual quotes** from Max Payne / Max Payne 2: find them in real sources and list each quote with its source in DESIGN.md. Keep each quote short, weave a few into otherwise original text, and don''t make any up. Anything paraphrased must not be presented as a quote.
+- [ ] The text comes from Max Payne himself: the sender/contact name is "Max Payne" and the message is in his first-person voice (user requirement). A contact avatar, if supported, uses only an existing in-game image. The message is never re-sent on reload.
+- [ ] TESTING.md gets a section for both the Vortex install and the text message.
+
+## Handoff from the first (stopped) run, 2026-11-01
+
+Uncommitted work is in the checkout: continue it, don''t start over.
+- `modules/IntroMessage.lua` (new): six message pages, the once-per-save fact `shootdodge_intro_message`, and the four verbatim quotes. It must be rewritten: the sender is still "UNKNOWN NUMBER" and the text is not in Max''s first person.
+- `modules/IntroMessageDriver.lua` (new): currently shows an on-screen banner, which the user has ruled out. Rewrite it to send through the phone route below.
+- `init.lua`: adds `version = "0.1.0"`, wires in the driver, and adds an overlay re-read panel.
+- `tools/package.ps1` (new, never run): builds `dist/ShootDodge-<version>.zip` from the tracked .lua files. It must also include .reds files.
+
+Findings:
+- **Vortex:** `Nexus-Mods/game-cyberpunk2077` `src/installer.cet.ts` auto-installs a zip with `init.lua` directly inside `bin/x64/plugins/cyber_engine_tweaks/mods/<Mod>/`.
+- **Phone route:** CET alone can''t add phone messages. Use the **Phone Extension Framework** (Nexus mod 24949, redscript):
+  - subclass `PhoneEventsListener`, then `PushMessageCustom` + `NotifyNewMessageCustom`;
+  - reference: `Y4rd13/david-sandevistan-plus` `DSPViktorPhone.reds`;
+  - the framework source and example are saved in `C:\Users\ryand\AppData\Local\Temp\claude\D--Projects-MindAttic-Mods-Cyberpunk2077-ShootDodge\6e82fb1a-2202-410b-93b9-327c9f6ad258\scratchpad\pe\`;
+  - plan: `r6/scripts/ShootDodge/ShootDodgePhone.reds` with a contact named "Max Payne" and an existing avatar (`PhoneAvatars.Avatar_Unknown` is known to exist), gated on the save fact, plus a small system the Lua side can call.
+- **Quotes**, verified in Wikiquote''s page source:
+  - "The sun went down with practiced bravado." (MP1, Part I, Prologue)
+  - "I don''t know about angels, but it''s fear that gives men wings." (MP1, Part I, Ch. 6)
+  - "When you''re looking down the barrel of a gun, time slows down." (MP2)
+  - "Firing a gun is a binary choice. Either you pull the trigger or you don''t." (MP2)
+- **Requirements to declare:** CET, redscript, Phone Extension, and any of Phone Extension''s own dependencies (not yet checked).
+- **Still to do:**
+  - add `polish_restore.txt` to `.gitignore`;
+  - write the sources into DESIGN.md;
+  - add the README, NEXUS_PAGE and TESTING sections;
+  - build, commit, push and close.', '2026-11-01T21:52:11Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2SD-T4', '## Story
 
 As V, male or female, I want the exact look and weapons Max Payne wears in Max Payne 2, rebuilt as closely as possible from Cyberpunk 2077''s existing items, so the Shootdodge comes with the signature look.
@@ -59415,6 +59824,25 @@ reads as deliberate parkour rather than a glitch. (Stretch — lowest priority, 
 - [ ] A brief camera shake / FOV-punch plays on wall-latch impact and on wall-jump launch.
 - [ ] None of this polish introduces measurable input lag: the T1 frame-time counter stays within
       baseline with all polish enabled.', '2026-11-01T20:28:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T17', '## Story
+
+As V (the player), I want the mod to send me an in-character, in-game text message from ''Peter Parker'' the first time I use it, so that it''s clear in a fun, on-brand way what the mod does and where its moves come from.
+
+## Verified quotes to use (must keep wording and attribution intact; do not substitute unverified fan-quote-site lines)
+
+1. ''With great power comes great responsibility.'' -- Uncle Ben, *Spider-Man* (2002). Widely corroborated as the film''s most-quoted line (multiple quote sites, study guides).
+2. Exchange at the Moondance Diner: Spider-Man to Mary Jane -- ''You know who I am.'' / ''I do?'' / ''Your friendly neighborhood Spider-Man.'' -- *Spider-Man* (2002). Corroborated by multiple independent transcript/quote sources (no primary shooting script checked, so treat exact punctuation as approximate).
+
+Suggested draft (implementer may tighten for length/tone, but keep both verified lines intact and not reworded):
+
+> Hey -- your friendly neighborhood Spider-Man here. Heard V''s picked up a few of my old tricks around Night City: wall climbs, wall-runs, wall-jumps, and a real web-sling swing instead of that grapple-hook thing. Uncle Ben always told me, ''with great power comes great responsibility'' -- so swing safe out there, V. You know who''s got your back. Your friendly neighborhood Spider-Man.
+
+## Acceptance
+
+- [ ] The message appears inside Cyberpunk 2077''s own in-game text-message / phone UI, sent from a contact displayed as ''Peter Parker'' -- using CET''s exposed API for the game''s messaging/Journal system if one exists.
+- [ ] If CET exposes no suitable API for injecting a real in-game text message, document that gap in `docs/DESIGN.md` (which native/RED4ext API would be needed) and fall back to a CET ImGui overlay styled like a phone text bubble (sender name ''Peter Parker'', the message body above) as an interim -- same pattern C2WS-T4 used when it spiked CET''s raycast support.
+- [ ] Triggered manually via a new debug-panel button (''Send Peter Parker intro text''), not automatically on every load, so it doesn''t spam the player on every session.
+- [ ] Verified in-game: the message (or its overlay fallback) is fully readable, correctly attributed to ''Peter Parker'', and both verified quotes appear unaltered.', '2026-11-01T21:51:17Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T4', '## Story
 
 As V, I want a reliable way to detect nearby wall surfaces and their normals, so that every other
@@ -64920,6 +65348,24 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.PSST-T27',
 - Its settings cog/menu opens Vault.Desktop at this app''s tab (`VaultSettings.Open`); verified by hand.
 - Tests: **one separate test per setting** proving it works end to end (today''s stored value imports to the right name, round-trips through Vault, and is the value the app actually reads/uses at runtime); manifest has every field labeled; LoadOrSeed seeds the expected defaults; LLM calls fail over (first key 401 -> second used); old settings UI/route is gone.
 - Done only when every one of the above holds.', '2026-10-31T14:49:57Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.PSST-T30', '## Symptom
+
+`psst sms <contact> "<message>"` (and presumably `remind`/scheduled sends) fails via the Email-to-SMS transport with:
+
+```
+Email-to-SMS: The SMTP server has unexpectedly disconnected: 5.7.8 Username and Password not accepted. For more information, go to
+5.7.8  https://support.google.com/mail/?p=BadCredentials
+```
+
+Reproduced 2026-11-01 running `psst sms ryan "..."` from Mods.Cyberpunk2077.WebSlinger''s CLI. `psst ping` shows Email-to-SMS configured for `ryandebraal@gmail.com`, fanning out to 8 carrier gateways for +19203764617; the send attempt fails auth before reaching any gateway.
+
+## Cause
+
+Unknown yet. Likely candidates: the stored Gmail App Password in MindAttic.Vault (`%APPDATA%\MindAttic\Notifications\providers.json` and/or `%APPDATA%\MindAttic\Psst\settings.json`) was revoked or expired, or Google changed account security settings (2FA re-enroll invalidates old app passwords). Needs checking against the Google Account''s App Passwords page and the credential actually stored in the Vault chain.
+
+## Test
+
+`psst sms ryan "test"` (or an equivalent `psst ping`-level auth check) completes without the 5.7.8 BadCredentials SMTP error.', '2026-11-01T21:51:54Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.RLY-T10', '**Scope**
 - Prototype (in this repo, throwaway) proving the intricate part before anything depends on it: two machines (or two
   servers on one box), spoke offline for an hour, events published on both sides, link restored, nothing lost or
@@ -73081,6 +73527,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T14', 'C2SD-T15', '
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T15', 'C2SD-T8', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T15', 'C2SD-US-D12', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T2', 'C2SD-T1', 'duplicates', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T27', 'C2SD-T17', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T4', 'C2SD-T10', 'requires', 'blocked by hand');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T4', 'C2SD-T11', 'requires', 'blocked by hand');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T4', 'C2SD-T12', 'requires', 'blocked by hand');
