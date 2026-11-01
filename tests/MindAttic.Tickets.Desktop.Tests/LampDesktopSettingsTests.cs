@@ -1,6 +1,7 @@
 using System.IO;
 using MindAttic.Tickets.Desktop.Data;
 using MindAttic.Tickets.Desktop.ViewModels;
+using MindAttic.Vault.Launch;
 using MindAttic.Vault.Paths;
 using MindAttic.Vault.Settings.Manifest;
 using NUnit.Framework;
@@ -130,6 +131,35 @@ public class LampDesktopSettingsTests
         Directory.CreateDirectory(VaultPaths.LocalApp("Workflow"));
         File.WriteAllText(Path.Combine(VaultPaths.LocalApp("Workflow"), "desktop.json"), """{ "View": "Audit" }""");
         Assert.That(DesktopSettings.Load().View, Is.EqualTo("Audit"));
+    }
+
+    [Test]
+    public void SettingsButton_OpensVaultAtTheTicketsDesktopTab()
+    {
+        // M.TIX-T270: the settings moved to Vault (M.TIX-T266), so the app needs an entry that opens them there.
+        var original = VaultSettings.Launcher;
+        var fake = new FakeLauncher();
+        try
+        {
+            VaultSettings.Launcher = fake;
+            var model = Model(DesktopSettings.Load());
+            model.OpenSettingsCommand.Execute(null);
+            Assert.That(fake.Sent, Is.EqualTo(new[] { "--app " + DesktopSettings.AppId }));
+            Assert.That(model.StatusMessage, Does.StartWith("Opened Tickets Desktop's settings in MindAttic Vault"));
+        }
+        finally { VaultSettings.Launcher = original; }
+
+        var root = AppContext.BaseDirectory;
+        while (!Path.Exists(Path.Combine(root, ".git"))) root = Path.GetDirectoryName(root)!;
+        var xaml = File.ReadAllText(Path.Combine(root, "src", "MindAttic.Tickets.Desktop", "MainWindow.xaml"));
+        Assert.That(xaml, Does.Contain("Command=\"{Binding OpenSettingsCommand}\""), "the header shows the Settings button");
+    }
+
+    private sealed class FakeLauncher : IVaultDesktopLauncher
+    {
+        public List<string> Sent { get; } = new();
+        public bool TrySend(VaultOpenRequest request) { Sent.Add(string.Join(' ', request.ToArgs())); return true; }
+        public bool TryStart(VaultOpenRequest request) => false;
     }
 
     [Test]

@@ -55,6 +55,7 @@ public sealed partial class MainViewModel
         if (SyncCommand.CanExecute(null)) yield return Cmd("Sync the ticket database", SyncAsync, "Ctrl+Shift+S", "commit and push it");
         if (IntakeCommand.CanExecute(null)) yield return Cmd("GitHub intake", IntakeAsync, detail: "preview, then file, issues and CI failures");
         if (ExportCommand.CanExecute(null)) yield return Cmd("Export the shown tickets", ExportAsync, "Ctrl+E", "as CSV or markdown");
+        yield return Cmd("Settings", Exec(OpenSettingsCommand), detail: "opens Tickets Desktop's tab in MindAttic Vault");
 
         if (Target(null) is { IsOpen: true } row)
         {

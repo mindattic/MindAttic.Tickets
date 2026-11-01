@@ -236,6 +236,9 @@
                 <Button Style="{StaticResource MaButton}" Content="Commands…" Command="{x:Static vm:WindowCommands.CommandPalette}" Margin="0,0,8,0"
                         AutomationProperties.Name="Command palette" AutomationProperties.AcceleratorKey="Ctrl+K"
                         ToolTip="Jump to any ticket or story, or run any command, by typing part of its name (Ctrl+K)" />
+                <Button Style="{StaticResource MaButton}" Content="Sett_ings…" Command="{Binding OpenSettingsCommand}" Margin="0,0,8,0"
+                        AutomationProperties.Name="Settings"
+                        ToolTip="Opens Tickets Desktop's tab in MindAttic Vault, where its start view, zoom, grouping and new-ticket defaults are edited" />
                 <Button Style="{StaticResource MaButton}" Content="_Help" Command="{x:Static vm:WindowCommands.Help}"
                         ToolTip="Keyboard shortcuts and how the queue works (F1)" />
             </StackPanel>
