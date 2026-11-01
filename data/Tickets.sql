@@ -584,6 +584,7 @@ INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Vault',
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Vault', 'C', 'DI wiring, paths & settings', NULL, 2);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Vault', 'D', 'LLM Health Dashboard (frontier)', NULL, 3);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Vault', 'E', 'Vault as the ecosystem Settings Hub', NULL, 4);
+INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Mods.Cyberpunk2077.WebSlinger', 'T', 'Spider-Man 2 style traversal: wall-climb, wall-run, wall-jump, web-sling', NULL, 0);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Mods.GTFO.EZ.AbsurdWeapons', 'X', 'Experiments and spikes', NULL, 0);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('OpenCredentials', 'A', 'Detection', NULL, 0);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('OpenCredentials', 'B', 'Disclosure', NULL, 1);
@@ -4244,6 +4245,16 @@ INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref
 INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1367, 'IdiotProof', 'IP-US-W11', NULL, 'W', NULL, NULL, 'done', '✅', '', 'As an operator, the public README and docs never carry a key-shaped string or an account id. *(verified by `ReadmeAndDocsCarryNoKeysOrAccountIdentifiers`.)*', NULL, NULL, 'bullet', 101);
 INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1368, 'IdiotProof', 'IP-US-W12', NULL, 'W', NULL, NULL, 'planned', '⬜', '', 'As a trader, the web app runs on the same Hub identity adapters and shows the command ledger and strategy stamps, so the browser and the CLI see the same state.', NULL, NULL, 'bullet', 102);
 INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1369, 'IdiotProof', 'IP-US-W13', NULL, 'W', NULL, NULL, 'planned', '⬜', '', 'As a trader, fills, cancels and live quotes stream through the Hub (`orders stream`, `market watch`), so an assistant can follow an order without polling.', NULL, NULL, 'bullet', 103);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1370, 'Mods.Cyberpunk2077.WebSlinger', 'C2WS-US-T1', NULL, 'T', NULL, NULL, 'planned', '⬜', '', 'As V, I want a reliable way to detect nearby wall surfaces and their normals, so that every other traversal mechanic has one source of truth for wall detection.', NULL, NULL, 'bullet', 0);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1371, 'Mods.Cyberpunk2077.WebSlinger', 'C2WS-US-T2', NULL, 'T', NULL, NULL, 'planned', '⬜', '', 'As V, I want the mod''s state machine to show my current traversal state at all times, so that every mechanic can be built and debugged against one known current state.', NULL, NULL, 'bullet', 1);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1372, 'Mods.Cyberpunk2077.WebSlinger', 'C2WS-US-T3', NULL, 'T', NULL, NULL, 'planned', '⬜', '', 'As V, I want to fire a monowire/cable anchor at a nearby structure and pull toward it in an arc, so that I can start web-slinging instead of walking.', NULL, NULL, 'bullet', 2);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1373, 'Mods.Cyberpunk2077.WebSlinger', 'C2WS-US-T4', NULL, 'T', NULL, NULL, 'planned', '⬜', '', 'As V, I want the game to automatically tell whether I''m slamming head-on into a wall or glancing off it diagonally while swinging, so I latch or wall-run without extra input.', NULL, NULL, 'bullet', 3);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1374, 'Mods.Cyberpunk2077.WebSlinger', 'C2WS-US-T5', NULL, 'T', NULL, NULL, 'planned', '⬜', '', 'As V, I want to grab on and climb a wall with my Mantis Blades on a head-on hit, so I''m not just bounced off every flat surface.', NULL, NULL, 'bullet', 4);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1375, 'Mods.Cyberpunk2077.WebSlinger', 'C2WS-US-T6', NULL, 'T', NULL, NULL, 'planned', '⬜', '', 'As V, I want to keep running when I glance off a wall at an angle while moving fast enough, so traversal feels like Spider-Man 2''s wall-runs.', NULL, NULL, 'bullet', 5);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1376, 'Mods.Cyberpunk2077.WebSlinger', 'C2WS-US-T7', NULL, 'T', NULL, NULL, 'planned', '⬜', '', 'As V, I want a wall-run to naturally end after a few seconds or when I slow down, so it feels like a timed parkour move, not an infinite glide.', NULL, NULL, 'bullet', 6);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1377, 'Mods.Cyberpunk2077.WebSlinger', 'C2WS-US-T8', NULL, 'T', NULL, NULL, 'planned', '⬜', '', 'As V, I want to jump off a wall-climb or wall-run in a chosen direction, so I can chain between two facing walls or launch into open air.', NULL, NULL, 'bullet', 7);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1378, 'Mods.Cyberpunk2077.WebSlinger', 'C2WS-US-T9', NULL, 'T', NULL, NULL, 'planned', '⬜', '', 'As V, I want to fire a new web-sling while airborne off a wall-jump or wall-run, so a single run can chain climb -> run -> jump -> swing with no ground touch.', NULL, NULL, 'bullet', 8);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1379, 'Mods.Cyberpunk2077.WebSlinger', 'C2WS-US-T10', NULL, 'T', NULL, NULL, 'planned', '⬜', '', 'As V, I want visual/camera feedback during these moves, so traversal reads as deliberate parkour rather than a glitch.', NULL, NULL, 'bullet', 9);
 
 -- backlog_items
 INSERT INTO backlog_items (uid, repo, ordinal, text) VALUES (1, 'ChiMesh', 19, '1. **CM-US-A1/A2** — order parts, assemble three nodes (gates everything physical).');
@@ -7699,6 +7710,17 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T1', 'Mods.Cyberpunk2077.WebSlinger', 1, '2026-11-01', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T2', 'Mods.Cyberpunk2077.WebSlinger', 2, '2026-11-01', 'feature', 'closed', 'Scaffold new repo: Cyberpunk 2077 mod for Mantis Blade wall-climb, wall-run/jump, and Spider-Man 2 style webslinging', '7aad643ac7c88e810331b43e6e85a40b41323aaf', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T3', 'Mods.Cyberpunk2077.WebSlinger', 3, '2026-11-01', 'chore', 'closed', 'Rename repo to Mods.Cyberpunk2077.WebSlinger for mod organization (GitHub + folder + refs)', '36d0a7610a8d43186a58b5ea925f2190e04bf613', 2, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T4', 'Mods.Cyberpunk2077.WebSlinger', 4, '2026-11-01', 'feature', 'open', 'Wall-detection raycast utility + debug overlay', 'C2WS-US-T1', 3, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T5', 'Mods.Cyberpunk2077.WebSlinger', 5, '2026-11-01', 'feature', 'open', 'Formalize traversal state machine (NONE/CLIMBING/WALLRUNNING/SLINGING)', 'C2WS-US-T2', 4, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T6', 'Mods.Cyberpunk2077.WebSlinger', 6, '2026-11-01', 'feature', 'open', 'Web-sling (grapple) base: aim, fire, swing-arc physics, release', 'C2WS-US-T3', 5, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T7', 'Mods.Cyberpunk2077.WebSlinger', 7, '2026-11-01', 'feature', 'open', 'Wall-impact angle check during swing: latch vs. wall-run transition', 'C2WS-US-T4', 6, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T8', 'Mods.Cyberpunk2077.WebSlinger', 8, '2026-11-01', 'feature', 'open', 'Wall-latch (Mantis Blade climb) + wall-climb movement', 'C2WS-US-T5', 7, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T9', 'Mods.Cyberpunk2077.WebSlinger', 9, '2026-11-01', 'feature', 'open', 'Wall-run physics + sticky force + camera tilt', 'C2WS-US-T6', 8, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T10', 'Mods.Cyberpunk2077.WebSlinger', 10, '2026-11-01', 'feature', 'open', 'Wall-run duration/stamina drop-off', 'C2WS-US-T7', 9, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T11', 'Mods.Cyberpunk2077.WebSlinger', 11, '2026-11-01', 'feature', 'open', 'Wall-jump (from climb or wall-run), chainable between facing walls', 'C2WS-US-T8', 10, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T12', 'Mods.Cyberpunk2077.WebSlinger', 12, '2026-11-01', 'feature', 'open', 'End-to-end re-sling loop: swing -> run -> jump -> swing with no ground touch', 'C2WS-US-T9', 11, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T13', 'Mods.Cyberpunk2077.WebSlinger', 13, '2026-11-01', 'feature', 'open', 'Polish pass: camera tilt easing, impact feedback (stretch, do last)', 'C2WS-US-T10', 12, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T14', 'Mods.Cyberpunk2077.WebSlinger', 14, '2026-11-01', 'docs', 'closed', 'Write up ordered traversal feature breakdown: epic T, 10 stories, 10 linked tickets with explicit acceptance criteria', '—', 13, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.CTD-T1', 'Mods.GTFO.CrashTestDummies', 1, '2026-10-16', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.CTD-T2', 'Mods.GTFO.CrashTestDummies', 2, '2026-10-16', 'chore', 'closed', 'install.ps1 adds this repo''s 15 .prose/commands stubs, AGENTS.md pointer for the shared global commands, so any LLM client finds them', 'mindattic-agent-standard/install.ps1 run 2026-10-16', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.CTD-T3', 'Mods.GTFO.CrashTestDummies', 3, '2026-10-16', 'chore', 'closed', 'Bug hunt: run an exhaustive /bughunt over the whole repo and fix every real bug found (each fix under its own fix ticket), then hunt again; close this only when a full pass finds nothing', '47588d8', 2, NULL);
@@ -54793,6 +54815,44 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32770, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32771, 'RTO-T100', '2026-11-01T20:20:49Z', 'repo', 'RogueTrader.Overwatch', 'Mods.RogueTrader.Overwatch');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32772, 'RTO-T100', '2026-11-01T20:21:01Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32773, 'RTO-T100', '2026-11-01T20:21:01Z', 'ref', '—', '3299d214639575f2d3570e103beac6af47a32f0c');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32774, 'C2WS-T4', '2026-11-01T20:28:23Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32775, 'C2WS-T5', '2026-11-01T20:28:25Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32776, 'C2WS-T6', '2026-11-01T20:28:27Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32777, 'C2WS-T7', '2026-11-01T20:28:29Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32778, 'C2WS-T8', '2026-11-01T20:28:31Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32779, 'C2WS-T9', '2026-11-01T20:28:33Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32780, 'C2WS-T10', '2026-11-01T20:28:35Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32781, 'C2WS-T11', '2026-11-01T20:28:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32782, 'C2WS-T12', '2026-11-01T20:28:41Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32783, 'C2WS-T13', '2026-11-01T20:28:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32784, 'C2WS-T5', '2026-11-01T20:28:49Z', 'link', NULL, 'requires C2WS-T4');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32785, 'C2WS-T4', '2026-11-01T20:28:50Z', 'link', NULL, 'C2WS-T5 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32786, 'C2WS-T6', '2026-11-01T20:28:51Z', 'link', NULL, 'requires C2WS-T4');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32787, 'C2WS-T4', '2026-11-01T20:28:52Z', 'link', NULL, 'C2WS-T6 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32788, 'C2WS-T6', '2026-11-01T20:28:53Z', 'link', NULL, 'requires C2WS-T5');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32789, 'C2WS-T5', '2026-11-01T20:28:54Z', 'link', NULL, 'C2WS-T6 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32790, 'C2WS-T7', '2026-11-01T20:28:55Z', 'link', NULL, 'requires C2WS-T4');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32791, 'C2WS-T4', '2026-11-01T20:28:56Z', 'link', NULL, 'C2WS-T7 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32792, 'C2WS-T7', '2026-11-01T20:28:57Z', 'link', NULL, 'requires C2WS-T6');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32793, 'C2WS-T6', '2026-11-01T20:28:58Z', 'link', NULL, 'C2WS-T7 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32794, 'C2WS-T8', '2026-11-01T20:29:00Z', 'link', NULL, 'requires C2WS-T7');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32795, 'C2WS-T7', '2026-11-01T20:29:00Z', 'link', NULL, 'C2WS-T8 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32796, 'C2WS-T9', '2026-11-01T20:29:02Z', 'link', NULL, 'requires C2WS-T7');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32797, 'C2WS-T7', '2026-11-01T20:29:02Z', 'link', NULL, 'C2WS-T9 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32798, 'C2WS-T10', '2026-11-01T20:29:03Z', 'link', NULL, 'requires C2WS-T9');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32799, 'C2WS-T9', '2026-11-01T20:29:04Z', 'link', NULL, 'C2WS-T10 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32800, 'C2WS-T11', '2026-11-01T20:29:05Z', 'link', NULL, 'requires C2WS-T8');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32801, 'C2WS-T8', '2026-11-01T20:29:06Z', 'link', NULL, 'C2WS-T11 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32802, 'C2WS-T11', '2026-11-01T20:29:07Z', 'link', NULL, 'requires C2WS-T9');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32803, 'C2WS-T9', '2026-11-01T20:29:08Z', 'link', NULL, 'C2WS-T11 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32804, 'C2WS-T12', '2026-11-01T20:29:10Z', 'link', NULL, 'requires C2WS-T6');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32805, 'C2WS-T6', '2026-11-01T20:29:10Z', 'link', NULL, 'C2WS-T12 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32806, 'C2WS-T12', '2026-11-01T20:29:11Z', 'link', NULL, 'requires C2WS-T11');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32807, 'C2WS-T11', '2026-11-01T20:29:12Z', 'link', NULL, 'C2WS-T12 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32808, 'C2WS-T13', '2026-11-01T20:29:13Z', 'link', NULL, 'requires C2WS-T12');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32809, 'C2WS-T12', '2026-11-01T20:29:14Z', 'link', NULL, 'C2WS-T13 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32810, 'C2WS-T14', '2026-11-01T20:30:42Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (32811, 'C2WS-T14', '2026-11-01T20:30:49Z', 'status', 'open', 'closed');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -57952,6 +58012,27 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (386, 'U.
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (387, 'U.OVW-T33', 'ryand', '2026-11-01T05:42:33Z', 'Core Combat/PartyRing.Attack landed across fragment commits made by a concurrent sync process in this shared checkout (same situation as U.OVW-T58''s note), completed by this session''s own commit 926d390 (docs). Verified: Core CombatTests 5/5, full suite 395/395 aside from the pre-existing U.OVW-T57 failure, a headless player build, and a scripted run (place next to the Werelynx, enter battle, turn the ring to Attack and choose it) showing the turn pass to the next hero and the leader''s own health drop from the Werelynx''s counter-hit while in contact.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (388, 'U.OVW-T34', 'ryand', '2026-11-01T05:49:39Z', 'Core Equipment/HudPresenter.EquipmentLine and docs landed across fragment commits made by a concurrent sync process in this shared checkout (same situation as U.OVW-T58''s note), ending at da5e070 which this closes against (this session made no commit of its own this time; the sync process captured everything, docs included, before a commit attempt could land). Verified: Core EquipmentTests 4/4, full suite 399/399 aside from the pre-existing U.OVW-T57 failure, a headless player build, and a capture of the hero screen showing Alexander HP 50/50, STR/AGI/INT/SPD, the Steel Sword (10/10) and the empty head/body slots.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (389, 'U.OVW-T35', 'ryand', '2026-11-01T06:03:15Z', 'Implemented selectable Belmont/Girl sprite packs (SpritePackData, Party.SelectSpritePack/SpritesFor, F6 key, -overworld-sprite-pack scripted arg, 7 Core SpritePackTests, BIBLE ''Hero sprites'' + RECONSTRUCTION 4.4 updated, verified visually via headless captures). Work was swept into the concurrent sync process''s auto-commits (range da5e070..88561d8, ~23 ''Sync generated/live files (M.ORCH-T1389)'' commits) before I could commit it under this ticket''s own message; nothing of mine is uncommitted. Core suite: 405/406 passing, the 1 failure being the pre-existing U.OVW-T57 regression, unrelated to this ticket.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (390, 'C2WS-T6', 'ryand', '2026-11-01T20:30:28Z', 'Refinement from design discussion (2026-11-01), folded into this ticket''s acceptance before work starts:
+
+**Dedicated swing control, not a repurposed trigger.** Both triggers/bumpers are almost certainly
+already bound in CP77''s default scheme (aim, fire, cyberware quickslot, etc.) and exact live
+bindings shouldn''t be assumed from memory. Implement this as a CET-registered, player-configurable
+hotkey (not a hardcoded native button), using continuous key-state polling each `onUpdate` tick
+(not a single press-pulse callback) so press = fire/attach and release = let go are both detectable
+from one bind. Before picking a suggested default key, open the game''s own Settings > Controls
+screen live and confirm the chosen default isn''t already assigned; document the chosen default and
+the conflict-check in `docs/DESIGN.md`. The bind must be changeable by the player without editing
+code (CET''s hotkey/mod-settings overlay).
+
+**Effortless, Spider-Man-style anchoring, not precision aiming.** A player shouldn''t need to aim a
+cursor at an exact point to swing. Replace a single narrow forward raycast with a generous
+search (e.g. a cone or small set of sample rays within a wide angle ahead of/above V, out to
+`AnchorMaxDistance`) that auto-picks the best qualifying high point near where the player is roughly
+looking/moving. No valid anchor found = soft-fail into a normal fall, never an error. Holding the
+swing key through repeated attach/release cycles while moving through the city should let V chain
+swing after swing continuously without the player re-aiming precisely each time — verify this by
+swinging continuously through at least 5 consecutive buildings without once failing to find an
+anchor while roughly facing a qualifying skyline.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
@@ -58395,6 +58476,217 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AWN-T19', '#
 ## Acceptance
 
 <!-- A checklist of what must be true for it to be done. -->', '2026-10-31T18:29:19Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T10', '## Story
+
+As V, I want a wall-run to naturally end after a few seconds (or sooner if I stop being fast
+enough), so that it feels like a timed parkour move instead of an infinite glide.
+
+## Acceptance
+
+- [ ] `WallRunMaxDuration` (tunable, default 3.0s) starts timing on `InitiateWallRun`;
+      `UpdateWallHangPhysics` exits `WALLRUNNING` back to `NONE` (falling) once the timer elapses,
+      with no player input required.
+- [ ] If V''s speed drops below `MinimumWallRunSpeed` mid-run, exit `WALLRUNNING` immediately rather
+      than waiting for the timer.
+- [ ] The ImGui debug panel shows remaining wall-run time while `WALLRUNNING`.
+- [ ] Verified: (1) start a wall-run and do nothing else — V falls off cleanly at the timer limit;
+      (2) separately, slow down mid-run — V falls off before the timer limit.', '2026-11-01T20:28:35Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T11', '## Story
+
+As V, I want to jump off a wall-climb or wall-run in a chosen direction, so that I can chain between
+two facing walls or launch myself back out into open air.
+
+## Acceptance
+
+- [ ] Jump input while `CLIMBING` or `WALLRUNNING` exits that state and applies an impulse =
+      `wallNormal * OutwardForce + Vector4(0,0,UpwardForce,0)` (both tunable).
+- [ ] A second wall-jump within `ChainWindow` seconds (tunable, default 0.6s) of landing a wall-jump
+      against a second, roughly-facing wall (detected via T1''s raycast) is accepted as a chain with
+      no cooldown blocking it; outside the window it''s just a normal wall-jump.
+- [ ] Verified in a corridor with two facing walls: alternate wall-jumping between them at least 3
+      times without touching the ground, each jump clearing comparable height/distance to the first.', '2026-11-01T20:28:37Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T12', '## Story
+
+As V, I want to fire a new web-sling while airborne off a wall-jump or wall-run, so that a single
+traversal run can chain climb -> run -> jump -> swing without ever touching the ground.
+
+## Acceptance
+
+- [ ] The sling-fire input (T3) is accepted whenever V is in `NONE` state, regardless of whether
+      `NONE` was entered from a wall-jump, a wall-run timeout, or a normal fall — if T2/T3/T4''s state
+      machine is correct this needs no special-casing; this ticket is the end-to-end verification
+      pass, fixing any state leakage it finds.
+- [ ] Verified once, end to end, in one continuous take: swing -> wall-run -> wall-jump -> swing
+      again -> wall-latch-climb -> climb-jump -> swing again, with no scripting error and no stuck
+      state (the T2 transition log never shows two `SLINGING` entries without a `NONE` between them).', '2026-11-01T20:28:41Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T13', '## Story
+
+As V, I want visual/camera feedback (tilt, FOV, impact feel) during these moves, so the traversal
+reads as deliberate parkour rather than a glitch. (Stretch — lowest priority, do this last.)
+
+## Acceptance
+
+- [ ] Camera tilt during wall-run eases in/out instead of snapping (replace the flat
+      `SetCameraTilt` call with a short lerp).
+- [ ] A brief camera shake / FOV-punch plays on wall-latch impact and on wall-jump launch.
+- [ ] None of this polish introduces measurable input lag: the T1 frame-time counter stays within
+      baseline with all polish enabled.', '2026-11-01T20:28:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T4', '## Story
+
+As V, I want a reliable way to detect nearby wall surfaces and their normals, so that every other
+traversal mechanic has one source of truth for "is there a wall here, which direction does it face."
+
+## Acceptance
+
+- [ ] `ExecuteSmartRaycast(origin: Vector4, direction: Vector4, maxDistance: number)` returns
+      `(hit: bool, hitPos: Vector4, hitNormal: Vector4)` using CET''s exposed physics/raycast query
+      API — or, if CET exposes none suitable, document in `docs/DESIGN.md` that this spiked into a
+      RED4ext requirement instead, with the specific API gap found.
+- [ ] A debug overlay (new checkbox "Debug: show wall raycast" in the existing `onDraw` ImGui panel)
+      draws the ray and, on hit, the hit point and a short line along the normal.
+- [ ] Verified in-game: standing and facing a wall at varying distances/angles, the debug line
+      correctly shows hit vs. no-hit, and the drawn normal visibly points away from the wall surface
+      (not into it, not parallel to it).
+- [ ] The raycast runs at most once per `onUpdate` tick (not per render frame); a frame-time counter
+      added to the debug panel stays within 1ms of pre-change baseline with the raycast enabled.', '2026-11-01T20:28:23Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T5', '## Story
+
+As V, I want the mod''s state machine to show my current traversal state at all times, so that every
+mechanic below can be built and debugged against one known current state instead of guessing.
+
+## Acceptance
+
+- [ ] States are an explicit Lua table — `NONE`, `CLIMBING`, `WALLRUNNING`, `SLINGING` — replacing
+      the free-form `WebSlinger.state` string already in `init.lua`.
+- [ ] `SetState(newState)` logs the transition (`print`) and calls an optional `onExit(oldState)` /
+      `onEnter(newState)` hook pair per state (empty stub hooks are fine for now).
+- [ ] The ImGui panel shows the current state and the timestamp of the last transition.
+- [ ] Verified: a debug button per state in `onDraw` forces that state and the panel/log show the
+      transition exactly once, never twice, never silently dropped.', '2026-11-01T20:28:25Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T6', '## Story
+
+As V, I want to fire a monowire/cable anchor at a nearby structure and pull toward it in an arc, so
+that I can start web-slinging instead of walking.
+
+## Acceptance
+
+- [ ] A decision is recorded in `docs/DESIGN.md` — reuse/extend CP77''s existing `PlayerPuppet`
+      grapple state, or build a fully custom parallel state — with the concrete reason (what the
+      native grapple does or doesn''t support for a swing arc).
+- [ ] Aim input (existing ADS or a dedicated keybind) plus `ExecuteSmartRaycast` (T1) picks a valid
+      anchor point within `AnchorMaxDistance` (tunable) and line of sight.
+- [ ] On fire with a valid anchor: `IsGrappling` becomes true, the state machine (T2) enters
+      `SLINGING`, and `UpdateGrapplePhysics(deltaTime)` runs every `onUpdate` tick while grappling.
+- [ ] V visibly swings in a pendulum arc toward the anchor — never a straight teleport/pull-to-point.
+- [ ] Release input (or reaching the anchor) exits `SLINGING`, returns to `NONE`, and V''s momentum at
+      release carries into the following fall/glide (not zeroed).
+- [ ] Verified: fire at a building corner from three different approach angles/speeds — V swings in
+      an arc each time.', '2026-11-01T20:28:27Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T7', '## Story
+
+As V, I want the game to automatically tell whether I''m about to slam head-on into a wall or glance
+off it diagonally while swinging, so that I latch with my Mantis Blades on a head-on hit and
+wall-run on a diagonal hit without pressing anything extra.
+
+## Acceptance
+
+Reference implementation (adapt as needed, keep the thresholds as named tunables):
+
+```lua
+local WallCheckDistance = 2.0
+local MinimumWallRunSpeed = 8.0
+
+function CheckWallCollisionDuringSwing()
+    if not IsGrappling then return end
+    local playerPos = Player:GetPosition()
+    local velocity = Player:GetLocomotionComponent():GetLinearVelocity()
+    local forwardVector = Game.GetCameraSystem():GetActiveCameraForward()
+    local hit, hitPos, hitNormal = ExecuteSmartRaycast(playerPos, forwardVector)
+    if hit then
+        local movementDir = Vector4.new(velocity.x, velocity.y, 0, 0):Normalize()
+        local wallNormal2D = Vector4.new(hitNormal.x, hitNormal.y, 0, 0):Normalize()
+        local impactAngle = movementDir:Dot(wallNormal2D)
+        StopGrapple()
+        if math.abs(impactAngle) > 0.75 then
+            TriggerWallLatch()
+        else
+            local currentSpeed = velocity:Length()
+            if currentSpeed >= MinimumWallRunSpeed then
+                InitiateWallRun(wallNormal2D, velocity)
+            else
+                TriggerWallLatch()
+            end
+        end
+    end
+end
+```
+
+- [ ] `CheckWallCollisionDuringSwing()` runs every `onUpdate` tick while `IsGrappling`, using T1''s
+      `ExecuteSmartRaycast` ahead of V''s velocity vector (`WallCheckDistance`, tunable).
+- [ ] `|impactAngle| > 0.75` (tunable `WallLatchAngleThreshold`) leads to `StopGrapple()` then
+      `TriggerWallLatch()`; otherwise, if speed `>= MinimumWallRunSpeed` (tunable), leads to
+      `StopGrapple()` then `InitiateWallRun(wallNormal2D, velocity)`; otherwise leads to
+      `TriggerWallLatch()` as the slow-approach fallback.
+- [ ] `StopGrapple()` exits `SLINGING` cleanly before the next state is entered — the T2 transition
+      log shows `SLINGING -> NONE -> (CLIMBING|WALLRUNNING)` with no stuck intermediate frame.
+- [ ] Verified with three logged scenarios (angle + chosen branch): (1) swinging straight into a flat
+      wall face latches; (2) swinging past a wall at a shallow angle above minimum speed wall-runs;
+      (3) the same shallow angle below minimum speed latches (fallback).', '2026-11-01T20:28:29Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T8', '## Story
+
+As V, I want to grab on and climb a wall with my Mantis Blades when I hit it head-on (or stop too
+slowly to wall-run), so that I''m not just bounced off every flat surface.
+
+## Acceptance
+
+- [ ] `TriggerWallLatch()` requires Mantis Blades equipped (check the game''s existing
+      equipment/stance API); if not equipped, falls back to today''s normal collision behavior and
+      logs why it declined to latch.
+- [ ] Entering `CLIMBING` disables fall damage and normal gravity for V (document the exact
+      property/flag toggled in `docs/DESIGN.md`) and zeroes residual velocity into the wall.
+- [ ] Directional input while `CLIMBING` moves V along the wall''s surface plane (up/down/strafe),
+      and moving past the wall''s physical edge exits back to `NONE` instead of clipping through it.
+- [ ] Jump input while `CLIMBING` performs a climb-jump: exits `CLIMBING`, applies an
+      outward+upward impulse, returns to `NONE`.
+- [ ] Verified: climb at least 10m up a building face, strafe both directions without unintentionally
+      sliding off, then climb-jump off cleanly into a normal fall.', '2026-11-01T20:28:31Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T9', '## Story
+
+As V, I want to keep running when I glance off a wall at an angle and I''m moving fast enough, so
+that traversal feels like Spider-Man 2''s wall-runs instead of just bouncing off.
+
+## Acceptance
+
+Reference implementation (adapt as needed, keep the magic numbers as named tunables):
+
+```lua
+function InitiateWallRun(wallNormal, currentVelocity)
+    IsWallHanging = false
+    local wallParallelDir = Vector4.new(-wallNormal.y, wallNormal.x, 0, 0)
+    if currentVelocity:Dot(wallParallelDir) < 0 then
+        wallParallelDir = Vector4.new(wallNormal.y, -wallNormal.x, 0, 0)
+    end
+    local wallRunSpeed = math.max(currentVelocity:Length(), 15.0)
+    local wallRunVelocity = wallParallelDir * wallRunSpeed
+    local stickyForce = wallNormal * -1.5
+    local finalVelocity = wallRunVelocity + stickyForce
+    finalVelocity.z = 2.5
+    Player:GetLocomotionComponent():SetLinearVelocity(finalVelocity)
+    Game.GetCameraSystem():SetCameraTilt(10.0, 0.3)
+end
+```
+
+- [ ] `InitiateWallRun(wallNormal, currentVelocity)` computes the wall-parallel direction as the
+      perpendicular of `wallNormal`, picking the sign that matches V''s existing travel direction.
+- [ ] `wallRunSpeed = max(currentVelocity:Length(), 15.0)` (tunable minimum); final velocity =
+      `wallParallelDir * wallRunSpeed + wallNormal * -1.5` (tunable sticky force) with Z pinned to
+      `+2.5` (tunable anti-gravity-drag) for the duration of the run.
+- [ ] `Player:GetLocomotionComponent():SetLinearVelocity(...)` is re-applied every tick of the run
+      (a new `UpdateWallHangPhysics`, called from `onUpdate` while `WALLRUNNING`) — not just once on
+      entry — confirmed V doesn''t slip off the wall geometry mid-run.
+- [ ] Camera tilt (`SetCameraTilt(10.0, 0.3)`, tunable) plays on entry and resets to neutral on exit.
+- [ ] Verified: wall-run along a straight building face for at least 3 seconds without sliding off or
+      clipping through the wall.', '2026-11-01T20:28:33Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('CLA-T22', 'LAMP migration for **Claudia** (plan: MindAttic.Vault/docs/rfc/0003-lamp.md, Rollout step 5).
 
 - Move to the new MindAttic.Vault major.
@@ -71892,6 +72184,29 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('AUT-T27', 'M.VALT-T44', 
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AUT-T27', 'M.VALT-T45', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AUT-T27', 'M.VALT-T46', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AWN-T7', 'M.TIX-T14', 'related', 'migrated: named in ref');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T10', 'C2WS-T9', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T11', 'C2WS-T8', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T11', 'C2WS-T9', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T12', 'C2WS-T11', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T12', 'C2WS-T6', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T13', 'C2WS-T12', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T5', 'C2WS-T4', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T6', 'C2WS-T4', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T6', 'C2WS-T5', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T7', 'C2WS-T4', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T7', 'C2WS-T6', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T8', 'C2WS-T7', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T9', 'C2WS-T7', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-US-T1', 'C2WS-EPIC-T', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-US-T10', 'C2WS-EPIC-T', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-US-T2', 'C2WS-EPIC-T', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-US-T3', 'C2WS-EPIC-T', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-US-T4', 'C2WS-EPIC-T', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-US-T5', 'C2WS-EPIC-T', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-US-T6', 'C2WS-EPIC-T', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-US-T7', 'C2WS-EPIC-T', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-US-T8', 'C2WS-EPIC-T', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-US-T9', 'C2WS-EPIC-T', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('CLA-T2', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('CLA-T22', 'M.COMP-T157', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('CLA-T22', 'M.VALT-T35', 'part-of', NULL);
@@ -78645,7 +78960,20 @@ updated: 2026-11-01
 ## Priority backlog
 _Nothing recorded yet._
 ');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.WebSlinger', 1, 'tickets', NULL, '## Tickets
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.WebSlinger', 1, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.WebSlinger', 2, 'epic', 'T', '## Epic T — Spider-Man 2 style traversal: wall-climb, wall-run, wall-jump, web-sling');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.WebSlinger', 3, 'story', '1370', '- **C2WS-US-T1 ⬜** As V, I want a reliable way to detect nearby wall surfaces and their normals, so that every other traversal mechanic has one source of truth for wall detection.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.WebSlinger', 4, 'story', '1371', '- **C2WS-US-T2 ⬜** As V, I want the mod''s state machine to show my current traversal state at all times, so that every mechanic can be built and debugged against one known current state.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.WebSlinger', 5, 'story', '1372', '- **C2WS-US-T3 ⬜** As V, I want to fire a monowire/cable anchor at a nearby structure and pull toward it in an arc, so that I can start web-slinging instead of walking.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.WebSlinger', 6, 'story', '1373', '- **C2WS-US-T4 ⬜** As V, I want the game to automatically tell whether I''m slamming head-on into a wall or glancing off it diagonally while swinging, so I latch or wall-run without extra input.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.WebSlinger', 7, 'story', '1374', '- **C2WS-US-T5 ⬜** As V, I want to grab on and climb a wall with my Mantis Blades on a head-on hit, so I''m not just bounced off every flat surface.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.WebSlinger', 8, 'story', '1375', '- **C2WS-US-T6 ⬜** As V, I want to keep running when I glance off a wall at an angle while moving fast enough, so traversal feels like Spider-Man 2''s wall-runs.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.WebSlinger', 9, 'story', '1376', '- **C2WS-US-T7 ⬜** As V, I want a wall-run to naturally end after a few seconds or when I slow down, so it feels like a timed parkour move, not an infinite glide.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.WebSlinger', 10, 'story', '1377', '- **C2WS-US-T8 ⬜** As V, I want to jump off a wall-climb or wall-run in a chosen direction, so I can chain between two facing walls or launch into open air.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.WebSlinger', 11, 'story', '1378', '- **C2WS-US-T9 ⬜** As V, I want to fire a new web-sling while airborne off a wall-jump or wall-run, so a single run can chain climb -> run -> jump -> swing with no ground touch.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.WebSlinger', 12, 'story', '1379', '- **C2WS-US-T10 ⬜** As V, I want visual/camera feedback during these moves, so traversal reads as deliberate parkour rather than a glitch.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.WebSlinger', 13, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Cyberpunk2077.WebSlinger', 14, 'tickets', NULL, '## Tickets
 > Permanent log of every change and fix — this repo''s ticket system. Rows are append-only: never
 > delete or reword one; only move its Status (open → closed / wont-do) and fill in Ref. Status is
 > a word, not a glyph, so tickets don''t count toward the story index. Keep this section last.
