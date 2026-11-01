@@ -4665,7 +4665,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IDEA-T43', 'IdeaCms', 43, '2026-10-31', 'docs', 'closed', 'Update USER_STORIES.md', '—', 42, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IDEA-T44', 'IdeaCms', 44, '2026-11-01', 'chore', 'closed', 'Rename MindAttic.Ideas to IdeaCms repo-wide (repo, folder, namespace, files, docs)', '—', 43, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IDEA-T45', 'IdeaCms', 45, '2026-11-01', 'fix', 'closed', 'Fails on main: IdeaCms.Tests.DeploymentPackagingTests.VendoredPackagesMatchTheLocalFeedsSameVersion — Vendored packages differ from C:\LocalNuGet; copy the current .nupkg into lib/local-packages/: MindAttic.Vault.7.0.0.nupkg Assert.That(stale, Is.Empty) Expected: <empty> But was: < "MindAttic.Vault.7.0.0.nupkg" > (landed on main since the last green run: tickets IDEA-T44 in da53904 Rename MindAttic.Ideas to IdeaCms: repo, folder, namespaces, projects, docs and GitHub, decoupled from the MindAttic ecosystem branding (IDEA-T44))', 'main@da53904', 44, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IDEA-T46', 'IdeaCms', 46, '2026-11-01', 'chore', 'open', 'Admin section bug hunt and cleanup pass', '—', 45, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IDEA-T46', 'IdeaCms', 46, '2026-11-01', 'chore', 'closed', 'Admin section bug hunt and cleanup pass', '—', 45, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IDEA-T47', 'IdeaCms', 47, '2026-11-01', 'feature', 'open', 'Add first-visit onboarding tour popups across the admin section using a JS tour library', '—', 46, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T1', 'IdiotProof', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| IP-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T2', 'IdiotProof', 2, '2026-10-12', 'chore', 'closed', '/commit now logs every commit as a ticket in this table', '`.claude/skills/commit/SKILL.md`', 1, '| IP-T2 | 2026-10-12 | chore | closed | /commit now logs every commit as a ticket in this table | `.claude/skills/commit/SKILL.md` |');
@@ -56121,6 +56121,10 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33185, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33186, 'C2SD-T30', '2026-11-01T22:34:41Z', 'ref', '—', 'c0fd879');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33187, 'C2WS-T16', '2026-11-01T22:35:19Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33188, 'C2WS-T16', '2026-11-01T22:35:19Z', 'ref', '—', 'bdd89dff24049fc5b295e3645666fd8b6d9e7373');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33189, 'C2WS-T16', '2026-11-01T22:35:45Z', 'working', 'ryandebraal@mindattic.com (808ce091-f94c-467d-a7d1-b6562cc81444)', '808ce091-f94c-467d-a7d1-b6562cc81444');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33190, 'C2SD-T30', '2026-11-01T22:35:45Z', 'working', '6e82fb1a-2202-410b-93b9-327c9f6ad258', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33191, 'C2WS-T16', '2026-11-01T22:36:18Z', 'working', '808ce091-f94c-467d-a7d1-b6562cc81444', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33192, 'IDEA-T46', '2026-11-01T22:38:18Z', 'status', 'open', 'closed');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -58603,9 +58607,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('USOD-T9', 'approved', 0, '2026-10-22T23:02:27Z', NULL);
 
 -- ticket_work
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2SD-T30', NULL, 0, NULL, '6e82fb1a-2202-410b-93b9-327c9f6ad258', '2026-11-01T22:34:02Z', '2026-11-01T22:34:02Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2WS-T15', NULL, 0, NULL, '808ce091-f94c-467d-a7d1-b6562cc81444', '2026-11-01T22:34:03Z', '2026-11-01T22:34:03Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2WS-T16', NULL, 0, 'ryandebraal@mindattic.com', '808ce091-f94c-467d-a7d1-b6562cc81444', '2026-11-01T22:27:39Z', '2026-11-01T22:27:39Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2WS-T8', NULL, 0, 'ryandebraal@mindattic.com', '808ce091-f94c-467d-a7d1-b6562cc81444', '2026-11-01T22:27:41Z', '2026-11-01T22:27:41Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2WS-T9', NULL, 0, NULL, '808ce091-f94c-467d-a7d1-b6562cc81444', '2026-11-01T22:34:03Z', '2026-11-01T22:34:03Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
