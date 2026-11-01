@@ -4667,6 +4667,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IDEA-T45', 'IdeaCms', 45, '2026-11-01', 'fix', 'closed', 'Fails on main: IdeaCms.Tests.DeploymentPackagingTests.VendoredPackagesMatchTheLocalFeedsSameVersion — Vendored packages differ from C:\LocalNuGet; copy the current .nupkg into lib/local-packages/: MindAttic.Vault.7.0.0.nupkg Assert.That(stale, Is.Empty) Expected: <empty> But was: < "MindAttic.Vault.7.0.0.nupkg" > (landed on main since the last green run: tickets IDEA-T44 in da53904 Rename MindAttic.Ideas to IdeaCms: repo, folder, namespaces, projects, docs and GitHub, decoupled from the MindAttic ecosystem branding (IDEA-T44))', 'main@da53904', 44, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IDEA-T46', 'IdeaCms', 46, '2026-11-01', 'chore', 'closed', 'Admin section bug hunt and cleanup pass', '—', 45, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IDEA-T47', 'IdeaCms', 47, '2026-11-01', 'feature', 'open', 'Add first-visit onboarding tour popups across the admin section using a JS tour library', '—', 46, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IDEA-T48', 'IdeaCms', 48, '2026-11-01', 'fix', 'closed', 'Monaco editor: Insert from component palette can race a just-typed keystroke and clobber it', '—', 47, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T1', 'IdiotProof', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| IP-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T2', 'IdiotProof', 2, '2026-10-12', 'chore', 'closed', '/commit now logs every commit as a ticket in this table', '`.claude/skills/commit/SKILL.md`', 1, '| IP-T2 | 2026-10-12 | chore | closed | /commit now logs every commit as a ticket in this table | `.claude/skills/commit/SKILL.md` |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T3', 'IdiotProof', 3, '2026-10-13', 'chore', 'closed', 'Standard deploy convention: root deploy.ps1 (change-gated, -Force/-Launch) writes C:\Apps\IdiotProof\deploy.bat; removed deploy-idiotproof.bat, publish-all.bat, launch.bat and Start* leftovers', 'deploy.ps1', 2, '| IP-T3 | 2026-10-13 | chore | closed | Standard deploy convention: root deploy.ps1 (change-gated, -Force/-Launch) writes C:\Apps\IdiotProof\deploy.bat; removed deploy-idiotproof.bat, publish-all.bat, launch.bat and Start* leftovers | deploy.ps1 |');
@@ -7776,8 +7777,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T5', 'Mods.Cyberpunk2077.WebSlinger', 5, '2026-11-01', 'feature', 'closed', 'Formalize traversal state machine (NONE/CLIMBING/WALLRUNNING/SLINGING)', '962a87358d466ca3cf918944329753fd42ef93b2', 4, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T6', 'Mods.Cyberpunk2077.WebSlinger', 6, '2026-11-01', 'feature', 'closed', 'Web-sling (grapple) base: aim, fire, swing-arc physics, release', '8586367', 5, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T7', 'Mods.Cyberpunk2077.WebSlinger', 7, '2026-11-01', 'feature', 'closed', 'Wall-impact angle check during swing: latch vs. wall-run transition', '8c107f2240cd9067c7add4fe6a7edcf1a54cb63e', 6, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T8', 'Mods.Cyberpunk2077.WebSlinger', 8, '2026-11-01', 'feature', 'open', 'Wall-latch (Mantis Blade climb) + wall-climb movement', 'C2WS-US-T5', 7, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T9', 'Mods.Cyberpunk2077.WebSlinger', 9, '2026-11-01', 'feature', 'open', 'Wall-run physics + sticky force + camera tilt', 'C2WS-US-T6', 8, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T8', 'Mods.Cyberpunk2077.WebSlinger', 8, '2026-11-01', 'feature', 'closed', 'Wall-latch (Mantis Blade climb) + wall-climb movement', '4a2cefc9e5bedf3ba7029d8028a13d9fd824d4f3', 7, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T9', 'Mods.Cyberpunk2077.WebSlinger', 9, '2026-11-01', 'feature', 'closed', 'Wall-run physics + sticky force + camera tilt', 'fe4286d', 8, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T10', 'Mods.Cyberpunk2077.WebSlinger', 10, '2026-11-01', 'feature', 'open', 'Wall-run duration/stamina drop-off', 'C2WS-US-T7', 9, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T11', 'Mods.Cyberpunk2077.WebSlinger', 11, '2026-11-01', 'feature', 'open', 'Wall-jump (from climb or wall-run), chainable between facing walls', 'C2WS-US-T8', 10, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T12', 'Mods.Cyberpunk2077.WebSlinger', 12, '2026-11-01', 'feature', 'open', 'End-to-end re-sling loop: swing -> run -> jump -> swing with no ground touch', 'C2WS-US-T9', 11, NULL);
@@ -7786,6 +7787,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T15', 'Mods.Cyberpunk2077.WebSlinger', 15, '2026-11-01', 'chore', 'open', 'Bug hunt pass: run /bughunt across the repo and file fix tickets for any confirmed bugs', '—', 14, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T16', 'Mods.Cyberpunk2077.WebSlinger', 16, '2026-11-01', 'chore', 'closed', 'Make the mod Vortex-deployable: correct relative folder layout, a packaging script producing an install-ready zip, and Vortex install docs', 'bdd89dff24049fc5b295e3645666fd8b6d9e7373', 15, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T17', 'Mods.Cyberpunk2077.WebSlinger', 17, '2026-11-01', 'feature', 'closed', 'In-game text message from ''Peter Parker'' explaining the WebSlinger mod, in friendly-neighborhood-Spider-Man voice with verified quotes', '7131285bb032be6e35b2a9fcec8ec652e49ec367', 16, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T18', 'Mods.Cyberpunk2077.WebSlinger', 18, '2026-11-01', 'fix', 'open', 'README Status section still says ''no gameplay is implemented yet'' after wall-climb/wall-run/web-sling landed', '—', 17, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.CTD-T1', 'Mods.GTFO.CrashTestDummies', 1, '2026-10-16', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.CTD-T2', 'Mods.GTFO.CrashTestDummies', 2, '2026-10-16', 'chore', 'closed', 'install.ps1 adds this repo''s 15 .prose/commands stubs, AGENTS.md pointer for the shared global commands, so any LLM client finds them', 'mindattic-agent-standard/install.ps1 run 2026-10-16', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.CTD-T3', 'Mods.GTFO.CrashTestDummies', 3, '2026-10-16', 'chore', 'closed', 'Bug hunt: run an exhaustive /bughunt over the whole repo and fix every real bug found (each fix under its own fix ticket), then hunt again; close this only when a full pass finds nothing', '47588d8', 2, NULL);
@@ -56125,6 +56127,50 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33189, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33190, 'C2SD-T30', '2026-11-01T22:35:45Z', 'working', '6e82fb1a-2202-410b-93b9-327c9f6ad258', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33191, 'C2WS-T16', '2026-11-01T22:36:18Z', 'working', '808ce091-f94c-467d-a7d1-b6562cc81444', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33192, 'IDEA-T46', '2026-11-01T22:38:18Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33193, 'IDEA-T48', '2026-11-01T22:50:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33194, 'IDEA-T48', '2026-11-01T22:50:55Z', 'working', NULL, '9a951750-8de4-4e42-91ff-feafc65899d8');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33195, 'IDEA-T48', '2026-11-01T22:52:26Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33196, 'IDEA-T48', '2026-11-01T22:52:40Z', 'working', '9a951750-8de4-4e42-91ff-feafc65899d8', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33197, 'C2WS-T8', '2026-11-01T22:53:18Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33198, 'C2WS-T8', '2026-11-01T22:53:18Z', 'ref', 'C2WS-US-T5', '4a2cefc9e5bedf3ba7029d8028a13d9fd824d4f3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33199, 'C2WS-T8', '2026-11-01T22:53:31Z', 'working', 'ryandebraal@mindattic.com (808ce091-f94c-467d-a7d1-b6562cc81444)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33200, 'C2WS-T9', '2026-11-01T22:53:58Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33201, 'C2WS-T9', '2026-11-01T22:53:58Z', 'ref', 'C2WS-US-T6', 'fe4286d');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33202, 'C2WS-T11', '2026-11-01T22:54:18Z', 'working', NULL, 'ryandebraal@mindattic.com (808ce091-f94c-467d-a7d1-b6562cc81444)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33203, 'C2WS-T9', '2026-11-01T22:54:19Z', 'working', '808ce091-f94c-467d-a7d1-b6562cc81444', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33204, 'C2WS-T10', '2026-11-01T22:54:19Z', 'working', NULL, 'ryandebraal@mindattic.com (808ce091-f94c-467d-a7d1-b6562cc81444)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33205, 'C2WS-T18', '2026-11-01T22:55:12Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33206, 'C2WS-T18', '2026-11-01T22:55:20Z', 'working', NULL, '808ce091-f94c-467d-a7d1-b6562cc81444');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33207, 'C2WS-T18', '2026-11-01T22:55:26Z', 'description', NULL, '## Symptom
+
+`README.md`''s "Status" section (lines 7-11) reads:
+
+> Early scaffold. No gameplay is implemented yet — this repo currently holds the project shell and
+> design notes. See [`docs/DESIGN.md`](docs/DESIGN.md) for the planned mechanics and
+> [`docs/USER_STORIES.md`](docs/USER_STORIES.md) for the ticket log.
+
+This is false as of the commits already on `main`: wall-detection raycast (C2WS-T4), the traversal
+state machine (C2WS-T5), the web-sling base + wall-impact hand-off (C2WS-T6/T7), wall-climb
+(C2WS-T8), wall-run (C2WS-T9), the Peter Parker intro text (C2WS-T17), and Vortex packaging
+(C2WS-T16) have all landed. The rest of the same README (Requirements/Install/Building sections,
+added by C2WS-T16) already correctly describes a working, installable mod, so the file
+contradicts itself: the "Status" section at the top says nothing works, while the "Install"
+section below walks a player through installing and enabling real gameplay.
+
+## Cause
+
+The "Status", "Planned mechanics" and "Target platform" sections date from the original
+project-scaffold commit and were never revisited by any of the later feature tickets (C2WS-T4
+through C2WS-T9, C2WS-T17), which updated `docs/DESIGN.md` but not `README.md`.
+
+## Test
+
+Manual/doc check: after the fix, `README.md`''s "Status" section accurately reflects what is
+implemented and landed on `main` (raycast utility, state machine, web-sling, wall-impact hand-off,
+wall-climb, wall-run, Peter Parker text, Vortex packaging) versus what is still open (wall-jump,
+C2WS-T11), and no longer claims "no gameplay is implemented yet". The "Planned mechanics" section
+either reflects current status per mechanic or is removed/merged now that `docs/DESIGN.md` covers
+implementation detail.');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -58607,9 +58653,10 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('USOD-T9', 'approved', 0, '2026-10-22T23:02:27Z', NULL);
 
 -- ticket_work
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2WS-T10', NULL, 0, 'ryandebraal@mindattic.com', '808ce091-f94c-467d-a7d1-b6562cc81444', '2026-11-01T22:54:19Z', '2026-11-01T22:54:19Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2WS-T11', NULL, 0, 'ryandebraal@mindattic.com', '808ce091-f94c-467d-a7d1-b6562cc81444', '2026-11-01T22:54:18Z', '2026-11-01T22:54:18Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2WS-T15', NULL, 0, NULL, '808ce091-f94c-467d-a7d1-b6562cc81444', '2026-11-01T22:34:03Z', '2026-11-01T22:34:03Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2WS-T8', NULL, 0, 'ryandebraal@mindattic.com', '808ce091-f94c-467d-a7d1-b6562cc81444', '2026-11-01T22:27:41Z', '2026-11-01T22:27:41Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2WS-T9', NULL, 0, NULL, '808ce091-f94c-467d-a7d1-b6562cc81444', '2026-11-01T22:34:03Z', '2026-11-01T22:34:03Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2WS-T18', NULL, 0, NULL, '808ce091-f94c-467d-a7d1-b6562cc81444', '2026-11-01T22:55:20Z', '2026-11-01T22:55:20Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
@@ -59346,6 +59393,7 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (394, 'C2
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (395, 'C2WS-T9', 'ryand', '2026-11-01T21:55:32Z', 'Design change (2026-11-01, direct user request): added a manual, player-initiated wall-run trigger (press jump while looking/moving toward a wall to either side), Titanfall-style, as a second entry path alongside the automatic swing-impact routing from C2WS-T7. No cyberware equip-check gates this -- it''s a permanent player ability, matching the same change made to C2WS-T8''s wall-latch.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (396, 'IDEA-T44', 'ryand', '2026-11-01T22:01:29Z', 'Follow-up fix: MindAttic.Ideas.Abstractions must stay under its original assembly name and namespace — it''s the frozen binary identity every compiled .idea package (including the vendored external Page.Frontpage) links against by exact name. Renaming it broke the app at startup (FileNotFoundException then TypeLoadException). Reverted the Abstractions project''s folder/csproj/AssemblyName and its namespace across all 206 consuming files back to MindAttic.Ideas.Abstractions; repacked all 53 library citizens against it; confirmed the app now boots end-to-end and writes its Vault settings manifest correctly as IdeaCms.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (397, 'IDEA-T44', 'ryand', '2026-11-01T22:08:45Z', 'Follow-up: the IdeaCmsBrochure component''s in-app brochure/demo page still showed the two-tone ''MindAttic.Ideas'' wordmark (split across 3 styled spans, missed by the text-pattern rename) and two hardcoded asset URLs still pointed at the pre-rename ''ideasbrochure'' key, which would 404 the CSS/JS. Redesigned the hero wordmark as a two-tone ''Idea''+''Cms'' split, renamed the .ibr-hero-ideas CSS class to .ibr-hero-cms, dropped the now-unused dot separator, fixed both asset paths to ''ideacmsbrochure'', and reworded the demo blurb.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (398, 'C2WS-T9', 'ryand', '2026-11-01T22:51:32Z', 'Found during an aborted bug-hunt pass (2026-11-01), before this ticket''s code landed: InitiateWallRun clamps r.speed = max(actualSpeed, WebSlinger.wallrun.MinWallRunSpeed) where MinWallRunSpeed = 15.0, but CheckWallCollisionDuringSwing (C2WS-T7) only requires currentSpeed >= WebSlinger.impact.MinimumWallRunSpeed (8.0) to route into a wall-run. A swing-triggered wall-run entering between 8-15 m/s gets force-boosted up to 15 m/s -- a discontinuous, unintended velocity injection that contradicts the mod''s momentum-conservation design (release/carry velocity is never zeroed or boosted elsewhere). Whoever lands this ticket should fix this before closing it: either lower MinWallRunSpeed to match the 8.0 m/s entry threshold, or only clamp up when the wall-run was entered via the manual Titanfall-style trigger (where there''s no prior swing speed to preserve).');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
@@ -60226,6 +60274,36 @@ Suggested draft (implementer may tighten for length/tone, but keep both verified
 - [ ] If CET exposes no suitable API for injecting a real in-game text message, document that gap in `docs/DESIGN.md` (which native/RED4ext API would be needed) and fall back to a CET ImGui overlay styled like a phone text bubble (sender name ''Peter Parker'', the message body above) as an interim -- same pattern C2WS-T4 used when it spiked CET''s raycast support.
 - [ ] Triggered manually via a new debug-panel button (''Send Peter Parker intro text''), not automatically on every load, so it doesn''t spam the player on every session.
 - [ ] Verified in-game: the message (or its overlay fallback) is fully readable, correctly attributed to ''Peter Parker'', and both verified quotes appear unaltered.', '2026-11-01T21:51:17Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T18', '## Symptom
+
+`README.md`''s "Status" section (lines 7-11) reads:
+
+> Early scaffold. No gameplay is implemented yet — this repo currently holds the project shell and
+> design notes. See [`docs/DESIGN.md`](docs/DESIGN.md) for the planned mechanics and
+> [`docs/USER_STORIES.md`](docs/USER_STORIES.md) for the ticket log.
+
+This is false as of the commits already on `main`: wall-detection raycast (C2WS-T4), the traversal
+state machine (C2WS-T5), the web-sling base + wall-impact hand-off (C2WS-T6/T7), wall-climb
+(C2WS-T8), wall-run (C2WS-T9), the Peter Parker intro text (C2WS-T17), and Vortex packaging
+(C2WS-T16) have all landed. The rest of the same README (Requirements/Install/Building sections,
+added by C2WS-T16) already correctly describes a working, installable mod, so the file
+contradicts itself: the "Status" section at the top says nothing works, while the "Install"
+section below walks a player through installing and enabling real gameplay.
+
+## Cause
+
+The "Status", "Planned mechanics" and "Target platform" sections date from the original
+project-scaffold commit and were never revisited by any of the later feature tickets (C2WS-T4
+through C2WS-T9, C2WS-T17), which updated `docs/DESIGN.md` but not `README.md`.
+
+## Test
+
+Manual/doc check: after the fix, `README.md`''s "Status" section accurately reflects what is
+implemented and landed on `main` (raycast utility, state machine, web-sling, wall-impact hand-off,
+wall-climb, wall-run, Peter Parker text, Vortex packaging) versus what is still open (wall-jump,
+C2WS-T11), and no longer claims "no gameplay is implemented yet". The "Planned mechanics" section
+either reflects current status per mechanic or is removed/merged now that `docs/DESIGN.md` covers
+implementation detail.', '2026-11-01T22:55:26Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T4', '## Story
 
 As V, I want a reliable way to detect nearby wall surfaces and their normals, so that every other
