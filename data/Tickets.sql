@@ -8981,6 +8981,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T842', 'Prose', 842, '2026-10-31', 'docs', 'closed', 'Update USER_STORIES.md', '—', 841, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T843', 'Prose', 843, '2026-10-31', 'docs', 'closed', 'Update USER_STORIES.md', '—', 842, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T844', 'Prose', 844, '2026-10-31', 'docs', 'closed', 'Update USER_STORIES.md', '—', 843, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T845', 'Prose', 845, '2026-10-31', 'docs', 'closed', 'Update USER_STORIES.md', '—', 844, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -53206,6 +53207,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31361, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31362, 'U.OVW-T28', '2026-11-01T04:44:24Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31363, 'U.OVW-T28', '2026-11-01T04:44:24Z', 'ref', '—', 'c62b5a1');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31364, 'M.ORCH-T1356', '2026-11-01T04:44:28Z', 'created', NULL, 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (31365, 'PRS-T845', '2026-11-01T04:44:38Z', 'created', NULL, 'closed');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
