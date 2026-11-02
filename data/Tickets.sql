@@ -57488,6 +57488,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33758, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33759, 'M.ORCH-T1405', '2026-11-02T16:20:34Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33760, 'M.ORCH-T1405', '2026-11-02T16:20:55Z', 'working', '2f60383b-ba29-4384-a609-f8ae2d02937b', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33761, 'M.ORCH-T1403', '2026-11-02T16:26:37Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33762, 'C2WS-T27', '2026-11-02T16:58:24Z', 'working', 'ryandebraal@mindattic.com (808ce091-f94c-467d-a7d1-b6562cc81444)', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -59993,7 +59994,6 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('USOD-T9', 'approved', 0, '2026-10-22T23:02:27Z', NULL);
 
 -- ticket_work
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2WS-T27', NULL, 0, 'ryandebraal@mindattic.com', '808ce091-f94c-467d-a7d1-b6562cc81444', '2026-11-02T04:56:56Z', '2026-11-02T04:56:56Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IDEA-T42', NULL, 0, 'ryandebraal@gmail.com', 'ed92e10c-6499-4acb-8226-42ef4abdeb1b', '2026-11-02T14:27:03Z', '2026-11-02T14:27:03Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.COMP-T117', NULL, 0, 'ryandebraal@gmail.com', 'ed92e10c-6499-4acb-8226-42ef4abdeb1b', '2026-11-02T14:26:59Z', '2026-11-02T14:26:59Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.HELP-T16', NULL, 0, 'ryandebraal@gmail.com', 'ed92e10c-6499-4acb-8226-42ef4abdeb1b', '2026-11-02T14:27:01Z', '2026-11-02T14:27:01Z');
