@@ -57778,6 +57778,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34024, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34025, 'GG-T213', '2026-11-02T19:02:10Z', 'working', 'ryandebraal@mindattic.com (75baad4a-64c9-4da9-b1f8-72f0ae88d93a)', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34026, 'GG-T189', '2026-11-02T19:14:11Z', 'working', '75baad4a-64c9-4da9-b1f8-72f0ae88d93a', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34027, 'GG-T63', '2026-11-02T19:14:12Z', 'working', '75baad4a-64c9-4da9-b1f8-72f0ae88d93a', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34028, 'GG-T61', '2026-11-02T19:31:05Z', 'working', '75baad4a-64c9-4da9-b1f8-72f0ae88d93a', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -60286,7 +60287,6 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T51', NULL, 0, 'ryandebraal@mindattic.com', '75baad4a-64c9-4da9-b1f8-72f0ae88d93a', '2026-11-02T18:33:57Z', '2026-11-02T18:33:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T54', NULL, 0, 'ryandebraal@mindattic.com', '75baad4a-64c9-4da9-b1f8-72f0ae88d93a', '2026-11-02T18:31:48Z', '2026-11-02T18:31:48Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T61', NULL, 0, NULL, '75baad4a-64c9-4da9-b1f8-72f0ae88d93a', '2026-11-02T18:43:45Z', '2026-11-02T18:43:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IDEA-T42', NULL, 0, 'ryandebraal@gmail.com', 'ed92e10c-6499-4acb-8226-42ef4abdeb1b', '2026-11-02T14:27:03Z', '2026-11-02T14:27:03Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.COMP-T117', NULL, 0, 'ryandebraal@gmail.com', 'ed92e10c-6499-4acb-8226-42ef4abdeb1b', '2026-11-02T14:26:59Z', '2026-11-02T14:26:59Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.HELP-T16', NULL, 0, 'ryandebraal@gmail.com', 'ed92e10c-6499-4acb-8226-42ef4abdeb1b', '2026-11-02T14:27:01Z', '2026-11-02T14:27:01Z');
