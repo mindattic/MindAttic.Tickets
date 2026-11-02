@@ -57471,6 +57471,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33742, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33743, 'M.ORCH-T1404', '2026-11-02T15:54:13Z', 'working', NULL, '2f60383b-ba29-4384-a609-f8ae2d02937b');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33744, 'SET-T22', '2026-11-02T15:59:35Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33745, 'SET-T22', '2026-11-02T15:59:48Z', 'working', NULL, '425ad1d0-b9a3-4617-a231-746300c9a54b');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33746, 'M.ORCH-T1403', '2026-11-02T16:07:27Z', 'working', '2f60383b-ba29-4384-a609-f8ae2d02937b', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33747, 'M.ORCH-T1404', '2026-11-02T16:07:27Z', 'working', '2f60383b-ba29-4384-a609-f8ae2d02937b', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -59983,8 +59985,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.HELP-T17', NULL, 0, 'ryandebraal@gmail.com', 'ed92e10c-6499-4acb-8226-42ef4abdeb1b', '2026-11-02T14:27:02Z', '2026-11-02T14:27:02Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1310', NULL, 0, 'ryandebraal@gmail.com', 'ed92e10c-6499-4acb-8226-42ef4abdeb1b', '2026-11-02T14:27:03Z', '2026-11-02T14:27:03Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1403', NULL, 0, NULL, '2f60383b-ba29-4384-a609-f8ae2d02937b', '2026-11-02T15:52:40Z', '2026-11-02T15:52:40Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1404', NULL, 0, NULL, '2f60383b-ba29-4384-a609-f8ae2d02937b', '2026-11-02T15:54:13Z', '2026-11-02T15:54:13Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T768', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
@@ -60831,6 +60831,20 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (413, 'M.
 ![tab vs status screenshot](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/M.ORCH-T1404/2026-11-02-image-1.png)
 
 Both figures are off and in the wrong direction (tab reads higher than the live meter), not just a rounding/stale-by-a-few-percent thing. Likely the tab strip (AccountRoster row / TabTrailing binding) is reading a stale row that never refreshed, or is reading the wrong account''s/wrong window''s reading, or a fallback estimate (AccountPacer/Projection) is being shown instead of Claude''s own reported percent. Given this and the ongoing /bughunt ask: check this generically across every signed-in person (Amy/Erin/Honey/Jordan/Ryan/Ultra), not just Ultra, and across both Team-seat and solo Max/Ultra accounts, since the root cause may affect any of them.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (414, 'M.ORCH-T1404', 'ryand', '2026-11-02T16:06:41Z', 'bughunt finding (scope: AccountRoster/AccountPacer/AccountSwitch/tab-strip/dashboard ViewModels, org/subscription-agnostic handling) — not fixed here since this file is mid-edit by the agent working this ticket:
+
+AccountSwitch.cs:53-59, `Seat(AccountRow row)`:
+```
+public static string? Seat(AccountRow row) => row.Plan switch
+{
+    null => null,
+    var p when !p.StartsWith("Team") && !p.StartsWith("Enterprise") => null,
+    var p when p.Contains("Max") => "premium",
+    _ => "standard",
+};
+```
+Classifies a Team/Enterprise seat as ''premium'' only if its Plan string contains the literal substring ''Max''. Since AccountRoster.PlanOf''s Oct 2026 rename (''Max 20x'' -> ''Ultra'', ''Max 5x'' stays ''Max''), a Team seat on the Ultra-equivalent (20x) tier now has Plan == ''Team · Ultra'', which does NOT contain ''Max'' -> Seat() wrongly returns ''standard'' for it (the opposite of premium) instead of ''premium''. Affects AccountSwitch.MenuLine/SeatOrPlan, i.e. the dashboard account menu''s seat label for anyone on a Team org whose tier is Ultra-equivalent. Fix: check for both ''Max'' and ''Ultra'' (or better, derive premium/standard from whether a tier was recognized at all, e.g. tier is ''Max'' or ''Ultra'', rather than substring-matching ''Max'' alone) once this file is free.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (415, 'SET-T22', 'ryand', '2026-11-02T16:10:31Z', 'Ryan''s follow-up in the same request: when done, publish the .md and the GitHub Page, and commit a docx and pdf version. Plan: export via scripts/export.ps1, copy pdf+docx to exports/ and md to docs/synthetic-exchange-theory.md, adopt the Agency docs-site pipeline (this also completes SET-T18 / SET-T21), commit by path, push, confirm the docs run is green.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
