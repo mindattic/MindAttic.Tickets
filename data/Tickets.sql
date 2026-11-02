@@ -7248,6 +7248,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1392', 'MindAttic.Orchestrator', 1392, '2026-11-01', 'fix', 'open', 'Restarting Launcher from inside Orchestrator throws an exception', '—', 1391, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1393', 'MindAttic.Orchestrator', 1393, '2026-11-01', 'fix', 'closed', 'Tab status icons don''t match actual state: most User/CLI tabs show gray ''ZZ'' instead of green spinner when active', '4c341a54', 1392, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1394', 'MindAttic.Orchestrator', 1394, '2026-11-01', 'fix', 'closed', 'Per-member usage cutoffs didn''t move the dashboard''s warn line, so a raised weekly cutoff still warned (and unpaced, held) at the org-wide 80% line', '943e6991', 1393, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1395', 'MindAttic.Orchestrator', 1395, '2026-11-02', 'feature', 'open', '5hr/Weekly limit boxes become toggle buttons that pick which chart the utilization panel draws, 5hr default', '—', 1394, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T1', 'MindAttic.Psst', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.PSST-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T2', 'MindAttic.Psst', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for ContactBook (Contacts/Contact.cs): Find matches name case-insensitively before phone, falls back to 10-digit phone match across formats (+1, dashes, parens), returns null for blank or unmatched input; WithAdded rejects blank name/phone and case-insensitive duplicate names and leaves the original book unchanged; WithoutContact removes only the first case-insensitive match and returns null when absent - this is how psst sms resolves recipients, so a wrong match texts the wrong person', '865fde2', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T3', 'MindAttic.Psst', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched', '—', 2, '| M.PSST-T3 | 2026-10-14 | chore | open | NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched | — |');
@@ -57289,6 +57290,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33625, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33626, 'PRS-T866', '2026-11-02T05:05:45Z', 'working', '1a352d1a-b048-4709-ab7c-c712548e6779', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33627, 'PRS-T867', '2026-11-02T13:11:23Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33628, 'PRS-T867', '2026-11-02T13:12:28Z', 'working', NULL, '784263de-12c1-4daa-921e-8bea03360086');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33629, 'M.ORCH-T1395', '2026-11-02T13:32:48Z', 'created', NULL, 'open');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -60548,6 +60550,28 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (401, 'C2
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (402, 'C2WS-T27', 'ryand', '2026-11-02T02:36:53Z', 'Landed 8c7fc71 on main: static review of the jump-dispatch chain found no logic bug (the suspected non-unit diagonal-probe vectors are a non-issue, since ExecuteSmartRaycast normalizes direction internally; the wall-run/wall-latch facing-angle split checks out for a flat head-on wall). Added print diagnostics at every decision point (observeWallRunJump, TryManualWallRun, TryManualWallLatch, updateWallRun''s NONE dispatch) and documented findings in docs/DESIGN.md. Leaving this open per the ticket''s own instructions: next step is a live repro with the CET console open to read off where the press actually stops (or confirm WebSlinger.enabled was ticked on).');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (403, 'C2WS-T31', 'ryand', '2026-11-02T04:46:36Z', 'Review done against a sourced Spider-Man 2 spec (research agent). Approved alignment tickets: T32 swing feel (fixed-length pendulum, keep speed through bottom), T33 ground skim, T34 auto-anchor fallback (Ryan chose), T35 timed swing boost (Ryan chose to bring back), T36 speed-scaled FOV. Chain T32 -> T33 -> T35 (same physics code). Backlog, not approved (Ryan: keep in mind for the future): T37 web zip, T38 dive, T39 web wings, T40 corner whip. Key SM2 sources: cbr.com how-web-swinging-works, popsci swinging physics, gamerevolution swing steering assist, jbsiraudin.github.io spiderman-dolly.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (404, 'C2WS-T27', 'ryand', '2026-11-02T04:58:27Z', 'Second pass (no code change): the CET Observe/OnAction hook matches CET''s documented signature; the only gate found is WebSlinger.enabled defaulting off, but Ryan''s swinging worked in the same session and runs behind the same gate, so Enabled was on. Root cause still unknown; blocked on a live repro: tick Enabled, open CET console, jump head-on at a wall, paste the [WebSlinger] lines (jump observed / jump dispatch / wall-latch: lines from 8c7fc71 pinpoint the failing step). Held by Ryan''s session so agents aren''t re-dispatched without the log.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (405, 'M.ORCH-T1395', 'ryand', '2026-11-02T13:33:11Z', 'Reference screenshot from the user showing the current 5hr/Weekly boxes:
+
+![5hr/Weekly limit boxes](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/M.ORCH-T1395/2026-11-02-image-1.png)
+
+**Request (verbatim intent):** the 5hr/Weekly limit boxes (`MainViewModel.Phases.cs`, `FiveHourLimitText`/`WeeklyLimitText`,
+rendered in `MainWindow.xaml` around the `UtilizationChart`) become clickable toggle buttons. Clicking one redraws the
+chart below as that window''s series: 5hr selected draws today''s `UtilizationChart` (unchanged behavior); Weekly selected
+draws a weekly series instead (doesn''t use a 5-hour clock, so it needs its own data, not a relabeled 5hr chart). Default
+selection on load is 5hr, matching the screenshot.
+
+**Scope:**
+- Add a selected-toggle state to the view model (defaulting to 5hr).
+- Turn the two `Border` boxes into toggle buttons (keep their existing text/brush/progress-bar look) that set the toggle.
+- Build a weekly-equivalent of `Budget/Utilization.cs` + `UtilizationSeries` (there isn''t one yet) from the existing
+  weekly data already read per login (`WeekUsed`, `WeekReset`, `UsageSample.WeekPercent`/`WeekResetUtc`, `WeeklyRatio`,
+  `WeeklyBurn`) — a week-window line (0 at week start through readings to now), no pace-curve exponent since there''s no
+  equivalent "front-loaded" weekly pace concept confirmed yet (ask/keep simple: flat target line at the weekly stop %).
+  The 5-hour-limit wall-clock pace stuff does not apply; the x-axis spans the week, not 5 hours.
+- Swap the `UtilizationChart`''s bound `Data` and the `MaSectionLabel`/caption text between the two series based on the
+  toggle, reusing `MaLineChart`/`UtilizationChartData`-style converter infrastructure (new `WeeklyUtilizationChartData`
+  converter, or extend the existing one) rather than a second hardcoded chart control.
+- Existing tests to check/extend: `UtilizationChartLayoutTests.cs`, `UtilizationSeriesTests.cs`, `DashboardViewModelTests.cs`.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
@@ -67552,6 +67576,13 @@ Cause: `UsageCutoffs.Apply` already moves a member''s own weekly/5-hour *stop* l
 Fix: `UsageCutoffs.Apply` now also derives `WeeklyWarnPercent`/`FiveHourWarnPercent` per member, keeping the same point-gap to that member''s own cutoff that the org-wide default keeps to its own (90-80=10 weekly, 98-80=18 five-hour). `BudgetStatus.Level` checks each dimension against its own warn line instead of one shared `WarnPercent`. Members without an override see identical behavior to before (gap collapses to the existing flat 80%).
 
 Test: UsageCutoffTests - a lowered cutoff lowers its own warn line (Erin: weekly 80 -> warn 70, 5h unchanged -> warn 80); a raised cutoff raises its own warn line (Waffle: weekly 98 -> warn 88) and Level is Ok at 93% used against a 98% cutoff, where it was previously Warn.', '2026-11-01T22:19:13Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1395', '## Story
+
+<!-- As a ..., I want ... so that ... -->
+
+## Acceptance
+
+<!-- A checklist of what must be true for it to be done. -->', '2026-11-02T13:32:48Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T833', 'Symptom: Inside the Orchestrator''s embedded Terminals panel (TerminalPanesHost), when a CLI running
 in a pane shows an interactive, arrow-key-driven menu (e.g. a selection list or permission prompt),
 the Up/Down/Left/Right keys don''t reach the CLI. It looks like the WPF app is intercepting/consuming
