@@ -7776,6 +7776,9 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T36', 'Mods.Cyberpunk2077.ShootDodge', 36, '2026-11-01', 'fix', 'closed', 'Bullet Time toggle defaults to Numpad Enter (V summons the vehicle); confirm it''s unused, set it as the CET default if possible; Max Payne''s texts teach the CET steps (open overlay, tick Enabled, Bindings tab, rebind); update docs', 'fbebd54', 35, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T37', 'Mods.Cyberpunk2077.ShootDodge', 37, '2026-11-01', 'feature', 'closed', 'Bullet Time mode defaults to Numpad Enter via an Input Loader input action (r6/input XML), with the CET binding kept as fallback/rebind', '593bf982863edc03934743cafec26a2a1bfbddff', 36, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T38', 'Mods.Cyberpunk2077.ShootDodge', 38, '2026-11-01', 'feature', 'closed', 'In Bullet Time mode, Space is the Shootdodge (no aim needed, held direction or forward) instead of a regular jump', 'f12aa42', 37, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T39', 'Mods.Cyberpunk2077.ShootDodge', 39, '2026-11-01', 'fix', 'closed', 'Bullet Time default key: move off IK_Enter (also main Enter and the on-foot dialogue confirm) to a key no vanilla context binds, verified from the user''s inputUserMappings.xml; update docs and Max''s text', '26224f4', 38, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T40', 'Mods.Cyberpunk2077.ShootDodge', 40, '2026-11-01', 'fix', 'closed', 'Bullet Time default key: user has no Mouse 4; switch the default to / (IK_Slash), verified unbound in vanilla inputUserMappings.xml; update docs and Max''s text', '57d064e', 39, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T41', 'Mods.Cyberpunk2077.ShootDodge', 41, '2026-11-01', 'chore', 'open', 'Release v2.0.0: bump version, changelog, build dist/ShootDodge-2.0.0.zip, redeploy to the user''s Vortex', '—', 40, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T1', 'Mods.Cyberpunk2077.WebSlinger', 1, '2026-11-01', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T2', 'Mods.Cyberpunk2077.WebSlinger', 2, '2026-11-01', 'feature', 'closed', 'Scaffold new repo: Cyberpunk 2077 mod for Mantis Blade wall-climb, wall-run/jump, and Spider-Man 2 style webslinging', '7aad643ac7c88e810331b43e6e85a40b41323aaf', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T3', 'Mods.Cyberpunk2077.WebSlinger', 3, '2026-11-01', 'chore', 'closed', 'Rename repo to Mods.Cyberpunk2077.WebSlinger for mod organization (GitHub + folder + refs)', '36d0a7610a8d43186a58b5ea925f2190e04bf613', 2, NULL);
@@ -56246,6 +56249,19 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33271, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33272, 'C2SD-T37', '2026-11-01T23:56:25Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33273, 'C2SD-T37', '2026-11-01T23:56:25Z', 'ref', '—', '593bf982863edc03934743cafec26a2a1bfbddff');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33274, 'C2SD-T37', '2026-11-01T23:56:29Z', 'working', 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33275, 'C2SD-T39', '2026-11-01T23:58:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33276, 'C2SD-T39', '2026-11-01T23:58:24Z', 'working', NULL, 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33277, 'C2SD-T39', '2026-11-01T23:59:51Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33278, 'C2SD-T39', '2026-11-01T23:59:51Z', 'ref', '—', '26224f4');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33279, 'C2SD-T39', '2026-11-02T00:00:17Z', 'working', 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33280, 'C2SD-T40', '2026-11-02T00:01:07Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33281, 'C2SD-T40', '2026-11-02T00:01:29Z', 'working', NULL, '6e82fb1a-2202-410b-93b9-327c9f6ad258');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33282, 'C2SD-T40', '2026-11-02T00:02:34Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33283, 'C2SD-T40', '2026-11-02T00:02:34Z', 'ref', '—', '57d064e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33284, 'C2SD-T40', '2026-11-02T00:02:46Z', 'working', '6e82fb1a-2202-410b-93b9-327c9f6ad258', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33285, 'C2SD-T41', '2026-11-02T00:04:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33286, 'C2SD-T41', '2026-11-02T00:04:21Z', 'working', NULL, '6e82fb1a-2202-410b-93b9-327c9f6ad258');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33287, 'C2SD-T41', '2026-11-02T00:05:24Z', 'working', '6e82fb1a-2202-410b-93b9-327c9f6ad258', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -60227,6 +60243,25 @@ As V in Bullet Time mode, I want Space to be the Shootdodge instead of a regular
   - TESTING.md, with a new section: in BT mode, Space with and without a direction, with a disallowed weapon, and Space outside BT mode stays a normal jump;
   - Max''s texts (non-quote text only) mention that in Bullet Time, Space alone sends you flying.
 - [ ] Rebuild dist/ShootDodge-1.0.0.zip with tools/package.ps1 and commit it (dist/ is tracked).', '2026-11-01T23:46:45Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2SD-T39', '## Problem
+
+C2SD-T37 put the Bullet Time default on `IK_Enter`. The game can''t tell Numpad Enter from the main Enter key, and on foot Enter also confirms dialogue choices, so Bullet Time toggles when you pick a dialogue option. The user wants the default on a key vanilla Cyberpunk 2077 doesn''t use at all.
+
+## Acceptance
+
+- [ ] **Read the real vanilla bindings** from the user''s install: `D:\Games\Steam\steamapps\common\Cyberpunk 2077\r6\config\inputUserMappings.xml` and `inputContexts.xml`. Use the vanilla files only; if they''re mod-modified, prefer the game''s .bk/original copies or note it.
+  - List every keyboard key and mouse button bound in any context: on foot, combat, vehicle, menus, photo mode, braindance, scanner, dialogue, the 2.5 dual-wield controls.
+  - Don''t edit anything in the game folder.
+- [ ] **Pick a key** bound in no vanilla context, using exact `IK_*` names from that file / RED4ext.SDK `EInputKey.hpp`.
+  - It must be comfortable mid-fight; prefer a mouse thumb button (IK_Mouse4 / IK_Mouse5) or a nearby keyboard key.
+  - It must not be a key Windows or CET commonly use. The user''s CET overlay key is Insert, so not Insert.
+  - Record the full used-key list (or a summary) and the reasoning in docs/DESIGN.md, plus one alternative.
+- [ ] **Switch the default:** change `r6/input/ShootDodge.xml` to the chosen key and keep the CET binding as the fallback, debounced.
+- [ ] **Update everything that says Numpad Enter:**
+  - README, docs/NEXUS_PAGE.md (requirements and BBCode), docs/TESTING.md (I3 cases, and remove the dialogue-Enter caveat if it no longer applies);
+  - Max''s texts in modules/IntroMessage.lua (non-quote text only; quotes stay word for word);
+  - init.lua comments and overlay text.
+- [ ] **Rebuild and commit** dist/ShootDodge-1.0.0.zip (dist/ is tracked).', '2026-11-01T23:58:09Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2SD-T4', '## Story
 
 As V, male or female, I want the exact look and weapons Max Payne wears in Max Payne 2, rebuilt as closely as possible from Cyberpunk 2077''s existing items, so the Shootdodge comes with the signature look.
