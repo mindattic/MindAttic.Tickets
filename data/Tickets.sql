@@ -7783,7 +7783,9 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T43', 'Mods.Cyberpunk2077.ShootDodge', 43, '2026-11-01', 'fix', 'closed', 'Game crashes with only ShootDodge 2.0.0 enabled (diagnose from logs)', 'f306434', 42, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T44', 'Mods.Cyberpunk2077.ShootDodge', 44, '2026-11-01', 'chore', 'closed', 'Release v3.0.0: bump version, changelog, build dist/ShootDodge-3.0.0.zip, redeploy to Vortex', '4a26373', 43, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T45', 'Mods.Cyberpunk2077.ShootDodge', 45, '2026-11-01', 'fix', 'closed', 'Main-menu crash: main menu world spawns a player, so drivers made game calls there; add Session gate (player + not IsPreGame + 1.5s settle)', 'b40eafb', 44, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T46', 'Mods.Cyberpunk2077.ShootDodge', 46, '2026-11-01', 'feature', 'open', 'Shootdodge trigger is Ctrl + Space (replaces aim+jump+move combo and Space-in-Bullet-Time)', '—', 45, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T46', 'Mods.Cyberpunk2077.ShootDodge', 46, '2026-11-01', 'feature', 'closed', 'Shootdodge trigger is Ctrl + Space (replaces aim+jump+move combo and Space-in-Bullet-Time)', '4c659c8', 45, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T47', 'Mods.Cyberpunk2077.ShootDodge', 47, '2026-11-01', 'fix', 'closed', 'Docs: Phone Extension needs Codeware (GameInstance.GetInkSystem), docs say redscript only; list Codeware as required with Phone Extension', 'dff9393', 46, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T48', 'Mods.Cyberpunk2077.ShootDodge', 48, '2026-11-01', 'fix', 'closed', 'Input.lua: ctrlHeldByScript defined after Input.Context, so every Space press errors (nil global) and Ctrl+Space never dives', '08226ec', 47, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T1', 'Mods.Cyberpunk2077.WebSlinger', 1, '2026-11-01', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T2', 'Mods.Cyberpunk2077.WebSlinger', 2, '2026-11-01', 'feature', 'closed', 'Scaffold new repo: Cyberpunk 2077 mod for Mantis Blade wall-climb, wall-run/jump, and Spider-Man 2 style webslinging', '7aad643ac7c88e810331b43e6e85a40b41323aaf', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T3', 'Mods.Cyberpunk2077.WebSlinger', 3, '2026-11-01', 'chore', 'closed', 'Rename repo to Mods.Cyberpunk2077.WebSlinger for mod organization (GitHub + folder + refs)', '36d0a7610a8d43186a58b5ea925f2190e04bf613', 2, NULL);
@@ -56285,6 +56287,19 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33302, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33303, 'C2SD-T46', '2026-11-02T01:35:02Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33304, 'C2SD-T46', '2026-11-02T01:35:12Z', 'working', NULL, '6e82fb1a-2202-410b-93b9-327c9f6ad258');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33305, 'C2SD-T46', '2026-11-02T01:38:02Z', 'working', '6e82fb1a-2202-410b-93b9-327c9f6ad258', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33306, 'C2SD-T46', '2026-11-02T01:39:32Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33307, 'C2SD-T46', '2026-11-02T01:39:32Z', 'ref', '—', '4c659c8');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33308, 'C2SD-T47', '2026-11-02T01:40:01Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33309, 'C2SD-T47', '2026-11-02T01:40:04Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33310, 'C2SD-T47', '2026-11-02T01:40:19Z', 'working', NULL, '6e82fb1a-2202-410b-93b9-327c9f6ad258');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33311, 'C2SD-T47', '2026-11-02T01:41:20Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33312, 'C2SD-T47', '2026-11-02T01:41:20Z', 'ref', '—', 'dff9393');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33313, 'C2SD-T47', '2026-11-02T01:41:31Z', 'working', '6e82fb1a-2202-410b-93b9-327c9f6ad258', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33314, 'C2SD-T48', '2026-11-02T01:44:44Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33315, 'C2SD-T48', '2026-11-02T01:44:52Z', 'working', NULL, '6e82fb1a-2202-410b-93b9-327c9f6ad258');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33316, 'C2SD-T48', '2026-11-02T01:45:53Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33317, 'C2SD-T48', '2026-11-02T01:45:53Z', 'ref', '—', '08226ec');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33318, 'C2SD-T48', '2026-11-02T01:46:22Z', 'working', '6e82fb1a-2202-410b-93b9-327c9f6ad258', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -56337,6 +56352,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T37', 'approved', 0, '2026-11-01T23:46:46Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T38', 'approved', 0, '2026-11-01T23:46:47Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T4', 'approved', -10, '2026-11-01T20:45:47Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T47', 'approved', 0, '2026-11-02T01:40:04Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T5', 'approved', 0, '2026-11-01T20:41:26Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T6', 'approved', 0, '2026-11-01T20:41:26Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2SD-T7', 'approved', 0, '2026-11-01T20:41:27Z', NULL);
@@ -60305,6 +60321,7 @@ As V, male or female, I want the exact look and weapons Max Payne wears in Max P
 An earlier, stopped run left a partial attempt (Loadout.lua, r6/tweaks/ShootDodge/loadout.yaml, and an init.lua patch) at
 C:\Users\ryand\AppData\Local\Temp\claude\D--Projects-MindAttic-Mods-Cyberpunk2077-ShootDodge\6e82fb1a-2202-410b-93b9-327c9f6ad258\scratchpad\T4-wip
 Reuse it where it helps. It predates this spec and the current init.lua.', '2026-11-01T21:13:12Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2SD-T47', '![image 3](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/_inbox/6e82fb1a-2202-410b-93b9-327c9f6ad258/2026-11-01-image-3.png) redscript: UNRESOLVED_METHOD GetInkSystem on GameInstance at PhoneExtension.Overrides.reds:33', '2026-11-02T01:40:02Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2SD-T5', '## Story
 
 As V, I want the mod to recognize a dedicated Shootdodge input combo (aim held + jump + a movement direction) without misfiring during normal play, so the move triggers only when I mean it to.
