@@ -7801,7 +7801,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T61', 'Mods.Cyberpunk2077.ShootDodge', 61, '2026-11-01', 'fix', 'closed', 'Dive is a 0.3 s hop now that V runs at full speed: replace the rise cut with a 1.5 s low glide (vertical speed eased from +1.5 to -1.0 m/s, 6.5 m/s along the dive line), then slam and slide', '7202115', 60, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T62', 'Mods.Cyberpunk2077.ShootDodge', 62, '2026-11-01', 'fix', 'closed', 'Fake slide breaks the landing (camera drop/raise, pushes fighting the game landing, get-up 2.5 m/s brake): land on feet keeping momentum; also landing on a surface higher than launch never registered (time-limit aborts)', '7202115', 61, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T63', 'Mods.Cyberpunk2077.ShootDodge', 63, '2026-11-01', 'fix', 'closed', 'Dive is jaggy and stops mid-air: per-frame PSM impulses jolt V and the arc apex (vz near 0) is mistaken for a landing; use one launch impulse only and require a fall or 0.1 s of stillness before a landing counts', 'cca42e0', 62, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T64', 'Mods.Cyberpunk2077.ShootDodge', 64, '2026-11-01', 'chore', 'open', 'Review the whole mod against Max Payne 2 bullet time and shootdodge mechanics (research the real MP2 behavior) and list every gap with a fix recommendation', '—', 63, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T64', 'Mods.Cyberpunk2077.ShootDodge', 64, '2026-11-01', 'chore', 'closed', 'Review the whole mod against Max Payne 2 bullet time and shootdodge mechanics (research the real MP2 behavior) and list every gap with a fix recommendation', 'cca42e0', 63, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T1', 'Mods.Cyberpunk2077.WebSlinger', 1, '2026-11-01', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T2', 'Mods.Cyberpunk2077.WebSlinger', 2, '2026-11-01', 'feature', 'closed', 'Scaffold new repo: Cyberpunk 2077 mod for Mantis Blade wall-climb, wall-run/jump, and Spider-Man 2 style webslinging', '7aad643ac7c88e810331b43e6e85a40b41323aaf', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T3', 'Mods.Cyberpunk2077.WebSlinger', 3, '2026-11-01', 'chore', 'closed', 'Rename repo to Mods.Cyberpunk2077.WebSlinger for mod organization (GitHub + folder + refs)', '36d0a7610a8d43186a58b5ea925f2190e04bf613', 2, NULL);
@@ -7831,7 +7831,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T27', 'Mods.Cyberpunk2077.WebSlinger', 27, '2026-11-01', 'fix', 'open', 'Jump-into-wall head-on latch (C2WS-T21) reported not working in-game at all', '—', 26, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T28', 'Mods.Cyberpunk2077.WebSlinger', 28, '2026-11-01', 'chore', 'closed', 'Rebuild dist zip with T25-T27 visible rope line, Monowire hand anchor, latch diagnostics', '1f82054', 27, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T29', 'Mods.Cyberpunk2077.WebSlinger', 29, '2026-11-01', 'fix', 'closed', 'Hide the swing cable''s near end: push its start point low/center instead of lower-right in view', '80bd06f', 28, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T30', 'Mods.Cyberpunk2077.WebSlinger', 30, '2026-11-01', 'feature', 'open', 'Direct-aim web attach, propel-then-elastic physics, tap-only shoot/break controls', '—', 29, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T30', 'Mods.Cyberpunk2077.WebSlinger', 30, '2026-11-01', 'feature', 'closed', 'Direct-aim web attach, propel-then-elastic physics, tap-only shoot/break controls', '76d79f4', 29, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T31', 'Mods.Cyberpunk2077.WebSlinger', 31, '2026-11-01', 'chore', 'open', 'Review whole mod against Marvel''s Spider-Man 2 web-swinging and file alignment tickets', '—', 30, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.CTD-T1', 'Mods.GTFO.CrashTestDummies', 1, '2026-10-16', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.CTD-T2', 'Mods.GTFO.CrashTestDummies', 2, '2026-10-16', 'chore', 'closed', 'install.ps1 adds this repo''s 15 .prose/commands stubs, AGENTS.md pointer for the shared global commands, so any LLM client finds them', 'mindattic-agent-standard/install.ps1 run 2026-10-16', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.CTD-T3', 'Mods.GTFO.CrashTestDummies', 3, '2026-10-16', 'chore', 'closed', 'Bug hunt: run an exhaustive /bughunt over the whole repo and fix every real bug found (each fix under its own fix ticket), then hunt again; close this only when a full pass finds nothing', '47588d8', 2, NULL);
@@ -56946,6 +56947,17 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33471, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33472, 'C2SD-T63', '2026-11-02T03:01:04Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33473, 'C2SD-T63', '2026-11-02T03:01:04Z', 'ref', '—', 'cca42e0');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33474, 'C2SD-T64', '2026-11-02T03:01:11Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33475, 'C2WS-T31', '2026-11-02T03:01:30Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33476, 'C2WS-T31', '2026-11-02T03:01:32Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33477, 'C2SD-T63', '2026-11-02T03:01:37Z', 'working', '6e82fb1a-2202-410b-93b9-327c9f6ad258', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33478, 'C2WS-T31', '2026-11-02T03:02:02Z', 'working', NULL, 'ryandebraal@mindattic.com (808ce091-f94c-467d-a7d1-b6562cc81444)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33479, 'C2WS-T31', '2026-11-02T03:02:18Z', 'working', 'ryandebraal@mindattic.com (808ce091-f94c-467d-a7d1-b6562cc81444)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33480, 'C2SD-T64', '2026-11-02T03:04:53Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33481, 'C2SD-T64', '2026-11-02T03:04:53Z', 'ref', '—', 'cca42e0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33482, 'C2WS-T30', '2026-11-02T03:05:28Z', 'working', 'ryandebraal@mindattic.com (808ce091-f94c-467d-a7d1-b6562cc81444)', '808ce091-f94c-467d-a7d1-b6562cc81444');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33483, 'C2WS-T30', '2026-11-02T03:06:38Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33484, 'C2WS-T30', '2026-11-02T03:06:38Z', 'ref', '—', '76d79f4');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33485, 'C2WS-T30', '2026-11-02T03:06:55Z', 'working', '808ce091-f94c-467d-a7d1-b6562cc81444', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -57024,6 +57036,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T28', 'approved', 0, '2026-11-02T02:37:32Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T29', 'approved', 0, '2026-11-02T02:56:22Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T30', 'approved', 0, '2026-11-02T02:57:59Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T31', 'approved', 0, '2026-11-02T03:01:32Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T4', 'approved', 0, '2026-11-01T20:41:10Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T5', 'approved', 0, '2026-11-01T20:41:11Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T6', 'approved', 0, '2026-11-01T20:41:11Z', NULL);
@@ -59444,9 +59457,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('USOD-T9', 'approved', 0, '2026-10-22T23:02:27Z', NULL);
 
 -- ticket_work
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2SD-T63', NULL, 0, NULL, '6e82fb1a-2202-410b-93b9-327c9f6ad258', '2026-11-02T03:00:38Z', '2026-11-02T03:00:38Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2WS-T27', NULL, 0, 'ryandebraal@mindattic.com', '808ce091-f94c-467d-a7d1-b6562cc81444', '2026-11-02T02:29:49Z', '2026-11-02T02:29:49Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2WS-T30', NULL, 0, 'ryandebraal@mindattic.com', '808ce091-f94c-467d-a7d1-b6562cc81444', '2026-11-02T02:58:12Z', '2026-11-02T02:58:12Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
