@@ -7800,6 +7800,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T60', 'Mods.Cyberpunk2077.ShootDodge', 60, '2026-11-01', 'fix', 'closed', 'Drop the failing SetTimeDilationOnLocalPlayerZero call (game takes 2-5 params, mod passed 6); the per-entity player exemption is confirmed working in game', 'e94e983', 59, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T61', 'Mods.Cyberpunk2077.ShootDodge', 61, '2026-11-01', 'fix', 'closed', 'Dive is a 0.3 s hop now that V runs at full speed: replace the rise cut with a 1.5 s low glide (vertical speed eased from +1.5 to -1.0 m/s, 6.5 m/s along the dive line), then slam and slide', '7202115', 60, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T62', 'Mods.Cyberpunk2077.ShootDodge', 62, '2026-11-01', 'fix', 'closed', 'Fake slide breaks the landing (camera drop/raise, pushes fighting the game landing, get-up 2.5 m/s brake): land on feet keeping momentum; also landing on a surface higher than launch never registered (time-limit aborts)', '7202115', 61, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T63', 'Mods.Cyberpunk2077.ShootDodge', 63, '2026-11-01', 'fix', 'closed', 'Dive is jaggy and stops mid-air: per-frame PSM impulses jolt V and the arc apex (vz near 0) is mistaken for a landing; use one launch impulse only and require a fall or 0.1 s of stillness before a landing counts', 'cca42e0', 62, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T64', 'Mods.Cyberpunk2077.ShootDodge', 64, '2026-11-01', 'chore', 'open', 'Review the whole mod against Max Payne 2 bullet time and shootdodge mechanics (research the real MP2 behavior) and list every gap with a fix recommendation', '—', 63, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T1', 'Mods.Cyberpunk2077.WebSlinger', 1, '2026-11-01', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T2', 'Mods.Cyberpunk2077.WebSlinger', 2, '2026-11-01', 'feature', 'closed', 'Scaffold new repo: Cyberpunk 2077 mod for Mantis Blade wall-climb, wall-run/jump, and Spider-Man 2 style webslinging', '7aad643ac7c88e810331b43e6e85a40b41323aaf', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T3', 'Mods.Cyberpunk2077.WebSlinger', 3, '2026-11-01', 'chore', 'closed', 'Rename repo to Mods.Cyberpunk2077.WebSlinger for mod organization (GitHub + folder + refs)', '36d0a7610a8d43186a58b5ea925f2190e04bf613', 2, NULL);
@@ -7828,6 +7830,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T26', 'Mods.Cyberpunk2077.WebSlinger', 26, '2026-11-01', 'feature', 'closed', 'Visual Monowire deploy on V''s hand during a swing (cosmetic only, research RED4ext-free feasibility first)', '9dd04f7', 25, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T27', 'Mods.Cyberpunk2077.WebSlinger', 27, '2026-11-01', 'fix', 'open', 'Jump-into-wall head-on latch (C2WS-T21) reported not working in-game at all', '—', 26, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T28', 'Mods.Cyberpunk2077.WebSlinger', 28, '2026-11-01', 'chore', 'closed', 'Rebuild dist zip with T25-T27 visible rope line, Monowire hand anchor, latch diagnostics', '1f82054', 27, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T29', 'Mods.Cyberpunk2077.WebSlinger', 29, '2026-11-01', 'fix', 'closed', 'Hide the swing cable''s near end: push its start point low/center instead of lower-right in view', '80bd06f', 28, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T30', 'Mods.Cyberpunk2077.WebSlinger', 30, '2026-11-01', 'feature', 'open', 'Direct-aim web attach, propel-then-elastic physics, tap-only shoot/break controls', '—', 29, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.CTD-T1', 'Mods.GTFO.CrashTestDummies', 1, '2026-10-16', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.CTD-T2', 'Mods.GTFO.CrashTestDummies', 2, '2026-10-16', 'chore', 'closed', 'install.ps1 adds this repo''s 15 .prose/commands stubs, AGENTS.md pointer for the shared global commands, so any LLM client finds them', 'mindattic-agent-standard/install.ps1 run 2026-10-16', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.CTD-T3', 'Mods.GTFO.CrashTestDummies', 3, '2026-10-16', 'chore', 'closed', 'Bug hunt: run an exhaustive /bughunt over the whole repo and fix every real bug found (each fix under its own fix ticket), then hunt again; close this only when a full pass finds nothing', '47588d8', 2, NULL);
@@ -56724,6 +56728,224 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33446, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33447, 'C2SD-T61', '2026-11-02T02:50:27Z', 'ref', '—', '7202115');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33448, 'C2SD-T62', '2026-11-02T02:50:28Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33449, 'C2SD-T62', '2026-11-02T02:50:28Z', 'ref', '—', '7202115');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33450, 'C2SD-T62', '2026-11-02T02:51:17Z', 'working', '6e82fb1a-2202-410b-93b9-327c9f6ad258', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33451, 'C2WS-T29', '2026-11-02T02:55:56Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33452, 'C2WS-T29', '2026-11-02T02:56:06Z', 'working', NULL, '808ce091-f94c-467d-a7d1-b6562cc81444');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33453, 'C2WS-T29', '2026-11-02T02:56:21Z', 'description', NULL, '## Symptom
+
+Ryan: "I dont want to see the end of the web so either put it below center camera bottom so its
+like at V''s belly button" -- the swing cable''s near end (its start point, drawn by `drawRope()`
+via `ropeCameraHandPoint`, init.lua ~2009) currently defaults to a camera-relative point offset
+`handForward=0.6` ahead, `handRight=0.25` to the right, `handDown=0.3` below the camera
+(`WebSlinger.rope` table, ~116-127). Since C2WS-T26''s hand-slot attachment names are "educated
+guesses, not confirmed" and likely aren''t resolving in practice, what''s actually visible in play is
+this camera-relative fallback point, sitting in the lower-right of view -- not hidden, and off to
+one side rather than centered.
+
+## Fix
+
+In `WebSlinger.rope`''s defaults:
+- `handRight = 0.0` (centered under the camera, not offset to the right).
+- `handDown` increased enough that the point sits below the visible frame most of the time --
+  reads as "the wire comes from around V''s belly/waist," not a floating dot in view. Pick a value
+  and verify the angle this creates versus a typical vertical FOV; `handForward` may need a small
+  reduction alongside it (a closer point needs less vertical drop to fall outside the same FOV
+  cone).
+- Widen the debug-panel''s `handDown` slider range (currently -0.5 to 1.0, init.lua ~2295) if the
+  new default exceeds it, so it stays adjustable from the panel.
+- The near-plane clip C2WS-T25 added must keep working: even though the start point will now
+  usually project below the visible frame, the line should still draw its visible portion
+  sweeping up to the anchor, not vanish. No change needed there if the point is still in front of
+  the camera (just below the frame, not behind it) -- confirm this is in fact the case for the
+  chosen values.
+
+## Test
+
+Mid-swing, confirm no visible dot/line-end hovers in view near the camera -- only the cable''s
+upward sweep toward the anchor is visible, as if it originates from below the frame near V''s
+belt/belly line.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33454, 'C2WS-T29', '2026-11-02T02:56:22Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33455, 'C2WS-T29', '2026-11-02T02:57:07Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33456, 'C2WS-T29', '2026-11-02T02:57:07Z', 'ref', '—', '80bd06f');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33457, 'C2WS-T30', '2026-11-02T02:57:13Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33458, 'C2WS-T30', '2026-11-02T02:57:21Z', 'working', NULL, '808ce091-f94c-467d-a7d1-b6562cc81444');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33459, 'C2WS-T29', '2026-11-02T02:57:21Z', 'working', '808ce091-f94c-467d-a7d1-b6562cc81444', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33460, 'C2WS-T30', '2026-11-02T02:57:22Z', 'description', NULL, '## Symptom
+
+Ryan: "I dont want to see the end of the web so either put it below center camera bottom so its
+like at V''s belly button" -- the swing cable''s near end (its start point, drawn by `drawRope()`
+via `ropeCameraHandPoint`, init.lua ~2009) currently defaults to a camera-relative point offset
+`handForward=0.6` ahead, `handRight=0.25` to the right, `handDown=0.3` below the camera
+(`WebSlinger.rope` table, ~116-127). Since C2WS-T26''s hand-slot attachment names are "educated
+guesses, not confirmed" and likely aren''t resolving in practice, what''s actually visible in play is
+this camera-relative fallback point, sitting in the lower-right of view -- not hidden, and off to
+one side rather than centered.
+
+## Fix
+
+In `WebSlinger.rope`''s defaults:
+- `handRight = 0.0` (centered under the camera, not offset to the right).
+- `handDown` increased enough that the point sits below the visible frame most of the time --
+  reads as "the wire comes from around V''s belly/waist," not a floating dot in view. Pick a value
+  and verify the angle this creates versus a typical vertical FOV; `handForward` may need a small
+  reduction alongside it (a closer point needs less vertical drop to fall outside the same FOV
+  cone).
+- Widen the debug-panel''s `handDown` slider range (currently -0.5 to 1.0, init.lua ~2295) if the
+  new default exceeds it, so it stays adjustable from the panel.
+- The near-plane clip C2WS-T25 added must keep working: even though the start point will now
+  usually project below the visible frame, the line should still draw its visible portion
+  sweeping up to the anchor, not vanish. No change needed there if the point is still in front of
+  the camera (just below the frame, not behind it) -- confirm this is in fact the case for the
+  chosen values.
+
+## Test
+
+Mid-swing, confirm no visible dot/line-end hovers in view near the camera -- only the cable''s
+upward sweep toward the anchor is visible, as if it originates from below the frame near V''s
+belt/belly line.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33461, 'C2WS-T30', '2026-11-02T02:57:58Z', 'description', '## Symptom
+
+Ryan: "I dont want to see the end of the web so either put it below center camera bottom so its
+like at V''s belly button" -- the swing cable''s near end (its start point, drawn by `drawRope()`
+via `ropeCameraHandPoint`, init.lua ~2009) currently defaults to a camera-relative point offset
+`handForward=0.6` ahead, `handRight=0.25` to the right, `handDown=0.3` below the camera
+(`WebSlinger.rope` table, ~116-127). Since C2WS-T26''s hand-slot attachment names are "educated
+guesses, not confirmed" and likely aren''t resolving in practice, what''s actually visible in play is
+this camera-relative fallback point, sitting in the lower-right of view -- not hidden, and off to
+one side rather than centered.
+
+## Fix
+
+In `WebSlinger.rope`''s defaults:
+- `handRight = 0.0` (centered under the camera, not offset to the right).
+- `handDown` increased enough that the point sits below the visible frame most of the time --
+  reads as "the wire comes from around V''s belly/waist," not a floating dot in view. Pick a value
+  and verify the angle this creates versus a typical vertical FOV; `handForward` may need a small
+  reduction alongside it (a closer point needs less vertical drop to fall outside the same FOV
+  cone).
+- Widen the debug-panel''s `handDown` slider range (currently -0.5 to 1.0, init.lua ~2295) if the
+  new default exceeds it, so it stays adjustable from the panel.
+- The near-plane clip C2WS-T25 added must keep working: even though the start point will now
+  usually project below the visible frame, the line should still draw its visible portion
+  sweeping up to the anchor, not vanish. No change needed there if the point is still in front of
+  the camera (just below the frame, not behind it) -- confirm this is in fact the case for the
+  chosen values.
+
+## Test
+
+Mid-swing, confirm no visible dot/line-end hovers in view near the camera -- only the cable''s
+upward sweep toward the anchor is visible, as if it originates from below the frame near V''s
+belt/belly line.', '## Story
+
+As V, I want the web-sling to work like this: point at exactly the surface I want to attach to,
+tap jump (no holding anything) and the web fires there, connects instantly, yanks me toward it,
+then settles into a real elastic pendulum swing. Tap jump again any time while swinging and I just
+let go, full stop, keeping my momentum -- no special behavior at any particular point in the arc.
+If I''m airborne with nothing attached, that same tap shoots a brand-new web instead. One button,
+one action each time: shoot or break, always the same way.
+
+This replaces the current hold-a-dedicated-bind-to-swing / release-to-let-go control scheme and
+the "best nearby point" anchor search with direct, player-aimed targeting.
+
+## Clarified scope (resolved with Ryan before filing)
+
+- A tap while **SLINGING always plain-releases** (full momentum carry, `s.carry = true`), with no
+  special case anywhere in the arc. **[[C2WS-T23]]''s bottom-of-arc boost leap is removed entirely**
+  (`WebSlinger.TryBoostLeap`, `leapBottomWindowDeg`, `leapBoostSpeed`, `leapSpeedBonus`, `leapLift`,
+  `leapCount`, and its debug-panel lines/sliders).
+- **Wall-run and wall-latch keep their existing priority** over shooting a web: a jump tap in
+  `NONE` while airborne still tries `TryManualWallRun()` (side wall) then `TryManualWallLatch()`
+  (head-on wall, [[C2WS-T21]]) first, exactly as today; only if neither finds a qualifying wall
+  does the tap shoot a web. Nothing about wall-run/wall-latch itself changes in this ticket.
+
+## What changes
+
+**1. Direct-aim targeting (replaces `WebSlinger.FindAnchor`''s cone search).** Today `FindAnchor`
+(init.lua ~415) fires a grid of rays across `sling.searchYawDeg x searchPitchDeg` and scores every
+hit to pick the "best" qualifying point near the aim heading. Replace this with a single raycast
+along the player''s exact camera-forward aim heading (`aimHeading`/`GetActiveCameraForward`, the
+same source `ExecuteSmartRaycast` elsewhere already uses) out to `sling.AnchorMaxDistance`.
+Whatever that ray hits -- as long as it''s a reasonable attach surface (reuse `minAnchorHeight`/
+`minAnchorHorizontal`-style sanity checks if needed so V can''t "attach" to the ground right in
+front of her feet) -- is the anchor, instantly, no scoring or best-of-many-candidates search. A
+small forgiving tolerance (e.g. one extra ray a couple of degrees off-axis if the exact center ray
+whiffs on a thin edge) is fine if it meaningfully reduces frustrating misses, but the result must
+read as "I pointed at that wall and it stuck," never "it found some other nearby high point
+instead."
+
+**2. Propel-then-elastic attach (new phase before `UpdateGrapplePhysics` takes over).** On a
+successful attach, before the existing pendulum/steering/reel-in physics begins, give V an initial
+velocity impulse toward the anchor point (direction = anchor minus her hand position, magnitude a
+new tunable `sling.AttachPropelSpeed`) so she visibly launches toward the connection point instead
+of the rope just snapping taut from whatever speed she already had. Transition into the existing
+elastic swing physics (`WebSlinger.UpdateGrapplePhysics`) either after a short tunable
+`sling.PropelDuration` or once the existing rope-constraint/reel-in naturally takes hold -- pick
+whichever reads smoothest and document the choice and its tuning in `docs/DESIGN.md`.
+
+**3. Tap-only control, no hold/release bind.** Remove `registerInput("webslinger_swing", ...)` and
+every piece of state that exists only to distinguish "holding the bind" from "jump-fired": `s.
+keyHeld`, `s.keyWasHeld`, `s.auto`, `s.autoCount`, the `chainMinSwingTime`/`chainReleaseAngleDeg`
+upswing auto-chain-release branch in `UpdateGrapplePhysics`, and every reference to them elsewhere
+(debug panel lines, `updateSling`''s SLINGING/NONE branches; `aimHeading`''s carry-blend uses of
+`s.carry`/`s.estVel` are unaffected and stay). The jump-press dispatch
+(`WebSlinger.run.jumpQueued`, consumed in `updateWallRun`) becomes the single entry point:
+   - `SLINGING`: a jump tap always calls `releaseSling("tap released", true)` immediately -- no
+     boost leap, no angle check, nothing else.
+   - `NONE` + airborne, after wall-run/wall-latch both decline: tap shoots a new web using the new
+     direct-aim attach from point 1, then immediately applies point 2''s propel impulse.
+   - `NONE` + grounded: unaffected, a plain game jump (as today).
+- `updateSling`''s per-tick physics loop keeps running the elastic physics and the existing
+  wall-impact routing (`CheckWallCollisionDuringSwing`) exactly as today while `SLINGING` -- only
+  the attach/release triggers change, not the swing''s ongoing physics or its wall-impact handling.
+
+**4. Docs and in-mod copy.** Update `README.md`''s "First run" step that tells the player to bind a
+swing key in CET''s Bindings tab (no longer needed -- swinging uses the game''s native Jump action
+like every other WebSlinger trigger) and the Peter Parker intro text overlay
+(`WebSlinger.PeterText.body`, init.lua ~1838) which currently says "Bind a swing key in the CET
+overlay... hold it while you face the skyline, and let go to fly" -- rewrite that line to describe
+the new tap-to-shoot/tap-to-break model. Document the full new attach/propel/release model in
+`docs/DESIGN.md`, replacing the now-obsolete chain-release and boost-leap sections.
+
+## Acceptance
+
+- [ ] Facing a specific point on a building, tapping jump mid-air attaches exactly there (not some
+  other nearby qualifying point), with an immediate visible pull toward it before the swing''s
+  pendulum arc takes over.
+- [ ] Tapping jump again at any point in the swing -- top, bottom, mid-arc -- always just releases
+  with current momentum. No special behavior anywhere in the arc.
+- [ ] Tapping jump again while airborne with no web attached and no qualifying wall nearby shoots a
+  fresh web at the new aim point.
+- [ ] Near a side wall, jump still wall-runs; facing a wall head-on, jump still wall-latches;
+  web-shooting only happens when neither finds a wall, unchanged from today.
+- [ ] No dedicated swing bind exists anymore in CET''s Bindings tab for this mod (or if CET still
+  lists a now-unused registration, it''s removed from `init.lua` so there''s nothing to bind).
+- [ ] [[C2WS-T25]]''s visible cable and [[C2WS-T26]]''s hand-anchor start point keep working
+  unchanged against the new attach path (they draw from `s.anchor`/`s.pos`, which this ticket does
+  not remove).
+- [ ] Verified: point at a building, tap jump, confirm an instant visible pull toward the exact
+  aimed point followed by a normal elastic swing; tap jump again at various points in the arc and
+  confirm a plain release every time; tap once more mid-air and confirm a fresh web shoots at the
+  new look direction.
+
+## Why
+
+Directly requested by Ryan, with the two open design questions (boost-leap fate, wall-vs-web
+priority) resolved via AskUserQuestion before filing: "you dont have to hold space, you just tap
+space while in mid air to break web or shoot new web, each one acts the same... uses the real
+[p]hysics of being connected to that surface and acts like a spider man swing."');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33462, 'C2WS-T30', '2026-11-02T02:57:59Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33463, 'C2WS-T30', '2026-11-02T02:58:00Z', 'link', NULL, 'related C2WS-T23');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33464, 'C2WS-T23', '2026-11-02T02:58:01Z', 'link', NULL, 'C2WS-T30 related');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33465, 'C2WS-T30', '2026-11-02T02:58:02Z', 'link', NULL, 'related C2WS-T25');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33466, 'C2WS-T25', '2026-11-02T02:58:03Z', 'link', NULL, 'C2WS-T30 related');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33467, 'C2WS-T30', '2026-11-02T02:58:04Z', 'link', NULL, 'related C2WS-T26');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33468, 'C2WS-T26', '2026-11-02T02:58:04Z', 'link', NULL, 'C2WS-T30 related');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33469, 'C2WS-T30', '2026-11-02T02:58:12Z', 'working', '808ce091-f94c-467d-a7d1-b6562cc81444', 'ryandebraal@mindattic.com (808ce091-f94c-467d-a7d1-b6562cc81444)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33470, 'C2SD-T63', '2026-11-02T03:00:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33471, 'C2SD-T63', '2026-11-02T03:00:38Z', 'working', NULL, '6e82fb1a-2202-410b-93b9-327c9f6ad258');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33472, 'C2SD-T63', '2026-11-02T03:01:04Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33473, 'C2SD-T63', '2026-11-02T03:01:04Z', 'ref', '—', 'cca42e0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33474, 'C2SD-T64', '2026-11-02T03:01:11Z', 'created', NULL, 'open');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -56800,6 +57022,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T26', 'approved', 0, '2026-11-02T02:26:44Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T27', 'proposed', -1, '2026-11-02T02:29:24Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T28', 'approved', 0, '2026-11-02T02:37:32Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T29', 'approved', 0, '2026-11-02T02:56:22Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T30', 'approved', 0, '2026-11-02T02:57:59Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T4', 'approved', 0, '2026-11-01T20:41:10Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T5', 'approved', 0, '2026-11-01T20:41:11Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T6', 'approved', 0, '2026-11-01T20:41:11Z', NULL);
@@ -59220,8 +59444,9 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('USOD-T9', 'approved', 0, '2026-10-22T23:02:27Z', NULL);
 
 -- ticket_work
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2SD-T62', NULL, 0, NULL, '6e82fb1a-2202-410b-93b9-327c9f6ad258', '2026-11-02T02:49:01Z', '2026-11-02T02:49:01Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2SD-T63', NULL, 0, NULL, '6e82fb1a-2202-410b-93b9-327c9f6ad258', '2026-11-02T03:00:38Z', '2026-11-02T03:00:38Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2WS-T27', NULL, 0, 'ryandebraal@mindattic.com', '808ce091-f94c-467d-a7d1-b6562cc81444', '2026-11-02T02:29:49Z', '2026-11-02T02:29:49Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2WS-T30', NULL, 0, 'ryandebraal@mindattic.com', '808ce091-f94c-467d-a7d1-b6562cc81444', '2026-11-02T02:58:12Z', '2026-11-02T02:58:12Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
@@ -61230,6 +61455,137 @@ agent time on it until those land.
 
 From a standstill with nothing equipped in V''s cyberware slots, face a wall head-on, press jump,
 and confirm V latches onto it and enters CLIMBING immediately.', '2026-11-02T02:29:19Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T29', '## Symptom
+
+Ryan: "I dont want to see the end of the web so either put it below center camera bottom so its
+like at V''s belly button" -- the swing cable''s near end (its start point, drawn by `drawRope()`
+via `ropeCameraHandPoint`, init.lua ~2009) currently defaults to a camera-relative point offset
+`handForward=0.6` ahead, `handRight=0.25` to the right, `handDown=0.3` below the camera
+(`WebSlinger.rope` table, ~116-127). Since C2WS-T26''s hand-slot attachment names are "educated
+guesses, not confirmed" and likely aren''t resolving in practice, what''s actually visible in play is
+this camera-relative fallback point, sitting in the lower-right of view -- not hidden, and off to
+one side rather than centered.
+
+## Fix
+
+In `WebSlinger.rope`''s defaults:
+- `handRight = 0.0` (centered under the camera, not offset to the right).
+- `handDown` increased enough that the point sits below the visible frame most of the time --
+  reads as "the wire comes from around V''s belly/waist," not a floating dot in view. Pick a value
+  and verify the angle this creates versus a typical vertical FOV; `handForward` may need a small
+  reduction alongside it (a closer point needs less vertical drop to fall outside the same FOV
+  cone).
+- Widen the debug-panel''s `handDown` slider range (currently -0.5 to 1.0, init.lua ~2295) if the
+  new default exceeds it, so it stays adjustable from the panel.
+- The near-plane clip C2WS-T25 added must keep working: even though the start point will now
+  usually project below the visible frame, the line should still draw its visible portion
+  sweeping up to the anchor, not vanish. No change needed there if the point is still in front of
+  the camera (just below the frame, not behind it) -- confirm this is in fact the case for the
+  chosen values.
+
+## Test
+
+Mid-swing, confirm no visible dot/line-end hovers in view near the camera -- only the cable''s
+upward sweep toward the anchor is visible, as if it originates from below the frame near V''s
+belt/belly line.', '2026-11-02T02:56:21Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T30', '## Story
+
+As V, I want the web-sling to work like this: point at exactly the surface I want to attach to,
+tap jump (no holding anything) and the web fires there, connects instantly, yanks me toward it,
+then settles into a real elastic pendulum swing. Tap jump again any time while swinging and I just
+let go, full stop, keeping my momentum -- no special behavior at any particular point in the arc.
+If I''m airborne with nothing attached, that same tap shoots a brand-new web instead. One button,
+one action each time: shoot or break, always the same way.
+
+This replaces the current hold-a-dedicated-bind-to-swing / release-to-let-go control scheme and
+the "best nearby point" anchor search with direct, player-aimed targeting.
+
+## Clarified scope (resolved with Ryan before filing)
+
+- A tap while **SLINGING always plain-releases** (full momentum carry, `s.carry = true`), with no
+  special case anywhere in the arc. **[[C2WS-T23]]''s bottom-of-arc boost leap is removed entirely**
+  (`WebSlinger.TryBoostLeap`, `leapBottomWindowDeg`, `leapBoostSpeed`, `leapSpeedBonus`, `leapLift`,
+  `leapCount`, and its debug-panel lines/sliders).
+- **Wall-run and wall-latch keep their existing priority** over shooting a web: a jump tap in
+  `NONE` while airborne still tries `TryManualWallRun()` (side wall) then `TryManualWallLatch()`
+  (head-on wall, [[C2WS-T21]]) first, exactly as today; only if neither finds a qualifying wall
+  does the tap shoot a web. Nothing about wall-run/wall-latch itself changes in this ticket.
+
+## What changes
+
+**1. Direct-aim targeting (replaces `WebSlinger.FindAnchor`''s cone search).** Today `FindAnchor`
+(init.lua ~415) fires a grid of rays across `sling.searchYawDeg x searchPitchDeg` and scores every
+hit to pick the "best" qualifying point near the aim heading. Replace this with a single raycast
+along the player''s exact camera-forward aim heading (`aimHeading`/`GetActiveCameraForward`, the
+same source `ExecuteSmartRaycast` elsewhere already uses) out to `sling.AnchorMaxDistance`.
+Whatever that ray hits -- as long as it''s a reasonable attach surface (reuse `minAnchorHeight`/
+`minAnchorHorizontal`-style sanity checks if needed so V can''t "attach" to the ground right in
+front of her feet) -- is the anchor, instantly, no scoring or best-of-many-candidates search. A
+small forgiving tolerance (e.g. one extra ray a couple of degrees off-axis if the exact center ray
+whiffs on a thin edge) is fine if it meaningfully reduces frustrating misses, but the result must
+read as "I pointed at that wall and it stuck," never "it found some other nearby high point
+instead."
+
+**2. Propel-then-elastic attach (new phase before `UpdateGrapplePhysics` takes over).** On a
+successful attach, before the existing pendulum/steering/reel-in physics begins, give V an initial
+velocity impulse toward the anchor point (direction = anchor minus her hand position, magnitude a
+new tunable `sling.AttachPropelSpeed`) so she visibly launches toward the connection point instead
+of the rope just snapping taut from whatever speed she already had. Transition into the existing
+elastic swing physics (`WebSlinger.UpdateGrapplePhysics`) either after a short tunable
+`sling.PropelDuration` or once the existing rope-constraint/reel-in naturally takes hold -- pick
+whichever reads smoothest and document the choice and its tuning in `docs/DESIGN.md`.
+
+**3. Tap-only control, no hold/release bind.** Remove `registerInput("webslinger_swing", ...)` and
+every piece of state that exists only to distinguish "holding the bind" from "jump-fired": `s.
+keyHeld`, `s.keyWasHeld`, `s.auto`, `s.autoCount`, the `chainMinSwingTime`/`chainReleaseAngleDeg`
+upswing auto-chain-release branch in `UpdateGrapplePhysics`, and every reference to them elsewhere
+(debug panel lines, `updateSling`''s SLINGING/NONE branches; `aimHeading`''s carry-blend uses of
+`s.carry`/`s.estVel` are unaffected and stay). The jump-press dispatch
+(`WebSlinger.run.jumpQueued`, consumed in `updateWallRun`) becomes the single entry point:
+   - `SLINGING`: a jump tap always calls `releaseSling("tap released", true)` immediately -- no
+     boost leap, no angle check, nothing else.
+   - `NONE` + airborne, after wall-run/wall-latch both decline: tap shoots a new web using the new
+     direct-aim attach from point 1, then immediately applies point 2''s propel impulse.
+   - `NONE` + grounded: unaffected, a plain game jump (as today).
+- `updateSling`''s per-tick physics loop keeps running the elastic physics and the existing
+  wall-impact routing (`CheckWallCollisionDuringSwing`) exactly as today while `SLINGING` -- only
+  the attach/release triggers change, not the swing''s ongoing physics or its wall-impact handling.
+
+**4. Docs and in-mod copy.** Update `README.md`''s "First run" step that tells the player to bind a
+swing key in CET''s Bindings tab (no longer needed -- swinging uses the game''s native Jump action
+like every other WebSlinger trigger) and the Peter Parker intro text overlay
+(`WebSlinger.PeterText.body`, init.lua ~1838) which currently says "Bind a swing key in the CET
+overlay... hold it while you face the skyline, and let go to fly" -- rewrite that line to describe
+the new tap-to-shoot/tap-to-break model. Document the full new attach/propel/release model in
+`docs/DESIGN.md`, replacing the now-obsolete chain-release and boost-leap sections.
+
+## Acceptance
+
+- [ ] Facing a specific point on a building, tapping jump mid-air attaches exactly there (not some
+  other nearby qualifying point), with an immediate visible pull toward it before the swing''s
+  pendulum arc takes over.
+- [ ] Tapping jump again at any point in the swing -- top, bottom, mid-arc -- always just releases
+  with current momentum. No special behavior anywhere in the arc.
+- [ ] Tapping jump again while airborne with no web attached and no qualifying wall nearby shoots a
+  fresh web at the new aim point.
+- [ ] Near a side wall, jump still wall-runs; facing a wall head-on, jump still wall-latches;
+  web-shooting only happens when neither finds a wall, unchanged from today.
+- [ ] No dedicated swing bind exists anymore in CET''s Bindings tab for this mod (or if CET still
+  lists a now-unused registration, it''s removed from `init.lua` so there''s nothing to bind).
+- [ ] [[C2WS-T25]]''s visible cable and [[C2WS-T26]]''s hand-anchor start point keep working
+  unchanged against the new attach path (they draw from `s.anchor`/`s.pos`, which this ticket does
+  not remove).
+- [ ] Verified: point at a building, tap jump, confirm an instant visible pull toward the exact
+  aimed point followed by a normal elastic swing; tap jump again at various points in the arc and
+  confirm a plain release every time; tap once more mid-air and confirm a fresh web shoots at the
+  new look direction.
+
+## Why
+
+Directly requested by Ryan, with the two open design questions (boost-leap fate, wall-vs-web
+priority) resolved via AskUserQuestion before filing: "you dont have to hold space, you just tap
+space while in mid air to break web or shoot new web, each one acts the same... uses the real
+[p]hysics of being connected to that surface and acts like a spider man swing."', '2026-11-02T02:57:58Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T4', '## Story
 
 As V, I want a reliable way to detect nearby wall surfaces and their normals, so that every other
@@ -74949,6 +75305,9 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T13', 'C2WS-T12', '
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T22', 'C2WS-T21', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T23', 'C2WS-T22', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T26', 'C2WS-T25', 'related', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T30', 'C2WS-T23', 'related', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T30', 'C2WS-T25', 'related', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T30', 'C2WS-T26', 'related', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T5', 'C2WS-T4', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T6', 'C2WS-T4', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T6', 'C2WS-T5', 'requires', NULL);
