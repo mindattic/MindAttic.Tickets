@@ -7249,6 +7249,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1393', 'MindAttic.Orchestrator', 1393, '2026-11-01', 'fix', 'closed', 'Tab status icons don''t match actual state: most User/CLI tabs show gray ''ZZ'' instead of green spinner when active', '4c341a54', 1392, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1394', 'MindAttic.Orchestrator', 1394, '2026-11-01', 'fix', 'closed', 'Per-member usage cutoffs didn''t move the dashboard''s warn line, so a raised weekly cutoff still warned (and unpaced, held) at the org-wide 80% line', '943e6991', 1393, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1395', 'MindAttic.Orchestrator', 1395, '2026-11-02', 'feature', 'open', '5hr/Weekly limit boxes become toggle buttons that pick which chart the utilization panel draws, 5hr default', '—', 1394, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1396', 'MindAttic.Orchestrator', 1396, '2026-11-02', 'feature', 'open', 'Let a free/non-Team Claude login (ryandebraal@gmail.com) be prepared and verified in the per-CLI roster, distinct from Team members, to prove the account model isn''t single-org-hardcoded', '—', 1395, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1397', 'MindAttic.Orchestrator', 1397, '2026-11-02', 'fix', 'closed', 'org limit/allow/disallow push a live state-bus change so the running daemon wakes and applies the new cutoff at once, instead of waiting for its next tick', '—', 1396, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T1', 'MindAttic.Psst', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.PSST-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T2', 'MindAttic.Psst', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for ContactBook (Contacts/Contact.cs): Find matches name case-insensitively before phone, falls back to 10-digit phone match across formats (+1, dashes, parens), returns null for blank or unmatched input; WithAdded rejects blank name/phone and case-insensitive duplicate names and leaves the original book unchanged; WithoutContact removes only the first case-insensitive match and returns null when absent - this is how psst sms resolves recipients, so a wrong match texts the wrong person', '865fde2', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T3', 'MindAttic.Psst', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched', '—', 2, '| M.PSST-T3 | 2026-10-14 | chore | open | NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched | — |');
@@ -57291,6 +57293,15 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33626, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33627, 'PRS-T867', '2026-11-02T13:11:23Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33628, 'PRS-T867', '2026-11-02T13:12:28Z', 'working', NULL, '784263de-12c1-4daa-921e-8bea03360086');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33629, 'M.ORCH-T1395', '2026-11-02T13:32:48Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33630, 'M.ORCH-T1395', '2026-11-02T13:33:41Z', 'working', NULL, '178afef6-c0cd-4e03-8179-c21f83fb4f9c');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33631, 'M.ORCH-T1395', '2026-11-02T13:34:20Z', 'working', '178afef6-c0cd-4e03-8179-c21f83fb4f9c', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33632, 'M.ORCH-T1396', '2026-11-02T13:36:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33633, 'M.ORCH-T1396', '2026-11-02T13:37:03Z', 'working', NULL, '178afef6-c0cd-4e03-8179-c21f83fb4f9c');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33634, 'M.ORCH-T1396', '2026-11-02T13:38:15Z', 'working', '178afef6-c0cd-4e03-8179-c21f83fb4f9c', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33635, 'M.ORCH-T1397', '2026-11-02T13:41:15Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33636, 'M.ORCH-T1397', '2026-11-02T13:41:28Z', 'working', NULL, '5209f881-4f7b-4e6c-9a0e-a498629874bc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33637, 'M.ORCH-T1397', '2026-11-02T13:41:46Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33638, 'M.ORCH-T1397', '2026-11-02T13:42:19Z', 'working', '5209f881-4f7b-4e6c-9a0e-a498629874bc', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -60572,6 +60583,31 @@ selection on load is 5hr, matching the screenshot.
   toggle, reusing `MaLineChart`/`UtilizationChartData`-style converter infrastructure (new `WeeklyUtilizationChartData`
   converter, or extend the existing one) rather than a second hardcoded chart control.
 - Existing tests to check/extend: `UtilizationChartLayoutTests.cs`, `UtilizationSeriesTests.cs`, `DashboardViewModelTests.cs`.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (406, 'M.ORCH-T1396', 'ryand', '2026-11-02T13:37:46Z', 'Investigated before writing any code. Findings: no code change is needed for the core ask.
+
+- Per-CLI logins (\`AccountDirs\`, M.ORCH-T559) are keyed purely by email, one folder each under
+  \`~/.claude-accounts/<email>\`, with zero org/billing checks anywhere in the model.
+- Each login''s \`Plan\` (Budget/ClaudeAccount.cs \`AccountProfile.PlanOf\`) is read live from Claude''s own
+  \`organizationType\`/\`userRateLimitTier\` -- "Team · Max 5x", "Pro", "Max 20x", whatever Claude itself reports --
+  never assumed to be the Team org.
+- The dashboard''s tabs (\`LoginBoard.Build\`) are built from every signed-in \`AccountDir\` + the global login,
+  independent of \`MemberRoster\` (the separate, optional "org admin" roster with premium/standard Team-seat tiers)
+  and independent of \`OrgDirectory\`/\`Organization\` (an optional higher-level person-grouping switcher, default
+  group literally named "MindAttic" but just a renamable/addable row, M.ORCH-T655).
+- Confirmed the roster already mixes genuinely heterogeneous "people": \`Billing/ApiKeyPerson.cs\` (M.ORCH-T906) is
+  a login folder with NO claude.ai sign-in at all, billed by API spend instead of a Claude plan, sitting in the
+  same tab/roster UI as every Team seat -- proof this was already built as "a collection of profiles," not
+  "every tab is a Team member."
+
+Remaining gap (cosmetic only): \`AccountProfile.PlanOf\` has no mapping yet for whatever string Claude''s API
+reports for the renamed Ultra tier (no "ultra" anywhere in the codebase) -- will only be knowable once a real
+Ultra-tier account is actually signed in and we see what \`userRateLimitTier\`/\`organizationType\` says.
+
+Live test requested by the user: sign in \`ryandebraal@gmail.com\` (a personal/free Google account, not a Team
+seat) as its own per-CLI login via \`orchestrator login --account ryandebraal@gmail.com\`, to empirically confirm
+it shows up as its own independent tab/profile in Launcher + the Orchestrator dashboard, with its own plan label
+and its own usage meter, with no Team-org relationship required. Left to the user to run interactively (real
+browser OAuth, needs their own credentials) -- not something this session can complete unattended.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
@@ -67583,6 +67619,13 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1395
 ## Acceptance
 
 <!-- A checklist of what must be true for it to be done. -->', '2026-11-02T13:32:48Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1396', '## Story
+
+<!-- As a ..., I want ... so that ... -->
+
+## Acceptance
+
+<!-- A checklist of what must be true for it to be done. -->', '2026-11-02T13:36:26Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T833', 'Symptom: Inside the Orchestrator''s embedded Terminals panel (TerminalPanesHost), when a CLI running
 in a pane shows an interactive, arrow-key-driven menu (e.g. a selection list or permission prompt),
 the Up/Down/Left/Right keys don''t reach the CLI. It looks like the WPF app is intercepting/consuming
