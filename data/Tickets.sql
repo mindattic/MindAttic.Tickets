@@ -7791,6 +7791,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T51', 'Mods.Cyberpunk2077.ShootDodge', 51, '2026-11-01', 'feature', 'closed', 'Shootdodge trigger moves from Ctrl + Space to Shift + Space (Shift is sprint, sprint-jump into a dive feels natural)', 'a2e6cbc', 50, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T52', 'Mods.Cyberpunk2077.ShootDodge', 52, '2026-11-01', 'feature', 'closed', 'Bullet-time slows the world to 5% (was 20%): enemies have RPG health, a single headshot does not kill', 'a2e6cbc', 51, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T53', 'Mods.Cyberpunk2077.ShootDodge', 53, '2026-11-01', 'feature', 'closed', 'Shootdodge: weapon ready instantly (V exempt from the 5% world slow-mo so raise/aim/fire run at full speed), and landing becomes a slide (momentum kept, crouch-height camera, decelerating) instead of prone', '76c5bf9', 52, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T54', 'Mods.Cyberpunk2077.ShootDodge', 54, '2026-11-01', 'fix', 'closed', 'Max Payne intro text still describes landing prone; update to the slide landing (C2SD-T53)', 'fa186fc', 53, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T55', 'Mods.Cyberpunk2077.ShootDodge', 55, '2026-11-01', 'fix', 'closed', 'Player exemption from the 5% slow-mo does not take effect in game (dive air 0.2 s game = 4 s real); add per-entity SetIndividualTimeDilation on the player as fallback and log exemption failures', '99c9510', 54, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T1', 'Mods.Cyberpunk2077.WebSlinger', 1, '2026-11-01', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T2', 'Mods.Cyberpunk2077.WebSlinger', 2, '2026-11-01', 'feature', 'closed', 'Scaffold new repo: Cyberpunk 2077 mod for Mantis Blade wall-climb, wall-run/jump, and Spider-Man 2 style webslinging', '7aad643ac7c88e810331b43e6e85a40b41323aaf', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T3', 'Mods.Cyberpunk2077.WebSlinger', 3, '2026-11-01', 'chore', 'closed', 'Rename repo to Mods.Cyberpunk2077.WebSlinger for mod organization (GitHub + folder + refs)', '36d0a7610a8d43186a58b5ea925f2190e04bf613', 2, NULL);
@@ -7815,6 +7817,9 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T22', 'Mods.Cyberpunk2077.WebSlinger', 22, '2026-11-01', 'feature', 'closed', 'Mid-air double-jump auto-fires a web-sling toward where V is looking', '988cacf', 21, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T23', 'Mods.Cyberpunk2077.WebSlinger', 23, '2026-11-01', 'feature', 'closed', 'Bottom-of-swing boost leap: jump near arc bottom launches V toward her look direction', '618c920', 22, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T24', 'Mods.Cyberpunk2077.WebSlinger', 24, '2026-11-01', 'chore', 'closed', 'Rebuild dist zip with T21-T23 jump-to-climb/wall-run/sling/boost-leap chain', 'c63a36c', 23, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T25', 'Mods.Cyberpunk2077.WebSlinger', 25, '2026-11-01', 'feature', 'open', 'Make the swing''s hand-to-anchor rope line actually visible and cable-like in play', '—', 24, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T26', 'Mods.Cyberpunk2077.WebSlinger', 26, '2026-11-01', 'feature', 'closed', 'Visual Monowire deploy on V''s hand during a swing (cosmetic only, research RED4ext-free feasibility first)', '9dd04f7', 25, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T27', 'Mods.Cyberpunk2077.WebSlinger', 27, '2026-11-01', 'fix', 'open', 'Jump-into-wall head-on latch (C2WS-T21) reported not working in-game at all', '—', 26, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.CTD-T1', 'Mods.GTFO.CrashTestDummies', 1, '2026-10-16', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.CTD-T2', 'Mods.GTFO.CrashTestDummies', 2, '2026-10-16', 'chore', 'closed', 'install.ps1 adds this repo''s 15 .prose/commands stubs, AGENTS.md pointer for the shared global commands, so any LLM client finds them', 'mindattic-agent-standard/install.ps1 run 2026-10-16', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.CTD-T3', 'Mods.GTFO.CrashTestDummies', 3, '2026-10-16', 'chore', 'closed', 'Bug hunt: run an exhaustive /bughunt over the whole repo and fix every real bug found (each fix under its own fix ticket), then hunt again; close this only when a full pass finds nothing', '47588d8', 2, NULL);
@@ -56513,6 +56518,158 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33376, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33377, 'C2WS-T24', '2026-11-02T02:19:28Z', 'ref', '—', 'c63a36c');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33378, 'C2SD-T53', '2026-11-02T02:20:06Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33379, 'C2SD-T53', '2026-11-02T02:20:06Z', 'ref', '—', '76c5bf9');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33380, 'C2SD-T53', '2026-11-02T02:21:20Z', 'working', '6e82fb1a-2202-410b-93b9-327c9f6ad258', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33381, 'C2SD-T54', '2026-11-02T02:22:41Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33382, 'C2SD-T54', '2026-11-02T02:23:06Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33383, 'C2SD-T54', '2026-11-02T02:23:06Z', 'ref', '—', 'fa186fc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33384, 'C2WS-T25', '2026-11-02T02:26:33Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33385, 'C2WS-T26', '2026-11-02T02:26:35Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33386, 'C2WS-T25', '2026-11-02T02:26:42Z', 'description', NULL, '## Story
+
+As V, while swinging I want to clearly see a line/cable running from my hand up to whatever I''m
+anchored to, so I always know what I''m swinging off of -- not just feel it through the physics.
+
+## Context
+
+`drawRope()` (init.lua ~1815, called unconditionally from `onDraw` ~1954) already draws a thin
+white 2px line from V''s hand to `s.anchor` every frame while `WebSlinger.IsGrappling`, via
+`ImGui.GetBackgroundDrawList()` + a manual world-to-screen projection (`worldToScreen`,
+~1770, using `Game.GetCameraSystem():ProjectPoint`). This is meant to render every frame
+regardless of whether the CET overlay window is open (the standard "always-on overlay" pattern),
+but **no agent has ever confirmed in-game that it actually appears without the CET overlay open**
+-- every ticket that touched this file notes "could not run the game." Ryan reports not seeing a
+usable line while swinging.
+
+## Acceptance
+
+- [ ] First, verify in-game whether `drawRope()`''s line is visible at all while swinging with the
+  CET overlay window closed (just the console toggled off, game otherwise unpaused). If it is
+  **not** visible without the overlay open, that is the root bug: find and fix whatever CET-level
+  cause blocks `GetBackgroundDrawList`/`onDraw` drawing outside the overlay (check CET''s own docs/
+  version notes for this mod''s pinned CET version; a version gap or an API expecting the overlay''s
+  ImGui context to be active is the likely cause) rather than assuming it already works.
+- [ ] Once confirmed rendering, make it read as a cable, not a debug line: thicker (tunable, bigger
+  default than the current 2.0), a cyberpunk-appropriate color (not flat debug white -- e.g. a
+  cyan/electric-blue tint reading as a taut filament), and visually distinct from
+  `drawRaycastOverlay()`''s existing green/red/yellow debug lines so the two are never confused.
+- [ ] The line updates every frame to follow both ends live (V''s hand moving through the swing arc,
+  and the fixed anchor point) -- already true of the existing implementation, keep it that way.
+- [ ] Tunables (thickness, color) live in `WebSlinger.sling` or a new small config table, with
+  debug-panel sliders/color pickers alongside the existing swing tunables, consistent with this
+  file''s established pattern.
+- [ ] Verified: swing from a rooftop with the CET overlay closed and confirm a clearly visible line
+  runs from V''s hand to the anchor point for the whole swing, disappearing immediately on release.
+
+## Why
+
+Directly requested by Ryan: "I need the l[o]ng line in the air so I know what I''m swinging off
+of" -- today''s line exists in code but has never been confirmed visible in actual play, and even
+if it is, it currently reads as a flat debug line rather than an obvious cable.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33387, 'C2WS-T26', '2026-11-02T02:26:43Z', 'description', NULL, '## Story
+
+As V, I want my Monowire to visibly extend from my hand while swinging -- the actual cyberware
+model deploying, not just an abstract line floating in space -- so the swing reads as "I fired a
+monowire tether" rather than a debug overlay.
+
+## Context
+
+[[C2WS-T25]] makes the existing hand-to-anchor line (`drawRope()`, init.lua ~1815) clearly visible
+and cable-like, but it is still a 2D ImGui overlay line, not an actual 3D world effect, and V''s
+hands/arm show no Monowire model at all while swinging. This ticket is purely cosmetic: per the
+mod''s existing, explicit design (see `TriggerWallLatch`''s header comment and `docs/DESIGN.md`),
+**nothing in this mod ever checks or requires real equipped cyberware** -- this must stay a visual
+flourish only, never a functional gate, and must never force-change or interfere with whatever V
+actually has equipped for combat before or after the swing.
+
+This is a research-first ticket: CET''s Lua layer only hooks input, reads/writes exposed RTTI
+properties, and draws ImGui (see `docs/DESIGN.md`''s "Implementation approach" section) -- there is
+no guarantee a convincing Monowire-deploy visual is reachable without a RED4ext native plugin,
+which the README explicitly says this mod does not require. Spike the feasibility before
+committing to a specific implementation.
+
+## Acceptance
+
+- [ ] Investigate what''s reachable from CET Lua alone (no RED4ext, no redscript, matching the
+  README''s stated "nothing else" requirement) to put a Monowire-like visual on V''s arm during a
+  swing: candidates to check include (a) temporarily toggling the TPP (third-person) visual
+  equipment slot/appearance for Monowire via exposed `ItemsFactoryAppearance`/equipment RTTI
+  properties without touching the real `EquipmentSystem`/inventory state, (b) playing an existing
+  Monowire-related animation/pose via an exposed animation request, (c) a cheaper fallback: anchor
+  [[C2WS-T25]]''s visible line''s start point precisely at V''s hand/wrist bone position (via an
+  exposed bone/attachment transform) instead of her character origin, so the line at least
+  visually originates from the hand even with no weapon model shown.
+- [ ] If a genuine Monowire-model visual is reachable without RED4ext: implement it, toggled on
+  `SLINGING` entry and off on exit, `pcall`-guarded like every other engine call in this file, with
+  a debug-panel toggle and a documented fallback if the engine call fails (same pattern as
+  `setClimbInvulnerable`/polish''s FOV calls).
+- [ ] If it is **not** reasonably reachable without RED4ext: do not add a RED4ext dependency to
+  chase this (that''s a README-breaking, much larger scope change needing its own explicit go-ahead)
+  -- instead land the cheaper fallback (line anchored at the hand/wrist bone) and document the gap
+  in `docs/DESIGN.md` exactly like the C2WS-T17 Peter-Parker-phone-text gap is documented, so it''s
+  visible as a known, deliberate limitation rather than silently missing.
+- [ ] Whatever is shipped must not alter V''s actual equipped cyberware/weapon state in any way that
+  persists after the swing ends or that could affect real combat (e.g. interrupting a drawn weapon,
+  changing inventory selection) -- verify this explicitly before landing.
+- [ ] Verified (whichever path is taken): swing, confirm the visual (Monowire model or
+  hand-anchored line) reads as originating from V''s hand/arm, and confirm V''s weapon/cyberware
+  state is unchanged immediately after releasing the swing.
+
+## Why
+
+Directly requested by Ryan, as a follow-on to wanting a visible swing line: "the monowire hand
+needs to be out and a length of wire connected to it into the sky" -- purely a visual
+authenticity ask on top of [[C2WS-T25]]''s functional line-visibility fix.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33388, 'C2WS-T25', '2026-11-02T02:26:44Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33389, 'C2WS-T26', '2026-11-02T02:26:44Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33390, 'C2WS-T26', '2026-11-02T02:26:46Z', 'link', NULL, 'related C2WS-T25');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33391, 'C2WS-T25', '2026-11-02T02:26:46Z', 'link', NULL, 'C2WS-T26 related');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33392, 'C2WS-T26', '2026-11-02T02:26:53Z', 'working', NULL, 'ryandebraal@mindattic.com (808ce091-f94c-467d-a7d1-b6562cc81444)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33393, 'C2WS-T25', '2026-11-02T02:26:56Z', 'working', NULL, 'ryandebraal@mindattic.com (808ce091-f94c-467d-a7d1-b6562cc81444)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33394, 'C2WS-T27', '2026-11-02T02:28:54Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33395, 'C2WS-T27', '2026-11-02T02:29:19Z', 'description', NULL, '## Symptom
+
+Ryan reports: "the mantis climbing didnt work at all" after redeploying the C2WS-T21-T23 build
+through Vortex. T21''s own landing notes already flagged this as unverified ("Nothing has been
+tried in-game yet... noted as unverified in docs/DESIGN.md"), so this is the first real signal.
+
+Explicitly deprioritized for now -- Ryan asked to focus on C2WS-T25/T26 (visible swing line,
+Monowire hand visual) and swing-physics polish first. Leave this open and queued; do not spend
+agent time on it until those land.
+
+## Known risk areas to check first, once picked up
+
+- `WebSlinger.TryManualWallLatch()` (init.lua ~1115) only runs from `updateWallRun`''s jump
+  dispatch *after* `WebSlinger.TryManualWallRun()` returns false. If a flat wall directly ahead is
+  also being hit by `TryManualWallRun`''s forward-diagonal probes
+  (`Vector4.new(rx + hx, ry + hy, 0.0, 0.0)`, `Vector4.new(-rx + hx, -ry + hy, 0.0, 0.0)` --
+  **not normalized to unit length**, so they may reach further or behave unexpectedly vs. the
+  tuned `ManualTriggerDistance`), confirm whether those diagonal probes are incorrectly absorbing
+  head-on hits before `TryManualWallLatch` ever runs, or whether the facing-angle filter
+  (`maxFacing = min(ManualMaxFacingDot, WallLatchAngleThreshold)` = 0.75) is correctly rejecting
+  them as intended.
+- Confirm `WebSlinger.enabled` was actually ticked on in the CET overlay (it does not persist
+  across sessions per the README) and that a jump press is actually reaching
+  `observeWallRunJump`''s `Observe("PlayerPuppet", "OnAction", ...)` hook at all -- add temporary
+  logging if needed to see whether `WebSlinger.run.jumpQueued` is ever set to true, vs. the probe
+  firing but finding no qualifying hit, vs. the probe never running.
+- Confirm `cfg.ManualLatchDistance` (1.5 m default) and `cfg.probeHeight` aren''t placing the probe
+  origin/reach somewhere that misses a real wall at normal V-to-wall standing distance.
+- Get a precise repro from Ryan before assuming a specific cause: was V facing the wall head-on or
+  at an angle, standing still or moving, and did anything happen at all (wrong state entered, or
+  truly nothing)?
+
+## Test
+
+From a standstill with nothing equipped in V''s cyberware slots, face a wall head-on, press jump,
+and confirm V latches onto it and enters CLIMBING immediately.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33396, 'C2WS-T27', '2026-11-02T02:29:19Z', 'working', NULL, '808ce091-f94c-467d-a7d1-b6562cc81444');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33397, 'C2WS-T27', '2026-11-02T02:29:24Z', 'priority', '0', '-1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33398, 'C2SD-T55', '2026-11-02T02:29:41Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33399, 'C2WS-T26', '2026-11-02T02:29:42Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33400, 'C2WS-T26', '2026-11-02T02:29:42Z', 'ref', '—', '9dd04f7');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33401, 'C2WS-T27', '2026-11-02T02:29:49Z', 'working', '808ce091-f94c-467d-a7d1-b6562cc81444', 'ryandebraal@mindattic.com (808ce091-f94c-467d-a7d1-b6562cc81444)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33402, 'C2SD-T55', '2026-11-02T02:30:31Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33403, 'C2SD-T55', '2026-11-02T02:30:31Z', 'ref', '—', '99c9510');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -56584,6 +56741,9 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T22', 'approved', 0, '2026-11-02T02:02:59Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T23', 'approved', 0, '2026-11-02T02:03:00Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T24', 'approved', 0, '2026-11-02T02:19:20Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T25', 'approved', 0, '2026-11-02T02:26:44Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T26', 'approved', 0, '2026-11-02T02:26:44Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T27', 'proposed', -1, '2026-11-02T02:29:24Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T4', 'approved', 0, '2026-11-01T20:41:10Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T5', 'approved', 0, '2026-11-01T20:41:11Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T6', 'approved', 0, '2026-11-01T20:41:11Z', NULL);
@@ -59004,8 +59164,10 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('USOD-T9', 'approved', 0, '2026-10-22T23:02:27Z', NULL);
 
 -- ticket_work
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2SD-T53', NULL, 0, NULL, '6e82fb1a-2202-410b-93b9-327c9f6ad258', '2026-11-02T02:18:53Z', '2026-11-02T02:18:53Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2WS-T19', NULL, 0, 'ryandebraal@mindattic.com', '808ce091-f94c-467d-a7d1-b6562cc81444', '2026-11-01T23:29:09Z', '2026-11-01T23:29:09Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2WS-T25', NULL, 0, 'ryandebraal@mindattic.com', '808ce091-f94c-467d-a7d1-b6562cc81444', '2026-11-02T02:26:56Z', '2026-11-02T02:26:56Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2WS-T26', NULL, 0, 'ryandebraal@mindattic.com', '808ce091-f94c-467d-a7d1-b6562cc81444', '2026-11-02T02:26:53Z', '2026-11-02T02:26:53Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2WS-T27', NULL, 0, 'ryandebraal@mindattic.com', '808ce091-f94c-467d-a7d1-b6562cc81444', '2026-11-02T02:29:49Z', '2026-11-02T02:29:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
@@ -60881,6 +61043,137 @@ Directly requested by Ryan, as a follow-on to [[C2WS-T22]]: "like spiderman i ca
 bottom of the pendulum for a bursts of speed, so where the web attaches isn''t as important as where
 I am looking" -- the existing chain-release is physics-accurate but passive and anchor-geometry-
 driven; this adds the deliberate, look-driven boost leap on top of it.', '2026-11-02T02:02:58Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T25', '## Story
+
+As V, while swinging I want to clearly see a line/cable running from my hand up to whatever I''m
+anchored to, so I always know what I''m swinging off of -- not just feel it through the physics.
+
+## Context
+
+`drawRope()` (init.lua ~1815, called unconditionally from `onDraw` ~1954) already draws a thin
+white 2px line from V''s hand to `s.anchor` every frame while `WebSlinger.IsGrappling`, via
+`ImGui.GetBackgroundDrawList()` + a manual world-to-screen projection (`worldToScreen`,
+~1770, using `Game.GetCameraSystem():ProjectPoint`). This is meant to render every frame
+regardless of whether the CET overlay window is open (the standard "always-on overlay" pattern),
+but **no agent has ever confirmed in-game that it actually appears without the CET overlay open**
+-- every ticket that touched this file notes "could not run the game." Ryan reports not seeing a
+usable line while swinging.
+
+## Acceptance
+
+- [ ] First, verify in-game whether `drawRope()`''s line is visible at all while swinging with the
+  CET overlay window closed (just the console toggled off, game otherwise unpaused). If it is
+  **not** visible without the overlay open, that is the root bug: find and fix whatever CET-level
+  cause blocks `GetBackgroundDrawList`/`onDraw` drawing outside the overlay (check CET''s own docs/
+  version notes for this mod''s pinned CET version; a version gap or an API expecting the overlay''s
+  ImGui context to be active is the likely cause) rather than assuming it already works.
+- [ ] Once confirmed rendering, make it read as a cable, not a debug line: thicker (tunable, bigger
+  default than the current 2.0), a cyberpunk-appropriate color (not flat debug white -- e.g. a
+  cyan/electric-blue tint reading as a taut filament), and visually distinct from
+  `drawRaycastOverlay()`''s existing green/red/yellow debug lines so the two are never confused.
+- [ ] The line updates every frame to follow both ends live (V''s hand moving through the swing arc,
+  and the fixed anchor point) -- already true of the existing implementation, keep it that way.
+- [ ] Tunables (thickness, color) live in `WebSlinger.sling` or a new small config table, with
+  debug-panel sliders/color pickers alongside the existing swing tunables, consistent with this
+  file''s established pattern.
+- [ ] Verified: swing from a rooftop with the CET overlay closed and confirm a clearly visible line
+  runs from V''s hand to the anchor point for the whole swing, disappearing immediately on release.
+
+## Why
+
+Directly requested by Ryan: "I need the l[o]ng line in the air so I know what I''m swinging off
+of" -- today''s line exists in code but has never been confirmed visible in actual play, and even
+if it is, it currently reads as a flat debug line rather than an obvious cable.', '2026-11-02T02:26:42Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T26', '## Story
+
+As V, I want my Monowire to visibly extend from my hand while swinging -- the actual cyberware
+model deploying, not just an abstract line floating in space -- so the swing reads as "I fired a
+monowire tether" rather than a debug overlay.
+
+## Context
+
+[[C2WS-T25]] makes the existing hand-to-anchor line (`drawRope()`, init.lua ~1815) clearly visible
+and cable-like, but it is still a 2D ImGui overlay line, not an actual 3D world effect, and V''s
+hands/arm show no Monowire model at all while swinging. This ticket is purely cosmetic: per the
+mod''s existing, explicit design (see `TriggerWallLatch`''s header comment and `docs/DESIGN.md`),
+**nothing in this mod ever checks or requires real equipped cyberware** -- this must stay a visual
+flourish only, never a functional gate, and must never force-change or interfere with whatever V
+actually has equipped for combat before or after the swing.
+
+This is a research-first ticket: CET''s Lua layer only hooks input, reads/writes exposed RTTI
+properties, and draws ImGui (see `docs/DESIGN.md`''s "Implementation approach" section) -- there is
+no guarantee a convincing Monowire-deploy visual is reachable without a RED4ext native plugin,
+which the README explicitly says this mod does not require. Spike the feasibility before
+committing to a specific implementation.
+
+## Acceptance
+
+- [ ] Investigate what''s reachable from CET Lua alone (no RED4ext, no redscript, matching the
+  README''s stated "nothing else" requirement) to put a Monowire-like visual on V''s arm during a
+  swing: candidates to check include (a) temporarily toggling the TPP (third-person) visual
+  equipment slot/appearance for Monowire via exposed `ItemsFactoryAppearance`/equipment RTTI
+  properties without touching the real `EquipmentSystem`/inventory state, (b) playing an existing
+  Monowire-related animation/pose via an exposed animation request, (c) a cheaper fallback: anchor
+  [[C2WS-T25]]''s visible line''s start point precisely at V''s hand/wrist bone position (via an
+  exposed bone/attachment transform) instead of her character origin, so the line at least
+  visually originates from the hand even with no weapon model shown.
+- [ ] If a genuine Monowire-model visual is reachable without RED4ext: implement it, toggled on
+  `SLINGING` entry and off on exit, `pcall`-guarded like every other engine call in this file, with
+  a debug-panel toggle and a documented fallback if the engine call fails (same pattern as
+  `setClimbInvulnerable`/polish''s FOV calls).
+- [ ] If it is **not** reasonably reachable without RED4ext: do not add a RED4ext dependency to
+  chase this (that''s a README-breaking, much larger scope change needing its own explicit go-ahead)
+  -- instead land the cheaper fallback (line anchored at the hand/wrist bone) and document the gap
+  in `docs/DESIGN.md` exactly like the C2WS-T17 Peter-Parker-phone-text gap is documented, so it''s
+  visible as a known, deliberate limitation rather than silently missing.
+- [ ] Whatever is shipped must not alter V''s actual equipped cyberware/weapon state in any way that
+  persists after the swing ends or that could affect real combat (e.g. interrupting a drawn weapon,
+  changing inventory selection) -- verify this explicitly before landing.
+- [ ] Verified (whichever path is taken): swing, confirm the visual (Monowire model or
+  hand-anchored line) reads as originating from V''s hand/arm, and confirm V''s weapon/cyberware
+  state is unchanged immediately after releasing the swing.
+
+## Why
+
+Directly requested by Ryan, as a follow-on to wanting a visible swing line: "the monowire hand
+needs to be out and a length of wire connected to it into the sky" -- purely a visual
+authenticity ask on top of [[C2WS-T25]]''s functional line-visibility fix.', '2026-11-02T02:26:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T27', '## Symptom
+
+Ryan reports: "the mantis climbing didnt work at all" after redeploying the C2WS-T21-T23 build
+through Vortex. T21''s own landing notes already flagged this as unverified ("Nothing has been
+tried in-game yet... noted as unverified in docs/DESIGN.md"), so this is the first real signal.
+
+Explicitly deprioritized for now -- Ryan asked to focus on C2WS-T25/T26 (visible swing line,
+Monowire hand visual) and swing-physics polish first. Leave this open and queued; do not spend
+agent time on it until those land.
+
+## Known risk areas to check first, once picked up
+
+- `WebSlinger.TryManualWallLatch()` (init.lua ~1115) only runs from `updateWallRun`''s jump
+  dispatch *after* `WebSlinger.TryManualWallRun()` returns false. If a flat wall directly ahead is
+  also being hit by `TryManualWallRun`''s forward-diagonal probes
+  (`Vector4.new(rx + hx, ry + hy, 0.0, 0.0)`, `Vector4.new(-rx + hx, -ry + hy, 0.0, 0.0)` --
+  **not normalized to unit length**, so they may reach further or behave unexpectedly vs. the
+  tuned `ManualTriggerDistance`), confirm whether those diagonal probes are incorrectly absorbing
+  head-on hits before `TryManualWallLatch` ever runs, or whether the facing-angle filter
+  (`maxFacing = min(ManualMaxFacingDot, WallLatchAngleThreshold)` = 0.75) is correctly rejecting
+  them as intended.
+- Confirm `WebSlinger.enabled` was actually ticked on in the CET overlay (it does not persist
+  across sessions per the README) and that a jump press is actually reaching
+  `observeWallRunJump`''s `Observe("PlayerPuppet", "OnAction", ...)` hook at all -- add temporary
+  logging if needed to see whether `WebSlinger.run.jumpQueued` is ever set to true, vs. the probe
+  firing but finding no qualifying hit, vs. the probe never running.
+- Confirm `cfg.ManualLatchDistance` (1.5 m default) and `cfg.probeHeight` aren''t placing the probe
+  origin/reach somewhere that misses a real wall at normal V-to-wall standing distance.
+- Get a precise repro from Ryan before assuming a specific cause: was V facing the wall head-on or
+  at an angle, standing still or moving, and did anything happen at all (wrong state entered, or
+  truly nothing)?
+
+## Test
+
+From a standstill with nothing equipped in V''s cyberware slots, face a wall head-on, press jump,
+and confirm V latches onto it and enters CLIMBING immediately.', '2026-11-02T02:29:19Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T4', '## Story
 
 As V, I want a reliable way to detect nearby wall surfaces and their normals, so that every other
@@ -74599,6 +74892,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T12', 'C2WS-T6', 'r
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T13', 'C2WS-T12', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T22', 'C2WS-T21', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T23', 'C2WS-T22', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T26', 'C2WS-T25', 'related', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T5', 'C2WS-T4', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T6', 'C2WS-T4', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T6', 'C2WS-T5', 'requires', NULL);
