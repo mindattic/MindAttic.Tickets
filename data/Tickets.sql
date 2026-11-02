@@ -7275,6 +7275,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1397', 'MindAttic.Orchestrator', 1397, '2026-11-02', 'fix', 'closed', 'org limit/allow/disallow push a live state-bus change so the running daemon wakes and applies the new cutoff at once, instead of waiting for its next tick', '—', 1396, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1398', 'MindAttic.Orchestrator', 1398, '2026-11-02', 'fix', 'closed', 'RefreshWaiter.PokeNow: org limit/allow/disallow (and other state-bus changes) wake the daemon at once instead of waiting out MinGap''s 10s floor', '—', 1397, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1399', 'MindAttic.Orchestrator', 1399, '2026-11-02', 'chore', 'open', 'Restart the orchestrator app once every active CLI is idle, so Users lists the full Claude Team + ryandebraal@gmail.com (Ultra) + the API Key', '—', 1398, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1400', 'MindAttic.Orchestrator', 1400, '2026-11-02', 'fix', 'closed', 'AccountProfile.PlanOf drops a solo Max/Ultra account''s tier (reads only userRateLimitTier, null on a one-person org; the tier is in organizationRateLimitTier there) and has no Ultra label for max_20x', '—', 1399, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T1', 'MindAttic.Psst', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.PSST-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T2', 'MindAttic.Psst', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for ContactBook (Contacts/Contact.cs): Find matches name case-insensitively before phone, falls back to 10-digit phone match across formats (+1, dashes, parens), returns null for blank or unmatched input; WithAdded rejects blank name/phone and case-insensitive duplicate names and leaves the original book unchanged; WithoutContact removes only the first case-insensitive match and returns null when absent - this is how psst sms resolves recipients, so a wrong match texts the wrong person', '865fde2', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T3', 'MindAttic.Psst', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched', '—', 2, '| M.PSST-T3 | 2026-10-14 | chore | open | NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched | — |');
@@ -57447,6 +57448,10 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33724, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33725, 'M.ORCH-T1399', '2026-11-02T15:05:18Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33726, 'M.ORCH-T1258', '2026-11-02T15:05:50Z', 'working', 'ryandebraal@gmail.com (ed92e10c-6499-4acb-8226-42ef4abdeb1b)', 'ed92e10c-6499-4acb-8226-42ef4abdeb1b');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33727, 'M.ORCH-T1399', '2026-11-02T15:05:50Z', 'working', NULL, 'ed92e10c-6499-4acb-8226-42ef4abdeb1b');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33728, 'M.ORCH-T1400', '2026-11-02T15:07:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33729, 'M.ORCH-T1400', '2026-11-02T15:07:55Z', 'working', NULL, '178afef6-c0cd-4e03-8179-c21f83fb4f9c');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33730, 'M.ORCH-T1399', '2026-11-02T15:09:14Z', 'working', 'ed92e10c-6499-4acb-8226-42ef4abdeb1b', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33731, 'M.ORCH-T1400', '2026-11-02T15:10:27Z', 'status', 'open', 'closed');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -59960,7 +59965,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1258', NULL, 0, NULL, 'ed92e10c-6499-4acb-8226-42ef4abdeb1b', '2026-11-02T15:05:50Z', '2026-11-02T15:05:50Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1310', NULL, 0, 'ryandebraal@gmail.com', 'ed92e10c-6499-4acb-8226-42ef4abdeb1b', '2026-11-02T14:27:03Z', '2026-11-02T14:27:03Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1399', NULL, 0, NULL, 'ed92e10c-6499-4acb-8226-42ef4abdeb1b', '2026-11-02T15:05:50Z', '2026-11-02T15:05:50Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1400', NULL, 0, NULL, '178afef6-c0cd-4e03-8179-c21f83fb4f9c', '2026-11-02T15:07:55Z', '2026-11-02T15:07:55Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T768', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
@@ -60761,6 +60766,44 @@ and its own usage meter, with no Team-org relationship required. Left to the use
 browser OAuth, needs their own credentials) -- not something this session can complete unattended.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (407, 'COR-T3', 'ryand', '2026-11-02T13:59:15Z', 'Correcting summary: adopt MindAttic.Agency docs-site pipeline and publish README to GitHub Pages per HOUSE-LAW-14 (this is real work, not a probe).');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (408, 'M.ORCH-T1396', 'ryand', '2026-11-02T14:27:34Z', 'Live-tested: ryandebraal@gmail.com (personal Gmail, no MindAttic org/Team relationship) signed in via ''orchestrator login --account'', shows up as its own independent per-CLI login in the roster (own 5hr/weekly meter, own pace), and ran CLI work producing code -- confirmed by the user. No code changes were needed; the account model was already org-agnostic.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (409, 'M.ORCH-T1400', 'ryand', '2026-11-02T15:07:32Z', 'Confirmed with real signed-in accounts'' own ~/.claude.json (not guessed):
+
+Team-seat accounts (honey@mindattic.com, the global ohleo199@mindattic.com login, etc.):
+  organizationType: "claude_team", userRateLimitTier: "default_claude_max_5x" (their per-seat tier),
+  organizationRateLimitTier: "default_raven" (the Team org''s own pooled tier, not a per-plan label).
+
+Ryan''s personal account (ryandebraal@gmail.com), just upgraded Pro -> Ultra ($200/mo, "Max 20x" under the hood
+per Anthropic''s Oct 2026 Max-20x-to-Ultra rename):
+  organizationType: "claude_max", userRateLimitTier: null, organizationRateLimitTier: "default_claude_max_20x".
+
+A one-person account''s own tier lands in organizationRateLimitTier, not userRateLimitTier -- the field
+AccountProfile.Read (Budget/ClaudeAccount.cs) currently reads exclusively. Result: Ryan''s Ultra account''s Plan
+reads "Max" (kind only, tier lost) instead of "Ultra".
+
+Fix: AccountProfile.Read should read organizationRateLimitTier too (prefer userRateLimitTier when present --
+the per-seat case -- else fall back to organizationRateLimitTier -- the solo-account case) and PlanOf''s tier
+labels should match Anthropic''s current naming (Oct 2026 rename): "max_20x" -> "Ultra" (was "Max 20x"),
+"max_5x" -> "Max" (was "Max 5x", now just "Max"). "default_raven" matches neither substring, so it still
+resolves to no tier for Team orgs, same as before.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (410, 'M.ORCH-T1400', 'ryand', '2026-11-02T15:10:11Z', 'Fixed in Budget/AccountRoster.cs (AccountProfile.Read + PlanOf):
+- Read falls back to organizationRateLimitTier when userRateLimitTier is null (the solo-account case).
+- Tier labels renamed to match Anthropic''s Oct 2026 naming: max_5x -> "Max" (was "Max 5x"), max_20x -> "Ultra"
+  (was "Max 20x").
+- Doc-comment examples updated to match (AccountSwitch.cs SeatOrPlan, MainViewModel.Phases.cs WeeklyAccountLine).
+
+Tests updated (AccountRosterTests.cs): both PlanOf assertions ("Team · Max 5x" -> "Team · Max", "Max 20x" ->
+"Ultra") and the sign-in/dump assertions in A_new_sign_in_adds_its_row_with_who_it_is_and_the_meter. Added
+A_solo_accounts_tier_falls_back_to_the_organizations_own_rate_limit_tier, exercising AccountProfile.Read
+directly against a fixture shaped like Ryan''s real upgraded ryandebraal@gmail.com account (userRateLimitTier
+null, organizationRateLimitTier "default_claude_max_20x"), asserting Plan == "Ultra".
+
+Left unchanged (synthetic literals, not round-tripped through PlanOf, no behavior tied to the old label text):
+AccountSwitchTests.cs lines ~130/132/214-215, AccountDirsTests.cs line ~510. data/orchestrator.sql is a live
+data snapshot, not source -- it will pick up the new label text the next time those rows are observed again,
+not by hand-editing.
+
+Core, Wpf and Tests projects all build clean (0 errors/warnings). Per repo convention, did not run the test
+suite -- /test is the explicit way to ask for that.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
@@ -67779,6 +67822,17 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1396
 ## Acceptance
 
 <!-- A checklist of what must be true for it to be done. -->', '2026-11-02T13:36:26Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1400', '## Symptom
+
+<!-- What goes wrong, and how to see it. -->
+
+## Cause
+
+<!-- Why it happens, once known. -->
+
+## Test
+
+<!-- The test that fails before the fix and passes after. -->', '2026-11-02T15:07:22Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T833', 'Symptom: Inside the Orchestrator''s embedded Terminals panel (TerminalPanesHost), when a CLI running
 in a pane shows an interactive, arrow-key-driven menu (e.g. a selection list or permission prompt),
 the Up/Down/Left/Right keys don''t reach the CLI. It looks like the WPF app is intercepting/consuming
