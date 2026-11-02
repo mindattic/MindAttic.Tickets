@@ -7779,13 +7779,15 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T39', 'Mods.Cyberpunk2077.ShootDodge', 39, '2026-11-01', 'fix', 'closed', 'Bullet Time default key: move off IK_Enter (also main Enter and the on-foot dialogue confirm) to a key no vanilla context binds, verified from the user''s inputUserMappings.xml; update docs and Max''s text', '26224f4', 38, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T40', 'Mods.Cyberpunk2077.ShootDodge', 40, '2026-11-01', 'fix', 'closed', 'Bullet Time default key: user has no Mouse 4; switch the default to / (IK_Slash), verified unbound in vanilla inputUserMappings.xml; update docs and Max''s text', '57d064e', 39, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T41', 'Mods.Cyberpunk2077.ShootDodge', 41, '2026-11-01', 'chore', 'closed', 'Release v2.0.0: bump version, changelog, build dist/ShootDodge-2.0.0.zip, redeploy to the user''s Vortex', '5e40b34', 40, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T42', 'Mods.Cyberpunk2077.ShootDodge', 42, '2026-11-01', 'fix', 'open', 'ShootDodge: Cyberpunk 2077 never reaches the main menu (crash before launcher completes)', '—', 41, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T42', 'Mods.Cyberpunk2077.ShootDodge', 42, '2026-11-01', 'fix', 'closed', 'ShootDodge: Cyberpunk 2077 never reaches the main menu (crash before launcher completes)', 'b40eafb', 41, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T43', 'Mods.Cyberpunk2077.ShootDodge', 43, '2026-11-01', 'fix', 'closed', 'Game crashes with only ShootDodge 2.0.0 enabled (diagnose from logs)', 'f306434', 42, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T44', 'Mods.Cyberpunk2077.ShootDodge', 44, '2026-11-01', 'chore', 'closed', 'Release v3.0.0: bump version, changelog, build dist/ShootDodge-3.0.0.zip, redeploy to Vortex', '4a26373', 43, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T45', 'Mods.Cyberpunk2077.ShootDodge', 45, '2026-11-01', 'fix', 'closed', 'Main-menu crash: main menu world spawns a player, so drivers made game calls there; add Session gate (player + not IsPreGame + 1.5s settle)', 'b40eafb', 44, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T46', 'Mods.Cyberpunk2077.ShootDodge', 46, '2026-11-01', 'feature', 'closed', 'Shootdodge trigger is Ctrl + Space (replaces aim+jump+move combo and Space-in-Bullet-Time)', '4c659c8', 45, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T47', 'Mods.Cyberpunk2077.ShootDodge', 47, '2026-11-01', 'fix', 'closed', 'Docs: Phone Extension needs Codeware (GameInstance.GetInkSystem), docs say redscript only; list Codeware as required with Phone Extension', 'dff9393', 46, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T48', 'Mods.Cyberpunk2077.ShootDodge', 48, '2026-11-01', 'fix', 'closed', 'Input.lua: ctrlHeldByScript defined after Input.Context, so every Space press errors (nil global) and Ctrl+Space never dives', '08226ec', 47, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T49', 'Mods.Cyberpunk2077.ShootDodge', 49, '2026-11-01', 'feature', 'closed', 'Dive is a low, flat leap (not full jump height); landing slams V to the ground and pins V prone until a direction key: look around and shoot freely, no movement', 'f73b8d0', 48, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T50', 'Mods.Cyberpunk2077.ShootDodge', 50, '2026-11-01', 'fix', 'closed', 'Every dive aborts with never-left-the-ground: Input.IsGrounded (PSM LocomotionDetailed) never reports airborne in game; add a height and vertical-speed airborne check in DiveDriver', 'cdea29c', 49, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T1', 'Mods.Cyberpunk2077.WebSlinger', 1, '2026-11-01', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T2', 'Mods.Cyberpunk2077.WebSlinger', 2, '2026-11-01', 'feature', 'closed', 'Scaffold new repo: Cyberpunk 2077 mod for Mantis Blade wall-climb, wall-run/jump, and Spider-Man 2 style webslinging', '7aad643ac7c88e810331b43e6e85a40b41323aaf', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T3', 'Mods.Cyberpunk2077.WebSlinger', 3, '2026-11-01', 'chore', 'closed', 'Rename repo to Mods.Cyberpunk2077.WebSlinger for mod organization (GitHub + folder + refs)', '36d0a7610a8d43186a58b5ea925f2190e04bf613', 2, NULL);
@@ -7806,6 +7808,9 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T18', 'Mods.Cyberpunk2077.WebSlinger', 18, '2026-11-01', 'fix', 'closed', 'README Status section still says ''no gameplay is implemented yet'' after wall-climb/wall-run/web-sling landed', 'c11b31a', 17, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T19', 'Mods.Cyberpunk2077.WebSlinger', 19, '2026-11-01', 'chore', 'open', '/bughunt pass (user-invoked): exhaustive search + direct fixes across init.lua, left uncommitted for review', '—', 18, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T20', 'Mods.Cyberpunk2077.WebSlinger', 20, '2026-11-01', 'chore', 'closed', 'Un-ignore dist/ so built mod zips are tracked in git, not gitignored', 'c21a16e', 19, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T21', 'Mods.Cyberpunk2077.WebSlinger', 21, '2026-11-01', 'feature', 'closed', 'Jump directly into a wall head-on starts CLIMBING, no swing required first', '6d47017', 20, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T22', 'Mods.Cyberpunk2077.WebSlinger', 22, '2026-11-01', 'feature', 'open', 'Mid-air double-jump auto-fires a web-sling toward where V is looking', '—', 21, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T23', 'Mods.Cyberpunk2077.WebSlinger', 23, '2026-11-01', 'feature', 'open', 'Bottom-of-swing boost leap: jump near arc bottom launches V toward her look direction', '—', 22, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.CTD-T1', 'Mods.GTFO.CrashTestDummies', 1, '2026-10-16', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.CTD-T2', 'Mods.GTFO.CrashTestDummies', 2, '2026-10-16', 'chore', 'closed', 'install.ps1 adds this repo''s 15 .prose/commands stubs, AGENTS.md pointer for the shared global commands, so any LLM client finds them', 'mindattic-agent-standard/install.ps1 run 2026-10-16', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.CTD-T3', 'Mods.GTFO.CrashTestDummies', 3, '2026-10-16', 'chore', 'closed', 'Bug hunt: run an exhaustive /bughunt over the whole repo and fix every real bug found (each fix under its own fix ticket), then hunt again; close this only when a full pass finds nothing', '47588d8', 2, NULL);
@@ -56300,6 +56305,187 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33315, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33316, 'C2SD-T48', '2026-11-02T01:45:53Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33317, 'C2SD-T48', '2026-11-02T01:45:53Z', 'ref', '—', '08226ec');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33318, 'C2SD-T48', '2026-11-02T01:46:22Z', 'working', '6e82fb1a-2202-410b-93b9-327c9f6ad258', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33319, 'C2SD-T49', '2026-11-02T01:53:08Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33320, 'C2SD-T49', '2026-11-02T01:53:24Z', 'working', NULL, '6e82fb1a-2202-410b-93b9-327c9f6ad258');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33321, 'C2SD-T49', '2026-11-02T01:55:04Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33322, 'C2SD-T49', '2026-11-02T01:55:04Z', 'ref', '—', 'f73b8d0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33323, 'C2SD-T49', '2026-11-02T01:55:40Z', 'working', '6e82fb1a-2202-410b-93b9-327c9f6ad258', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33324, 'C2SD-T50', '2026-11-02T01:59:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33325, 'C2SD-T50', '2026-11-02T02:00:05Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33326, 'C2SD-T50', '2026-11-02T02:00:05Z', 'ref', '—', 'cdea29c');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33327, 'C2SD-T50', '2026-11-02T02:00:06Z', 'working', NULL, '6e82fb1a-2202-410b-93b9-327c9f6ad258');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33328, 'C2SD-T50', '2026-11-02T02:00:27Z', 'working', '6e82fb1a-2202-410b-93b9-327c9f6ad258', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33329, 'C2WS-T21', '2026-11-02T02:01:11Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33330, 'C2WS-T21', '2026-11-02T02:01:15Z', 'description', NULL, '## Story
+
+As V, I want pressing jump while facing a wall roughly straight ahead (on foot or in open air, no
+web-sling swing needed first) to latch me onto it and start climbing immediately, the same way
+`WebSlinger.TryManualWallRun()` already lets a side-facing jump start a wall-run. Right now
+`TriggerWallLatch` (CLIMBING) only ever fires from a swing impact (`CheckWallCollisionDuringSwing`,
+gated on `IsGrappling`) or from a wall-jump''s in-flight wall catch -- there is no way to start
+vertical traversal from a plain jump on the ground.
+
+## Context
+
+`WebSlinger.TryManualWallRun()` (init.lua ~1056) is the existing manual, jump-triggered entry
+point from `States.NONE`, but it explicitly excludes a wall straight ahead (comment: "a wall
+straight ahead does not count") via `ManualMaxFacingDot`, since it''s built for side walls only. It
+is called from `updateWallRun(dt)` (~1135) when a queued jump is consumed while `state == NONE`.
+
+## Acceptance
+
+- [ ] A new manual head-on entry point (e.g. `WebSlinger.TryManualWallLatch()`) runs from the same
+  jump-press trigger as `TryManualWallRun`, when `WebSlinger.state == States.NONE`: probe roughly
+  straight ahead of V''s aim/facing (reuse `WebSlinger.ExecuteSmartRaycast`, a facing-dot check that
+  is the complement of `TryManualWallRun`''s side-only filter -- i.e. accept a wall that
+  `TryManualWallRun` would reject as "straight ahead") out to a tunable distance (can reuse or
+  parallel `wallrun.ManualTriggerDistance`).
+- [ ] On a qualifying hit, call `WebSlinger.TriggerWallLatch(wallNormal, hitPos, velocity)` directly
+  -- no swing or wall-jump flight required first, no equipment/cyberware check (same as every other
+  entry point in this mod).
+- [ ] Decide and document in `docs/DESIGN.md` the order of checks in `updateWallRun`''s jump
+  handling: try the manual wall-run (side) probe first, then the new head-on latch probe, so one
+  jump press can''t trigger both; a wall that is genuinely ambiguous (near the facing-dot boundary)
+  should prefer whichever existing angle threshold convention `CheckWallCollisionDuringSwing`
+  already uses for latch-vs-run, for consistency.
+- [ ] Works equally whether V is standing still, walking, running, or mid-air (falling) toward the
+  wall -- not gated on any minimum approach speed the way the swing-impact path is, since this is a
+  deliberate player action (a press), not an incidental physics event.
+- [ ] Verified: from a standing or running start with nothing equipped in V''s cyberware slots and
+  no web-sling swing active, face a wall head-on, press jump, and confirm V latches onto it and
+  enters CLIMBING immediately (no need to swing into it first).
+
+## Why
+
+Directly requested by Ryan: "no I want to be able to jump into a wall and the vertical traversal
+starts" -- today climbing only triggers off swing/wall-jump momentum, not a plain jump at a wall,
+which doesn''t match the out-of-the-box Spider-Man-style traversal the mod is meant to provide.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33331, 'C2WS-T21', '2026-11-02T02:01:17Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33332, 'C2WS-T21', '2026-11-02T02:01:30Z', 'working', NULL, '808ce091-f94c-467d-a7d1-b6562cc81444');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33333, 'C2WS-T22', '2026-11-02T02:02:48Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33334, 'C2WS-T23', '2026-11-02T02:02:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33335, 'C2WS-T22', '2026-11-02T02:02:57Z', 'description', NULL, '## Story
+
+As V, I want a second jump press while already airborne (having left the ground on a normal jump,
+not currently in any WebSlinger traversal state) to auto-fire a web-sling toward wherever I''m
+looking, so I can navigate Night City just by looking and tapping jump -- jump to get airborne,
+jump again to swing -- without needing to hold a separate dedicated swing bind every time.
+
+## Context
+
+Today, attaching a swing only happens through `registerInput("webslinger_swing", ...)` /
+`s.keyHeld` polled in `updateSling` (init.lua ~1198-1246): the player must hold a CET-bound key,
+and `tryAttach(player)` (calls `WebSlinger.FindAnchor`) only runs while that key is held and
+`WebSlinger.state == States.NONE`. There is already a jump-press observer,
+`observeWallRunJump`/`WebSlinger.run.jumpQueued`, consumed once per tick in `updateWallRun(dt)`
+(~1135): currently it only does something when `state == WALLRUNNING` (wall-jump) or
+`state == NONE` (`WebSlinger.TryManualWallRun()`, side walls only). [[C2WS-T21]] adds a third
+consumer of the same jump press for a straight-ahead wall (manual wall-latch/climb).
+
+## Acceptance
+
+- [ ] When a jump is pressed while `WebSlinger.state == States.NONE` and V is airborne (not
+  grounded -- reuse the existing `isGrounded(pos)` helper, init.lua ~405), run checks in this
+  order so one press can''t double-trigger: (1) [[C2WS-T21]]''s manual head-on wall-latch probe, (2)
+  `TryManualWallRun`''s side-wall probe, (3) if neither finds a qualifying wall, auto-fire a
+  web-sling: call the same anchor search and attach path `tryAttach(player)` uses
+  (`WebSlinger.FindAnchor` toward V''s aim/facing heading), entering `States.SLINGING` directly --
+  no need for the player to be holding the `webslinger_swing` bind for this particular trigger.
+- [ ] A jump press while grounded is unaffected (behaves exactly as before: normal game jump, plus
+  the existing side-wall manual trigger already available from the ground) -- the new auto-sling
+  path only engages when already airborne, matching "jump, then jump again mid-air."
+- [ ] Once auto-fired this way, the swing behaves identically to a manually-held swing in every
+  other respect (release behavior, chain-release, momentum carry, wall-impact routing via
+  [[C2WS-T7]]/[[C2WS-T9]]) -- document in `docs/DESIGN.md` whether letting go requires the
+  dedicated swing bind to be released, or whether a plain timeout/second jump also lets go, and
+  pick whichever reads least surprising given the existing hold-to-swing convention.
+- [ ] If `WebSlinger.FindAnchor` finds no qualifying anchor (nothing to swing from in the look
+  direction), the jump press falls through to a normal native jump -- no silent failure, no stuck
+  state.
+- [ ] Verified: starting from a standstill with nothing equipped in V''s cyberware slots, look
+  roughly toward a tall building, press jump once to leave the ground, press jump again before
+  landing, and confirm V auto-attaches and swings in the looked-at direction with no dedicated
+  swing key held.
+
+## Why
+
+Directly requested by Ryan: "when I jump and press jump in mid air thats when the spiderman
+physics take over and it should swing me in the direction i''m facing so I can navigate just by
+looking" -- today''s hold-a-dedicated-bind-to-swing model works but doesn''t match this "just look
+and jump-jump" navigation feel.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33336, 'C2WS-T23', '2026-11-02T02:02:58Z', 'description', NULL, '## Story
+
+As V, I want to press jump while swinging, near the bottom of the pendulum arc, to let go with a
+deliberate burst of speed launched toward wherever I''m currently looking -- like Spider-Man''s
+swing-boost leap -- rather than just keeping whatever raw tangential velocity the pendulum physics
+happened to produce. Where the web is anchored shouldn''t matter for this: the boost direction comes
+from my aim/camera heading, not the anchor''s geometry.
+
+## Context
+
+`WebSlinger.UpdateGrapplePhysics` (init.lua ~499-577) already has one release-while-swinging path,
+the automatic **chain release**: with the swing key still held, once V has swung past the bottom of
+the arc by `cfg.chainReleaseAngleDeg` and is rising (`v.z > 0.0`), letting go happens automatically
+and keeps her exact raw velocity (`releaseSling("chain release", true)`). That''s a passive,
+physics-only release. This ticket adds a second, player-initiated release: a deliberate jump press
+specifically near the *bottom* of the arc (not past it, not rising) that overrides the raw pendulum
+velocity with a boosted vector aimed where V is looking.
+
+Jump presses are already centrally queued by `observeWallRunJump`/`WebSlinger.run.jumpQueued` and
+consumed once per tick (`updateWallRun(dt)`, ~1135), currently only acting while `WALLRUNNING`
+(wall-jump) or `NONE` ([[C2WS-T21]], [[C2WS-T22]] add more `NONE` consumers). This ticket adds a
+`SLINGING` branch to that same jump consumption.
+
+## Acceptance
+
+- [ ] Define a "bottom window": while `WebSlinger.state == States.SLINGING`, V counts as near the
+  bottom of the arc when the angle from straight-down (the same `angleFromBottom` calculation
+  already used for chain release, measured from the anchor to V''s hand point) is within a tunable
+  `cfg.leapBottomWindowDeg` of 0 -- i.e. a band straddling the lowest point, not just the single
+  instant of true bottom.
+- [ ] A jump press while `SLINGING` and inside that bottom window releases the swing
+  (`releaseSling("boost leap", true)`) but **before** handing off, overwrites `s.vel`''s horizontal
+  (and optionally a tunable vertical lift) components: direction = V''s current aim/facing heading
+  (`aimHeading(player, false)`, the same helper swing-steering already uses), magnitude = a tunable
+  `cfg.leapBoostSpeed` (a clear speed bump over typical mid-swing speed, not just whatever the
+  pendulum''s raw speed was) -- blend with existing speed if that reads better than a hard
+  overwrite, document whichever is chosen in `docs/DESIGN.md`.
+- [ ] A jump press while `SLINGING` but outside the bottom window does **not** trigger this (no
+  change to existing behavior there -- the player just keeps swinging).
+- [ ] After the leap, V is in the same momentum-carry state (`s.carry = true`) a normal release
+  already produces, so existing wall-impact routing ([[C2WS-T7]]), wall-jump flight-catch
+  ([[C2WS-T11]]), and re-sling ([[C2WS-T12]]) all still apply to the boosted velocity exactly as
+  they do to any other carried release.
+- [ ] Verified: mid-swing, time a jump press for the bottom of the arc while looking in a direction
+  different from the raw swing''s travel direction, and confirm V launches toward where she''s
+  looking (not the pendulum''s own exit trajectory) with a noticeable speed increase.
+
+## Why
+
+Directly requested by Ryan, as a follow-on to [[C2WS-T22]]: "like spiderman i can leap off at the
+bottom of the pendulum for a bursts of speed, so where the web attaches isn''t as important as where
+I am looking" -- the existing chain-release is physics-accurate but passive and anchor-geometry-
+driven; this adds the deliberate, look-driven boost leap on top of it.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33337, 'C2WS-T22', '2026-11-02T02:02:59Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33338, 'C2WS-T23', '2026-11-02T02:03:00Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33339, 'C2WS-T23', '2026-11-02T02:03:17Z', 'working', NULL, '808ce091-f94c-467d-a7d1-b6562cc81444');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33340, 'C2WS-T22', '2026-11-02T02:03:18Z', 'working', NULL, '808ce091-f94c-467d-a7d1-b6562cc81444');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33341, 'C2WS-T22', '2026-11-02T02:03:21Z', 'link', NULL, 'requires C2WS-T21');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33342, 'C2WS-T21', '2026-11-02T02:03:22Z', 'link', NULL, 'C2WS-T22 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33343, 'C2WS-T23', '2026-11-02T02:03:23Z', 'link', NULL, 'requires C2WS-T22');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33344, 'C2WS-T22', '2026-11-02T02:03:23Z', 'link', NULL, 'C2WS-T23 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33345, 'C2WS-T21', '2026-11-02T02:03:36Z', 'working', '808ce091-f94c-467d-a7d1-b6562cc81444', 'ryandebraal@mindattic.com (808ce091-f94c-467d-a7d1-b6562cc81444)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33346, 'C2WS-T22', '2026-11-02T02:03:48Z', 'working', '808ce091-f94c-467d-a7d1-b6562cc81444', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33347, 'C2WS-T23', '2026-11-02T02:03:48Z', 'working', '808ce091-f94c-467d-a7d1-b6562cc81444', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33348, 'C2WS-T21', '2026-11-02T02:06:38Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33349, 'C2WS-T21', '2026-11-02T02:06:38Z', 'ref', '—', '6d47017');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33350, 'C2WS-T21', '2026-11-02T02:06:57Z', 'working', 'ryandebraal@mindattic.com (808ce091-f94c-467d-a7d1-b6562cc81444)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33351, 'C2WS-T22', '2026-11-02T02:07:18Z', 'working', NULL, 'ryandebraal@mindattic.com (808ce091-f94c-467d-a7d1-b6562cc81444)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33352, 'C2SD-T42', '2026-11-02T02:08:05Z', 'working', '9a951750-8de4-4e42-91ff-feafc65899d8', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33353, 'C2SD-T42', '2026-11-02T02:09:37Z', 'working', NULL, 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33354, 'C2SD-T42', '2026-11-02T02:09:54Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33355, 'C2SD-T42', '2026-11-02T02:09:54Z', 'ref', '—', 'b40eafb');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33356, 'C2SD-T42', '2026-11-02T02:10:00Z', 'working', 'ryandebraal@mindattic.com (6e82fb1a-2202-410b-93b9-327c9f6ad258)', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -56367,6 +56553,9 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T17', 'approved', 0, '2026-11-01T21:52:04Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T19', 'approved', 0, '2026-11-01T23:27:17Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T20', 'approved', 0, '2026-11-01T23:29:59Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T21', 'approved', 0, '2026-11-02T02:01:17Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T22', 'approved', 0, '2026-11-02T02:02:59Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T23', 'approved', 0, '2026-11-02T02:03:00Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T4', 'approved', 0, '2026-11-01T20:41:10Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T5', 'approved', 0, '2026-11-01T20:41:11Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T6', 'approved', 0, '2026-11-01T20:41:11Z', NULL);
@@ -58787,8 +58976,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('USOD-T9', 'approved', 0, '2026-10-22T23:02:27Z', NULL);
 
 -- ticket_work
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2SD-T42', NULL, 0, NULL, '9a951750-8de4-4e42-91ff-feafc65899d8', '2026-11-02T01:15:59Z', '2026-11-02T01:15:59Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2WS-T19', NULL, 0, 'ryandebraal@mindattic.com', '808ce091-f94c-467d-a7d1-b6562cc81444', '2026-11-01T23:29:09Z', '2026-11-01T23:29:09Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2WS-T22', NULL, 0, 'ryandebraal@mindattic.com', '808ce091-f94c-467d-a7d1-b6562cc81444', '2026-11-02T02:07:18Z', '2026-11-02T02:07:18Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
@@ -60518,6 +60707,152 @@ wall-climb, wall-run, Peter Parker text, Vortex packaging) versus what is still 
 C2WS-T11), and no longer claims "no gameplay is implemented yet". The "Planned mechanics" section
 either reflects current status per mechanic or is removed/merged now that `docs/DESIGN.md` covers
 implementation detail.', '2026-11-01T22:55:26Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T21', '## Story
+
+As V, I want pressing jump while facing a wall roughly straight ahead (on foot or in open air, no
+web-sling swing needed first) to latch me onto it and start climbing immediately, the same way
+`WebSlinger.TryManualWallRun()` already lets a side-facing jump start a wall-run. Right now
+`TriggerWallLatch` (CLIMBING) only ever fires from a swing impact (`CheckWallCollisionDuringSwing`,
+gated on `IsGrappling`) or from a wall-jump''s in-flight wall catch -- there is no way to start
+vertical traversal from a plain jump on the ground.
+
+## Context
+
+`WebSlinger.TryManualWallRun()` (init.lua ~1056) is the existing manual, jump-triggered entry
+point from `States.NONE`, but it explicitly excludes a wall straight ahead (comment: "a wall
+straight ahead does not count") via `ManualMaxFacingDot`, since it''s built for side walls only. It
+is called from `updateWallRun(dt)` (~1135) when a queued jump is consumed while `state == NONE`.
+
+## Acceptance
+
+- [ ] A new manual head-on entry point (e.g. `WebSlinger.TryManualWallLatch()`) runs from the same
+  jump-press trigger as `TryManualWallRun`, when `WebSlinger.state == States.NONE`: probe roughly
+  straight ahead of V''s aim/facing (reuse `WebSlinger.ExecuteSmartRaycast`, a facing-dot check that
+  is the complement of `TryManualWallRun`''s side-only filter -- i.e. accept a wall that
+  `TryManualWallRun` would reject as "straight ahead") out to a tunable distance (can reuse or
+  parallel `wallrun.ManualTriggerDistance`).
+- [ ] On a qualifying hit, call `WebSlinger.TriggerWallLatch(wallNormal, hitPos, velocity)` directly
+  -- no swing or wall-jump flight required first, no equipment/cyberware check (same as every other
+  entry point in this mod).
+- [ ] Decide and document in `docs/DESIGN.md` the order of checks in `updateWallRun`''s jump
+  handling: try the manual wall-run (side) probe first, then the new head-on latch probe, so one
+  jump press can''t trigger both; a wall that is genuinely ambiguous (near the facing-dot boundary)
+  should prefer whichever existing angle threshold convention `CheckWallCollisionDuringSwing`
+  already uses for latch-vs-run, for consistency.
+- [ ] Works equally whether V is standing still, walking, running, or mid-air (falling) toward the
+  wall -- not gated on any minimum approach speed the way the swing-impact path is, since this is a
+  deliberate player action (a press), not an incidental physics event.
+- [ ] Verified: from a standing or running start with nothing equipped in V''s cyberware slots and
+  no web-sling swing active, face a wall head-on, press jump, and confirm V latches onto it and
+  enters CLIMBING immediately (no need to swing into it first).
+
+## Why
+
+Directly requested by Ryan: "no I want to be able to jump into a wall and the vertical traversal
+starts" -- today climbing only triggers off swing/wall-jump momentum, not a plain jump at a wall,
+which doesn''t match the out-of-the-box Spider-Man-style traversal the mod is meant to provide.', '2026-11-02T02:01:15Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T22', '## Story
+
+As V, I want a second jump press while already airborne (having left the ground on a normal jump,
+not currently in any WebSlinger traversal state) to auto-fire a web-sling toward wherever I''m
+looking, so I can navigate Night City just by looking and tapping jump -- jump to get airborne,
+jump again to swing -- without needing to hold a separate dedicated swing bind every time.
+
+## Context
+
+Today, attaching a swing only happens through `registerInput("webslinger_swing", ...)` /
+`s.keyHeld` polled in `updateSling` (init.lua ~1198-1246): the player must hold a CET-bound key,
+and `tryAttach(player)` (calls `WebSlinger.FindAnchor`) only runs while that key is held and
+`WebSlinger.state == States.NONE`. There is already a jump-press observer,
+`observeWallRunJump`/`WebSlinger.run.jumpQueued`, consumed once per tick in `updateWallRun(dt)`
+(~1135): currently it only does something when `state == WALLRUNNING` (wall-jump) or
+`state == NONE` (`WebSlinger.TryManualWallRun()`, side walls only). [[C2WS-T21]] adds a third
+consumer of the same jump press for a straight-ahead wall (manual wall-latch/climb).
+
+## Acceptance
+
+- [ ] When a jump is pressed while `WebSlinger.state == States.NONE` and V is airborne (not
+  grounded -- reuse the existing `isGrounded(pos)` helper, init.lua ~405), run checks in this
+  order so one press can''t double-trigger: (1) [[C2WS-T21]]''s manual head-on wall-latch probe, (2)
+  `TryManualWallRun`''s side-wall probe, (3) if neither finds a qualifying wall, auto-fire a
+  web-sling: call the same anchor search and attach path `tryAttach(player)` uses
+  (`WebSlinger.FindAnchor` toward V''s aim/facing heading), entering `States.SLINGING` directly --
+  no need for the player to be holding the `webslinger_swing` bind for this particular trigger.
+- [ ] A jump press while grounded is unaffected (behaves exactly as before: normal game jump, plus
+  the existing side-wall manual trigger already available from the ground) -- the new auto-sling
+  path only engages when already airborne, matching "jump, then jump again mid-air."
+- [ ] Once auto-fired this way, the swing behaves identically to a manually-held swing in every
+  other respect (release behavior, chain-release, momentum carry, wall-impact routing via
+  [[C2WS-T7]]/[[C2WS-T9]]) -- document in `docs/DESIGN.md` whether letting go requires the
+  dedicated swing bind to be released, or whether a plain timeout/second jump also lets go, and
+  pick whichever reads least surprising given the existing hold-to-swing convention.
+- [ ] If `WebSlinger.FindAnchor` finds no qualifying anchor (nothing to swing from in the look
+  direction), the jump press falls through to a normal native jump -- no silent failure, no stuck
+  state.
+- [ ] Verified: starting from a standstill with nothing equipped in V''s cyberware slots, look
+  roughly toward a tall building, press jump once to leave the ground, press jump again before
+  landing, and confirm V auto-attaches and swings in the looked-at direction with no dedicated
+  swing key held.
+
+## Why
+
+Directly requested by Ryan: "when I jump and press jump in mid air thats when the spiderman
+physics take over and it should swing me in the direction i''m facing so I can navigate just by
+looking" -- today''s hold-a-dedicated-bind-to-swing model works but doesn''t match this "just look
+and jump-jump" navigation feel.', '2026-11-02T02:02:57Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T23', '## Story
+
+As V, I want to press jump while swinging, near the bottom of the pendulum arc, to let go with a
+deliberate burst of speed launched toward wherever I''m currently looking -- like Spider-Man''s
+swing-boost leap -- rather than just keeping whatever raw tangential velocity the pendulum physics
+happened to produce. Where the web is anchored shouldn''t matter for this: the boost direction comes
+from my aim/camera heading, not the anchor''s geometry.
+
+## Context
+
+`WebSlinger.UpdateGrapplePhysics` (init.lua ~499-577) already has one release-while-swinging path,
+the automatic **chain release**: with the swing key still held, once V has swung past the bottom of
+the arc by `cfg.chainReleaseAngleDeg` and is rising (`v.z > 0.0`), letting go happens automatically
+and keeps her exact raw velocity (`releaseSling("chain release", true)`). That''s a passive,
+physics-only release. This ticket adds a second, player-initiated release: a deliberate jump press
+specifically near the *bottom* of the arc (not past it, not rising) that overrides the raw pendulum
+velocity with a boosted vector aimed where V is looking.
+
+Jump presses are already centrally queued by `observeWallRunJump`/`WebSlinger.run.jumpQueued` and
+consumed once per tick (`updateWallRun(dt)`, ~1135), currently only acting while `WALLRUNNING`
+(wall-jump) or `NONE` ([[C2WS-T21]], [[C2WS-T22]] add more `NONE` consumers). This ticket adds a
+`SLINGING` branch to that same jump consumption.
+
+## Acceptance
+
+- [ ] Define a "bottom window": while `WebSlinger.state == States.SLINGING`, V counts as near the
+  bottom of the arc when the angle from straight-down (the same `angleFromBottom` calculation
+  already used for chain release, measured from the anchor to V''s hand point) is within a tunable
+  `cfg.leapBottomWindowDeg` of 0 -- i.e. a band straddling the lowest point, not just the single
+  instant of true bottom.
+- [ ] A jump press while `SLINGING` and inside that bottom window releases the swing
+  (`releaseSling("boost leap", true)`) but **before** handing off, overwrites `s.vel`''s horizontal
+  (and optionally a tunable vertical lift) components: direction = V''s current aim/facing heading
+  (`aimHeading(player, false)`, the same helper swing-steering already uses), magnitude = a tunable
+  `cfg.leapBoostSpeed` (a clear speed bump over typical mid-swing speed, not just whatever the
+  pendulum''s raw speed was) -- blend with existing speed if that reads better than a hard
+  overwrite, document whichever is chosen in `docs/DESIGN.md`.
+- [ ] A jump press while `SLINGING` but outside the bottom window does **not** trigger this (no
+  change to existing behavior there -- the player just keeps swinging).
+- [ ] After the leap, V is in the same momentum-carry state (`s.carry = true`) a normal release
+  already produces, so existing wall-impact routing ([[C2WS-T7]]), wall-jump flight-catch
+  ([[C2WS-T11]]), and re-sling ([[C2WS-T12]]) all still apply to the boosted velocity exactly as
+  they do to any other carried release.
+- [ ] Verified: mid-swing, time a jump press for the bottom of the arc while looking in a direction
+  different from the raw swing''s travel direction, and confirm V launches toward where she''s
+  looking (not the pendulum''s own exit trajectory) with a noticeable speed increase.
+
+## Why
+
+Directly requested by Ryan, as a follow-on to [[C2WS-T22]]: "like spiderman i can leap off at the
+bottom of the pendulum for a bursts of speed, so where the web attaches isn''t as important as where
+I am looking" -- the existing chain-release is physics-accurate but passive and anchor-geometry-
+driven; this adds the deliberate, look-driven boost leap on top of it.', '2026-11-02T02:02:58Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T4', '## Story
 
 As V, I want a reliable way to detect nearby wall surfaces and their normals, so that every other
@@ -74234,6 +74569,8 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T11', 'C2WS-T9', 'r
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T12', 'C2WS-T11', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T12', 'C2WS-T6', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T13', 'C2WS-T12', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T22', 'C2WS-T21', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T23', 'C2WS-T22', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T5', 'C2WS-T4', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T6', 'C2WS-T4', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T6', 'C2WS-T5', 'requires', NULL);
