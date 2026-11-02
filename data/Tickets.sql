@@ -7810,6 +7810,11 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T62', 'Mods.Cyberpunk2077.ShootDodge', 62, '2026-11-01', 'fix', 'closed', 'Fake slide breaks the landing (camera drop/raise, pushes fighting the game landing, get-up 2.5 m/s brake): land on feet keeping momentum; also landing on a surface higher than launch never registered (time-limit aborts)', '7202115', 61, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T63', 'Mods.Cyberpunk2077.ShootDodge', 63, '2026-11-01', 'fix', 'closed', 'Dive is jaggy and stops mid-air: per-frame PSM impulses jolt V and the arc apex (vz near 0) is mistaken for a landing; use one launch impulse only and require a fall or 0.1 s of stillness before a landing counts', 'cca42e0', 62, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T64', 'Mods.Cyberpunk2077.ShootDodge', 64, '2026-11-01', 'chore', 'closed', 'Review the whole mod against Max Payne 2 bullet time and shootdodge mechanics (research the real MP2 behavior) and list every gap with a fix recommendation', 'cca42e0', 63, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T65', 'Mods.Cyberpunk2077.ShootDodge', 65, '2026-11-01', 'feature', 'closed', 'Flatten the dive: fold a downward cut into the single launch impulse (negative launchLift) and log V vertical speed after launch to verify (MP2 dive is low and flat)', 'c3d5ad0', 64, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T66', 'Mods.Cyberpunk2077.ShootDodge', 66, '2026-11-01', 'feature', 'closed', 'Bullet Time mode deepens with kills like MP2: own mode factor starting shallow (0.35) and deepening toward 0.10 with kills in the mode; the dive stays at 5%', 'fb90501', 65, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T67', 'Mods.Cyberpunk2077.ShootDodge', 67, '2026-11-01', 'feature', 'closed', 'Bullet Time mode cues: music/ambience muffle (and yellow tint if a lever exists) while Bullet Time mode is on, not only during the dive', '14059f8', 66, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T68', 'Mods.Cyberpunk2077.ShootDodge', 68, '2026-11-01', 'feature', 'closed', 'Optional MP2 lie-and-fire landing: CET overlay switch for prone landing (eye low, hold until a fresh direction press); landing on feet stays the default', '403766f', 67, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T69', 'Mods.Cyberpunk2077.ShootDodge', 69, '2026-11-01', 'docs', 'closed', 'Docs for the Max Payne 2 alignment (C2SD-T63 to T68): clean launch arc, flat dive, Bullet Time mode depth with kills, mode muffle, lie-and-fire option; fix stale comments in DiveDriver.lua and ComboDetector.lua', '03f579d', 68, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T1', 'Mods.Cyberpunk2077.WebSlinger', 1, '2026-11-01', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T2', 'Mods.Cyberpunk2077.WebSlinger', 2, '2026-11-01', 'feature', 'closed', 'Scaffold new repo: Cyberpunk 2077 mod for Mantis Blade wall-climb, wall-run/jump, and Spider-Man 2 style webslinging', '7aad643ac7c88e810331b43e6e85a40b41323aaf', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T3', 'Mods.Cyberpunk2077.WebSlinger', 3, '2026-11-01', 'chore', 'closed', 'Rename repo to Mods.Cyberpunk2077.WebSlinger for mod organization (GitHub + folder + refs)', '36d0a7610a8d43186a58b5ea925f2190e04bf613', 2, NULL);
@@ -7840,7 +7845,17 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T28', 'Mods.Cyberpunk2077.WebSlinger', 28, '2026-11-01', 'chore', 'closed', 'Rebuild dist zip with T25-T27 visible rope line, Monowire hand anchor, latch diagnostics', '1f82054', 27, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T29', 'Mods.Cyberpunk2077.WebSlinger', 29, '2026-11-01', 'fix', 'closed', 'Hide the swing cable''s near end: push its start point low/center instead of lower-right in view', '80bd06f', 28, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T30', 'Mods.Cyberpunk2077.WebSlinger', 30, '2026-11-01', 'feature', 'closed', 'Direct-aim web attach, propel-then-elastic physics, tap-only shoot/break controls', '76d79f4', 29, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T31', 'Mods.Cyberpunk2077.WebSlinger', 31, '2026-11-01', 'chore', 'open', 'Review whole mod against Marvel''s Spider-Man 2 web-swinging and file alignment tickets', '—', 30, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T31', 'Mods.Cyberpunk2077.WebSlinger', 31, '2026-11-01', 'chore', 'closed', 'Review whole mod against Marvel''s Spider-Man 2 web-swinging and file alignment tickets', '—', 30, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T32', 'Mods.Cyberpunk2077.WebSlinger', 32, '2026-11-01', 'feature', 'closed', 'Swing feel: near-fixed-length pendulum that keeps speed through the bottom, no reel-in to the anchor (SM2 alignment)', '390495b', 31, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T33', 'Mods.Cyberpunk2077.WebSlinger', 33, '2026-11-01', 'feature', 'open', 'Low swings skim the ground instead of landing dead: shorten the web near the street (SM2 alignment)', '—', 32, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T34', 'Mods.Cyberpunk2077.WebSlinger', 34, '2026-11-01', 'feature', 'closed', 'Auto-anchor fallback: crosshair on open sky attaches above and ahead along travel direction (SM2 alignment)', '2e8d6c1', 33, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T35', 'Mods.Cyberpunk2077.WebSlinger', 35, '2026-11-01', 'feature', 'open', 'Timed swing boost: tap near the bottom of the arc launches forward faster, else plain release (SM2 alignment)', '—', 34, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T36', 'Mods.Cyberpunk2077.WebSlinger', 36, '2026-11-01', 'feature', 'closed', 'Speed-scaled camera FOV while swinging, eased and always restored (SM2 alignment)', 'bbe4edb', 35, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T37', 'Mods.Cyberpunk2077.WebSlinger', 37, '2026-11-01', 'feature', 'open', 'Web zip: mid-air dash forward on a quick double web for sharp turns between swings (SM2, future)', '—', 36, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T38', 'Mods.Cyberpunk2077.WebSlinger', 38, '2026-11-01', 'feature', 'open', 'Dive: point down to dive and gain speed, then turn it into a faster swing (SM2, future)', '—', 37, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T39', 'Mods.Cyberpunk2077.WebSlinger', 39, '2026-11-01', 'feature', 'open', 'Web wings: glide while slowly losing height, swing to regain it (SM2, future)', '—', 38, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T40', 'Mods.Cyberpunk2077.WebSlinger', 40, '2026-11-01', 'feature', 'open', 'Corner whip: web wraps a building corner to swing sharply around it (SM2, future)', '—', 39, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T41', 'Mods.Cyberpunk2077.WebSlinger', 41, '2026-11-01', 'fix', 'closed', 'lastShotPath default landed outside the swing table in C2WS-T34; move it into swing', '7a58ba5', 40, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.CTD-T1', 'Mods.GTFO.CrashTestDummies', 1, '2026-10-16', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.CTD-T2', 'Mods.GTFO.CrashTestDummies', 2, '2026-10-16', 'chore', 'closed', 'install.ps1 adds this repo''s 15 .prose/commands stubs, AGENTS.md pointer for the shared global commands, so any LLM client finds them', 'mindattic-agent-standard/install.ps1 run 2026-10-16', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.CTD-T3', 'Mods.GTFO.CrashTestDummies', 3, '2026-10-16', 'chore', 'closed', 'Bug hunt: run an exhaustive /bughunt over the whole repo and fix every real bug found (each fix under its own fix ticket), then hunt again; close this only when a full pass finds nothing', '47588d8', 2, NULL);
@@ -56984,6 +56999,264 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33496, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33497, 'COR-T2', '2026-11-02T04:34:13Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33498, 'COR-T2', '2026-11-02T04:34:13Z', 'ref', '—', '28a6c9a');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33499, 'COR-T2', '2026-11-02T04:34:24Z', 'working', '1a352d1a-b048-4709-ab7c-c712548e6779', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33500, 'C2SD-T65', '2026-11-02T04:45:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33501, 'C2SD-T66', '2026-11-02T04:45:24Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33502, 'C2SD-T67', '2026-11-02T04:45:25Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33503, 'C2SD-T68', '2026-11-02T04:45:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33504, 'C2SD-T65', '2026-11-02T04:45:36Z', 'working', NULL, '6e82fb1a-2202-410b-93b9-327c9f6ad258');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33505, 'C2SD-T66', '2026-11-02T04:45:36Z', 'working', NULL, '6e82fb1a-2202-410b-93b9-327c9f6ad258');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33506, 'C2SD-T67', '2026-11-02T04:45:37Z', 'working', NULL, '6e82fb1a-2202-410b-93b9-327c9f6ad258');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33507, 'C2SD-T68', '2026-11-02T04:45:37Z', 'working', NULL, '6e82fb1a-2202-410b-93b9-327c9f6ad258');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33508, 'C2WS-T32', '2026-11-02T04:45:42Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33509, 'C2WS-T32', '2026-11-02T04:45:44Z', 'description', NULL, '## Story
+
+As V, I want a web swing to feel like Spider-Man 2''s: a near-fixed-length pendulum that keeps (or
+gently gains) speed through the bottom of the arc and carries me forward, not a grapple that drags
+me into the anchor and ends the swing there.
+
+Filed from the C2WS-T31 Spider-Man 2 alignment review. Spider-Man 2''s design goal is that Spider-Man
+never slows down: momentum carries across swings, and the arc is a pendulum (assisted, not a
+reel-in pull). Sources are in C2WS-T31''s notes.
+
+## Current behaviour (init.lua, after C2WS-T30 at 76d79f4)
+
+- `UpdateGrapplePhysics` reels the rope in continuously at `sling.reelSpeed` (4 m/s) down to
+  `minRopeLength` (6 m), for the whole swing.
+- C2WS-T30''s attach yank adds `AttachPropelSpeed` (18 m/s) toward the anchor for `PropelDuration`
+  (0.35 s) and shortens the rope to follow.
+- The swing ends on `dist <= anchorReachDistance` (2.5 m), so a long swing that keeps reeling
+  drifts into the anchor and terminates, which reads as a grapple, not a swing.
+- `damping` 0.02/s and `gravity` 1.6 g.
+
+## Acceptance
+
+- [ ] After C2WS-T30''s propel phase, the rope stays at (or very near) the length it had when the
+  propel ended: no continuous reel-in during the pendulum. Keep `reelSpeed` only if it''s needed
+  for a purpose that''s documented (e.g. a short take-up right after attach); otherwise set it to 0 or
+  remove it.
+- [ ] Tune the propel so it reads as a quick tug that starts the swing, not a pull to the wall:
+  pick `AttachPropelSpeed`/`PropelDuration` so a typical 20-35 m anchor never ends with V reaching
+  the anchor. Write the reasoning (expected rope length left after the propel at those distances)
+  in `docs/DESIGN.md`.
+- [ ] Speed through the bottom: a swing started at a typical cruising speed should come out of the
+  bottom at the same or slightly higher speed (a small, tunable energy gain through the low part of
+  the arc, e.g. `sling.BottomPumpAccel` applied tangentially within a window around the bottom),
+  never lower because of damping. Damping can stay as a safety brake near `maxSpeed`.
+- [ ] Re-sling keeps momentum: shooting a new web while carrying speed from a previous release
+  must start the new swing from that velocity (verify the carry velocity seeds the attach, not
+  the native-physics estimate).
+- [ ] Every new tunable gets a debug-panel slider next to the existing swing sliders.
+- [ ] Verified in-game: chain 5+ swings down a straight street holding a roughly steady speed,
+  with no swing ending by reaching its anchor.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33510, 'C2WS-T33', '2026-11-02T04:45:45Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33511, 'C2WS-T33', '2026-11-02T04:45:46Z', 'description', NULL, '## Story
+
+As V, when a low swing''s arc would touch the street, I want to skim just above it and keep my
+speed, the way Spider-Man 2 shortens the web near the ground, instead of the swing ending as a
+"landing" that throws away all my momentum.
+
+Filed from the C2WS-T31 Spider-Man 2 alignment review.
+
+## Current behaviour
+
+`moveWithCollision` returns `landed = true` when the swing''s per-tick move hits a walkable surface
+(normal z > 0.6) while falling, and `UpdateGrapplePhysics` then calls
+`releaseSling("landed", false)`, which releases with no momentum carry. Any swing whose low point
+dips to street level ends dead.
+
+## Acceptance
+
+- [ ] While SLINGING, look ahead along the arc: if the lowest point of the current pendulum (the
+  anchor minus the rope length, straight down, plus hand height) would be below the ground under V
+  plus a tunable clearance (`sling.GroundClearance`, ~1.0 m), shorten the rope just enough to
+  raise that low point to the clearance. Use a downward raycast (`ExecuteSmartRaycast`) for the
+  ground height. Shortening the rope at constant tangential speed is what Spider-Man 2 does, and
+  it keeps the swing alive.
+- [ ] Only a genuinely slow or deliberate descent still lands: if V is moving under a tunable
+  speed (`sling.SkimMinSpeed`) when she touches the ground, the existing "landed" release stays.
+  Otherwise, a ground hit mid-swing slides her along it with the same treatment walls get (remove
+  the velocity into the surface, keep the rest) instead of ending the swing.
+- [ ] Debug panel: show the predicted low point vs. the ground height, and count skims.
+- [ ] Verified in-game: from a low anchor on a street, swing so the arc would touch the road, and
+  confirm V skims over it and comes up the far side at speed instead of stopping.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33512, 'C2WS-T34', '2026-11-02T04:45:47Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33513, 'C2WS-T34', '2026-11-02T04:45:48Z', 'description', NULL, '## Story
+
+As V, when I tap jump in mid-air with the crosshair on open sky, I want a web to attach anyway,
+above and ahead of me along the way I''m already going, so I never drop out of a swing chain. When
+the crosshair is on something, the web still goes exactly there.
+
+Filed from the C2WS-T31 Spider-Man 2 alignment review. Ryan chose this via AskUserQuestion: "Auto-anchor
+fallback: aim still wins whenever the crosshair hits something; only on a miss pick a point above
+and ahead of your direction of travel."
+
+## Current behaviour
+
+`WebSlinger.FindAnchor` (C2WS-T30) casts the centre crosshair ray plus four rays `aimToleranceDeg`
+off-axis. If none returns a usable hit, `tryAttach` soft-fails and the tap does nothing.
+
+## Acceptance
+
+- [ ] Keep C2WS-T30''s direct aim untouched as the first choice: if any of its rays finds a usable
+  anchor, use it.
+- [ ] Only on a full miss, run a momentum-preserving search: candidate rays fanned around V''s
+  current travel direction (the carry/swing velocity, else the look heading), pitched upward
+  (roughly 30-70 degrees), out to `AnchorMaxDistance`. Score hits for being ahead along the travel
+  direction, high, and far enough ahead to give a long forward arc, using the same sanity checks
+  (`minAnchorHeight`, `minAnchorHorizontal`, `minAnchorDistance`). The old cone-search scoring from
+  before C2WS-T30 (see git history, commit before 76d79f4) is a reasonable starting point.
+- [ ] If even that finds nothing (truly open sky, no geometry in range), the tap still misses: no
+  invisible "sky web". Leave that as a documented choice in `docs/DESIGN.md`.
+- [ ] The debug panel''s last-shot line says which path attached ("aimed" vs "assist"), so it''s
+  obvious in testing.
+- [ ] Verified in-game: crosshair on a building attaches exactly there; crosshair on sky while
+  moving along a street with buildings ahead attaches to a point ahead and above; swinging
+  continues without a dropped tap.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33514, 'C2WS-T35', '2026-11-02T04:45:50Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33515, 'C2WS-T35', '2026-11-02T04:45:51Z', 'description', NULL, '## Story
+
+As V, when I tap jump to let go near the bottom or level part of a swing, I want a burst of forward
+speed, like Spider-Man 2''s swing jump. Tapping anywhere else in the arc is still a plain release
+with my current momentum.
+
+Filed from the C2WS-T31 Spider-Man 2 alignment review. Ryan chose this via AskUserQuestion ("Yes, add a
+timed boost back"), reversing C2WS-T30''s removal of C2WS-T23''s boost leap now that the goal is
+matching Spider-Man 2. In Spider-Man 2, a jump roughly level with the ground adds forward speed and a
+jump near the top adds height (sources in C2WS-T31''s notes).
+
+## Current behaviour
+
+Since C2WS-T30, `updateWallRun`''s SLINGING branch handles a jump tap with
+`releaseSling("tap released", true)`: always a plain release, no timing window.
+
+## Acceptance
+
+- [ ] In the SLINGING tap handler, before the plain release: if V''s hand point is within a tunable
+  window of the bottom of the arc (angle from straight below the anchor, e.g.
+  `sling.BoostWindowDeg` ~30), add a forward boost before releasing with carry. The direction is
+  her current swing velocity''s horizontal direction blended toward the look heading (tunable, so
+  she can steer the exit), the boost raises horizontal speed by `sling.BoostSpeed` (clamped to
+  `maxSpeed`), and vertical speed is raised to at least `sling.BoostLift` so the exit clears the
+  ground.
+- [ ] Outside the window the tap stays exactly C2WS-T30''s plain release.
+- [ ] Reuse the angle-from-bottom math from the removed `WebSlinger.TryBoostLeap` (git history,
+  C2WS-T23, commit 618c920) instead of reinventing it, but wire it into the tap-only model; no
+  hold bind comes back.
+- [ ] Count boosts in the debug panel and show the last release''s angle and speed change.
+- [ ] Verified in-game: tapping at the bottom of the arc noticeably launches V forward faster than
+  tapping on the upswing, which keeps her speed unchanged.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33516, 'C2WS-T36', '2026-11-02T04:45:52Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33517, 'C2WS-T36', '2026-11-02T04:45:53Z', 'description', NULL, '## Story
+
+As V, I want the camera to sell speed the way Spider-Man 2''s does: the field of view widens as I
+swing faster and eases back as I slow, so a fast swing feels fast.
+
+Filed from the C2WS-T31 Spider-Man 2 alignment review. Spider-Man 2''s swing camera widens FOV and
+pulls back with speed (a dolly-zoom effect), and trails slightly on takeoff (sources in C2WS-T31''s
+notes). CP77 is first-person here, so this ticket covers the FOV part only.
+
+## Current behaviour
+
+The polish pass (C2WS-T13, `updatePolish`, init.lua ~790-950) only plays a short FOV punch on a
+wall latch or wall-jump, via `setFov`/`GetFOV`, `pcall`-guarded. Nothing ties FOV to speed.
+
+## Acceptance
+
+- [ ] While SLINGING or carrying swing momentum (`swing.carry`), ease the FOV toward
+  `base + clamp((speed - SpeedFovStart) / (SpeedFovFull - SpeedFovStart), 0, 1) * SpeedFovMaxDeg`
+  (tunables, e.g. starts at 12 m/s, full at 35 m/s, +12 degrees max), with a smoothing time
+  constant so it never snaps. Use horizontal-plus-vertical swing speed from `swing.vel`.
+- [ ] Ease back to the player''s base FOV on landing, on entering CLIMBING/WALLRUNNING, and when
+  the mod is disabled. Capture the base FOV once, when the effect starts, the same way the FOV
+  punch does, and always restore it, so the player''s own FOV setting is never left changed.
+- [ ] Coexist with the existing impact FOV punch: the punch adds on top of the speed FOV and
+  restores to the speed FOV, not to a stale base. Make sure the two never fight over `fovBase`.
+- [ ] Respect the existing "Polish" checkbox (off = no speed FOV) and add sliders for the
+  tunables. Time its cost like the rest of the polish (`fx.costMs`).
+- [ ] Verified in-game: FOV visibly widens over a fast swing chain and returns exactly to the
+  player''s setting after landing.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33518, 'C2WS-T32', '2026-11-02T04:45:54Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33519, 'C2WS-T33', '2026-11-02T04:45:55Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33520, 'C2WS-T34', '2026-11-02T04:45:55Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33521, 'C2WS-T35', '2026-11-02T04:45:55Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33522, 'C2WS-T36', '2026-11-02T04:45:56Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33523, 'C2WS-T33', '2026-11-02T04:45:57Z', 'link', NULL, 'requires C2WS-T32');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33524, 'C2WS-T32', '2026-11-02T04:45:57Z', 'link', NULL, 'C2WS-T33 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33525, 'C2WS-T35', '2026-11-02T04:45:58Z', 'link', NULL, 'requires C2WS-T33');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33526, 'C2WS-T33', '2026-11-02T04:45:58Z', 'link', NULL, 'C2WS-T35 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33527, 'C2WS-T32', '2026-11-02T04:45:59Z', 'link', NULL, 'part-of C2WS-T31');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33528, 'C2WS-T31', '2026-11-02T04:46:00Z', 'link', NULL, 'C2WS-T32 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33529, 'C2WS-T33', '2026-11-02T04:46:01Z', 'link', NULL, 'part-of C2WS-T31');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33530, 'C2WS-T31', '2026-11-02T04:46:01Z', 'link', NULL, 'C2WS-T33 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33531, 'C2WS-T34', '2026-11-02T04:46:02Z', 'link', NULL, 'part-of C2WS-T31');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33532, 'C2WS-T31', '2026-11-02T04:46:03Z', 'link', NULL, 'C2WS-T34 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33533, 'C2WS-T35', '2026-11-02T04:46:04Z', 'link', NULL, 'part-of C2WS-T31');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33534, 'C2WS-T31', '2026-11-02T04:46:04Z', 'link', NULL, 'C2WS-T35 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33535, 'C2WS-T36', '2026-11-02T04:46:05Z', 'link', NULL, 'part-of C2WS-T31');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33536, 'C2WS-T31', '2026-11-02T04:46:06Z', 'link', NULL, 'C2WS-T36 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33537, 'C2WS-T37', '2026-11-02T04:46:14Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33538, 'C2WS-T37', '2026-11-02T04:46:15Z', 'description', NULL, 'Backlog from the C2WS-T31 Spider-Man 2 review. Ryan: keep in mind for the future; not approved yet. Needs its own key, since a jump tap already shoots and lets go of the web. SM2: web zip in the air pulls Spider-Man forward and allows sharp turns and U-turns.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33539, 'C2WS-T37', '2026-11-02T04:46:16Z', 'link', NULL, 'related C2WS-T31');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33540, 'C2WS-T31', '2026-11-02T04:46:16Z', 'link', NULL, 'C2WS-T37 related');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33541, 'C2WS-T38', '2026-11-02T04:46:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33542, 'C2WS-T38', '2026-11-02T04:46:19Z', 'description', NULL, 'Backlog from the C2WS-T31 Spider-Man 2 review. Ryan: keep in mind for the future; not approved yet. Needs its own key. SM2: dive on L3; diving and then swinging turns height into speed.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33543, 'C2WS-T38', '2026-11-02T04:46:20Z', 'link', NULL, 'related C2WS-T31');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33544, 'C2WS-T31', '2026-11-02T04:46:20Z', 'link', NULL, 'C2WS-T38 related');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33545, 'C2WS-T39', '2026-11-02T04:46:21Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33546, 'C2WS-T39', '2026-11-02T04:46:22Z', 'description', NULL, 'Backlog from the C2WS-T31 Spider-Man 2 review. Ryan: keep in mind for the future; not approved yet. Needs its own key. SM2: web wings need height, sink slowly, wind tunnels speed them up; the loop is swing to gain height, then glide.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33547, 'C2WS-T39', '2026-11-02T04:46:23Z', 'link', NULL, 'related C2WS-T31');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33548, 'C2WS-T31', '2026-11-02T04:46:24Z', 'link', NULL, 'C2WS-T39 related');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33549, 'C2WS-T40', '2026-11-02T04:46:25Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33550, 'C2WS-T40', '2026-11-02T04:46:26Z', 'description', NULL, 'Backlog from the C2WS-T31 Spider-Man 2 review. Ryan: keep in mind for the future; not approved yet. SM2: Corner Tether skill, hold and push toward a building to whip around it; optional slow-motion on fast corners.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33551, 'C2WS-T40', '2026-11-02T04:46:27Z', 'link', NULL, 'related C2WS-T31');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33552, 'C2WS-T31', '2026-11-02T04:46:28Z', 'link', NULL, 'C2WS-T40 related');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33553, 'C2WS-T31', '2026-11-02T04:46:37Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33554, 'C2WS-T37', '2026-11-02T04:46:51Z', 'working', NULL, '808ce091-f94c-467d-a7d1-b6562cc81444');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33555, 'C2WS-T38', '2026-11-02T04:46:51Z', 'working', NULL, '808ce091-f94c-467d-a7d1-b6562cc81444');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33556, 'C2WS-T39', '2026-11-02T04:46:52Z', 'working', NULL, '808ce091-f94c-467d-a7d1-b6562cc81444');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33557, 'C2WS-T40', '2026-11-02T04:46:52Z', 'working', NULL, '808ce091-f94c-467d-a7d1-b6562cc81444');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33558, 'C2WS-T36', '2026-11-02T04:46:57Z', 'working', NULL, 'ryandebraal@mindattic.com (808ce091-f94c-467d-a7d1-b6562cc81444)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33559, 'C2WS-T32', '2026-11-02T04:46:58Z', 'working', NULL, 'ryandebraal@mindattic.com (808ce091-f94c-467d-a7d1-b6562cc81444)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33560, 'C2WS-T34', '2026-11-02T04:46:59Z', 'working', NULL, 'ryandebraal@mindattic.com (808ce091-f94c-467d-a7d1-b6562cc81444)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33561, 'C2SD-T65', '2026-11-02T04:47:08Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33562, 'C2SD-T65', '2026-11-02T04:47:08Z', 'ref', '—', 'cca42e0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33563, 'C2SD-T66', '2026-11-02T04:47:10Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33564, 'C2SD-T66', '2026-11-02T04:47:10Z', 'ref', '—', 'cca42e0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33565, 'C2SD-T67', '2026-11-02T04:47:11Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33566, 'C2SD-T67', '2026-11-02T04:47:11Z', 'ref', '—', 'cca42e0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33567, 'C2SD-T68', '2026-11-02T04:47:12Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33568, 'C2SD-T68', '2026-11-02T04:47:12Z', 'ref', '—', 'cca42e0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33569, 'C2SD-T65', '2026-11-02T04:47:39Z', 'working', '6e82fb1a-2202-410b-93b9-327c9f6ad258', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33570, 'C2SD-T66', '2026-11-02T04:47:39Z', 'working', '6e82fb1a-2202-410b-93b9-327c9f6ad258', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33571, 'C2SD-T67', '2026-11-02T04:47:40Z', 'working', '6e82fb1a-2202-410b-93b9-327c9f6ad258', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33572, 'C2SD-T68', '2026-11-02T04:47:41Z', 'working', '6e82fb1a-2202-410b-93b9-327c9f6ad258', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33573, 'C2SD-T66', '2026-11-02T04:47:52Z', 'ref', 'cca42e0', 'fb90501');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33574, 'C2SD-T67', '2026-11-02T04:47:53Z', 'ref', 'cca42e0', '14059f8');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33575, 'C2SD-T68', '2026-11-02T04:47:55Z', 'ref', 'cca42e0', '403766f');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33576, 'C2SD-T65', '2026-11-02T04:47:56Z', 'ref', 'cca42e0', 'c3d5ad0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33577, 'C2WS-T37', '2026-11-02T04:47:57Z', 'working', '808ce091-f94c-467d-a7d1-b6562cc81444', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33578, 'C2WS-T38', '2026-11-02T04:47:57Z', 'working', '808ce091-f94c-467d-a7d1-b6562cc81444', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33579, 'C2WS-T39', '2026-11-02T04:47:58Z', 'working', '808ce091-f94c-467d-a7d1-b6562cc81444', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33580, 'C2WS-T40', '2026-11-02T04:47:58Z', 'working', '808ce091-f94c-467d-a7d1-b6562cc81444', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33581, 'C2SD-T69', '2026-11-02T04:48:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33582, 'C2SD-T69', '2026-11-02T04:48:30Z', 'working', NULL, '6e82fb1a-2202-410b-93b9-327c9f6ad258');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33583, 'C2SD-T69', '2026-11-02T04:48:46Z', 'working', '6e82fb1a-2202-410b-93b9-327c9f6ad258', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33584, 'C2WS-T36', '2026-11-02T04:50:00Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33585, 'C2WS-T36', '2026-11-02T04:50:00Z', 'ref', '—', 'bbe4edb');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33586, 'C2WS-T36', '2026-11-02T04:50:05Z', 'working', 'ryandebraal@mindattic.com (808ce091-f94c-467d-a7d1-b6562cc81444)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33587, 'C2WS-T34', '2026-11-02T04:50:35Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33588, 'C2WS-T34', '2026-11-02T04:50:35Z', 'ref', '—', '2e8d6c1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33589, 'C2WS-T34', '2026-11-02T04:50:53Z', 'working', 'ryandebraal@mindattic.com (808ce091-f94c-467d-a7d1-b6562cc81444)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33590, 'C2SD-T69', '2026-11-02T04:51:24Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33591, 'C2SD-T69', '2026-11-02T04:51:24Z', 'ref', '—', '03f579d');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33592, 'C2WS-T32', '2026-11-02T04:52:13Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33593, 'C2WS-T32', '2026-11-02T04:52:13Z', 'ref', '—', '390495b');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33594, 'C2WS-T41', '2026-11-02T04:52:40Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33595, 'C2WS-T32', '2026-11-02T04:52:45Z', 'working', 'ryandebraal@mindattic.com (808ce091-f94c-467d-a7d1-b6562cc81444)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33596, 'C2WS-T41', '2026-11-02T04:52:51Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33597, 'C2WS-T41', '2026-11-02T04:52:51Z', 'ref', '—', '7a58ba5');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33598, 'C2WS-T27', '2026-11-02T04:53:24Z', 'working', 'ryandebraal@mindattic.com (808ce091-f94c-467d-a7d1-b6562cc81444)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33599, 'C2WS-T33', '2026-11-02T04:53:25Z', 'working', NULL, 'ryandebraal@mindattic.com (808ce091-f94c-467d-a7d1-b6562cc81444)');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -57063,6 +57336,11 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T29', 'approved', 0, '2026-11-02T02:56:22Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T30', 'approved', 0, '2026-11-02T02:57:59Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T31', 'approved', 0, '2026-11-02T03:01:32Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T32', 'approved', 0, '2026-11-02T04:45:54Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T33', 'approved', 0, '2026-11-02T04:45:55Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T34', 'approved', 0, '2026-11-02T04:45:55Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T35', 'approved', 0, '2026-11-02T04:45:55Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T36', 'approved', 0, '2026-11-02T04:45:56Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T4', 'approved', 0, '2026-11-01T20:41:10Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T5', 'approved', 0, '2026-11-01T20:41:11Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('C2WS-T6', 'approved', 0, '2026-11-01T20:41:11Z', NULL);
@@ -59483,7 +59761,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('USOD-T9', 'approved', 0, '2026-10-22T23:02:27Z', NULL);
 
 -- ticket_work
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2WS-T27', NULL, 0, 'ryandebraal@mindattic.com', '808ce091-f94c-467d-a7d1-b6562cc81444', '2026-11-02T02:29:49Z', '2026-11-02T02:29:49Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('C2WS-T33', NULL, 0, 'ryandebraal@mindattic.com', '808ce091-f94c-467d-a7d1-b6562cc81444', '2026-11-02T04:53:25Z', '2026-11-02T04:53:25Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
@@ -60238,6 +60516,7 @@ Flagged but NOT fixed (low-severity, not real defects worth changing per /bughun
 Left OPEN intentionally: fixes are uncommitted in the working tree pending Ryan''s review, not landed/closed per the usual ticket-close convention.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (401, 'C2WS-T19', 'ryand', '2026-11-02T02:34:26Z', 'All 4 fixes landed on main as part of commit 618c920 (C2WS-T23''s landing, which incidentally folded them in). Closing since there''s nothing left uncommitted to review.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (402, 'C2WS-T27', 'ryand', '2026-11-02T02:36:53Z', 'Landed 8c7fc71 on main: static review of the jump-dispatch chain found no logic bug (the suspected non-unit diagonal-probe vectors are a non-issue, since ExecuteSmartRaycast normalizes direction internally; the wall-run/wall-latch facing-angle split checks out for a flat head-on wall). Added print diagnostics at every decision point (observeWallRunJump, TryManualWallRun, TryManualWallLatch, updateWallRun''s NONE dispatch) and documented findings in docs/DESIGN.md. Leaving this open per the ticket''s own instructions: next step is a live repro with the CET console open to read off where the press actually stops (or confirm WebSlinger.enabled was ticked on).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (403, 'C2WS-T31', 'ryand', '2026-11-02T04:46:36Z', 'Review done against a sourced Spider-Man 2 spec (research agent). Approved alignment tickets: T32 swing feel (fixed-length pendulum, keep speed through bottom), T33 ground skim, T34 auto-anchor fallback (Ryan chose), T35 timed swing boost (Ryan chose to bring back), T36 speed-scaled FOV. Chain T32 -> T33 -> T35 (same physics code). Backlog, not approved (Ryan: keep in mind for the future): T37 web zip, T38 dive, T39 web wings, T40 corner whip. Key SM2 sources: cbr.com how-web-swinging-works, popsci swinging physics, gamerevolution swing steering assist, jbsiraudin.github.io spiderman-dolly.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
@@ -61627,6 +61906,172 @@ Directly requested by Ryan, with the two open design questions (boost-leap fate,
 priority) resolved via AskUserQuestion before filing: "you dont have to hold space, you just tap
 space while in mid air to break web or shoot new web, each one acts the same... uses the real
 [p]hysics of being connected to that surface and acts like a spider man swing."', '2026-11-02T02:57:58Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T32', '## Story
+
+As V, I want a web swing to feel like Spider-Man 2''s: a near-fixed-length pendulum that keeps (or
+gently gains) speed through the bottom of the arc and carries me forward, not a grapple that drags
+me into the anchor and ends the swing there.
+
+Filed from the C2WS-T31 Spider-Man 2 alignment review. Spider-Man 2''s design goal is that Spider-Man
+never slows down: momentum carries across swings, and the arc is a pendulum (assisted, not a
+reel-in pull). Sources are in C2WS-T31''s notes.
+
+## Current behaviour (init.lua, after C2WS-T30 at 76d79f4)
+
+- `UpdateGrapplePhysics` reels the rope in continuously at `sling.reelSpeed` (4 m/s) down to
+  `minRopeLength` (6 m), for the whole swing.
+- C2WS-T30''s attach yank adds `AttachPropelSpeed` (18 m/s) toward the anchor for `PropelDuration`
+  (0.35 s) and shortens the rope to follow.
+- The swing ends on `dist <= anchorReachDistance` (2.5 m), so a long swing that keeps reeling
+  drifts into the anchor and terminates, which reads as a grapple, not a swing.
+- `damping` 0.02/s and `gravity` 1.6 g.
+
+## Acceptance
+
+- [ ] After C2WS-T30''s propel phase, the rope stays at (or very near) the length it had when the
+  propel ended: no continuous reel-in during the pendulum. Keep `reelSpeed` only if it''s needed
+  for a purpose that''s documented (e.g. a short take-up right after attach); otherwise set it to 0 or
+  remove it.
+- [ ] Tune the propel so it reads as a quick tug that starts the swing, not a pull to the wall:
+  pick `AttachPropelSpeed`/`PropelDuration` so a typical 20-35 m anchor never ends with V reaching
+  the anchor. Write the reasoning (expected rope length left after the propel at those distances)
+  in `docs/DESIGN.md`.
+- [ ] Speed through the bottom: a swing started at a typical cruising speed should come out of the
+  bottom at the same or slightly higher speed (a small, tunable energy gain through the low part of
+  the arc, e.g. `sling.BottomPumpAccel` applied tangentially within a window around the bottom),
+  never lower because of damping. Damping can stay as a safety brake near `maxSpeed`.
+- [ ] Re-sling keeps momentum: shooting a new web while carrying speed from a previous release
+  must start the new swing from that velocity (verify the carry velocity seeds the attach, not
+  the native-physics estimate).
+- [ ] Every new tunable gets a debug-panel slider next to the existing swing sliders.
+- [ ] Verified in-game: chain 5+ swings down a straight street holding a roughly steady speed,
+  with no swing ending by reaching its anchor.', '2026-11-02T04:45:44Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T33', '## Story
+
+As V, when a low swing''s arc would touch the street, I want to skim just above it and keep my
+speed, the way Spider-Man 2 shortens the web near the ground, instead of the swing ending as a
+"landing" that throws away all my momentum.
+
+Filed from the C2WS-T31 Spider-Man 2 alignment review.
+
+## Current behaviour
+
+`moveWithCollision` returns `landed = true` when the swing''s per-tick move hits a walkable surface
+(normal z > 0.6) while falling, and `UpdateGrapplePhysics` then calls
+`releaseSling("landed", false)`, which releases with no momentum carry. Any swing whose low point
+dips to street level ends dead.
+
+## Acceptance
+
+- [ ] While SLINGING, look ahead along the arc: if the lowest point of the current pendulum (the
+  anchor minus the rope length, straight down, plus hand height) would be below the ground under V
+  plus a tunable clearance (`sling.GroundClearance`, ~1.0 m), shorten the rope just enough to
+  raise that low point to the clearance. Use a downward raycast (`ExecuteSmartRaycast`) for the
+  ground height. Shortening the rope at constant tangential speed is what Spider-Man 2 does, and
+  it keeps the swing alive.
+- [ ] Only a genuinely slow or deliberate descent still lands: if V is moving under a tunable
+  speed (`sling.SkimMinSpeed`) when she touches the ground, the existing "landed" release stays.
+  Otherwise, a ground hit mid-swing slides her along it with the same treatment walls get (remove
+  the velocity into the surface, keep the rest) instead of ending the swing.
+- [ ] Debug panel: show the predicted low point vs. the ground height, and count skims.
+- [ ] Verified in-game: from a low anchor on a street, swing so the arc would touch the road, and
+  confirm V skims over it and comes up the far side at speed instead of stopping.', '2026-11-02T04:45:46Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T34', '## Story
+
+As V, when I tap jump in mid-air with the crosshair on open sky, I want a web to attach anyway,
+above and ahead of me along the way I''m already going, so I never drop out of a swing chain. When
+the crosshair is on something, the web still goes exactly there.
+
+Filed from the C2WS-T31 Spider-Man 2 alignment review. Ryan chose this via AskUserQuestion: "Auto-anchor
+fallback: aim still wins whenever the crosshair hits something; only on a miss pick a point above
+and ahead of your direction of travel."
+
+## Current behaviour
+
+`WebSlinger.FindAnchor` (C2WS-T30) casts the centre crosshair ray plus four rays `aimToleranceDeg`
+off-axis. If none returns a usable hit, `tryAttach` soft-fails and the tap does nothing.
+
+## Acceptance
+
+- [ ] Keep C2WS-T30''s direct aim untouched as the first choice: if any of its rays finds a usable
+  anchor, use it.
+- [ ] Only on a full miss, run a momentum-preserving search: candidate rays fanned around V''s
+  current travel direction (the carry/swing velocity, else the look heading), pitched upward
+  (roughly 30-70 degrees), out to `AnchorMaxDistance`. Score hits for being ahead along the travel
+  direction, high, and far enough ahead to give a long forward arc, using the same sanity checks
+  (`minAnchorHeight`, `minAnchorHorizontal`, `minAnchorDistance`). The old cone-search scoring from
+  before C2WS-T30 (see git history, commit before 76d79f4) is a reasonable starting point.
+- [ ] If even that finds nothing (truly open sky, no geometry in range), the tap still misses: no
+  invisible "sky web". Leave that as a documented choice in `docs/DESIGN.md`.
+- [ ] The debug panel''s last-shot line says which path attached ("aimed" vs "assist"), so it''s
+  obvious in testing.
+- [ ] Verified in-game: crosshair on a building attaches exactly there; crosshair on sky while
+  moving along a street with buildings ahead attaches to a point ahead and above; swinging
+  continues without a dropped tap.', '2026-11-02T04:45:48Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T35', '## Story
+
+As V, when I tap jump to let go near the bottom or level part of a swing, I want a burst of forward
+speed, like Spider-Man 2''s swing jump. Tapping anywhere else in the arc is still a plain release
+with my current momentum.
+
+Filed from the C2WS-T31 Spider-Man 2 alignment review. Ryan chose this via AskUserQuestion ("Yes, add a
+timed boost back"), reversing C2WS-T30''s removal of C2WS-T23''s boost leap now that the goal is
+matching Spider-Man 2. In Spider-Man 2, a jump roughly level with the ground adds forward speed and a
+jump near the top adds height (sources in C2WS-T31''s notes).
+
+## Current behaviour
+
+Since C2WS-T30, `updateWallRun`''s SLINGING branch handles a jump tap with
+`releaseSling("tap released", true)`: always a plain release, no timing window.
+
+## Acceptance
+
+- [ ] In the SLINGING tap handler, before the plain release: if V''s hand point is within a tunable
+  window of the bottom of the arc (angle from straight below the anchor, e.g.
+  `sling.BoostWindowDeg` ~30), add a forward boost before releasing with carry. The direction is
+  her current swing velocity''s horizontal direction blended toward the look heading (tunable, so
+  she can steer the exit), the boost raises horizontal speed by `sling.BoostSpeed` (clamped to
+  `maxSpeed`), and vertical speed is raised to at least `sling.BoostLift` so the exit clears the
+  ground.
+- [ ] Outside the window the tap stays exactly C2WS-T30''s plain release.
+- [ ] Reuse the angle-from-bottom math from the removed `WebSlinger.TryBoostLeap` (git history,
+  C2WS-T23, commit 618c920) instead of reinventing it, but wire it into the tap-only model; no
+  hold bind comes back.
+- [ ] Count boosts in the debug panel and show the last release''s angle and speed change.
+- [ ] Verified in-game: tapping at the bottom of the arc noticeably launches V forward faster than
+  tapping on the upswing, which keeps her speed unchanged.', '2026-11-02T04:45:51Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T36', '## Story
+
+As V, I want the camera to sell speed the way Spider-Man 2''s does: the field of view widens as I
+swing faster and eases back as I slow, so a fast swing feels fast.
+
+Filed from the C2WS-T31 Spider-Man 2 alignment review. Spider-Man 2''s swing camera widens FOV and
+pulls back with speed (a dolly-zoom effect), and trails slightly on takeoff (sources in C2WS-T31''s
+notes). CP77 is first-person here, so this ticket covers the FOV part only.
+
+## Current behaviour
+
+The polish pass (C2WS-T13, `updatePolish`, init.lua ~790-950) only plays a short FOV punch on a
+wall latch or wall-jump, via `setFov`/`GetFOV`, `pcall`-guarded. Nothing ties FOV to speed.
+
+## Acceptance
+
+- [ ] While SLINGING or carrying swing momentum (`swing.carry`), ease the FOV toward
+  `base + clamp((speed - SpeedFovStart) / (SpeedFovFull - SpeedFovStart), 0, 1) * SpeedFovMaxDeg`
+  (tunables, e.g. starts at 12 m/s, full at 35 m/s, +12 degrees max), with a smoothing time
+  constant so it never snaps. Use horizontal-plus-vertical swing speed from `swing.vel`.
+- [ ] Ease back to the player''s base FOV on landing, on entering CLIMBING/WALLRUNNING, and when
+  the mod is disabled. Capture the base FOV once, when the effect starts, the same way the FOV
+  punch does, and always restore it, so the player''s own FOV setting is never left changed.
+- [ ] Coexist with the existing impact FOV punch: the punch adds on top of the speed FOV and
+  restores to the speed FOV, not to a stale base. Make sure the two never fight over `fovBase`.
+- [ ] Respect the existing "Polish" checkbox (off = no speed FOV) and add sliders for the
+  tunables. Time its cost like the rest of the polish (`fx.costMs`).
+- [ ] Verified in-game: FOV visibly widens over a fast swing chain and returns exactly to the
+  player''s setting after landing.', '2026-11-02T04:45:53Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T37', 'Backlog from the C2WS-T31 Spider-Man 2 review. Ryan: keep in mind for the future; not approved yet. Needs its own key, since a jump tap already shoots and lets go of the web. SM2: web zip in the air pulls Spider-Man forward and allows sharp turns and U-turns.', '2026-11-02T04:46:15Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T38', 'Backlog from the C2WS-T31 Spider-Man 2 review. Ryan: keep in mind for the future; not approved yet. Needs its own key. SM2: dive on L3; diving and then swinging turns height into speed.', '2026-11-02T04:46:19Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T39', 'Backlog from the C2WS-T31 Spider-Man 2 review. Ryan: keep in mind for the future; not approved yet. Needs its own key. SM2: web wings need height, sink slowly, wind tunnels speed them up; the loop is swing to gain height, then glide.', '2026-11-02T04:46:22Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T4', '## Story
 
 As V, I want a reliable way to detect nearby wall surfaces and their normals, so that every other
@@ -61645,6 +62090,7 @@ traversal mechanic has one source of truth for "is there a wall here, which dire
       (not into it, not parallel to it).
 - [ ] The raycast runs at most once per `onUpdate` tick (not per render frame); a frame-time counter
       added to the debug panel stays within 1ms of pre-change baseline with the raycast enabled.', '2026-11-01T20:28:23Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T40', 'Backlog from the C2WS-T31 Spider-Man 2 review. Ryan: keep in mind for the future; not approved yet. SM2: Corner Tether skill, hold and push toward a building to whip around it; optional slow-motion on fast corners.', '2026-11-02T04:46:26Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('C2WS-T5', '## Story
 
 As V, I want the mod''s state machine to show my current traversal state at all times, so that every
@@ -75354,6 +75800,17 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T26', 'C2WS-T25', '
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T30', 'C2WS-T23', 'related', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T30', 'C2WS-T25', 'related', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T30', 'C2WS-T26', 'related', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T32', 'C2WS-T31', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T33', 'C2WS-T31', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T33', 'C2WS-T32', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T34', 'C2WS-T31', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T35', 'C2WS-T31', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T35', 'C2WS-T33', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T36', 'C2WS-T31', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T37', 'C2WS-T31', 'related', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T38', 'C2WS-T31', 'related', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T39', 'C2WS-T31', 'related', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T40', 'C2WS-T31', 'related', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T5', 'C2WS-T4', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T6', 'C2WS-T4', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2WS-T6', 'C2WS-T5', 'requires', NULL);
