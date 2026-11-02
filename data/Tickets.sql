@@ -7782,6 +7782,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T42', 'Mods.Cyberpunk2077.ShootDodge', 42, '2026-11-01', 'fix', 'open', 'ShootDodge: Cyberpunk 2077 never reaches the main menu (crash before launcher completes)', '—', 41, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T43', 'Mods.Cyberpunk2077.ShootDodge', 43, '2026-11-01', 'fix', 'closed', 'Game crashes with only ShootDodge 2.0.0 enabled (diagnose from logs)', 'f306434', 42, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T44', 'Mods.Cyberpunk2077.ShootDodge', 44, '2026-11-01', 'chore', 'closed', 'Release v3.0.0: bump version, changelog, build dist/ShootDodge-3.0.0.zip, redeploy to Vortex', '4a26373', 43, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T45', 'Mods.Cyberpunk2077.ShootDodge', 45, '2026-11-01', 'fix', 'closed', 'Main-menu crash: main menu world spawns a player, so drivers made game calls there; add Session gate (player + not IsPreGame + 1.5s settle)', 'b40eafb', 44, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T46', 'Mods.Cyberpunk2077.ShootDodge', 46, '2026-11-01', 'feature', 'open', 'Shootdodge trigger is Ctrl + Space (replaces aim+jump+move combo and Space-in-Bullet-Time)', '—', 45, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T1', 'Mods.Cyberpunk2077.WebSlinger', 1, '2026-11-01', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T2', 'Mods.Cyberpunk2077.WebSlinger', 2, '2026-11-01', 'feature', 'closed', 'Scaffold new repo: Cyberpunk 2077 mod for Mantis Blade wall-climb, wall-run/jump, and Spider-Man 2 style webslinging', '7aad643ac7c88e810331b43e6e85a40b41323aaf', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2WS-T3', 'Mods.Cyberpunk2077.WebSlinger', 3, '2026-11-01', 'chore', 'closed', 'Rename repo to Mods.Cyberpunk2077.WebSlinger for mod organization (GitHub + folder + refs)', '36d0a7610a8d43186a58b5ea925f2190e04bf613', 2, NULL);
@@ -56277,6 +56279,12 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33296, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33297, 'C2SD-T44', '2026-11-02T01:28:12Z', 'ref', '—', '4a26373');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33298, 'C2SD-T41', '2026-11-02T01:28:20Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33299, 'C2SD-T41', '2026-11-02T01:28:20Z', 'ref', '—', '5e40b34');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33300, 'C2SD-T45', '2026-11-02T01:32:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33301, 'C2SD-T45', '2026-11-02T01:32:29Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33302, 'C2SD-T45', '2026-11-02T01:32:29Z', 'ref', '—', 'b40eafb');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33303, 'C2SD-T46', '2026-11-02T01:35:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33304, 'C2SD-T46', '2026-11-02T01:35:12Z', 'working', NULL, '6e82fb1a-2202-410b-93b9-327c9f6ad258');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (33305, 'C2SD-T46', '2026-11-02T01:38:02Z', 'working', '6e82fb1a-2202-410b-93b9-327c9f6ad258', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
