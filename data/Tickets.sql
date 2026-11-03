@@ -12118,7 +12118,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T1', 'Unreal.Soulslike', 1, '2026-11-03', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T2', 'Unreal.Soulslike', 2, '2026-11-03', 'feature', 'closed', 'Scaffold co-op souls-like demo: third-person combat on isolated Hebrides island (dodge roll, block, parry, X/Y light/heavy attacks, RB heal)', 'b21f31c', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T1', 'Unreal.SpaceGod', 1, '2026-11-03', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T2', 'Unreal.SpaceGod', 2, '2026-11-03', 'feature', 'open', 'Recreate Unity.Space''s Sol system in Unreal Engine 5 (C++) as a co-op game: JPL ephemeris, ELP-2000 Moon, IAU orientation, textured bodies, gameplay/realistic scale, focus camera, shared time warp over listen-server multiplayer', 'MAT-T87', 1, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T2', 'Unreal.SpaceGod', 2, '2026-11-03', 'feature', 'closed', 'Recreate Unity.Space''s Sol system in Unreal Engine 5 (C++) as a co-op game: JPL ephemeris, ELP-2000 Moon, IAU orientation, textured bodies, gameplay/realistic scale, focus camera, shared time warp over listen-server multiplayer', 'e1b6839', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T1', 'Unstuck', 1, '2026-10-16', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T2', 'Unstuck', 2, '2026-10-16', 'feature', 'closed', 'Canonicalize unstuck.ps1 + the /unstuck command in this repo (global ~/.claude copies become forwarders) and add UnstuckTaskbar, a tray app with an assignable global hotkey (incl. media keys) that fires it', 'dotnet test: 26/26 passed; deploy.ps1 verified (C:\Apps\Unstuck\UnstuckTaskbar.exe built, deploy.bat/unstuck.ps1 unaffected); tray app launched live, single-instance mutex guard confirmed, logon scheduled task + Start Menu shortcut self-registered', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T3', 'Unstuck', 3, '2026-10-16', 'chore', 'closed', 'Add deploy.ps1/deploy.bat packaging to C:\Apps\Unstuck and a desktop shortcut', 'user request', 2, NULL);
@@ -58944,6 +58944,10 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34955, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34956, 'UNR-T2', '2026-11-03T14:35:05Z', 'ref', '—', 'b21f31c');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34957, 'UNR-T2', '2026-11-03T14:35:19Z', 'working', 'd7eaa32b-e907-485e-99dc-fc3968a356a9', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34958, 'COR-T3', '2026-11-03T14:36:53Z', 'summary', 'test probe - will delete', 'Adopt MindAttic.Agency''s docs-site pipeline and publish README to GitHub Pages (HOUSE-LAW-14) (corrected: Ticket''s own note (2026-11-02) says this is real backlog work, not a test probe)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34959, 'MAT-T87', '2026-11-03T14:47:13Z', 'working', 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34960, 'US-T2', '2026-11-03T14:47:13Z', 'working', 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34961, 'US-T2', '2026-11-03T14:49:31Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34962, 'US-T2', '2026-11-03T14:49:31Z', 'ref', 'MAT-T87', 'e1b6839');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -61554,7 +61558,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T91', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T23:09:54Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T58', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:02:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T87', NULL, 0, NULL, 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', '2026-11-03T14:24:43Z', '2026-11-03T14:24:43Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T111', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:34:40Z');
@@ -61696,7 +61699,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T2', NULL, 0, NULL, 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', '2026-11-03T14:28:34Z', '2026-11-03T14:28:34Z');
 
 -- ticket_notes
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (1, 'U.HARE-T54', 'ryand', '2026-10-26T04:52:58Z', 'From U.HARE-T52 (7d24220): leaving the arena past the 400 px buffer zone (LeaveArena command) currently costs a life only on the ship (PlayerHealth out-of-bounds path / ShipHealth). When this ticket wires LIVES into the session, route that out-of-bounds loss through the same session lives so both deaths count the same.');
