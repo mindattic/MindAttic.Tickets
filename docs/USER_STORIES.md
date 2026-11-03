@@ -430,3 +430,5 @@ updated: 2026-10-12
 | M.TIX-T298 | 2026-11-01 | chore | closed | Sync generated/live files | — |
 | M.TIX-T299 | 2026-11-01 | chore | closed | Sync generated/live files | — |
 | M.TIX-T300 | 2026-11-01 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
+| M.TIX-T301 | 2026-11-02 | fix | closed | Bughunt sweep, two passes: find and fix real bugs across tracked source (user request 2026-11-02) | 0ca14a0 |
+| M.TIX-T302 | 2026-11-02 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
