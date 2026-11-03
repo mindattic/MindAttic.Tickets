@@ -355,7 +355,17 @@ public sealed class TicketVerifyCommand : Command<RepoSettings>
             if (db is not null)
             {
                 // Append-only is enforced by the database itself; what's left to check is the data.
-                var found = db.Check().Where(p => p.StartsWith(repo.Name + ": ", StringComparison.OrdinalIgnoreCase) || !p.Contains(": ", StringComparison.Ordinal) || p.StartsWith("link ", StringComparison.Ordinal)).ToList();
+                // A requires-cycle is reported per member as "<id>: requires itself through a cycle"; keep the ones whose
+                // member is this repo's ticket, story or epic (every member reports, so any cycle touching the repo shows).
+                const string cycle = ": requires itself through a cycle";
+                var repoCode = db.Repos().FirstOrDefault(r => string.Equals(r.Name, repo.Name, StringComparison.OrdinalIgnoreCase)).Code;
+                bool InRepo(string id) =>
+                    string.Equals(db.Ticket(id)?.Repo, repo.Name, StringComparison.OrdinalIgnoreCase)
+                    || db.Story(id).Any(s => string.Equals(s.Repo, repo.Name, StringComparison.OrdinalIgnoreCase))
+                    || (repoCode is { Length: > 0 } && id.StartsWith(repoCode + "-", StringComparison.OrdinalIgnoreCase));
+                var found = db.Check().Where(p => p.EndsWith(cycle, StringComparison.Ordinal)
+                    ? InRepo(p[..^cycle.Length])
+                    : p.StartsWith(repo.Name + ": ", StringComparison.OrdinalIgnoreCase) || !p.Contains(": ", StringComparison.Ordinal) || p.StartsWith("link ", StringComparison.Ordinal)).ToList();
                 // And their versions (M.TIX-T137): the history every version is read from.
                 found.AddRange(db.CheckVersions(repo.Name));
                 foreach (var p in found) AnsiConsole.MarkupLine($"[red]{Output.Esc(p)}[/]");
