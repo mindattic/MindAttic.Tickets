@@ -436,3 +436,4 @@ updated: 2026-10-12
 | M.TIX-T304 | 2026-11-03 | chore | closed | Redeploy so the 2026-11-03 bughunt fixes (M.TIX-T303) go live | 4b136c2 |
 | M.TIX-T305 | 2026-11-03 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
 | M.TIX-T306 | 2026-11-03 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
+| M.TIX-T307 | 2026-11-03 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
