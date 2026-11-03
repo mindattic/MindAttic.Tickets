@@ -12123,6 +12123,9 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T1', 'Unreal.Soulslike', 1, '2026-11-03', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T2', 'Unreal.Soulslike', 2, '2026-11-03', 'feature', 'closed', 'Scaffold co-op souls-like demo: third-person combat on isolated Hebrides island (dodge roll, block, parry, X/Y light/heavy attacks, RB heal)', 'b21f31c', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T3', 'Unreal.Soulslike', 3, '2026-11-03', 'feature', 'open', 'Playable demo: terrain-shaped Hebrides island surrounded by water, free meshes, working battle system, skeleton enemies that attack the player', '—', 2, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T4', 'Unreal.Soulslike', 4, '2026-11-03', 'feature', 'open', 'Jump + free climbing (BotW/Genshin/Palworld style): climb any steep surface with stamina drain, climb-jump, ledge mantle, so challenges can be approached from any angle', '—', 3, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T5', 'Unreal.Soulslike', 5, '2026-11-03', 'feature', 'open', 'Stealth execution: skeletons have perception (vision cone, hearing, unaware/suspicious/alerted); attacking an unaware skeleton from behind executes it instantly', '—', 4, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T6', 'Unreal.Soulslike', 6, '2026-11-03', 'feature', 'open', 'Shadow merge (Ereban: Shadow Legacy / ALBW wall-merge): become a black shadow splotch that crawls along walls, ground and ceilings while in shadow, costs shadow energy, ejects in light', '—', 5, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T1', 'Unreal.SpaceGod', 1, '2026-11-03', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T2', 'Unreal.SpaceGod', 2, '2026-11-03', 'feature', 'closed', 'Recreate Unity.Space''s Sol system in Unreal Engine 5 (C++) as a co-op game: JPL ephemeris, ELP-2000 Moon, IAU orientation, textured bodies, gameplay/realistic scale, focus camera, shared time warp over listen-server multiplayer', 'e1b6839', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T3', 'Unreal.SpaceGod', 3, '2026-11-03', 'chore', 'closed', 'Install Unreal Engine 5.5 and its Visual Studio C++ toolchain on this workstation so Unreal.SpaceGod can be built and played', '9bb3736 bd433f3', 2, NULL);
@@ -59035,6 +59038,34 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35020, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35021, 'US-T20', '2026-11-03T16:40:21Z', 'working', NULL, 'c5b80518-cf93-4632-9b5d-8d9fb500bf38');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35022, 'US-T21', '2026-11-03T16:40:22Z', 'working', NULL, 'c5b80518-cf93-4632-9b5d-8d9fb500bf38');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35023, 'US-T22', '2026-11-03T16:40:22Z', 'working', NULL, 'c5b80518-cf93-4632-9b5d-8d9fb500bf38');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35024, 'US-T10', '2026-11-03T16:49:23Z', 'working', 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35025, 'US-T11', '2026-11-03T16:49:24Z', 'working', 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35026, 'US-T12', '2026-11-03T16:49:24Z', 'working', 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35027, 'US-T13', '2026-11-03T16:49:25Z', 'working', 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35028, 'US-T14', '2026-11-03T16:49:26Z', 'working', 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35029, 'US-T15', '2026-11-03T16:49:26Z', 'working', 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35030, 'US-T16', '2026-11-03T16:49:27Z', 'working', 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35031, 'US-T17', '2026-11-03T16:49:27Z', 'working', 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35032, 'US-T18', '2026-11-03T16:49:28Z', 'working', 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35033, 'US-T19', '2026-11-03T16:49:28Z', 'working', 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35034, 'US-T20', '2026-11-03T16:49:29Z', 'working', 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35035, 'US-T21', '2026-11-03T16:49:29Z', 'working', 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35036, 'US-T22', '2026-11-03T16:49:30Z', 'working', 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35037, 'US-T4', '2026-11-03T16:49:30Z', 'working', 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35038, 'US-T5', '2026-11-03T16:49:30Z', 'working', 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35039, 'US-T6', '2026-11-03T16:49:31Z', 'working', 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35040, 'US-T7', '2026-11-03T16:49:31Z', 'working', 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35041, 'US-T8', '2026-11-03T16:49:32Z', 'working', 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35042, 'US-T9', '2026-11-03T16:49:32Z', 'working', 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35043, 'UNR-T4', '2026-11-03T16:51:56Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35044, 'UNR-T5', '2026-11-03T16:51:58Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35045, 'UNR-T6', '2026-11-03T16:51:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35046, 'UNR-T4', '2026-11-03T16:52:04Z', 'link', NULL, 'requires UNR-T3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35047, 'UNR-T3', '2026-11-03T16:52:04Z', 'link', NULL, 'UNR-T4 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35048, 'UNR-T5', '2026-11-03T16:52:06Z', 'link', NULL, 'requires UNR-T3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35049, 'UNR-T3', '2026-11-03T16:52:06Z', 'link', NULL, 'UNR-T5 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35050, 'UNR-T6', '2026-11-03T16:52:07Z', 'link', NULL, 'requires UNR-T3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35051, 'UNR-T3', '2026-11-03T16:52:08Z', 'link', NULL, 'UNR-T6 requires');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -61787,25 +61818,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UNR-T3', NULL, 0, NULL, 'd7eaa32b-e907-485e-99dc-fc3968a356a9', '2026-11-03T16:28:30Z', '2026-11-03T16:28:30Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T10', NULL, 0, NULL, 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', '2026-11-03T16:40:16Z', '2026-11-03T16:40:16Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T11', NULL, 0, NULL, 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', '2026-11-03T16:40:17Z', '2026-11-03T16:40:17Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T12', NULL, 0, NULL, 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', '2026-11-03T16:40:17Z', '2026-11-03T16:40:17Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T13', NULL, 0, NULL, 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', '2026-11-03T16:40:18Z', '2026-11-03T16:40:18Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T14', NULL, 0, NULL, 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', '2026-11-03T16:40:18Z', '2026-11-03T16:40:18Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T15', NULL, 0, NULL, 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', '2026-11-03T16:40:19Z', '2026-11-03T16:40:19Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T16', NULL, 0, NULL, 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', '2026-11-03T16:40:19Z', '2026-11-03T16:40:19Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T17', NULL, 0, NULL, 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', '2026-11-03T16:40:20Z', '2026-11-03T16:40:20Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T18', NULL, 0, NULL, 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', '2026-11-03T16:40:20Z', '2026-11-03T16:40:20Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T19', NULL, 0, NULL, 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', '2026-11-03T16:40:21Z', '2026-11-03T16:40:21Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T20', NULL, 0, NULL, 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', '2026-11-03T16:40:21Z', '2026-11-03T16:40:21Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T21', NULL, 0, NULL, 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', '2026-11-03T16:40:22Z', '2026-11-03T16:40:22Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T22', NULL, 0, NULL, 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', '2026-11-03T16:40:22Z', '2026-11-03T16:40:22Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T4', NULL, 0, NULL, 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', '2026-11-03T15:59:18Z', '2026-11-03T15:59:18Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T5', NULL, 0, NULL, 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', '2026-11-03T16:40:14Z', '2026-11-03T16:40:14Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T6', NULL, 0, NULL, 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', '2026-11-03T16:40:14Z', '2026-11-03T16:40:14Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T7', NULL, 0, NULL, 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', '2026-11-03T16:40:15Z', '2026-11-03T16:40:15Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T8', NULL, 0, NULL, 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', '2026-11-03T16:40:15Z', '2026-11-03T16:40:15Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T9', NULL, 0, NULL, 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', '2026-11-03T16:40:16Z', '2026-11-03T16:40:16Z');
 
 -- ticket_notes
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (1, 'U.HARE-T54', 'ryand', '2026-10-26T04:52:58Z', 'From U.HARE-T52 (7d24220): leaving the arena past the 400 px buffer zone (LeaveArena command) currently costs a life only on the ship (PlayerHealth out-of-bounds path / ShipHealth). When this ticket wires LIVES into the session, route that out-of-bounds loss through the same session lives so both deaths count the same.');
@@ -62692,6 +62704,7 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (598, 'M.
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (599, 'M.ORCH-T1432', 'ryand', '2026-11-03T16:06:19Z', 'Done in 7af2d440: double-click a CLI tab''s name to rename in place (Enter keeps, Esc/focus loss cancels, blank reverts). Name is PaneRequest.CustomName, saved in the TermHost session''s tab file terms\<TermId>.pane plus the session-restore file, so reattach, Pop out (TermViewer) and dashboard restart keep it; TermId is unchanged. ''Lifeboat'' does not exist in any repo yet (only this ticket names it); any future recovery path that reads the .pane file or restore file gets the name for free.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (600, 'M.ORCH-T1431', 'ryand', '2026-11-03T16:32:43Z', '2026-11-03 user: polish pass before deploy. Apply UI/UX standards (spacing, alignment, hierarchy, states, keyboard/a11y, narrow widths) to the sidebar layout on SIDEBAR.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (601, 'UNR-T3', 'ryand', '2026-11-03T16:39:53Z', 'Unreal Engine not installed on this machine (Launcher only, empty InstallationList). User will free space on D: and install UE 5.5+ there via the Epic Launcher. Meanwhile: engine-independent work (C++ procedural island from a heightmap PNG, water plane, BasicShapes ruins, skeleton enemy AI + hit detection, runtime Enhanced Input, Canvas HUD, CC0 KayKit-style character assets, editor-Python import/map script); compile + import + run once the engine exists.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (602, 'US-T4', 'ryand', '2026-11-03T16:48:15Z', 'User direction 2026-11-03: build BOTH a C++ port and a C# (original Core unchanged, via UnrealSharp or equivalent) port, both co-op, package as Unreal.SpaceGod.Cpp.exe / Unreal.SpaceGod.CSharp.exe (user wrote Unity.SpaceGod.*.exe; taken as Unreal.*), then race them. Plan: docs/MIGRATION.md. Wave 1 running: US-T5 foundation, US-T6 C# track, US-T7..T18 Core ports. Queued for free slots: US-T19, US-T20, US-T21, US-T22. Next waves: integration compile, engine-side Runtime for both tracks, co-op via Core/Session, Bench + race write-up.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
@@ -81740,6 +81753,9 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('UM-T84', 'M.VALT-T35', '
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UM-T84', 'M.VALT-T39', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UM-T84', 'M.VALT-T44', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UM-T9', 'UM-T8', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNR-T4', 'UNR-T3', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNR-T5', 'UNR-T3', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNR-T6', 'UNR-T3', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNS-T17', 'M.COMP-T157', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNS-T17', 'M.VALT-T35', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNS-T17', 'M.VALT-T39', 'requires', NULL);
