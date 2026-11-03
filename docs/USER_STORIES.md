@@ -432,3 +432,5 @@ updated: 2026-10-12
 | M.TIX-T300 | 2026-11-01 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
 | M.TIX-T301 | 2026-11-02 | fix | closed | Bughunt sweep, two passes: find and fix real bugs across tracked source (user request 2026-11-02) | 0ca14a0 |
 | M.TIX-T302 | 2026-11-02 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
+| M.TIX-T303 | 2026-11-02 | fix | closed | Fix the open items the 2026-11-02 bughunt left for decision (ticket verify reports cycles touching the repo) | — |
+| M.TIX-T304 | 2026-11-03 | chore | closed | Redeploy so the 2026-11-03 bughunt fixes (M.TIX-T303) go live | 4b136c2 |
