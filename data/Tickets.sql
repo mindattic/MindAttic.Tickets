@@ -5072,6 +5072,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T363', 'IdiotProof', 363, '2026-11-02', 'fix', 'closed', 'DippedTo(level) misses a dip older than the Monitor''s 4-hour bar window (240 x 1-min bars) though it promises ''stays true for the rest of the ET day''; a 4:30 AM dip then 10 AM reclaim never fires', 'IP-T362', 362, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T364', 'IdiotProof', 364, '2026-11-03', 'chore', 'closed', 'Redeploy so the 2026-11-03 bughunt fixes (IP-T356, IP-T357) go live', 'ae2f6e4 23067e2', 363, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T365', 'IdiotProof', 365, '2026-11-03', 'chore', 'closed', 'Remove the GOOG dip-reclaim buy Live strategy (01a19c2a, IP-37I3-FVGY) at the owner''s request; its armed script dropped the 275.60 dip and second higher low', 'strategy 01a19c2a soft-deleted', 364, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T366', 'IdiotProof', 366, '2026-11-03', 'chore', 'closed', 'Erase all strategies at the owner''s request (soft-delete then --hard every strategy, including already deleted ones)', 'all 3 strategies hard-deleted', 365, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T1', 'JellyFinPoster', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| JFP-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T2', 'JellyFinPoster', 2, '2026-10-16', 'chore', 'closed', 'install.ps1 adds this repo''s 9 .prose/commands stubs for the shared global commands, so any LLM client finds them', 'mindattic-agent-standard/install.ps1 run 2026-10-16', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T3', 'JellyFinPoster', 3, '2026-10-16', 'chore', 'closed', 'Bug hunt: run an exhaustive /bughunt over the whole repo and fix every real bug found (each fix under its own fix ticket), then hunt again; close this only when a full pass finds nothing', '9a5f84c', 2, NULL);
@@ -58899,6 +58900,10 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34930, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34931, 'U.SPC-T601', '2026-11-03T06:14:07Z', 'ref', '—', 'a9814ba');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34932, 'U.SPC-T601', '2026-11-03T06:14:18Z', 'working', 'honey@mindattic.com (985b1b6c-4215-47ba-8142-9d3216be77b3)', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34933, 'C2WS-T47', '2026-11-03T06:14:18Z', 'working', '4468e5ff-b087-4a85-922f-1bd380398bcd', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34934, 'IP-T366', '2026-11-03T13:38:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34935, 'IP-T366', '2026-11-03T13:39:03Z', 'working', NULL, '6be9f754-45a1-4b6a-bd9b-eb3a98ffea80');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34936, 'IP-T366', '2026-11-03T13:39:58Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34937, 'IP-T366', '2026-11-03T13:39:58Z', 'ref', '—', 'all 3 strategies hard-deleted');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -61427,6 +61432,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('USOD-T9', 'approved', 0, '2026-10-22T23:02:27Z', NULL);
 
 -- ticket_work
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T366', NULL, 0, NULL, '6be9f754-45a1-4b6a-bd9b-eb3a98ffea80', '2026-11-03T13:39:03Z', '2026-11-03T13:39:03Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
