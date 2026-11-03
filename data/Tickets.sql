@@ -486,8 +486,8 @@ code: UNR
 layer: stories
 status: living
 updated: 2026-11-03', 0, 0, 1);
-INSERT INTO repos (name, code, project, title, updated, front_matter, bom, crlf, trailing_newline) VALUES ('Unreal.Space', 'US', 'Unreal.Space', 'Unreal.Space — User Stories', '2026-11-03', 'codex: 1
-project: Unreal.Space
+INSERT INTO repos (name, code, project, title, updated, front_matter, bom, crlf, trailing_newline) VALUES ('Unreal.SpaceGod', 'US', 'Unreal.SpaceGod', 'Unreal.SpaceGod — User Stories', '2026-11-03', 'codex: 1
+project: Unreal.SpaceGod
 code: US
 layer: stories
 status: living
@@ -4589,9 +4589,10 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('CLA-T25', 'Claudia', 25, '2026-11-02', 'fix', 'closed', 'Command pointer in .agent/commands said a literal $source instead of its legacy path (install.ps1 escaping bug fixed in MAT-T84); point it at the real source, or the global command when the project copy is gone', '—', 24, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('COR-T1', 'Corobs', 1, '2026-11-01', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('COR-T2', 'Corobs', 2, '2026-11-01', 'feature', 'closed', 'Corobs: scaffold the pure Correlithm-Object library repo (solution, library, tests, source book in assets, house files)', '28a6c9a', 1, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('COR-T3', 'Corobs', 3, '2026-11-02', 'docs', 'open', 'test probe - will delete', '—', 2, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('COR-T3', 'Corobs', 3, '2026-11-02', 'docs', 'open', 'Adopt MindAttic.Agency''s docs-site pipeline and publish README to GitHub Pages (HOUSE-LAW-14)', '—', 2, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('COR-T4', 'Corobs', 4, '2026-11-02', 'fix', 'closed', 'Bughunt sweep, two passes: find and fix real bugs across tracked source (user request 2026-11-02)', '—', 3, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('COR-T5', 'Corobs', 5, '2026-11-02', 'fix', 'closed', 'Fix the open items the 2026-11-02 bughunt left for decision (ContinuousConverter wraps: Infinity like NaN)', '—', 4, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('COR-T6', 'Corobs', 6, '2026-11-03', 'docs', 'closed', 'Document every public member against the book; move Prose-specific consumer content out to Prose''s own RFC', '—', 5, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('CUR-T1', 'Cursory', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| CUR-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('CUR-T2', 'Cursory', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for UserRepository (Cursory.Core/Services/UserRepository.cs): only the empty-path ctor guard is tested. Cover missing file loads as empty, Add/Update/Delete persist and round-trip through a fresh instance on the same temp path, Update of an unknown Id is a no-op, Delete of unknown Id leaves others, GetByUsername is case-insensitive, GetAll/GetById/GetByUsername return defensive clones (mutating the result does not change the cache), Count, Save creates a missing parent directory and leaves no stray .tmp files. It is the only user store, so a regression loses or corrupts accounts.', '46321ac Cursory.Tests/UserRepositoryTests.cs', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('CUR-T3', 'Cursory', 3, '2026-10-14', 'chore', 'closed', 'NUnit tests for AuthService password change and validators (Cursory.Core/Services/AuthService.cs): ChangePassword hashes the new password, rotates SecurityStamp, clears MustChangePassword, throws for unknown user or weak password; ChangePasswordWithVerification rejects empty or wrong current password. GetPasswordError per rule (empty, too short, too long, NUL char, missing upper/lower/digit/special), ValidateUsername (blank, too long, bad chars, 3-char minimum), ValidateDisplayName (blank, too long, NUL), CreateUser rejects invalid role and duplicate username (case-insensitive), trims username and sanitizes display name. SecurityStamp rotation is what logs out old sessions.', '15fe2cd', 2, NULL);
@@ -12115,9 +12116,9 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RON-T20', 'UnityRonin', 20, '2026-11-02', 'fix', 'closed', 'Bughunt sweep, two passes: find and fix real bugs across tracked source (user request 2026-11-02)', '—', 19, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RON-T21', 'UnityRonin', 21, '2026-11-02', 'fix', 'closed', 'Fix the open items the 2026-11-02 bughunt left for decision (camera-relative steering, duel squaring-up, joystick ring clamp, font GUID; publish via unarchive/re-archive)', '—', 20, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T1', 'Unreal.Soulslike', 1, '2026-11-03', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T2', 'Unreal.Soulslike', 2, '2026-11-03', 'feature', 'open', 'Scaffold co-op souls-like demo: third-person combat on isolated Hebrides island (dodge roll, block, parry, X/Y light/heavy attacks, RB heal)', '—', 1, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T1', 'Unreal.Space', 1, '2026-11-03', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T2', 'Unreal.Space', 2, '2026-11-03', 'feature', 'open', 'Recreate Unity.Space''s Sol system in Unreal Engine 5 (C++) as a co-op game: JPL ephemeris, ELP-2000 Moon, IAU orientation, textured bodies, gameplay/realistic scale, focus camera, shared time warp over listen-server multiplayer', 'MAT-T87', 1, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T2', 'Unreal.Soulslike', 2, '2026-11-03', 'feature', 'closed', 'Scaffold co-op souls-like demo: third-person combat on isolated Hebrides island (dodge roll, block, parry, X/Y light/heavy attacks, RB heal)', 'b21f31c', 1, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T1', 'Unreal.SpaceGod', 1, '2026-11-03', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T2', 'Unreal.SpaceGod', 2, '2026-11-03', 'feature', 'open', 'Recreate Unity.Space''s Sol system in Unreal Engine 5 (C++) as a co-op game: JPL ephemeris, ELP-2000 Moon, IAU orientation, textured bodies, gameplay/realistic scale, focus camera, shared time warp over listen-server multiplayer', 'MAT-T87', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T1', 'Unstuck', 1, '2026-10-16', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T2', 'Unstuck', 2, '2026-10-16', 'feature', 'closed', 'Canonicalize unstuck.ps1 + the /unstuck command in this repo (global ~/.claude copies become forwarders) and add UnstuckTaskbar, a tray app with an assignable global hotkey (incl. media keys) that fires it', 'dotnet test: 26/26 passed; deploy.ps1 verified (C:\Apps\Unstuck\UnstuckTaskbar.exe built, deploy.bat/unstuck.ps1 unaffected); tray app launched live, single-instance mutex guard confirmed, logon scheduled task + Start Menu shortcut self-registered', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T3', 'Unstuck', 3, '2026-10-16', 'chore', 'closed', 'Add deploy.ps1/deploy.bat packaging to C:\Apps\Unstuck and a desktop shortcut', 'user request', 2, NULL);
@@ -58936,6 +58937,13 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34948, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34949, 'UNR-T1', '2026-11-03T14:28:43Z', 'created', NULL, 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34950, 'UNR-T2', '2026-11-03T14:28:46Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34951, 'UNR-T2', '2026-11-03T14:29:01Z', 'working', NULL, 'd7eaa32b-e907-485e-99dc-fc3968a356a9');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34952, 'COR-T6', '2026-11-03T14:31:26Z', 'created', NULL, 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34953, 'US-T1', '2026-11-03T14:34:46Z', 'repo', 'Unreal.Space', 'Unreal.SpaceGod');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34954, 'US-T2', '2026-11-03T14:34:46Z', 'repo', 'Unreal.Space', 'Unreal.SpaceGod');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34955, 'UNR-T2', '2026-11-03T14:35:05Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34956, 'UNR-T2', '2026-11-03T14:35:05Z', 'ref', '—', 'b21f31c');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34957, 'UNR-T2', '2026-11-03T14:35:19Z', 'working', 'd7eaa32b-e907-485e-99dc-fc3968a356a9', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (34958, 'COR-T3', '2026-11-03T14:36:53Z', 'summary', 'test probe - will delete', 'Adopt MindAttic.Agency''s docs-site pipeline and publish README to GitHub Pages (HOUSE-LAW-14) (corrected: Ticket''s own note (2026-11-02) says this is real backlog work, not a test probe)');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -61688,7 +61696,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UNR-T2', NULL, 0, NULL, 'd7eaa32b-e907-485e-99dc-fc3968a356a9', '2026-11-03T14:29:01Z', '2026-11-03T14:29:01Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T2', NULL, 0, NULL, 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', '2026-11-03T14:28:34Z', '2026-11-03T14:28:34Z');
 
 -- ticket_notes
@@ -62567,6 +62574,7 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (590, 'M.
 Root cause: MainViewModel.Tabs.cs''s `ActiveCliTitles` (M.ORCH-T1424) lists every open Terminals pane''s title, including the Launcher''s own always-open menu pane, in the hover tip''s ''Active CLIs'' line — so a login whose only open tab is its Launcher shows ''Active CLIs: Launcher'' instead of ''Active CLIs: none open''. Fix: exclude Request.IsMenu panes from ActiveCliTitles, matching how Presume()/TeamWall already exclude the Launcher''s menu pane elsewhere.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (591, 'MAT-T87', 'ryand', '2026-11-03T14:27:46Z', 'Repo created: github.com/mindattic/Unreal.Space (tagged wip); the port''s work is ticketed in that repo.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (592, 'US-T2', 'ryand', '2026-11-03T14:28:18Z', 'User asked mid-task: ''make it coop''. Design: listen-server co-op (host + friends via Open <ip>); the server owns the simulation clock (Julian date, warp, pause), replicated to every client; each player flies their own camera pawn, which is replicated and drawn as a marker to the others; scale blend and labels/orbits toggles stay per-player (visual only); time changes by any player go through a server RPC and are announced to all.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (593, 'US-T2', 'ryand', '2026-11-03T14:34:11Z', 'User: name it ''Unreal.SpaceGod'' (the Unreal counterpart of Unity.SpaceGod). Renaming GitHub repo, local folder and ticket-DB key from Unreal.Space; module/project name UnrealSpaceGod.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
@@ -77144,6 +77152,7 @@ INSERT INTO repo_renames (seq, old_name, new_name, at, reason) VALUES (33, 'Rogu
 INSERT INTO repo_renames (seq, old_name, new_name, at, reason) VALUES (34, 'Cyberpunk2077.WebSlinger', 'Mods.Cyberpunk2077.WebSlinger', '2026-11-01T20:18:20Z', 'Organize all mod repos under Mods.* prefix (C2WS-T3)');
 INSERT INTO repo_renames (seq, old_name, new_name, at, reason) VALUES (35, 'RogueTrader.Brevity', 'Mods.RogueTrader.Brevity', '2026-11-01T20:20:07Z', 'Organize all mod repos under Mods.* prefix (RTB-T258)');
 INSERT INTO repo_renames (seq, old_name, new_name, at, reason) VALUES (36, 'RogueTrader.Overwatch', 'Mods.RogueTrader.Overwatch', '2026-11-01T20:20:49Z', 'Organize all mod repos under Mods.* prefix (RTO-T100)');
+INSERT INTO repo_renames (seq, old_name, new_name, at, reason) VALUES (37, 'Unreal.Space', 'Unreal.SpaceGod', '2026-11-03T14:34:46Z', 'User asked for the Unreal counterpart of Unity.SpaceGod to be named Unreal.SpaceGod (US-T2)');
 
 -- id_history
 INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (1, 'ticket', 'M.FLOW-T1', 'M.TIX-T1', '2026-10-21T00:38:39Z', 'MindAttic.Workflow renamed MindAttic.Tickets: it is a ticketing system (M.FLOW-T120)');
@@ -87436,22 +87445,22 @@ INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Unreal.Soulslike', 
 
 | ID | Date | Type | Status | Summary | Ref |
 |---|---|---|---|---|---|');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Unreal.Space', 0, 'raw', NULL, '---
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Unreal.SpaceGod', 0, 'raw', NULL, '---
 codex: 1
-project: Unreal.Space
+project: Unreal.SpaceGod
 code: US
 layer: stories
 status: living
 updated: 2026-11-03
 ---
 
-# Unreal.Space — User Stories
+# Unreal.SpaceGod — User Stories
 > ✅ done (shipped & tested) · 🟡 partial · ⬜ planned. Every ✅ cites the test.
 
 ## Priority backlog
 _Nothing recorded yet._
 ');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Unreal.Space', 1, 'tickets', NULL, '## Tickets
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Unreal.SpaceGod', 1, 'tickets', NULL, '## Tickets
 > Permanent log of every change and fix — this repo''s ticket system. Rows are append-only: never
 > delete or reword one; only move its Status (open → closed / wont-do) and fill in Ref. Status is
 > a word, not a glyph, so tickets don''t count toward the story index. Keep this section last.
