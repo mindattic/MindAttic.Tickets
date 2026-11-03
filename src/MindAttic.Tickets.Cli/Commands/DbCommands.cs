@@ -587,7 +587,9 @@ public sealed class StoryShowCommand : Command<StoryShowCommand.Settings>
             AnsiConsole.WriteLine(s.Text);
             if (s.Evidence is { } e) AnsiConsole.MarkupLine($"[grey]Evidence:[/] {Output.Esc(e)}");
         }
-        foreach (var l in db.Links(settings.Id)) AnsiConsole.MarkupLine(Output.LinkLine(l, settings.Id));
+        // By the ID it has now: a former ID (a recoded repo's) finds the story, but its links moved to the new one.
+        var id = found[0].Id;
+        foreach (var l in db.Links(id)) AnsiConsole.MarkupLine(Output.LinkLine(l, id));
         return 0;
     }
 }

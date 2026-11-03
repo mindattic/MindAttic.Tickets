@@ -606,8 +606,10 @@ public sealed partial class TicketsDb : IDisposable
             ("$id", t.Id), ("$r", name), ("$n", next), ("$d", t.Date), ("$ty", t.Type), ("$st", t.Status), ("$su", t.Summary), ("$ref", t.Ref), ("$o", ordinal));
         Exec("INSERT INTO ticket_events (ticket_id, at, field, old, new) VALUES ($id, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), 'created', NULL, $st)", null, ("$id", t.Id), ("$st", t.Status));
         if (NormalizeDescription(description) is { } body) SaveDescription(t.Id, body);
+        // Linked to the ticket as it's known now: a former (reassigned) ID resolves, but a link stored under it would dangle.
         foreach (Match m in BlockedBy().Matches(t.Summary))
-            if (Ticket(m.Groups["id"].Value) is not null) AddLinkCore(t.Id, m.Groups["id"].Value, "requires", "blocked by in summary");
+            if (Ticket(m.Groups["id"].Value) is { } req && !string.Equals(req.Ticket.Id, t.Id, StringComparison.OrdinalIgnoreCase))
+                AddLinkCore(t.Id, req.Ticket.Id, "requires", "blocked by in summary");
         tx.Commit();
         return t;
     }
@@ -682,8 +684,10 @@ public sealed partial class TicketsDb : IDisposable
             Exec("INSERT INTO ticket_events (ticket_id, at, field, old, new) VALUES ($id, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), 'summary', $o, $n)", tx,
                 ("$id", t.Id), ("$o", t.Summary), ("$n", $"{summary} (corrected: {reason.Trim()})"));
             foreach (Match m in BlockedBy().Matches(summary))
-                if (!string.Equals(m.Groups["id"].Value, t.Id, StringComparison.OrdinalIgnoreCase) && Ticket(m.Groups["id"].Value) is not null)
-                    AddLinkCore(t.Id, m.Groups["id"].Value, "requires", "blocked by in summary");
+                // Never closing a requires cycle (AddLink refuses one): both tickets would wait on each other forever.
+                if (Ticket(m.Groups["id"].Value) is { } req && !string.Equals(req.Ticket.Id, t.Id, StringComparison.OrdinalIgnoreCase)
+                    && !Requires(req.Ticket.Id, transitive: true).Contains(t.Id, StringComparer.OrdinalIgnoreCase))
+                    AddLinkCore(t.Id, req.Ticket.Id, "requires", "blocked by in summary");
             EnsureSchema(tx); // the trigger comes straight back, before commit, so no other connection ever sees it missing
             tx.Commit();
         }
@@ -903,7 +907,8 @@ public sealed partial class TicketsDb : IDisposable
         var edges = Rows("SELECT from_id, to_id FROM links WHERE kind = 'requires'", r => (From: r.GetString(0), To: r.GetString(1)))
             .ToLookup(e => e.From, e => e.To, StringComparer.OrdinalIgnoreCase);
         var found = new List<string>();
-        var seen = new HashSet<string>(StringComparer.Ordinal);
+        // Without case, as the edges are looked up: "BE-T1" and "be-t1" are one ticket, listed once.
+        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         var next = new Queue<string>(edges[id]);
         while (next.TryDequeue(out var x))
         {

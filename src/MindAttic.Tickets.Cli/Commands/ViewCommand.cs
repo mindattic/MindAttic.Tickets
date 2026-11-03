@@ -63,7 +63,7 @@ public sealed class ViewCommand : Command<ViewCommand.Settings>
 
         var data = new
         {
-            generated = DateTime.Now.ToString("yyyy-MM-dd HH:mm"),
+            generated = DateTime.Now.ToString("yyyy-MM-dd HH:mm", System.Globalization.CultureInfo.InvariantCulture),
             selectedRepo,
             repos = db.Repos().Select(r => new { name = r.Name, code = r.Code }),
             tickets = db.Tickets().Select(t => new

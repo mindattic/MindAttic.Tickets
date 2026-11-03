@@ -59,7 +59,7 @@ public sealed class TicketStatsCommand : Command<TicketStatsCommand.Settings>
             {
                 by = by.ToString().ToLowerInvariant(),
                 repo, type = settings.Type,
-                periods = m.Periods.Select(p => new { label = p.Label, start = p.Start.ToString("yyyy-MM-dd"), end = p.End.ToString("yyyy-MM-dd"), filed = p.Opened, closed = p.Closed, wontDo = p.WontDo, openAtEnd = p.OpenAtEnd }),
+                periods = m.Periods.Select(p => new { label = p.Label, start = p.Start.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture), end = p.End.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture), filed = p.Opened, closed = p.Closed, wontDo = p.WontDo, openAtEnd = p.OpenAtEnd }),
                 cycleTime = m.CycleTime.Select(c => new { type = c.Group, closed = c.Count, medianHours = Hours(c.Median), meanHours = Hours(c.Mean), p85Hours = Hours(c.P85) }),
                 openByRepo = m.OpenByRepo.Select(s => new { repo = s.Name, counts = s.Counts }),
                 openByType = m.OpenByType.Select(s => new { type = s.Name, counts = s.Counts }),
@@ -100,7 +100,7 @@ public sealed class TicketStatsCommand : Command<TicketStatsCommand.Settings>
         if (series.Count == 0) { AnsiConsole.MarkupLine($"[grey]{title}: none open.[/]"); return; }
         // Short headings (MM-dd; a month as yyyy-MM) keep a column per period on screen; the throughput table names each in full.
         var table = new Table().Border(TableBorder.Rounded).Title(title).AddColumn(new TableColumn(what).NoWrap());
-        foreach (var p in m.Periods) table.AddColumn(new TableColumn(m.By == StatsPeriod.Month ? p.Label : p.Start.ToString("MM-dd")).RightAligned());
+        foreach (var p in m.Periods) table.AddColumn(new TableColumn(m.By == StatsPeriod.Month ? p.Label : p.Start.ToString("MM-dd", System.Globalization.CultureInfo.InvariantCulture)).RightAligned());
         foreach (var s in series) table.AddRow([Output.Esc(s.Name), .. s.Counts.Select(c => $"{c}")]);
         AnsiConsole.Write(table);
     }
