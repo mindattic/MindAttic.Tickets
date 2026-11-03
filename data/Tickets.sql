@@ -7425,7 +7425,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1440', 'MindAttic.Orchestrator', 1440, '2026-11-03', 'fix', 'closed', 'A login''s Prefix change reaches CLIs that are already open: tab tooltip, TermViewer badge and Windows Terminal titles pick up the new prefix without reopening', '—', 1439, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1441', 'MindAttic.Orchestrator', 1441, '2026-11-03', 'feature', 'closed', 'User sidebar tabs'' tooltips are callouts: an arrow pointing at the tab''s edge, flipping and shifting to stay on screen', '0821a665, LibraryOnlyXamlTests.The_login_tabs_tooltip_is_a_callout_pointing_at_the_sidebar_edge', 1440, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1442', 'MindAttic.Orchestrator', 1442, '2026-11-03', 'feature', 'open', 'Confirm before closing a CLI tab', '—', 1441, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1443', 'MindAttic.Orchestrator', 1443, '2026-11-03', 'fix', 'open', 'Sidebar login icon shows Busy for a login with only the Launcher menu open, no active CLI', '—', 1442, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1443', 'MindAttic.Orchestrator', 1443, '2026-11-03', 'fix', 'closed', 'Sidebar login icon shows Busy for a login with only the Launcher menu open, no active CLI', '—', 1442, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T1', 'MindAttic.Psst', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.PSST-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T2', 'MindAttic.Psst', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for ContactBook (Contacts/Contact.cs): Find matches name case-insensitively before phone, falls back to 10-digit phone match across formats (+1, dashes, parens), returns null for blank or unmatched input; WithAdded rejects blank name/phone and case-insensitive duplicate names and leaves the original book unchanged; WithoutContact removes only the first case-insensitive match and returns null when absent - this is how psst sms resolves recipients, so a wrong match texts the wrong person', '865fde2', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T3', 'MindAttic.Psst', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched', '—', 2, '| M.PSST-T3 | 2026-10-14 | chore | open | NUnit tests for ContactStore (Contacts/ContactStore.cs): TryLoad returns Empty with no Error for a missing file, Empty plus an Error naming the path for malformed JSON, and reads camelCase/case-insensitive fields with defaultVia as lowercase email; Save creates the folder, round-trips contacts, omits null defaultVia, and replaces an existing file via the .tmp swap without leaving the .tmp behind - use the VaultRoamingRoot override (as PsstConfigurationSourcesTests does) to point at a temp dir so the user''s real contacts.json is never touched | — |');
@@ -9445,7 +9445,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T409', 'Prose', 409, '2026-10-30', 'docs', 'closed', 'GLMZ P0 rule 17: Laugh or you''d cry: confirm, then record as a universe law', 'Recorded as universe law 01a195b1-b83e-76c0-a27e-5efdc1bff9fe per the author''s live instruction.', 408, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T410', 'Prose', 410, '2026-10-30', 'chore', 'closed', 'GLMZ P0: label the already-open GLMZ tickets into this plan (book, phase) so nothing runs outside it', '—', 409, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T411', 'Prose', 411, '2026-10-30', 'chore', 'closed', 'GLMZ P1 machine-mind: define the spectrum of minds as one canon ladder and record it', 'mind-ladder stated on Supermind vocab record 019d6143-aafd-77d4-8ade-cb6d2bc81986', 410, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T412', 'Prose', 412, '2026-10-30', 'chore', 'open', 'GLMZ P1 machine-mind: build the emergence timeline: when and where each machine mind woke', '—', 411, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T412', 'Prose', 412, '2026-10-30', 'chore', 'closed', 'GLMZ P1 machine-mind: build the emergence timeline: when and where each machine mind woke', '—', 411, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T413', 'Prose', 413, '2026-10-30', 'chore', 'closed', 'GLMZ P1 machine-mind: The Deep: place it on the ladder, give it a want, and record it', 'ladder placement + want stated on The Deep entity 019e9e4f-1f2e-7b03-8efb-80104e18d902', 412, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T414', 'Prose', 414, '2026-10-30', 'chore', 'closed', 'GLMZ P1 machine-mind: OBERON: place it on the ladder, give it a want, and record it', 'ladder placement + want stated on OBERON entity 019f0f3f-22a5-744f-8102-2b5970135e2d', 413, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T415', 'Prose', 415, '2026-10-30', 'chore', 'closed', 'GLMZ P1 machine-mind: Green: place it on the ladder, give it a want, and record it', 'ladder placement + want stated on Green entity 019fc103-0d07-78a5-b08c-5e3c61ed0963', 414, NULL);
@@ -59304,6 +59304,35 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35246, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35247, 'M.ORCH-T1443', '2026-11-03T18:45:03Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35248, 'GG-T223', '2026-11-03T18:45:15Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35249, 'M.ORCH-T1443', '2026-11-03T18:45:19Z', 'working', NULL, '680fe81d-f63c-4b92-9bde-1794c7d39270');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35250, 'M.ORCH-T1443', '2026-11-03T18:49:57Z', 'description', '## Symptom
+
+<!-- What goes wrong, and how to see it. -->
+
+## Cause
+
+<!-- Why it happens, once known. -->
+
+## Test
+
+<!-- The test that fails before the fix and passes after. -->', 'Symptom: a login''s sidebar badge (MainWindow.xaml''s TabBusyBadge) keeps showing green/Busy for a short while after its
+only CLI closed and nothing but the Launcher''s project-picker menu is open. Reported live: Erin (ohleo199@mindattic.com)
+showed Busy with no active CLI, just the Launcher menu.
+
+![image 1](../../../MindAttic.Tickets/data/attachments/M.ORCH-T1443/2026-11-03-image-1.png)
+
+Cause: TerminalPaneViewModel.Presume (M.ORCH-T1413) marks a pane "presumed busy" the instant Enter is typed, and only
+clears it on a confirming status read or after PresumeLife (60s) with no read at all. If the CLI process exits before
+any status read lands (closed right after Enter, or force-closed mid-turn), the pane''s Ended setter never called
+SetPresumed(null), so IsPresumedBusy -- and the login tab''s aggregate TabActivity (MainViewModel.TabStatus.cs) via
+AnyPanePresumedBusy -- stayed true for up to that minute even though the CLI was already gone.
+
+Fix: TerminalPaneViewModel.Ended''s setter now calls SetPresumed(null) the moment it becomes true, so a closed CLI can
+never keep leaving its login''s badge green behind it.
+
+Test: TerminalPanesTests.Ending_a_pane_clears_a_presumption_with_no_status_read_yet.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35251, 'M.ORCH-T1443', '2026-11-03T18:50:35Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35252, 'M.ORCH-T1443', '2026-11-03T18:51:17Z', 'working', '680fe81d-f63c-4b92-9bde-1794c7d39270', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35253, 'PRS-T412', '2026-11-03T18:54:10Z', 'status', 'open', 'closed');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -61833,7 +61862,6 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1443', NULL, 0, NULL, '680fe81d-f63c-4b92-9bde-1794c7d39270', '2026-11-03T18:45:19Z', '2026-11-03T18:45:19Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T768', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
@@ -70217,17 +70245,22 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1442
 Add a confirmation dialog (''End this CLI?'') before the kill runs, for every CLI tab (not just Launcher/menu panes).
 
 Triggered by: user accidentally closed a Prose CLI tab via its X button and had no way to recover it without resuming the Claude session manually.', '2026-11-03T18:41:22Z');
-INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1443', '## Symptom
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1443', 'Symptom: a login''s sidebar badge (MainWindow.xaml''s TabBusyBadge) keeps showing green/Busy for a short while after its
+only CLI closed and nothing but the Launcher''s project-picker menu is open. Reported live: Erin (ohleo199@mindattic.com)
+showed Busy with no active CLI, just the Launcher menu.
 
-<!-- What goes wrong, and how to see it. -->
+![image 1](../../../MindAttic.Tickets/data/attachments/M.ORCH-T1443/2026-11-03-image-1.png)
 
-## Cause
+Cause: TerminalPaneViewModel.Presume (M.ORCH-T1413) marks a pane "presumed busy" the instant Enter is typed, and only
+clears it on a confirming status read or after PresumeLife (60s) with no read at all. If the CLI process exits before
+any status read lands (closed right after Enter, or force-closed mid-turn), the pane''s Ended setter never called
+SetPresumed(null), so IsPresumedBusy -- and the login tab''s aggregate TabActivity (MainViewModel.TabStatus.cs) via
+AnyPanePresumedBusy -- stayed true for up to that minute even though the CLI was already gone.
 
-<!-- Why it happens, once known. -->
+Fix: TerminalPaneViewModel.Ended''s setter now calls SetPresumed(null) the moment it becomes true, so a closed CLI can
+never keep leaving its login''s badge green behind it.
 
-## Test
-
-<!-- The test that fails before the fix and passes after. -->', '2026-11-03T18:45:03Z');
+Test: TerminalPanesTests.Ending_a_pane_clears_a_presumption_with_no_status_read_yet.', '2026-11-03T18:49:57Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T833', 'Symptom: Inside the Orchestrator''s embedded Terminals panel (TerminalPanesHost), when a CLI running
 in a pane shows an interactive, arrow-key-driven menu (e.g. a selection list or permission prompt),
 the Up/Down/Left/Right keys don''t reach the CLI. It looks like the WPF app is intercepting/consuming
