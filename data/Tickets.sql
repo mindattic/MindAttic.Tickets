@@ -12191,6 +12191,12 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T36', 'Unreal.Soulslike', 36, '2026-11-04', 'feature', 'open', 'Beach life: scuttling crabs and dead fish washed up on the shore', '—', 35, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T37', 'Unreal.Soulslike', 37, '2026-11-04', 'feature', 'open', 'Pond life: frogs that jump into the water, fish swimming in the ponds', '—', 36, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T38', 'Unreal.Soulslike', 38, '2026-11-04', 'feature', 'open', 'Boulders strewn across the land; high cliffs built from properly aligned boulders', '—', 37, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T39', 'Unreal.Soulslike', 39, '2026-11-04', 'feature', 'open', 'Day/night cycle; dimmer setting sun in the west', '—', 38, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T40', 'Unreal.Soulslike', 40, '2026-11-04', 'feature', 'open', 'Torches: carried lit by enemies, wall torches, pick up, wield, throw', '—', 39, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T41', 'Unreal.Soulslike', 41, '2026-11-04', 'feature', 'open', 'Field fire: open flame ignites grass, spreads, burns models away', '—', 40, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T42', 'Unreal.Soulslike', 42, '2026-11-04', 'feature', 'open', 'Grapple + umbrella traversal: slingshot up, catch the wind, glide', '—', 41, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T43', 'Unreal.Soulslike', 43, '2026-11-04', 'feature', 'open', 'Tall grass to hide in', '—', 42, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T44', 'Unreal.Soulslike', 44, '2026-11-04', 'feature', 'open', 'D-pad up whistles: nearby enemies come over curiously', '—', 43, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T1', 'Unreal.SpaceGod', 1, '2026-11-03', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T2', 'Unreal.SpaceGod', 2, '2026-11-03', 'feature', 'closed', 'Recreate Unity.Space''s Sol system in Unreal Engine 5 (C++) as a co-op game: JPL ephemeris, ELP-2000 Moon, IAU orientation, textured bodies, gameplay/realistic scale, focus camera, shared time warp over listen-server multiplayer', 'e1b6839', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T3', 'Unreal.SpaceGod', 3, '2026-11-03', 'chore', 'closed', 'Install Unreal Engine 5.5 and its Visual Studio C++ toolchain on this workstation so Unreal.SpaceGod can be built and played', '9bb3736 bd433f3', 2, NULL);
@@ -61032,6 +61038,12 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36425, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36426, 'UNR-T37', '2026-11-04T15:06:47Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36427, 'UNR-T38', '2026-11-04T15:06:50Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36428, 'PRS-T86', '2026-11-04T15:07:25Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36429, 'UNR-T39', '2026-11-04T15:11:25Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36430, 'UNR-T40', '2026-11-04T15:11:42Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36431, 'UNR-T41', '2026-11-04T15:11:44Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36432, 'UNR-T42', '2026-11-04T15:11:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36433, 'UNR-T43', '2026-11-04T15:11:48Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36434, 'UNR-T44', '2026-11-04T15:11:50Z', 'created', NULL, 'open');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -77681,6 +77693,12 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T35', 'K
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T36', 'Crabs scuttle sideways along the beach (flee from the player); dead fish lie along the tideline.', '2026-11-04T15:06:45Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T37', 'Frogs sit at marsh pool edges and leap into the water when the player nears; fish swim around inside the pools.', '2026-11-04T15:06:47Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T38', 'More boulder scatter over the interior; raise the cliff coast and clad it with boulders aligned to the cliff face (stacked, facing out to sea) instead of random yaw.', '2026-11-04T15:06:50Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T39', 'Sun rotates through a full day/night cycle (sky, fog, light colour follow); the low western sun is too bright - dim it.', '2026-11-04T15:11:25Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T40', 'Enemies hold lit torches; torches on walls can be taken and wielded as the primary equip; equipping anything else drops the torch immediately; a torch can be picked up and thrown at enemies.', '2026-11-04T15:11:42Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T41', 'Fire in a field starts it burning: flames grow and spread; burning models first blacken, then shrink and dissolve.', '2026-11-04T15:11:44Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T42', 'Grapple and an umbrella work together: slingshot yourself up off a grapple, open the umbrella to catch the wind and glide down to another spot.', '2026-11-04T15:11:46Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T43', 'Patches of tall grass; crouched/still in tall grass hides the player from enemy sight.', '2026-11-04T15:11:48Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T44', 'Whistle on D-pad up draws unaware enemies within earshot to investigate the spot, curious rather than hostile.', '2026-11-04T15:11:50Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNS-T17', 'LAMP migration for **Unstuck** (plan: MindAttic.Vault/docs/rfc/0003-lamp.md, Rollout step 5).
 
 - Move to the new MindAttic.Vault major.
