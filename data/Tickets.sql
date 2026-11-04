@@ -12180,6 +12180,11 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T25', 'Unreal.Soulslike', 25, '2026-11-04', 'fix', 'closed', 'Gamepad: A jumps (unbound today), B rolls on press, tap L3 starts sprinting', '—', 24, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T26', 'Unreal.Soulslike', 26, '2026-11-04', 'feature', 'closed', 'Enemies patrol; when two patrollers meet they stop, chat, then part ways', '—', 25, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T27', 'Unreal.Soulslike', 27, '2026-11-04', 'feature', 'closed', 'Stealth stance: tap B standing still to crouch, hold B to dive prone and army-crawl, B again to stand; crouch/prone cut enemy sight and hearing so you can sneak up and backstab', '—', 26, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T28', 'Unreal.Soulslike', 28, '2026-11-04', 'fix', 'open', 'Crouch (tap B) does nothing in real play', '—', 27, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T29', 'Unreal.Soulslike', 29, '2026-11-04', 'fix', 'open', 'Sprint (tap L3/Ctrl) does nothing in real play', '—', 28, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T30', 'Unreal.Soulslike', 30, '2026-11-04', 'fix', 'open', 'Light attack has no reach', '—', 29, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T31', 'Unreal.Soulslike', 31, '2026-11-04', 'fix', 'open', 'Sword hand not gripping, shield upside down', '—', 30, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T32', 'Unreal.Soulslike', 32, '2026-11-04', 'fix', 'open', 'One-sided rock meshes invisible from behind', '—', 31, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T1', 'Unreal.SpaceGod', 1, '2026-11-03', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T2', 'Unreal.SpaceGod', 2, '2026-11-03', 'feature', 'closed', 'Recreate Unity.Space''s Sol system in Unreal Engine 5 (C++) as a co-op game: JPL ephemeris, ELP-2000 Moon, IAU orientation, textured bodies, gameplay/realistic scale, focus camera, shared time warp over listen-server multiplayer', 'e1b6839', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T3', 'Unreal.SpaceGod', 3, '2026-11-03', 'chore', 'closed', 'Install Unreal Engine 5.5 and its Visual Studio C++ toolchain on this workstation so Unreal.SpaceGod can be built and played', '9bb3736 bd433f3', 2, NULL);
@@ -61007,6 +61012,11 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36411, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36412, 'PRS-T791', '2026-11-04T13:41:06Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36413, 'PRS-T98', '2026-11-04T13:44:38Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36414, 'PRS-T59', '2026-11-04T14:15:18Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36415, 'UNR-T28', '2026-11-04T14:26:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36416, 'UNR-T29', '2026-11-04T14:26:45Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36417, 'UNR-T30', '2026-11-04T14:26:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36418, 'UNR-T31', '2026-11-04T14:26:48Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36419, 'UNR-T32', '2026-11-04T14:26:49Z', 'created', NULL, 'open');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -77645,6 +77655,11 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T24', 'U
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T25', 'User: ''A is jump, B is roll'', ''tap T3 to begin sprinting'' (read as L3 / left-stick click; R3 is lock-on).', '2026-11-04T12:57:29Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T26', 'User: ''the enemies need to patrol around, when they run into eachother they stop and chat and then go their seperate ways''. Unaware enemies wander a patrol route around their post; two idle patrollers that meet face each other, gesture/talk for a few seconds, then head off in different directions. A chatting pair is unaware (ambush bonus applies).', '2026-11-04T13:00:38Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T27', 'User: ''make sure running starts with tapping R3 but if you hold B you leap to prone like in Ghost Recon Breakpoint and can army crawl, press b again and you stand up, you can crouch just by pressing B button when not running; this allows for stealth, make sure you can walk up to enemies who have noticed you and back stab them''. Moving + tap B still rolls.', '2026-11-04T13:11:22Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T28', 'Playtest: no crouch. Input path for tap-B crouch is untested by demos (they call functions directly).', '2026-11-04T14:26:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T29', 'Playtest: no run. Check binding and toggle logic in real input.', '2026-11-04T14:26:45Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T30', 'Playtest: light attack didn''t have any range; hit trace too short for the sword.', '2026-11-04T14:26:46Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T31', 'Playtest: fingers don''t clench sword hilt; shield mounted upside down.', '2026-11-04T14:26:48Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T32', 'Playtest: many rocks are one-sided scans, invisible from the back side. Make them two-sided or orient/replace.', '2026-11-04T14:26:49Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNS-T17', 'LAMP migration for **Unstuck** (plan: MindAttic.Vault/docs/rfc/0003-lamp.md, Rollout step 5).
 
 - Move to the new MindAttic.Vault major.
