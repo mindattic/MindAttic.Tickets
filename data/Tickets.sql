@@ -9910,6 +9910,10 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T868', 'Prose', 868, '2026-11-02', 'fix', 'closed', 'GLMZ continuity fixes: Wells #23561 Bear location, Wells #23425 vs Pieces #23293 Ledger freight-file rediscovery + Macias tag, BCODA #20756 Cotton mistag, Ur #23681 untagged pronouns', 'Wells #23561 #23425, BCODA #20756, Ur #23681; exports CYB2 V5, BCODA V90, CYB3 V5', 867, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T869', 'Prose', 869, '2026-11-02', 'fix', 'closed', 'Bughunt sweep, two passes: find and fix real bugs across tracked source (user request 2026-11-02)', '—', 868, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T870', 'Prose', 870, '2026-11-02', 'fix', 'closed', 'Fix the open item the 2026-11-02 bughunt left for decision (raise ThemeChanged/Changed after the settings-reload race path)', '—', 869, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T871', 'Prose', 871, '2026-11-03', 'chore', 'open', 'GLMZ strays: canon record and ruling for volt rats (author 2026-11-03: nanotech slowly replaces rat bodies with cybernetics; they chew wires to recharge)', '—', 870, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T872', 'Prose', 872, '2026-11-03', 'fix', 'open', 'GLMZ strays: koi pigeons and sundial dogs are not canon (author 2026-11-03); delete them from records, glossary and prose', '—', 871, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T873', 'Prose', 873, '2026-11-03', 'fix', 'open', 'GLMZ: Null Crows is a biker gang (author 2026-11-03), not a retired pigeon name; un-ban it in the altered-animals ruling, fix glossary and record', '—', 872, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T874', 'Prose', 874, '2026-11-03', 'feature', 'open', 'Add delete_glossary_term (MCP + CLI): remove one Master Glossary entry by universe and exact term; author request 2026-11-03', '—', 873, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -59490,6 +59494,17 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35374, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35375, 'US-T53', '2026-11-04T01:29:29Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35376, 'US-T53', '2026-11-04T01:29:29Z', 'ref', 'US-T48', '3b183c6 d6e166b 188166c');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35377, 'US-T57', '2026-11-04T01:32:24Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35378, 'PRS-T871', '2026-11-04T01:56:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35379, 'PRS-T872', '2026-11-04T01:56:32Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35380, 'PRS-T872', '2026-11-04T01:57:14Z', 'working', NULL, '1ead13bf-9698-4fbc-abad-81016267c641');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35381, 'PRS-T871', '2026-11-04T01:57:14Z', 'working', NULL, '1ead13bf-9698-4fbc-abad-81016267c641');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35382, 'PRS-T872', '2026-11-04T01:57:31Z', 'summary', 'GLMZ strays: koi pigeons are not canon (author 2026-11-03); delete them from records, glossary and prose', 'GLMZ strays: koi pigeons and sundial dogs are not canon (author 2026-11-03); delete them from records, glossary and prose (corrected: author added sundial dogs to the same deletion)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35383, 'PRS-T871', '2026-11-04T01:58:13Z', 'working', '1ead13bf-9698-4fbc-abad-81016267c641', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35384, 'PRS-T872', '2026-11-04T01:58:13Z', 'working', '1ead13bf-9698-4fbc-abad-81016267c641', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35385, 'PRS-T873', '2026-11-04T01:59:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35386, 'PRS-T873', '2026-11-04T01:59:32Z', 'working', NULL, '1ead13bf-9698-4fbc-abad-81016267c641');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35387, 'PRS-T874', '2026-11-04T02:00:50Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35388, 'PRS-T874', '2026-11-04T02:01:20Z', 'working', NULL, '1ead13bf-9698-4fbc-abad-81016267c641');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -62100,6 +62115,8 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T91', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T23:09:54Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T58', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:02:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T873', NULL, 0, NULL, '1ead13bf-9698-4fbc-abad-81016267c641', '2026-11-04T01:59:32Z', '2026-11-04T01:59:32Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T874', NULL, 0, NULL, '1ead13bf-9698-4fbc-abad-81016267c641', '2026-11-04T02:01:20Z', '2026-11-04T02:01:20Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T111', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:34:40Z');
