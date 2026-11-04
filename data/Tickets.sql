@@ -12199,6 +12199,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T43', 'Unreal.Soulslike', 43, '2026-11-04', 'feature', 'closed', 'Tall grass to hide in', '—', 42, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T44', 'Unreal.Soulslike', 44, '2026-11-04', 'feature', 'closed', 'D-pad up whistles: nearby enemies come over curiously', '—', 43, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T45', 'Unreal.Soulslike', 45, '2026-11-04', 'feature', 'open', 'Grapple: fill in throw/reel/haul/land animation beats and timing (reopens UNR-T35)', '—', 44, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T46', 'Unreal.Soulslike', 46, '2026-11-04', 'fix', 'open', 'Rein in the pad: X = the one normal attack, LB shield, B roll, A jump, L3 run, R3 crouch; Y/LT/RT unbound', '—', 45, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T1', 'Unreal.SpaceGod', 1, '2026-11-03', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T2', 'Unreal.SpaceGod', 2, '2026-11-03', 'feature', 'closed', 'Recreate Unity.Space''s Sol system in Unreal Engine 5 (C++) as a co-op game: JPL ephemeris, ELP-2000 Moon, IAU orientation, textured bodies, gameplay/realistic scale, focus camera, shared time warp over listen-server multiplayer', 'e1b6839', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T3', 'Unreal.SpaceGod', 3, '2026-11-03', 'chore', 'closed', 'Install Unreal Engine 5.5 and its Visual Studio C++ toolchain on this workstation so Unreal.SpaceGod can be built and played', '9bb3736 bd433f3', 2, NULL);
@@ -61072,6 +61073,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36457, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36458, 'US-T69', '2026-11-04T16:27:01Z', 'ref', '—', 'SpaceGod.Unreal.Cpp 791600d, SpaceGod.Unreal.CSharp 3c837a7, SpaceGod.Unity.CSharp 7c81c68');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36459, 'PRS-T90', '2026-11-04T16:33:22Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36460, 'PRS-T906', '2026-11-04T16:33:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36461, 'UNR-T46', '2026-11-04T16:51:37Z', 'created', NULL, 'open');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -77728,6 +77730,7 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T42', 'G
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T43', 'Patches of tall grass; crouched/still in tall grass hides the player from enemy sight.', '2026-11-04T15:11:48Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T44', 'Whistle on D-pad up draws unaware enemies within earshot to investigate the spot, curious rather than hostile.', '2026-11-04T15:11:50Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T45', 'UNR-T35 was closed by mistake: the umbrella work added hang/launch beats, but the base grapple''s throw, reel, haul and landing animations and timing still need doing.', '2026-11-04T16:02:52Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T46', 'Remove the light combo from the player; the old heavy swing moves to X as the normal attack. LB raises the shield (timed = parry). LT, RT and Y do nothing. B dodge roll, A jump, L3 run toggle, R3 crouch toggle.', '2026-11-04T16:51:37Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNS-T17', 'LAMP migration for **Unstuck** (plan: MindAttic.Vault/docs/rfc/0003-lamp.md, Rollout step 5).
 
 - Move to the new MindAttic.Vault major.
