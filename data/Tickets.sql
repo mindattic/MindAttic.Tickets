@@ -5020,9 +5020,9 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T405', 'IdiotProof', 405, '2026-11-03', 'feature', 'closed', 'Kalman filtering (control theory): local-level/local-trend state-space fair value with online noise estimation, and a dynamic hedge-ratio filter for leader/follower pairs; the filtered price, slope and innovation z-score become snapshot features scored out-of-sample, with a DSL condition only if holdout lift is significant', '02540f1; KalmanTests (10), EvidenceKalmanOperationTests (5); docs/research/kalman-2026-11.md: no DSL promotion, close-entry effect was bid-ask bounce', 404, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T406', 'IdiotProof', 406, '2026-11-03', 'feature', 'closed', 'Hawkes self-exciting point process (physics/seismology model) on Alpaca trade arrivals: exponential-kernel MLE per session, branching ratio as a measure of endogenous (reflexive) activity, and a momentum-ignition detector when branching ratio and intensity spike; scored against forward returns from the IP-T392 tick cache', '44480e7, e8930f5; HawkesTests (8), EvidenceHawkesOperationTests (3)', 405, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T407', 'IdiotProof', 407, '2026-11-03', 'feature', 'closed', 'Event study of research claims: join ResearchScanner claims (8-K, Form 4 insider buys/sells, corporate actions) to bar-store returns, compute cumulative abnormal returns vs a market-model benchmark over event windows, with Patell/BMP and bootstrap significance per claim type, so the Research feed''s significance ranking is calibrated by measured price impact', '060beb1, e025d1b; EventStudyTests (15), EvidenceEventsOperationTests (3); docs/research/claims-event-study-2026-11.md', 406, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T408', 'IdiotProof', 408, '2026-11-03', 'feature', 'open', 'Wire RMT cleaning into the CLI/MCP: --clean none|rmt on evidence graph (InfluenceGraph.FromCleanedReturns) and evidence walkforward --model leaders (LeaderDiscovery builds its lag-1 graph via FromCleanedReturns, which holds edges to the 2.5/sqrt(T) noise floor), plus operation tests; deferred from IP-T399 because five agents had uncommitted/staged edits in those operation files', 'IP-T367; IP-T399', 407, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T408', 'IdiotProof', 408, '2026-11-03', 'feature', 'closed', 'Wire RMT cleaning into the CLI/MCP: --clean none|rmt on evidence graph (InfluenceGraph.FromCleanedReturns) and evidence walkforward --model leaders (LeaderDiscovery builds its lag-1 graph via FromCleanedReturns, which holds edges to the 2.5/sqrt(T) noise floor), plus operation tests; deferred from IP-T399 because five agents had uncommitted/staged edits in those operation files', '97b4ae0; EvidenceRmtCleanOperationTests (6)', 407, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T409', 'IdiotProof', 409, '2026-11-03', 'fix', 'closed', 'Bucket evaluators report uncorrected per-bucket p-values, so ''significant'' labels include multiple-testing false positives: route every holdout bucket evaluator (hawkes, flow, traps, topology, and kalman/pools once landed) through one shared evaluator that applies Benjamini-Hochberg q-values (IP-T393 MultipleTesting) and day-clustered counts, labeling significance by q, not raw p', '5ae7e02; HoldoutBucketEvaluatorTests (6), Evidence 190/190, Operations evidence+catalog+binder 1104/1104', 408, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T410', 'IdiotProof', 410, '2026-11-03', 'fix', 'open', 'HistoricalBarStore caches split-unadjusted bars (AlpacaDataFeed adjustment=raw), so any multi-day study of penny stocks sees reverse splits as fake +200..+900% days: IP-T407''s first claims run showed mean CARs of +117%..+179% with medians near 0; add split-adjusted daily bars (adjustment=split or all, cached separately) for research consumers (event study, walkforward, search, leaders) while live trading keeps raw prices', 'IP-T367; IP-T407; IP-T371', 409, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T410', 'IdiotProof', 410, '2026-11-03', 'fix', 'closed', 'HistoricalBarStore caches split-unadjusted bars (AlpacaDataFeed adjustment=raw), so any multi-day study of penny stocks sees reverse splits as fake +200..+900% days: IP-T407''s first claims run showed mean CARs of +117%..+179% with medians near 0; add split-adjusted daily bars (adjustment=split or all, cached separately) for research consumers (event study, walkforward, search, leaders) while live trading keeps raw prices', '37c6c50; SplitAdjusterTests (5), HistoricalBarStoreSplitTests (5)', 409, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T411', 'IdiotProof', 411, '2026-11-03', 'feature', 'open', 'Survival analysis of exits (biostatistics): Kaplan-Meier curves and a Cox proportional-hazards model for time-to-target vs time-to-stop as competing risks (Aalen-Johansen cumulative incidence) from replay/backtest trades, so exits and sell-by times are set from measured hazard instead of fixed bar counts; evidence survival op', 'IP-T367', 410, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T412', 'IdiotProof', 412, '2026-11-03', 'feature', 'open', 'Conformal prediction for forward returns: split-conformal and adaptive (ACI) intervals around the analog/Kalman forecasts with guaranteed finite-sample coverage, used to abstain when the interval straddles zero and to size targets/stops; coverage verified out-of-sample in tests and on bar-store data', 'IP-T367', 411, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T413', 'IdiotProof', 413, '2026-11-03', 'feature', 'open', 'Tail dependence (copulas): empirical lower/upper tail-dependence coefficients and a Clayton/Gumbel/t copula fit per symbol pair, so the influence graph knows which names crash together even when their ordinary correlation is low; tail-contagion edges feed a NotTailContagion guard only if holdout lift is significant', 'IP-T367', 412, NULL);
@@ -9408,9 +9408,9 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T425', 'Prose', 425, '2026-10-30', 'chore', 'closed', 'GLMZ P1 nano: consolidate the nano CorpoNation records (Axiom BioNanics, Cascadia BioNano, Cauldron x2, Fractum, Glyph, Meridian Nano-Defense, Null Dynamics, Oma, Threadline, Vexor, Pale Substrate, Chengdu Institute)', '—', 424, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T426', 'Prose', 426, '2026-10-30', 'chore', 'closed', 'GLMZ P1 nano: counter-nano and the Bloom Quarter: decide the canon of nano disasters the street remembers', '—', 425, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T427', 'Prose', 427, '2026-10-30', 'chore', 'closed', 'GLMZ P1 cyberware: neuretics canon: everyone has them; what tiers, what they do, what they cost to keep', '—', 426, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T428', 'Prose', 428, '2026-10-30', 'chore', 'open', 'GLMZ P1 cyberware: chassis and augmentation tiers (Tier 1-5, Caryatid-class, reinforced bone) as one table on a record', '—', 427, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T429', 'Prose', 429, '2026-10-30', 'chore', 'open', 'GLMZ P1 cyberware: licensing and compliance locks: how a CorpoNation leashes an augmented body', '—', 428, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T430', 'Prose', 430, '2026-10-30', 'chore', 'open', 'GLMZ P1 cyberware: NeoCortex: the Access Initiative, the hardware, and Kyle''s 2215 install as canon', '—', 429, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T428', 'Prose', 428, '2026-10-30', 'chore', 'closed', 'GLMZ P1 cyberware: chassis and augmentation tiers (Tier 1-5, Caryatid-class, reinforced bone) as one table on a record', '—', 427, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T429', 'Prose', 429, '2026-10-30', 'chore', 'closed', 'GLMZ P1 cyberware: licensing and compliance locks: how a CorpoNation leashes an augmented body', '—', 428, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T430', 'Prose', 430, '2026-10-30', 'chore', 'closed', 'GLMZ P1 cyberware: NeoCortex: the Access Initiative, the hardware, and Kyle''s 2215 install as canon', '—', 429, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T431', 'Prose', 431, '2026-10-30', 'chore', 'closed', 'GLMZ P1 cyberware: Kyle''s array and the low harmonic: what the reader may know by each book', 'Decided and recorded as law 01a195b7-639c-7581-b5f7-f6af8405406f: once per book max, texture only, never solved, never paired with the entity''s own scenes.', 430, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T432', 'Prose', 432, '2026-10-30', 'chore', 'open', 'GLMZ P1 genemods: genemod canon: who can buy what, what it costs, what it marks you as', '—', 431, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T433', 'Prose', 433, '2026-10-30', 'chore', 'open', 'GLMZ P1 genemods: Crucible Genomics and the Phenotype District: make it a place the books can stand in', '—', 432, NULL);
@@ -9420,23 +9420,23 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T437', 'Prose', 437, '2026-10-30', 'chore', 'closed', 'GLMZ P1 hyperreality: the Volume: the broadcast sky, who owns it, what the heirs say on it', 'ruling 01a1a4e3-e842; Vantablack/Mirrorwell/Waxwing key_detail; vocab Gratitude broadcast', 436, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T438', 'Prose', 438, '2026-10-30', 'chore', 'closed', 'GLMZ P1 hyperreality: ad and product canon: a short list of recurring absurd products and slogans', 'ruling 01a1a4e4-04c8; CramIt/Saltline records; new Arclight dehumidifier record', 437, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T439', 'Prose', 439, '2026-10-30', 'chore', 'closed', 'GLMZ P1 hyperreality: the unmeshed and the dead zones: who lives outside the overlay and how it looks', 'ruling 01a1a4e4-1adf', 438, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T440', 'Prose', 440, '2026-10-30', 'chore', 'open', 'GLMZ P1 diaspora: language: the street creole: which words from which tongues (Mandarin ''xie xie'', Spanish, Yoruba, Japanese, Tagalog, Arabic...) and who uses them; a small lexicon on vocabulary records', '—', 439, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T441', 'Prose', 441, '2026-10-30', 'chore', 'open', 'GLMZ P1 diaspora: food: the noodle stall, rat meat in the Warm, cultured protein, Koji Press; a recurring menu that mixes everything', '—', 440, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T442', 'Prose', 442, '2026-10-30', 'chore', 'open', 'GLMZ P1 diaspora: faith: shrines, saints, the Deep''s acolytes, temple and storefront church side by side; what people pray to in a dying city', '—', 441, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T443', 'Prose', 443, '2026-10-30', 'chore', 'open', 'GLMZ P1 diaspora: crews and gangs: Lotus Syndicate, Vultures, Underbelly, the Orvenne House; each blends East and West in structure and code; none is a lift of yakuza/triad/cartel tropes', '—', 442, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T444', 'Prose', 444, '2026-10-30', 'chore', 'open', 'GLMZ P1 diaspora: names: a naming census of every character: does the cast read as one diaspora? Flag clusters and stereotypes', '—', 443, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T445', 'Prose', 445, '2026-10-30', 'chore', 'open', 'GLMZ P1 diaspora: music: Pulse Rock, Seam radio, Fenris; the soundscape of the street', '—', 444, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T446', 'Prose', 446, '2026-10-30', 'chore', 'open', 'GLMZ P1 diaspora: script and signage: what languages the hyperreality signs and graffiti use, and in what mix', '—', 445, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T447', 'Prose', 447, '2026-10-30', 'chore', 'open', 'GLMZ P1 diaspora: honour and debt: the shared code of the street (favours, debts, face, the second-man rule) that every crew understands', '—', 446, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T440', 'Prose', 440, '2026-10-30', 'chore', 'closed', 'GLMZ P1 diaspora: language: the street creole: which words from which tongues (Mandarin ''xie xie'', Spanish, Yoruba, Japanese, Tagalog, Arabic...) and who uses them; a small lexicon on vocabulary records', '—', 439, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T441', 'Prose', 441, '2026-10-30', 'chore', 'closed', 'GLMZ P1 diaspora: food: the noodle stall, rat meat in the Warm, cultured protein, Koji Press; a recurring menu that mixes everything', '—', 440, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T442', 'Prose', 442, '2026-10-30', 'chore', 'closed', 'GLMZ P1 diaspora: faith: shrines, saints, the Deep''s acolytes, temple and storefront church side by side; what people pray to in a dying city', '—', 441, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T443', 'Prose', 443, '2026-10-30', 'chore', 'closed', 'GLMZ P1 diaspora: crews and gangs: Lotus Syndicate, Vultures, Underbelly, the Orvenne House; each blends East and West in structure and code; none is a lift of yakuza/triad/cartel tropes', '—', 442, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T444', 'Prose', 444, '2026-10-30', 'chore', 'closed', 'GLMZ P1 diaspora: names: a naming census of every character: does the cast read as one diaspora? Flag clusters and stereotypes', '—', 443, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T445', 'Prose', 445, '2026-10-30', 'chore', 'closed', 'GLMZ P1 diaspora: music: Pulse Rock, Seam radio, Fenris; the soundscape of the street', '—', 444, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T446', 'Prose', 446, '2026-10-30', 'chore', 'closed', 'GLMZ P1 diaspora: script and signage: what languages the hyperreality signs and graffiti use, and in what mix', '—', 445, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T447', 'Prose', 447, '2026-10-30', 'chore', 'closed', 'GLMZ P1 diaspora: honour and debt: the shared code of the street (favours, debts, face, the second-man rule) that every crew understands', '—', 446, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T448', 'Prose', 448, '2026-10-30', 'chore', 'closed', 'GLMZ P1 geography: the extent: the GLMZ as the sprawl that swallowed the Midwest: Milwaukee to Cleveland (~500 km), the lakes, its edges', '—', 447, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T449', 'Prose', 449, '2026-10-30', 'chore', 'closed', 'GLMZ P1 geography: the Seams map: where the Gray Zones run between CorpoNations; a short canonical list of named Seams districts', '—', 448, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T450', 'Prose', 450, '2026-10-30', 'chore', 'closed', 'GLMZ P1 geography: Chicago core: the Loop, the Struts, the arcology legs, the underlevels', '—', 449, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T451', 'Prose', 451, '2026-10-30', 'chore', 'closed', 'GLMZ P1 geography: the lakes and the Ur-606 black pyramid: what is seen from every shore', '—', 450, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T452', 'Prose', 452, '2026-10-30', 'chore', 'closed', 'GLMZ P1 geography: Gary and the Ashgrave/Slagworks belt: the most polluted sovereign ground; who lives there', '—', 451, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T453', 'Prose', 453, '2026-10-30', 'chore', 'closed', 'GLMZ P1 geography: the Detroit corridor: Rictus, Cinderblock, Nightshade, Pale Lantern; Detroit is inside the GLMZ (ruling)', '—', 452, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T454', 'Prose', 454, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: Milwaukee: Halcyon Garrison Complex, the Velvet Tine, Fenris''s city', '—', 453, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T455', 'Prose', 455, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: the Iowa Exclusion Zone: Ironclad Agrisystems and the 340 Behemoths that feed a third of the continent; seen only from the edge', '—', 454, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T456', 'Prose', 456, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: below: the Warm, the Old Deep, the bore: the underground as its own country (Underclan)', '—', 455, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T454', 'Prose', 454, '2026-10-30', 'chore', 'closed', 'GLMZ P1 geography: Milwaukee: Halcyon Garrison Complex, the Velvet Tine, Fenris''s city', '—', 453, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T455', 'Prose', 455, '2026-10-30', 'chore', 'closed', 'GLMZ P1 geography: the Iowa Exclusion Zone: Ironclad Agrisystems and the 340 Behemoths that feed a third of the continent; seen only from the edge', '—', 454, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T456', 'Prose', 456, '2026-10-30', 'chore', 'closed', 'GLMZ P1 geography: below: the Warm, the Old Deep, the bore: the underground as its own country (Underclan)', '—', 455, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T457', 'Prose', 457, '2026-10-30', 'chore', 'wont-do', 'GLMZ P1 geography: The Long Cut is set in Austin (a relocation camp and its north grid), outside the GLMZ: move it inside, or rule it a sanctioned exception', 'Wrong premise: Austin is a Chicago West Side district inside the GLMZ (book pairs it with Garfield)', 456, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T458', 'Prose', 458, '2026-10-30', 'chore', 'wont-do', 'GLMZ P1 geography: audit every scene set outside the GLMZ in all 22 books (Austin, Tunis platform, Rotterdam lane, others)', 'Replaced by PRS-T793 (dropped Austin, which is inside the GLMZ)', 457, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T459', 'Prose', 459, '2026-10-30', 'chore', 'open', 'GLMZ P1 coasts: the coasts fell, never explained: sweep every book for any line that explains or investigates it', '—', 458, NULL);
@@ -9773,7 +9773,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T790', 'Prose', 790, '2026-10-30', 'chore', 'open', 'GLMZ P5 22 The Ur: final full read (F5), every beat, fixes by hand', '—', 789, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T791', 'Prose', 791, '2026-10-30', 'chore', 'open', 'GLMZ P5 22 The Ur: records batch (F1), summaries current (F3), names resolved (F4)', '—', 790, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T792', 'Prose', 792, '2026-10-30', 'chore', 'open', 'GLMZ P5: Season 1 close: every book through Phase 5, then the author decides exports', '—', 791, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T793', 'Prose', 793, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: audit every scene set outside the GLMZ in all 22 books (Tunis platform, Rotterdam lane, others)', '—', 792, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T793', 'Prose', 793, '2026-10-30', 'chore', 'closed', 'GLMZ P1 geography: audit every scene set outside the GLMZ in all 22 books (Tunis platform, Rotterdam lane, others)', '—', 792, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T794', 'Prose', 794, '2026-10-30', 'chore', 'closed', 'GLMZ: rename the Austin district to Cicero in every book and record (author 2026-10-30)', '26e41bcd3', 793, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T795', 'Prose', 795, '2026-10-30', 'chore', 'closed', 'GLMZ P1 world: the vertical city (The Deep, skyless Seams under the decks, Tiers 1-5 all rich, aeroblocs) as law and world facts', 'laws 01a18e63, 01a18e63-cae7; world facts rewritten; book tickets PRS-T796..T817', 794, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T796', 'Prose', 796, '2026-10-30', 'chore', 'open', 'GLMZ P3 Steppin'' Razor: the vertical city (Tiers as class and level, skyless streets under the tiers, footprint patrols)', '—', 795, NULL);
@@ -9846,7 +9846,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T863', 'Prose', 863, '2026-11-01', 'feature', 'open', 'COROBS: persistent parallel Correlithm-Object entity geometry for GLMZ (RFC 0016, /corobs on|off, two hand passes first)', '—', 862, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T864', 'Prose', 864, '2026-11-01', 'feature', 'open', 'Living world: event entities (create_entity, repo-less field writes, dated state events) and hand-written interstitial vignettes in GLMZ books', '—', 863, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T865', 'Prose', 865, '2026-11-01', 'feature', 'open', 'COROBS bench: old way (Edge graph) vs new way (Corobs proximity) on interconnectivity, results as InstrumentRun rows', '—', 864, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T866', 'Prose', 866, '2026-11-01', 'feature', 'open', 'Version grader: compare two versions of a book, series or universe on a deterministic storytelling battery plus a labeled advisory reader tier', '—', 865, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T866', 'Prose', 866, '2026-11-01', 'feature', 'closed', 'Version grader: compare two versions of a book, series or universe on a deterministic storytelling battery plus a labeled advisory reader tier', '—', 865, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T867', 'Prose', 867, '2026-11-02', 'fix', 'closed', 'GLMZ author fixes: eigenlift canon, Bram''s surname, Concordance->Consensus in The Ur, remove typing in Wells/Pieces, merge Felix Drum entities, keywords for 8 books', 'rulings 01a19c7c,01a19c64-a53e,01a19c64-ca3e; universal facts 44395', 866, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T868', 'Prose', 868, '2026-11-02', 'fix', 'closed', 'GLMZ continuity fixes: Wells #23561 Bear location, Wells #23425 vs Pieces #23293 Ledger freight-file rediscovery + Macias tag, BCODA #20756 Cotton mistag, Ur #23681 untagged pronouns', 'Wells #23561 #23425, BCODA #20756, Ur #23681; exports CYB2 V5, BCODA V90, CYB3 V5', 867, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T869', 'Prose', 869, '2026-11-02', 'fix', 'closed', 'Bughunt sweep, two passes: find and fix real bugs across tracked source (user request 2026-11-02)', '—', 868, NULL);
@@ -9858,15 +9858,18 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T875', 'Prose', 875, '2026-11-03', 'chore', 'closed', 'GLMZ: Null Crows (biker gang) run the Tears trade (author 2026-11-03); record on the faction', '—', 874, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T876', 'Prose', 876, '2026-11-03', 'chore', 'open', 'GLMZ nano contradiction audit (deferred from PRS-T423): during each book''s pass, flag lines where nano seriously harms people outside the Ongoing''s exceptions (Seams lapse, Bloom, purge, Class V, pre-2187)', '—', 875, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T877', 'Prose', 877, '2026-11-03', 'fix', 'open', 'GLMZ final-pass follow-ups from the nano work: coverage/Bloom documents use ''Zone 1 (The Loop)'' as official labels (zone numbers are street shorthand only) and cite an ''Ashford-Obi 2158'' Loop grid; prose tags may still point at retired Cauldron Precision Systems; Axiom (Tier 1) cannot own Axiom BioNanics (Tier 2), so decide the link', '—', 876, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T878', 'Prose', 878, '2026-11-03', 'fix', 'open', 'GLMZ The Way Down: UBC expanded as ''Universal Basic Compute'' and a neuretic rig called ''Tier 1''', '—', 877, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T879', 'Prose', 879, '2026-11-03', 'fix', 'open', 'GLMZ The Way Up: mesh called ''Tier-1'' and a ''Tier-2 consult'' for a basic mesh', '—', 878, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T880', 'Prose', 880, '2026-11-03', 'fix', 'open', 'GLMZ Between the Lines: ''a Tier 2 kid'' working a checkpoint lane with raw neuretic etching', '—', 879, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T881', 'Prose', 881, '2026-11-03', 'fix', 'open', 'GLMZ Critical Mass: neuretic etching that ''reads Tier 2''', '—', 880, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T882', 'Prose', 882, '2026-11-03', 'fix', 'open', 'GLMZ The Long Cut: ''a Tier 2 food hall'' at the Cicero/Garfield seam', '—', 881, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T883', 'Prose', 883, '2026-11-03', 'fix', 'open', 'GLMZ Testament: Bear''s ''Tier five chassis'' (Tier 5 is a rumor)', '—', 882, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T884', 'Prose', 884, '2026-11-03', 'fix', 'open', 'GLMZ Death Whispers in a Cat''s Ear: ''Tier-3'' genemod license class', '—', 883, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T885', 'Prose', 885, '2026-11-03', 'fix', 'open', 'GLMZ Bushido Coda: ''Tier 2 request'' and ''Tier Two hauler certification''', '—', 884, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T886', 'Prose', 886, '2026-11-03', 'fix', 'open', 'GLMZ Pieces: Ledger''s ''tier-two analytics layer''', '—', 885, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T878', 'Prose', 878, '2026-11-03', 'fix', 'closed', 'GLMZ The Way Down: UBC expanded as ''Universal Basic Compute'' and a neuretic rig called ''Tier 1''', '—', 877, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T879', 'Prose', 879, '2026-11-03', 'fix', 'closed', 'GLMZ The Way Up: mesh called ''Tier-1'' and a ''Tier-2 consult'' for a basic mesh', '—', 878, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T880', 'Prose', 880, '2026-11-03', 'fix', 'closed', 'GLMZ Between the Lines: ''a Tier 2 kid'' working a checkpoint lane with raw neuretic etching', '—', 879, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T881', 'Prose', 881, '2026-11-03', 'fix', 'closed', 'GLMZ Critical Mass: neuretic etching that ''reads Tier 2''', '—', 880, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T882', 'Prose', 882, '2026-11-03', 'fix', 'closed', 'GLMZ The Long Cut: ''a Tier 2 food hall'' at the Cicero/Garfield seam', '—', 881, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T883', 'Prose', 883, '2026-11-03', 'fix', 'closed', 'GLMZ Testament: Bear''s ''Tier five chassis'' (Tier 5 is a rumor)', '—', 882, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T884', 'Prose', 884, '2026-11-03', 'fix', 'closed', 'GLMZ Death Whispers in a Cat''s Ear: ''Tier-3'' genemod license class', '—', 883, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T885', 'Prose', 885, '2026-11-03', 'fix', 'closed', 'GLMZ Bushido Coda: ''Tier 2 request'' and ''Tier Two hauler certification''', '—', 884, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T886', 'Prose', 886, '2026-11-03', 'fix', 'closed', 'GLMZ Pieces: Ledger''s ''tier-two analytics layer''', '—', 885, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T887', 'Prose', 887, '2026-11-03', 'fix', 'open', 'GLMZ cast name clashes and duplicate seed records found by the diaspora pass', '—', 886, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T888', 'Prose', 888, '2026-11-03', 'fix', 'open', 'GLMZ: Helix Continuum band SABLE MIRROR collides with the character Sable; rename the band and fix its ''Tier 5 arts foundation'' line (Tier 5 is a rumor)', '—', 887, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T889', 'Prose', 889, '2026-11-03', 'chore', 'open', 'GLMZ P3 Neon Rust: narration in #7541 says ''since long before the coasts went under'', which hints a cause (drowning) for the coast fall; reword to ''since long before the coasts fell'' (rule: the coasts fell, nobody says why; found by PRS-T459)', 'PRS-T459', 888, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -60132,6 +60135,129 @@ The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books:
 
 Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
 ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35683, 'PRS-T686', '2026-11-04T05:09:03Z', 'description', '**Read the Room** (2230; lead: Faith and Ethan; Fenris at the Velvet Tine, Faith''s eleven days).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '**Read the Room** (2230; lead: Faith and Ethan; Fenris at the Velvet Tine, Faith''s eleven days).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines flagged for this book:** none by the 2026-11-04 sweep (no enclave names, exoticism, district languages or lifted syndicate tropes found).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35684, 'PRS-T694', '2026-11-04T05:09:08Z', 'description', '**Pieces** (2230; lead: the team; Cyberocracy book 1).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '**Pieces** (2230; lead: the team; Cyberocracy book 1).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines and names flagged for this book:**
+- Names census: Faith Larson vs Corvid Larsson (Sparrow): Faith keeps her name; the fix lands in Sparrow''s ticket (PRS-T606).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35685, 'PRS-T702', '2026-11-04T05:09:12Z', 'description', '**Wells** (2230-31; lead: the team; Cyberocracy book 2).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '**Wells** (2230-31; lead: the team; Cyberocracy book 2).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines flagged for this book:** none by the 2026-11-04 sweep (no enclave names, exoticism, district languages or lifted syndicate tropes found).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35686, 'PRS-T710', '2026-11-04T05:09:19Z', 'description', '**The Ur** (2231; lead: the team; Cyberocracy book 3, the singular point).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '**The Ur** (2231; lead: the team; Cyberocracy book 3, the singular point).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines and names flagged for this book:**
+- Names census: Faith Larson vs Corvid Larsson (Sparrow): Faith keeps her name; the fix lands in Sparrow''s ticket (PRS-T606).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35687, 'PRS-T440', '2026-11-04T05:09:31Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35688, 'PRS-T866', '2026-11-04T05:09:45Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35689, 'PRS-T441', '2026-11-04T05:09:50Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35690, 'IP-T408', '2026-11-04T05:09:55Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35691, 'IP-T408', '2026-11-04T05:09:55Z', 'ref', 'IP-T367; IP-T399', '97b4ae0; EvidenceRmtCleanOperationTests (6)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35692, 'PRS-T442', '2026-11-04T05:10:05Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35693, 'PRS-T443', '2026-11-04T05:10:10Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35694, 'PRS-T444', '2026-11-04T05:10:16Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35695, 'PRS-T454', '2026-11-04T05:10:17Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35696, 'PRS-T445', '2026-11-04T05:10:19Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35697, 'PRS-T446', '2026-11-04T05:10:20Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35698, 'PRS-T447', '2026-11-04T05:10:23Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35699, 'PRS-T428', '2026-11-04T05:10:49Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35700, 'PRS-T887', '2026-11-04T05:11:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35701, 'PRS-T887', '2026-11-04T05:11:10Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35702, 'PRS-T887', '2026-11-04T05:11:10Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35703, 'PRS-T887', '2026-11-04T05:12:13Z', 'working', NULL, '1ead13bf-9698-4fbc-abad-81016267c641');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35704, 'PRS-T455', '2026-11-04T05:13:04Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35705, 'PRS-T429', '2026-11-04T05:13:09Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35706, 'PRS-T456', '2026-11-04T05:15:19Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35707, 'PRS-T430', '2026-11-04T05:16:18Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35708, 'PRS-T878', '2026-11-04T05:16:59Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35709, 'PRS-T879', '2026-11-04T05:17:00Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35710, 'PRS-T880', '2026-11-04T05:17:02Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35711, 'PRS-T881', '2026-11-04T05:17:03Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35712, 'PRS-T882', '2026-11-04T05:17:05Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35713, 'PRS-T883', '2026-11-04T05:17:06Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35714, 'PRS-T884', '2026-11-04T05:17:08Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35715, 'PRS-T885', '2026-11-04T05:17:09Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35716, 'PRS-T886', '2026-11-04T05:17:12Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35717, 'PRS-T888', '2026-11-04T05:17:31Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35718, 'PRS-T888', '2026-11-04T05:17:36Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35719, 'PRS-T888', '2026-11-04T05:17:36Z', 'label', NULL, 'phase:2-cast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35720, 'PRS-T793', '2026-11-04T05:18:28Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35721, 'IP-T410', '2026-11-04T05:19:09Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35722, 'IP-T410', '2026-11-04T05:19:09Z', 'ref', 'IP-T367; IP-T407; IP-T371', '37c6c50; SplitAdjusterTests (5), HistoricalBarStoreSplitTests (5)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35723, 'PRS-T889', '2026-11-04T05:19:10Z', 'created', NULL, 'open');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -62742,6 +62868,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T91', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T23:09:54Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T58', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:02:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T887', NULL, 0, NULL, '1ead13bf-9698-4fbc-abad-81016267c641', '2026-11-04T05:12:13Z', '2026-11-04T05:12:13Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T111', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:34:40Z');
@@ -74083,8 +74210,14 @@ Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) 
 
 Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
 
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines flagged for this book:** none by the 2026-11-04 sweep (no enclave names, exoticism, district languages or lifted syndicate tropes found).
+
 Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
-ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:56:42Z');
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-11-04T05:09:03Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T687', '**Read the Room** (2230; lead: Faith and Ethan; Fenris at the Velvet Tine, Faith''s eleven days).
 
 Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
@@ -74147,8 +74280,15 @@ Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) 
 
 Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
 
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines and names flagged for this book:**
+- Names census: Faith Larson vs Corvid Larsson (Sparrow): Faith keeps her name; the fix lands in Sparrow''s ticket (PRS-T606).
+
 Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
-ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:56:57Z');
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-11-04T05:09:08Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T695', '**Pieces** (2230; lead: the team; Cyberocracy book 1).
 
 Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
@@ -74211,8 +74351,14 @@ Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) 
 
 Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
 
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines flagged for this book:** none by the 2026-11-04 sweep (no enclave names, exoticism, district languages or lifted syndicate tropes found).
+
 Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
-ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:57:13Z');
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-11-04T05:09:12Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T703', '**Wells** (2230-31; lead: the team; Cyberocracy book 2).
 
 Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
@@ -74275,8 +74421,15 @@ Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) 
 
 Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
 
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines and names flagged for this book:**
+- Names census: Faith Larson vs Corvid Larsson (Sparrow): Faith keeps her name; the fix lands in Sparrow''s ticket (PRS-T606).
+
 Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
-ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:57:28Z');
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-11-04T05:09:19Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T711', '**The Ur** (2231; lead: the team; Cyberocracy book 3, the singular point).
 
 Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
@@ -78800,6 +78953,10 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T885', 'theme:e
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T886', 'glmz-vision', '2026-11-04T04:57:00Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T886', 'phase:3-books', '2026-11-04T04:57:00Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T886', 'theme:economy', '2026-11-04T04:57:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T887', 'glmz-vision', '2026-11-04T05:11:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T887', 'phase:2-cast', '2026-11-04T05:11:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T888', 'glmz-vision', '2026-11-04T05:17:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T888', 'phase:2-cast', '2026-11-04T05:17:36Z');
 
 -- repo_renames
 INSERT INTO repo_renames (seq, old_name, new_name, at, reason) VALUES (1, 'GTFO.AbsurdWeapons', 'GTFO.EZ.AbsurdWeapons', '2026-10-19T02:14:58Z', 'Renamed under GTFO.EZ, its core mod, before release (G.EZ-T77)');
