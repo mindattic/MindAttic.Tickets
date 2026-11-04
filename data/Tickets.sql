@@ -5088,6 +5088,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T364', 'IdiotProof', 364, '2026-11-03', 'chore', 'closed', 'Redeploy so the 2026-11-03 bughunt fixes (IP-T356, IP-T357) go live', 'ae2f6e4 23067e2', 363, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T365', 'IdiotProof', 365, '2026-11-03', 'chore', 'closed', 'Remove the GOOG dip-reclaim buy Live strategy (01a19c2a, IP-37I3-FVGY) at the owner''s request; its armed script dropped the 275.60 dip and second higher low', 'strategy 01a19c2a soft-deleted', 364, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T366', 'IdiotProof', 366, '2026-11-03', 'chore', 'closed', 'Erase all strategies at the owner''s request (soft-delete then --hard every strategy, including already deleted ones)', 'all 3 strategies hard-deleted', 365, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T367', 'IdiotProof', 367, '2026-11-03', 'feature', 'open', 'Adaptive living-strategy platform: DSL loops, empirical evidence toolkit (LSH, correlation graph, regimes, trap detectors), intraday adaptation, penny-stock walk-forward validation (umbrella for the 2026-11-03 /goal)', '—', 366, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T368', 'IdiotProof', 368, '2026-11-03', 'feature', 'open', 'IdiotProof.Evidence: empirical math toolkit (forward-return labels, binomial/Wilson stats, walk-forward splits, LSH pattern index, regime stats, correlation influence graph, conditional outcome tables)', 'IP-T367', 367, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T1', 'JellyFinPoster', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| JFP-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T2', 'JellyFinPoster', 2, '2026-10-16', 'chore', 'closed', 'install.ps1 adds this repo''s 9 .prose/commands stubs for the shared global commands, so any LLM client finds them', 'mindattic-agent-standard/install.ps1 run 2026-10-16', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T3', 'JellyFinPoster', 3, '2026-10-16', 'chore', 'closed', 'Bug hunt: run an exhaustive /bughunt over the whole repo and fix every real bug found (each fix under its own fix ticket), then hunt again; close this only when a full pass finds nothing', '9a5f84c', 2, NULL);
@@ -59535,6 +59537,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35410, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35411, 'UNR-T11', '2026-11-04T02:33:16Z', 'ref', '—', '7d19478');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35412, 'UNR-T12', '2026-11-04T02:33:55Z', 'working', NULL, 'd7eaa32b-e907-485e-99dc-fc3968a356a9');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35413, 'M.TIX-T310', '2026-11-04T02:45:14Z', 'created', NULL, 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35414, 'IP-T367', '2026-11-04T03:16:10Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35415, 'IP-T368', '2026-11-04T03:16:44Z', 'created', NULL, 'open');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -67022,6 +67026,33 @@ Requires: W0.01 (linked).
 Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
 
 Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:17:47Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T367', '## Request (user /goal, 2026-11-03)
+Finish all stories; tests for all functions; DSL branching (if/then/else exists, add loops: for, while); an adaptive "living strategy" engine that evolves intraday using empirical math (LSH, correlation graphs, regime statistics, game-theory/microstructure trap detection: falling knife, bull trap, stop hunt); a toolkit of empirical evidence gathering (never arbitrary scores); exhaustive historical testing of strategy permutations; then prove >= 51% directional accuracy on penny stocks (< $5).
+
+## Honest scoping
+- "Correct >= 51%" is measured out-of-sample, walk-forward, with a one-sided binomial test vs 50% and reported with its confidence interval and sample size. A hit rate that is not significant is reported as not significant, never rounded up.
+- Every score must trace to measured base rates (forward-return distributions), not hand-assigned weights.
+- Everything new is analysis or paper-only. Nothing arms a Live strategy or publishes without the user''s explicit go-ahead.
+- "Corobs" is unknown in the workspace; awaiting the user''s definition.
+
+## Child tickets
+Filed separately: DSL loops, Evidence toolkit (labeling + walk-forward + significance), LSH pattern index, correlation-graph influence, regime detection, trap detectors, intraday adaptation engine, penny-stock validation run, partial-story completion.', '2026-11-04T03:16:10Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T368', 'Parent: IP-T367.
+
+## Story
+As an analyst, every claim the platform makes about a pattern ("this is a falling knife", "this setup wins") is backed by a measured, out-of-sample base rate with a sample size and confidence interval, never a hand-assigned score.
+
+## Scope (pure math, new project IdiotProof.Evidence, depends only on IdiotProof.Models)
+- ForwardReturnLabeler: per-bar forward return over horizon h, Up/Down/Flat with a dead-band; never reads past bar i+h.
+- Stats: exact one-sided binomial p-value, Wilson score interval, Brier score, log-loss.
+- WalkForward: expanding/rolling train-test splits with an embargo gap (no lookahead leakage).
+- LshIndex: z-normalized window shape vectors, random-hyperplane SimHash with banding; kNN lookup returns the neighbors'' realized forward outcomes (empirical vote with counts).
+- RegimeStats: realized volatility, Hurst exponent (rescaled range), Lo-MacKinlay variance ratio, Kaufman efficiency ratio.
+- InfluenceGraph: return-correlation graph across symbols; influence of a shock at node s on node t via personalized PageRank / heat-kernel diffusion, so force decays with graph distance.
+- ConditionalOutcomeTable: bucketized features -> outcome counts, Laplace-smoothed probability + Wilson CI; the only way detectors produce scores.
+
+## Acceptance
+Unit tests in IdiotProof.Evidence.Tests prove: labeler has no lookahead; binomial p matches known values; Wilson bounds known values; walk-forward folds never overlap test with train+embargo; LSH returns an exact duplicate as nearest neighbor and separates anti-correlated shapes; Hurst ~0.5 on random walk, >0.5 on trending series; variance ratio ~1 on random walk; diffusion influence decays monotonically with hop distance on a chain graph.', '2026-11-04T03:16:44Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T37', '**Epic W — Command line & Hub** / W0 Foundation: extract IdiotProof.Core (`W0.08`)
 
 Move strategy services to Core: StrategyRepository, ConditionProgressRepository, StrategyScriptGenerator, DslGlossary, SqlWorkspaceStore
