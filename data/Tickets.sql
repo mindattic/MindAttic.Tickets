@@ -12200,6 +12200,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T44', 'Unreal.Soulslike', 44, '2026-11-04', 'feature', 'closed', 'D-pad up whistles: nearby enemies come over curiously', '—', 43, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T45', 'Unreal.Soulslike', 45, '2026-11-04', 'feature', 'open', 'Grapple: fill in throw/reel/haul/land animation beats and timing (reopens UNR-T35)', '—', 44, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T46', 'Unreal.Soulslike', 46, '2026-11-04', 'fix', 'closed', 'Rein in the pad: X = the one normal attack, LB shield, B roll, A jump, L3 run, R3 crouch; Y/LT/RT unbound', '—', 45, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T47', 'Unreal.Soulslike', 47, '2026-11-04', 'fix', 'closed', 'Keyboard mirrors the pad: LMB attack, RMB shield/parry, E roll, Space jump', '—', 46, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T1', 'Unreal.SpaceGod', 1, '2026-11-03', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T2', 'Unreal.SpaceGod', 2, '2026-11-03', 'feature', 'closed', 'Recreate Unity.Space''s Sol system in Unreal Engine 5 (C++) as a co-op game: JPL ephemeris, ELP-2000 Moon, IAU orientation, textured bodies, gameplay/realistic scale, focus camera, shared time warp over listen-server multiplayer', 'e1b6839', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T3', 'Unreal.SpaceGod', 3, '2026-11-03', 'chore', 'closed', 'Install Unreal Engine 5.5 and its Visual Studio C++ toolchain on this workstation so Unreal.SpaceGod can be built and played', '9bb3736 bd433f3', 2, NULL);
@@ -61081,6 +61082,10 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36464, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36465, 'US-T70', '2026-11-04T16:55:42Z', 'working', NULL, 'c5b80518-cf93-4632-9b5d-8d9fb500bf38');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36466, 'UNR-T46', '2026-11-04T16:55:42Z', 'working', 'd7eaa32b-e907-485e-99dc-fc3968a356a9', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36467, 'US-T70', '2026-11-04T16:56:37Z', 'working', 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36468, 'UNR-T47', '2026-11-04T17:04:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36469, 'UNR-T47', '2026-11-04T17:05:50Z', 'working', NULL, 'd7eaa32b-e907-485e-99dc-fc3968a356a9');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36470, 'UNR-T47', '2026-11-04T17:07:34Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36471, 'UNR-T47', '2026-11-04T17:08:14Z', 'working', 'd7eaa32b-e907-485e-99dc-fc3968a356a9', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -77738,6 +77743,7 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T43', 'P
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T44', 'Whistle on D-pad up draws unaware enemies within earshot to investigate the spot, curious rather than hostile.', '2026-11-04T15:11:50Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T45', 'UNR-T35 was closed by mistake: the umbrella work added hang/launch beats, but the base grapple''s throw, reel, haul and landing animations and timing still need doing.', '2026-11-04T16:02:52Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T46', 'Remove the light combo from the player; the old heavy swing moves to X as the normal attack. LB raises the shield (timed = parry). LT, RT and Y do nothing. B dodge roll, A jump, L3 run toggle, R3 crouch toggle.', '2026-11-04T16:51:37Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T47', 'Keyboard and mouse carry exactly the controller''s moves: LMB attack, RMB block (timed = parry), E dodge roll, Space jump, Shift run toggle, Ctrl/C crouch toggle, F use/whistle, R flask. No keyboard-only extras (lock-on, parry key, grapple, throw).', '2026-11-04T17:04:57Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNS-T17', 'LAMP migration for **Unstuck** (plan: MindAttic.Vault/docs/rfc/0003-lamp.md, Rollout step 5).
 
 - Move to the new MindAttic.Vault major.
