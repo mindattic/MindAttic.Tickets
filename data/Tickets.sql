@@ -12227,16 +12227,16 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T66', 'Unreal.Soulslike', 66, '2026-11-04', 'fix', 'closed', 'After dying, roll is lost and attacks move to RT: the knight''s input mapping is gone on respawn', '—', 65, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T67', 'Unreal.Soulslike', 67, '2026-11-04', 'feature', 'closed', 'Every free high-quality rigged non-player model becomes an enemy type with its own AI', '—', 66, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T68', 'Unreal.Soulslike', 68, '2026-11-04', 'feature', 'open', 'Operable mech you can climb into: legs and an independently rotating torso', '—', 67, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T69', 'Unreal.Soulslike', 69, '2026-11-04', 'feature', 'open', 'Star fighter parked on the land with full dogfighting flight', '—', 68, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T69', 'Unreal.Soulslike', 69, '2026-11-04', 'feature', 'closed', 'Star fighter parked on the land with full dogfighting flight', '—', 68, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T70', 'Unreal.Soulslike', 70, '2026-11-04', 'feature', 'closed', 'Grappling gun: zip to a ledge and launch off it (Arkham-style grapple boost)', '—', 69, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T71', 'Unreal.Soulslike', 71, '2026-11-04', 'feature', 'closed', 'Shadow melt: become a shadowy blob that crawls over land and up building walls', '—', 70, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T72', 'Unreal.Soulslike', 72, '2026-11-04', 'fix', 'open', 'Ranger: feet detached from the body, run animation barely moves', '—', 71, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T73', 'Unreal.Soulslike', 73, '2026-11-04', 'fix', 'open', 'Mech: one leg dead, inverted pitch; X/F turns legs to the torso, LT/RT fire, A or X key stops', '—', 72, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T74', 'Unreal.Soulslike', 74, '2026-11-04', 'fix', 'open', 'Day starts at dawn; a full day takes 5 minutes', '—', 73, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T72', 'Unreal.Soulslike', 72, '2026-11-04', 'fix', 'closed', 'Ranger: feet detached from the body, run animation barely moves', '—', 71, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T73', 'Unreal.Soulslike', 73, '2026-11-04', 'fix', 'closed', 'Mech: one leg dead, inverted pitch; X/F turns legs to the torso, LT/RT fire, A or X key stops', '—', 72, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T74', 'Unreal.Soulslike', 74, '2026-11-04', 'fix', 'closed', 'Day starts at dawn; a full day takes 5 minutes', '—', 73, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T75', 'Unreal.Soulslike', 75, '2026-11-04', 'fix', 'open', 'Fire looks bad: torches and field fire need convincing flames', '—', 74, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T76', 'Unreal.Soulslike', 76, '2026-11-04', 'fix', 'open', 'Glide only after a grapple launch', '—', 75, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T76', 'Unreal.Soulslike', 76, '2026-11-04', 'fix', 'closed', 'Glide only after a grapple launch', '—', 75, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T77', 'Unreal.Soulslike', 77, '2026-11-04', 'feature', 'open', 'Wall running (Titanfall-style) plus long practice walls', '—', 76, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T78', 'Unreal.Soulslike', 78, '2026-11-04', 'fix', 'open', 'Night never pitch black: at most a dark, perfectly playable purple', '—', 77, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T78', 'Unreal.Soulslike', 78, '2026-11-04', 'fix', 'closed', 'Night never pitch black: at most a dark, perfectly playable purple', '—', 77, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T79', 'Unreal.Soulslike', 79, '2026-11-04', 'feature', 'open', 'Weather: rain clouds that drift across the sky and bring rain; wind that blows leaves from the trees', '—', 78, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T1', 'Unreal.SpaceGod', 1, '2026-11-03', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T2', 'Unreal.SpaceGod', 2, '2026-11-03', 'feature', 'closed', 'Recreate Unity.Space''s Sol system in Unreal Engine 5 (C++) as a co-op game: JPL ephemeris, ELP-2000 Moon, IAU orientation, textured bodies, gameplay/realistic scale, focus camera, shared time warp over listen-server multiplayer', 'e1b6839', 1, NULL);
@@ -61269,6 +61269,13 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36612, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36613, 'SET-T37', '2026-11-04T20:48:49Z', 'working', '255bb9ef-f86d-4708-afb0-c19afb8729e6', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36614, 'SET-T38', '2026-11-04T20:49:05Z', 'working', '255bb9ef-f86d-4708-afb0-c19afb8729e6', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36615, 'SET-T38', '2026-11-04T20:57:43Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36616, 'UNR-T69', '2026-11-04T21:07:23Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36617, 'UNR-T72', '2026-11-04T21:07:25Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36618, 'UNR-T73', '2026-11-04T21:07:26Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36619, 'UNR-T74', '2026-11-04T21:07:27Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36620, 'UNR-T76', '2026-11-04T21:07:28Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36621, 'UNR-T78', '2026-11-04T21:07:30Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36622, 'UNR-T79', '2026-11-04T21:09:01Z', 'working', 'd7eaa32b-e907-485e-99dc-fc3968a356a9', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -64036,7 +64043,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UNR-T79', NULL, 0, NULL, 'd7eaa32b-e907-485e-99dc-fc3968a356a9', '2026-11-04T20:47:51Z', '2026-11-04T20:47:51Z');
 
 -- ticket_notes
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (1, 'U.HARE-T54', 'ryand', '2026-10-26T04:52:58Z', 'From U.HARE-T52 (7d24220): leaving the arena past the 400 px buffer zone (LeaveArena command) currently costs a life only on the ship (PlayerHealth out-of-bounds path / ShipHealth). When this ticket wires LIVES into the session, route that out-of-bounds loss through the same session lives so both deaths count the same.');
