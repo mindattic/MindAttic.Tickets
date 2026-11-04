@@ -5015,13 +5015,13 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T400', 'IdiotProof', 400, '2026-11-03', 'feature', 'closed', 'Transfer entropy (information theory) for directed leader detection: binned/k-NN estimator with a shuffled-surrogate significance test, as an alternative edge measure for InfluenceGraph/LeaderDiscovery that catches nonlinear lead-lag; walk-forward compared against lag-1 correlation', 'a022c34; TransferEntropyTests (11), EvidenceTransferEntropyOperationTests (4)', 399, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T401', 'IdiotProof', 401, '2026-11-03', 'feature', 'closed', 'Topological data analysis: Takens delay embedding of returns, Vietoris-Rips persistent homology (H0, H1) via a small in-repo implementation, persistence-landscape norms as regime-change features, each scored against forward returns with ConditionalOutcomeTable; no feature ships as a signal unless its out-of-sample lift is significant', '060ce1b; TopologyTests (9), EvidenceTopologyOperationTests (3)', 400, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T402', 'IdiotProof', 402, '2026-11-03', 'feature', 'closed', 'Bayesian online change-point detection (Adams-MacKay, Normal-Gamma model) and a Gaussian HMM regime model (Baum-Welch, forward filtering only), feeding the adaptation InformationGate (reset evidence after a detected change) and evaluated by how much faster they flag a regime shift than the variance-ratio reading', '172e364, 4c1abc6; RegimeDetectionTests (12), EvidenceRegimeMethodTests (3)', 401, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T403', 'IdiotProof', 403, '2026-11-03', 'feature', 'open', 'Economics of the bet: advisory fractional-Kelly size from the posterior (Beta) win rate and payoff ratio with parameter-uncertainty shrinkage, and a square-root market-impact + spread cost model (Almgren-Chriss style) used by DirectionalScorecard/evidence search edge-after-cost; never overrides Risk Guardian or the 1-share default policy', 'IP-T367', 402, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T403', 'IdiotProof', 403, '2026-11-03', 'feature', 'closed', 'Economics of the bet: advisory fractional-Kelly size from the posterior (Beta) win rate and payoff ratio with parameter-uncertainty shrinkage, and a square-root market-impact + spread cost model (Almgren-Chriss style) used by DirectionalScorecard/evidence search edge-after-cost; never overrides Risk Guardian or the 1-share default policy', 'f761f0a; EconomicsTests (10), EvidenceCostAndSizingTests (5)', 402, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T404', 'IdiotProof', 404, '2026-11-03', 'feature', 'closed', 'Game theory of stop clusters: map likely stop pools (round numbers, prior-day high/low, premarket high/low, opening range, VWAP bands) and measure how often price raids each pool then reverses vs breaks through, per price tier, as a learned table exposed to the DSL (e.g. NearRaidedPool) and to the stop placement in AdaptiveParameterDeriver (avoid resting stops where raids are measured to be common)', 'b22e7f6, 6b0b64a; StopPoolTests (9), PoolGuardTests (9), AdaptationStopPoolTests (2), EvidencePoolsOperationTests (3)', 403, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T405', 'IdiotProof', 405, '2026-11-03', 'feature', 'closed', 'Kalman filtering (control theory): local-level/local-trend state-space fair value with online noise estimation, and a dynamic hedge-ratio filter for leader/follower pairs; the filtered price, slope and innovation z-score become snapshot features scored out-of-sample, with a DSL condition only if holdout lift is significant', '02540f1; KalmanTests (10), EvidenceKalmanOperationTests (5); docs/research/kalman-2026-11.md: no DSL promotion, close-entry effect was bid-ask bounce', 404, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T406', 'IdiotProof', 406, '2026-11-03', 'feature', 'closed', 'Hawkes self-exciting point process (physics/seismology model) on Alpaca trade arrivals: exponential-kernel MLE per session, branching ratio as a measure of endogenous (reflexive) activity, and a momentum-ignition detector when branching ratio and intensity spike; scored against forward returns from the IP-T392 tick cache', '44480e7, e8930f5; HawkesTests (8), EvidenceHawkesOperationTests (3)', 405, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T407', 'IdiotProof', 407, '2026-11-03', 'feature', 'closed', 'Event study of research claims: join ResearchScanner claims (8-K, Form 4 insider buys/sells, corporate actions) to bar-store returns, compute cumulative abnormal returns vs a market-model benchmark over event windows, with Patell/BMP and bootstrap significance per claim type, so the Research feed''s significance ranking is calibrated by measured price impact', '060beb1, e025d1b; EventStudyTests (15), EvidenceEventsOperationTests (3); docs/research/claims-event-study-2026-11.md', 406, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T408', 'IdiotProof', 408, '2026-11-03', 'feature', 'open', 'Wire RMT cleaning into the CLI/MCP: --clean none|rmt on evidence graph (InfluenceGraph.FromCleanedReturns) and evidence walkforward --model leaders (LeaderDiscovery builds its lag-1 graph via FromCleanedReturns, which holds edges to the 2.5/sqrt(T) noise floor), plus operation tests; deferred from IP-T399 because five agents had uncommitted/staged edits in those operation files', 'IP-T367; IP-T399', 407, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T409', 'IdiotProof', 409, '2026-11-03', 'fix', 'open', 'Bucket evaluators report uncorrected per-bucket p-values, so ''significant'' labels include multiple-testing false positives: route every holdout bucket evaluator (hawkes, flow, traps, topology, and kalman/pools once landed) through one shared evaluator that applies Benjamini-Hochberg q-values (IP-T393 MultipleTesting) and day-clustered counts, labeling significance by q, not raw p', 'IP-T367; IP-T406', 408, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T409', 'IdiotProof', 409, '2026-11-03', 'fix', 'closed', 'Bucket evaluators report uncorrected per-bucket p-values, so ''significant'' labels include multiple-testing false positives: route every holdout bucket evaluator (hawkes, flow, traps, topology, and kalman/pools once landed) through one shared evaluator that applies Benjamini-Hochberg q-values (IP-T393 MultipleTesting) and day-clustered counts, labeling significance by q, not raw p', '5ae7e02; HoldoutBucketEvaluatorTests (6), Evidence 190/190, Operations evidence+catalog+binder 1104/1104', 408, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T410', 'IdiotProof', 410, '2026-11-03', 'fix', 'open', 'HistoricalBarStore caches split-unadjusted bars (AlpacaDataFeed adjustment=raw), so any multi-day study of penny stocks sees reverse splits as fake +200..+900% days: IP-T407''s first claims run showed mean CARs of +117%..+179% with medians near 0; add split-adjusted daily bars (adjustment=split or all, cached separately) for research consumers (event study, walkforward, search, leaders) while live trading keeps raw prices', 'IP-T367; IP-T407; IP-T371', 409, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T411', 'IdiotProof', 411, '2026-11-03', 'feature', 'open', 'Survival analysis of exits (biostatistics): Kaplan-Meier curves and a Cox proportional-hazards model for time-to-target vs time-to-stop as competing risks (Aalen-Johansen cumulative incidence) from replay/backtest trades, so exits and sell-by times are set from measured hazard instead of fixed bar counts; evidence survival op', 'IP-T367', 410, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T412', 'IdiotProof', 412, '2026-11-03', 'feature', 'open', 'Conformal prediction for forward returns: split-conformal and adaptive (ACI) intervals around the analog/Kalman forecasts with guaranteed finite-sample coverage, used to abstain when the interval straddles zero and to size targets/stops; coverage verified out-of-sample in tests and on bar-store data', 'IP-T367', 411, NULL);
@@ -9005,7 +9005,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T22', 'Prose', 22, '2026-10-13', 'chore', 'open', 'Contributions campaign: rest of the GLMZ catalog (~30 books) through tagging, contribution lines, Descriptions, F5 and F1 using the scratchpad pipeline (mkbook, agent briefs, check.py, apply.py, applydesc.py, queue.py)', 'PRS-T3', 21, '| PRS-T22 | 2026-10-13 | chore | open | Contributions campaign: rest of the GLMZ catalog (~30 books) through tagging, contribution lines, Descriptions, F5 and F1 using the scratchpad pipeline (mkbook, agent briefs, check.py, apply.py, applydesc.py, queue.py) | PRS-T3 |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T23', 'Prose', 23, '2026-10-13', 'docs', 'closed', 'RFC 0015: record the contributions rollout cost (pronoun tagging stales Descriptions and reads; ~200 calls per 215 beats) per law 01a1364e', 'WO:01a1337c', 22, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T24', 'Prose', 24, '2026-10-13', 'fix', 'closed', 'Dr. Nadia Park location (''Off-GLMZ, not disclosed even to Kyle'') contradicts BCODA #20747 (sector address in Z4) but lives in EntityStateEvents, which no CLI or MCP command writes; add a write path or correct it, then finish BCODA F1', '5cdfe4c69', 23, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T25', 'Prose', 25, '2026-10-13', 'chore', 'open', 'Audit 2026-10-13 record patches made while two agents shared scratchpad patch_tmp.json (ef.py): confirm no payload landed on the wrong entity (stray ''age'' fields especially)', 'WO:01a1337c', 24, '| PRS-T25 | 2026-10-13 | chore | open | Audit 2026-10-13 record patches made while two agents shared scratchpad patch_tmp.json (ef.py): confirm no payload landed on the wrong entity (stray ''age'' fields especially) | WO:01a1337c |');
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T25', 'Prose', 25, '2026-10-13', 'chore', 'closed', 'Audit 2026-10-13 record patches made while two agents shared scratchpad patch_tmp.json (ef.py): confirm no payload landed on the wrong entity (stray ''age'' fields especially)', 'WO:01a1337c', 24, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T26', 'Prose', 26, '2026-10-13', 'chore', 'closed', 'Author call: Ekow Ato''s years with the Lotus house: VATD ten, Iron & Silk (two years later, ~2226-27) twelve, Pieces (2230) ten in beats #23234,#23239,#23257,#23282,#23283,#23286 (should be ~fifteen by that timeline)', 'Beat #23282 (01a12a3b-e5ea-7d81-be85-fcc9220fbee2, Pieces/CYB1) ''for ten years'' -> ''for fifteen years''; Hub read-back verified. No repo changes (content-only, Hub DB).', 25, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T27', 'Prose', 27, '2026-10-13', 'fix', 'closed', 'Location field (EntityStateEvents) is unwritable but stale/contradicting for Kyle (''Pixel''s apartment''), Mrs. Chen, Sasha Vo, Dr. Nadia Park; needs a write path (RFC 0015 s11) then corrections', '48d84fcf9', 26, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T28', 'Prose', 28, '2026-10-13', 'fix', 'closed', 'CYB2/CYB3 tags still pin Chicago''s South Side to the Milwaukee South Side record: beats #23410, #23426, #23546, #23702, #23715 -> re-pin to The South Side (Chicago) 01a13683-458a', 'af41bffbe93c1bda28398e5d1c6acdc93e4eed0e', 27, NULL);
@@ -9043,7 +9043,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T60', 'Prose', 60, '2026-10-15', 'chore', 'open', 'Testament (TEST, draft) (testament-01a11cd1): Contributions campaign (PRS-T3 protocol, by hand, one unit at a time): first run prose --factory status for this book and close this ticket if F1-F7 are already green. Otherwise: tag every pronoun (character guid or the all-zero none guid), write contribution lines, restate Descriptions (strict F3), F5 read with --mark-read, F1 verify-entity begin/commit every tagged entity, then F7 export. File Rule #1 defects as read notes; record entity fixes through the Hub with read-back. No bulk tools, no LLM judges.', 'PRS-T3, PRS-T22', 59, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T61', 'Prose', 61, '2026-10-15', 'chore', 'wont-do', 'Testament (court-martial, TEST2: reuse TEST work where raw text matches) (the-court-martial-019ed361): Contributions campaign (PRS-T3 protocol, by hand, one unit at a time): first run prose --factory status for this book and close this ticket if F1-F7 are already green. Otherwise: tag every pronoun (character guid or the all-zero none guid), write contribution lines, restate Descriptions (strict F3), F5 read with --mark-read, F1 verify-entity begin/commit every tagged entity, then F7 export. File Rule #1 defects as read notes; record entity fixes through the Hub with read-back. No bulk tools, no LLM judges.', 'superseded by consolidation ticket below', 60, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T62', 'Prose', 62, '2026-10-15', 'chore', 'open', 'Iron & Silk (IxS) (iron-silk-019f43b9): Contributions campaign (PRS-T3 protocol, by hand, one unit at a time): first run prose --factory status for this book and close this ticket if F1-F7 are already green. Otherwise: tag every pronoun (character guid or the all-zero none guid), write contribution lines, restate Descriptions (strict F3), F5 read with --mark-read, F1 verify-entity begin/commit every tagged entity, then F7 export. File Rule #1 defects as read notes; record entity fixes through the Hub with read-back. No bulk tools, no LLM judges.', 'PRS-T3, PRS-T22', 61, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T63', 'Prose', 63, '2026-10-15', 'chore', 'open', 'Eleven Minutes (eleven_minutes): Contributions campaign (PRS-T3 protocol, by hand, one unit at a time): first run prose --factory status for this book and close this ticket if F1-F7 are already green. Otherwise: tag every pronoun (character guid or the all-zero none guid), write contribution lines, restate Descriptions (strict F3), F5 read with --mark-read, F1 verify-entity begin/commit every tagged entity, then F7 export. File Rule #1 defects as read notes; record entity fixes through the Hub with read-back. No bulk tools, no LLM judges.', 'PRS-T3, PRS-T22', 62, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T63', 'Prose', 63, '2026-10-15', 'chore', 'wont-do', 'Eleven Minutes (eleven_minutes): Contributions campaign (PRS-T3 protocol, by hand, one unit at a time): first run prose --factory status for this book and close this ticket if F1-F7 are already green. Otherwise: tag every pronoun (character guid or the all-zero none guid), write contribution lines, restate Descriptions (strict F3), F5 read with --mark-read, F1 verify-entity begin/commit every tagged entity, then F7 export. File Rule #1 defects as read notes; record entity fixes through the Hub with read-back. No bulk tools, no LLM judges.', 'PRS-T3, PRS-T22', 62, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T64', 'Prose', 64, '2026-10-15', 'chore', 'open', 'The Voice You Trust (the_voice_you_trust): Contributions campaign (PRS-T3 protocol, by hand, one unit at a time): first run prose --factory status for this book and close this ticket if F1-F7 are already green. Otherwise: tag every pronoun (character guid or the all-zero none guid), write contribution lines, restate Descriptions (strict F3), F5 read with --mark-read, F1 verify-entity begin/commit every tagged entity, then F7 export. File Rule #1 defects as read notes; record entity fixes through the Hub with read-back. No bulk tools, no LLM judges.', 'PRS-T3, PRS-T22', 63, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T65', 'Prose', 65, '2026-10-15', 'chore', 'open', 'GLMZ Stories: Vol. 1 (glmz_stories_vol_1): Contributions campaign (PRS-T3 protocol, by hand, one unit at a time): first run prose --factory status for this book and close this ticket if F1-F7 are already green. Otherwise: tag every pronoun (character guid or the all-zero none guid), write contribution lines, restate Descriptions (strict F3), F5 read with --mark-read, F1 verify-entity begin/commit every tagged entity, then F7 export. File Rule #1 defects as read notes; record entity fixes through the Hub with read-back. No bulk tools, no LLM judges.', 'PRS-T3, PRS-T22', 64, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T66', 'Prose', 66, '2026-10-15', 'chore', 'open', 'Read the Room (replan) (read-the-room-replan-01a1384d): Contributions campaign (PRS-T3 protocol, by hand, one unit at a time): first run prose --factory status for this book and close this ticket if F1-F7 are already green. Otherwise: tag every pronoun (character guid or the all-zero none guid), write contribution lines, restate Descriptions (strict F3), F5 read with --mark-read, F1 verify-entity begin/commit every tagged entity, then F7 export. File Rule #1 defects as read notes; record entity fixes through the Hub with read-back. No bulk tools, no LLM judges.', 'PRS-T3, PRS-T22', 65, NULL);
@@ -9067,7 +9067,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T84', 'Prose', 84, '2026-10-15', 'chore', 'closed', 'Lieutenant Lyra, Sinterkin Slayer (lyra-sinterspawn-slayer-019f5bd9, SCRY): Contributions campaign (PRS-T3 protocol, by hand, one unit at a time): first run prose --universe scry --factory status for this book and close this ticket if F1-F7 are already green. Otherwise: tag every pronoun (character guid or the all-zero none guid), write contribution lines, restate Descriptions (strict F3), F5 read with --mark-read, F1 verify-entity begin/commit every tagged entity, then F7 export. File Rule #1 defects as read notes; record entity fixes through the Hub with read-back. No bulk tools, no LLM judges.', '6 beats tagged/contributed/described, F5 read, F1 verify-entity committed for all 18 tagged entities (incl. 2 real record fixes: Heather Marsh lamb-staging, Millbrook Aveline->Heather name), exported LLSS V23 (docx/epub/pdf/txt/md); F2/F3/F5/F6/F1 all 1/1 pass, F4 stuck at 4 residual glossary-term mentions (Crowning/Old Watch/generic Templar) with no entity GUID to tag to - engine limitation, not a tagging gap', 83, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T85', 'Prose', 85, '2026-10-15', 'chore', 'open', 'M-101 (m-101-019f69f4, SCRY): Contributions campaign (PRS-T3 protocol, by hand, one unit at a time): first run prose --universe scry --factory status for this book and close this ticket if F1-F7 are already green. Otherwise: tag every pronoun (character guid or the all-zero none guid), write contribution lines, restate Descriptions (strict F3), F5 read with --mark-read, F1 verify-entity begin/commit every tagged entity, then F7 export. File Rule #1 defects as read notes; record entity fixes through the Hub with read-back. No bulk tools, no LLM judges.', 'PRS-T3, PRS-T69', 84, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T86', 'Prose', 86, '2026-10-15', 'chore', 'open', 'Three Day Truce (tournament-019fc10a, SCRY): Contributions campaign (PRS-T3 protocol, by hand, one unit at a time): first run prose --universe scry --factory status for this book and close this ticket if F1-F7 are already green. Otherwise: tag every pronoun (character guid or the all-zero none guid), write contribution lines, restate Descriptions (strict F3), F5 read with --mark-read, F1 verify-entity begin/commit every tagged entity, then F7 export. File Rule #1 defects as read notes; record entity fixes through the Hub with read-back. No bulk tools, no LLM judges.', 'PRS-T3, PRS-T69', 85, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T87', 'Prose', 87, '2026-10-15', 'chore', 'open', 'Vigil''s End (vigil-s-end-019f5767, SCRY): Contributions campaign (PRS-T3 protocol, by hand, one unit at a time): first run prose --universe scry --factory status for this book and close this ticket if F1-F7 are already green. Otherwise: tag every pronoun (character guid or the all-zero none guid), write contribution lines, restate Descriptions (strict F3), F5 read with --mark-read, F1 verify-entity begin/commit every tagged entity, then F7 export. File Rule #1 defects as read notes; record entity fixes through the Hub with read-back. No bulk tools, no LLM judges.', 'PRS-T3, PRS-T69', 86, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T87', 'Prose', 87, '2026-10-15', 'chore', 'closed', 'Vigil''s End (vigil-s-end-019f5767, SCRY): Contributions campaign (PRS-T3 protocol, by hand, one unit at a time): first run prose --universe scry --factory status for this book and close this ticket if F1-F7 are already green. Otherwise: tag every pronoun (character guid or the all-zero none guid), write contribution lines, restate Descriptions (strict F3), F5 read with --mark-read, F1 verify-entity begin/commit every tagged entity, then F7 export. File Rule #1 defects as read notes; record entity fixes through the Hub with read-back. No bulk tools, no LLM judges.', 'PRS-T3, PRS-T69', 86, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T88', 'Prose', 88, '2026-10-15', 'chore', 'open', '1381: The Uprising (1381-the-peasants-revolt-019fc3c0, NONFICTION): Contributions campaign (PRS-T3 protocol, by hand, one unit at a time): first run prose --universe nonfiction --factory status for this book and close this ticket if F1-F7 are already green. Otherwise: tag every pronoun (character guid or the all-zero none guid), write contribution lines, restate Descriptions (strict F3), F5 read with --mark-read, F1 verify-entity begin/commit every tagged entity, then F7 export. File Rule #1 defects as read notes; record entity fixes through the Hub with read-back. No bulk tools, no LLM judges.', 'PRS-T3, PRS-T70', 87, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T89', 'Prose', 89, '2026-10-15', 'chore', 'open', 'Irish Outlaws (resistance-three-centuries-of-irish-rebellion-019fc926, NONFICTION): Contributions campaign (PRS-T3 protocol, by hand, one unit at a time): first run prose --universe nonfiction --factory status for this book and close this ticket if F1-F7 are already green. Otherwise: tag every pronoun (character guid or the all-zero none guid), write contribution lines, restate Descriptions (strict F3), F5 read with --mark-read, F1 verify-entity begin/commit every tagged entity, then F7 export. File Rule #1 defects as read notes; record entity fixes through the Hub with read-back. No bulk tools, no LLM judges.', 'PRS-T3, PRS-T70', 88, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T90', 'Prose', 90, '2026-10-15', 'chore', 'open', 'Jeanne d''Arc (1428-jeanne-d-arc-019fc3b4, NONFICTION): Contributions campaign (PRS-T3 protocol, by hand, one unit at a time): first run prose --universe nonfiction --factory status for this book and close this ticket if F1-F7 are already green. Otherwise: tag every pronoun (character guid or the all-zero none guid), write contribution lines, restate Descriptions (strict F3), F5 read with --mark-read, F1 verify-entity begin/commit every tagged entity, then F7 export. File Rule #1 defects as read notes; record entity fixes through the Hub with read-back. No bulk tools, no LLM judges.', 'PRS-T3, PRS-T70', 89, NULL);
@@ -9407,7 +9407,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T424', 'Prose', 424, '2026-10-30', 'chore', 'closed', 'GLMZ P1 nano: the Substrate: coverage map (core vs Seams), who runs it, what a lapse looks like', '—', 423, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T425', 'Prose', 425, '2026-10-30', 'chore', 'closed', 'GLMZ P1 nano: consolidate the nano CorpoNation records (Axiom BioNanics, Cascadia BioNano, Cauldron x2, Fractum, Glyph, Meridian Nano-Defense, Null Dynamics, Oma, Threadline, Vexor, Pale Substrate, Chengdu Institute)', '—', 424, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T426', 'Prose', 426, '2026-10-30', 'chore', 'closed', 'GLMZ P1 nano: counter-nano and the Bloom Quarter: decide the canon of nano disasters the street remembers', '—', 425, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T427', 'Prose', 427, '2026-10-30', 'chore', 'open', 'GLMZ P1 cyberware: neuretics canon: everyone has them; what tiers, what they do, what they cost to keep', '—', 426, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T427', 'Prose', 427, '2026-10-30', 'chore', 'closed', 'GLMZ P1 cyberware: neuretics canon: everyone has them; what tiers, what they do, what they cost to keep', '—', 426, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T428', 'Prose', 428, '2026-10-30', 'chore', 'open', 'GLMZ P1 cyberware: chassis and augmentation tiers (Tier 1-5, Caryatid-class, reinforced bone) as one table on a record', '—', 427, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T429', 'Prose', 429, '2026-10-30', 'chore', 'open', 'GLMZ P1 cyberware: licensing and compliance locks: how a CorpoNation leashes an augmented body', '—', 428, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T430', 'Prose', 430, '2026-10-30', 'chore', 'open', 'GLMZ P1 cyberware: NeoCortex: the Access Initiative, the hardware, and Kyle''s 2215 install as canon', '—', 429, NULL);
@@ -9430,10 +9430,10 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T447', 'Prose', 447, '2026-10-30', 'chore', 'open', 'GLMZ P1 diaspora: honour and debt: the shared code of the street (favours, debts, face, the second-man rule) that every crew understands', '—', 446, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T448', 'Prose', 448, '2026-10-30', 'chore', 'closed', 'GLMZ P1 geography: the extent: the GLMZ as the sprawl that swallowed the Midwest: Milwaukee to Cleveland (~500 km), the lakes, its edges', '—', 447, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T449', 'Prose', 449, '2026-10-30', 'chore', 'closed', 'GLMZ P1 geography: the Seams map: where the Gray Zones run between CorpoNations; a short canonical list of named Seams districts', '—', 448, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T450', 'Prose', 450, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: Chicago core: the Loop, the Struts, the arcology legs, the underlevels', '—', 449, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T451', 'Prose', 451, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: the lakes and the Ur-606 black pyramid: what is seen from every shore', '—', 450, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T452', 'Prose', 452, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: Gary and the Ashgrave/Slagworks belt: the most polluted sovereign ground; who lives there', '—', 451, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T453', 'Prose', 453, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: the Detroit corridor: Rictus, Cinderblock, Nightshade, Pale Lantern; Detroit is inside the GLMZ (ruling)', '—', 452, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T450', 'Prose', 450, '2026-10-30', 'chore', 'closed', 'GLMZ P1 geography: Chicago core: the Loop, the Struts, the arcology legs, the underlevels', '—', 449, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T451', 'Prose', 451, '2026-10-30', 'chore', 'closed', 'GLMZ P1 geography: the lakes and the Ur-606 black pyramid: what is seen from every shore', '—', 450, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T452', 'Prose', 452, '2026-10-30', 'chore', 'closed', 'GLMZ P1 geography: Gary and the Ashgrave/Slagworks belt: the most polluted sovereign ground; who lives there', '—', 451, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T453', 'Prose', 453, '2026-10-30', 'chore', 'closed', 'GLMZ P1 geography: the Detroit corridor: Rictus, Cinderblock, Nightshade, Pale Lantern; Detroit is inside the GLMZ (ruling)', '—', 452, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T454', 'Prose', 454, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: Milwaukee: Halcyon Garrison Complex, the Velvet Tine, Fenris''s city', '—', 453, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T455', 'Prose', 455, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: the Iowa Exclusion Zone: Ironclad Agrisystems and the 340 Behemoths that feed a third of the continent; seen only from the edge', '—', 454, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T456', 'Prose', 456, '2026-10-30', 'chore', 'open', 'GLMZ P1 geography: below: the Warm, the Old Deep, the bore: the underground as its own country (Underclan)', '—', 455, NULL);
@@ -9460,7 +9460,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T477', 'Prose', 477, '2026-10-30', 'chore', 'closed', 'GLMZ P1 economy: money: Φ credits, credsticks, UBC as scrip, the quanta allotment sold forward', 'rulings 01a1a4e7-cdaa, 01a1a4e7-e1a7; UBC + quanta allotment vocab; book ticket PRS-T878', 476, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T478', 'Prose', 478, '2026-10-30', 'chore', 'closed', 'GLMZ P1 economy: the Tier system: Tier 1-5 citizenship and what each buys', 'ruling 01a1a4e7-f481; book tickets PRS-T878..T886', 477, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T479', 'Prose', 479, '2026-10-30', 'chore', 'closed', 'GLMZ P1 economy: sponsorship and the citizenship lottery: how anyone climbs; how rarely', 'ruling 01a1a4e8-03fb; vocab Ascent Draw, sponsorship token', 478, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T480', 'Prose', 480, '2026-10-30', 'chore', 'open', 'GLMZ P1 economy: taxes: the Air Tax and the tithe; who pays what to whom', '—', 479, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T480', 'Prose', 480, '2026-10-30', 'chore', 'closed', 'GLMZ P1 economy: taxes: the Air Tax and the tithe; who pays what to whom', 'ruling 01a1a4e8-1856; vocab The Air Tax, house tithe', 479, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T481', 'Prose', 481, '2026-10-30', 'chore', 'closed', 'GLMZ P1 timeline: one master history record: 2096 transfer and Blue Massacre, Schism era 2090s-2140s, Corridor Consolidation 2190s, 2197 children, through 2231', '—', 480, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T482', 'Prose', 482, '2026-10-30', 'chore', 'closed', 'GLMZ P1 timeline: verify every book''s Node.Timeline value and in-book dates against the master record', '—', 481, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T483', 'Prose', 483, '2026-10-30', 'chore', 'closed', 'GLMZ P1 timeline: character ages across the season: one pass over every lead''s birth year vs each book', '—', 482, NULL);
@@ -59723,6 +59723,415 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35640, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35641, 'PRS-T478', '2026-11-04T04:57:40Z', 'ref', '—', 'ruling 01a1a4e7-f481; book tickets PRS-T878..T886');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35642, 'PRS-T479', '2026-11-04T04:57:44Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35643, 'PRS-T479', '2026-11-04T04:57:44Z', 'ref', '—', 'ruling 01a1a4e8-03fb; vocab Ascent Draw, sponsorship token');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35644, 'PRS-T480', '2026-11-04T04:57:48Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35645, 'PRS-T480', '2026-11-04T04:57:48Z', 'ref', '—', 'ruling 01a1a4e8-1856; vocab The Air Tax, house tithe');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35646, 'PRS-T450', '2026-11-04T04:58:35Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35647, 'IP-T403', '2026-11-04T04:59:45Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35648, 'IP-T403', '2026-11-04T04:59:45Z', 'ref', 'IP-T367', 'f761f0a; EconomicsTests (10), EvidenceCostAndSizingTests (5)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35649, 'PRS-T451', '2026-11-04T05:01:19Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35650, 'PRS-T25', '2026-11-04T05:01:23Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35651, 'PRS-T87', '2026-11-04T05:03:05Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35652, 'UNR-T13', '2026-11-04T05:03:18Z', 'working', 'd7eaa32b-e907-485e-99dc-fc3968a356a9', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35653, 'UNR-T14', '2026-11-04T05:03:19Z', 'working', 'd7eaa32b-e907-485e-99dc-fc3968a356a9', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35654, 'UNR-T15', '2026-11-04T05:03:20Z', 'working', 'd7eaa32b-e907-485e-99dc-fc3968a356a9', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35655, 'UNR-T16', '2026-11-04T05:03:21Z', 'working', 'd7eaa32b-e907-485e-99dc-fc3968a356a9', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35656, 'UNR-T17', '2026-11-04T05:03:21Z', 'working', 'd7eaa32b-e907-485e-99dc-fc3968a356a9', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35657, 'UNR-T18', '2026-11-04T05:03:23Z', 'working', 'd7eaa32b-e907-485e-99dc-fc3968a356a9', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35658, 'UNR-T19', '2026-11-04T05:03:25Z', 'working', 'd7eaa32b-e907-485e-99dc-fc3968a356a9', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35659, 'PRS-T63', '2026-11-04T05:03:42Z', 'status', 'open', 'wont-do');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35660, 'PRS-T452', '2026-11-04T05:04:05Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35661, 'PRS-T453', '2026-11-04T05:05:43Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35662, 'IP-T409', '2026-11-04T05:05:48Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35663, 'IP-T409', '2026-11-04T05:05:48Z', 'ref', 'IP-T367; IP-T406', '5ae7e02; HoldoutBucketEvaluatorTests (6), Evidence 190/190, Operations evidence+catalog+binder 1104/1104');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35664, 'PRS-T427', '2026-11-04T05:05:58Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35665, 'PRS-T542', '2026-11-04T05:07:02Z', 'description', '**Steppin'' Razor** (2217; lead: Sasha; the earliest book; the Halcyon Combine''s live-well drilling as antagonist).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '**Steppin'' Razor** (2217; lead: Sasha; the earliest book; the Halcyon Combine''s live-well drilling as antagonist).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines flagged for this book:** none by the 2026-11-04 sweep (no enclave names, exoticism, district languages or lifted syndicate tropes found).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35666, 'PRS-T550', '2026-11-04T05:07:12Z', 'description', '**Pixel** (autumn 2223; lead: Pixel; Pixel''s origin and the Assessor).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '**Pixel** (autumn 2223; lead: Pixel; Pixel''s origin and the Assessor).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines flagged for this book:** none by the 2026-11-04 sweep (no enclave names, exoticism, district languages or lifted syndicate tropes found).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35667, 'PRS-T558', '2026-11-04T05:07:29Z', 'description', '**Testament** (Oct-Dec 2224; lead: Bear; Bear''s hearing over the forty-three).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '**Testament** (Oct-Dec 2224; lead: Bear; Bear''s hearing over the forty-three).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines flagged for this book:** none by the 2026-11-04 sweep (no enclave names, exoticism, district languages or lifted syndicate tropes found).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35668, 'PRS-T566', '2026-11-04T05:07:45Z', 'description', '**Attendance** (2225; lead: Yemina Fola; the 2197 children and Case 48).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '**Attendance** (2225; lead: Yemina Fola; the 2197 children and Case 48).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines and names flagged for this book:**
+- #23925 (beat 01a19aa6-7499-7d4e-85c9-2614ee2e06d0): ''He had a Back of the Yards face ... in the block''s own Spanish'' places a face by district and gives a block its own language (breaks the no-enclave and Stallspeak laws). Rewrite: Yemina places the man by something else (his intake accent, the way he holds the door), and the Spanish is his family''s, not the block''s.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35669, 'PRS-T574', '2026-11-04T05:07:53Z', 'description', '**Between the Lines** (2225; lead: Idris; a checkpoint officer crossing to the Gray Zone side).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '**Between the Lines** (2225; lead: Idris; a checkpoint officer crossing to the Gray Zone side).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines flagged for this book:** none by the 2026-11-04 sweep (no enclave names, exoticism, district languages or lifted syndicate tropes found).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35670, 'PRS-T582', '2026-11-04T05:07:57Z', 'description', '**Death Whispers in a Cat''s Ear** (Sep 2225; lead: Rennick; the investigator and TRIBUTARY).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '**Death Whispers in a Cat''s Ear** (Sep 2225; lead: Rennick; the investigator and TRIBUTARY).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines and names flagged for this book:**
+- #21201 (beat 01a0e651-f0c7-7310-8fe6-9eeca8401904): ''He got off at Cermak-Chinatown'' names a transit stop for an ethnic enclave (breaks the signage law). Rename the stop (e.g. Cermak-Wentworth; Wentworth Passage is already canon nearby).
+- Names census: this book holds half of the census''s fully Anglo names (Douglas and Celeste Hartley, Jace Dalton, Isaac Rennick, plus Detective Marsh). Decide whether the Hartleys stay an old Anglo Evanston line on purpose (say so on the page through Mei-Lin''s side) or whether one or two of the others get mixed names (rename via tags only).
+- Names census: Corvin Adaora is a near-homophone of Corvid Larsson (Sparrow) and Corwin Sallow (Underclan); Celeste Hartley is a near-homophone of Celestine Mora (Mnemosync). One person per name: coordinate with those books'' tickets and rename the minor side.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35671, 'PRS-T590', '2026-11-04T05:08:01Z', 'description', '**Critical Mass** (Dec 2225-2226; lead: its lead; the reaction that goes critical).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '**Critical Mass** (Dec 2225-2226; lead: its lead; the reaction that goes critical).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines flagged for this book:** none by the 2026-11-04 sweep (no enclave names, exoticism, district languages or lifted syndicate tropes found).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35672, 'PRS-T598', '2026-11-04T05:08:04Z', 'description', '**The Long Cut** (Jan 2226; lead: Stash; Renata''s device and the Remedios trial).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '**The Long Cut** (Jan 2226; lead: Stash; Renata''s device and the Remedios trial).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines flagged for this book:** none by the 2026-11-04 sweep (no enclave names, exoticism, district languages or lifted syndicate tropes found).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35673, 'PRS-T606', '2026-11-04T05:08:07Z', 'description', '**Sparrow** (Mar-Jul 2226; lead: Elias and Sparrow; the watchers and the mass driver).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '**Sparrow** (Mar-Jul 2226; lead: Elias and Sparrow; the watchers and the mass driver).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines and names flagged for this book:**
+- Names census: Corvid Larsson collides with Faith Larson (Pieces, The Ur) and with Corvin Adaora (DWIACE) / Corwin Sallow (Underclan). Faith is a series lead: Corvid''s surname is the one to change (and consider his first name too).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35674, 'PRS-T614', '2026-11-04T05:08:09Z', 'description', '**Magenta & Gunmetal** (2226; lead: Vox; the Bloom Quarter and Rook''s crew).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '**Magenta & Gunmetal** (2226; lead: Vox; the Bloom Quarter and Rook''s crew).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines flagged for this book:** none by the 2026-11-04 sweep (no enclave names, exoticism, district languages or lifted syndicate tropes found).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35675, 'PRS-T622', '2026-11-04T05:08:11Z', 'description', '**Vultures at the Door** (2226; lead: Ekow; the Carrion depot and Bram Osei).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '**Vultures at the Door** (2226; lead: Ekow; the Carrion depot and Bram Osei).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines flagged for this book:** none by the 2026-11-04 sweep (no enclave names, exoticism, district languages or lifted syndicate tropes found).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35676, 'PRS-T630', '2026-11-04T05:08:14Z', 'description', '**Bushido Coda** (Sep 2226-early 2227; lead: Kyle; the main character''s book, the aperture at 35th & Halsted).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '**Bushido Coda** (Sep 2226-early 2227; lead: Kyle; the main character''s book, the aperture at 35th & Halsted).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines and names flagged for this book:**
+- Names census: courier Pele Fassbinder-Nkono carries a famous real-world name (Pele); rename via tags (names law item 6).
+- #20868 (beat 01a0e651-b7a6-7729-942a-e6616d3e06b7): the corner man''s hyperreality koi tattoo ''in Lotus red'' is the one lingering old-world syndicate image in the corpus (crews law: no lifted tattoo rites). Consider a GLMZ-own image (a five-petal blossom glitching in the overlay, or a Problem crew glyph) instead of the koi.
+- Names census: Garrison Mercer is fully Anglo; acceptable if he reads as a Tier/franchise corpo line (names law item 2), otherwise mix it.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35677, 'PRS-T638', '2026-11-04T05:08:18Z', 'description', '**Underclan** (2227; lead: Glim; the people below and the Deep).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '**Underclan** (2227; lead: Glim; the people below and the Deep).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines and names flagged for this book:**
+- Names census: Corwin Sallow is a near-homophone of Corvid Larsson (Sparrow) and Corvin Adaora (DWIACE). Rename one of the three; Corwin is a minor patron here.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35678, 'PRS-T646', '2026-11-04T05:08:22Z', 'description', '**The Way Up** (2227-2230; lead: Rampart and Cutout; Bear''s students).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '**The Way Up** (2227-2230; lead: Rampart and Cutout; Bear''s students).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines flagged for this book:** none by the 2026-11-04 sweep (no enclave names, exoticism, district languages or lifted syndicate tropes found).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35679, 'PRS-T654', '2026-11-04T05:08:28Z', 'description', '**Neon & Rust** (late 2227; lead: Rook; Rook''s notebook).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '**Neon & Rust** (late 2227; lead: Rook; Rook''s notebook).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines flagged for this book:** none by the 2026-11-04 sweep (no enclave names, exoticism, district languages or lifted syndicate tropes found).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35680, 'PRS-T662', '2026-11-04T05:08:43Z', 'description', '**Crimson & Chrome** (2229; lead: Palesa; the cradle and the manifest).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '**Crimson & Chrome** (2229; lead: Palesa; the cradle and the manifest).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines flagged for this book:** none by the 2026-11-04 sweep (no enclave names, exoticism, district languages or lifted syndicate tropes found).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35681, 'PRS-T670', '2026-11-04T05:08:53Z', 'description', '**The Way Down** (April 2230; lead: Rafi and Cutout; Ashgrave Spire).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '**The Way Down** (April 2230; lead: Rafi and Cutout; Ashgrave Spire).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines flagged for this book:** none by the 2026-11-04 sweep (no enclave names, exoticism, district languages or lifted syndicate tropes found).
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (35682, 'PRS-T678', '2026-11-04T05:08:57Z', 'description', '**Mnemosync** (spring-Sep 2230; lead: the courier; the Continuity Office, last before Pieces).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '**Mnemosync** (spring-Sep 2230; lead: the courier; the Continuity Office, last before Pieces).
+
+Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) to this book''s streets. Fix exoticism or enclave districts.
+
+Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
+
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines and names flagged for this book:**
+- Names census: Celestine Mora is a near-homophone of Celeste Hartley (DWIACE, the missing daughter). Celestine is the minor side: rename via tags.
+
+Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -62474,13 +62883,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UNR-T13', NULL, 0, NULL, 'd7eaa32b-e907-485e-99dc-fc3968a356a9', '2026-11-04T04:21:38Z', '2026-11-04T04:21:38Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UNR-T14', NULL, 0, NULL, 'd7eaa32b-e907-485e-99dc-fc3968a356a9', '2026-11-04T04:21:38Z', '2026-11-04T04:21:38Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UNR-T15', NULL, 0, NULL, 'd7eaa32b-e907-485e-99dc-fc3968a356a9', '2026-11-04T04:21:39Z', '2026-11-04T04:21:39Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UNR-T16', NULL, 0, NULL, 'd7eaa32b-e907-485e-99dc-fc3968a356a9', '2026-11-04T04:21:39Z', '2026-11-04T04:21:39Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UNR-T17', NULL, 0, NULL, 'd7eaa32b-e907-485e-99dc-fc3968a356a9', '2026-11-04T04:21:40Z', '2026-11-04T04:21:40Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UNR-T18', NULL, 0, NULL, 'd7eaa32b-e907-485e-99dc-fc3968a356a9', '2026-11-04T04:54:10Z', '2026-11-04T04:54:10Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UNR-T19', NULL, 0, NULL, 'd7eaa32b-e907-485e-99dc-fc3968a356a9', '2026-11-04T04:54:11Z', '2026-11-04T04:54:11Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T59', NULL, 0, NULL, 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', '2026-11-04T02:15:16Z', '2026-11-04T02:15:16Z');
 
 -- ticket_notes
@@ -63537,6 +63939,9 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (743, 'US
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (744, 'IP-T399', 'ryand', '2026-11-04T04:37:36Z', 'Math + InfluenceGraph.FromCleanedReturns shipped in c1a783d with RandomMatrixTests (7); full Evidence suite 103/103 in a clean export. Operation option split to IP-T408: EvidenceGraphOperation/EvidenceWalkForward*/LeaderDiscovery were mid-edit (some staged) by IP-T400 and other forks, so committing there would have swept their hunks into this commit.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (745, 'PRS-T55', 'ryand', '2026-11-04T04:52:32Z', 'Checked 2026-11-03: still blocked on M.TIX-T170. The duplicates are two PRS-US-H7 rows (The Rook Trilogy; Steppin Razor) plus two sets of H7a-H7c children (SRZR also has H7d-H7e). The workflow story CLI has only list/show/status/new/edit: no renumber or delete, and story new cannot re-parent the H7a-e children, so the fix cannot be made without editing Tickets.db by hand. Plan once renumber exists: keep PRS-US-H7 = Rook Trilogy, renumber Steppin Razor to the next free H number (H13) with its children H13a-H13e, render, verify.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (746, 'PRS-T827', 'ryand', '2026-11-04T04:54:15Z', '2026-11-03: no longer reproduces. list_characters and get_character both now return ''Brennan Dunnit'' (status merged) for 019e9e4f; ''Brennan Drum'' resolves to nothing. Data cleaned through set_character_fields with read-back: role now ''Retired record (merged into Felix Drum, the Fenris drummer)'', alias ''Brennan'' removed (so the dead record cannot autotag), tags drummer/fenris/musician replaced by ''merged''. Felix Drum (synthetic 019d6143) holds the drummer description; no beat in the 22 GLMZ books names Brennan.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (747, 'PRS-T25', 'ryand', '2026-11-04T05:01:18Z', 'Audited 2026-11-03. The factory journal shows 76 set-character-fields/set-entity-fields calls with --file patch_tmp.json on 2026-10-13/14 (one CLI session 01a13377), touching 52 distinct records; the command ledger still holds the payload results for the 23 from 23:00Z on (age was written only on Pixel and Rafi Sarkissian, both correct). Every one of the 51 records that still exists was read back today: each description is about its own named entity (no other entity''s text landed on it), and every age field sits on a character and matches that character''s own description (Kyle 27, Sable 30, Pixel 29, Sasha 28, Mrs. Chen 79, Mr. Holme 73, Pellerin 49, Doroshenko 50, Sol 19, Mateo 22, Rafi 21, Glim 16, Femi 17, Nadia Park 43, Ekow 38, Can Zaragoza 58, Douglas 58, Mei-Lin Hartley 57). No stray age on a non-character. One id (f5a88ed9-85d8-1217-45b4-7e98236b4228, set-entity-fields 21:57Z) no longer exists, so it cannot be audited. No wrong payloads found; nothing to fix.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (748, 'IP-T404', 'ryand', '2026-11-04T05:05:21Z', 'IP-T409: any future significance labeling in evidence pools must go through IdiotProof.Evidence.Evaluation.HoldoutBucketEvaluator (day-clustered + BH q). Today pools only reports descriptive raid rates per tier, so nothing was migrated.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (749, 'IP-T405', 'ryand', '2026-11-04T05:05:24Z', 'IP-T409: evidence kalman now scores through the shared HoldoutBucketEvaluator (day-clustered p, BH q across every symbol x feature x bucket); BucketSignificance (Bonferroni per feature, bar-level only) was removed. Use the shared evaluator for any new Kalman features.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
@@ -72408,8 +72813,14 @@ Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) 
 
 Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
 
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines flagged for this book:** none by the 2026-11-04 sweep (no enclave names, exoticism, district languages or lifted syndicate tropes found).
+
 Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
-ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:11Z');
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-11-04T05:07:02Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T543', '**Steppin'' Razor** (2217; lead: Sasha; the earliest book; the Halcyon Combine''s live-well drilling as antagonist).
 
 Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
@@ -72472,8 +72883,14 @@ Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) 
 
 Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
 
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines flagged for this book:** none by the 2026-11-04 sweep (no enclave names, exoticism, district languages or lifted syndicate tropes found).
+
 Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
-ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:26Z');
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-11-04T05:07:12Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T551', '**Pixel** (autumn 2223; lead: Pixel; Pixel''s origin and the Assessor).
 
 Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
@@ -72536,8 +72953,14 @@ Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) 
 
 Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
 
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines flagged for this book:** none by the 2026-11-04 sweep (no enclave names, exoticism, district languages or lifted syndicate tropes found).
+
 Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
-ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:41Z');
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-11-04T05:07:29Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T559', '**Testament** (Oct-Dec 2224; lead: Bear; Bear''s hearing over the forty-three).
 
 Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
@@ -72600,8 +73023,15 @@ Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) 
 
 Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
 
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines and names flagged for this book:**
+- #23925 (beat 01a19aa6-7499-7d4e-85c9-2614ee2e06d0): ''He had a Back of the Yards face ... in the block''s own Spanish'' places a face by district and gives a block its own language (breaks the no-enclave and Stallspeak laws). Rewrite: Yemina places the man by something else (his intake accent, the way he holds the door), and the Spanish is his family''s, not the block''s.
+
 Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
-ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:52:56Z');
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-11-04T05:07:45Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T567', '**Attendance** (2225; lead: Yemina Fola; the 2197 children and Case 48).
 
 Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
@@ -72664,8 +73094,14 @@ Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) 
 
 Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
 
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines flagged for this book:** none by the 2026-11-04 sweep (no enclave names, exoticism, district languages or lifted syndicate tropes found).
+
 Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
-ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:11Z');
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-11-04T05:07:53Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T575', '**Between the Lines** (2225; lead: Idris; a checkpoint officer crossing to the Gray Zone side).
 
 Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
@@ -72728,8 +73164,17 @@ Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) 
 
 Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
 
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines and names flagged for this book:**
+- #21201 (beat 01a0e651-f0c7-7310-8fe6-9eeca8401904): ''He got off at Cermak-Chinatown'' names a transit stop for an ethnic enclave (breaks the signage law). Rename the stop (e.g. Cermak-Wentworth; Wentworth Passage is already canon nearby).
+- Names census: this book holds half of the census''s fully Anglo names (Douglas and Celeste Hartley, Jace Dalton, Isaac Rennick, plus Detective Marsh). Decide whether the Hartleys stay an old Anglo Evanston line on purpose (say so on the page through Mei-Lin''s side) or whether one or two of the others get mixed names (rename via tags only).
+- Names census: Corvin Adaora is a near-homophone of Corvid Larsson (Sparrow) and Corwin Sallow (Underclan); Celeste Hartley is a near-homophone of Celestine Mora (Mnemosync). One person per name: coordinate with those books'' tickets and rename the minor side.
+
 Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
-ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:26Z');
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-11-04T05:07:57Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T583', '**Death Whispers in a Cat''s Ear** (Sep 2225; lead: Rennick; the investigator and TRIBUTARY).
 
 Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
@@ -72792,8 +73237,14 @@ Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) 
 
 Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
 
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines flagged for this book:** none by the 2026-11-04 sweep (no enclave names, exoticism, district languages or lifted syndicate tropes found).
+
 Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
-ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:41Z');
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-11-04T05:08:01Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T591', '**Critical Mass** (Dec 2225-2226; lead: its lead; the reaction that goes critical).
 
 Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
@@ -72856,8 +73307,14 @@ Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) 
 
 Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
 
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines flagged for this book:** none by the 2026-11-04 sweep (no enclave names, exoticism, district languages or lifted syndicate tropes found).
+
 Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
-ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:53:56Z');
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-11-04T05:08:04Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T599', '**The Long Cut** (Jan 2226; lead: Stash; Renata''s device and the Remedios trial).
 
 Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
@@ -72920,8 +73377,15 @@ Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) 
 
 Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
 
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines and names flagged for this book:**
+- Names census: Corvid Larsson collides with Faith Larson (Pieces, The Ur) and with Corvin Adaora (DWIACE) / Corwin Sallow (Underclan). Faith is a series lead: Corvid''s surname is the one to change (and consider his first name too).
+
 Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
-ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:11Z');
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-11-04T05:08:07Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T607', '**Sparrow** (Mar-Jul 2226; lead: Elias and Sparrow; the watchers and the mass driver).
 
 Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
@@ -72984,8 +73448,14 @@ Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) 
 
 Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
 
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines flagged for this book:** none by the 2026-11-04 sweep (no enclave names, exoticism, district languages or lifted syndicate tropes found).
+
 Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
-ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:25Z');
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-11-04T05:08:09Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T615', '**Magenta & Gunmetal** (2226; lead: Vox; the Bloom Quarter and Rook''s crew).
 
 Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
@@ -73048,8 +73518,14 @@ Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) 
 
 Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
 
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines flagged for this book:** none by the 2026-11-04 sweep (no enclave names, exoticism, district languages or lifted syndicate tropes found).
+
 Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
-ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:39Z');
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-11-04T05:08:11Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T623', '**Vultures at the Door** (2226; lead: Ekow; the Carrion depot and Bram Osei).
 
 Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
@@ -73112,8 +73588,17 @@ Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) 
 
 Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
 
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines and names flagged for this book:**
+- Names census: courier Pele Fassbinder-Nkono carries a famous real-world name (Pele); rename via tags (names law item 6).
+- #20868 (beat 01a0e651-b7a6-7729-942a-e6616d3e06b7): the corner man''s hyperreality koi tattoo ''in Lotus red'' is the one lingering old-world syndicate image in the corpus (crews law: no lifted tattoo rites). Consider a GLMZ-own image (a five-petal blossom glitching in the overlay, or a Problem crew glyph) instead of the koi.
+- Names census: Garrison Mercer is fully Anglo; acceptable if he reads as a Tier/franchise corpo line (names law item 2), otherwise mix it.
+
 Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
-ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:54:55Z');
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-11-04T05:08:14Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T631', '**Bushido Coda** (Sep 2226-early 2227; lead: Kyle; the main character''s book, the aperture at 35th & Halsted).
 
 Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
@@ -73176,8 +73661,15 @@ Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) 
 
 Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
 
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines and names flagged for this book:**
+- Names census: Corwin Sallow is a near-homophone of Corvid Larsson (Sparrow) and Corvin Adaora (DWIACE). Rename one of the three; Corwin is a minor patron here.
+
 Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
-ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:10Z');
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-11-04T05:08:18Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T639', '**Underclan** (2227; lead: Glim; the people below and the Deep).
 
 Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
@@ -73240,8 +73732,14 @@ Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) 
 
 Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
 
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines flagged for this book:** none by the 2026-11-04 sweep (no enclave names, exoticism, district languages or lifted syndicate tropes found).
+
 Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
-ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:25Z');
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-11-04T05:08:22Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T647', '**The Way Up** (2227-2230; lead: Rampart and Cutout; Bear''s students).
 
 Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
@@ -73304,8 +73802,14 @@ Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) 
 
 Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
 
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines flagged for this book:** none by the 2026-11-04 sweep (no enclave names, exoticism, district languages or lifted syndicate tropes found).
+
 Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
-ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:40Z');
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-11-04T05:08:28Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T655', '**Neon & Rust** (late 2227; lead: Rook; Rook''s notebook).
 
 Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
@@ -73368,8 +73872,14 @@ Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) 
 
 Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
 
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines flagged for this book:** none by the 2026-11-04 sweep (no enclave names, exoticism, district languages or lifted syndicate tropes found).
+
 Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
-ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:55:54Z');
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-11-04T05:08:43Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T663', '**Crimson & Chrome** (2229; lead: Palesa; the cradle and the manifest).
 
 Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
@@ -73432,8 +73942,14 @@ Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) 
 
 Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
 
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines flagged for this book:** none by the 2026-11-04 sweep (no enclave names, exoticism, district languages or lifted syndicate tropes found).
+
 Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
-ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:56:10Z');
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-11-04T05:08:53Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T671', '**The Way Down** (April 2230; lead: Rafi and Cutout; Ashgrave Spire).
 
 Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
@@ -73496,8 +74012,15 @@ Apply the Phase 1 diaspora canon (language, food, faith, crews, signage, names) 
 
 Method: archive the book, hand splices only, restate each changed beat''s Description. Do NOT mark beats read here; the Phase 5 read covers them.
 
+**Phase 1 diaspora canon to apply (PRS-T440..T447, recorded 2026-11-04).** Laws: Stallspeak 01a1a4e8-a0b7, Seams menu 01a1a4e9-6410, faith 01a1a4ea-8946, crews 01a1a4ed-b8b5, honour and debt 01a1a4ee-7381, music 01a1a4f0-49a4, signage 01a1a4f0-9f12, names 01a1a4f1-bda6. Records: vocabulary Stallspeak + its lexicon (xie xie, wahala, oye, sige, yalla, aiya, kuya, oga, kurwa, ganba, habibi, pikin, mazel), Seams menu, grief shrine, shift temple, Neon Saint, second-man rule, Favor Debt, Pulse Rock, Seam radio, Transit script, Wall Speak; factions Lotus Syndicate (no enclaves, patchwork code), The Vultures, Orvenne.
+
+The 2026-11-04 corpus sweep found almost no Stallspeak anywhere in the 22 books: where this book''s Seams scenes have dialogue at counters, stalls, crews or deals, a word or two of Stallspeak, a Seams-menu dish, a grief shrine or shift temple, or a second-man witness to a deal is the cheapest way to make the street read as one diaspora. Hand splices only, light touch, never glossed.
+
+**Lines and names flagged for this book:**
+- Names census: Celestine Mora is a near-homophone of Celeste Hartley (DWIACE, the missing daughter). Celestine is the minor side: rename via tags.
+
 Governed by ruling 01a18db2 (THE GLMZ VISION, author 2026-10-30).
-ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-10-30T16:56:26Z');
+ORDER: writing before reading. Phases run 0 rules > 1 world > 2 cast > 3 books > 4 weave > 5 final reads. A book is read in full (F5) and its records verified (F1) only in Phase 5, after every open ticket that would change its prose is closed.', '2026-11-04T05:08:57Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T679', '**Mnemosync** (spring-Sep 2230; lead: the courier; the Continuity Office, last before Pieces).
 
 Apply the Phase 1 minds ladder: strays, ghosts, Synthetic Persons, SuperMinds as they touch this book; fix ''rogue AI''/''Free'' voicing; add one moment of machine interiority if the book has none.
