@@ -61159,6 +61159,12 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36524, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36525, 'UNR-T60', '2026-11-04T18:32:56Z', 'working', 'd7eaa32b-e907-485e-99dc-fc3968a356a9', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36526, 'US-T71', '2026-11-04T18:34:19Z', 'working', 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36527, 'UNR-T62', '2026-11-04T18:35:55Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36528, 'UNR-T55', '2026-11-04T18:36:20Z', 'working', 'd7eaa32b-e907-485e-99dc-fc3968a356a9', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36529, 'UNR-T56', '2026-11-04T18:36:21Z', 'working', 'd7eaa32b-e907-485e-99dc-fc3968a356a9', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36530, 'UNR-T57', '2026-11-04T18:36:21Z', 'working', 'd7eaa32b-e907-485e-99dc-fc3968a356a9', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36531, 'UNR-T58', '2026-11-04T18:36:22Z', 'working', 'd7eaa32b-e907-485e-99dc-fc3968a356a9', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36532, 'UNR-T61', '2026-11-04T18:36:22Z', 'working', 'd7eaa32b-e907-485e-99dc-fc3968a356a9', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36533, 'UNR-T62', '2026-11-04T18:36:23Z', 'working', 'd7eaa32b-e907-485e-99dc-fc3968a356a9', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -63926,12 +63932,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UNR-T55', NULL, 0, NULL, 'd7eaa32b-e907-485e-99dc-fc3968a356a9', '2026-11-04T18:22:20Z', '2026-11-04T18:22:20Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UNR-T56', NULL, 0, NULL, 'd7eaa32b-e907-485e-99dc-fc3968a356a9', '2026-11-04T18:24:05Z', '2026-11-04T18:24:05Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UNR-T57', NULL, 0, NULL, 'd7eaa32b-e907-485e-99dc-fc3968a356a9', '2026-11-04T18:24:05Z', '2026-11-04T18:24:05Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UNR-T58', NULL, 0, NULL, 'd7eaa32b-e907-485e-99dc-fc3968a356a9', '2026-11-04T18:26:31Z', '2026-11-04T18:26:31Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UNR-T61', NULL, 0, NULL, 'd7eaa32b-e907-485e-99dc-fc3968a356a9', '2026-11-04T18:32:54Z', '2026-11-04T18:32:54Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UNR-T62', NULL, 0, NULL, 'd7eaa32b-e907-485e-99dc-fc3968a356a9', '2026-11-04T18:32:54Z', '2026-11-04T18:32:54Z');
 
 -- ticket_notes
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (1, 'U.HARE-T54', 'ryand', '2026-10-26T04:52:58Z', 'From U.HARE-T52 (7d24220): leaving the arena past the 400 px buffer zone (LeaveArena command) currently costs a life only on the ship (PlayerHealth out-of-bounds path / ShipHealth). When this ticket wires LIVES into the session, route that out-of-bounds loss through the same session lives so both deaths count the same.');
