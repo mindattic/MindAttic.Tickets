@@ -9761,8 +9761,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T755', 'Prose', 755, '2026-10-30', 'chore', 'closed', 'GLMZ P5 04 Attendance: records batch (F1), summaries current (F3), names resolved (F4)', '—', 754, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T756', 'Prose', 756, '2026-10-30', 'chore', 'closed', 'GLMZ P5 05 Between the Lines: final full read (F5), every beat, fixes by hand', '—', 755, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T757', 'Prose', 757, '2026-10-30', 'chore', 'closed', 'GLMZ P5 05 Between the Lines: records batch (F1), summaries current (F3), names resolved (F4)', '—', 756, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T758', 'Prose', 758, '2026-10-30', 'chore', 'open', 'GLMZ P5 06 Death Whispers in a Cat''s Ear: final full read (F5), every beat, fixes by hand', '—', 757, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T759', 'Prose', 759, '2026-10-30', 'chore', 'open', 'GLMZ P5 06 Death Whispers in a Cat''s Ear: records batch (F1), summaries current (F3), names resolved (F4)', '—', 758, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T758', 'Prose', 758, '2026-10-30', 'chore', 'closed', 'GLMZ P5 06 Death Whispers in a Cat''s Ear: final full read (F5), every beat, fixes by hand', '—', 757, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T759', 'Prose', 759, '2026-10-30', 'chore', 'closed', 'GLMZ P5 06 Death Whispers in a Cat''s Ear: records batch (F1), summaries current (F3), names resolved (F4)', '—', 758, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T760', 'Prose', 760, '2026-10-30', 'chore', 'open', 'GLMZ P5 07 Critical Mass: final full read (F5), every beat, fixes by hand', '—', 759, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T761', 'Prose', 761, '2026-10-30', 'chore', 'open', 'GLMZ P5 07 Critical Mass: records batch (F1), summaries current (F3), names resolved (F4)', '—', 760, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T762', 'Prose', 762, '2026-10-30', 'chore', 'open', 'GLMZ P5 08 The Long Cut: final full read (F5), every beat, fixes by hand', '—', 761, NULL);
@@ -60902,6 +60902,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36315, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36316, 'US-T66', '2026-11-04T09:10:30Z', 'ref', 'US-T61', '64dbb9c');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36317, 'US-T65', '2026-11-04T09:16:17Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36318, 'US-T65', '2026-11-04T09:16:17Z', 'ref', 'US-T61', 'a1db5a0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36319, 'PRS-T758', '2026-11-04T09:19:31Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36320, 'PRS-T759', '2026-11-04T09:19:32Z', 'status', 'open', 'closed');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
