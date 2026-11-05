@@ -10311,7 +10311,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T85', 'SpaceGod', 85, '2026-11-05', 'feature', 'open', 'Easter egg: a Borg cube at Wolf 359', '—', 84, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T86', 'SpaceGod', 86, '2026-11-05', 'feature', 'open', 'Jump-drive ships aim at a star and fly straight there, no loading screens', '—', 85, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T87', 'SpaceGod', 87, '2026-11-05', 'feature', 'closed', 'Flight-assist toggle: free-floating Newtonian flight (BSG Viper / The Expanse style, turn-and-burn, repel thrusters) vs an arcade dogfight compensation mode', '7d9e692', 86, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T88', 'SpaceGod', 88, '2026-11-05', 'feature', 'open', 'Demo scenario: spawn a dogfight with the player in a ship''s cockpit against pirates in small/medium/large ships', 'US-T79,US-T80,US-T81', 87, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T88', 'SpaceGod', 88, '2026-11-05', 'feature', 'closed', 'Demo scenario: spawn a dogfight with the player in a ship''s cockpit against pirates in small/medium/large ships', '088d552', 87, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T89', 'SpaceGod', 89, '2026-11-05', 'feature', 'open', 'Modular ship construction: hardpoints for turrets/missile launchers/thrusters/oxygen etc. on components, Mechlab-style', '—', 88, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T90', 'SpaceGod', 90, '2026-11-05', 'fix', 'open', 'Input arbitration: swim (free camera) and Focus Mode must not fight whichever Embodiable (ship helm/fighter seat/turret/mech/marine) currently holds control', 'US-T82,US-T83,US-T87', 89, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T91', 'SpaceGod', 91, '2026-11-05', 'feature', 'open', 'Sectional ship damage: ships built from sections that take damage, get destroyed and break off independently (evaluate a Fab/Marketplace modular destruction asset)', 'US-T89', 90, NULL);
@@ -61616,6 +61616,9 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45774, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45775, 'M.ORCH-T1447', '2026-11-05T09:34:55Z', 'working', '0806f8eb-3a70-4134-991f-d9cc223458e6', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45776, 'M.ORCH-T1448', '2026-11-05T09:34:56Z', 'working', '0806f8eb-3a70-4134-991f-d9cc223458e6', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45777, 'US-T111', '2026-11-05T09:35:10Z', 'working', '8e6b88c0-5c42-417b-ae3c-a490b4ec4acc', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45778, 'RTO-T109', '2026-11-05T09:39:28Z', 'working', '0faa9038-c11e-4168-8c1f-5da89877640f', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45779, 'US-T88', '2026-11-05T09:42:59Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45780, 'US-T88', '2026-11-05T09:42:59Z', 'ref', 'US-T79,US-T80,US-T81', '088d552');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -64383,7 +64386,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTO-T109', NULL, 0, NULL, '0faa9038-c11e-4168-8c1f-5da89877640f', '2026-11-05T08:56:21Z', '2026-11-05T08:56:21Z');
 
 -- ticket_notes
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (1, 'U.HARE-T54', 'ryand', '2026-10-26T04:52:58Z', 'From U.HARE-T52 (7d24220): leaving the arena past the 400 px buffer zone (LeaveArena command) currently costs a life only on the ship (PlayerHealth out-of-bounds path / ShipHealth). When this ticket wires LIVES into the session, route that out-of-bounds loss through the same session lives so both deaths count the same.');
