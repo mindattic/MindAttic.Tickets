@@ -10340,7 +10340,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T113', 'SpaceGod', 113, '2026-11-05', 'fix', 'closed', 'FeatureAudit ftl.exception failed in 1 of 3 runs (US-T112''s audit runs, 2026-11-05): find whether it is world-state flakiness or a real FTL bug', 'b708ebc', 112, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T114', 'SpaceGod', 114, '2026-11-05', 'fix', 'closed', 'Self-destruct countdown runs at double speed when two co-op players hold the same hull, and a running countdown isn''t saved (so save/load and rewind lose it)', 'f70b7fe', 113, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T115', 'SpaceGod', 115, '2026-11-05', 'fix', 'closed', 'FeatureAudit focus probes for ships at warp/realistic scale intermittently fail with ''nothing drawn (0 renderers)''', 'ad64a32', 114, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T116', 'SpaceGod', 116, '2026-11-05', 'fix', 'open', 'Ship thumbnails render black (exposure), with both the procedural and the Star Sparrow ships', '—', 115, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T116', 'SpaceGod', 116, '2026-11-05', 'fix', 'closed', 'Ship thumbnails render black (exposure), with both the procedural and the Star Sparrow ships', '298a407', 115, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T117', 'SpaceGod', 117, '2026-11-05', 'feature', 'open', 'Star Sparrow ship pass 2: brighter lineup lighting, capital-ship recipes that read as warships rather than stretched fighters, tug claws and lane-tender ring, and kit-style launchers and shield emitters in place of the white procedural parts', 'US-T110', 116, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T118', 'SpaceGod', 118, '2026-11-05', 'fix', 'closed', 'FeatureAudit input.camera-follows and input.assist-vs-focus failed together in 1 of 4 runs, and transit.lane-enter in 1: find whether the probes depend on world state or there is a real input/lane bug', '8c60b9b', 117, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T119', 'SpaceGod', 119, '2026-11-05', 'fix', 'closed', 'Battle.h/.cpp on main are mis-merged: US-T101 and US-T106 each committed only their own hunks of the shared files, which left enum braces, fields inside doc comments, SpinDown outside its loop and the hive swarm merge outside StepMissiles; commit the coherent working-tree version', '7d59b92', 118, NULL);
@@ -61711,6 +61711,11 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45857, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45858, 'US-T121', '2026-11-05T12:52:52Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45859, 'US-T122', '2026-11-05T12:52:53Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45860, 'RTO-T109', '2026-11-05T12:56:12Z', 'working', NULL, '0faa9038-c11e-4168-8c1f-5da89877640f');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45861, 'US-T116', '2026-11-05T13:10:39Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45862, 'US-T116', '2026-11-05T13:10:39Z', 'ref', '—', '298a407');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45863, 'M.ORCH-T1446', '2026-11-05T13:16:01Z', 'working', '0806f8eb-3a70-4134-991f-d9cc223458e6', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45864, 'M.ORCH-T1447', '2026-11-05T13:16:01Z', 'working', '0806f8eb-3a70-4134-991f-d9cc223458e6', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45865, 'M.ORCH-T1448', '2026-11-05T13:16:02Z', 'working', '0806f8eb-3a70-4134-991f-d9cc223458e6', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -64256,9 +64261,6 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1446', NULL, 0, NULL, '0806f8eb-3a70-4134-991f-d9cc223458e6', '2026-11-05T12:45:53Z', '2026-11-05T12:45:53Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1447', NULL, 0, NULL, '0806f8eb-3a70-4134-991f-d9cc223458e6', '2026-11-05T12:45:54Z', '2026-11-05T12:45:54Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1448', NULL, 0, NULL, '0806f8eb-3a70-4134-991f-d9cc223458e6', '2026-11-05T12:45:55Z', '2026-11-05T12:45:55Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T768', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
