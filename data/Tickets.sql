@@ -62300,6 +62300,16 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46291, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46292, 'US-T158', '2026-11-05T21:04:18Z', 'working', '8e6b88c0-5c42-417b-ae3c-a490b4ec4acc', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46293, 'US-T159', '2026-11-05T21:04:18Z', 'working', '8e6b88c0-5c42-417b-ae3c-a490b4ec4acc', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46294, 'US-T160', '2026-11-05T21:04:19Z', 'working', '8e6b88c0-5c42-417b-ae3c-a490b4ec4acc', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46295, 'GG-T261', '2026-11-05T21:14:59Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46296, 'GG-T262', '2026-11-05T21:15:00Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46297, 'GG-T263', '2026-11-05T21:15:01Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46298, 'GG-T264', '2026-11-05T21:15:02Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46299, 'GG-T265', '2026-11-05T21:15:03Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46300, 'PRS-T62', '2026-11-05T21:17:06Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46301, 'PRS-T864', '2026-11-05T21:17:08Z', 'working', NULL, 'ryandebraal@gmail.com (4f9789de-5d51-49bc-bab2-f41d9979ffef)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46302, 'PRS-T97', '2026-11-05T21:17:09Z', 'working', NULL, 'ryandebraal@gmail.com (4f9789de-5d51-49bc-bab2-f41d9979ffef)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46303, 'PRS-T96', '2026-11-05T21:17:09Z', 'working', NULL, 'ryandebraal@gmail.com (4f9789de-5d51-49bc-bab2-f41d9979ffef)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46304, 'PRS-T95', '2026-11-05T21:17:10Z', 'working', NULL, 'ryandebraal@gmail.com (4f9789de-5d51-49bc-bab2-f41d9979ffef)');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -62527,6 +62537,11 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T191', 'approved', 0, '2026-10-22T02:54:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T192', 'approved', 0, '2026-10-22T03:00:02Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T205', 'approved', 0, '2026-10-25T02:19:34Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T261', 'approved', 0, '2026-11-05T21:14:59Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T262', 'approved', 0, '2026-11-05T21:15:00Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T263', 'approved', 0, '2026-11-05T21:15:01Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T264', 'approved', 0, '2026-11-05T21:15:02Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T265', 'approved', 0, '2026-11-05T21:15:03Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T48', 'approved', 0, '2026-10-21T03:38:58Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T51', 'approved', -5, '2026-10-22T01:39:12Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T52', 'approved', 0, '2026-10-21T03:38:58Z', NULL);
@@ -63773,7 +63788,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T285', 'approved', 0, '2026-10-27T16:29:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T3', 'approved', 0, '2026-11-05T18:33:54Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T320', 'approved', 0, '2026-10-27T22:14:32Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T62', 'approved', 0, '2026-11-05T18:33:57Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T62', 'proposed', 0, '2026-11-05T21:17:06Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T64', 'approved', 0, '2026-11-05T18:33:57Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T65', 'approved', 0, '2026-11-05T18:33:58Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T77', 'approved', 0, '2026-11-05T18:33:58Z', NULL);
@@ -64948,6 +64963,10 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T58', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:02:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T792', NULL, 0, 'ryandebraal@gmail.com', '4f9789de-5d51-49bc-bab2-f41d9979ffef', '2026-11-05T18:34:10Z', '2026-11-05T18:34:10Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T864', NULL, 0, 'ryandebraal@gmail.com', '4f9789de-5d51-49bc-bab2-f41d9979ffef', '2026-11-05T21:17:08Z', '2026-11-05T21:17:08Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T95', NULL, 0, 'ryandebraal@gmail.com', '4f9789de-5d51-49bc-bab2-f41d9979ffef', '2026-11-05T21:17:10Z', '2026-11-05T21:17:10Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T96', NULL, 0, 'ryandebraal@gmail.com', '4f9789de-5d51-49bc-bab2-f41d9979ffef', '2026-11-05T21:17:09Z', '2026-11-05T21:17:09Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T97', NULL, 0, 'ryandebraal@gmail.com', '4f9789de-5d51-49bc-bab2-f41d9979ffef', '2026-11-05T21:17:09Z', '2026-11-05T21:17:09Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T111', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:34:40Z');
