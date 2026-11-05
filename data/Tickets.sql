@@ -8929,6 +8929,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T105', 'Mods.RogueTrader.Overwatch', 105, '2026-11-04', 'fix', 'closed', 'Suppression desyncs (reported 2026-11-04): investigate and fix', '05fe06e', 104, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T106', 'Mods.RogueTrader.Overwatch', 106, '2026-11-04', 'fix', 'open', 'Overwatch doesn''t activate with a sniper rifle equipped (reported 2026-11-04)', '—', 105, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T107', 'Mods.RogueTrader.Overwatch', 107, '2026-11-04', 'fix', 'open', 'Overwatch cone outline should use the same 3D-look lines as Reflex Shot''s circle', '—', 106, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T108', 'Mods.RogueTrader.Overwatch', 108, '2026-11-05', 'chore', 'open', 'Bump to 6.0.0 and rebuild dist zip (user request 2026-11-05)', '—', 107, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T1', 'Mods.RogueTrader.Shared', 1, '2026-10-26', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T2', 'Mods.RogueTrader.Shared', 2, '2026-10-26', 'feature', 'closed', 'Create RogueTrader.Shared: source-shared build setup and helpers for Rogue Trader mods (Brevity, Overwatch, future ones)', '311f523', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T3', 'Mods.RogueTrader.Shared', 3, '2026-10-26', 'fix', 'closed', 'Release zips drop empty folders an Owlcat mod needs (Bundles), and mods built from a worktree can''t find RogueTrader.Shared', 'bf259fb', 2, NULL);
@@ -61362,6 +61363,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36687, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36688, 'G.EZ-T110', '2026-11-05T05:13:01Z', 'working', NULL, 'abca3cef-f447-4d26-8e54-33f072ff6c65');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36689, 'G.EZ-T110', '2026-11-05T05:51:33Z', 'working', 'abca3cef-f447-4d26-8e54-33f072ff6c65', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36690, 'G.EZ-T110', '2026-11-05T06:12:42Z', 'working', NULL, 'abca3cef-f447-4d26-8e54-33f072ff6c65');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36691, 'G.EZ-T110', '2026-11-05T06:43:25Z', 'working', 'abca3cef-f447-4d26-8e54-33f072ff6c65', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45569, 'RTO-T108', '2026-11-05T07:52:13Z', 'created', NULL, 'open');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -63906,7 +63909,6 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('USOD-T9', 'approved', 0, '2026-10-22T23:02:27Z', NULL);
 
 -- ticket_work
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('G.EZ-T110', NULL, 0, NULL, 'abca3cef-f447-4d26-8e54-33f072ff6c65', '2026-11-05T06:12:42Z', '2026-11-05T06:12:42Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
