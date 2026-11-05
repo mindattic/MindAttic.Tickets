@@ -40,7 +40,7 @@ public sealed partial class MainViewModel : ObservableObject
         this.store = store;
         this.settings = settings;
         Dialogs = dialogs ?? new NoDialogs();
-        selectedView = settings.View switch { TicketsView or "Tickets" => TicketsView, AuditView => AuditView, BoardView => BoardView, ActivityView => ActivityView, StatsView => StatsView, StoriesView => StoriesView, _ => QueueView };
+        selectedView = settings.View switch { TicketsView or "Tickets" => TicketsView, AuditView => AuditView, BoardView => BoardView, ActivityView => ActivityView, StatsView => StatsView, StoriesView => StoriesView, GraphView => GraphView, _ => QueueView };
         InitOrchestrator(orchestrator);
         InitQuery();
         InitExport();
@@ -83,7 +83,7 @@ public sealed partial class MainViewModel : ObservableObject
 
     // ── What's shown ────────────────────────────────────────────────────────
 
-    public IReadOnlyList<string> Views { get; } = [ReposView, QueueView, AuditView, BoardView, ActivityView, StatsView, StoriesView];
+    public IReadOnlyList<string> Views { get; } = [ReposView, QueueView, AuditView, BoardView, ActivityView, StatsView, StoriesView, GraphView];
 
     public string SelectedView
     {
@@ -98,6 +98,9 @@ public sealed partial class MainViewModel : ObservableObject
             Raise(nameof(IsActivityView));
             Raise(nameof(IsStatsView));
             Raise(nameof(IsStoriesView));
+            Raise(nameof(IsGraphView));
+            // The Graph tab opens around the ticket the detail pane shows (M.TIX-T315).
+            if (IsGraphView && Detail is { } shownDetail) graphFocus = shownDetail.Id;
             Raise(nameof(ShowsStoryEditor));
             Raise(nameof(ShowsDetailPane));
             Raise(nameof(ShowsTicketFilters));
@@ -222,7 +225,7 @@ public sealed partial class MainViewModel : ObservableObject
 
     /// <summary>The row a command acts on: its parameter, else the selection in the current view.</summary>
     private TicketRowViewModel? Target(object? p) => p as TicketRowViewModel ??
-        (IsQueueView ? SelectedQueueRow : IsBoardView ? SelectedBoardRow : IsActivityView ? DetailRow : SelectedTicketRow);
+        (IsQueueView ? SelectedQueueRow : IsBoardView ? SelectedBoardRow : IsActivityView || IsGraphView ? DetailRow : SelectedTicketRow);
 
     /// <summary>The listed row of the ticket the detail pane shows (Activity lists changes, not tickets).</summary>
     private TicketRowViewModel? DetailRow => Detail is { } d
@@ -296,6 +299,7 @@ public sealed partial class MainViewModel : ObservableObject
         ApplyHygiene(s);
         ApplyActivity();
         ApplyStats(s);
+        ApplyGraph(s, Match);
 
         var ready = s.Queue.Count(t => t.Ticket.Type == "fix" || t.Approval == TicketsDb.Approved);
         var blocked = s.Queue.Count(t => t.Blocked);
@@ -306,6 +310,7 @@ public sealed partial class MainViewModel : ObservableObject
             : IsActivityView ? ActivityStatus
             : IsStatsView ? $"Stats: {Metrics?.Periods.Count ?? 0} {StatsBy.ToLowerInvariant()}s, {Metrics?.Periods.Sum(p => p.Closed) ?? 0} closed, {Metrics?.Periods.LastOrDefault()?.OpenAtEnd ?? 0} open now."
             : IsStoriesView ? $"Stories: {StoryRows.Count} of {s.Stories.Count} stories shown."
+            : IsGraphView ? $"Graph: {GraphNodes.Count} tickets, {GraphEdges.Count} links around {GraphFocus}."
             : IsAuditView ? $"Audit: {HygieneRows.Count} closed tickets to double-check, {DriftRows.Count} drifted, {MissingRows.Count} missing, {DuplicateRows.Count} duplicate groups shown."
             : $"Repos: {TicketRows.Count} of {s.Tickets.Count} tickets shown.";
     }
@@ -389,6 +394,12 @@ public sealed partial class MainViewModel : ObservableObject
     public void GoTo(string? id)
     {
         if (id is null || snapshot is null) return;
+        // The Graph tab (M.TIX-T315) redraws around the ticket gone to, its details open beside it.
+        if (IsGraphView && snapshot.Tickets.Any(t => t.Ticket.Id.Equals(id, StringComparison.OrdinalIgnoreCase)))
+        {
+            GraphFocusCommand.Execute(id);
+            return;
+        }
         // Audit and Activity have no ticket list: a finding's or a change's ticket opens in Repos.
         if ((IsAuditView || IsActivityView) &&snapshot.Tickets.Any(t => t.Ticket.Id.Equals(id, StringComparison.OrdinalIgnoreCase))) SelectedView = TicketsView;
         if (snapshot.Tickets.All(t => !t.Ticket.Id.Equals(id, StringComparison.OrdinalIgnoreCase)))

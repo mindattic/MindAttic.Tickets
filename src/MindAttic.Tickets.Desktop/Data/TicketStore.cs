@@ -72,6 +72,12 @@ public sealed record Snapshot(IReadOnlyList<string> Repos, IReadOnlyList<TicketI
     /// <summary>Every repo's epics, in file order (M.TIX-T82).</summary>
     public IReadOnlyList<StoredEpic> Epics { get; init; } = [];
 
+    /// <summary>Every link, for the Graph tab (M.TIX-T315).</summary>
+    public IReadOnlyList<Link> Links { get; init; } = [];
+
+    /// <summary>Every open ticket's graph weight (M.TIX-T316), by ID without case: the Graph tab sizes its nodes by it.</summary>
+    public IReadOnlyDictionary<string, GraphWeight> Weights { get; init; } = new Dictionary<string, GraphWeight>();
+
     /// <summary>The tickets that implement each story (its <c>implements</c> links), by story ID without case.</summary>
     public IReadOnlyDictionary<string, IReadOnlyList<string>> Implementers { get; init; } = new Dictionary<string, IReadOnlyList<string>>();
 }
@@ -148,6 +154,8 @@ public sealed class TicketStore(string root)
             LabelNames = [.. db.LabelCounts().Select(c => c.Label)],
             StatusHistory = db.StatusHistory(),
             Epics = db.Epics(),
+            Links = links,
+            Weights = GraphWeight.Of(TicketGraph.Build(tickets, links, names)),
             Implementers = links.Where(l => l.Kind == "implements")
                 .GroupBy(l => l.To, StringComparer.OrdinalIgnoreCase)
                 .ToDictionary(g => g.Key, g => (IReadOnlyList<string>)[.. g.Select(l => l.From).Distinct(StringComparer.OrdinalIgnoreCase)], StringComparer.OrdinalIgnoreCase),

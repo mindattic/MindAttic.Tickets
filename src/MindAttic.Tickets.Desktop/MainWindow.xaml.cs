@@ -45,6 +45,7 @@ public partial class MainWindow : Window
         CommandBindings.Add(new CommandBinding(WindowCommands.ShowActivity, (_, _) => { model.SelectedView = MainViewModel.ActivityView; FocusActivity(); }));
         CommandBindings.Add(new CommandBinding(WindowCommands.ShowStats, (_, _) => model.SelectedView = MainViewModel.StatsView));
         CommandBindings.Add(new CommandBinding(WindowCommands.ShowStories, (_, _) => { model.SelectedView = MainViewModel.StoriesView; FocusStories(); }));
+        CommandBindings.Add(new CommandBinding(WindowCommands.ShowGraph, (_, _) => model.SelectedView = MainViewModel.GraphView));
         CommandBindings.Add(new CommandBinding(WindowCommands.SaveStory, async (_, _) =>
         {
             // A text box commits its text on every keystroke, so what's typed is what's saved.
@@ -542,6 +543,7 @@ public partial class MainWindow : Window
         yield return Routed("Show Activity", WindowCommands.ShowActivity, "Ctrl+5");
         yield return Routed("Show Stats", WindowCommands.ShowStats, "Ctrl+6");
         yield return Routed("Show Stories", WindowCommands.ShowStories, "Ctrl+7");
+        yield return Routed("Show the Graph", WindowCommands.ShowGraph, "Ctrl+8");
         yield return Routed("Search tickets", WindowCommands.FocusSearch, "Ctrl+F");
         yield return Routed("Keyboard shortcuts and help", WindowCommands.Help, "F1");
     }

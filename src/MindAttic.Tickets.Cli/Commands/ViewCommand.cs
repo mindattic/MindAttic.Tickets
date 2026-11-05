@@ -62,6 +62,7 @@ public sealed class ViewCommand : Command<ViewCommand.Settings>
             page.CopyTo(file);
 
         var names = db.Names();
+        var weights = db.GraphWeights();
         var data = new
         {
             generated = DateTime.Now.ToString("yyyy-MM-dd HH:mm", System.Globalization.CultureInfo.InvariantCulture),
@@ -71,7 +72,11 @@ public sealed class ViewCommand : Command<ViewCommand.Settings>
             {
                 repo = t.Repo, id = t.Ticket.Id, name = names.GetValueOrDefault(t.Ticket.Id), date = t.Ticket.Date, type = t.Ticket.Type,
                 status = t.Ticket.Status, summary = t.Ticket.Summary, @ref = t.Ticket.Ref,
+                weight = weights.GetValueOrDefault(t.Ticket.Id)?.Value ?? 0, why = weights.GetValueOrDefault(t.Ticket.Id)?.Why ?? "",
             }),
+            // The node graph (M.TIX-T315): every link, drawn by the page's Graph tab.
+            links = db.AllLinks().Select(l => new { from = l.From, to = l.To, kind = l.Kind }),
+            colours = db.Repos().ToDictionary(r => r.Name, r => GraphLayout.RepoColour(r.Name)),
             stories = db.Stories().Select(s => new
             {
                 repo = s.Repo, id = s.Id, status = s.Status, glyph = s.Glyph, epic = s.Epic ?? s.Section,

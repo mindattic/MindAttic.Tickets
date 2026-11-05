@@ -403,6 +403,22 @@ public sealed class TicketGraphCommand : Command<TicketGraphCommand.Settings>
 
         [CommandOption("--json")]
         public bool Json { get; init; }
+
+        [CommandOption("--format <FORMAT>")]
+        [Description("text (default) | json | dot | mermaid: dot and mermaid export the neighbourhood --hops out, for Graphviz or a markdown page (M.TIX-T315).")]
+        public string? Format { get; init; }
+
+        [CommandOption("--hops <N>")]
+        [Description("How many links out the neighbourhood reaches, any kind, either way (json nodes/edges, dot, mermaid). Default: 2.")]
+        public int Hops { get; init; } = 2;
+
+        public string EffectiveFormat => Format?.ToLowerInvariant() ?? (Json ? "json" : "text");
+
+        public override ValidationResult Validate() =>
+            EffectiveFormat is not ("text" or "json" or "dot" or "mermaid") ? ValidationResult.Error("--format must be text, json, dot or mermaid")
+            : Json && Format is not null && EffectiveFormat != "json" ? ValidationResult.Error("--json and --format disagree")
+            : Hops is < 1 or > 10 ? ValidationResult.Error("--hops is 1 to 10")
+            : ValidationResult.Success();
     }
 
     public override int Execute(CommandContext context, Settings settings)
@@ -411,7 +427,13 @@ public sealed class TicketGraphCommand : Command<TicketGraphCommand.Settings>
         var (_, t) = db.Ticket(settings.Id) ?? throw new KeyNotFoundException($"No ticket {settings.Id}.");
         var names = db.Names();
         var graph = DependencyGraph.Build(t.Id, db.Tickets().Select(x => x.Ticket), db.AllLinks(), names);
-        if (settings.Json)
+        // The neighbourhood --hops out (M.TIX-T315): what the drawn graph, json's nodes/edges and the dot/mermaid exports hold.
+        var whole = db.Graph();
+        var weights = GraphWeight.Of(whole);
+        var (hoodNodes, hoodEdges) = whole.Neighbourhood(t.Id, settings.Hops);
+        if (settings.EffectiveFormat == "dot") { Console.Write(GraphExport.Dot(hoodNodes, hoodEdges, weights, t.Id)); return 0; }
+        if (settings.EffectiveFormat == "mermaid") { Console.Write(GraphExport.Mermaid(hoodNodes, hoodEdges)); return 0; }
+        if (settings.EffectiveFormat == "json")
         {
             static object Node(DependencyNode n) => new
             {
@@ -422,6 +444,13 @@ public sealed class TicketGraphCommand : Command<TicketGraphCommand.Settings>
                 id = graph.Id, name = names.GetValueOrDefault(t.Id), status = t.Status, summary = t.Summary, blockers = graph.Blockers, blocked = graph.Blocked,
                 waitsFor = graph.Upstream.Select(Node), neededBy = graph.Downstream.Select(Node),
                 parents = graph.Parents.Select(Node), children = graph.Children.Select(Node),
+                hops = settings.Hops,
+                nodes = hoodNodes.Select(n => new
+                {
+                    id = n.Id, name = n.Name, repo = n.Repo, type = n.Type, status = n.Status, summary = n.Summary, caption = n.Caption,
+                    weight = weights.GetValueOrDefault(n.Id)?.Value ?? 0, why = weights.GetValueOrDefault(n.Id)?.Why ?? "", colour = GraphLayout.RepoColour(n.Repo),
+                }),
+                edges = hoodEdges.Select(e => new { from = e.From, to = e.To, kind = e.Kind, inverse = e.Inverse }),
             }, new JsonSerializerOptions { WriteIndented = true }));
             return 0;
         }

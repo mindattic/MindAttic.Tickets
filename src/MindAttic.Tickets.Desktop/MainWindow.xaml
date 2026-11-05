@@ -23,6 +23,7 @@
         <KeyBinding Key="D5" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowActivity}" />
         <KeyBinding Key="D6" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowStats}" />
         <KeyBinding Key="D7" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowStories}" />
+        <KeyBinding Key="D8" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowGraph}" />
         <KeyBinding Key="S" Modifiers="Control" Command="{x:Static vm:WindowCommands.SaveStory}" />
         <KeyBinding Key="F1" Command="{x:Static vm:WindowCommands.Help}" />
         <KeyBinding Key="Z" Modifiers="Control" Command="{x:Static vm:WindowCommands.Undo}" />
@@ -254,7 +255,7 @@
                 <Label Style="{StaticResource FilterLabel}" Content="View" Target="{Binding ElementName=ViewChoice}" />
                 <ListBox x:Name="ViewChoice" Style="{StaticResource MaPillChoice}" ItemsSource="{Binding Views}"
                          SelectedItem="{Binding SelectedView}" AutomationProperties.Name="View"
-                         ToolTip="Repos: every repo with its tickets and git state (Ctrl+1). Queue: open tickets in the order /allocate takes them (Ctrl+2). Audit: closed tickets to double-check, and the Orchestrator's drift and duplicate-code findings (Ctrl+3). Board: tickets as cards in Proposed, Approved, In progress and Done; moving a card changes its approval or status (Ctrl+4). Activity: every ticket change across the workspace as it happens, newest first (Ctrl+5). Stats: throughput, cycle time and open tickets by repo and type over time, as tables (Ctrl+6). Stories: every repo's user stories under their epics, to edit their text, status, acceptance and evidence and link the tickets that implement them (Ctrl+7)." />
+                         ToolTip="Repos: every repo with its tickets and git state (Ctrl+1). Queue: open tickets in the order /allocate takes them (Ctrl+2). Audit: closed tickets to double-check, and the Orchestrator's drift and duplicate-code findings (Ctrl+3). Board: tickets as cards in Proposed, Approved, In progress and Done; moving a card changes its approval or status (Ctrl+4). Activity: every ticket change across the workspace as it happens, newest first (Ctrl+5). Stats: throughput, cycle time and open tickets by repo and type over time, as tables (Ctrl+6). Stories: every repo's user stories under their epics, to edit their text, status, acceptance and evidence and link the tickets that implement them (Ctrl+7). Graph: the tickets around one drawn as a node graph, parent/child trees, prerequisites and related links, across repos (Ctrl+8)." />
             </StackPanel>
             <StackPanel Margin="0,0,12,6">
                 <Label Style="{StaticResource FilterLabel}" Content="_Search (Ctrl+F)" Target="{Binding ElementName=SearchBox}" />
@@ -823,6 +824,77 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
+
+            <!-- ── Graph (M.TIX-T315): the node graph around a focused ticket; the filter bar narrows it, a text list reads the same ── -->
+            <DockPanel Margin="20,0,12,0" Visibility="{Binding IsGraphView, Converter={StaticResource Visible}}">
+                <WrapPanel DockPanel.Dock="Top">
+                    <StackPanel Margin="0,0,12,6">
+                        <Label Style="{StaticResource FilterLabel}" Content="F_ocus" Target="{Binding ElementName=GraphFocusBox}" />
+                        <TextBox x:Name="GraphFocusBox" Style="{StaticResource Field}" Width="140" Text="{Binding GraphFocus, UpdateSourceTrigger=LostFocus}"
+                                 AutomationProperties.Name="Ticket the graph is drawn around" ToolTip="A ticket ID; the graph redraws around it" />
+                    </StackPanel>
+                    <StackPanel Margin="0,0,12,6">
+                        <Label Style="{StaticResource FilterLabel}" Content="_Hops" Target="{Binding ElementName=GraphHopsBox}" />
+                        <ComboBox x:Name="GraphHopsBox" Style="{StaticResource Combo}" MinWidth="70" ItemsSource="{Binding GraphHopChoices}" SelectedItem="{Binding GraphHops}"
+                                  AutomationProperties.Name="How many links out" />
+                    </StackPanel>
+                    <StackPanel Margin="0,0,12,6">
+                        <Label Style="{StaticResource FilterLabel}" Content="_Link kind" Target="{Binding ElementName=GraphKindBox}" />
+                        <ComboBox x:Name="GraphKindBox" Style="{StaticResource Combo}" MinWidth="120" ItemsSource="{Binding GraphKindChoices}" SelectedItem="{Binding GraphKind}"
+                                  AutomationProperties.Name="Link kind shown" />
+                    </StackPanel>
+                </WrapPanel>
+                <TextBlock DockPanel.Dock="Top" Text="{Binding GraphSummary}" Style="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,0,0,6" />
+                <Expander DockPanel.Dock="Bottom" Header="Links as a list" Margin="0,6,0,0">
+                    <ItemsControl ItemsSource="{Binding GraphLines}" MaxHeight="160" AutomationProperties.Name="The graph's links as a list">
+                        <ItemsControl.ItemTemplate><DataTemplate><TextBlock Text="{Binding}" TextWrapping="Wrap" /></DataTemplate></ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Expander>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Focusable="False">
+                    <Grid Width="{Binding GraphWidth}" Height="{Binding GraphHeight}" HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <ItemsControl ItemsSource="{Binding GraphEdges}" Focusable="False" IsTabStop="False">
+                            <ItemsControl.ItemsPanel><ItemsPanelTemplate><Canvas /></ItemsPanelTemplate></ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Canvas ToolTip="{Binding Tip}">
+                                        <Line X1="{Binding X1}" Y1="{Binding Y1}" X2="{Binding X2}" Y2="{Binding Y2}" Stroke="{DynamicResource MaMuted}"
+                                              StrokeThickness="{Binding Thickness}" StrokeDashArray="{Binding Dash}" />
+                                        <Polygon Points="{Binding Arrow}" Fill="{DynamicResource MaMuted}" Visibility="{Binding HasArrow, Converter={StaticResource Visible}}" />
+                                    </Canvas>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <ItemsControl ItemsSource="{Binding GraphNodes}" AutomationProperties.Name="Tickets in the graph">
+                            <ItemsControl.ItemsPanel><ItemsPanelTemplate><Canvas /></ItemsPanelTemplate></ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemContainerStyle>
+                                <Style TargetType="ContentPresenter">
+                                    <Setter Property="Canvas.Left" Value="{Binding Left}" />
+                                    <Setter Property="Canvas.Top" Value="{Binding Top}" />
+                                </Style>
+                            </ItemsControl.ItemContainerStyle>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Width="{Binding Width}" Height="{Binding Height}">
+                                        <Button Command="{Binding DataContext.GraphFocusCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding Id}"
+                                                Background="{DynamicResource MaPane}" BorderBrush="{Binding RepoBrush}" BorderThickness="{Binding Outline}"
+                                                HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Padding="8,4"
+                                                ToolTip="{Binding Tip}" AutomationProperties.Name="{Binding SpokenName}">
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding Caption}" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" Foreground="{DynamicResource MaText}" />
+                                                <TextBlock Text="{Binding Badge}" Style="{StaticResource Muted}" TextTrimming="CharacterEllipsis" />
+                                            </StackPanel>
+                                        </Button>
+                                        <Button HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,2,4,0" Padding="4,0" MinWidth="0"
+                                                Content="{Binding ToggleText}" Visibility="{Binding HasChildren, Converter={StaticResource Visible}}"
+                                                Command="{Binding DataContext.GraphToggleCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding Id}"
+                                                AutomationProperties.Name="{Binding Id, StringFormat='Collapse or expand what is part of {0}'}" ToolTip="Collapse or expand its children" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Grid>
+                </ScrollViewer>
+            </DockPanel>
 
             <!-- ── Detail pane ── -->
             <!-- ── Stats (M.TIX-T86): ticket metrics as real tables (a DataGrid each, with column headers, read as a table) ── -->
