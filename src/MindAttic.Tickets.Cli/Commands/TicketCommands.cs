@@ -366,6 +366,7 @@ public sealed class TicketVerifyCommand : Command<RepoSettings>
                 // A requires-cycle is reported per member as "<id>: requires itself through a cycle"; keep the ones whose
                 // member is this repo's ticket, story or epic (every member reports, so any cycle touching the repo shows).
                 const string cycle = ": requires itself through a cycle";
+                const string partCycle = ": is part of itself through a cycle"; // M.TIX-T314, followed by the cycle's path
                 var repoCode = db.Repos().FirstOrDefault(r => string.Equals(r.Name, repo.Name, StringComparison.OrdinalIgnoreCase)).Code;
                 bool InRepo(string id) =>
                     string.Equals(db.Ticket(id)?.Repo, repo.Name, StringComparison.OrdinalIgnoreCase)
@@ -373,10 +374,13 @@ public sealed class TicketVerifyCommand : Command<RepoSettings>
                     || (repoCode is { Length: > 0 } && id.StartsWith(repoCode + "-", StringComparison.OrdinalIgnoreCase));
                 var found = db.Check().Where(p => p.EndsWith(cycle, StringComparison.Ordinal)
                     ? InRepo(p[..^cycle.Length])
+                    : p.Contains(partCycle, StringComparison.Ordinal) ? InRepo(p[..p.IndexOf(partCycle, StringComparison.Ordinal)])
                     : p.StartsWith(repo.Name + ": ", StringComparison.OrdinalIgnoreCase) || !p.Contains(": ", StringComparison.Ordinal) || p.StartsWith("link ", StringComparison.Ordinal)).ToList();
                 // And their versions (M.TIX-T137): the history every version is read from.
                 found.AddRange(db.CheckVersions(repo.Name));
                 foreach (var p in found) AnsiConsole.MarkupLine($"[red]{Output.Esc(p)}[/]");
+                // The node graph's warnings (M.TIX-T314), shown but not failing: a closed parent with open children.
+                foreach (var w in db.GraphWarnings(repo.Name)) AnsiConsole.MarkupLine($"[yellow]{Output.Esc(w)}[/]");
                 if (found.Count == 0)
                     AnsiConsole.MarkupLine($"[green]{Output.Esc(repo.Name)}: tickets OK[/] ({db.Tickets(repo.Name).Count}; " +
                                            (db.IsVersioned() ? "every save kept" : "versions worked back from their history") + ")");

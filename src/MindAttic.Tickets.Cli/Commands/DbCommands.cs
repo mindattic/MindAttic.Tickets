@@ -273,6 +273,9 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
         var diff = settings.Diff && repoPath is not null ? TicketCommits.Log(t.Id, repoPath, diff: true) : null;
         var description = db.Description(t.Id);
         var name = db.Name(t.Id);
+        // Its neighbours in the node graph (M.TIX-T314), each read from its side: parents, children, prerequisites, required-by, related.
+        var relations = db.Graph().Relations(t.Id);
+        object Rel(string role) => relations.Where(r => r.Role == role).Select(r => new { id = r.Node.Id, name = r.Node.Name, status = r.Node.Status, repo = r.Node.Repo, caption = r.Node.Caption });
         if (settings.Json)
         {
             Console.WriteLine(JsonSerializer.Serialize(new
@@ -281,6 +284,9 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
                 description,
                 formerIds = db.IdHistory(t.Id).Select(c => c.OldId),
                 requires = db.Requires(t.Id), links = links.Select(l => new { from = l.From, kind = l.Kind, to = l.To, note = l.Note }),
+                parents = Rel("parent"), children = Rel("child"), prerequisites = Rel("requires"), requiredBy = Rel("required-by"), related = Rel("related"),
+                otherLinks = relations.Where(r => r.Role is not ("parent" or "child" or "requires" or "required-by" or "related"))
+                    .Select(r => new { role = r.Role, id = r.Node.Id, name = r.Node.Name, status = r.Node.Status }),
                 history = history.Select(e => new { at = e.At, field = e.Field, old = e.Old, @new = e.New }),
                 notes = notes.Select(n => new { seq = n.Seq, author = n.Author, at = n.At, markdown = n.Markdown }),
                 approval,priority, assignee = work.Assignee, reserved = work.Reserved, labels,
@@ -308,7 +314,12 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
             AnsiConsole.MarkupLine("[bold]Description[/]");
             AnsiConsole.WriteLine(description);
         }
-        foreach (var l in links) AnsiConsole.MarkupLine(Output.LinkLine(l, t.Id));
+        foreach (var group in relations.GroupBy(r => r.Role))
+        {
+            AnsiConsole.MarkupLine($"[grey]{Output.Esc(Output.RoleHeading(group.Key))}:[/]");
+            foreach (var r in group)
+                AnsiConsole.MarkupLine($"  {Output.Esc(r.Node.Line)}" + (!string.Equals(r.Node.Repo, repo, StringComparison.OrdinalIgnoreCase) && r.Node.Repo is { } other ? $" [grey]({Output.Esc(other)})[/]" : ""));
+        }
         foreach (var e in history)
             AnsiConsole.MarkupLine(e.Field == "description"
                 // A description's history holds whole bodies; the line only says what happened (--json has them).
@@ -410,6 +421,7 @@ public sealed class TicketGraphCommand : Command<TicketGraphCommand.Settings>
             {
                 id = graph.Id, name = names.GetValueOrDefault(t.Id), status = t.Status, summary = t.Summary, blockers = graph.Blockers, blocked = graph.Blocked,
                 waitsFor = graph.Upstream.Select(Node), neededBy = graph.Downstream.Select(Node),
+                parents = graph.Parents.Select(Node), children = graph.Children.Select(Node),
             }, new JsonSerializerOptions { WriteIndented = true }));
             return 0;
         }
@@ -426,6 +438,10 @@ public sealed class TicketGraphCommand : Command<TicketGraphCommand.Settings>
         }
         Side(lines[1], graph.Upstream, upstream: true);
         Side(lines[2 + graph.Upstream.Count], graph.Downstream, upstream: false);
+        // The part-of tree (M.TIX-T314): what it's part of and what's part of it, at any depth, when it has either.
+        var at = 3 + graph.Upstream.Count + graph.Downstream.Count;
+        if (graph.Parents.Count > 0) { Side(lines[at], graph.Parents, upstream: true); at += 1 + graph.Parents.Count; }
+        if (graph.Children.Count > 0) Side(lines[at], graph.Children, upstream: false);
         return 0;
     }
 }
@@ -518,7 +534,7 @@ public sealed class TicketLinkCommand : Command<TicketLinkCommand.Settings>
         public string From { get; init; } = "";
 
         [CommandArgument(1, "<KIND>")]
-        [Description("requires (FROM waits for TO) | related | follow-up-of | supersedes | duplicates | implements | part-of")]
+        [Description("requires (FROM waits for TO) | part-of (FROM is TO's child) | related | follow-up-of | supersedes | duplicates | implements, or read from the other end: required-by | parent-of | contains | child-of | followed-up-by | superseded-by | duplicated-by | implemented-by. Ends may be in different repos.")]
         public string Kind { get; init; } = "";
 
         [CommandArgument(2, "<TO>")]

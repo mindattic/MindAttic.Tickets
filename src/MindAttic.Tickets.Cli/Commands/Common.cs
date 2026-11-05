@@ -52,10 +52,22 @@ internal static class Output
     /// codes around the word (M.TIX-T153).</summary>
     public static string Heading(string text) => ColorsEnabled ? $"[bold]{text}[/]" : text;
 
-    /// <summary>One link as seen from <paramref name="id"/>: outgoing as "kind → to", incoming as "← kind from".</summary>
+    /// <summary>One link as seen from <paramref name="id"/>: outgoing as "kind → to", incoming by its derived inverse as
+    /// "inverse → from" (M.TIX-T314: "required-by", "parent-of", …).</summary>
     public static string LinkLine(Link l, string id) => l.From.Equals(id, StringComparison.OrdinalIgnoreCase)
         ? $"  [cyan]{Esc(l.Kind)}[/] → {Esc(l.To)}"
-        : $"  ← [cyan]{Esc(l.Kind)}[/] {Esc(l.From)}";
+        : $"  [cyan]{Esc(TicketsDb.InverseKind(l.Kind))}[/] → {Esc(l.From)}";
+
+    /// <summary>A neighbour group's heading in <c>ticket show</c> (M.TIX-T314).</summary>
+    public static string RoleHeading(string role) => role switch
+    {
+        "parent" => "Parents (part of)",
+        "child" => "Children",
+        "requires" => "Prerequisites (requires)",
+        "required-by" => "Required by",
+        "related" => "Related",
+        _ => char.ToUpperInvariant(role[0]) + role[1..],
+    };
 
     /// <summary>One of a ticket's commits (M.TIX-T85): short hash, when, who and the subject, then its GitHub page when it has one.</summary>
     public static string CommitLine(TicketCommit c) =>

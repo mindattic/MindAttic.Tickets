@@ -47,6 +47,15 @@ public sealed class DependencyGraph
     /// <summary>An empty graph: nothing waits either way.</summary>
     public static DependencyGraph Empty(string id) => new(id, null, [], []);
 
+    /// <summary>What it's part of, all the way up (M.TIX-T314: part-of is the child → parent edge), depth first.</summary>
+    public IReadOnlyList<DependencyNode> Parents { get; private init; } = [];
+
+    /// <summary>What's part of it, all the way down (its children, theirs, …), depth first.</summary>
+    public IReadOnlyList<DependencyNode> Children { get; private init; } = [];
+
+    /// <summary>Nothing waits either way and it has no parent or child.</summary>
+    public bool IsAlone => IsEmpty && Parents.Count == 0 && Children.Count == 0;
+
     public string Id { get; }
 
     /// <summary>The graph's ticket's friendly name (M.TIX-T313), null when it has none.</summary>
@@ -89,15 +98,24 @@ public sealed class DependencyGraph
         names ??= new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         var byId = new Dictionary<string, Ticket>(StringComparer.OrdinalIgnoreCase);
         foreach (var t in tickets) byId.TryAdd(t.Id, t);
-        var requires = links.Where(l => l.Kind == "requires").ToList();
+        var all = links.ToList();
+        var requires = all.Where(l => l.Kind == "requires").ToList();
         var down = requires.ToLookup(l => l.From, l => l.To, StringComparer.OrdinalIgnoreCase);
         var up = requires.ToLookup(l => l.To, l => l.From, StringComparer.OrdinalIgnoreCase);
+        // The part-of tree (M.TIX-T314) both ways: never "blocking", a parent and its children don't wait on each other.
+        var partOf = all.Where(l => l.Kind == "part-of").ToList();
+        var parents = partOf.ToLookup(l => l.From, l => l.To, StringComparer.OrdinalIgnoreCase);
+        var children = partOf.ToLookup(l => l.To, l => l.From, StringComparer.OrdinalIgnoreCase);
         var root = byId.GetValueOrDefault(id);
         var rootId = root?.Id ?? id;
         var rootOpen = root?.Status == TicketRules.Open;
         return new DependencyGraph(rootId, root,
             Walk(rootId, down, byId, rootOpen, names),
-            Walk(rootId, up, byId, rootOpen, names), names.GetValueOrDefault(rootId));
+            Walk(rootId, up, byId, rootOpen, names), names.GetValueOrDefault(rootId))
+        {
+            Parents = Walk(rootId, parents, byId, rootOpen: false, names),
+            Children = Walk(rootId, children, byId, rootOpen: false, names),
+        };
     }
 
     /// <summary>Depth first from <paramref name="start"/>: each ticket expanded once, a repeat or a cycle listed but not followed.</summary>
@@ -145,6 +163,17 @@ public sealed class DependencyGraph
         lines.Add(Downstream.Count == 0 ? "Nothing waits for it."
             : $"Needed by ({Blocked.Count} blocked by it):");
         lines.AddRange(Downstream.Select(n => new string(' ', n.Depth * 2) + n.Text(upstream: false)));
+        // Its place in the part-of tree (M.TIX-T314), only when it has one, so a plain requires graph reads as before.
+        if (Parents.Count > 0)
+        {
+            lines.Add("Part of:");
+            lines.AddRange(Parents.Select(n => new string(' ', n.Depth * 2) + n.Text(upstream: true)));
+        }
+        if (Children.Count > 0)
+        {
+            lines.Add($"Children ({Children.Count(n => n.IsOpen && !n.Repeat && !n.Cycle)} open):");
+            lines.AddRange(Children.Select(n => new string(' ', n.Depth * 2) + n.Text(upstream: false)));
+        }
         return lines;
     }
 

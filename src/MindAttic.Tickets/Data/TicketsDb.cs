@@ -851,7 +851,12 @@ public sealed partial class TicketsDb : IDisposable
 
     // ── Links ───────────────────────────────────────────────────────────────
 
-    /// <summary>Links <paramref name="from"/> to <paramref name="to"/>; <c>requires</c> makes <paramref name="to"/> a prerequisite.</summary>
+    /// <summary>
+    /// Links <paramref name="from"/> to <paramref name="to"/>; <c>requires</c> makes <paramref name="to"/> a prerequisite, <c>part-of</c>
+    /// makes it the parent. An inverse kind or alias (<c>required-by</c>, <c>parent-of</c>, <c>contains</c>, <c>child-of</c>, …;
+    /// <see cref="ResolveLinkKind"/>) is stored as its kind with the ends swapped (M.TIX-T314). Both ends must name a ticket, story
+    /// or epic (in any repo), and a link that would close a <c>requires</c> or <c>part-of</c> cycle is refused with the cycle's path.
+    /// </summary>
     public void AddLink(string from, string to, string kind, string? note = null)
     {
         // Trim: a CR from a CRLF script would otherwise land in the ID and the link would point at nothing.
@@ -864,10 +869,17 @@ public sealed partial class TicketsDb : IDisposable
         if (!LooksLikeAnId(from)) throw new ArgumentException($"'{Truncated(from)}' doesn't look like a ticket, story or epic ID.", nameof(from));
         if (!LooksLikeAnId(to)) throw new ArgumentException($"'{Truncated(to)}' doesn't look like a ticket, story or epic ID.", nameof(to));
         (from, to) = (CurrentId(from), CurrentId(to)); // a former ID links the item it became
-        if (!LinkKinds.Contains(kind)) throw new ArgumentException($"Unknown link kind '{kind}' (expected {string.Join(", ", LinkKinds)}).", nameof(kind));
+        var resolved = ResolveLinkKind(kind) ?? throw new ArgumentException($"Unknown link kind '{kind}' (expected {string.Join(", ", LinkKindWords)}).", nameof(kind));
+        kind = resolved.Kind;
+        if (resolved.Swap) (from, to) = (to, from);
         if (string.Equals(from, to, StringComparison.OrdinalIgnoreCase)) throw new ArgumentException("An item can't link to itself.");
-        if (kind == "requires" && Requires(to, transitive: true).Contains(from, StringComparer.OrdinalIgnoreCase))
-            throw new InvalidOperationException($"{to} already (indirectly) requires {from}; that would be a cycle.");
+        // Dangling IDs are refused (M.TIX-T314): a link to nothing would only ever show up as a 'db check' problem.
+        foreach (var end in new[] { from, to })
+            if (!ItemExists(end)) throw new ArgumentException($"No ticket, story or epic {end}.", end == from ? nameof(from) : nameof(to));
+        if (kind is RequiresKind or PartOf && Graph().Path(kind, to, from) is { } path)
+            throw new InvalidOperationException(kind == RequiresKind
+                ? $"{to} already (indirectly) requires {from}; that would be a cycle: {string.Join(" → ", path.Append(to))}."
+                : $"{to} is already (indirectly) part of {from}; that would be a cycle: {string.Join(" → ", path.Append(to))}.");
         if (AddLinkCore(from, to, kind, note)) LinkEvent(from, to, kind, added: true);
     }
 
@@ -876,7 +888,12 @@ public sealed partial class TicketsDb : IDisposable
 
     public bool RemoveLink(string from, string to, string kind)
     {
-        (from, to) = (CurrentId(from), CurrentId(to));
+        (from, to) = (CurrentId(from.Trim()), CurrentId(to.Trim()));
+        if (ResolveLinkKind(kind) is { } resolved)
+        {
+            kind = resolved.Kind;
+            if (resolved.Swap) (from, to) = (to, from);
+        }
         var removed = Exec("DELETE FROM links WHERE from_id = $f COLLATE NOCASE AND to_id = $t COLLATE NOCASE AND kind = $k", null, ("$f", from), ("$t", to), ("$k", kind)) > 0;
         if (removed) LinkEvent(from, to, kind, added: false);
         return removed;
@@ -1117,6 +1134,10 @@ public sealed partial class TicketsDb : IDisposable
         }
         foreach (var id in Rows("SELECT DISTINCT from_id FROM links WHERE kind = 'requires'", r => r.GetString(0)))
             if (Requires(id, transitive: true).Contains(id, StringComparer.OrdinalIgnoreCase)) problems.Add($"{id}: requires itself through a cycle");
+        // A part-of cycle (M.TIX-T314): an item that is, through others, its own parent; reported per member, with the cycle.
+        foreach (var cycle in Graph().Cycles(PartOf))
+            foreach (var id in cycle.Distinct(StringComparer.OrdinalIgnoreCase))
+                problems.Add($"{id}: is part of itself through a cycle ({string.Join(" → ", cycle)})");
         return problems;
     }
 
