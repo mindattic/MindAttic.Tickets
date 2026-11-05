@@ -8927,6 +8927,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T104', 'Mods.RogueTrader.Overwatch', 104, '2026-11-04', 'fix', 'closed', 'Vortex deploy drops the empty Bundles folder again, so blueprints silently fail to load (regression on RTO-T22)', 'dad9a6e', 103, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T105', 'Mods.RogueTrader.Overwatch', 105, '2026-11-04', 'fix', 'closed', 'Suppression desyncs (reported 2026-11-04): investigate and fix', '05fe06e', 104, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T106', 'Mods.RogueTrader.Overwatch', 106, '2026-11-04', 'fix', 'open', 'Overwatch doesn''t activate with a sniper rifle equipped (reported 2026-11-04)', '—', 105, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T107', 'Mods.RogueTrader.Overwatch', 107, '2026-11-04', 'fix', 'open', 'Overwatch cone outline should use the same 3D-look lines as Reflex Shot''s circle', '—', 106, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T1', 'Mods.RogueTrader.Shared', 1, '2026-10-26', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T2', 'Mods.RogueTrader.Shared', 2, '2026-10-26', 'feature', 'closed', 'Create RogueTrader.Shared: source-shared build setup and helpers for Rogue Trader mods (Brevity, Overwatch, future ones)', '311f523', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T3', 'Mods.RogueTrader.Shared', 3, '2026-10-26', 'fix', 'closed', 'Release zips drop empty folders an Owlcat mod needs (Bundles), and mods built from a worktree can''t find RogueTrader.Shared', 'bf259fb', 2, NULL);
@@ -61355,6 +61356,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36682, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36683, 'RTO-T105', '2026-11-05T04:16:20Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36684, 'RTO-T105', '2026-11-05T04:16:20Z', 'ref', '—', '05fe06e');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36685, 'RTO-T106', '2026-11-05T04:25:18Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36686, 'RTO-T107', '2026-11-05T04:51:39Z', 'created', NULL, 'open');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
