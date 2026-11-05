@@ -8207,6 +8207,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.EZ-T108', 'Mods.GTFO.EZ', 108, '2026-11-02', 'fix', 'closed', 'Bughunt sweep, two passes: find and fix real bugs across tracked source (user request 2026-11-02)', '—', 107, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.EZ-T109', 'Mods.GTFO.EZ', 109, '2026-11-02', 'fix', 'closed', 'Fix the open items the 2026-11-02 bughunt left for decision (datablock multipliers double-apply on ReInitialize, revive/sentry Setup scaling compounding, Z recall blocked when downed)', '—', 108, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.EZ-T110', 'Mods.GTFO.EZ', 110, '2026-11-04', 'fix', 'open', 'Shift+E manual bot-turret placement and X auto-place-turret-with-kit are both non-functional', '—', 109, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.EZ-T111', 'Mods.GTFO.EZ', 111, '2026-11-05', 'feature', 'open', 'Multi-turret carry: cycle through N colored Sentry Gun variants in Tool slot, place one per bot in squad', '—', 110, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAI-T1', 'Mods.GTFO.EZ.AbsurdItems', 1, '2026-10-18', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAI-T2', 'Mods.GTFO.EZ.AbsurdItems', 2, '2026-10-18', 'fix', 'closed', 'Push initial project scaffolding so origin/main exists and pull stops failing', '3309db6', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAI-T3', 'Mods.GTFO.EZ.AbsurdItems', 3, '2026-10-18', 'feature', 'closed', 'v1: GTFO.AbsurdItems mod - artifact buffs (from GTFO.EZ), Hand Grenade and Stim Pack (from GTFO.AbsurdWeapons), kits as loot in lockers and out in the open (Loot Mix + shared KitLoot), plus the shared Insert/Delete toggles', '73ec87c', 2, NULL);
@@ -8935,6 +8936,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T106', 'Mods.RogueTrader.Overwatch', 106, '2026-11-04', 'fix', 'open', 'Overwatch doesn''t activate with a sniper rifle equipped (reported 2026-11-04)', '—', 105, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T107', 'Mods.RogueTrader.Overwatch', 107, '2026-11-04', 'fix', 'open', 'Overwatch cone outline should use the same 3D-look lines as Reflex Shot''s circle', '—', 106, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T108', 'Mods.RogueTrader.Overwatch', 108, '2026-11-05', 'chore', 'closed', 'Bump to 6.0.0 and rebuild dist zip (user request 2026-11-05)', 'd561deb', 107, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T109', 'Mods.RogueTrader.Overwatch', 109, '2026-11-05', 'feature', 'open', 'Add Hustle: once-per-battle move ability, range = distance to furthest party member', '—', 108, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T1', 'Mods.RogueTrader.Shared', 1, '2026-10-26', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T2', 'Mods.RogueTrader.Shared', 2, '2026-10-26', 'feature', 'closed', 'Create RogueTrader.Shared: source-shared build setup and helpers for Rogue Trader mods (Brevity, Overwatch, future ones)', '311f523', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T3', 'Mods.RogueTrader.Shared', 3, '2026-10-26', 'fix', 'closed', 'Release zips drop empty folders an Owlcat mod needs (Bundles), and mods built from a worktree can''t find RogueTrader.Shared', 'bf259fb', 2, NULL);
@@ -10300,7 +10302,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T76', 'SpaceGod', 76, '2026-11-05', 'feature', 'closed', 'Promote SpaceGod.Unreal.Cpp to the new SpaceGod repo: push history, rename UnrealSpaceGod/module namespaces and docs to SpaceGod', 'ca39434', 75, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T77', 'SpaceGod', 77, '2026-11-05', 'fix', 'closed', 'UI buttons don''t respond to clicks/input in SpaceGod', 'd37dd0b', 76, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T78', 'SpaceGod', 78, '2026-11-05', 'fix', 'open', 'Models don''t appear at the exact position the F focus-mode zoom targets', 'US-T69', 77, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T79', 'SpaceGod', 79, '2026-11-05', 'feature', 'open', 'Light fighters: Star Conflict-style Newtonian six-axis flight model', '—', 78, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T79', 'SpaceGod', 79, '2026-11-05', 'feature', 'closed', 'Light fighters: Star Conflict-style Newtonian six-axis flight model', '3bebb3c', 78, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T80', 'SpaceGod', 80, '2026-11-05', 'feature', 'open', 'Heavy fighters: Everspace 2-style flight model', '—', 79, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T81', 'SpaceGod', 81, '2026-11-05', 'feature', 'open', 'Capital ships: broadside movement (bring the flank to bear, Age-of-Sail-style)', '—', 80, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T82', 'SpaceGod', 82, '2026-11-05', 'feature', 'open', 'Boarding party system: marines/workers moving on a ship''s hull', '—', 81, NULL);
@@ -61586,6 +61588,12 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45749, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45750, 'RTO-T108', '2026-11-05T08:53:51Z', 'ref', '—', 'd561deb');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45751, 'US-T107', '2026-11-05T08:54:49Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45752, 'US-T107', '2026-11-05T08:54:49Z', 'ref', 'US-T103,US-T89,US-T91,US-T102', 'fcf866b');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45753, 'RTO-T109', '2026-11-05T08:56:00Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45754, 'RTO-T109', '2026-11-05T08:56:21Z', 'working', NULL, '0faa9038-c11e-4168-8c1f-5da89877640f');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45755, 'US-T79', '2026-11-05T08:57:31Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45756, 'US-T79', '2026-11-05T08:57:31Z', 'ref', '—', '3bebb3c');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45757, 'G.EZ-T111', '2026-11-05T09:02:48Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45758, 'G.EZ-T111', '2026-11-05T09:02:58Z', 'working', NULL, 'abca3cef-f447-4d26-8e54-33f072ff6c65');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -64130,6 +64138,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('USOD-T9', 'approved', 0, '2026-10-22T23:02:27Z', NULL);
 
 -- ticket_work
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('G.EZ-T111', NULL, 0, NULL, 'abca3cef-f447-4d26-8e54-33f072ff6c65', '2026-11-05T09:02:58Z', '2026-11-05T09:02:58Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1446', NULL, 0, NULL, '0806f8eb-3a70-4134-991f-d9cc223458e6', '2026-11-05T08:47:47Z', '2026-11-05T08:47:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1447', NULL, 0, NULL, '0806f8eb-3a70-4134-991f-d9cc223458e6', '2026-11-05T08:47:47Z', '2026-11-05T08:47:47Z');
@@ -64356,6 +64365,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTO-T109', NULL, 0, NULL, '0faa9038-c11e-4168-8c1f-5da89877640f', '2026-11-05T08:56:21Z', '2026-11-05T08:56:21Z');
 
 -- ticket_notes
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (1, 'U.HARE-T54', 'ryand', '2026-10-26T04:52:58Z', 'From U.HARE-T52 (7d24220): leaving the arena past the 400 px buffer zone (LeaveArena command) currently costs a life only on the ship (PlayerHealth out-of-bounds path / ShipHealth). When this ticket wires LIVES into the session, route that out-of-bounds loss through the same session lives so both deaths count the same.');
@@ -67237,6 +67247,7 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('FOR-T23', 'L
 - Its settings cog/menu opens Vault.Desktop at this app''s tab (`VaultSettings.Open`); verified by hand.
 - Tests: **one separate test per setting** proving it works end to end (today''s stored value imports to the right name, round-trips through Vault, and is the value the app actually reads/uses at runtime); manifest has every field labeled; LoadOrSeed seeds the expected defaults; LLM calls fail over (first key 401 -> second used); old settings UI/route is gone.
 - Done only when every one of the above holds.', '2026-10-31T14:50:12Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('G.EZ-T111', 'Replaces the unreliable bot-auto-deploy hotkeys (Shift+E/X bot branches, see G.EZ-T110) with a simpler player-driven mechanic: each player can carry/cycle through N distinct Sentry Gun variants in their Tool slot (N = number of bots in the squad), each independently deployable and visually distinct (different color), similar to AbsurdWeapons'' GearCycler (press the Tool select key again while Tool is wielded to cycle to the next variant). Old bot-deploy machinery in DeployPickupHotkeys.cs (BotDeployAtAim, QuickDropAll''s bot branch, PickupAllBotTools, Bots) is commented out/retired rather than debugged further.', '2026-11-05T09:02:48Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T17', 'LAMP migration for **Gadfly** (plan: MindAttic.Vault/docs/rfc/0003-lamp.md, Rollout step 5).
 
 - Move to the new MindAttic.Vault major.
