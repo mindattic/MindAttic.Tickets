@@ -31,7 +31,8 @@ public sealed class TicketQueueCommand : Command<TicketQueueCommand.Settings>
                 var w = work.GetValueOrDefault(x.Ticket.Id) ?? TicketWork.None;
                 return new
                 {
-                    repo = x.Repo, id = x.Ticket.Id, name = x.Name, caption = x.Caption, date = x.Ticket.Date, type = x.Ticket.Type,
+                    repo = x.Repo, id = x.Ticket.Id, name = x.Name, caption = x.Caption, date = x.Ticket.Date,
+                    weight = x.Weight?.Value ?? 0, why = x.Weight?.Why ?? "", type = x.Ticket.Type,
                     approval = x.Approval, priority = x.Priority, estimate = x.Estimate, summary = x.Ticket.Summary, @ref = x.Ticket.Ref,
                     assignee = w.Assignee, reserved = w.Reserved, requires = db.Requires(x.Ticket.Id),
                     working = w.IsWorking ? new { login = w.Login, session = w.Session, since = w.Since } : null,
@@ -39,10 +40,12 @@ public sealed class TicketQueueCommand : Command<TicketQueueCommand.Settings>
             }), new JsonSerializerOptions { WriteIndented = true }));
             return 0;
         }
-        var table = new Table().Border(TableBorder.Rounded).AddColumns("#", "Priority", "Estimate", "Approval", "ID", "Type", "Name");
+        var table = new Table().Border(TableBorder.Rounded).AddColumns("#", "Priority", "Weight", "Estimate", "Approval", "ID", "Type", "Name");
         var n = 0;
         foreach (var x in rows)
             table.AddRow((++n).ToString(System.Globalization.CultureInfo.InvariantCulture), x.Priority.ToString(System.Globalization.CultureInfo.InvariantCulture),
+                // Its graph weight and why (M.TIX-T316): "30 · unblocks 2 tickets in 2 repos".
+                x.Weight is { Value: > 0 } w ? $"{w.Value.ToString(System.Globalization.CultureInfo.InvariantCulture)} [grey]· {Output.Esc(w.Why)}[/]" : "[grey]0[/]",
                 x.Estimate is { } e ? TokenText.Format(e) : "[grey]—[/]",
                 Output.Esc(x.Approval), Output.Esc(x.Ticket.Id), Output.Esc(x.Ticket.Type), Output.Name(x.Name, x.Ticket.Summary));
         AnsiConsole.Write(table);

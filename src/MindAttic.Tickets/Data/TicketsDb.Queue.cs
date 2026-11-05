@@ -5,8 +5,9 @@ namespace MindAttic.Tickets.Data;
 
 /// <summary>An open ticket's place in the work queue: whether it's approved for work, its priority (higher runs sooner), and
 /// its effort estimate in tokens (M.TIX-T75; null while it has none), which orders tickets of one priority smallest first, and its
-/// friendly name (M.TIX-T313; null while it has none).</summary>
-public sealed record QueueEntry(string Repo, Ticket Ticket, string Approval, long Priority, long? Estimate = null, string? Name = null)
+/// friendly name (M.TIX-T313; null while it has none), and its graph weight (M.TIX-T316), which orders tickets of one priority
+/// heaviest first.</summary>
+public sealed record QueueEntry(string Repo, Ticket Ticket, string Approval, long Priority, long? Estimate = null, string? Name = null, GraphWeight? Weight = null)
 {
     /// <summary>"ID · name" (or the summary cut short when it has no name): how lists and the Orchestrator's header name it.</summary>
     public string Caption => TicketsDb.Caption(Ticket.Id, Name, Ticket.Summary);
@@ -20,9 +21,24 @@ public sealed partial class TicketsDb
 
     public static readonly IReadOnlyList<string> Approvals = [Proposed, Approved, Rejected];
 
-    /// <summary>Open tickets (optionally for one repo) with approval, priority and estimate: highest priority first, then
-    /// smallest estimate (M.TIX-T75; those without one after those with), then oldest.</summary>
-    public IReadOnlyList<QueueEntry> Queue(string? repo = null) =>
+    /// <summary>
+    /// Open tickets (optionally for one repo) with approval, priority, estimate and graph weight: highest priority first (the
+    /// author's word always wins), then heaviest graph weight (M.TIX-T316: what most other open work, across the most repos,
+    /// waits on), then smallest estimate (M.TIX-T75; those without one after those with), then oldest. Weights are worked out
+    /// from the whole graph on every call, so a link or close moves the order at once (no cached weight to go stale).
+    /// </summary>
+    public IReadOnlyList<QueueEntry> Queue(string? repo = null)
+    {
+        var weights = GraphWeights();
+        var rows = QueueRows(repo).Select(q => q with { Weight = weights.GetValueOrDefault(q.Ticket.Id) ?? GraphWeight.None(q.Ticket.Id) });
+        return GraphWeight.Order(rows, q => q.Priority, q => q.Weight!.Value);
+    }
+
+    /// <summary>Every open ticket's graph weight (M.TIX-T316), by ID (any case): what the Orchestrator orders its dispatch by,
+    /// after explicit priority.</summary>
+    public IReadOnlyDictionary<string, GraphWeight> GraphWeights() => GraphWeight.Of(Graph());
+
+    private IReadOnlyList<QueueEntry> QueueRows(string? repo) =>
         [.. Rows(
             "SELECT t.repo, t.id, t.date, t.type, t.status, t.summary, t.ref, COALESCE(q.approval, 'proposed'), COALESCE(q.priority, 0), q.estimate, n.name " +
             // Without case, as ticket_queue.ticket_id's own collation compares: said here so SQL Server joins it the same way.
@@ -31,6 +47,7 @@ public sealed partial class TicketsDb
             "ORDER BY COALESCE(q.priority, 0) DESC, CASE WHEN q.estimate IS NULL THEN 1 ELSE 0 END, q.estimate, t.date, t.repo COLLATE NOCASE, t.ordinal",
             r => new QueueEntry(r.GetString(0), ReadTicket(r, 1), r.GetString(7), r.GetInt64(8), r.IsDBNull(9) ? null : r.GetInt64(9), r.IsDBNull(10) ? null : r.GetString(10)),
             ("$r", repo))];
+
 
     /// <summary>The largest estimate a ticket takes (a quadrillion tokens; past it is a typo), as a reservation.</summary>
     public const long MaxEstimate = MaxReserved;
@@ -62,7 +79,7 @@ public sealed partial class TicketsDb
         var seed = new EstimateSeed(costs);
         var had = Estimates();
         var given = new List<SeededEstimate>();
-        foreach (var q in Queue(repo))
+        foreach (var q in QueueRows(repo))
         {
             if (!overwrite && had.ContainsKey(q.Ticket.Id)) continue;
             if (seed.Estimate(q.Repo, q.Ticket.Type, q.Ticket.Id) is not { } e) continue;
