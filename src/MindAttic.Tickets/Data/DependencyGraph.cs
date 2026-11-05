@@ -10,8 +10,11 @@ namespace MindAttic.Tickets.Data;
 /// that leads back round to a ticket on its own path. <see cref="Summary"/> and <see cref="Status"/> are null when the
 /// link names no ticket the database holds (a story, or a dangling ID).
 /// </summary>
-public sealed record DependencyNode(string Id, string? Summary, string? Status, int Depth, bool Blocking, bool Repeat = false, bool Cycle = false)
+public sealed record DependencyNode(string Id, string? Summary, string? Status, int Depth, bool Blocking, bool Repeat = false, bool Cycle = false, string? Name = null)
 {
+    /// <summary>"ID · name" (or its summary cut short, M.TIX-T313).</summary>
+    public string Caption => TicketsDb.Caption(Id, Name, Summary);
+
     public bool Known => Status is not null;
     public bool IsOpen => Status == TicketRules.Open;
 
@@ -21,7 +24,7 @@ public sealed record DependencyNode(string Id, string? Summary, string? Status, 
 
     /// <summary>One line for a text list: "M.TIX-T5, open, blocking: summary", with a repeat or cycle said in words.</summary>
     public string Text(bool upstream) =>
-        $"{Id}, {StateText(upstream)}" + (Summary is { Length: > 0 } s ? $": {s}" : "")
+        $"{Id}, {StateText(upstream)}" + (Name is { Length: > 0 } n ? $": {n}" : Summary is { Length: > 0 } s ? $": {s}" : "")
         + (Cycle ? " (cycle: leads back round)" : Repeat ? " (listed above)" : "");
 }
 
@@ -32,9 +35,10 @@ public sealed record DependencyNode(string Id, string? Summary, string? Status, 
 /// </summary>
 public sealed class DependencyGraph
 {
-    private DependencyGraph(string id, Ticket? ticket, IReadOnlyList<DependencyNode> upstream, IReadOnlyList<DependencyNode> downstream)
+    private DependencyGraph(string id, Ticket? ticket, IReadOnlyList<DependencyNode> upstream, IReadOnlyList<DependencyNode> downstream, string? name = null)
     {
         Id = id;
+        Name = name;
         Ticket = ticket;
         Upstream = upstream;
         Downstream = downstream;
@@ -44,6 +48,9 @@ public sealed class DependencyGraph
     public static DependencyGraph Empty(string id) => new(id, null, [], []);
 
     public string Id { get; }
+
+    /// <summary>The graph's ticket's friendly name (M.TIX-T313), null when it has none.</summary>
+    public string? Name { get; }
 
     /// <summary>The graph's ticket, or null when the database doesn't hold it.</summary>
     public Ticket? Ticket { get; }
@@ -77,8 +84,9 @@ public sealed class DependencyGraph
     }
 
     /// <summary>Builds the graph around <paramref name="id"/> from every ticket and link (only <c>requires</c> links count).</summary>
-    public static DependencyGraph Build(string id, IEnumerable<Ticket> tickets, IEnumerable<Link> links)
+    public static DependencyGraph Build(string id, IEnumerable<Ticket> tickets, IEnumerable<Link> links, IReadOnlyDictionary<string, string>? names = null)
     {
+        names ??= new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         var byId = new Dictionary<string, Ticket>(StringComparer.OrdinalIgnoreCase);
         foreach (var t in tickets) byId.TryAdd(t.Id, t);
         var requires = links.Where(l => l.Kind == "requires").ToList();
@@ -88,12 +96,12 @@ public sealed class DependencyGraph
         var rootId = root?.Id ?? id;
         var rootOpen = root?.Status == TicketRules.Open;
         return new DependencyGraph(rootId, root,
-            Walk(rootId, down, byId, rootOpen),
-            Walk(rootId, up, byId, rootOpen));
+            Walk(rootId, down, byId, rootOpen, names),
+            Walk(rootId, up, byId, rootOpen, names), names.GetValueOrDefault(rootId));
     }
 
     /// <summary>Depth first from <paramref name="start"/>: each ticket expanded once, a repeat or a cycle listed but not followed.</summary>
-    private static List<DependencyNode> Walk(string start, ILookup<string, string> edges, Dictionary<string, Ticket> byId, bool rootOpen)
+    private static List<DependencyNode> Walk(string start, ILookup<string, string> edges, Dictionary<string, Ticket> byId, bool rootOpen, IReadOnlyDictionary<string, string> names)
     {
         var result = new List<DependencyNode>();
         var expanded = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { start };
@@ -106,10 +114,11 @@ public sealed class DependencyGraph
                 var t = byId.GetValueOrDefault(to);
                 var blocking = rootOpen && t?.Status == TicketRules.Open;
                 var id = t?.Id ?? to;
+                var name = names.GetValueOrDefault(id);
                 // A cycle back to a ticket already on the path says nothing new about what blocks: listed, not marked.
-                if (path.Contains(id)) { result.Add(new DependencyNode(id, t?.Summary, t?.Status, depth, Blocking: false, Cycle: true)); continue; }
-                if (!expanded.Add(id)) { result.Add(new DependencyNode(id, t?.Summary, t?.Status, depth, blocking, Repeat: true)); continue; }
-                result.Add(new DependencyNode(id, t?.Summary, t?.Status, depth, blocking));
+                if (path.Contains(id)) { result.Add(new DependencyNode(id, t?.Summary, t?.Status, depth, Blocking: false, Cycle: true, Name: name)); continue; }
+                if (!expanded.Add(id)) { result.Add(new DependencyNode(id, t?.Summary, t?.Status, depth, blocking, Repeat: true, Name: name)); continue; }
+                result.Add(new DependencyNode(id, t?.Summary, t?.Status, depth, blocking, Name: name));
                 path.Add(id);
                 Visit(id, depth + 1);
                 path.Remove(id);
@@ -128,7 +137,7 @@ public sealed class DependencyGraph
     {
         var lines = new List<string>
         {
-            $"{Id}, {Ticket?.Status ?? "not a ticket"}" + (Ticket is { } t ? $": {t.Summary}" : ""),
+            $"{Id}, {Ticket?.Status ?? "not a ticket"}" + (Name is { Length: > 0 } n ? $": {n}" : Ticket is { } t ? $": {t.Summary}" : ""),
             Upstream.Count == 0 ? "Waits for nothing."
                 : $"Waits for ({Plural(Blockers.Count, "open blocker")}):",
         };

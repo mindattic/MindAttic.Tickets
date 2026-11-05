@@ -103,6 +103,10 @@ public sealed class DetailViewModel : ObservableObject
     public long Priority => Shown?.Priority ?? Source.Info.Priority;
     public string Date => Ticket.Date;
     public string Summary => Ticket.Summary;
+
+    /// <summary>Its friendly name (M.TIX-T313), as it is now; empty while it has none.</summary>
+    public string Name => Source.Info.Name ?? "";
+    public bool HasName => Source.Info.Name is not null;
     public string Ref => Ticket.Ref;
 
     /// <summary>Its markdown description (M.TIX-T73), as it is now (descriptions aren't versioned with the row).</summary>

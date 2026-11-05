@@ -39,6 +39,10 @@ internal static class Output
 {
     public static string Esc(string? s) => Markup.Escape(s ?? "");
 
+    /// <summary>A ticket's friendly name (M.TIX-T313), or, while it has none, its summary cut short and greyed.</summary>
+    public static string Name(string? name, string summary) =>
+        name is { Length: > 0 } ? Esc(name) : $"[grey]{Esc(TicketsDb.Label(null, summary))}[/]";
+
     /// <summary>Whether Spectre will actually render color (it already skips colored markup under NO_COLOR or a
     /// redirected/non-terminal output). Spectre's own decoration styles like [bold] keep emitting raw ANSI even then,
     /// so a heading needs this check itself rather than relying on Spectre to no-op it (M.TIX-T153).</summary>

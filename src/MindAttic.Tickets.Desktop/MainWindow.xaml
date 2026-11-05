@@ -135,7 +135,7 @@
                     <TextBlock Text="{Binding Repo}" Style="{StaticResource Muted}" />
                 </StackPanel>
                 <StackPanel Grid.Column="2" VerticalAlignment="Center">
-                    <TextBlock Text="{Binding Summary}" TextWrapping="Wrap" />
+                    <TextBlock Text="{Binding Title}" TextWrapping="Wrap" ToolTip="{Binding Summary}" />
                     <WrapPanel Margin="0,5,0,0">
                         <Border Style="{StaticResource Chip}" BorderBrush="{DynamicResource MaControlBorder}">
                             <TextBlock Text="{Binding Type}" FontSize="12" />
@@ -195,7 +195,7 @@
                     <TextBlock DockPanel.Dock="Right" Text="{Binding Type}" Style="{StaticResource Muted}" VerticalAlignment="Center" Margin="6,0,0,0" />
                     <TextBlock Text="{Binding Id}" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
                 </DockPanel>
-                <TextBlock Text="{Binding Summary}" TextWrapping="Wrap" MaxHeight="54" TextTrimming="CharacterEllipsis" Margin="0,3,0,0" ToolTip="{Binding Summary}" />
+                <TextBlock Text="{Binding Title}" TextWrapping="Wrap" MaxHeight="54" TextTrimming="CharacterEllipsis" Margin="0,3,0,0" ToolTip="{Binding Summary}" />
                 <WrapPanel Margin="0,5,0,0">
                     <TextBlock Text="{Binding ApprovalText}" Style="{StaticResource ApprovalText}" Margin="0,0,8,0" />
                     <TextBlock Text="{Binding StatusText}" Style="{StaticResource StatusText}" Margin="0,0,8,0" />
@@ -485,10 +485,10 @@
                         </GridViewColumn>
                         <GridViewColumn Width="560">
                             <GridViewColumn.Header>
-                                <GridViewColumnHeader Content="Summary" Command="{Binding ToggleSortCommand}" CommandParameter="Summary" />
+                                <GridViewColumnHeader Content="Name" Command="{Binding ToggleSortCommand}" CommandParameter="Summary" />
                             </GridViewColumn.Header>
                             <GridViewColumn.CellTemplate>
-                                <DataTemplate><TextBlock Text="{Binding Summary}" TextTrimming="CharacterEllipsis" ToolTip="{Binding Summary}" /></DataTemplate>
+                                <DataTemplate><TextBlock Text="{Binding Title}" TextTrimming="CharacterEllipsis" ToolTip="{Binding Summary}" /></DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         <GridViewColumn Width="180" Header="Labels">
@@ -889,6 +889,9 @@
                             </DockPanel>
                         </Border>
 
+                        <!-- The friendly name (M.TIX-T313), shown above the summary when it has one. -->
+                        <TextBlock Text="{Binding Name}" FontWeight="SemiBold" FontSize="16" TextWrapping="Wrap" Margin="0,8,0,0"
+                                   Visibility="{Binding HasName, Converter={StaticResource Visible}}" />
                         <Border Style="{StaticResource ChangedMark}" Tag="{Binding SummaryChanged}" Margin="-4,8,0,0">
                             <TextBlock Text="{Binding Summary}" TextWrapping="Wrap" FontSize="14" />
                         </Border>
@@ -994,6 +997,8 @@
                                     Command="{Binding DataContext.SetRefCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
                             <Button Style="{StaticResource MaButton}" Content="Correct type…" Margin="0,0,6,6"
                                     Command="{Binding DataContext.CorrectTypeCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
+                            <Button Style="{StaticResource MaButton}" Content="Name…" Margin="0,0,6,6" ToolTip="Its short friendly name, shown beside its ID"
+                                    Command="{Binding DataContext.SetNameCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
                             <Button Style="{StaticResource MaButton}" Content="Reword summary…" Margin="0,0,6,6" ToolTip="Correct its summary; the old wording stays in its history"
                                     Command="{Binding DataContext.CorrectSummaryCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
                             <Button Style="{StaticResource MaButton}" Content="Edit description…" Margin="0,0,6,6" ToolTip="Its markdown description, kept apart from the summary"

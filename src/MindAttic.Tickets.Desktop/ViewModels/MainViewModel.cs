@@ -68,6 +68,7 @@ public sealed partial class MainViewModel : ObservableObject
         CorrectTypeCommand = new RelayCommand(async () => await CorrectTypeAsync(), () => Detail is not null);
         CorrectSummaryCommand = new RelayCommand(async () => await CorrectSummaryAsync(), () => Detail is not null);
         EditDescriptionCommand = new RelayCommand(async () => await EditDescriptionAsync(), () => Detail is not null);
+        SetNameCommand = new RelayCommand(async () => await SetNameAsync(), () => Detail is not null);
         AddLinkCommand = new RelayCommand(async () => await AddLinkAsync(), () => Detail is not null);
         RemoveLinkCommand = new RelayCommand(async p => await RemoveLinkAsync(p as LinkLine), p => p is LinkLine);
         GoToCommand = new RelayCommand(p => GoTo(p as string), p => p is string);
@@ -211,6 +212,7 @@ public sealed partial class MainViewModel : ObservableObject
     public ICommand CorrectTypeCommand { get; }
     public ICommand CorrectSummaryCommand { get; }
     public ICommand EditDescriptionCommand { get; }
+    public ICommand SetNameCommand { get; }
     public ICommand AddLinkCommand { get; }
     public ICommand RemoveLinkCommand { get; }
     public ICommand GoToCommand { get; }
@@ -581,6 +583,16 @@ public sealed partial class MainViewModel : ObservableObject
         var reason = Dialogs.Ask(new Prompt($"Reword the summary of {d.Id}", $"From: {current}\nTo: {wording.Text}\n\nWhy?", "Reason", Ok: "Reword"));
         if (reason is null) return;
         await Do(() => store.CorrectSummary(d.Id, wording.Text, reason.Text), $"{d.Id} reworded.");
+    }
+
+    /// <summary>Sets, changes or (emptied) removes the friendly name (M.TIX-T313).</summary>
+    private async Task SetNameAsync()
+    {
+        if (Detail is not { } d) return;
+        var answer = Dialogs.Ask(new Prompt($"Name {d.Id}", "A short friendly name (2-6 words) shown beside its ID in lists, graphs and the Orchestrator. Leave it empty to remove it; every change is kept in the ticket's history.",
+            "Name", TextRequired: false, Initial: d.Name, Ok: "Save"));
+        if (answer is null) return;
+        await Do(() => store.SetName(d.Id, answer.Text), string.IsNullOrWhiteSpace(answer.Text) ? $"{d.Id}'s name removed." : $"{d.Id} named.");
     }
 
     /// <summary>Sets, edits or (emptied) removes the markdown description (M.TIX-T73).</summary>

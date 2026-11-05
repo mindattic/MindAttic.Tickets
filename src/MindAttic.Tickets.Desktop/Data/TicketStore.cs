@@ -19,6 +19,9 @@ public sealed record TicketInfo(string Repo, Ticket Ticket, string Approval, lon
 
     /// <summary>A session is recorded as working it in the ticket database (<c>ticket_work</c>; M.TIX-T134).</summary>
     public bool Working { get; init; }
+
+    /// <summary>Its short friendly name (M.TIX-T313), or null while it has none.</summary>
+    public string? Name { get; init; }
     /// <summary>Its labels, sorted (M.TIX-T74), also what a query's <c>label:</c> matches (M.TIX-T78); a component is a <c>component:</c> label.</summary>
     public IReadOnlyList<string> Labels { get; init; } = [];
 
@@ -125,17 +128,18 @@ public sealed class TicketStore(string root)
         var blockers = OpenBlockers(tickets.Select(x => x.Ticket), links);
         var work = db.WorkStates();
         var labels = db.AllLabels();
+        var names = db.Names();
         IReadOnlyList<string> BlockersOf(string id) => blockers.TryGetValue(id, out var b) ? b : [];
         bool WorkingOn(string id) => work.TryGetValue(id, out var w) && w.IsWorking;
         long? EstimateOf(string id) => estimates.TryGetValue(id, out var e) ? e : null;
         IReadOnlyList<string> LabelsOf(string id) => labels.TryGetValue(id, out var l) ? l : [];
         TicketInfo Info(string repo, Ticket t) =>
             (states.TryGetValue(t.Id, out var s) ? new TicketInfo(repo, t, s.Approval, s.Priority, BlockersOf(t.Id)) : new TicketInfo(repo, t, TicketsDb.Proposed, 0, BlockersOf(t.Id)))
-            with { Working = WorkingOn(t.Id), Estimate = EstimateOf(t.Id), Labels = LabelsOf(t.Id) };
+            with { Working = WorkingOn(t.Id), Estimate = EstimateOf(t.Id), Labels = LabelsOf(t.Id), Name = names.GetValueOrDefault(t.Id) };
         return new Snapshot(
             [.. db.Repos().Select(r => r.Name)],
             [.. tickets.Select(x => Info(x.Repo, x.Ticket))],
-            [.. db.Queue().Select(q => new TicketInfo(q.Repo, q.Ticket, q.Approval, q.Priority, BlockersOf(q.Ticket.Id)) { Working = WorkingOn(q.Ticket.Id), Estimate = q.Estimate, Labels = LabelsOf(q.Ticket.Id) })],
+            [.. db.Queue().Select(q => new TicketInfo(q.Repo, q.Ticket, q.Approval, q.Priority, BlockersOf(q.Ticket.Id)) { Working = WorkingOn(q.Ticket.Id), Estimate = q.Estimate, Labels = LabelsOf(q.Ticket.Id), Name = q.Name })],
             DateTime.Now)
         {
             Hygiene = TicketHygiene.Check(tickets),
@@ -220,7 +224,7 @@ public sealed class TicketStore(string root)
             .Where(l => l.Kind == "requires" && string.Equals(l.To, found.Ticket.Id, StringComparison.OrdinalIgnoreCase))
             .Select(l => l.From)
             .Where(d => db.Ticket(d) is { } t && t.Ticket.Status == TicketRules.Open).ToList();
-        return new TicketDetail(new TicketInfo(found.Repo, found.Ticket, approval, priority, blockers) { Estimate = db.Estimate(found.Ticket.Id), Labels = db.Labels(found.Ticket.Id) }, db.History(found.Ticket.Id), links, blockers)
+        return new TicketDetail(new TicketInfo(found.Repo, found.Ticket, approval, priority, blockers) { Estimate = db.Estimate(found.Ticket.Id), Labels = db.Labels(found.Ticket.Id), Name = db.Name(found.Ticket.Id) }, db.History(found.Ticket.Id), links, blockers)
         {
             OpenDependents = dependents,
             Work = db.Work(found.Ticket.Id),
@@ -257,6 +261,8 @@ public sealed class TicketStore(string root)
     public void SetRef(string id, string reference) => Write($"ref {id} ({reference})", db => db.SetRef(id, reference));
     public void CorrectType(string id, string type, string reason) => Write($"correct {id} to {type}: {reason}", db => db.CorrectType(id, type, reason));
     public void CorrectSummary(string id, string summary, string reason) => Write($"reword {id} to '{summary}': {reason}", db => db.CorrectSummary(id, summary, reason));
+    public void SetName(string id, string? name) =>
+        Write($"{(string.IsNullOrWhiteSpace(name) ? "clear" : "set")} {id}'s name", db => db.SetName(id, name), render: false);
     public void SetDescription(string id, string? body) =>
         Write($"{(string.IsNullOrWhiteSpace(body) ? "clear" : "set")} {id}'s description", db => db.SetDescription(id, body), render: false);
     public void AddLabels(string id, IReadOnlyList<string> labels) =>

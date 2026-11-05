@@ -9,6 +9,7 @@ namespace MindAttic.Tickets.Desktop.ViewModels;
 public sealed class TicketRowViewModel(string id) : ObservableObject
 {
     private string repo = "", date = "", type = "", status = "", summary = "", reference = "", approval = TicketsDb.Proposed;
+    private string? name;
     private long priority;
     private long? estimate;
     private int rank;
@@ -22,7 +23,13 @@ public sealed class TicketRowViewModel(string id) : ObservableObject
     public string Date { get => date; private set => Set(ref date, value); }
     public string Type { get => type; private set => Set(ref type, value); }
     public string Status { get => status; private set => Set(ref status, value); }
-    public string Summary { get => summary; private set => Set(ref summary, value); }
+    public string Summary { get => summary; private set { if (Set(ref summary, value)) Raise(nameof(Title)); } }
+
+    /// <summary>Its friendly name (M.TIX-T313), null while it has none.</summary>
+    public string? Name { get => name; private set { if (Set(ref name, value)) Raise(nameof(Title)); } }
+
+    /// <summary>What a list shows for it: its name, or its summary cut short while it has none (the summary is the tooltip).</summary>
+    public string Title => TicketsDb.Label(Name, Summary);
     public string Ref { get => reference; private set => Set(ref reference, value); }
     public string Approval { get => approval; private set => Set(ref approval, value); }
     public long Priority { get => priority; private set => Set(ref priority, value); }
@@ -91,7 +98,7 @@ public sealed class TicketRowViewModel(string id) : ObservableObject
     public string SpokenName =>
         (Rank > 0 ? $"Position {Rank}. " : "") + $"{Id}, {Type}, {Status}, {Approval}" +
         (Priority != 0 ? $", priority {Priority}" : "") + (Estimate is not null ? $", estimated {EstimateText.TrimStart('~')}" : "") + (IsBlocked ? $", {BlockedText.TrimStart('⏸', ' ')}" : "") +
-        (TicketLabels.Count > 0 ? $", labels {LabelsText}" : "") + $", {Repo}: {Summary}";
+        (TicketLabels.Count > 0 ? $", labels {LabelsText}" : "") + $", {Repo}: " + (Name is { } n ? $"{n}. {Summary}" : Summary);
 
     public void Update(TicketInfo t)
     {
@@ -100,6 +107,7 @@ public sealed class TicketRowViewModel(string id) : ObservableObject
         Type = t.Ticket.Type;
         Status = t.Ticket.Status;
         Summary = t.Ticket.Summary;
+        Name = t.Name;
         Ref = t.Ticket.Ref;
         Approval = t.Approval;
         Priority = t.Priority;

@@ -226,6 +226,12 @@ public sealed class TicketsServer(string connectionString)
             updated nvarchar(64) NOT NULL);
         """,
         $"""
+        CREATE TABLE ticket_names (
+            ticket_id nvarchar(450) COLLATE {NoCase} NOT NULL PRIMARY KEY,
+            name nvarchar(450) NOT NULL,
+            updated nvarchar(64) NOT NULL);
+        """,
+        $"""
         CREATE TABLE ticket_labels (
             ticket_id nvarchar(450) COLLATE {NoCase} NOT NULL, label nvarchar(64) NOT NULL, added nvarchar(64) NOT NULL,
             PRIMARY KEY (ticket_id, label));

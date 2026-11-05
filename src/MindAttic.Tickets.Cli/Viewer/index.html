@@ -39,6 +39,7 @@
   .s-closed { color: var(--closed); }
   .s-wont-do { color: var(--wont); }
   .ref, .evidence { color: var(--muted); font-size: 12px; margin-top: 2px; }
+  .name { font-weight: 600; }
   h2 { font-size: 14px; margin: 18px 0 6px; }
   .empty { padding: 24px; text-align: center; color: var(--muted); }
   @media (max-width: 640px) { td.date, th.date, td.type, th.type { display: none; } }
@@ -113,12 +114,14 @@
     const status = $("status").value, type = $("type").value;
     const order = { open: 0, closed: 1, "wont-do": 2 };
     const list = data.tickets
-      .filter(t => (!status || t.status === status) && (!type || t.type === type) && matches(t, ["id", "summary", "ref"]))
+      .filter(t => (!status || t.status === status) && (!type || t.type === type) && matches(t, ["id", "name", "summary", "ref"]))
       .sort((a, b) => (order[a.status] ?? 3) - (order[b.status] ?? 3) || b.date.localeCompare(a.date) || a.id.localeCompare(b.id, undefined, { numeric: true }));
     const open = list.filter(t => t.status === "open").length;
     $("counts").textContent = `${list.length} ticket${list.length === 1 ? "" : "s"}, ${open} open`;
-    return table([["ID", "id"], ["Date", "date"], ["Type", "type"], ["Status", ""], ["Summary", ""]], list.map(t => {
-      const tr = el("tr"), summary = el("td", "", t.summary);
+    return table([["ID", "id"], ["Date", "date"], ["Type", "type"], ["Status", ""], ["Name · summary", ""]], list.map(t => {
+      // The friendly name (M.TIX-T313) leads; the summary follows under it (or alone while it has none).
+      const tr = el("tr"), summary = el("td");
+      if (t.name) summary.append(el("div", "name", t.name), el("div", "ref", t.summary)); else summary.append(t.summary);
       if (t.ref && t.ref !== "—") summary.append(el("div", "ref", t.ref));
       tr.append(el("td", "id", t.id), el("td", "date", t.date), el("td", "type", t.type), el("td", "s-" + t.status, t.status), summary);
       return tr;

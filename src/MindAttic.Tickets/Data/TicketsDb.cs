@@ -269,6 +269,12 @@ public sealed partial class TicketsDb : IDisposable
                 ticket_id TEXT NOT NULL COLLATE NOCASE, label TEXT NOT NULL, added TEXT NOT NULL,
                 PRIMARY KEY (ticket_id, label));
             CREATE INDEX IF NOT EXISTS ticket_labels_by_label ON ticket_labels (label);
+            -- M.TIX-T313: a ticket's short friendly name, beside its summary and description. No row means none. No foreign key,
+            -- as ticket_queue; every change is a 'name' row in ticket_events.
+            CREATE TABLE IF NOT EXISTS ticket_names (
+                ticket_id TEXT PRIMARY KEY COLLATE NOCASE,
+                name TEXT NOT NULL,
+                updated TEXT NOT NULL);
 
             -- Append-only: a ticket is never deleted, and only its status and ref ever change.
             CREATE TRIGGER IF NOT EXISTS tickets_no_delete BEFORE DELETE ON tickets
@@ -586,26 +592,29 @@ public sealed partial class TicketsDb : IDisposable
 
     /// <summary>
     /// Adds a ticket to <paramref name="repo"/> with the next free number (never reusing a gap), atomically; a
-    /// <c>description</c> is its markdown description (M.TIX-T73), kept apart from the one-line summary, none when blank.
+    /// <c>description</c> is its markdown description (M.TIX-T73), kept apart from the one-line summary, none when blank; a
+    /// <c>name</c> its short friendly name (M.TIX-T313), none when blank.
     /// </summary>
-    public Ticket Add(string repo, string type, string status, string summary, string reference, string? date = null, string? description = null)
+    public Ticket Add(string repo, string type, string status, string summary, string reference, string? date = null, string? description = null, string? name = null)
     {
         if (!TicketRules.Types.Contains(type)) throw new ArgumentException($"Unknown type '{type}' (expected {string.Join("/", TicketRules.Types)}).", nameof(type));
         if (!TicketRules.Statuses.Contains(status)) throw new ArgumentException($"Unknown status '{status}' (expected {string.Join("/", TicketRules.Statuses)}).", nameof(status));
         if (string.IsNullOrWhiteSpace(summary)) throw new ArgumentException("A ticket needs a summary.", nameof(summary));
+        var friendly = NormalizeName(name); // checked before anything is written (M.TIX-T313)
 
         // One write transaction (SQLite's BEGIN IMMEDIATE, SQL Server's write lock): the next number is read inside it, so two
         // agents adding a ticket at once never take the same one. Every command below joins it.
         using var tx = Begin();
-        var (name, code) = FindRepoRow(repo)
+        var (repoName, code) = FindRepoRow(repo)
             ?? throw new InvalidOperationException($"{repo} isn't in the ticket database; run 'tickets db migrate' (or 'tickets repos rollout tickets --apply').");
-        var next = (long)(Scalar("SELECT COALESCE(MAX(number), 0) + 1 FROM tickets WHERE repo = $r", null, ("$r", name)) ?? 1L);
-        var ordinal = (long)(Scalar("SELECT COALESCE(MAX(ordinal), -1) + 1 FROM tickets WHERE repo = $r", null, ("$r", name)) ?? 0L);
+        var next = (long)(Scalar("SELECT COALESCE(MAX(number), 0) + 1 FROM tickets WHERE repo = $r", null, ("$r", repoName)) ?? 1L);
+        var ordinal = (long)(Scalar("SELECT COALESCE(MAX(ordinal), -1) + 1 FROM tickets WHERE repo = $r", null, ("$r", repoName)) ?? 0L);
         var t = new Ticket($"{code}-T{next}", date ?? TicketRules.Today(), type, status, summary.Trim(), string.IsNullOrWhiteSpace(reference) ? "—" : reference.Trim());
         Exec("INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal) VALUES ($id, $r, $n, $d, $ty, $st, $su, $ref, $o)", null,
-            ("$id", t.Id), ("$r", name), ("$n", next), ("$d", t.Date), ("$ty", t.Type), ("$st", t.Status), ("$su", t.Summary), ("$ref", t.Ref), ("$o", ordinal));
+            ("$id", t.Id), ("$r", repoName), ("$n", next), ("$d", t.Date), ("$ty", t.Type), ("$st", t.Status), ("$su", t.Summary), ("$ref", t.Ref), ("$o", ordinal));
         Exec("INSERT INTO ticket_events (ticket_id, at, field, old, new) VALUES ($id, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), 'created', NULL, $st)", null, ("$id", t.Id), ("$st", t.Status));
         if (NormalizeDescription(description) is { } body) SaveDescription(t.Id, body);
+        if (friendly is not null) SetNameCore(t.Id, friendly, null);
         // Linked to the ticket as it's known now: a former (reassigned) ID resolves, but a link stored under it would dangle.
         foreach (Match m in BlockedBy().Matches(t.Summary))
             if (Ticket(m.Groups["id"].Value) is { } req && !string.Equals(req.Ticket.Id, t.Id, StringComparison.OrdinalIgnoreCase))
@@ -1206,7 +1215,7 @@ public sealed partial class TicketsDb : IDisposable
         foreach (var (table, order) in new[]
         {
             ("meta", "key"), ("repos", "name"), ("epics", "repo, key"), ("stories", "uid"), ("backlog_items", "uid"), ("backlog_refs", "item_uid, story_id"),
-            ("tickets", "repo, ordinal"), ("ticket_events", "seq"), ("ticket_queue", "ticket_id"), ("ticket_work", "ticket_id"), ("ticket_notes", "seq"), ("ticket_descriptions", "ticket_id"), ("ticket_labels", "ticket_id, label"), ("repo_renames", "seq"), ("id_history", "seq"), ("links", "from_id, to_id, kind"), ("blocks", "repo, ordinal"), ("saved_filters", "name"),
+            ("tickets", "repo, ordinal"), ("ticket_events", "seq"), ("ticket_queue", "ticket_id"), ("ticket_work", "ticket_id"), ("ticket_notes", "seq"), ("ticket_descriptions", "ticket_id"), ("ticket_names", "ticket_id"), ("ticket_labels", "ticket_id, label"), ("repo_renames", "seq"), ("id_history", "seq"), ("links", "from_id, to_id, kind"), ("blocks", "repo, ordinal"), ("saved_filters", "name"),
         })
         {
             sb.Append("\n-- ").Append(table).Append('\n');

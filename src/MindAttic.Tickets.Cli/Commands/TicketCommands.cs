@@ -27,6 +27,10 @@ public sealed class TicketNewCommand : Command<TicketNewCommand.Settings>
         [Description("open (default) | closed | wont-do")]
         public string Status { get; init; } = TicketRules.Open;
 
+        [CommandOption("--name <TEXT>")]
+        [Description("Its short friendly name (2-6 words), shown beside its ID in lists, graphs and the Orchestrator (M.TIX-T313).")]
+        public string? Name { get; init; }
+
         [CommandOption("--description <TEXT>")]
         [Description("Its markdown description, kept apart from the one-line summary.")]
         public string? Description { get; init; }
@@ -57,14 +61,14 @@ public sealed class TicketNewCommand : Command<TicketNewCommand.Settings>
                 WarnOfDuplicates(settings, db.Tickets(repo.Name));
                 var description = settings.Template ? TicketTemplates.For(settings.Type)
                     : settings.Description ?? (settings.DescriptionFile is { } path ? File.ReadAllText(path) : null);
-                Console.WriteLine(db.Add(repo.Name, settings.Type, settings.Status, settings.Summary, settings.Ref ?? "", description: description).Id);
+                Console.WriteLine(db.Add(repo.Name, settings.Type, settings.Status, settings.Summary, settings.Ref ?? "", description: description, name: settings.Name).Id);
                 Db.Rerender(db, settings);
                 return 0;
             }
         if (!File.Exists(repo.StoriesPath))
             throw new InvalidOperationException($"{repo.Name} has no docs/USER_STORIES.md; run 'tickets repos rollout --apply' first.");
-        if (settings.Description is not null || settings.DescriptionFile is not null || settings.Template)
-            throw new InvalidOperationException("Descriptions live in the ticket database; this workspace hasn't been migrated to it.");
+        if (settings.Description is not null || settings.DescriptionFile is not null || settings.Template || settings.Name is not null)
+            throw new InvalidOperationException("Descriptions and names live in the ticket database; this workspace hasn't been migrated to it.");
 
         var file = StoryFile.Load(repo.StoriesPath);
         WarnOfDuplicates(settings, file.Tickets.Select(t => (repo.Name, t)));
@@ -274,10 +278,14 @@ public sealed class TicketListCommand : Command<TicketListCommand.Settings>
 
         // Labels live only in the ticket database (M.TIX-T74).
         IReadOnlyDictionary<string, IReadOnlyList<string>> labels;
+        IReadOnlyDictionary<string, string> names; // friendly names (M.TIX-T313), likewise only in the database
         using (var db = TicketsDb.OpenIfMigrated(settings.Workspace.Root))
+        {
             labels = db?.AllLabels() ?? (settings.Label.Length > 0
                 ? throw new InvalidOperationException("Labels live in the ticket database, and this workspace isn't migrated to it yet; run 'tickets db migrate'.")
                 : new Dictionary<string, IReadOnlyList<string>>());
+            names = db?.Names() ?? new Dictionary<string, string>();
+        }
         IReadOnlyList<string> LabelsOf(string id) => labels.TryGetValue(id, out var l) ? l : [];
         var wanted = settings.Label.Select(l => TicketsDb.NormalizeLabel(l)!).ToList();
 
@@ -313,7 +321,7 @@ public sealed class TicketListCommand : Command<TicketListCommand.Settings>
             var text = format == "json"
                 ? JsonSerializer.Serialize(rows.Select(x => new
                 {
-                    repo = x.Repo.Name, id = x.Ticket.Id, date = x.Ticket.Date, type = x.Ticket.Type,
+                    repo = x.Repo.Name, id = x.Ticket.Id, name = names.GetValueOrDefault(x.Ticket.Id), date = x.Ticket.Date, type = x.Ticket.Type,
                     status = x.Ticket.Status, summary = x.Ticket.Summary, @ref = x.Ticket.Ref, labels = LabelsOf(x.Ticket.Id),
                 }), new JsonSerializerOptions { WriteIndented = true }) + Environment.NewLine
                 : TicketExport.Write(format, rows.Select(x => new ExportRow(x.Repo.Name, x.Ticket, LabelsOf(x.Ticket.Id))));
@@ -328,7 +336,7 @@ public sealed class TicketListCommand : Command<TicketListCommand.Settings>
         }
 
         var table = new Table().Border(TableBorder.Rounded)
-            .AddColumns("Repo", "ID", "Date", "Type", "Status", "Summary", "Labels");
+            .AddColumns("Repo", "ID", "Date", "Type", "Status", "Name", "Labels");
         foreach (var x in rows)
         {
             var status = x.Ticket.Status switch
@@ -338,7 +346,7 @@ public sealed class TicketListCommand : Command<TicketListCommand.Settings>
                 _ => $"[grey]{Output.Esc(x.Ticket.Status)}[/]",
             };
             table.AddRow(Output.Esc(x.Repo.Name), Output.Esc(x.Ticket.Id), Output.Esc(x.Ticket.Date),
-                Output.Esc(x.Ticket.Type), status, Output.Esc(x.Ticket.Summary), Output.Esc(string.Join(", ", LabelsOf(x.Ticket.Id))));
+                Output.Esc(x.Ticket.Type), status, Output.Name(names.GetValueOrDefault(x.Ticket.Id), x.Ticket.Summary), Output.Esc(string.Join(", ", LabelsOf(x.Ticket.Id))));
         }
         AnsiConsole.Write(table);
         AnsiConsole.MarkupLine($"[grey]{rows.Count} ticket(s)[/]");

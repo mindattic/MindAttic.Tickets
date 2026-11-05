@@ -61,6 +61,7 @@ public sealed class ViewCommand : Command<ViewCommand.Settings>
         using (var file = File.Create(Path.Combine(dir, "index.html")))
             page.CopyTo(file);
 
+        var names = db.Names();
         var data = new
         {
             generated = DateTime.Now.ToString("yyyy-MM-dd HH:mm", System.Globalization.CultureInfo.InvariantCulture),
@@ -68,7 +69,7 @@ public sealed class ViewCommand : Command<ViewCommand.Settings>
             repos = db.Repos().Select(r => new { name = r.Name, code = r.Code }),
             tickets = db.Tickets().Select(t => new
             {
-                repo = t.Repo, id = t.Ticket.Id, date = t.Ticket.Date, type = t.Ticket.Type,
+                repo = t.Repo, id = t.Ticket.Id, name = names.GetValueOrDefault(t.Ticket.Id), date = t.Ticket.Date, type = t.Ticket.Type,
                 status = t.Ticket.Status, summary = t.Ticket.Summary, @ref = t.Ticket.Ref,
             }),
             stories = db.Stories().Select(s => new

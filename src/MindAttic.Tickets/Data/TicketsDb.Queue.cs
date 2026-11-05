@@ -4,8 +4,13 @@ using MindAttic.Tickets.Log;
 namespace MindAttic.Tickets.Data;
 
 /// <summary>An open ticket's place in the work queue: whether it's approved for work, its priority (higher runs sooner), and
-/// its effort estimate in tokens (M.TIX-T75; null while it has none), which orders tickets of one priority smallest first.</summary>
-public sealed record QueueEntry(string Repo, Ticket Ticket, string Approval, long Priority, long? Estimate = null);
+/// its effort estimate in tokens (M.TIX-T75; null while it has none), which orders tickets of one priority smallest first, and its
+/// friendly name (M.TIX-T313; null while it has none).</summary>
+public sealed record QueueEntry(string Repo, Ticket Ticket, string Approval, long Priority, long? Estimate = null, string? Name = null)
+{
+    /// <summary>"ID · name" (or the summary cut short when it has no name): how lists and the Orchestrator's header name it.</summary>
+    public string Caption => TicketsDb.Caption(Ticket.Id, Name, Ticket.Summary);
+}
 
 public sealed partial class TicketsDb
 {
@@ -19,12 +24,12 @@ public sealed partial class TicketsDb
     /// smallest estimate (M.TIX-T75; those without one after those with), then oldest.</summary>
     public IReadOnlyList<QueueEntry> Queue(string? repo = null) =>
         [.. Rows(
-            "SELECT t.repo, t.id, t.date, t.type, t.status, t.summary, t.ref, COALESCE(q.approval, 'proposed'), COALESCE(q.priority, 0), q.estimate " +
+            "SELECT t.repo, t.id, t.date, t.type, t.status, t.summary, t.ref, COALESCE(q.approval, 'proposed'), COALESCE(q.priority, 0), q.estimate, n.name " +
             // Without case, as ticket_queue.ticket_id's own collation compares: said here so SQL Server joins it the same way.
-            "FROM tickets t LEFT JOIN ticket_queue q ON q.ticket_id = t.id COLLATE NOCASE " +
+            "FROM tickets t LEFT JOIN ticket_queue q ON q.ticket_id = t.id COLLATE NOCASE LEFT JOIN ticket_names n ON n.ticket_id = t.id COLLATE NOCASE " +
             "WHERE t.status = 'open' AND ($r IS NULL OR t.repo = $r COLLATE NOCASE) " +
             "ORDER BY COALESCE(q.priority, 0) DESC, CASE WHEN q.estimate IS NULL THEN 1 ELSE 0 END, q.estimate, t.date, t.repo COLLATE NOCASE, t.ordinal",
-            r => new QueueEntry(r.GetString(0), ReadTicket(r, 1), r.GetString(7), r.GetInt64(8), r.IsDBNull(9) ? null : r.GetInt64(9)),
+            r => new QueueEntry(r.GetString(0), ReadTicket(r, 1), r.GetString(7), r.GetInt64(8), r.IsDBNull(9) ? null : r.GetInt64(9), r.IsDBNull(10) ? null : r.GetString(10)),
             ("$r", repo))];
 
     /// <summary>The largest estimate a ticket takes (a quadrillion tokens; past it is a typo), as a reservation.</summary>

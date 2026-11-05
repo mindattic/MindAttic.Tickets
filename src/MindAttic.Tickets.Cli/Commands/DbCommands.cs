@@ -272,11 +272,12 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
         var commits = repoPath is null ? [] : TicketCommits.Find(t.Id, repoPath);
         var diff = settings.Diff && repoPath is not null ? TicketCommits.Log(t.Id, repoPath, diff: true) : null;
         var description = db.Description(t.Id);
+        var name = db.Name(t.Id);
         if (settings.Json)
         {
             Console.WriteLine(JsonSerializer.Serialize(new
             {
-                repo, id = t.Id, date = t.Date, type = t.Type, status = t.Status, summary = t.Summary, @ref = t.Ref,
+                repo, id = t.Id, name, caption = TicketsDb.Caption(t.Id, name, t.Summary), date = t.Date, type = t.Type, status = t.Status, summary = t.Summary, @ref = t.Ref,
                 description,
                 formerIds = db.IdHistory(t.Id).Select(c => c.OldId),
                 requires = db.Requires(t.Id), links = links.Select(l => new { from = l.From, kind = l.Kind, to = l.To, note = l.Note }),
@@ -289,7 +290,8 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
             }, new JsonSerializerOptions { WriteIndented = true }));
             return 0;
         }
-        AnsiConsole.MarkupLine($"[bold]{Output.Esc(t.Id)}[/] · {Output.Esc(repo)} · {Output.Esc(t.Type)} · {Output.Esc(t.Status)} · opened {Output.Esc(t.Date)}");
+        AnsiConsole.MarkupLine($"[bold]{Output.Esc(t.Id)}[/]" + (name is not null ? $" · [bold]{Output.Esc(name)}[/]" : "") +
+            $" · {Output.Esc(repo)} · {Output.Esc(t.Type)} · {Output.Esc(t.Status)} · opened {Output.Esc(t.Date)}");
         AnsiConsole.WriteLine(t.Summary);
         AnsiConsole.MarkupLine($"[grey]Ref:[/] {Output.Esc(t.Ref)}");
         AnsiConsole.MarkupLine($"[grey]Queue:[/] {Output.Esc(approval)}, priority {priority.ToString(System.Globalization.CultureInfo.InvariantCulture)}" +
@@ -396,16 +398,17 @@ public sealed class TicketGraphCommand : Command<TicketGraphCommand.Settings>
     {
         using var db = Db.Open(settings);
         var (_, t) = db.Ticket(settings.Id) ?? throw new KeyNotFoundException($"No ticket {settings.Id}.");
-        var graph = DependencyGraph.Build(t.Id, db.Tickets().Select(x => x.Ticket), db.AllLinks());
+        var names = db.Names();
+        var graph = DependencyGraph.Build(t.Id, db.Tickets().Select(x => x.Ticket), db.AllLinks(), names);
         if (settings.Json)
         {
             static object Node(DependencyNode n) => new
             {
-                id = n.Id, depth = n.Depth, status = n.Status, summary = n.Summary, blocking = n.Blocking, repeat = n.Repeat, cycle = n.Cycle,
+                id = n.Id, name = n.Name, depth = n.Depth, status = n.Status, summary = n.Summary, blocking = n.Blocking, repeat = n.Repeat, cycle = n.Cycle,
             };
             Console.WriteLine(JsonSerializer.Serialize(new
             {
-                id = graph.Id, status = t.Status, summary = t.Summary, blockers = graph.Blockers, blocked = graph.Blocked,
+                id = graph.Id, name = names.GetValueOrDefault(t.Id), status = t.Status, summary = t.Summary, blockers = graph.Blockers, blocked = graph.Blocked,
                 waitsFor = graph.Upstream.Select(Node), neededBy = graph.Downstream.Select(Node),
             }, new JsonSerializerOptions { WriteIndented = true }));
             return 0;
@@ -442,13 +445,17 @@ public sealed class TicketCorrectCommand : Command<TicketCorrectCommand.Settings
         [Description("The reworded one-line summary (M.TIX-T73); the old wording stays in the ticket's history.")]
         public string? Summary { get; init; }
 
+        [CommandOption("--name <TEXT>")]
+        [Description("Set or change its short friendly name (M.TIX-T313; an empty one clears it); recorded in its history. Needs no --reason.")]
+        public string? Name { get; init; }
+
         [CommandOption("--reason <TEXT>")]
         [Description("Why; kept in the ticket's history.")]
         public string Reason { get; init; } = "";
 
         public override ValidationResult Validate() =>
-            string.IsNullOrWhiteSpace(Type) && string.IsNullOrWhiteSpace(Summary) ? ValidationResult.Error("give --type, --summary or both")
-            : string.IsNullOrWhiteSpace(Reason) ? ValidationResult.Error("--reason is required")
+            string.IsNullOrWhiteSpace(Type) && string.IsNullOrWhiteSpace(Summary) && Name is null ? ValidationResult.Error("give --type, --summary, --name or several")
+            : (!string.IsNullOrWhiteSpace(Type) || !string.IsNullOrWhiteSpace(Summary)) && string.IsNullOrWhiteSpace(Reason) ? ValidationResult.Error("--reason is required with --type or --summary")
             : ValidationResult.Success();
     }
 
@@ -464,6 +471,12 @@ public sealed class TicketCorrectCommand : Command<TicketCorrectCommand.Settings
         {
             var t = db.CorrectSummary(settings.Id, settings.Summary, settings.Reason);
             Console.WriteLine($"{t.Id} summary: {t.Summary}");
+        }
+        if (settings.Name is not null)
+        {
+            var changed = db.SetName(settings.Id, settings.Name);
+            var id = db.Ticket(settings.Id)!.Value.Ticket.Id;
+            Console.WriteLine(!changed ? $"{id} name unchanged" : db.Name(id) is { } now ? $"{id} name: {now}" : $"{id} name cleared");
         }
         Db.Rerender(db, settings);
         return 0;
