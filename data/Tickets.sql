@@ -10301,9 +10301,9 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T75', 'SpaceGod', 75, '2026-11-04', 'feature', 'closed', 'SpaceGod copies: game icon from Assets/logo.png with the engine logo lower-left and Cpp/C# lower-right, exported as icon.ico then embedded in each packaged EXE', 'Cpp 424ab81; UCS f00b070; Unity 7d90c53', 74, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T76', 'SpaceGod', 76, '2026-11-05', 'feature', 'closed', 'Promote SpaceGod.Unreal.Cpp to the new SpaceGod repo: push history, rename UnrealSpaceGod/module namespaces and docs to SpaceGod', 'ca39434', 75, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T77', 'SpaceGod', 77, '2026-11-05', 'fix', 'closed', 'UI buttons don''t respond to clicks/input in SpaceGod', 'd37dd0b', 76, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T78', 'SpaceGod', 78, '2026-11-05', 'fix', 'open', 'Models don''t appear at the exact position the F focus-mode zoom targets', 'US-T69', 77, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T78', 'SpaceGod', 78, '2026-11-05', 'fix', 'closed', 'Models don''t appear at the exact position the F focus-mode zoom targets', '1dd440c', 77, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T79', 'SpaceGod', 79, '2026-11-05', 'feature', 'closed', 'Light fighters: Star Conflict-style Newtonian six-axis flight model', '3bebb3c', 78, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T80', 'SpaceGod', 80, '2026-11-05', 'feature', 'open', 'Heavy fighters: Everspace 2-style flight model', '—', 79, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T80', 'SpaceGod', 80, '2026-11-05', 'feature', 'closed', 'Heavy fighters: Everspace 2-style flight model', '968728a', 79, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T81', 'SpaceGod', 81, '2026-11-05', 'feature', 'open', 'Capital ships: broadside movement (bring the flank to bear, Age-of-Sail-style)', '—', 80, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T82', 'SpaceGod', 82, '2026-11-05', 'feature', 'open', 'Boarding party system: marines/workers moving on a ship''s hull', '—', 81, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T83', 'SpaceGod', 83, '2026-11-05', 'feature', 'open', 'Port the Mech from Unreal.Soulslike into SpaceGod, with jump jets (hold Space to fly in space)', '—', 82, NULL);
@@ -10332,6 +10332,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T106', 'SpaceGod', 106, '2026-11-05', 'feature', 'open', 'Class abilities from the helm: from a capital ship or carrier, order squadrons and breacher marines launched, then jump straight into any launched fighter, bomber or boarding craft and fly it; each hull class shows its own ability set', 'Embodiment/FighterSeat, Combat/CarrierWings, FlightDecks, BreacherBays, US-T82, US-T90', 105, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T107', 'SpaceGod', 107, '2026-11-05', 'chore', 'closed', 'Research (Ryan): confirm Ultimate Spaceships Creator, its Expansion and Space Stations Creator on Fab - UE 5.8 support, Nanite/LODs, licence, price and bundling', 'fcf866b', 106, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T108', 'SpaceGod', 108, '2026-11-05', 'chore', 'closed', 'Research (Erin): second check of Ultimate Spaceships Creator, its Expansion and Space Stations Creator on Fab - UE 5.8 support, Nanite/LODs, licence, price and bundling', 'a93a744', 107, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T109', 'SpaceGod', 109, '2026-11-05', 'feature', 'open', 'Import Ebal Studios'' Star Sparrow fighter pack (40 ships + modules FBX, shared PBR atlas with colour/mask variants) from the owner''s download into /Game/ThirdParty/StarSparrow, kept out of the public repo, with a faction-colour material', 'US-T89,US-T91,US-T103', 108, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T110', 'SpaceGod', 110, '2026-11-05', 'feature', 'open', 'Every ship in the game built from Star Sparrow parts: one variant per hull class (fighter to capital, freighters, carriers...), assembled from the modules and scaled to each class''s real size, so the owner can judge how the pack integrates before buying Ultimate Spaceships Creator', 'US-T109,US-T89,US-T91', 109, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SET-T1', 'SyntheticExchangeTheory', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| SET-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SET-T2', 'SyntheticExchangeTheory', 2, '2026-10-13', 'docs', 'closed', 'Ryan flagged that the closed agrarian settlement (Ch. 7) may not be a scientifically adequate test of the exchange mechanism: it''s slow, expensive, hard to iterate, and confounds farming/physical-survival risk (land yield, livestock, Biosphere-2-style failure modes) with the actual hypothesis (designed dependence shifts behavior toward wellbeing). Discussed cheaper/faster precursor designs: agent-based simulation of the Ch. 3 formal model (Appendix A), a lab-style exchange experiment (human participants + AI principal, randomized dependence), and a digital-native pilot (small online cooperative/platform economy with a compute currency, no physical self-sufficiency requirement). Decision needed: keep agrarian as primary test, reframe it as the last stage of a staged program, or replace it.', 'Decision made 2026-10-17: replace the Ch. 7 agrarian/farm pilot outright (not keep, not reframe as staged final step); superseded by SET-T12/SET-T13', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SET-T3', 'SyntheticExchangeTheory', 3, '2026-10-13', 'docs', 'closed', 'Blocked on SET-T2. Draft the staged-validation framing chosen in SET-T2 (new section or chapter): simulation stage, lab-experiment stage, digital-native pilot stage, and how each feeds into or precedes the physical settlement.', 'Superseded by SET-T13: the staged-validation framing assumed the physical settlement stays in as a later stage; Ryan rejected the agrarian/farm design specifically, not the idea of an eventual real-world test, so SET-T13 restarts the design search', 2, NULL);
@@ -61594,6 +61596,15 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45755, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45756, 'US-T79', '2026-11-05T08:57:31Z', 'ref', '—', '3bebb3c');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45757, 'G.EZ-T111', '2026-11-05T09:02:48Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45758, 'G.EZ-T111', '2026-11-05T09:02:58Z', 'working', NULL, 'abca3cef-f447-4d26-8e54-33f072ff6c65');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45759, 'US-T109', '2026-11-05T09:10:42Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45760, 'US-T109', '2026-11-05T09:10:53Z', 'working', NULL, '8e6b88c0-5c42-417b-ae3c-a490b4ec4acc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45761, 'US-T110', '2026-11-05T09:11:19Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45762, 'US-T109', '2026-11-05T09:11:22Z', 'working', '8e6b88c0-5c42-417b-ae3c-a490b4ec4acc', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45763, 'US-T78', '2026-11-05T09:12:50Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45764, 'US-T78', '2026-11-05T09:12:50Z', 'ref', 'US-T69', '1dd440c');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45765, 'US-T80', '2026-11-05T09:12:56Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45766, 'US-T80', '2026-11-05T09:12:56Z', 'ref', '—', '968728a');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45767, 'G.EZ-T111', '2026-11-05T09:14:03Z', 'working', 'abca3cef-f447-4d26-8e54-33f072ff6c65', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -64138,7 +64149,6 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('USOD-T9', 'approved', 0, '2026-10-22T23:02:27Z', NULL);
 
 -- ticket_work
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('G.EZ-T111', NULL, 0, NULL, 'abca3cef-f447-4d26-8e54-33f072ff6c65', '2026-11-05T09:02:58Z', '2026-11-05T09:02:58Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1446', NULL, 0, NULL, '0806f8eb-3a70-4134-991f-d9cc223458e6', '2026-11-05T08:47:47Z', '2026-11-05T08:47:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1447', NULL, 0, NULL, '0806f8eb-3a70-4134-991f-d9cc223458e6', '2026-11-05T08:47:47Z', '2026-11-05T08:47:47Z');
@@ -65510,6 +65520,43 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (10769, '
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (10770, 'US-T89', 'ryand', '2026-11-05T08:54:57Z', 'US-T107 research 2026-11-05: Fab listings confirmed — Expansion ($34.99) and Space Station Creator Remastered ($74.99) both state "Unreal Engine versions 4.20-4.27 and 5.0-5.8" and Standard License (covers commercial games); base USC pack ($99.99) likely matches but its own compatibility/license block could not be fetched (Fab blocked it), so UE5.8 support on the base pack is unconfirmed pending a manual check. Nanite and LODs are unconfirmed for all three (no mention found; publisher states it skips LODs on this asset family since the perf gain was negligible in testing) - confirm with Ebal Studios directly if Nanite/LOD support matters. All three sold separately, no bundle exists; total to buy all three is $209.97. Note: the "Space Creator Bundle" URL given with the ticket is an unrelated Galactica Studio product, not an Ebal Studios bundle. Full detail: docs/research/UltimateSpaceshipsCreator.md (commit fcf866b).');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (10771, 'US-T91', 'ryand', '2026-11-05T08:54:58Z', 'US-T107 research 2026-11-05: Fab listings confirmed — Expansion ($34.99) and Space Station Creator Remastered ($74.99) both state "Unreal Engine versions 4.20-4.27 and 5.0-5.8" and Standard License (covers commercial games); base USC pack ($99.99) likely matches but its own compatibility/license block could not be fetched (Fab blocked it), so UE5.8 support on the base pack is unconfirmed pending a manual check. Nanite and LODs are unconfirmed for all three (no mention found; publisher states it skips LODs on this asset family since the perf gain was negligible in testing) - confirm with Ebal Studios directly if Nanite/LOD support matters. All three sold separately, no bundle exists; total to buy all three is $209.97. Note: the "Space Creator Bundle" URL given with the ticket is an unrelated Galactica Studio product, not an Ebal Studios bundle. Full detail: docs/research/UltimateSpaceshipsCreator.md (commit fcf866b).');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (10772, 'US-T102', 'ryand', '2026-11-05T08:54:59Z', 'US-T107 research 2026-11-05: Fab listings confirmed — Expansion ($34.99) and Space Station Creator Remastered ($74.99) both state "Unreal Engine versions 4.20-4.27 and 5.0-5.8" and Standard License (covers commercial games); base USC pack ($99.99) likely matches but its own compatibility/license block could not be fetched (Fab blocked it), so UE5.8 support on the base pack is unconfirmed pending a manual check. Nanite and LODs are unconfirmed for all three (no mention found; publisher states it skips LODs on this asset family since the perf gain was negligible in testing) - confirm with Ebal Studios directly if Nanite/LOD support matters. All three sold separately, no bundle exists; total to buy all three is $209.97. Note: the "Space Creator Bundle" URL given with the ticket is an unrelated Galactica Studio product, not an Ebal Studios bundle. Full detail: docs/research/UltimateSpaceshipsCreator.md (commit fcf866b).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (10773, 'US-T110', 'ryand', '2026-11-05T09:15:01Z', 'Map of how ships are drawn (2026-11-05, read-only survey). Paths: G = Cpp/Source/SpaceGod, C = Cpp/Source/SpaceGodCore.
+
+How ships are drawn now:
+- Most hulls are procedural boxes, frustums and cylinders from G/Rendering/ShipMeshFactory (class switch .cpp:268-297), drawn as UDynamicMeshComponent.
+- Small civil craft are imported Kenney .glb models (ShipModels::KenneyModelFor, ShipModels.cpp:141; Data/ShipModels.json).
+- The ship model is built in ShipModels::Build/BuildHull (ShipModels.cpp:48-88), called from the ShipView constructor. Warships come in two sections: Stern and Bow, split at SplitZ = -0.06.
+
+Other places that draw ships:
+- FighterViews::Create/Update (FighterViews.cpp:202/62): launched fighters, bombers, recon and shuttles.
+- StructureViews::UpdateSlip (:236): the shipyard slip.
+- ShipThumbnails.cpp:96.
+- UpdatePlatforms: defence platforms.
+- EmbeddedPods: boarding pods.
+- DebrisFields: wreck debris.
+
+Sizes:
+- Hull lengths are in C/Combat/CombatSpecs.cpp: carrier 3200 m down to interceptor 70 m. Launched craft are 16-30 m (Dogfighting.cpp:122-178). Civil craft are 8-60 m.
+- Beam is 0.2 of length for every hull.
+- On screen, a model is 1 unit long and its root is scaled by ScaleModel::ShipLength (gameplay scale uses sqrt compression).
+
+Hardpoints:
+- SubsystemDef X/Y/Z are in ship lengths, nose +Z (CombatSpecs.h:221). The simulation fires from these points.
+- ShipView puts turrets, engine glows, scars, shield discs and breaches on them.
+
+Constraints:
+- Collision is a sim-only capsule.
+- TargetRadius = length * 0.5.
+- FocusScene uses HullCentre() (US-T78).
+- FeatureAudit''s focus check needs a procedural (non-imported) ship, because imported models don''t stream headless. Keep one procedural fallback.
+- The smoke test counts Kenney vs procedural ships.
+
+Where to swap the model in (visual only, Bench untouched since it links only SpaceGodCore):
+1. In ShipModels::BuildHull, replace KenneyModelFor with a per-class kit recipe: part meshes plus local transforms, normalised to 1 unit long, centred, nose +Z.
+2. For warships, parent each part to Stern or Bow by its Z against SplitZ, so the ship still breaks in two and keeps its hardpoints and breaches.
+3. Keep beam near 0.2, and line engines, turrets and muzzles up with each class''s SubsystemDefs (or hide the pack''s guns and keep the GetPart turrets).
+4. Apply the same recipes in FighterViews (needs a child hierarchy), StructureViews::UpdateSlip and ShipThumbnails.
+5. Don''t touch CombatSpec lengths, BeamFraction, Layout, FighterCraft lengths or ScaleModel.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
