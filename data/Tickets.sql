@@ -8201,6 +8201,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.EZ-T107', 'Mods.GTFO.EZ', 107, '2026-11-01', 'feature', 'closed', 'X becomes quick-drop-all (one turret per press: bots first, then your own, at your current position/orientation); Z also recalls your own placed turret, not just bots''', '6878124 on main; dotnet build 0 warnings/0 errors; dist/GTFO.EZ-19.0.0.zip rebuilt. Confirmed via interop metadata (ildasm dump of Modules-ASM.dll) that SentryGunInstance.PickUp(PlayerAgent) is a public method, same call pattern as the existing PlaceOnGround usage', 106, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.EZ-T108', 'Mods.GTFO.EZ', 108, '2026-11-02', 'fix', 'closed', 'Bughunt sweep, two passes: find and fix real bugs across tracked source (user request 2026-11-02)', '—', 107, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.EZ-T109', 'Mods.GTFO.EZ', 109, '2026-11-02', 'fix', 'closed', 'Fix the open items the 2026-11-02 bughunt left for decision (datablock multipliers double-apply on ReInitialize, revive/sentry Setup scaling compounding, Z recall blocked when downed)', '—', 108, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.EZ-T110', 'Mods.GTFO.EZ', 110, '2026-11-04', 'fix', 'open', 'Shift+E manual bot-turret placement and X auto-place-turret-with-kit are both non-functional', '—', 109, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAI-T1', 'Mods.GTFO.EZ.AbsurdItems', 1, '2026-10-18', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAI-T2', 'Mods.GTFO.EZ.AbsurdItems', 2, '2026-10-18', 'fix', 'closed', 'Push initial project scaffolding so origin/main exists and pull stops failing', '3309db6', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAI-T3', 'Mods.GTFO.EZ.AbsurdItems', 3, '2026-10-18', 'feature', 'closed', 'v1: GTFO.AbsurdItems mod - artifact buffs (from GTFO.EZ), Hand Grenade and Stim Pack (from GTFO.AbsurdWeapons), kits as loot in lockers and out in the open (Loot Mix + shared KitLoot), plus the shared Insert/Delete toggles', '73ec87c', 2, NULL);
@@ -61357,6 +61358,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36683, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36684, 'RTO-T105', '2026-11-05T04:16:20Z', 'ref', '—', '05fe06e');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36685, 'RTO-T106', '2026-11-05T04:25:18Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36686, 'RTO-T107', '2026-11-05T04:51:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36687, 'G.EZ-T110', '2026-11-05T05:12:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36688, 'G.EZ-T110', '2026-11-05T05:13:01Z', 'working', NULL, 'abca3cef-f447-4d26-8e54-33f072ff6c65');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -63901,6 +63904,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('USOD-T9', 'approved', 0, '2026-10-22T23:02:27Z', NULL);
 
 -- ticket_work
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('G.EZ-T110', NULL, 0, NULL, 'abca3cef-f447-4d26-8e54-33f072ff6c65', '2026-11-05T05:13:01Z', '2026-11-05T05:13:01Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
