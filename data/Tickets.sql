@@ -12242,6 +12242,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T78', 'Unreal.Soulslike', 78, '2026-11-04', 'fix', 'closed', 'Night never pitch black: at most a dark, perfectly playable purple', '—', 77, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T79', 'Unreal.Soulslike', 79, '2026-11-04', 'feature', 'closed', 'Weather: rain clouds that drift across the sky and bring rain; wind that blows leaves from the trees', '—', 78, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T80', 'Unreal.Soulslike', 80, '2026-11-04', 'fix', 'closed', 'Dawn was the darkest moment of the day and night was a bright lilac: hold the night lift until the sun is 25 deg up and halve the night boost', '—', 79, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T81', 'Unreal.Soulslike', 81, '2026-11-04', 'fix', 'closed', 'Star fighter: up/down pitch controls inverted the wrong way; flip them', '—', 80, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T82', 'Unreal.Soulslike', 82, '2026-11-04', 'fix', 'closed', 'Capture stops after ~1:40: lossless 1080p60 encoder falls 60 s behind; record at hq quality', '—', 81, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T1', 'Unreal.SpaceGod', 1, '2026-11-03', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T2', 'Unreal.SpaceGod', 2, '2026-11-03', 'feature', 'closed', 'Recreate Unity.Space''s Sol system in Unreal Engine 5 (C++) as a co-op game: JPL ephemeris, ELP-2000 Moon, IAU orientation, textured bodies, gameplay/realistic scale, focus camera, shared time warp over listen-server multiplayer', 'e1b6839', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T3', 'Unreal.SpaceGod', 3, '2026-11-03', 'chore', 'closed', 'Install Unreal Engine 5.5 and its Visual Studio C++ toolchain on this workstation so Unreal.SpaceGod can be built and played', '9bb3736 bd433f3', 2, NULL);
@@ -61315,6 +61317,14 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36651, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36652, 'SET-T41', '2026-11-05T01:44:27Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36653, 'SET-T41', '2026-11-05T01:45:09Z', 'working', '255bb9ef-f86d-4708-afb0-c19afb8729e6', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36654, 'US-T75', '2026-11-05T01:47:36Z', 'working', 'c5b80518-cf93-4632-9b5d-8d9fb500bf38', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36655, 'UNR-T81', '2026-11-05T01:52:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36656, 'UNR-T82', '2026-11-05T01:52:19Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36657, 'UNR-T82', '2026-11-05T01:52:32Z', 'working', NULL, 'd7eaa32b-e907-485e-99dc-fc3968a356a9');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36658, 'UNR-T81', '2026-11-05T01:52:33Z', 'working', NULL, 'd7eaa32b-e907-485e-99dc-fc3968a356a9');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36659, 'UNR-T81', '2026-11-05T01:58:38Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36660, 'UNR-T82', '2026-11-05T01:58:39Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36661, 'UNR-T81', '2026-11-05T01:59:50Z', 'working', 'd7eaa32b-e907-485e-99dc-fc3968a356a9', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36662, 'UNR-T82', '2026-11-05T01:59:52Z', 'working', 'd7eaa32b-e907-485e-99dc-fc3968a356a9', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
