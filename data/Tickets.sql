@@ -61720,6 +61720,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45866, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45867, 'M.ORCH-T1446', '2026-11-05T13:45:55Z', 'working', NULL, '0806f8eb-3a70-4134-991f-d9cc223458e6');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45868, 'M.ORCH-T1447', '2026-11-05T13:45:56Z', 'working', NULL, '0806f8eb-3a70-4134-991f-d9cc223458e6');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45869, 'M.ORCH-T1448', '2026-11-05T13:45:57Z', 'working', NULL, '0806f8eb-3a70-4134-991f-d9cc223458e6');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (45870, 'RTO-T109', '2026-11-05T13:55:57Z', 'working', NULL, '0faa9038-c11e-4168-8c1f-5da89877640f');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -64490,6 +64491,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTO-T109', NULL, 0, NULL, '0faa9038-c11e-4168-8c1f-5da89877640f', '2026-11-05T13:55:57Z', '2026-11-05T13:55:57Z');
 
 -- ticket_notes
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (1, 'U.HARE-T54', 'ryand', '2026-10-26T04:52:58Z', 'From U.HARE-T52 (7d24220): leaving the arena past the 400 px buffer zone (LeaveArena command) currently costs a life only on the ship (PlayerHealth out-of-bounds path / ShipHealth). When this ticket wires LIVES into the session, route that out-of-bounds loss through the same session lives so both deaths count the same.');
