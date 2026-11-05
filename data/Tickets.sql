@@ -10454,6 +10454,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T159', 'SpaceGod', 159, '2026-11-05', 'fix', 'open', 'sg.Skybox shots 1 (black-void, Alpha Centauri) and 4 (binary-sunset, Wolf 359) have no ship in frame (US-T132)', 'US-T144 shots', 158, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T160', 'SpaceGod', 160, '2026-11-05', 'fix', 'open', 'Painted skies show a radial pinch/streak artifact (a pole singularity) in the black-void and azure-reef skies', 'US-T144 shots', 159, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T161', 'SpaceGod', 161, '2026-11-05', 'fix', 'open', 'Battle visuals: blown-out white arcs/discs on ships in battle (likely shield-hit effects far too bright and large at game scale); pirate ''Gallows Bird'' still drawn as a procedural truss; a launcher hardpoint shows a pink checker (missing material)', 'US-T142 screenshots 2026-11-05 (D:\Temp\SG-T143\shots\tour\21-battle-capital-ship.png)', 160, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T162', 'SpaceGod', 162, '2026-11-05', 'fix', 'open', 'Bench red on main: high-warp and economy-year at clean HEAD give BF93613840FDB047 / E2E1DE96F8CD13CC vs Bench/expected-digests.json; find which commit moved them, verify it is legitimate and record the baseline (or fix the regression)', 'US-T137 report 2026-11-05', 161, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T1', 'SpaceGod.Unity.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T1', 'SpaceGod.Unreal.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SGUC-T1', 'SpaceGod.Unreal.Cpp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
@@ -62282,6 +62283,9 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46274, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46275, 'US-T150', '2026-11-05T20:25:32Z', 'ref', 'US-T149 review', 'c16558b');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46276, 'US-T150', '2026-11-05T20:25:51Z', 'working', '8e6b88c0-5c42-417b-ae3c-a490b4ec4acc', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46277, 'US-T161', '2026-11-05T20:26:15Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46278, 'US-T162', '2026-11-05T20:33:08Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46279, 'US-T162', '2026-11-05T20:33:24Z', 'working', NULL, '8e6b88c0-5c42-417b-ae3c-a490b4ec4acc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46280, 'US-T162', '2026-11-05T20:33:55Z', 'working', '8e6b88c0-5c42-417b-ae3c-a490b4ec4acc', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
