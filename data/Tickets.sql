@@ -8933,6 +8933,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T6', 'Mods.RogueTrader.Shared', 6, '2026-11-01', 'chore', 'closed', 'Rename repo to Mods.RogueTrader.Shared for mod organization (GitHub + folder + refs)', 'ebe636c806791171800170c0a713beb08f16a358', 5, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T7', 'Mods.RogueTrader.Shared', 7, '2026-11-02', 'docs', 'open', 'Adopt MindAttic.Agency docs-site pipeline, publish README to GitHub Pages (HOUSE-LAW-14)', '—', 6, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T8', 'Mods.RogueTrader.Shared', 8, '2026-11-02', 'fix', 'closed', 'Bughunt sweep, two passes: find and fix real bugs across tracked source (user request 2026-11-02)', '—', 7, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T9', 'Mods.RogueTrader.Shared', 9, '2026-11-04', 'fix', 'closed', 'Owlcat-format mods: guarantee a non-empty Bundles folder centrally so Vortex can''t drop it (regression class behind RTO-T104)', '227f58d', 8, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTTT-T1', 'Mods.RogueTrader.TakeTurns', 1, '2026-11-01', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTTT-T2', 'Mods.RogueTrader.TakeTurns', 2, '2026-11-01', 'chore', 'closed', 'Rename repo to Mods.RogueTrader.TakeTurns for mod organization (GitHub + folder + refs)', 'd760dd74d3354944e0445037fda3dd8e08823474', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTTT-T3', 'Mods.RogueTrader.TakeTurns', 3, '2026-11-02', 'fix', 'closed', 'Bughunt sweep, two passes: find and fix real bugs across tracked source (user request 2026-11-02)', '—', 2, NULL);
@@ -61345,6 +61346,9 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36675, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36676, 'RTO-T104', '2026-11-05T03:23:36Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36677, 'RTO-T104', '2026-11-05T03:24:15Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36678, 'RTO-T104', '2026-11-05T03:24:15Z', 'ref', '—', 'dad9a6e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36679, 'RTS-T9', '2026-11-05T03:32:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36680, 'RTS-T9', '2026-11-05T03:34:56Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (36681, 'RTS-T9', '2026-11-05T03:34:56Z', 'ref', '—', '227f58d');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
