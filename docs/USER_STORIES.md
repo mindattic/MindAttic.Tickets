@@ -451,3 +451,4 @@ updated: 2026-10-12
 | M.TIX-T319 | 2026-11-05 | fix | open | 2 tests fail on main after M.TIX-T313 (friendly name), e.g. View_writes_a_page_and_a_snapshot... expects ticket JSON keys repo,id,date,type,status,summary,ref; this blocks tools/install.ps1 so the new tickets CLI (--name, graph, names, suggest-links) can't be installed; update the tests/snapshot shape and reinstall the CLI | — |
 | M.TIX-T320 | 2026-11-05 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
 | M.TIX-T321 | 2026-11-05 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
+| M.TIX-T322 | 2026-11-06 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
