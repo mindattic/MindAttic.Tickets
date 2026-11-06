@@ -10491,7 +10491,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T137', 'SpaceGod', 137, '2026-11-05', 'feature', 'closed', 'Rich communication system: hail any ship or station; ask to trade, ask for advice about the area (e.g. ''Watch out for pirates 10 klicks out at bearing 104 mark 12''), with answers generated from real sim/sensor state, faction stance and personality', 'db846a8', 136, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T138', 'SpaceGod', 138, '2026-11-05', 'feature', 'closed', 'Named pilots with life stories and careers: any pilot you interact with becomes a named character whose backstory is generated (deterministically) up to now; you can steer their career - pirate fighter rising through betrayal to pirate king, or delivered to a detention centre, rehabilitated, fighter school, pilot, officer, captain of their own capital ship', 'c87cde6', 137, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T139', 'SpaceGod', 139, '2026-11-05', 'feature', 'open', 'Dynamic stories: thousands of pregenerated story templates plus optional BYOKey LLM (player''s own API key + persona profile) voicing characters; dynamic events like stranded-ship rescues, some of which are ambushes', 'user request 2026-11-05', 138, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T140', 'SpaceGod', 140, '2026-11-05', 'feature', 'open', 'Embody limits and Influence: you can''t embody a unit currently marked in battle (no starting a fight and then hijacking the enemy); SpaceGod ''Influence'' grows as you level up and gates embodying larger/more powerful ships and named Epic entities', 'user request 2026-11-05', 139, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T140', 'SpaceGod', 140, '2026-11-05', 'feature', 'closed', 'Embody limits and Influence: you can''t embody a unit currently marked in battle (no starting a fight and then hijacking the enemy); SpaceGod ''Influence'' grows as you level up and gates embodying larger/more powerful ships and named Epic entities', '5e91fde', 139, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T141', 'SpaceGod', 141, '2026-11-05', 'chore', 'wont-do', 'Capture in-game screenshots of the Star Sparrow ships in real gameplay (dogfight demo, capital fleet, station traffic; game and realistic scale) for the USC purchase decision', 'd059883 superseded by US-T142', 140, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T142', 'SpaceGod', 142, '2026-11-05', 'feature', 'closed', 'Import Ultimate Spaceships Creator (purchased) into SpaceGod and rebuild every ship class from its modules (replacing the Star Sparrow trial; keep Star Sparrow + procedural fallbacks); unblocks US-T89/T91/T102', '355f6d4', 141, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T143', 'SpaceGod', 143, '2026-11-05', 'feature', 'closed', 'Import Space Station Creator Remastered (purchased) and rebuild stations, void stations, megastructures and derelicts from its modules (keep procedural fallback)', '784ae53', 142, NULL);
@@ -62892,6 +62892,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46785, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46786, 'US-T180', '2026-11-06T03:01:25Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46787, 'US-T180', '2026-11-06T03:01:36Z', 'working', NULL, '8e6b88c0-5c42-417b-ae3c-a490b4ec4acc');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46788, 'US-T180', '2026-11-06T03:01:52Z', 'working', '8e6b88c0-5c42-417b-ae3c-a490b4ec4acc', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46789, 'US-T140', '2026-11-06T04:13:14Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46790, 'US-T140', '2026-11-06T04:13:14Z', 'ref', 'user request 2026-11-05', '5e91fde');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -67214,6 +67216,67 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (10872, '
 - 4c37fcc''s recorded baselines reproduce exactly: they stand.
 - a7e53b2''s move (high-warp -> D387..., economy-year -> 59CF...) reproduces and its commit explains it (the gas works feed the markets): legitimate; 4c37fcc superseded it.
 - BF93613840FDB047 / E2E1DE96F8CD13CC match no committed tree (f56204d, f681f94, e9de3ba, a7e53b2, 4c37fcc all checked). They came from a bench over the shared tree with other agents'' uncommitted Core work in it (that tree gave yet other values, 21177EFC.../4EEE016A..., when I ran it). Not a regression on main and not non-determinism (every commit gave the same digest on repeat builds). No baseline change from me.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (10873, 'US-T140', 'ryand', '2026-11-06T04:13:14Z', 'US-T140 is done in 5e91fde.
+
+**The embody gate.** `Embodiables::MayEmbody(EmbodyContext, next)` is checked in SeatAuthority (on every peer, with the world passed through `LocalSession::SetGateWorld` each frame) and in the app''s TakeSeat and TogglePiloting. Its rules, in order:
+1. Anything on a body the SpaceGod''s hands already hold is free (any seat, or the helm flown): its guns, EVA crews, station and host, plus the craft it launched and their carrier.
+2. A hull marked in a battle under way is refused. You can''t start a fight and then hijack the enemy. A squad that is still closing has no battle, so its hulls can be taken.
+3. Influence: each hull asks for a level of Influence (tiers below).
+
+The HUD shows a red banner with the rule and the reason, plus a toast.
+
+**What is exempt, and why:**
+- V spawn-and-pilot and Shift+V practice: dev and practice hulls the SpaceGod made itself.
+- A loaded save''s helm: it is restored, not taken.
+- FTL and lane re-entry: the same hull carried on.
+
+All four call EnterPiloting directly. Dev-menu paths and the test harnesses (smoke, audit, co-op smoke, sg.EvaRepair, the showcase tour''s helm helper) set `SpaceGodInfluence::Waived`, which is never saved.
+
+**Influence.** SpaceGodInfluence in Embodiment/Influence:
+- Levels 1-10, needing 50·L(L−1) XP. Titles run from Whisper to Godhead.
+- One value for the galaxy, held on Polities and saved as an optional field (SG_OPT).
+- Co-op seats share it. The players together are one SpaceGod, and keeping it as world state means the gate gives the same answer on every lockstep peer.
+- XP sources:
+  - Interventions: 10 the first time a pilot is taken, 20 for each act the pilot owns on release, 25 for a squad talked down.
+  - Missions: player contracts completed.
+  - Careers steered: a pilot the SpaceGod has flown is promoted.
+- Tiers:
+  - 1: strike craft and working hulls.
+  - 2: gunship, corvette. 3: frigate, destroyer, defence platform. 4: cruiser. 5: carrier, battleship, gate fort. 6: command cruiser. 7: gate breaker.
+  - A gun or EVA crew asks two less than its hull.
+- Epic entities: a feared outlaw''s flagship asks at least 6; a pirate warlord or king, or a captain at the top of their ladder, asks at least 5.
+- The HUD meter sits at the top left and flashes on a gain.
+
+**Squad orders** (Combat/SquadOrders, alongside the HelmOrders helm orders):
+- A CloseIn is a band closing on a mark with a strike time. War::Update strikes through War::StrikeAt.
+- While a band is closing it picks no other fight on arrival, and its held captain doesn''t trigger one from the helm.
+- HelmAbility::StandDown (13) is the last slot on the bar (Shift+n). It fits CommandCodec''s five bits, so co-op carries it unchanged.
+- The crews weigh the SpaceGod''s Influence and the captain''s hold against the prize''s pull and how often they''ve argued already, with a deterministic draw. The captain''s hold comes from the US-T138 pilot: rank, renown, honour, warmth and spite, betrayals, battles survived, flagship or not, and feared or not.
+- Outcomes:
+  - Obey: the band keeps off for 12 h, and lane and gate ambushes skip it.
+  - Hesitate: the strike is held back 45 s, and you can order again.
+  - Argue: the band keeps closing, and the next order is harder.
+  - Mutiny: the band''s leader deposes the captain (BandId moves to them; Demoted and Betrayal story beats) and strikes at once.
+- The YOUR SQUAD HUD line shows the time to contact and the key.
+
+**Dev menu and tour.** The dev menu''s SpaceGod tab has: +100 XP, next level, top level, reset, limits on/off, the stand-down scenario, and order the squad. `sg.StandDown [shots dir [quit]]` runs it from the console. US-T147 has landed, so its US-T140 placeholder is now a real tour stop that runs sg.StandDown and gives the order.
+
+**Co-op.** The US-T138 held-pilot tracker now follows the same body on every peer (the helm, else the first seat held). This matters because the Influence it earns is world state.
+
+**Law.cpp:85.** Law keeps a single global player record that follows the SpaceGod from body to body. That conflicts with the rule that the player is never one pilot. Fixing it touches about 13 call sites plus save migration, so it is filed as US-T148.
+
+**Bench.** f56204d plus the Core changes: 5/5 digests unchanged. Nothing runs unless a close-in or an order exists.
+
+**Screenshots** are in scratchpad\shots\US-T140, all at game scale. They were taken on an isolated build of e9de3ba plus this ticket, which ran the full flow.
+- `refusal-influence.png`: a carrier refused at Influence 1 of 5.
+- `refusal-battle.png`: a hull in the Battle of Uranus refused.
+- `standdown-closing-game.png`: a corvette captain at Eris, "2 hulls closing on the Patient Ilse, contact in 114 s, Shift+1".
+- `standdown-answer-game.png`: an argue, hesitate, mutiny sequence; the mutineer took the band and the Battle of Eris began.
+- `influence-meter.png`: the meter at level 4 (Presence) with a +150 XP flash. It comes from the run before the last.
+
+**Not verified in the game:**
+- A realistic-scale shot of the stand-down. That run''s shot didn''t write, and the rebuild to retake it was waiting behind a long build queue, so I stopped it. The HUD elements don''t depend on scale, and the scenario is laid out in km and hull lengths.
+- The last two small edits: the freighter is now named "Patient Ilse n" instead of "MV MV …", and screenshots wait 3 s. Both are in the commit but weren''t rebuilt.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
