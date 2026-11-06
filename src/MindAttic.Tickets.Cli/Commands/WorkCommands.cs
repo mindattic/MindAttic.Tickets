@@ -125,6 +125,7 @@ public sealed class TicketDivvyCommand : Command<TicketDivvyCommand.Settings>
                 moves = plan.Moves.Select(m => new { id = m.TicketId, from = m.From, to = m.To, weight = m.Weight }),
                 shares = plan.Shares.Select(s => new { member = s.Member, tickets = s.Tickets, weight = s.Weight }),
                 leftAlone = plan.LeftAlone,
+                estimated = plan.Estimated,
             }, new JsonSerializerOptions { WriteIndented = true }));
             return 0;
         }
@@ -134,7 +135,9 @@ public sealed class TicketDivvyCommand : Command<TicketDivvyCommand.Settings>
         if (plan.LeftAlone.Count > 0)
             AnsiConsole.MarkupLine($"[grey]Left alone (being worked, or someone else's): {Output.Esc(string.Join(", ", plan.LeftAlone))}[/]");
         foreach (var s in plan.Shares)
-            AnsiConsole.MarkupLine($"{Output.Esc(s.Member)}: {s.Tickets} ticket(s), ~{TokenText.Format(s.Weight)} tokens");
+            AnsiConsole.MarkupLine($"{Output.Esc(s.Member)}: {s.Tickets} ticket(s){(plan.Estimated ? $", ~{TokenText.Format(s.Weight)} tokens" : "")}");
+        if (!plan.Estimated && plan.Shares.Any(s => s.Tickets > 0))
+            AnsiConsole.MarkupLine("[grey]No ticket has an estimate, so the shares are even by count (tickets ticket estimate --seed estimates them).[/]");
         AnsiConsole.MarkupLine(plan.Moves.Count == 0 ? "[grey]Nothing to move: the shares are already as even as they get.[/]"
             : $"[grey]{plan.Moves.Count} ticket(s) {(settings.DryRun ? "would be assigned; nothing was written" : "assigned")}.[/]");
         return 0;

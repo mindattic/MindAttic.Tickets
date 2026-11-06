@@ -38,6 +38,8 @@ public sealed class DivvyTests
         var plan = Divvy.Plan(open, [], Both);
         Assert.That(plan.Moves.Single(m => m.TicketId == "US-T3").Weight, Is.EqualTo(300));
         Assert.That(plan.Shares.Sum(s => s.Weight), Is.EqualTo(1000));
+        Assert.That(plan.Estimated, Is.True);
+        Assert.That(Divvy.Plan([T("US-T1"), T("US-T2")], [], Both).Estimated, Is.False, "no estimates: split by count");
     }
 
     [Test]

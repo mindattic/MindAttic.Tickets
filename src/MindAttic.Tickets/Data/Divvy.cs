@@ -13,7 +13,11 @@ public sealed record DivvyShare(string Member, int Tickets, long Weight);
 
 /// <summary>What a divvy changes (<see cref="Moves"/>) and where every member stands afterwards (<see cref="Shares"/>), with the
 /// tickets it left alone because they're someone else's or already being worked.</summary>
-public sealed record DivvyPlan(IReadOnlyList<DivvyMove> Moves, IReadOnlyList<DivvyShare> Shares, IReadOnlyList<string> LeftAlone);
+public sealed record DivvyPlan(IReadOnlyList<DivvyMove> Moves, IReadOnlyList<DivvyShare> Shares, IReadOnlyList<string> LeftAlone)
+{
+    /// <summary>Whether any ticket had an estimate; without one every ticket weighs 1, so the shares are even by count.</summary>
+    public bool Estimated { get; init; }
+}
 
 /// <summary>
 /// Splits a repo's open tickets between members' logins (M.TIX-T326) so two (or more) people can work one repo side by side
@@ -104,7 +108,7 @@ public static class Divvy
                 if (t.Assignee != c.To) moves.Add(new DivvyMove(t.Id, t.Assignee, c.To!, Weight(t)));
         moves.Sort((x, y) => IdOrder.Instance.Compare(x.TicketId, y.TicketId));
         leftAlone.Sort(IdOrder.Instance);
-        return new DivvyPlan(moves, [.. who.Select(m => new DivvyShare(m, count[m], load[m]))], leftAlone);
+        return new DivvyPlan(moves, [.. who.Select(m => new DivvyShare(m, count[m], load[m]))], leftAlone) { Estimated = known.Count > 0 };
     }
 
     private sealed class Chain(string first, List<DivvyTicket> tickets, long weight, string? holder, bool anchored)
