@@ -10612,6 +10612,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T218', 'SpaceGod', 218, '2026-11-06', 'chore', 'closed', 'Verification commands for tonight''s unseen features: sg.Ghost (focus a ship hidden behind another, screenshot the translucent occluder), sg.LaneRide (enter a lane, steer inside the tube, exit and log the speed easing down, screenshots), sg.CapitalRoll (log a capital''s roll/shield-facing toward its threat over time plus a burst of frames)', '60dcc94', 217, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T219', 'SpaceGod', 219, '2026-11-06', 'fix', 'closed', 'Occluder ghost too bright to see the focused target through: M_Ghost''s _GhostColor (0.35,0.75,1,0.3) is exposed to a lit-white surface, so the veil reads near opaque over a dark hull; dimmed to (0.05,0.11,0.15,0.3) (found by sg.Ghost, US-T218)', '3d7964a', 218, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T220', 'SpaceGod', 220, '2026-11-06', 'fix', 'closed', 'Speed carried out of a hyperlane never bled off: UpdateLaneWake only held the speed up to the wake''s curve, and flight assist''s retros could not shed 7204 km/s, so the hull kept the lane''s pace through the bleed and after; the wake now sets the speed (found by sg.LaneRide, US-T218)', '51ec9e3', 219, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T221', 'SpaceGod', 221, '2026-11-06', 'chore', 'closed', 'Audit probes for the swim camera near a planet (US-T184): swim.escape (start at a body''s skin, hold W away, distance must grow at the swim rate, never stall) and swim.skim (fly along the surface, must keep moving and stay outside), at both scales', '8d63eca', 220, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T222', 'SpaceGod', 222, '2026-11-06', 'fix', 'open', 'Fleet ships still destroy each other by collision: in one play.ps1 -Mode audit run the SFS Resolute broke up colliding with the SFS Dauntless (helm.pilot FAIL, 81/1; next run 88/0). US-T209''s separation should keep scheduled hulls apart and US-T177''s section collisions shouldn''t break hulls in normal traffic; find the pair''s situation and fix so it can''t recur', '—', 221, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T1', 'SpaceGod.Unity.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T1', 'SpaceGod.Unreal.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SGUC-T1', 'SpaceGod.Unreal.Cpp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
@@ -63785,6 +63787,17 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47598, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47599, 'US-T219', '2026-11-06T13:00:14Z', 'working', 'b893efa6-a92a-4c17-a01d-06c9c127a3fb', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47600, 'US-T220', '2026-11-06T13:00:15Z', 'working', 'b893efa6-a92a-4c17-a01d-06c9c127a3fb', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47601, 'US-T218', '2026-11-06T13:00:44Z', 'working', 'b893efa6-a92a-4c17-a01d-06c9c127a3fb', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47602, 'US-T221', '2026-11-06T13:01:35Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47603, 'US-T221', '2026-11-06T13:01:37Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47604, 'US-T221', '2026-11-06T13:01:38Z', 'working', NULL, 'shampoo1232@mindattic.com (b893efa6-a92a-4c17-a01d-06c9c127a3fb)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47605, 'US-T221', '2026-11-06T13:01:56Z', 'working', 'shampoo1232@mindattic.com (b893efa6-a92a-4c17-a01d-06c9c127a3fb)', 'b893efa6-a92a-4c17-a01d-06c9c127a3fb');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47606, 'US-T221', '2026-11-06T13:08:05Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47607, 'US-T221', '2026-11-06T13:08:05Z', 'ref', '—', '8d63eca');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47608, 'US-T221', '2026-11-06T13:08:15Z', 'working', 'b893efa6-a92a-4c17-a01d-06c9c127a3fb', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47609, 'US-T222', '2026-11-06T13:08:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47610, 'US-T222', '2026-11-06T13:08:28Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47611, 'US-T222', '2026-11-06T13:08:29Z', 'working', NULL, 'shampoo1232@mindattic.com (b893efa6-a92a-4c17-a01d-06c9c127a3fb)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47612, 'US-T222', '2026-11-06T13:08:44Z', 'working', 'shampoo1232@mindattic.com (b893efa6-a92a-4c17-a01d-06c9c127a3fb)', 'b893efa6-a92a-4c17-a01d-06c9c127a3fb');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -66445,6 +66458,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T218', 'approved', 0, '2026-11-06T12:31:23Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T219', 'approved', 0, '2026-11-06T12:52:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T220', 'approved', 0, '2026-11-06T12:52:31Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T221', 'approved', 0, '2026-11-06T13:01:37Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T222', 'approved', 0, '2026-11-06T13:08:28Z', NULL);
 
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
@@ -66670,6 +66685,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T222', NULL, 0, NULL, 'b893efa6-a92a-4c17-a01d-06c9c127a3fb', '2026-11-06T13:08:44Z', '2026-11-06T13:08:44Z');
 
 -- ticket_notes
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (1, 'U.HARE-T54', 'ryand', '2026-10-26T04:52:58Z', 'From U.HARE-T52 (7d24220): leaving the arena past the 400 px buffer zone (LeaveArena command) currently costs a life only on the ship (PlayerHealth out-of-bounds path / ShipHealth). When this ticket wires LIVES into the session, route that out-of-bounds loss through the same session lives so both deaths count the same.');
