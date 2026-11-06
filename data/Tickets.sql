@@ -62819,6 +62819,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46720, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46721, 'M.ORCH-T1462', '2026-11-06T00:51:31Z', 'working', NULL, '478b686e-1ac5-4c60-9fee-048a901d89f9');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46722, 'M.ORCH-T1462', '2026-11-06T00:52:02Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46723, 'MAT-T92', '2026-11-06T00:52:19Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46724, 'M.ORCH-T1462', '2026-11-06T00:52:51Z', 'working', '478b686e-1ac5-4c60-9fee-048a901d89f9', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46725, 'MAT-T92', '2026-11-06T00:52:51Z', 'working', '478b686e-1ac5-4c60-9fee-048a901d89f9', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -65422,7 +65424,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1452', NULL, 0, 'ryandebraal@gmail.com', '4f9789de-5d51-49bc-bab2-f41d9979ffef', '2026-11-05T22:56:08Z', '2026-11-05T22:56:08Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1453', NULL, 0, 'ryandebraal@gmail.com', '4f9789de-5d51-49bc-bab2-f41d9979ffef', '2026-11-05T22:56:09Z', '2026-11-05T22:56:09Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1454', NULL, 0, 'ryandebraal@gmail.com', '4f9789de-5d51-49bc-bab2-f41d9979ffef', '2026-11-05T22:56:10Z', '2026-11-05T22:56:10Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1462', NULL, 0, NULL, '478b686e-1ac5-4c60-9fee-048a901d89f9', '2026-11-06T00:51:31Z', '2026-11-06T00:51:31Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T768', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
@@ -65504,7 +65505,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T91', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T23:09:54Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T58', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:02:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T92', NULL, 0, NULL, '478b686e-1ac5-4c60-9fee-048a901d89f9', '2026-11-06T00:51:30Z', '2026-11-06T00:51:30Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T792', NULL, 0, 'ryandebraal@gmail.com', '4f9789de-5d51-49bc-bab2-f41d9979ffef', '2026-11-05T18:34:10Z', '2026-11-05T18:34:10Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
