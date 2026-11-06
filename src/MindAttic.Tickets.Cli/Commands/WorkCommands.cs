@@ -80,6 +80,67 @@ public sealed class TicketAssignCommand : Command<TicketAssignCommand.Settings>
     }
 }
 
+/// <summary><c>tickets ticket divvy --repo R --member A --member B [--rebalance] [--dry-run] [--json]</c> (M.TIX-T326): split a
+/// repo's open tickets between members' logins so they can work it side by side (see <see cref="Divvy"/>).</summary>
+public sealed class TicketDivvyCommand : Command<TicketDivvyCommand.Settings>
+{
+    public sealed class Settings : RepoSettings
+    {
+        [CommandOption("--member <EMAIL>")]
+        [Description("A member's login email (repeatable, or comma-separated): the tickets are split between them.")]
+        public string[] Members { get; init; } = [];
+
+        [CommandOption("--rebalance")]
+        [Description("Also move unstarted tickets the members already hold, just enough to even the shares (for whoever ran dry).")]
+        public bool Rebalance { get; init; }
+
+        [CommandOption("--dry-run")]
+        [Description("Show the split without assigning anything.")]
+        public bool DryRun { get; init; }
+
+        [CommandOption("--json")]
+        public bool Json { get; init; }
+
+        public IReadOnlyList<string> MemberList =>
+            [.. Members.SelectMany(m => m.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))];
+
+        public override ValidationResult Validate() =>
+            MemberList.Count == 0 ? ValidationResult.Error("name the members with --member <email> (repeatable)")
+            : MemberList.FirstOrDefault(m => TicketsDb.NormalizeEmail(m) is null) is { } bad ? ValidationResult.Error($"\"{bad}\" isn't an email address")
+            : ValidationResult.Success();
+    }
+
+    public override int Execute(CommandContext context, Settings settings)
+    {
+        var repo = settings.ResolveRepo();
+        using var db = Db.Open(settings);
+        var plan = db.Divvy(repo.Name, settings.MemberList, settings.Rebalance, settings.DryRun);
+        if (plan.Moves.Count > 0 && !settings.DryRun) Db.Rerender(db, settings);
+        if (settings.Json)
+        {
+            Console.WriteLine(JsonSerializer.Serialize(new
+            {
+                repo = repo.Name,
+                dryRun = settings.DryRun,
+                moves = plan.Moves.Select(m => new { id = m.TicketId, from = m.From, to = m.To, weight = m.Weight }),
+                shares = plan.Shares.Select(s => new { member = s.Member, tickets = s.Tickets, weight = s.Weight }),
+                leftAlone = plan.LeftAlone,
+            }, new JsonSerializerOptions { WriteIndented = true }));
+            return 0;
+        }
+        var verb = settings.DryRun ? "would go to" : "→";
+        foreach (var m in plan.Moves)
+            AnsiConsole.MarkupLine($"{Output.Esc(m.TicketId)} {verb} [bold]{Output.Esc(m.To)}[/]{(m.From is { } f ? $" [grey](from {Output.Esc(f)})[/]" : "")}");
+        if (plan.LeftAlone.Count > 0)
+            AnsiConsole.MarkupLine($"[grey]Left alone (being worked, or someone else's): {Output.Esc(string.Join(", ", plan.LeftAlone))}[/]");
+        foreach (var s in plan.Shares)
+            AnsiConsole.MarkupLine($"{Output.Esc(s.Member)}: {s.Tickets} ticket(s), ~{TokenText.Format(s.Weight)} tokens");
+        AnsiConsole.MarkupLine(plan.Moves.Count == 0 ? "[grey]Nothing to move: the shares are already as even as they get.[/]"
+            : $"[grey]{plan.Moves.Count} ticket(s) {(settings.DryRun ? "would be assigned; nothing was written" : "assigned")}.[/]");
+        return 0;
+    }
+}
+
 /// <summary><c>tickets ticket block &lt;ID&gt; --by X [--by Y] [--clear]</c>: make a ticket wait for others.</summary>
 public sealed class TicketBlockCommand : Command<TicketBlockCommand.Settings>
 {

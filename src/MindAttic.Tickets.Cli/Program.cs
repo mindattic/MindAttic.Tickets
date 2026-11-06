@@ -36,6 +36,7 @@ app.Configure(config =>
         t.AddCommand<TicketEstimateCommand>("estimate").WithDescription("Show, set (estimate <ID> 300k) or --clear a ticket's effort estimate in tokens; --seed estimates every open ticket without one from the Orchestrator's TicketCosts medians. Within a priority the queue runs the smallest first.");
         t.AddCommand<TicketBumpCommand>("bump").WithDescription("Raise (or with a negative --by, lower) a ticket's priority.");
         t.AddCommand<TicketAssignCommand>("assign").WithDescription("Assign a ticket to a member's login (assign <ID> <email>): it's dispatched only on that login; --unassign takes it off them, --redelegate hands it on like an unassigned ticket.");
+        t.AddCommand<TicketDivvyCommand>("divvy").WithDescription("Split a repo's open tickets between members' logins (--member, repeatable) so they work it side by side: balanced by estimate, prerequisite chains kept together, tickets being worked left alone; --rebalance evens unstarted work for whoever ran dry, --dry-run previews.");
         t.AddCommand<TicketBlockCommand>("block").WithDescription("Make a ticket wait for others (--by X-T1, repeatable), or --clear it.");
         t.AddCommand<TicketReserveCommand>("reserve").WithDescription("Set aside tokens for a ticket so background work can't spend them first (0 releases).");
         t.AddCommand<TicketWorkingCommand>("working").WithDescription("Record the session working a ticket now (--login, --session) or --clear it; the Orchestrator writes it, Tickets Desktop links back.");
