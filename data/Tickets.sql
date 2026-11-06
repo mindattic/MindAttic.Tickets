@@ -10541,7 +10541,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T82', 'SpaceGod', 82, '2026-11-05', 'feature', 'open', 'Boarding party system: marines/workers moving on a ship''s hull', '—', 81, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T83', 'SpaceGod', 83, '2026-11-05', 'feature', 'open', 'Port the Mech from Unreal.Soulslike into SpaceGod, with jump jets (hold Space to fly in space)', '—', 82, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T84', 'SpaceGod', 84, '2026-11-05', 'feature', 'closed', 'Metal Dyson-sphere model for all Void Stations', '74a4f0d', 83, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T85', 'SpaceGod', 85, '2026-11-05', 'feature', 'open', 'Easter egg: a Borg cube at Wolf 359', '—', 84, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T85', 'SpaceGod', 85, '2026-11-05', 'feature', 'closed', 'Easter egg: a Borg cube at Wolf 359', 'a79c8ef', 84, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T86', 'SpaceGod', 86, '2026-11-05', 'feature', 'closed', 'Jump-drive ships aim at a star and fly straight there, no loading screens', 'fede63e', 85, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T87', 'SpaceGod', 87, '2026-11-05', 'feature', 'closed', 'Flight-assist toggle: free-floating Newtonian flight (BSG Viper / The Expanse style, turn-and-burn, repel thrusters) vs an arcade dogfight compensation mode', '7d9e692', 86, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T88', 'SpaceGod', 88, '2026-11-05', 'feature', 'closed', 'Demo scenario: spawn a dogfight with the player in a ship''s cockpit against pirates in small/medium/large ships', '088d552', 87, NULL);
@@ -64615,6 +64615,10 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (48305, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (48306, 'MAT-T105', '2026-11-06T23:19:35Z', 'working', NULL, 'a0a02157-db8f-4a92-939c-b7261398af04');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (48307, 'GG-T311', '2026-11-06T23:39:14Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (48308, 'GG-T311', '2026-11-06T23:39:14Z', 'ref', 'owner 2026-11-06', '86317ed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (48309, 'MAT-T105', '2026-11-06T23:49:44Z', 'working', 'a0a02157-db8f-4a92-939c-b7261398af04', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (48310, 'US-T85', '2026-11-06T23:52:16Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (48311, 'US-T85', '2026-11-06T23:52:16Z', 'ref', '—', 'a79c8ef');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (48312, 'US-T85', '2026-11-06T23:52:54Z', 'working', 'shampoo1232@mindattic.com (9e3c5407-bc7d-4e03-870d-bf3e25af197f)', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -67412,7 +67416,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T88', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T23:35:10Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T89', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T23:30:09Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T91', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T23:09:54Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T105', 'pdftransferjr@mindattic.com', 0, NULL, 'a0a02157-db8f-4a92-939c-b7261398af04', '2026-11-06T23:19:35Z', '2026-11-06T23:19:35Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T105', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T23:49:44Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T58', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:02:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
@@ -67568,7 +67572,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T72', 'ohleo199@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:00:03Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T82', 'shampoo1232@mindattic.com', 0, 'shampoo1232@mindattic.com', '9e3c5407-bc7d-4e03-870d-bf3e25af197f', '2026-11-06T23:10:37Z', '2026-11-06T23:10:37Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T83', 'ohleo199@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:00:05Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T85', 'shampoo1232@mindattic.com', 0, 'shampoo1232@mindattic.com', '9e3c5407-bc7d-4e03-870d-bf3e25af197f', '2026-11-06T23:06:44Z', '2026-11-06T23:06:44Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T85', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T23:52:54Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T89', 'ohleo199@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:00:05Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T91', 'shampoo1232@mindattic.com', 0, 'shampoo1232@mindattic.com', '9e3c5407-bc7d-4e03-870d-bf3e25af197f', '2026-11-06T22:52:09Z', '2026-11-06T22:52:09Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T96', 'ohleo199@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:00:06Z');
