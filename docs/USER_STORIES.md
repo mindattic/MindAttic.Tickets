@@ -452,3 +452,5 @@ updated: 2026-10-12
 | M.TIX-T320 | 2026-11-05 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
 | M.TIX-T321 | 2026-11-05 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
 | M.TIX-T322 | 2026-11-06 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
+| M.TIX-T323 | 2026-11-06 | feature | open | Client machine files tickets on the host: when the Orchestrator's machine role is client (M.ORCH-T1473), ticket writes from the PC go to the host's store instead of the local mirror that each pull replaces | — |
+| M.TIX-T324 | 2026-11-06 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
