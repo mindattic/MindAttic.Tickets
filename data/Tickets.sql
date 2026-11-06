@@ -10602,6 +10602,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T208', 'SpaceGod', 208, '2026-11-06', 'fix', 'closed', 'UI screenshot audit (play.ps1 -Mode shots, 2026-11-06): Influence badge draws over full-screen screens (Manual CONTENTS, galaxy map panel); Shift+F1 DEV MENU tag overlaps Manual''s Back button and panel borders; galaxy map legend HOLDERS list spills over its help text; selection card values clipped at the right edge (Docking rings, Company, wage); market panel last row touches its border', 'd87511a', 207, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T209', 'SpaceGod', 209, '2026-11-06', 'fix', 'closed', 'Collision follow-up to US-T177: fleet ships flying scheduled paths outside battle still pass through each other and through stations; give scheduled traffic a deterministic separation/avoidance (or a section-collider pass that nudges plans) so no two hulls ever interpenetrate', '2409d4a', 208, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T210', 'SpaceGod', 210, '2026-11-06', 'fix', 'closed', 'World-space name labels (Eris, ''Tau Ceti 11.91 ly'') draw over the HUD selection card (seen in docs/images/cpp-ui-hud.png after US-T208): skip or occlude world labels whose rect falls inside a docked HUD panel''s rect', '5900072', 209, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T211', 'SpaceGod', 211, '2026-11-06', 'fix', 'closed', 'In-battle HUD overlaps (dogfight capture 2026-11-06, R:/MindAttic/Capture/SpaceGod.Unreal.Cpp/2026.11.06T11.19.01Z_*): GAS WORKS panel draws over OPPORTUNITIES at the top right; a stale line shows through the Opportunities text; world labels (URANUS SKIMMER 1) draw through the BIO MASS CONTACT banner because TopCentre banners aren''t in the label-skip rects', '898bd26', 210, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T212', 'SpaceGod', 212, '2026-11-06', 'fix', 'open', 'Battle capture (sg.BigBattle, R:/MindAttic/Capture/SpaceGod.Unreal.Cpp/2026.11.06T11.27.36Z_*): ship labels draw over the top-left NAVIGATOR and INFLUENCE panels (not in US-T210''s label-skip rects); the selection card shows a negative altitude (''Altitude -22,962,000 m'') for a battleship in the Battle of Uranus', '—', 211, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T1', 'SpaceGod.Unity.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T1', 'SpaceGod.Unreal.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SGUC-T1', 'SpaceGod.Unreal.Cpp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
@@ -63697,6 +63699,17 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47520, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47521, 'US-T209', '2026-11-06T11:09:19Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47522, 'US-T209', '2026-11-06T11:09:19Z', 'ref', '—', '2409d4a');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47523, 'US-T209', '2026-11-06T11:10:03Z', 'working', 'b893efa6-a92a-4c17-a01d-06c9c127a3fb', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47524, 'MAT-T93', '2026-11-06T11:20:13Z', 'working', NULL, 'a0a02157-db8f-4a92-939c-b7261398af04');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47525, 'US-T211', '2026-11-06T11:21:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47526, 'US-T211', '2026-11-06T11:21:24Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47527, 'US-T211', '2026-11-06T11:21:25Z', 'working', NULL, 'shampoo1232@mindattic.com (b893efa6-a92a-4c17-a01d-06c9c127a3fb)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47528, 'US-T211', '2026-11-06T11:21:30Z', 'working', 'shampoo1232@mindattic.com (b893efa6-a92a-4c17-a01d-06c9c127a3fb)', 'b893efa6-a92a-4c17-a01d-06c9c127a3fb');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47529, 'US-T211', '2026-11-06T11:26:41Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47530, 'US-T211', '2026-11-06T11:26:41Z', 'ref', '—', '898bd26');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47531, 'US-T211', '2026-11-06T11:27:04Z', 'working', 'b893efa6-a92a-4c17-a01d-06c9c127a3fb', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47532, 'US-T212', '2026-11-06T11:29:32Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47533, 'US-T212', '2026-11-06T11:29:33Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47534, 'US-T212', '2026-11-06T11:29:34Z', 'working', NULL, 'shampoo1232@mindattic.com (b893efa6-a92a-4c17-a01d-06c9c127a3fb)');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -66347,6 +66360,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T208', 'approved', 1, '2026-11-06T10:47:49Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T209', 'approved', 1, '2026-11-06T10:47:51Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T210', 'approved', 0, '2026-11-06T10:52:02Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T211', 'approved', 0, '2026-11-06T11:21:24Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T212', 'approved', 0, '2026-11-06T11:29:33Z', NULL);
 
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
@@ -66431,6 +66446,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T91', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T23:09:54Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T58', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:02:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T93', NULL, 0, NULL, 'a0a02157-db8f-4a92-939c-b7261398af04', '2026-11-06T11:20:13Z', '2026-11-06T11:20:13Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T111', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:34:40Z');
@@ -66572,6 +66588,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T212', NULL, 0, 'shampoo1232@mindattic.com', 'b893efa6-a92a-4c17-a01d-06c9c127a3fb', '2026-11-06T11:29:34Z', '2026-11-06T11:29:34Z');
 
 -- ticket_notes
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (1, 'U.HARE-T54', 'ryand', '2026-10-26T04:52:58Z', 'From U.HARE-T52 (7d24220): leaving the arena past the 400 px buffer zone (LeaveArena command) currently costs a life only on the ship (PlayerHealth out-of-bounds path / ShipHealth). When this ticket wires LIVES into the session, route that out-of-bounds loss through the same session lives so both deaths count the same.');
