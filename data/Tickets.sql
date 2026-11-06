@@ -62887,6 +62887,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46781, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46782, 'US-T164', '2026-11-06T02:07:04Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46783, 'US-T164', '2026-11-06T02:07:04Z', 'ref', 'user report 2026-11-05', '4c37fcc');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46784, 'UNR-T86', '2026-11-06T02:13:55Z', 'working', NULL, '8455a3e6-ce9b-4d4f-bb8d-a9b54da676b6');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (46785, 'UNR-T86', '2026-11-06T02:43:06Z', 'working', '8455a3e6-ce9b-4d4f-bb8d-a9b54da676b6', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -65720,7 +65721,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UNR-T86', NULL, 0, NULL, '8455a3e6-ce9b-4d4f-bb8d-a9b54da676b6', '2026-11-06T02:13:55Z', '2026-11-06T02:13:55Z');
 
 -- ticket_notes
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (1, 'U.HARE-T54', 'ryand', '2026-10-26T04:52:58Z', 'From U.HARE-T52 (7d24220): leaving the arena past the 400 px buffer zone (LeaveArena command) currently costs a life only on the ship (PlayerHealth out-of-bounds path / ShipHealth). When this ticket wires LIVES into the session, route that out-of-bounds loss through the same session lives so both deaths count the same.');
@@ -67199,6 +67199,17 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (10871, '
 - **Video** (first version of the code, before the coast fixes and the pre-roll): R:\MindAttic\Capture\SpaceGod.Unreal.Cpp\2026.11.06T01.19.48Z_SpaceGod.Unreal.Cpp\â€¦_Video.mp4. Screenshots a second apart are in the scratchpad''s shots\US-T164 and shots\US-T164\run2.
 - **Honest verdict: not hornets yet.** At 1x the fleets open 26 km apart. In the first minute the squadrons fly as formations and the capitals barely move (0.07 km/s). A Core probe over 300 s shows only 1â€“4 strafers coasting at any moment; about half of each squadron''s craft are back at their carrier rearming (U.SPC-T518), and many fighters go for fighters rather than hulls. The chase shots do show swirling, banked small craft with tracers. To read as a swarm, the speed and thrust tuning and the rearm cadence need revisiting, which is a balance call beyond this ticket.
 - **Not yet seen in game:** the final tuning (pre-roll, `MinCoastKmS`/`MaxCoastS`, squadrons skipping the run-entry approach). The Unreal build queue was jammed behind other agents'' isolated full builds. It is in the Core lib, which is built and benched.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (10872, 'US-T162', 'ryand', '2026-11-06T02:38:43Z', 'Rebased on 4c37fcc (US-T164) per the coordinator. Isolated copies, Bench.Cpp Release:
+
+| tree | sol-idle | high-warp | economy-year | battle | galaxy-ftl |
+|---|---|---|---|---|---|
+| a7e53b2 (US-T146 gas works) | - | D3870203DF02CEF5 | 59CF8A80C87658EB | - | - |
+| 4c37fcc (HEAD) | 627043C3E0EF3709 | A486C3FCC334718C | 1AA18DD9314A3F3B | ECE9D3359FA3E2E4 | 99F349A63E86F97A |
+| 4c37fcc + US-T156''s Core change (Ranges, Comms, Sensors.Record) | identical to HEAD | | | | |
+
+- 4c37fcc''s recorded baselines reproduce exactly: they stand.
+- a7e53b2''s move (high-warp -> D387..., economy-year -> 59CF...) reproduces and its commit explains it (the gas works feed the markets): legitimate; 4c37fcc superseded it.
+- BF93613840FDB047 / E2E1DE96F8CD13CC match no committed tree (f56204d, f681f94, e9de3ba, a7e53b2, 4c37fcc all checked). They came from a bench over the shared tree with other agents'' uncommitted Core work in it (that tree gave yet other values, 21177EFC.../4EEE016A..., when I ran it). Not a regression on main and not non-determinism (every commit gave the same digest on repeat builds). No baseline change from me.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
