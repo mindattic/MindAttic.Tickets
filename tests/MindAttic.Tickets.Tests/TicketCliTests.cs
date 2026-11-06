@@ -328,7 +328,7 @@ public sealed class TicketCliTests
         Assert.That(Json("--repo", "b").Select(x => x.GetProperty("id").GetString()), Is.EqualTo(new[] { "BB-T1" }));
         Assert.That(Json("--status", "open", "--type", "fix").Count, Is.EqualTo(2));
         Assert.That(Json("--since", "2026-10-01").Select(x => x.GetProperty("id").GetString()), Is.EqualTo(new[] { "AA-T2", "BB-T1" }));
-        Assert.That(Json()[0].EnumerateObject().Select(p => p.Name), Is.EqualTo(new[] { "repo", "id", "date", "type", "status", "summary", "ref", "labels" }));
+        Assert.That(Json()[0].EnumerateObject().Select(p => p.Name), Is.EqualTo(new[] { "repo", "id", "name", "date", "type", "status", "summary", "ref", "labels" }));
         Assert.That(Run("ticket", "list", "--label", "ui").Code, Is.EqualTo(1), "labels live in the ticket database, which this workspace hasn't got");
     }
 
@@ -718,7 +718,7 @@ public sealed class TicketCliTests
         var tickets = data.GetProperty("tickets").EnumerateArray().ToList();
         Assert.That(tickets.Select(t => t.GetProperty("id").GetString()), Is.EquivalentTo(new[] { "AA-T1", "BB-T1" }));
         Assert.That(tickets.Single(t => t.GetProperty("id").GetString() == "AA-T1").GetProperty("summary").GetString(), Is.EqualTo("close </script><b>x</b> & more"));
-        Assert.That(tickets[0].EnumerateObject().Select(p => p.Name), Is.EqualTo(new[] { "repo", "id", "date", "type", "status", "summary", "ref" }));
+        Assert.That(tickets[0].EnumerateObject().Select(p => p.Name), Is.EqualTo(new[] { "repo", "id", "name", "date", "type", "status", "summary", "ref", "weight", "why" }));
 
         Assert.That(Run("view", "--out", site, "--no-open", "--repo", "Nope").Code, Is.Not.Zero, "an unknown repo is an error, not an empty page");
     }
