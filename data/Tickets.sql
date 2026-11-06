@@ -10606,6 +10606,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T212', 'SpaceGod', 212, '2026-11-06', 'fix', 'closed', 'Battle capture (sg.BigBattle, R:/MindAttic/Capture/SpaceGod.Unreal.Cpp/2026.11.06T11.27.36Z_*): ship labels draw over the top-left NAVIGATOR and INFLUENCE panels (not in US-T210''s label-skip rects); the selection card shows a negative altitude (''Altitude -22,962,000 m'') for a battleship in the Battle of Uranus', '18e4818', 211, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T213', 'SpaceGod', 213, '2026-11-06', 'fix', 'closed', 'Battles anchored inside planets: ships in the Battle of Uranus sit 2,400 km from Uranus''s centre (radius ~25,362 km) per ShipStateOf live HelioKm (found by US-T212); battle anchors/hold points must sit outside the body''s surface at both scales', '4143db8', 212, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T214', 'SpaceGod', 214, '2026-11-06', 'fix', 'closed', 'Body/asteroid name labels (Vesta, Pallas, Juno) and some ship tags still draw over the news feed and opportunities panel: that label pass never checks the registered HUD rects that US-T210/T211/T212 made other labels skip (found by US-T212 capture)', '57a2bc0', 213, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T215', 'SpaceGod', 215, '2026-11-06', 'fix', 'open', 'Comms/spawn captures (sg.Comms, sg.CheatMenu Spawn): escort names double the prefix (''the MV MV Bountiful Harvest escort''); YOUR SQUAD banner draws over BIO MASS CONTACT instead of stacking in TopCentre; a HAILED toast draws behind the comms panel; spawn-menu descriptions clip without an ellipsis', '—', 214, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T1', 'SpaceGod.Unity.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T1', 'SpaceGod.Unreal.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SGUC-T1', 'SpaceGod.Unreal.Cpp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
@@ -63734,6 +63735,10 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47553, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47554, 'US-T213', '2026-11-06T11:49:06Z', 'ref', '—', '4143db8');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47555, 'MAT-T93', '2026-11-06T11:49:36Z', 'working', 'a0a02157-db8f-4a92-939c-b7261398af04', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47556, 'US-T213', '2026-11-06T11:49:37Z', 'working', 'b893efa6-a92a-4c17-a01d-06c9c127a3fb', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47557, 'US-T215', '2026-11-06T11:51:28Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47558, 'US-T215', '2026-11-06T11:51:29Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47559, 'US-T215', '2026-11-06T11:51:30Z', 'working', NULL, 'shampoo1232@mindattic.com (b893efa6-a92a-4c17-a01d-06c9c127a3fb)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (47560, 'US-T215', '2026-11-06T11:52:03Z', 'working', 'shampoo1232@mindattic.com (b893efa6-a92a-4c17-a01d-06c9c127a3fb)', 'b893efa6-a92a-4c17-a01d-06c9c127a3fb');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -66388,6 +66393,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T212', 'approved', 0, '2026-11-06T11:29:33Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T213', 'approved', 0, '2026-11-06T11:33:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T214', 'approved', 0, '2026-11-06T11:33:42Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T215', 'approved', 0, '2026-11-06T11:51:29Z', NULL);
 
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
@@ -66613,6 +66619,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T215', NULL, 0, NULL, 'b893efa6-a92a-4c17-a01d-06c9c127a3fb', '2026-11-06T11:52:03Z', '2026-11-06T11:52:03Z');
 
 -- ticket_notes
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (1, 'U.HARE-T54', 'ryand', '2026-10-26T04:52:58Z', 'From U.HARE-T52 (7d24220): leaving the arena past the 400 px buffer zone (LeaveArena command) currently costs a life only on the ship (PlayerHealth out-of-bounds path / ShipHealth). When this ticket wires LIVES into the session, route that out-of-bounds loss through the same session lives so both deaths count the same.');
