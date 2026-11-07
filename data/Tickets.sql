@@ -9104,6 +9104,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T262', 'Mods.RogueTrader.Brevity', 262, '2026-11-04', 'fix', 'open', 'Save load crash: LoadGameException failed to load blueprint by guid f09f0c2891084ad2abc5bd8113a0eb80', '—', 261, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T263', 'Mods.RogueTrader.Brevity', 263, '2026-11-06', 'feature', 'closed', 'Add .github/workflows/publish.yml using Nexus-Mods/upload-action to push a new file version to the mod''s Nexus page (mod 651) on release, plus nexus.json config for the local /publish fallback', 'f427c8b', 262, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T264', 'Mods.RogueTrader.Brevity', 264, '2026-11-06', 'chore', 'closed', 'Set NEXUSMODS_API_KEY GitHub secret for publish workflow', '—', 263, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T265', 'Mods.RogueTrader.Brevity', 265, '2026-11-06', 'chore', 'closed', 'Set real Nexus fileId (2661) in nexus.json', '6945469', 264, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T1', 'Mods.RogueTrader.Overwatch', 1, '2026-10-26', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T2', 'Mods.RogueTrader.Overwatch', 2, '2026-10-26', 'feature', 'closed', 'Create the RogueTrader.Overwatch repo: Overwatch abilities on every ranged weapon for heroes and enemies (Reaction Shot, Overwatch, Suppression)', '3d014c5', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T3', 'Mods.RogueTrader.Overwatch', 3, '2026-10-26', 'chore', 'closed', 'Build the mod without Unity: script that assembles the Owlcat mod folder (manifest, settings, blueprints, patches, enGB) and installs/enables it', '5873bbc', 2, NULL);
@@ -9218,6 +9219,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T112', 'Mods.RogueTrader.Overwatch', 112, '2026-11-05', 'feature', 'closed', 'Move all granted-to-party abilities to the end of the 2nd action bar row', 'e039ba0', 111, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T113', 'Mods.RogueTrader.Overwatch', 113, '2026-11-06', 'feature', 'closed', 'Add .github/workflows/publish.yml using Nexus-Mods/upload-action to push a new file version to the mod''s Nexus page on release, plus nexus.json config for the local /publish fallback', '8af0aa2', 112, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T114', 'Mods.RogueTrader.Overwatch', 114, '2026-11-06', 'chore', 'closed', 'Set NEXUSMODS_API_KEY GitHub secret for publish workflow', '—', 113, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T115', 'Mods.RogueTrader.Overwatch', 115, '2026-11-06', 'chore', 'closed', 'Set real Nexus modId (677) and fileId (2710) in nexus.json', '1fd5047', 114, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T1', 'Mods.RogueTrader.Shared', 1, '2026-10-26', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T2', 'Mods.RogueTrader.Shared', 2, '2026-10-26', 'feature', 'closed', 'Create RogueTrader.Shared: source-shared build setup and helpers for Rogue Trader mods (Brevity, Overwatch, future ones)', '311f523', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTS-T3', 'Mods.RogueTrader.Shared', 3, '2026-10-26', 'fix', 'closed', 'Release zips drop empty folders an Owlcat mod needs (Bundles), and mods built from a worktree can''t find RogueTrader.Shared', 'bf259fb', 2, NULL);
@@ -10748,7 +10750,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T233', 'SpaceGod', 233, '2026-11-06', 'feature', 'closed', 'A --headless launch flag so the game runs with no window for scripted testing', 'fe5b546', 232, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T234', 'SpaceGod', 234, '2026-11-06', 'feature', 'open', 'Adopt the shared off-by-default --headless launch mode (Unreal.Shared)', '—', 233, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T1', 'SpaceGod.Unity.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T2', 'SpaceGod.Unity.CSharp', 2, '2026-11-06', 'feature', 'open', 'Adopt the shared off-by-default --headless launch mode (Unity.Shared)', '—', 1, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T2', 'SpaceGod.Unity.CSharp', 2, '2026-11-06', 'feature', 'closed', 'Adopt the shared off-by-default --headless launch mode (Unity.Shared)', 'faadbca', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T1', 'SpaceGod.Unreal.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T2', 'SpaceGod.Unreal.CSharp', 2, '2026-11-06', 'feature', 'open', 'Adopt the shared off-by-default --headless launch mode (Unreal.Shared)', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SGUC-T1', 'SpaceGod.Unreal.Cpp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
@@ -12840,7 +12842,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RON-T19', 'UnityRonin', 19, '2026-10-22', 'docs', 'closed', 'Update USER_STORIES.md', '—', 18, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RON-T20', 'UnityRonin', 20, '2026-11-02', 'fix', 'closed', 'Bughunt sweep, two passes: find and fix real bugs across tracked source (user request 2026-11-02)', '—', 19, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RON-T21', 'UnityRonin', 21, '2026-11-02', 'fix', 'closed', 'Fix the open items the 2026-11-02 bughunt left for decision (camera-relative steering, duel squaring-up, joystick ring clamp, font GUID; publish via unarchive/re-archive)', '—', 20, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RON-T22', 'UnityRonin', 22, '2026-11-06', 'feature', 'open', 'Adopt the shared off-by-default --headless launch mode (Unity.Shared)', '—', 21, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RON-T22', 'UnityRonin', 22, '2026-11-06', 'feature', 'closed', 'Adopt the shared off-by-default --headless launch mode (Unity.Shared)', 'd69fbe3', 21, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNRE-T1', 'Unreal.Shared', 1, '2026-11-06', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNRE-T2', 'Unreal.Shared', 2, '2026-11-06', 'feature', 'closed', 'A shared Unreal plugin with an off-by-default --headless mode for every MindAttic Unreal game', 'e192c42', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T1', 'Unreal.Soulslike', 1, '2026-11-03', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
@@ -65177,6 +65179,30 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58176, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58177, 'RTO-T114', '2026-11-07T04:56:21Z', 'working', NULL, '80b48800-244c-4e16-9ba8-fa123b1a33d8');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58178, 'RTB-T264', '2026-11-07T04:56:31Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58179, 'RTO-T114', '2026-11-07T04:56:33Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58180, 'RTB-T264', '2026-11-07T04:57:10Z', 'working', '80b48800-244c-4e16-9ba8-fa123b1a33d8', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58181, 'RTO-T114', '2026-11-07T04:57:10Z', 'working', '80b48800-244c-4e16-9ba8-fa123b1a33d8', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58182, 'GG-T318', '2026-11-07T05:00:21Z', 'working', '04f51e79-4363-468f-b7a5-411cfdb257aa', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58183, 'GG-T319', '2026-11-07T05:00:22Z', 'working', '04f51e79-4363-468f-b7a5-411cfdb257aa', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58184, 'GG-T320', '2026-11-07T05:00:22Z', 'working', '04f51e79-4363-468f-b7a5-411cfdb257aa', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58185, 'GG-T321', '2026-11-07T05:00:23Z', 'working', '04f51e79-4363-468f-b7a5-411cfdb257aa', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58186, 'GG-T322', '2026-11-07T05:00:23Z', 'working', '04f51e79-4363-468f-b7a5-411cfdb257aa', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58187, 'M.ORCH-T1511', '2026-11-07T05:01:34Z', 'working', 'bd67fe50-4ff9-488f-aef0-b3d39e0077ff', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58188, 'M.ORCH-T1512', '2026-11-07T05:01:35Z', 'working', 'bd67fe50-4ff9-488f-aef0-b3d39e0077ff', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58189, 'M.ORCH-T1513', '2026-11-07T05:01:36Z', 'working', 'bd67fe50-4ff9-488f-aef0-b3d39e0077ff', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58190, 'U.RON-T22', '2026-11-07T05:03:23Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58191, 'U.RON-T22', '2026-11-07T05:03:23Z', 'ref', '—', 'd69fbe3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58192, 'SPA-T2', '2026-11-07T05:04:47Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58193, 'SPA-T2', '2026-11-07T05:04:47Z', 'ref', '—', 'faadbca');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58194, 'RTB-T265', '2026-11-07T05:05:15Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58195, 'RTO-T115', '2026-11-07T05:05:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58196, 'RTB-T265', '2026-11-07T05:05:29Z', 'working', NULL, '80b48800-244c-4e16-9ba8-fa123b1a33d8');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58197, 'RTO-T115', '2026-11-07T05:05:30Z', 'working', NULL, '80b48800-244c-4e16-9ba8-fa123b1a33d8');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58198, 'RTB-T265', '2026-11-07T05:05:54Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58199, 'RTB-T265', '2026-11-07T05:05:54Z', 'ref', '—', '6945469');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58200, 'RTO-T115', '2026-11-07T05:05:56Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58201, 'RTO-T115', '2026-11-07T05:05:56Z', 'ref', '—', '1fd5047');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58202, 'RTB-T265', '2026-11-07T05:06:00Z', 'working', '80b48800-244c-4e16-9ba8-fa123b1a33d8', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58203, 'RTO-T115', '2026-11-07T05:06:01Z', 'working', '80b48800-244c-4e16-9ba8-fa123b1a33d8', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -67909,15 +67935,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T99', 'approved', 0, '2026-11-06T21:27:47Z', NULL);
 
 -- ticket_work
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T318', NULL, 0, NULL, '04f51e79-4363-468f-b7a5-411cfdb257aa', '2026-11-07T04:31:59Z', '2026-11-07T04:31:59Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T319', NULL, 0, NULL, '04f51e79-4363-468f-b7a5-411cfdb257aa', '2026-11-07T04:31:59Z', '2026-11-07T04:31:59Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T320', NULL, 0, NULL, '04f51e79-4363-468f-b7a5-411cfdb257aa', '2026-11-07T04:32:00Z', '2026-11-07T04:32:00Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T321', NULL, 0, NULL, '04f51e79-4363-468f-b7a5-411cfdb257aa', '2026-11-07T04:32:01Z', '2026-11-07T04:32:01Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T322', NULL, 0, NULL, '04f51e79-4363-468f-b7a5-411cfdb257aa', '2026-11-07T04:32:01Z', '2026-11-07T04:32:01Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1511', NULL, 0, NULL, 'bd67fe50-4ff9-488f-aef0-b3d39e0077ff', '2026-11-07T04:39:41Z', '2026-11-07T04:39:41Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1512', NULL, 0, NULL, 'bd67fe50-4ff9-488f-aef0-b3d39e0077ff', '2026-11-07T04:48:59Z', '2026-11-07T04:48:59Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1513', NULL, 0, NULL, 'bd67fe50-4ff9-488f-aef0-b3d39e0077ff', '2026-11-07T04:53:24Z', '2026-11-07T04:53:24Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T768', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
@@ -68138,11 +68156,9 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T244', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T12:16:52Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T245', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T12:21:41Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T246', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T12:22:17Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T264', NULL, 0, NULL, '80b48800-244c-4e16-9ba8-fa123b1a33d8', '2026-11-07T04:56:20Z', '2026-11-07T04:56:20Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTO-T114', NULL, 0, NULL, '80b48800-244c-4e16-9ba8-fa123b1a33d8', '2026-11-07T04:56:21Z', '2026-11-07T04:56:21Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T100', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T23:10:16Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T102', 'ohleo199@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:00:07Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T104', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:16:25Z');
