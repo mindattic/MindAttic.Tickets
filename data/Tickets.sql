@@ -11400,7 +11400,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T316', 'Unity.GridGame', 316, '2026-11-06', 'fix', 'closed', 'Forced-Guard/Rally eats a 3-hero party''s action economy: Green Valley I near-unwinnable at difficulty 10 after GG-T311/GG-T306', '26f32be GG-T318', 315, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T317', 'Unity.GridGame', 317, '2026-11-06', 'fix', 'open', '''Ward!'' proc banner renders off-stage horizontally at the 9:23 ultratall aspect', 'found via GG-T313''s aspect sweep screenshots, artifacts/sixhero/9x23-ultratall-wave4-battle.png', 316, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T318', 'Unity.GridGame', 318, '2026-11-06', 'feature', 'closed', 'Timeline core: uniform icon flow, Speed sets re-entry position (avg 4s), recovery interval + spacing scheduler (owner, Grandia-inspired)', '0b7811d', 317, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T319', 'Unity.GridGame', 319, '2026-11-06', 'feature', 'open', 'Timeline UI: 6s bar, recovery tray with countdown, fly-to-tray and slide-in animations', '—', 318, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T319', 'Unity.GridGame', 319, '2026-11-06', 'feature', 'closed', 'Timeline UI: 6s bar, recovery tray with countdown, fly-to-tray and slide-in animations', 'cc06ef4', 318, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T320', 'Unity.GridGame', 320, '2026-11-06', 'feature', 'closed', 'HeroBot values uniform-rate Slow and re-entry pushback; heavy enemy attacks carry RecoverSeconds', 'd623381', 319, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T321', 'Unity.GridGame', 321, '2026-11-06', 'chore', 'open', 'Gap histogram soak + balance tuning of MinGap/MaxSpread/RecoverBase against plan targets; closes GG-T316', '—', 320, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T322', 'Unity.GridGame', 322, '2026-11-06', 'docs', 'closed', 'BIBLE §2/§2.1/§2.12/§22.9, AMENDMENTS, USER_STORIES for speed-as-entry timeline', 'bf7de02', 321, NULL);
@@ -65377,6 +65377,9 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58358, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58359, 'M.ORCH-T1470', '2026-11-07T05:36:29Z', 'ref', 'main@01d17d9', 'f5636711');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58360, 'GG-T322', '2026-11-07T05:37:28Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58361, 'GG-T322', '2026-11-07T05:37:28Z', 'ref', '—', 'bf7de02');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58362, 'GG-T323', '2026-11-07T05:53:39Z', 'working', 'b893efa6-a92a-4c17-a01d-06c9c127a3fb', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58363, 'GG-T319', '2026-11-07T05:54:58Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58364, 'GG-T319', '2026-11-07T05:54:58Z', 'ref', '—', 'cc06ef4');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -68117,7 +68120,6 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T99', 'approved', 0, '2026-11-06T21:27:47Z', NULL);
 
 -- ticket_work
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T323', NULL, 0, NULL, 'b893efa6-a92a-4c17-a01d-06c9c127a3fb', '2026-11-07T05:20:58Z', '2026-11-07T05:20:58Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T448', NULL, 0, NULL, 'ed09ecf3-4ba4-42ed-9489-a892ed509726', '2026-11-07T05:29:01Z', '2026-11-07T05:29:01Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
