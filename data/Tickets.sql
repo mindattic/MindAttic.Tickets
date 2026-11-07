@@ -5132,6 +5132,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T449', 'IdiotProof', 449, '2026-11-07', 'chore', 'open', 'Full backup of IdiotProof data: the nightly Launcher backup on R: (2026-11-06, 2026-11-07) has no Databases folder even though BackupCommand discovers LocalDB and runs BACKUP DATABASE, so IdiotProof, IdiotProof_Research_GAP and the other LocalDB databases are unprotected; D:\IdiotProofData (gapper-study minute bars, ~30 GB) is outside the backed-up D:\Projects\MindAttic tree', '—', 448, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T450', 'IdiotProof', 450, '2026-11-07', 'feature', 'open', 'Gapper study amendment 02, registered before results: H18 news-triggered entry (buy a catalyst second-hand 1-5 minutes after publication, exit on velocity death/VWAP loss/before or into the bell) as a weighted population grid with SPA/DSR, H19 pre-publication drift (does price run before the headline, i.e. does someone know), H20 how fast the second-hand edge decays with latency', '—', 449, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T451', 'IdiotProof', 451, '2026-11-07', 'feature', 'open', 'Gapper study amendment 03: register and implement a Corobs (correlithm object) look-alike detector on the 08:00 population panel, scored separately from the logistic detector and the catalyst-latency benchmark, alone and combined, plus a novelty score, so the data says whether it works alone, plugged in, or not at all', '—', 450, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T452', 'IdiotProof', 452, '2026-11-07', 'docs', 'open', 'Plan the gapper study''s exploratory round on the train split only: rolling folds inside train, an exploration ledger that counts every trial, detection/decision-time/catalyst/Corobs/entry/exit/fade/news-ride tracks, finalist criteria, and the amendment-04 registration path to validation and the one holdout run', '—', 451, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T453', 'IdiotProof', 453, '2026-11-07', 'feature', 'open', 'Build the gapper study''s train-only explore stage per explore-plan.md: split guard, rolling folds with embargo, trial ledger, in-memory features from the bar store via the shared formation code, a pure weighted gradient-boosted tree learner, and the first tracks (decision-time visibility curve, detection learners, exit timing)', '—', 452, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T1', 'JellyFinPoster', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| JFP-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T2', 'JellyFinPoster', 2, '2026-10-16', 'chore', 'closed', 'install.ps1 adds this repo''s 9 .prose/commands stubs for the shared global commands, so any LLM client finds them', 'mindattic-agent-standard/install.ps1 run 2026-10-16', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T3', 'JellyFinPoster', 3, '2026-10-16', 'chore', 'closed', 'Bug hunt: run an exhaustive /bughunt over the whole repo and fix every real bug found (each fix under its own fix ticket), then hunt again; close this only when a full pass finds nothing', '9a5f84c', 2, NULL);
@@ -65872,6 +65874,15 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58791, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58792, 'M.ORCH-T1446', '2026-11-07T16:05:01Z', 'approval', 'proposed', 'approved');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58793, 'M.ORCH-T1446', '2026-11-07T16:05:02Z', 'priority', '0', '3');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58794, 'IP-T451', '2026-11-07T16:12:04Z', 'working', 'ed09ecf3-4ba4-42ed-9489-a892ed509726', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58795, 'IP-T452', '2026-11-07T16:19:54Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58796, 'IP-T452', '2026-11-07T16:19:54Z', 'name', NULL, 'Gapper exploratory round plan');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58797, 'M.ORCH-T1446', '2026-11-07T16:19:59Z', 'working', NULL, 'SnowCrash-19761');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58798, 'IP-T452', '2026-11-07T16:20:18Z', 'working', NULL, 'ed09ecf3-4ba4-42ed-9489-a892ed509726');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58799, 'M.ORCH-T1446', '2026-11-07T16:20:19Z', 'working', 'SnowCrash-19761', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58800, 'IP-T452', '2026-11-07T16:20:59Z', 'working', 'ed09ecf3-4ba4-42ed-9489-a892ed509726', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58801, 'IP-T453', '2026-11-07T16:23:40Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58802, 'IP-T453', '2026-11-07T16:23:40Z', 'name', NULL, 'Gapper explore stage');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58803, 'IP-T453', '2026-11-07T16:23:56Z', 'working', NULL, 'ed09ecf3-4ba4-42ed-9489-a892ed509726');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -68619,6 +68630,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T99', 'proposed', 0, '2026-11-07T06:47:27Z', NULL);
 
 -- ticket_work
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T453', NULL, 0, NULL, 'ed09ecf3-4ba4-42ed-9489-a892ed509726', '2026-11-07T16:23:56Z', '2026-11-07T16:23:56Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1427', NULL, 0, 'ohleo199@mindattic.com', 'bd67fe50-4ff9-488f-aef0-b3d39e0077ff', '2026-11-07T07:51:33Z', '2026-11-07T07:51:33Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1482', NULL, 0, 'ohleo199@mindattic.com', 'bd67fe50-4ff9-488f-aef0-b3d39e0077ff', '2026-11-07T07:21:05Z', '2026-11-07T07:21:05Z');
@@ -84333,6 +84345,8 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T448', 'Gapper s
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T449', 'Full IdiotProof data backup', '2026-11-07T07:09:04Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T450', 'Gapper amendment 02 news-ride', '2026-11-07T07:09:43Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T451', 'Corobs gapper detector amendment', '2026-11-07T15:58:30Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T452', 'Gapper exploratory round plan', '2026-11-07T16:19:54Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T453', 'Gapper explore stage', '2026-11-07T16:23:40Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1446', 'Usage tab', '2026-11-07T16:04:57Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1493', 'Pagefile backstop script', '2026-11-07T02:21:10Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1494', 'Memory guard pace step', '2026-11-07T02:21:11Z');
