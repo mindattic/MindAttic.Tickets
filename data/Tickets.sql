@@ -65871,6 +65871,7 @@ same screen would confuse the two.
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58791, 'M.ORCH-T1446', '2026-11-07T16:04:57Z', 'name', NULL, 'Usage tab');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58792, 'M.ORCH-T1446', '2026-11-07T16:05:01Z', 'approval', 'proposed', 'approved');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58793, 'M.ORCH-T1446', '2026-11-07T16:05:02Z', 'priority', '0', '3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58794, 'IP-T451', '2026-11-07T16:12:04Z', 'working', 'ed09ecf3-4ba4-42ed-9489-a892ed509726', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -68618,7 +68619,6 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T99', 'proposed', 0, '2026-11-07T06:47:27Z', NULL);
 
 -- ticket_work
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T451', NULL, 0, NULL, 'ed09ecf3-4ba4-42ed-9489-a892ed509726', '2026-11-07T15:58:35Z', '2026-11-07T15:58:35Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1427', NULL, 0, 'ohleo199@mindattic.com', 'bd67fe50-4ff9-488f-aef0-b3d39e0077ff', '2026-11-07T07:51:33Z', '2026-11-07T07:51:33Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1482', NULL, 0, 'ohleo199@mindattic.com', 'bd67fe50-4ff9-488f-aef0-b3d39e0077ff', '2026-11-07T07:21:05Z', '2026-11-07T07:21:05Z');
