@@ -11409,6 +11409,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T323', 'Unity.GridGame', 323, '2026-11-06', 'feature', 'open', 'Adopt the shared off-by-default --headless launch mode (Unity.Shared)', '—', 322, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T324', 'Unity.GridGame', 324, '2026-11-06', 'fix', 'open', 'Core suite on BRAVE: 28 failures predating GG-T318 - validator fixtures lack Thumbnail/own Support, an enemy at base Speed 14 (not a tier), missing chronomancer portrait, a hero spell costing 0, branch interleave, Ten_cycle camp never slots (only passives learned), and real-content tests racing a shared cache when run in parallel', '0b7811d', 323, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T325', 'Unity.GridGame', 325, '2026-11-06', 'chore', 'closed', 'Merge the BRAVE branch (Resonance-style timeline rework) into main', '0b7811d', 324, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T326', 'Unity.GridGame', 326, '2026-11-07', 'chore', 'closed', 'Owner: BRAVE is permanent - merge it into main and switch the checkout back to main', 'cc06ef4', 325, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.ISO-T1', 'Unity.Isometric', 1, '2026-10-22', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.ISO-T2', 'Unity.Isometric', 2, '2026-10-22', 'chore', 'wont-do', 'Bootstrap Unity 6 project (6000.4.3f1), engine-free Core + NUnit Tests/Core.Tests, workspace docs, and docs/RECONSTRUCTION.md + docs/BIBLE.md reverse-engineered from the 2013 GameMaker Isometric.gmx source', 'port cancelled by user; repo deleted', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UM-T1', 'Unity.Multiplayer', 1, '2026-10-20', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
@@ -65395,6 +65396,10 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58374, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58375, 'OS-T25', '2026-11-07T06:16:06Z', 'ref', 'main@5b96adf', 'passes on main@9dc8310');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58376, 'OS-T29', '2026-11-07T06:16:07Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58377, 'OS-T29', '2026-11-07T06:16:07Z', 'ref', 'main@5b96adf', 'passes on main@9dc8310');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58378, 'GG-T326', '2026-11-07T06:36:50Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58379, 'GG-T326', '2026-11-07T06:36:50Z', 'name', NULL, 'Merge BRAVE into main');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58380, 'GG-T326', '2026-11-07T06:37:15Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (58381, 'GG-T326', '2026-11-07T06:37:15Z', 'ref', '—', 'cc06ef4');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -83789,6 +83794,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T322', 'Re-entry
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T323', 'Headless test flag', '2026-11-07T04:33:32Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T324', 'Pre-existing core test failures', '2026-11-07T05:19:44Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T325', 'Merge BRAVE into main', '2026-11-07T05:20:01Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T326', 'Merge BRAVE into main', '2026-11-07T06:36:50Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T448', 'Gapper study population amendment', '2026-11-07T05:28:30Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1493', 'Pagefile backstop script', '2026-11-07T02:21:10Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1494', 'Memory guard pace step', '2026-11-07T02:21:11Z');
