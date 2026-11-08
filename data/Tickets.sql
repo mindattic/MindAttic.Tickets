@@ -13059,7 +13059,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T16', 'Unreal.Eve', 16, '2026-11-08', 'feature', 'closed', 'ExperimentEve''s gun tinkering: each gun carries one movable part (match barrel, choke, extended magazine, rapid trigger) whose bonus applies to whichever gun holds it; the field menu moves parts between guns; parts are saved', '—', 15, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T17', 'Unreal.Eve', 17, '2026-11-08', 'feature', 'closed', 'The plan''s Bonus Point menu also buys bag slots (2 BP, up to +6) and Parasite Energy (+5 max PE per BP), not only Active Time; saved as optional fields.', '—', 16, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T18', 'Unreal.Eve', 18, '2026-11-08', 'feature', 'closed', 'The plan''s clothing-as-armour: Kat wears one garment whose Defense cuts each hit, capped at a third of it; she starts in her jacket and finds a patrol vest in the Kingsport Foods storeroom; worn armour is saved.', '—', 17, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T19', 'Unreal.Eve', 19, '2026-11-08', 'feature', 'open', 'The plan''s one-time Observer help in the Mother fight: at her first brood the Observer kills the nave lights, her weak point glows and is revealed (a Core rule and cue, so it replays).', '—', 18, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T19', 'Unreal.Eve', 19, '2026-11-08', 'feature', 'closed', 'The plan''s one-time Observer help in the Mother fight: at her first brood the Observer kills the nave lights, her weak point glows and is revealed (a Core rule and cue, so it replays).', '—', 18, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T20', 'Unreal.Eve', 20, '2026-11-08', 'feature', 'open', 'Wire the ported FScreenEncounterRule: camera zones are screens (overlap = adjacent); the waterfront and Market Square roam, so coming back to them after going somewhere far can raise a pack in a loose ring around Kat; never during the self-play''s scripted route.', '—', 19, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T1', 'Unreal.Playground', 1, '2026-11-03', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T2', 'Unreal.Playground', 2, '2026-11-03', 'feature', 'closed', 'Scaffold co-op souls-like demo: third-person combat on isolated Hebrides island (dodge roll, block, parry, X/Y light/heavy attacks, RB heal)', 'b21f31c', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T3', 'Unreal.Playground', 3, '2026-11-03', 'feature', 'open', 'Playable demo: terrain-shaped Hebrides island surrounded by water, free meshes, working battle system, skeleton enemies that attack the player', '—', 2, NULL);
@@ -67007,6 +67008,11 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59734, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59735, 'UE-T19', '2026-11-08T17:36:44Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59736, 'UE-T19', '2026-11-08T17:36:44Z', 'name', NULL, 'The Observer cuts the nave lights');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59737, 'UE-T19', '2026-11-08T17:37:02Z', 'working', NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59738, 'UE-T19', '2026-11-08T17:49:07Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59739, 'UE-T19', '2026-11-08T17:49:23Z', 'working', '0682ffdc-527f-458f-a097-caa357dfd4aa', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59740, 'UE-T20', '2026-11-08T17:50:11Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59741, 'UE-T20', '2026-11-08T17:50:11Z', 'name', NULL, 'Random encounters on returning to a screen');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59742, 'UE-T20', '2026-11-08T17:50:20Z', 'working', NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -70041,7 +70047,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UE-T19', NULL, 0, NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa', '2026-11-08T17:37:02Z', '2026-11-08T17:37:02Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UE-T20', NULL, 0, NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa', '2026-11-08T17:50:20Z', '2026-11-08T17:50:20Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T100', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T23:10:16Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T104', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:16:25Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T117', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T07:02:04Z');
@@ -86027,6 +86033,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T17', 'Bonus Poi
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T18', 'Clothing as armour', '2026-11-08T16:42:31Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T19', 'The Observer cuts the nave lights', '2026-11-08T17:36:44Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T2', 'Repo scaffold', '2026-11-08T05:47:42Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T20', 'Random encounters on returning to a screen', '2026-11-08T17:50:11Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T3', 'EveCore rules port', '2026-11-08T05:47:43Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T4', 'Camera graybox', '2026-11-08T05:47:44Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T5', 'Kat character', '2026-11-08T05:47:46Z');
