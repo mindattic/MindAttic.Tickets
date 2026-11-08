@@ -13084,7 +13084,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T28', 'Unreal.Eve', 28, '2026-11-08', 'feature', 'closed', 'Port Unity.Eve''s LightFlicker: a few lamps (a yard lamp, a waterfront lamp, Kingsport Foods'' ceiling light) mostly steady with irregular dropouts.', '—', 27, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T29', 'Unreal.Eve', 29, '2026-11-08', 'fix', 'closed', 'Review the day''s new systems for real bugs and fix them. First: a container with a full bag kept everything it found for the next search, duplicating what was already taken.', '—', 28, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T30', 'Unreal.Eve', 30, '2026-11-08', 'feature', 'closed', 'UE-T7 stand-ins until Fab meshes: every species built from engine shapes (rat knot with a lamprey tail, serpent chain, coil with leech tendrils, bat and drone wings, crawler legs, the brute and Tom Mercer, the Mother''s core with four graft tentacles and a heart), animated procedurally (gait by speed, undulation, wing flap, arm swing, pulse, lunge on strike); severed grafts vanish and a Mitosis tumour shows. Port of Unity.Eve''s ProceduralCreature idea.', '—', 29, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T31', 'Unreal.Eve', 31, '2026-11-08', 'feature', 'open', 'UE-T5 stand-in until the MetaHuman: Kat built from engine shapes (legs stepping with her real speed, teal scrubs under a leather jacket, swinging arms, head and hair) instead of a bare cylinder, sharing the chimera bodies'' limb posing.', '—', 30, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T31', 'Unreal.Eve', 31, '2026-11-08', 'feature', 'closed', 'UE-T5 stand-in until the MetaHuman: Kat built from engine shapes (legs stepping with her real speed, teal scrubs under a leather jacket, swinging arms, head and hair) instead of a bare cylinder, sharing the chimera bodies'' limb posing.', '—', 30, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T32', 'Unreal.Eve', 32, '2026-11-08', 'feature', 'open', 'The plan''s rain, without authored Niagara assets: one instanced mesh of thin streaks falling slanted around Kat, never under a roof (the interiors'' boxes); a small splash ring at the ground.', '—', 31, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T1', 'Unreal.Playground', 1, '2026-11-03', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T2', 'Unreal.Playground', 2, '2026-11-03', 'feature', 'closed', 'Scaffold co-op souls-like demo: third-person combat on isolated Hebrides island (dodge roll, block, parry, X/Y light/heavy attacks, RB heal)', 'b21f31c', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T3', 'Unreal.Playground', 3, '2026-11-03', 'feature', 'open', 'Playable demo: terrain-shaped Hebrides island surrounded by water, free meshes, working battle system, skeleton enemies that attack the player', '—', 2, NULL);
@@ -67199,6 +67200,13 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59901, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59902, 'UE-T30', '2026-11-08T19:49:18Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59903, 'UE-T31', '2026-11-08T19:49:38Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59904, 'UE-T31', '2026-11-08T19:49:38Z', 'name', NULL, 'Procedural Kat');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59905, 'UE-T31', '2026-11-08T19:49:57Z', 'working', NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59906, 'UE-T30', '2026-11-08T19:49:57Z', 'working', '0682ffdc-527f-458f-a097-caa357dfd4aa', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59907, 'UE-T31', '2026-11-08T19:56:59Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59908, 'UE-T32', '2026-11-08T19:57:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59909, 'UE-T32', '2026-11-08T19:57:17Z', 'name', NULL, 'Rain');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59910, 'UE-T32', '2026-11-08T19:57:22Z', 'working', NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59911, 'UE-T31', '2026-11-08T19:57:22Z', 'working', '0682ffdc-527f-458f-a097-caa357dfd4aa', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -70238,7 +70246,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UE-T30', NULL, 0, NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa', '2026-11-08T19:41:22Z', '2026-11-08T19:41:22Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UE-T32', NULL, 0, NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa', '2026-11-08T19:57:22Z', '2026-11-08T19:57:22Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T100', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T23:10:16Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T104', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:16:25Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T117', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T07:02:04Z');
@@ -86285,6 +86293,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T29', 'Bughunt o
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T3', 'EveCore rules port', '2026-11-08T05:47:43Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T30', 'Procedural chimera bodies', '2026-11-08T19:41:18Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T31', 'Procedural Kat', '2026-11-08T19:49:38Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T32', 'Rain', '2026-11-08T19:57:17Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T4', 'Camera graybox', '2026-11-08T05:47:44Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T5', 'Kat character', '2026-11-08T05:47:46Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T6', 'ATB battle', '2026-11-08T05:47:47Z');
