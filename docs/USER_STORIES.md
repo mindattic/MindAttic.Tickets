@@ -458,3 +458,4 @@ updated: 2026-10-12
 | M.TIX-T326 | 2026-11-06 | feature | closed | tickets ticket divvy: split a repo's open tickets between members' logins, balanced by estimate, prerequisite chains kept with one member, --rebalance hands unstarted work to whoever runs dry, --dry-run previews | ea2b8e2 |
 | M.TIX-T327 | 2026-11-06 | fix | closed | Tests List_filters_and_emits_the_documented_json and View_writes_a_page_and_a_snapshot... expect no 'name' field, but ticket JSON now carries the friendly name (M.TIX-T313) after id (found by M.TIX-T326's test run) | c049010 |
 | M.TIX-T328 | 2026-11-07 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
+| M.TIX-T329 | 2026-11-07 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
