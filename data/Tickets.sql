@@ -10840,6 +10840,33 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T237', 'SpaceGod', 237, '2026-11-07', 'feature', 'closed', 'Show Prose lore in SpaceGod''s UI: wire GameLore (US-T236''s LoreLibrary) into the HUD/comms/inspect panels so planets, settlements, ships and pilots show their approved description (placeholder when none), barks/hails use bark texts; one key lookup per surface, no story authored in the repo.', 'Cpp/Source/SpaceGodCore/Tests/Lore/LoreLibraryTests.cpp', 236, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T238', 'SpaceGod', 238, '2026-11-07', 'fix', 'closed', 'Hail barks from Prose replace the whole generated greeting, dropping the gameplay rider sentence (trade offer ''Carrying X, if you''re buying'', pirate cargo demand): keep the bark as the flavour line and always append the gameplay rider, so story text never hides game information (US-T237 follow-up).', 'Cpp/Source/SpaceGodCore/Tests/Lore/LoreLibraryTests.cpp', 237, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T239', 'SpaceGod', 239, '2026-11-07', 'feature', 'closed', 'SpaceGod narrative from Prose (owner 2026-11-07): (1) pilot encounters (pirate, trader, patrol, distress) as Prose conversations with choices tagged with game actions (pay, fight, flee, bluff, trade, comply), the game executing the tag; (2) scan panels for planet/moon/station/ship/pilot with tabs and subtabs: simulation numbers (population, gravity, atmosphere, temperature, orbit, industry output, faction control, ship class, cargo) stay game-owned and are also exported to Prose as entity details, while each tab''s narrative (overview, industry, culture, history, notable people, reputation) is a Prose description keyed per entity and tab; placeholders when absent. Gameplay never depends on text.', 'Cpp/Source/SpaceGodCore/Tests/Lore/EncounterTests.cpp', 238, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T240', 'SpaceGod', 240, '2026-11-08', 'feature', 'open', 'Audio foundation: the game is silent (no sound assets or playback in Cpp/Source); add an audio layer with Music/Effects/Interface/Ambience buses and volumes', '—', 239, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T241', 'SpaceGod', 241, '2026-11-08', 'feature', 'open', 'Combat sounds: WeaponSystems::SoundHook is raised by Battle (US-T189) but never bound in the Runtime, so no gun, missile, beam, impact or explosion is heard', '—', 240, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T242', 'SpaceGod', 242, '2026-11-08', 'feature', 'open', 'Flight and alert sounds: no engine, thruster, boost, cruise/lane/FTL or warning audio for the embodied craft (US-T170 asked for engine audio; DriveRegime cues exist but nothing plays them)', '—', 241, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T243', 'SpaceGod', 243, '2026-11-08', 'feature', 'open', 'Music: the game has no soundtrack; add an adaptive score (menu, exploration, void dread, combat, victory/defeat) that follows the simulation', '—', 242, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T244', 'SpaceGod', 244, '2026-11-08', 'feature', 'open', 'UI sounds: buttons, tabs, panels, toasts, hails and the comms panel make no sound; add interface feedback sounds across every screen', '—', 243, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T245', 'SpaceGod', 245, '2026-11-08', 'feature', 'open', 'Main menu: heading still says UNITYSPACE and dev entries (Asset Library POC, dogfight demos, tour) sit in the player list; rebrand, add Co-op/Credits/Extras and a version', '—', 244, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T246', 'SpaceGod', 246, '2026-11-08', 'feature', 'open', 'Credits screen: none exists; add a scrolling credits page (team, original game, engine, every third-party pack and library with its licence) from the main and pause menus', '—', 245, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T247', 'SpaceGod', 247, '2026-11-08', 'feature', 'open', 'New Game setup: GameLaunch::NewGame takes no options; add start date, galaxy seed, starting situation and difficulty before launching', '—', 246, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T248', 'SpaceGod', 248, '2026-11-08', 'feature', 'open', 'Co-op from the menu: hosting/joining needs -CoopHost/-CoopJoin flags or the console (Host, open <ip>); add Host and Join pages with address entry and recent hosts', '—', 247, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T249', 'SpaceGod', 249, '2026-11-08', 'feature', 'open', 'Key rebinding: every key is hard-coded (InputState reads Key::W etc., ControlsHelp lists fixed keys); add an action map and a Controls > Key bindings page saved per profile', '—', 248, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T250', 'SpaceGod', 250, '2026-11-08', 'feature', 'open', 'Gamepad support: DefaultInput.ini declares pad axes but UnrealInputDevice reads only keyboard and mouse; add pad flight, aim, menus and glyphs', '—', 249, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T251', 'SpaceGod', 251, '2026-11-08', 'feature', 'open', 'Graphics options: Settings > Graphics has only a frame-rate cap; add quality presets on Unreal scalability, the main knobs, upscaler/resolution scale and a field-of-view slider', '—', 250, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T252', 'SpaceGod', 252, '2026-11-08', 'feature', 'open', 'Settings layout: ~200 design tunables bury player options and there is no Gameplay or Accessibility group; add both and move simulation tuning under Advanced', '—', 251, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T253', 'SpaceGod', 253, '2026-11-08', 'feature', 'open', 'Difficulty: none exists; add Story/Normal/Hard that scale only what hits the unit the player embodies (damage taken, enemy accuracy, lock time, pay), deterministic in co-op', '—', 252, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T254', 'SpaceGod', 254, '2026-11-08', 'feature', 'open', 'Tutorial: nothing teaches a new player by doing (only the manual, reference card and a self-playing tour); add a skippable guided first-run tutorial plus first-time hints', '—', 253, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T255', 'SpaceGod', 255, '2026-11-08', 'feature', 'open', 'UI motion: screens and panels snap on/off with no transitions (no fades, slides or animated toasts in UI/); add a shared transition layer for menus, panels and scene changes', '—', 254, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T256', 'SpaceGod', 256, '2026-11-08', 'feature', 'open', 'Target card: a locked hull shows only a status line (Locking X @ weak point); add a combat HUD panel with its hull, shield facings, subsystems and the chosen weak point', '—', 255, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T257', 'SpaceGod', 257, '2026-11-08', 'feature', 'open', 'Combat feedback: no hit markers, kill confirmation or directional damage indicator; add them plus shield/hull hit flashes for the embodied unit', '—', 256, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T258', 'SpaceGod', 258, '2026-11-08', 'feature', 'open', 'System map: there is a galaxy map but no map of the current system; add a tactical map of bodies, orbits, stations, lanes, gates, sites and contacts with click-to-plot', '—', 257, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T259', 'SpaceGod', 259, '2026-11-08', 'feature', 'open', 'Discovery log: what the player has found (stars, settlements, havens, graveyards, void sights, met pilots) is kept nowhere viewable; add a journal/codex screen with Prose descriptions', '—', 258, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T260', 'SpaceGod', 260, '2026-11-08', 'feature', 'open', 'Exploration pays nothing: charting a star, surveying a body or visiting a void sight or anomaly gives no reward; add survey data sold to cartographers, first-discovery credit and Influence', '—', 259, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T261', 'SpaceGod', 261, '2026-11-08', 'feature', 'open', 'Lore books: Prose ''book'' texts (ship logs, station records) load into LoreLibrary but no screen shows them; recover logs from derelicts and wrecks and read them in game', '—', 260, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T262', 'SpaceGod', 262, '2026-11-08', 'feature', 'open', 'Galaxy map overlays: one fixed view; add map modes for trade prices, exploration (charted/undiscovered frontier) and danger (piracy, Bio Mass, void raiders, dread)', '—', 261, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T263', 'SpaceGod', 263, '2026-11-08', 'feature', 'open', 'Price history: markets keep only today''s price; record each port''s prices over time and show trends and 30/90-day ranges on the market board and trade desk', '—', 262, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T264', 'SpaceGod', 264, '2026-11-08', 'feature', 'open', 'Hands-on mining: ore is only cut by tugs and hired captains on claims; let a player at a miner''s helm cut asteroids with a mining laser into ore crates for the hold', '—', 263, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T265', 'SpaceGod', 265, '2026-11-08', 'feature', 'open', 'Production holdings: the player can own warehouses, station shares and claims but nothing that makes goods; add a refinery/factory holding that turns inputs into outputs at a port', '—', 264, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T266', 'SpaceGod', 266, '2026-11-08', 'feature', 'open', 'Port services: market (M), outfitting (F2), contracts (F7), bounties (F4), fleet (F10) and trade desk are separate keys with no docked hub and no repair/rearm for the held hull; add one port screen', '—', 265, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T1', 'SpaceGod.Unity.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T2', 'SpaceGod.Unity.CSharp', 2, '2026-11-06', 'feature', 'closed', 'Adopt the shared off-by-default --headless launch mode (Unity.Shared)', 'faadbca', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T1', 'SpaceGod.Unreal.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
@@ -11524,6 +11551,14 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T363', 'Unity.GridGame', 363, '2026-11-07', 'feature', 'open', 'Deep Shardfall (desert2, stages 34-35) region rule on the GG framework: shard strikes. Falling shards are telegraphed: their target tiles light up and an icon enters the timeline at a known slot; when it comes up, units on those tiles take heavy damage and a shard crystal tile is left behind. A pincer that captures a foe on a crystal grants bonus mana. Reading the timeline to dodge, and luring foes under strikes, is the play.', 'owner direction 2026-11-07: build gameplay on the six new postgame regions', 362, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T364', 'Unity.GridGame', 364, '2026-11-07', 'feature', 'open', 'Under the Anchors (cave2, stages 36-37) region rule on the GG framework: anchor pull. Each wave sets one or two anchor tiles; at the end of every timeline round, every unit within range is pulled one tile toward the nearest anchor (blocked by units/tiles, collisions deal minor damage). The pull can close or break pincers, so players set up lines that the pull completes.', 'owner direction 2026-11-07: build gameplay on the six new postgame regions', 363, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T365', 'Unity.GridGame', 365, '2026-11-07', 'feature', 'open', 'Morrow''s Shadow (morrowsshadow, stages 38-40) region rule on the GG framework: darkness. Foes more than two tiles from every hero are hidden on the board and their timeline icons show as unknown silhouettes until revealed; light pickups and light-element abilities reveal an area for a few rounds. The finale region tests everything with partial information about the timeline.', 'owner direction 2026-11-07: build gameplay on the six new postgame regions', 364, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T366', 'Unity.GridGame', 366, '2026-11-08', 'fix', 'closed', 'Mana orb bar fills and empties from the wrong side: orbs must fill left to right and be spent right to left (owner 2026-11-08: ''I see orbs appearing empty in slot1 and full in slot 2''); slot 1 must never be empty while a later slot is full.', '1f6f683', 365, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T367', 'Unity.GridGame', 367, '2026-11-08', 'fix', 'closed', 'Pushback should toss an enemy back along the timeline: its icon moves linearly down the bar (toward later) with a spin/twist for a dynamic throw, staying on the bar''s line; today it is thrown off its Y coordinate, which looks wrong (owner 2026-11-08).', 'c700e64', 366, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T368', 'Unity.GridGame', 368, '2026-11-08', 'feature', 'open', 'Cracking floors (owner 2026-11-08): some tiles crack as units stand on or are hit on them, then open into holes; a unit that falls in loses some HP and respawns on a free tile next to the hole (if none is free: nearest free tile by BFS outward, else swap with/shove the nearest unit, else stays on the board edge-most free tile; decide and document); holes block movement/placement until they close or stay open per stage rule.', '—', 367, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T369', 'Unity.GridGame', 369, '2026-11-08', 'fix', 'open', 'Find portraits whose cut-out edges are jagged (aliased/stair-stepped alpha), recomposite each on white and recompute a clean matte by calculation rather than trial and error (e.g. estimate background, solve alpha from colour distance with edge-aware refinement/guided filter, decontaminate fringe), keeping the 1024 canvas, Figure box and .meta GUID (owner 2026-11-08).', '—', 368, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T370', 'Unity.GridGame', 370, '2026-11-08', 'feature', 'open', 'Enemies that leave hazards as they move (owner 2026-11-08): slime trails (slow/sticky), fire trails (burn), ice trails (slip/freeze), and land-mine layers (telegraphed blast when stepped on); each hazard is a tile state with a defined counter (fire melts ice, ice douses fire, fire burns slime, a disarm/shove/ranged hit sets off mines). Built on GG-T359 region rules (tile states + EnterTile hook + AbilityDef.RuleEffects) once it lands; placed in fitting regions.', '—', 369, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T371', 'Unity.GridGame', 371, '2026-11-08', 'feature', 'open', 'There is always a way (owner 2026-11-08: ''always a way to defeat them... be able to buy a consumable with elemental effects in case your party doesnt have what it needs specced into the build''): Merchant consumables that deal or apply each element (fire/ice/lightning/poison/holy/dark flasks), cleanse a tile state, and disarm traps; an elemental interaction table (fire vs ice etc.) in data; a content validator that every enemy weakness/immunity, tile hazard and rule-break boss has at least one counter the player can always buy, so no fight can require a build the party lacks.', '—', 370, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T372', 'Unity.GridGame', 372, '2026-11-08', 'fix', 'open', 'Ability cost display: up to 3 orbs show as orb icons; above 3 show one orb icon with ''x4'' (etc.) since the slot is out of space (owner 2026-11-08).', '—', 371, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T373', 'Unity.GridGame', 373, '2026-11-08', 'chore', 'open', 'With the mana bank at 12 slots, ability costs (mostly 1-3 orbs today) are too cheap: rebalance spell/skill mana costs across abilities.json so big spells cost substantially more (up to the bank size), scaled by power/area/effect, keeping early-game kits usable; document the cost curve (owner 2026-11-08: ''some of these spells need to get much more expensive need to consider balance'').', '—', 372, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.ISO-T1', 'Unity.Isometric', 1, '2026-10-22', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.ISO-T2', 'Unity.Isometric', 2, '2026-10-22', 'chore', 'wont-do', 'Bootstrap Unity 6 project (6000.4.3f1), engine-free Core + NUnit Tests/Core.Tests, workspace docs, and docs/RECONSTRUCTION.md + docs/BIBLE.md reverse-engineered from the 2013 GameMaker Isometric.gmx source', 'port cancelled by user; repo deleted', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UM-T1', 'Unity.Multiplayer', 1, '2026-10-20', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
@@ -66465,6 +66500,112 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59282, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59283, 'PRS-T924', '2026-11-08T05:58:33Z', 'working', '0682ffdc-527f-458f-a097-caa357dfd4aa', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59284, 'UE-T12', '2026-11-08T05:58:55Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59285, 'UE-T12', '2026-11-08T05:59:12Z', 'working', '0682ffdc-527f-458f-a097-caa357dfd4aa', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59286, 'GG-T366', '2026-11-08T06:04:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59287, 'GG-T366', '2026-11-08T06:05:09Z', 'working', NULL, '04f51e79-4363-468f-b7a5-411cfdb257aa');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59288, 'GG-T366', '2026-11-08T06:06:50Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59289, 'GG-T366', '2026-11-08T06:06:50Z', 'ref', '—', '1f6f683');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59290, 'GG-T367', '2026-11-08T06:06:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59291, 'GG-T368', '2026-11-08T06:07:00Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59292, 'GG-T368', '2026-11-08T06:07:00Z', 'name', NULL, 'Cracking floors and holes');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59293, 'GG-T367', '2026-11-08T06:07:02Z', 'working', NULL, '04f51e79-4363-468f-b7a5-411cfdb257aa');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59294, 'GG-T366', '2026-11-08T06:07:02Z', 'working', '04f51e79-4363-468f-b7a5-411cfdb257aa', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59295, 'US-T240', '2026-11-08T06:07:30Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59296, 'US-T240', '2026-11-08T06:07:30Z', 'name', NULL, 'Audio foundation and buses');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59297, 'GG-T368', '2026-11-08T06:07:35Z', 'working', NULL, '04f51e79-4363-468f-b7a5-411cfdb257aa');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59298, 'US-T241', '2026-11-08T06:07:42Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59299, 'US-T241', '2026-11-08T06:07:42Z', 'name', NULL, 'Weapon and impact sounds');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59300, 'US-T242', '2026-11-08T06:07:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59301, 'US-T242', '2026-11-08T06:07:43Z', 'name', NULL, 'Engine, drive and alert sounds');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59302, 'US-T243', '2026-11-08T06:07:45Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59303, 'US-T243', '2026-11-08T06:07:45Z', 'name', NULL, 'Adaptive music');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59304, 'US-T244', '2026-11-08T06:07:47Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59305, 'US-T244', '2026-11-08T06:07:47Z', 'name', NULL, 'Interface sounds');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59306, 'US-T245', '2026-11-08T06:07:50Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59307, 'US-T245', '2026-11-08T06:07:50Z', 'name', NULL, 'Main menu front door');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59308, 'US-T246', '2026-11-08T06:07:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59309, 'US-T246', '2026-11-08T06:07:51Z', 'name', NULL, 'Credits screen');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59310, 'US-T247', '2026-11-08T06:07:53Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59311, 'US-T247', '2026-11-08T06:07:53Z', 'name', NULL, 'New game setup page');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59312, 'US-T248', '2026-11-08T06:07:54Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59313, 'US-T248', '2026-11-08T06:07:54Z', 'name', NULL, 'Co-op host and join menu');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59314, 'US-T249', '2026-11-08T06:07:56Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59315, 'US-T249', '2026-11-08T06:07:56Z', 'name', NULL, 'Key binding remap');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59316, 'US-T250', '2026-11-08T06:07:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59317, 'US-T250', '2026-11-08T06:07:57Z', 'name', NULL, 'Gamepad support');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59318, 'US-T251', '2026-11-08T06:07:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59319, 'US-T251', '2026-11-08T06:07:59Z', 'name', NULL, 'Graphics presets and FOV');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59320, 'US-T252', '2026-11-08T06:08:01Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59321, 'US-T252', '2026-11-08T06:08:01Z', 'name', NULL, 'Gameplay and accessibility settings');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59322, 'US-T253', '2026-11-08T06:08:03Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59323, 'US-T253', '2026-11-08T06:08:03Z', 'name', NULL, 'Difficulty levels');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59324, 'US-T254', '2026-11-08T06:08:05Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59325, 'US-T254', '2026-11-08T06:08:05Z', 'name', NULL, 'First-run tutorial');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59326, 'US-T255', '2026-11-08T06:08:06Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59327, 'US-T255', '2026-11-08T06:08:06Z', 'name', NULL, 'UI motion and transitions');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59328, 'US-T256', '2026-11-08T06:08:08Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59329, 'US-T256', '2026-11-08T06:08:08Z', 'name', NULL, 'Locked target panel');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59330, 'US-T257', '2026-11-08T06:08:10Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59331, 'US-T257', '2026-11-08T06:08:10Z', 'name', NULL, 'Hit and damage feedback');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59332, 'US-T258', '2026-11-08T06:08:12Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59333, 'US-T258', '2026-11-08T06:08:12Z', 'name', NULL, 'In-system map');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59334, 'US-T259', '2026-11-08T06:08:13Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59335, 'US-T259', '2026-11-08T06:08:13Z', 'name', NULL, 'Discovery log');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59336, 'US-T260', '2026-11-08T06:08:16Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59337, 'US-T260', '2026-11-08T06:08:16Z', 'name', NULL, 'Exploration rewards');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59338, 'US-T261', '2026-11-08T06:08:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59339, 'US-T261', '2026-11-08T06:08:18Z', 'name', NULL, 'Readable Prose books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59340, 'US-T262', '2026-11-08T06:08:19Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59341, 'US-T262', '2026-11-08T06:08:19Z', 'name', NULL, 'Galaxy map modes');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59342, 'US-T263', '2026-11-08T06:08:21Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59343, 'US-T263', '2026-11-08T06:08:21Z', 'name', NULL, 'Market price history');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59344, 'US-T264', '2026-11-08T06:08:23Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59345, 'US-T264', '2026-11-08T06:08:23Z', 'name', NULL, 'Hands-on mining');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59346, 'US-T265', '2026-11-08T06:08:25Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59347, 'US-T265', '2026-11-08T06:08:25Z', 'name', NULL, 'Player-owned production');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59348, 'US-T266', '2026-11-08T06:08:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59349, 'US-T266', '2026-11-08T06:08:26Z', 'name', NULL, 'Port services hub');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59350, 'GG-T367', '2026-11-08T06:08:31Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59351, 'GG-T367', '2026-11-08T06:08:31Z', 'ref', '—', 'c700e64');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59352, 'GG-T369', '2026-11-08T06:08:32Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59353, 'GG-T369', '2026-11-08T06:08:32Z', 'name', NULL, 'Portrait jaggies re-cut');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59354, 'GG-T369', '2026-11-08T06:08:48Z', 'working', NULL, '04f51e79-4363-468f-b7a5-411cfdb257aa');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59355, 'GG-T367', '2026-11-08T06:08:49Z', 'working', '04f51e79-4363-468f-b7a5-411cfdb257aa', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59356, 'US-T240', '2026-11-08T06:09:15Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59357, 'US-T241', '2026-11-08T06:09:16Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59358, 'US-T242', '2026-11-08T06:09:17Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59359, 'US-T243', '2026-11-08T06:09:17Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59360, 'US-T244', '2026-11-08T06:09:18Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59361, 'US-T245', '2026-11-08T06:09:19Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59362, 'US-T246', '2026-11-08T06:09:19Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59363, 'US-T247', '2026-11-08T06:09:19Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59364, 'US-T248', '2026-11-08T06:09:20Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59365, 'US-T249', '2026-11-08T06:09:20Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59366, 'US-T250', '2026-11-08T06:09:21Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59367, 'US-T251', '2026-11-08T06:09:22Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59368, 'US-T252', '2026-11-08T06:09:22Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59369, 'US-T253', '2026-11-08T06:09:23Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59370, 'US-T254', '2026-11-08T06:09:24Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59371, 'US-T255', '2026-11-08T06:09:28Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59372, 'US-T256', '2026-11-08T06:09:35Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59373, 'US-T257', '2026-11-08T06:09:41Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59374, 'US-T258', '2026-11-08T06:09:42Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59375, 'US-T259', '2026-11-08T06:09:42Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59376, 'US-T260', '2026-11-08T06:09:42Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59377, 'US-T261', '2026-11-08T06:09:43Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59378, 'US-T262', '2026-11-08T06:09:43Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59379, 'US-T263', '2026-11-08T06:09:43Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59380, 'US-T264', '2026-11-08T06:09:44Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59381, 'US-T265', '2026-11-08T06:09:44Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59382, 'US-T266', '2026-11-08T06:09:45Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59383, 'GG-T370', '2026-11-08T06:10:10Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59384, 'GG-T370', '2026-11-08T06:10:10Z', 'name', NULL, 'Enemy hazard trails');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59385, 'GG-T371', '2026-11-08T06:10:11Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59386, 'GG-T371', '2026-11-08T06:10:11Z', 'name', NULL, 'Always a way: elemental counters');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59387, 'GG-T368', '2026-11-08T06:10:15Z', 'working', '04f51e79-4363-468f-b7a5-411cfdb257aa', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59388, 'GG-T369', '2026-11-08T06:10:16Z', 'working', '04f51e79-4363-468f-b7a5-411cfdb257aa', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59389, 'GG-T372', '2026-11-08T06:11:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59390, 'GG-T373', '2026-11-08T06:11:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59391, 'GG-T373', '2026-11-08T06:11:51Z', 'name', NULL, 'Mana cost rebalance for 12 orbs');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -69220,6 +69361,33 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T229', 'approved', 0, '2026-11-06T18:17:35Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T230', 'approved', 0, '2026-11-06T18:17:36Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T231', 'approved', 0, '2026-11-06T21:28:16Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T240', 'approved', 0, '2026-11-08T06:09:15Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T241', 'approved', 0, '2026-11-08T06:09:16Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T242', 'approved', 0, '2026-11-08T06:09:17Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T243', 'approved', 0, '2026-11-08T06:09:17Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T244', 'approved', 0, '2026-11-08T06:09:18Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T245', 'approved', 0, '2026-11-08T06:09:19Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T246', 'approved', 0, '2026-11-08T06:09:19Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T247', 'approved', 0, '2026-11-08T06:09:19Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T248', 'approved', 0, '2026-11-08T06:09:20Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T249', 'approved', 0, '2026-11-08T06:09:20Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T250', 'approved', 0, '2026-11-08T06:09:21Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T251', 'approved', 0, '2026-11-08T06:09:22Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T252', 'approved', 0, '2026-11-08T06:09:22Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T253', 'approved', 0, '2026-11-08T06:09:23Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T254', 'approved', 0, '2026-11-08T06:09:24Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T255', 'approved', 0, '2026-11-08T06:09:28Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T256', 'approved', 0, '2026-11-08T06:09:35Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T257', 'approved', 0, '2026-11-08T06:09:41Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T258', 'approved', 0, '2026-11-08T06:09:42Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T259', 'approved', 0, '2026-11-08T06:09:42Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T260', 'approved', 0, '2026-11-08T06:09:42Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T261', 'approved', 0, '2026-11-08T06:09:43Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T262', 'approved', 0, '2026-11-08T06:09:43Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T263', 'approved', 0, '2026-11-08T06:09:43Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T264', 'approved', 0, '2026-11-08T06:09:44Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T265', 'approved', 0, '2026-11-08T06:09:44Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T266', 'approved', 0, '2026-11-08T06:09:45Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T72', 'approved', 0, '2026-11-06T21:27:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T82', 'approved', 0, '2026-11-06T21:27:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T83', 'approved', 0, '2026-11-06T21:27:41Z', NULL);
@@ -71427,6 +71595,8 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (21037, '
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (21038, 'GG-T364', 'ryand', '2026-11-08T05:55:28Z', 'Owner 2026-11-07: unique mechanics by region AND monster allocation. Make 2-3 NEW monster classes for this region built to exploit or counter its rule (classes.json; Portrait ''mannequin'' as placeholder art via Art.cs''s fallback, GG-T351; their Description/Lore are Prose keys seeded the GG-T355 way, no story text in classes.json), give them abilities/drop tables, add encounter groups, then reallocate this region''s waves in stages.json to mix them with fitting existing foes in the postgame wave shape (two foes a wave, three in the finale; every wave signature stays unique). Monsters:  a chain-warden that moves or adds an anchor, a heavy immune to pull, a hook-thrower that pulls a single hero out of formation.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (21039, 'GG-T365', 'ryand', '2026-11-08T05:55:29Z', 'Owner 2026-11-07: unique mechanics by region AND monster allocation. Make 2-3 NEW monster classes for this region built to exploit or counter its rule (classes.json; Portrait ''mannequin'' as placeholder art via Art.cs''s fallback, GG-T351; their Description/Lore are Prose keys seeded the GG-T355 way, no story text in classes.json), give them abilities/drop tables, add encounter groups, then reallocate this region''s waves in stages.json to mix them with fitting existing foes in the postgame wave shape (two foes a wave, three in the finale; every wave signature stays unique). Monsters:  a lurker that stays hidden even within two tiles until it strikes, a lamp-snuffer that cancels reveals, a mimic that shows a false timeline icon.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (21040, 'GG-T359', 'ryand', '2026-11-08T05:55:29Z', 'Owner 2026-11-07: regions also get new monsters (Mannequin placeholder art) built around each rule, so the framework must let monster abilities and on-death hooks interact with rules: create/modify/clear tile states, add timeline events, move anchors, change rule timers; and let a class be flagged immune to a rule effect.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (21041, 'GG-T368', 'ryand', '2026-11-08T06:07:09Z', 'Build on GG-T359 region rules (RegionRules.cs: tile states with counters/Threshold/Becomes, EnterTile/TurnEnd hooks) once it lands: crack = tile state whose counter rises on stand/hit and becomes ''hole''; falling = a rule effect (damage + respawn adjacent).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (21042, 'GG-T370', 'ryand', '2026-11-08T06:10:12Z', 'Depends on GG-T359 (honey@ session). Counters come from GG-T371.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
@@ -85010,6 +85180,216 @@ Test: sg.Squadron logs every wingman''s slot error and broken state each second.
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T233', 'Add --headless to the game''s own command line (not just the smoke/views tools) that runs a normal session with nothing drawn to screen, for scripted/automated testing. Build on the existing headless infrastructure rather than duplicating it: -SpaceGodSmoke and -SpaceGodViews already run headless via Unreal''s own -nullrhi/-unattended/-nosplash flags (see Cpp/Source/SpaceGod/Smoke/SpaceGodSmoke.h, landed under US-T163 headless offscreen capture). --headless should set up those same underlying flags for an ordinary game launch, so a tester or CI script can start, drive and query the game with no window.', '2026-11-07T02:45:25Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T234', 'Adopt the shared, off-by-default --headless mode from UNRE-T2 (Unreal.Shared MindAtticShared plugin) in this game: reference the shared package/plugin, wire the game''s own opt-ins (skip the main menu into a normal session when headless), and give its run script a -Headless switch that launches with the shared launcher''s flags. Without --headless nothing changes.', '2026-11-07T04:33:47Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T235', 'Three autostash entries (2026-11-06 02:18, 03:40, 17:09) were left behind by pull --rebase --autostash conflicts in the shared checkout. Identify which hunks are not already on main, attribute them to tickets, and stage them for commit without dropping the stashes until landed.', '2026-11-07T06:54:49Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T240', '## Story
+As a player I want SpaceGod to make sound, so that battles, flight and menus feel alive. Today the game is silent: there is no audio asset under Cpp/Content or Shared/Plugins/SpaceGodRender/Content, no USoundBase/UAudioComponent use anywhere in Cpp/Source, and the only audio setting is `audio.masterVolume` (Cpp/Source/SpaceGod/EngineSettings.cpp), which sets AudioListener::volume with nothing playing. The other audio tickets build on this one.
+
+## Acceptance
+- [ ] An audio layer in the Runtime (e.g. Cpp/Source/SpaceGod/Audio/) that plays 2D and 3D positional one-shots and loops through Unreal''s audio engine, with a sound class/submix per bus: Master, Music, Effects, Interface, Ambience.
+- [ ] Settings > Audio gains Music, Effects, Interface and Ambience volumes (RangeSetting, saved to the profile like audio.masterVolume); the -muted CLI mute (SessionAudio) still silences everything.
+- [ ] A small set of CC0/royalty-free starter sounds imported under Cpp/Content/SpaceGod/Audio and listed in docs/ThirdPartyArt.md with licences.
+- [ ] Each co-op peer plays its own sounds locally (nothing enters the lockstep frames); Bench digests unchanged.
+- [ ] --headless / -RenderOffscreen runs work with no audio device.', '2026-11-08T06:07:30Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T241', '## Story
+As a pilot in a fight I want to hear every gun, missile, beam and impact around me. The Core already raises the cues: Battle.cpp:3279 calls WeaponSystems::CueFx when WeaponSystems::SoundHook() is set (SpaceGodCore/Combat/WeaponSystems.cpp:169-250), but nothing in Cpp/Source/SpaceGod sets SoundHook, so the cues go nowhere. Needs the audio foundation ticket.
+
+## Acceptance
+- [ ] The Runtime binds WeaponSystems::SoundHook and plays a positional sound per WeaponSoundCue: distinct fire sounds per weapon kind (gun, vulcan spin-up, railgun, laser/phaser, plasma, tachyon lance, missile/hive/rocket/torpedo launch, flak, EMP, mine), plus shield hit, hull hit, subsystem destroyed and ship explosion.
+- [ ] Attenuation by battle-space distance from the listener (embodied unit or camera) and a voice cap per kind, nearest first, so a fleet battle does not clip.
+- [ ] Far from the fight in the free SpaceGod view, sounds are muffled/filtered rather than silent or full-volume.
+- [ ] sg.BigBattle and the dogfight demo are audible; Bench digests unchanged.', '2026-11-08T06:07:42Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T242', '## Story
+As a pilot I want my craft''s engines, thrusters, boost, cruise drive, lane ride and FTL spool to be audible, and warnings to sound. US-T170 asked for engine audio scaled by mass, but nothing plays sound. SpaceGodCore/Combat/DriveRegime.h:34/68 already exposes one cue per regime change "for the cues (the screen''s flash, a sound)". Needs the audio foundation ticket.
+
+## Acceptance
+- [ ] The embodied craft plays an engine loop whose pitch/volume follow throttle and thrust, scaled by mass class (fighter whine to capital rumble); RCS puffs when manoeuvring jets fire (Views/RcsJets, Views/HullThrusters know when).
+- [ ] Boost, flip-and-burn, drift, cruise spool/engage/drop-out, lane enter/exit, gate jump and FTL spool/jump each have a sound, driven from DriveRegime cues.
+- [ ] Alerts on the Interface bus: missile lock warning, incoming missile, shields down, hull critical, propellant low, self-destruct countdown, Bio Mass contact.
+- [ ] Nearby AI ships'' engines are audible in passing at close range.', '2026-11-08T06:07:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T243', '## Story
+As a player I want music that follows what is happening: calm between the planets, tense in a fight, unsettling in the void as dread builds, and a theme on the main menu. There is no music in the repo. Needs the audio foundation ticket (Music bus and volume).
+
+## Acceptance
+- [ ] A music director in the Runtime picks a state every few seconds: Menu, Exploration, Deep space/void (a dread layer rising with the Watcher''s dread, US-T178/US-T191), Combat (the embodied unit''s or the viewed battle), and a victory/defeat sting at battle end.
+- [ ] Crossfades between states with hysteresis, so a short skirmish does not flap the score.
+- [ ] Royalty-free or commissioned tracks, credited in docs/ThirdPartyArt.md and on the credits screen.
+- [ ] Local per co-op peer; Music volume in Settings > Audio.', '2026-11-08T06:07:45Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T244', '## Story
+As a player I want clicks, hovers, panel opens, toasts and incoming hails to give audible feedback. Every screen is IMGUI (GUI::Button in UI/MainMenu.cpp, PauseMenu.cpp, Hud*.cpp, GalaxyMapScreen.cpp, CheatMenu.cpp) and none plays a sound. Needs the audio foundation ticket.
+
+## Acceptance
+- [ ] A hook at the GUI::Button / toggle / tab level (UnityCompat GUI) plays hover and press sounds on the Interface bus, so every existing button gets it without per-screen edits.
+- [ ] Distinct sounds for: panel open/close, toast/news item, incoming hail, comms line received, contract accepted/completed/failed, credits gained/spent, save done.
+- [ ] Interface volume respected; no sound during capture runs unless asked.', '2026-11-08T06:07:47Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T245', '## Story
+As a player opening the game I want a main menu that is SpaceGod''s front door. MainMenu::DrawMain (Cpp/Source/SpaceGod/UI/MainMenu.cpp:220) draws the heading "UNITYSPACE" (the original Unity project''s name) and mixes development entries into the player list: "Asset Library POC" (a Unity Asset Store evaluation page that launches demo scenes by Unity path), "Dogfight Demo", "Dogfight (Heavy)" and "Showcase Tour". There is no Co-op or Credits entry and no version shown.
+
+## Acceptance
+- [ ] The heading is SpaceGod''s logo/wordmark (assets/logo.png), not "UNITYSPACE".
+- [ ] Player list: Continue, New Game, Load Game, Co-op, Settings, Help, Credits, Quit; Profiles stays reachable (e.g. from the profile line).
+- [ ] Dogfight demos and the Showcase Tour move to an "Extras" page; the Asset Library POC page is removed or hidden behind the dev menu.
+- [ ] Build version and short commit hash shown in a corner.
+- [ ] The "slowly turning sky" backdrop gains life (a slow drift past a planet, a passing ship) without loading the game scene.
+- [ ] GameManual "The main menu" section updated.', '2026-11-08T06:07:50Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T246', '## Story
+As a player I want a credits screen naming who made SpaceGod and every third-party asset, engine and library it ships, as a finished game (and several asset licences) expects. No credits screen exists in Cpp/Source/SpaceGod/UI; attribution lives only in docs/ThirdPartyArt.md and Vendor/README.md.
+
+## Acceptance
+- [ ] A Credits page from the main menu and the pause menu, in the UiStyle look, auto-scrolling with wheel/drag override, Esc to go back.
+- [ ] Sections: team, the original Unity.SpaceGod, Unreal Engine, each art/model pack (USC, Space Station Creator, Star Sparrow, Kenney, textures, later audio) with its licence line, open-source libraries (MindAttic.Capture and its dependencies), data sources (JPL orbital elements, star catalogues).
+- [ ] Content from one data file (e.g. Data/credits.json) shipped by tools/package.ps1; a test checks every pack in docs/ThirdPartyArt.md has an entry.', '2026-11-08T06:07:51Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T247', '## Story
+As a player starting a game I want to choose how it starts. GameLaunch::NewGame (Cpp/Source/SpaceGod/GameLaunch.h:26) takes no options: every new game starts at today''s date beside Earth in free swim (GameManual "Your first minutes"). There is no start date, galaxy seed, starting situation or difficulty choice.
+
+## Acceptance
+- [ ] New Game opens a setup page: start date (today or picked), galaxy seed (random or typed, shown so it can be shared), starting situation (god view by Earth; fighter pilot on patrol; freighter captain with a small purse; capital helm in a war zone), difficulty (see the difficulty ticket).
+- [ ] Choices recorded in the save header and shown in Load Game''s line.
+- [ ] A Quick Start button keeps today''s one-click behaviour.
+- [ ] A co-op host uses the same page; clients take the host''s choices. Bench scenarios unaffected.', '2026-11-08T06:07:53Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T248', '## Story
+As a player I want to host or join co-op from the menu. Today it needs launch flags (-CoopHost, -CoopJoin=<address>), tools/play.ps1 or the in-game console (Host, open <ip>) (README.md); MainMenu.cpp and PauseMenu.cpp have no co-op entry.
+
+## Acceptance
+- [ ] Main menu Co-op page: Host (new game or a save; port defaulting to 7777; shows the LAN addresses to share) and Join (address field plus recent hosts remembered in the profile).
+- [ ] Join shows connecting / failed / version-mismatch with a clear message and Back.
+- [ ] Pause menu: "Open to co-op" (the console''s Host) and the connected players with a kick option for the host.
+- [ ] tools/play.ps1 -Mode coop-smoke still passes; the flags keep working.', '2026-11-08T06:07:54Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T249', '## Story
+As a player I want to rebind keys and mouse buttons. Bindings are hard-coded: Cpp/Source/SpaceGod/Input/InputState.cpp reads kb[Key::W], kb[Key::A]... directly, SpaceGodCore/ControlsHelp.cpp lists fixed keys, and Settings > Controls has only controls.lookSensitivity, controls.invertLook and controls.driftMode. docs/Controls.md records clashes (F11, the backtick/tilde console key) a player cannot fix.
+
+## Acceptance
+- [ ] An action map (named actions, default primary/secondary bindings) that InputState and the role arbitration (InputState::Arbitrate, docs/ROLES.md) read instead of literal keys.
+- [ ] Settings > Controls > Key bindings, grouped like ControlsHelp''s sections: click an action, press a key; conflicts in the same context flagged; reset per action and all.
+- [ ] Saved to the profile, applied immediately; ControlsHelp, the Help screen, the bottom key line and tour captions show the bound keys.
+- [ ] Co-op frames unaffected (they carry actions); feature-audit input probes pass.', '2026-11-08T06:07:56Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T250', '## Story
+As a player I want to play with a gamepad. Cpp/Config/DefaultInput.ini declares Gamepad axis configs, but Cpp/Source/SpaceGod/Input/UnrealInputDevice.cpp feeds only keyboard and mouse, and nothing in Cpp/Source references Gamepad keys. Best after the key-binding ticket so pads bind to the same actions.
+
+## Acceptance
+- [ ] Pad sticks, triggers and buttons feed InputState: thrust/strafe left stick, aim right stick, fire/secondary triggers, roll bumpers, boost/drift/flip face buttons; dead zones and sensitivity settings.
+- [ ] A stick equivalent of the string mouse aim (US-T129/T168).
+- [ ] Menus, pause menu and HUD panels navigable with d-pad/stick and A/B with a visible focus highlight.
+- [ ] Help shows pad glyphs when a pad was last used; pad bindings remappable.', '2026-11-08T06:07:57Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T251', '## Story
+As a player I want the usual graphics options. Settings > Graphics holds one row (graphics.frameRateCap, Cpp/Source/SpaceGod/EngineSettings.cpp); the rest are the original''s render rows (render.urp.*, render.pipeline.*) and LOD budgets. No quality preset, no Unreal scalability (shadows, textures, effects, view distance, post), no resolution scale/upscaler, and the camera FOV is fixed in code.
+
+## Acceptance
+- [ ] Quality preset (Low/Medium/High/Epic/Custom) driving Unreal scalability groups plus the game''s LOD budgets (RenderLod/ShipLod) and BattleFx::EffectsBudget; touching any knob sets Custom.
+- [ ] Rows: shadows, textures, effects, post-processing, view distance, anti-aliasing method (TSR/TAA/FXAA/off, replacing the MSAA toggle that drives FXAA, US-T55), resolution scale and upscaler where available.
+- [ ] Field-of-view slider for chase and cockpit cameras, clamped.
+- [ ] First launch auto-detects a preset from Unreal''s hardware benchmark. Saved per profile, applied without restart where possible.', '2026-11-08T06:07:59Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T252', '## Story
+As a player opening Settings I want my options first, not a wall of simulation tunables. The settings menu (UI/PauseMenu.cpp) lists every SettingGroups group (SpaceGodCore/Settings/GameSetting.h): roughly 200 rows, most design tuning (war.*, broadside.*, spinal.*, heat.*, lanes.*). There is no Gameplay group and no accessibility option (no UI scale, no colour-blind palette).
+
+## Acceptance
+- [ ] Nav shows player groups first (Gameplay, Graphics, Display, Audio, Controls, Accessibility) and an "Advanced (simulation)" section, collapsed by default, holding the design groups; Search still finds everything.
+- [ ] Gameplay: autosave interval (fixed at 5 minutes in UnitySpaceApp.Saves.cpp today), tutorial hints, units (km/AU), toast/news verbosity, confirm on quit.
+- [ ] Accessibility: UI scale applied to every IMGUI screen and the HUD, HUD opacity, text size, colour-blind safe stance palette (hostile/neutral/friendly colours in comms, markers, roster), reduce screen flashes and shake (hyperspace toll vignette, drive cues).
+- [ ] Saved per profile; GameManual "Settings" chapter updated.', '2026-11-08T06:08:01Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T253', '## Story
+As a player I want to choose how hard the galaxy is on me. There is no difficulty anywhere in Cpp/Source; combat tuning exists only as design settings (dogfight.*, weapons.*, broadside.*) that apply to every side alike.
+
+## Acceptance
+- [ ] Difficulty (Story / Normal / Hard / Custom) in the Gameplay group, chosen on New Game, changeable later, recorded in the save.
+- [ ] Scales only what touches the unit the player embodies: incoming damage to the held hull, hostile accuracy and missile lock time against it, pirate aggression toward it, contract pay. AI-vs-AI simulation unchanged.
+- [ ] Applied deterministically so co-op peers agree (host''s choice) and rewind stays exact; Bench digests unchanged (Bench at Normal).', '2026-11-08T06:08:03Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T254', '## Story
+As a new player I want to be shown how to play. There is a 17-chapter manual (SpaceGodCore/GameManual.cpp), a reference card (ControlsHelp.cpp) and the Showcase Tour (SceneTour, US-T147) that plays itself, but no tutorial ("tutorial" appears nowhere in Cpp/Source); New Game drops you in free swim by Earth.
+
+## Acceptance
+- [ ] A guided tutorial offered on a profile''s first New Game (skippable, replayable from Help/Extras): swim and look, select and focus (F), time warp and scale, navigator, embody a fighter (P), fly and fire, lock and missiles, let go, hail (Shift+H), market (M), galaxy map ([).
+- [ ] Each step: a short instruction panel with the bound key, waits for the action, highlights the HUD element involved.
+- [ ] First-time contextual hints afterwards (first battle, lane, gate, void stop, boarding), gated by a tutorial-hints setting and remembered per profile.
+- [ ] A feature-audit probe runs the tutorial headless to its end.', '2026-11-08T06:08:05Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T255', '## Story
+As a player I want the interface to feel polished: menus fading in, panels sliding, toasts easing in and out, a fade across the menu-to-game load. US-T199 refit the static look (UiStyle), but nothing animates: no fade/transition code exists in Cpp/Source/SpaceGod/UI, and GameLaunch::LoadScene cuts straight to the game scene.
+
+## Acceptance
+- [ ] A small UiMotion helper (eased 0..1 per panel id, real-time so pause does not freeze it) used by MainMenu, PauseMenu, Settings, HelpScreen, GalaxyMapScreen, the bottom drawer, comms and the boards (F2/F4/F7/F10/M/I/\).
+- [ ] Fade to black and back on menu -> game, game -> menu, quickload; toasts and news items slide/fade; button hover/press states animate briefly.
+- [ ] Respects the reduce-motion accessibility setting if present; screenshot audits (play.ps1 -Mode shots) still capture settled frames.', '2026-11-08T06:08:06Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T256', '## Story
+As a pilot I want to see what I have locked: its hull, which shield facings are down, its subsystems and which weak point my guns go for. FighterSeat keeps PlayerLockTarget/PlayerSubTarget and CycleWeakPoint (SpaceGodCore/Embodiment/FighterSeat.cpp:208-221), but the HUD shows it only as text ("Locking <name> @ <weak point>: hold the crosshair on it", UnitySpaceApp.Embodiment.cpp:699); there is no target panel in UI/Hud*.
+
+## Acceptance
+- [ ] A target card when a hull is locked (fighter, heavy, capital, turret, station seats): name, class, faction/stance, range and closing speed, hull %, shield per facing (or per emitter patch, ShieldEmitters), heat, and a list of subsystems with health, the chosen weak point highlighted.
+- [ ] The weak-point cycle key is listed in ControlsHelp''s COMBAT section and on the card.
+- [ ] Laid out in HudLayout so it never overlaps the systems panel or Opportunities (cf. US-T152/T211); hidden by U and F11 like other panels.', '2026-11-08T06:08:08Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T257', '## Story
+As a pilot I want to know my shots land and where I am being hit from. The HUD has two reticles, a lead pip (UI/Hud.cpp:1079) and off-screen arrows (UI/Hud.Sights.cpp), but no hit marker, kill confirmation or directional damage indicator.
+
+## Acceptance
+- [ ] Hit marker on the crosshair when the embodied unit''s round/beam/missile hits (shield vs hull vs weak point styled differently), from the battle''s Fx events.
+- [ ] Kill/disable confirmation (brief marker plus a line in a small combat feed: "<target> destroyed / disabled / struck colours").
+- [ ] Directional damage arcs round the reticle when the held hull takes fire, coloured shield vs hull, fading out; a shield-down and hull-critical screen edge pulse (reduce-flashes setting honoured if present).
+- [ ] Works in every seat that fires (fighter, heavy, capital broadside, turret, station); nothing enters the simulation.', '2026-11-08T06:08:10Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T258', '## Story
+As an explorer I want a map of the system I am in. The galaxy map (UI/GalaxyMapScreen.cpp, `[`) shows systems, and the bottom drawer''s Navigation tab lists locations, but nothing draws the current system: its bodies and orbits, settlements, gas works, lanes and ramps, jump gates, void sites/nebulae/graveyards, and known contacts.
+
+## Acceptance
+- [ ] A system map screen (key bound, also from the drawer) drawing the current system top-down with zoom/pan: orbits, bodies, stations and settlements, lanes, gates, fields, nebulae, graveyards, sites; known contacts by sensor knowledge (fog for what sensors do not see, US-T93).
+- [ ] Hover shows a short Prose line (GameLore::LoreShort) where one exists; click selects (same as the navigator); at a helm, a button plots a cruise course or the lane route to it.
+- [ ] Works at both scales and in co-op (plots go through the frames like the course does).', '2026-11-08T06:08:12Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T259', '## Story
+As an explorer I want a log of everything I have found, to look back on and plan from. Discovery exists in the simulation (StarDiscovery, Settlement::Discovered, pirate havens found by approach, graveyards, void sights, met pilots), and US-T239 shows scans per subject, but there is no journal, codex or log screen ("journal", "codex", "logbook" appear nowhere in Cpp/Source).
+
+## Acceptance
+- [ ] A Discoveries screen (drawer tab or its own key) listing, by category and date found: stars charted, bodies surveyed, settlements, pirate havens, graveyards and derelicts, void station sights, Bio Mass/Void Raider sightings, pilots met.
+- [ ] Each entry shows the scan readings and its Prose description (LoreLibrary via GameLore, "No record on file." otherwise), and buttons to select/focus it or plot a course.
+- [ ] Recorded in the save (registered with SG_SERIALIZE), shared in co-op; per player where discovery is per player.', '2026-11-08T06:08:13Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T260', '## Story
+As an explorer I want finding things to be worth it. StarDiscovery marks stars known when a lookout comes in range (SpaceGodCore/Systems/StarDiscovery.h) and void stations have sights "worth the detour" (Systems/VoidSites.h), but neither pays: there is no credit, data or Influence for discovery (only survey contracts from a port pay).
+
+## Acceptance
+- [ ] Discovering a star, being first to a body, visiting a void sight, scanning an anomaly (EventDirector anomalies) or a graveyard yields survey data held by the embodied hull (value by rarity and distance from charted space).
+- [ ] Ports with a cartographer (larger lawful settlements) buy survey data on the market board; selling charts it for that faction (their maps gain the system) and pays.
+- [ ] First discovery is credited in the news (the embodied pilot''s name) and in that pilot''s story; a small Influence gain for the SpaceGod (US-T140).
+- [ ] Deterministic and saved; Bench digests unchanged unless a scenario discovers something (then re-recorded with justification).', '2026-11-08T06:08:16Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T261', '## Story
+As an explorer I want to find and read logs: a derelict''s last entries, a station''s records. docs/PROSE.md lists `book` (title, author, pages) as a kind SpaceGod uses, and LoreLibrary::Lines returns a book''s pages (SpaceGodCore/Lore/LoreLibrary.h:69-70), but nothing in the Runtime opens a book: only descriptions, barks and conversations reach the UI (US-T237..T239).
+
+## Acceptance
+- [ ] Salvaging a derelict/graveyard hulk, boarding a taken ship, or scanning a station''s records recovers its book when Prose has one (key by LoreKeys for the ship/station, e.g. <ship>/log), added to the discovery log or a "Recovered logs" list.
+- [ ] A reader screen in the UiStyle look: title, author, paged text, Esc to close.
+- [ ] No book, no item (never a placeholder book); EncounterTests-style test pins the keys on a fixture; docs/PROSE.md tells writers which book keys the game reads.', '2026-11-08T06:08:18Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T262', '## Story
+As a player planning a route I want the galaxy map to answer "where is it cheap", "where have I not been" and "where is it dangerous". UI/GalaxyMapScreen.cpp draws one view (ownership, gate traffic, war fronts, blockades, raiders) with a legend; there are no selectable map modes.
+
+## Acceptance
+- [ ] A mode switch on the map header: Political (today''s view), Trade (pick a good: each known system tinted by its best known buy/sell price from MarketIntel, aged by news lag), Exploration (charted, visited, undiscovered-but-detected frontier, void stations), Danger (pirate activity, Bio Mass, void raider strikes, Watcher dread signs).
+- [ ] The legend and detail panel follow the mode; values respect information lag (what the player could know).
+- [ ] Mode remembered per profile; co-op unaffected (view only).', '2026-11-08T06:08:19Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T263', '## Story
+As a trader I want to see whether a price is high or low before I buy. Markets price goods from stock against use (GameManual "The economy"), and the trade desk ranks runs from known prices (UI/Hud.Trade.cpp), but no price history is kept or shown (no history/trend in SpaceGodCore/Economy or the trade UI).
+
+## Acceptance
+- [ ] Each settlement market records a daily price sample per good in a bounded ring (e.g. 90 days), saved and deterministic.
+- [ ] The market board (M) shows per good a sparkline and the 30/90-day low/high/average; the trade desk''s runs show whether buy and sell ends are above or below their average.
+- [ ] Known-price intelligence (MarketIntel) carries history only as far as the player''s information goes.
+- [ ] Bench digests: re-record only if the sampled history is part of the digested state, with justification.', '2026-11-08T06:08:21Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T264', '## Story
+As a player at a miner''s helm I want to mine myself. Today ore comes from capture tugs (Economy/BeltMining.h) and from hired captains working the player''s claims (Economy/Holdings.h: "Cut ore on one of the player''s mining claims"); a player flying a miner has no mining tool, and void station drifts (F10 claims) are mined only by others.
+
+## Acceptance
+- [ ] Miner hulls (and a fittable mining laser on other hulls at a yard) fire a mining beam at an asteroid/rock in a belt, void station drift or ice field; the rock''s composition (BeltMining''s kinds) decides the yield, cut into ore crates in the cargo hold (I) as it heats and fractures.
+- [ ] Yield depends on the laser''s grade and the rock; a rock depletes; claims matter (mining another''s claim is a crime on the pilot''s record).
+- [ ] Ore sells at assay camps/markets as today; a short manual section and ControlsHelp line.
+- [ ] Deterministic and co-op safe (beam use is a helm input in the frames).', '2026-11-08T06:08:23Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T265', '## Story
+As a trader-industrialist I want to own production. Holdings (SpaceGodCore/Economy/Holdings.h:135) has PropertyKind Warehouse, StationShare and MiningClaim only; settlements run Industry recipes, but the player cannot build or buy a refinery or factory.
+
+## Acceptance
+- [ ] A new PropertyKind (Refinery/Factory) bought at a port (F10) for a recipe from that settlement''s Industry: it draws inputs from a linked warehouse or the local market and produces outputs to the warehouse, at a rate and upkeep from the recipe.
+- [ ] The fleet board shows each plant''s inputs, outputs, stock, profit per day and status (starved, full, idle); hired captains on trade routes can feed it.
+- [ ] It feeds the real economy (local supply changes prices), can be raided or seized in war, is insurable (TradeInsurance), and is saved/serialized.
+- [ ] Bench digests unchanged (no player holdings in scenarios).', '2026-11-08T06:08:25Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T266', '## Story
+As a captain arriving at a port I want one place for everything the port offers. Today each service is its own key and panel (ControlsHelp TRADE / DIPLOMACY sections: M market, F2 outfitting, F7 contracts, F4 bounty board, F10 fleet, \ trade desk), and there is no player-facing repair or rearm service for the held hull (AI warships repair and rearm at friendly yards, Combat/War.h:953; no Repair button in UI/Hud.Boards.cpp).
+
+## Acceptance
+- [ ] Coming alongside a port at a helm offers "Dock" (a docking clearance by the port''s standing toward the pilot); docked, a Port screen with tabs: Market, Outfitting (if a yard), Repair & Rearm, Contracts, Bounties, Fleet & property, Trade desk, Crew/captains, News.
+- [ ] Repair & Rearm restores hull sections, subsystems, shields, munitions and propellant for credits from the yard''s market (parts drawn from its shelves like AI repairs), with a quote per item and "repair all".
+- [ ] Existing keys still open their panels directly; undocking closes the hub.
+- [ ] Co-op: purchases go through CoopSends like the boards do today.', '2026-11-08T06:08:26Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T4', 'User request 2026-11-03: "do a full faithful migration from Unity.SpaceGod to this new game, lets call the repo ''Unreal.SpaceGod''". The repo is already named Unreal.SpaceGod. Follow the faithful-port rule: reproduce the original''s behaviour, fixing only bugs, and keep the co-op additions.', '2026-11-03T15:59:06Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T50', 'Faithfulness audit (docs/FAITHFULNESS.md, Audio). UnityCompat/UnityScreen.cs AudioListener is a plain static; UnrealHost.AfterUpdate should push it to Unreal''s primary volume when it changes, as Cpp/Source/UnrealSpaceGod/UnitySpaceAppActor.cpp does. The original plays no clips, so today nothing is audible either way, but the setting and the mute must take effect.', '2026-11-03T22:59:01Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T51', 'Faithfulness audit (docs/FAITHFULNESS.md, Settings/rendering). Port the two [SettingsSource] classes onto UnrealRenderBackend as the C++ track did (pipeline choice kept and reported, photoreal/post choices applied to the camera''s post-process settings).', '2026-11-03T22:59:02Z');
@@ -85062,6 +85442,11 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T362', 'Drowned 
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T363', 'Deep Shardfall: shard strikes', '2026-11-08T05:54:35Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T364', 'Under the Anchors: chain pull', '2026-11-08T05:54:36Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T365', 'Morrow''s Shadow: darkness', '2026-11-08T05:54:37Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T368', 'Cracking floors and holes', '2026-11-08T06:07:00Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T369', 'Portrait jaggies re-cut', '2026-11-08T06:08:32Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T370', 'Enemy hazard trails', '2026-11-08T06:10:10Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T371', 'Always a way: elemental counters', '2026-11-08T06:10:11Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T373', 'Mana cost rebalance for 12 orbs', '2026-11-08T06:11:51Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T448', 'Gapper study population amendment', '2026-11-07T05:28:30Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T449', 'Full IdiotProof data backup', '2026-11-07T07:09:04Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T450', 'Gapper amendment 02 news-ride', '2026-11-07T07:09:43Z');
@@ -85147,6 +85532,33 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T233', 'Headless
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T234', 'Headless test flag', '2026-11-07T04:33:47Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T235', 'Recover the three stray autostash stashes', '2026-11-07T06:54:49Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T239', 'Prose encounters and scan narrative', '2026-11-08T04:41:57Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T240', 'Audio foundation and buses', '2026-11-08T06:07:30Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T241', 'Weapon and impact sounds', '2026-11-08T06:07:42Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T242', 'Engine, drive and alert sounds', '2026-11-08T06:07:43Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T243', 'Adaptive music', '2026-11-08T06:07:45Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T244', 'Interface sounds', '2026-11-08T06:07:47Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T245', 'Main menu front door', '2026-11-08T06:07:50Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T246', 'Credits screen', '2026-11-08T06:07:51Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T247', 'New game setup page', '2026-11-08T06:07:53Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T248', 'Co-op host and join menu', '2026-11-08T06:07:54Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T249', 'Key binding remap', '2026-11-08T06:07:56Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T250', 'Gamepad support', '2026-11-08T06:07:57Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T251', 'Graphics presets and FOV', '2026-11-08T06:07:59Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T252', 'Gameplay and accessibility settings', '2026-11-08T06:08:01Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T253', 'Difficulty levels', '2026-11-08T06:08:03Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T254', 'First-run tutorial', '2026-11-08T06:08:05Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T255', 'UI motion and transitions', '2026-11-08T06:08:06Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T256', 'Locked target panel', '2026-11-08T06:08:08Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T257', 'Hit and damage feedback', '2026-11-08T06:08:10Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T258', 'In-system map', '2026-11-08T06:08:12Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T259', 'Discovery log', '2026-11-08T06:08:13Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T260', 'Exploration rewards', '2026-11-08T06:08:16Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T261', 'Readable Prose books', '2026-11-08T06:08:18Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T262', 'Galaxy map modes', '2026-11-08T06:08:19Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T263', 'Market price history', '2026-11-08T06:08:21Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T264', 'Hands-on mining', '2026-11-08T06:08:23Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T265', 'Player-owned production', '2026-11-08T06:08:25Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T266', 'Port services hub', '2026-11-08T06:08:26Z');
 
 -- ticket_labels
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1128', 'hub-and-spoke', '2026-10-27T16:03:35Z');
