@@ -13051,7 +13051,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T13', 'Unreal.Eve', 13, '2026-11-08', 'feature', 'closed', 'The Bloodhound layer of the combat blend: the AT bar''s three segments each buy a non-pausing quick action (snap shot, quick slash, quick medicine) from shoulder/trigger shortcuts; the pause menu still wins every fight alone (UE-LAW-4)', '—', 12, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T14', 'Unreal.Eve', 14, '2026-11-08', 'feature', 'closed', 'Replace the generic PE spells with ExperimentEve''s canon infusions (Combustion, Cryostasis, Neuroelectric, Mitosis, Metabolic Burn) as new EveCore ability effects alongside Heal/Haste/Barrier, with Mitosis''s tumour as a temporary weak point', '—', 13, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T15', 'Unreal.Eve', 15, '2026-11-08', 'feature', 'closed', 'Bonus Points stop auto-spending: a field menu (Tab/Start) spends them on Active Time (faster AT bar) or Max PE, saved with the game; Unity.Eve''s frontier item', '—', 14, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T16', 'Unreal.Eve', 16, '2026-11-08', 'feature', 'open', 'ExperimentEve''s gun tinkering: each gun carries one movable part (match barrel, choke, extended magazine, rapid trigger) whose bonus applies to whichever gun holds it; the field menu moves parts between guns; parts are saved', '—', 15, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T16', 'Unreal.Eve', 16, '2026-11-08', 'feature', 'closed', 'ExperimentEve''s gun tinkering: each gun carries one movable part (match barrel, choke, extended magazine, rapid trigger) whose bonus applies to whichever gun holds it; the field menu moves parts between guns; parts are saved', '—', 15, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T17', 'Unreal.Eve', 17, '2026-11-08', 'feature', 'open', 'The plan''s Bonus Point menu also buys bag slots (2 BP, up to +6) and Parasite Energy (+5 max PE per BP), not only Active Time; saved as optional fields.', '—', 16, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T1', 'Unreal.Playground', 1, '2026-11-03', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T2', 'Unreal.Playground', 2, '2026-11-03', 'feature', 'closed', 'Scaffold co-op souls-like demo: third-person combat on isolated Hebrides island (dodge roll, block, parry, X/Y light/heavy attacks, RB heal)', 'b21f31c', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T3', 'Unreal.Playground', 3, '2026-11-03', 'feature', 'open', 'Playable demo: terrain-shaped Hebrides island surrounded by water, free meshes, working battle system, skeleton enemies that attack the player', '—', 2, NULL);
@@ -66940,6 +66941,11 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59693, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59694, 'UE-T16', '2026-11-08T16:27:03Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59695, 'UE-T16', '2026-11-08T16:27:03Z', 'name', NULL, 'Gun tinkering');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59696, 'UE-T16', '2026-11-08T16:27:12Z', 'working', NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59697, 'UE-T16', '2026-11-08T16:34:51Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59698, 'UE-T16', '2026-11-08T16:34:55Z', 'working', '0682ffdc-527f-458f-a097-caa357dfd4aa', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59699, 'UE-T17', '2026-11-08T16:35:08Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59700, 'UE-T17', '2026-11-08T16:35:08Z', 'name', NULL, 'Bonus Point menu: item slots and PE');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59701, 'UE-T17', '2026-11-08T16:35:40Z', 'working', NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -69972,7 +69978,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UE-T16', NULL, 0, NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa', '2026-11-08T16:27:12Z', '2026-11-08T16:27:12Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UE-T17', NULL, 0, NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa', '2026-11-08T16:35:40Z', '2026-11-08T16:35:40Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T100', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T23:10:16Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T104', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:16:25Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T117', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T07:02:04Z');
@@ -85931,6 +85937,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T13', 'Active Ti
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T14', 'Chimeric DNA infusions', '2026-11-08T14:43:44Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T15', 'Bonus Point menu', '2026-11-08T16:12:42Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T16', 'Gun tinkering', '2026-11-08T16:27:03Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T17', 'Bonus Point menu: item slots and PE', '2026-11-08T16:35:08Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T2', 'Repo scaffold', '2026-11-08T05:47:42Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T3', 'EveCore rules port', '2026-11-08T05:47:43Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T4', 'Camera graybox', '2026-11-08T05:47:44Z');
