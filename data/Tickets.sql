@@ -13102,6 +13102,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T41', 'Unreal.Eve', 41, '2026-11-08', 'feature', 'closed', 'Twenty Prose keys were never shown. Wire in the story ones: Kat''s arrival line, the Mercer letter and TV broadcast (readables), the Observer''s second call (a square payphone), the Kingsport Foods door sign, first-sight lines for each species and a caption for each place; character/event keys stay lore-only.', '—', 40, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T42', 'Unreal.Eve', 42, '2026-11-08', 'fix', 'closed', 'From reviewing the self-play''s screenshots: captions sat inside the message panel; engine debug messages (''Preparing Static Meshes'') drew over the game; a load left the field menu and an old message up.', '—', 41, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T43', 'Unreal.Eve', 43, '2026-11-08', 'fix', 'closed', 'Screen review: the shed''s camera crowded Kat into the near corner with the shotgun a speck at the frame''s edge. Frame the shed from the far corner on the shotgun, and dress it (workbench, pegboard tools, a mower, paint cans).', '—', 42, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T44', 'Unreal.Eve', 44, '2026-11-08', 'feature', 'closed', 'The plan''s lighthouse saves: every save payphone wears a small lit lighthouse, and after the Mother a save payphone in the nave comes alive (the ending''s lighthouse save point).', '—', 43, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T45', 'Unreal.Eve', 45, '2026-11-08', 'feature', 'open', 'On-screen prompts showed keyboard keys only; they now follow the last device used: [X] Take / [A] ready / [LB] shot on a gamepad, [E] / [Enter] / [Q] on a keyboard.', '—', 44, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T1', 'Unreal.Playground', 1, '2026-11-03', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T2', 'Unreal.Playground', 2, '2026-11-03', 'feature', 'closed', 'Scaffold co-op souls-like demo: third-person combat on isolated Hebrides island (dodge roll, block, parry, X/Y light/heavy attacks, RB heal)', 'b21f31c', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T3', 'Unreal.Playground', 3, '2026-11-03', 'feature', 'open', 'Playable demo: terrain-shaped Hebrides island surrounded by water, free meshes, working battle system, skeleton enemies that attack the player', '—', 2, NULL);
@@ -67302,6 +67304,13 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59987, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59988, 'UE-T43', '2026-11-08T21:40:04Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59989, 'UE-T43', '2026-11-08T21:40:04Z', 'name', NULL, 'Shed framing and dressing');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59990, 'UE-T43', '2026-11-08T21:46:05Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59991, 'UE-T44', '2026-11-08T21:54:03Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59992, 'UE-T44', '2026-11-08T21:54:03Z', 'name', NULL, 'Lighthouse save points');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59993, 'UE-T44', '2026-11-08T21:54:45Z', 'working', NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59994, 'UE-T44', '2026-11-08T22:00:22Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59995, 'UE-T44', '2026-11-08T22:00:47Z', 'working', '0682ffdc-527f-458f-a097-caa357dfd4aa', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59996, 'UE-T45', '2026-11-08T22:02:14Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59997, 'UE-T45', '2026-11-08T22:02:15Z', 'name', NULL, 'Prompts follow the device');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -86421,6 +86430,8 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T40', 'Glowing w
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T41', 'Every story text on screen', '2026-11-08T21:05:38Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T42', 'Screen review fixes', '2026-11-08T21:26:54Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T43', 'Shed framing and dressing', '2026-11-08T21:40:04Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T44', 'Lighthouse save points', '2026-11-08T21:54:03Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T45', 'Prompts follow the device', '2026-11-08T22:02:14Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T5', 'Kat character', '2026-11-08T05:47:46Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T6', 'ATB battle', '2026-11-08T05:47:47Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T7', 'Chimera roster', '2026-11-08T05:47:48Z');
