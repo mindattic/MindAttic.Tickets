@@ -10857,7 +10857,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T245', 'SpaceGod', 245, '2026-11-08', 'feature', 'open', 'Main menu: heading still says UNITYSPACE and dev entries (Asset Library POC, dogfight demos, tour) sit in the player list; rebrand, add Co-op/Credits/Extras and a version', '—', 244, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T246', 'SpaceGod', 246, '2026-11-08', 'feature', 'closed', 'Credits screen: none exists; add a scrolling credits page (team, original game, engine, every third-party pack and library with its licence) from the main and pause menus', '40185b5', 245, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T247', 'SpaceGod', 247, '2026-11-08', 'feature', 'open', 'New Game setup: GameLaunch::NewGame takes no options; add start date, galaxy seed, starting situation and difficulty before launching', '—', 246, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T248', 'SpaceGod', 248, '2026-11-08', 'feature', 'open', 'Co-op from the menu: hosting/joining needs -CoopHost/-CoopJoin flags or the console (Host, open <ip>); add Host and Join pages with address entry and recent hosts', '—', 247, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T248', 'SpaceGod', 248, '2026-11-08', 'feature', 'closed', 'Co-op from the menu: hosting/joining needs -CoopHost/-CoopJoin flags or the console (Host, open <ip>); add Host and Join pages with address entry and recent hosts', '754cc2b', 247, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T249', 'SpaceGod', 249, '2026-11-08', 'feature', 'closed', 'Key rebinding: every key is hard-coded (InputState reads Key::W etc., ControlsHelp lists fixed keys); add an action map and a Controls > Key bindings page saved per profile', '94980c3', 248, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T250', 'SpaceGod', 250, '2026-11-08', 'feature', 'closed', 'Gamepad support: DefaultInput.ini declares pad axes but UnrealInputDevice reads only keyboard and mouse; add pad flight, aim, menus and glyphs', '792eea7', 249, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T251', 'SpaceGod', 251, '2026-11-08', 'feature', 'closed', 'Graphics options: Settings > Graphics has only a frame-rate cap; add quality presets on Unreal scalability, the main knobs, upscaler/resolution scale and a field-of-view slider', '8bf729e', 250, NULL);
@@ -66834,6 +66834,12 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59598, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59599, 'US-T246', '2026-11-08T12:10:13Z', 'ref', '—', '40185b5');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59600, 'US-T246', '2026-11-08T12:10:23Z', 'working', 'honey@mindattic.com (c0602111-19d7-4f1e-8da9-901389cbd3ba)', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59601, 'US-T245', '2026-11-08T12:10:45Z', 'working', NULL, 'honey@mindattic.com (c0602111-19d7-4f1e-8da9-901389cbd3ba)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59602, 'US-T248', '2026-11-08T12:19:40Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59603, 'US-T248', '2026-11-08T12:19:40Z', 'ref', '—', '754cc2b');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59604, 'US-T244', '2026-11-08T12:20:04Z', 'working', NULL, 'honey@mindattic.com (c0602111-19d7-4f1e-8da9-901389cbd3ba)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59605, 'US-T248', '2026-11-08T12:20:12Z', 'working', 'honey@mindattic.com (c0602111-19d7-4f1e-8da9-901389cbd3ba)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59606, 'US-T240', '2026-11-08T12:20:16Z', 'working', NULL, 'honey@mindattic.com (c0602111-19d7-4f1e-8da9-901389cbd3ba)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59607, 'US-T240', '2026-11-08T12:20:27Z', 'working', 'honey@mindattic.com (c0602111-19d7-4f1e-8da9-901389cbd3ba)', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -69867,9 +69873,9 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T104', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:16:25Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T117', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T07:02:04Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T146', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:14:40Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T244', NULL, 0, 'honey@mindattic.com', 'c0602111-19d7-4f1e-8da9-901389cbd3ba', '2026-11-08T12:20:04Z', '2026-11-08T12:20:04Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T245', NULL, 0, 'honey@mindattic.com', 'c0602111-19d7-4f1e-8da9-901389cbd3ba', '2026-11-08T12:10:45Z', '2026-11-08T12:10:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T247', NULL, 0, 'honey@mindattic.com', 'c0602111-19d7-4f1e-8da9-901389cbd3ba', '2026-11-08T11:40:27Z', '2026-11-08T11:40:27Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T248', NULL, 0, 'honey@mindattic.com', 'c0602111-19d7-4f1e-8da9-901389cbd3ba', '2026-11-08T11:29:11Z', '2026-11-08T11:29:11Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T82', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T07:02:05Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T85', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T23:52:54Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T91', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T00:58:13Z');
@@ -92783,6 +92789,10 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('UQD-US-S4', 'UQD-EPIC-S'
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UQD-US-S5', 'UQD-EPIC-S', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UQD-US-S6', 'UQD-EPIC-S', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UQD-US-S7', 'UQD-EPIC-S', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T241', 'US-T240', 'requires', 'blocked by hand');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T242', 'US-T240', 'requires', 'blocked by hand');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T243', 'US-T240', 'requires', 'blocked by hand');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T244', 'US-T240', 'requires', 'blocked by hand');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T59', 'U.SPC-T602', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('USOD-T10', 'USOD-T3', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('USOD-T10', 'USOD-T4', 'requires', NULL);
