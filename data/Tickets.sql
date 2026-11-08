@@ -13109,6 +13109,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T47', 'Unreal.Eve', 47, '2026-11-08', 'feature', 'closed', 'Owner: get all the free content you can. The engine ships template packs locally (no login): the Quinn mannequin with idle/walk/jog/pistol/hit-react/death animations becomes Kat; real pistol and rifle meshes in her hand; real cars on the street. Fab/Megascans/Game Animation Sample need the owner''s Epic login (no CLI path), and paid packs need the owner''s purchase.', '—', 46, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T48', 'Unreal.Eve', 48, '2026-11-08', 'fix', 'closed', 'Eve.Core.AuthorityReplay.A_battle_replays_from_its_seed_and_command_log_to_the_same_events_and_state: Expected ''creatures struck at her'' to be true (AuthorityReplayTests.cpp:250) (found by /tests)', '—', 47, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T49', 'Unreal.Eve', 49, '2026-11-08', 'feature', 'closed', 'Tom Mercer and the Husk Brute are human: the free Manny mannequin with a slow shamble (walk at a low rate), hit flinches and death falls; the brute is a scaled-up Manny that keeps its severable back graft (procedural shapes on its spine).', '—', 48, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T50', 'Unreal.Eve', 50, '2026-11-08', 'feature', 'closed', 'The mannequins wear the material''s Paint Tint: Kat in teal scrubs, Tom Mercer a sickly grey, the Husk Brute grey-green, instead of bare grey or the stand-in tint.', '—', 49, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T1', 'Unreal.Playground', 1, '2026-11-03', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T2', 'Unreal.Playground', 2, '2026-11-03', 'feature', 'closed', 'Scaffold co-op souls-like demo: third-person combat on isolated Hebrides island (dodge roll, block, parry, X/Y light/heavy attacks, RB heal)', 'b21f31c', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T3', 'Unreal.Playground', 3, '2026-11-03', 'feature', 'open', 'Playable demo: terrain-shaped Hebrides island surrounded by water, free meshes, working battle system, skeleton enemies that attack the player', '—', 2, NULL);
@@ -67342,6 +67343,11 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60020, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60021, 'UE-T49', '2026-11-08T22:41:52Z', 'working', NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60022, 'UE-T49', '2026-11-08T22:55:09Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60023, 'UE-T49', '2026-11-08T22:55:17Z', 'working', '0682ffdc-527f-458f-a097-caa357dfd4aa', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60024, 'UE-T50', '2026-11-08T23:03:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60025, 'UE-T50', '2026-11-08T23:03:49Z', 'name', NULL, 'Tinted mannequins');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60026, 'UE-T50', '2026-11-08T23:10:10Z', 'working', NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60027, 'UE-T50', '2026-11-08T23:10:12Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60028, 'UE-T50', '2026-11-08T23:10:24Z', 'working', '0682ffdc-527f-458f-a097-caa357dfd4aa', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -86470,6 +86476,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T47', 'Free engi
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T48', 'Replay test: no creature strikes at her', '2026-11-08T22:12:50Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T49', 'The Afflicted as mannequins', '2026-11-08T22:41:37Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T5', 'Kat character', '2026-11-08T05:47:46Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T50', 'Tinted mannequins', '2026-11-08T23:03:49Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T6', 'ATB battle', '2026-11-08T05:47:47Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T7', 'Chimera roster', '2026-11-08T05:47:48Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T8', 'North End town', '2026-11-08T05:47:50Z');
