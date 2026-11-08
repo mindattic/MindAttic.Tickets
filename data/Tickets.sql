@@ -10855,7 +10855,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T242', 'SpaceGod', 242, '2026-11-08', 'feature', 'closed', 'Flight and alert sounds: no engine, thruster, boost, cruise/lane/FTL or warning audio for the embodied craft (US-T170 asked for engine audio; DriveRegime cues exist but nothing plays them)', 'a174c05', 241, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T243', 'SpaceGod', 243, '2026-11-08', 'feature', 'closed', 'Music: the game has no soundtrack; add an adaptive score (menu, exploration, void dread, combat, victory/defeat) that follows the simulation', 'c891cb4', 242, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T244', 'SpaceGod', 244, '2026-11-08', 'feature', 'closed', 'UI sounds: buttons, tabs, panels, toasts, hails and the comms panel make no sound; add interface feedback sounds across every screen', '729c7e4', 243, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T245', 'SpaceGod', 245, '2026-11-08', 'feature', 'open', 'Main menu: heading still says UNITYSPACE and dev entries (Asset Library POC, dogfight demos, tour) sit in the player list; rebrand, add Co-op/Credits/Extras and a version', '—', 244, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T245', 'SpaceGod', 245, '2026-11-08', 'feature', 'closed', 'Main menu: heading still says UNITYSPACE and dev entries (Asset Library POC, dogfight demos, tour) sit in the player list; rebrand, add Co-op/Credits/Extras and a version', '783135a', 244, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T246', 'SpaceGod', 246, '2026-11-08', 'feature', 'closed', 'Credits screen: none exists; add a scrolling credits page (team, original game, engine, every third-party pack and library with its licence) from the main and pause menus', '40185b5', 245, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T247', 'SpaceGod', 247, '2026-11-08', 'feature', 'closed', 'New Game setup: GameLaunch::NewGame takes no options; add start date, galaxy seed, starting situation and difficulty before launching', '37d13e9', 246, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T248', 'SpaceGod', 248, '2026-11-08', 'feature', 'closed', 'Co-op from the menu: hosting/joining needs -CoopHost/-CoopJoin flags or the console (Host, open <ip>); add Host and Join pages with address entry and recent hosts', '754cc2b', 247, NULL);
@@ -10880,8 +10880,10 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T267', 'SpaceGod', 267, '2026-11-08', 'chore', 'closed', 'Declare the conversation outcome node names in Data/Prose/prose.config.json (outcomeNodes) so Prose''s verifier treats $outcome-reached nodes as reachable and every kit push keeps them (PRS-T926 follow-up)', 'PRS-T926 e2f8a61c1', 266, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T1', 'SpaceGod.Unity.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T2', 'SpaceGod.Unity.CSharp', 2, '2026-11-06', 'feature', 'closed', 'Adopt the shared off-by-default --headless launch mode (Unity.Shared)', 'faadbca', 1, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T3', 'SpaceGod.Unity.CSharp', 3, '2026-11-08', 'feature', 'open', 'Mirror SpaceGod US-T72: docs/CAPTURE.md names the promoted copy SpaceGod (not SpaceGod.Unreal.Cpp) as the third copy and its RepoName folder, and lists SpaceGod''s -RenderOffScreen capture row as that copy only', 'SpaceGod US-T72', 2, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T1', 'SpaceGod.Unreal.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T2', 'SpaceGod.Unreal.CSharp', 2, '2026-11-06', 'feature', 'closed', 'Adopt the shared off-by-default --headless launch mode (Unreal.Shared)', '—', 1, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T3', 'SpaceGod.Unreal.CSharp', 3, '2026-11-08', 'feature', 'open', 'Mirror SpaceGod US-T72: add docs/CAPTURE.md (Unity e29d871''s text, third copy named SpaceGod) that this copy''s capture code cites but lacks, and a US-T72 section in docs/PARITY.md', 'SpaceGod US-T72', 2, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SGUC-T1', 'SpaceGod.Unreal.Cpp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SGUC-T2', 'SpaceGod.Unreal.Cpp', 2, '2026-11-06', 'feature', 'closed', 'Adopt the shared off-by-default --headless launch mode (Unreal.Shared)', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SET-T1', 'SyntheticExchangeTheory', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| SET-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
@@ -13042,6 +13044,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T10', 'Unreal.Eve', 10, '2026-11-07', 'feature', 'open', 'M8: CommonUI HUD, MetaSounds audio with a sound for every event, rumble, camera shake, -muted flag, options', '—', 9, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T11', 'Unreal.Eve', 11, '2026-11-07', 'feature', 'open', 'M9: full -demo self-play from cold open to ending, packaged Shipping build deployed to C:\Apps\Unreal.Eve, docs and screenshots', '—', 10, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T12', 'Unreal.Eve', 12, '2026-11-07', 'feature', 'closed', 'Tie Unreal.Eve into the Prose eve universe through the conduit like GridGame and SpaceGod: Data/Prose config, entity mapper/push, pull+apply into game text, outbox hook', '—', 11, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T13', 'Unreal.Eve', 13, '2026-11-08', 'feature', 'open', 'The Bloodhound layer of the combat blend: the AT bar''s three segments each buy a non-pausing quick action (snap shot, quick slash, quick medicine) from shoulder/trigger shortcuts; the pause menu still wins every fight alone (UE-LAW-4)', '—', 12, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T1', 'Unreal.Playground', 1, '2026-11-03', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T2', 'Unreal.Playground', 2, '2026-11-03', 'feature', 'closed', 'Scaffold co-op souls-like demo: third-person combat on isolated Hebrides island (dodge roll, block, parry, X/Y light/heavy attacks, RB heal)', 'b21f31c', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T3', 'Unreal.Playground', 3, '2026-11-03', 'feature', 'open', 'Playable demo: terrain-shaped Hebrides island surrounded by water, free meshes, working battle system, skeleton enemies that attack the player', '—', 2, NULL);
@@ -66873,6 +66876,17 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59636, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59637, 'US-T89', '2026-11-08T14:10:23Z', 'working', NULL, 'honey@mindattic.com (c0602111-19d7-4f1e-8da9-901389cbd3ba)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59638, 'US-T83', '2026-11-08T14:10:24Z', 'working', NULL, 'honey@mindattic.com (c0602111-19d7-4f1e-8da9-901389cbd3ba)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59639, 'US-T102', '2026-11-08T14:10:26Z', 'working', 'honey@mindattic.com (c0602111-19d7-4f1e-8da9-901389cbd3ba)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59640, 'US-T245', '2026-11-08T14:18:27Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59641, 'US-T245', '2026-11-08T14:18:27Z', 'ref', '—', '783135a');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59642, 'US-T245', '2026-11-08T14:18:46Z', 'working', 'honey@mindattic.com (c0602111-19d7-4f1e-8da9-901389cbd3ba)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59643, 'US-T72', '2026-11-08T14:18:55Z', 'working', NULL, 'honey@mindattic.com (c0602111-19d7-4f1e-8da9-901389cbd3ba)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59644, 'UE-T13', '2026-11-08T14:23:08Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59645, 'UE-T13', '2026-11-08T14:23:08Z', 'name', NULL, 'Active Time Actions');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59646, 'UE-T13', '2026-11-08T14:23:18Z', 'working', NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59647, 'SPA-T3', '2026-11-08T14:25:44Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59648, 'SPA-T3', '2026-11-08T14:25:44Z', 'name', NULL, 'CAPTURE spec names SpaceGod');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59649, 'SPAC-T3', '2026-11-08T14:25:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59650, 'SPAC-T3', '2026-11-08T14:25:46Z', 'name', NULL, 'Add CAPTURE spec copy');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -69902,11 +69916,12 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UE-T13', NULL, 0, NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa', '2026-11-08T14:23:18Z', '2026-11-08T14:23:18Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T100', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T23:10:16Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T104', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:16:25Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T117', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T07:02:04Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T146', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:14:40Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T245', NULL, 0, 'honey@mindattic.com', 'c0602111-19d7-4f1e-8da9-901389cbd3ba', '2026-11-08T12:10:45Z', '2026-11-08T12:10:45Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T72', NULL, 0, 'honey@mindattic.com', 'c0602111-19d7-4f1e-8da9-901389cbd3ba', '2026-11-08T14:18:55Z', '2026-11-08T14:18:55Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T82', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T07:02:05Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T83', NULL, 0, 'honey@mindattic.com', 'c0602111-19d7-4f1e-8da9-901389cbd3ba', '2026-11-08T14:10:24Z', '2026-11-08T14:10:24Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T85', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T23:52:54Z');
@@ -85034,7 +85049,42 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('SET-T41', 'R
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('SET-T48', 'Ryan (2026-11-06) asked to weave the IdiotProof gapper research collaboration into the dissertation as another example of mutually beneficial coexistence. Per AGENTS.md: draft and state weaknesses first, write into chapters only after approval; carry to the other papers only if theory substance changes (it does not: vignette only).', '2026-11-07T04:43:15Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('SGUC-T2', 'Adopt the shared, off-by-default --headless mode from UNRE-T2 (Unreal.Shared MindAtticShared plugin) in this game: reference the shared package/plugin, wire the game''s own opt-ins (skip the main menu into a normal session when headless), and give its run script a -Headless switch that launches with the shared launcher''s flags. Without --headless nothing changes. This repo is archived on GitHub: unarchive it (gh repo unarchive), land the change, then archive it again (gh repo archive).', '2026-11-07T04:33:50Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('SPAC-T2', 'Adopt the shared, off-by-default --headless mode from UNRE-T2 (Unreal.Shared MindAtticShared plugin) in this game: reference the shared package/plugin, wire the game''s own opt-ins (skip the main menu into a normal session when headless), and give its run script a -Headless switch that launches with the shared launcher''s flags. Without --headless nothing changes. This repo is archived on GitHub: unarchive it (gh repo unarchive), land the change, then archive it again (gh repo archive).', '2026-11-07T04:33:51Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('SPAC-T3', 'Mirror of SpaceGod US-T72 (MindAttic.Capture in all three SpaceGod copies). This copy already records through
+MindAttic.Capture (e8788e8, 1b717b7: vendored engine, CaptureUnity, CaptureEvents, SpaceGod.capture.json byte-identical,
+Alt+F9/F10/F11, play.ps1 -CaptureHost), but it has **no `docs/CAPTURE.md`**, the spec its code cites
+(CaptureEvents.cs, CaptureRunner.cs, InputState.cs, UnitySpaceApp.cs, CaptureUnity.cs, UnityBridge.cs all say "per
+docs/CAPTURE.md"). Keep the repo self-contained: copy the text in, don''t link to a sibling.
+
+Do exactly this:
+1. Add `docs/CAPTURE.md`: the text of SpaceGod.Unity.CSharp `docs/CAPTURE.md` at `e29d871`, with one line under the
+   title: `> Mirrored from SpaceGod.Unity.CSharp docs/CAPTURE.md at e29d871 (the reference copy, where it changes first).`
+   In it name the third copy `SpaceGod` (not `SpaceGod.Unreal.Cpp`) in the "all three copies" paragraph and in
+   section 2''s `{RepoName}` list (SpaceGod now records into `R:\MindAttic\Capture\SpaceGod\`). Keep section 7''s
+   wording that the smoke''s `hail` is raised on the client, not the host.
+2. Add a `## Recording through MindAttic.Capture (US-T72)` section to `docs/PARITY.md` like SpaceGod''s: what this copy
+   has of docs/CAPTURE.md (flags, -demo tour shots, shipped rules, the 20 events, `[capture] event` line, hotkeys,
+   MINDATTIC_CAPTURE on by default), how its engine side differs (desktop host built net10.0 with Windows Graphics
+   Capture compiled out, the window recorded as its screen rectangle; -SpaceGodLog=<file> for Shipping logs), and its
+   proof per section 8 if run.
+3. Check `AppName = "SpaceGod.Unreal.CSharp"` in UnityCompat/CaptureUnity.cs stays as is (it is right).
+No gameplay code change expected; Bench digests unaffected.', '2026-11-08T14:25:46Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('SPA-T2', 'Adopt the shared, off-by-default --headless mode from MAU-T18 (Unity.Shared Headless module) in this game: reference the shared package/plugin, wire the game''s own opt-ins (skip the main menu into a normal session when headless), and give its run script a -Headless switch that launches with the shared launcher''s flags. Without --headless nothing changes. This repo is archived on GitHub: unarchive it (gh repo unarchive), land the change, then archive it again (gh repo archive).', '2026-11-07T04:33:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('SPA-T3', 'Mirror of SpaceGod US-T72 (MindAttic.Capture in all three SpaceGod copies). This repo is the reference copy and already
+records through MindAttic.Capture (1ddb3bd, e29d871); what is left is keeping `docs/CAPTURE.md` true now that the
+third copy is the promoted repo **SpaceGod** (US-T76), not SpaceGod.Unreal.Cpp. Edit only this repo; read nothing from a
+sibling at build or run time.
+
+Do exactly this in `docs/CAPTURE.md`:
+1. Line 4 (the "one spec all three copies follow" paragraph): `SpaceGod.Unreal.CSharp and SpaceGod.Unreal.Cpp` ->
+   `SpaceGod.Unreal.CSharp and SpaceGod`.
+2. Section 2, the `{RepoName}` bullet: `` `SpaceGod.Unreal.Cpp` `` -> `` `SpaceGod` `` (SpaceGod''s game now hands its
+   capture host `--app SpaceGod`, so its sessions land in `R:\MindAttic\Capture\SpaceGod\`; the archived
+   SpaceGod.Unreal.Cpp repo still writes `...\SpaceGod.Unreal.Cpp\`).
+3. Section 1''s flag table: add, after the `-capturedir=<dir>` row, SpaceGod''s row marked as that copy only:
+   `| -RenderOffScreen with -capture | SpaceGod only (US-T163 there): no window opens, the GPU still renders; the game
+   reads its frames back and feeds them to the capture host (-capture-source=frames / =window). Not in this copy. |`
+No code change: CaptureUnity''s RepoName stamping (CaptureBuild, mindattic-capture-app.txt) already gives
+`SpaceGod.Unity.CSharp`. Proof: docs only, so none of section 8 needs rerunning.', '2026-11-08T14:25:44Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('TRC-T25', 'Move the content of TaxRateCollector.Blazor/Components/Pages/Settings.razor into a settings-tab package implementing the MindAttic.Components settings-tab contract (M.COMP-T148), consumed by MindAttic.Vault.Dashboard. If TaxRateCollector isn''t already on MindAttic.Vault''s AddVaultAppSettings<T> for its preferences, migrate onto it first so the tab reads/writes through Vault, not a local store.', '2026-10-31T03:32:29Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('TRC-T26', 'Delete TaxRateCollector.Blazor/Components/Pages/Settings.razor (and its menu/route entry) once its tab package (previous ticket) is live in Dashboard. Replace the app''s settings/cog entry point with the shared ''open my settings'' helper (M.COMP-T150) deep-linking to this app''s Dashboard tab.', '2026-10-31T03:32:30Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('TRC-T27', 'TaxRateCollector is currently a standalone Sdk.Web app, so TaxRateCollector.Blazor/Components/Pages/Settings.razor isn''t portable yet. Extract it into its own Sdk.Razor class library (same move Prose/ThinkTank/Tutor already made) so it can implement the Razor-kind contract (M.COMP-T151) and be hosted unmodified in either MindAttic.Vault.Desktop (BlazorWebView) or MindAttic.Vault.Web. Migrate onto AddVaultAppSettings<T> if not already.', '2026-10-31T03:49:04Z');
@@ -85804,7 +85854,9 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RTO-T113', 'Auto-pu
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('SET-T48', 'Gapper-study collaboration vignette', '2026-11-07T04:43:15Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('SGUC-T2', 'Headless test flag', '2026-11-07T04:33:50Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('SPAC-T2', 'Headless test flag', '2026-11-07T04:33:51Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('SPAC-T3', 'Add CAPTURE spec copy', '2026-11-08T14:25:46Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('SPA-T2', 'Headless test flag', '2026-11-07T04:33:43Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('SPA-T3', 'CAPTURE spec names SpaceGod', '2026-11-08T14:25:44Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.CHN-T113', 'Headless test flag', '2026-11-07T04:33:33Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.EVE-T49', 'Headless test flag', '2026-11-07T04:33:30Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.HARE-T124', 'Headless test flag', '2026-11-07T04:33:35Z');
@@ -85818,6 +85870,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UC-T51', 'Headless 
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T10', 'Feel pass', '2026-11-08T05:47:52Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T11', 'Slice lock', '2026-11-08T05:47:53Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T12', 'Prose conduit wiring', '2026-11-08T05:51:20Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T13', 'Active Time Actions', '2026-11-08T14:23:08Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T2', 'Repo scaffold', '2026-11-08T05:47:42Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T3', 'EveCore rules port', '2026-11-08T05:47:43Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T4', 'Camera graybox', '2026-11-08T05:47:44Z');
