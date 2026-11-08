@@ -66733,6 +66733,13 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59498, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59499, 'US-T264', '2026-11-08T07:15:45Z', 'working', NULL, 'honey@mindattic.com (c0602111-19d7-4f1e-8da9-901389cbd3ba)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59500, 'US-T263', '2026-11-08T07:15:45Z', 'working', NULL, 'honey@mindattic.com (c0602111-19d7-4f1e-8da9-901389cbd3ba)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59501, 'GG-T61', '2026-11-08T07:16:42Z', 'working', '04f51e79-4363-468f-b7a5-411cfdb257aa', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59502, 'GG-T61', '2026-11-08T07:21:54Z', 'working', NULL, 'shampoo1232@mindattic.com (04f51e79-4363-468f-b7a5-411cfdb257aa)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59503, 'GG-T61', '2026-11-08T07:22:16Z', 'working', 'shampoo1232@mindattic.com (04f51e79-4363-468f-b7a5-411cfdb257aa)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59504, 'IP-T457', '2026-11-08T07:27:54Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59505, 'IP-T458', '2026-11-08T07:27:56Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59506, 'IP-T459', '2026-11-08T07:27:58Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59507, 'IP-T460', '2026-11-08T07:27:59Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59508, 'IP-T461', '2026-11-08T07:28:00Z', 'approval', 'proposed', 'approved');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -67307,7 +67314,12 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T452', 'approved', 0, '2026-11-08T04:22:25Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T453', 'approved', 0, '2026-11-08T04:22:25Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T454', 'approved', 0, '2026-11-08T04:22:25Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T457', 'approved', 0, '2026-11-08T07:27:54Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T458', 'approved', 0, '2026-11-08T07:27:56Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T459', 'approved', 0, '2026-11-08T07:27:58Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T46', 'proposed', 1245, '2026-10-30T19:25:02Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T460', 'approved', 0, '2026-11-08T07:27:59Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T461', 'approved', 0, '2026-11-08T07:28:00Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T47', 'proposed', 1244, '2026-10-30T19:25:04Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T48', 'proposed', 1243, '2026-10-30T19:25:07Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T49', 'approved', 1242, '2026-10-31T03:58:02Z', NULL);
@@ -71741,6 +71753,7 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (21053, '
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (21054, 'GG-T377', 'ryand', '2026-11-08T07:08:25Z', 'Being worked in-session by the /allocate CLI; don''t dispatch.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (21055, 'GG-T378', 'ryand', '2026-11-08T07:10:00Z', 'Being worked in-session by the /allocate CLI; don''t dispatch.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (21056, 'GG-T379', 'ryand', '2026-11-08T07:11:10Z', 'Being worked in-session by the /allocate CLI; don''t dispatch.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (21057, 'GG-T61', 'ryand', '2026-11-08T07:22:18Z', 'Code complete (0d25708) and the leak it surfaced is fixed (GG-T375, c433c23). Only the 300-encounter proof soak remains; per the no-test golden rule it runs on the owner''s /test (fresh build, add -leakprobe; expect flat managed heap after ~10 encounters). Released from /allocate.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
