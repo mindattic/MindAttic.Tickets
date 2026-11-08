@@ -13067,7 +13067,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T21', 'Unreal.Eve', 21, '2026-11-08', 'feature', 'closed', 'The plan''s save-terminal lore: each payphone save also opens the next deleted file in C:\KINGSPORT\RECYCLED (Prose description keys, placeholders until approved); the terminal wraps its text.', '—', 20, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T22', 'Unreal.Eve', 22, '2026-11-08', 'feature', 'closed', 'UE-T10''s options remainder: the field menu gains Volume (cycles 100..0%) and Rumble (on/off), kept in Saved/Eve/options.json and applied to every sound and rumble.', '—', 21, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T23', 'Unreal.Eve', 23, '2026-11-08', 'feature', 'closed', 'The plan''s Mercer-house mini-encounter: Tom Mercer, Afflicted, still at his Father''s Day table: slow, telegraphed, stumbling; a weak head. The self-play fights him before taking the shed key.', '—', 22, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T24', 'Unreal.Eve', 24, '2026-11-08', 'feature', 'open', 'The plan''s ending tally: count creatures killed (the save''s Kills field was never fed) and carry play time across loads (it reset to the session clock); the ending closes on THE NIGHT SO FAR: time, creatures, saves, deleted files recovered.', '—', 23, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T24', 'Unreal.Eve', 24, '2026-11-08', 'feature', 'closed', 'The plan''s ending tally: count creatures killed (the save''s Kills field was never fed) and carry play time across loads (it reset to the session clock); the ending closes on THE NIGHT SO FAR: time, creatures, saves, deleted files recovered.', '—', 23, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T25', 'Unreal.Eve', 25, '2026-11-08', 'fix', 'closed', 'Unity.Eve''s Steeple Drone stings from 5 m (ranged, hover 1.25, level 2); the port made steeple-bat a melee level-1 bat. Restore Unity''s numbers under the steeple-bat id.', '—', 24, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T1', 'Unreal.Playground', 1, '2026-11-03', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T2', 'Unreal.Playground', 2, '2026-11-03', 'feature', 'closed', 'Scaffold co-op souls-like demo: third-person combat on isolated Hebrides island (dodge roll, block, parry, X/Y light/heavy attacks, RB heal)', 'b21f31c', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T3', 'Unreal.Playground', 3, '2026-11-03', 'feature', 'open', 'Playable demo: terrain-shaped Hebrides island surrounded by water, free meshes, working battle system, skeleton enemies that attack the player', '—', 2, NULL);
@@ -67054,6 +67055,12 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59773, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59774, 'M.COMP-T170', '2026-11-08T18:45:08Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59775, 'M.ORCH-T1531', '2026-11-08T18:45:15Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59776, 'M.ORCH-T1532', '2026-11-08T18:45:23Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59777, 'UE-T24', '2026-11-08T18:45:50Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59778, 'UE-T24', '2026-11-08T18:46:02Z', 'working', '0682ffdc-527f-458f-a097-caa357dfd4aa', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59779, 'UE-T25', '2026-11-08T18:48:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59780, 'UE-T25', '2026-11-08T18:48:55Z', 'name', NULL, 'Steeple bat lost its ranged sting');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59781, 'UE-T25', '2026-11-08T18:49:45Z', 'working', NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59782, 'UE-T25', '2026-11-08T18:55:31Z', 'status', 'open', 'closed');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -70086,7 +70093,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UE-T24', NULL, 0, NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa', '2026-11-08T18:39:23Z', '2026-11-08T18:39:23Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UE-T25', NULL, 0, NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa', '2026-11-08T18:49:45Z', '2026-11-08T18:49:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T100', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T23:10:16Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T104', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:16:25Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T117', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T07:02:04Z');
@@ -86106,6 +86113,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T21', 'ApertureO
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T22', 'Options: volume and rumble', '2026-11-08T18:18:35Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T23', 'The Afflicted father', '2026-11-08T18:32:02Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T24', 'The night''s tally', '2026-11-08T18:39:06Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T25', 'Steeple bat lost its ranged sting', '2026-11-08T18:48:55Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T3', 'EveCore rules port', '2026-11-08T05:47:43Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T4', 'Camera graybox', '2026-11-08T05:47:44Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T5', 'Kat character', '2026-11-08T05:47:46Z');
