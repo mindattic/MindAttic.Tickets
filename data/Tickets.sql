@@ -10693,7 +10693,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T80', 'SpaceGod', 80, '2026-11-05', 'feature', 'closed', 'Heavy fighters: Everspace 2-style flight model', '968728a', 79, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T81', 'SpaceGod', 81, '2026-11-05', 'feature', 'closed', 'Capital ships: broadside movement (bring the flank to bear, Age-of-Sail-style)', '6fa3927', 80, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T82', 'SpaceGod', 82, '2026-11-05', 'feature', 'closed', 'Boarding party system: marines/workers moving on a ship''s hull', '—', 81, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T83', 'SpaceGod', 83, '2026-11-05', 'feature', 'open', 'Port the Mech from Unreal.Soulslike into SpaceGod, with jump jets (hold Space to fly in space)', '—', 82, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T83', 'SpaceGod', 83, '2026-11-05', 'feature', 'closed', 'Port the Mech from Unreal.Soulslike into SpaceGod, with jump jets (hold Space to fly in space)', '5ac3185', 82, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T84', 'SpaceGod', 84, '2026-11-05', 'feature', 'closed', 'Metal Dyson-sphere model for all Void Stations', '74a4f0d', 83, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T85', 'SpaceGod', 85, '2026-11-05', 'feature', 'closed', 'Easter egg: a Borg cube at Wolf 359', 'a79c8ef', 84, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T86', 'SpaceGod', 86, '2026-11-05', 'feature', 'closed', 'Jump-drive ships aim at a star and fly straight there, no loading screens', 'fede63e', 85, NULL);
@@ -10880,6 +10880,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T267', 'SpaceGod', 267, '2026-11-08', 'chore', 'closed', 'Declare the conversation outcome node names in Data/Prose/prose.config.json (outcomeNodes) so Prose''s verifier treats $outcome-reached nodes as reachable and every kit push keeps them (PRS-T926 follow-up)', 'PRS-T926 e2f8a61c1', 266, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T268', 'SpaceGod', 268, '2026-11-08', 'feature', 'closed', 'Help and manual catch-up: ControlsHelp lacks Shift+M (docking/port), Shift+O (discoveries), tutorial keys (Shift+Enter/Shift+Esc), and the manual lacks sections for exploration rewards/cartographers (US-T260) and the tutorial (US-T254); add them', '3f07b4f', 267, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T269', 'SpaceGod', 269, '2026-11-08', 'feature', 'open', 'Mechlab follow-up: utility parts (thrusters, life support) can be shot out and are lost with their component, show on the ship model, add heat sink/power cell/reinforced bulkhead utilities and a tonnage limit per component, and let AI yards fit utilities to some designs', '—', 268, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T270', 'SpaceGod', 270, '2026-11-08', 'feature', 'open', 'Mech follow-up: enemies target and damage a deployed mech, mechs work in co-op (Shift+N over CoopSends), are saved and restored with the game, and feet plant on the hull surface (IK) instead of following the walk cycle', '—', 269, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T1', 'SpaceGod.Unity.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T2', 'SpaceGod.Unity.CSharp', 2, '2026-11-06', 'feature', 'closed', 'Adopt the shared off-by-default --headless launch mode (Unity.Shared)', 'faadbca', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T3', 'SpaceGod.Unity.CSharp', 3, '2026-11-08', 'feature', 'open', 'Mirror SpaceGod US-T72: docs/CAPTURE.md names the promoted copy SpaceGod (not SpaceGod.Unreal.Cpp) as the third copy and its RepoName folder, and lists SpaceGod''s -RenderOffScreen capture row as that copy only', 'SpaceGod US-T72', 2, NULL);
@@ -66913,6 +66914,14 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59670, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59671, 'US-T269', '2026-11-08T15:11:39Z', 'working', NULL, 'c0602111-19d7-4f1e-8da9-901389cbd3ba');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59672, 'US-T269', '2026-11-08T15:11:54Z', 'working', 'c0602111-19d7-4f1e-8da9-901389cbd3ba', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59673, 'UE-T14', '2026-11-08T15:15:33Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59674, 'US-T83', '2026-11-08T15:22:04Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59675, 'US-T83', '2026-11-08T15:22:04Z', 'ref', '—', '5ac3185');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59676, 'US-T270', '2026-11-08T15:22:27Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59677, 'US-T83', '2026-11-08T15:22:28Z', 'working', 'honey@mindattic.com (c0602111-19d7-4f1e-8da9-901389cbd3ba)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59678, 'US-T270', '2026-11-08T15:22:28Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59679, 'US-T269', '2026-11-08T15:22:31Z', 'working', NULL, 'honey@mindattic.com (c0602111-19d7-4f1e-8da9-901389cbd3ba)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59680, 'US-T270', '2026-11-08T15:22:43Z', 'working', NULL, 'c0602111-19d7-4f1e-8da9-901389cbd3ba');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59681, 'US-T270', '2026-11-08T15:22:47Z', 'working', 'c0602111-19d7-4f1e-8da9-901389cbd3ba', 'honey@mindattic.com (c0602111-19d7-4f1e-8da9-901389cbd3ba)');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -69706,6 +69715,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T266', 'approved', 0, '2026-11-08T06:09:45Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T268', 'approved', 0, '2026-11-08T14:39:17Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T269', 'approved', 0, '2026-11-08T15:11:19Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T270', 'approved', 0, '2026-11-08T15:22:28Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T72', 'approved', 0, '2026-11-06T21:27:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T82', 'approved', 0, '2026-11-06T21:27:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T83', 'approved', 0, '2026-11-06T21:27:41Z', NULL);
@@ -69948,8 +69958,9 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T104', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:16:25Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T117', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T07:02:04Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T146', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:14:40Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T269', NULL, 0, 'honey@mindattic.com', 'c0602111-19d7-4f1e-8da9-901389cbd3ba', '2026-11-08T15:22:31Z', '2026-11-08T15:22:31Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T270', NULL, 0, 'honey@mindattic.com', 'c0602111-19d7-4f1e-8da9-901389cbd3ba', '2026-11-08T15:22:47Z', '2026-11-08T15:22:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T82', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T07:02:05Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T83', NULL, 0, 'honey@mindattic.com', 'c0602111-19d7-4f1e-8da9-901389cbd3ba', '2026-11-08T14:10:24Z', '2026-11-08T14:10:24Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T85', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T23:52:54Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T91', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T00:58:13Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T98', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:51:51Z');
