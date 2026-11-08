@@ -13098,7 +13098,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T37', 'Unreal.Eve', 37, '2026-11-08', 'feature', 'closed', 'The yard and Market Square read as places: sleepers under the rails, wheel trucks under the boxcars, oil drums and crates; Saint Ansel''s dark doors boarded shut, a Kingsport Foods sign, benches, a newspaper box.', '—', 36, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T38', 'Unreal.Eve', 38, '2026-11-08', 'feature', 'closed', 'A save survives quitting: at launch, with a save on disk, a title offers Continue (its summary) or New Game; Continue loads it. Skipped by the self-play and by -NewGame.', '—', 37, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T39', 'Unreal.Eve', 39, '2026-11-08', 'feature', 'closed', 'The field menu gains Quit (to the desktop); the save on disk is what Continue offers next launch.', '—', 38, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T40', 'Unreal.Eve', 40, '2026-11-08', 'feature', 'open', 'Lit windows, the altar candles and the Kingsport Foods sign glow (the engine''s emissive mesh material) instead of being merely pale, so the night street has lights in it.', '—', 39, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T40', 'Unreal.Eve', 40, '2026-11-08', 'feature', 'closed', 'Lit windows, the altar candles and the Kingsport Foods sign glow (the engine''s emissive mesh material) instead of being merely pale, so the night street has lights in it.', '—', 39, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T41', 'Unreal.Eve', 41, '2026-11-08', 'feature', 'open', 'Twenty Prose keys were never shown. Wire in the story ones: Kat''s arrival line, the Mercer letter and TV broadcast (readables), the Observer''s second call (a square payphone), the Kingsport Foods door sign, first-sight lines for each species and a caption for each place; character/event keys stay lore-only.', '—', 40, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T1', 'Unreal.Playground', 1, '2026-11-03', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T2', 'Unreal.Playground', 2, '2026-11-03', 'feature', 'closed', 'Scaffold co-op souls-like demo: third-person combat on isolated Hebrides island (dodge roll, block, parry, X/Y light/heavy attacks, RB heal)', 'b21f31c', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T3', 'Unreal.Playground', 3, '2026-11-03', 'feature', 'open', 'Playable demo: terrain-shaped Hebrides island surrounded by water, free meshes, working battle system, skeleton enemies that attack the player', '—', 2, NULL);
@@ -67284,6 +67285,11 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59972, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59973, 'UE-T40', '2026-11-08T20:58:02Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59974, 'UE-T40', '2026-11-08T20:58:02Z', 'name', NULL, 'Glowing windows');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59975, 'UE-T40', '2026-11-08T20:58:25Z', 'working', NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59976, 'UE-T40', '2026-11-08T21:03:54Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59977, 'UE-T40', '2026-11-08T21:04:03Z', 'working', '0682ffdc-527f-458f-a097-caa357dfd4aa', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59978, 'UE-T41', '2026-11-08T21:05:38Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59979, 'UE-T41', '2026-11-08T21:05:38Z', 'name', NULL, 'Every story text on screen');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59980, 'UE-T41', '2026-11-08T21:06:12Z', 'working', NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -70322,7 +70328,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UE-T40', NULL, 0, NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa', '2026-11-08T20:58:25Z', '2026-11-08T20:58:25Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UE-T41', NULL, 0, NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa', '2026-11-08T21:06:12Z', '2026-11-08T21:06:12Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T100', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T23:10:16Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T104', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:16:25Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T117', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T07:02:04Z');
@@ -86401,6 +86407,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T38', 'Continue 
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T39', 'Quit from the menu', '2026-11-08T20:50:36Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T4', 'Camera graybox', '2026-11-08T05:47:44Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T40', 'Glowing windows', '2026-11-08T20:58:02Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T41', 'Every story text on screen', '2026-11-08T21:05:38Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T5', 'Kat character', '2026-11-08T05:47:46Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T6', 'ATB battle', '2026-11-08T05:47:47Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T7', 'Chimera roster', '2026-11-08T05:47:48Z');
