@@ -5154,6 +5154,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T459', 'IdiotProof', 459, '2026-11-08', 'feature', 'closed', 'Gapper study: XBRL shares outstanding / public float from SEC companyfacts, dated by filing, as a float proxy and float-rotation feature (avenues.md A3)', '1c7320f', 458, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T460', 'IdiotProof', 460, '2026-11-08', 'feature', 'closed', 'Gapper study: Alpaca SIP trades (then quotes) for candidate mornings 08:30-09:50: odd-lot share, TRF share, signed retail imbalance, trade size for the H17 exhaustion test (avenues.md A4)', '77564ee', 459, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T461', 'IdiotProof', 461, '2026-11-08', 'feature', 'closed', 'Gapper study: short-sale constraint features: Rule 201 SSR from D-1 bars, FINRA short interest (archive saved to D:/IdiotProofData/finra-short-interest, 121 files 2021-10..2026-10) by publication date, Reg SHO threshold lists (avenues.md A5)', '8d09a31', 460, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T462', 'IdiotProof', 462, '2026-11-08', 'fix', 'closed', 'Form4Parser PctOfHoldingsChanged overflows decimal(8,4) (27471% on a tiny pre-transaction base) and crashed the gapper study''s form4 pull; clamp to the column range', 'a83d511', 461, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T463', 'IdiotProof', 463, '2026-11-08', 'docs', 'closed', 'Gapper study research round 2 (methods, not data sources): real-time onset detection (online change-point, sequential tests, pump-and-dump early detectors) and exit timing (optimal stopping, stop-loss theory, post-halt and opening-auction behaviour, intraday momentum/reversal), written up beside avenues.md while the backtest runs', '8cba99a', 462, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T1', 'JellyFinPoster', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| JFP-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T2', 'JellyFinPoster', 2, '2026-10-16', 'chore', 'closed', 'install.ps1 adds this repo''s 9 .prose/commands stubs for the shared global commands, so any LLM client finds them', 'mindattic-agent-standard/install.ps1 run 2026-10-16', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T3', 'JellyFinPoster', 3, '2026-10-16', 'chore', 'closed', 'Bug hunt: run an exhaustive /bughunt over the whole repo and fix every real bug found (each fix under its own fix ticket), then hunt again; close this only when a full pass finds nothing', '9a5f84c', 2, NULL);
@@ -8925,6 +8927,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MODS-T9', 'Mods.Mech5Mercs.LancemateCoop', 9, '2026-11-07', 'feature', 'open', 'Make hand-held/melee hand weapons available to every mech with hands regardless of size, with damage scaled by mech tonnage', '—', 8, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MODS-T10', 'Mods.Mech5Mercs.LancemateCoop', 10, '2026-11-07', 'feature', 'open', 'Turn off the slanted/angled rendering of the UI so HUD and menus draw flat and are easier to read', '—', 9, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MODS-T11', 'Mods.Mech5Mercs.LancemateCoop', 11, '2026-11-07', 'feature', 'open', 'Lancemates eject instead of dying when their cockpit is destroyed', '—', 10, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MODS-T12', 'Mods.Mech5Mercs.LancemateCoop', 12, '2026-11-08', 'chore', 'open', 'Set up the LancemateCoop mod project in the MW5 Mercs Mod Editor (R:\MechWarrior5Editor) and check its version matches the game', '—', 11, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T1', 'Mods.RogueTrader.Brevity', 1, '2026-10-24', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T2', 'Mods.RogueTrader.Brevity', 2, '2026-10-24', 'fix', 'closed', 'Repo has no commits, so the launcher''s pull fails with ''no such ref was fetched''; add the first commit (AGENTS.md pointer, .gitignore, commit hooks) and push main', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T3', 'Mods.RogueTrader.Brevity', 3, '2026-10-24', 'feature', 'closed', 'Phase 1 dialogue export: a mod built from Owlcat''s template that walks the dialogue blueprints (BlueprintCue, BlueprintAnswer, BlueprintBookPage) and writes dialogue.jsonl with each line''s string key, speaker, dialogue tree, previous line, skill check/conviction markers and voiced flag, so the LLM simplify pass gets context', '—', 2, NULL);
@@ -10882,6 +10885,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T268', 'SpaceGod', 268, '2026-11-08', 'feature', 'closed', 'Help and manual catch-up: ControlsHelp lacks Shift+M (docking/port), Shift+O (discoveries), tutorial keys (Shift+Enter/Shift+Esc), and the manual lacks sections for exploration rewards/cartographers (US-T260) and the tutorial (US-T254); add them', '3f07b4f', 267, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T269', 'SpaceGod', 269, '2026-11-08', 'feature', 'closed', 'Mechlab follow-up: utility parts (thrusters, life support) can be shot out and are lost with their component, show on the ship model, add heat sink/power cell/reinforced bulkhead utilities and a tonnage limit per component, and let AI yards fit utilities to some designs', '786783f', 268, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T270', 'SpaceGod', 270, '2026-11-08', 'feature', 'closed', 'Mech follow-up: enemies target and damage a deployed mech, mechs work in co-op (Shift+N over CoopSends), are saved and restored with the game, and feet plant on the hull surface (IK) instead of following the walk cycle', 'faedd63', 269, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T271', 'SpaceGod', 271, '2026-11-08', 'feature', 'open', 'Encyclopedia: one in-game screen holding every article (controls from the live key bindings, the game manual, Prose lore, astronomy of bodies and stars, commerce goods and markets, factions, ships and stations), unlocked as the player discovers things, with an open-text filter matching title, body and keywords', '—', 270, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T272', 'SpaceGod', 272, '2026-11-08', 'feature', 'open', 'Scan card to Encyclopedia links: scanning a ship, station, planet or settlement shows keyword links on the card that open the matching encyclopedia entries, and each entity entry embeds the same live scan stats the card shows', '—', 271, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T1', 'SpaceGod.Unity.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T2', 'SpaceGod.Unity.CSharp', 2, '2026-11-06', 'feature', 'closed', 'Adopt the shared off-by-default --headless launch mode (Unity.Shared)', 'faadbca', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T3', 'SpaceGod.Unity.CSharp', 3, '2026-11-08', 'feature', 'open', 'Mirror SpaceGod US-T72: docs/CAPTURE.md names the promoted copy SpaceGod (not SpaceGod.Unreal.Cpp) as the third copy and its RepoName folder, and lists SpaceGod''s -RenderOffScreen capture row as that copy only', 'SpaceGod US-T72', 2, NULL);
@@ -13052,7 +13057,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T14', 'Unreal.Eve', 14, '2026-11-08', 'feature', 'closed', 'Replace the generic PE spells with ExperimentEve''s canon infusions (Combustion, Cryostasis, Neuroelectric, Mitosis, Metabolic Burn) as new EveCore ability effects alongside Heal/Haste/Barrier, with Mitosis''s tumour as a temporary weak point', '—', 13, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T15', 'Unreal.Eve', 15, '2026-11-08', 'feature', 'closed', 'Bonus Points stop auto-spending: a field menu (Tab/Start) spends them on Active Time (faster AT bar) or Max PE, saved with the game; Unity.Eve''s frontier item', '—', 14, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T16', 'Unreal.Eve', 16, '2026-11-08', 'feature', 'closed', 'ExperimentEve''s gun tinkering: each gun carries one movable part (match barrel, choke, extended magazine, rapid trigger) whose bonus applies to whichever gun holds it; the field menu moves parts between guns; parts are saved', '—', 15, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T17', 'Unreal.Eve', 17, '2026-11-08', 'feature', 'open', 'The plan''s Bonus Point menu also buys bag slots (2 BP, up to +6) and Parasite Energy (+5 max PE per BP), not only Active Time; saved as optional fields.', '—', 16, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T17', 'Unreal.Eve', 17, '2026-11-08', 'feature', 'closed', 'The plan''s Bonus Point menu also buys bag slots (2 BP, up to +6) and Parasite Energy (+5 max PE per BP), not only Active Time; saved as optional fields.', '—', 16, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T18', 'Unreal.Eve', 18, '2026-11-08', 'feature', 'closed', 'The plan''s clothing-as-armour: Kat wears one garment whose Defense cuts each hit, capped at a third of it; she starts in her jacket and finds a patrol vest in the Kingsport Foods storeroom; worn armour is saved.', '—', 17, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T1', 'Unreal.Playground', 1, '2026-11-03', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T2', 'Unreal.Playground', 2, '2026-11-03', 'feature', 'closed', 'Scaffold co-op souls-like demo: third-person combat on isolated Hebrides island (dodge roll, block, parry, X/Y light/heavy attacks, RB heal)', 'b21f31c', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T3', 'Unreal.Playground', 3, '2026-11-03', 'feature', 'open', 'Playable demo: terrain-shaped Hebrides island surrounded by water, free meshes, working battle system, skeleton enemies that attack the player', '—', 2, NULL);
@@ -66946,6 +66952,54 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59698, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59699, 'UE-T17', '2026-11-08T16:35:08Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59700, 'UE-T17', '2026-11-08T16:35:08Z', 'name', NULL, 'Bonus Point menu: item slots and PE');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59701, 'UE-T17', '2026-11-08T16:35:40Z', 'working', NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59702, 'IP-T462', '2026-11-08T16:40:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59703, 'IP-T462', '2026-11-08T16:40:29Z', 'working', NULL, 'ed09ecf3-4ba4-42ed-9489-a892ed509726');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59704, 'UE-T17', '2026-11-08T16:41:55Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59705, 'UE-T17', '2026-11-08T16:42:00Z', 'working', '0682ffdc-527f-458f-a097-caa357dfd4aa', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59706, 'UE-T18', '2026-11-08T16:42:31Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59707, 'UE-T18', '2026-11-08T16:42:31Z', 'name', NULL, 'Clothing as armour');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59708, 'IP-T462', '2026-11-08T16:42:40Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59709, 'IP-T462', '2026-11-08T16:42:40Z', 'ref', '—', 'a83d511');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59710, 'UE-T18', '2026-11-08T16:42:54Z', 'working', NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59711, 'IP-T462', '2026-11-08T16:42:54Z', 'working', 'ed09ecf3-4ba4-42ed-9489-a892ed509726', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59712, 'US-T271', '2026-11-08T16:45:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59713, 'US-T272', '2026-11-08T16:45:48Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59714, 'US-T272', '2026-11-08T16:45:50Z', 'link', NULL, 'requires US-T271');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59715, 'US-T271', '2026-11-08T16:45:51Z', 'link', NULL, 'US-T272 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59716, 'US-T271', '2026-11-08T16:45:52Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59717, 'US-T272', '2026-11-08T16:45:53Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59718, 'MODS-T12', '2026-11-08T16:46:14Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59719, 'MODS-T12', '2026-11-08T16:46:14Z', 'name', NULL, 'Mod Editor project setup');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59720, 'US-T271', '2026-11-08T16:46:24Z', 'description', NULL, '## Story
+As a player I want one Encyclopedia that explains every control and everything I have learned (lore, astronomy, commerce, factions, ships, stations), so I can look anything up in one place.
+
+## Acceptance
+- [ ] An Encyclopedia screen (its own rebindable key, plus entries in the drawer, the pause menu and Help) with categories: Controls, Guides, Lore, Astronomy, Commerce, Factions, Ships, Stations, Settlements, Systems, Pilots.
+- [ ] Controls articles are generated from Input/KeyBindings (current bindings, so rebinds show), the gamepad map and ControlsHelp: one article per action group, each with keywords.
+- [ ] Guides come from the Core GameManual sections, Lore from the LoreLibrary (Prose texts and books), Astronomy from bodies and stars, Commerce from goods, industries and markets, and Factions from factions.
+- [ ] Knowledge is collected: guides and controls are always known; entity articles unlock when the player discovers, scans or visits them (reuse DiscoveryLog, MarketIntel and met pilots). Unlocks are saved per game as optional fields; locked articles stay hidden.
+- [ ] An open-text filter: typing "pilot" lists every unlocked article with "pilot" in its title, body or keywords (case-insensitive), with title matches ranked first and the match highlighted.
+- [ ] Articles have stable ids (category/slug, from LoreKeys where one exists) and link to each other by keyword; clicking a link opens that article. Back/forward history.
+- [ ] The Core model (articles, index, search) lives in SpaceGodCore with no UI dependency. It is display-only, never touches the simulation, and gives every co-op peer the same unlocks from shared state.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59721, 'MODS-T12', '2026-11-08T16:46:25Z', 'working', NULL, '17d38a52-443b-4b7d-b31c-83f13e0abe81');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59722, 'US-T272', '2026-11-08T16:46:25Z', 'description', NULL, '## Story
+As a player scanning a ship, station, planet or settlement, I want its card to show keyword links straight into the Encyclopedia, and its encyclopedia entry to show the same live readings as the scan card.
+
+## Acceptance
+- [ ] The scan/selection card (Core/Lore/ScanTabs and the HUD selection card) shows a row of keyword links: the entity itself, its faction, class or hull, body type, star, goods it trades, and notable features. Each opens the matching Encyclopedia article; the entity link opens its own entry.
+- [ ] Scanning unlocks the entity entry and its linked keyword articles.
+- [ ] An entity entry (planet, moon, star, ship, station, settlement, pilot) embeds the live scan stats, built from the same code as the card so they always match and refresh while open, plus its Prose description and history.
+- [ ] Entries for entities no longer in sight show the last known readings and how old they are.
+- [ ] Anywhere an entity is shown (discoveries screen Shift+O, system and galaxy maps), an Encyclopedia link is offered.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59723, 'US-T271', '2026-11-08T16:46:28Z', 'working', NULL, 'honey@mindattic.com (c0602111-19d7-4f1e-8da9-901389cbd3ba)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59724, 'MODS-T12', '2026-11-08T16:47:17Z', 'working', '17d38a52-443b-4b7d-b31c-83f13e0abe81', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59725, 'IP-T463', '2026-11-08T16:49:50Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59726, 'UE-T18', '2026-11-08T16:50:07Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59727, 'IP-T463', '2026-11-08T16:50:08Z', 'working', NULL, 'ed09ecf3-4ba4-42ed-9489-a892ed509726');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59728, 'IP-T463', '2026-11-08T16:50:41Z', 'working', 'ed09ecf3-4ba4-42ed-9489-a892ed509726', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59729, 'UE-T18', '2026-11-08T16:50:41Z', 'working', '0682ffdc-527f-458f-a097-caa357dfd4aa', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59730, 'IP-T463', '2026-11-08T16:58:15Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (59731, 'IP-T463', '2026-11-08T16:58:15Z', 'ref', '—', '8cba99a');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -69740,6 +69794,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T268', 'approved', 0, '2026-11-08T14:39:17Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T269', 'approved', 0, '2026-11-08T15:11:19Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T270', 'approved', 0, '2026-11-08T15:22:28Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T271', 'approved', 0, '2026-11-08T16:45:52Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T272', 'approved', 0, '2026-11-08T16:45:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T72', 'approved', 0, '2026-11-06T21:27:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T82', 'approved', 0, '2026-11-06T21:27:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T83', 'approved', 0, '2026-11-06T21:27:41Z', NULL);
@@ -69978,11 +70034,11 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UE-T17', NULL, 0, NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa', '2026-11-08T16:35:40Z', '2026-11-08T16:35:40Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T100', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T23:10:16Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T104', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:16:25Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T117', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T07:02:04Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T146', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:14:40Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T271', NULL, 0, 'honey@mindattic.com', 'c0602111-19d7-4f1e-8da9-901389cbd3ba', '2026-11-08T16:46:28Z', '2026-11-08T16:46:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T82', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T07:02:05Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T85', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T23:52:54Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T91', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T00:58:13Z');
@@ -71972,6 +72028,7 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (21064, '
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (21065, 'US-T270', 'ryand', '2026-11-08T15:35:43Z', 'Paused mid-work (weekly usage at 93%, resets 7:00 PM). Uncommitted, half-done edits in Battle.h/.cpp, Registrations/Combat.cpp (shares US-T269 hunks), EmbodimentRegistrations.cpp, MechWalker.h/.cpp. MechWalker.h declares StepIn/ThreatOf/Centre/EngagedBy/Struck that MechWalker.cpp doesn''t define yet, so a full link fails until it''s finished. Also: US-T83 used Collisions::SurfacePoint (farthest point) for walking; Plating/PlatingNormal were added, and MechPose in UnitySpaceApp.Embody.cpp should use the normal.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (21066, 'US-T269', 'ryand', '2026-11-08T15:35:55Z', 'Paused mid-work (weekly usage at 93%, resets 7:00 PM). Uncommitted edits: ShipComponents.h/.cpp (new parts, tonnage, KnockOut), CombatSpecs.h, ModularHull.cpp, Registrations/Combat.cpp (shared with US-T270). Doesn''t build yet: rename Restore to Restored(spec) in ShipComponents first. Remaining: repair hooks in CombatState.cpp, KnockOut calls in Battle::StrikeSections and SectionColliders, heat-sink shed bonus, AI yard wishes in Outfitting, Mechlab card tonnage, ship-model markers, manual. Bench digests will move once AI yards fit utilities (deterministic).');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (21067, 'UE-T11', 'ryand', '2026-11-08T16:12:17Z', 'First package attempt: BuildCookRun''s own UBT step hit ConflictingInstance (another repo building); package.ps1 now compiles via Build.bat -WaitMutex then cooks with -skipbuild. The rerun was killed by the session memory reaper mid-run; needs a run when the machine has headroom (or CLAUDE_CODE_DISABLE_BG_SHELL_PRESSURE_REAP=1).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (21068, 'MODS-T12', 'ryand', '2026-11-08T16:47:04Z', 'Editor installed at R:\MechWarrior5Editor, Epic version 1.1.399.2e (UE 4.26.2, project 1.15.0). Steam game at D:\Games\Steam\steamapps\common\MechWarrior 5 Mercenaries is 1.15.399, so build 399 matches. Coop Unlocked is installed in the game''s Mods folder, so check for conflicts. Next: user creates the mod in the editor''s Create Mod panel.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
@@ -85800,6 +85857,26 @@ As a captain arriving at a port I want one place for everything the port offers.
 - [ ] Repair & Rearm restores hull sections, subsystems, shields, munitions and propellant for credits from the yard''s market (parts drawn from its shelves like AI repairs), with a quote per item and "repair all".
 - [ ] Existing keys still open their panels directly; undocking closes the hub.
 - [ ] Co-op: purchases go through CoopSends like the boards do today.', '2026-11-08T06:08:26Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T271', '## Story
+As a player I want one Encyclopedia that explains every control and everything I have learned (lore, astronomy, commerce, factions, ships, stations), so I can look anything up in one place.
+
+## Acceptance
+- [ ] An Encyclopedia screen (its own rebindable key, plus entries in the drawer, the pause menu and Help) with categories: Controls, Guides, Lore, Astronomy, Commerce, Factions, Ships, Stations, Settlements, Systems, Pilots.
+- [ ] Controls articles are generated from Input/KeyBindings (current bindings, so rebinds show), the gamepad map and ControlsHelp: one article per action group, each with keywords.
+- [ ] Guides come from the Core GameManual sections, Lore from the LoreLibrary (Prose texts and books), Astronomy from bodies and stars, Commerce from goods, industries and markets, and Factions from factions.
+- [ ] Knowledge is collected: guides and controls are always known; entity articles unlock when the player discovers, scans or visits them (reuse DiscoveryLog, MarketIntel and met pilots). Unlocks are saved per game as optional fields; locked articles stay hidden.
+- [ ] An open-text filter: typing "pilot" lists every unlocked article with "pilot" in its title, body or keywords (case-insensitive), with title matches ranked first and the match highlighted.
+- [ ] Articles have stable ids (category/slug, from LoreKeys where one exists) and link to each other by keyword; clicking a link opens that article. Back/forward history.
+- [ ] The Core model (articles, index, search) lives in SpaceGodCore with no UI dependency. It is display-only, never touches the simulation, and gives every co-op peer the same unlocks from shared state.', '2026-11-08T16:46:24Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T272', '## Story
+As a player scanning a ship, station, planet or settlement, I want its card to show keyword links straight into the Encyclopedia, and its encyclopedia entry to show the same live readings as the scan card.
+
+## Acceptance
+- [ ] The scan/selection card (Core/Lore/ScanTabs and the HUD selection card) shows a row of keyword links: the entity itself, its faction, class or hull, body type, star, goods it trades, and notable features. Each opens the matching Encyclopedia article; the entity link opens its own entry.
+- [ ] Scanning unlocks the entity entry and its linked keyword articles.
+- [ ] An entity entry (planet, moon, star, ship, station, settlement, pilot) embeds the live scan stats, built from the same code as the card so they always match and refresh while open, plus its Prose description and history.
+- [ ] Entries for entities no longer in sight show the last known readings and how old they are.
+- [ ] Anywhere an entity is shown (discoveries screen Shift+O, system and galaxy maps), an Encyclopedia link is offered.', '2026-11-08T16:46:25Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T4', 'User request 2026-11-03: "do a full faithful migration from Unity.SpaceGod to this new game, lets call the repo ''Unreal.SpaceGod''". The repo is already named Unreal.SpaceGod. Follow the faithful-port rule: reproduce the original''s behaviour, fixing only bugs, and keep the co-op additions.', '2026-11-03T15:59:06Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T50', 'Faithfulness audit (docs/FAITHFULNESS.md, Audio). UnityCompat/UnityScreen.cs AudioListener is a plain static; UnrealHost.AfterUpdate should push it to Unreal''s primary volume when it changes, as Cpp/Source/UnrealSpaceGod/UnitySpaceAppActor.cpp does. The original plays no clips, so today nothing is audible either way, but the setting and the mute must take effect.', '2026-11-03T22:59:01Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T51', 'Faithfulness audit (docs/FAITHFULNESS.md, Settings/rendering). Port the two [SettingsSource] classes onto UnrealRenderBackend as the C++ track did (pipeline choice kept and reported, photoreal/post choices applied to the camera''s post-process settings).', '2026-11-03T22:59:02Z');
@@ -85898,6 +85975,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MAT-T121', 'HIGH PR
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MAU-T18', 'Shared headless mode', '2026-11-07T04:32:50Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MODS-T10', 'Flat UI rendering', '2026-11-07T16:49:35Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MODS-T11', 'Lancemate auto-eject', '2026-11-07T22:54:09Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MODS-T12', 'Mod Editor project setup', '2026-11-08T16:46:14Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MODS-T2', 'Shared briefing audio', '2026-11-07T16:36:36Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MODS-T3', 'Vote-gated star jump', '2026-11-07T16:36:38Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MODS-T4', 'Flush Coolant ability', '2026-11-07T16:36:39Z');
@@ -85938,6 +86016,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T14', 'Chimeric 
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T15', 'Bonus Point menu', '2026-11-08T16:12:42Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T16', 'Gun tinkering', '2026-11-08T16:27:03Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T17', 'Bonus Point menu: item slots and PE', '2026-11-08T16:35:08Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T18', 'Clothing as armour', '2026-11-08T16:42:31Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T2', 'Repo scaffold', '2026-11-08T05:47:42Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T3', 'EveCore rules port', '2026-11-08T05:47:43Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T4', 'Camera graybox', '2026-11-08T05:47:44Z');
@@ -92950,6 +93029,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T241', 'US-T240', 're
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T242', 'US-T240', 'requires', 'blocked by hand');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T243', 'US-T240', 'requires', 'blocked by hand');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T244', 'US-T240', 'requires', 'blocked by hand');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T272', 'US-T271', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T59', 'U.SPC-T602', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('USOD-T10', 'USOD-T3', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('USOD-T10', 'USOD-T4', 'requires', NULL);
