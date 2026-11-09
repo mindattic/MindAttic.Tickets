@@ -13114,6 +13114,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T50', 'Unreal.Eve', 50, '2026-11-08', 'feature', 'closed', 'The mannequins wear the material''s Paint Tint: Kat in teal scrubs, Tom Mercer a sickly grey, the Husk Brute grey-green, instead of bare grey or the stand-in tint.', '—', 49, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T51', 'Unreal.Eve', 51, '2026-11-08', 'feature', 'closed', 'The defeat path was never exercised: at the end of the run the self-play lets the last roaming pack kill Kat, checks the defeat (Continue offered, her fall), continues, and checks she stands revived at her last save.', '—', 50, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T52', 'Unreal.Eve', 52, '2026-11-08', 'feature', 'closed', 'Nobody has heard the synthesized audio: -dumpaudio writes every sound and loop as a WAV, and a check measures each (not silent, not clipping, loop seams continuous) so the playtest only has to judge taste.', '—', 51, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T53', 'Unreal.Eve', 53, '2026-11-08', 'feature', 'open', 'Owner: fixed angles make places like the church unplayable. The camera follows Kat everywhere (behind and above her, smoothed, kept out of walls), the stick moves her relative to it, and the Observer''s CCTV cutaways are gone (his calls, lights and lore stay).', '—', 52, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T1', 'Unreal.Playground', 1, '2026-11-03', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T2', 'Unreal.Playground', 2, '2026-11-03', 'feature', 'closed', 'Scaffold co-op souls-like demo: third-person combat on isolated Hebrides island (dodge roll, block, parry, X/Y light/heavy attacks, RB heal)', 'b21f31c', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T3', 'Unreal.Playground', 3, '2026-11-03', 'feature', 'open', 'Playable demo: terrain-shaped Hebrides island surrounded by water, free meshes, working battle system, skeleton enemies that attack the player', '—', 2, NULL);
@@ -67368,6 +67369,9 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60041, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60042, 'IP-T466', '2026-11-09T02:50:32Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60043, 'IP-T466', '2026-11-09T02:50:32Z', 'ref', '—', '5517f7f');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60044, 'IP-T466', '2026-11-09T02:50:43Z', 'working', 'ed09ecf3-4ba4-42ed-9489-a892ed509726', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60045, 'UE-T53', '2026-11-09T03:11:06Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60046, 'UE-T53', '2026-11-09T03:11:06Z', 'name', NULL, 'Follow camera, no fixed shots, no Observer cutaways');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60047, 'UE-T53', '2026-11-09T03:11:18Z', 'working', NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -70406,6 +70410,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UE-T53', NULL, 0, NULL, '0682ffdc-527f-458f-a097-caa357dfd4aa', '2026-11-09T03:11:18Z', '2026-11-09T03:11:18Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T100', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T23:10:16Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T104', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:16:25Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T117', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T07:02:04Z');
@@ -86500,6 +86505,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T5', 'Kat charac
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T50', 'Tinted mannequins', '2026-11-08T23:03:49Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T51', 'Self-play dies once', '2026-11-08T23:18:09Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T52', 'Audio measured', '2026-11-08T23:39:55Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T53', 'Follow camera, no fixed shots, no Observer cutaways', '2026-11-09T03:11:06Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T6', 'ATB battle', '2026-11-08T05:47:47Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T7', 'Chimera roster', '2026-11-08T05:47:48Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T8', 'North End town', '2026-11-08T05:47:50Z');
