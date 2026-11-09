@@ -5159,6 +5159,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T464', 'IdiotProof', 464, '2026-11-08', 'docs', 'closed', 'Gapper study research round 3: knowable-in-advance catalysts (PDUFA/clinical/earnings/conference calendars, reverse-split and offering schedules) and the news-latency pipeline (wire release timing, vendor feed delays), plus published statistical/ML prediction of extreme next-day moves in small caps and how they guard against overfitting; written up while the backtest runs', '6eff7a8', 463, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T465', 'IdiotProof', 465, '2026-11-08', 'feature', 'closed', 'Gapper explore scoring per methods-prediction.md: mean of fold AUCs instead of AUC over concatenated fold scores, within-morning AUC and precision@10, top-gainers and gainers-plus-news benchmarks next to the news benchmark (finalists must beat gainers-plus-news); ledger empty so no trial is invalidated', 'c4c7aaa', 464, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T466', 'IdiotProof', 466, '2026-11-08', 'fix', 'closed', 'Gapper study form4 pull: a single EDGAR HttpClient 15 s timeout (TaskCanceledException) aborted pull all at 160,400 of ~229,600 filings; retry transient timeouts/network errors 3 times with backoff, then log and skip the filing like a non-success status', '5517f7f', 465, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T467', 'IdiotProof', 467, '2026-11-08', 'docs', 'open', 'Gapper study methods review round 4: execution realities for the buy-in and the take-the-money exit (extended-hours limit-only orders and fill rates on small caps, opening-cross/MOO/OPG and imbalance feed mechanics for selling at 09:30, halt reopen auctions, position sizing under liquidity and fat tails) as methods-execution.md', '—', 466, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T1', 'JellyFinPoster', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| JFP-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T2', 'JellyFinPoster', 2, '2026-10-16', 'chore', 'closed', 'install.ps1 adds this repo''s 9 .prose/commands stubs for the shared global commands, so any LLM client finds them', 'mindattic-agent-standard/install.ps1 run 2026-10-16', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T3', 'JellyFinPoster', 3, '2026-10-16', 'chore', 'closed', 'Bug hunt: run an exhaustive /bughunt over the whole repo and fix every real bug found (each fix under its own fix ticket), then hunt again; close this only when a full pass finds nothing', '9a5f84c', 2, NULL);
@@ -7643,6 +7644,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1537', 'MindAttic.Orchestrator', 1537, '2026-11-08', 'fix', 'open', 'Switching to the ryandebraal@mindattic.com login tab takes ~30s, unlike other login tabs', '—', 1536, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1538', 'MindAttic.Orchestrator', 1538, '2026-11-08', 'fix', 'closed', 'Bughunt: dead refresh-timing Stopwatch, and DisposeControl leaves 3 DispatcherTimers running after a pane closes', '—', 1537, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1539', 'MindAttic.Orchestrator', 1539, '2026-11-08', 'fix', 'closed', 'Bughunt: GatewayClient uncaught InvalidOperationException, OpenTicketSource unknown-as-empty, ExportedState/MachineRole uncaught file I/O, DiffReview''s ignored WaitAll result', '—', 1538, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1540', 'MindAttic.Orchestrator', 1540, '2026-11-08', 'feature', 'open', 'Hide the lambda/5-hour bar for solo Ultra logins on the tab strip and Usage tab', '—', 1539, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T1', 'MindAttic.Orchestrator.SIDEBAR', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T2', 'MindAttic.Orchestrator.SIDEBAR', 2, '2026-11-05', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.SettingsModalTests.The_org_login_toolbar_is_the_Logins_dialogs_body — Assert.That(code, Does.Not.Contain("SettingsModal").And.Not.Contain("SizeSettings")) Expected: not String containing "SettingsModal" and not containing "SizeSettings" But was: "using System.Collections.Specialized; using System.Runtime.InteropServices; using System.Windows; using System.Windows.A... (landed on main since the last green run: tickets M.ORCH-T1310 in 864030c4 Cli csproj finds the workspace from any <workspace>.worktrees\<repo>\<name> checkout (drops .worktrees), so the main-tests build resolves MindAttic.Helpers without run.ps1''s MindAtticRoot (M.ORCH-T1310))', 'passes on main@270cb89', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T3', 'MindAttic.Orchestrator.SIDEBAR', 3, '2026-11-05', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.LibraryOnlyXamlTests.Every_xaml_element_is_a_library_control_or_library_styled — Assert.That(Violations(files), Is.Empty) Expected: <empty> But was: < "MainWindow.xaml:33 <Style>: a style with a template or resources of its own", "MainWindow.xaml:42 <ControlTemplate>: neither a library control nor library-styled", "MainWindow.xaml:43 <Border>: Background="{TemplateBinding Bac... (landed on main since the last green run: tickets M.ORCH-T1310 in 864030c4 Cli csproj finds the workspace from any <workspace>.worktrees\<repo>\<name> checkout (drops .worktrees), so the main-tests build resolves MindAttic.Helpers without run.ps1''s MindAtticRoot (M.ORCH-T1310))', 'passes on main@270cb89', 2, NULL);
@@ -10909,6 +10911,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T271', 'SpaceGod', 271, '2026-11-08', 'feature', 'closed', 'Encyclopedia: one in-game screen holding every article (controls from the live key bindings, the game manual, Prose lore, astronomy of bodies and stars, commerce goods and markets, factions, ships and stations), unlocked as the player discovers things, with an open-text filter matching title, body and keywords', '1f77d592388d9eef0137d4c16498cbecda9562e5', 270, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T272', 'SpaceGod', 272, '2026-11-08', 'feature', 'open', 'Scan card to Encyclopedia links: scanning a ship, station, planet or settlement shows keyword links on the card that open the matching encyclopedia entries, and each entity entry embeds the same live scan stats the card shows', '—', 271, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T273', 'SpaceGod', 273, '2026-11-08', 'feature', 'open', 'Living universe: the whole galaxy runs itself forever with no player (diplomacy, trade, expansion, war, piracy, families, businesses, travel, news/ads/spam, bribery); the Space God can take over anything', '—', 272, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T274', 'SpaceGod', 274, '2026-11-08', 'feature', 'open', 'Civilization layer: 50 social systems (people, politics, conflict, crime, economy, culture, health, media) on a shared integration layer (SocialEvent, Narrator, Persona, Civics, Org), all narrative text from Prose', 'US-T273', 273, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T275', 'SpaceGod', 275, '2026-11-08', 'feature', 'open', 'P0 of US-T274: Systems/Civilization container (game-only SG_OPT on Territory), SocialEvent log, Narrator (Prose pools spacegod/social-<kind> with fallback templates), Persona traits/ties on citizens, Civics mood per settlement, generic Org, WorldEventKind::Society relayed as news, sg.Civ console', 'US-T274', 274, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T1', 'SpaceGod.Unity.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T2', 'SpaceGod.Unity.CSharp', 2, '2026-11-06', 'feature', 'closed', 'Adopt the shared off-by-default --headless launch mode (Unity.Shared)', 'faadbca', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T3', 'SpaceGod.Unity.CSharp', 3, '2026-11-08', 'feature', 'open', 'Mirror SpaceGod US-T72: docs/CAPTURE.md names the promoted copy SpaceGod (not SpaceGod.Unreal.Cpp) as the third copy and its RepoName folder, and lists SpaceGod''s -RenderOffScreen capture row as that copy only', 'SpaceGod US-T72', 2, NULL);
@@ -67379,6 +67383,15 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60049, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60050, 'UE-T53', '2026-11-09T03:47:13Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60051, 'UE-T53', '2026-11-09T03:47:25Z', 'working', '0682ffdc-527f-458f-a097-caa357dfd4aa', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60052, 'M.TIX-T332', '2026-11-09T03:58:56Z', 'created', NULL, 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60053, 'IP-T467', '2026-11-09T05:31:10Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60054, 'IP-T467', '2026-11-09T05:31:20Z', 'working', NULL, 'ed09ecf3-4ba4-42ed-9489-a892ed509726');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60055, 'IP-T467', '2026-11-09T05:31:47Z', 'working', 'ed09ecf3-4ba4-42ed-9489-a892ed509726', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60056, 'M.ORCH-T1540', '2026-11-09T05:34:32Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60057, 'M.ORCH-T1540', '2026-11-09T05:34:38Z', 'working', NULL, '7ea91838-5cb2-48b5-b794-a2871926bbf0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60058, 'US-T274', '2026-11-09T05:40:15Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60059, 'US-T274', '2026-11-09T05:40:15Z', 'name', NULL, 'Civilization layer epic');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60060, 'US-T275', '2026-11-09T05:40:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60061, 'US-T275', '2026-11-09T05:40:22Z', 'name', NULL, 'Civilization integration layer');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -70194,6 +70207,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1540', NULL, 0, NULL, '7ea91838-5cb2-48b5-b794-a2871926bbf0', '2026-11-09T05:34:38Z', '2026-11-09T05:34:38Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T768', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
@@ -80174,6 +80188,7 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1539
 5. Scheduling/DiffReview.cs RunClaude - ignored Task.WaitAll''s own return value after the process exits, so a pipe read still incomplete 10s later (a lingering grandchild holding stdout/stderr open, the same race Dispatcher.Git''s own elapsed-time math already guards against) read as empty output, indistinguishable from a review that genuinely said nothing - a review that actually succeeded (ExitCode 0) could be reported as a bare failure with no reason. Now returns an explicit message for that case.
 
 All fixes verified: dotnet build (Core, 0 errors) plus targeted tests (OpenTicketSourceTests, ExportedStateTests, MachineRoleTests - 34 tests, all passing).', '2026-11-08T20:33:04Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1540', 'A solo Ultra account has no 5-hour window (only a weekly one, AccountRoster.PlanOf gives it exactly "Ultra"; ShowsFiveHourChart already hides its 5-hour chart on the person page for this reason, M.ORCH-T1403). But the login tab strip''s own bars (LoginUsageBarsTemplate, M.ORCH-T1536), the pinned Usage tab''s own header (UsageTabItem.Header), and the Usage tab''s FiveHourLimitText/FiveHourLimitPercent stat card (UtilizationSection) still always show the lambda/5-hour figure for an Ultra login, which reads as a real, trackable limit it doesn''t have. Hide the lambda label+bar (and the stat card) in all three places for a solo Ultra account the same way ShowsFiveHourChart already does for its chart.', '2026-11-09T05:34:32Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T833', 'Symptom: Inside the Orchestrator''s embedded Terminals panel (TerminalPanesHost), when a CLI running
 in a pane shows an interactive, arrow-key-driven menu (e.g. a selection list or permission prompt),
 the Up/Down/Left/Right keys don''t reach the CLI. It looks like the WPF app is intercepting/consuming
@@ -86336,6 +86351,182 @@ As a player scanning a ship, station, planet or settlement, I want its card to s
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T273', 'User goal (verbatim, 2026-11-08): make the entire universe run itself without user interference: alliances form and break, trading is established or cut off, settlements placed on planets/moons, new stations and shipyards built, resources mined/processed/sold, expansion, groups fight or make peace, group up to destroy rivals, pirate raids, bounty hunters/military hunt them, faction wars, families, businesses: a whole civilisation different each game because everything follows from previous factors (total simulation). The player as "Space God" can take over anything at any time to manipulate outcomes. News updates, commercials, spam, people communicating with each other, planning a trip then taking it, business travel, conferences, bribery; runs without the player forever.
 
 Plan: audit existing autonomous systems (Polities, Statecraft, PirateClans, InterstellarWars, GalaxyLife, Companies, Colonisation, News, Comms, LastingConsequences) and fill the gaps as one child ticket each.', '2026-11-09T03:36:53Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T274', '# Plan: Civilization layer, 50 social systems narrated by Prose
+
+## Context
+US-T273 added `Systems/Society`: families, businesses, trips, conferences, bribery and a feed. The user wants all 50 proposed social systems added. They also want the shared machinery that lets the systems drive each other, with all narrative text coming from Prose.
+
+The audit found about 20 systems already partly built. Those get extended, not duplicated:
+
+| Existing system | Where |
+|---|---|
+| Strikes | `MarketShocks` `ShockKind::Strike` |
+| Uprisings | `InterstellarWars.cpp:1085` |
+| Secession | `GalaxyLife::Secede` |
+| Smuggling and black markets | `Smuggling`, `BlackMarket` |
+| Captives and prisoners of war | `Crews` |
+| Assassination plots | `LastingConsequences` |
+| Traits, renown, careers | `Pilots` |
+| Migration | `Settlement::NetMigration`, `RefugeeTribe` |
+| Shares | `Holdings` |
+| Insurance | `TradeInsurance` |
+| Research | `StrategicCommand::ResearchTrack` |
+| Famine | `People::FaminePerDay` |
+| Rumours | `Comms::Rumours` |
+| Peace deals | `Statecraft::MakePeace` |
+
+Prose is already wired up as build-time data only (see `docs/PROSE.md`):
+- The export comes from `tools/universe-export`.
+- Approved text is applied by `tools/prose_apply.py` to `Data/Lore/<kind>/<id>.json`.
+- The game reads it through `Lore/LoreLibrary` and `GameLore`, falling back to built-in text.
+
+The game never calls Prose while running, and the simulation never reads Lore. Both stay that way, which keeps the game deterministic and the Bench digests unchanged.
+
+## Architecture: integration layer (Phase 0, built first)
+1. **`Systems/Civilization`**, one container for all the social modules.
+   - It is held on `Territory` as a single `SG_OPT(Civilization)`, using the same `Of` / `Find` gate as Society.
+   - It is created only in `UnitySpaceApp::UpdateInfluence`.
+   - `Galaxy::Update` calls it right after Society (`Galaxy.cpp:256`).
+   - Each module is its own `SG_OPT` class inside it. A fixed module order runs on a whole-day grid, with catch-up capped, hash-based choices and no RNG. Older saves load, and Core-only Bench runs never create it.
+   - **Rule:** a module may change the existing simulation''s state (Unrest, IndustryFactor, Treasury, Sway, Population and so on) only from inside Civilization. Core-run code paths stay untouched, so the Bench digests can''t move.
+2. **`SocialEvent` (structured, no prose).** Every module publishes events instead of `cs::Cat` sentences. Each event has:
+   - `Kind` (one enum value per event type, e.g. `Election.Won`, `Feud.Declared`, `Plague.Spread`)
+   - `jd`, settlement, faction(s), actor ids (citizen, house, business, org)
+   - `Magnitude` and `Seed`
+
+   The event log is saved; text is never saved. Society''s feed is moved onto these events.
+   - **Subscribers:** Feed, News relay, Historians (#35), Rumours (#36), Polls (#37), Outlets (#47), Journalists (#49) and every module that reacts to another module.
+3. **`Narrator` (display only, Core).** It renders an event as text in this order:
+   - the Prose line pool `spacegod/social-<kind>`, looked up through an `ITextSource` interface that `GameLore` implements;
+   - then the built-in fallback template;
+   - the line is picked by hash of the event''s `Seed`, and placeholders such as `{person}`, `{house}`, `{world}`, `{faction}`, `{org}` and `{amount}` are filled the way `Comms/StoryTemplates` does it.
+
+   Because events are rendered when shown, newly approved Prose text rewords old events too, and the simulation never touches text.
+4. **`Persona`**, added to `Society::Citizen`:
+   - Traits and an ambition, using a scheme like `PilotTraits`.
+   - Reputation.
+   - A bounded tie graph between people (kin, friend, rival, lover, patron), capped per person.
+   - Choices made by every module are weighted by these, so history shapes behaviour.
+5. **`Civics`**, one record per settlement, kept inside Civilization rather than on `Settlement`:
+   - approval of each faction, ideology lean, shares of each faith, crime level, infection and immunity, war weariness, trend lean, culture-drift vector and media trust.
+   - This is the shared "mood" every module reads from and writes to.
+6. **Organisations.** A generic `Org` (Party, Faith, Syndicate, Union, Bank, Outlet, League team, Charity, Mercenary company, School or Academy, Agency) with members, funds, a seat world and a leader citizen. This avoids 12 bespoke membership systems.
+7. **News reach.**
+   - Add `WorldEventKind::Society` at the end of the enum so existing saves keep their values.
+   - Count it as notable in `News.h:137` so important social events travel between systems.
+   - Only Civilization logs it, so Core runs don''t change.
+8. **Console and UI.**
+   - Extend `sg.Society` into `sg.Civ <module> ...` for inspection.
+   - Add a Space God command for each module (single player).
+   - Then add the in-game Society and Feed screen already noted as pending on US-T273 (modelled on `UI/LogsScreen`).
+
+## Module phases (each is one ticket, one commit, one build)
+Each item is "new" or "extends X", and each lists what it reads and writes in Civics, Org, Persona or the simulation.
+
+- **P1 People** (built first because the others depend on it):
+  - #18 traits and #20 ties: Phase 0 Persona put to use.
+  - #15 feuds: house-to-house grudges from buyouts, scandals, murders and lost weddings, carried out through sabotage and #12.
+  - #16 inheritance disputes: split a house and its firm.
+  - #17 affairs and divorce: undo the Sway a wedding gave; hidden heirs appear later.
+  - #19 schools: Org School. Study trips; skill feeds business results.
+  - #21 celebrities: reuses `Careers::RenownFor` and Society commercials.
+- **P2 Politics:**
+  - #3 ideologies: Civics lean, plus a faction stance that drifts.
+  - #1 elections: Org Party, funded by houses, with bribes able to swing results; the winner shifts stance and Statecraft''s `Baseline`.
+  - #2 coups and succession: driven by deaths, #45 officers and unrest.
+  - #7 courts: trials for scandals, #13 fraud and #12, using `Law`; judges can be bribed.
+  - #8 peace summits: reuse the `Conference` machinery and call `Statecraft::MakePeace`.
+  - #37 polls: published from Civics approval.
+- **P3 Conflict:**
+  - #4 protests and riots: an escalation ladder that ends at the existing `ShockKind::Strike` and damages property.
+  - #5 insurgent cells: build up before the existing uprising and secession, and can trigger them.
+  - #6 spies: Org Agency. Leaks pacts so `Break` happens, steals research, turns governors.
+  - #43 war weariness and conscription: from Civics. Forces peace or revolt, and draws on `Faction::Manpower`.
+  - #44 mercenaries: Org Mercenary company, hired by rich houses and factions; extends `Escorts` and `Holdings::Hire` fees.
+  - #45 officer careers: extends `Pilots` `CareerTrack` to named admirals.
+  - #46 prisoners of war: `Crews` prisoners become terms in `MakePeace`.
+- **P4 Crime:**
+  - #9 syndicates: Org Syndicate on the ground, tied to `PirateClans`; runs protection on Society businesses.
+  - #10 smuggling: extends `Smuggling` and `BlackMarket`; embargoes and cut-off trade spawn smuggler runs and price gaps.
+  - #11 prisons: penal moon settlements through `GalaxyLife`; escapes.
+  - #12 assassinations: between houses and against governors, using bounties from `Law`.
+  - #13 fraud: cooked books, crashes, investors ruined.
+  - #14 crime level: per-world in Civics.
+- **P5 Economy:**
+  - #22 unions: Org Union, on `WageIndex`, feeding Strike.
+  - #23 migration and refugees: put events and Society rehoming on top of the existing `NetMigration` and `RefugeeTribe`.
+  - #24 firm shares: extends the `Holdings` share model to Society firms, enabling hostile takeovers.
+  - #25 banks and loans: Org Bank; defaults spread.
+  - #26 insurance: `TradeInsurance` premiums follow piracy, and insurers lobby for navy patrols.
+  - #27 ad wars: Society Media firms run them.
+  - #28 tourism and landmarks.
+  - #29 patents: diffusion along trade routes, and theft, for `ResearchTrack`.
+- **P6 Culture:**
+  - #30 faiths: Org Faith. Spread along trips and trade, schisms, pilgrimage trips, holy-war Sway.
+  - #31 festivals: a calendar for each culture that drives trip and spending surges and draws raids.
+  - #32 sports leagues: Org teams, matches, betting, rigged games.
+  - #33 trends: Civics trend lean shifts goods demand through a market demand factor applied only within Civilization.
+  - #34 cultural drift: a Civics vector that weighs into secession.
+  - #35 historians and monuments: a chronicle of major events, used by the Encyclopedia.
+  - #36 rumours and propaganda: false events marked `Unverified`, linked into `Comms::Rumours`.
+- **P7 Health and demography:**
+  - #38 epidemics and quarantine: an infection model per world, spreading along Society trips and traffic; quarantine cuts docking.
+  - #39 hospitals and medicine: lower death rates and drive Medicine demand.
+  - #40 booms and ageing: births after peace, ageing worlds.
+  - #41 disasters and relief: built on `MineAccident` and `Blight` shocks; allies send aid, raising Sway.
+  - #42 famine response: on `FaminePerDay` and `Ration`, feeding migration and unrest.
+- **P8 Media and civil society:**
+  - #47 biased outlets: Org Outlet owned by Media houses; the feed slants the Narrator''s tone.
+  - #48 public boards: citizens react to events, rendered by the Narrator.
+  - #49 investigative journalists: they cause exposure; some are silenced through #12.
+  - #50 charities: Org Charity; wealth turns into reputation and wellbeing.
+
+## Prose pipeline (P9, plus a slice in every phase)
+- **The universe export** (`tools/universe-export/UniverseExport.cpp`) runs the Civilization layer for about two simulated years. It exports the new entities:
+  - houses, notable citizens, firms
+  - each kind of Org: parties, faiths, syndicates, outlets, teams, charities, banks, agencies, mercenary companies
+  - festivals, landmarks and monuments
+
+  Keys come from `LoreKeys`, the same code the game uses. Prose then knows the cast.
+- **Text pools:**
+  - One bark pool for each `SocialEvent` kind: `spacegod/social-<kind>`, with the placeholder contract documented.
+  - Name pools for the generated orgs (faiths, parties, teams, festivals) at `spacegod/names-<orgkind>`, with the in-code fallback name lists kept.
+  - Descriptions for each Org and landmark, shown in the Encyclopedia.
+  - Each Org''s doctrine, platform or creed as a book.
+- **`Data/Prose/prose.config.json`:** add the new choice `tags` and outcome nodes. Check whether `tools/prose_apply.py` needs a new kind; most text uses the existing description, book and bark kinds.
+- **Drafting through the Prose MCP:**
+  - `search_universe` and `get_universe_entity` for context, with draft pools written in Prose.
+  - Per `PROSE.md` §4 agents only draft; the user approves in Prose.
+  - Once approved: kit pull, then `prose_apply.py`, then commit the files in `Data/Lore`.
+  - Until then the game uses the fallback templates in code, so nothing is blocked.
+- **Docs:** `docs/PROSE.md` gets a "Social narration" section listing every key and placeholder. The Encyclopedia gets a Society category (houses, orgs, faiths, landmarks, chronicle). The manual gets a chapter for each phase.
+
+## Critical files
+- New:
+  - `Cpp/Source/SpaceGodCore/Systems/Civilization/` with `Civilization.h/.cpp`, `SocialEvent`, `Narrator`, `Persona`, `Civics`, `Org`
+  - One `.h/.cpp` per module group: `Politics`, `Conflict`, `Crime`, `Commerce`, `Culture`, `Health`, `Media`, `Kinship`
+- Changed:
+  - Core: `Systems/Territory.h/.cpp` (SG_OPT), `Systems/Galaxy.cpp:256`, `World.h:64` (enum value), `Information/News.h:137`, `Systems/Society.h/.cpp` (Persona, events)
+  - Game: `UnitySpaceApp.Influence.cpp`, `GameLore.h/.cpp` (`ITextSource`), `SocietyCommand.cpp` (becomes `sg.Civ`), the new `UI/SocietyScreen`
+  - Docs and data: `Lore/Encyclopedia.cpp`, `GameManual.cpp`, `tools/universe-export/UniverseExport.cpp`, `Data/Prose/prose.config.json`, `docs/PROSE.md`
+- Reused:
+  - `Characters::Mix` and `Pick` (`Comms/Pilots.cpp:217`, `Comms/Comms.cpp:211`)
+  - the placeholder filling in `StoryTemplates`
+  - `Society::Notable`
+  - `Statecraft::Sway`, `Baseline` and `MakePeace`
+  - `LoreKeys`
+  - `LoreLibrary::Lines`
+
+## Process
+- File an epic ticket, "Civilization layer: 50 social systems + Prose narration", plus one child ticket for each phase P0–P10 (P10 is the Society/Feed screen and co-op Space God commands). Each is filed before its work starts.
+- Commit each phase by path to `main`, with the subject ending in the ticket ID, then push. Never use `add -A`, stash or reset.
+- Order: P0, then P1 through P8 in sequence (later phases read earlier state), with a P9 Prose slice in each phase, then P10.
+
+## Verification (build only, per repo rules)
+- After each phase: `tools/build-core.ps1 -Only Systems -SkipParity -MaxParallel 2`, then `tools/build.ps1 -MaxParallelActions 3` (the Unreal editor target).
+- Bench safety comes from design: everything sits behind `Civilization::Find`, which never runs in Core-only builds. The bench is not run unless you ask (`/test`).
+- Prose: `tools/prose_manifest.py` checks the export''s counts, and `sg.Lore` / `Problems()` show any malformed applied text. Approved text is in place only after you approve it in Prose.
+- Manual check in game: `sg.Civ` per module, the Society screen, and confirming that saves made before the change still load.', '2026-11-09T05:40:15Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T4', 'User request 2026-11-03: "do a full faithful migration from Unity.SpaceGod to this new game, lets call the repo ''Unreal.SpaceGod''". The repo is already named Unreal.SpaceGod. Follow the faithful-port rule: reproduce the original''s behaviour, fixing only bugs, and keep the co-op additions.', '2026-11-03T15:59:06Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T50', 'Faithfulness audit (docs/FAITHFULNESS.md, Audio). UnityCompat/UnityScreen.cs AudioListener is a plain static; UnrealHost.AfterUpdate should push it to Unreal''s primary volume when it changes, as Cpp/Source/UnrealSpaceGod/UnitySpaceAppActor.cpp does. The original plays no clips, so today nothing is audible either way, but the setting and the mute must take effect.', '2026-11-03T22:59:01Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T51', 'Faithfulness audit (docs/FAITHFULNESS.md, Settings/rendering). Port the two [SettingsSource] classes onto UnrealRenderBackend as the C++ track did (pipeline choice kept and reported, photoreal/post choices applied to the camera''s post-process settings).', '2026-11-03T22:59:02Z');
@@ -86557,6 +86748,8 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T264', 'Hands-on
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T265', 'Player-owned production', '2026-11-08T06:08:25Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T266', 'Port services hub', '2026-11-08T06:08:26Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T273', 'Self-running living universe', '2026-11-09T03:36:53Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T274', 'Civilization layer epic', '2026-11-09T05:40:15Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T275', 'Civilization integration layer', '2026-11-09T05:40:22Z');
 
 -- ticket_labels
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1128', 'hub-and-spoke', '2026-10-27T16:03:35Z');
