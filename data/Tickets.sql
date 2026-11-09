@@ -10373,6 +10373,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T931', 'Prose', 931, '2026-11-09', 'chore', 'closed', 'GLMZ: Ur 606 is renamed the Egregore everywhere (author 2026-11-09): one name, no numbering scheme; the plural is also Egregore (like deer); replaces Ur, the Ur, Ur 606, Ur-606 in every book and entity', 'glmz all books; entity ur-606; supersedes PRS-T930', 930, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T932', 'Prose', 932, '2026-11-09', 'docs', 'closed', 'GLMZ canon: Egregore is the pyramid and the hive mind; within it the Consensus (public ruling council) and the Cabal (strings); street synthetics like Ledger and Felix Drum are individuals, not networked into it (author 2026-11-09)', 'laws 01a1c1f9..01a1c204; plants in all 23 GLMZ books, exports SRZR V64..CYB3 V20', 931, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T933', 'Prose', 933, '2026-11-09', 'feature', 'closed', 'Every GLMZ book glosses, at its first encounter, consciousness-as-gravity (first SI), Quanta as the currency of compute (first Quanta), and CorpoNation sovereignty (first CorpoNation), with later reminders (author 2026-11-09)', 'laws 01a1c235, 01a1c23a; 66 first-encounter glosses across 23 books; exports SRZR V66 .. CYB3 V21', 932, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T934', 'Prose', 934, '2026-11-09', 'docs', 'closed', 'GLMZ universe doc records the 2026-11-09 canon: consciousness as gravity, individual-or-Egregore, SuperMinds as individuals, compute is life and Quanta its currency, first-encounter glosses', 'PRS-T932, PRS-T933', 933, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -67665,6 +67666,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60286, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60287, 'PRS-T933', '2026-11-09T22:11:12Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60288, 'PRS-T933', '2026-11-09T22:11:12Z', 'ref', '—', 'laws 01a1c235, 01a1c23a; 66 first-encounter glosses across 23 books; exports SRZR V66 .. CYB3 V21');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60289, 'PRS-T933', '2026-11-09T22:11:18Z', 'working', '3333ca57-3958-484e-9ea3-73d40bd07573', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60290, 'PRS-T934', '2026-11-09T22:36:17Z', 'created', NULL, 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60291, 'PRS-T934', '2026-11-09T22:36:17Z', 'name', NULL, 'GLMZ doc: minds and Quanta');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -86917,6 +86920,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T924', 'Unreal 
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T926', 'HIGH PRIORITY: generate_scene must use canon', '2026-11-08T06:16:06Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T932', 'Egregore''s inner structure', '2026-11-09T20:22:57Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T933', 'GLMZ first-encounter glosses', '2026-11-09T21:27:25Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T934', 'GLMZ doc: minds and Quanta', '2026-11-09T22:36:17Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RTB-T263', 'Auto-publish to Nexus', '2026-11-07T02:41:48Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RTO-T113', 'Auto-publish to Nexus', '2026-11-07T02:41:58Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('SET-T48', 'Gapper-study collaboration vignette', '2026-11-07T04:43:15Z');
