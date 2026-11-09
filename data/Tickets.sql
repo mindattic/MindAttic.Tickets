@@ -10372,6 +10372,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T930', 'Prose', 930, '2026-11-08', 'chore', 'closed', 'GLMZ: the Ur is always called Ur 606 (author 2026-11-08): sweep every book''s prose, records and docs', 'glmz all books; entity Ur-606', 929, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T931', 'Prose', 931, '2026-11-09', 'chore', 'closed', 'GLMZ: Ur 606 is renamed the Egregore everywhere (author 2026-11-09): one name, no numbering scheme; the plural is also Egregore (like deer); replaces Ur, the Ur, Ur 606, Ur-606 in every book and entity', 'glmz all books; entity ur-606; supersedes PRS-T930', 930, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T932', 'Prose', 932, '2026-11-09', 'docs', 'closed', 'GLMZ canon: Egregore is the pyramid and the hive mind; within it the Consensus (public ruling council) and the Cabal (strings); street synthetics like Ledger and Felix Drum are individuals, not networked into it (author 2026-11-09)', 'laws 01a1c1f9..01a1c204; plants in all 23 GLMZ books, exports SRZR V64..CYB3 V20', 931, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T933', 'Prose', 933, '2026-11-09', 'feature', 'open', 'Every GLMZ book glosses, at its first encounter, consciousness-as-gravity (first SI), Quanta as the currency of compute (first Quanta), and CorpoNation sovereignty (first CorpoNation), with later reminders (author 2026-11-09)', '—', 932, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -67658,6 +67659,9 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60280, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60281, 'PRS-T932', '2026-11-09T21:16:38Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60282, 'PRS-T932', '2026-11-09T21:16:38Z', 'ref', '—', 'laws 01a1c1f9..01a1c204; plants in all 23 GLMZ books, exports SRZR V64..CYB3 V20');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60283, 'PRS-T932', '2026-11-09T21:16:52Z', 'working', '3333ca57-3958-484e-9ea3-73d40bd07573', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60284, 'PRS-T933', '2026-11-09T21:27:25Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60285, 'PRS-T933', '2026-11-09T21:27:25Z', 'name', NULL, 'GLMZ first-encounter glosses');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60286, 'PRS-T933', '2026-11-09T21:27:41Z', 'working', NULL, '3333ca57-3958-484e-9ea3-73d40bd07573');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -70558,6 +70562,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T105', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T05:26:05Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T58', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:02:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T933', NULL, 0, NULL, '3333ca57-3958-484e-9ea3-73d40bd07573', '2026-11-09T21:27:41Z', '2026-11-09T21:27:41Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T111', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:34:40Z');
@@ -86909,6 +86914,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T922', 'Prose w
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T924', 'Unreal Eve third game', '2026-11-08T05:57:46Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T926', 'HIGH PRIORITY: generate_scene must use canon', '2026-11-08T06:16:06Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T932', 'Egregore''s inner structure', '2026-11-09T20:22:57Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T933', 'GLMZ first-encounter glosses', '2026-11-09T21:27:25Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RTB-T263', 'Auto-publish to Nexus', '2026-11-07T02:41:48Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RTO-T113', 'Auto-publish to Nexus', '2026-11-07T02:41:58Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('SET-T48', 'Gapper-study collaboration vignette', '2026-11-07T04:43:15Z');
