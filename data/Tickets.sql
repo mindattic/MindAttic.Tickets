@@ -10658,6 +10658,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T938', 'Prose', 938, '2026-11-10', 'chore', 'open', 'Book-report pass across all 23 canon GLMZ books', '—', 937, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T939', 'Prose', 939, '2026-11-10', 'chore', 'open', 'glmz-wheel book list still said the-ur after The Cabal''s slug rename', '—', 938, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T940', 'Prose', 940, '2026-11-10', 'chore', 'open', 'GLMZ terminology sweep: AI/Artificial Intelligence -> SI/Synthetic Intelligence, all books and entities', '—', 939, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T941', 'Prose', 941, '2026-11-10', 'chore', 'open', 'Re-read, fix, and export all 23 GLMZ books via the focus wheel', '—', 940, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -69499,6 +69500,10 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61710, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61711, 'PRS-T940', '2026-11-10T20:35:06Z', 'working', 'c719a43e-0c06-4161-8311-65db9c314604', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61712, 'M5SE-T106', '2026-11-10T20:35:07Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61713, 'M5SE-T107', '2026-11-10T21:00:00Z', 'created', NULL, 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61714, 'PRS-T941', '2026-11-10T21:05:15Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61715, 'PRS-T941', '2026-11-10T21:05:15Z', 'name', NULL, 'GLMZ full re-read');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61716, 'PRS-T941', '2026-11-10T21:05:31Z', 'working', NULL, '598137c5-6c0f-4e52-bae4-2ecfd636e1d8');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61717, 'PRS-T941', '2026-11-10T21:10:14Z', 'working', '598137c5-6c0f-4e52-bae4-2ecfd636e1d8', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -74653,6 +74658,8 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (21141, '
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (21142, 'M5SE-T99', 'ryand', '2026-11-10T19:04:03Z', 'Same on Clans (save name low too): ![image 7](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/M5SE-T99/2026-11-10-image-7.png)');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (21143, 'M5SE-T98', 'ryand', '2026-11-10T19:59:39Z', '2.0.0 built and validated: full suite 1275/1275 at d3b2f7d, docs + changelog + version committed (176d3e7), GitHub Page republished, dist/MechWarrior5.SaveEditor-2.0.0.zip built. Remaining: NexusMods upload, blocked on the two pages'' fileIds in nexus.json (0 for both).');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (21144, 'M5SE-T98', 'ryand', '2026-11-10T20:54:49Z', 'Rebuilt with the three requested features (mod items/traits, skill caps from game data, pilot trait box): full suite 1293/1293 at 1abbcf2; zip from 02a10b5. Remaining: NexusMods upload (fileIds 0).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (21145, 'M5SE-T98', 'ryand', '2026-11-10T21:04:50Z', 'Mercs page API info (upload-API File ID 8353341): ![image 10](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/M5SE-T98/2026-11-10-image-10.png)');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (21146, 'M5SE-T98', 'ryand', '2026-11-10T21:05:15Z', 'Clans page API info (upload-API File ID 8353350): ![image 11](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/M5SE-T98/2026-11-10-image-11.png)');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
@@ -89006,6 +89013,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T936', 'Orbital
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T938', 'GLMZ book reports', '2026-11-10T18:02:08Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T939', 'Fix glmz-wheel stale slug', '2026-11-10T19:28:11Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T940', 'AI to SI sweep', '2026-11-10T20:11:37Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T941', 'GLMZ full re-read', '2026-11-10T21:05:15Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RTB-T263', 'Auto-publish to Nexus', '2026-11-07T02:41:48Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RTO-T113', 'Auto-publish to Nexus', '2026-11-07T02:41:58Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('SET-T48', 'Gapper-study collaboration vignette', '2026-11-07T04:43:15Z');
