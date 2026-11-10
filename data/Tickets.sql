@@ -69780,6 +69780,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61927, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61928, 'M5SE-T113', '2026-11-10T22:29:17Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61929, 'M.ORCH-T1583', '2026-11-10T22:38:57Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61930, 'M.ORCH-T1583', '2026-11-10T22:39:14Z', 'working', NULL, '0d079710-f322-4dda-b95b-da11270d0cfd');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61931, 'M.ORCH-T1583', '2026-11-10T23:20:12Z', 'working', '0d079710-f322-4dda-b95b-da11270d0cfd', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -72617,7 +72618,6 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1583', NULL, 0, NULL, '0d079710-f322-4dda-b95b-da11270d0cfd', '2026-11-10T22:39:14Z', '2026-11-10T22:39:14Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T768', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
@@ -75015,6 +75015,7 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (21221, '
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (21222, 'M5SE-T112', 'ryand', '2026-11-10T22:19:02Z', 'Owner decision: keep 2.0.0 as released. The partial revert (2 unpushed commits + staged reverts) was discarded; main reset to origin/main 0a2ed9a.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (21223, 'M5SE-T113', 'ryand', '2026-11-10T22:24:36Z', '![image 13](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/M5SE-T113/2026-11-10-image-13.png)');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (21224, 'M5SE-T111', 'ryand', '2026-11-10T22:35:16Z', 'Blocked 2026-11-10: owner enabled Pilot Overhaul - Eternal 8.7.4 and it doesn''t work with the current game / DLC 9. Phase 0 (a PO save to confirm its cap rules) can''t happen until PO is updated. Groundwork committed in c60cc93 (rules seam, vanilla safety, detector); no PO rules or settings toggle built. Resume when a DLC9-compatible PO version is out (add it to PilotOverhaulDetector.SupportedVersions after checking).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (21225, 'M5SE-T111', 'ryand', '2026-11-10T23:19:07Z', 'Owner 2026-11-10: game working again (mods redeployed); finish the PO extension now: opt-in switch (default off), limit = top of PO''s PQPilotSkillLevelCurve (per-pilot Quality caps unconfirmed without a PO save).');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
