@@ -7686,6 +7686,12 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1539', 'MindAttic.Orchestrator', 1539, '2026-11-08', 'fix', 'closed', 'Bughunt: GatewayClient uncaught InvalidOperationException, OpenTicketSource unknown-as-empty, ExportedState/MachineRole uncaught file I/O, DiffReview''s ignored WaitAll result', '—', 1538, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1540', 'MindAttic.Orchestrator', 1540, '2026-11-08', 'feature', 'closed', 'Hide the lambda/5-hour bar for solo Ultra logins on the tab strip and Usage tab', '5c254b16', 1539, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1541', 'MindAttic.Orchestrator', 1541, '2026-11-09', 'fix', 'open', 'MainlineTests.Prepare never initializes git submodules in the main-tests worktree, so repos with submodules fail to build there (MSB3202 for the submodule''s projects, seen in MW5-SaveEditor M5SE-T12); run git submodule update --init --recursive after checkout/worktree add', '—', 1540, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1542', 'MindAttic.Orchestrator', 1542, '2026-11-09', 'feature', 'open', 'New-user install with Claude account sign-in, and a dashboard that pivots to a phone layout (full-screen CLI + voice) over Tailscale/RDP', '—', 1541, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1543', 'MindAttic.Orchestrator', 1543, '2026-11-09', 'feature', 'open', 'Dashboard pivots to a compact phone layout when narrow or portrait (an RDP session from a phone): full-screen CLI, tab switcher, touch key bar; built from MindAttic.Components.Wpf', '—', 1542, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1544', 'MindAttic.Orchestrator', 1544, '2026-11-09', 'feature', 'open', 'Phone layout''s mic + say box: Windows voice typing (Win+H) dictates into a box that sends to the selected CLI, plus a /voice button for Claude Code''s own voice mode', '—', 1543, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1545', 'MindAttic.Orchestrator', 1545, '2026-11-09', 'feature', 'open', 'First run walks a new user through GitHub, workspace and Claude account sign-in in one Components-built window instead of a bare Yes/No message box', '—', 1544, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1546', 'MindAttic.Orchestrator', 1546, '2026-11-09', 'docs', 'open', 'docs/TAILSCALE.md: install Orchestrator as a new user, sign in, and reach it from a phone in bed over Tailscale + Remote Desktop with mic redirection', '—', 1545, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1547', 'MindAttic.Orchestrator', 1547, '2026-11-09', 'chore', 'open', 'release.ps1 publishes the self-contained Desktop exe as a GitHub release so a new user can download it, as the README promises', '—', 1546, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T1', 'MindAttic.Orchestrator.SIDEBAR', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T2', 'MindAttic.Orchestrator.SIDEBAR', 2, '2026-11-05', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.SettingsModalTests.The_org_login_toolbar_is_the_Logins_dialogs_body — Assert.That(code, Does.Not.Contain("SettingsModal").And.Not.Contain("SizeSettings")) Expected: not String containing "SettingsModal" and not containing "SizeSettings" But was: "using System.Collections.Specialized; using System.Runtime.InteropServices; using System.Windows; using System.Windows.A... (landed on main since the last green run: tickets M.ORCH-T1310 in 864030c4 Cli csproj finds the workspace from any <workspace>.worktrees\<repo>\<name> checkout (drops .worktrees), so the main-tests build resolves MindAttic.Helpers without run.ps1''s MindAtticRoot (M.ORCH-T1310))', 'passes on main@270cb89', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T3', 'MindAttic.Orchestrator.SIDEBAR', 3, '2026-11-05', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.LibraryOnlyXamlTests.Every_xaml_element_is_a_library_control_or_library_styled — Assert.That(Violations(files), Is.Empty) Expected: <empty> But was: < "MainWindow.xaml:33 <Style>: a style with a template or resources of its own", "MainWindow.xaml:42 <ControlTemplate>: neither a library control nor library-styled", "MainWindow.xaml:43 <Border>: Background="{TemplateBinding Bac... (landed on main since the last green run: tickets M.ORCH-T1310 in 864030c4 Cli csproj finds the workspace from any <workspace>.worktrees\<repo>\<name> checkout (drops .worktrees), so the main-tests build resolves MindAttic.Helpers without run.ps1''s MindAtticRoot (M.ORCH-T1310))', 'passes on main@270cb89', 2, NULL);
@@ -68101,6 +68107,94 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60649, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60650, 'M.COMP-T174', '2026-11-10T05:09:49Z', 'working', '1e66c2c3-80c6-40a5-82e2-3eb0c43318f6', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60651, 'M5SE-T41', '2026-11-10T05:09:50Z', 'working', '1e66c2c3-80c6-40a5-82e2-3eb0c43318f6', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60652, 'M5SE-T42', '2026-11-10T05:11:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60653, 'M.ORCH-T1542', '2026-11-10T05:23:18Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60654, 'M.ORCH-T1542', '2026-11-10T05:23:18Z', 'name', NULL, 'Tailscale phone access');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60655, 'M.ORCH-T1542', '2026-11-10T05:23:24Z', 'working', NULL, '031faa99-5296-4607-8122-2e361aebb3a1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60656, 'M.ORCH-T1542', '2026-11-10T05:24:00Z', 'working', '031faa99-5296-4607-8122-2e361aebb3a1', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60657, 'M.ORCH-T1542', '2026-11-10T05:24:33Z', 'description', '## Story
+
+As a teammate (Jordan, pdftransferjr@mindattic.com, already in the MindAttic Claude Team), I join the owner''s
+tailnet with Tailscale, open the Orchestrator on my phone''s browser, and drive my own Claude CLIs on the owner''s
+Windows machine: start one in a repo, type or dictate (`/voice`-style mic button) into it, see usage and the repo''s
+ticket queue, and add my own Claude login(s) myself. All the RAM is on the machine in the living room; I talk to it
+from bed.
+
+Setup reference: the owner''s Tailscale + Remote Desktop guide (Downloads\Tailscale-Remote-Access.pdf). Attached to
+this ticket as the source of the network half.
+
+## Design
+
+- The gateway (M.ORCH-T933, HTTPS :7443, already Tailscale-ready per docs/REMOTE_HOST.md) serves a mobile web app at
+  `/app/`, built from MindAttic.Components web components (no one-off widgets).
+- Sign-in: the owner runs `orchestrator gateway invite <who>`, which mints that member''s token and prints a link
+  `https://<tailscale-name>:7443/app/#token=...` (fragment: never sent to the server or logged). The app keeps it on
+  the device.
+- Browser WebSockets can''t send an Authorization header, so a stream is opened with a single-use, 30-second stream
+  ticket from `POST /sessions/{id}/ticket` (bearer-authenticated). A token never goes in a URL.
+- A member always sees, and may interact with, sessions on their own Claude login(s); other sessions keep today''s
+  rules (broadcast sharing + grants).
+- Member endpoints: `GET /me` (who, logins, usage), `POST /me/sessions` (start a CLI on my login in a repo),
+  `POST /me/logins` (start the Claude sign-in flow for my login as a session I drive), `GET /repos`,
+  `GET /repos/{repo}/tickets` (read-only queue).
+- Docs: `docs/TAILSCALE.md`, a step-by-step for the owner (share the machine) and the friend (install Tailscale,
+  open the link, add accounts).
+
+## Acceptance
+
+- [ ] `orchestrator gateway invite jordan` prints a working phone link.
+- [ ] The app works at 360px wide: sessions list, live terminal with quick keys + mic, start CLI, usage, queue,
+      add login.
+- [ ] UI built with MindAttic.Components (Button, Textbox, Select, Modal, Tag, ProgressBar, Toolbar, ...).
+- [ ] Tokens never in a URL sent to the server; stream tickets are single-use.
+- [ ] Builds clean.', '## Story
+
+A new user (first: Jordan, pdftransferjr@mindattic.com, already in the MindAttic Claude Team) downloads
+MindAttic.Orchestrator onto their own Windows 11 PC, runs it, and is walked through signing in with a proper Claude
+account if they have none yet. Later, from bed, they reach that PC from their phone with Tailscale + Remote Desktop
+(Microsoft''s Windows App) and the Orchestrator pivots to a phone layout: the embedded CLI fills the screen, with big
+touch keys and a mic button, so they talk to the CLI instead of typing. All the RAM is the PC''s.
+
+Tailscale is only the network path to Windows 11 (owner''s guide: Downloads\Tailscale-Remote-Access.pdf, attached).
+
+## Scope
+
+1. **First run / account login**: a fresh install with no Claude login signed in shows a sign-in step in the
+   dashboard (who you are, sign in to your Claude account, done) instead of an empty dashboard.
+2. **Responsive dashboard**: when the window is narrow or portrait (an RDP session sized to a phone), the WPF
+   dashboard switches to a compact layout: one CLI full screen, a session switcher, large touch buttons (Esc, Tab,
+   arrows, Ctrl+C, Enter, Shift+Tab), and a voice button that dictates into the CLI. Widening the window switches back.
+3. **Docs**: `docs/TAILSCALE.md`: install, sign in, Tailscale + RDP from a phone, adapted from the PDF.
+
+All new UI is built from MindAttic.Components (WPF), improving the library where a control is missing.
+
+## Acceptance
+
+- [ ] A fresh profile with no Claude login gets the sign-in step; signing in lands on the normal dashboard.
+- [ ] Below the narrow breakpoint the dashboard pivots to the phone layout; above it, the desktop layout is unchanged.
+- [ ] Voice button dictates into the active CLI.
+- [ ] New controls come from MindAttic.Components.Wpf.
+- [ ] Builds clean.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60658, 'M.ORCH-T1542', '2026-11-10T05:24:34Z', 'summary', 'Phone web app on the gateway so a teammate (Jordan) can Tailscale in and drive their own CLIs, built with MindAttic.Components', 'New-user install with Claude account sign-in, and a dashboard that pivots to a phone layout (full-screen CLI + voice) over Tailscale/RDP (corrected: Owner clarified: Tailscale is just RDP into Windows 11; no web app)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60659, 'M.ORCH-T1543', '2026-11-10T05:26:25Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60660, 'M.ORCH-T1543', '2026-11-10T05:26:25Z', 'name', NULL, 'Phone layout for dashboard');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60661, 'M.ORCH-T1544', '2026-11-10T05:26:28Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60662, 'M.ORCH-T1544', '2026-11-10T05:26:28Z', 'name', NULL, 'Talk to the CLI');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60663, 'M.ORCH-T1545', '2026-11-10T05:26:30Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60664, 'M.ORCH-T1545', '2026-11-10T05:26:30Z', 'name', NULL, 'Welcome setup for new users');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60665, 'M.ORCH-T1546', '2026-11-10T05:26:32Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60666, 'M.ORCH-T1546', '2026-11-10T05:26:32Z', 'name', NULL, 'Tailscale phone guide');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60667, 'M.ORCH-T1547', '2026-11-10T05:26:34Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60668, 'M.ORCH-T1547', '2026-11-10T05:26:34Z', 'name', NULL, 'Downloadable release');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60669, 'M.ORCH-T1542', '2026-11-10T05:26:39Z', 'link', NULL, 'requires M.ORCH-T1543');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60670, 'M.ORCH-T1543', '2026-11-10T05:26:40Z', 'link', NULL, 'M.ORCH-T1542 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60671, 'M.ORCH-T1542', '2026-11-10T05:26:41Z', 'link', NULL, 'requires M.ORCH-T1544');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60672, 'M.ORCH-T1544', '2026-11-10T05:26:42Z', 'link', NULL, 'M.ORCH-T1542 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60673, 'M.ORCH-T1542', '2026-11-10T05:26:43Z', 'link', NULL, 'requires M.ORCH-T1545');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60674, 'M.ORCH-T1545', '2026-11-10T05:26:44Z', 'link', NULL, 'M.ORCH-T1542 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60675, 'M.ORCH-T1542', '2026-11-10T05:26:45Z', 'link', NULL, 'requires M.ORCH-T1546');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60676, 'M.ORCH-T1546', '2026-11-10T05:26:45Z', 'link', NULL, 'M.ORCH-T1542 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60677, 'M.ORCH-T1542', '2026-11-10T05:26:47Z', 'link', NULL, 'requires M.ORCH-T1547');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60678, 'M.ORCH-T1547', '2026-11-10T05:26:47Z', 'link', NULL, 'M.ORCH-T1542 requires');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -80927,6 +81021,39 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1539
 
 All fixes verified: dotnet build (Core, 0 errors) plus targeted tests (OpenTicketSourceTests, ExportedStateTests, MachineRoleTests - 34 tests, all passing).', '2026-11-08T20:33:04Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1540', 'A solo Ultra account has no 5-hour window (only a weekly one, AccountRoster.PlanOf gives it exactly "Ultra"; ShowsFiveHourChart already hides its 5-hour chart on the person page for this reason, M.ORCH-T1403). But the login tab strip''s own bars (LoginUsageBarsTemplate, M.ORCH-T1536), the pinned Usage tab''s own header (UsageTabItem.Header), and the Usage tab''s FiveHourLimitText/FiveHourLimitPercent stat card (UtilizationSection) still always show the lambda/5-hour figure for an Ultra login, which reads as a real, trackable limit it doesn''t have. Hide the lambda label+bar (and the stat card) in all three places for a solo Ultra account the same way ShowsFiveHourChart already does for its chart.', '2026-11-09T05:34:32Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1542', '## Story
+
+A new user (first: Jordan, pdftransferjr@mindattic.com, already in the MindAttic Claude Team) downloads
+MindAttic.Orchestrator onto their own Windows 11 PC, runs it, and is walked through signing in with a proper Claude
+account if they have none yet. Later, from bed, they reach that PC from their phone with Tailscale + Remote Desktop
+(Microsoft''s Windows App) and the Orchestrator pivots to a phone layout: the embedded CLI fills the screen, with big
+touch keys and a mic button, so they talk to the CLI instead of typing. All the RAM is the PC''s.
+
+Tailscale is only the network path to Windows 11 (owner''s guide: Downloads\Tailscale-Remote-Access.pdf, attached).
+
+## Scope
+
+1. **First run / account login**: a fresh install with no Claude login signed in shows a sign-in step in the
+   dashboard (who you are, sign in to your Claude account, done) instead of an empty dashboard.
+2. **Responsive dashboard**: when the window is narrow or portrait (an RDP session sized to a phone), the WPF
+   dashboard switches to a compact layout: one CLI full screen, a session switcher, large touch buttons (Esc, Tab,
+   arrows, Ctrl+C, Enter, Shift+Tab), and a voice button that dictates into the CLI. Widening the window switches back.
+3. **Docs**: `docs/TAILSCALE.md`: install, sign in, Tailscale + RDP from a phone, adapted from the PDF.
+
+All new UI is built from MindAttic.Components (WPF), improving the library where a control is missing.
+
+## Acceptance
+
+- [ ] A fresh profile with no Claude login gets the sign-in step; signing in lands on the normal dashboard.
+- [ ] Below the narrow breakpoint the dashboard pivots to the phone layout; above it, the desktop layout is unchanged.
+- [ ] Voice button dictates into the active CLI.
+- [ ] New controls come from MindAttic.Components.Wpf.
+- [ ] Builds clean.', '2026-11-10T05:24:33Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1543', 'Part of M.ORCH-T1542. Below ~760px wide, or portrait under 1000px, MainWindow enters compact mode: Sidebar, host-stat texts and everything below TerminalFrame collapse, TerminalFrame fills AgentsBody, and the StatusBar is swapped for a touch bar (Esc, Tab, Shift+Tab, arrows, Ctrl+C, Enter) that writes to the selected pane. Widening returns the desktop layout unchanged. Acceptance: resize the window narrow and back; keys reach the CLI.', '2026-11-10T05:26:25Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1544', 'Part of M.ORCH-T1542. Over Remote Desktop from a phone (Windows App with microphone redirection) the user talks instead of typing. A one-line MaTextBox in the touch bar takes phone-keyboard or dictated text; Send (or Enter) writes it to the selected pane as a paste and submits. The mic button focuses the box and opens Windows voice typing (Win+H). A /voice button types Claude Code''s /voice. Acceptance: dictated text lands in the CLI prompt and submits.', '2026-11-10T05:26:28Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1545', 'Part of M.ORCH-T1542. A fresh install (no workspace, or no Claude login signed in) opens a Welcome window: 1) tools present (git, gh, claude) with a winget install for each missing one; 2) GitHub connected (gh auth status; Connect runs gh auth login --web); 3) workspace (build one or point at one, as EnsureWorkspace does today); 4) Claude account (email box, Sign in runs the existing per-CLI login for that email). Each step shows done/needed and can be re-run; Finish opens the dashboard. Acceptance: a profile with no Claude login sees it; once signed in the dashboard opens.', '2026-11-10T05:26:30Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1546', 'Part of M.ORCH-T1542. Adapted from the owner''s Tailscale-Remote-Access.pdf (attached to M.ORCH-T1542), written for a new user such as Jordan; linked from README.', '2026-11-10T05:26:32Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1547', 'Part of M.ORCH-T1542. There are no GitHub releases, yet README''s Quick start says to double-click the released exe. CI can''t restore the LocalNuGet packages, so the release is built locally by run.ps1''s build and uploaded with gh release create.', '2026-11-10T05:26:34Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T833', 'Symptom: Inside the Orchestrator''s embedded Terminals panel (TerminalPanesHost), when a CLI running
 in a pane shows an interactive, arrow-key-driven menu (e.g. a selection list or permission prompt),
 the Up/Down/Left/Right keys don''t reach the CLI. It looks like the WPF app is intercepting/consuming
@@ -87354,6 +87481,12 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1520', 'Tic
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1525', 'Run Launcher context item', '2026-11-07T15:57:06Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1529', 'Agency hook copy lags generator', '2026-11-07T22:18:46Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1530', 'HIGH PRIORITY: commits sweep other agents'' files', '2026-11-08T06:55:29Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1542', 'Tailscale phone access', '2026-11-10T05:23:18Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1543', 'Phone layout for dashboard', '2026-11-10T05:26:25Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1544', 'Talk to the CLI', '2026-11-10T05:26:28Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1545', 'Welcome setup for new users', '2026-11-10T05:26:30Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1546', 'Tailscale phone guide', '2026-11-10T05:26:32Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1547', 'Downloadable release', '2026-11-10T05:26:34Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T10', 'Publish on NexusMods', '2026-11-10T01:37:57Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T11', 'Rename namespaces to Mech5Mercs.SaveEditor', '2026-11-10T01:40:21Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T13', 'Never overwrite original game saves', '2026-11-10T01:52:37Z');
@@ -92123,6 +92256,11 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1450', 'M.TIX-T3
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1450', 'M.TIX-T313', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1457', 'M.TIX-T312', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1457', 'M.TIX-T316', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1542', 'M.ORCH-T1543', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1542', 'M.ORCH-T1544', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1542', 'M.ORCH-T1545', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1542', 'M.ORCH-T1546', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1542', 'M.ORCH-T1547', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T180', 'M.TIX-T65', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T181', 'M.COMP-T11', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T182', 'M.COMP-T12', 'requires', NULL);
