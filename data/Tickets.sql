@@ -96,12 +96,6 @@ code: KP
 layer: stories
 status: living
 updated: 2026-10-12', 0, 0, 1);
-INSERT INTO repos (name, code, project, title, updated, front_matter, bom, crlf, trailing_newline) VALUES ('MW5-SaveEditor', 'M5SE', 'MW5-SaveEditor', 'MW5-SaveEditor — User Stories', '2026-11-09', 'codex: 1
-project: MW5-SaveEditor
-code: M5SE
-layer: stories
-status: living
-updated: 2026-11-09', 0, 0, 1);
 INSERT INTO repos (name, code, project, title, updated, front_matter, bom, crlf, trailing_newline) VALUES ('MediaButler', 'MB', 'MediaButler', 'MediaButler — User Stories', '2026-10-03', 'codex: 1
 project: MediaButler
 code: MB
@@ -306,12 +300,6 @@ code: G.SD
 layer: stories
 status: living
 updated: 2026-10-16', 0, 0, 1);
-INSERT INTO repos (name, code, project, title, updated, front_matter, bom, crlf, trailing_newline) VALUES ('Mods.Mech5.Shared', 'MM5S', 'Mods.Mech5.Shared', 'Mods.Mech5.Shared — User Stories', '2026-11-09', 'codex: 1
-project: Mods.Mech5.Shared
-code: MM5S
-layer: stories
-status: living
-updated: 2026-11-09', 0, 0, 1);
 INSERT INTO repos (name, code, project, title, updated, front_matter, bom, crlf, trailing_newline) VALUES ('Mods.Mech5Mercs.CoopPartner', 'MOD', 'Mods.Mech5Mercs.CoopPartner', 'Mods.Mech5Mercs.CoopPartner — User Stories', '2026-11-05', 'codex: 1
 project: Mods.Mech5Mercs.CoopPartner
 code: MOD
@@ -324,6 +312,18 @@ code: MODS
 layer: stories
 status: living
 updated: 2026-11-07', 0, 0, 1);
+INSERT INTO repos (name, code, project, title, updated, front_matter, bom, crlf, trailing_newline) VALUES ('Mods.MechWarrior5.SaveEditor', 'M5SE', 'Mods.MechWarrior5.SaveEditor', 'Mods.MechWarrior5.SaveEditor — User Stories', '2026-11-09', 'codex: 1
+project: Mods.MechWarrior5.SaveEditor
+code: M5SE
+layer: stories
+status: living
+updated: 2026-11-09', 0, 0, 1);
+INSERT INTO repos (name, code, project, title, updated, front_matter, bom, crlf, trailing_newline) VALUES ('Mods.MechWarrior5.Shared', 'MM5S', 'Mods.MechWarrior5.Shared', 'Mods.MechWarrior5.Shared — User Stories', '2026-11-09', 'codex: 1
+project: Mods.MechWarrior5.Shared
+code: MM5S
+layer: stories
+status: living
+updated: 2026-11-09', 0, 0, 1);
 INSERT INTO repos (name, code, project, title, updated, front_matter, bom, crlf, trailing_newline) VALUES ('Mods.RogueTrader.Brevity', 'RTB', 'Mods.RogueTrader.Brevity', 'Mods.RogueTrader.Brevity — User Stories', '2026-10-24', 'codex: 1
 project: Mods.RogueTrader.Brevity
 code: RTB
@@ -5297,26 +5297,6 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('KP-T20', 'KdpPublish', 20, '2026-10-24', 'docs', 'closed', 'Update USER_STORIES.md', '—', 19, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('KP-T21', 'KdpPublish', 21, '2026-11-02', 'docs', 'open', 'Adopt MindAttic.Agency docs-site pipeline, publish README to GitHub Pages (HOUSE-LAW-14)', '—', 20, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('KP-T22', 'KdpPublish', 22, '2026-11-02', 'fix', 'closed', 'Bughunt sweep, two passes: find and fix real bugs across tracked source (user request 2026-11-02)', '—', 21, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T1', 'MW5-SaveEditor', 1, '2026-11-09', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T2', 'MW5-SaveEditor', 2, '2026-11-09', 'feature', 'closed', 'Reverse-engineer MW5SaveEditor.exe v1.6.7 (save format, DLC1-9 mech lists) with REA and build our own editor: DLC9 support, mech multi-select (select all, shift-click ranges, row checkboxes), one post-add message per batch', '—', 1, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T3', 'MW5-SaveEditor', 3, '2026-11-09', 'feature', 'closed', 'Loadout editor: per-hardpoint weapon/equipment picker for hangar mechs, plus import/export of loadouts (parity with JJ''s editor)', '—', 2, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T4', 'MW5-SaveEditor', 4, '2026-11-09', 'feature', 'closed', 'Pilot management: hire/remove pilots, personas (name, bio, portrait, voice), pilot traits and roster order', 'eebdab1', 3, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T5', 'MW5-SaveEditor', 5, '2026-11-09', 'feature', 'closed', 'Mech traits editor (experimental in JJ''s editor) and Cantina career progress / upgrade unlock sync', 'a683b70', 4, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T6', 'MW5-SaveEditor', 6, '2026-11-09', 'feature', 'closed', 'Mod support: scan the MW5 Mods folder''s .pak files for mod-added mech variants and items and add them to the requisition lists', 'cc2dbf5', 5, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T7', 'MW5-SaveEditor', 7, '2026-11-09', 'feature', 'closed', 'Company export/import (mechs, pilots, inventory) between campaigns, and editable campaign date', '709d622', 6, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T8', 'MW5-SaveEditor', 8, '2026-11-09', 'feature', 'closed', 'Localization of the editor UI (de, es, fr, ja, ru) and a Settings page (image downloads on/off, cache clear)', '7832214', 7, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T9', 'MW5-SaveEditor', 9, '2026-11-09', 'chore', 'closed', 'Create mindattic/Mods.Mech5Mercs.SaveEditor on GitHub, point origin at it and push; credit JJ''s MW5 Merc Save Editor as inspiration (not code)', '—', 8, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T10', 'MW5-SaveEditor', 10, '2026-11-09', 'chore', 'open', 'After T3-T8 land: package the editor as a professional release and publish it on NexusMods via the shared /publish pipeline (GitHub release + Nexus API), as done for Mods.RogueTrader.Overwatch', '—', 9, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T11', 'MW5-SaveEditor', 11, '2026-11-09', 'chore', 'closed', 'Rename namespaces, projects, folders and solution from Mw5SaveEditor.* to Mech5Mercs.SaveEditor.* to match the Mods.Mech5Mercs.SaveEditor repo', '—', 10, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T12', 'MW5-SaveEditor', 12, '2026-11-09', 'fix', 'closed', 'Fails on main: the build — C:\Program Files\dotnet\sdk\11.0.100-rc.3.26522.148\NuGet.targets(523,5): error MSB3202: The project file "D:\Projects\MindAttic.worktrees\MW5-SaveEditor\main-tests\shared\src\Mech5.Shared\Mech5.Shared.csproj" was not found. [D:\Projects\MindAttic.worktrees\MW5-SaveEditor\main-tests\Mech5.Mercs.S... (landed on main since the last green run: tickets M5SE-T11, M5SE-T3 in 1eab840 Move the editor onto the shared Mods.Mech5.Shared base and rename it to Mech5.Mercs.SaveEditor (M5SE-T11); 71987bb Make HangarEditor.ReadLoadout static so the core builds again (M5SE-T3); 9837051 Add hardpoint classes, a live-loadout reader and apply/export/import plumbing for the loadout editor (M5SE-T3))', '77a2fea', 11, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T13', 'MW5-SaveEditor', 13, '2026-11-09', 'feature', 'closed', 'Editor-written saves carry a harmless top-level stamp property; game-written saves are never overwritten - edits always go to a new GUID save registered in Campaign.json; in-place saves only for stamped files, enforced again in the low-level writer', '—', 12, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T14', 'MW5-SaveEditor', 14, '2026-11-09', 'feature', 'closed', 'Theme picker (Mercs default, Clans available) remembered between runs; settings become a plain settings.json beside the exe (no MindAttic folders); image cache moves to %LOCALAPPDATA%\Mech5SaveEditor', '00f8597', 13, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T15', 'MW5-SaveEditor', 15, '2026-11-09', 'feature', 'closed', 'Try to verify editor-written saves in the real game without a human: launch MW5 Mercenaries headless (-nullrhi/-unattended), load a given save and confirm from the game log that it loaded without errors; report feasibility if the game can''t be driven that way', '9af5e60', 14, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T16', 'MW5-SaveEditor', 16, '2026-11-09', 'feature', 'closed', 'Route the remaining English dialog titles/messages and status toasts in the app''s view models through Loc.Text with de/es/fr/ja/ru translations (the views, labels, chips and status bar are already localized in M5SE-T8)', '76aca80', 15, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T17', 'MW5-SaveEditor', 17, '2026-11-09', 'docs', 'closed', 'Reverse-engineer the MW5 Clans save format (compressed !GZIP chunks, UE 5.4 FPropertyTypeName tags, InventoryData actors, UserSaveMetaData index) and record it with prototype tools as groundwork for MM5S-T5', 'ece83e8', 16, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T18', 'MW5-SaveEditor', 18, '2026-11-09', 'fix', 'closed', 'UI: put the MERCS theme chip before CLANS and raise every font size one step (smallest included), it reads a little small', 'b48c37a', 17, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T19', 'MW5-SaveEditor', 19, '2026-11-09', 'feature', 'closed', 'Combine the Mercs and Clans editors into one app, Mods.MW5.SaveEditor (rename the GitHub repo), keeping Mech5.Shared as a separate DLL for future projects; game chosen per save', 'f84789c', 18, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T20', 'MW5-SaveEditor', 20, '2026-11-09', 'chore', 'open', 'Rename GitHub repos to Mods.MechWarrior5.SaveEditor and Mods.MechWarrior5.Shared and update every link, remote and subtree command', '—', 19, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MB-T1', 'MediaButler', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| MB-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MB-T2', 'MediaButler', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for LegionFallbackParser (MediaButler/Llm/LegionFallbackParser.cs), per RFC 0001: add an injectable transport seam (no live provider, no real credentials) and cover EnableLlmFallback=false returning null for ClassifyAsync and ClassifyFileAsync, ExtractJsonObject pulling the first balanced object out of code fences, prose and an echoed schema, braces and escaped quotes inside string values (Spinal Tap {Live}), unterminated or missing object returning null, kind mapping (movie, tv_season, unknown, titleless returns null), tv_episode only actionable when season AND episode are present, non-numeric year/season ignored, title trimmed, and provider exceptions swallowed to null - the MB-LAW-6 never-rename-wrong contract (MB-US-F1 is still unproven).', 'MediaButler.Tests/LegionFallbackParserTests.cs (commit 5017ae8)', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MB-T3', 'MediaButler', 3, '2026-10-14', 'chore', 'closed', 'NUnit tests for SeasonMerger (MediaButler/Pipeline/SeasonMerger.cs) as a unit, not only via the pipeline fixtures: MergeFiles collisions by file name and by parsed episode number, sample videos and junk extensions never merged, subtitle sidecars merged, KeepLargest replacing the smaller existing copy vs discarding an equal-or-smaller incoming copy (with duplicate-replace/duplicate-discard audit ops), Flag counting conflicts and recording one NeedsManual entry, dry-run returning the same Moved/Conflicts counts with nothing touched on disk; TryDeleteShell refusing on a non-sample video, a sample-named video above SampleMaxBytes, and junk above EmptyDeleteSafetyBytes (check refuseReason text), returning true for a missing folder, and not deleting in dry-run - this is the code that deletes user files.', 'a30b4c5', 2, NULL);
@@ -8993,16 +8973,6 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.SD-T21', 'Mods.GTFO.SkipDrop', 21, '2026-11-02', 'fix', 'closed', 'Bughunt sweep, two passes: find and fix real bugs across tracked source (user request 2026-11-02)', '—', 20, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.SD-T22', 'Mods.GTFO.SkipDrop', 22, '2026-11-05', 'chore', 'open', 'Bump BepInExPack_GTFO dependency to 3.2.4 and release v20.0.0', '—', 21, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('G.SD-T23', 'Mods.GTFO.SkipDrop', 23, '2026-11-05', 'docs', 'open', 'Audit README(s) for accuracy against current code/config and v20 release', '—', 22, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T1', 'Mods.Mech5.Shared', 1, '2026-11-09', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T2', 'Mods.Mech5.Shared', 2, '2026-11-09', 'feature', 'closed', 'Seed the shared base from the Mercs editor: Mech5.Shared (Unreal tagged-property engine, FString/FText, struct builders) and Mech5.Shared.Wpf (MW5 HUD theme, chamfer panels, check-list multi-select, Sarna image service, dialogs, converters)', '—', 1, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T3', 'Mods.Mech5.Shared', 3, '2026-11-09', 'fix', 'closed', 'Controls.xaml styles resolved palette brushes as UnsetValue when nested under Mech5Theme.xaml (window failed to load); make Controls.xaml merge Palette.xaml itself', '—', 2, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T4', 'Mods.Mech5.Shared', 4, '2026-11-09', 'feature', 'closed', 'Add PickFileToOpen/PickFileToSave (title, filter, default name) to IDialogService for editor import/export features', '—', 3, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T5', 'Mods.Mech5.Shared', 5, '2026-11-09', 'feature', 'open', 'Goal (user, 2026-11-09): after the Mercs editor is full-featured, tested and working, build a full-featured MechWarrior 5: Clans save editor (Mods.Mech5.Clans.SaveEditor) on Mods.Mech5.Shared, moving as much code as possible into Shared (save container, editors, catalogs pipeline, app shell, pages)', '—', 4, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T6', 'Mods.Mech5.Shared', 6, '2026-11-09', 'fix', 'closed', 'FText.WithDisplayString kept Base-history texts (namespace+key), so the game would show the localized original instead of an edited name; always write a culture-invariant (None-history) text, and add FText.Invariant for new texts', '—', 5, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T7', 'Mods.Mech5.Shared', 7, '2026-11-09', 'feature', 'closed', 'Two themes in Mech5.Shared.Wpf (Mercs: gunmetal/amber; Clans: steel/ice-blue) with a ThemeManager that swaps palettes live (styles use DynamicResource brushes); each app defaults to its game''s theme', '9e65ee1', 6, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T8', 'Mods.Mech5.Shared', 8, '2026-11-09', 'fix', 'closed', 'ThemeManager replaced the palette nested inside Mech5Theme.xaml, which raises no resource-changed notification, so elements built before a swap kept the old palette; apply the palette as a top-level Application.Resources merged dictionary instead', 'a4c5baa', 7, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T9', 'Mods.Mech5.Shared', 9, '2026-11-09', 'feature', 'closed', 'Read MechWarrior 5 game and mod data directly: PakFile (UE4 pak v8-v11 index, full directory index, uncompressed/zlib entries) and CookedPackage (cooked .uasset/.uexp: names, imports, exports, FName-tagged properties into the shared PropertyList model)', '75330e2', 8, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T10', 'Mods.Mech5.Shared', 10, '2026-11-09', 'fix', 'closed', 'Theme fonts read a little small: raise every font size in Controls.xaml and MessageDialog.xaml by two points (user request via M5SE-T18)', '267fca2', 9, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MOD-T1', 'Mods.Mech5Mercs.CoopPartner', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MOD-T2', 'Mods.Mech5Mercs.CoopPartner', 2, '2026-11-05', 'chore', 'closed', 'Scaffold the new repo: AGENTS.md, portable command pointers, README, .gitignore', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MOD-T3', 'Mods.Mech5Mercs.CoopPartner', 3, '2026-11-05', 'feature', 'wont-do', 'Give co-op clientmates full host-level control (loadouts, drop countdown, star map, repairs, buy/sell) - recreate ''Co-op Unlocked'' from scratch', 'user pivoted: Co-op Unlocked looks actively maintained, not abandoned; recreate-from-scratch dropped in favor of crash-log diagnosis', 2, NULL);
@@ -9019,6 +8989,37 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MODS-T10', 'Mods.Mech5Mercs.LancemateCoop', 10, '2026-11-07', 'feature', 'open', 'Turn off the slanted/angled rendering of the UI so HUD and menus draw flat and are easier to read', '—', 9, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MODS-T11', 'Mods.Mech5Mercs.LancemateCoop', 11, '2026-11-07', 'feature', 'open', 'Lancemates eject instead of dying when their cockpit is destroyed', '—', 10, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MODS-T12', 'Mods.Mech5Mercs.LancemateCoop', 12, '2026-11-08', 'chore', 'open', 'Set up the LancemateCoop mod project in the MW5 Mercs Mod Editor (R:\MechWarrior5Editor) and check its version matches the game', '—', 11, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T1', 'Mods.MechWarrior5.SaveEditor', 1, '2026-11-09', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T2', 'Mods.MechWarrior5.SaveEditor', 2, '2026-11-09', 'feature', 'closed', 'Reverse-engineer MW5SaveEditor.exe v1.6.7 (save format, DLC1-9 mech lists) with REA and build our own editor: DLC9 support, mech multi-select (select all, shift-click ranges, row checkboxes), one post-add message per batch', '—', 1, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T3', 'Mods.MechWarrior5.SaveEditor', 3, '2026-11-09', 'feature', 'closed', 'Loadout editor: per-hardpoint weapon/equipment picker for hangar mechs, plus import/export of loadouts (parity with JJ''s editor)', '—', 2, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T4', 'Mods.MechWarrior5.SaveEditor', 4, '2026-11-09', 'feature', 'closed', 'Pilot management: hire/remove pilots, personas (name, bio, portrait, voice), pilot traits and roster order', 'eebdab1', 3, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T5', 'Mods.MechWarrior5.SaveEditor', 5, '2026-11-09', 'feature', 'closed', 'Mech traits editor (experimental in JJ''s editor) and Cantina career progress / upgrade unlock sync', 'a683b70', 4, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T6', 'Mods.MechWarrior5.SaveEditor', 6, '2026-11-09', 'feature', 'closed', 'Mod support: scan the MW5 Mods folder''s .pak files for mod-added mech variants and items and add them to the requisition lists', 'cc2dbf5', 5, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T7', 'Mods.MechWarrior5.SaveEditor', 7, '2026-11-09', 'feature', 'closed', 'Company export/import (mechs, pilots, inventory) between campaigns, and editable campaign date', '709d622', 6, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T8', 'Mods.MechWarrior5.SaveEditor', 8, '2026-11-09', 'feature', 'closed', 'Localization of the editor UI (de, es, fr, ja, ru) and a Settings page (image downloads on/off, cache clear)', '7832214', 7, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T9', 'Mods.MechWarrior5.SaveEditor', 9, '2026-11-09', 'chore', 'closed', 'Create mindattic/Mods.Mech5Mercs.SaveEditor on GitHub, point origin at it and push; credit JJ''s MW5 Merc Save Editor as inspiration (not code)', '—', 8, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T10', 'Mods.MechWarrior5.SaveEditor', 10, '2026-11-09', 'chore', 'open', 'After T3-T8 land: package the editor as a professional release and publish it on NexusMods via the shared /publish pipeline (GitHub release + Nexus API), as done for Mods.RogueTrader.Overwatch', '—', 9, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T11', 'Mods.MechWarrior5.SaveEditor', 11, '2026-11-09', 'chore', 'closed', 'Rename namespaces, projects, folders and solution from Mw5SaveEditor.* to Mech5Mercs.SaveEditor.* to match the Mods.Mech5Mercs.SaveEditor repo', '—', 10, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T12', 'Mods.MechWarrior5.SaveEditor', 12, '2026-11-09', 'fix', 'closed', 'Fails on main: the build — C:\Program Files\dotnet\sdk\11.0.100-rc.3.26522.148\NuGet.targets(523,5): error MSB3202: The project file "D:\Projects\MindAttic.worktrees\MW5-SaveEditor\main-tests\shared\src\Mech5.Shared\Mech5.Shared.csproj" was not found. [D:\Projects\MindAttic.worktrees\MW5-SaveEditor\main-tests\Mech5.Mercs.S... (landed on main since the last green run: tickets M5SE-T11, M5SE-T3 in 1eab840 Move the editor onto the shared Mods.Mech5.Shared base and rename it to Mech5.Mercs.SaveEditor (M5SE-T11); 71987bb Make HangarEditor.ReadLoadout static so the core builds again (M5SE-T3); 9837051 Add hardpoint classes, a live-loadout reader and apply/export/import plumbing for the loadout editor (M5SE-T3))', '77a2fea', 11, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T13', 'Mods.MechWarrior5.SaveEditor', 13, '2026-11-09', 'feature', 'closed', 'Editor-written saves carry a harmless top-level stamp property; game-written saves are never overwritten - edits always go to a new GUID save registered in Campaign.json; in-place saves only for stamped files, enforced again in the low-level writer', '—', 12, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T14', 'Mods.MechWarrior5.SaveEditor', 14, '2026-11-09', 'feature', 'closed', 'Theme picker (Mercs default, Clans available) remembered between runs; settings become a plain settings.json beside the exe (no MindAttic folders); image cache moves to %LOCALAPPDATA%\Mech5SaveEditor', '00f8597', 13, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T15', 'Mods.MechWarrior5.SaveEditor', 15, '2026-11-09', 'feature', 'closed', 'Try to verify editor-written saves in the real game without a human: launch MW5 Mercenaries headless (-nullrhi/-unattended), load a given save and confirm from the game log that it loaded without errors; report feasibility if the game can''t be driven that way', '9af5e60', 14, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T16', 'Mods.MechWarrior5.SaveEditor', 16, '2026-11-09', 'feature', 'closed', 'Route the remaining English dialog titles/messages and status toasts in the app''s view models through Loc.Text with de/es/fr/ja/ru translations (the views, labels, chips and status bar are already localized in M5SE-T8)', '76aca80', 15, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T17', 'Mods.MechWarrior5.SaveEditor', 17, '2026-11-09', 'docs', 'closed', 'Reverse-engineer the MW5 Clans save format (compressed !GZIP chunks, UE 5.4 FPropertyTypeName tags, InventoryData actors, UserSaveMetaData index) and record it with prototype tools as groundwork for MM5S-T5', 'ece83e8', 16, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T18', 'Mods.MechWarrior5.SaveEditor', 18, '2026-11-09', 'fix', 'closed', 'UI: put the MERCS theme chip before CLANS and raise every font size one step (smallest included), it reads a little small', 'b48c37a', 17, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T19', 'Mods.MechWarrior5.SaveEditor', 19, '2026-11-09', 'feature', 'closed', 'Combine the Mercs and Clans editors into one app, Mods.MW5.SaveEditor (rename the GitHub repo), keeping Mech5.Shared as a separate DLL for future projects; game chosen per save', 'f84789c', 18, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T20', 'Mods.MechWarrior5.SaveEditor', 20, '2026-11-09', 'chore', 'closed', 'Rename GitHub repos to Mods.MechWarrior5.SaveEditor and Mods.MechWarrior5.Shared and update every link, remote and subtree command', '41254de', 19, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T1', 'Mods.MechWarrior5.Shared', 1, '2026-11-09', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T2', 'Mods.MechWarrior5.Shared', 2, '2026-11-09', 'feature', 'closed', 'Seed the shared base from the Mercs editor: Mech5.Shared (Unreal tagged-property engine, FString/FText, struct builders) and Mech5.Shared.Wpf (MW5 HUD theme, chamfer panels, check-list multi-select, Sarna image service, dialogs, converters)', '—', 1, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T3', 'Mods.MechWarrior5.Shared', 3, '2026-11-09', 'fix', 'closed', 'Controls.xaml styles resolved palette brushes as UnsetValue when nested under Mech5Theme.xaml (window failed to load); make Controls.xaml merge Palette.xaml itself', '—', 2, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T4', 'Mods.MechWarrior5.Shared', 4, '2026-11-09', 'feature', 'closed', 'Add PickFileToOpen/PickFileToSave (title, filter, default name) to IDialogService for editor import/export features', '—', 3, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T5', 'Mods.MechWarrior5.Shared', 5, '2026-11-09', 'feature', 'open', 'Goal (user, 2026-11-09): after the Mercs editor is full-featured, tested and working, build a full-featured MechWarrior 5: Clans save editor (Mods.Mech5.Clans.SaveEditor) on Mods.Mech5.Shared, moving as much code as possible into Shared (save container, editors, catalogs pipeline, app shell, pages)', '—', 4, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T6', 'Mods.MechWarrior5.Shared', 6, '2026-11-09', 'fix', 'closed', 'FText.WithDisplayString kept Base-history texts (namespace+key), so the game would show the localized original instead of an edited name; always write a culture-invariant (None-history) text, and add FText.Invariant for new texts', '—', 5, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T7', 'Mods.MechWarrior5.Shared', 7, '2026-11-09', 'feature', 'closed', 'Two themes in Mech5.Shared.Wpf (Mercs: gunmetal/amber; Clans: steel/ice-blue) with a ThemeManager that swaps palettes live (styles use DynamicResource brushes); each app defaults to its game''s theme', '9e65ee1', 6, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T8', 'Mods.MechWarrior5.Shared', 8, '2026-11-09', 'fix', 'closed', 'ThemeManager replaced the palette nested inside Mech5Theme.xaml, which raises no resource-changed notification, so elements built before a swap kept the old palette; apply the palette as a top-level Application.Resources merged dictionary instead', 'a4c5baa', 7, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T9', 'Mods.MechWarrior5.Shared', 9, '2026-11-09', 'feature', 'closed', 'Read MechWarrior 5 game and mod data directly: PakFile (UE4 pak v8-v11 index, full directory index, uncompressed/zlib entries) and CookedPackage (cooked .uasset/.uexp: names, imports, exports, FName-tagged properties into the shared PropertyList model)', '75330e2', 8, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T10', 'Mods.MechWarrior5.Shared', 10, '2026-11-09', 'fix', 'closed', 'Theme fonts read a little small: raise every font size in Controls.xaml and MessageDialog.xaml by two points (user request via M5SE-T18)', '267fca2', 9, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T11', 'Mods.MechWarrior5.Shared', 11, '2026-11-09', 'chore', 'closed', 'Rename to Mods.MechWarrior5.Shared: namespaces, projects, folders, comments and docs move from Mech5.* to MechWarrior5.*', '9897498', 10, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T1', 'Mods.RogueTrader.Brevity', 1, '2026-10-24', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T2', 'Mods.RogueTrader.Brevity', 2, '2026-10-24', 'fix', 'closed', 'Repo has no commits, so the launcher''s pull fails with ''no such ref was fetched''; add the first commit (AGENTS.md pointer, .gitignore, commit hooks) and push main', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T3', 'Mods.RogueTrader.Brevity', 3, '2026-10-24', 'feature', 'closed', 'Phase 1 dialogue export: a mod built from Owlcat''s template that walks the dialogue blueprints (BlueprintCue, BlueprintAnswer, BlueprintBookPage) and writes dialogue.jsonl with each line''s string key, speaker, dialogue tree, previous line, skill check/conviction markers and voiced flag, so the LLM simplify pass gets context', '—', 2, NULL);
@@ -67915,6 +67916,42 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60490, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60491, 'M5SE-T20', '2026-11-10T03:45:42Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60492, 'M5SE-T20', '2026-11-10T03:46:10Z', 'working', NULL, '1e66c2c3-80c6-40a5-82e2-3eb0c43318f6');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60493, 'MM5S-T10', '2026-11-10T03:46:11Z', 'working', '1e66c2c3-80c6-40a5-82e2-3eb0c43318f6', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60494, 'MM5S-T11', '2026-11-10T03:46:47Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60495, 'M5SE-T1', '2026-11-10T03:52:50Z', 'repo', 'MW5-SaveEditor', 'Mods.MechWarrior5.SaveEditor');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60496, 'M5SE-T2', '2026-11-10T03:52:50Z', 'repo', 'MW5-SaveEditor', 'Mods.MechWarrior5.SaveEditor');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60497, 'M5SE-T3', '2026-11-10T03:52:50Z', 'repo', 'MW5-SaveEditor', 'Mods.MechWarrior5.SaveEditor');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60498, 'M5SE-T4', '2026-11-10T03:52:50Z', 'repo', 'MW5-SaveEditor', 'Mods.MechWarrior5.SaveEditor');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60499, 'M5SE-T5', '2026-11-10T03:52:50Z', 'repo', 'MW5-SaveEditor', 'Mods.MechWarrior5.SaveEditor');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60500, 'M5SE-T6', '2026-11-10T03:52:50Z', 'repo', 'MW5-SaveEditor', 'Mods.MechWarrior5.SaveEditor');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60501, 'M5SE-T7', '2026-11-10T03:52:50Z', 'repo', 'MW5-SaveEditor', 'Mods.MechWarrior5.SaveEditor');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60502, 'M5SE-T8', '2026-11-10T03:52:50Z', 'repo', 'MW5-SaveEditor', 'Mods.MechWarrior5.SaveEditor');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60503, 'M5SE-T9', '2026-11-10T03:52:50Z', 'repo', 'MW5-SaveEditor', 'Mods.MechWarrior5.SaveEditor');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60504, 'M5SE-T10', '2026-11-10T03:52:50Z', 'repo', 'MW5-SaveEditor', 'Mods.MechWarrior5.SaveEditor');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60505, 'M5SE-T11', '2026-11-10T03:52:50Z', 'repo', 'MW5-SaveEditor', 'Mods.MechWarrior5.SaveEditor');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60506, 'M5SE-T12', '2026-11-10T03:52:50Z', 'repo', 'MW5-SaveEditor', 'Mods.MechWarrior5.SaveEditor');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60507, 'M5SE-T13', '2026-11-10T03:52:50Z', 'repo', 'MW5-SaveEditor', 'Mods.MechWarrior5.SaveEditor');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60508, 'M5SE-T14', '2026-11-10T03:52:50Z', 'repo', 'MW5-SaveEditor', 'Mods.MechWarrior5.SaveEditor');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60509, 'M5SE-T15', '2026-11-10T03:52:50Z', 'repo', 'MW5-SaveEditor', 'Mods.MechWarrior5.SaveEditor');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60510, 'M5SE-T16', '2026-11-10T03:52:50Z', 'repo', 'MW5-SaveEditor', 'Mods.MechWarrior5.SaveEditor');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60511, 'M5SE-T17', '2026-11-10T03:52:50Z', 'repo', 'MW5-SaveEditor', 'Mods.MechWarrior5.SaveEditor');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60512, 'M5SE-T18', '2026-11-10T03:52:50Z', 'repo', 'MW5-SaveEditor', 'Mods.MechWarrior5.SaveEditor');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60513, 'M5SE-T19', '2026-11-10T03:52:50Z', 'repo', 'MW5-SaveEditor', 'Mods.MechWarrior5.SaveEditor');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60514, 'M5SE-T20', '2026-11-10T03:52:50Z', 'repo', 'MW5-SaveEditor', 'Mods.MechWarrior5.SaveEditor');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60515, 'MM5S-T1', '2026-11-10T03:53:20Z', 'repo', 'Mods.Mech5.Shared', 'Mods.MechWarrior5.Shared');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60516, 'MM5S-T2', '2026-11-10T03:53:20Z', 'repo', 'Mods.Mech5.Shared', 'Mods.MechWarrior5.Shared');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60517, 'MM5S-T3', '2026-11-10T03:53:20Z', 'repo', 'Mods.Mech5.Shared', 'Mods.MechWarrior5.Shared');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60518, 'MM5S-T4', '2026-11-10T03:53:20Z', 'repo', 'Mods.Mech5.Shared', 'Mods.MechWarrior5.Shared');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60519, 'MM5S-T5', '2026-11-10T03:53:20Z', 'repo', 'Mods.Mech5.Shared', 'Mods.MechWarrior5.Shared');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60520, 'MM5S-T6', '2026-11-10T03:53:20Z', 'repo', 'Mods.Mech5.Shared', 'Mods.MechWarrior5.Shared');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60521, 'MM5S-T7', '2026-11-10T03:53:20Z', 'repo', 'Mods.Mech5.Shared', 'Mods.MechWarrior5.Shared');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60522, 'MM5S-T8', '2026-11-10T03:53:20Z', 'repo', 'Mods.Mech5.Shared', 'Mods.MechWarrior5.Shared');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60523, 'MM5S-T9', '2026-11-10T03:53:20Z', 'repo', 'Mods.Mech5.Shared', 'Mods.MechWarrior5.Shared');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60524, 'MM5S-T10', '2026-11-10T03:53:20Z', 'repo', 'Mods.Mech5.Shared', 'Mods.MechWarrior5.Shared');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60525, 'MM5S-T11', '2026-11-10T03:53:20Z', 'repo', 'Mods.Mech5.Shared', 'Mods.MechWarrior5.Shared');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60526, 'M5SE-T20', '2026-11-10T03:54:07Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60527, 'M5SE-T20', '2026-11-10T03:54:07Z', 'ref', '—', '41254de');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60528, 'MM5S-T11', '2026-11-10T03:54:09Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60529, 'MM5S-T11', '2026-11-10T03:54:09Z', 'ref', '—', '9897498');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -89571,6 +89608,8 @@ INSERT INTO repo_renames (seq, old_name, new_name, at, reason) VALUES (36, 'Rogu
 INSERT INTO repo_renames (seq, old_name, new_name, at, reason) VALUES (37, 'Unreal.Space', 'Unreal.SpaceGod', '2026-11-03T14:34:46Z', 'User asked for the Unreal counterpart of Unity.SpaceGod to be named Unreal.SpaceGod (US-T2)');
 INSERT INTO repo_renames (seq, old_name, new_name, at, reason) VALUES (38, 'Unreal.SpaceGod', 'SpaceGod', '2026-11-05T08:01:54Z', 'US-T69 race concluded: C++ track promoted to the sole SpaceGod repo, dropping the Unreal.Cpp/CSharp/Unity candidate split');
 INSERT INTO repo_renames (seq, old_name, new_name, at, reason) VALUES (39, 'Unreal.Soulslike', 'Unreal.Playground', '2026-11-07T06:48:20Z', 'User request 2026-11-07: the repo is a testing ground for gameplay mechanics (UNR-T88)');
+INSERT INTO repo_renames (seq, old_name, new_name, at, reason) VALUES (40, 'MW5-SaveEditor', 'Mods.MechWarrior5.SaveEditor', '2026-11-10T03:52:50Z', 'User renamed the repo to Mods.MechWarrior5.SaveEditor (M5SE-T20)');
+INSERT INTO repo_renames (seq, old_name, new_name, at, reason) VALUES (41, 'Mods.Mech5.Shared', 'Mods.MechWarrior5.Shared', '2026-11-10T03:53:20Z', 'User renamed the repo to Mods.MechWarrior5.Shared (MM5S-T11)');
 
 -- id_history
 INSERT INTO id_history (seq, kind, old_id, new_id, at, reason) VALUES (1, 'ticket', 'M.FLOW-T1', 'M.TIX-T1', '2026-10-21T00:38:39Z', 'MindAttic.Workflow renamed MindAttic.Tickets: it is a ticketing system (M.FLOW-T120)');
@@ -95662,28 +95701,6 @@ INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('KdpPublish', 1, 'ti
 
 | ID | Date | Type | Status | Summary | Ref |
 |---|---|---|---|---|---|');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MW5-SaveEditor', 0, 'raw', NULL, '---
-codex: 1
-project: MW5-SaveEditor
-code: M5SE
-layer: stories
-status: living
-updated: 2026-11-09
----
-
-# MW5-SaveEditor — User Stories
-> ✅ done (shipped & tested) · 🟡 partial · ⬜ planned. Every ✅ cites the test.
-
-## Priority backlog
-_Nothing recorded yet._
-');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MW5-SaveEditor', 1, 'tickets', NULL, '## Tickets
-> Permanent log of every change and fix — this repo''s ticket system. Rows are append-only: never
-> delete or reword one; only move its Status (open → closed / wont-do) and fill in Ref. Status is
-> a word, not a glyph, so tickets don''t count toward the story index. Keep this section last.
-
-| ID | Date | Type | Status | Summary | Ref |
-|---|---|---|---|---|---|');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MediaButler', 0, 'raw', NULL, '---
 codex: 1
 project: MediaButler
@@ -97571,28 +97588,6 @@ INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.GTFO.SkipDrop'
 
 | ID | Date | Type | Status | Summary | Ref |
 |---|---|---|---|---|---|');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Mech5.Shared', 0, 'raw', NULL, '---
-codex: 1
-project: Mods.Mech5.Shared
-code: MM5S
-layer: stories
-status: living
-updated: 2026-11-09
----
-
-# Mods.Mech5.Shared — User Stories
-> ✅ done (shipped & tested) · 🟡 partial · ⬜ planned. Every ✅ cites the test.
-
-## Priority backlog
-_Nothing recorded yet._
-');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Mech5.Shared', 1, 'tickets', NULL, '## Tickets
-> Permanent log of every change and fix — this repo''s ticket system. Rows are append-only: never
-> delete or reword one; only move its Status (open → closed / wont-do) and fill in Ref. Status is
-> a word, not a glyph, so tickets don''t count toward the story index. Keep this section last.
-
-| ID | Date | Type | Status | Summary | Ref |
-|---|---|---|---|---|---|');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Mech5Mercs.CoopPartner', 0, 'raw', NULL, '---
 codex: 1
 project: Mods.Mech5Mercs.CoopPartner
@@ -97631,6 +97626,50 @@ updated: 2026-11-07
 _Nothing recorded yet._
 ');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.Mech5Mercs.LancemateCoop', 1, 'tickets', NULL, '## Tickets
+> Permanent log of every change and fix — this repo''s ticket system. Rows are append-only: never
+> delete or reword one; only move its Status (open → closed / wont-do) and fill in Ref. Status is
+> a word, not a glyph, so tickets don''t count toward the story index. Keep this section last.
+
+| ID | Date | Type | Status | Summary | Ref |
+|---|---|---|---|---|---|');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.MechWarrior5.SaveEditor', 0, 'raw', NULL, '---
+codex: 1
+project: Mods.MechWarrior5.SaveEditor
+code: M5SE
+layer: stories
+status: living
+updated: 2026-11-09
+---
+
+# Mods.MechWarrior5.SaveEditor — User Stories
+> ✅ done (shipped & tested) · 🟡 partial · ⬜ planned. Every ✅ cites the test.
+
+## Priority backlog
+_Nothing recorded yet._
+');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.MechWarrior5.SaveEditor', 1, 'tickets', NULL, '## Tickets
+> Permanent log of every change and fix — this repo''s ticket system. Rows are append-only: never
+> delete or reword one; only move its Status (open → closed / wont-do) and fill in Ref. Status is
+> a word, not a glyph, so tickets don''t count toward the story index. Keep this section last.
+
+| ID | Date | Type | Status | Summary | Ref |
+|---|---|---|---|---|---|');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.MechWarrior5.Shared', 0, 'raw', NULL, '---
+codex: 1
+project: Mods.MechWarrior5.Shared
+code: MM5S
+layer: stories
+status: living
+updated: 2026-11-09
+---
+
+# Mods.MechWarrior5.Shared — User Stories
+> ✅ done (shipped & tested) · 🟡 partial · ⬜ planned. Every ✅ cites the test.
+
+## Priority backlog
+_Nothing recorded yet._
+');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Mods.MechWarrior5.Shared', 1, 'tickets', NULL, '## Tickets
 > Permanent log of every change and fix — this repo''s ticket system. Rows are append-only: never
 > delete or reword one; only move its Status (open → closed / wont-do) and fill in Ref. Status is
 > a word, not a glyph, so tickets don''t count toward the story index. Keep this section last.
