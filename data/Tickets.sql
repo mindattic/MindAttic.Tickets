@@ -9274,6 +9274,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T113', 'Mods.MechWarrior5.SaveEditor', 113, '2026-11-10', 'fix', 'closed', 'Windows 11 rounds the app''s window corners (Mech Lab top-right shows a rounded corner over the square amber frame); ask Windows for square corners on every window', '—', 112, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T114', 'Mods.MechWarrior5.SaveEditor', 114, '2026-11-10', 'chore', 'closed', 'Deploy the cleaned-up 2.0.0 (c667af1) to C:\Apps with run.ps1', '—', 113, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T115', 'Mods.MechWarrior5.SaveEditor', 115, '2026-11-10', 'chore', 'closed', 'GitHub-only downloads: NexusMods gets a pointer zip (README with the GitHub releases link, no exe, so nothing is quarantined); the exe zip stays on GitHub releases; both descriptions lead with a Download from GitHub line', 'publish run 42925210407 (both pages got the GitHub pointer zip)', 114, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T116', 'Mods.MechWarrior5.SaveEditor', 116, '2026-11-10', 'feature', 'open', 'Add-on packs: optional, data-only JSON support for other mods (Pilot Overhaul caps, mod traits and items from YAEC-R, YAW-CE, Additional Vanilla Traits...) in an Addons folder, active only while the mod is installed, enabled and a listed version; no packs = vanilla 2.0.0', '—', 115, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T1', 'Mods.MechWarrior5.Shared', 1, '2026-11-09', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T2', 'Mods.MechWarrior5.Shared', 2, '2026-11-09', 'feature', 'closed', 'Seed the shared base from the Mercs editor: Mech5.Shared (Unreal tagged-property engine, FString/FText, struct builders) and Mech5.Shared.Wpf (MW5 HUD theme, chamfer panels, check-list multi-select, Sarna image service, dialogs, converters)', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T3', 'Mods.MechWarrior5.Shared', 3, '2026-11-09', 'fix', 'closed', 'Controls.xaml styles resolved palette brushes as UnsetValue when nested under Mech5Theme.xaml (window failed to load); make Controls.xaml merge Palette.xaml itself', '—', 2, NULL);
@@ -69790,6 +69791,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61935, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61936, 'M5SE-T115', '2026-11-10T23:40:35Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61937, 'M5SE-T115', '2026-11-10T23:40:35Z', 'ref', '—', 'publish run 42925210407 (both pages got the GitHub pointer zip)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61938, 'M5SE-T115', '2026-11-10T23:40:46Z', 'working', '07d8ce65-f035-45b0-bb47-32741a3914d2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61939, 'M5SE-T116', '2026-11-10T23:54:41Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61940, 'M5SE-T116', '2026-11-10T23:54:41Z', 'name', NULL, 'Add-on packs for mods');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -83653,6 +83656,136 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.VALT-T89',
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.VALT-T90', 'Ryan plays games on virtual desktops 2+. MindAttic windows (terminals, Unity/Unreal apps, any .exe under the MindAttic tree) must default to opening on virtual Desktop 1 and never steal focus onto whatever desktop he''s gaming on. This ticket adds the Vault-side boolean setting (default ON) that a MindAttic.Launcher-hosted watcher reads to decide whether to pin new MindAttic windows to Desktop 1.', '2026-11-06T06:55:41Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.VALT-T93', 'Repo had no GitHub Pages site. Adopted MindAttic.Agency''s shared DocFX docs-site pipeline (HOUSE-LAW-14): added .github/workflows/docs.yml, enabled Pages (build_type=workflow), set homepage. Also picks up the navbar-brand Outfit/#ff0033 fix (MAT-T127) from day one.', '2026-11-10T22:06:52Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.WEB-T21', 'Repo had no GitHub Pages site. Adopted MindAttic.Agency''s shared DocFX docs-site pipeline (HOUSE-LAW-14): added .github/workflows/docs.yml, enabled Pages (build_type=workflow), set homepage. Also picks up the navbar-brand Outfit/#ff0033 fix (MAT-T127) from day one.', '2026-11-10T22:07:08Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M5SE-T116', '# Add-on packs: optional, data-only support for other mods
+
+## Context
+
+A NexusMods commenter asked whether the editor follows mods that change the game: Pilot Overhaul''s higher
+skill caps, and the extra pilot traits and inventory items from mods such as YAEC-R, YAW-CE and Additional
+Vanilla Traits and Academies (which JJ''s editor mines with Scarab). Building each mod into the editor would
+fill the code base with per-mod branches and risk vanilla behavior. The owner wants mod support to be
+possible but **completely separate**: with no add-ons, or with a mod absent or disabled, the editor must
+behave exactly like today''s vanilla 2.0.0.
+
+Earlier attempts (all reverted, but reusable as source material):
+- `ef281e3` read mod weapons/equipment/ammo/traits straight from enabled mods'' paks (`ModAssetReader`,
+  `AssetLabel`); proven against the whole base pak (1003 items, 241 traits, exact hardpoints).
+- `d880091` read the skill cap from the game''s `PilotSkillLevelCurve`; `CookedPackage.ReadCurveKeys`.
+- `c60cc93` the `IPilotRules` seam, vanilla cap safety and a Pilot Overhaul detector (8 tests).
+- Pilot Overhaul - Eternal 8.7.4 findings: own `PQPilotSkillLevelCurve` (levels to 30 at 120,000 XP),
+  base caps from pilot Quality in blueprint code.
+
+## Goals
+
+- Mod support arrives as **add-on packs**: plain JSON data files in an `Addons` folder beside the exe.
+- A pack applies only while its mod is **installed (pak present), enabled in the game''s `modlist.json`,
+  and a version the pack lists**. Otherwise it is ignored.
+- **No add-ons = today''s behavior**, byte for byte on saves and identical in the UI.
+- Core code has **no mod names and no per-mod branches**: it exposes a few extension points; packs feed data.
+- Supporting a new mod = adding a file, not shipping a new editor version.
+- Packs can be **generated** from a mod''s paks by a separate tool (the Scarab step, done once by whoever
+  makes the pack, never by players).
+
+## Non-goals
+
+- No code plugins (DLLs): no executable add-ons, nothing new for NexusMods to quarantine, no API to keep
+  binary-compatible.
+- No modelling of a mod''s internal logic (e.g. Pilot Overhaul''s Quality-based caps): packs state limits
+  and lists; the game''s own mod code still runs in-game.
+- Clans is out of scope for the first version (no Clans mod ecosystem need yet); the format leaves room.
+
+## Design
+
+### 1. Extension points in Core (once, mod-agnostic)
+`src/MechWarrior5.Mercs.SaveEditor.Core/Addons/`:
+- `IPilotRules` + `VanillaPilotRules` (cap 10), from `c60cc93`. `RosterEditor.Rules` is read on every edit.
+- Catalog contributions: `PilotCatalog` and `ItemCatalog` accept extra `TraitDefinition` / `ItemDefinition`
+  entries (each carrying its source pack/mod), merged after the built-in lists; a rescan replaces the
+  previous contributions (pattern from `ef281e3` `Apply`/`Reset`).
+- Vanilla cap safety (from `c60cc93`): Max caps never lowers a cap; the setter never raises past
+  `max(limit, current)`; the slider maximum covers an existing higher cap; save keeps exactly what''s there.
+
+### 2. Pack format (`Addons/*.json`, schema-versioned)
+```json
+{
+  "schema": 1,
+  "name": "Pilot Overhaul - Eternal",
+  "author": "...",
+  "game": "mercenaries",
+  "requires": { "modFolder": "PilotOverhaul-Eternal", "modName": "PilotOverhaul - Eternal", "versions": ["8.7."] },
+  "pilotRules": { "maxSkillCap": 30 },
+  "pilotTraits": [ { "asset": "PQ_IronWill", "label": "Iron Will", "description": "..." } ],
+  "mechTraits":  [ ],
+  "items": [ { "asset": "...", "type": "MWWeaponDataAsset", "kind": "weapon", "label": "...", "hardpoint": "E" },
+             { "asset": "...", "type": "MWEquipmentDataAsset", "kind": "equipment", "label": "...", "slots": ["General_SlotType"] } ]
+}
+```
+- Every field optional except `schema`, `name`, `requires`. Unknown fields ignored (forward compatible).
+- `requires.versions` are prefixes; empty = any version (allowed but flagged in the UI).
+
+### 3. Loader and activation (`AddonLoader`, `AddonState`)
+- Reads `Addons/*.json` on startup and on Rescan, off the UI thread. A malformed pack is skipped with a
+  reason shown in Settings; it can never stop the editor from starting or touch a save.
+- Detection reuses the `c60cc93` detector, generalized: mod folder found by folder name or `mod.json`
+  display name, pak present (following Vortex links), enabled in `modlist.json`, version matched.
+- **One decision point** builds the active set: packs whose mod is active and that the user hasn''t turned
+  off. Rules: highest `maxSkillCap` among active packs wins (never below vanilla); traits/items merged
+  (built-in wins over a pack for the same asset; between packs, the first in load order wins, reported).
+- Per-pack switch in Settings (on by default for an active pack, since the pack itself is the opt-in;
+  a global "Disable all add-ons" switch forces vanilla).
+
+### 4. UI
+- Settings > **Add-ons** panel: one row per pack with its name, the mod it needs, status (active / mod not
+  installed / mod disabled / version not supported / invalid pack) and an on/off switch; "Open Addons folder".
+- Pickers label pack entries with their mod (a small chip, as modded ''Mechs already have).
+- Pilots page cap header shows the active range (CAP (0-10) in vanilla).
+- All new text in the six languages.
+
+### 5. Pack generator (separate tool, not in the app)
+`tools/AddonPack` console app (reusing `ef281e3`''s `ModAssetReader`/`AssetLabel` and `CookedPackage`):
+`AddonPack <mod folder> [--name] [--out Addons/<mod>.json]` reads the mod''s paks and writes a pack with its
+traits, items (hardpoints from `WeaponType`, slots from `SupportedSlotTypesAssetId`, AI-only weapons
+skipped) and, when the mod ships a pilot skill curve, `pilotRules.maxSkillCap` from its top level. Output is
+reviewed by a human before it''s published.
+
+### 6. Distribution
+- Packs live in the repo under `addons/` and ship inside the release zip''s `Addons` folder; players can drop
+  in more. The first pack: Pilot Overhaul - Eternal (caps only, once it works with DLC 9). Then generated
+  packs for YAW-CE, YAEC-R, Additional Vanilla Traits and Academies.
+- Docs: user guide section "Add-ons", a `docs/ADDONS.md` pack-format reference for pack authors.
+
+## Safety rules (must hold)
+- No packs, or no active packs: the app behaves exactly as vanilla 2.0.0 (verified by the existing suite).
+- A pack can only add choices and raise the cap; it never removes built-in entries or lowers limits.
+- An inactive pack''s data is never offered or written. Data already in a save (from any mod) is preserved
+  by the lossless serializer regardless.
+- Saves with caps above the active limit are kept as they are (vanilla cap safety).
+- The save-time asset check still warns when a save references something the installed game/mods lack.
+
+## Phases
+1. Core seam + vanilla cap safety (restore `c60cc93` pieces) + tests. No behavior change.
+2. Pack format, loader, detection, decision point + tests (fake mod folders, malformed packs).
+3. Catalog contributions + picker labels; Settings Add-ons panel; translations.
+4. `tools/AddonPack` generator (restore `ef281e3` reader into the tool) + tests against the base pak.
+5. First packs, docs (`docs/ADDONS.md`, user guide), release.
+
+## Verification
+- Unit: pack parsing (valid, missing fields, unknown fields, bad JSON), activation matrix (not installed /
+  disabled / wrong version / active / user-off), rule merging (highest cap, never below 10), catalog merge
+  precedence.
+- Headless: full existing suite unchanged with an empty `Addons` folder (vanilla regression gate);
+  a real-save test with a test pack active (caps up to the pack''s limit save and reload) and inactive
+  (vanilla, existing higher caps kept).
+- Generator: run over the base pak as if it were a mod and match the built-in catalogs (as `ef281e3` did).
+- Render audit of the Settings Add-ons panel and the Pilots page; in-game check of an edited save with a
+  pack active and its mod enabled.
+
+## Risks / open questions
+- Pilot Overhaul''s real per-pilot cap rules are unconfirmed (no working PO save yet); its pack states the
+  curve''s top level (30).
+- Mods change between versions: packs are version-gated; a stale pack stays inactive rather than guessing.
+- Asset collisions between packs: first wins, reported in Settings.
+- NexusMods distribution: packs are JSON inside the GitHub zip, so nothing new is quarantined.', '2026-11-10T23:54:41Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M5SE-T41', 'Mirrored to Mods.MechWarrior5.Shared in 5d1d19a (MM5S-T14).', '2026-11-10T06:58:58Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M5SE-T43', 'Landed in 6d9e79f (closed earlier with ref 83ee56f by mistake; 83ee56f is M5SE-T45).', '2026-11-10T06:51:59Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M5SE-T46', 'Mercs done (tools/CatalogCheck): items, traits, personas, portraits, voices all match the game exactly incl. DLC9; mechs already scanned at runtime. Clans: tools/clans_utoc_files.py lists all 243k packaged files; all 242 items exist; missing Clan chassis FMT, IFR, NGA, JR7IIC, WLF-IIC. Remaining: Oodle (UE 5.8''s oo2core.dll) + IoStore/Zen reader to pull chassis names/tonnage/variants and item data from the assets, then generate the Clans catalog from the game.', '2026-11-10T07:21:57Z');
@@ -89358,6 +89491,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1579', 'Usa
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1580', 'Ticket-link test activity', '2026-11-10T19:49:51Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T10', 'Publish on NexusMods', '2026-11-10T01:37:57Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T11', 'Rename namespaces to Mech5Mercs.SaveEditor', '2026-11-10T01:40:21Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T116', 'Add-on packs for mods', '2026-11-10T23:54:41Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T13', 'Never overwrite original game saves', '2026-11-10T01:52:37Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T14', 'Theme switch + plain settings', '2026-11-10T02:04:15Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T15', 'Headless in-game save verification', '2026-11-10T02:09:50Z');
