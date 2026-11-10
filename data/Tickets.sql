@@ -67952,6 +67952,9 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60526, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60527, 'M5SE-T20', '2026-11-10T03:54:07Z', 'ref', '—', '41254de');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60528, 'MM5S-T11', '2026-11-10T03:54:09Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60529, 'MM5S-T11', '2026-11-10T03:54:09Z', 'ref', '—', '9897498');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60530, 'M5SE-T20', '2026-11-10T03:57:20Z', 'working', '1e66c2c3-80c6-40a5-82e2-3eb0c43318f6', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60531, 'IP-T447', '2026-11-10T03:57:59Z', 'working', 'ryandebraal@gmail.com (ed09ecf3-4ba4-42ed-9489-a892ed509726)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (60532, 'IP-T454', '2026-11-10T03:58:00Z', 'working', 'ryandebraal@gmail.com (ed09ecf3-4ba4-42ed-9489-a892ed509726)', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -70773,9 +70776,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T99', 'proposed', 0, '2026-11-07T06:47:27Z', NULL);
 
 -- ticket_work
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T447', NULL, 0, 'ryandebraal@gmail.com', 'ed09ecf3-4ba4-42ed-9489-a892ed509726', '2026-11-09T15:50:51Z', '2026-11-09T15:50:51Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T449', NULL, 0, 'ryandebraal@gmail.com', 'ed09ecf3-4ba4-42ed-9489-a892ed509726', '2026-11-09T16:25:29Z', '2026-11-09T16:25:29Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T454', NULL, 0, 'ryandebraal@gmail.com', 'ed09ecf3-4ba4-42ed-9489-a892ed509726', '2026-11-09T15:47:51Z', '2026-11-09T15:47:51Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
@@ -70856,7 +70857,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T88', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T23:35:10Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T89', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T23:30:09Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T91', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T23:09:54Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M5SE-T20', NULL, 0, NULL, '1e66c2c3-80c6-40a5-82e2-3eb0c43318f6', '2026-11-10T03:46:10Z', '2026-11-10T03:46:10Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T105', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T05:26:05Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T58', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:02:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
