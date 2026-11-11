@@ -5516,6 +5516,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAT-T127', 'MindAttic.Agency', 127, '2026-11-10', 'fix', 'closed', 'Docs-site navbar-brand: swap decorative Attic font for Outfit in #ff0033', '—', 126, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAT-T128', 'MindAttic.Agency', 128, '2026-11-10', 'chore', 'closed', 'Sync mindattic-agent-standard mirror: docs-site navbar-brand Outfit/#ff0033 fix', '—', 127, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAT-T129', 'MindAttic.Agency', 129, '2026-11-10', 'chore', 'open', 'Trigger a docs rebuild on every repo with GitHub Pages so all pick up the navbar-brand Outfit/#ff0033 fix (MAT-T127/T128) immediately', '—', 128, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAT-T130', 'MindAttic.Agency', 130, '2026-11-10', 'docs', 'open', 'Mirror the new GOLDEN RULE into mindattic-agent-standard AGENTS.md: give the user the whole script every time (shell, cd, every command in order, dialog answers, how to tell it worked); already added to D:\Projects\MindAttic\MINDATTIC_AGENT.md on 2026-11-10', '—', 129, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.AUTH-T1', 'MindAttic.Authentication', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.AUTH-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.AUTH-T2', 'MindAttic.Authentication', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for AuthenticationService.LoginAsync core pipeline (Services/AuthenticationService.cs; only its alert side effects are tested today): account- or IP-throttled login calls VerifyDecoy, audits Throttled/Locked and returns Failed without a user lookup; unknown and inactive users both run the decoy and audit UnknownUser vs Disabled; bad password records failures on both Account and Ip scopes and audits BadPassword; success resets both throttles, applies ApplyRehash only when Verify reports NeedsRehash, stamps LastLoginUtc, creates an AuthSession with hashed IP, 512-char-truncated user agent and AbsoluteExpiry = now + AbsoluteTimeout; MfaEnabled users get MfaRequired with no session and no claims; claims include NameIdentifier, UserId, Name, Role, SecurityStamp, SessionId, amr=pwd, plus MustChangePassword/MustEnrollMfa flags only when set - this is the login gate, so regressions here are security bugs', 'fed920d', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.AUTH-T3', 'MindAttic.Authentication', 3, '2026-10-14', 'chore', 'closed', 'NUnit tests for AuthenticationService.ConfirmMfaAsync (Services/AuthenticationService.cs): missing, inactive or non-MFA user returns Failed; locked account audits MfaChallenge Throttled; valid TOTP succeeds and persists LastTotpStepUsed so the same code cannot be replayed; TOTP with no enabled secret or an unprotectable (tampered) SecretEncrypted fails without throwing; recovery code is trimmed, matched against unused codes only, marks UsedUtc and cannot be reused; failure records Account+Ip failures and audits MfaBad; success resets throttles, creates a session, audits RecoveryUsed vs MfaChallenge, and returns claims with amr pwd and mfa - second-factor correctness and replay protection', 'AuthenticationServiceConfirmMfaTests', 2, NULL);
@@ -7826,6 +7827,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1581', 'MindAttic.Orchestrator', 1581, '2026-11-10', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.LibraryOnlyXamlTests.Every_xaml_element_is_a_library_control_or_library_styled — Assert.That(Violations(files), Is.Empty) Expected: <empty> But was: < "MainWindow.xaml:1020 <Style>: a style with a template or resources of its own", "MainWindow.xaml:1025 <EventSetter>: neither a library control nor library-styled", "MainWindow.xaml:1028 <Button>: neither a library control nor ... (landed on main since the last green run: tickets M.ORCH-T1576, M.ORCH-T1575, M.ORCH-T1574, M.ORCH-T1573, M.ORCH-T1537, M.ORCH-T1572, M.ORCH-T1571, M.ORCH-T1570, M.ORCH-T1569, M.ORCH-T1568, M.ORCH-T1567, M.ORCH-T1565, M.ORCH-T1563, M.ORCH-T1562, M.ORCH-T1560, M.ORCH-T1448, M.ORCH-T1559 in 99aafdfe setup-host.ps1 downloads the SQL Server 2025 bootstrappers (Standard Developer and Express, from winget''s 17.0.1000.7 manifests), not the 2022 ones (M.ORCH-T1576); b6b3b833 Wind down turns off /allocate marks only a file holds (a .cleared file, noallocate says wind) and counts only the CLIs it reached (M.ORCH-T1575); 711a0fde Toast dots show every tab''s toasts on every tab: each tab''s list is mirrored into one window-wide AllToasts, so the menu bar''s tools (run on the global login''s tab) are seen wherever you are (M.ORCH-T1574); 3ff511d2 Bughunt: 32 fixes across the dashboard, pacing, orgs/settings, main-line tests, setup, gateway and terminals (M.ORCH-T1573); cb38fb43 Time how long VirtualizedBody.Rebuild actually takes, and log its row count (M.ORCH-T1537); 8cd4e2e0 Time how long showing a newly-selected terminal pane actually takes, past the click (M.ORCH-T1537); d3ae9f83 A CLI tab''s terminal fills the page with no scroll bar: the stats, toolbar and tickets show only on the Usage tab (or with no CLI open) (M.ORCH-T1572); 1a67a578 Phone layout: person dropdown top left, tools top right, the CLI tab strip with its scroll arrows as the next row; the status line moves into the touch bar (M.ORCH-T1571); 3b48238f Phone pickers show the name first: a person''s status light instead of their activity text, no trailing text on a CLI (M.ORCH-T1570); 01620216 Phone layout reaches everything the desktop does: sidebar as a drawer, Usage in the CLI picker, the CLI tab menu (with Close) on a button, and the readouts/status bar as a wrapped status line (M.ORCH-T1570); ba149797 CLI tab widths find the header''s DockPanel inside the Grid root again, ending the runaway widening that pushed the CLI tabs off screen; the Usage tab keeps its own width (M.ORCH-T1569); 223796c6 CLI tab strip binds a view-model list (Usage tab, then the panes) instead of a XAML CompositeCollection that could lose its panes (M.ORCH-T1569); 6e9c6ad9 Phone layout: person and CLI dropdowns at the top left in place of the sidebar and the CLI tab strip (M.ORCH-T1568); 94d5d0ef Drop the phone/desktop toggle and its saved layout: the window''s size alone switches the phone layout (M.ORCH-T1567); b3b65473 Resizing the dashboard across the phone breakpoint switches its layout again; the toggle wins until the next crossing (M.ORCH-T1565); 2862d528 Phone layout follows only the saved menu-bar toggle, not the window''s size; entering it maximizes the window (M.ORCH-T1563); f5d86741 Save the menu bar''s phone/desktop layout choice across restarts (M.ORCH-T1562); b338d65b Menu-bar phone/desktop toggle overrides the size check by hand; Components 38.0.0 (MaToggleIcon) (M.ORCH-T1560); 2dfe3a65 Dock/undock a hosted CLI without restarting it: orchestrator dock/undock and the tab menu (M.ORCH-T1448); 3a989375 Welcome goes from download to a first repo: Claude first, tools install themselves, then Create repo (M.ORCH-T1559))', 'passes on main@4fbbd80', 1580, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1582', 'MindAttic.Orchestrator', 1582, '2026-11-10', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.LibraryControlsTests.Every_dashboard_button_uses_a_library_button_style — Assert.That(handMade.Select(b => b.ToString()), Is.Empty) Expected: <empty> But was: < "<Button Content="Esc" Tag="esc" AutomationProperties.Name="Escape" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />", "<Button Content="Tab" Tag="tab" AutomationProperties.Name="Tab" xmlns=... (landed on main since the last green run: tickets M.ORCH-T1576, M.ORCH-T1575, M.ORCH-T1574, M.ORCH-T1573, M.ORCH-T1537, M.ORCH-T1572, M.ORCH-T1571, M.ORCH-T1570, M.ORCH-T1569, M.ORCH-T1568, M.ORCH-T1567, M.ORCH-T1565, M.ORCH-T1563, M.ORCH-T1562, M.ORCH-T1560, M.ORCH-T1448, M.ORCH-T1559 in 99aafdfe setup-host.ps1 downloads the SQL Server 2025 bootstrappers (Standard Developer and Express, from winget''s 17.0.1000.7 manifests), not the 2022 ones (M.ORCH-T1576); b6b3b833 Wind down turns off /allocate marks only a file holds (a .cleared file, noallocate says wind) and counts only the CLIs it reached (M.ORCH-T1575); 711a0fde Toast dots show every tab''s toasts on every tab: each tab''s list is mirrored into one window-wide AllToasts, so the menu bar''s tools (run on the global login''s tab) are seen wherever you are (M.ORCH-T1574); 3ff511d2 Bughunt: 32 fixes across the dashboard, pacing, orgs/settings, main-line tests, setup, gateway and terminals (M.ORCH-T1573); cb38fb43 Time how long VirtualizedBody.Rebuild actually takes, and log its row count (M.ORCH-T1537); 8cd4e2e0 Time how long showing a newly-selected terminal pane actually takes, past the click (M.ORCH-T1537); d3ae9f83 A CLI tab''s terminal fills the page with no scroll bar: the stats, toolbar and tickets show only on the Usage tab (or with no CLI open) (M.ORCH-T1572); 1a67a578 Phone layout: person dropdown top left, tools top right, the CLI tab strip with its scroll arrows as the next row; the status line moves into the touch bar (M.ORCH-T1571); 3b48238f Phone pickers show the name first: a person''s status light instead of their activity text, no trailing text on a CLI (M.ORCH-T1570); 01620216 Phone layout reaches everything the desktop does: sidebar as a drawer, Usage in the CLI picker, the CLI tab menu (with Close) on a button, and the readouts/status bar as a wrapped status line (M.ORCH-T1570); ba149797 CLI tab widths find the header''s DockPanel inside the Grid root again, ending the runaway widening that pushed the CLI tabs off screen; the Usage tab keeps its own width (M.ORCH-T1569); 223796c6 CLI tab strip binds a view-model list (Usage tab, then the panes) instead of a XAML CompositeCollection that could lose its panes (M.ORCH-T1569); 6e9c6ad9 Phone layout: person and CLI dropdowns at the top left in place of the sidebar and the CLI tab strip (M.ORCH-T1568); 94d5d0ef Drop the phone/desktop toggle and its saved layout: the window''s size alone switches the phone layout (M.ORCH-T1567); b3b65473 Resizing the dashboard across the phone breakpoint switches its layout again; the toggle wins until the next crossing (M.ORCH-T1565); 2862d528 Phone layout follows only the saved menu-bar toggle, not the window''s size; entering it maximizes the window (M.ORCH-T1563); f5d86741 Save the menu bar''s phone/desktop layout choice across restarts (M.ORCH-T1562); b338d65b Menu-bar phone/desktop toggle overrides the size check by hand; Components 38.0.0 (MaToggleIcon) (M.ORCH-T1560); 2dfe3a65 Dock/undock a hosted CLI without restarting it: orchestrator dock/undock and the tab menu (M.ORCH-T1448); 3a989375 Welcome goes from download to a first repo: Claude first, tools install themselves, then Create repo (M.ORCH-T1559))', 'passes on main@4fbbd80', 1581, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1583', 'MindAttic.Orchestrator', 1583, '2026-11-10', 'fix', 'open', 'Bughunt pass 2: sweep the whole repo for real bugs and fix them', '—', 1582, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1584', 'MindAttic.Orchestrator', 1584, '2026-11-10', 'feature', 'closed', 'Memory guard''s commit-percent lines and resume margins become Vault settings (not hardcoded), tuned toward 96% RAM usage', 'user request: raise the RAM restriction to allow ~96% usage', 1583, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T1', 'MindAttic.Orchestrator.SIDEBAR', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T2', 'MindAttic.Orchestrator.SIDEBAR', 2, '2026-11-05', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.SettingsModalTests.The_org_login_toolbar_is_the_Logins_dialogs_body — Assert.That(code, Does.Not.Contain("SettingsModal").And.Not.Contain("SizeSettings")) Expected: not String containing "SettingsModal" and not containing "SizeSettings" But was: "using System.Collections.Specialized; using System.Runtime.InteropServices; using System.Windows; using System.Windows.A... (landed on main since the last green run: tickets M.ORCH-T1310 in 864030c4 Cli csproj finds the workspace from any <workspace>.worktrees\<repo>\<name> checkout (drops .worktrees), so the main-tests build resolves MindAttic.Helpers without run.ps1''s MindAtticRoot (M.ORCH-T1310))', 'passes on main@270cb89', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T3', 'MindAttic.Orchestrator.SIDEBAR', 3, '2026-11-05', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.LibraryOnlyXamlTests.Every_xaml_element_is_a_library_control_or_library_styled — Assert.That(Violations(files), Is.Empty) Expected: <empty> But was: < "MainWindow.xaml:33 <Style>: a style with a template or resources of its own", "MainWindow.xaml:42 <ControlTemplate>: neither a library control nor library-styled", "MainWindow.xaml:43 <Border>: Background="{TemplateBinding Bac... (landed on main since the last green run: tickets M.ORCH-T1310 in 864030c4 Cli csproj finds the workspace from any <workspace>.worktrees\<repo>\<name> checkout (drops .worktrees), so the main-tests build resolves MindAttic.Helpers without run.ps1''s MindAtticRoot (M.ORCH-T1310))', 'passes on main@270cb89', 2, NULL);
@@ -70423,6 +70425,432 @@ the changed fields. Output is reviewed by a human before it''s published.
 - Asset collisions between packs: first wins, reported in Settings.
 - NexusMods distribution: packs are JSON inside the GitHub zip, so nothing new is quarantined.');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61951, 'M5SE-T116', '2026-11-11T02:53:04Z', 'summary', 'Add-on packs: optional, data-only JSON support for other mods (Pilot Overhaul caps, mod traits and items from YAEC-R, YAW-CE, Additional Vanilla Traits...) in an Addons folder, active only while the mod is installed, enabled and a listed version; no packs = vanilla 2.0.0', 'Add-on packs (Mercenaries only): optional, data-only JSON packs carrying each mod''s own values (limits, skill curve, trait/item/mech additions and overrides) for YAEC-R, YAW-CE, AVTA and Pilot Overhaul - Eternal; no packs = vanilla 2.0.0 (corrected: Owner: packs carry each mod''s tweaked values; Mercs only, not Clans)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61952, 'MAT-T130', '2026-11-11T03:11:01Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61953, 'M.ORCH-T1584', '2026-11-11T03:12:52Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61954, 'M.ORCH-T1584', '2026-11-11T03:13:10Z', 'working', NULL, 'f7c19f3f-0e2c-4e23-b19e-302833de86b8');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61955, 'M.ORCH-T1584', '2026-11-11T03:13:30Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61956, 'M.ORCH-T1584', '2026-11-11T03:13:52Z', 'working', 'f7c19f3f-0e2c-4e23-b19e-302833de86b8', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61957, 'M5SE-T116', '2026-11-11T03:13:56Z', 'description', '# Add-on packs: optional, data-only support for other mods
+
+## Context
+
+A NexusMods commenter asked whether the editor follows mods that change the game: Pilot Overhaul''s higher
+skill caps, and the extra pilot traits and inventory items from mods such as YAEC-R, YAW-CE and Additional
+Vanilla Traits and Academies (which JJ''s editor mines with Scarab). Building each mod into the editor would
+fill the code base with per-mod branches and risk vanilla behavior. The owner wants mod support to be
+possible but **completely separate**: with no add-ons, or with a mod absent or disabled, the editor must
+behave exactly like today''s vanilla 2.0.0.
+
+Earlier attempts (all reverted, but reusable as source material):
+- `ef281e3` read mod weapons/equipment/ammo/traits straight from enabled mods'' paks (`ModAssetReader`,
+  `AssetLabel`); proven against the whole base pak (1003 items, 241 traits, exact hardpoints).
+- `d880091` read the skill cap from the game''s `PilotSkillLevelCurve`; `CookedPackage.ReadCurveKeys`.
+- `c60cc93` the `IPilotRules` seam, vanilla cap safety and a Pilot Overhaul detector (8 tests).
+- Pilot Overhaul - Eternal 8.7.4 findings: own `PQPilotSkillLevelCurve` (levels to 30 at 120,000 XP),
+  base caps from pilot Quality in blueprint code.
+
+## Mods named in the request (first pack candidates)
+
+| Short name | Mod | Link | Adds |
+|---|---|---|---|
+| YAEC-R | Yet Another Equipment Collection Revived (Daystar) | https://www.nexusmods.com/mechwarrior5mercenaries/mods/1109 | Equipment, armor types, actuator upgrades; replaces YAEC |
+| YAW-CE | Yet Another Weapon - Complete Edition | https://www.nexusmods.com/mechwarrior5mercenaries/mods/1158 | Seven weapon mods in one; replaces YAW/YAWC (old YAW crashes with it) |
+| AVTA | Additional Vanilla Traits and Academies (Silby) | https://www.nexusmods.com/mechwarrior5mercenaries/mods/1348 | 85 pilot traits, 21 academies; optional add-on (29 weapon traits) needs YAW-CE |
+| PO-E | PilotOverhaul - Eternal (jackalope85) | https://steamcommunity.com/sharedfiles/filedetails/?id=3501217348 | Skill caps above 10 (no NexusMods page; original: https://nexusmods.com/mechwarrior5mercenaries/mods/477) |
+
+Related: Yet Another Mechlab (YAML), the base of the "Yet Another" family:
+https://www.nexusmods.com/mechwarrior5mercenaries/mods/459. JJ''s MW save editor (the commenter''s reference):
+https://www.nexusmods.com/mechwarrior5mercenaries/mods/1466. Steam copies of YAEC-R and YAW-CE are listed as removed;
+NexusMods is the source to build packs from.
+
+## Goals
+
+- Mod support arrives as **add-on packs**: plain JSON data files in an `Addons` folder beside the exe.
+- A pack applies only while its mod is **installed (pak present), enabled in the game''s `modlist.json`,
+  and a version the pack lists**. Otherwise it is ignored.
+- **No add-ons = today''s behavior**, byte for byte on saves and identical in the UI.
+- Core code has **no mod names and no per-mod branches**: it exposes a few extension points; packs feed data.
+- Supporting a new mod = adding a file, not shipping a new editor version.
+- Packs can be **generated** from a mod''s paks by a separate tool (the Scarab step, done once by whoever
+  makes the pack, never by players).
+
+## Non-goals
+
+- No code plugins (DLLs): no executable add-ons, nothing new for NexusMods to quarantine, no API to keep
+  binary-compatible.
+- No modelling of a mod''s internal logic (e.g. Pilot Overhaul''s Quality-based caps): packs state limits
+  and lists; the game''s own mod code still runs in-game.
+- **Mercenaries only.** Every mod named (YAEC-R, YAW-CE, AVTA, Pilot Overhaul - Eternal) is a MechWarrior 5:
+  Mercenaries mod. Add-ons live entirely in the Mercenaries core and shell. The Clans shell never loads, shows or
+  applies packs, and its Settings page has no Add-ons panel. A pack whose `game` isn''t `mercenaries` is reported as
+  "not for this game" and ignored. The `game` field keeps the door open for Clans later; nothing for Clans is built now.
+
+## Design
+
+### 1. Extension points in Core (once, mod-agnostic)
+`src/MechWarrior5.Mercs.SaveEditor.Core/Addons/`:
+- `IPilotRules` + `VanillaPilotRules` (cap 10), from `c60cc93`. `RosterEditor.Rules` is read on every edit.
+- Catalog contributions: `PilotCatalog` and `ItemCatalog` accept extra `TraitDefinition` / `ItemDefinition`
+  entries (each carrying its source pack/mod), merged after the built-in lists; a rescan replaces the
+  previous contributions (pattern from `ef281e3` `Apply`/`Reset`).
+- Vanilla cap safety (from `c60cc93`): Max caps never lowers a cap; the setter never raises past
+  `max(limit, current)`; the slider maximum covers an existing higher cap; save keeps exactly what''s there.
+
+### 2. Pack format (`Addons/*.json`, schema-versioned)
+
+Each mod has its own set of tweaked values, so a pack holds **that mod''s values for everything the editor uses**.
+It doesn''t model the whole game. The editor''s tweakable surface is small and fixed, and every editor value comes
+from one of these categories (today they''re hard-coded constants and the built-in `Data/*.json` catalogs):
+
+| Category | Editor source today | What a mod can change |
+|---|---|---|
+| `limits` | `RosterEditor.MaxSkillCap` (10), `MaxSalary`, `MaxExperience`, `CompanyEditor.MaxCBills`, `FactionEditor.MaxStanding`, `InventoryEditor.MaxCount` | any limit (PO: skill cap 30) |
+| `skillCurve` | the game''s `PilotSkillLevelCurve` (levels 1-10) | XP per level / extra levels (PO: 20 at 55,000, 30 at 120,000) |
+| `pilotTraits`, `mechTraits` | `Data/traits.json` (`TraitDefinition`: asset, label, description) | new traits (AVTA, YAW add-on); reworded/rebalanced vanilla ones |
+| `items` | `Data/items.json` (`ItemDefinition`: asset, type, kind, hardpoint) | new weapons/equipment/ammo (YAW-CE, YAEC-R); changed hardpoint, slot type or label of vanilla items |
+| `mechs` | `Data/mechs.json` + the existing mod ''Mech scan | new variants (the scan already finds them; a pack can fill in labels/hardpoints the scan misses) |
+
+Each catalog category has two lists: **`add`** (new assets) and **`override`** (fields that replace a built-in
+entry''s values while the pack is active, matched by asset; only the fields given are replaced).
+
+```json
+{
+  "schema": 1,
+  "name": "Yet Another Weapon - Complete Edition",
+  "author": "...",
+  "game": "mercenaries",
+  "source": "https://www.nexusmods.com/mechwarrior5mercenaries/mods/1158",
+  "requires": { "modFolder": "YAW_CE", "modName": "Yet Another Weapon - Complete Edition", "versions": ["1.0"] },
+  "requiresPacks": [],
+  "limits": { "maxSkillCap": 30, "maxExperience": 2000000 },
+  "skillCurve": [ { "level": 10, "xp": 14110 }, { "level": 20, "xp": 55000 }, { "level": 30, "xp": 120000 } ],
+  "pilotTraits": { "add": [ { "asset": "...", "label": "...", "description": "..." } ], "override": [ ] },
+  "mechTraits":  { "add": [ ], "override": [ ] },
+  "items": {
+    "add": [ { "asset": "...", "type": "MWWeaponDataAsset", "kind": "weapon", "label": "...", "hardpoint": "E" },
+             { "asset": "...", "type": "MWEquipmentDataAsset", "kind": "equipment", "label": "...", "slots": ["General_SlotType"] } ],
+    "override": [ { "asset": "WeaponDataAsset_ERLargeLaser_Lvl1", "hardpoint": "E", "label": "ER Large Laser" } ]
+  },
+  "mechs": { "add": [ ], "override": [ ] }
+}
+```
+- Every field optional except `schema`, `name`, `requires`. Unknown fields ignored (forward compatible).
+- `requires.versions` are prefixes; empty = any version (allowed but flagged in the UI).
+- `requiresPacks`: names of packs that must also be active (AVTA''s YAW add-on pack requires the YAW-CE pack).
+- `limits` and `skillCurve` replace the vanilla value while active; save values outside them are still kept
+  (vanilla cap safety), so a pack can''t damage an existing save.
+
+### 2a. Per-mod coverage (what each first pack carries)
+
+| Mod | limits | skillCurve | traits | items | mechs |
+|---|---|---|---|---|---|
+| Pilot Overhaul - Eternal | skill cap 30 (or per-Quality, see risks) | its `PQPilotSkillLevelCurve` | its pilot traits | - | - |
+| YAW-CE | - | - | - | adds its weapons and ammo; overrides vanilla weapons it changes (hardpoint, label) | - |
+| YAEC-R | - | - | mech traits if any | adds equipment, armor types, actuator upgrades; overrides vanilla equipment it changes (slot type, label) | - |
+| AVTA | - | - | adds 85 pilot traits (academies are game-side, not in the editor) | - | - |
+| AVTA YAW add-on | - | - | adds 29 weapon traits; `requiresPacks: ["Yet Another Weapon - Complete Edition"]` | - | - |
+
+The generator (section 5) reads each mod''s paks and fills these in. Each mod''s exact list of changed values is
+confirmed from its paks at that point, never guessed by hand.
+
+### 3. Loader and activation (`AddonLoader`, `AddonState`)
+- Reads `Addons/*.json` on startup and on Rescan, off the UI thread. A malformed pack is skipped with a
+  reason shown in Settings; it can never stop the editor from starting or touch a save.
+- Detection reuses the `c60cc93` detector, generalized: mod folder found by folder name or `mod.json`
+  display name, pak present (following Vortex links), enabled in `modlist.json`, version matched.
+- **One decision point** builds the active set: packs whose mod is active and that the user hasn''t turned
+  off. Merge rules:
+  - `limits`: per limit, the highest value among active packs wins (a mod raising a cap must not be undone
+    by another pack that doesn''t mention it); absent = vanilla.
+  - `skillCurve`: one active pack may define it; if two do, the one following the game''s mod load order
+    (`modlist.json` / `mod.json` `defaultLoadOrder`) wins, matching how the game itself resolves the override.
+  - catalogs: `add` entries are merged after the built-in list; `override` replaces only the given fields of a
+    built-in (or earlier pack''s) entry. Two packs touching the same asset resolve by the game''s mod load order
+    (later mod wins, as in game) and the collision is reported in Settings.
+- Per-pack switch in Settings (on by default for an active pack, since the pack itself is the opt-in;
+  a global "Disable all add-ons" switch forces vanilla).
+
+### 4. UI
+- Settings > **Add-ons** panel: one row per pack with its name, the mod it needs, status (active / mod not
+  installed / mod disabled / version not supported / invalid pack) and an on/off switch; "Open Addons folder".
+- Pickers label pack entries with their mod (a small chip, as modded ''Mechs already have).
+- Pilots page cap header shows the active range (CAP (0-10) in vanilla).
+- All new text in the six languages.
+
+### 5. Pack generator (separate tool, not in the app)
+`tools/AddonPack` console app (reusing `ef281e3`''s `ModAssetReader`/`AssetLabel` and `CookedPackage`):
+`AddonPack <mod folder> [--name] [--out Addons/<mod>.json]` reads the mod''s paks and writes a pack with its
+traits, items (hardpoints from `WeaponType`, slots from `SupportedSlotTypesAssetId`, AI-only weapons
+skipped) and, when the mod ships a pilot skill curve, `skillCurve` and `limits.maxSkillCap` from its top level.
+It splits each asset into `add` or `override` by comparing it with the base game''s pak: assets the base game
+doesn''t have go to `add`, and base-game assets whose editor-relevant fields differ go to `override` with only
+the changed fields. Output is reviewed by a human before it''s published.
+
+### 6. Distribution
+- Packs live in the repo under `addons/` and ship inside the release zip''s `Addons` folder; players can drop
+  in more. The first pack: Pilot Overhaul - Eternal (caps only, once it works with DLC 9). Then generated
+  packs for YAW-CE, YAEC-R, Additional Vanilla Traits and Academies.
+- Docs: user guide section "Add-ons", a `docs/ADDONS.md` pack-format reference for pack authors.
+
+## Safety rules (must hold)
+- No packs, or no active packs: the app behaves exactly as vanilla 2.0.0 (verified by the existing suite).
+- A pack can add entries and change the values of existing ones while active; it never removes built-in
+  entries. Deactivating it restores the built-in values exactly (overrides are layered, never written into the
+  built-in catalogs).
+- Pack values only change what the editor offers and validates. A save keeps whatever it already holds; nothing
+  is rewritten because a pack was turned on or off.
+- Clans is untouched: no pack code runs in the Clans shell.
+- An inactive pack''s data is never offered or written. Data already in a save (from any mod) is preserved
+  by the lossless serializer regardless.
+- Saves with caps above the active limit are kept as they are (vanilla cap safety).
+- The save-time asset check still warns when a save references something the installed game/mods lack.
+
+## Phases
+1. Core seam + vanilla cap safety (restore `c60cc93` pieces) + tests. No behavior change.
+2. Pack format, loader, detection, decision point + tests (fake mod folders, malformed packs).
+3. Catalog contributions + picker labels; Settings Add-ons panel; translations.
+4. `tools/AddonPack` generator (restore `ef281e3` reader into the tool) + tests against the base pak.
+5. First packs, docs (`docs/ADDONS.md`, user guide), release.
+
+## Verification
+- Unit: pack parsing (valid, missing fields, unknown fields, bad JSON, wrong `game`), activation matrix (not
+  installed / disabled / wrong version / active / user-off / missing `requiresPacks`), limits merge (highest
+  wins, absent = vanilla), override layering (only given fields replaced, deactivation restores built-in
+  exactly), load-order collision resolution.
+- Clans: the Clans shell and its existing tests are unchanged with packs present in `Addons`.
+- Headless: full existing suite unchanged with an empty `Addons` folder (vanilla regression gate);
+  a real-save test with a test pack active (caps up to the pack''s limit save and reload) and inactive
+  (vanilla, existing higher caps kept).
+- Generator: run over the base pak as if it were a mod and match the built-in catalogs (as `ef281e3` did).
+- Render audit of the Settings Add-ons panel and the Pilots page; in-game check of an edited save with a
+  pack active and its mod enabled.
+
+## Risks / open questions
+- Pilot Overhaul''s real per-pilot cap rules are unconfirmed (no working PO save yet); its pack states the
+  curve''s top level (30).
+- Mods change between versions: packs are version-gated; a stale pack stays inactive rather than guessing.
+- Asset collisions between packs: first wins, reported in Settings.
+- NexusMods distribution: packs are JSON inside the GitHub zip, so nothing new is quarantined.', '# Add-on packs: optional, data-only support for other mods
+
+## Context
+
+A NexusMods commenter asked whether the editor follows mods that change the game: Pilot Overhaul''s higher
+skill caps, and the extra pilot traits and inventory items from mods such as YAEC-R, YAW-CE and Additional
+Vanilla Traits and Academies (which JJ''s editor mines with Scarab). Building each mod into the editor would
+fill the code base with per-mod branches and risk vanilla behavior. The owner wants mod support to be
+possible but **completely separate**: with no add-ons, or with a mod absent or disabled, the editor must
+behave exactly like today''s vanilla 2.0.0.
+
+Earlier attempts (all reverted, but reusable as source material):
+- `ef281e3` read mod weapons/equipment/ammo/traits straight from enabled mods'' paks (`ModAssetReader`,
+  `AssetLabel`); proven against the whole base pak (1003 items, 241 traits, exact hardpoints).
+- `d880091` read the skill cap from the game''s `PilotSkillLevelCurve`; `CookedPackage.ReadCurveKeys`.
+- `c60cc93` the `IPilotRules` seam, vanilla cap safety and a Pilot Overhaul detector (8 tests).
+- Pilot Overhaul - Eternal 8.7.4 findings: own `PQPilotSkillLevelCurve` (levels to 30 at 120,000 XP),
+  base caps from pilot Quality in blueprint code.
+
+## Mods named in the request (first pack candidates)
+
+| Short name | Mod | Link | Adds |
+|---|---|---|---|
+| YAEC-R | Yet Another Equipment Collection Revived (Daystar) | https://www.nexusmods.com/mechwarrior5mercenaries/mods/1109 | Equipment, armor types, actuator upgrades; replaces YAEC |
+| YAW-CE | Yet Another Weapon - Complete Edition | https://www.nexusmods.com/mechwarrior5mercenaries/mods/1158 | Seven weapon mods in one; replaces YAW/YAWC (old YAW crashes with it) |
+| AVTA | Additional Vanilla Traits and Academies (Silby) | https://www.nexusmods.com/mechwarrior5mercenaries/mods/1348 | 85 pilot traits, 21 academies; optional add-on (29 weapon traits) needs YAW-CE |
+| PO-E | PilotOverhaul - Eternal (jackalope85) | https://steamcommunity.com/sharedfiles/filedetails/?id=3501217348 | Skill caps above 10 (no NexusMods page; original: https://nexusmods.com/mechwarrior5mercenaries/mods/477) |
+
+Related: Yet Another Mechlab (YAML), the base of the "Yet Another" family:
+https://www.nexusmods.com/mechwarrior5mercenaries/mods/459. JJ''s MW save editor (the commenter''s reference):
+https://www.nexusmods.com/mechwarrior5mercenaries/mods/1466. Steam copies of YAEC-R and YAW-CE are listed as removed;
+NexusMods is the source to build packs from.
+
+### Installed reference versions (owner''s machine, 2026-11-10, staged by Vortex)
+
+| Mod | mod.json `displayName` | Folder | Version | defaultLoadOrder |
+|---|---|---|---|---|
+| YAEC-R | Yet Another Equipment Collection Revived | `harjel` (!) | 3.3-DLC9 | 6 |
+| YAW-CE | Yet Another Weapon - Complete Edition | `YetAnotherWeaponCompleteEdition` (4 paks) | 3.0g | 1 |
+| YAW-CE extra | YASV Complete Edition Patch | `YASVCompleteEditionPatch` | 3.0g | 8 |
+| AVTA | Additional Vanilla Traits and Academies | `AVTA` | 1.4 | 2 |
+| YAML | Yet Another Mechlab | `YetAnotherMechlab` | 0.99.4.1 | 5 |
+| PO-E | PilotOverhaul - Eternal | `PilotOverhaul-Eternal` | 8.7.4 | 14 |
+
+Findings that shape detection:
+- Folder names are not reliable (YAEC-R deploys as `harjel`), so `requires` matches on `mod.json`
+  `displayName` first and treats the folder name as a fallback.
+- `modlist.json` holds only `gameVersion` and `modStatus.<folder>.bEnabled`, and load order is only in each
+  `mod.json` (`defaultLoadOrder`). Vortex writes `vortex.deployment.json` in the Mods folder and doesn''t
+  store a separate order, so the game''s own files are the single source.
+- A mod missing from `modStatus` (newly deployed, game not launched since) counts as **not enabled**.
+- Folders with no `mod.json` or no paks (Vortex left about 35 empty folders here) count as **not installed**.
+
+## Goals
+
+- Mod support arrives as **add-on packs**: plain JSON data files in an `Addons` folder beside the exe.
+- A pack applies only while its mod is **installed (pak present), enabled in the game''s `modlist.json`,
+  and a version the pack lists**. Otherwise it is ignored.
+- **No add-ons = today''s behavior**, byte for byte on saves and identical in the UI.
+- Core code has **no mod names and no per-mod branches**: it exposes a few extension points; packs feed data.
+- Supporting a new mod = adding a file, not shipping a new editor version.
+- Packs can be **generated** from a mod''s paks by a separate tool (the Scarab step, done once by whoever
+  makes the pack, never by players).
+
+## Non-goals
+
+- No code plugins (DLLs): no executable add-ons, nothing new for NexusMods to quarantine, no API to keep
+  binary-compatible.
+- No modelling of a mod''s internal logic (e.g. Pilot Overhaul''s Quality-based caps): packs state limits
+  and lists; the game''s own mod code still runs in-game.
+- **Mercenaries only.** Every mod named (YAEC-R, YAW-CE, AVTA, Pilot Overhaul - Eternal) is a MechWarrior 5:
+  Mercenaries mod. Add-ons live entirely in the Mercenaries core and shell. The Clans shell never loads, shows or
+  applies packs, and its Settings page has no Add-ons panel. A pack whose `game` isn''t `mercenaries` is reported as
+  "not for this game" and ignored. The `game` field keeps the door open for Clans later; nothing for Clans is built now.
+
+## Design
+
+### 1. Extension points in Core (once, mod-agnostic)
+`src/MechWarrior5.Mercs.SaveEditor.Core/Addons/`:
+- `IPilotRules` + `VanillaPilotRules` (cap 10), from `c60cc93`. `RosterEditor.Rules` is read on every edit.
+- Catalog contributions: `PilotCatalog` and `ItemCatalog` accept extra `TraitDefinition` / `ItemDefinition`
+  entries (each carrying its source pack/mod), merged after the built-in lists; a rescan replaces the
+  previous contributions (pattern from `ef281e3` `Apply`/`Reset`).
+- Vanilla cap safety (from `c60cc93`): Max caps never lowers a cap; the setter never raises past
+  `max(limit, current)`; the slider maximum covers an existing higher cap; save keeps exactly what''s there.
+
+### 2. Pack format (`Addons/*.json`, schema-versioned)
+
+Each mod has its own set of tweaked values, so a pack holds **that mod''s values for everything the editor uses**.
+It doesn''t model the whole game. The editor''s tweakable surface is small and fixed, and every editor value comes
+from one of these categories (today they''re hard-coded constants and the built-in `Data/*.json` catalogs):
+
+| Category | Editor source today | What a mod can change |
+|---|---|---|
+| `limits` | `RosterEditor.MaxSkillCap` (10), `MaxSalary`, `MaxExperience`, `CompanyEditor.MaxCBills`, `FactionEditor.MaxStanding`, `InventoryEditor.MaxCount` | any limit (PO: skill cap 30) |
+| `skillCurve` | the game''s `PilotSkillLevelCurve` (levels 1-10) | XP per level / extra levels (PO: 20 at 55,000, 30 at 120,000) |
+| `pilotTraits`, `mechTraits` | `Data/traits.json` (`TraitDefinition`: asset, label, description) | new traits (AVTA, YAW add-on); reworded/rebalanced vanilla ones |
+| `items` | `Data/items.json` (`ItemDefinition`: asset, type, kind, hardpoint) | new weapons/equipment/ammo (YAW-CE, YAEC-R); changed hardpoint, slot type or label of vanilla items |
+| `mechs` | `Data/mechs.json` + the existing mod ''Mech scan | new variants (the scan already finds them; a pack can fill in labels/hardpoints the scan misses) |
+
+Each catalog category has two lists: **`add`** (new assets) and **`override`** (fields that replace a built-in
+entry''s values while the pack is active, matched by asset; only the fields given are replaced).
+
+```json
+{
+  "schema": 1,
+  "name": "Yet Another Weapon - Complete Edition",
+  "author": "...",
+  "game": "mercenaries",
+  "source": "https://www.nexusmods.com/mechwarrior5mercenaries/mods/1158",
+  "requires": { "modFolder": "YAW_CE", "modName": "Yet Another Weapon - Complete Edition", "versions": ["1.0"] },
+  "requiresPacks": [],
+  "limits": { "maxSkillCap": 30, "maxExperience": 2000000 },
+  "skillCurve": [ { "level": 10, "xp": 14110 }, { "level": 20, "xp": 55000 }, { "level": 30, "xp": 120000 } ],
+  "pilotTraits": { "add": [ { "asset": "...", "label": "...", "description": "..." } ], "override": [ ] },
+  "mechTraits":  { "add": [ ], "override": [ ] },
+  "items": {
+    "add": [ { "asset": "...", "type": "MWWeaponDataAsset", "kind": "weapon", "label": "...", "hardpoint": "E" },
+             { "asset": "...", "type": "MWEquipmentDataAsset", "kind": "equipment", "label": "...", "slots": ["General_SlotType"] } ],
+    "override": [ { "asset": "WeaponDataAsset_ERLargeLaser_Lvl1", "hardpoint": "E", "label": "ER Large Laser" } ]
+  },
+  "mechs": { "add": [ ], "override": [ ] }
+}
+```
+- Every field optional except `schema`, `name`, `requires`. Unknown fields ignored (forward compatible).
+- `requires.versions` are prefixes; empty = any version (allowed but flagged in the UI).
+- `requiresPacks`: names of packs that must also be active (AVTA''s YAW add-on pack requires the YAW-CE pack).
+- `limits` and `skillCurve` replace the vanilla value while active; save values outside them are still kept
+  (vanilla cap safety), so a pack can''t damage an existing save.
+
+### 2a. Per-mod coverage (what each first pack carries)
+
+| Mod | limits | skillCurve | traits | items | mechs |
+|---|---|---|---|---|---|
+| Pilot Overhaul - Eternal | skill cap 30 (or per-Quality, see risks) | its `PQPilotSkillLevelCurve` | its pilot traits | - | - |
+| YAW-CE | - | - | - | adds its weapons and ammo; overrides vanilla weapons it changes (hardpoint, label) | - |
+| YAEC-R | - | - | mech traits if any | adds equipment, armor types, actuator upgrades; overrides vanilla equipment it changes (slot type, label) | - |
+| AVTA | - | - | adds 85 pilot traits (academies are game-side, not in the editor) | - | - |
+| AVTA YAW add-on | - | - | adds 29 weapon traits; `requiresPacks: ["Yet Another Weapon - Complete Edition"]` | - | - |
+
+The generator (section 5) reads each mod''s paks and fills these in. Each mod''s exact list of changed values is
+confirmed from its paks at that point, never guessed by hand.
+
+### 3. Loader and activation (`AddonLoader`, `AddonState`)
+- Reads `Addons/*.json` on startup and on Rescan, off the UI thread. A malformed pack is skipped with a
+  reason shown in Settings; it can never stop the editor from starting or touch a save.
+- Detection reuses the `c60cc93` detector, generalized: mod folder found by folder name or `mod.json`
+  display name, pak present (following Vortex links), enabled in `modlist.json`, version matched.
+- **One decision point** builds the active set: packs whose mod is active and that the user hasn''t turned
+  off. Merge rules:
+  - `limits`: per limit, the highest value among active packs wins (a mod raising a cap must not be undone
+    by another pack that doesn''t mention it); absent = vanilla.
+  - `skillCurve`: one active pack may define it; if two do, the one following the game''s mod load order
+    (`modlist.json` / `mod.json` `defaultLoadOrder`) wins, matching how the game itself resolves the override.
+  - catalogs: `add` entries are merged after the built-in list; `override` replaces only the given fields of a
+    built-in (or earlier pack''s) entry. Two packs touching the same asset resolve by the game''s mod load order
+    (later mod wins, as in game) and the collision is reported in Settings.
+- Per-pack switch in Settings (on by default for an active pack, since the pack itself is the opt-in;
+  a global "Disable all add-ons" switch forces vanilla).
+
+### 4. UI
+- Settings > **Add-ons** panel: one row per pack with its name, the mod it needs, status (active / mod not
+  installed / mod disabled / version not supported / invalid pack) and an on/off switch; "Open Addons folder".
+- Pickers label pack entries with their mod (a small chip, as modded ''Mechs already have).
+- Pilots page cap header shows the active range (CAP (0-10) in vanilla).
+- All new text in the six languages.
+
+### 5. Pack generator (separate tool, not in the app)
+`tools/AddonPack` console app (reusing `ef281e3`''s `ModAssetReader`/`AssetLabel` and `CookedPackage`):
+`AddonPack <mod folder> [--name] [--out Addons/<mod>.json]` reads the mod''s paks and writes a pack with its
+traits, items (hardpoints from `WeaponType`, slots from `SupportedSlotTypesAssetId`, AI-only weapons
+skipped) and, when the mod ships a pilot skill curve, `skillCurve` and `limits.maxSkillCap` from its top level.
+It splits each asset into `add` or `override` by comparing it with the base game''s pak: assets the base game
+doesn''t have go to `add`, and base-game assets whose editor-relevant fields differ go to `override` with only
+the changed fields. Output is reviewed by a human before it''s published.
+
+### 6. Distribution
+- Packs live in the repo under `addons/` and ship inside the release zip''s `Addons` folder; players can drop
+  in more. The first pack: Pilot Overhaul - Eternal (caps only, once it works with DLC 9). Then generated
+  packs for YAW-CE, YAEC-R, Additional Vanilla Traits and Academies.
+- Docs: user guide section "Add-ons", a `docs/ADDONS.md` pack-format reference for pack authors.
+
+## Safety rules (must hold)
+- No packs, or no active packs: the app behaves exactly as vanilla 2.0.0 (verified by the existing suite).
+- A pack can add entries and change the values of existing ones while active; it never removes built-in
+  entries. Deactivating it restores the built-in values exactly (overrides are layered, never written into the
+  built-in catalogs).
+- Pack values only change what the editor offers and validates. A save keeps whatever it already holds; nothing
+  is rewritten because a pack was turned on or off.
+- Clans is untouched: no pack code runs in the Clans shell.
+- An inactive pack''s data is never offered or written. Data already in a save (from any mod) is preserved
+  by the lossless serializer regardless.
+- Saves with caps above the active limit are kept as they are (vanilla cap safety).
+- The save-time asset check still warns when a save references something the installed game/mods lack.
+
+## Phases
+1. Core seam + vanilla cap safety (restore `c60cc93` pieces) + tests. No behavior change.
+2. Pack format, loader, detection, decision point + tests (fake mod folders, malformed packs).
+3. Catalog contributions + picker labels; Settings Add-ons panel; translations.
+4. `tools/AddonPack` generator (restore `ef281e3` reader into the tool) + tests against the base pak.
+5. First packs, docs (`docs/ADDONS.md`, user guide), release.
+
+## Verification
+- Unit: pack parsing (valid, missing fields, unknown fields, bad JSON, wrong `game`), activation matrix (not
+  installed / disabled / wrong version / active / user-off / missing `requiresPacks`), limits merge (highest
+  wins, absent = vanilla), override layering (only given fields replaced, deactivation restores built-in
+  exactly), load-order collision resolution.
+- Clans: the Clans shell and its existing tests are unchanged with packs present in `Addons`.
+- Headless: full existing suite unchanged with an empty `Addons` folder (vanilla regression gate);
+  a real-save test with a test pack active (caps up to the pack''s limit save and reload) and inactive
+  (vanilla, existing higher caps kept).
+- Generator: run over the base pak as if it were a mod and match the built-in catalogs (as `ef281e3` did).
+- Render audit of the Settings Add-ons panel and the Pilots page; in-game check of an edited save with a
+  pack active and its mod enabled.
+
+## Risks / open questions
+- Pilot Overhaul''s real per-pilot cap rules are unconfirmed (no working PO save yet); its pack states the
+  curve''s top level (30).
+- Mods change between versions: packs are version-gated; a stale pack stays inactive rather than guessing.
+- Asset collisions between packs: first wins, reported in Settings.
+- NexusMods distribution: packs are JSON inside the GitHub zip, so nothing new is quarantined.');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -84319,6 +84747,26 @@ https://www.nexusmods.com/mechwarrior5mercenaries/mods/459. JJ''s MW save editor
 https://www.nexusmods.com/mechwarrior5mercenaries/mods/1466. Steam copies of YAEC-R and YAW-CE are listed as removed;
 NexusMods is the source to build packs from.
 
+### Installed reference versions (owner''s machine, 2026-11-10, staged by Vortex)
+
+| Mod | mod.json `displayName` | Folder | Version | defaultLoadOrder |
+|---|---|---|---|---|
+| YAEC-R | Yet Another Equipment Collection Revived | `harjel` (!) | 3.3-DLC9 | 6 |
+| YAW-CE | Yet Another Weapon - Complete Edition | `YetAnotherWeaponCompleteEdition` (4 paks) | 3.0g | 1 |
+| YAW-CE extra | YASV Complete Edition Patch | `YASVCompleteEditionPatch` | 3.0g | 8 |
+| AVTA | Additional Vanilla Traits and Academies | `AVTA` | 1.4 | 2 |
+| YAML | Yet Another Mechlab | `YetAnotherMechlab` | 0.99.4.1 | 5 |
+| PO-E | PilotOverhaul - Eternal | `PilotOverhaul-Eternal` | 8.7.4 | 14 |
+
+Findings that shape detection:
+- Folder names are not reliable (YAEC-R deploys as `harjel`), so `requires` matches on `mod.json`
+  `displayName` first and treats the folder name as a fallback.
+- `modlist.json` holds only `gameVersion` and `modStatus.<folder>.bEnabled`, and load order is only in each
+  `mod.json` (`defaultLoadOrder`). Vortex writes `vortex.deployment.json` in the Mods folder and doesn''t
+  store a separate order, so the game''s own files are the single source.
+- A mod missing from `modStatus` (newly deployed, game not launched since) counts as **not enabled**.
+- Folders with no `mod.json` or no paks (Vortex left about 35 empty folders here) count as **not installed**.
+
 ## Goals
 
 - Mod support arrives as **add-on packs**: plain JSON data files in an `Addons` folder beside the exe.
@@ -84486,7 +84934,7 @@ the changed fields. Output is reviewed by a human before it''s published.
   curve''s top level (30).
 - Mods change between versions: packs are version-gated; a stale pack stays inactive rather than guessing.
 - Asset collisions between packs: first wins, reported in Settings.
-- NexusMods distribution: packs are JSON inside the GitHub zip, so nothing new is quarantined.', '2026-11-11T02:53:03Z');
+- NexusMods distribution: packs are JSON inside the GitHub zip, so nothing new is quarantined.', '2026-11-11T03:13:56Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M5SE-T41', 'Mirrored to Mods.MechWarrior5.Shared in 5d1d19a (MM5S-T14).', '2026-11-10T06:58:58Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M5SE-T43', 'Landed in 6d9e79f (closed earlier with ref 83ee56f by mistake; 83ee56f is M5SE-T45).', '2026-11-10T06:51:59Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M5SE-T46', 'Mercs done (tools/CatalogCheck): items, traits, personas, portraits, voices all match the game exactly incl. DLC9; mechs already scanned at runtime. Clans: tools/clans_utoc_files.py lists all 243k packaged files; all 242 items exist; missing Clan chassis FMT, IFR, NGA, JR7IIC, WLF-IIC. Remaining: Oodle (UE 5.8''s oo2core.dll) + IoStore/Zen reader to pull chassis names/tonnage/variants and item data from the assets, then generate the Clans catalog from the game.', '2026-11-10T07:21:57Z');
