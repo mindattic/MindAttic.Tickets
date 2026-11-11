@@ -88,7 +88,7 @@ public sealed class TicketsServer(string connectionString)
         var full = Path.GetFullPath(path);
         if (Environment.GetEnvironmentVariable(TestEnvVar) is { Length: > 0 } test)
         {
-            var name = "MindAttic.Tickets.Test-" + Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(full.ToUpperInvariant())))[..16];
+            var name = "MindAttic.Tickets.Test-" + Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(RunSalt + full.ToUpperInvariant())))[..16];
             var connection = DefaultConnection(test, name);
             CreateDatabase(connection);
             created.TryAdd(name, 0);
@@ -100,19 +100,22 @@ public sealed class TicketsServer(string connectionString)
         return Configured() is { } c ? new TicketsServer(c) : null;
     }
 
+    /// <summary>Per process, so two test runs at once (the two test assemblies) never share, or drop, one another's scratch database.</summary>
+    private static readonly string RunSalt = Guid.NewGuid().ToString("N");
+
     /// <summary>The prefix of every scratch database a test run makes; the only names the drop and the sweep ever touch.</summary>
     public const string TestDatabasePrefix = "MindAttic.Tickets.Test-";
 
     /// <summary>The scratch databases this process made (M.TIX-T333).</summary>
     private static readonly System.Collections.Concurrent.ConcurrentDictionary<string, byte> created = new(StringComparer.Ordinal);
 
-    private static bool IsTestDatabase(string name) =>
+    internal static bool IsTestDatabase(string name) =>
         name.StartsWith(TestDatabasePrefix, StringComparison.Ordinal) && name.Length > TestDatabasePrefix.Length && name.IndexOf(']', StringComparison.Ordinal) < 0;
 
-    private static void DropDatabases(string server, IEnumerable<string> names)
+    internal static void DropDatabases(string server, IEnumerable<string> names)
     {
-        var b = new SqlConnectionStringBuilder(DefaultConnection(server, "master"));
-        using var master = new SqlConnection(b.ConnectionString);
+        SqlConnection.ClearAllPools();
+        using var master = new SqlConnection(DefaultConnection(server, "master"));
         master.Open();
         foreach (var name in names.Where(IsTestDatabase))
         {
@@ -140,6 +143,11 @@ public sealed class TicketsServer(string connectionString)
     public static void SweepOrphanedTestDatabases()
     {
         if (Environment.GetEnvironmentVariable(TestEnvVar) is not { Length: > 0 } server) return;
+        SweepOrphanedTestDatabases(server);
+    }
+
+    internal static void SweepOrphanedTestDatabases(string server)
+    {
         try
         {
             var names = new List<string>();
