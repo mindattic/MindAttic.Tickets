@@ -70943,6 +70943,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61997, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61998, 'M.ORCH-T1585', '2026-11-11T03:59:03Z', 'summary', 'Replace per-login MindAttic.Launcher.exe processes with an in-app project picker in the Orchestrator; a rocket icon still opens the standalone Launcher', 'In-app tree menu (dot-delimited branches, refresh) on each login''s tab right-click that opens a project''s CLI, replacing per-login Launcher.exe processes (corrected: user narrowed scope; git counts/commit split to T1587-T1590)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (61999, 'M.COMP-T189', '2026-11-11T04:07:10Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (62000, 'M.COMP-T189', '2026-11-11T04:07:10Z', 'name', NULL, 'Dropdown submenus');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (62001, 'M.COMP-T189', '2026-11-11T04:11:01Z', 'working', NULL, 'f7c19f3f-0e2c-4e23-b19e-302833de86b8');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -73780,6 +73781,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T99', 'proposed', 0, '2026-11-07T06:47:27Z', NULL);
 
 -- ticket_work
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.COMP-T189', NULL, 0, NULL, 'f7c19f3f-0e2c-4e23-b19e-302833de86b8', '2026-11-11T04:11:01Z', '2026-11-11T04:11:01Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1585', NULL, 0, NULL, 'f7c19f3f-0e2c-4e23-b19e-302833de86b8', '2026-11-11T03:34:00Z', '2026-11-11T03:34:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1587', NULL, 0, NULL, 'f7c19f3f-0e2c-4e23-b19e-302833de86b8', '2026-11-11T03:58:46Z', '2026-11-11T03:58:46Z');
