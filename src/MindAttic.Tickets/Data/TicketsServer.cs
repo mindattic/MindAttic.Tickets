@@ -91,12 +91,69 @@ public sealed class TicketsServer(string connectionString)
             var name = "MindAttic.Tickets.Test-" + Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(full.ToUpperInvariant())))[..16];
             var connection = DefaultConnection(test, name);
             CreateDatabase(connection);
+            created.TryAdd(name, 0);
             return new TicketsServer(connection);
         }
         if (Environment.GetEnvironmentVariable(TicketsDb.EnvVar) is { Length: > 0 } || Environment.GetEnvironmentVariable(TicketsDb.LegacyEnvVar) is { Length: > 0 })
             return null;
         if (!string.Equals(full, Path.GetFullPath(TicketsDb.DefaultPath()), StringComparison.OrdinalIgnoreCase)) return null;
         return Configured() is { } c ? new TicketsServer(c) : null;
+    }
+
+    /// <summary>The prefix of every scratch database a test run makes; the only names the drop and the sweep ever touch.</summary>
+    public const string TestDatabasePrefix = "MindAttic.Tickets.Test-";
+
+    /// <summary>The scratch databases this process made (M.TIX-T333).</summary>
+    private static readonly System.Collections.Concurrent.ConcurrentDictionary<string, byte> created = new(StringComparer.Ordinal);
+
+    private static bool IsTestDatabase(string name) =>
+        name.StartsWith(TestDatabasePrefix, StringComparison.Ordinal) && name.Length > TestDatabasePrefix.Length && name.IndexOf(']', StringComparison.Ordinal) < 0;
+
+    private static void DropDatabases(string server, IEnumerable<string> names)
+    {
+        var b = new SqlConnectionStringBuilder(DefaultConnection(server, "master"));
+        using var master = new SqlConnection(b.ConnectionString);
+        master.Open();
+        foreach (var name in names.Where(IsTestDatabase))
+        {
+            try
+            {
+                using var command = master.CreateCommand();
+                command.CommandText = "IF DB_ID(@name) IS NOT NULL EXEC (N'ALTER DATABASE ' + @quoted + N' SET SINGLE_USER WITH ROLLBACK IMMEDIATE; DROP DATABASE ' + @quoted);";
+                command.Parameters.AddWithValue("@name", name);
+                command.Parameters.AddWithValue("@quoted", "[" + name + "]");
+                command.ExecuteNonQuery();
+            }
+            catch (SqlException) { /* in use or already gone: the next sweep gets it */ }
+        }
+    }
+
+    /// <summary>Drops the scratch databases this process made, for a test run's teardown; a no-op unless <see cref="TestEnvVar"/> is set.</summary>
+    public static void DropCreatedTestDatabases()
+    {
+        if (Environment.GetEnvironmentVariable(TestEnvVar) is not { Length: > 0 } server) return;
+        try { DropDatabases(server, created.Keys.ToArray()); }
+        catch (SqlException) { }
+    }
+
+    /// <summary>Drops orphaned <c>MindAttic.Tickets.Test-*</c> databases created more than a day ago, and nothing else.</summary>
+    public static void SweepOrphanedTestDatabases()
+    {
+        if (Environment.GetEnvironmentVariable(TestEnvVar) is not { Length: > 0 } server) return;
+        try
+        {
+            var names = new List<string>();
+            using (var master = new SqlConnection(DefaultConnection(server, "master")))
+            {
+                master.Open();
+                using var command = master.CreateCommand();
+                command.CommandText = "SELECT name FROM sys.databases WHERE name LIKE N'MindAttic.Tickets.Test-%' AND create_date < DATEADD(day, -1, GETDATE());";
+                using var reader = command.ExecuteReader();
+                while (reader.Read()) names.Add(reader.GetString(0));
+            }
+            DropDatabases(server, names);
+        }
+        catch (SqlException) { }
     }
 
     public SqlConnection Open()
