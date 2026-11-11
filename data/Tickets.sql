@@ -7425,7 +7425,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1162', 'MindAttic.Orchestrator', 1162, '2026-10-27', 'fix', 'closed', 'Weekly percent has no never-regress guard unlike the 5-hour percent, so a stale restamp can defeat the 90%-of-week hard stop (found by bughunt)', 'ReportedUsage.cs, ClaudeMeterProbe.cs', 1161, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1163', 'MindAttic.Orchestrator', 1163, '2026-10-27', 'fix', 'closed', 'ClosedTicketSource''s cache reuses a stale close time after a ticket is reopened then reclosed (found by bughunt)', 'ClosedTicketSource.cs', 1162, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1164', 'MindAttic.Orchestrator', 1164, '2026-10-27', 'fix', 'closed', 'Scheduler.LastActivityUtc skips subagent transcripts for legacy worktree assignments, unlike TicketActivity.Active (found by bughunt)', 'Scheduler.cs', 1163, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1165', 'MindAttic.Orchestrator', 1165, '2026-10-27', 'feature', 'open', 'Hovering a CLI terminal scrolls its own buffer; leaving it returns the wheel to the WPF page', '—', 1164, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1165', 'MindAttic.Orchestrator', 1165, '2026-10-27', 'feature', 'closed', 'Hovering a CLI terminal scrolls its own buffer; leaving it returns the wheel to the WPF page', 'fe55b8ba', 1164, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1166', 'MindAttic.Orchestrator', 1166, '2026-10-27', 'feature', 'closed', 'Collapse the dead vertical gap above the 5-hour utilization panel', '5087e4d9', 1165, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1167', 'MindAttic.Orchestrator', 1167, '2026-10-27', 'feature', 'closed', 'Stack notifications as hoverable circles on the dashboard''s right edge', 'dfb07815', 1166, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1168', 'MindAttic.Orchestrator', 1168, '2026-10-27', 'feature', 'closed', 'Show 5hr-limit and weekly-limit percentage boxes with progress bars on the utilization panel', '4b76dadfb3f61a3b8f466ecd176cf90cbcce5edd', 1167, NULL);
@@ -7433,7 +7433,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1170', 'MindAttic.Orchestrator', 1170, '2026-10-27', 'feature', 'closed', 'Restore fallback-viewer tabs to their original Dashboard position/order on reattach', '35f0571735659bfbb2a0ebab5c9336b426b4b521', 1169, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1171', 'MindAttic.Orchestrator', 1171, '2026-10-27', 'feature', 'closed', 'CLI tabs auto-size to content width, no wrap, with overflow arrows like the user tabs', '—', 1170, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1172', 'MindAttic.Orchestrator', 1172, '2026-10-27', 'fix', 'closed', 'A CLI tab''s initials badge is redundant under its user''s Launcher tab: show it only on the Launcher tab, not on every CLI tab', '35f05717', 1171, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1173', 'MindAttic.Orchestrator', 1173, '2026-10-27', 'feature', 'open', 'Person-tab status icon: gray zzz box idle, green play-arrow box busy, orange ? box awaiting input', '—', 1172, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1173', 'MindAttic.Orchestrator', 1173, '2026-10-27', 'feature', 'closed', 'Person-tab status icon: gray zzz box idle, green play-arrow box busy, orange ? box awaiting input', '0d8d6bed', 1172, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1174', 'MindAttic.Orchestrator', 1174, '2026-10-27', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.MainlineTestsTests.A_fix_commit_that_never_landed_on_the_mainline_does_not_count_as_fixed_since — System.InvalidOperationException : Sequence contains more than one matching element (landed on main since the last green run: tickets M.ORCH-T1093, M.ORCH-T758, M.ORCH-T813 in 31ccd80f fix: require a fix commit to be on origin/<mainline> before FixedSince counts it (M.ORCH-T1093); 4d5e1e0b Org dispatch, the rest: the idle-claims nudge judges each org on its own logins'' windows and room and puts a claim whose CLI is gone only to an /allocate CLI of its org (as the orphan hand-back now does), an org none of whose members runs /allocate has its tickets started in a tab on one of its logins (OrgReach), and the background-agent half of allocate starts only the global login''s org''s tickets (M.ORCH-T758); 10b2fe4f Stop the meter probe backing off 15 minutes on a recoverable refresh failure (M.ORCH-T813))', '9e885465', 1173, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1175', 'MindAttic.Orchestrator', 1175, '2026-10-27', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.ClaudeMeterProbeTests.A_login_with_a_CLI_running_is_not_refreshed_and_a_refused_refresh_says_so_and_backs_off — Assert.That(probe.NextAskUtc, Is.GreaterThanOrEqualTo(Now + ClaudeMeterProbe.NoMeterBackoff)) Expected: greater than or equal to 2026-10-17 11:15:00 But was: 2026-10-17 11:02:00 (landed on main since the last green run: tickets M.ORCH-T1093, M.ORCH-T758, M.ORCH-T813 in 31ccd80f fix: require a fix commit to be on origin/<mainline> before FixedSince counts it (M.ORCH-T1093); 4d5e1e0b Org dispatch, the rest: the idle-claims nudge judges each org on its own logins'' windows and room and puts a claim whose CLI is gone only to an /allocate CLI of its org (as the orphan hand-back now does), an org none of whose members runs /allocate has its tickets started in a tab on one of its logins (OrgReach), and the background-agent half of allocate starts only the global login''s org''s tickets (M.ORCH-T758); 10b2fe4f Stop the meter probe backing off 15 minutes on a recoverable refresh failure (M.ORCH-T813))', 'f4368ead', 1174, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1176', 'MindAttic.Orchestrator', 1176, '2026-10-27', 'feature', 'closed', 'Drop the ''[Claude]'' suffix from CLI tab titles', '—', 1175, NULL);
@@ -7534,7 +7534,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1271', 'MindAttic.Orchestrator', 1271, '2026-10-28', 'fix', 'closed', 'CLI tab''s close ''x'' needs 10px margin off the tab''s right edge', '—', 1270, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1272', 'MindAttic.Orchestrator', 1272, '2026-10-28', 'fix', 'closed', 'Tab status icons: 20x20 on both login and CLI tabs, icon+text vertically centered', '—', 1271, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1273', 'MindAttic.Orchestrator', 1273, '2026-10-28', 'fix', 'closed', 'Settings: SymbolTabLabels (Sigma/lambda vs words toggle) doesn''t take effect', '—', 1272, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1274', 'MindAttic.Orchestrator', 1274, '2026-10-28', 'feature', 'open', 'Add a Font setting (current font vs Outfit), applied app-wide', '—', 1273, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1274', 'MindAttic.Orchestrator', 1274, '2026-10-28', 'feature', 'closed', 'Add a Font setting (current font vs Outfit), applied app-wide', 'ed5f5858', 1273, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1275', 'MindAttic.Orchestrator', 1275, '2026-10-28', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.LibraryOnlyXamlTests.The_dashboard_keeps_no_style_or_panel_of_its_own — Assert.That(keys, Is.EquivalentTo(new[] { "TicketLink" })) Expected: equivalent to < "TicketLink" > But was: < "TicketLink", "MaSpinnerGlyph" > Extra (1): < "MaSpinnerGlyph" > (landed on main since the last green run: tickets M.ORCH-T1273, M.ORCH-T1272, M.ORCH-T1266, M.ORCH-T1267, M.ORCH-T1264, M.ORCH-T1261, M.ORCH-T1262, M.ORCH-T1256, M.ORCH-T1255, M.ORCH-T1257, M.ORCH-T1254, M.ORCH-T1251, M.ORCH-T1250, M.ORCH-T1242, M.ORCH-T1209, M.ORCH-T1208, M.ORCH-T1206 in 0fa052e6 Apply the global login''s tab first in a refresh, not by its display order (M.ORCH-T1273); ab14d0fe Tab strip: wider CLI tabs, 20x20 status icons on both strips, spinner/?/zzz badges, per-CLI status, close button inset 10px (M.ORCH-T1272); 6aee9a86 Launcher: reclaim the hosted terminal''s size on resize, not only on focus (M.ORCH-T1266); 3a2cd743 Always show the lambda figure in a tab''s trailing text, 0% while unread (M.ORCH-T1267); 24a29961 Show the lambda figure for logins with no configured 5-hour budget, not just a real one (M.ORCH-T1264); aa7379df Show a user tab''s open CLI count instead of a play arrow, flashing to "?" when one needs you (M.ORCH-T1261); 442e5e47 Remove the redundant Initials Badge from the Launcher tab (M.ORCH-T1262); 591bf1dc Add a global setting to include/exclude the Launcher pane from Team Wall (M.ORCH-T1256); 3edf5ae9 Capitalize Team Wall as the feature''s proper name throughout (M.ORCH-T1256); e2794ff0 Add a global setting for symbol vs word tab trailing-text labels (M.ORCH-T1255); df2618c6 A login''s name falls back to its initials, never the literal word "claude" (M.ORCH-T1257); 406232cf Dashboard: a login over its own cutoff keeps its tab and gets a lock icon instead of vanishing (M.ORCH-T1254); a6735860 Drop the duplicate 5hr figure from the tab trailing text, label weekly Sigma (M.ORCH-T1251); 0babfde7 Size CLI tabs uniformly too, both strips at 10px side padding (M.ORCH-T1250); 20509877 Bump MindAttic.Tickets to 6.0.0: closes no longer need approval (M.ORCH-T1242); 1ffc369d Drop the terminal pane''s redundant bottom margin, doubling the gutter before the body (M.ORCH-T1209); 6782bbe6 Default CLI pane height: half the window''s height, floored at 500px (M.ORCH-T1208); 2f7d198c Tab status badges get a fixed footprint so the tab strip doesn''t jitter (M.ORCH-T1206))', 'passes on main@1ead689', 1274, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1276', 'MindAttic.Orchestrator', 1276, '2026-10-28', 'fix', 'wont-do', 'LoginLook.For returns the folder initials (CL) instead of the login alias (claude) when nobody is signed in', 'duplicate of M.ORCH-T1259 (same regression, same assertion)', 1275, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1277', 'MindAttic.Orchestrator', 1277, '2026-10-28', 'fix', 'wont-do', 'Two RadioButtons in MainWindow.xaml are plain WPF controls, not library-styled (LibraryOnlyXamlTests)', 'duplicate of M.ORCH-T1263 (same regression, same assertion)', 1276, NULL);
@@ -7673,7 +7673,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1410', 'MindAttic.Orchestrator', 1410, '2026-11-02', 'fix', 'closed', 'Login tab and CLI tab show the idle zzz badge while the CLI runs background subagents; make every activity icon follow the real CLI and subagent state', '—', 1409, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1411', 'MindAttic.Orchestrator', 1411, '2026-11-02', 'fix', 'closed', 'Make every tab status badge (zzz, busy spinner, ?) a square, never wider than tall', '—', 1410, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1412', 'MindAttic.Orchestrator', 1412, '2026-11-02', 'chore', 'closed', 'Prove a dashboard redeploy leaves every hosted CLI and Launcher running and reattached, then deploy M.ORCH-T1410/T1411', '—', 1411, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1413', 'MindAttic.Orchestrator', 1413, '2026-11-02', 'feature', 'open', 'Enter in a CLI tab lights its CLI tab and person tab busy instantly (presumed busy until the next status read confirms or a grace period passes)', '—', 1412, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1413', 'MindAttic.Orchestrator', 1413, '2026-11-02', 'feature', 'closed', 'Enter in a CLI tab lights its CLI tab and person tab busy instantly (presumed busy until the next status read confirms or a grace period passes)', '4b3b9408', 1412, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1414', 'MindAttic.Orchestrator', 1414, '2026-11-02', 'fix', 'closed', 'Busy badges on person and CLI tabs use the original three-arc spinner, not the Glyph spinner', 'c622073d270103f0ecaf455b972c481adc161933', 1413, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1415', 'MindAttic.Orchestrator', 1415, '2026-11-02', 'fix', 'closed', 'Person tab shows idle zzz while its CLI works: a CLI on a per-CLI login matching the global login email is dropped from every tab, since LoginScope.For keeps only OwnLogin null', '9b2831fb', 1414, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1416', 'MindAttic.Orchestrator', 1416, '2026-11-02', 'fix', 'closed', 'Install fails with ''MindAttic.Orchestrator.Desktop.exe is being used by another process'' while CLIs are busy; retry, then move the locked exe aside and copy', '—', 1415, NULL);
@@ -7898,7 +7898,14 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1635', 'MindAttic.Orchestrator', 1635, '2026-11-11', 'feature', 'open', 'Remote branches (M.ORCH-T1501 follow-up): on-demand local command runs the full suite for some or all queued branches in a detached worktree (PC stays on main) and reports pass/fail per branch head back to the host', '—', 1634, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1636', 'MindAttic.Orchestrator', 1636, '2026-11-11', 'feature', 'open', 'Remote branches (M.ORCH-T1501 follow-up): a passing local run signs off and the host merges that branch head into main by itself, pushes, deletes the branch; the PC then fast-forwards main', '—', 1635, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1637', 'MindAttic.Orchestrator', 1637, '2026-11-11', 'feature', 'open', 'Remote branches (M.ORCH-T1501 follow-up): a failing local run sends the branch back to the work unit that produced it, which keeps iterating on the same branch without blocking other branches', '—', 1636, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1638', 'MindAttic.Orchestrator', 1638, '2026-11-11', 'fix', 'open', 'LampSettingsTests: add the memberUntil case for the MemberUntil Vault setting (M.ORCH-T1401 left it out because another agent had the file dirty), so EverySettingHasItsOwnTest stays green', '—', 1637, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1638', 'MindAttic.Orchestrator', 1638, '2026-11-11', 'fix', 'closed', 'LampSettingsTests: add the memberUntil case for the MemberUntil Vault setting (M.ORCH-T1401 left it out because another agent had the file dirty), so EverySettingHasItsOwnTest stays green', 'da47a14e', 1637, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1639', 'MindAttic.Orchestrator', 1639, '2026-11-11', 'feature', 'open', 'Hub phase 0: one topology read point over MachineRole plus tests pinning standalone behaviour, so later hub phases cannot change a single-machine install (from M.ORCH-T1127 plan)', '—', 1638, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1640', 'MindAttic.Orchestrator', 1640, '2026-11-11', 'feature', 'open', 'Hub phase 1: org members connect their own PCs to the central host as clients with per-member keys, see the whole org Team Wall watch-only, and run allowlisted tickets verbs as themselves (from M.ORCH-T1127 plan)', '—', 1639, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1641', 'MindAttic.Orchestrator', 1641, '2026-11-11', 'feature', 'open', 'Hub phase 2: members start, type into and share their own CLIs on the central host, with session ownership by login, grants plus owner consent, and per-member Windows-user isolation (from M.ORCH-T1127 plan)', '—', 1640, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1642', 'MindAttic.Orchestrator', 1642, '2026-11-11', 'feature', 'open', 'Hub phase 3: a member machine joins the central host as a Relay spoke running its own CLIs, merged into the same Team Wall and grant model (from M.ORCH-T1127 plan)', '—', 1641, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1643', 'MindAttic.Orchestrator', 1643, '2026-11-11', 'feature', 'open', 'Hub phase 4: spokes share the host ticket queue through the Relay TIX replica and claim leases instead of the gateway tickets shim and mirror (from M.ORCH-T1127 plan)', '—', 1642, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1644', 'MindAttic.Orchestrator', 1644, '2026-11-11', 'feature', 'open', 'Hub phase 5: central pacing policy, opt-in cross-machine dispatch, branch-build test runs on the owning member spoke, and hub operations on a dedicated box (from M.ORCH-T1127 plan)', '—', 1643, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1645', 'MindAttic.Orchestrator', 1645, '2026-11-11', 'fix', 'open', 'main doesn''t compile: OrchestratorVaultSettings.cs has ConfirmCliClose''s property between WorkspaceRoot''s attributes and its property, and its two mapping lines inside doc comments (mis-merged hunks from M.ORCH-T1442''s private-index commit)', '—', 1644, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T1', 'MindAttic.Orchestrator.SIDEBAR', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T2', 'MindAttic.Orchestrator.SIDEBAR', 2, '2026-11-05', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.SettingsModalTests.The_org_login_toolbar_is_the_Logins_dialogs_body — Assert.That(code, Does.Not.Contain("SettingsModal").And.Not.Contain("SizeSettings")) Expected: not String containing "SettingsModal" and not containing "SizeSettings" But was: "using System.Collections.Specialized; using System.Runtime.InteropServices; using System.Windows; using System.Windows.A... (landed on main since the last green run: tickets M.ORCH-T1310 in 864030c4 Cli csproj finds the workspace from any <workspace>.worktrees\<repo>\<name> checkout (drops .worktrees), so the main-tests build resolves MindAttic.Helpers without run.ps1''s MindAtticRoot (M.ORCH-T1310))', 'passes on main@270cb89', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T3', 'MindAttic.Orchestrator.SIDEBAR', 3, '2026-11-05', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.LibraryOnlyXamlTests.Every_xaml_element_is_a_library_control_or_library_styled — Assert.That(Violations(files), Is.Empty) Expected: <empty> But was: < "MainWindow.xaml:33 <Style>: a style with a template or resources of its own", "MainWindow.xaml:42 <ControlTemplate>: neither a library control nor library-styled", "MainWindow.xaml:43 <Border>: Background="{TemplateBinding Bac... (landed on main since the last green run: tickets M.ORCH-T1310 in 864030c4 Cli csproj finds the workspace from any <workspace>.worktrees\<repo>\<name> checkout (drops .worktrees), so the main-tests build resolves MindAttic.Helpers without run.ps1''s MindAtticRoot (M.ORCH-T1310))', 'passes on main@270cb89', 2, NULL);
@@ -71681,6 +71688,73 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72197, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72198, 'M.ORCH-T1395', '2026-11-11T15:43:00Z', 'ref', '—', '69ec98c5');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72199, 'M.ORCH-T1193', '2026-11-11T15:43:24Z', 'working', NULL, 'ohleo199@mindattic.com (f7c19f3f-0e2c-4e23-b19e-302833de86b8)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72200, 'M.ORCH-T1395', '2026-11-11T15:44:27Z', 'working', 'ohleo199@mindattic.com (f7c19f3f-0e2c-4e23-b19e-302833de86b8)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72201, 'M.ORCH-T1638', '2026-11-11T15:46:51Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72202, 'M.ORCH-T1638', '2026-11-11T15:46:51Z', 'ref', '—', 'da47a14e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72203, 'M.ORCH-T1413', '2026-11-11T15:47:03Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72204, 'M.ORCH-T1413', '2026-11-11T15:47:03Z', 'ref', '—', '4b3b9408');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72205, 'M.ORCH-T1173', '2026-11-11T15:47:10Z', 'working', NULL, 'ohleo199@mindattic.com (f7c19f3f-0e2c-4e23-b19e-302833de86b8)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72206, 'M.ORCH-T1165', '2026-11-11T15:47:11Z', 'working', NULL, 'ohleo199@mindattic.com (f7c19f3f-0e2c-4e23-b19e-302833de86b8)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72207, 'M.ORCH-T1413', '2026-11-11T15:47:30Z', 'working', 'ohleo199@mindattic.com (f7c19f3f-0e2c-4e23-b19e-302833de86b8)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72208, 'M.ORCH-T1638', '2026-11-11T15:47:31Z', 'working', 'ohleo199@mindattic.com (f7c19f3f-0e2c-4e23-b19e-302833de86b8)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72209, 'M.ORCH-T1173', '2026-11-11T15:48:36Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72210, 'M.ORCH-T1173', '2026-11-11T15:48:36Z', 'ref', '—', '0d8d6bed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72211, 'M.ORCH-T1127', '2026-11-11T15:49:16Z', 'working', NULL, 'ohleo199@mindattic.com (f7c19f3f-0e2c-4e23-b19e-302833de86b8)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72212, 'M.ORCH-T1173', '2026-11-11T15:50:01Z', 'working', 'ohleo199@mindattic.com (f7c19f3f-0e2c-4e23-b19e-302833de86b8)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72213, 'M.ORCH-T1165', '2026-11-11T15:53:50Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72214, 'M.ORCH-T1165', '2026-11-11T15:53:50Z', 'ref', '—', 'fe55b8ba');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72215, 'M.ORCH-T1274', '2026-11-11T15:54:05Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72216, 'M.ORCH-T1274', '2026-11-11T15:54:05Z', 'ref', '—', 'ed5f5858');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72217, 'M.ORCH-T1639', '2026-11-11T15:54:07Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72218, 'M.ORCH-T1639', '2026-11-11T15:54:07Z', 'name', NULL, 'Hub phase 0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72219, 'M.ORCH-T1640', '2026-11-11T15:54:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72220, 'M.ORCH-T1640', '2026-11-11T15:54:09Z', 'name', NULL, 'Hub phase 1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72221, 'M.ORCH-T1641', '2026-11-11T15:54:12Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72222, 'M.ORCH-T1641', '2026-11-11T15:54:12Z', 'name', NULL, 'Hub phase 2');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72223, 'M.ORCH-T1642', '2026-11-11T15:54:14Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72224, 'M.ORCH-T1642', '2026-11-11T15:54:14Z', 'name', NULL, 'Hub phase 3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72225, 'M.ORCH-T1643', '2026-11-11T15:54:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72226, 'M.ORCH-T1643', '2026-11-11T15:54:17Z', 'name', NULL, 'Hub phase 4');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72227, 'M.ORCH-T1644', '2026-11-11T15:54:21Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72228, 'M.ORCH-T1644', '2026-11-11T15:54:21Z', 'name', NULL, 'Hub phase 5');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72229, 'M.ORCH-T1079', '2026-11-11T15:54:29Z', 'working', NULL, 'ohleo199@mindattic.com (f7c19f3f-0e2c-4e23-b19e-302833de86b8)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72230, 'M.ORCH-T1078', '2026-11-11T15:54:33Z', 'working', NULL, 'ohleo199@mindattic.com (f7c19f3f-0e2c-4e23-b19e-302833de86b8)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72231, 'M.ORCH-T1639', '2026-11-11T15:54:38Z', 'link', NULL, 'follow-up-of M.ORCH-T1127');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72232, 'M.ORCH-T1127', '2026-11-11T15:54:40Z', 'link', NULL, 'M.ORCH-T1639 follow-up-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72233, 'M.ORCH-T1640', '2026-11-11T15:54:42Z', 'link', NULL, 'follow-up-of M.ORCH-T1127');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72234, 'M.ORCH-T1127', '2026-11-11T15:54:43Z', 'link', NULL, 'M.ORCH-T1640 follow-up-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72235, 'M.ORCH-T1641', '2026-11-11T15:54:45Z', 'link', NULL, 'follow-up-of M.ORCH-T1127');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72236, 'M.ORCH-T1127', '2026-11-11T15:54:46Z', 'link', NULL, 'M.ORCH-T1641 follow-up-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72237, 'M.ORCH-T1642', '2026-11-11T15:54:48Z', 'link', NULL, 'follow-up-of M.ORCH-T1127');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72238, 'M.ORCH-T1127', '2026-11-11T15:54:49Z', 'link', NULL, 'M.ORCH-T1642 follow-up-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72239, 'M.ORCH-T1643', '2026-11-11T15:54:51Z', 'link', NULL, 'follow-up-of M.ORCH-T1127');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72240, 'M.ORCH-T1127', '2026-11-11T15:54:52Z', 'link', NULL, 'M.ORCH-T1643 follow-up-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72241, 'M.ORCH-T1644', '2026-11-11T15:54:56Z', 'link', NULL, 'follow-up-of M.ORCH-T1127');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72242, 'M.ORCH-T1127', '2026-11-11T15:54:59Z', 'link', NULL, 'M.ORCH-T1644 follow-up-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72243, 'M.ORCH-T1640', '2026-11-11T15:55:05Z', 'link', NULL, 'requires M.ORCH-T1639');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72244, 'M.ORCH-T1639', '2026-11-11T15:55:06Z', 'link', NULL, 'M.ORCH-T1640 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72245, 'M.ORCH-T1641', '2026-11-11T15:55:11Z', 'link', NULL, 'requires M.ORCH-T1640');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72246, 'M.ORCH-T1640', '2026-11-11T15:55:13Z', 'link', NULL, 'M.ORCH-T1641 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72247, 'M.ORCH-T1642', '2026-11-11T15:55:17Z', 'link', NULL, 'requires M.ORCH-T1641');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72248, 'M.ORCH-T1641', '2026-11-11T15:55:18Z', 'link', NULL, 'M.ORCH-T1642 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72249, 'M.ORCH-T1274', '2026-11-11T15:55:19Z', 'working', 'ohleo199@mindattic.com (f7c19f3f-0e2c-4e23-b19e-302833de86b8)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72250, 'M.ORCH-T1165', '2026-11-11T15:55:21Z', 'working', 'ohleo199@mindattic.com (f7c19f3f-0e2c-4e23-b19e-302833de86b8)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72251, 'M.ORCH-T1643', '2026-11-11T15:55:21Z', 'link', NULL, 'requires M.ORCH-T1642');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72252, 'M.ORCH-T1642', '2026-11-11T15:55:25Z', 'link', NULL, 'M.ORCH-T1643 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72253, 'M.ORCH-T1644', '2026-11-11T15:55:32Z', 'link', NULL, 'requires M.ORCH-T1643');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72254, 'M.ORCH-T1643', '2026-11-11T15:55:37Z', 'link', NULL, 'M.ORCH-T1644 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72255, 'M.ORCH-T1642', '2026-11-11T15:55:42Z', 'link', NULL, 'requires M.RLY-T23');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72256, 'M.RLY-T23', '2026-11-11T15:55:43Z', 'link', NULL, 'M.ORCH-T1642 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72257, 'M.ORCH-T1642', '2026-11-11T15:55:47Z', 'link', NULL, 'requires M.RLY-T15');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72258, 'M.RLY-T15', '2026-11-11T15:55:48Z', 'link', NULL, 'M.ORCH-T1642 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72259, 'M.ORCH-T1643', '2026-11-11T15:55:54Z', 'link', NULL, 'requires M.RLY-T25');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72260, 'M.RLY-T25', '2026-11-11T15:55:56Z', 'link', NULL, 'M.ORCH-T1643 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72261, 'M.ORCH-T1643', '2026-11-11T15:56:01Z', 'link', NULL, 'requires M.RLY-T26');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72262, 'M.ORCH-T1645', '2026-11-11T15:56:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72263, 'M.RLY-T26', '2026-11-11T15:56:05Z', 'link', NULL, 'M.ORCH-T1643 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72264, 'M.ORCH-T1644', '2026-11-11T15:56:11Z', 'link', NULL, 'requires M.RLY-T30');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72265, 'M.RLY-T30', '2026-11-11T15:56:15Z', 'link', NULL, 'M.ORCH-T1644 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72266, 'M.ORCH-T1639', '2026-11-11T15:56:26Z', 'link', NULL, 'related M.RLY-T13');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72267, 'M.RLY-T13', '2026-11-11T15:56:28Z', 'link', NULL, 'M.ORCH-T1639 related');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -74590,11 +74664,11 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1078', NULL, 0, 'ohleo199@mindattic.com', 'f7c19f3f-0e2c-4e23-b19e-302833de86b8', '2026-11-11T15:54:33Z', '2026-11-11T15:54:33Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1079', NULL, 0, 'ohleo199@mindattic.com', 'f7c19f3f-0e2c-4e23-b19e-302833de86b8', '2026-11-11T15:54:29Z', '2026-11-11T15:54:29Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1127', NULL, 0, 'ohleo199@mindattic.com', 'f7c19f3f-0e2c-4e23-b19e-302833de86b8', '2026-11-11T15:49:16Z', '2026-11-11T15:49:16Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1193', NULL, 0, 'ohleo199@mindattic.com', 'f7c19f3f-0e2c-4e23-b19e-302833de86b8', '2026-11-11T15:43:24Z', '2026-11-11T15:43:24Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1274', NULL, 0, 'ohleo199@mindattic.com', 'f7c19f3f-0e2c-4e23-b19e-302833de86b8', '2026-11-11T15:40:11Z', '2026-11-11T15:40:11Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1413', NULL, 0, 'ohleo199@mindattic.com', 'f7c19f3f-0e2c-4e23-b19e-302833de86b8', '2026-11-11T15:22:38Z', '2026-11-11T15:22:38Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1427', NULL, 0, 'ohleo199@mindattic.com', NULL, '2026-11-11T11:27:55Z', '2026-11-11T11:27:55Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1638', NULL, 0, 'ohleo199@mindattic.com', 'f7c19f3f-0e2c-4e23-b19e-302833de86b8', '2026-11-11T15:42:54Z', '2026-11-11T15:42:54Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T768', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
@@ -84866,6 +84940,133 @@ Research so far (both agents'' reports already in this session''s context, not r
 
 Not yet designed: the tree-menu control''s API shape, the git-status/commit-modal''s exact UI and command
 wiring, whether commit+push reuses an existing in-repo helper or shells to git directly.', '2026-11-11T03:52:37Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1639', 'From the M.ORCH-T1127 plan, docs/research/hub-and-spoke.md, Phase 0. No behaviour change.
+
+**Story.** Every later hub-and-spoke phase branches on what this machine is. Today that question is asked in many places
+(MachineRole in Core/Setup, the daemon start, pace hooks, DB git sync, gateway bind, the tickets shim, branch builds).
+Put it behind one read point and pin today''s standalone behaviour with tests, so phases 1 to 5 can''t change a
+single-machine install by accident.
+
+**Do:**
+- One topology read point over MachineRole (standalone / host / client), with values reserved for later phases
+  (member client, spoke) that nothing selects yet. Every role-dependent branch reads it.
+- If M.RLY-T13 (hub seams IClaims, IPolicySource, IMeterSink, IOrgDirectory, ISessionDirectory) has landed, use its
+  Local seams; if not, don''t block on it, and draw the seam at today''s function boundaries so T13 can slot in.
+- Any new tunable is a Vault setting, never a const.
+
+**Acceptance:**
+- Tests pin standalone: no gateway listener on the network, pace hooks installed, DB git sync on, local Tickets.db,
+  no tickets shim, no branch builds, no new process or socket.
+- Host and client keep today''s REMOTE_HOST.md behaviour (existing tests unchanged).
+- No user-visible change.', '2026-11-11T15:54:07Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1640', 'From the M.ORCH-T1127 plan, docs/research/hub-and-spoke.md, Phase 1. Requires Phase 0.
+
+**Story.** Today one owner''s PC can be a client of a central host (M.ORCH-T1473/T1479). Let every org member connect
+their own PC to that host the same way, with their own identity, and see the whole org''s Team Wall. Watch only;
+nobody types into anyone''s CLI yet.
+
+**Do:**
+- `orchestrator machine invite <member>` on the host mints a member-scoped key (not the owner key) and prints a connect
+  line; `machine connect` on the member''s PC seals it with DPAPI and mints short-lived gateway tokens from it, as the
+  owner key does today. `machine members` lists them; `machine revoke <member>` cuts one off at once (open streams close
+  with 1008 within the 10 s recheck).
+- The member must be an active org member (members / org_members); the key carries the member''s email, never a
+  password or Claude credential.
+- Team Wall on a member client lists every shared session in the member''s org (existing ACL: same-org watch).
+- Gateway `/tickets` accepts member interact tokens for an allowlist of verbs (show, list, new, note, and close on
+  tickets the member works) and records the member as author; owner-only verbs stay owner-only. Every call is audited
+  per member in term_audit.
+- Host dashboard: a connected-members chip.
+
+**Acceptance:**
+- Standalone and the owner''s existing host/client pair unchanged (Phase 0 tests green).
+- A revoked member is refused; a member of another org sees nothing; a member token can''t run an owner-only verb.', '2026-11-11T15:54:09Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1641', 'From the M.ORCH-T1127 plan, docs/research/hub-and-spoke.md, Phase 2. Requires Phase 1.
+
+**Story.** A member works their own tickets in their own CLIs, which run on the central host, from their own PC:
+starts and stops CLIs on their own Claude logins, types into them, and shares them with teammates.
+
+**Do:**
+- A session''s owner is the member its Claude login belongs to (org_members.login), not the host''s Windows user. The
+  owner gets interact on their own sessions by default; others get watch, and interact only through an expiring grant.
+- Start and stop a CLI on one of the member''s own logins from their client (`/org start <repo> <me>` routed through the
+  gateway); never on another member''s login.
+- Owner consent: the first use of each interact grant raises a toast on the session owner''s client (or the host
+  dashboard), watch-only after 30 s with no answer. "Being watched" banner as today.
+- Isolation: each member''s CLIs run under that member''s own Windows account on the host (own profile, own DPAPI scope,
+  own ~/.claude-accounts, pipes ACL''d to that user and the host daemon). Until that is on, non-owner interact is
+  refused unless the admin turns on an explicit "trusted org" Vault setting that says plainly that every member''s CLI
+  can read every other member''s credentials.
+- No deflate on interactive streams (CRIME/BREACH, T934/T935); masking stays at the source.
+
+**Acceptance:**
+- A member can type into their own CLI, and not into another''s without a grant and consent; a revoke or pause cuts
+  input at once.
+- Pacing and cutoffs are unchanged (still per login, on one machine).
+- Standalone unchanged (Phase 0 tests green).', '2026-11-11T15:54:12Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1642', 'From the M.ORCH-T1127 plan, docs/research/hub-and-spoke.md, Phase 3. Requires Phase 2 and the Relay foundation and
+hub tickets it builds on (M.RLY-T10, T11, T15 to T23; epic M.RLY-T2). This ticket is the Orchestrator-side
+integration; don''t duplicate the Relay tickets'' work.
+
+**Story.** A member whose CLIs must run on their own machine (their repos, their Claude sign-in, their RAM) joins the
+same central host as a spoke. Their CLIs show on everyone''s Team Wall beside the host-run ones, and are shareable the
+same way.
+
+**Do:**
+- The Phase 1/2 host becomes the Relay hub plus the Orchestrator.Hub service (M.RLY-T15); `orchestrator machine join`
+  upgrades a member client to a spoke (wrapping `relay join`, M.RLY-T16/T17). The member''s Phase 1 key is exchanged for
+  a device enrollment, so the member signs in once.
+- Team Wall merges host-run sessions (gateway) and spoke-run sessions (Relay presence and term subjects, M.RLY-T18,
+  T20, T23) in one list with one grant model (M.RLY-T21) and one consent rule (M.RLY-T22, the same toast as Phase 2).
+- Claude credentials, masking, share, pause and consent stay on the spoke.
+- Client mode and the peer gateway keep working.
+
+**Acceptance:**
+- Hub down: the spoke''s CLIs, hooks and pacing carry on; only remote visibility stops, and it returns on reconnect.
+- Standalone unchanged (Phase 0 tests green).', '2026-11-11T15:54:14Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1643', 'From the M.ORCH-T1127 plan, docs/research/hub-and-spoke.md, Phase 4. Requires Phase 3 and M.RLY-T24, T25, T26.
+Orchestrator-side integration only.
+
+**Story.** Spokes work the same ticket queue as the host with no double claims, and the hooks and Tickets Desktop keep
+reading a local replica.
+
+**Do:**
+- A joined spoke stops using the gateway `/tickets` shim and the pull-refreshed mirror; its data/Tickets.db is the
+  TIX-stream replica (M.RLY-T24). Writes go to the hub (M.RLY-T26).
+- `orchestrator next --claim` on a spoke goes through `tix.cmd.claim` and holds a lease (M.RLY-T25); a lost lease
+  stops that ticket''s subagent the way AgentAbort does and keeps its worktree.
+- Only the hub machine git-syncs data/*.db; the daemon''s SyncTicketsDbIfDue and SyncOrchestratorDbIfDue are off on a
+  spoke (they already are on a client).
+- Clients (Phase 1/2) keep the shim; moving a client to a spoke rebuilds the replica and keeps the old file as
+  .prejoin.
+
+**Acceptance:**
+- Two spokes claiming at once never get the same ticket; a stale completion is refused; an offline spoke keeps its
+  lease through the grace window.
+- Standalone and host claim locally exactly as today.', '2026-11-11T15:54:17Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1644', 'From the M.ORCH-T1127 plan, docs/research/hub-and-spoke.md, Phase 5. Requires Phase 4 and M.RLY-T27 to T30; touches
+the M.ORCH-T1501 follow-ups.
+
+**Story.** The org''s pacing policy is set once and holds on every machine, work can go to a member''s machine that
+opted in, branch builds send the test run to the right machine, and the hub can live on a dedicated box.
+
+**Do:**
+- Policy (org limit, org allow, pace target, routing) is written at the hub and enforced locally on host and spokes
+  (M.RLY-T27); one login live on several machines splits its allowance (M.RLY-T28). Offline: the last policy, then
+  the defaults.
+- Opt-in remote dispatch (AcceptDispatch, set by the member on their own machine; M.RLY-T29). The hub never turns
+  /allocate on in a CLI. Failover never moves a CLI onto another person''s login.
+- Branch builds (M.ORCH-T1501): the host keeps building origin/work/* branches; the "local test run" goes to the
+  member whose ticket the branch carries, on their own spoke, and their sign-off merges it. A member without a spoke
+  falls back to the owner''s machine as today.
+- Operations (M.RLY-T30): hub deploy and backup, moving the hub to a dedicated tailnet box with pin rotation, a device
+  revocation UI, version-skew (N/N-1) and chaos tests (hub kill, spoke sleep). Mind the week-unattended goal
+  (M.ORCH-T1611) and the memory guard on the hub.
+
+**Acceptance:**
+- A policy change reaches every machine; an offline machine uses the last one; nobody exceeds a cutoff because of lag.
+- Dispatch is refused to a machine that didn''t opt in.
+- Standalone unchanged.', '2026-11-11T15:54:21Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T833', 'Symptom: Inside the Orchestrator''s embedded Terminals panel (TerminalPanesHost), when a CLI running
 in a pane shows an interactive, arrow-key-driven menu (e.g. a selection list or permission prompt),
 the Up/Down/Left/Right keys don''t reach the CLI. It looks like the WPF app is intercepting/consuming
@@ -91623,6 +91824,12 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1617', 'nex
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1618', 'dock/undock help markup crash', '2026-11-11T07:33:13Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1619', 'Daemon restart backoff to Vault', '2026-11-11T07:34:37Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1620', 'BusyRetries to Vault', '2026-11-11T07:41:39Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1639', 'Hub phase 0', '2026-11-11T15:54:07Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1640', 'Hub phase 1', '2026-11-11T15:54:09Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1641', 'Hub phase 2', '2026-11-11T15:54:12Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1642', 'Hub phase 3', '2026-11-11T15:54:14Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1643', 'Hub phase 4', '2026-11-11T15:54:17Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1644', 'Hub phase 5', '2026-11-11T15:54:21Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T10', 'Publish on NexusMods', '2026-11-10T01:37:57Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T11', 'Rename namespaces to Mech5Mercs.SaveEditor', '2026-11-10T01:40:21Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T116', 'Add-on packs for mods', '2026-11-10T23:54:41Z');
@@ -96441,6 +96648,23 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1587', 'M.ORCH-T
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1588', 'M.ORCH-T1585', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1589', 'M.ORCH-T1585', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1590', 'M.ORCH-T1585', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1639', 'M.ORCH-T1127', 'follow-up-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1639', 'M.RLY-T13', 'related', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1640', 'M.ORCH-T1127', 'follow-up-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1640', 'M.ORCH-T1639', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1641', 'M.ORCH-T1127', 'follow-up-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1641', 'M.ORCH-T1640', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1642', 'M.ORCH-T1127', 'follow-up-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1642', 'M.ORCH-T1641', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1642', 'M.RLY-T15', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1642', 'M.RLY-T23', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1643', 'M.ORCH-T1127', 'follow-up-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1643', 'M.ORCH-T1642', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1643', 'M.RLY-T25', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1643', 'M.RLY-T26', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1644', 'M.ORCH-T1127', 'follow-up-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1644', 'M.ORCH-T1643', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1644', 'M.RLY-T30', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T180', 'M.TIX-T65', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T181', 'M.COMP-T11', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T182', 'M.COMP-T12', 'requires', NULL);
