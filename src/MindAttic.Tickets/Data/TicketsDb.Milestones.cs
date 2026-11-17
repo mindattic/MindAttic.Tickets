@@ -218,7 +218,8 @@ public sealed partial class TicketsDb
 
     private static string MilestoneName(string? name)
     {
-        var title = OneLine(name ?? "");
+        // One line, single-spaced: names are matched without case, so two that differ only in spacing would read as one.
+        var title = string.Join(' ', (name ?? "").Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries));
         if (title.Length == 0) throw new ArgumentException("A milestone needs a name.", nameof(name));
         if (IsMilestoneId(title)) throw new ArgumentException($"'{title}' reads as a milestone's ID; name it something else.", nameof(name));
         return title;
