@@ -6223,6 +6223,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LNCH-T126', 'MindAttic.Launcher', 126, '2026-11-16', 'fix', 'open', 'Fails on main: MindAttic.Launcher.Tests.WindowsTerminalLauncherTests.A_utility_tab_always_opens_wt_even_when_embedded — System.InvalidOperationException : a non-agent-host tab must not touch the pipe (landed on main since the last green run: tickets M.LNCH-T125 in 5a18bf8 Open Command Prompt (Admin), Open PowerShell (Admin) and a project''s Run Command now open as CLI tabs in the Orchestrator''s dashboard instead of an external wt window (M.LNCH-T125))', 'main@5a18bf8', 125, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LNCH-T127', 'MindAttic.Launcher', 127, '2026-11-17', 'docs', 'closed', 'Update USER_STORIES.md', '—', 126, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LNCH-T128', 'MindAttic.Launcher', 128, '2026-11-17', 'chore', 'open', 'Nightly backup: also back up the localhost SQL instance, upload the Databases folder to Azure Blob (db-backups), find why recent runs end 0x40010004 with no databases', '—', 127, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LNCH-T129', 'MindAttic.Launcher', 129, '2026-11-17', 'fix', 'open', 'Fails on main: MindAttic.Launcher.Tests.LampSettingsTests.ManifestShowsCollectionsWithTheirFieldsAndHidesExtensionData — Assert.That(m.Fields.Select(f => f.Property), Is.EquivalentTo(new[] { "windowsTerminalSettingsPath", "agentProviders", "projects", "discoveryIgnore" })) Expected: equivalent to < "windowsTerminalSettingsPath", "agentProviders", "projects", "discoveryIgnore" > But was: < "windowsTerminalSettingsPa... (landed on main since the last green run: tickets M.LNCH-T128, M.LNCH-T127, M.LNCH-T125 in 50ab5f5 Nightly backup: back up every database on localhost as well as LocalDB, run the databases before the long file copy, and upload the night''s Databases folder to Azure blob storage with pruning (M.LNCH-T128); a4763e4 Update USER_STORIES.md (M.LNCH-T127); 5a18bf8 Open Command Prompt (Admin), Open PowerShell (Admin) and a project''s Run Command now open as CLI tabs in the Orchestrator''s dashboard instead of an external wt window (M.LNCH-T125))', 'main@50ab5f5', 128, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LNCH-T130', 'MindAttic.Launcher', 130, '2026-11-17', 'fix', 'open', 'Fails on main: MindAttic.Launcher.Tests.LampSettingsTests.EverySettingHasItsOwnTest — backupSqlInstances Assert.That(tested.Any(t => t.StartsWith("Setting_" + char.ToUpperInvariant(field.Property[0]) + field.Property[1..] + "_")), Is.True) Expected: True But was: False (landed on main since the last green run: tickets M.LNCH-T128, M.LNCH-T127, M.LNCH-T125 in 50ab5f5 Nightly backup: back up every database on localhost as well as LocalDB, run the databases before the long file copy, and upload the night''s Databases folder to Azure blob storage with pruning (M.LNCH-T128); a4763e4 Update USER_STORIES.md (M.LNCH-T127); 5a18bf8 Open Command Prompt (Admin), Open PowerShell (Admin) and a project''s Run Command now open as CLI tabs in the Orchestrator''s dashboard instead of an external wt window (M.LNCH-T125))', 'main@50ab5f5', 129, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LEGN-T1', 'MindAttic.Legion', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.LEGN-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LEGN-T2', 'MindAttic.Legion', 2, '2026-10-13', 'fix', 'closed', 'Restore LlmProviderCatalog to live-verified model ids (all 13 providers) and expand the default trusted/voting set from 4 to 9 providers', 'M.LEGN-LAW-5, ActiveProviderIds_DefaultAllowedSet_IsTheTrustedProviders, AskCommandTests.TrustedProviderIds_MatchesCatalogDefaultSet', 1, '| M.LEGN-T2 | 2026-10-13 | fix | closed | Restore LlmProviderCatalog to live-verified model ids (all 13 providers) and expand the default trusted/voting set from 4 to 9 providers | M.LEGN-LAW-5, ActiveProviderIds_DefaultAllowedSet_IsTheTrustedProviders, AskCommandTests.TrustedProviderIds_MatchesCatalogDefaultSet |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LEGN-T3', 'MindAttic.Legion', 3, '2026-10-14', 'chore', 'closed', 'NUnit tests for LegionConfig (Models/LegionConfig.cs): LoadFromDirectory walks up parent dirs to find legion.json (stops after 12 levels, null when absent or path invalid), LoadFromFile tolerates comments/trailing commas/case-insensitive keys and returns null on malformed JSON, ApplyTo replaces AllowedProviderIds only when voters is non-empty (case-insensitive set), sets JudgeProviderId only when non-blank, merges models/apiKeys skipping blank keys or values, applies maxConcurrency; this is how every project declares its voter panel and the CLI vote command depends on it', 'MindAttic.Legion.Tests/LegionConfigTests.cs (cdea439)', 2, NULL);
@@ -8070,6 +8072,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1747', 'MindAttic.Orchestrator', 1747, '2026-11-17', 'feature', 'open', 'Dashboard: an Agents panel under each user showing each agent''s role, state, unit and last heartbeat (roadmap Phase 1)', '—', 1746, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1748', 'MindAttic.Orchestrator', 1748, '2026-11-17', 'chore', 'open', 'Azure SQL migration: run the server store against Azure SQL Database (skip CREATE DATABASE and the sp_configure memory cap on Azure, honour configured auth and timeouts)', '—', 1747, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1749', 'MindAttic.Orchestrator', 1749, '2026-11-17', 'fix', 'closed', 'Pacer no longer holds ~98% 5-hour target: flatlines near 0% or blows through to 100%', '—', 1748, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1750', 'MindAttic.Orchestrator', 1750, '2026-11-17', 'fix', 'open', 'Pacing let a session burst past the 5-hour line: usage hit 91.6% at 4:37 PM (pace line 34%), projected 150.9% at the 7:50 PM reset, while the UserPromptSubmit hook kept saying ''under the 90% line, run at full speed'' and allowing up to 16 subagents', '—', 1749, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T1', 'MindAttic.Orchestrator.SIDEBAR', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T2', 'MindAttic.Orchestrator.SIDEBAR', 2, '2026-11-05', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.SettingsModalTests.The_org_login_toolbar_is_the_Logins_dialogs_body — Assert.That(code, Does.Not.Contain("SettingsModal").And.Not.Contain("SizeSettings")) Expected: not String containing "SettingsModal" and not containing "SizeSettings" But was: "using System.Collections.Specialized; using System.Runtime.InteropServices; using System.Windows; using System.Windows.A... (landed on main since the last green run: tickets M.ORCH-T1310 in 864030c4 Cli csproj finds the workspace from any <workspace>.worktrees\<repo>\<name> checkout (drops .worktrees), so the main-tests build resolves MindAttic.Helpers without run.ps1''s MindAtticRoot (M.ORCH-T1310))', 'passes on main@270cb89', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T3', 'MindAttic.Orchestrator.SIDEBAR', 3, '2026-11-05', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.LibraryOnlyXamlTests.Every_xaml_element_is_a_library_control_or_library_styled — Assert.That(Violations(files), Is.Empty) Expected: <empty> But was: < "MainWindow.xaml:33 <Style>: a style with a template or resources of its own", "MainWindow.xaml:42 <ControlTemplate>: neither a library control nor library-styled", "MainWindow.xaml:43 <Border>: Background="{TemplateBinding Bac... (landed on main since the last green run: tickets M.ORCH-T1310 in 864030c4 Cli csproj finds the workspace from any <workspace>.worktrees\<repo>\<name> checkout (drops .worktrees), so the main-tests build resolves MindAttic.Helpers without run.ps1''s MindAtticRoot (M.ORCH-T1310))', 'passes on main@270cb89', 2, NULL);
@@ -11090,7 +11093,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T998', 'Prose', 998, '2026-11-17', 'chore', 'open', 'Azure SQL migration: connection resiliency (retry + 60s connect timeout) for a serverless database that auto-pauses, guard the PREVIEW_FEATURES statement on Azure, scripts read the configured connection string instead of hard-coded LocalDB, Entra auth support', '—', 997, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T999', 'Prose', 999, '2026-11-17', 'fix', 'closed', 'Author 2026-11-17: remove everything hell-based or recognizable from another series; keep only creature KINDS that could come through a Schism the way fantasy shares orcs and goblins, never a named being (not ''literally Sauron''), nothing clearly lifted; strip source names; supersede the Mythos-line rulings (root PRS-T987)', '~1,040 + 67 imported records archived (triage\archived*.jsonl); 154 kinds rewritten, source fields cleared; laws 01a1eb64-3600 -> codex 01a1eb84-25bd, bans 01a1eb84-6622/-6f34', 998, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1000', 'Prose', 1000, '2026-11-17', 'feature', 'closed', 'THE CODEX wave 1 (author 2026-11-17): ~240 brand-new extradimensional creatures in the spirit of cosmic horror, nothing copied, across ten classes (organic, synthetic, post-technological, geometric, energetic, pattern-life, hives, strays, absences, thresholds and echoes); catalogues are mood only (root PRS-T987)', '240 new codex creatures in 10 classes loaded, 0 errors (codex\pushed_NN.jsonl); law 01a1eb85-d84c', 999, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1001', 'Prose', 1001, '2026-11-17', 'feature', 'open', 'Weave the codex into Babineaux''s Guide to the Otherworldly: designations/finder names on first mention, the drop and the waking at every creature description, ''they come in at the angles'' planted once, new codex creatures on Ren''s jobs (root PRS-T987, first book of PRS-T993)', 'PRS-T993', 1000, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1001', 'Prose', 1001, '2026-11-17', 'feature', 'closed', 'Weave the codex into Babineaux''s Guide to the Otherworldly: designations/finder names on first mention, the drop and the waking at every creature description, ''they come in at the angles'' planted once, new codex creatures on Ren''s jobs (root PRS-T987, first book of PRS-T993)', '64 splices across 24 chapters (weave\splice_A.json, splice_BCD.json), archived first; angles line planted ch3 (great-aunt at Val''s table), echoes ch16+ch20; 18 drop-and-waking passages; ~22 codex creatures brought in; capture clean, 0 law hits; F5 read deferred to final pass', 1000, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -74787,6 +74790,68 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74400, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74401, 'PRS-T999', '2026-11-17T22:28:14Z', 'ref', 'PRS-T987', '~1,040 + 67 imported records archived (triage\archived*.jsonl); 154 kinds rewritten, source fields cleared; laws 01a1eb64-3600 -> codex 01a1eb84-25bd, bans 01a1eb84-6622/-6f34');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74402, 'PRS-T1000', '2026-11-17T22:28:15Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74403, 'PRS-T1000', '2026-11-17T22:28:15Z', 'ref', 'PRS-T987', '240 new codex creatures in 10 classes loaded, 0 errors (codex\pushed_NN.jsonl); law 01a1eb85-d84c');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74404, 'M.TIX-T345', '2026-11-17T22:29:59Z', 'working', NULL, 'ryandebraal@gmail.com (d1df465e-8bc3-450f-8874-3e5decdc58c8)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74405, 'PRS-T1001', '2026-11-17T22:32:59Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74406, 'PRS-T1001', '2026-11-17T22:32:59Z', 'ref', 'PRS-T993', '64 splices across 24 chapters (weave\splice_A.json, splice_BCD.json), archived first; angles line planted ch3 (great-aunt at Val''s table), echoes ch16+ch20; 18 drop-and-waking passages; ~22 codex creatures brought in; capture clean, 0 law hits; F5 read deferred to final pass');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74407, 'CM-T7', '2026-11-17T22:33:31Z', 'working', NULL, '0fade312-b514-4495-9fd9-38cf4e99a886');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74408, 'M.LNCH-T129', '2026-11-17T22:34:08Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74409, 'M.LNCH-T130', '2026-11-17T22:34:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74410, 'M.COMP-T117', '2026-11-17T22:34:10Z', 'priority', '751', '753');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74411, 'M.HELP-T16', '2026-11-17T22:34:11Z', 'priority', '750', '752');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74412, 'M.HELP-T17', '2026-11-17T22:34:12Z', 'priority', '749', '751');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74413, 'IDEA-T42', '2026-11-17T22:34:13Z', 'priority', '748', '750');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74414, 'M.VALT-T84', '2026-11-17T22:34:13Z', 'priority', '747', '749');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74415, 'M.VALT-T85', '2026-11-17T22:34:14Z', 'priority', '746', '748');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74416, 'OS-T18', '2026-11-17T22:34:15Z', 'priority', '745', '747');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74417, 'OS-T26', '2026-11-17T22:34:16Z', 'priority', '744', '746');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74418, 'OS-T28', '2026-11-17T22:34:16Z', 'priority', '743', '745');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74419, 'M.COMP-T169', '2026-11-17T22:34:17Z', 'priority', '742', '744');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74420, 'CS-T2', '2026-11-17T22:34:18Z', 'priority', '741', '743');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74421, 'M.COMP-T186', '2026-11-17T22:34:19Z', 'priority', '740', '742');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74422, 'CS-T4', '2026-11-17T22:34:19Z', 'priority', '739', '741');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74423, 'AGP-T31', '2026-11-17T22:34:20Z', 'priority', '738', '740');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74424, 'M.LNCH-T126', '2026-11-17T22:34:21Z', 'priority', '737', '739');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74425, 'M.ORCH-T1711', '2026-11-17T22:34:22Z', 'priority', '736', '738');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74426, 'M.ORCH-T1712', '2026-11-17T22:34:23Z', 'priority', '735', '737');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74427, 'M.ORCH-T1713', '2026-11-17T22:34:23Z', 'priority', '734', '736');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74428, 'M.ORCH-T1714', '2026-11-17T22:34:24Z', 'priority', '733', '735');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74429, 'M.ORCH-T1715', '2026-11-17T22:34:25Z', 'priority', '732', '734');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74430, 'M.ORCH-T1716', '2026-11-17T22:34:26Z', 'priority', '731', '733');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74431, 'M.ORCH-T1717', '2026-11-17T22:34:26Z', 'priority', '730', '732');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74432, 'M.ORCH-T1718', '2026-11-17T22:34:27Z', 'priority', '729', '731');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74433, 'M.ORCH-T1719', '2026-11-17T22:34:28Z', 'priority', '728', '730');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74434, 'M.ORCH-T1720', '2026-11-17T22:34:29Z', 'priority', '727', '729');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74435, 'M.ORCH-T1721', '2026-11-17T22:34:29Z', 'priority', '726', '728');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74436, 'OS-T51', '2026-11-17T22:34:30Z', 'priority', '725', '727');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74437, 'OS-T52', '2026-11-17T22:34:31Z', 'priority', '724', '726');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74438, 'OS-T53', '2026-11-17T22:34:32Z', 'priority', '723', '725');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74439, 'OS-T54', '2026-11-17T22:34:32Z', 'priority', '722', '724');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74440, 'OS-T55', '2026-11-17T22:34:33Z', 'priority', '721', '723');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74441, 'OS-T56', '2026-11-17T22:34:34Z', 'priority', '720', '722');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74442, 'OS-T57', '2026-11-17T22:34:35Z', 'priority', '719', '721');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74443, 'OS-T58', '2026-11-17T22:34:35Z', 'priority', '718', '720');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74444, 'OS-T59', '2026-11-17T22:34:36Z', 'priority', '717', '719');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74445, 'OS-T60', '2026-11-17T22:34:37Z', 'priority', '716', '718');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74446, 'OS-T61', '2026-11-17T22:34:38Z', 'priority', '715', '717');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74447, 'M.ORCH-T1726', '2026-11-17T22:34:38Z', 'priority', '714', '716');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74448, 'M.ORCH-T1727', '2026-11-17T22:34:39Z', 'priority', '713', '715');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74449, 'OS-T62', '2026-11-17T22:34:40Z', 'priority', '712', '714');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74450, 'OS-T63', '2026-11-17T22:34:41Z', 'priority', '711', '713');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74451, 'IP-T531', '2026-11-17T22:34:42Z', 'priority', '710', '712');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74452, 'IP-T532', '2026-11-17T22:34:43Z', 'priority', '709', '711');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74453, 'IP-T533', '2026-11-17T22:34:43Z', 'priority', '708', '710');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74454, 'IP-T534', '2026-11-17T22:34:44Z', 'priority', '707', '709');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74455, 'IP-T535', '2026-11-17T22:34:45Z', 'priority', '706', '708');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74456, 'IP-T536', '2026-11-17T22:34:46Z', 'priority', '705', '707');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74457, 'IP-T537', '2026-11-17T22:34:46Z', 'priority', '704', '706');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74458, 'IP-T540', '2026-11-17T22:34:47Z', 'priority', '703', '705');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74459, 'IDEA-T58', '2026-11-17T22:34:48Z', 'priority', '702', '704');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74460, 'M.LNCH-T129', '2026-11-17T22:34:49Z', 'priority', '0', '703');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74461, 'M.LNCH-T130', '2026-11-17T22:34:50Z', 'priority', '0', '702');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74462, 'M.ORCH-T1750', '2026-11-17T22:36:54Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74463, 'M.ORCH-T1750', '2026-11-17T22:36:54Z', 'name', NULL, 'Pacing let 5-hour usage overshoot');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74464, 'M.ORCH-T1750', '2026-11-17T22:37:24Z', 'working', NULL, '33845eed-6154-433c-a91f-fb03aef794e7');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74465, 'M.ORCH-T1750', '2026-11-17T22:38:05Z', 'working', '33845eed-6154-433c-a91f-fb03aef794e7', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -74806,7 +74871,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T24', 'proposed', 703, '2026-10-28T16:51:15Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T25', 'proposed', 702, '2026-10-28T16:51:16Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T3', 'approved', 0, '2026-10-28T03:55:06Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T31', 'proposed', 738, '2026-11-17T22:05:39Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T31', 'proposed', 740, '2026-11-17T22:34:20Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T4', 'approved', 0, '2026-10-28T03:55:06Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T5', 'approved', 0, '2026-10-28T03:55:06Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T6', 'approved', 0, '2026-10-28T03:55:06Z', NULL);
@@ -74890,9 +74955,9 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('CM-T5', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('CM-T6', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('CM-T7', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('CS-T2', 'proposed', 741, '2026-11-17T22:05:30Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('CS-T2', 'proposed', 743, '2026-11-17T22:34:18Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('CS-T3', 'proposed', 706, '2026-11-10T04:40:39Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('CS-T4', 'proposed', 739, '2026-11-17T22:05:36Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('CS-T4', 'proposed', 741, '2026-11-17T22:34:19Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('CUR-T12', 'approved', 5, '2026-10-21T04:35:31Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('CUR-T13', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('CUR-T14', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
@@ -75078,10 +75143,10 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IDEA-T29', 'approved', 0, '2026-10-31T14:49:06Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IDEA-T32', 'proposed', 100005, '2026-10-31T19:46:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IDEA-T41', 'proposed', 100002, '2026-11-01T02:15:38Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IDEA-T42', 'proposed', 748, '2026-11-17T22:05:17Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IDEA-T42', 'proposed', 750, '2026-11-17T22:34:13Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IDEA-T45', 'proposed', 100002, '2026-11-01T20:57:28Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IDEA-T5', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IDEA-T58', 'proposed', 702, '2026-11-17T22:06:49Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IDEA-T58', 'proposed', 704, '2026-11-17T22:34:48Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T10', 'approved', 0, '2026-10-31T03:58:00Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T100', 'proposed', 1191, '2026-10-30T19:27:56Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T101', 'approved', 1190, '2026-10-31T02:56:20Z', NULL);
@@ -75380,15 +75445,15 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T52', 'proposed', 1239, '2026-10-30T19:25:17Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T521', 'proposed', 729, '2026-11-17T08:55:58Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T53', 'proposed', 1238, '2026-10-30T19:25:20Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T531', 'proposed', 710, '2026-11-17T22:06:36Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T532', 'proposed', 709, '2026-11-17T22:06:38Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T533', 'proposed', 708, '2026-11-17T22:06:39Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T534', 'proposed', 707, '2026-11-17T22:06:41Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T535', 'proposed', 706, '2026-11-17T22:06:43Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T536', 'proposed', 705, '2026-11-17T22:06:44Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T537', 'proposed', 704, '2026-11-17T22:06:46Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T531', 'proposed', 712, '2026-11-17T22:34:42Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T532', 'proposed', 711, '2026-11-17T22:34:43Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T533', 'proposed', 710, '2026-11-17T22:34:43Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T534', 'proposed', 709, '2026-11-17T22:34:44Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T535', 'proposed', 708, '2026-11-17T22:34:45Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T536', 'proposed', 707, '2026-11-17T22:34:46Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T537', 'proposed', 706, '2026-11-17T22:34:46Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T54', 'proposed', 1237, '2026-10-30T19:25:22Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T540', 'proposed', 703, '2026-11-17T22:06:48Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T540', 'proposed', 705, '2026-11-17T22:34:47Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T55', 'proposed', 1236, '2026-10-30T19:25:24Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T56', 'proposed', 1235, '2026-10-30T19:25:27Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T57', 'proposed', 1234, '2026-10-30T19:25:29Z', NULL);
@@ -75516,7 +75581,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T112', 'proposed', -1, '2026-10-24T17:52:32Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T113', 'proposed', -1, '2026-10-24T17:52:34Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T114', 'approved', 0, '2026-10-24T18:58:57Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T117', 'proposed', 751, '2026-11-17T22:05:11Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T117', 'proposed', 753, '2026-11-17T22:34:10Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T12', 'approved', 0, '2026-10-20T16:16:37Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T120', 'proposed', 0, '2026-10-28T02:39:06Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T121', 'approved', 0, '2026-10-31T14:45:16Z', NULL);
@@ -75529,10 +75594,10 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T158', 'approved', 0, '2026-10-31T14:46:32Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T159', 'approved', 0, '2026-10-31T14:52:01Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T165', 'proposed', 709, '2026-11-07T16:57:50Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T169', 'proposed', 742, '2026-11-17T22:05:28Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T169', 'proposed', 744, '2026-11-17T22:34:17Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T175', 'proposed', 702, '2026-11-10T05:34:06Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T18', 'rejected', 0, '2026-10-20T16:03:42Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T186', 'proposed', 740, '2026-11-17T22:05:32Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T186', 'proposed', 742, '2026-11-17T22:34:19Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T30', 'approved', 0, '2026-10-20T16:16:36Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T31', 'approved', 0, '2026-10-20T16:16:36Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T32', 'approved', 0, '2026-10-20T16:16:36Z', NULL);
@@ -75578,8 +75643,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.EXPT-T6', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.HELP-T10', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.HELP-T15', 'proposed', 100007, '2026-11-01T04:23:09Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.HELP-T16', 'proposed', 750, '2026-11-17T22:05:13Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.HELP-T17', 'proposed', 749, '2026-11-17T22:05:15Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.HELP-T16', 'proposed', 752, '2026-11-17T22:34:11Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.HELP-T17', 'proposed', 751, '2026-11-17T22:34:12Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.HELP-T4', 'approved', 5, '2026-10-21T04:35:35Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.HELP-T5', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.HELP-T6', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
@@ -75604,8 +75669,10 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T11', 'approved', 0, '2026-10-23T19:14:18Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T112', 'proposed', 716, '2026-11-10T14:26:25Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T12', 'approved', 0, '2026-10-23T19:14:18Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T126', 'proposed', 737, '2026-11-17T22:05:42Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T126', 'proposed', 739, '2026-11-17T22:34:21Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T129', 'proposed', 703, '2026-11-17T22:34:49Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T13', 'approved', 0, '2026-10-23T19:14:18Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T130', 'proposed', 702, '2026-11-17T22:34:50Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T14', 'approved', 0, '2026-10-23T19:14:19Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T15', 'approved', 0, '2026-10-23T19:14:19Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T16', 'approved', 0, '2026-10-23T19:14:19Z', NULL);
@@ -75888,21 +75955,21 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1707', 'proposed', 704, '2026-11-17T06:08:03Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1708', 'proposed', 703, '2026-11-17T06:08:05Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1709', 'proposed', 702, '2026-11-17T06:08:06Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1711', 'proposed', 736, '2026-11-17T22:05:44Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1712', 'proposed', 735, '2026-11-17T22:05:46Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1713', 'proposed', 734, '2026-11-17T22:05:49Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1714', 'proposed', 733, '2026-11-17T22:05:51Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1715', 'proposed', 732, '2026-11-17T22:05:53Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1716', 'proposed', 731, '2026-11-17T22:05:54Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1717', 'proposed', 730, '2026-11-17T22:05:55Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1718', 'proposed', 729, '2026-11-17T22:05:59Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1719', 'proposed', 728, '2026-11-17T22:06:02Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1711', 'proposed', 738, '2026-11-17T22:34:22Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1712', 'proposed', 737, '2026-11-17T22:34:23Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1713', 'proposed', 736, '2026-11-17T22:34:23Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1714', 'proposed', 735, '2026-11-17T22:34:24Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1715', 'proposed', 734, '2026-11-17T22:34:25Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1716', 'proposed', 733, '2026-11-17T22:34:26Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1717', 'proposed', 732, '2026-11-17T22:34:26Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1718', 'proposed', 731, '2026-11-17T22:34:27Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1719', 'proposed', 730, '2026-11-17T22:34:28Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T172', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1720', 'proposed', 727, '2026-11-17T22:06:04Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1721', 'proposed', 726, '2026-11-17T22:06:08Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1720', 'proposed', 729, '2026-11-17T22:34:29Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1721', 'proposed', 728, '2026-11-17T22:34:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1722', 'proposed', 714, '2026-11-17T07:35:25Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1726', 'proposed', 714, '2026-11-17T22:06:28Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1727', 'proposed', 713, '2026-11-17T22:06:29Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1726', 'proposed', 716, '2026-11-17T22:34:38Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1727', 'proposed', 715, '2026-11-17T22:34:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1733', 'approved', 0, '2026-11-17T19:05:32Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1736', 'approved', 0, '2026-11-17T19:05:41Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1737', 'approved', 0, '2026-11-17T19:05:48Z', NULL);
@@ -76441,8 +76508,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T60', 'approved', 0, '2026-10-31T15:43:56Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T62', 'approved', 0, '2026-10-31T15:58:41Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T66', 'proposed', 100003, '2026-10-31T19:19:59Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T84', 'proposed', 747, '2026-11-17T22:05:18Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T85', 'proposed', 746, '2026-11-17T22:05:20Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T84', 'proposed', 749, '2026-11-17T22:34:13Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T85', 'proposed', 748, '2026-11-17T22:34:14Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.WEB-T10', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.WEB-T14', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.WEB-T7', 'approved', 5, '2026-10-21T04:35:37Z', NULL);
@@ -76516,7 +76583,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T15', 'proposed', 718, '2026-11-07T07:35:25Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T16', 'proposed', 714, '2026-11-06T07:44:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T17', 'proposed', 717, '2026-11-07T07:35:25Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T18', 'proposed', 745, '2026-11-17T22:05:22Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T18', 'proposed', 747, '2026-11-17T22:34:15Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T19', 'proposed', 707, '2026-11-06T07:44:57Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T2', 'proposed', 723, '2026-11-07T07:35:21Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T20', 'proposed', 705, '2026-11-06T08:06:43Z', NULL);
@@ -76525,9 +76592,9 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T23', 'proposed', 704, '2026-11-07T02:31:35Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T24', 'proposed', 714, '2026-11-07T07:35:28Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T25', 'proposed', 715, '2026-11-07T05:34:37Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T26', 'proposed', 744, '2026-11-17T22:05:24Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T26', 'proposed', 746, '2026-11-17T22:34:16Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T27', 'proposed', 712, '2026-11-07T07:35:29Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T28', 'proposed', 743, '2026-11-17T22:05:26Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T28', 'proposed', 745, '2026-11-17T22:34:16Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T29', 'proposed', 711, '2026-11-07T05:34:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T3', 'proposed', 722, '2026-11-07T07:35:22Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T30', 'proposed', 710, '2026-11-07T07:35:30Z', NULL);
@@ -76553,20 +76620,20 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T49', 'proposed', 705, '2026-11-17T02:40:35Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T5', 'proposed', 721, '2026-11-07T07:35:23Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T50', 'proposed', 702, '2026-11-17T02:40:37Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T51', 'proposed', 725, '2026-11-17T22:06:11Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T52', 'proposed', 724, '2026-11-17T22:06:13Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T53', 'proposed', 723, '2026-11-17T22:06:15Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T54', 'proposed', 722, '2026-11-17T22:06:16Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T55', 'proposed', 721, '2026-11-17T22:06:17Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T56', 'proposed', 720, '2026-11-17T22:06:19Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T57', 'proposed', 719, '2026-11-17T22:06:20Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T58', 'proposed', 718, '2026-11-17T22:06:23Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T59', 'proposed', 717, '2026-11-17T22:06:24Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T51', 'proposed', 727, '2026-11-17T22:34:30Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T52', 'proposed', 726, '2026-11-17T22:34:31Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T53', 'proposed', 725, '2026-11-17T22:34:32Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T54', 'proposed', 724, '2026-11-17T22:34:32Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T55', 'proposed', 723, '2026-11-17T22:34:33Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T56', 'proposed', 722, '2026-11-17T22:34:34Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T57', 'proposed', 721, '2026-11-17T22:34:35Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T58', 'proposed', 720, '2026-11-17T22:34:35Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T59', 'proposed', 719, '2026-11-17T22:34:36Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T6', 'proposed', 706, '2026-11-05T22:40:52Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T60', 'proposed', 716, '2026-11-17T22:06:25Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T61', 'proposed', 715, '2026-11-17T22:06:26Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T62', 'proposed', 712, '2026-11-17T22:06:32Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T63', 'proposed', 711, '2026-11-17T22:06:35Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T60', 'proposed', 718, '2026-11-17T22:34:37Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T61', 'proposed', 717, '2026-11-17T22:34:38Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T62', 'proposed', 714, '2026-11-17T22:34:40Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T63', 'proposed', 713, '2026-11-17T22:34:41Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T7', 'proposed', 720, '2026-11-07T07:35:23Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T8', 'proposed', 719, '2026-11-07T07:35:24Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T9', 'proposed', 706, '2026-11-05T23:15:10Z', NULL);
@@ -77804,6 +77871,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T99', 'proposed', 0, '2026-11-07T06:47:27Z', NULL);
 
 -- ticket_work
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('CM-T7', NULL, 0, NULL, '0fade312-b514-4495-9fd9-38cf4e99a886', '2026-11-17T22:33:31Z', '2026-11-17T22:33:31Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1738', NULL, 0, 'ryandebraal@gmail.com', 'd1df465e-8bc3-450f-8874-3e5decdc58c8', '2026-11-17T20:40:31Z', '2026-11-17T20:40:31Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
@@ -77844,6 +77912,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T32', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:58:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T33', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:58:46Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T34', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:58:46Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T345', NULL, 0, 'ryandebraal@gmail.com', 'd1df465e-8bc3-450f-8874-3e5decdc58c8', '2026-11-17T22:29:59Z', '2026-11-17T22:29:59Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T35', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:58:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T36', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:58:48Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T37', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:58:49Z');
@@ -80316,6 +80385,22 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31326, '
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31327, 'MAT-T140', 'ryand', '2026-11-17T21:17:39Z', 'User direction 2026-11-17: cut over ALL SQL Server databases in one coordinated window - stage every change first, then a single stop / catch-up / repoint / redeploy / restart after which everything should just work. No more piecemeal cutovers.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31328, 'IP-T542', 'ryand', '2026-11-17T21:28:51Z', 'Commit 6c2e8d66 (built only, pushed): history database online window for Azure SQL serverless. Trading days 03:30-20:30 ET (17:30 on early-close days), from TradingSchedule.DatabaseOnlineWindow. On Azure only: the Monitor tick (leader-only) starts one background wake per trading day at the window start or on a mid-window Hub start, then a keep-alive every 20 min; a failed wake is an error log, audit row history-wake-failed and one owner text per day, retried every 60 s. HistoryBackfillWorker is gated to the window and its nightly pass moves to close+5 min; research scan and gapper radar skip with exit 0 outside the window unless --wake-database. Settings: history.online.enforced/leadMinutes/tailMinutes/keepAliveMinutes/wakeRetrySeconds, history.backfill.nightlyAfterCloseMinutes. Not done: jobs.json (MindAttic.Scheduler) schedule changes are recommended in the report, not made; docs/CLI_COMMANDS.md and MCP_TOOLS.md not regenerated (needs idiotproof agent export); DatabaseOnlineWindowTests added but not run; the installed Hub does not have this until the next publish.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31329, 'M.TIX-T344', 'ryand', '2026-11-17T21:39:55Z', 'Committed 183696c (pushed, built, tests added but unrun, nothing deployed). The copy in data/Tickets.db now follows a write by the rows that changed: schema 9 turns SQL Server change tracking on for all 23 tables at the next open by a new build; the file''s SQLite header (user_version, application_id) carries the change-tracking version it is complete up to, tied to the database and to the file''s schema cookie; one round trip asks for the keys changed since with their current rows and per-table counts; an unanswerable mark, a count mismatch or tickets db sync reads tables whole; any fault in the new path falls back to the old whole-table copy. Render (every repo''s page after new/close) reads the file instead of the server when the file was just brought up to date. Tickets.sql (Dump) is only written by tickets db sync and still reads the server, because its ORDER BY uses the server''s collations. Not yet run against any SQL Server: needs /test (CopyByChangesTests) before deploy, and the CLI, Desktop, Orchestrator and Launcher should move to the new library together.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31330, 'M.ORCH-T1750', 'ryand', '2026-11-17T22:37:13Z', '![image 7](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/M.ORCH-T1750/2026-11-17-image-7.png)
+
+**Symptom.** The author says it "should be IMPOSSIBLE to go over". The 5-hour line showed 91.6% used at about 4:37 PM against a pace line of 34%. It had been over the pace line for 89 minutes and was projected to reach 150.9% at the 7:50 PM reset (100% at 5:03 PM).
+
+**What the hook said during the burst** (Prose session 33845eed, one bestiary campaign fanning out about 80 large subagents in waves of 10-16):
+- At 22%, 35%, 46%, 53%, 57%, 75% and 80% usage the UserPromptSubmit text read "Usage is at N%, under the 90% line where pacing starts, so run at full speed: a subagent on every ticket ..., parallel subagents for independent pieces". It allowed up to 16 at once.
+- Pacing only engaged around 88-90%, after the burst was already committed: "Subagents: 1 at once ... ahead of the 5-hour pace".
+
+**Likely cause.** The gate compares usage with a fixed 90% ceiling, not with the time-proportional pace line. A burst early in the window passes as "under the line" while it runs far ahead of the pace (91.6% vs 34%). Already-running subagents also keep spending after the gate trips, so the overshoot carries past 100%.
+
+**Expected.** Exceeding the 5-hour limit should be impossible.
+- Throttle against the pace line, or against projected-at-reset, not the flat 90%.
+- Count the committed spend of subagents already running.
+- Shrink the allowed fan-out as the projection approaches the target.
+- Never tell a session to "run at full speed" while it''s over the pace line.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31331, 'M.ORCH-T1750', 'ryand', '2026-11-17T22:38:46Z', 'Author 2026-11-17: ''every new CLI auto has /pacing on''. So the overshoot happened with pacing ON for the whole session (33845eed): this is not a session that opted out. The pace gate itself let a single CLI drive the 5-hour window from ~20% to 91.6% while the pace line was at 34%.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
@@ -88455,6 +88540,17 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1732
 
 <!-- A checklist of what must be true for it to be done. -->', '2026-11-17T18:45:20Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1749', 'User report 2026-11-17: Amy''s 5-hour utilization chart flatlined near 0-5% idle for a full 5-hour window (no ramp at all), and ryandebraal hit the 100% cap outright - the whole point of the pacer is to make that impossible. Both started after RAM/disk free-space changes (MemoryGuard/pagefile work). Expected: 45-degree ramp from window start, landing ~98% at window end via added/removed pauses between calls. Screenshot (Amy flatline) ![image 1](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/_inbox/d0e6a753-fe28-4c4a-9c39-365b34e62209/2026-11-17-image-1.png) - note: the image attached to the ryandebraal 100%-cap report may have been overwritten by filename collision; need to confirm with user.', '2026-11-17T20:32:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1750', '## Symptom
+
+<!-- What goes wrong, and how to see it. -->
+
+## Cause
+
+<!-- Why it happens, once known. -->
+
+## Test
+
+<!-- The test that fails before the fix and passes after. -->', '2026-11-17T22:36:54Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T833', 'Symptom: Inside the Orchestrator''s embedded Terminals panel (TerminalPanesHost), when a CLI running
 in a pane shows an interactive, arrow-key-driven menu (e.g. a selection list or permission prompt),
 the Up/Down/Left/Right keys don''t reach the CLI. It looks like the WPF app is intercepting/consuming
@@ -95615,6 +95711,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1744', 'orc
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1745', 'Agent mailbox', '2026-11-17T20:14:31Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1746', 'Role on handouts and assignments', '2026-11-17T20:14:34Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1747', 'Dashboard Agents panel', '2026-11-17T20:14:49Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1750', 'Pacing let 5-hour usage overshoot', '2026-11-17T22:36:54Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.SCHD-T33', 'GridGame nightly job', '2026-11-17T05:50:37Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.TIX-T335', 'Milestones in the ticket store', '2026-11-17T04:57:04Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.TIX-T336', 'Milestones view in Tickets Desktop', '2026-11-17T04:57:06Z');
