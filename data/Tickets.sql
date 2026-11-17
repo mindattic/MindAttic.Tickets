@@ -8025,6 +8025,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1729', 'MindAttic.Orchestrator', 1729, '2026-11-17', 'docs', 'closed', 'Update USER_STORIES.md', '—', 1728, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1730', 'MindAttic.Orchestrator', 1730, '2026-11-17', 'fix', 'closed', 'Right-click menu on a login/user opens its CLI outside Orchestrator instead of as a new CLI tab for that user', '—', 1729, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1731', 'MindAttic.Orchestrator', 1731, '2026-11-17', 'docs', 'closed', 'Update USER_STORIES.md', '—', 1730, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1732', 'MindAttic.Orchestrator', 1732, '2026-11-17', 'feature', 'open', 'Dashboard Inbox: add real Approve and Delegate (assign/work-now) actions on rows, plus a detail flyout, instead of copy-to-clipboard only', '—', 1731, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T1', 'MindAttic.Orchestrator.SIDEBAR', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T2', 'MindAttic.Orchestrator.SIDEBAR', 2, '2026-11-05', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.SettingsModalTests.The_org_login_toolbar_is_the_Logins_dialogs_body — Assert.That(code, Does.Not.Contain("SettingsModal").And.Not.Contain("SizeSettings")) Expected: not String containing "SettingsModal" and not containing "SizeSettings" But was: "using System.Collections.Specialized; using System.Runtime.InteropServices; using System.Windows; using System.Windows.A... (landed on main since the last green run: tickets M.ORCH-T1310 in 864030c4 Cli csproj finds the workspace from any <workspace>.worktrees\<repo>\<name> checkout (drops .worktrees), so the main-tests build resolves MindAttic.Helpers without run.ps1''s MindAtticRoot (M.ORCH-T1310))', 'passes on main@270cb89', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T3', 'MindAttic.Orchestrator.SIDEBAR', 3, '2026-11-05', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.LibraryOnlyXamlTests.Every_xaml_element_is_a_library_control_or_library_styled — Assert.That(Violations(files), Is.Empty) Expected: <empty> But was: < "MainWindow.xaml:33 <Style>: a style with a template or resources of its own", "MainWindow.xaml:42 <ControlTemplate>: neither a library control nor library-styled", "MainWindow.xaml:43 <Border>: Background="{TemplateBinding Bac... (landed on main since the last green run: tickets M.ORCH-T1310 in 864030c4 Cli csproj finds the workspace from any <workspace>.worktrees\<repo>\<name> checkout (drops .worktrees), so the main-tests build resolves MindAttic.Helpers without run.ps1''s MindAtticRoot (M.ORCH-T1310))', 'passes on main@270cb89', 2, NULL);
@@ -11024,6 +11025,14 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T984', 'Prose', 984, '2026-11-17', 'chore', 'closed', 'Resolve orphaned findings by reconstructed node-id-suffix slug (FindingsCli/FindingsService altFilePathPrefix)', '—', 983, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T985', 'Prose', 985, '2026-11-17', 'docs', 'closed', 'GLMZ universe doc: tag Bridgeport and Miranda mentions missed by the PRS-T3 entity-tagging pass', '—', 984, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T986', 'Prose', 986, '2026-11-17', 'docs', 'closed', 'Update USER_STORIES.md', '—', 985, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T987', 'Prose', 987, '2026-11-17', 'feature', 'open', 'GLMZ bestiary overhaul (author 2026-11-17): AAMA designation + discoverer names, higher/lower-dimension visuals, angel-like geometry, every non-Lovecraft Mythos/cosmic-horror creature canon (HPL''s own not real), entities + Midjourney/Nano Banana prompts, then weave into every book', '—', 986, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T988', 'Prose', 988, '2026-11-17', 'docs', 'closed', 'Ren''s book retitled ''Babineaux''s Guide to the Otherworldly'', code BGTTO (author 2026-11-17): node retitled, name ruling superseded (01a1eac4), in-book title line spliced, 61 records'' citations/tags updated with read-back', 'PRS-T976', 987, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T989', 'Prose', 989, '2026-11-17', 'feature', 'closed', 'Bestiary phase 1: record the rulings: AAMA designation + discoverer naming, unique designations (numbers, letters, Greek, sometimes nonsense Unicode/Zalgo), higher/lower-dimension visibility, angel-like geometry (passes through a glass cube, bound in a perfect sphere), ''they come in at the angles'', non-HPL Mythos canon / HPL''s own not real (root PRS-T987)', 'laws 01a1ead0-ab26 (names), -ae92 (never whole), -b20b (angels), -b566 (angles), -d7b6 (Mythos line)', 988, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T990', 'Prose', 990, '2026-11-17', 'feature', 'open', 'Bestiary phase 2: catalogue every non-HPL Mythos and cosmic-horror creature of note with its creator, checked against lovecraft.fandom.com (root PRS-T987)', 'PRS-T987', 989, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T991', 'Prose', 991, '2026-11-17', 'feature', 'open', 'Bestiary phase 3: create one entity per catalogued creature (designation, discoverer, kind, dimension, behaviour) and rename the existing schism_arrival records to the new naming, with read-back (root PRS-T987)', 'PRS-T987', 990, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T992', 'Prose', 992, '2026-11-17', 'feature', 'open', 'Bestiary phase 4: write a Midjourney and a Nano Banana image prompt for every creature (root PRS-T987)', 'PRS-T987', 991, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T993', 'Prose', 993, '2026-11-17', 'feature', 'open', 'Bestiary phase 5: weave the new names and visuals into every GLMZ book, Ren''s book first, before the paused final pass PRS-T974/T982 (root PRS-T987)', 'PRS-T987', 992, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T994', 'Prose', 994, '2026-11-17', 'feature', 'open', 'Move the 37 schism_arrival records (and the 2 schism-entity stubs if they belong) into the Bestiary repository: retype the entities and rewrite every prose tag''s repo attribute, with read-back; needs an engine order (no retype tool exists) (root PRS-T987)', 'PRS-T987', 993, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -74321,6 +74330,29 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74003, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74004, 'TT-T39', '2026-11-17T16:02:39Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74005, 'TT-T39', '2026-11-17T16:02:41Z', 'working', 'd0e6a753-fe28-4c4a-9c39-365b34e62209', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74006, 'TT-T40', '2026-11-17T16:02:45Z', 'created', NULL, 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74007, 'PRS-T987', '2026-11-17T18:40:05Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74008, 'PRS-T987', '2026-11-17T18:40:05Z', 'name', NULL, 'GLMZ bestiary: designations and Mythos');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74009, 'PRS-T988', '2026-11-17T18:40:14Z', 'created', NULL, 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74010, 'PRS-T988', '2026-11-17T18:40:14Z', 'name', NULL, 'Ren''s book retitled BGTTO');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74011, 'PRS-T989', '2026-11-17T18:40:15Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74012, 'PRS-T990', '2026-11-17T18:40:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74013, 'PRS-T991', '2026-11-17T18:40:18Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74014, 'PRS-T992', '2026-11-17T18:40:19Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74015, 'PRS-T993', '2026-11-17T18:40:21Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74016, 'PRS-T987', '2026-11-17T18:40:23Z', 'working', NULL, '33845eed-6154-433c-a91f-fb03aef794e7');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74017, 'PRS-T989', '2026-11-17T18:40:35Z', 'working', NULL, '33845eed-6154-433c-a91f-fb03aef794e7');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74018, 'PRS-T990', '2026-11-17T18:40:35Z', 'working', NULL, '33845eed-6154-433c-a91f-fb03aef794e7');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74019, 'PRS-T991', '2026-11-17T18:40:36Z', 'working', NULL, '33845eed-6154-433c-a91f-fb03aef794e7');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74020, 'PRS-T992', '2026-11-17T18:40:37Z', 'working', NULL, '33845eed-6154-433c-a91f-fb03aef794e7');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74021, 'PRS-T993', '2026-11-17T18:40:37Z', 'working', NULL, '33845eed-6154-433c-a91f-fb03aef794e7');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74022, 'PRS-T989', '2026-11-17T18:42:17Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74023, 'PRS-T989', '2026-11-17T18:42:17Z', 'ref', 'PRS-T987', 'laws 01a1ead0-ab26 (names), -ae92 (never whole), -b20b (angels), -b566 (angles), -d7b6 (Mythos line)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74024, 'PRS-T989', '2026-11-17T18:42:39Z', 'working', '33845eed-6154-433c-a91f-fb03aef794e7', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74025, 'M.ORCH-T1732', '2026-11-17T18:45:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74026, 'M.ORCH-T1732', '2026-11-17T18:45:31Z', 'working', NULL, '62e97c8e-bfa1-4e50-9976-f04510c242d3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74027, 'PRS-T994', '2026-11-17T18:46:56Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74028, 'PRS-T994', '2026-11-17T18:46:56Z', 'name', NULL, 'Retype arrivals into Bestiary');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (74029, 'PRS-T994', '2026-11-17T18:47:04Z', 'working', NULL, '33845eed-6154-433c-a91f-fb03aef794e7');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -77327,6 +77359,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1732', NULL, 0, NULL, '62e97c8e-bfa1-4e50-9976-f04510c242d3', '2026-11-17T18:45:31Z', '2026-11-17T18:45:31Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T768', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
@@ -77409,6 +77442,12 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T105', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T05:26:05Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T58', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:02:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T987', NULL, 0, NULL, '33845eed-6154-433c-a91f-fb03aef794e7', '2026-11-17T18:40:23Z', '2026-11-17T18:40:23Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T990', NULL, 0, NULL, '33845eed-6154-433c-a91f-fb03aef794e7', '2026-11-17T18:40:35Z', '2026-11-17T18:40:35Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T991', NULL, 0, NULL, '33845eed-6154-433c-a91f-fb03aef794e7', '2026-11-17T18:40:36Z', '2026-11-17T18:40:36Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T992', NULL, 0, NULL, '33845eed-6154-433c-a91f-fb03aef794e7', '2026-11-17T18:40:37Z', '2026-11-17T18:40:37Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T993', NULL, 0, NULL, '33845eed-6154-433c-a91f-fb03aef794e7', '2026-11-17T18:40:37Z', '2026-11-17T18:40:37Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T994', NULL, 0, NULL, '33845eed-6154-433c-a91f-fb03aef794e7', '2026-11-17T18:47:04Z', '2026-11-17T18:47:04Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T111', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:34:40Z');
@@ -87942,6 +87981,13 @@ forever today), this forces the save directly.
 - A CLI that''s unresponsive/hung won''t take the injected `/quicksave` turn at all - needs a
   bounded wait + a clear "couldn''t capture this one" report rather than blocking forever.', '2026-11-17T07:33:53Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1725', 'Symptom: after Save all & close reopens a tab that has no resumable Claude session, MainWindow.RestoreSaveAllClose() silently types ''/quickload <code>'' into it on a timer with no user confirmation - the user asked for a confirm step instead, since this is injected input into a live CLI the user didn''t type themselves. Cause: the 4s settle-timer injection in RestoreSaveAllClose (MainWindow.xaml.cs) ran unconditionally. Fix: show a Yes/No MaMessageBox (same pattern as SessionRestore.Offer''s crash-recovery prompt) listing each pending tab''s repo/login before typing anything; only on Yes does the settle timer run and inject each /quickload <code>; on No, nothing is typed (the handoff codes stay valid in the registry for the user to /quickload manually later).', '2026-11-17T08:10:24Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1732', '## Story
+
+<!-- As a ..., I want ... so that ... -->
+
+## Acceptance
+
+<!-- A checklist of what must be true for it to be done. -->', '2026-11-17T18:45:20Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T833', 'Symptom: Inside the Orchestrator''s embedded Terminals panel (TerminalPanesHost), when a CLI running
 in a pane shows an interactive, arrow-key-driven menu (e.g. a selection list or permission prompt),
 the Up/Down/Left/Right keys don''t reach the CLI. It looks like the WPF app is intercepting/consuming
@@ -92404,6 +92450,19 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T978', '
 - NO-DOCKS law 01a10f07-da62 breaks: faction the-babineaux-family (methods/resources/relationships/story_hooks/description say dock labor, docks), Margitte Babineaux (dock-labor brokerage), Conrad relationships (dock brokerage). Reword to loading-bay / freight-yard labor.
 - Conrad description: licence -> license (US spelling).
 - New records the prose introduces: the fourth-room arrival (Ch 11), Augie Babineaux, the AAMA investigator, the Axiom buyer, the food-board inspector, menagerie individuals (Mister Pickles etc.), minor named people.', '2026-11-17T06:14:46Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T987', 'Author brief, 2026-11-17 (verbatim):
+
+> the very specific names for the things isn''t quite right like a ''strider'' for a long legged thing, while it makes sense it lacks both the cold designation from the AAMA and the personalized nature of finding something new so say A ''EDE-1901 Quinner''s 10 tailed eel'' or something like that; remember these things aren''t just from other worlds but other dimensions higher and lower, so some of these things can''t be seen full like the hyperspace shapes that spin and turn and angles seem to disappear and reappear where they don''t make sense; an "alarmingly high amount of these things seem to resemble bibically accurate angels'' in their odd otherworldly impossible geometry or anatomy or whatever you call a maybe living thing that cancan pass right through a glass cube but is bound and immobile inside a perfect spheres; some onece mention to me that they ''Come in at the angles'' but I never really knew what that meant (hounds of Tindalos) litterelly pull in every single lovecraftian creature that is NOT written by Lovecraft himself, just all the ones inspired by his works; make all non H.P. Lovecraft monsters canon and only HP Lovecraft monsters are specifically not real; start collecting every possible creature and being, and entity from every cosmic horror of note add them to the entities then generate their MidJournay and NanoiBanana image prompts
+
+> Only NON H.P. Lovecraft creatures are canon: https://lovecraft.fandom.com/wiki/Main_Page each gets a unique designation; numbers, letters, greeks; and sometimes just nonsense unicode or that Zalgo text
+
+Phases:
+1. Rulings: naming (AAMA designation + discoverer''s possessive name), dimensional visibility, the angel resemblance, the Mythos canon line (non-HPL canon, HPL''s own not real), "they come in at the angles".
+2. Research: catalogue every non-HPL Mythos / cosmic-horror creature of note with its creator, checked against the Lovecraft wiki.
+3. Records: one entity per creature with designation, discoverer, kind, dimension, behaviour; rename the existing schism_arrival records to the new naming.
+4. Image prompts: Midjourney + Nano Banana prompt per creature.
+5. Weave: the new names and visuals into every GLMZ book (first mention + AAMA lines), Ren''s book first.
+6. Then the paused final pass (PRS-T974 + PRS-T982).', '2026-11-17T18:40:05Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T206', 'RB-T172 verified in the editor (sm_hub_1, sm_pier_1, sp_soc_2): pedlight_flash, lightbar, arcade screens and oilriga frames on g_tColor; blackwater water_normal frames on g_tNormal; sewer_water and surf offsets; fire_pallet selfillum flicker; clouds.vmat g_vTexCoordScrollSpeed 0.043,0.025. Not reachable from the maps imported so far: clublight, TV screens, highlights. Import a map that uses them, play, read the attributes with sbox-cli run_csharp.', '2026-10-26T05:18:06Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T207', 'Left out of RB-T193 (the werewolf''s hint navigation), all in vampire.dll''s CNPC_VWerewolf:
 
@@ -95214,6 +95273,9 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T980', 'KTFOW p
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T981', 'KTFOW series weave', '2026-11-17T05:40:53Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T982', 'KTFOW final read and export', '2026-11-17T05:41:11Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T983', 'GLMZ doc AI + Null Crow', '2026-11-17T05:47:49Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T987', 'GLMZ bestiary: designations and Mythos', '2026-11-17T18:40:05Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T988', 'Ren''s book retitled BGTTO', '2026-11-17T18:40:14Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T994', 'Retype arrivals into Bestiary', '2026-11-17T18:46:56Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RTB-T263', 'Auto-publish to Nexus', '2026-11-07T02:41:48Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RTO-T113', 'Auto-publish to Nexus', '2026-11-07T02:41:58Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('SET-T48', 'Gapper-study collaboration vignette', '2026-11-07T04:43:15Z');
