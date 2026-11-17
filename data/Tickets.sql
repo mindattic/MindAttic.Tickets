@@ -7934,7 +7934,9 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1667', 'MindAttic.Orchestrator', 1667, '2026-11-16', 'feature', 'closed', 'Hub phase 2b: launch member TermHosts under their own Windows account (run-as service or stored credential) with the pipe ACL''d to that account and the daemon; report the account so the gateway''s session-account check can use it', '94091187', 1666, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1668', 'MindAttic.Orchestrator', 1668, '2026-11-16', 'docs', 'closed', 'docs/AGENTIC_ROADMAP.md: roadmap for turning the Orchestrator into a multi-agent job coordinator (roles, agents, pipelines, jobs, resource ownership, pause/resume), patterns borrowed from ECC and Paperclip', '—', 1667, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1669', 'MindAttic.Orchestrator', 1669, '2026-11-16', 'fix', 'open', 'BudgetCalculator.Compute: a fresh 5-hour window with no meter reading and no earlier block now reads 0% (c4faa782, M.ORCH-T1664); make it read as unknown (no percent) in the pill/chart instead of 0, and add NUnit regression tests for that case', '—', 1668, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1670', 'MindAttic.Orchestrator', 1670, '2026-11-16', 'feature', 'open', 'Usage tab: one small chart by plan (5hr for Team, Weekly for Ultra) with a cutoff preview, instead of the redundant dual-chart selector', '—', 1669, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1670', 'MindAttic.Orchestrator', 1670, '2026-11-16', 'feature', 'closed', 'Usage tab: one small chart by plan (5hr for Team, Weekly for Ultra) with a cutoff preview, instead of the redundant dual-chart selector', 'f2e80580', 1669, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1671', 'MindAttic.Orchestrator', 1671, '2026-11-16', 'feature', 'open', 'RamMemoryGuard: escalating RAM reclaim (foreign trim, then sacrifice own least-important CLI/subagent) before any new-work hold', 'M.ORCH-T1655', 1670, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1672', 'MindAttic.Orchestrator', 1672, '2026-11-16', 'feature', 'open', 'HardDriveMemoryGuard: parallel disk-space guard with safe, reversible-only reclaim (stale build output, logs, quicksave archives, merged worktrees)', 'M.ORCH-T1655', 1671, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T1', 'MindAttic.Orchestrator.SIDEBAR', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T2', 'MindAttic.Orchestrator.SIDEBAR', 2, '2026-11-05', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.SettingsModalTests.The_org_login_toolbar_is_the_Logins_dialogs_body — Assert.That(code, Does.Not.Contain("SettingsModal").And.Not.Contain("SizeSettings")) Expected: not String containing "SettingsModal" and not containing "SizeSettings" But was: "using System.Collections.Specialized; using System.Runtime.InteropServices; using System.Windows; using System.Windows.A... (landed on main since the last green run: tickets M.ORCH-T1310 in 864030c4 Cli csproj finds the workspace from any <workspace>.worktrees\<repo>\<name> checkout (drops .worktrees), so the main-tests build resolves MindAttic.Helpers without run.ps1''s MindAtticRoot (M.ORCH-T1310))', 'passes on main@270cb89', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T3', 'MindAttic.Orchestrator.SIDEBAR', 3, '2026-11-05', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.LibraryOnlyXamlTests.Every_xaml_element_is_a_library_control_or_library_styled — Assert.That(Violations(files), Is.Empty) Expected: <empty> But was: < "MainWindow.xaml:33 <Style>: a style with a template or resources of its own", "MainWindow.xaml:42 <ControlTemplate>: neither a library control nor library-styled", "MainWindow.xaml:43 <Border>: Background="{TemplateBinding Bac... (landed on main since the last green run: tickets M.ORCH-T1310 in 864030c4 Cli csproj finds the workspace from any <workspace>.worktrees\<repo>\<name> checkout (drops .worktrees), so the main-tests build resolves MindAttic.Helpers without run.ps1''s MindAtticRoot (M.ORCH-T1310))', 'passes on main@270cb89', 2, NULL);
@@ -10841,7 +10843,30 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T945', 'Prose', 945, '2026-11-16', 'docs', 'closed', 'Schism passages P1: GLMZ.md + WORLD.md 1.4 gain Passages, Kinds, Rift Science (precursors, egress rating), Rift Economy, shortcut universe, timeline (root PRS-T943)', '523f6d998; WorldMaster 1.4 section updated via set_canon_section', 944, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T946', 'Prose', 946, '2026-11-16', 'docs', 'closed', 'Schism passages P1: 30-40 schism-arrival records via create_entity, each with kind, home niche, food, cause of death/survival, radius, harvest, hazard; read back; Lure/Cabal/corp records extended (root PRS-T943)', '33 schism_arrival records (8 kinds), all read back; Lure record 5D->Nth dimension + passage-runs-backward line; Cabal/corp record edits deferred to the phase-3 per-book batch to avoid mass un-reads', 945, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T947', 'Prose', 947, '2026-11-16', 'docs', 'closed', 'Schism passages P1: write Downloads GLMZ_Schism_Passages_Bible.md (rulings, bestiary, science, economy, shortcut-space name options, set-piece picks, research survey) and pause for author review (root PRS-T943)', 'Downloads\GLMZ_Schism_Passages_Bible.md written; paused for author review', 946, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T948', 'Prose', 948, '2026-11-16', 'docs', 'open', 'Schism passages: author reviews Downloads GLMZ_Schism_Passages_Bible.md (shortcut-space name, set-piece books, bestiary cuts); then open one book ticket per canon GLMZ book (passage line + arrival beat; 4-6 set-pieces) and batch Cabal/corp record edits (root PRS-T943)', 'PRS-T943', 947, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T948', 'Prose', 948, '2026-11-16', 'docs', 'closed', 'Schism passages: author reviews Downloads GLMZ_Schism_Passages_Bible.md (shortcut-space name, set-piece books, bestiary cuts); then open one book ticket per canon GLMZ book (passage line + arrival beat; 4-6 set-pieces) and batch Cabal/corp record edits (root PRS-T943)', 'author approved 2026-11-16; per-book tickets PRS-T949..T970 opened', 947, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T949', 'Prose', 949, '2026-11-16', 'docs', 'open', 'Incursions in Steppin'' Razor (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws. set-piece: the Joliet Schism, ringlock, drop-kites over the Exchange.', 'PRS-T943', 948, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T950', 'Prose', 950, '2026-11-16', 'docs', 'open', 'Incursions in Pixel (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws.', 'PRS-T943', 949, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T951', 'Prose', 951, '2026-11-16', 'docs', 'open', 'Incursions in Testament (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws.', 'PRS-T943', 950, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T952', 'Prose', 952, '2026-11-16', 'docs', 'open', 'Incursions in Attendance (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws.', 'PRS-T943', 951, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T953', 'Prose', 953, '2026-11-16', 'docs', 'open', 'Incursions in Between the Lines (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws.', 'PRS-T943', 952, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T954', 'Prose', 954, '2026-11-16', 'docs', 'open', 'Incursions in Death Whispers in a Cat''s Ear (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws. optional quiet set-piece: the docile side.', 'PRS-T943', 953, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T955', 'Prose', 955, '2026-11-16', 'docs', 'open', 'Incursions in Read the Room (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws.', 'PRS-T943', 954, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T956', 'Prose', 956, '2026-11-16', 'docs', 'open', 'Incursions in Magenta & Gunmetal (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws. firefight-rift candidate.', 'PRS-T943', 955, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T957', 'Prose', 957, '2026-11-16', 'docs', 'open', 'Incursions in Critical Mass (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws.', 'PRS-T943', 956, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T958', 'Prose', 958, '2026-11-16', 'docs', 'open', 'Incursions in The Long Cut (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws. firefight-rift candidate.', 'PRS-T943', 957, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T959', 'Prose', 959, '2026-11-16', 'docs', 'open', 'Incursions in Sparrow (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws.', 'PRS-T943', 958, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T960', 'Prose', 960, '2026-11-16', 'docs', 'open', 'Incursions in Bushido Coda (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws. set-piece: 35th & Halsted, Incompletes, Welcomers'' warmth; SS-LAW-25 reveal stays locked.', 'PRS-T943', 959, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T961', 'Prose', 961, '2026-11-16', 'docs', 'open', 'Incursions in Vultures at the Door (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws. optional quiet set-piece: the docile side.', 'PRS-T943', 960, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T962', 'Prose', 962, '2026-11-16', 'docs', 'open', 'Incursions in Underclan (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws. set-piece: the 19 Hz door, humtide, damper trade.', 'PRS-T943', 961, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T963', 'Prose', 963, '2026-11-16', 'docs', 'open', 'Incursions in The Way Up (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws.', 'PRS-T943', 962, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T964', 'Prose', 964, '2026-11-16', 'docs', 'open', 'Incursions in Neon & Rust (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws. firefight-rift candidate.', 'PRS-T943', 963, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T965', 'Prose', 965, '2026-11-16', 'docs', 'open', 'Incursions in Crimson & Chrome (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws. firefight-rift candidate.', 'PRS-T943', 964, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T966', 'Prose', 966, '2026-11-16', 'docs', 'open', 'Incursions in The Way Down (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws.', 'PRS-T943', 965, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T967', 'Prose', 967, '2026-11-16', 'docs', 'open', 'Incursions in Mnemosync (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws.', 'PRS-T943', 966, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T968', 'Prose', 968, '2026-11-16', 'docs', 'open', 'Incursions in Pieces (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws.', 'PRS-T943', 967, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T969', 'Prose', 969, '2026-11-16', 'docs', 'open', 'Incursions in Wells (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws.', 'PRS-T943', 968, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T970', 'Prose', 970, '2026-11-16', 'docs', 'open', 'Incursions in The Cabal (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws. set-piece: the lake taps, brine lanterns, archive coral salvage; GLMZ''s rate falls, not the world''s.', 'PRS-T943', 969, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T971', 'Prose', 971, '2026-11-16', 'docs', 'closed', 'GLMZ world canon (author 2026-11-16): ''the number of secret labs and experiments happening all across the GLMZ is staggering; there is uninterrupted sprawl from Chicago to Rhinelander to Lake Erie to northern Indiana with tendrils and slime mold throughout, states don''t get mentioned anymore except in passing like Iowa and its behemoths.'' Record the laws, extend the GLMZ.md geography, tie the labs to the incursions; the per-book incursion tickets (PRS-T949..T970) carry the labs and the state-name check.', 'laws 01a1e7cc-9402 (sprawl), 01a1e7cc-baa4 (labs), page-law 01a1e7cc-a1a4 (states); bc86e44ab', 970, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -72405,6 +72430,182 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72853, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72854, 'GG-T398', '2026-11-17T04:31:13Z', 'name', NULL, 'Stage fills 9:23 to 3:4');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72855, 'GG-T399', '2026-11-17T04:31:21Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72856, 'GG-T399', '2026-11-17T04:31:21Z', 'name', NULL, 'Portrait white fringe and specks');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72857, 'GG-T399', '2026-11-17T04:32:32Z', 'working', NULL, '92cc4f7f-f98b-4034-bbe1-8b5d25a4aaa5');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72858, 'GG-T398', '2026-11-17T04:32:33Z', 'working', NULL, '92cc4f7f-f98b-4034-bbe1-8b5d25a4aaa5');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72859, 'M.ORCH-T1670', '2026-11-17T04:35:21Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72860, 'M.ORCH-T1670', '2026-11-17T04:35:21Z', 'ref', '—', 'f2e80580');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72861, 'M.ORCH-T1670', '2026-11-17T04:35:41Z', 'working', '1b3de39c-6e54-4976-bdf4-6b305a5ecfdf', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72862, 'PRS-T949', '2026-11-17T04:36:27Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72863, 'PRS-T949', '2026-11-17T04:36:27Z', 'name', NULL, 'Incursions: Steppin'' Razor');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72864, 'PRS-T949', '2026-11-17T04:36:30Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72865, 'PRS-T949', '2026-11-17T04:36:30Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72866, 'PRS-T949', '2026-11-17T04:36:30Z', 'label', NULL, 'seq:0406');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72867, 'PRS-T949', '2026-11-17T04:36:30Z', 'label', NULL, 'schism-passages');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72868, 'PRS-T949', '2026-11-17T04:36:30Z', 'label', NULL, 'book:steppin-razor');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72869, 'PRS-T950', '2026-11-17T04:36:31Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72870, 'PRS-T950', '2026-11-17T04:36:31Z', 'name', NULL, 'Incursions: Pixel');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72871, 'PRS-T950', '2026-11-17T04:36:32Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72872, 'PRS-T950', '2026-11-17T04:36:32Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72873, 'PRS-T950', '2026-11-17T04:36:32Z', 'label', NULL, 'seq:0407');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72874, 'PRS-T950', '2026-11-17T04:36:32Z', 'label', NULL, 'schism-passages');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72875, 'PRS-T950', '2026-11-17T04:36:32Z', 'label', NULL, 'book:pixel');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72876, 'PRS-T951', '2026-11-17T04:36:34Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72877, 'PRS-T951', '2026-11-17T04:36:34Z', 'name', NULL, 'Incursions: Testament');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72878, 'PRS-T951', '2026-11-17T04:36:35Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72879, 'PRS-T951', '2026-11-17T04:36:35Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72880, 'PRS-T951', '2026-11-17T04:36:35Z', 'label', NULL, 'seq:0408');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72881, 'PRS-T951', '2026-11-17T04:36:35Z', 'label', NULL, 'schism-passages');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72882, 'PRS-T951', '2026-11-17T04:36:35Z', 'label', NULL, 'book:testament');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72883, 'PRS-T952', '2026-11-17T04:36:36Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72884, 'PRS-T952', '2026-11-17T04:36:36Z', 'name', NULL, 'Incursions: Attendance');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72885, 'PRS-T952', '2026-11-17T04:36:38Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72886, 'PRS-T952', '2026-11-17T04:36:38Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72887, 'PRS-T952', '2026-11-17T04:36:38Z', 'label', NULL, 'seq:0409');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72888, 'PRS-T952', '2026-11-17T04:36:38Z', 'label', NULL, 'schism-passages');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72889, 'PRS-T952', '2026-11-17T04:36:38Z', 'label', NULL, 'book:attendance');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72890, 'PRS-T953', '2026-11-17T04:36:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72891, 'PRS-T953', '2026-11-17T04:36:39Z', 'name', NULL, 'Incursions: Between the Lines');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72892, 'PRS-T953', '2026-11-17T04:36:41Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72893, 'PRS-T953', '2026-11-17T04:36:41Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72894, 'PRS-T953', '2026-11-17T04:36:41Z', 'label', NULL, 'seq:0410');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72895, 'PRS-T953', '2026-11-17T04:36:41Z', 'label', NULL, 'schism-passages');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72896, 'PRS-T953', '2026-11-17T04:36:41Z', 'label', NULL, 'book:between-the-lines');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72897, 'PRS-T954', '2026-11-17T04:36:42Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72898, 'PRS-T954', '2026-11-17T04:36:42Z', 'name', NULL, 'Incursions: Death Whispers in a Cat''s Ear');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72899, 'PRS-T954', '2026-11-17T04:36:43Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72900, 'PRS-T954', '2026-11-17T04:36:43Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72901, 'PRS-T954', '2026-11-17T04:36:43Z', 'label', NULL, 'seq:0411');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72902, 'PRS-T954', '2026-11-17T04:36:43Z', 'label', NULL, 'schism-passages');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72903, 'PRS-T954', '2026-11-17T04:36:43Z', 'label', NULL, 'book:death-whispers-in-a-cats-ear-019ec3fe');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72904, 'PRS-T955', '2026-11-17T04:36:44Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72905, 'PRS-T955', '2026-11-17T04:36:44Z', 'name', NULL, 'Incursions: Read the Room');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72906, 'PRS-T955', '2026-11-17T04:36:46Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72907, 'PRS-T955', '2026-11-17T04:36:46Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72908, 'PRS-T955', '2026-11-17T04:36:46Z', 'label', NULL, 'seq:0412');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72909, 'PRS-T955', '2026-11-17T04:36:46Z', 'label', NULL, 'schism-passages');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72910, 'PRS-T955', '2026-11-17T04:36:46Z', 'label', NULL, 'book:read-the-room');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72911, 'PRS-T956', '2026-11-17T04:36:47Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72912, 'PRS-T956', '2026-11-17T04:36:47Z', 'name', NULL, 'Incursions: Magenta & Gunmetal');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72913, 'PRS-T956', '2026-11-17T04:36:49Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72914, 'PRS-T956', '2026-11-17T04:36:49Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72915, 'PRS-T956', '2026-11-17T04:36:49Z', 'label', NULL, 'seq:0413');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72916, 'PRS-T956', '2026-11-17T04:36:49Z', 'label', NULL, 'schism-passages');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72917, 'PRS-T956', '2026-11-17T04:36:49Z', 'label', NULL, 'book:magenta-gunmetal');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72918, 'PRS-T957', '2026-11-17T04:36:50Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72919, 'PRS-T957', '2026-11-17T04:36:50Z', 'name', NULL, 'Incursions: Critical Mass');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72920, 'PRS-T957', '2026-11-17T04:36:51Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72921, 'PRS-T957', '2026-11-17T04:36:51Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72922, 'PRS-T957', '2026-11-17T04:36:51Z', 'label', NULL, 'seq:0414');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72923, 'PRS-T957', '2026-11-17T04:36:51Z', 'label', NULL, 'schism-passages');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72924, 'PRS-T957', '2026-11-17T04:36:51Z', 'label', NULL, 'book:critical-mass');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72925, 'PRS-T958', '2026-11-17T04:36:53Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72926, 'PRS-T958', '2026-11-17T04:36:53Z', 'name', NULL, 'Incursions: The Long Cut');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72927, 'PRS-T958', '2026-11-17T04:36:54Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72928, 'PRS-T958', '2026-11-17T04:36:54Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72929, 'PRS-T958', '2026-11-17T04:36:54Z', 'label', NULL, 'seq:0415');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72930, 'PRS-T958', '2026-11-17T04:36:54Z', 'label', NULL, 'schism-passages');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72931, 'PRS-T958', '2026-11-17T04:36:54Z', 'label', NULL, 'book:the-long-cut');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72932, 'PRS-T959', '2026-11-17T04:36:56Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72933, 'PRS-T959', '2026-11-17T04:36:56Z', 'name', NULL, 'Incursions: Sparrow');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72934, 'PRS-T959', '2026-11-17T04:36:58Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72935, 'PRS-T959', '2026-11-17T04:36:58Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72936, 'PRS-T959', '2026-11-17T04:36:58Z', 'label', NULL, 'seq:0416');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72937, 'PRS-T959', '2026-11-17T04:36:58Z', 'label', NULL, 'schism-passages');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72938, 'PRS-T959', '2026-11-17T04:36:58Z', 'label', NULL, 'book:sparrow');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72939, 'PRS-T960', '2026-11-17T04:37:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72940, 'PRS-T960', '2026-11-17T04:37:04Z', 'name', NULL, 'Incursions: Bushido Coda');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72941, 'PRS-T960', '2026-11-17T04:37:07Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72942, 'PRS-T960', '2026-11-17T04:37:07Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72943, 'PRS-T960', '2026-11-17T04:37:07Z', 'label', NULL, 'seq:0417');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72944, 'PRS-T960', '2026-11-17T04:37:07Z', 'label', NULL, 'schism-passages');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72945, 'PRS-T960', '2026-11-17T04:37:07Z', 'label', NULL, 'book:bushido-coda');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72946, 'PRS-T961', '2026-11-17T04:37:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72947, 'PRS-T961', '2026-11-17T04:37:09Z', 'name', NULL, 'Incursions: Vultures at the Door');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72948, 'PRS-T961', '2026-11-17T04:37:11Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72949, 'PRS-T961', '2026-11-17T04:37:11Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72950, 'PRS-T961', '2026-11-17T04:37:11Z', 'label', NULL, 'seq:0418');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72951, 'PRS-T961', '2026-11-17T04:37:11Z', 'label', NULL, 'schism-passages');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72952, 'PRS-T961', '2026-11-17T04:37:11Z', 'label', NULL, 'book:vultures-at-the-door-019ec467');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72953, 'PRS-T962', '2026-11-17T04:37:12Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72954, 'PRS-T962', '2026-11-17T04:37:12Z', 'name', NULL, 'Incursions: Underclan');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72955, 'PRS-T962', '2026-11-17T04:37:14Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72956, 'PRS-T962', '2026-11-17T04:37:14Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72957, 'PRS-T962', '2026-11-17T04:37:14Z', 'label', NULL, 'seq:0419');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72958, 'PRS-T962', '2026-11-17T04:37:14Z', 'label', NULL, 'schism-passages');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72959, 'PRS-T962', '2026-11-17T04:37:14Z', 'label', NULL, 'book:underclan');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72960, 'PRS-T963', '2026-11-17T04:37:16Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72961, 'PRS-T963', '2026-11-17T04:37:16Z', 'name', NULL, 'Incursions: The Way Up');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72962, 'PRS-T963', '2026-11-17T04:37:18Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72963, 'PRS-T963', '2026-11-17T04:37:18Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72964, 'PRS-T963', '2026-11-17T04:37:18Z', 'label', NULL, 'seq:0420');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72965, 'PRS-T963', '2026-11-17T04:37:18Z', 'label', NULL, 'schism-passages');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72966, 'PRS-T963', '2026-11-17T04:37:18Z', 'label', NULL, 'book:the-way-up');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72967, 'PRS-T964', '2026-11-17T04:37:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72968, 'PRS-T964', '2026-11-17T04:37:20Z', 'name', NULL, 'Incursions: Neon & Rust');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72969, 'PRS-T964', '2026-11-17T04:37:22Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72970, 'PRS-T964', '2026-11-17T04:37:22Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72971, 'PRS-T964', '2026-11-17T04:37:22Z', 'label', NULL, 'seq:0421');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72972, 'PRS-T964', '2026-11-17T04:37:22Z', 'label', NULL, 'schism-passages');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72973, 'PRS-T964', '2026-11-17T04:37:22Z', 'label', NULL, 'book:neon-rust');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72974, 'PRS-T965', '2026-11-17T04:37:23Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72975, 'PRS-T965', '2026-11-17T04:37:23Z', 'name', NULL, 'Incursions: Crimson & Chrome');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72976, 'PRS-T965', '2026-11-17T04:37:25Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72977, 'PRS-T965', '2026-11-17T04:37:25Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72978, 'PRS-T965', '2026-11-17T04:37:25Z', 'label', NULL, 'seq:0422');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72979, 'PRS-T965', '2026-11-17T04:37:25Z', 'label', NULL, 'schism-passages');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72980, 'PRS-T965', '2026-11-17T04:37:25Z', 'label', NULL, 'book:crimson-chrome');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72981, 'PRS-T966', '2026-11-17T04:37:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72982, 'PRS-T966', '2026-11-17T04:37:26Z', 'name', NULL, 'Incursions: The Way Down');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72983, 'PRS-T966', '2026-11-17T04:37:28Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72984, 'PRS-T966', '2026-11-17T04:37:28Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72985, 'PRS-T966', '2026-11-17T04:37:28Z', 'label', NULL, 'seq:0423');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72986, 'PRS-T966', '2026-11-17T04:37:28Z', 'label', NULL, 'schism-passages');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72987, 'PRS-T966', '2026-11-17T04:37:28Z', 'label', NULL, 'book:the-way-down');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72988, 'PRS-T967', '2026-11-17T04:37:30Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72989, 'PRS-T967', '2026-11-17T04:37:30Z', 'name', NULL, 'Incursions: Mnemosync');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72990, 'PRS-T967', '2026-11-17T04:37:32Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72991, 'PRS-T967', '2026-11-17T04:37:32Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72992, 'PRS-T967', '2026-11-17T04:37:32Z', 'label', NULL, 'seq:0424');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72993, 'PRS-T967', '2026-11-17T04:37:32Z', 'label', NULL, 'schism-passages');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72994, 'PRS-T967', '2026-11-17T04:37:32Z', 'label', NULL, 'book:mnemosync');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72995, 'PRS-T968', '2026-11-17T04:37:33Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72996, 'PRS-T968', '2026-11-17T04:37:33Z', 'name', NULL, 'Incursions: Pieces');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72997, 'PRS-T968', '2026-11-17T04:37:35Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72998, 'PRS-T968', '2026-11-17T04:37:35Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72999, 'PRS-T968', '2026-11-17T04:37:35Z', 'label', NULL, 'seq:0425');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73000, 'PRS-T968', '2026-11-17T04:37:35Z', 'label', NULL, 'schism-passages');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73001, 'PRS-T968', '2026-11-17T04:37:35Z', 'label', NULL, 'book:pieces');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73002, 'PRS-T969', '2026-11-17T04:37:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73003, 'PRS-T969', '2026-11-17T04:37:37Z', 'name', NULL, 'Incursions: Wells');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73004, 'PRS-T969', '2026-11-17T04:37:38Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73005, 'PRS-T969', '2026-11-17T04:37:38Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73006, 'PRS-T969', '2026-11-17T04:37:38Z', 'label', NULL, 'seq:0426');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73007, 'PRS-T969', '2026-11-17T04:37:38Z', 'label', NULL, 'schism-passages');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73008, 'PRS-T969', '2026-11-17T04:37:38Z', 'label', NULL, 'book:wells');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73009, 'PRS-T970', '2026-11-17T04:37:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73010, 'PRS-T970', '2026-11-17T04:37:39Z', 'name', NULL, 'Incursions: The Cabal');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73011, 'PRS-T970', '2026-11-17T04:37:41Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73012, 'PRS-T970', '2026-11-17T04:37:41Z', 'label', NULL, 'phase:3-books');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73013, 'PRS-T970', '2026-11-17T04:37:41Z', 'label', NULL, 'seq:0427');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73014, 'PRS-T970', '2026-11-17T04:37:41Z', 'label', NULL, 'schism-passages');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73015, 'PRS-T970', '2026-11-17T04:37:41Z', 'label', NULL, 'book:the-cabal');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73016, 'PRS-T971', '2026-11-17T04:38:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73017, 'PRS-T971', '2026-11-17T04:38:17Z', 'name', NULL, 'GLMZ sprawl, secret labs');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73018, 'PRS-T971', '2026-11-17T04:38:19Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73019, 'PRS-T971', '2026-11-17T04:38:19Z', 'label', NULL, 'phase:1-world');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73020, 'PRS-T971', '2026-11-17T04:38:19Z', 'label', NULL, 'seq:0428');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73021, 'PRS-T971', '2026-11-17T04:38:19Z', 'label', NULL, 'schism-passages');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73022, 'PRS-T971', '2026-11-17T04:38:34Z', 'working', NULL, '193d5426-2add-41b1-ad51-a78d51379e9b');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73023, 'PRS-T971', '2026-11-17T04:39:16Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73024, 'PRS-T971', '2026-11-17T04:39:16Z', 'ref', 'PRS-T943', 'laws 01a1e7cc-9402 (sprawl), 01a1e7cc-baa4 (labs), page-law 01a1e7cc-a1a4 (states); bc86e44ab');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73025, 'PRS-T948', '2026-11-17T04:39:43Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73026, 'PRS-T948', '2026-11-17T04:39:43Z', 'ref', 'PRS-T943', 'author approved 2026-11-16; per-book tickets PRS-T949..T970 opened');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73027, 'PRS-T971', '2026-11-17T04:39:50Z', 'working', '193d5426-2add-41b1-ad51-a78d51379e9b', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73028, 'GG-T399', '2026-11-17T04:40:49Z', 'working', '92cc4f7f-f98b-4034-bbe1-8b5d25a4aaa5', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73029, 'M.ORCH-T1671', '2026-11-17T04:41:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73030, 'M.ORCH-T1671', '2026-11-17T04:41:46Z', 'name', NULL, 'Ram memory guard escalation');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73031, 'M.ORCH-T1672', '2026-11-17T04:41:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73032, 'M.ORCH-T1672', '2026-11-17T04:41:51Z', 'name', NULL, 'Hard drive memory guard');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -75349,9 +75550,9 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T99', 'proposed', 0, '2026-11-07T06:47:27Z', NULL);
 
 -- ticket_work
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T398', NULL, 0, NULL, '92cc4f7f-f98b-4034-bbe1-8b5d25a4aaa5', '2026-11-17T04:32:33Z', '2026-11-17T04:32:33Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1651', NULL, 0, 'ohleo199@mindattic.com', 'f7c19f3f-0e2c-4e23-b19e-302833de86b8', '2026-11-17T01:18:02Z', '2026-11-17T01:18:02Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1670', NULL, 0, NULL, '1b3de39c-6e54-4976-bdf4-6b305a5ecfdf', '2026-11-17T04:29:43Z', '2026-11-17T04:29:44Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T768', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
@@ -77776,6 +77977,29 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31240, '
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31241, 'PRS-T948', 'ryand', '2026-11-17T04:27:19Z', 'Bible revised 2026-11-16 for incursions: 36 records (origin L/A/D + fit on each), 4 reworked after the prior-art survey (Sorting Engine, Miscount, Sumpcalf, Wallscript), shortcut universe parked for Season 2. Waiting on the author: set-piece books, cuts.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31242, 'M.ORCH-T1668', 'ryand', '2026-11-17T04:27:52Z', 'Owner (2026-11-16): ECC and Paperclip are only two examples; wants the most holistic, robust design for multiple agents across multiple repos, tickets distributed to expert agents, and work that reaches actual milestones. Reworking docs/AGENTIC_ROADMAP.md around goals/milestones, expertise routing and cross-repo jobs.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31243, 'M.ORCH-T1668', 'ryand', '2026-11-17T04:29:56Z', 'Owner (2026-11-16): also include every other app that has gained traction for dividing work into lighter-weight objectives across many instances, users and eventually different LLMs, each doing what it does best. Surveying the field and adding a landscape section plus multi-model routing to docs/AGENTIC_ROADMAP.md.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31244, 'PRS-T943', 'ryand', '2026-11-17T04:35:04Z', 'Author 2026-11-16: APPROVED. ''these things happen in every book; the world is falling apart and this has to be felt; cigarette packs in a vortex is texture, this is the beginning of a complete collapse of physics caused by the Cabal tampering with dimensions beyond its cognition and control.'' -> law THE COLLAPSE; every book carries on-page incursions (not ambient texture) and the escalation for its year; set-pieces stay as the biggest; per-book tickets opened.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31245, 'PRS-T949', 'ryand', '2026-11-17T04:39:29Z', 'Also (author 2026-11-16, PRS-T971): the secret labs belong in this book''s incursions where they fit (law 01a1e7cc-baa4), and check by hand that no state is named except in passing (page-law 01a1e7cc-a1a4); the sprawl is continuous (law 01a1e7cc-9402).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31246, 'PRS-T950', 'ryand', '2026-11-17T04:39:30Z', 'Also (author 2026-11-16, PRS-T971): the secret labs belong in this book''s incursions where they fit (law 01a1e7cc-baa4), and check by hand that no state is named except in passing (page-law 01a1e7cc-a1a4); the sprawl is continuous (law 01a1e7cc-9402).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31247, 'PRS-T951', 'ryand', '2026-11-17T04:39:30Z', 'Also (author 2026-11-16, PRS-T971): the secret labs belong in this book''s incursions where they fit (law 01a1e7cc-baa4), and check by hand that no state is named except in passing (page-law 01a1e7cc-a1a4); the sprawl is continuous (law 01a1e7cc-9402).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31248, 'PRS-T952', 'ryand', '2026-11-17T04:39:31Z', 'Also (author 2026-11-16, PRS-T971): the secret labs belong in this book''s incursions where they fit (law 01a1e7cc-baa4), and check by hand that no state is named except in passing (page-law 01a1e7cc-a1a4); the sprawl is continuous (law 01a1e7cc-9402).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31249, 'PRS-T953', 'ryand', '2026-11-17T04:39:31Z', 'Also (author 2026-11-16, PRS-T971): the secret labs belong in this book''s incursions where they fit (law 01a1e7cc-baa4), and check by hand that no state is named except in passing (page-law 01a1e7cc-a1a4); the sprawl is continuous (law 01a1e7cc-9402).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31250, 'PRS-T954', 'ryand', '2026-11-17T04:39:32Z', 'Also (author 2026-11-16, PRS-T971): the secret labs belong in this book''s incursions where they fit (law 01a1e7cc-baa4), and check by hand that no state is named except in passing (page-law 01a1e7cc-a1a4); the sprawl is continuous (law 01a1e7cc-9402).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31251, 'PRS-T955', 'ryand', '2026-11-17T04:39:32Z', 'Also (author 2026-11-16, PRS-T971): the secret labs belong in this book''s incursions where they fit (law 01a1e7cc-baa4), and check by hand that no state is named except in passing (page-law 01a1e7cc-a1a4); the sprawl is continuous (law 01a1e7cc-9402).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31252, 'PRS-T956', 'ryand', '2026-11-17T04:39:33Z', 'Also (author 2026-11-16, PRS-T971): the secret labs belong in this book''s incursions where they fit (law 01a1e7cc-baa4), and check by hand that no state is named except in passing (page-law 01a1e7cc-a1a4); the sprawl is continuous (law 01a1e7cc-9402).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31253, 'PRS-T957', 'ryand', '2026-11-17T04:39:34Z', 'Also (author 2026-11-16, PRS-T971): the secret labs belong in this book''s incursions where they fit (law 01a1e7cc-baa4), and check by hand that no state is named except in passing (page-law 01a1e7cc-a1a4); the sprawl is continuous (law 01a1e7cc-9402).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31254, 'PRS-T958', 'ryand', '2026-11-17T04:39:34Z', 'Also (author 2026-11-16, PRS-T971): the secret labs belong in this book''s incursions where they fit (law 01a1e7cc-baa4), and check by hand that no state is named except in passing (page-law 01a1e7cc-a1a4); the sprawl is continuous (law 01a1e7cc-9402).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31255, 'PRS-T959', 'ryand', '2026-11-17T04:39:35Z', 'Also (author 2026-11-16, PRS-T971): the secret labs belong in this book''s incursions where they fit (law 01a1e7cc-baa4), and check by hand that no state is named except in passing (page-law 01a1e7cc-a1a4); the sprawl is continuous (law 01a1e7cc-9402).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31256, 'PRS-T960', 'ryand', '2026-11-17T04:39:35Z', 'Also (author 2026-11-16, PRS-T971): the secret labs belong in this book''s incursions where they fit (law 01a1e7cc-baa4), and check by hand that no state is named except in passing (page-law 01a1e7cc-a1a4); the sprawl is continuous (law 01a1e7cc-9402).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31257, 'PRS-T961', 'ryand', '2026-11-17T04:39:36Z', 'Also (author 2026-11-16, PRS-T971): the secret labs belong in this book''s incursions where they fit (law 01a1e7cc-baa4), and check by hand that no state is named except in passing (page-law 01a1e7cc-a1a4); the sprawl is continuous (law 01a1e7cc-9402).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31258, 'PRS-T962', 'ryand', '2026-11-17T04:39:37Z', 'Also (author 2026-11-16, PRS-T971): the secret labs belong in this book''s incursions where they fit (law 01a1e7cc-baa4), and check by hand that no state is named except in passing (page-law 01a1e7cc-a1a4); the sprawl is continuous (law 01a1e7cc-9402).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31259, 'PRS-T963', 'ryand', '2026-11-17T04:39:37Z', 'Also (author 2026-11-16, PRS-T971): the secret labs belong in this book''s incursions where they fit (law 01a1e7cc-baa4), and check by hand that no state is named except in passing (page-law 01a1e7cc-a1a4); the sprawl is continuous (law 01a1e7cc-9402).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31260, 'PRS-T964', 'ryand', '2026-11-17T04:39:38Z', 'Also (author 2026-11-16, PRS-T971): the secret labs belong in this book''s incursions where they fit (law 01a1e7cc-baa4), and check by hand that no state is named except in passing (page-law 01a1e7cc-a1a4); the sprawl is continuous (law 01a1e7cc-9402).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31261, 'PRS-T965', 'ryand', '2026-11-17T04:39:39Z', 'Also (author 2026-11-16, PRS-T971): the secret labs belong in this book''s incursions where they fit (law 01a1e7cc-baa4), and check by hand that no state is named except in passing (page-law 01a1e7cc-a1a4); the sprawl is continuous (law 01a1e7cc-9402).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31262, 'PRS-T966', 'ryand', '2026-11-17T04:39:39Z', 'Also (author 2026-11-16, PRS-T971): the secret labs belong in this book''s incursions where they fit (law 01a1e7cc-baa4), and check by hand that no state is named except in passing (page-law 01a1e7cc-a1a4); the sprawl is continuous (law 01a1e7cc-9402).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31263, 'PRS-T967', 'ryand', '2026-11-17T04:39:40Z', 'Also (author 2026-11-16, PRS-T971): the secret labs belong in this book''s incursions where they fit (law 01a1e7cc-baa4), and check by hand that no state is named except in passing (page-law 01a1e7cc-a1a4); the sprawl is continuous (law 01a1e7cc-9402).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31264, 'PRS-T968', 'ryand', '2026-11-17T04:39:40Z', 'Also (author 2026-11-16, PRS-T971): the secret labs belong in this book''s incursions where they fit (law 01a1e7cc-baa4), and check by hand that no state is named except in passing (page-law 01a1e7cc-a1a4); the sprawl is continuous (law 01a1e7cc-9402).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31265, 'PRS-T969', 'ryand', '2026-11-17T04:39:41Z', 'Also (author 2026-11-16, PRS-T971): the secret labs belong in this book''s incursions where they fit (law 01a1e7cc-baa4), and check by hand that no state is named except in passing (page-law 01a1e7cc-a1a4); the sprawl is continuous (law 01a1e7cc-9402).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31266, 'PRS-T970', 'ryand', '2026-11-17T04:39:42Z', 'Also (author 2026-11-16, PRS-T971): the secret labs belong in this book''s incursions where they fit (law 01a1e7cc-baa4), and check by hand that no state is named except in passing (page-law 01a1e7cc-a1a4); the sprawl is continuous (law 01a1e7cc-9402).');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
@@ -85822,6 +86046,57 @@ opted in, branch builds send the test run to the right machine, and the hub can 
 - Standalone unchanged.', '2026-11-11T15:54:21Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1664', '![image 1](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/_inbox/9a1977db-0d8a-4d72-84cc-f0dfca5eacfa/2026-11-16-image-1.png)', '2026-11-17T02:32:47Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1667', 'Proposed follow-up to M.ORCH-T1641. Phase 2 records each member''s Windows account (HubMemberWindowsUsers) but every CLI still runs as the host''s user, so isolation alone never lets a member type and machine start answers 501. This ticket builds the launch under the member''s account (run-as service or stored credential), locks the TermHost named pipe to that account plus the daemon, and has the TermHost report its account to the gateway''s session-account check. Needs Ryan''s go-ahead: it stores a credential or adds a service and touches real Windows accounts.', '2026-11-17T02:57:11Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1671', '## Story
+
+As the Orchestrator, I want RAM reclaimed in escalating, safe steps before any new work is ever
+held, so that Orchestrator''s own processing never stops for memory reasons.
+
+## Acceptance
+
+- Tier 1 (unchanged, M.ORCH-T1655): at `MemoryGuardStartPercent` RAM used, self-GC + working-set
+  trim of the Orchestrator/Claude process tree.
+- Tier 2 (new): if still not `Dormant` after Tier 1 settles, trim (`EmptyWorkingSet`, non-destructive)
+  every "flushable" process system-wide - any process whose ancestor chain doesn''t trace back to
+  `claude.exe`/`claude.exe.old.*`, `MindAttic.Launcher.exe`, `MindAttic.Orchestrator.TermHost.exe` or
+  `MindAttic.Orchestrator.Desktop.exe` - biggest working set first. Excludes `sqlservr.exe` and core
+  OS/service-host processes (`svchost.exe`, `dllhost.exe`, `csrss.exe`, `services.exe`, `wininit.exe`,
+  `lsass.exe`, `explorer.exe`) from anything beyond this trim.
+- Tier 3 (new, last resort): if still not `Dormant` after Tier 2 settles, kill the least-important
+  Orchestrator-owned CLI or subagent instance (idle first, else the one working the lowest-priority
+  open ticket) rather than a foreign app. This relies on the ticket + quicksave trail already making
+  that instance''s work safe to lose: its ticket stays open/requeues, and a fresh instance can be
+  relaunched through the Launcher (hosted) once memory allows - its tab reattaches via the same
+  registration path `/dock` uses (M.ORCH-T1448), with no explicit `/dock` needed and no ticket
+  progress lost. Only when no sacrificial instance of ours exists (e.g. one lone CLI, nothing idle),
+  fall back to killing from a small vetted foreign allow-list (Steam, Chrome, Vortex, jellyfin,
+  Overwolf, the ChatGPT app, DisplayFusion, NVIDIA Overlay, SnippingTool), least-impact first.
+- Every tier logs what it did and how much it freed, through the existing `LastReclaim`/`Say()` path.
+- `MemoryGuard` is renamed/reframed as `RamMemoryGuard` to sit alongside the new, separate
+  `HardDriveMemoryGuard` (sibling ticket).
+- Tests cover the protected/flushable/OS-excluded classification and the tier escalation logic
+  without killing or trimming real processes on the machine the tests run on.
+
+Ref: M.ORCH-T1655, M.ORCH-T1494, M.ORCH-T1448', '2026-11-17T04:41:46Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1672', '## Story
+
+As the Orchestrator, I want a disk-space guard parallel to the RAM one, so low disk space is caught
+and safe space is reclaimed before anything fails from a full disk.
+
+## Acceptance
+
+- New `HardDriveMemoryGuard`, same level ladder shape (Ok/Tight/Critical/Emergency) and hysteresis
+  pattern as `RamMemoryGuard` (sibling ticket), triggered off free disk space on the Orchestrator''s
+  own drive instead of RAM-in-use.
+- First version''s reclaim only deletes well-known-disposable things: `bin`/`obj` build output for
+  branches not currently active, logs past retention, stale quicksave archives beyond a cap, and git
+  worktrees already merged to main and orphaned. Nothing touching uncommitted work, databases, or
+  anything without a clear "this regenerates" story - unlike a RAM trim or a killed-and-redeployed
+  CLI, a disk delete isn''t reversible.
+- Each reclaim pass logs what it removed and how much space it freed, the same way RAM''s reclaim
+  note works.
+- Tests cover the reclaim-candidate selection logic against a scratch directory, never the real disk.
+
+Ref: M.ORCH-T1655 (sibling design, RAM side)', '2026-11-17T04:41:51Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T833', 'Symptom: Inside the Orchestrator''s embedded Terminals panel (TerminalPanesHost), when a CLI running
 in a pane shows an interactive, arrow-key-driven menu (e.g. a selection list or permission prompt),
 the Up/Down/Left/Right keys don''t reach the CLI. It looks like the WPF app is intercepting/consuming
@@ -92758,6 +93033,8 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1651', 'Fin
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1667', 'Hub phase 2b run-as', '2026-11-17T02:57:11Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1668', 'Agentic roadmap doc', '2026-11-17T04:15:12Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1670', 'Usage tab: small cutoff-preview chart', '2026-11-17T04:29:00Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1671', 'Ram memory guard escalation', '2026-11-17T04:41:46Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1672', 'Hard drive memory guard', '2026-11-17T04:41:51Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T10', 'Publish on NexusMods', '2026-11-10T01:37:57Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T11', 'Rename namespaces to Mech5Mercs.SaveEditor', '2026-11-10T01:40:21Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T116', 'Add-on packs for mods', '2026-11-10T23:54:41Z');
@@ -92844,6 +93121,29 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T945', 'Schism 
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T946', 'Schism arrival bestiary', '2026-11-17T02:31:31Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T947', 'Schism passages bible', '2026-11-17T02:32:47Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T948', 'Schism passages: review + books', '2026-11-17T04:06:51Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T949', 'Incursions: Steppin'' Razor', '2026-11-17T04:36:27Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T950', 'Incursions: Pixel', '2026-11-17T04:36:31Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T951', 'Incursions: Testament', '2026-11-17T04:36:34Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T952', 'Incursions: Attendance', '2026-11-17T04:36:36Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T953', 'Incursions: Between the Lines', '2026-11-17T04:36:39Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T954', 'Incursions: Death Whispers in a Cat''s Ear', '2026-11-17T04:36:42Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T955', 'Incursions: Read the Room', '2026-11-17T04:36:44Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T956', 'Incursions: Magenta & Gunmetal', '2026-11-17T04:36:47Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T957', 'Incursions: Critical Mass', '2026-11-17T04:36:50Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T958', 'Incursions: The Long Cut', '2026-11-17T04:36:53Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T959', 'Incursions: Sparrow', '2026-11-17T04:36:56Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T960', 'Incursions: Bushido Coda', '2026-11-17T04:37:04Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T961', 'Incursions: Vultures at the Door', '2026-11-17T04:37:09Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T962', 'Incursions: Underclan', '2026-11-17T04:37:12Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T963', 'Incursions: The Way Up', '2026-11-17T04:37:16Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T964', 'Incursions: Neon & Rust', '2026-11-17T04:37:20Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T965', 'Incursions: Crimson & Chrome', '2026-11-17T04:37:23Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T966', 'Incursions: The Way Down', '2026-11-17T04:37:26Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T967', 'Incursions: Mnemosync', '2026-11-17T04:37:30Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T968', 'Incursions: Pieces', '2026-11-17T04:37:33Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T969', 'Incursions: Wells', '2026-11-17T04:37:37Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T970', 'Incursions: The Cabal', '2026-11-17T04:37:39Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T971', 'GLMZ sprawl, secret labs', '2026-11-17T04:38:17Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RTB-T263', 'Auto-publish to Nexus', '2026-11-07T02:41:48Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RTO-T113', 'Auto-publish to Nexus', '2026-11-07T02:41:58Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('SET-T48', 'Gapper-study collaboration vignette', '2026-11-07T04:43:15Z');
@@ -95197,6 +95497,120 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T948', 'glmz-vi
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T948', 'phase:3-books', '2026-11-17T04:06:54Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T948', 'schism-passages', '2026-11-17T04:06:54Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T948', 'seq:0405', '2026-11-17T04:06:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T949', 'book:steppin-razor', '2026-11-17T04:36:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T949', 'glmz-vision', '2026-11-17T04:36:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T949', 'phase:3-books', '2026-11-17T04:36:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T949', 'schism-passages', '2026-11-17T04:36:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T949', 'seq:0406', '2026-11-17T04:36:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T950', 'book:pixel', '2026-11-17T04:36:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T950', 'glmz-vision', '2026-11-17T04:36:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T950', 'phase:3-books', '2026-11-17T04:36:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T950', 'schism-passages', '2026-11-17T04:36:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T950', 'seq:0407', '2026-11-17T04:36:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T951', 'book:testament', '2026-11-17T04:36:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T951', 'glmz-vision', '2026-11-17T04:36:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T951', 'phase:3-books', '2026-11-17T04:36:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T951', 'schism-passages', '2026-11-17T04:36:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T951', 'seq:0408', '2026-11-17T04:36:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T952', 'book:attendance', '2026-11-17T04:36:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T952', 'glmz-vision', '2026-11-17T04:36:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T952', 'phase:3-books', '2026-11-17T04:36:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T952', 'schism-passages', '2026-11-17T04:36:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T952', 'seq:0409', '2026-11-17T04:36:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T953', 'book:between-the-lines', '2026-11-17T04:36:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T953', 'glmz-vision', '2026-11-17T04:36:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T953', 'phase:3-books', '2026-11-17T04:36:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T953', 'schism-passages', '2026-11-17T04:36:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T953', 'seq:0410', '2026-11-17T04:36:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T954', 'book:death-whispers-in-a-cats-ear-019ec3fe', '2026-11-17T04:36:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T954', 'glmz-vision', '2026-11-17T04:36:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T954', 'phase:3-books', '2026-11-17T04:36:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T954', 'schism-passages', '2026-11-17T04:36:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T954', 'seq:0411', '2026-11-17T04:36:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T955', 'book:read-the-room', '2026-11-17T04:36:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T955', 'glmz-vision', '2026-11-17T04:36:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T955', 'phase:3-books', '2026-11-17T04:36:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T955', 'schism-passages', '2026-11-17T04:36:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T955', 'seq:0412', '2026-11-17T04:36:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T956', 'book:magenta-gunmetal', '2026-11-17T04:36:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T956', 'glmz-vision', '2026-11-17T04:36:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T956', 'phase:3-books', '2026-11-17T04:36:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T956', 'schism-passages', '2026-11-17T04:36:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T956', 'seq:0413', '2026-11-17T04:36:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T957', 'book:critical-mass', '2026-11-17T04:36:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T957', 'glmz-vision', '2026-11-17T04:36:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T957', 'phase:3-books', '2026-11-17T04:36:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T957', 'schism-passages', '2026-11-17T04:36:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T957', 'seq:0414', '2026-11-17T04:36:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T958', 'book:the-long-cut', '2026-11-17T04:36:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T958', 'glmz-vision', '2026-11-17T04:36:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T958', 'phase:3-books', '2026-11-17T04:36:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T958', 'schism-passages', '2026-11-17T04:36:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T958', 'seq:0415', '2026-11-17T04:36:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T959', 'book:sparrow', '2026-11-17T04:36:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T959', 'glmz-vision', '2026-11-17T04:36:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T959', 'phase:3-books', '2026-11-17T04:36:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T959', 'schism-passages', '2026-11-17T04:36:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T959', 'seq:0416', '2026-11-17T04:36:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T960', 'book:bushido-coda', '2026-11-17T04:37:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T960', 'glmz-vision', '2026-11-17T04:37:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T960', 'phase:3-books', '2026-11-17T04:37:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T960', 'schism-passages', '2026-11-17T04:37:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T960', 'seq:0417', '2026-11-17T04:37:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T961', 'book:vultures-at-the-door-019ec467', '2026-11-17T04:37:11Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T961', 'glmz-vision', '2026-11-17T04:37:11Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T961', 'phase:3-books', '2026-11-17T04:37:11Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T961', 'schism-passages', '2026-11-17T04:37:11Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T961', 'seq:0418', '2026-11-17T04:37:11Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T962', 'book:underclan', '2026-11-17T04:37:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T962', 'glmz-vision', '2026-11-17T04:37:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T962', 'phase:3-books', '2026-11-17T04:37:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T962', 'schism-passages', '2026-11-17T04:37:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T962', 'seq:0419', '2026-11-17T04:37:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T963', 'book:the-way-up', '2026-11-17T04:37:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T963', 'glmz-vision', '2026-11-17T04:37:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T963', 'phase:3-books', '2026-11-17T04:37:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T963', 'schism-passages', '2026-11-17T04:37:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T963', 'seq:0420', '2026-11-17T04:37:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T964', 'book:neon-rust', '2026-11-17T04:37:22Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T964', 'glmz-vision', '2026-11-17T04:37:22Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T964', 'phase:3-books', '2026-11-17T04:37:22Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T964', 'schism-passages', '2026-11-17T04:37:22Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T964', 'seq:0421', '2026-11-17T04:37:22Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T965', 'book:crimson-chrome', '2026-11-17T04:37:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T965', 'glmz-vision', '2026-11-17T04:37:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T965', 'phase:3-books', '2026-11-17T04:37:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T965', 'schism-passages', '2026-11-17T04:37:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T965', 'seq:0422', '2026-11-17T04:37:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T966', 'book:the-way-down', '2026-11-17T04:37:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T966', 'glmz-vision', '2026-11-17T04:37:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T966', 'phase:3-books', '2026-11-17T04:37:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T966', 'schism-passages', '2026-11-17T04:37:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T966', 'seq:0423', '2026-11-17T04:37:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T967', 'book:mnemosync', '2026-11-17T04:37:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T967', 'glmz-vision', '2026-11-17T04:37:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T967', 'phase:3-books', '2026-11-17T04:37:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T967', 'schism-passages', '2026-11-17T04:37:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T967', 'seq:0424', '2026-11-17T04:37:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T968', 'book:pieces', '2026-11-17T04:37:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T968', 'glmz-vision', '2026-11-17T04:37:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T968', 'phase:3-books', '2026-11-17T04:37:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T968', 'schism-passages', '2026-11-17T04:37:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T968', 'seq:0425', '2026-11-17T04:37:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T969', 'book:wells', '2026-11-17T04:37:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T969', 'glmz-vision', '2026-11-17T04:37:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T969', 'phase:3-books', '2026-11-17T04:37:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T969', 'schism-passages', '2026-11-17T04:37:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T969', 'seq:0426', '2026-11-17T04:37:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T970', 'book:the-cabal', '2026-11-17T04:37:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T970', 'glmz-vision', '2026-11-17T04:37:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T970', 'phase:3-books', '2026-11-17T04:37:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T970', 'schism-passages', '2026-11-17T04:37:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T970', 'seq:0427', '2026-11-17T04:37:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T971', 'glmz-vision', '2026-11-17T04:38:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T971', 'phase:1-world', '2026-11-17T04:38:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T971', 'schism-passages', '2026-11-17T04:38:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T971', 'seq:0428', '2026-11-17T04:38:19Z');
 
 -- repo_renames
 INSERT INTO repo_renames (seq, old_name, new_name, at, reason) VALUES (1, 'GTFO.AbsurdWeapons', 'GTFO.EZ.AbsurdWeapons', '2026-10-19T02:14:58Z', 'Renamed under GTFO.EZ, its core mod, before release (G.EZ-T77)');
