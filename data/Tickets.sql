@@ -11432,6 +11432,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T292', 'SpaceGod', 292, '2026-11-16', 'feature', 'closed', 'Witness: the Civilization reads every change in the wider simulation (conquest, war, peace, pacts, raids, battles, worlds and stations lost, market shocks, factions falling) as SocialEvents each day, so every module reacts to it the same whether the galaxy or a SpaceGod caused it', '4ac1b35 - Witness + Civilization systems'' world hooks; UE editor build passes', 291, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T293', 'SpaceGod', 293, '2026-11-16', 'feature', 'closed', 'P10 of the Civilization epic: an in-game Society/Feed screen (houses, orgs, worlds'' civics, the event feed narrated) and the SpaceGod''s sg.Civ hand verbs carried through co-op session commands so every peer applies them', 'US-T274', 292, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T294', 'SpaceGod', 294, '2026-11-16', 'feature', 'open', 'P9 of the Civilization epic: export the lived galaxy (730 days, Society+Civilization cast) to Prose ''spacegod'', and draft in Prose every spacegod/social-<kind> bark pool, slant tails, names-<orgkind> pools and org descriptions for the owner to approve', 'US-T274', 293, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T295', 'SpaceGod', 295, '2026-11-16', 'fix', 'open', 'Society::Life''s birth loop holds a reference into Household::Members while Born() appends to it (reallocating), then reads the freed parent: access violation around day 46 of a headless run (UniverseExport). Hold the parent by value before Born().', 'US-T294', 294, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T1', 'SpaceGod.Unity.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T2', 'SpaceGod.Unity.CSharp', 2, '2026-11-06', 'feature', 'closed', 'Adopt the shared off-by-default --headless launch mode (Unity.Shared)', 'faadbca', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T3', 'SpaceGod.Unity.CSharp', 3, '2026-11-08', 'feature', 'open', 'Mirror SpaceGod US-T72: docs/CAPTURE.md names the promoted copy SpaceGod (not SpaceGod.Unreal.Cpp) as the third copy and its RepoName folder, and lists SpaceGod''s -RenderOffScreen capture row as that copy only', 'SpaceGod US-T72', 2, NULL);
@@ -72275,6 +72276,10 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72736, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72737, 'OS-T49', '2026-11-17T03:34:17Z', 'ref', 'main@4aee35b', 'passes on main@2dfd298');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72738, 'OS-T50', '2026-11-17T03:34:19Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72739, 'OS-T50', '2026-11-17T03:34:19Z', 'ref', 'main@a6c9046', 'passes on main@2dfd298');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72740, 'M.ORCH-T1664', '2026-11-17T03:42:32Z', 'working', NULL, '9a1977db-0d8a-4d72-84cc-f0dfca5eacfa');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72741, 'GG-T391', '2026-11-17T03:42:33Z', 'working', NULL, '92cc4f7f-f98b-4034-bbe1-8b5d25a4aaa5');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72742, 'US-T295', '2026-11-17T03:44:50Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (72743, 'US-T295', '2026-11-17T03:44:50Z', 'name', NULL, 'Society birth use-after-free');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -75213,8 +75218,10 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T99', 'proposed', 0, '2026-11-07T06:47:27Z', NULL);
 
 -- ticket_work
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T391', NULL, 0, NULL, '92cc4f7f-f98b-4034-bbe1-8b5d25a4aaa5', '2026-11-17T03:42:33Z', '2026-11-17T03:42:33Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1651', NULL, 0, 'ohleo199@mindattic.com', 'f7c19f3f-0e2c-4e23-b19e-302833de86b8', '2026-11-17T01:18:02Z', '2026-11-17T01:18:02Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1664', NULL, 0, NULL, '9a1977db-0d8a-4d72-84cc-f0dfca5eacfa', '2026-11-17T03:42:32Z', '2026-11-17T03:42:32Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T768', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
@@ -92810,6 +92817,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T288', 'Civiliza
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T292', 'Civilization witnesses the simulation', '2026-11-17T02:33:23Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T293', 'Civilization P10 screen and co-op hand', '2026-11-17T02:33:25Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T294', 'Civilization P9 Prose narration', '2026-11-17T02:33:28Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T295', 'Society birth use-after-free', '2026-11-17T03:44:50Z');
 
 -- ticket_labels
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1128', 'hub-and-spoke', '2026-10-27T16:03:35Z');
