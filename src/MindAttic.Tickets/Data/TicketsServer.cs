@@ -318,6 +318,31 @@ public sealed class TicketsServer(string connectionString)
         CREATE TABLE saved_filters (
             name nvarchar(450) COLLATE {NoCase} NOT NULL PRIMARY KEY, query nvarchar(max) NOT NULL, updated nvarchar(64) NOT NULL);
         """,
+        $"""
+        CREATE TABLE milestones (
+            id nvarchar(64) COLLATE {NoCase} NOT NULL PRIMARY KEY, number bigint NOT NULL UNIQUE,
+            name nvarchar(max) NOT NULL, goal nvarchar(max) NOT NULL DEFAULT '', ordinal bigint NOT NULL DEFAULT 0,
+            state nvarchar(16) NOT NULL DEFAULT 'planned' CHECK (state IN ('planned', 'active', 'accepting', 'reached', 'dropped')),
+            created nvarchar(64) NOT NULL, updated nvarchar(64) NOT NULL, activated nvarchar(64) NULL, reached nvarchar(64) NULL, reached_by nvarchar(450) NULL);
+        """,
+        $"""
+        CREATE TABLE milestone_repos (
+            milestone_id nvarchar(64) COLLATE {NoCase} NOT NULL, repo nvarchar(256) NOT NULL, PRIMARY KEY (milestone_id, repo));
+        """,
+        $"""
+        CREATE TABLE milestone_checks (
+            milestone_id nvarchar(64) COLLATE {NoCase} NOT NULL, number bigint NOT NULL,
+            kind nvarchar(16) NOT NULL CHECK (kind IN ('build', 'exists', 'harness', 'signoff')),
+            description nvarchar(max) NOT NULL, repos nvarchar(max) NULL, target nvarchar(max) NULL,
+            result nvarchar(16) NOT NULL DEFAULT 'unknown' CHECK (result IN ('unknown', 'pass', 'fail')),
+            checked nvarchar(64) NULL, evidence nvarchar(max) NULL, PRIMARY KEY (milestone_id, number));
+        """,
+        $"""
+        CREATE TABLE milestone_events (
+            seq bigint IDENTITY(1,1) PRIMARY KEY, milestone_id nvarchar(64) COLLATE {NoCase} NOT NULL, at nvarchar(64) NOT NULL,
+            field nvarchar(64) NOT NULL, old nvarchar(max) NULL, new nvarchar(max) NULL);
+        CREATE INDEX milestone_events_by_milestone ON milestone_events (milestone_id, seq);
+        """,
     ];
 
     /// <summary>The guards, as SQLite's triggers keep them: tickets are never deleted and only their status and ref change
@@ -404,5 +429,5 @@ public sealed class TicketsServer(string connectionString)
     ];
 
     /// <summary>The tables with identity keys, for copying rows in with their keys.</summary>
-    internal static readonly HashSet<string> Identities = new(StringComparer.OrdinalIgnoreCase) { "stories", "backlog_items", "ticket_events", "ticket_notes", "repo_renames", "id_history" };
+    internal static readonly HashSet<string> Identities = new(StringComparer.OrdinalIgnoreCase) { "stories", "backlog_items", "ticket_events", "ticket_notes", "repo_renames", "id_history", "milestone_events" };
 }

@@ -276,6 +276,8 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
         // Its neighbours in the node graph (M.TIX-T314), each read from its side: parents, children, prerequisites, required-by, related.
         var relations = db.Graph().Relations(t.Id);
         object Rel(string role) => relations.Where(r => r.Role == role).Select(r => new { id = r.Node.Id, name = r.Node.Name, status = r.Node.Status, repo = r.Node.Repo, caption = r.Node.Caption });
+        // The milestones it's on (M.TIX-T335): linked to one itself, or through what it's part of.
+        var milestones = db.MilestonesOf(t.Id);
         if (settings.Json)
         {
             Console.WriteLine(JsonSerializer.Serialize(new
@@ -289,6 +291,7 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
                     .Select(r => new { role = r.Role, id = r.Node.Id, name = r.Node.Name, status = r.Node.Status }),
                 history = history.Select(e => new { at = e.At, field = e.Field, old = e.Old, @new = e.New }),
                 notes = notes.Select(n => new { seq = n.Seq, author = n.Author, at = n.At, markdown = n.Markdown }),
+                milestones = milestones.Select(x => new { id = x.Milestone.Id, name = x.Milestone.Name, state = x.Milestone.State, direct = x.Direct }),
                 approval,priority, assignee = work.Assignee, reserved = work.Reserved, labels,
                 working = work.IsWorking ? new { login = work.Login, session = work.Session, since = work.Since } : null,
                 commits = commits.Select(c => new { hash = c.Hash, shortHash = c.ShortHash, date = c.Date, author = c.Author, subject = c.Subject, url = c.Url }),
@@ -304,6 +307,8 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
             (work.Assignee is { } who ? $" · [grey]assigned to[/] {Output.Esc(who)}" : "") +
             (work.Reserved > 0 ? $" · {Output.Esc(TokenText.Format(work.Reserved))} [grey]reserved[/]" : ""));
         if (labels.Count > 0) AnsiConsole.MarkupLine($"[grey]Labels:[/] {Output.Esc(string.Join(", ", labels))}");
+        foreach (var (milestone, direct) in milestones)
+            AnsiConsole.MarkupLine($"[grey]Milestone:[/] {Output.Esc(milestone.Caption)} · {Output.Esc(milestone.State)}" + (direct ? "" : " [grey](through its parent)[/]"));
         if (work.IsWorking)
             AnsiConsole.MarkupLine($"[grey]Being worked:[/] {Output.Esc(work.Login ?? "unknown login")}{(work.Session is { } s ? Output.Esc($" ({s})") : "")}" +
                 (work.Since is { } since ? $" [grey]since {Output.Esc(since)}[/]" : ""));
@@ -318,7 +323,7 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
         {
             AnsiConsole.MarkupLine($"[grey]{Output.Esc(Output.RoleHeading(group.Key))}:[/]");
             foreach (var r in group)
-                AnsiConsole.MarkupLine($"  {Output.Esc(r.Node.Line)}" + (!string.Equals(r.Node.Repo, repo, StringComparison.OrdinalIgnoreCase) && r.Node.Repo is { } other ? $" [grey]({Output.Esc(other)})[/]" : ""));
+                AnsiConsole.MarkupLine($"  {Output.Esc(milestones.FirstOrDefault(x => x.Milestone.Id.Equals(r.Node.Id, StringComparison.OrdinalIgnoreCase)).Milestone is { } on ? $"{on.Caption} · milestone, {on.State}" : r.Node.Line)}" + (!string.Equals(r.Node.Repo, repo, StringComparison.OrdinalIgnoreCase) && r.Node.Repo is { } other ? $" [grey]({Output.Esc(other)})[/]" : ""));
         }
         foreach (var e in history)
             AnsiConsole.MarkupLine(e.Field == "description"

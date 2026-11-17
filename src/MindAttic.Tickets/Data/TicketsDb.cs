@@ -36,9 +36,10 @@ public sealed record ImportReport(string Repo, string Code, int Epics, int Stori
 /// </summary>
 public sealed partial class TicketsDb : IDisposable
 {
-    /// <summary>7 (M.TIX-T75): <c>ticket_queue.estimate</c>, a ticket's effort estimate in tokens. 6 (M.TIX-T137): on SQL
-    /// Server, tickets, their queue state, work and links are system-versioned; the file's schema is 5's plus the estimate.</summary>
-    public const int SchemaVersion = 7;
+    /// <summary>8 (M.TIX-T335): milestones, their repos, acceptance checks and history. 7 (M.TIX-T75): <c>ticket_queue.estimate</c>,
+    /// a ticket's effort estimate in tokens. 6 (M.TIX-T137): on SQL Server, tickets, their queue state, work and links are
+    /// system-versioned; the file's schema is 5's plus the estimate and the milestones.</summary>
+    public const int SchemaVersion = 8;
     public const string RelativePath = "data/Tickets.db";
     public const string DumpRelativePath = "data/Tickets.sql";
     public const string EnvVar = "MINDATTIC_TICKETS_DB";
@@ -275,6 +276,27 @@ public sealed partial class TicketsDb : IDisposable
                 ticket_id TEXT PRIMARY KEY COLLATE NOCASE,
                 name TEXT NOT NULL,
                 updated TEXT NOT NULL);
+            -- Schema 8 (M.TIX-T335): milestones, each a checkable point on the way to a goal across one or more repos. Tickets and
+            -- epics join one with a part-of link to its MS-<n> id (in links); every change is a milestone_events row. No foreign
+            -- keys, as ticket_queue.
+            CREATE TABLE IF NOT EXISTS milestones (
+                id TEXT PRIMARY KEY COLLATE NOCASE, number INTEGER NOT NULL UNIQUE,
+                name TEXT NOT NULL, goal TEXT NOT NULL DEFAULT '', ordinal INTEGER NOT NULL DEFAULT 0,
+                state TEXT NOT NULL DEFAULT 'planned' CHECK (state IN ('planned', 'active', 'accepting', 'reached', 'dropped')),
+                created TEXT NOT NULL, updated TEXT NOT NULL, activated TEXT, reached TEXT, reached_by TEXT);
+            CREATE TABLE IF NOT EXISTS milestone_repos (
+                milestone_id TEXT NOT NULL COLLATE NOCASE, repo TEXT NOT NULL, PRIMARY KEY (milestone_id, repo));
+            -- A milestone's acceptance checks: evidence, not ticket counts. Only stored here; the Orchestrator runs them.
+            CREATE TABLE IF NOT EXISTS milestone_checks (
+                milestone_id TEXT NOT NULL COLLATE NOCASE, number INTEGER NOT NULL,
+                kind TEXT NOT NULL CHECK (kind IN ('build', 'exists', 'harness', 'signoff')),
+                description TEXT NOT NULL, repos TEXT, target TEXT,
+                result TEXT NOT NULL DEFAULT 'unknown' CHECK (result IN ('unknown', 'pass', 'fail')),
+                checked TEXT, evidence TEXT, PRIMARY KEY (milestone_id, number));
+            CREATE TABLE IF NOT EXISTS milestone_events (
+                seq INTEGER PRIMARY KEY, milestone_id TEXT NOT NULL COLLATE NOCASE, at TEXT NOT NULL,
+                field TEXT NOT NULL, old TEXT, new TEXT);
+            CREATE INDEX IF NOT EXISTS milestone_events_by_milestone ON milestone_events (milestone_id, seq);
 
             -- Append-only: a ticket is never deleted, and only its status and ref ever change.
             CREATE TRIGGER IF NOT EXISTS tickets_no_delete BEFORE DELETE ON tickets
@@ -784,7 +806,7 @@ public sealed partial class TicketsDb : IDisposable
                 if (server is not null) DeferForeignKeys(tx);
                 Exec("DROP TRIGGER IF EXISTS tickets_append_only", tx);
                 Exec("UPDATE repos SET name = $n WHERE name = $o", tx, ("$n", newName), ("$o", name));
-                foreach (var table in new[] { "blocks", "epics", "stories", "backlog_items", "tickets" })
+                foreach (var table in new[] { "blocks", "epics", "stories", "backlog_items", "tickets", "milestone_repos" })
                     Exec($"UPDATE {table} SET repo = $n WHERE repo = $o", tx, ("$n", newName), ("$o", name));
                 RenameInPage(name, newName, tx);
                 Exec("INSERT INTO repo_renames (old_name, new_name, at, reason) VALUES ($o, $n, strftime('%Y-%m-%dT%H:%M:%SZ', 'now'), $reason)", tx,
@@ -856,6 +878,7 @@ public sealed partial class TicketsDb : IDisposable
     /// makes it the parent. An inverse kind or alias (<c>required-by</c>, <c>parent-of</c>, <c>contains</c>, <c>child-of</c>, …;
     /// <see cref="ResolveLinkKind"/>) is stored as its kind with the ends swapped (M.TIX-T314). Both ends must name a ticket, story
     /// or epic (in any repo), and a link that would close a <c>requires</c> or <c>part-of</c> cycle is refused with the cycle's path.
+    /// A milestone (M.TIX-T335) is only ever the parent end of a <c>part-of</c> link, and only while it's neither reached nor dropped.
     /// </summary>
     public void AddLink(string from, string to, string kind, string? note = null)
     {
@@ -875,7 +898,15 @@ public sealed partial class TicketsDb : IDisposable
         if (string.Equals(from, to, StringComparison.OrdinalIgnoreCase)) throw new ArgumentException("An item can't link to itself.");
         // Dangling IDs are refused (M.TIX-T314): a link to nothing would only ever show up as a 'db check' problem.
         foreach (var end in new[] { from, to })
-            if (!ItemExists(end)) throw new ArgumentException($"No ticket, story or epic {end}.", end == from ? nameof(from) : nameof(to));
+            if (!ItemExists(end)) throw new ArgumentException($"No ticket, story, epic or milestone {end}.", end == from ? nameof(from) : nameof(to));
+        if (MilestoneRow(from) is { } parent)
+            throw new ArgumentException($"{parent.Id} is a milestone: tickets and epics are part of it ('X part-of {parent.Id}'); it's never the child end of a link.", nameof(from));
+        if (MilestoneRow(to) is { } milestone)
+        {
+            if (kind != PartOf) throw new ArgumentException($"{milestone.Id} is a milestone: only part-of links end at one.", nameof(kind));
+            if (!milestone.IsOpen) throw new InvalidOperationException($"{milestone.Id} is {milestone.State}; nothing more joins it.");
+            to = milestone.Id;
+        }
         if (kind is RequiresKind or PartOf && Graph().Path(kind, to, from) is { } path)
             throw new InvalidOperationException(kind == RequiresKind
                 ? $"{to} already (indirectly) requires {from}; that would be a cycle: {string.Join(" → ", path.Append(to))}."
@@ -909,6 +940,8 @@ public sealed partial class TicketsDb : IDisposable
         foreach (var (self, text) in new[] { (from, $"{kind} {to}"), (to, $"{from} {kind}") })
             if (Ticket(self) is { } t)
                 Event(t.Ticket.Id, "link", added ? null : text, added ? text : null);
+        if (kind == PartOf && MilestoneRow(to) is { } milestone)
+            MilestoneEvent(milestone.Id, "member", added ? null : from, added ? from : null);
     }
 
     /// <summary>Every link touching <paramref name="id"/>, in either direction.</summary>
@@ -1126,7 +1159,7 @@ public sealed partial class TicketsDb : IDisposable
             problems.AddRange(TicketRules.Validate(code, [.. Tickets(name).Select(t => t.Ticket)]).Select(p => $"{name}: {p}"));
         // Every endpoint must resolve to a ticket, a story or an epic by its CODE-EPIC-KEY id (the repo's current code).
         var ids = Rows("SELECT id FROM tickets UNION SELECT story_id FROM stories", r => r.GetString(0))
-            .Concat(EpicIds().Select(e => e.Id)).ToHashSet(StringComparer.OrdinalIgnoreCase);
+            .Concat(EpicIds().Select(e => e.Id)).Concat(Rows("SELECT id FROM milestones", r => r.GetString(0))).ToHashSet(StringComparer.OrdinalIgnoreCase);
         foreach (var l in AllLinks())
         {
             if (!ids.Contains(l.From)) problems.Add($"link {Escaped(l.From)} {l.Kind} {Escaped(l.To)}: no item {Shown(l.From)}");
@@ -1237,6 +1270,7 @@ public sealed partial class TicketsDb : IDisposable
         {
             ("meta", "key"), ("repos", "name"), ("epics", "repo, key"), ("stories", "uid"), ("backlog_items", "uid"), ("backlog_refs", "item_uid, story_id"),
             ("tickets", "repo, ordinal"), ("ticket_events", "seq"), ("ticket_queue", "ticket_id"), ("ticket_work", "ticket_id"), ("ticket_notes", "seq"), ("ticket_descriptions", "ticket_id"), ("ticket_names", "ticket_id"), ("ticket_labels", "ticket_id, label"), ("repo_renames", "seq"), ("id_history", "seq"), ("links", "from_id, to_id, kind"), ("blocks", "repo, ordinal"), ("saved_filters", "name"),
+            ("milestones", "number"), ("milestone_repos", "milestone_id, repo"), ("milestone_checks", "milestone_id, number"), ("milestone_events", "seq"),
         })
         {
             sb.Append("\n-- ").Append(table).Append('\n');

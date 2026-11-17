@@ -55,9 +55,11 @@ public sealed partial class TicketsDb
     /// <summary>The whole node graph: every ticket (with its friendly name) and every link, as they are now.</summary>
     public TicketGraph Graph() => TicketGraph.Build(Tickets(), AllLinks(), Names());
 
-    /// <summary>Whether <paramref name="id"/> names an item a link may end at: a ticket, a story, or an epic by its CODE-EPIC-KEY id.</summary>
+    /// <summary>Whether <paramref name="id"/> names an item a link may end at: a ticket, a story, an epic by its CODE-EPIC-KEY id,
+    /// or a milestone by its MS-n id (M.TIX-T335).</summary>
     public bool ItemExists(string id) =>
-        Ticket(id) is not null || Story(id).Count > 0 || Epics().Any(e => string.Equals(e.Id, id, StringComparison.OrdinalIgnoreCase));
+        Ticket(id) is not null || Story(id).Count > 0 || Epics().Any(e => string.Equals(e.Id, id, StringComparison.OrdinalIgnoreCase))
+        || MilestoneRow(id) is not null;
 
     /// <summary>
     /// What <c>ticket verify</c> warns of without failing (M.TIX-T314): a closed ticket that still has open children (closed

@@ -53,6 +53,28 @@ app.Configure(config =>
         t.AddCommand<TicketIntakeCommand>("intake").WithDescription("File GitHub issues labelled orchestrator and CI failures on main as tickets (--dry-run to preview).");
     });
 
+    config.AddBranch("milestone", m =>
+    {
+        m.SetDescription("Milestones: a checkable point on the way to a goal, across one or more repos, with acceptance checks; tickets and epics are part-of one (M.TIX-T335).");
+        m.AddCommand<MilestoneNewCommand>("new").WithDescription("Add a planned milestone (--name, --goal, --repo repeatable, --order); prints its MS-n ID.");
+        m.AddCommand<MilestoneListCommand>("list").WithDescription("Every milestone in order with its state, tickets done and checks passed (--state, --repo, --json).");
+        m.AddCommand<MilestoneShowCommand>("show").WithDescription("One milestone: its goal, repos, member tickets with their status and a done/total count, acceptance checks and history (--json).");
+        m.AddCommand<MilestoneActivateCommand>("activate").WithDescription("Make a planned milestone active (or send one in acceptance back to active).");
+        m.AddCommand<MilestoneAcceptCommand>("accept").WithDescription("Move an active milestone into acceptance; --reached accepts it as reached (--by WHO), refused while a check is fail or unknown unless --force.");
+        m.AddCommand<MilestoneDropCommand>("drop").WithDescription("Drop a milestone that won't be reached (--reason); it stays on record.");
+        m.AddCommand<MilestoneEditCommand>("edit").WithDescription("Change a milestone's --name, --goal, --order or --repo list.");
+        m.AddCommand<MilestoneAddCommand>("add").WithDescription("Put tickets or epics on a milestone: milestone add <ID> <TICKET>... (each becomes part-of it; its children come with it).");
+        m.AddCommand<MilestoneRemoveCommand>("remove").WithDescription("Take tickets or epics off a milestone: milestone remove <ID> <TICKET>...");
+        m.AddBranch("check", c =>
+        {
+            c.SetDescription("A milestone's acceptance checks: evidence it's reached (a build, a file or package, a harness state, a sign-off). Stored here; the Orchestrator runs them.");
+            c.AddCommand<MilestoneCheckAddCommand>("add").WithDescription("Add a check: check add <ID> --kind build|exists|harness|signoff --description TEXT [[--repo NAME]] [[--target TEXT]]; prints its number.");
+            c.AddCommand<MilestoneCheckListCommand>("list").WithDescription("A milestone's checks and what each last came to (--json).");
+            c.AddCommand<MilestoneCheckResultCommand>("result").WithDescription("Record a check's result: check result <ID> <N> pass|fail|unknown [[--evidence TEXT]].");
+            c.AddCommand<MilestoneCheckRemoveCommand>("remove").WithDescription("Take a check off a milestone: check remove <ID> <N>.");
+        });
+    });
+
     config.AddBranch("filter", f =>
     {
         f.SetDescription("Saved filters: named ticket queries (repo: type: status: label: approval: and text) for 'ticket list --filter' and Tickets Desktop.");
