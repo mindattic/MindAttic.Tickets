@@ -7915,7 +7915,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1648', 'MindAttic.Orchestrator', 1648, '2026-11-11', 'chore', 'closed', 'Export context-gate.py (orchestrator workspace export-context-gate) into MindAttic.Agency and the mindattic-agent-standard mirror so the shared copies carry M.ORCH-T1193''s edit-claim lines, committed in their own repos (follow-up to M.ORCH-T1193)', 'bed20cc', 1647, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1649', 'MindAttic.Orchestrator', 1649, '2026-11-11', 'feature', 'closed', 'Edit claims refinements (follow-up to M.ORCH-T1193): release on commit only when the commit actually succeeded (read the tool''s exit code, not just the absence of ''fatal:''), and record a second agent''s edit as a co-holder instead of leaving it unclaimed until its next edit, so the first holder''s commit doesn''t drop the overlap warning for the second', 'cc54ffe5d0f26f2bacf229f6efffdf5cc9702efb', 1648, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1650', 'MindAttic.Orchestrator', 1650, '2026-11-11', 'chore', 'closed', 'MindAttic.Log pass, remainder: swallowed catches in Gateway/Term/TermHost/Core Activity+Setup+Budget files, skipping files dirty from other tickets (follow-up to M.ORCH-T1077)', 'aed267bb', 1649, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1651', 'MindAttic.Orchestrator', 1651, '2026-11-11', 'chore', 'open', 'Finish the XML doc comment pass: ~800 remaining CS1591 missing-doc warnings in Core (OrchestratorVaultSettings, BudgetCalculator remainder, OrchestratorSettings, AppBus, UsageReport, WebSocketFrameStream, TeamWall, LoginTokens, Term.*) and Wpf; comment-only; skip files others have uncommitted', '—', 1650, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1651', 'MindAttic.Orchestrator', 1651, '2026-11-11', 'chore', 'closed', 'Finish the XML doc comment pass: ~800 remaining CS1591 missing-doc warnings in Core (OrchestratorVaultSettings, BudgetCalculator remainder, OrchestratorSettings, AppBus, UsageReport, WebSocketFrameStream, TeamWall, LoginTokens, Term.*) and Wpf; comment-only; skip files others have uncommitted', '50e6b620', 1650, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1652', 'MindAttic.Orchestrator', 1652, '2026-11-11', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.LibraryOnlyXamlTests.Every_tooltip_is_the_librarys_never_windows_default — FontChoice.cs: a tooltip built or restyled in code; set ToolTip to the text and let the library theme draw it Assert.That(System.Text.RegularExpressions.Regex.IsMatch(text, @"new (System\.Windows\.Controls\.)?ToolTip\b/typeof\(ToolTip\)/ShowDurationProperty"), Is.False) Expected: False But was: True (landed on main since the last green run: tickets M.ORCH-T965, M.ORCH-T964, M.ORCH-T1077, M.ORCH-T1646, M.ORCH-T1193, M.ORCH-T1645, M.ORCH-T1165, M.ORCH-T1274, M.ORCH-T1638, M.ORCH-T1413, M.ORCH-T1395, M.ORCH-T1291, M.ORCH-T1401, M.ORCH-T1442, M.ORCH-T1445, M.ORCH-T1215, M.ORCH-T1457, M.ORCH-T1466, M.ORCH-T1447, M.ORCH-T1488 in 4935a691 Team Wall activity strip per CLI and a phone-width activity list, aged stale by the ActivityStaleMinutes Vault setting (M.ORCH-T965); 7d8b4c61 Activity feed for Codex and Gemini CLIs: wire the context gate into Codex''s UserPromptSubmit and PostToolUse and Gemini''s BeforeAgent and AfterTool (beside their Stop and AfterAgent), and have it keep one record per session in session-context\activity\<session>.json (provider, repo, working or idle, last tool with a verb and a short redacted target, ticket, CLI pid, seq, when), mapped from both CLIs'' tool names; never a raw input, token-shaped strings masked, no database or other process, and any error writes nothing and lets the CLI go on (M.ORCH-T964); 50deb141 Log swallowed failures via OrchestratorLog: crash-time session-restore writes, WMI process/TermHost/Launcher scans, Opener start failures (M.ORCH-T1077); 83399ddf Latch the letterbox loss in the reclaim test and stop a stale overlapping FollowSizeAsync call overwriting AutoResize (M.ORCH-T1646); 83adc3ea Advisory per-path edit claims: an agent''s edit claims its file in the shared checkout, a commit/finished subagent/closed CLI releases it (or it lapses after EditClaimMinutes), and a second agent editing it is warned naming the holder, or with EditClaims=Block a subagent is refused (main threads only ever warned); both are Vault settings, default Warn/30 min (M.ORCH-T1193); 4a73213c Fix main''s build: ConfirmCliClose''s property and its two mapping lines go back where they belong (they''d landed between WorkspaceRoot''s attributes and inside two doc comments), and TempRetentionHours'' mappings sit with the disk settings (M.ORCH-T1645); fe55b8ba Wheel routed at the message pump: over a CLI terminal it scrolls that terminal''s scrollback without moving focus, off one the page scrolls even while a terminal holds focus (M.ORCH-T1165); ed5f5858 Add a Font setting (Segoe UI or Outfit) applied app-wide, live, with Outfit bundled in the dashboard (M.ORCH-T1274); da47a14e LampSettingsTests: add the memberUntil case for the MemberUntil Vault setting so EverySettingHasItsOwnTest stays green (M.ORCH-T1638); 4b3b9408 Presumed-busy timings are Vault settings, and a CLI tab presumed busy by an Enter counts in its person tab''s thinking spinner at once (M.ORCH-T1413); 69ec98c5 5hr/Weekly limit boxes are toggles (the library MaButton dressed as their MaCard, MaFocus outline when selected, keyboard + accessible names) picking which utilization chart the panel draws, 5hr by default, weekly reusing the snapshot''s existing series (M.ORCH-T1395); 1b2cab89 T923 relay prototype: RelayViewer builds again; own TerminalPaste over the shared RelayInput instead of linking the app''s drifted file (M.ORCH-T1291); 4bf07dd5 Per-member until date (MemberUntil setting): once passed, the dashboard drops that member''s tab so no CLI tab is auto-started or respawned; membership, logins and data untouched, clearing the date restores it; Honey and Waffle set (seats already revoked) (M.ORCH-T1401); fd1a2444 Confirm before closing a running CLI tab in the dashboard''s own Close CLI modal (MaModal, terminals hidden while open, Esc cancels, focus handed back), skipped for an ended CLI, with a ConfirmCliClose Vault setting (default on) (M.ORCH-T1442); 555287f3 org members add/set: refuse a name, initials or email another member already answers to, so /<member> commands stay unique (M.ORCH-T1445); 8144e16a Delete five zero-byte .cs files at the repo root (M.ORCH-T1215); 8efb7c12 Dispatch orders open tickets by the Tickets graph weight after explicit priority (today''s order breaks ties), and orchestrator next names each ticket''s friendly name in its header (M.ORCH-T1457); 57c63361 Age-based temp retention: orchestrator settings --temp-retention-hours (Vault setting, default 48, 0 off) lets %TEMP%\claude session folders older and quiet as long go once their session isn''t running; a running session keeps its folder and loses only aged quiet scratchpad entries; project/session folders that are links are never followed (M.ORCH-T1466); a5639cda Show thinking CLIs plus their subagents as a count inside each login tab''s busy spinner (M.ORCH-T1447); 7ffdebac Daily SQL Server check keeps setup-host.ps1''s bootstrappers fresh from winget, commits it and texts the admin; off by default, schedule and switch are Vault settings (M.ORCH-T1488))', '49d06796', 1651, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1653', 'MindAttic.Orchestrator', 1653, '2026-11-11', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.TerminalPanesTests.A_letterboxed_viewer_reclaims_the_size_when_its_own_row_grows — A letterboxes once B takes the size Assert.That(Pump(() => lostSize // paneA.Relay!.Connection!.OwnsSize == false, TimeSpan.FromSeconds(10)), Is.True) Expected: True But was: False (landed on main since the last green run: tickets M.ORCH-T965, M.ORCH-T964, M.ORCH-T1077, M.ORCH-T1646, M.ORCH-T1193, M.ORCH-T1645, M.ORCH-T1165, M.ORCH-T1274, M.ORCH-T1638, M.ORCH-T1413, M.ORCH-T1395, M.ORCH-T1291, M.ORCH-T1401, M.ORCH-T1442, M.ORCH-T1445, M.ORCH-T1215, M.ORCH-T1457, M.ORCH-T1466, M.ORCH-T1447, M.ORCH-T1488 in 4935a691 Team Wall activity strip per CLI and a phone-width activity list, aged stale by the ActivityStaleMinutes Vault setting (M.ORCH-T965); 7d8b4c61 Activity feed for Codex and Gemini CLIs: wire the context gate into Codex''s UserPromptSubmit and PostToolUse and Gemini''s BeforeAgent and AfterTool (beside their Stop and AfterAgent), and have it keep one record per session in session-context\activity\<session>.json (provider, repo, working or idle, last tool with a verb and a short redacted target, ticket, CLI pid, seq, when), mapped from both CLIs'' tool names; never a raw input, token-shaped strings masked, no database or other process, and any error writes nothing and lets the CLI go on (M.ORCH-T964); 50deb141 Log swallowed failures via OrchestratorLog: crash-time session-restore writes, WMI process/TermHost/Launcher scans, Opener start failures (M.ORCH-T1077); 83399ddf Latch the letterbox loss in the reclaim test and stop a stale overlapping FollowSizeAsync call overwriting AutoResize (M.ORCH-T1646); 83adc3ea Advisory per-path edit claims: an agent''s edit claims its file in the shared checkout, a commit/finished subagent/closed CLI releases it (or it lapses after EditClaimMinutes), and a second agent editing it is warned naming the holder, or with EditClaims=Block a subagent is refused (main threads only ever warned); both are Vault settings, default Warn/30 min (M.ORCH-T1193); 4a73213c Fix main''s build: ConfirmCliClose''s property and its two mapping lines go back where they belong (they''d landed between WorkspaceRoot''s attributes and inside two doc comments), and TempRetentionHours'' mappings sit with the disk settings (M.ORCH-T1645); fe55b8ba Wheel routed at the message pump: over a CLI terminal it scrolls that terminal''s scrollback without moving focus, off one the page scrolls even while a terminal holds focus (M.ORCH-T1165); ed5f5858 Add a Font setting (Segoe UI or Outfit) applied app-wide, live, with Outfit bundled in the dashboard (M.ORCH-T1274); da47a14e LampSettingsTests: add the memberUntil case for the MemberUntil Vault setting so EverySettingHasItsOwnTest stays green (M.ORCH-T1638); 4b3b9408 Presumed-busy timings are Vault settings, and a CLI tab presumed busy by an Enter counts in its person tab''s thinking spinner at once (M.ORCH-T1413); 69ec98c5 5hr/Weekly limit boxes are toggles (the library MaButton dressed as their MaCard, MaFocus outline when selected, keyboard + accessible names) picking which utilization chart the panel draws, 5hr by default, weekly reusing the snapshot''s existing series (M.ORCH-T1395); 1b2cab89 T923 relay prototype: RelayViewer builds again; own TerminalPaste over the shared RelayInput instead of linking the app''s drifted file (M.ORCH-T1291); 4bf07dd5 Per-member until date (MemberUntil setting): once passed, the dashboard drops that member''s tab so no CLI tab is auto-started or respawned; membership, logins and data untouched, clearing the date restores it; Honey and Waffle set (seats already revoked) (M.ORCH-T1401); fd1a2444 Confirm before closing a running CLI tab in the dashboard''s own Close CLI modal (MaModal, terminals hidden while open, Esc cancels, focus handed back), skipped for an ended CLI, with a ConfirmCliClose Vault setting (default on) (M.ORCH-T1442); 555287f3 org members add/set: refuse a name, initials or email another member already answers to, so /<member> commands stay unique (M.ORCH-T1445); 8144e16a Delete five zero-byte .cs files at the repo root (M.ORCH-T1215); 8efb7c12 Dispatch orders open tickets by the Tickets graph weight after explicit priority (today''s order breaks ties), and orchestrator next names each ticket''s friendly name in its header (M.ORCH-T1457); 57c63361 Age-based temp retention: orchestrator settings --temp-retention-hours (Vault setting, default 48, 0 off) lets %TEMP%\claude session folders older and quiet as long go once their session isn''t running; a running session keeps its folder and loses only aged quiet scratchpad entries; project/session folders that are links are never followed (M.ORCH-T1466); a5639cda Show thinking CLIs plus their subagents as a count inside each login tab''s busy spinner (M.ORCH-T1447); 7ffdebac Daily SQL Server check keeps setup-host.ps1''s bootstrappers fresh from winget, commits it and texts the admin; off by default, schedule and switch are Vault settings (M.ORCH-T1488))', 'b3886f98', 1652, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1654', 'MindAttic.Orchestrator', 1654, '2026-11-11', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.LibraryControlsTests.Progress_bars_text_areas_and_placeholders_are_the_librarys — the Repos view''s search and the repo pane''s boxes went to Tickets Desktop (M.ORCH-T763) Assert.That(placeholders, Is.EquivalentTo(new[] { "name@company.com" })) Expected: equivalent to < "name@company.com" > But was: < "{Binding ApiCreditPlaceholder}", "name@company.com" > Extra (1): < "{Binding ... (landed on main since the last green run: tickets M.ORCH-T1079, M.ORCH-T954, M.ORCH-T1653, M.ORCH-T955, M.ORCH-T1652, M.ORCH-T956, M.ORCH-T961, M.ORCH-T1078, M.ORCH-T962, M.ORCH-T963, M.ORCH-T965, M.ORCH-T964, M.ORCH-T1077, M.ORCH-T1646, M.ORCH-T1193, M.ORCH-T1645, M.ORCH-T1165, M.ORCH-T1274 in ed36ac83 Remove dead private code: OrchestratorHistory.Read, AccountRebalancer.AccountOf, SessionRestore.moved, MainViewModel.SwitchBillingAsync and switchingBilling (M.ORCH-T1079); 35c72508 Set the API key''s starting credit from a field on its dashboard page, through the same ApiCredit.Set the CLI''s billing credit <usd> now uses (M.ORCH-T954); b3886f98 TerminalPanesTests: wait until the host has told the second viewer the first owns the size before it calls TakeSize, which was silently dropped (OwnsSize still its default true, or no link yet) whenever the attach outlasted one pump, so the first viewer never lost the size (M.ORCH-T1653); 499eb86c Hard-stop the API key person''s CLIs once its credit is spent: the pace gate refuses their every tool call (subagents too) with a clear note, the context gate answers a typed prompt unsent and never sends a Stop back to work, from the ApiCreditUsd/ApiCreditSinceUtc settings and the daemon''s api-spend.json ledger summed as ApiSpendLedger.Spend does (no network call), fail-open when the credit or ledger can''t be read; Claude-login CLIs untouched; NUnit tests (M.ORCH-T955); 49d06796 FontChoice: reach the tooltip''s Opened event through FrameworkElement so no tooltip type is named in code (M.ORCH-T1652); cb2afeb2 Make the API key a real member in the default org (org members/usage, --json) and drop the dashboard''s unused billing-toggle view-model code (M.ORCH-T956); f85f691c Activity feed for Claude CLIs: the context gate keeps a Claude session''s activity record in T964''s format (working on UserPromptSubmit and PostToolUse, idle at Stop and session start, asking on a permission prompt or AskUserQuestion, put right when a prompt is answered unsent or a Stop is sent back to work), and the pace gate records each tool call before it runs and held while it waits, only over a record the context gate made Claude''s; the writer and redacting target extractor move into one ActivityPython block both hooks carry (masked by SecretShapes, now also naming subagents by description and skills by name, a URL by host only); fail-open; NUnit tests for the extractor and the hooks (M.ORCH-T961); bf99654f Document the audit report model (M.ORCH-T1078); 9bc62845 Document the public model, budget and snapshot-figure members; fix LimitSource''s stale summary (M.ORCH-T1078); c1728d6a Activity feed bus kind (v1): the activity kind and ActivityPayload in AppBus.cs; the daemon''s ActivityFeedPublisher watches session-context\activity (a file watcher plus a slow rescan) and puts each changed record on the bus through AppBusHub''s per-session ActivityCoalescer (at most one message per session per gap, the latest held picture sent when it passes, reordered and unchanged ones dropped); every text field passes T963''s SecretShapes.MaskActivity and is cut to length; the latest per session is kept for each subscriber that connects (the activity snapshot), and a session ended or silent with its CLI gone is sent once as ended and forgotten; gap, rescan and end times are Vault settings with LampSettingsTests cases; NUnit tests for the coalescing, snapshot, expiry and record reading; docs/app-bus.md section (M.ORCH-T962); d5d49114 Fix six broken XML doc references (unresolved crefs, paramrefs to missing parameters) (M.ORCH-T1078); 68ad0131 Activity secret masking from one source: SecretShapes (Term) holds the token shapes (now with Google AIza and Stripe keys), the key=/token=/Bearer value and a long digit-bearing run, read by the gateway''s broadcast masker, by ToolCallText (every text masked) and pasted into the context gate''s Python activity records in place of T964''s looser in-script pattern; ToolCallText never shows a raw shell command, only its description or else its program name; NUnit tests for the masker cases (M.ORCH-T963); 4935a691 Team Wall activity strip per CLI and a phone-width activity list, aged stale by the ActivityStaleMinutes Vault setting (M.ORCH-T965); 7d8b4c61 Activity feed for Codex and Gemini CLIs: wire the context gate into Codex''s UserPromptSubmit and PostToolUse and Gemini''s BeforeAgent and AfterTool (beside their Stop and AfterAgent), and have it keep one record per session in session-context\activity\<session>.json (provider, repo, working or idle, last tool with a verb and a short redacted target, ticket, CLI pid, seq, when), mapped from both CLIs'' tool names; never a raw input, token-shaped strings masked, no database or other process, and any error writes nothing and lets the CLI go on (M.ORCH-T964); 50deb141 Log swallowed failures via OrchestratorLog: crash-time session-restore writes, WMI process/TermHost/Launcher scans, Opener start failures (M.ORCH-T1077); 83399ddf Latch the letterbox loss in the reclaim test and stop a stale overlapping FollowSizeAsync call overwriting AutoResize (M.ORCH-T1646); 83adc3ea Advisory per-path edit claims: an agent''s edit claims its file in the shared checkout, a commit/finished subagent/closed CLI releases it (or it lapses after EditClaimMinutes), and a second agent editing it is warned naming the holder, or with EditClaims=Block a subagent is refused (main threads only ever warned); both are Vault settings, default Warn/30 min (M.ORCH-T1193); 4a73213c Fix main''s build: ConfirmCliClose''s property and its two mapping lines go back where they belong (they''d landed between WorkspaceRoot''s attributes and inside two doc comments), and TempRetentionHours'' mappings sit with the disk settings (M.ORCH-T1645); fe55b8ba Wheel routed at the message pump: over a CLI terminal it scrolls that terminal''s scrollback without moving focus, off one the page scrolls even while a terminal holds focus (M.ORCH-T1165); ed5f5858 Add a Font setting (Segoe UI or Outfit) applied app-wide, live, with Outfit bundled in the dashboard (M.ORCH-T1274))', '90124987', 1653, NULL);
@@ -7933,10 +7933,28 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1666', 'MindAttic.Orchestrator', 1666, '2026-11-16', 'fix', 'wont-do', 'Fails on main: the build — C:\Program Files\dotnet\sdk\11.0.100-rc.3.26522.148\Roslyn\Microsoft.CSharp.Core.targets(97,5): error MSB3883: Unexpected exception: [D:\Projects\MindAttic.worktrees\MindAttic.Orchestrator\main-tests\src\MindAttic.Orchestrator.Term\MindAttic.Orchestrator.Term.csproj]; C:\Program Files\dotnet\sdk\... (landed on main since the last green run: tickets M.ORCH-T1658, M.ORCH-T1662, M.ORCH-T1640, M.ORCH-T1634, M.ORCH-T1635, M.ORCH-T1633, M.ORCH-T1636, M.ORCH-T1637, M.ORCH-T1651, M.ORCH-T1193, M.ORCH-T1647, M.ORCH-T1659, M.ORCH-T1639, M.ORCH-T1657, M.ORCH-T1654, M.ORCH-T1649, M.ORCH-T1650, M.ORCH-T1655, M.ORCH-T953, M.ORCH-T1079 in a6c9046d Read the allocate mark through CliMarks in the allocate-one-command and skill-off tests (M.ORCH-T1658); 74813332 branches test: suite timeout is the MainTestsTimeoutMinutes Vault setting (shared with the main-line suites, --timeout overrides) and each run waits under the memory guard (BranchTestsMemoryWaitMinutes) (M.ORCH-T1662); cdebfada Hub phase 1: org members connect their own PCs to the central host with per-member keys (machine invite/members/revoke, machine connect --member-key), watch their org''s shared CLIs on the Team Wall, and run allowlisted tickets verbs as themselves through POST /tickets, audited per member; the host''s menu bar shows connected members (M.ORCH-T1640); 8d421f7c Client pulls the host''s ready-to-test branch queue on a Scheduler job: orchestrator branches fetch keeps it locally without running tests, every BranchQueueFetchMinutes (Vault) while RemoteBranchBuilds is on (M.ORCH-T1634); d97049ea orchestrator branches test runs the full suite of some or all queued work branches on the PC, each at the head the host built, in a detached local-tests worktree (checkout stays on main), and reports pass/fail per head back to the host through branches report''s one path, over the gateway''s new owner-only POST /branches on a client (M.ORCH-T1635); 41a78d1a Remote branches: with RemoteBranchBuilds on, /allocate on the host works each ticket on its own origin/work/<ticket> branch in a work-<ticket> worktree (carrying on an existing branch and its failed-run brief); off, or off the host, the claim prompt is byte-for-byte today''s, pinned by BranchWorkTests (M.ORCH-T1633); 3113133d Remote host merges each work branch a local test run signed off into main by itself (its own merge-main worktree), pushes main and deletes the branch; orchestrator branches ff fast-forwards the PC''s main (M.ORCH-T1636); 4efd86c0 A failing local test run sends a work branch back to the ticket it names, which keeps iterating on the same branch while other branches go on; orchestrator branches report records each run, --returned lists them (M.ORCH-T1637); 7e40a0a4 Doc comments: name every constant of a multi-constant line and finish the truncated e.g. summary (M.ORCH-T1651); dab97eaf Tests for M.ORCH-T1193 edit claims: claim, warn, co-holders, Block, release on commit/stop/dead CLI/expiry (M.ORCH-T1647); c100c8dc Doc comments for ~660 public members in Core, Term, Term.Wpf and Wpf (CS1591 pass): comment-only, skipping files others had uncommitted (M.ORCH-T1651); 62d2d2e9 HookScriptTests: the typed crossrepo tests read /crossrepo marks through CliMarks, not crossrepo-<pid> files the hook no longer keeps once the database exists (M.ORCH-T1659); 1f3dd1d4 Hub phase 0: MachineTopology, the one topology read point over MachineRole (standalone/host/client, member client and spoke reserved); every role-dependent branch reads it, and tests pin standalone behaviour (M.ORCH-T1639); 5b2d0f7c ContextCyclerTests: the -target allocate test reads /allocate marks through CliMarks.Read, not allocate-<pid> files the hook no longer keeps once the database exists (M.ORCH-T1657); 90124987 Allow the API starting-credit box''s bound placeholder in the library-controls test (M.ORCH-T1654); cc54ffe5 Edit claims: release on commit only when the commit really succeeded (git''s commit line or the shell''s exit code, not just no "fatal:"), and a second agent''s edit of a held file makes it a co-holder so the first holder''s commit keeps the overlap claim for the second (M.ORCH-T1649); aed267bb Log swallowed failures via OrchestratorLog: provider/subagent transcript reads, machine setup DNS and shim removal, installer daemon restart, member role parse (M.ORCH-T1650); 8a1ca73d Memory guard: Windows 11 keeps RAM full on purpose, so the guard now starts at 98% RAM used (was 90%) and its first answer there is to reclaim memory, not hold work: a compacting .NET GC plus a working-set trim of the Orchestrator and every process it started, at most once per settle time, logged by the daemon; the free-GB holds still apply only if RAM stays short after that (M.ORCH-T1655); 8c6aa9e9 Read the API key''s real spend from Anthropic''s cost report (Usage and Cost Admin API) with an Admin API key from the Vault: the daemon reads it every ApiCostReadMinutes (new Vault setting) only while a key is there, caches it in api-cost.json, and the status refresh folds it into api-spend.json as billed hours, so the dashboard and the pace gate''s credit stop count Anthropic''s figures up to the read and the list-price estimate after; no key, reading off or a failed read falls back to the estimate; the key is never logged; NUnit tests on the documented JSON (M.ORCH-T953); ed36ac83 Remove dead private code: OrchestratorHistory.Read, AccountRebalancer.AccountOf, SessionRestore.moved, MainViewModel.SwitchBillingAsync and switchingBilling (M.ORCH-T1079))', 'passes on main@ab325d6', 1665, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1667', 'MindAttic.Orchestrator', 1667, '2026-11-16', 'feature', 'closed', 'Hub phase 2b: launch member TermHosts under their own Windows account (run-as service or stored credential) with the pipe ACL''d to that account and the daemon; report the account so the gateway''s session-account check can use it', '94091187', 1666, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1668', 'MindAttic.Orchestrator', 1668, '2026-11-16', 'docs', 'closed', 'docs/AGENTIC_ROADMAP.md: roadmap for turning the Orchestrator into a multi-agent job coordinator (roles, agents, pipelines, jobs, resource ownership, pause/resume), patterns borrowed from ECC and Paperclip', '—', 1667, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1669', 'MindAttic.Orchestrator', 1669, '2026-11-16', 'fix', 'open', 'BudgetCalculator.Compute: a fresh 5-hour window with no meter reading and no earlier block now reads 0% (c4faa782, M.ORCH-T1664); make it read as unknown (no percent) in the pill/chart instead of 0, and add NUnit regression tests for that case', '—', 1668, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1669', 'MindAttic.Orchestrator', 1669, '2026-11-16', 'fix', 'closed', 'BudgetCalculator.Compute: a fresh 5-hour window with no meter reading and no earlier block now reads 0% (c4faa782, M.ORCH-T1664); make it read as unknown (no percent) in the pill/chart instead of 0, and add NUnit regression tests for that case', 'b0e32bb2', 1668, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1670', 'MindAttic.Orchestrator', 1670, '2026-11-16', 'feature', 'closed', 'Usage tab: one small chart by plan (5hr for Team, Weekly for Ultra) with a cutoff preview, instead of the redundant dual-chart selector', 'f2e80580', 1669, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1671', 'MindAttic.Orchestrator', 1671, '2026-11-16', 'feature', 'open', 'RamMemoryGuard: escalating RAM reclaim (foreign trim, then sacrifice own least-important CLI/subagent) before any new-work hold', 'M.ORCH-T1655', 1670, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1671', 'MindAttic.Orchestrator', 1671, '2026-11-16', 'feature', 'closed', 'RamMemoryGuard: escalating RAM reclaim (foreign trim, then sacrifice own least-important CLI/subagent) before any new-work hold', '78040a9a', 1670, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1672', 'MindAttic.Orchestrator', 1672, '2026-11-16', 'feature', 'open', 'HardDriveMemoryGuard: parallel disk-space guard with safe, reversible-only reclaim (stale build output, logs, quicksave archives, merged worktrees)', 'M.ORCH-T1655', 1671, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1673', 'MindAttic.Orchestrator', 1673, '2026-11-16', 'feature', 'open', 'Epic (roadmap Phase 4): the orchestrator owns every process and scratch file it starts, so no amount of queued work can exhaust disk, RAM, handles or processes. See docs/AGENTIC_ROADMAP.md', '—', 1672, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1674', 'MindAttic.Orchestrator', 1674, '2026-11-16', 'feature', 'closed', 'TermHost puts each hosted CLI''s whole process tree in a Windows Job Object with kill-on-close, so a dead or stopped CLI leaves no children behind (roadmap Phase 4)', 'build: MindAttic.Orchestrator.TermHost', 1673, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1675', 'MindAttic.Orchestrator', 1675, '2026-11-16', 'feature', 'open', 'Daemon-run builds and tests (ProcessRunner, BranchBuilds, MainlineTests) run inside a kill-on-close Job Object so a timed-out or abandoned run leaves no processes (roadmap Phase 4)', '—', 1674, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1676', 'MindAttic.Orchestrator', 1676, '2026-11-16', 'feature', 'open', 'A resources table in orchestrator.db records every scratch dir, worktree and temp file the orchestrator creates with its owner and expiry, and each claimed ticket gets its own scratch dir passed to the agent as ORCH_SCRATCH (roadmap Phase 4)', '—', 1675, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1677', 'MindAttic.Orchestrator', 1677, '2026-11-16', 'feature', 'open', 'On daemon start and each prune tick, delete ledger entries whose owner is dead or finished, plus crash leftovers (orchestrator-review-*, mindattic-token-check-*) and stale bin/obj in main-tests and branch worktrees; dry-run mode first (roadmap Phase 4)', '—', 1676, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1678', 'MindAttic.Orchestrator', 1678, '2026-11-16', 'feature', 'closed', 'ProcessReaper keeps its seen-under-agent set in orchestrator.db so orphaned processes born while the daemon was down are reaped at the next start (roadmap Phase 4)', 'ProcessReaperTests (seen set kept across a restart)', 1677, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1679', 'MindAttic.Orchestrator', 1679, '2026-11-16', 'feature', 'open', 'Below a configurable hard disk floor, reclaim first and then hold new starts (Allocate, Dispatcher, start command) until space returns; today low disk only alerts (roadmap Phase 4)', '—', 1678, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1680', 'MindAttic.Orchestrator', 1680, '2026-11-16', 'feature', 'open', 'Enforce one game player, engine build or soak per machine: a hook pattern list plus a machine-wide row in leases, so a second heavy process waits for the first (roadmap Phase 4)', '—', 1679, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1681', 'MindAttic.Orchestrator', 1681, '2026-11-16', 'feature', 'open', 'Rotate disk-cleanup.log, age-prune and VACUUM orchestrator.db on a schedule, and make transcript retention a setting instead of a forced 365 days (roadmap Phase 4)', '—', 1680, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1682', 'MindAttic.Orchestrator', 1682, '2026-11-16', 'feature', 'open', 'Epic (roadmap Phase 9): goals and milestones with evidence-based acceptance checks, so work is pulled toward a finished thing across repos instead of only closing tickets. See docs/AGENTIC_ROADMAP.md', '—', 1681, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1683', 'MindAttic.Orchestrator', 1683, '2026-11-16', 'feature', 'open', 'Scheduler.Plan orders fixes first, then units on an active milestone by critical path (longest remaining requires chain), then everything else; ordering only, spare room still takes other work (roadmap Phase 9)', '—', 1682, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1684', 'MindAttic.Orchestrator', 1684, '2026-11-16', 'feature', 'open', 'orchestrator milestone check|accept: run a milestone''s build and existence checks on main on their own; test, soak and play checks only when the owner runs accept; a milestone reads reached only when every check passes (roadmap Phase 9)', '—', 1683, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1685', 'MindAttic.Orchestrator', 1685, '2026-11-16', 'feature', 'open', 'Adding units to an active milestone needs the owner''s approval, and the dashboard shows how much each active milestone has grown since activation (roadmap Phase 9)', '—', 1684, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1686', 'MindAttic.Orchestrator', 1686, '2026-11-16', 'feature', 'open', 'A scheduled steward compares each active milestone''s acceptance checks with main and proposes the missing tickets, and reopens closed tickets that tickets ticket hygiene says aren''t done (roadmap Phase 9)', '—', 1685, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1687', 'MindAttic.Orchestrator', 1687, '2026-11-16', 'feature', 'open', 'When a main-line build goes red, bisect the commits since the last green build to the ticket that broke it and reopen that ticket with the failure as its brief (roadmap Phase 9)', '—', 1686, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1688', 'MindAttic.Orchestrator', 1688, '2026-11-16', 'feature', 'open', 'Each active milestone gets a projected date and token cost from remaining estimates against measured throughput, with an at-risk flag when it slips (roadmap Phase 9)', '—', 1687, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1689', 'MindAttic.Orchestrator', 1689, '2026-11-16', 'feature', 'open', 'One dashboard list of everything waiting on the owner (approvals, escalations, milestone acceptances) with a Psst alert for each new item (roadmap Phase 9)', '—', 1688, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1690', 'MindAttic.Orchestrator', 1690, '2026-11-16', 'chore', 'open', 'Doc comment pass for MindAttic.Orchestrator.Term: ~60 CS1591 missing-doc warnings (TermWatchers, TermMemberCredentials, TermGatewayAcl, TermSessionRecord, TermProtocol, TermGateway, TermMemberHosts, TermHubPolicy); comment-only, anchored to declarations (follow-up to M.ORCH-T1651)', '—', 1689, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T1', 'MindAttic.Orchestrator.SIDEBAR', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T2', 'MindAttic.Orchestrator.SIDEBAR', 2, '2026-11-05', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.SettingsModalTests.The_org_login_toolbar_is_the_Logins_dialogs_body — Assert.That(code, Does.Not.Contain("SettingsModal").And.Not.Contain("SizeSettings")) Expected: not String containing "SettingsModal" and not containing "SizeSettings" But was: "using System.Collections.Specialized; using System.Runtime.InteropServices; using System.Windows; using System.Windows.A... (landed on main since the last green run: tickets M.ORCH-T1310 in 864030c4 Cli csproj finds the workspace from any <workspace>.worktrees\<repo>\<name> checkout (drops .worktrees), so the main-tests build resolves MindAttic.Helpers without run.ps1''s MindAtticRoot (M.ORCH-T1310))', 'passes on main@270cb89', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T3', 'MindAttic.Orchestrator.SIDEBAR', 3, '2026-11-05', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.LibraryOnlyXamlTests.Every_xaml_element_is_a_library_control_or_library_styled — Assert.That(Violations(files), Is.Empty) Expected: <empty> But was: < "MainWindow.xaml:33 <Style>: a style with a template or resources of its own", "MainWindow.xaml:42 <ControlTemplate>: neither a library control nor library-styled", "MainWindow.xaml:43 <Border>: Background="{TemplateBinding Bac... (landed on main since the last green run: tickets M.ORCH-T1310 in 864030c4 Cli csproj finds the workspace from any <workspace>.worktrees\<repo>\<name> checkout (drops .worktrees), so the main-tests build resolves MindAttic.Helpers without run.ps1''s MindAtticRoot (M.ORCH-T1310))', 'passes on main@270cb89', 2, NULL);
@@ -8449,6 +8467,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T332', 'MindAttic.Tickets', 332, '2026-11-08', 'chore', 'closed', 'Sync the ticket database for changes that touched no ticket (story, epic or backlog edits)', '—', 331, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T333', 'MindAttic.Tickets', 333, '2026-11-11', 'fix', 'closed', 'Tickets test runs leak their MindAttic.Tickets.Test-* SQL Server databases (184 on localhost on 2026-11-11), which inflate SQL Server''s memory needs and slow its startup recovery; each fixture must drop its database in teardown, and a sweep should drop orphans older than a day (found during M.ORCH-T1611)', 'ed46b3d', 332, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T334', 'MindAttic.Tickets', 334, '2026-11-11', 'fix', 'closed', 'Drop the 184 leaked MindAttic.Tickets.Test-* databases (2.9 GB, created 2026-10-23..25) on localhost MSSQLSERVER and fix test teardown so each test database is dropped after its run; their recovery at startup helped crash SQL Server under a tight memory cap', 'ed46b3d', 333, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T335', 'MindAttic.Tickets', 335, '2026-11-16', 'feature', 'open', 'Milestones in the ticket database: name, goal, repos, order, state (planned/active/accepting/reached/dropped) and acceptance checks; epics and tickets link part-of a milestone; tickets milestone new|list|show|activate|accept (MindAttic.Orchestrator docs/AGENTIC_ROADMAP.md Phase 9)', '—', 334, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T336', 'MindAttic.Tickets', 336, '2026-11-16', 'feature', 'open', 'Tickets Desktop shows milestones: their acceptance checks, the epics and tickets under each, growth since activation, and progress (MindAttic.Orchestrator docs/AGENTIC_ROADMAP.md Phase 9)', '—', 335, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.VALT-T1', 'MindAttic.Vault', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.VALT-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.VALT-T2', 'MindAttic.Vault', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for Dashboard HealthMonitorStore (MindAttic.Vault.Dashboard/Services/HealthMonitorStore.cs; add a Dashboard ProjectReference to MindAttic.Vault.Tests first): RecordUptime running percentage per provider and case-insensitive ids, Previous returns null before first commit, Commit replaces snapshots and evicts providers missing from the fresh set, sets LastSweepUtc, clears SweepInProgress and fires OnChanged, Snapshots ordered trusted-first then alphabetical, TrustedPanelHealthy false when no trusted snapshots exist or any trusted one is not Healthy - this is the headline confidence verdict the dashboard leads with', 'MindAttic.Vault.Tests/HealthMonitorStoreTests.cs', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.VALT-T3', 'MindAttic.Vault', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for Dashboard AlertDispatcher (Services/AlertDispatcher.cs): with a fake IHttpClientFactory/HttpMessageHandler verify every non-blank webhook gets a JSON POST with provider, displayName, status, previous, diagnosis, detail, atUtc fields; blank webhook urls skipped; no channels configured means no work; a webhook that throws or returns non-2xx is logged and does not stop other webhooks or fault DispatchAsync; email channel skipped when Host is blank or To is empty, and an SMTP failure is swallowed - alerts must be best-effort and isolated so one bad channel never breaks a sweep', '—', 2, '| M.VALT-T3 | 2026-10-14 | chore | open | NUnit tests for Dashboard AlertDispatcher (Services/AlertDispatcher.cs): with a fake IHttpClientFactory/HttpMessageHandler verify every non-blank webhook gets a JSON POST with provider, displayName, status, previous, diagnosis, detail, atUtc fields; blank webhook urls skipped; no channels configured means no work; a webhook that throws or returns non-2xx is logged and does not stop other webhooks or fault DispatchAsync; email channel skipped when Host is blank or To is empty, and an SMTP failure is swallowed - alerts must be best-effort and isolated so one bad channel never breaks a sweep | — |');
@@ -9398,7 +9418,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T113', 'Mods.MechWarrior5.SaveEditor', 113, '2026-11-10', 'fix', 'closed', 'Windows 11 rounds the app''s window corners (Mech Lab top-right shows a rounded corner over the square amber frame); ask Windows for square corners on every window', '—', 112, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T114', 'Mods.MechWarrior5.SaveEditor', 114, '2026-11-10', 'chore', 'closed', 'Deploy the cleaned-up 2.0.0 (c667af1) to C:\Apps with run.ps1', '—', 113, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T115', 'Mods.MechWarrior5.SaveEditor', 115, '2026-11-10', 'chore', 'closed', 'GitHub-only downloads: NexusMods gets a pointer zip (README with the GitHub releases link, no exe, so nothing is quarantined); the exe zip stays on GitHub releases; both descriptions lead with a Download from GitHub line', 'publish run 42925210407 (both pages got the GitHub pointer zip)', 114, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T116', 'Mods.MechWarrior5.SaveEditor', 116, '2026-11-10', 'feature', 'open', 'Add-on packs (Mercenaries only): optional, data-only JSON packs carrying each mod''s own values (limits, skill curve, trait/item/mech additions and overrides) for YAEC-R, YAW-CE, AVTA and Pilot Overhaul - Eternal; no packs = vanilla 2.0.0', '—', 115, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T116', 'Mods.MechWarrior5.SaveEditor', 116, '2026-11-10', 'feature', 'open', 'Add-on packs (Mercenaries only): optional, data-only JSON packs carrying each mod''s own values (limits, skill curve, trait/item/mech additions and overrides) for YAEC-R, YAW-CE, AVTA and Pilot Overhaul - Eternal, with every editor-enforced limit sourced from one dynamic snapshot (no stray literals) and a Compatibility report naming the mod/version/URL behind any save value a missing, disabled or mismatched mod would explain; no packs = vanilla 2.0.0', '—', 115, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T117', 'Mods.MechWarrior5.SaveEditor', 117, '2026-11-16', 'feature', 'open', 'No network in 3.0.0 (NexusMods quarantine review 278393): remove every Sarna.net fetch, link, setting, notice and doc mention, with no HttpClient left in the exe; show ''Mech pictures read from the installed game''s own .pak files at runtime instead (Mercs and Clans), nothing bundled or redistributed', '—', 116, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T1', 'Mods.MechWarrior5.Shared', 1, '2026-11-09', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T2', 'Mods.MechWarrior5.Shared', 2, '2026-11-09', 'feature', 'closed', 'Seed the shared base from the Mercs editor: Mech5.Shared (Unreal tagged-property engine, FString/FText, struct builders) and Mech5.Shared.Wpf (MW5 HUD theme, chamfer panels, check-list multi-select, Sarna image service, dialogs, converters)', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T3', 'Mods.MechWarrior5.Shared', 3, '2026-11-09', 'fix', 'closed', 'Controls.xaml styles resolved palette brushes as UnsetValue when nested under Mech5Theme.xaml (window failed to load); make Controls.xaml merge Palette.xaml itself', '—', 2, NULL);
@@ -10845,11 +10866,11 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T947', 'Prose', 947, '2026-11-16', 'docs', 'closed', 'Schism passages P1: write Downloads GLMZ_Schism_Passages_Bible.md (rulings, bestiary, science, economy, shortcut-space name options, set-piece picks, research survey) and pause for author review (root PRS-T943)', 'Downloads\GLMZ_Schism_Passages_Bible.md written; paused for author review', 946, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T948', 'Prose', 948, '2026-11-16', 'docs', 'closed', 'Schism passages: author reviews Downloads GLMZ_Schism_Passages_Bible.md (shortcut-space name, set-piece books, bestiary cuts); then open one book ticket per canon GLMZ book (passage line + arrival beat; 4-6 set-pieces) and batch Cabal/corp record edits (root PRS-T943)', 'author approved 2026-11-16; per-book tickets PRS-T949..T970 opened', 947, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T949', 'Prose', 949, '2026-11-16', 'docs', 'closed', 'Incursions in Steppin'' Razor (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws. set-piece: the Joliet Schism, ringlock, drop-kites over the Exchange.', '5 splices applied+verified (Joliet set-piece: ringlock, drop-kites, medic killed, spur closed; Etchweb passage; written-off block); law_violations 0', 948, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T950', 'Prose', 950, '2026-11-16', 'docs', 'open', 'Incursions in Pixel (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws.', 'PRS-T943', 949, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T951', 'Prose', 951, '2026-11-16', 'docs', 'open', 'Incursions in Testament (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws.', 'PRS-T943', 950, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T952', 'Prose', 952, '2026-11-16', 'docs', 'open', 'Incursions in Attendance (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws.', 'PRS-T943', 951, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T953', 'Prose', 953, '2026-11-16', 'docs', 'open', 'Incursions in Between the Lines (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws.', 'PRS-T943', 952, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T954', 'Prose', 954, '2026-11-16', 'docs', 'open', 'Incursions in Death Whispers in a Cat''s Ear (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws. optional quiet set-piece: the docile side.', 'PRS-T943', 953, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T950', 'Prose', 950, '2026-11-16', 'docs', 'closed', 'Incursions in Pixel (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws.', 'Pixel: Archer drop-kite kills a vendor (first Schism as a door), Etchweb thin spot takes a drone + forces the north approach, written-off block, sound slipping; law_violations 0', 949, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T951', 'Prose', 951, '2026-11-16', 'docs', 'closed', 'Incursions in Testament (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws.', 'Testament: brickleg kills a yard hand + closes Bear''s road, picker on the 35th thin spot empties his case (loses route + weekly pay), clocks disagree, written-off block; law_violations 0', 950, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T952', 'Prose', 952, '2026-11-16', 'docs', 'closed', 'Incursions in Attendance (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws.', 'Attendance: AAMA Egress register as the first passage line, Lithium Tender pulls every field team from 35th, brickleg shuts Halsted at 31st, insurer exclusion, taken at the Kedzie rip, Lure no longer the emission; law_violations 0', 951, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T953', 'Prose', 953, '2026-11-16', 'docs', 'closed', 'Incursions in Between the Lines (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws.', 'Between the Lines: drop-kite at the Lane Five tear, stair count slips (Idris''s knee), Etchweb lot, clocks, egress radio, insurer exclusions; Ohio removed; law_violations 0', 952, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T954', 'Prose', 954, '2026-11-16', 'docs', 'closed', 'Incursions in Death Whispers in a Cat''s Ear (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws. optional quiet set-piece: the docile side.', 'Death Whispers: canal drop-kite, sumpcalf quiet set-piece at OUSE, brickleg pulls the Vulture vans (Tamsin''s 22 minutes), picker by the Morgan hatch, stair gains a step; law_violations 0', 953, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T955', 'Prose', 955, '2026-11-16', 'docs', 'open', 'Incursions in Read the Room (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws.', 'PRS-T943', 954, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T956', 'Prose', 956, '2026-11-16', 'docs', 'open', 'Incursions in Magenta & Gunmetal (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws. firefight-rift candidate.', 'PRS-T943', 955, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T957', 'Prose', 957, '2026-11-16', 'docs', 'open', 'Incursions in Critical Mass (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws.', 'PRS-T943', 956, NULL);
@@ -10867,6 +10888,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T969', 'Prose', 969, '2026-11-16', 'docs', 'open', 'Incursions in Wells (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws.', 'PRS-T943', 968, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T970', 'Prose', 970, '2026-11-16', 'docs', 'open', 'Incursions in The Cabal (root PRS-T943, laws 01a1e7ca-096e THE COLLAPSE, 01a1e7b6-07bb/-1848, 01a1e7b5-dd73): passage line at the first Schism in this book''s own image; incursions ON THE PAGE as events with consequences, pitched to the book''s year on the escalation table; every old Schism line checked against the new laws. set-piece: the lake taps, brine lanterns, archive coral salvage; GLMZ''s rate falls, not the world''s.', 'PRS-T943', 969, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T971', 'Prose', 971, '2026-11-16', 'docs', 'closed', 'GLMZ world canon (author 2026-11-16): ''the number of secret labs and experiments happening all across the GLMZ is staggering; there is uninterrupted sprawl from Chicago to Rhinelander to Lake Erie to northern Indiana with tendrils and slime mold throughout, states don''t get mentioned anymore except in passing like Iowa and its behemoths.'' Record the laws, extend the GLMZ.md geography, tie the labs to the incursions; the per-book incursion tickets (PRS-T949..T970) carry the labs and the state-name check.', 'laws 01a1e7cc-9402 (sprawl), 01a1e7cc-baa4 (labs), page-law 01a1e7cc-a1a4 (states); bc86e44ab', 970, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T972', 'Prose', 972, '2026-11-16', 'fix', 'open', 'Death Whispers in a Cat''s Ear: the prose says ''Jace Quiroga'' and ''Mireille Webb'' but the book''s cast law says ''Jace Dalton'' and ''Priya Webb''; decide which is canon and align prose or law. Also Mrs. Chen''s wired ''handset'' (beat 21373) is a wall line, check against the no-personal-device page-law. Found during the incursions pass (PRS-T954).', '—', 971, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -72615,6 +72637,698 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73037, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73038, 'PRS-T949', '2026-11-17T04:49:10Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73039, 'PRS-T949', '2026-11-17T04:49:10Z', 'ref', 'PRS-T943', '5 splices applied+verified (Joliet set-piece: ringlock, drop-kites, medic killed, spur closed; Etchweb passage; written-off block); law_violations 0');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73040, 'M.ORCH-T1669', '2026-11-17T04:49:13Z', 'working', NULL, 'ohleo199@mindattic.com (f7c19f3f-0e2c-4e23-b19e-302833de86b8)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73041, 'US-T296', '2026-11-17T04:52:34Z', 'working', 'fd708909-018e-45ea-8962-d5f98d43b013', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73042, 'M.ORCH-T1673', '2026-11-17T04:55:56Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73043, 'M.ORCH-T1673', '2026-11-17T04:55:56Z', 'name', NULL, 'Resource ownership epic');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73044, 'M.ORCH-T1674', '2026-11-17T04:55:58Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73045, 'M.ORCH-T1674', '2026-11-17T04:55:58Z', 'name', NULL, 'Job Objects for hosted CLIs');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73046, 'M.ORCH-T1675', '2026-11-17T04:56:00Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73047, 'M.ORCH-T1675', '2026-11-17T04:56:00Z', 'name', NULL, 'Job Objects for daemon builds');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73048, 'M.ORCH-T1676', '2026-11-17T04:56:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73049, 'M.ORCH-T1676', '2026-11-17T04:56:02Z', 'name', NULL, 'Resource ledger and scratch dirs');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73050, 'M.ORCH-T1677', '2026-11-17T04:56:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73051, 'M.ORCH-T1677', '2026-11-17T04:56:04Z', 'name', NULL, 'Ledger sweeper');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73052, 'M.ORCH-T1678', '2026-11-17T04:56:07Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73053, 'M.ORCH-T1678', '2026-11-17T04:56:07Z', 'name', NULL, 'Startup orphan sweep');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73054, 'M.ORCH-T1679', '2026-11-17T04:56:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73055, 'M.ORCH-T1679', '2026-11-17T04:56:09Z', 'name', NULL, 'Disk floor holds new work');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73056, 'M.ORCH-T1680', '2026-11-17T04:56:11Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73057, 'M.ORCH-T1680', '2026-11-17T04:56:11Z', 'name', NULL, 'Heavy-process lease');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73058, 'M.ORCH-T1681', '2026-11-17T04:56:14Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73059, 'M.ORCH-T1681', '2026-11-17T04:56:14Z', 'name', NULL, 'Growth caps');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73060, 'M.ORCH-T1673', '2026-11-17T04:56:20Z', 'label', NULL, 'epic');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73061, 'M.ORCH-T1674', '2026-11-17T04:56:21Z', 'link', NULL, 'part-of M.ORCH-T1673');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73062, 'M.ORCH-T1673', '2026-11-17T04:56:22Z', 'link', NULL, 'M.ORCH-T1674 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73063, 'M.ORCH-T1675', '2026-11-17T04:56:23Z', 'link', NULL, 'part-of M.ORCH-T1673');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73064, 'M.ORCH-T1673', '2026-11-17T04:56:24Z', 'link', NULL, 'M.ORCH-T1675 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73065, 'M.ORCH-T1676', '2026-11-17T04:56:26Z', 'link', NULL, 'part-of M.ORCH-T1673');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73066, 'M.ORCH-T1673', '2026-11-17T04:56:26Z', 'link', NULL, 'M.ORCH-T1676 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73067, 'M.ORCH-T1677', '2026-11-17T04:56:28Z', 'link', NULL, 'part-of M.ORCH-T1673');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73068, 'M.ORCH-T1673', '2026-11-17T04:56:29Z', 'link', NULL, 'M.ORCH-T1677 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73069, 'M.ORCH-T1678', '2026-11-17T04:56:30Z', 'link', NULL, 'part-of M.ORCH-T1673');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73070, 'M.ORCH-T1673', '2026-11-17T04:56:31Z', 'link', NULL, 'M.ORCH-T1678 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73071, 'M.ORCH-T1679', '2026-11-17T04:56:32Z', 'link', NULL, 'part-of M.ORCH-T1673');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73072, 'M.ORCH-T1673', '2026-11-17T04:56:33Z', 'link', NULL, 'M.ORCH-T1679 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73073, 'M.ORCH-T1680', '2026-11-17T04:56:35Z', 'link', NULL, 'part-of M.ORCH-T1673');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73074, 'M.ORCH-T1673', '2026-11-17T04:56:36Z', 'link', NULL, 'M.ORCH-T1680 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73075, 'M.ORCH-T1681', '2026-11-17T04:56:38Z', 'link', NULL, 'part-of M.ORCH-T1673');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73076, 'M.ORCH-T1673', '2026-11-17T04:56:39Z', 'link', NULL, 'M.ORCH-T1681 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73077, 'M.ORCH-T1682', '2026-11-17T04:57:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73078, 'M.ORCH-T1682', '2026-11-17T04:57:02Z', 'name', NULL, 'Milestones epic');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73079, 'M.TIX-T335', '2026-11-17T04:57:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73080, 'M.TIX-T335', '2026-11-17T04:57:04Z', 'name', NULL, 'Milestones in the ticket store');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73081, 'M.TIX-T336', '2026-11-17T04:57:06Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73082, 'M.TIX-T336', '2026-11-17T04:57:06Z', 'name', NULL, 'Milestones view in Tickets Desktop');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73083, 'M.ORCH-T1683', '2026-11-17T04:57:07Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73084, 'M.ORCH-T1683', '2026-11-17T04:57:07Z', 'name', NULL, 'Milestone-first queue order');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73085, 'M.ORCH-T1684', '2026-11-17T04:57:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73086, 'M.ORCH-T1684', '2026-11-17T04:57:09Z', 'name', NULL, 'Milestone acceptance checks');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73087, 'M.ORCH-T1685', '2026-11-17T04:57:11Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73088, 'M.ORCH-T1685', '2026-11-17T04:57:11Z', 'name', NULL, 'Milestone scope lock');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73089, 'M.ORCH-T1686', '2026-11-17T04:57:15Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73090, 'M.ORCH-T1686', '2026-11-17T04:57:15Z', 'name', NULL, 'Milestone steward');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73091, 'M.ORCH-T1687', '2026-11-17T04:57:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73092, 'M.ORCH-T1687', '2026-11-17T04:57:17Z', 'name', NULL, 'Bisect to the breaking ticket');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73093, 'M.ORCH-T1688', '2026-11-17T04:57:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73094, 'M.ORCH-T1688', '2026-11-17T04:57:20Z', 'name', NULL, 'Milestone forecast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73095, 'M.ORCH-T1689', '2026-11-17T04:57:23Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73096, 'M.ORCH-T1689', '2026-11-17T04:57:23Z', 'name', NULL, 'Owner inbox');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73097, 'M.ORCH-T1669', '2026-11-17T04:57:25Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73098, 'M.ORCH-T1669', '2026-11-17T04:57:25Z', 'ref', '—', 'b0e32bb2');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73099, 'M.ORCH-T1682', '2026-11-17T04:57:25Z', 'label', NULL, 'epic');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73100, 'M.ORCH-T1683', '2026-11-17T04:57:28Z', 'link', NULL, 'part-of M.ORCH-T1682');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73101, 'M.ORCH-T1682', '2026-11-17T04:57:28Z', 'link', NULL, 'M.ORCH-T1683 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73102, 'M.ORCH-T1684', '2026-11-17T04:57:30Z', 'link', NULL, 'part-of M.ORCH-T1682');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73103, 'M.ORCH-T1682', '2026-11-17T04:57:31Z', 'link', NULL, 'M.ORCH-T1684 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73104, 'M.ORCH-T1685', '2026-11-17T04:57:33Z', 'link', NULL, 'part-of M.ORCH-T1682');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73105, 'M.ORCH-T1682', '2026-11-17T04:57:34Z', 'link', NULL, 'M.ORCH-T1685 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73106, 'M.ORCH-T1686', '2026-11-17T04:57:38Z', 'link', NULL, 'part-of M.ORCH-T1682');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73107, 'M.ORCH-T1682', '2026-11-17T04:57:39Z', 'link', NULL, 'M.ORCH-T1686 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73108, 'M.ORCH-T1687', '2026-11-17T04:57:42Z', 'link', NULL, 'part-of M.ORCH-T1682');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73109, 'M.ORCH-T1682', '2026-11-17T04:57:43Z', 'link', NULL, 'M.ORCH-T1687 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73110, 'M.ORCH-T1688', '2026-11-17T04:57:46Z', 'link', NULL, 'part-of M.ORCH-T1682');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73111, 'M.ORCH-T1682', '2026-11-17T04:57:46Z', 'link', NULL, 'M.ORCH-T1688 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73112, 'M.ORCH-T1689', '2026-11-17T04:57:50Z', 'link', NULL, 'part-of M.ORCH-T1682');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73113, 'M.ORCH-T1682', '2026-11-17T04:57:51Z', 'link', NULL, 'M.ORCH-T1689 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73114, 'M.TIX-T335', '2026-11-17T04:57:56Z', 'link', NULL, 'part-of M.ORCH-T1682');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73115, 'M.ORCH-T1682', '2026-11-17T04:57:56Z', 'link', NULL, 'M.TIX-T335 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73116, 'M.TIX-T336', '2026-11-17T04:57:59Z', 'link', NULL, 'part-of M.ORCH-T1682');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73117, 'M.ORCH-T1682', '2026-11-17T04:58:00Z', 'link', NULL, 'M.TIX-T336 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73118, 'M.ORCH-T1683', '2026-11-17T04:58:04Z', 'link', NULL, 'requires M.TIX-T335');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73119, 'M.TIX-T335', '2026-11-17T04:58:04Z', 'link', NULL, 'M.ORCH-T1683 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73120, 'M.ORCH-T1684', '2026-11-17T04:58:14Z', 'link', NULL, 'requires M.TIX-T335');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73121, 'M.TIX-T335', '2026-11-17T04:58:16Z', 'link', NULL, 'M.ORCH-T1684 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73122, 'M.ORCH-T1685', '2026-11-17T04:58:19Z', 'link', NULL, 'requires M.TIX-T335');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73123, 'M.TIX-T335', '2026-11-17T04:58:20Z', 'link', NULL, 'M.ORCH-T1685 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73124, 'M.ORCH-T1686', '2026-11-17T04:58:23Z', 'link', NULL, 'requires M.TIX-T335');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73125, 'M.TIX-T335', '2026-11-17T04:58:24Z', 'link', NULL, 'M.ORCH-T1686 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73126, 'M.ORCH-T1688', '2026-11-17T04:58:28Z', 'link', NULL, 'requires M.TIX-T335');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73127, 'M.TIX-T335', '2026-11-17T04:58:28Z', 'link', NULL, 'M.ORCH-T1688 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73128, 'M.TIX-T336', '2026-11-17T04:58:31Z', 'link', NULL, 'requires M.TIX-T335');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73129, 'M.TIX-T335', '2026-11-17T04:58:31Z', 'link', NULL, 'M.TIX-T336 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73130, 'M.ORCH-T1677', '2026-11-17T04:58:34Z', 'link', NULL, 'requires M.ORCH-T1676');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73131, 'M.ORCH-T1676', '2026-11-17T04:58:35Z', 'link', NULL, 'M.ORCH-T1677 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73132, 'PRS-T950', '2026-11-17T04:59:00Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73133, 'PRS-T950', '2026-11-17T04:59:00Z', 'ref', 'PRS-T943', 'Pixel: Archer drop-kite kills a vendor (first Schism as a door), Etchweb thin spot takes a drone + forces the north approach, written-off block, sound slipping; law_violations 0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73134, 'M.ORCH-T1673', '2026-11-17T04:59:34Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73135, 'PRS-T951', '2026-11-17T04:59:35Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73136, 'PRS-T951', '2026-11-17T04:59:35Z', 'ref', 'PRS-T943', 'Testament: brickleg kills a yard hand + closes Bear''s road, picker on the 35th thin spot empties his case (loses route + weekly pay), clocks disagree, written-off block; law_violations 0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73137, 'M.ORCH-T1674', '2026-11-17T04:59:38Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73138, 'M.ORCH-T1675', '2026-11-17T04:59:40Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73139, 'M.ORCH-T1676', '2026-11-17T04:59:41Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73140, 'PRS-T952', '2026-11-17T04:59:43Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73141, 'PRS-T952', '2026-11-17T04:59:43Z', 'ref', 'PRS-T943', 'Attendance: AAMA Egress register as the first passage line, Lithium Tender pulls every field team from 35th, brickleg shuts Halsted at 31st, insurer exclusion, taken at the Kedzie rip, Lure no longer the emission; law_violations 0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73142, 'M.ORCH-T1677', '2026-11-17T04:59:44Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73143, 'M.ORCH-T1678', '2026-11-17T04:59:47Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73144, 'M.ORCH-T1679', '2026-11-17T04:59:50Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73145, 'M.ORCH-T1680', '2026-11-17T04:59:51Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73146, 'PRS-T953', '2026-11-17T04:59:52Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73147, 'PRS-T953', '2026-11-17T04:59:52Z', 'ref', 'PRS-T943', 'Between the Lines: drop-kite at the Lane Five tear, stair count slips (Idris''s knee), Etchweb lot, clocks, egress radio, insurer exclusions; Ohio removed; law_violations 0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73148, 'M.ORCH-T1681', '2026-11-17T04:59:53Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73149, 'M5SE-T116', '2026-11-17T05:00:39Z', 'description', '# Add-on packs: optional, data-only support for other mods
+
+## Context
+
+A NexusMods commenter asked whether the editor follows mods that change the game: Pilot Overhaul''s higher
+skill caps, and the extra pilot traits and inventory items from mods such as YAEC-R, YAW-CE and Additional
+Vanilla Traits and Academies (which JJ''s editor mines with Scarab). Building each mod into the editor would
+fill the code base with per-mod branches and risk vanilla behavior. The owner wants mod support to be
+possible but **completely separate**: with no add-ons, or with a mod absent or disabled, the editor must
+behave exactly like today''s vanilla 2.0.0.
+
+Earlier attempts (all reverted, but reusable as source material):
+- `ef281e3` read mod weapons/equipment/ammo/traits straight from enabled mods'' paks (`ModAssetReader`,
+  `AssetLabel`); proven against the whole base pak (1003 items, 241 traits, exact hardpoints).
+- `d880091` read the skill cap from the game''s `PilotSkillLevelCurve`; `CookedPackage.ReadCurveKeys`.
+- `c60cc93` the `IPilotRules` seam, vanilla cap safety and a Pilot Overhaul detector (8 tests).
+- Pilot Overhaul - Eternal 8.7.4 findings: own `PQPilotSkillLevelCurve` (levels to 30 at 120,000 XP),
+  base caps from pilot Quality in blueprint code.
+
+## Mods named in the request (first pack candidates)
+
+| Short name | Mod | Link | Adds |
+|---|---|---|---|
+| YAEC-R | Yet Another Equipment Collection Revived (Daystar) | https://www.nexusmods.com/mechwarrior5mercenaries/mods/1109 | Equipment, armor types, actuator upgrades; replaces YAEC |
+| YAW-CE | Yet Another Weapon - Complete Edition | https://www.nexusmods.com/mechwarrior5mercenaries/mods/1158 | Seven weapon mods in one; replaces YAW/YAWC (old YAW crashes with it) |
+| AVTA | Additional Vanilla Traits and Academies (Silby) | https://www.nexusmods.com/mechwarrior5mercenaries/mods/1348 | 85 pilot traits, 21 academies; optional add-on (29 weapon traits) needs YAW-CE |
+| PO-E | PilotOverhaul - Eternal (jackalope85) | https://steamcommunity.com/sharedfiles/filedetails/?id=3501217348 | Skill caps above 10 (no NexusMods page; original: https://nexusmods.com/mechwarrior5mercenaries/mods/477) |
+
+Related: Yet Another Mechlab (YAML), the base of the "Yet Another" family:
+https://www.nexusmods.com/mechwarrior5mercenaries/mods/459. JJ''s MW save editor (the commenter''s reference):
+https://www.nexusmods.com/mechwarrior5mercenaries/mods/1466. Steam copies of YAEC-R and YAW-CE are listed as removed;
+NexusMods is the source to build packs from.
+
+### Installed reference versions (owner''s machine, 2026-11-10, staged by Vortex)
+
+| Mod | mod.json `displayName` | Folder | Version | defaultLoadOrder |
+|---|---|---|---|---|
+| YAEC-R | Yet Another Equipment Collection Revived | `harjel` (!) | 3.3-DLC9 | 6 |
+| YAW-CE | Yet Another Weapon - Complete Edition | `YetAnotherWeaponCompleteEdition` (4 paks) | 3.0g | 1 |
+| YAW-CE extra | YASV Complete Edition Patch | `YASVCompleteEditionPatch` | 3.0g | 8 |
+| AVTA | Additional Vanilla Traits and Academies | `AVTA` | 1.4 | 2 |
+| YAML | Yet Another Mechlab | `YetAnotherMechlab` | 0.99.4.1 | 5 |
+| PO-E | PilotOverhaul - Eternal | `PilotOverhaul-Eternal` | 8.7.4 | 14 |
+
+Findings that shape detection:
+- Folder names are not reliable (YAEC-R deploys as `harjel`), so `requires` matches on `mod.json`
+  `displayName` first and treats the folder name as a fallback.
+- `modlist.json` holds only `gameVersion` and `modStatus.<folder>.bEnabled`, and load order is only in each
+  `mod.json` (`defaultLoadOrder`). Vortex writes `vortex.deployment.json` in the Mods folder and doesn''t
+  store a separate order, so the game''s own files are the single source.
+- A mod missing from `modStatus` (newly deployed, game not launched since) counts as **not enabled**.
+- Folders with no `mod.json` or no paks (Vortex left about 35 empty folders here) count as **not installed**.
+
+## Goals
+
+- Mod support arrives as **add-on packs**: plain JSON data files in an `Addons` folder beside the exe.
+- A pack applies only while its mod is **installed (pak present), enabled in the game''s `modlist.json`,
+  and a version the pack lists**. Otherwise it is ignored.
+- **No add-ons = today''s behavior**, byte for byte on saves and identical in the UI.
+- Core code has **no mod names and no per-mod branches**: it exposes a few extension points; packs feed data.
+- Supporting a new mod = adding a file, not shipping a new editor version.
+- Packs can be **generated** from a mod''s paks by a separate tool (the Scarab step, done once by whoever
+  makes the pack, never by players).
+
+## Non-goals
+
+- No code plugins (DLLs): no executable add-ons, nothing new for NexusMods to quarantine, no API to keep
+  binary-compatible.
+- No modelling of a mod''s internal logic (e.g. Pilot Overhaul''s Quality-based caps): packs state limits
+  and lists; the game''s own mod code still runs in-game.
+- **Mercenaries only.** Every mod named (YAEC-R, YAW-CE, AVTA, Pilot Overhaul - Eternal) is a MechWarrior 5:
+  Mercenaries mod. Add-ons live entirely in the Mercenaries core and shell. The Clans shell never loads, shows or
+  applies packs, and its Settings page has no Add-ons panel. A pack whose `game` isn''t `mercenaries` is reported as
+  "not for this game" and ignored. The `game` field keeps the door open for Clans later; nothing for Clans is built now.
+
+## Design
+
+### 1. Extension points in Core (once, mod-agnostic)
+`src/MechWarrior5.Mercs.SaveEditor.Core/Addons/`:
+- `IPilotRules` + `VanillaPilotRules` (cap 10), from `c60cc93`. `RosterEditor.Rules` is read on every edit.
+- Catalog contributions: `PilotCatalog` and `ItemCatalog` accept extra `TraitDefinition` / `ItemDefinition`
+  entries (each carrying its source pack/mod), merged after the built-in lists; a rescan replaces the
+  previous contributions (pattern from `ef281e3` `Apply`/`Reset`).
+- Vanilla cap safety (from `c60cc93`): Max caps never lowers a cap; the setter never raises past
+  `max(limit, current)`; the slider maximum covers an existing higher cap; save keeps exactly what''s there.
+
+### 2. Pack format (`Addons/*.json`, schema-versioned)
+
+Each mod has its own set of tweaked values, so a pack holds **that mod''s values for everything the editor uses**.
+It doesn''t model the whole game. The editor''s tweakable surface is small and fixed, and every editor value comes
+from one of these categories (today they''re hard-coded constants and the built-in `Data/*.json` catalogs):
+
+| Category | Editor source today | What a mod can change |
+|---|---|---|
+| `limits` | `RosterEditor.MaxSkillCap` (10), `MaxSalary`, `MaxExperience`, `CompanyEditor.MaxCBills`, `FactionEditor.MaxStanding`, `InventoryEditor.MaxCount` | any limit (PO: skill cap 30) |
+| `skillCurve` | the game''s `PilotSkillLevelCurve` (levels 1-10) | XP per level / extra levels (PO: 20 at 55,000, 30 at 120,000) |
+| `pilotTraits`, `mechTraits` | `Data/traits.json` (`TraitDefinition`: asset, label, description) | new traits (AVTA, YAW add-on); reworded/rebalanced vanilla ones |
+| `items` | `Data/items.json` (`ItemDefinition`: asset, type, kind, hardpoint) | new weapons/equipment/ammo (YAW-CE, YAEC-R); changed hardpoint, slot type or label of vanilla items |
+| `mechs` | `Data/mechs.json` + the existing mod ''Mech scan | new variants (the scan already finds them; a pack can fill in labels/hardpoints the scan misses) |
+
+Each catalog category has two lists: **`add`** (new assets) and **`override`** (fields that replace a built-in
+entry''s values while the pack is active, matched by asset; only the fields given are replaced).
+
+```json
+{
+  "schema": 1,
+  "name": "Yet Another Weapon - Complete Edition",
+  "author": "...",
+  "game": "mercenaries",
+  "source": "https://www.nexusmods.com/mechwarrior5mercenaries/mods/1158",
+  "requires": { "modFolder": "YAW_CE", "modName": "Yet Another Weapon - Complete Edition", "versions": ["1.0"] },
+  "requiresPacks": [],
+  "limits": { "maxSkillCap": 30, "maxExperience": 2000000 },
+  "skillCurve": [ { "level": 10, "xp": 14110 }, { "level": 20, "xp": 55000 }, { "level": 30, "xp": 120000 } ],
+  "pilotTraits": { "add": [ { "asset": "...", "label": "...", "description": "..." } ], "override": [ ] },
+  "mechTraits":  { "add": [ ], "override": [ ] },
+  "items": {
+    "add": [ { "asset": "...", "type": "MWWeaponDataAsset", "kind": "weapon", "label": "...", "hardpoint": "E" },
+             { "asset": "...", "type": "MWEquipmentDataAsset", "kind": "equipment", "label": "...", "slots": ["General_SlotType"] } ],
+    "override": [ { "asset": "WeaponDataAsset_ERLargeLaser_Lvl1", "hardpoint": "E", "label": "ER Large Laser" } ]
+  },
+  "mechs": { "add": [ ], "override": [ ] }
+}
+```
+- Every field optional except `schema`, `name`, `requires`. Unknown fields ignored (forward compatible).
+- `requires.versions` are prefixes; empty = any version (allowed but flagged in the UI).
+- `requiresPacks`: names of packs that must also be active (AVTA''s YAW add-on pack requires the YAW-CE pack).
+- `limits` and `skillCurve` replace the vanilla value while active; save values outside them are still kept
+  (vanilla cap safety), so a pack can''t damage an existing save.
+
+### 2a. Per-mod coverage (what each first pack carries)
+
+| Mod | limits | skillCurve | traits | items | mechs |
+|---|---|---|---|---|---|
+| Pilot Overhaul - Eternal | skill cap 30 (or per-Quality, see risks) | its `PQPilotSkillLevelCurve` | its pilot traits | - | - |
+| YAW-CE | - | - | - | adds its weapons and ammo; overrides vanilla weapons it changes (hardpoint, label) | - |
+| YAEC-R | - | - | mech traits if any | adds equipment, armor types, actuator upgrades; overrides vanilla equipment it changes (slot type, label) | - |
+| AVTA | - | - | adds 85 pilot traits (academies are game-side, not in the editor) | - | - |
+| AVTA YAW add-on | - | - | adds 29 weapon traits; `requiresPacks: ["Yet Another Weapon - Complete Edition"]` | - | - |
+
+The generator (section 5) reads each mod''s paks and fills these in. Each mod''s exact list of changed values is
+confirmed from its paks at that point, never guessed by hand.
+
+### 3. Loader and activation (`AddonLoader`, `AddonState`)
+- Reads `Addons/*.json` on startup and on Rescan, off the UI thread. A malformed pack is skipped with a
+  reason shown in Settings; it can never stop the editor from starting or touch a save.
+- Detection reuses the `c60cc93` detector, generalized: mod folder found by folder name or `mod.json`
+  display name, pak present (following Vortex links), enabled in `modlist.json`, version matched.
+- **One decision point** builds the active set: packs whose mod is active and that the user hasn''t turned
+  off. Merge rules:
+  - `limits`: per limit, the highest value among active packs wins (a mod raising a cap must not be undone
+    by another pack that doesn''t mention it); absent = vanilla.
+  - `skillCurve`: one active pack may define it; if two do, the one following the game''s mod load order
+    (`modlist.json` / `mod.json` `defaultLoadOrder`) wins, matching how the game itself resolves the override.
+  - catalogs: `add` entries are merged after the built-in list; `override` replaces only the given fields of a
+    built-in (or earlier pack''s) entry. Two packs touching the same asset resolve by the game''s mod load order
+    (later mod wins, as in game) and the collision is reported in Settings.
+- Per-pack switch in Settings (on by default for an active pack, since the pack itself is the opt-in;
+  a global "Disable all add-ons" switch forces vanilla).
+
+### 4. UI
+- Settings > **Add-ons** panel: one row per pack with its name, the mod it needs, status (active / mod not
+  installed / mod disabled / version not supported / invalid pack) and an on/off switch; "Open Addons folder".
+- Pickers label pack entries with their mod (a small chip, as modded ''Mechs already have).
+- Pilots page cap header shows the active range (CAP (0-10) in vanilla).
+- All new text in the six languages.
+
+### 5. Pack generator (separate tool, not in the app)
+`tools/AddonPack` console app (reusing `ef281e3`''s `ModAssetReader`/`AssetLabel` and `CookedPackage`):
+`AddonPack <mod folder> [--name] [--out Addons/<mod>.json]` reads the mod''s paks and writes a pack with its
+traits, items (hardpoints from `WeaponType`, slots from `SupportedSlotTypesAssetId`, AI-only weapons
+skipped) and, when the mod ships a pilot skill curve, `skillCurve` and `limits.maxSkillCap` from its top level.
+It splits each asset into `add` or `override` by comparing it with the base game''s pak: assets the base game
+doesn''t have go to `add`, and base-game assets whose editor-relevant fields differ go to `override` with only
+the changed fields. Output is reviewed by a human before it''s published.
+
+### 6. Distribution
+- Packs live in the repo under `addons/` and ship inside the release zip''s `Addons` folder; players can drop
+  in more. The first pack: Pilot Overhaul - Eternal (caps only, once it works with DLC 9). Then generated
+  packs for YAW-CE, YAEC-R, Additional Vanilla Traits and Academies.
+- Docs: user guide section "Add-ons", a `docs/ADDONS.md` pack-format reference for pack authors.
+
+## Safety rules (must hold)
+- No packs, or no active packs: the app behaves exactly as vanilla 2.0.0 (verified by the existing suite).
+- A pack can add entries and change the values of existing ones while active; it never removes built-in
+  entries. Deactivating it restores the built-in values exactly (overrides are layered, never written into the
+  built-in catalogs).
+- Pack values only change what the editor offers and validates. A save keeps whatever it already holds; nothing
+  is rewritten because a pack was turned on or off.
+- Clans is untouched: no pack code runs in the Clans shell.
+- An inactive pack''s data is never offered or written. Data already in a save (from any mod) is preserved
+  by the lossless serializer regardless.
+- Saves with caps above the active limit are kept as they are (vanilla cap safety).
+- The save-time asset check still warns when a save references something the installed game/mods lack.
+
+## Phases
+1. Core seam + vanilla cap safety (restore `c60cc93` pieces) + tests. No behavior change.
+2. Pack format, loader, detection, decision point + tests (fake mod folders, malformed packs).
+3. Catalog contributions + picker labels; Settings Add-ons panel; translations.
+4. `tools/AddonPack` generator (restore `ef281e3` reader into the tool) + tests against the base pak.
+5. First packs, docs (`docs/ADDONS.md`, user guide), release.
+
+## Verification
+- Unit: pack parsing (valid, missing fields, unknown fields, bad JSON, wrong `game`), activation matrix (not
+  installed / disabled / wrong version / active / user-off / missing `requiresPacks`), limits merge (highest
+  wins, absent = vanilla), override layering (only given fields replaced, deactivation restores built-in
+  exactly), load-order collision resolution.
+- Clans: the Clans shell and its existing tests are unchanged with packs present in `Addons`.
+- Headless: full existing suite unchanged with an empty `Addons` folder (vanilla regression gate);
+  a real-save test with a test pack active (caps up to the pack''s limit save and reload) and inactive
+  (vanilla, existing higher caps kept).
+- Generator: run over the base pak as if it were a mod and match the built-in catalogs (as `ef281e3` did).
+- Render audit of the Settings Add-ons panel and the Pilots page; in-game check of an edited save with a
+  pack active and its mod enabled.
+
+## Risks / open questions
+- Pilot Overhaul''s real per-pilot cap rules are unconfirmed (no working PO save yet); its pack states the
+  curve''s top level (30).
+- Mods change between versions: packs are version-gated; a stale pack stays inactive rather than guessing.
+- Asset collisions between packs: first wins, reported in Settings.
+- NexusMods distribution: packs are JSON inside the GitHub zip, so nothing new is quarantined.', '# Add-on packs: optional, data-only support for other mods
+
+## Context
+
+A NexusMods commenter asked whether the editor follows mods that change the game: Pilot Overhaul''s higher
+skill caps, and the extra pilot traits and inventory items from mods such as YAEC-R, YAW-CE and Additional
+Vanilla Traits and Academies (which JJ''s editor mines with Scarab). Building each mod into the editor would
+fill the code base with per-mod branches and risk vanilla behavior. The owner wants mod support to be
+possible but **completely separate**: with no add-ons, or with a mod absent or disabled, the editor must
+behave exactly like today''s vanilla 2.0.0.
+
+Earlier attempts (all reverted, but reusable as source material):
+- `ef281e3` read mod weapons/equipment/ammo/traits straight from enabled mods'' paks (`ModAssetReader`,
+  `AssetLabel`); proven against the whole base pak (1003 items, 241 traits, exact hardpoints).
+- `d880091` read the skill cap from the game''s `PilotSkillLevelCurve`; `CookedPackage.ReadCurveKeys`.
+- `c60cc93` the `IPilotRules` seam, vanilla cap safety and a Pilot Overhaul detector (8 tests).
+- Pilot Overhaul - Eternal 8.7.4 findings: own `PQPilotSkillLevelCurve` (levels to 30 at 120,000 XP),
+  base caps from pilot Quality in blueprint code.
+
+Owner note (M5SE-T111, 2026-11-10): Pilot Overhaul cap support specifically was tried twice and dropped
+both times (PO 8.7.4 didn''t work with DLC 9 at the time, then the whole extension was discarded). That
+history is why this ticket treats PO as just one pack among several, inert by default, never a special
+case in Core: the mechanism must not depend on any one mod working.
+
+## Mods named in the request (first pack candidates)
+
+| Short name | Mod | Link | Adds |
+|---|---|---|---|
+| YAEC-R | Yet Another Equipment Collection Revived (Daystar) | https://www.nexusmods.com/mechwarrior5mercenaries/mods/1109 | Equipment, armor types, actuator upgrades; replaces YAEC |
+| YAW-CE | Yet Another Weapon - Complete Edition | https://www.nexusmods.com/mechwarrior5mercenaries/mods/1158 | Seven weapon mods in one; replaces YAW/YAWC (old YAW crashes with it) |
+| AVTA | Additional Vanilla Traits and Academies (Silby) | https://www.nexusmods.com/mechwarrior5mercenaries/mods/1348 | 85 pilot traits, 21 academies; optional add-on (29 weapon traits) needs YAW-CE |
+| PO-E | PilotOverhaul - Eternal (jackalope85) | https://steamcommunity.com/sharedfiles/filedetails/?id=3501217348 | Skill caps above 10 (no NexusMods page; original: https://nexusmods.com/mechwarrior5mercenaries/mods/477) |
+
+Related: Yet Another Mechlab (YAML), the base of the "Yet Another" family:
+https://www.nexusmods.com/mechwarrior5mercenaries/mods/459. JJ''s MW save editor (the commenter''s reference):
+https://www.nexusmods.com/mechwarrior5mercenaries/mods/1466. Steam copies of YAEC-R and YAW-CE are listed as removed;
+NexusMods is the source to build packs from.
+
+### Installed reference versions (owner''s machine, 2026-11-10, staged by Vortex)
+
+| Mod | mod.json `displayName` | Folder | Version | defaultLoadOrder |
+|---|---|---|---|---|
+| YAEC-R | Yet Another Equipment Collection Revived | `harjel` (!) | 3.3-DLC9 | 6 |
+| YAW-CE | Yet Another Weapon - Complete Edition | `YetAnotherWeaponCompleteEdition` (4 paks) | 3.0g | 1 |
+| YAW-CE extra | YASV Complete Edition Patch | `YASVCompleteEditionPatch` | 3.0g | 8 |
+| AVTA | Additional Vanilla Traits and Academies | `AVTA` | 1.4 | 2 |
+| YAML | Yet Another Mechlab | `YetAnotherMechlab` | 0.99.4.1 | 5 |
+| PO-E | PilotOverhaul - Eternal | `PilotOverhaul-Eternal` | 8.7.4 | 14 |
+
+Findings that shape detection:
+- Folder names are not reliable (YAEC-R deploys as `harjel`), so `requires` matches on `mod.json`
+  `displayName` first and treats the folder name as a fallback.
+- `modlist.json` holds only `gameVersion` and `modStatus.<folder>.bEnabled`, and load order is only in each
+  `mod.json` (`defaultLoadOrder`). Vortex writes `vortex.deployment.json` in the Mods folder and doesn''t
+  store a separate order, so the game''s own files are the single source.
+- A mod missing from `modStatus` (newly deployed, game not launched since) counts as **not enabled**.
+- Folders with no `mod.json` or no paks (Vortex left about 35 empty folders here) count as **not installed**.
+
+## Goals
+
+- Mod support arrives as **add-on packs**: plain JSON data files in an `Addons` folder beside the exe.
+- A pack applies only while its mod is **installed (pak present), enabled in the game''s `modlist.json`,
+  and a version the pack lists**. Otherwise it is ignored.
+- **No add-ons = today''s behavior**, byte for byte on saves and identical in the UI.
+- Core code has **no mod names and no per-mod branches**: it exposes a few extension points; packs feed data.
+- Every bound the editor enforces is a value pulled from the active limits snapshot at the point of use
+  (UI control range, validator, clamp) — never a literal written at a second place that could fall out of
+  sync with the first. This is the "go full in" requirement: no exceptions among the categories listed below.
+- Supporting a new mod = adding a file, not shipping a new editor version.
+- Packs can be **generated** from a mod''s paks by a separate tool (the Scarab step, done once by whoever
+  makes the pack, never by players).
+- Every value the editor shows that came from, or deviates because of, a pack is traceable back to that
+  pack''s mod, version and source URL — and so is every value that *would* come from a pack but can''t
+  because the mod is missing, disabled or the wrong version (see "Compatibility report" below).
+
+## Non-goals
+
+- No code plugins (DLLs): no executable add-ons, nothing new for NexusMods to quarantine, no API to keep
+  binary-compatible.
+- No modelling of a mod''s internal logic (e.g. Pilot Overhaul''s Quality-based caps): packs state limits
+  and lists; the game''s own mod code still runs in-game.
+- **Mercenaries only.** Every mod named (YAEC-R, YAW-CE, AVTA, Pilot Overhaul - Eternal) is a MechWarrior 5:
+  Mercenaries mod. Add-ons live entirely in the Mercenaries core and shell. The Clans shell never loads, shows or
+  applies packs, and its Settings page has no Add-ons panel. A pack whose `game` isn''t `mercenaries` is reported as
+  "not for this game" and ignored. The `game` field keeps the door open for Clans later; nothing for Clans is built now.
+
+## Design
+
+### 1. Extension points in Core (once, mod-agnostic)
+`src/MechWarrior5.Mercs.SaveEditor.Core/Addons/`:
+- `IPilotRules` + `VanillaPilotRules` (cap 10), from `c60cc93`. `RosterEditor.Rules` is read on every edit.
+- Catalog contributions: `PilotCatalog` and `ItemCatalog` accept extra `TraitDefinition` / `ItemDefinition`
+  entries (each carrying its source pack/mod), merged after the built-in lists; a rescan replaces the
+  previous contributions (pattern from `ef281e3` `Apply`/`Reset`).
+- Vanilla cap safety (from `c60cc93`): Max caps never lowers a cap; the setter never raises past
+  `max(limit, current)`; the slider maximum covers an existing higher cap; save keeps exactly what''s there.
+
+### 1a. Full hardcoded-value inventory (every known one, verified against the code 2026-11-16)
+
+Every numeric limit the editor enforces today is a named constant; this ticket''s `limits` category must
+cover all of them, not a sample, and nothing may keep its own copy of the number elsewhere:
+
+| Constant | File | Value | Pack-able via `limits` key |
+|---|---|---|---|
+| `RosterEditor.MaxSkillCap` | `Game/RosterEditor.cs` | 10 | `maxSkillCap` |
+| `RosterEditor.MaxSalary` | `Game/RosterEditor.cs` | 10,000,000 | `maxSalary` |
+| `RosterEditor.MaxExperience` | `Game/RosterEditor.cs` | 1,000,000 | `maxExperience` |
+| `CompanyEditor.MaxCBills` | `Game/CompanyEditor.cs` | 2,000,000,000 | `maxCBills` |
+| `FactionEditor.MaxStanding` | `Game/FactionEditor.cs` | 100 | `maxStanding` |
+| `FactionEditor.MinStanding` | `Game/FactionEditor.cs` | -100 | `minStanding` (missed by the original category table; a mod could raise a faction''s floor as easily as its ceiling) |
+| `InventoryEditor.MaxCount` | `Game/InventoryEditor.cs` | 9,999 | `maxCount` |
+
+`Clans/InventoryEditor.MaxQuantity` (1,000,000,000) is deliberately excluded: Clans never loads packs
+(Non-goals, above), so it stays a plain constant.
+
+Two more spots duplicate these numbers today and must stop doing so once limits become dynamic, or
+"full in" is false in the UI even though Core is correct:
+- `src/MechWarrior5.SaveEditor.App/Views/PilotsView.xaml:238` — `<Slider Minimum="0" Maximum="10" .../>`
+  on the skill-cap control; must bind `Maximum` to the active `maxSkillCap`, not a literal `10`.
+- `src/MechWarrior5.SaveEditor.App/Views/FactionsView.xaml:63` — `<Slider Minimum="-100" Maximum="100" .../>`
+  on the standing control; must bind both `Minimum` and `Maximum` to the active `minStanding`/`maxStanding`.
+
+Any further numeric literal found during implementation that gates what the editor accepts (not a game
+engine parsing convention like `Hardpoints`/`EquipmentSlots`, which encode the save format itself and are
+not mod-tunable) is a bug against this ticket, not a separate one.
+
+### 2. Pack format (`Addons/*.json`, schema-versioned)
+
+Each mod has its own set of tweaked values, so a pack holds **that mod''s values for everything the editor uses**.
+It doesn''t model the whole game. The editor''s tweakable surface is small and fixed, and every editor value comes
+from one of these categories (today they''re hard-coded constants and the built-in `Data/*.json` catalogs):
+
+| Category | Editor source today | What a mod can change |
+|---|---|---|
+| `limits` | `RosterEditor.MaxSkillCap` (10), `MaxSalary`, `MaxExperience`, `CompanyEditor.MaxCBills`, `FactionEditor.MinStanding`/`MaxStanding`, `InventoryEditor.MaxCount` | any limit (PO: skill cap 30) |
+| `skillCurve` | the game''s `PilotSkillLevelCurve` (levels 1-10) | XP per level / extra levels (PO: 20 at 55,000, 30 at 120,000) |
+| `pilotTraits`, `mechTraits` | `Data/traits.json` (`TraitDefinition`: asset, label, description) | new traits (AVTA, YAW add-on); reworded/rebalanced vanilla ones |
+| `items` | `Data/items.json` (`ItemDefinition`: asset, type, kind, hardpoint) | new weapons/equipment/ammo (YAW-CE, YAEC-R); changed hardpoint, slot type or label of vanilla items |
+| `mechs` | `Data/mechs.json` + the existing mod ''Mech scan | new variants (the scan already finds them; a pack can fill in labels/hardpoints the scan misses) |
+
+Each catalog category has two lists: **`add`** (new assets) and **`override`** (fields that replace a built-in
+entry''s values while the pack is active, matched by asset; only the fields given are replaced).
+
+```json
+{
+  "schema": 1,
+  "name": "Yet Another Weapon - Complete Edition",
+  "author": "...",
+  "game": "mercenaries",
+  "source": "https://www.nexusmods.com/mechwarrior5mercenaries/mods/1158",
+  "requires": { "modFolder": "YAW_CE", "modName": "Yet Another Weapon - Complete Edition", "versions": ["1.0"] },
+  "requiresPacks": [],
+  "limits": { "maxSkillCap": 30, "maxExperience": 2000000 },
+  "skillCurve": [ { "level": 10, "xp": 14110 }, { "level": 20, "xp": 55000 }, { "level": 30, "xp": 120000 } ],
+  "pilotTraits": { "add": [ { "asset": "...", "label": "...", "description": "..." } ], "override": [ ] },
+  "mechTraits":  { "add": [ ], "override": [ ] },
+  "items": {
+    "add": [ { "asset": "...", "type": "MWWeaponDataAsset", "kind": "weapon", "label": "...", "hardpoint": "E" },
+             { "asset": "...", "type": "MWEquipmentDataAsset", "kind": "equipment", "label": "...", "slots": ["General_SlotType"] } ],
+    "override": [ { "asset": "WeaponDataAsset_ERLargeLaser_Lvl1", "hardpoint": "E", "label": "ER Large Laser" } ]
+  },
+  "mechs": { "add": [ ], "override": [ ] }
+}
+```
+- Every field optional except `schema`, `name`, `requires`. Unknown fields ignored (forward compatible).
+- `requires.versions` are prefixes; empty = any version (allowed but flagged in the UI).
+- `requiresPacks`: names of packs that must also be active (AVTA''s YAW add-on pack requires the YAW-CE pack).
+- `limits` and `skillCurve` replace the vanilla value while active; save values outside them are still kept
+  (vanilla cap safety), so a pack can''t damage an existing save.
+
+### 2a. Per-mod coverage (what each first pack carries)
+
+| Mod | limits | skillCurve | traits | items | mechs |
+|---|---|---|---|---|---|
+| Pilot Overhaul - Eternal | skill cap 30 (or per-Quality, see risks) | its `PQPilotSkillLevelCurve` | its pilot traits | - | - |
+| YAW-CE | - | - | - | adds its weapons and ammo; overrides vanilla weapons it changes (hardpoint, label) | - |
+| YAEC-R | - | - | mech traits if any | adds equipment, armor types, actuator upgrades; overrides vanilla equipment it changes (slot type, label) | - |
+| AVTA | - | - | adds 85 pilot traits (academies are game-side, not in the editor) | - | - |
+| AVTA YAW add-on | - | - | adds 29 weapon traits; `requiresPacks: ["Yet Another Weapon - Complete Edition"]` | - | - |
+
+The generator (section 5) reads each mod''s paks and fills these in. Each mod''s exact list of changed values is
+confirmed from its paks at that point, never guessed by hand.
+
+### 3. Loader and activation (`AddonLoader`, `AddonState`)
+- Reads `Addons/*.json` on startup and on Rescan, off the UI thread. A malformed pack is skipped with a
+  reason shown in Settings; it can never stop the editor from starting or touch a save.
+- Detection reuses the `c60cc93` detector, generalized: mod folder found by folder name or `mod.json`
+  display name, pak present (following Vortex links), enabled in `modlist.json`, version matched.
+- **One decision point** builds the active set: packs whose mod is active and that the user hasn''t turned
+  off. Merge rules:
+  - `limits`: per limit, the highest value among active packs wins (a mod raising a cap must not be undone
+    by another pack that doesn''t mention it); absent = vanilla.
+  - `skillCurve`: one active pack may define it; if two do, the one following the game''s mod load order
+    (`modlist.json` / `mod.json` `defaultLoadOrder`) wins, matching how the game itself resolves the override.
+  - catalogs: `add` entries are merged after the built-in list; `override` replaces only the given fields of a
+    built-in (or earlier pack''s) entry. Two packs touching the same asset resolve by the game''s mod load order
+    (later mod wins, as in game) and the collision is reported in Settings.
+- Per-pack switch in Settings (on by default for an active pack, since the pack itself is the opt-in;
+  a global "Disable all add-ons" switch forces vanilla).
+- The loader keeps every pack it parsed (not just the active ones) in memory as `AddonState.AllKnownPacks`,
+  each tagged with why it is or isn''t active (active / mod not installed / mod disabled / version not
+  supported / invalid). The compatibility report (section 3a) scans against this full set, not only the
+  active subset, so it can name a pack that would explain a save''s data even while it sits inactive.
+
+### 3a. Compatibility report (deviation logging)
+
+Purpose: when a save is opened, a user who is missing, has disabled, or has a mismatched version of a mod
+must be told exactly that — which value is off, which mod it belongs to, and where to get the right version —
+rather than silently seeing an unexplained number or a blank label. This holds whether or not any packs are
+installed at all.
+
+- On opening a save (after the existing asset check), `AddonCompatibilityScanner` walks every pilot trait,
+  mech trait, item/equipment asset, mech variant, and the roster''s skill levels/experience, company C-Bills,
+  and faction standings already present in the save.
+- Each value is classified against three tiers, checked in order:
+  1. **Vanilla** — matches a built-in catalog entry or sits within the vanilla limit. No report line.
+  2. **Explained by an active pack** — matches an `add`/`override` entry, or sits within a `limits`/
+     `skillCurve` value, contributed by a pack that is currently active. No report line (this is the
+     pack working as intended).
+  3. **Unexplained** — matches neither vanilla nor any active pack''s contribution. The scanner then
+     searches `AddonState.AllKnownPacks` (active or not, per 3.) for a pack whose `add`/`override`/
+     `limits`/`skillCurve` entries would explain it:
+     - **Found, inactive** — report line: the asset/value, the pack''s `name`, its `requires.modFolder`/
+       `modName`, the version(s) it needs, its `source` URL, and the specific reason it''s inactive today
+       (mod not installed / mod disabled in `modlist.json` / installed version doesn''t match
+       `requires.versions`).
+     - **Found nowhere** — report line: the asset/value with no known explanation (an unrecognized mod,
+       or one with no pack yet); still surfaced, just without a mod/version/URL to point at.
+- Shown as a **Compatibility** panel (Settings, and a toast/banner on load when the list is non-empty):
+  one row per unexplained item, grouped by the mod that would explain it, each row showing the save''s raw
+  value next to what it means. Never blocks opening, saving, or editing the file — it is informational.
+- The same scanner reruns whenever the active pack set changes (toggling a pack, Rescan, mods
+  installed/removed), so the report always reflects the save against *today''s* active set, not a cached one.
+- Nothing in this section writes to the save. The report describes what''s already there; editing and
+  saving behave exactly as the rest of this ticket specifies (pack values only change what the editor
+  offers and validates, per Safety rules).
+
+### 4. UI
+- Settings > **Add-ons** panel: one row per pack with its name, the mod it needs, status (active / mod not
+  installed / mod disabled / version not supported / invalid pack) and an on/off switch; "Open Addons folder".
+- Settings > **Compatibility** panel (3a): one row per unexplained save value, as described above.
+- Pickers label pack entries with their mod (a small chip, as modded ''Mechs already have).
+- Pilots page cap header shows the active range (CAP (0-10) in vanilla); its slider''s `Maximum` is bound
+  to the same active limit, not the literal in PilotsView.xaml today (1a).
+- Factions page standing slider''s `Minimum`/`Maximum` are bound the same way, replacing the FactionsView.xaml
+  literals (1a).
+- All new text in the six languages.
+
+### 5. Pack generator (separate tool, not in the app)
+`tools/AddonPack` console app (reusing `ef281e3`''s `ModAssetReader`/`AssetLabel` and `CookedPackage`):
+`AddonPack <mod folder> [--name] [--out Addons/<mod>.json]` reads the mod''s paks and writes a pack with its
+traits, items (hardpoints from `WeaponType`, slots from `SupportedSlotTypesAssetId`, AI-only weapons
+skipped) and, when the mod ships a pilot skill curve, `skillCurve` and `limits.maxSkillCap` from its top level.
+It splits each asset into `add` or `override` by comparing it with the base game''s pak: assets the base game
+doesn''t have go to `add`, and base-game assets whose editor-relevant fields differ go to `override` with only
+the changed fields. Output is reviewed by a human before it''s published.
+
+### 6. Distribution
+- Packs live in the repo under `addons/` and ship inside the release zip''s `Addons` folder; players can drop
+  in more. The first pack: Pilot Overhaul - Eternal (caps only, once it works with DLC 9). Then generated
+  packs for YAW-CE, YAEC-R, Additional Vanilla Traits and Academies.
+- Docs: user guide section "Add-ons", a `docs/ADDONS.md` pack-format reference for pack authors.
+
+## Safety rules (must hold)
+- No packs, or no active packs: the app behaves exactly as vanilla 2.0.0 (verified by the existing suite).
+- A pack can add entries and change the values of existing ones while active; it never removes built-in
+  entries. Deactivating it restores the built-in values exactly (overrides are layered, never written into the
+  built-in catalogs).
+- Pack values only change what the editor offers and validates. A save keeps whatever it already holds; nothing
+  is rewritten because a pack was turned on or off.
+- Clans is untouched: no pack code runs in the Clans shell.
+- An inactive pack''s data is never offered or written. Data already in a save (from any mod) is preserved
+  by the lossless serializer regardless.
+- Saves with caps above the active limit are kept as they are (vanilla cap safety).
+- The save-time asset check still warns when a save references something the installed game/mods lack.
+- The Compatibility report (3a) is read-only: it may only report, never alter, clamp or remove save data.
+
+## Phases
+1. Core seam + vanilla cap safety (restore `c60cc93` pieces) + tests. No behavior change.
+2. Pack format, loader, detection, decision point + tests (fake mod folders, malformed packs).
+3. Catalog contributions + picker labels; Settings Add-ons panel; translations; rebind the two XAML
+   literals (PilotsView.xaml:238, FactionsView.xaml:63) to the active limits snapshot (1a).
+4. `tools/AddonPack` generator (restore `ef281e3` reader into the tool) + tests against the base pak.
+5. Compatibility report: `AddonCompatibilityScanner`, `AllKnownPacks` tracking in `AddonState`, Settings
+   Compatibility panel + translations + tests (unexplained-but-known, unexplained-and-unknown, explained-
+   by-inactive-pack-with-version-mismatch).
+6. First packs, docs (`docs/ADDONS.md`, user guide), release.
+
+## Verification
+- Unit: pack parsing (valid, missing fields, unknown fields, bad JSON, wrong `game`), activation matrix (not
+  installed / disabled / wrong version / active / user-off / missing `requiresPacks`), limits merge (highest
+  wins, absent = vanilla), override layering (only given fields replaced, deactivation restores built-in
+  exactly), load-order collision resolution.
+- Unit: every named constant in 1a has exactly one source of truth at runtime (no XAML literal still wins
+  over an active pack''s limit).
+- Unit: Compatibility scanner tiers (vanilla / explained-by-active-pack / explained-by-inactive-pack /
+  unknown), each producing the right report line and reason.
+- Clans: the Clans shell and its existing tests are unchanged with packs present in `Addons`.
+- Headless: full existing suite unchanged with an empty `Addons` folder (vanilla regression gate);
+  a real-save test with a test pack active (caps up to the pack''s limit save and reload) and inactive
+  (vanilla, existing higher caps kept, Compatibility report naming the inactive pack and its URL).
+- Generator: run over the base pak as if it were a mod and match the built-in catalogs (as `ef281e3` did).
+- Render audit of the Settings Add-ons panel, the Settings Compatibility panel, the Pilots page and the
+  Factions page; in-game check of an edited save with a pack active and its mod enabled.
+
+## Risks / open questions
+- Pilot Overhaul''s real per-pilot cap rules are unconfirmed (no working PO save yet); its pack states the
+  curve''s top level (30).
+- Mods change between versions: packs are version-gated; a stale pack stays inactive rather than guessing.
+- Asset collisions between packs: first wins, reported in Settings.
+- NexusMods distribution: packs are JSON inside the GitHub zip, so nothing new is quarantined.
+- The Compatibility report can only name a pack it has (shipped in `Addons/`, active or not). A save with
+  data from a mod nobody has written a pack for yet shows up as "unexplained, no known pack" rather than
+  naming that mod; closing that gap means growing pack coverage (section 6), not a code change.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73150, 'M.ORCH-T1682', '2026-11-17T05:00:41Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73151, 'M.ORCH-T1683', '2026-11-17T05:00:43Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73152, 'PRS-T954', '2026-11-17T05:00:43Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73153, 'PRS-T954', '2026-11-17T05:00:43Z', 'ref', 'PRS-T943', 'Death Whispers: canal drop-kite, sumpcalf quiet set-piece at OUSE, brickleg pulls the Vulture vans (Tamsin''s 22 minutes), picker by the Morgan hatch, stair gains a step; law_violations 0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73154, 'M.ORCH-T1684', '2026-11-17T05:00:44Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73155, 'M.ORCH-T1685', '2026-11-17T05:00:46Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73156, 'M.ORCH-T1686', '2026-11-17T05:00:48Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73157, 'M.ORCH-T1687', '2026-11-17T05:00:49Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73158, 'M.ORCH-T1688', '2026-11-17T05:00:50Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73159, 'M.ORCH-T1689', '2026-11-17T05:00:51Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73160, 'M.TIX-T335', '2026-11-17T05:00:53Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73161, 'M.TIX-T336', '2026-11-17T05:00:54Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73162, 'M5SE-T116', '2026-11-17T05:00:58Z', 'summary', 'Add-on packs (Mercenaries only): optional, data-only JSON packs carrying each mod''s own values (limits, skill curve, trait/item/mech additions and overrides) for YAEC-R, YAW-CE, AVTA and Pilot Overhaul - Eternal; no packs = vanilla 2.0.0', 'Add-on packs (Mercenaries only): optional, data-only JSON packs carrying each mod''s own values (limits, skill curve, trait/item/mech additions and overrides) for YAEC-R, YAW-CE, AVTA and Pilot Overhaul - Eternal, with every editor-enforced limit sourced from one dynamic snapshot (no stray literals) and a Compatibility report naming the mod/version/URL behind any save value a missing, disabled or mismatched mod would explain; no packs = vanilla 2.0.0 (corrected: Owner (2026-11-16): go full in - every hardcoded limit must come from the same dynamic source, and deviations from vanilla must be logged with the mod/version/URL that explains them)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73163, 'PRS-T972', '2026-11-17T05:01:07Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73164, 'PRS-T972', '2026-11-17T05:01:07Z', 'name', NULL, 'DWIACE cast name mismatches');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73165, 'PRS-T972', '2026-11-17T05:01:11Z', 'label', NULL, 'glmz-vision');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73166, 'PRS-T972', '2026-11-17T05:01:11Z', 'label', NULL, 'book:death-whispers-in-a-cats-ear-019ec3fe');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73167, 'M.ORCH-T1669', '2026-11-17T05:01:19Z', 'working', 'ohleo199@mindattic.com (f7c19f3f-0e2c-4e23-b19e-302833de86b8)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73168, 'M.ORCH-T1676', '2026-11-17T05:01:29Z', 'working', NULL, 'ohleo199@mindattic.com (f7c19f3f-0e2c-4e23-b19e-302833de86b8)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73169, 'M.ORCH-T1689', '2026-11-17T05:01:35Z', 'working', NULL, 'ohleo199@mindattic.com (f7c19f3f-0e2c-4e23-b19e-302833de86b8)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73170, 'M.ORCH-T1671', '2026-11-17T05:01:47Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73171, 'M.ORCH-T1671', '2026-11-17T05:01:47Z', 'ref', 'M.ORCH-T1655', '78040a9a');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73172, 'M.ORCH-T1687', '2026-11-17T05:01:48Z', 'working', NULL, 'ohleo199@mindattic.com (f7c19f3f-0e2c-4e23-b19e-302833de86b8)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73173, 'M.ORCH-T1681', '2026-11-17T05:01:51Z', 'working', NULL, 'ohleo199@mindattic.com (f7c19f3f-0e2c-4e23-b19e-302833de86b8)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73174, 'M.ORCH-T1680', '2026-11-17T05:01:55Z', 'working', NULL, 'ohleo199@mindattic.com (f7c19f3f-0e2c-4e23-b19e-302833de86b8)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73175, 'M.ORCH-T1679', '2026-11-17T05:02:28Z', 'working', NULL, 'shampoo1232@mindattic.com');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73176, 'M.ORCH-T1678', '2026-11-17T05:02:32Z', 'working', NULL, 'shampoo1232@mindattic.com');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73177, 'M.ORCH-T1674', '2026-11-17T05:02:32Z', 'working', NULL, 'shampoo1232@mindattic.com');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73178, 'M.ORCH-T1689', '2026-11-17T05:04:27Z', 'working', 'ohleo199@mindattic.com (f7c19f3f-0e2c-4e23-b19e-302833de86b8)', 'shampoo1232@mindattic.com');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73179, 'M.ORCH-T1680', '2026-11-17T05:05:35Z', 'working', 'ohleo199@mindattic.com (f7c19f3f-0e2c-4e23-b19e-302833de86b8)', 'shampoo1232@mindattic.com');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73180, 'M.ORCH-T1651', '2026-11-17T05:08:15Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73181, 'M.ORCH-T1651', '2026-11-17T05:08:15Z', 'ref', '—', '50e6b620');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73182, 'M.ORCH-T1689', '2026-11-17T05:08:31Z', 'working', 'shampoo1232@mindattic.com', 'ohleo199@mindattic.com (f7c19f3f-0e2c-4e23-b19e-302833de86b8)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73183, 'M.ORCH-T1680', '2026-11-17T05:08:34Z', 'working', 'shampoo1232@mindattic.com', 'ohleo199@mindattic.com (f7c19f3f-0e2c-4e23-b19e-302833de86b8)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73184, 'M.ORCH-T1674', '2026-11-17T05:08:35Z', 'working', 'shampoo1232@mindattic.com', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73185, 'M.ORCH-T1678', '2026-11-17T05:08:36Z', 'working', 'shampoo1232@mindattic.com', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73186, 'M.ORCH-T1679', '2026-11-17T05:08:38Z', 'working', 'shampoo1232@mindattic.com', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73187, 'M.ORCH-T1651', '2026-11-17T05:08:39Z', 'working', 'ohleo199@mindattic.com (f7c19f3f-0e2c-4e23-b19e-302833de86b8)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73188, 'M.ORCH-T1690', '2026-11-17T05:11:18Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73189, 'M.ORCH-T1679', '2026-11-17T05:11:25Z', 'working', NULL, 'ohleo199@mindattic.com (f7c19f3f-0e2c-4e23-b19e-302833de86b8)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73190, 'M.ORCH-T1674', '2026-11-17T05:14:32Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73191, 'M.ORCH-T1674', '2026-11-17T05:14:32Z', 'ref', '—', 'build: MindAttic.Orchestrator.TermHost');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73192, 'M.ORCH-T1680', '2026-11-17T05:14:38Z', 'working', 'ohleo199@mindattic.com (f7c19f3f-0e2c-4e23-b19e-302833de86b8)', 'f7c19f3f-0e2c-4e23-b19e-302833de86b8');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73193, 'M.ORCH-T1675', '2026-11-17T05:14:40Z', 'working', NULL, 'shampoo1232@mindattic.com');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73194, 'M.ORCH-T1678', '2026-11-17T05:16:16Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73195, 'M.ORCH-T1678', '2026-11-17T05:16:16Z', 'ref', '—', 'ProcessReaperTests (seen set kept across a restart)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73196, 'M.ORCH-T1681', '2026-11-17T05:16:37Z', 'working', 'ohleo199@mindattic.com (f7c19f3f-0e2c-4e23-b19e-302833de86b8)', 'f7c19f3f-0e2c-4e23-b19e-302833de86b8');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73197, 'M.ORCH-T1675', '2026-11-17T05:16:38Z', 'working', 'shampoo1232@mindattic.com', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73198, 'M5SE-T117', '2026-11-17T05:22:50Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (73199, 'M5SE-T117', '2026-11-17T05:22:50Z', 'name', NULL, 'Mech art from game paks');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -73676,6 +74390,23 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1665', 'proposed', 704, '2026-11-17T02:40:36Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1666', 'proposed', 703, '2026-11-17T02:40:36Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1667', 'approved', 0, '2026-11-17T03:50:01Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1673', 'approved', 0, '2026-11-17T04:59:34Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1674', 'approved', 0, '2026-11-17T04:59:38Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1675', 'approved', 0, '2026-11-17T04:59:40Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1676', 'approved', 0, '2026-11-17T04:59:41Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1677', 'approved', 0, '2026-11-17T04:59:44Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1678', 'approved', 0, '2026-11-17T04:59:47Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1679', 'approved', 0, '2026-11-17T04:59:50Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1680', 'approved', 0, '2026-11-17T04:59:51Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1681', 'approved', 0, '2026-11-17T04:59:53Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1682', 'approved', 0, '2026-11-17T05:00:41Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1683', 'approved', 0, '2026-11-17T05:00:43Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1684', 'approved', 0, '2026-11-17T05:00:44Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1685', 'approved', 0, '2026-11-17T05:00:46Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1686', 'approved', 0, '2026-11-17T05:00:48Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1687', 'approved', 0, '2026-11-17T05:00:49Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1688', 'approved', 0, '2026-11-17T05:00:50Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1689', 'approved', 0, '2026-11-17T05:00:51Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T172', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T181', 'approved', 0, '2026-10-20T17:30:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T182', 'approved', 0, '2026-10-20T17:30:39Z', NULL);
@@ -74126,6 +74857,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.TIX-T318', 'proposed', 714, '2026-11-06T08:21:28Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.TIX-T32', 'rejected', 0, '2026-10-25T21:04:17Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.TIX-T33', 'rejected', 0, '2026-10-25T21:04:18Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.TIX-T335', 'approved', 0, '2026-11-17T05:00:53Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.TIX-T336', 'approved', 0, '2026-11-17T05:00:54Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.TIX-T34', 'rejected', 0, '2026-10-25T21:04:19Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.TIX-T35', 'rejected', 0, '2026-10-25T21:04:20Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.TIX-T36', 'rejected', 0, '2026-10-25T21:04:21Z', NULL);
@@ -75560,8 +76293,12 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1651', NULL, 0, 'ohleo199@mindattic.com', 'f7c19f3f-0e2c-4e23-b19e-302833de86b8', '2026-11-17T01:18:02Z', '2026-11-17T01:18:02Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1669', NULL, 0, 'ohleo199@mindattic.com', 'f7c19f3f-0e2c-4e23-b19e-302833de86b8', '2026-11-17T04:49:13Z', '2026-11-17T04:49:13Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1676', NULL, 0, 'ohleo199@mindattic.com', 'f7c19f3f-0e2c-4e23-b19e-302833de86b8', '2026-11-17T05:01:29Z', '2026-11-17T05:01:29Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1679', NULL, 0, 'ohleo199@mindattic.com', 'f7c19f3f-0e2c-4e23-b19e-302833de86b8', '2026-11-17T05:11:25Z', '2026-11-17T05:11:25Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1680', NULL, 0, NULL, 'f7c19f3f-0e2c-4e23-b19e-302833de86b8', '2026-11-17T05:14:38Z', '2026-11-17T05:14:38Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1681', NULL, 0, NULL, 'f7c19f3f-0e2c-4e23-b19e-302833de86b8', '2026-11-17T05:16:37Z', '2026-11-17T05:16:37Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1687', NULL, 0, 'ohleo199@mindattic.com', 'f7c19f3f-0e2c-4e23-b19e-302833de86b8', '2026-11-17T05:01:47Z', '2026-11-17T05:01:48Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1689', NULL, 0, 'ohleo199@mindattic.com', 'f7c19f3f-0e2c-4e23-b19e-302833de86b8', '2026-11-17T05:08:31Z', '2026-11-17T05:08:31Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T768', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
@@ -75789,7 +76526,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T104', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:16:25Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T117', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T07:02:04Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T146', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:14:40Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T296', NULL, 0, NULL, 'fd708909-018e-45ea-8962-d5f98d43b013', '2026-11-17T04:46:23Z', '2026-11-17T04:46:23Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T82', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T07:02:05Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T85', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T23:52:54Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T91', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T00:58:13Z');
@@ -78011,6 +78747,9 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31264, '
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31265, 'PRS-T969', 'ryand', '2026-11-17T04:39:41Z', 'Also (author 2026-11-16, PRS-T971): the secret labs belong in this book''s incursions where they fit (law 01a1e7cc-baa4), and check by hand that no state is named except in passing (page-law 01a1e7cc-a1a4); the sprawl is continuous (law 01a1e7cc-9402).');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31266, 'PRS-T970', 'ryand', '2026-11-17T04:39:42Z', 'Also (author 2026-11-16, PRS-T971): the secret labs belong in this book''s incursions where they fit (law 01a1e7cc-baa4), and check by hand that no state is named except in passing (page-law 01a1e7cc-a1a4); the sprawl is continuous (law 01a1e7cc-9402).');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31267, 'IP-T454', 'ryand', '2026-11-17T04:45:12Z', 'bc284923 + 56267e6e: splits and EDGAR filings (all forms, Form 4, 8-K items, acceptance UTC) now kept per new ticker and by a nightly market-wide pass; history.backfill.enabled registered. Remaining for this ticket: (1) read-through for news/splits/filings - consumers (gapper radar CatalystsAsync, research ticker, case study) still call Alpaca/EDGAR directly instead of serving held rows first; (2) Hub publish + ''settings set history.backfill.enabled true'' to turn the worker on (user''s call).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31268, 'M.ORCH-T1668', 'ryand', '2026-11-17T04:54:34Z', 'Owner (2026-11-16): do everything in order, the correct way. CLIs should be a managed pool, not one-off user instances. Keep the By User -> CLI view, add a holistic view across all accounts and available tokens. Taken as approval to file the phase epics and start the build order.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31269, 'M.ORCH-T1680', 'ryand', '2026-11-17T05:15:38Z', 'Aborted for low RAM before any edits (2026-11-17). Plan from the read: reuse leases table with a machine-wide row named heavy-process (holder, pid+started via process_started''s GetExitCodeProcess==259 check, taken_at for expiry; DispatchLease never reads that name). Settings HeavyProcessPatterns (regex list, empty=off), HeavyProcessWaitMinutes (capped by MaxHoldSeconds 300), HeavyProcessLeaseMinutes, placed beside EditClaims in OrchestratorSettings/OrchestratorVaultSettings + LampSettingsTests, read like edit_claim_settings(). New HeavyProcessPython block beside EditClaimsPython in both generated scripts; take/wait only where the pace gate lets a call through (API-key exit, exempt-turn exit, /pacing off exit, end of script). Main thread in an exempt turn or /pacing off takes it if free but never waits; db errors fail open. Release on PostToolUse for the same tool_use_id (not run_in_background), SubagentStop / main Stop, holder CLI exit, expiry; same session+agent may re-take. Other agents had uncommitted hunks in the settings files: commit via a private index.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31270, 'M.ORCH-T1681', 'ryand', '2026-11-17T05:17:35Z', 'Aborted for low RAM (2026-11-17) partway. UNCOMMITTED on disk in the shared checkout: 7 settings (DiskCleanupLogMaxKb 1024, DiskCleanupLogKeep 3, DbMaintenanceHours 24, DbEventKeepDays 90, DbHistoryKeepDays 0, DbVacuumMinFreePercent 20, TranscriptKeepDays = AgentGate.TranscriptKeepDays 365) in OrchestratorSettings.cs, OrchestratorVaultSettings.cs and LampSettingsTests.cs, mixed with other agents'' T1676 hunks. Not done: AgentGate.Ensure transcriptKeepDays param (>0 writes exact cleanupPeriodDays, 0 leaves it), Daemon.InstallHooks Func<int,bool,int> + re-run on change (fix DaemonSafetyTests lambdas), App.xaml.cs ~434 pass it, LogPruner rotates disk-cleanup.log to .1..N, new DbMaintenance (term_audit via WriteDataIf, gate_events SQLite-only, usage_history/ticket_costs when DbHistoryKeepDays>0, VACUUM only when free pages >= DbVacuumMinFreePercent; never touch SQL Server config). Commit own hunks via a private index.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
@@ -86926,6 +87665,11 @@ Earlier attempts (all reverted, but reusable as source material):
 - Pilot Overhaul - Eternal 8.7.4 findings: own `PQPilotSkillLevelCurve` (levels to 30 at 120,000 XP),
   base caps from pilot Quality in blueprint code.
 
+Owner note (M5SE-T111, 2026-11-10): Pilot Overhaul cap support specifically was tried twice and dropped
+both times (PO 8.7.4 didn''t work with DLC 9 at the time, then the whole extension was discarded). That
+history is why this ticket treats PO as just one pack among several, inert by default, never a special
+case in Core: the mechanism must not depend on any one mod working.
+
 ## Mods named in the request (first pack candidates)
 
 | Short name | Mod | Link | Adds |
@@ -86967,9 +87711,15 @@ Findings that shape detection:
   and a version the pack lists**. Otherwise it is ignored.
 - **No add-ons = today''s behavior**, byte for byte on saves and identical in the UI.
 - Core code has **no mod names and no per-mod branches**: it exposes a few extension points; packs feed data.
+- Every bound the editor enforces is a value pulled from the active limits snapshot at the point of use
+  (UI control range, validator, clamp) — never a literal written at a second place that could fall out of
+  sync with the first. This is the "go full in" requirement: no exceptions among the categories listed below.
 - Supporting a new mod = adding a file, not shipping a new editor version.
 - Packs can be **generated** from a mod''s paks by a separate tool (the Scarab step, done once by whoever
   makes the pack, never by players).
+- Every value the editor shows that came from, or deviates because of, a pack is traceable back to that
+  pack''s mod, version and source URL — and so is every value that *would* come from a pack but can''t
+  because the mod is missing, disabled or the wrong version (see "Compatibility report" below).
 
 ## Non-goals
 
@@ -86993,6 +87743,35 @@ Findings that shape detection:
 - Vanilla cap safety (from `c60cc93`): Max caps never lowers a cap; the setter never raises past
   `max(limit, current)`; the slider maximum covers an existing higher cap; save keeps exactly what''s there.
 
+### 1a. Full hardcoded-value inventory (every known one, verified against the code 2026-11-16)
+
+Every numeric limit the editor enforces today is a named constant; this ticket''s `limits` category must
+cover all of them, not a sample, and nothing may keep its own copy of the number elsewhere:
+
+| Constant | File | Value | Pack-able via `limits` key |
+|---|---|---|---|
+| `RosterEditor.MaxSkillCap` | `Game/RosterEditor.cs` | 10 | `maxSkillCap` |
+| `RosterEditor.MaxSalary` | `Game/RosterEditor.cs` | 10,000,000 | `maxSalary` |
+| `RosterEditor.MaxExperience` | `Game/RosterEditor.cs` | 1,000,000 | `maxExperience` |
+| `CompanyEditor.MaxCBills` | `Game/CompanyEditor.cs` | 2,000,000,000 | `maxCBills` |
+| `FactionEditor.MaxStanding` | `Game/FactionEditor.cs` | 100 | `maxStanding` |
+| `FactionEditor.MinStanding` | `Game/FactionEditor.cs` | -100 | `minStanding` (missed by the original category table; a mod could raise a faction''s floor as easily as its ceiling) |
+| `InventoryEditor.MaxCount` | `Game/InventoryEditor.cs` | 9,999 | `maxCount` |
+
+`Clans/InventoryEditor.MaxQuantity` (1,000,000,000) is deliberately excluded: Clans never loads packs
+(Non-goals, above), so it stays a plain constant.
+
+Two more spots duplicate these numbers today and must stop doing so once limits become dynamic, or
+"full in" is false in the UI even though Core is correct:
+- `src/MechWarrior5.SaveEditor.App/Views/PilotsView.xaml:238` — `<Slider Minimum="0" Maximum="10" .../>`
+  on the skill-cap control; must bind `Maximum` to the active `maxSkillCap`, not a literal `10`.
+- `src/MechWarrior5.SaveEditor.App/Views/FactionsView.xaml:63` — `<Slider Minimum="-100" Maximum="100" .../>`
+  on the standing control; must bind both `Minimum` and `Maximum` to the active `minStanding`/`maxStanding`.
+
+Any further numeric literal found during implementation that gates what the editor accepts (not a game
+engine parsing convention like `Hardpoints`/`EquipmentSlots`, which encode the save format itself and are
+not mod-tunable) is a bug against this ticket, not a separate one.
+
 ### 2. Pack format (`Addons/*.json`, schema-versioned)
 
 Each mod has its own set of tweaked values, so a pack holds **that mod''s values for everything the editor uses**.
@@ -87001,7 +87780,7 @@ from one of these categories (today they''re hard-coded constants and the built-
 
 | Category | Editor source today | What a mod can change |
 |---|---|---|
-| `limits` | `RosterEditor.MaxSkillCap` (10), `MaxSalary`, `MaxExperience`, `CompanyEditor.MaxCBills`, `FactionEditor.MaxStanding`, `InventoryEditor.MaxCount` | any limit (PO: skill cap 30) |
+| `limits` | `RosterEditor.MaxSkillCap` (10), `MaxSalary`, `MaxExperience`, `CompanyEditor.MaxCBills`, `FactionEditor.MinStanding`/`MaxStanding`, `InventoryEditor.MaxCount` | any limit (PO: skill cap 30) |
 | `skillCurve` | the game''s `PilotSkillLevelCurve` (levels 1-10) | XP per level / extra levels (PO: 20 at 55,000, 30 at 120,000) |
 | `pilotTraits`, `mechTraits` | `Data/traits.json` (`TraitDefinition`: asset, label, description) | new traits (AVTA, YAW add-on); reworded/rebalanced vanilla ones |
 | `items` | `Data/items.json` (`ItemDefinition`: asset, type, kind, hardpoint) | new weapons/equipment/ammo (YAW-CE, YAEC-R); changed hardpoint, slot type or label of vanilla items |
@@ -87066,12 +87845,53 @@ confirmed from its paks at that point, never guessed by hand.
     (later mod wins, as in game) and the collision is reported in Settings.
 - Per-pack switch in Settings (on by default for an active pack, since the pack itself is the opt-in;
   a global "Disable all add-ons" switch forces vanilla).
+- The loader keeps every pack it parsed (not just the active ones) in memory as `AddonState.AllKnownPacks`,
+  each tagged with why it is or isn''t active (active / mod not installed / mod disabled / version not
+  supported / invalid). The compatibility report (section 3a) scans against this full set, not only the
+  active subset, so it can name a pack that would explain a save''s data even while it sits inactive.
+
+### 3a. Compatibility report (deviation logging)
+
+Purpose: when a save is opened, a user who is missing, has disabled, or has a mismatched version of a mod
+must be told exactly that — which value is off, which mod it belongs to, and where to get the right version —
+rather than silently seeing an unexplained number or a blank label. This holds whether or not any packs are
+installed at all.
+
+- On opening a save (after the existing asset check), `AddonCompatibilityScanner` walks every pilot trait,
+  mech trait, item/equipment asset, mech variant, and the roster''s skill levels/experience, company C-Bills,
+  and faction standings already present in the save.
+- Each value is classified against three tiers, checked in order:
+  1. **Vanilla** — matches a built-in catalog entry or sits within the vanilla limit. No report line.
+  2. **Explained by an active pack** — matches an `add`/`override` entry, or sits within a `limits`/
+     `skillCurve` value, contributed by a pack that is currently active. No report line (this is the
+     pack working as intended).
+  3. **Unexplained** — matches neither vanilla nor any active pack''s contribution. The scanner then
+     searches `AddonState.AllKnownPacks` (active or not, per 3.) for a pack whose `add`/`override`/
+     `limits`/`skillCurve` entries would explain it:
+     - **Found, inactive** — report line: the asset/value, the pack''s `name`, its `requires.modFolder`/
+       `modName`, the version(s) it needs, its `source` URL, and the specific reason it''s inactive today
+       (mod not installed / mod disabled in `modlist.json` / installed version doesn''t match
+       `requires.versions`).
+     - **Found nowhere** — report line: the asset/value with no known explanation (an unrecognized mod,
+       or one with no pack yet); still surfaced, just without a mod/version/URL to point at.
+- Shown as a **Compatibility** panel (Settings, and a toast/banner on load when the list is non-empty):
+  one row per unexplained item, grouped by the mod that would explain it, each row showing the save''s raw
+  value next to what it means. Never blocks opening, saving, or editing the file — it is informational.
+- The same scanner reruns whenever the active pack set changes (toggling a pack, Rescan, mods
+  installed/removed), so the report always reflects the save against *today''s* active set, not a cached one.
+- Nothing in this section writes to the save. The report describes what''s already there; editing and
+  saving behave exactly as the rest of this ticket specifies (pack values only change what the editor
+  offers and validates, per Safety rules).
 
 ### 4. UI
 - Settings > **Add-ons** panel: one row per pack with its name, the mod it needs, status (active / mod not
   installed / mod disabled / version not supported / invalid pack) and an on/off switch; "Open Addons folder".
+- Settings > **Compatibility** panel (3a): one row per unexplained save value, as described above.
 - Pickers label pack entries with their mod (a small chip, as modded ''Mechs already have).
-- Pilots page cap header shows the active range (CAP (0-10) in vanilla).
+- Pilots page cap header shows the active range (CAP (0-10) in vanilla); its slider''s `Maximum` is bound
+  to the same active limit, not the literal in PilotsView.xaml today (1a).
+- Factions page standing slider''s `Minimum`/`Maximum` are bound the same way, replacing the FactionsView.xaml
+  literals (1a).
 - All new text in the six languages.
 
 ### 5. Pack generator (separate tool, not in the app)
@@ -87101,33 +87921,45 @@ the changed fields. Output is reviewed by a human before it''s published.
   by the lossless serializer regardless.
 - Saves with caps above the active limit are kept as they are (vanilla cap safety).
 - The save-time asset check still warns when a save references something the installed game/mods lack.
+- The Compatibility report (3a) is read-only: it may only report, never alter, clamp or remove save data.
 
 ## Phases
 1. Core seam + vanilla cap safety (restore `c60cc93` pieces) + tests. No behavior change.
 2. Pack format, loader, detection, decision point + tests (fake mod folders, malformed packs).
-3. Catalog contributions + picker labels; Settings Add-ons panel; translations.
+3. Catalog contributions + picker labels; Settings Add-ons panel; translations; rebind the two XAML
+   literals (PilotsView.xaml:238, FactionsView.xaml:63) to the active limits snapshot (1a).
 4. `tools/AddonPack` generator (restore `ef281e3` reader into the tool) + tests against the base pak.
-5. First packs, docs (`docs/ADDONS.md`, user guide), release.
+5. Compatibility report: `AddonCompatibilityScanner`, `AllKnownPacks` tracking in `AddonState`, Settings
+   Compatibility panel + translations + tests (unexplained-but-known, unexplained-and-unknown, explained-
+   by-inactive-pack-with-version-mismatch).
+6. First packs, docs (`docs/ADDONS.md`, user guide), release.
 
 ## Verification
 - Unit: pack parsing (valid, missing fields, unknown fields, bad JSON, wrong `game`), activation matrix (not
   installed / disabled / wrong version / active / user-off / missing `requiresPacks`), limits merge (highest
   wins, absent = vanilla), override layering (only given fields replaced, deactivation restores built-in
   exactly), load-order collision resolution.
+- Unit: every named constant in 1a has exactly one source of truth at runtime (no XAML literal still wins
+  over an active pack''s limit).
+- Unit: Compatibility scanner tiers (vanilla / explained-by-active-pack / explained-by-inactive-pack /
+  unknown), each producing the right report line and reason.
 - Clans: the Clans shell and its existing tests are unchanged with packs present in `Addons`.
 - Headless: full existing suite unchanged with an empty `Addons` folder (vanilla regression gate);
   a real-save test with a test pack active (caps up to the pack''s limit save and reload) and inactive
-  (vanilla, existing higher caps kept).
+  (vanilla, existing higher caps kept, Compatibility report naming the inactive pack and its URL).
 - Generator: run over the base pak as if it were a mod and match the built-in catalogs (as `ef281e3` did).
-- Render audit of the Settings Add-ons panel and the Pilots page; in-game check of an edited save with a
-  pack active and its mod enabled.
+- Render audit of the Settings Add-ons panel, the Settings Compatibility panel, the Pilots page and the
+  Factions page; in-game check of an edited save with a pack active and its mod enabled.
 
 ## Risks / open questions
 - Pilot Overhaul''s real per-pilot cap rules are unconfirmed (no working PO save yet); its pack states the
   curve''s top level (30).
 - Mods change between versions: packs are version-gated; a stale pack stays inactive rather than guessing.
 - Asset collisions between packs: first wins, reported in Settings.
-- NexusMods distribution: packs are JSON inside the GitHub zip, so nothing new is quarantined.', '2026-11-11T03:13:56Z');
+- NexusMods distribution: packs are JSON inside the GitHub zip, so nothing new is quarantined.
+- The Compatibility report can only name a pack it has (shipped in `Addons/`, active or not). A save with
+  data from a mod nobody has written a pack for yet shows up as "unexplained, no known pack" rather than
+  naming that mod; closing that gap means growing pack coverage (section 6), not a code change.', '2026-11-17T05:00:39Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M5SE-T41', 'Mirrored to Mods.MechWarrior5.Shared in 5d1d19a (MM5S-T14).', '2026-11-10T06:58:58Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M5SE-T43', 'Landed in 6d9e79f (closed earlier with ref 83ee56f by mistake; 83ee56f is M5SE-T45).', '2026-11-10T06:51:59Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M5SE-T46', 'Mercs done (tools/CatalogCheck): items, traits, personas, portraits, voices all match the game exactly incl. DLC9; mechs already scanned at runtime. Clans: tools/clans_utoc_files.py lists all 243k packaged files; all 242 items exist; missing Clan chassis FMT, IFR, NGA, JR7IIC, WLF-IIC. Remaining: Oodle (UE 5.8''s oo2core.dll) + IoStore/Zen reader to pull chassis names/tonnage/variants and item data from the assets, then generate the Clans catalog from the game.', '2026-11-10T07:21:57Z');
@@ -93046,9 +93878,29 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1668', 'Age
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1670', 'Usage tab: small cutoff-preview chart', '2026-11-17T04:29:00Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1671', 'Ram memory guard escalation', '2026-11-17T04:41:46Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1672', 'Hard drive memory guard', '2026-11-17T04:41:51Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1673', 'Resource ownership epic', '2026-11-17T04:55:56Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1674', 'Job Objects for hosted CLIs', '2026-11-17T04:55:58Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1675', 'Job Objects for daemon builds', '2026-11-17T04:56:00Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1676', 'Resource ledger and scratch dirs', '2026-11-17T04:56:02Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1677', 'Ledger sweeper', '2026-11-17T04:56:04Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1678', 'Startup orphan sweep', '2026-11-17T04:56:07Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1679', 'Disk floor holds new work', '2026-11-17T04:56:09Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1680', 'Heavy-process lease', '2026-11-17T04:56:11Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1681', 'Growth caps', '2026-11-17T04:56:14Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1682', 'Milestones epic', '2026-11-17T04:57:02Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1683', 'Milestone-first queue order', '2026-11-17T04:57:07Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1684', 'Milestone acceptance checks', '2026-11-17T04:57:09Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1685', 'Milestone scope lock', '2026-11-17T04:57:11Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1686', 'Milestone steward', '2026-11-17T04:57:15Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1687', 'Bisect to the breaking ticket', '2026-11-17T04:57:17Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1688', 'Milestone forecast', '2026-11-17T04:57:20Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1689', 'Owner inbox', '2026-11-17T04:57:23Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.TIX-T335', 'Milestones in the ticket store', '2026-11-17T04:57:04Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.TIX-T336', 'Milestones view in Tickets Desktop', '2026-11-17T04:57:06Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T10', 'Publish on NexusMods', '2026-11-10T01:37:57Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T11', 'Rename namespaces to Mech5Mercs.SaveEditor', '2026-11-10T01:40:21Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T116', 'Add-on packs for mods', '2026-11-10T23:54:41Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T117', 'Mech art from game paks', '2026-11-17T05:22:50Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T13', 'Never overwrite original game saves', '2026-11-10T01:52:37Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T14', 'Theme switch + plain settings', '2026-11-10T02:04:15Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T15', 'Headless in-game save verification', '2026-11-10T02:09:50Z');
@@ -93155,6 +94007,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T968', 'Incursi
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T969', 'Incursions: Wells', '2026-11-17T04:37:37Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T970', 'Incursions: The Cabal', '2026-11-17T04:37:39Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T971', 'GLMZ sprawl, secret labs', '2026-11-17T04:38:17Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T972', 'DWIACE cast name mismatches', '2026-11-17T05:01:07Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RTB-T263', 'Auto-publish to Nexus', '2026-11-07T02:41:48Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RTO-T113', 'Auto-publish to Nexus', '2026-11-07T02:41:58Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('SET-T48', 'Gapper-study collaboration vignette', '2026-11-07T04:43:15Z');
@@ -93303,6 +94156,8 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1144', 'hub
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1145', 'epic', '2026-10-27T16:14:01Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1145', 'hub-and-spoke', '2026-10-27T16:14:01Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1196', 'epic', '2026-10-28T00:20:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1673', 'epic', '2026-11-17T04:56:20Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T1682', 'epic', '2026-11-17T04:57:25Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.TIX-T173', 'hub-and-spoke', '2026-10-27T16:07:23Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T14', 'glmz-vision', '2026-10-30T17:00:33Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T14', 'phase:5-final', '2026-10-30T17:00:33Z');
@@ -95623,6 +96478,8 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T971', 'glmz-vi
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T971', 'phase:1-world', '2026-11-17T04:38:19Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T971', 'schism-passages', '2026-11-17T04:38:19Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T971', 'seq:0428', '2026-11-17T04:38:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T972', 'book:death-whispers-in-a-cats-ear-019ec3fe', '2026-11-17T05:01:11Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T972', 'glmz-vision', '2026-11-17T05:01:11Z');
 
 -- repo_renames
 INSERT INTO repo_renames (seq, old_name, new_name, at, reason) VALUES (1, 'GTFO.AbsurdWeapons', 'GTFO.EZ.AbsurdWeapons', '2026-10-19T02:14:58Z', 'Renamed under GTFO.EZ, its core mod, before release (G.EZ-T77)');
@@ -98051,6 +98908,27 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1643', 'M.RLY-T2
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1644', 'M.ORCH-T1127', 'follow-up-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1644', 'M.ORCH-T1643', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1644', 'M.RLY-T30', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1674', 'M.ORCH-T1673', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1675', 'M.ORCH-T1673', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1676', 'M.ORCH-T1673', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1677', 'M.ORCH-T1673', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1677', 'M.ORCH-T1676', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1678', 'M.ORCH-T1673', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1679', 'M.ORCH-T1673', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1680', 'M.ORCH-T1673', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1681', 'M.ORCH-T1673', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1683', 'M.ORCH-T1682', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1683', 'M.TIX-T335', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1684', 'M.ORCH-T1682', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1684', 'M.TIX-T335', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1685', 'M.ORCH-T1682', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1685', 'M.TIX-T335', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1686', 'M.ORCH-T1682', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1686', 'M.TIX-T335', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1687', 'M.ORCH-T1682', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1688', 'M.ORCH-T1682', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1688', 'M.TIX-T335', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T1689', 'M.ORCH-T1682', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T180', 'M.TIX-T65', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T181', 'M.COMP-T11', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T182', 'M.COMP-T12', 'requires', NULL);
@@ -98541,6 +99419,9 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T315', 'M.TIX-T313
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T315', 'M.TIX-T314', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T316', 'M.TIX-T312', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T316', 'M.TIX-T314', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T335', 'M.ORCH-T1682', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T336', 'M.ORCH-T1682', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T336', 'M.TIX-T335', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T6', 'M.TIX-US-B2', 'implements', 'migrated: story named in ticket');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T64', 'M.TIX-T63', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T64', 'M.TIX-US-G1', 'implements', NULL);
