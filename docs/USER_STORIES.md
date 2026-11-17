@@ -470,3 +470,4 @@ updated: 2026-10-12
 | M.TIX-T338 | 2026-11-17 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
 | M.TIX-T339 | 2026-11-17 | chore | closed | Crash recovery: commit the per-member .agent/commands/*.md catalog left uncommitted by the session crash | — |
 | M.TIX-T340 | 2026-11-17 | docs | closed | Update USER_STORIES.md | — |
+| M.TIX-T341 | 2026-11-17 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
