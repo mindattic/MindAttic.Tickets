@@ -36,10 +36,11 @@ public sealed record ImportReport(string Repo, string Code, int Epics, int Stori
 /// </summary>
 public sealed partial class TicketsDb : IDisposable
 {
-    /// <summary>8 (M.TIX-T335): milestones, their repos, acceptance checks and history. 7 (M.TIX-T75): <c>ticket_queue.estimate</c>,
+    /// <summary>9 (M.TIX-T344): on SQL Server, change tracking on every table, so the file is brought up to date by the rows
+    /// that changed; the file's own schema is 8's. 8 (M.TIX-T335): milestones, their repos, acceptance checks and history. 7 (M.TIX-T75): <c>ticket_queue.estimate</c>,
     /// a ticket's effort estimate in tokens. 6 (M.TIX-T137): on SQL Server, tickets, their queue state, work and links are
     /// system-versioned; the file's schema is 5's plus the estimate and the milestones.</summary>
-    public const int SchemaVersion = 8;
+    public const int SchemaVersion = 9;
     public const string RelativePath = "data/Tickets.db";
     public const string DumpRelativePath = "data/Tickets.sql";
     public const string EnvVar = "MINDATTIC_TICKETS_DB";
@@ -591,13 +592,32 @@ public sealed partial class TicketsDb : IDisposable
         return StoryDocument.Encode(text, bom, crlf);
     }
 
-    /// <summary>Every repo's USER_STORIES.md as <see cref="Export"/> builds it, by repo name, read in three queries in all.</summary>
+    /// <summary>Every repo's USER_STORIES.md as <see cref="Export"/> builds it, by repo name, read in three queries in all:
+    /// from the file when it holds what the server does (M.TIX-T344, <see cref="FileIsCurrent"/>: the same rows with no
+    /// download), else from the store.</summary>
     private Dictionary<string, byte[]> ExportAll()
     {
-        var meta = Rows("SELECT name, bom, crlf, trailing_newline FROM repos", r => (Name: r.GetString(0), Bom: r.GetInt64(1) == 1, Crlf: r.GetInt64(2) == 1, Trailing: r.GetInt64(3) == 1));
-        var blocks = Rows("SELECT repo, kind, text FROM blocks ORDER BY repo, ordinal", r => (Repo: r.GetString(0), Kind: KindOf(r.GetString(1)), Text: r.GetString(2)))
+        if (FileIsCurrent())
+        {
+            try
+            {
+                using var file = new SqliteConnection($"Data Source={Path};Pooling=False;Mode=ReadOnly");
+                file.Open();
+                return ExportAll(file);
+            }
+            catch (SqliteException) { } // the file is held: the store answers, as it always did
+        }
+        return ExportAll(null);
+    }
+
+    private List<T> RowsFrom<T>(SqliteConnection? file, string sql, Func<DbDataReader, T> read) => file is null ? Rows(sql, read) : FileRows(file, sql, read);
+
+    private Dictionary<string, byte[]> ExportAll(SqliteConnection? file)
+    {
+        var meta = RowsFrom(file, "SELECT name, bom, crlf, trailing_newline FROM repos", r => (Name: r.GetString(0), Bom: r.GetInt64(1) == 1, Crlf: r.GetInt64(2) == 1, Trailing: r.GetInt64(3) == 1));
+        var blocks = RowsFrom(file, "SELECT repo, kind, text FROM blocks ORDER BY repo, ordinal", r => (Repo: r.GetString(0), Kind: KindOf(r.GetString(1)), Text: r.GetString(2)))
             .ToLookup(b => b.Repo, StringComparer.Ordinal);
-        var rows = Rows("SELECT repo, id, date, type, status, summary, ref, row_md FROM tickets ORDER BY repo, ordinal",
+        var rows = RowsFrom(file, "SELECT repo, id, date, type, status, summary, ref, row_md FROM tickets ORDER BY repo, ordinal",
                 r => (Repo: r.GetString(0), Row: r.IsDBNull(7) ? StoryFile.FormatRow(ReadTicket(r, 1)) : r.GetString(7)))
             .ToLookup(t => t.Repo, t => t.Row, StringComparer.Ordinal);
         var pages = new Dictionary<string, byte[]>(StringComparer.Ordinal);

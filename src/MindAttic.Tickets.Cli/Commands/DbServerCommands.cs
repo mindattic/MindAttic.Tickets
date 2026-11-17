@@ -16,6 +16,8 @@ public sealed class DbServerStatusCommand : Command<WorkspaceSettings>
             ? $"[bold]SQL Server[/]: the ticket database is in {Output.Esc(db.Store)}; {Output.Esc(db.Path)} is its copy, rewritten after every change (the hooks and git read it)."
             : $"[bold]SQLite[/]: the ticket database is {Output.Esc(db.Path)}. Run [blue]tickets db server migrate[/] to move it to SQL Server.");
         if (db.LastCopyError is { } error) AnsiConsole.MarkupLine($"[yellow]The last copy into the file failed: {Output.Esc(error)}[/]");
+        // Said only when it's so (M.TIX-T344): the copy is then every written table read whole, which is slow over the internet.
+        if (db.ChangeTrackingProblem() is { } untracked) AnsiConsole.MarkupLine($"[yellow]The copy is rewritten table by table, not by the rows that changed: {Output.Esc(untracked)}[/]");
         if (db.OnServer)
             AnsiConsole.MarkupLine(db.IsVersioned()
                 ? "Tickets, their approval and priority, and links are [bold]system-versioned[/]: every save is kept ([blue]tickets ticket show <ID> --versions[/])."

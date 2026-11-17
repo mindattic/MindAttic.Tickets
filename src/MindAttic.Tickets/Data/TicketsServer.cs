@@ -8,7 +8,8 @@ namespace MindAttic.Tickets.Data;
 /// <summary>
 /// The ticket database on SQL Server (M.TIX-T131): the store of record for every repo's stories and tickets, on the full
 /// instance beside the Prose database, in a database of its own (<see cref="DefaultDatabase"/>). <c>data/Tickets.db</c> stays
-/// a complete copy, rewritten table by table after every change: the hooks read it through stdlib sqlite3, and git keeps it.
+/// a complete copy, brought up to date after every change by the rows that changed (M.TIX-T344): the hooks read it through
+/// stdlib sqlite3, and git keeps it.
 /// Turned on by <c>tickets db server migrate</c>, which writes <see cref="ConfigFile"/>; with nothing configured (another
 /// machine, a test's scratch file) the SQLite file is the store, as before.
 /// </summary>
@@ -463,6 +464,38 @@ public sealed class TicketsServer(string connectionString)
         ("ticket_work", "ticket_work_versions", ["ticket_id"]),
         ("links", "links_versions", ["from_id", "to_id", "kind"]),
     ];
+
+    /// <summary>Each table's primary key (the same columns in the SQLite file): what change tracking reports a changed row
+    /// by, and what the copy into the file finds it by (M.TIX-T344).</summary>
+    internal static readonly IReadOnlyDictionary<string, string[]> Keys = new Dictionary<string, string[]>(StringComparer.OrdinalIgnoreCase)
+    {
+        ["meta"] = ["key"], ["repos"] = ["name"], ["blocks"] = ["repo", "ordinal"], ["epics"] = ["repo", "key"], ["stories"] = ["uid"],
+        ["backlog_items"] = ["uid"], ["backlog_refs"] = ["item_uid", "story_id"], ["tickets"] = ["id"], ["ticket_events"] = ["seq"],
+        ["links"] = ["from_id", "to_id", "kind"], ["ticket_queue"] = ["ticket_id"], ["ticket_work"] = ["ticket_id"], ["ticket_notes"] = ["seq"],
+        ["ticket_descriptions"] = ["ticket_id"], ["ticket_names"] = ["ticket_id"], ["ticket_labels"] = ["ticket_id", "label"],
+        ["repo_renames"] = ["seq"], ["id_history"] = ["seq"], ["saved_filters"] = ["name"], ["milestones"] = ["id"],
+        ["milestone_repos"] = ["milestone_id", "repo"], ["milestone_checks"] = ["milestone_id", "number"], ["milestone_events"] = ["seq"],
+    };
+
+    /// <summary>The days of changes the server keeps when none is set.</summary>
+    public const int DefaultChangeRetentionDays = 7;
+
+    /// <summary>How many days of changes the server is asked to keep when change tracking is first turned on (M.TIX-T344):
+    /// <c>"ChangeRetentionDays"</c> in <see cref="ConfigFile"/>, <see cref="DefaultChangeRetentionDays"/> without one. A file
+    /// older than that (one git put back) is rewritten whole instead of by its changes, so the number only sets how old a
+    /// file can be and still catch up cheaply.</summary>
+    public static int ChangeRetentionDays()
+    {
+        try
+        {
+            if (File.Exists(ConfigFile))
+                using (var doc = JsonDocument.Parse(File.ReadAllText(ConfigFile)))
+                    if (doc.RootElement.TryGetProperty("ChangeRetentionDays", out var d) && d.ValueKind == JsonValueKind.Number && d.TryGetInt32(out var days) && days >= 1)
+                        return days;
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or JsonException) { }
+        return DefaultChangeRetentionDays;
+    }
 
     /// <summary>The tables with identity keys, for copying rows in with their keys.</summary>
     internal static readonly HashSet<string> Identities = new(StringComparer.OrdinalIgnoreCase) { "stories", "backlog_items", "ticket_events", "ticket_notes", "repo_renames", "id_history", "milestone_events" };

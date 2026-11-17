@@ -7,8 +7,9 @@ namespace MindAttic.Tickets.Data;
 
 /// <summary>
 /// The ticket database on SQL Server (M.TIX-T131, see <see cref="TicketsServer"/>): the dialect the queries are rewritten into
-/// there, the write lock writers queue on, and <c>data/Tickets.db</c> kept a complete copy, each table a write touched
-/// rewritten from the server once it commits (the hooks read the file through stdlib sqlite3, and git keeps it).
+/// there, the write lock writers queue on, and <c>data/Tickets.db</c> kept a complete copy, brought up to the server once a
+/// write commits: by the rows that changed where the server tracks changes (M.TIX-T344, see TicketsDb.Changes.cs), else
+/// each table the write touched rewritten whole (the hooks read the file through stdlib sqlite3, and git keeps it).
 /// </summary>
 public sealed partial class TicketsDb
 {
@@ -116,11 +117,14 @@ public sealed partial class TicketsDb
         touched.Add(table);
         // The history trigger writes ticket_events (and row_md) on a status or ref change.
         if (table.Equals("tickets", StringComparison.OrdinalIgnoreCase)) touched.Add("ticket_events");
+        fileCurrent = false;
         if (tx is null) Copy();
     }
 
-    /// <summary>Rewrites each table written since the last copy, from SQL Server, into the file. A copy that can't be made now
-    /// (the file held past its timeout) is made by the next <c>tickets db sync</c>, which copies every table.</summary>
+    /// <summary>Brings the file up to SQL Server after a write: by the rows changed since the file's mark (M.TIX-T344), or,
+    /// where the server tracks no changes, by rewriting each table written since the last copy. A copy that can't be made now
+    /// (the file held past its timeout) is made by the next write's (it starts from the same mark), or by <c>tickets db sync</c>,
+    /// which copies every table.</summary>
     private void Copy()
     {
         if (server is null || touched.Count == 0) return;
@@ -128,7 +132,7 @@ public sealed partial class TicketsDb
         touched.Clear();
         try
         {
-            CopyTables(db, null, Path, tables);
+            if (!TryCopyChanges()) CopyTables(db, null, Path, tables);
             LastCopyError = null;
         }
         catch (Exception ex) when (ex is SqliteException or IOException or UnauthorizedAccessException) { LastCopyError = ex.Message; }
@@ -147,21 +151,18 @@ public sealed partial class TicketsDb
          "milestones", "milestone_repos", "milestone_checks", "milestone_events"];
 
     /// <summary>Copies <paramref name="tables"/> from <paramref name="source"/> into the SQLite file at <paramref name="file"/>,
-    /// replacing them, in one transaction with its guard triggers lifted and put back before it commits.</summary>
+    /// replacing them, in one transaction with its guard triggers lifted and put back before it commits. The file's mark
+    /// goes (<see cref="CopyMark"/>): these rows were read before the file was locked, so they vouch for no version, and the
+    /// next copy by changes reads every table once.</summary>
     internal static void CopyTables(DbConnection source, DbTransaction? sourceTx, string file, IReadOnlyList<string> tables)
     {
         var rows = tables.Select(t => (Table: t, Rows: ReadAll(source, sourceTx, t))).ToList();
-        using var target = new SqliteConnection($"Data Source={file};Pooling=False;Foreign Keys=False");
-        target.Open();
-        Raw(target, null, "PRAGMA busy_timeout = 15000; PRAGMA journal_mode = DELETE;");
-        using var tx = target.BeginTransaction();
-        SqliteSchema(target, tx);
-        Raw(target, tx, string.Concat(TriggerNames.Select(n => $"DROP TRIGGER IF EXISTS {n};")));
-        foreach (var (table, list) in rows.AsEnumerable().Reverse()) Raw(target, tx, $"DELETE FROM {table};");
-        foreach (var (table, list) in rows)
-            foreach (var row in list) Insert(target, tx, table, row, quote: false);
-        SqliteSchema(target, tx);
-        tx.Commit();
+        InFile(file, (target, tx, lift) =>
+        {
+            lift();
+            Replace(target, tx, rows);
+            return (true, (CopyMark?)default(CopyMark));
+        });
     }
 
     private static readonly string[] TriggerNames =
@@ -248,7 +249,7 @@ public sealed partial class TicketsDb
         if (tx is null)
         {
             // At open: the whole schema, the versioning step (M.TIX-T137) included, which backs the database up first.
-            ServerSchema((SqlConnection)db, server!.Describe(), backupBeforeVersioning);
+            tracked = ServerSchema((SqlConnection)db, server!.Describe(), backupBeforeVersioning);
             return;
         }
         // Inside a write that lifted guard triggers: put them back before it commits.
@@ -258,36 +259,42 @@ public sealed partial class TicketsDb
 
     /// <summary>
     /// The SQL Server schema on <paramref name="connection"/>, step by step as its <c>schema_version</c> rises: the tables
-    /// (versions 1 to 5), the tickets made system-versioned (version 6, <see cref="Versioning"/>), then the guard triggers.
+    /// (versions 1 to 5), the tickets made system-versioned (version 6, <see cref="Versioning"/>), then the guard triggers,
+    /// then change tracking (version 9, <see cref="ChangeTracking"/>). Returns whether changes are tracked on every table.
     /// </summary>
-    internal static void ServerSchema(SqlConnection connection, string describe, bool backup = true)
+    internal static bool ServerSchema(SqlConnection connection, string describe, bool backup = true)
     {
         // Every open asks this, and nearly every open finds the schema whole: one question, not one per table and trigger
         // (36 round trips, each tens of milliseconds once the server is across the internet, M.TIX-T342).
         try
         {
-            if (Convert.ToInt32(ScalarOn(connection, null, SchemaIsCurrent), System.Globalization.CultureInfo.InvariantCulture) == 1) return;
+            if (Convert.ToInt32(ScalarOn(connection, null, SchemaIsCurrent), System.Globalization.CultureInfo.InvariantCulture) is >= 1 and var current) return current == 2;
         }
         catch (SqlException) { } // the question itself refused: the steps below ask one at a time, as they always did
         ServerTables(connection, null);
         Versioning(connection, describe, backup);
         ServerTriggers(connection, null);
+        // Tried once as the schema rises to 9; a server that refuses keeps the whole-table copy, and the version still rises.
+        var tracking = ChangeTracking(connection);
         // Unversioned (only between a migration's copy and its versioning step), it's 5's tables plus the estimate.
         var version = IsVersioned(connection, null) ? SchemaVersion : 5;
         Raw(connection, null, $"IF NOT EXISTS (SELECT 1 FROM meta WHERE [key] = 'schema_version') INSERT INTO meta ([key], value) VALUES ('schema_version', '{version}') " +
                               $"ELSE UPDATE meta SET value = '{version}' WHERE [key] = 'schema_version' AND CAST(value AS int) < {version}");
+        return tracking;
     }
 
     /// <summary>1 when there's nothing for <see cref="ServerSchema"/> to do: every table, the estimate column and every guard
     /// trigger is there (asked as <see cref="ServerTables"/> and <see cref="ServerTriggers"/> ask), the versioned tables are
-    /// versioned (as <see cref="IsVersioned()"/> asks) and <c>schema_version</c> is this build's or later; else 0.</summary>
+    /// versioned (as <see cref="IsVersioned()"/> asks) and <c>schema_version</c> is this build's or later; 2 when changes are
+    /// tracked on every table as well (M.TIX-T344: the same question says how the file is copied); else 0.</summary>
     private static readonly string SchemaIsCurrent =
         "IF OBJECT_ID(N'meta', N'U') IS NULL SELECT 0 ELSE SELECT CASE WHEN " +
         string.Concat(TicketsServer.Tables.Select(create => $"OBJECT_ID(N'{Regex.Match(create, @"CREATE TABLE (\w+)").Groups[1].Value}', N'U') IS NOT NULL AND ")) +
         "COL_LENGTH(N'ticket_queue', N'estimate') IS NOT NULL AND " +
         string.Concat(TicketsServer.Triggers.Select(t => $"OBJECT_ID(N'{t.Name}', N'TR') IS NOT NULL AND ")) +
         "(SELECT COUNT_BIG(*) FROM sys.tables WHERE temporal_type = 2 AND name IN (" + string.Join(", ", TicketsServer.Versioned.Select(v => $"N'{v.Table}'")) + $")) = {TicketsServer.Versioned.Length} AND " +
-        $"EXISTS (SELECT 1 FROM meta WHERE [key] = 'schema_version' AND TRY_CAST(value AS int) >= {SchemaVersion}) THEN 1 ELSE 0 END";
+        $"EXISTS (SELECT 1 FROM meta WHERE [key] = 'schema_version' AND TRY_CAST(value AS int) >= {SchemaVersion}) " +
+        $"THEN 1 + CASE WHEN {TrackedCondition()} THEN 1 ELSE 0 END ELSE 0 END";
 
     private static void ServerTables(DbConnection connection, DbTransaction? tx)
     {
@@ -384,11 +391,16 @@ public sealed partial class TicketsDb
     }
 
     /// <summary>Rewrites every table of the file from SQL Server (<c>tickets db sync</c>): a copy a write couldn't make then
-    /// is made now. Nothing while the file is the store.</summary>
+    /// is made now, and a file that's drifted is put right. Where the server tracks changes the file is marked with the
+    /// version it's complete up to; where it doesn't yet, turning tracking on is tried again first. Nothing while the file
+    /// is the store.</summary>
     public void CopyAll()
     {
         if (server is null) return;
         touched.Clear();
+        fileCurrent = false;
+        if (!tracked && ambient is null) tracked = ChangeTracking((SqlConnection)db);
+        if (tracked && CopyWhole()) return;
         CopyTables(db, null, Path, TableOrder);
     }
 
