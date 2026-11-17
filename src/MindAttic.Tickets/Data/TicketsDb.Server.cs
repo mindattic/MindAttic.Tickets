@@ -262,6 +262,13 @@ public sealed partial class TicketsDb
     /// </summary>
     internal static void ServerSchema(SqlConnection connection, string describe, bool backup = true)
     {
+        // Every open asks this, and nearly every open finds the schema whole: one question, not one per table and trigger
+        // (36 round trips, each tens of milliseconds once the server is across the internet, M.TIX-T342).
+        try
+        {
+            if (Convert.ToInt32(ScalarOn(connection, null, SchemaIsCurrent), System.Globalization.CultureInfo.InvariantCulture) == 1) return;
+        }
+        catch (SqlException) { } // the question itself refused: the steps below ask one at a time, as they always did
         ServerTables(connection, null);
         Versioning(connection, describe, backup);
         ServerTriggers(connection, null);
@@ -270,6 +277,17 @@ public sealed partial class TicketsDb
         Raw(connection, null, $"IF NOT EXISTS (SELECT 1 FROM meta WHERE [key] = 'schema_version') INSERT INTO meta ([key], value) VALUES ('schema_version', '{version}') " +
                               $"ELSE UPDATE meta SET value = '{version}' WHERE [key] = 'schema_version' AND CAST(value AS int) < {version}");
     }
+
+    /// <summary>1 when there's nothing for <see cref="ServerSchema"/> to do: every table, the estimate column and every guard
+    /// trigger is there (asked as <see cref="ServerTables"/> and <see cref="ServerTriggers"/> ask), the versioned tables are
+    /// versioned (as <see cref="IsVersioned()"/> asks) and <c>schema_version</c> is this build's or later; else 0.</summary>
+    private static readonly string SchemaIsCurrent =
+        "IF OBJECT_ID(N'meta', N'U') IS NULL SELECT 0 ELSE SELECT CASE WHEN " +
+        string.Concat(TicketsServer.Tables.Select(create => $"OBJECT_ID(N'{Regex.Match(create, @"CREATE TABLE (\w+)").Groups[1].Value}', N'U') IS NOT NULL AND ")) +
+        "COL_LENGTH(N'ticket_queue', N'estimate') IS NOT NULL AND " +
+        string.Concat(TicketsServer.Triggers.Select(t => $"OBJECT_ID(N'{t.Name}', N'TR') IS NOT NULL AND ")) +
+        "(SELECT COUNT_BIG(*) FROM sys.tables WHERE temporal_type = 2 AND name IN (" + string.Join(", ", TicketsServer.Versioned.Select(v => $"N'{v.Table}'")) + $")) = {TicketsServer.Versioned.Length} AND " +
+        $"EXISTS (SELECT 1 FROM meta WHERE [key] = 'schema_version' AND TRY_CAST(value AS int) >= {SchemaVersion}) THEN 1 ELSE 0 END";
 
     private static void ServerTables(DbConnection connection, DbTransaction? tx)
     {

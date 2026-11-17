@@ -522,9 +522,10 @@ public sealed partial class TicketsDb : IDisposable
     /// The repo's read-only USER_STORIES.md view: the file rebuilt from the database (<see cref="Export"/>) with
     /// <see cref="ViewMarker"/> after its front-matter, so links into it, the codex doctors and GitHub keep working.
     /// </summary>
-    public byte[]? View(string repo)
+    public byte[]? View(string repo) => AsView(Export(repo));
+
+    private static byte[]? AsView(byte[]? bytes)
     {
-        var bytes = Export(repo);
         if (bytes is null) return null;
         var bom = bytes.Length >= 3 && bytes[0] == 0xEF && bytes[1] == 0xBB && bytes[2] == 0xBF;
         var text = Encoding.UTF8.GetString(bytes, bom ? 3 : 0, bytes.Length - (bom ? 3 : 0));
@@ -540,10 +541,13 @@ public sealed partial class TicketsDb : IDisposable
     {
         var wanted = only?.ToHashSet(StringComparer.OrdinalIgnoreCase);
         var written = new List<string>();
+        // Every repo's page at once when none is named (as each ticket command asks after its write): three queries, not three
+        // a repo, which across the internet was hundreds of round trips (M.TIX-T342).
+        var all = wanted is null ? ExportAll() : null;
         foreach (var (name, _) in Repos())
         {
             if (wanted is not null && !wanted.Contains(name)) continue;
-            if (workspace.Find(name) is not { } repo || View(name) is not { } bytes) continue;
+            if (workspace.Find(name) is not { } repo || (all is null ? View(name) : AsView(all.GetValueOrDefault(name))) is not { } bytes) continue;
             if (File.Exists(repo.StoriesPath) && File.ReadAllBytes(repo.StoriesPath).SequenceEqual(bytes)) continue;
             Directory.CreateDirectory(System.IO.Path.GetDirectoryName(repo.StoriesPath)!);
             File.WriteAllBytes(repo.StoriesPath, bytes);
@@ -585,6 +589,24 @@ public sealed partial class TicketsDb : IDisposable
             ("$r", repo)).ToList();
         var text = StoryDocument.Join(blocks.Select(b => b.Item2), rows, blocks.Select(b => b.Item1), trailing);
         return StoryDocument.Encode(text, bom, crlf);
+    }
+
+    /// <summary>Every repo's USER_STORIES.md as <see cref="Export"/> builds it, by repo name, read in three queries in all.</summary>
+    private Dictionary<string, byte[]> ExportAll()
+    {
+        var meta = Rows("SELECT name, bom, crlf, trailing_newline FROM repos", r => (Name: r.GetString(0), Bom: r.GetInt64(1) == 1, Crlf: r.GetInt64(2) == 1, Trailing: r.GetInt64(3) == 1));
+        var blocks = Rows("SELECT repo, kind, text FROM blocks ORDER BY repo, ordinal", r => (Repo: r.GetString(0), Kind: KindOf(r.GetString(1)), Text: r.GetString(2)))
+            .ToLookup(b => b.Repo, StringComparer.Ordinal);
+        var rows = Rows("SELECT repo, id, date, type, status, summary, ref, row_md FROM tickets ORDER BY repo, ordinal",
+                r => (Repo: r.GetString(0), Row: r.IsDBNull(7) ? StoryFile.FormatRow(ReadTicket(r, 1)) : r.GetString(7)))
+            .ToLookup(t => t.Repo, t => t.Row, StringComparer.Ordinal);
+        var pages = new Dictionary<string, byte[]>(StringComparer.Ordinal);
+        foreach (var m in meta)
+        {
+            var mine = blocks[m.Name].ToList();
+            pages[m.Name] = StoryDocument.Encode(StoryDocument.Join(mine.Select(b => b.Text), rows[m.Name].ToList(), mine.Select(b => b.Kind), m.Trailing), m.Bom, m.Crlf);
+        }
+        return pages;
     }
 
     // ── Tickets ─────────────────────────────────────────────────────────────

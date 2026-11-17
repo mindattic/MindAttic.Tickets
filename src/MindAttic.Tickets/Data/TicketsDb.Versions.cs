@@ -218,7 +218,9 @@ public sealed partial class TicketsDb
     {
         if (IsVersioned(c, null)) return;
         string? backupPath = null;
-        if (backup && CountOn(c, null, "tickets") > 0)
+        // Azure SQL Database has no BACKUP DATABASE (M.TIX-T342): it keeps its own point-in-time backups, and the step below
+        // still rolls back whole if a row count moves.
+        if (backup && CountOn(c, null, "tickets") > 0 && !TicketsServer.IsAzure(c))
         {
             try { backupPath = BackupServerDatabase(c); }
             catch (SqlException ex)

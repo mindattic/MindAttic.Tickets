@@ -31,6 +31,10 @@ public sealed class TicketsServer(string connectionString)
 
     public string Describe() => new SqlConnectionStringBuilder(ConnectionString) is var b ? $"{b.DataSource}/{b.InitialCatalog}" : ConnectionString;
 
+    /// <summary>The connection made from a server's name alone (<c>tickets db server migrate --server</c>, a test's scratch
+    /// database): Windows authentication on a local instance. A configured connection string (<see cref="ConfigFile"/>,
+    /// <see cref="EnvVar"/>, <c>--connection</c>) is never passed through here: it's used exactly as written, so its own
+    /// <c>Authentication=Active Directory ...</c>, <c>Encrypt</c> and <c>Connect Timeout</c> stand (Azure SQL Database, M.TIX-T342).</summary>
     public static string DefaultConnection(string server = "localhost", string database = DefaultDatabase) => new SqlConnectionStringBuilder
     {
         DataSource = server,
@@ -166,6 +170,7 @@ public sealed class TicketsServer(string connectionString)
 
     public SqlConnection Open()
     {
+        EntraTokenCache.Use(ConnectionString);
         var connection = new SqlConnection(ConnectionString);
         try
         {
@@ -181,18 +186,49 @@ public sealed class TicketsServer(string connectionString)
 
     /// <summary>Creates the database when it isn't there, with a binary collation so text compares and sorts as SQLite's does;
     /// what SQLite compares <c>COLLATE NOCASE</c> is compared <see cref="NoCase"/>.</summary>
+    /// <remarks>A database that opens is there already, and nothing more is asked (M.TIX-T342): on Azure SQL Database it's
+    /// provisioned beforehand, and its login may have no rights in <c>master</c>. Azure never has one created from here.</remarks>
     public static void CreateDatabase(string connection)
     {
+        if (Opens(connection)) return;
         var b = new SqlConnectionStringBuilder(connection);
         var name = b.InitialCatalog;
         b.InitialCatalog = "master";
+        EntraTokenCache.Use(connection);
         using var master = new SqlConnection(b.ConnectionString);
         master.Open();
+        if (IsAzure(master))
+            throw new InvalidOperationException($"{b.DataSource} is Azure SQL Database and has no database [{name}] this login can open: " +
+                $"create it there first (COLLATE Latin1_General_100_BIN2) and give the login access; it's never created from here.");
         using var command = master.CreateCommand();
         command.CommandText = "IF DB_ID(@name) IS NULL EXEC (N'CREATE DATABASE ' + @quoted + N' COLLATE Latin1_General_100_BIN2');";
         command.Parameters.AddWithValue("@name", name);
         command.Parameters.AddWithValue("@quoted", "[" + name.Replace("]", "]]", StringComparison.Ordinal) + "]");
         command.ExecuteNonQuery();
+    }
+
+    /// <summary>Whether the database <paramref name="connection"/> names opens. Asked on a connection of its own outside the
+    /// pool: a failed open would otherwise leave the pool refusing that connection string for its blocking period, just
+    /// when the database is about to be created.</summary>
+    private static bool Opens(string connection)
+    {
+        try
+        {
+            EntraTokenCache.Use(connection);
+            using var probe = new SqlConnection(new SqlConnectionStringBuilder(connection) { Pooling = false }.ConnectionString);
+            probe.Open();
+            return true;
+        }
+        catch (SqlException) { return false; }
+    }
+
+    /// <summary>Whether <paramref name="connection"/> is to Azure SQL Database (engine edition 5), which has no
+    /// <c>CREATE DATABASE</c> from a user database's login, no <c>BACKUP DATABASE</c> and no server-level settings.</summary>
+    internal static bool IsAzure(SqlConnection connection)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText = "SELECT CAST(SERVERPROPERTY('EngineEdition') AS int)";
+        return Convert.ToInt32(command.ExecuteScalar(), System.Globalization.CultureInfo.InvariantCulture) == 5;
     }
 
     /// <summary>The collation SQLite's <c>COLLATE NOCASE</c> becomes.</summary>
