@@ -468,3 +468,5 @@ updated: 2026-10-12
 | M.TIX-T336 | 2026-11-16 | feature | open | Tickets Desktop shows milestones: their acceptance checks, the epics and tickets under each, growth since activation, and progress (MindAttic.Orchestrator docs/AGENTIC_ROADMAP.md Phase 9) | — |
 | M.TIX-T337 | 2026-11-17 | feature | open | tickets ticket working: when the Orchestrator is installed, also record an Orchestrator claim for the calling CLI (orchestrator claim <ID>, M.ORCH-T1696) so a hand-started ticket isn't re-dispatched by /allocate; fail open if the orchestrator CLI is missing | — |
 | M.TIX-T338 | 2026-11-17 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
+| M.TIX-T339 | 2026-11-17 | chore | closed | Crash recovery: commit the per-member .agent/commands/*.md catalog left uncommitted by the session crash | — |
+| M.TIX-T340 | 2026-11-17 | docs | closed | Update USER_STORIES.md | — |
