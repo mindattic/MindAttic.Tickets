@@ -11290,6 +11290,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1028', 'Prose', 1028, '2026-11-18', 'fix', 'closed', 'Two sync-wiki.ps1 runs for one universe share a state folder and overwrite each other''s files (a second /wiki-sync from another session failed on a locked beats file); the script now holds an exclusive sync.lock and a second run exits 3 with a message', 'PRS-T1022', 1027, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1029', 'Prose', 1029, '2026-11-18', 'fix', 'closed', 'The add-alias and delete-alias commands write alias rows directly, so the Hub''s in-memory repository caches (GetAll, keyed by UniverseScope.Epoch) keep serving the old alias lists; the global export and everything reading GetAll miss the change until the Hub restarts (Valentina''s new alias was absent from the next export). Bump UniverseScope.Epoch after an applied alias write', 'PRS-T1026', 1028, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1030', 'Prose', 1030, '2026-11-18', 'chore', 'closed', 'GLMZ firefight pass: every round inside each firefight respects its weapon''s capacity (Cacophony five-shot), reloads assumed between fights, and firearm terms follow the focus character (laws 01a1f00a-732c, 01a1f00a-739b)', '—', 1029, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1031', 'Prose', 1031, '2026-11-18', 'chore', 'open', 'Ren Babineaux is a firearms expert (author 2026-11-18: he kills monsters for a living): Ren''s book uses firearm terms in his voice, and his record says so', '—', 1030, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -76351,6 +76352,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75742, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75743, 'PRS-T1029', '2026-11-18T21:12:23Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75744, 'PRS-T1029', '2026-11-18T21:12:40Z', 'working', '1d5e6ae3-3c9b-4bae-ae6e-bc30eaa0754e', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75745, 'PRS-T1030', '2026-11-18T21:19:25Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75746, 'PRS-T1031', '2026-11-18T21:26:56Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75747, 'PRS-T1031', '2026-11-18T21:26:56Z', 'name', NULL, 'Ren firearm expert terms');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -97674,6 +97677,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1027', 'Stale 
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1028', 'Wiki syncs collided', '2026-11-18T20:36:51Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1029', 'Alias edits not seen by export', '2026-11-18T20:42:02Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1030', 'GLMZ firefight pass', '2026-11-18T20:56:27Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1031', 'Ren firearm expert terms', '2026-11-18T21:26:56Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T919', 'Texts status=all hides retired', '2026-11-07T23:22:56Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T920', 'Import into new universe 404', '2026-11-07T23:22:57Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T921', 'Leak check skips merged nodes', '2026-11-07T23:39:48Z');
