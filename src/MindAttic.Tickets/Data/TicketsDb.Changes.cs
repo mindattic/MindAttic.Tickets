@@ -341,9 +341,15 @@ public sealed partial class TicketsDb
         if (!tracked) return ChangeTrackingError ?? "change tracking isn't on for every table";
         try
         {
-            using var file = new SqliteConnection($"Data Source={Path};Pooling=False;Mode=ReadOnly");
-            file.Open();
-            return ChangesSince(Math.Max(ReadMark(file, null).Version, 0)) is null ? "change tracking isn't on" : null;
+            // Before the first copy there is no file to read a mark from (M.TIX-T346): its mark is none.
+            long since = 0;
+            if (System.IO.File.Exists(Path))
+            {
+                using var file = new SqliteConnection($"Data Source={Path};Pooling=False;Mode=ReadOnly");
+                file.Open();
+                since = Math.Max(ReadMark(file, null).Version, 0);
+            }
+            return ChangesSince(since) is null ? "change tracking isn't on" : null;
         }
         catch (Exception ex) when (ex is DbException or InvalidOperationException or InvalidCastException or IOException) { return ex.Message; }
     }
