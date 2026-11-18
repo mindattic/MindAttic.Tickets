@@ -11281,6 +11281,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1024', 'Prose', 1024, '2026-11-18', 'feature', 'open', 'GLMZ (author 2026-11-18): American books in an American city use imperial first, then metric, for every measurement in prose and records; katana/wakizashi/odachi and S&W Governor specs into the database and wiki', 'PRS-T1016', 1023, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1025', 'Prose', 1025, '2026-11-18', 'feature', 'open', 'Prose.Hub matches IdiotProof.Hub: tray-only (no taskbar), click the icon to show, console quiet while hidden, warn/error/critical colored, every error files a fix ticket', '—', 1024, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1026', 'Prose', 1026, '2026-11-18', 'chore', 'closed', 'Valentina Vassilyev-Babineaux is named in Babineaux''s Guide to the Otherworldly (head of the table; her funeral at St. Gabriel''s beside Leone) and in Leone Babineaux''s relationships, but has no entity; add her as a character from those canon facts only', 'PRS-T1018', 1025, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1027', 'Prose', 1027, '2026-11-18', 'fix', 'open', 'prose2wiki overlaid every field from the reused tagging dry run onto the fresh export, so edits made after the last -Retag (201 removed relationships) reappeared on the wiki; a tagged field is now used only while its tag-stripped text equals current canon', 'PRS-T1022', 1026, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1028', 'Prose', 1028, '2026-11-18', 'fix', 'open', 'Two sync-wiki.ps1 runs for one universe share a state folder and overwrite each other''s files (a second /wiki-sync from another session failed on a locked beats file); the script now holds an exclusive sync.lock and a second run exits 3 with a message', 'PRS-T1022', 1027, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -76303,6 +76305,12 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75703, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75704, 'M.ORCH-T1831', '2026-11-18T20:12:12Z', 'priority', '0', '704');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75705, 'M.ORCH-T1832', '2026-11-18T20:12:15Z', 'priority', '0', '703');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75706, 'M.ORCH-T1833', '2026-11-18T20:12:16Z', 'priority', '0', '702');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75707, 'PRS-T1027', '2026-11-18T20:36:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75708, 'PRS-T1027', '2026-11-18T20:36:49Z', 'name', NULL, 'Stale tags undid canon edits');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75709, 'PRS-T1028', '2026-11-18T20:36:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75710, 'PRS-T1028', '2026-11-18T20:36:51Z', 'name', NULL, 'Wiki syncs collided');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75711, 'PRS-T1028', '2026-11-18T20:37:21Z', 'working', NULL, '1d5e6ae3-3c9b-4bae-ae6e-bc30eaa0754e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75712, 'PRS-T1027', '2026-11-18T20:37:21Z', 'working', NULL, '1d5e6ae3-3c9b-4bae-ae6e-bc30eaa0754e');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -79435,6 +79443,8 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T105', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T05:26:05Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T58', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:02:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T1027', NULL, 0, NULL, '1d5e6ae3-3c9b-4bae-ae6e-bc30eaa0754e', '2026-11-18T20:37:22Z', '2026-11-18T20:37:21Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T1028', NULL, 0, NULL, '1d5e6ae3-3c9b-4bae-ae6e-bc30eaa0754e', '2026-11-18T20:37:21Z', '2026-11-18T20:37:21Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T111', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:34:40Z');
@@ -97615,6 +97625,8 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1023', 'Count 
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1024', 'Imperial first, weapon specs', '2026-11-18T18:51:03Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1025', 'Prose.Hub tray parity', '2026-11-18T19:21:11Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1026', 'Add Valentina entity', '2026-11-18T19:38:58Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1027', 'Stale tags undid canon edits', '2026-11-18T20:36:49Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1028', 'Wiki syncs collided', '2026-11-18T20:36:51Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T919', 'Texts status=all hides retired', '2026-11-07T23:22:56Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T920', 'Import into new universe 404', '2026-11-07T23:22:57Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T921', 'Leak check skips merged nodes', '2026-11-07T23:39:48Z');
