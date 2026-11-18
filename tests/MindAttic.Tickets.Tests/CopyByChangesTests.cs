@@ -231,6 +231,14 @@ public sealed class CopyByChangesTests
         foreach (var table in TicketsDb.TableOrder) Assert.That(here[table], Is.EqualTo(there[table]), $"{table} {when}");
     }
 
+    /// <summary>The mark's origin with the schema cookie's stamp taken off (M.TIX-T346): every write lifts and restores the
+    /// guard triggers, which moves the cookie, so the stamped value differs from one write to the next by design.</summary>
+    private static int Origin(string file)
+    {
+        using var c = OpenFile(file);
+        return TicketsDb.ReadMark(c, null).Origin ^ TicketsDb.Cookie(c, null);
+    }
+
     private static TicketsDb.CopyMark Mark(string file)
     {
         using var c = OpenFile(file);
@@ -256,12 +264,13 @@ public sealed class CopyByChangesTests
             db.Import([new Repo("Alpha", repo)]);
             var first = Mark(file);
             Assert.That(first.Version, Is.GreaterThan(0), "the first copy read every table and marked the file");
+            var firstOrigin = Origin(file);
             AssertFileIsTheServer(file, connection, "after the import");
 
             var a = db.Add("Alpha", "fix", "open", "first", "—", description: "## Why\n\nbecause");
             var b = db.Add("Alpha", "feature", "open", "second, blocked by " + a.Id, "—");
             Assert.That(Mark(file).Version, Is.GreaterThan(first.Version));
-            Assert.That(Mark(file).Origin, Is.EqualTo(first.Origin));
+            Assert.That(Origin(file), Is.EqualTo(firstOrigin), "the same server database, whatever the file's schema cookie is now");
             AssertFileIsTheServer(file, connection, "after two tickets");
 
             db.Close(a.Id, reference: "abc123");            // an update, and the trigger's history rows
