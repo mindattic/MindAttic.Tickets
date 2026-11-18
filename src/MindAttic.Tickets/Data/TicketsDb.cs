@@ -36,11 +36,12 @@ public sealed record ImportReport(string Repo, string Code, int Epics, int Stori
 /// </summary>
 public sealed partial class TicketsDb : IDisposable
 {
-    /// <summary>9 (M.TIX-T344): on SQL Server, change tracking on every table, so the file is brought up to date by the rows
+    /// <summary>10 (M.TIX-T347): <c>milestone_pending</c>, the additions to an active milestone its owner hasn't approved yet.
+    /// 9 (M.TIX-T344): on SQL Server, change tracking on every table, so the file is brought up to date by the rows
     /// that changed; the file's own schema is 8's. 8 (M.TIX-T335): milestones, their repos, acceptance checks and history. 7 (M.TIX-T75): <c>ticket_queue.estimate</c>,
     /// a ticket's effort estimate in tokens. 6 (M.TIX-T137): on SQL Server, tickets, their queue state, work and links are
     /// system-versioned; the file's schema is 5's plus the estimate and the milestones.</summary>
-    public const int SchemaVersion = 9;
+    public const int SchemaVersion = 10;
     public const string RelativePath = "data/Tickets.db";
     public const string DumpRelativePath = "data/Tickets.sql";
     public const string EnvVar = "MINDATTIC_TICKETS_DB";
@@ -298,6 +299,11 @@ public sealed partial class TicketsDb : IDisposable
                 seq INTEGER PRIMARY KEY, milestone_id TEXT NOT NULL COLLATE NOCASE, at TEXT NOT NULL,
                 field TEXT NOT NULL, old TEXT, new TEXT);
             CREATE INDEX IF NOT EXISTS milestone_events_by_milestone ON milestone_events (milestone_id, seq);
+            -- Schema 10 (M.TIX-T347): the scope lock. A ticket or epic added to an active or accepting milestone waits here, not
+            -- in links, until its owner approves or declines it.
+            CREATE TABLE IF NOT EXISTS milestone_pending (
+                milestone_id TEXT NOT NULL COLLATE NOCASE, item TEXT NOT NULL COLLATE NOCASE, at TEXT NOT NULL, proposed_by TEXT,
+                PRIMARY KEY (milestone_id, item));
 
             -- Append-only: a ticket is never deleted, and only its status and ref ever change.
             CREATE TRIGGER IF NOT EXISTS tickets_no_delete BEFORE DELETE ON tickets
@@ -921,8 +927,15 @@ public sealed partial class TicketsDb : IDisposable
     /// <see cref="ResolveLinkKind"/>) is stored as its kind with the ends swapped (M.TIX-T314). Both ends must name a ticket, story
     /// or epic (in any repo), and a link that would close a <c>requires</c> or <c>part-of</c> cycle is refused with the cycle's path.
     /// A milestone (M.TIX-T335) is only ever the parent end of a <c>part-of</c> link, and only while it's neither reached nor dropped.
+    /// Its scope is locked once it's active (M.TIX-T347): a link to an active or accepting milestone isn't made but recorded as
+    /// a pending addition for its owner to approve (<see cref="ApproveMilestoneAddition"/>), and this returns false; true
+    /// when the link is there.
     /// </summary>
-    public void AddLink(string from, string to, string kind, string? note = null)
+    public bool AddLink(string from, string to, string kind, string? note = null) => AddLinkBy(from, to, kind, note, by: null, approvedBy: null);
+
+    /// <summary><see cref="AddLink"/>, naming who proposes an addition to a locked milestone
+    /// (<paramref name="by"/>) or the owner who approves it as it's made (<paramref name="approvedBy"/>, which links it at once).</summary>
+    private bool AddLinkBy(string from, string to, string kind, string? note, string? by, string? approvedBy)
     {
         // Trim: a CR from a CRLF script would otherwise land in the ID and the link would point at nothing.
         (from, to) = (from.Trim(), to.Trim());
@@ -953,7 +966,19 @@ public sealed partial class TicketsDb : IDisposable
             throw new InvalidOperationException(kind == RequiresKind
                 ? $"{to} already (indirectly) requires {from}; that would be a cycle: {string.Join(" → ", path.Append(to))}."
                 : $"{to} is already (indirectly) part of {from}; that would be a cycle: {string.Join(" → ", path.Append(to))}.");
+        if (MilestoneRow(to) is { IsLocked: true } locked)
+        {
+            if (Scalar("SELECT 1 FROM links WHERE from_id = $f COLLATE NOCASE AND to_id = $t COLLATE NOCASE AND kind = $k", null, ("$f", from), ("$t", to), ("$k", kind)) is not null)
+                return true;
+            from = StoredId(from);
+            if (string.IsNullOrWhiteSpace(approvedBy)) return ProposeMilestoneAddition(locked.Id, from, by);
+            Exec("DELETE FROM milestone_pending WHERE milestone_id = $id AND item = $i", null, ("$id", locked.Id), ("$i", from));
+            if (AddLinkCore(from, to, kind, note)) LinkEvent(from, to, kind, added: true);
+            MilestoneEvent(locked.Id, "approved", null, $"{from} by {OneLine(approvedBy)}");
+            return true;
+        }
         if (AddLinkCore(from, to, kind, note)) LinkEvent(from, to, kind, added: true);
+        return true;
     }
 
     private bool AddLinkCore(string from, string to, string kind, string? note) =>
@@ -1313,6 +1338,7 @@ public sealed partial class TicketsDb : IDisposable
             ("meta", "key"), ("repos", "name"), ("epics", "repo, key"), ("stories", "uid"), ("backlog_items", "uid"), ("backlog_refs", "item_uid, story_id"),
             ("tickets", "repo, ordinal"), ("ticket_events", "seq"), ("ticket_queue", "ticket_id"), ("ticket_work", "ticket_id"), ("ticket_notes", "seq"), ("ticket_descriptions", "ticket_id"), ("ticket_names", "ticket_id"), ("ticket_labels", "ticket_id, label"), ("repo_renames", "seq"), ("id_history", "seq"), ("links", "from_id, to_id, kind"), ("blocks", "repo, ordinal"), ("saved_filters", "name"),
             ("milestones", "number"), ("milestone_repos", "milestone_id, repo"), ("milestone_checks", "milestone_id, number"), ("milestone_events", "seq"),
+            ("milestone_pending", "milestone_id, item"),
         })
         {
             sb.Append("\n-- ").Append(table).Append('\n');

@@ -380,6 +380,11 @@ public sealed class TicketsServer(string connectionString)
             field nvarchar(64) NOT NULL, old nvarchar(max) NULL, new nvarchar(max) NULL);
         CREATE INDEX milestone_events_by_milestone ON milestone_events (milestone_id, seq);
         """,
+        $"""
+        CREATE TABLE milestone_pending (
+            milestone_id nvarchar(64) COLLATE {NoCase} NOT NULL, item nvarchar(450) COLLATE {NoCase} NOT NULL, at nvarchar(64) NOT NULL,
+            proposed_by nvarchar(450) NULL, PRIMARY KEY (milestone_id, item));
+        """,
     ];
 
     /// <summary>The guards, as SQLite's triggers keep them: tickets are never deleted and only their status and ref change
@@ -475,6 +480,7 @@ public sealed class TicketsServer(string connectionString)
         ["ticket_descriptions"] = ["ticket_id"], ["ticket_names"] = ["ticket_id"], ["ticket_labels"] = ["ticket_id", "label"],
         ["repo_renames"] = ["seq"], ["id_history"] = ["seq"], ["saved_filters"] = ["name"], ["milestones"] = ["id"],
         ["milestone_repos"] = ["milestone_id", "repo"], ["milestone_checks"] = ["milestone_id", "number"], ["milestone_events"] = ["seq"],
+        ["milestone_pending"] = ["milestone_id", "item"],
     };
 
     /// <summary>The days of changes the server keeps when none is set.</summary>

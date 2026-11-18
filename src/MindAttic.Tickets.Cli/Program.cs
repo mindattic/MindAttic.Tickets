@@ -57,13 +57,15 @@ app.Configure(config =>
     {
         m.SetDescription("Milestones: a checkable point on the way to a goal, across one or more repos, with acceptance checks; tickets and epics are part-of one (M.TIX-T335).");
         m.AddCommand<MilestoneNewCommand>("new").WithDescription("Add a planned milestone (--name, --goal, --repo repeatable, --order); prints its MS-n ID.");
-        m.AddCommand<MilestoneListCommand>("list").WithDescription("Every milestone in order with its state, tickets done and checks passed (--state, --repo, --json).");
-        m.AddCommand<MilestoneShowCommand>("show").WithDescription("One milestone: its goal, repos, member tickets with their status and a done/total count, acceptance checks and history (--json).");
+        m.AddCommand<MilestoneListCommand>("list").WithDescription("Every milestone in order with its state, tickets done, growth since activation and checks passed (--state, --repo, --json).");
+        m.AddCommand<MilestoneShowCommand>("show").WithDescription("One milestone: its goal, repos, member tickets with their status and a done/total count, its growth since activation, the additions waiting for approval, acceptance checks and history (--json).");
         m.AddCommand<MilestoneActivateCommand>("activate").WithDescription("Make a planned milestone active (or send one in acceptance back to active).");
         m.AddCommand<MilestoneAcceptCommand>("accept").WithDescription("Move an active milestone into acceptance; --reached accepts it as reached (--by WHO), refused while a check is fail or unknown unless --force.");
         m.AddCommand<MilestoneDropCommand>("drop").WithDescription("Drop a milestone that won't be reached (--reason); it stays on record.");
         m.AddCommand<MilestoneEditCommand>("edit").WithDescription("Change a milestone's --name, --goal, --order or --repo list.");
-        m.AddCommand<MilestoneAddCommand>("add").WithDescription("Put tickets or epics on a milestone: milestone add <ID> <TICKET>... (each becomes part-of it; its children come with it).");
+        m.AddCommand<MilestoneAddCommand>("add").WithDescription("Put tickets or epics on a milestone: milestone add <ID> <TICKET>... (each becomes part-of it; its children come with it). An active milestone's scope is locked: each waits for the owner's approval, unless --approved-by WHO.");
+        m.AddCommand<MilestoneApproveCommand>("approve").WithDescription("The owner approves an addition waiting on an active milestone: milestone approve <ID> <ITEM> --by WHO; it becomes a member.");
+        m.AddCommand<MilestoneDeclineCommand>("decline").WithDescription("The owner declines an addition waiting on an active milestone: milestone decline <ID> <ITEM> --by WHO [[--reason TEXT]]; it never joins.");
         m.AddCommand<MilestoneRemoveCommand>("remove").WithDescription("Take tickets or epics off a milestone: milestone remove <ID> <TICKET>...");
         m.AddBranch("check", c =>
         {

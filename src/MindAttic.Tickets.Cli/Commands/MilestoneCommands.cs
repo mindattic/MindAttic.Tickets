@@ -9,6 +9,7 @@ namespace MindAttic.Tickets.Cli.Commands;
 
 // Milestones (M.TIX-T335): `tickets milestone new|list|show|activate|accept|drop|edit|add|remove` and
 // `tickets milestone check add|list|result|remove`. The store and its checks only; the Orchestrator runs the checks.
+// The scope lock (M.TIX-T347): `add` to an active milestone waits for `tickets milestone approve|decline`.
 
 public class MilestoneSettings : WorkspaceSettings
 {
@@ -43,13 +44,22 @@ internal static class MilestoneOutput
         result = c.Result, @checked = c.Checked, evidence = c.Evidence,
     };
 
+    /// <summary>How much a milestone has grown since activation, short enough for a table cell: "+3", "+3 -1", "+0 (2 waiting)";
+    /// empty for one never activated.</summary>
+    public static string Grown(MilestoneGrowth? g) => g is null ? ""
+        : $"+{g.Added.ToString(CultureInfo.InvariantCulture)}" + (g.Removed > 0 ? $" -{g.Removed.ToString(CultureInfo.InvariantCulture)}" : "") +
+          (g.Pending > 0 ? $" ({g.Pending.ToString(CultureInfo.InvariantCulture)} waiting)" : "");
+
     /// <summary>A milestone as <c>list --json</c> and <c>show --json</c> print it: its row, its member tickets with a done/total
-    /// count, and its checks; <paramref name="history"/> adds its history (show only).</summary>
+    /// count, the additions waiting for approval, its growth since activation (null before it) and its checks;
+    /// <paramref name="history"/> adds its history (show only).</summary>
     public static object Json(TicketsDb db, Milestone m, TicketGraph graph, bool history)
     {
         var members = db.MilestoneMembers(m.Id, graph);
         var (done, total) = TicketsDb.MilestoneProgress(members);
         var checks = db.MilestoneChecks(m.Id);
+        var pending = m.IsLocked ? db.MilestonePending(m.Id) : [];
+        var growth = db.MilestoneGrowth(m.Id, graph);
         return new
         {
             id = m.Id, name = m.Name, goal = m.Goal, repos = m.Repos, order = m.Order, state = m.State,
@@ -60,6 +70,13 @@ internal static class MilestoneOutput
                 id = x.Id, isTicket = x.IsTicket, direct = x.Direct, repo = x.Node.Repo, type = x.Node.Type, status = x.Node.Status,
                 name = x.Node.Name, summary = x.Node.Summary,
             }),
+            pendingCount = pending.Count,
+            pending = pending.Select(p => new { item = p.Item, at = p.At, by = p.By, name = graph.Node(p.Item).Name, summary = graph.Node(p.Item).Summary }),
+            growth = growth is null ? null : new
+            {
+                atActivation = growth.AtActivation, added = growth.Added, removed = growth.Removed, now = growth.Now,
+                pending = growth.Pending, pendingTickets = growth.PendingTickets,
+            },
             checksPassed = checks.Count(c => c.Passed),
             checks = checks.Select(Json),
             history = history ? db.MilestoneHistory(m.Id).Select(e => new { at = e.At, field = e.Field, old = e.Old, @new = e.New }) : null,
@@ -140,13 +157,14 @@ public sealed class MilestoneListCommand : Command<MilestoneListCommand.Settings
             AnsiConsole.MarkupLine("[grey]No milestones; add one with 'tickets milestone new --name … --repo …'.[/]");
             return 0;
         }
-        var table = new Table().Border(TableBorder.Rounded).AddColumns("Order", "ID", "State", "Name", "Repos", "Tickets", "Checks", "Activated");
+        var table = new Table().Border(TableBorder.Rounded).AddColumns("Order", "ID", "State", "Name", "Repos", "Tickets", "Grown", "Checks", "Activated");
         foreach (var m in milestones)
         {
             var (done, total) = TicketsDb.MilestoneProgress(db.MilestoneMembers(m.Id, graph));
             var checks = db.MilestoneChecks(m.Id);
             table.AddRow(m.Order.ToString(CultureInfo.InvariantCulture), Output.Esc(m.Id), MilestoneOutput.State(m.State), Output.Esc(m.Name),
-                Output.Esc(string.Join(", ", m.Repos)), $"{done}/{total}", $"{checks.Count(c => c.Passed)}/{checks.Count}", Output.Esc(m.Activated ?? ""));
+                Output.Esc(string.Join(", ", m.Repos)), $"{done}/{total}", Output.Esc(MilestoneOutput.Grown(db.MilestoneGrowth(m.Id, graph))),
+                $"{checks.Count(c => c.Passed)}/{checks.Count}", Output.Esc(m.Activated ?? ""));
         }
         AnsiConsole.Write(table);
         AnsiConsole.MarkupLine($"[grey]{milestones.Count} milestone(s)[/]");
@@ -154,7 +172,8 @@ public sealed class MilestoneListCommand : Command<MilestoneListCommand.Settings
     }
 }
 
-/// <summary><c>tickets milestone show &lt;ID&gt;</c>: one milestone, its member tickets with a done/total count, its checks and history.</summary>
+/// <summary><c>tickets milestone show &lt;ID&gt;</c>: one milestone, its member tickets with a done/total count, its growth since
+/// activation, the additions waiting for approval, its checks and history.</summary>
 public sealed class MilestoneShowCommand : Command<MilestoneShowCommand.Settings>
 {
     public sealed class Settings : MilestoneSettings
@@ -185,6 +204,17 @@ public sealed class MilestoneShowCommand : Command<MilestoneShowCommand.Settings
         if (members.Count == 0) AnsiConsole.MarkupLine("  [grey]None; add them with 'tickets milestone add <ID> <TICKET>...'.[/]");
         foreach (var x in members)
             AnsiConsole.MarkupLine($"  {Output.Esc(x.Node.Line)}" + (x.Node.Repo is { } repo ? $" [grey]({Output.Esc(repo)})[/]" : "") + (x.Direct ? "" : " [grey]through its parent[/]"));
+        var pending = db.MilestonePending(m.Id);
+        if (db.MilestoneGrowth(m.Id, graph) is { } growth)
+            AnsiConsole.MarkupLine(string.Create(CultureInfo.InvariantCulture,
+                $"[grey]Scope:[/] grown by {growth.Added} ticket(s) since activation, {growth.Pending} waiting for approval [grey]({growth.AtActivation} at activation, {growth.Removed} removed, {growth.Now} now)[/]"));
+        if (pending.Count > 0)
+        {
+            AnsiConsole.MarkupLine($"{Output.Heading("Pending additions")} ({pending.Count.ToString(CultureInfo.InvariantCulture)} waiting for the owner's approval)");
+            foreach (var p in pending)
+                AnsiConsole.MarkupLine($"  {Output.Esc(graph.Node(p.Item).Line)} [grey]proposed {Output.Esc(p.At)}{(p.By is { } who ? " by " + Output.Esc(who) : "")}[/]");
+            AnsiConsole.MarkupLine($"  [grey]Approve one with 'tickets milestone approve {Output.Esc(m.Id)} <ITEM> --by <WHO>', or decline it with 'tickets milestone decline'.[/]");
+        }
         AnsiConsole.MarkupLine($"{Output.Heading("Acceptance checks")} ({checks.Count(c => c.Passed)} of {checks.Count} pass)");
         if (checks.Count == 0) AnsiConsole.MarkupLine("  [grey]None; add them with 'tickets milestone check add <ID> --kind … --description …'.[/]");
         foreach (var c in checks) AnsiConsole.MarkupLine(MilestoneCheckListCommand.Line(c));
@@ -287,22 +317,88 @@ public sealed class MilestoneEditCommand : Command<MilestoneEditCommand.Settings
     }
 }
 
-public sealed class MilestoneMemberSettings : MilestoneSettings
+public class MilestoneMemberSettings : MilestoneSettings
 {
     [CommandArgument(1, "<ITEMS>")]
     [Description("One or more ticket IDs (M.TIX-T5) or epic IDs (CODE-EPIC-KEY). A ticket's children come with it.")]
     public string[] Items { get; init; } = [];
 }
 
-/// <summary><c>tickets milestone add &lt;ID&gt; &lt;TICKET&gt;...</c>: each becomes part-of the milestone.</summary>
-public sealed class MilestoneAddCommand : Command<MilestoneMemberSettings>
+/// <summary><c>tickets milestone add &lt;ID&gt; &lt;TICKET&gt;...</c>: each becomes part-of a planned milestone; on an active one
+/// (its scope is locked, M.TIX-T347) each waits for the owner's approval, unless <c>--approved-by</c>.</summary>
+public sealed class MilestoneAddCommand : Command<MilestoneAddCommand.Settings>
 {
-    public override int Execute(CommandContext context, MilestoneMemberSettings settings)
+    public sealed class Settings : MilestoneMemberSettings
+    {
+        [CommandOption("--by <WHO>")]
+        [Description("Who proposes the addition, when the milestone is active and it has to wait. Default: $MINDATTIC_TICKETS_AUTHOR, else this machine's user name.")]
+        public string? By { get; init; }
+
+        [CommandOption("--approved-by <WHO>")]
+        [Description("The milestone's owner adding to an active milestone in one step: the items join at once, and its history says who approved them.")]
+        public string? ApprovedBy { get; init; }
+
+        public override ValidationResult Validate() =>
+            ApprovedBy is not null && string.IsNullOrWhiteSpace(ApprovedBy) ? ValidationResult.Error("--approved-by needs a name") : ValidationResult.Success();
+    }
+
+    public override int Execute(CommandContext context, Settings settings)
     {
         using var db = Db.Open(settings);
-        var members = db.AddToMilestone(settings.Id, settings.Items);
-        var (done, total) = TicketsDb.MilestoneProgress(members);
-        Console.WriteLine($"{db.Milestone(settings.Id)!.Id}: {done} of {total} ticket(s) done");
+        var added = db.AddToMilestone(settings.Id, settings.Items, settings.By ?? TicketNoteCommand.DefaultAuthor(), settings.ApprovedBy);
+        foreach (var item in added.Joined) Console.WriteLine($"{item} is on {added.MilestoneId}.");
+        foreach (var item in added.Pending)
+            Console.WriteLine($"{item} is waiting for the owner's approval (tickets milestone approve {added.MilestoneId} {item} --by <WHO>).");
+        var (done, total) = TicketsDb.MilestoneProgress(added.Members);
+        Console.WriteLine($"{added.MilestoneId}: {done} of {total} ticket(s) done");
+        return 0;
+    }
+}
+
+public class MilestoneDecisionSettings : MilestoneSettings
+{
+    [CommandArgument(1, "<ITEM>")]
+    [Description("The ticket or epic waiting for approval, as 'milestone show' lists it.")]
+    public string Item { get; init; } = "";
+
+    [CommandOption("--by <WHO>")]
+    [Description("The milestone's owner, who decides. Required.")]
+    public string? By { get; init; }
+
+    public override ValidationResult Validate() =>
+        string.IsNullOrWhiteSpace(By) ? ValidationResult.Error("--by is required: say who decides") : ValidationResult.Success();
+}
+
+/// <summary><c>tickets milestone approve &lt;ID&gt; &lt;ITEM&gt; --by WHO</c>: a pending addition becomes a member.</summary>
+public sealed class MilestoneApproveCommand : Command<MilestoneDecisionSettings>
+{
+    public override int Execute(CommandContext context, MilestoneDecisionSettings settings)
+    {
+        using var db = Db.Open(settings);
+        var id = (db.Milestone(settings.Id) ?? throw new KeyNotFoundException($"No milestone {settings.Id}.")).Id;
+        var (done, total) = TicketsDb.MilestoneProgress(db.ApproveMilestoneAddition(id, settings.Item, settings.By!));
+        Console.WriteLine($"{settings.Item.Trim()} is on {id}, approved by {settings.By!.Trim()}.");
+        Console.WriteLine($"{id}: {done} of {total} ticket(s) done");
+        return 0;
+    }
+}
+
+/// <summary><c>tickets milestone decline &lt;ID&gt; &lt;ITEM&gt; --by WHO</c>: a pending addition stops waiting; it never joined.</summary>
+public sealed class MilestoneDeclineCommand : Command<MilestoneDeclineCommand.Settings>
+{
+    public sealed class Settings : MilestoneDecisionSettings
+    {
+        [CommandOption("--reason <TEXT>")]
+        [Description("Why, kept in the milestone's history.")]
+        public string? Reason { get; init; }
+    }
+
+    public override int Execute(CommandContext context, Settings settings)
+    {
+        using var db = Db.Open(settings);
+        var id = (db.Milestone(settings.Id) ?? throw new KeyNotFoundException($"No milestone {settings.Id}.")).Id;
+        db.DeclineMilestoneAddition(id, settings.Item, settings.By!, settings.Reason);
+        Console.WriteLine($"{settings.Item.Trim()} was declined for {id} by {settings.By!.Trim()}.");
         return 0;
     }
 }

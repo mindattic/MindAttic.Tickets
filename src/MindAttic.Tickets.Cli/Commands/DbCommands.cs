@@ -590,9 +590,12 @@ public sealed class TicketLinkCommand : Command<TicketLinkCommand.Settings>
             Console.WriteLine(gone ? $"removed {settings.From} {settings.Kind} {settings.To}" : "no such link");
             return gone ? 0 : 1;
         }
-        db.AddLink(settings.From, settings.To, settings.Kind, settings.Note);
+        var linked = db.AddLink(settings.From, settings.To, settings.Kind, settings.Note);
         Db.Rerender(db, settings);
-        Console.WriteLine($"{settings.From} {settings.Kind} {settings.To}");
+        // An active milestone's scope is locked (M.TIX-T347): the link isn't made until its owner approves the addition.
+        Console.WriteLine(linked ? $"{settings.From} {settings.Kind} {settings.To}"
+            : "Not linked: the milestone is active, so its scope is locked. The addition is waiting for the owner's approval " +
+              "(tickets milestone approve <ID> <ITEM> --by <WHO>); 'tickets milestone show <ID>' lists it.");
         return 0;
     }
 }

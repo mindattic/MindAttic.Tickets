@@ -178,6 +178,10 @@ public sealed partial class TicketsDb
                  $"(SELECT 1 FROM links x WHERE x.{end} = $n AND x.{other} = links.{other} AND x.kind = links.kind)", tx, ("$n", newId), ("$o", oldId));
             Exec($"DELETE FROM links WHERE {end} = $o COLLATE NOCASE", tx, ("$o", oldId));
         }
+        // An addition waiting for a milestone owner's approval (M.TIX-T347) follows its item as a link would.
+        Exec("UPDATE milestone_pending SET item = $n WHERE item = $o AND NOT EXISTS " +
+             "(SELECT 1 FROM milestone_pending x WHERE x.milestone_id = milestone_pending.milestone_id AND x.item = $n)", tx, ("$n", newId), ("$o", oldId));
+        Exec("DELETE FROM milestone_pending WHERE item = $o", tx, ("$o", oldId));
     }
 
     private void RecordId(string kind, string oldId, string newId, string reason, DbTransaction tx) =>

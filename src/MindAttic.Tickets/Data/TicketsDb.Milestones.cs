@@ -48,6 +48,9 @@ public sealed record Milestone(string Id, string Name, string Goal, IReadOnlyLis
 {
     public bool IsActive => State == MilestoneStates.Active;
 
+    /// <summary>Active or in acceptance: its scope is locked (M.TIX-T347), so what's added to it waits for its owner's approval.</summary>
+    public bool IsLocked => State is MilestoneStates.Active or MilestoneStates.Accepting;
+
     /// <summary>Neither reached nor dropped: it can still take members and checks.</summary>
     public bool IsOpen => State is not (MilestoneStates.Reached or MilestoneStates.Dropped);
 
@@ -79,14 +82,31 @@ public sealed record MilestoneMember(GraphNode Node, bool Direct)
     public bool IsDone => Node.Status == TicketRules.Closed;
 }
 
-/// <summary>One change to a milestone: its creation, a state, name, goal, order or repo change, a member or a check.</summary>
+/// <summary>One change to a milestone: its creation, a state, name, goal, order or repo change, a member or a check, or an
+/// addition proposed, approved or declined.</summary>
 public sealed record MilestoneEvent(string MilestoneId, string At, string Field, string? Old, string? New);
+
+/// <summary>An addition to a milestone whose scope is locked (M.TIX-T347), waiting for its owner: the ticket or epic
+/// (<see cref="Item"/>), when it was proposed and by whom (null when nobody was named). It isn't a member until approved.</summary>
+public sealed record MilestonePendingAddition(string MilestoneId, string Item, string At, string? By);
+
+/// <summary>What <see cref="TicketsDb.AddToMilestone"/> did with each item: <see cref="Joined"/> are on the milestone (now, or
+/// already), <see cref="Pending"/> wait for its owner's approval. <see cref="Members"/> is what's on it now.</summary>
+public sealed record MilestoneAddition(string MilestoneId, IReadOnlyList<string> Joined, IReadOnlyList<string> Pending, IReadOnlyList<MilestoneMember> Members);
+
+/// <summary>
+/// How much a milestone has grown since it was first activated (<see cref="TicketsDb.MilestoneGrowth"/>), in member tickets of
+/// any status: <see cref="Now"/> = <see cref="AtActivation"/> + <see cref="Added"/> - <see cref="Removed"/>.
+/// <see cref="Pending"/> additions wait for approval and would bring <see cref="PendingTickets"/> tickets that aren't on it.
+/// </summary>
+public sealed record MilestoneGrowth(string MilestoneId, string Activated, int AtActivation, int Added, int Removed, int Now, int Pending, int PendingTickets);
 
 /// <summary>
 /// Milestones (M.TIX-T335): "this set of work, across these repos, adds up to a finished thing". Kept in <c>milestones</c>,
 /// <c>milestone_repos</c> and <c>milestone_checks</c>, with every change a <c>milestone_events</c> row. Tickets and epics join one
 /// with an ordinary <c>part-of</c> link to its <c>MS-n</c> id, so a milestone is the top of a part-of tree and
-/// <c>ticket link X part-of MS-1</c> works as it does between tickets.
+/// <c>ticket link X part-of MS-1</c> works as it does between tickets. Once a milestone is active its scope is locked
+/// (M.TIX-T347): what's added to it waits in <c>milestone_pending</c> until its owner approves or declines it.
 /// </summary>
 public sealed partial class TicketsDb
 {
@@ -282,6 +302,7 @@ public sealed partial class TicketsDb
                 throw new InvalidOperationException($"{m.Id} isn't reached: {unmet.Count} acceptance check(s) haven't passed (" +
                     string.Join("; ", unmet.Select(c => $"#{c.Number} {c.Result}: {c.Description}")) + "). Record their results, or force it.");
             Exec($"UPDATE milestones SET state = 'reached', reached = {SqlNow}, reached_by = $by, updated = {SqlNow} WHERE id = $id", null, ("$by", by.Trim()), ("$id", m.Id));
+            DropPending(m.Id, MilestoneStates.Reached);
             MilestoneEvent(m.Id, "state", m.State, MilestoneStates.Reached);
             MilestoneEvent(m.Id, "accepted", null, unmet.Count == 0 ? by.Trim()
                 : $"{by.Trim()} (forced past {string.Join(", ", unmet.Select(c => $"#{c.Number} {c.Result}"))})");
@@ -299,6 +320,7 @@ public sealed partial class TicketsDb
             id = m.Id;
             if (!m.IsOpen) throw new InvalidOperationException($"{m.Id} is already {m.State}.");
             Exec($"UPDATE milestones SET state = 'dropped', updated = {SqlNow} WHERE id = $id", null, ("$id", m.Id));
+            DropPending(m.Id, MilestoneStates.Dropped);
             MilestoneEvent(m.Id, "state", m.State, MilestoneStates.Dropped);
             if (!string.IsNullOrWhiteSpace(reason)) MilestoneEvent(m.Id, "dropped", null, OneLine(reason));
         });
@@ -308,18 +330,136 @@ public sealed partial class TicketsDb
     // ── Members ─────────────────────────────────────────────────────────────
 
     /// <summary>
-    /// Puts tickets or epics on a milestone: each gets a <c>part-of</c> link to it (one already there is passed over), recorded
-    /// in the ticket's history and the milestone's. All or nothing. Returns its members now.
+    /// Puts tickets or epics on a milestone. A planned one takes each as a member: a <c>part-of</c> link to it (one already
+    /// there is passed over), recorded in the ticket's history and the milestone's. An active or accepting one is locked
+    /// (M.TIX-T347): each item not already on it is recorded as a pending addition proposed by <paramref name="by"/> (once,
+    /// however often it's added; a <c>proposed</c> entry in the milestone's history) and is no member until
+    /// <see cref="ApproveMilestoneAddition"/>. With <paramref name="approvedBy"/>, the owner adds to a locked milestone in one
+    /// step: each item is linked at once and its history says who approved it. All or nothing. The result says which items
+    /// joined and which wait.
     /// </summary>
-    public IReadOnlyList<MilestoneMember> AddToMilestone(string idOrName, IEnumerable<string> items)
+    public MilestoneAddition AddToMilestone(string idOrName, IEnumerable<string> items, string? by = null, string? approvedBy = null)
     {
+        var id = "";
+        List<string> joined = [], pending = [];
+        InWrite(() =>
+        {
+            id = RequireOpenMilestone(idOrName).Id;
+            foreach (var item in items.Select(StoredId))
+                (AddLinkBy(item, id, PartOf, null, by, approvedBy) ? joined : pending).Add(item);
+        });
+        return new MilestoneAddition(id, [.. joined.Distinct(StringComparer.OrdinalIgnoreCase)], [.. pending.Distinct(StringComparer.OrdinalIgnoreCase)], MilestoneMembers(id));
+    }
+
+    /// <summary>Records <paramref name="item"/> as waiting for the owner of milestone <paramref name="id"/>, once. Always false:
+    /// it isn't linked.</summary>
+    private bool ProposeMilestoneAddition(string id, string item, string? by)
+    {
+        if (Exec($"INSERT OR IGNORE INTO milestone_pending (milestone_id, item, at, proposed_by) VALUES ($id, $i, {SqlNow}, $by)", null,
+                ("$id", id), ("$i", item), ("$by", string.IsNullOrWhiteSpace(by) ? null : OneLine(by))) > 0)
+            MilestoneEvent(id, "proposed", null, item);
+        return false;
+    }
+
+    /// <summary>The additions waiting for an owner's approval, oldest first: one milestone's, or every milestone's when
+    /// <paramref name="idOrName"/> is null. Only an active or accepting milestone has any.</summary>
+    public IReadOnlyList<MilestonePendingAddition> MilestonePending(string? idOrName = null) =>
+        [.. Rows("SELECT milestone_id, item, at, proposed_by FROM milestone_pending WHERE $id IS NULL OR milestone_id = $id ORDER BY at, milestone_id, item",
+            r => new MilestonePendingAddition(r.GetString(0), r.GetString(1), r.GetString(2), r.IsDBNull(3) ? null : r.GetString(3)),
+            ("$id", idOrName is null ? null : RequireMilestone(idOrName).Id))];
+
+    private MilestonePendingAddition RequirePending(string id, string item)
+    {
+        var key = StoredId(CurrentId(item.Trim()));
+        return MilestonePending(id).FirstOrDefault(p => p.Item.Equals(key, StringComparison.OrdinalIgnoreCase))
+            ?? throw new KeyNotFoundException($"{id} has no pending addition {item.Trim()}.");
+    }
+
+    /// <summary>
+    /// The owner approves a pending addition: it becomes a member (a <c>part-of</c> link, in the ticket's history and the
+    /// milestone's as any member is) and the milestone's history says <c>approved</c>: "item by who". Refused when
+    /// <paramref name="item"/> isn't waiting on that milestone. Returns its members now.
+    /// </summary>
+    public IReadOnlyList<MilestoneMember> ApproveMilestoneAddition(string idOrName, string item, string by)
+    {
+        if (string.IsNullOrWhiteSpace(by)) throw new ArgumentException("Say who approves the addition.", nameof(by));
         var id = "";
         InWrite(() =>
         {
             id = RequireOpenMilestone(idOrName).Id;
-            foreach (var item in items) AddLink(StoredId(item), id, PartOf);
+            AddLinkBy(RequirePending(id, item).Item, id, PartOf, null, null, by);
         });
         return MilestoneMembers(id);
+    }
+
+    /// <summary>The owner declines a pending addition: it stops waiting and never was a member; the milestone's history says
+    /// <c>declined</c>: "item by who", with <paramref name="reason"/>. Refused when <paramref name="item"/> isn't waiting.</summary>
+    public void DeclineMilestoneAddition(string idOrName, string item, string by, string? reason = null)
+    {
+        if (string.IsNullOrWhiteSpace(by)) throw new ArgumentException("Say who declines the addition.", nameof(by));
+        InWrite(() =>
+        {
+            var id = RequireMilestone(idOrName).Id;
+            var pending = RequirePending(id, item);
+            Exec("DELETE FROM milestone_pending WHERE milestone_id = $id AND item = $i", null, ("$id", id), ("$i", pending.Item));
+            MilestoneEvent(id, "declined", null, $"{pending.Item} by {OneLine(by)}" + (string.IsNullOrWhiteSpace(reason) ? "" : $": {OneLine(reason)}"));
+        });
+    }
+
+    /// <summary>A milestone that's reached or dropped takes nothing more: what was still waiting is declined, saying so.</summary>
+    private void DropPending(string id, string state)
+    {
+        foreach (var pending in MilestonePending(id))
+        {
+            Exec("DELETE FROM milestone_pending WHERE milestone_id = $id AND item = $i", null, ("$id", id), ("$i", pending.Item));
+            MilestoneEvent(id, "declined", null, $"{pending.Item} (the milestone is {state})");
+        }
+    }
+
+    /// <summary>
+    /// How much a milestone has grown since it was first activated; null for one never activated. Counted in member tickets
+    /// of any status, as the links are now, from its history:
+    /// <list type="bullet">
+    /// <item>An item <i>joined since</i> when it's linked to the milestone itself now and its latest <c>member</c> entry
+    /// comes after the first <c>state → active</c> entry (on a locked milestone that's an approved addition). The other
+    /// items linked to it itself were there at activation.</item>
+    /// <item><see cref="MilestoneGrowth.Added"/>: the tickets on it only through items that joined since (each item when it's
+    /// a ticket, and every ticket part of it at any depth), so an added epic counts the tickets it brings.</item>
+    /// <item><see cref="MilestoneGrowth.Removed"/>: the tickets of items taken off it since activation and not put back
+    /// that aren't on it now.</item>
+    /// <item><see cref="MilestoneGrowth.AtActivation"/>: the tickets on it now that aren't added, plus those removed.</item>
+    /// <item><see cref="MilestoneGrowth.Pending"/>: the additions waiting for approval; <see cref="MilestoneGrowth.PendingTickets"/>
+    /// the tickets they'd bring that aren't on it now.</item>
+    /// </list>
+    /// A ticket made part of an item that was on it at activation isn't told apart from one there at the time: it counts
+    /// as there at activation.
+    /// </summary>
+    public MilestoneGrowth? MilestoneGrowth(string idOrName, TicketGraph? graph = null)
+    {
+        var m = RequireMilestone(idOrName);
+        if (m.Activated is null) return null;
+        graph ??= Graph();
+        var history = MilestoneHistory(m.Id);
+        var activation = history.TakeWhile(e => !(e.Field == "state" && e.New == MilestoneStates.Active)).Count();
+        // An item as it's known now: its history names it by the ID it had then.
+        var renamed = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        string Current(string item) => graph.Contains(item) ? item : renamed.TryGetValue(item, out var now) ? now : renamed[item] = CurrentId(item);
+        var joined = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        var left = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var e in history.Skip(activation + 1).Where(e => e.Field == "member"))
+        {
+            if (e.New is { } on && Current(on) is var added) { joined.Add(added); left.Remove(added); }
+            if (e.Old is { } off && Current(off) is var gone) { joined.Remove(gone); left.Add(gone); }
+        }
+        HashSet<string> TicketsOf(IEnumerable<string> items) =>
+            items.SelectMany(i => graph.Reach(i, PartOf, down: true).Prepend(i)).Where(i => graph.Node(i).IsTicket).ToHashSet(StringComparer.OrdinalIgnoreCase);
+        var direct = graph.In(m.Id, PartOf).Select(e => e.From).ToList();
+        var tickets = TicketsOf(direct);
+        var before = TicketsOf(direct.Where(d => !joined.Contains(d)));
+        var removed = TicketsOf(left.Where(x => !direct.Contains(x, StringComparer.OrdinalIgnoreCase))).Count(t => !tickets.Contains(t));
+        var pending = MilestonePending(m.Id);
+        return new MilestoneGrowth(m.Id, m.Activated, before.Count + removed, tickets.Count - before.Count, removed, tickets.Count,
+            pending.Count, TicketsOf(pending.Select(p => p.Item)).Count(t => !tickets.Contains(t)));
     }
 
     /// <summary>Takes tickets or epics off a milestone (ones not linked to it itself are passed over). Returns its members now.</summary>
