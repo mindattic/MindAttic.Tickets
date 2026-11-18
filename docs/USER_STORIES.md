@@ -479,3 +479,4 @@ updated: 2026-10-12
 | M.TIX-T347 | 2026-11-17 | feature | closed | The ticket-store half of M.ORCH-T1685 (roadmap Phase 9 scope lock): adding a ticket or epic to an ACTIVE or accepting milestone records a pending addition instead of a member, until tickets milestone approve <ID> <ITEM> (or decline) by the owner; a planned milestone still takes members directly. The library and tickets milestone show also say how much a milestone has grown since activation (members approved in after it was activated, and those pending) | 3c50b7a |
 | M.TIX-T348 | 2026-11-18 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
 | M.TIX-T349 | 2026-11-18 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
+| M.TIX-T350 | 2026-11-18 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
