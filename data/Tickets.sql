@@ -5291,6 +5291,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T545', 'IdiotProof', 545, '2026-11-18', 'chore', 'open', 'No local SQL Server needed for development: last-resort connection strings point at the Azure developer databases, SQL-backed tests opt in through IDIOTPROOF_TEST_SQLSERVER, docs updated', '—', 544, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T546', 'IdiotProof', 546, '2026-11-18', 'feature', 'open', 'Find the next session''s gapper candidates, create a strategy for each and arm them on Paper (1 share each), per the user''s goal', '—', 545, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T547', 'IdiotProof', 547, '2026-11-18', 'feature', 'open', 'Embed the IdiotProof icon in IdiotProof.Hub.exe (ApplicationIcon) so the Hub shows its own icon in Explorer, the taskbar and the dashboard tab', '—', 546, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T548', 'IdiotProof', 548, '2026-11-18', 'chore', 'open', 'Find/buy/sell at scale across the full gapper radar universe (500+) on Paper, record results to find reproducible winners', '—', 547, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T1', 'JellyFinPoster', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| JFP-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T2', 'JellyFinPoster', 2, '2026-10-16', 'chore', 'closed', 'install.ps1 adds this repo''s 9 .prose/commands stubs for the shared global commands, so any LLM client finds them', 'mindattic-agent-standard/install.ps1 run 2026-10-16', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T3', 'JellyFinPoster', 3, '2026-10-16', 'chore', 'closed', 'Bug hunt: run an exhaustive /bughunt over the whole repo and fix every real bug found (each fix under its own fix ticket), then hunt again; close this only when a full pass finds nothing', '9a5f84c', 2, NULL);
@@ -75683,6 +75684,9 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75186, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75187, 'M.ORCH-T1718', '2026-11-18T08:24:43Z', 'working', 'ryandebraal@mindattic.com (04ebe23b-384e-491e-9934-b90d8e2c7dba)', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75188, 'PRS-T1012', '2026-11-18T08:25:36Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75189, 'PRS-T1012', '2026-11-18T08:25:52Z', 'working', NULL, 'f462c151-9494-4fa8-ae52-0483677420c2');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75190, 'PRS-T1012', '2026-11-18T08:35:03Z', 'working', 'f462c151-9494-4fa8-ae52-0483677420c2', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75191, 'IP-T548', '2026-11-18T08:37:31Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75192, 'IP-T548', '2026-11-18T08:38:25Z', 'working', NULL, '33afdbd4-4e77-449c-9026-7d3a28e246b4');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -78713,6 +78717,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T99', 'proposed', 0, '2026-11-07T06:47:27Z', NULL);
 
 -- ticket_work
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T548', NULL, 0, NULL, '33afdbd4-4e77-449c-9026-7d3a28e246b4', '2026-11-18T08:38:26Z', '2026-11-18T08:38:25Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1726', NULL, 0, 'ryandebraal@mindattic.com', '04ebe23b-384e-491e-9934-b90d8e2c7dba', '2026-11-18T07:45:59Z', '2026-11-18T07:45:59Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
@@ -78797,7 +78802,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T105', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T05:26:05Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T58', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:02:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T1012', NULL, 0, NULL, 'f462c151-9494-4fa8-ae52-0483677420c2', '2026-11-18T08:25:52Z', '2026-11-18T08:25:52Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T111', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:34:40Z');
