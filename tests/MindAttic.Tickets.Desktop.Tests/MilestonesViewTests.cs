@@ -155,7 +155,7 @@ public sealed class MilestonesViewTests
 
         Assert.That(row.Groups.Select(g => g.Heading), Is.EqualTo(new[] { "Linked to the milestone itself", "AL-EPIC-A — Core" }));
         Assert.That(row.Groups[0].Members.Select(m => m.Id), Is.EqualTo(new[] { "AL-T3" }));
-        Assert.That(row.Groups[1].Members.Select(m => m.Id), Is.EqualTo(new[] { "AL-T1", "AL-T2" }));
+        Assert.That(row.Groups[1].Members.Select(m => m.Id), Is.EqualTo(new[] { "AL-T1", "AL-T2", "AL-US-A1" }), "its tickets, then the story the epic also holds");
         Assert.That(row.Groups[1].ProgressText, Is.EqualTo("1 of 2 done"));
         Assert.That(row.Groups[1].Members[0].StatusText, Is.EqualTo("✓ closed"), "each ticket's status is a word, not colour alone");
 
