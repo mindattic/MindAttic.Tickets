@@ -28,8 +28,8 @@ public sealed partial class MainViewModel
 
     public bool IsStoriesView => SelectedView == StoriesView;
 
-    /// <summary>The ticket detail pane shows beside every view but Stories, which has its own editor there.</summary>
-    public bool ShowsDetailPane => IsDetailOpen && !IsStoriesView;
+    /// <summary>The ticket detail pane shows beside every view but Stories and Milestones, which have their own pane there.</summary>
+    public bool ShowsDetailPane => IsDetailOpen && !IsStoriesView && !IsMilestonesView;
 
     public ObservableCollection<StoryRowViewModel> StoryRows { get; } = [];
     public IReadOnlyList<string> StoryStatusChoices { get; } = [AnyStatus, .. StoryStatus.All];

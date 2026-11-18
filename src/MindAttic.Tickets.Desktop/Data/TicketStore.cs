@@ -80,6 +80,26 @@ public sealed record Snapshot(IReadOnlyList<string> Repos, IReadOnlyList<TicketI
 
     /// <summary>The tickets that implement each story (its <c>implements</c> links), by story ID without case.</summary>
     public IReadOnlyDictionary<string, IReadOnlyList<string>> Implementers { get; init; } = new Dictionary<string, IReadOnlyList<string>>();
+
+    /// <summary>Every milestone that isn't dropped, in milestone order, for the Milestones view (M.TIX-T336).</summary>
+    public IReadOnlyList<MilestoneInfo> Milestones { get; init; } = [];
+}
+
+/// <summary>Members of a milestone under one heading (M.TIX-T336): those that came through <paramref name="Heading"/>'s epic
+/// (or parent ticket), or those linked to the milestone itself (<paramref name="Direct"/>).</summary>
+public sealed record MilestoneGroup(string Heading, bool Direct, IReadOnlyList<MilestoneMember> Members);
+
+/// <summary>An addition waiting for a milestone's owner, with what the item is.</summary>
+public sealed record MilestonePendingItem(MilestonePendingAddition Addition, GraphNode Node);
+
+/// <summary>A milestone as the Milestones view shows it (M.TIX-T336): its members (also grouped by the epic they came
+/// through), acceptance checks, growth since activation (null before it), pending additions and history (oldest first).</summary>
+public sealed record MilestoneInfo(Milestone Milestone, IReadOnlyList<MilestoneMember> Members, IReadOnlyList<MilestoneCheck> Checks)
+{
+    public IReadOnlyList<MilestoneGroup> Groups { get; init; } = [];
+    public MilestoneGrowth? Growth { get; init; }
+    public IReadOnlyList<MilestonePendingItem> Pending { get; init; } = [];
+    public IReadOnlyList<MilestoneEvent> History { get; init; } = [];
 }
 
 /// <summary>A story as the command palette and the Stories view open it (M.TIX-T81, M.TIX-T82): its rows (one per repo holding the ID) and its links.</summary>
@@ -138,6 +158,8 @@ public sealed class TicketStore(string root)
         IReadOnlyList<string> BlockersOf(string id) => blockers.TryGetValue(id, out var b) ? b : [];
         bool WorkingOn(string id) => work.TryGetValue(id, out var w) && w.IsWorking;
         long? EstimateOf(string id) => estimates.TryGetValue(id, out var e) ? e : null;
+        var graph = TicketGraph.Build(tickets, links, names);
+        var epics = db.Epics();
         IReadOnlyList<string> LabelsOf(string id) => labels.TryGetValue(id, out var l) ? l : [];
         TicketInfo Info(string repo, Ticket t) =>
             (states.TryGetValue(t.Id, out var s) ? new TicketInfo(repo, t, s.Approval, s.Priority, BlockersOf(t.Id)) : new TicketInfo(repo, t, TicketsDb.Proposed, 0, BlockersOf(t.Id)))
@@ -153,14 +175,55 @@ public sealed class TicketStore(string root)
             Stories = [.. db.Stories().Where(s => s.Id.Length > 0)],
             LabelNames = [.. db.LabelCounts().Select(c => c.Label)],
             StatusHistory = db.StatusHistory(),
-            Epics = db.Epics(),
+            Epics = epics,
             Links = links,
-            Weights = GraphWeight.Of(TicketGraph.Build(tickets, links, names)),
+            Weights = GraphWeight.Of(graph),
+            Milestones = Milestones(db, graph, epics),
             Implementers = links.Where(l => l.Kind == "implements")
                 .GroupBy(l => l.To, StringComparer.OrdinalIgnoreCase)
                 .ToDictionary(g => g.Key, g => (IReadOnlyList<string>)[.. g.Select(l => l.From).Distinct(StringComparer.OrdinalIgnoreCase)], StringComparer.OrdinalIgnoreCase),
         };
     });
+
+    /// <summary>Every milestone that isn't dropped, in milestone order, each read from the one <paramref name="graph"/>.</summary>
+    private static IReadOnlyList<MilestoneInfo> Milestones(TicketsDb db, TicketGraph graph, IReadOnlyList<StoredEpic> epics) =>
+        [.. db.Milestones().Where(m => m.State != MilestoneStates.Dropped).Select(m =>
+        {
+            var members = db.MilestoneMembers(m.Id, graph);
+            return new MilestoneInfo(m, members, db.MilestoneChecks(m.Id))
+            {
+                Groups = Group(members, graph, epics),
+                Growth = db.MilestoneGrowth(m.Id, graph),
+                Pending = [.. db.MilestonePending(m.Id).Select(p => new MilestonePendingItem(p, graph.Node(p.Item)))],
+                History = db.MilestoneHistory(m.Id),
+            };
+        })];
+
+    /// <summary>
+    /// A milestone's members under headings: the tickets linked to it itself first, then one group per epic (or parent
+    /// ticket) linked to it, holding what came through it. A member reached through several is listed under the first.
+    /// </summary>
+    internal static IReadOnlyList<MilestoneGroup> Group(IReadOnlyList<MilestoneMember> members, TicketGraph graph, IReadOnlyList<StoredEpic> epics)
+    {
+        var placed = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        var alone = new List<MilestoneMember>();
+        var groups = new List<MilestoneGroup>();
+        foreach (var head in members.Where(m => m.Direct))
+        {
+            var reached = graph.Reach(head.Id, TicketsDb.PartOf, down: true).ToHashSet(StringComparer.OrdinalIgnoreCase);
+            var below = members.Where(m => reached.Contains(m.Id)).ToList(); // in the members' own order
+            if (below.Count == 0 && head.IsTicket)
+            {
+                if (placed.Add(head.Id)) alone.Add(head);
+                continue;
+            }
+            List<MilestoneMember> under = [.. (head.IsTicket ? below.Prepend(head) : below).Where(x => placed.Add(x.Id))];
+            var heading = epics.FirstOrDefault(e => e.Id.Equals(head.Id, StringComparison.OrdinalIgnoreCase)) is { } epic
+                ? $"{epic.Id} — {epic.Title}" : head.Node.Caption;
+            groups.Add(new MilestoneGroup(heading, false, under));
+        }
+        return alone.Count == 0 ? groups : [new MilestoneGroup("Linked to the milestone itself", true, alone), .. groups];
+    }
 
     /// <summary>The story <paramref name="id"/> and its links (both directions), or null when there's no such story.</summary>
     public StoryDetail? Story(string id) => Read(db =>
@@ -249,9 +312,21 @@ public sealed class TicketStore(string root)
     /// <summary>The workspace's ticket changes after event <paramref name="after"/>, newest first, at most <paramref name="limit"/> (M.TIX-T84).</summary>
     public IReadOnlyList<MindAttic.Tickets.Data.ActivityEvent> Activity(long after, int limit) => Read(db => db.Activity(after, limit));
 
-    /// <summary>Appends a note to the ticket, by <see cref="Environment.UserName"/> (or <c>$MINDATTIC_TICKETS_AUTHOR</c>).</summary>
-    public void AddNote(string id, string markdown) => Write($"note on {id}", db => db.AddNote(id,
-        Environment.GetEnvironmentVariable("MINDATTIC_TICKETS_AUTHOR") is { Length: > 0 } a ? a.Trim() : Environment.UserName, markdown), render: false);
+    /// <summary>Who this window acts as, for notes and milestone decisions: <c>$MINDATTIC_TICKETS_AUTHOR</c>, else
+    /// <see cref="Environment.UserName"/> (the CLI's default author too).</summary>
+    public static string Author =>
+        Environment.GetEnvironmentVariable("MINDATTIC_TICKETS_AUTHOR") is { Length: > 0 } a ? a.Trim() : Environment.UserName;
+
+    /// <summary>Appends a note to the ticket, by <see cref="Author"/>.</summary>
+    public void AddNote(string id, string markdown) => Write($"note on {id}", db => db.AddNote(id, Author, markdown), render: false);
+
+    // Milestones (M.TIX-T336): the state changes the view makes, and the owner's decision on a pending addition, by Author.
+    public void ActivateMilestone(string id) => Write($"activate {id}", db => db.ActivateMilestone(id), render: false);
+    public void SendMilestoneToAcceptance(string id) => Write($"{id} to acceptance", db => db.AcceptMilestone(id), render: false);
+    public void ApproveMilestoneAddition(string id, string item) =>
+        Write($"approve {item} for {id}", db => db.ApproveMilestoneAddition(id, item, Author), render: false);
+    public void DeclineMilestoneAddition(string id, string item, string? reason) =>
+        Write($"decline {item} for {id}: {reason}", db => db.DeclineMilestoneAddition(id, item, Author, reason), render: false);
 
     // Approve, unapprove, reject, move, close, link and unlink return what they changed, so the window can undo them (M.TIX-T80).
     public TicketChange Approve(string id) => Change($"approve {id}", [id], db => db.Approve(id), render: false);
@@ -276,7 +351,20 @@ public sealed class TicketStore(string root)
     public void AddLabels(string id, IReadOnlyList<string> labels) =>
         Write($"label {id} {string.Join(" ", labels)}", db => db.AddLabels(id, labels), render: false);
     public void RemoveLabel(string id, string label) => Write($"unlabel {id} {label}", db => db.RemoveLabels(id, [label]), render: false);
-    public TicketChange AddLink(string from, string to, string kind) => Change($"link {from} {kind} {to}", [from], db => db.AddLink(from, to, kind), render: false);
+    public TicketChange AddLink(string from, string to, string kind) => AddLink(from, to, kind, out _);
+
+    /// <summary>Links as <see cref="AddLink(string, string, string)"/>. <paramref name="linked"/> is false when the link ends at
+    /// a milestone whose scope is locked: it's then recorded as a pending addition, proposed by <see cref="Author"/>, for its
+    /// owner to approve, and isn't a link yet.</summary>
+    public TicketChange AddLink(string from, string to, string kind, out bool linked)
+    {
+        var made = true;
+        var change = Change($"link {from} {kind} {to}", [from], db => made = kind == TicketsDb.PartOf && TicketsDb.IsMilestoneId(to)
+            ? db.AddToMilestone(to, [from], by: Author).Pending.Count == 0
+            : db.AddLink(from, to, kind), render: false);
+        linked = made;
+        return change;
+    }
     public TicketChange RemoveLink(string from, string to, string kind) => Change($"unlink {from} {kind} {to}", [from], db => db.RemoveLink(from, to, kind), render: false);
     public void SaveFilter(string name, string query) => Write($"save filter {name}: {query}", db => db.SaveFilter(name, query), render: false);
     public void DeleteFilter(string name) => Write($"delete filter {name}", db => db.DeleteFilter(name), render: false);

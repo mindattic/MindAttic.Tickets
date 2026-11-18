@@ -18,6 +18,7 @@ public static class WindowCommands
     public static readonly RoutedCommand ShowStats = new(nameof(ShowStats), typeof(WindowCommands));
     public static readonly RoutedCommand ShowStories = new(nameof(ShowStories), typeof(WindowCommands));
     public static readonly RoutedCommand ShowGraph = new(nameof(ShowGraph), typeof(WindowCommands));
+    public static readonly RoutedCommand ShowMilestones = new(nameof(ShowMilestones), typeof(WindowCommands));
     public static readonly RoutedCommand Help = new(nameof(Help), typeof(WindowCommands));
 
     /// <summary>Ctrl+S: saves the story being edited in the Stories view (M.TIX-T82).</summary>

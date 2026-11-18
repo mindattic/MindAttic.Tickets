@@ -317,7 +317,7 @@ public sealed class DetailViewModel : ObservableObject
         _ => kind,
     };
 
-    private static string When(string at) =>
+    internal static string When(string at) =>
         DateTime.TryParse(at, CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal | DateTimeStyles.AssumeUniversal, out var t)
             ? t.ToLocalTime().ToString("yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture) : at;
 

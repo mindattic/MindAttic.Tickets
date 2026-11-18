@@ -84,6 +84,13 @@ public sealed partial class MainViewModel
             yield return Cmd("Close the detail pane", Exec(CloseDetailCommand), "Esc");
         }
 
+        if (IsMilestonesView && SelectedMilestoneRow is { } milestone)
+        {
+            if (ActivateMilestoneCommand.CanExecute(null)) yield return Cmd($"Activate {milestone.Id}", ActivateMilestoneAsync, detail: "its scope is locked from then on");
+            if (SendMilestoneToAcceptanceCommand.CanExecute(null)) yield return Cmd($"Send {milestone.Id} to acceptance", SendMilestoneToAcceptanceAsync);
+            yield return Cmd("Close the milestone", Exec(CloseMilestoneCommand), "Esc");
+        }
+
         yield return Cmd(GroupByRepo ? "Stop grouping by repo" : "Group by repo", () => { GroupByRepo = !GroupByRepo; return Task.CompletedTask; });
         yield return Cmd(ShowArchived ? "Hide closed tickets" : "Show closed tickets", () => { ShowArchived = !ShowArchived; return Task.CompletedTask; });
         if (IsFiltered || StatusFilter != AnyStatus)

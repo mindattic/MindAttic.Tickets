@@ -46,6 +46,7 @@ public partial class MainWindow : Window
         CommandBindings.Add(new CommandBinding(WindowCommands.ShowStats, (_, _) => model.SelectedView = MainViewModel.StatsView));
         CommandBindings.Add(new CommandBinding(WindowCommands.ShowStories, (_, _) => { model.SelectedView = MainViewModel.StoriesView; FocusStories(); }));
         CommandBindings.Add(new CommandBinding(WindowCommands.ShowGraph, (_, _) => model.SelectedView = MainViewModel.GraphView));
+        CommandBindings.Add(new CommandBinding(WindowCommands.ShowMilestones, (_, _) => { model.SelectedView = MainViewModel.MilestonesView; FocusMilestones(); }));
         CommandBindings.Add(new CommandBinding(WindowCommands.SaveStory, async (_, _) =>
         {
             // A text box commits its text on every keystroke, so what's typed is what's saved.
@@ -232,6 +233,22 @@ public partial class MainWindow : Window
         else StoryList.Focus();
     });
 
+    /// <summary>Focuses the Milestones list on its selected (else first) milestone, without opening one that isn't selected yet.</summary>
+    private void FocusMilestones() => Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
+    {
+        MilestoneList.UpdateLayout();
+        var item = MilestoneList.SelectedItem ?? (MilestoneList.Items.Count > 0 ? MilestoneList.Items[0] : null);
+        if (item is not null && MilestoneList.ItemContainerGenerator.ContainerFromItem(item) is ListBoxItem container) container.Focus();
+        else MilestoneList.Focus();
+    });
+
+    /// <summary>Enter or F6 on a milestone goes to its detail; what's there then follows by Tab.</summary>
+    private void OnMilestonesKeyDown(object sender, KeyEventArgs e)
+    {
+        if (Keyboard.Modifiers != ModifierKeys.None || e.OriginalSource is not ListBoxItem || !model.ShowsMilestonePane) return;
+        if (e.Key is Key.Enter or Key.F6) { e.Handled = true; MilestoneTitle.Focus(); }
+    }
+
     private void FocusStoryRow(StoryRowViewModel row)
     {
         StoryList.ScrollIntoView(row);
@@ -265,7 +282,7 @@ public partial class MainWindow : Window
     /// <summary>Hands the current list's selection to the model, in the list's order (the order a bulk move keeps).</summary>
     private void SyncSelection()
     {
-        if (model.IsBoardView || model.IsAuditView || model.IsStoriesView) { model.SelectedRows = []; return; }
+        if (model.IsBoardView || model.IsAuditView || model.IsStoriesView || model.IsMilestonesView) { model.SelectedRows = []; return; }
         var list = CurrentList;
         model.SelectedRows = [.. list.SelectedItems.OfType<TicketRowViewModel>().OrderBy(r => list.Items.IndexOf(r))];
     }
@@ -281,6 +298,13 @@ public partial class MainWindow : Window
                 return;
             }
             if (model.IsStoryEditorOpen) { model.CloseStoryCommand.Execute(null); FocusStories(); return; }
+        }
+        // In the Milestones view, Esc in the detail goes back to the list; in the list it closes the detail.
+        if (model.ShowsMilestonePane && !SearchBox.IsKeyboardFocusWithin)
+        {
+            if (!MilestonePane.IsKeyboardFocusWithin) model.CloseMilestoneCommand.Execute(null);
+            FocusMilestones();
+            return;
         }
         if (model.IsMultiSelect && !SearchBox.IsKeyboardFocusWithin) { model.ClearSelectionCommand.Execute(null); return; }
         if (SearchBox.IsKeyboardFocusWithin && model.Search.Length > 0) model.Search = "";
@@ -544,6 +568,7 @@ public partial class MainWindow : Window
         yield return Routed("Show Stats", WindowCommands.ShowStats, "Ctrl+6");
         yield return Routed("Show Stories", WindowCommands.ShowStories, "Ctrl+7");
         yield return Routed("Show the Graph", WindowCommands.ShowGraph, "Ctrl+8");
+        yield return Routed("Show Milestones", WindowCommands.ShowMilestones, "Ctrl+9");
         yield return Routed("Search tickets", WindowCommands.FocusSearch, "Ctrl+F");
         yield return Routed("Keyboard shortcuts and help", WindowCommands.Help, "F1");
     }
@@ -586,6 +611,12 @@ public partial class MainWindow : Window
         Save (Ctrl+S) writes it and rewrites the repo's USER_STORIES.md view, or Revert drops the edits. A story changed
         elsewhere since you opened it isn't overwritten. Add the tickets that implement it, add stories and epics, or
         rename an epic there too. A story ID clicked anywhere opens it in Stories.
+        Milestones lists every milestone that isn't dropped, in order with the reached ones last: its state, repos,
+        tickets done, acceptance checks passed and how much it has grown since it was activated. Select one for its
+        goal, its checks with their results and evidence, the epics and tickets under it (a ticket ID opens the ticket),
+        the additions waiting for the owner's approval (Approve, or Decline with a reason) and its history. Activate
+        makes a planned milestone active, Send to acceptance moves an active one on; creating, editing, reaching and
+        dropping a milestone are done with 'tickets milestone' on the command line.
 
         Ctrl+Z undoes your last approve, back to proposed, reject, queue move, close, won't do, board move or link
         change (a story's implementing ticket too), newest first, by writing the opposite change (a close is undone by reopening the ticket with its old
@@ -611,6 +642,10 @@ public partial class MainWindow : Window
           Left / Right         the next column's cards
           Alt+Left / Alt+Right move the card to the column before or after (or drag it)
 
+        In Milestones
+          Up / Down            move between milestones (the selected one shows its detail)
+          Enter or F6          go to the detail          Esc   back to the list, then close the detail
+
         In Stories
           Up / Down            move between stories (the selected one opens in the editor)
           Enter or F6          go to the editor          Esc   back to the list (edits are kept)
@@ -620,6 +655,7 @@ public partial class MainWindow : Window
           Ctrl+K              command palette: type part of a ticket or story ID or text, or a command's
                                name; Up / Down choose, Enter runs (> commands only, # tickets and stories only)
           Ctrl+1 / 2 / 3 / 4 / 5 / 6 / 7   Repos / Queue / Audit / Board / Activity / Stats / Stories
+          Ctrl+8 / 9           Graph / Milestones
           Work filter          Queued (/allocate takes it next), Needs approval, Blocked (waiting on other tickets)
           Ctrl+F               search          Ctrl+N   new ticket
           Ctrl+Z               undo the last change

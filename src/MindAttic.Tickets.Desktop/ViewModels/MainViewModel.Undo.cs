@@ -46,11 +46,11 @@ public sealed partial class MainViewModel
     public void HideUndoToast() => UndoToast = "";
 
     /// <summary>Runs an undoable change (as <see cref="Do"/>) and, when it changed something, offers to undo it.</summary>
-    private async Task<bool> Undoable(Func<TicketChange> work, string done)
+    private async Task<bool> Undoable(Func<TicketChange> work, string done, Func<string>? doneText = null)
     {
         TicketChange? change = null;
-        if (!await Do(() => change = work(), done)) return false;
-        if (change is { IsEmpty: false }) Remember(change, done);
+        if (!await Do(() => change = work(), done, doneText)) return false;
+        if (change is { IsEmpty: false }) Remember(change, doneText?.Invoke() ?? done);
         return true;
     }
 

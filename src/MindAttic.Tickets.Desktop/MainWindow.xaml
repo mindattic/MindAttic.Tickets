@@ -24,6 +24,7 @@
         <KeyBinding Key="D6" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowStats}" />
         <KeyBinding Key="D7" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowStories}" />
         <KeyBinding Key="D8" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowGraph}" />
+        <KeyBinding Key="D9" Modifiers="Control" Command="{x:Static vm:WindowCommands.ShowMilestones}" />
         <KeyBinding Key="S" Modifiers="Control" Command="{x:Static vm:WindowCommands.SaveStory}" />
         <KeyBinding Key="F1" Command="{x:Static vm:WindowCommands.Help}" />
         <KeyBinding Key="Z" Modifiers="Control" Command="{x:Static vm:WindowCommands.Undo}" />
@@ -92,6 +93,50 @@
                 </DataTrigger>
                 <DataTrigger Binding="{Binding State}" Value="wont-do">
                     <Setter Property="BorderBrush" Value="{DynamicResource StateWontDo}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Milestones (M.TIX-T336): a milestone's state and a check's result as a chip or text in the state's colour,
+             always with the word (the Approval chip's pattern). -->
+        <Style x:Key="MilestoneStateChip" TargetType="Border" BasedOn="{StaticResource Chip}">
+            <Setter Property="BorderBrush" Value="{DynamicResource MaControlBorder}" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding State}" Value="active">
+                    <Setter Property="BorderBrush" Value="{DynamicResource StateProposed}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State}" Value="accepting">
+                    <Setter Property="BorderBrush" Value="{DynamicResource StateOpen}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State}" Value="reached">
+                    <Setter Property="BorderBrush" Value="{DynamicResource StateClosed}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="MilestoneStateText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Foreground" Value="{DynamicResource MaMuted}" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding State}" Value="active">
+                    <Setter Property="Foreground" Value="{DynamicResource StateProposed}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State}" Value="accepting">
+                    <Setter Property="Foreground" Value="{DynamicResource StateOpen}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State}" Value="reached">
+                    <Setter Property="Foreground" Value="{DynamicResource StateClosed}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="CheckResultText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Foreground" Value="{DynamicResource StateProposed}" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Result}" Value="pass">
+                    <Setter Property="Foreground" Value="{DynamicResource StateApproved}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Result}" Value="fail">
+                    <Setter Property="Foreground" Value="{DynamicResource StateRejected}" />
                 </DataTrigger>
             </Style.Triggers>
         </Style>
@@ -255,7 +300,7 @@
                 <Label Style="{StaticResource FilterLabel}" Content="View" Target="{Binding ElementName=ViewChoice}" />
                 <ListBox x:Name="ViewChoice" Style="{StaticResource MaPillChoice}" ItemsSource="{Binding Views}"
                          SelectedItem="{Binding SelectedView}" AutomationProperties.Name="View"
-                         ToolTip="Repos: every repo with its tickets and git state (Ctrl+1). Queue: open tickets in the order /allocate takes them (Ctrl+2). Audit: closed tickets to double-check, and the Orchestrator's drift and duplicate-code findings (Ctrl+3). Board: tickets as cards in Proposed, Approved, In progress and Done; moving a card changes its approval or status (Ctrl+4). Activity: every ticket change across the workspace as it happens, newest first (Ctrl+5). Stats: throughput, cycle time and open tickets by repo and type over time, as tables (Ctrl+6). Stories: every repo's user stories under their epics, to edit their text, status, acceptance and evidence and link the tickets that implement them (Ctrl+7). Graph: the tickets around one drawn as a node graph, parent/child trees, prerequisites and related links, across repos (Ctrl+8)." />
+                         ToolTip="Repos: every repo with its tickets and git state (Ctrl+1). Queue: open tickets in the order /allocate takes them (Ctrl+2). Audit: closed tickets to double-check, and the Orchestrator's drift and duplicate-code findings (Ctrl+3). Board: tickets as cards in Proposed, Approved, In progress and Done; moving a card changes its approval or status (Ctrl+4). Activity: every ticket change across the workspace as it happens, newest first (Ctrl+5). Stats: throughput, cycle time and open tickets by repo and type over time, as tables (Ctrl+6). Stories: every repo's user stories under their epics, to edit their text, status, acceptance and evidence and link the tickets that implement them (Ctrl+7). Graph: the tickets around one drawn as a node graph, parent/child trees, prerequisites and related links, across repos (Ctrl+8). Milestones: each milestone's state, progress, acceptance checks and growth since activation, with the epics and tickets under it and the additions waiting for approval (Ctrl+9)." />
             </StackPanel>
             <StackPanel Margin="0,0,12,6">
                 <Label Style="{StaticResource FilterLabel}" Content="_Search (Ctrl+F)" Target="{Binding ElementName=SearchBox}" />
@@ -794,6 +839,66 @@
                            Text="No stories match." AutomationProperties.LiveSetting="Polite" IsHitTestVisible="False">
                     <TextBlock.Visibility>
                         <Binding Path="StoryRows.Count" Converter="{x:Static vm:Converters.ZeroToVisible}" />
+                    </TextBlock.Visibility>
+                </TextBlock>
+            </Grid>
+
+            <!-- Milestones (M.TIX-T336): every milestone that isn't dropped, in order, the reached ones last; the selected one
+                 shows its detail beside the list. -->
+            <Grid Margin="20,0,12,0" Visibility="{Binding IsMilestonesView, Converter={StaticResource Visible}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <TextBlock Style="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,0,0,8"
+                           Text="Milestones in their order, the reached ones last. Select one to see its goal, its acceptance checks, the epics and tickets under it, the additions waiting for approval and its history. Milestones are created, edited, reached and dropped from the command line with 'tickets milestone'." />
+                <ListBox x:Name="MilestoneList" Grid.Row="1" Style="{StaticResource RowList}" ItemsSource="{Binding MilestoneRows}"
+                         SelectedItem="{Binding SelectedMilestoneRow}" AutomationProperties.Name="Milestones, in order"
+                         PreviewKeyDown="OnMilestonesKeyDown">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="{x:Type vm:MilestoneRowViewModel}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" MinWidth="150" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Margin="0,0,14,0">
+                                    <TextBlock Text="{Binding Id}" FontWeight="SemiBold" />
+                                    <TextBlock Text="{Binding ReposText}" Style="{StaticResource Muted}" TextWrapping="Wrap" MaxWidth="220" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock Text="{Binding Name}" TextWrapping="Wrap">
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding IsReached}" Value="True">
+                                                        <Setter Property="Foreground" Value="{DynamicResource MaMuted}" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                    <WrapPanel Margin="0,5,0,0">
+                                        <Border Style="{StaticResource MilestoneStateChip}">
+                                            <TextBlock Text="{Binding StateText}" Style="{StaticResource MilestoneStateText}" />
+                                        </Border>
+                                        <TextBlock Style="{StaticResource Muted}" VerticalAlignment="Center" Margin="0,0,12,0" Text="{Binding ProgressText}" />
+                                        <TextBlock Style="{StaticResource Muted}" VerticalAlignment="Center" Text="{Binding ChecksText}" />
+                                    </WrapPanel>
+                                    <ProgressBar Style="{StaticResource MaProgressBar}" Minimum="0" Maximum="1" Value="{Binding DoneFraction, Mode=OneWay}"
+                                                 Width="200" HorizontalAlignment="Left" Margin="0,4,0,0" ToolTip="{Binding ProgressText}"
+                                                 AutomationProperties.Name="{Binding ProgressText}" />
+                                    <TextBlock Text="{Binding GrowthText}" Style="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,3,0,0"
+                                               Visibility="{Binding GrowthText, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <TextBlock Grid.Row="1" Style="{StaticResource Muted}" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,40,0,0"
+                           Text="{Binding MilestonesEmptyText}" TextWrapping="Wrap" AutomationProperties.LiveSetting="Polite" IsHitTestVisible="False">
+                    <TextBlock.Visibility>
+                        <Binding Path="MilestoneRows.Count" Converter="{x:Static vm:Converters.ZeroToVisible}" />
                     </TextBlock.Visibility>
                 </TextBlock>
             </Grid>
@@ -1374,6 +1479,154 @@
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+
+            <!-- Milestone detail (M.TIX-T336): where the ticket detail pane goes, in the Milestones view. Activate and Send to
+                 acceptance act on it; reaching and dropping stay with the CLI. -->
+            <Border Grid.Column="1" Width="460" Background="{DynamicResource MaPane}" BorderBrush="{DynamicResource MaChromeBorder}" BorderThickness="1,0,0,0"
+                    Visibility="{Binding ShowsMilestonePane, Converter={StaticResource Visible}}">
+                <ScrollViewer x:Name="MilestonePane" VerticalScrollBarVisibility="Auto" Focusable="False" DataContext="{Binding SelectedMilestoneRow}">
+                    <StackPanel Margin="20,16,20,20">
+                        <DockPanel>
+                            <Button DockPanel.Dock="Right" Style="{StaticResource MaToolButton}" Content="&#x2715;" VerticalAlignment="Top"
+                                    Command="{Binding DataContext.CloseMilestoneCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                    AutomationProperties.Name="Close the milestone" ToolTip="Close the milestone (Esc)" />
+                            <TextBlock x:Name="MilestoneTitle" Text="{Binding Id}" Style="{StaticResource PaneTitle}" Focusable="True" FocusVisualStyle="{StaticResource MaFocusRing}" />
+                        </DockPanel>
+                        <TextBlock Text="{Binding Name}" FontWeight="SemiBold" FontSize="16" TextWrapping="Wrap" Margin="0,8,0,0" />
+                        <TextBlock Text="{Binding ReposText}" Style="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,2,0,0" />
+                        <WrapPanel Margin="0,8,0,0">
+                            <Border Style="{StaticResource MilestoneStateChip}">
+                                <TextBlock Text="{Binding StateText}" Style="{StaticResource MilestoneStateText}" />
+                            </Border>
+                            <TextBlock Style="{StaticResource Muted}" VerticalAlignment="Center" Margin="0,0,12,0" Text="{Binding ProgressText}" />
+                            <TextBlock Style="{StaticResource Muted}" VerticalAlignment="Center" Text="{Binding ChecksText}" />
+                        </WrapPanel>
+                        <ProgressBar Style="{StaticResource MaProgressBar}" Minimum="0" Maximum="1" Value="{Binding DoneFraction, Mode=OneWay}"
+                                     HorizontalAlignment="Stretch" Margin="0,6,0,0" ToolTip="{Binding ProgressText}"
+                                     AutomationProperties.Name="{Binding ProgressText}" />
+                        <TextBlock Text="{Binding DatesText}" Style="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,6,0,0" />
+                        <TextBlock Text="{Binding GrowthText}" TextWrapping="Wrap" Margin="0,2,0,0"
+                                   Visibility="{Binding GrowthText, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
+
+                        <WrapPanel Margin="0,12,0,0">
+                            <Button Style="{StaticResource MaPrimaryButton}" Content="Activate" Margin="0,0,6,6"
+                                    Visibility="{Binding CanActivate, Converter={StaticResource Visible}}"
+                                    Command="{Binding DataContext.ActivateMilestoneCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                    ToolTip="Make this planned milestone active. From then on its scope is locked: what is added to it waits for the owner's approval." />
+                            <Button Style="{StaticResource MaPrimaryButton}" Content="Send to acceptance" Margin="0,0,6,6"
+                                    Visibility="{Binding CanSendToAcceptance, Converter={StaticResource Visible}}"
+                                    Command="{Binding DataContext.SendMilestoneToAcceptanceCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                    ToolTip="Move this active milestone into acceptance, where its acceptance checks decide whether it is reached." />
+                        </WrapPanel>
+                        <TextBlock Text="{Binding CliHint}" Style="{StaticResource Muted}" TextWrapping="Wrap"
+                                   Visibility="{Binding CliHint, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
+                        <TextBlock Text="{Binding Error}" Style="{StaticResource ErrorText}" TextWrapping="Wrap"
+                                   Visibility="{Binding Error, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
+
+                        <TextBlock Text="GOAL" Style="{StaticResource SectionLabel}" />
+                        <TextBlock Text="{Binding Goal}" TextWrapping="Wrap" Visibility="{Binding HasGoal, Converter={StaticResource Visible}}" />
+                        <TextBlock Text="No goal is written for it." Style="{StaticResource Muted}"
+                                   Visibility="{Binding HasGoal, Converter={x:Static vm:Converters.TrueToCollapsed}}" />
+
+                        <TextBlock Text="{Binding ChecksHeader}" Style="{StaticResource SectionLabel}" />
+                        <TextBlock Text="{Binding NoChecksText}" Style="{StaticResource Muted}" TextWrapping="Wrap">
+                            <TextBlock.Visibility>
+                                <Binding Path="Checks.Count" Converter="{x:Static vm:Converters.ZeroToVisible}" />
+                            </TextBlock.Visibility>
+                        </TextBlock>
+                        <ItemsControl ItemsSource="{Binding Checks}" Focusable="False" AutomationProperties.Name="Acceptance checks">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate DataType="{x:Type vm:MilestoneCheckLine}">
+                                    <StackPanel Margin="0,0,0,10">
+                                        <DockPanel>
+                                            <TextBlock DockPanel.Dock="Right" Text="{Binding ResultText}" Style="{StaticResource CheckResultText}" FontWeight="SemiBold" VerticalAlignment="Center" Margin="8,0,0,0" />
+                                            <TextBlock Text="{Binding Title}" Style="{StaticResource Muted}" VerticalAlignment="Center" />
+                                        </DockPanel>
+                                        <TextBlock Text="{Binding Description}" TextWrapping="Wrap" />
+                                        <TextBlock Text="{Binding LooksAt}" Style="{StaticResource Muted}" TextWrapping="Wrap"
+                                                   Visibility="{Binding LooksAt, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
+                                        <TextBlock Text="{Binding CheckedText}" Style="{StaticResource Muted}" TextWrapping="Wrap" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <!-- Additions waiting for the owner (M.TIX-T347): approving or declining records who decided. -->
+                        <StackPanel Visibility="{Binding Pending.Count, Converter={x:Static vm:Converters.PositiveToVisible}}">
+                            <TextBlock Text="{Binding PendingHeader}" Style="{StaticResource SectionLabel}" />
+                            <ItemsControl ItemsSource="{Binding Pending}" Focusable="False" AutomationProperties.Name="Pending additions">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type vm:MilestonePendingLine}">
+                                        <StackPanel Margin="0,0,0,10">
+                                            <DockPanel>
+                                                <Button Style="{StaticResource LinkBtn}" Content="{Binding Item.Id}" VerticalAlignment="Center" Width="100" HorizontalContentAlignment="Left"
+                                                        Command="{Binding DataContext.GoToCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding Item.Id}"
+                                                        AutomationProperties.Name="{Binding Item.SpokenName, StringFormat='{}{0}: go to it'}" ToolTip="Open the ticket" />
+                                                <TextBlock Text="{Binding Item.Summary}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" ToolTip="{Binding Item.Summary}" />
+                                            </DockPanel>
+                                            <TextBlock Text="{Binding ProposedText}" Style="{StaticResource Muted}" TextWrapping="Wrap" />
+                                            <WrapPanel Margin="0,4,0,0">
+                                                <Button Style="{StaticResource MaButton}" Content="Approve" Margin="0,0,6,0"
+                                                        Command="{Binding DataContext.ApproveAdditionCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}"
+                                                        AutomationProperties.Name="{Binding ApproveName}" ToolTip="Approve it: it joins the milestone, and the milestone's history says who approved it" />
+                                                <Button Style="{StaticResource MaButton}" Content="Decline&#x2026;"
+                                                        Command="{Binding DataContext.DeclineAdditionCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}"
+                                                        AutomationProperties.Name="{Binding DeclineName}" ToolTip="Decline it with a reason: it stops waiting and does not join the milestone" />
+                                            </WrapPanel>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+
+                        <TextBlock Text="{Binding MembersHeader}" Style="{StaticResource SectionLabel}" />
+                        <TextBlock Text="{Binding NoMembersText}" Style="{StaticResource Muted}" TextWrapping="Wrap">
+                            <TextBlock.Visibility>
+                                <Binding Path="Groups.Count" Converter="{x:Static vm:Converters.ZeroToVisible}" />
+                            </TextBlock.Visibility>
+                        </TextBlock>
+                        <ItemsControl ItemsSource="{Binding Groups}" Focusable="False" AutomationProperties.Name="Epics and tickets under the milestone">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate DataType="{x:Type vm:MilestoneGroupLine}">
+                                    <StackPanel Margin="0,0,0,10">
+                                        <DockPanel>
+                                            <TextBlock DockPanel.Dock="Right" Text="{Binding ProgressText}" Style="{StaticResource Muted}" VerticalAlignment="Center" Margin="8,0,0,0" />
+                                            <TextBlock Text="{Binding Heading}" FontWeight="SemiBold" TextWrapping="Wrap" AutomationProperties.HeadingLevel="Level4" />
+                                        </DockPanel>
+                                        <ItemsControl ItemsSource="{Binding Members}" Focusable="False">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate DataType="{x:Type vm:MilestoneMemberLine}">
+                                                    <DockPanel Margin="0,2">
+                                                        <Button Style="{StaticResource LinkBtn}" Content="{Binding Id}" VerticalAlignment="Center" Width="100" HorizontalContentAlignment="Left"
+                                                                Command="{Binding DataContext.GoToCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding Id}"
+                                                                AutomationProperties.Name="{Binding SpokenName, StringFormat='{}{0}: go to it'}" ToolTip="Open the ticket" />
+                                                        <TextBlock Text="{Binding StatusText}" Style="{StaticResource StatusText}" DockPanel.Dock="Right" VerticalAlignment="Center" Margin="6,0,0,0" />
+                                                        <TextBlock Text="{Binding Summary}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" ToolTip="{Binding Summary}" />
+                                                    </DockPanel>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <!-- Its history, most recent first, folded away until asked for. -->
+                        <Expander Header="{Binding HistoryHeader}" Foreground="{DynamicResource MaText}" Margin="0,16,0,0" AutomationProperties.Name="{Binding HistoryHeader}">
+                            <ItemsControl ItemsSource="{Binding History}" Focusable="False" Margin="0,6,0,0">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type vm:HistoryLine}">
+                                        <StackPanel Margin="0,0,0,8">
+                                            <TextBlock Text="{Binding When}" Style="{StaticResource Muted}" />
+                                            <TextBlock Text="{Binding Text}" TextWrapping="Wrap" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Expander>
                     </StackPanel>
                 </ScrollViewer>
             </Border>

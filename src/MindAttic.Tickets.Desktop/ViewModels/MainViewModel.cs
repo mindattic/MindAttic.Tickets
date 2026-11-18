@@ -40,11 +40,12 @@ public sealed partial class MainViewModel : ObservableObject
         this.store = store;
         this.settings = settings;
         Dialogs = dialogs ?? new NoDialogs();
-        selectedView = settings.View switch { TicketsView or "Tickets" => TicketsView, AuditView => AuditView, BoardView => BoardView, ActivityView => ActivityView, StatsView => StatsView, StoriesView => StoriesView, GraphView => GraphView, _ => QueueView };
+        selectedView = settings.View switch { TicketsView or "Tickets" => TicketsView, AuditView => AuditView, BoardView => BoardView, ActivityView => ActivityView, StatsView => StatsView, StoriesView => StoriesView, GraphView => GraphView, MilestonesView => MilestonesView, _ => QueueView };
         InitOrchestrator(orchestrator);
         InitQuery();
         InitExport();
         InitStories();
+        InitMilestones();
         zoom = Math.Clamp(settings.Zoom, MinZoom, MaxZoom);
         groupByRepo = settings.GroupByRepo;
 
@@ -83,7 +84,7 @@ public sealed partial class MainViewModel : ObservableObject
 
     // ── What's shown ────────────────────────────────────────────────────────
 
-    public IReadOnlyList<string> Views { get; } = [ReposView, QueueView, AuditView, BoardView, ActivityView, StatsView, StoriesView, GraphView];
+    public IReadOnlyList<string> Views { get; } = [ReposView, QueueView, AuditView, BoardView, ActivityView, StatsView, StoriesView, GraphView, MilestonesView];
 
     public string SelectedView
     {
@@ -99,6 +100,8 @@ public sealed partial class MainViewModel : ObservableObject
             Raise(nameof(IsStatsView));
             Raise(nameof(IsStoriesView));
             Raise(nameof(IsGraphView));
+            Raise(nameof(IsMilestonesView));
+            Raise(nameof(ShowsMilestonePane));
             // The Graph tab opens around the ticket the detail pane shows (M.TIX-T315).
             if (IsGraphView && Detail is { } shownDetail) graphFocus = shownDetail.Id;
             Raise(nameof(ShowsStoryEditor));
@@ -300,6 +303,7 @@ public sealed partial class MainViewModel : ObservableObject
         ApplyActivity();
         ApplyStats(s);
         ApplyGraph(s, Match);
+        ApplyMilestones(s);
 
         var ready = s.Queue.Count(t => t.Ticket.Type == "fix" || t.Approval == TicketsDb.Approved);
         var blocked = s.Queue.Count(t => t.Blocked);
@@ -310,6 +314,7 @@ public sealed partial class MainViewModel : ObservableObject
             : IsActivityView ? ActivityStatus
             : IsStatsView ? $"Stats: {Metrics?.Periods.Count ?? 0} {StatsBy.ToLowerInvariant()}s, {Metrics?.Periods.Sum(p => p.Closed) ?? 0} closed, {Metrics?.Periods.LastOrDefault()?.OpenAtEnd ?? 0} open now."
             : IsStoriesView ? $"Stories: {StoryRows.Count} of {s.Stories.Count} stories shown."
+            : IsMilestonesView ? MilestonesStatus
             : IsGraphView ? $"Graph: {GraphNodes.Count} tickets, {GraphEdges.Count} links around {GraphFocus}."
             : IsAuditView ? $"Audit: {HygieneRows.Count} closed tickets to double-check, {DriftRows.Count} drifted, {MissingRows.Count} missing, {DuplicateRows.Count} duplicate groups shown."
             : $"Repos: {TicketRows.Count} of {s.Tickets.Count} tickets shown.";
@@ -414,7 +419,7 @@ public sealed partial class MainViewModel : ObservableObject
             FocusRow?.Invoke(card);
             return;
         }
-        if (IsStoriesView) SelectedView = TicketsView; // Stories lists no tickets: Repos does
+        if (IsStoriesView || IsMilestonesView) SelectedView = TicketsView; // Stories and Milestones list no ticket rows: Repos does
         if (IsBoardView) SelectedView = TicketsView; // not on the board (filtered, or an older closed ticket): Repos lists it
         var row = (IsQueueView ? QueueRows : TicketRows).FirstOrDefault(r => r.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
         if (row is null)
@@ -623,7 +628,11 @@ public sealed partial class MainViewModel : ObservableObject
             "Other ticket or story ID", ChoiceLabel: "Kind", Choices: TicketsDb.LinkKinds, Choice: "requires", Ok: "Link"));
         if (answer?.Choice is not { } kind) return;
         var other = answer.Text.Trim().ToUpperInvariant();
-        await Undoable(() => store.AddLink(d.Id, other, kind), $"{d.Id} {kind} {other}.");
+        // A link to a milestone whose scope is locked isn't made: it waits for the owner (M.TIX-T347), and this says so.
+        var linked = true;
+        await Undoable(() => store.AddLink(d.Id, other, kind, out linked), $"{d.Id} {kind} {other}.",
+            () => linked ? $"{d.Id} {kind} {other}."
+                : $"{d.Id} is waiting for the owner's approval before it joins {other}: its scope is locked. Approve it in the Milestones view.");
     }
 
     public async Task RemoveLinkAsync(LinkLine? line)
