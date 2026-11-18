@@ -35,7 +35,7 @@ public sealed class ScratchDatabaseDropTests
     private static bool Exists(string name)
     {
         SqlConnection.ClearAllPools();
-        using var master = new SqlConnection(TicketsServer.DefaultConnection(Server!, "master"));
+        using var master = new SqlConnection(TestConnections.Patient(TicketsServer.DefaultConnection(Server!, "master")));
         master.Open();
         using var cmd = master.CreateCommand();
         cmd.CommandText = "SELECT DB_ID(@n)";

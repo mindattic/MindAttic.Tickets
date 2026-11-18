@@ -24,7 +24,7 @@ public sealed class TicketsServerTests
         SqliteCleanup();
         if (database is null) return;
         SqlConnection.ClearAllPools();
-        using var master = new SqlConnection(TicketsServer.DefaultConnection(database: "master"));
+        using var master = new SqlConnection(TestConnections.Patient(TicketsServer.DefaultConnection(database: "master")));
         master.Open();
         using var cmd = master.CreateCommand();
         cmd.CommandText = $"IF DB_ID(N'{database}') IS NOT NULL BEGIN ALTER DATABASE [{database}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE; DROP DATABASE [{database}]; END";
@@ -57,7 +57,7 @@ public sealed class TicketsServerTests
         }
 
         database = "MindAttic.Tickets.Test-" + Guid.NewGuid().ToString("N")[..12];
-        var connection = TicketsServer.DefaultConnection(database: database);
+        var connection = TestConnections.Patient(TicketsServer.DefaultConnection(database: database));
         try { TicketsServer.CreateDatabase(connection); }
         catch (SqlException ex)
         {
@@ -82,7 +82,7 @@ public sealed class TicketsServerTests
     private string ScratchServer()
     {
         database = "MindAttic.Tickets.Test-" + Guid.NewGuid().ToString("N")[..12];
-        var connection = TicketsServer.DefaultConnection(database: database);
+        var connection = TestConnections.Patient(TicketsServer.DefaultConnection(database: database));
         try { TicketsServer.CreateDatabase(connection); }
         catch (SqlException ex)
         {
