@@ -77121,6 +77121,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76411, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76412, 'US-T307', '2026-11-19T10:51:15Z', 'approval', 'proposed', 'approved');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76413, 'US-T307', '2026-11-19T10:51:36Z', 'working', NULL, 'waffle@mindattic.com (d5da4af3-5328-4bef-b372-ddd19f1daed6)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76414, 'US-T307', '2026-11-19T10:51:42Z', 'working', 'waffle@mindattic.com (d5da4af3-5328-4bef-b372-ddd19f1daed6)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76415, 'US-T306', '2026-11-19T10:54:49Z', 'working', 'd5da4af3-5328-4bef-b372-ddd19f1daed6', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -80443,7 +80444,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T117', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T07:02:04Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T146', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:14:40Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T291', NULL, 0, 'waffle@mindattic.com', 'd5da4af3-5328-4bef-b372-ddd19f1daed6', '2026-11-19T09:41:36Z', '2026-11-19T09:41:36Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T306', NULL, 0, NULL, 'd5da4af3-5328-4bef-b372-ddd19f1daed6', '2026-11-19T10:50:59Z', '2026-11-19T10:50:58Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T82', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T07:02:05Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T85', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T23:52:54Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T91', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T00:58:13Z');
