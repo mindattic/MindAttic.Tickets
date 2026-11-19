@@ -14397,6 +14397,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T25', 'Unstuck', 25, '2026-11-10', 'chore', 'closed', 'Crash recovery / fleet sync: commit the regenerated docs/USER_STORIES.md left uncommitted after other tickets closed elsewhere', '—', 24, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T26', 'Unstuck', 26, '2026-11-10', 'chore', 'closed', 'Adopt the shared docs-site pipeline: turn on GitHub Pages', '—', 25, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T27', 'Unstuck', 27, '2026-11-17', 'docs', 'closed', 'Update USER_STORIES.md', '—', 26, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T28', 'Unstuck', 28, '2026-11-18', 'feature', 'open', 'User request 2026-11-18: improve Unstuck in every way possible (script, tray app, run.ps1, repo hygiene), write the README and the GitHub Pages docs', '—', 27, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('EP-T1', 'ePub', 1, '2026-11-11', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('EP-T2', 'ePub', 2, '2026-11-11', 'chore', 'closed', 'Make ePub a private GitHub repo tagged wip holding only the latest version of each book in each universe (no Archives folders, no .psd)', '83df825', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('EP-T3', 'ePub', 3, '2026-11-11', 'chore', 'closed', 'ePub keeps only the files directly in MindAttic/<UNIVERSE>/<BOOK>/ (no book subfolders, universe-level or top-level files, no Calibre author folders)', 'e39aa85', 2, NULL);
@@ -76554,6 +76555,9 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75909, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75910, 'OS-T69', '2026-11-19T03:01:02Z', 'priority', '703', '704');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75911, 'OS-T70', '2026-11-19T03:01:03Z', 'priority', '702', '703');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75912, 'M.ORCH-T1844', '2026-11-19T03:01:04Z', 'priority', '0', '702');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75913, 'UNS-T28', '2026-11-19T05:10:32Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75914, 'UNS-T28', '2026-11-19T05:10:32Z', 'name', NULL, 'Improve Unstuck everywhere');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75915, 'UNS-T28', '2026-11-19T05:11:00Z', 'working', NULL, 'c350ee47-8e6e-4921-b95d-c532b00e6146');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -79835,6 +79839,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('UNS-T28', NULL, 0, NULL, 'c350ee47-8e6e-4921-b95d-c532b00e6146', '2026-11-19T05:11:00Z', '2026-11-19T05:11:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T100', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T23:10:16Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T104', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:16:25Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T117', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T07:02:04Z');
@@ -82290,6 +82295,9 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31466, '
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31467, 'M.PSST-T42', 'ryand', '2026-11-18T22:04:13Z', 'Stored in providers.json (email.password, no spaces). Gmail still answers 5.7.8 for ryandebraal@gmail.com with it, with and without spaces; also refused for ryandebraal@mindattic.com. Needs a re-check of the password by the owner.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31468, 'M.PSST-T42', 'ryand', '2026-11-18T22:27:35Z', 'The app password belongs to mindatticinteractive@gmail.com: email.username and email.from now use it; psst ping accepts the login.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31469, 'PRS-T1032', 'ryand', '2026-11-19T02:44:01Z', 'Done. Canon books plus Babineaux''s Guide (23 books, ~1,650 unread beats) read in full by 8 reader subagents and receipted as ''Claude reader (PRS-T1032)''; read-status reports 0 unread in all 23. Drafts (Iron & Silk, Ballast, Standing Contract, Read the Room replan, It Came From Iowa, Fenris; ~1,290 beats) left unread by owner choice. 275 findings logged, nothing edited: docs/wiki/GLMZ-read-findings.md (text 149, mostly leftover unit conversions; markup 64; continuity 38; entity-record conflicts 24).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31470, 'UNS-T20', 'ryand', '2026-11-19T05:10:35Z', 'Being done under the 2026-11-18 ''improve everything + README + GitHub Page'' request');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31471, 'UNS-T11', 'ryand', '2026-11-19T05:10:37Z', 'Pages pipeline already live (UNS-T26); README + docs articles being written under the 2026-11-18 request');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31472, 'UNS-T28', 'ryand', '2026-11-19T05:13:42Z', 'User 2026-11-18: make it runnable from a .bat file; explain run.ps1 vs unstuck.ps1 (add unstuck.bat + install.bat in the repo root, document both in README)');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
@@ -98037,6 +98045,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T9', 'Story and 
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNRE-T2', 'Shared headless plugin', '2026-11-07T04:33:08Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNR-T87', 'Headless test flag', '2026-11-07T04:33:49Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNR-T88', 'Rename repo to Unreal.Playground', '2026-11-07T06:44:46Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNS-T28', 'Improve Unstuck everywhere', '2026-11-19T05:10:32Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UQD-T97', 'Headless test flag', '2026-11-07T04:33:40Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('USG-T2', 'Headless test flag', '2026-11-07T04:33:53Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('USG-T3', 'Fleet command sync', '2026-11-10T14:35:44Z');
