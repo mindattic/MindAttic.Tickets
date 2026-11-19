@@ -11331,6 +11331,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1036', 'Prose', 1036, '2026-11-19', 'feature', 'closed', 'Owner 2026-11-19: the GLMZ wiki''s Cyberspace theme should run the latest MindAttic.Components release, with all the Hyperspace pieces mindattic.com now uses, still keeping effects out of the content', 'PRS-T1020', 1035, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1037', 'Prose', 1037, '2026-11-19', 'feature', 'open', 'Owner 2026-11-19: the GLMZ wiki uses the Outfit font for everything; remove the Attic font', 'PRS-T1036', 1036, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1038', 'Prose', 1038, '2026-11-19', 'feature', 'open', 'Owner 2026-11-19: publish every GLMZ book on the wiki, including its cover art, free to read (the owner: ''its all free''); kept current by the nightly sync', 'PRS-T1002', 1037, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1039', 'Prose', 1039, '2026-11-19', 'feature', 'open', 'Owner 2026-11-19: use Downloads\glmz.png as the GLMZ wiki logo instead of the MindAttic M monogram', 'PRS-T1036', 1038, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -76752,6 +76753,9 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76089, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76090, 'OS-T70', '2026-11-19T07:57:47Z', 'priority', '703', '704');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76091, 'M.ORCH-T1846', '2026-11-19T07:57:49Z', 'priority', '702', '703');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76092, 'OS-T72', '2026-11-19T07:57:50Z', 'priority', '0', '702');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76093, 'PRS-T1039', '2026-11-19T08:00:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76094, 'PRS-T1039', '2026-11-19T08:00:04Z', 'name', NULL, 'Wiki: GLMZ logo');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76095, 'PRS-T1039', '2026-11-19T08:00:33Z', 'working', NULL, '1d5e6ae3-3c9b-4bae-ae6e-bc30eaa0754e');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -79899,6 +79903,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T1037', NULL, 0, NULL, '1d5e6ae3-3c9b-4bae-ae6e-bc30eaa0754e', '2026-11-19T07:51:00Z', '2026-11-19T07:51:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T1038', NULL, 0, NULL, '1d5e6ae3-3c9b-4bae-ae6e-bc30eaa0754e', '2026-11-19T07:51:01Z', '2026-11-19T07:51:01Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T1039', NULL, 0, NULL, '1d5e6ae3-3c9b-4bae-ae6e-bc30eaa0754e', '2026-11-19T08:00:33Z', '2026-11-19T08:00:33Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T111', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:34:40Z');
@@ -98171,6 +98176,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1035', 'Resolv
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1036', 'Wiki theme: latest Cyberspace', '2026-11-19T07:42:26Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1037', 'Wiki: Outfit only', '2026-11-19T07:50:36Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1038', 'Wiki: publish the books with covers', '2026-11-19T07:50:38Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1039', 'Wiki: GLMZ logo', '2026-11-19T08:00:04Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T919', 'Texts status=all hides retired', '2026-11-07T23:22:56Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T920', 'Import into new universe 404', '2026-11-07T23:22:57Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T921', 'Leak check skips merged nodes', '2026-11-07T23:39:48Z');
