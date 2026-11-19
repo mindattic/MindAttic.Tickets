@@ -77153,6 +77153,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76439, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76440, 'US-T308', '2026-11-19T11:55:28Z', 'ref', '—', '8ad8499');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76441, 'US-T309', '2026-11-19T11:55:45Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76442, 'US-T309', '2026-11-19T11:55:45Z', 'ref', '—', '0e83f0b');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76443, 'GG-T429', '2026-11-19T12:12:45Z', 'working', NULL, '04078191-38f6-4de4-aa7b-82a2aa92bfe7');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -80245,6 +80246,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T99', 'approved', 0, '2026-11-19T09:15:17Z', NULL);
 
 -- ticket_work
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T429', NULL, 0, NULL, '04078191-38f6-4de4-aa7b-82a2aa92bfe7', '2026-11-19T12:12:45Z', '2026-11-19T12:12:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T447', NULL, 0, 'ryandebraal@gmail.com', '33afdbd4-4e77-449c-9026-7d3a28e246b4', '2026-11-19T08:48:19Z', '2026-11-19T08:48:19Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T472', NULL, 0, 'ryandebraal@gmail.com', '33afdbd4-4e77-449c-9026-7d3a28e246b4', '2026-11-19T08:36:52Z', '2026-11-19T08:36:52Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T501', NULL, 0, 'ryandebraal@gmail.com', '33afdbd4-4e77-449c-9026-7d3a28e246b4', '2026-11-19T08:30:12Z', '2026-11-19T08:30:12Z');
