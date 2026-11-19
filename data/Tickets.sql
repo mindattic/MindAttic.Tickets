@@ -11979,6 +11979,9 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T318', 'SpaceGod', 318, '2026-11-19', 'feature', 'closed', 'Spoofed rounds on the HUD: a missile, torpedo or EMP homing on the held hull that flares and chaff draw off drops out of the MISSILE warning (its chevron and count), its on-screen ring turns grey and reads DECOYED, the combat feed calls it (MISSILE SPOOFED), and the after-action card counts rounds spoofed; read only, Bench unchanged', 'c73f66f', 317, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T319', 'SpaceGod', 319, '2026-11-19', 'feature', 'closed', 'Galaxy map SOCIETY mode: each system washed by its worlds'' mood (approval to unrest), a pulse where notable social news broke in the last 30 days, quarantine rings; the legend lists the most restless worlds and the latest notable events, the side panel each world''s civics and news with a button to open it on the Society screen', '6ca2d77', 318, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T320', 'SpaceGod', 320, '2026-11-19', 'fix', 'closed', 'Offscreen headless run (tools/play.ps1 -Offscreen) hangs right after ''Bringing up level for play'' on Entry?Scene=UnitySpace: no further log, game thread busy (~0.6 core) for 30+ min; last good run 2026-11-10 (Offscreen-20261110-204947-69400.log continues with WindowsPlatformFeatures/EnhancedInput); bad: Offscreen-20261119-044619-70524.log, -053343-39448.log. Blocks US-T291''s tour video.', 'eb721dd', 319, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T321', 'SpaceGod', 321, '2026-11-19', 'feature', 'open', 'Boarding: a notice when a fight aboard begins while the boarding panel is shut (your hull boarded, or our marines aboard theirs: B to command it), and a strength line on the boarding panel (our side against theirs, spaces held, losses so far, coloured by who is ahead); read only, Bench unchanged', '—', 320, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T322', 'SpaceGod', 322, '2026-11-19', 'feature', 'open', 'Settings page keys: Up / Down pick a setting (the list scrolls to keep it in view, the row lit), Left / Right change it (toggle, slider step, choice), Enter or Space flips a toggle, steps a choice or starts listening on a key binding, Delete resets it, Page Up / Page Down step the groups, Ctrl+F puts the caret in Search (Enter or Down leaves it); a hint names the keys', '—', 321, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T323', 'SpaceGod', 323, '2026-11-19', 'feature', 'open', 'Society screen organisation depth: an organisation''s detail lists its members (leader first, then the best known, with role and house; living/dead counts), its offshoots and the organisations set against it, all clickable', '—', 322, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T1', 'SpaceGod.Unity.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T2', 'SpaceGod.Unity.CSharp', 2, '2026-11-06', 'feature', 'closed', 'Adopt the shared off-by-default --headless launch mode (Unity.Shared)', 'faadbca', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T3', 'SpaceGod.Unity.CSharp', 3, '2026-11-08', 'feature', 'open', 'Mirror SpaceGod US-T72: docs/CAPTURE.md names the promoted copy SpaceGod (not SpaceGod.Unreal.Cpp) as the third copy and its RepoName folder, and lists SpaceGod''s -RenderOffScreen capture row as that copy only', 'SpaceGod US-T72', 2, NULL);
@@ -77230,6 +77233,19 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76505, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76506, 'M.TIX-T355', '2026-11-19T13:59:05Z', 'created', NULL, 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76507, 'US-T320', '2026-11-19T14:08:28Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76508, 'US-T320', '2026-11-19T14:08:28Z', 'ref', '—', 'eb721dd');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76509, 'GG-T429', '2026-11-19T14:12:43Z', 'working', NULL, '04078191-38f6-4de4-aa7b-82a2aa92bfe7');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76510, 'US-T321', '2026-11-19T14:14:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76511, 'US-T321', '2026-11-19T14:14:19Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76512, 'US-T322', '2026-11-19T14:14:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76513, 'US-T322', '2026-11-19T14:14:41Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76514, 'US-T323', '2026-11-19T14:14:42Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76515, 'US-T323', '2026-11-19T14:14:44Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76516, 'US-T323', '2026-11-19T14:15:16Z', 'working', NULL, 'd5da4af3-5328-4bef-b372-ddd19f1daed6');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76517, 'US-T322', '2026-11-19T14:15:16Z', 'working', NULL, 'd5da4af3-5328-4bef-b372-ddd19f1daed6');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76518, 'US-T321', '2026-11-19T14:15:16Z', 'working', NULL, 'd5da4af3-5328-4bef-b372-ddd19f1daed6');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76519, 'US-T321', '2026-11-19T14:15:43Z', 'working', 'd5da4af3-5328-4bef-b372-ddd19f1daed6', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76520, 'US-T323', '2026-11-19T14:15:43Z', 'working', 'd5da4af3-5328-4bef-b372-ddd19f1daed6', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (76521, 'US-T322', '2026-11-19T14:16:35Z', 'working', 'd5da4af3-5328-4bef-b372-ddd19f1daed6', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -80320,6 +80336,9 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T317', 'approved', 0, '2026-11-19T13:23:27Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T318', 'approved', 0, '2026-11-19T13:23:32Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T319', 'approved', 0, '2026-11-19T13:24:13Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T321', 'approved', 0, '2026-11-19T14:14:19Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T322', 'approved', 0, '2026-11-19T14:14:41Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T323', 'approved', 0, '2026-11-19T14:14:44Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T72', 'approved', 0, '2026-11-06T21:27:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T82', 'approved', 0, '2026-11-06T21:27:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T83', 'approved', 0, '2026-11-06T21:27:41Z', NULL);
@@ -80331,6 +80350,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T99', 'approved', 0, '2026-11-19T09:15:17Z', NULL);
 
 -- ticket_work
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T429', NULL, 0, NULL, '04078191-38f6-4de4-aa7b-82a2aa92bfe7', '2026-11-19T14:12:43Z', '2026-11-19T14:12:43Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T447', NULL, 0, 'ryandebraal@gmail.com', '33afdbd4-4e77-449c-9026-7d3a28e246b4', '2026-11-19T08:48:19Z', '2026-11-19T08:48:19Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T472', NULL, 0, 'ryandebraal@gmail.com', '33afdbd4-4e77-449c-9026-7d3a28e246b4', '2026-11-19T08:36:52Z', '2026-11-19T08:36:52Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T501', NULL, 0, 'ryandebraal@gmail.com', '33afdbd4-4e77-449c-9026-7d3a28e246b4', '2026-11-19T08:30:12Z', '2026-11-19T08:30:12Z');
