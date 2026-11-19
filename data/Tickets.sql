@@ -14406,6 +14406,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T32', 'Unstuck', 32, '2026-11-18', 'feature', 'closed', 'User 2026-11-18: one-click install for anyone: prebuilt self-contained release zip on GitHub Releases, Install-Unstuck.bat / PowerShell one-liner that installs to C:\Apps\Unstuck with shortcuts, sign-in start and a default hotkey; README + Pages updated', 'b56bfc7 release v1.1.0; HotkeyGestureTests.BuiltIn_is_Ctrl_Alt_Break_and_Break_parses_as_Pause; one-click install verified from GitHub', 31, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T33', 'Unstuck', 33, '2026-11-18', 'chore', 'closed', 'User 2026-11-18: publish Unstuck v1.0.0 as the first official GitHub release (replaces the v1.1.0 release created earlier the same session)', 'release v1 (tag at 8d61207); package-release enforces whole-number versions', 32, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T34', 'Unstuck', 34, '2026-11-18', 'feature', 'open', 'Tray icon''s right-click menu gains ''Set Alternate Hotkey...'' (live key capture) and ''Clear Alternate Hotkey'', instead of only via Vault Desktop Settings'' typed gesture string', '—', 33, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T35', 'Unstuck', 35, '2026-11-18', 'feature', 'open', 'Ctrl+Alt+U becomes a second permanent, hardcoded hotkey (like Ctrl+Alt+Break), independent of the user''s one configurable extra-hotkey slot', '—', 34, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('EP-T1', 'ePub', 1, '2026-11-11', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('EP-T2', 'ePub', 2, '2026-11-11', 'chore', 'closed', 'Make ePub a private GitHub repo tagged wip holding only the latest version of each book in each universe (no Archives folders, no .psd)', '83df825', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('EP-T3', 'ePub', 3, '2026-11-11', 'chore', 'closed', 'ePub keeps only the files directly in MindAttic/<UNIVERSE>/<BOOK>/ (no book subfolders, universe-level or top-level files, no Calibre author folders)', 'e39aa85', 2, NULL);
@@ -76619,6 +76620,9 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75965, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75966, 'UNS-T34', '2026-11-19T05:53:58Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75967, 'UNS-T34', '2026-11-19T05:53:58Z', 'name', NULL, 'Tray menu sets alternate hotkey');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75968, 'UNS-T34', '2026-11-19T05:54:03Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75969, 'UNS-T35', '2026-11-19T05:58:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75970, 'UNS-T35', '2026-11-19T05:58:51Z', 'name', NULL, 'Permanent Ctrl+Alt+U hotkey');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75971, 'UNS-T35', '2026-11-19T05:58:52Z', 'approval', 'proposed', 'approved');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -79480,6 +79484,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNS-T13', 'approved', 5, '2026-10-21T04:35:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNS-T17', 'approved', 0, '2026-10-31T14:49:34Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNS-T34', 'approved', 0, '2026-11-19T05:54:03Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNS-T35', 'approved', 0, '2026-11-19T05:58:52Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNS-T9', 'approved', 0, '2026-10-19T01:44:34Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UQD-T10', 'approved', 0, '2026-10-22T03:45:54Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UQD-T11', 'approved', 0, '2026-10-22T03:45:55Z', NULL);
@@ -97071,6 +97076,19 @@ Acceptance:
 - An invalid chord (e.g. a bare letter) or one equal to the built-in is rejected with a clear message, nothing saved.
 - ''Clear Alternate Hotkey'' removes it; the built-in still runs recovery.
 - Opening Vault Desktop''s Settings afterward shows the same gesture (or lack of one) the tray menu set.', '2026-11-19T05:53:58Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNS-T35', 'Story: today there''s exactly one hardcoded hotkey (Ctrl+Alt+Break, HotkeyGesture.BuiltIn, always registered, retried every 30s if another app holds it) plus one user-configurable extra slot (TaskbarSettings.HotkeyGesture, UNS-T34 makes this settable from the tray menu). The owner wants Ctrl+Alt+U specifically to also be permanent/hardcoded - always runs recovery, not dependent on what the user''s configurable extra slot happens to be set to.
+
+Add:
+- HotkeyGesture.BuiltInExtra = Ctrl+Alt+U, a second hardcoded constant alongside BuiltIn.
+- HotkeyManager registers it on startup the same way as RegisterBuiltIn (own id/cancel-id, its own 30s retry loop if another app holds it, its own RegistrationFailed report), independent of RegisterCurrent (the user''s configurable extra gesture).
+- TrayIconService.CurrentHotkeyText() always includes Ctrl+Alt+U alongside Ctrl+Alt+Break, regardless of the user''s own configurable extra hotkey (which, per UNS-T34, can still be set/cleared from the tray menu, on top of both built-ins).
+- docs/tray-app.md and the README''s hotkey mention get Ctrl+Alt+U added as a second permanent chord.
+
+Acceptance:
+- Ctrl+Alt+U runs recovery immediately on a fresh install/start, with no settings touched.
+- Ctrl+Alt+Break keeps working unchanged.
+- The user''s own configurable extra hotkey (UNS-T34) still works independently and can be set to anything else (or left empty) without affecting Ctrl+Alt+U.
+- If Ctrl+Alt+U is held by another app at startup, Unstuck retries every 30s and reports it the same way Ctrl+Alt+Break does, without crashing or disabling the built-in Break hotkey.', '2026-11-19T05:58:51Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UQD-T63', 'Original: choose_random_arena.gml is called only from obj_location''s create event; obj_game builds the arena once. Rebuild: MatchSession.BeginRound and OnlineDuelHost redraw ArenaRoll every round. Fix: draw it with the match (NewMatch / host''s match), keep it for every round of that match; ambient effect follows. Update BIBLE (drop the deviation) and RECONSTRUCTION.', '2026-10-27T03:17:17Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UQD-T64', 'obj_player step: state defeated -> if(HP > 0) image_index = 0. Animation End: defeated and HP <= 0 -> image_index = 3 and with(obj_blood_emitter) instance_destroy(). With best of 3 standing in for HP, the match-deciding round is the killing blow. Fix FighterMotion/DuelView and DuelBlood; BIBLE deviation removed.', '2026-10-27T03:17:20Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UQD-T65', 'Original: obj_game key press Escape -> room_goto(characterselect); obj_mainmenu Escape -> game_end(); obj_victory/obj_gameover: no handler. Rebuild DuelQuit quits the application between rounds. Fix: DuelQuit loads the MainMenu scene (any phase); the pad''s Select+Start chord does the same; verdict screen ignores Escape. Main menu keeps game_end.', '2026-10-27T03:17:28Z');
@@ -98149,6 +98167,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNS-T31', 'Numeric 
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNS-T32', 'One-click install', '2026-11-19T05:28:17Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNS-T33', 'Release v1', '2026-11-19T05:43:01Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNS-T34', 'Tray menu sets alternate hotkey', '2026-11-19T05:53:58Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNS-T35', 'Permanent Ctrl+Alt+U hotkey', '2026-11-19T05:58:51Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UQD-T97', 'Headless test flag', '2026-11-07T04:33:40Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('USG-T2', 'Headless test flag', '2026-11-07T04:33:53Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('USG-T3', 'Fleet command sync', '2026-11-10T14:35:44Z');
