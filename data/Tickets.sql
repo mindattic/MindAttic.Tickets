@@ -76453,6 +76453,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75833, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75834, 'PRS-T1032', '2026-11-19T00:49:17Z', 'working', NULL, '1d5e6ae3-3c9b-4bae-ae6e-bc30eaa0754e');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75835, 'M.LNCH-T134', '2026-11-19T01:01:09Z', 'working', 'fc53d95d-7690-4fd4-aa61-a572a467ac5d', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75836, 'PRS-T1032', '2026-11-19T01:19:07Z', 'working', '1d5e6ae3-3c9b-4bae-ae6e-bc30eaa0754e', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75837, 'M.LNCH-T134', '2026-11-19T01:31:42Z', 'working', NULL, 'fc53d95d-7690-4fd4-aa61-a572a467ac5d');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -79509,6 +79510,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T99', 'proposed', 0, '2026-11-07T06:47:27Z', NULL);
 
 -- ticket_work
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T134', NULL, 0, NULL, 'fc53d95d-7690-4fd4-aa61-a572a467ac5d', '2026-11-19T01:31:43Z', '2026-11-19T01:31:42Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
