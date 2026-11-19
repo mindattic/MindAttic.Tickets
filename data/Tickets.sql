@@ -11323,6 +11323,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1032', 'Prose', 1032, '2026-11-18', 'chore', 'closed', 'Owner 2026-11-18: read every unread beat in the GLMZ books (about 920, text edited by other sessions or mentioning a changed entity) with prose --read-beats, check each for defects (garbled or leftover text, broken entity markup, contradictions with its entities'' current records), record the receipts, and report every problem found instead of editing it', '—', 1031, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1033', 'Prose', 1033, '2026-11-18', 'docs', 'closed', 'Update USER_STORIES.md, GLMZ.md', '—', 1032, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1034', 'Prose', 1034, '2026-11-18', 'fix', 'closed', 'Owner 2026-11-18: fix the 64 entity-tag mis-links the PRS-T1032 readers found (ordinary words linked to the wrong entity) with Prose''s tag commands and incidental rulings so the scanner does not re-add them; unit pairs stay as house style except where the conversion broke the grammar (e.g. ''forty meters'' rendered ''131ft (40m)''), which get a minimal text fix and a re-read; continuity and entity-record findings stay for the author', 'PRS-T1032', 1033, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1035', 'Prose', 1035, '2026-11-19', 'fix', 'open', 'Resolve the 62 continuity and entity-record findings from the PRS-T1032 read plus the open edge items (Bushido Coda #20834 speaker, The Cabal #23744 Choi/Selvamani, Magenta & Gunmetal #6968 The Glooms): prefer the entity record following the books where the books agree; change book text only where a beat contradicts an earlier book or a record the books uphold; re-read and receipt every touched beat; then sync the wiki. Fixes go into Prose first, the wiki follows via sync-wiki.ps1', 'PRS-T1032', 1034, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T1', 'REA.Bloodlines', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T2', 'REA.Bloodlines', 2, '2026-10-21', 'chore', 'closed', 'Scaffold REA.Bloodlines: README, AGENTS.md pointer, .gitignore that keeps extracted game assets out of git', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T3', 'REA.Bloodlines', 3, '2026-10-21', 'chore', 'closed', 'Install the RE toolchain: Temurin JDK 21, Ghidra, REA (reviewed, registered as an MCP server); document it in docs/TOOLING.md', '—', 2, NULL);
@@ -76626,6 +76627,10 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75971, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75972, 'UNS-T34', '2026-11-19T06:06:32Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75973, 'UNS-T35', '2026-11-19T06:06:33Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75974, 'PRS-T1034', '2026-11-19T06:07:26Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75975, 'PRS-T1035', '2026-11-19T06:20:36Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75976, 'PRS-T1035', '2026-11-19T06:20:36Z', 'name', NULL, 'Resolve GLMZ story findings');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75977, 'PRS-T1035', '2026-11-19T06:20:50Z', 'working', NULL, '1d5e6ae3-3c9b-4bae-ae6e-bc30eaa0754e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (75978, 'PRS-T1035', '2026-11-19T06:22:03Z', 'working', '1d5e6ae3-3c9b-4bae-ae6e-bc30eaa0754e', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -98029,6 +98034,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1030', 'GLMZ f
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1031', 'Ren firearm expert terms', '2026-11-18T21:26:56Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1032', 'Read unread GLMZ beats', '2026-11-18T22:26:50Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1034', 'Fix GLMZ mis-links + broken units', '2026-11-19T05:17:04Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1035', 'Resolve GLMZ story findings', '2026-11-19T06:20:36Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T919', 'Texts status=all hides retired', '2026-11-07T23:22:56Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T920', 'Import into new universe 404', '2026-11-07T23:22:57Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T921', 'Leak check skips merged nodes', '2026-11-07T23:39:48Z');
