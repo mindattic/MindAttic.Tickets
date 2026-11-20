@@ -80719,6 +80719,9 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79506, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79507, 'GAD-T59', '2026-11-20T23:17:48Z', 'ref', 'GAD-T25', '2515c4c');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79508, 'US-T424', '2026-11-20T23:18:00Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79509, 'US-T424', '2026-11-20T23:18:04Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79510, 'US-T424', '2026-11-20T23:18:51Z', 'working', NULL, 'd5da4af3-5328-4bef-b372-ddd19f1daed6');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79511, 'M.LEGN-T51', '2026-11-20T23:24:31Z', 'working', '2e6c8f98-6378-4374-bfee-47f0c4007417', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79512, 'US-T424', '2026-11-20T23:24:31Z', 'working', 'd5da4af3-5328-4bef-b372-ddd19f1daed6', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -84044,7 +84047,6 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T99', 'approved', 0, '2026-11-19T09:15:17Z', NULL);
 
 -- ticket_work
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LEGN-T51', NULL, 0, NULL, '2e6c8f98-6378-4374-bfee-47f0c4007417', '2026-11-20T22:39:12Z', '2026-11-20T22:39:12Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
@@ -86998,6 +87000,7 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31648, '
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31649, 'GAD-T38', 'ryand', '2026-11-20T22:44:40Z', 'Verified 2026-11-20 with a scripted 8-turn exam over photosynthesis notes (--voters gemini,deepseek --tier low): concept map (4 concepts) and cited rubrics built, adaptive questions drafted from the student''s words, contradiction confronted in the first run, judging with citations, report written. Claude key is out of credit and OpenAI Low tier hits a retired model (M.LEGN-T51), so only Gemini and DeepSeek voted.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31650, 'GAD-T29', 'ryand', '2026-11-20T23:07:05Z', 'Done in 68e3f5c: SQL stores + source.process job verified on LocalDB (4 passages -> 4 concepts, 74 rubric points, progress reported). PDF/DOCX/EPUB/HTML extraction moves to TUT-T64''s follow-through: once Tutor.Ingestion exists, register an IDocumentTextExtractor over it in Gadfly.Server and the CLI.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31651, 'TUT-T64', 'ryand', '2026-11-20T23:07:08Z', 'Consumer side (GAD-T29): Gadfly.Sources defines IDocumentTextExtractor (CanRead, ExtractAsync -> blocks with location). After the package exists, add a Gadfly adapter over it and register it in Gadfly.Server/Program.cs and Gadfly.Cli/ExamCommand.cs.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31652, 'GAD-T62', 'ryand', '2026-11-20T23:23:25Z', 'Partial in 49569b9: MindAttic.Log sink, per-session log scope + step timings, provider health + /healthz/providers + error log on a failing provider. Still open: cost dashboard (needs M.LEGN-T50 usage + GAD-T47 metering) and routing the failing-provider alert to MindAttic.Psst.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
