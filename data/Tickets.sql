@@ -79726,6 +79726,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78640, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78641, 'IP-T619', '2026-11-20T10:27:17Z', 'ref', '—', 'IP-T617');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78642, 'GG-T448', '2026-11-20T10:46:31Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78643, 'M5SE-T149', '2026-11-20T10:53:39Z', 'working', '3d31d827-5801-4ba3-9646-cb43dc915311', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78644, 'IP-T472', '2026-11-20T11:12:04Z', 'working', 'ryandebraal@gmail.com (33afdbd4-4e77-449c-9026-7d3a28e246b4)', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -82982,7 +82983,6 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T447', NULL, 0, 'ryandebraal@gmail.com', '33afdbd4-4e77-449c-9026-7d3a28e246b4', '2026-11-20T00:55:17Z', '2026-11-20T00:55:17Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T472', NULL, 0, 'ryandebraal@gmail.com', '33afdbd4-4e77-449c-9026-7d3a28e246b4', '2026-11-19T22:19:53Z', '2026-11-19T22:19:53Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
