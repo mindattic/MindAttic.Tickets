@@ -634,6 +634,14 @@ INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Cursory', 'C', 'T
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Cursory', 'D', 'Electronics (Level 14)', NULL, 3);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Cursory', 'E', 'Realtime presence & feel (UI)', NULL, 4);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Cursory', 'F', 'Deploy', NULL, 5);
+INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Gadfly', 'SA', 'Socratic platform: foundation', NULL, 0);
+INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Gadfly', 'SB', 'Socratic platform: the engine', NULL, 1);
+INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Gadfly', 'SC', 'Socratic platform: source material and grounding', NULL, 2);
+INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Gadfly', 'SD', 'Socratic platform: hosted server and API', NULL, 3);
+INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Gadfly', 'SF', 'Socratic platform: customer and student accounts', NULL, 4);
+INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Gadfly', 'SG', 'Socratic platform: exam web app', NULL, 5);
+INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Gadfly', 'SI', 'Socratic platform: integrity', NULL, 6);
+INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Gadfly', 'SP', 'Socratic platform: production and pilot', NULL, 7);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('IdeaCms', 'A', 'Authoring & rendering a page', NULL, 0);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('IdeaCms', 'B', 'Versioning, lifecycle & history', NULL, 1);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('IdeaCms', 'C', 'Degradation & the Admin Inbox', NULL, 2);
@@ -679,11 +687,14 @@ INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Authent
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Authentication', 'E', 'Password policy, change & reset', NULL, 4);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Authentication', 'F', 'Account administration', NULL, 5);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Authentication', 'G', 'Login pipeline & web wiring', NULL, 6);
+INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Authentication', 'O', 'Organizations and invitations', NULL, 7);
+INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Avatar', 'A', 'Talking head with lip sync', NULL, 0);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Capture', 'T', 'Tray recorder: screen, app and area capture from the system tray', NULL, 0);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Deploy', 'A', 'Registry-driven, one-pipeline deploy', NULL, 0);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Deploy', 'C', 'Root sites (verbatim upload) and the linked group', NULL, 1);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Deploy', 'D', 'Blazor / GitHub-Actions apps', NULL, 2);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Deploy', 'E', 'Credentials', NULL, 3);
+INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.EyeTracker', 'W', 'MindAttic.Webcam: core and modules', NULL, 0);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Helpers', 'A', 'Deterministic abstract art', NULL, 0);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Helpers', 'B', 'π to N places with a memory guard', NULL, 1);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Helpers', 'C', 'Library hygiene', NULL, 2);
@@ -702,6 +713,7 @@ INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Legion'
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Legion', 'F', 'Psychometrics', NULL, 5);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Legion', 'G', 'CLI (`legion.exe`)', NULL, 6);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Legion', 'H', 'Credentials (via MindAttic.Vault)', NULL, 7);
+INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Legion', 'J', 'Grounded judging', NULL, 8);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Log', 'A', 'The shared schema', NULL, 0);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Log', 'B', 'Standalone database & row-based retention', NULL, 1);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Log', 'C', 'DI integration', NULL, 2);
@@ -715,6 +727,7 @@ INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Psst', 
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Psst', 'C', 'Repeat & schedule', NULL, 2);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Psst', 'D', 'Configuration & contacts', NULL, 3);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Psst', 'E', 'Sound', NULL, 4);
+INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.SpeechRecognition', 'A', 'Streaming speech recognition', NULL, 0);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Tickets', 'A', 'Ticket log', NULL, 0);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Tickets', 'B', 'Workspace jobs', NULL, 1);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('MindAttic.Tickets', 'D', 'The database: safety, concurrency and git', NULL, 2);
@@ -772,6 +785,7 @@ INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Tutor', 'C', 'Aut
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Tutor', 'D', 'Course Packaging', 'TUT-EPIC-D', 3);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Tutor', 'E', 'Load / Unload & Sharing', 'TUT-EPIC-E', 4);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Tutor', 'F', 'Cross‑cutting quality (always‑on constraints)', NULL, 5);
+INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Tutor', 'I', 'Shared ingestion package', NULL, 6);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Unity.GridGame', 'R', 'Resonance-style battle rules (BRAVE, owner 2026-11-06)', NULL, 2);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Unity.GridGame', 'W', 'Complete the game: content, onboarding & themes', NULL, 1);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Unity.GridGame', 'Z', 'Build-your-own-character redesign (parked)', NULL, 0);
@@ -4314,6 +4328,23 @@ INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref
 INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1399, 'Unity.GridGame', 'GG-US-R8', NULL, 'R', NULL, NULL, 'done', '✅', '', 'As a player, my Monster Tamer (Summon Circle) can Tame a wild, non-Sentient, non-boss monster, and a Dog Whistle from the Merchant can too: it turns chartreuse and fights for me on its own turn icon and AI with the Pincer keyword, fills its bond each turn, breaks free when the tame wears off unless the bond is full, and standing at a victory with a full bond asks to join as a domesticated party or reserve member (no gear, skills or tree; half XP; Lv 30 cap) (BIBLE §25.11.3, §1.3; GG-T303; `TamingTests`).', NULL, NULL, 'bullet', 277);
 INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1400, 'Unity.GridGame', 'GG-US-R9', NULL, 'R', NULL, NULL, 'done', '✅', '', 'As a player, foes that can pincer (Sentient, and my tamed monsters on my side) engineer pincers: on their turn they swap places with monsters or heroes to close a pincer on the spot, take the end of a line an ally can close next, or slot a supporter into the chain, weighing each supporter by its own support effect; mindless beasts never swap, and every monster brings its own support (BIBLE §14.1.3, §1.3, §25.11.3; GG-T306; `PincerPlannerTests`).', NULL, NULL, 'bullet', 278);
 INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1401, 'Unity.GridGame', 'GG-US-R10', NULL, 'R', NULL, NULL, 'done', '✅', '', 'As a player, a fast foe comes back sooner because it re-enters the bar further left (an average foe 4 s out), and every foe sits out a short recovery off the bar after it acts. The spacing between foes widens as I lower the difficulty, so I usually get a window to push back a threat, heal or shield, and when foes still cluster I squeeze in a quick move or Guard for Protection and mana (GG-T318, GG-T319, GG-T320, GG-T321).', NULL, NULL, 'bullet', 279);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1402, 'Gadfly', 'GAD-US-SA1', NULL, 'SA', NULL, NULL, 'planned', '⬜', '', 'As MindAttic, Gadfly is a reusable Socratic engine any app can embed, with today''s personal introspection tool as one consumer of it.', NULL, NULL, 'bullet', 0);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1403, 'Gadfly', 'GAD-US-SB1', NULL, 'SB', NULL, NULL, 'planned', '⬜', '', 'As an examiner, I can run an adaptive Socratic exam that probes a student''s understanding of each concept, confronts contradictions in their own claims, and stops at mastery, aporia or the time budget.', NULL, NULL, 'bullet', 1);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1404, 'Gadfly', 'GAD-US-SB2', NULL, 'SB', NULL, NULL, 'planned', '⬜', '', 'As an instructor, I get a per-concept report with quoted evidence, source citations and the judges'' dissent, as a recommendation I finalize.', NULL, NULL, 'bullet', 2);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1405, 'Gadfly', 'GAD-US-SC1', NULL, 'SC', NULL, NULL, 'planned', '⬜', '', 'As an instructor, I upload my own source material and get an editable concept map and rubric that every question and judgment is grounded in, with citations.', NULL, NULL, 'bullet', 3);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1406, 'Gadfly', 'GAD-US-SD1', NULL, 'SD', NULL, NULL, 'planned', '⬜', '', 'As the platform, every live session runs server-side with its turns, judgments and events persisted in SQL Server, resumable after a disconnect.', NULL, NULL, 'bullet', 4);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1407, 'Gadfly', 'GAD-US-SD2', NULL, 'SD', NULL, NULL, 'planned', '⬜', '', 'As a third-party app, I can create exams, launch sessions in an embedded room and receive results through a keyed API and webhooks.', NULL, NULL, 'bullet', 5);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1408, 'Gadfly', 'GAD-US-SF1', NULL, 'SF', NULL, NULL, 'planned', '⬜', '', 'As a customer org admin, I invite instructors and students into my organization, each with a role, and nobody ever sees another organization''s data.', NULL, NULL, 'bullet', 6);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1409, 'Gadfly', 'GAD-US-SG1', NULL, 'SG', NULL, NULL, 'planned', '⬜', '', 'As a student, I check my mic and camera, consent, and take a spoken exam with a talking examiner that listens and follows up on what I said.', NULL, NULL, 'bullet', 7);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1410, 'Gadfly', 'GAD-US-SG2', NULL, 'SG', NULL, NULL, 'planned', '⬜', '', 'As an instructor, I build exams from my sources, assign them, review each session''s transcript, scores and evidence, and finalize the grade.', NULL, NULL, 'bullet', 8);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1411, 'Gadfly', 'GAD-US-SI1', NULL, 'SI', NULL, NULL, 'planned', '⬜', '', 'As an instructor, I see integrity evidence (faces, voices, off-screen reading, focus loss, answer cadence) explained on the session timeline, with no automated accusation and no deception or emotion inference.', NULL, NULL, 'bullet', 9);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1412, 'Gadfly', 'GAD-US-SP1', NULL, 'SP', NULL, NULL, 'planned', '⬜', '', 'As MindAttic, the platform runs on Azure with consent, retention, security and cost controls, and has been piloted with Erin''s real exams.', NULL, NULL, 'bullet', 10);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1413, 'MindAttic.SpeechRecognition', 'SR-US-A1', NULL, 'A', NULL, NULL, 'planned', '⬜', '', 'As an app developer, I stream a user''s microphone through my server to a speech recognizer and get partial and final transcripts with word timings and speech metrics, with the provider key never in the browser.', NULL, NULL, 'bullet', 0);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1414, 'MindAttic.Avatar', 'MAA-US-A1', NULL, 'A', NULL, NULL, 'planned', '⬜', '', 'As an app developer, I drop a 3D talking head on a page and make it speak any text in an ElevenLabs voice with lip sync, with the key kept on my server.', NULL, NULL, 'bullet', 0);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1415, 'MindAttic.EyeTracker', 'ET-US-W1', NULL, 'W', NULL, NULL, 'planned', '⬜', '', 'As an app developer, I use one webcam library for camera access, face presence, head pose, gaze region and eye tracking, and get one integrity event stream, with no frames leaving the device.', NULL, NULL, 'bullet', 0);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1416, 'MindAttic.Authentication', 'M.AUTH-US-O1', NULL, 'O', NULL, NULL, 'planned', '⬜', '', 'As a multi-tenant app, I give users memberships in organizations with a role in each, and org admins invite people by email.', NULL, NULL, 'bullet', 25);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1417, 'Tutor', 'TUT-US-I1', NULL, 'I', NULL, NULL, 'planned', '⬜', '', 'As another MindAttic app, I parse, chunk and embed documents with the same pipeline Tutor uses, from a NuGet package.', NULL, NULL, 'bullet', 36);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1418, 'MindAttic.Legion', 'M.LEGN-US-J1', NULL, 'J', NULL, NULL, 'planned', '⬜', '', 'As an app grading free-text answers, I get per-criterion scores that cite the evidence they used, every voter''s verdict, an agreement measure and the call''s token usage.', NULL, NULL, 'bullet', 23);
 
 -- backlog_items
 INSERT INTO backlog_items (uid, repo, ordinal, text) VALUES (1, 'ChiMesh', 19, '1. **CM-US-A1/A2** — order parts, assemble three nodes (gates everything physical).');
@@ -4730,6 +4761,47 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T23', 'Gadfly', 23, '2026-11-10', 'chore', 'closed', 'Adopt the shared docs-site pipeline: turn on GitHub Pages', '—', 22, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T24', 'Gadfly', 24, '2026-11-17', 'docs', 'closed', 'Update USER_STORIES.md', '—', 23, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T25', 'Gadfly', 25, '2026-11-20', 'docs', 'open', 'Plan the Socratic oral-exam platform (Erin''s idea): Gadfly becomes a reusable Socratic engine + hosted platform; new MindAttic.SpeechRecognition and MindAttic.Avatar (ElevenLabs talking head); MindAttic.EyeTracker becomes MindAttic.Webcam; Legion judges answers grounded in source material; customer/student accounts via MindAttic.Authentication on SQL Server. Write the outline, epics, stories, milestones and sequenced tickets, all approved.', '—', 24, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T26', 'Gadfly', 26, '2026-11-20', 'chore', 'open', 'Split the solution: Gadfly.Core (engine), Gadfly.Personal (existing corpus ingestion/mining/introspection), Gadfly.Cli; behavior unchanged', 'GAD-T25', 25, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T27', 'Gadfly', 27, '2026-11-20', 'feature', 'open', 'Gadfly.Core domain model: SocraticSession, Turn, Move (Elicit, Clarify, Probe, Counterexample, Contradiction, Apply, Synthesize, Close), SessionPolicy, versioned prompt sets hashed into each session', 'GAD-T25', 26, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T28', 'Gadfly', 28, '2026-11-20', 'feature', 'open', 'ISubjectMatter abstraction with PersonalCorpusSubject: interrogate/reflect/examine run through the generic engine with their irrevocable prompts unchanged', 'GAD-T25', 27, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T29', 'Gadfly', 29, '2026-11-20', 'feature', 'open', 'Gadfly.Sources: ingest documents through Tutor.Ingestion into chunks with embeddings, behind a store abstraction (file store for the CLI, SQL store later)', 'GAD-T25', 28, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T30', 'Gadfly', 30, '2026-11-20', 'feature', 'open', 'Legion builds a concept map from a source collection: concepts, definitions, relationships, key facts and common misconceptions, each citing chunks; saved as editable JSON', 'GAD-T25', 29, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T31', 'Gadfly', 31, '2026-11-20', 'feature', 'open', 'Per-concept rubric: the understanding points a real answer covers, acceptable variants, misconceptions to watch for, each citing source chunks; Legion consensus; editable', 'GAD-T25', 30, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T32', 'Gadfly', 32, '2026-11-20', 'feature', 'open', 'Hybrid retrieval (BM25 + embedding similarity, reciprocal-rank fusion) of the top source chunks for a concept plus a student answer, for the question generator and the judge', 'GAD-T25', 31, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T33', 'Gadfly', 33, '2026-11-20', 'feature', 'open', 'Claim ledger: extract the student''s assertions from each answer (Legion), detect contradictions with earlier claims, and feed Contradiction moves', 'GAD-T25', 32, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T34', 'Gadfly', 34, '2026-11-20', 'feature', 'open', 'Planner: per-concept mastery estimate (Elo-style from judged answers), move selection (elicit, probe, counterexample, contradiction, apply, synthesize, close), coverage and time budget, stop rules', 'GAD-T25', 33, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T35', 'Gadfly', 35, '2026-11-20', 'feature', 'open', 'Exam-mode question generator on Legion: drafts from several providers, a judge fuses the sharpest; grounded in the concept''s chunks, the conversation and the claim ledger; new versioned exam prompt set; never reveals the answer', 'GAD-T25', 34, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T36', 'Gadfly', 36, '2026-11-20', 'feature', 'open', 'Answer judge: Legion grounded rubric judging of each answer (accuracy against the source, reasoning depth, consistency with earlier claims, completeness) with citations, per-voter verdicts and a low-agreement flag for human review', 'GAD-T25', 35, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T37', 'Gadfly', 37, '2026-11-20', 'feature', 'open', 'Session report: per-concept mastery, overall recommendation, quoted evidence with source citations, judge dissent; JSON and Markdown output', 'GAD-T25', 36, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T38', 'Gadfly', 38, '2026-11-20', 'feature', 'open', '`gadfly exam --source <folder|file>`: an end-to-end text-only Socratic exam in the terminal, from ingestion through concept map, questioning, judging and report', 'GAD-T25', 37, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T39', 'Gadfly', 39, '2026-11-20', 'feature', 'open', 'Gadfly.Server: ASP.NET Core host, EF Core SQL Server DbContext with migrations, LocalDB for development (Azure SQL later), configuration and secrets through MindAttic.Vault', 'GAD-T25', 38, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T40', 'Gadfly', 40, '2026-11-20', 'feature', 'open', 'Schema per the plan: source collections/documents/chunks, concepts, rubric, exams, assignments, sessions, turns, claims, judgments and votes, mastery, integrity events, reports and grade decisions, API keys, webhooks, usage ledger, jobs', 'GAD-T25', 39, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T41', 'Gadfly', 41, '2026-11-20', 'feature', 'open', 'Wire MindAttic.Authentication with organizations into Gadfly.Server: customer org creation by a MindAttic SuperAdmin in v1, roles Owner/Admin/Instructor/Student, MFA required for staff roles', 'GAD-T25', 40, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T42', 'Gadfly', 42, '2026-11-20', 'feature', 'open', 'Tenant isolation: EF global query filters on OrganizationId for every tenant-owned entity, authorization policies per role, and a guard that rejects any write whose OrganizationId differs from the caller''s active org', 'GAD-T25', 41, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T43', 'Gadfly', 43, '2026-11-20', 'feature', 'open', 'SQL-table-backed background job queue (BackgroundService) for ingestion, concept extraction, rubric generation and reports: retry with backoff, progress reporting, cancellation', 'GAD-T25', 42, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T44', 'Gadfly', 44, '2026-11-20', 'feature', 'open', 'Session orchestration: runs the engine per live session, persists every turn, judgment and mastery snapshot, server-authoritative timer, resumable after a disconnect, one active session per assignment attempt', 'GAD-T25', 43, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T45', 'Gadfly', 45, '2026-11-20', 'feature', 'open', 'SignalR SessionHub: authenticated session channel for audio chunks up, transcripts and examiner speech (audio plus alignment) down, integrity events up, state changes both ways', 'GAD-T25', 44, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T46', 'Gadfly', 46, '2026-11-20', 'feature', 'open', 'Platform API for third-party apps: hashed per-org API keys; REST to upload sources, create exams, assign students, mint signed expiring launch URLs for an embeddable exam room, fetch results; HMAC-signed session.completed webhooks with retries; OpenAPI document', 'GAD-T25', 45, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T47', 'Gadfly', 47, '2026-11-20', 'feature', 'open', 'Usage metering: LLM tokens, STT seconds and TTS characters with estimated cost per session and organization into UsageLedger; per-org quotas that stop new sessions when exceeded', 'GAD-T25', 46, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T48', 'Gadfly', 48, '2026-11-20', 'feature', 'open', 'Gadfly.Exam Blazor Server app shell: MindAttic.Components theme, sign-in, organization switcher, role-based navigation (Admin, Instructor, Student)', 'GAD-T25', 47, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T49', 'Gadfly', 49, '2026-11-20', 'feature', 'open', 'Instructor source library: upload documents, watch ingestion progress, review and edit the concept map and rubric (with citations opening the source passage)', 'GAD-T25', 48, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T50', 'Gadfly', 50, '2026-11-20', 'feature', 'open', 'Exam builder: choose concepts, duration, difficulty, follow-up depth, examiner voice and avatar, integrity level and schedule window; assign to students or groups; invite students by email or CSV', 'GAD-T25', 49, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T51', 'Gadfly', 51, '2026-11-20', 'feature', 'open', 'Student dashboard with assignments; pre-exam system check (mic level, camera and face visible, browser support, bandwidth); consent screen for audio and biometric processing; practice session on a sample topic', 'GAD-T25', 50, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T52', 'Gadfly', 52, '2026-11-20', 'feature', 'open', 'Student exam room in text mode first: live Socratic dialogue over SessionHub, server timer, progress through concepts, finish and confirmation', 'GAD-T25', 51, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T53', 'Gadfly', 53, '2026-11-20', 'feature', 'open', 'Voice mode: questions spoken by <ma-avatar> with lip sync and captions; answers spoken through SpeechRecognition with live transcript; hands-free turn taking with an end-of-answer cue; repeat question; voice-only (typing disabled) for graded exams', 'GAD-T25', 52, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T54', 'Gadfly', 54, '2026-11-20', 'feature', 'open', 'Instructor review: session timeline with transcript, audio playback, each answer''s judgment with citations and dissent, mastery per concept, integrity markers; override and finalize the grade with a comment; export PDF and CSV', 'GAD-T25', 53, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T55', 'Gadfly', 55, '2026-11-20', 'feature', 'open', 'Org admin console: members and roles, usage and cost dashboard, API keys and webhooks management, retention settings', 'GAD-T25', 54, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T56', 'Gadfly', 56, '2026-11-20', 'feature', 'open', 'Browser signals: tab hidden, focus lost, fullscreen exit, extra screens (Window Management API), paste attempts, devtools heuristics, each sent as an IntegrityEvent', 'GAD-T25', 55, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T57', 'Gadfly', 57, '2026-11-20', 'feature', 'open', 'Run MindAttic.Webcam''s presence, gaze-region and reading-pattern modules in the exam room and stream their events (never frames) to the session', 'GAD-T25', 56, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T58', 'Gadfly', 58, '2026-11-20', 'feature', 'open', 'Audio signals from speech metrics: second speaker, whispered prompting, reading-aloud cadence, long silence followed by unusually fluent delivery', 'GAD-T25', 57, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T59', 'Gadfly', 59, '2026-11-20', 'feature', 'open', 'Legion assessment of whether an answer reads like generated text compared with the student''s own earlier answers; low weight, never used on its own', 'GAD-T25', 58, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T60', 'Gadfly', 60, '2026-11-20', 'feature', 'open', 'Aggregate integrity events into a session summary (severity, plain-language explanation, evidence links on the review timeline); thinking glances shown as normal; no automatic failing', 'GAD-T25', 59, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T61', 'Gadfly', 61, '2026-11-20', 'feature', 'open', 'Privacy: consent records, retention jobs (audio and transcripts after the org''s retention period, default 90 days; video never stored), per-student data export and deletion, privacy policy and terms drafts, EU AI Act high-risk and BIPA notes', 'GAD-T25', 60, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T62', 'Gadfly', 62, '2026-11-20', 'chore', 'open', 'Observability: MindAttic.Log and Telemetry wiring, per-session trace id across hub, engine and providers, cost dashboard, alerts on provider failures and quota exhaustion', 'GAD-T25', 61, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T63', 'Gadfly', 63, '2026-11-20', 'chore', 'open', 'Deploy to Azure: App Service (WebSockets on) and Azure SQL, staging and production slots, migrations on deploy, Vault-backed secrets, HTTPS and custom domain, run.ps1 and MindAttic.Deploy wiring', 'GAD-T25', 62, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T64', 'Gadfly', 64, '2026-11-20', 'chore', 'open', 'Security review of the new surfaces against OWASP ASVS L2: API keys, launch tokens, SignalR auth, uploads (parser sandboxing, size limits), tenant isolation, webhook signing; fix tickets for findings', 'GAD-T25', 63, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T65', 'Gadfly', 65, '2026-11-20', 'docs', 'open', 'Instructor guide, student guide and platform API docs on the docs site; README rewritten for Gadfly as engine plus platform', 'GAD-T25', 64, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T66', 'Gadfly', 66, '2026-11-20', 'chore', 'open', 'Pilot with Erin: a demo org, a course built from her source material, at least five real voice sessions, her feedback filed as tickets', 'GAD-T25', 65, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IDEA-T1', 'IdeaCms', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IDEA-T2', 'IdeaCms', 2, '2026-10-13', 'chore', 'closed', 'Move tools\deploy.ps1 to root deploy.ps1: rebuild only on change, -Force/-Launch, generate C:\Apps\Ideas\deploy.bat (replaces launch.bat); run.bat kept', 'deploy.ps1', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IDEA-T3', 'IdeaCms', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for InstanceConfigService (src/MindAttic.Ideas.Core/Services/InstanceConfigService.cs, zero coverage): GetInstancesAsync tree order page/theme/theme-Uses plugins/page plugins/body tags with correct Depth and InstanceSource, page ThemeKey overriding site DefaultThemeKey, plugin dedupe between theme [Uses] and page selection, fallback to the site plugins.default setting when ActivePluginsJson is empty (SiteDefaultPlugin), body tags only scanned for Data pages, untagged tags resolving Component then Plugin, unresolved citizens shown as (not installed) with Resolved=false; SaveSettingsAsync returning the stale-instance and not-installed errors, slot saves writing widgetRef Kind.key@version, and tag saves dropping unknown/invalid values while preserving an unchanged hand-written attribute that does not type-check - this is the admin settings editor that rewrites author BodyHtml', '—', 2, NULL);
@@ -5767,7 +5839,15 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.AUTH-T31', 'MindAttic.Authentication', 31, '2026-11-10', 'chore', 'closed', 'Crash recovery: commit the command-catalog sync (.agent/commands/*.md) and regenerated docs/USER_STORIES.md left uncommitted by the session crash', '—', 30, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.AUTH-T32', 'MindAttic.Authentication', 32, '2026-11-10', 'chore', 'closed', 'Adopt the shared docs-site pipeline: turn on GitHub Pages', '—', 31, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.AUTH-T33', 'MindAttic.Authentication', 33, '2026-11-17', 'docs', 'closed', 'Update USER_STORIES.md', '—', 32, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.AUTH-T34', 'MindAttic.Authentication', 34, '2026-11-20', 'feature', 'open', 'Organizations and memberships: Organization entity, Membership (user, org, role), org-scoped claims, a role per organization, active-org switching, platform SuperAdmin; major version bump', 'GAD-T25', 33, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.AUTH-T35', 'MindAttic.Authentication', 35, '2026-11-20', 'feature', 'open', 'Invitations: an org admin invites by email (single-use token, expiry, role); the invitee sets a password (and MFA when their role requires it); bulk CSV invite; resend and revoke', 'GAD-T25', 34, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAA-T1', 'MindAttic.Avatar', 1, '2026-11-20', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAA-T2', 'MindAttic.Avatar', 2, '2026-11-20', 'chore', 'open', 'Bootstrap the repo: AGENTS.md/CLAUDE.md forwarders, npm package @mindattic/avatar plus .NET 10 MindAttic.Avatar (ElevenLabs TTS, ASP.NET Core helpers), NuGet.config, commit-msg hook, README skeleton, docs site', 'GAD-T25', 1, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAA-T3', 'MindAttic.Avatar', 3, '2026-11-20', 'feature', 'open', 'ElevenLabs TTS client (.NET): streaming with-timestamps (HTTP) and WebSocket input streaming, voice and model settings, character alignment to word timings, key from MindAttic.Vault, cache for fixed phrases', 'GAD-T25', 2, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAA-T4', 'MindAttic.Avatar', 4, '2026-11-20', 'feature', 'open', '<ma-avatar> web component wrapping TalkingHead (met4citizen, MIT, pinned version): load a GLB avatar, speak audio with word timings (lip sync), idle/listening/thinking/speaking states, eye contact, reduced-motion and 2D portrait fallback', 'GAD-T25', 3, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAA-T5', 'MindAttic.Avatar', 5, '2026-11-20', 'feature', 'open', 'Default avatar GLB with ARKit and Oculus viseme blend shapes and a Mixamo-compatible rig, license-clean, plus a doc on adding avatars', 'GAD-T25', 4, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAA-T6', 'MindAttic.Avatar', 6, '2026-11-20', 'feature', 'open', 'ASP.NET Core integration: AddMindAtticAvatar and a SignalR helper so the server synthesizes speech and streams audio plus alignment to <ma-avatar>; barge-in stop; type-to-speak demo page', 'GAD-T25', 5, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAA-T7', 'MindAttic.Avatar', 7, '2026-11-20', 'docs', 'open', 'README and docs site: quick start, server wiring, avatar assets, licensing notes', 'GAD-T25', 6, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAB-T1', 'MindAttic.Bob', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| MAB-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAB-T2', 'MindAttic.Bob', 2, '2026-10-15', 'chore', 'closed', 'Remove duplicate command copies (/quickload, /quicksave) now centralized at the user level (~/.claude/commands)', 'M.FLOW-T14', 1, '| MAB-T2 | 2026-10-15 | chore | closed | Remove duplicate command copies (/quickload, /quicksave) now centralized at the user level (~/.claude/commands) | M.FLOW-T14 |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAB-T3', 'MindAttic.Bob', 3, '2026-10-16', 'chore', 'wont-do', 'install.ps1 adds this repo''s 9 .prose/commands stubs for the shared global commands, so any LLM client finds them', 'MindAttic.Bob is archived (read-only); commit undone', 2, NULL);
@@ -6252,6 +6332,12 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('ET-T9', 'MindAttic.EyeTracker', 9, '2026-11-20', 'fix', 'closed', 'gaze.test.ts: too-few-samples failure reason text no longer matches /targets/ (found by /tests)', 'test/gaze.test.ts > calibration with a still head > fails with a reason when too few targets had samples', 8, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('ET-T10', 'MindAttic.EyeTracker', 10, '2026-11-20', 'fix', 'closed', 'gaze.test.ts: calibration error balloons to 0.199 (vs 0.06 threshold) when the head rests well off the camera axis (found by /tests)', 'test/gaze.test.ts > camera placement > copes with a head that rests well off the camera axis', 9, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('ET-T11', 'MindAttic.EyeTracker', 11, '2026-11-20', 'fix', 'closed', 'steady.test.ts: FixationFilter no longer reports a small deliberate shift once several estimates agree on it (found by /tests)', 'test/steady.test.ts > FixationFilter > notices a small shift once several estimates agree on it', 10, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('ET-T12', 'MindAttic.EyeTracker', 12, '2026-11-20', 'chore', 'open', 'Rename the repo to MindAttic.Webcam: GitHub rename, local folder, ticket-database repo entry, npm name @mindattic/webcam (keep @mindattic/eyetracker as a compatibility re-export), update MindPuck references', 'GAD-T25', 11, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('ET-T13', 'MindAttic.EyeTracker', 13, '2026-11-20', 'feature', 'open', 'Restructure into a webcam core (device selection, permissions, frame loop, one shared MediaPipe FaceLandmarker) and modules; the existing calibration/gaze code becomes the subpath export @mindattic/webcam/eyetracking', 'GAD-T25', 12, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('ET-T14', 'MindAttic.EyeTracker', 14, '2026-11-20', 'feature', 'open', 'Presence module: face count, face absent, same-person-throughout check (in-memory landmark-geometry signature, never uploaded), lighting and framing quality warnings', 'GAD-T25', 13, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('ET-T15', 'MindAttic.EyeTracker', 15, '2026-11-20', 'feature', 'open', 'Calibration-free head pose and gaze-region module: on-screen versus off-screen left/right/up/down with dwell timing; brief upward or away glances are annotated as thinking, not suspicious', 'GAD-T25', 14, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('ET-T16', 'MindAttic.EyeTracker', 16, '2026-11-20', 'feature', 'open', 'Unified integrity event stream (type, start, end, confidence, evidence summary) with a reading-pattern detector (repeated horizontal sweeps toward one off-screen region); privacy mode guarantees no frames leave the device', 'GAD-T25', 15, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('ET-T17', 'MindAttic.EyeTracker', 17, '2026-11-20', 'docs', 'open', 'docs/GAZE-AND-DECEPTION.md: what eye movement can and cannot tell (NLP eye-accessing cues debunked, gaze aversion as cognitive load, pupil limits on webcams, EU AI Act and BIPA constraints) and how the modules respect that', 'GAD-T25', 16, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.HELP-T1', 'MindAttic.Helpers', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.HELP-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.HELP-T2', 'MindAttic.Helpers', 2, '2026-10-15', 'chore', 'closed', 'Remove duplicate command copies (/deploy, /quickload, /quicksave) now centralized at the user level (~/.claude/commands)', 'M.FLOW-T14', 1, '| M.HELP-T2 | 2026-10-15 | chore | closed | Remove duplicate command copies (/deploy, /quickload, /quicksave) now centralized at the user level (~/.claude/commands) | M.FLOW-T14 |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.HELP-T3', 'MindAttic.Helpers', 3, '2026-10-16', 'chore', 'closed', 'install.ps1 adds this repo''s 8 .prose/commands stubs for the shared global commands, so any LLM client finds them', 'mindattic-agent-standard/install.ps1 run 2026-10-16', 2, NULL);
@@ -6463,6 +6549,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LEGN-T47', 'MindAttic.Legion', 47, '2026-11-02', 'fix', 'closed', 'Command pointer in .agent/commands said a literal $source instead of its legacy path (install.ps1 escaping bug fixed in MAT-T84); point it at the real source, or the global command when the project copy is gone', '—', 46, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LEGN-T48', 'MindAttic.Legion', 48, '2026-11-02', 'fix', 'closed', 'Fix the open items the 2026-11-02 bughunt left for decision (legion panel defaults to the trusted set, must-answer fallbacks honour --providers)', '—', 47, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LEGN-T49', 'MindAttic.Legion', 49, '2026-11-10', 'chore', 'closed', 'Crash recovery: commit the command-catalog sync (.agent/commands/*.md) and regenerated docs/USER_STORIES.md left uncommitted by the session crash', '—', 48, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LEGN-T50', 'MindAttic.Legion', 50, '2026-11-20', 'feature', 'open', 'Legion grounded judging: rubric scoring that takes evidence passages, returns per-criterion scores with cited passage ids, per-voter verdicts, an agreement measure and token usage', 'GAD-T25', 49, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LOGS-T1', 'MindAttic.Log', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.LOGS-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LOGS-T2', 'MindAttic.Log', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for Reader LogQueryService.QueryAsync filtering (MindAttic.Log.Reader/Services/LogQueryService.cs, LogFilter.cs): seed a temp MindAttic.Log.db via MindAtticSqliteSink or LogSchema DDL and assert SinceUtc/UntilUtc bounds are inclusive, MinLevel keeps Level at or above, Application is exact match, Category and SearchText are case-insensitive substring LIKE matches, filters combine with AND, empty filter returns everything, results are newest-first and capped at MaxResults; also LogFilter JSON from app.js (web camelCase, MaxResults accepted as a string, default 500). The Reader has no test coverage at all and this is the viewer''s whole query surface.', 'c34ec76', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LOGS-T3', 'MindAttic.Log', 3, '2026-10-14', 'chore', 'closed', 'NUnit tests for Reader LogQueryService robustness and row mapping: QueryAsync returns empty for a missing file and for a non-SQLite or table-less file instead of throwing, opens read-only (no file created, no writes) and can read while a MindAtticSqliteSink holds the db open in WAL mode, ReadEntry round-trips every column (nullable Category/MessageTemplate/Exception/PropertiesJson/CorrelationId/MachineName as null, TimestampUtc parsed as UTC Kind regardless of current culture); plus DiscoverApps lists only app folders containing MindAttic.Log.db, ordered case-insensitively, and returns empty when the Logging bucket is absent (redirect APPDATA or VaultPaths root for the test).', 'b33671b', 2, NULL);
@@ -8608,6 +8695,14 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T49', 'MindAttic.Scheduler', 49, '2026-11-20', 'fix', 'open', 'Fails on main: MindAttic.Scheduler.Core.Tests.RunLogTests.RecordsAStartAndAnEnd — System.UnauthorizedAccessException : Access to the path ''C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Backup'' is denied. (landed on main since the last green run: tickets M.SCHD-T44, M.SCHD-T42, M.SCHD-T41 in 74accbf Test project moves from xUnit to NUnit 4 (MindAttic golden rule): every Core.Tests file converted, RunLog tests get a fresh LocalDB per test via SetUp/TearDown (M.SCHD-T44); f50c4b8 Run history stays on this machine''s LocalDB (owner: a scheduler for one computer needs no online database); deploy-azure-db.ps1 removed (M.SCHD-T42); 8806562 Overnight jobs arrange themselves (daily: auto: heaviest first from 00:00, staggered, around pinned and every-N jobs, done by 08:00), an Optimize preview and a Last-night view in the dashboard, and every job run recorded through the mindattic-scheduler run wrapper with a one-at-a-time overnight lock (M.SCHD-T42); 8260a13 Untrack bin/ and obj/ build output, really this time: a path-limited commit re-adds what is on disk (M.SCHD-T41); c1b89c9 Untrack bin/ and obj/ build output (now ignored by .gitignore); the earlier path-limited commit kept them (M.SCHD-T41))', 'main@74accbf', 48, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T50', 'MindAttic.Scheduler', 50, '2026-11-20', 'fix', 'open', 'Fails on main: MindAttic.Scheduler.Core.Tests.RunLogTests.SummariesAverageTheSuccessfulRuns — System.UnauthorizedAccessException : Access to the path ''C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Backup'' is denied. (landed on main since the last green run: tickets M.SCHD-T44, M.SCHD-T42, M.SCHD-T41 in 74accbf Test project moves from xUnit to NUnit 4 (MindAttic golden rule): every Core.Tests file converted, RunLog tests get a fresh LocalDB per test via SetUp/TearDown (M.SCHD-T44); f50c4b8 Run history stays on this machine''s LocalDB (owner: a scheduler for one computer needs no online database); deploy-azure-db.ps1 removed (M.SCHD-T42); 8806562 Overnight jobs arrange themselves (daily: auto: heaviest first from 00:00, staggered, around pinned and every-N jobs, done by 08:00), an Optimize preview and a Last-night view in the dashboard, and every job run recorded through the mindattic-scheduler run wrapper with a one-at-a-time overnight lock (M.SCHD-T42); 8260a13 Untrack bin/ and obj/ build output, really this time: a path-limited commit re-adds what is on disk (M.SCHD-T41); c1b89c9 Untrack bin/ and obj/ build output (now ignored by .gitignore); the earlier path-limited commit kept them (M.SCHD-T41))', 'main@74accbf', 49, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SR-T1', 'MindAttic.SpeechRecognition', 1, '2026-11-20', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SR-T2', 'MindAttic.SpeechRecognition', 2, '2026-11-20', 'chore', 'open', 'Bootstrap the repo: AGENTS.md/CLAUDE.md forwarders, .NET 10 solution (MindAttic.SpeechRecognition, .AspNetCore) plus the @mindattic/speechrecognition npm package, NuGet.config for C:\LocalNuGet, commit-msg hook, README skeleton, docs site', 'GAD-T25', 1, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SR-T3', 'MindAttic.SpeechRecognition', 3, '2026-11-20', 'feature', 'open', 'Core contracts: ISpeechRecognizer streaming session, TranscriptSegment (partial/final, words with timings, confidence, speaker), audio conventions (16 kHz mono PCM16), provider options', 'GAD-T25', 2, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SR-T4', 'MindAttic.SpeechRecognition', 4, '2026-11-20', 'feature', 'open', 'Browser capture: getUserMedia, AudioWorklet resampling to 16 kHz PCM16, voice activity detection (Silero VAD via onnxruntime-web, energy fallback), push-to-talk and hands-free modes, level meter, transport-agnostic chunk callback', 'GAD-T25', 3, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SR-T5', 'MindAttic.SpeechRecognition', 5, '2026-11-20', 'feature', 'open', 'ElevenLabs Scribe realtime provider (WebSocket): key from MindAttic.Vault server-side, partial/final mapping with word timings, reconnect and backpressure', 'GAD-T25', 4, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SR-T6', 'MindAttic.SpeechRecognition', 6, '2026-11-20', 'feature', 'open', 'ASP.NET Core integration: AddMindAtticSpeechRecognition and a SignalR relay so browser audio streams via the app server to the provider (keys never in the browser); live captions demo page', 'GAD-T25', 5, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SR-T7', 'MindAttic.SpeechRecognition', 7, '2026-11-20', 'feature', 'open', 'Speech metrics per utterance: time to first word, speech rate, pause and filled-pause statistics, disfluency rate, reading-aloud likelihood features, second-speaker flag from provider diarization', 'GAD-T25', 6, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SR-T8', 'MindAttic.SpeechRecognition', 8, '2026-11-20', 'feature', 'open', 'Additional providers: OpenAI transcription (gpt-4o-transcribe/Whisper API) and a local whisper.cpp server, with automatic failover between providers', 'GAD-T25', 7, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SR-T9', 'MindAttic.SpeechRecognition', 9, '2026-11-20', 'docs', 'open', 'README and docs site: quick start, browser and server wiring, providers, metrics reference', 'GAD-T25', 8, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TELE-T1', 'MindAttic.Telemetry', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.TELE-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TELE-T2', 'MindAttic.Telemetry', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for TelemetryReader edge cases (TelemetryReader.cs): Read skips blank lines, parses kind case-insensitively, yields null Name when name is missing or null, keeps the seq=-1 recovered SessionEnd; Flatten carries _turnIndex/_wave/_accepted from the turn, skips turns with no events array or a non-object payload, unwraps ints as long, non-integers as double, nested objects/arrays as JsonElement - analysis scripts depend on this flattening being stable', 'cc04c1b', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TELE-T3', 'MindAttic.Telemetry', 3, '2026-10-14', 'chore', 'closed', 'NUnit tests for TelemetrySession lifecycle (TelemetrySession.cs): FinishAsync is idempotent and a second call writes nothing, RecordTurn/RecordEvent after finish are no-ops, RecordEvent with null/empty name is ignored, RecordCount tracks written lines, DisposeAsync finishes and renames the .tmp, null events serialize cleanly, concurrent RecordEvent calls from many threads produce gapless unique seq numbers - the never-throw, crash-safe contract games rely on', 'd9edb05', 2, NULL);
@@ -12590,6 +12685,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TUT-T61', 'Tutor', 61, '2026-11-19', 'fix', 'closed', 'EmbeddingService batches by an estimated 4 chars/token up to 250k tokens, so dense text (Chambers''s Dictionary, PG 37683: 1,435 chunks in 3 batches) goes over OpenAI''s 300,000-token per-request cap; the request 400s and the whole course ships without RAG vectors', '—', 60, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TUT-T62', 'Tutor', 62, '2026-11-19', 'fix', 'closed', 'Quiz tab Start Quiz silently does nothing for installed bundles (collection id loaded as a ConceptMap); lesson chat shows placeholder suggestions and the raw spiral prompt. Found online in TUT-T60', '—', 61, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TUT-T63', 'Tutor', 63, '2026-11-19', 'fix', 'closed', 'tutor delete (CourseDeleteService) leaves the course''s merged concept map ConceptMaps\collection_<courseId>.json and collections\collection_<courseId>.json.bak behind', '—', 62, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TUT-T64', 'Tutor', 64, '2026-11-20', 'feature', 'open', 'Extract Tutor''s parsers, chunking, embedding and vector-store abstraction into a Tutor.Ingestion NuGet package (C:\LocalNuGet) that Tutor itself consumes', 'GAD-T25', 63, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UC-T1', 'Unity.Cursory', 1, '2026-10-20', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UC-T2', 'Unity.Cursory', 2, '2026-10-20', 'chore', 'closed', 'Bootstrap repo: AGENTS.md/CLAUDE.md forwarders and docs/rfc/0001-port-plan.md (port Cursory to Unity 6 on MindAttic.Unity.Multiplayer; points at that repo''s architecture RFC)', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UC-T3', 'Unity.Cursory', 3, '2026-10-20', 'chore', 'closed', 'Unity 6000.4.3f1 project: URP 2D, top-down orthographic camera, Packages/manifest.json referencing file:../../MindAttic.Unity.Multiplayer/unity/com.mindattic.unity.multiplayer and com.mindattic.capture, engine-free Assets/UnityCursory/Core + Tests/Core.Tests dotnet NUnit pattern (as in UnitySpace/GridGameGaiden), docs/BIBLE.md porting Cursory''s CUR-LAW rules (server authoritative; geometry once per level), .gitattributes LF, .gitignore for Unity. Design: MindAttic.Unity.Multiplayer docs/rfc/0001-architecture.md.', '5d05eca', 2, NULL);
@@ -79841,6 +79937,195 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78727, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78728, 'US-T423', '2026-11-20T21:46:20Z', 'approval', 'proposed', 'approved');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78729, 'US-T423', '2026-11-20T21:46:41Z', 'working', NULL, 'd5da4af3-5328-4bef-b372-ddd19f1daed6');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78730, 'US-T423', '2026-11-20T21:47:21Z', 'working', 'd5da4af3-5328-4bef-b372-ddd19f1daed6', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78731, 'GAD-T26', '2026-11-20T21:49:34Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78732, 'GAD-T26', '2026-11-20T21:49:34Z', 'name', NULL, 'Split Gadfly into Core and Personal');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78733, 'TUT-T64', '2026-11-20T21:49:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78734, 'TUT-T64', '2026-11-20T21:49:38Z', 'name', NULL, 'Extract Tutor.Ingestion package');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78735, 'M.LEGN-T50', '2026-11-20T21:49:41Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78736, 'M.LEGN-T50', '2026-11-20T21:49:42Z', 'name', NULL, 'Grounded judging with citations');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78737, 'GAD-T27', '2026-11-20T21:49:45Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78738, 'GAD-T27', '2026-11-20T21:49:46Z', 'name', NULL, 'Socratic session domain model');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78739, 'GAD-T28', '2026-11-20T21:49:48Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78740, 'GAD-T28', '2026-11-20T21:49:48Z', 'name', NULL, 'Personal subject on the engine');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78741, 'GAD-T29', '2026-11-20T21:49:52Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78742, 'GAD-T29', '2026-11-20T21:49:52Z', 'name', NULL, 'Source material store');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78743, 'GAD-T30', '2026-11-20T21:49:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78744, 'GAD-T30', '2026-11-20T21:49:55Z', 'name', NULL, 'Concept map extraction');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78745, 'GAD-T31', '2026-11-20T21:49:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78746, 'GAD-T31', '2026-11-20T21:49:59Z', 'name', NULL, 'Rubric and answer key per concept');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78747, 'GAD-T32', '2026-11-20T21:50:01Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78748, 'GAD-T32', '2026-11-20T21:50:01Z', 'name', NULL, 'Grounding retrieval');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78749, 'GAD-T33', '2026-11-20T21:50:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78750, 'GAD-T33', '2026-11-20T21:50:04Z', 'name', NULL, 'Claim ledger and contradictions');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78751, 'GAD-T34', '2026-11-20T21:50:05Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78752, 'GAD-T34', '2026-11-20T21:50:06Z', 'name', NULL, 'Question planner and mastery');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78753, 'GAD-T35', '2026-11-20T21:50:08Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78754, 'GAD-T35', '2026-11-20T21:50:08Z', 'name', NULL, 'Exam question generator');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78755, 'GAD-T36', '2026-11-20T21:50:10Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78756, 'GAD-T36', '2026-11-20T21:50:10Z', 'name', NULL, 'Answer judge');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78757, 'GAD-T37', '2026-11-20T21:50:14Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78758, 'GAD-T37', '2026-11-20T21:50:14Z', 'name', NULL, 'Session report');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78759, 'GAD-T38', '2026-11-20T21:50:16Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78760, 'GAD-T38', '2026-11-20T21:50:17Z', 'name', NULL, 'gadfly exam CLI');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78761, 'SR-T2', '2026-11-20T21:50:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78762, 'SR-T2', '2026-11-20T21:50:20Z', 'name', NULL, 'Bootstrap SpeechRecognition repo');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78763, 'SR-T3', '2026-11-20T21:50:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78764, 'SR-T3', '2026-11-20T21:50:22Z', 'name', NULL, 'Recognizer contracts');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78765, 'SR-T4', '2026-11-20T21:50:25Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78766, 'SR-T4', '2026-11-20T21:50:25Z', 'name', NULL, 'Browser mic capture and VAD');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78767, 'SR-T5', '2026-11-20T21:50:28Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78768, 'SR-T5', '2026-11-20T21:50:29Z', 'name', NULL, 'ElevenLabs Scribe provider');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78769, 'SR-T6', '2026-11-20T21:50:33Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78770, 'SR-T6', '2026-11-20T21:50:34Z', 'name', NULL, 'ASP.NET Core relay and demo');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78771, 'SR-T7', '2026-11-20T21:50:36Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78772, 'SR-T7', '2026-11-20T21:50:37Z', 'name', NULL, 'Speech metrics');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78773, 'SR-T8', '2026-11-20T21:50:42Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78774, 'SR-T8', '2026-11-20T21:50:43Z', 'name', NULL, 'Fallback STT providers');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78775, 'SR-T9', '2026-11-20T21:50:47Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78776, 'SR-T9', '2026-11-20T21:50:48Z', 'name', NULL, 'SpeechRecognition README and docs');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78777, 'MAA-T2', '2026-11-20T21:50:50Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78778, 'MAA-T2', '2026-11-20T21:50:52Z', 'name', NULL, 'Bootstrap Avatar repo');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78779, 'MAA-T3', '2026-11-20T21:50:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78780, 'MAA-T3', '2026-11-20T21:50:58Z', 'name', NULL, 'ElevenLabs TTS client');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78781, 'MAA-T4', '2026-11-20T21:51:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78782, 'MAA-T4', '2026-11-20T21:51:02Z', 'name', NULL, 'Talking head web component');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78783, 'MAA-T5', '2026-11-20T21:51:06Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78784, 'MAA-T5', '2026-11-20T21:51:07Z', 'name', NULL, 'Default avatar asset');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78785, 'MAA-T6', '2026-11-20T21:51:12Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78786, 'MAA-T6', '2026-11-20T21:51:13Z', 'name', NULL, 'Avatar server integration and demo');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78787, 'MAA-T7', '2026-11-20T21:51:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78788, 'MAA-T7', '2026-11-20T21:51:18Z', 'name', NULL, 'Avatar README and docs');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78789, 'ET-T12', '2026-11-20T21:51:23Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78790, 'ET-T12', '2026-11-20T21:51:23Z', 'name', NULL, 'Rename EyeTracker to MindAttic.Webcam');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78791, 'ET-T13', '2026-11-20T21:51:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78792, 'ET-T13', '2026-11-20T21:51:28Z', 'name', NULL, 'Webcam core plus eyetracking module');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78793, 'ET-T14', '2026-11-20T21:51:33Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78794, 'ET-T14', '2026-11-20T21:51:33Z', 'name', NULL, 'Presence module');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78795, 'ET-T15', '2026-11-20T21:51:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78796, 'ET-T15', '2026-11-20T21:51:38Z', 'name', NULL, 'Head pose and gaze region');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78797, 'ET-T16', '2026-11-20T21:51:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78798, 'ET-T16', '2026-11-20T21:51:44Z', 'name', NULL, 'Integrity event stream');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78799, 'ET-T17', '2026-11-20T21:51:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78800, 'ET-T17', '2026-11-20T21:51:48Z', 'name', NULL, 'Gaze and deception research note');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78801, 'M.AUTH-T34', '2026-11-20T21:51:53Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78802, 'M.AUTH-T34', '2026-11-20T21:51:53Z', 'name', NULL, 'Organizations and memberships');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78803, 'M.AUTH-T35', '2026-11-20T21:51:58Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78804, 'M.AUTH-T35', '2026-11-20T21:51:58Z', 'name', NULL, 'Email invitations');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78805, 'GAD-T39', '2026-11-20T21:52:01Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78806, 'GAD-T39', '2026-11-20T21:52:01Z', 'name', NULL, 'Gadfly.Server host and database');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78807, 'GAD-T40', '2026-11-20T21:52:07Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78808, 'GAD-T40', '2026-11-20T21:52:07Z', 'name', NULL, 'Platform SQL schema');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78809, 'GAD-T41', '2026-11-20T21:52:12Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78810, 'GAD-T41', '2026-11-20T21:52:13Z', 'name', NULL, 'Authentication in Gadfly.Server');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78811, 'GAD-T42', '2026-11-20T21:52:18Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78812, 'GAD-T42', '2026-11-20T21:52:18Z', 'name', NULL, 'Tenant isolation');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78813, 'GAD-T43', '2026-11-20T21:52:24Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78814, 'GAD-T43', '2026-11-20T21:52:24Z', 'name', NULL, 'Background job queue');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78815, 'GAD-T44', '2026-11-20T21:52:28Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78816, 'GAD-T44', '2026-11-20T21:52:29Z', 'name', NULL, 'Session orchestration service');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78817, 'GAD-T45', '2026-11-20T21:52:34Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78818, 'GAD-T45', '2026-11-20T21:52:35Z', 'name', NULL, 'SignalR SessionHub');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78819, 'GAD-T46', '2026-11-20T21:52:40Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78820, 'GAD-T46', '2026-11-20T21:52:41Z', 'name', NULL, 'Platform API and webhooks');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78821, 'GAD-T47', '2026-11-20T21:52:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78822, 'GAD-T47', '2026-11-20T21:52:47Z', 'name', NULL, 'Usage metering');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78823, 'GAD-T48', '2026-11-20T21:52:52Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78824, 'GAD-T48', '2026-11-20T21:52:53Z', 'name', NULL, 'Exam web app shell');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78825, 'GAD-T49', '2026-11-20T21:52:58Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78826, 'GAD-T49', '2026-11-20T21:52:59Z', 'name', NULL, 'Instructor source library');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78827, 'GAD-T50', '2026-11-20T21:53:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78828, 'GAD-T50', '2026-11-20T21:53:05Z', 'name', NULL, 'Exam builder and assignments');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78829, 'GAD-T51', '2026-11-20T21:53:10Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78830, 'GAD-T51', '2026-11-20T21:53:11Z', 'name', NULL, 'Student dashboard, system check, consent');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78831, 'GAD-T52', '2026-11-20T21:53:16Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78832, 'GAD-T52', '2026-11-20T21:53:17Z', 'name', NULL, 'Exam room, text mode');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78833, 'GAD-T53', '2026-11-20T21:53:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78834, 'GAD-T53', '2026-11-20T21:53:23Z', 'name', NULL, 'Exam room, voice and avatar');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78835, 'GAD-T54', '2026-11-20T21:53:28Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78836, 'GAD-T54', '2026-11-20T21:53:29Z', 'name', NULL, 'Instructor review and grading');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78837, 'GAD-T55', '2026-11-20T21:53:34Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78838, 'GAD-T55', '2026-11-20T21:53:35Z', 'name', NULL, 'Org admin console');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78839, 'GAD-T56', '2026-11-20T21:53:40Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78840, 'GAD-T56', '2026-11-20T21:53:41Z', 'name', NULL, 'Browser integrity signals');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78841, 'GAD-T57', '2026-11-20T21:53:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78842, 'GAD-T57', '2026-11-20T21:53:47Z', 'name', NULL, 'Webcam integrity in the exam room');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78843, 'GAD-T58', '2026-11-20T21:53:52Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78844, 'GAD-T58', '2026-11-20T21:53:53Z', 'name', NULL, 'Audio integrity signals');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78845, 'GAD-T59', '2026-11-20T21:53:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78846, 'GAD-T59', '2026-11-20T21:54:00Z', 'name', NULL, 'Answer-text integrity');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78847, 'GAD-T60', '2026-11-20T21:54:05Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78848, 'GAD-T60', '2026-11-20T21:54:06Z', 'name', NULL, 'Integrity summary and review');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78849, 'GAD-T61', '2026-11-20T21:54:13Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78850, 'GAD-T61', '2026-11-20T21:54:14Z', 'name', NULL, 'Privacy, consent and retention');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78851, 'GAD-T62', '2026-11-20T21:54:19Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78852, 'GAD-T62', '2026-11-20T21:54:21Z', 'name', NULL, 'Observability');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78853, 'GAD-T63', '2026-11-20T21:54:25Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78854, 'GAD-T63', '2026-11-20T21:54:25Z', 'name', NULL, 'Azure deployment');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78855, 'GAD-T64', '2026-11-20T21:54:29Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78856, 'GAD-T64', '2026-11-20T21:54:30Z', 'name', NULL, 'Security review');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78857, 'GAD-T65', '2026-11-20T21:54:34Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78858, 'GAD-T65', '2026-11-20T21:54:35Z', 'name', NULL, 'Guides and API docs');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78859, 'GAD-T66', '2026-11-20T21:54:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78860, 'GAD-T66', '2026-11-20T21:54:40Z', 'name', NULL, 'Pilot with Erin');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78861, 'GAD-T26', '2026-11-20T21:54:46Z', 'link', NULL, 'implements GAD-US-SA1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78862, 'GAD-T26', '2026-11-20T21:54:53Z', 'link', NULL, 'related GAD-T25');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78863, 'GAD-T25', '2026-11-20T21:54:54Z', 'link', NULL, 'GAD-T26 related');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78864, 'GAD-T26', '2026-11-20T21:54:58Z', 'priority', '0', '900');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78865, 'TUT-T64', '2026-11-20T21:55:05Z', 'link', NULL, 'implements TUT-US-I1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78866, 'TUT-T64', '2026-11-20T21:55:13Z', 'link', NULL, 'related GAD-T25');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78867, 'GAD-T25', '2026-11-20T21:55:16Z', 'link', NULL, 'TUT-T64 related');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78868, 'TUT-T64', '2026-11-20T21:55:21Z', 'priority', '0', '899');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78869, 'M.LEGN-T50', '2026-11-20T21:55:27Z', 'link', NULL, 'implements M.LEGN-US-J1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78870, 'M.LEGN-T50', '2026-11-20T21:55:35Z', 'link', NULL, 'related GAD-T25');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78871, 'GAD-T25', '2026-11-20T21:55:38Z', 'link', NULL, 'M.LEGN-T50 related');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78872, 'M.LEGN-T50', '2026-11-20T21:55:44Z', 'priority', '0', '898');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78873, 'GAD-T27', '2026-11-20T21:55:55Z', 'link', NULL, 'requires GAD-T26');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78874, 'GAD-T26', '2026-11-20T21:55:59Z', 'link', NULL, 'GAD-T27 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78875, 'GAD-T27', '2026-11-20T21:56:08Z', 'link', NULL, 'implements GAD-US-SB1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78876, 'GAD-T27', '2026-11-20T21:56:14Z', 'link', NULL, 'related GAD-T25');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78877, 'GAD-T25', '2026-11-20T21:56:17Z', 'link', NULL, 'GAD-T27 related');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78878, 'GAD-T27', '2026-11-20T21:56:22Z', 'priority', '0', '897');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78879, 'GAD-T28', '2026-11-20T21:56:35Z', 'link', NULL, 'requires GAD-T27');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78880, 'GAD-T27', '2026-11-20T21:56:37Z', 'link', NULL, 'GAD-T28 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78881, 'GAD-T28', '2026-11-20T21:56:47Z', 'link', NULL, 'implements GAD-US-SA1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78882, 'GAD-T28', '2026-11-20T21:56:54Z', 'link', NULL, 'related GAD-T25');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78883, 'GAD-T25', '2026-11-20T21:56:56Z', 'link', NULL, 'GAD-T28 related');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78884, 'GAD-T28', '2026-11-20T21:56:59Z', 'priority', '0', '896');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78885, 'GAD-T29', '2026-11-20T21:57:05Z', 'link', NULL, 'requires TUT-T64');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78886, 'TUT-T64', '2026-11-20T21:57:07Z', 'link', NULL, 'GAD-T29 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78887, 'GAD-T29', '2026-11-20T21:57:16Z', 'link', NULL, 'requires GAD-T27');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78888, 'GAD-T27', '2026-11-20T21:57:18Z', 'link', NULL, 'GAD-T29 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78889, 'GAD-T29', '2026-11-20T21:57:27Z', 'link', NULL, 'implements GAD-US-SC1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78890, 'GAD-T29', '2026-11-20T21:57:36Z', 'link', NULL, 'related GAD-T25');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78891, 'GAD-T25', '2026-11-20T21:57:39Z', 'link', NULL, 'GAD-T29 related');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78892, 'GAD-T29', '2026-11-20T21:57:43Z', 'priority', '0', '895');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78893, 'GAD-T30', '2026-11-20T21:57:56Z', 'link', NULL, 'requires GAD-T29');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78894, 'GAD-T29', '2026-11-20T21:58:00Z', 'link', NULL, 'GAD-T30 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78895, 'GAD-T30', '2026-11-20T21:58:13Z', 'link', NULL, 'requires M.LEGN-T50');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78896, 'M.LEGN-T50', '2026-11-20T21:58:16Z', 'link', NULL, 'GAD-T30 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78897, 'GAD-T30', '2026-11-20T21:58:26Z', 'link', NULL, 'implements GAD-US-SC1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78898, 'GAD-T30', '2026-11-20T21:58:34Z', 'link', NULL, 'related GAD-T25');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78899, 'GAD-T25', '2026-11-20T21:58:38Z', 'link', NULL, 'GAD-T30 related');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78900, 'GAD-T30', '2026-11-20T21:58:44Z', 'priority', '0', '894');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78901, 'GAD-T31', '2026-11-20T21:58:56Z', 'link', NULL, 'requires GAD-T30');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78902, 'GAD-T30', '2026-11-20T21:59:00Z', 'link', NULL, 'GAD-T31 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78903, 'GAD-T31', '2026-11-20T21:59:10Z', 'link', NULL, 'implements GAD-US-SC1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78904, 'GAD-T31', '2026-11-20T21:59:18Z', 'link', NULL, 'related GAD-T25');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78905, 'GAD-T25', '2026-11-20T21:59:21Z', 'link', NULL, 'GAD-T31 related');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78906, 'GAD-T31', '2026-11-20T21:59:26Z', 'priority', '0', '893');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78907, 'GAD-T32', '2026-11-20T21:59:38Z', 'link', NULL, 'requires GAD-T29');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78908, 'GAD-T29', '2026-11-20T21:59:40Z', 'link', NULL, 'GAD-T32 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78909, 'GAD-T32', '2026-11-20T21:59:49Z', 'link', NULL, 'implements GAD-US-SC1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78910, 'GAD-T32', '2026-11-20T21:59:57Z', 'link', NULL, 'related GAD-T25');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78911, 'GAD-T25', '2026-11-20T22:00:00Z', 'link', NULL, 'GAD-T32 related');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78912, 'GAD-T32', '2026-11-20T22:00:05Z', 'priority', '0', '892');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78913, 'GAD-T33', '2026-11-20T22:00:19Z', 'link', NULL, 'requires GAD-T27');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78914, 'GAD-T27', '2026-11-20T22:00:24Z', 'link', NULL, 'GAD-T33 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78915, 'GAD-T33', '2026-11-20T22:00:37Z', 'link', NULL, 'requires M.LEGN-T50');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78916, 'M.LEGN-T50', '2026-11-20T22:00:39Z', 'link', NULL, 'GAD-T33 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78917, 'GAD-T33', '2026-11-20T22:00:45Z', 'link', NULL, 'implements GAD-US-SB1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78918, 'GAD-T33', '2026-11-20T22:00:53Z', 'link', NULL, 'related GAD-T25');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78919, 'GAD-T25', '2026-11-20T22:00:56Z', 'link', NULL, 'GAD-T33 related');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -80003,6 +80288,14 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T11', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T14', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T17', 'approved', 0, '2026-10-31T14:49:51Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T26', 'proposed', 900, '2026-11-20T21:54:58Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T27', 'proposed', 897, '2026-11-20T21:56:22Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T28', 'proposed', 896, '2026-11-20T21:56:59Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T29', 'proposed', 895, '2026-11-20T21:57:43Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T30', 'proposed', 894, '2026-11-20T21:58:44Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T31', 'proposed', 893, '2026-11-20T21:59:26Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T32', 'proposed', 892, '2026-11-20T22:00:05Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T33', 'proposed', 891, '2026-11-20T22:01:06Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T8', 'approved', 5, '2026-10-21T04:35:31Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T9', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAI-T18', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
@@ -80686,6 +80979,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LEGN-T37', 'approved', 0, '2026-10-17T21:41:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LEGN-T42', 'approved', 0, '2026-10-21T01:07:13Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LEGN-T44', 'approved', 0, '2026-10-31T14:49:41Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LEGN-T50', 'proposed', 898, '2026-11-20T21:55:44Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T11', 'approved', 0, '2026-10-23T19:14:18Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T112', 'proposed', 716, '2026-11-10T14:26:25Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T12', 'approved', 0, '2026-10-23T19:14:18Z', NULL);
@@ -82144,6 +82438,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T56', 'proposed', 717, '2026-11-20T09:52:46Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T57', 'proposed', 716, '2026-11-20T09:52:47Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T58', 'proposed', 715, '2026-11-20T09:52:50Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T64', 'proposed', 899, '2026-11-20T21:55:21Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.CHN-T10', 'approved', 0, '2026-10-22T05:35:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.CHN-T100', 'approved', 0, '2026-10-30T16:30:37Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.CHN-T110', 'approved', 0, '2026-11-03T04:34:56Z', NULL);
@@ -87782,6 +88077,42 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('CUR-T19', 'L
 - Tests: **one separate test per setting** proving it works end to end (today''s stored value imports to the right name, round-trips through Vault, and is the value the app actually reads/uses at runtime); manifest has every field labeled; LoadOrSeed seeds the expected defaults; LLM calls fail over (first key 401 -> second used); old settings UI/route is gone.
 - Done only when every one of the above holds.', '2026-10-31T14:50:33Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('CUR-T28', 'Repo had no GitHub Pages site. Adopted MindAttic.Agency''s shared DocFX docs-site pipeline (HOUSE-LAW-14): added .github/workflows/docs.yml, enabled Pages (build_type=workflow), set homepage. Also picks up the navbar-brand Outfit/#ff0033 fix (MAT-T127) from day one.', '2026-11-10T22:03:35Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('ET-T12', 'Decision D10 default: rename in place (history kept, GitHub redirects old URLs). Coordinate with any running CLI in MindAttic.EyeTracker before moving the folder.
+
+**Done when:** the repo, folder and ticket log all carry the new name, MindPuck.Web/Unity/Unreal still build against it.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 2 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:51:23Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('ET-T13', '**Done when:** `npm run build` is clean and the gaze lab demo works as before.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 2 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:51:27Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('ET-T14', 'Decision D11 default: login plus same-face check.
+
+**Done when:** the demo shows face count, absence and identity-drift events.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 2 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:51:33Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('ET-T15', 'See the plan''s eye-movement section: gaze aversion is a sign of thinking; no deception or emotion inference (EU AI Act Art. 5(1)(f)).
+
+**Done when:** the demo shows the gaze region and dwell live without calibration.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 2 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:51:38Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('ET-T16', '**Done when:** the demo logs presence, gaze-region and reading-pattern events in the shared schema.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 2 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:51:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('ET-T17', '**Done when:** the note is published on the docs site and linked from the README.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 2 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:51:47Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('FOR-T23', 'LAMP migration for **Formicarium Dashboard** (plan: MindAttic.Vault/docs/rfc/0003-lamp.md, Rollout step 5).
 
 - Move to the new MindAttic.Vault major.
@@ -87828,6 +88159,251 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T17', 'L
 - Tests: **one separate test per setting** proving it works end to end (today''s stored value imports to the right name, round-trips through Vault, and is the value the app actually reads/uses at runtime); manifest has every field labeled; LoadOrSeed seeds the expected defaults; LLM calls fail over (first key 401 -> second used); old settings UI/route is gone.
 - Done only when every one of the above holds.', '2026-10-31T14:49:48Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T23', 'Repo had no GitHub Pages site. Adopted MindAttic.Agency''s shared DocFX docs-site pipeline (HOUSE-LAW-14): added .github/workflows/docs.yml, enabled Pages (build_type=workflow), set homepage. Also picks up the navbar-brand Outfit/#ff0033 fix (MAT-T127) from day one.', '2026-11-10T22:04:03Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T26', 'Move Ingestion/, Corpus/, Mining/ and the Personal persona/prompt runners into a new Gadfly.Personal project; Gadfly.Core keeps only what is subject-agnostic (Legion voting client, tier resolver). CanonicalPrompts keep their exact wording.
+
+**Done when:** `dotnet build Gadfly.slnx` is clean, every existing CLI command still runs the same way, README''s project layout is updated.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 1 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:49:34Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T27', 'Plain C# model + JSON serialization of a full session transcript (questions, answers, moves, timings, judgments, mastery snapshots). Prompt sets are versioned constants; each session stores the SHA-256 of the set it ran.
+
+**Done when:** the model builds, round-trips through JSON, and the plan''s move table is reflected in code docs.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 1 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:49:45Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T28', 'Introduce ISubjectMatter (concepts to examine, grounding context for a concept, prompt set). PersonalCorpusSubject adapts today''s corpus digest. The three CanonicalPrompts stay byte-identical.
+
+**Done when:** the three commands build and run as before on the new engine.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 1 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:49:48Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T29', 'ISourceStore with a JSON/file implementation under %APPDATA%\MindAttic\Gadfly\sources\<collection>. Re-ingesting an unchanged file is a no-op (content hash).
+
+**Done when:** a folder of PDFs/DOCX/text becomes a collection of chunks with embeddings on disk; build is clean.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 1 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:49:52Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T30', 'Map-reduce over chunks so large books work; Legion consensus decides merges of near-duplicate concepts. Output is human-editable JSON the instructor can change; edits survive re-extraction (stable concept ids).
+
+**Done when:** a sample Tutor course source produces a sensible concept map with citations.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 1 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:49:55Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T31', 'Stored next to the concept map; versioned so a session records which rubric version judged it.
+
+**Done when:** every concept in the sample collection has a cited rubric.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 1 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:49:59Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T32', '**Done when:** retrieval returns cited chunks for a concept/answer pair; build clean.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 1 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:50:01Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T33', 'Each claim keeps its turn, quote, normalized form and concept. Contradiction detection is a Legion vote over candidate pairs (pre-filtered by concept and embedding similarity) to keep calls bounded.
+
+**Done when:** a scripted transcript with a planted contradiction yields a Contradiction move.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 1 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:50:04Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T34', 'Deterministic given the same judgments (seeded) so sessions are reproducible for audit.
+
+**Done when:** the planner walks a set of concepts under a policy and ends at mastery, aporia or budget.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 1 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:50:05Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T35', 'Questions are short and spoken-friendly (they will be read aloud by the avatar). A guard vote rejects questions that leak rubric points.
+
+**Done when:** the generator produces each move kind for the sample collection.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 1 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:50:08Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T36', 'Uses LG1''s API. Judgment records keep the rubric version, cited chunks, every vote and the agreement measure.
+
+**Done when:** the sample transcript''s answers are judged with citations and dissent shown.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 1 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:50:10Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T37', '**Done when:** a finished session renders a readable Markdown report and machine-readable JSON.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 1 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:50:14Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T38', 'This is milestone 1''s demo: Erin can feel the questioning before any voice or web work exists. Options: --concepts, --minutes, --tier, --report <path>.
+
+**Done when:** `gadfly exam --source <Tutor course folder>` runs a full session and writes a report.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 1 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:50:16Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T39', 'Owner decision 2026-11-20: EF Core, LocalDB first, Azure later.
+
+**Done when:** `dotnet ef database update` creates the LocalDB database and the host starts.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 3 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:52:01Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T40', 'Every tenant-owned entity carries OrganizationId. SQL implementation of ISourceStore lives here.
+
+**Done when:** the migration builds and applies on LocalDB.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 3 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:52:07Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T41', 'Decision D8 default: no self-serve billing, so orgs are provisioned by MindAttic.
+
+**Done when:** a SuperAdmin creates an org and its owner can sign in with MFA.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 3 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:52:13Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T42', '**Done when:** a code review of every DbSet shows the filter, and cross-org access paths return 404.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 3 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:52:18Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T43', '**Done when:** an uploaded document is ingested and extracted by jobs with visible progress.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 3 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:52:24Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T44', '**Done when:** a session survives a client reconnect and resumes at the same turn.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 3 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:52:29Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T45', '**Done when:** a test client can run a text session end to end over the hub.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 3 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:52:35Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T46', '**Done when:** the OpenAPI document is served and a scripted client completes the create, launch and result flow.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 3 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:52:40Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T47', '**Done when:** a finished session shows its cost breakdown.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 3 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:52:47Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T48', 'Owner decision 2026-11-20: Blazor Server. Decision D1 default: lives in the Gadfly repo, working name Gadfly Exams.
+
+**Done when:** each role signs in and sees its own navigation.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 4 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:52:53Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T49', '**Done when:** an instructor uploads a PDF and edits a concept and its rubric.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 4 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:52:59Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T50', '**Done when:** an exam is built, assigned and the student receives the invite.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 4 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:53:04Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T51', 'Consent records are stored per session (BIPA/GDPR).
+
+**Done when:** a student completes the check and consent, and a failing check explains how to fix it.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 4 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:53:10Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T52', '**Done when:** a student completes an assigned exam by typing, and the session is persisted.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 4 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:53:16Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T53', '**Done when:** a full exam is taken by voice with the talking examiner.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 4 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:53:23Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T54', 'Decision D13 default: AI recommends, instructor finalizes. Students see results only after release.
+
+**Done when:** an instructor finalizes a grade and the student sees the released result.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 4 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:53:28Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T55', '**Done when:** an admin manages members, sees usage and creates an API key.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 4 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:53:34Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T56', '**Done when:** each signal appears as an event on the session record.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 5 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:53:40Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T57', 'Decision D2 default: integrity evidence plus thinking annotations only.
+
+**Done when:** a second face, absence and off-screen reading show as events during a live exam.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 5 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:53:47Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T58', '**Done when:** these appear as events with their metric evidence.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 5 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:53:52Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T59', '**Done when:** each judged answer carries a text-style score with explanation.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 5 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:53:59Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T60', '**Done when:** the review timeline shows the summary and every flag''s evidence.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 5 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:54:05Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T61', 'Decisions D6 and D7 defaults: adult learners; 90-day audio retention.
+
+**Done when:** retention jobs run on schedule and a student''s data export and delete both work.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 6 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:54:13Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T62', '**Done when:** one session can be traced end to end in the logs.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 6 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:54:20Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T63', 'Owner decision 2026-11-20: LocalDB now, Azure later; this is the move.
+
+**Done when:** staging serves a full voice exam from Azure.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 6 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:54:25Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T64', '**Done when:** findings are filed as fix tickets and the blocking ones are closed.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 6 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:54:30Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T65', '**Done when:** the docs site shows all three guides.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 6 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:54:34Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T66', '**Done when:** five sessions are reviewed and the feedback tickets exist.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 6 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:54:40Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAI-T33', 'GTFO.EZ''s package/manifest.json now lists GTFO.EZ.AbsurdItems as a Thunderstore dependency (G.EZ-T112), so the two mods are always installed together in the wild. GTFO.EZ''s own AGENTS.md already has a ''Golden rule: GTFO.EZ.AbsurdItems compatibility'' section; add the mirror image of it here: before changing a Harmony patch, check whether GTFO.EZ patches the same original method (precedent: G.EZ-T108''s loot-cleanup patch-ordering cycle between the two mods) - use explicit HarmonyBefore/HarmonyAfter naming the other mod''s GUID rather than relying on load order; keep config section/key names from colliding across the two mods'' .cfg files; and when this mod''s version bumps, flag it so GTFO.EZ''s manifest.json dependency string (MindAttic-GtfoEZAbsurdItems-X.Y.Z) gets updated to match what''s actually published.', '2026-11-05T14:47:18Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAI-T34', 'Thunderstore''s BepInExPack_GTFO is now at 3.2.4 (up from the pinned 3.2.3, published 2026-10-31). Bump package/manifest.json''s dependency string, bump version_number to 20.0.0, run tests, build Release, and produce the v20.0.0 dist zip via build.ps1. Part of a family-wide v20 release across all 6 GTFO.* mods (same BepInEx bump, kept in version lockstep with GTFO.EZ).', '2026-11-05T14:50:21Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAI-T35', 'User wants every GTFO.* mod''s documentation accurate. Audit this repo''s README.md (root, if present) and package/README.md against the actual current Plugin.cs config entries, feature set, and package/CHANGELOG.md - fix any drift (missing features, stale version numbers/badges, out-of-sync embedded changelog copies, wrong current-release number), and make sure v20 (BepInEx 3.2.4 bump, already released) is reflected. GTFO.EZ''s own README had drifted (an embedded changelog copy was missing two real bullets from a past release) - check for the same class of bug here.', '2026-11-05T15:42:19Z');
@@ -91294,6 +91870,18 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.AUTH-T23',
 - Tests: **one separate test per setting** proving it works end to end (today''s stored value imports to the right name, round-trips through Vault, and is the value the app actually reads/uses at runtime); manifest has every field labeled; LoadOrSeed seeds the expected defaults; LLM calls fail over (first key 401 -> second used); old settings UI/route is gone.
 - Done only when every one of the above holds.', '2026-10-31T14:50:26Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.AUTH-T32', 'Repo had no GitHub Pages site. Adopted MindAttic.Agency''s shared DocFX docs-site pipeline (HOUSE-LAW-14): added .github/workflows/docs.yml, enabled Pages (build_type=workflow), set homepage. Also picks up the navbar-brand Outfit/#ff0033 fix (MAT-T127) from day one.', '2026-11-10T22:04:54Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.AUTH-T34', 'Apps that don''t use organizations keep working unchanged (feature is opt-in). Roles are app-defined strings; Gadfly uses Owner, Admin, Instructor, Student. Per-role MFA policy (MFA required for chosen roles).
+
+**Done when:** builds, migration added, README documents the opt-in, package packed.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 3 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:51:53Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.AUTH-T35', '**Done when:** an invite email leads to an account with the right membership; tokens can''t be reused.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 3 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:51:58Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.BRWS-T19', 'Move the content of src/MindAttic.Browser/SettingsWindow.xaml into a settings-tab package implementing the MindAttic.Components settings-tab contract (M.COMP-T148), consumed by MindAttic.Vault.Dashboard. If MindAttic.Browser isn''t already on MindAttic.Vault''s AddVaultAppSettings<T> for its preferences, migrate onto it first so the tab reads/writes through Vault, not a local store.', '2026-10-31T03:32:42Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.BRWS-T20', 'Delete src/MindAttic.Browser/SettingsWindow.xaml (and its menu/route entry) once its tab package (previous ticket) is live in Dashboard. Replace the app''s settings/cog entry point with the shared ''open my settings'' helper (M.COMP-T150) deep-linking to this app''s Dashboard tab.', '2026-10-31T03:32:43Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.BRWS-T21', 'Move the content of src/MindAttic.Browser/SettingsWindow.xaml into a UserControl-kind settings-tab package implementing the MindAttic.Components contract (M.COMP-T151), consumed by MindAttic.Vault.Desktop. If MindAttic.Browser isn''t already on MindAttic.Vault''s AddVaultAppSettings<T>, migrate onto it first so the tab reads/writes through Vault.', '2026-10-31T03:48:52Z');
@@ -91581,6 +92169,13 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.LEGN-T44',
 - Its settings cog/menu opens Vault.Desktop at this app''s tab (`VaultSettings.Open`); verified by hand.
 - Tests: **one separate test per setting** proving it works end to end (today''s stored value imports to the right name, round-trips through Vault, and is the value the app actually reads/uses at runtime); manifest has every field labeled; LoadOrSeed seeds the expected defaults; LLM calls fail over (first key 401 -> second used); old settings UI/route is gone.
 - Done only when every one of the above holds.', '2026-10-31T14:49:39Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.LEGN-T50', 'Extend ScoreAsync (or add JudgeAsync) for Gadfly''s answer judge: input = rubric criteria, numbered evidence passages, the candidate answer, optional prior context; output = per-criterion score and rationale, cited passage ids per criterion, each voter''s raw verdict, an agreement/dispersion metric, and token usage + estimated cost per provider call (an IUsageSink callback so hosts can meter per tenant). Structured JSON out with schema validation and a retry on malformed output.
+
+**Done when:** the new API builds and is documented in the README; existing ScoreAsync callers are unaffected; package version bumped and packed.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 1 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:49:42Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.LNCH-T111', 'Hosted by MindAttic.Launcher as an always-on background component. Detects new top-level windows system-wide via SetWinEventHook (EVENT_OBJECT_SHOW / EVENT_SYSTEM_FOREGROUND), filters strictly to processes whose image path resolves under the MindAttic workspace root, and - only when Vault''s ''Default to Desktop 1'' setting is on, more than one virtual desktop currently exists, and the window isn''t already on Desktop 1 - moves it to Desktop 1 via the Virtual Desktop API (IVirtualDesktopManager + a maintained interop shim to enumerate desktops and resolve ''the first one''). Must never touch non-MindAttic windows (ref M.VALT-T90 for the Vault-side setting).', '2026-11-06T06:55:47Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.LNCH-T113', 'checking repo ticket code prefix', '2026-11-06T16:55:42Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.LNCH-T114', '![image 1](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/_inbox/98967803-4180-4b8c-8265-6cab45c09522/2026-11-06-image-1.png)
@@ -96215,6 +96810,40 @@ Output: decision recorded in `docs/research/` or on this ticket, then a fix tick
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M5SE-T41', 'Mirrored to Mods.MechWarrior5.Shared in 5d1d19a (MM5S-T14).', '2026-11-10T06:58:58Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M5SE-T43', 'Landed in 6d9e79f (closed earlier with ref 83ee56f by mistake; 83ee56f is M5SE-T45).', '2026-11-10T06:51:59Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M5SE-T46', 'Mercs done (tools/CatalogCheck): items, traits, personas, portraits, voices all match the game exactly incl. DLC9; mechs already scanned at runtime. Clans: tools/clans_utoc_files.py lists all 243k packaged files; all 242 items exist; missing Clan chassis FMT, IFR, NGA, JR7IIC, WLF-IIC. Remaining: Oodle (UE 5.8''s oo2core.dll) + IoStore/Zen reader to pull chassis names/tonnage/variants and item data from the assets, then generate the Clans catalog from the game.', '2026-11-10T07:21:57Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('MAA-T2', '**Done when:** the empty package and solution build, the hook works, the docs workflow is green.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 2 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:50:51Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('MAA-T3', '**Done when:** a sentence synthesizes to audio plus word timings, and a repeated fixed phrase comes from cache.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 2 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:50:57Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('MAA-T4', 'Note: Ready Player Me no longer issues avatars, so the default asset comes from AV4.
+
+**Done when:** the demo page lip-syncs a bundled audio clip with its timings.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 2 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:51:02Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('MAA-T5', 'Decision D3 default: one stylized examiner head.
+
+**Done when:** the default avatar ships in the package with its license recorded.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 2 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:51:07Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('MAA-T6', '**Done when:** typing a sentence in the demo makes the avatar say it with lip sync, and Stop cuts it off.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 2 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:51:12Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('MAA-T7', '**Done when:** the docs site renders.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 2 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:51:17Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('MAT-T100', 'Child of MAT-T93/MAT-T98. MAT-T94 confirmed PreToolUse/PostToolUse/Stop/SessionStart/UserPromptSubmit fire correctly for Codex with Claude-shaped payloads, using an isolated CODEX_HOME scratch directory technique (don''t touch the real concurrently-running codex.exe config). SubagentStart/SubagentStop/Notification were left UNVERIFIED -- Codex may not even have a literal subagent concept (its ''agents''/''app-server'' subsystem may differ from Claude''s Task-tool subagents), so first determine whether these event names even apply to Codex at all before trying to fire them; if they don''t map onto any real Codex mechanism, document that honestly as NOT-APPLICABLE rather than forcing a test. Update docs/hook-contract-matrix.md''s Codex section (merge, don''t overwrite). Commit with MAT-T100.', '2026-11-06T16:55:33Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('MAT-T101', 'Child of MAT-T93/MAT-T98. Today, after MAT-T94/95/96, a future change to shared/abilities/*.md or shared/hooks/*.py only reaches Codex/Kimi/agy/Claude if someone remembers to manually rerun render-abilities.ps1 and install-hooks.ps1 (mindattic-agent-standard/). That is the one piece still missing from the user''s explicit ask: ''going forward any enhancement to any CLI''s abilities are shared amongst all compatible CLIs'' -- automatically, not by hand.
 
@@ -101185,6 +101814,52 @@ Do exactly this in `docs/CAPTURE.md`:
    reads its frames back and feeds them to the capture host (-capture-source=frames / =window). Not in this copy. |`
 No code change: CaptureUnity''s RepoName stamping (CaptureBuild, mindattic-capture-app.txt) already gives
 `SpaceGod.Unity.CSharp`. Proof: docs only, so none of section 8 needs rerunning.', '2026-11-08T14:25:44Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('SR-T2', 'Follow the workspace standard (install-commit-hooks.ps1, adopt-docs-site.ps1 -Api).
+
+**Done when:** the empty solution and package build, the hook refuses ticketless commits, the docs workflow is green.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 2 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:50:20Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('SR-T3', '**Done when:** contracts build and are documented.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 2 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:50:22Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('SR-T4', '**Done when:** a demo page shows level and speech/silence segments live; `npm run build` clean.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 2 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:50:25Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('SR-T5', 'Decision D4 default: ElevenLabs for STT.
+
+**Done when:** a WAV file streamed through the provider yields timed transcripts.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 2 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:50:28Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('SR-T6', '**Done when:** speaking into the demo page shows live captions.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 2 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:50:33Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('SR-T7', 'These feed Gadfly''s integrity layer. Metrics are descriptive; the library makes no judgment.
+
+**Done when:** metrics are computed for each final segment in the demo.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 2 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:50:37Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('SR-T8', '**Done when:** failover switches providers mid-session when one errors.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 2 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:50:42Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('SR-T9', '**Done when:** the docs site renders and the README follows the house layout.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 2 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:50:47Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('TRC-T25', 'Move the content of TaxRateCollector.Blazor/Components/Pages/Settings.razor into a settings-tab package implementing the MindAttic.Components settings-tab contract (M.COMP-T148), consumed by MindAttic.Vault.Dashboard. If TaxRateCollector isn''t already on MindAttic.Vault''s AddVaultAppSettings<T> for its preferences, migrate onto it first so the tab reads/writes through Vault, not a local store.', '2026-10-31T03:32:29Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('TRC-T26', 'Delete TaxRateCollector.Blazor/Components/Pages/Settings.razor (and its menu/route entry) once its tab package (previous ticket) is live in Dashboard. Replace the app''s settings/cog entry point with the shared ''open my settings'' helper (M.COMP-T150) deep-linking to this app''s Dashboard tab.', '2026-10-31T03:32:30Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('TRC-T27', 'TaxRateCollector is currently a standalone Sdk.Web app, so TaxRateCollector.Blazor/Components/Pages/Settings.razor isn''t portable yet. Extract it into its own Sdk.Razor class library (same move Prose/ThinkTank/Tutor already made) so it can implement the Razor-kind contract (M.COMP-T151) and be hosted unmodified in either MindAttic.Vault.Desktop (BlazorWebView) or MindAttic.Vault.Web. Migrate onto AddVaultAppSettings<T> if not already.', '2026-10-31T03:49:04Z');
@@ -101256,6 +101931,13 @@ Also seen online: lesson replies render placeholder suggested questions ("First/
 
 Test: a learned-concepts quiz for an installed bundle yields a question; a null session shows a message.', '2026-11-20T00:22:29Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('TUT-T63', 'Seen in TUT-T50: after deleting partial course 29c5c63d (Romeo and Juliet) both files remained (424 KB merged map). CourseBuildPipeline saves the merged map under the collection id via ConceptMapStorageService; the delete plan counts only per-resource maps and the collections\ file. Fix: include the merged map (id = course.ConceptMapCollectionId or collection_<courseId>) and the .bak in the plan and delete.', '2026-11-20T00:35:42Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('TUT-T64', 'Gadfly''s source-material grounding needs the same parse/chunk/embed pipeline Tutor has (PdfPig+OCR, EPUB, DOCX, HTML, TXT parsers; ChunkingService; EmbeddingService; VectorStoreService). Move them into Tutor.Ingestion with no dependency on Tutor''s app, UI, auth or storage paths (inject paths and the embedding provider).
+
+**Done when:** Tutor builds and behaves the same on top of the package; the package is packed to C:\LocalNuGet with a whole-number version; its README lists the public API.
+
+docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
+
+Milestone 1 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:49:38Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.CHN-T100', 'Rename this project everywhere to identify it as reverse-engineered: Unity.Chain -> Unity.Rea.Chain.
 
 Scope (all of it, in this repo''s own checkout on main):
@@ -102124,6 +102806,12 @@ Rewind an hour of 1 week/s play (and a minute of a live dogfight) to an exact mo
 -- ticket_names
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('EP-T2', 'Create ePub repo', '2026-11-11T06:08:59Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('EP-T3', 'ePub: book-root files only', '2026-11-11T06:35:21Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('ET-T12', 'Rename EyeTracker to MindAttic.Webcam', '2026-11-20T21:51:23Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('ET-T13', 'Webcam core plus eyetracking module', '2026-11-20T21:51:28Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('ET-T14', 'Presence module', '2026-11-20T21:51:33Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('ET-T15', 'Head pose and gaze region', '2026-11-20T21:51:38Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('ET-T16', 'Integrity event stream', '2026-11-20T21:51:44Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('ET-T17', 'Gaze and deception research note', '2026-11-20T21:51:47Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('ET-T2', 'Gaze library v1', '2026-11-19T23:21:56Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('ET-T3', 'Calibration area mismatch', '2026-11-20T02:15:59Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('ET-T4', 'Camera placement and head compensation', '2026-11-20T02:28:02Z');
@@ -102131,6 +102819,47 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('ET-T5', 'Fixation a
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('ET-T6', 'Show face and lens planes', '2026-11-20T02:41:28Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('ET-T7', 'Accuracy: pursuit calibration and report', '2026-11-20T02:49:15Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T25', 'Socratic exam platform plan', '2026-11-20T21:42:05Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T26', 'Split Gadfly into Core and Personal', '2026-11-20T21:49:34Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T27', 'Socratic session domain model', '2026-11-20T21:49:46Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T28', 'Personal subject on the engine', '2026-11-20T21:49:48Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T29', 'Source material store', '2026-11-20T21:49:52Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T30', 'Concept map extraction', '2026-11-20T21:49:55Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T31', 'Rubric and answer key per concept', '2026-11-20T21:49:59Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T32', 'Grounding retrieval', '2026-11-20T21:50:01Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T33', 'Claim ledger and contradictions', '2026-11-20T21:50:04Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T34', 'Question planner and mastery', '2026-11-20T21:50:06Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T35', 'Exam question generator', '2026-11-20T21:50:08Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T36', 'Answer judge', '2026-11-20T21:50:10Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T37', 'Session report', '2026-11-20T21:50:14Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T38', 'gadfly exam CLI', '2026-11-20T21:50:17Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T39', 'Gadfly.Server host and database', '2026-11-20T21:52:01Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T40', 'Platform SQL schema', '2026-11-20T21:52:07Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T41', 'Authentication in Gadfly.Server', '2026-11-20T21:52:13Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T42', 'Tenant isolation', '2026-11-20T21:52:18Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T43', 'Background job queue', '2026-11-20T21:52:24Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T44', 'Session orchestration service', '2026-11-20T21:52:29Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T45', 'SignalR SessionHub', '2026-11-20T21:52:35Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T46', 'Platform API and webhooks', '2026-11-20T21:52:41Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T47', 'Usage metering', '2026-11-20T21:52:47Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T48', 'Exam web app shell', '2026-11-20T21:52:53Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T49', 'Instructor source library', '2026-11-20T21:52:59Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T50', 'Exam builder and assignments', '2026-11-20T21:53:05Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T51', 'Student dashboard, system check, consent', '2026-11-20T21:53:11Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T52', 'Exam room, text mode', '2026-11-20T21:53:16Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T53', 'Exam room, voice and avatar', '2026-11-20T21:53:23Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T54', 'Instructor review and grading', '2026-11-20T21:53:29Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T55', 'Org admin console', '2026-11-20T21:53:35Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T56', 'Browser integrity signals', '2026-11-20T21:53:41Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T57', 'Webcam integrity in the exam room', '2026-11-20T21:53:47Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T58', 'Audio integrity signals', '2026-11-20T21:53:53Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T59', 'Answer-text integrity', '2026-11-20T21:53:59Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T60', 'Integrity summary and review', '2026-11-20T21:54:06Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T61', 'Privacy, consent and retention', '2026-11-20T21:54:14Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T62', 'Observability', '2026-11-20T21:54:21Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T63', 'Azure deployment', '2026-11-20T21:54:25Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T64', 'Security review', '2026-11-20T21:54:30Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T65', 'Guides and API docs', '2026-11-20T21:54:35Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T66', 'Pilot with Erin', '2026-11-20T21:54:40Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GGC-T32', 'Headless test flag', '2026-11-07T04:33:26Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T318', 'Speed sets re-entry', '2026-11-07T04:31:39Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T319', 'Recovery tray UI', '2026-11-07T04:31:40Z');
@@ -102261,11 +102990,14 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T28', 'Repack Pr
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T29', 'Live status refresh and publish alerts', '2026-11-19T20:48:41Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T30', 'Respect KDP weekly title limit', '2026-11-19T21:51:25Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T31', 'Accurate KDP status in panel', '2026-11-19T21:51:26Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.AUTH-T34', 'Organizations and memberships', '2026-11-20T21:51:53Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.AUTH-T35', 'Email invitations', '2026-11-20T21:51:58Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.COMP-T183', 'MaToggleIcon two-state icon button', '2026-11-10T14:09:46Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.COMP-T189', 'Dropdown submenus', '2026-11-11T04:07:10Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.COMP-T190', 'Full-width light-gray MaSeparator', '2026-11-11T07:15:59Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.COMP-T191', 'Dropdown items hide checked state', '2026-11-11T07:24:11Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.DPLY-T29', 'Enable ThinkTank app deploy', '2026-11-19T23:59:28Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.LEGN-T50', 'Grounded judging with citations', '2026-11-20T21:49:42Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.LNCH-T120', 'Create Repo in Launcher', '2026-11-10T06:51:26Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.LNCH-T122', 'Standalone Launcher refuses', '2026-11-11T05:49:32Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.LNCH-T123', 'Launcher cleanup pass', '2026-11-11T07:18:55Z');
@@ -102556,6 +103288,12 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T81', 'Mercs e
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T82', 'Serializer edge cases', '2026-11-10T14:36:46Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T83', 'UI tests for untested features', '2026-11-10T14:43:53Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T9', 'Publish as Mods.Mech5Mercs.SaveEditor', '2026-11-10T01:36:33Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MAA-T2', 'Bootstrap Avatar repo', '2026-11-20T21:50:51Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MAA-T3', 'ElevenLabs TTS client', '2026-11-20T21:50:58Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MAA-T4', 'Talking head web component', '2026-11-20T21:51:02Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MAA-T5', 'Default avatar asset', '2026-11-20T21:51:07Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MAA-T6', 'Avatar server integration and demo', '2026-11-20T21:51:13Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MAA-T7', 'Avatar README and docs', '2026-11-20T21:51:18Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MAT-T106', 'Publish ability for Nexus', '2026-11-07T02:41:42Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MAT-T107', 'Memory guard agent rule', '2026-11-07T02:43:36Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MAT-T109', 'Handoffs brochure list', '2026-11-07T04:46:25Z');
@@ -102722,6 +103460,14 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('SPAC-T2', 'Headless
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('SPAC-T3', 'Add CAPTURE spec copy', '2026-11-08T14:25:46Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('SPA-T2', 'Headless test flag', '2026-11-07T04:33:43Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('SPA-T3', 'CAPTURE spec names SpaceGod', '2026-11-08T14:25:44Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('SR-T2', 'Bootstrap SpeechRecognition repo', '2026-11-20T21:50:20Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('SR-T3', 'Recognizer contracts', '2026-11-20T21:50:22Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('SR-T4', 'Browser mic capture and VAD', '2026-11-20T21:50:25Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('SR-T5', 'ElevenLabs Scribe provider', '2026-11-20T21:50:29Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('SR-T6', 'ASP.NET Core relay and demo', '2026-11-20T21:50:33Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('SR-T7', 'Speech metrics', '2026-11-20T21:50:37Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('SR-T8', 'Fallback STT providers', '2026-11-20T21:50:43Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('SR-T9', 'SpeechRecognition README and docs', '2026-11-20T21:50:48Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TT-T42', 'No server process launch', '2026-11-19T22:38:12Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TT-T43', 'Stop runs when tab closes', '2026-11-19T22:38:14Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TT-T44', 'Error pages and limits', '2026-11-19T22:38:17Z');
@@ -102735,6 +103481,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TUT-T60', 'Works on
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TUT-T61', 'Embedding batch over token cap', '2026-11-19T22:49:02Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TUT-T62', 'Quiz tab Start does nothing', '2026-11-20T00:22:29Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TUT-T63', 'Delete leaves merged concept map', '2026-11-20T00:35:42Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TUT-T64', 'Extract Tutor.Ingestion package', '2026-11-20T21:49:38Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.CHN-T113', 'Headless test flag', '2026-11-07T04:33:33Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.EVE-T49', 'Headless test flag', '2026-11-07T04:33:30Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.EVE-T50', 'Stale replay test: creatures struck at her', '2026-11-08T22:16:11Z');
@@ -106211,6 +106958,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('CUR-US-E1', 'CUR-EPIC-E'
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('CUR-US-E2', 'CUR-EPIC-E', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('CUR-US-E3', 'CUR-EPIC-E', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('CUR-US-F1', 'CUR-EPIC-F', 'part-of', 'migrated: story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('ET-US-W1', 'ET-EPIC-W', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('FOR-T12', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('FOR-T23', 'M.COMP-T157', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('FOR-T23', 'M.VALT-T35', 'part-of', NULL);
@@ -106245,6 +106993,43 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T17', 'M.VALT-T39', 
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T17', 'M.VALT-T44', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T17', 'M.VALT-T45', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T17', 'M.VALT-T46', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T26', 'GAD-T25', 'related', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T26', 'GAD-US-SA1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T27', 'GAD-T25', 'related', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T27', 'GAD-T26', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T27', 'GAD-US-SB1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T28', 'GAD-T25', 'related', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T28', 'GAD-T27', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T28', 'GAD-US-SA1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T29', 'GAD-T25', 'related', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T29', 'GAD-T27', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T29', 'GAD-US-SC1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T29', 'TUT-T64', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T30', 'GAD-T25', 'related', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T30', 'GAD-T29', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T30', 'GAD-US-SC1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T30', 'M.LEGN-T50', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T31', 'GAD-T25', 'related', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T31', 'GAD-T30', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T31', 'GAD-US-SC1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T32', 'GAD-T25', 'related', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T32', 'GAD-T29', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T32', 'GAD-US-SC1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T33', 'GAD-T25', 'related', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T33', 'GAD-T27', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T33', 'GAD-US-SB1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T33', 'M.LEGN-T50', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-US-SA1', 'GAD-EPIC-SA', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-US-SB1', 'GAD-EPIC-SB', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-US-SB2', 'GAD-EPIC-SB', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-US-SC1', 'GAD-EPIC-SC', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-US-SD1', 'GAD-EPIC-SD', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-US-SD2', 'GAD-EPIC-SD', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-US-SF1', 'GAD-EPIC-SF', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-US-SG1', 'GAD-EPIC-SG', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-US-SG2', 'GAD-EPIC-SG', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-US-SI1', 'GAD-EPIC-SI', 'part-of', 'story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-US-SP1', 'GAD-EPIC-SP', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T116', 'GG-T99', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T118', 'GG-T117', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T119', 'GG-T117', 'requires', NULL);
@@ -107106,6 +107891,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.AUTH-US-G1', 'M.AUTH-E
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.AUTH-US-G2', 'M.AUTH-EPIC-G', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.AUTH-US-G3', 'M.AUTH-EPIC-G', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.AUTH-US-G4', 'M.AUTH-EPIC-G', 'part-of', 'migrated: story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.AUTH-US-O1', 'M.AUTH-EPIC-O', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.BRWS-T23', 'M.COMP-T157', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.BRWS-T23', 'M.VALT-T35', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.BRWS-T23', 'M.VALT-T39', 'requires', NULL);
@@ -107307,6 +108093,8 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LEGN-T44', 'M.VALT-T39
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LEGN-T44', 'M.VALT-T44', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LEGN-T44', 'M.VALT-T45', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LEGN-T44', 'M.VALT-T46', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LEGN-T50', 'GAD-T25', 'related', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LEGN-T50', 'M.LEGN-US-J1', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LEGN-US-A1', 'M.LEGN-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LEGN-US-A2', 'M.LEGN-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LEGN-US-A3', 'M.LEGN-EPIC-A', 'part-of', 'migrated: story under its epic');
@@ -107330,6 +108118,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LEGN-US-G1', 'M.LEGN-E
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LEGN-US-G2', 'M.LEGN-EPIC-G', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LEGN-US-G3', 'M.LEGN-EPIC-G', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LEGN-US-H1', 'M.LEGN-EPIC-H', 'part-of', 'migrated: story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LEGN-US-J1', 'M.LEGN-EPIC-J', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T134', 'M.LNCH-T135', 'duplicates', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T2', 'M.LNCH-US-E5', 'implements', 'migrated: story named in ticket');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T24', 'M.TIX-T14', 'related', 'migrated: named in ref');
@@ -108394,6 +109183,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.VALT-US-E2', 'M.VALT-E
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.VALT-US-E3', 'M.VALT-EPIC-E', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.VALT-US-E4', 'M.VALT-EPIC-E', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.WEB-T5', 'M.TIX-T14', 'related', 'migrated: named in ref');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAA-US-A1', 'MAA-EPIC-A', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAB-T2', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAT-T109', 'MAT-T110', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAT-T4', 'M.SCHD-T2', 'requires', NULL);
@@ -108916,6 +109706,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('RTB-T238', 'RTB-T7', 're
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('SET-T13', 'SET-T12', 'follow-up-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('SET-T15', 'SET-T14', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('SET-T5', 'M.TIX-T14', 'related', 'migrated: named in ref');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('SR-US-A1', 'SR-EPIC-A', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TRC-T11', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TRC-T29', 'M.COMP-T157', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TRC-T29', 'M.VALT-T35', 'part-of', NULL);
@@ -109004,6 +109795,8 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-T57', 'TUT-T50', 'fo
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-T57', 'TUT-T54', 'supersedes', 'bisected to 06efd6e');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-T58', 'TUT-T50', 'follow-up-of', 'broke main in 06efd6e');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-T58', 'TUT-T55', 'supersedes', 'bisected to 06efd6e');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-T64', 'GAD-T25', 'related', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-T64', 'TUT-US-I1', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-US-A1', 'TUT-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-US-A2', 'TUT-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-US-A3', 'TUT-EPIC-A', 'part-of', 'migrated: story under its epic');
@@ -109040,6 +109833,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-US-F2', 'TUT-EPIC-F'
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-US-F3', 'TUT-EPIC-F', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-US-F4', 'TUT-EPIC-F', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-US-F5', 'TUT-EPIC-F', 'part-of', 'migrated: story under its epic');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-US-I1', 'TUT-EPIC-I', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.CHN-T12', 'U.CHN-T10', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.CHN-T12', 'U.CHN-T4', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.CHN-T12', 'U.CHN-T5', 'requires', NULL);
@@ -110607,7 +111401,42 @@ updated: 2026-10-13
 ## Priority backlog
 _Nothing recorded yet._
 ');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 1, 'tickets', NULL, '## Tickets
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 1, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 2, 'epic', 'SA', '## Epic SA — Socratic platform: foundation');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 3, 'story', '1402', '- **GAD-US-SA1 ⬜** As MindAttic, Gadfly is a reusable Socratic engine any app can embed, with today''s personal introspection tool as one consumer of it.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 4, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 5, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 6, 'epic', 'SB', '## Epic SB — Socratic platform: the engine');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 7, 'story', '1403', '- **GAD-US-SB1 ⬜** As an examiner, I can run an adaptive Socratic exam that probes a student''s understanding of each concept, confronts contradictions in their own claims, and stops at mastery, aporia or the time budget.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 8, 'story', '1404', '- **GAD-US-SB2 ⬜** As an instructor, I get a per-concept report with quoted evidence, source citations and the judges'' dissent, as a recommendation I finalize.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 9, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 10, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 11, 'epic', 'SC', '## Epic SC — Socratic platform: source material and grounding');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 12, 'story', '1405', '- **GAD-US-SC1 ⬜** As an instructor, I upload my own source material and get an editable concept map and rubric that every question and judgment is grounded in, with citations.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 13, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 14, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 15, 'epic', 'SD', '## Epic SD — Socratic platform: hosted server and API');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 16, 'story', '1406', '- **GAD-US-SD1 ⬜** As the platform, every live session runs server-side with its turns, judgments and events persisted in SQL Server, resumable after a disconnect.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 17, 'story', '1407', '- **GAD-US-SD2 ⬜** As a third-party app, I can create exams, launch sessions in an embedded room and receive results through a keyed API and webhooks.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 18, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 19, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 20, 'epic', 'SF', '## Epic SF — Socratic platform: customer and student accounts');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 21, 'story', '1408', '- **GAD-US-SF1 ⬜** As a customer org admin, I invite instructors and students into my organization, each with a role, and nobody ever sees another organization''s data.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 22, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 23, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 24, 'epic', 'SG', '## Epic SG — Socratic platform: exam web app');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 25, 'story', '1409', '- **GAD-US-SG1 ⬜** As a student, I check my mic and camera, consent, and take a spoken exam with a talking examiner that listens and follows up on what I said.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 26, 'story', '1410', '- **GAD-US-SG2 ⬜** As an instructor, I build exams from my sources, assign them, review each session''s transcript, scores and evidence, and finalize the grade.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 27, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 28, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 29, 'epic', 'SI', '## Epic SI — Socratic platform: integrity');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 30, 'story', '1411', '- **GAD-US-SI1 ⬜** As an instructor, I see integrity evidence (faces, voices, off-screen reading, focus loss, answer cadence) explained on the session timeline, with no automated accusation and no deception or emotion inference.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 31, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 32, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 33, 'epic', 'SP', '## Epic SP — Socratic platform: production and pilot');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 34, 'story', '1412', '- **GAD-US-SP1 ⬜** As MindAttic, the platform runs on Azure with consent, retention, security and cost controls, and has been piloted with Erin''s real exams.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 35, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 36, 'tickets', NULL, '## Tickets
 > Permanent log of every change and fix — this repo''s ticket system. Rows are append-only: never
 > delete or reword one; only move its Status (open → closed / wont-do) and fill in Ref. Status is
 > a word, not a glyph, so tickets don''t count toward the story index. Keep this section last.
@@ -111860,7 +112689,11 @@ INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Authentic
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Authentication', 42, 'backlog', '31', '3. ⬜ **M.AUTH-US-F4** — Signed, deterministic NuGet pack with committed `packages.lock.json`.');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Authentication', 43, 'backlog', '32', '4. ⬜ **M.AUTH-US-D4** — WebAuthn/FIDO2 (additive, a future major) to close the accepted AITM residual.');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Authentication', 44, 'raw', NULL, '');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Authentication', 45, 'tickets', NULL, '## Tickets
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Authentication', 45, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Authentication', 46, 'epic', 'O', '## Epic O — Organizations and invitations');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Authentication', 47, 'story', '1416', '- **M.AUTH-US-O1 ⬜** As a multi-tenant app, I give users memberships in organizations with a role in each, and org admins invite people by email.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Authentication', 48, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Authentication', 49, 'tickets', NULL, '## Tickets
 > Permanent log of every change and fix — this repo''s ticket system. Rows are append-only: never
 > delete or reword one; only move its Status (open → closed / wont-do) and fill in Ref. Status is
 > a word, not a glyph, so tickets don''t count toward the story index. Keep this section last.
@@ -111882,7 +112715,11 @@ updated: 2026-11-20
 ## Priority backlog
 _Nothing recorded yet._
 ');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Avatar', 1, 'tickets', NULL, '## Tickets
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Avatar', 1, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Avatar', 2, 'epic', 'A', '## Epic A — Talking head with lip sync');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Avatar', 3, 'story', '1414', '- **MAA-US-A1 ⬜** As an app developer, I drop a 3D talking head on a page and make it speak any text in an ElevenLabs voice with lip sync, with the key kept on my server.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Avatar', 4, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Avatar', 5, 'tickets', NULL, '## Tickets
 > Permanent log of every change and fix — this repo''s ticket system. Rows are append-only: never
 > delete or reword one; only move its Status (open → closed / wont-do) and fill in Ref. Status is
 > a word, not a glyph, so tickets don''t count toward the story index. Keep this section last.
@@ -112121,7 +112958,11 @@ updated: 2026-11-19
 ## Priority backlog
 _Nothing recorded yet._
 ');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.EyeTracker', 1, 'tickets', NULL, '## Tickets
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.EyeTracker', 1, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.EyeTracker', 2, 'epic', 'W', '## Epic W — MindAttic.Webcam: core and modules');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.EyeTracker', 3, 'story', '1415', '- **ET-US-W1 ⬜** As an app developer, I use one webcam library for camera access, face presence, head pose, gaze region and eye tracking, and get one integrity event stream, with no frames leaving the device.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.EyeTracker', 4, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.EyeTracker', 5, 'tickets', NULL, '## Tickets
 > Permanent log of every change and fix — this repo''s ticket system. Rows are append-only: never
 > delete or reword one; only move its Status (open → closed / wont-do) and fill in Ref. Status is
 > a word, not a glyph, so tickets don''t count toward the story index. Keep this section last.
@@ -112506,7 +113347,11 @@ INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Legion', 
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Legion', 49, 'backlog', '48', '2. **M.LEGN-US-B2** — add a dedicated offline `Score*` rubric test and promote to ✅.');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Legion', 50, 'backlog', '49', '3. **M.LEGN-US-A3 / F2** — wire a CI secret-bearing job (or documented local run) so the live categories can be exercised and reported, promoting these from 🟡.');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Legion', 51, 'raw', NULL, '');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Legion', 52, 'tickets', NULL, '## Tickets
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Legion', 52, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Legion', 53, 'epic', 'J', '## Epic J — Grounded judging');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Legion', 54, 'story', '1418', '- **M.LEGN-US-J1 ⬜** As an app grading free-text answers, I get per-criterion scores that cite the evidence they used, every voter''s verdict, an agreement measure and the call''s token usage.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Legion', 55, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.Legion', 56, 'tickets', NULL, '## Tickets
 > Permanent log of every change and fix — this repo''s ticket system. Rows are append-only: never
 > delete or reword one; only move its Status (open → closed / wont-do) and fill in Ref. Status is
 > a word, not a glyph, so tickets don''t count toward the story index. Keep this section last.
@@ -112950,7 +113795,11 @@ updated: 2026-11-20
 ## Priority backlog
 _Nothing recorded yet._
 ');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.SpeechRecognition', 1, 'tickets', NULL, '## Tickets
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.SpeechRecognition', 1, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.SpeechRecognition', 2, 'epic', 'A', '## Epic A — Streaming speech recognition');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.SpeechRecognition', 3, 'story', '1413', '- **SR-US-A1 ⬜** As an app developer, I stream a user''s microphone through my server to a speech recognizer and get partial and final transcripts with word timings and speech metrics, with the provider key never in the browser.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.SpeechRecognition', 4, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('MindAttic.SpeechRecognition', 5, 'tickets', NULL, '## Tickets
 > Permanent log of every change and fix — this repo''s ticket system. Rows are append-only: never
 > delete or reword one; only move its Status (open → closed / wont-do) and fill in Ref. Status is
 > a word, not a glyph, so tickets don''t count toward the story index. Keep this section last.
@@ -114908,7 +115757,11 @@ INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Tutor', 57, 'backlo
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Tutor', 58, 'backlog', '81', '4. **TUT-US-C4** — automated test for the idle‑timeout modal.');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Tutor', 59, 'backlog', '82', '5. **TUT-US-A6** — in‑app course building and monitoring.');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Tutor', 60, 'raw', NULL, '');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Tutor', 61, 'tickets', NULL, '## Tickets
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Tutor', 61, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Tutor', 62, 'epic', 'I', '## Epic I — Shared ingestion package');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Tutor', 63, 'story', '1417', '- **TUT-US-I1 ⬜** As another MindAttic app, I parse, chunk and embed documents with the same pipeline Tutor uses, from a NuGet package.');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Tutor', 64, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Tutor', 65, 'tickets', NULL, '## Tickets
 > Permanent log of every change and fix — this repo''s ticket system. Rows are append-only: never
 > delete or reword one; only move its Status (open → closed / wont-do) and fill in Ref. Status is
 > a word, not a glyph, so tickets don''t count toward the story index. Keep this section last.
