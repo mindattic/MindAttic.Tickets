@@ -5376,6 +5376,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T597', 'IdiotProof', 597, '2026-11-19', 'fix', 'closed', 'positions reconcile --apply: filled-exit lookup sends /v2/orders ''after'' in a format Alpaca rejects (422 ''invalid format for after; format 2006-01-02T15:04:05Z'', likely fractional seconds/offset), so phantoms are booked flat with P&L 0 instead of at their ipx exit price; NBIL/RKLX/STXU 2026-11-19 hit it. Fix the format (UTC, no fractional seconds) and re-book those three at their real exit fills (IP-T587 follow-up)', 'e9ee44d6', 596, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T598', 'IdiotProof', 598, '2026-11-19', 'fix', 'closed', 'Fails on main: IdiotProof.Cli.Tests.PublicDocsPrivacyTests.ReadmeAndDocsCarryNoKeysOrAccountIdentifiers — Public docs must not contain secrets or account identifiers: docs\research\gapper-study-2026-11\journal\2026-11-19.json:1437: Alpaca paper account id docs\research\gapper-study-2026-11\journal\data\2026-11-19.casestudy.json:3492: Alpaca paper account id docs\research\gapper-study-2026-11\journal\... (landed on main since the last green run: tickets IP-T447, IP-T592 in 04392f84 Formation recorder: TOD profile deciles from the study''s own ADV20 dollar-volume edges (formation.todDecileEdgesDollars wins over the share-volume approximation), status line names which edges are in use, and the profile path + both edge keys registered in SettingsMetadata so settings set accepts them (IP-T447); cc96ccd3 Daily runner post-mortem journal: tools/gapper-journal.ps1 joins the session''s top-20 case study to the evening radar rank, armed strategies and paper fills (journal/D.md + D.json), -Review aggregates the last 10 sessions; journal README routine and first entry 2026-11-19 (IP-T592))', 'dc45100b', 597, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T599', 'IdiotProof', 599, '2026-11-19', 'fix', 'closed', 'positions reconcile --rebook/--apply: the ''after'' window treated SQL''s Kind=Unspecified UTC entry time as local and shifted it +6 h past the 09:35 ET exits, so NBIL/RKLX/STXU still stayed flat; AlpacaAfter now treats Unspecified as UTC (IP-T597 follow-up)', '7c22a17d', 598, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T600', 'IdiotProof', 600, '2026-11-19', 'fix', 'open', 'Hub error in Connection: An error occurred using the connection to database ''IdiotProof_Research_GAP'' on server ''tcp:sql-mindattic-f657...', '—', 599, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T1', 'JellyFinPoster', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| JFP-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T2', 'JellyFinPoster', 2, '2026-10-16', 'chore', 'closed', 'install.ps1 adds this repo''s 9 .prose/commands stubs for the shared global commands, so any LLM client finds them', 'mindattic-agent-standard/install.ps1 run 2026-10-16', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T3', 'JellyFinPoster', 3, '2026-10-16', 'chore', 'closed', 'Bug hunt: run an exhaustive /bughunt over the whole repo and fix every real bug found (each fix under its own fix ticket), then hunt again; close this only when a full pass finds nothing', '9a5f84c', 2, NULL);
@@ -12183,6 +12184,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T406', 'SpaceGod', 406, '2026-11-19', 'feature', 'open', 'Society exiles and grudges: a page lists the refugee tribes the wars drove out (home lost, who took it, how many, stage), their grudges (against you highlighted), their past plots and when they plot next, warning when the next move is against you, all linked (read only, Bench unchanged)', '—', 405, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T407', 'SpaceGod', 407, '2026-11-19', 'feature', 'open', 'Polity strength history on the galaxy map: each holder in the legend gets a 60-day strength sparkline, and picking one lists every system it gained or lost, when and how, as far as the news has told (read only)', '—', 406, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T408', 'SpaceGod', 408, '2026-11-19', 'feature', 'open', 'Society fortunes trend: a house shows its wealth and a business its capital and monthly earnings as monthly bars like the world trends, your hand''s fund, ruin and buy marked on them (sampled in the game layer, read only, Bench unchanged)', '—', 407, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T409', 'SpaceGod', 409, '2026-11-19', 'feature', 'open', 'Hold to rewind (designer spec): holding the rewind key drops time to real time and plays the current solar system backward (everything in it, including ships that left or arrived in the window) up to 10 real seconds; releasing resumes play from the rewound moment; free with a 60 s cooldown; window, cooldown, sample rates and key as easy-to-edit settings', '—', 408, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T1', 'SpaceGod.Unity.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T2', 'SpaceGod.Unity.CSharp', 2, '2026-11-06', 'feature', 'closed', 'Adopt the shared off-by-default --headless launch mode (Unity.Shared)', 'faadbca', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T3', 'SpaceGod.Unity.CSharp', 3, '2026-11-08', 'feature', 'open', 'Mirror SpaceGod US-T72: docs/CAPTURE.md names the promoted copy SpaceGod (not SpaceGod.Unreal.Cpp) as the third copy and its RepoName folder, and lists SpaceGod''s -RenderOffScreen capture row as that copy only', 'SpaceGod US-T72', 2, NULL);
@@ -78761,6 +78763,12 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77791, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77792, 'US-T406', '2026-11-20T01:42:01Z', 'working', 'd5da4af3-5328-4bef-b372-ddd19f1daed6', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77793, 'US-T407', '2026-11-20T01:42:02Z', 'working', 'd5da4af3-5328-4bef-b372-ddd19f1daed6', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77794, 'US-T408', '2026-11-20T01:42:03Z', 'working', 'd5da4af3-5328-4bef-b372-ddd19f1daed6', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77795, 'IP-T600', '2026-11-20T01:55:50Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77796, 'IP-T600', '2026-11-20T01:55:51Z', 'name', NULL, 'Hub error Connection');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77797, 'US-T409', '2026-11-20T01:57:24Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77798, 'US-T409', '2026-11-20T01:57:26Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77799, 'US-T409', '2026-11-20T01:57:56Z', 'working', NULL, 'd5da4af3-5328-4bef-b372-ddd19f1daed6');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77800, 'US-T409', '2026-11-20T01:58:39Z', 'working', 'd5da4af3-5328-4bef-b372-ddd19f1daed6', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -81955,6 +81963,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T406', 'approved', 0, '2026-11-20T01:40:49Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T407', 'approved', 0, '2026-11-20T01:40:52Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T408', 'approved', 0, '2026-11-20T01:40:55Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T409', 'approved', 0, '2026-11-20T01:57:26Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T72', 'approved', 0, '2026-11-06T21:27:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T82', 'approved', 0, '2026-11-06T21:27:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T83', 'approved', 0, '2026-11-06T21:27:41Z', NULL);
@@ -89147,6 +89156,65 @@ Requires: W2.10 (linked).
 Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
 
 Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:21Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T600', 'Filed automatically by the IdiotProof Hub (IP-T579): every Hub error becomes a fix ticket.
+
+## Where
+- When: 2026-11-19 8:55:49 PM ET (2026-11-20T01:55:49.7167161Z UTC)
+- Level: Error
+- Logger category: `Microsoft.EntityFrameworkCore.Database.Connection` (event 20004 Microsoft.EntityFrameworkCore.Database.Connection.ConnectionError)
+- Command running last: research gappers explore (8:54:31 PM)
+- Hub: PID 70664, C:\Apps\IdiotProof\Hub\idiotproof-hub.exe, built 2026-11-20 00:53 UTC
+- Fingerprint: `88efa8c3124e4ad3` (repeats add notes here instead of new tickets)
+
+## Message
+```
+An error occurred using the connection to database ''IdiotProof_Research_GAP'' on server ''tcp:sql-mindattic-f65744.database.windows.net,1433''.
+```
+Template: `An error occurred using the connection to database ''{database}'' on server ''{server}''.`
+
+## Last 40 Hub console lines (oldest first)
+```
+[8:22:10 PM] <<< cli  gapper radar  ok  120344ms
+  [HIBERNATE] 20:22 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:23 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:24 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:25 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:26 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:27 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:28 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:29 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:30 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:31 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:32 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:33 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:34 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:35 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:36 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:37 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:38 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:39 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:40 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:41 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:42 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:43 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:44 ET — next active 3:55 AM ET
+[8:45:13 PM] >>> cli  momentum import
+[8:45:22 PM] <<< cli  momentum import  ok  9453ms
+[8:45:23 PM] >>> cli  momentum extract
+[8:45:23 PM] <<< cli  momentum extract  ok  92ms
+  [HIBERNATE] 20:45 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:46 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:47 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:48 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:49 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:50 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:51 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:52 ET — next active 3:55 AM ET
+  [HIBERNATE] 20:53 ET — next active 3:55 AM ET
+[8:54:31 PM] >>> cli  research gappers explore  --command quotes-pull
+  [HIBERNATE] 20:54 ET — next active 3:55 AM ET
+fail: Microsoft.EntityFrameworkCore.Database.Connection[20004] An error occurred using the connection to database ''IdiotProof_Research_GAP'' on server ''tcp:sql-mindattic-f65744.database.windows.net,1433''.
+```', '2026-11-20T01:55:51Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T61', '**Epic W — Command line & Hub** / W2 Operation framework + CLI client (`W2.12`)
 
 Exit-code contract 0 ok / 1 fail / 2 usage / 3 blocked by a gate / 4 confirmation required — documented and tested
@@ -100436,6 +100504,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T592', 'Daily ru
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T593', 'Gapper retire by kind', '2026-11-19T20:08:01Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T594', 'Market-on-open exit', '2026-11-19T20:34:49Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T596', 'Hub error OperationDispatcher', '2026-11-19T22:21:46Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T600', 'Hub error Connection', '2026-11-20T01:55:51Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T26', 'Publish all GLMZ books', '2026-11-19T19:26:17Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T27', 'Vendor missing MindAttic.Vault', '2026-11-19T19:29:08Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T28', 'Repack Prose.Core for Node.Status drop', '2026-11-19T19:32:45Z');
