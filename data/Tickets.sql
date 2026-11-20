@@ -5397,6 +5397,10 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T618', 'IdiotProof', 618, '2026-11-20', 'fix', 'open', 'Hub error in OperationDispatcher: IOException: The process cannot access the file ''D:\IdiotProofData\gapper-study\quotes\entries-0830-buy...', '—', 617, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T619', 'IdiotProof', 619, '2026-11-20', 'feature', 'closed', 'Amendment 11: liquidity-filtered late-runner ride off the validated H27 move-start signal (pre-register before any A11 number, new entry/exit idea after H29''s decisive train failure, IP-T617)', 'IP-T617', 618, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T620', 'IdiotProof', 620, '2026-11-20', 'fix', 'open', 'Hub error in OperationDispatcher: InvalidDataException: H30 registers no configuration.', '—', 619, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T621', 'IdiotProof', 621, '2026-11-20', 'fix', 'open', 'Hub error in Command: Failed executing DbCommand (391,438ms) [Parameters=[@strategyId=''?'' (DbType = Guid)], CommandType=''Text'', Comm...', '—', 620, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T622', 'IdiotProof', 622, '2026-11-20', 'fix', 'open', 'Hub error in Query: SqlException: Execution Timeout Expired.  The timeout period elapsed prior to completion of the operatio...', '—', 621, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T623', 'IdiotProof', 623, '2026-11-20', 'fix', 'open', 'Hub error in MonitorWorker: SqlException: Execution Timeout Expired.  The timeout period elapsed prior to completion of the operatio...', '—', 622, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T624', 'IdiotProof', 624, '2026-11-20', 'fix', 'open', 'Hub error in MonitorWorker: Monitor leader lease lost (SQL session dropped?) — stopped trading; standing by to re-acquire it.', '—', 623, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T1', 'JellyFinPoster', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| JFP-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T2', 'JellyFinPoster', 2, '2026-10-16', 'chore', 'closed', 'install.ps1 adds this repo''s 9 .prose/commands stubs for the shared global commands, so any LLM client finds them', 'mindattic-agent-standard/install.ps1 run 2026-10-16', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T3', 'JellyFinPoster', 3, '2026-10-16', 'chore', 'closed', 'Bug hunt: run an exhaustive /bughunt over the whole repo and fix every real bug found (each fix under its own fix ticket), then hunt again; close this only when a full pass finds nothing', '9a5f84c', 2, NULL);
@@ -79735,6 +79739,14 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78649, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78650, 'IP-T447', '2026-11-20T12:55:52Z', 'working', 'ryandebraal@gmail.com (33afdbd4-4e77-449c-9026-7d3a28e246b4)', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78651, 'M5SE-T149', '2026-11-20T13:23:56Z', 'working', NULL, '3d31d827-5801-4ba3-9646-cb43dc915311');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78652, 'M5SE-T149', '2026-11-20T13:53:40Z', 'working', '3d31d827-5801-4ba3-9646-cb43dc915311', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78653, 'IP-T621', '2026-11-20T14:06:24Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78654, 'IP-T621', '2026-11-20T14:06:24Z', 'name', NULL, 'Hub error Command');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78655, 'IP-T622', '2026-11-20T14:06:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78656, 'IP-T622', '2026-11-20T14:06:26Z', 'name', NULL, 'Hub error Query');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78657, 'IP-T623', '2026-11-20T14:06:27Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78658, 'IP-T623', '2026-11-20T14:06:27Z', 'name', NULL, 'Hub error MonitorWorker');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78659, 'IP-T624', '2026-11-20T14:06:58Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78660, 'IP-T624', '2026-11-20T14:06:58Z', 'name', NULL, 'Hub error MonitorWorker');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -90473,6 +90485,336 @@ System.IO.InvalidDataException: H30 registers no configuration.
    at IdiotProof.Operations.Research.Gappers.GapperExploreOperation.ExecuteAsync(GapperExploreArgs args, OperationContext ctx) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Operations\Research\Gappers\GapperStudyOperations.cs:line 440
    at IdiotProof.Operations.OperationDispatcher.RunAsync(String name, Func`2 bind, OperationInvocation info, CancellationToken ct) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Operations\OperationDispatcher.cs:line 169
 ```', '2026-11-20T10:19:31Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T621', 'Filed automatically by the IdiotProof Hub (IP-T579): every Hub error becomes a fix ticket.
+
+## Where
+- When: 2026-11-20 9:06:22 AM ET (2026-11-20T14:06:22.5534395Z UTC)
+- Level: Error
+- Logger category: `Microsoft.EntityFrameworkCore.Database.Command` (event 20102 Microsoft.EntityFrameworkCore.Database.Command.CommandError)
+- Command running last: account summary (8:59:45 AM)
+- Hub: PID 50244, C:\Apps\IdiotProof\Hub\idiotproof-hub.exe, built 2026-11-20 07:46 UTC
+- Fingerprint: `bae4de09b40482fa` (repeats add notes here instead of new tickets)
+
+## Message
+```
+Failed executing DbCommand (391,438ms) [Parameters=[@strategyId=''?'' (DbType = Guid)], CommandType=''Text'', CommandTimeout=''30'']
+SELECT TOP(1) [c].[StrategyId], [c].[EvaluatedUtc], [c].[FirstFailingVerb], [c].[LastPrice], [c].[LastPriceUtc], [c].[PassedCount], [c].[StepCount], [c].[StepIndex], [c].[TotalCount]
+FROM [ConditionProgress] AS [c]
+WHERE [c].[StrategyId] = @strategyId
+```
+Template: `Failed executing DbCommand ({elapsed}ms) [Parameters=[{parameters}], CommandType=''{commandType}'', CommandTimeout=''{commandTimeout}'']{newLine}{commandText}`
+
+## Last 40 Hub console lines (oldest first)
+```
+info: System.Net.Http.HttpClient.edgar.ClientHandler[100] Sending HTTP request GET https://www.sec.gov/cgi-bin/browse-edgar?*
+info: System.Net.Http.HttpClient.edgar.ClientHandler[101] Received HTTP response headers after 162.4932ms - 200
+info: System.Net.Http.HttpClient.edgar.LogicalHandler[101] End processing HTTP request after 162.698ms - 200
+info: System.Net.Http.HttpClient.edgar.LogicalHandler[100] Start processing HTTP request GET https://www.sec.gov/cgi-bin/browse-edgar?*
+info: System.Net.Http.HttpClient.edgar.ClientHandler[100] Sending HTTP request GET https://www.sec.gov/cgi-bin/browse-edgar?*
+info: System.Net.Http.HttpClient.edgar.ClientHandler[101] Received HTTP response headers after 281.2266ms - 200
+info: System.Net.Http.HttpClient.edgar.LogicalHandler[101] End processing HTTP request after 281.3618ms - 200
+info: System.Net.Http.HttpClient.edgar.LogicalHandler[100] Start processing HTTP request GET https://www.sec.gov/cgi-bin/browse-edgar?*
+info: System.Net.Http.HttpClient.edgar.ClientHandler[100] Sending HTTP request GET https://www.sec.gov/cgi-bin/browse-edgar?*
+info: System.Net.Http.HttpClient.edgar.ClientHandler[101] Received HTTP response headers after 1059.9268ms - 200
+info: System.Net.Http.HttpClient.edgar.LogicalHandler[101] End processing HTTP request after 1060.0525ms - 200
+info: System.Net.Http.HttpClient.edgar.LogicalHandler[100] Start processing HTTP request GET https://www.sec.gov/cgi-bin/browse-edgar?*
+info: System.Net.Http.HttpClient.edgar.ClientHandler[100] Sending HTTP request GET https://www.sec.gov/cgi-bin/browse-edgar?*
+info: System.Net.Http.HttpClient.edgar.ClientHandler[101] Received HTTP response headers after 117.019ms - 200
+info: System.Net.Http.HttpClient.edgar.LogicalHandler[101] End processing HTTP request after 117.217ms - 200
+info: System.Net.Http.HttpClient.edgar.LogicalHandler[100] Start processing HTTP request GET https://www.sec.gov/cgi-bin/browse-edgar?*
+info: System.Net.Http.HttpClient.edgar.ClientHandler[100] Sending HTTP request GET https://www.sec.gov/cgi-bin/browse-edgar?*
+info: System.Net.Http.HttpClient.edgar.ClientHandler[101] Received HTTP response headers after 134.8705ms - 200
+info: System.Net.Http.HttpClient.edgar.LogicalHandler[101] End processing HTTP request after 135.0555ms - 200
+info: System.Net.Http.HttpClient.edgar.LogicalHandler[100] Start processing HTTP request GET https://www.sec.gov/cgi-bin/browse-edgar?*
+info: System.Net.Http.HttpClient.edgar.ClientHandler[100] Sending HTTP request GET https://www.sec.gov/cgi-bin/browse-edgar?*
+[8:59:32 AM] >>> cli  orders list  --status all --mode paper --limit 5
+[8:59:32 AM] <<< cli  orders list  ok  250ms
+[8:59:33 AM] >>> cli  account summary  --mode paper
+[8:59:33 AM] <<< cli  account summary  ok  217ms
+warn: IdiotProof.Core.Catalysts.CatalystIntakeWorker[0] Catalyst intake edgar: The request was canceled due to the configured HttpClient.Timeout of 15 seconds elapsing.
+[8:59:45 AM] >>> cli  orders list  --status all --mode paper --limit 5
+[8:59:45 AM] <<< cli  orders list  ok  125ms
+[8:59:45 AM] >>> cli  account summary  --mode paper
+[8:59:46 AM] <<< cli  account summary  ok  767ms
+info: System.Net.Http.HttpClient.catalyst-wires.LogicalHandler[100] Start processing HTTP request GET https://feed.businesswire.com/rss/home/?*
+info: System.Net.Http.HttpClient.catalyst-wires.ClientHandler[100] Sending HTTP request GET https://feed.businesswire.com/rss/home/?*
+info: System.Net.Http.HttpClient.catalyst-wires.ClientHandler[101] Received HTTP response headers after 62.0277ms - 304
+info: System.Net.Http.HttpClient.catalyst-wires.LogicalHandler[101] End processing HTTP request after 62.1026ms - 304
+info: System.Net.Http.HttpClient.catalyst-wires.LogicalHandler[100] Start processing HTTP request GET https://feed.businesswire.com/rss/home/?*
+info: System.Net.Http.HttpClient.catalyst-wires.ClientHandler[100] Sending HTTP request GET https://feed.businesswire.com/rss/home/?*
+info: System.Net.Http.HttpClient.catalyst-wires.ClientHandler[101] Received HTTP response headers after 7.9793ms - 304
+info: System.Net.Http.HttpClient.catalyst-wires.LogicalHandler[101] End processing HTTP request after 8.0718ms - 304
+crit: IdiotProof.Core.Monitoring.MonitorOutageWatchdog[0] MONITOR OUTAGE: the Monitor no tick has finished for 6m 40s (loop stuck?). Monitor-managed stops and exits are NOT being enforced.
+fail: Microsoft.EntityFrameworkCore.Database.Command[20102] Failed executing DbCommand (391,438ms) [Parameters=[@strategyId=''?'' (DbType = Guid)], CommandType=''Text'', CommandTimeout=''30''] SELECT TOP(1) [c].[StrategyId], [c].[EvaluatedUtc], [c].[FirstFailingVerb], [c].[LastPrice], [c].[LastPriceUtc], [c].[PassedCount], [c].[StepCount], [c].[StepIndex], [c].[TotalCount] FROM [ConditionProgress] AS [c] WHERE [c].[StrategyId] = @strategyId
+```', '2026-11-20T14:06:24Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T622', 'Filed automatically by the IdiotProof Hub (IP-T579): every Hub error becomes a fix ticket.
+
+## Where
+- When: 2026-11-20 9:06:22 AM ET (2026-11-20T14:06:22.5588863Z UTC)
+- Level: Error
+- Logger category: `Microsoft.EntityFrameworkCore.Query` (event 10100 Microsoft.EntityFrameworkCore.Query.QueryIterationFailed)
+- Command running last: account summary (8:59:45 AM)
+- Hub: PID 50244, C:\Apps\IdiotProof\Hub\idiotproof-hub.exe, built 2026-11-20 07:46 UTC
+- Fingerprint: `065ade702a54f842` (repeats add notes here instead of new tickets)
+
+## Message
+```
+An exception occurred while iterating over the results of a query for context type ''IdiotProof.Core.Data.AppDbContext''.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+A transport-level error has occurred when receiving results from the server. (provider: Session Provider, error: 19 - Physical connection is not usable)
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:9e0a4f64-d381-4708-9cff-548b322eedeb
+Error Number:-2,State:0,Class:11
+```
+Template: `An exception occurred while iterating over the results of a query for context type ''{contextType}''.{newline}{error}`
+
+## Exception (full)
+```
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+A transport-level error has occurred when receiving results from the server. (provider: Session Provider, error: 19 - Physical connection is not usable)
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at IdiotProof.Core.Services.ConditionProgressRepository.UpsertAsync(Guid strategyId, Int32 passedCount, Int32 totalCount, String firstFailingVerb, CancellationToken ct, Nullable`1 lastPrice, Nullable`1 stepIndex, Nullable`1 stepCount) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Core\Services\ConditionProgressRepository.cs:line 23
+   at IdiotProof.Core.Services.ConditionProgressRepository.UpsertAsync(Guid strategyId, Int32 passedCount, Int32 totalCount, String firstFailingVerb, CancellationToken ct, Nullable`1 lastPrice, Nullable`1 stepIndex, Nullable`1 stepCount) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Core\Services\ConditionProgressRepository.cs:line 56
+   at IdiotProof.Core.Monitoring.MonitorWorker.EvaluateOneAsync(Strategy stored, IReadOnlyList`1 candles, Nullable`1 previousClose, CancellationToken ct) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Core\Monitoring\MonitorWorker.cs:line 1035
+   at IdiotProof.Core.Monitoring.MonitorWorker.TickAsync(CancellationToken ct) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Core\Monitoring\MonitorWorker.cs:line 620
+ClientConnectionId:9e0a4f64-d381-4708-9cff-548b322eedeb
+Error Number:-2,State:0,Class:11
+```
+Exception data:
+- HelpLink.ProdName: Microsoft SQL Server
+- HelpLink.EvtSrc: MSSQLServer
+- HelpLink.EvtID: -2
+- HelpLink.BaseHelpUrl: https://go.microsoft.com/fwlink
+- HelpLink.LinkId: 20476
+
+## Last 40 Hub console lines (oldest first)
+```
+[8:59:32 AM] >>> cli  orders list  --status all --mode paper --limit 5
+[8:59:32 AM] <<< cli  orders list  ok  250ms
+[8:59:33 AM] >>> cli  account summary  --mode paper
+[8:59:33 AM] <<< cli  account summary  ok  217ms
+warn: IdiotProof.Core.Catalysts.CatalystIntakeWorker[0] Catalyst intake edgar: The request was canceled due to the configured HttpClient.Timeout of 15 seconds elapsing.
+[8:59:45 AM] >>> cli  orders list  --status all --mode paper --limit 5
+[8:59:45 AM] <<< cli  orders list  ok  125ms
+[8:59:45 AM] >>> cli  account summary  --mode paper
+[8:59:46 AM] <<< cli  account summary  ok  767ms
+info: System.Net.Http.HttpClient.catalyst-wires.LogicalHandler[100] Start processing HTTP request GET https://feed.businesswire.com/rss/home/?*
+info: System.Net.Http.HttpClient.catalyst-wires.ClientHandler[100] Sending HTTP request GET https://feed.businesswire.com/rss/home/?*
+info: System.Net.Http.HttpClient.catalyst-wires.ClientHandler[101] Received HTTP response headers after 62.0277ms - 304
+info: System.Net.Http.HttpClient.catalyst-wires.LogicalHandler[101] End processing HTTP request after 62.1026ms - 304
+info: System.Net.Http.HttpClient.catalyst-wires.LogicalHandler[100] Start processing HTTP request GET https://feed.businesswire.com/rss/home/?*
+info: System.Net.Http.HttpClient.catalyst-wires.ClientHandler[100] Sending HTTP request GET https://feed.businesswire.com/rss/home/?*
+info: System.Net.Http.HttpClient.catalyst-wires.ClientHandler[101] Received HTTP response headers after 7.9793ms - 304
+info: System.Net.Http.HttpClient.catalyst-wires.LogicalHandler[101] End processing HTTP request after 8.0718ms - 304
+crit: IdiotProof.Core.Monitoring.MonitorOutageWatchdog[0] MONITOR OUTAGE: the Monitor no tick has finished for 6m 40s (loop stuck?). Monitor-managed stops and exits are NOT being enforced.
+fail: Microsoft.EntityFrameworkCore.Database.Command[20102] Failed executing DbCommand (391,438ms) [Parameters=[@strategyId=''?'' (DbType = Guid)], CommandType=''Text'', CommandTimeout=''30''] SELECT TOP(1) [c].[StrategyId], [c].[EvaluatedUtc], [c].[FirstFailingVerb], [c].[LastPrice], [c].[LastPriceUtc], [c].[PassedCount], [c].[StepCount], [c].[StepIndex], [c].[TotalCount] FROM [ConditionProgress] AS [c] WHERE [c].[StrategyId] = @strategyId
+fail: Microsoft.EntityFrameworkCore.Query[10100] An exception occurred while iterating over the results of a query for context type ''IdiotProof.Core.Data.AppDbContext''. Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding. A transport-level error has occurred when receiving results from the server. (provider: Session Provider, error: 19 - Physical connection is not usable)  ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.    at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()    at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state) --- End of stack trace from previous location ---    at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)    at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread) --- End of stack trace from previous location ---    at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)    at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)    at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)    at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext() --- End of stack trace from previous location ---    at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)    at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)    at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)    at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync() ClientConnectionId:9e0a4f64-d381-4708-9cff-548b322eedeb Error Number:-2,State:0,Class:11
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+A transport-level error has occurred when receiving results from the server. (provider: Session Provider, error: 19 - Physical connection is not usable)
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:9e0a4f64-d381-4708-9cff-548b322eedeb
+Error Number:-2,State:0,Class:11
+```', '2026-11-20T14:06:26Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T623', 'Filed automatically by the IdiotProof Hub (IP-T579): every Hub error becomes a fix ticket.
+
+## Where
+- When: 2026-11-20 9:06:22 AM ET (2026-11-20T14:06:22.5637476Z UTC)
+- Level: Error
+- Logger category: `IdiotProof.Core.Monitoring.MonitorWorker`
+- Command running last: account summary (8:59:45 AM)
+- Hub: PID 50244, C:\Apps\IdiotProof\Hub\idiotproof-hub.exe, built 2026-11-20 07:46 UTC
+- Fingerprint: `26fdd1e1b94afa9a` (repeats add notes here instead of new tickets)
+
+## Message
+```
+Evaluation failed for INHD Multi-Stage Gapper v2 (penny) (01a1f83c-7d54-75cc-92bc-be960a310156); continuing with next strategy.
+```
+Template: `Evaluation failed for {Title} ({Id}); continuing with next strategy.`
+
+## Exception (full)
+```
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+A transport-level error has occurred when receiving results from the server. (provider: Session Provider, error: 19 - Physical connection is not usable)
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at IdiotProof.Core.Services.ConditionProgressRepository.UpsertAsync(Guid strategyId, Int32 passedCount, Int32 totalCount, String firstFailingVerb, CancellationToken ct, Nullable`1 lastPrice, Nullable`1 stepIndex, Nullable`1 stepCount) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Core\Services\ConditionProgressRepository.cs:line 23
+   at IdiotProof.Core.Services.ConditionProgressRepository.UpsertAsync(Guid strategyId, Int32 passedCount, Int32 totalCount, String firstFailingVerb, CancellationToken ct, Nullable`1 lastPrice, Nullable`1 stepIndex, Nullable`1 stepCount) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Core\Services\ConditionProgressRepository.cs:line 56
+   at IdiotProof.Core.Monitoring.MonitorWorker.EvaluateOneAsync(Strategy stored, IReadOnlyList`1 candles, Nullable`1 previousClose, CancellationToken ct) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Core\Monitoring\MonitorWorker.cs:line 1035
+   at IdiotProof.Core.Monitoring.MonitorWorker.TickAsync(CancellationToken ct) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Core\Monitoring\MonitorWorker.cs:line 620
+ClientConnectionId:9e0a4f64-d381-4708-9cff-548b322eedeb
+Error Number:-2,State:0,Class:11
+```
+Exception data:
+- HelpLink.ProdName: Microsoft SQL Server
+- HelpLink.EvtSrc: MSSQLServer
+- HelpLink.EvtID: -2
+- HelpLink.BaseHelpUrl: https://go.microsoft.com/fwlink
+- HelpLink.LinkId: 20476
+
+## Last 40 Hub console lines (oldest first)
+```
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:9e0a4f64-d381-4708-9cff-548b322eedeb
+Error Number:-2,State:0,Class:11
+fail: IdiotProof.Core.Monitoring.MonitorWorker[0] Evaluation failed for INHD Multi-Stage Gapper v2 (penny) (01a1f83c-7d54-75cc-92bc-be960a310156); continuing with next strategy.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+A transport-level error has occurred when receiving results from the server. (provider: Session Provider, error: 19 - Physical connection is not usable)
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at IdiotProof.Core.Services.ConditionProgressRepository.UpsertAsync(Guid strategyId, Int32 passedCount, Int32 totalCount, String firstFailingVerb, CancellationToken ct, Nullable`1 lastPrice, Nullable`1 stepIndex, Nullable`1 stepCount) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Core\Services\ConditionProgressRepository.cs:line 23
+   at IdiotProof.Core.Services.ConditionProgressRepository.UpsertAsync(Guid strategyId, Int32 passedCount, Int32 totalCount, String firstFailingVerb, CancellationToken ct, Nullable`1 lastPrice, Nullable`1 stepIndex, Nullable`1 stepCount) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Core\Services\ConditionProgressRepository.cs:line 56
+   at IdiotProof.Core.Monitoring.MonitorWorker.EvaluateOneAsync(Strategy stored, IReadOnlyList`1 candles, Nullable`1 previousClose, CancellationToken ct) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Core\Monitoring\MonitorWorker.cs:line 1035
+   at IdiotProof.Core.Monitoring.MonitorWorker.TickAsync(CancellationToken ct) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Core\Monitoring\MonitorWorker.cs:line 620
+ClientConnectionId:9e0a4f64-d381-4708-9cff-548b322eedeb
+Error Number:-2,State:0,Class:11
+```', '2026-11-20T14:06:27Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T624', 'Filed automatically by the IdiotProof Hub (IP-T579): every Hub error becomes a fix ticket.
+
+## Where
+- When: 2026-11-20 9:06:35 AM ET (2026-11-20T14:06:35.9646348Z UTC)
+- Level: Error
+- Logger category: `IdiotProof.Core.Monitoring.MonitorWorker`
+- Command running last: account summary (9:06:25 AM)
+- Hub: PID 50244, C:\Apps\IdiotProof\Hub\idiotproof-hub.exe, built 2026-11-20 07:46 UTC
+- Fingerprint: `cd0e7bc488c19e56` (repeats add notes here instead of new tickets)
+
+## Message
+```
+Monitor leader lease lost (SQL session dropped?) — stopped trading; standing by to re-acquire it.
+```
+
+## Last 40 Hub console lines (oldest first)
+```
+   at MindAttic.Legion.Providers.LlmVotingProvider.CallAsync(String providerId, String systemPrompt, String userMessage, Int32 maxTokens, Double temperature, VoterProfile voterOverrides, CancellationToken ct)
+   at MindAttic.Legion.LlmVotingService.CallVoterAsync(VoterProfile voter, VoteRequest request, Boolean isChoice, CancellationToken ct)
+info: System.Net.Http.HttpClient.LlmVotingProvider.ClientHandler[101] Received HTTP response headers after 398.6921ms - 200
+info: System.Net.Http.HttpClient.LlmVotingProvider.LogicalHandler[101] End processing HTTP request after 398.8526ms - 200
+info: System.Net.Http.HttpClient.LlmVotingProvider.ClientHandler[101] Received HTTP response headers after 850.0474ms - 200
+info: System.Net.Http.HttpClient.LlmVotingProvider.LogicalHandler[101] End processing HTTP request after 850.2162ms - 200
+info: System.Net.Http.HttpClient.LlmVotingProvider.ClientHandler[101] Received HTTP response headers after 1867.2637ms - 200
+info: System.Net.Http.HttpClient.LlmVotingProvider.LogicalHandler[101] End processing HTTP request after 1867.424ms - 200
+fail: Microsoft.EntityFrameworkCore.Database.Command[20102] Failed executing DbCommand (393,560ms) [Parameters=[@key=''?'' (Size = 128)], CommandType=''Text'', CommandTimeout=''30''] SELECT TOP(1) [s].[Key], [s].[UpdatedUtc], [s].[Value] FROM [SettingsKv] AS [s] WHERE [s].[Key] = @key
+fail: Microsoft.EntityFrameworkCore.Query[10100] An exception occurred while iterating over the results of a query for context type ''IdiotProof.Core.Data.AppDbContext''. Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding. A transport-level error has occurred when receiving results from the server. (provider: Session Provider, error: 19 - Physical connection is not usable)  ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.    at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()    at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state) --- End of stack trace from previous location ---    at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)    at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread) --- End of stack trace from previous location ---    at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)    at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)    at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)    at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext() --- End of stack trace from previous location ---    at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)    at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)    at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)    at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync() ClientConnectionId:dc8af444-2048-4425-a227-6c18c816ad7b Error Number:-2,State:0,Class:11
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+A transport-level error has occurred when receiving results from the server. (provider: Session Provider, error: 19 - Physical connection is not usable)
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:dc8af444-2048-4425-a227-6c18c816ad7b
+Error Number:-2,State:0,Class:11
+warn: IdiotProof.Core.History.HistoryBackfillWorker[0] History backfill: history database unavailable (Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding. A transport-level error has occurred when receiving results from the server. (provider: Session Provider, error: 19 - Physical connection is not usable)).
+[hub] filed IP-T623 for: Hub error in MonitorWorker: SqlException: Execution Timeout Expired.  The timeout period elapsed prior to completion of the operatio...
+info: MindAttic.Legion.LlmVotingService[0] LLMVoting: refilling 1 failed voter slot(s) with instances of deepseek,gemini,openai
+info: System.Net.Http.HttpClient.LlmVotingProvider.LogicalHandler[100] Start processing HTTP request POST https://api.deepseek.com/chat/completions
+info: System.Net.Http.HttpClient.LlmVotingProvider.ClientHandler[100] Sending HTTP request POST https://api.deepseek.com/chat/completions
+info: System.Net.Http.HttpClient.LlmVotingProvider.ClientHandler[101] Received HTTP response headers after 350.2897ms - 200
+info: System.Net.Http.HttpClient.LlmVotingProvider.LogicalHandler[101] End processing HTTP request after 350.3898ms - 200
+info: MindAttic.Legion.LlmVotingService[0] LLMVoting: vote complete — consensus=''Reject'', strength=100 %, quorumReached=True, duration=00:00:06.7520242
+warn: IdiotProof.Core.Services.LlmVotingService[0] LLM voter claude (Risk Manager) failed: 400 Bad Request: {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits."},"request_id":"req_011ChEJsckoLPUETMLdh9mWs"}
+fail: IdiotProof.Core.Monitoring.MonitorWorker[0] Monitor leader lease lost (SQL session dropped?) — stopped trading; standing by to re-acquire it.
+```', '2026-11-20T14:06:58Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T63', '**Epic W — Command line & Hub** / W2 Operation framework + CLI client (`W2.14`)
 
 Owner resolution in CLI: --user, `users use` persisted default in %APPDATA%\MindAttic\IdiotProof\cli.json, single-user fallback
@@ -101802,6 +102144,10 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T605', 'Amendmen
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T606', 'Hub error UnhandledException', '2026-11-20T04:38:03Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T618', 'Hub error OperationDispatcher', '2026-11-20T08:09:39Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T620', 'Hub error OperationDispatcher', '2026-11-20T10:19:32Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T621', 'Hub error Command', '2026-11-20T14:06:24Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T622', 'Hub error Query', '2026-11-20T14:06:26Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T623', 'Hub error MonitorWorker', '2026-11-20T14:06:27Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T624', 'Hub error MonitorWorker', '2026-11-20T14:06:58Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T26', 'Publish all GLMZ books', '2026-11-19T19:26:17Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T27', 'Vendor missing MindAttic.Vault', '2026-11-19T19:29:08Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T28', 'Repack Prose.Core for Node.Status drop', '2026-11-19T19:32:45Z');
