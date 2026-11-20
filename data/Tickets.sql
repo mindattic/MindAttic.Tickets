@@ -5394,6 +5394,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T615', 'IdiotProof', 615, '2026-11-20', 'fix', 'closed', 'Fails on main: IdiotProof.Core.Tests.GapperStudy.GapperSnapshotStageTests.Snapshot_WritesBacktestRows_WithoutAProfile_ThenWithOne — System.InvalidOperationException : Relational-specific methods can only be used when the context is using a relational database provider. (landed on main since the last green run: tickets IP-T609 in 156ef11a StudyDaysAsync gets a 10-minute command timeout, like other explore stages already have (IP-T609))', 'passes on main@683ad95', 614, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T616', 'IdiotProof', 616, '2026-11-20', 'feature', 'closed', 'Amendment 09 validation run: A09-H1 and A09-H2 both passed on train (IP-T605, +0.093 weighted AUC lift and 4.3x lift from a fresh catalyst at the move start); run the single pre-registered validation pass on the untouched validation split, same definitions, no refitting choices changed by having seen the train result. Counts only if the sign holds; a pass still changes no strategy/template/radar/sell-by (amendment 09).', 'a724c992', 615, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T617', 'IdiotProof', 617, '2026-11-20', 'feature', 'open', 'Amendment 10 (next step toward an actionable rule): pre-register a regular-hours entry/exit rule off the validated A09-H1/H2 move-start signal (H27/H28, IP-T616) BEFORE looking at any trade simulation -- exact entry (e.g. at or after m0, confirmed by the fitted detector''s score above a to-be-chosen threshold), exit ladder, the frozen cost model, and worth-trading minimums (minTrades/minDays/lowerBoundAbove), mirroring H12/H12p/H18''s own grid pattern. Explicitly needed since amendment 09 only established the pattern is real, not a trading rule: no entry, exit, cost model or sizing has been specified yet. Train-only exploration first (a new explore command or grid), then its own single validation read if it passes, same discipline as amendment 09.', '—', 616, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T618', 'IdiotProof', 618, '2026-11-20', 'fix', 'open', 'Hub error in OperationDispatcher: IOException: The process cannot access the file ''D:\IdiotProofData\gapper-study\quotes\entries-0830-buy...', '—', 617, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T1', 'JellyFinPoster', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| JFP-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T2', 'JellyFinPoster', 2, '2026-10-16', 'chore', 'closed', 'install.ps1 adds this repo''s 9 .prose/commands stubs for the shared global commands, so any LLM client finds them', 'mindattic-agent-standard/install.ps1 run 2026-10-16', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T3', 'JellyFinPoster', 3, '2026-10-16', 'chore', 'closed', 'Bug hunt: run an exhaustive /bughunt over the whole repo and fix every real bug found (each fix under its own fix ticket), then hunt again; close this only when a full pass finds nothing', '9a5f84c', 2, NULL);
@@ -12267,6 +12268,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T415', 'SpaceGod', 415, '2026-11-20', 'feature', 'closed', 'Hold to rewind: two more barriers lifted and one left honestly unverified -- a unit joining mid-fight no longer blocks a resume (Ship::Battle, set outside the per-unit snapshot, is cleared back on restore, same pattern as US-T413''s hangar fix); a same-hull seat change (helm to a turret) is no longer flagged by the barrier census (Ship computed from HeldSeat, not Piloting); empirical verification of the seat-change case is blocked by a separate, pre-existing bug (US-T414, not caused by rewind), so the self-test logs and skips that exact known shape instead of failing on it', 'a5dcce0', 414, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T416', 'SpaceGod', 416, '2026-11-20', 'feature', 'closed', 'Hold to rewind: a deployed mech''s own state (Battle::Mechs, mutated in place: position, armour, heat, ammo) put back by value, the same pattern as a FlightDeck or DeckVisit, so the fleet-wide Seats census stops treating a mech launch/wreck or a gun/craft manned/released as an unresumable barrier once the underlying data is actually restorable', '011a8e8', 415, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T417', 'SpaceGod', 417, '2026-11-20', 'feature', 'closed', 'Hold to rewind, full seamlessness: the player''s own hull lost, taken or struck and a surrender''s terms wait out the window like any other booking (the helm held but dead meanwhile, the view on the wreck, the readout saying there is time to rewind), so a hold can undo your own death; the seat the player held (helm, gun, craft, mech on the same body) is restored with the fight on resume, so a seat change is no longer a barrier; the census keys the player''s hull by body (a craft launched from your carrier is the same body, as the embody gate already counts it); self-test checks both end to end', '011a8e8', 416, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T418', 'SpaceGod', 418, '2026-11-20', 'feature', 'open', 'Hold to rewind draws the system as it was: ships that went out through a gate during the window are drawn again on their way, ships that came in during it are hidden (US-T418 rendering pass)', '—', 417, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T1', 'SpaceGod.Unity.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T2', 'SpaceGod.Unity.CSharp', 2, '2026-11-06', 'feature', 'closed', 'Adopt the shared off-by-default --headless launch mode (Unity.Shared)', 'faadbca', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T3', 'SpaceGod.Unity.CSharp', 3, '2026-11-08', 'feature', 'open', 'Mirror SpaceGod US-T72: docs/CAPTURE.md names the promoted copy SpaceGod (not SpaceGod.Unreal.Cpp) as the third copy and its RepoName folder, and lists SpaceGod''s -RenderOffScreen capture row as that copy only', 'SpaceGod US-T72', 2, NULL);
@@ -79464,6 +79466,13 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78405, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78406, 'US-T416', '2026-11-20T08:07:54Z', 'ref', '—', '011a8e8');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78407, 'US-T414', '2026-11-20T08:07:56Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78408, 'US-T414', '2026-11-20T08:07:56Z', 'ref', '—', '1468956');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78409, 'US-T416', '2026-11-20T08:08:32Z', 'working', 'd5da4af3-5328-4bef-b372-ddd19f1daed6', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78410, 'US-T417', '2026-11-20T08:08:33Z', 'working', 'd5da4af3-5328-4bef-b372-ddd19f1daed6', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78411, 'IP-T618', '2026-11-20T08:09:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78412, 'IP-T618', '2026-11-20T08:09:39Z', 'name', NULL, 'Hub error OperationDispatcher');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78413, 'US-T418', '2026-11-20T08:12:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78414, 'US-T418', '2026-11-20T08:12:43Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78415, 'US-T418', '2026-11-20T08:12:57Z', 'working', NULL, 'd5da4af3-5328-4bef-b372-ddd19f1daed6');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -82687,6 +82696,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T415', 'approved', 0, '2026-11-20T07:10:34Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T416', 'approved', 0, '2026-11-20T07:24:31Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T417', 'approved', 0, '2026-11-20T07:48:27Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T418', 'approved', 0, '2026-11-20T08:12:43Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T72', 'approved', 0, '2026-11-06T21:27:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T82', 'approved', 0, '2026-11-06T21:27:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T83', 'approved', 0, '2026-11-06T21:27:41Z', NULL);
@@ -82931,8 +82941,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T104', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:16:25Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T117', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T07:02:04Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T146', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:14:40Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T416', NULL, 0, NULL, 'd5da4af3-5328-4bef-b372-ddd19f1daed6', '2026-11-20T07:24:52Z', '2026-11-20T07:24:51Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T417', NULL, 0, NULL, 'd5da4af3-5328-4bef-b372-ddd19f1daed6', '2026-11-20T07:49:15Z', '2026-11-20T07:49:14Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T418', NULL, 0, NULL, 'd5da4af3-5328-4bef-b372-ddd19f1daed6', '2026-11-20T08:12:58Z', '2026-11-20T08:12:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T82', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T07:02:05Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T85', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T23:52:54Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T91', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T00:58:13Z');
@@ -90040,6 +90049,75 @@ Requires: W2.03, W2.07 (linked).
 Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
 
 Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:22Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T618', 'Filed automatically by the IdiotProof Hub (IP-T579): every Hub error becomes a fix ticket.
+
+## Where
+- When: 2026-11-20 3:09:39 AM ET (2026-11-20T08:09:39.5016195Z UTC)
+- Level: Error
+- Logger category: `IdiotProof.Operations.OperationDispatcher`
+- Command running last: research scan (3:00:03 AM)
+- Hub: PID 50244, C:\Apps\IdiotProof\Hub\idiotproof-hub.exe, built 2026-11-20 07:46 UTC
+- Fingerprint: `c307084566a5dbf9` (repeats add notes here instead of new tickets)
+
+## Message
+```
+Operation research gappers explore failed
+```
+Template: `Operation {Operation} failed`
+
+## Exception (full)
+```
+System.IO.IOException: The process cannot access the file ''D:\IdiotProofData\gapper-study\quotes\entries-0830-buy-now.csv'' because it is being used by another process.
+   at System.IO.File.WriteToFileAsync(String path, FileMode mode, ReadOnlyMemory`1 contents, Encoding encoding, CancellationToken cancellationToken)
+   at IdiotProof.Core.Research.Gappers.Explore.GapperExploreStage.QuotesPullAsync(ExploreRequest req, CancellationToken ct) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Core\Research\Gappers\Explore\GapperExploreStage.Quotes.cs:line 108
+   at IdiotProof.Core.Research.Gappers.Explore.GapperExploreStage.RunAsync(ExploreRequest req, CancellationToken ct) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Core\Research\Gappers\Explore\GapperExploreStage.cs:line 103
+   at IdiotProof.Operations.Research.Gappers.GapperExploreOperation.ExecuteAsync(GapperExploreArgs args, OperationContext ctx) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Operations\Research\Gappers\GapperStudyOperations.cs:line 440
+   at IdiotProof.Operations.OperationDispatcher.RunAsync(String name, Func`2 bind, OperationInvocation info, CancellationToken ct) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Operations\OperationDispatcher.cs:line 169
+```
+
+## Last 40 Hub console lines (oldest first)
+```
+  [HIBERNATE] 03:08 ET — next active 3:55 AM ET
+info: System.Net.Http.HttpClient.catalyst-wires.LogicalHandler[100] Start processing HTTP request GET https://feed.businesswire.com/rss/home/?*
+info: System.Net.Http.HttpClient.catalyst-wires.LogicalHandler[100] Start processing HTTP request GET https://www.prnewswire.com/rss/news-releases-list.rss
+info: System.Net.Http.HttpClient.catalyst-wires.ClientHandler[100] Sending HTTP request GET https://feed.businesswire.com/rss/home/?*
+info: System.Net.Http.HttpClient.catalyst-wires.ClientHandler[100] Sending HTTP request GET https://www.prnewswire.com/rss/news-releases-list.rss
+info: System.Net.Http.HttpClient.catalyst-wires.ClientHandler[101] Received HTTP response headers after 8.7123ms - 304
+info: System.Net.Http.HttpClient.catalyst-wires.LogicalHandler[101] End processing HTTP request after 8.8311ms - 304
+info: System.Net.Http.HttpClient.catalyst-wires.LogicalHandler[100] Start processing HTTP request GET https://feed.businesswire.com/rss/home/?*
+info: System.Net.Http.HttpClient.catalyst-wires.ClientHandler[100] Sending HTTP request GET https://feed.businesswire.com/rss/home/?*
+info: System.Net.Http.HttpClient.catalyst-wires.ClientHandler[101] Received HTTP response headers after 5.9612ms - 304
+info: System.Net.Http.HttpClient.catalyst-wires.LogicalHandler[101] End processing HTTP request after 6.061ms - 304
+info: System.Net.Http.HttpClient.catalyst-wires.ClientHandler[101] Received HTTP response headers after 17.6395ms - 200
+info: System.Net.Http.HttpClient.catalyst-wires.LogicalHandler[101] End processing HTTP request after 17.733ms - 200
+info: System.Net.Http.HttpClient.edgar.LogicalHandler[100] Start processing HTTP request GET https://www.sec.gov/cgi-bin/browse-edgar?*
+info: System.Net.Http.HttpClient.edgar.ClientHandler[100] Sending HTTP request GET https://www.sec.gov/cgi-bin/browse-edgar?*
+info: System.Net.Http.HttpClient.edgar.ClientHandler[101] Received HTTP response headers after 86.0817ms - 200
+info: System.Net.Http.HttpClient.edgar.LogicalHandler[101] End processing HTTP request after 86.2282ms - 200
+info: System.Net.Http.HttpClient.edgar.LogicalHandler[100] Start processing HTTP request GET https://www.sec.gov/cgi-bin/browse-edgar?*
+info: System.Net.Http.HttpClient.edgar.ClientHandler[100] Sending HTTP request GET https://www.sec.gov/cgi-bin/browse-edgar?*
+info: System.Net.Http.HttpClient.edgar.ClientHandler[101] Received HTTP response headers after 54.6141ms - 200
+info: System.Net.Http.HttpClient.edgar.LogicalHandler[101] End processing HTTP request after 54.7795ms - 200
+info: System.Net.Http.HttpClient.edgar.LogicalHandler[100] Start processing HTTP request GET https://www.sec.gov/cgi-bin/browse-edgar?*
+info: System.Net.Http.HttpClient.edgar.ClientHandler[100] Sending HTTP request GET https://www.sec.gov/cgi-bin/browse-edgar?*
+info: System.Net.Http.HttpClient.edgar.ClientHandler[101] Received HTTP response headers after 115.025ms - 200
+info: System.Net.Http.HttpClient.edgar.LogicalHandler[101] End processing HTTP request after 115.1659ms - 200
+info: System.Net.Http.HttpClient.edgar.LogicalHandler[100] Start processing HTTP request GET https://www.sec.gov/cgi-bin/browse-edgar?*
+info: System.Net.Http.HttpClient.edgar.ClientHandler[100] Sending HTTP request GET https://www.sec.gov/cgi-bin/browse-edgar?*
+info: System.Net.Http.HttpClient.edgar.ClientHandler[101] Received HTTP response headers after 81.2187ms - 200
+info: System.Net.Http.HttpClient.edgar.LogicalHandler[101] End processing HTTP request after 81.3362ms - 200
+info: System.Net.Http.HttpClient.catalyst-wires.LogicalHandler[100] Start processing HTTP request GET https://feeds.newsfilecorp.com/global/Last25Stories
+info: System.Net.Http.HttpClient.catalyst-wires.ClientHandler[100] Sending HTTP request GET https://feeds.newsfilecorp.com/global/Last25Stories
+info: System.Net.Http.HttpClient.catalyst-wires.ClientHandler[101] Received HTTP response headers after 155.497ms - 200
+info: System.Net.Http.HttpClient.catalyst-wires.LogicalHandler[101] End processing HTTP request after 155.637ms - 200
+fail: IdiotProof.Operations.OperationDispatcher[0] Operation research gappers explore failed
+System.IO.IOException: The process cannot access the file ''D:\IdiotProofData\gapper-study\quotes\entries-0830-buy-now.csv'' because it is being used by another process.
+   at System.IO.File.WriteToFileAsync(String path, FileMode mode, ReadOnlyMemory`1 contents, Encoding encoding, CancellationToken cancellationToken)
+   at IdiotProof.Core.Research.Gappers.Explore.GapperExploreStage.QuotesPullAsync(ExploreRequest req, CancellationToken ct) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Core\Research\Gappers\Explore\GapperExploreStage.Quotes.cs:line 108
+   at IdiotProof.Core.Research.Gappers.Explore.GapperExploreStage.RunAsync(ExploreRequest req, CancellationToken ct) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Core\Research\Gappers\Explore\GapperExploreStage.cs:line 103
+   at IdiotProof.Operations.Research.Gappers.GapperExploreOperation.ExecuteAsync(GapperExploreArgs args, OperationContext ctx) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Operations\Research\Gappers\GapperStudyOperations.cs:line 440
+   at IdiotProof.Operations.OperationDispatcher.RunAsync(String name, Func`2 bind, OperationInvocation info, CancellationToken ct) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Operations\OperationDispatcher.cs:line 169
+```', '2026-11-20T08:09:39Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T62', '**Epic W — Command line & Hub** / W2 Operation framework + CLI client (`W2.13`)
 
 idiotproof.cmd shim at repo root (dotnet run fallback, published exe preferred)
@@ -101376,6 +101454,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T596', 'Hub erro
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T600', 'Hub error Connection', '2026-11-20T01:55:51Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T605', 'Amendment 09 explore run', '2026-11-20T03:04:22Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T606', 'Hub error UnhandledException', '2026-11-20T04:38:03Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T618', 'Hub error OperationDispatcher', '2026-11-20T08:09:39Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T26', 'Publish all GLMZ books', '2026-11-19T19:26:17Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T27', 'Vendor missing MindAttic.Vault', '2026-11-19T19:29:08Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T28', 'Repack Prose.Core for Node.Status drop', '2026-11-19T19:32:45Z');
