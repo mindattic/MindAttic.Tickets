@@ -5382,6 +5382,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T603', 'IdiotProof', 603, '2026-11-19', 'feature', 'closed', 'Float/short-interest/shares-outstanding connectors for Financial Modeling Prep, Polygon and Finviz Elite behind one IFundamentalsSource seam, each off until its key is in Vault; feeds the journal and the gapper study (float is a likely recipe ingredient for small-cap runners). Owner picks the paid vendor after pricing (reminder filed in the Orchestrator)', '13205d12', 602, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T604', 'IdiotProof', 604, '2026-11-19', 'feature', 'closed', 'Gapper research covers the whole day: label and case-study runners through the regular and post-market sessions (not only to 09:45), journal timing vs first move all day, and a pre-registered amendment for the 10/20 runners that started after 09:30 (2026-11-19); research and labels only, no trading change until a rule passes train+validation', 'd576987bb83f06ad2cf0bb2d611f650d1ef1665f', 603, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T605', 'IdiotProof', 605, '2026-11-19', 'feature', 'open', 'Gapper study amendment 09 (after-09:30 runners): write the train-only explore command that computes D1-D3 and runs A09-H1/H2 exactly as registered (m0 move start, label y, features at m0, amendment 01 weights, month-blocked folds, day-clustered bootstrap), then validation once for any train pass; needs a Hub publish to run; no trading change', '—', 604, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T606', 'IdiotProof', 606, '2026-11-19', 'fix', 'open', 'Hub error in UnhandledException: InvalidOperationException: An error was generated for warning ''Microsoft.EntityFrameworkCore.Migrations.PendingModelC...', '—', 605, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T1', 'JellyFinPoster', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| JFP-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T2', 'JellyFinPoster', 2, '2026-10-16', 'chore', 'closed', 'install.ps1 adds this repo''s 9 .prose/commands stubs for the shared global commands, so any LLM client finds them', 'mindattic-agent-standard/install.ps1 run 2026-10-16', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T3', 'JellyFinPoster', 3, '2026-10-16', 'chore', 'closed', 'Bug hunt: run an exhaustive /bughunt over the whole repo and fix every real bug found (each fix under its own fix ticket), then hunt again; close this only when a full pass finds nothing', '9a5f84c', 2, NULL);
@@ -8340,6 +8341,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1866', 'MindAttic.Orchestrator', 1866, '2026-11-19', 'fix', 'open', 'Fails on main: MindAttic.Orchestrator.Tests.LampSettingsTests.EverySettingHasItsOwnTest — one case per Vault setting, no more, no fewer Assert.That(tested, Is.EqualTo(leaves)) Expected is <System.Collections.Generic.List`1[System.String]> with 179 elements, actual is <System.Collections.Generic.List`1[System.String]> with 177 elements Values differ at index [22] Expected string length... (landed on main since the last green run: tickets M.ORCH-T1861, M.ORCH-T1865, M.ORCH-T1852, M.ORCH-T1848, M.ORCH-T1851, M.ORCH-T1846, M.ORCH-T1842, M.ORCH-T1841, M.ORCH-T1839, M.ORCH-T1859, M.ORCH-T1860, M.ORCH-T1856, M.ORCH-T1858, M.ORCH-T1857, M.ORCH-T1855, M.ORCH-T1854, M.ORCH-T1849, M.ORCH-T1847, M.ORCH-T1836, M.ORCH-T1843 in bea00ff7 Goal badge''s infinity sign moves into the shared library as MaSpinner Kind=Infinity (Components 46.0.0); MainWindow.xaml keeps only TicketLink (M.ORCH-T1861); ec72ca79 Tree branch elbow: clear IsLastOfPerson on a pane''s own way out, not just recompute what''s left (M.ORCH-T1865); cd9fca50 Pin the Usage tab test''s DataTrigger lookup to the UsageTab binding, since the Launcher lock added a second one (M.ORCH-T1852); 6c9f0c01 Update stale Launcher reorder test: the Launcher is locked at index 0 by design (M.ORCH-T1848), so Reorder refuses it and other panes still reorder (M.ORCH-T1851); 83ce1abc Activity capture test follows T1825''s deliberate rule: an unmatched tool''s target is its own name, never its input (M.ORCH-T1846); c0951be3 LampSettingsTests: add the missing per-setting case for CliTooltipDelayMs (M.ORCH-T1842); 883ed8c8 TicketsDesktopTests: a saved plan''s summary (PlanRowViewModel) is a plan file''s, not a ticket''s, so the plain-text-id check skips it (M.ORCH-T1841); e6bbe2b3 Login menu: the signed-out early exit opens the menu through OpenLoginMenu so the AccountsViewTests slice (up to the first menu.IsOpen = true) again spans the User Settings item (M.ORCH-T1839); a039b877 Login tree counts subagents: a CLI waiting on its own background subagents counts as an active CLI, so the login row reads every active CLI plus all their subagents, and each CLI''s busy ring shows its own count (1 + its subagents) (M.ORCH-T1859); 040bfb6f Per-login settings overrides: <login>/settings-overrides.json is laid over the settings derived from ~/.claude, so one login (Jordan''s) can turn off Remote Control (M.ORCH-T1860); 653e85b1 A CLI working under a Claude Code /goal shows an animated infinity sign instead of the busy spinner: the transcript reader follows the session''s latest goal_status line (met:false while it runs, met:true once met or cleared) into its agent row (M.ORCH-T1856); 7869a5b3 Meter probe: refuse a reading whose token is another account''s than the login''s config names - the global login held Erin''s token under Ryan''s .claude.json, so Ryan''s sigma/lambda showed her 14%/6% (M.ORCH-T1858); 8479cd54 Tree branch elbows follow every add, remove, move and drag of a login''s CLIs, not just count changes (M.ORCH-T1857); 8046ac73 Hide the tree''s ellipsis button on a login''s Launcher row, where it did nothing (M.ORCH-T1855); d5860224 Show each login''s sign-in age and days left in its user tooltip (M.ORCH-T1854); 4f20a184 Tree CLI rows reorder with a drop line and transfer to another user on drop (M.ORCH-T1849); 7d311fe8 Lock each user''s Launcher at index 0 and always bring it back when closed (M.ORCH-T1848); 1bb630cd Recalibrate the tree''s branch spine when a CLI is spawned or closed (M.ORCH-T1847); cfdfb706 Usage meter tolerates a dead folder sign-in when the login''s tabs run on a valid long-lived token: the probe reports ''meter unavailable, tabs still signed in'' instead of setting NeedsSignIn, so tabs no longer show ''sign in again'' while they work (M.ORCH-T1836); e6d5fc98 Add 1 file(s); Update 14 file(s) (M.ORCH-T1843))', 'main@14e2161', 1865, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1867', 'MindAttic.Orchestrator', 1867, '2026-11-19', 'fix', 'open', 'A Windows restart wrote the session-restore file as a clean exit, so its 14 hosted CLI tabs (killed by the reboot) were neither reattached nor offered at the next start', '—', 1866, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1868', 'MindAttic.Orchestrator', 1868, '2026-11-19', 'chore', 'open', 'Remove the dashboard''s Pause button: Ryan doesn''t need it and it does nothing visible', '—', 1867, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1869', 'MindAttic.Orchestrator', 1869, '2026-11-19', 'feature', 'open', 'Quick Save All / Quick Load All as one save-state system with session restore: save every CLI, its tab, session and subagents as one package, stop spending tokens, and Load All reopens and resumes everything where it left off', '—', 1868, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T1', 'MindAttic.Orchestrator.SIDEBAR', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T2', 'MindAttic.Orchestrator.SIDEBAR', 2, '2026-11-05', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.SettingsModalTests.The_org_login_toolbar_is_the_Logins_dialogs_body — Assert.That(code, Does.Not.Contain("SettingsModal").And.Not.Contain("SizeSettings")) Expected: not String containing "SettingsModal" and not containing "SizeSettings" But was: "using System.Collections.Specialized; using System.Runtime.InteropServices; using System.Windows; using System.Windows.A... (landed on main since the last green run: tickets M.ORCH-T1310 in 864030c4 Cli csproj finds the workspace from any <workspace>.worktrees\<repo>\<name> checkout (drops .worktrees), so the main-tests build resolves MindAttic.Helpers without run.ps1''s MindAtticRoot (M.ORCH-T1310))', 'passes on main@270cb89', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T3', 'MindAttic.Orchestrator.SIDEBAR', 3, '2026-11-05', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.LibraryOnlyXamlTests.Every_xaml_element_is_a_library_control_or_library_styled — Assert.That(Violations(files), Is.Empty) Expected: <empty> But was: < "MainWindow.xaml:33 <Style>: a style with a template or resources of its own", "MainWindow.xaml:42 <ControlTemplate>: neither a library control nor library-styled", "MainWindow.xaml:43 <Border>: Background="{TemplateBinding Bac... (landed on main since the last green run: tickets M.ORCH-T1310 in 864030c4 Cli csproj finds the workspace from any <workspace>.worktrees\<repo>\<name> checkout (drops .worktrees), so the main-tests build resolves MindAttic.Helpers without run.ps1''s MindAtticRoot (M.ORCH-T1310))', 'passes on main@270cb89', 2, NULL);
@@ -79125,6 +79127,13 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78114, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78115, 'M.ORCH-T1868', '2026-11-20T04:30:59Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78116, 'M.ORCH-T1868', '2026-11-20T04:30:59Z', 'name', NULL, 'Remove Pause button');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78117, 'M.ORCH-T1868', '2026-11-20T04:31:28Z', 'working', NULL, '9d69e4bf-39d1-4a88-a882-817d601cbdd1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78118, 'M.ORCH-T1869', '2026-11-20T04:36:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78119, 'M.ORCH-T1869', '2026-11-20T04:36:51Z', 'name', NULL, 'Save state: Save All/Load All');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78120, 'IP-T605', '2026-11-20T04:36:55Z', 'working', NULL, '33afdbd4-4e77-449c-9026-7d3a28e246b4');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78121, 'M.ORCH-T1867', '2026-11-20T04:37:26Z', 'working', '9d69e4bf-39d1-4a88-a882-817d601cbdd1', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78122, 'M.ORCH-T1868', '2026-11-20T04:37:27Z', 'working', '9d69e4bf-39d1-4a88-a882-817d601cbdd1', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78123, 'IP-T606', '2026-11-20T04:38:03Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78124, 'IP-T606', '2026-11-20T04:38:03Z', 'name', NULL, 'Hub error UnhandledException');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -82344,9 +82353,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T447', NULL, 0, 'ryandebraal@gmail.com', '33afdbd4-4e77-449c-9026-7d3a28e246b4', '2026-11-20T00:55:17Z', '2026-11-20T00:55:17Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T472', NULL, 0, 'ryandebraal@gmail.com', '33afdbd4-4e77-449c-9026-7d3a28e246b4', '2026-11-19T22:19:53Z', '2026-11-19T22:19:53Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T548', NULL, 0, 'ryandebraal@gmail.com', '33afdbd4-4e77-449c-9026-7d3a28e246b4', '2026-11-19T20:35:05Z', '2026-11-19T20:35:05Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T605', NULL, 0, NULL, '33afdbd4-4e77-449c-9026-7d3a28e246b4', '2026-11-20T04:36:56Z', '2026-11-20T04:36:55Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1867', NULL, 0, NULL, '9d69e4bf-39d1-4a88-a882-817d601cbdd1', '2026-11-20T04:29:29Z', '2026-11-20T04:29:28Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1868', NULL, 0, NULL, '9d69e4bf-39d1-4a88-a882-817d601cbdd1', '2026-11-20T04:31:30Z', '2026-11-20T04:31:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T768', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
@@ -89593,6 +89601,54 @@ Template: `An error occurred using the connection to database ''{database}'' on 
 fail: Microsoft.EntityFrameworkCore.Database.Connection[20004] An error occurred using the connection to database ''IdiotProof_Research_GAP'' on server ''tcp:sql-mindattic-f65744.database.windows.net,1433''.
 ```', '2026-11-20T01:55:51Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T605', 'Follow-up of IP-T604 (commit d576987b). Definitions are frozen in docs/research/gapper-study-2026-11/amendment-09.md; correct any non-computable definition by a dated note in that file BEFORE the first run. Route through the explore split guard (train only; validation read once per train-passing hypothesis; never the holdout). Log ledger trials as the amendment states. Research only: no strategy, template, radar or sell-by change.', '2026-11-20T03:04:22Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T606', 'Filed automatically by the IdiotProof Hub (IP-T579): every Hub error becomes a fix ticket.
+
+## Where
+- When: 2026-11-19 11:38:03 PM ET (2026-11-20T04:38:03.9146397Z UTC)
+- Level: Critical
+- Logger category: `AppDomain.UnhandledException`
+- Command running last: none since the Hub started
+- Hub: PID 19728, D:\Projects\MindAttic.worktrees\.scratch\IP-T605\hub\idiotproof-hub.exe, built 2026-11-20 04:37 UTC
+- Fingerprint: `eaa0115bbd5997b2` (repeats add notes here instead of new tickets)
+
+## Message
+```
+Unhandled exception (the Hub is going down)
+```
+
+## Exception (full)
+```
+System.InvalidOperationException: An error was generated for warning ''Microsoft.EntityFrameworkCore.Migrations.PendingModelChangesWarning'': The model for context ''AppDbContext'' has pending changes. Add a new migration before updating the database. See https://aka.ms/efcore-docs-pending-changes. This exception can be suppressed or logged by passing event ID ''RelationalEventId.PendingModelChangesWarning'' to the ''ConfigureWarnings'' method in ''DbContext.OnConfiguring'' or ''AddDbContext''.
+   at Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`1.Log[TLoggerCategory](IDiagnosticsLogger`1 logger, TParam arg)
+   at Microsoft.EntityFrameworkCore.Diagnostics.RelationalLoggerExtensions.PendingModelChangesWarning(IDiagnosticsLogger`1 diagnostics, Type contextType)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.ValidateMigrations(Boolean useTransaction, String targetMigration)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.MigrateAsync(String targetMigration, CancellationToken cancellationToken)
+   at Program.<Main>$(String[] args) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Hub\Program.cs:line 157
+   at Program.<Main>$(String[] args) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Hub\Program.cs:line 157
+   at Program.<Main>(String[] args)
+```
+
+## Last 18 Hub console lines (oldest first)
+```
+
+ /$$$$$$       /$$ /$$             /$$     /$$$$$$$                                /$$$$$$
+|_  $$_/      | $$|__/            | $$    | $$__  $$                              /$$__  $$
+  | $$    /$$$$$$$ /$$  /$$$$$$  /$$$$$$  | $$  \ $$ /$$$$$$   /$$$$$$   /$$$$$$ | $$  \__/
+  | $$   /$$__  $$| $$ /$$__  $$|_  $$_/  | $$$$$$$//$$__  $$ /$$__  $$ /$$__  $$| $$$$
+  | $$  | $$  | $$| $$| $$  \ $$  | $$    | $$____/| $$  \__/| $$  \ $$| $$  \ $$| $$_/
+  | $$  | $$  | $$| $$| $$  | $$  | $$ /$$| $$     | $$      | $$  | $$| $$  | $$| $$
+ /$$$$$$|  $$$$$$$| $$|  $$$$$$/  |  $$$$/| $$     | $$      |  $$$$$$/|  $$$$$$/| $$
+|______/ \_______/|__/ \______/    \___/  |__/     |__/       \______/  \______/ |__/
+
+Unhandled exception: System.InvalidOperationException: An error was generated for warning ''Microsoft.EntityFrameworkCore.Migrations.PendingModelChangesWarning'': The model for context ''AppDbContext'' has pending changes. Add a new migration before updating the database. See https://aka.ms/efcore-docs-pending-changes. This exception can be suppressed or logged by passing event ID ''RelationalEventId.PendingModelChangesWarning'' to the ''ConfigureWarnings'' method in ''DbContext.OnConfiguring'' or ''AddDbContext''.
+   at Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`1.Log[TLoggerCategory](IDiagnosticsLogger`1 logger, TParam arg)
+   at Microsoft.EntityFrameworkCore.Diagnostics.RelationalLoggerExtensions.PendingModelChangesWarning(IDiagnosticsLogger`1 diagnostics, Type contextType)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.ValidateMigrations(Boolean useTransaction, String targetMigration)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.MigrateAsync(String targetMigration, CancellationToken cancellationToken)
+   at Program.<Main>$(String[] args) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Hub\Program.cs:line 157
+   at Program.<Main>$(String[] args) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Hub\Program.cs:line 157
+   at Program.<Main>(String[] args)
+```', '2026-11-20T04:38:03Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T61', '**Epic W — Command line & Hub** / W2 Operation framework + CLI client (`W2.12`)
 
 Exit-code contract 0 ok / 1 fail / 2 usage / 3 blocked by a gate / 4 confirmation required — documented and tested
@@ -93720,6 +93776,16 @@ Screenshot: ![tree glyph](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/a
 
 Per project convention, any fix here should go through the shared MindAttic.Helpers.Ascii.AsciiAligner rather than a one-off/hand-aligned glyph.', '2026-11-20T03:10:58Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1867', 'Symptom: restart the PC with CLI tabs open; the dashboard comes back with none and no restore prompt. Cause: the window closed (OnExit, clean: true, ''exit'') before SessionEnding fired, and ShouldOffer skips clean files even when every TermHost died afterwards. Fix: a clean exit only means the user closed the dashboard; hosted CLIs outlive that, so tabs whose host is gone at the next start are still offered.', '2026-11-20T04:29:15Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1869', 'Story: Quick Save All / Quick Load All become one save-state system, like an emulator''s save state.
+
+Today (gap): Quick Save All types /quicksave into every open CLI (a per-repo conversation handoff); Quick Load All types bare /quickload into every *open* CLI. Neither is tied to session restore (session-restore\session.json): Load All can''t reopen a closed tab, restore subagents, or put anything back after a reboot.
+
+Acceptance:
+1. Quick Save (one CLI) is complete: its handoff plus its tab (title, login, folder, Claude session id, /allocate and pacing on/off, the subagents it had running and their tickets/claims).
+2. Quick Save All saves every CLI that way, then writes ONE package (a manifest: every tab, its handoff code, session id, login, chosen/shown tab, window layout, which subagents were running) and then STOPS spending tokens: /allocate off and pacing holds, with each CLI idle once it has saved.
+3. Quick Load All restores from that package: reopens every tab that isn''t open (claude --resume on its login), restarts the subagents/claims that were in flight, puts /allocate and pacing back as they were, reselects the tab on screen, then tells each CLI to continue where it left off.
+4. A crash, reboot or Windows restart produces the same package automatically (session restore = an autosave slot), so the same Load works after any restart.
+5. Each step reports per-CLI results; one failed CLI never blocks the rest.', '2026-11-20T04:36:51Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T833', 'Symptom: Inside the Orchestrator''s embedded Terminals panel (TerminalPanesHost), when a CLI running
 in a pane shows an interactive, arrow-key-driven menu (e.g. a selection list or permission prompt),
 the Up/Down/Left/Right keys don''t reach the CLI. It looks like the WPF app is intercepting/consuming
@@ -100917,6 +100983,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T594', 'Market-o
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T596', 'Hub error OperationDispatcher', '2026-11-19T22:21:46Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T600', 'Hub error Connection', '2026-11-20T01:55:51Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T605', 'Amendment 09 explore run', '2026-11-20T03:04:22Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T606', 'Hub error UnhandledException', '2026-11-20T04:38:03Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T26', 'Publish all GLMZ books', '2026-11-19T19:26:17Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T27', 'Vendor missing MindAttic.Vault', '2026-11-19T19:29:08Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T28', 'Repack Prose.Core for Node.Status drop', '2026-11-19T19:32:45Z');
@@ -101125,6 +101192,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1860', 'Per
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1865', 'Tree L-glyph events', '2026-11-20T03:10:58Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1867', 'Restore after PC restart', '2026-11-20T04:29:15Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1868', 'Remove Pause button', '2026-11-20T04:30:59Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T1869', 'Save state: Save All/Load All', '2026-11-20T04:36:51Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.SCHD-T33', 'GridGame nightly job', '2026-11-17T05:50:37Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.SCHD-T36', 'Azure backup jobs', '2026-11-18T06:37:38Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.SCHD-T37', 'Retire Azure.NightlySync', '2026-11-18T09:00:22Z');
