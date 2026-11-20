@@ -79730,6 +79730,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78644, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78645, 'M5SE-T149', '2026-11-20T11:23:54Z', 'working', NULL, '3d31d827-5801-4ba3-9646-cb43dc915311');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78646, 'M5SE-T149', '2026-11-20T11:53:45Z', 'working', '3d31d827-5801-4ba3-9646-cb43dc915311', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78647, 'M5SE-T149', '2026-11-20T12:23:52Z', 'working', NULL, '3d31d827-5801-4ba3-9646-cb43dc915311');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78648, 'US-T99', '2026-11-20T12:25:23Z', 'working', 'waffle@mindattic.com (d5da4af3-5328-4bef-b372-ddd19f1daed6)', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -83219,7 +83220,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T85', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T23:52:54Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T91', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T00:58:13Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T98', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:51:51Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T99', NULL, 0, 'waffle@mindattic.com', 'd5da4af3-5328-4bef-b372-ddd19f1daed6', '2026-11-20T00:24:58Z', '2026-11-20T00:24:58Z');
 
 -- ticket_notes
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (1, 'U.HARE-T54', 'ryand', '2026-10-26T04:52:58Z', 'From U.HARE-T52 (7d24220): leaving the arena past the 400 px buffer zone (LeaveArena command) currently costs a life only on the ship (PlayerHealth out-of-bounds path / ShipHealth). When this ticket wires LIVES into the session, route that out-of-bounds loss through the same session lives so both deaths count the same.');
