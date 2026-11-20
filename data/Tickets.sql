@@ -6201,6 +6201,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.EXPT-T38', 'MindAttic.Export', 38, '2026-11-17', 'docs', 'closed', 'Update USER_STORIES.md', '—', 37, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('ET-T1', 'MindAttic.EyeTracker', 1, '2026-11-19', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('ET-T2', 'MindAttic.EyeTracker', 2, '2026-11-19', 'feature', 'closed', 'Webcam gaze library: MediaPipe iris/eye-white landmarks, calibration, smoothing, three.js demo, tests, a bridge server and Unity/Unreal clients (MAT-T160)', '194454e', 1, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('ET-T3', 'MindAttic.EyeTracker', 3, '2026-11-19', 'fix', 'closed', 'Calibration ran fullscreen (5120x1440) but play happens in a 1920x1080 window, so vertical gaze only covered half the window: calibrate in screen space and map gaze into the current viewport; games calibrate over the window they play in', 'dd6968a', 2, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.HELP-T1', 'MindAttic.Helpers', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.HELP-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.HELP-T2', 'MindAttic.Helpers', 2, '2026-10-15', 'chore', 'closed', 'Remove duplicate command copies (/deploy, /quickload, /quicksave) now centralized at the user level (~/.claude/commands)', 'M.FLOW-T14', 1, '| M.HELP-T2 | 2026-10-15 | chore | closed | Remove duplicate command copies (/deploy, /quickload, /quicksave) now centralized at the user level (~/.claude/commands) | M.FLOW-T14 |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.HELP-T3', 'MindAttic.Helpers', 3, '2026-10-16', 'chore', 'closed', 'install.ps1 adds this repo''s 8 .prose/commands stubs for the shared global commands, so any LLM client finds them', 'mindattic-agent-standard/install.ps1 run 2026-10-16', 2, NULL);
@@ -9024,11 +9025,15 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.WEB-T22', 'MindAttic.Web', 22, '2026-11-17', 'docs', 'closed', 'Update USER_STORIES.md', '—', 21, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MPU-T1', 'MindPuck.Unity', 1, '2026-11-19', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MPU-T2', 'MindPuck.Unity', 2, '2026-11-19', 'feature', 'closed', 'Unity version of MindPuck on the EyeTracker Unity client (MAT-T160)', 'd6caf79', 1, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MPU-T3', 'MindPuck.Unity', 3, '2026-11-19', 'feature', 'open', 'Gaze now pulls the puck to where you look (magnetic) by default; F1 switches between magnetic and the original repulsor; levels are solver-verified in both modes', '—', 2, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MIN-T1', 'MindPuck.Unreal', 1, '2026-11-19', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MIN-T2', 'MindPuck.Unreal', 2, '2026-11-19', 'feature', 'closed', 'Unreal version of MindPuck on the EyeTracker Unreal plugin (MAT-T160)', 'fb75787', 1, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MIN-T3', 'MindPuck.Unreal', 3, '2026-11-19', 'feature', 'open', 'Gaze now pulls the puck to where you look (magnetic) by default; F1 switches between magnetic and the original repulsor; levels are solver-verified in both modes', '—', 2, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MP-T1', 'MindPuck.Web', 1, '2026-11-19', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MP-T2', 'MindPuck.Web', 2, '2026-11-19', 'feature', 'closed', 'three.js gaze-repulsion air-hockey puzzle: polygon collisions, drag, procedural solver-verified levels (MAT-T160)', '9bae509', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MP-T3', 'MindPuck.Web', 3, '2026-11-19', 'chore', 'closed', 'Rename the web game repo MindPuck to MindPuck.Web (GitHub, disk, ticket log, docs and scripts) at the owner''s request', 'e3e81ac', 2, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MP-T4', 'MindPuck.Web', 4, '2026-11-19', 'fix', 'closed', 'Calibration no longer switches to fullscreen, so its targets cover the same area the game is played in', 'e28d3e8', 3, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MP-T5', 'MindPuck.Web', 5, '2026-11-19', 'feature', 'open', 'Gaze now pulls the puck to where you look (magnetic) by default; F1 switches between magnetic and the original repulsor; levels are solver-verified in both modes', '—', 4, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T1', 'Mods.Cyberpunk2077.ShootDodge', 1, '2026-11-01', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T2', 'Mods.Cyberpunk2077.ShootDodge', 2, '2026-11-01', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('C2SD-T3', 'Mods.Cyberpunk2077.ShootDodge', 3, '2026-11-01', 'chore', 'closed', 'Scaffold new repo: Cyberpunk 2077 mod for Max Payne 2 style Shootdodge (dive, bullet-time, prone/get-up) plus twin pistols + trench coat loadout', '7fd712eebb5ef5b40fe6e6e1b5120afbf0c4e96e', 2, NULL);
@@ -78848,6 +78853,28 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77872, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77873, 'OS-T77', '2026-11-20T02:13:08Z', 'priority', '0', '703');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77874, 'OS-T78', '2026-11-20T02:13:11Z', 'priority', '0', '702');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77875, 'MAT-T161', '2026-11-20T02:13:58Z', 'working', '82f3e7ac-93a8-439e-8e10-c21140cde2df', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77876, 'ET-T3', '2026-11-20T02:15:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77877, 'ET-T3', '2026-11-20T02:15:59Z', 'name', NULL, 'Calibration area mismatch');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77878, 'MP-T4', '2026-11-20T02:16:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77879, 'MP-T4', '2026-11-20T02:16:02Z', 'name', NULL, 'Calibrate in the play window');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77880, 'MP-T4', '2026-11-20T02:16:55Z', 'working', NULL, '82f3e7ac-93a8-439e-8e10-c21140cde2df');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77881, 'ET-T3', '2026-11-20T02:16:55Z', 'working', NULL, '82f3e7ac-93a8-439e-8e10-c21140cde2df');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77882, 'ET-T3', '2026-11-20T02:18:01Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77883, 'ET-T3', '2026-11-20T02:18:01Z', 'ref', '—', 'dd6968a');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77884, 'MP-T4', '2026-11-20T02:18:02Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77885, 'MP-T4', '2026-11-20T02:18:02Z', 'ref', '—', 'e28d3e8');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77886, 'ET-T3', '2026-11-20T02:18:24Z', 'working', '82f3e7ac-93a8-439e-8e10-c21140cde2df', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77887, 'MP-T4', '2026-11-20T02:18:24Z', 'working', '82f3e7ac-93a8-439e-8e10-c21140cde2df', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77888, 'MP-T5', '2026-11-20T02:23:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77889, 'MP-T5', '2026-11-20T02:23:37Z', 'name', NULL, 'Magnetic mode and F1 toggle');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77890, 'MPU-T3', '2026-11-20T02:23:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77891, 'MPU-T3', '2026-11-20T02:23:39Z', 'name', NULL, 'Magnetic mode and F1 toggle');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77892, 'MIN-T3', '2026-11-20T02:23:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77893, 'MIN-T3', '2026-11-20T02:23:43Z', 'name', NULL, 'Magnetic mode and F1 toggle');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77894, 'MPU-T3', '2026-11-20T02:24:17Z', 'working', NULL, '82f3e7ac-93a8-439e-8e10-c21140cde2df');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77895, 'MIN-T3', '2026-11-20T02:24:17Z', 'working', NULL, '82f3e7ac-93a8-439e-8e10-c21140cde2df');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77896, 'MP-T5', '2026-11-20T02:24:17Z', 'working', NULL, '82f3e7ac-93a8-439e-8e10-c21140cde2df');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (77897, 'IP-T600', '2026-11-20T02:24:46Z', 'working', NULL, 'ryandebraal@gmail.com (33afdbd4-4e77-449c-9026-7d3a28e246b4)');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -82059,6 +82086,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T447', NULL, 0, 'ryandebraal@gmail.com', '33afdbd4-4e77-449c-9026-7d3a28e246b4', '2026-11-20T00:55:17Z', '2026-11-20T00:55:17Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T472', NULL, 0, 'ryandebraal@gmail.com', '33afdbd4-4e77-449c-9026-7d3a28e246b4', '2026-11-19T22:19:53Z', '2026-11-19T22:19:53Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T548', NULL, 0, 'ryandebraal@gmail.com', '33afdbd4-4e77-449c-9026-7d3a28e246b4', '2026-11-19T20:35:05Z', '2026-11-19T20:35:05Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T600', NULL, 0, 'ryandebraal@gmail.com', '33afdbd4-4e77-449c-9026-7d3a28e246b4', '2026-11-20T02:24:46Z', '2026-11-20T02:24:46Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
@@ -82142,6 +82170,9 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T105', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T05:26:05Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T58', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:02:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MIN-T3', NULL, 0, NULL, '82f3e7ac-93a8-439e-8e10-c21140cde2df', '2026-11-20T02:24:17Z', '2026-11-20T02:24:17Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MP-T5', NULL, 0, NULL, '82f3e7ac-93a8-439e-8e10-c21140cde2df', '2026-11-20T02:24:17Z', '2026-11-20T02:24:17Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MPU-T3', NULL, 0, NULL, '82f3e7ac-93a8-439e-8e10-c21140cde2df', '2026-11-20T02:24:16Z', '2026-11-20T02:24:17Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T111', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:34:40Z');
@@ -100470,6 +100501,7 @@ Rewind an hour of 1 week/s play (and a minute of a live dogfight) to an exact mo
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('EP-T2', 'Create ePub repo', '2026-11-11T06:08:59Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('EP-T3', 'ePub: book-root files only', '2026-11-11T06:35:21Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('ET-T2', 'Gaze library v1', '2026-11-19T23:21:56Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('ET-T3', 'Calibration area mismatch', '2026-11-20T02:15:59Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GGC-T32', 'Headless test flag', '2026-11-07T04:33:26Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T318', 'Speed sets re-entry', '2026-11-07T04:31:39Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T319', 'Recovery tray UI', '2026-11-07T04:31:40Z');
@@ -100886,6 +100918,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MAT-T160', 'EyeTrac
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MAT-T161', 'Run EyeTracker MindPuck tests', '2026-11-20T02:09:03Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MAU-T18', 'Shared headless mode', '2026-11-07T04:32:50Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MIN-T2', 'MindPuck Unreal game', '2026-11-19T23:22:06Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MIN-T3', 'Magnetic mode and F1 toggle', '2026-11-20T02:23:43Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MM5S-T2', 'Extract shared MW5 editor base', '2026-11-10T01:41:37Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MM5S-T3', 'Self-contained theme dictionaries', '2026-11-10T01:46:39Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MM5S-T4', 'Generic file pickers', '2026-11-10T01:49:59Z');
@@ -100907,7 +100940,10 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MODS-T8', 'Chaff co
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MODS-T9', 'Hand weapons for all', '2026-11-07T16:41:16Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MP-T2', 'MindPuck web game', '2026-11-19T23:21:59Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MP-T3', 'Rename repo to MindPuck.Web', '2026-11-20T02:09:05Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MP-T4', 'Calibrate in the play window', '2026-11-20T02:16:02Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MP-T5', 'Magnetic mode and F1 toggle', '2026-11-20T02:23:37Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MPU-T2', 'MindPuck Unity game', '2026-11-19T23:22:02Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MPU-T3', 'Magnetic mode and F1 toggle', '2026-11-20T02:23:39Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1000', 'Codex: new creatures, wave 1', '2026-11-17T21:58:35Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1001', 'Weave codex into BGTTO', '2026-11-17T22:24:05Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1002', 'GLMZ Fandom wiki migration', '2026-11-17T23:16:40Z');
