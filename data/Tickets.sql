@@ -5396,6 +5396,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T617', 'IdiotProof', 617, '2026-11-20', 'feature', 'closed', 'Amendment 10 (next step toward an actionable rule): pre-register a regular-hours entry/exit rule off the validated A09-H1/H2 move-start signal (H27/H28, IP-T616) BEFORE looking at any trade simulation -- exact entry (e.g. at or after m0, confirmed by the fitted detector''s score above a to-be-chosen threshold), exit ladder, the frozen cost model, and worth-trading minimums (minTrades/minDays/lowerBoundAbove), mirroring H12/H12p/H18''s own grid pattern. Explicitly needed since amendment 09 only established the pattern is real, not a trading rule: no entry, exit, cost model or sizing has been specified yet. Train-only exploration first (a new explore command or grid), then its own single validation read if it passes, same discipline as amendment 09.', 'IP-T616', 616, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T618', 'IdiotProof', 618, '2026-11-20', 'fix', 'open', 'Hub error in OperationDispatcher: IOException: The process cannot access the file ''D:\IdiotProofData\gapper-study\quotes\entries-0830-buy...', '—', 617, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T619', 'IdiotProof', 619, '2026-11-20', 'feature', 'open', 'Amendment 11: liquidity-filtered late-runner ride off the validated H27 move-start signal (pre-register before any A11 number, new entry/exit idea after H29''s decisive train failure, IP-T617)', '—', 618, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T620', 'IdiotProof', 620, '2026-11-20', 'fix', 'open', 'Hub error in OperationDispatcher: InvalidDataException: H30 registers no configuration.', '—', 619, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T1', 'JellyFinPoster', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| JFP-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T2', 'JellyFinPoster', 2, '2026-10-16', 'chore', 'closed', 'install.ps1 adds this repo''s 9 .prose/commands stubs for the shared global commands, so any LLM client finds them', 'mindattic-agent-standard/install.ps1 run 2026-10-16', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T3', 'JellyFinPoster', 3, '2026-10-16', 'chore', 'closed', 'Bug hunt: run an exhaustive /bughunt over the whole repo and fix every real bug found (each fix under its own fix ticket), then hunt again; close this only when a full pass finds nothing', '9a5f84c', 2, NULL);
@@ -79717,6 +79718,9 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78632, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78633, 'IP-T617', '2026-11-20T10:07:54Z', 'working', 'ryandebraal@gmail.com (33afdbd4-4e77-449c-9026-7d3a28e246b4)', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78634, 'IP-T619', '2026-11-20T10:10:26Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78635, 'IP-T619', '2026-11-20T10:10:53Z', 'working', NULL, '33afdbd4-4e77-449c-9026-7d3a28e246b4');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78636, 'IP-T619', '2026-11-20T10:12:49Z', 'working', '33afdbd4-4e77-449c-9026-7d3a28e246b4', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78637, 'IP-T620', '2026-11-20T10:19:31Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78638, 'IP-T620', '2026-11-20T10:19:32Z', 'name', NULL, 'Hub error OperationDispatcher');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -82974,7 +82978,6 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T447', NULL, 0, 'ryandebraal@gmail.com', '33afdbd4-4e77-449c-9026-7d3a28e246b4', '2026-11-20T00:55:17Z', '2026-11-20T00:55:17Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T472', NULL, 0, 'ryandebraal@gmail.com', '33afdbd4-4e77-449c-9026-7d3a28e246b4', '2026-11-19T22:19:53Z', '2026-11-19T22:19:53Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T619', NULL, 0, NULL, '33afdbd4-4e77-449c-9026-7d3a28e246b4', '2026-11-20T10:10:54Z', '2026-11-20T10:10:53Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
@@ -90402,6 +90405,61 @@ Requires: W2.07 (linked).
 Done when: the change builds clean (`dotnet build IdiotProof.slnx`), behavior is covered by a test where it has logic, and no IP-LAW is weakened.
 
 Plan: plans/ticklish-shimmying-bunny.md (IdiotProof CLI + Hub).', '2026-10-30T19:18:23Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T620', 'Filed automatically by the IdiotProof Hub (IP-T579): every Hub error becomes a fix ticket.
+
+## Where
+- When: 2026-11-20 5:19:32 AM ET (2026-11-20T10:19:32.0153204Z UTC)
+- Level: Error
+- Logger category: `IdiotProof.Operations.OperationDispatcher`
+- Command running last: research gappers explore (5:19:30 AM)
+- Hub: PID 23624, D:\Projects\MindAttic\IdiotProof\IdiotProof.Hub\bin\Release\net10.0\idiotproof-hub.exe, built 2026-11-20 10:18 UTC
+- Fingerprint: `69c8e3fe50b1389b` (repeats add notes here instead of new tickets)
+
+## Message
+```
+Operation research gappers explore failed
+```
+Template: `Operation {Operation} failed`
+
+## Exception (full)
+```
+System.IO.InvalidDataException: H30 registers no configuration.
+   at IdiotProof.Core.Research.Gappers.Explore.GapperExploreStage.LateRunnerRideLiquidityAsync(ExploreRequest req, CancellationToken ct) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Core\Research\Gappers\Explore\GapperExploreStage.LateRunnerRideLiquidity.cs:line 35
+   at IdiotProof.Core.Research.Gappers.Explore.GapperExploreStage.RunAsync(ExploreRequest req, CancellationToken ct) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Core\Research\Gappers\Explore\GapperExploreStage.cs:line 107
+   at IdiotProof.Operations.Research.Gappers.GapperExploreOperation.ExecuteAsync(GapperExploreArgs args, OperationContext ctx) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Operations\Research\Gappers\GapperStudyOperations.cs:line 440
+   at IdiotProof.Operations.OperationDispatcher.RunAsync(String name, Func`2 bind, OperationInvocation info, CancellationToken ct) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Operations\OperationDispatcher.cs:line 169
+```
+
+## Last 27 Hub console lines (oldest first)
+```
+
+ /$$$$$$       /$$ /$$             /$$     /$$$$$$$                                /$$$$$$
+|_  $$_/      | $$|__/            | $$    | $$__  $$                              /$$__  $$
+  | $$    /$$$$$$$ /$$  /$$$$$$  /$$$$$$  | $$  \ $$ /$$$$$$   /$$$$$$   /$$$$$$ | $$  \__/
+  | $$   /$$__  $$| $$ /$$__  $$|_  $$_/  | $$$$$$$//$$__  $$ /$$__  $$ /$$__  $$| $$$$
+  | $$  | $$  | $$| $$| $$  \ $$  | $$    | $$____/| $$  \__/| $$  \ $$| $$  \ $$| $$_/
+  | $$  | $$  | $$| $$| $$  | $$  | $$ /$$| $$     | $$      | $$  | $$| $$  | $$| $$
+ /$$$$$$|  $$$$$$$| $$|  $$$$$$/  |  $$$$/| $$     | $$      |  $$$$$$/|  $$$$$$/| $$
+|______/ \_______/|__/ \______/    \___/  |__/     |__/       \______/  \______/ |__/
+
+
+========================================================================
+ IdiotProof Hub is running  -  http://127.0.0.1:5931  -  PID 23624
+ 300 operations  -  Monitor not hosted (IDIOTPROOF_HUB_MONITOR=0)
+ Every CLI and MCP command is echoed below as it runs. Times are ET.
+ Hidden in the tray, the window prints nothing; the log file keeps every line.
+========================================================================
+
+info: MindAttic.Authentication.Services.AuthEmailStartup[0] MindAttic.Authentication: auth email is delivered over SMTP (smtp.gmail.com:587 as mindatticinteractive@gmail.com from mindatticinteractive@gmail.com).
+warn: MindAttic.Authentication.Services.AuthEmailStartup[0] MindAttic.Authentication: MindAttic:Auth:Reset:PublicBaseUrl is not set to an absolute URL — password-reset emails will NOT be sent (a reset link needs an absolute base URL).
+[5:19:30 AM] >>> cli  research gappers explore  --command late-runner-ride-liquidity --split train
+fail: IdiotProof.Operations.OperationDispatcher[0] Operation research gappers explore failed
+System.IO.InvalidDataException: H30 registers no configuration.
+   at IdiotProof.Core.Research.Gappers.Explore.GapperExploreStage.LateRunnerRideLiquidityAsync(ExploreRequest req, CancellationToken ct) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Core\Research\Gappers\Explore\GapperExploreStage.LateRunnerRideLiquidity.cs:line 35
+   at IdiotProof.Core.Research.Gappers.Explore.GapperExploreStage.RunAsync(ExploreRequest req, CancellationToken ct) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Core\Research\Gappers\Explore\GapperExploreStage.cs:line 107
+   at IdiotProof.Operations.Research.Gappers.GapperExploreOperation.ExecuteAsync(GapperExploreArgs args, OperationContext ctx) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Operations\Research\Gappers\GapperStudyOperations.cs:line 440
+   at IdiotProof.Operations.OperationDispatcher.RunAsync(String name, Func`2 bind, OperationInvocation info, CancellationToken ct) in D:\Projects\MindAttic\IdiotProof\IdiotProof.Operations\OperationDispatcher.cs:line 169
+```', '2026-11-20T10:19:31Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T63', '**Epic W — Command line & Hub** / W2 Operation framework + CLI client (`W2.14`)
 
 Owner resolution in CLI: --user, `users use` persisted default in %APPDATA%\MindAttic\IdiotProof\cli.json, single-user fallback
@@ -101730,6 +101788,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T600', 'Hub erro
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T605', 'Amendment 09 explore run', '2026-11-20T03:04:22Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T606', 'Hub error UnhandledException', '2026-11-20T04:38:03Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T618', 'Hub error OperationDispatcher', '2026-11-20T08:09:39Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T620', 'Hub error OperationDispatcher', '2026-11-20T10:19:32Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T26', 'Publish all GLMZ books', '2026-11-19T19:26:17Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T27', 'Vendor missing MindAttic.Vault', '2026-11-19T19:29:08Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T28', 'Repack Prose.Core for Node.Status drop', '2026-11-19T19:32:45Z');
