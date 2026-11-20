@@ -13123,6 +13123,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T450', 'Unity.GridGame', 450, '2026-11-19', 'feature', 'closed', 'Tap-tooltip system: a single tap on a hero, enemy unit, timeline diamond or ability shows its info card (today reading needs hold-to-read) (owner 2026-11-19)', '—', 449, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T451', 'Unity.GridGame', 451, '2026-11-20', 'fix', 'closed', 'Battle announcement box (billboard): stop wrapping to two lines, shrink the font to fit one line instead, and shorten the worst offending message strings (owner 2026-11-20)', '—', 450, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T452', 'Unity.GridGame', 452, '2026-11-20', 'fix', 'closed', 'Equip tab overflows the stage on a phone aspect: 11 slot rows + stat compare push the ''your bag'' list off-screen (y~2940 of 2532), so gear can''t be equipped at all; put the slot rows in their own scroller sharing the space with the bag', '—', 451, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T453', 'Unity.GridGame', 453, '2026-11-20', 'fix', 'open', 'Window backdrop: replace the gray textured window look with the classic Final Fantasy blue gradient again (owner 2026-11-20)', '—', 452, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.ISO-T1', 'Unity.Isometric', 1, '2026-10-22', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.ISO-T2', 'Unity.Isometric', 2, '2026-10-22', 'chore', 'wont-do', 'Bootstrap Unity 6 project (6000.4.3f1), engine-free Core + NUnit Tests/Core.Tests, workspace docs, and docs/RECONSTRUCTION.md + docs/BIBLE.md reverse-engineered from the 2013 GameMaker Isometric.gmx source', 'port cancelled by user; repo deleted', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UM-T1', 'Unity.Multiplayer', 1, '2026-10-20', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
@@ -79480,6 +79481,9 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78418, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78419, 'US-T418', '2026-11-20T08:24:07Z', 'ref', '—', '27ca1ba');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78420, 'US-T419', '2026-11-20T08:28:07Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78421, 'US-T419', '2026-11-20T08:28:09Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78422, 'GG-T453', '2026-11-20T08:32:25Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78423, 'GG-T453', '2026-11-20T08:32:52Z', 'working', NULL, '04078191-38f6-4de4-aa7b-82a2aa92bfe7');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78424, 'IP-T548', '2026-11-20T08:35:30Z', 'working', 'ryandebraal@gmail.com (33afdbd4-4e77-449c-9026-7d3a28e246b4)', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -82716,9 +82720,9 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T99', 'approved', 0, '2026-11-19T09:15:17Z', NULL);
 
 -- ticket_work
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T453', NULL, 0, NULL, '04078191-38f6-4de4-aa7b-82a2aa92bfe7', '2026-11-20T08:32:53Z', '2026-11-20T08:32:52Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T447', NULL, 0, 'ryandebraal@gmail.com', '33afdbd4-4e77-449c-9026-7d3a28e246b4', '2026-11-20T00:55:17Z', '2026-11-20T00:55:17Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T472', NULL, 0, 'ryandebraal@gmail.com', '33afdbd4-4e77-449c-9026-7d3a28e246b4', '2026-11-19T22:19:53Z', '2026-11-19T22:19:53Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T548', NULL, 0, 'ryandebraal@gmail.com', '33afdbd4-4e77-449c-9026-7d3a28e246b4', '2026-11-19T20:35:05Z', '2026-11-19T20:35:05Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T617', NULL, 0, 'ryandebraal@gmail.com', '33afdbd4-4e77-449c-9026-7d3a28e246b4', '2026-11-20T07:21:15Z', '2026-11-20T07:21:14Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
