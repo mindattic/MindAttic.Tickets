@@ -79732,6 +79732,7 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78646, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78647, 'M5SE-T149', '2026-11-20T12:23:52Z', 'working', NULL, '3d31d827-5801-4ba3-9646-cb43dc915311');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78648, 'US-T99', '2026-11-20T12:25:23Z', 'working', 'waffle@mindattic.com (d5da4af3-5328-4bef-b372-ddd19f1daed6)', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78649, 'M5SE-T149', '2026-11-20T12:53:31Z', 'working', '3d31d827-5801-4ba3-9646-cb43dc915311', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (78650, 'IP-T447', '2026-11-20T12:55:52Z', 'working', 'ryandebraal@gmail.com (33afdbd4-4e77-449c-9026-7d3a28e246b4)', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -82987,7 +82988,6 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T99', 'approved', 0, '2026-11-19T09:15:17Z', NULL);
 
 -- ticket_work
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('IP-T447', NULL, 0, 'ryandebraal@gmail.com', '33afdbd4-4e77-449c-9026-7d3a28e246b4', '2026-11-20T00:55:17Z', '2026-11-20T00:55:17Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
