@@ -80759,6 +80759,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79543, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79544, 'US-T426', '2026-11-21T00:04:33Z', 'approval', 'proposed', 'approved');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79545, 'GAD-T60', '2026-11-21T00:06:37Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79546, 'GAD-T60', '2026-11-21T00:06:37Z', 'ref', 'GAD-T25', '616ef12');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79547, 'US-T426', '2026-11-21T00:14:51Z', 'working', NULL, 'd5da4af3-5328-4bef-b372-ddd19f1daed6');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79548, 'US-T426', '2026-11-21T00:15:55Z', 'working', 'd5da4af3-5328-4bef-b372-ddd19f1daed6', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
