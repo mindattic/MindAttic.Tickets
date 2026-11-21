@@ -634,6 +634,7 @@ INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Cursory', 'C', 'T
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Cursory', 'D', 'Electronics (Level 14)', NULL, 3);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Cursory', 'E', 'Realtime presence & feel (UI)', NULL, 4);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Cursory', 'F', 'Deploy', NULL, 5);
+INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Gadfly', 'MP', 'Master plan MVP: Socratic assessment with human-AI grading', NULL, 8);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Gadfly', 'SA', 'Socratic platform: foundation', NULL, 0);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Gadfly', 'SB', 'Socratic platform: the engine', NULL, 1);
 INSERT INTO epics (repo, key, title, anchor, ordinal) VALUES ('Gadfly', 'SC', 'Socratic platform: source material and grounding', NULL, 2);
@@ -4345,6 +4346,7 @@ INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref
 INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1416, 'MindAttic.Authentication', 'M.AUTH-US-O1', NULL, 'O', NULL, NULL, 'planned', '⬜', '', 'As a multi-tenant app, I give users memberships in organizations with a role in each, and org admins invite people by email.', NULL, NULL, 'bullet', 25);
 INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1417, 'Tutor', 'TUT-US-I1', NULL, 'I', NULL, NULL, 'planned', '⬜', '', 'As another MindAttic app, I parse, chunk and embed documents with the same pipeline Tutor uses, from a NuGet package.', NULL, NULL, 'bullet', 36);
 INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1418, 'MindAttic.Legion', 'M.LEGN-US-J1', NULL, 'J', NULL, NULL, 'planned', '⬜', '', 'As an app grading free-text answers, I get per-criterion scores that cite the evidence they used, every voter''s verdict, an agreement measure and the call''s token usage.', NULL, NULL, 'bullet', 23);
+INSERT INTO stories (uid, repo, story_id, parent_uid, epic, section, section_ref, status, glyph, suffix, text, evidence, acceptance, source, ordinal) VALUES (1419, 'Gadfly', 'GAD-US-MP1', NULL, 'MP', NULL, NULL, 'planned', '⬜', '', 'As an institution, I run adaptive Socratic examinations whose every response is verified and preserved, scored by AI per learning objective and independently by a human, reconciled when they disagree, combined by an approved weighting policy, and released only after authorized approval (docs/MASTER-PLAN.md).', NULL, NULL, 'bullet', 11);
 
 -- backlog_items
 INSERT INTO backlog_items (uid, repo, ordinal, text) VALUES (1, 'ChiMesh', 19, '1. **CM-US-A1/A2** — order parts, assemble three nodes (gates everything physical).');
@@ -4808,6 +4810,40 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T70', 'Gadfly', 70, '2026-11-20', 'fix', 'closed', 'Exam builder defaults to Voice mode (not built); releasing results needs a grade on the review page but not on the assignments table; archiving an exam hides Resume from a student mid-attempt and the start page refuses to resume; no forgot-password page although login handles reset=sent/ok; students have no button to export their own data; /launch doesn''t switch the active organization for students in several orgs', '2d4ce06', 69, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T71', 'Gadfly', 71, '2026-11-20', 'fix', 'closed', 'Integrity level Off still records the answer-text signal; retention keeps verbatim answer quotes in report evidence, judgment summaries/rationales and judge verdicts; PlannerReason never saved; JudgeVoteRecord.Model always empty; session.completed webhook published outside the report''s transaction (can be lost); every processing run rewrites all unedited rubrics; admin path of /privacy/export skips the MFA policy', '86e2f38', 70, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T72', 'Gadfly', 72, '2026-11-20', 'fix', 'closed', 'A session resumed after a server restart is rebuilt from the collection''s current concept map and rubrics, not the ConceptMapVersion recorded on the session, so instructor edits made during an attempt can change how its remaining answers are judged. Concepts need versioned snapshots (or the session needs its own snapshot of map+rubrics).', 'a5fa4a3', 71, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T73', 'Gadfly', 73, '2026-11-20', 'fix', 'closed', 'HttpTenantContext reports IsSystem=true whenever IHttpContextAccessor.HttpContext is null, which turns off the tenant query filter and the write guard. Inside an interactive Blazor Server circuit HttpContext is not guaranteed (null on long-polling/SSE transports, timers, background continuations), so component queries could run unfiltered. Pin the tenant at circuit start from the AuthenticationStateProvider, fall back to ''no tenant'' (sees nothing) instead of system, and make system an explicit opt-in for background scopes (GAD-T64 security review).', '77e3c46', 72, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T74', 'Gadfly', 74, '2026-11-20', 'fix', 'closed', 'SessionOrchestrator''s live-session cache only compared the organization, so any student in the same organization who knew a session id could read its question, answer into it or end it via the hub/exam room before the ownership check in PersistAsync ran (the in-memory engine was already changed). Check the student on the cached path and before broadcasting Thinking (GAD-T64 security review).', '5c3df94', 73, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T75', 'Gadfly', 75, '2026-11-20', 'fix', 'closed', 'Webhook URLs only had to be https, so an org admin or API key could point deliveries at localhost, private ranges, link-local/metadata addresses or internal hostnames (blind SSRF with the response code shown as an oracle; redirects followed). Refuse non-public targets at registration and at connect time (DNS-rebinding safe) and stop following redirects (GAD-T64 security review).', 'dbc4c17', 74, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T76', 'Gadfly', 76, '2026-11-20', 'fix', 'closed', 'Organization memberships ride on the sign-in cookie, so removing a member or changing their role only took effect at their next sign-in, and an Admin could demote or deactivate an Owner (and so leave the organization ownerless). Rotate the account''s security stamp on role/active changes so live sessions and circuits revalidate within a minute, and only an Owner may change an Owner or grant Owner (GAD-T64 security review).', 'e401ab1', 75, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T77', 'Gadfly', 77, '2026-11-20', 'fix', 'closed', 'Student answers and transcript text were pasted into the judge, claims, aporia, question, guard and text-style prompts with no delimiting and no instruction to treat them as data, so a student could instruct the judges to award full marks. Fence student-authored text in delimiters the student can''t forge, tell every prompt it is evidence not instructions, make placeholder filling single-pass, and force human review when an answer addresses the grader (GAD-T64 security review).', '3e3d152', 76, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T78', 'Gadfly', 78, '2026-11-20', 'fix', 'closed', 'The platform API, the exam hub and the anonymous launch/auth posts had no request rate limits beyond the auth library''s login throttle, so a leaked key or a script could flood the API or hub. Add ASP.NET Core rate limiting partitioned by API key, user or IP (GAD-T64 security review).', 'db17f96', 77, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T79', 'Gadfly', 79, '2026-11-20', 'docs', 'closed', 'Owner''s master product plan (AI-powered Socratic assessment with mandatory human grading) saved as docs/MASTER-PLAN.md and made the priority: gap analysis against what''s built, tickets for every MVP gap in the plan''s phase order, conflicting work (voice, webcam proctoring, AI-text detection as evidence) deferred behind the MVP.', '367a49d', 78, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T80', 'Gadfly', 80, '2026-11-20', 'docs', 'open', 'Design pack: docs/DESIGN.md with requirements, architecture and AI components A-H mapped to code, schema, examination and verification state machines, grade-status state machine, grading/approval workflow, role permission matrix, security architecture, student/teacher flows (full product, not MVP)', 'GAD-T79', 79, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T81', 'Gadfly', 81, '2026-11-20', 'feature', 'open', 'Assessment model: Course (subject, topic) owning materials and assessments; LearningObjective per assessment (seedable from concepts, weight, max score); AssessmentRubric with RubricCriteria per objective on the eight Part 5.1 dimensions plus custom ones, criterion weights, and level descriptors 0-5 (0 = Insufficient Evidence); question limit; migrations', 'GAD-T79', 80, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T82', 'Gadfly', 82, '2026-11-20', 'feature', 'open', 'GradingPolicy per assessment: AI/human weights summing to 1, objective weights, disagreement thresholds (defaults 10/20, labelled illustrative), blind-grading flag, inconclusive procedure; locked when the assessment is published; any later change needs an authorized approval with an audit record', 'GAD-T79', 81, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T83', 'Gadfly', 83, '2026-11-20', 'feature', 'open', 'Roles per Part 16.2: Student, Teacher (Instructor), Human Examiner, Second Reviewer, Institution Administrator (Owner/Admin), Platform Administrator (SuperAdmin); explicit permission matrix in code, enforced by policies on every grading, reconciliation, approval and publication action', 'GAD-T79', 82, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T84', 'Gadfly', 84, '2026-11-20', 'feature', 'open', 'AuditEvents: append-only record (who, role, what, before/after reference, when) for original responses, transcript corrections, clarifications, AI assessments, human scores, adjustments, reconciliations, approvals, publication and amendments; no update/delete path', 'GAD-T79', 83, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T85', 'Gadfly', 85, '2026-11-20', 'feature', 'open', 'Teacher UI for courses, subject/topic, learning objectives, rubric criteria and level descriptors, question limit, duration, mode (Examination/Learning), grading weights and thresholds, assignment; replaces the concept-centric exam builder as the primary flow (concepts become suggested objectives)', 'GAD-T79', 84, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T86', 'Gadfly', 86, '2026-11-20', 'feature', 'open', 'StudentResponse (immutable original), TranscriptVersion, ResponseVerification (states: Captured, VerificationRequired, AwaitingStudentConfirmation, Confirmed, Corrected, Clarified, Unresolved, FlaggedForHumanReview), ClarificationEvent; corrections typed as Transcription / MeaningClarification / SubstantiveRevision; original never overwritten', 'GAD-T79', 85, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T87', 'Gadfly', 87, '2026-11-20', 'feature', 'open', 'Transcript Verification Engine (Component C): confidence-based triggers (ambiguity, incomplete sentence, unrecognized terms, multiple interpretations, student request, low STT confidence later), neutral non-leading meaning-clarification questions (prompt + leak guard), only when uncertainty could affect grading; unresolved ambiguity flagged for human review', 'GAD-T79', 86, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T88', 'Gadfly', 88, '2026-11-20', 'feature', 'open', 'Exam room: transcript confirmation (Yes / correct it / repeat), correction of recording errors, clarification answers, substantive revision recorded as a new response event under the assessment''s rules; transcription corrections never reduce the score', 'GAD-T79', 87, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T89', 'Gadfly', 89, '2026-11-20', 'feature', 'open', 'Examination Control Engine (Component G): plan per learning objective, evidence sufficiency (corroboration, consistency, transfer shown), stop criteria (coverage, evidence quality, max questions, time, accommodations extra time), Level 0 Insufficient Evidence when limits hit, no mastery from one answer', 'GAD-T79', 88, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T90', 'Gadfly', 90, '2026-11-20', 'feature', 'open', 'Add causal reasoning, scenario variation, assumption testing and independent explanation moves to conceptual probing, counterexample, transfer and contradiction; select by information value against competing hypotheses about the student''s knowledge', 'GAD-T79', 89, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T91', 'Gadfly', 91, '2026-11-20', 'feature', 'open', 'Student Response Analysis Engine (Component B): schema-validated per-answer analysis (claims, misconceptions, uncertainties, evidence for/against each objective) feeding the planner and the evidence record; Evidence Collection Engine (Component D) writes AssessmentEvidence rows linked to verified response versions', 'GAD-T79', 90, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T92', 'Gadfly', 92, '2026-11-20', 'feature', 'open', 'Detect questions that reveal the answer (leak guard on every question and clarification), replace them, and mark any answer given after a leaked question as contaminated evidence that cannot count as independent mastery', 'GAD-T79', 91, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T93', 'Gadfly', 93, '2026-11-20', 'feature', 'open', 'Learning Mode sessions: hints, guided explanations and reassessment, with evidence marked as assisted and never mixed into examination evidence unless an institutional rule allows it', 'GAD-T79', 92, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T94', 'Gadfly', 94, '2026-11-20', 'feature', 'open', 'AI Grading Engine (Component F): per objective and rubric criterion a level 0-5 and score out of the objective''s maximum, evidence references to verified responses, explanation, misconceptions, unresolved ambiguities, review flags; schema-validated panel output; status AI Grading Pending -> Human Review Pending; never final', 'GAD-T79', 93, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T95', 'Gadfly', 95, '2026-11-20', 'feature', 'open', 'Human Grading Engine: reviewer dashboard with transcript, verified responses, clarification and correction history, objectives, rubrics, evidence; blind mode hides AI scores until the human submits; HumanGrades per objective with comments and timestamps', 'GAD-T79', 94, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T96', 'Gadfly', 96, '2026-11-20', 'feature', 'open', 'Deterministic combined score per objective and overall from the locked policy weights and objective weights; disagreement detection against thresholds; Reconciliation Required blocks finalization', 'GAD-T79', 95, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T97', 'Gadfly', 97, '2026-11-20', 'feature', 'open', 'Score Reconciliation Engine (Component H): side-by-side rationales, differing criteria, evidence, original responses, second reviewer assignment, documented resolution, recalculation', 'GAD-T79', 96, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T98', 'Gadfly', 98, '2026-11-20', 'feature', 'open', 'Grade status state machine (In Progress, Completed, Transcript Verification Pending, AI Grading Pending, Human Review Pending, Reconciliation Required, Awaiting Final Approval, Finalized, Published, Under Appeal, Amended) enforced in code; authorized approval records; publication to students only after approval; appeals and amendments with audit', 'GAD-T79', 97, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T99', 'Gadfly', 99, '2026-11-20', 'feature', 'open', 'Final report per Feature 10: final grade, per-objective results, AI score, human score, evidence, knowledge gaps, approval status; student view after publication', 'GAD-T79', 98, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T100', 'Gadfly', 100, '2026-11-20', 'feature', 'open', 'Mock AI mode when no provider key works: deterministic canned panel behind ISocraticVotingClient, a persistent MOCK banner on every screen and report, and mock results never stored or shown as genuine AI evaluations', 'GAD-T79', 99, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T101', 'Gadfly', 101, '2026-11-20', 'chore', 'open', 'Automated tests for the Part 20 scenarios A-J (fake panel, deterministic) plus engine unit tests for score calculation, thresholds and state transitions; written now, run when the owner asks', 'GAD-T79', 100, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T102', 'Gadfly', 102, '2026-11-20', 'feature', 'open', 'Analytics: mastery by objective, recurring misconceptions, class gaps, completion rates, AI-human agreement and average differences (with the plan''s validity caveat), transcript correction frequency', 'GAD-T79', 101, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T103', 'Gadfly', 103, '2026-11-20', 'chore', 'open', 'Seed demonstration assessments (the multiplication example from Part 2.2 and one statistics objective from Part 7.2) with objectives, rubrics and policies for pilots', 'GAD-T79', 102, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T104', 'Gadfly', 104, '2026-11-20', 'chore', 'open', 'Owner request: exhaustive NUnit tests validating the whole platform: every deterministic rule (scoring, thresholds, state machines, permissions, tenancy guards, verification, retention), engine behavior with a fake panel, persistence through EF against LocalDB, endpoints/hub authorization, and the master plan''s scenarios A-J', '—', 103, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T105', 'Gadfly', 105, '2026-11-20', 'feature', 'open', 'Owner request: a demo/tour runner (Gadfly.Tour) that seeds a demo institution in mock or live AI mode and drives the whole workflow end to end through the real server (teacher setup, student exam with clarification and correction, AI grading, blind human grading, disagreement and reconciliation, approval, publication, appeal, report, analytics), asserting each stage and printing a checklist, so every build can be self-validated', '—', 104, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T106', 'Gadfly', 106, '2026-11-20', 'fix', 'open', 'An org admin can type any existing user name on /org/members and add that account to their organization (enumerates names, adds the org to someone''s switcher without consent); refuse accounts that aren''t already members, like the API does (decision D17 default), until invitations (M.AUTH-T35)', '—', 105, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IDEA-T1', 'IdeaCms', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IDEA-T2', 'IdeaCms', 2, '2026-10-13', 'chore', 'closed', 'Move tools\deploy.ps1 to root deploy.ps1: rebuild only on change, -Force/-Launch, generate C:\Apps\Ideas\deploy.bat (replaces launch.bat); run.bat kept', 'deploy.ps1', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IDEA-T3', 'IdeaCms', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for InstanceConfigService (src/MindAttic.Ideas.Core/Services/InstanceConfigService.cs, zero coverage): GetInstancesAsync tree order page/theme/theme-Uses plugins/page plugins/body tags with correct Depth and InstanceSource, page ThemeKey overriding site DefaultThemeKey, plugin dedupe between theme [Uses] and page selection, fallback to the site plugins.default setting when ActivePluginsJson is empty (SiteDefaultPlugin), body tags only scanned for Data pages, untagged tags resolving Component then Plugin, unresolved citizens shown as (not installed) with Resolved=false; SaveSettingsAsync returning the stale-instance and not-installed errors, slot saves writing widgetRef Kind.key@version, and tag saves dropping unknown/invalid values while preserving an unchanged hand-written attribute that does not type-check - this is the admin settings editor that rewrites author BodyHtml', '—', 2, NULL);
@@ -12414,6 +12450,9 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T426', 'SpaceGod', 426, '2026-11-20', 'feature', 'closed', 'Hold to rewind: a hold before a fight began shows no fight anywhere (its ships let out of it for the HUD and every reader until the moment is after its start again); a fight flown clear of or gone out of view is kept, so leaving it is no barrier and a resume to before puts the hull back in it', '679d6b3', 425, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T427', 'SpaceGod', 427, '2026-11-20', 'feature', 'closed', 'Hold to rewind is heard backward: a tape-rewind bed under the hold whose pitch follows the playback''s speed, and every fight sound heard in the window played again reversed as the hold passes it; the undone ones dropped on letting go (HoldRewindEcho, unit-checked)', 'c383a5b', 426, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T428', 'SpaceGod', 428, '2026-11-20', 'feature', 'closed', 'Hold to rewind in co-op takes back a fight born in the window and keeps a fight left, as single-player does (every peer at the same frame); resume points are kept with no fight or helm too; the co-op smoke proves a fight born off Neptune taken back on both peers', 'a19e9d1', 427, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T429', 'SpaceGod', 429, '2026-11-20', 'chore', 'closed', 'Hold-rewind birth self-test opens with a crossing check: the helm put into a moon''s space by the cruise frame''s rebase, a hold back puts it in the planet''s frame where it was', '4a4af42', 428, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T430', 'SpaceGod', 430, '2026-11-20', 'feature', 'closed', 'Hold to rewind draws a ship that changed phase in the window (left an orbit, joined a lane) on the schedule it had before the change, from a copy kept at the change', '9cbbde9', 429, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T431', 'SpaceGod', 431, '2026-11-20', 'feature', 'open', 'Hold to rewind: a fight taken back gives back the danger its start raised and the merchants it turned aside (their course back, the log line gone); held before a fight''s start its toast is cleared and the ticker and news show nothing reported after the moment reached; the self-test''s controller key path uses the engine''s current InputKey', '—', 430, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T1', 'SpaceGod.Unity.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T2', 'SpaceGod.Unity.CSharp', 2, '2026-11-06', 'feature', 'closed', 'Adopt the shared off-by-default --headless launch mode (Unity.Shared)', 'faadbca', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPA-T3', 'SpaceGod.Unity.CSharp', 3, '2026-11-08', 'feature', 'open', 'Mirror SpaceGod US-T72: docs/CAPTURE.md names the promoted copy SpaceGod (not SpaceGod.Unreal.Cpp) as the third copy and its RepoName folder, and lists SpaceGod''s -RenderOffScreen capture row as that copy only', 'SpaceGod US-T72', 2, NULL);
@@ -13283,6 +13322,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T453', 'Unity.GridGame', 453, '2026-11-20', 'fix', 'open', 'Window backdrop: replace the gray textured window look with the classic Final Fantasy blue gradient again (owner 2026-11-20)', '—', 452, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T454', 'Unity.GridGame', 454, '2026-11-20', 'feature', 'closed', 'One standardized menu look across every screen: a single layout kit (alignment, padding, font sizes, whitespace) applied to every menu so screens fit together and use space efficiently (owner 2026-11-20: ''nothing looks like it fits together'')', '—', 453, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T455', 'Unity.GridGame', 455, '2026-11-20', 'feature', 'closed', 'Diamond exchange (Guild Wars gem-style): every Diamond price payable with gold via an exchange rate or with real money at 100 Diamonds = $1.00 (owner 2026-11-20: keep it low and honest)', '—', 454, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T456', 'Unity.GridGame', 456, '2026-11-20', 'feature', 'open', 'Music: import the owner''s 20 Suno tracks (R:\Desktop\GridGameMusic), name them, assign by location (hub peaceful, battles by region), rotate to the next-closest track each stage (5 waves); list missing tracks + Suno prompts', '—', 455, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.ISO-T1', 'Unity.Isometric', 1, '2026-10-22', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.ISO-T2', 'Unity.Isometric', 2, '2026-10-22', 'chore', 'wont-do', 'Bootstrap Unity 6 project (6000.4.3f1), engine-free Core + NUnit Tests/Core.Tests, workspace docs, and docs/RECONSTRUCTION.md + docs/BIBLE.md reverse-engineered from the 2013 GameMaker Isometric.gmx source', 'port cancelled by user; repo deleted', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UM-T1', 'Unity.Multiplayer', 1, '2026-10-20', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
@@ -80817,6 +80857,228 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79595, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79596, 'GAD-T62', '2026-11-21T00:37:42Z', 'ref', 'GAD-T25', '95d57f8');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79597, 'US-T428', '2026-11-21T00:39:45Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79598, 'US-T428', '2026-11-21T00:39:45Z', 'ref', '—', 'a19e9d1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79599, 'US-T429', '2026-11-21T00:41:58Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79600, 'US-T429', '2026-11-21T00:41:59Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79601, 'US-T429', '2026-11-21T00:42:07Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79602, 'US-T429', '2026-11-21T00:42:07Z', 'ref', '—', '4a4af42');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79603, 'US-T430', '2026-11-21T00:43:44Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79604, 'US-T430', '2026-11-21T00:43:45Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79605, 'GAD-T73', '2026-11-21T00:44:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79606, 'GAD-T73', '2026-11-21T00:44:37Z', 'name', NULL, 'Circuit tenant never system');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79607, 'GAD-T74', '2026-11-21T00:44:38Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79608, 'GAD-T74', '2026-11-21T00:44:38Z', 'name', NULL, 'Exam session owner check');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79609, 'GAD-T75', '2026-11-21T00:44:40Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79610, 'GAD-T75', '2026-11-21T00:44:40Z', 'name', NULL, 'Webhook SSRF guard');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79611, 'GAD-T76', '2026-11-21T00:44:42Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79612, 'GAD-T76', '2026-11-21T00:44:42Z', 'name', NULL, 'Membership changes take effect');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79613, 'GAD-T77', '2026-11-21T00:44:45Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79614, 'GAD-T77', '2026-11-21T00:44:45Z', 'name', NULL, 'Judge prompt injection hardening');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79615, 'GAD-T78', '2026-11-21T00:44:47Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79616, 'GAD-T78', '2026-11-21T00:44:47Z', 'name', NULL, 'Rate limit API and hub');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79617, 'GAD-T79', '2026-11-21T00:46:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79618, 'GAD-T79', '2026-11-21T00:46:02Z', 'name', NULL, 'Adopt master plan as priority');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79619, 'GAD-T79', '2026-11-21T00:46:23Z', 'working', NULL, '2e6c8f98-6378-4374-bfee-47f0c4007417');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79620, 'GAD-T80', '2026-11-21T00:48:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79621, 'GAD-T80', '2026-11-21T00:48:55Z', 'name', NULL, 'MVP design pack');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79622, 'GAD-T80', '2026-11-21T00:48:57Z', 'link', NULL, 'implements GAD-US-MP1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79623, 'GAD-T80', '2026-11-21T00:48:58Z', 'priority', '0', '990');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79624, 'GAD-T81', '2026-11-21T00:49:00Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79625, 'GAD-T81', '2026-11-21T00:49:01Z', 'name', NULL, 'Courses, objectives, rubric criteria');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79626, 'GAD-T81', '2026-11-21T00:49:03Z', 'link', NULL, 'implements GAD-US-MP1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79627, 'GAD-T81', '2026-11-21T00:49:05Z', 'priority', '0', '989');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79628, 'GAD-T81', '2026-11-21T00:49:09Z', 'link', NULL, 'requires GAD-T80');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79629, 'GAD-T80', '2026-11-21T00:49:11Z', 'link', NULL, 'GAD-T81 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79630, 'GAD-T82', '2026-11-21T00:49:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79631, 'GAD-T82', '2026-11-21T00:49:17Z', 'name', NULL, 'Grading policy and thresholds');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79632, 'GAD-T82', '2026-11-21T00:49:23Z', 'link', NULL, 'implements GAD-US-MP1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79633, 'GAD-T82', '2026-11-21T00:49:25Z', 'priority', '0', '988');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79634, 'GAD-T82', '2026-11-21T00:49:32Z', 'link', NULL, 'requires GAD-T81');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79635, 'GAD-T81', '2026-11-21T00:49:33Z', 'link', NULL, 'GAD-T82 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79636, 'GAD-T83', '2026-11-21T00:49:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79637, 'GAD-T83', '2026-11-21T00:49:38Z', 'name', NULL, 'Examiner and reviewer roles');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79638, 'GAD-T83', '2026-11-21T00:49:43Z', 'link', NULL, 'implements GAD-US-MP1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79639, 'GAD-T83', '2026-11-21T00:49:48Z', 'priority', '0', '987');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79640, 'GAD-T83', '2026-11-21T00:49:53Z', 'link', NULL, 'requires GAD-T80');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79641, 'GAD-T80', '2026-11-21T00:49:54Z', 'link', NULL, 'GAD-T83 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79642, 'GAD-T84', '2026-11-21T00:49:58Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79643, 'GAD-T84', '2026-11-21T00:49:59Z', 'name', NULL, 'Append-only audit log');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79644, 'GAD-T84', '2026-11-21T00:50:03Z', 'link', NULL, 'implements GAD-US-MP1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79645, 'GAD-T84', '2026-11-21T00:50:09Z', 'priority', '0', '986');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79646, 'GAD-T84', '2026-11-21T00:50:17Z', 'link', NULL, 'requires GAD-T80');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79647, 'GAD-T80', '2026-11-21T00:50:19Z', 'link', NULL, 'GAD-T84 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79648, 'GAD-T73', '2026-11-21T00:50:22Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79649, 'GAD-T73', '2026-11-21T00:50:22Z', 'ref', '—', '77e3c46');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79650, 'GAD-T85', '2026-11-21T00:50:25Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79651, 'GAD-T85', '2026-11-21T00:50:26Z', 'name', NULL, 'Teacher assessment setup UI');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79652, 'GAD-T85', '2026-11-21T00:50:32Z', 'link', NULL, 'implements GAD-US-MP1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79653, 'GAD-T85', '2026-11-21T00:50:36Z', 'priority', '0', '985');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79654, 'GAD-T85', '2026-11-21T00:50:43Z', 'link', NULL, 'requires GAD-T81');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79655, 'GAD-T81', '2026-11-21T00:50:44Z', 'link', NULL, 'GAD-T85 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79656, 'GAD-T85', '2026-11-21T00:50:50Z', 'link', NULL, 'requires GAD-T82');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79657, 'GAD-T82', '2026-11-21T00:50:52Z', 'link', NULL, 'GAD-T85 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79658, 'GAD-T86', '2026-11-21T00:50:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79659, 'GAD-T86', '2026-11-21T00:50:58Z', 'name', NULL, 'Response versioning model');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79660, 'GAD-T86', '2026-11-21T00:51:07Z', 'link', NULL, 'implements GAD-US-MP1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79661, 'GAD-T86', '2026-11-21T00:51:12Z', 'priority', '0', '984');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79662, 'GAD-T86', '2026-11-21T00:51:23Z', 'link', NULL, 'requires GAD-T84');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79663, 'GAD-T84', '2026-11-21T00:51:26Z', 'link', NULL, 'GAD-T86 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79664, 'GAD-T87', '2026-11-21T00:51:31Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79665, 'GAD-T87', '2026-11-21T00:51:31Z', 'name', NULL, 'Verification engine and clarification');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79666, 'GAD-T87', '2026-11-21T00:51:40Z', 'link', NULL, 'implements GAD-US-MP1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79667, 'GAD-T87', '2026-11-21T00:51:44Z', 'priority', '0', '983');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79668, 'GAD-T87', '2026-11-21T00:51:54Z', 'link', NULL, 'requires GAD-T86');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79669, 'GAD-T86', '2026-11-21T00:51:58Z', 'link', NULL, 'GAD-T87 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79670, 'GAD-T88', '2026-11-21T00:52:06Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79671, 'GAD-T88', '2026-11-21T00:52:07Z', 'name', NULL, 'Student confirmation and correction UI');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79672, 'GAD-T74', '2026-11-21T00:52:08Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79673, 'GAD-T74', '2026-11-21T00:52:08Z', 'ref', '—', '5c3df94');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79674, 'GAD-T88', '2026-11-21T00:52:15Z', 'link', NULL, 'implements GAD-US-MP1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79675, 'GAD-T88', '2026-11-21T00:52:20Z', 'priority', '0', '982');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79676, 'GAD-T88', '2026-11-21T00:52:31Z', 'link', NULL, 'requires GAD-T86');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79677, 'GAD-T86', '2026-11-21T00:52:34Z', 'link', NULL, 'GAD-T88 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79678, 'GAD-T88', '2026-11-21T00:52:47Z', 'link', NULL, 'requires GAD-T87');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79679, 'GAD-T87', '2026-11-21T00:52:49Z', 'link', NULL, 'GAD-T88 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79680, 'GAD-T89', '2026-11-21T00:52:56Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79681, 'GAD-T89', '2026-11-21T00:52:57Z', 'name', NULL, 'Objective-driven examination control');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79682, 'GAD-T89', '2026-11-21T00:53:05Z', 'link', NULL, 'implements GAD-US-MP1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79683, 'GAD-T89', '2026-11-21T00:53:10Z', 'priority', '0', '981');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79684, 'GAD-T89', '2026-11-21T00:53:24Z', 'link', NULL, 'requires GAD-T81');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79685, 'GAD-T81', '2026-11-21T00:53:28Z', 'link', NULL, 'GAD-T89 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79686, 'GAD-T75', '2026-11-21T00:53:37Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79687, 'GAD-T75', '2026-11-21T00:53:37Z', 'ref', '—', 'dbc4c17');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79688, 'GAD-T89', '2026-11-21T00:53:42Z', 'link', NULL, 'requires GAD-T86');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79689, 'GAD-T86', '2026-11-21T00:53:45Z', 'link', NULL, 'GAD-T89 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79690, 'GAD-T90', '2026-11-21T00:53:50Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79691, 'GAD-T90', '2026-11-21T00:53:50Z', 'name', NULL, 'Questioning strategies A-H');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79692, 'GAD-T90', '2026-11-21T00:53:57Z', 'link', NULL, 'implements GAD-US-MP1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79693, 'GAD-T90', '2026-11-21T00:54:03Z', 'priority', '0', '980');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79694, 'GAD-T90', '2026-11-21T00:54:14Z', 'link', NULL, 'requires GAD-T89');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79695, 'GAD-T89', '2026-11-21T00:54:15Z', 'link', NULL, 'GAD-T90 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79696, 'GAD-T91', '2026-11-21T00:54:19Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79697, 'GAD-T91', '2026-11-21T00:54:20Z', 'name', NULL, 'Response analysis engine');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79698, 'GAD-T91', '2026-11-21T00:54:28Z', 'link', NULL, 'implements GAD-US-MP1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79699, 'GAD-T91', '2026-11-21T00:54:33Z', 'priority', '0', '979');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79700, 'GAD-T91', '2026-11-21T00:54:44Z', 'link', NULL, 'requires GAD-T89');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79701, 'GAD-T89', '2026-11-21T00:54:46Z', 'link', NULL, 'GAD-T91 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79702, 'GAD-T91', '2026-11-21T00:54:57Z', 'link', NULL, 'requires GAD-T86');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79703, 'GAD-T86', '2026-11-21T00:54:59Z', 'link', NULL, 'GAD-T91 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79704, 'GAD-T92', '2026-11-21T00:55:05Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79705, 'GAD-T92', '2026-11-21T00:55:06Z', 'name', NULL, 'Leading-question contamination');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79706, 'GAD-T92', '2026-11-21T00:55:18Z', 'link', NULL, 'implements GAD-US-MP1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79707, 'GAD-T76', '2026-11-21T00:55:21Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79708, 'GAD-T76', '2026-11-21T00:55:21Z', 'ref', '—', 'e401ab1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79709, 'GAD-T92', '2026-11-21T00:55:23Z', 'priority', '0', '978');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79710, 'GAD-T92', '2026-11-21T00:55:37Z', 'link', NULL, 'requires GAD-T91');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79711, 'GAD-T91', '2026-11-21T00:55:39Z', 'link', NULL, 'GAD-T92 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79712, 'GAD-T93', '2026-11-21T00:55:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79713, 'GAD-T93', '2026-11-21T00:55:47Z', 'name', NULL, 'Learning mode');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79714, 'GAD-T93', '2026-11-21T00:55:56Z', 'link', NULL, 'implements GAD-US-MP1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79715, 'GAD-T93', '2026-11-21T00:56:02Z', 'priority', '0', '977');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79716, 'GAD-T93', '2026-11-21T00:56:14Z', 'link', NULL, 'requires GAD-T91');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79717, 'GAD-T91', '2026-11-21T00:56:17Z', 'link', NULL, 'GAD-T93 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79718, 'GAD-T94', '2026-11-21T00:56:23Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79719, 'GAD-T94', '2026-11-21T00:56:24Z', 'name', NULL, 'AI preliminary grading per objective');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79720, 'GAD-T94', '2026-11-21T00:56:34Z', 'link', NULL, 'implements GAD-US-MP1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79721, 'GAD-T94', '2026-11-21T00:56:39Z', 'priority', '0', '976');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79722, 'GAD-T94', '2026-11-21T00:56:51Z', 'link', NULL, 'requires GAD-T91');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79723, 'GAD-T91', '2026-11-21T00:56:54Z', 'link', NULL, 'GAD-T94 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79724, 'GAD-T94', '2026-11-21T00:57:05Z', 'link', NULL, 'requires GAD-T81');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79725, 'GAD-T81', '2026-11-21T00:57:07Z', 'link', NULL, 'GAD-T94 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79726, 'GAD-T95', '2026-11-21T00:57:14Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79727, 'GAD-T95', '2026-11-21T00:57:15Z', 'name', NULL, 'Blind human grading dashboard');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79728, 'GAD-T95', '2026-11-21T00:57:21Z', 'link', NULL, 'implements GAD-US-MP1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79729, 'GAD-T95', '2026-11-21T00:57:25Z', 'priority', '0', '975');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79730, 'GAD-T95', '2026-11-21T00:57:38Z', 'link', NULL, 'requires GAD-T94');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79731, 'GAD-T94', '2026-11-21T00:57:41Z', 'link', NULL, 'GAD-T95 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79732, 'GAD-T77', '2026-11-21T00:57:47Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79733, 'GAD-T77', '2026-11-21T00:57:47Z', 'ref', '—', '3e3d152');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79734, 'GAD-T95', '2026-11-21T00:57:53Z', 'link', NULL, 'requires GAD-T83');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79735, 'GAD-T83', '2026-11-21T00:57:56Z', 'link', NULL, 'GAD-T95 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79736, 'GAD-T95', '2026-11-21T00:58:07Z', 'link', NULL, 'requires GAD-T88');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79737, 'GAD-T88', '2026-11-21T00:58:09Z', 'link', NULL, 'GAD-T95 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79738, 'GAD-T96', '2026-11-21T00:58:14Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79739, 'GAD-T96', '2026-11-21T00:58:15Z', 'name', NULL, 'Combined scoring and disagreement');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79740, 'GAD-T96', '2026-11-21T00:58:23Z', 'link', NULL, 'implements GAD-US-MP1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79741, 'GAD-T96', '2026-11-21T00:58:27Z', 'priority', '0', '974');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79742, 'GAD-T96', '2026-11-21T00:58:37Z', 'link', NULL, 'requires GAD-T95');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79743, 'GAD-T95', '2026-11-21T00:58:40Z', 'link', NULL, 'GAD-T96 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79744, 'GAD-T96', '2026-11-21T00:58:52Z', 'link', NULL, 'requires GAD-T82');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79745, 'GAD-T82', '2026-11-21T00:58:55Z', 'link', NULL, 'GAD-T96 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79746, 'GAD-T97', '2026-11-21T00:58:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79747, 'GAD-T97', '2026-11-21T00:58:59Z', 'name', NULL, 'Reconciliation workflow');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79748, 'US-T430', '2026-11-21T00:59:00Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79749, 'US-T430', '2026-11-21T00:59:00Z', 'ref', '—', '9cbbde9');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79750, 'GAD-T97', '2026-11-21T00:59:07Z', 'link', NULL, 'implements GAD-US-MP1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79751, 'GAD-T97', '2026-11-21T00:59:14Z', 'priority', '0', '973');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79752, 'GAD-T97', '2026-11-21T00:59:24Z', 'link', NULL, 'requires GAD-T96');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79753, 'GAD-T96', '2026-11-21T00:59:27Z', 'link', NULL, 'GAD-T97 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79754, 'GAD-T98', '2026-11-21T00:59:33Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79755, 'GAD-T98', '2026-11-21T00:59:33Z', 'name', NULL, 'Final approval and grade statuses');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79756, 'GAD-T98', '2026-11-21T00:59:38Z', 'link', NULL, 'implements GAD-US-MP1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79757, 'GAD-T98', '2026-11-21T00:59:43Z', 'priority', '0', '972');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79758, 'GAD-T98', '2026-11-21T00:59:53Z', 'link', NULL, 'requires GAD-T96');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79759, 'GAD-T96', '2026-11-21T00:59:54Z', 'link', NULL, 'GAD-T98 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79760, 'GAD-T98', '2026-11-21T01:00:03Z', 'link', NULL, 'requires GAD-T83');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79761, 'GAD-T83', '2026-11-21T01:00:06Z', 'link', NULL, 'GAD-T98 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79762, 'GAD-T98', '2026-11-21T01:00:20Z', 'link', NULL, 'requires GAD-T84');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79763, 'GAD-T84', '2026-11-21T01:00:22Z', 'link', NULL, 'GAD-T98 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79764, 'GAD-T78', '2026-11-21T01:00:22Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79765, 'GAD-T78', '2026-11-21T01:00:22Z', 'ref', '—', 'db17f96');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79766, 'GAD-T99', '2026-11-21T01:00:28Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79767, 'GAD-T99', '2026-11-21T01:00:29Z', 'name', NULL, 'Assessment report');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79768, 'GAD-T99', '2026-11-21T01:00:36Z', 'link', NULL, 'implements GAD-US-MP1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79769, 'GAD-T99', '2026-11-21T01:00:40Z', 'priority', '0', '971');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79770, 'GAD-T99', '2026-11-21T01:00:49Z', 'link', NULL, 'requires GAD-T98');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79771, 'GAD-T98', '2026-11-21T01:00:50Z', 'link', NULL, 'GAD-T99 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79772, 'GAD-T100', '2026-11-21T01:00:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79773, 'GAD-T100', '2026-11-21T01:00:55Z', 'name', NULL, 'Clearly labelled mock mode');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79774, 'GAD-T100', '2026-11-21T01:01:01Z', 'link', NULL, 'implements GAD-US-MP1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79775, 'GAD-T100', '2026-11-21T01:01:06Z', 'priority', '0', '970');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79776, 'GAD-T100', '2026-11-21T01:01:14Z', 'link', NULL, 'requires GAD-T80');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79777, 'GAD-T80', '2026-11-21T01:01:15Z', 'link', NULL, 'GAD-T100 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79778, 'GAD-T101', '2026-11-21T01:01:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79779, 'GAD-T101', '2026-11-21T01:01:22Z', 'name', NULL, 'Scenario tests A-J');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79780, 'GAD-T101', '2026-11-21T01:01:28Z', 'link', NULL, 'implements GAD-US-MP1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79781, 'GAD-T101', '2026-11-21T01:01:33Z', 'priority', '0', '969');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79782, 'GAD-T101', '2026-11-21T01:01:41Z', 'link', NULL, 'requires GAD-T98');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79783, 'GAD-T98', '2026-11-21T01:01:43Z', 'link', NULL, 'GAD-T101 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79784, 'GAD-T101', '2026-11-21T01:01:56Z', 'link', NULL, 'requires GAD-T92');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79785, 'GAD-T92', '2026-11-21T01:01:59Z', 'link', NULL, 'GAD-T101 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79786, 'GAD-T101', '2026-11-21T01:02:10Z', 'link', NULL, 'requires GAD-T88');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79787, 'GAD-T88', '2026-11-21T01:02:12Z', 'link', NULL, 'GAD-T101 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79788, 'GAD-T102', '2026-11-21T01:02:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79789, 'GAD-T102', '2026-11-21T01:02:18Z', 'name', NULL, 'Educational analytics');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79790, 'US-T431', '2026-11-21T01:02:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79791, 'US-T431', '2026-11-21T01:02:27Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79792, 'GAD-T102', '2026-11-21T01:02:28Z', 'link', NULL, 'implements GAD-US-MP1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79793, 'GAD-T102', '2026-11-21T01:02:35Z', 'priority', '0', '968');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79794, 'GAD-T102', '2026-11-21T01:02:45Z', 'link', NULL, 'requires GAD-T98');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79795, 'GAD-T98', '2026-11-21T01:02:47Z', 'link', NULL, 'GAD-T102 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79796, 'GAD-T103', '2026-11-21T01:02:52Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79797, 'GAD-T103', '2026-11-21T01:02:53Z', 'name', NULL, 'Demo assessments');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79798, 'GG-T456', '2026-11-21T01:02:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79799, 'GAD-T103', '2026-11-21T01:03:00Z', 'link', NULL, 'implements GAD-US-MP1');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79800, 'GAD-T103', '2026-11-21T01:03:06Z', 'priority', '0', '967');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79801, 'GAD-T103', '2026-11-21T01:03:18Z', 'link', NULL, 'requires GAD-T85');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79802, 'GAD-T85', '2026-11-21T01:03:21Z', 'link', NULL, 'GAD-T103 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79803, 'GAD-T103', '2026-11-21T01:03:36Z', 'link', NULL, 'requires GAD-T99');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79804, 'GAD-T99', '2026-11-21T01:03:40Z', 'link', NULL, 'GAD-T103 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79805, 'GAD-T80', '2026-11-21T01:04:15Z', 'summary', 'Phase 1 design pack: docs/MVP-DESIGN.md with requirements, architecture and AI components A-H mapped to code, schema, examination and verification state machines, grade-status state machine, grading/approval workflow, role permission matrix, security architecture, student/teacher flows', 'Design pack: docs/DESIGN.md with requirements, architecture and AI components A-H mapped to code, schema, examination and verification state machines, grade-status state machine, grading/approval workflow, role permission matrix, security architecture, student/teacher flows (full product, not MVP) (corrected: Owner: build the whole product, not an MVP)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79806, 'GAD-T104', '2026-11-21T01:04:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79807, 'GAD-T104', '2026-11-21T01:04:22Z', 'name', NULL, 'Exhaustive NUnit test suite');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79808, 'GAD-T105', '2026-11-21T01:04:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79809, 'GAD-T105', '2026-11-21T01:04:27Z', 'name', NULL, 'Demo tour self-validation');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79810, 'GAD-T106', '2026-11-21T01:04:33Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79811, 'GAD-T106', '2026-11-21T01:04:34Z', 'name', NULL, 'Members page pulls outside accounts');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79812, 'GAD-T104', '2026-11-21T01:04:41Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79813, 'GAD-T105', '2026-11-21T01:04:45Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79814, 'GAD-T105', '2026-11-21T01:04:50Z', 'priority', '0', '995');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79815, 'GAD-T104', '2026-11-21T01:04:55Z', 'priority', '0', '994');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79816, 'GAD-T53', '2026-11-21T01:05:00Z', 'priority', '849', '100');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79817, 'GAD-T57', '2026-11-21T01:05:11Z', 'priority', '845', '100');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79818, 'GAD-T58', '2026-11-21T01:05:20Z', 'priority', '844', '100');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79819, 'GAD-T79', '2026-11-21T01:05:54Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79820, 'GAD-T79', '2026-11-21T01:05:54Z', 'ref', '—', '367a49d');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -80982,6 +81244,12 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('G.SD-T5', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('G.SD-T6', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T10', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T100', 'proposed', 970, '2026-11-21T01:01:06Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T101', 'proposed', 969, '2026-11-21T01:01:33Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T102', 'proposed', 968, '2026-11-21T01:02:35Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T103', 'proposed', 967, '2026-11-21T01:03:06Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T104', 'approved', 994, '2026-11-21T01:04:54Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T105', 'approved', 995, '2026-11-21T01:04:50Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T11', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T14', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T17', 'approved', 0, '2026-10-31T14:49:51Z', NULL);
@@ -81013,12 +81281,12 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T50', 'approved', 852, '2026-11-20T22:54:20Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T51', 'approved', 851, '2026-11-20T22:54:21Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T52', 'approved', 850, '2026-11-20T22:54:23Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T53', 'approved', 849, '2026-11-20T22:54:25Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T53', 'approved', 100, '2026-11-21T01:05:00Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T54', 'approved', 848, '2026-11-20T22:54:27Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T55', 'approved', 847, '2026-11-20T22:54:28Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T56', 'approved', 846, '2026-11-20T22:54:30Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T57', 'approved', 845, '2026-11-20T22:54:32Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T58', 'approved', 844, '2026-11-20T22:54:34Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T57', 'approved', 100, '2026-11-21T01:05:11Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T58', 'approved', 100, '2026-11-21T01:05:20Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T59', 'approved', 843, '2026-11-20T22:54:36Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T60', 'approved', 842, '2026-11-20T22:54:38Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T61', 'approved', 841, '2026-11-20T22:54:39Z', NULL);
@@ -81028,7 +81296,27 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T65', 'approved', 837, '2026-11-20T22:54:46Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T66', 'approved', 836, '2026-11-20T22:54:47Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T8', 'approved', 5, '2026-10-21T04:35:31Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T80', 'proposed', 990, '2026-11-21T00:48:58Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T81', 'proposed', 989, '2026-11-21T00:49:05Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T82', 'proposed', 988, '2026-11-21T00:49:25Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T83', 'proposed', 987, '2026-11-21T00:49:47Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T84', 'proposed', 986, '2026-11-21T00:50:09Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T85', 'proposed', 985, '2026-11-21T00:50:36Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T86', 'proposed', 984, '2026-11-21T00:51:12Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T87', 'proposed', 983, '2026-11-21T00:51:44Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T88', 'proposed', 982, '2026-11-21T00:52:20Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T89', 'proposed', 981, '2026-11-21T00:53:10Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T9', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T90', 'proposed', 980, '2026-11-21T00:54:03Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T91', 'proposed', 979, '2026-11-21T00:54:32Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T92', 'proposed', 978, '2026-11-21T00:55:22Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T93', 'proposed', 977, '2026-11-21T00:56:02Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T94', 'proposed', 976, '2026-11-21T00:56:39Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T95', 'proposed', 975, '2026-11-21T00:57:25Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T96', 'proposed', 974, '2026-11-21T00:58:27Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T97', 'proposed', 973, '2026-11-21T00:59:14Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T98', 'proposed', 972, '2026-11-21T00:59:43Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T99', 'proposed', 971, '2026-11-21T01:00:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAI-T18', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAI-T19', 'approved', 5, '2026-10-21T04:35:32Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAI-T3', 'approved', 0, '2026-10-19T00:51:15Z', NULL);
@@ -84135,6 +84423,9 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T426', 'approved', 0, '2026-11-21T00:04:33Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T427', 'approved', 0, '2026-11-21T00:23:16Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T428', 'approved', 0, '2026-11-21T00:33:52Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T429', 'approved', 0, '2026-11-21T00:41:59Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T430', 'approved', 0, '2026-11-21T00:43:45Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T431', 'approved', 0, '2026-11-21T01:02:27Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T72', 'approved', 0, '2026-11-06T21:27:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T82', 'approved', 0, '2026-11-06T21:27:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T83', 'approved', 0, '2026-11-06T21:27:41Z', NULL);
@@ -84146,6 +84437,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T99', 'approved', 0, '2026-11-19T09:15:17Z', NULL);
 
 -- ticket_work
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T79', NULL, 0, NULL, '2e6c8f98-6378-4374-bfee-47f0c4007417', '2026-11-21T00:46:24Z', '2026-11-21T00:46:23Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
@@ -87117,6 +87409,15 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31666, '
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31667, 'GAD-T47', 'ryand', '2026-11-21T00:37:11Z', 'Estimated tokens (chars/4) until M.LEGN-T50 exposes real usage; STT/TTS metering joins with voice mode. Verified on LocalDB: a processing run wrote deepseek and openai rows with costs.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31668, 'GAD-T70', 'ryand', '2026-11-21T00:37:13Z', 'Resume-on-archived server fix landed in 95d57f8 (SessionOrchestrator).');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31669, 'GAD-T62', 'ryand', '2026-11-21T00:37:42Z', 'Cost dashboard delivered by GAD-T55 (/org/usage) on GAD-T47''s metering. Failing-provider alerts log at Error into MindAttic.Log; routing them to MindAttic.Psst is a follow-up.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31670, 'GAD-T64', 'ryand', '2026-11-21T01:02:14Z', 'Review done: docs/SECURITY_REVIEW.md (c50576e). Fixed GAD-T73 77e3c46 (circuit tenant fell back to system), GAD-T74 5c3df94 (cross-student live session), GAD-T75 dbc4c17 (webhook SSRF), GAD-T76 e401ab1 (membership changes/owner protection), GAD-T77 3e3d152 (judge prompt injection), GAD-T78 db17f96 (rate limits). Owner decision pending: members page attaching existing accounts.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31671, 'GAD-T79', 'ryand', '2026-11-21T01:04:14Z', 'Owner 2026-11-20: not an MVP - build the whole master plan, ready for Azure (Blazor Server + SQL Server); exhaustive NUnit tests and a demo/tour for self-validation. MVP slice is the first stage, deferred items move to the end of the queue, not off it.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31672, 'GAD-T53', 'ryand', '2026-11-21T01:05:06Z', 'Moved after the master-plan core (docs/MASTER-PLAN-STATUS.md build order 10): voice and proctoring are optional/future in the master plan.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31673, 'GAD-T57', 'ryand', '2026-11-21T01:05:17Z', 'Moved after the master-plan core (docs/MASTER-PLAN-STATUS.md build order 10): voice and proctoring are optional/future in the master plan.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31674, 'GAD-T58', 'ryand', '2026-11-21T01:05:26Z', 'Moved after the master-plan core (docs/MASTER-PLAN-STATUS.md build order 10): voice and proctoring are optional/future in the master plan.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31675, 'GAD-T82', 'ryand', '2026-11-21T01:06:07Z', 'Schema + deterministic rules landed in 4b58cdc (shared foundation commit under GAD-T81); service/UI work still to do.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31676, 'GAD-T84', 'ryand', '2026-11-21T01:06:10Z', 'Schema + deterministic rules landed in 4b58cdc (shared foundation commit under GAD-T81); service/UI work still to do.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31677, 'GAD-T86', 'ryand', '2026-11-21T01:06:16Z', 'Schema + deterministic rules landed in 4b58cdc (shared foundation commit under GAD-T81); service/UI work still to do.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31678, 'GAD-T83', 'ryand', '2026-11-21T01:06:20Z', 'Roles + PermissionMatrix landed in 4b58cdc; policy enforcement on actions still to do.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
@@ -88927,6 +89228,18 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('G.EZ-T123', 
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('G.SD-T22', 'Thunderstore''s BepInExPack_GTFO is now at 3.2.4 (up from the pinned 3.2.3, published 2026-10-31). Bump package/manifest.json''s dependency string, bump version_number to 20.0.0, run tests, build Release, and produce the v20.0.0 dist zip via build.ps1. Part of a family-wide v20 release across all 6 GTFO.* mods (same BepInEx bump, kept in version lockstep with GTFO.EZ).', '2026-11-05T14:50:26Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('G.SD-T23', 'User wants every GTFO.* mod''s documentation accurate. Audit this repo''s README.md (root, if present) and package/README.md against the actual current Plugin.cs config entries, feature set, and package/CHANGELOG.md - fix any drift (missing features, stale version numbers/badges, out-of-sync embedded changelog copies, wrong current-release number), and make sure v20 (BepInEx 3.2.4 bump, already released) is reflected. GTFO.EZ''s own README had drifted (an embedded changelog copy was missing two real bullets from a past release) - check for the same class of bug here.', '2026-11-05T15:42:25Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('G.SD-T25', 'Repo had no GitHub Pages site. Adopted MindAttic.Agency''s shared DocFX docs-site pipeline (HOUSE-LAW-14): added .github/workflows/docs.yml, enabled Pages (build_type=workflow), set homepage. Also picks up the navbar-brand Outfit/#ff0033 fix (MAT-T127) from day one.', '2026-11-10T22:07:46Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T100', 'Part 22. **Done when:** the whole workflow runs without keys and every mock artifact is labelled.
+
+Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T01:00:55Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T101', 'Part 20, Phase 6. **Done when:** the test project contains a named test per scenario and builds.
+
+Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T01:01:22Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T102', 'Part 12.3. **Done when:** the analytics page shows each listed metric for an assessment.
+
+Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T01:02:17Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T103', 'Part 19 Phase 7. **Done when:** a fresh database can be seeded with both demos.
+
+Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T01:02:52Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T17', 'LAMP migration for **Gadfly** (plan: MindAttic.Vault/docs/rfc/0003-lamp.md, Rollout step 5).
 
 - Move to the new MindAttic.Vault major.
@@ -89185,6 +89498,66 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T66', '*
 docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it first.
 
 Milestone 6 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:54:40Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T80', 'Part 19 Phase 1. **Done when:** the design doc exists and every later MP ticket can point at its section.
+
+Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T00:48:55Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T81', 'Parts 5, 12.1, 17.4, 18.2 Feature 1. **Done when:** schema + migration exist and an assessment can hold objectives with criteria and level descriptors.
+
+Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T00:49:00Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T82', 'Parts 9.3, 10.2. **Done when:** a published assessment''s policy is immutable without an approval record.
+
+Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T00:49:17Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T83', 'Part 16.2, Scenario J. **Done when:** each grading action checks a named permission and refusals are audited.
+
+Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T00:49:37Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T84', 'Part 16.4. **Done when:** every grading-state change writes an audit event and the table has no update path in code.
+
+Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T00:49:59Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T85', 'Part 12.1, Feature 1. **Done when:** a teacher can configure and publish an assessment end to end.
+
+Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T00:50:25Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T86', 'Parts 4.2, 4.6, 4.7. **Done when:** schema + state machine in code reject invalid transitions; existing turns migrate as Captured originals.
+
+Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T00:50:58Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T87', 'Parts 4.3-4.5, Scenario C. **Done when:** ambiguous answers get a neutral clarification and the exchange is stored as ClarificationEvents.
+
+Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T00:51:31Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T88', 'Part 13, Scenarios D and E. **Done when:** a student can correct a transcript and the original remains visible to reviewers.
+
+Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T00:52:06Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T89', 'Parts 2.4, 6, Scenarios A, B, H. **Done when:** a session ends per objective with sufficient evidence or an explicit inconclusive result.
+
+Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T00:52:56Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T90', 'Part 2.3. **Done when:** the planner can choose all eight strategies and records why.
+
+Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T00:53:50Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T91', 'Parts 5.2, 17.3 B/D. **Done when:** each objective has supporting and contradicting evidence rows linked to verified responses.
+
+Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T00:54:20Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T92', 'Scenario I. **Done when:** contaminated evidence is flagged and excluded from independent-mastery scoring.
+
+Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T00:55:05Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T93', 'Part 3.2. **Done when:** a learning session runs with hints and its evidence is labelled assisted.
+
+Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T00:55:46Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T94', 'Part 7, Feature 5. **Done when:** an ended session gets AIGrades per objective with evidence links.
+
+Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T00:56:23Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T95', 'Part 8, Feature 6. **Done when:** a reviewer grades blind and AI scores appear only after submission.
+
+Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T00:57:14Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T96', 'Parts 9, 10.1, 10.4, Features 7-8, Scenarios F, G. **Done when:** 95 vs 60 flags reconciliation and blocks finalization; agreement yields the weighted score.
+
+Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T00:58:14Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T97', 'Part 10.3. **Done when:** a flagged exam can be reconciled with a recorded resolution.
+
+Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T00:58:59Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T98', 'Part 11, Feature 9, Scenario J. **Done when:** no grade reaches a student without an approval record; invalid transitions are refused and audited.
+
+Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T00:59:33Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T99', 'Feature 10, Part 11 Stage 11. **Done when:** the report renders for reviewers and, after publication, for the student.
+
+Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T01:00:28Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAI-T33', 'GTFO.EZ''s package/manifest.json now lists GTFO.EZ.AbsurdItems as a Thunderstore dependency (G.EZ-T112), so the two mods are always installed together in the wild. GTFO.EZ''s own AGENTS.md already has a ''Golden rule: GTFO.EZ.AbsurdItems compatibility'' section; add the mirror image of it here: before changing a Harmony patch, check whether GTFO.EZ patches the same original method (precedent: G.EZ-T108''s loot-cleanup patch-ordering cycle between the two mods) - use explicit HarmonyBefore/HarmonyAfter naming the other mod''s GUID rather than relying on load order; keep config section/key names from colliding across the two mods'' .cfg files; and when this mod''s version bumps, flag it so GTFO.EZ''s manifest.json dependency string (MindAttic-GtfoEZAbsurdItems-X.Y.Z) gets updated to match what''s actually published.', '2026-11-05T14:47:18Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAI-T34', 'Thunderstore''s BepInExPack_GTFO is now at 3.2.4 (up from the pinned 3.2.3, published 2026-10-31). Bump package/manifest.json''s dependency string, bump version_number to 20.0.0, run tests, build Release, and produce the v20.0.0 dist zip via build.ps1. Part of a family-wide v20 release across all 6 GTFO.* mods (same BepInEx bump, kept in version lockstep with GTFO.EZ).', '2026-11-05T14:50:21Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAI-T35', 'User wants every GTFO.* mod''s documentation accurate. Audit this repo''s README.md (root, if present) and package/README.md against the actual current Plugin.cs config entries, feature set, and package/CHANGELOG.md - fix any drift (missing features, stale version numbers/badges, out-of-sync embedded changelog copies, wrong current-release number), and make sure v20 (BepInEx 3.2.4 bump, already released) is reflected. GTFO.EZ''s own README had drifted (an embedded changelog copy was missing two real bullets from a past release) - check for the same class of bug here.', '2026-11-05T15:42:19Z');
@@ -103599,6 +103972,13 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('ET-T4', 'Camera pla
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('ET-T5', 'Fixation averaging and learning', '2026-11-20T02:33:24Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('ET-T6', 'Show face and lens planes', '2026-11-20T02:41:28Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('ET-T7', 'Accuracy: pursuit calibration and report', '2026-11-20T02:49:15Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T100', 'Clearly labelled mock mode', '2026-11-21T01:00:55Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T101', 'Scenario tests A-J', '2026-11-21T01:01:22Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T102', 'Educational analytics', '2026-11-21T01:02:18Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T103', 'Demo assessments', '2026-11-21T01:02:52Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T104', 'Exhaustive NUnit test suite', '2026-11-21T01:04:22Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T105', 'Demo tour self-validation', '2026-11-21T01:04:26Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T106', 'Members page pulls outside accounts', '2026-11-21T01:04:33Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T25', 'Socratic exam platform plan', '2026-11-20T21:42:05Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T26', 'Split Gadfly into Core and Personal', '2026-11-20T21:49:34Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T27', 'Socratic session domain model', '2026-11-20T21:49:46Z');
@@ -103647,6 +104027,33 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T69', 'API hard
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T70', 'UI fixes from the docs review', '2026-11-21T00:22:27Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T71', 'Engine and server fixes from the docs review', '2026-11-21T00:22:29Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T72', 'Resumed session uses current concept map', '2026-11-21T00:25:52Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T73', 'Circuit tenant never system', '2026-11-21T00:44:37Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T74', 'Exam session owner check', '2026-11-21T00:44:38Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T75', 'Webhook SSRF guard', '2026-11-21T00:44:40Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T76', 'Membership changes take effect', '2026-11-21T00:44:42Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T77', 'Judge prompt injection hardening', '2026-11-21T00:44:45Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T78', 'Rate limit API and hub', '2026-11-21T00:44:47Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T79', 'Adopt master plan as priority', '2026-11-21T00:46:02Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T80', 'MVP design pack', '2026-11-21T00:48:55Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T81', 'Courses, objectives, rubric criteria', '2026-11-21T00:49:01Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T82', 'Grading policy and thresholds', '2026-11-21T00:49:17Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T83', 'Examiner and reviewer roles', '2026-11-21T00:49:38Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T84', 'Append-only audit log', '2026-11-21T00:49:59Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T85', 'Teacher assessment setup UI', '2026-11-21T00:50:26Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T86', 'Response versioning model', '2026-11-21T00:50:58Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T87', 'Verification engine and clarification', '2026-11-21T00:51:31Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T88', 'Student confirmation and correction UI', '2026-11-21T00:52:06Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T89', 'Objective-driven examination control', '2026-11-21T00:52:57Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T90', 'Questioning strategies A-H', '2026-11-21T00:53:50Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T91', 'Response analysis engine', '2026-11-21T00:54:20Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T92', 'Leading-question contamination', '2026-11-21T00:55:06Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T93', 'Learning mode', '2026-11-21T00:55:47Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T94', 'AI preliminary grading per objective', '2026-11-21T00:56:24Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T95', 'Blind human grading dashboard', '2026-11-21T00:57:14Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T96', 'Combined scoring and disagreement', '2026-11-21T00:58:14Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T97', 'Reconciliation workflow', '2026-11-21T00:58:59Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T98', 'Final approval and grade statuses', '2026-11-21T00:59:33Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T99', 'Assessment report', '2026-11-21T01:00:28Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GGC-T32', 'Headless test flag', '2026-11-07T04:33:26Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T318', 'Speed sets re-entry', '2026-11-07T04:31:39Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T319', 'Recovery tray UI', '2026-11-07T04:31:40Z');
@@ -107799,6 +108206,17 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('G5f', 'PRS-EPIC-G', 'par
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('G5f', 'PRS-US-G5', 'part-of', 'migrated: sub-story');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('G5g', 'PRS-EPIC-G', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('G5g', 'PRS-US-G5', 'part-of', 'migrated: sub-story');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T100', 'GAD-T80', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T100', 'GAD-US-MP1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T101', 'GAD-T88', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T101', 'GAD-T92', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T101', 'GAD-T98', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T101', 'GAD-US-MP1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T102', 'GAD-T98', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T102', 'GAD-US-MP1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T103', 'GAD-T85', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T103', 'GAD-T99', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T103', 'GAD-US-MP1', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T17', 'M.COMP-T157', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T17', 'M.VALT-T35', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T17', 'M.VALT-T39', 'requires', NULL);
@@ -108016,6 +108434,56 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T66', 'GAD-T63', 're
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T66', 'GAD-T64', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T66', 'GAD-US-SP1', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T66', 'MS-7', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T80', 'GAD-US-MP1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T81', 'GAD-T80', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T81', 'GAD-US-MP1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T82', 'GAD-T81', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T82', 'GAD-US-MP1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T83', 'GAD-T80', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T83', 'GAD-US-MP1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T84', 'GAD-T80', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T84', 'GAD-US-MP1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T85', 'GAD-T81', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T85', 'GAD-T82', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T85', 'GAD-US-MP1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T86', 'GAD-T84', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T86', 'GAD-US-MP1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T87', 'GAD-T86', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T87', 'GAD-US-MP1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T88', 'GAD-T86', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T88', 'GAD-T87', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T88', 'GAD-US-MP1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T89', 'GAD-T81', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T89', 'GAD-T86', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T89', 'GAD-US-MP1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T90', 'GAD-T89', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T90', 'GAD-US-MP1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T91', 'GAD-T86', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T91', 'GAD-T89', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T91', 'GAD-US-MP1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T92', 'GAD-T91', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T92', 'GAD-US-MP1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T93', 'GAD-T91', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T93', 'GAD-US-MP1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T94', 'GAD-T81', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T94', 'GAD-T91', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T94', 'GAD-US-MP1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T95', 'GAD-T83', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T95', 'GAD-T88', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T95', 'GAD-T94', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T95', 'GAD-US-MP1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T96', 'GAD-T82', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T96', 'GAD-T95', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T96', 'GAD-US-MP1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T97', 'GAD-T96', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T97', 'GAD-US-MP1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T98', 'GAD-T83', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T98', 'GAD-T84', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T98', 'GAD-T96', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T98', 'GAD-US-MP1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T99', 'GAD-T98', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T99', 'GAD-US-MP1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-US-MP1', 'GAD-EPIC-MP', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-US-SA1', 'GAD-EPIC-SA', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-US-SB1', 'GAD-EPIC-SB', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-US-SB2', 'GAD-EPIC-SB', 'part-of', 'story under its epic');
@@ -112500,7 +112968,11 @@ INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 32, 'raw',
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 33, 'epic', 'SP', '## Epic SP — Socratic platform: production and pilot');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 34, 'story', '1412', '- **GAD-US-SP1 ⬜** As MindAttic, the platform runs on Azure with consent, retention, security and cost controls, and has been piloted with Erin''s real exams.');
 INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 35, 'raw', NULL, '');
-INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 36, 'tickets', NULL, '## Tickets
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 36, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 37, 'epic', 'MP', '## Epic MP — Master plan MVP: Socratic assessment with human-AI grading');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 38, 'story', '1419', '- **GAD-US-MP1 ⬜** As an institution, I run adaptive Socratic examinations whose every response is verified and preserved, scored by AI per learning objective and independently by a human, reconciled when they disagree, combined by an approved weighting policy, and released only after authorized approval (docs/MASTER-PLAN.md).');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 39, 'raw', NULL, '');
+INSERT INTO blocks (repo, ordinal, kind, ref, text) VALUES ('Gadfly', 40, 'tickets', NULL, '## Tickets
 > Permanent log of every change and fix — this repo''s ticket system. Rows are append-only: never
 > delete or reword one; only move its Status (open → closed / wont-do) and fill in Ref. Status is
 > a word, not a glyph, so tickets don''t count toward the story index. Keep this section last.
