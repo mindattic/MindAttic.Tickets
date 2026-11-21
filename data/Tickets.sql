@@ -13442,6 +13442,10 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T501', 'Unity.GridGame', 501, '2026-11-20', 'fix', 'closed', 'Tapping a slot showing ''no targets'' (revive with nobody fallen, Encore with nothing to copy) refuses with ''Empty'' instead of the real reason (found closing GG-T413)', '—', 500, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T502', 'Unity.GridGame', 502, '2026-11-20', 'fix', 'closed', 'Drowned Arks, Deep Shardfall and Under the Anchors stages name the base theme (swamp/desert/cave), so their own backdrops/tiles could never show; set them to swamp2/desert2/cave2 (falls back to the base art until it exists; found by GG-T491)', '—', 501, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T503', 'Unity.GridGame', 503, '2026-11-20', 'feature', 'closed', 'Store-review blocker (found by GG-T472): show the odds before purchase for paid random items: the Diamond summon (each eligible hero 1 in N, listed) and the lucky craft''s Masterwork chance, on the Summon Circle and Blacksmith screens', '—', 502, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T504', 'Unity.GridGame', 504, '2026-11-20', 'fix', 'closed', 'Tutorial 1/15 Moving says ''follow the glowing path to the glowing tile'', but on the first battle''s opening board no pincer is reachable, so ShowHint falls back to the bare ''Tip: trap an enemy between two heroes'' banner and draws no path. Found by GG-T494 fresh-player run.', '—', 503, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T505', 'Unity.GridGame', 505, '2026-11-20', 'fix', 'closed', 'Tutorial 7/15 Chains says ''line both slimes up'' in a wave of a wolf and a bat; Tutorial 8/15 Spells says ''then Confirm'' while the button and its own example say Cast. Found by GG-T494 fresh-player run.', '—', 504, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T506', 'Unity.GridGame', 506, '2026-11-20', 'fix', 'closed', 'Choose Your Party: the locked-in strip clips longer names (''Barbaria'') in its 108 px slots, and the strip grows a line on the first lock-in, shoving the preview card and grid down. Found by GG-T494 fresh-player run.', '—', 505, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T507', 'Unity.GridGame', 507, '2026-11-20', 'fix', 'closed', 'Results after The Tithe Moors II: ''Bag full — sold extras · 1 items'' after two battles. It is a per-item stack cap (US-245), not a full bag, and ''1 items'' is ungrammatical. Found by GG-T494 fresh-player run.', '—', 506, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.ISO-T1', 'Unity.Isometric', 1, '2026-10-22', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.ISO-T2', 'Unity.Isometric', 2, '2026-10-22', 'chore', 'wont-do', 'Bootstrap Unity 6 project (6000.4.3f1), engine-free Core + NUnit Tests/Core.Tests, workspace docs, and docs/RECONSTRUCTION.md + docs/BIBLE.md reverse-engineered from the 2013 GameMaker Isometric.gmx source', 'port cancelled by user; repo deleted', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UM-T1', 'Unity.Multiplayer', 1, '2026-10-20', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
@@ -82179,6 +82183,35 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80798, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80799, 'GAD-T53', '2026-11-21T03:59:54Z', 'ref', 'GAD-T25', '33757e1');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80800, 'GAD-T58', '2026-11-21T03:59:55Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80801, 'GAD-T58', '2026-11-21T03:59:55Z', 'ref', 'GAD-T25', '4c01706');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80802, 'GG-T504', '2026-11-21T04:13:45Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80803, 'GG-T504', '2026-11-21T04:13:45Z', 'name', NULL, 'Moving lesson path missing');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80804, 'GG-T505', '2026-11-21T04:13:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80805, 'GG-T505', '2026-11-21T04:13:47Z', 'name', NULL, 'Tutorial lesson text mismatches');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80806, 'GG-T506', '2026-11-21T04:13:48Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80807, 'GG-T506', '2026-11-21T04:13:48Z', 'name', NULL, 'Party pick names clipped');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80808, 'GG-T507', '2026-11-21T04:13:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80809, 'GG-T507', '2026-11-21T04:13:51Z', 'name', NULL, 'Auto-sell row wording');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80810, 'GG-T504', '2026-11-21T04:14:01Z', 'link', NULL, 'part-of GG-T493');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80811, 'GG-T493', '2026-11-21T04:14:02Z', 'link', NULL, 'GG-T504 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80812, 'GG-T505', '2026-11-21T04:14:09Z', 'link', NULL, 'part-of GG-T493');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80813, 'GG-T493', '2026-11-21T04:14:10Z', 'link', NULL, 'GG-T505 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80814, 'GG-T506', '2026-11-21T04:14:18Z', 'link', NULL, 'part-of GG-T493');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80815, 'GG-T493', '2026-11-21T04:14:19Z', 'link', NULL, 'GG-T506 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80816, 'GG-T507', '2026-11-21T04:14:26Z', 'link', NULL, 'part-of GG-T493');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80817, 'GG-T493', '2026-11-21T04:14:28Z', 'link', NULL, 'GG-T507 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80818, 'GG-T507', '2026-11-21T04:14:53Z', 'working', NULL, '04078191-38f6-4de4-aa7b-82a2aa92bfe7');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80819, 'GG-T506', '2026-11-21T04:14:54Z', 'working', NULL, '04078191-38f6-4de4-aa7b-82a2aa92bfe7');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80820, 'GG-T505', '2026-11-21T04:14:54Z', 'working', NULL, '04078191-38f6-4de4-aa7b-82a2aa92bfe7');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80821, 'GG-T504', '2026-11-21T04:14:55Z', 'working', NULL, '04078191-38f6-4de4-aa7b-82a2aa92bfe7');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80822, 'GG-T504', '2026-11-21T04:15:26Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80823, 'GG-T505', '2026-11-21T04:15:28Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80824, 'GG-T506', '2026-11-21T04:15:32Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80825, 'GG-T507', '2026-11-21T04:15:37Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80826, 'GG-T504', '2026-11-21T04:16:03Z', 'working', '04078191-38f6-4de4-aa7b-82a2aa92bfe7', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80827, 'GG-T505', '2026-11-21T04:16:03Z', 'working', '04078191-38f6-4de4-aa7b-82a2aa92bfe7', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80828, 'GG-T506', '2026-11-21T04:16:03Z', 'working', '04078191-38f6-4de4-aa7b-82a2aa92bfe7', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80829, 'GG-T507', '2026-11-21T04:16:04Z', 'working', '04078191-38f6-4de4-aa7b-82a2aa92bfe7', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (80830, 'GAD-T167', '2026-11-21T04:16:33Z', 'approval', 'proposed', 'approved');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -82400,7 +82433,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T164', 'proposed', 997, '2026-11-21T03:20:38Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T165', 'proposed', 997, '2026-11-21T03:23:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T166', 'proposed', 996, '2026-11-21T03:23:55Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T167', 'proposed', 997, '2026-11-21T03:39:12Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T167', 'approved', 997, '2026-11-21T04:16:33Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T17', 'approved', 0, '2026-10-31T14:49:51Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T25', 'approved', 0, '2026-11-20T22:54:49Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T26', 'proposed', 900, '2026-11-20T21:54:58Z', NULL);
@@ -105398,6 +105431,10 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T500', 'Cloud sa
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T501', 'No-targets refusal message', '2026-11-21T03:03:34Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T502', 'Postgame stages use own theme', '2026-11-21T03:08:29Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T503', 'Show odds for paid random items', '2026-11-21T03:19:51Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T504', 'Moving lesson path missing', '2026-11-21T04:13:45Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T505', 'Tutorial lesson text mismatches', '2026-11-21T04:13:47Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T506', 'Party pick names clipped', '2026-11-21T04:13:48Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T507', 'Auto-sell row wording', '2026-11-21T04:13:51Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T448', 'Gapper study population amendment', '2026-11-07T05:28:30Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T449', 'Full IdiotProof data backup', '2026-11-07T07:09:04Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T450', 'Gapper amendment 02 news-ride', '2026-11-07T07:09:43Z');
@@ -109936,6 +109973,10 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T500', 'GG-T477', 'pa
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T501', 'GG-T493', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T502', 'GG-T490', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T503', 'GG-T467', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T504', 'GG-T493', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T505', 'GG-T493', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T506', 'GG-T493', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T507', 'GG-T493', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T51', 'GG-T50', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T51', 'GG-US-Z1', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T52', 'GG-T50', 'requires', NULL);
