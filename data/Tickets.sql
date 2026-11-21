@@ -4801,7 +4801,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T61', 'Gadfly', 61, '2026-11-20', 'feature', 'closed', 'Privacy: consent records, retention jobs (audio and transcripts after the org''s retention period, default 90 days; video never stored), per-student data export and deletion, privacy policy and terms drafts, EU AI Act high-risk and BIPA notes', 'f8dddad', 60, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T62', 'Gadfly', 62, '2026-11-20', 'chore', 'closed', 'Observability: MindAttic.Log and Telemetry wiring, per-session trace id across hub, engine and providers, cost dashboard, alerts on provider failures and quota exhaustion', '95d57f8', 61, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T63', 'Gadfly', 63, '2026-11-20', 'chore', 'open', 'Deploy to Azure: App Service (WebSockets on) and Azure SQL, staging and production slots, migrations on deploy, Vault-backed secrets, HTTPS and custom domain, run.ps1 and MindAttic.Deploy wiring', 'GAD-T25', 62, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T64', 'Gadfly', 64, '2026-11-20', 'chore', 'open', 'Security review of the new surfaces against OWASP ASVS L2: API keys, launch tokens, SignalR auth, uploads (parser sandboxing, size limits), tenant isolation, webhook signing; fix tickets for findings', 'GAD-T25', 63, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T64', 'Gadfly', 64, '2026-11-20', 'chore', 'closed', 'Security review of the new surfaces against OWASP ASVS L2: API keys, launch tokens, SignalR auth, uploads (parser sandboxing, size limits), tenant isolation, webhook signing; fix tickets for findings', 'c50576e', 63, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T65', 'Gadfly', 65, '2026-11-20', 'docs', 'closed', 'Instructor guide, student guide and platform API docs on the docs site; README rewritten for Gadfly as engine plus platform', 'fabc854', 64, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T66', 'Gadfly', 66, '2026-11-20', 'chore', 'open', 'Pilot with Erin: a demo org, a course built from her source material, at least five real voice sessions, her feedback filed as tickets', 'GAD-T25', 65, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T67', 'Gadfly', 67, '2026-11-20', 'fix', 'closed', 'ConceptMapBuilder merges concepts only on equal keys or title word-overlap >= 0.6, so ''Photosynthesis'' and ''Photosynthesis Overview'' (overlap 0.5) both survive as separate concepts; seen in the GAD-T44 LocalDB check. Merge when one title''s words are a subset of the other''s and their definitions overlap.', 'cc2cf23', 66, NULL);
@@ -81079,6 +81079,9 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79817, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79818, 'GAD-T58', '2026-11-21T01:05:20Z', 'priority', '844', '100');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79819, 'GAD-T79', '2026-11-21T01:05:54Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79820, 'GAD-T79', '2026-11-21T01:05:54Z', 'ref', '—', '367a49d');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79821, 'GAD-T79', '2026-11-21T01:07:49Z', 'working', '2e6c8f98-6378-4374-bfee-47f0c4007417', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79822, 'GAD-T64', '2026-11-21T01:09:06Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (79823, 'GAD-T64', '2026-11-21T01:09:06Z', 'ref', 'GAD-T25', 'c50576e');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -84437,7 +84440,6 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T99', 'approved', 0, '2026-11-19T09:15:17Z', NULL);
 
 -- ticket_work
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T79', NULL, 0, NULL, '2e6c8f98-6378-4374-bfee-47f0c4007417', '2026-11-21T00:46:24Z', '2026-11-21T00:46:23Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
