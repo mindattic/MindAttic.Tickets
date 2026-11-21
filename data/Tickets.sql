@@ -83249,6 +83249,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (81729, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (81730, 'US-T441', '2026-11-21T13:06:28Z', 'ref', '—', 'd244a0f');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (81731, 'US-T447', '2026-11-21T13:48:24Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (81732, 'US-T447', '2026-11-21T13:48:24Z', 'ref', '—', '39746a2');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (81733, 'US-T448', '2026-11-21T13:52:34Z', 'working', NULL, 'waffle@mindattic.com (d5da4af3-5328-4bef-b372-ddd19f1daed6)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (81734, 'US-T448', '2026-11-21T13:52:35Z', 'working', 'waffle@mindattic.com (d5da4af3-5328-4bef-b372-ddd19f1daed6)', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
