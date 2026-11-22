@@ -232,6 +232,38 @@ public sealed class TicketCloseCommand : Command<TicketCloseCommand.Settings>
     }
 }
 
+public sealed class TicketReopenCommand : Command<TicketReopenCommand.Settings>
+{
+    public sealed class Settings : RepoSettings
+    {
+        [CommandArgument(0, "<ID>")]
+        [Description("Ticket ID, e.g. M.LNCH-T5.")]
+        public string Id { get; init; } = "";
+
+        [CommandOption("--reason <TEXT>")]
+        [Description("Why it's open again; recorded in its history.")]
+        public string? Reason { get; init; }
+
+        [CommandOption("--with-parents")]
+        [Description("Also reopen the part-of ancestors that closing it rolled up (closed with ref 'children done'). Without it they stay closed; reopen them one by one.")]
+        public bool WithParents { get; init; }
+    }
+
+    public override int Execute(CommandContext context, Settings settings)
+    {
+        using var db = TicketsDb.OpenIfMigrated(settings.Workspace.Root);
+        if (db is null)
+        {
+            Console.Error.WriteLine("Reopening needs the ticket database; run 'tickets db migrate' first.");
+            return 1;
+        }
+        var reopened = db.Reopen(settings.Id, settings.Reason, settings.WithParents);
+        Db.Rerender(db, settings);
+        foreach (var t in reopened) Console.WriteLine($"{t.Id} open");
+        return 0;
+    }
+}
+
 public sealed class TicketListCommand : Command<TicketListCommand.Settings>
 {
     public sealed class Settings : WorkspaceSettings

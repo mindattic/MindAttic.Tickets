@@ -29,6 +29,7 @@ public sealed record ActivityEvent(long Seq, string TicketId, string Repo, strin
         "description" => Old is null ? "description added" : New is null ? "description removed" : "description edited",
         "summary" => $"reworded: {New}",
         "working" => New is null ? $"no longer worked ({Old})" : $"being worked by {New}",
+        "reopen" => New is null ? $"reopened (was {Old})" : $"reopened (was {Old}): {New}",
         _ when Old is null => $"{Field}: {New}",
         _ when New is null => $"{Field}: {Old} removed",
         _ => $"{Field}: {Old} → {New}",

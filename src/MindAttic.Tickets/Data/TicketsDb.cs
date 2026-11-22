@@ -756,6 +756,8 @@ public sealed partial class TicketsDb : IDisposable
             {
                 if (IsMilestoneId(parentId) || !visited.Add(parentId)) continue;
                 if (Ticket(parentId)?.Ticket is not { Status: TicketRules.Open } parent || OpenChildren(parent.Id).Count > 0) continue;
+                // A continuous ticket (a standing sweep or loop) outlives any batch of its children (M.TIX-T372).
+                if (Labels(parent.Id).Contains(ContinuousLabel, StringComparer.Ordinal)) continue;
                 var anyDone = Scalar("SELECT 1 FROM links l JOIN tickets c ON c.id = l.from_id WHERE l.to_id = $id COLLATE NOCASE " +
                                      "AND l.kind = 'part-of' AND c.status = $s", null, ("$id", parent.Id), ("$s", TicketRules.Closed)) is not null;
                 closed.Add(CloseOne(parent, anyDone ? TicketRules.Closed : TicketRules.WontDo, ChildrenDoneRef));

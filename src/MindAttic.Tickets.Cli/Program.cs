@@ -19,6 +19,7 @@ app.Configure(config =>
         t.AddCommand<TicketNewCommand>("new").WithDescription("Add a ticket with the next free ID; prints the ID, and warns on stderr of open tickets in the repo whose summary reads alike (--template starts the description from the type's template).");
         t.AddCommand<TicketTemplateCommand>("template").WithDescription("Print a ticket type's description template (fix: symptom, cause, test; feature: story, acceptance); 'ticket new --template' starts from it.");
         t.AddCommand<TicketCloseCommand>("close").WithDescription("Move a ticket to closed (or wont-do).");
+        t.AddCommand<TicketReopenCommand>("reopen").WithDescription("Move a closed or wont-do ticket back to open (--reason, recorded in its history); --with-parents reopens the parents its close rolled up. A ticket labelled 'continuous' is never rolled up by its children closing.");
         t.AddCommand<TicketListCommand>("list").WithDescription("List tickets across the workspace (or one repo).");
         t.AddCommand<TicketShowCommand>("show").WithDescription("One ticket: its row, links (prerequisites included) and history; --versions lists every version, --version N shows one.");
         t.AddCommand<TicketGraphCommand>("graph").WithDescription("A ticket's requires chains both ways as an indented tree: what it waits for and what waits for it, blockers marked (--json for the nodes).");
