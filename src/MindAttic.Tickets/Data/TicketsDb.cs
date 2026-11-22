@@ -703,6 +703,9 @@ public sealed partial class TicketsDb : IDisposable
     /// <summary>The ref a parent closed by <see cref="RollUp"/> gets (M.TIX-T364).</summary>
     public const string ChildrenDoneRef = "children done";
 
+    /// <summary>The history field a roll-up close writes on the parent, naming the child whose close triggered it (M.TIX-T366).</summary>
+    public const string RollUpEvent = "rollup";
+
     /// <summary>
     /// Closes <paramref name="id"/> as <see cref="Close"/> does, in one write transaction, and returns every ticket it closed
     /// (M.TIX-T364): with <paramref name="withChildren"/> its open part-of descendants first (deepest first, each with the same
@@ -756,6 +759,8 @@ public sealed partial class TicketsDb : IDisposable
                 var anyDone = Scalar("SELECT 1 FROM links l JOIN tickets c ON c.id = l.from_id WHERE l.to_id = $id COLLATE NOCASE " +
                                      "AND l.kind = 'part-of' AND c.status = $s", null, ("$id", parent.Id), ("$s", TicketRules.Closed)) is not null;
                 closed.Add(CloseOne(parent, anyDone ? TicketRules.Closed : TicketRules.WontDo, ChildrenDoneRef));
+                // Which child's close rolled it up (M.TIX-T366), so undoing that close reopens it too.
+                Event(parent.Id, RollUpEvent, null, child);
                 pending.Enqueue(parent.Id);
             }
     }

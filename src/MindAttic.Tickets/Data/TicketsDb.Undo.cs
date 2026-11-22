@@ -1,4 +1,5 @@
 using System.Globalization;
+using MindAttic.Tickets.Log;
 
 namespace MindAttic.Tickets.Data;
 
@@ -65,6 +66,11 @@ public sealed partial class TicketsDb
             foreach (var l in change.Removed.Where(l => links.Any(x => SameLink(x, l))))
                 throw new InvalidOperationException($"The link {l.From} {l.Kind} {l.To} is back already; not undone.");
 
+            // Parents the undone closes rolled up (M.TIX-T366): found before anything reopens, reopened with the rest.
+            var own = new HashSet<string>(keys, StringComparer.OrdinalIgnoreCase);
+            var rolledUp = RolledUpAncestors(change.States.Where(s => s.Before.Status == TicketRules.Open && s.After.Status != TicketRules.Open)
+                .Select(s => s.After.Id), own);
+
             foreach (var (before, after) in change.States)
             {
                 // Status and ref first: approval is only for open tickets, so a ticket reopens before its approval comes back.
@@ -83,9 +89,51 @@ public sealed partial class TicketsDb
             foreach (var l in change.Added)
                 Exec("DELETE FROM links WHERE from_id = $f COLLATE NOCASE AND to_id = $t COLLATE NOCASE AND kind = $k", null, ("$f", l.From), ("$t", l.To), ("$k", l.Kind));
             foreach (var l in change.Removed) AddLinkCore(l.From, l.To, l.Kind, l.Note);
+            foreach (var (parent, oldRef) in rolledUp)
+                Exec("UPDATE tickets SET status = $s, ref = $ref WHERE id = $id", null, ("$s", TicketRules.Open), ("$ref", oldRef), ("$id", parent));
             Event(RequireTicket(change.Id).Id, "undo", null, change.What);
         });
     }
+
+    /// <summary>
+    /// The ancestors that closing <paramref name="reopening"/> rolled up (M.TIX-T364), nearest first, each with the ref it had
+    /// before: a part-of parent still closed with <see cref="ChildrenDoneRef"/> whose latest close was a roll-up triggered by that
+    /// child (its <see cref="RollUpEvent"/> names it; a roll-up from before that event existed counts when it closed in the same
+    /// second as the child), then that parent's own rolled-up parents, all the way up. A parent closed by hand is never one.
+    /// </summary>
+    private List<(string Id, string Ref)> RolledUpAncestors(IEnumerable<string> reopening, HashSet<string> skip)
+    {
+        var result = new List<(string, string)>();
+        var seen = new HashSet<string>(skip, StringComparer.OrdinalIgnoreCase);
+        var pending = new Queue<string>(reopening);
+        while (pending.TryDequeue(out var child))
+        {
+            var childClosedAt = LatestEvent(child, "status") is { New: TicketRules.Closed or TicketRules.WontDo } c ? c.At : null;
+            foreach (var to in Rows("SELECT to_id FROM links WHERE from_id = $id COLLATE NOCASE AND kind = 'part-of'", r => r.GetString(0), ("$id", child)))
+            {
+                if (IsMilestoneId(to) || Ticket(to)?.Ticket is not { } parent || !seen.Add(parent.Id)) continue;
+                if (parent.Status == TicketRules.Open || parent.Ref != ChildrenDoneRef) continue;
+                if (LatestEvent(parent.Id, "status") is not { } close || close.New != parent.Status) continue;
+                var trigger = LatestEvent(parent.Id, RollUpEvent);
+                var byThisChild = trigger is { } e && e.Seq > close.Seq
+                    ? string.Equals(e.New, child, StringComparison.OrdinalIgnoreCase)
+                    : childClosedAt is not null && childClosedAt == close.At;
+                if (!byThisChild) continue;
+                var refEvent = LatestEvent(parent.Id, "ref");
+                var oldRef = refEvent is { } r && r.Seq > close.Seq && r.New == ChildrenDoneRef ? r.Old ?? "" : parent.Ref;
+                result.Add((parent.Id, oldRef));
+                pending.Enqueue(parent.Id);
+            }
+        }
+        return result;
+    }
+
+    /// <summary>A ticket's latest history event of <paramref name="field"/>, or null when it has none.</summary>
+    private (long Seq, string At, string? Old, string? New)? LatestEvent(string id, string field) =>
+        Rows("SELECT seq, at, old, new FROM ticket_events WHERE seq = (SELECT MAX(seq) FROM ticket_events WHERE ticket_id = $id COLLATE NOCASE AND field = $f)",
+            r => ((long Seq, string At, string? Old, string? New)?)(Convert.ToInt64(r.GetValue(0), CultureInfo.InvariantCulture), r.GetString(1),
+                r.IsDBNull(2) ? null : r.GetString(2), r.IsDBNull(3) ? null : r.GetString(3)),
+            ("$id", id), ("$f", field)).FirstOrDefault();
 
     /// <summary>Each ticket's undoable state, by its ID: one read per table when there are many.</summary>
     private Dictionary<string, TicketState> States(IReadOnlyList<string> ids)
