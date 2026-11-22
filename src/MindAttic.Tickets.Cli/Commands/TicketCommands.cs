@@ -43,8 +43,17 @@ public sealed class TicketNewCommand : Command<TicketNewCommand.Settings>
         [Description("Start the description from the type's template (fix: symptom, cause, test; feature: story, acceptance); 'tickets ticket template TYPE' prints it.")]
         public bool Template { get; init; }
 
+        [CommandOption("--parent <ID>")]
+        [Description("Link the new ticket part-of this one; it inherits the parent's approval (M.TIX-T362).")]
+        public string? Parent { get; init; }
+
+        [CommandOption("--level <LEVEL>")]
+        [Description("epic | feature | story | task: its one level: label (M.TIX-T362).")]
+        public string? Level { get; init; }
+
         public override ValidationResult Validate() =>
-            !TicketRules.Types.Contains(Type) ? ValidationResult.Error($"--type must be one of {string.Join(", ", TicketRules.Types)}")
+            Level is not null && TicketsDb.NormalizeLevel(Level) is null ? ValidationResult.Error($"--level must be one of {string.Join(", ", TicketsDb.Levels)}")
+            : !TicketRules.Types.Contains(Type) ? ValidationResult.Error($"--type must be one of {string.Join(", ", TicketRules.Types)}")
             : string.IsNullOrWhiteSpace(Summary) ? ValidationResult.Error("--summary is required")
             : (Description is not null ? 1 : 0) + (DescriptionFile is not null ? 1 : 0) + (Template ? 1 : 0) > 1
                 ? ValidationResult.Error("--description, --description-file and --template: pick one")
@@ -61,14 +70,21 @@ public sealed class TicketNewCommand : Command<TicketNewCommand.Settings>
                 WarnOfDuplicates(settings, db.Tickets(repo.Name));
                 var description = settings.Template ? TicketTemplates.For(settings.Type)
                     : settings.Description ?? (settings.DescriptionFile is { } path ? File.ReadAllText(path) : null);
-                Console.WriteLine(db.Add(repo.Name, settings.Type, settings.Status, settings.Summary, settings.Ref ?? "", description: description, name: settings.Name).Id);
+                var newId = db.Add(repo.Name, settings.Type, settings.Status, settings.Summary, settings.Ref ?? "", description: description, name: settings.Name).Id;
+                if (settings.Level is { } level) db.SetLevel(newId, level);
+                if (settings.Parent is { } parent)
+                {
+                    db.AddLink(newId, parent, "part-of", null);
+                    if (settings.Status == TicketRules.Open && db.QueueState(parent).Approval == TicketsDb.Approved) db.Approve(newId);
+                }
+                Console.WriteLine(newId);
                 Db.Rerender(db, settings);
                 return 0;
             }
         if (!File.Exists(repo.StoriesPath))
             throw new InvalidOperationException($"{repo.Name} has no docs/USER_STORIES.md; run 'tickets repos rollout --apply' first.");
-        if (settings.Description is not null || settings.DescriptionFile is not null || settings.Template || settings.Name is not null)
-            throw new InvalidOperationException("Descriptions and names live in the ticket database; this workspace hasn't been migrated to it.");
+        if (settings.Description is not null || settings.DescriptionFile is not null || settings.Template || settings.Name is not null || settings.Parent is not null || settings.Level is not null)
+            throw new InvalidOperationException("Descriptions, names, parents and levels live in the ticket database; this workspace hasn't been migrated to it.");
 
         var file = StoryFile.Load(repo.StoriesPath);
         WarnOfDuplicates(settings, file.Tickets.Select(t => (repo.Name, t)));
@@ -176,6 +192,10 @@ public sealed class TicketCloseCommand : Command<TicketCloseCommand.Settings>
         [Description("closed | wont-do. Same as --wont-do; accepted so a mistyped --status doesn't silently close as 'closed' instead.")]
         public string? Status { get; init; }
 
+        [CommandOption("--with-children")]
+        [Description("Close its open part-of children (at any depth) first, with the same status and ref. Without it, a ticket with open children is refused.")]
+        public bool WithChildren { get; init; }
+
         public override ValidationResult Validate()
         {
             if (Status is null) return ValidationResult.Success();
@@ -196,9 +216,11 @@ public sealed class TicketCloseCommand : Command<TicketCloseCommand.Settings>
             if (db is not null)
             {
                 // Ticket IDs are unique across the workspace, so --repo isn't needed (an agent in a worktree may not be in one).
-                var closed = db.Close(settings.Id, status, settings.Ref);
+                // Every ticket it closed, children and rolled-up parents included (M.TIX-T364).
+                var closed = db.CloseTree(settings.Id, status, settings.Ref, settings.WithChildren);
                 Db.Rerender(db, settings);
-                Console.WriteLine($"{closed.Id} {closed.Status}");
+                foreach (var c in closed)
+                    Console.WriteLine(c.Ref == TicketsDb.ChildrenDoneRef ? $"{c.Id} {c.Status} ({TicketsDb.ChildrenDoneRef})" : $"{c.Id} {c.Status}");
                 return 0;
             }
         var repo = settings.ResolveRepo();
@@ -323,6 +345,7 @@ public sealed class TicketListCommand : Command<TicketListCommand.Settings>
                 {
                     repo = x.Repo.Name, id = x.Ticket.Id, name = names.GetValueOrDefault(x.Ticket.Id), date = x.Ticket.Date, type = x.Ticket.Type,
                     status = x.Ticket.Status, summary = x.Ticket.Summary, @ref = x.Ticket.Ref, labels = LabelsOf(x.Ticket.Id),
+                    level = TicketsDb.LevelOf(LabelsOf(x.Ticket.Id)),
                 }), new JsonSerializerOptions { WriteIndented = true }) + Environment.NewLine
                 : TicketExport.Write(format, rows.Select(x => new ExportRow(x.Repo.Name, x.Ticket, LabelsOf(x.Ticket.Id))));
             if (settings.Output is { } path)

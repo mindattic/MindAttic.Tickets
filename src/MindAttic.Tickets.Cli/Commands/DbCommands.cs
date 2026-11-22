@@ -306,6 +306,7 @@ public sealed class TicketShowCommand : Command<TicketShowCommand.Settings>
         AnsiConsole.MarkupLine($"[grey]Queue:[/] {Output.Esc(approval)}, priority {priority.ToString(System.Globalization.CultureInfo.InvariantCulture)}" +
             (work.Assignee is { } who ? $" · [grey]assigned to[/] {Output.Esc(who)}" : "") +
             (work.Reserved > 0 ? $" · {Output.Esc(TokenText.Format(work.Reserved))} [grey]reserved[/]" : ""));
+        if (TicketsDb.LevelOf(labels) is { } level) AnsiConsole.MarkupLine($"[grey]Level:[/] {Output.Esc(level)}");
         if (labels.Count > 0) AnsiConsole.MarkupLine($"[grey]Labels:[/] {Output.Esc(string.Join(", ", labels))}");
         foreach (var (milestone, direct) in milestones)
             AnsiConsole.MarkupLine($"[grey]Milestone:[/] {Output.Esc(milestone.Caption)} · {Output.Esc(milestone.State)}" + (direct ? "" : " [grey](through its parent)[/]"));
