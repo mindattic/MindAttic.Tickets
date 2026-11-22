@@ -262,6 +262,14 @@ public sealed class TicketListCommand : Command<TicketListCommand.Settings>
         [Description("Only tickets with this label (repeatable: tickets with every one named). A component is a 'component:' label.")]
         public string[] Label { get; init; } = [];
 
+        [CommandOption("--unplanned")]
+        [Description("Open leaves that still need a plan pass or a split: no open part-of children, not an epic, level not task (M.TIX-T365).")]
+        public bool Unplanned { get; init; }
+
+        [CommandOption("--containers")]
+        [Description("Open tickets that have at least one open part-of child (M.TIX-T365).")]
+        public bool Containers { get; init; }
+
         [CommandOption("--json")]
         public bool Json { get; init; }
 
@@ -301,12 +309,15 @@ public sealed class TicketListCommand : Command<TicketListCommand.Settings>
         // Labels live only in the ticket database (M.TIX-T74).
         IReadOnlyDictionary<string, IReadOnlyList<string>> labels;
         IReadOnlyDictionary<string, string> names; // friendly names (M.TIX-T313), likewise only in the database
+        HashSet<string> containers = new(StringComparer.OrdinalIgnoreCase); // open tickets with an open part-of child (M.TIX-T365)
         using (var db = TicketsDb.OpenIfMigrated(settings.Workspace.Root))
         {
             labels = db?.AllLabels() ?? (settings.Label.Length > 0
                 ? throw new InvalidOperationException("Labels live in the ticket database, and this workspace isn't migrated to it yet; run 'tickets db migrate'.")
                 : new Dictionary<string, IReadOnlyList<string>>());
             names = db?.Names() ?? new Dictionary<string, string>();
+            if (settings.Unplanned || settings.Containers)
+                containers = db?.OpenContainerIds() ?? new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         }
         IReadOnlyList<string> LabelsOf(string id) => labels.TryGetValue(id, out var l) ? l : [];
         var wanted = settings.Label.Select(l => TicketsDb.NormalizeLabel(l)!).ToList();
@@ -316,6 +327,10 @@ public sealed class TicketListCommand : Command<TicketListCommand.Settings>
             .Where(x => settings.Type is null || x.Ticket.Type == settings.Type)
             .Where(x => settings.Since is null || string.CompareOrdinal(x.Ticket.Date, settings.Since) >= 0)
             .Where(x => wanted.All(LabelsOf(x.Ticket.Id).Contains))
+            .Where(x => !settings.Containers || (x.Ticket.Status == TicketRules.Open && containers.Contains(x.Ticket.Id)))
+            .Where(x => !settings.Unplanned || (x.Ticket.Status == TicketRules.Open && !containers.Contains(x.Ticket.Id)
+                && TicketsDb.LevelOf(LabelsOf(x.Ticket.Id)) is not (TicketsDb.LevelTask or TicketsDb.LevelEpic)
+                && !LabelsOf(x.Ticket.Id).Contains(TicketsDb.LevelEpic)))
             .ToList();
 
         if (!string.IsNullOrWhiteSpace(settings.Query) || !string.IsNullOrWhiteSpace(settings.Filter))

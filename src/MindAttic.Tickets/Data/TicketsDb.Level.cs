@@ -1,3 +1,5 @@
+using MindAttic.Tickets.Log;
+
 namespace MindAttic.Tickets.Data;
 
 /// <summary>
@@ -27,6 +29,12 @@ public sealed partial class TicketsDb
 
     /// <summary>A ticket's level from its <c>level:</c> label, or null when it has none.</summary>
     public string? Level(string id) => LevelOf(Labels(id));
+
+    /// <summary>The IDs of every open ticket that has at least one open part-of child, in one query (M.TIX-T365).</summary>
+    public HashSet<string> OpenContainerIds() =>
+        new(Rows("SELECT DISTINCT p.id FROM links l JOIN tickets c ON c.id = l.from_id COLLATE NOCASE " +
+                 "JOIN tickets p ON p.id = l.to_id COLLATE NOCASE WHERE l.kind = 'part-of' AND c.status = $s AND p.status = $s",
+                 r => r.GetString(0), ("$s", TicketRules.Open)), StringComparer.OrdinalIgnoreCase);
 
     /// <summary>The level among <paramref name="labels"/>, or null.</summary>
     public static string? LevelOf(IEnumerable<string>? labels) =>
