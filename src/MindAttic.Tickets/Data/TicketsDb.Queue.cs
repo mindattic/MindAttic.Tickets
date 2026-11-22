@@ -127,6 +127,7 @@ public sealed partial class TicketsDb
             SetApprovalCore(t.Id, Rejected);
             closed = t with { Status = TicketRules.WontDo, Ref = reason.Trim() };
             Exec("UPDATE tickets SET status = $s, ref = $ref WHERE id = $id", null, ("$s", closed.Status), ("$ref", closed.Ref), ("$id", t.Id));
+            RollUp(t.Id, []); // a rejected last child finishes its parent too (M.TIX-T364)
         });
         return closed;
     }

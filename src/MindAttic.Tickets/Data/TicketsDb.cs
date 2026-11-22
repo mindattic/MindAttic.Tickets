@@ -697,11 +697,76 @@ public sealed partial class TicketsDb : IDisposable
     /// Moves a ticket to closed or wont-do, setting Ref when one is given. Any ticket closes, approved or not: finished
     /// work is closed when it's done (M.TIX-T253 removed M.TIX-T229's approval gate).
     /// </summary>
-    public Ticket Close(string id, string status = TicketRules.Closed, string? reference = null)
+    public Ticket Close(string id, string status = TicketRules.Closed, string? reference = null) =>
+        CloseTree(id, status, reference).First(t => string.Equals(t.Id, Ticket(id)?.Ticket.Id ?? id, StringComparison.OrdinalIgnoreCase));
+
+    /// <summary>The ref a parent closed by <see cref="RollUp"/> gets (M.TIX-T364).</summary>
+    public const string ChildrenDoneRef = "children done";
+
+    /// <summary>
+    /// Closes <paramref name="id"/> as <see cref="Close"/> does, in one write transaction, and returns every ticket it closed
+    /// (M.TIX-T364): with <paramref name="withChildren"/> its open part-of descendants first (deepest first, each with the same
+    /// status and ref), then the ticket, then each open parent whose last open child that was, closed with ref
+    /// <see cref="ChildrenDoneRef"/> (wont-do when none of its children closed as closed), all the way up. Milestones (MS-n)
+    /// are never closed this way. An open ticket that still has open part-of children is refused unless
+    /// <paramref name="withChildren"/>: an epic/feature/story can't finish before its parts.
+    /// </summary>
+    public IReadOnlyList<Ticket> CloseTree(string id, string status = TicketRules.Closed, string? reference = null, bool withChildren = false)
     {
         if (status is not (TicketRules.Closed or TicketRules.WontDo))
             throw new ArgumentException($"Close to '{TicketRules.Closed}' or '{TicketRules.WontDo}', not '{status}'.", nameof(status));
-        var t = Ticket(id)?.Ticket ?? throw new KeyNotFoundException($"No ticket {id}.");
+        var closed = new List<Ticket>();
+        InWrite(() =>
+        {
+            var t = Ticket(id)?.Ticket ?? throw new KeyNotFoundException($"No ticket {id}.");
+            if (t.Status == TicketRules.Open)
+            {
+                var open = OpenChildren(t.Id);
+                if (open.Count > 0 && !withChildren)
+                    throw new InvalidOperationException(
+                        $"{t.Id} still has {open.Count} open part-of {(open.Count == 1 ? "child" : "children")}: {string.Join(", ", open)}. " +
+                        "Close them first, or pass --with-children to close them too.");
+                var visited = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { t.Id };
+                foreach (var child in open) CloseDescendants(child, status, reference, visited, closed);
+            }
+            closed.Add(CloseOne(t, status, reference));
+            RollUp(t.Id, closed);
+        });
+        return closed;
+    }
+
+    /// <summary>Closes <paramref name="id"/>'s open part-of descendants, deepest first, then <paramref name="id"/> itself.</summary>
+    private void CloseDescendants(string id, string status, string? reference, HashSet<string> visited, List<Ticket> closed)
+    {
+        if (!visited.Add(id) || Ticket(id)?.Ticket is not { Status: TicketRules.Open } t) return;
+        foreach (var child in OpenChildren(t.Id)) CloseDescendants(child, status, reference, visited, closed);
+        closed.Add(CloseOne(t, status, reference));
+    }
+
+    /// <summary>Closes each open, non-milestone parent of <paramref name="id"/> that has no open part-of children left, then its parents.</summary>
+    private void RollUp(string id, List<Ticket> closed)
+    {
+        var visited = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { id };
+        var pending = new Queue<string>([id]);
+        while (pending.TryDequeue(out var child))
+            foreach (var parentId in Rows("SELECT to_id FROM links WHERE from_id = $id COLLATE NOCASE AND kind = 'part-of'", r => r.GetString(0), ("$id", child)))
+            {
+                if (IsMilestoneId(parentId) || !visited.Add(parentId)) continue;
+                if (Ticket(parentId)?.Ticket is not { Status: TicketRules.Open } parent || OpenChildren(parent.Id).Count > 0) continue;
+                var anyDone = Scalar("SELECT 1 FROM links l JOIN tickets c ON c.id = l.from_id WHERE l.to_id = $id COLLATE NOCASE " +
+                                     "AND l.kind = 'part-of' AND c.status = $s", null, ("$id", parent.Id), ("$s", TicketRules.Closed)) is not null;
+                closed.Add(CloseOne(parent, anyDone ? TicketRules.Closed : TicketRules.WontDo, ChildrenDoneRef));
+                pending.Enqueue(parent.Id);
+            }
+    }
+
+    /// <summary>The IDs of <paramref name="id"/>'s open part-of children.</summary>
+    private List<string> OpenChildren(string id) =>
+        Rows("SELECT c.id FROM links l JOIN tickets c ON c.id = l.from_id WHERE l.to_id = $id COLLATE NOCASE AND l.kind = 'part-of' " +
+             "AND c.status = $s ORDER BY c.id", r => r.GetString(0), ("$id", id), ("$s", TicketRules.Open));
+
+    private Ticket CloseOne(Ticket t, string status, string? reference)
+    {
         var updated = t with { Status = status, Ref = string.IsNullOrWhiteSpace(reference) ? t.Ref : reference.Trim() };
         Exec("UPDATE tickets SET status = $s, ref = $ref WHERE id = $id", null, ("$s", updated.Status), ("$ref", updated.Ref), ("$id", t.Id));
         return updated;
