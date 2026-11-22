@@ -5056,6 +5056,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T287', 'Gadfly', 287, '2026-11-21', 'fix', 'closed', '50-85 s of ''Waiting.'' between confirming the read-back and the examiner''s next question on Azure (found by GAD-T243)', 'ecbf993', 286, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T288', 'Gadfly', 288, '2026-11-21', 'fix', 'closed', 'Get-ready page sometimes stays on ''Checking your browser...'' and Begin exam stays disabled (found by GAD-T243)', 'c07f21f1095e38c6a05b87cbc59c09e25d7618fc', 287, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T289', 'Gadfly', 289, '2026-11-21', 'chore', 'open', 'Deploy main with the evidence-map work, EU voice switch-off, exam-test fixes and dissertation docs to mindattic-gadfly', '—', 288, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T290', 'Gadfly', 290, '2026-11-21', 'feature', 'open', 'Examiner fills the wait: right after the student confirms the read-back, she says a short varied acknowledgement (''Let me think about that…'', ''Okay, give me a moment…'') through the avatar while the panel judges and the next question is written, so there is no dead air; never evaluative (''good answer''), no hint of the grade, skipped when the next question is ready within ~2 s', '—', 289, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T1', 'GridGame.Studio', 1, '2026-11-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T2', 'GridGame.Studio', 2, '2026-11-21', 'feature', 'closed', 'GridGame.Studio: ThumbnailStudio moved here as one WPF app, plus Gallery tabs (Heroes/Enemies/Abilities paste-to-replace: background cut, centred 1024x1024, Figure update; 64px icons) and an eraser (circle/square 1-100 px), Python image steps run as one-off commands, no web server', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T3', 'GridGame.Studio', 3, '2026-11-21', 'feature', 'closed', 'Studio gallery: Backgrounds tab grouped by region (campaign.json Themes Name/Backgrounds set), replace any image or add the next numbered one (<set>_NN.jpg)', '—', 2, NULL);
@@ -84162,6 +84163,20 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (82486, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (82487, 'SR-T11', '2026-11-22T00:59:24Z', 'working', '2e6c8f98-6378-4374-bfee-47f0c4007417', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (82488, 'M.ORCH-T1896', '2026-11-22T01:13:07Z', 'working', NULL, '3be90ecc-63e5-4b8e-b125-a94a308fa56f');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (82489, 'M.TIX-T360', '2026-11-22T01:29:08Z', 'created', NULL, 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (82490, 'M.ORCH-T1896', '2026-11-22T01:43:02Z', 'working', '3be90ecc-63e5-4b8e-b125-a94a308fa56f', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (82491, 'GAD-T290', '2026-11-22T01:46:48Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (82492, 'GAD-T284', '2026-11-22T01:46:50Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (82493, 'GAD-T285', '2026-11-22T01:46:51Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (82494, 'GAD-T258', '2026-11-22T01:46:53Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (82495, 'GAD-T260', '2026-11-22T01:46:56Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (82496, 'GAD-T290', '2026-11-22T01:46:58Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (82497, 'GAD-T285', '2026-11-22T01:47:03Z', 'working', NULL, 'honey@mindattic.com (2e6c8f98-6378-4374-bfee-47f0c4007417)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (82498, 'GAD-T284', '2026-11-22T01:47:06Z', 'working', NULL, 'honey@mindattic.com (2e6c8f98-6378-4374-bfee-47f0c4007417)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (82499, 'GAD-T260', '2026-11-22T01:47:08Z', 'working', NULL, 'honey@mindattic.com (2e6c8f98-6378-4374-bfee-47f0c4007417)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (82500, 'GAD-T258', '2026-11-22T01:47:10Z', 'working', NULL, 'honey@mindattic.com (2e6c8f98-6378-4374-bfee-47f0c4007417)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (82501, 'GAD-T290', '2026-11-22T01:47:28Z', 'working', NULL, '2e6c8f98-6378-4374-bfee-47f0c4007417');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (82502, 'GAD-T290', '2026-11-22T01:47:51Z', 'working', '2e6c8f98-6378-4374-bfee-47f0c4007417', 'honey@mindattic.com (2e6c8f98-6378-4374-bfee-47f0c4007417)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (82503, 'M.ORCH-T1896', '2026-11-22T01:49:08Z', 'working', NULL, '3be90ecc-63e5-4b8e-b125-a94a308fa56f');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -84467,8 +84482,10 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T255', 'approved', 0, '2026-11-21T22:14:28Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T256', 'approved', 0, '2026-11-21T22:14:33Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T257', 'approved', 0, '2026-11-21T22:14:36Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T258', 'approved', 0, '2026-11-22T01:46:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T259', 'approved', 0, '2026-11-21T23:17:42Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T26', 'proposed', 900, '2026-11-20T21:54:58Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T260', 'approved', 0, '2026-11-22T01:46:56Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T261', 'approved', 0, '2026-11-21T23:17:44Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T262', 'approved', 0, '2026-11-21T23:17:46Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T263', 'approved', 0, '2026-11-21T23:18:43Z', NULL);
@@ -84492,8 +84509,11 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T280', 'proposed', 841, '2026-11-21T23:47:38Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T281', 'proposed', 840, '2026-11-21T23:47:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T282', 'approved', 0, '2026-11-22T00:12:25Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T284', 'approved', 0, '2026-11-22T01:46:49Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T285', 'approved', 0, '2026-11-22T01:46:51Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T289', 'approved', 0, '2026-11-22T00:55:51Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T29', 'approved', 895, '2026-11-20T22:53:23Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T290', 'approved', 0, '2026-11-22T01:46:58Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T30', 'proposed', 894, '2026-11-20T21:58:44Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T31', 'proposed', 893, '2026-11-20T21:59:26Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T32', 'proposed', 892, '2026-11-20T22:00:05Z', NULL);
@@ -87707,9 +87727,14 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T99', 'approved', 0, '2026-11-19T09:15:17Z', NULL);
 
 -- ticket_work
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T258', NULL, 0, 'honey@mindattic.com', '2e6c8f98-6378-4374-bfee-47f0c4007417', '2026-11-22T01:47:10Z', '2026-11-22T01:47:10Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T260', NULL, 0, 'honey@mindattic.com', '2e6c8f98-6378-4374-bfee-47f0c4007417', '2026-11-22T01:47:08Z', '2026-11-22T01:47:08Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T284', NULL, 0, 'honey@mindattic.com', '2e6c8f98-6378-4374-bfee-47f0c4007417', '2026-11-22T01:47:06Z', '2026-11-22T01:47:06Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T285', NULL, 0, 'honey@mindattic.com', '2e6c8f98-6378-4374-bfee-47f0c4007417', '2026-11-22T01:47:04Z', '2026-11-22T01:47:03Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T289', NULL, 0, 'honey@mindattic.com', '2e6c8f98-6378-4374-bfee-47f0c4007417', '2026-11-22T00:55:57Z', '2026-11-22T00:55:57Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T290', NULL, 0, 'honey@mindattic.com', '2e6c8f98-6378-4374-bfee-47f0c4007417', '2026-11-22T01:47:51Z', '2026-11-22T01:47:51Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1896', NULL, 0, NULL, '3be90ecc-63e5-4b8e-b125-a94a308fa56f', '2026-11-22T01:13:07Z', '2026-11-22T01:13:07Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1896', NULL, 0, NULL, '3be90ecc-63e5-4b8e-b125-a94a308fa56f', '2026-11-22T01:49:09Z', '2026-11-22T01:49:08Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T768', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
@@ -90927,6 +90952,7 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31783, '
   - Also rejected: gendered words, gameplay numbers and a bare "Somnolith". Lore must be 3-4 sentences.
 - **Approve (owner):** `prose --texts-approve-all gridgame --kind description --batch gg-t558-heroes --by ryan --dry-run`, then run it without `--dry-run` and with `--publish`.
 - **Verify:** `prose --texts-verify` checked 63 texts and versions: 0 findings, 0 errors.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31784, 'GAD-T260', 'ryand', '2026-11-22T01:48:00Z', 'Owner approved (do these): typing allowed ONLY as an instructor/admin-granted accommodation for one named student on one assignment, like GAD-T261''s gaze accommodation; every grant audited; students can never switch themselves. Camera + examiner avatar still run, examiner still speaks, gaze check still applies unless GAD-T261 also granted. Only the answer channel changes; typed answers marked typed for reviewers. Decide paste/integrity handling. Update EVIDENCE_MAP decision (a), SCIENCE.md, start page text, admin desk.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
