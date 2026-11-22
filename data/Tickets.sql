@@ -5143,7 +5143,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T327', 'Gadfly', 327, '2026-11-21', 'fix', 'open', 'Creating and revoking organization API keys writes no audit row; usage hint says speech is metered but only LLM calls are (found by GAD-T292)', '—', 326, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T328', 'Gadfly', 328, '2026-11-21', 'feature', 'open', 'Exam room waits up to 90 s for the 3D model before the first question; show the 2D portrait (speaking) while the model loads and swap in the 3D examiner between sentences, plus a polite on-screen note when browser speech takes over from the voice provider (follow-up from GAD-T303)', '—', 327, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T329', 'Gadfly', 329, '2026-11-21', 'chore', 'open', 'Pre-synthesize the examiner''s wait-filler lines (ExaminerFiller.First/Again, GAD-T290) in ExaminerSpeechWarmup (GAD-T303) so the first ''Let me think about that'' plays instantly, and describe the filler in docs/VOICE.md', '—', 328, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T330', 'Gadfly', 330, '2026-11-21', 'docs', 'open', 'Dissertation: log corrections for GAD-T258 (probing now from answer content only, prompt set v8), GAD-T260/T284/T285/T290 in Appendix A and chapter 5''s status of owner decisions (a) and (b); re-export docs/elenchus-at-scale.md', '—', 329, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T330', 'Gadfly', 330, '2026-11-21', 'docs', 'closed', 'Dissertation: log corrections for GAD-T258 (probing now from answer content only, prompt set v8), GAD-T260/T284/T285/T290 in Appendix A and chapter 5''s status of owner decisions (a) and (b); re-export docs/elenchus-at-scale.md', 'none', 329, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T331', 'Gadfly', 331, '2026-11-21', 'fix', 'wont-do', 'Fails on main: Gadfly.Tests.Server.TranscriptTests.The_same_record_always_gives_the_same_hash_and_code — Multiple failures or warnings in test: 1) the time a file is made is not part of the content Assert.That(a.Sha256, Is.EqualTo(b.Sha256)) String lengths are both 64. Strings differ at index 0. Expected: "6f2bd15f4bb98dafe79b0b145a939730bd266508599538a1d5b09fbf439e3c1f" But was: "464adc7f90dc678715... (landed on main since the last green run: tickets GAD-T260, GAD-T258, GAD-T299, GAD-T301, GAD-T325, GAD-T291, GAD-T324, GAD-T305, MAA-T9, GAD-T303, GAD-T323, GAD-T308, GAD-T297, GAD-T290 in 19c7151 Typed-answer accommodation: an instructor or admin can let one named student type their answers on one assignment (audited grant and withdrawal, from the assignments page or the admin desk); the camera, the examiner''s spoken questions and the gaze check stay, no microphone is opened, typed answers are stored and shown to reviewers as typed, pastes into the answer box are noted for review rather than blocked, and the session hub refuses typed answers without the grant (GAD-T260); 83739f7 Probing pressure comes from what the answer says, never the voice: hedging, vague wording, a missing reason or example, a judged score not yet convincing, the analysis''s evidence against or unclear meaning, and recitation; voice comparison, wait before answering and hesitations stay recorded for reviewers but no longer steer or reach the prompt (prompt set v8); EVIDENCE_MAP decision (b) reversed by the owner 2026-11-21, SCIENCE/PRIVACY/VOICE updated (GAD-T258); 40b3968 Admin live sessions monitor at /admin/live: every exam in progress with question, move, time left, connection, microphone and camera, staff pause and integrity notes, updated as it happens (pushed, 5 s fallback); staff can add time (capped), pause, resume, end through the normal end path, each with a required reason, and send the student a text notice; every action audited and shown on the session''s review timeline (GAD-T299); da54733 Audit log indexes for the viewer''s filters (organization with actor, action and record) as a hand-written migration with the context and snapshot, and the admin guide''s Exams and Audit log sections (GAD-T301); 041f1a1 Adding a member refuses the API-key-only Api role for a person (GAD-T325); 3afecab Exam room shows staff notices and staff pauses from the live monitor (text only, never spoken), and tells the monitor the room is open (GAD-T299); c83ea0f App version V<N> in the tab title and header: every deploy is the next whole number after the highest vN tag, baked in with -p:GadflyVersion and tagged vN only once live (refuses a number another deploy took); local builds show the last tag plus dev; rule in docs/DEPLOY.md (GAD-T291); 14435b3 Amending a grade under appeal must name the appeal, so the appeal is resolved with the amendment and never left open (GAD-T324); c514099 Get-ready page gets the eye-tracking panel (setup advice and the five-dot calibration, never blocking Begin exam); VOICE.md describes the gaze vector, calibration, drift, slow devices and the quality score (GAD-T305); 6494da3 Examiner delivery in the exam room: captions light word by word on the provider''s timings from when her audio starts, a speaking style per kind of question (requests always neutral), questions cached so Repeat and reload replay at once, fixed lines and fillers prepared ahead, the portrait''s mouth moves, quality steps down on slow devices and lost graphics fall back to the portrait mid-sentence safely, hiding the tab pauses her, Hold to talk interrupts her, a failed or silent voice provider falls back to the browser''s own speech (or the text), and the get-ready page preloads the examiner; VOICE.md documents it and the MindAttic.Avatar gaps (MAA-T9..T15) (GAD-T303); 9e210be Live sessions feed: an in-process broadcaster the exam steps and integrity recorders publish to, so the live monitor updates without polling (GAD-T299); ff16703 Audit log: a refused visit is audited once, not again for the prerender (GAD-T301); d86693d Finish judges an answer that was saved for the open question but never attached to its turn after verification failed (GAD-T323); 17b8ca3 Exam engine: staff extra time (capped at 2 hours) and staff pauses (not limited by the device pause allowance, capped at 4 hours) with a single Deadline the clock and time-left checks share; saved in the transcript (GAD-T299); c7e12f6 Favicon is the owner''s Gadfly icon: favicon.svg embeds it, so the existing icon link on every page shows it without touching App.razor (GAD-T308); 6776560 Exam preview starts once the page is interactive, so a prerender never writes a second assessment.previewed row (GAD-T297); e83cf8f Public site: stylesheet loads on every public page (Blazor keeps only the last HeadContent, so it moves into each page''s SiteMeta with the mock banner''s), wordmark and engraved fly fixed in dark mode, wider examiner portrait in the hero plate, steadier narrow layouts (GAD-T308); b3c0012 Examiner fills the wait: after a read-back is confirmed (or a correction or clarification resolved), if the next question isn''t ready within 2 s she says one short neutral line (ExaminerFiller: varied, never evaluative, cached by the avatar hub) and one more after 20 s; the microphone gate stays shut throughout, a question arriving mid-line waits for it to finish, and a line is never transcribed into an answer (GAD-T290); 7246222 Audit log viewer at /admin/audit: owners and admins only (refusals audited), filters by who, action or action family, student, exam, session and dates, full-text search over action, record, reason, detail and names, paging in SQL, a detail view with before/after JSON pretty-printed, privacy-redacted rows marked Redacted, streamed CSV/JSON export (audited), and an organization choice for platform staff (their view recorded in that log); help topic and tests (GAD-T301); 685ffb0 Exams manager help topic written (list, actions, settings frozen once published, preview, import and the gadfly.exam JSON format), instructor guide points to it, tests for duplicate, JSON round trip and validation, archive and restore (GAD-T297))', 'superseded by GAD-T333: bisected to 257a295', 330, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T332', 'Gadfly', 332, '2026-11-21', 'fix', 'wont-do', 'Fails on main: Gadfly.Tests.Server.AdminDashboardTests.NeedsAttention_FindsEachKind_AndLinksStraightToWhereToAct — Microsoft.EntityFrameworkCore.DbUpdateException : An error occurred while saving the entity changes. See the inner exception for details. ----> Microsoft.Data.SqlClient.SqlException : The INSERT statement conflicted with the FOREIGN KEY constraint "FK_GradeDisagreements_LearningObjectives_Objecti... (landed on main since the last green run: tickets GAD-T260, GAD-T258, GAD-T299, GAD-T301, GAD-T325, GAD-T291, GAD-T324, GAD-T305, MAA-T9, GAD-T303, GAD-T323, GAD-T308, GAD-T297, GAD-T290 in 19c7151 Typed-answer accommodation: an instructor or admin can let one named student type their answers on one assignment (audited grant and withdrawal, from the assignments page or the admin desk); the camera, the examiner''s spoken questions and the gaze check stay, no microphone is opened, typed answers are stored and shown to reviewers as typed, pastes into the answer box are noted for review rather than blocked, and the session hub refuses typed answers without the grant (GAD-T260); 83739f7 Probing pressure comes from what the answer says, never the voice: hedging, vague wording, a missing reason or example, a judged score not yet convincing, the analysis''s evidence against or unclear meaning, and recitation; voice comparison, wait before answering and hesitations stay recorded for reviewers but no longer steer or reach the prompt (prompt set v8); EVIDENCE_MAP decision (b) reversed by the owner 2026-11-21, SCIENCE/PRIVACY/VOICE updated (GAD-T258); 40b3968 Admin live sessions monitor at /admin/live: every exam in progress with question, move, time left, connection, microphone and camera, staff pause and integrity notes, updated as it happens (pushed, 5 s fallback); staff can add time (capped), pause, resume, end through the normal end path, each with a required reason, and send the student a text notice; every action audited and shown on the session''s review timeline (GAD-T299); da54733 Audit log indexes for the viewer''s filters (organization with actor, action and record) as a hand-written migration with the context and snapshot, and the admin guide''s Exams and Audit log sections (GAD-T301); 041f1a1 Adding a member refuses the API-key-only Api role for a person (GAD-T325); 3afecab Exam room shows staff notices and staff pauses from the live monitor (text only, never spoken), and tells the monitor the room is open (GAD-T299); c83ea0f App version V<N> in the tab title and header: every deploy is the next whole number after the highest vN tag, baked in with -p:GadflyVersion and tagged vN only once live (refuses a number another deploy took); local builds show the last tag plus dev; rule in docs/DEPLOY.md (GAD-T291); 14435b3 Amending a grade under appeal must name the appeal, so the appeal is resolved with the amendment and never left open (GAD-T324); c514099 Get-ready page gets the eye-tracking panel (setup advice and the five-dot calibration, never blocking Begin exam); VOICE.md describes the gaze vector, calibration, drift, slow devices and the quality score (GAD-T305); 6494da3 Examiner delivery in the exam room: captions light word by word on the provider''s timings from when her audio starts, a speaking style per kind of question (requests always neutral), questions cached so Repeat and reload replay at once, fixed lines and fillers prepared ahead, the portrait''s mouth moves, quality steps down on slow devices and lost graphics fall back to the portrait mid-sentence safely, hiding the tab pauses her, Hold to talk interrupts her, a failed or silent voice provider falls back to the browser''s own speech (or the text), and the get-ready page preloads the examiner; VOICE.md documents it and the MindAttic.Avatar gaps (MAA-T9..T15) (GAD-T303); 9e210be Live sessions feed: an in-process broadcaster the exam steps and integrity recorders publish to, so the live monitor updates without polling (GAD-T299); ff16703 Audit log: a refused visit is audited once, not again for the prerender (GAD-T301); d86693d Finish judges an answer that was saved for the open question but never attached to its turn after verification failed (GAD-T323); 17b8ca3 Exam engine: staff extra time (capped at 2 hours) and staff pauses (not limited by the device pause allowance, capped at 4 hours) with a single Deadline the clock and time-left checks share; saved in the transcript (GAD-T299); c7e12f6 Favicon is the owner''s Gadfly icon: favicon.svg embeds it, so the existing icon link on every page shows it without touching App.razor (GAD-T308); 6776560 Exam preview starts once the page is interactive, so a prerender never writes a second assessment.previewed row (GAD-T297); e83cf8f Public site: stylesheet loads on every public page (Blazor keeps only the last HeadContent, so it moves into each page''s SiteMeta with the mock banner''s), wordmark and engraved fly fixed in dark mode, wider examiner portrait in the hero plate, steadier narrow layouts (GAD-T308); b3c0012 Examiner fills the wait: after a read-back is confirmed (or a correction or clarification resolved), if the next question isn''t ready within 2 s she says one short neutral line (ExaminerFiller: varied, never evaluative, cached by the avatar hub) and one more after 20 s; the microphone gate stays shut throughout, a question arriving mid-line waits for it to finish, and a line is never transcribed into an answer (GAD-T290); 7246222 Audit log viewer at /admin/audit: owners and admins only (refusals audited), filters by who, action or action family, student, exam, session and dates, full-text search over action, record, reason, detail and names, paging in SQL, a detail view with before/after JSON pretty-printed, privacy-redacted rows marked Redacted, streamed CSV/JSON export (audited), and an organization choice for platform staff (their view recorded in that log); help topic and tests (GAD-T301); 685ffb0 Exams manager help topic written (list, actions, settings frozen once published, preview, import and the gadfly.exam JSON format), instructor guide points to it, tests for duplicate, JSON round trip and validation, archive and restore (GAD-T297))', 'superseded by GAD-T334: bisected to 257a295', 331, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T333', 'Gadfly', 333, '2026-11-21', 'fix', 'closed', 'Fails on main: Gadfly.Tests.Server.TranscriptTests.The_same_record_always_gives_the_same_hash_and_code — Multiple failures or warnings in test: 1) the time a file is made is not part of the content Assert.That(a.Sha256, Is.EqualTo(b.Sha256)) String lengths are both 64. Strings differ at index 0. Expected: "6f2bd15f4bb98dafe79b0b145a939730bd266508599538a1d5b09fbf439e3c1f" But was: "464adc7f90dc678715... (bisected to 257a295 "Transcript maker: an official transcript for every exam session from the response ledger (questions with clock times, offsets and the examiner''s move, answer..." on main, reopening GAD-T295''s work: fix what that commit changed so this passes again; bisected from the last green 5feb532 in 5 steps)', '541042a', 332, NULL);
@@ -5232,6 +5232,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T416', 'Gadfly', 416, '2026-11-22', 'feature', 'closed', 'Exam room layout fits on one screen with no scrolling (owner, live): the student must be able to keep looking at the examiner''s face the whole time, so the avatar, webcam self-view, transcript, response-delay/voice-strain line, timer and answer controls must all fit within one viewport at common laptop/desktop sizes without the page scrolling. Audit Gadfly.Server/Components/Pages/Student/ExamRoom.razor and VoiceRoom.razor plus wwwroot/voice.css for anything causing vertical overflow (transcript growing unbounded, long notices, the integrity banner, recent GAD-T290 filler text, GAD-T406 ambient sound has no visible element so unaffected). Make the transcript scroll internally within a fixed-height panel instead of growing the page; keep avatar+camera visibly on-screen at all times; reduce or collapse secondary text (integrity notice, long instructions) so the core face+camera+controls always fit above the fold', '997a79c', 415, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T417', 'Gadfly', 417, '2026-11-22', 'chore', 'open', 'Extract dissertation/ into its own repo, ElenchusAtScale, so it is no longer coupled to the Gadfly exam app''s git history, CI/deploy and Pages site', '—', 416, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T418', 'Gadfly', 418, '2026-11-22', 'fix', 'open', 'Fails on main: Gadfly.Tests.Server.SessionOrchestratorTests.Finish_JudgesAnAnswerThatWasRecordedButNotJudged — Assert.That(pending.Verification, Is.Not.Null) Expected: not null But was: null (bisected to be6a6ff "Spoken answers are taken as heard: no read-back, confirm, correct or clarify round trip before judging; the recognizer''s low-confidence words and its advice ..." on main, reopening GAD-T405''s work: fix what that commit changed so this passes again; bisected from the last green 5feb532 in 7 steps)', 'main@cb920cc', 417, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T419', 'Gadfly', 419, '2026-11-22', 'fix', 'open', 'Fails on main: Gadfly.Tests.Server.TenancyTests.EveryGadflyTable_IsTenantOwned_OrDeliberatelyUnfiltered — these tables carry organization data but no tenant filter: a request in one organization could read another''s rows Assert.That(unfiltered, Is.Empty) Expected: <empty> But was: < "ApiCallTiming" > (landed on main since the last green run: tickets GAD-T411, GAD-T334, GAD-T326, GAD-T333, GAD-T293, GAD-T298, GAD-T321, GAD-T416, GAD-T413, GAD-T412, GAD-T407, GAD-T405, GAD-T409, GAD-T408, GAD-T260, GAD-T258, GAD-T299, GAD-T301 in 166f9b5 Per-call API timing line drops from Information to Debug (success) / Warning (failure): it was the single biggest source of log volume, firing on every recognizer commit and every fan-out provider call, and duplicates the durable row /healthz/call-timings already reads (GAD-T411); db243a6 Raise the Azure file diagnostics logger''s 10MB/2-file default so it keeps flowing through a live exam (GAD-T411); 5d1b21b Admin dashboard test seed data: a grade disagreement needs its own learning-objective row, not a random Guid, since GradeDisagreements.ObjectiveId is a real foreign key to LearningObjectives (GAD-T334); 3d21990 Fix stale PRIVACY.md claims (audio stored, camera Strict-only, exam continues on decline) and two stale UI strings (GAD-T326); 541042a Transcript hash test fixture: pin the session Id so two builds of the same record hash the same, instead of a fresh Guid.NewGuid() leaking into the document''s SessionId on every call to Source() (GAD-T333); 3c4ce10 Guided-tour engine scaffold, not yet wired into any page (GAD-T293); 637f7ea Admin assignments console: students-by-exam grid, bulk assign/unassign, due dates, grant another attempt, reset with audit copy, accommodations, CSV export (GAD-T298); e2d2ffb A resent or late answer never becomes the next question''s answer: VoiceRoom tags each voice answer with the turn it was given to, the hub and orchestrator drop one that no longer matches the session''s open turn (GAD-T321); 997a79c Exam room fits one screen, picture in picture: the examiner centred with the student''s camera as a small box in her bottom-right corner, the transcript (scrolling in its own panel) to her left and the answer controls to her right, her stage filling the height left over; the integrity and eye-contact explanations fold to one line each in the title row, the question card has a fixed height, and the finish confirmation floats (GAD-T416); fa1336c Time every outside call on a live exam into gadfly.ApiCallTimings: each panel call named by its caller (judge, analysis, claim extraction, question generation, aporia, verify) plus each provider inside a fan-out, the examiner''s ElevenLabs voice to first byte and to end of audio, and the recognizer''s start/commit/stop; rows are written off the critical path, also logged, and readable at /healthz/call-timings (GAD-T413); 270ab3e Disable the AI-text/read-aloud check outright to trim one panel call off the per-answer critical path (GAD-T412); aec9997 Docs and site say a spoken answer is taken as heard: no read-back, confirm, correct, repeat or change step in VOICE, EVIDENCE_MAP, SCIENCE, the student and instructor guides, the FAQ, quick start, checklist, microphone troubleshooting and How it works; the fairness risk this moves onto reviewers is stated (GAD-T407); ea381b3 Exam room without the read-back: no confirm, correct or "repeat my answer" step for a spoken answer, and no do-over ("I want to change my answer") either; a read-back request left over from before GAD-T405 is taken as heard on its own, the examiner fills the judging wait after every answer, and typed answers keep their clarification and typo fix (GAD-T407); 9d65761 Quiet page-turn ambience during the wait, alternating the two CC0 clips, faded in on fillWait() and out on every exit through cancelFill() (GAD-T409); cb920cc Add two CC0 page-turn sound effect variants with license notice (GAD-T408); be6a6ff Spoken answers are taken as heard: no read-back, confirm, correct or clarify round trip before judging; the recognizer''s low-confidence words and its advice to check are recorded for reviewers, and a spoken answer can no longer be typo-fixed afterwards (owner decision 2026-11-22) (GAD-T405); 19c7151 Typed-answer accommodation: an instructor or admin can let one named student type their answers on one assignment (audited grant and withdrawal, from the assignments page or the admin desk); the camera, the examiner''s spoken questions and the gaze check stay, no microphone is opened, typed answers are stored and shown to reviewers as typed, pastes into the answer box are noted for review rather than blocked, and the session hub refuses typed answers without the grant (GAD-T260); 83739f7 Probing pressure comes from what the answer says, never the voice: hedging, vague wording, a missing reason or example, a judged score not yet convincing, the analysis''s evidence against or unclear meaning, and recitation; voice comparison, wait before answering and hesitations stay recorded for reviewers but no longer steer or reach the prompt (prompt set v8); EVIDENCE_MAP decision (b) reversed by the owner 2026-11-21, SCIENCE/PRIVACY/VOICE updated (GAD-T258); 40b3968 Admin live sessions monitor at /admin/live: every exam in progress with question, move, time left, connection, microphone and camera, staff pause and integrity notes, updated as it happens (pushed, 5 s fallback); staff can add time (capped), pause, resume, end through the normal end path, each with a required reason, and send the student a text notice; every action audited and shown on the session''s review timeline (GAD-T299); da54733 Audit log indexes for the viewer''s filters (organization with actor, action and record) as a hand-written migration with the context and snapshot, and the admin guide''s Exams and Audit log sections (GAD-T301))', 'main@166f9b5', 418, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T1', 'GridGame.Studio', 1, '2026-11-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T2', 'GridGame.Studio', 2, '2026-11-21', 'feature', 'closed', 'GridGame.Studio: ThumbnailStudio moved here as one WPF app, plus Gallery tabs (Heroes/Enemies/Abilities paste-to-replace: background cut, centred 1024x1024, Figure update; 64px icons) and an eraser (circle/square 1-100 px), Python image steps run as one-off commands, no web server', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T3', 'GridGame.Studio', 3, '2026-11-21', 'feature', 'closed', 'Studio gallery: Backgrounds tab grouped by region (campaign.json Themes Name/Backgrounds set), replace any image or add the next numbered one (<set>_NN.jpg)', '—', 2, NULL);
@@ -5246,7 +5247,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T12', 'GridGame.Studio', 12, '2026-11-21', 'feature', 'open', 'Studio MCP server: the same operations as the CLI exposed as MCP tools (read, edit, validate content and assets) so an LLM changes GridGame only through the Studio''s validated operations (part of the hub epic)', '—', 11, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T13', 'GridGame.Studio', 13, '2026-11-21', 'feature', 'open', 'Studio Stage Designer tab: every stage''s data editable in a friendly UI with Wave 1, 2, 3, 4, 5 - enemies per wave, placement, backdrop, music, rewards and the rest of the stage fields - with the game''s stage checks inline, saved by targeted edits (part of the hub epic)', '—', 12, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T14', 'GridGame.Studio', 14, '2026-11-21', 'feature', 'open', 'Studio covers every remaining editable content value: abilities, spells, items, weapons, status effects, regions/campaign, battle config and any other content JSON, each with its editor, its rules and CLI/MCP access (part of the hub epic)', '—', 13, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T15', 'GridGame.Studio', 15, '2026-11-22', 'feature', 'open', 'Headless Studio core: shared operations layer with list/get/set/add/remove for content files and assets', '—', 14, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T15', 'GridGame.Studio', 15, '2026-11-22', 'feature', 'closed', 'Headless Studio core: shared operations layer with list/get/set/add/remove for content files and assets', '—', 14, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T16', 'GridGame.Studio', 16, '2026-11-22', 'feature', 'open', 'Validate every write by the game''s rules before it lands; refuse with the reason otherwise; add validate operation', '—', 15, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T17', 'GridGame.Studio', 17, '2026-11-22', 'feature', 'open', 'Command-line front end over the operations layer, and switch the UI to use the shared layer', '—', 16, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T18', 'GridGame.Studio', 18, '2026-11-22', 'feature', 'open', 'Add an MCP server project/host to GridGame.Studio exposing the Studio''s operation layer, with tool registration plumbing', '—', 17, NULL);
@@ -14219,7 +14220,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T517', 'Unity.GridGame', 517, '2026-11-20', 'fix', 'closed', 'Summon Circle draw reveal: the hero''s name, role line and ''Tap to continue'' sit on the standard light veil with no window, so the Summon Circle''s own text shows through and overlaps them (''Striker · answers the circle'' over ''Mobile striker flanker…''). Found by GG-T494 fresh-player run.', '—', 516, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T518', 'Unity.GridGame', 518, '2026-11-20', 'fix', 'closed', 'Camp: locked rows'' unlock hints (''Joins when gear wears below 60%'', ''After The Lantern Road II'') and the Rested window''s ''25 Diamonds (or 150 G)'' button scroll as marquees in ~110 px, so most of the time they read as fragments (''oins at The'', ''nonds (or''). Found by GG-T494 fresh-player run.', '—', 517, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T519', 'Unity.GridGame', 519, '2026-11-20', 'fix', 'closed', 'Camp Rested window ''175g · 1s'' and Summon Circle ''Draw · 100 Diamonds (or 600 G) · 1s'' / ''(1500g · 1s)'': the trailing ''1s'' is the timed job''s wait (Paywall.Tag) but nothing says so; a new player can''t tell what ''1s'' means. Found by GG-T494 fresh-player run.', '—', 518, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T520', 'Unity.GridGame', 520, '2026-11-20', 'fix', 'open', 'Merchant Buy on the first visit (after The Tithe Moors) lists ~120 rows: every early weapon/armor/jewel, every consumable and materials from regions not yet reached, with no hint which gear suits which hero or is an upgrade. Design call: curate or group the early stock. Found by GG-T494 fresh-player run.', '—', 519, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T520', 'Unity.GridGame', 520, '2026-11-20', 'fix', 'closed', 'Merchant Buy on the first visit (after The Tithe Moors) lists ~120 rows: every early weapon/armor/jewel, every consumable and materials from regions not yet reached, with no hint which gear suits which hero or is an upgrade. Design call: curate or group the early stock. Found by GG-T494 fresh-player run.', '52814e77', 519, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T521', 'Unity.GridGame', 521, '2026-11-20', 'fix', 'closed', 'Fresh run: six battles and two expeditions in (40 min), the Blacksmith still ''Joins when gear wears below 60%''. Starting heroes wear no gear and dropped gear is never auto-equipped, so a player who doesn''t buy and equip something on their own never meets him — forge, repair and the lucky craft stay hidden. Only a bought Iron Sword at 64% was close. Design call: a story/stage trigger or a guaranteed early worn drop. Found by GG-T494 fresh-player run.', '—', 520, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T522', 'Unity.GridGame', 522, '2026-11-20', 'fix', 'closed', 'After a -capture video run quits, the dead player''s automation listening socket (127.0.0.1:<harness port>) stays LISTENING under the gone PID while MindAttic.Capture''s finalizer (capture.exe/ffmpeg) exports the session — the children inherit the handle — so the next harness launch on the same port dies with SocketException ''Only one usage of each socket address'' and launch() reports ''player did not start''. Workaround: a different GAIDEN_PORT. Fix: don''t let the HttpListener/socket be inheritable, or spawn the finalizer without handle inheritance. Found by GG-T494 fresh-player run.', '—', 521, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T523', 'Unity.GridGame', 523, '2026-11-20', 'chore', 'closed', '3:4 battle: the info tabs (tutorial, Party, Log) get ~230 design px under the fixed 1080x1440 board, less with a notch; the tutorial card scrolls after two lines. Let the board shrink or the stage grow taller on wide aspects (seen in artifacts/t483-after/3x4/3x4-5-battle.png)', '—', 522, NULL);
@@ -14285,7 +14286,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T583', 'Unity.GridGame', 583, '2026-11-21', 'chore', 'closed', 'Dark menu theme retinted to GridGame.Gallery''s own CSS palette (stage #15151a, window/card #1c1c22, control #26262e, borders #2c2c34/#3a3a44, one accent #5a8fd9, text #e8e8ec/#999) and set as the default theme, replacing Classic/FF-blue (owner 2026-11-21: ''we tried FF, then Chrono, then back to FF - none of these where right; but the colors in all these apps is better'')', 'GG-T186', 582, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T584', 'Unity.GridGame', 584, '2026-11-21', 'chore', 'closed', 'Delete orphaned MalePortrait/MaleFigure data and art for Blue Lion and Hex Sniper, now Team:Enemy (GG-T581): the hero gender-variant picker only ever fires for Team:Hero, so these were dead weight', 'GG-T581', 583, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T585', 'Unity.GridGame', 585, '2026-11-21', 'fix', 'closed', 'Window Editor: a pending Tone save could be lost when leaving with unsaved theme edits too (OnHidden discarded dirty before saving the pending tone)', '—', 584, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T586', 'Unity.GridGame', 586, '2026-11-21', 'feature', 'open', 'Fully tear down BattleScreen, FX layer, timeline icons, tweens and audio sources between encounters', '—', 585, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T586', 'Unity.GridGame', 586, '2026-11-21', 'feature', 'closed', 'Fully tear down BattleScreen, FX layer, timeline icons, tweens and audio sources between encounters', 'ded5b7ad', 585, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T587', 'Unity.GridGame', 587, '2026-11-21', 'feature', 'open', 'Log managed/native memory and object counts every 10 encounters and warn on monotonic growth', '—', 586, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T588', 'Unity.GridGame', 588, '2026-11-21', 'feature', 'open', 'End an encounter over a turn/real-time cap as ''stalled'', record it in telemetry; investigate GG-T21 process disappearance', '—', 587, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T589', 'Unity.GridGame', 589, '2026-11-21', 'feature', 'open', 'Run and verify a 300-encounter unattended run proving stability', '—', 588, NULL);
@@ -90377,6 +90378,76 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97946, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97947, 'CM-T33', '2026-11-22T08:10:25Z', 'ref', '—', '9a0c731,96414c6');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97948, 'CLA-T27', '2026-11-22T08:10:27Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97949, 'CLA-T27', '2026-11-22T08:10:27Z', 'ref', '—', '9a0c731,96414c6');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97950, 'GAD-T294', '2026-11-22T08:15:27Z', 'working', 'pdftransferjr@mindattic.com (b318ffee-d91c-438b-975b-d4971b80260b)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97951, 'GAD-T317', '2026-11-22T08:15:27Z', 'working', 'pdftransferjr@mindattic.com (b318ffee-d91c-438b-975b-d4971b80260b)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97952, 'GAD-T327', '2026-11-22T08:15:28Z', 'working', 'pdftransferjr@mindattic.com (b318ffee-d91c-438b-975b-d4971b80260b)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97953, 'GAD-T365', '2026-11-22T08:15:28Z', 'working', 'pdftransferjr@mindattic.com (b318ffee-d91c-438b-975b-d4971b80260b)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97954, 'GAD-T366', '2026-11-22T08:15:28Z', 'working', 'pdftransferjr@mindattic.com (b318ffee-d91c-438b-975b-d4971b80260b)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97955, 'GAD-T367', '2026-11-22T08:15:28Z', 'working', 'pdftransferjr@mindattic.com (b318ffee-d91c-438b-975b-d4971b80260b)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97956, 'GAD-T368', '2026-11-22T08:15:29Z', 'working', 'pdftransferjr@mindattic.com (b318ffee-d91c-438b-975b-d4971b80260b)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97957, 'GAD-T369', '2026-11-22T08:15:29Z', 'working', 'pdftransferjr@mindattic.com', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97958, 'GAD-T377', '2026-11-22T08:15:29Z', 'working', 'pdftransferjr@mindattic.com (b318ffee-d91c-438b-975b-d4971b80260b)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97959, 'M.ORCH-T1953', '2026-11-22T08:15:30Z', 'working', 'ohleo199@mindattic.com', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97960, 'GG-T520', '2026-11-22T08:17:22Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97961, 'GG-T520', '2026-11-22T08:17:22Z', 'ref', '—', '52814e77');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97962, 'GG-T586', '2026-11-22T08:17:29Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97963, 'GG-T586', '2026-11-22T08:17:29Z', 'ref', '—', 'ded5b7ad');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97964, 'GAD-T419', '2026-11-22T08:17:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97965, 'M.COMP-T117', '2026-11-22T08:17:40Z', 'priority', '890', '889');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97966, 'M.HELP-T16', '2026-11-22T08:17:40Z', 'priority', '889', '888');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97967, 'M.HELP-T17', '2026-11-22T08:17:41Z', 'priority', '888', '887');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97968, 'IDEA-T42', '2026-11-22T08:17:41Z', 'priority', '887', '886');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97969, 'M.VALT-T84', '2026-11-22T08:17:41Z', 'priority', '886', '885');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97970, 'M.VALT-T85', '2026-11-22T08:17:41Z', 'priority', '885', '884');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97971, 'OS-T18', '2026-11-22T08:17:42Z', 'priority', '884', '883');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97972, 'OS-T26', '2026-11-22T08:17:42Z', 'priority', '883', '882');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97973, 'OS-T28', '2026-11-22T08:17:42Z', 'priority', '882', '881');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97974, 'M.COMP-T169', '2026-11-22T08:17:42Z', 'priority', '881', '880');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97975, 'CS-T2', '2026-11-22T08:17:43Z', 'priority', '880', '879');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97976, 'M.COMP-T186', '2026-11-22T08:17:43Z', 'priority', '879', '878');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97977, 'CS-T4', '2026-11-22T08:17:43Z', 'priority', '878', '877');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97978, 'AGP-T31', '2026-11-22T08:17:43Z', 'priority', '877', '876');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97979, 'M.LNCH-T126', '2026-11-22T08:17:44Z', 'priority', '876', '875');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97980, 'M.LNCH-T129', '2026-11-22T08:17:44Z', 'priority', '875', '874');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97981, 'M.LNCH-T130', '2026-11-22T08:17:44Z', 'priority', '874', '873');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97982, 'TRC-T49', '2026-11-22T08:17:44Z', 'priority', '873', '872');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97983, 'TRC-T50', '2026-11-22T08:17:45Z', 'priority', '872', '871');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97984, 'TRC-T51', '2026-11-22T08:17:45Z', 'priority', '871', '870');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97985, 'TRC-T52', '2026-11-22T08:17:45Z', 'priority', '870', '869');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97986, 'TRC-T53', '2026-11-22T08:17:45Z', 'priority', '869', '868');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97987, 'TRC-T54', '2026-11-22T08:17:46Z', 'priority', '868', '867');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97988, 'TRC-T55', '2026-11-22T08:17:46Z', 'priority', '867', '866');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97989, 'TRC-T56', '2026-11-22T08:17:46Z', 'priority', '866', '865');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97990, 'OS-T68', '2026-11-22T08:17:47Z', 'priority', '865', '864');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97991, 'OS-T72', '2026-11-22T08:17:47Z', 'priority', '864', '863');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97992, 'OS-T76', '2026-11-22T08:17:47Z', 'priority', '863', '862');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97993, 'TUT-T56', '2026-11-22T08:17:47Z', 'priority', '862', '861');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97994, 'TUT-T57', '2026-11-22T08:17:48Z', 'priority', '861', '860');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97995, 'TUT-T58', '2026-11-22T08:17:48Z', 'priority', '860', '859');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97996, 'M.ORCH-T1866', '2026-11-22T08:17:48Z', 'priority', '859', '858');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97997, 'M.SCHD-T46', '2026-11-22T08:17:48Z', 'priority', '858', '857');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97998, 'M.SCHD-T47', '2026-11-22T08:17:49Z', 'priority', '857', '856');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (97999, 'M.SCHD-T48', '2026-11-22T08:17:49Z', 'priority', '856', '855');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98000, 'M.SCHD-T49', '2026-11-22T08:17:49Z', 'priority', '855', '854');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98001, 'M.SCHD-T50', '2026-11-22T08:17:49Z', 'priority', '854', '853');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98002, 'TT-T56', '2026-11-22T08:17:50Z', 'priority', '853', '852');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98003, 'TT-T57', '2026-11-22T08:17:50Z', 'priority', '852', '851');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98004, 'TT-T58', '2026-11-22T08:17:50Z', 'priority', '851', '850');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98005, 'TT-T59', '2026-11-22T08:17:50Z', 'priority', '850', '849');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98006, 'TT-T60', '2026-11-22T08:17:51Z', 'priority', '849', '848');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98007, 'TT-T61', '2026-11-22T08:17:51Z', 'priority', '848', '847');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98008, 'M.AUTH-T37', '2026-11-22T08:17:51Z', 'priority', '847', '846');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98009, 'IP-T631', '2026-11-22T08:17:51Z', 'priority', '846', '845');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98010, 'M.ORCH-T1899', '2026-11-22T08:17:52Z', 'priority', '845', '844');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98011, 'M.ORCH-T1900', '2026-11-22T08:17:52Z', 'priority', '844', '843');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98012, 'M.ORCH-T1946', '2026-11-22T08:17:52Z', 'priority', '841', '842');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98013, 'GAD-T418', '2026-11-22T08:17:53Z', 'priority', '840', '841');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98014, 'GAD-T419', '2026-11-22T08:17:53Z', 'priority', '0', '840');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98015, 'GAD-T330', '2026-11-22T08:20:52Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98016, 'GAD-T330', '2026-11-22T08:20:52Z', 'ref', '—', 'none');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98017, 'GGS-T15', '2026-11-22T08:21:04Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98018, 'GAD-T414', '2026-11-22T08:21:28Z', 'working', NULL, 'pdftransferjr@mindattic.com');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98019, 'GAD-T414', '2026-11-22T08:21:49Z', 'working', 'pdftransferjr@mindattic.com', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -90396,7 +90467,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T24', 'proposed', 703, '2026-10-28T16:51:15Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T25', 'proposed', 702, '2026-10-28T16:51:16Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T3', 'approved', 0, '2026-10-28T03:55:06Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T31', 'proposed', 877, '2026-11-22T07:10:39Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T31', 'proposed', 876, '2026-11-22T08:17:43Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T33', 'approved', 0, '2026-11-22T06:41:35Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T34', 'approved', 0, '2026-11-22T06:41:37Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T35', 'approved', 0, '2026-11-22T06:41:40Z', NULL);
@@ -90493,9 +90564,9 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('CM-T5', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('CM-T6', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('CM-T7', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('CS-T2', 'proposed', 880, '2026-11-22T07:10:38Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('CS-T2', 'proposed', 879, '2026-11-22T08:17:43Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('CS-T3', 'proposed', 706, '2026-11-10T04:40:39Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('CS-T4', 'proposed', 878, '2026-11-22T07:10:39Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('CS-T4', 'proposed', 877, '2026-11-22T08:17:43Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('CUR-T12', 'approved', 5, '2026-10-21T04:35:31Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('CUR-T13', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('CUR-T14', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
@@ -90854,7 +90925,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T414', 'approved', 0, '2026-11-22T07:17:35Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T415', 'approved', 0, '2026-11-22T07:17:52Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T416', 'approved', 0, '2026-11-22T07:19:09Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T418', 'proposed', 840, '2026-11-22T07:24:33Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T418', 'proposed', 841, '2026-11-22T08:17:53Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T419', 'proposed', 840, '2026-11-22T08:17:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T42', 'approved', 860, '2026-11-20T22:54:06Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T43', 'proposed', 859, '2026-11-20T22:25:15Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T44', 'approved', 858, '2026-11-20T22:54:08Z', NULL);
@@ -91108,7 +91180,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IDEA-T29', 'approved', 0, '2026-10-31T14:49:06Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IDEA-T32', 'proposed', 100005, '2026-10-31T19:46:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IDEA-T41', 'proposed', 100002, '2026-11-01T02:15:38Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IDEA-T42', 'proposed', 887, '2026-11-22T07:10:36Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IDEA-T42', 'proposed', 886, '2026-11-22T08:17:41Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IDEA-T45', 'proposed', 100002, '2026-11-01T20:57:28Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IDEA-T5', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IDEA-T58', 'proposed', 712, '2026-11-18T05:52:36Z', NULL);
@@ -91458,7 +91530,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T62', 'proposed', 1229, '2026-10-30T19:25:52Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T63', 'proposed', 1228, '2026-10-30T19:25:55Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T630', 'proposed', 840, '2026-11-21T20:06:56Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T631', 'proposed', 846, '2026-11-22T07:10:48Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T631', 'proposed', 845, '2026-11-22T08:17:51Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T634', 'approved', 0, '2026-11-22T06:40:04Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T635', 'approved', 0, '2026-11-22T06:40:06Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T636', 'approved', 0, '2026-11-22T06:40:08Z', NULL);
@@ -91534,7 +91606,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.AUTH-T34', 'approved', 865, '2026-11-20T22:54:02Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.AUTH-T35', 'approved', 864, '2026-11-20T22:54:03Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.AUTH-T36', 'proposed', 996, '2026-11-21T03:39:13Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.AUTH-T37', 'proposed', 847, '2026-11-22T07:10:48Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.AUTH-T37', 'proposed', 846, '2026-11-22T08:17:51Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.BRWS-T15', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.BRWS-T23', 'approved', 0, '2026-10-31T14:48:22Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.BRWS-T6', 'approved', 5, '2026-10-21T04:35:34Z', NULL);
@@ -91587,7 +91659,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T112', 'proposed', -1, '2026-10-24T17:52:32Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T113', 'proposed', -1, '2026-10-24T17:52:34Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T114', 'approved', 0, '2026-10-24T18:58:57Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T117', 'proposed', 890, '2026-11-22T07:10:36Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T117', 'proposed', 889, '2026-11-22T08:17:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T12', 'approved', 0, '2026-10-20T16:16:37Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T120', 'proposed', 0, '2026-10-28T02:39:06Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T121', 'approved', 0, '2026-10-31T14:45:16Z', NULL);
@@ -91600,10 +91672,10 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T158', 'approved', 0, '2026-10-31T14:46:32Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T159', 'approved', 0, '2026-10-31T14:52:01Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T165', 'proposed', 709, '2026-11-07T16:57:50Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T169', 'proposed', 881, '2026-11-22T07:10:38Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T169', 'proposed', 880, '2026-11-22T08:17:42Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T175', 'proposed', 702, '2026-11-10T05:34:06Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T18', 'rejected', 0, '2026-10-20T16:03:42Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T186', 'proposed', 879, '2026-11-22T07:10:39Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T186', 'proposed', 878, '2026-11-22T08:17:43Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T194', 'proposed', 724, '2026-11-20T02:12:23Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T195', 'proposed', 723, '2026-11-20T02:12:26Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.COMP-T196', 'proposed', 722, '2026-11-20T02:12:28Z', NULL);
@@ -91652,8 +91724,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.EXPT-T6', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.HELP-T10', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.HELP-T15', 'proposed', 100007, '2026-11-01T04:23:09Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.HELP-T16', 'proposed', 889, '2026-11-22T07:10:36Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.HELP-T17', 'proposed', 888, '2026-11-22T07:10:36Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.HELP-T16', 'proposed', 888, '2026-11-22T08:17:40Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.HELP-T17', 'proposed', 887, '2026-11-22T08:17:41Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.HELP-T4', 'approved', 5, '2026-10-21T04:35:35Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.HELP-T5', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.HELP-T6', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
@@ -91679,10 +91751,10 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T11', 'approved', 0, '2026-10-23T19:14:18Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T112', 'proposed', 716, '2026-11-10T14:26:25Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T12', 'approved', 0, '2026-10-23T19:14:18Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T126', 'proposed', 876, '2026-11-22T07:10:40Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T129', 'proposed', 875, '2026-11-22T07:10:40Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T126', 'proposed', 875, '2026-11-22T08:17:44Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T129', 'proposed', 874, '2026-11-22T08:17:44Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T13', 'approved', 0, '2026-10-23T19:14:18Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T130', 'proposed', 874, '2026-11-22T07:10:40Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T130', 'proposed', 873, '2026-11-22T08:17:44Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T14', 'approved', 0, '2026-10-23T19:14:19Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T15', 'approved', 0, '2026-10-23T19:14:19Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T16', 'approved', 0, '2026-10-23T19:14:19Z', NULL);
@@ -92015,14 +92087,14 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1862', 'proposed', 705, '2026-11-20T02:13:04Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1863', 'proposed', 704, '2026-11-20T02:13:06Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1864', 'approved', 0, '2026-11-20T02:53:13Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1866', 'proposed', 859, '2026-11-22T07:10:45Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1866', 'proposed', 858, '2026-11-22T08:17:48Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1870', 'proposed', 708, '2026-11-20T06:13:09Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1877', 'approved', 0, '2026-11-22T07:37:17Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1892', 'proposed', 840, '2026-11-21T07:02:47Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1893', 'proposed', 841, '2026-11-21T12:53:15Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1896', 'approved', 0, '2026-11-22T07:37:17Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1899', 'proposed', 845, '2026-11-22T07:10:48Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1900', 'proposed', 844, '2026-11-22T07:10:49Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1899', 'proposed', 844, '2026-11-22T08:17:52Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1900', 'proposed', 843, '2026-11-22T08:17:52Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1901', 'approved', 0, '2026-11-22T04:57:08Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1903', 'approved', 0, '2026-11-22T04:59:18Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1904', 'approved', 0, '2026-11-22T04:59:36Z', NULL);
@@ -92060,7 +92132,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1943', 'approved', 0, '2026-11-22T06:47:25Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1944', 'approved', 0, '2026-11-22T06:47:26Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1945', 'approved', 0, '2026-11-22T06:47:28Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1946', 'proposed', 841, '2026-11-22T07:10:50Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1946', 'proposed', 842, '2026-11-22T08:17:52Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1949', 'approved', 0, '2026-11-22T07:31:37Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T195', 'proposed', 1, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1950', 'approved', 0, '2026-11-22T07:31:58Z', NULL);
@@ -92410,12 +92482,12 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T3', 'approved', 0, '2026-10-19T01:44:31Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T4', 'approved', 0, '2026-10-19T01:44:31Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T45', 'approved', 0, '2026-11-20T05:04:01Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T46', 'proposed', 858, '2026-11-22T07:10:45Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T47', 'proposed', 857, '2026-11-22T07:10:45Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T48', 'proposed', 856, '2026-11-22T07:10:45Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T49', 'proposed', 855, '2026-11-22T07:10:46Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T46', 'proposed', 857, '2026-11-22T08:17:48Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T47', 'proposed', 856, '2026-11-22T08:17:49Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T48', 'proposed', 855, '2026-11-22T08:17:49Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T49', 'proposed', 854, '2026-11-22T08:17:49Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T5', 'approved', 0, '2026-10-19T01:44:31Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T50', 'proposed', 854, '2026-11-22T07:10:46Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T50', 'proposed', 853, '2026-11-22T08:17:49Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T6', 'approved', 0, '2026-10-19T01:44:31Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T7', 'approved', 0, '2026-10-19T01:44:32Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T8', 'approved', 0, '2026-10-19T01:44:32Z', NULL);
@@ -92612,8 +92684,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T60', 'approved', 0, '2026-10-31T15:43:56Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T62', 'approved', 0, '2026-10-31T15:58:41Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T66', 'proposed', 100003, '2026-10-31T19:19:59Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T84', 'proposed', 886, '2026-11-22T07:10:37Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T85', 'proposed', 885, '2026-11-22T07:10:37Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T84', 'proposed', 885, '2026-11-22T08:17:41Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.VALT-T85', 'proposed', 884, '2026-11-22T08:17:41Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.WEB-T10', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.WEB-T14', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.WEB-T7', 'approved', 5, '2026-10-21T04:35:37Z', NULL);
@@ -92702,7 +92774,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T15', 'proposed', 718, '2026-11-07T07:35:25Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T16', 'proposed', 714, '2026-11-06T07:44:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T17', 'proposed', 717, '2026-11-07T07:35:25Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T18', 'proposed', 884, '2026-11-22T07:10:37Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T18', 'proposed', 883, '2026-11-22T08:17:42Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T19', 'proposed', 707, '2026-11-06T07:44:57Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T2', 'proposed', 723, '2026-11-07T07:35:21Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T20', 'proposed', 705, '2026-11-06T08:06:43Z', NULL);
@@ -92711,9 +92783,9 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T23', 'proposed', 704, '2026-11-07T02:31:35Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T24', 'proposed', 714, '2026-11-07T07:35:28Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T25', 'proposed', 715, '2026-11-07T05:34:37Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T26', 'proposed', 883, '2026-11-22T07:10:38Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T26', 'proposed', 882, '2026-11-22T08:17:42Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T27', 'proposed', 712, '2026-11-07T07:35:29Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T28', 'proposed', 882, '2026-11-22T07:10:38Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T28', 'proposed', 881, '2026-11-22T08:17:42Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T29', 'proposed', 711, '2026-11-07T05:34:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T3', 'proposed', 722, '2026-11-07T07:35:22Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T30', 'proposed', 710, '2026-11-07T07:35:30Z', NULL);
@@ -92757,15 +92829,15 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T65', 'proposed', 704, '2026-11-18T08:40:59Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T66', 'proposed', 703, '2026-11-18T08:41:00Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T67', 'proposed', 702, '2026-11-18T08:41:01Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T68', 'proposed', 865, '2026-11-22T07:10:43Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T68', 'proposed', 864, '2026-11-22T08:17:47Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T69', 'proposed', 719, '2026-11-20T06:12:48Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T7', 'proposed', 720, '2026-11-07T07:35:23Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T70', 'proposed', 718, '2026-11-20T06:12:49Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T72', 'proposed', 864, '2026-11-22T07:10:43Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T72', 'proposed', 863, '2026-11-22T08:17:47Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T73', 'proposed', 703, '2026-11-19T15:06:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T74', 'proposed', 702, '2026-11-19T15:06:54Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T75', 'proposed', 716, '2026-11-20T06:12:55Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T76', 'proposed', 863, '2026-11-22T07:10:43Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T76', 'proposed', 862, '2026-11-22T08:17:47Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T77', 'proposed', 711, '2026-11-20T06:13:03Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T78', 'proposed', 710, '2026-11-20T06:13:06Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T79', 'proposed', 713, '2026-11-20T09:52:54Z', NULL);
@@ -93202,14 +93274,14 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TRC-T36', 'proposed', 714, '2026-11-11T17:51:15Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TRC-T37', 'proposed', 713, '2026-11-11T17:51:15Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TRC-T38', 'proposed', 712, '2026-11-11T17:51:16Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TRC-T49', 'proposed', 873, '2026-11-22T07:10:41Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TRC-T50', 'proposed', 872, '2026-11-22T07:10:41Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TRC-T51', 'proposed', 871, '2026-11-22T07:10:41Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TRC-T52', 'proposed', 870, '2026-11-22T07:10:41Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TRC-T53', 'proposed', 869, '2026-11-22T07:10:42Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TRC-T54', 'proposed', 868, '2026-11-22T07:10:42Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TRC-T55', 'proposed', 867, '2026-11-22T07:10:42Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TRC-T56', 'proposed', 866, '2026-11-22T07:10:43Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TRC-T49', 'proposed', 872, '2026-11-22T08:17:44Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TRC-T50', 'proposed', 871, '2026-11-22T08:17:45Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TRC-T51', 'proposed', 870, '2026-11-22T08:17:45Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TRC-T52', 'proposed', 869, '2026-11-22T08:17:45Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TRC-T53', 'proposed', 868, '2026-11-22T08:17:45Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TRC-T54', 'proposed', 867, '2026-11-22T08:17:46Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TRC-T55', 'proposed', 866, '2026-11-22T08:17:46Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TRC-T56', 'proposed', 865, '2026-11-22T08:17:46Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T13', 'approved', 5, '2026-10-21T04:35:38Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T14', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T15', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
@@ -93222,12 +93294,12 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T53', 'proposed', 704, '2026-11-20T09:53:13Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T54', 'proposed', 703, '2026-11-20T09:53:15Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T55', 'proposed', 702, '2026-11-20T09:53:17Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T56', 'proposed', 853, '2026-11-22T07:10:46Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T57', 'proposed', 852, '2026-11-22T07:10:47Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T58', 'proposed', 851, '2026-11-22T07:10:47Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T59', 'proposed', 850, '2026-11-22T07:10:47Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T60', 'proposed', 849, '2026-11-22T07:10:47Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T61', 'proposed', 848, '2026-11-22T07:10:48Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T56', 'proposed', 852, '2026-11-22T08:17:50Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T57', 'proposed', 851, '2026-11-22T08:17:50Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T58', 'proposed', 850, '2026-11-22T08:17:50Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T59', 'proposed', 849, '2026-11-22T08:17:50Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T60', 'proposed', 848, '2026-11-22T08:17:51Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T61', 'proposed', 847, '2026-11-22T08:17:51Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T18', 'approved', 5, '2026-10-21T04:35:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T19', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T20', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
@@ -93237,9 +93309,9 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T53', 'proposed', 704, '2026-11-19T22:13:47Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T54', 'proposed', 703, '2026-11-19T22:13:49Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T55', 'proposed', 702, '2026-11-19T22:13:49Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T56', 'proposed', 862, '2026-11-22T07:10:44Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T57', 'proposed', 861, '2026-11-22T07:10:44Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T58', 'proposed', 860, '2026-11-22T07:10:44Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T56', 'proposed', 861, '2026-11-22T08:17:47Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T57', 'proposed', 860, '2026-11-22T08:17:48Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T58', 'proposed', 859, '2026-11-22T08:17:48Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T64', 'approved', 899, '2026-11-20T22:53:23Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.CHN-T10', 'approved', 0, '2026-10-22T05:35:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.CHN-T100', 'approved', 0, '2026-10-30T16:30:37Z', NULL);
@@ -94270,17 +94342,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T289', NULL, 0, 'honey@mindattic.com', '2e6c8f98-6378-4374-bfee-47f0c4007417', '2026-11-22T00:55:57Z', '2026-11-22T00:55:57Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T294', NULL, 0, 'pdftransferjr@mindattic.com', 'b318ffee-d91c-438b-975b-d4971b80260b', '2026-11-22T07:50:05Z', '2026-11-22T07:50:03Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T317', NULL, 0, 'pdftransferjr@mindattic.com', 'b318ffee-d91c-438b-975b-d4971b80260b', '2026-11-22T07:52:16Z', '2026-11-22T07:52:14Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T327', NULL, 0, 'pdftransferjr@mindattic.com', 'b318ffee-d91c-438b-975b-d4971b80260b', '2026-11-22T08:07:02Z', '2026-11-22T08:07:00Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T365', NULL, 0, 'pdftransferjr@mindattic.com', 'b318ffee-d91c-438b-975b-d4971b80260b', '2026-11-22T07:52:38Z', '2026-11-22T07:52:36Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T366', NULL, 0, 'pdftransferjr@mindattic.com', 'b318ffee-d91c-438b-975b-d4971b80260b', '2026-11-22T07:52:39Z', '2026-11-22T07:52:37Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T367', NULL, 0, 'pdftransferjr@mindattic.com', 'b318ffee-d91c-438b-975b-d4971b80260b', '2026-11-22T07:52:41Z', '2026-11-22T07:52:38Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T368', NULL, 0, 'pdftransferjr@mindattic.com', 'b318ffee-d91c-438b-975b-d4971b80260b', '2026-11-22T07:52:42Z', '2026-11-22T07:52:40Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T369', NULL, 0, 'pdftransferjr@mindattic.com', NULL, '2026-11-22T07:55:39Z', '2026-11-22T07:55:37Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T377', NULL, 0, 'pdftransferjr@mindattic.com', 'b318ffee-d91c-438b-975b-d4971b80260b', '2026-11-22T07:55:04Z', '2026-11-22T07:55:02Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1953', NULL, 0, 'ohleo199@mindattic.com', NULL, '2026-11-22T07:50:00Z', '2026-11-22T07:49:58Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T768', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
@@ -97696,6 +97758,181 @@ Full confirmed spec (1,3,4 confirmed as originally stated; 2 replaced by the abo
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31956, 'M.ORCH-T1896', 'ryand', '2026-11-22T07:40:00Z', 'Audit: usage is keyed per folder (claude-usage.json/usage-samples.json in each ~/.claude-accounts/<email>), read from whichever OAuth account is signed in there, so honey''s folder (signed in as ryandebraal@mindattic.com again) showed Ryan''s 25%/49% as Honey''s. Waffle: not signed in. Others own. Fix 7727d9c7 (v26): AccountDir.BorrowedFrom; AccountDirs.SignedIn() leaves borrowed folders out (picker/move/rebalancer/members); accounts table says ''borrowed from X''; AccountPacer stops a borrowed login. Owner steps left: sign honey/waffle in as themselves (orchestrator login --account ...), and add both back as members in claude.ai Settings > Organization > Members > Invite.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31957, 'M.ORCH-T1952', 'ryand', '2026-11-22T07:42:24Z', 'Owner said ''do'' (2026-11-22) to proceed per M.ORCH-T1948''s spec: ''disabled'' is the ONLY thing that hides a member''s node. A member whose ''until'' date has passed (M.ORCH-T1401) stays visible, marked lapsed, instead of hidden (LoginScope.Hidden, M.ORCH-T1950).');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31958, 'MAT-T169', 'ryand', '2026-11-22T08:10:27Z', 'Repos renamed on GitHub+locally to Hardware.ChiMesh/Hardware.Claudia. First commit (9a0c731) accidentally swept in another live agent''s unrelated uncommitted changes via ''git commit -- <paths>'' (which uses working-tree content, not the index, for named paths); corrected with a follow-up commit-tree commit (96414c6) that reverts those files to just this ticket''s isolated hunks, restoring the other agent''s work as uncommitted. Internal project identity (ChiMesh/Claudia names inside each repo''s own docs/scripts) left as-is, matching the Unity.* convention.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31959, 'GG-T520', 'ryand', '2026-11-22T08:17:23Z', '52814e77: Buy list grouped into Weapons/Armor/Jewelry/Consumables/Materials/Other sections (Ui.Section); each gear row gets a Ui.Note naming party heroes who can equip it (Equipment.Fits) and, in green, ''Upgrade for X'' when MetaHeuristics.Score beats their current piece (Shop.GearFit/GearFitLine). Stock gating was already GG-T538''s tiers (18 items first visit, no unreached-region materials). BIBLE 25.1 + AMENDMENTS. Checked by dotnet build of Core/Meta and the Unity batchmode compile check.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31960, 'GG-T586', 'ryand', '2026-11-22T08:17:30Z', 'Teardown base landed in 0d25708 (GG-T61); ded5b7a completes it: the retired battle''s playback, bot-drag and banner coroutines are stopped, hold ticker cancelled, prefab FX rig/RT disposed, Overlay pieces removed and per-battle caches emptied. Build-checked (dotnet build GridGame.App.csproj, 0 errors); runtime proof is GG-T589''s soak.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31961, 'GAD-T330', 'ryand', '2026-11-22T08:18:15Z', 'Dissertation moved to ElenchusAtScale (GAD-T417, 3244fc1 there); ElenchusAtScale isn''t in the ticket database, so the drafted corrections 44-50 and the ch5 decision (a)/(b) status text are handed over in the note above. Nothing in Gadfly or ElenchusAtScale was edited.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31962, 'GAD-T330', 'ryand', '2026-11-22T08:20:13Z', 'Handed over from Gadfly GAD-T330 (the dissertation moved here from Gadfly in 3244fc1, GAD-T417).
+Hashes below are Gadfly commits. Follow the style of correction 43 (Gadfly commit f0ef772): numbered items in
+A.4, a new appendix section for this pass with its open items, and short parenthetical pointers in the
+chapters ("(Since ... : Appendix A, correction NN.)"). The chapters are not rewritten: they describe the commits
+they name. Then re-export with `scripts\export.ps1 -Publish` (Provenance is at ..\Provenance; export.json writes
+the bundle to D:\Projects\MindAttic\ePub\MindAttic\ELENCHUS). Note: the committed docs/elenchus-at-scale.md does
+NOT yet contain correction 43 either (f0ef772 did not re-export), so the re-export picks that up too.
+
+## Draft corrections for A.4 (continue from 43)
+
+44. **Probing pressure no longer comes from the voice, anywhere (owner decision (b) reversed).** Sections 4.3.5,
+   5.2.1, 5.3.4, 5.6.2, 5.7.2 and 5.8.2, Table 5.1 (M1, M15) and Section 1.2 (correction 33) describe a build in
+   which delivery cues, including voice strain outside the EU and the wait before the first word and hesitations
+   everywhere, raise the probing pressure. On 21 November 2026 the owner approved GAD-T258 (commit `83739f7`,
+   exam prompt set version 8), reversing decision (b). `AnswerDelivery.Read` now takes its cues only from what the
+   answer says and how it was judged: two or more hedging phrases, two or more vague phrases, no reason or example
+   where the move asked for one, a judged overall score below 0.6, the response analysis''s evidence against
+   understanding or unclear meaning, and the recitation flag. The voice comparison (`strain.vsBaseline`), the wait
+   before the first word and the hesitation count are still recorded, and shown to reviewers as raw numbers where
+   voice measurements are on, but no longer steer the examiner or reach the question prompt. Two consequences.
+   The two regimes of Section 5.7.2 (EU and non-EU students taking different examiners) no longer exist for
+   probing. And the content cues are not neutral either: the hedging and vague-phrase lists and the reason check
+   are English word lists, and a second-language speaker may hedge more or use plainer words (the project''s
+   evidence review now says so, `docs/EVIDENCE_MAP.md`, mechanic 2). The read-out pattern of the recitation check
+   still uses timing, under its own switch and accommodation rule (GAD-T272), so a timing-derived signal still
+   acts through the Recited pressure.
+   Also note in A.5 ("Checks closed"): **Item 40 acted on by the project.** GAD-T283 (commit `9ac09ed`) made the
+   EU switch-off cover every voice-derived cue (wait, hesitations, pauses, strain, the read-out pattern), and
+   GAD-T258 then removed the timing cues from probing everywhere.
+
+45. **There is now a typed-answer accommodation (owner decision (a) narrowed).** Sections 4.7, 5.2.1, 5.7.1 and
+   6.4 (the "Students who cannot use the voice channel" limitation) and Table 5.1 (M14) say there is no typed-answer
+   route. On 22 November 2026 the owner approved GAD-T260 (commit `19c7151`): an instructor or administrator can
+   let one named student type their answers on one assignment, every grant and withdrawal audited
+   (`ExamService.SetTypedAnswerAccommodationAsync`, `ExamAssignment.TypedAnswerAccommodation`). The student has no
+   switch; the session hub refuses a typed answer from anyone without the grant. Under the grant the camera, the
+   examiner''s spoken questions and the gaze check stay; only the answer channel changes. Typed answers are stored
+   and shown to reviewers as typed; voice-derived measures never run on them; a paste into the answer box is noted
+   for review, not blocked; a typed answer keeps the clarification and typo fix that spoken answers lost (item 43).
+   The decision is narrowed, not reversed: every other student''s examination is spoken. This answers the
+   objection of Section 2.5.2 for students known to need it; like the eye-contact accommodation it does not reach a
+   student who has not declared a need (Section 6.4). The comparison of spoken and typed answers that Section 5.7.1
+   proposed now has a natural, though self-selected, typed group.
+
+46. **The text-style estimate was first confined to reviewers and then switched off.** Section 5.6.1 (text style),
+   5.6.2, 5.8.2 (last bullet), item 37 and the first open item of A.8 describe the estimate as recorded on every
+   answer. Two changes followed. GAD-T284 (commit `8e9dd15`, already reflected inline in 5.6.1, 5.6.2 and A.8)
+   kept it only as reviewer-only context, labelled an unvalidated estimate, never a verdict or part of the score,
+   and added `gadfly textstyle-rate` to measure its false-flag rate. Then on 22 November 2026 the owner disabled
+   it outright (GAD-T412, commit `270ab3e`: `engine.AssessTextStyle = false` in
+   `Gadfly.Server/Sessions/SessionOrchestrator.cs`) to take one panel call off the critical path of every answer,
+   preferring a fluid conversation to catching cheating "for now"; it "can come back later behind a setting." The
+   code (`TextStyleAssessor`) and the rate command remain. On main, no answer now receives the estimate, so the
+   signal with the least support in the build is no longer in use; the A.8 open item stands for any reinstatement,
+   and Chapter 7 should not plan to measure a signal the build no longer records. The reason given was latency, not
+   the evidence against detectors (Liang et al., 2023; Weber-Wulff et al., 2023).
+
+47. **Whoever scored a grade can no longer reconcile or approve it, by default.** Sections 1.2 and 4.9 (via item
+   30), 5.8.3, 5.9 ("The separation of recommending and deciding") and 5.10, and Table 5.1 (M13), say that one
+   person may grade, reconcile and approve. GAD-T285 (commits `2e93032`, `31a028c`) refuses reconciliation and
+   approval by the person who entered the grade''s human score, on the grading page and the grading endpoints alike,
+   audited as `grade.separation-of-duties.refused` (`Gadfly.Server/Grading/GradingService.cs`). An organization can
+   turn on "Allow a single grader" (off by default; the change audited, each use audited as
+   `grade.separation-of-duties.waived`), for a one-person organization. The same commits withhold integrity flags
+   from a blind grader in the review service, its exports and the review list until their score is in (which
+   closes the anchoring point of Section 5.6.2 / 4.8.2). Separation is by person now, but the reconciler and the
+   approver may still be the same second person, and the waiver exists; the audit trail shows when it is used.
+   Also note in A.5: **Item 30 acted on by the project** (by default).
+
+48. **Blind grading leaked through analytics and raw voice numbers until GAD-T315.** Sections 4.8.2/4.8.3 and
+   5.8.3 describe blind grading as hiding the machine''s judgment and voice strain from the human examiner.
+   GAD-T315 (commit `5fcdcb8`) found that an instructor, who both enters human scores and can view analytics, could
+   read a blind session''s AI preliminary level, AI-noted misconceptions and judge agreement through the analytics
+   page or its CSV export, and that a blinded review still carried each turn''s raw speech metrics (pitch, jitter,
+   loudness, pausing) although the strain summary was hidden. Both are fixed. The guard against automation bias
+   of Section 5.8.3 therefore held in the grading page at `5643444` but not across the application; it is the kind
+   of leak a design review of one page will not find.
+
+49. **The examiner now speaks between questions and has a fixed manner per move.** Chapter 4 describes the examiner
+   as asking questions and the two remarks of decision (c). Since GAD-T290 (commit `b3c0012`) she fills the wait
+   while the panel judges an answer and writes the next question: if the question is not ready within 2 seconds
+   she says one short line chosen at random from a fixed list ("Let me think about that.", "Okay, give me a
+   moment."), and one more after 20 seconds (`Gadfly.Server/Voice/ExaminerFiller.cs`). The lines are fixed on the
+   server, never evaluative ("no ''good'', ''right'' or ''interesting''"), not part of the transcript or record, and the
+   microphone stays shut while she speaks, so the answer is closed once it has ended. Since GAD-T303 her face also
+   takes one of three styles per kind of question (`ExaminerStyle.cs`), designed so that moves that tend to follow a
+   weak answer (Counterexample, Contradiction) share the style of moves that follow any answer, so her manner
+   cannot tell the student how the last answer went. Both meet the non-leading condition of Sections 2.2 and 2.3
+   (Piaget''s rule against suggestion) by design; neither has been tested with students, and a filler after every
+   answer also tells the student, before any judgment, that the answer is closed, which bears on the
+   end-of-answer silence of Section 5.3.4.
+
+50. **The gaze check is now calibrated and reports its own quality.** Sections 4.8.2 and 5.6.1 describe gaze
+   estimated against a baseline learned at the start. Since GAD-T305 (commits `19a535f`, `c591127`, `c514099`,
+   `7746025`) it uses a gaze vector from iris position and head pose, mapped onto the page by a five-dot calibration
+   whose leave-one-out error in degrees is measured each session (worse than 6 degrees gets one retry and is then
+   not used, falling back to head direction), and every eye-contact episode carries a session quality score
+   (0-100; at most 50 without calibration); a poor score keeps a look-away or reading note at Info, confidence
+   still capped at 0.4. This narrows the false look-aways of Section 5.7.3 (leaning no longer counts) but does not
+   change its ceiling: the thresholds are "reasoned from the literature and a synthetic face, not validated on real
+   students" (`docs/EVIDENCE_MAP.md`, mechanic 4), the synthetic-face check is not a measurement on students, and a
+   per-session accuracy of a few degrees is the same order as the literature''s figure (Papoutsaki et al., 2016;
+   Semmelmann & Weigelt, 2018), still too coarse to resolve reading (Rayner, 2009). The quality score is a new
+   variable to report by group (Section 5.4.3): lighting, glasses and skin tone may lower it for some students.
+
+## Checked, no claim changed (mention in the new appendix section''s prose, not as corrections)
+
+- **GAD-T295, the transcript maker** (`257a295`, `b12b0ce`, `421df72`, `b03cb18`): an official transcript of each
+  session (HTML, PDF, Word, text, captions, JSON) with a SHA-256 and verification code checked at
+  /transcripts/verify, every issue audited; student, blind-grader and reviewer copies chosen on the server. The
+  student copy leaves out reviewer notes and the panel''s exam-time scores, and the blind-grader copy leaves out
+  integrity notes, so Section 5.9''s "the student does not see the integrity context" still holds; it strengthens
+  "The record" and "The student''s view" (the student can now download what was asked and answered).
+- **GAD-T321, double submit** (`e2d2ffb`): a resent or late answer is tagged with its turn and dropped if it no
+  longer matches the open turn. A robustness fix; the dissertation makes no claim it changes (arguably it protects
+  the evidence chain of inference 1, utterance to transcript).
+- Also seen, no claim changed: GAD-T287 (`ecbf993`, judge/text-style/analysis run in parallel), GAD-T322 (planner
+  paces over running clock time, `3d11b82`), staff extra time and pauses (`17b8ca3`), GAD-T326 PRIVACY.md fixes
+  (`3d21990`; none of its fixed sentences is quoted in the dissertation).
+
+## Pointers to add (short parentheticals)
+
+- Ch1 Section 1.2 item 5 ("delivery cues, including voice strain, steer..."): -> correction 44.
+- Ch4: 4.3.5 last sentence (decision (b) stands) -> 44; 4.7 As built ("no typed-answer mode") -> 45; 4.8.2 As
+  built -> 50, and its "Blind grading does not hide these episodes" -> 47; 4.8.3 -> 48; 4.9 -> 47; Table 4.11 rows
+  M13 (47), M14 (45), M15 (44).
+- Ch5: 5.2.1 closing paragraph ("GAD-T258 ... and GAD-T260 ... remain held") -> 44, 45; Table 5.1 M1 and M15 (44),
+  M13 (47), M14 (45); 5.3.4 "outside the EU, a voice measure ... steers harder questions" -> 44; 5.6.1 gaze bullet
+  -> 50, voice bullet ("The probing use outside the EU does not") -> 44, text style bullet -> 46; 5.6.2 "four
+  signals that act" -> 44, 46; 5.8.2 voice bullet and timing bullet -> 44, text-style bullet -> 46; 5.8.3 second
+  paragraph -> 47, 48; 5.9 separation paragraph -> 47; 5.10 RQ3 ("one person may judge, reconcile and approve")
+  -> 47 and RQ4 ("outside the EU, the voice measure"; "Three of the four owner''s decisions") -> 44, 45.
+- Ch6: 6.4 "Students who cannot use the voice channel" -> 45; "Neurodivergent students" (timing of speech read by
+  delivery cues) -> 44.
+
+## Chapter 5''s status of owner decisions (a) and (b) (GAD-T330 asks for this explicitly)
+
+- 5.7 intro: add "Since this chapter was drafted, the owner has narrowed decision (a) and reversed decision (b)
+  (Appendix A, corrections 44 and 45)."
+- 5.7.1: add a paragraph **Since then.** "On 22 November 2026 the owner narrowed the decision by approving GAD-T260:
+  typing is allowed only as an accommodation an instructor or administrator grants to one named student on one
+  assignment, audited; the camera, the spoken questions and the gaze check stay, and every other student''s
+  examination is spoken (Appendix A, correction 45). The objection that a student who cannot use the voice
+  examination has no route is answered for students whose need is declared." The "What would test it" comparison
+  can now draw on the typed group, self-selected and small.
+- 5.7.2: heading/decision note "(reversed 21 November 2026)"; add **Since then.** "On 21 November 2026 the owner
+  reversed the decision by approving GAD-T258: probing pressure now comes only from what the answer says and how it
+  was judged, never from the voice comparison, the wait before the first word or hesitations, in or outside the EU.
+  The measurements are still recorded and shown to reviewers as raw differences where they are on (Appendix A,
+  correction 44). The prediction of ''What would test it'' is moot; the two regimes are gone for probing. The content
+  cues carry their own fairness question, since their word lists are English." The 5.8.2 exposure of the voice
+  measure is reduced to its reviewer-facing record.
+- 5.7.5: "Three of the four decisions ... resolve ... in favour of integrity" -> add "(as drafted; since then (a) has
+  been narrowed by an accommodation and (b) reversed, so one decision, (c), still acts on all students by a signal
+  the evidence calls weak)".
+
+## New appendix section (A.10, after A.9)
+
+"## A.10 Changes to the build after drafting (GAD-T330, 22 November 2026)" -- No chapter was redrafted. Items 44 to
+50 record changes on Gadfly''s main line after `5643444` that alter claims of Chapters 1, 4, 5 and 6, among them the
+owner''s reversal of decision (b) and narrowing of decision (a); short pointers were added. Transcripts (GAD-T295)
+and turn-matching of late answers (GAD-T321) were checked and change no claim. No source was added.
+Open items:
+- **Content cues by language.** The hedging, vague-phrase and reason lists that now set the probing pressure are
+  English; their firing rate by first language should be measured with the other path drivers (item 44).
+- **The typed group.** Typed answers keep clarification and typo correction and lose the voice-derived context;
+  whether scores and integrity notes differ between typed and spoken answers at the same level should be measured
+  before the two are compared (item 45).
+- **Gaze quality by group.** The tracking quality score should be reported by group alongside the gaze rates
+  (item 50).
+- The text-style open item of A.8 now applies only if the estimate is switched back on (item 46).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (31963, 'GAD-T330', 'ryand', '2026-11-22T08:21:29Z', 'Dissertation moved to ElenchusAtScale; corrections handed over as note 31962 on this ticket (ElenchusAtScale is not in the ticket database, so no ticket could be filed there; file one from it once the repo is migrated).');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
