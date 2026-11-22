@@ -169,21 +169,39 @@ public sealed class TicketsServer(string connectionString)
         catch (SqlException) { }
     }
 
+    /// <summary>Opens the database. A paused serverless Azure SQL database fails its first connect (40613, 40197, 40501) or
+    /// times out while it resumes (~1 min), so the connect timeout is at least 60s and a transient resume failure is retried once
+    /// (M.TIX-T374).</summary>
     public SqlConnection Open()
     {
         EntraTokenCache.Use(ConnectionString);
-        var connection = new SqlConnection(ConnectionString);
-        try
+        var builder = new SqlConnectionStringBuilder(ConnectionString);
+        if (builder.ConnectTimeout < ResumeConnectTimeoutSeconds) builder.ConnectTimeout = ResumeConnectTimeoutSeconds;
+        var connectionString = builder.ConnectionString;
+        for (var attempt = 1; ; attempt++)
         {
-            connection.Open();
-            return connection;
-        }
-        catch
-        {
-            connection.Dispose();
-            throw;
+            var connection = new SqlConnection(connectionString);
+            try
+            {
+                connection.Open();
+                return connection;
+            }
+            catch (SqlException e) when (attempt == 1 && e.Number is 40613 or 40197 or 40501)
+            {
+                connection.Dispose();
+                Console.Error.WriteLine($"tickets: database not available yet (SQL error {e.Number}); waiting {ResumeRetryDelaySeconds}s and retrying once.");
+                Thread.Sleep(TimeSpan.FromSeconds(ResumeRetryDelaySeconds));
+            }
+            catch
+            {
+                connection.Dispose();
+                throw;
+            }
         }
     }
+
+    private const int ResumeConnectTimeoutSeconds = 60;
+    private const int ResumeRetryDelaySeconds = 5;
 
     /// <summary>Creates the database when it isn't there, with a binary collation so text compares and sorts as SQLite's does;
     /// what SQLite compares <c>COLLATE NOCASE</c> is compared <see cref="NoCase"/>.</summary>
