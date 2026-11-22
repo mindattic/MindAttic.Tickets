@@ -14369,6 +14369,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T658', 'Unity.GridGame', 658, '2026-11-22', 'fix', 'open', 'Crucible and Bestiary grids: ragged right edge (POL-C8 ''left 0 vs right 748'', ''left 26 vs right 425'') (found by GG-T273 sweep)', '—', 657, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T659', 'Unity.GridGame', 659, '2026-11-22', 'fix', 'open', 'Battle: the ''Stand Guard'' ability label wraps and is cut off in its slot at 9:23 (POL-C5 ''wrapped text cut off (72>35)'') (found by GG-T273 sweep)', '—', 658, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T660', 'Unity.GridGame', 660, '2026-11-22', 'feature', 'open', 'Replace the remaining lorem story text with real words: party talks, the other Camp keepers'' chats, quest offers and talk_quiz advice lines (drafts in Prose for owner approval)', '—', 659, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T661', 'Unity.GridGame', 661, '2026-11-22', 'fix', 'open', 'Results screen: a LivingBackdrop sky shard draws over the VICTORY title instead of behind it (found by GG-T644 run)', '—', 660, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.ISO-T1', 'Unity.Isometric', 1, '2026-10-22', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.ISO-T2', 'Unity.Isometric', 2, '2026-10-22', 'chore', 'wont-do', 'Bootstrap Unity 6 project (6000.4.3f1), engine-free Core + NUnit Tests/Core.Tests, workspace docs, and docs/RECONSTRUCTION.md + docs/BIBLE.md reverse-engineered from the 2013 GameMaker Isometric.gmx source', 'port cancelled by user; repo deleted', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UM-T1', 'Unity.Multiplayer', 1, '2026-10-20', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
@@ -90938,6 +90939,12 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98481, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98482, 'GAD-T423', '2026-11-22T09:06:54Z', 'priority', '841', '842');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98483, 'GAD-T424', '2026-11-22T09:06:54Z', 'priority', '840', '841');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98484, 'M.ORCH-T1960', '2026-11-22T09:06:55Z', 'priority', '0', '840');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98485, 'GG-T661', '2026-11-22T09:08:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98486, 'GG-T661', '2026-11-22T09:08:45Z', 'description', NULL, 'Seen in the GG-T644 recorded storyarc run on build 2026-11-22 02:59 (current main): artifacts/t644-storyarc/06-gv1-results.png — a drifting Somnolith shard (GG-T576 LivingBackdrop) covers the right half of the Y in VICTORY on The Tithe Moors I results. LivingBackdrop adds its layers to the screen''s backdrop element (Assets/Gaiden/App/UI/LivingBackdrop.cs ~line 94/121), so either PostBattleScreen passes an element that sits above its title, or the shard layer is re-ordered above content. Check every screen that calls LivingBackdrop.Show (Battle/Dialogue/LevelUp/Menu/Mercenary/PostBattle/Profile) for the same layering.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98487, 'GG-T661', '2026-11-22T09:08:46Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98488, 'GG-T661', '2026-11-22T09:08:47Z', 'priority', '0', '15');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98489, 'GG-T661', '2026-11-22T09:09:23Z', 'working', NULL, '04078191-38f6-4de4-aa7b-82a2aa92bfe7');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (98490, 'GG-T661', '2026-11-22T09:10:09Z', 'working', '04078191-38f6-4de4-aa7b-82a2aa92bfe7', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -91659,6 +91666,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T659', 'approved', 10, '2026-11-22T09:02:12Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T66', 'approved', 0, '2026-10-21T03:39:01Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T660', 'approved', 10, '2026-11-22T09:06:13Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T661', 'approved', 15, '2026-11-22T09:08:47Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T70', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T72', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T73', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
@@ -100975,6 +100983,7 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T578', 'O
 **Data oddities**
 - frog03''s Name is "Frog_".
 - The Scorpion is tagged Humanoid.', '2026-11-22T00:02:16Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T661', 'Seen in the GG-T644 recorded storyarc run on build 2026-11-22 02:59 (current main): artifacts/t644-storyarc/06-gv1-results.png — a drifting Somnolith shard (GG-T576 LivingBackdrop) covers the right half of the Y in VICTORY on The Tithe Moors I results. LivingBackdrop adds its layers to the screen''s backdrop element (Assets/Gaiden/App/UI/LivingBackdrop.cs ~line 94/121), so either PostBattleScreen passes an element that sits above its title, or the shard layer is re-ordered above content. Check every screen that calls LivingBackdrop.Show (Battle/Dialogue/LevelUp/Menu/Mercenary/PostBattle/Profile) for the same layering.', '2026-11-22T09:08:45Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GW-T2', 'User: continue the integration of wiki with Prose; eventually every universe will also have a wiki, leveraging the benefits of both while mitigating their weaknesses.', '2026-11-21T06:11:12Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GW-T3', 'User: maybe it should be Prose.Wiki.GLMZ - that makes more sense, cause the next would be Prose.Wiki.SCRY', '2026-11-21T07:52:55Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IDEA-T29', 'LAMP migration for **MindAttic.Ideas** (plan: MindAttic.Vault/docs/rfc/0003-lamp.md, Rollout step 5).
