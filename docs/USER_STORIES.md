@@ -490,3 +490,16 @@ updated: 2026-10-12
 | M.TIX-T358 | 2026-11-20 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
 | M.TIX-T359 | 2026-11-21 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
 | M.TIX-T360 | 2026-11-21 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
+| M.TIX-T361 | 2026-11-21 | feature | closed | Tickets CLI: level labels, split into child tasks, parent roll-up close, list unplanned leaves | children done |
+| M.TIX-T362 | 2026-11-21 | feature | closed | tickets ticket level <ID> epic\|feature\|story\|task sets the one level: label; ticket new gains --parent <ID> and --level | ace7717 |
+| M.TIX-T363 | 2026-11-21 | feature | closed | tickets ticket split <ID> --task "..." (repeatable) or --file: children part-of it, level:task, approved like the parent, --sequential chains requires | 7d50abf |
+| M.TIX-T364 | 2026-11-21 | feature | closed | Closing a ticket's last open part-of child closes the parent too (ref: children done), all the way up; an epic/feature/story with open children never closes early | 28a976f |
+| M.TIX-T365 | 2026-11-21 | feature | closed | tickets ticket list --unplanned: open tickets with no open children that aren't level:task (still need a plan pass or split) | cfccb81 |
+| M.TIX-T366 | 2026-11-21 | fix | closed | Tickets Desktop Undo of a close doesn't reopen the parents that rolled up with it (M.TIX-T364) | a704e56 |
+| M.TIX-T367 | 2026-11-21 | feature | open | Add a duplicate-story-ID check to workflow db check in MindAttic.Tickets | — |
+| M.TIX-T368 | 2026-11-21 | feature | open | Add a workflow story renumber command that fixes stories sharing an ID (e.g. Prose PRS-US-H7 / H7a-H7c) | — |
+| M.TIX-T369 | 2026-11-21 | feature | open | Add a per-ticket-id load/changed-since query to the store (ticket_events based) returning only changed tickets with their history and hygiene | — |
+| M.TIX-T370 | 2026-11-21 | feature | open | Apply incoming ticket changes by id to the in-memory Snapshot (from app-bus ticket events), replacing only affected rows | — |
+| M.TIX-T371 | 2026-11-21 | feature | open | Limit full reload to start-up or schema/sync change and add a test proving a single change refreshes only that row | — |
+| M.TIX-T372 | 2026-11-22 | feature | closed | No way to reopen a ticket: closing the last part-of child auto-closes continuous parents (GG-T273 'Continuous UI sweep' and its epic GG-T493 closed when fix GG-T645 closed, 2026-11-22). Add 'ticket reopen <ID>' and let a ticket opt out of auto-close (e.g. a continuous label) | ebe2f32 |
+| M.TIX-T373 | 2026-11-22 | chore | closed | 2026-11-22 morning | — |
