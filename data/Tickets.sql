@@ -84182,6 +84182,11 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (82503, '
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (82504, 'GAD-T291', '2026-11-22T01:59:58Z', 'created', NULL, 'open');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (82505, 'GAD-T291', '2026-11-22T02:00:01Z', 'approval', 'proposed', 'approved');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (82506, 'M.ORCH-T1898', '2026-11-22T02:00:08Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (82507, 'M.ORCH-T1898', '2026-11-22T02:01:03Z', 'description', 'Ryan: rename the sidebar ''Logins'' button/modal to ''User Management'' and turn it into a User Management modal where he can view, add, edit and delete each roster member''s email+password credential, stored via MindAttic.Vault. Screenshot of the current button attached.', 'Ryan: rename the sidebar ''Logins'' button/modal to ''User Management'' and turn it into a User Management modal where he can view, add, edit and delete each roster member''s email+password credential, stored via MindAttic.Vault.
+
+Screenshot of the current button: ../MindAttic.Tickets/data/attachments/M.ORCH-T1898/logins-button.png');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (82508, 'GAD-T291', '2026-11-22T02:01:40Z', 'working', NULL, 'honey@mindattic.com (2e6c8f98-6378-4374-bfee-47f0c4007417)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (82509, 'M.ORCH-T1896', '2026-11-22T02:01:41Z', 'working', '3be90ecc-63e5-4b8e-b125-a94a308fa56f', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -87739,8 +87744,8 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T285', NULL, 0, 'honey@mindattic.com', '2e6c8f98-6378-4374-bfee-47f0c4007417', '2026-11-22T01:47:04Z', '2026-11-22T01:47:03Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T289', NULL, 0, 'honey@mindattic.com', '2e6c8f98-6378-4374-bfee-47f0c4007417', '2026-11-22T00:55:57Z', '2026-11-22T00:55:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T290', NULL, 0, 'honey@mindattic.com', '2e6c8f98-6378-4374-bfee-47f0c4007417', '2026-11-22T01:47:51Z', '2026-11-22T01:47:51Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T291', NULL, 0, 'honey@mindattic.com', '2e6c8f98-6378-4374-bfee-47f0c4007417', '2026-11-22T02:01:40Z', '2026-11-22T02:01:40Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T1896', NULL, 0, NULL, '3be90ecc-63e5-4b8e-b125-a94a308fa56f', '2026-11-22T01:49:09Z', '2026-11-22T01:49:08Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T768', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
@@ -100462,7 +100467,9 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1896
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1897', 'Symptom: the tree sidebar showed 3 ''Launcher'' rows under Ryan''s login even though no menu Launcher process was running for ryandebraal@mindattic.com -- all stale/ended panes.
 Cause: OpenLaunchers() only deduped *live* Launcher panes (count > 1); an *ended* Launcher pane was only swept by CloseEndedLaunchers, which runs just before a respawn attempt. A login that isn''t signed in here, or that keeps losing the 30s respawn race, could go a long time without a respawn attempt, so its ended Launcher panes just piled up in the tree.
 Fix: every OpenLaunchers() pass now also closes every ended Launcher pane for each login, unconditionally, so none outlives the refresh that saw it end.', '2026-11-22T00:27:49Z');
-INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1898', 'Ryan: rename the sidebar ''Logins'' button/modal to ''User Management'' and turn it into a User Management modal where he can view, add, edit and delete each roster member''s email+password credential, stored via MindAttic.Vault. Screenshot of the current button attached.', '2026-11-22T02:00:09Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T1898', 'Ryan: rename the sidebar ''Logins'' button/modal to ''User Management'' and turn it into a User Management modal where he can view, add, edit and delete each roster member''s email+password credential, stored via MindAttic.Vault.
+
+Screenshot of the current button: ../MindAttic.Tickets/data/attachments/M.ORCH-T1898/logins-button.png', '2026-11-22T02:01:03Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.ORCH-T833', 'Symptom: Inside the Orchestrator''s embedded Terminals panel (TerminalPanesHost), when a CLI running
 in a pane shows an interactive, arrow-key-driven menu (e.g. a selection list or permission prompt),
 the Up/Down/Left/Right keys don''t reach the CLI. It looks like the WPF app is intercepting/consuming
