@@ -5626,6 +5626,13 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T685', 'Gadfly', 685, '2026-11-23', 'feature', 'closed', 'Catalog exams for Arts and Languages: write 10 English exams in Gadfly.Server/Demo/Catalog/exams/arts-languages.json (only that file), following the format in that folder''s header comment and life-sciences.json (title, subject, topic, category arts-languages, instructions, accurate source passage, 3-4 objectives with concepts/rubric), each also carrying its approved Korean and Spanish texts (title, instructions, objective titles; neutral Latin American Spanish, usted) so the seeder writes Languages en,ko,es without model spend; distinct topics, no overlap with other categories; build only', '8b6ad749eedb97e5a19d0380062e8ed8be6298b5', 684, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T686', 'Gadfly', 686, '2026-11-23', 'fix', 'wont-do', 'Live (V6): in an exam the microphone is not recognized and the examiner''s voice is not heard (reported by owner 2026-11-23)', 'not-a-bug: live session 2026-11-23 18:11Z mic opened, stt.startSession ok, 24/24 tts.elevenlabs ok; client audio output broken (YouTube silent too)', 685, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T687', 'Gadfly', 687, '2026-11-23', 'fix', 'closed', 'Use the blue examiner avatar everywhere as the app''s one default examiner; a different avatar (white woman with a black hole for a mouth) still appears in some places (owner 2026-11-23)', 'e7aa6e6', 686, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T688', 'Gadfly', 688, '2026-11-23', 'feature', 'open', 'Standardize the look (spacing, gutters, components), make every page WCAG 2.2 AA and fully responsive, show the examiner only live (no static portraits), and give the blue skin a circuitry pattern', '—', 687, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T689', 'Gadfly', 689, '2026-11-23', 'feature', 'open', 'Design system foundation in app.css and MainLayout: type scale, spacing/gutter, radius, focus ring, layout primitives (page header, stack, cluster, grid, section rhythm), buttons, forms, tables, alerts; topbar/nav responsive (collapses on phones); documented in docs/ACCESSIBILITY.md', '—', 688, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T690', 'Gadfly', 690, '2026-11-23', 'feature', 'open', 'Blue examiner skin gets an original, subtle glowing circuitry pattern (procedural, in avatar-look.js) on skin/clothing, kept off eyes, brows and lips; both examiners; only on the default blue skin, not on student-chosen natural skin tones', '—', 689, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T691', 'Gadfly', 691, '2026-11-23', 'feature', 'open', 'A reusable live-examiner component (Razor + JS module) that renders the 3D examiner muted and idle, lazy-loaded when visible, with a non-figurative live placeholder (no image) while loading or where WebGL is unavailable', '—', 690, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T692', 'Gadfly', 692, '2026-11-23', 'feature', 'open', 'Public site (site.css, Pages/Site/*): apply the design system, WCAG 2.2 AA, responsive 320px+; landing hero shows the live examiner embed instead of portrait-f.png', '—', 691, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T693', 'Gadfly', 693, '2026-11-23', 'feature', 'open', 'Student pages (MyExams, catalog, notifications, research, results, practice, get-ready/StartExam): design system, AA, responsive; get-ready shows one live preview of the chosen examiner and the examiner choices as labeled radio cards, no portraits', '—', 692, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T694', 'Gadfly', 694, '2026-11-23', 'feature', 'open', 'Exam room (VoiceRoom, ExamRoom, voice.css, examiner-gaze.css, webcam.css): design system, AA, responsive; loading stand-in and every 2D fallback (no-webgl, load-failed, slow-device, graphics-lost, reduced-motion) become a non-figurative live voice presence, never a portrait; reduced motion keeps the live 3D examiner with calmer motion', '—', 693, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T1', 'GridGame.Studio', 1, '2026-11-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T2', 'GridGame.Studio', 2, '2026-11-21', 'feature', 'closed', 'GridGame.Studio: ThumbnailStudio moved here as one WPF app, plus Gallery tabs (Heroes/Enemies/Abilities paste-to-replace: background cut, centred 1024x1024, Figure update; 64px icons) and an eraser (circle/square 1-100 px), Python image steps run as one-off commands, no web server', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T3', 'GridGame.Studio', 3, '2026-11-21', 'feature', 'closed', 'Studio gallery: Backgrounds tab grouped by region (campaign.json Themes Name/Backgrounds set), replace any image or add the next numbered one (<set>_NN.jpg)', '—', 2, NULL);
@@ -97076,6 +97083,43 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104010, 
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104011, 'GAD-T687', '2026-11-23T18:21:36Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104012, 'GAD-T687', '2026-11-23T18:21:36Z', 'ref', '—', 'e7aa6e6');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104013, 'GAD-T687', '2026-11-23T18:22:01Z', 'working', 'shampoo1232@mindattic.com (45d23ba2-9dca-47db-8f02-f5cfbe33c5cc)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104014, 'GAD-T688', '2026-11-23T18:55:50Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104015, 'GAD-T688', '2026-11-23T18:55:51Z', 'name', NULL, 'Design system, AA, live examiner');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104016, 'GAD-T688', '2026-11-23T18:55:51Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104017, 'GAD-T688', '2026-11-23T18:56:12Z', 'working', NULL, '7370bb8d-9868-420d-bfc7-311507b47dc4');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104018, 'GAD-T614', '2026-11-23T18:56:25Z', 'working', 'shampoo1232@mindattic.com (45d23ba2-9dca-47db-8f02-f5cfbe33c5cc)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104019, 'GAD-T689', '2026-11-23T18:56:44Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104020, 'GAD-T689', '2026-11-23T18:56:44Z', 'name', NULL, 'Design foundation');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104021, 'GAD-T689', '2026-11-23T18:56:45Z', 'link', NULL, 'part-of GAD-T688');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104022, 'GAD-T688', '2026-11-23T18:56:45Z', 'link', NULL, 'GAD-T689 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104023, 'GAD-T689', '2026-11-23T18:56:45Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104024, 'GAD-T690', '2026-11-23T18:56:45Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104025, 'GAD-T690', '2026-11-23T18:56:45Z', 'name', NULL, 'Circuitry skin');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104026, 'GAD-T690', '2026-11-23T18:56:46Z', 'link', NULL, 'part-of GAD-T688');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104027, 'GAD-T688', '2026-11-23T18:56:46Z', 'link', NULL, 'GAD-T690 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104028, 'GAD-T690', '2026-11-23T18:56:46Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104029, 'GAD-T691', '2026-11-23T18:56:47Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104030, 'GAD-T691', '2026-11-23T18:56:47Z', 'name', NULL, 'Live examiner embed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104031, 'GAD-T691', '2026-11-23T18:56:48Z', 'link', NULL, 'part-of GAD-T688');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104032, 'GAD-T688', '2026-11-23T18:56:48Z', 'link', NULL, 'GAD-T691 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104033, 'GAD-T691', '2026-11-23T18:56:48Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104034, 'GAD-T692', '2026-11-23T18:56:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104035, 'GAD-T692', '2026-11-23T18:56:49Z', 'name', NULL, 'Public site pass');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104036, 'GAD-T692', '2026-11-23T18:56:50Z', 'link', NULL, 'part-of GAD-T688');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104037, 'GAD-T688', '2026-11-23T18:56:51Z', 'link', NULL, 'GAD-T692 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104038, 'GAD-T692', '2026-11-23T18:56:51Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104039, 'GAD-T693', '2026-11-23T18:56:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104040, 'GAD-T693', '2026-11-23T18:56:51Z', 'name', NULL, 'Student pages pass');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104041, 'GAD-T693', '2026-11-23T18:56:53Z', 'link', NULL, 'part-of GAD-T688');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104042, 'GAD-T688', '2026-11-23T18:56:53Z', 'link', NULL, 'GAD-T693 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104043, 'GAD-T693', '2026-11-23T18:56:53Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104044, 'GAD-T694', '2026-11-23T18:56:53Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104045, 'GAD-T694', '2026-11-23T18:56:54Z', 'name', NULL, 'Exam room pass');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104046, 'GAD-T694', '2026-11-23T18:56:55Z', 'link', NULL, 'part-of GAD-T688');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104047, 'GAD-T688', '2026-11-23T18:56:55Z', 'link', NULL, 'GAD-T694 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104048, 'GAD-T694', '2026-11-23T18:56:56Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104049, 'GAD-T695', '2026-11-23T18:57:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (104050, 'GAD-T695', '2026-11-23T18:57:02Z', 'name', NULL, 'Admin pages pass');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -101299,9 +101343,9 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T227', NULL, 0, 'shampoo1232@mindattic.com', '45d23ba2-9dca-47db-8f02-f5cfbe33c5cc', '2026-11-23T07:03:28Z', '2026-11-23T07:03:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T499', NULL, 0, 'shampoo1232@mindattic.com', '45d23ba2-9dca-47db-8f02-f5cfbe33c5cc', '2026-11-23T07:01:26Z', '2026-11-23T07:01:25Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T614', NULL, 0, 'shampoo1232@mindattic.com', '45d23ba2-9dca-47db-8f02-f5cfbe33c5cc', '2026-11-23T06:55:21Z', '2026-11-23T06:55:20Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T653', NULL, 0, 'shampoo1232@mindattic.com', '45d23ba2-9dca-47db-8f02-f5cfbe33c5cc', '2026-11-23T07:05:57Z', '2026-11-23T07:05:56Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T664', NULL, 0, 'shampoo1232@mindattic.com', '45d23ba2-9dca-47db-8f02-f5cfbe33c5cc', '2026-11-23T07:34:21Z', '2026-11-23T07:34:20Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T688', NULL, 0, NULL, '7370bb8d-9868-420d-bfc7-311507b47dc4', '2026-11-23T18:56:13Z', '2026-11-23T18:56:12Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
@@ -107361,6 +107405,14 @@ docs/SOCRATIC_PLATFORM.md in Gadfly is the plan this ticket implements; read it 
 
 Milestone 6 of the Socratic exam platform (GAD-T25).', '2026-11-20T21:54:40Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T670', 'GAD-T647 found 0 compared turns on live (all 8 ended sessions predate GAD-T508). Read-only, no LLM spend: /grading/provisional-agreement or the same query against the live DB.', '2026-11-23T15:54:19Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T688', 'Owner request (2026-11-23): "The application has a lot of missing margins, padding, gutters and doesn''t have a standardized look and feel; plus the avatar has static images of herself that no longer match her appearance; I want the entire site to be WCAG 2.2 AA compliant, I want it to be fully responsive, and I want the avatar to only be featured as a live entity no static images." Follow-up: "design the blue avatar skins after cortana, so have circuitry patterns showing that she/he is a digital presence" (built as an original design, not a copy of the Halo character).
+
+Acceptance:
+- One design system (tokens + layout primitives + components) in app.css that every page uses; consistent margins, padding, gutters, section rhythm, headings, buttons, forms, tables.
+- Every page meets WCAG 2.2 AA (contrast, focus visible / not obscured, target size, reflow at 320px, labels, headings, landmarks).
+- Every page works from 320px to wide desktop with no horizontal page scroll.
+- The examiner is never shown as a static image: no portrait PNGs anywhere; landing, get-ready and exam room show her live (3D), and where 3D cannot run, a non-figurative live voice presence instead of a picture.
+- The blue examiner skin carries a subtle glowing circuitry pattern (digital presence), keeping eyes, brows and lips clear.', '2026-11-23T18:55:51Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T80', 'Part 19 Phase 1. **Done when:** the design doc exists and every later MP ticket can point at its section.
 
 Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T00:48:55Z');
@@ -122680,7 +122732,16 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T667', 'Pilot: 
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T67', 'Concept map keeps near-duplicate concepts', '2026-11-20T23:12:48Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T670', 'Re-read fast-model agreement', '2026-11-23T15:54:19Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T68', 'Page wiring integration fixes', '2026-11-21T00:02:55Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T688', 'Design system, AA, live examiner', '2026-11-23T18:55:51Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T689', 'Design foundation', '2026-11-23T18:56:44Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T69', 'API hardening from the docs review', '2026-11-21T00:22:21Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T690', 'Circuitry skin', '2026-11-23T18:56:45Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T691', 'Live examiner embed', '2026-11-23T18:56:47Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T692', 'Public site pass', '2026-11-23T18:56:49Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T693', 'Student pages pass', '2026-11-23T18:56:51Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T694', 'Exam room pass', '2026-11-23T18:56:54Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T695', 'Admin pages pass', '2026-11-23T18:57:02Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T696', 'Staff work pages pass', '2026-11-23T18:57:04Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T70', 'UI fixes from the docs review', '2026-11-21T00:22:27Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T71', 'Engine and server fixes from the docs review', '2026-11-21T00:22:29Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T72', 'Resumed session uses current concept map', '2026-11-21T00:25:52Z');
@@ -124456,6 +124517,14 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T682', 'level:t
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T683', 'level:task', '2026-11-23T16:17:03Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T684', 'level:task', '2026-11-23T16:17:05Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T685', 'level:task', '2026-11-23T16:17:06Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T688', 'level:story', '2026-11-23T18:55:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T689', 'level:task', '2026-11-23T18:56:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T690', 'level:task', '2026-11-23T18:56:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T691', 'level:task', '2026-11-23T18:56:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T692', 'level:task', '2026-11-23T18:56:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T693', 'level:task', '2026-11-23T18:56:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T694', 'level:task', '2026-11-23T18:56:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T695', 'level:task', '2026-11-23T18:57:04Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAI-T19', 'level:task', '2026-11-22T05:49:45Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAI-T33', 'level:task', '2026-11-22T05:49:46Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAI-T34', 'level:task', '2026-11-22T05:49:47Z');
@@ -129909,6 +129978,13 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T682', 'GAD-T675', '
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T683', 'GAD-T675', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T684', 'GAD-T675', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T685', 'GAD-T675', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T689', 'GAD-T688', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T690', 'GAD-T688', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T691', 'GAD-T688', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T692', 'GAD-T688', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T693', 'GAD-T688', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T694', 'GAD-T688', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T695', 'GAD-T688', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T80', 'GAD-US-MP1', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T81', 'GAD-T80', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T81', 'GAD-US-MP1', 'implements', NULL);
