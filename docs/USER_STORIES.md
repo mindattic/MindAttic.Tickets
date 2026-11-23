@@ -507,3 +507,4 @@ updated: 2026-10-12
 | M.TIX-T375 | 2026-11-22 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
 | M.TIX-T376 | 2026-11-22 | feature | open | Tickets Desktop Repos tab: add stash count and the GitHub topic badges (archived/wip/untagged) beside the existing branch/ahead/behind/changed state - Data/RepoGitState.cs + ViewModels/RepoHeaderViewModel.cs and its heading; builds and renders (moved from M.ORCH-T2040, the Launcher's Repo status screen) | — |
 | M.TIX-T377 | 2026-11-22 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
+| M.TIX-T378 | 2026-11-22 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
