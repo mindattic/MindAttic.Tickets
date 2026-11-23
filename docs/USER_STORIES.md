@@ -503,3 +503,5 @@ updated: 2026-10-12
 | M.TIX-T371 | 2026-11-21 | feature | open | Limit full reload to start-up or schema/sync change and add a test proving a single change refreshes only that row | — |
 | M.TIX-T372 | 2026-11-22 | feature | closed | No way to reopen a ticket: closing the last part-of child auto-closes continuous parents (GG-T273 'Continuous UI sweep' and its epic GG-T493 closed when fix GG-T645 closed, 2026-11-22). Add 'ticket reopen <ID>' and let a ticket opt out of auto-close (e.g. a continuous label) | ebe2f32 |
 | M.TIX-T373 | 2026-11-22 | chore | closed | 2026-11-22 morning | — |
+| M.TIX-T374 | 2026-11-22 | fix | closed | TicketsServer.Open: tolerate an Azure SQL serverless resume (~1 min): connect timeout >= 60s and one retry on error 40613, logged (for M.ORCH-T1939) | e74f0c6 |
+| M.TIX-T375 | 2026-11-22 | chore | closed | Sync the ticket database for changes that touched no ticket (story, epic or backlog edits) | — |
