@@ -5664,8 +5664,9 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T721', 'Gadfly', 721, '2026-11-23', 'fix', 'closed', 'Done answering / Clear / Repeat / hold-to-talk stacked with ragged widths, no gap and washed-out disabled styles; now an even full-width grid with a distinct disabled look and a spaced pause select (voice.css). ![image 2](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/_inbox/7370bb8d-9868-420d-bfc7-311507b47dc4/2026-11-23-image-2.png)', '—', 720, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T722', 'Gadfly', 722, '2026-11-23', 'fix', 'closed', 'The ''What I heard'' draft grew with each phrase and shoved Done/Clear/Repeat down the page while the student talked. Now a fixed-height, focusable scroller pinned to the newest words; the live line is a fixed two lines (voice.css, VoiceRoom.razor). ![image 3](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/_inbox/7370bb8d-9868-420d-bfc7-311507b47dc4/2026-11-23-image-3.png)', '—', 721, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T723', 'Gadfly', 723, '2026-11-23', 'fix', 'closed', 'The practice/exam voice room reads as a pile: header line runs together (5:47Step 5 of 6, Skip this stepStart again), status/level/heard/controls/settings float without grouping, the caption scroller under the stage duplicates the transcript, transcript items are misaligned. Group into clear regions with WCAG 2.2 AA spacing and contrast. ![image 4](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/_inbox/7370bb8d-9868-420d-bfc7-311507b47dc4/2026-11-23-image-4.png) ![image 3](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/_inbox/7370bb8d-9868-420d-bfc7-311507b47dc4/2026-11-23-image-3.png)', '57d1569', 722, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T724', 'Gadfly', 724, '2026-11-23', 'feature', 'open', 'Build examiner-socrates.glb with the tools/examiner-m MPFB pipeline (CC0): elderly male, Vatican-bust likeness (snub nose, bald crown, prominent eyes), CC0 beard; same luminous blue ''Cortana'' look with the green eyes via avatar-look.js; no clothing work beyond what the pipeline gives. Add an ExaminerCatalog row and an aged, wizened male voice. License file CC0.', '—', 723, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T725', 'Gadfly', 725, '2026-11-23', 'fix', 'open', 'Second pass on the voice exam room and practice page after GAD-T723: apply the frontend-design skill for an intentional, classical-Greek-themed layout (hierarchy, rhythm, typography, states), WCAG 2.2 AA, phone and desktop.', '—', 724, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T724', 'Gadfly', 724, '2026-11-23', 'feature', 'closed', 'Build examiner-socrates.glb with the tools/examiner-m MPFB pipeline (CC0): elderly male, Vatican-bust likeness (snub nose, bald crown, prominent eyes), CC0 beard; same luminous blue ''Cortana'' look with the green eyes via avatar-look.js; no clothing work beyond what the pipeline gives. Add an ExaminerCatalog row and an aged, wizened male voice. License file CC0.', 'ec3e826', 723, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T725', 'Gadfly', 725, '2026-11-23', 'fix', 'closed', 'Second pass on the voice exam room and practice page after GAD-T723: apply the frontend-design skill for an intentional, classical-Greek-themed layout (hierarchy, rhythm, typography, states), WCAG 2.2 AA, phone and desktop.', '68cdf5f', 724, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T726', 'Gadfly', 726, '2026-11-23', 'feature', 'closed', 'Socrates (examiner-socrates) is treated as female where code tests Id == ExaminerCatalog.Male: ExamRoomText.cs:53/56, StartExam.razor:695/1038, VoiceRoom.razor:282, LiveExaminer.razor:53 (male pronouns, TalkingHead body M), and ExaminerCustomization.cs:65 has no voice allowlist for him. Add an IsMale(id) helper (Male or Socrates) and use it; optionally a slower per-examiner ElevenLabs speed (~0.9) for Socrates, which VoiceSettings/ExaminerTts only set per session today.', '18fad8a', 725, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T1', 'GridGame.Studio', 1, '2026-11-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T2', 'GridGame.Studio', 2, '2026-11-21', 'feature', 'closed', 'GridGame.Studio: ThumbnailStudio moved here as one WPF app, plus Gallery tabs (Heroes/Enemies/Abilities paste-to-replace: background cut, centred 1024x1024, Figure update; 64px icons) and an eraser (circle/square 1-100 px), Python image steps run as one-off commands, no web server', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T3', 'GridGame.Studio', 3, '2026-11-21', 'feature', 'closed', 'Studio gallery: Backgrounds tab grouped by region (campaign.json Themes Name/Backgrounds set), replace any image or add the next numbered one (<set>_NN.jpg)', '—', 2, NULL);
@@ -5973,7 +5974,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T273', 'GridGame.Unity', 273, '2026-11-05', 'chore', 'open', 'Continuous UI sweep: every screen at every harness aspect, check centering, equidistant gutters, padding/margins, vertical/horizontal offsets, run-on text and overflow; each finding cluster gets its own fix ticket, fixed and re-verified until layout dimension C findings reach zero', '—', 272, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T274', 'GridGame.Unity', 274, '2026-11-05', 'fix', 'closed', 'swamp-02 (Mireholt Fens II) casual-bot wins fell 42% -> 17% after GG-T263 ability tuning: the lone-hag wave deals ~1000 damage; retune the wave into the 55-85% band without moving neighbours (POL-G1/G2)', '—', 273, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T275', 'GridGame.Unity', 275, '2026-11-05', 'feature', 'closed', 'Chronomancer: an enemy (miniboss/boss variant) that casts Slow on the party, fighting the party''s stacked haste on the shared net-tempo timeline; telegraphed casts, readable tempo tug-of-war, counterplay (interrupt, cleanse, out-haste it), placed in a mid-campaign stage', '—', 274, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T276', 'GridGame.Unity', 276, '2026-11-05', 'chore', 'open', 'Continuous balance loop: keep running polish.py --balance, triage the lowest POL-G rules and out-of-band stages/abilities, tune in content/BattleConfig, re-measure; one commit per tuning pass, never letting another polish dimension drop', '—', 275, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T276', 'GridGame.Unity', 276, '2026-11-05', 'chore', 'open', 'Continuous balance loop: keep running polish.py --balance, triage the lowest POL-G rules and out-of-band stages/abilities, tune in content/BattleConfig, re-measure; one commit per tuning pass, never letting another polish dimension drop', '385d0fba', 275, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T277', 'GridGame.Unity', 277, '2026-11-05', 'interview', 'open', 'Story direction from the owner: the Longmother premise (spider-colossus town, GG-T120) makes no sense without an overworld; hold new lore built on it and rewrite crawls/dialogues (incl. GG-T231 prologue, interlude, boss intros, ending) once the owner gives direction', '—', 276, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T278', 'GridGame.Unity', 278, '2026-11-05', 'fix', 'closed', 'POL-C2/C3 tap targets: menu rows (95px), buttons (104px), small/back/icon buttons (79-82px), shop rows (111px) and tabs (96px) are under the 132x132 target and sit 8-11px apart (<24px); worst 9:16/9:23, shop/hub/equip/abilities/items/status/talents/title', 'POL-C2 25.1, POL-C3 39.2 (polish 2026-11-05_1656)', 277, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T279', 'GridGame.Unity', 279, '2026-11-05', 'fix', 'closed', 'POL-C8 gutters (+A2 captions): Bestiary grid rows ragged (left 16 vs right 8, all aspects; EvenGrid sized from the ScrollView not its viewport and floored), Abilities bar cells gap 11/edges 5 off-scale, Camp party cards edges 32 vs gap 21; bar labels 24px and party role/HP text 20-24px under the 30px caption floor; party name ellipsis -> marquee', 'POL-C8 9.4, POL-A2 81.6 (polish 2026-11-05_1656)', 278, NULL);
@@ -6458,6 +6459,69 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T757', 'GridGame.Unity', 757, '2026-11-23', 'feature', 'closed', 'Postgame XP wall calculator for the owner''s GG-T474 decision (no game launch): add tools/xp_wall.py that reads Formulas.XpToNext/XpReward shapes (Assets/GridGame/Core/Rules/Formulas.cs), postgame stage levels (content stages/LevelOverride, BIBLE ''The postgame curve'') and enemy XpReward/stats from content JSON, and prints, per postgame stage from Bloom I to Morrow''s Shadow III, the party level a straight-through party arrives at vs the enemy level and the hunts of the previous stage needed to close the gap, for the current curve and for each option already listed in docs/RELEASE_SCOPE.md ''Measured: the postgame level wall'' (late kill XP scaling, per-region levels, postgame XP bonus/catch-up). Add the table under that RELEASE_SCOPE section as numbers for the owner; change no balance values (GG-T474 is the owner''s pick).', '00b950fbb0fc47facd346c08cadaff6bafaf2cf5', 756, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T758', 'GridGame.Unity', 758, '2026-11-23', 'feature', 'closed', 'cave-02 (Cave II) wall diagnosis from existing soak records, no new soak or game launch: extend artifacts/t276-cave/an.py (or a tools/ script) over artifacts/polish/2026-11-22_2151 and 2026-11-23_0051 to compare cave-02 with cave-01/03 per wave: party HP entering each wave, foe count/level/stat weight, and the source of wave 3''s damage (support, Rally, area pattern vs raw hits), plus whether recommended level 14 fits the stage''s weight; post the findings and a ranked lever recommendation as a note on GG-T276. Do not change content values (tuning stays in the GG-T276 loop).', 'de775713', 757, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T759', 'GridGame.Unity', 759, '2026-11-23', 'chore', 'open', 'Fresh Windows build of main (owner 2026-11-23: approve all and build): take the heavy-process lease, run tools/build.ps1 -SkipProse once, report errors; fix any compile error by filing fix tickets', '—', 758, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T760', 'GridGame.Unity', 760, '2026-11-23', 'fix', 'closed', 'Hero screen (Equip tab): the party strip overflows one line (Warden clipped left, Red Mage Part clipped right); hero cards must wrap to a second row instead, and the equipment slot list rows must be shorter with smaller text so more fits', '552474e5', 759, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T761', 'GridGame.Unity', 761, '2026-11-23', 'feature', 'closed', 'Manapunk window conduits: replace the little bars travelling through the side tubes with the tubes themselves flickering with power now and then, driven by Quake-style light-style strings (a-z brightness ramps, ~10 steps/s) with several patterns mixed at random per window (flicker, fluorescent, slow strong pulse, candle); high-tech but degrading; static under Reduce Motion', 'e8babc3282ba782def185152f2942e18c65c2a03', 760, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T762', 'GridGame.Unity', 762, '2026-11-23', 'feature', 'open', 'Turn modes: build ''any hero every turn'', ''any hero who hasn''t moved this round'' and ''Heroes on the timeline'' as swappable modes one after another, soak each headlessly and report which is most fun for what and why (owner 2026-11-23)', '—', 761, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T763', 'GridGame.Unity', 763, '2026-11-23', 'feature', 'open', 'Turn mode groundwork: a TurnMode setting threaded through the battle core behind one TurnRules seam, saved and selectable, measurable by the headless soak, with a BIBLE skeleton, so the three hero turn modes plug in without forking the battle code', '—', 762, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T764', 'GridGame.Unity', 764, '2026-11-23', 'feature', 'closed', 'BIBLE describes turn modes before they are built: one section with a skeleton per mode', 'children done', 763, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T765', 'GridGame.Unity', 765, '2026-11-23', 'feature', 'closed', 'docs/BIBLE.md: add section 2.13 Turn modes (setting, resolver, TurnRules seam; PartyWindow = today''s section 2.0 rule linked; one not-built subsection each for Any hero every turn, Any hero who hasn''t moved this round, Heroes on the timeline listing what each must answer: who may act, Guard, mana income, Turns buffs, cooldowns, status ticks, pincers, region rules, tutorial, post-battle stats, Crucible, automation, UI, soak); Glossary entries; docs/TURN_MODES.md stub stating the comparison method and metrics. Docs only.', '7413df4e75c6c2d11aa59719da88c158ee5b4b07', 764, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T766', 'GridGame.Unity', 766, '2026-11-23', 'feature', 'open', 'The battle core runs any turn mode through one TurnRules seam, with today''s rule unchanged', '—', 765, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T767', 'GridGame.Unity', 767, '2026-11-23', 'feature', 'open', 'Add Assets/GridGame/Core/Battle/TurnMode.cs (enum PartyWindow default, AnyHeroEveryTurn, UnmovedThisRound, HeroTimeline); BattleSetup.TurnMode copied to BattleState.TurnMode and kept by the state clone (like Difficulty); BattleRecorder/CommandCodec record the mode so a replay reproduces it; tests in Tests/Core.Tests/TurnModeTests.cs (default is PartyWindow, clone keeps it, recorded mode round-trips). Outcome: Core.Tests.csproj builds, no behaviour change.', '—', 766, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T768', 'GridGame.Unity', 768, '2026-11-23', 'feature', 'open', 'Add Assets/GridGame/Core/Battle/TurnRules.cs, the one place a mode answers who may act now, whether an action ends the party''s turn, what it spends, what Guard gives up and banks, and what a turn boundary resets; route BattleEngine.cs (CanMove, HeroesLeftToAct, TooLittleTime, CommandTicks, TurnTicks), BattleRunner.cs (window end, ReturnControl, PlayerControlEvent.NewWindow, Guard) and the ActedThisWindow reads in BattleRunner.Tame.cs, BattleRunner.Wanderer.cs and Recruitment.cs through it. PartyWindow implements today''s rule exactly; the other modes throw NotSupportedException until their features. Test Party_window_replays_identically_through_the_seam. Outcome: Core.Tests builds.', '—', 767, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T769', 'GridGame.Unity', 769, '2026-11-23', 'feature', 'open', 'Assets/GridGame/Core/Bot/HeroBot.cs (smart and casual) and the App battle view (BattleScreen.Input.cs pickup gating, BattleScreen.cs ''N heroes can still act'' banner, BoardView.cs UnitView.SetActed, BattleScreen.Playback.cs NewWindow beat) plus App/Automation/AutomationServer.cs /state (adds turn_mode) ask TurnRules instead of reading Unit.ActedThisWindow directly. Outcome: Core.Tests builds; Unity build when the lease is free; PartyWindow unchanged.', '—', 768, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T770', 'GridGame.Unity', 770, '2026-11-23', 'feature', 'closed', 'One computed GUI font size: derive a single base text size from aspect ratio, DPI and resolution (respecting the TypeFloor minimum and the Text size setting) and use it for ALL GUI text; remove the many ad-hoc font sizes (headers, rows, captions, buttons) so text is uniform; emphasis only via bold, italic, colour, underline and strikethrough (owner: many different font sizes look messy). TextFit shrink-to-fit stays only as an overflow fallback.', '8d5d1b73', 769, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T771', 'GridGame.Unity', 771, '2026-11-23', 'feature', 'open', 'The player chooses a turn mode in Settings or at New Game, and every battle plays it', '—', 770, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T772', 'GridGame.Unity', 772, '2026-11-23', 'feature', 'closed', 'Replace the menu hand cursor (FF-inspired, but the current hand points wrongly): find an open-source / permissively licensed FF-style pointing-hand cursor sprite (CC0/CC-BY/OFL/MIT, record source URL and licence), import it at the right size, use it everywhere the hand cursor shows, and credit its author and licence on the Credits screen', '7e845ae7', 771, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T773', 'GridGame.Unity', 773, '2026-11-23', 'feature', 'open', 'Profile setting turnMode in Assets/GridGame/Meta/PlayerProfiles.cs GameSettings (settings.json, default PartyWindow) and an optional per-save lock in Meta/SaveData.cs chosen at New Game (SaveMigrations bump; old saves load as PartyWindow); one resolver (save lock, else profile) feeds BattleSetup.TurnMode at every battle start: campaign and stage battles (Meta/MetaServices.cs), endless (Meta/EndlessEncounter.cs), Crucible (Meta/Crucible.cs), wanderers, bounty, test mode, tutorial, App/Battle/BattleScreen.cs; tests in ProfileTests.cs and SaveDataTests.cs. Outcome: Core.Tests builds.', '—', 772, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T774', 'GridGame.Unity', 774, '2026-11-23', 'feature', 'open', 'A ''Turn mode'' row in Assets/GridGame/App/Screens/HubScreens.cs settings (Cycle like Battle speed) and a New Game choice in App/Screens/MenuScreens.cs, offering only modes in a Core TurnModes.Available list (PartyWindow now; each mode feature adds itself) with a one-line explanation each, text through the repo''s prose tools (tools/prose_*.py). Outcome: Unity build when the lease is free; no player needed.', '—', 773, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T775', 'GridGame.Unity', 775, '2026-11-23', 'feature', 'open', 'A -turnMode <name> launch flag (App/Boot/GameApp.cs argument parsing), an AutomationServer endpoint that sets it, and a --turn-mode option in tools/harness.py and tools/playthrough_sim.py, so automation and headless runs can choose the mode. Outcome: Core.Tests builds; python -m py_compile passes on the tools; Unity build when the lease is free.', '—', 774, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T776', 'GridGame.Unity', 776, '2026-11-23', 'feature', 'open', 'The headless bot soak plays any turn mode and reports the metrics the comparison needs', '—', 775, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T777', 'GridGame.Unity', 777, '2026-11-23', 'feature', 'open', 'GRIDGAME_TURN_MODE read in Tests/Core.Tests/TestKit.cs so every bot soak (HeldTurnSoakReport.cs, AbilityUsageSoak.cs, the ContentAndSoakTests bot soak, TimelineTuningSoak.cs) plays that mode; HeldTurnSoakReport adds per stage: win rate, battle length (hero actions, enemy turns, seconds), decisions per player turn (heroes able to act x their legal actions), hero actions per enemy turn, downtime (longest run of enemy turns without a hero action, enemy-only seconds), pincers and chains, Guards (forced vs chosen), ability/spell/item uses, mana by source, bot refusals; written as turn-mode-<mode>-<bot>.json under GRIDGAME_SOAK_OUT. Outcome: Core.Tests builds (soak not run here).', '—', 776, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T778', 'GridGame.Unity', 778, '2026-11-23', 'feature', 'open', 'tools/turn_modes.py: for each requested mode runs the soak headlessly (dotnet test --filter on HeldTurnSoakReport with GRIDGAME_TURN_MODE; smart and casual bots; a fixed representative stage list covering each region, early/mid/late campaign and a boss; a fixed seed set; difficulty 5 and 10), gathers the JSONs into artifacts/turn-modes/<date>/ and prints a markdown comparison table. Run it once for PartyWindow and commit the baseline table in docs/research/TurnModes.md. Outcome: baseline table committed.', '—', 777, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T779', 'GridGame.Unity', 779, '2026-11-23', 'feature', 'open', 'Turn mode A ''any hero every turn'': each party turn one hero acts, any able hero (repeats allowed), built through the TurnRules seam into every turn-touching system, playable by bots, selectable, documented and soaked headlessly', '—', 778, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T780', 'GridGame.Unity', 780, '2026-11-23', 'feature', 'open', 'Mode A core: one action by any hero ends the party''s turn, and every turn-touching system behaves', '—', 779, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T781', 'GridGame.Unity', 781, '2026-11-23', 'feature', 'open', 'TurnRules AnyHeroEveryTurn (Core/Battle/TurnRules.cs, BattleEngine.cs, BattleRunner.cs): any able hero may act, its one action ends the party''s turn and the clock runs on to the next enemy arrival; decide and record whether the seconds left are banked like Guard (GuardChargeFor) or lost; the minimum-action gap, forced Guard, Rally and the opening window per wave still apply; tests in Tests/Core.Tests/TurnModeAnyHeroTests.cs (same hero twice in a row is allowed, a second action in one turn is refused, replays identically). Outcome: Core.Tests builds.', '—', 780, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T782', 'GridGame.Unity', 782, '2026-11-23', 'feature', 'open', 'Under AnyHeroEveryTurn adapt each per-turn system and record the choice: Guard''s Protection and bank (BIBLE 2.5), mana income (drag time bank 3.1.8, Guard charge 3.1.9, pincer orbs), Turns-unit buffs, skill cooldowns, status ticks (Frozen, Sleep, DOT), party tempo and Rally, the support extra turn (supportTurnOwner); one action is now a whole turn, so decide per system whether turn-counted durations keep or scale. Files: BattleRunner.cs, BattleRunner.Timeline.cs, BattleRunner.Support.cs, BattleEngine.cs, ManaBank.cs; tests in TurnModeAnyHeroTests.cs. Outcome: Core.Tests builds.', '—', 781, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T783', 'GridGame.Unity', 783, '2026-11-23', 'feature', 'open', 'Turn- and window-counting rules under AnyHeroEveryTurn: region rules (BattleRunner.Region.cs: Drowned Arks rising water, Under the Anchors pull, darkness), RuleBreak (BattleRunner.RuleBreak.cs), taming, recruits, wanderers and summons joining (BattleRunner.Tame.cs, BattleRunner.Recruit.cs, BattleRunner.Wanderer.cs), TurnStart/TurnEnd/ActionEnd triggers (BattleRunner.Triggers.cs), countdown badges, pickup and corpse ageing; tests in TurnModeAnyHeroTests.cs. Outcome: Core.Tests builds.', '—', 782, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T784', 'GridGame.Unity', 784, '2026-11-23', 'feature', 'open', 'Mode A is playable by the smart and casual bots and the enemy AI fits it', '—', 783, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T785', 'GridGame.Unity', 785, '2026-11-23', 'feature', 'open', 'Assets/GridGame/Core/Bot/HeroBot.cs smart and casual bots play AnyHeroEveryTurn: pick the single best hero action per turn across the whole party (setups span turns, no ''an ally still to act closes it''), TimeBalance values a turn as one action, never soft-lock (BotRunner); check BattleRunner.Enemy.cs assumptions about how many heroes move between enemy turns (charges, retreats, targeting); tests in BotTests.cs or TurnModeAnyHeroTests.cs (bots finish a stage in Mode A, replay identically). Outcome: Core.Tests builds.', '—', 784, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T786', 'GridGame.Unity', 786, '2026-11-23', 'feature', 'open', 'Mode A reads clearly on screen and fits the tutorial, stats, Crucible and automation', '—', 785, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T787', 'GridGame.Unity', 787, '2026-11-23', 'feature', 'open', 'Battle view for AnyHeroEveryTurn (App/Battle/BattleScreen.cs, BattleScreen.Input.cs, BattleScreen.Timeline.cs, BoardView.cs): no acted checkmarks, the banner reads ''Move any hero'' with the seconds left, the gap lane and GUARD call fit one action per turn, selection stays on the last hero; add AnyHeroEveryTurn to TurnModes.Available so Settings and New Game offer it. Outcome: Unity build when the lease is free.', '—', 786, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T788', 'GridGame.Unity', 788, '2026-11-23', 'feature', 'open', 'Under AnyHeroEveryTurn: tutorial coach-mark lessons that teach turn flow (BattleRunner.Tutorial.cs, BattleScreen.Tutorial.cs; lessons that assume several heroes per window, such as two-pincer chains) still work or are reworded; post-battle stats (App/Screens/PostBattleScreen.cs, BattleResults in BattleState.cs) count turns and actions meaningfully; the Crucible (Meta/Crucible.cs) plays the chosen mode or pins one (record which); AutomationServer /state reports who can act. Outcome: Core.Tests builds; Unity build when the lease is free.', '—', 787, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T789', 'GridGame.Unity', 789, '2026-11-23', 'feature', 'open', 'Mode A is soaked headlessly and documented in the BIBLE', '—', 788, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T790', 'GridGame.Unity', 790, '2026-11-23', 'feature', 'open', 'Run tools/turn_modes.py for AnyHeroEveryTurn (smart and casual, the fixed stages and seeds, difficulty 5 and 10); fix any soft-lock, stall or invariant break it finds in Mode A code (mode-local numbers only, in per-mode BattleConfig constants); record the table next to the baseline in docs/research/TurnModes.md. Outcome: the soak completes with no stalls and its table is committed.', '—', 789, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T791', 'GridGame.Unity', 791, '2026-11-23', 'feature', 'open', 'Fill docs/BIBLE.md section 2.13 Any hero every turn: the rule, every system''s behaviour as built, UI, selection, the tests that pin it and the soak numbers; cross-link from sections 2.0 and 2.5. Docs only.', '—', 790, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T792', 'GridGame.Unity', 792, '2026-11-23', 'feature', 'open', 'Turn mode B ''any hero who hasn''t moved this round'': one hero acts per party turn, each hero once per round, the round resets when all have acted; round tracking, reset rules and a who-has-moved UI, built into every turn-touching system, playable by bots, selectable, documented and soaked headlessly', '—', 791, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T793', 'GridGame.Unity', 793, '2026-11-23', 'feature', 'open', 'Mode B core: round tracking and reset, and every turn-touching system behaves', '—', 792, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T794', 'GridGame.Unity', 794, '2026-11-23', 'feature', 'open', 'TurnRules UnmovedThisRound: one hero action per party turn, only by a hero who hasn''t acted this round; when every able hero has acted the round resets (BattleState.Round, Unit.ActedThisRound in Unit.cs, a RoundStartedEvent in BattleEvents.cs); reset rules for a hero who dies, is revived, is Frozen or Asleep (skipped or waits), joins mid-round, and for a new wave (resets or carries); tests in Tests/Core.Tests/TurnModeRoundTests.cs (a moved hero is refused until the round resets, the round resets when the last able hero acts, replays identically). Outcome: Core.Tests builds.', '—', 793, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T795', 'GridGame.Unity', 795, '2026-11-23', 'feature', 'open', 'Under UnmovedThisRound adapt each per-turn system and record the choice: does Guard spend a hero''s round slot (default no), Guard''s Protection and bank, mana income, whether Turns-unit buffs, cooldowns and status ticks count party turns or rounds, party tempo and Rally, the support extra turn. Files: BattleRunner.cs, BattleRunner.Timeline.cs, BattleRunner.Support.cs, BattleEngine.cs, ManaBank.cs; tests in TurnModeRoundTests.cs. Outcome: Core.Tests builds.', '—', 794, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T796', 'GridGame.Unity', 796, '2026-11-23', 'feature', 'open', 'Under UnmovedThisRound: region rules that count turns or rounds (BattleRunner.Region.cs; make ''round'' mean one thing or rename the region''s count), RuleBreak, taming, recruits, wanderers and summons joining mid-round (BattleRunner.Tame.cs, BattleRunner.Recruit.cs, BattleRunner.Wanderer.cs), TurnStart/TurnEnd/ActionEnd and a RoundStart trigger (BattleRunner.Triggers.cs), countdown badges; tests in TurnModeRoundTests.cs. Outcome: Core.Tests builds.', '—', 795, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T797', 'GridGame.Unity', 797, '2026-11-23', 'feature', 'open', 'Mode B is playable by the smart and casual bots and the enemy AI fits it', '—', 796, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T798', 'GridGame.Unity', 798, '2026-11-23', 'feature', 'open', 'HeroBot.cs smart and casual bots plan the rotation under UnmovedThisRound: which unmoved hero to spend now versus save for a pincer later in the round, never stranding the round; check BattleRunner.Enemy.cs targeting and charges against heroes who already moved (decide whether the AI notices); tests in BotTests.cs or TurnModeRoundTests.cs (bots finish a stage in Mode B, replay identically). Outcome: Core.Tests builds.', '—', 797, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T799', 'GridGame.Unity', 799, '2026-11-23', 'feature', 'open', 'Mode B shows who has moved this round and fits the tutorial, stats, Crucible and automation', '—', 798, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T800', 'GridGame.Unity', 800, '2026-11-23', 'feature', 'open', 'Battle view for UnmovedThisRound: heroes who moved this round dim with a check until the round resets (BoardView.cs UnitView.SetActed per round), a ''Round 3 - 2 of 4 moved'' readout by the timeline (BattleScreen.Timeline.cs), pickup of a moved hero refused with its reason (BattleScreen.Input.cs), a round-reset beat in BattleScreen.Playback.cs; add UnmovedThisRound to TurnModes.Available. Outcome: Unity build when the lease is free.', '—', 799, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T801', 'GridGame.Unity', 801, '2026-11-23', 'feature', 'open', 'Under UnmovedThisRound: tutorial turn-flow lessons (BattleRunner.Tutorial.cs, BattleScreen.Tutorial.cs) work or are reworded; post-battle stats (PostBattleScreen.cs, BattleResults) include rounds; the Crucible (Meta/Crucible.cs) plays the chosen mode or pins one; AutomationServer /state adds round and acted_this_round. Outcome: Core.Tests builds; Unity build when the lease is free.', '—', 800, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T802', 'GridGame.Unity', 802, '2026-11-23', 'feature', 'open', 'Mode B is soaked headlessly and documented in the BIBLE', '—', 801, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T803', 'GridGame.Unity', 803, '2026-11-23', 'feature', 'open', 'Run tools/turn_modes.py for UnmovedThisRound (smart and casual, the fixed stages and seeds, difficulty 5 and 10); fix any soft-lock, stall or invariant break it finds in Mode B code (mode-local numbers only); record the table in docs/research/TurnModes.md. Outcome: the soak completes with no stalls and its table is committed.', '—', 802, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T804', 'GridGame.Unity', 804, '2026-11-23', 'feature', 'open', 'Fill docs/BIBLE.md section 2.13 Any hero who hasn''t moved this round: the rule, round and reset rules, every system''s behaviour as built, UI, selection, tests and soak numbers. Docs only.', '—', 803, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T805', 'GridGame.Unity', 805, '2026-11-23', 'feature', 'open', 'Turn mode C ''Heroes on the timeline'': every hero gets its own turn icon on the shared bar with the foes and acts when it arrives; hero icons, hero turn resolution, every turn-touching system, bots and enemy AI, the timeline UI, selection, BIBLE and a headless soak', '—', 804, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T806', 'GridGame.Unity', 806, '2026-11-23', 'feature', 'open', 'Mode C core: hero turn icons race the foes on one bar, and every turn-touching system behaves', '—', 805, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T807', 'GridGame.Unity', 807, '2026-11-23', 'feature', 'open', 'HeroTimeline: each hero gets a TimelineEntry (Core/Battle/Timeline.cs, BattleRunner.Timeline.cs) entering by Speed (BattleEngine.EntrySeconds with a hero reference speed) with a recovery after acting, racing foes and casts on the one axis; decide and record the arrival tie rule (BIBLE 2.4) and whether TimelineSpacing.cs spaces hero icons; heroes open each wave ahead of the foes; tests in Tests/Core.Tests/TurnModeHeroTimelineTests.cs (a faster hero enters further left, icons race, replays identically). Outcome: Core.Tests builds.', '—', 806, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T808', 'GridGame.Unity', 808, '2026-11-23', 'feature', 'open', 'When a hero icon reaches the left edge only that hero may act (TurnRules HeroTimeline in TurnRules.cs, BattleEngine.cs, BattleRunner.cs): its held window is the time until the next icon arrives (forced drop as BIBLE 2.0), Guard defends that hero and banks what is left, the minimum-action gap applies; a dead hero''s icon leaves the bar and a revived one re-enters; tests in TurnModeHeroTimelineTests.cs. Outcome: Core.Tests builds.', '—', 807, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T809', 'GridGame.Unity', 809, '2026-11-23', 'feature', 'open', 'Under HeroTimeline adapt and record: hero Turns-unit buffs and cooldowns tick on the hero''s own turn like a foe''s, Frozen halts and Sleep skips a hero icon, Slow and Haste on a hero change its rate, party tempo and Rally (BattleEngine.TimelineScale), enemy Pushback/Hinder and Hasten/Quicken now able to land on hero icons (audit abilities.json keywords; BattleRunner.Abilities.cs), mana income per hero turn, the support extra turn; tests in TurnModeHeroTimelineTests.cs. Outcome: Core.Tests builds.', '—', 808, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T810', 'GridGame.Unity', 810, '2026-11-23', 'feature', 'open', 'Under HeroTimeline: region rules that count turns (BattleRunner.Region.cs), RuleBreak, taming, recruits, wanderers and summons joining with their own icons (BattleRunner.Tame.cs, BattleRunner.Recruit.cs, BattleRunner.Wanderer.cs), TurnStart/TurnEnd triggers per hero turn (BattleRunner.Triggers.cs), countdown badges; tests in TurnModeHeroTimelineTests.cs. Outcome: Core.Tests builds.', '—', 809, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T811', 'GridGame.Unity', 811, '2026-11-23', 'feature', 'open', 'Mode C is playable by the smart and casual bots and the enemy AI uses hero icons', '—', 810, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T812', 'GridGame.Unity', 812, '2026-11-23', 'feature', 'open', 'HeroBot.cs smart and casual bots act for the hero whose icon arrived and value pushback and Slow by the hero turns they buy; BattleRunner.Enemy.cs may target or push back the hero about to act (decide and record); never soft-lock; tests in BotTests.cs or TurnModeHeroTimelineTests.cs (bots finish a stage in Mode C, replay identically). Outcome: Core.Tests builds.', '—', 811, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T813', 'GridGame.Unity', 813, '2026-11-23', 'feature', 'open', 'Mode C draws hero icons on the timeline and fits the tutorial, stats, Crucible and automation', '—', 812, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T814', 'GridGame.Unity', 814, '2026-11-23', 'feature', 'open', 'App/Battle/BattleScreen.Timeline.cs draws hero diamonds with their thumbnails (Art.Thumb) among the foes, the prominence diamond shows the acting hero, hero recovery shows in the tray, the gap lane runs to the next icon of either side; only the acting hero can be picked up (BattleScreen.Input.cs) and its token is highlighted (BoardView.cs); add HeroTimeline to TurnModes.Available. Outcome: Unity build when the lease is free.', '—', 813, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T815', 'GridGame.Unity', 815, '2026-11-23', 'feature', 'open', 'Under HeroTimeline: tutorial turn-flow lessons (BattleRunner.Tutorial.cs, BattleScreen.Tutorial.cs) work or are reworded for one hero per turn; post-battle stats (PostBattleScreen.cs, BattleResults) count hero turns; the Crucible (Meta/Crucible.cs) plays the chosen mode or pins one; AutomationServer /state lists hero icons and the acting hero. Outcome: Core.Tests builds; Unity build when the lease is free.', '—', 814, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T816', 'GridGame.Unity', 816, '2026-11-23', 'feature', 'open', 'Mode C is soaked headlessly and documented in the BIBLE', '—', 815, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T817', 'GridGame.Unity', 817, '2026-11-23', 'feature', 'open', 'Run tools/turn_modes.py for HeroTimeline (smart and casual, the fixed stages and seeds, difficulty 5 and 10); fix any soft-lock, stall or invariant break it finds in Mode C code (mode-local numbers only); record the table in docs/research/TurnModes.md. Outcome: the soak completes with no stalls and its table is committed.', '—', 816, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T818', 'GridGame.Unity', 818, '2026-11-23', 'feature', 'open', 'Fill docs/BIBLE.md section 2.13 Heroes on the timeline: the rule, hero icons, entry and recovery, every system''s behaviour as built, UI, selection, tests and soak numbers; amend section 2 (''heroes have no icons here'') and 2.4 for this mode. Docs only.', '—', 817, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T819', 'GridGame.Unity', 819, '2026-11-23', 'feature', 'open', 'Turn modes compared: every mode soaked headlessly on equal terms and a report to the owner of which is most fun for what and why', '—', 818, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T820', 'GridGame.Unity', 820, '2026-11-23', 'feature', 'open', 'The owner gets a measured report of which turn mode is most fun for which situation, and why', '—', 819, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T821', 'GridGame.Unity', 821, '2026-11-23', 'feature', 'open', 'tools/turn_modes.py over PartyWindow (baseline), AnyHeroEveryTurn, UnmovedThisRound and HeroTimeline on the identical stage list, seeds, bots and difficulties 5 and 10, plus three extra seed sets for variance; results in artifacts/turn-modes/<date>/ and the full comparison table (win rate, battle length, decisions per turn, hero actions per enemy turn, downtime, pincer, Guard and ability use, mana by source) in docs/research/TurnModes.md. Outcome: one comparable table committed.', '—', 820, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T822', 'GridGame.Unity', 822, '2026-11-23', 'feature', 'open', 'Write docs/TURN_MODES.md for the owner: each mode''s numbers and what they mean for fun (agency, tension, pacing, readability, session length on a phone), which mode suits which situation (campaign, bosses, endless, Crucible, new players, short sessions) and why, and the overall most-fun pick with its caveats; the default mode is not changed without the owner''s decision. Docs only.', '—', 821, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('HCM-T1', 'Hardware.ChiMesh', 1, '2026-11-22', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('HCM-T2', 'Hardware.ChiMesh', 2, '2026-11-22', 'docs', 'closed', '2026-11-22 morning', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('HC-T1', 'Hardware.Claudia', 1, '2026-11-22', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
@@ -14761,8 +14825,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T511', 'SpaceGod.Unreal', 511, '2026-11-23', 'feature', 'closed', 'Core: GameSetting keeps its factory default and can take a shipped default from text; ShippedDefaults reads and writes the key-to-value file; SettingsRegistry applies it and knows which keys are locked in', 'children done', 510, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T512', 'SpaceGod.Unreal', 512, '2026-11-23', 'feature', 'open', 'Engine side: load Content/Settings/shipped-defaults.json at bind, write locked-in values into it, and an sg.Settings console command to lock in, unlock and list', '—', 511, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T513', 'SpaceGod.Unreal', 513, '2026-11-23', 'feature', 'open', 'The Settings menu as a PC options menu (Display, Graphics, Sound, Gameplay, Multiplayer, Controls, Interface, Accessibility tabs) and a Developer screen with lock-in', '—', 512, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T514', 'SpaceGod.Unreal', 514, '2026-11-23', 'feature', 'open', 'The Settings nav lists the player tabs in PC order and draws every setting kind, typed text included', '—', 513, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T515', 'SpaceGod.Unreal', 515, '2026-11-23', 'feature', 'open', 'Settings nav: Display, Graphics, Sound, Gameplay, Multiplayer, Controls (with Key bindings), Interface, Accessibility; empty tabs hidden; TextSetting rows drawn and edited', '—', 514, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T514', 'SpaceGod.Unreal', 514, '2026-11-23', 'feature', 'closed', 'The Settings nav lists the player tabs in PC order and draws every setting kind, typed text included', 'children done', 513, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T515', 'SpaceGod.Unreal', 515, '2026-11-23', 'feature', 'closed', 'Settings nav: Display, Graphics, Sound, Gameplay, Multiplayer, Controls (with Key bindings), Interface, Accessibility; empty tabs hidden; TextSetting rows drawn and edited', 'children done', 514, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T516', 'SpaceGod.Unreal', 516, '2026-11-23', 'feature', 'open', 'A Developer screen in Settings: developer flags, live tuning and every design group, each value changed live and lockable as the shipped default', '—', 515, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T517', 'SpaceGod.Unreal', 517, '2026-11-23', 'feature', 'open', 'New Developer page in Settings replacing Advanced (simulation): the Developer group first, then each Tuning group, then every other design group, with search, Reset and a changed or locked-in mark per row', '—', 516, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T518', 'SpaceGod.Unreal', 518, '2026-11-23', 'feature', 'open', 'Developer page buttons: Lock in this group, Lock in all changes (every tab, player ones included) and Unlock per row, with a confirm line', '—', 517, NULL);
@@ -14778,16 +14842,16 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T528', 'SpaceGod.Unreal', 528, '2026-11-23', 'feature', 'closed', 'AI ignores the player (no AI targets or hunts what the player holds) and Freeze AI (AI units hold position and do not fire)', '0f09dbe92afb4353a7884fd7b43eaa7cc1d75e28', 527, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T529', 'SpaceGod.Unreal', 529, '2026-11-23', 'feature', 'closed', 'Unlimited FTL fuel, instant FTL spool, reveal every star and infinite credits take effect', 'children done', 528, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T530', 'SpaceGod.Unreal', 530, '2026-11-23', 'feature', 'closed', 'Unlimited FTL fuel and Instant FTL spool for the player''s jumps, Reveal every star on the maps, Infinite credits in the player''s account', 'c69bfc1', 529, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T531', 'SpaceGod.Unreal', 531, '2026-11-23', 'feature', 'open', 'Gameplay constants (turn rates, speeds, distances, damage, ranges, camera, sensors) exposed as live tuning knobs in Tuning groups on the Developer screen', '—', 530, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T531', 'SpaceGod.Unreal', 531, '2026-11-23', 'feature', 'closed', 'Gameplay constants (turn rates, speeds, distances, damage, ranges, camera, sensors) exposed as live tuning knobs in Tuning groups on the Developer screen', 'children done', 530, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T532', 'SpaceGod.Unreal', 532, '2026-11-23', 'feature', 'closed', 'One helper declares a tuning knob in a Tuning group, simulation knobs shared as the host''s in co-op', 'children done', 531, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T533', 'SpaceGod.Unreal', 533, '2026-11-23', 'feature', 'closed', 'Core Tuning::Knob: declares a RangeSetting keyed tune.<area>.<name> in group ''Tuning: <area>'', with a Simulation or View scope; co-op shares Simulation-scope Tuning groups', '99b9bb1c87c87f7417fe23ced2d21f7d29583438', 532, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T534', 'SpaceGod.Unreal', 534, '2026-11-23', 'feature', 'closed', 'Top speed, turn rate, roll, boost and cruise of each kind of craft tuned live', 'children done', 533, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T535', 'SpaceGod.Unreal', 535, '2026-11-23', 'feature', 'closed', 'Tuning: Flight multipliers per pilot-control family (free-aim fighters, direct-nose fighters, haulers, capitals) for top speed, turn rate, roll, boost multiplier, boost duration, cruise multiplier and cruise ramp, applied live', 'c932f976cb6122da11a930341618211442f0015d', 534, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T536', 'SpaceGod.Unreal', 536, '2026-11-23', 'feature', 'closed', 'The flown and travelling camera''s feel tuned live', 'children done', 535, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T537', 'SpaceGod.Unreal', 537, '2026-11-23', 'feature', 'closed', 'Tuning: Camera (View scope): SpaceCamera''s pilot view lift, response, lock track strength, travel, quick travel and level seconds, base look sensitivity and chase distance read live from knobs', '2022d251b67f7dfc2af74247b7b117aab3d5c161', 536, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T538', 'SpaceGod.Unreal', 538, '2026-11-23', 'feature', 'open', 'Damage, ranges, fire rates, shields, hulls and battle distances tuned live', '—', 537, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T538', 'SpaceGod.Unreal', 538, '2026-11-23', 'feature', 'closed', 'Damage, ranges, fire rates, shields, hulls and battle distances tuned live', 'children done', 537, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T539', 'SpaceGod.Unreal', 539, '2026-11-23', 'feature', 'closed', 'Tuning: Combat global multipliers for weapon damage, weapon range, rate of fire, projectile speed, shield strength, shield regeneration and hull strength, applied live in battle', '5ceaaafe2cba9a3f3e27a75bdacc345d9e249893', 538, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T540', 'SpaceGod.Unreal', 540, '2026-11-23', 'feature', 'open', 'Tuning: Battle distances: Battle.h''s EscapeKm, HuntPlayerKm, MineTriggerKm, FireCallWeightKm, FallBackStandKm, CrippleCallWeightKm, WithdrawCoverKm and the merge, extend and tail distances become live knobs', '—', 539, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T540', 'SpaceGod.Unreal', 540, '2026-11-23', 'feature', 'closed', 'Tuning: Battle distances: Battle.h''s EscapeKm, HuntPlayerKm, MineTriggerKm, FireCallWeightKm, FallBackStandKm, CrippleCallWeightKm, WithdrawCoverKm and the merge, extend and tail distances become live knobs', 'ce8bf932d7340bb0838a021369ef3e94b71198fc', 539, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T541', 'SpaceGod.Unreal', 541, '2026-11-23', 'feature', 'closed', 'Sensor ranges and signature factors tuned live', 'children done', 540, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T542', 'SpaceGod.Unreal', 542, '2026-11-23', 'feature', 'closed', 'Tuning: Sensors: a global sensor range multiplier and Sensors.h''s drive factor, weapons-fire, silent, hulk, battle and haven factors, scanner range share and array scanners as live knobs', 'children done', 541, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T543', 'SpaceGod.Unreal', 543, '2026-11-23', 'feature', 'open', 'Display tab: monitor, brightness, HDR and background frame cap alongside the existing resolution, window mode and VSync', '—', 542, NULL);
@@ -14799,7 +14863,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T549', 'SpaceGod.Unreal', 549, '2026-11-23', 'feature', 'open', 'Graphics rows for motion blur, depth of field, film grain, chromatic aberration, lens flares, ambient occlusion, anisotropic filtering and sharpening, applied live', '—', 548, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T550', 'SpaceGod.Unreal', 550, '2026-11-23', 'feature', 'open', 'Sound tab: a voice volume, mute in the background, sound while paused and a dynamic range choice alongside the master, music, effects, interface and ambience volumes', '—', 549, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T551', 'SpaceGod.Unreal', 551, '2026-11-23', 'feature', 'closed', 'A Voice bus and Voice volume row for the comms voices, under the master volume', '912e45a270d88fac7c69c910d8d71fdeba7c76bf', 550, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T552', 'SpaceGod.Unreal', 552, '2026-11-23', 'feature', 'open', 'Sound rows: Mute when in the background, Sound while paused (play, duck, mute) and Dynamic range (full, night: compressed), applied live', '—', 551, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T552', 'SpaceGod.Unreal', 552, '2026-11-23', 'feature', 'closed', 'Sound rows: Mute when in the background, Sound while paused (play, duck, mute) and Dynamic range (full, night: compressed), applied live', '6f1a4f9', 551, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T553', 'SpaceGod.Unreal', 553, '2026-11-23', 'feature', 'open', 'Gameplay, Controls and Interface tabs: camera shake and pause on focus loss; split look sensitivity, smoothing and pad vibration; HUD crosshair, FPS counter, labels and indicators', '—', 552, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T554', 'SpaceGod.Unreal', 554, '2026-11-23', 'feature', 'closed', 'Camera shake strength and pausing when the window loses focus', 'children done', 553, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T555', 'SpaceGod.Unreal', 555, '2026-11-23', 'feature', 'closed', 'Gameplay rows: Camera shake (0-100%) scaling every shake, and Pause when the window loses focus (single player only)', '945751d', 554, NULL);
@@ -14818,9 +14882,88 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T568', 'SpaceGod.Unreal', 568, '2026-11-23', 'feature', 'closed', 'Register the Sensors tuning knobs (Signatures::DriveFactor/WeaponsFire/SilentFactor/HulkFactor/Battle/Haven, SensorSuite::ScannerRangeShare/RangeScale/ArrayScanners) in Core''s SettingsRegistry::DiscoverLoadedDeclarations (Settings/SettingsSources.cpp) so the Developer screen lists them before the first sweep touches them', '2ce4b94903012d520fd9f9b098497b0fc888a4b9', 567, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T569', 'SpaceGod.Unreal', 569, '2026-11-23', 'feature', 'closed', 'Core: ShippedDefaults (new Cpp/Source/SpaceGodCore/Settings/ShippedDefaults.h/.cpp) parses and writes a flat JSON object of key to Format() text with Shared/Json MiniJson/JsonObject (text in, text out, no file or engine calls; string values taken, bool/number accepted as their text, other kinds skipped; Write sorts keys ordinal). SettingsRegistry: ApplyShippedDefaults(map) keeps the map, calls GameSetting::TrySetDefaultFromText (landed in d0add8b, US-T511) for each known key, ignores unknown or unparsable ones, restores RestoreFactoryDefault on keys no longer locked in, applies a pending shipped default to a setting registered later (Register/RegisterDeclared before Load), and IsLockedIn(key) tells which keys took one; runs before Bind loads the profile. Defaults unchanged with no file present. Build: tools/build-core.ps1.', '4db009b', 568, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T570', 'SpaceGod.Unreal', 570, '2026-11-23', 'feature', 'closed', 'Settings nav order and Sound label: PlayerOptions::PlayerGroups becomes { Graphics, Audio, Gameplay, SettingGroups::Multiplayer, Controls, KeyBindings::Group, SettingGroups::Interface, Accessibility } (constants landed in c31abb0). PauseMenu::DrawSettings draws the Display button FIRST (drop displayShown and the after-Graphics placement); a GroupTitle(g) helper shows Audio as ''Sound'' in NavGroup, the list heading, ''Reset <group>'' and DrawSetting''s showGroup prefix. Empty groups are already hidden (playerGroups filtered by registry->Groups()). Developer stays out of player tabs. PlayerOptions.cpp/.h and PauseMenu.cpp/.h hold other agents'' uncommitted edits (US-T555 CameraShake, bughunt TourEntry): commit only your hunks via a patch + git apply --cached. Build: editor build.', 'ea012eb', 569, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T571', 'SpaceGod.Unreal', 571, '2026-11-23', 'feature', 'open', 'TextSetting rows in Settings: PauseMenu.h gains cs::Ref<Core::TextSetting> textEditing, cs::String textDraft, textRefusedKey, textRefused, bool TextKeys(), void DropText(). DrawSetting: for a TextSetting, GUI::SetNextControlName(''SettingText.''+Key) then GUI::TextField(rect, editing ? textDraft : Value, MaxLength, field); focused and not yet editing -> textEditing=it, textDraft=Value; focus left -> draft dropped. A refusal replaces the description line (''Not taken: at most N characters'' / ''Not taken: that value is refused''). SettingsKeys starts with if (TextKeys()) return; (Enter -> Set(textDraft): ok clears focus via GUIUtility::keyboardControl=0, refused keeps focus and records the refusal; the field holds every other key so W/S/A/D/Delete type). Enter on a picked TextSetting row focuses its field (GUI::FocusControl). Update: if (escape && textEditing) { DropText(); return; } before Back. ShowGroup drops it. UnityGui''s TextField does not type Return (the game sees it). PauseMenu.cpp/.h hold another agent''s uncommitted edits: commit only your hunks via patch + git apply --cached; prefer a new UI/PauseMenu.Settings.cpp for the new functions. Build: editor build.', '—', 570, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T571', 'SpaceGod.Unreal', 571, '2026-11-23', 'feature', 'closed', 'TextSetting rows in Settings: PauseMenu.h gains cs::Ref<Core::TextSetting> textEditing, cs::String textDraft, textRefusedKey, textRefused, bool TextKeys(), void DropText(). DrawSetting: for a TextSetting, GUI::SetNextControlName(''SettingText.''+Key) then GUI::TextField(rect, editing ? textDraft : Value, MaxLength, field); focused and not yet editing -> textEditing=it, textDraft=Value; focus left -> draft dropped. A refusal replaces the description line (''Not taken: at most N characters'' / ''Not taken: that value is refused''). SettingsKeys starts with if (TextKeys()) return; (Enter -> Set(textDraft): ok clears focus via GUIUtility::keyboardControl=0, refused keeps focus and records the refusal; the field holds every other key so W/S/A/D/Delete type). Enter on a picked TextSetting row focuses its field (GUI::FocusControl). Update: if (escape && textEditing) { DropText(); return; } before Back. ShowGroup drops it. UnityGui''s TextField does not type Return (the game sees it). PauseMenu.cpp/.h hold another agent''s uncommitted edits: commit only your hunks via patch + git apply --cached; prefer a new UI/PauseMenu.Settings.cpp for the new functions. Build: editor build.', 'e14ac07336b22807eac1633b69b6d1ebf0bea558', 570, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T572', 'SpaceGod.Unreal', 572, '2026-11-23', 'feature', 'closed', 'Extend the US-T539 combat knobs (Combat/CombatTuning.h, 5ceaaaf) beyond Battle.cpp so a tuned value acts the same everywhere: projectile speed for missiles launched in Fighters.cpp and the aim leads in DogfightManeuvers.cpp, weapon range wherever other Combat files read a weapon''s range (not mine blast radius). Defaults stay exactly 1.0 so bench digests don''t move. Build: tools/build-core.ps1', '74ebd73f8028606f8a8688da9b8e6b651e247e15', 571, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T573', 'SpaceGod.Unreal', 573, '2026-11-23', 'feature', 'open', 'All comms spoken aloud by a free local TTS, faction chatter on tunable frequencies across the universe, radio that travels at light speed (heard as sent X hours ago) with filtering against overload; every system fast and reactive', '—', 572, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T574', 'SpaceGod.Unreal', 574, '2026-11-23', 'feature', 'open', 'Every spoken comms line is read aloud by a free local TTS (Piper, Windows SAPI fallback) on the Voice bus, a voice per speaker, synthesised off the game thread and cached', '—', 573, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T575', 'SpaceGod.Unreal', 575, '2026-11-23', 'feature', 'open', 'Every radio message is a wavefront from where and when it was sent; it is heard when the front reaches the listener, labelled sent X ago; analytic arrival, bounded history, never a per-frame simulation', '—', 574, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T576', 'SpaceGod.Unreal', 576, '2026-11-23', 'feature', 'open', 'Factions and groups talk on their own frequencies; the player tunes, scans, monitors and mutes channels', '—', 575, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T577', 'SpaceGod.Unreal', 577, '2026-11-23', 'feature', 'open', 'Real radio chatter across the universe, generated cheaply: from simulation events, by an ambient sampler near the listener, and as relayed bulletins from other systems', '—', 576, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T578', 'SpaceGod.Unreal', 578, '2026-11-23', 'feature', 'open', 'Reception keeps the radio listenable: signal strength and clarity, relevance scoring, a concurrent-voice cap with priority and staleness, digests for the rest, mutes and filters', '—', 577, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T579', 'SpaceGod.Unreal', 579, '2026-11-23', 'feature', 'open', 'Settings rows for spoken comms and radio: voice on or off, TTS engine, radio effect, chatter density, subtitles, max voices, minimum priority; the Voice volume row exists from US-T551', '—', 578, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T580', 'SpaceGod.Unreal', 580, '2026-11-23', 'feature', 'open', 'A frame-time budget and profiling hooks for TTS, propagation, chatter and reception, so the game stays fast and reactive at any warp and any crowd', '—', 579, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T581', 'SpaceGod.Unreal', 581, '2026-11-23', 'feature', 'open', 'The comms panel''s answers are heard in a voice on the Voice bus, synthesised off the game thread by Piper and cached', '—', 580, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T582', 'SpaceGod.Unreal', 582, '2026-11-23', 'feature', 'open', 'Each pilot, station and faction has its own stable voice, and a PC without Piper still speaks through Windows SAPI', '—', 581, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T583', 'SpaceGod.Unreal', 583, '2026-11-23', 'feature', 'open', 'Encounter conversations, surrender hails, stranded-ship calls and voiced story lines are read aloud too', '—', 582, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T584', 'SpaceGod.Unreal', 584, '2026-11-23', 'feature', 'open', 'A radio message is heard when its wavefront reaches the listener, and moving through space meets fronts still in flight', '—', 583, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T585', 'SpaceGod.Unreal', 585, '2026-11-23', 'feature', 'open', 'Heard radio shows in the HUD radio log with channel, sender, range and how long ago it was sent', '—', 584, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T586', 'SpaceGod.Unreal', 586, '2026-11-23', 'feature', 'open', 'Fetch script, gitignore, Vendor README licences and package staging for Piper 2023.11.14-2 (MIT) and the en_US-libritts_r-medium voice (CC BY 4.0)', '—', 585, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T587', 'SpaceGod.Unreal', 587, '2026-11-23', 'feature', 'open', 'ITtsEngine and a long-lived piper.exe engine driven over stdin JSON by a below-normal FRunnable TtsService with a bounded priority queue; results polled on the game thread', '—', 586, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T588', 'SpaceGod.Unreal', 588, '2026-11-23', 'feature', 'open', 'VoiceCache keyed by engine, voice, speaker, rate, effect and text: a 32 MB memory LRU and a 256 MB disk cache in Saved/VoiceCache, with deduplicated prefetch', '—', 587, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T589', 'SpaceGod.Unreal', 589, '2026-11-23', 'feature', 'open', 'CommsVoice plays queued lines on AudioBus::Voice with a worker-side radio effect (band-pass, static, squelch); a line not ready within 1.5 s is skipped', '—', 588, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T590', 'SpaceGod.Unreal', 590, '2026-11-23', 'feature', 'open', 'Core VoiceCasting: a stable VoiceSpec per pilot, station, faction and player from hashed ids, faction-disjoint libritts_r speaker slices, pace from the Chatter trait', '—', 589, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T591', 'SpaceGod.Unreal', 591, '2026-11-23', 'feature', 'open', 'A backtick (`) developer console on Unreal''s UConsole that drives the game: every sg.* command, settings get/set by key (tune.*, dev.*), lock-in, autocomplete and history; Options > Developer > Console, on by default', '—', 590, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T592', 'SpaceGod.Unreal', 592, '2026-11-23', 'feature', 'open', 'The pause menu offers Resume, Save Game, Load Game, Options, Return to Title and Exit Game (with Help, Encyclopedia, Society, Showcase Tour and Credits); the title menu says Options and Exit Game', '—', 591, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T593', 'SpaceGod.Unreal', 593, '2026-11-23', 'feature', 'open', 'Every input the game reads is rebindable on keyboard, mouse and pad (number keys, d-pad steps, stick layout), held actions can be set to toggle, and the pad gets PlayStation prompts, a response curve and a trigger dead zone', '—', 592, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T594', 'SpaceGod.Unreal', 594, '2026-11-23', 'feature', 'open', 'The comms panel''s answers and the surrender hail are spoken in each party''s cast voice through CommsVoice; only the speaking peer''s panel speaks', '—', 593, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T595', 'SpaceGod.Unreal', 595, '2026-11-23', 'feature', 'open', 'Display rows for the refresh rate, a low-latency mode and a menu frame cap, beside resolution, window mode (windowed, borderless, exclusive fullscreen), VSync, monitor, brightness and HDR', '—', 594, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T596', 'SpaceGod.Unreal', 596, '2026-11-23', 'feature', 'open', 'Graphics rows for bloom (Off, Low, High), vignette and hardware ray tracing (where the GPU and project support it), after the post effect rows', '—', 595, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T597', 'SpaceGod.Unreal', 597, '2026-11-23', 'feature', 'open', 'Sound rows for the output device, speaker mode (headphones, stereo speakers, mono, surround 5.1 / 7.1), spatial sound for headphones (binaural, Windows Sonic / Dolby Atmos where Windows provides it) and sound quality', '—', 596, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T598', 'SpaceGod.Unreal', 598, '2026-11-23', 'feature', 'open', 'SapiTts engine (SAPI 5 to a memory stream on the TTS worker) used when Piper is missing; sapi.lib on Win64', '—', 597, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T599', 'SpaceGod.Unreal', 599, '2026-11-23', 'feature', 'open', 'Gameplay rows for how many autosaves are kept and when they happen, and how the clock and dates are written', '—', 598, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T600', 'SpaceGod.Unreal', 600, '2026-11-23', 'feature', 'open', 'Interface > HUD safe zone (0% to 10% inset from the screen edges) for TVs and ultrawide screens', '—', 599, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T601', 'SpaceGod.Unreal', 601, '2026-11-23', 'feature', 'open', 'Accessibility rows for a colour-blind filter, captions for comms and alert sounds, and high-contrast menus, beside the existing UI scale, text size, HUD opacity, safe stance palette and reduced flashes', '—', 600, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T602', 'SpaceGod.Unreal', 602, '2026-11-23', 'feature', 'open', 'Encounter NPC lines, stranded-ship and distress calls, story hooks and LLM-reworded lines are spoken through CommsVoice, with next-node prefetch', '—', 601, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T603', 'SpaceGod.Unreal', 603, '2026-11-23', 'feature', 'open', 'The backtick (`) opens Unreal''s console over the game (line, then full scrollback, then closed) while Options > Developer > Console is on, and the game reads no keys while it is open', '—', 602, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T604', 'SpaceGod.Unreal', 604, '2026-11-23', 'feature', 'open', 'From the console the owner reads and sets any setting by key (tune.*, dev.*, player options), toggles flags, locks values in (sg.Settings) and runs any sg.* command, with autocomplete and an sg.Help list', '—', 603, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T605', 'SpaceGod.Unreal', 605, '2026-11-23', 'feature', 'open', 'Developer rows for an engine stats overlay and the game''s log level, settable from Options > Developer or the console', '—', 604, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T606', 'SpaceGod.Unreal', 606, '2026-11-23', 'feature', 'open', 'The saves drawer opens in a Save mode (SAVE GAME: new save and overwrite) or a Load mode (LOAD GAME: load and delete), the saves key keeping today''s combined drawer', '—', 605, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T607', 'SpaceGod.Unreal', 607, '2026-11-23', 'feature', 'open', 'Pause menu: Resume, Save Game, Load Game, Options, Help, Encyclopedia, Society, Showcase Tour, Credits, Return to Title, Exit Game; title menu: Options and Exit Game; the settings page heads OPTIONS', '—', 606, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T608', 'SpaceGod.Unreal', 608, '2026-11-23', 'feature', 'open', 'The number keys and the d-pad steps are actions on the Key bindings page, the sticks can swap, and any held action can be set to toggle', '—', 607, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T609', 'SpaceGod.Unreal', 609, '2026-11-23', 'feature', 'open', 'The pad shows Xbox or PlayStation button names, and its sticks get a response curve and its triggers a dead zone', '—', 608, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T610', 'SpaceGod.Unreal', 610, '2026-11-23', 'feature', 'open', 'Display page: a Refresh rate row (the rates the chosen size offers on the chosen monitor; Highest by default), used in exclusive fullscreen and kept under the keep-or-revert countdown', '—', 609, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T611', 'SpaceGod.Unreal', 611, '2026-11-23', 'feature', 'open', 'Display rows: Low latency (off by default; on trims the render queue) and Menu frame cap (Off, 30, 60, 120 while a full-screen menu is up)', '—', 610, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T612', 'SpaceGod.Unreal', 612, '2026-11-23', 'feature', 'open', 'Sound > Output device: System default or any listed device, switched live; a device that goes away falls back to the default', '—', 611, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T613', 'SpaceGod.Unreal', 613, '2026-11-23', 'feature', 'open', 'Sound > Speaker mode: Auto (the device''s own), Headphones, Stereo speakers, Mono, Surround 5.1, Surround 7.1, applied live', '—', 612, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T614', 'SpaceGod.Unreal', 614, '2026-11-23', 'feature', 'open', 'Sound > Spatial sound: Off, Binaural (headphones, HRTF) and Windows spatial sound (Windows Sonic, Dolby Atmos) where the engine install supports them; otherwise the row explains how to turn them on in Windows', '—', 613, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T615', 'SpaceGod.Unreal', 615, '2026-11-23', 'feature', 'open', 'Sound > Sound quality (Low, Medium, High): how many sounds play at once', '—', 614, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T616', 'SpaceGod.Unreal', 616, '2026-11-23', 'feature', 'open', 'Gameplay rows: Autosaves kept (1, 3, 5, 10) and Autosave on docking and Autosave before a jump (both off by default)', '—', 615, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T617', 'SpaceGod.Unreal', 617, '2026-11-23', 'feature', 'open', 'Gameplay rows: Clock (24-hour, 12-hour) and Date order (year-month-day, day/month/year, month/day/year) for every date and time the HUD and screens write', '—', 616, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T618', 'SpaceGod.Unreal', 618, '2026-11-23', 'feature', 'open', 'Captions for comms lines and the alert sounds (missile lock, shields down and the like), with size and background choices', '—', 617, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T619', 'SpaceGod.Unreal', 619, '2026-11-23', 'feature', 'open', 'A whole-frame colour-blind filter and high-contrast menus', '—', 618, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T620', 'SpaceGod.Unreal', 620, '2026-11-23', 'feature', 'open', 'Developer setting dev.console (Console, default on) and a rebindable Console key action bound to the backtick, which ToggleScale gives up (it keeps G)', '—', 619, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T621', 'SpaceGod.Unreal', 621, '2026-11-23', 'feature', 'open', 'USpaceGodConsole, a UConsole subclass set as the engine''s console class, opens and closes on the Console action''s keys only while dev.console is on', '—', 620, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T622', 'SpaceGod.Unreal', 622, '2026-11-23', 'feature', 'open', 'While the console is open the GUI layer and the game''s input read nothing (no thrust or panel keys from typing), and keys held when it opens are released', '—', 621, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T623', 'SpaceGod.Unreal', 623, '2026-11-23', 'feature', 'open', 'Core RadioMessage with power classes, an append-only RadioLog ring (cap 8192) with 15-minute time buckets and origin AABBs, and analytic fixed-point wavefront arrival with a bucket shell test', '—', 622, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T624', 'SpaceGod.Unreal', 624, '2026-11-23', 'feature', 'open', 'sg.Get, sg.Set, sg.Reset, sg.Toggle and sg.Find read and change any setting by key (tune.*, dev.*, player options, key bindings) live, replying in the console', '—', 623, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T625', 'SpaceGod.Unreal', 625, '2026-11-23', 'feature', 'open', 'The console''s autocomplete offers every setting key (sg.Set/sg.Toggle with label, value and default), the dev menu''s entries (sg.Cheat paths) and sg.Settings lock-in; sg.Help lists every sg.* command with its help', '—', 624, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T626', 'SpaceGod.Unreal', 626, '2026-11-23', 'feature', 'open', 'Developer rows for a stats overlay (Off, FPS, Unit, Unit graph) and the game''s log verbosity, applied through the engine''s stat and log commands, so they can be set from Options or the console', '—', 625, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T627', 'SpaceGod.Unreal', 627, '2026-11-23', 'feature', 'open', 'Core RadioReceiver: a min-heap of arrival times with range-gated Emit O(log n), Advance capped at 64 pops per frame that re-checks the moving listener, bucket-pruned Rebase and DropAfter for rewind', '—', 626, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T628', 'SpaceGod.Unreal', 628, '2026-11-23', 'feature', 'open', 'Number 1..0 become rebindable actions (default the digit keys) read by InputState in place of the fixed digits; Alt and Alt+Shift still pick a fire group and its mode on whatever key the action holds', '—', 627, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T629', 'SpaceGod.Unreal', 629, '2026-11-23', 'feature', 'open', 'The d-pad''s four steps become rebindable actions, and Controls gains Swap sticks (move on the right, aim on the left) and Invert move', '—', 628, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T630', 'SpaceGod.Unreal', 630, '2026-11-23', 'feature', 'open', 'A Toggle trigger mode for any binding: one press holds a held action (boost, manoeuvre, slow) on, the next lets it go', '—', 629, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T631', 'SpaceGod.Unreal', 631, '2026-11-23', 'feature', 'open', 'RadioHost owns the listener system''s RadioLog and receiver, ticks per frame, rebases on FTL, system change, rewind, load and tour, publishes arrivals; sg.Radio console', '—', 630, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T632', 'SpaceGod.Unreal', 632, '2026-11-23', 'feature', 'open', 'Controls > Button prompts (Auto, Xbox, PlayStation): hints, Help and the bindings page name pad buttons as the chosen pad does (Cross, Circle, Square, Triangle, L1, R1, L2, R2, L3, R3, Create, Options)', '—', 631, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T633', 'SpaceGod.Unreal', 633, '2026-11-23', 'feature', 'open', 'Controls rows for the sticks'' response curve (Linear, Smooth, Precise) and the triggers'' dead zone', '—', 632, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T634', 'SpaceGod.Unreal', 634, '2026-11-23', 'feature', 'open', 'Accessibility rows: Colour-blind filter (Off, Protanopia, Deuteranopia, Tritanopia), its strength, and Correct or Simulate, applied to the whole frame', '—', 633, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T635', 'SpaceGod.Unreal', 635, '2026-11-23', 'feature', 'open', 'HUD radio log of the last 8 heard lines with channel, sender, text realised at hear-time, sent X ago and range; a bounded Radio tab in the Logs screen', '—', 634, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T636', 'SpaceGod.Unreal', 636, '2026-11-23', 'feature', 'open', 'A caption queue fed by comms lines and the interface''s alert sounds, and the rows Captions (Off, Comms, Comms and sounds), Caption size and Caption background', '—', 635, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T637', 'SpaceGod.Unreal', 637, '2026-11-23', 'feature', 'open', 'The HUD draws the caption queue as a strip above its bottom edge at the chosen size and background, under the UI scale, hidden with the HUD', '—', 636, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T638', 'SpaceGod.Unreal', 638, '2026-11-23', 'feature', 'open', 'Accessibility > High contrast: menus and panels drawn opaque near-black with white text and bright edges and selection', '—', 637, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T639', 'SpaceGod.Unreal', 639, '2026-11-23', 'feature', 'open', 'Core RadioChannels: per-system Guard, Traffic, Civil, Fleet (encrypted), Pirate and Relay channels with deterministic frequencies, rebuilt only on a version change, O(1) lookup', '—', 638, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T640', 'SpaceGod.Unreal', 640, '2026-11-23', 'feature', 'open', 'Core RadioTuner: tuned primary, up to 4 monitored channels, presets, mutes, scan; Accepts returns Heard, CountedOnly or Ignored; rolling per-channel activity counters, O(1)', '—', 639, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T641', 'SpaceGod.Unreal', 641, '2026-11-23', 'feature', 'open', 'Tuner panel with dial, channel list, activity meters, tune, monitor and mute toggles, presets and scan on a rebindable key; RadioHost publishes only what the tuner hears', '—', 640, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T642', 'SpaceGod.Unreal', 642, '2026-11-23', 'feature', 'open', 'Core ChatterLines: at least 8 variants per channel kind and situation with slots, realised only when heard from world state and pilot traits; no LLM', '—', 641, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T643', 'SpaceGod.Unreal', 643, '2026-11-23', 'feature', 'open', 'Core ChatterEvents turns new World::Events (cursor by Jd, O(new events)) into radio messages on the right channel; RadioHost pumps it within budget; read-only', '—', 642, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T644', 'SpaceGod.Unreal', 644, '2026-11-23', 'feature', 'open', 'Core ChatterSampler: Poisson chatter only for emitters inside the audible horizon, 60 game-second ticks, at most 32 per tick, capped catch-up, view-local RNG, back-fill of past fronts on entry or rebase', '—', 643, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T645', 'SpaceGod.Unreal', 645, '2026-11-23', 'feature', 'open', 'Newswire::Received at the listener''s system becomes Relay-channel messages (at most HeadlinesPerReport) labelled relayed, sent X ago; no interstellar wavefronts', '—', 644, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T646', 'SpaceGod.Unreal', 646, '2026-11-23', 'feature', 'open', 'Core RadioReception: clarity from signal against the noise floor (Clean, Noisy with deterministic dropouts, Unreadable), a relevance score, and routing to Spoken, Subtitled or Digest at O(1) per arrival; RadioHost routes every arrival', '—', 645, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T647', 'SpaceGod.Unreal', 647, '2026-11-23', 'feature', 'open', 'VoiceArbiter: concurrent-voice cap (1), comms lines first, radio priority queue capped at 8 with eviction to digest, 20 s staleness, distress and addressed preemption, top-3 prefetch, no ambient speech above 10x warp', '—', 646, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T648', 'SpaceGod.Unreal', 648, '2026-11-23', 'feature', 'open', 'Core RadioDigest counters per channel and situation turn overflow, encrypted, evicted and unreadable traffic into periodic summary lines in the radio log, spoken at most every 2 real minutes when idle', '—', 647, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T649', 'SpaceGod.Unreal', 649, '2026-11-23', 'feature', 'open', 'Settings rows Spoken comms, Voice engine, Radio effect, Chatter density, Radio subtitles, Max voices and Minimum radio priority, each wired to its consumer; view settings with scripted-run defaults', '—', 648, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T650', 'SpaceGod.Unreal', 650, '2026-11-23', 'feature', 'open', 'STATGROUP_SpaceGodRadio cycle and dword counters plus TRACE_CPUPROFILER scopes for every radio and TTS stage; stat SpaceGodRadio and sg.Radio stats', '—', 649, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T651', 'SpaceGod.Unreal', 651, '2026-11-23', 'feature', 'open', 'Hold game-thread radio work to 0.25 ms per frame with round-robin deferral, the warp policy and the TTS caps, and write docs/COMMS_RADIO.md with the design, bounds, budgets and knobs', '—', 650, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T652', 'SpaceGod.Unreal', 652, '2026-11-23', 'fix', 'open', 'Editor build breaks on the PI macro: GameSettingsHost.cpp and UnitySpaceApp.Boarding.cpp fail at SpaceGodCore/Astro.h:17-19 (''illegal token on right side of ::'', cs::Math::PI rewritten by Unreal''s PI macro) through the UnitySpaceApp.h include chain, while GameAudio.cpp has the opposite symptom (PI undeclared in the engine''s DSP/Filter.h, because Cs.h undefines PI). Likely include-order/unity-build interaction after US-T552 (6f1a4f9) added AudioMixer/DSP includes. Make cs::Math::PI immune to the macro and the engine headers see PI (e.g. push/pop_macro around Cs.h''s #undef, or rename the constant), so every TU compiles in unity and non-unity builds. Blocks US-T512 landing', '—', 651, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T1', 'SpaceGod.Unreal.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T2', 'SpaceGod.Unreal.CSharp', 2, '2026-11-06', 'feature', 'closed', 'Adopt the shared off-by-default --headless launch mode (Unreal.Shared)', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T3', 'SpaceGod.Unreal.CSharp', 3, '2026-11-08', 'feature', 'open', 'Mirror SpaceGod US-T72: add docs/CAPTURE.md (Unity e29d871''s text, third copy named SpaceGod) that this copy''s capture code cites but lacks, and a US-T72 section in docs/PARITY.md', 'SpaceGod US-T72', 2, NULL);
@@ -101067,6 +101210,1667 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107697, 
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107698, 'US-T572', '2026-11-24T05:11:19Z', 'working', 'pdftransferjr@mindattic.com (b773a79b-ba7e-46cb-9786-f886660e3188)', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107699, 'GG-T596', '2026-11-24T05:11:25Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107700, 'GG-T613', '2026-11-24T05:11:29Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107701, 'GG-T463', '2026-11-24T05:11:39Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107702, 'GG-T488', '2026-11-24T05:11:44Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107703, 'GG-T596', '2026-11-24T05:11:47Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107704, 'GG-T463', '2026-11-24T05:11:48Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107705, 'GG-T474', '2026-11-24T05:11:49Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107706, 'GG-T492', '2026-11-24T05:11:51Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107707, 'GG-T481', '2026-11-24T05:11:52Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107708, 'GG-T498', '2026-11-24T05:11:54Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107709, 'GG-T488', '2026-11-24T05:11:56Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107710, 'GG-T276', '2026-11-24T05:12:23Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107711, 'GG-T276', '2026-11-24T05:12:23Z', 'ref', '—', '385d0fba');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107712, 'US-T540', '2026-11-24T05:12:27Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107713, 'US-T540', '2026-11-24T05:12:27Z', 'ref', '—', 'ce8bf932d7340bb0838a021369ef3e94b71198fc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107714, 'US-T538', '2026-11-24T05:12:27Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107715, 'US-T538', '2026-11-24T05:12:27Z', 'ref', '—', 'children done');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107716, 'US-T538', '2026-11-24T05:12:27Z', 'rollup', NULL, 'US-T540');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107717, 'US-T531', '2026-11-24T05:12:27Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107718, 'US-T531', '2026-11-24T05:12:27Z', 'ref', '—', 'children done');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107719, 'US-T531', '2026-11-24T05:12:27Z', 'rollup', NULL, 'US-T538');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107720, 'GG-T613', '2026-11-24T05:12:35Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107721, 'GG-T276', '2026-11-24T05:12:36Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107722, 'GG-T471', '2026-11-24T05:12:39Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107723, 'GG-T466', '2026-11-24T05:12:41Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107724, 'GG-T462', '2026-11-24T05:12:44Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107725, 'GG-T277', '2026-11-24T05:12:47Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107726, 'US-T540', '2026-11-24T05:12:57Z', 'working', 'pdftransferjr@mindattic.com (b773a79b-ba7e-46cb-9786-f886660e3188)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107727, 'GG-T613', '2026-11-24T05:13:02Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107728, 'GG-T471', '2026-11-24T05:13:06Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107729, 'GG-T466', '2026-11-24T05:13:11Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107730, 'GG-T462', '2026-11-24T05:13:16Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107731, 'GG-T277', '2026-11-24T05:13:21Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107732, 'GG-T471', '2026-11-24T05:13:23Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107733, 'GG-T466', '2026-11-24T05:13:24Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107734, 'GG-T462', '2026-11-24T05:13:26Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107735, 'GG-T277', '2026-11-24T05:13:27Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107736, 'GG-T613', '2026-11-24T05:13:34Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107737, 'GG-T759', '2026-11-24T05:13:37Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107738, 'GG-T727', '2026-11-24T05:13:40Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107739, 'GG-T578', '2026-11-24T05:13:42Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107740, 'GG-T573', '2026-11-24T05:13:45Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107741, 'GG-T406', '2026-11-24T05:13:48Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107742, 'GG-T613', '2026-11-24T05:14:02Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107743, 'GG-T759', '2026-11-24T05:14:06Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107744, 'GG-T727', '2026-11-24T05:14:11Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107745, 'GG-T578', '2026-11-24T05:14:16Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107746, 'GG-T573', '2026-11-24T05:14:21Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107747, 'GG-T406', '2026-11-24T05:14:27Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107748, 'GG-T578', '2026-11-24T05:14:28Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107749, 'GG-T573', '2026-11-24T05:14:30Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107750, 'GG-T406', '2026-11-24T05:14:31Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107751, 'GG-T276', '2026-11-24T05:14:36Z', 'status', 'closed', 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107752, 'GG-T276', '2026-11-24T05:14:36Z', 'reopen', 'closed', 'Owner 2026-11-23: keep tuning');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107753, 'GG-T608', '2026-11-24T05:15:03Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107754, 'GG-T608', '2026-11-24T05:15:05Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107755, 'GG-T276', '2026-11-24T05:15:36Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107756, 'GG-T613', '2026-11-24T05:15:40Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107757, 'GG-T613', '2026-11-24T05:16:02Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107758, 'GG-T479', '2026-11-24T05:16:22Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107759, 'GG-T479', '2026-11-24T05:16:26Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107760, 'GG-T613', '2026-11-24T05:16:57Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107761, 'US-T574', '2026-11-24T05:18:56Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107762, 'US-T574', '2026-11-24T05:18:56Z', 'name', NULL, 'Spoken comms (local TTS)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107763, 'US-T574', '2026-11-24T05:18:59Z', 'label', NULL, 'level:feature');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107764, 'US-T574', '2026-11-24T05:19:03Z', 'link', NULL, 'part-of US-T573');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107765, 'US-T573', '2026-11-24T05:19:04Z', 'link', NULL, 'US-T574 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107766, 'US-T574', '2026-11-24T05:19:05Z', 'priority', '0', '290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107767, 'US-T575', '2026-11-24T05:19:07Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107768, 'US-T575', '2026-11-24T05:19:07Z', 'name', NULL, 'Light-speed radio');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107769, 'US-T575', '2026-11-24T05:19:07Z', 'label', NULL, 'level:feature');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107770, 'US-T575', '2026-11-24T05:19:10Z', 'link', NULL, 'part-of US-T573');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107771, 'US-T573', '2026-11-24T05:19:10Z', 'link', NULL, 'US-T575 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107772, 'GAD-T725', '2026-11-24T05:19:10Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107773, 'GAD-T725', '2026-11-24T05:19:10Z', 'ref', '—', '68cdf5f');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107774, 'US-T575', '2026-11-24T05:19:11Z', 'priority', '0', '280');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107775, 'GG-T276', '2026-11-24T05:20:46Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107776, 'GG-T276', '2026-11-24T05:21:04Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107777, 'US-T576', '2026-11-24T05:21:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107778, 'US-T576', '2026-11-24T05:21:22Z', 'name', NULL, 'Radio frequencies and tuner');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107779, 'US-T576', '2026-11-24T05:21:23Z', 'label', NULL, 'level:feature');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107780, 'US-T576', '2026-11-24T05:21:25Z', 'link', NULL, 'part-of US-T573');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107781, 'US-T573', '2026-11-24T05:21:26Z', 'link', NULL, 'US-T576 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107782, 'US-T576', '2026-11-24T05:21:27Z', 'priority', '0', '270');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107783, 'US-T577', '2026-11-24T05:21:29Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107784, 'US-T577', '2026-11-24T05:21:29Z', 'name', NULL, 'Universe chatter');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107785, 'US-T577', '2026-11-24T05:21:29Z', 'label', NULL, 'level:feature');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107786, 'US-T577', '2026-11-24T05:21:32Z', 'link', NULL, 'part-of US-T573');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107787, 'US-T573', '2026-11-24T05:21:32Z', 'link', NULL, 'US-T577 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107788, 'US-T577', '2026-11-24T05:21:33Z', 'priority', '0', '260');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107789, 'US-T578', '2026-11-24T05:21:35Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107790, 'US-T578', '2026-11-24T05:21:35Z', 'name', NULL, 'No radio overstimulation');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107791, 'US-T578', '2026-11-24T05:21:36Z', 'label', NULL, 'level:feature');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107792, 'US-T578', '2026-11-24T05:21:38Z', 'link', NULL, 'part-of US-T573');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107793, 'US-T573', '2026-11-24T05:21:38Z', 'link', NULL, 'US-T578 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107794, 'US-T578', '2026-11-24T05:21:40Z', 'priority', '0', '250');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107795, 'US-T579', '2026-11-24T05:21:44Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107796, 'US-T579', '2026-11-24T05:21:45Z', 'name', NULL, 'Comms and radio settings');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107797, 'US-T579', '2026-11-24T05:21:45Z', 'label', NULL, 'level:feature');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107798, 'US-T579', '2026-11-24T05:21:47Z', 'link', NULL, 'part-of US-T573');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107799, 'US-T573', '2026-11-24T05:21:47Z', 'link', NULL, 'US-T579 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107800, 'US-T579', '2026-11-24T05:21:49Z', 'priority', '0', '240');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107801, 'US-T580', '2026-11-24T05:21:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107802, 'US-T580', '2026-11-24T05:21:51Z', 'name', NULL, 'Radio performance budget');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107803, 'US-T580', '2026-11-24T05:21:51Z', 'label', NULL, 'level:feature');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107804, 'US-T580', '2026-11-24T05:21:54Z', 'link', NULL, 'part-of US-T573');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107805, 'US-T573', '2026-11-24T05:21:54Z', 'link', NULL, 'US-T580 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107806, 'US-T580', '2026-11-24T05:21:55Z', 'priority', '0', '230');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107807, 'US-T581', '2026-11-24T05:22:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107808, 'US-T581', '2026-11-24T05:22:09Z', 'name', NULL, 'Comms answers spoken aloud');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107809, 'US-T581', '2026-11-24T05:22:10Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107810, 'US-T581', '2026-11-24T05:22:12Z', 'link', NULL, 'part-of US-T574');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107811, 'US-T574', '2026-11-24T05:22:12Z', 'link', NULL, 'US-T581 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107812, 'US-T581', '2026-11-24T05:22:14Z', 'priority', '0', '290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107813, 'US-T582', '2026-11-24T05:22:16Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107814, 'US-T582', '2026-11-24T05:22:16Z', 'name', NULL, 'Distinct voices on any PC');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107815, 'US-T582', '2026-11-24T05:22:16Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107816, 'US-T582', '2026-11-24T05:22:18Z', 'link', NULL, 'part-of US-T574');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107817, 'US-T574', '2026-11-24T05:22:19Z', 'link', NULL, 'US-T582 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107818, 'US-T582', '2026-11-24T05:22:20Z', 'priority', '0', '290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107819, 'US-T583', '2026-11-24T05:22:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107820, 'US-T583', '2026-11-24T05:22:22Z', 'name', NULL, 'Story and encounter lines spoken');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107821, 'US-T583', '2026-11-24T05:22:22Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107822, 'US-T583', '2026-11-24T05:22:25Z', 'link', NULL, 'part-of US-T574');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107823, 'US-T574', '2026-11-24T05:22:25Z', 'link', NULL, 'US-T583 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107824, 'US-T583', '2026-11-24T05:22:28Z', 'priority', '0', '290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107825, 'US-T584', '2026-11-24T05:22:29Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107826, 'US-T584', '2026-11-24T05:22:29Z', 'name', NULL, 'Radio arrives at light speed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107827, 'US-T584', '2026-11-24T05:22:30Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107828, 'US-T584', '2026-11-24T05:22:32Z', 'link', NULL, 'part-of US-T575');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107829, 'US-T575', '2026-11-24T05:22:32Z', 'link', NULL, 'US-T584 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107830, 'US-T584', '2026-11-24T05:22:34Z', 'priority', '0', '280');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107831, 'US-T585', '2026-11-24T05:22:36Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107832, 'US-T585', '2026-11-24T05:22:36Z', 'name', NULL, 'Sent X ago on heard radio');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107833, 'US-T585', '2026-11-24T05:22:36Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107834, 'US-T585', '2026-11-24T05:22:39Z', 'link', NULL, 'part-of US-T575');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107835, 'US-T575', '2026-11-24T05:22:39Z', 'link', NULL, 'US-T585 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107836, 'US-T585', '2026-11-24T05:22:41Z', 'priority', '0', '280');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107837, 'GG-T760', '2026-11-24T05:22:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107838, 'GG-T760', '2026-11-24T05:23:07Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107839, 'GG-T760', '2026-11-24T05:23:13Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107840, 'US-T586', '2026-11-24T05:23:31Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107841, 'US-T586', '2026-11-24T05:23:31Z', 'name', NULL, 'Vendor Piper and voices');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107842, 'US-T586', '2026-11-24T05:23:31Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107843, 'US-T586', '2026-11-24T05:23:34Z', 'link', NULL, 'part-of US-T581');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107844, 'US-T581', '2026-11-24T05:23:34Z', 'link', NULL, 'US-T586 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107845, 'US-T586', '2026-11-24T05:23:36Z', 'priority', '0', '290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107846, 'US-T587', '2026-11-24T05:23:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107847, 'US-T587', '2026-11-24T05:23:37Z', 'name', NULL, 'Piper TTS worker service');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107848, 'US-T587', '2026-11-24T05:23:38Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107849, 'US-T587', '2026-11-24T05:23:40Z', 'link', NULL, 'part-of US-T581');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107850, 'US-T581', '2026-11-24T05:23:40Z', 'link', NULL, 'US-T587 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107851, 'US-T587', '2026-11-24T05:23:42Z', 'priority', '0', '290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107852, 'US-T588', '2026-11-24T05:23:44Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107853, 'US-T588', '2026-11-24T05:23:44Z', 'name', NULL, 'Voice clip cache');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107854, 'US-T588', '2026-11-24T05:23:44Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107855, 'GG-T760', '2026-11-24T05:23:45Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107856, 'US-T588', '2026-11-24T05:23:47Z', 'link', NULL, 'part-of US-T581');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107857, 'US-T581', '2026-11-24T05:23:47Z', 'link', NULL, 'US-T588 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107858, 'US-T588', '2026-11-24T05:23:49Z', 'priority', '0', '290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107859, 'US-T589', '2026-11-24T05:23:50Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107860, 'US-T589', '2026-11-24T05:23:50Z', 'name', NULL, 'Radio voice playback');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107861, 'US-T589', '2026-11-24T05:23:51Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107862, 'US-T589', '2026-11-24T05:23:53Z', 'link', NULL, 'part-of US-T581');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107863, 'US-T581', '2026-11-24T05:23:53Z', 'link', NULL, 'US-T589 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107864, 'US-T589', '2026-11-24T05:23:55Z', 'priority', '0', '290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107865, 'US-T590', '2026-11-24T05:23:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107866, 'US-T590', '2026-11-24T05:23:57Z', 'name', NULL, 'Voice casting per speaker');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107867, 'US-T590', '2026-11-24T05:23:57Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107868, 'US-T591', '2026-11-24T05:23:58Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107869, 'US-T591', '2026-11-24T05:23:58Z', 'name', NULL, 'In-game console');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107870, 'US-T591', '2026-11-24T05:23:58Z', 'label', NULL, 'level:feature');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107871, 'US-T590', '2026-11-24T05:24:00Z', 'link', NULL, 'part-of US-T582');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107872, 'US-T592', '2026-11-24T05:24:00Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107873, 'US-T592', '2026-11-24T05:24:00Z', 'name', NULL, 'Title and pause menu entries');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107874, 'US-T582', '2026-11-24T05:24:00Z', 'link', NULL, 'US-T590 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107875, 'US-T592', '2026-11-24T05:24:00Z', 'label', NULL, 'level:feature');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107876, 'US-T590', '2026-11-24T05:24:02Z', 'priority', '0', '290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107877, 'US-T593', '2026-11-24T05:24:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107878, 'US-T593', '2026-11-24T05:24:02Z', 'name', NULL, 'Full control rebinding');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107879, 'US-T593', '2026-11-24T05:24:03Z', 'label', NULL, 'level:feature');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107880, 'US-T594', '2026-11-24T05:24:03Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107881, 'US-T594', '2026-11-24T05:24:04Z', 'name', NULL, 'Speak comms panel answers');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107882, 'US-T594', '2026-11-24T05:24:04Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107883, 'US-T595', '2026-11-24T05:24:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107884, 'US-T595', '2026-11-24T05:24:05Z', 'name', NULL, 'Refresh rate and latency');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107885, 'US-T595', '2026-11-24T05:24:05Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107886, 'US-T594', '2026-11-24T05:24:06Z', 'link', NULL, 'part-of US-T581');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107887, 'US-T581', '2026-11-24T05:24:07Z', 'link', NULL, 'US-T594 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107888, 'US-T596', '2026-11-24T05:24:07Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107889, 'US-T596', '2026-11-24T05:24:07Z', 'name', NULL, 'Bloom, vignette and ray tracing rows');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107890, 'US-T596', '2026-11-24T05:24:07Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107891, 'US-T594', '2026-11-24T05:24:09Z', 'priority', '0', '290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107892, 'US-T597', '2026-11-24T05:24:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107893, 'US-T597', '2026-11-24T05:24:09Z', 'name', NULL, 'Sound output');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107894, 'US-T597', '2026-11-24T05:24:10Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107895, 'US-T598', '2026-11-24T05:24:10Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107896, 'US-T598', '2026-11-24T05:24:10Z', 'name', NULL, 'Windows SAPI fallback voice');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107897, 'US-T598', '2026-11-24T05:24:10Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107898, 'US-T599', '2026-11-24T05:24:11Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107899, 'US-T599', '2026-11-24T05:24:11Z', 'name', NULL, 'More gameplay options');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107900, 'US-T599', '2026-11-24T05:24:12Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107901, 'US-T598', '2026-11-24T05:24:13Z', 'link', NULL, 'part-of US-T582');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107902, 'US-T582', '2026-11-24T05:24:13Z', 'link', NULL, 'US-T598 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107903, 'US-T600', '2026-11-24T05:24:13Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107904, 'US-T600', '2026-11-24T05:24:14Z', 'name', NULL, 'HUD safe zone');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107905, 'US-T600', '2026-11-24T05:24:14Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107906, 'US-T598', '2026-11-24T05:24:14Z', 'priority', '0', '290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107907, 'US-T601', '2026-11-24T05:24:16Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107908, 'US-T601', '2026-11-24T05:24:16Z', 'name', NULL, 'Accessibility options');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107909, 'US-T601', '2026-11-24T05:24:16Z', 'label', NULL, 'level:feature');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107910, 'GG-T761', '2026-11-24T05:24:16Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107911, 'US-T602', '2026-11-24T05:24:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107912, 'US-T602', '2026-11-24T05:24:17Z', 'name', NULL, 'Speak encounters and story calls');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107913, 'US-T602', '2026-11-24T05:24:17Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107914, 'US-T603', '2026-11-24T05:24:18Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107915, 'US-T603', '2026-11-24T05:24:18Z', 'name', NULL, 'Console opens on backtick');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107916, 'GG-T761', '2026-11-24T05:24:18Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107917, 'US-T603', '2026-11-24T05:24:18Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107918, 'US-T602', '2026-11-24T05:24:20Z', 'link', NULL, 'part-of US-T583');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107919, 'US-T583', '2026-11-24T05:24:20Z', 'link', NULL, 'US-T602 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107920, 'US-T604', '2026-11-24T05:24:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107921, 'US-T604', '2026-11-24T05:24:20Z', 'name', NULL, 'Console drives the game');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107922, 'US-T604', '2026-11-24T05:24:21Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107923, 'US-T602', '2026-11-24T05:24:22Z', 'priority', '0', '290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107924, 'US-T605', '2026-11-24T05:24:23Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107925, 'US-T605', '2026-11-24T05:24:23Z', 'name', NULL, 'Developer diagnostics');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107926, 'US-T605', '2026-11-24T05:24:23Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107927, 'US-T606', '2026-11-24T05:24:25Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107928, 'US-T606', '2026-11-24T05:24:26Z', 'name', NULL, 'Saves drawer save and load modes');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107929, 'US-T606', '2026-11-24T05:24:26Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107930, 'US-T607', '2026-11-24T05:24:28Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107931, 'US-T607', '2026-11-24T05:24:28Z', 'name', NULL, 'Pause and title menu entries');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107932, 'US-T607', '2026-11-24T05:24:29Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107933, 'US-T608', '2026-11-24T05:24:30Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107934, 'US-T608', '2026-11-24T05:24:30Z', 'name', NULL, 'Every input rebindable');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107935, 'US-T608', '2026-11-24T05:24:31Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107936, 'US-T586', '2026-11-24T05:24:32Z', 'description', 'Repo: SpaceGod.Unreal. Area: tooling and vendoring, no C++ yet.
+Files:
+- tools/fetch-piper.ps1 (new). Downloads the pinned Piper release (rhasspy/piper tag 2023.11.14-2, piper_windows_amd64.zip, MIT; NOT piper1-gpl) and the voice en_US-libritts_r-medium (.onnx and .onnx.json from huggingface rhasspy/piper-voices, at a pinned revision, CC BY 4.0) into Vendor/Piper/. It checks each file''s SHA256, is idempotent, and takes -Force to fetch again. Running it once to record the hashes is allowed.
+- .gitignore: the binaries and models under Vendor/Piper/ are not committed; the script is.
+- Vendor/README.md: a Piper row giving the version, licences (Piper MIT; espeak-ng-data GPL-3, shipped inside Piper''s own folder and used only by piper.exe, never linked by the game; the voice CC BY 4.0 with its attribution) and how to refresh.
+- tools/package.ps1: stages Vendor/Piper next to the packaged executable (for example <exe dir>/Piper) when it is present, and says so when it is not, since the game then falls back to Windows SAPI.
+Outcome: the script parses (powershell -NoProfile -Command "$null = [scriptblock]::Create((Get-Content -Raw tools/fetch-piper.ps1))") and package.ps1 still parses the same way. No C++ changes, so no editor build is needed.
+
+
+Verification is build-only: the editor build succeeds (tools/build.ps1). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream; scripted runs (PlayerOptions::ScriptedRun, GameAudio disabled) stay silent and unchanged. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent) for the design before starting.', 'Repo: SpaceGod.Unreal. Area: tooling and vendoring, no C++ yet.
+Files:
+- tools/fetch-piper.ps1 (new). Downloads the pinned Piper release (rhasspy/piper tag 2023.11.14-2, piper_windows_amd64.zip, MIT; NOT piper1-gpl) and the voice en_US-libritts_r-medium (.onnx and .onnx.json from huggingface rhasspy/piper-voices, at a pinned revision, CC BY 4.0) into Vendor/Piper/. It checks each file''s SHA256, is idempotent, and takes -Force to fetch again. Running it once to record the hashes is allowed.
+- .gitignore: the binaries and models under Vendor/Piper/ are not committed; the script is.
+- Vendor/README.md: a Piper row giving the version, licences (Piper MIT; espeak-ng-data GPL-3, shipped inside Piper''s own folder and used only by piper.exe, never linked by the game; the voice CC BY 4.0 with its attribution) and how to refresh.
+- tools/package.ps1: stages Vendor/Piper next to the packaged executable (for example <exe dir>/Piper) when it is present, and says so when it is not, since the game then falls back to Windows SAPI.
+Outcome: the script parses (powershell -NoProfile -Command "$null = [scriptblock]::Create((Get-Content -Raw tools/fetch-piper.ps1))") and package.ps1 still parses the same way. No C++ changes, so no editor build is needed.
+
+Verification is build-only: the two parse checks above. Do not run tests, smokes, the bench or the game. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature US-T574 for the TTS decision before starting.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107937, 'US-T609', '2026-11-24T05:24:32Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107938, 'US-T609', '2026-11-24T05:24:32Z', 'name', NULL, 'Pad feel and prompts');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107939, 'US-T609', '2026-11-24T05:24:33Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107940, 'US-T610', '2026-11-24T05:24:34Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107941, 'US-T610', '2026-11-24T05:24:35Z', 'name', NULL, 'Refresh rate picker');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107942, 'US-T610', '2026-11-24T05:24:35Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107943, 'US-T611', '2026-11-24T05:24:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107944, 'US-T611', '2026-11-24T05:24:37Z', 'name', NULL, 'Low latency and menu frame cap');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107945, 'US-T611', '2026-11-24T05:24:37Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107946, 'US-T612', '2026-11-24T05:24:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107947, 'US-T612', '2026-11-24T05:24:39Z', 'name', NULL, 'Audio output device');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107948, 'US-T612', '2026-11-24T05:24:39Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107949, 'US-T613', '2026-11-24T05:24:41Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107950, 'US-T613', '2026-11-24T05:24:41Z', 'name', NULL, 'Speaker mode');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107951, 'US-T613', '2026-11-24T05:24:42Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107952, 'US-T614', '2026-11-24T05:24:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107953, 'US-T614', '2026-11-24T05:24:44Z', 'name', NULL, 'Spatial sound for headphones');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107954, 'US-T614', '2026-11-24T05:24:44Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107955, 'US-T615', '2026-11-24T05:24:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107956, 'US-T615', '2026-11-24T05:24:46Z', 'name', NULL, 'Sound quality');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107957, 'US-T615', '2026-11-24T05:24:46Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107958, 'US-T616', '2026-11-24T05:24:48Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107959, 'US-T616', '2026-11-24T05:24:48Z', 'name', NULL, 'Autosave slots and moments');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107960, 'US-T616', '2026-11-24T05:24:49Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107961, 'US-T617', '2026-11-24T05:24:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107962, 'US-T617', '2026-11-24T05:24:51Z', 'name', NULL, 'Clock and date format');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107963, 'US-T617', '2026-11-24T05:24:51Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107964, 'US-T618', '2026-11-24T05:24:53Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107965, 'US-T618', '2026-11-24T05:24:53Z', 'name', NULL, 'Captions');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107966, 'US-T618', '2026-11-24T05:24:53Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107967, 'US-T619', '2026-11-24T05:24:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107968, 'US-T619', '2026-11-24T05:24:55Z', 'name', NULL, 'Colour and contrast');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107969, 'US-T619', '2026-11-24T05:24:56Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107970, 'US-T620', '2026-11-24T05:24:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107971, 'US-T620', '2026-11-24T05:24:57Z', 'name', NULL, 'Console setting and key');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107972, 'US-T620', '2026-11-24T05:24:58Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107973, 'US-T621', '2026-11-24T05:24:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107974, 'US-T621', '2026-11-24T05:24:59Z', 'name', NULL, 'SpaceGod console class');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107975, 'US-T621', '2026-11-24T05:25:00Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107976, 'US-T622', '2026-11-24T05:25:01Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107977, 'US-T622', '2026-11-24T05:25:02Z', 'name', NULL, 'Game ignores keys while console open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107978, 'US-T622', '2026-11-24T05:25:02Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107979, 'US-T623', '2026-11-24T05:25:03Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107980, 'US-T623', '2026-11-24T05:25:03Z', 'name', NULL, 'Radio log and wavefront math');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107981, 'US-T623', '2026-11-24T05:25:03Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107982, 'US-T624', '2026-11-24T05:25:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107983, 'US-T624', '2026-11-24T05:25:04Z', 'name', NULL, 'Settings console commands');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107984, 'US-T624', '2026-11-24T05:25:04Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107985, 'US-T623', '2026-11-24T05:25:06Z', 'link', NULL, 'part-of US-T584');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107986, 'US-T625', '2026-11-24T05:25:06Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107987, 'US-T625', '2026-11-24T05:25:06Z', 'name', NULL, 'Console autocomplete and help');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107988, 'US-T584', '2026-11-24T05:25:06Z', 'link', NULL, 'US-T623 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107989, 'US-T625', '2026-11-24T05:25:07Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107990, 'US-T623', '2026-11-24T05:25:08Z', 'priority', '0', '280');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107991, 'US-T626', '2026-11-24T05:25:08Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107992, 'US-T626', '2026-11-24T05:25:09Z', 'name', NULL, 'Developer stats overlay and log level');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107993, 'US-T626', '2026-11-24T05:25:09Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107994, 'GG-T760', '2026-11-24T05:25:09Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107995, 'GG-T760', '2026-11-24T05:25:09Z', 'ref', '—', '552474e5');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107996, 'US-T627', '2026-11-24T05:25:10Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107997, 'US-T627', '2026-11-24T05:25:10Z', 'name', NULL, 'Radio receiver schedule');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107998, 'US-T627', '2026-11-24T05:25:10Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (107999, 'US-T628', '2026-11-24T05:25:10Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108000, 'US-T628', '2026-11-24T05:25:10Z', 'name', NULL, 'Number keys as actions');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108001, 'US-T628', '2026-11-24T05:25:11Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108002, 'US-T629', '2026-11-24T05:25:12Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108003, 'US-T629', '2026-11-24T05:25:13Z', 'name', NULL, 'D-pad steps and stick layout');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108004, 'US-T627', '2026-11-24T05:25:13Z', 'link', NULL, 'part-of US-T584');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108005, 'US-T629', '2026-11-24T05:25:13Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108006, 'US-T584', '2026-11-24T05:25:13Z', 'link', NULL, 'US-T627 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108007, 'US-T627', '2026-11-24T05:25:15Z', 'priority', '0', '280');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108008, 'US-T630', '2026-11-24T05:25:15Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108009, 'US-T630', '2026-11-24T05:25:15Z', 'name', NULL, 'Toggle trigger mode');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108010, 'US-T630', '2026-11-24T05:25:15Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108011, 'US-T631', '2026-11-24T05:25:16Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108012, 'US-T631', '2026-11-24T05:25:16Z', 'name', NULL, 'Radio host in the game');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108013, 'US-T631', '2026-11-24T05:25:17Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108014, 'US-T632', '2026-11-24T05:25:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108015, 'US-T632', '2026-11-24T05:25:17Z', 'name', NULL, 'Controller button prompts');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108016, 'US-T632', '2026-11-24T05:25:17Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108017, 'US-T633', '2026-11-24T05:25:19Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108018, 'US-T633', '2026-11-24T05:25:19Z', 'name', NULL, 'Stick curve and trigger dead zone');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108019, 'US-T631', '2026-11-24T05:25:19Z', 'link', NULL, 'part-of US-T584');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108020, 'US-T633', '2026-11-24T05:25:19Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108021, 'US-T584', '2026-11-24T05:25:20Z', 'link', NULL, 'US-T631 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108022, 'US-T634', '2026-11-24T05:25:21Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108023, 'US-T634', '2026-11-24T05:25:21Z', 'name', NULL, 'Colour-blind filter');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108024, 'US-T631', '2026-11-24T05:25:21Z', 'priority', '0', '280');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108025, 'US-T634', '2026-11-24T05:25:22Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108026, 'US-T635', '2026-11-24T05:25:23Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108027, 'US-T635', '2026-11-24T05:25:23Z', 'name', NULL, 'HUD radio log');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108028, 'US-T636', '2026-11-24T05:25:23Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108029, 'US-T636', '2026-11-24T05:25:23Z', 'name', NULL, 'Caption feed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108030, 'US-T635', '2026-11-24T05:25:24Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108031, 'US-T636', '2026-11-24T05:25:24Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108032, 'US-T637', '2026-11-24T05:25:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108033, 'US-T637', '2026-11-24T05:25:26Z', 'name', NULL, 'HUD draws captions');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108034, 'US-T635', '2026-11-24T05:25:26Z', 'link', NULL, 'part-of US-T585');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108035, 'US-T637', '2026-11-24T05:25:26Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108036, 'US-T585', '2026-11-24T05:25:27Z', 'link', NULL, 'US-T635 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108037, 'US-T635', '2026-11-24T05:25:28Z', 'priority', '0', '280');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108038, 'US-T638', '2026-11-24T05:25:28Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108039, 'US-T638', '2026-11-24T05:25:28Z', 'name', NULL, 'High-contrast menus');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108040, 'US-T638', '2026-11-24T05:25:29Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108041, 'US-T591', '2026-11-24T05:25:32Z', 'link', NULL, 'part-of US-T501');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108042, 'US-T501', '2026-11-24T05:25:32Z', 'link', NULL, 'US-T591 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108043, 'US-T591', '2026-11-24T05:25:35Z', 'priority', '0', '385');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108044, 'US-T592', '2026-11-24T05:25:37Z', 'link', NULL, 'part-of US-T501');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108045, 'US-T501', '2026-11-24T05:25:38Z', 'link', NULL, 'US-T592 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108046, 'US-T592', '2026-11-24T05:25:39Z', 'priority', '0', '375');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108047, 'US-T593', '2026-11-24T05:25:41Z', 'link', NULL, 'part-of US-T501');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108048, 'US-T501', '2026-11-24T05:25:42Z', 'link', NULL, 'US-T593 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108049, 'US-T593', '2026-11-24T05:25:43Z', 'priority', '0', '355');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108050, 'US-T595', '2026-11-24T05:25:47Z', 'link', NULL, 'part-of US-T543');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108051, 'US-T543', '2026-11-24T05:25:48Z', 'link', NULL, 'US-T595 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108052, 'US-T639', '2026-11-24T05:25:48Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108053, 'US-T639', '2026-11-24T05:25:48Z', 'name', NULL, 'Radio channel catalog');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108054, 'US-T639', '2026-11-24T05:25:49Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108055, 'US-T595', '2026-11-24T05:25:49Z', 'priority', '0', '350');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108056, 'US-T639', '2026-11-24T05:25:51Z', 'link', NULL, 'part-of US-T576');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108057, 'US-T576', '2026-11-24T05:25:52Z', 'link', NULL, 'US-T639 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108058, 'US-T596', '2026-11-24T05:25:52Z', 'link', NULL, 'part-of US-T547');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108059, 'US-T547', '2026-11-24T05:25:52Z', 'link', NULL, 'US-T596 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108060, 'US-T639', '2026-11-24T05:25:54Z', 'priority', '0', '270');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108061, 'US-T596', '2026-11-24T05:25:55Z', 'link', NULL, 'requires US-T549');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108062, 'US-T549', '2026-11-24T05:25:55Z', 'link', NULL, 'US-T596 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108063, 'US-T640', '2026-11-24T05:25:56Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108064, 'US-T640', '2026-11-24T05:25:56Z', 'name', NULL, 'Radio tuner state');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108065, 'US-T640', '2026-11-24T05:25:56Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108066, 'US-T596', '2026-11-24T05:25:57Z', 'priority', '0', '340');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108067, 'US-T640', '2026-11-24T05:26:00Z', 'link', NULL, 'part-of US-T576');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108068, 'US-T576', '2026-11-24T05:26:00Z', 'link', NULL, 'US-T640 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108069, 'GG-T762', '2026-11-24T05:26:01Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108070, 'GG-T762', '2026-11-24T05:26:01Z', 'name', NULL, 'Turn modes');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108071, 'GG-T762', '2026-11-24T05:26:01Z', 'label', NULL, 'level:epic');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108072, 'GG-T762', '2026-11-24T05:26:01Z', 'label', NULL, 'epic');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108073, 'US-T597', '2026-11-24T05:26:01Z', 'link', NULL, 'part-of US-T550');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108074, 'US-T550', '2026-11-24T05:26:02Z', 'link', NULL, 'US-T597 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108075, 'US-T640', '2026-11-24T05:26:02Z', 'priority', '0', '270');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108076, 'GG-T763', '2026-11-24T05:26:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108077, 'GG-T763', '2026-11-24T05:26:04Z', 'name', NULL, 'Turn mode groundwork');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108078, 'GG-T763', '2026-11-24T05:26:04Z', 'label', NULL, 'level:feature');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108079, 'US-T597', '2026-11-24T05:26:04Z', 'priority', '0', '330');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108080, 'US-T641', '2026-11-24T05:26:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108081, 'US-T641', '2026-11-24T05:26:05Z', 'name', NULL, 'Radio tuner panel');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108082, 'US-T641', '2026-11-24T05:26:05Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108083, 'GG-T763', '2026-11-24T05:26:05Z', 'link', NULL, 'part-of GG-T762');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108084, 'GG-T762', '2026-11-24T05:26:06Z', 'link', NULL, 'GG-T763 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108085, 'US-T599', '2026-11-24T05:26:07Z', 'link', NULL, 'part-of US-T553');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108086, 'US-T553', '2026-11-24T05:26:07Z', 'link', NULL, 'US-T599 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108087, 'GG-T764', '2026-11-24T05:26:08Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108088, 'GG-T764', '2026-11-24T05:26:08Z', 'name', NULL, 'BIBLE turn modes skeleton');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108089, 'GG-T764', '2026-11-24T05:26:08Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108090, 'US-T641', '2026-11-24T05:26:09Z', 'link', NULL, 'part-of US-T576');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108091, 'US-T576', '2026-11-24T05:26:09Z', 'link', NULL, 'US-T641 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108092, 'US-T599', '2026-11-24T05:26:10Z', 'priority', '0', '320');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108093, 'GG-T764', '2026-11-24T05:26:10Z', 'link', NULL, 'part-of GG-T763');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108094, 'GG-T763', '2026-11-24T05:26:10Z', 'link', NULL, 'GG-T764 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108095, 'US-T641', '2026-11-24T05:26:12Z', 'priority', '0', '270');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108096, 'GG-T765', '2026-11-24T05:26:13Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108097, 'GG-T765', '2026-11-24T05:26:13Z', 'name', NULL, 'BIBLE turn modes skeleton');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108098, 'GG-T765', '2026-11-24T05:26:14Z', 'link', NULL, 'part-of GG-T764');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108099, 'GG-T764', '2026-11-24T05:26:14Z', 'link', NULL, 'GG-T765 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108100, 'GG-T765', '2026-11-24T05:26:15Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108101, 'US-T600', '2026-11-24T05:26:15Z', 'link', NULL, 'part-of US-T558');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108102, 'US-T558', '2026-11-24T05:26:15Z', 'link', NULL, 'US-T600 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108103, 'GG-T765', '2026-11-24T05:26:18Z', 'description', NULL, 'Part of story GG-T764 (BIBLE turn modes skeleton), feature GG-T763 (Turn mode groundwork), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108104, 'US-T600', '2026-11-24T05:26:20Z', 'link', NULL, 'requires US-T560');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108105, 'US-T560', '2026-11-24T05:26:20Z', 'link', NULL, 'US-T600 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108106, 'GG-T766', '2026-11-24T05:26:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108107, 'GG-T766', '2026-11-24T05:26:20Z', 'name', NULL, 'One battle core, swappable turn modes');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108108, 'GG-T766', '2026-11-24T05:26:21Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108109, 'GG-T766', '2026-11-24T05:26:22Z', 'link', NULL, 'part-of GG-T763');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108110, 'GG-T763', '2026-11-24T05:26:23Z', 'link', NULL, 'GG-T766 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108111, 'US-T600', '2026-11-24T05:26:23Z', 'priority', '0', '320');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108112, 'GG-T767', '2026-11-24T05:26:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108113, 'GG-T767', '2026-11-24T05:26:26Z', 'name', NULL, 'TurnMode setting in Core');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108114, 'GG-T767', '2026-11-24T05:26:28Z', 'link', NULL, 'part-of GG-T766');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108115, 'GG-T766', '2026-11-24T05:26:28Z', 'link', NULL, 'GG-T767 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108116, 'GG-T767', '2026-11-24T05:26:28Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108117, 'US-T601', '2026-11-24T05:26:28Z', 'link', NULL, 'part-of US-T501');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108118, 'GG-T768', '2026-11-24T05:26:28Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108119, 'GG-T768', '2026-11-24T05:26:28Z', 'name', NULL, 'TurnRules seam in engine and runner');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108120, 'US-T501', '2026-11-24T05:26:28Z', 'link', NULL, 'US-T601 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108121, 'GG-T768', '2026-11-24T05:26:29Z', 'link', NULL, 'part-of GG-T766');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108122, 'GG-T766', '2026-11-24T05:26:29Z', 'link', NULL, 'GG-T768 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108123, 'GG-T768', '2026-11-24T05:26:29Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108124, 'GG-T768', '2026-11-24T05:26:30Z', 'link', NULL, 'requires GG-T767');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108125, 'GG-T767', '2026-11-24T05:26:30Z', 'link', NULL, 'GG-T768 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108126, 'GG-T769', '2026-11-24T05:26:31Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108127, 'GG-T769', '2026-11-24T05:26:31Z', 'name', NULL, 'Bot and battle view read the seam');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108128, 'GG-T769', '2026-11-24T05:26:32Z', 'link', NULL, 'part-of GG-T766');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108129, 'GG-T766', '2026-11-24T05:26:32Z', 'link', NULL, 'GG-T769 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108130, 'GG-T769', '2026-11-24T05:26:32Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108131, 'GG-T769', '2026-11-24T05:26:33Z', 'link', NULL, 'requires GG-T768');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108132, 'GG-T768', '2026-11-24T05:26:33Z', 'link', NULL, 'GG-T769 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108133, 'US-T601', '2026-11-24T05:26:33Z', 'priority', '0', '315');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108134, 'GG-T767', '2026-11-24T05:26:36Z', 'description', NULL, 'Part of story GG-T766 (One battle core, swappable turn modes), feature GG-T763 (Turn mode groundwork), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108135, 'US-T603', '2026-11-24T05:26:37Z', 'link', NULL, 'part-of US-T591');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108136, 'US-T591', '2026-11-24T05:26:37Z', 'link', NULL, 'US-T603 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108137, 'GG-T768', '2026-11-24T05:26:37Z', 'description', NULL, 'Part of story GG-T766 (One battle core, swappable turn modes), feature GG-T763 (Turn mode groundwork), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108138, 'US-T603', '2026-11-24T05:26:39Z', 'priority', '0', '385');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108139, 'GG-T769', '2026-11-24T05:26:39Z', 'description', NULL, 'Part of story GG-T766 (One battle core, swappable turn modes), feature GG-T763 (Turn mode groundwork), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108140, 'US-T604', '2026-11-24T05:26:42Z', 'link', NULL, 'part-of US-T591');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108141, 'US-T591', '2026-11-24T05:26:42Z', 'link', NULL, 'US-T604 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108142, 'GG-T770', '2026-11-24T05:26:42Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108143, 'GG-T767', '2026-11-24T05:26:43Z', 'link', NULL, 'requires GG-T765');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108144, 'GG-T765', '2026-11-24T05:26:43Z', 'link', NULL, 'GG-T767 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108145, 'US-T604', '2026-11-24T05:26:45Z', 'priority', '0', '385');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108146, 'GG-T770', '2026-11-24T05:26:45Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108147, 'GG-T771', '2026-11-24T05:26:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108148, 'GG-T771', '2026-11-24T05:26:46Z', 'name', NULL, 'The player chooses a turn mode');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108149, 'GG-T771', '2026-11-24T05:26:46Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108150, 'GG-T772', '2026-11-24T05:26:47Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108151, 'US-T605', '2026-11-24T05:26:48Z', 'link', NULL, 'part-of US-T591');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108152, 'GG-T771', '2026-11-24T05:26:48Z', 'link', NULL, 'part-of GG-T763');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108153, 'US-T591', '2026-11-24T05:26:49Z', 'link', NULL, 'US-T605 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108154, 'GG-T763', '2026-11-24T05:26:49Z', 'link', NULL, 'GG-T771 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108155, 'GG-T772', '2026-11-24T05:26:50Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108156, 'US-T605', '2026-11-24T05:26:51Z', 'priority', '0', '385');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108157, 'GG-T773', '2026-11-24T05:26:52Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108158, 'GG-T773', '2026-11-24T05:26:52Z', 'name', NULL, 'Turn mode saved and passed to battles');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108159, 'GG-T773', '2026-11-24T05:26:53Z', 'link', NULL, 'part-of GG-T771');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108160, 'GG-T771', '2026-11-24T05:26:53Z', 'link', NULL, 'GG-T773 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108161, 'GG-T773', '2026-11-24T05:26:53Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108162, 'GG-T761', '2026-11-24T05:26:53Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108163, 'GG-T774', '2026-11-24T05:26:54Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108164, 'GG-T774', '2026-11-24T05:26:54Z', 'name', NULL, 'Turn mode picker in Settings and New Game');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108165, 'GG-T774', '2026-11-24T05:26:58Z', 'link', NULL, 'part-of GG-T771');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108166, 'GG-T771', '2026-11-24T05:26:58Z', 'link', NULL, 'GG-T774 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108167, 'GG-T774', '2026-11-24T05:26:58Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108168, 'GG-T774', '2026-11-24T05:26:59Z', 'link', NULL, 'requires GG-T773');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108169, 'GG-T773', '2026-11-24T05:26:59Z', 'link', NULL, 'GG-T774 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108170, 'US-T606', '2026-11-24T05:26:59Z', 'link', NULL, 'part-of US-T592');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108171, 'GG-T775', '2026-11-24T05:27:00Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108172, 'GG-T775', '2026-11-24T05:27:00Z', 'name', NULL, 'Turn mode from command line and harness');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108173, 'US-T592', '2026-11-24T05:27:00Z', 'link', NULL, 'US-T606 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108174, 'GG-T775', '2026-11-24T05:27:01Z', 'link', NULL, 'part-of GG-T771');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108175, 'GG-T771', '2026-11-24T05:27:01Z', 'link', NULL, 'GG-T775 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108176, 'GG-T775', '2026-11-24T05:27:01Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108177, 'GG-T775', '2026-11-24T05:27:02Z', 'link', NULL, 'requires GG-T774');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108178, 'GG-T774', '2026-11-24T05:27:03Z', 'link', NULL, 'GG-T775 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108179, 'US-T606', '2026-11-24T05:27:03Z', 'priority', '0', '375');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108180, 'US-T642', '2026-11-24T05:27:03Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108181, 'US-T642', '2026-11-24T05:27:03Z', 'name', NULL, 'Chatter line templates');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108182, 'US-T642', '2026-11-24T05:27:03Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108183, 'GG-T773', '2026-11-24T05:27:05Z', 'description', NULL, 'Part of story GG-T771 (The player chooses a turn mode), feature GG-T763 (Turn mode groundwork), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108184, 'US-T607', '2026-11-24T05:27:06Z', 'link', NULL, 'part-of US-T592');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108185, 'US-T592', '2026-11-24T05:27:06Z', 'link', NULL, 'US-T607 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108186, 'US-T642', '2026-11-24T05:27:07Z', 'link', NULL, 'part-of US-T577');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108187, 'US-T577', '2026-11-24T05:27:08Z', 'link', NULL, 'US-T642 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108188, 'GG-T774', '2026-11-24T05:27:08Z', 'description', NULL, 'Part of story GG-T771 (The player chooses a turn mode), feature GG-T763 (Turn mode groundwork), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108189, 'GG-T761', '2026-11-24T05:27:10Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108190, 'GG-T775', '2026-11-24T05:27:11Z', 'description', NULL, 'Part of story GG-T771 (The player chooses a turn mode), feature GG-T763 (Turn mode groundwork), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108191, 'US-T642', '2026-11-24T05:27:11Z', 'priority', '0', '260');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108192, 'US-T607', '2026-11-24T05:27:11Z', 'link', NULL, 'requires US-T606');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108193, 'US-T606', '2026-11-24T05:27:12Z', 'link', NULL, 'US-T607 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108194, 'US-T643', '2026-11-24T05:27:13Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108195, 'US-T643', '2026-11-24T05:27:13Z', 'name', NULL, 'Event-driven radio chatter');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108196, 'US-T643', '2026-11-24T05:27:13Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108197, 'US-T607', '2026-11-24T05:27:14Z', 'priority', '0', '375');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108198, 'GG-T773', '2026-11-24T05:27:15Z', 'link', NULL, 'requires GG-T769');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108199, 'GG-T769', '2026-11-24T05:27:16Z', 'link', NULL, 'GG-T773 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108200, 'US-T643', '2026-11-24T05:27:16Z', 'link', NULL, 'part-of US-T577');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108201, 'US-T577', '2026-11-24T05:27:16Z', 'link', NULL, 'US-T643 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108202, 'US-T608', '2026-11-24T05:27:17Z', 'link', NULL, 'part-of US-T593');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108203, 'US-T593', '2026-11-24T05:27:20Z', 'link', NULL, 'US-T608 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108204, 'GG-T776', '2026-11-24T05:27:21Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108205, 'GG-T776', '2026-11-24T05:27:21Z', 'name', NULL, 'Headless soak measures a turn mode');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108206, 'GG-T776', '2026-11-24T05:27:21Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108207, 'US-T643', '2026-11-24T05:27:22Z', 'priority', '0', '260');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108208, 'US-T608', '2026-11-24T05:27:22Z', 'priority', '0', '355');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108209, 'GG-T776', '2026-11-24T05:27:23Z', 'link', NULL, 'part-of GG-T763');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108210, 'GG-T763', '2026-11-24T05:27:23Z', 'link', NULL, 'GG-T776 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108211, 'US-T644', '2026-11-24T05:27:24Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108212, 'US-T644', '2026-11-24T05:27:24Z', 'name', NULL, 'Ambient chatter sampler');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108213, 'US-T644', '2026-11-24T05:27:25Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108214, 'GG-T777', '2026-11-24T05:27:25Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108215, 'GG-T777', '2026-11-24T05:27:25Z', 'name', NULL, 'Soaks run in any turn mode with metrics');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108216, 'GG-T777', '2026-11-24T05:27:26Z', 'link', NULL, 'part-of GG-T776');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108217, 'GG-T776', '2026-11-24T05:27:26Z', 'link', NULL, 'GG-T777 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108218, 'GG-T777', '2026-11-24T05:27:26Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108219, 'US-T609', '2026-11-24T05:27:26Z', 'link', NULL, 'part-of US-T593');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108220, 'GG-T778', '2026-11-24T05:27:27Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108221, 'GG-T778', '2026-11-24T05:27:27Z', 'name', NULL, 'turn_modes.py runner and baseline');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108222, 'US-T593', '2026-11-24T05:27:27Z', 'link', NULL, 'US-T609 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108223, 'GG-T778', '2026-11-24T05:27:28Z', 'link', NULL, 'part-of GG-T776');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108224, 'GG-T776', '2026-11-24T05:27:28Z', 'link', NULL, 'GG-T778 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108225, 'GG-T778', '2026-11-24T05:27:28Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108226, 'GG-T778', '2026-11-24T05:27:29Z', 'link', NULL, 'requires GG-T777');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108227, 'GG-T777', '2026-11-24T05:27:29Z', 'link', NULL, 'GG-T778 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108228, 'GAD-T724', '2026-11-24T05:27:29Z', 'label', 'level:task', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108229, 'GAD-T724', '2026-11-24T05:27:29Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108230, 'US-T609', '2026-11-24T05:27:30Z', 'priority', '0', '355');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108231, 'GAD-T726', '2026-11-24T05:27:30Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108232, 'US-T644', '2026-11-24T05:27:30Z', 'link', NULL, 'part-of US-T577');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108233, 'GAD-T726', '2026-11-24T05:27:31Z', 'link', NULL, 'part-of GAD-T724');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108234, 'GAD-T724', '2026-11-24T05:27:31Z', 'link', NULL, 'GAD-T726 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108235, 'GAD-T726', '2026-11-24T05:27:32Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108236, 'US-T577', '2026-11-24T05:27:32Z', 'link', NULL, 'US-T644 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108237, 'GG-T777', '2026-11-24T05:27:32Z', 'description', NULL, 'Part of story GG-T776 (Headless soak measures a turn mode), feature GG-T763 (Turn mode groundwork), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108238, 'US-T610', '2026-11-24T05:27:33Z', 'link', NULL, 'part-of US-T595');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108239, 'US-T595', '2026-11-24T05:27:33Z', 'link', NULL, 'US-T610 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108240, 'GG-T778', '2026-11-24T05:27:33Z', 'description', NULL, 'Part of story GG-T776 (Headless soak measures a turn mode), feature GG-T763 (Turn mode groundwork), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108241, 'US-T644', '2026-11-24T05:27:34Z', 'priority', '0', '260');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108242, 'US-T645', '2026-11-24T05:27:35Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108243, 'US-T645', '2026-11-24T05:27:35Z', 'name', NULL, 'Interstellar relay bulletins');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108244, 'US-T645', '2026-11-24T05:27:36Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108245, 'GG-T777', '2026-11-24T05:27:36Z', 'link', NULL, 'requires GG-T775');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108246, 'GG-T775', '2026-11-24T05:27:36Z', 'link', NULL, 'GG-T777 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108247, 'GG-T779', '2026-11-24T05:27:38Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108248, 'GG-T779', '2026-11-24T05:27:38Z', 'name', NULL, 'Mode A: any hero every turn');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108249, 'US-T645', '2026-11-24T05:27:39Z', 'link', NULL, 'part-of US-T577');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108250, 'GG-T779', '2026-11-24T05:27:39Z', 'label', NULL, 'level:feature');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108251, 'US-T577', '2026-11-24T05:27:39Z', 'link', NULL, 'US-T645 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108252, 'US-T610', '2026-11-24T05:27:40Z', 'link', NULL, 'requires US-T546');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108253, 'US-T546', '2026-11-24T05:27:40Z', 'link', NULL, 'US-T610 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108254, 'GG-T779', '2026-11-24T05:27:40Z', 'link', NULL, 'part-of GG-T762');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108255, 'GG-T762', '2026-11-24T05:27:40Z', 'link', NULL, 'GG-T779 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108256, 'US-T645', '2026-11-24T05:27:46Z', 'priority', '0', '260');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108257, 'US-T610', '2026-11-24T05:27:47Z', 'priority', '0', '350');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108258, 'GG-T779', '2026-11-24T05:27:49Z', 'link', NULL, 'requires GG-T763');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108259, 'GG-T763', '2026-11-24T05:27:49Z', 'link', NULL, 'GG-T779 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108260, 'US-T611', '2026-11-24T05:27:50Z', 'link', NULL, 'part-of US-T595');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108261, 'US-T595', '2026-11-24T05:27:51Z', 'link', NULL, 'US-T611 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108262, 'GG-T780', '2026-11-24T05:27:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108263, 'GG-T780', '2026-11-24T05:27:51Z', 'name', NULL, 'Any hero every turn: core rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108264, 'GG-T780', '2026-11-24T05:27:52Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108265, 'GG-T780', '2026-11-24T05:27:53Z', 'link', NULL, 'part-of GG-T779');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108266, 'GG-T779', '2026-11-24T05:27:53Z', 'link', NULL, 'GG-T780 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108267, 'US-T611', '2026-11-24T05:27:54Z', 'link', NULL, 'requires US-T545');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108268, 'US-T545', '2026-11-24T05:27:54Z', 'link', NULL, 'US-T611 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108269, 'GG-T781', '2026-11-24T05:27:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108270, 'GG-T781', '2026-11-24T05:27:55Z', 'name', NULL, 'Mode A rules in TurnRules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108271, 'US-T611', '2026-11-24T05:27:56Z', 'priority', '0', '350');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108272, 'GG-T781', '2026-11-24T05:27:57Z', 'link', NULL, 'part-of GG-T780');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108273, 'GG-T780', '2026-11-24T05:27:57Z', 'link', NULL, 'GG-T781 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108274, 'GG-T781', '2026-11-24T05:27:57Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108275, 'GG-T782', '2026-11-24T05:27:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108276, 'GG-T782', '2026-11-24T05:27:57Z', 'name', NULL, 'Mode A Guard, mana, buffs, cooldowns');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108277, 'GG-T782', '2026-11-24T05:27:58Z', 'link', NULL, 'part-of GG-T780');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108278, 'GG-T780', '2026-11-24T05:27:59Z', 'link', NULL, 'GG-T782 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108279, 'GG-T782', '2026-11-24T05:27:59Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108280, 'GG-T782', '2026-11-24T05:28:00Z', 'link', NULL, 'requires GG-T781');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108281, 'GG-T781', '2026-11-24T05:28:00Z', 'link', NULL, 'GG-T782 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108282, 'GG-T783', '2026-11-24T05:28:00Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108283, 'GG-T783', '2026-11-24T05:28:00Z', 'name', NULL, 'Mode A region rules, joins, triggers');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108284, 'US-T612', '2026-11-24T05:28:00Z', 'link', NULL, 'part-of US-T597');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108285, 'GG-T783', '2026-11-24T05:28:02Z', 'link', NULL, 'part-of GG-T780');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108286, 'GG-T780', '2026-11-24T05:28:02Z', 'link', NULL, 'GG-T783 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108287, 'GG-T783', '2026-11-24T05:28:02Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108288, 'GG-T783', '2026-11-24T05:28:03Z', 'link', NULL, 'requires GG-T782');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108289, 'GG-T782', '2026-11-24T05:28:03Z', 'link', NULL, 'GG-T783 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108290, 'US-T597', '2026-11-24T05:28:03Z', 'link', NULL, 'US-T612 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108291, 'GG-T781', '2026-11-24T05:28:06Z', 'description', NULL, 'Part of story GG-T780 (Any hero every turn: core rules), feature GG-T779 (Mode A: any hero every turn), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108292, 'US-T612', '2026-11-24T05:28:07Z', 'link', NULL, 'requires US-T552');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108293, 'US-T552', '2026-11-24T05:28:08Z', 'link', NULL, 'US-T612 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108294, 'GG-T782', '2026-11-24T05:28:08Z', 'description', NULL, 'Part of story GG-T780 (Any hero every turn: core rules), feature GG-T779 (Mode A: any hero every turn), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108295, 'US-T612', '2026-11-24T05:28:09Z', 'priority', '0', '330');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108296, 'GG-T783', '2026-11-24T05:28:10Z', 'description', NULL, 'Part of story GG-T780 (Any hero every turn: core rules), feature GG-T779 (Mode A: any hero every turn), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108297, 'GG-T772', '2026-11-24T05:28:12Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108298, 'US-T613', '2026-11-24T05:28:12Z', 'link', NULL, 'part-of US-T597');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108299, 'GG-T781', '2026-11-24T05:28:13Z', 'link', NULL, 'requires GG-T778');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108300, 'US-T597', '2026-11-24T05:28:13Z', 'link', NULL, 'US-T613 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108301, 'GG-T778', '2026-11-24T05:28:13Z', 'link', NULL, 'GG-T781 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108302, 'GG-T784', '2026-11-24T05:28:15Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108303, 'GG-T784', '2026-11-24T05:28:15Z', 'name', NULL, 'Any hero every turn: bots and enemy AI');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108304, 'GG-T784', '2026-11-24T05:28:16Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108305, 'US-T613', '2026-11-24T05:28:16Z', 'link', NULL, 'requires US-T612');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108306, 'US-T612', '2026-11-24T05:28:16Z', 'link', NULL, 'US-T613 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108307, 'GG-T784', '2026-11-24T05:28:17Z', 'link', NULL, 'part-of GG-T779');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108308, 'GG-T779', '2026-11-24T05:28:17Z', 'link', NULL, 'GG-T784 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108309, 'US-T613', '2026-11-24T05:28:18Z', 'priority', '0', '330');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108310, 'GG-T785', '2026-11-24T05:28:19Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108311, 'GG-T785', '2026-11-24T05:28:19Z', 'name', NULL, 'Mode A bots and enemy AI');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108312, 'GG-T785', '2026-11-24T05:28:20Z', 'link', NULL, 'part-of GG-T784');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108313, 'GG-T784', '2026-11-24T05:28:20Z', 'link', NULL, 'GG-T785 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108314, 'GG-T785', '2026-11-24T05:28:20Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108315, 'US-T614', '2026-11-24T05:28:24Z', 'link', NULL, 'part-of US-T597');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108316, 'US-T597', '2026-11-24T05:28:24Z', 'link', NULL, 'US-T614 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108317, 'GG-T785', '2026-11-24T05:28:27Z', 'description', NULL, 'Part of story GG-T784 (Any hero every turn: bots and enemy AI), feature GG-T779 (Mode A: any hero every turn), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108318, 'US-T614', '2026-11-24T05:28:28Z', 'link', NULL, 'requires US-T613');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108319, 'US-T613', '2026-11-24T05:28:29Z', 'link', NULL, 'US-T614 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108320, 'US-T646', '2026-11-24T05:28:29Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108321, 'US-T646', '2026-11-24T05:28:29Z', 'name', NULL, 'Radio reception and routing');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108322, 'US-T646', '2026-11-24T05:28:29Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108323, 'GG-T785', '2026-11-24T05:28:30Z', 'link', NULL, 'requires GG-T783');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108324, 'GG-T783', '2026-11-24T05:28:30Z', 'link', NULL, 'GG-T785 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108325, 'US-T614', '2026-11-24T05:28:31Z', 'priority', '0', '330');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108326, 'US-T646', '2026-11-24T05:28:32Z', 'link', NULL, 'part-of US-T578');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108327, 'GG-T786', '2026-11-24T05:28:33Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108328, 'GG-T786', '2026-11-24T05:28:33Z', 'name', NULL, 'Any hero every turn: UI and player-facing systems');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108329, 'US-T578', '2026-11-24T05:28:33Z', 'link', NULL, 'US-T646 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108330, 'GG-T786', '2026-11-24T05:28:33Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108331, 'US-T615', '2026-11-24T05:28:34Z', 'link', NULL, 'part-of US-T597');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108332, 'US-T597', '2026-11-24T05:28:34Z', 'link', NULL, 'US-T615 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108333, 'GG-T786', '2026-11-24T05:28:34Z', 'link', NULL, 'part-of GG-T779');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108334, 'GG-T779', '2026-11-24T05:28:35Z', 'link', NULL, 'GG-T786 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108335, 'US-T646', '2026-11-24T05:28:35Z', 'priority', '0', '250');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108336, 'GG-T787', '2026-11-24T05:28:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108337, 'GG-T787', '2026-11-24T05:28:37Z', 'name', NULL, 'Mode A battle UI and picker');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108338, 'US-T647', '2026-11-24T05:28:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108339, 'US-T647', '2026-11-24T05:28:37Z', 'name', NULL, 'Voice arbiter');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108340, 'GG-T787', '2026-11-24T05:28:38Z', 'link', NULL, 'part-of GG-T786');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108341, 'GG-T786', '2026-11-24T05:28:38Z', 'link', NULL, 'GG-T787 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108342, 'GG-T787', '2026-11-24T05:28:38Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108343, 'US-T647', '2026-11-24T05:28:38Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108344, 'GG-T788', '2026-11-24T05:28:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108345, 'GG-T788', '2026-11-24T05:28:39Z', 'name', NULL, 'Mode A tutorial, stats, Crucible, automation');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108346, 'US-T615', '2026-11-24T05:28:39Z', 'link', NULL, 'requires US-T614');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108347, 'GG-T788', '2026-11-24T05:28:39Z', 'link', NULL, 'part-of GG-T786');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108348, 'GG-T786', '2026-11-24T05:28:40Z', 'link', NULL, 'GG-T788 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108349, 'GG-T788', '2026-11-24T05:28:40Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108350, 'GG-T788', '2026-11-24T05:28:40Z', 'link', NULL, 'requires GG-T787');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108351, 'GG-T787', '2026-11-24T05:28:40Z', 'link', NULL, 'GG-T788 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108352, 'US-T614', '2026-11-24T05:28:40Z', 'link', NULL, 'US-T615 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108353, 'US-T647', '2026-11-24T05:28:41Z', 'link', NULL, 'part-of US-T578');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108354, 'US-T578', '2026-11-24T05:28:41Z', 'link', NULL, 'US-T647 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108355, 'GG-T787', '2026-11-24T05:28:42Z', 'description', NULL, 'Part of story GG-T786 (Any hero every turn: UI and player-facing systems), feature GG-T779 (Mode A: any hero every turn), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108356, 'US-T615', '2026-11-24T05:28:42Z', 'priority', '0', '330');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108357, 'US-T647', '2026-11-24T05:28:43Z', 'priority', '0', '250');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108358, 'GG-T788', '2026-11-24T05:28:43Z', 'description', NULL, 'Part of story GG-T786 (Any hero every turn: UI and player-facing systems), feature GG-T779 (Mode A: any hero every turn), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108359, 'US-T616', '2026-11-24T05:28:44Z', 'link', NULL, 'part-of US-T599');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108360, 'US-T599', '2026-11-24T05:28:45Z', 'link', NULL, 'US-T616 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108361, 'US-T648', '2026-11-24T05:28:45Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108362, 'US-T648', '2026-11-24T05:28:45Z', 'name', NULL, 'Radio digests');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108363, 'US-T648', '2026-11-24T05:28:46Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108364, 'GG-T787', '2026-11-24T05:28:46Z', 'link', NULL, 'requires GG-T785');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108365, 'US-T616', '2026-11-24T05:28:46Z', 'priority', '0', '320');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108366, 'GG-T785', '2026-11-24T05:28:46Z', 'link', NULL, 'GG-T787 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108367, 'US-T648', '2026-11-24T05:28:49Z', 'link', NULL, 'part-of US-T578');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108368, 'GG-T789', '2026-11-24T05:28:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108369, 'GG-T789', '2026-11-24T05:28:49Z', 'name', NULL, 'Any hero every turn: soak and BIBLE');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108370, 'US-T578', '2026-11-24T05:28:49Z', 'link', NULL, 'US-T648 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108371, 'US-T617', '2026-11-24T05:28:49Z', 'link', NULL, 'part-of US-T599');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108372, 'GG-T770', '2026-11-24T05:28:49Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108373, 'GG-T789', '2026-11-24T05:28:50Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108374, 'US-T599', '2026-11-24T05:28:50Z', 'link', NULL, 'US-T617 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108375, 'GG-T789', '2026-11-24T05:28:51Z', 'link', NULL, 'part-of GG-T779');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108376, 'US-T648', '2026-11-24T05:28:51Z', 'priority', '0', '250');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108377, 'GG-T779', '2026-11-24T05:28:51Z', 'link', NULL, 'GG-T789 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108378, 'US-T649', '2026-11-24T05:28:53Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108379, 'US-T649', '2026-11-24T05:28:53Z', 'name', NULL, 'Comms and radio settings rows');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108380, 'GG-T761', '2026-11-24T05:28:53Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108381, 'GG-T790', '2026-11-24T05:28:53Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108382, 'GG-T790', '2026-11-24T05:28:53Z', 'name', NULL, 'Mode A headless soak');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108383, 'US-T617', '2026-11-24T05:28:53Z', 'link', NULL, 'requires US-T616');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108384, 'US-T649', '2026-11-24T05:28:53Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108385, 'GG-T790', '2026-11-24T05:28:54Z', 'link', NULL, 'part-of GG-T789');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108386, 'GG-T789', '2026-11-24T05:28:54Z', 'link', NULL, 'GG-T790 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108387, 'GG-T790', '2026-11-24T05:28:54Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108388, 'US-T616', '2026-11-24T05:28:54Z', 'link', NULL, 'US-T617 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108389, 'GG-T791', '2026-11-24T05:28:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108390, 'GG-T791', '2026-11-24T05:28:55Z', 'name', NULL, 'Mode A BIBLE section');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108391, 'GG-T791', '2026-11-24T05:28:56Z', 'link', NULL, 'part-of GG-T789');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108392, 'GG-T789', '2026-11-24T05:28:56Z', 'link', NULL, 'GG-T791 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108393, 'GG-T791', '2026-11-24T05:28:56Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108394, 'GG-T791', '2026-11-24T05:28:57Z', 'link', NULL, 'requires GG-T790');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108395, 'GG-T790', '2026-11-24T05:28:57Z', 'link', NULL, 'GG-T791 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108396, 'US-T617', '2026-11-24T05:28:58Z', 'priority', '0', '320');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108397, 'US-T649', '2026-11-24T05:28:58Z', 'link', NULL, 'part-of US-T579');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108398, 'US-T579', '2026-11-24T05:28:58Z', 'link', NULL, 'US-T649 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108399, 'GG-T790', '2026-11-24T05:28:59Z', 'description', NULL, 'Part of story GG-T789 (Any hero every turn: soak and BIBLE), feature GG-T779 (Mode A: any hero every turn), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108400, 'US-T649', '2026-11-24T05:28:59Z', 'priority', '0', '240');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108401, 'US-T618', '2026-11-24T05:29:00Z', 'link', NULL, 'part-of US-T601');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108402, 'GG-T791', '2026-11-24T05:29:00Z', 'description', NULL, 'Part of story GG-T789 (Any hero every turn: soak and BIBLE), feature GG-T779 (Mode A: any hero every turn), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108403, 'US-T601', '2026-11-24T05:29:00Z', 'link', NULL, 'US-T618 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108404, 'US-T650', '2026-11-24T05:29:01Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108405, 'US-T650', '2026-11-24T05:29:01Z', 'name', NULL, 'Radio profiling hooks');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108406, 'US-T650', '2026-11-24T05:29:01Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108407, 'US-T618', '2026-11-24T05:29:01Z', 'priority', '0', '315');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108408, 'GG-T790', '2026-11-24T05:29:02Z', 'link', NULL, 'requires GG-T788');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108409, 'GG-T788', '2026-11-24T05:29:02Z', 'link', NULL, 'GG-T790 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108410, 'US-T650', '2026-11-24T05:29:04Z', 'link', NULL, 'part-of US-T580');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108411, 'GG-T792', '2026-11-24T05:29:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108412, 'GG-T792', '2026-11-24T05:29:04Z', 'name', NULL, 'Mode B: hasn''t moved this round');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108413, 'US-T580', '2026-11-24T05:29:04Z', 'link', NULL, 'US-T650 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108414, 'GG-T792', '2026-11-24T05:29:04Z', 'label', NULL, 'level:feature');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108415, 'US-T619', '2026-11-24T05:29:05Z', 'link', NULL, 'part-of US-T601');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108416, 'US-T601', '2026-11-24T05:29:05Z', 'link', NULL, 'US-T619 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108417, 'US-T650', '2026-11-24T05:29:06Z', 'priority', '0', '230');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108418, 'GG-T792', '2026-11-24T05:29:06Z', 'link', NULL, 'part-of GG-T762');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108419, 'GG-T762', '2026-11-24T05:29:06Z', 'link', NULL, 'GG-T792 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108420, 'US-T619', '2026-11-24T05:29:06Z', 'priority', '0', '315');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108421, 'US-T651', '2026-11-24T05:29:07Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108422, 'US-T651', '2026-11-24T05:29:07Z', 'name', NULL, 'Enforce the radio frame budget');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108423, 'US-T651', '2026-11-24T05:29:07Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108424, 'GG-T792', '2026-11-24T05:29:08Z', 'link', NULL, 'requires GG-T779');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108425, 'GG-T779', '2026-11-24T05:29:09Z', 'link', NULL, 'GG-T792 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108426, 'US-T620', '2026-11-24T05:29:09Z', 'link', NULL, 'part-of US-T603');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108427, 'US-T603', '2026-11-24T05:29:09Z', 'link', NULL, 'US-T620 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108428, 'US-T651', '2026-11-24T05:29:10Z', 'link', NULL, 'part-of US-T580');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108429, 'US-T580', '2026-11-24T05:29:10Z', 'link', NULL, 'US-T651 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108430, 'GG-T793', '2026-11-24T05:29:10Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108431, 'GG-T793', '2026-11-24T05:29:10Z', 'name', NULL, 'Hasn''t moved this round: core rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108432, 'US-T620', '2026-11-24T05:29:11Z', 'priority', '0', '385');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108433, 'GG-T793', '2026-11-24T05:29:11Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108434, 'US-T651', '2026-11-24T05:29:11Z', 'priority', '0', '230');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108435, 'GG-T793', '2026-11-24T05:29:12Z', 'link', NULL, 'part-of GG-T792');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108436, 'GG-T792', '2026-11-24T05:29:12Z', 'link', NULL, 'GG-T793 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108437, 'US-T621', '2026-11-24T05:29:13Z', 'link', NULL, 'part-of US-T603');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108438, 'US-T603', '2026-11-24T05:29:13Z', 'link', NULL, 'US-T621 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108439, 'GG-T794', '2026-11-24T05:29:14Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108440, 'GG-T794', '2026-11-24T05:29:14Z', 'name', NULL, 'Mode B round tracking in TurnRules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108441, 'GG-T794', '2026-11-24T05:29:15Z', 'link', NULL, 'part-of GG-T793');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108442, 'GG-T793', '2026-11-24T05:29:15Z', 'link', NULL, 'GG-T794 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108443, 'GG-T794', '2026-11-24T05:29:15Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108444, 'GG-T795', '2026-11-24T05:29:16Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108445, 'GG-T795', '2026-11-24T05:29:16Z', 'name', NULL, 'Mode B Guard, mana, buffs, cooldowns');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108446, 'US-T621', '2026-11-24T05:29:16Z', 'link', NULL, 'requires US-T620');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108447, 'GG-T795', '2026-11-24T05:29:17Z', 'link', NULL, 'part-of GG-T793');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108448, 'GG-T793', '2026-11-24T05:29:17Z', 'link', NULL, 'GG-T795 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108449, 'GG-T795', '2026-11-24T05:29:17Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108450, 'GG-T795', '2026-11-24T05:29:18Z', 'link', NULL, 'requires GG-T794');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108451, 'GG-T794', '2026-11-24T05:29:18Z', 'link', NULL, 'GG-T795 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108452, 'US-T620', '2026-11-24T05:29:18Z', 'link', NULL, 'US-T621 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108453, 'GG-T796', '2026-11-24T05:29:18Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108454, 'GG-T796', '2026-11-24T05:29:18Z', 'name', NULL, 'Mode B region rules, joins, triggers');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108455, 'GG-T796', '2026-11-24T05:29:19Z', 'link', NULL, 'part-of GG-T793');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108456, 'GG-T793', '2026-11-24T05:29:19Z', 'link', NULL, 'GG-T796 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108457, 'GG-T796', '2026-11-24T05:29:19Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108458, 'GG-T796', '2026-11-24T05:29:20Z', 'link', NULL, 'requires GG-T795');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108459, 'GG-T795', '2026-11-24T05:29:20Z', 'link', NULL, 'GG-T796 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108460, 'US-T621', '2026-11-24T05:29:20Z', 'priority', '0', '385');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108461, 'GG-T794', '2026-11-24T05:29:22Z', 'description', NULL, 'Part of story GG-T793 (Hasn''t moved this round: core rules), feature GG-T792 (Mode B: hasn''t moved this round), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108462, 'US-T622', '2026-11-24T05:29:22Z', 'link', NULL, 'part-of US-T603');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108463, 'US-T603', '2026-11-24T05:29:23Z', 'link', NULL, 'US-T622 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108464, 'GG-T795', '2026-11-24T05:29:23Z', 'description', NULL, 'Part of story GG-T793 (Hasn''t moved this round: core rules), feature GG-T792 (Mode B: hasn''t moved this round), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108465, 'GG-T796', '2026-11-24T05:29:24Z', 'description', NULL, 'Part of story GG-T793 (Hasn''t moved this round: core rules), feature GG-T792 (Mode B: hasn''t moved this round), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108466, 'US-T622', '2026-11-24T05:29:25Z', 'link', NULL, 'requires US-T621');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108467, 'US-T621', '2026-11-24T05:29:26Z', 'link', NULL, 'US-T622 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108468, 'US-T623', '2026-11-24T05:29:26Z', 'description', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGodCore/Radio/ (new folder, Core, pure C++).
+Files:
+- Radio/RadioMessage.h:
+  - The RadioMessage POD (id, channel id, emitter key, faction id, system id, origin helio km, sentJd, power class, priority 0-3, situation kind, template id plus a small fixed argument block).
+  - The power-class table: EIRP in watts and the derived max range R_max = sqrt(EIRP / (4 pi N_floor)), cached per class. Tune it so a ship is heard to about 0.5 AU and a station across the inner system.
+- Radio/RadioLog.h/.cpp: an append-only ring (cap 8192) ordered by sentJd. Time buckets of 15 game-minutes each hold [first,last) and the AABB of their origins. Retire() drops a bucket once its fronts have passed beyond its classes'' R_max and counts what it dropped.
+- Radio/Wavefront.h/.cpp:
+  - ArrivalJd(origin, sentJd, listenerAt), where listenerAt is a callable from jd to helio km: the fixed point t = sentJd + |L(t) - O| / c in 2 iterations, using LightSpeed::SpeedKmS.
+  - BucketMayArrive(bucket, listener, fromJd, toJd): the shell test on the bucket''s origin box (distance interval [dmin,dmax] against c(t - sent)).
+Bounds: Append O(1); Retire amortised O(1); no per-frame loop over messages.
+Outcome: tools/build-core.ps1 compiles it.
+
+
+Verification is build-only: tools/build-core.ps1 compiles it (an editor build too if a game file changed). Do not run tests, smokes, the bench or the game. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent of the story/parent) for the design before starting.', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGodCore/Radio/ (new folder, Core, pure C++).
+Files:
+- Radio/RadioMessage.h:
+  - The RadioMessage POD (id, channel id, emitter key, faction id, system id, origin helio km, sentJd, power class, priority 0-3, situation kind, template id plus a small fixed argument block).
+  - The power-class table: EIRP in watts and the derived max range R_max = sqrt(EIRP / (4 pi N_floor)), cached per class. Tune it so a ship is heard to about 0.5 AU and a station across the inner system.
+- Radio/RadioLog.h/.cpp: an append-only ring (cap 8192) ordered by sentJd. Time buckets of 15 game-minutes each hold [first,last) and the AABB of their origins. Retire() drops a bucket once its fronts have passed beyond its classes'' R_max and counts what it dropped.
+- Radio/Wavefront.h/.cpp:
+  - ArrivalJd(origin, sentJd, listenerAt), where listenerAt is a callable from jd to helio km: the fixed point t = sentJd + |L(t) - O| / c in 2 iterations, using LightSpeed::SpeedKmS.
+  - BucketMayArrive(bucket, listener, fromJd, toJd): the shell test on the bucket''s origin box (distance interval [dmin,dmax] against c(t - sent)).
+Bounds: Append O(1); Retire amortised O(1); no per-frame loop over messages.
+Outcome: tools/build-core.ps1 compiles it.
+Also: a message may carry literal text instead of a template, as an index into a bounded string table owned by the log (cleared with its bucket). Event lines, relay bulletins and the sg.Radio test use it, so the HUD can show text before ChatterLines (US-T642) exists.
+
+
+Verification is build-only: tools/build-core.ps1 compiles it (an editor build too if a game file changed). Do not run tests, smokes, the bench or the game. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent of the story/parent) for the design before starting.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108469, 'GG-T794', '2026-11-24T05:29:27Z', 'link', NULL, 'requires GG-T791');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108470, 'US-T622', '2026-11-24T05:29:27Z', 'priority', '0', '385');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108471, 'GG-T791', '2026-11-24T05:29:27Z', 'link', NULL, 'GG-T794 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108472, 'US-T635', '2026-11-24T05:29:27Z', 'description', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGod/UI/ (a new Hud.Radio.cpp with declarations in the HUD header) and UI/LogsScreen.
+Changes:
+- A compact radio log on the HUD shows the last 8 heard lines, which fade after a while. Each line reads "[channel 121.5] Sender: text  - sent 8.3 min ago, 1.0 AU" (LightSpeed::Describe, Ranges::Spoken). Its text is realised from the template at this point, when the message is heard.
+- The Logs screen gains a Radio tab, a bounded history of 200 lines.
+- It subscribes to RadioHost''s arrivals sink. Colours follow the Accessibility stance palette. Nothing is drawn when the log is empty.
+Outcome: the editor build succeeds.
+
+
+Verification is build-only: the editor build succeeds (tools/build.ps1). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream; scripted runs (PlayerOptions::ScriptedRun, GameAudio disabled) stay silent and unchanged. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent) for the design before starting.', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGod/UI/ (a new Hud.Radio.cpp with declarations in the HUD header) and UI/LogsScreen.
+Changes:
+- A compact radio log on the HUD shows the last 8 heard lines, which fade after a while. Each line reads "[channel 121.5] Sender: text  - sent 8.3 min ago, 1.0 AU" (LightSpeed::Describe, Ranges::Spoken). Its text is realised from the template at this point, when the message is heard.
+- The Logs screen gains a Radio tab, a bounded history of 200 lines.
+- It subscribes to RadioHost''s arrivals sink. Colours follow the Accessibility stance palette. Nothing is drawn when the log is empty.
+Outcome: the editor build succeeds.
+Until ChatterLines (US-T642) exists, show a message''s literal text, or ''<channel kind> traffic'' for a template id; US-T642 plugs Realise in here.
+
+
+Verification is build-only: the editor build succeeds (tools/build.ps1). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream; scripted runs (PlayerOptions::ScriptedRun, GameAudio disabled) stay silent and unchanged. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent) for the design before starting.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108473, 'GG-T797', '2026-11-24T05:29:29Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108474, 'GG-T797', '2026-11-24T05:29:29Z', 'name', NULL, 'Hasn''t moved this round: bots and enemy AI');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108475, 'GG-T797', '2026-11-24T05:29:30Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108476, 'US-T624', '2026-11-24T05:29:30Z', 'link', NULL, 'part-of US-T604');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108477, 'US-T604', '2026-11-24T05:29:30Z', 'link', NULL, 'US-T624 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108478, 'GG-T797', '2026-11-24T05:29:31Z', 'link', NULL, 'part-of GG-T792');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108479, 'GG-T792', '2026-11-24T05:29:31Z', 'link', NULL, 'GG-T797 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108480, 'US-T624', '2026-11-24T05:29:31Z', 'priority', '0', '385');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108481, 'GG-T798', '2026-11-24T05:29:33Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108482, 'GG-T798', '2026-11-24T05:29:33Z', 'name', NULL, 'Mode B bots and enemy AI');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108483, 'GG-T798', '2026-11-24T05:29:34Z', 'link', NULL, 'part-of GG-T797');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108484, 'GG-T797', '2026-11-24T05:29:34Z', 'link', NULL, 'GG-T798 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108485, 'GG-T798', '2026-11-24T05:29:34Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108486, 'US-T625', '2026-11-24T05:29:34Z', 'link', NULL, 'part-of US-T604');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108487, 'US-T604', '2026-11-24T05:29:35Z', 'link', NULL, 'US-T625 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108488, 'GG-T798', '2026-11-24T05:29:35Z', 'description', NULL, 'Part of story GG-T797 (Hasn''t moved this round: bots and enemy AI), feature GG-T792 (Mode B: hasn''t moved this round), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108489, 'US-T625', '2026-11-24T05:29:38Z', 'link', NULL, 'requires US-T621');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108490, 'GG-T798', '2026-11-24T05:29:38Z', 'link', NULL, 'requires GG-T796');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108491, 'US-T621', '2026-11-24T05:29:38Z', 'link', NULL, 'US-T625 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108492, 'GG-T796', '2026-11-24T05:29:38Z', 'link', NULL, 'GG-T798 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108493, 'US-T642', '2026-11-24T05:29:38Z', 'description', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGodCore/Radio/ (Core).
+Files:
+- Radio/ChatterLines.h/.cpp: templates per (channel kind x situation). Situations: docking request, clearance, departure, patrol check-in, contact report, trade quote, convoy call, distress, battle callout, battle over, pirate taunt, bounty notice, relay bulletin, and idle banter. Each has at least 8 variants, with slots ({callsign}, {station}, {range} through CommsRuler and Ranges, {bearing}, {good}, {price}, {faction}).
+- Realise(message, world, jd) -> cs::String is called only when a message is heard. The variant is chosen by a hash of the message id, and the pilot''s Chatter and Warmth traits (Comms/Pilots.h) pick clipped or loose phrasing.
+- Unreadable fills (a missing pilot or settlement) fall back to a generic line, never an empty one.
+- It does not call the LLM.
+Outcome: tools/build-core.ps1 compiles it.
+
+
+Verification is build-only: tools/build-core.ps1 compiles it (an editor build too if a game file changed). Do not run tests, smokes, the bench or the game. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent of the story/parent) for the design before starting.', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGodCore/Radio/ (Core).
+Files:
+- Radio/ChatterLines.h/.cpp: templates per (channel kind x situation). Situations: docking request, clearance, departure, patrol check-in, contact report, trade quote, convoy call, distress, battle callout, battle over, pirate taunt, bounty notice, relay bulletin, and idle banter. Each has at least 8 variants, with slots ({callsign}, {station}, {range} through CommsRuler and Ranges, {bearing}, {good}, {price}, {faction}).
+- Realise(message, world, jd) -> cs::String is called only when a message is heard. The variant is chosen by a hash of the message id, and the pilot''s Chatter and Warmth traits (Comms/Pilots.h) pick clipped or loose phrasing.
+- Unreadable fills (a missing pilot or settlement) fall back to a generic line, never an empty one.
+- It does not call the LLM.
+Outcome: tools/build-core.ps1 compiles it.
+Also plug Realise into the HUD radio log''s text step (Cpp/Source/SpaceGod/UI/Hud.Radio.cpp, from US-T635) for template-id messages. That game file change means the editor build must succeed too.
+
+
+Verification is build-only: tools/build-core.ps1 compiles it (an editor build too if a game file changed). Do not run tests, smokes, the bench or the game. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent of the story/parent) for the design before starting.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108494, 'GG-T799', '2026-11-24T05:29:40Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108495, 'GG-T799', '2026-11-24T05:29:40Z', 'name', NULL, 'Hasn''t moved this round: UI and player-facing systems');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108496, 'GG-T799', '2026-11-24T05:29:40Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108497, 'US-T587', '2026-11-24T05:29:40Z', 'link', NULL, 'requires US-T586');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108498, 'US-T625', '2026-11-24T05:29:41Z', 'link', NULL, 'requires US-T624');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108499, 'US-T586', '2026-11-24T05:29:41Z', 'link', NULL, 'US-T587 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108500, 'US-T624', '2026-11-24T05:29:41Z', 'link', NULL, 'US-T625 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108501, 'GG-T799', '2026-11-24T05:29:41Z', 'link', NULL, 'part-of GG-T792');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108502, 'GG-T792', '2026-11-24T05:29:42Z', 'link', NULL, 'GG-T799 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108503, 'US-T625', '2026-11-24T05:29:43Z', 'link', NULL, 'requires US-T512');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108504, 'US-T588', '2026-11-24T05:29:43Z', 'link', NULL, 'requires US-T587');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108505, 'GG-T800', '2026-11-24T05:29:44Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108506, 'GG-T800', '2026-11-24T05:29:44Z', 'name', NULL, 'Mode B who-has-moved UI and picker');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108507, 'US-T512', '2026-11-24T05:29:44Z', 'link', NULL, 'US-T625 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108508, 'US-T587', '2026-11-24T05:29:44Z', 'link', NULL, 'US-T588 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108509, 'GG-T800', '2026-11-24T05:29:47Z', 'link', NULL, 'part-of GG-T799');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108510, 'GG-T799', '2026-11-24T05:29:47Z', 'link', NULL, 'GG-T800 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108511, 'GG-T800', '2026-11-24T05:29:47Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108512, 'US-T625', '2026-11-24T05:29:47Z', 'priority', '0', '385');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108513, 'GG-T772', '2026-11-24T05:29:48Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108514, 'GG-T801', '2026-11-24T05:29:48Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108515, 'GG-T801', '2026-11-24T05:29:48Z', 'name', NULL, 'Mode B tutorial, stats, Crucible, automation');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108516, 'US-T589', '2026-11-24T05:29:48Z', 'link', NULL, 'requires US-T588');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108517, 'GG-T801', '2026-11-24T05:29:51Z', 'link', NULL, 'part-of GG-T799');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108518, 'GG-T799', '2026-11-24T05:29:51Z', 'link', NULL, 'GG-T801 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108519, 'GG-T801', '2026-11-24T05:29:51Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108520, 'GG-T801', '2026-11-24T05:29:53Z', 'link', NULL, 'requires GG-T800');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108521, 'GG-T800', '2026-11-24T05:29:53Z', 'link', NULL, 'GG-T801 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108522, 'US-T588', '2026-11-24T05:29:53Z', 'link', NULL, 'US-T589 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108523, 'US-T626', '2026-11-24T05:29:53Z', 'link', NULL, 'part-of US-T605');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108524, 'US-T605', '2026-11-24T05:29:54Z', 'link', NULL, 'US-T626 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108525, 'GG-T800', '2026-11-24T05:29:54Z', 'description', NULL, 'Part of story GG-T799 (Hasn''t moved this round: UI and player-facing systems), feature GG-T792 (Mode B: hasn''t moved this round), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108526, 'US-T594', '2026-11-24T05:29:55Z', 'link', NULL, 'requires US-T589');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108527, 'GG-T801', '2026-11-24T05:29:56Z', 'description', NULL, 'Part of story GG-T799 (Hasn''t moved this round: UI and player-facing systems), feature GG-T792 (Mode B: hasn''t moved this round), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108528, 'US-T589', '2026-11-24T05:29:56Z', 'link', NULL, 'US-T594 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108529, 'US-T626', '2026-11-24T05:29:56Z', 'link', NULL, 'requires US-T621');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108530, 'US-T621', '2026-11-24T05:29:57Z', 'link', NULL, 'US-T626 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108531, 'GG-T800', '2026-11-24T05:29:58Z', 'link', NULL, 'requires GG-T798');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108532, 'US-T626', '2026-11-24T05:29:58Z', 'priority', '0', '385');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108533, 'GG-T798', '2026-11-24T05:29:58Z', 'link', NULL, 'GG-T800 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108534, 'US-T594', '2026-11-24T05:29:58Z', 'link', NULL, 'requires US-T590');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108535, 'US-T590', '2026-11-24T05:29:59Z', 'link', NULL, 'US-T594 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108536, 'GG-T802', '2026-11-24T05:30:00Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108537, 'GG-T802', '2026-11-24T05:30:00Z', 'name', NULL, 'Hasn''t moved this round: soak and BIBLE');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108538, 'GG-T802', '2026-11-24T05:30:00Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108539, 'US-T628', '2026-11-24T05:30:00Z', 'link', NULL, 'part-of US-T608');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108540, 'US-T608', '2026-11-24T05:30:01Z', 'link', NULL, 'US-T628 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108541, 'US-T598', '2026-11-24T05:30:01Z', 'link', NULL, 'requires US-T587');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108542, 'US-T587', '2026-11-24T05:30:01Z', 'link', NULL, 'US-T598 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108543, 'GG-T802', '2026-11-24T05:30:02Z', 'link', NULL, 'part-of GG-T792');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108544, 'GG-T792', '2026-11-24T05:30:02Z', 'link', NULL, 'GG-T802 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108545, 'US-T628', '2026-11-24T05:30:03Z', 'link', NULL, 'requires US-T620');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108546, 'US-T620', '2026-11-24T05:30:03Z', 'link', NULL, 'US-T628 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108547, 'GG-T803', '2026-11-24T05:30:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108548, 'GG-T803', '2026-11-24T05:30:04Z', 'name', NULL, 'Mode B headless soak');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108549, 'US-T602', '2026-11-24T05:30:04Z', 'link', NULL, 'requires US-T594');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108550, 'GG-T803', '2026-11-24T05:30:05Z', 'link', NULL, 'part-of GG-T802');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108551, 'GG-T802', '2026-11-24T05:30:05Z', 'link', NULL, 'GG-T803 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108552, 'GG-T803', '2026-11-24T05:30:05Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108553, 'US-T594', '2026-11-24T05:30:05Z', 'link', NULL, 'US-T602 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108554, 'US-T628', '2026-11-24T05:30:06Z', 'priority', '0', '355');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108555, 'GG-T804', '2026-11-24T05:30:06Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108556, 'GG-T804', '2026-11-24T05:30:06Z', 'name', NULL, 'Mode B BIBLE section');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108557, 'GG-T804', '2026-11-24T05:30:07Z', 'link', NULL, 'part-of GG-T802');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108558, 'GG-T802', '2026-11-24T05:30:07Z', 'link', NULL, 'GG-T804 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108559, 'GG-T804', '2026-11-24T05:30:07Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108560, 'GG-T804', '2026-11-24T05:30:08Z', 'link', NULL, 'requires GG-T803');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108561, 'GG-T803', '2026-11-24T05:30:08Z', 'link', NULL, 'GG-T804 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108562, 'US-T629', '2026-11-24T05:30:09Z', 'link', NULL, 'part-of US-T608');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108563, 'US-T627', '2026-11-24T05:30:09Z', 'link', NULL, 'requires US-T623');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108564, 'US-T608', '2026-11-24T05:30:10Z', 'link', NULL, 'US-T629 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108565, 'GG-T803', '2026-11-24T05:30:10Z', 'description', NULL, 'Part of story GG-T802 (Hasn''t moved this round: soak and BIBLE), feature GG-T792 (Mode B: hasn''t moved this round), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108566, 'US-T623', '2026-11-24T05:30:10Z', 'link', NULL, 'US-T627 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108567, 'GG-T804', '2026-11-24T05:30:11Z', 'description', NULL, 'Part of story GG-T802 (Hasn''t moved this round: soak and BIBLE), feature GG-T792 (Mode B: hasn''t moved this round), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108568, 'US-T629', '2026-11-24T05:30:13Z', 'link', NULL, 'requires US-T628');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108569, 'US-T631', '2026-11-24T05:30:13Z', 'link', NULL, 'requires US-T627');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108570, 'US-T628', '2026-11-24T05:30:13Z', 'link', NULL, 'US-T629 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108571, 'US-T627', '2026-11-24T05:30:13Z', 'link', NULL, 'US-T631 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108572, 'GG-T803', '2026-11-24T05:30:14Z', 'link', NULL, 'requires GG-T801');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108573, 'GG-T801', '2026-11-24T05:30:14Z', 'link', NULL, 'GG-T803 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108574, 'US-T629', '2026-11-24T05:30:15Z', 'priority', '0', '355');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108575, 'US-T635', '2026-11-24T05:30:16Z', 'link', NULL, 'requires US-T631');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108576, 'US-T631', '2026-11-24T05:30:16Z', 'link', NULL, 'US-T635 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108577, 'GG-T805', '2026-11-24T05:30:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108578, 'GG-T805', '2026-11-24T05:30:17Z', 'name', NULL, 'Mode C: heroes on the timeline');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108579, 'GG-T805', '2026-11-24T05:30:17Z', 'label', NULL, 'level:feature');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108580, 'US-T630', '2026-11-24T05:30:17Z', 'link', NULL, 'part-of US-T608');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108581, 'US-T608', '2026-11-24T05:30:17Z', 'link', NULL, 'US-T630 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108582, 'US-T639', '2026-11-24T05:30:18Z', 'link', NULL, 'requires US-T623');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108583, 'US-T623', '2026-11-24T05:30:19Z', 'link', NULL, 'US-T639 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108584, 'US-T630', '2026-11-24T05:30:20Z', 'link', NULL, 'requires US-T629');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108585, 'US-T629', '2026-11-24T05:30:20Z', 'link', NULL, 'US-T630 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108586, 'US-T640', '2026-11-24T05:30:21Z', 'link', NULL, 'requires US-T639');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108587, 'US-T639', '2026-11-24T05:30:21Z', 'link', NULL, 'US-T640 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108588, 'US-T630', '2026-11-24T05:30:21Z', 'priority', '0', '355');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108589, 'GG-T805', '2026-11-24T05:30:22Z', 'link', NULL, 'part-of GG-T762');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108590, 'GG-T762', '2026-11-24T05:30:22Z', 'link', NULL, 'GG-T805 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108591, 'US-T641', '2026-11-24T05:30:24Z', 'link', NULL, 'requires US-T640');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108592, 'US-T632', '2026-11-24T05:30:24Z', 'link', NULL, 'part-of US-T609');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108593, 'US-T640', '2026-11-24T05:30:24Z', 'link', NULL, 'US-T641 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108594, 'US-T609', '2026-11-24T05:30:24Z', 'link', NULL, 'US-T632 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108595, 'GG-T805', '2026-11-24T05:30:24Z', 'link', NULL, 'requires GG-T792');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108596, 'GG-T792', '2026-11-24T05:30:25Z', 'link', NULL, 'GG-T805 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108597, 'GG-T806', '2026-11-24T05:30:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108598, 'GG-T806', '2026-11-24T05:30:26Z', 'name', NULL, 'Heroes on the timeline: core rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108599, 'GG-T806', '2026-11-24T05:30:27Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108600, 'US-T641', '2026-11-24T05:30:27Z', 'link', NULL, 'requires US-T635');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108601, 'US-T635', '2026-11-24T05:30:27Z', 'link', NULL, 'US-T641 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108602, 'GG-T806', '2026-11-24T05:30:28Z', 'link', NULL, 'part-of GG-T805');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108603, 'GG-T805', '2026-11-24T05:30:28Z', 'link', NULL, 'GG-T806 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108604, 'US-T642', '2026-11-24T05:30:29Z', 'link', NULL, 'requires US-T639');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108605, 'US-T632', '2026-11-24T05:30:30Z', 'link', NULL, 'requires US-T630');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108606, 'GG-T770', '2026-11-24T05:30:30Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108607, 'US-T639', '2026-11-24T05:30:30Z', 'link', NULL, 'US-T642 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108608, 'US-T630', '2026-11-24T05:30:30Z', 'link', NULL, 'US-T632 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108609, 'GG-T807', '2026-11-24T05:30:30Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108610, 'GG-T807', '2026-11-24T05:30:30Z', 'name', NULL, 'Hero turn icons on the timeline');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108611, 'GG-T807', '2026-11-24T05:30:31Z', 'link', NULL, 'part-of GG-T806');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108612, 'GG-T806', '2026-11-24T05:30:31Z', 'link', NULL, 'GG-T807 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108613, 'GG-T807', '2026-11-24T05:30:31Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108614, 'US-T632', '2026-11-24T05:30:32Z', 'priority', '0', '355');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108615, 'GG-T808', '2026-11-24T05:30:32Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108616, 'GG-T808', '2026-11-24T05:30:32Z', 'name', NULL, 'Hero turn resolution on the timeline');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108617, 'GG-T808', '2026-11-24T05:30:33Z', 'link', NULL, 'part-of GG-T806');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108618, 'GG-T806', '2026-11-24T05:30:33Z', 'link', NULL, 'GG-T808 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108619, 'GG-T808', '2026-11-24T05:30:33Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108620, 'GG-T808', '2026-11-24T05:30:35Z', 'link', NULL, 'requires GG-T807');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108621, 'GG-T807', '2026-11-24T05:30:35Z', 'link', NULL, 'GG-T808 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108622, 'GG-T809', '2026-11-24T05:30:35Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108623, 'GG-T809', '2026-11-24T05:30:35Z', 'name', NULL, 'Mode C Guard, mana, buffs, status');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108624, 'US-T642', '2026-11-24T05:30:35Z', 'link', NULL, 'requires US-T635');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108625, 'US-T633', '2026-11-24T05:30:35Z', 'link', NULL, 'part-of US-T609');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108626, 'GG-T809', '2026-11-24T05:30:37Z', 'link', NULL, 'part-of GG-T806');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108627, 'GG-T806', '2026-11-24T05:30:37Z', 'link', NULL, 'GG-T809 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108628, 'GG-T809', '2026-11-24T05:30:37Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108629, 'GG-T809', '2026-11-24T05:30:38Z', 'link', NULL, 'requires GG-T808');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108630, 'GG-T808', '2026-11-24T05:30:39Z', 'link', NULL, 'GG-T809 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108631, 'US-T635', '2026-11-24T05:30:39Z', 'link', NULL, 'US-T642 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108632, 'US-T609', '2026-11-24T05:30:39Z', 'link', NULL, 'US-T633 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108633, 'GG-T810', '2026-11-24T05:30:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108634, 'GG-T810', '2026-11-24T05:30:39Z', 'name', NULL, 'Mode C region rules, joins, triggers');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108635, 'GG-T810', '2026-11-24T05:30:40Z', 'link', NULL, 'part-of GG-T806');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108636, 'GG-T806', '2026-11-24T05:30:40Z', 'link', NULL, 'GG-T810 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108637, 'GG-T810', '2026-11-24T05:30:41Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108638, 'GG-T810', '2026-11-24T05:30:42Z', 'link', NULL, 'requires GG-T809');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108639, 'GG-T809', '2026-11-24T05:30:42Z', 'link', NULL, 'GG-T810 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108640, 'US-T633', '2026-11-24T05:30:42Z', 'link', NULL, 'requires US-T632');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108641, 'US-T643', '2026-11-24T05:30:42Z', 'link', NULL, 'requires US-T642');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108642, 'US-T632', '2026-11-24T05:30:42Z', 'link', NULL, 'US-T633 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108643, 'US-T642', '2026-11-24T05:30:43Z', 'link', NULL, 'US-T643 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108644, 'US-T571', '2026-11-24T05:30:43Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108645, 'US-T571', '2026-11-24T05:30:43Z', 'ref', '—', 'e14ac07336b22807eac1633b69b6d1ebf0bea558');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108646, 'US-T515', '2026-11-24T05:30:43Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108647, 'US-T515', '2026-11-24T05:30:43Z', 'ref', '—', 'children done');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108648, 'US-T515', '2026-11-24T05:30:43Z', 'rollup', NULL, 'US-T571');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108649, 'US-T514', '2026-11-24T05:30:44Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108650, 'US-T514', '2026-11-24T05:30:44Z', 'ref', '—', 'children done');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108651, 'US-T514', '2026-11-24T05:30:44Z', 'rollup', NULL, 'US-T515');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108652, 'US-T552', '2026-11-24T05:30:44Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108653, 'US-T552', '2026-11-24T05:30:44Z', 'ref', '—', '6f1a4f9');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108654, 'GG-T807', '2026-11-24T05:30:44Z', 'description', NULL, 'Part of story GG-T806 (Heroes on the timeline: core rules), feature GG-T805 (Mode C: heroes on the timeline), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108655, 'US-T633', '2026-11-24T05:30:44Z', 'priority', '0', '355');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108656, 'US-T643', '2026-11-24T05:30:46Z', 'link', NULL, 'requires US-T631');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108657, 'US-T631', '2026-11-24T05:30:46Z', 'link', NULL, 'US-T643 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108658, 'GG-T808', '2026-11-24T05:30:47Z', 'description', NULL, 'Part of story GG-T806 (Heroes on the timeline: core rules), feature GG-T805 (Mode C: heroes on the timeline), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108659, 'US-T634', '2026-11-24T05:30:48Z', 'link', NULL, 'part-of US-T619');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108660, 'US-T619', '2026-11-24T05:30:48Z', 'link', NULL, 'US-T634 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108661, 'GG-T809', '2026-11-24T05:30:49Z', 'description', NULL, 'Part of story GG-T806 (Heroes on the timeline: core rules), feature GG-T805 (Mode C: heroes on the timeline), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108662, 'US-T644', '2026-11-24T05:30:49Z', 'link', NULL, 'requires US-T642');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108663, 'US-T642', '2026-11-24T05:30:49Z', 'link', NULL, 'US-T644 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108664, 'US-T634', '2026-11-24T05:30:50Z', 'priority', '0', '315');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108665, 'GG-T810', '2026-11-24T05:30:50Z', 'description', NULL, 'Part of story GG-T806 (Heroes on the timeline: core rules), feature GG-T805 (Mode C: heroes on the timeline), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108666, 'US-T636', '2026-11-24T05:30:54Z', 'link', NULL, 'part-of US-T618');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108667, 'US-T618', '2026-11-24T05:30:54Z', 'link', NULL, 'US-T636 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108668, 'GG-T807', '2026-11-24T05:30:55Z', 'link', NULL, 'requires GG-T804');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108669, 'GG-T804', '2026-11-24T05:30:56Z', 'link', NULL, 'GG-T807 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108670, 'US-T644', '2026-11-24T05:30:56Z', 'link', NULL, 'requires US-T631');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108671, 'US-T631', '2026-11-24T05:30:57Z', 'link', NULL, 'US-T644 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108672, 'GG-T811', '2026-11-24T05:30:58Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108673, 'GG-T811', '2026-11-24T05:30:58Z', 'name', NULL, 'Heroes on the timeline: bots and enemy AI');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108674, 'US-T636', '2026-11-24T05:30:58Z', 'link', NULL, 'requires US-T634');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108675, 'GG-T811', '2026-11-24T05:30:59Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108676, 'US-T634', '2026-11-24T05:30:59Z', 'link', NULL, 'US-T636 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108677, 'US-T645', '2026-11-24T05:30:59Z', 'link', NULL, 'requires US-T631');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108678, 'US-T631', '2026-11-24T05:31:00Z', 'link', NULL, 'US-T645 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108679, 'GG-T811', '2026-11-24T05:31:00Z', 'link', NULL, 'part-of GG-T805');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108680, 'GG-T805', '2026-11-24T05:31:00Z', 'link', NULL, 'GG-T811 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108681, 'US-T636', '2026-11-24T05:31:01Z', 'priority', '0', '315');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108682, 'GG-T812', '2026-11-24T05:31:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108683, 'GG-T812', '2026-11-24T05:31:02Z', 'name', NULL, 'Mode C bots and enemy AI');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108684, 'GG-T812', '2026-11-24T05:31:03Z', 'link', NULL, 'part-of GG-T811');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108685, 'GG-T811', '2026-11-24T05:31:03Z', 'link', NULL, 'GG-T812 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108686, 'GG-T812', '2026-11-24T05:31:03Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108687, 'US-T645', '2026-11-24T05:31:03Z', 'link', NULL, 'requires US-T639');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108688, 'US-T639', '2026-11-24T05:31:03Z', 'link', NULL, 'US-T645 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108689, 'US-T637', '2026-11-24T05:31:03Z', 'link', NULL, 'part-of US-T618');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108690, 'US-T618', '2026-11-24T05:31:04Z', 'link', NULL, 'US-T637 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108691, 'GG-T812', '2026-11-24T05:31:04Z', 'description', NULL, 'Part of story GG-T811 (Heroes on the timeline: bots and enemy AI), feature GG-T805 (Mode C: heroes on the timeline), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108692, 'US-T646', '2026-11-24T05:31:06Z', 'link', NULL, 'requires US-T631');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108693, 'US-T631', '2026-11-24T05:31:06Z', 'link', NULL, 'US-T646 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108694, 'US-T637', '2026-11-24T05:31:06Z', 'link', NULL, 'requires US-T636');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108695, 'US-T636', '2026-11-24T05:31:06Z', 'link', NULL, 'US-T637 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108696, 'GG-T812', '2026-11-24T05:31:07Z', 'link', NULL, 'requires GG-T810');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108697, 'GG-T810', '2026-11-24T05:31:07Z', 'link', NULL, 'GG-T812 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108698, 'US-T637', '2026-11-24T05:31:09Z', 'priority', '0', '315');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108699, 'GG-T813', '2026-11-24T05:31:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108700, 'GG-T813', '2026-11-24T05:31:09Z', 'name', NULL, 'Heroes on the timeline: UI and player-facing systems');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108701, 'US-T646', '2026-11-24T05:31:09Z', 'link', NULL, 'requires US-T640');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108702, 'GG-T813', '2026-11-24T05:31:09Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108703, 'US-T640', '2026-11-24T05:31:10Z', 'link', NULL, 'US-T646 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108704, 'GG-T813', '2026-11-24T05:31:11Z', 'link', NULL, 'part-of GG-T805');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108705, 'GG-T805', '2026-11-24T05:31:11Z', 'link', NULL, 'GG-T813 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108706, 'US-T638', '2026-11-24T05:31:11Z', 'link', NULL, 'part-of US-T619');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108707, 'US-T619', '2026-11-24T05:31:11Z', 'link', NULL, 'US-T638 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108708, 'US-T647', '2026-11-24T05:31:12Z', 'link', NULL, 'requires US-T646');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108709, 'US-T646', '2026-11-24T05:31:12Z', 'link', NULL, 'US-T647 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108710, 'GG-T814', '2026-11-24T05:31:13Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108711, 'GG-T814', '2026-11-24T05:31:13Z', 'name', NULL, 'Hero icons drawn on the timeline');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108712, 'GG-T814', '2026-11-24T05:31:16Z', 'link', NULL, 'part-of GG-T813');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108713, 'GG-T813', '2026-11-24T05:31:16Z', 'link', NULL, 'GG-T814 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108714, 'GG-T814', '2026-11-24T05:31:16Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108715, 'GG-T815', '2026-11-24T05:31:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108716, 'GG-T815', '2026-11-24T05:31:17Z', 'name', NULL, 'Mode C tutorial, stats, Crucible, automation');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108717, 'US-T638', '2026-11-24T05:31:17Z', 'link', NULL, 'requires US-T636');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108718, 'US-T647', '2026-11-24T05:31:17Z', 'link', NULL, 'requires US-T594');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108719, 'GG-T815', '2026-11-24T05:31:19Z', 'link', NULL, 'part-of GG-T813');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108720, 'GG-T813', '2026-11-24T05:31:19Z', 'link', NULL, 'GG-T815 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108721, 'GG-T815', '2026-11-24T05:31:19Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108722, 'GG-T815', '2026-11-24T05:31:20Z', 'link', NULL, 'requires GG-T814');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108723, 'GG-T814', '2026-11-24T05:31:20Z', 'link', NULL, 'GG-T815 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108724, 'US-T636', '2026-11-24T05:31:21Z', 'link', NULL, 'US-T638 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108725, 'US-T594', '2026-11-24T05:31:21Z', 'link', NULL, 'US-T647 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108726, 'US-T638', '2026-11-24T05:31:22Z', 'priority', '0', '315');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108727, 'GG-T814', '2026-11-24T05:31:22Z', 'description', NULL, 'Part of story GG-T813 (Heroes on the timeline: UI and player-facing systems), feature GG-T805 (Mode C: heroes on the timeline), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108728, 'US-T648', '2026-11-24T05:31:23Z', 'link', NULL, 'requires US-T646');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108729, 'US-T646', '2026-11-24T05:31:23Z', 'link', NULL, 'US-T648 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108730, 'GG-T815', '2026-11-24T05:31:24Z', 'description', NULL, 'Part of story GG-T813 (Heroes on the timeline: UI and player-facing systems), feature GG-T805 (Mode C: heroes on the timeline), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108731, 'GG-T761', '2026-11-24T05:31:24Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108732, 'GG-T761', '2026-11-24T05:31:24Z', 'ref', '—', 'e8babc3282ba782def185152f2942e18c65c2a03');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108733, 'US-T648', '2026-11-24T05:31:26Z', 'link', NULL, 'requires US-T647');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108734, 'GG-T814', '2026-11-24T05:31:26Z', 'link', NULL, 'requires GG-T812');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108735, 'US-T647', '2026-11-24T05:31:26Z', 'link', NULL, 'US-T648 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108736, 'GG-T812', '2026-11-24T05:31:26Z', 'link', NULL, 'GG-T814 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108737, 'GG-T816', '2026-11-24T05:31:28Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108738, 'GG-T816', '2026-11-24T05:31:29Z', 'name', NULL, 'Heroes on the timeline: soak and BIBLE');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108739, 'GG-T816', '2026-11-24T05:31:29Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108740, 'US-T648', '2026-11-24T05:31:29Z', 'link', NULL, 'requires US-T635');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108741, 'US-T635', '2026-11-24T05:31:29Z', 'link', NULL, 'US-T648 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108742, 'GG-T816', '2026-11-24T05:31:30Z', 'link', NULL, 'part-of GG-T805');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108743, 'GG-T805', '2026-11-24T05:31:30Z', 'link', NULL, 'GG-T816 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108744, 'GG-T817', '2026-11-24T05:31:32Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108745, 'GG-T817', '2026-11-24T05:31:32Z', 'name', NULL, 'Mode C headless soak');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108746, 'GG-T817', '2026-11-24T05:31:33Z', 'link', NULL, 'part-of GG-T816');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108747, 'GG-T816', '2026-11-24T05:31:33Z', 'link', NULL, 'GG-T817 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108748, 'GG-T817', '2026-11-24T05:31:34Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108749, 'US-T649', '2026-11-24T05:31:34Z', 'link', NULL, 'requires US-T647');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108750, 'GG-T818', '2026-11-24T05:31:34Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108751, 'GG-T818', '2026-11-24T05:31:34Z', 'name', NULL, 'Mode C BIBLE section');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108752, 'US-T647', '2026-11-24T05:31:34Z', 'link', NULL, 'US-T649 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108753, 'GG-T818', '2026-11-24T05:31:35Z', 'link', NULL, 'part-of GG-T816');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108754, 'GG-T816', '2026-11-24T05:31:36Z', 'link', NULL, 'GG-T818 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108755, 'GG-T818', '2026-11-24T05:31:36Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108756, 'GG-T818', '2026-11-24T05:31:37Z', 'link', NULL, 'requires GG-T817');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108757, 'GG-T817', '2026-11-24T05:31:37Z', 'link', NULL, 'GG-T818 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108758, 'US-T649', '2026-11-24T05:31:38Z', 'link', NULL, 'requires US-T644');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108759, 'US-T644', '2026-11-24T05:31:38Z', 'link', NULL, 'US-T649 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108760, 'GG-T817', '2026-11-24T05:31:40Z', 'description', NULL, 'Part of story GG-T816 (Heroes on the timeline: soak and BIBLE), feature GG-T805 (Mode C: heroes on the timeline), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108761, 'GG-T818', '2026-11-24T05:31:41Z', 'description', NULL, 'Part of story GG-T816 (Heroes on the timeline: soak and BIBLE), feature GG-T805 (Mode C: heroes on the timeline), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108762, 'US-T649', '2026-11-24T05:31:42Z', 'link', NULL, 'requires US-T648');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108763, 'US-T648', '2026-11-24T05:31:42Z', 'link', NULL, 'US-T649 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108764, 'GG-T817', '2026-11-24T05:31:44Z', 'link', NULL, 'requires GG-T815');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108765, 'GG-T815', '2026-11-24T05:31:44Z', 'link', NULL, 'GG-T817 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108766, 'US-T649', '2026-11-24T05:31:45Z', 'link', NULL, 'requires US-T598');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108767, 'US-T598', '2026-11-24T05:31:45Z', 'link', NULL, 'US-T649 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108768, 'GG-T819', '2026-11-24T05:31:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108769, 'GG-T819', '2026-11-24T05:31:46Z', 'name', NULL, 'Turn modes compared');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108770, 'GG-T819', '2026-11-24T05:31:46Z', 'label', NULL, 'level:feature');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108771, 'GG-T819', '2026-11-24T05:31:48Z', 'link', NULL, 'part-of GG-T762');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108772, 'GG-T762', '2026-11-24T05:31:48Z', 'link', NULL, 'GG-T819 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108773, 'US-T649', '2026-11-24T05:31:48Z', 'link', NULL, 'requires US-T635');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108774, 'US-T635', '2026-11-24T05:31:49Z', 'link', NULL, 'US-T649 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108775, 'GAD-T726', '2026-11-24T05:31:49Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108776, 'GAD-T726', '2026-11-24T05:31:49Z', 'ref', '—', '18fad8a');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108777, 'GAD-T724', '2026-11-24T05:31:49Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108778, 'GAD-T724', '2026-11-24T05:31:49Z', 'ref', '—', 'children done');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108779, 'GAD-T724', '2026-11-24T05:31:49Z', 'rollup', NULL, 'GAD-T726');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108780, 'US-T591', '2026-11-24T05:31:50Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108781, 'US-T650', '2026-11-24T05:31:52Z', 'link', NULL, 'requires US-T648');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108782, 'GG-T819', '2026-11-24T05:31:53Z', 'link', NULL, 'requires GG-T805');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108783, 'GG-T805', '2026-11-24T05:31:53Z', 'link', NULL, 'GG-T819 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108784, 'US-T592', '2026-11-24T05:31:53Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108785, 'US-T648', '2026-11-24T05:31:53Z', 'link', NULL, 'US-T650 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108786, 'US-T593', '2026-11-24T05:31:54Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108787, 'US-T595', '2026-11-24T05:31:54Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108788, 'GAD-T724', '2026-11-24T05:31:54Z', 'ref', 'children done', 'ec3e826');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108789, 'US-T596', '2026-11-24T05:31:54Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108790, 'GG-T820', '2026-11-24T05:31:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108791, 'GG-T820', '2026-11-24T05:31:55Z', 'name', NULL, 'Report which turn mode is most fun');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108792, 'US-T597', '2026-11-24T05:31:55Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108793, 'GG-T820', '2026-11-24T05:31:55Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108794, 'US-T599', '2026-11-24T05:31:55Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108795, 'US-T600', '2026-11-24T05:31:56Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108796, 'US-T650', '2026-11-24T05:31:56Z', 'link', NULL, 'requires US-T643');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108797, 'US-T601', '2026-11-24T05:31:56Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108798, 'US-T643', '2026-11-24T05:31:56Z', 'link', NULL, 'US-T650 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108799, 'US-T603', '2026-11-24T05:31:57Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108800, 'GG-T820', '2026-11-24T05:31:57Z', 'link', NULL, 'part-of GG-T819');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108801, 'US-T604', '2026-11-24T05:31:57Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108802, 'US-T515', '2026-11-24T05:31:57Z', 'working', NULL, 'pdftransferjr@mindattic.com (b773a79b-ba7e-46cb-9786-f886660e3188)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108803, 'GG-T819', '2026-11-24T05:31:57Z', 'link', NULL, 'GG-T820 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108804, 'US-T605', '2026-11-24T05:31:57Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108805, 'GG-T760', '2026-11-24T05:31:58Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108806, 'US-T606', '2026-11-24T05:31:58Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108807, 'GG-T770', '2026-11-24T05:31:58Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108808, 'US-T607', '2026-11-24T05:31:58Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108809, 'GG-T772', '2026-11-24T05:31:58Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108810, 'US-T608', '2026-11-24T05:31:59Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108811, 'GG-T821', '2026-11-24T05:31:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108812, 'GG-T821', '2026-11-24T05:31:59Z', 'name', NULL, 'Soak all four modes on equal terms');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108813, 'US-T650', '2026-11-24T05:31:59Z', 'link', NULL, 'requires US-T644');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108814, 'US-T609', '2026-11-24T05:31:59Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108815, 'GG-T821', '2026-11-24T05:32:00Z', 'link', NULL, 'part-of GG-T820');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108816, 'GG-T820', '2026-11-24T05:32:00Z', 'link', NULL, 'GG-T821 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108817, 'GG-T821', '2026-11-24T05:32:00Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108818, 'US-T644', '2026-11-24T05:32:00Z', 'link', NULL, 'US-T650 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108819, 'US-T610', '2026-11-24T05:32:00Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108820, 'GG-T822', '2026-11-24T05:32:01Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108821, 'GG-T822', '2026-11-24T05:32:01Z', 'name', NULL, 'docs/TURN_MODES.md recommendation');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108822, 'US-T611', '2026-11-24T05:32:01Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108823, 'GG-T822', '2026-11-24T05:32:02Z', 'link', NULL, 'part-of GG-T820');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108824, 'GG-T820', '2026-11-24T05:32:02Z', 'link', NULL, 'GG-T822 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108825, 'GG-T822', '2026-11-24T05:32:02Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108826, 'GG-T822', '2026-11-24T05:32:03Z', 'link', NULL, 'requires GG-T821');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108827, 'GG-T821', '2026-11-24T05:32:03Z', 'link', NULL, 'GG-T822 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108828, 'US-T612', '2026-11-24T05:32:03Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108829, 'US-T613', '2026-11-24T05:32:03Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108830, 'US-T650', '2026-11-24T05:32:04Z', 'link', NULL, 'requires US-T645');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108831, 'US-T614', '2026-11-24T05:32:04Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108832, 'US-T645', '2026-11-24T05:32:04Z', 'link', NULL, 'US-T650 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108833, 'US-T615', '2026-11-24T05:32:04Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108834, 'GG-T821', '2026-11-24T05:32:04Z', 'description', NULL, 'Part of story GG-T820 (Report which turn mode is most fun), feature GG-T819 (Turn modes compared), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108835, 'US-T616', '2026-11-24T05:32:05Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108836, 'US-T617', '2026-11-24T05:32:05Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108837, 'US-T618', '2026-11-24T05:32:05Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108838, 'US-T619', '2026-11-24T05:32:06Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108839, 'GG-T822', '2026-11-24T05:32:06Z', 'description', NULL, 'Part of story GG-T820 (Report which turn mode is most fun), feature GG-T819 (Turn modes compared), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108840, 'US-T620', '2026-11-24T05:32:06Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108841, 'US-T621', '2026-11-24T05:32:07Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108842, 'US-T651', '2026-11-24T05:32:07Z', 'link', NULL, 'requires US-T650');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108843, 'US-T622', '2026-11-24T05:32:07Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108844, 'US-T650', '2026-11-24T05:32:07Z', 'link', NULL, 'US-T651 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108845, 'US-T624', '2026-11-24T05:32:07Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108846, 'US-T625', '2026-11-24T05:32:08Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108847, 'US-T626', '2026-11-24T05:32:08Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108848, 'US-T628', '2026-11-24T05:32:08Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108849, 'GG-T821', '2026-11-24T05:32:09Z', 'link', NULL, 'requires GG-T818');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108850, 'US-T629', '2026-11-24T05:32:09Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108851, 'GG-T818', '2026-11-24T05:32:09Z', 'link', NULL, 'GG-T821 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108852, 'US-T630', '2026-11-24T05:32:09Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108853, 'US-T632', '2026-11-24T05:32:10Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108854, 'US-T651', '2026-11-24T05:32:10Z', 'link', NULL, 'requires US-T649');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108855, 'US-T633', '2026-11-24T05:32:10Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108856, 'US-T649', '2026-11-24T05:32:10Z', 'link', NULL, 'US-T651 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108857, 'US-T634', '2026-11-24T05:32:10Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108858, 'US-T636', '2026-11-24T05:32:11Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108859, 'US-T637', '2026-11-24T05:32:11Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108860, 'US-T638', '2026-11-24T05:32:12Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108861, 'US-T620', '2026-11-24T05:32:23Z', 'working', NULL, 'pdftransferjr@mindattic.com (b773a79b-ba7e-46cb-9786-f886660e3188)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108862, 'US-T624', '2026-11-24T05:32:27Z', 'working', NULL, 'pdftransferjr@mindattic.com (b773a79b-ba7e-46cb-9786-f886660e3188)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108863, 'US-T517', '2026-11-24T05:32:30Z', 'working', NULL, 'pdftransferjr@mindattic.com (b773a79b-ba7e-46cb-9786-f886660e3188)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108864, 'US-T515', '2026-11-24T05:32:32Z', 'working', 'pdftransferjr@mindattic.com (b773a79b-ba7e-46cb-9786-f886660e3188)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108865, 'US-T574', '2026-11-24T05:32:32Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108866, 'US-T575', '2026-11-24T05:32:33Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108867, 'US-T576', '2026-11-24T05:32:33Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108868, 'US-T577', '2026-11-24T05:32:34Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108869, 'US-T606', '2026-11-24T05:32:34Z', 'working', NULL, 'pdftransferjr@mindattic.com (b773a79b-ba7e-46cb-9786-f886660e3188)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108870, 'US-T571', '2026-11-24T05:32:34Z', 'working', 'pdftransferjr@mindattic.com (b773a79b-ba7e-46cb-9786-f886660e3188)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108871, 'US-T578', '2026-11-24T05:32:35Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108872, 'US-T552', '2026-11-24T05:32:35Z', 'working', 'pdftransferjr@mindattic.com (b773a79b-ba7e-46cb-9786-f886660e3188)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108873, 'US-T579', '2026-11-24T05:32:35Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108874, 'US-T580', '2026-11-24T05:32:35Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108875, 'US-T581', '2026-11-24T05:32:36Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108876, 'US-T582', '2026-11-24T05:32:36Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108877, 'US-T583', '2026-11-24T05:32:37Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108878, 'US-T612', '2026-11-24T05:32:37Z', 'working', NULL, 'pdftransferjr@mindattic.com (b773a79b-ba7e-46cb-9786-f886660e3188)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108879, 'US-T584', '2026-11-24T05:32:37Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108880, 'US-T585', '2026-11-24T05:32:38Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108881, 'US-T586', '2026-11-24T05:32:38Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108882, 'US-T587', '2026-11-24T05:32:38Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108883, 'US-T588', '2026-11-24T05:32:39Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108884, 'US-T589', '2026-11-24T05:32:39Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108885, 'US-T590', '2026-11-24T05:32:40Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108886, 'US-T594', '2026-11-24T05:32:40Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108887, 'US-T598', '2026-11-24T05:32:40Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108888, 'US-T559', '2026-11-24T05:32:40Z', 'working', NULL, 'pdftransferjr@mindattic.com (b773a79b-ba7e-46cb-9786-f886660e3188)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108889, 'US-T602', '2026-11-24T05:32:41Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108890, 'US-T623', '2026-11-24T05:32:41Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108891, 'US-T627', '2026-11-24T05:32:41Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108892, 'US-T631', '2026-11-24T05:32:42Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108893, 'US-T635', '2026-11-24T05:32:42Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108894, 'US-T639', '2026-11-24T05:32:43Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108895, 'US-T640', '2026-11-24T05:32:43Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108896, 'US-T616', '2026-11-24T05:32:43Z', 'working', NULL, 'pdftransferjr@mindattic.com (b773a79b-ba7e-46cb-9786-f886660e3188)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108897, 'US-T641', '2026-11-24T05:32:43Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108898, 'US-T642', '2026-11-24T05:32:44Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108899, 'US-T643', '2026-11-24T05:32:44Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108900, 'US-T644', '2026-11-24T05:32:44Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108901, 'US-T645', '2026-11-24T05:32:45Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108902, 'US-T646', '2026-11-24T05:32:45Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108903, 'US-T647', '2026-11-24T05:32:46Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108904, 'US-T634', '2026-11-24T05:32:46Z', 'working', NULL, 'pdftransferjr@mindattic.com (b773a79b-ba7e-46cb-9786-f886660e3188)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108905, 'US-T648', '2026-11-24T05:32:46Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108906, 'US-T649', '2026-11-24T05:32:47Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108907, 'US-T650', '2026-11-24T05:32:47Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108908, 'US-T651', '2026-11-24T05:32:47Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108909, 'US-T562', '2026-11-24T05:32:49Z', 'working', NULL, 'pdftransferjr@mindattic.com (b773a79b-ba7e-46cb-9786-f886660e3188)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108910, 'GG-T762', '2026-11-24T05:32:51Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108911, 'GG-T763', '2026-11-24T05:32:52Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108912, 'GG-T764', '2026-11-24T05:32:52Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108913, 'GG-T765', '2026-11-24T05:32:53Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108914, 'GG-T766', '2026-11-24T05:32:53Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108915, 'GG-T767', '2026-11-24T05:32:53Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108916, 'GG-T768', '2026-11-24T05:32:54Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108917, 'GG-T769', '2026-11-24T05:32:54Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108918, 'GG-T771', '2026-11-24T05:32:55Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108919, 'GG-T773', '2026-11-24T05:32:55Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108920, 'GG-T774', '2026-11-24T05:32:56Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108921, 'GG-T775', '2026-11-24T05:32:56Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108922, 'GG-T776', '2026-11-24T05:32:56Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108923, 'GG-T777', '2026-11-24T05:32:57Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108924, 'GG-T778', '2026-11-24T05:32:57Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108925, 'GG-T779', '2026-11-24T05:32:58Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108926, 'GG-T780', '2026-11-24T05:32:59Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108927, 'GG-T781', '2026-11-24T05:32:59Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108928, 'GG-T782', '2026-11-24T05:32:59Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108929, 'GG-T783', '2026-11-24T05:33:00Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108930, 'GG-T784', '2026-11-24T05:33:00Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108931, 'GG-T785', '2026-11-24T05:33:01Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108932, 'GG-T786', '2026-11-24T05:33:01Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108933, 'GG-T787', '2026-11-24T05:33:01Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108934, 'GG-T788', '2026-11-24T05:33:02Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108935, 'GG-T789', '2026-11-24T05:33:03Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108936, 'GG-T790', '2026-11-24T05:33:04Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108937, 'GG-T791', '2026-11-24T05:33:05Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108938, 'GG-T792', '2026-11-24T05:33:06Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108939, 'GG-T793', '2026-11-24T05:33:09Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108940, 'GG-T794', '2026-11-24T05:33:10Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108941, 'GG-T795', '2026-11-24T05:33:12Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108942, 'GG-T796', '2026-11-24T05:33:12Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108943, 'GG-T797', '2026-11-24T05:33:15Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108944, 'GG-T798', '2026-11-24T05:33:16Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108945, 'GG-T799', '2026-11-24T05:33:16Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108946, 'GG-T800', '2026-11-24T05:33:17Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108947, 'GG-T801', '2026-11-24T05:33:17Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108948, 'GG-T802', '2026-11-24T05:33:18Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108949, 'GG-T803', '2026-11-24T05:33:18Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108950, 'GG-T804', '2026-11-24T05:33:18Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108951, 'GG-T805', '2026-11-24T05:33:19Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108952, 'GG-T806', '2026-11-24T05:33:19Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108953, 'GG-T807', '2026-11-24T05:33:20Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108954, 'GG-T808', '2026-11-24T05:33:20Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108955, 'GG-T809', '2026-11-24T05:33:21Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108956, 'GG-T810', '2026-11-24T05:33:21Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108957, 'GG-T811', '2026-11-24T05:33:21Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108958, 'GG-T812', '2026-11-24T05:33:22Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108959, 'GG-T813', '2026-11-24T05:33:22Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108960, 'GG-T814', '2026-11-24T05:33:23Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108961, 'GG-T815', '2026-11-24T05:33:23Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108962, 'GG-T816', '2026-11-24T05:33:23Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108963, 'GG-T817', '2026-11-24T05:33:24Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108964, 'GG-T818', '2026-11-24T05:33:24Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108965, 'GG-T819', '2026-11-24T05:33:25Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108966, 'GG-T820', '2026-11-24T05:33:25Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108967, 'GG-T821', '2026-11-24T05:33:26Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108968, 'GG-T822', '2026-11-24T05:33:26Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108969, 'GG-T761', '2026-11-24T05:33:41Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108970, 'GG-T772', '2026-11-24T05:33:43Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108971, 'GG-T772', '2026-11-24T05:33:43Z', 'ref', '—', '7e845ae7');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108972, 'GG-T770', '2026-11-24T05:34:00Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108973, 'GG-T765', '2026-11-24T05:34:00Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108974, 'US-T652', '2026-11-24T05:36:06Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108975, 'US-T652', '2026-11-24T05:36:06Z', 'name', NULL, 'PI macro breaks editor build');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108976, 'US-T652', '2026-11-24T05:36:06Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108977, 'US-T652', '2026-11-24T05:36:08Z', 'link', NULL, 'part-of US-T499');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108978, 'US-T499', '2026-11-24T05:36:08Z', 'link', NULL, 'US-T652 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108979, 'US-T652', '2026-11-24T05:36:10Z', 'priority', '0', '490');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108980, 'US-T652', '2026-11-24T05:36:38Z', 'working', NULL, 'pdftransferjr@mindattic.com (b773a79b-ba7e-46cb-9786-f886660e3188)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108981, 'US-T586', '2026-11-24T05:36:41Z', 'working', NULL, 'pdftransferjr@mindattic.com (b773a79b-ba7e-46cb-9786-f886660e3188)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108982, 'US-T590', '2026-11-24T05:36:44Z', 'working', NULL, 'pdftransferjr@mindattic.com (b773a79b-ba7e-46cb-9786-f886660e3188)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108983, 'US-T623', '2026-11-24T05:36:47Z', 'working', NULL, 'pdftransferjr@mindattic.com (b773a79b-ba7e-46cb-9786-f886660e3188)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108984, 'GG-T765', '2026-11-24T05:37:36Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108985, 'GG-T765', '2026-11-24T05:37:36Z', 'ref', '—', '7413df4e75c6c2d11aa59719da88c158ee5b4b07');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108986, 'GG-T764', '2026-11-24T05:37:36Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108987, 'GG-T764', '2026-11-24T05:37:36Z', 'ref', '—', 'children done');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108988, 'GG-T764', '2026-11-24T05:37:36Z', 'rollup', NULL, 'GG-T765');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108989, 'GG-T765', '2026-11-24T05:37:47Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108990, 'GG-T767', '2026-11-24T05:38:08Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108991, 'GG-T770', '2026-11-24T05:38:39Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108992, 'GG-T770', '2026-11-24T05:38:39Z', 'ref', '—', '8d5d1b73');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (108993, 'GG-T770', '2026-11-24T05:38:52Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -101852,8 +103656,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T264', 'approved', 0, '2026-11-05T21:15:02Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T265', 'approved', 0, '2026-11-05T21:15:03Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T273', 'approved', 10, '2026-11-22T07:56:00Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T276', 'approved', 10, '2026-11-24T05:03:13Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T277', 'approved', 0, '2026-11-24T05:03:15Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T276', 'proposed', 10, '2026-11-24T05:21:04Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T277', 'proposed', 0, '2026-11-24T05:13:27Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T359', 'approved', 0, '2026-11-08T05:54:45Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T360', 'approved', 0, '2026-11-08T05:54:46Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T361', 'approved', 0, '2026-11-08T05:54:47Z', NULL);
@@ -101867,30 +103671,30 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T379', 'approved', 0, '2026-11-08T07:06:47Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T383', 'approved', 10, '2026-11-22T07:56:03Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T404', 'approved', 10, '2026-11-22T07:56:04Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T406', 'approved', 0, '2026-11-24T05:03:18Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T406', 'proposed', 0, '2026-11-24T05:14:31Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T457', 'approved', 0, '2026-11-23T19:31:55Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T462', 'approved', 0, '2026-11-24T05:03:19Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T463', 'approved', 0, '2026-11-24T05:03:20Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T462', 'proposed', 0, '2026-11-24T05:13:26Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T463', 'proposed', 0, '2026-11-24T05:11:48Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T464', 'approved', 0, '2026-11-24T05:03:23Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T466', 'approved', 0, '2026-11-24T05:03:24Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T466', 'proposed', 0, '2026-11-24T05:13:24Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T467', 'approved', 0, '2026-11-23T19:31:58Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T471', 'approved', 0, '2026-11-24T05:03:26Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T471', 'proposed', 0, '2026-11-24T05:13:23Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T473', 'approved', 0, '2026-11-23T19:31:58Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T474', 'approved', 0, '2026-11-24T05:03:27Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T474', 'proposed', 0, '2026-11-24T05:11:49Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T475', 'approved', 10, '2026-11-22T07:56:05Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T476', 'approved', 10, '2026-11-24T05:03:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T477', 'approved', 0, '2026-11-23T19:32:00Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T479', 'approved', 0, '2026-11-24T05:03:30Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T479', 'proposed', 0, '2026-11-24T05:16:26Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T48', 'approved', 0, '2026-10-21T03:38:58Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T481', 'approved', 0, '2026-11-24T05:03:32Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T481', 'proposed', 0, '2026-11-24T05:11:52Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T485', 'approved', 0, '2026-11-24T05:03:38Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T486', 'approved', 10, '2026-11-22T07:56:07Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T488', 'approved', 0, '2026-11-24T05:03:40Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T488', 'proposed', 0, '2026-11-24T05:11:56Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T490', 'approved', 0, '2026-11-23T19:32:02Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T492', 'approved', 0, '2026-11-24T05:03:42Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T492', 'proposed', 0, '2026-11-24T05:11:51Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T493', 'approved', 0, '2026-11-23T19:32:02Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T497', 'approved', 0, '2026-11-24T05:03:43Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T498', 'approved', 0, '2026-11-24T05:03:45Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T498', 'proposed', 0, '2026-11-24T05:11:54Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T500', 'approved', 0, '2026-11-24T05:03:46Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T51', 'approved', -5, '2026-10-22T01:39:12Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T52', 'approved', 0, '2026-10-21T03:38:58Z', NULL);
@@ -101903,9 +103707,9 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T56', 'approved', 0, '2026-10-21T03:38:59Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T567', 'approved', 0, '2026-11-23T19:32:04Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T57', 'approved', -2, '2026-10-22T02:51:53Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T573', 'approved', 0, '2026-11-24T05:03:49Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T573', 'proposed', 0, '2026-11-24T05:14:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T577', 'proposed', 0, '2026-11-23T19:36:55Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T578', 'approved', 0, '2026-11-24T05:03:51Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T578', 'proposed', 0, '2026-11-24T05:14:28Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T58', 'approved', -2, '2026-10-22T02:51:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T586', 'approved', 0, '2026-11-22T05:53:38Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T587', 'approved', 0, '2026-11-22T05:53:52Z', NULL);
@@ -101918,7 +103722,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T593', 'approved', 0, '2026-11-23T19:32:07Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T594', 'approved', 10, '2026-11-22T07:45:33Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T595', 'approved', 8, '2026-11-22T07:45:34Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T596', 'approved', 6, '2026-11-24T05:03:53Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T596', 'proposed', 6, '2026-11-24T05:11:47Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T597', 'approved', 10, '2026-11-22T07:45:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T598', 'approved', 8, '2026-11-22T07:45:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T599', 'approved', 6, '2026-11-22T07:45:41Z', NULL);
@@ -101931,13 +103735,13 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T605', 'approved', 10, '2026-11-22T07:56:14Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T606', 'approved', 10, '2026-11-22T07:56:16Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T607', 'approved', 10, '2026-11-22T07:45:28Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T608', 'approved', 8, '2026-11-24T05:03:54Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T608', 'proposed', 8, '2026-11-24T05:15:05Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T609', 'approved', 6, '2026-11-24T05:03:57Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T61', 'approved', -2, '2026-10-22T02:51:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T610', 'approved', 10, '2026-11-22T07:45:44Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T611', 'approved', 8, '2026-11-22T07:45:45Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T612', 'approved', 6, '2026-11-22T07:45:46Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T613', 'approved', 0, '2026-11-24T05:03:59Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T613', 'proposed', 0, '2026-11-24T05:16:57Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T614', 'approved', 0, '2026-11-23T19:32:09Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T615', 'approved', 0, '2026-11-23T19:32:09Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T616', 'approved', 10, '2026-11-22T07:56:17Z', NULL);
@@ -102067,11 +103871,74 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T757', 'approved', 0, '2026-11-24T04:20:50Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T758', 'approved', 0, '2026-11-24T04:20:52Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T759', 'approved', 0, '2026-11-24T05:04:10Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T760', 'approved', 0, '2026-11-24T05:23:07Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T761', 'approved', 0, '2026-11-24T05:24:18Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T762', 'approved', 0, '2026-11-24T05:32:51Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T763', 'approved', 0, '2026-11-24T05:32:52Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T764', 'approved', 0, '2026-11-24T05:32:52Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T765', 'approved', 0, '2026-11-24T05:32:53Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T766', 'approved', 0, '2026-11-24T05:32:53Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T767', 'approved', 0, '2026-11-24T05:32:53Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T768', 'approved', 0, '2026-11-24T05:32:54Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T769', 'approved', 0, '2026-11-24T05:32:54Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T77', 'approved', -5, '2026-10-22T01:39:13Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T770', 'approved', 0, '2026-11-24T05:26:45Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T771', 'approved', 0, '2026-11-24T05:32:55Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T772', 'approved', 0, '2026-11-24T05:26:50Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T773', 'approved', 0, '2026-11-24T05:32:55Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T774', 'approved', 0, '2026-11-24T05:32:55Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T775', 'approved', 0, '2026-11-24T05:32:56Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T776', 'approved', 0, '2026-11-24T05:32:56Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T777', 'approved', 0, '2026-11-24T05:32:57Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T778', 'approved', 0, '2026-11-24T05:32:57Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T779', 'approved', 0, '2026-11-24T05:32:58Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T78', 'approved', -5, '2026-10-22T01:39:14Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T780', 'approved', 0, '2026-11-24T05:32:59Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T781', 'approved', 0, '2026-11-24T05:32:59Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T782', 'approved', 0, '2026-11-24T05:32:59Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T783', 'approved', 0, '2026-11-24T05:33:00Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T784', 'approved', 0, '2026-11-24T05:33:00Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T785', 'approved', 0, '2026-11-24T05:33:01Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T786', 'approved', 0, '2026-11-24T05:33:01Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T787', 'approved', 0, '2026-11-24T05:33:01Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T788', 'approved', 0, '2026-11-24T05:33:02Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T789', 'approved', 0, '2026-11-24T05:33:03Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T790', 'approved', 0, '2026-11-24T05:33:04Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T791', 'approved', 0, '2026-11-24T05:33:05Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T792', 'approved', 0, '2026-11-24T05:33:06Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T793', 'approved', 0, '2026-11-24T05:33:09Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T794', 'approved', 0, '2026-11-24T05:33:10Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T795', 'approved', 0, '2026-11-24T05:33:12Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T796', 'approved', 0, '2026-11-24T05:33:12Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T797', 'approved', 0, '2026-11-24T05:33:15Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T798', 'approved', 0, '2026-11-24T05:33:16Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T799', 'approved', 0, '2026-11-24T05:33:16Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T80', 'approved', 0, '2026-10-21T03:39:02Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T800', 'approved', 0, '2026-11-24T05:33:17Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T801', 'approved', 0, '2026-11-24T05:33:17Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T802', 'approved', 0, '2026-11-24T05:33:18Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T803', 'approved', 0, '2026-11-24T05:33:18Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T804', 'approved', 0, '2026-11-24T05:33:18Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T805', 'approved', 0, '2026-11-24T05:33:19Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T806', 'approved', 0, '2026-11-24T05:33:19Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T807', 'approved', 0, '2026-11-24T05:33:20Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T808', 'approved', 0, '2026-11-24T05:33:20Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T809', 'approved', 0, '2026-11-24T05:33:20Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T81', 'approved', -5, '2026-10-22T01:39:14Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T810', 'approved', 0, '2026-11-24T05:33:21Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T811', 'approved', 0, '2026-11-24T05:33:21Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T812', 'approved', 0, '2026-11-24T05:33:22Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T813', 'approved', 0, '2026-11-24T05:33:22Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T814', 'approved', 0, '2026-11-24T05:33:23Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T815', 'approved', 0, '2026-11-24T05:33:23Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T816', 'approved', 0, '2026-11-24T05:33:23Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T817', 'approved', 0, '2026-11-24T05:33:24Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T818', 'approved', 0, '2026-11-24T05:33:24Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T819', 'approved', 0, '2026-11-24T05:33:25Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T82', 'approved', -5, '2026-10-22T01:39:15Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T820', 'approved', 0, '2026-11-24T05:33:25Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T821', 'approved', 0, '2026-11-24T05:33:26Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T822', 'approved', 0, '2026-11-24T05:33:26Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T83', 'approved', -5, '2026-10-22T01:39:15Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T85', 'approved', -5, '2026-10-22T01:39:16Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T86', 'approved', -5, '2026-10-22T01:39:16Z', NULL);
@@ -105507,6 +107374,85 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T571', 'approved', 0, '2026-11-24T04:36:31Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T572', 'approved', 360, '2026-11-24T05:01:26Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T573', 'approved', 280, '2026-11-24T05:10:55Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T574', 'approved', 290, '2026-11-24T05:32:32Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T575', 'approved', 280, '2026-11-24T05:32:33Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T576', 'approved', 270, '2026-11-24T05:32:33Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T577', 'approved', 260, '2026-11-24T05:32:34Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T578', 'approved', 250, '2026-11-24T05:32:35Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T579', 'approved', 240, '2026-11-24T05:32:35Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T580', 'approved', 230, '2026-11-24T05:32:35Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T581', 'approved', 290, '2026-11-24T05:32:36Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T582', 'approved', 290, '2026-11-24T05:32:36Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T583', 'approved', 290, '2026-11-24T05:32:37Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T584', 'approved', 280, '2026-11-24T05:32:37Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T585', 'approved', 280, '2026-11-24T05:32:37Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T586', 'approved', 290, '2026-11-24T05:32:38Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T587', 'approved', 290, '2026-11-24T05:32:38Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T588', 'approved', 290, '2026-11-24T05:32:39Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T589', 'approved', 290, '2026-11-24T05:32:39Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T590', 'approved', 290, '2026-11-24T05:32:39Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T591', 'approved', 385, '2026-11-24T05:31:50Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T592', 'approved', 375, '2026-11-24T05:31:53Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T593', 'approved', 355, '2026-11-24T05:31:54Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T594', 'approved', 290, '2026-11-24T05:32:40Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T595', 'approved', 350, '2026-11-24T05:31:54Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T596', 'approved', 340, '2026-11-24T05:31:54Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T597', 'approved', 330, '2026-11-24T05:31:55Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T598', 'approved', 290, '2026-11-24T05:32:40Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T599', 'approved', 320, '2026-11-24T05:31:55Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T600', 'approved', 320, '2026-11-24T05:31:56Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T601', 'approved', 315, '2026-11-24T05:31:56Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T602', 'approved', 290, '2026-11-24T05:32:41Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T603', 'approved', 385, '2026-11-24T05:31:56Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T604', 'approved', 385, '2026-11-24T05:31:57Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T605', 'approved', 385, '2026-11-24T05:31:57Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T606', 'approved', 375, '2026-11-24T05:31:58Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T607', 'approved', 375, '2026-11-24T05:31:58Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T608', 'approved', 355, '2026-11-24T05:31:59Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T609', 'approved', 355, '2026-11-24T05:31:59Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T610', 'approved', 350, '2026-11-24T05:32:00Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T611', 'approved', 350, '2026-11-24T05:32:01Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T612', 'approved', 330, '2026-11-24T05:32:03Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T613', 'approved', 330, '2026-11-24T05:32:03Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T614', 'approved', 330, '2026-11-24T05:32:04Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T615', 'approved', 330, '2026-11-24T05:32:04Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T616', 'approved', 320, '2026-11-24T05:32:05Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T617', 'approved', 320, '2026-11-24T05:32:05Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T618', 'approved', 315, '2026-11-24T05:32:05Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T619', 'approved', 315, '2026-11-24T05:32:06Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T620', 'approved', 385, '2026-11-24T05:32:06Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T621', 'approved', 385, '2026-11-24T05:32:07Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T622', 'approved', 385, '2026-11-24T05:32:07Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T623', 'approved', 280, '2026-11-24T05:32:41Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T624', 'approved', 385, '2026-11-24T05:32:07Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T625', 'approved', 385, '2026-11-24T05:32:08Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T626', 'approved', 385, '2026-11-24T05:32:08Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T627', 'approved', 280, '2026-11-24T05:32:41Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T628', 'approved', 355, '2026-11-24T05:32:08Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T629', 'approved', 355, '2026-11-24T05:32:09Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T630', 'approved', 355, '2026-11-24T05:32:09Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T631', 'approved', 280, '2026-11-24T05:32:42Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T632', 'approved', 355, '2026-11-24T05:32:10Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T633', 'approved', 355, '2026-11-24T05:32:10Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T634', 'approved', 315, '2026-11-24T05:32:10Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T635', 'approved', 280, '2026-11-24T05:32:42Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T636', 'approved', 315, '2026-11-24T05:32:11Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T637', 'approved', 315, '2026-11-24T05:32:11Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T638', 'approved', 315, '2026-11-24T05:32:12Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T639', 'approved', 270, '2026-11-24T05:32:42Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T640', 'approved', 270, '2026-11-24T05:32:43Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T641', 'approved', 270, '2026-11-24T05:32:43Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T642', 'approved', 260, '2026-11-24T05:32:44Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T643', 'approved', 260, '2026-11-24T05:32:44Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T644', 'approved', 260, '2026-11-24T05:32:44Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T645', 'approved', 260, '2026-11-24T05:32:45Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T646', 'approved', 250, '2026-11-24T05:32:45Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T647', 'approved', 250, '2026-11-24T05:32:46Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T648', 'approved', 250, '2026-11-24T05:32:46Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T649', 'approved', 240, '2026-11-24T05:32:47Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T650', 'approved', 230, '2026-11-24T05:32:47Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T651', 'approved', 230, '2026-11-24T05:32:47Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T652', 'proposed', 490, '2026-11-24T05:36:10Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T72', 'approved', 0, '2026-11-06T21:27:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T82', 'approved', 0, '2026-11-06T21:27:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T83', 'approved', 0, '2026-11-06T21:27:41Z', NULL);
@@ -105519,15 +107465,11 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T273', NULL, 0, 'shampoo1232@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-23T19:54:41Z', '2026-11-23T19:54:41Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T276', NULL, 0, 'shampoo1232@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-24T05:04:31Z', '2026-11-24T05:04:31Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T463', NULL, 0, 'shampoo1232@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-24T05:10:58Z', '2026-11-24T05:10:58Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T479', NULL, 0, 'shampoo1232@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-24T05:05:18Z', '2026-11-24T05:05:17Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T488', NULL, 0, 'shampoo1232@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-24T05:05:04Z', '2026-11-24T05:05:03Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T589', NULL, 0, 'shampoo1232@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-23T19:25:12Z', '2026-11-23T19:25:11Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T608', NULL, 0, 'shampoo1232@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-24T05:04:39Z', '2026-11-24T05:04:39Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T691', NULL, 0, 'shampoo1232@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-23T19:26:02Z', '2026-11-23T19:26:02Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T705', NULL, 0, 'shampoo1232@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-23T20:02:12Z', '2026-11-23T20:02:12Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T742', NULL, 0, 'shampoo1232@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-24T05:10:52Z', '2026-11-24T05:10:51Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T767', NULL, 0, 'shampoo1232@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-24T05:38:08Z', '2026-11-24T05:38:08Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
@@ -105758,10 +107700,20 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T117', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T07:02:04Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T146', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:14:40Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T512', NULL, 0, 'pdftransferjr@mindattic.com', 'b773a79b-ba7e-46cb-9786-f886660e3188', '2026-11-24T04:43:00Z', '2026-11-24T04:42:59Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T540', NULL, 0, 'pdftransferjr@mindattic.com', 'b773a79b-ba7e-46cb-9786-f886660e3188', '2026-11-24T05:01:35Z', '2026-11-24T05:01:34Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T517', NULL, 0, 'pdftransferjr@mindattic.com', 'b773a79b-ba7e-46cb-9786-f886660e3188', '2026-11-24T05:32:30Z', '2026-11-24T05:32:30Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T549', NULL, 0, 'pdftransferjr@mindattic.com', 'b773a79b-ba7e-46cb-9786-f886660e3188', '2026-11-24T04:06:00Z', '2026-11-24T04:05:59Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T552', NULL, 0, 'pdftransferjr@mindattic.com', 'b773a79b-ba7e-46cb-9786-f886660e3188', '2026-11-24T05:06:09Z', '2026-11-24T05:06:09Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T571', NULL, 0, 'pdftransferjr@mindattic.com', 'b773a79b-ba7e-46cb-9786-f886660e3188', '2026-11-24T04:36:55Z', '2026-11-24T04:36:55Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T559', NULL, 0, 'pdftransferjr@mindattic.com', 'b773a79b-ba7e-46cb-9786-f886660e3188', '2026-11-24T05:32:41Z', '2026-11-24T05:32:40Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T562', NULL, 0, 'pdftransferjr@mindattic.com', 'b773a79b-ba7e-46cb-9786-f886660e3188', '2026-11-24T05:32:49Z', '2026-11-24T05:32:49Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T586', NULL, 0, 'pdftransferjr@mindattic.com', 'b773a79b-ba7e-46cb-9786-f886660e3188', '2026-11-24T05:36:42Z', '2026-11-24T05:36:41Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T590', NULL, 0, 'pdftransferjr@mindattic.com', 'b773a79b-ba7e-46cb-9786-f886660e3188', '2026-11-24T05:36:44Z', '2026-11-24T05:36:44Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T606', NULL, 0, 'pdftransferjr@mindattic.com', 'b773a79b-ba7e-46cb-9786-f886660e3188', '2026-11-24T05:32:34Z', '2026-11-24T05:32:34Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T612', NULL, 0, 'pdftransferjr@mindattic.com', 'b773a79b-ba7e-46cb-9786-f886660e3188', '2026-11-24T05:32:37Z', '2026-11-24T05:32:37Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T616', NULL, 0, 'pdftransferjr@mindattic.com', 'b773a79b-ba7e-46cb-9786-f886660e3188', '2026-11-24T05:32:44Z', '2026-11-24T05:32:43Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T620', NULL, 0, 'pdftransferjr@mindattic.com', 'b773a79b-ba7e-46cb-9786-f886660e3188', '2026-11-24T05:32:24Z', '2026-11-24T05:32:23Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T623', NULL, 0, 'pdftransferjr@mindattic.com', 'b773a79b-ba7e-46cb-9786-f886660e3188', '2026-11-24T05:36:47Z', '2026-11-24T05:36:47Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T624', NULL, 0, 'pdftransferjr@mindattic.com', 'b773a79b-ba7e-46cb-9786-f886660e3188', '2026-11-24T05:32:27Z', '2026-11-24T05:32:27Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T634', NULL, 0, 'pdftransferjr@mindattic.com', 'b773a79b-ba7e-46cb-9786-f886660e3188', '2026-11-24T05:32:46Z', '2026-11-24T05:32:46Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T652', NULL, 0, 'pdftransferjr@mindattic.com', 'b773a79b-ba7e-46cb-9786-f886660e3188', '2026-11-24T05:36:39Z', '2026-11-24T05:36:38Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T82', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T07:02:05Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T85', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T23:52:54Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T91', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T00:58:13Z');
@@ -109438,6 +111390,21 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32229, '
 - Support per battle: heal 15-35% of party max HP, 2-5 buff casts; healing under 60% of damage taken.
 - Next: owner confirms or edits these and okays running HeldTurnSoakReport (GAIDEN_SOAK_OUT=<dir>); then tune BattleConfig and record values + why in BIBLE 2.0.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32230, 'GG-T492', 'claude', '2026-11-24T05:08:48Z', 'Agent part done (51913659): docs/ART_BATCH.md has 44 paste-ready Midjourney prompts (characters end --niji 5, backdrops no niji) with exact target file names per tools/asset_names.py, plus the classes.json / dialogues.json / campaign.json follow-ups to apply once art lands. Regenerate with python -I tools/art_batch.py. OWNER must generate the art (no agent access to Midjourney); ticket left OPEN. Tiles 26-30 are generated by make_tiles.py, not Midjourney. Bosses 3-9 and bounties 12-22 need a portrait-override field before new art can show.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32231, 'GG-T276', 'ryand', '2026-11-24T05:12:22Z', 'Pass: cave-02 wave 2 now one Ceramic Knight (ceramicknight02 + chronomancer), lever 1 from GG-T758. UNMEASURED: no soak run (machine too slow to launch polish.py within budget). Next: re-measure cave-01..04 at 24 casual; if cave-02 still under 55%, try lever 2 (move/swap wraithknight01 gravestone) then lever 3 (recommended level 14 -> 15).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32232, 'GG-T608', 'ryand', '2026-11-24T05:13:50Z', 'd821256f (on main): GG-T469 gap closed in the cloud layer. BeforeLoad no longer offers, and Restore from cloud no longer restores, a cloud copy whose purchase ledger shares a store transaction id with a save in another slot on the device (same rule as Import save; own slot excluded). BIBLE 15.2 updated. Built clean (dotnet build GridGame.App.csproj). Still left open: everything else is owner-gated as in the 2026-11-23 note. The owner must provide the 12-digit Play Games Services application id, after creating the PGS project in Play Console with Android OAuth credentials for com.mindattic.gridgame (app-signing SHA-1 and upload-key SHA-1), turning on Saved Games, adding testers and publishing the config. Then an agent installs the GPGS Unity plugin v11+ (Google''s official package, not yet in the project), writes the id, adds the asmdef reference and the GG_PLAY_GAMES Android define, and builds the Android bundle. Then the on-phone check. Steps: docs/RELEASE_BUILD.md ''Cloud save''.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32233, 'GG-T479', 'ryand', '2026-11-24T05:16:01Z', 'Agent part landed f1abdb0d: GridGameBuild.BuildIOS (menu GridGame > Export iOS Xcode Project; tools/build.ps1 -Platform iOS) exports Build/iOS (bundle id com.mindattic.gridgame, IL2CPP, iPhone only, iOS 17.0, portrait, build number = commit count, auto-signing via GG_IOS_TEAM_ID); docs/RELEASE_BUILD.md iOS section has the owner''s Apple account, App Store Connect, Xcode signing/archive/TestFlight steps. Compile-checked on Windows; no export run (would switch the shared checkout to iOS). Left OPEN: owner needs a Mac + Apple Developer account to export, sign, archive and upload; close once a TestFlight build installs.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32234, 'GG-T613', 'ryand', '2026-11-24T05:16:59Z', 'Owner chose: run after agents finish. Parked until the checkout is idle (renaming the folder mid-work breaks running agents); re-approve then.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32235, 'GG-T276', 'ryand', '2026-11-24T05:21:07Z', 'Parked 2026-11-23: soaks are blocked by the tests-only-when-asked hook (MAT-T121); owner must say run the soaks (or exempt balance soaks). Re-approve then.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32236, 'GG-T760', 'ryand', '2026-11-24T05:23:06Z', 'Owner screenshot: ![image 4](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/GG-T760/2026-11-23-image-4.png) Owner: the party does not fit on one line, it should wrap around; make the inventory shorter and the text smaller.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32237, 'US-T612', 'ryand', '2026-11-24T05:39:28Z', 'Design settled by the first pass (no code written yet). UE 5.8 at D:\Games\UE_5.8.
+- Mixer: FAudioDeviceManager::GetAudioMixerDeviceFromWorldContext(world) -> Audio::FMixerDevice*; GetAudioMixerPlatform() -> IAudioMixerPlatformInterface*.
+- List: if GetDeviceInfoCache() non-null use GetAllActiveOutputDevices() (FAudioPlatformDeviceInfo Name, DeviceId, bIsSystemDefault), else GetNumOutputDevices + GetOutputDeviceInfo(i, info).
+- Switch: RequestDeviceSwap(DeviceID, false, TEXT("reason")); run list/switch on the audio thread (FAudioThread::RunCommandOnAudioThread), post results with FAudioThread::RunCommandOnGameThread (as AudioMixerBlueprintLibrary.cpp does).
+- Fallback: ticker re-checks the cached list; if the saved id vanished, swap to the bIsSystemDefault device, keep the saved value.
+- Build.cs has AudioMixer; probably add AudioMixerCore. New Audio/AudioOutput.cpp includes AudioMixer headers before anything pulling Cs.h (as GameAudio.cpp does).
+- Setting: cs::New<TextSetting>("audio.outputDevice", SettingGroups::Audio, "Output device", "", maxLen, desc, nullptr, keywords)->Applying(...); register via SettingsRegistry::AddDeclarationSource([]{ Audio::AudioOutput::Declare(); }) in GameSettingsHost.cpp after the GameAudio line. Skip when PlayerOptions::ScriptedRun() or !GameAudio::Enabled(). Audio group is not co-op shared.
+- UI: in PauseMenu.cpp DrawSetting (~685) and key handler (~585) special-case the AudioOutput setting as < name > buttons; Left/Right call AudioOutput::Cycle(step) over "System default" (empty id) then each device.
+- GameSettingsHost.cpp and PauseMenu.cpp hold other agents'' uncommitted edits: commit own hunks via git apply --cached. Don''t touch AmbientSounds.cpp.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AGP-T10', 'AutoGamePlay.Bugs: fingerprint findings (kind + location cell + normalized message + script step), dedupe within a run and against open tickets (tickets ticket list --json for the configured repo), build an evidence bundle directory (configured outside any repo, e.g. the game repo''s work/), and file via IBugSink: TicketsCliSink (tickets ticket new --type fix --summary ''... (found by autoplay)'' with a markdown repro: map, position, save name, PlayScript to reproduce, evidence path) and FileSink for other users. Rate-limit filings per run. docs/BUGS.md. Tests with a fake sink.
@@ -111980,6 +113947,597 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T694', '#
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T696', 'Left out of scope by GG-T694, now approved by Ryan. Rename: Android applicationIdentifier (currently com.mindattic.gridgamegaiden); Windows exe/APK names (GridGameGaiden.exe, GridGameGaiden.apk/.aab); install path C:\Apps\GridGameGaiden; file names GaidenBuild.cs(.meta), GaidenSync.jslib(.meta), GaidenTheme.tss(.meta), GaidenDefaultParticle.mat(.meta) (git mv to preserve .meta GUIDs); GAIDEN_* env vars in tools/polish.py, tools/harness.py, tools/androidcheck.py. Also fix tools/deploy-apk.ps1''s stale C:\Apps\Unity.GridGame\ install path reference, broken today by the Unity.GridGame -> GridGame.Unity folder rename (unrelated to Gaiden branding but same file). Package ID change carries Play Store app-identity risk if this app was ever published under com.mindattic.gridgamegaiden; this game has never shipped to the Play Store, so proceed, but note the old ID in the commit message in case a future re-publish needs to know it changed.', '2026-11-23T19:04:59Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T697', 'Latest sweep (artifacts/polish/2026-11-23_0108/scorecard.json, layout C 95.8): POL-C5 3 findings (mercenaries quote ''I set bones and sit with the Hollow...'' 234>219 / 241>216; abilities ''X-Potion x15'' 164>155), POL-C3 mercenaries rows ''10 battles / Haggle'' 0-2 px from the next target. Not covered by GG-T654 (empty bands/margins) or GG-T656 (Talents/Battle/Shop). Fix: let the quote wrap/clamp inside its card, give the card actions a 24 px gap, re-run the polish pass and confirm these rows clear.', '2026-11-23T19:23:21Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T728', 'Symptom: at a 441x1200 window (9:24.5, stage letterboxed to 9:23, 415 px wide) the second ability-bar slot reads ''and Guard'' instead of ''Stand Guard'' (left edge of the label clipped). Same slot is fine at 3:4, 10:16, 1:1 and 16:9 (stage ~490 px+). Cause: unknown; likely the label overflows the slot at a small rendered scale. Test: harness-style launch at 441x1200, battle greenvalley-02, screenshot; label must fit or ellipsize.', '2026-11-24T03:16:58Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T762', 'Owner 2026-11-23 (verbatim): "keep tuning, I want to be able to try the ''any hero every turn'', ''any hero who hasn''t moved this round'', and the ''Heroes on the timeline'' modes; I want all of them created and implemented separately and sequentially and tested headlessly and figure out which works better for what and why and report back to me which is the most fun, I can see all of them being viable game modes so each one needs to be built in carefully and organically to the entire game; write all the nested hierarchy tickets for this one now, approve it, and do them"
+
+
+**The modes (planner''s reading; each mode''s first task records the final rule in BIBLE section 2.13):**
+- **PartyWindow** (today, GG-T308): the party''s turn is the gap until the next enemy icon reaches the left edge, and every able hero acts once in it. Kept as the default and as the comparison baseline.
+- **A. Any hero every turn** (`AnyHeroEveryTurn`): each party turn exactly one hero acts, any able hero, the same one again if you like (Terra Battle style; close to the pre-GG-T308 rule). The action ends the party''s turn.
+- **B. Any hero who hasn''t moved this round** (`UnmovedThisRound`): one hero acts per party turn, but only a hero who hasn''t acted this round; when every able hero has acted, the round resets.
+- **C. Heroes on the timeline** (`HeroTimeline`): every hero has its own turn icon on the shared bar with the foes (Grandia style; BIBLE section 2 says today "heroes have no icons here"); when a hero''s icon reaches the left edge, that hero acts.
+If the owner meant today''s rule by "any hero every turn", the PartyWindow baseline covers it in the comparison.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.
+
+Order: groundwork, then mode A, then mode B, then mode C (each requires the one before), then the comparison. Separate from the continuous balance loop GG-T276.', '2026-11-24T05:26:01Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T763', 'Part of epic GG-T762.
+
+Owner 2026-11-23 (verbatim): "keep tuning, I want to be able to try the ''any hero every turn'', ''any hero who hasn''t moved this round'', and the ''Heroes on the timeline'' modes; I want all of them created and implemented separately and sequentially and tested headlessly and figure out which works better for what and why and report back to me which is the most fun, I can see all of them being viable game modes so each one needs to be built in carefully and organically to the entire game; write all the nested hierarchy tickets for this one now, approve it, and do them"
+
+
+**The modes (planner''s reading; each mode''s first task records the final rule in BIBLE section 2.13):**
+- **PartyWindow** (today, GG-T308): the party''s turn is the gap until the next enemy icon reaches the left edge, and every able hero acts once in it. Kept as the default and as the comparison baseline.
+- **A. Any hero every turn** (`AnyHeroEveryTurn`): each party turn exactly one hero acts, any able hero, the same one again if you like (Terra Battle style; close to the pre-GG-T308 rule). The action ends the party''s turn.
+- **B. Any hero who hasn''t moved this round** (`UnmovedThisRound`): one hero acts per party turn, but only a hero who hasn''t acted this round; when every able hero has acted, the round resets.
+- **C. Heroes on the timeline** (`HeroTimeline`): every hero has its own turn icon on the shared bar with the foes (Grandia style; BIBLE section 2 says today "heroes have no icons here"); when a hero''s icon reaches the left edge, that hero acts.
+If the owner meant today''s rule by "any hero every turn", the PartyWindow baseline covers it in the comparison.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:26:04Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T764', 'Part of feature GG-T763 (Turn mode groundwork), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:26:08Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T765', 'Part of story GG-T764 (BIBLE turn modes skeleton), feature GG-T763 (Turn mode groundwork), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:26:18Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T766', 'Part of feature GG-T763 (Turn mode groundwork), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:26:20Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T767', 'Part of story GG-T766 (One battle core, swappable turn modes), feature GG-T763 (Turn mode groundwork), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:26:36Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T768', 'Part of story GG-T766 (One battle core, swappable turn modes), feature GG-T763 (Turn mode groundwork), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:26:37Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T769', 'Part of story GG-T766 (One battle core, swappable turn modes), feature GG-T763 (Turn mode groundwork), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:26:39Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T771', 'Part of feature GG-T763 (Turn mode groundwork), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:26:46Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T773', 'Part of story GG-T771 (The player chooses a turn mode), feature GG-T763 (Turn mode groundwork), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:27:05Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T774', 'Part of story GG-T771 (The player chooses a turn mode), feature GG-T763 (Turn mode groundwork), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:27:08Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T775', 'Part of story GG-T771 (The player chooses a turn mode), feature GG-T763 (Turn mode groundwork), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:27:11Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T776', 'Part of feature GG-T763 (Turn mode groundwork), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:27:21Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T777', 'Part of story GG-T776 (Headless soak measures a turn mode), feature GG-T763 (Turn mode groundwork), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:27:32Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T778', 'Part of story GG-T776 (Headless soak measures a turn mode), feature GG-T763 (Turn mode groundwork), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:27:33Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T779', 'Part of epic GG-T762.
+
+Owner 2026-11-23 (verbatim): "keep tuning, I want to be able to try the ''any hero every turn'', ''any hero who hasn''t moved this round'', and the ''Heroes on the timeline'' modes; I want all of them created and implemented separately and sequentially and tested headlessly and figure out which works better for what and why and report back to me which is the most fun, I can see all of them being viable game modes so each one needs to be built in carefully and organically to the entire game; write all the nested hierarchy tickets for this one now, approve it, and do them"
+
+
+**The modes (planner''s reading; each mode''s first task records the final rule in BIBLE section 2.13):**
+- **PartyWindow** (today, GG-T308): the party''s turn is the gap until the next enemy icon reaches the left edge, and every able hero acts once in it. Kept as the default and as the comparison baseline.
+- **A. Any hero every turn** (`AnyHeroEveryTurn`): each party turn exactly one hero acts, any able hero, the same one again if you like (Terra Battle style; close to the pre-GG-T308 rule). The action ends the party''s turn.
+- **B. Any hero who hasn''t moved this round** (`UnmovedThisRound`): one hero acts per party turn, but only a hero who hasn''t acted this round; when every able hero has acted, the round resets.
+- **C. Heroes on the timeline** (`HeroTimeline`): every hero has its own turn icon on the shared bar with the foes (Grandia style; BIBLE section 2 says today "heroes have no icons here"); when a hero''s icon reaches the left edge, that hero acts.
+If the owner meant today''s rule by "any hero every turn", the PartyWindow baseline covers it in the comparison.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:27:38Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T780', 'Part of feature GG-T779 (Mode A: any hero every turn), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:27:51Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T781', 'Part of story GG-T780 (Any hero every turn: core rules), feature GG-T779 (Mode A: any hero every turn), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:28:06Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T782', 'Part of story GG-T780 (Any hero every turn: core rules), feature GG-T779 (Mode A: any hero every turn), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:28:08Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T783', 'Part of story GG-T780 (Any hero every turn: core rules), feature GG-T779 (Mode A: any hero every turn), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:28:10Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T784', 'Part of feature GG-T779 (Mode A: any hero every turn), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:28:15Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T785', 'Part of story GG-T784 (Any hero every turn: bots and enemy AI), feature GG-T779 (Mode A: any hero every turn), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:28:27Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T786', 'Part of feature GG-T779 (Mode A: any hero every turn), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:28:33Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T787', 'Part of story GG-T786 (Any hero every turn: UI and player-facing systems), feature GG-T779 (Mode A: any hero every turn), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:28:42Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T788', 'Part of story GG-T786 (Any hero every turn: UI and player-facing systems), feature GG-T779 (Mode A: any hero every turn), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:28:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T789', 'Part of feature GG-T779 (Mode A: any hero every turn), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:28:49Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T790', 'Part of story GG-T789 (Any hero every turn: soak and BIBLE), feature GG-T779 (Mode A: any hero every turn), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:28:59Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T791', 'Part of story GG-T789 (Any hero every turn: soak and BIBLE), feature GG-T779 (Mode A: any hero every turn), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:29:00Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T792', 'Part of epic GG-T762.
+
+Owner 2026-11-23 (verbatim): "keep tuning, I want to be able to try the ''any hero every turn'', ''any hero who hasn''t moved this round'', and the ''Heroes on the timeline'' modes; I want all of them created and implemented separately and sequentially and tested headlessly and figure out which works better for what and why and report back to me which is the most fun, I can see all of them being viable game modes so each one needs to be built in carefully and organically to the entire game; write all the nested hierarchy tickets for this one now, approve it, and do them"
+
+
+**The modes (planner''s reading; each mode''s first task records the final rule in BIBLE section 2.13):**
+- **PartyWindow** (today, GG-T308): the party''s turn is the gap until the next enemy icon reaches the left edge, and every able hero acts once in it. Kept as the default and as the comparison baseline.
+- **A. Any hero every turn** (`AnyHeroEveryTurn`): each party turn exactly one hero acts, any able hero, the same one again if you like (Terra Battle style; close to the pre-GG-T308 rule). The action ends the party''s turn.
+- **B. Any hero who hasn''t moved this round** (`UnmovedThisRound`): one hero acts per party turn, but only a hero who hasn''t acted this round; when every able hero has acted, the round resets.
+- **C. Heroes on the timeline** (`HeroTimeline`): every hero has its own turn icon on the shared bar with the foes (Grandia style; BIBLE section 2 says today "heroes have no icons here"); when a hero''s icon reaches the left edge, that hero acts.
+If the owner meant today''s rule by "any hero every turn", the PartyWindow baseline covers it in the comparison.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:29:04Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T793', 'Part of feature GG-T792 (Mode B: hasn''t moved this round), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:29:10Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T794', 'Part of story GG-T793 (Hasn''t moved this round: core rules), feature GG-T792 (Mode B: hasn''t moved this round), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:29:22Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T795', 'Part of story GG-T793 (Hasn''t moved this round: core rules), feature GG-T792 (Mode B: hasn''t moved this round), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:29:23Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T796', 'Part of story GG-T793 (Hasn''t moved this round: core rules), feature GG-T792 (Mode B: hasn''t moved this round), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:29:24Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T797', 'Part of feature GG-T792 (Mode B: hasn''t moved this round), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:29:29Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T798', 'Part of story GG-T797 (Hasn''t moved this round: bots and enemy AI), feature GG-T792 (Mode B: hasn''t moved this round), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:29:35Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T799', 'Part of feature GG-T792 (Mode B: hasn''t moved this round), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:29:40Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T800', 'Part of story GG-T799 (Hasn''t moved this round: UI and player-facing systems), feature GG-T792 (Mode B: hasn''t moved this round), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:29:54Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T801', 'Part of story GG-T799 (Hasn''t moved this round: UI and player-facing systems), feature GG-T792 (Mode B: hasn''t moved this round), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:29:56Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T802', 'Part of feature GG-T792 (Mode B: hasn''t moved this round), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:30:00Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T803', 'Part of story GG-T802 (Hasn''t moved this round: soak and BIBLE), feature GG-T792 (Mode B: hasn''t moved this round), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:30:10Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T804', 'Part of story GG-T802 (Hasn''t moved this round: soak and BIBLE), feature GG-T792 (Mode B: hasn''t moved this round), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:30:11Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T805', 'Part of epic GG-T762.
+
+Owner 2026-11-23 (verbatim): "keep tuning, I want to be able to try the ''any hero every turn'', ''any hero who hasn''t moved this round'', and the ''Heroes on the timeline'' modes; I want all of them created and implemented separately and sequentially and tested headlessly and figure out which works better for what and why and report back to me which is the most fun, I can see all of them being viable game modes so each one needs to be built in carefully and organically to the entire game; write all the nested hierarchy tickets for this one now, approve it, and do them"
+
+
+**The modes (planner''s reading; each mode''s first task records the final rule in BIBLE section 2.13):**
+- **PartyWindow** (today, GG-T308): the party''s turn is the gap until the next enemy icon reaches the left edge, and every able hero acts once in it. Kept as the default and as the comparison baseline.
+- **A. Any hero every turn** (`AnyHeroEveryTurn`): each party turn exactly one hero acts, any able hero, the same one again if you like (Terra Battle style; close to the pre-GG-T308 rule). The action ends the party''s turn.
+- **B. Any hero who hasn''t moved this round** (`UnmovedThisRound`): one hero acts per party turn, but only a hero who hasn''t acted this round; when every able hero has acted, the round resets.
+- **C. Heroes on the timeline** (`HeroTimeline`): every hero has its own turn icon on the shared bar with the foes (Grandia style; BIBLE section 2 says today "heroes have no icons here"); when a hero''s icon reaches the left edge, that hero acts.
+If the owner meant today''s rule by "any hero every turn", the PartyWindow baseline covers it in the comparison.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:30:17Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T806', 'Part of feature GG-T805 (Mode C: heroes on the timeline), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:30:26Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T807', 'Part of story GG-T806 (Heroes on the timeline: core rules), feature GG-T805 (Mode C: heroes on the timeline), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:30:44Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T808', 'Part of story GG-T806 (Heroes on the timeline: core rules), feature GG-T805 (Mode C: heroes on the timeline), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:30:47Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T809', 'Part of story GG-T806 (Heroes on the timeline: core rules), feature GG-T805 (Mode C: heroes on the timeline), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:30:49Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T810', 'Part of story GG-T806 (Heroes on the timeline: core rules), feature GG-T805 (Mode C: heroes on the timeline), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:30:50Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T811', 'Part of feature GG-T805 (Mode C: heroes on the timeline), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:30:58Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T812', 'Part of story GG-T811 (Heroes on the timeline: bots and enemy AI), feature GG-T805 (Mode C: heroes on the timeline), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:31:04Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T813', 'Part of feature GG-T805 (Mode C: heroes on the timeline), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:31:09Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T814', 'Part of story GG-T813 (Heroes on the timeline: UI and player-facing systems), feature GG-T805 (Mode C: heroes on the timeline), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:31:22Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T815', 'Part of story GG-T813 (Heroes on the timeline: UI and player-facing systems), feature GG-T805 (Mode C: heroes on the timeline), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:31:24Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T816', 'Part of feature GG-T805 (Mode C: heroes on the timeline), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:31:29Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T817', 'Part of story GG-T816 (Heroes on the timeline: soak and BIBLE), feature GG-T805 (Mode C: heroes on the timeline), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:31:40Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T818', 'Part of story GG-T816 (Heroes on the timeline: soak and BIBLE), feature GG-T805 (Mode C: heroes on the timeline), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:31:41Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T819', 'Part of epic GG-T762.
+
+Owner 2026-11-23 (verbatim): "keep tuning, I want to be able to try the ''any hero every turn'', ''any hero who hasn''t moved this round'', and the ''Heroes on the timeline'' modes; I want all of them created and implemented separately and sequentially and tested headlessly and figure out which works better for what and why and report back to me which is the most fun, I can see all of them being viable game modes so each one needs to be built in carefully and organically to the entire game; write all the nested hierarchy tickets for this one now, approve it, and do them"
+
+
+**The modes (planner''s reading; each mode''s first task records the final rule in BIBLE section 2.13):**
+- **PartyWindow** (today, GG-T308): the party''s turn is the gap until the next enemy icon reaches the left edge, and every able hero acts once in it. Kept as the default and as the comparison baseline.
+- **A. Any hero every turn** (`AnyHeroEveryTurn`): each party turn exactly one hero acts, any able hero, the same one again if you like (Terra Battle style; close to the pre-GG-T308 rule). The action ends the party''s turn.
+- **B. Any hero who hasn''t moved this round** (`UnmovedThisRound`): one hero acts per party turn, but only a hero who hasn''t acted this round; when every able hero has acted, the round resets.
+- **C. Heroes on the timeline** (`HeroTimeline`): every hero has its own turn icon on the shared bar with the foes (Grandia style; BIBLE section 2 says today "heroes have no icons here"); when a hero''s icon reaches the left edge, that hero acts.
+If the owner meant today''s rule by "any hero every turn", the PartyWindow baseline covers it in the comparison.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:31:46Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T820', 'Part of feature GG-T819 (Turn modes compared), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:31:55Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T821', 'Part of story GG-T820 (Report which turn mode is most fun), feature GG-T819 (Turn modes compared), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:32:04Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T822', 'Part of story GG-T820 (Report which turn mode is most fun), feature GG-T819 (Turn modes compared), epic GG-T762.
+
+**How to verify (every task in this tree):**
+- Build-only verification: compile Core with `dotnet build Tests/Core.Tests/Core.Tests.csproj -o <scratch dir>`; App code (Assets/GridGame/App) compiles only in Unity, so run `tools/build.ps1` / a Unity build only when the orchestrator''s heavy-process lease is free.
+- Write tests where the repo convention calls for them (Tests/Core.Tests, NUnit, `TestKit`), but do not run the test suite.
+- No game players for verification; if one is truly needed, only one at a time.
+- Headless bot soaks (dotnet test --filter on the soak class with `GRIDGAME_TURN_MODE`, or `tools/turn_modes.py` once it exists) are the measuring tool.
+- Today''s rule (GG-T308 party window, BIBLE section 2.0) stays the default `PartyWindow` mode and must replay identically.
+- Content and BattleConfig balance belongs to the continuous loop GG-T276; do not duplicate it. Mode-specific numbers live in per-mode BattleConfig constants only.', '2026-11-24T05:32:06Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GW-T2', 'User: continue the integration of wiki with Prose; eventually every universe will also have a wiki, leveraging the benefits of both while mitigating their weaknesses.', '2026-11-21T06:11:12Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GW-T3', 'User: maybe it should be Prose.Wiki.GLMZ - that makes more sense, cause the next would be Prose.Wiki.SCRY', '2026-11-21T07:52:55Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IDEA-T29', 'LAMP migration for **MindAttic.Ideas** (plan: MindAttic.Vault/docs/rfc/0003-lamp.md, Rollout step 5).
@@ -126662,9 +129220,444 @@ Scope:
 - Light-speed propagation: every radio message is an expanding wavefront from where and when it was sent; the player receives it when the front reaches them, labelled as sent X minutes/hours ago; old chatter keeps travelling, so distant listening picks up old messages.
 - No overstimulation: filtering, priority, frequency tuning, attenuation with distance/signal strength, a cap on concurrent voices, summaries for the rest.
 - HARD CONSTRAINT (owner: "most important of all"): every system must stay fast and reactive. TTS runs off the game thread and is cached/pre-synthesised; message propagation is analytic (arrival time = distance / c computed on demand, spatially bucketed), never a per-frame simulation of every wavefront; budgets per frame; nothing scales with "everyone in the galaxy talking".', '2026-11-24T05:10:40Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T574', 'Part of US-T573. Owner: "use free local voice api ... make all spoken text read outloud; so all comms are read and you can listen".
+
+## Survey (2026-11-23)
+- Gadfly speaks through ElevenLabs (cloud, paid; Gadfly.Server/Voice/VoiceServices.cs). Not local, not free: rejected.
+- Prose has a local engine layer (Prose.Core/Services/LocalTts.cs, PiperTtsService.cs, PythonTtsService.cs): Piper via piper.exe as a child process, Kokoro-82M and Chatterbox via Python, ElevenLabs as the paid fallback. It is C#, so the game cannot link it, and AGENTS.md forbids reading a sibling repo at build or run time. We copy its approach (a separate piper.exe process), not its code. Prose/tools/piper holds two .onnx voices but no piper.exe and no .onnx.json, so nothing there runs as is.
+
+## Decision
+- Primary engine: **Piper**, the last MIT release (rhasspy/piper 2023.11.14-2, piper_windows_amd64.zip). Do NOT take its successor OHF-Voice/piper1-gpl (GPL-3). It runs as a separate long-lived process (`piper.exe --model <voice>.onnx --json-input`, one JSON line per request with text, speaker_id and output_file) and is never linked into the game. espeak-ng (GPL-3) ships only inside Piper''s own folder as its phonemiser data, so the game never links it. Piper is fast (many times real time on one CPU core), small (about 75 MB per medium voice) and fully offline.
+- Voices: **en_US-libritts_r-medium** (CC BY 4.0, 904 speakers in one model). One loaded model gives every pilot a distinct voice through speaker_id, so there is no per-voice load cost. Attribution goes in Vendor/README.md. One or two single-speaker voices may be added later for anchors.
+- Fallback: **Windows SAPI 5**. It is built into Windows, works offline and needs no install, but sounds robotic. It is used when Piper is missing.
+- Rejected for now: Kokoro-82M (Apache-2.0, better quality but several times slower on CPU, a heavy Python or ONNX runtime, about 50 voices). It can be added later behind the same ITtsEngine interface.
+
+## Architecture (game module, Cpp/Source/SpaceGod/Voice/)
+- ITtsEngine: Synthesize(TtsRequest) -> Audio::SoundClip, called on the worker thread only. PiperTts runs one child process and reads output_file back as PCM16 mono at 22.05 kHz. SapiTts writes through ISpVoice to a memory stream.
+- TtsService: one FRunnable worker at below-normal priority with a bounded priority queue (cap 16; the lowest-priority request is dropped first). Results go to a queue that the game thread polls in Tick. **The game thread never waits on synthesis.**
+- VoiceCache: the key is a 64-bit hash of (engine+version, voice, speaker id, rate, effect version, normalised text). A memory LRU holds up to 32 MB of clips, and Saved/VoiceCache/<key>.wav holds up to 256 MB on disk, pruned on the worker. Prefetch(request) runs at low priority and is deduplicated against requests in flight.
+- CommsVoice plays lines on AudioBus::Voice through GameAudio::Play2D (US-T551 added the bus and its volume). The radio sound (300-3400 Hz band-pass, soft clip, faint static, squelch clicks) is applied to the PCM on the worker before caching. A line whose audio is not ready within 1.5 s is skipped; its text stays in the log.
+- Voice casting is a pure function from speaker identity to voice (Core), so the same pilot always sounds the same.
+- Everything here is view-local: each machine and co-op peer speaks for itself. Nothing enters the simulation, the lockstep frames or the digests. A scripted run is silent.', '2026-11-24T05:18:56Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T575', 'Part of US-T573. Owner: "obey the speed of light ... all communication with radio waves are permenetly traveling through the solar system so eventually you would be able to pick up chatter from millions of miles away and identify it as a message that was send X hours ago". HARD CONSTRAINT: fast and reactive, so nothing may scale with "everyone talking".
+
+## Design (Cpp/Source/SpaceGodCore/Radio/, pure C++, built by tools/build-core.ps1)
+- **RadioMessage** (POD): id (uint32), channel id, emitter key, faction, star system, origin heliocentric km (DVec3, where the emitter was when it sent), sentJd, power class (EIRP from a small table: suit, ship, station, fleet command, guard beacon), priority 0-3, situation kind, and a template id plus arguments. **Text is realised only when the message is heard.**
+- **RadioLog**, one per star system, created lazily, so only the listener''s system holds one. It is an append-only ring (cap 8192) ordered by sentJd, because emission happens in time order. It is indexed by time buckets of 15 game-minutes, each holding its [first,last) range and the AABB of its origins. A message is retired once its front has passed beyond the farthest range its power can be heard (Sol: hours) or when the cap evicts it; the retired count feeds the digests.
+- **Arrival is analytic**: t = sentJd + |L(t) - O| / c (LightSpeed::SpeedKmS). It is solved by fixed point from t0 = sentJd + |L(now) - O| / c in two iterations. A listener is far slower than c, so the error falls below a millisecond.
+- **RadioReceiver**, one per local listener, is a binary min-heap of (arrivalJd, log index). A message is scheduled only if its power''s maximum range covers the listener: R_max = sqrt(EIRP / (4 pi N_floor)), computed once per message.
+  - Emit: O(log n).
+  - Advance(now): pops entries with arrival <= now and re-checks each against the listener''s current position. If the listener moved and the front has not arrived yet, the entry is pushed back. At most 64 pops per frame; any overflow is counted for the digests. Per frame this costs O(k log n), with k the number of arrivals.
+  - Rebase, on a discontinuity (FTL, system change, rewind, load, tour, teleport): rebuilds the heap from the log. Each time bucket''s origin box gives a distance interval [dmin,dmax]. A bucket is skipped when every front in it has already passed (dmax < c(now - lastSent)). Cost: O(buckets + kept messages). This is how distant listening meets old chatter: fronts still in flight are found when you move out to meet them.
+- **No wavefronts between stars** (light would take years). Another system''s traffic reaches you only by the gate relays, on the timing Newswire already computes (RelayDays), labelled "relayed, sent X ago" (see the chatter feature).
+- Bounds: memory is at most 8192 messages per active system. Per frame: O(k log n) with k <= 64. Per rebase: O(B + m). There is no per-frame or per-front loop.
+- View-local. It is not saved (the history restarts empty after a load and is back-filled by the chatter sampler). It is not in the lockstep frames or the bench digests, and it never uses the simulation''s RNG.', '2026-11-24T05:19:07Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T576', 'Part of US-T573. Owner: "differnt groups dial into different frequencies".
+
+## Design
+- **RadioChannels** (Core, Cpp/Source/SpaceGodCore/Radio/) are built per star system from its factions and settlements. They are rebuilt only when a version stamp changes, never per frame. Kinds:
+  - Guard: distress; everyone monitors it.
+  - Traffic: one per settlement, for its traffic control.
+  - Civil/Trade: one per system.
+  - Fleet: one per faction, encrypted to outsiders.
+  - Pirate: one per raider group.
+  - Relay: interstellar bulletins.
+- Frequencies (MHz) are deterministic from kind and owner id, so a channel keeps its number across sessions.
+- Every RadioMessage names its channel.
+- **RadioTuner** (Core, view-local):
+  - Tuning: one tuned primary, up to 4 monitored channels, a scan mode (dwells about 4 real seconds on channels with recent activity) and presets 1-8.
+  - Mute set: Guard is always monitored unless the player mutes it.
+  - Routing: Accepts(message) returns Heard, CountedOnly (muted, untuned, or another faction''s encrypted traffic, shown only as "encrypted traffic" activity) or Ignored.
+  - Activity: per-channel counters over a rolling hour, O(1) per arrival.
+- Tuner panel (game UI): a dial, the channel list with activity meters, mute toggles, presets and scan, opened by a key binding.
+- Cost: channel lookup is O(1) by id, and nothing iterates every channel per frame.', '2026-11-24T05:21:22Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T577', 'Part of US-T573. Owner: "make sure real com chatter is used across the entire universe".
+
+## Design: cheap, lazy and bounded
+- **Three sources**, all of them emitting RadioMessages into the RadioLog of the listener''s system:
+  1. **Event-driven** (the "real" chatter). Reads the world''s event log incrementally from a cursor, so each tick costs O(new events), and turns notable events into messages on the right channel: a battle starts or ends (Fleet, Guard), distress (Guard), docking and undocking (Traffic), captures, piracy and the law (Fleet, Civil). Read-only: it never changes the world.
+  2. **Ambient sampler**. Only emitter groups within the **audible horizon** of a listener are sampled. The horizon is the R_max of the group''s power class plus how far the listener can travel before the front would arrive. Each group gets a Poisson draw on a coarse tick (60 game-seconds) from a view-local RNG seeded per session, never the simulation''s RNG. At most 32 emissions per tick. Catch-up after time warp is capped, then the sampler skips ahead. A density knob (a setting later) scales the rates.
+     - Back-fill: when a listener enters a system or rebases, the sampler synthesises the past (up to the light time across its horizon) at reduced density, so old chatter is still in flight to be picked up.
+  3. **Relay bulletins** from other systems ride Newswire.Received at the listener''s system, at most HeadlinesPerReport per report, on the Relay channel, sent-time from the report. There are no interstellar wavefronts.
+- **Text**: templates per (channel kind x situation) with slots. They are filled when the message is heard, never when it is emitted, from the simulation state at hand (names, CommsRuler ranges, goods, prices), and the pilot''s traits (Chatter, Warmth) pick the phrasing. The LLM (StoryVoice) is never used for ambient chatter.
+- Nothing iterates every ship in the galaxy. Systems without a listener generate nothing (their relays only summarise through Newswire, which already exists).', '2026-11-24T05:21:29Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T578', 'Part of US-T573. Owner: "need to figure out a way to not have total overstimulation with everyone in the solar system and galaxy all talking".
+
+## Design: the reception pipeline (each arrival from the RadioReceiver goes through it once)
+1. **Clarity** (Core, RadioReception): signal = EIRP / (4 pi d^2) against a noise floor.
+   - Clean: shown and spoken as is.
+   - Noisy: text with dropouts, chosen deterministically from the message id; spoken with more static.
+   - Unreadable: counted only.
+2. **Filter**: the RadioTuner''s Accepts (tuned, monitored, muted, encrypted) and a minimum-priority setting.
+3. **Relevance score**: priority weight x addressed to the player or their unit x own faction x tuned primary (above monitored) x proximity.
+4. **Route** by score:
+   - Spoken: goes to the voice arbiter.
+   - Subtitled: shown in the radio log only.
+   - Digest: counted into a per-channel summary.
+- **VoiceArbiter** (game): a concurrent-voice cap (default 1, at most 3), and comms-panel answers always come first.
+  - Queue: a priority queue capped at 8; the lowest entries drop to the digest.
+  - Staleness: a line not started within 20 real seconds is dropped.
+  - Preemption: Guard distress and lines addressed to the player cut in with a squelch.
+  - Prefetch: the top 3 queued lines are prefetched to TTS.
+  - Time warp: above 10x nothing ambient is spoken.
+- **Digests** (Core + HUD): one summary per channel per period, such as "Ceres Traffic: 23 messages in the last hour, mostly docking clearances; 1 distress call". Shown in the radio log; spoken at most once every 2 real minutes, and only when the voice is idle.
+- Cost: O(1) per arrival. The arbiter queue is bounded. Digests are counters, not stored messages.', '2026-11-24T05:21:35Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T579', 'Part of US-T573. These are view settings, each machine''s own and never shared in co-op. A scripted run (PlayerOptions::ScriptedRun) keeps the defaults. The defaults keep every scripted run and bench digest unchanged. Rows:
+- Sound group, after Voice volume: Spoken comms (on), Voice engine (Auto/Piper/Windows), Radio effect (on).
+- Gameplay or Interface group: Chatter density (Off/Low/Normal/High, default Normal), Radio subtitles (on), Max voices (1-3, default 1), Minimum radio priority.
+Each row is wired to the consumer the earlier features built.', '2026-11-24T05:21:44Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T580', 'Part of US-T573. Owner: "most important of all is every system in this game needs to be fast and reactive, lets not build ourselves into a pile of bricks".
+
+## Budget (enforced and measured)
+- Game thread: all radio work (host tick, receiver Advance, sampler, event chatter, reception, arbiter, digests) <= 0.25 ms per frame, measured with FPlatformTime::Cycles64. When it runs over, the sampler and digests move to the next frame (round-robin).
+- Caps:
+  - Arrivals: at most 64 popped per frame.
+  - Sampler: at most 32 emissions per tick.
+  - Log: at most 8192 messages per active system.
+  - TTS: queue at most 16; clip caches 32 MB in memory and 256 MB on disk.
+- TTS runs only on its worker, below normal priority. The game thread never blocks on a process, file or COM call.
+- Warp policy: above 10x nothing ambient is spoken; above 1000x ambient sampling pauses and only digests and events run.
+- Profiling: an Unreal stats group STATGROUP_SpaceGodRadio (cycle counters, plus counters for log size, heap size, arrivals per frame, digested messages, TTS queue depth, cache hits and misses, mean synth ms), TRACE_CPUPROFILER_EVENT_SCOPE in each stage, and the console command sg.Radio stats.
+- Documentation: docs/COMMS_RADIO.md records the TTS decision, the propagation design with its complexity bounds, these budgets and the knobs.', '2026-11-24T05:21:51Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T581', 'Story under US-T574. When the player hails and is answered, the answer is heard in a voice on the Voice bus. Synthesis runs off the game thread through Piper, and the clips are cached on disk and in memory. See US-T574 for the TTS decision and the architecture.', '2026-11-24T05:22:09Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T582', 'Story under US-T574. Every pilot, station and faction has a stable voice of its own. A PC without Piper still speaks, through Windows SAPI. See US-T574.', '2026-11-24T05:22:16Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T583', 'Story under US-T574. Encounter conversations, surrender hails, stranded-ship calls and LLM-voiced story lines are read aloud like the comms panel''s answers. See US-T574.', '2026-11-24T05:22:22Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T584', 'Story under US-T575. A radio message is heard when its wavefront reaches the listener. Moving through space, or jumping to a far point, meets fronts that are still in flight, so old chatter can be picked up from far away. See US-T575 for the propagation design and its bounds.', '2026-11-24T05:22:29Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T585', 'Story under US-T575. Every heard message shows in the HUD radio log with its channel, sender, range and how long ago it was sent, for example ''sent 8.3 min ago, 1.0 AU''. See US-T575.', '2026-11-24T05:22:36Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T586', 'Repo: SpaceGod.Unreal. Area: tooling and vendoring, no C++ yet.
+Files:
+- tools/fetch-piper.ps1 (new). Downloads the pinned Piper release (rhasspy/piper tag 2023.11.14-2, piper_windows_amd64.zip, MIT; NOT piper1-gpl) and the voice en_US-libritts_r-medium (.onnx and .onnx.json from huggingface rhasspy/piper-voices, at a pinned revision, CC BY 4.0) into Vendor/Piper/. It checks each file''s SHA256, is idempotent, and takes -Force to fetch again. Running it once to record the hashes is allowed.
+- .gitignore: the binaries and models under Vendor/Piper/ are not committed; the script is.
+- Vendor/README.md: a Piper row giving the version, licences (Piper MIT; espeak-ng-data GPL-3, shipped inside Piper''s own folder and used only by piper.exe, never linked by the game; the voice CC BY 4.0 with its attribution) and how to refresh.
+- tools/package.ps1: stages Vendor/Piper next to the packaged executable (for example <exe dir>/Piper) when it is present, and says so when it is not, since the game then falls back to Windows SAPI.
+Outcome: the script parses (powershell -NoProfile -Command "$null = [scriptblock]::Create((Get-Content -Raw tools/fetch-piper.ps1))") and package.ps1 still parses the same way. No C++ changes, so no editor build is needed.
+
+Verification is build-only: the two parse checks above. Do not run tests, smokes, the bench or the game. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature US-T574 for the TTS decision before starting.', '2026-11-24T05:24:32Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T587', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGod/Voice/ (new folder).
+Files:
+- Voice/TtsEngine.h: TtsRequest {text, VoiceSpec voice (engine voice name, speaker id, length scale, SAPI fallback index), priority, effect flag} and ITtsEngine {Name, Version, Available, Synthesize(const TtsRequest&) -> Audio::SoundClip}, called on the worker thread only.
+- Voice/PiperTts.h/.cpp: finds Piper in the env var SPACEGOD_PIPER_DIR, else <exe dir>/Piper, else the repo''s Vendor/Piper in an editor build. It starts one long-lived `piper.exe --model <onnx> --json-input` with FPlatformProcess::CreateProc and CreatePipe for stdin and stdout. Per request it writes {"text","speaker_id","length_scale","output_file"}, waits for the line that echoes the output path (10 s timeout), and reads the RIFF PCM16 mono WAV into a SoundClip at its sample rate. It restarts the process once if it dies; after that it reports unavailable.
+- Voice/TtsService.h/.cpp: one FRunnable worker at TPri_BelowNormal, a bounded priority queue (cap 16; a new request evicts the lowest one), Request(req, callback), Cancel(id) and Shutdown at exit. Results go to a lock-free queue that Tick() drains on the game thread; there is no AsyncTask per line. Until the fallback task, the engine choice is Piper when Available, else silent.
+- Tick and Shutdown are wired into the app''s frame and exit (UnitySpaceApp, wherever GameAudio is ticked or torn down).
+Rules: the game thread never waits on the process, pipe or file. Nothing runs when GameAudio::Enabled() is false.
+Outcome: the editor build succeeds.
+
+
+Verification is build-only: the editor build succeeds (tools/build.ps1). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream; scripted runs (PlayerOptions::ScriptedRun, GameAudio disabled) stay silent and unchanged. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent) for the design before starting.', '2026-11-24T05:23:37Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T588', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGod/Voice/.
+Files:
+- Voice/VoiceCache.h/.cpp: the key is a 64-bit hash (CityHash64 or FNV-1a) of the engine name and version, voice name, speaker id, length scale, effect version and normalised text (trimmed, whitespace collapsed). It holds a memory LRU of SoundClips (at most 32 MB of samples). On disk it keeps Saved/VoiceCache/<key-hex>.wav (PCM16), pruned on the worker at start to at most 256 MB, oldest first.
+- Voice/TtsService.cpp: requests are answered from the memory cache on the game thread at once, otherwise from disk then the engine on the worker. Prefetch(req) is low priority and is deduplicated against queued and in-flight keys.
+Outcome: the editor build succeeds.
+
+
+Verification is build-only: the editor build succeeds (tools/build.ps1). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream; scripted runs (PlayerOptions::ScriptedRun, GameAudio disabled) stay silent and unchanged. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent) for the design before starting.', '2026-11-24T05:23:44Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T589', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGod/Voice/ and Audio/.
+Files:
+- Voice/CommsVoice.h/.cpp: Speak(SpokenLine {who, text, VoiceSpec, priority, radio=true}) queues lines and plays them one after another with GameAudio::Play2D(clip, AudioBus::Voice). A line whose clip is not ready 1.5 s after its turn comes is skipped (its text is already in the comms log). Stop() is called on a scene change. A default VoiceSpec is used until voice casting exists.
+- Voice/RadioEffect.h/.cpp: applied to the PCM on the TTS worker before caching, and its version is part of the cache key. It is a biquad band-pass at 300-3400 Hz, a soft clip, a static bed at about -30 dB, and 40 ms squelch clicks at the start and end, using a deterministic noise seed from the cache key.
+- CommsVoice::Tick is wired from the app''s frame.
+Rules: silent when GameAudio::Enabled() is false. Nothing here blocks the game thread.
+Outcome: the editor build succeeds.
+
+
+Verification is build-only: the editor build succeeds (tools/build.ps1). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream; scripted runs (PlayerOptions::ScriptedRun, GameAudio disabled) stay silent and unchanged. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent) for the design before starting.', '2026-11-24T05:23:50Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T59', 'Symptom: tools/race.ps1 (-SpaceGodRace) with the highest warp after New Game (2026-11-03 12:00 UTC, seed 1), a staged Sol/Reach battle off Uranus and a trip to Alpha Centauri and back: about 7 frames into warp 9 both tracks reach Fleet.BaseStateOf for a ShipPhase.Parked ship whose Controller.Orbit is null (Fleet.cs:335 / Fleet.cpp:236, from UnitySpaceApp.UpdateShips). C#: NRE logged every frame, the rest of Update skipped. C++: EXCEPTION_ACCESS_VIOLATION reading 0x40 in ParkingOrbit::OffsetAt (Ships.cpp:149). Both tracks behave the same up to the throw, so this is the original Core''s (C# keeps running because an exception in Update is caught per frame, as in Unity). Candidates: a path that sets Phase = Parked without an Orbit (CarrierWings.cs:83 makes craft Parked; Fleet.cs, DeepSpace.cs:616, GateTransit.cs:72, InterstellarTraffic.cs:609). The race measures warp 8 (1 month/s) instead. Fix per the faithful-port rule only if it is a genuine bug in the original.', '2026-11-04T02:14:49Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T590', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGodCore/Comms/ (Core, pure C++).
+Files:
+- Comms/VoiceCasting.h/.cpp: struct VoiceSpec {cs::String EngineVoice = "libritts_r"; int SpeakerId; double LengthScale; int SapiIndex; double Pitch}. VoiceCasting::Of(NamedPilot), Of(Settlement) (one calm traffic-control voice per settlement), Of(Faction) (a fallback for an unnamed hull) and Player(held unit).
+- Each speaker id is taken from its faction''s own disjoint slice of 0..903 by a stable hash of the pilot or settlement id: no RNG, the same across sessions and peers. LengthScale is 0.9-1.15 from the pilot''s Chatter trait (Comms/Pilots.h): loose talkers are quicker. SapiIndex comes from the same hash, for the fallback engine.
+Outcome: tools/build-core.ps1 compiles it.
+
+
+Verification is build-only: tools/build-core.ps1 compiles it (an editor build too if a game file changed). Do not run tests, smokes, the bench or the game. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent of the story/parent) for the design before starting.', '2026-11-24T05:23:57Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T591', 'Owner request (US-T501 note, 2026-11-23): "add ''`'' key for console so I can type things in to make it happen, find the best standards and practices ... unreal game console so that I can do things from the console, which can be toggled on and off in Options > Developer > Console [x]; default to on for now".
+
+## Findings: the approach every task below follows
+
+- **Use Unreal''s own console, subclassed; do not hand-roll one.** UGameViewportClient creates a UConsole (class from [/Script/Engine.Engine] ConsoleClassName) and gives it viewport keys before the player controller. It already has: a one-line typing state and a large scrollback state; history (UConsole::HistoryBuffer, a config property the engine persists between runs); Tab / arrow autocomplete built by BuildRuntimeAutoCompleteList from every registered console object (IConsoleManager cvars and commands with their help text), UFUNCTION(Exec) functions on the player controller, cheat manager and game mode, and [/Script/EngineSettings.ConsoleSettings] ManualAutoCompleteList; and the viewport registers it as a log output device, so UE_LOG lines (the sg.* commands'' replies) show in its scrollback.
+- **What exists here.** Config/DefaultInput.ini already has ConsoleKeys=Tilde, and about 99 sg.* commands are registered with FAutoConsoleCommand across the *Command.cpp files (sg.Cheat runs any dev-menu entry by path, sg.CheatMenu opens the Shift+F1 dev menu, sg.Settings lockin/unlock/list is US-T512''s lock-in, sg.Bindings, sg.Tour, sg.Rewind ...). Those are the commands the console drives; none needs re-registering.
+- **Subclass:** USpaceGodConsole : UConsole (new Cpp/Source/SpaceGod/Console/), set as ConsoleClassName. Its InputKey override opens and closes on the game''s own rebindable Console action (KeyAction::Console, default the backtick) instead of ConsoleKeys (cleared), and only while the setting is on; steps None -> Typing -> Open -> None (FakeGotoState); Esc closes as the engine does.
+- **Autocomplete for game things** through the static UConsole::RegisterConsoleAutoCompleteEntries delegate (FAutoCompleteCommand with Command and Desc), not ini lists, so entries follow the live settings registry and the dev menu.
+- **Replies:** new commands use FConsoleCommandWithArgsAndOutputDeviceDelegate (or ...WithWorldArgsAndOutputDevice) and write to the FOutputDevice they are given, so the answer appears in the console as well as the log. Any cvar that changes play carries ECVF_Cheat.
+- **Settings from the console:** sg.Get / sg.Set / sg.Reset / sg.Toggle / sg.Find over GameSettingsHost::Registry(), covering tune.*, dev.* and every player option. Not one cvar per setting: mirroring each GameSetting as an IConsoleVariable keeps two stores in step, and the cvar set-by priority (ECVF_SetByCode below ECVF_SetByConsole) would silently refuse the menu''s later changes. Autocomplete still offers every key ("sg.Set tune.flight.turnRate") with its label, value and default. A change goes through the same path the Options menu uses (applied live, a co-op shared group following CoopSettings'' host rule, the profile saved).
+- **Input isolation:** the game''s GUI layer reads keys through a Slate IInputProcessor (UnityCompat/GuiHost.cpp) that sees every key before the viewport, and Input/UnrealInputDevice.cpp polls the player controller; while the console is open both must read nothing, or typing "w" thrusts.
+- **The backtick** is today ToggleScale''s second default binding (Input/KeyBindings.cpp; G stays). It moves to the new Console action, which the Key bindings page shows and can rebind (keyboard keys only).
+- **The toggle:** Options > Developer > Console, setting dev.console in SettingGroups::Developer, **default ON for now**. Not one of DevFlags::All (that list means "off = the simulation unchanged" and AnyOn() badges the HUD and co-op); each machine''s own, never shared in co-op. Off: the key does nothing and an open console closes. US-T517''s Developer page lists it with the Developer group.
+- **Shipping:** Unreal compiles the console out of Shipping (ALLOW_CONSOLE is 0 under UE_BUILD_SHIPPING unless SpaceGod.Target.cs sets bUseConsoleInShipping = true). Development and editor builds, which the owner plays, have it. Turning it on in Shipping is the owner''s later call; no task here does it.', '2026-11-24T05:23:58Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T592', 'Owner follow-up (US-T501 note): main menu "Load game, save game, options, return to title, exit game". Today the pause menu (UI/PauseMenu.cpp DrawMain) lists Resume, Help, Encyclopedia, Society, Save / Load (one drawer, Hud::DrawSaves), Settings, Showcase Tour, Credits, Main Menu, Quit; the title menu (UI/MainMenu.cpp DrawMain) has Continue, New Game, Quick Start, Load Game, Co-op, Settings, Help, Credits, Extras, Quit. Saving needs a game running, so the title menu gets no Save Game; its Load Game is already there.', '2026-11-24T05:24:00Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T593', 'Owner follow-up (US-T501 note): "full controls". What exists (Input/KeyBindings.h, US-T249/US-T437): about 120 actions, three slots each, any key with modifiers, mouse buttons and wheel, pad buttons, triggers and stick directions, trigger modes (press, hold, double-tap, long press), the Key bindings page with conflicts and Reset; plus look sensitivity, smoothing, split axes, invert, pad dead zone, aim sensitivity, invert and vibration (US-T557). Still fixed: the number keys 0-9 (and their Alt / Alt+Shift fire-group meanings), the d-pad steps, which stick moves and which aims. Esc, the menu navigation keys and the plain left/right mouse select and look stay fixed by design.', '2026-11-24T05:24:02Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T594', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGod/UnitySpaceApp.Comms.cpp (plus its .inl declarations).
+Changes:
+- CommsAnswer: each CommsLine that is not FromSpeaker is spoken through CommsVoice in the other party''s voice (VoiceCasting from Core, using the party''s NamedPilot through Comms::PilotOf, or the station). The speaker''s own lines are spoken in the held unit''s voice, quieter and without the radio effect. The text spoken is the shown text, rider included.
+- The surrender hail (Comms::SurrenderHail / SurrenderOffer) is spoken once when it first appears, and prefetched as soon as the hail is detected.
+- Co-op: only the speaking peer''s panel speaks (the same rule as its display).
+Outcome: the editor build succeeds.
+
+
+Verification is build-only: the editor build succeeds (tools/build.ps1). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream; scripted runs (PlayerOptions::ScriptedRun, GameAudio disabled) stay silent and unchanged. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent) for the design before starting.', '2026-11-24T05:24:04Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T595', 'Owner follow-up (US-T501 note): Display "(fullscreen/windowed/borderless) resolution, Vsync, all the possible options". Window mode, resolution and VSync exist (Core/DisplaySettings, PauseMenu''s Display page); brightness, HDR and the background frame cap are declared (US-T544); the monitor is US-T546; field of view, frame-rate cap, render scale and upscaler are in Graphics. Missing: refresh rate, low latency, menu frame cap.', '2026-11-24T05:24:04Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T596', 'Repo: SpaceGod.Unreal. Files: Cpp/Source/SpaceGod/GraphicsEffects.h/.cpp (from US-T549: graphics.bloom through the cameras'' post-process bloom intensity, graphics.vignette through vignette intensity, graphics.hardwareRayTracing through r.Lumen.HardwareRayTracing, hidden when the RHI or project has no ray tracing). Defaults equal today''s look. A view setting: each machine''s own, never shared in co-op; a scripted run (PlayerOptions::ScriptedRun) keeps the default so shots and digests stay alike. Outcome: the three rows are registered in the Graphics group and applied; the editor build succeeds. Verification is build-only: the editor build succeeds (tools/build-core.ps1 is enough for a Core-only change). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. Defaults stay exactly at today''s behaviour (every new setting defaults to what the game does now, unless this ticket says otherwise) so nothing the bench digests (Bench/expected-digests.json) moves.', '2026-11-24T05:24:07Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T597', 'Owner follow-up (US-T501 note): "sound has master, sound effects, voice, music and what kind of sound, headphones, speakers, dolby all that". Master, music, effects, interface, ambience and mute exist; voice is US-T551; background mute, sound while paused and dynamic range are US-T552.
+
+Findings for these tasks (each task checks the engine install before relying on any of it):
+- Unreal''s audio mixer opens the output device at the channel count Windows reports for it; 5.1 or 7.1 is the device''s speaker setup in Windows Sound settings. The game decides how sounds pan: attenuation settings (bSpatialize, SpatializationAlgorithm Panning or HRTF binaural through a spatialization plugin, StereoSpread).
+- The output device can be listed and switched at runtime (UAudioMixerBlueprintLibrary::GetAvailableAudioOutputDevices and SwapAudioOutputDevice, AudioMixer module).
+- Windows Sonic, Dolby Atmos for Headphones and Dolby Atmos home theatre are Windows spatial-sound formats the player turns on in Windows; a game reaches them only through a platform spatial-audio plugin. If this engine install has none, the row says so instead of pretending.
+- au.MaxChannels caps simultaneous voices (a sound quality choice).', '2026-11-24T05:24:09Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T598', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGod/Voice/ and SpaceGod.Build.cs.
+Files:
+- Voice/SapiTts.h/.cpp: an ITtsEngine on SAPI 5. COM is initialised on the TTS worker thread. ISpVoice writes to an ISpStream over a memory IStream at SPSF_22kHz16BitMono, and the result becomes a SoundClip. The voice is picked from the installed voice tokens by VoiceSpec.SapiIndex, the rate comes from LengthScale, and the pitch from an SSML prosody tag. Windows headers go inside AllowWindowsPlatformTypes/HideWindowsPlatformTypes.
+- SpaceGod.Build.cs: sapi.lib and ole32.lib are added on Win64 only.
+- TtsService: the engine is chosen as Piper when available, else SAPI, else silent, and the choice is logged once.
+Outcome: the editor build succeeds.
+
+
+Verification is build-only: the editor build succeeds (tools/build.ps1). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream; scripted runs (PlayerOptions::ScriptedRun, GameAudio disabled) stay silent and unchanged. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent) for the design before starting.', '2026-11-24T05:24:10Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T599', 'Owner follow-up (US-T501 note): "every ... gameplay ... option you can think of". Already there: difficulty, autosave interval, distance units, notices, confirm before leaving, layout with situation, camera shake, pause on focus loss, tutorial hints.', '2026-11-24T05:24:11Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T600', 'Repo: SpaceGod.Unreal. Files: Cpp/Source/SpaceGod/InterfaceOptions.h/.cpp (from US-T559: interface.safeZone, default 0), Cpp/Source/SpaceGod/UI/HudDock.h and UI/Hud.cpp (docked panels, edge indicators and the drawer placed inside the inset).  A view setting: each machine''s own, never shared in co-op; a scripted run (PlayerOptions::ScriptedRun) keeps the default so shots and digests stay alike. WARNING: Hud.cpp and the other UI/Hud.* files may hold other agents'' uncommitted edits: edit around them and never revert, stash or commit them; commit only your own hunks (git diff <file> > own.patch, trim it to your hunks, git apply --cached own.patch, then commit). Outcome: interface.safeZone is registered and the HUD''s docking honours it; the editor build succeeds. Verification is build-only: the editor build succeeds (tools/build-core.ps1 is enough for a Core-only change). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. Defaults stay exactly at today''s behaviour (every new setting defaults to what the game does now, unless this ticket says otherwise) so nothing the bench digests (Bench/expected-digests.json) moves.', '2026-11-24T05:24:13Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T601', 'Owner follow-up (US-T501 note): "every ... accessibility ... option you can think of". Exists (PlayerOptions, US-T252): UI scale, text size, HUD opacity, colour-blind safe stance palette, reduce flashes; camera shake (US-T555). Covered elsewhere in this epic: mono audio (Sound > Speaker mode), hold actions as toggles (Full control rebinding). New settings live in a new AccessibilityOptions source in the Accessibility group, so PlayerOptions.cpp (which other agents edit) is left alone.', '2026-11-24T05:24:16Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T602', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGod/UnitySpaceApp.Encounter.cpp, GameVoice.cpp, and wherever stranded-ship calls and story hooks are shown (find the callers of Core::StoryVoice::Hook and Voice).
+Changes:
+- Encounter conversations (US-T239): each NPC line is spoken through CommsVoice in its party''s VoiceCasting voice as it shows. When choices are offered, the NPC lines of each choice''s next node are prefetched.
+- Stranded-ship and distress calls and story hooks shown on comms are spoken.
+- An LLM-reworded line (GameVoice / StoryVoice) is spoken when its reply arrives if it is still on screen; otherwise it is dropped.
+Outcome: the editor build succeeds.
+
+
+Verification is build-only: the editor build succeeds (tools/build.ps1). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream; scripted runs (PlayerOptions::ScriptedRun, GameAudio disabled) stay silent and unchanged. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent) for the design before starting.', '2026-11-24T05:24:17Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T603', 'See the parent feature''s findings for the approach.', '2026-11-24T05:24:18Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T604', 'See the parent feature''s findings for the approach.', '2026-11-24T05:24:20Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T605', 'See the parent feature''s findings for the approach.', '2026-11-24T05:24:23Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T606', 'Repo: SpaceGod.Unreal. Files: Cpp/Source/SpaceGod/UI/Hud.cpp (DrawSaves draws by mode: its title and which buttons the header and each row offer), Cpp/Source/SpaceGod/UI/Hud.Main.inl, Cpp/Source/SpaceGod/UnitySpaceApp.Saves.inl/.cpp (a SavesMode beside ShowSaves: Both, Save, Load; Input.ToggleSaves opens Both). Save mode greys out with UnitySpaceApp::SaveBlocker''s reason, as New Save does today. WARNING: Hud.cpp and the other UI/Hud.* files may hold other agents'' uncommitted edits: edit around them and never revert, stash or commit them; commit only your own hunks (git diff <file> > own.patch, trim it to your hunks, git apply --cached own.patch, then commit). Outcome: the saves drawer takes a mode (Both, Save, Load) and draws its title and buttons by it; the editor build succeeds. Verification is build-only: the editor build succeeds (tools/build-core.ps1 is enough for a Core-only change). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. Defaults stay exactly at today''s behaviour (every new setting defaults to what the game does now, unless this ticket says otherwise) so nothing the bench digests (Bench/expected-digests.json) moves.', '2026-11-24T05:24:25Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T607', 'Repo: SpaceGod.Unreal. Files: Cpp/Source/SpaceGod/UI/PauseMenu.h/.cpp (labels, MainCount, TourEntry and PressMain renumbered; ShowSaveGame and ShowLoadGame actions in place of ShowSaves; Save Game greyed with SaveBlocker''s reason; the settings heading reads OPTIONS; the leave confirm reads Return to the title screen? / Exit the game? with buttons Return to Title / Exit Game; the panel''s height fits the rows), Cpp/Source/SpaceGod/UnitySpaceApp.cpp (wire the two actions to the drawer''s Save and Load modes), Cpp/Source/SpaceGod/UI/MainMenu.cpp (Settings becomes Options, Quit becomes Exit Game), Smoke/FeatureAudit.cpp and Smoke/SpaceGodSmoke.cpp only where they name the old labels or indexes. Pad and keyboard navigation (mainPick, Up/Down, Enter) covers the new rows. WARNING: PauseMenu.cpp/.h, MainMenu.cpp and UnitySpaceApp.cpp may hold other agents'' uncommitted edits: edit around them and never revert, stash or commit them; commit only your own hunks (git diff <file> > own.patch, trim it to your hunks, git apply --cached own.patch, then commit). Outcome: the pause menu lists the eleven entries above and the title menu says Options and Exit Game; the editor build succeeds. Verification is build-only: the editor build succeeds (tools/build-core.ps1 is enough for a Core-only change). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. Defaults stay exactly at today''s behaviour (every new setting defaults to what the game does now, unless this ticket says otherwise) so nothing the bench digests (Bench/expected-digests.json) moves.', '2026-11-24T05:24:28Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T608', 'See the parent feature for what is already rebindable.', '2026-11-24T05:24:30Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T609', 'See the parent feature.', '2026-11-24T05:24:32Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T61', 'tools/race.ps1 -Track CSharp, three Shipping runs: in the ''battle'' phase (Sol/Reach battleships and cruiser off Uranus, WatchBattle, 1 min/s) the GPU time (RHIGetGPUFrameCycles) is 115-119 ms p50, 120-167 ms p95, wall p95 225-245 ms; the C++ package on the same frames: 2.5 / 5.0 ms. Sol idle and the trip are normal on both. Suspects: BattleFx / beam or particle meshes re-uploaded per frame, a scene capture, or a GPU readback stall in the facade.', '2026-11-04T06:05:32Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T610', 'Repo: SpaceGod.Unreal. Files: Cpp/Source/SpaceGodCore/DisplaySettings.h/.cpp (a chosen RefreshHz, 0 = the highest; Format and Parse still read old strings), Cpp/Source/SpaceGod/UI/DisplayBackend.cpp and UI/DisplayOptions.cpp (the rates for a size and monitor; applied in exclusive fullscreen, the row greyed with ''set by the desktop'' in windowed and borderless), Cpp/Source/SpaceGod/UI/PauseMenu.cpp (the row under Resolution).  WARNING: PauseMenu.cpp/.h may hold other agents'' uncommitted edits: edit around them and never revert, stash or commit them; commit only your own hunks (git diff <file> > own.patch, trim it to your hunks, git apply --cached own.patch, then commit). Outcome: DisplaySettings carries a refresh rate and the Display page offers it; the editor build succeeds. Verification is build-only: the editor build succeeds (tools/build-core.ps1 is enough for a Core-only change). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. Defaults stay exactly at today''s behaviour (every new setting defaults to what the game does now, unless this ticket says otherwise) so nothing the bench digests (Bench/expected-digests.json) moves.', '2026-11-24T05:24:34Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T611', 'Repo: SpaceGod.Unreal. Files: Cpp/Source/SpaceGod/DisplayExtras.h/.cpp (display.lowLatency through r.GTSyncType and r.OneFrameThreadLag, restored when off; display.menuFrameCap through t.MaxFPS while the pause or title menu is open, back to graphics.frameRateCap after, beside the background frame cap''s own handling). Read the menus'' open state without editing PauseMenu or MainMenu. A view setting: each machine''s own, never shared in co-op; a scripted run (PlayerOptions::ScriptedRun) keeps the default so shots and digests stay alike. Outcome: both rows are registered in the Display group and applied; the editor build succeeds. Verification is build-only: the editor build succeeds (tools/build-core.ps1 is enough for a Core-only change). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. Defaults stay exactly at today''s behaviour (every new setting defaults to what the game does now, unless this ticket says otherwise) so nothing the bench digests (Bench/expected-digests.json) moves.', '2026-11-24T05:24:37Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T612', 'Repo: SpaceGod.Unreal. Files: new Cpp/Source/SpaceGod/Audio/AudioOutput.h/.cpp (audio.outputDevice: a TextSetting holding the device id, empty = system default; applied on bind and change through the AudioMixer library), Cpp/Source/SpaceGod/GameSettingsHost.cpp (AddDeclarationSource after GameAudio), Cpp/Source/SpaceGod/UI/PauseMenu.cpp or UI/PauseMenu.Settings.cpp (a row cycling System default and each device''s name, as US-T546 does for the monitor), Cpp/Source/SpaceGod/SpaceGod.Build.cs (AudioMixer if missing). See the story''s findings. A view setting: each machine''s own, never shared in co-op; a scripted run (PlayerOptions::ScriptedRun) keeps the default so shots and digests stay alike. WARNING: Audio/AmbientSounds.cpp, Audio/GameAudio.cpp/.h and PauseMenu.cpp/.h (do not touch AmbientSounds.cpp at all) may hold other agents'' uncommitted edits: edit around them and never revert, stash or commit them; commit only your own hunks (git diff <file> > own.patch, trim it to your hunks, git apply --cached own.patch, then commit). Outcome: audio.outputDevice is registered and switches the output device; the editor build succeeds. Verification is build-only: the editor build succeeds (tools/build-core.ps1 is enough for a Core-only change). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. Defaults stay exactly at today''s behaviour (every new setting defaults to what the game does now, unless this ticket says otherwise) so nothing the bench digests (Bench/expected-digests.json) moves.', '2026-11-24T05:24:39Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T613', 'Repo: SpaceGod.Unreal. Files: Cpp/Source/SpaceGod/Audio/AudioOutput.h/.cpp (audio.speakerMode; Mono folds the master submix to one channel, Stereo and Headphones fold surround to two, Surround uses the device''s channels and the row says ''Windows reports stereo: set 5.1 / 7.1 in Windows Sound settings'' when the device has fewer; Headphones narrows the stereo spread of near sounds), Cpp/Source/SpaceGod/Audio/GameAudio.cpp (where 3D sounds'' attenuation is set, near line 173). Mono doubles as the accessibility mono-audio option. See the story''s findings. A view setting: each machine''s own, never shared in co-op; a scripted run (PlayerOptions::ScriptedRun) keeps the default so shots and digests stay alike. WARNING: Audio/AmbientSounds.cpp, Audio/GameAudio.cpp/.h and PauseMenu.cpp/.h (do not touch AmbientSounds.cpp at all) may hold other agents'' uncommitted edits: edit around them and never revert, stash or commit them; commit only your own hunks (git diff <file> > own.patch, trim it to your hunks, git apply --cached own.patch, then commit). Outcome: audio.speakerMode is registered and applied to the master submix and 3D sounds; the editor build succeeds. Verification is build-only: the editor build succeeds (tools/build-core.ps1 is enough for a Core-only change). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. Defaults stay exactly at today''s behaviour (every new setting defaults to what the game does now, unless this ticket says otherwise) so nothing the bench digests (Bench/expected-digests.json) moves.', '2026-11-24T05:24:41Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T614', 'Repo: SpaceGod.Unreal. Files: Cpp/Source/SpaceGod/Audio/AudioOutput.h/.cpp (audio.spatialSound), Cpp/Source/SpaceGod/Audio/GameAudio.cpp (3D sounds'' SpatializationAlgorithm HRTF when Binaural is on and a spatialization plugin is active), Cpp/Config/DefaultEngine.ini ([/Script/WindowsTargetPlatform.WindowsTargetSettings] SpatializationPlugin) and the .uproject plugin list only if the engine ships a suitable plugin. Choices the engine cannot do are hidden, never faked. See the story''s findings. A view setting: each machine''s own, never shared in co-op; a scripted run (PlayerOptions::ScriptedRun) keeps the default so shots and digests stay alike. WARNING: Audio/AmbientSounds.cpp, Audio/GameAudio.cpp/.h and PauseMenu.cpp/.h (do not touch AmbientSounds.cpp at all) may hold other agents'' uncommitted edits: edit around them and never revert, stash or commit them; commit only your own hunks (git diff <file> > own.patch, trim it to your hunks, git apply --cached own.patch, then commit). Outcome: audio.spatialSound is registered and drives the 3D sounds'' spatialization where supported; the editor build succeeds. Verification is build-only: the editor build succeeds (tools/build-core.ps1 is enough for a Core-only change). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. Defaults stay exactly at today''s behaviour (every new setting defaults to what the game does now, unless this ticket says otherwise) so nothing the bench digests (Bench/expected-digests.json) moves.', '2026-11-24T05:24:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T615', 'Repo: SpaceGod.Unreal. Files: Cpp/Source/SpaceGod/Audio/AudioOutput.h/.cpp (audio.quality through au.MaxChannels or the audio device''s max channels; the default is today''s count).  A view setting: each machine''s own, never shared in co-op; a scripted run (PlayerOptions::ScriptedRun) keeps the default so shots and digests stay alike. WARNING: Audio/AmbientSounds.cpp, Audio/GameAudio.cpp/.h and PauseMenu.cpp/.h (do not touch AmbientSounds.cpp at all) may hold other agents'' uncommitted edits: edit around them and never revert, stash or commit them; commit only your own hunks (git diff <file> > own.patch, trim it to your hunks, git apply --cached own.patch, then commit). Outcome: audio.quality is registered and sets the voice count; the editor build succeeds. Verification is build-only: the editor build succeeds (tools/build-core.ps1 is enough for a Core-only change). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. Defaults stay exactly at today''s behaviour (every new setting defaults to what the game does now, unless this ticket says otherwise) so nothing the bench digests (Bench/expected-digests.json) moves.', '2026-11-24T05:24:46Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T616', 'Repo: SpaceGod.Unreal. Files: Cpp/Source/SpaceGod/PlayerOptions.h/.cpp (gameplay.autosaveSlots defaulting to today''s rotation, gameplay.autosaveOnDock, gameplay.autosaveBeforeJump), Cpp/Source/SpaceGod/UnitySpaceApp.Saves.cpp (rotation and the two triggers, through RequestSave and SaveBlocker as the timed autosave does).  A view setting: each machine''s own, never shared in co-op; a scripted run (PlayerOptions::ScriptedRun) keeps the default so shots and digests stay alike. WARNING: PlayerOptions.cpp/.h and UnitySpaceApp.Saves.cpp may hold other agents'' uncommitted edits: edit around them and never revert, stash or commit them; commit only your own hunks (git diff <file> > own.patch, trim it to your hunks, git apply --cached own.patch, then commit). Outcome: the three settings are registered and the autosave rotation and triggers read them; the editor build succeeds. Verification is build-only: the editor build succeeds (tools/build-core.ps1 is enough for a Core-only change). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. Defaults stay exactly at today''s behaviour (every new setting defaults to what the game does now, unless this ticket says otherwise) so nothing the bench digests (Bench/expected-digests.json) moves.', '2026-11-24T05:24:48Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T617', 'Repo: SpaceGod.Unreal. Files: Cpp/Source/SpaceGod/PlayerOptions.h/.cpp (gameplay.clockFormat, gameplay.dateOrder; default today''s form), the game''s date and time text helper (find where the sim date is formatted: SpaceGodCore/SimClock.cpp or the HUD) taking the format as an argument so Core does not read PlayerOptions.  A view setting: each machine''s own, never shared in co-op; a scripted run (PlayerOptions::ScriptedRun) keeps the default so shots and digests stay alike. WARNING: PlayerOptions.cpp/.h may hold other agents'' uncommitted edits: edit around them and never revert, stash or commit them; commit only your own hunks (git diff <file> > own.patch, trim it to your hunks, git apply --cached own.patch, then commit). Outcome: both settings are registered and the date and time text follows them; the editor build succeeds. Verification is build-only: the editor build succeeds (tools/build-core.ps1 is enough for a Core-only change). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. Defaults stay exactly at today''s behaviour (every new setting defaults to what the game does now, unless this ticket says otherwise) so nothing the bench digests (Bench/expected-digests.json) moves.', '2026-11-24T05:24:51Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T618', 'See the parent feature.', '2026-11-24T05:24:53Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T619', 'See the parent feature.', '2026-11-24T05:24:55Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T62', 'Race, Shipping, medians of 3: whole Unity frame (appMs) p50 sol-idle C++ 11.8 ms vs C# 8.4, battle 12.4 vs 7.9, trip 5.9 vs 4.0, while the simulation part is faster on C++ (1.0 vs 1.5 ms). So the views/facade/sync push (UnityScene::Sync, UDynamicMeshComponent updates, camera) is slower on C++ than the C# facade''s UnityBridge.Sync. It decides the idle frame rate (C++ 15.0 ms vs C# 12.2 ms p50).', '2026-11-04T06:05:36Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T620', 'Repo: SpaceGod.Unreal. Files: new Cpp/Source/SpaceGod/Console/GameConsole.h/.cpp (GameConsole::Enabled(): a ToggleSetting ''dev.console'' in SettingGroups::Developer, label ''Console'', default TRUE, description ''The ` key opens the developer console: type sg.Help for its commands.''; a declaration source like PlayerOptions::Declare), Cpp/Source/SpaceGod/GameSettingsHost.cpp (AddDeclarationSource), Cpp/Source/SpaceGod/Input/KeyBindings.h/.cpp (KeyAction::Console at the end of ''Screens and panels'' before Count: key ''console'', ''Game: developer console'', Both, EdgeKind, default Key::Backquote; ToggleScale drops its Backquote default and keeps Key::G), Cpp/Source/SpaceGod/Smoke/FeatureAudit.cpp (its Tap(Key::Backquote) for the scale becomes Tap(Key::G)). dev.console is NOT added to Core''s DevFlags::All (AnyOn would always be true and badge the HUD and co-op), and is not in CoopSettings'' shared groups. Nothing reads KeyAction::Console in InputState: the console class (next task) does. See the parent feature''s findings. WARNING: GameSettingsHost.cpp may hold other agents'' uncommitted edits: edit around them and never revert, stash or commit them; commit only your own hunks (git diff <file> > own.patch, trim it to your hunks, git apply --cached own.patch, then commit). Outcome: dev.console is registered in the Developer group with default on, and KeyBindings has a Console action on the backtick while ToggleScale''s default is G alone; the editor build succeeds. Verification is build-only: the editor build succeeds (tools/build-core.ps1 is enough for a Core-only change). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. Defaults stay exactly at today''s behaviour (every new setting defaults to what the game does now, unless this ticket says otherwise) so nothing the bench digests (Bench/expected-digests.json) moves.', '2026-11-24T05:24:57Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T621', 'Repo: SpaceGod.Unreal. Files: new Cpp/Source/SpaceGod/Console/SpaceGodConsole.h/.cpp (UCLASS USpaceGodConsole : public UConsole, Engine/Console.h; InputKey override: a press of a keyboard key held by KeyBindings::Binding(KeyAction::Console) steps None -> Typing -> Open -> None with FakeGotoState when GameConsole::Enabled(), else the key passes through; a console open when the setting turns off closes), Cpp/Source/SpaceGod/Console/GameConsole.h/.cpp (GameConsole::IsOpen(): GEngine->GameViewport->ViewportConsole''s ConsoleState is not NAME_None), Cpp/Source/SpaceGod/Input/UnrealInputDevice.h/.cpp (expose the Input::Key -> FKey map if the console needs it), Cpp/Config/DefaultEngine.ini ([/Script/Engine.Engine] ConsoleClassName=/Script/SpaceGod.SpaceGodConsole), Cpp/Config/DefaultInput.ini (ConsoleKeys left empty: keep -ConsoleKeys=Tilde, drop +ConsoleKeys=Tilde), Cpp/Source/SpaceGod/SpaceGod.Build.cs only if a module is missing. Unreal''s UConsole keeps its own history, scrollback and autocomplete; do not reimplement them. See the parent feature''s findings. Outcome: the engine''s console class is USpaceGodConsole and it opens only on the Console action''s keys with dev.console on; the editor build succeeds. Verification is build-only: the editor build succeeds (tools/build-core.ps1 is enough for a Core-only change). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. Defaults stay exactly at today''s behaviour (every new setting defaults to what the game does now, unless this ticket says otherwise) so nothing the bench digests (Bench/expected-digests.json) moves.', '2026-11-24T05:24:59Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T622', 'Repo: SpaceGod.Unreal. Files: Cpp/Source/SpaceGod/UnityCompat/GuiHost.cpp (FGuiInputProcessor: while GameConsole::IsOpen() key down/up and typed characters are not queued, and held/pressedSince are cleared when it opens), Cpp/Source/SpaceGod/Input/UnrealInputDevice.cpp (keyboard, mouse buttons and the pad read as up while it is open). The GUI layer''s Slate input preprocessor sees every key before the viewport''s console, so it must step aside itself. The game does not pause for the console. Outcome: GuiHost''s input processor and UnrealInputDevice both read nothing while GameConsole::IsOpen(); the editor build succeeds. Verification is build-only: the editor build succeeds (tools/build-core.ps1 is enough for a Core-only change). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. Defaults stay exactly at today''s behaviour (every new setting defaults to what the game does now, unless this ticket says otherwise) so nothing the bench digests (Bench/expected-digests.json) moves.', '2026-11-24T05:25:02Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T623', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGodCore/Radio/ (new folder, Core, pure C++).
+Files:
+- Radio/RadioMessage.h:
+  - The RadioMessage POD (id, channel id, emitter key, faction id, system id, origin helio km, sentJd, power class, priority 0-3, situation kind, template id plus a small fixed argument block).
+  - The power-class table: EIRP in watts and the derived max range R_max = sqrt(EIRP / (4 pi N_floor)), cached per class. Tune it so a ship is heard to about 0.5 AU and a station across the inner system.
+- Radio/RadioLog.h/.cpp: an append-only ring (cap 8192) ordered by sentJd. Time buckets of 15 game-minutes each hold [first,last) and the AABB of their origins. Retire() drops a bucket once its fronts have passed beyond its classes'' R_max and counts what it dropped.
+- Radio/Wavefront.h/.cpp:
+  - ArrivalJd(origin, sentJd, listenerAt), where listenerAt is a callable from jd to helio km: the fixed point t = sentJd + |L(t) - O| / c in 2 iterations, using LightSpeed::SpeedKmS.
+  - BucketMayArrive(bucket, listener, fromJd, toJd): the shell test on the bucket''s origin box (distance interval [dmin,dmax] against c(t - sent)).
+Bounds: Append O(1); Retire amortised O(1); no per-frame loop over messages.
+Outcome: tools/build-core.ps1 compiles it.
+Also: a message may carry literal text instead of a template, as an index into a bounded string table owned by the log (cleared with its bucket). Event lines, relay bulletins and the sg.Radio test use it, so the HUD can show text before ChatterLines (US-T642) exists.
+
+
+Verification is build-only: tools/build-core.ps1 compiles it (an editor build too if a game file changed). Do not run tests, smokes, the bench or the game. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent of the story/parent) for the design before starting.', '2026-11-24T05:29:26Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T624', 'Repo: SpaceGod.Unreal. Files: new Cpp/Source/SpaceGod/SettingsConsoleCommand.cpp (sg.Get KEY: value, default, range or choices, group and a locked-in mark from SettingsRegistry::IsLockedIn; sg.Set KEY VALUE...: the text read as the profile reads it, a refused value says why; sg.Reset KEY or GROUP; sg.Toggle KEY for toggles; sg.Find TEXT: keys, labels and keywords that match, with values). Each uses FConsoleCommandWithArgsAndOutputDeviceDelegate and writes its reply to the given FOutputDevice. A change goes through the same path the Options menu uses (UI/PauseMenu''s setting rows): applied live, a co-op shared group follows CoopSettings'' host rule (a client is refused with the reason), and the profile saves as the menu saves it. Key-binding settings (controls.key.*) take the profile''s text form (Shift+K, Pad:A). Do not touch SettingsLockInCommand.cpp (US-T512''s lock-in, in flight). See the parent feature''s findings for why these are commands and not one cvar per setting. Outcome: sg.Get, sg.Set, sg.Reset, sg.Toggle and sg.Find are registered console commands over GameSettingsHost::Registry(); the editor build succeeds. Verification is build-only: the editor build succeeds (tools/build-core.ps1 is enough for a Core-only change). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. Defaults stay exactly at today''s behaviour (every new setting defaults to what the game does now, unless this ticket says otherwise) so nothing the bench digests (Bench/expected-digests.json) moves.', '2026-11-24T05:25:04Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T625', 'Repo: SpaceGod.Unreal. Files: Cpp/Source/SpaceGod/Console/SpaceGodConsole.cpp (bind UConsole::RegisterConsoleAutoCompleteEntries once: an FAutoCompleteCommand ''sg.Set KEY '' per registered setting, Desc = label, current value and default; ''sg.Toggle KEY'' per toggle; sg.Cheat with each quoted CATEGORY/ENTRY path of the dev menu''s top two levels from UI/CheatMenu''s CheatRegistry; sg.Settings lockin, unlock and list; the list rebuilt when the console opens so new settings and values show), new Cpp/Source/SpaceGod/Console/ConsoleHelp.cpp (sg.Help [filter]: every console object whose name starts sg. via IConsoleManager::Get().ForEachConsoleObjectThatStartsWith, with its help text, written to the output device). See the parent feature''s findings. Outcome: the autocomplete delegate is bound in USpaceGodConsole and sg.Help is registered; the editor build succeeds. Verification is build-only: the editor build succeeds (tools/build-core.ps1 is enough for a Core-only change). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. Defaults stay exactly at today''s behaviour (every new setting defaults to what the game does now, unless this ticket says otherwise) so nothing the bench digests (Bench/expected-digests.json) moves.', '2026-11-24T05:25:06Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T626', 'Repo: SpaceGod.Unreal. Files: Cpp/Source/SpaceGod/Console/GameConsole.h/.cpp (dev.statsOverlay: Off, FPS, Unit, Unit graph, applied by executing stat fps / stat unit / stat unitgraph on the game viewport, turning the previous one off first; dev.logVerbosity: Normal (Display), Verbose, Very verbose for LogSpaceGod via the log LogSpaceGod LEVEL command; both in SettingGroups::Developer, default Off and Normal, not in DevFlags::All, each machine''s own). Re-applied after a map or viewport change. See the parent feature''s findings. Outcome: dev.statsOverlay and dev.logVerbosity are registered in the Developer group and applied through engine exec commands; the editor build succeeds. Verification is build-only: the editor build succeeds (tools/build-core.ps1 is enough for a Core-only change). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. Defaults stay exactly at today''s behaviour (every new setting defaults to what the game does now, unless this ticket says otherwise) so nothing the bench digests (Bench/expected-digests.json) moves.', '2026-11-24T05:25:08Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T627', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGodCore/Radio/ (Core).
+Files:
+- Radio/RadioReceiver.h/.cpp: one per local listener. It holds a binary min-heap of (arrivalJd, log index) plus the log''s generation, so evicted entries are skipped.
+  - Emit(msg, listenerPos, nowJd): schedules the message only if the distance is within its class''s R_max plus the listener''s travel margin. O(log n).
+  - Advance(nowJd, listenerAt, maxPops = 64, out arrivals): pops entries whose arrival <= now. Each popped entry is re-solved against the listener''s current path; one that has not arrived yet is pushed back. Each arrival carries its message, its distance at arrival and its age (now - sentJd). Past maxPops, the rest are counted as overflow for the digests.
+  - Rebase(log, listenerAt, nowJd): clears the heap and refills it from the log''s buckets using Wavefront::BucketMayArrive, skipping fully passed buckets. Cost O(buckets + kept).
+  - DropAfter(jd), for a rewind.
+Outcome: tools/build-core.ps1 compiles it.
+
+
+Verification is build-only: tools/build-core.ps1 compiles it (an editor build too if a game file changed). Do not run tests, smokes, the bench or the game. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent of the story/parent) for the design before starting.', '2026-11-24T05:25:10Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T628', 'Repo: SpaceGod.Unreal. Files: Cpp/Source/SpaceGod/Input/KeyBindings.h/.cpp (KeyAction Number1..Number9, Number0, a Numbers group, Both, EdgeKind, defaults Key::Digit1..Digit0), Cpp/Source/SpaceGod/Input/InputState.cpp (NumberKey, FireGroupKey and GroupModeKey from those actions), and any other place that reads the digit keys raw (UnitySpaceApp.Embodiment.cpp''s Shift+digit ability slots). A profile that never rebinds plays exactly as before. Outcome: InputState reads the number row through KeyAction Number0..Number9; the editor build succeeds. Verification is build-only: the editor build succeeds (tools/build-core.ps1 is enough for a Core-only change). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. Defaults stay exactly at today''s behaviour (every new setting defaults to what the game does now, unless this ticket says otherwise) so nothing the bench digests (Bench/expected-digests.json) moves.', '2026-11-24T05:25:10Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T629', 'Repo: SpaceGod.Unreal. Files: Cpp/Source/SpaceGod/Input/KeyBindings.h/.cpp (KeyAction PadStepLeft/Up/Right/Down, defaults Pad:DPadLeft/Up/Right/Down), Cpp/Source/SpaceGod/Input/InputState.cpp (PollPad''s padDpad from them), Cpp/Source/SpaceGod/Input/Gamepad.h/.cpp (controls.pad.swapSticks and controls.pad.invertMove, default off, applied where the sticks are read).  A view setting: each machine''s own, never shared in co-op; a scripted run (PlayerOptions::ScriptedRun) keeps the default so shots and digests stay alike. Outcome: padDpad reads the four step actions and the two stick settings are registered and applied; the editor build succeeds. Verification is build-only: the editor build succeeds (tools/build-core.ps1 is enough for a Core-only change). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. Defaults stay exactly at today''s behaviour (every new setting defaults to what the game does now, unless this ticket says otherwise) so nothing the bench digests (Bench/expected-digests.json) moves.', '2026-11-24T05:25:13Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T630', 'Repo: SpaceGod.Unreal. Files: Cpp/Source/SpaceGod/Input/BindingCore.h (Trigger::Toggle before Count, profile prefix Toggle:, parse and format), Cpp/Source/SpaceGod/Input/KeyBindings.cpp (Held: a Toggle slot latches on its press and off on the next; dropped when the binding changes (Version) and when a menu takes the input). The Key bindings page''s trigger cycle (UI/PauseMenu.cpp, Trigger::Count) picks it up with no edit there. Outcome: Trigger::Toggle parses, formats and latches held actions; the editor build succeeds. Verification is build-only: the editor build succeeds (tools/build-core.ps1 is enough for a Core-only change). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. Defaults stay exactly at today''s behaviour (every new setting defaults to what the game does now, unless this ticket says otherwise) so nothing the bench digests (Bench/expected-digests.json) moves.', '2026-11-24T05:25:15Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T631', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGod/Radio/ (new) and the app (a new UnitySpaceApp.Radio.cpp beside UnitySpaceApp.Comms.cpp).
+Files:
+- Radio/RadioHost.h/.cpp: owns the RadioLog of the listener''s current star system (created lazily, dropped on leaving the system) and the local RadioReceiver.
+  - Tick: called once per frame from the app. The listener is the held unit, or the camera''s focus (CommsHere().HelioKm), and jd is the world''s.
+  - Rebase on discontinuities: system change, FTL arrival (UnitySpaceApp.Ftl.cpp), HoldRewind (DropAfter plus Rebase), a load, the showcase tour, teleports.
+  - Emit(msg) is the single entry point for every source. It publishes arrivals to listeners (a sink interface used by the HUD, reception and voice later).
+- Console: sg.Radio prints the log size, heap size and last arrivals. sg.Radio emit <text> emits a test message at a point 1 AU away on the Guard channel, for manual checking by the owner (do not run it yourself).
+- Co-op: each peer runs its own host. Nothing goes into the frames.
+Outcome: the editor build succeeds.
+
+
+Verification is build-only: the editor build succeeds (tools/build.ps1). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream; scripted runs (PlayerOptions::ScriptedRun, GameAudio disabled) stay silent and unchanged. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent) for the design before starting.', '2026-11-24T05:25:16Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T632', 'Repo: SpaceGod.Unreal. Files: Cpp/Source/SpaceGod/Input/BindingCore.h (pad button names by prompt style), Cpp/Source/SpaceGod/Input/Gamepad.h/.cpp (controls.pad.prompts; Auto from the connected pad''s name where Unreal reports it, else Xbox), Cpp/Source/SpaceGod/Input/KeyBindings.cpp (Keys() and the binding text use it). The profile text keeps the Xbox names (Pad:A): only what is shown changes. A view setting: each machine''s own, never shared in co-op; a scripted run (PlayerOptions::ScriptedRun) keeps the default so shots and digests stay alike. Outcome: controls.pad.prompts is registered and pad buttons print by it; the editor build succeeds. Verification is build-only: the editor build succeeds (tools/build-core.ps1 is enough for a Core-only change). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. Defaults stay exactly at today''s behaviour (every new setting defaults to what the game does now, unless this ticket says otherwise) so nothing the bench digests (Bench/expected-digests.json) moves.', '2026-11-24T05:25:17Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T633', 'Repo: SpaceGod.Unreal. Files: Cpp/Source/SpaceGod/Input/Gamepad.h/.cpp (controls.pad.responseCurve: Linear (today), Smooth (squared), Precise (cubed), applied after the dead zone keeping the sign; controls.pad.triggerDeadZone 0-30%, default today''s), Cpp/Source/SpaceGod/Input/InputState.cpp or Camera/SpaceCamera.cpp only where the stick values are shaped.  A view setting: each machine''s own, never shared in co-op; a scripted run (PlayerOptions::ScriptedRun) keeps the default so shots and digests stay alike. Outcome: both settings are registered and shape the pad''s stick and trigger reads; the editor build succeeds. Verification is build-only: the editor build succeeds (tools/build-core.ps1 is enough for a Core-only change). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. Defaults stay exactly at today''s behaviour (every new setting defaults to what the game does now, unless this ticket says otherwise) so nothing the bench digests (Bench/expected-digests.json) moves.', '2026-11-24T05:25:19Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T634', 'Repo: SpaceGod.Unreal. Files: new Cpp/Source/SpaceGod/AccessibilityOptions.h/.cpp (access.colorBlindMode, access.colorBlindStrength 0-100%, access.colorBlindCorrect; in PlayerOptions::Accessibility; applied through FSlateApplication::Get().GetRenderer()->SetColorVisionDeficiencyType(type, severity 0-10, correct, showCorrectionWithDeficiency), which tints the whole back buffer), Cpp/Source/SpaceGod/GameSettingsHost.cpp (AddDeclarationSource after PlayerOptions).  A view setting: each machine''s own, never shared in co-op; a scripted run (PlayerOptions::ScriptedRun) keeps the default so shots and digests stay alike. WARNING: GameSettingsHost.cpp may hold other agents'' uncommitted edits: edit around them and never revert, stash or commit them; commit only your own hunks (git diff <file> > own.patch, trim it to your hunks, git apply --cached own.patch, then commit). Outcome: the three settings are registered and drive Slate''s colour vision deficiency pass; the editor build succeeds. Verification is build-only: the editor build succeeds (tools/build-core.ps1 is enough for a Core-only change). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. Defaults stay exactly at today''s behaviour (every new setting defaults to what the game does now, unless this ticket says otherwise) so nothing the bench digests (Bench/expected-digests.json) moves.', '2026-11-24T05:25:21Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T635', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGod/UI/ (a new Hud.Radio.cpp with declarations in the HUD header) and UI/LogsScreen.
+Changes:
+- A compact radio log on the HUD shows the last 8 heard lines, which fade after a while. Each line reads "[channel 121.5] Sender: text  - sent 8.3 min ago, 1.0 AU" (LightSpeed::Describe, Ranges::Spoken). Its text is realised from the template at this point, when the message is heard.
+- The Logs screen gains a Radio tab, a bounded history of 200 lines.
+- It subscribes to RadioHost''s arrivals sink. Colours follow the Accessibility stance palette. Nothing is drawn when the log is empty.
+Outcome: the editor build succeeds.
+Until ChatterLines (US-T642) exists, show a message''s literal text, or ''<channel kind> traffic'' for a template id; US-T642 plugs Realise in here.
+
+
+Verification is build-only: the editor build succeeds (tools/build.ps1). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream; scripted runs (PlayerOptions::ScriptedRun, GameAudio disabled) stay silent and unchanged. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent) for the design before starting.', '2026-11-24T05:29:27Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T636', 'Repo: SpaceGod.Unreal. Files: new Cpp/Source/SpaceGod/Audio/Captions.h/.cpp (a short queue: text, speaker, seconds left), Cpp/Source/SpaceGod/Audio/InterfaceSounds.cpp (each alert it plays in Poll raises a caption), the place comms lines arrive (UnitySpaceApp.Comms.cpp or Core''s Comms output) raising one per line, Cpp/Source/SpaceGod/AccessibilityOptions.h/.cpp (access.captions default Off, access.captionSize Small/Medium/Large, access.captionBackground 0-100%). Nothing is drawn yet (next task). A view setting: each machine''s own, never shared in co-op; a scripted run (PlayerOptions::ScriptedRun) keeps the default so shots and digests stay alike. WARNING: UnitySpaceApp.Comms.cpp and Audio/InterfaceSounds.cpp may hold other agents'' uncommitted edits: edit around them and never revert, stash or commit them; commit only your own hunks (git diff <file> > own.patch, trim it to your hunks, git apply --cached own.patch, then commit). Outcome: the caption queue fills from comms and alerts when access.captions allows; the editor build succeeds. Verification is build-only: the editor build succeeds (tools/build-core.ps1 is enough for a Core-only change). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. Defaults stay exactly at today''s behaviour (every new setting defaults to what the game does now, unless this ticket says otherwise) so nothing the bench digests (Bench/expected-digests.json) moves.', '2026-11-24T05:25:23Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T637', 'Repo: SpaceGod.Unreal. Files: new Cpp/Source/SpaceGod/UI/Hud.Captions.cpp, Cpp/Source/SpaceGod/UI/Hud.h and Hud.cpp (one call in the HUD''s draw).  A view setting: each machine''s own, never shared in co-op; a scripted run (PlayerOptions::ScriptedRun) keeps the default so shots and digests stay alike. WARNING: Hud.h, Hud.cpp and the other UI/Hud.* files may hold other agents'' uncommitted edits: edit around them and never revert, stash or commit them; commit only your own hunks (git diff <file> > own.patch, trim it to your hunks, git apply --cached own.patch, then commit). Outcome: Hud draws Captions'' queue; the editor build succeeds. Verification is build-only: the editor build succeeds (tools/build-core.ps1 is enough for a Core-only change). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. Defaults stay exactly at today''s behaviour (every new setting defaults to what the game does now, unless this ticket says otherwise) so nothing the bench digests (Bench/expected-digests.json) moves.', '2026-11-24T05:25:26Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T638', 'Repo: SpaceGod.Unreal. Files: Cpp/Source/SpaceGod/UI/UiStyle.h/.cpp (panel fills, text, edge and selection colours by the setting), Cpp/Source/SpaceGod/AccessibilityOptions.h/.cpp (access.highContrast, default off).  A view setting: each machine''s own, never shared in co-op; a scripted run (PlayerOptions::ScriptedRun) keeps the default so shots and digests stay alike. Outcome: access.highContrast is registered and UiStyle''s colours follow it; the editor build succeeds. Verification is build-only: the editor build succeeds (tools/build-core.ps1 is enough for a Core-only change). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. Defaults stay exactly at today''s behaviour (every new setting defaults to what the game does now, unless this ticket says otherwise) so nothing the bench digests (Bench/expected-digests.json) moves.', '2026-11-24T05:25:28Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T639', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGodCore/Radio/ (Core).
+Files:
+- Radio/RadioChannels.h/.cpp: RadioChannel {id, kind (Guard, Traffic, Civil, Fleet, Pirate, Relay), owner (faction or settlement id), system id, frequency MHz, display name such as "Ceres Traffic", encrypted flag}.
+- RadioChannels::For(StarSystem) builds and caches a system''s list from its factions and settlements. It is rebuilt only when a cheap version stamp (counts and ids) changes.
+- Frequencies are deterministic from kind and owner id, within kind-specific bands (Guard a fixed 121.5).
+- Lookup by id is O(1). Helpers find the Guard, Traffic-of(settlement) and Fleet-of(faction) channels so emitters can name theirs.
+Outcome: tools/build-core.ps1 compiles it.
+
+
+Verification is build-only: tools/build-core.ps1 compiles it (an editor build too if a game file changed). Do not run tests, smokes, the bench or the game. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent of the story/parent) for the design before starting.', '2026-11-24T05:25:48Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T640', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGodCore/Radio/ (Core, view-local state).
+Files:
+- Radio/RadioTuner.h/.cpp: the tuned primary channel, up to 4 monitored channels, presets 1-8, a mute set and scan mode. Scan dwells about 4 real seconds on each channel with activity in the last hour; it is driven by Tick(realDt).
+- Accepts(message, listenerFaction) returns Heard, CountedOnly or Ignored. Guard is always monitored unless muted. Another faction''s Fleet channel is encrypted, so CountedOnly, shown as "encrypted traffic".
+- Activity counters per channel over a rolling hour of game time, as ring buckets: O(1) per arrival.
+- Serialize to and from a short string, so the game may keep it in the profile later.
+Outcome: tools/build-core.ps1 compiles it.
+
+
+Verification is build-only: tools/build-core.ps1 compiles it (an editor build too if a game file changed). Do not run tests, smokes, the bench or the game. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent of the story/parent) for the design before starting.', '2026-11-24T05:25:56Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T641', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGod/UI/ (a new RadioTunerPanel.cpp/.h, or a tuner section of Hud.Radio.cpp) and the key-binding registry (find where the comms panel''s key is bound).
+Changes:
+- A tuner panel shows a frequency dial and the system''s channel list with activity meters (from RadioTuner''s counters, encrypted channels marked). Per channel it offers tune, monitor and mute toggles, plus presets and scan on or off.
+- It opens and closes on a new rebindable key, and RadioHost consults the tuner before publishing arrivals as heard.
+- The tuner state is kept in the player profile through RadioTuner''s string, if the profile has a cheap place for view state; otherwise it lasts the session only. Say which in the commit.
+Outcome: the editor build succeeds.
+
+
+Verification is build-only: the editor build succeeds (tools/build.ps1). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream; scripted runs (PlayerOptions::ScriptedRun, GameAudio disabled) stay silent and unchanged. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent) for the design before starting.', '2026-11-24T05:26:05Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T642', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGodCore/Radio/ (Core).
+Files:
+- Radio/ChatterLines.h/.cpp: templates per (channel kind x situation). Situations: docking request, clearance, departure, patrol check-in, contact report, trade quote, convoy call, distress, battle callout, battle over, pirate taunt, bounty notice, relay bulletin, and idle banter. Each has at least 8 variants, with slots ({callsign}, {station}, {range} through CommsRuler and Ranges, {bearing}, {good}, {price}, {faction}).
+- Realise(message, world, jd) -> cs::String is called only when a message is heard. The variant is chosen by a hash of the message id, and the pilot''s Chatter and Warmth traits (Comms/Pilots.h) pick clipped or loose phrasing.
+- Unreadable fills (a missing pilot or settlement) fall back to a generic line, never an empty one.
+- It does not call the LLM.
+Outcome: tools/build-core.ps1 compiles it.
+Also plug Realise into the HUD radio log''s text step (Cpp/Source/SpaceGod/UI/Hud.Radio.cpp, from US-T635) for template-id messages. That game file change means the editor build must succeed too.
+
+
+Verification is build-only: tools/build-core.ps1 compiles it (an editor build too if a game file changed). Do not run tests, smokes, the bench or the game. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent of the story/parent) for the design before starting.', '2026-11-24T05:29:38Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T643', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGodCore/Radio/ (Core) and Cpp/Source/SpaceGod/Radio/RadioHost.cpp.
+Files:
+- Radio/ChatterEvents.h/.cpp: Pump(world, jd, emit) reads World::Events (World.h, WorldEventKind) newer than a Jd cursor, so a trimmed list cannot break it. Each pump is O(new events). Notable kinds become RadioMessages at the event''s body or position on the right channel and power class:
+  - Battle: Fleet callouts plus a Guard alert.
+  - Capture: Fleet.
+  - Loss: Guard distress.
+  - Launch: Traffic.
+  - Law: Fleet or Civil.
+  - Economy and Market: Civil.
+  - Opportunity and Info: no message.
+- Docking and undocking traffic: if the world raises arrivals and departures at settlements cheaply, hook them; otherwise leave a TODO naming the hook.
+- RadioHost calls Pump each frame within its budget.
+- Read-only: it never changes the world.
+Outcome: the editor build succeeds.
+
+
+Verification is build-only: the editor build succeeds (tools/build.ps1). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream; scripted runs (PlayerOptions::ScriptedRun, GameAudio disabled) stay silent and unchanged. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent) for the design before starting.', '2026-11-24T05:27:13Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T644', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGodCore/Radio/ (Core) and Cpp/Source/SpaceGod/Radio/RadioHost.cpp.
+Files:
+- Radio/ChatterSampler.h/.cpp: emitter groups are the settlements of the listener''s system and the hulls within the audible horizon. The horizon is each power class''s R_max plus the listener''s travel margin. Use the cheapest existing spatial query in World or Fleet; failing that, a round-robin over the system''s ships capped per tick.
+- Each group gets a Poisson draw per coarse tick (60 game-seconds) at a kind-specific rate times a density factor (a constant of 1 now; the setting comes later). The RNG is view-local, seeded per session (never the simulation''s random stream). Each tick emits at most 32 messages.
+- Time warp: catch-up is capped at 3 ticks per frame, then the sampler skips ahead.
+- BackFill(system, listener, nowJd): on entering a system or a rebase, it synthesises the past light-time of the horizon at a quarter of the density, with sentJd in the past and origins at the emitters'' current positions (good enough), so old fronts are in flight to be picked up.
+- RadioHost drives the sampler and BackFill.
+Outcome: the editor build succeeds.
+
+
+Verification is build-only: the editor build succeeds (tools/build.ps1). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream; scripted runs (PlayerOptions::ScriptedRun, GameAudio disabled) stay silent and unchanged. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent) for the design before starting.', '2026-11-24T05:27:24Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T645', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGod/Radio/RadioHost.cpp (and a small Core helper in Radio/ if it is useful).
+Changes:
+- Subscribe to Newswire::Received (Information/News.h). When a report arrives at the listener''s system, emit at most Newswire::HeadlinesPerReport Relay-channel messages.
+- Each message has its origin at the system''s gate, or at the market that InnerLightDays implies, its sentJd from the report''s time, and its text "relayed from <system>: <headline>". The HUD shows "relayed, sent X ago" with the report''s real age (the gate route included).
+- There are no wavefronts between stars. Other systems emit nothing else.
+Outcome: the editor build succeeds.
+
+
+Verification is build-only: the editor build succeeds (tools/build.ps1). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream; scripted runs (PlayerOptions::ScriptedRun, GameAudio disabled) stay silent and unchanged. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent) for the design before starting.', '2026-11-24T05:27:35Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T646', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGodCore/Radio/ (Core) and Cpp/Source/SpaceGod/Radio/RadioHost.cpp.
+Files:
+- Radio/RadioReception.h/.cpp:
+  - Clarity(message, distanceKm): signal EIRP / (4 pi d^2) against the noise floor gives Clean, Noisy or Unreadable.
+  - Garble(text, msgId): drops words deterministically for Noisy lines ("... static ...").
+  - Score(message, context): priority weight x addressed to the listener''s unit x own faction x tuned primary above monitored x proximity.
+  - Route(...): Spoken, Subtitled or Digest, by thresholds plus the RadioTuner''s Accepts and a minimum-priority constant (a setting later).
+  - Each arrival costs O(1).
+- RadioHost runs every arrival through Route before publishing. The HUD shows Subtitled and Spoken lines, and the Digest route goes to a counter hook.
+Outcome: the editor build succeeds.
+
+
+Verification is build-only: the editor build succeeds (tools/build.ps1). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream; scripted runs (PlayerOptions::ScriptedRun, GameAudio disabled) stay silent and unchanged. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent) for the design before starting.', '2026-11-24T05:28:29Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T647', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGod/Voice/ (a new VoiceArbiter.h/.cpp), CommsVoice.cpp and Radio/RadioHost.cpp.
+Changes:
+- VoiceArbiter sits between every speaker and CommsVoice:
+  - Cap: concurrent voices default to 1 (a constant now; at most 3 later).
+  - Order: comms-panel and encounter lines always come first.
+  - Queue: radio lines wait in a priority queue capped at 8. A new line evicts the lowest, and an evicted line goes to the digest hook.
+  - Staleness: a line not started within 20 real seconds is dropped.
+  - Preemption: Guard distress and lines addressed to the player cut in, ending the current radio line with a squelch.
+  - Prefetch: the top 3 queued lines go to TtsService::Prefetch.
+  - Time warp: above 10x no ambient line is spoken; they are subtitled only.
+- RadioHost routes Spoken arrivals here, with VoiceCasting voices from each emitter''s pilot, settlement or faction.
+Outcome: the editor build succeeds.
+
+
+Verification is build-only: the editor build succeeds (tools/build.ps1). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream; scripted runs (PlayerOptions::ScriptedRun, GameAudio disabled) stay silent and unchanged. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent) for the design before starting.', '2026-11-24T05:28:37Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T648', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGodCore/Radio/ (a new RadioDigest.h/.cpp), Cpp/Source/SpaceGod/UI/Hud.Radio.cpp and Radio/RadioHost.cpp.
+Changes:
+- RadioDigest counts, per channel, the messages routed to Digest: overflow, CountedOnly, evicted and Unreadable ones. They are counted by situation in fixed arrays, with no stored messages.
+- Every 10 game-minutes (or every 30 real seconds when time is warped) each channel with counts yields one summary line, such as "Ceres Traffic: 23 messages in the last hour, mostly docking clearances; 1 distress call" or "Fleet 233.4: encrypted traffic, 12 bursts". The summary goes to the radio log.
+- A summary is spoken through the VoiceArbiter at the lowest priority, at most once every 2 real minutes, and only when the voice is idle.
+Outcome: the editor build succeeds.
+
+
+Verification is build-only: the editor build succeeds (tools/build.ps1). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream; scripted runs (PlayerOptions::ScriptedRun, GameAudio disabled) stay silent and unchanged. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent) for the design before starting.', '2026-11-24T05:28:45Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T649', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGod/PlayerOptions.h/.cpp and/or Audio/GameAudio.cpp (find where the Voice volume row from US-T551 is declared), plus the consumers.
+Rows:
+- Sound group, after Voice volume:
+  - Spoken comms, on: CommsVoice and the arbiter go silent when off; the text still shows.
+  - Voice engine, Auto/Piper/Windows: TtsService.
+  - Radio effect, on: RadioEffect, as part of the cache key.
+- Gameplay or Interface group, beside the toast and news-ticker chattiness:
+  - Chatter density, Off/Low/Normal/High = 0/0.4/1/2: the ChatterSampler factor.
+  - Radio subtitles, on: the HUD radio log.
+  - Max voices, 1-3, default 1: VoiceArbiter.
+  - Minimum radio priority, 0-3, default 0: RadioReception.
+Rules: view settings, each machine''s own and never shared in co-op. A scripted run keeps the defaults. Names under comms.* or radio.*, saved to the profile like the others. They appear in the settings search.
+Outcome: the editor build succeeds.
+
+
+Verification is build-only: the editor build succeeds (tools/build.ps1). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream; scripted runs (PlayerOptions::ScriptedRun, GameAudio disabled) stay silent and unchanged. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent) for the design before starting.', '2026-11-24T05:28:53Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T650', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGod/Radio/, Voice/, and the Core Radio/ files where a counter is cheap to expose.
+Changes:
+- DECLARE_STATS_GROUP STATGROUP_SpaceGodRadio, with cycle counters around RadioHost::Tick, Receiver Advance and Rebase, ChatterSampler, ChatterEvents, RadioReception, VoiceArbiter and RadioDigest. Dword counters: log size, heap size, arrivals this frame, digested, TTS queue depth, cache hits and misses, mean synth ms.
+- TRACE_CPUPROFILER_EVENT_SCOPE in each stage, and in the TTS worker''s synth.
+- `stat SpaceGodRadio` shows them, and sg.Radio stats prints them.
+- The Core files stay free of Unreal headers. They expose plain counters, and the game reads them into the stats.
+Outcome: the editor build succeeds.
+
+
+Verification is build-only: the editor build succeeds (tools/build.ps1). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream; scripted runs (PlayerOptions::ScriptedRun, GameAudio disabled) stay silent and unchanged. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent) for the design before starting.', '2026-11-24T05:29:01Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T651', 'Repo: SpaceGod.Unreal. Area: Cpp/Source/SpaceGod/Radio/RadioHost.cpp, Voice/TtsService.cpp, and docs/COMMS_RADIO.md (new).
+Changes:
+- The budget: all game-thread radio work is held to 0.25 ms per frame, measured with FPlatformTime::Cycles64 around the stages. When it runs over, the sampler, event pump and digest move to the next frame (round-robin), but Advance always runs, capped at 64 pops.
+- Warp policy: above 10x nothing ambient is spoken; above 1000x ambient sampling pauses and only events and digests run.
+- TTS: the worker stays at TPri_BelowNormal, the queue at 16, and the caches at 32 MB in memory and 256 MB on disk. Confirm and enforce each.
+- docs/COMMS_RADIO.md records the TTS decision (from US-T574), the propagation design with its complexity bounds (from US-T575), these budgets, the settings and the console commands. Link it from the docs index or README if there is one.
+Outcome: the editor build succeeds.
+
+
+Verification is build-only: the editor build succeeds (tools/build.ps1). Do not run tests, smokes, the bench or the game. If Unreal is not installed on this workstation, say so instead of claiming a pass. View-local presentation: nothing here enters the simulation update, the co-op lockstep frames, persistence or the bench digests (Bench/expected-digests.json must not move), and nothing draws from the simulation random stream; scripted runs (PlayerOptions::ScriptedRun, GameAudio disabled) stay silent and unchanged. Other agents may hold uncommitted edits in this checkout: commit only your own files. Read the feature (parent) for the design before starting.', '2026-11-24T05:29:07Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T99', '## Story
 As the SpaceGod I can scrub the session back to any earlier moment, take over something there, and send history down a different path.
 
@@ -127469,6 +130462,65 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T717', 'Icon pre
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T718', 'Icon prefix 5', '2026-11-23T20:29:09Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T721', 'Icon prefix rule in BIBLE', '2026-11-23T20:34:14Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T728', 'Ability bar label clips', '2026-11-24T03:16:58Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T762', 'Turn modes', '2026-11-24T05:26:01Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T763', 'Turn mode groundwork', '2026-11-24T05:26:04Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T764', 'BIBLE turn modes skeleton', '2026-11-24T05:26:08Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T765', 'BIBLE turn modes skeleton', '2026-11-24T05:26:13Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T766', 'One battle core, swappable turn modes', '2026-11-24T05:26:20Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T767', 'TurnMode setting in Core', '2026-11-24T05:26:26Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T768', 'TurnRules seam in engine and runner', '2026-11-24T05:26:28Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T769', 'Bot and battle view read the seam', '2026-11-24T05:26:31Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T771', 'The player chooses a turn mode', '2026-11-24T05:26:46Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T773', 'Turn mode saved and passed to battles', '2026-11-24T05:26:52Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T774', 'Turn mode picker in Settings and New Game', '2026-11-24T05:26:54Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T775', 'Turn mode from command line and harness', '2026-11-24T05:27:00Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T776', 'Headless soak measures a turn mode', '2026-11-24T05:27:21Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T777', 'Soaks run in any turn mode with metrics', '2026-11-24T05:27:25Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T778', 'turn_modes.py runner and baseline', '2026-11-24T05:27:27Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T779', 'Mode A: any hero every turn', '2026-11-24T05:27:38Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T780', 'Any hero every turn: core rules', '2026-11-24T05:27:51Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T781', 'Mode A rules in TurnRules', '2026-11-24T05:27:55Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T782', 'Mode A Guard, mana, buffs, cooldowns', '2026-11-24T05:27:57Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T783', 'Mode A region rules, joins, triggers', '2026-11-24T05:28:00Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T784', 'Any hero every turn: bots and enemy AI', '2026-11-24T05:28:15Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T785', 'Mode A bots and enemy AI', '2026-11-24T05:28:19Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T786', 'Any hero every turn: UI and player-facing systems', '2026-11-24T05:28:33Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T787', 'Mode A battle UI and picker', '2026-11-24T05:28:37Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T788', 'Mode A tutorial, stats, Crucible, automation', '2026-11-24T05:28:39Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T789', 'Any hero every turn: soak and BIBLE', '2026-11-24T05:28:49Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T790', 'Mode A headless soak', '2026-11-24T05:28:53Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T791', 'Mode A BIBLE section', '2026-11-24T05:28:55Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T792', 'Mode B: hasn''t moved this round', '2026-11-24T05:29:04Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T793', 'Hasn''t moved this round: core rules', '2026-11-24T05:29:10Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T794', 'Mode B round tracking in TurnRules', '2026-11-24T05:29:14Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T795', 'Mode B Guard, mana, buffs, cooldowns', '2026-11-24T05:29:16Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T796', 'Mode B region rules, joins, triggers', '2026-11-24T05:29:18Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T797', 'Hasn''t moved this round: bots and enemy AI', '2026-11-24T05:29:29Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T798', 'Mode B bots and enemy AI', '2026-11-24T05:29:33Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T799', 'Hasn''t moved this round: UI and player-facing systems', '2026-11-24T05:29:40Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T800', 'Mode B who-has-moved UI and picker', '2026-11-24T05:29:44Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T801', 'Mode B tutorial, stats, Crucible, automation', '2026-11-24T05:29:48Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T802', 'Hasn''t moved this round: soak and BIBLE', '2026-11-24T05:30:00Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T803', 'Mode B headless soak', '2026-11-24T05:30:04Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T804', 'Mode B BIBLE section', '2026-11-24T05:30:06Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T805', 'Mode C: heroes on the timeline', '2026-11-24T05:30:17Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T806', 'Heroes on the timeline: core rules', '2026-11-24T05:30:26Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T807', 'Hero turn icons on the timeline', '2026-11-24T05:30:30Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T808', 'Hero turn resolution on the timeline', '2026-11-24T05:30:32Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T809', 'Mode C Guard, mana, buffs, status', '2026-11-24T05:30:35Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T810', 'Mode C region rules, joins, triggers', '2026-11-24T05:30:39Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T811', 'Heroes on the timeline: bots and enemy AI', '2026-11-24T05:30:58Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T812', 'Mode C bots and enemy AI', '2026-11-24T05:31:02Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T813', 'Heroes on the timeline: UI and player-facing systems', '2026-11-24T05:31:09Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T814', 'Hero icons drawn on the timeline', '2026-11-24T05:31:13Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T815', 'Mode C tutorial, stats, Crucible, automation', '2026-11-24T05:31:17Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T816', 'Heroes on the timeline: soak and BIBLE', '2026-11-24T05:31:29Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T817', 'Mode C headless soak', '2026-11-24T05:31:32Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T818', 'Mode C BIBLE section', '2026-11-24T05:31:34Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T819', 'Turn modes compared', '2026-11-24T05:31:46Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T820', 'Report which turn mode is most fun', '2026-11-24T05:31:55Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T821', 'Soak all four modes on equal terms', '2026-11-24T05:31:59Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T822', 'docs/TURN_MODES.md recommendation', '2026-11-24T05:32:01Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GW-T2', 'Universe wiki template', '2026-11-21T06:11:12Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GW-T3', 'Rename to Prose.Wiki.GLMZ', '2026-11-21T07:52:55Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IDEA-T61', 'GetInstancesAsync tests', '2026-11-22T06:19:58Z');
@@ -128746,6 +131798,85 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T564', 'Player n
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T565', 'Route planner honors FTL flags', '2026-11-24T03:49:23Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T572', 'Combat knobs reach fighters', '2026-11-24T05:01:23Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T573', 'Voiced comms and light-speed radio', '2026-11-24T05:10:41Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T574', 'Spoken comms (local TTS)', '2026-11-24T05:18:56Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T575', 'Light-speed radio', '2026-11-24T05:19:07Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T576', 'Radio frequencies and tuner', '2026-11-24T05:21:22Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T577', 'Universe chatter', '2026-11-24T05:21:29Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T578', 'No radio overstimulation', '2026-11-24T05:21:35Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T579', 'Comms and radio settings', '2026-11-24T05:21:44Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T580', 'Radio performance budget', '2026-11-24T05:21:51Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T581', 'Comms answers spoken aloud', '2026-11-24T05:22:09Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T582', 'Distinct voices on any PC', '2026-11-24T05:22:16Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T583', 'Story and encounter lines spoken', '2026-11-24T05:22:22Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T584', 'Radio arrives at light speed', '2026-11-24T05:22:29Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T585', 'Sent X ago on heard radio', '2026-11-24T05:22:36Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T586', 'Vendor Piper and voices', '2026-11-24T05:23:31Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T587', 'Piper TTS worker service', '2026-11-24T05:23:37Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T588', 'Voice clip cache', '2026-11-24T05:23:44Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T589', 'Radio voice playback', '2026-11-24T05:23:50Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T590', 'Voice casting per speaker', '2026-11-24T05:23:57Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T591', 'In-game console', '2026-11-24T05:23:58Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T592', 'Title and pause menu entries', '2026-11-24T05:24:00Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T593', 'Full control rebinding', '2026-11-24T05:24:02Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T594', 'Speak comms panel answers', '2026-11-24T05:24:04Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T595', 'Refresh rate and latency', '2026-11-24T05:24:05Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T596', 'Bloom, vignette and ray tracing rows', '2026-11-24T05:24:07Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T597', 'Sound output', '2026-11-24T05:24:09Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T598', 'Windows SAPI fallback voice', '2026-11-24T05:24:10Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T599', 'More gameplay options', '2026-11-24T05:24:11Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T600', 'HUD safe zone', '2026-11-24T05:24:14Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T601', 'Accessibility options', '2026-11-24T05:24:16Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T602', 'Speak encounters and story calls', '2026-11-24T05:24:17Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T603', 'Console opens on backtick', '2026-11-24T05:24:18Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T604', 'Console drives the game', '2026-11-24T05:24:20Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T605', 'Developer diagnostics', '2026-11-24T05:24:23Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T606', 'Saves drawer save and load modes', '2026-11-24T05:24:26Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T607', 'Pause and title menu entries', '2026-11-24T05:24:28Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T608', 'Every input rebindable', '2026-11-24T05:24:30Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T609', 'Pad feel and prompts', '2026-11-24T05:24:32Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T610', 'Refresh rate picker', '2026-11-24T05:24:35Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T611', 'Low latency and menu frame cap', '2026-11-24T05:24:37Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T612', 'Audio output device', '2026-11-24T05:24:39Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T613', 'Speaker mode', '2026-11-24T05:24:41Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T614', 'Spatial sound for headphones', '2026-11-24T05:24:44Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T615', 'Sound quality', '2026-11-24T05:24:46Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T616', 'Autosave slots and moments', '2026-11-24T05:24:48Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T617', 'Clock and date format', '2026-11-24T05:24:51Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T618', 'Captions', '2026-11-24T05:24:53Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T619', 'Colour and contrast', '2026-11-24T05:24:55Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T620', 'Console setting and key', '2026-11-24T05:24:57Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T621', 'SpaceGod console class', '2026-11-24T05:24:59Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T622', 'Game ignores keys while console open', '2026-11-24T05:25:02Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T623', 'Radio log and wavefront math', '2026-11-24T05:25:03Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T624', 'Settings console commands', '2026-11-24T05:25:04Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T625', 'Console autocomplete and help', '2026-11-24T05:25:06Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T626', 'Developer stats overlay and log level', '2026-11-24T05:25:08Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T627', 'Radio receiver schedule', '2026-11-24T05:25:10Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T628', 'Number keys as actions', '2026-11-24T05:25:10Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T629', 'D-pad steps and stick layout', '2026-11-24T05:25:13Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T630', 'Toggle trigger mode', '2026-11-24T05:25:15Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T631', 'Radio host in the game', '2026-11-24T05:25:16Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T632', 'Controller button prompts', '2026-11-24T05:25:17Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T633', 'Stick curve and trigger dead zone', '2026-11-24T05:25:19Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T634', 'Colour-blind filter', '2026-11-24T05:25:21Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T635', 'HUD radio log', '2026-11-24T05:25:23Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T636', 'Caption feed', '2026-11-24T05:25:23Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T637', 'HUD draws captions', '2026-11-24T05:25:26Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T638', 'High-contrast menus', '2026-11-24T05:25:28Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T639', 'Radio channel catalog', '2026-11-24T05:25:48Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T640', 'Radio tuner state', '2026-11-24T05:25:56Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T641', 'Radio tuner panel', '2026-11-24T05:26:05Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T642', 'Chatter line templates', '2026-11-24T05:27:03Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T643', 'Event-driven radio chatter', '2026-11-24T05:27:13Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T644', 'Ambient chatter sampler', '2026-11-24T05:27:24Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T645', 'Interstellar relay bulletins', '2026-11-24T05:27:35Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T646', 'Radio reception and routing', '2026-11-24T05:28:29Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T647', 'Voice arbiter', '2026-11-24T05:28:37Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T648', 'Radio digests', '2026-11-24T05:28:45Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T649', 'Comms and radio settings rows', '2026-11-24T05:28:53Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T650', 'Radio profiling hooks', '2026-11-24T05:29:01Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T651', 'Enforce the radio frame budget', '2026-11-24T05:29:07Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T652', 'PI macro breaks editor build', '2026-11-24T05:36:06Z');
 
 -- ticket_labels
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AGP-T14', 'level:story', '2026-11-22T06:41:34Z');
@@ -129092,8 +132223,9 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T720', 'level:t
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T721', 'level:task', '2026-11-24T04:56:16Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T722', 'level:task', '2026-11-24T04:57:34Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T723', 'level:task', '2026-11-24T04:59:26Z');
-INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T724', 'level:task', '2026-11-24T05:04:27Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T724', 'level:story', '2026-11-24T05:27:29Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T725', 'level:task', '2026-11-24T05:06:11Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T726', 'level:task', '2026-11-24T05:27:32Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAI-T19', 'level:task', '2026-11-22T05:49:45Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAI-T33', 'level:task', '2026-11-22T05:49:46Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAI-T34', 'level:task', '2026-11-22T05:49:47Z');
@@ -129307,6 +132439,69 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T755', 'level:ta
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T756', 'level:task', '2026-11-24T04:21:04Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T757', 'level:task', '2026-11-24T04:20:50Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T758', 'level:task', '2026-11-24T04:20:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T760', 'level:task', '2026-11-24T05:23:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T762', 'epic', '2026-11-24T05:26:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T762', 'level:epic', '2026-11-24T05:26:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T763', 'level:feature', '2026-11-24T05:26:04Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T764', 'level:story', '2026-11-24T05:26:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T765', 'level:task', '2026-11-24T05:26:15Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T766', 'level:story', '2026-11-24T05:26:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T767', 'level:task', '2026-11-24T05:26:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T768', 'level:task', '2026-11-24T05:26:29Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T769', 'level:task', '2026-11-24T05:26:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T770', 'level:task', '2026-11-24T05:30:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T771', 'level:story', '2026-11-24T05:26:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T772', 'level:task', '2026-11-24T05:29:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T773', 'level:task', '2026-11-24T05:26:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T774', 'level:task', '2026-11-24T05:26:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T775', 'level:task', '2026-11-24T05:27:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T776', 'level:story', '2026-11-24T05:27:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T777', 'level:task', '2026-11-24T05:27:26Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T778', 'level:task', '2026-11-24T05:27:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T779', 'level:feature', '2026-11-24T05:27:39Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T780', 'level:story', '2026-11-24T05:27:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T781', 'level:task', '2026-11-24T05:27:57Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T782', 'level:task', '2026-11-24T05:27:59Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T783', 'level:task', '2026-11-24T05:28:02Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T784', 'level:story', '2026-11-24T05:28:15Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T785', 'level:task', '2026-11-24T05:28:20Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T786', 'level:story', '2026-11-24T05:28:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T787', 'level:task', '2026-11-24T05:28:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T788', 'level:task', '2026-11-24T05:28:40Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T789', 'level:story', '2026-11-24T05:28:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T790', 'level:task', '2026-11-24T05:28:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T791', 'level:task', '2026-11-24T05:28:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T792', 'level:feature', '2026-11-24T05:29:04Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T793', 'level:story', '2026-11-24T05:29:11Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T794', 'level:task', '2026-11-24T05:29:15Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T795', 'level:task', '2026-11-24T05:29:17Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T796', 'level:task', '2026-11-24T05:29:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T797', 'level:story', '2026-11-24T05:29:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T798', 'level:task', '2026-11-24T05:29:34Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T799', 'level:story', '2026-11-24T05:29:40Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T800', 'level:task', '2026-11-24T05:29:47Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T801', 'level:task', '2026-11-24T05:29:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T802', 'level:story', '2026-11-24T05:30:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T803', 'level:task', '2026-11-24T05:30:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T804', 'level:task', '2026-11-24T05:30:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T805', 'level:feature', '2026-11-24T05:30:17Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T806', 'level:story', '2026-11-24T05:30:27Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T807', 'level:task', '2026-11-24T05:30:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T808', 'level:task', '2026-11-24T05:30:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T809', 'level:task', '2026-11-24T05:30:37Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T810', 'level:task', '2026-11-24T05:30:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T811', 'level:story', '2026-11-24T05:30:59Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T812', 'level:task', '2026-11-24T05:31:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T813', 'level:story', '2026-11-24T05:31:09Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T814', 'level:task', '2026-11-24T05:31:16Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T815', 'level:task', '2026-11-24T05:31:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T816', 'level:story', '2026-11-24T05:31:29Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T817', 'level:task', '2026-11-24T05:31:34Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T818', 'level:task', '2026-11-24T05:31:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T819', 'level:feature', '2026-11-24T05:31:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T820', 'level:story', '2026-11-24T05:31:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T821', 'level:task', '2026-11-24T05:32:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T822', 'level:task', '2026-11-24T05:32:02Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('IDEA-T10', 'level:task', '2026-11-22T05:40:54Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('IDEA-T11', 'level:task', '2026-11-22T05:40:55Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('IDEA-T12', 'level:task', '2026-11-22T05:40:57Z');
@@ -133094,6 +136289,85 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T571', 'level:ta
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T572', 'level:task', '2026-11-24T05:01:23Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T573', 'epic', '2026-11-24T05:10:41Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T573', 'level:epic', '2026-11-24T05:10:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T574', 'level:feature', '2026-11-24T05:18:59Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T575', 'level:feature', '2026-11-24T05:19:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T576', 'level:feature', '2026-11-24T05:21:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T577', 'level:feature', '2026-11-24T05:21:29Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T578', 'level:feature', '2026-11-24T05:21:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T579', 'level:feature', '2026-11-24T05:21:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T580', 'level:feature', '2026-11-24T05:21:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T581', 'level:story', '2026-11-24T05:22:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T582', 'level:story', '2026-11-24T05:22:16Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T583', 'level:story', '2026-11-24T05:22:22Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T584', 'level:story', '2026-11-24T05:22:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T585', 'level:story', '2026-11-24T05:22:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T586', 'level:task', '2026-11-24T05:23:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T587', 'level:task', '2026-11-24T05:23:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T588', 'level:task', '2026-11-24T05:23:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T589', 'level:task', '2026-11-24T05:23:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T590', 'level:task', '2026-11-24T05:23:57Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T591', 'level:feature', '2026-11-24T05:23:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T592', 'level:feature', '2026-11-24T05:24:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T593', 'level:feature', '2026-11-24T05:24:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T594', 'level:task', '2026-11-24T05:24:04Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T595', 'level:story', '2026-11-24T05:24:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T596', 'level:task', '2026-11-24T05:24:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T597', 'level:story', '2026-11-24T05:24:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T598', 'level:task', '2026-11-24T05:24:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T599', 'level:story', '2026-11-24T05:24:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T600', 'level:task', '2026-11-24T05:24:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T601', 'level:feature', '2026-11-24T05:24:16Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T602', 'level:task', '2026-11-24T05:24:17Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T603', 'level:story', '2026-11-24T05:24:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T604', 'level:story', '2026-11-24T05:24:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T605', 'level:story', '2026-11-24T05:24:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T606', 'level:task', '2026-11-24T05:24:26Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T607', 'level:task', '2026-11-24T05:24:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T608', 'level:story', '2026-11-24T05:24:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T609', 'level:story', '2026-11-24T05:24:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T610', 'level:task', '2026-11-24T05:24:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T611', 'level:task', '2026-11-24T05:24:37Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T612', 'level:task', '2026-11-24T05:24:39Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T613', 'level:task', '2026-11-24T05:24:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T614', 'level:task', '2026-11-24T05:24:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T615', 'level:task', '2026-11-24T05:24:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T616', 'level:task', '2026-11-24T05:24:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T617', 'level:task', '2026-11-24T05:24:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T618', 'level:story', '2026-11-24T05:24:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T619', 'level:story', '2026-11-24T05:24:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T620', 'level:task', '2026-11-24T05:24:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T621', 'level:task', '2026-11-24T05:25:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T622', 'level:task', '2026-11-24T05:25:02Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T623', 'level:task', '2026-11-24T05:25:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T624', 'level:task', '2026-11-24T05:25:04Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T625', 'level:task', '2026-11-24T05:25:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T626', 'level:task', '2026-11-24T05:25:09Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T627', 'level:task', '2026-11-24T05:25:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T628', 'level:task', '2026-11-24T05:25:11Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T629', 'level:task', '2026-11-24T05:25:13Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T630', 'level:task', '2026-11-24T05:25:15Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T631', 'level:task', '2026-11-24T05:25:17Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T632', 'level:task', '2026-11-24T05:25:17Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T633', 'level:task', '2026-11-24T05:25:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T634', 'level:task', '2026-11-24T05:25:22Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T635', 'level:task', '2026-11-24T05:25:24Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T636', 'level:task', '2026-11-24T05:25:24Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T637', 'level:task', '2026-11-24T05:25:26Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T638', 'level:task', '2026-11-24T05:25:29Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T639', 'level:task', '2026-11-24T05:25:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T640', 'level:task', '2026-11-24T05:25:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T641', 'level:task', '2026-11-24T05:26:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T642', 'level:task', '2026-11-24T05:27:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T643', 'level:task', '2026-11-24T05:27:13Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T644', 'level:task', '2026-11-24T05:27:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T645', 'level:task', '2026-11-24T05:27:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T646', 'level:task', '2026-11-24T05:28:29Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T647', 'level:task', '2026-11-24T05:28:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T648', 'level:task', '2026-11-24T05:28:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T649', 'level:task', '2026-11-24T05:28:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T650', 'level:task', '2026-11-24T05:29:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T651', 'level:task', '2026-11-24T05:29:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T652', 'level:task', '2026-11-24T05:36:06Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T99', 'level:story', '2026-11-22T06:44:47Z');
 
 -- repo_renames
@@ -134774,6 +138048,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T715', 'GAD-T711', '
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T716', 'GAD-T711', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T717', 'GAD-T711', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T719', 'GAD-T711', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T726', 'GAD-T724', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T80', 'GAD-US-MP1', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T81', 'GAD-T80', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T81', 'GAD-US-MP1', 'implements', NULL);
@@ -135160,6 +138435,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T722', 'GG-T719', 'pa
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T723', 'GG-T715', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T725', 'GG-T724', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T726', 'GG-T723', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T727', 'GG-T742', 'requires', 'blocked by hand');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T735', 'GG-T733', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T736', 'GG-T733', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T736', 'GG-T735', 'requires', NULL);
@@ -135187,19 +138463,117 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T754', 'GG-T751', 'pa
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T755', 'GG-T753', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T757', 'GG-T473', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T758', 'GG-T473', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T759', 'GG-T742', 'requires', 'blocked by hand');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T76', 'GG-T51', 'follow-up-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T763', 'GG-T762', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T764', 'GG-T763', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T765', 'GG-T764', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T766', 'GG-T763', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T767', 'GG-T765', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T767', 'GG-T766', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T768', 'GG-T766', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T768', 'GG-T767', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T769', 'GG-T766', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T769', 'GG-T768', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T77', 'GG-T52', 'follow-up-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T77', 'GG-US-Z1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T771', 'GG-T763', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T773', 'GG-T769', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T773', 'GG-T771', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T774', 'GG-T771', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T774', 'GG-T773', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T775', 'GG-T771', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T775', 'GG-T774', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T776', 'GG-T763', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T777', 'GG-T775', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T777', 'GG-T776', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T778', 'GG-T776', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T778', 'GG-T777', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T779', 'GG-T762', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T779', 'GG-T763', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T78', 'GG-T53', 'follow-up-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T78', 'GG-US-Z1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T780', 'GG-T779', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T781', 'GG-T778', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T781', 'GG-T780', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T782', 'GG-T780', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T782', 'GG-T781', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T783', 'GG-T780', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T783', 'GG-T782', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T784', 'GG-T779', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T785', 'GG-T783', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T785', 'GG-T784', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T786', 'GG-T779', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T787', 'GG-T785', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T787', 'GG-T786', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T788', 'GG-T786', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T788', 'GG-T787', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T789', 'GG-T779', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T79', 'GG-T51', 'follow-up-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T79', 'GG-T76', 'supersedes', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T790', 'GG-T788', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T790', 'GG-T789', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T791', 'GG-T789', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T791', 'GG-T790', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T792', 'GG-T762', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T792', 'GG-T779', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T793', 'GG-T792', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T794', 'GG-T791', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T794', 'GG-T793', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T795', 'GG-T793', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T795', 'GG-T794', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T796', 'GG-T793', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T796', 'GG-T795', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T797', 'GG-T792', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T798', 'GG-T796', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T798', 'GG-T797', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T799', 'GG-T792', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T80', 'GG-T79', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T80', 'GG-T83', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T800', 'GG-T798', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T800', 'GG-T799', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T801', 'GG-T799', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T801', 'GG-T800', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T802', 'GG-T792', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T803', 'GG-T801', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T803', 'GG-T802', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T804', 'GG-T802', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T804', 'GG-T803', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T805', 'GG-T762', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T805', 'GG-T792', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T806', 'GG-T805', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T807', 'GG-T804', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T807', 'GG-T806', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T808', 'GG-T806', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T808', 'GG-T807', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T809', 'GG-T806', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T809', 'GG-T808', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T81', 'GG-T80', 'follow-up-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T81', 'GG-US-Z1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T810', 'GG-T806', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T810', 'GG-T809', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T811', 'GG-T805', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T812', 'GG-T810', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T812', 'GG-T811', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T813', 'GG-T805', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T814', 'GG-T812', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T814', 'GG-T813', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T815', 'GG-T813', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T815', 'GG-T814', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T816', 'GG-T805', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T817', 'GG-T815', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T817', 'GG-T816', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T818', 'GG-T816', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T818', 'GG-T817', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T819', 'GG-T762', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T819', 'GG-T805', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T82', 'GG-T80', 'follow-up-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T82', 'GG-US-Z1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T820', 'GG-T819', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T821', 'GG-T818', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T821', 'GG-T820', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T822', 'GG-T820', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T822', 'GG-T821', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T83', 'GG-US-Z1', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T85', 'GG-T84', 'related', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T85', 'GG-US-Z1', 'implements', NULL);
@@ -139987,7 +143361,150 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T569', 'US-T511', 'pa
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T570', 'US-T515', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T571', 'US-T515', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T572', 'US-T538', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T574', 'US-T573', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T575', 'US-T573', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T576', 'US-T573', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T577', 'US-T573', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T578', 'US-T573', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T579', 'US-T573', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T580', 'US-T573', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T581', 'US-T574', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T582', 'US-T574', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T583', 'US-T574', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T584', 'US-T575', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T585', 'US-T575', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T586', 'US-T581', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T587', 'US-T581', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T587', 'US-T586', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T588', 'US-T581', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T588', 'US-T587', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T589', 'US-T581', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T589', 'US-T588', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T59', 'U.SPC-T602', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T590', 'US-T582', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T591', 'US-T501', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T592', 'US-T501', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T593', 'US-T501', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T594', 'US-T581', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T594', 'US-T589', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T594', 'US-T590', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T595', 'US-T543', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T596', 'US-T547', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T596', 'US-T549', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T597', 'US-T550', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T598', 'US-T582', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T598', 'US-T587', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T599', 'US-T553', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T600', 'US-T558', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T600', 'US-T560', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T601', 'US-T501', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T602', 'US-T583', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T602', 'US-T594', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T603', 'US-T591', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T604', 'US-T591', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T605', 'US-T591', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T606', 'US-T592', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T607', 'US-T592', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T607', 'US-T606', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T608', 'US-T593', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T609', 'US-T593', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T610', 'US-T546', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T610', 'US-T595', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T611', 'US-T545', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T611', 'US-T595', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T612', 'US-T552', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T612', 'US-T597', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T613', 'US-T597', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T613', 'US-T612', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T614', 'US-T597', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T614', 'US-T613', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T615', 'US-T597', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T615', 'US-T614', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T616', 'US-T599', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T617', 'US-T599', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T617', 'US-T616', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T618', 'US-T601', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T619', 'US-T601', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T620', 'US-T603', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T621', 'US-T603', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T621', 'US-T620', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T622', 'US-T603', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T622', 'US-T621', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T623', 'US-T584', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T624', 'US-T604', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T625', 'US-T512', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T625', 'US-T604', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T625', 'US-T621', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T625', 'US-T624', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T626', 'US-T605', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T626', 'US-T621', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T627', 'US-T584', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T627', 'US-T623', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T628', 'US-T608', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T628', 'US-T620', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T629', 'US-T608', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T629', 'US-T628', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T630', 'US-T608', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T630', 'US-T629', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T631', 'US-T584', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T631', 'US-T627', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T632', 'US-T609', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T632', 'US-T630', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T633', 'US-T609', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T633', 'US-T632', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T634', 'US-T619', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T635', 'US-T585', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T635', 'US-T631', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T636', 'US-T618', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T636', 'US-T634', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T637', 'US-T618', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T637', 'US-T636', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T638', 'US-T619', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T638', 'US-T636', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T639', 'US-T576', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T639', 'US-T623', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T640', 'US-T576', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T640', 'US-T639', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T641', 'US-T576', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T641', 'US-T635', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T641', 'US-T640', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T642', 'US-T577', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T642', 'US-T635', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T642', 'US-T639', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T643', 'US-T577', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T643', 'US-T631', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T643', 'US-T642', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T644', 'US-T577', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T644', 'US-T631', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T644', 'US-T642', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T645', 'US-T577', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T645', 'US-T631', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T645', 'US-T639', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T646', 'US-T578', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T646', 'US-T631', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T646', 'US-T640', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T647', 'US-T578', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T647', 'US-T594', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T647', 'US-T646', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T648', 'US-T578', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T648', 'US-T635', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T648', 'US-T646', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T648', 'US-T647', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T649', 'US-T579', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T649', 'US-T598', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T649', 'US-T635', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T649', 'US-T644', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T649', 'US-T647', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T649', 'US-T648', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T650', 'US-T580', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T650', 'US-T643', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T650', 'US-T644', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T650', 'US-T645', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T650', 'US-T648', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T651', 'US-T580', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T651', 'US-T649', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T651', 'US-T650', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T652', 'US-T499', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T99', 'US-T468', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('USOD-T10', 'USOD-T3', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('USOD-T10', 'USOD-T4', 'requires', NULL);
