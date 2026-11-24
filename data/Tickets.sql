@@ -5650,6 +5650,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T707', 'Gadfly', 707, '2026-11-23', 'feature', 'wont-do', 'Target phones: current iPhone, Samsung Galaxy S and Google Pixel releases (plus desktop/laptop). Tune the exam room''s 3D examiner and layout for their viewports (360-430 CSS px wide) and GPUs; the get-ready system check names the supported devices and tells other phones the exam may not run well (warn, never block a desktop); docs list the supported device matrix', '—', 706, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T708', 'Gadfly', 708, '2026-11-23', 'fix', 'closed', 'voice.css still uses its own spacing/colour values: move it onto the design tokens; audit the exam room''s live regions (data-voice-status and others) so screen readers aren''t flooded (WCAG 4.1.3)', '6e53024', 707, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T709', 'Gadfly', 709, '2026-11-23', 'feature', 'closed', 'AssessmentEditor.razor and GradingSession.razor markup pass deferred from GAD-T696 while GAD-T703 edited them: thead scope=col, notice status classes (error/warn/info), labels, design-system classes; their CSS is already done', 'f1f69be', 708, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T710', 'Gadfly', 710, '2026-11-23', 'fix', 'open', 'Chamber of Secrets exam has 17 objectives vs maxTurns=12, so the planner is mathematically forced into Elicit-only breadth and never challenges the student', '—', 709, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T1', 'GridGame.Studio', 1, '2026-11-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T2', 'GridGame.Studio', 2, '2026-11-21', 'feature', 'closed', 'GridGame.Studio: ThumbnailStudio moved here as one WPF app, plus Gallery tabs (Heroes/Enemies/Abilities paste-to-replace: background cut, centred 1024x1024, Figure update; 64px icons) and an eraser (circle/square 1-100 px), Python image steps run as one-off commands, no web server', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T3', 'GridGame.Studio', 3, '2026-11-21', 'feature', 'closed', 'Studio gallery: Backgrounds tab grouped by region (campaign.json Themes Name/Backgrounds set), replace any image or add the next numbered one (<set>_NN.jpg)', '—', 2, NULL);
@@ -99385,6 +99386,9 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (106140, 
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (106141, 'US-T467', '2026-11-23T22:40:04Z', 'rollup', NULL, 'US-T468');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (106142, 'US-T495', '2026-11-23T22:40:08Z', 'ref', 'children done', 'bc1a072');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (106143, 'US-T497', '2026-11-23T22:40:17Z', 'working', 'pdftransferjr@mindattic.com (b773a79b-ba7e-46cb-9786-f886660e3188)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (106144, 'GAD-T710', '2026-11-24T02:49:42Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (106145, 'GAD-T710', '2026-11-24T02:49:42Z', 'name', NULL, 'Socratic follow-up starved by turn budget');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (106146, 'GAD-T710', '2026-11-24T02:49:42Z', 'label', NULL, 'level:task');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -109832,6 +109836,17 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T699', '
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T703', 'Owner 2026-11-23: "let the LLM do the final grade, lets see how close it gets, make a human grader an option; both as single of either, or average of both". Overrides the Part 8.1 rule (CombinedScoring refuses HumanWeight 0) by owner decision. AI-only: when AI grading finishes the grade is finalized and published automatically (audited as system). Human-only: human score is the grade. Both: weighted average (existing AiWeight/HumanWeight, default 0.5/0.5). Where both exist, show the AI-vs-human difference per objective so the owner can see how close the LLM gets.', '2026-11-23T20:16:43Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T705', 'Owner 2026-11-23: "deploy it to azure when everything lands".', '2026-11-23T20:41:22Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T707', 'Owner 2026-11-23: "some devices are just too small ... should be targeting flagship models that can actually run" then "for now lets just focus on iPhones, Samsung Galaxy and Google Pixel releases". WCAG 1.4.10 reflow (320 CSS px = 1280 at 400% zoom) still applies to every page''s content, so pages keep reflowing; this ticket is about which phones the live exam is built and tuned for.', '2026-11-23T20:42:26Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T710', 'Exam 599cddca-fe1b-420c-9156-35af8b7ac4b0 (Harry Potter and the Chamber of Secrets) has 17 concept/objective ids with maxTurns=12 and minCorroboratingAnswers=2 in its PolicyJson. QuestionPlanner.Next() only stays on the current objective for a FollowUp (Probe/Clarify/Contradiction/Counterexample) when capacity > notStarted * MinCorroboratingAnswers; with 17 objectives that is never true inside a 12-turn budget, so the planner is forced into Elicit-only breadth mode every turn and abandons each objective as inconclusive instead of challenging the student.
+
+Confirmed against Erin''s attempt (session 2ec83955-c9cf-4d68-82b9-d63b51b92911): all 12 turns were Move=Elicit, zero follow-up moves of any kind.
+
+Compare ''The Harry Potter Series'' exam, which has 7 objectives against the same 12-turn default -- a much more survivable ratio.
+
+User-reported (Erin): ''I dont think this is following the socratic method it just asked a bunch of questions about the plot it didnt challenge me to self examine my understanding.''
+
+Needs:
+1. A content decision on which of the 17 objectives to keep/cut for this exam (or raise maxTurns, weighed against the 20-minute time budget).
+2. Consider an authoring-time guard that warns/blocks publishing an exam whose objective count can''t fit real follow-up turns within maxTurns, so this can''t recur silently on other exams.', '2026-11-24T02:49:42Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T80', 'Part 19 Phase 1. **Done when:** the design doc exists and every later MP ticket can point at its section.
 
 Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T00:48:55Z');
@@ -125237,6 +125252,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T707', 'Flagshi
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T708', 'Exam room tokens and live regions', '2026-11-23T20:44:49Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T709', 'Editor and workspace markup pass', '2026-11-23T20:48:55Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T71', 'Engine and server fixes from the docs review', '2026-11-21T00:22:29Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T710', 'Socratic follow-up starved by turn budget', '2026-11-24T02:49:42Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T72', 'Resumed session uses current concept map', '2026-11-21T00:25:52Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T73', 'Circuit tenant never system', '2026-11-21T00:44:37Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T74', 'Exam session owner check', '2026-11-21T00:44:38Z');
@@ -127080,6 +127096,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T706', 'level:t
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T707', 'level:task', '2026-11-23T20:42:27Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T708', 'level:task', '2026-11-23T20:44:49Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T709', 'level:task', '2026-11-23T20:48:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T710', 'level:task', '2026-11-24T02:49:42Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAI-T19', 'level:task', '2026-11-22T05:49:45Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAI-T33', 'level:task', '2026-11-22T05:49:46Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAI-T34', 'level:task', '2026-11-22T05:49:47Z');
