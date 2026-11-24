@@ -5689,11 +5689,11 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T724', 'Gadfly', 724, '2026-11-23', 'feature', 'closed', 'Build examiner-socrates.glb with the tools/examiner-m MPFB pipeline (CC0): elderly male, Vatican-bust likeness (snub nose, bald crown, prominent eyes), CC0 beard; same luminous blue ''Cortana'' look with the green eyes via avatar-look.js; no clothing work beyond what the pipeline gives. Add an ExaminerCatalog row and an aged, wizened male voice. License file CC0.', 'ec3e826', 723, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T725', 'Gadfly', 725, '2026-11-23', 'fix', 'closed', 'Second pass on the voice exam room and practice page after GAD-T723: apply the frontend-design skill for an intentional, classical-Greek-themed layout (hierarchy, rhythm, typography, states), WCAG 2.2 AA, phone and desktop.', '68cdf5f', 724, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T726', 'Gadfly', 726, '2026-11-23', 'feature', 'closed', 'Socrates (examiner-socrates) is treated as female where code tests Id == ExaminerCatalog.Male: ExamRoomText.cs:53/56, StartExam.razor:695/1038, VoiceRoom.razor:282, LiveExaminer.razor:53 (male pronouns, TalkingHead body M), and ExaminerCustomization.cs:65 has no voice allowlist for him. Add an IsMale(id) helper (Male or Socrates) and use it; optionally a slower per-examiner ElevenLabs speed (~0.9) for Socrates, which VoiceSettings/ExaminerTts only set per session today.', '18fad8a', 725, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T727', 'Gadfly', 727, '2026-11-24', 'fix', 'open', 'In the app he sits small and low in the frame, head bowed, eyes droopy; the viking beard reads as stringy dark lines in the hologram look; fully bald with no fringe; reads as a generic bald man. Fix framing/head pose, fuller rounded curly beard, side/back fringe, stronger bust likeness.', '—', 726, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T727', 'Gadfly', 727, '2026-11-24', 'fix', 'closed', 'In the app he sits small and low in the frame, head bowed, eyes droopy; the viking beard reads as stringy dark lines in the hologram look; fully bald with no fringe; reads as a generic bald man. Fix framing/head pose, fuller rounded curly beard, side/back fringe, stronger bust likeness.', 'children done', 726, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T728', 'Gadfly', 728, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 727, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T729', 'Gadfly', 729, '2026-11-24', 'fix', 'closed', 'Install or locate a Blender 4.4.3 portable + MPFB 2.0.18 + CC0 asset packs (system data, faceunits01, visemes02, bodyparts05) on a build machine for the Socrates avatar pipeline (none found on this machine: only Blender 3.3 installed, no MPFB)', 'e45a70f', 728, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T730', 'Gadfly', 730, '2026-11-24', 'fix', 'closed', 'Run tools/examiner-socrates/build.py (already edited, uncommitted) through postprocess.py/alignrig.py/trim.py, verify eye/hip height and beard/fringe/likeness against examiner-m via headless-Chromium stills through the real TalkingHead+avatar-look.js app look, iterate until satisfied, then commit build.py + tools/examiner-m/postprocess.py (afro regex fix already uncommitted) + the regenerated examiner-socrates.glb and close GAD-T727', '55f85b2', 729, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T731', 'Gadfly', 731, '2026-11-24', 'fix', 'open', 'Source or make a real CC0 solid-shell beard for Socrates (examiner-socrates.glb): bodyparts05''s grinsegold_beard_sigmund_wip has the right full, rounded shape but is AGPL3, not CC0, so GAD-T730 could not use it and kept the CC0 rehmanpolanski_beard_viking/moustache strand pair (the original, ''stringy'' one from GAD-T724/GAD-T727). Pushing that strand geometry outward with a reshape() does not work (splays into a long scraggly hang, tried and reverted in GAD-T730''s commit) - a real fix needs either a different CC0 solid-shell beard asset (checked bodyparts05''s other options: culturalibre_faun_beard is CC0 but a thin pointed goatee, not full cheek coverage; wdg_scruffy_beard is also AGPL3) or a custom-sculpted beard mesh.', '—', 730, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T731', 'Gadfly', 731, '2026-11-24', 'fix', 'closed', 'Source or make a real CC0 solid-shell beard for Socrates (examiner-socrates.glb): bodyparts05''s grinsegold_beard_sigmund_wip has the right full, rounded shape but is AGPL3, not CC0, so GAD-T730 could not use it and kept the CC0 rehmanpolanski_beard_viking/moustache strand pair (the original, ''stringy'' one from GAD-T724/GAD-T727). Pushing that strand geometry outward with a reshape() does not work (splays into a long scraggly hang, tried and reverted in GAD-T730''s commit) - a real fix needs either a different CC0 solid-shell beard asset (checked bodyparts05''s other options: culturalibre_faun_beard is CC0 but a thin pointed goatee, not full cheek coverage; wdg_scruffy_beard is also AGPL3) or a custom-sculpted beard mesh.', '278556c', 730, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T732', 'Gadfly', 732, '2026-11-24', 'chore', 'closed', 'Gadfly comments that name MindAttic.Media say MindAttic.Storage', 'children done', 731, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T733', 'Gadfly', 733, '2026-11-24', 'chore', 'closed', 'Gadfly.Server/Data/Entities.cs (~175) and Gadfly.Server/Sources/SourceProcessingJob.cs (~12) comments say MindAttic.Storage instead of MindAttic.Media', '91e7a1fd83ab22de514679267c25e5da432292c7', 732, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T1', 'GridGame.Studio', 1, '2026-11-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
@@ -6734,6 +6734,10 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1002', 'GridGame.Unity', 1002, '2026-11-24', 'feature', 'open', 'GridGame.Unity''s automation and harness use MindAttic.Media.Capture.Unity: shots marked in the recording, failures save a replay, runs publish preview sets', '—', 1001, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1003', 'GridGame.Unity', 1003, '2026-11-24', 'feature', 'open', 'GridGame harness runs with --record mark every screenshot and step in the video, and a failing check saves the last 30 s as a replay plus a screenshot', '—', 1002, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1004', 'GridGame.Unity', 1004, '2026-11-24', 'feature', 'open', 'A GridGame harness run''s screenshots (and its recording) can be published as a preview set for /preview, and the README says how to record, mark and preview', '—', 1003, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1005', 'GridGame.Unity', 1005, '2026-11-24', 'feature', 'open', 'GridGame AutomationServer marks each screenshot in the recording and gains a capture endpoint (marker, raise, screenshot, save-replay, clip, status) via CaptureUnity', '—', 1004, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1006', 'GridGame.Unity', 1006, '2026-11-24', 'feature', 'open', 'GridGame harness --record loads tools/harness.capture.json (replay ring, harness-fail rule) and a failing command saves a replay and a final screenshot', '—', 1005, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1007', 'GridGame.Unity', 1007, '2026-11-24', 'feature', 'open', 'GridGame harness --preview [TICKET] publishes the run''s artifacts PNGs (and recording) as a preview set via the capture agent and opens it', '—', 1006, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1008', 'GridGame.Unity', 1008, '2026-11-24', 'docs', 'open', 'GridGame README Capture section: recording, markers, failure replays, preview sets, capture endpoint', '—', 1007, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('HCM-T1', 'Hardware.ChiMesh', 1, '2026-11-22', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('HCM-T2', 'Hardware.ChiMesh', 2, '2026-11-22', 'docs', 'closed', '2026-11-22 morning', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('HCM-T3', 'Hardware.ChiMesh', 3, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 2, NULL);
@@ -8723,7 +8727,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T164', 'MindAttic.Media.Capture', 164, '2026-11-24', 'feature', 'closed', 'capture mcp: stdio MCP server (ModelContextProtocol 2.x pinned) with preview_new_set/capture_web/capture_screen/add_file/show/list_sets', 'c79ebd4', 163, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T165', 'MindAttic.Media.Capture', 165, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 164, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T166', 'MindAttic.Media.Capture', 166, '2026-11-24', 'fix', 'closed', 'Fails on main: MindAttic.Capture.Tests.EngineTests.Replay_covers_before_and_after — Assert.That(Probe(r.Files[0], "format=duration"), Is.EqualTo(4.0).Within(0.15)) Expected: 4.0d +/- 0.14999999999999999d But was: 0.93300000000000005d Off by: 3.0670000000000002d (landed on main since the last green run: tickets M.CAPT-T162, M.CAPT-T161 in a89ba68 capture set new/add/list/show and --set <dir> on shot/record: the engine writes to a staging folder inside the set, then the files (and sidecars) are imported as the set''s next NNN_tag; set show hands the set to MindAttic.MediaViewer or Photos and prints pipe/launched/photos/none; repeated options (GetAll); README gains a Preview sets section and its stale Output section now shows the per-session folder layout (M.CAPT-T162); f9c6e2e MindAttic.Capture.Sets: preview set model and preview.json (mindattic.preview/1), PreviewSetStore (create, open, list, next index, import under a per-set named mutex, manifest written to preview.json.tmp then File.Replace), a broad MediaKinds table (images incl. webp/avif/heic/jxl/psd/raw, animated gif/apng/webp, video, audio incl. midi and trackers, hidden sidecars, else other), PreviewHandoff pipe and PreviewLauncher (pipe, launch MindAttic.MediaViewer, Photos, none); CaptureSidecar, OutputManager.ResolveRoot/SanitizeTag/Sanitize public, core 2.0.0; design in docs/design/preview-sets.md (M.CAPT-T161))', '17ecff2', 165, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T167', 'MindAttic.Media.Capture', 167, '2026-11-24', 'chore', 'open', 'Owner-approved rename: MindAttic.Capture becomes MindAttic.Media.Capture (package ids MindAttic.Media.Capture[.Sets|.Windows|.Wpf|.WebView2|.Web] 1.0.0, namespaces, projects, Unity package, install, folder, GitHub repo, docs-site, tickets key; prefix M.CAPT and the capture CLI kept), and every consumer in the workspace follows', '—', 166, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T167', 'MindAttic.Media.Capture', 167, '2026-11-24', 'chore', 'closed', 'Owner-approved rename: MindAttic.Capture becomes MindAttic.Media.Capture (package ids MindAttic.Media.Capture[.Sets|.Windows|.Wpf|.WebView2|.Web] 1.0.0, namespaces, projects, Unity package, install, folder, GitHub repo, docs-site, tickets key; prefix M.CAPT and the capture CLI kept), and every consumer in the workspace follows', 'children done', 166, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T168', 'MindAttic.Media.Capture', 168, '2026-11-24', 'chore', 'closed', 'The capture libraries, agent, tray, Unity package and NuGet packages carry the MindAttic.Media.Capture name and install from C:\Apps\MindAttic.Media.Capture', 'children done', 167, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T169', 'MindAttic.Media.Capture', 169, '2026-11-24', 'chore', 'closed', 'Projects, NuGet package ids, namespaces and the Unity package are MindAttic.Media.Capture; packages 1.0.0 are in C:\LocalNuGet; the launcher and shortcut use the new name', 'children done', 168, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T170', 'MindAttic.Media.Capture', 170, '2026-11-24', 'chore', 'closed', 'Rename the projects, folders, solution and NuGet package ids of MindAttic.Capture to MindAttic.Media.Capture* (all 1.0.0), without moving namespaces yet', 'df7393b', 169, NULL);
@@ -8733,17 +8737,27 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T174', 'MindAttic.Media.Capture', 174, '2026-11-24', 'fix', 'closed', 'PreviewHandoff never reaches a running viewer: Capture.Sets connects to pipe MindAttic.MediaViewer.{session} and writes PreviewRequest JSON, but the viewer listens on mindattic-mediaviewer-cli-{user} for a command line, so every show waits 300 ms and falls through to launching the exe', '5d91b32', 173, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T175', 'MindAttic.Media.Capture', 175, '2026-11-24', 'chore', 'closed', 'MindAttic.Media.Capture.Sets PreviewLauncher launches C:\Apps\MindAttic.Media.Viewer\MindAttic.Media.Viewer.exe (old path as fallback; env MINDATTIC_MEDIA_VIEWER, then MINDATTIC_MEDIAVIEWER) and its handoff pipe and texts use the new viewer name', '17cad51', 174, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T176', 'MindAttic.Media.Capture', 176, '2026-11-24', 'chore', 'closed', 'Install as MindAttic.Media.Capture (launcher C:\Apps\MindAttic.Media.Capture\run.bat, MindAttic Media Capture desktop shortcut, old C:\Apps\MindAttic.Capture removed) and pack MindAttic.Media.Capture* 1.0.0 to C:\LocalNuGet', '1e6d54c', 175, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T177', 'MindAttic.Media.Capture', 177, '2026-11-24', 'chore', 'open', 'The GitHub repo, local folder, docs-site and tickets registry key are MindAttic.Media.Capture and its docs describe it', '—', 176, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T178', 'MindAttic.Media.Capture', 178, '2026-11-24', 'chore', 'open', 'GitHub repo, folder, tickets key and docs are MindAttic.Media.Capture, and no live MindAttic.Capture reference is left in the workspace', '—', 177, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T177', 'MindAttic.Media.Capture', 177, '2026-11-24', 'chore', 'closed', 'The GitHub repo, local folder, docs-site and tickets registry key are MindAttic.Media.Capture and its docs describe it', 'children done', 176, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T178', 'MindAttic.Media.Capture', 178, '2026-11-24', 'chore', 'closed', 'GitHub repo, folder, tickets key and docs are MindAttic.Media.Capture, and no live MindAttic.Capture reference is left in the workspace', 'children done', 177, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T179', 'MindAttic.Media.Capture', 179, '2026-11-24', 'chore', 'closed', 'Rename GitHub repo mindattic/MindAttic.Capture -> MindAttic.Media.Capture, move D:\Projects\MindAttic\MindAttic.Capture -> MindAttic.Media.Capture (worktrees removed first), rename its tickets key (prefix M.CAPT kept), re-run the docs-site', '9662536', 178, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T180', 'MindAttic.Media.Capture', 180, '2026-11-24', 'docs', 'closed', 'README, docs/design/preview-sets.md and the docs-site describe MindAttic.Media.Capture: package table, Unity package line, install paths, viewer name, and a formerly-MindAttic.Capture map of old -> new ids', '84dceb7', 179, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T181', 'MindAttic.Media.Capture', 181, '2026-11-24', 'docs', 'open', 'After every consumer task: a workspace sweep confirms no live MindAttic.Capture or com.mindattic.capture reference remains outside archived repos, vendored snapshots and dated records; leftovers are ticketed', '—', 180, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T181', 'MindAttic.Media.Capture', 181, '2026-11-24', 'docs', 'closed', 'After every consumer task: a workspace sweep confirms no live MindAttic.Capture or com.mindattic.capture reference remains outside archived repos, vendored snapshots and dated records; leftovers are ticketed', '313c40a', 180, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T182', 'MindAttic.Media.Capture', 182, '2026-11-24', 'chore', 'closed', 'Drop the legacy mindattic-mediaviewer-cli pipe and the old MindAttic.MediaViewer exe/env fallback from PreviewHandoff and PreviewLauncher: Media.Viewer no longer listens on the old pipe (M.MVIEW-T28, 8a2776c) and the old install is removed by its run.ps1; trying them only adds ~300 ms when no viewer runs', 'b9174fb', 181, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T183', 'MindAttic.Media.Capture', 183, '2026-11-24', 'feature', 'open', 'Engine packages named by suffix (MindAttic.Media.Capture.Unity, new MindAttic.Media.Capture.Unreal plugin) and adopted by SpaceGod.Unreal, Unreal.Playground and GridGame.Unity', '—', 182, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T184', 'MindAttic.Media.Capture', 184, '2026-11-24', 'feature', 'open', 'MindAttic.Media.Capture ships an agent ''capture host'' for engine games, the MindAttic.Media.Capture.Unreal plugin, and names its Unity package MindAttic.Media.Capture.Unity', '—', 183, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T185', 'MindAttic.Media.Capture', 185, '2026-11-24', 'feature', 'open', 'The capture agent hosts an engine game that cannot load .NET: capture host starts an engine on the game''s window or its shared-memory frames and takes JSON-line requests on stdin', '—', 184, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T186', 'MindAttic.Media.Capture', 186, '2026-11-24', 'feature', 'open', 'An Unreal game adds unreal\MindAttic.Media.Capture.Unreal as a plugin and gets CaptureUnity''s surface: -capture video / screen N, events, markers, screenshots, recordings, replays, preview sets, from C++ and Blueprint', '—', 185, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T187', 'MindAttic.Media.Capture', 187, '2026-11-24', 'feature', 'open', 'The Unity package presents itself as MindAttic.Media.Capture.Unity, beside MindAttic.Media.Capture.Unreal, without a second consumer-wide repoint', '—', 186, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T187', 'MindAttic.Media.Capture', 187, '2026-11-24', 'feature', 'closed', 'The Unity package presents itself as MindAttic.Media.Capture.Unity, beside MindAttic.Media.Capture.Unreal, without a second consumer-wide repoint', 'children done', 186, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T188', 'MindAttic.Media.Capture', 188, '2026-11-24', 'docs', 'closed', 'docs/design/preview-sets.md still names the viewer MindAttic.MediaViewer (title, decisions, file table path, command line); update the live parts to MindAttic.Media.Viewer and keep the owner''s dated quote', 'eedf8a0', 187, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T189', 'MindAttic.Media.Capture', 189, '2026-11-24', 'feature', 'open', 'Agent: capture host --hwnd drives a capture engine on a game window over JSON lines on stdin/stdout (ported from SpaceGod.Capture), with HostCommandTests and docs/design/engine-host.md', '—', 188, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T190', 'MindAttic.Media.Capture', 190, '2026-11-24', 'feature', 'open', 'Agent: capture host --frames {GUID} records from a game''s shared-memory BGRA frame ring (SGFR layout, ported from SpaceGod FrameFeed.cs), with ring-reader tests', '—', 189, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T191', 'MindAttic.Media.Capture', 191, '2026-11-24', 'feature', 'open', 'Agent: capture host adds record-start/stop, clip, save-replay and screenshot into a preview set; tests; installed agent updated', '—', 190, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T192', 'MindAttic.Media.Capture', 192, '2026-11-24', 'feature', 'open', 'unreal/MindAttic.Media.Capture.Unreal: MindAtticMediaCapture.uplugin and runtime module, MindAttic::Media::Capture client generalised from SpaceGod''s, agent locator, settings; RunUAT BuildPlugin passes', '—', 191, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T193', 'MindAttic.Media.Capture', 193, '2026-11-24', 'feature', 'open', 'Unreal plugin: FrameFeed backbuffer readback into the SGFR ring for -RenderOffScreen / -capture-source=frames; RunUAT BuildPlugin passes', '—', 192, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T194', 'MindAttic.Media.Capture', 194, '2026-11-24', 'feature', 'open', 'Unreal plugin: recordings, clips, replays, screenshots into preview sets, preview-set helpers, UMindAtticCaptureLibrary and async screenshot node; RunUAT BuildPlugin passes', '—', 193, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T195', 'MindAttic.Media.Capture', 195, '2026-11-24', 'feature', 'open', 'Unreal plugin: MindAtticMediaCaptureEditor Tools > MindAttic > Capture menu and PIE capture, like Unity''s CaptureMenu; RunUAT BuildPlugin passes', '—', 194, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T196', 'MindAttic.Media.Capture', 196, '2026-11-24', 'docs', 'open', 'Unreal plugin README (install by path, flags, C++/Blueprint API, preview sets, packaging) and repo README Engine packages table (.Unity, .Unreal)', '—', 195, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T197', 'MindAttic.Media.Capture', 197, '2026-11-24', 'chore', 'closed', 'Unity package shows as MindAttic.Media.Capture.Unity (displayName, README naming note); id com.mindattic.media.capture and folder kept to spare ~12 consumers a second repoint', '2683fbc', 196, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T1', 'MindAttic.Media.Viewer', 1, '2026-11-24', 'feature', 'closed', 'MindAttic.MediaViewer: WPF viewer for every image, animation, video, sound and song an agent captures', 'children done', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T2', 'MindAttic.Media.Viewer', 2, '2026-11-24', 'feature', 'closed', 'Viewer v1 per viewer-design.md: shell, formats, right-click, integration, Open with', 'children done', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T3', 'MindAttic.Media.Viewer', 3, '2026-11-24', 'feature', 'closed', 'Bootstrap: MindAttic.MediaViewer.slnx, src\MindAttic.MediaViewer net10.0-windows WPF on Components.Wpf 47, README, LICENSE, run.ps1 deploy to C:\Apps\MindAttic.MediaViewer', '99f63fc', 2, NULL);
@@ -8752,7 +8766,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T6', 'MindAttic.Media.Viewer', 6, '2026-11-24', 'feature', 'closed', 'Right-click menu: Vault-backed editors (Paint, Photocraft), Open with, Show in folder, Copy image, Copy path, Delete to Recycle Bin', '72ee7e7', 5, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T7', 'MindAttic.Media.Viewer', 7, '2026-11-24', 'feature', 'closed', 'Integration: single instance named-pipe handoff that brings the window to front, FileSystemWatcher live set with debounce and follow newest, unseen-sets badge, app-bus client handling show-preview', 'e3bfb81fe3b812d5451650dd612d272a17c250b4', 6, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T8', 'MindAttic.Media.Viewer', 8, '2026-11-24', 'feature', 'closed', 'Per-user Open with registration for supported extensions (HKCU Applications + SupportedTypes), not as default', '3057d7b', 7, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T9', 'MindAttic.Media.Viewer', 9, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 8, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T9', 'MindAttic.Media.Viewer', 9, '2026-11-24', 'fix', 'closed', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', 'children done', 8, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T10', 'MindAttic.Media.Viewer', 10, '2026-11-24', 'fix', 'closed', 'MediaViewer colors: dark (default) and light theme, every control (drop-downs, text boxes, buttons, scrollbars, filmstrip) styled from MindAttic.Components so dark mode has no white system controls; theme choice saved in ViewerSettings', '7a47f30', 9, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T11', 'MindAttic.Media.Viewer', 11, '2026-11-24', 'feature', 'closed', 'Autoplay toggle for video/audio; with it off, video cycles frames from 5% to 95% in 10% steps (settings) so a whole movie previews as ~10 frames', '3026527', 10, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T12', 'MindAttic.Media.Viewer', 12, '2026-11-24', 'feature', 'closed', 'Loop toggle for videos, sounds and animated GIFs/WebP/APNG: on repeats at the end, off stops on the last frame (video/animation) or at the end (sound); saved in ViewerSettings, toolbar toggle plus shortcut, README; build on M.MVIEW-T11''s toolbar toggles', '0c368a3', 11, NULL);
@@ -8760,15 +8774,15 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T14', 'MindAttic.Media.Viewer', 14, '2026-11-24', 'fix', 'closed', 'Esc closes the whole viewer even while a drop-down popup is open (MainWindow.OnKey); Esc should close the popup first and only close the window when nothing is open', '6fd8dad', 13, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T15', 'MindAttic.Media.Viewer', 15, '2026-11-24', 'fix', 'closed', 'Move MediaViewer to MindAttic.Components.Wpf 49.0.0 and replace the local slider template in App.xaml (7a47f30) with the library''s MaSlider (implicit Style TargetType=Slider BasedOn MaSlider); check seek and volume sliders in both themes', 'a53bc95', 14, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T16', 'MindAttic.Media.Viewer', 16, '2026-11-24', 'fix', 'closed', 'First launch sometimes shows Not Responding with no item loaded after ~4 s (seen twice in M.MVIEW-T13''s checks, Dark + Autoplay on, later launches fine): find what blocks the UI thread on cold start (file probing, ffmpeg/frame preview, Magick init, settings) and move it off the UI thread', '50ea31a', 15, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T17', 'MindAttic.Media.Viewer', 17, '2026-11-24', 'chore', 'open', 'Owner-approved rename: the WPF app MindAttic.MediaViewer becomes MindAttic.Media.Viewer (slnx, csproj, namespaces, exe, install path C:\Apps\MindAttic.Media.Viewer, runtime names, folder, GitHub repo, tickets key; prefix M.MVIEW kept), and every caller that launches it by name or path follows', '—', 16, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T18', 'MindAttic.Media.Viewer', 18, '2026-11-24', 'chore', 'open', 'The preview-set viewer ships as MindAttic.Media.Viewer.exe from C:\Apps\MindAttic.Media.Viewer, built from a repo and folder named MindAttic.Media.Viewer', '—', 17, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T17', 'MindAttic.Media.Viewer', 17, '2026-11-24', 'chore', 'closed', 'Owner-approved rename: the WPF app MindAttic.MediaViewer becomes MindAttic.Media.Viewer (slnx, csproj, namespaces, exe, install path C:\Apps\MindAttic.Media.Viewer, runtime names, folder, GitHub repo, tickets key; prefix M.MVIEW kept), and every caller that launches it by name or path follows', 'children done', 16, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T18', 'MindAttic.Media.Viewer', 18, '2026-11-24', 'chore', 'closed', 'The preview-set viewer ships as MindAttic.Media.Viewer.exe from C:\Apps\MindAttic.Media.Viewer, built from a repo and folder named MindAttic.Media.Viewer', 'children done', 17, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T19', 'MindAttic.Media.Viewer', 19, '2026-11-24', 'chore', 'closed', 'The app, its code, its install and its runtime names (mutex, CLI pipe, Open-with entry, log app, window title, shortcuts) are MindAttic.Media.Viewer; the old install is gone', 'children done', 18, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T20', 'MindAttic.Media.Viewer', 20, '2026-11-24', 'chore', 'closed', 'Rename MindAttic.MediaViewer -> MindAttic.Media.Viewer in slnx, csproj, namespaces, XAML, exe name and runtime names (mutex, CLI pipe, Open-with registration, log app, window title)', 'f31bced', 19, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T21', 'MindAttic.Media.Viewer', 21, '2026-11-24', 'chore', 'closed', 'run.ps1 installs C:\Apps\MindAttic.Media.Viewer\MindAttic.Media.Viewer.exe with MindAttic Media Viewer shortcuts and Open-with registration, and removes the old C:\Apps\MindAttic.MediaViewer install, shortcuts and registry entries', '23a173d', 20, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T22', 'MindAttic.Media.Viewer', 22, '2026-11-24', 'chore', 'open', 'The GitHub repo, local folder and tickets registry key are MindAttic.Media.Viewer, its docs describe it, and no live MindAttic.MediaViewer reference is left in the workspace', '—', 21, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T22', 'MindAttic.Media.Viewer', 22, '2026-11-24', 'chore', 'closed', 'The GitHub repo, local folder and tickets registry key are MindAttic.Media.Viewer, its docs describe it, and no live MindAttic.MediaViewer reference is left in the workspace', 'children done', 21, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T23', 'MindAttic.Media.Viewer', 23, '2026-11-24', 'chore', 'closed', 'Rename GitHub repo mindattic/MindAttic.MediaViewer -> MindAttic.Media.Viewer, move D:\Projects\MindAttic\MindAttic.MediaViewer -> MindAttic.Media.Viewer, rename its tickets key (prefix M.MVIEW kept)', '5614f5e', 22, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T24', 'MindAttic.Media.Viewer', 24, '2026-11-24', 'docs', 'closed', 'README and docs describe MindAttic.Media.Viewer: name, install path C:\Apps\MindAttic.Media.Viewer, command line, single-instance pipe, Open-with, and a formerly-MindAttic.MediaViewer note', '81bdd3f', 23, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T25', 'MindAttic.Media.Viewer', 25, '2026-11-24', 'docs', 'open', 'After every caller task: a workspace sweep confirms no live MindAttic.MediaViewer or C:\Apps\MindAttic.MediaViewer reference remains; leftovers are ticketed in their repos', '—', 24, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T25', 'MindAttic.Media.Viewer', 25, '2026-11-24', 'docs', 'closed', 'After every caller task: a workspace sweep confirms no live MindAttic.MediaViewer or C:\Apps\MindAttic.MediaViewer reference remains; leftovers are ticketed in their repos', '3287637', 24, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T26', 'MindAttic.Media.Viewer', 26, '2026-11-24', 'fix', 'closed', 'Cold start shows no item for ~4 s on a set with gif/png/webp: MediaSet.Load (thread pool, UI stays responsive) calls MagickDecoder.FrameCount per maybe-animated file before listing anything, so Magick.NET''s cold native init (~3-4 s, measured in M.MVIEW-T16) delays the first picture; list by extension first and refine Animated kinds after, or detect animation from the file header without Magick', 'ea0b901', 25, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T27', 'MindAttic.Media.Viewer', 27, '2026-11-24', 'feature', 'closed', 'Mark start/end on a video and save the trimmed clip as a new file or overwrite the original (ffmpeg stream copy, optional precise re-encode)', '28897a3', 26, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T28', 'MindAttic.Media.Viewer', 28, '2026-11-24', 'chore', 'closed', 'Remove SingleInstance.LegacyPipeName and its second listener (f31bced) once Capture''s PreviewHandoff uses mindattic-media-viewer-cli-<user> (M.CAPT-T175) and is deployed; until then make the legacy listener back off instead of logging ''pipe failed; listening again'' about once a second when an old viewer still owns that pipe', '8a2776c', 27, NULL);
@@ -8776,7 +8790,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T30', 'MindAttic.Media.Viewer', 30, '2026-11-24', 'fix', 'closed', 'Trim (28897a3): the highlighted kept range on the seek bar is faint in the light theme - use a theme brush with enough contrast in both themes; also make the start/end markers draggable on the seek bar', '195d14d', 29, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T31', 'MindAttic.Media.Viewer', 31, '2026-11-24', 'fix', 'closed', 'A picture larger than the stage is clipped at its edges at Fit and when zoomed out: the Image''s layout slot is clipped before its RenderTransform scale', '1c451a8', 30, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T32', 'MindAttic.Media.Viewer', 32, '2026-11-24', 'fix', 'closed', 'JPEG/TIFF decoded through WIC are shown as stored, ignoring EXIF orientation, while Magick.NET formats are auto-rotated; apply EXIF orientation for WIC images too so photos show upright (and crop, found in M.MVIEW-T29, matches)', '2d0b0c2', 31, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T33', 'MindAttic.Media.Viewer', 33, '2026-11-24', 'fix', 'open', 'ImageCrop writes animated .png crops as static PNG, discarding all frames but the first', '—', 32, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T33', 'MindAttic.Media.Viewer', 33, '2026-11-24', 'fix', 'closed', 'ImageCrop writes animated .png crops as static PNG, discarding all frames but the first', '404173d', 32, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T34', 'MindAttic.Media.Viewer', 34, '2026-11-24', 'fix', 'closed', 'ShellOps.OpenWith builds an unquoted rundll32 argument string, truncating the path at the first space', 'fa6881d', 33, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1', 'MindAttic.Orchestrator', 1, '2026-10-13', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.ORCH-T1 | 2026-10-13 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T2', 'MindAttic.Orchestrator', 2, '2026-10-13', 'feature', 'closed', 'Status dashboard (WPF on MindAttic.Components.Wpf) + CLI: repos grouped Needs you / Working / Open tickets / Quiet from Workflow tickets, Launcher host pipes and Claude transcripts; toast + taskbar flash when an agent finishes a turn', 'TranscriptReaderTests, MatchingTests', 1, '| M.ORCH-T2 | 2026-10-13 | feature | closed | Status dashboard (WPF on MindAttic.Components.Wpf) + CLI: repos grouped Needs you / Working / Open tickets / Quiet from Workflow tickets, Launcher host pipes and Claude transcripts; toast + taskbar flash when an agent finishes a turn | TranscriptReaderTests, MatchingTests |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T3', 'MindAttic.Orchestrator', 3, '2026-10-13', 'feature', 'closed', 'Session control: start a Claude/Codex/Gemini/Kimi Launcher tab for any repo (prompt pre-filled, never sent) and type replies into a live Launcher tab', 'MatchingTests.Start_arguments_escape_semicolons_for_windows_terminal', 2, '| M.ORCH-T3 | 2026-10-13 | feature | closed | Session control: start a Claude/Codex/Gemini/Kimi Launcher tab for any repo (prompt pre-filled, never sent) and type replies into a live Launcher tab | MatchingTests.Start_arguments_escape_semicolons_for_windows_terminal |');
@@ -15445,6 +15460,12 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T688', 'SpaceGod.Unreal', 688, '2026-11-24', 'feature', 'open', 'SpaceGod.Unreal records through the MindAttic.Media.Capture.Unreal plugin and the installed capture agent; Vendor/MindAttic.Capture and Capture/SpaceGod.Capture are gone', '—', 687, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T689', 'SpaceGod.Unreal', 689, '2026-11-24', 'feature', 'open', 'SpaceGod.Unreal''s -capture runs, tour, offscreen frames and hotkeys go through the MindAttic.Media.Capture.Unreal plugin; the vendored library and the game''s own host are removed', '—', 688, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T690', 'SpaceGod.Unreal', 690, '2026-11-24', 'feature', 'open', 'A SpaceGod tour or bug-repro run with -capture can publish its screenshots as a preview set the owner opens with /preview', '—', 689, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T691', 'SpaceGod.Unreal', 691, '2026-11-24', 'docs', 'closed', 'SpaceGod.Unreal prose still names MindAttic.Capture after US-T687: docs/CAPTURE.md (title, lines 22-41), run.bat comment, tools/package.ps1 (27, 84), tools/play.ps1 (18-25), Capture/SpaceGod.Capture/Program.cs:12 doc comment and Cpp/Source/SpaceGod/UnitySpaceAppActor.cpp:134 comment say MindAttic.Media.Capture', '892365a', 690, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T692', 'SpaceGod.Unreal', 692, '2026-11-24', 'feature', 'open', 'SpaceGod.Unreal uses the MindAttic.Media.Capture.Unreal plugin (uproject plugin dir, Build.cs, settings) in place of Cpp/Source/SpaceGod/Capture/MindAtticCapture and FrameFeed; same docs/CAPTURE.md behaviour; tools/build.ps1 builds', '—', 691, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T693', 'SpaceGod.Unreal', 693, '2026-11-24', 'chore', 'open', 'SpaceGod.Unreal deletes Vendor/MindAttic.Capture and Capture/SpaceGod.Capture; package.ps1 publishes the MindAttic.Media.Capture agent into the package''s Capture folder; scripts and credits follow', '—', 692, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T694', 'SpaceGod.Unreal', 694, '2026-11-24', 'docs', 'open', 'SpaceGod.Unreal README Capture how-to for the plugin; Capture/README.md retired to a pointer; docs/CAPTURE.md Unreal rows updated', '—', 693, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T695', 'SpaceGod.Unreal', 695, '2026-11-24', 'feature', 'open', 'SpaceGod.Unreal -demo -capture -preview puts tour stop screenshots into a preview set and opens it; sg.Shot console command adds a shot to the current set', '—', 694, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T696', 'SpaceGod.Unreal', 696, '2026-11-24', 'chore', 'open', 'Cpp/Source/SpaceGod/UnitySpaceAppActor.cpp ~line 134 comment still says MindAttic.Capture; change to MindAttic.Media.Capture once the file has no other agent''s uncommitted edits (left by US-T691)', '—', 695, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T1', 'SpaceGod.Unreal.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T2', 'SpaceGod.Unreal.CSharp', 2, '2026-11-06', 'feature', 'closed', 'Adopt the shared off-by-default --headless launch mode (Unreal.Shared)', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T3', 'SpaceGod.Unreal.CSharp', 3, '2026-11-08', 'feature', 'open', 'Mirror SpaceGod US-T72: add docs/CAPTURE.md (Unity e29d871''s text, third copy named SpaceGod) that this copy''s capture code cites but lacks, and a US-T72 section in docs/PARITY.md', 'SpaceGod US-T72', 2, NULL);
@@ -17371,6 +17392,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T640', 'Unity.SpaceGod', 640, '2026-11-22', 'feature', 'open', 'Civ dynamics succession crises: implement leadership fall events (death, coup, dispute)', '—', 639, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T641', 'Unity.SpaceGod', 641, '2026-11-22', 'feature', 'open', 'Civ dynamics succession crises: implement rival claimants and civil war side-taking', '—', 640, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T642', 'Unity.SpaceGod', 642, '2026-11-22', 'feature', 'open', 'Civ dynamics succession crises: implement resolution by victory or permanent split', '—', 641, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T643', 'Unity.SpaceGod', 643, '2026-11-24', 'chore', 'wont-do', 'Unity.SpaceGod still loads com.mindattic.capture from ../../MindAttic.Capture, which no longer exists after the rename (M.CAPT-T179): point Packages/manifest.json (and packages-lock.json) at com.mindattic.media.capture in ../../MindAttic.Media.Capture, the UnitySpace.Runtime asmdef at MindAttic.Media.Capture.Unity, usings in Assets/UnitySpace/Runtime/CaptureRunner.cs, and README/tools/launch.ps1 links and names', 'Unity.SpaceGod is archived (skipped in the rename plan)', 642, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RON-T1', 'UnityRonin', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| U.RON-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RON-T2', 'UnityRonin', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for DuelDirector guard rails and riposte edge cases (add to the existing xUnit Tests/Core.Tests/DuelDirectorTests.cs, Assets/UnityRonin/Core/Combat/DuelDirector.cs): Resolve throws InvalidOperationException while Phase is PlayerRiposte, ResolveRiposte throws while Phase is EnemyBeat, both throw once IsOver, constructor throws ArgumentNullException for a null Rng, PlayerWon is false when the player reaches zero health, a landed riposte with chained alternating strokes deals 1 plus bonus hits and a repeated shape breaks it, a countered riposte on the player''s last health ends the duel, and after a riposte timeout, retreat or counter Phase returns to EnemyBeat with a fresh CurrentBeat; these are the state-machine invariants RoninGameController and DuelPresenter rely on and none are asserted today', 'Tests/Core.Tests/DuelDirectorTests.cs', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RON-T3', 'UnityRonin', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for GestureClassifier edge cases (add to the existing xUnit Tests/Core.Tests/GestureClassifierTests.cs, Assets/UnityRonin/Core/Combat/GestureClassifier.cs): an empty or single-point path returns no strokes (SwipeInputReader then drops the gesture silently), the angle-bucket boundaries at 22.5, 67.5, 112.5 and 157.5 degrees land in the documented shape, a three-segment zigzag yields three alternating strokes with shared corner points, a short tail under 24px after a real corner is dropped rather than turned into a Thrust, a sharp turn before 24px of travel is treated as jitter and does not split, and downward or leftward drags fold to the same shape; misclassification here silently decides parries and combo bonus hits', '—', 2, '| U.RON-T3 | 2026-10-14 | chore | open | NUnit tests for GestureClassifier edge cases (add to the existing xUnit Tests/Core.Tests/GestureClassifierTests.cs, Assets/UnityRonin/Core/Combat/GestureClassifier.cs): an empty or single-point path returns no strokes (SwipeInputReader then drops the gesture silently), the angle-bucket boundaries at 22.5, 67.5, 112.5 and 157.5 degrees land in the documented shape, a three-segment zigzag yields three alternating strokes with shared corner points, a short tail under 24px after a real corner is dropped rather than turned into a Thrust, a sharp turn before 24px of travel is treated as jitter and does not split, and downward or leftward drags fold to the same shape; misclassification here silently decides parries and combo bonus hits | — |');
@@ -17599,6 +17621,10 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T118', 'Unreal.Playground', 118, '2026-11-24', 'feature', 'open', 'Unreal.Playground records in-game through the MindAttic.Media.Capture.Unreal plugin, and its demo screenshots go through capture into preview sets', '—', 117, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T119', 'Unreal.Playground', 119, '2026-11-24', 'feature', 'open', 'Unreal.Playground''s run.ps1/run.bat runs record through the plugin inside the game (-capture video hq) instead of an external capture record watcher', '—', 118, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T120', 'Unreal.Playground', 120, '2026-11-24', 'feature', 'open', 'Every Unreal.Playground demo/screenshot mode also takes its shots through capture (sidecars, markers in the recording) and can publish them as a preview set', '—', 119, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T121', 'Unreal.Playground', 121, '2026-11-24', 'feature', 'open', 'Unreal.Playground enables the MindAttic.Media.Capture.Unreal plugin (uproject plugin dir, Build.cs, settings, Playground.capture.json) and raises player-death/boss-defeated events; UBT editor build passes', '—', 120, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T122', 'Unreal.Playground', 122, '2026-11-24', 'chore', 'open', 'Unreal.Playground tools/run.ps1 passes -capture video hq to player 1 instead of running an external capture record --hwnd watcher; -NoCapture kept', '—', 121, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T123', 'Unreal.Playground', 123, '2026-11-24', 'feature', 'open', 'Unreal.Playground PlaygroundShots::Take replaces ~20 FScreenshotRequest call sites; shots also go through capture with sidecar and marker while it runs', '—', 122, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T124', 'Unreal.Playground', 124, '2026-11-24', 'feature', 'open', 'Unreal.Playground -preview opens a preview set of a demo mode''s shots at quit; README Capture how-to', '—', 123, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNRE-T1', 'Unreal.Shared', 1, '2026-11-06', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNRE-T2', 'Unreal.Shared', 2, '2026-11-06', 'feature', 'closed', 'A shared Unreal plugin with an off-by-default --headless mode for every MindAttic Unreal game', 'e192c42', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNRE-T3', 'Unreal.Shared', 3, '2026-11-10', 'chore', 'closed', 'Adopt the shared docs-site pipeline: turn on GitHub Pages', '—', 2, NULL);
@@ -108911,6 +108937,275 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114433, 
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114434, 'M.MVIEW-T33', '2026-11-24T18:48:47Z', 'label', NULL, 'level:task');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114435, 'M.MVIEW-T33', '2026-11-24T18:48:48Z', 'link', NULL, 'part-of M.MVIEW-T9');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114436, 'M.MVIEW-T9', '2026-11-24T18:48:49Z', 'link', NULL, 'M.MVIEW-T33 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114437, 'M.MVIEW-T34', '2026-11-24T18:49:33Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114438, 'M.MVIEW-T34', '2026-11-24T18:49:33Z', 'name', NULL, 'OpenWith breaks on paths with spaces');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114439, 'M.MVIEW-T34', '2026-11-24T18:49:33Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114440, 'M.MVIEW-T34', '2026-11-24T18:49:34Z', 'link', NULL, 'part-of M.MVIEW-T9');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114441, 'M.MVIEW-T9', '2026-11-24T18:49:34Z', 'link', NULL, 'M.MVIEW-T34 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114442, 'M.CAPT-T188', '2026-11-24T18:50:29Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114443, 'M.CAPT-T188', '2026-11-24T18:50:29Z', 'name', NULL, 'Preview-sets doc: Media.Viewer');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114444, 'M.CAPT-T188', '2026-11-24T18:50:30Z', 'link', NULL, 'part-of M.MVIEW-T22');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114445, 'M.MVIEW-T22', '2026-11-24T18:50:30Z', 'link', NULL, 'M.CAPT-T188 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114446, 'M.CAPT-T188', '2026-11-24T18:50:30Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114447, 'M.CAPT-T188', '2026-11-24T18:50:48Z', 'working', NULL, '2c651f03-aee6-4f4d-9420-5957d23af195');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114448, 'M.MVIEW-T25', '2026-11-24T18:50:58Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114449, 'M.MVIEW-T25', '2026-11-24T18:50:58Z', 'ref', '—', '3287637');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114450, 'M.CAPT-T188', '2026-11-24T18:51:19Z', 'link', NULL, 'requires M.CAPT-T181');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114451, 'M.CAPT-T181', '2026-11-24T18:51:20Z', 'link', NULL, 'M.CAPT-T188 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114452, 'M.CAPT-T188', '2026-11-24T18:51:30Z', 'working', '2c651f03-aee6-4f4d-9420-5957d23af195', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114453, 'M.MVIEW-T33', '2026-11-24T18:52:20Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114454, 'M.MVIEW-T33', '2026-11-24T18:52:20Z', 'ref', '—', '404173d');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114455, 'M.MVIEW-T34', '2026-11-24T18:52:21Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114456, 'M.MVIEW-T34', '2026-11-24T18:52:21Z', 'ref', '—', 'fa6881d');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114457, 'M.MVIEW-T9', '2026-11-24T18:52:21Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114458, 'M.MVIEW-T9', '2026-11-24T18:52:21Z', 'ref', '—', 'children done');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114459, 'M.MVIEW-T9', '2026-11-24T18:52:21Z', 'rollup', NULL, 'M.MVIEW-T34');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114460, 'M.CAPT-T189', '2026-11-24T18:52:32Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114461, 'M.CAPT-T189', '2026-11-24T18:52:32Z', 'name', NULL, 'capture host command');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114462, 'M.CAPT-T189', '2026-11-24T18:52:32Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114463, 'M.CAPT-T189', '2026-11-24T18:52:34Z', 'link', NULL, 'part-of M.CAPT-T185');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114464, 'M.CAPT-T185', '2026-11-24T18:52:34Z', 'link', NULL, 'M.CAPT-T189 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114465, 'M.CAPT-T190', '2026-11-24T18:52:35Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114466, 'M.CAPT-T190', '2026-11-24T18:52:36Z', 'name', NULL, 'capture host --frames ring');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114467, 'M.CAPT-T190', '2026-11-24T18:52:36Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114468, 'M.CAPT-T190', '2026-11-24T18:52:37Z', 'link', NULL, 'part-of M.CAPT-T185');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114469, 'M.CAPT-T185', '2026-11-24T18:52:37Z', 'link', NULL, 'M.CAPT-T190 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114470, 'M.CAPT-T191', '2026-11-24T18:52:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114471, 'M.CAPT-T191', '2026-11-24T18:52:40Z', 'name', NULL, 'capture host recording ops');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114472, 'M.CAPT-T191', '2026-11-24T18:52:40Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114473, 'M.CAPT-T191', '2026-11-24T18:52:41Z', 'link', NULL, 'part-of M.CAPT-T185');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114474, 'M.CAPT-T185', '2026-11-24T18:52:41Z', 'link', NULL, 'M.CAPT-T191 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114475, 'M.CAPT-T192', '2026-11-24T18:52:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114476, 'M.CAPT-T192', '2026-11-24T18:52:43Z', 'name', NULL, 'Unreal plugin runtime client');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114477, 'M.CAPT-T192', '2026-11-24T18:52:43Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114478, 'M.CAPT-T192', '2026-11-24T18:52:44Z', 'link', NULL, 'part-of M.CAPT-T186');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114479, 'M.CAPT-T186', '2026-11-24T18:52:44Z', 'link', NULL, 'M.CAPT-T192 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114480, 'M.CAPT-T193', '2026-11-24T18:52:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114481, 'M.CAPT-T193', '2026-11-24T18:52:46Z', 'name', NULL, 'Unreal plugin frame feed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114482, 'M.CAPT-T193', '2026-11-24T18:52:46Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114483, 'M.CAPT-T193', '2026-11-24T18:52:48Z', 'link', NULL, 'part-of M.CAPT-T186');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114484, 'M.CAPT-T186', '2026-11-24T18:52:48Z', 'link', NULL, 'M.CAPT-T193 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114485, 'M.CAPT-T194', '2026-11-24T18:52:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114486, 'M.CAPT-T194', '2026-11-24T18:52:50Z', 'name', NULL, 'Unreal plugin Blueprint API');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114487, 'M.CAPT-T194', '2026-11-24T18:52:50Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114488, 'M.CAPT-T194', '2026-11-24T18:52:51Z', 'link', NULL, 'part-of M.CAPT-T186');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114489, 'M.CAPT-T186', '2026-11-24T18:52:51Z', 'link', NULL, 'M.CAPT-T194 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114490, 'M.CAPT-T195', '2026-11-24T18:52:53Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114491, 'M.CAPT-T195', '2026-11-24T18:52:54Z', 'name', NULL, 'Unreal plugin editor module');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114492, 'M.CAPT-T195', '2026-11-24T18:52:54Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114493, 'M.CAPT-T195', '2026-11-24T18:52:55Z', 'link', NULL, 'part-of M.CAPT-T186');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114494, 'M.CAPT-T186', '2026-11-24T18:52:55Z', 'link', NULL, 'M.CAPT-T195 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114495, 'M.CAPT-T196', '2026-11-24T18:52:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114496, 'M.CAPT-T196', '2026-11-24T18:52:57Z', 'name', NULL, 'Unreal plugin README');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114497, 'M.CAPT-T196', '2026-11-24T18:52:58Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114498, 'M.CAPT-T196', '2026-11-24T18:52:59Z', 'link', NULL, 'part-of M.CAPT-T186');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114499, 'M.CAPT-T186', '2026-11-24T18:52:59Z', 'link', NULL, 'M.CAPT-T196 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114500, 'M.CAPT-T197', '2026-11-24T18:53:01Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114501, 'M.CAPT-T197', '2026-11-24T18:53:01Z', 'name', NULL, 'Unity package named .Unity');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114502, 'M.CAPT-T197', '2026-11-24T18:53:01Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114503, 'M.CAPT-T197', '2026-11-24T18:53:02Z', 'link', NULL, 'part-of M.CAPT-T187');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114504, 'M.CAPT-T187', '2026-11-24T18:53:03Z', 'link', NULL, 'M.CAPT-T197 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114505, 'US-T691', '2026-11-24T18:53:03Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114506, 'US-T691', '2026-11-24T18:53:03Z', 'name', NULL, 'Capture prose: Media.Capture');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114507, 'US-T691', '2026-11-24T18:53:03Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114508, 'U.SPC-T643', '2026-11-24T18:53:05Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114509, 'U.SPC-T643', '2026-11-24T18:53:05Z', 'name', NULL, 'Unity.SpaceGod on Media.Capture');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114510, 'U.SPC-T643', '2026-11-24T18:53:05Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114511, 'US-T692', '2026-11-24T18:53:19Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114512, 'US-T692', '2026-11-24T18:53:19Z', 'name', NULL, 'SpaceGod adopts capture plugin');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114513, 'US-T692', '2026-11-24T18:53:19Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114514, 'US-T692', '2026-11-24T18:53:20Z', 'link', NULL, 'part-of US-T689');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114515, 'US-T689', '2026-11-24T18:53:21Z', 'link', NULL, 'US-T692 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114516, 'US-T693', '2026-11-24T18:53:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114517, 'US-T693', '2026-11-24T18:53:22Z', 'name', NULL, 'Remove vendored capture and host');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114518, 'US-T693', '2026-11-24T18:53:22Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114519, 'US-T693', '2026-11-24T18:53:23Z', 'link', NULL, 'part-of US-T689');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114520, 'US-T689', '2026-11-24T18:53:24Z', 'link', NULL, 'US-T693 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114521, 'US-T694', '2026-11-24T18:53:25Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114522, 'US-T694', '2026-11-24T18:53:25Z', 'name', NULL, 'SpaceGod capture how-to');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114523, 'US-T694', '2026-11-24T18:53:26Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114524, 'US-T694', '2026-11-24T18:53:27Z', 'link', NULL, 'part-of US-T689');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114525, 'US-T689', '2026-11-24T18:53:27Z', 'link', NULL, 'US-T694 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114526, 'US-T695', '2026-11-24T18:53:30Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114527, 'US-T695', '2026-11-24T18:53:30Z', 'name', NULL, 'SpaceGod tour preview set');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114528, 'US-T695', '2026-11-24T18:53:30Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114529, 'US-T695', '2026-11-24T18:53:31Z', 'link', NULL, 'part-of US-T690');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114530, 'US-T690', '2026-11-24T18:53:32Z', 'link', NULL, 'US-T695 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114531, 'UNR-T121', '2026-11-24T18:53:34Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114532, 'UNR-T121', '2026-11-24T18:53:34Z', 'name', NULL, 'Playground adopts capture plugin');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114533, 'UNR-T121', '2026-11-24T18:53:35Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114534, 'UNR-T121', '2026-11-24T18:53:36Z', 'link', NULL, 'part-of UNR-T119');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114535, 'UNR-T119', '2026-11-24T18:53:36Z', 'link', NULL, 'UNR-T121 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114536, 'UNR-T122', '2026-11-24T18:53:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114537, 'UNR-T122', '2026-11-24T18:53:39Z', 'name', NULL, 'run.ps1 records in-game');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114538, 'UNR-T122', '2026-11-24T18:53:39Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114539, 'UNR-T122', '2026-11-24T18:53:41Z', 'link', NULL, 'part-of UNR-T119');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114540, 'UNR-T119', '2026-11-24T18:53:41Z', 'link', NULL, 'UNR-T122 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114541, 'UNR-T123', '2026-11-24T18:53:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114542, 'UNR-T123', '2026-11-24T18:53:43Z', 'name', NULL, 'Playground shots via capture');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114543, 'UNR-T123', '2026-11-24T18:53:43Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114544, 'UNR-T123', '2026-11-24T18:53:45Z', 'link', NULL, 'part-of UNR-T120');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114545, 'UNR-T120', '2026-11-24T18:53:45Z', 'link', NULL, 'UNR-T123 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114546, 'UNR-T124', '2026-11-24T18:53:47Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114547, 'UNR-T124', '2026-11-24T18:53:47Z', 'name', NULL, 'Playground demo preview sets');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114548, 'UNR-T124', '2026-11-24T18:53:47Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114549, 'UNR-T124', '2026-11-24T18:53:48Z', 'link', NULL, 'part-of UNR-T120');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114550, 'UNR-T120', '2026-11-24T18:53:49Z', 'link', NULL, 'UNR-T124 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114551, 'GG-T1005', '2026-11-24T18:53:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114552, 'GG-T1005', '2026-11-24T18:53:51Z', 'name', NULL, 'AutomationServer capture ops');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114553, 'GG-T1005', '2026-11-24T18:53:52Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114554, 'GG-T1005', '2026-11-24T18:53:53Z', 'link', NULL, 'part-of GG-T1003');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114555, 'GG-T1003', '2026-11-24T18:53:53Z', 'link', NULL, 'GG-T1005 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114556, 'GG-T1006', '2026-11-24T18:53:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114557, 'GG-T1006', '2026-11-24T18:53:55Z', 'name', NULL, 'Harness failure replays');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114558, 'GG-T1006', '2026-11-24T18:53:55Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114559, 'GG-T1006', '2026-11-24T18:53:57Z', 'link', NULL, 'part-of GG-T1003');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114560, 'GG-T1003', '2026-11-24T18:53:57Z', 'link', NULL, 'GG-T1006 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114561, 'GG-T1007', '2026-11-24T18:53:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114562, 'GG-T1007', '2026-11-24T18:53:59Z', 'name', NULL, 'Harness --preview sets');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114563, 'GG-T1007', '2026-11-24T18:54:00Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114564, 'GG-T1007', '2026-11-24T18:54:02Z', 'link', NULL, 'part-of GG-T1004');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114565, 'GG-T1004', '2026-11-24T18:54:02Z', 'link', NULL, 'GG-T1007 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114566, 'GG-T1008', '2026-11-24T18:54:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114567, 'GG-T1008', '2026-11-24T18:54:04Z', 'name', NULL, 'GridGame capture how-to');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114568, 'GG-T1008', '2026-11-24T18:54:05Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114569, 'GG-T1008', '2026-11-24T18:54:06Z', 'link', NULL, 'part-of GG-T1004');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114570, 'GG-T1004', '2026-11-24T18:54:06Z', 'link', NULL, 'GG-T1008 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114571, 'M.CAPT-T190', '2026-11-24T18:54:25Z', 'link', NULL, 'requires M.CAPT-T189');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114572, 'M.CAPT-T189', '2026-11-24T18:54:25Z', 'link', NULL, 'M.CAPT-T190 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114573, 'US-T691', '2026-11-24T18:54:25Z', 'working', NULL, '2c651f03-aee6-4f4d-9420-5957d23af195');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114574, 'U.SPC-T643', '2026-11-24T18:54:26Z', 'working', NULL, '2c651f03-aee6-4f4d-9420-5957d23af195');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114575, 'M.CAPT-T191', '2026-11-24T18:54:27Z', 'link', NULL, 'requires M.CAPT-T189');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114576, 'M.CAPT-T189', '2026-11-24T18:54:28Z', 'link', NULL, 'M.CAPT-T191 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114577, 'M.CAPT-T191', '2026-11-24T18:54:30Z', 'link', NULL, 'requires M.CAPT-T190');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114578, 'M.CAPT-T190', '2026-11-24T18:54:30Z', 'link', NULL, 'M.CAPT-T191 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114579, 'M.CAPT-T192', '2026-11-24T18:54:32Z', 'link', NULL, 'requires M.CAPT-T189');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114580, 'M.CAPT-T189', '2026-11-24T18:54:33Z', 'link', NULL, 'M.CAPT-T192 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114581, 'M.CAPT-T193', '2026-11-24T18:54:35Z', 'link', NULL, 'requires M.CAPT-T192');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114582, 'M.CAPT-T192', '2026-11-24T18:54:35Z', 'link', NULL, 'M.CAPT-T193 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114583, 'M.CAPT-T181', '2026-11-24T18:54:37Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114584, 'M.CAPT-T181', '2026-11-24T18:54:37Z', 'ref', '—', '313c40a');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114585, 'M.CAPT-T178', '2026-11-24T18:54:37Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114586, 'M.CAPT-T178', '2026-11-24T18:54:37Z', 'ref', '—', 'children done');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114587, 'M.CAPT-T178', '2026-11-24T18:54:37Z', 'rollup', NULL, 'M.CAPT-T181');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114588, 'M.CAPT-T177', '2026-11-24T18:54:37Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114589, 'M.CAPT-T177', '2026-11-24T18:54:37Z', 'ref', '—', 'children done');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114590, 'M.CAPT-T177', '2026-11-24T18:54:37Z', 'rollup', NULL, 'M.CAPT-T178');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114591, 'M.CAPT-T167', '2026-11-24T18:54:37Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114592, 'M.CAPT-T167', '2026-11-24T18:54:37Z', 'ref', '—', 'children done');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114593, 'M.CAPT-T167', '2026-11-24T18:54:37Z', 'rollup', NULL, 'M.CAPT-T177');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114594, 'M.CAPT-T193', '2026-11-24T18:54:38Z', 'link', NULL, 'requires M.CAPT-T190');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114595, 'M.CAPT-T190', '2026-11-24T18:54:38Z', 'link', NULL, 'M.CAPT-T193 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114596, 'M.CAPT-T194', '2026-11-24T18:54:40Z', 'link', NULL, 'requires M.CAPT-T192');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114597, 'M.CAPT-T192', '2026-11-24T18:54:40Z', 'link', NULL, 'M.CAPT-T194 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114598, 'M.CAPT-T194', '2026-11-24T18:54:42Z', 'link', NULL, 'requires M.CAPT-T191');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114599, 'M.CAPT-T191', '2026-11-24T18:54:42Z', 'link', NULL, 'M.CAPT-T194 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114600, 'M.CAPT-T194', '2026-11-24T18:54:45Z', 'link', NULL, 'requires M.CAPT-T193');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114601, 'M.CAPT-T193', '2026-11-24T18:54:45Z', 'link', NULL, 'M.CAPT-T194 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114602, 'M.CAPT-T195', '2026-11-24T18:54:47Z', 'link', NULL, 'requires M.CAPT-T194');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114603, 'M.CAPT-T194', '2026-11-24T18:54:47Z', 'link', NULL, 'M.CAPT-T195 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114604, 'M.CAPT-T196', '2026-11-24T18:54:49Z', 'link', NULL, 'requires M.CAPT-T195');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114605, 'M.CAPT-T195', '2026-11-24T18:54:49Z', 'link', NULL, 'M.CAPT-T196 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114606, 'M.CAPT-T196', '2026-11-24T18:54:52Z', 'link', NULL, 'requires M.CAPT-T197');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114607, 'M.CAPT-T197', '2026-11-24T18:54:52Z', 'link', NULL, 'M.CAPT-T196 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114608, 'US-T692', '2026-11-24T18:54:54Z', 'link', NULL, 'requires US-T687');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114609, 'US-T687', '2026-11-24T18:54:54Z', 'link', NULL, 'US-T692 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114610, 'US-T692', '2026-11-24T18:54:56Z', 'link', NULL, 'requires M.CAPT-T193');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114611, 'M.CAPT-T193', '2026-11-24T18:54:57Z', 'link', NULL, 'US-T692 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114612, 'US-T692', '2026-11-24T18:54:59Z', 'link', NULL, 'requires M.CAPT-T194');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114613, 'M.CAPT-T194', '2026-11-24T18:54:59Z', 'link', NULL, 'US-T692 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114614, 'US-T693', '2026-11-24T18:55:01Z', 'link', NULL, 'requires US-T692');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114615, 'US-T691', '2026-11-24T18:55:02Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114616, 'US-T692', '2026-11-24T18:55:02Z', 'link', NULL, 'US-T693 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114617, 'U.SPC-T643', '2026-11-24T18:55:03Z', 'status', 'open', 'wont-do');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114618, 'U.SPC-T643', '2026-11-24T18:55:03Z', 'ref', '—', 'Unity.SpaceGod is archived (skipped in the rename plan)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114619, 'US-T694', '2026-11-24T18:55:04Z', 'link', NULL, 'requires US-T693');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114620, 'US-T693', '2026-11-24T18:55:04Z', 'link', NULL, 'US-T694 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114621, 'US-T695', '2026-11-24T18:55:06Z', 'link', NULL, 'requires US-T692');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114622, 'US-T692', '2026-11-24T18:55:07Z', 'link', NULL, 'US-T695 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114623, 'US-T695', '2026-11-24T18:55:09Z', 'link', NULL, 'requires US-T694');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114624, 'US-T694', '2026-11-24T18:55:09Z', 'link', NULL, 'US-T695 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114625, 'UNR-T121', '2026-11-24T18:55:11Z', 'link', NULL, 'requires M.CAPT-T194');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114626, 'M.CAPT-T194', '2026-11-24T18:55:11Z', 'link', NULL, 'UNR-T121 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114627, 'UNR-T122', '2026-11-24T18:55:14Z', 'link', NULL, 'requires UNR-T121');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114628, 'UNR-T121', '2026-11-24T18:55:14Z', 'link', NULL, 'UNR-T122 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114629, 'UNR-T123', '2026-11-24T18:55:16Z', 'link', NULL, 'requires UNR-T121');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114630, 'UNR-T121', '2026-11-24T18:55:16Z', 'link', NULL, 'UNR-T123 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114631, 'UNR-T124', '2026-11-24T18:55:18Z', 'link', NULL, 'requires UNR-T123');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114632, 'UNR-T123', '2026-11-24T18:55:19Z', 'link', NULL, 'UNR-T124 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114633, 'UNR-T124', '2026-11-24T18:55:21Z', 'link', NULL, 'requires UNR-T122');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114634, 'UNR-T122', '2026-11-24T18:55:21Z', 'link', NULL, 'UNR-T124 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114635, 'GG-T1006', '2026-11-24T18:55:23Z', 'link', NULL, 'requires GG-T1005');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114636, 'GG-T1005', '2026-11-24T18:55:24Z', 'link', NULL, 'GG-T1006 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114637, 'GG-T1006', '2026-11-24T18:55:26Z', 'link', NULL, 'requires GG-T1007');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114638, 'GG-T1007', '2026-11-24T18:55:26Z', 'link', NULL, 'GG-T1006 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114639, 'GG-T1008', '2026-11-24T18:55:28Z', 'link', NULL, 'requires GG-T1006');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114640, 'GG-T1006', '2026-11-24T18:55:29Z', 'link', NULL, 'GG-T1008 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114641, 'GG-T1008', '2026-11-24T18:55:31Z', 'link', NULL, 'requires GG-T1007');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114642, 'GG-T1007', '2026-11-24T18:55:32Z', 'link', NULL, 'GG-T1008 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114643, 'M.CAPT-T183', '2026-11-24T18:55:38Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114644, 'M.CAPT-T184', '2026-11-24T18:55:40Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114645, 'US-T688', '2026-11-24T18:55:41Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114646, 'UNR-T118', '2026-11-24T18:55:42Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114647, 'GG-T1002', '2026-11-24T18:55:43Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114648, 'M.CAPT-T185', '2026-11-24T18:55:44Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114649, 'M.CAPT-T188', '2026-11-24T18:55:45Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114650, 'M.CAPT-T188', '2026-11-24T18:55:45Z', 'ref', '—', 'eedf8a0');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114651, 'M.MVIEW-T22', '2026-11-24T18:55:45Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114652, 'M.MVIEW-T22', '2026-11-24T18:55:45Z', 'ref', '—', 'children done');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114653, 'M.MVIEW-T22', '2026-11-24T18:55:45Z', 'rollup', NULL, 'M.CAPT-T188');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114654, 'M.MVIEW-T18', '2026-11-24T18:55:45Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114655, 'M.MVIEW-T18', '2026-11-24T18:55:45Z', 'ref', '—', 'children done');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114656, 'M.MVIEW-T18', '2026-11-24T18:55:45Z', 'rollup', NULL, 'M.MVIEW-T22');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114657, 'M.MVIEW-T17', '2026-11-24T18:55:45Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114658, 'M.MVIEW-T17', '2026-11-24T18:55:45Z', 'ref', '—', 'children done');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114659, 'M.MVIEW-T17', '2026-11-24T18:55:45Z', 'rollup', NULL, 'M.MVIEW-T18');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114660, 'M.CAPT-T186', '2026-11-24T18:55:45Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114661, 'M.CAPT-T187', '2026-11-24T18:55:47Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114662, 'US-T689', '2026-11-24T18:55:48Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114663, 'US-T690', '2026-11-24T18:55:49Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114664, 'UNR-T119', '2026-11-24T18:55:50Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114665, 'UNR-T120', '2026-11-24T18:55:51Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114666, 'GG-T1003', '2026-11-24T18:55:53Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114667, 'GG-T1004', '2026-11-24T18:55:54Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114668, 'M.CAPT-T189', '2026-11-24T18:55:56Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114669, 'M.CAPT-T190', '2026-11-24T18:55:57Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114670, 'M.CAPT-T191', '2026-11-24T18:55:58Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114671, 'M.CAPT-T192', '2026-11-24T18:56:00Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114672, 'M.CAPT-T193', '2026-11-24T18:56:01Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114673, 'M.CAPT-T194', '2026-11-24T18:56:03Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114674, 'M.CAPT-T195', '2026-11-24T18:56:04Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114675, 'M.CAPT-T196', '2026-11-24T18:56:05Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114676, 'M.CAPT-T197', '2026-11-24T18:56:07Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114677, 'US-T692', '2026-11-24T18:56:08Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114678, 'US-T693', '2026-11-24T18:56:10Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114679, 'US-T694', '2026-11-24T18:56:11Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114680, 'US-T695', '2026-11-24T18:56:12Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114681, 'UNR-T121', '2026-11-24T18:56:13Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114682, 'UNR-T122', '2026-11-24T18:56:14Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114683, 'UNR-T123', '2026-11-24T18:56:15Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114684, 'UNR-T124', '2026-11-24T18:56:16Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114685, 'GG-T1005', '2026-11-24T18:56:18Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114686, 'GG-T1006', '2026-11-24T18:56:19Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114687, 'GG-T1007', '2026-11-24T18:56:20Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114688, 'US-T691', '2026-11-24T18:56:20Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114689, 'US-T691', '2026-11-24T18:56:20Z', 'ref', '—', '892365a');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114690, 'GG-T1008', '2026-11-24T18:56:21Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114691, 'US-T696', '2026-11-24T18:56:35Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114692, 'US-T696', '2026-11-24T18:56:35Z', 'name', NULL, 'Capture comment rename');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114693, 'US-T696', '2026-11-24T18:56:36Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114694, 'GAD-T731', '2026-11-24T18:56:41Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114695, 'GAD-T731', '2026-11-24T18:56:41Z', 'ref', '—', '278556c');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114696, 'GAD-T727', '2026-11-24T18:56:42Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114697, 'GAD-T727', '2026-11-24T18:56:42Z', 'ref', '—', 'children done');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114698, 'GAD-T727', '2026-11-24T18:56:42Z', 'rollup', NULL, 'GAD-T731');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114699, 'U.SPC-T643', '2026-11-24T18:56:47Z', 'working', '2c651f03-aee6-4f4d-9420-5957d23af195', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114700, 'US-T691', '2026-11-24T18:56:47Z', 'working', '2c651f03-aee6-4f4d-9420-5957d23af195', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114701, 'M.CAPT-T197', '2026-11-24T18:58:12Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114702, 'M.CAPT-T197', '2026-11-24T18:58:12Z', 'ref', '—', '2683fbc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114703, 'M.CAPT-T187', '2026-11-24T18:58:12Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114704, 'M.CAPT-T187', '2026-11-24T18:58:12Z', 'ref', '—', 'children done');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (114705, 'M.CAPT-T187', '2026-11-24T18:58:12Z', 'rollup', NULL, 'M.CAPT-T197');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -109647,6 +109942,13 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GGS-T28', 'approved', 0, '2026-11-22T06:43:00Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GGS-T29', 'approved', 0, '2026-11-22T06:43:01Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GGS-T30', 'approved', 0, '2026-11-22T06:43:03Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1002', 'approved', 0, '2026-11-24T18:55:43Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1003', 'approved', 0, '2026-11-24T18:55:53Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1004', 'approved', 0, '2026-11-24T18:55:54Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1005', 'approved', 0, '2026-11-24T18:56:18Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1006', 'approved', 0, '2026-11-24T18:56:19Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1007', 'approved', 0, '2026-11-24T18:56:20Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1008', 'approved', 0, '2026-11-24T18:56:21Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T115', 'approved', 0, '2026-10-19T17:01:18Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T116', 'approved', -2, '2026-10-22T02:51:54Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T117', 'approved', 0, '2026-10-19T17:01:19Z', NULL);
@@ -110652,7 +110954,22 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T180', 'approved', 0, '2026-11-24T16:25:18Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T181', 'approved', 0, '2026-11-24T16:25:18Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T182', 'approved', 0, '2026-11-24T18:27:29Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T183', 'approved', 0, '2026-11-24T18:55:38Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T184', 'approved', 0, '2026-11-24T18:55:40Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T185', 'approved', 0, '2026-11-24T18:55:44Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T186', 'approved', 0, '2026-11-24T18:55:45Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T187', 'approved', 0, '2026-11-24T18:55:47Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T188', 'approved', 0, '2026-11-24T18:50:30Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T189', 'approved', 0, '2026-11-24T18:55:56Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T19', 'approved', 0, '2026-10-16T22:46:03Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T190', 'approved', 0, '2026-11-24T18:55:57Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T191', 'approved', 0, '2026-11-24T18:55:58Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T192', 'approved', 0, '2026-11-24T18:56:00Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T193', 'approved', 0, '2026-11-24T18:56:01Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T194', 'approved', 0, '2026-11-24T18:56:03Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T195', 'approved', 0, '2026-11-24T18:56:04Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T196', 'approved', 0, '2026-11-24T18:56:05Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T197', 'approved', 0, '2026-11-24T18:56:07Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T20', 'approved', 0, '2026-10-16T22:46:04Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T21', 'approved', 0, '2026-10-16T22:46:04Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T22', 'approved', 0, '2026-10-16T22:46:04Z', NULL);
@@ -113300,6 +113617,13 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UM-T96', 'approved', 0, '2026-11-24T16:25:41Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNR-T116', 'approved', 0, '2026-11-24T16:25:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNR-T117', 'approved', 0, '2026-11-24T16:25:40Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNR-T118', 'approved', 0, '2026-11-24T18:55:42Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNR-T119', 'approved', 0, '2026-11-24T18:55:50Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNR-T120', 'approved', 0, '2026-11-24T18:55:51Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNR-T121', 'approved', 0, '2026-11-24T18:56:13Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNR-T122', 'approved', 0, '2026-11-24T18:56:14Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNR-T123', 'approved', 0, '2026-11-24T18:56:15Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNR-T124', 'approved', 0, '2026-11-24T18:56:16Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNS-T11', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNS-T13', 'approved', 5, '2026-10-21T04:35:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNS-T17', 'approved', 0, '2026-10-31T14:49:34Z', NULL);
@@ -113873,6 +114197,15 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T685', 'approved', 0, '2026-11-24T09:25:05Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T686', 'approved', 0, '2026-11-24T16:25:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T687', 'approved', 0, '2026-11-24T16:25:39Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T688', 'approved', 0, '2026-11-24T18:55:41Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T689', 'approved', 0, '2026-11-24T18:55:48Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T690', 'approved', 0, '2026-11-24T18:55:49Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T691', 'approved', 0, '2026-11-24T18:55:02Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T692', 'approved', 0, '2026-11-24T18:56:08Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T693', 'approved', 0, '2026-11-24T18:56:10Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T694', 'approved', 0, '2026-11-24T18:56:11Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T695', 'approved', 0, '2026-11-24T18:56:12Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T696', 'approved', 0, '2026-11-24T18:56:36Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T72', 'approved', 0, '2026-11-06T21:27:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T82', 'approved', 0, '2026-11-06T21:27:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T83', 'approved', 0, '2026-11-06T21:27:41Z', NULL);
@@ -117963,6 +118296,8 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32289, '
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32290, 'U.RON-T32', 'ryand', '2026-11-24T18:33:06Z', 'Commit 42b77ce is on local main only: push rejected, github.com/mindattic/UnityRonin is archived (read-only, 403). Unity compile not run (instructed not to open Unity).');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32291, 'GAD-T727', 'ryand', '2026-11-24T18:42:47Z', 'Owner reference sheet for the likeness pass: ![image 7](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/GAD-T727/2026-11-24-image-7.png) — real Socrates busts/portraits (Pio-Clementino type and others). Note the beard across these: full, rounded, made of small tight curls covering the cheeks and jaw, not straight hanging strands; nose broad and flat/snub; deep-set eyes under a heavy brow; high balding dome with hair at the sides/back and temples.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32292, 'M.CAPT-T181', 'ryand', '2026-11-24T18:44:41Z', 'From T182 (b9174fb): PreviewHandoff.LegacyPipeName and PreviewLauncher.LegacyViewerPath were removed from MindAttic.Media.Capture.Sets (public API break) without a version bump; the 1.0.0 nupkg in C:\LocalNuGet still has them. Bump Sets to 2.0.0, repack to C:\LocalNuGet, update the README package table, and check no consumer references those members.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32293, 'M.MVIEW-T25', 'ryand', '2026-11-24T18:50:57Z', 'Sweep clean except: M.CAPT-T188 filed for docs/design/preview-sets.md; Orchestrator data/orchestrator.sql keeps a stale ''MindAttic.MediaViewer'' Tested-sha state key (runtime data, not live config). Root 9025b48 adds the viewer to docs/workspace-repos.json.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32294, 'M.MVIEW-T9', 'ryand', '2026-11-24T18:52:38Z', '2 bugs found and fixed (M.MVIEW-T33, M.MVIEW-T34).');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AES-T4', 'Exhaustive bug hunt for this repo, no time limit (the /bughunt skill with no argument).
@@ -120496,6 +120831,46 @@ Filed in a workspace-wide sweep (one per non-archived repo); do not start until 
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T1002', 'GridGame.Unity side of M.CAPT-T183. Already in place (no work): the package is referenced (GG-T999), BattleScreen raises battle-start/battle-end, EndlessCapture records per-encounter clips, harness --record adds -capture video hq. Missing: AutomationServer''s screenshot/record endpoints write PNGs with ScreenCapture and never touch the capture session; harness --record runs without -capture-config so no rules (replay ring) are armed; harness failures leave no footage of what went wrong; nothing publishes a run''s screenshots as a preview set for /preview. Core.Tests are pure .NET (no rendering), so ''test failures screenshot'' means harness checks, which render.', '2026-11-24T18:47:13Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T1003', 'AutomationServer gains capture ops; harness --record loads a harness capture config that arms the replay ring.', '2026-11-24T18:47:59Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T1004', 'Uses the installed agent''s capture set new/add/show CLI.', '2026-11-24T18:48:04Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T1005', 'Repo: D:\Projects\MindAttic\GridGame.Unity.
+
+AutomationServer capture ops (Assets/GridGame/App/Automation/AutomationServer.cs), through MindAttic.Media.Capture.Unity''s CaptureUnity:
+- The existing "screenshot" endpoint, while capture runs (CaptureUnity.Options?.Enabled), also drops CaptureUnity.Marker("shot " + name) so the recording has a chapter at every harness screenshot; the PNG in artifacts/RUN stays as it is (harness and polish scripts read it).
+- New "capture" endpoint: op=marker (name), raise (event plus key=value data), screenshot (tag; the engine''s own shot with sidecar into the session folder), save-replay, clip (before, after, tag), status (enabled, session folder, recording). Each returns {ok, error?, folder?}; when capture is off it returns {ok:false, error:"capture off"} immediately (harness calls must never hang).
+- Every "tap", "click" and "drag" adds a marker while capture runs only if a new ?mark=1 is passed (keeps chapters readable).
+
+Outcome and verify: Unity batchmode compile via tools/unity.ps1 (or the repo''s compile check; GG-T999 used the same), else say so and hand off. Hand-off for the owner: python tools/harness.py sweep --record gives a video whose chapters match the sweep''s PNG names.
+
+Rules: one commit on main ending in this ticket ID; no branches or worktrees; verify by building as stated; wider tests are run by the owner via /test.', '2026-11-24T18:53:51Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T1006', 'Repo: D:\Projects\MindAttic\GridGame.Unity.
+
+Harness failures leave footage:
+- tools/harness.capture.json (new): enabled, replay ring armed 30 s, rules: harness-fail gives a replay (before 25s, after 2s, tag fail), harness-step gives a marker. harness.py''s --record adds -capture-config pointing at it (today --record passes only -capture video hq, so no rules or replay ring are armed); endless and clips keep their own configs.
+- harness.py: a call(capture...) helper; when a command fails (an exception escapes it, or it is about to exit 1 on a check) while recording, it calls capture raise event=harness-fail with the command name and reason, a final screenshot fail-COMMAND, waits for the replay to be written, then exits as before. Optional harness-step markers at each named step of sweep, storyarc and coach.
+- Assets/StreamingAssets/capture.json (the shipped defaults, enabled false) is untouched.
+
+Outcome and verify: python -m py_compile tools/harness.py; the json parses; a unit-style check that the --record launch arguments include -capture-config (a small function test or a --dry-run print of launch args, whichever harness.py already supports). Hand-off for the owner: a harness command forced to fail under --record leaves a fail replay .mp4 in the session folder.
+
+Prerequisite: the AutomationServer capture ops task.
+
+Rules: one commit on main ending in this ticket ID; no branches or worktrees; verify by building as stated; wider tests are run by the owner via /test.', '2026-11-24T18:53:55Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T1007', 'Repo: D:\Projects\MindAttic\GridGame.Unity.
+
+Harness runs as preview sets: harness.py gains --preview [TICKET] anywhere in its args. At the end of the command (pass or fail) it runs the installed agent (%LOCALAPPDATA%\MindAttic\Capture\bin\capture.exe; MINDATTIC_CAPTURE_AGENT overrides) as: set new --title "COMMAND RUN" --repo GridGame.Unity [--ticket TICKET] --json, then set add with the run''s artifacts/RUN PNGs in name order (caption = file name; .coach.json and other non-images skipped) and, when the run was recorded, the session video, then set show. A missing agent prints one warning and the run''s result is unchanged.
+
+Outcome and verify: python -m py_compile tools/harness.py; the argument parsing is checked by running harness.py with --preview and an unknown command (prints usage, no launch) or an existing dry-run path; against the installed agent, set new plus set add on two fixture PNGs from tools/fixtures (or any committed PNGs) creates a set (then delete that set folder). Hand-off for the owner: python tools/harness.py sweep --preview opens the sweep in MindAttic.Media.Viewer.
+
+Can start now (uses only the existing agent CLI).
+
+Rules: one commit on main ending in this ticket ID; no branches or worktrees; verify by building as stated; wider tests are run by the owner via /test.', '2026-11-24T18:53:59Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T1008', 'Repo: D:\Projects\MindAttic\GridGame.Unity.
+
+Docs: README.md gains a Capture section listing what GridGame does with MindAttic.Media.Capture.Unity and how to use it: -capture video / screen N / hq, -capture-config, harness --record (now with failure replays and step markers), --preview, endless --capture and clips, the AutomationServer capture endpoint, where files land (R:\MindAttic\Capture\GridGame.Unity, artifacts/RUN), prerequisites (the agent from MindAttic.Media.Capture run.ps1, ffmpeg) and a pointer to MindAttic.Media.Capture''s README. The harness.py docstring lists --preview and the capture endpoint. docs/POLISH.md and docs/TRAILER.md references stay accurate.
+
+Outcome and verify: every flag and endpoint named exists in harness.py or AutomationServer.cs (grep-checked; say so in the commit); file checks only.
+
+Prerequisites: the failure-replay and preview-set tasks.
+
+Rules: one commit on main ending in this ticket ID; no branches or worktrees; verify by building as stated; wider tests are run by the owner via /test.', '2026-11-24T18:54:04Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T219', 'Owner request 2026-11-03: ''the selected moving hero or enemy must have a trail following them like in Terra Battle or Friends & Dragons so show where they came from, also remember one of the most important strategies is to slide through allies and opponents to setup even more devastating pincer attacks but moving opponents into lines to execute the best pincer attack''. Presentation only (no Core change). Acceptance: while dragging, every tile the hero has walked through shows a trail segment from its start tile, joined as a path, fading toward the oldest; cleared on drop. Enemy moves show a brief fading trail during playback. BIBLE records the trail and the slide-through-to-line-up strategy note.', '2026-11-03T17:55:46Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T220', '**Story.** As the owner, each hero''s and enemy''s thumbnail is a zoom + offset into its one real portrait, stored on the character, so I decide exactly how every unit looks and no second image is ever made.
 
@@ -125842,6 +126217,105 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.CAPT-T184'
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.CAPT-T185', 'Generalised from SpaceGod.Unreal Capture/SpaceGod.Capture (Program.cs HostAsync, FrameFeed.cs) and its protocol in SpaceGod.Unreal Capture/README.md. Once it ships in the installed agent (%LOCALAPPDATA%\MindAttic\Capture\bin\capture.exe), any Unreal game drives capture without its own host.', '2026-11-24T18:47:34Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.CAPT-T186', 'Plugin folder unreal\MindAttic.Media.Capture.Unreal\ (FriendlyName MindAttic.Media.Capture.Unreal; .uplugin and module names without dots, as UBT needs identifiers: MindAtticMediaCapture.uplugin, modules MindAtticMediaCapture and MindAtticMediaCaptureEditor). Consumers reference it by path through AdditionalPluginDirectories (as they do ../Unreal.Shared/Plugins). Verified with D:\Games\UE_5.8\Engine\Build\BatchFiles\RunUAT.bat BuildPlugin -Plugin=<uplugin> -Package=<scratch dir> -TargetPlatforms=Win64.', '2026-11-24T18:47:37Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.CAPT-T187', 'Decision and naming for the Unity side of the engine-suffix scheme; see its task.', '2026-11-24T18:47:40Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.CAPT-T188', 'Found by the M.MVIEW-T25 rename sweep. File: docs/design/preview-sets.md lines 1, 5, 8, 28, 60 name MindAttic.MediaViewer / MindAttic.MediaViewer.exe / D:\Projects\MindAttic\MindAttic.MediaViewer\src\MindAttic.MediaViewer\. Change the title, the file-table row (repo, path) and the command-line example to MindAttic.Media.Viewer; leave the owner''s quoted decision on line 8 as a dated record (add ''since renamed MindAttic.Media.Viewer''). Line 96''s note on the pre-rename pipe is history; drop it if M.CAPT-T182 removed that fallback. One commit, docs only.', '2026-11-24T18:50:29Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.CAPT-T189', 'Repo: D:\Projects\MindAttic\MindAttic.Media.Capture.
+
+Add `capture host` to the agent, ported from SpaceGod.Unreal Capture/SpaceGod.Capture/Program.cs (HostAsync and its JSON helpers; read it there, on the old MindAttic.Capture namespaces) onto this repo''s MindAttic.Media.Capture.* namespaces:
+- New src/MindAttic.Media.Capture.Agent/HostCommand.cs; Program.cs dispatches "host" and lists it in Help().
+- `capture host --hwnd 0x.. --pid N --app Name [--version V] [--defaults path.json] --cmdline "<game command line>"`: builds CaptureOptions exactly as CaptureUnity does (defaults file only when no -capture-config; the game''s -capture flags parsed with CaptureArgs; nothing started and {"op":"ready","any":false} when no mode was asked), starts CaptureEngine on the window (DesktopCaptureHost), DetachedFinalizerPath = this exe.
+- Protocol, one JSON object per line: stdin raise / marker / screenshot (id) / command / note / quit; stdout ready / result / log / stopped (fields as in SpaceGod.Unreal Capture/README.md "Protocol"). Stops and exports on quit, stdin EOF, or the game pid exiting.
+- docs/design/engine-host.md: the protocol table (the plugin and any future engine binding read this, not SpaceGod''s README).
+
+Outcome: `capture host --cmdline "Game.exe"` prints {"op":"ready","any":false} and exits 0. Tests in tests/MindAttic.Media.Capture.Windows.Tests (HostCommandTests): request-line parsing, options from the command line (any:false; -capture video screen 5; -capture-config wins over --defaults), an unknown op answered with an error result.
+
+Verify: dotnet build MindAttic.Media.Capture.slnx; dotnet test --filter HostCommandTests.
+
+Rules: one commit on main ending in this ticket ID; no branches or worktrees; verify by building as stated; wider tests are run by the owner via /test.', '2026-11-24T18:52:32Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.CAPT-T190', 'Repo: D:\Projects\MindAttic\MindAttic.Media.Capture.
+
+`capture host --frames {GUID}` (instead of --hwnd): record a game that has no window (Unreal -RenderOffScreen) from frames the game writes into a shared-memory ring. Port SpaceGod.Unreal Capture/SpaceGod.Capture/FrameFeed.cs (FramesCaptureHost and the ring reader, about 200 lines, unsafe code) into src/MindAttic.Media.Capture.Windows (for example Frames/FrameRingSource.cs and Frames/FrameRingCaptureHost.cs; AllowUnsafeBlocks on that project) and wire it into HostCommand: ready carries "source":"frames" and "fps".
+Ring layout exactly as SpaceGod.Unreal Capture/README.md section Frames: magic SGFR, version 1, 64-byte header, 32-byte slot records from byte 64, top-down BGRA frames from headerBytes; a frame is kept only if its slot seq reads the same before and after the copy. Keep magic and version so the C++ writer ports unchanged; document the layout in docs/design/engine-host.md.
+
+Outcome: a test writes a fake ring (MemoryMappedFile, 2 frames) and the reader returns the newest whole frame with the right size and pixels; a torn slot (seq changed mid-copy) is skipped; closed=1 ends the source.
+
+Verify: dotnet build MindAttic.Media.Capture.slnx; dotnet test --filter FrameRing.
+
+Rules: one commit on main ending in this ticket ID; no branches or worktrees; verify by building as stated; wider tests are run by the owner via /test.', '2026-11-24T18:52:35Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.CAPT-T191', 'Repo: D:\Projects\MindAttic\MindAttic.Media.Capture.
+
+Give `capture host` the rest of CaptureUnity''s surface so the Unreal plugin matches the Unity package, mirroring the ApiServer ops in src/MindAttic.Media.Capture.Agent/ApiServer.cs (record/start, record/stop, record/pause, record/resume, clip, replay):
+- stdin ops record-start {tag}, record-stop, clip {before, after, tag}, save-replay; each answered with a result {id, ok, files or error}.
+- screenshot gains optional "set" (a preview set folder) and "caption": the file joins that preview set as its next NNN_tag (reuse SetCommands.Stage/Finish or PreviewSetStore), so a game builds a set without shelling out per shot.
+- docs/design/engine-host.md lists the new ops.
+- After the build, reinstall the agent the way this repo deploys it (run.ps1) so %LOCALAPPDATA%\MindAttic\Capture\bin\capture.exe has the host command; say in the commit whether it was reinstalled. If run.ps1 cannot run unattended, say so and leave the reinstall to the owner.
+
+Outcome: HostCommandTests cover each new op''s request parsing and its error reply when nothing is recording; a screenshot with "set" lands in the set''s folder with its sidecar.
+
+Verify: dotnet build; dotnet test --filter HostCommandTests; the installed capture.exe''s help lists host.
+
+Rules: one commit on main ending in this ticket ID; no branches or worktrees; verify by building as stated; wider tests are run by the owner via /test.', '2026-11-24T18:52:39Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.CAPT-T192', 'Repo: D:\Projects\MindAttic\MindAttic.Media.Capture.
+
+Create the Unreal plugin and its runtime client:
+- unreal\MindAttic.Media.Capture.Unreal\MindAtticMediaCapture.uplugin (FriendlyName "MindAttic.Media.Capture.Unreal", Category MindAttic, Win64 only, CanContainContent false); Source\MindAtticMediaCapture\MindAtticMediaCapture.Build.cs (Core, CoreUObject, Engine, Json, Slate, SlateCore, ApplicationCore, DeveloperSettings) and the module class.
+- Public\MindAtticCapture.h and Private\MindAtticCapture.cpp: generalise SpaceGod.Unreal Cpp/Source/SpaceGod/Capture/MindAtticCapture.h and .cpp into namespace MindAttic::Media::Capture with its own log category LogMindAtticCapture (log prefix [MindAttic.Media.Capture]): Data bag, Requested, Ready, Any, Enabled, SessionFolder, Raise, Marker, Command, Note, Screenshot and ScreenshotResult, Shutdown. No SpaceGod references: it ticks itself from FTSTicker (no game actor), shuts down on FCoreDelegates::OnPreExit, and reads AppName and the defaults file from a UDeveloperSettings (UMindAtticCaptureSettings, Config=Game; AppName defaults to the repo folder holding the .uproject, as CaptureNaming.RepoName does; DefaultsFile relative to the project, empty means none).
+- Agent locator, in order: MINDATTIC_CAPTURE_HOST, MINDATTIC_CAPTURE_AGENT, the package''s Capture\capture.exe, %LOCALAPPDATA%\MindAttic\Capture\bin\capture.exe, PATH. Accept only ProductName MindAttic.Media.Capture.Agent (or the old MindAttic.Capture.Agent for one release), as UnityAgentLocator does. Starts capture host with --hwnd (frames come in a later task).
+- .gitignore: Binaries and Intermediate under unreal\.
+
+Outcome and verify: D:\Games\UE_5.8\Engine\Build\BatchFiles\RunUAT.bat BuildPlugin -Plugin=(full path to the .uplugin) -Package=(a scratch folder) -TargetPlatforms=Win64 succeeds; delete the package output after, nothing built is committed. Hand-off for the owner: a game with the plugin and -capture screen 5 writes PNGs to R:\MindAttic\Capture\(repo name).
+
+Rules: one commit on main ending in this ticket ID; no branches or worktrees; verify by building as stated; wider tests are run by the owner via /test.', '2026-11-24T18:52:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.CAPT-T193', 'Repo: D:\Projects\MindAttic\MindAttic.Media.Capture.
+
+Frame feed in the plugin: port SpaceGod.Unreal Cpp/Source/SpaceGod/Capture/FrameFeed.h and .cpp (about 430 lines) into unreal\MindAttic.Media.Capture.Unreal\Source\MindAtticMediaCapture\Private\FrameFeed.h/.cpp, namespace MindAttic::Media::Capture::FrameFeed, LogMindAtticCapture. Slate OnBackBufferReadyToPresent, async FRHIGPUTextureReadback 4 deep, never waits on the GPU, writes the SGFR ring the agent reads; Build.cs adds RenderCore and RHI. MindAtticCapture.cpp uses it under -RenderOffScreen or -capture-source=frames (-capture-source=window forces window capture) and starts capture host with --frames {GUID}; the -CaptureStats logging is kept.
+
+Outcome and verify: RunUAT BuildPlugin (D:\Games\UE_5.8) succeeds; the ring header and slot offsets match docs/design/engine-host.md (state that check in the commit). Hand-off for the owner: a game with the plugin run with -RenderOffScreen -capture video produces an .mp4.
+
+Rules: one commit on main ending in this ticket ID; no branches or worktrees; verify by building as stated; wider tests are run by the owner via /test.', '2026-11-24T18:52:46Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.CAPT-T194', 'Repo: D:\Projects\MindAttic\MindAttic.Media.Capture.
+
+Blueprint and C++ API for the full surface, in the plugin''s runtime module:
+- MindAtticCapture.h/.cpp: StartRecording(tag), StopRecording(), Clip(before, after, tag), SaveReplay(), Screenshot(tag, data, setDir, caption), using the host ops added on the agent.
+- Preview sets: NewPreviewSet(title, ticket) returning the set folder, AddToPreviewSet(dir, files, tag, caption), ShowPreviewSet(dir), by running the located agent''s capture set new / add / show (FPlatformProcess; --json output parsed).
+- UMindAtticCaptureLibrary (UBlueprintFunctionLibrary, category "MindAttic|Capture"): IsCaptureRunning, SessionFolder, Raise(event, TMap of FString to FString), Marker, StartRecording, StopRecording, SaveReplay, Clip, NewPreviewSet, AddToPreviewSet, ShowPreviewSet.
+- UMindAtticCaptureScreenshotAction (UBlueprintAsyncActionBase, "Take Capture Screenshot"): OnDone(File) and OnFailed(Error), polling ScreenshotResult.
+
+Outcome and verify: RunUAT BuildPlugin (D:\Games\UE_5.8) succeeds with the UHT-generated Blueprint types. Hand-off for the owner: the nodes appear under MindAttic|Capture in a Blueprint graph.
+
+Rules: one commit on main ending in this ticket ID; no branches or worktrees; verify by building as stated; wider tests are run by the owner via /test.', '2026-11-24T18:52:50Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.CAPT-T195', 'Repo: D:\Projects\MindAttic\MindAttic.Media.Capture.
+
+Editor module MindAtticMediaCaptureEditor (Type Editor) in the plugin, the counterpart of unity\com.mindattic.media.capture\Editor\CaptureMenu.cs:
+- Tools, MindAttic, Capture menu: Video and Screenshots-every-5-s toggles (editor per-project settings, applied to Play-In-Editor sessions the way MINDATTIC_CAPTURE_EDITOR is in Unity), Take screenshot (while PIE runs), Open capture folder (R:\MindAttic\Capture\AppName), Open last preview set (capture set list --repo AppName --limit 1 --json, then set show).
+- PIE support in the runtime client: with a toggle on, a PIE session starts the host on the editor''s main window hwnd and stops it when PIE ends.
+- UMindAtticCaptureSettings shows under Project Settings, Plugins.
+
+Outcome and verify: RunUAT BuildPlugin (D:\Games\UE_5.8) builds both modules. Hand-off for the owner: the menu appears in the editor and a PIE session with Video on produces a session folder.
+
+Rules: one commit on main ending in this ticket ID; no branches or worktrees; verify by building as stated; wider tests are run by the owner via /test.', '2026-11-24T18:52:53Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.CAPT-T196', 'Repo: D:\Projects\MindAttic\MindAttic.Media.Capture.
+
+Docs for the Unreal plugin:
+- unreal\MindAttic.Media.Capture.Unreal\README.md: install (AdditionalPluginDirectories entry pointing at the relative path of MindAttic.Media.Capture/unreal, plus the plugin entry in the .uproject; module dependency MindAtticMediaCapture in Build.cs), prerequisites (the agent installed by this repo''s run.ps1, ffmpeg on PATH), flags (-capture video, screen N, hq, a duration; -capture-config; -capture-source; -RenderOffScreen; -CaptureStats), the C++ and Blueprint API, preview sets, packaging (copy the installed agent''s bin into the package''s Capture folder so a packaged build finds it), the editor menu, and how it differs from Unity (out-of-process host; docs/design/engine-host.md).
+- Repo README.md: an Engine packages table with MindAttic.Media.Capture.Unity (unity\com.mindattic.media.capture) and MindAttic.Media.Capture.Unreal (unreal\MindAttic.Media.Capture.Unreal); the source layout lists unreal\.
+
+Outcome: every flag and API the README names exists in the plugin source (grep-checked; say so in the commit). Verify: file checks only.
+
+Rules: one commit on main ending in this ticket ID; no branches or worktrees; verify by building as stated; wider tests are run by the owner via /test.', '2026-11-24T18:52:57Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.CAPT-T197', 'Repo: D:\Projects\MindAttic\MindAttic.Media.Capture.
+
+Name the Unity package MindAttic.Media.Capture.Unity without moving it.
+
+Recommendation (the owner may overrule): keep the UPM id com.mindattic.media.capture and the folder unity\com.mindattic.media.capture. Reasons: about 12 Unity consumers (GridGame.Unity, TownWalker, Unity.Cursory, Unity.Eve, Unity.Rea.Chain, Unity.Rea.Hare, Unity.Rea.Incognito, Unity.Rea.Overworld, UnityRonin, Unity.Multiplayer and others) were repointed to that id and file: path today under M.CAPT-T167. Renaming again means another manifest.json and packages-lock.json edit plus a Unity re-import in each, for no runtime gain. UPM ids are lowercase reverse-DNS and name the product; this package can only ever be the Unity one. The engine suffix already exists where code sees it: the asmdefs MindAttic.Media.Capture.Unity (.Editor, .Tests) and the namespace MindAttic.Media.Capture.Unity. If the owner wants the id renamed anyway, that is a new owner-approved ticket plus one per consumer, not this one.
+
+Do:
+- unity\com.mindattic.media.capture\package.json: displayName "MindAttic.Media.Capture.Unity" (what Package Manager shows); version 1.0.1; id, folder and GUIDs untouched.
+- README.md: the Unity package section titled MindAttic.Media.Capture.Unity, with a short Naming note (engine packages carry .Unity or .Unreal; the Unity id stays com.mindattic.media.capture, for the reasons above).
+- tools/update-unity-plugin.ps1 and any current doc line naming the display name follow.
+
+Outcome: git grep shows displayName MindAttic.Media.Capture.Unity and no id or folder change. Verify: package.json parses (ConvertFrom-Json); no build needed.
+
+Rules: one commit on main ending in this ticket ID; no branches or worktrees; verify by building as stated; wider tests are run by the owner via /test.', '2026-11-24T18:53:01Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.CAPT-T79', 'This keeps `/capture` working from a CLI hosted in either shell.
 
 **Done when:** the capture tests cover both exe names.', '2026-10-28T01:26:08Z');
@@ -126607,6 +127081,7 @@ Fix idea: let the Image lay out unclipped (e.g. host it in a Canvas centred by c
 
 Test: open a 1600x1000 image in a smaller window; at Fit the whole image, edges included, is visible; crop (C) can select its corners.', '2026-11-24T17:33:12Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.MVIEW-T33', 'ImageCrop.Write() picks the write format from FormatOf(source) (ImageCrop.cs:74,97-98), which only maps extension "apng" to MagickFormat.APng; a file with a plain ".png" extension is content-sniffed and returns MagickFormat.Png even when it is in fact animated (MediaKinds.MaybeAnimated already treats .png as possibly-animated, and the read side in MagickDecoder.FramesOf correctly treats "png" or "apng" the same at MagickDecoder.cs:78-79). So when animated==true and ext=="png", Write() reads+crops every frame correctly (MagickReadSettings.Format = APng at line 76, loop at 82-92) but then calls frames.Write(target, MagickFormat.Png) at line 94, silently discarding every frame but the first. Concrete trigger: crop/replace an animated PNG kept with a .png extension via SaveAsNew or WriteTemp with animated:true -- the saved file loses its animation. Fix: FormatOf should treat png the same as apng when deciding the write format, matching the read-side pattern.', '2026-11-24T18:48:47Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.MVIEW-T34', 'ShellOps.cs:25-26: OpenWith passes $"shell32.dll,OpenAs_RunDLL {path}" as the raw Arguments string to rundll32.exe via ProcessStartInfo(string,string), with no quoting around path. Windows command-line parsing splits unquoted arguments at whitespace, so for any path containing a space (e.g. a file under a folder like C:\Users\<name>\Pictures\... or any set with a space in its name) rundll32 only receives the text up to the first space, and the Open With dialog opens for a truncated/wrong path or fails outright. The sibling method ShowInFolder three lines above (ShellOps.cs:21-22) correctly quotes its path argument ($"/select,\"{path}\""), confirming this is an inconsistency/omission rather than deliberate. Reached from MainWindow.OpenWithCurrent() and StageView.OnOpenWith via ordinary right-click Open with. Fix: quote path the same way ShowInFolder does, e.g. $"shell32.dll,OpenAs_RunDLL \"{path}\"".', '2026-11-24T18:49:33Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.MVIEW-T9', 'Exhaustive bug hunt for this repo, no time limit (the /bughunt skill with no argument).
 
 1. Search the whole repo for real bugs: crashes, wrong results, data loss, races, resource leaks, broken error paths, stale paths/names after renames, dead config, security holes. Read code, don''t run the test suite unless a user asks (/test).
@@ -137454,6 +137929,7 @@ index 6d32b68..3699455 100644
              foreach (var s in gone) hired.Remove(s);
 ```', '2026-11-04T06:42:15Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.SPC-T603', 'Adopt the shared, off-by-default --headless mode from MAU-T18 (Unity.Shared Headless module) in this game: reference the shared package/plugin, wire the game''s own opt-ins (skip the main menu into a normal session when headless), and give its run script a -Headless switch that launches with the shared launcher''s flags. Without --headless nothing changes. This repo is archived on GitHub: unarchive it (gh repo unarchive), land the change, then archive it again (gh repo archive).', '2026-11-07T04:33:44Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.SPC-T643', 'Found by the M.CAPT-T181 sweep (Unity.SpaceGod was not in the consumer list of M.CAPT-T167). If the repo is retired in favour of SpaceGod.Unreal / SpaceGod.Unity.CSharp, close as wont-do instead. Steps as in the README''s Formerly MindAttic.Capture section of MindAttic.Media.Capture. Keep runtime ids (MindAttic > Capture menu path, [MindAttic.Capture] log tags, R:\MindAttic\Capture). Verify by opening/compiling in Unity batch mode if cheap. One commit ending in this ticket''s ID.', '2026-11-24T18:53:05Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.VAN-T33', 'Rename this project everywhere to identify it as reverse-engineered: Unity.ProjectVania -> Unity.Rea.ProjectVania.
 
 Scope (all of it, in this repo''s own checkout on main):
@@ -137563,6 +138039,42 @@ Rules: change live references only (code, config, scripts, current docs); leave 
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T118', 'Unreal.Playground side of M.CAPT-T183. Today tools/run.ps1 films the game window from outside (capture record --hwnd, a watcher script and capture stop) and every demo mode (-KnightDemo, -IslandTour, -WeatherShots, -AutoShot, ...) writes FScreenshotRequest PNGs into Saved/Screenshots with no sidecars, markers or preview sets.', '2026-11-24T18:47:09Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T119', 'Same output folder R:\MindAttic\Capture\Unreal.Playground; -NoCapture still skips it.', '2026-11-24T18:47:51Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T120', 'About 20 FScreenshotRequest call sites in Source/UnrealSoulslike (Souls/*, Environment/*, SoulslikePlayerController) go through one helper; Saved/Screenshots output stays as it is for existing scripts.', '2026-11-24T18:47:56Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T121', 'Repo: D:\Projects\MindAttic\Unreal.Playground.
+
+Add the MindAttic.Media.Capture.Unreal plugin to the C++ project (UnrealSoulslike.uproject; the CSharp/ UnrealSharp copy is out of scope):
+- UnrealSoulslike.uproject: AdditionalPluginDirectories gains "../MindAttic.Media.Capture/unreal" beside "../Unreal.Shared/Plugins"; Plugins gains MindAtticMediaCapture enabled. Source/UnrealSoulslike/UnrealSoulslike.Build.cs: private dependency MindAtticMediaCapture.
+- Config/DefaultGame.ini: UMindAtticCaptureSettings AppName=Unreal.Playground; DefaultsFile=Content/Capture/Playground.capture.json, a new file arming the 30 s replay ring and marking every event (copy the shape of SpaceGod.Unreal''s SpaceGod.capture.json, without its game events).
+- Raise a few events the rules and markers can use from code that already exists: player death and boss defeated (Souls/SoulsGameMode.cpp or SoulsFighter.cpp, wherever those moments are already logged), with a replay rule on player death.
+
+Outcome and verify: UBT builds the editor target: D:\Games\UE_5.8\Engine\Build\BatchFiles\Build.bat UnrealSoulslikeEditor Win64 Development -Project=D:\Projects\MindAttic\Unreal.Playground\UnrealSoulslike.uproject -WaitMutex (or the repo''s own build script if it has one). Hand-off for the owner: a run with -capture video writes a session under R:\MindAttic\Capture\Unreal.Playground.
+
+Prerequisite: the plugin''s Blueprint/API task in MindAttic.Media.Capture.
+
+Rules: one commit on main ending in this ticket ID; no branches or worktrees; verify by building as stated; wider tests are run by the owner via /test.', '2026-11-24T18:53:34Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T122', 'Repo: D:\Projects\MindAttic\Unreal.Playground.
+
+Record in-game instead of from outside: tools/run.ps1 drops the external recorder (the capture record --hwnd launch, the generated watcher script and capture stop) and passes -capture video hq to player 1''s game instead; -NoCapture still skips it; the warning when the agent is missing stays (it now means the plugin will find no agent). run.bat comments follow. Other players are unchanged (player 1 only, as before).
+
+Outcome and verify: tools/run.ps1 parses (PowerShell parser check) and a dry read shows player 1''s argument list carries -capture video hq; no other script references capture record. Hand-off for the owner: run.bat plays and the video lands in R:\MindAttic\Capture\Unreal.Playground when the game quits.
+
+Rules: one commit on main ending in this ticket ID; no branches or worktrees; verify by building as stated; wider tests are run by the owner via /test.', '2026-11-24T18:53:39Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T123', 'Repo: D:\Projects\MindAttic\Unreal.Playground.
+
+One shot helper for every demo mode: Source/UnrealSoulslike/Private/PlaygroundShots.h/.cpp with PlaygroundShots::Take(Name, bShowUI) that keeps today''s FScreenshotRequest::RequestScreenshot output (Saved/Screenshots and the modes'' own folders, which scripts read) and, while capture is running, also takes MindAttic::Media::Capture::Screenshot(Name) and a Marker(Name) so the shot has a sidecar and a chapter in the recording; when a preview set is open (next task) the capture shot goes into it.
+Replace the about 20 direct FScreenshotRequest call sites: SoulslikePlayerController.cpp (-AutoShot), Souls/SoulsBlood, SoulsEnemy, SoulsFighter, SoulsFire, SoulsGameMode, SoulsKnight, SoulsMech, SoulsMonster, SoulsShadowBoss, SoulsTorch, Environment/IslandDayNight, IslandShotSubsystem, IslandWeather.
+
+Outcome and verify: git grep finds FScreenshotRequest::RequestScreenshot only in PlaygroundShots.cpp; UBT builds UnrealSoulslikeEditor (D:\Games\UE_5.8 Build.bat, as in the plugin-adoption task). Hand-off for the owner: -KnightDemo with -capture video leaves both Saved/Screenshots PNGs and session PNGs with sidecars.
+
+Rules: one commit on main ending in this ticket ID; no branches or worktrees; verify by building as stated; wider tests are run by the owner via /test.', '2026-11-24T18:53:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T124', 'Repo: D:\Projects\MindAttic\Unreal.Playground.
+
+Demo runs as preview sets, and the how-to:
+- A -preview flag (optionally -preview=TICKET): at startup PlaygroundShots opens a preview set (title from the demo mode, e.g. "KnightDemo" plus the date) and every PlaygroundShots::Take goes into it with its name as caption; when the demo mode quits, ShowPreviewSet opens it. tools/run.ps1 gains -Preview passing it through.
+- README.md: a Capture section: run.bat and tools/run.ps1 record player 1 in-game (-NoCapture to skip), -capture video or screen N by hand, -preview with any demo mode (-KnightDemo, -IslandTour, -WeatherShots, -BestiaryShots, ...), where files land (R:\MindAttic\Capture\Unreal.Playground, Saved/Screenshots), prerequisites (the agent from MindAttic.Media.Capture run.ps1, ffmpeg), and a link to the plugin README.
+
+Outcome and verify: UBT builds UnrealSoulslikeEditor; run.ps1 parses; every flag the README names exists in source or scripts. Hand-off for the owner: -KnightDemo -preview opens a set in MindAttic.Media.Viewer at the end.
+
+Rules: one commit on main ending in this ticket ID; no branches or worktrees; verify by building as stated; wider tests are run by the owner via /test.', '2026-11-24T18:53:47Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T2', '## Story
 
 <!-- As a ..., I want ... so that ... -->
@@ -138727,6 +139239,50 @@ Rules: change live references only (code, config, scripts, current docs); leave 
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T688', 'SpaceGod.Unreal side of M.CAPT-T183. Today the game starts its own host (Capture/SpaceGod.Capture, built on a vendored snapshot of the library under Vendor/MindAttic.Capture) and drives it from Cpp/Source/SpaceGod/Capture/MindAtticCapture.* and FrameFeed.*. That code moves into the plugin (M.CAPT side); this feature switches the game to it, removes the copies and documents it.', '2026-11-24T18:47:05Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T689', 'Same behaviour as docs/CAPTURE.md today (flags, events, SpaceGod.capture.json defaults, R:\MindAttic\Capture\SpaceGod), new plumbing.', '2026-11-24T18:47:44Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T690', 'Uses the plugin''s preview-set API (capture set new/add/show).', '2026-11-24T18:47:47Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T691', 'Found by the M.CAPT-T181 sweep. Change prose only: leave Vendor/MindAttic.Capture, the using MindAttic.Capture* lines that compile against it, the Product MindAttic.Capture.Agent runtime id, [MindAttic.Capture] log tags and R:\MindAttic\Capture paths. UnitySpaceAppActor.cpp had another agent''s uncommitted edits during the sweep, so do it only once that file is clean. Verify: dotnet build Capture/SpaceGod.Capture. One commit ending in this ticket''s ID.', '2026-11-24T18:53:03Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T692', 'Repo: D:\Projects\MindAttic\SpaceGod.Unreal.
+
+Switch the game to the MindAttic.Media.Capture.Unreal plugin:
+- Cpp/SpaceGod.uproject: AdditionalPluginDirectories gains "../../MindAttic.Media.Capture/unreal"; Plugins gains MindAtticMediaCapture enabled. Cpp/Source/SpaceGod/SpaceGod.Build.cs: private dependency MindAtticMediaCapture.
+- Config/DefaultGame.ini (or the project''s game config): UMindAtticCaptureSettings AppName=SpaceGod (docs/CAPTURE.md section 2) and DefaultsFile=Content/Capture/SpaceGod.capture.json.
+- Delete Cpp/Source/SpaceGod/Capture/MindAtticCapture.h/.cpp and FrameFeed.h/.cpp; CaptureEvents.h/.cpp, CaptureRunner.h/.cpp and UnitySpaceAppActor.cpp call MindAttic::Media::Capture instead of SpaceGod::MindAtticCapture (Data, Raise, Marker, Command, Note, Screenshot, ScreenshotResult, Enabled, SessionFolder). The actor''s per-frame Tick/TickStats calls go (the plugin ticks itself); hotkeys (InputState Alt+F9/F10/F11) keep calling Command.
+- Behaviour unchanged against docs/CAPTURE.md: flags, event catalogue, [capture] event log lines, tour screenshots, -RenderOffScreen frames, -capturedir.
+
+Outcome and verify: tools/build.ps1 (UBT editor target on D:\Games\UE_5.8) builds with the plugin; git grep finds no SpaceGod::MindAtticCapture. The vendored copy and the .NET host are removed in the next task, so this commit still builds them untouched. Hand-off for the owner: tools/play.ps1 -Mode dogfight -Seconds 30 with -capture video writes a session under R:\MindAttic\Capture\SpaceGod.
+
+Prerequisites: US-T687 (same files, in flight) and the plugin''s frame-feed and Blueprint/API tasks in MindAttic.Media.Capture.
+
+Rules: one commit on main ending in this ticket ID; no branches or worktrees; verify by building as stated; wider tests are run by the owner via /test.', '2026-11-24T18:53:19Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T693', 'Repo: D:\Projects\MindAttic\SpaceGod.Unreal.
+
+Remove the vendored library and the game''s own host, now that the plugin drives the installed agent:
+- Delete Vendor/MindAttic.Capture (and its rows in Vendor/README.md) and Capture/SpaceGod.Capture.
+- tools/package.ps1 step 4: publish the agent from the sibling checkout (..\MindAttic.Media.Capture\src\MindAttic.Media.Capture.Agent) into the archive''s Capture folder instead of SpaceGod.Capture, so a packaged build still finds Capture\capture.exe (the plugin''s locator checks it before the installed agent); fail with a clear message if the sibling repo is missing.
+- tools/play.ps1, run.bat, run.ps1 and .gitignore stop building or ignoring SpaceGod.Capture; MINDATTIC_CAPTURE_HOST still works (the plugin honours it).
+- Cpp/Source/SpaceGodCore/Credits.cpp names MindAttic.Media.Capture.Unreal.
+
+Outcome and verify: git grep finds no Vendor/MindAttic.Capture or SpaceGod.Capture outside dated records (USER_STORIES rows, docs/MIGRATION history); tools/build.ps1 builds; package.ps1 parses (PowerShell parser check) and its publish step runs on its own against the sibling project (dotnet publish to a scratch folder). Hand-off for the owner: a full tools/package.ps1 run.
+
+Rules: one commit on main ending in this ticket ID; no branches or worktrees; verify by building as stated; wider tests are run by the owner via /test.', '2026-11-24T18:53:22Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T694', 'Repo: D:\Projects\MindAttic\SpaceGod.Unreal.
+
+Docs for capture through the plugin:
+- README.md: a short Capture how-to (record with -capture video or screen N, the 1080p tour command, -RenderOffScreen, where files land, hotkeys, prerequisites: the agent from MindAttic.Media.Capture run.ps1 and ffmpeg on PATH), linking docs/CAPTURE.md and the plugin README in MindAttic.Media.Capture/unreal.
+- Capture/README.md: removed (its protocol now lives in MindAttic.Media.Capture docs/design/engine-host.md) or cut to a pointer; docs/CAPTURE.md Unreal rows (the host, package layout, -capturedir) say plugin plus installed agent.
+
+Outcome and verify: every command and flag in the new README section exists (tools/play.ps1 parameters, docs/CAPTURE.md flags); file checks only.
+
+Rules: one commit on main ending in this ticket ID; no branches or worktrees; verify by building as stated; wider tests are run by the owner via /test.', '2026-11-24T18:53:25Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T695', 'Repo: D:\Projects\MindAttic\SpaceGod.Unreal.
+
+Tour and bug-repro screenshots as a preview set:
+- CaptureRunner (the -demo tour): with -capture and a new -preview flag (optionally -preview=TICKET), create a preview set at tour start (MindAttic::Media::Capture::NewPreviewSet, title "SpaceGod tour" plus the date, ticket when given), take each stop''s screenshot into it with the stop name as caption, and show it when the tour quits (ShowPreviewSet). Without -preview, behaviour is as today.
+- Console command sg.Shot [caption]: a screenshot into the current preview set (made on first use), so a bug can be filed with a set; sg.Help lists it (Console/ConsoleHelp.cpp).
+- docs/CAPTURE.md flag table gains -preview (Unreal-only row).
+
+Outcome and verify: tools/build.ps1 builds (or UBT -SingleFile on the changed files if the full build is blocked by unrelated in-flight work; say which). Hand-off for the owner: tools/play.ps1 with -demo -capture screen 0 -preview opens the set in MindAttic.Media.Viewer.
+
+Rules: one commit on main ending in this ticket ID; no branches or worktrees; verify by building as stated; wider tests are run by the owner via /test.', '2026-11-24T18:53:30Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T99', '## Story
 As the SpaceGod I can scrub the session back to any earlier moment, take over something there, and send history down a different path.
 
@@ -139315,6 +139871,10 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GGS-T9', 'Move Grid
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T1002', 'GridGame uses Capture.Unity fully', '2026-11-24T18:47:13Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T1003', 'Harness runs marked and replayed', '2026-11-24T18:47:59Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T1004', 'Harness runs as preview sets', '2026-11-24T18:48:04Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T1005', 'AutomationServer capture ops', '2026-11-24T18:53:51Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T1006', 'Harness failure replays', '2026-11-24T18:53:55Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T1007', 'Harness --preview sets', '2026-11-24T18:53:59Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T1008', 'GridGame capture how-to', '2026-11-24T18:54:04Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T318', 'Speed sets re-entry', '2026-11-07T04:31:39Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T319', 'Recovery tray UI', '2026-11-07T04:31:40Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T320', 'Bot and recover content', '2026-11-07T04:31:42Z');
@@ -139914,6 +140474,16 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.CAPT-T184', 'Engi
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.CAPT-T185', 'capture host for engine games', '2026-11-24T18:47:34Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.CAPT-T186', 'MindAttic.Media.Capture.Unreal plugin', '2026-11-24T18:47:37Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.CAPT-T187', 'Unity package named .Unity', '2026-11-24T18:47:40Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.CAPT-T188', 'Preview-sets doc: Media.Viewer', '2026-11-24T18:50:29Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.CAPT-T189', 'capture host command', '2026-11-24T18:52:32Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.CAPT-T190', 'capture host --frames ring', '2026-11-24T18:52:35Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.CAPT-T191', 'capture host recording ops', '2026-11-24T18:52:40Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.CAPT-T192', 'Unreal plugin runtime client', '2026-11-24T18:52:43Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.CAPT-T193', 'Unreal plugin frame feed', '2026-11-24T18:52:46Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.CAPT-T194', 'Unreal plugin Blueprint API', '2026-11-24T18:52:50Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.CAPT-T195', 'Unreal plugin editor module', '2026-11-24T18:52:54Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.CAPT-T196', 'Unreal plugin README', '2026-11-24T18:52:57Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.CAPT-T197', 'Unity package named .Unity', '2026-11-24T18:53:01Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.COMP-T183', 'MaToggleIcon two-state icon button', '2026-11-10T14:09:46Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.COMP-T189', 'Dropdown submenus', '2026-11-11T04:07:10Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.COMP-T190', 'Full-width light-gray MaSeparator', '2026-11-11T07:15:59Z');
@@ -140019,6 +140589,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.MVIEW-T30', 'Trim
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.MVIEW-T31', 'Fit clips large images', '2026-11-24T17:33:12Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.MVIEW-T32', 'EXIF rotation on WIC images', '2026-11-24T17:34:17Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.MVIEW-T33', 'ImageCrop drops APNG frames saved as .png', '2026-11-24T18:48:47Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.MVIEW-T34', 'OpenWith breaks on paths with spaces', '2026-11-24T18:49:33Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.MVIEW-T4', 'Viewer shell', '2026-11-24T06:50:41Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.MVIEW-T5', 'Every format', '2026-11-24T06:50:45Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.MVIEW-T6', 'Right-click menu', '2026-11-24T06:50:48Z');
@@ -141018,6 +141589,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.SPC-T639', 'Follo
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.SPC-T640', 'Core model', '2026-11-22T06:50:47Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.SPC-T641', 'Effects', '2026-11-22T06:50:49Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.SPC-T642', 'Follow-on', '2026-11-22T06:50:50Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.SPC-T643', 'Unity.SpaceGod on Media.Capture', '2026-11-24T18:53:05Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.VAN-T39', 'Headless test flag', '2026-11-07T04:33:39Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.VAN-T44', 'Exhaustive bughunt', '2026-11-24T07:02:25Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UC-T51', 'Headless test flag', '2026-11-07T04:33:28Z');
@@ -141124,6 +141696,10 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNR-T117', 'Playgro
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNR-T118', 'Playground on Capture.Unreal plugin', '2026-11-24T18:47:09Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNR-T119', 'Playground runs record in-game', '2026-11-24T18:47:51Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNR-T120', 'Playground demo shots via capture', '2026-11-24T18:47:56Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNR-T121', 'Playground adopts capture plugin', '2026-11-24T18:53:34Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNR-T122', 'run.ps1 records in-game', '2026-11-24T18:53:39Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNR-T123', 'Playground shots via capture', '2026-11-24T18:53:43Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNR-T124', 'Playground demo preview sets', '2026-11-24T18:53:47Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNR-T87', 'Headless test flag', '2026-11-07T04:33:49Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNR-T88', 'Rename repo to Unreal.Playground', '2026-11-07T06:44:46Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNR-T93', 'Hebrides island terrain', '2026-11-22T06:14:30Z');
@@ -141389,6 +141965,12 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T687', 'SpaceGod
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T688', 'SpaceGod on Capture.Unreal plugin', '2026-11-24T18:47:05Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T689', 'SpaceGod records via the plugin', '2026-11-24T18:47:44Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T690', 'SpaceGod tour as a preview set', '2026-11-24T18:47:47Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T691', 'Capture prose: Media.Capture', '2026-11-24T18:53:03Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T692', 'SpaceGod adopts capture plugin', '2026-11-24T18:53:19Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T693', 'Remove vendored capture and host', '2026-11-24T18:53:22Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T694', 'SpaceGod capture how-to', '2026-11-24T18:53:25Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T695', 'SpaceGod tour preview set', '2026-11-24T18:53:30Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T696', 'Capture comment rename', '2026-11-24T18:56:35Z');
 
 -- ticket_labels
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AES-T4', 'level:story', '2026-11-24T06:58:50Z');
@@ -141819,6 +142401,10 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GGS-T33', 'level:st
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1002', 'level:feature', '2026-11-24T18:47:13Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1003', 'level:story', '2026-11-24T18:48:00Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1004', 'level:story', '2026-11-24T18:48:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1005', 'level:task', '2026-11-24T18:53:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1006', 'level:task', '2026-11-24T18:53:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1007', 'level:task', '2026-11-24T18:54:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1008', 'level:task', '2026-11-24T18:54:05Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T168', 'level:story', '2026-11-22T05:55:27Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T191', 'level:story', '2026-11-22T05:56:28Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T215', 'level:task', '2026-11-22T05:36:13Z');
@@ -142392,6 +142978,15 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.CAPT-T184', 'leve
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.CAPT-T185', 'level:story', '2026-11-24T18:47:34Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.CAPT-T186', 'level:story', '2026-11-24T18:47:37Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.CAPT-T187', 'level:story', '2026-11-24T18:47:40Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.CAPT-T189', 'level:task', '2026-11-24T18:52:32Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.CAPT-T190', 'level:task', '2026-11-24T18:52:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.CAPT-T191', 'level:task', '2026-11-24T18:52:40Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.CAPT-T192', 'level:task', '2026-11-24T18:52:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.CAPT-T193', 'level:task', '2026-11-24T18:52:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.CAPT-T194', 'level:task', '2026-11-24T18:52:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.CAPT-T195', 'level:task', '2026-11-24T18:52:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.CAPT-T196', 'level:task', '2026-11-24T18:52:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.CAPT-T197', 'level:task', '2026-11-24T18:53:01Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.CAPT-T30', 'level:story', '2026-11-22T06:35:46Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.CAPT-T34', 'level:story', '2026-11-22T06:35:59Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.CAPT-T47', 'level:task', '2026-11-22T05:42:36Z');
@@ -142651,6 +143246,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.MVIEW-T24', 'leve
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.MVIEW-T25', 'level:task', '2026-11-24T16:14:33Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.MVIEW-T3', 'level:task', '2026-11-24T06:50:31Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.MVIEW-T33', 'level:task', '2026-11-24T18:48:47Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.MVIEW-T34', 'level:task', '2026-11-24T18:49:33Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.MVIEW-T4', 'level:task', '2026-11-24T06:50:41Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.MVIEW-T5', 'level:task', '2026-11-24T06:50:45Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.MVIEW-T6', 'level:task', '2026-11-24T06:50:49Z');
@@ -146039,6 +146635,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.SPC-T639', 'level
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.SPC-T640', 'level:task', '2026-11-22T06:50:48Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.SPC-T641', 'level:task', '2026-11-22T06:50:50Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.SPC-T642', 'level:task', '2026-11-22T06:50:52Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.SPC-T643', 'level:task', '2026-11-24T18:53:05Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.VAN-T44', 'level:story', '2026-11-24T07:02:25Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UC-T37', 'level:task', '2026-11-22T05:49:50Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UC-T38', 'level:story', '2026-11-22T06:43:06Z');
@@ -146102,6 +146699,10 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UNR-T117', 'level:t
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UNR-T118', 'level:feature', '2026-11-24T18:47:09Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UNR-T119', 'level:story', '2026-11-24T18:47:51Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UNR-T120', 'level:story', '2026-11-24T18:47:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UNR-T121', 'level:task', '2026-11-24T18:53:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UNR-T122', 'level:task', '2026-11-24T18:53:39Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UNR-T123', 'level:task', '2026-11-24T18:53:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UNR-T124', 'level:task', '2026-11-24T18:53:47Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UNR-T3', 'level:story', '2026-11-22T06:14:10Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UNR-T4', 'level:task', '2026-11-22T05:45:39Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UNR-T45', 'level:task', '2026-11-22T05:45:39Z');
@@ -146363,6 +146964,11 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T687', 'level:ta
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T688', 'level:feature', '2026-11-24T18:47:06Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T689', 'level:story', '2026-11-24T18:47:44Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T690', 'level:story', '2026-11-24T18:47:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T691', 'level:task', '2026-11-24T18:53:03Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T692', 'level:task', '2026-11-24T18:53:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T693', 'level:task', '2026-11-24T18:53:22Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T694', 'level:task', '2026-11-24T18:53:26Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T695', 'level:task', '2026-11-24T18:53:30Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T99', 'level:story', '2026-11-22T06:44:47Z');
 
 -- repo_renames
@@ -148124,6 +148730,14 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-US-SP1', 'GAD-EPIC-S
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1002', 'M.CAPT-T183', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1003', 'GG-T1002', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1004', 'GG-T1002', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1005', 'GG-T1003', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1006', 'GG-T1003', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1006', 'GG-T1005', 'requires', 'harness calls the capture endpoint');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1006', 'GG-T1007', 'requires', 'both edit tools/harness.py; one at a time');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1007', 'GG-T1004', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1008', 'GG-T1004', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1008', 'GG-T1006', 'requires', 'docs describe failure replays');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1008', 'GG-T1007', 'requires', 'docs describe --preview');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T116', 'GG-T99', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T118', 'GG-T117', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T119', 'GG-T117', 'requires', NULL);
@@ -149838,6 +150452,29 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T184', 'M.CAPT-T1
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T185', 'M.CAPT-T184', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T186', 'M.CAPT-T184', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T187', 'M.CAPT-T184', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T188', 'M.CAPT-T181', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T188', 'M.MVIEW-T22', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T189', 'M.CAPT-T185', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T190', 'M.CAPT-T185', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T190', 'M.CAPT-T189', 'requires', 'frames extend the host command');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T191', 'M.CAPT-T185', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T191', 'M.CAPT-T189', 'requires', 'ops extend the host command');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T191', 'M.CAPT-T190', 'requires', 'both edit HostCommand.cs and engine-host.md; one at a time');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T192', 'M.CAPT-T186', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T192', 'M.CAPT-T189', 'requires', 'plugin client starts capture host');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T193', 'M.CAPT-T186', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T193', 'M.CAPT-T190', 'requires', 'needs capture host --frames');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T193', 'M.CAPT-T192', 'requires', 'frame feed lives in the plugin module');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T194', 'M.CAPT-T186', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T194', 'M.CAPT-T191', 'requires', 'needs the host recording/set ops');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T194', 'M.CAPT-T192', 'requires', 'API extends the runtime client');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T194', 'M.CAPT-T193', 'requires', 'both edit MindAtticCapture.cpp; one at a time');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T195', 'M.CAPT-T186', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T195', 'M.CAPT-T194', 'requires', 'editor menu uses the API');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T196', 'M.CAPT-T186', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T196', 'M.CAPT-T195', 'requires', 'docs describe the finished plugin');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T196', 'M.CAPT-T197', 'requires', 'both edit README.md');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T197', 'M.CAPT-T187', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T79', 'M.ORCH-T1196', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T79', 'M.ORCH-T1200', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T79', 'M.ORCH-T1245', 'requires', NULL);
@@ -150282,6 +150919,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.MVIEW-T30', 'M.MVIEW-T
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.MVIEW-T31', 'M.MVIEW-T23', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.MVIEW-T32', 'M.MVIEW-T23', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.MVIEW-T33', 'M.MVIEW-T9', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.MVIEW-T34', 'M.MVIEW-T9', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.MVIEW-T4', 'M.MVIEW-T2', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.MVIEW-T5', 'M.MVIEW-T2', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.MVIEW-T6', 'M.MVIEW-T2', 'part-of', NULL);
@@ -153786,6 +154424,15 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNR-T117', 'UNR-T116', '
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNR-T118', 'M.CAPT-T183', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNR-T119', 'UNR-T118', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNR-T120', 'UNR-T118', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNR-T121', 'M.CAPT-T194', 'requires', 'needs the plugin API');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNR-T121', 'UNR-T119', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNR-T122', 'UNR-T119', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNR-T122', 'UNR-T121', 'requires', 'the game must take -capture itself first');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNR-T123', 'UNR-T120', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNR-T123', 'UNR-T121', 'requires', 'helper calls the plugin');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNR-T124', 'UNR-T120', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNR-T124', 'UNR-T122', 'requires', 'both edit tools/run.ps1');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNR-T124', 'UNR-T123', 'requires', 'preview sets build on the shot helper');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNR-T4', 'UNR-T3', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNR-T4', 'UNR-T9', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNR-T5', 'UNR-T3', 'requires', NULL);
@@ -154210,6 +154857,17 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T687', 'US-T686', 'pa
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T688', 'M.CAPT-T183', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T689', 'US-T688', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T690', 'US-T688', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T692', 'M.CAPT-T193', 'requires', 'needs the plugin frame feed (-RenderOffScreen parity)');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T692', 'M.CAPT-T194', 'requires', 'needs the plugin API');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T692', 'US-T687', 'requires', 'in-flight rename edits the same files');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T692', 'US-T689', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T693', 'US-T689', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T693', 'US-T692', 'requires', 'remove the old copies only after the switch');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T694', 'US-T689', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T694', 'US-T693', 'requires', 'docs after the removal');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T695', 'US-T690', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T695', 'US-T692', 'requires', 'needs the plugin in the game');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T695', 'US-T694', 'requires', 'both edit docs/CAPTURE.md');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T99', 'US-T468', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('USOD-T10', 'USOD-T3', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('USOD-T10', 'USOD-T4', 'requires', NULL);
