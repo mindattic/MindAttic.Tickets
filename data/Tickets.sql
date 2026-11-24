@@ -105995,6 +105995,20 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111803, 
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111804, 'GG-T858', '2026-11-24T13:09:44Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111805, 'US-T647', '2026-11-24T13:09:44Z', 'working', 'pdftransferjr@mindattic.com (b773a79b-ba7e-46cb-9786-f886660e3188)', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111806, 'US-T661', '2026-11-24T13:09:44Z', 'working', 'pdftransferjr@mindattic.com (b773a79b-ba7e-46cb-9786-f886660e3188)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111807, 'GG-T886', '2026-11-24T13:17:45Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111808, 'GG-T945', '2026-11-24T13:17:50Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111809, 'GG-T944', '2026-11-24T13:17:53Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111810, 'GG-T942', '2026-11-24T13:17:56Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111811, 'GG-T930', '2026-11-24T13:17:58Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111812, 'GG-T929', '2026-11-24T13:18:01Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111813, 'GG-T917', '2026-11-24T13:18:04Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111814, 'GG-T589', '2026-11-24T13:18:06Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111815, 'GG-T938', '2026-11-24T13:18:09Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111816, 'GG-T927', '2026-11-24T13:18:11Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111817, 'GG-T691', '2026-11-24T13:18:14Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111818, 'GG-T589', '2026-11-24T13:18:25Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111819, 'GG-T589', '2026-11-24T13:18:27Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111820, 'GG-T927', '2026-11-24T13:18:31Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -106838,7 +106852,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T586', 'approved', 0, '2026-11-22T05:53:38Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T587', 'approved', 0, '2026-11-22T05:53:52Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T588', 'approved', 0, '2026-11-22T05:54:07Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T589', 'approved', 0, '2026-11-22T05:54:23Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T589', 'proposed', 0, '2026-11-24T13:18:27Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T59', 'approved', -2, '2026-10-22T02:51:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T590', 'approved', 0, '2026-11-23T19:32:06Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T591', 'approved', 0, '2026-11-23T19:32:06Z', NULL);
@@ -110770,7 +110784,16 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T99', 'approved', 210, '2026-11-23T19:31:02Z', NULL);
 
 -- ticket_work
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T691', NULL, 0, 'shampoo1232@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-24T13:18:14Z', '2026-11-24T13:18:14Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T886', NULL, 0, 'shampoo1232@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-24T13:17:46Z', '2026-11-24T13:17:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T903', NULL, 0, 'shampoo1232@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-24T13:05:46Z', '2026-11-24T13:05:46Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T917', NULL, 0, 'shampoo1232@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-24T13:18:04Z', '2026-11-24T13:18:04Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T929', NULL, 0, 'shampoo1232@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-24T13:18:01Z', '2026-11-24T13:18:01Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T930', NULL, 0, 'shampoo1232@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-24T13:17:58Z', '2026-11-24T13:17:58Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T938', NULL, 0, 'shampoo1232@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-24T13:18:09Z', '2026-11-24T13:18:09Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T942', NULL, 0, 'shampoo1232@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-24T13:17:56Z', '2026-11-24T13:17:56Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T944', NULL, 0, 'shampoo1232@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-24T13:17:53Z', '2026-11-24T13:17:53Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T945', NULL, 0, 'shampoo1232@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-24T13:17:50Z', '2026-11-24T13:17:50Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
@@ -114725,6 +114748,8 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32252, '
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32253, 'GG-T937', 'ryand', '2026-11-24T12:38:33Z', 'Landed 74a87c35 on main: 44 canon-only Codex bodies (15 regions, 6 factions, 5 Camp NPCs, 7 crew, prologue, ch01-ch08, ending, Why We Ran interlude) + codex.json story:prologue and story:dialogue/interlude_level10_motives. Boss intros / party talks split to GG-T942; close this once GG-T942 lands.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32254, 'GG-T938', 'ryand', '2026-11-24T12:42:20Z', 'Also: Data/Prose/canon/01-preamble.md still names the Somnolith (found by GG-T937); canon should say the Manalith.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32255, 'GG-T788', 'ryand', '2026-11-24T13:04:27Z', 'Landed f1f7277d: tutorial (hold-timer lesson one-hero copy via TurnRules.OneHeroPerTurn) and AutomationServer /state who-can-act (one_hero_per_turn, may_act). Post-battle stats and Crucible split to GG-T943; this ticket closes when GG-T943 lands (close refused while a part-of child is open).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32256, 'GG-T589', 'ryand', '2026-11-24T13:18:34Z', 'Parked 2026-11-24: a 300-encounter soak needs the owner to say run the soaks (tests/soaks only when the owner asks).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32257, 'GG-T927', 'ryand', '2026-11-24T13:18:35Z', 'Parked 2026-11-24: a repo-wide bughunt runs only when the owner explicitly asks for one.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AES-T4', 'Exhaustive bug hunt for this repo, no time limit (the /bughunt skill with no argument).
