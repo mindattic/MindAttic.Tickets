@@ -15597,6 +15597,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T701', 'SpaceGod.Unreal', 701, '2026-11-24', 'feature', 'open', 'Route speech through VoiceArbiter (US-T684 landed the core only): UnitySpaceApp.Comms sends comms/encounter lines to VoiceArbiter::Comms, radio chatter (RadioHeard/ChatterSampler) to VoiceArbiter::Radio with Score/Priority/ChannelId/Urgent (distress on Guard or addressed), UnitySpaceAppActor calls VoiceArbiter::Tick(warpRate) before CommsVoice::Tick and VoiceArbiter::Stop at scene end, and SetDigest puts evicted lines in the radio log', 'US-T684 37958a4', 700, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T702', 'SpaceGod.Unreal', 702, '2026-11-24', 'fix', 'closed', 'Unity-build check of US-T661 (9a3a666): build the SpaceGodEditor module with unity on (full module build) and confirm Audio/AudioOutput.cpp and GameAudio.cpp (AudioMixerIncludes.h PI restore) compile; the -SingleFile non-unity builds of both already succeeded (US-T664)', '297c0ab04a933b870f48ccebf887339f5a8f2b63', 701, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T703', 'SpaceGod.Unreal', 703, '2026-11-24', 'feature', 'closed', 'Wire Core::RadioDigest (landed in ba904f4, SpaceGodCore/Radio/RadioDigest.h/.cpp) into the game. RadioHost (Radio/RadioHost.h/.cpp): own a Core::RadioDigest with a Digest() accessor; in Tick count tuner CountedOnly arrivals (skip muted channels; encrypted = channel->Encrypted and the tuner IsListening it) as RadioDigestKind::CountedOnly, and Route==Digest arrivals as Unreadable (Clarity Unreadable) else Overflow; Clear it on a system change and in Reset. Voice/VoiceArbiter.h: add a Situation field to RadioLine; RadioHeard.cpp sets it, and RadioHeard''s ctor calls VoiceArbiter::SetDigest to count evicted lines as RadioDigestKind::Evicted (dtor clears it). UnitySpaceApp.Radio.cpp RadioTick: after radio.Tick call Digest().Take(Clock->Jd, unscaled real time, warp>1, GameRadioChannels(), local vector) and hand the lines to a new RadioHeard::AddDigest, which logs each with a new Tone::Digest (ArrivalJd = jd, so DropAfter rewinds it) and speaks one (distress first, else largest Total) through VoiceArbiter::Radio at the lowest priority/score only when CommsVoice::Idle() and VoiceArbiter::Waiting()==0 and 120 real seconds have passed since the last spoken digest. In scripted runs (PlayerOptions::ScriptedRun) just Clear the digest. UI/Hud.Radio.cpp: ToneColor for Tone::Digest (neutral, dimmed). View-local; editor build only (tools/build.ps1), no tests.', 'c1e5bb7', 702, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T704', 'SpaceGod.Unreal', 704, '2026-11-24', 'feature', 'open', 'Settings > Interface rows (view settings, never shared in co-op: NOT the Gameplay group, which CoopSettings shares) beside the toast/news-ticker row: Chatter density Off/Low/Normal/High = 0/0.4/1/2 (key radio.chatterDensity, default Normal) feeding the ChatterSampler factor (SpaceGodCore/Radio/ChatterSampler); Radio subtitles on (radio.subtitles) gating the HUD radio log (UI/Hud.Radio.cpp); Max voices 1-3 default 1 (comms.maxVoices) replacing VoiceArbiter::MaxPlaying (today constexpr 1, CommsVoice plays one line at a time, so >1 needs extra parallel radio lanes via TtsService::Request + GameAudio::Play2DStoppable); Minimum radio priority 0-3 default 0 (radio.minPriority) in RadioReception. Scripted run (PlayerOptions::ScriptedRun) reads FactoryDefault like InterfaceOptions.cpp; searchable keywords; no sim/lockstep/digest change. The Sound rows comms.spoken, comms.voiceEngine, radio.effect landed in 8ebf797 (GameAudio.cpp). Build-only verification (tools/build.ps1).', '—', 703, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T1', 'SpaceGod.Unreal.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T2', 'SpaceGod.Unreal.CSharp', 2, '2026-11-06', 'feature', 'closed', 'Adopt the shared off-by-default --headless launch mode (Unreal.Shared)', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T3', 'SpaceGod.Unreal.CSharp', 3, '2026-11-08', 'feature', 'open', 'Mirror SpaceGod US-T72: add docs/CAPTURE.md (Unity e29d871''s text, third copy named SpaceGod) that this copy''s capture code cites but lacks, and a US-T72 section in docs/PARITY.md', 'SpaceGod US-T72', 2, NULL);
@@ -110733,6 +110734,15 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (116075, 
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (116076, 'US-T649', '2026-11-24T23:20:49Z', 'working', NULL, 'ohleo199@mindattic.com (109a2e12-4cc3-4eb7-ab09-6fe14f3e85bd)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (116077, 'US-T650', '2026-11-24T23:20:52Z', 'working', NULL, 'ohleo199@mindattic.com (109a2e12-4cc3-4eb7-ab09-6fe14f3e85bd)');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (116078, 'US-T703', '2026-11-24T23:21:21Z', 'working', 'ohleo199@mindattic.com (109a2e12-4cc3-4eb7-ab09-6fe14f3e85bd)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (116079, 'US-T649', '2026-11-24T23:25:04Z', 'label', 'level:task', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (116080, 'US-T649', '2026-11-24T23:25:04Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (116081, 'US-T704', '2026-11-24T23:25:05Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (116082, 'US-T704', '2026-11-24T23:25:06Z', 'link', NULL, 'part-of US-T649');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (116083, 'US-T649', '2026-11-24T23:25:06Z', 'link', NULL, 'US-T704 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (116084, 'US-T704', '2026-11-24T23:25:06Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (116085, 'US-T704', '2026-11-24T23:25:06Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (116086, 'US-T649', '2026-11-24T23:25:15Z', 'working', 'ohleo199@mindattic.com (109a2e12-4cc3-4eb7-ab09-6fe14f3e85bd)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (116087, 'US-T704', '2026-11-24T23:25:31Z', 'working', NULL, 'ohleo199@mindattic.com (109a2e12-4cc3-4eb7-ab09-6fe14f3e85bd)');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AES-T10', 'proposed', 380, '2026-11-24T19:47:20Z', NULL);
@@ -115813,6 +115823,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T699', 'approved', 0, '2026-11-24T21:21:17Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T700', 'approved', 0, '2026-11-24T21:22:28Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T703', 'approved', 0, '2026-11-24T23:02:43Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T704', 'approved', 0, '2026-11-24T23:25:06Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T72', 'approved', 0, '2026-11-06T21:27:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T82', 'approved', 0, '2026-11-06T21:27:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T83', 'approved', 0, '2026-11-06T21:27:41Z', NULL);
@@ -116052,8 +116063,8 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T104', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:16:25Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T117', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T07:02:04Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T146', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:14:40Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T649', NULL, 0, 'ohleo199@mindattic.com', '109a2e12-4cc3-4eb7-ab09-6fe14f3e85bd', '2026-11-24T23:20:49Z', '2026-11-24T23:20:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T650', NULL, 0, 'ohleo199@mindattic.com', '109a2e12-4cc3-4eb7-ab09-6fe14f3e85bd', '2026-11-24T23:20:52Z', '2026-11-24T23:20:52Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T704', NULL, 0, 'ohleo199@mindattic.com', '109a2e12-4cc3-4eb7-ab09-6fe14f3e85bd', '2026-11-24T23:25:31Z', '2026-11-24T23:25:31Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T82', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T07:02:05Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T85', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T23:52:54Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T91', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T00:58:13Z');
@@ -148935,7 +148946,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T645', 'level:st
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T646', 'level:task', '2026-11-24T05:28:29Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T647', 'level:story', '2026-11-24T09:25:02Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T648', 'level:story', '2026-11-24T23:02:41Z');
-INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T649', 'level:task', '2026-11-24T05:28:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T649', 'level:story', '2026-11-24T23:25:04Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T650', 'level:task', '2026-11-24T05:29:01Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T651', 'level:task', '2026-11-24T05:29:07Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T652', 'level:task', '2026-11-24T05:36:06Z');
@@ -148989,6 +149000,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T700', 'level:ta
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T701', 'level:task', '2026-11-24T22:00:18Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T702', 'level:task', '2026-11-24T22:23:51Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T703', 'level:task', '2026-11-24T23:02:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T704', 'level:task', '2026-11-24T23:25:06Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T99', 'level:story', '2026-11-22T06:44:47Z');
 
 -- repo_renames
@@ -157077,6 +157089,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T699', 'US-T632', 'pa
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T700', 'US-T549', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T702', 'US-T664', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T703', 'US-T648', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T704', 'US-T649', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T99', 'US-T468', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('USOD-T10', 'USOD-T3', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('USOD-T10', 'USOD-T4', 'requires', NULL);
