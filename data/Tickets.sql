@@ -6662,6 +6662,9 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T940', 'GridGame.Unity', 940, '2026-11-24', 'fix', 'closed', 'abilities.json on main is invalid JSON: the tinkerer_magnetize entry was cut off after Requires in 61e9c4b8 (GG-T878) and runs into wildchild_howl, so content fails to load; restore the full entry', '791bc312', 939, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T941', 'GridGame.Unity', 941, '2026-11-24', 'fix', 'closed', 'App does not compile on main: BattleScreen.Region.cs uses Coord (FlareShotVfx/FlareTiles, from 589c0dcf) without using GridGame.Core; add the using', '63996153', 940, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T942', 'GridGame.Unity', 942, '2026-11-24', 'feature', 'open', 'Codex entry text, story dialogues part 2: add codex.json story:dialogue/<id> entries and seed codex:story/dialogue/<id> bodies (tools/prose_text.py upsert_seed, payload long) for the 8 boss intros (boss_intro_greenvalley..boss_intro_cathedral) and, if wanted, the region party talks; canon-only (Data/Prose/canon 01-06, STORY_QUESTIONS decided list); never settle Q1-Q7 (Captain''s fate, Hierarch motive, choice timing, reveal order)', '—', 941, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T943', 'GridGame.Unity', 943, '2026-11-24', 'feature', 'open', 'Mode A post-battle stats and Crucible (rest of GG-T788): under AnyHeroEveryTurn the post-battle stats (App/Screens/PostBattleScreen.cs, BattleResults in Core/Battle/BattleState.cs, ActionsTaken/TicksElapsed, EncounterTelemetry Turns/Actions) count party turns and hero actions meaningfully (e.g. add a party-turn count at TurnRules.ResetTurn boundaries so Mode A''s turns == actions reads right), and the Crucible (Meta/Crucible.cs) either plays the resolved mode with per-mode leaderboards/seeds or pins one mode — record the decision in BIBLE 2.13.1 and 22.10. Ask TurnRules, never read TurnMode in view/meta; PartyWindow replays identically. Tutorial copy and /state who-can-act landed in GG-T788.', '—', 942, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T944', 'GridGame.Unity', 944, '2026-11-24', 'feature', 'open', 'Under AnyHeroEveryTurn ActionsTaken counts every accepted command (Guards included) and EncounterTelemetry.Turns counts Observe calls, so neither is a party-turn count. Add to BattleResults (Core/Battle/BattleState.cs, also in Clone) TurnsEnded + ActionsAtTurnEnd and a computed PartyTurns = TurnsEnded + (ActionsTaken > ActionsAtTurnEnd ? 1 : 0) (the turn the battle ended in counts; a boundary never fires when an action wins/ends the battle). Bump them at the one boundary: BattleRunner.cs line ~115 ''if (newWindow) { CloseCombo(); TurnRules.ResetTurn(S); }'' (only caller of ResetTurn). Pure counters, so PartyWindow replays identically. Carry PartyTurns into EncounterRecord (EncounterTelemetry.Build beside Actions; keep Turns as-is and doc it as commands observed), BattleRecorder summary (line ~115 ''actions''/''ticks''), BattleReport (BattleFactory.Commit and Crucible.Commit) and one PostBattleScreen row (victory, defeat and BuildCrucible) reading ''N turns'' or ''N turns, M actions'' when they differ, no TurnMode read in view/meta. Tests in Tests/Core.Tests (e.g. TurnModeAnyHeroTests: Mode A PartyTurns == ActionsTaken after k moves; PartyWindow PartyTurns < ActionsTaken with 2 heroes in one window). BIBLE 2.13.1 note.', '—', 943, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T945', 'GridGame.Unity', 945, '2026-11-24', 'feature', 'open', 'Decision: the Crucible plays the player''s resolved mode (it already does: BattleScreen builds every battle incl. the Crucible through BattleFactory.Build, which sets TurnModeSetting.Resolve(save, profile)); no reason in the code to pin one. Seeds stay shared (Crucible.SeedFor = save + Runs; the mode is a separate BattleSetup field and the record keeps turnMode). Records split per mode since wave counts aren''t comparable: CrucibleSave (Meta/SaveData.cs) keeps Best/BestGold as PartyWindow''s (old saves unchanged) plus a per-mode map for other modes; Crucible.Commit keys by a new TurnRules accessor (e.g. TurnRules.RecordMode(BattleState)) so meta never reads BattleState.TurnMode; PostBattleScreen.BuildCrucible''s Best/Best haul rows read the run''s mode''s record. Check the save JSON round-trip for the new map. CrucibleTests cases. Record the choice and reason in BIBLE 2.13.1 and 22.10.', '—', 944, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('HCM-T1', 'Hardware.ChiMesh', 1, '2026-11-22', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('HCM-T2', 'Hardware.ChiMesh', 2, '2026-11-22', 'docs', 'closed', '2026-11-22 morning', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('HCM-T3', 'Hardware.ChiMesh', 3, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 2, NULL);
@@ -105955,6 +105958,43 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111766, 
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111767, 'GG-T858', '2026-11-24T12:56:08Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111768, 'US-T647', '2026-11-24T12:56:08Z', 'working', 'pdftransferjr@mindattic.com (b773a79b-ba7e-46cb-9786-f886660e3188)', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111769, 'US-T661', '2026-11-24T12:56:08Z', 'working', 'pdftransferjr@mindattic.com (b773a79b-ba7e-46cb-9786-f886660e3188)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111770, 'GG-T788', '2026-11-24T13:03:45Z', 'label', 'level:task', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111771, 'GG-T788', '2026-11-24T13:03:45Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111772, 'GG-T943', '2026-11-24T13:03:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111773, 'GG-T943', '2026-11-24T13:03:46Z', 'link', NULL, 'part-of GG-T788');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111774, 'GG-T788', '2026-11-24T13:03:47Z', 'link', NULL, 'GG-T943 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111775, 'GG-T943', '2026-11-24T13:03:47Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111776, 'GG-T943', '2026-11-24T13:03:47Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111777, 'GG-T788', '2026-11-24T13:04:44Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111778, 'GG-T943', '2026-11-24T13:05:07Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111779, 'GG-T903', '2026-11-24T13:05:46Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111780, 'GG-T788', '2026-11-24T13:08:49Z', 'working', NULL, '6082ff94-ff59-4f19-92da-270fca91363e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111781, 'US-T661', '2026-11-24T13:08:50Z', 'working', NULL, 'pdftransferjr@mindattic.com (b773a79b-ba7e-46cb-9786-f886660e3188)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111782, 'US-T647', '2026-11-24T13:08:50Z', 'working', NULL, 'pdftransferjr@mindattic.com (b773a79b-ba7e-46cb-9786-f886660e3188)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111783, 'GG-T858', '2026-11-24T13:08:51Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111784, 'GG-T710', '2026-11-24T13:08:51Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111785, 'GG-T490', '2026-11-24T13:08:51Z', 'working', NULL, 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111786, 'GG-T943', '2026-11-24T13:08:54Z', 'label', 'level:task', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111787, 'GG-T943', '2026-11-24T13:08:54Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111788, 'GG-T944', '2026-11-24T13:08:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111789, 'GG-T944', '2026-11-24T13:08:55Z', 'name', NULL, 'Mode A party-turn stats');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111790, 'GG-T944', '2026-11-24T13:08:56Z', 'link', NULL, 'part-of GG-T943');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111791, 'GG-T943', '2026-11-24T13:08:56Z', 'link', NULL, 'GG-T944 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111792, 'GG-T944', '2026-11-24T13:08:56Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111793, 'GG-T944', '2026-11-24T13:08:56Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111794, 'GG-T945', '2026-11-24T13:08:56Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111795, 'GG-T945', '2026-11-24T13:08:56Z', 'name', NULL, 'Crucible per-mode records');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111796, 'GG-T945', '2026-11-24T13:08:58Z', 'link', NULL, 'part-of GG-T943');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111797, 'GG-T943', '2026-11-24T13:08:58Z', 'link', NULL, 'GG-T945 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111798, 'GG-T945', '2026-11-24T13:08:58Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111799, 'GG-T945', '2026-11-24T13:08:58Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111800, 'GG-T943', '2026-11-24T13:09:24Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111801, 'GG-T490', '2026-11-24T13:09:42Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111802, 'GG-T710', '2026-11-24T13:09:43Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111803, 'GG-T788', '2026-11-24T13:09:43Z', 'working', '6082ff94-ff59-4f19-92da-270fca91363e', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111804, 'GG-T858', '2026-11-24T13:09:44Z', 'working', 'shampoo1232@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111805, 'US-T647', '2026-11-24T13:09:44Z', 'working', 'pdftransferjr@mindattic.com (b773a79b-ba7e-46cb-9786-f886660e3188)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (111806, 'US-T661', '2026-11-24T13:09:44Z', 'working', 'pdftransferjr@mindattic.com (b773a79b-ba7e-46cb-9786-f886660e3188)', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T10', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
@@ -107145,6 +107185,9 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T940', 'approved', 0, '2026-11-24T11:57:28Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T941', 'approved', 0, '2026-11-24T12:09:49Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T942', 'approved', 0, '2026-11-24T12:37:56Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T943', 'approved', 0, '2026-11-24T13:03:47Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T944', 'approved', 0, '2026-11-24T13:08:56Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T945', 'approved', 0, '2026-11-24T13:08:58Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T95', 'approved', 0, '2026-10-19T15:33:43Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T96', 'approved', 0, '2026-10-19T15:46:16Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T97', 'approved', 10, '2026-10-19T15:50:50Z', NULL);
@@ -110727,7 +110770,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T99', 'approved', 210, '2026-11-23T19:31:02Z', NULL);
 
 -- ticket_work
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T788', NULL, 0, 'shampoo1232@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-24T12:52:41Z', '2026-11-24T12:52:41Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T903', NULL, 0, 'shampoo1232@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-24T13:05:46Z', '2026-11-24T13:05:46Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
@@ -114681,6 +114724,7 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32251, '
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32252, 'GG-T924', 'ryand', '2026-11-24T08:11:52Z', 'Agent hit the 80k work-unit budget during research; nothing landed. Split into a model/loader task and a text-seeding task carrying the design (codex.json + Prose key codex:<kind>/<id>) and the canon constraints.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32253, 'GG-T937', 'ryand', '2026-11-24T12:38:33Z', 'Landed 74a87c35 on main: 44 canon-only Codex bodies (15 regions, 6 factions, 5 Camp NPCs, 7 crew, prologue, ch01-ch08, ending, Why We Ran interlude) + codex.json story:prologue and story:dialogue/interlude_level10_motives. Boss intros / party talks split to GG-T942; close this once GG-T942 lands.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32254, 'GG-T938', 'ryand', '2026-11-24T12:42:20Z', 'Also: Data/Prose/canon/01-preamble.md still names the Somnolith (found by GG-T937); canon should say the Manalith.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32255, 'GG-T788', 'ryand', '2026-11-24T13:04:27Z', 'Landed f1f7277d: tutorial (hold-timer lesson one-hero copy via TurnRules.OneHeroPerTurn) and AutomationServer /state who-can-act (one_hero_per_turn, may_act). Post-battle stats and Crucible split to GG-T943; this ticket closes when GG-T943 lands (close refused while a part-of child is open).');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AES-T4', 'Exhaustive bug hunt for this repo, no time limit (the /bughunt skill with no argument).
@@ -135582,6 +135626,8 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T932', 'Firewall
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T933', 'Firewall presentation', '2026-11-24T07:34:21Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T934', 'Barricade core, content and test', '2026-11-24T07:35:42Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T935', 'Barricade HeroBot use and presentation', '2026-11-24T07:35:44Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T944', 'Mode A party-turn stats', '2026-11-24T13:08:55Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T945', 'Crucible per-mode records', '2026-11-24T13:08:56Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GW-T2', 'Universe wiki template', '2026-11-21T06:11:12Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GW-T3', 'Rename to Prose.Wiki.GLMZ', '2026-11-21T07:52:55Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GW-T5', 'Exhaustive bughunt', '2026-11-24T07:01:53Z');
@@ -137673,7 +137719,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T784', 'level:st
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T785', 'level:task', '2026-11-24T05:28:20Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T786', 'level:story', '2026-11-24T05:28:33Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T787', 'level:task', '2026-11-24T05:28:38Z');
-INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T788', 'level:task', '2026-11-24T05:28:40Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T788', 'level:story', '2026-11-24T13:03:45Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T789', 'level:story', '2026-11-24T05:28:50Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T790', 'level:task', '2026-11-24T05:28:54Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T791', 'level:task', '2026-11-24T05:28:56Z');
@@ -137825,6 +137871,9 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T936', 'level:ta
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T937', 'level:story', '2026-11-24T12:37:54Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T939', 'level:task', '2026-11-24T12:20:17Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T942', 'level:task', '2026-11-24T12:37:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T943', 'level:story', '2026-11-24T13:08:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T944', 'level:task', '2026-11-24T13:08:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T945', 'level:task', '2026-11-24T13:08:58Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GW-T5', 'level:story', '2026-11-24T07:01:53Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('HCM-T3', 'level:story', '2026-11-24T06:59:44Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('HC-T3', 'level:story', '2026-11-24T06:59:47Z');
@@ -144268,6 +144317,9 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T937', 'GG-T924', 'pa
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T937', 'GG-T936', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T939', 'GG-T823', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T942', 'GG-T937', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T943', 'GG-T788', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T944', 'GG-T943', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T945', 'GG-T943', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T99', 'MAU-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-US-R1', 'GG-EPIC-R', 'part-of', 'story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-US-R10', 'GG-EPIC-R', 'part-of', 'story under its epic');
