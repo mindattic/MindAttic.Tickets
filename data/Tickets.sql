@@ -6867,6 +6867,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1091', 'GridGame.Unity', 1091, '2026-11-25', 'feature', 'open', 'Battle view for UnmovedThisRound, rest of GG-T800 (first slice 307e7f50 landed TurnRules.MovedThisRound, the per-round dimmed check in BattleScreen sync and the moved-hero pickup refusal): (1) a ''Round 3 · 2 of 4 moved'' readout by the timeline (BattleScreen.Timeline.cs, e.g. near the gap label; add a TurnRules seam returning round/moved/able counts, view never reads TurnMode; only when rounds are kept); (2) a round-reset beat in BattleScreen.Playback.cs on RoundStartedEvent (banner ''Round N · every hero may move again'', sfx, clear every hero view''s acted check, Reduce Motion aware); (3) add UnmovedThisRound to TurnModes.Available with glossary:turn_mode_unmoved_this_round in Content/glossary.json and its seed text in Content/Text/glossary.json (tools/prose_text upsert_seed), mirroring GG-T787 4a8eb470; (4) BIBLE 2.13.2 battle-view note. Build in Unity when the lease is free.', '—', 1090, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1092', 'GridGame.Unity', 1092, '2026-11-25', 'chore', 'open', 'Retire talent trees, migration seam: make SaveData.TalentPointsPaid (v19 PlaceOnBoard refund) and HexBoardMigrationTests independent of Real.SkillTrees (refund from HeroSave.TreeNodeCosts values with a flat per-node fallback, or embed the legacy node costs), so skilltrees.json can be emptied. Touches SaveData.cs and HexBoardMigrationTests.cs (coordinate with GG-T1089, which has them dirty).', '—', 1091, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1093', 'GridGame.Unity', 1093, '2026-11-25', 'chore', 'open', 'Retire talent trees, data: empty skilltrees.json (7 role trees, no family trees exist), drop the 69 HomeTree fields in classes.json and the HomeTree-required/unknown-home-tree checks in ContentLoader, retire Progression.FamilyTree/StartNodes/TreeInvestment/FamilyMoves tree paths and the BuildSummary cross-tree flavor in MetaServices, delete orphaned skill-node entries from the descriptions text (Prose Leftover flags), and rewrite or delete the tests that read trees (SkillTreeTests, FamilyLearnTests, FamilyTreeModelTests, StartingSpecTests, BuildScreenTests, ContentValidationTests, TextSourcingTests, WandererHeroesTests, stub db.SkillTrees in Dialogue/StoryArc/StoryRecruit/Wander tests). Depends on the migration-seam ticket.', '—', 1092, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1094', 'GridGame.Unity', 1094, '2026-11-25', 'feature', 'open', 'Eyeball GG-T1071/GG-T1084 pushback spin-slide in the harness: build a dev player (shared checkout failed to compile on 2026-11-25 from in-progress BattleRunner.Timeline/HeroBot edits), trigger a Pushback and a party-tempo Slow, and confirm in screenshots under artifacts/ that the diamond''s back face swaps at 90 degrees, the slide eases out, and every on-bar foe icon slides back on a Slow', '—', 1093, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('HCM-T1', 'Hardware.ChiMesh', 1, '2026-11-22', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('HCM-T2', 'Hardware.ChiMesh', 2, '2026-11-22', 'docs', 'closed', '2026-11-22 morning', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('HCM-T3', 'Hardware.ChiMesh', 3, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 2, NULL);
@@ -114011,6 +114012,20 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119048, 
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119049, 'GG-T1088', '2026-11-25T17:01:15Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119050, 'GG-T1088', '2026-11-25T17:01:15Z', 'ref', '—', '9429a126');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119051, 'GG-T1088', '2026-11-25T17:01:28Z', 'working', 'ohleo199@mindattic.com (f8ff71be-40a7-4867-8742-0592d8f38294)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119052, 'GG-T1084', '2026-11-25T17:02:11Z', 'label', 'level:task', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119053, 'GG-T1084', '2026-11-25T17:02:11Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119054, 'GG-T1094', '2026-11-25T17:02:11Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119055, 'GG-T1094', '2026-11-25T17:02:12Z', 'link', NULL, 'part-of GG-T1084');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119056, 'GG-T1084', '2026-11-25T17:02:12Z', 'link', NULL, 'GG-T1094 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119057, 'GG-T1094', '2026-11-25T17:02:13Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119058, 'GG-T1094', '2026-11-25T17:02:13Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119059, 'GG-T1084', '2026-11-25T17:02:42Z', 'working', 'ohleo199@mindattic.com (f8ff71be-40a7-4867-8742-0592d8f38294)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119060, 'GG-T1094', '2026-11-25T17:03:14Z', 'link', NULL, 'requires GG-T1075');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119061, 'GG-T1075', '2026-11-25T17:03:14Z', 'link', NULL, 'GG-T1094 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119062, 'GG-T1094', '2026-11-25T17:03:17Z', 'link', NULL, 'requires GG-T1091');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119063, 'GG-T1091', '2026-11-25T17:03:17Z', 'link', NULL, 'GG-T1094 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119064, 'GG-T1094', '2026-11-25T17:03:20Z', 'link', NULL, 'requires GG-T801');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119065, 'GG-T801', '2026-11-25T17:03:20Z', 'link', NULL, 'GG-T1094 requires');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AES-T10', 'proposed', 380, '2026-11-24T19:47:20Z', NULL);
@@ -114843,6 +114858,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1091', 'approved', 0, '2026-11-25T16:50:56Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1092', 'approved', 0, '2026-11-25T16:55:31Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1093', 'approved', 0, '2026-11-25T16:55:34Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1094', 'approved', 0, '2026-11-25T17:02:13Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T115', 'approved', 0, '2026-10-19T17:01:18Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T116', 'approved', -2, '2026-10-22T02:51:54Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T117', 'approved', 0, '2026-10-19T17:01:19Z', NULL);
@@ -119317,7 +119333,6 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1075', NULL, 0, 'ohleo199@mindattic.com', 'f8ff71be-40a7-4867-8742-0592d8f38294', '2026-11-25T16:55:18Z', '2026-11-25T16:55:18Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1084', NULL, 0, 'ohleo199@mindattic.com', 'f8ff71be-40a7-4867-8742-0592d8f38294', '2026-11-25T16:41:11Z', '2026-11-25T16:41:11Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1086', NULL, 0, 'ohleo199@mindattic.com', 'f8ff71be-40a7-4867-8742-0592d8f38294', '2026-11-25T16:55:15Z', '2026-11-25T16:55:15Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1091', NULL, 0, 'ohleo199@mindattic.com', 'f8ff71be-40a7-4867-8742-0592d8f38294', '2026-11-25T16:52:33Z', '2026-11-25T16:52:33Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1092', NULL, 0, 'ohleo199@mindattic.com', 'f8ff71be-40a7-4867-8742-0592d8f38294', '2026-11-25T16:56:46Z', '2026-11-25T16:56:46Z');
@@ -148333,7 +148348,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1080', 'level:t
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1081', 'level:story', '2026-11-25T16:47:28Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1082', 'level:story', '2026-11-25T16:55:30Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1083', 'level:task', '2026-11-25T16:40:26Z');
-INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1084', 'level:task', '2026-11-25T16:40:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1084', 'level:story', '2026-11-25T17:02:11Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1085', 'level:task', '2026-11-25T16:40:42Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1086', 'level:task', '2026-11-25T16:40:44Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1087', 'level:story', '2026-11-25T16:49:56Z');
@@ -148343,6 +148358,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1090', 'level:t
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1091', 'level:task', '2026-11-25T16:50:56Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1092', 'level:task', '2026-11-25T16:55:31Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1093', 'level:task', '2026-11-25T16:55:34Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1094', 'level:task', '2026-11-25T17:02:13Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T168', 'level:story', '2026-11-22T05:55:27Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T191', 'level:story', '2026-11-22T05:56:28Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T215', 'level:task', '2026-11-22T05:36:13Z');
@@ -155045,6 +155061,10 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1092', 'GG-T1082', '
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1092', 'GG-T1089', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1093', 'GG-T1082', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1093', 'GG-T1092', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1094', 'GG-T1075', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1094', 'GG-T1084', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1094', 'GG-T1091', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1094', 'GG-T801', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T116', 'GG-T99', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T118', 'GG-T117', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T119', 'GG-T117', 'requires', NULL);
