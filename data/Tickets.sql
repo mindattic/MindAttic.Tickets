@@ -112911,6 +112911,8 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (118082, 
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (118083, 'US-T757', '2026-11-25T12:18:01Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (118084, 'US-T757', '2026-11-25T12:18:01Z', 'ref', 'owner request 2026-11-25: real game, true scale, 100-ship launches, render limits, fighter feel', 'children done');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (118085, 'US-T757', '2026-11-25T12:18:01Z', 'rollup', NULL, 'US-T758');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (118086, 'US-T779', '2026-11-25T12:20:33Z', 'working', NULL, 'ohleo199@mindattic.com');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (118087, 'US-T779', '2026-11-25T12:20:50Z', 'working', 'ohleo199@mindattic.com', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AES-T10', 'proposed', 380, '2026-11-24T19:47:20Z', NULL);
