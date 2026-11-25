@@ -5740,6 +5740,11 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T767', 'Gadfly', 767, '2026-11-25', 'fix', 'closed', 'Fails on main: the build — C:\Program Files\dotnet\sdk\11.0.100-rc.3.26522.148\Microsoft.Common.CurrentVersion.targets(5131,5): error MSB3030: Could not copy the file "R:\Temp\nuget\packages\microsoft.codeanalysis.common\5.0.0\lib\net9.0\cs\Microsoft.CodeAnalysis.resources.dll" because it was not found. [D:\Projects\MindAt... (landed on main since the last green run: tickets GAD-T734 in 4bd8040 Staging slot gets Gadfly__Voice__Mode=mock as a sticky setting, and deploy-azure -Slot staging refuses live voice (GAD-T734))', 'fc3d705', 766, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T768', 'Gadfly', 768, '2026-11-25', 'fix', 'closed', 'tools/provision-azure.ps1 sets --always-on true for the app (line 61) and the staging slot (line 91); the owner turned Always On off on mindattic-gadfly on 2026-11-25 so the app unloads after 20 min idle and the serverless SQL database can auto-pause. Make provisioning leave Always On off so a re-provision doesn''t turn it back on', '1dae395', 767, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T769', 'Gadfly', 769, '2026-11-25', 'fix', 'closed', 'docs/DEPLOY.md (lines 13, 212-213) and docs/DESIGN.md (lines 590-591) still say mindattic-gadfly is Always On; it was turned off 2026-11-25 (GAD-T768) so the app unloads after 20 min idle. Update both, and say that the GadflyWorker WebJob and the in-process schedulers (reminders, retention, stale sessions, grading sweep, LTI passback) only run while the site is loaded', 'e8fb5c54325bf71f831007223127d72a759a4d94', 768, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T770', 'Gadfly', 770, '2026-11-25', 'chore', 'open', 'Move mindattic-gadfly off the shared Windows Basic B1 plan (ASP-MyApps-99fe, 6 apps) onto its own new Linux Basic B1 plan to cut cost (~$55/mo pooled Windows vs ~$13/mo dedicated Linux). App Service can''t change a plan''s OS in place, so: create a new Linux B1 plan (same resource group/region), stand up and verify a .NET ''mindattic-gadfly'' build on it under a temp hostname first (copy every app setting/connection string from the live app, including secrets - do not print them in the ticket or commit them), confirm the Gadfly.Worker WebJob and in-process schedulers run correctly under Linux App Service (known gotchas with continuous WebJobs on Linux - verify, don''t assume), then cut over: delete the old Windows app only (leave the shared plan and its other 5 apps untouched) and recreate the app as ''mindattic-gadfly'' on the new Linux plan so the hostname (mindattic-gadfly.azurewebsites.net) and every integration that depends on it (Stripe webhook URL, LTI OIDC redirect URI, /kickstart, admin/ryan/erin logins) keeps working unchanged. The app is intentionally stopped right now (owner took every Azure web app offline on 2026-11-25 to deploy manually), so some downtime during cutover is fine, but do not touch the Gadfly SQL database and do not lose or log any secret. Also write a durable runbook doc (docs/AZURE_HOSTING.md or an addition to docs/DEPLOY.md) recording: the tiers/SKUs looked at for this app (Free F1 $0, Basic B1 Windows shared $55/mo, Basic B1 Linux dedicated ~$13/mo, Standard S1 $73/mo - needed for a deployment slot, Premium P0v3 $120/mo; F1 quota request for this subscription was denied 2026-11-25 with QuotaNotAvailableForResource), and the exact steps/commands to move the app between plans/tiers in either direction, so this doesn''t need to be re-derived next time.', '—', 769, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T771', 'Gadfly', 771, '2026-11-25', 'chore', 'open', 'Create a new Linux Basic B1 App Service plan (same resource group/region as the existing Windows plan ASP-MyApps-99fe) and stand up mindattic-gadfly''s .NET build on it under a temporary hostname (e.g. mindattic-gadfly-linux-tmp), copying every app setting and connection string from the live mindattic-gadfly app via az cli only (never print, log, or commit secret values - describe the mechanism, not the values, in any report). Confirm the Gadfly.Worker continuous WebJob and the in-process schedulers (GadflyServices.BackgroundWork: JobWorker, GradingSweeper, ReminderScheduler, StaleSessionScheduler, RetentionScheduler, LtiPassbackSweeper, LtiRosterRefreshScheduler, ResponseBackfillService per docs/DEPLOY.md) actually run on Linux App Service - there are known gotchas with continuous WebJobs on Linux, so verify behavior directly (az webapp webjob continuous list, Kudu/SCM logs, or an end-to-end queued-job check), do not assume Windows behavior carries over. Do not touch the Gadfly SQL database or any other app/plan. Leave the temp app stopped when done. Report (without any secret values) what was verified, any Linux-specific WebJob/scheduler gotcha found and how it was handled or worked around, and the exact az commands used, so the next task can cut over and the runbook task can record them.', '—', 770, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T772', 'Gadfly', 772, '2026-11-25', 'chore', 'open', 'Using the Linux B1 plan and verified build from the previous task, cut mindattic-gadfly over: delete the old Windows mindattic-gadfly app only (leave the shared plan ASP-MyApps-99fe and its other 5 apps - mindattic, mindattic-ideas-demo, mindattic-thinktank, cursory, mindattic-tutor, mindattic-prose, taxratecollector - completely untouched), then recreate the app as mindattic-gadfly on the new Linux plan with every app setting/connection string/secret copied across via az cli (never hardcode or print secret values), so the hostname mindattic-gadfly.azurewebsites.net and everything that depends on it (Stripe webhook URL, LTI OIDC redirect URI, /kickstart, admin/ryan/erin logins) keeps working unchanged. Re-confirm the GadflyWorker WebJob and in-process schedulers run on the recreated app using what the previous task found. Delete the temporary Linux app/hostname once cutover is confirmed working. Do not touch the Gadfly SQL database. Leave mindattic-gadfly STOPPED when finished (every other Azure web app is intentionally stopped since 2026-11-25 for manual deploys; only start mindattic-gadfly briefly to verify, then stop it again before finishing).', '—', 771, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T773', 'Gadfly', 773, '2026-11-25', 'chore', 'open', 'Write a durable runbook (docs/AZURE_HOSTING.md, or an addition to docs/DEPLOY.md) recording: the tiers/SKUs evaluated for mindattic-gadfly''s hosting (Free F1 $0 - an F1 quota request for this subscription was denied 2026-11-25 with QuotaNotAvailableForResource; Basic B1 Windows shared ~$55/mo on the pooled 6-app plan; Basic B1 Linux dedicated ~$13/mo, the one chosen; Standard S1 $73/mo, needed for a deployment slot; Premium P0v3 $120/mo), and the exact steps/commands (based on what the previous two tasks actually ran and found, including any Linux continuous-WebJob gotcha) to move the app between plans/tiers and operating systems in either direction, so this never needs to be re-derived. Never include actual secret values in the doc - describe the copy mechanism (e.g. az webapp config appsettings list/set) rather than any value.', '—', 772, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T774', 'Gadfly', 774, '2026-11-25', 'chore', 'open', 'Finish GAD-T771 Linux WebJob standup: plan ASP-MyApps-linux-tmp (Linux B1, MyApps RG, Central US) and empty webapp mindattic-gadfly-linux-tmp (DOTNETCORE:10.0, same plan) already exist, do not recreate. Remaining: (1) copy every app setting and connection string from mindattic-gadfly to mindattic-gadfly-linux-tmp via az cli, file-mediated, never printing values; (2) Gadfly.Worker/run.cmd is a Windows batch file -- Kudu on Linux App Service cannot execute .cmd, so add a run.sh beside it (dotnet ""/usr/bin/Gadfly.Worker.dll" "") and list it in Gadfly.Worker.csproj''s CopyToOutputDirectory/CopyToPublishDirectory None item alongside run.cmd, keeping Windows prod working; (3) dotnet publish Gadfly.Server and Gadfly.Worker (Release, worker into App_Data/jobs/continuous/GadflyWorker), zip, az webapp deploy --type zip to mindattic-gadfly-linux-tmp; (4) verify GadflyWorker continuous WebJob actually runs on Linux via az webapp webjob continuous list (status Running, not crash-looping) and the Kudu/SCM continuous-webjob log showing the Gadfly.Worker startup health line (confirms JobWorker, GradingSweeper, ReminderScheduler, StaleSessionScheduler, RetentionScheduler, LtiPassbackSweeper, LtiRosterRefreshScheduler, ResponseBackfillService all registered); (5) leave the temp app stopped when done; (6) do not touch the Gadfly SQL database or any other app/plan. Report the exact az commands used (no secret values) so the cutover and runbook tickets can reuse them.', '—', 773, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T1', 'GridGame.Studio', 1, '2026-11-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T2', 'GridGame.Studio', 2, '2026-11-21', 'feature', 'closed', 'GridGame.Studio: ThumbnailStudio moved here as one WPF app, plus Gallery tabs (Heroes/Enemies/Abilities paste-to-replace: background cut, centred 1024x1024, Figure update; 64px icons) and an eraser (circle/square 1-100 px), Python image steps run as one-off commands, no web server', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T3', 'GridGame.Studio', 3, '2026-11-21', 'feature', 'closed', 'Studio gallery: Backgrounds tab grouped by region (campaign.json Themes Name/Backgrounds set), replace any image or add the next numbered one (<set>_NN.jpg)', '—', 2, NULL);
@@ -14631,6 +14636,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1122', 'Prose', 1122, '2026-11-24', 'chore', 'closed', 'Move Prose from MindAttic.Media / .Azure 1.0.0 to MindAttic.Storage / .Azure 1.0.0 (the current API) and rename its MindAttic.Capture mention', 'children done', 1121, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1123', 'Prose', 1123, '2026-11-24', 'chore', 'closed', 'Prose.Core references MindAttic.Storage / MindAttic.Storage.Azure 1.0.0 (up from MindAttic.Media 1.0.0, so it takes the 2.0 API), Pkcs pin raised to 10.0.14, namespaces and EF snapshot updated; builds', '4805e2254', 1122, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1124', 'Prose', 1124, '2026-11-24', 'chore', 'closed', 'src/tools/install-shortcuts.ps1: the Unreal.Playground shortcut description says filmed by MindAttic.Media.Capture', 'fc410bed6', 1123, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1125', 'Prose', 1125, '2026-11-25', 'chore', 'open', 'SpaceGod.Unreal left GLMZ''s universe (US-US-T857): drop the shared-universe/Biomass link to SpaceGod from docs/universes/GLMZ.md; GLMZ''s own Biomass lore is unchanged', '—', 1124, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GW-T1', 'Prose.Wiki.GLMZ', 1, '2026-11-19', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GW-T2', 'Prose.Wiki.GLMZ', 2, '2026-11-21', 'feature', 'closed', 'Every universe gets a wiki: this site repo becomes the template (site.json carries the universe, deploy.py reads it), new-universe-wiki.ps1 scaffolds <UNIVERSE>.Wiki, and docs/prose-and-wiki.md sets who does what between Prose and the wiki', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GW-T3', 'Prose.Wiki.GLMZ', 3, '2026-11-21', 'chore', 'closed', 'Rename the site repo GLMZ.Wiki to Prose.Wiki.GLMZ (the next is Prose.Wiki.SCRY): folder, GitHub repo, ticket registry, the scaffold''s naming and every reference', '—', 2, NULL);
@@ -15826,6 +15832,12 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T854', 'SpaceGod.Unreal', 854, '2026-11-25', 'feature', 'closed', 'Launch tubes from assembled designs (follow-up to US-T843): SubsystemDef::LaunchTubes exists (serialized, kept on refit, read by FlightDecks::Build to lay rows of tubes across a hangar''s mouth) but nothing sets it yet. Have VehicleData::FromDesign count a hangar section''s kit sockets named ''tube*'' into a Mount::Tubes (excluding them from the mouth pick) and ApplyGeometry copy it to d->LaunchTubes, or give ModularDesign an opt-in tube count; off for every existing design so the bench stays byte-identical. Also document launch tubes (dogfight.launchTubes) in docs/TrueScale.md / FlightFeel.md and check FighterViews'' deck drawing reads well with dozens of small tube mouths.', '6d889f7', 853, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T855', 'SpaceGod.Unreal', 855, '2026-11-25', 'feature', 'open', 'Transitions for god-to-ship, ship-to-ship and ship-to-god: the universe slows to a standstill, the view drifts free like a ghost (the consciousness moving between bodies), then slerps/lerps into the new seat and eases time back to real speed', 'owner request 2026-11-25', 854, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T856', 'SpaceGod.Unreal', 856, '2026-11-25', 'docs', 'open', 'List the kardashev=<index> argument (US-T815) in sg.Assemble''s usage text and document the Kardashev milestones; retune the 0.30-0.60 thresholds once real readings are seen in the god view', 'US-T815 follow-up c172312', 855, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T857', 'SpaceGod.Unreal', 857, '2026-11-25', 'feature', 'open', 'SpaceGod is its own universe, set in 3026, not GLMZ''s: human history 2100-3026 leads to a K1 civilization spreading out, the Biomass is a minor, seemingly manageable threat, and the Manalith is a non-canon easter egg', '—', 856, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T858', 'SpaceGod.Unreal', 858, '2026-11-25', 'docs', 'open', 'docs/HISTORY.md: SpaceGod''s canon human history 2100-3026, ending in a spreading K1 civilization with the Biomass a minor, seemingly manageable threat', '—', 857, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T859', 'SpaceGod.Unreal', 859, '2026-11-25', 'chore', 'open', 'Remove SpaceGod''s GLMZ shared-universe link (PROSE.md, universe export, manual Bio Mass entry, view comments) and retell the Biomass per HISTORY.md', '—', 858, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T860', 'SpaceGod.Unreal', 860, '2026-11-25', 'chore', 'open', 'The Manalith stays in the game as a non-canon easter egg: off the manual, encyclopedia, tour and universe export', '—', 859, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T861', 'SpaceGod.Unreal', 861, '2026-11-25', 'feature', 'open', 'New games default to 3026-01-01 and date-dependent code (gas giant weather fit, founding years, setup range) holds up in 3026', '—', 860, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T862', 'SpaceGod.Unreal', 862, '2026-11-25', 'feature', 'open', 'The game manual and encyclopedia carry HISTORY.md''s eras and each polity''s founding per the canon', '—', 861, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T1', 'SpaceGod.Unreal.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T2', 'SpaceGod.Unreal.CSharp', 2, '2026-11-06', 'feature', 'closed', 'Adopt the shared off-by-default --headless launch mode (Unreal.Shared)', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T3', 'SpaceGod.Unreal.CSharp', 3, '2026-11-08', 'feature', 'open', 'Mirror SpaceGod US-T72: add docs/CAPTURE.md (Unity e29d871''s text, third copy named SpaceGod) that this copy''s capture code cites but lacks, and a US-T72 section in docs/PARITY.md', 'SpaceGod US-T72', 2, NULL);
@@ -114026,6 +114038,80 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119062, 
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119063, 'GG-T1091', '2026-11-25T17:03:17Z', 'link', NULL, 'GG-T1094 requires');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119064, 'GG-T1094', '2026-11-25T17:03:20Z', 'link', NULL, 'requires GG-T801');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119065, 'GG-T801', '2026-11-25T17:03:20Z', 'link', NULL, 'GG-T1094 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119066, 'GAD-T770', '2026-11-25T17:43:14Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119067, 'GAD-T770', '2026-11-25T17:43:39Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119068, 'GAD-T770', '2026-11-25T17:43:45Z', 'working', NULL, 'ohleo199@mindattic.com (5c87f115-96a3-43aa-8559-17d8764da8f6)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119069, 'GAD-T770', '2026-11-25T17:45:06Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119070, 'GAD-T771', '2026-11-25T17:45:06Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119071, 'GAD-T771', '2026-11-25T17:45:06Z', 'name', NULL, 'GAD-T770 Linux B1 plan + temp verify');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119072, 'GAD-T771', '2026-11-25T17:45:07Z', 'link', NULL, 'part-of GAD-T770');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119073, 'GAD-T770', '2026-11-25T17:45:07Z', 'link', NULL, 'GAD-T771 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119074, 'GAD-T771', '2026-11-25T17:45:07Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119075, 'GAD-T771', '2026-11-25T17:45:08Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119076, 'GAD-T772', '2026-11-25T17:45:08Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119077, 'GAD-T772', '2026-11-25T17:45:08Z', 'name', NULL, 'GAD-T770 Cutover to mindattic-gadfly on Linux');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119078, 'GAD-T772', '2026-11-25T17:45:09Z', 'link', NULL, 'part-of GAD-T770');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119079, 'GAD-T770', '2026-11-25T17:45:09Z', 'link', NULL, 'GAD-T772 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119080, 'GAD-T772', '2026-11-25T17:45:09Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119081, 'GAD-T772', '2026-11-25T17:45:09Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119082, 'GAD-T772', '2026-11-25T17:45:10Z', 'link', NULL, 'requires GAD-T771');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119083, 'GAD-T771', '2026-11-25T17:45:10Z', 'link', NULL, 'GAD-T772 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119084, 'GAD-T773', '2026-11-25T17:45:10Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119085, 'GAD-T773', '2026-11-25T17:45:10Z', 'name', NULL, 'GAD-T770 Azure hosting runbook doc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119086, 'GAD-T773', '2026-11-25T17:45:12Z', 'link', NULL, 'part-of GAD-T770');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119087, 'GAD-T770', '2026-11-25T17:45:12Z', 'link', NULL, 'GAD-T773 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119088, 'GAD-T773', '2026-11-25T17:45:12Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119089, 'GAD-T773', '2026-11-25T17:45:12Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119090, 'GAD-T773', '2026-11-25T17:45:13Z', 'link', NULL, 'requires GAD-T772');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119091, 'GAD-T772', '2026-11-25T17:45:13Z', 'link', NULL, 'GAD-T773 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119092, 'GAD-T770', '2026-11-25T17:45:26Z', 'working', 'ohleo199@mindattic.com (5c87f115-96a3-43aa-8559-17d8764da8f6)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119093, 'GAD-T771', '2026-11-25T17:45:29Z', 'working', NULL, 'ohleo199@mindattic.com (5c87f115-96a3-43aa-8559-17d8764da8f6)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119094, 'US-T857', '2026-11-25T17:48:52Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119095, 'US-T857', '2026-11-25T17:48:52Z', 'name', NULL, 'SpaceGod canon: 3026');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119096, 'US-T857', '2026-11-25T17:48:53Z', 'label', NULL, 'level:epic');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119097, 'US-T857', '2026-11-25T17:48:53Z', 'label', NULL, 'epic');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119098, 'US-T858', '2026-11-25T17:48:54Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119099, 'US-T858', '2026-11-25T17:48:54Z', 'name', NULL, 'Write the 2100-3026 history');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119100, 'US-T858', '2026-11-25T17:48:54Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119101, 'US-T858', '2026-11-25T17:48:56Z', 'link', NULL, 'part-of US-T857');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119102, 'US-T857', '2026-11-25T17:48:56Z', 'link', NULL, 'US-T858 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119103, 'US-T859', '2026-11-25T17:48:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119104, 'US-T859', '2026-11-25T17:48:57Z', 'name', NULL, 'Cut the GLMZ link');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119105, 'US-T859', '2026-11-25T17:48:58Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119106, 'US-T859', '2026-11-25T17:48:59Z', 'link', NULL, 'part-of US-T857');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119107, 'US-T857', '2026-11-25T17:48:59Z', 'link', NULL, 'US-T859 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119108, 'US-T860', '2026-11-25T17:49:00Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119109, 'US-T860', '2026-11-25T17:49:00Z', 'name', NULL, 'Manalith as easter egg');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119110, 'US-T860', '2026-11-25T17:49:01Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119111, 'US-T860', '2026-11-25T17:49:02Z', 'link', NULL, 'part-of US-T857');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119112, 'US-T857', '2026-11-25T17:49:02Z', 'link', NULL, 'US-T860 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119113, 'US-T861', '2026-11-25T17:49:03Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119114, 'US-T861', '2026-11-25T17:49:03Z', 'name', NULL, 'Game starts in 3026');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119115, 'US-T861', '2026-11-25T17:49:04Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119116, 'US-T861', '2026-11-25T17:49:05Z', 'link', NULL, 'part-of US-T857');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119117, 'US-T857', '2026-11-25T17:49:05Z', 'link', NULL, 'US-T861 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119118, 'US-T862', '2026-11-25T17:49:06Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119119, 'US-T862', '2026-11-25T17:49:06Z', 'name', NULL, 'History in the manual');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119120, 'US-T862', '2026-11-25T17:49:07Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119121, 'US-T862', '2026-11-25T17:49:08Z', 'link', NULL, 'part-of US-T857');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119122, 'US-T857', '2026-11-25T17:49:08Z', 'link', NULL, 'US-T862 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119123, 'US-T859', '2026-11-25T17:49:10Z', 'link', NULL, 'requires US-T858');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119124, 'US-T858', '2026-11-25T17:49:10Z', 'link', NULL, 'US-T859 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119125, 'US-T862', '2026-11-25T17:49:12Z', 'link', NULL, 'requires US-T858');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119126, 'US-T858', '2026-11-25T17:49:13Z', 'link', NULL, 'US-T862 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119127, 'US-T861', '2026-11-25T17:49:15Z', 'link', NULL, 'requires US-T858');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119128, 'US-T858', '2026-11-25T17:49:15Z', 'link', NULL, 'US-T861 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119129, 'US-T857', '2026-11-25T17:49:16Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119130, 'PRS-T1125', '2026-11-25T17:49:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119131, 'PRS-T1125', '2026-11-25T17:49:18Z', 'name', NULL, 'GLMZ no longer SpaceGod');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119132, 'US-T858', '2026-11-25T17:49:28Z', 'working', NULL, 'ryandebraal@gmail.com (b773a79b-ba7e-46cb-9786-f886660e3188)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119133, 'GAD-T771', '2026-11-25T17:50:11Z', 'label', 'level:task', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119134, 'GAD-T771', '2026-11-25T17:50:11Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119135, 'GAD-T774', '2026-11-25T17:50:12Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119136, 'GAD-T774', '2026-11-25T17:50:13Z', 'link', NULL, 'part-of GAD-T771');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119137, 'GAD-T771', '2026-11-25T17:50:13Z', 'link', NULL, 'GAD-T774 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119138, 'GAD-T774', '2026-11-25T17:50:13Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (119139, 'GAD-T774', '2026-11-25T17:50:13Z', 'approval', 'proposed', 'approved');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AES-T10', 'proposed', 380, '2026-11-24T19:47:20Z', NULL);
@@ -114716,6 +114802,11 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T733', 'approved', 0, '2026-11-24T16:25:21Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T766', 'approved', 0, '2026-11-25T08:18:24Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T767', 'proposed', 892, '2026-11-25T15:29:01Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T770', 'approved', 0, '2026-11-25T17:43:39Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T771', 'approved', 0, '2026-11-25T17:45:08Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T772', 'approved', 0, '2026-11-25T17:45:09Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T773', 'approved', 0, '2026-11-25T17:45:12Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T774', 'approved', 0, '2026-11-25T17:50:13Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T8', 'approved', 5, '2026-10-21T04:35:31Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T80', 'proposed', 990, '2026-11-21T00:48:58Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T81', 'proposed', 989, '2026-11-21T00:49:05Z', NULL);
@@ -119325,6 +119416,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T854', 'approved', 690, '2026-11-25T12:07:04Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T855', 'approved', 495, '2026-11-25T16:26:11Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T856', 'approved', 455, '2026-11-25T16:52:13Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T857', 'approved', 0, '2026-11-25T17:49:16Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T89', 'approved', 0, '2026-11-06T21:27:43Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T91', 'approved', 0, '2026-11-06T21:27:44Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T96', 'approved', 0, '2026-11-06T21:27:45Z', NULL);
@@ -119332,6 +119424,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T99', 'approved', 210, '2026-11-23T19:31:02Z', NULL);
 
 -- ticket_work
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T771', NULL, 0, 'ohleo199@mindattic.com', '5c87f115-96a3-43aa-8559-17d8764da8f6', '2026-11-25T17:45:29Z', '2026-11-25T17:45:29Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1075', NULL, 0, 'ohleo199@mindattic.com', 'f8ff71be-40a7-4867-8742-0592d8f38294', '2026-11-25T16:55:18Z', '2026-11-25T16:55:18Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1086', NULL, 0, 'ohleo199@mindattic.com', 'f8ff71be-40a7-4867-8742-0592d8f38294', '2026-11-25T16:55:15Z', '2026-11-25T16:55:15Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1091', NULL, 0, 'ohleo199@mindattic.com', 'f8ff71be-40a7-4867-8742-0592d8f38294', '2026-11-25T16:52:33Z', '2026-11-25T16:52:33Z');
@@ -119567,6 +119660,7 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T146', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:14:40Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T82', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T07:02:05Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T85', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T23:52:54Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T858', NULL, 0, 'ryandebraal@gmail.com', 'b773a79b-ba7e-46cb-9786-f886660e3188', '2026-11-25T17:49:28Z', '2026-11-25T17:49:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T91', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T00:58:13Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T98', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:51:51Z');
 
@@ -144844,6 +144938,16 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T822', 'F
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T855', 'Owner: ''need transition for god-to-ship, and ship-to-ship, and ship-to-god; the universe needs to slow to a standstill, drift the view like a ghost to show the consciousness and slerp lerp back to real time''.
 
 One transition system used by every seat change (god view -> fighter seat / helm, seat -> another ship, seat -> god view): (1) ease sim time scale down to ~0 (presentation time dilation only: the sim pauses or steps at a near-zero rate deterministically, no state is lost); (2) the camera detaches as a free ''ghost'' that drifts along a smooth path (slerp orientation, eased position, slight float/sway, optional desaturation/bloom/vignette post) from the old eye to the new one, crossing true-scale distances with a log-scaled path so god-scale to cockpit-scale reads smoothly; (3) it slerps/lerps into the new seat''s eye and time eases back to 1x. Bounded per-frame cost, no allocations per frame; skippable (key) and a setting for duration; scripted runs/bench unaffected (player-only presentation). Build on Possession/Embodiment hand-off camera, docs/Possession.md, GodView.md, and US-T806''s Fly this.', '2026-11-25T16:26:07Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T858', 'Write docs/HISTORY.md, the canon: human history from 2100 to the game''s present (3026), leading to the K1 civilization spreading out, with the Biomass a minor, seemingly manageable threat. It must account for what the game already has: Sol Federation (Earth, Moon, Mars), Belt Consortium, Outer Reach Compact (at war with the Federation), Independents, the Black Banner pirates, jump gates and hyperlanes, the cruise/FTL drives, the companies in World.cpp, Earth Orbital, Ares Prime, Tycho City, Ceres Hub, Ganymede Union, Kraken Port. Not GLMZ; the Manalith is not part of it.', '2026-11-25T17:48:54Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T859', 'SpaceGod is no longer GLMZ''s universe (owner, 2026-11-25). Remove the GLMZ link and retell the Biomass from docs/HISTORY.md:
+- docs/PROSE.md section 8 (One universe with GLMZ): replace with SpaceGod''s own canon pointer to docs/HISTORY.md.
+- tools/universe-export/UniverseExport.cpp: drop the GLMZ universe rule and the glmz detail/tag on concept-earth-biomass; the entity''s text follows HISTORY.md.
+- Cpp/Source/SpaceGodCore/GameManual.cpp Bio Mass entry (Huntsville 2147, Pinnacle BioSynthetics, lab-leak cover): rewrite per HISTORY.md.
+- Views/EarthBiomassView.h/.cpp, Views/TetherView.h, UnitySpaceApp.cpp comments that call these GLMZ''s: say SpaceGod''s own (the Tether and Earth''s Biomass zone stay unless HISTORY.md says otherwise; the zone is a contained quarantine, not a lost continent).
+Build-only verification.', '2026-11-25T17:48:57Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T860', 'The Manalith (Midnight Geode in Nightglass, ManalithSystem, ManalithView, sg.Manalith) is an easter egg, not canon (owner, 2026-11-25). Keep it in the game and reachable, but take it out of every canon surface: the game manual, the encyclopedia/lore entries, the showcase tour stops, the universe export, and any narrator/news text that treats it as history. Its in-game text, if any, reads as an unexplained curiosity with no backstory. docs/MANALITH_VISUAL_SPEC.md gets one line saying it is a non-canon easter egg. Build-only verification.', '2026-11-25T17:49:00Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T861', 'The game is set in 3026 (owner, 2026-11-25). A new game without a picked date (Quick Start, console, scripts) starts on 3026-01-01 instead of today; the setup page''s default is 3026-01-01 and its range covers it (NewGameSetup FirstYear/LastYear, today''s-date option removed or relabelled). Audit date-dependent code for 3026: GasGiantWeather''s 2024-2027 linear fit (clamp or freeze to its anchor), Society::Year, Encyclopedia''s founded/event years, Economy/Companies FoundedJd seeding (founding years land in HISTORY.md''s eras, not 2020s), lunar theory and ephemeris validity (Kepler elements are fine; flag anything that throws or drifts badly), DateText, save headers. Keep exoplanet DiscoveryYear facts as real history. Build-only verification.', '2026-11-25T17:49:03Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T862', 'Bring docs/HISTORY.md into the game: a History section in the game manual (GameManual.cpp) and the encyclopedia with the eras in short form; polities'' encyclopedia entries (Sol Federation, Belt Consortium, Outer Reach Compact, Independents, Black Banner) give their founding year and origin per HISTORY.md; founding years used by the sim (Polity/Company FoundedJd) match. Display only: no simulation behaviour changes. Build-only verification.', '2026-11-25T17:49:06Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('US-T99', '## Story
 As the SpaceGod I can scrub the session back to any earlier moment, take over something there, and send history down a different path.
 
@@ -145414,6 +145518,9 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T762', 'deploy-
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T763', 'gadfly ingest re-reads the whole corpus once per transcript file', '2026-11-24T21:31:08Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T764', 'SessionHub StartIn creates the attempt before checking the consent hash', '2026-11-25T00:53:15Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T77', 'Judge prompt injection hardening', '2026-11-21T00:44:45Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T771', 'GAD-T770 Linux B1 plan + temp verify', '2026-11-25T17:45:06Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T772', 'GAD-T770 Cutover to mindattic-gadfly on Linux', '2026-11-25T17:45:08Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T773', 'GAD-T770 Azure hosting runbook doc', '2026-11-25T17:45:10Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T78', 'Rate limit API and hub', '2026-11-21T00:44:47Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T79', 'Adopt master plan as priority', '2026-11-21T00:46:02Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T80', 'MVP design pack', '2026-11-21T00:48:55Z');
@@ -147047,6 +147154,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1121', 'Exhaus
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1122', 'Adopt Storage and Media.Capture', '2026-11-24T16:15:35Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1123', 'Prose uses MindAttic.Storage', '2026-11-24T16:15:37Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1124', 'Prose names MindAttic.Media.Capture', '2026-11-24T16:15:40Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1125', 'GLMZ no longer SpaceGod', '2026-11-25T17:49:18Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T919', 'Texts status=all hides retired', '2026-11-07T23:22:56Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T920', 'Import into new universe 404', '2026-11-07T23:22:57Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T921', 'Leak check skips merged nodes', '2026-11-07T23:39:48Z');
@@ -147801,6 +147909,12 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T843', 'Galactic
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T847', 'Helm assist-off clear in powered-down block', '2026-11-25T11:38:01Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T855', 'Ghost consciousness transitions', '2026-11-25T16:26:07Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T856', 'sg.Assemble kardashev help', '2026-11-25T16:52:09Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T857', 'SpaceGod canon: 3026', '2026-11-25T17:48:52Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T858', 'Write the 2100-3026 history', '2026-11-25T17:48:54Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T859', 'Cut the GLMZ link', '2026-11-25T17:48:57Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T860', 'Manalith as easter egg', '2026-11-25T17:49:00Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T861', 'Game starts in 3026', '2026-11-25T17:49:03Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T862', 'History in the manual', '2026-11-25T17:49:06Z');
 
 -- ticket_labels
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AES-T10', 'level:task', '2026-11-24T19:46:40Z');
@@ -148227,6 +148341,11 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T765', 'level:t
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T766', 'level:task', '2026-11-25T08:18:24Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T768', 'level:task', '2026-11-25T15:47:36Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T769', 'level:task', '2026-11-25T16:13:38Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T770', 'level:story', '2026-11-25T17:45:06Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T771', 'level:story', '2026-11-25T17:50:11Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T772', 'level:task', '2026-11-25T17:45:09Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T773', 'level:task', '2026-11-25T17:45:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T774', 'level:task', '2026-11-25T17:50:13Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAI-T19', 'level:task', '2026-11-22T05:49:45Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAI-T33', 'level:task', '2026-11-22T05:49:46Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAI-T34', 'level:task', '2026-11-22T05:49:47Z');
@@ -153126,6 +153245,13 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T851', 'level:ta
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T852', 'level:task', '2026-11-25T11:46:20Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T853', 'level:task', '2026-11-25T11:46:56Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T854', 'level:task', '2026-11-25T12:06:02Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T857', 'epic', '2026-11-25T17:48:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T857', 'level:epic', '2026-11-25T17:48:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T858', 'level:task', '2026-11-25T17:48:54Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T859', 'level:task', '2026-11-25T17:48:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T860', 'level:task', '2026-11-25T17:49:01Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T861', 'level:task', '2026-11-25T17:49:04Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T862', 'level:task', '2026-11-25T17:49:07Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T99', 'level:story', '2026-11-22T06:44:47Z');
 
 -- repo_renames
@@ -154870,6 +154996,12 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T762', 'GAD-T728', '
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T763', 'GAD-T728', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T765', 'GAD-T749', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T766', 'GAD-T227', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T771', 'GAD-T770', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T772', 'GAD-T770', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T772', 'GAD-T771', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T773', 'GAD-T770', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T773', 'GAD-T772', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T774', 'GAD-T771', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T80', 'GAD-US-MP1', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T81', 'GAD-T80', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T81', 'GAD-US-MP1', 'implements', NULL);
@@ -161473,6 +161605,14 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T854', 'US-T843', 'pa
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T855', 'US-T805', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T855', 'US-T806', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T856', 'US-T814', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T858', 'US-T857', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T859', 'US-T857', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T859', 'US-T858', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T860', 'US-T857', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T861', 'US-T857', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T861', 'US-T858', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T862', 'US-T857', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T862', 'US-T858', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T99', 'US-T468', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('USOD-T10', 'USOD-T3', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('USOD-T10', 'USOD-T4', 'requires', NULL);
