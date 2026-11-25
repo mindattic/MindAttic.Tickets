@@ -15737,6 +15737,14 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T822', 'SpaceGod.Unreal', 822, '2026-11-25', 'feature', 'open', 'Fighter trails draw as one batched mesh (or instanced ribbons) instead of a LineStrip per craft, so draw calls stay flat as distant fighters grow', '—', 821, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T823', 'SpaceGod.Unreal', 823, '2026-11-25', 'feature', 'open', 'FlightFeel.md assist-on targets: the heavy fighter''s assist eases onto its set point uncapped (piloted settle 0.9 s), so it reaches top in about 1 s against the 3.5 s 0-to-top / 3.0 s top-to-stop targets; AssistThrottle''s floor (US-T818) cannot slow it, so add a piloted-only ceiling on the forward ease in HeavyFighterFlightModel::Fly via PilotInput, crews and Bench unchanged', '—', 822, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T824', 'SpaceGod.Unreal', 824, '2026-11-25', 'chore', 'open', 'US-T754 (9d11dd2) changed AI dogfight manoeuvres, reaction delay and aim error, so Bench/expected-digests.json must be deliberately rebaselined: run tools/bench.ps1 when the owner asks for tests and commit the new digests', 'US-T754 9d11dd2', 823, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T825', 'SpaceGod.Unreal', 825, '2026-11-25', 'feature', 'open', 'Joystick/HOTAS axes: enable WindowsRawInput in SpaceGod.uproject; new Input/Joystick.h/.cpp (JoystickDevice: 8 raw axes fed in UnrealInputDevice::Feed from GetRawKeyValue(FKey GenericUSBController_AxisN), polled like the pad, no Enhanced Input assets per the UnrealInputDevice.h design); table-driven Controls settings per logical axis (pitch, yaw, roll, strafe x, strafe y, throttle): source (None/Axis 1-8), invert, inner dead zone, outer dead zone 0-10%, exponent 1-3; one shared AxisCurve::Apply(raw, inner, outer, exp, invert); declared via GameSettingsHost; scripted runs read linear/no dead zone. InputState: joystick roll/strafe added at the controls only (in Arbitrate(true)), Vector2 JoyStick + bool JoyStickBound for pitch/yaw, float ThrottleAxis (-1 none, 0..1 lever), cleared in Reset/Arbitrate(false).', '—', 824, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T826', 'SpaceGod.Unreal', 826, '2026-11-25', 'feature', 'open', 'Fly the joystick: UnitySpaceApp.cpp (helm path ~L1367) and UnitySpaceApp.Embodiment.cpp UpdateSeat (~L636): rateStick also when Input.JoyStickBound, stickOut = Input.JoyStick; helm stick.Throttle = ThrottleAxis>=0 ? ThrottleAxis : Move.z; EmbodimentInput gains double ThrottleSet = -1 (Core/Embodiment/Embodiment.h), FighterSeat::Control sets stick->Throttle absolutely when >= 0 instead of ThrottlePerSecond rate. Player-only: bench digests unchanged (scripted runs never bind an axis).', '—', 825, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T827', 'SpaceGod.Unreal', 827, '2026-11-25', 'feature', 'open', 'Pad and mouse curves + preview: Gamepad gains controls.pad.outerDeadZone (0-10%) and controls.pad.exponent (1-3), ResponseCurve choice gains Custom (Linear/Smooth/Precise kept at indices 0-2 as presets of the exponent); Gamepad::Stick applies outer dead zone. Settings > Controls curve preview (UI/PauseMenu.cpp settings page): a small plot of the selected device/axis raw input against output with the live raw value dot, drawn from the same AxisCurve function; docs/Controls.md and docs/FlightFeel.md US-T740 section updated.', '—', 826, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T828', 'SpaceGod.Unreal', 828, '2026-11-25', 'feature', 'open', 'FlightFeel.md US-T737 items 1 and 3: new piloted-only PilotInput fields (a spin-up floor and a flag keeping pitch/yaw/roll rate-held with assist off) read in PilotFlight::Step/Rotate; every model''s assist-off path already delegates to PilotFlight::Step (FlightModels.cpp ~109, 238, 290, 481). Rotate today conserves spin with assist off and no stick (the ''steering || !FlightAssistOff'' gate) and makes roll raw torque. Per-family spin-up as Dogfighting settings beside AssistThrottle (Combat/Dogfighting.h/.cpp), set in FighterAI::FlyManned (Combat/Fighters.cpp ~742) and ShipHelm::Fly (Embodiment/ShipHelm.cpp ~193). Translation stays Newtonian (RawThrust). Crews never set the fields: bench unchanged. Bindings exist already (F flight assist, R drift, Input/KeyBindings.cpp:170-171); document in docs/Controls.md.', '—', 827, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T829', 'SpaceGod.Unreal', 829, '2026-11-25', 'feature', 'open', 'FlightFeel.md US-T737 item 4: Drift::TurnFactor 1.3 to 1.6, Drift::SpinUpS 0.12 to 0.1 and BoostOutS as RangeSettings (Combat/Drift.h/.cpp, today static constexpr) for the 0.75 s light fighter flip; boost-out on release reaching 90% of top speed on the new facing in 0.8 s through a piloted-only PilotInput field written by DriftControl::Apply during BoostOutLeft (e.g. a ToTopS-style floor), not per-hull branches. Crews never drift: bench unchanged.', '—', 828, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T830', 'SpaceGod.Unreal', 830, '2026-11-25', 'feature', 'open', 'FlightFeel.md US-T737 item 2: prograde and retrograde markers on the HUD when velocity is over 5 deg off the nose, in assist off and in drift.', '—', 829, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T831', 'SpaceGod.Unreal', 831, '2026-11-25', 'feature', 'open', 'FlightFeel.md US-T737 item 5: velocity-kept and drift-flip measures in tools/feel-report.py from the sg.Feel columns US-T819 added (assist, drift, velocity, forward).', '—', 830, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T832', 'SpaceGod.Unreal', 832, '2026-11-25', 'fix', 'open', 'US-T738''s 5 s boost pool and pip-scaled refill only apply to a FighterSeat: a small craft flown from a ShipHelm still drains over the catalog BoostDurationS and CraftPower::Read reports poolS/refillS 0; the helm path must set the same player-only PilotInput pool fields. Also correct docs/FlightFeel.md''s one-pip refill (code gives 8 s, doc says 12 s)', 'US-T821 finding', 831, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T1', 'SpaceGod.Unreal.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T2', 'SpaceGod.Unreal.CSharp', 2, '2026-11-06', 'feature', 'closed', 'Adopt the shared off-by-default --headless launch mode (Unreal.Shared)', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T3', 'SpaceGod.Unreal.CSharp', 3, '2026-11-08', 'feature', 'open', 'Mirror SpaceGod US-T72: add docs/CAPTURE.md (Unity e29d871''s text, third copy named SpaceGod) that this copy''s capture code cites but lacks, and a US-T72 section in docs/PARITY.md', 'SpaceGod US-T72', 2, NULL);
@@ -112467,6 +112475,73 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117668, 
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117669, 'US-T749', '2026-11-25T10:06:06Z', 'working', NULL, '831346a9');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117670, 'US-T740', '2026-11-25T10:06:29Z', 'working', 'ohleo199@mindattic.com', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117671, 'US-T749', '2026-11-25T10:06:29Z', 'working', '831346a9', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117672, 'US-T766', '2026-11-25T10:07:50Z', 'working', NULL, 'ohleo199@mindattic.com');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117673, 'US-T766', '2026-11-25T10:08:02Z', 'working', 'ohleo199@mindattic.com', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117674, 'US-T740', '2026-11-25T10:12:14Z', 'label', 'level:task', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117675, 'US-T740', '2026-11-25T10:12:14Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117676, 'US-T825', '2026-11-25T10:12:15Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117677, 'US-T825', '2026-11-25T10:12:16Z', 'link', NULL, 'part-of US-T740');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117678, 'US-T740', '2026-11-25T10:12:16Z', 'link', NULL, 'US-T825 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117679, 'US-T825', '2026-11-25T10:12:16Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117680, 'US-T825', '2026-11-25T10:12:16Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117681, 'US-T826', '2026-11-25T10:12:16Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117682, 'US-T826', '2026-11-25T10:12:17Z', 'link', NULL, 'part-of US-T740');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117683, 'US-T740', '2026-11-25T10:12:17Z', 'link', NULL, 'US-T826 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117684, 'US-T826', '2026-11-25T10:12:17Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117685, 'US-T826', '2026-11-25T10:12:17Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117686, 'US-T827', '2026-11-25T10:12:18Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117687, 'US-T827', '2026-11-25T10:12:19Z', 'link', NULL, 'part-of US-T740');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117688, 'US-T740', '2026-11-25T10:12:19Z', 'link', NULL, 'US-T827 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117689, 'US-T827', '2026-11-25T10:12:19Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117690, 'US-T827', '2026-11-25T10:12:19Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117691, 'US-T737', '2026-11-25T10:12:59Z', 'label', 'level:task', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117692, 'US-T737', '2026-11-25T10:12:59Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117693, 'US-T828', '2026-11-25T10:12:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117694, 'US-T828', '2026-11-25T10:12:59Z', 'name', NULL, 'Assist off rate-held rotation');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117695, 'US-T828', '2026-11-25T10:13:00Z', 'link', NULL, 'part-of US-T737');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117696, 'US-T737', '2026-11-25T10:13:00Z', 'link', NULL, 'US-T828 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117697, 'US-T828', '2026-11-25T10:13:00Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117698, 'US-T828', '2026-11-25T10:13:00Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117699, 'US-T829', '2026-11-25T10:13:01Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117700, 'US-T829', '2026-11-25T10:13:01Z', 'name', NULL, 'Drift settings and boost-out');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117701, 'US-T829', '2026-11-25T10:13:02Z', 'link', NULL, 'part-of US-T737');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117702, 'US-T737', '2026-11-25T10:13:02Z', 'link', NULL, 'US-T829 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117703, 'US-T829', '2026-11-25T10:13:02Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117704, 'US-T829', '2026-11-25T10:13:02Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117705, 'US-T830', '2026-11-25T10:13:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117706, 'US-T830', '2026-11-25T10:13:02Z', 'name', NULL, 'Velocity-vector HUD marker');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117707, 'US-T830', '2026-11-25T10:13:04Z', 'link', NULL, 'part-of US-T737');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117708, 'US-T737', '2026-11-25T10:13:04Z', 'link', NULL, 'US-T830 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117709, 'US-T830', '2026-11-25T10:13:04Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117710, 'US-T830', '2026-11-25T10:13:04Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117711, 'US-T831', '2026-11-25T10:13:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117712, 'US-T831', '2026-11-25T10:13:04Z', 'name', NULL, 'Feel-report velocity kept and drift flip');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117713, 'US-T831', '2026-11-25T10:13:05Z', 'link', NULL, 'part-of US-T737');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117714, 'US-T737', '2026-11-25T10:13:05Z', 'link', NULL, 'US-T831 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117715, 'US-T831', '2026-11-25T10:13:05Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117716, 'US-T831', '2026-11-25T10:13:05Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117717, 'US-T825', '2026-11-25T10:13:06Z', 'priority', '0', '890');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117718, 'US-T826', '2026-11-25T10:13:08Z', 'priority', '0', '890');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117719, 'US-T827', '2026-11-25T10:13:10Z', 'priority', '0', '890');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117720, 'US-T826', '2026-11-25T10:13:13Z', 'link', NULL, 'requires US-T825');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117721, 'US-T825', '2026-11-25T10:13:13Z', 'link', NULL, 'US-T826 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117722, 'US-T828', '2026-11-25T10:14:26Z', 'priority', '0', '890');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117723, 'US-T829', '2026-11-25T10:14:28Z', 'priority', '0', '890');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117724, 'US-T830', '2026-11-25T10:14:30Z', 'priority', '0', '890');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117725, 'US-T831', '2026-11-25T10:14:32Z', 'priority', '0', '890');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117726, 'US-T829', '2026-11-25T10:14:35Z', 'link', NULL, 'requires US-T828');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117727, 'US-T828', '2026-11-25T10:14:35Z', 'link', NULL, 'US-T829 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117728, 'US-T831', '2026-11-25T10:14:37Z', 'link', NULL, 'requires US-T821');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117729, 'US-T821', '2026-11-25T10:14:37Z', 'link', NULL, 'US-T831 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117730, 'US-T832', '2026-11-25T10:15:19Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117731, 'US-T832', '2026-11-25T10:15:19Z', 'name', NULL, 'Boost pool at the ship helm');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117732, 'US-T832', '2026-11-25T10:15:19Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117733, 'US-T832', '2026-11-25T10:15:21Z', 'link', NULL, 'part-of US-T735');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117734, 'US-T735', '2026-11-25T10:15:21Z', 'link', NULL, 'US-T832 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117735, 'US-T832', '2026-11-25T10:15:21Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117736, 'US-T832', '2026-11-25T10:15:22Z', 'priority', '0', '890');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117737, 'US-T825', '2026-11-25T10:15:53Z', 'working', NULL, 'ohleo199@mindattic.com');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (117738, 'US-T825', '2026-11-25T10:16:08Z', 'working', 'ohleo199@mindattic.com', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AES-T10', 'proposed', 380, '2026-11-24T19:47:20Z', NULL);
@@ -117678,7 +117753,15 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T822', 'approved', 980, '2026-11-25T09:54:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T823', 'approved', 890, '2026-11-25T09:55:49Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T824', 'approved', 860, '2026-11-25T09:58:03Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T825', 'approved', 890, '2026-11-25T10:13:06Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T826', 'approved', 890, '2026-11-25T10:13:08Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T827', 'approved', 890, '2026-11-25T10:13:10Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T828', 'approved', 890, '2026-11-25T10:14:26Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T829', 'approved', 890, '2026-11-25T10:14:28Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T83', 'approved', 0, '2026-11-06T21:27:41Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T830', 'approved', 890, '2026-11-25T10:14:30Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T831', 'approved', 890, '2026-11-25T10:14:32Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T832', 'approved', 890, '2026-11-25T10:15:22Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T85', 'approved', 0, '2026-11-06T21:27:42Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T89', 'approved', 0, '2026-11-06T21:27:43Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T91', 'approved', 0, '2026-11-06T21:27:44Z', NULL);
@@ -121788,6 +121871,7 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32309, '
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32310, 'GG-T1018', 'ryand', '2026-11-24T21:24:55Z', 'Two sessions worked this ticket at once. bf40ab76 (session 014Ery2) landed first. 3b6d7609 (session 015bvmQ) was based on the main before it and overwrote bf40ab76''s app.js, index.html and style.css. eb39ae5d reverts 3b6d7609, so main''s skill-hexagon page and tools/skillhex now match bf40ab76 exactly. The ticket is still open and its ref should be bf40ab76. Not in bf40ab76, still to do: a link to GAPS.md from the page, a Copy JSON button (downloads are blocked in the claude.ai viewer), and tools/skillhex/README.md with the edit, save, sync and validate loop.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32311, 'M.CAPT-T195', 'ryand', '2026-11-24T21:34:47Z', 'Follow-up bd51753: Open Capture Folder points at R:\MindAttic\Media\Capture (root moved by M.CAPT-T204/T205).');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32312, 'US-T651', 'ryand', '2026-11-24T23:57:01Z', 'Reopened: closing the docs child US-T705 (67214e9) auto-closed this while the budget code (UnitySpaceApp.Radio.cpp/.inl, Voice/TtsService.cpp, Voice/VoiceArbiter.cpp) was still uncommitted and building. Close with the code commit''s hash once it is on main.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32313, 'US-T740', 'ryand', '2026-11-25T10:13:15Z', 'Coordinator decision: follow the repo''s polling input (Input/UnrealInputDevice.h), not Enhanced Input; the ticket''s ''through Enhanced Input'' wording yields to the repo''s deliberate design. WindowsRawInput plugin is acceptable for HOTAS axes.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AES-T4', 'Exhaustive bug hunt for this repo, no time limit (the /bughunt skill with no argument).
@@ -146065,6 +146149,11 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T821', 'Boost an
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T822', 'Batched fighter trails', '2026-11-25T09:54:21Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T823', 'Heavy fighter assist throttle ceiling', '2026-11-25T09:55:43Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T824', 'Rebaseline bench digests for dogfight AI', '2026-11-25T09:58:00Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T828', 'Assist off rate-held rotation', '2026-11-25T10:12:59Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T829', 'Drift settings and boost-out', '2026-11-25T10:13:01Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T830', 'Velocity-vector HUD marker', '2026-11-25T10:13:02Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T831', 'Feel-report velocity kept and drift flip', '2026-11-25T10:13:04Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('US-T832', 'Boost pool at the ship helm', '2026-11-25T10:15:19Z');
 
 -- ticket_labels
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AES-T10', 'level:task', '2026-11-24T19:46:40Z');
@@ -151214,10 +151303,10 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T733', 'level:st
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T734', 'level:task', '2026-11-25T08:42:49Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T735', 'level:story', '2026-11-25T08:42:54Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T736', 'level:story', '2026-11-25T09:15:21Z');
-INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T737', 'level:task', '2026-11-25T08:43:02Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T737', 'level:story', '2026-11-25T10:12:59Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T738', 'level:story', '2026-11-25T09:19:00Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T739', 'level:story', '2026-11-25T08:43:11Z');
-INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T740', 'level:task', '2026-11-25T08:43:15Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T740', 'level:story', '2026-11-25T10:12:14Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T741', 'level:feature', '2026-11-25T08:43:20Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T742', 'level:story', '2026-11-25T08:43:24Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T743', 'level:task', '2026-11-25T08:43:28Z');
@@ -151306,6 +151395,14 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T821', 'level:ta
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T822', 'level:task', '2026-11-25T09:54:22Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T823', 'level:task', '2026-11-25T09:55:43Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T824', 'level:task', '2026-11-25T09:58:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T825', 'level:task', '2026-11-25T10:12:16Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T826', 'level:task', '2026-11-25T10:12:17Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T827', 'level:task', '2026-11-25T10:12:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T828', 'level:task', '2026-11-25T10:13:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T829', 'level:task', '2026-11-25T10:13:02Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T830', 'level:task', '2026-11-25T10:13:04Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T831', 'level:task', '2026-11-25T10:13:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T832', 'level:task', '2026-11-25T10:15:19Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T99', 'level:story', '2026-11-22T06:44:47Z');
 
 -- repo_renames
@@ -159548,6 +159645,17 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T822', 'US-T718', 'pa
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T822', 'US-T721', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T823', 'US-T735', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T824', 'US-T753', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T825', 'US-T740', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T826', 'US-T740', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T826', 'US-T825', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T827', 'US-T740', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T828', 'US-T737', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T829', 'US-T737', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T829', 'US-T828', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T830', 'US-T737', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T831', 'US-T737', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T831', 'US-T821', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T832', 'US-T735', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T99', 'US-T468', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('USOD-T10', 'USOD-T3', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('USOD-T10', 'USOD-T4', 'requires', NULL);
