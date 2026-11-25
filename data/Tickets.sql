@@ -111252,6 +111252,12 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (116570, 
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (116571, 'OS-T93', '2026-11-25T07:39:54Z', 'priority', '838', '839');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (116572, 'M.TELE-T27', '2026-11-25T07:39:54Z', 'priority', '837', '838');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (116573, 'UC-T67', '2026-11-25T07:39:55Z', 'priority', '0', '837');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (116574, 'GAD-T749', '2026-11-25T07:45:58Z', 'working', NULL, 'ohleo199@mindattic.com (7370bb8d-9868-420d-bfc7-311507b47dc4)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (116575, 'GAD-T749', '2026-11-25T07:46:20Z', 'working', 'ohleo199@mindattic.com (7370bb8d-9868-420d-bfc7-311507b47dc4)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (116576, 'GAD-T749', '2026-11-25T07:47:23Z', 'working', NULL, 'ohleo199@mindattic.com (7370bb8d-9868-420d-bfc7-311507b47dc4)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (116577, 'GAD-T749', '2026-11-25T07:47:59Z', 'working', 'ohleo199@mindattic.com (7370bb8d-9868-420d-bfc7-311507b47dc4)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (116578, 'GAD-T749', '2026-11-25T07:48:56Z', 'working', NULL, 'ohleo199@mindattic.com (7370bb8d-9868-420d-bfc7-311507b47dc4)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (116579, 'GAD-T749', '2026-11-25T07:49:25Z', 'working', 'ohleo199@mindattic.com (7370bb8d-9868-420d-bfc7-311507b47dc4)', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AES-T10', 'proposed', 380, '2026-11-24T19:47:20Z', NULL);
