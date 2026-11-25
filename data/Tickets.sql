@@ -4943,8 +4943,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('DT-T2', 'Dissertation.Tools', 2, '2026-11-22', 'feature', 'open', 'Publish-Exports.ps1: add a Downloads line (PDF/Word/etc, linked to exports/ on GitHub) to the copy of the manuscript that goes to the Pages article, so the published site links out to the downloadable formats', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('DT-T3', 'Dissertation.Tools', 3, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 2, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('FM-T1', 'Flashcard.Mechs', 1, '2026-11-25', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('FM-T2', 'Flashcard.Mechs', 2, '2026-11-25', 'feature', 'open', 'BattleMech ID flashcards with a fresh image every showing, rotating sources (Sarna TRO art/minis/game shots, DeviantArt fan art, Flickr minis, Lemmy posts, Commons, MechWiki), plus name, tonnage and visual tells on reveal', '—', 1, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('FM-T3', 'Flashcard.Mechs', 3, '2026-11-25', 'feature', 'open', 'Mech ID Drill shows each ''Mech''s faction (Inner Sphere or Clan) on reveal, adds ~14 common Clan OmniMechs with their Inner Sphere reporting names, and filters the deck by faction', '—', 2, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('FM-T2', 'Flashcard.Mechs', 2, '2026-11-25', 'feature', 'closed', 'BattleMech ID flashcards with a fresh image every showing, rotating sources (Sarna TRO art/minis/game shots, DeviantArt fan art, Flickr minis, Lemmy posts, Commons, MechWiki), plus name, tonnage and visual tells on reveal', '9dc8758', 1, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('FM-T3', 'Flashcard.Mechs', 3, '2026-11-25', 'feature', 'closed', 'Mech ID Drill shows each ''Mech''s faction (Inner Sphere or Clan) on reveal, adds ~14 common Clan OmniMechs with their Inner Sphere reporting names, and filters the deck by faction', 'f3edc00', 2, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('FOR-T1', 'Formicarium', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| FOR-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('FOR-T2', 'Formicarium', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for SafetyWatchdog (firmware/Formicarium.Controller/Core/Control/SafetyWatchdog.cs, add to firmware/Formicarium.Controller.Tests which currently uses xUnit): Evaluate sets each *Unusable bit for a bad, stale (older than MaxReadingAgeSeconds) or out-of-plausible-range reading per sensor; NestOverTemp fires when EITHER usable nest probe exceeds NestOverTempCutoutC but not when the over-limit probe is itself unusable (e.g. DS18B20 85.0 C default above TempPlausibleMaxC); RefillCutoff/WaterSupplyEmpty/SubstrateOverWet/SubstrateDry mirror the HydrationController flags; NoValidReadingSinceBoot only when hasSeenAnyValidReading is false; Has() bit test; AnyReadingValid true if any one of six readings is valid - currently only exercised indirectly through ControlLoop, and it is the cross-sensor heater kill switch', 'firmware/Formicarium.Controller.Tests/SafetyWatchdogTests.cs', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('FOR-T3', 'Formicarium', 3, '2026-10-14', 'chore', 'closed', 'NUnit tests for firmware sensing primitives Reading and LocalTime (Core/Sensing/Reading.cs, Core/Sensing/IClock.cs): default(Reading) and Reading.Bad are not usable; IsUsable boundaries - age exactly maxAgeSeconds is usable, one tick older is not, value exactly at plausibleMin/plausibleMax is usable, just outside is not; AgeSeconds with a future TakenUtc; LocalTime.FromUtc and DayNumber with the default -300 offset rolling a 03:00 UTC timestamp back to the previous local day, positive offsets, and DayNumber(1970-01-01) = 0 - these gate every controller decision and the daily colour rotation key used for later analysis', '5db42fb', 2, NULL);
@@ -6770,7 +6770,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T971', 'GridGame.Unity', 971, '2026-11-24', 'feature', 'closed', 'FIRST TASK, owner may want to review the family list. Repo GridGame.Unity. (a) Work out the number of families from the actual 69 hero classes: group by shared fantasy, role and existing abilities (classes.json Abilities/DefaultLoadout, the §25.13 / §25.6.1 sub-archetype clusters), the fewest families that still keep each one coherent (expect ~8-10); (b) record it: new Content/families.json (Id, Name, Theme line, primary/secondary stat, ring order), ClassDef.Family on every Team.Hero class in classes.json, ContentDb/ContentLoader load + Validate (each hero names exactly one known family, no empty family, no family with one member unless justified), BIBLE new §25.6.6 table family -> classes with one reason each; (c) report the count and class-to-family list in the commit message and as a ticket note for owner review, naming the obvious merge candidates each family creates (input to the merge audit). FamilyTaxonomyTests. Build-only (dotnet build Core.Tests + App via scratch copy of a clean origin/main export); write tests, never run tests/soaks/game players; commit via temp index on a pinned origin/main SHA with only own files.', '36881d855f2a732e4e28e1880cd2a93af754925d', 970, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T972', 'GridGame.Unity', 972, '2026-11-24', 'feature', 'closed', 'Docs-only merge audit on the GG-T971 families. Repo GridGame.Unity. Per family list near-duplicate abilities across sibling classes (same shape/effect differing only in name, element or numbers: e.g. the six ninja *fang strikes, the adjacent-strike reskins of the duelist/brawler clusters, sibling signature heals/wards/howls) and decide: merged family ability (new id, which old ids fold in, which numbers win) vs true signature kept class-specific (no sibling near-copy and it carries the class identity, e.g. Swipe Boon, Gravity Well). Record the table in BIBLE §25.6.6 and summarise it as a ticket note for owner review; no content or code change. Build-only (dotnet build Core.Tests + App via scratch copy of a clean origin/main export); write tests, never run tests/soaks/game players; commit via temp index on a pinned origin/main SHA with only own files.', 'e10142215885c4d05fca13008e5fe308fdaf66b7', 971, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T973', 'GridGame.Unity', 973, '2026-11-24', 'feature', 'closed', 'Content-driven aliases for merged abilities. Repo GridGame.Unity. AbilityDef.MergedInto (or an aliases table in abilities.json) with ContentLoader.Validate (target exists, no chains or cycles, no class/tree/item still references an alias); generalise SaveData.RetiredAbilities: SaveData.Migrate (version bump) rewrites a hero’s Known, Bar, ActivePassives/PassivesChosen and any ability id in items/Tomes from an alias to its target, deduped, bar slot kept. Files Meta/SaveData.cs, Core/Content/ContentModels.cs, ContentLoader.cs. AbilityAliasMigrationTests with old-save fixtures. Build-only (dotnet build Core.Tests + App via scratch copy of a clean origin/main export); write tests, never run tests/soaks/game players; commit via temp index on a pinned origin/main SHA with only own files.', '9bb14071cd42a887f9400ff5e838a19c06a458b0', 972, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T974', 'GridGame.Unity', 974, '2026-11-24', 'feature', 'open', 'Apply the merge audit (GG-T961 first task) for families 1-3 in families.json order. Repo GridGame.Unity. Files: abilities.json (one shared AbilityDef per merged group, best numbers kept, element/flavour a parameter only where the merge needs it; old ids become aliases via the alias task), classes.json Abilities/DefaultLoadout, skilltrees.json grants, items.json Tomes, Text/descriptions.json, HeroBot/Combo/other code referencing merged ids by name. Every member class still has its role move and its signature. AbilityMergeSlice1Tests (merged ids gone from content, aliases resolve, class kits intact). If the slice exceeds budget, split it. Build-only (dotnet build Core.Tests + App via scratch copy of a clean origin/main export); write tests, never run tests/soaks/game players; commit via temp index on a pinned origin/main SHA with only own files.', '—', 973, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T974', 'GridGame.Unity', 974, '2026-11-24', 'feature', 'closed', 'Apply the merge audit (GG-T961 first task) for families 1-3 in families.json order. Repo GridGame.Unity. Files: abilities.json (one shared AbilityDef per merged group, best numbers kept, element/flavour a parameter only where the merge needs it; old ids become aliases via the alias task), classes.json Abilities/DefaultLoadout, skilltrees.json grants, items.json Tomes, Text/descriptions.json, HeroBot/Combo/other code referencing merged ids by name. Every member class still has its role move and its signature. AbilityMergeSlice1Tests (merged ids gone from content, aliases resolve, class kits intact). If the slice exceeds budget, split it. Build-only (dotnet build Core.Tests + App via scratch copy of a clean origin/main export); write tests, never run tests/soaks/game players; commit via temp index on a pinned origin/main SHA with only own files.', 'e415721f91d29d11dbda692b49ac7629eafd1ee7', 973, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T975', 'GridGame.Unity', 975, '2026-11-24', 'feature', 'open', 'Apply the merge audit (GG-T961 first task) for families 4-6 in families.json order. Repo GridGame.Unity. Files: abilities.json (one shared AbilityDef per merged group, best numbers kept, element/flavour a parameter only where the merge needs it; old ids become aliases via the alias task), classes.json Abilities/DefaultLoadout, skilltrees.json grants, items.json Tomes, Text/descriptions.json, HeroBot/Combo/other code referencing merged ids by name. Every member class still has its role move and its signature. AbilityMergeSlice2Tests (merged ids gone from content, aliases resolve, class kits intact). If the slice exceeds budget, split it. Build-only (dotnet build Core.Tests + App via scratch copy of a clean origin/main export); write tests, never run tests/soaks/game players; commit via temp index on a pinned origin/main SHA with only own files.', '—', 974, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T976', 'GridGame.Unity', 976, '2026-11-24', 'feature', 'open', 'Apply the merge audit (GG-T961 first task) for families 7 to the last in families.json order. Repo GridGame.Unity. Files: abilities.json (one shared AbilityDef per merged group, best numbers kept, element/flavour a parameter only where the merge needs it; old ids become aliases via the alias task), classes.json Abilities/DefaultLoadout, skilltrees.json grants, items.json Tomes, Text/descriptions.json, HeroBot/Combo/other code referencing merged ids by name. Every member class still has its role move and its signature. AbilityMergeSlice3Tests (merged ids gone from content, aliases resolve, class kits intact). If the slice exceeds budget, split it. Build-only (dotnet build Core.Tests + App via scratch copy of a clean origin/main export); write tests, never run tests/soaks/game players; commit via temp index on a pinned origin/main SHA with only own files.', '—', 975, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T977', 'GridGame.Unity', 977, '2026-11-24', 'feature', 'closed', 'Family tree data model and validation. Repo GridGame.Unity. SkillTreeDef doubles as a family tree (Id = families.json id) and may sit beside the 7 role trees until cutover; SkillNodeDef gains layout (Col, Row) and optional SignatureOf (class id whose start it sits by); ClassDef.StartNodes (node ids a new hero of the class starts with). ContentLoader.Validate: StartNodes resolve in the class’s family tree, each StartNode’s prerequisites are StartNodes too, once a class has StartNodes every DefaultLoadout ability (not item:, not Universal) is granted by one, SignatureOf names a member of that family, layout cells unique per tree, node ids unique across trees. Files ContentModels.cs, ContentLoader.cs. FamilyTreeModelTests. Build-only (dotnet build Core.Tests + App via scratch copy of a clean origin/main export); write tests, never run tests/soaks/game players; commit via temp index on a pinned origin/main SHA with only own files.', '79835796eba6041d5be7589ae2316c57158cc0c5', 976, NULL);
@@ -6908,12 +6908,26 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1109', 'GridGame.Unity', 1109, '2026-11-25', 'feature', 'closed', 'HeroTimeline timeline view (App/Battle/BattleScreen.Timeline.cs, BoardView.cs; follows GG-T814 c8a9bc53 which made the mode pickable and refuses pickup of a non-active hero): hero turn diamonds get their own ring colour in TurnRing/EntryColor instead of TeamFoe (portraits already come via Ui.PortraitThumb/Art.Thumb); SyncSlot prefers the active hero''s turn entry (State.ActiveHeroId) for the prominence diamond; SyncGap''s lane runs to the next turn icon of either side other than the active hero''s own (mirror TurnRules.TurnTicks) with a ''<hero>''s turn'' label; confirm hero recovery shows in the tray (recoverView is generic); the active hero''s board token is highlighted (BoardView). Keep GG-T1071 spin-slide on hero icons, GG-T1080 Earlier tie, GG-T1091 round readout, GG-T1094 DevPushback. Unity build when the lease is free.', 'cacf7397', 1108, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1110', 'GridGame.Unity', 1110, '2026-11-25', 'feature', 'closed', 'HeroTimeline: highlight the active hero''s board token (BoardView: a SetActiveHero cue like SetSelection, driven from BattleScreen.Timeline PulseTimeline by State.ActiveHeroId under TurnRules.HeroesOnTimeline). Follows GG-T1109 cacf7397 (hero ring colour, slot prefers active hero, gap lane/label).', '9faee5b57e0fe85b75f8f26a5beb82e2663316d9', 1109, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1111', 'GridGame.Unity', 1111, '2026-11-25', 'feature', 'closed', 'HeroTimeline post-battle hero turns: BattleResults.HeroTurns (cloned) counted when the active hero''s action lands under TurnRules.HeroesOnTimeline (BattleRunner.Apply); BattleReport.HeroTurns from BattleFactory.Commit (MetaServices.cs) and Crucible.Commit, EncounterRecord.HeroTurns; TurnsLabel reads ''N hero turns'' under HeroTimeline (PostBattleScreen Battle length row); BIBLE 2.13.3 note that the Crucible needs nothing more (it plays the resolved mode and keys records by TurnRules.RecordMode, GG-T945) and on the tutorial copy (Lesson.TextHeroTimeline, landed bd4f896e). Mirror GG-T1095 (39fdaff6).', '0e427558', 1110, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1112', 'GridGame.Unity', 1112, '2026-11-25', 'fix', 'open', 'Party tab mini-boards (PartyBoards.cs): class-name caption is NoWrap + Overflow.Hidden so long names clip silently (POL-C5 wants the shared marquee), and with six heroes each bar cell is ~w/5-2 (about 30 design px) wide, too small for a legible icon or a touch target; verify at every harness aspect (static review, GG-T273 sweep)', '—', 1111, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1113', 'GridGame.Unity', 1113, '2026-11-25', 'fix', 'open', 'Abilities > Board sub-tab (SkillHexTab.cs): hex-detail is a fixed 460 design-px tall panel beside a flex board; at the shortest aspects (9:16, 3:4, 2:3) it may squeeze the hexagon below usable size or push Buy route off-stage; the Route/Stats/Learns paragraphs have no overflow guard. Sweep Board at all 8 harness aspects with a fresh player and fix (GG-T273 sweep)', '—', 1112, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1112', 'GridGame.Unity', 1112, '2026-11-25', 'fix', 'closed', 'Party tab mini-boards (PartyBoards.cs): class-name caption is NoWrap + Overflow.Hidden so long names clip silently (POL-C5 wants the shared marquee), and with six heroes each bar cell is ~w/5-2 (about 30 design px) wide, too small for a legible icon or a touch target; verify at every harness aspect (static review, GG-T273 sweep)', 'fbc40e34824787d3f4c00b7298adfedc138ba066', 1111, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1113', 'GridGame.Unity', 1113, '2026-11-25', 'fix', 'closed', 'Abilities > Board sub-tab (SkillHexTab.cs): hex-detail is a fixed 460 design-px tall panel beside a flex board; at the shortest aspects (9:16, 3:4, 2:3) it may squeeze the hexagon below usable size or push Buy route off-stage; the Route/Stats/Learns paragraphs have no overflow guard. Sweep Board at all 8 harness aspects with a fresh player and fix (GG-T273 sweep)', 'ff1e5e5ea7bcee94b85904d300bb1dec28252ed2', 1112, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1114', 'GridGame.Unity', 1114, '2026-11-25', 'chore', 'open', 'Rebuild the dev player (Build/Windows/GridGame.exe is dated 2026-11-23, before the Board tab, Party mini-boards, Respec, Status Base/Board/Gear/Total and battle hero-timeline Mode B/C) and run harness.py sweep + aspects on those screens, one player at a time; needed before GG-T273 can measure dimension C on them', '—', 1113, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1115', 'GridGame.Unity', 1115, '2026-11-25', 'chore', 'open', '(owner task) Play Console: create the Play Games Services project for com.mindattic.gridgame, add Android OAuth credentials (app-signing SHA-1 and upload-key SHA-1), turn on Saved Games, add testers, publish the config, and send the 12-digit application id; steps in docs/RELEASE_BUILD.md ''Cloud save'' step 1 (GG-T608 follow-up)', '—', 1114, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1116', 'GridGame.Unity', 1116, '2026-11-25', 'chore', 'open', 'Install the Google Play Games plugin for Unity v11+ (com.google.play.games), write the owner''s application id into its Android setup from a script, add its runtime assembly to GridGame.App.asmdef, set GG_PLAY_GAMES in the Android scripting defines, build the Android bundle and confirm PlayGamesCloudBackend compiles; docs/RELEASE_BUILD.md ''Cloud save'' step 2 (GG-T608 follow-up)', '—', 1115, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1117', 'GridGame.Unity', 1117, '2026-11-25', 'chore', 'open', 'On-phone check of Play Games Saved Games with a tester account: Restore from cloud after reinstall brings the slot back, and Continue on a second phone offers the newer cloud save; docs/RELEASE_BUILD.md ''Cloud save'' step 3 (GG-T608 follow-up)', '—', 1116, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1118', 'GridGame.Unity', 1118, '2026-11-25', 'docs', 'closed', 'docs/RELEASE_CHECKLIST.md: one page of release-candidate gates (build, BIBLE 8, polish baseline, feature switches, debug-option gating, size budget, store copy, privacy, crash reporter), owner-only and night-only sections by ticket ID; linked from BIBLE 8.1', '68400016cadd80c0c2edacb21506fdd05915c6ff', 1117, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1119', 'GridGame.Unity', 1119, '2026-11-25', 'chore', 'closed', 'tools/release_lint.py: static scan of shipped content JSON and App UI strings for lorem, TODO/placeholder text, reachable test stages, missing names and placeholder art; GG-T497 story text in its own bucket; added to the nightly report; findings filed under GG-T493', '6d0ad379ea2966aa0209e551409e3e2b205a5b09', 1118, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1120', 'GridGame.Unity', 1120, '2026-11-25', 'chore', 'closed', 'Code-read audit that a non-development player has no dev surfaces (Features.cs vs RELEASE_SCOPE, -enableDebugOptions gate, AutomationServer, demo/testmode, Diamond store stub, CrashReporter) plus one tools/build.ps1 -Release build; gaps filed as fix tickets, RELEASE_BUILD.md audit section', 'a4203cdc', 1119, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1121', 'GridGame.Unity', 1121, '2026-11-25', 'chore', 'open', '(night-only, 00:00-10:00) Full tools/polish.py pass at every aspect on a fresh dev player vs docs/polish/baseline.json (2026-11-17); drops and the three lowest rule groups filed as tickets, baseline raised only where scores rose; answers GG-T705', '—', 1120, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1122', 'GridGame.Unity', 1122, '2026-11-25', 'chore', 'open', 'Repeat the GG-T494 fresh-player run on current main (turn modes, Board tab, Party mini-boards, battle feel), one player, recorded with MindAttic.Capture; second section in docs/FRESH_PLAYER_RUN.md, each issue a fix ticket under GG-T493', '—', 1121, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1123', 'GridGame.Unity', 1123, '2026-11-25', 'chore', 'open', '(owner task) Play the signed release .aab from a Play internal-testing track on one target phone for 30 minutes and report crashes, stutter, unreadable text, touch misses and audio; an agent files each issue under GG-T493', '—', 1122, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1124', 'GridGame.Unity', 1124, '2026-11-25', 'fix', 'closed', 'Features.LookPresets is true in code but RELEASE_SCOPE.md says DISABLE (and Caravan row reads DISABLE): owner to confirm what ships, then align', '3759ff2793902143d696a300a7189ef07bc902fb', 1123, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1125', 'GridGame.Unity', 1125, '2026-11-25', 'fix', 'open', 'Unity.Shared HeadlessBootstrap/-muted still act in a release player without -enableDebugOptions (mute, runInBackground, vSync 0, READY log line)', '—', 1124, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1126', 'GridGame.Unity', 1126, '2026-11-25', 'feature', 'open', 'Merge abilities slice 1 leftovers (BIBLE 25.6.6.1): berserk into blood_rage was held back from GG-T974 because berserk is also the passive of ~15 monster classes (oni, cyclops, purpleprototype, werewolf, sandmaw, minotaur, mountaintroll) and tome_berserk teaches it; decide whether monsters keep berserk (fold only the hero use) or all move to Blood Rage, and update PassiveRewardTests/TriggerEngineTests. Also the owner-flagged rows: vanguard_bulwark (defender_wall + paladin_bulwark, drops Holy Bulwark party reach) and sellsword_contract into duelist_decisivecut (drops Contract Kill boss bonus) apply only once the owner signs off on those dropped side effects.', '—', 1125, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1127', 'GridGame.Unity', 1127, '2026-11-25', 'chore', 'open', '(owner task) Apple developer account: enable the iCloud capability (key-value storage, no CloudKit) on App ID com.mindattic.gridgame and refresh manual provisioning profiles; docs/RELEASE_BUILD.md ''Cloud save: iCloud'' step 1 (GG-T609 follow-up)', '—', 1126, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1128', 'GridGame.Unity', 1128, '2026-11-25', 'chore', 'open', '(owner task) Mac: export the iOS Xcode project, confirm the iCloud key-value capability and entitlement the post-processor adds, build GGICloud.mm onto an iPhone and read ''[Cloud] sign-in ok''; docs/RELEASE_BUILD.md ''Cloud save: iCloud'' step 2 (GG-T609 follow-up)', '—', 1127, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1129', 'GridGame.Unity', 1129, '2026-11-25', 'chore', 'open', '(owner task) iPhones on one Apple ID: upload, Restore from cloud after reinstall, newer copy offered on Continue, longest-play-time conflict, and no-op with iCloud off; docs/RELEASE_BUILD.md ''Cloud save: iCloud'' step 3 (GG-T609 follow-up)', '—', 1128, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1130', 'GridGame.Unity', 1130, '2026-11-25', 'fix', 'open', 'tools/release_lint.py (GG-T1119) finds 30 abilities with no AbilityIcons/<id>-00 file and no legacy Icon, so they draw the placeholder square: choir_rune, scorpion_burrow, charge_slime_glob, sapper_buried_charge, gremlin_sabotage, darktemplar_gravitywell, drifter_float, thief_swipeboon, monk_redirectflow, whiteninja_substitution, bluelion_intimidate, machinist_barricade, technician_emp, tinkerer_magnetize, wildchild_bramblesnare, blackninja_smoke_vanish, assassain_shadow_swap, lancer_polevault, ripper_flay, barbarian_earthsplitter, speedster_afterimage, engineer_buried_charge, firewall, alchemist_oilflask, operative_timebomb, blackwitch_curselink, hexstalker_flare_shot, herd_rage, herd_rage_kin, warden_anchorstance. Run python tools/release_lint.py for the list.', 'release_lint', 1129, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1131', 'GridGame.Unity', 1131, '2026-11-25', 'fix', 'open', 'Merge slice 1 (GG-T974, e415721f) left tools/skillhex/validate.py at 25 warnings: re-signed heroes now share signatures with siblings or sit far from their stat-hexagon spot (Bruiser Blood Rage 13 steps, Tank Overrun and Lancer Running Riot 9). Re-sign each affected hero with a unique move of its own kit within 2 lattice steps of its spot (swap nodes where needed, extend Start paths through passives), keeping 0 errors; target 0 warnings; record changes in docs/design/skill-hexagon/SIGNATURES.md; owner signature review in GG-T1054 may later override', '—', 1130, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('HCM-T1', 'Hardware.ChiMesh', 1, '2026-11-22', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('HCM-T2', 'Hardware.ChiMesh', 2, '2026-11-22', 'docs', 'closed', '2026-11-22 morning', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('HCM-T3', 'Hardware.ChiMesh', 3, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 2, NULL);
@@ -115444,6 +115458,166 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120321, 
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120322, 'M.ORCH-T2226', '2026-11-25T19:13:28Z', 'label', NULL, 'level:task');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120323, 'M.ORCH-T2226', '2026-11-25T19:13:29Z', 'link', NULL, 'part-of M.ORCH-T2205');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120324, 'M.ORCH-T2205', '2026-11-25T19:13:30Z', 'link', NULL, 'M.ORCH-T2226 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120325, 'GG-T1054', '2026-11-25T19:14:21Z', 'working', 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120326, 'GG-T1054', '2026-11-25T19:14:22Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120327, 'M.ORCH-T2226', '2026-11-25T19:14:23Z', 'working', NULL, 'a8807a82-1dd3-4855-b80b-a04b51f0814d');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120328, 'GG-T1118', '2026-11-25T19:15:35Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120329, 'GG-T1118', '2026-11-25T19:15:35Z', 'name', NULL, 'Release checklist');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120330, 'GG-T1118', '2026-11-25T19:15:35Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120331, 'GG-T1113', '2026-11-25T19:15:36Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120332, 'GG-T1113', '2026-11-25T19:15:36Z', 'ref', '—', 'ff1e5e5ea7bcee94b85904d300bb1dec28252ed2');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120333, 'GG-T1118', '2026-11-25T19:15:36Z', 'link', NULL, 'part-of GG-T493');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120334, 'GG-T493', '2026-11-25T19:15:37Z', 'link', NULL, 'GG-T1118 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120335, 'GG-T1118', '2026-11-25T19:15:37Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120336, 'GG-T1119', '2026-11-25T19:15:38Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120337, 'GG-T1119', '2026-11-25T19:15:38Z', 'name', NULL, 'Release content lint');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120338, 'GG-T1119', '2026-11-25T19:15:39Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120339, 'GG-T1119', '2026-11-25T19:15:40Z', 'link', NULL, 'part-of GG-T493');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120340, 'GG-T493', '2026-11-25T19:15:40Z', 'link', NULL, 'GG-T1119 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120341, 'GG-T1119', '2026-11-25T19:15:40Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120342, 'GG-T1120', '2026-11-25T19:15:41Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120343, 'GG-T1120', '2026-11-25T19:15:41Z', 'name', NULL, 'Release player audit');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120344, 'GG-T1120', '2026-11-25T19:15:42Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120345, 'GG-T1120', '2026-11-25T19:15:43Z', 'link', NULL, 'part-of GG-T493');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120346, 'GG-T493', '2026-11-25T19:15:43Z', 'link', NULL, 'GG-T1120 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120347, 'GG-T1120', '2026-11-25T19:15:44Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120348, 'GG-T1121', '2026-11-25T19:15:45Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120349, 'GG-T1121', '2026-11-25T19:15:45Z', 'name', NULL, 'Polish re-baseline (night-only)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120350, 'GG-T1121', '2026-11-25T19:15:45Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120351, 'GG-T1121', '2026-11-25T19:15:46Z', 'link', NULL, 'part-of GG-T493');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120352, 'GG-T493', '2026-11-25T19:15:47Z', 'link', NULL, 'GG-T1121 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120353, 'GG-T1121', '2026-11-25T19:15:47Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120354, 'GG-T1121', '2026-11-25T19:15:48Z', 'label', NULL, 'night-only');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120355, 'GG-T1122', '2026-11-25T19:15:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120356, 'GG-T1122', '2026-11-25T19:15:49Z', 'name', NULL, 'Second fresh-player run');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120357, 'GG-T1122', '2026-11-25T19:15:50Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120358, 'GG-T1122', '2026-11-25T19:15:51Z', 'link', NULL, 'part-of GG-T493');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120359, 'GG-T493', '2026-11-25T19:15:51Z', 'link', NULL, 'GG-T1122 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120360, 'GG-T1122', '2026-11-25T19:15:51Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120361, 'GG-T1123', '2026-11-25T19:15:53Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120362, 'GG-T1123', '2026-11-25T19:15:53Z', 'name', NULL, 'Release phone check (owner)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120363, 'GG-T1123', '2026-11-25T19:15:53Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120364, 'GG-T1123', '2026-11-25T19:15:54Z', 'link', NULL, 'part-of GG-T493');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120365, 'GG-T493', '2026-11-25T19:15:54Z', 'link', NULL, 'GG-T1123 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120366, 'GG-T1123', '2026-11-25T19:15:55Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120367, 'GG-T1123', '2026-11-25T19:15:56Z', 'label', NULL, 'owner-only');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120368, 'FM-T2', '2026-11-25T19:15:57Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120369, 'FM-T2', '2026-11-25T19:15:57Z', 'ref', '—', '9dc8758');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120370, 'FM-T3', '2026-11-25T19:15:58Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120371, 'FM-T3', '2026-11-25T19:15:58Z', 'ref', '—', 'f3edc00');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120372, 'GG-T1112', '2026-11-25T19:16:14Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120373, 'GG-T1112', '2026-11-25T19:16:14Z', 'ref', '—', 'fbc40e34824787d3f4c00b7298adfedc138ba066');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120374, 'GG-T1121', '2026-11-25T19:16:14Z', 'link', NULL, 'requires GG-T1114');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120375, 'GG-T1114', '2026-11-25T19:16:14Z', 'link', NULL, 'GG-T1121 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120376, 'GG-T1122', '2026-11-25T19:16:16Z', 'link', NULL, 'requires GG-T1114');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120377, 'GG-T1114', '2026-11-25T19:16:17Z', 'link', NULL, 'GG-T1122 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120378, 'GG-T1113', '2026-11-25T19:16:17Z', 'working', 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120379, 'GG-T493', '2026-11-25T19:16:17Z', 'working', 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120380, 'GG-T1123', '2026-11-25T19:16:19Z', 'link', NULL, 'requires GG-T1120');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120381, 'GG-T1120', '2026-11-25T19:16:19Z', 'link', NULL, 'GG-T1123 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120382, 'GG-T1120', '2026-11-25T19:16:28Z', 'working', NULL, 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120383, 'GG-T1119', '2026-11-25T19:16:30Z', 'working', NULL, 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120384, 'GG-T1118', '2026-11-25T19:16:33Z', 'working', NULL, 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120385, 'GG-T1112', '2026-11-25T19:16:40Z', 'working', 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120386, 'GG-T1124', '2026-11-25T19:20:05Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120387, 'GG-T1124', '2026-11-25T19:20:05Z', 'name', NULL, 'Reconcile LookPresets scope');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120388, 'GG-T1124', '2026-11-25T19:20:05Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120389, 'GG-T1124', '2026-11-25T19:20:06Z', 'link', NULL, 'part-of GG-T493');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120390, 'GG-T493', '2026-11-25T19:20:07Z', 'link', NULL, 'GG-T1124 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120391, 'GG-T1124', '2026-11-25T19:20:07Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120392, 'GG-T1118', '2026-11-25T19:20:08Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120393, 'GG-T1118', '2026-11-25T19:20:08Z', 'ref', '—', '68400016cadd80c0c2edacb21506fdd05915c6ff');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120394, 'GG-T1125', '2026-11-25T19:20:08Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120395, 'GG-T1125', '2026-11-25T19:20:09Z', 'name', NULL, 'Gate shared headless bootstrap');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120396, 'GG-T1125', '2026-11-25T19:20:09Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120397, 'GG-T1125', '2026-11-25T19:20:10Z', 'link', NULL, 'part-of GG-T493');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120398, 'GG-T493', '2026-11-25T19:20:10Z', 'link', NULL, 'GG-T1125 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120399, 'GG-T1125', '2026-11-25T19:20:11Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120400, 'GG-T1118', '2026-11-25T19:20:39Z', 'working', 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120401, 'GG-T1125', '2026-11-25T19:20:40Z', 'working', NULL, '6082ff94-ff59-4f19-92da-270fca91363e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120402, 'GG-T1124', '2026-11-25T19:20:40Z', 'working', NULL, '6082ff94-ff59-4f19-92da-270fca91363e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120403, 'GG-T974', '2026-11-25T19:20:46Z', 'label', 'level:task', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120404, 'GG-T974', '2026-11-25T19:20:46Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120405, 'GG-T1120', '2026-11-25T19:20:46Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120406, 'GG-T1120', '2026-11-25T19:20:46Z', 'ref', '—', 'a4203cdc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120407, 'GG-T1126', '2026-11-25T19:20:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120408, 'GG-T1126', '2026-11-25T19:20:47Z', 'link', NULL, 'part-of GG-T974');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120409, 'GG-T974', '2026-11-25T19:20:47Z', 'link', NULL, 'GG-T1126 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120410, 'GG-T1126', '2026-11-25T19:20:48Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120411, 'GG-T1126', '2026-11-25T19:20:48Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120412, 'GG-T1120', '2026-11-25T19:21:03Z', 'working', 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120413, 'GG-T974', '2026-11-25T19:21:04Z', 'working', 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120414, 'GG-T1127', '2026-11-25T19:21:11Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120415, 'GG-T1127', '2026-11-25T19:21:11Z', 'name', NULL, 'iCloud App ID setup');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120416, 'GG-T1127', '2026-11-25T19:21:12Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120417, 'GG-T1127', '2026-11-25T19:21:13Z', 'link', NULL, 'part-of GG-T500');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120418, 'GG-T500', '2026-11-25T19:21:13Z', 'link', NULL, 'GG-T1127 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120419, 'GG-T1127', '2026-11-25T19:21:13Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120420, 'GG-T1126', '2026-11-25T19:21:15Z', 'link', 'part-of GG-T974', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120421, 'GG-T1128', '2026-11-25T19:21:15Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120422, 'GG-T1128', '2026-11-25T19:21:15Z', 'name', NULL, 'iCloud Xcode build check');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120423, 'GG-T974', '2026-11-25T19:21:15Z', 'link', 'GG-T1126 part-of', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120424, 'GG-T1128', '2026-11-25T19:21:15Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120425, 'GG-T1128', '2026-11-25T19:21:16Z', 'link', NULL, 'part-of GG-T500');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120426, 'GG-T500', '2026-11-25T19:21:17Z', 'link', NULL, 'GG-T1128 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120427, 'GG-T1128', '2026-11-25T19:21:17Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120428, 'GG-T1126', '2026-11-25T19:21:17Z', 'link', NULL, 'part-of GG-T961');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120429, 'GG-T961', '2026-11-25T19:21:17Z', 'link', NULL, 'GG-T1126 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120430, 'GG-T1129', '2026-11-25T19:21:19Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120431, 'GG-T1129', '2026-11-25T19:21:19Z', 'name', NULL, 'iCloud save phone check');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120432, 'GG-T974', '2026-11-25T19:21:19Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120433, 'GG-T974', '2026-11-25T19:21:19Z', 'ref', '—', 'e415721f91d29d11dbda692b49ac7629eafd1ee7');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120434, 'GG-T1129', '2026-11-25T19:21:19Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120435, 'GG-T1126', '2026-11-25T19:21:20Z', 'working', NULL, 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120436, 'GG-T1129', '2026-11-25T19:21:21Z', 'link', NULL, 'part-of GG-T500');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120437, 'GG-T500', '2026-11-25T19:21:21Z', 'link', NULL, 'GG-T1129 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120438, 'GG-T1129', '2026-11-25T19:21:21Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120439, 'GG-T1123', '2026-11-25T19:21:23Z', 'working', NULL, 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120440, 'GG-T1127', '2026-11-25T19:21:30Z', 'link', NULL, 'follow-up-of GG-T609');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120441, 'GG-T609', '2026-11-25T19:21:30Z', 'link', NULL, 'GG-T1127 follow-up-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120442, 'GG-T1128', '2026-11-25T19:21:32Z', 'link', NULL, 'follow-up-of GG-T609');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120443, 'GG-T609', '2026-11-25T19:21:32Z', 'link', NULL, 'GG-T1128 follow-up-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120444, 'GG-T1129', '2026-11-25T19:21:34Z', 'link', NULL, 'follow-up-of GG-T609');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120445, 'GG-T609', '2026-11-25T19:21:34Z', 'link', NULL, 'GG-T1129 follow-up-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120446, 'GG-T1128', '2026-11-25T19:21:36Z', 'link', NULL, 'requires GG-T1127');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120447, 'GG-T1127', '2026-11-25T19:21:37Z', 'link', NULL, 'GG-T1128 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120448, 'GG-T1123', '2026-11-25T19:21:37Z', 'working', 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120449, 'GG-T1129', '2026-11-25T19:21:39Z', 'link', NULL, 'requires GG-T1128');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120450, 'GG-T1128', '2026-11-25T19:21:39Z', 'link', NULL, 'GG-T1129 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120451, 'GG-T1124', '2026-11-25T19:21:39Z', 'working', '6082ff94-ff59-4f19-92da-270fca91363e', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120452, 'GG-T1123', '2026-11-25T19:21:40Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120453, 'GG-T1125', '2026-11-25T19:21:40Z', 'working', '6082ff94-ff59-4f19-92da-270fca91363e', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120454, 'GG-T1128', '2026-11-25T19:21:40Z', 'link', NULL, 'related GG-T479');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120455, 'GG-T479', '2026-11-25T19:21:41Z', 'link', NULL, 'GG-T1128 related');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120456, 'GG-T1127', '2026-11-25T19:21:52Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120457, 'GG-T1128', '2026-11-25T19:21:53Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120458, 'GG-T1129', '2026-11-25T19:21:53Z', 'approval', 'approved', 'proposed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120459, 'GG-T975', '2026-11-25T19:22:00Z', 'working', NULL, 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120460, 'GG-T1125', '2026-11-25T19:22:03Z', 'working', NULL, 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120461, 'GG-T1124', '2026-11-25T19:22:05Z', 'working', NULL, 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120462, 'GG-T1130', '2026-11-25T19:22:48Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120463, 'GG-T1130', '2026-11-25T19:22:48Z', 'name', NULL, 'Missing ability icons');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120464, 'GG-T1130', '2026-11-25T19:22:49Z', 'link', NULL, 'part-of GG-T493');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120465, 'GG-T493', '2026-11-25T19:22:49Z', 'link', NULL, 'GG-T1130 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120466, 'GG-T1130', '2026-11-25T19:22:49Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120467, 'GG-T1119', '2026-11-25T19:22:50Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120468, 'GG-T1119', '2026-11-25T19:22:50Z', 'ref', '—', '6d0ad379ea2966aa0209e551409e3e2b205a5b09');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120469, 'GG-T1131', '2026-11-25T19:22:53Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120470, 'GG-T1131', '2026-11-25T19:22:53Z', 'name', NULL, 'Repair slice-1 signatures');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120471, 'GG-T1131', '2026-11-25T19:22:53Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120472, 'GG-T1131', '2026-11-25T19:22:54Z', 'link', NULL, 'part-of GG-T961');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120473, 'GG-T961', '2026-11-25T19:22:55Z', 'link', NULL, 'GG-T1131 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120474, 'GG-T1131', '2026-11-25T19:22:55Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120475, 'GG-T1131', '2026-11-25T19:23:08Z', 'link', NULL, 'requires GG-T975');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120476, 'GG-T975', '2026-11-25T19:23:09Z', 'link', NULL, 'GG-T1131 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120477, 'GG-T1119', '2026-11-25T19:23:16Z', 'working', 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120478, 'GG-T1131', '2026-11-25T19:23:17Z', 'working', NULL, '6082ff94-ff59-4f19-92da-270fca91363e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120479, 'GG-T1130', '2026-11-25T19:23:17Z', 'working', NULL, '6082ff94-ff59-4f19-92da-270fca91363e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120480, 'GG-T1124', '2026-11-25T19:23:40Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120481, 'GG-T1124', '2026-11-25T19:23:40Z', 'ref', '—', '3759ff2793902143d696a300a7189ef07bc902fb');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120482, 'GG-T1130', '2026-11-25T19:23:41Z', 'working', '6082ff94-ff59-4f19-92da-270fca91363e', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120483, 'GG-T1131', '2026-11-25T19:23:41Z', 'working', '6082ff94-ff59-4f19-92da-270fca91363e', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (120484, 'GG-T1130', '2026-11-25T19:24:08Z', 'working', NULL, 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AES-T10', 'proposed', 380, '2026-11-24T19:47:20Z', NULL);
@@ -116255,7 +116429,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1049', 'approved', 410, '2026-11-25T15:24:07Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1050', 'approved', 0, '2026-11-25T15:24:07Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1051', 'approved', 0, '2026-11-24T21:25:47Z', NULL);
-INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1054', 'approved', 0, '2026-11-25T18:56:20Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1054', 'proposed', 0, '2026-11-25T19:14:22Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1055', 'approved', 0, '2026-11-25T15:29:15Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1056', 'approved', 0, '2026-11-25T15:29:16Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1057', 'approved', 0, '2026-11-25T15:30:10Z', NULL);
@@ -116315,6 +116489,20 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1115', 'proposed', 0, '2026-11-25T19:04:32Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1116', 'approved', 0, '2026-11-25T19:01:24Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1117', 'approved', 0, '2026-11-25T19:01:28Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1118', 'approved', 0, '2026-11-25T19:15:37Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1119', 'approved', 0, '2026-11-25T19:15:40Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1120', 'approved', 0, '2026-11-25T19:15:44Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1121', 'approved', 0, '2026-11-25T19:15:47Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1122', 'approved', 0, '2026-11-25T19:15:51Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1123', 'proposed', 0, '2026-11-25T19:21:40Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1124', 'approved', 0, '2026-11-25T19:20:07Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1125', 'approved', 0, '2026-11-25T19:20:11Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1126', 'approved', 0, '2026-11-25T19:20:48Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1127', 'proposed', 0, '2026-11-25T19:21:52Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1128', 'proposed', 0, '2026-11-25T19:21:53Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1129', 'proposed', 0, '2026-11-25T19:21:53Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1130', 'approved', 0, '2026-11-25T19:22:49Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T1131', 'approved', 0, '2026-11-25T19:22:55Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T115', 'approved', 0, '2026-10-19T17:01:18Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T116', 'approved', -2, '2026-10-22T02:51:54Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GG-T117', 'approved', 0, '2026-10-19T17:01:19Z', NULL);
@@ -120798,14 +120986,15 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T772', NULL, 0, 'ohleo199@mindattic.com', '5c87f115-96a3-43aa-8559-17d8764da8f6', '2026-11-25T18:54:04Z', '2026-11-25T18:54:04Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1054', NULL, 0, 'pdftransferjr@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-25T18:58:05Z', '2026-11-25T18:58:05Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1112', NULL, 0, 'pdftransferjr@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-25T19:05:51Z', '2026-11-25T19:05:50Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1113', NULL, 0, 'pdftransferjr@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-25T19:05:48Z', '2026-11-25T19:05:48Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T493', NULL, 0, 'pdftransferjr@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-25T19:07:45Z', '2026-11-25T19:07:44Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1124', NULL, 0, 'pdftransferjr@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-25T19:22:06Z', '2026-11-25T19:22:05Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1125', NULL, 0, 'pdftransferjr@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-25T19:22:03Z', '2026-11-25T19:22:03Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1126', NULL, 0, 'pdftransferjr@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-25T19:21:21Z', '2026-11-25T19:21:20Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1130', NULL, 0, 'pdftransferjr@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-25T19:24:08Z', '2026-11-25T19:24:08Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T609', NULL, 0, 'pdftransferjr@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-25T19:03:39Z', '2026-11-25T19:03:39Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T974', NULL, 0, 'pdftransferjr@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-25T18:59:35Z', '2026-11-25T18:59:34Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T975', NULL, 0, 'pdftransferjr@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-25T19:22:00Z', '2026-11-25T19:22:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T2225', NULL, 0, NULL, 'bb1c10a1-f527-4aff-b271-ba4beeb8a07c', '2026-11-25T19:11:30Z', '2026-11-25T19:11:30Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T2226', NULL, 0, NULL, 'a8807a82-1dd3-4855-b80b-a04b51f0814d', '2026-11-25T19:14:24Z', '2026-11-25T19:14:23Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T768', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
@@ -125032,6 +125221,14 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32361, '
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32362, 'M.ORCH-T2225', 'ryand', '2026-11-25T19:11:48Z', 'The current no-CLI home page for a login (full screenshot below): a ''5-hour utilization'' chart and a whole Tickets panel (Active/Pending/Closed/Won''t do tabs, assigned + unassigned queue). Ryan: remove it — the usage graph duplicates a number already shown statically on a button/tab elsewhere, and the Tickets list reads a database he never checks. Replace with just the login and its already-loaded active CLIs (MainViewModel.RunningCliTitles(), no DB read).
 
 ![screenshot](attachments/M.ORCH-T2225/2026-11-25-image-1.png)');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32363, 'GG-T1054', 'ryand', '2026-11-25T19:14:14Z', 'Decision brief: docs/design/skill-hexagon/DECISIONS-2.md (commit 633dbf97 on main). Three questions for the owner:
+1. **New Wild hero**: choose a name (a Thornfist, b Grove Keeper, c Moonbear, or your own). Approve the kit (Alpha''s Challenge, Snare Net, Stumbling Ground, Feral Howl) and the new signature Rootbreaker (a melee hit that roots, and pays off x1.5 plus pushback against a Slowed or Rooted foe). Say whether it scales with STR or WIS. Approve moving Stumbling Ground off the spot (-2,-8) to (-6,-9). Choose the placeholder art (recommended: mannequin when shipped, Panda Keeper art for playtests). New portraits and the icon are owner-only.
+2. **The 22 Open slots**: A, DLC packs by wedge; B, fill now from the 27 unlisted hero-side moves, keeping 1 Wild reserve (recommended); C, reserve them for future hero kits. If B, confirm the fill list.
+3. **Signatures**: approve the 65-row table''s Proposal column, or name rows to change. It proposes 7 swaps (Assassin, Barbarian, Machinist, Monk, Thief, Speedster, plus Dervish''s effect, which duplicates Shield Wall), 6 tunes (Chroma, Red and Yellow Ninja, Odachi, Striker, Sword Master), 2 loadout fixes (Drifter, Wild Child) and 1 text fix (Hex Sniper). Every other hero keeps its signature.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32364, 'GG-T1123', 'ryand', '2026-11-25T19:21:41Z', 'Owner-only (a phone plus the Play internal-testing track); parked so it is not re-handed out.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32365, 'GG-T1127', 'ryand', '2026-11-25T19:22:09Z', 'Owner task filed by GG-T609 (needs an Apple account, a Mac or iPhones). Parked as proposed so agents don''t pick it up; the checklist is in the description.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32366, 'GG-T1128', 'ryand', '2026-11-25T19:22:10Z', 'Owner task filed by GG-T609 (needs an Apple account, a Mac or iPhones). Parked as proposed so agents don''t pick it up; the checklist is in the description.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32367, 'GG-T1129', 'ryand', '2026-11-25T19:22:11Z', 'Owner task filed by GG-T609 (needs an Apple account, a Mac or iPhones). Parked as proposed so agents don''t pick it up; the checklist is in the description.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AES-T4', 'Exhaustive bug hunt for this repo, no time limit (the /bughunt skill with no argument).
@@ -127630,6 +127827,111 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T1048', '
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T1071', 'Owner 2026-11-25: every pushback shows the turn-icon diamond spinning (rotation around its vertical Y axis) while it slides laterally back along the bar and decelerates (eases out) into its new position. Applies to every icon on the bar: foes and, in Heroes on the timeline mode, hero diamonds.
 
 Back face: while spinning, the diamond''s back is drawn as a back texture (not the mirrored front). The face swap must be exact: front shows while the face points toward the camera; the back texture only when it has rotated past 90 degrees around Y (facing away). The swap happens exactly at the 90-degree point, where the diamond is edge-on, about one pixel thick, so there is no visible pop. Scale the width by |cos(angle)| (or a true 3D rotation) so the edge-on moment is real. Shares the flip rule with GG-T1072 (actor tile card flip); build one shared flip helper both use.', '2026-11-25T16:15:28Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T1118', '## Goal
+One page, docs/RELEASE_CHECKLIST.md, that says what "release candidate" means for GridGame and where each gate lives, so nobody has to rebuild the list from the BIBLE, POLISH.md, RELEASE_SCOPE.md, RELEASE_BUILD.md and STORE_LISTING.md.
+
+## Scope
+- Gates, each with its command, doc or ticket: build (tools/build.ps1 -Release and -Platform Android, zero `error CS`); BIBLE 8 quality bar; polish baseline (GG-LAW-14, docs/polish/baseline.json, last 2026-11-17); release scope switches (Meta/Features.cs vs RELEASE_SCOPE verdicts); debug options need -enableDebugOptions (GG-T566); Android size budget (RELEASE_BUILD.md, 200 MB); store copy (STORE_LISTING.md); privacy policy draft (docs/legal/privacy-policy.md, GG-T472); crash reporter (App/Services/CrashReporter.cs).
+- An "owner-only" section listing every owner step already ticketed elsewhere, by ID: name (GG-T573), store products (GG-T471), iOS/Mac (GG-T479), gap art (GG-T492), music (GG-T462), SFX purchase (GG-T463), Play Games console (GG-T1115), privacy policy confirmations, and the phone check filed under GG-T493.
+- A "night-only (00:00-10:00)" section: soaks and multi-instance runs (GG-T589 300-encounter soak, the polish re-baseline under GG-T493, GG-T276 balance loop). One device or game player at a time.
+- Link it from BIBLE 8.1 and README''s docs list.
+
+## Done when
+docs/RELEASE_CHECKLIST.md exists, every line names a command, doc section or ticket ID that exists, BIBLE 8.1 links it. Docs only; no build or tests needed.', '2026-11-25T19:15:35Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T1119', '## Goal
+A static release lint, tools/release_lint.py, that finds player-visible text and content that must not ship, in the style of tools/polish_lint.py (table by default, --json).
+
+## Scope
+- Scan Assets/GridGame/Resources/Content/*.json and App UI string literals (skip App/Automation, as polish_lint does) for: lorem ipsum, TODO/TBD/FIXME/placeholder/test text in player-visible fields, test stages reachable from a campaign region, empty or missing names/descriptions, portraits or icons that resolve to a placeholder asset.
+- Story text tracked by GG-T497 (crawls, dialogue, quest text that is lorem until the story lands) is reported in its own "known: GG-T497" bucket, not as a failure.
+- Add it to the tools/nightly.ps1 report next to the polish lint (report only, never a gate).
+
+## Done when
+The script parses (`python -m py_compile tools/release_lint.py`), runs over the repo once to produce the first table, and each real finding cluster is filed as a fix ticket with `--parent GG-T493`. Verification is build-only: no test suite run.', '2026-11-25T19:15:38Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T1120', '## Goal
+Confirm by reading code, plus one release build, that a non-development player ships with no developer surfaces and the release-only behaviour RELEASE_SCOPE and BIBLE 8.1 promise.
+
+## Scope (code read; cite file and line for each)
+- Meta/Features.cs defaults match every RELEASE_SCOPE.md verdict (hidden: Enchanter, Taming, LookPresets, InnRespecRow, Caravan row; Crucible and Bounties as decided).
+- App.CommandLine ignores debug flags without -enableDebugOptions in a non-development player (GG-T566); Unity.Shared --headless and -profiles-root included.
+- AutomationServer, dev banners, -demo/-testmode/-endless entry points unreachable in release.
+- IDiamondStore release path shows "Store not connected yet"; no free test stub in release.
+- CrashReporter is wired in release; invariant culture set at startup.
+## Build
+Take the heavy-process lease, close no one else''s Unity, run `pwsh tools/build.ps1 -Release -SkipProse` once. One build at a time.
+
+## Done when
+The release build finishes with zero `error CS`; each gap found is filed as a fix ticket `--parent GG-T493`; docs/RELEASE_BUILD.md gains a short "Release player audit (date)" section listing what was checked. Build-only verification; do not run tests or launch the player.', '2026-11-25T19:15:41Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T1121', '## NIGHT-ONLY: run only between 00:00 and 10:00 local. One game player at a time; never alongside another player, soak or emulator.
+
+## Goal
+Re-measure polish (GG-LAW-14) against docs/polish/baseline.json (2026-11-17) after the turn modes, skill-hex Board tab, Party mini-boards and battle-feel work that landed since.
+
+## Scope
+- Fresh dev player first (GG-T1114 covers the rebuild; reuse it if it landed).
+- Run the full pass: `python tools/polish.py` with every harness aspect (not --quick), one player instance.
+- Compare each dimension and rule with baseline.json. Every drop becomes a fix ticket `--parent GG-T493` (worked first, per GG-LAW-14). The three lowest rule groups become the next cycle''s tickets.
+- Raise baseline.json only where a score rose; never lower a threshold.
+- The same run answers GG-T705 (bands at every 9:x aspect): record its result there.
+
+## Done when
+A dated report is committed under docs/polish/ (or the path polish.py writes), baseline.json updated for rises only, fix tickets filed for drops and the three lowest groups, GG-T705 updated.', '2026-11-25T19:15:45Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T1122', '## One game player at a time. About an hour of play; not a soak, but don''t start it while another player, soak or emulator is running.
+
+## Goal
+Repeat the GG-T494 fresh-player run (docs/FRESH_PLAYER_RUN.md) on current main: a new profile through the real UI, since turn modes, the skill-hex Board tab, Party mini-boards, Respec and the battle-feel epic all changed what a new player sees.
+
+## Scope
+- Needs a fresh dev player (GG-T1114).
+- Same route as GG-T494: title, party pick, prologue, tutorial battle, three expeditions, every Camp vendor, Summon Circle, Diamond Store, Blacksmith; plus the Abilities > Board tab and Party tab.
+- Record with MindAttic.Capture under R:\MindAttic\Media\Capture (per GG-T1012).
+- Check that the 19 GG-T494 findings stay fixed.
+- Each new issue is filed as its own fix ticket `--parent GG-T493` with the screenshot path. Story lorem stays under GG-T497 and is not refiled.
+
+## Done when
+docs/FRESH_PLAYER_RUN.md has a second dated section (timeline, screenshot index, issue table with ticket IDs), every issue is ticketed, and the regression check on the 19 old findings is recorded. Do not fix issues in this task.', '2026-11-25T19:15:49Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T1123', '## OWNER-ONLY (devices, store account). One device at a time.
+
+## Goal
+The owner plays the signed release bundle on a real target phone (BIBLE 26.3 / RELEASE_BUILD.md target devices) from a Play Console internal-testing track and reports what an agent can''t see on a PC.
+
+## Steps
+1. An agent builds `pwsh tools/build.ps1 -Platform Android` (release .aab) and hands over the path; the owner uploads it to internal testing.
+2. Install from the Play internal track on one phone; play the first 30 minutes: install size, first launch time, title to first battle, tutorial, one expedition, Camp, Summon, Diamond Store ("Store not connected yet"), backgrounding and resuming, rotate lock, audio over speaker and headphones.
+3. Note crashes, stutters, unreadable text, touch misses and anything that feels wrong, with screenshots.
+
+## Done when
+The owner''s notes are recorded (a comment on this ticket or docs/FRESH_PLAYER_RUN.md "on device" section) and an agent files each issue as a fix ticket `--parent GG-T493`. Overlaps GG-T481 (perf profiling) only in the device; this is a feel and correctness check, not profiling.', '2026-11-25T19:15:53Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T1124', 'Release player audit (GG-T1120) found Features.cs line 29 LookPresets = true (re-enabled 2026-11-17, owner GG-T404, ''options to try and compare'') while docs/RELEASE_SCOPE.md still lists Menu theme / Font / Text wrapping as DISABLE (developer look presets) and the Features class summary in the scope doc says hidden. Caravan = true (GG-T432) while its table row still says ''DISABLE -> ready to KEEP''. Fix: owner decides whether the look presets ship in a non-development player; then set LookPresets accordingly (false hides the Settings rows) and update the RELEASE_SCOPE.md rows to match the code.', '2026-11-25T19:20:05Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T1125', 'Release player audit (GG-T1120). GameApp.CommandLine gates every GridGame flag, and GameApp.cs:162 gates the headless session, but Unity.Shared''s HeadlessBootstrap (Runtime/HeadlessBootstrap.cs, RuntimeInitializeOnLoad) reads --headless / MINDATTIC_HEADLESS itself in any build: it sets Profiles.SessionMuted, Application.runInBackground = true, vSyncCount = 0 and logs MINDATTIC_HEADLESS_READY. ProfilesBootstrap also honours -muted / MINDATTIC_CLI_MUTED and, at SubsystemRegistration, -profiles-root / MINDATTIC_PROFILES_ROOT before GameApp pins the real folder (GameApp.cs:541 then replaces it, so saves are safe, but Profiles.Current briefly points at the override). Effect is cosmetic (a release player started with --headless is muted and keeps running in the background) but violates GG-T566 ''release ignores debug flags''. Fix: either gate in GridGame (reset Profiles.SessionMuted / runInBackground in GameApp.Awake when !CommandLine.DebugOptionsAllowed) or add a shared release guard in Unity.Shared; owner decides which.', '2026-11-25T19:20:09Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T1127', '**Owner task (Apple developer account).** GG-T609 built iCloud cloud save on the game side (iCloud key-value store; BIBLE §15.2, docs/RELEASE_BUILD.md "Cloud save: iCloud (GG-T609)" step 1). It stays inert until the app is allowed to use iCloud.
+
+Checklist:
+- [ ] Sign in at developer.apple.com > Account > **Certificates, Identifiers & Profiles > Identifiers**.
+- [ ] Open the App ID **com.mindattic.gridgame**. If it doesn''t exist yet, register it first (explicit App ID, that bundle id), which is the same step as GG-T479''s owner checklist item 3.
+- [ ] Under **Capabilities**, tick **iCloud**. Choose **"Include CloudKit support" OFF** (the key-value store needs no CloudKit container and no iCloud Documents). Click **Save**, then **Confirm** if it warns that profiles become invalid.
+- [ ] If you sign manually (not Xcode''s automatic signing): **Profiles** > regenerate (Edit > Save) the App Store and Development provisioning profiles for com.mindattic.gridgame so they carry the iCloud entitlement, and download them. With automatic signing, Xcode does this on the next build.
+- [ ] Nothing to send to an agent: there is no container id or key. Reply "iCloud on" in this ticket''s notes and close it.', '2026-11-25T19:21:11Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T1128', '**Owner task (Mac + Xcode).** First Xcode build of the iCloud cloud save from GG-T609 (docs/RELEASE_BUILD.md "Cloud save: iCloud (GG-T609)" step 2). The code was written and compile-checked on Windows only (C# with UNITY_IOS defined); the native file `Assets/GridGame/Plugins/iOS/GGICloud.mm` and the entitlement post-processor `Assets/GridGame/Editor/ICloudEntitlements.cs` have never run in Xcode.
+
+Checklist:
+- [ ] Export the Xcode project: `pwsh tools/build.ps1 -Platform iOS` (on Windows or the Mac), with `$env:GG_IOS_TEAM_ID` set if you use it. Copy `Build/iOS` to the Mac as a zip.
+- [ ] In the Unity log of the export, confirm the line `[Cloud] iCloud key-value storage entitlement added (GridGame.entitlements)`.
+- [ ] Open `Unity-iPhone.xcodeproj`. Target **Unity-iPhone** > **Signing & Capabilities**: an **iCloud** capability is listed with **Key-value storage** ticked (CloudKit and iCloud Documents unticked). If Xcode shows a red signing error for iCloud, finish the App ID task first (iCloud App ID setup ticket).
+- [ ] Open `Unity-iPhone/GridGame.entitlements` and confirm it holds `com.apple.developer.ubiquity-kvstore-identifier` = `$(TeamIdentifierPrefix)$(CFBundleIdentifier)`.
+- [ ] Build for a connected iPhone (scheme destination your device, **Product > Run**). The build must compile `GGICloud.mm` (under Libraries/GridGame/Plugins/iOS in the UnityFramework target) without errors. If it fails, copy the exact Xcode error into a new ticket under GG-T500 and stop.
+- [ ] With the phone signed into iCloud, watch Xcode''s console after launch: `[Cloud] sign-in ok` means iCloud is reachable; `[Cloud] sign-in unavailable` means the phone isn''t signed into iCloud, iCloud is off for the app, or the entitlement is missing.
+- [ ] Note the result in this ticket and close it.', '2026-11-25T19:21:15Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T1129', '**Owner task (iPhones).** On-device check of iCloud cloud save (GG-T609; docs/RELEASE_BUILD.md "Cloud save: iCloud (GG-T609)" step 3). Needs a build from the Xcode build check ticket installed on the phones (Xcode Run or TestFlight), each phone signed into the **same Apple ID** with iCloud on (Settings > [your name] > iCloud). A second iPhone or iPad helps; with one phone, use delete + reinstall instead.
+
+Checklist:
+- [ ] **Upload:** on phone A, start or continue a game, play at least a minute, then send the app to the background (that flushes the upload). Xcode''s console shows `[Cloud] uploaded Default-slotN`.
+- [ ] **Restore:** on phone B (or after deleting and reinstalling the app on A and waiting about a minute with the network on), open Load Game > **Restore from cloud**. The slot comes back with the same name, heroes and play time.
+- [ ] **Newer copy offered:** play further on phone A and background it. On phone B choose **Continue** for that slot: it asks "Use the cloud save from <date>, <h:mm> played? This device''s save is older (...)". **Use cloud save** loads A''s progress; Cancel keeps B''s.
+- [ ] **Same save not offered:** Continue again on A right after backgrounding it: no question, the game just loads.
+- [ ] **Conflict (longest play time wins):** put both phones in Airplane Mode, play the same slot on both (play longer on A), background both, then turn the network back on, A first, B a few seconds later. After a minute, delete and reinstall the app on B and use Load Game > Restore from cloud: the restored slot must be A''s (the longer play time). Xcode''s console on A may show `iCloud conflict, kept this device''s longer play time`.
+- [ ] **iCloud off:** Settings > [your name] > iCloud > turn iCloud off for GridGame (or sign out of iCloud). The game starts and plays normally, Load Game > Restore from cloud restores nothing, and no question is asked on Continue.
+- [ ] Note what passed and what didn''t in this ticket (file a fix ticket under GG-T500 for anything that failed), then close it.', '2026-11-25T19:21:19Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T219', 'Owner request 2026-11-03: ''the selected moving hero or enemy must have a trail following them like in Terra Battle or Friends & Dragons so show where they came from, also remember one of the most important strategies is to slide through allies and opponents to setup even more devastating pincer attacks but moving opponents into lines to execute the best pincer attack''. Presentation only (no Core change). Acceptance: while dragging, every tile the hero has walked through shows a trail segment from its start tile, joined as a path, fading toward the oldest; cleared on drop. Enemy moves show a brief fading trail during playback. BIBLE records the trail and the slide-through-to-line-up strategy note.', '2026-11-03T17:55:46Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GG-T220', '**Story.** As the owner, each hero''s and enemy''s thumbnail is a zoom + offset into its one real portrait, stored on the character, so I decide exactly how every unit looks and no second image is ever made.
 
@@ -147158,6 +147460,19 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T1107', 'Eyeball
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T1115', 'Play Games Console setup', '2026-11-25T19:01:18Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T1116', 'Install Play Games plugin', '2026-11-25T19:01:22Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T1117', 'Cloud save phone check', '2026-11-25T19:01:26Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T1118', 'Release checklist', '2026-11-25T19:15:35Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T1119', 'Release content lint', '2026-11-25T19:15:38Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T1120', 'Release player audit', '2026-11-25T19:15:41Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T1121', 'Polish re-baseline (night-only)', '2026-11-25T19:15:45Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T1122', 'Second fresh-player run', '2026-11-25T19:15:49Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T1123', 'Release phone check (owner)', '2026-11-25T19:15:53Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T1124', 'Reconcile LookPresets scope', '2026-11-25T19:20:05Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T1125', 'Gate shared headless bootstrap', '2026-11-25T19:20:09Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T1127', 'iCloud App ID setup', '2026-11-25T19:21:11Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T1128', 'iCloud Xcode build check', '2026-11-25T19:21:15Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T1129', 'iCloud save phone check', '2026-11-25T19:21:19Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T1130', 'Missing ability icons', '2026-11-25T19:22:48Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T1131', 'Repair slice-1 signatures', '2026-11-25T19:22:53Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T318', 'Speed sets re-entry', '2026-11-07T04:31:39Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T319', 'Recovery tray UI', '2026-11-07T04:31:40Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GG-T320', 'Bot and recover content', '2026-11-07T04:31:42Z');
@@ -150065,6 +150380,21 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1111', 'level:t
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1115', 'level:task', '2026-11-25T19:01:18Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1116', 'level:task', '2026-11-25T19:01:22Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1117', 'level:task', '2026-11-25T19:01:26Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1118', 'level:task', '2026-11-25T19:15:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1119', 'level:task', '2026-11-25T19:15:39Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1120', 'level:task', '2026-11-25T19:15:42Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1121', 'level:task', '2026-11-25T19:15:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1121', 'night-only', '2026-11-25T19:15:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1122', 'level:task', '2026-11-25T19:15:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1123', 'level:task', '2026-11-25T19:15:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1123', 'owner-only', '2026-11-25T19:15:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1124', 'level:task', '2026-11-25T19:20:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1125', 'level:task', '2026-11-25T19:20:09Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1126', 'level:task', '2026-11-25T19:20:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1127', 'level:task', '2026-11-25T19:21:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1128', 'level:task', '2026-11-25T19:21:15Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1129', 'level:task', '2026-11-25T19:21:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1131', 'level:task', '2026-11-25T19:22:53Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T168', 'level:story', '2026-11-22T05:55:27Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T191', 'level:story', '2026-11-22T05:56:28Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T215', 'level:task', '2026-11-22T05:36:13Z');
@@ -150449,7 +150779,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T970', 'level:st
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T971', 'level:task', '2026-11-24T14:52:19Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T972', 'level:task', '2026-11-24T14:57:51Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T973', 'level:task', '2026-11-24T14:57:53Z');
-INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T974', 'level:task', '2026-11-24T14:57:56Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T974', 'level:story', '2026-11-25T19:20:46Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T975', 'level:task', '2026-11-24T14:58:01Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T976', 'level:task', '2026-11-24T14:58:05Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T977', 'level:task', '2026-11-24T14:58:10Z');
@@ -156843,6 +157173,30 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1116', 'GG-T608', 'f
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1117', 'GG-T1116', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1117', 'GG-T500', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1117', 'GG-T608', 'follow-up-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1118', 'GG-T493', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1119', 'GG-T493', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1120', 'GG-T493', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1121', 'GG-T1114', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1121', 'GG-T493', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1122', 'GG-T1114', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1122', 'GG-T493', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1123', 'GG-T1120', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1123', 'GG-T493', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1124', 'GG-T493', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1125', 'GG-T493', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1126', 'GG-T961', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1127', 'GG-T500', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1127', 'GG-T609', 'follow-up-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1128', 'GG-T1127', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1128', 'GG-T479', 'related', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1128', 'GG-T500', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1128', 'GG-T609', 'follow-up-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1129', 'GG-T1128', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1129', 'GG-T500', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1129', 'GG-T609', 'follow-up-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1130', 'GG-T493', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1131', 'GG-T961', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T1131', 'GG-T975', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T116', 'GG-T99', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T118', 'GG-T117', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-T119', 'GG-T117', 'requires', NULL);
