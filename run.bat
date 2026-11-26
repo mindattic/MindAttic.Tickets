@@ -1,30 +1,18 @@
 @echo off
-rem Builds Tickets Desktop, installs it to C:\Apps\MindAttic.Tickets.Desktop and makes its desktop icon (run.ps1).
-set "APPS=C:\Apps"
-if not exist "%APPS%" set "APPS=%LOCALAPPDATA%\Programs"
-set "APP_EXE=%APPS%\MindAttic.Tickets.Desktop\MindAttic.Tickets.Desktop.exe"
-echo.
-echo   MindAttic Tickets
-echo     1^) Deploy ^& Run
-echo     2^) Run
-echo.
-choice /c 12 /n /m "  Choose 1 or 2: "
-if errorlevel 2 goto run
-:deploy
-powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0run.ps1" -Republish -Launch %*
-if errorlevel 1 (
-    echo Deploy failed.
-    if exist "%APP_EXE%" (
-        echo Opening the installed copy.
-        start "" "%APP_EXE%"
-    )
+rem The MindAttic standard run.bat (MAT-T279), written by deploy-lib.ps1's Write-RunBat - edits here are overwritten.
+rem Double-click: the run.ps1 menu (1 Redeploy, 2 Run Debug, 3 Run Release). Arguments pass through to run.ps1.
+title MindAttic Tickets
+set "RUN_PS1=%~dp0run.ps1"
+if not exist "%RUN_PS1%" (
+    echo run.ps1 not found at "%RUN_PS1%".
     pause
+    exit /b 1
 )
-exit /b 0
-:run
-if not exist "%APP_EXE%" (
-    echo MindAttic Tickets is not installed yet - deploying it first.
-    goto deploy
+powershell -NoProfile -ExecutionPolicy Bypass -File "%RUN_PS1%" %*
+if errorlevel 1 (
+    echo.
+    echo run.ps1 failed ^(exit %errorlevel%^).
+    pause
+    exit /b 1
 )
-start "" "%APP_EXE%"
 exit /b 0
