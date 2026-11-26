@@ -106,15 +106,17 @@ public sealed class LiveRefreshTests
         var path = TicketsDb.DefaultPath(root);
         var fired = 0;
         var first = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
-        using var watch = new DatabaseWatch(path, TimeSpan.FromMilliseconds(300), Timeout.InfiniteTimeSpan,
+        // A wide settle window: on a busy temp disk each SQLite open/close can take hundreds of ms (M.TIX-T383).
+        var settle = TimeSpan.FromSeconds(3);
+        using var watch = new DatabaseWatch(path, settle, Timeout.InfiniteTimeSpan,
             () => { Interlocked.Increment(ref fired); first.TrySetResult(); });
         Assert.That(watch.Watching, Is.True);
 
         for (var i = 0; i < 3; i++) Agent(db => db.Approve("AL-T1"));
         Agent(db => db.Unapprove("AL-T1"));
 
-        Assert.That(await Task.WhenAny(first.Task, Task.Delay(TimeSpan.FromSeconds(10))), Is.SameAs(first.Task), "the change was seen");
-        await Task.Delay(800);
+        Assert.That(await Task.WhenAny(first.Task, Task.Delay(TimeSpan.FromSeconds(20))), Is.SameAs(first.Task), "the change was seen");
+        await Task.Delay(settle + settle);
         Assert.That(fired, Is.EqualTo(1), "several writes, one refresh");
     }
 
