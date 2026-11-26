@@ -119457,6 +119457,30 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (124019, 
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (124020, 'US-T871', '2026-11-26T09:16:29Z', 'working', 'ryandebraal@gmail.com (831346a9-59b9-428b-b943-300f041d1493)', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (124021, 'US-T875', '2026-11-26T09:16:30Z', 'working', 'ryandebraal@gmail.com (831346a9-59b9-428b-b943-300f041d1493)', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (124022, 'US-T876', '2026-11-26T09:16:30Z', 'working', 'ryandebraal@gmail.com (831346a9-59b9-428b-b943-300f041d1493)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (124023, 'GG-T1175', '2026-11-26T09:26:19Z', 'working', NULL, 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (124024, 'US-T876', '2026-11-26T09:26:19Z', 'working', NULL, 'ryandebraal@gmail.com (831346a9-59b9-428b-b943-300f041d1493)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (124025, 'US-T875', '2026-11-26T09:26:19Z', 'working', NULL, 'ryandebraal@gmail.com (831346a9-59b9-428b-b943-300f041d1493)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (124026, 'GG-T1135', '2026-11-26T09:26:20Z', 'working', NULL, 'pdftransferjr@mindattic.com (f8ff71be-40a7-4867-8742-0592d8f38294)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (124027, 'US-T871', '2026-11-26T09:26:20Z', 'working', NULL, 'ryandebraal@gmail.com (831346a9-59b9-428b-b943-300f041d1493)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (124028, 'US-T868', '2026-11-26T09:26:20Z', 'working', NULL, 'ryandebraal@gmail.com (831346a9-59b9-428b-b943-300f041d1493)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (124029, 'US-T867', '2026-11-26T09:26:20Z', 'working', NULL, 'ryandebraal@gmail.com (831346a9-59b9-428b-b943-300f041d1493)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (124030, 'US-T866', '2026-11-26T09:26:20Z', 'working', NULL, 'ryandebraal@gmail.com (b773a79b-ba7e-46cb-9786-f886660e3188)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (124031, 'US-T856', '2026-11-26T09:26:20Z', 'working', NULL, 'ryandebraal@gmail.com (b773a79b-ba7e-46cb-9786-f886660e3188)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (124032, 'US-T824', '2026-11-26T09:26:20Z', 'working', NULL, 'ryandebraal@gmail.com (b773a79b-ba7e-46cb-9786-f886660e3188)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (124033, 'GG-T1048', '2026-11-26T09:26:20Z', 'working', NULL, 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (124034, 'GG-T821', '2026-11-26T09:26:20Z', 'working', NULL, 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (124035, 'GG-T1048', '2026-11-26T09:26:37Z', 'working', 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (124036, 'GG-T1135', '2026-11-26T09:26:37Z', 'working', 'pdftransferjr@mindattic.com (f8ff71be-40a7-4867-8742-0592d8f38294)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (124037, 'GG-T1175', '2026-11-26T09:26:37Z', 'working', 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (124038, 'GG-T821', '2026-11-26T09:26:38Z', 'working', 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (124039, 'US-T824', '2026-11-26T09:26:38Z', 'working', 'ryandebraal@gmail.com (b773a79b-ba7e-46cb-9786-f886660e3188)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (124040, 'US-T856', '2026-11-26T09:26:38Z', 'working', 'ryandebraal@gmail.com (b773a79b-ba7e-46cb-9786-f886660e3188)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (124041, 'US-T866', '2026-11-26T09:26:38Z', 'working', 'ryandebraal@gmail.com (b773a79b-ba7e-46cb-9786-f886660e3188)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (124042, 'US-T867', '2026-11-26T09:26:38Z', 'working', 'ryandebraal@gmail.com (831346a9-59b9-428b-b943-300f041d1493)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (124043, 'US-T868', '2026-11-26T09:26:38Z', 'working', 'ryandebraal@gmail.com (831346a9-59b9-428b-b943-300f041d1493)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (124044, 'US-T871', '2026-11-26T09:26:38Z', 'working', 'ryandebraal@gmail.com (831346a9-59b9-428b-b943-300f041d1493)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (124045, 'US-T875', '2026-11-26T09:26:38Z', 'working', 'ryandebraal@gmail.com (831346a9-59b9-428b-b943-300f041d1493)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (124046, 'US-T876', '2026-11-26T09:26:38Z', 'working', 'ryandebraal@gmail.com (831346a9-59b9-428b-b943-300f041d1493)', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AES-T10', 'proposed', 380, '2026-11-24T19:47:20Z', NULL);
