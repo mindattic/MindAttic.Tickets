@@ -328,7 +328,7 @@ public sealed class TicketCliTests
         Assert.That(Json("--repo", "b").Select(x => x.GetProperty("id").GetString()), Is.EqualTo(new[] { "BB-T1" }));
         Assert.That(Json("--status", "open", "--type", "fix").Count, Is.EqualTo(2));
         Assert.That(Json("--since", "2026-10-01").Select(x => x.GetProperty("id").GetString()), Is.EqualTo(new[] { "AA-T2", "BB-T1" }));
-        Assert.That(Json()[0].EnumerateObject().Select(p => p.Name), Is.EqualTo(new[] { "repo", "id", "name", "date", "type", "status", "summary", "ref", "labels" }));
+        Assert.That(Json()[0].EnumerateObject().Select(p => p.Name), Is.EqualTo(new[] { "repo", "id", "name", "date", "type", "status", "summary", "ref", "labels", "level" }));
         Assert.That(Run("ticket", "list", "--label", "ui").Code, Is.EqualTo(1), "labels live in the ticket database, which this workspace hasn't got");
     }
 
