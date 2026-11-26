@@ -6371,7 +6371,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T552', 'GridGame.Unity', 552, '2026-11-21', 'fix', 'closed', 'GridGame.Gallery showed all broken images: its server (tools/gallery.py, port 8787) wasn''t running; relaunched detached', '—', 551, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T553', 'GridGame.Unity', 553, '2026-11-21', 'feature', 'closed', 'GridGame.Gallery: one character type per row, full width, for the biggest preview', 'GridGame.Studio 27df87d', 552, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T554', 'GridGame.Unity', 554, '2026-11-21', 'feature', 'wont-do', 'GridGame.Gallery: an Edit button on every asset opens a simple eraser (circle or square brush, 1-100 px) to touch up the real asset and save it back', '—', 553, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T555', 'GridGame.Unity', 555, '2026-11-21', 'chore', 'open', 'Rename Unity.GridGame -> GridGame.Unity (GitHub, folder, ticket DB, Launcher, Orchestrator, paths) so it nests with GridGame.Studio', '—', 554, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T555', 'GridGame.Unity', 555, '2026-11-21', 'chore', 'closed', 'Rename Unity.GridGame -> GridGame.Unity (GitHub, folder, ticket DB, Launcher, Orchestrator, paths) so it nests with GridGame.Studio', 'children done', 554, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T556', 'GridGame.Unity', 556, '2026-11-21', 'feature', 'closed', 'Attack sounds by attack type (slash, blunt, pierce, claw, bite, sting, ...): classify every hero weapon/enemy attack, map type -> SFX key, play it on hit with fallback to today''s sounds; missing files show as empty slots in Studio''s Sound Effects tab', '—', 555, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T557', 'GridGame.Unity', 557, '2026-11-21', 'feature', 'closed', 'Rename actor portraits to <ClassName>_female/_male.png (enemies <Name>_NN) with explicit Portrait/MalePortrait fields; no more id-named files like sister.png for Acolyte', '—', 556, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T558', 'GridGame.Unity', 558, '2026-11-21', 'feature', 'closed', 'Write lore for every hero class and enemy family from the world canon', 'children done', 557, NULL);
@@ -6431,7 +6431,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T612', 'GridGame.Unity', 612, '2026-11-22', 'feature', 'closed', 'Define staging/output folder convention kept out of Portraits until approval', '79767d3 (GridGame.Studio), da00fe3c', 611, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T613', 'GridGame.Unity', 613, '2026-11-22', 'chore', 'closed', 'Rename Unity.GridGame to GridGame.Unity on GitHub and the local folder', 'already done: GitHub repo mindattic/GridGame.Unity and local folder D:\Projects\MindAttic\GridGame.Unity (verified 2026-11-25)', 612, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T614', 'GridGame.Unity', 614, '2026-11-22', 'chore', 'closed', 'Update ticket DB, Launcher and Orchestrator references', '1af06f334eb28792841f7e8514c44c4a8f150307', 613, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T615', 'GridGame.Unity', 615, '2026-11-22', 'chore', 'open', 'Fix remaining paths and docs referencing the old name', '—', 614, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T615', 'GridGame.Unity', 615, '2026-11-22', 'chore', 'closed', 'Fix remaining paths and docs referencing the old name', '80b9ea88', 614, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T616', 'GridGame.Unity', 616, '2026-11-22', 'feature', 'closed', 'Write lore entries for every hero class from the world canon in Prose/content JSON', '8e69ab3b', 615, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T617', 'GridGame.Unity', 617, '2026-11-22', 'feature', 'closed', 'Write lore entries for every enemy family from the world canon in Prose/content JSON', 'df38cbae', 616, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T618', 'GridGame.Unity', 618, '2026-11-22', 'feature', 'closed', 'Rewrite each hero class Description as a physical description written from its portrait(s)', '8e69ab3b', 617, NULL);
@@ -6958,9 +6958,9 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1139', 'GridGame.Unity', 1139, '2026-11-25', 'feature', 'open', 'Same recipe as the Courier/Sage task: new unique near signature for Jade Knight, Cleric and Lightweaver (whitewitch), then merge jadeknight_resolve into deathguard_dark_communion and cleric_grace + whitewitch_ward into aegiswardens_preemptiveward (Preemptive Ward numbers win: heal 10 + Ward, 1 orb). Validator 0 errors, 0 warnings.', '—', 1138, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1140', 'GridGame.Unity', 1140, '2026-11-25', 'feature', 'open', 'Owner signed off 2026-11-25 (see GG-T1135 note): merge hinder into disrupt (Tactician; drop the 2 s pushback) and alchemist_transmute into doctor_triage (drop Transmute Pain''s Protection rider). Alchemist''s signature is alchemist_transmute, so it needs a new unique signature on or within 1 step of its spot first; check Tactician keeps tactician_countermarch. Validator 0 errors, 0 warnings.', '—', 1139, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1141', 'GridGame.Unity', 1141, '2026-11-25', 'chore', 'open', 'Owner listening pass on device speakers and headphones: music 0.6 vs SFX 0.7 defaults, -8 dB duck during cut-ins/dialogue, SFX peaks near 0 dBFS (check clipping on phone speakers), music loops seamless; report any track or SFX that sticks out', '—', 1140, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1142', 'GridGame.Unity', 1142, '2026-11-25', 'chore', 'open', 'Follow-up of GG-T614: replace leftover Unity.GridGame refs with GridGame.Unity in Android.Emulator.Suite (apps/apps.json, README.md), Auto.MidjourneyNav/README.md, GridGame.Studio (AGENTS.md, README.md, App.xaml.cs, both GameLocator.cs, CliApp.cs, StageRules.cs) and mindattic-agent-standard (command-catalog.json, tests/test-gate.Tests.ps1); GameLocator.cs and apps.json first (runtime paths). Do a full grep, leave historical ticket text alone.', '—', 1141, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1142', 'GridGame.Unity', 1142, '2026-11-25', 'chore', 'closed', 'Follow-up of GG-T614: replace leftover Unity.GridGame refs with GridGame.Unity in Android.Emulator.Suite (apps/apps.json, README.md), Auto.MidjourneyNav/README.md, GridGame.Studio (AGENTS.md, README.md, App.xaml.cs, both GameLocator.cs, CliApp.cs, StageRules.cs) and mindattic-agent-standard (command-catalog.json, tests/test-gate.Tests.ps1); GameLocator.cs and apps.json first (runtime paths). Do a full grep, leave historical ticket text alone.', '01b02c7e,6da607d5,e2c4c26e,137a4861', 1141, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1143', 'GridGame.Unity', 1143, '2026-11-25', 'fix', 'open', 'Battle screen text overflows at most aspects: stage name ''Lantern of the Still'' and ''Stand Guard'' at 9:23/9:25 framed (found by GG-T1114 harness aspects)', '—', 1142, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1144', 'GridGame.Unity', 1144, '2026-11-25', 'fix', 'closed', 'tools/harness.py aspects starts a fresh GridGame player per aspect and never closes them (12 orphans on port 28905 after GG-T1114); close each before the next', '913468cc', 1143, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GG-T1144', 'GridGame.Unity', 1144, '2026-11-25', 'fix', 'closed', 'tools/harness.py aspects starts a fresh GridGame player per aspect and never closes them (12 orphans on port 28905 after GG-T1114); close each before the next', 'daefef9c', 1143, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('HCM-T1', 'Hardware.ChiMesh', 1, '2026-11-22', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('HCM-T2', 'Hardware.ChiMesh', 2, '2026-11-22', 'docs', 'closed', '2026-11-22 morning', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('HCM-T3', 'Hardware.ChiMesh', 3, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 2, NULL);
@@ -7828,6 +7828,14 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('KP-T38', 'KdpPublish', 38, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 37, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('KYM-T1', 'KnowYourMech', 1, '2026-11-25', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('KYM-T2', 'KnowYourMech', 2, '2026-11-25', 'chore', 'open', 'Rename drill terminology to quiz, make button text unselectable, and clean up naming/cruft across the app', '—', 1, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('KYM-T3', 'KnowYourMech', 3, '2026-11-25', 'feature', 'closed', 'BattleMech ID flashcards with a fresh image every showing, rotating sources (Sarna TRO art/minis/game shots, DeviantArt fan art, Flickr minis, Lemmy posts, Commons, MechWiki), plus name, tonnage and visual tells on reveal', '9dc8758', 2, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('KYM-T4', 'KnowYourMech', 4, '2026-11-25', 'feature', 'closed', 'Mech ID Drill shows each ''Mech''s faction (Inner Sphere or Clan) on reveal, adds ~14 common Clan OmniMechs with their Inner Sphere reporting names, and filters the deck by faction', 'f3edc00', 3, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('KYM-T5', 'KnowYourMech', 5, '2026-11-25', 'feature', 'closed', 'Flashcard.Mechs builds a standalone static site (index.html, style.css, app.js, data.js, images/) that runs from any web host or straight from disk, no Claude artifact needed', 'e9582af', 4, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('KYM-T6', 'KnowYourMech', 6, '2026-11-25', 'fix', 'closed', 'Opening an HTML build from disk shows ''Could not load the ''Mech list'' and live sources stay on ''checking''; the artifact build sat beside the site build in dist/ and needs fetch(), which file:// blocks', 'a53a6b8', 5, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('KYM-T7', 'KnowYourMech', 7, '2026-11-25', 'feature', 'closed', 'Mech ID Drill harvests more images per ''Mech from more queries, and blurs every region of text (captions, base labels, watermarks, record sheet lettering) so no picture gives the name away', '599236b', 6, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('KYM-T8', 'KnowYourMech', 8, '2026-11-25', 'feature', 'closed', 'Each ''Mech''s images never repeat until all have been shown, then the bag reshuffles (shuffle bag), remembered across sessions', '5ce134e', 7, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('KYM-T9', 'KnowYourMech', 9, '2026-11-25', 'feature', 'open', 'Rename Flashcard.Mechs to KnowYourMech (brand KnowYourMech?), restyle to match Mods.MechWarrior5.SaveEditor''s theme, drop the artifact build, add persistent scoring with reset', '—', 8, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('KYM-T10', 'KnowYourMech', 10, '2026-11-25', 'feature', 'open', 'Add a 1-5 renown field to mechs.json and a Familiarity filter (All / Familiar+ / Iconic only) so the deck can be scoped away from obscure chassis', '—', 9, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MB-T1', 'MediaButler', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| MB-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MB-T2', 'MediaButler', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for LegionFallbackParser (MediaButler/Llm/LegionFallbackParser.cs), per RFC 0001: add an injectable transport seam (no live provider, no real credentials) and cover EnableLlmFallback=false returning null for ClassifyAsync and ClassifyFileAsync, ExtractJsonObject pulling the first balanced object out of code fences, prose and an echoed schema, braces and escaped quotes inside string values (Spinal Tap {Live}), unterminated or missing object returning null, kind mapping (movie, tv_season, unknown, titleless returns null), tv_episode only actionable when season AND episode are present, non-numeric year/season ignored, title trimmed, and provider exceptions swallowed to null - the MB-LAW-6 never-rename-wrong contract (MB-US-F1 is still unproven).', 'MediaButler.Tests/LegionFallbackParserTests.cs (commit 5017ae8)', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MB-T3', 'MediaButler', 3, '2026-10-14', 'chore', 'closed', 'NUnit tests for SeasonMerger (MediaButler/Pipeline/SeasonMerger.cs) as a unit, not only via the pipeline fixtures: MergeFiles collisions by file name and by parsed episode number, sample videos and junk extensions never merged, subtitle sidecars merged, KeepLargest replacing the smaller existing copy vs discarding an equal-or-smaller incoming copy (with duplicate-replace/duplicate-discard audit ops), Flag counting conflicts and recording one NeedsManual entry, dry-run returning the same Moved/Conflicts counts with nothing touched on disk; TryDeleteShell refusing on a non-sample video, a sample-named video above SampleMaxBytes, and junk above EmptyDeleteSafetyBytes (check refuseReason text), returning true for a missing folder, and not deleting in dry-run - this is the code that deletes user files.', 'a30b4c5', 2, NULL);
@@ -11626,6 +11634,18 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T58', 'MindAttic.Scheduler', 58, '2026-11-25', 'feature', 'open', 'Split MindAttic.Scheduler.Core and .Cli from net10.0-windows to net10.0 (WPF stays Windows); run log DB via a SQL Server connection string so it can live on Hetzner SQL instead of LocalDB', '—', 57, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T59', 'MindAttic.Scheduler', 59, '2026-11-25', 'feature', 'open', 'Add a SystemdTimerProvider (IJobProvider) that writes .service/.timer units for jobs.json entries, enables them, reads status/last-run from systemctl/journalctl and records runs in the run log; CLI picks the provider by OS', '—', 58, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T60', 'MindAttic.Scheduler', 60, '2026-11-25', 'feature', 'open', 'Scheduler job: per database, syncs local SQL Server rows to the remote copy (Hetzner later; any SQL Server target). First run copies everything; each later run syncs only changes since the previous run''s START (UTC), so rows written while a run was in progress are caught by the next one. Records each run''s start watermark; detects which DBs changed that day and skips the rest.', '—', 59, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T61', 'MindAttic.Scheduler', 61, '2026-11-25', 'feature', 'closed', 'dbsync.json settings: per-DB source instance and generic SQL Server target, every tunable a setting, default DB list mirroring the local copies', 'd4f2887', 60, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T62', 'MindAttic.Scheduler', 62, '2026-11-25', 'feature', 'open', 'Scheduler DB schema v2: DbSyncWatermark and DbSyncTableState, WatermarkStore commits the run''s START version and UTC only on success', '—', 61, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T63', 'MindAttic.Scheduler', 63, '2026-11-25', 'feature', 'open', 'ChangeTrackingSetup: idempotently enables CHANGE_TRACKING (retention from settings) on each source DB and every PK table, classifying no-PK and temporal history tables as fallback', '—', 62, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T64', 'MindAttic.Scheduler', 64, '2026-11-25', 'feature', 'closed', 'TableCatalog ported from Sync-ToAzure.ps1: columns, PKs, identity, temporal pairs, VECTOR, FKs, triggers; source vs target schema compare that refuses mismatches', '2fe2cbd', 63, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T65', 'MindAttic.Scheduler', 65, '2026-11-25', 'feature', 'open', 'ChangeTrackedTableSync: CHANGETABLE(CHANGES) since the watermark, staged MERGE upserts and PK deletes in one target transaction, VECTOR copied exactly', '—', 64, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T66', 'MindAttic.Scheduler', 66, '2026-11-25', 'feature', 'open', 'FullTableCopy (streamed SqlBulkCopy, identity kept and reseeded) and TargetConstraintGuard (FKs and triggers off then re-checked, crash-repairable)', '—', 65, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T67', 'MindAttic.Scheduler', 67, '2026-11-25', 'feature', 'open', 'HashDiffTableSync ported from Sync-ToAzure.ps1: cheap verdict, append-only tail and SHA2-256 range hashdiff for no-PK and temporal history tables', '—', 66, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T68', 'MindAttic.Scheduler', 68, '2026-11-25', 'feature', 'open', 'TemporalPairSync: suspend target SYSTEM_VERSIONING, copy history then current with exact period values, re-version on the same history table, crash-repairable', '—', 67, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T69', 'MindAttic.Scheduler', 69, '2026-11-25', 'feature', 'open', 'DatabaseSyncRunner: captures start version and UTC first, skips unchanged DBs, picks full/tracked/temporal/hashdiff per table, commits the start watermark only on success', '—', 68, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T70', 'MindAttic.Scheduler', 70, '2026-11-25', 'feature', 'open', 'mindattic-scheduler dbsync [--db] [--full] [--dry-run] [--json]: runs every configured DB, logs one line each, Sync-ToAzure exit codes', '—', 69, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T71', 'MindAttic.Scheduler', 71, '2026-11-25', 'feature', 'open', 'jobs.json gains Database.SyncToRemote (daily auto, disabled until the remote exists) and README documents the database sync', '—', 70, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T72', 'MindAttic.Scheduler', 72, '2026-11-25', 'feature', 'open', 'When a database''s remote target doesn''t exist (or has no tables), dbsync creates it from a schema-only package exported from the local copy (SqlPackage Extract/Publish, no data), then the first run''s full copy fills it. Never alters an existing remote schema.', '—', 71, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SR-T1', 'MindAttic.SpeechRecognition', 1, '2026-11-20', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SR-T2', 'MindAttic.SpeechRecognition', 2, '2026-11-20', 'chore', 'closed', 'Bootstrap the repo: AGENTS.md/CLAUDE.md forwarders, .NET 10 solution (MindAttic.SpeechRecognition, .AspNetCore) plus the @mindattic/speechrecognition npm package, NuGet.config for C:\LocalNuGet, commit-msg hook, README skeleton, docs site', '5049458', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SR-T3', 'MindAttic.SpeechRecognition', 3, '2026-11-20', 'feature', 'closed', 'Core contracts: ISpeechRecognizer streaming session, TranscriptSegment (partial/final, words with timings, confidence, speaker), audio conventions (16 kHz mono PCM16), provider options', 'cf217ad', 2, NULL);
@@ -116991,6 +117011,163 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121728, 
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121729, 'GG-T1142', '2026-11-26T02:45:46Z', 'label', NULL, 'level:task');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121730, 'GG-T1144', '2026-11-26T02:46:06Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121731, 'GG-T1144', '2026-11-26T02:46:06Z', 'ref', '—', '913468cc');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121732, 'GG-T1143', '2026-11-26T02:46:34Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121733, 'GG-T615', '2026-11-26T02:46:41Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121734, 'GG-T615', '2026-11-26T02:46:41Z', 'ref', '—', '80b9ea88');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121735, 'GG-T555', '2026-11-26T02:46:41Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121736, 'GG-T555', '2026-11-26T02:46:41Z', 'ref', '—', 'children done');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121737, 'GG-T555', '2026-11-26T02:46:41Z', 'rollup', NULL, 'GG-T615');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121738, 'GG-T1144', '2026-11-26T02:46:42Z', 'working', 'pdftransferjr@mindattic.com (f8ff71be-40a7-4867-8742-0592d8f38294)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121739, 'GG-T615', '2026-11-26T02:47:02Z', 'working', 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121740, 'M.SCHD-T61', '2026-11-26T02:48:07Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121741, 'M.SCHD-T61', '2026-11-26T02:48:07Z', 'name', NULL, 'DbSync settings and DB list');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121742, 'M.SCHD-T61', '2026-11-26T02:48:08Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121743, 'M.SCHD-T61', '2026-11-26T02:48:09Z', 'link', NULL, 'part-of M.SCHD-T60');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121744, 'M.SCHD-T60', '2026-11-26T02:48:09Z', 'link', NULL, 'M.SCHD-T61 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121745, 'M.SCHD-T61', '2026-11-26T02:48:09Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121746, 'M.SCHD-T62', '2026-11-26T02:48:12Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121747, 'M.SCHD-T62', '2026-11-26T02:48:12Z', 'name', NULL, 'DbSync watermark store');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121748, 'M.SCHD-T62', '2026-11-26T02:48:12Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121749, 'M.SCHD-T62', '2026-11-26T02:48:19Z', 'link', NULL, 'part-of M.SCHD-T60');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121750, 'M.SCHD-T60', '2026-11-26T02:48:20Z', 'link', NULL, 'M.SCHD-T62 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121751, 'M.SCHD-T62', '2026-11-26T02:48:21Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121752, 'M.SCHD-T63', '2026-11-26T02:48:24Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121753, 'M.SCHD-T63', '2026-11-26T02:48:24Z', 'name', NULL, 'Enable change tracking on sources');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121754, 'M.SCHD-T63', '2026-11-26T02:48:25Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121755, 'M.SCHD-T63', '2026-11-26T02:48:28Z', 'link', NULL, 'part-of M.SCHD-T60');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121756, 'M.SCHD-T60', '2026-11-26T02:48:29Z', 'link', NULL, 'M.SCHD-T63 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121757, 'M.SCHD-T63', '2026-11-26T02:48:30Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121758, 'M.SCHD-T64', '2026-11-26T02:48:33Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121759, 'M.SCHD-T64', '2026-11-26T02:48:33Z', 'name', NULL, 'DbSync table catalog');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121760, 'M.SCHD-T64', '2026-11-26T02:48:36Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121761, 'M.SCHD-T64', '2026-11-26T02:48:41Z', 'link', NULL, 'part-of M.SCHD-T60');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121762, 'M.SCHD-T60', '2026-11-26T02:48:41Z', 'link', NULL, 'M.SCHD-T64 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121763, 'M.SCHD-T64', '2026-11-26T02:48:41Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121764, 'M.SCHD-T65', '2026-11-26T02:48:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121765, 'M.SCHD-T65', '2026-11-26T02:48:43Z', 'name', NULL, 'Change-tracked table sync');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121766, 'M.SCHD-T65', '2026-11-26T02:48:44Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121767, 'M.SCHD-T65', '2026-11-26T02:48:46Z', 'link', NULL, 'part-of M.SCHD-T60');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121768, 'M.SCHD-T60', '2026-11-26T02:48:47Z', 'link', NULL, 'M.SCHD-T65 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121769, 'M.SCHD-T65', '2026-11-26T02:48:53Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121770, 'M.SCHD-T66', '2026-11-26T02:48:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121771, 'M.SCHD-T66', '2026-11-26T02:48:57Z', 'name', NULL, 'Full table copy and constraint guard');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121772, 'M.SCHD-T66', '2026-11-26T02:48:57Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121773, 'M.SCHD-T66', '2026-11-26T02:48:58Z', 'link', NULL, 'part-of M.SCHD-T60');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121774, 'M.SCHD-T60', '2026-11-26T02:48:59Z', 'link', NULL, 'M.SCHD-T66 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121775, 'M.SCHD-T66', '2026-11-26T02:49:00Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121776, 'M.SCHD-T67', '2026-11-26T02:49:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121777, 'M.SCHD-T67', '2026-11-26T02:49:04Z', 'name', NULL, 'Hashdiff fallback table sync');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121778, 'M.SCHD-T67', '2026-11-26T02:49:04Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121779, 'M.SCHD-T67', '2026-11-26T02:49:05Z', 'link', NULL, 'part-of M.SCHD-T60');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121780, 'M.SCHD-T60', '2026-11-26T02:49:05Z', 'link', NULL, 'M.SCHD-T67 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121781, 'M.SCHD-T67', '2026-11-26T02:49:05Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121782, 'M.SCHD-T68', '2026-11-26T02:49:07Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121783, 'M.SCHD-T68', '2026-11-26T02:49:07Z', 'name', NULL, 'Temporal pair sync');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121784, 'M.SCHD-T68', '2026-11-26T02:49:08Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121785, 'M.SCHD-T68', '2026-11-26T02:49:10Z', 'link', NULL, 'part-of M.SCHD-T60');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121786, 'M.SCHD-T60', '2026-11-26T02:49:10Z', 'link', NULL, 'M.SCHD-T68 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121787, 'M.SCHD-T68', '2026-11-26T02:49:11Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121788, 'M.SCHD-T69', '2026-11-26T02:49:13Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121789, 'M.SCHD-T69', '2026-11-26T02:49:13Z', 'name', NULL, 'Per-database sync runner');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121790, 'M.SCHD-T69', '2026-11-26T02:49:13Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121791, 'M.SCHD-T69', '2026-11-26T02:49:15Z', 'link', NULL, 'part-of M.SCHD-T60');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121792, 'M.SCHD-T60', '2026-11-26T02:49:15Z', 'link', NULL, 'M.SCHD-T69 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121793, 'M.SCHD-T69', '2026-11-26T02:49:15Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121794, 'M.SCHD-T70', '2026-11-26T02:49:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121795, 'M.SCHD-T70', '2026-11-26T02:49:17Z', 'name', NULL, 'dbsync CLI verb');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121796, 'M.SCHD-T70', '2026-11-26T02:49:18Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121797, 'M.SCHD-T70', '2026-11-26T02:49:19Z', 'link', NULL, 'part-of M.SCHD-T60');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121798, 'M.SCHD-T60', '2026-11-26T02:49:20Z', 'link', NULL, 'M.SCHD-T70 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121799, 'M.SCHD-T70', '2026-11-26T02:49:20Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121800, 'M.SCHD-T71', '2026-11-26T02:49:23Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121801, 'M.SCHD-T71', '2026-11-26T02:49:23Z', 'name', NULL, 'Register disabled dbsync job');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121802, 'M.SCHD-T71', '2026-11-26T02:49:24Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121803, 'M.SCHD-T71', '2026-11-26T02:49:26Z', 'link', NULL, 'part-of M.SCHD-T60');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121804, 'M.SCHD-T60', '2026-11-26T02:49:28Z', 'link', NULL, 'M.SCHD-T71 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121805, 'M.SCHD-T71', '2026-11-26T02:49:29Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121806, 'M.SCHD-T65', '2026-11-26T02:49:40Z', 'link', NULL, 'requires M.SCHD-T64');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121807, 'M.SCHD-T64', '2026-11-26T02:49:41Z', 'link', NULL, 'M.SCHD-T65 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121808, 'M.SCHD-T65', '2026-11-26T02:49:44Z', 'link', NULL, 'requires M.SCHD-T61');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121809, 'M.SCHD-T61', '2026-11-26T02:49:45Z', 'link', NULL, 'M.SCHD-T65 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121810, 'M.SCHD-T66', '2026-11-26T02:49:48Z', 'link', NULL, 'requires M.SCHD-T64');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121811, 'M.SCHD-T64', '2026-11-26T02:49:49Z', 'link', NULL, 'M.SCHD-T66 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121812, 'M.SCHD-T66', '2026-11-26T02:49:53Z', 'link', NULL, 'requires M.SCHD-T61');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121813, 'M.SCHD-T61', '2026-11-26T02:49:53Z', 'link', NULL, 'M.SCHD-T66 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121814, 'M.SCHD-T67', '2026-11-26T02:49:57Z', 'link', NULL, 'requires M.SCHD-T64');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121815, 'M.SCHD-T64', '2026-11-26T02:49:59Z', 'link', NULL, 'M.SCHD-T67 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121816, 'M.SCHD-T64', '2026-11-26T02:49:59Z', 'working', NULL, '3a3ec029-07bb-40dd-a1f6-578b671ff17b');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121817, 'M.SCHD-T61', '2026-11-26T02:50:01Z', 'working', NULL, '3a3ec029-07bb-40dd-a1f6-578b671ff17b');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121818, 'M.SCHD-T71', '2026-11-26T02:50:02Z', 'working', NULL, '3a3ec029-07bb-40dd-a1f6-578b671ff17b');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121819, 'M.SCHD-T70', '2026-11-26T02:50:02Z', 'working', NULL, '3a3ec029-07bb-40dd-a1f6-578b671ff17b');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121820, 'M.SCHD-T69', '2026-11-26T02:50:03Z', 'working', NULL, '3a3ec029-07bb-40dd-a1f6-578b671ff17b');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121821, 'M.SCHD-T68', '2026-11-26T02:50:05Z', 'working', NULL, '3a3ec029-07bb-40dd-a1f6-578b671ff17b');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121822, 'M.SCHD-T67', '2026-11-26T02:50:07Z', 'link', NULL, 'requires M.SCHD-T61');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121823, 'M.SCHD-T67', '2026-11-26T02:50:09Z', 'working', NULL, '3a3ec029-07bb-40dd-a1f6-578b671ff17b');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121824, 'M.SCHD-T66', '2026-11-26T02:50:11Z', 'working', NULL, '3a3ec029-07bb-40dd-a1f6-578b671ff17b');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121825, 'M.SCHD-T61', '2026-11-26T02:50:15Z', 'link', NULL, 'M.SCHD-T67 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121826, 'M.SCHD-T65', '2026-11-26T02:50:20Z', 'working', NULL, '3a3ec029-07bb-40dd-a1f6-578b671ff17b');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121827, 'M.SCHD-T63', '2026-11-26T02:50:24Z', 'working', NULL, '3a3ec029-07bb-40dd-a1f6-578b671ff17b');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121828, 'M.SCHD-T67', '2026-11-26T02:50:27Z', 'link', NULL, 'requires M.SCHD-T62');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121829, 'M.SCHD-T62', '2026-11-26T02:50:31Z', 'link', NULL, 'M.SCHD-T67 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121830, 'M.SCHD-T62', '2026-11-26T02:50:33Z', 'working', NULL, '3a3ec029-07bb-40dd-a1f6-578b671ff17b');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121831, 'M.SCHD-T68', '2026-11-26T02:50:40Z', 'link', NULL, 'requires M.SCHD-T65');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121832, 'M.SCHD-T65', '2026-11-26T02:50:42Z', 'link', NULL, 'M.SCHD-T68 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121833, 'M.SCHD-T68', '2026-11-26T02:50:46Z', 'link', NULL, 'requires M.SCHD-T66');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121834, 'GG-T1144', '2026-11-26T02:50:47Z', 'ref', '913468cc', 'daefef9c');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121835, 'M.SCHD-T66', '2026-11-26T02:50:47Z', 'link', NULL, 'M.SCHD-T68 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121836, 'M.SCHD-T68', '2026-11-26T02:50:50Z', 'link', NULL, 'requires M.SCHD-T67');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121837, 'M.SCHD-T67', '2026-11-26T02:50:51Z', 'link', NULL, 'M.SCHD-T68 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121838, 'M.SCHD-T69', '2026-11-26T02:50:53Z', 'link', NULL, 'requires M.SCHD-T61');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121839, 'M.SCHD-T61', '2026-11-26T02:50:53Z', 'link', NULL, 'M.SCHD-T69 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121840, 'M.SCHD-T69', '2026-11-26T02:50:55Z', 'link', NULL, 'requires M.SCHD-T62');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121841, 'M.SCHD-T62', '2026-11-26T02:50:56Z', 'link', NULL, 'M.SCHD-T69 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121842, 'M.SCHD-T69', '2026-11-26T02:50:57Z', 'link', NULL, 'requires M.SCHD-T63');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121843, 'M.SCHD-T63', '2026-11-26T02:50:58Z', 'link', NULL, 'M.SCHD-T69 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121844, 'M.SCHD-T69', '2026-11-26T02:51:00Z', 'link', NULL, 'requires M.SCHD-T68');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121845, 'M.SCHD-T68', '2026-11-26T02:51:00Z', 'link', NULL, 'M.SCHD-T69 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121846, 'M.SCHD-T70', '2026-11-26T02:51:01Z', 'link', NULL, 'requires M.SCHD-T69');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121847, 'M.SCHD-T69', '2026-11-26T02:51:01Z', 'link', NULL, 'M.SCHD-T70 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121848, 'M.SCHD-T71', '2026-11-26T02:51:04Z', 'link', NULL, 'requires M.SCHD-T70');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121849, 'M.SCHD-T70', '2026-11-26T02:51:04Z', 'link', NULL, 'M.SCHD-T71 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121850, 'GG-T1142', '2026-11-26T02:51:49Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121851, 'GG-T1142', '2026-11-26T02:51:49Z', 'ref', '—', '01b02c7e,6da607d5,e2c4c26e,137a4861');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121852, 'M.SCHD-T72', '2026-11-26T02:51:55Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121853, 'M.SCHD-T72', '2026-11-26T02:51:55Z', 'name', NULL, 'dbsync bootstraps a new remote database');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121854, 'M.SCHD-T72', '2026-11-26T02:51:56Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121855, 'M.SCHD-T72', '2026-11-26T02:51:57Z', 'link', NULL, 'part-of M.SCHD-T60');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121856, 'M.SCHD-T60', '2026-11-26T02:51:57Z', 'link', NULL, 'M.SCHD-T72 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121857, 'M.SCHD-T72', '2026-11-26T02:51:57Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121858, 'M.SCHD-T72', '2026-11-26T02:52:00Z', 'link', NULL, 'requires M.SCHD-T70');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121859, 'M.SCHD-T70', '2026-11-26T02:52:01Z', 'link', NULL, 'M.SCHD-T72 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121860, 'M.SCHD-T71', '2026-11-26T02:52:04Z', 'link', NULL, 'requires M.SCHD-T72');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121861, 'M.SCHD-T72', '2026-11-26T02:52:04Z', 'link', NULL, 'M.SCHD-T71 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121862, 'GG-T1142', '2026-11-26T02:52:19Z', 'working', 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121863, 'M.SCHD-T72', '2026-11-26T02:52:19Z', 'working', NULL, '3a3ec029-07bb-40dd-a1f6-578b671ff17b');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121864, 'M.SCHD-T61', '2026-11-26T02:52:20Z', 'working', '3a3ec029-07bb-40dd-a1f6-578b671ff17b', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121865, 'M.SCHD-T62', '2026-11-26T02:52:20Z', 'working', '3a3ec029-07bb-40dd-a1f6-578b671ff17b', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121866, 'M.SCHD-T63', '2026-11-26T02:52:21Z', 'working', '3a3ec029-07bb-40dd-a1f6-578b671ff17b', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121867, 'M.SCHD-T64', '2026-11-26T02:52:21Z', 'working', '3a3ec029-07bb-40dd-a1f6-578b671ff17b', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121868, 'M.SCHD-T65', '2026-11-26T02:52:21Z', 'working', '3a3ec029-07bb-40dd-a1f6-578b671ff17b', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121869, 'M.SCHD-T66', '2026-11-26T02:52:22Z', 'working', '3a3ec029-07bb-40dd-a1f6-578b671ff17b', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121870, 'M.SCHD-T67', '2026-11-26T02:52:22Z', 'working', '3a3ec029-07bb-40dd-a1f6-578b671ff17b', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121871, 'M.SCHD-T68', '2026-11-26T02:52:22Z', 'working', '3a3ec029-07bb-40dd-a1f6-578b671ff17b', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121872, 'M.SCHD-T69', '2026-11-26T02:52:23Z', 'working', '3a3ec029-07bb-40dd-a1f6-578b671ff17b', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121873, 'M.SCHD-T70', '2026-11-26T02:52:23Z', 'working', '3a3ec029-07bb-40dd-a1f6-578b671ff17b', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121874, 'M.SCHD-T71', '2026-11-26T02:52:23Z', 'working', '3a3ec029-07bb-40dd-a1f6-578b671ff17b', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121875, 'M.SCHD-T72', '2026-11-26T02:52:41Z', 'working', '3a3ec029-07bb-40dd-a1f6-578b671ff17b', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121876, 'KYM-T3', '2026-11-26T02:54:42Z', 'created', NULL, 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121877, 'KYM-T4', '2026-11-26T02:55:40Z', 'created', NULL, 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121878, 'KYM-T5', '2026-11-26T02:55:47Z', 'created', NULL, 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121879, 'KYM-T6', '2026-11-26T02:55:56Z', 'created', NULL, 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121880, 'KYM-T7', '2026-11-26T02:56:05Z', 'created', NULL, 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121881, 'KYM-T8', '2026-11-26T02:56:11Z', 'created', NULL, 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121882, 'KYM-T9', '2026-11-26T02:56:16Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121883, 'KYM-T10', '2026-11-26T02:56:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121884, 'KYM-T10', '2026-11-26T02:56:39Z', 'name', NULL, 'Familiarity / renown');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121885, 'M.SCHD-T64', '2026-11-26T02:58:03Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121886, 'M.SCHD-T64', '2026-11-26T02:58:03Z', 'ref', '—', '2fe2cbd');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121887, 'M.SCHD-T61', '2026-11-26T02:58:07Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121888, 'M.SCHD-T61', '2026-11-26T02:58:07Z', 'ref', '—', 'd4f2887');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AES-T10', 'proposed', 380, '2026-11-24T19:47:20Z', NULL);
@@ -120086,7 +120263,19 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T59', 'approved', 0, '2026-11-25T19:39:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T6', 'approved', 0, '2026-10-19T01:44:31Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T60', 'approved', 0, '2026-11-26T02:43:24Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T61', 'approved', 0, '2026-11-26T02:48:09Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T62', 'approved', 0, '2026-11-26T02:48:21Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T63', 'approved', 0, '2026-11-26T02:48:30Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T64', 'approved', 0, '2026-11-26T02:48:41Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T65', 'approved', 0, '2026-11-26T02:48:53Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T66', 'approved', 0, '2026-11-26T02:49:00Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T67', 'approved', 0, '2026-11-26T02:49:05Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T68', 'approved', 0, '2026-11-26T02:49:11Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T69', 'approved', 0, '2026-11-26T02:49:15Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T7', 'approved', 0, '2026-10-19T01:44:32Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T70', 'approved', 0, '2026-11-26T02:49:20Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T71', 'approved', 0, '2026-11-26T02:49:29Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T72', 'approved', 0, '2026-11-26T02:51:57Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T8', 'approved', 0, '2026-10-19T01:44:32Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T9', 'approved', 0, '2026-10-19T01:44:32Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.TELE-T10', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
@@ -122455,11 +122644,8 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T789', NULL, 0, 'ohleo199@mindattic.com', '5c87f115-96a3-43aa-8559-17d8764da8f6', '2026-11-26T02:44:56Z', '2026-11-26T02:44:56Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1122', NULL, 0, 'pdftransferjr@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-26T02:44:45Z', '2026-11-26T02:44:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1138', NULL, 0, 'pdftransferjr@mindattic.com', 'f8ff71be-40a7-4867-8742-0592d8f38294', '2026-11-26T00:25:21Z', '2026-11-26T00:25:21Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1142', NULL, 0, 'pdftransferjr@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-26T02:44:49Z', '2026-11-26T02:44:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1143', NULL, 0, 'pdftransferjr@mindattic.com', 'f8ff71be-40a7-4867-8742-0592d8f38294', '2026-11-26T02:45:12Z', '2026-11-26T02:45:12Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1144', NULL, 0, 'pdftransferjr@mindattic.com', 'f8ff71be-40a7-4867-8742-0592d8f38294', '2026-11-26T02:45:12Z', '2026-11-26T02:45:12Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T488', NULL, 0, 'pdftransferjr@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-25T23:32:00Z', '2026-11-25T23:32:00Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T615', NULL, 0, 'pdftransferjr@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-26T02:44:47Z', '2026-11-26T02:44:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
@@ -140276,6 +140462,115 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.SCHD-T56',
 4. When nothing confirmed is left, close this ticket with a one-line count of bugs found and fixed.
 
 Filed in a workspace-wide sweep (one per non-archived repo); do not start until allocated.', '2026-11-24T07:00:59Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.SCHD-T61', 'Part of M.SCHD-T60 (incremental DB sync to the remote host). C# in MindAttic.Scheduler.Core; tests NUnit only; one commit to main naming this ticket.
+
+**Files:** new `src/MindAttic.Scheduler.Core/DbSync/DbSyncSettings.cs`, `SchedulerPaths.cs` (add `DbSyncConfig` = `%APPDATA%\MindAttic\MindAttic.Scheduler\dbsync.json`, `DbSyncLog` = `%LOCALAPPDATA%\MindAttic\Scheduler\dbsync.log`), new `docs/dbsync.example.json`, new `tests/MindAttic.Scheduler.Core.Tests/DbSyncSettingsTests.cs`.
+
+**Do:**
+- Settings record read from dbsync.json: list of databases `{ name, sourceInstance, targetConnection, enabled }` plus every tunable (no consts): `changeRetentionDays` (default 14), `commandTimeoutSeconds`, `bulkBatchSize`, `maxParallelDatabases`, `hashDiffRangeRows`, `strongHashMaxMB`.
+- Target is generic SQL Server: `targetConnection` is a full connection string, or `{providerRef}` resolved through `%APPDATA%\MindAttic\Database\providers.json` ServicePrincipal entries (port Get-SpToken in `D:\Projects\MindAttic\docs\ops\azure-migration\Sync-ToAzure.ps1` near line 148; reuse `EntraTokenCache` where it fits). Never Azure-specific.
+- Built-in default DB list mirrors `D:\Backups\AzureSql\2026-11-25\copy-azure-to-local.ps1` (every entry with a local instance; `(localdb)\MSSQLLocalDB` for most, `localhost` for IdiotProof_History) plus MindAttic.Tickets and MindAttic.Orchestrator on `localhost`; ClaudeActivity (export-only) is excluded. A DB with no targetConnection is reported "not configured" and skipped, never an error.
+- Source connection built from sourceInstance + Windows auth + TrustServerCertificate.
+
+**Outcome (checkable):** `dotnet build` clean; DbSyncSettingsTests pass: missing file gives defaults with no targets, file parse, providerRef resolution against a temp providers.json, invalid values rejected with a clear message.', '2026-11-26T02:48:07Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.SCHD-T62', 'Part of M.SCHD-T60. C#; NUnit; one commit to main naming this ticket.
+
+**Files:** `src/MindAttic.Scheduler.Core/SchedulerDb.cs` (SchemaVersion 1 to 2, new idempotent batches), new `src/MindAttic.Scheduler.Core/DbSync/WatermarkStore.cs`, new `tests/MindAttic.Scheduler.Core.Tests/WatermarkStoreTests.cs` (LocalDB, `Assert.Ignore` when absent, as RunLogTests does).
+
+**Do:**
+- Tables in the MindAttic.Scheduler DB: `dbo.DbSyncWatermark` (PK DatabaseName + TargetKey; LastVersion bigint NULL, LastStartUtc datetime2, LastEndUtc datetime2, LastOutcome varchar(16), LastMessage nvarchar(max)) and `dbo.DbSyncTableState` (PK DatabaseName + TargetKey + TableName; Method varchar(16) tracked/hashdiff/temporal, LastVersion bigint NULL, StateJson nvarchar(max) NULL) for the per-table bookkeeping the hashdiff fallback keeps (replaces the state files of Save-State near line 1120 of Sync-ToAzure.ps1).
+- `WatermarkStore`: `Get(db, target)` returns null on first run; `Commit(db, target, startVersion, startUtc, tableStates)` writes the START version and START UTC in one transaction, only called on success; `Fail(...)` records the outcome without moving the watermark.
+- `db migrate` stays the only DDL path.
+
+**Outcome:** build clean; tests prove: first Get is null, a failed run leaves the old watermark, a successful run stores the start (not end) version and time, migrate is idempotent and upgrades a v1 database.', '2026-11-26T02:48:12Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.SCHD-T63', 'Part of M.SCHD-T60. C#; NUnit; one commit to main naming this ticket.
+
+**Files:** new `src/MindAttic.Scheduler.Core/DbSync/ChangeTrackingSetup.cs`, new `tests/MindAttic.Scheduler.Core.Tests/ChangeTrackingSetupTests.cs` (LocalDB scratch DB, Ignore when absent; dropped in teardown).
+
+**Do:** for one SOURCE database, idempotently:
+- `ALTER DATABASE ... SET CHANGE_TRACKING = ON (CHANGE_RETENTION = <changeRetentionDays> DAYS, AUTO_CLEANUP = ON)` when off; when on with a shorter retention, raise it to the setting (never lower it).
+- `ALTER TABLE ... ENABLE CHANGE_TRACKING` on every user table that has a primary key and is not a system-versioned history table (and not memory-optimized, external, graph or ledger).
+- Return a classification per table: Tracked (with `CHANGE_TRACKING_MIN_VALID_VERSION(object_id)`) or Fallback with a reason (no-pk, temporal-history, unsupported), plus which tables were newly enabled by this call (they need a full copy: CT has no history before enable).
+- A dry-run mode that reports what it would change with no DDL.
+
+**Outcome:** build clean; tests on a scratch DB with a PK table, a no-PK table and a temporal pair: CT on at DB level and on the PK and current tables, history and no-PK classified Fallback, a second call changes nothing, retention never lowered.', '2026-11-26T02:48:24Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.SCHD-T64', 'Part of M.SCHD-T60. C#; NUnit; one commit to main naming this ticket.
+
+**Files:** new `src/MindAttic.Scheduler.Core/DbSync/TableCatalog.cs` (plus small model types beside it), new `tests/MindAttic.Scheduler.Core.Tests/TableCatalogTests.cs` (LocalDB scratch DBs).
+
+**Do:** port Get-Meta, Compare-Schema, Get-TypeDecl and Initialize-Member from `D:\Projects\MindAttic\docs\ops\azure-migration\Sync-ToAzure.ps1` (lines ~253-545):
+- Read every user table: copyable columns (computed and rowversion excluded), type declarations, PK columns, identity column, temporal pairs (current, history, period start/end columns), VECTOR columns, FKs touching the table, triggers.
+- Compare source with target: any table or column difference gives a SchemaMismatch result naming the differences. The sync never creates, alters or drops schema (database-level CHANGE_TRACKING is not schema).
+
+**Outcome:** build clean; tests: the catalog of a scratch DB with an identity table, a temporal pair and a VECTOR(3) column (LocalDB 17.0.4025 supports it; Ignore if not) is read correctly; an extra column on the target is reported as a mismatch.', '2026-11-26T02:48:33Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.SCHD-T65', 'Part of M.SCHD-T60. C#; NUnit; one commit to main naming this ticket. Needs TableCatalog.
+
+**Files:** new `src/MindAttic.Scheduler.Core/DbSync/ChangeTrackedTableSync.cs`, new `tests/MindAttic.Scheduler.Core.Tests/ChangeTrackedTableSyncTests.cs` (two LocalDB scratch DBs, source with CT on).
+
+**Do:** incremental sync of one tracked table from `lastVersion`:
+- Read `CHANGETABLE(CHANGES t, @lastVersion)` LEFT JOINed to the source table on the PK (inserts and updates carry the current row values; delete operations carry the PK only).
+- In one target transaction: SqlBulkCopy the upsert rows into a #staging table, MERGE (update matched, insert unmatched, IDENTITY_INSERT when the table has an identity), delete target rows for the deleted keys. Upserts are idempotent, so a row changed after the run''s start version and delivered now is harmless when delivered again next run.
+- VECTOR columns copied exactly (Microsoft.Data.SqlClient 6.1 native vector type; otherwise the exact-text path of Get-VectorExact near line 447 of Sync-ToAzure.ps1). Temporal period columns are not written here (TemporalPairSync owns them).
+- Batch size and command timeout from DbSyncSettings.
+
+**Outcome:** build clean; tests: insert, update and delete on source after a captured version leave the target equal to source; re-applying the same change set is a no-op; identity values preserved.', '2026-11-26T02:48:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.SCHD-T66', 'Part of M.SCHD-T60. C#; NUnit; one commit to main naming this ticket. Needs TableCatalog.
+
+**Files:** new `src/MindAttic.Scheduler.Core/DbSync/FullTableCopy.cs`, new `src/MindAttic.Scheduler.Core/DbSync/TargetConstraintGuard.cs`, new `tests/MindAttic.Scheduler.Core.Tests/FullTableCopyTests.cs`.
+
+**Do:** port Copy-Rows and the FK, trigger and identity parts of Invoke-MemberPlan (`D:\Projects\MindAttic\docs\ops\azure-migration\Sync-ToAzure.ps1` lines ~901-970):
+- FullTableCopy: empty the target table (TRUNCATE when no FK references it, else DELETE), stream SqlBulkCopy from source (KeepIdentity, KeepNulls, TableLock, batch size from settings), reseed the identity to the source''s last value. Used for the first run, an expired watermark (CHANGE_TRACKING_MIN_VALID_VERSION above the watermark) and a newly tracked table.
+- TargetConstraintGuard (IDisposable): for a set of target tables, NOCHECK the FKs touching them and disable their triggers; on dispose re-enable the triggers and re-check the FKs WITH CHECK, so incremental upserts in any table order cannot trip an FK. Leaves a SyncToRemote.* extended property while active so the next run repairs an interrupted one (port Set-TableMarker, Clear-TableMarker and the FK/trigger part of Repair-State, lines ~971-1048).
+
+**Outcome:** build clean; tests: a parent/child FK pair fully copied with identity preserved, FKs trusted and triggers enabled afterwards; a guard left behind by a simulated crash is repaired by the next guard.', '2026-11-26T02:48:57Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.SCHD-T67', 'Part of M.SCHD-T60. C#; NUnit; one commit to main naming this ticket. Needs TableCatalog.
+
+**Files:** new `src/MindAttic.Scheduler.Core/DbSync/HashDiffTableSync.cs`, new `tests/MindAttic.Scheduler.Core.Tests/HashDiffTableSyncTests.cs`.
+
+**Do:** the fallback for tables Change Tracking cannot cover (no PK, temporal history). Port from `D:\Projects\MindAttic\docs\ops\azure-migration\Sync-ToAzure.ps1`: Get-Fingerprint and the cheap verdict (lines ~547-645) to call a table unchanged without a full scan where possible, Test-Append (~838) for append-only tails, Get-RangePredicate, Get-Ranges, Get-HashCounts and Get-HashDiffPlan (~749-836) for the NULL-safe, length-prefixed SHA2-256 per-row hash diff in key ranges, and the hashdiff/append branches of Invoke-MemberPlan. Delete target rows whose hash is not on source, insert source rows whose hash is not on target, one transaction per table. Range size and strong-hash size limit from DbSyncSettings; per-table state kept in WatermarkStore''s DbSyncTableState.StateJson (replacing the PS state files).
+
+**Outcome:** build clean; tests on a no-PK table with duplicate rows: an append-only tail copies only the tail, an update and a delete are fixed by hashdiff, an unchanged table is reported unchanged, and the target ends equal to source (multiset compare).', '2026-11-26T02:49:04Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.SCHD-T68', 'Part of M.SCHD-T60. C#; NUnit; one commit to main naming this ticket. Needs ChangeTrackedTableSync, FullTableCopy and HashDiffTableSync.
+
+**Files:** new `src/MindAttic.Scheduler.Core/DbSync/TemporalPairSync.cs`, new `tests/MindAttic.Scheduler.Core.Tests/TemporalPairSyncTests.cs` (LocalDB scratch DBs; Prose uses temporal tables).
+
+**Do:** port Get-TargetTemporalState, Suspend-Versioning, Restore-Versioning and the temporal part of Repair-State (`Sync-ToAzure.ps1` lines ~997-1048):
+- On the TARGET: set the SyncToRemote.VersioningSuspended marker, SYSTEM_VERSIONING = OFF, DROP PERIOD FOR SYSTEM_TIME.
+- Sync history first (HashDiffTableSync; usually append-only), then the current table (ChangeTrackedTableSync from the watermark, or FullTableCopy) with the period start/end columns copied exactly from source.
+- ADD PERIOD FOR SYSTEM_TIME, re-enable versioning on the SAME history table WITH (DATA_CONSISTENCY_CHECK = ON), clear the marker. A target left unversioned by a killed run is repaired by the next run.
+
+**Outcome:** build clean; tests: after source updates and deletes on a temporal table, the target current AND history tables equal source (period values identical) and the target is system-versioned again on the same history table; a simulated crash mid-suspend is repaired.', '2026-11-26T02:49:07Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.SCHD-T69', 'Part of M.SCHD-T60. C#; NUnit; one commit to main naming this ticket. Needs every DbSync piece before it.
+
+**Files:** new `src/MindAttic.Scheduler.Core/DbSync/DatabaseSyncRunner.cs` (plus its result type), new `tests/MindAttic.Scheduler.Core.Tests/DatabaseSyncRunnerTests.cs` (LocalDB source and target scratch DBs and a scratch Scheduler DB).
+
+**Do:** one database, one run:
+1. ChangeTrackingSetup (idempotent); TableCatalog on source and target; a schema mismatch fails this DB with nothing written.
+2. Capture CHANGE_TRACKING_CURRENT_VERSION() and the UTC start time BEFORE reading any rows.
+3. Skip check (the "changed that day" check): a watermark exists, the start version equals it, and every fallback table''s cheap verdict is unchanged, so the outcome is `unchanged` with no writes to the target.
+4. Per table: no watermark, CHANGE_TRACKING_MIN_VALID_VERSION(table) above the watermark, or newly tracked: FullTableCopy. Tracked: ChangeTrackedTableSync from the watermark. Temporal pair: TemporalPairSync. No PK: HashDiffTableSync. All inside a TargetConstraintGuard.
+5. On success WatermarkStore.Commit(start version, start UTC); on any failure WatermarkStore.Fail, watermark unchanged.
+
+**Outcome:** build clean; tests: the first run copies everything; the second copies only rows changed since the first run STARTED; a row written after the start version was captured (a test hook between steps 2 and 4) is on the target after the next run; an untouched DB is `unchanged`; a watermark below the min valid version forces a full copy; a failed run does not advance the watermark.', '2026-11-26T02:49:13Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.SCHD-T70', 'Part of M.SCHD-T60. C#; NUnit; one commit to main naming this ticket. Needs DatabaseSyncRunner.
+
+**Files:** new `src/MindAttic.Scheduler.Cli/DbSyncCommand.cs`, `src/MindAttic.Scheduler.Cli/Program.cs` (verb and Usage text), new `tests/MindAttic.Scheduler.Core.Tests/DbSyncCommandTests.cs`.
+
+**Do:** `mindattic-scheduler dbsync [--db <name>]... [--full] [--dry-run] [--json]`:
+- Loads DbSyncSettings and runs DatabaseSyncRunner for each enabled, configured DB, `maxParallelDatabases` at a time. `--db` filters, `--full` ignores the watermark, `--dry-run` does catalog, skip check and plan with no DDL or DML on either side (CT setup reported, not applied).
+- One line per DB (synced N tables / unchanged / not configured / schema mismatch / failed: reason) to stdout and appended to SchedulerPaths.DbSyncLog; `--json` prints the per-DB results.
+- Exit code: 0 when every DB is synced, unchanged or not configured; 1 when any failed; 3 on a schema mismatch (Sync-ToAzure.ps1''s convention); 2 usage.
+
+**Outcome:** build clean; tests for flag parsing, DB filtering and exit-code mapping (runner faked); `mindattic-scheduler dbsync --dry-run` with no dbsync.json reports every DB "not configured" and exits 0.', '2026-11-26T02:49:17Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.SCHD-T71', 'Part of M.SCHD-T60. One commit to main naming this ticket. Needs the dbsync verb.
+
+**Files:** `jobs.json`, `README.md` (a new "Database sync" section and the `dbsync` line under CLI verbs).
+
+**Do:**
+- Add job `Database.SyncToRemote`: command `"C:\Apps\MindAttic.Scheduler\mindattic-scheduler.exe" dbsync`, `"schedule": { "daily": "auto" }`, an `estimate` and a `timeLimit`, `"enabled": false` until the remote host exists, with a description saying so.
+- README: the design (Change Tracking watermark = the run''s START version and UTC time, unchanged DBs skipped, full copy on the first run or expired retention, hashdiff fallback for no-PK and temporal history tables, temporal versioning handling, schema never altered), the dbsync.json fields and tunables, providers.json auth, the log path, and how to enable the job once the target is up.
+
+**Outcome:** `./install.ps1 -WhatIf` parses the manifest and shows Database.SyncToRemote registered disabled; build clean.', '2026-11-26T02:49:23Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TELE-T20', 'Repo had no GitHub Pages site. Adopted MindAttic.Agency''s shared DocFX docs-site pipeline (HOUSE-LAW-14): added .github/workflows/docs.yml, enabled Pages (build_type=workflow), set homepage. Also picks up the navbar-brand Outfit/#ff0033 fix (MAT-T127) from day one.', '2026-11-10T22:06:33Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TELE-T24', 'Exhaustive bug hunt for this repo, no time limit (the /bughunt skill with no argument).
 
@@ -149595,6 +149890,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T34', 'Log tests
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T35', 'Publish GLMZ books', '2026-11-22T06:38:17Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T36', 'Link wiki listings', '2026-11-22T06:38:19Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T38', 'Exhaustive bughunt', '2026-11-24T07:00:06Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KYM-T10', 'Familiarity / renown', '2026-11-26T02:56:39Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KYM-T2', 'Quiz rename & cleanup', '2026-11-26T02:32:07Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.AUTH-T34', 'Organizations and memberships', '2026-11-20T21:51:53Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.AUTH-T35', 'Email invitations', '2026-11-20T21:51:58Z');
@@ -150258,6 +150554,18 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.SCHD-T57', 'Sched
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.SCHD-T58', 'Cross-platform Scheduler core', '2026-11-25T19:34:46Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.SCHD-T59', 'systemd timer job provider', '2026-11-25T19:34:49Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.SCHD-T60', 'Incremental DB sync to the remote host', '2026-11-26T02:43:22Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.SCHD-T61', 'DbSync settings and DB list', '2026-11-26T02:48:07Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.SCHD-T62', 'DbSync watermark store', '2026-11-26T02:48:12Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.SCHD-T63', 'Enable change tracking on sources', '2026-11-26T02:48:24Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.SCHD-T64', 'DbSync table catalog', '2026-11-26T02:48:33Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.SCHD-T65', 'Change-tracked table sync', '2026-11-26T02:48:43Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.SCHD-T66', 'Full table copy and constraint guard', '2026-11-26T02:48:57Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.SCHD-T67', 'Hashdiff fallback table sync', '2026-11-26T02:49:04Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.SCHD-T68', 'Temporal pair sync', '2026-11-26T02:49:07Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.SCHD-T69', 'Per-database sync runner', '2026-11-26T02:49:13Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.SCHD-T70', 'dbsync CLI verb', '2026-11-26T02:49:17Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.SCHD-T71', 'Register disabled dbsync job', '2026-11-26T02:49:23Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.SCHD-T72', 'dbsync bootstraps a new remote database', '2026-11-26T02:51:55Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.TELE-T24', 'Exhaustive bughunt', '2026-11-24T07:01:03Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.TELE-T25', 'Adopt MindAttic.Media.Capture name', '2026-11-24T16:17:49Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.TELE-T26', 'Telemetry names Media.Capture', '2026-11-24T16:17:50Z');
@@ -152054,6 +152362,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1139', 'level:t
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1140', 'level:task', '2026-11-25T23:32:52Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1141', 'level:task', '2026-11-26T02:44:31Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1142', 'level:task', '2026-11-26T02:45:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T1143', 'level:task', '2026-11-26T02:46:34Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T168', 'level:story', '2026-11-22T05:55:27Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T191', 'level:story', '2026-11-22T05:56:28Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GG-T215', 'level:task', '2026-11-22T05:36:13Z');
@@ -153350,6 +153659,18 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.SCHD-T57', 'level
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.SCHD-T58', 'level:task', '2026-11-25T19:34:46Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.SCHD-T59', 'level:task', '2026-11-25T19:34:49Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.SCHD-T60', 'level:story', '2026-11-26T02:43:22Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.SCHD-T61', 'level:task', '2026-11-26T02:48:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.SCHD-T62', 'level:task', '2026-11-26T02:48:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.SCHD-T63', 'level:task', '2026-11-26T02:48:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.SCHD-T64', 'level:task', '2026-11-26T02:48:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.SCHD-T65', 'level:task', '2026-11-26T02:48:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.SCHD-T66', 'level:task', '2026-11-26T02:48:57Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.SCHD-T67', 'level:task', '2026-11-26T02:49:04Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.SCHD-T68', 'level:task', '2026-11-26T02:49:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.SCHD-T69', 'level:task', '2026-11-26T02:49:13Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.SCHD-T70', 'level:task', '2026-11-26T02:49:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.SCHD-T71', 'level:task', '2026-11-26T02:49:24Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.SCHD-T72', 'level:task', '2026-11-26T02:51:56Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.TELE-T10', 'level:task', '2026-11-22T05:49:44Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.TELE-T24', 'level:story', '2026-11-24T07:01:03Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.TELE-T25', 'epic', '2026-11-24T16:17:49Z');
@@ -162191,7 +162512,37 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T59', 'M.SCHD-T58
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T59', 'MAT-T232', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T6', 'M.SCHD-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T60', 'MAT-T221', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T61', 'M.SCHD-T60', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T62', 'M.SCHD-T60', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T63', 'M.SCHD-T60', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T64', 'M.SCHD-T60', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T65', 'M.SCHD-T60', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T65', 'M.SCHD-T61', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T65', 'M.SCHD-T64', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T66', 'M.SCHD-T60', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T66', 'M.SCHD-T61', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T66', 'M.SCHD-T64', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T67', 'M.SCHD-T60', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T67', 'M.SCHD-T61', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T67', 'M.SCHD-T62', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T67', 'M.SCHD-T64', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T68', 'M.SCHD-T60', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T68', 'M.SCHD-T65', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T68', 'M.SCHD-T66', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T68', 'M.SCHD-T67', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T69', 'M.SCHD-T60', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T69', 'M.SCHD-T61', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T69', 'M.SCHD-T62', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T69', 'M.SCHD-T63', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T69', 'M.SCHD-T68', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T7', 'M.SCHD-T2', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T70', 'M.SCHD-T60', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T70', 'M.SCHD-T69', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T71', 'M.SCHD-T60', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T71', 'M.SCHD-T70', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T71', 'M.SCHD-T72', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T72', 'M.SCHD-T60', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T72', 'M.SCHD-T70', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T8', 'M.SCHD-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T9', 'M.SCHD-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TELE-T25', 'M.CAPT-T167', 'related', NULL);
