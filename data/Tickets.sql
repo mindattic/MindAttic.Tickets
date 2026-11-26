@@ -16095,6 +16095,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TRC-T66', 'TaxRateCollector', 66, '2026-11-25', 'feature', 'open', 'Move TaxRateCollector off Azure to the Hetzner server', '—', 65, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TRC-T67', 'TaxRateCollector', 67, '2026-11-25', 'chore', 'open', 'Move TaxRateCollector to Hetzner SQL with the DB move script, verify, and repoint TaxRateCollector''s connection strings (Vault + server env file)', '—', 66, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TRC-T68', 'TaxRateCollector', 68, '2026-11-25', 'feature', 'open', 'Add TaxRateCollector to the reusable deploy workflow and a systemd/Caddy entry, deploy on push to main, verify /health and the main pages; if TaxRateCollector only runs locally, record that and close', '—', 67, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TRC-T69', 'TaxRateCollector', 69, '2026-11-25', 'chore', 'closed', 'Development config (Blazor and Worker appsettings.Development.json) points at the LocalDB TaxRateCollector copy while the databases are off Azure (MAT-T255)', '0542c1e', 68, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TT-T1', 'ThinkTank', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| TT-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TT-T2', 'ThinkTank', 2, '2026-10-12', 'chore', 'closed', '/commit now logs every commit as a ticket in this table', '`.claude/skills/commit/SKILL.md`', 1, '| TT-T2 | 2026-10-12 | chore | closed | /commit now logs every commit as a ticket in this table | `.claude/skills/commit/SKILL.md` |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TT-T3', 'ThinkTank', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for ThinkTankService.CallProvider dispatch and auth resolution (ThinkTank.Core/Services/ThinkTankService.cs): drive it through a LegionClient over a stubbed HttpMessageHandler and cover ClaudeFallbackMode rerouting a non-claude provider to claude with the WrapPersonaForClaudeFallback persona and the per-template auth override dropped, claude itself not rerouted, InvalidOperationException when no API key resolves, apiKey/model/maxTokens precedence (maxTokensOverride over auth override JSON over disk auth JSON over 2048 default; override model blank falls through), malformed auth override JSON emitting an isError Diagnostics event yet still falling back, and a provider failure emitting an error Diagnostics event then rethrowing - this is the core LLM call path and is untested beyond SanitizeModelOutput', '—', 2, '| TT-T3 | 2026-10-14 | chore | open | NUnit tests for ThinkTankService.CallProvider dispatch and auth resolution (ThinkTank.Core/Services/ThinkTankService.cs): drive it through a LegionClient over a stubbed HttpMessageHandler and cover ClaudeFallbackMode rerouting a non-claude provider to claude with the WrapPersonaForClaudeFallback persona and the per-template auth override dropped, claude itself not rerouted, InvalidOperationException when no API key resolves, apiKey/model/maxTokens precedence (maxTokensOverride over auth override JSON over disk auth JSON over 2048 default; override model blank falls through), malformed auth override JSON emitting an isError Diagnostics event yet still falling back, and a provider failure emitting an error Diagnostics event then rethrowing - this is the core LLM call path and is untested beyond SanitizeModelOutput | — |');
@@ -116805,6 +116806,27 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121566, 
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121567, 'GG-T1135', '2026-11-25T23:32:52Z', 'link', NULL, 'GG-T1140 part-of');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121568, 'GG-T1140', '2026-11-25T23:32:52Z', 'label', NULL, 'level:task');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121569, 'GG-T1140', '2026-11-25T23:32:52Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121570, 'TRC-T69', '2026-11-26T00:25:03Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121571, 'TRC-T69', '2026-11-26T00:25:03Z', 'name', NULL, 'Dev DB to LocalDB');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121572, 'TRC-T69', '2026-11-26T00:25:04Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121573, 'TRC-T69', '2026-11-26T00:25:05Z', 'link', NULL, 'part-of MAT-T255');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121574, 'MAT-T255', '2026-11-26T00:25:05Z', 'link', NULL, 'TRC-T69 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121575, 'GG-T1138', '2026-11-26T00:25:21Z', 'working', NULL, 'pdftransferjr@mindattic.com (f8ff71be-40a7-4867-8742-0592d8f38294)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121576, 'TRC-T69', '2026-11-26T00:25:22Z', 'working', NULL, '3a3ec029-07bb-40dd-a1f6-578b671ff17b');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121577, 'GG-T1135', '2026-11-26T00:25:22Z', 'working', 'pdftransferjr@mindattic.com (f8ff71be-40a7-4867-8742-0592d8f38294)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121578, 'GG-T466', '2026-11-26T00:25:22Z', 'working', 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121579, 'GG-T481', '2026-11-26T00:25:22Z', 'working', 'pdftransferjr@mindattic.com (f8ff71be-40a7-4867-8742-0592d8f38294)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121580, 'M.ORCH-T2241', '2026-11-26T00:25:23Z', 'working', 'bb1c10a1-f527-4aff-b271-ba4beeb8a07c', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121581, 'MAT-T255', '2026-11-26T00:25:23Z', 'working', '3a3ec029-07bb-40dd-a1f6-578b671ff17b', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121582, 'TRC-T69', '2026-11-26T00:25:28Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121583, 'TRC-T69', '2026-11-26T00:25:28Z', 'ref', '—', '0542c1e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121584, 'MAT-T255', '2026-11-26T00:25:28Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121585, 'MAT-T255', '2026-11-26T00:25:28Z', 'ref', '—', 'children done');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121586, 'MAT-T255', '2026-11-26T00:25:28Z', 'rollup', NULL, 'TRC-T69');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121587, 'MAT-T255', '2026-11-26T00:25:34Z', 'status', 'closed', 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121588, 'MAT-T255', '2026-11-26T00:25:34Z', 'ref', 'children done', '—');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121589, 'MAT-T255', '2026-11-26T00:25:34Z', 'reopen', 'closed', 'Closed by roll-up when its only child TRC-T69 closed; the Azure-to-local move is still in progress');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (121590, 'TRC-T69', '2026-11-26T00:25:39Z', 'working', '3a3ec029-07bb-40dd-a1f6-578b671ff17b', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AES-T10', 'proposed', 380, '2026-11-24T19:47:20Z', NULL);
@@ -122259,13 +122281,10 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T788', NULL, 0, 'ohleo199@mindattic.com', '5c87f115-96a3-43aa-8559-17d8764da8f6', '2026-11-25T20:02:00Z', '2026-11-25T20:02:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1114', NULL, 0, 'pdftransferjr@mindattic.com', 'f8ff71be-40a7-4867-8742-0592d8f38294', '2026-11-25T23:29:13Z', '2026-11-25T23:29:13Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1135', NULL, 0, 'pdftransferjr@mindattic.com', 'f8ff71be-40a7-4867-8742-0592d8f38294', '2026-11-25T23:29:16Z', '2026-11-25T23:29:15Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T466', NULL, 0, 'pdftransferjr@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-25T23:32:14Z', '2026-11-25T23:32:14Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T481', NULL, 0, 'pdftransferjr@mindattic.com', 'f8ff71be-40a7-4867-8742-0592d8f38294', '2026-11-25T23:32:07Z', '2026-11-25T23:32:06Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1138', NULL, 0, 'pdftransferjr@mindattic.com', 'f8ff71be-40a7-4867-8742-0592d8f38294', '2026-11-26T00:25:21Z', '2026-11-26T00:25:21Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T488', NULL, 0, 'pdftransferjr@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-25T23:32:00Z', '2026-11-25T23:32:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T614', NULL, 0, 'pdftransferjr@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-25T23:31:56Z', '2026-11-25T23:31:56Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T2241', NULL, 0, NULL, 'bb1c10a1-f527-4aff-b271-ba4beeb8a07c', '2026-11-25T23:31:16Z', '2026-11-25T23:31:15Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T768', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
@@ -122346,7 +122365,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T89', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T23:30:09Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T91', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T23:09:54Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T105', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T05:26:05Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T255', NULL, 0, NULL, '3a3ec029-07bb-40dd-a1f6-578b671ff17b', '2026-11-25T23:24:12Z', '2026-11-25T23:24:12Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T58', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:02:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
@@ -150527,6 +150545,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TRC-T65', 'Exhausti
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TRC-T66', 'Move TaxRateCollector to Hetzner', '2026-11-25T19:33:13Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TRC-T67', 'Move TaxRateCollector database', '2026-11-25T19:33:16Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TRC-T68', 'Host TaxRateCollector on Hetzner', '2026-11-25T19:33:19Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TRC-T69', 'Dev DB to LocalDB', '2026-11-26T00:25:03Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TT-T42', 'No server process launch', '2026-11-19T22:38:12Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TT-T43', 'Stop runs when tab closes', '2026-11-19T22:38:14Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TT-T44', 'Error pages and limits', '2026-11-19T22:38:17Z');
@@ -155982,6 +156001,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TRC-T65', 'level:st
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TRC-T66', 'level:story', '2026-11-25T19:33:13Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TRC-T67', 'level:task', '2026-11-25T19:33:16Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TRC-T68', 'level:task', '2026-11-25T19:33:20Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TRC-T69', 'level:task', '2026-11-26T00:25:04Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TRC-T7', 'level:task', '2026-11-22T05:40:03Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TRC-T8', 'level:task', '2026-11-22T05:40:05Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TRC-T9', 'level:task', '2026-11-22T05:40:07Z');
@@ -163254,6 +163274,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('TRC-T68', 'MAT-T239', 'r
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TRC-T68', 'MAT-T240', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TRC-T68', 'TRC-T66', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TRC-T68', 'TRC-T67', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('TRC-T69', 'MAT-T255', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TRC-US-A1', 'TRC-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TRC-US-A2', 'TRC-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TRC-US-A3', 'TRC-EPIC-A', 'part-of', 'migrated: story under its epic');
