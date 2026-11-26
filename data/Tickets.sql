@@ -5788,6 +5788,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T789', 'Gadfly', 789, '2026-11-25', 'chore', 'closed', 'Erase all per-user exam activity (sessions, transcripts, captures, grades, inbox, queues) from live Gadfly before the Erin pilot; keep accounts, orgs, courses and exams', 'db99a67bd0f4a4656ac4690f1fc363d5ed4c95ed', 788, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T790', 'Gadfly', 790, '2026-11-26', 'feature', 'closed', 'Admin screen lists students; per student, pick one or many exams and reset that student''s results for them (scoped reuse of UserDataReset, audited, admin-only)', '2b3a980773fa666686516cdfaeadbe71073eaf51', 789, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T791', 'Gadfly', 791, '2026-11-26', 'chore', 'closed', 'Live Gadfly: strip admin/owner/instructor roles from every user except admin so the owner sees a clean admin view; ryan and erin stay Students', 'e5377c7', 790, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T792', 'Gadfly', 792, '2026-11-26', 'feature', 'open', 'Examiner avatar from the owner''s Meshy.ai Socrates marble bust (paid plan), keeping the MPFB face rig (67 morph targets, eyes, jaw) so lip-sync, blinks, expressions and gaze still work', '—', 791, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T793', 'Gadfly', 793, '2026-11-26', 'feature', 'open', 'Second Socrates variant: the bust-conformed head (skin-toned, bust''s face, hair and beard) on examiner-socrates''s full male body, sharing GAD-T792''s reshaped head and face rig', '—', 792, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T1', 'GridGame.Studio', 1, '2026-11-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T2', 'GridGame.Studio', 2, '2026-11-21', 'feature', 'closed', 'GridGame.Studio: ThumbnailStudio moved here as one WPF app, plus Gallery tabs (Heroes/Enemies/Abilities paste-to-replace: background cut, centred 1024x1024, Figure update; 64px icons) and an eraser (circle/square 1-100 px), Python image steps run as one-off commands, no web server', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T3', 'GridGame.Studio', 3, '2026-11-21', 'feature', 'closed', 'Studio gallery: Backgrounds tab grouped by region (campaign.json Themes Name/Backgrounds set), replace any image or add the next numbered one (<set>_NN.jpg)', '—', 2, NULL);
@@ -120571,6 +120573,17 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125100, 
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125101, 'M.CAPT-T219', '2026-11-26T14:50:46Z', 'priority', '0', '882');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125102, 'M.CAPT-T220', '2026-11-26T14:50:46Z', 'priority', '0', '881');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125103, 'US-T883', '2026-11-26T14:54:38Z', 'working', NULL, 'e1bd5cdc-60d3-4e0e-8a84-21abd28f1dc5');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125104, 'GG-T1145', '2026-11-26T15:01:02Z', 'working', 'pdftransferjr@mindattic.com (f8ff71be-40a7-4867-8742-0592d8f38294)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125105, 'GAD-T792', '2026-11-26T15:07:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125106, 'GAD-T792', '2026-11-26T15:07:02Z', 'name', NULL, 'Talking marble bust examiner');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125107, 'GAD-T792', '2026-11-26T15:07:02Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125108, 'GAD-T792', '2026-11-26T15:07:03Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125109, 'GAD-T793', '2026-11-26T15:08:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125110, 'GAD-T793', '2026-11-26T15:08:17Z', 'name', NULL, 'Bust face on male examiner');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125111, 'GAD-T793', '2026-11-26T15:08:17Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125112, 'GAD-T793', '2026-11-26T15:08:17Z', 'link', NULL, 'part-of GAD-T792');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125113, 'GAD-T792', '2026-11-26T15:08:17Z', 'link', NULL, 'GAD-T793 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125114, 'GAD-T793', '2026-11-26T15:08:17Z', 'approval', 'proposed', 'approved');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AES-T10', 'proposed', 380, '2026-11-24T19:47:20Z', NULL);
@@ -121290,6 +121303,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T789', 'approved', 0, '2026-11-26T01:31:59Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T790', 'approved', 0, '2026-11-26T06:08:14Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T791', 'approved', 0, '2026-11-26T06:08:15Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T792', 'approved', 0, '2026-11-26T15:07:03Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T793', 'approved', 0, '2026-11-26T15:08:17Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T8', 'approved', 5, '2026-10-21T04:35:31Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T80', 'proposed', 990, '2026-11-21T00:48:58Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T81', 'proposed', 989, '2026-11-21T00:49:05Z', NULL);
@@ -126188,7 +126203,6 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T99', 'approved', 210, '2026-11-23T19:31:02Z', NULL);
 
 -- ticket_work
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1145', NULL, 0, 'pdftransferjr@mindattic.com', 'f8ff71be-40a7-4867-8742-0592d8f38294', '2026-11-26T03:00:14Z', '2026-11-26T03:00:14Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1151', NULL, 0, 'pdftransferjr@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-26T03:15:47Z', '2026-11-26T03:15:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1176', NULL, 0, 'pdftransferjr@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-26T07:32:30Z', '2026-11-26T07:32:30Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
@@ -130522,6 +130536,12 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32442, '
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32443, 'M.SCHD-T18', 'ryand', '2026-11-26T11:00:57Z', 'Pass 2 (read-only): read DbSync HashDiffTableSync, TemporalPairSync, TableCatalog, TargetConstraintGuard, SchemaBootstrap, ChangeTrackingSetup, VectorText and the whole Wpf project (view models, windows, converter, XAML bindings all resolve). No real bug found, no fix tickets. With pass 1 the whole repo has had a pass that finds nothing. Hardening only, not a bug: TargetConstraintGuard''s marker value is a 3750-char parameter, so a table with a great many foreign keys would truncate its JSON.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32444, 'MAT-T260', 'ryand', '2026-11-26T11:03:26Z', 'Rollout scope: skip archived SpaceGod race repos MAT-T263 added to workspace-repos.json (SpaceGod.Unreal.Cpp, SpaceGod.Unreal.CSharp, SpaceGod.Unity.CSharp, Unreal.SpaceGod; archived on GitHub, historical only). The live SpaceGod repo is SpaceGod.Unreal (folder SpaceGod.Unreal).');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32445, 'MAT-T276', 'ryand', '2026-11-26T11:07:29Z', 'Landed as 5003055 via merge d9be9ef. Race note: an earlier copy 0e61d31 (built on a stale base, dropped Publish-Unreal) was pushed by another agent''s push before I amended; d9be9ef merges it with ours-tree so main keeps Publish-Unreal (MAT-T271) and Publish-Unity (MAT-T270, e15f055, pushed with it). Verified on Launcher in scratch: Debug = 104 files framework-dependent, Release = MindAttic.Launcher.exe 105 MB standalone + VirtualDesktopAccessor.LICENSE.txt (a content file the project copies).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32446, 'GAD-T792', 'ryand', '2026-11-26T15:07:03Z', '![bust](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/GAD-T792/2026-11-26-image-2.png) ![export formats](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/GAD-T792/2026-11-26-image-1.png)');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32447, 'GAD-T792', 'ryand', '2026-11-26T15:08:58Z', 'Owner, 2026-11-26: both variants use the examiner''s blue circuitry look (avatar-look.js: electric-blue skin with circuit traces, GAD-T503/T690) with stunning green eyes, instead of marble or natural skin.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32448, 'GAD-T793', 'ryand', '2026-11-26T15:08:58Z', 'Owner, 2026-11-26: both variants use the examiner''s blue circuitry look (avatar-look.js: electric-blue skin with circuit traces, GAD-T503/T690) with stunning green eyes, instead of marble or natural skin.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32449, 'GAD-T792', 'ryand', '2026-11-26T15:09:26Z', 'Owner, 2026-11-26: make the eyes glow if needed for them to read as stunning green (overrides GAD-T558''s no-glow rule for these avatars); keep pupils readable so gaze still reads.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32450, 'GAD-T793', 'ryand', '2026-11-26T15:09:27Z', 'Owner, 2026-11-26: make the eyes glow if needed for them to read as stunning green (overrides GAD-T558''s no-glow rule for these avatars); keep pupils readable so gaze still reads.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32451, 'GAD-T792', 'ryand', '2026-11-26T15:09:39Z', 'Owner, 2026-11-26: make the bust the default examiner (even if that needs more than a config switch).');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AES-T12', 'First confirm the folder is a MindAttic deploy output and no shortcut, scheduled task, startup entry or PATH entry still points into it; never touch anything else under C:\Apps.', '2026-11-26T04:46:51Z');
@@ -133000,6 +133020,30 @@ and any org Owner/Admin/Instructor-level membership role beyond Student, and sta
 - Report before/after roles per user. No LLM calls, no email, no hosting changes (owner works hosting
   in another window). Live DB is reachable from this machine (dev-machine firewall rule); see GAD-T789
   notes for how that run connected (Development env, AI mock, checked migrations first).', '2026-11-26T06:08:11Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T792', 'Owner, 2026-11-26: use a Meshy.ai (paid plan: owner owns the output) Socrates marble bust as the examiner, option 1 "talking marble bust".
+
+![bust](ATTACH/2026-11-26-image-2.png)
+
+## Goal
+A new examiner avatar (next to examiner-socrates.glb) that looks like the Meshy bust — marble head, sculpted curly
+hair and beard, bare shoulders, round plinth — but keeps the working face rig of examiner-socrates.glb: the 52 ARKit +
+15 viseme morph targets, eyes/teeth/tongue, Mixamo-style rig aligned to mpfb.glb bone frames, so lip-sync, blinks,
+expressions and gaze keep working in ma-avatar.js / TalkingHead.
+
+## Approach
+- Headless Blender, like tools/examiner-socrates/build.py: conform the MPFB head (keep its topology, so every morph
+  target still applies) to the bust''s head/face shape (shrinkwrap/surface-deform after aligning), then bake/assign a
+  marble material (white, subtle veining/AO baked from the Meshy mesh detail).
+- Hair and beard: the bust''s sculpted hair/beard as a mesh shell; beard region weighted to the jaw so it moves with
+  speech; hair rigid to Head.
+- Eyes: blank marble look but with a faint carved iris/pupil so gaze reads (owner: "it visibly looks at the student").
+- Shoulders + plinth from the Meshy mesh, rigid; no lower body. Framing: head-and-shoulders bust; adjust camera/eye level so
+  the student isn''t looked down on.
+- Scripts in tools/examiner-bust/ (or similar), reproducible from the source GLB; source GLB kept out of the repo if large
+  (document where it lives) or committed if reasonable size.
+- LICENSE.md for the new avatar: Meshy.ai paid plan output, owned by owner; plus CC0 MPFB parts as in examiner-socrates.LICENSE.md.
+- Make it selectable/the default examiner per existing avatar selection mechanism; check textures size budget (~≤15 MB).
+- Verify: render stills (front, 3/4) and a short viseme/blink check; show with /preview. No LLM spend; mock mode.', '2026-11-26T15:07:02Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T80', 'Part 19 Phase 1. **Done when:** the design doc exists and every later MP ticket can point at its section.
 
 Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T00:48:55Z');
@@ -152925,6 +152969,8 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T789', 'Reset l
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T79', 'Adopt master plan as priority', '2026-11-21T00:46:02Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T790', 'Admin per-student result reset', '2026-11-26T06:07:37Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T791', 'Only admin keeps admin role', '2026-11-26T06:08:11Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T792', 'Talking marble bust examiner', '2026-11-26T15:07:02Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T793', 'Bust face on male examiner', '2026-11-26T15:08:17Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T80', 'MVP design pack', '2026-11-21T00:48:55Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T81', 'Courses, objectives, rubric criteria', '2026-11-21T00:49:01Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T82', 'Grading policy and thresholds', '2026-11-21T00:49:17Z');
@@ -156034,6 +156080,8 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T788', 'level:t
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T789', 'level:task', '2026-11-26T01:31:58Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T790', 'level:task', '2026-11-26T06:07:39Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T791', 'level:task', '2026-11-26T06:08:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T792', 'level:task', '2026-11-26T15:07:02Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T793', 'level:task', '2026-11-26T15:08:17Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAI-T19', 'level:task', '2026-11-22T05:49:45Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAI-T33', 'level:task', '2026-11-22T05:49:46Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAI-T34', 'level:task', '2026-11-22T05:49:47Z');
@@ -163026,6 +163074,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T786', 'MAT-T239', '
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T786', 'MAT-T240', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T787', 'GAD-T772', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T788', 'GAD-T787', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T793', 'GAD-T792', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T80', 'GAD-US-MP1', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T81', 'GAD-T80', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T81', 'GAD-US-MP1', 'implements', NULL);
