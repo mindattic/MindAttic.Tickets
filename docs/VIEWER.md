@@ -31,7 +31,7 @@ useful without MindAttic.Browser and easy to test.
 done: `BrowserTarget.Parse` serves any folder at `https://<host>/` through
 `SetVirtualHostNameToFolderMapping` (DenyCors), and opens its `index.html`. The capture bridge
 stays limited to that origin, which is harmless here. If the Browser isn't installed
-(`C:\Apps\MindAttic.Browser\MindAttic.Browser.exe`), `tickets view` prints the folder and
+(`R:\MindAttic\Apps\MindAttic.Browser\Release\MindAttic.Browser.exe`), `tickets view` prints the folder and
 opens `index.html` with the default browser instead.
 
 ## What the page shows

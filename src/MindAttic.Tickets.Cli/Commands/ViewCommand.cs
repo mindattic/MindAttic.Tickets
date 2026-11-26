@@ -14,7 +14,7 @@ namespace MindAttic.Tickets.Cli.Commands;
 public sealed class ViewCommand : Command<ViewCommand.Settings>
 {
     public const string Host = "tickets.local";
-    public static readonly string BrowserExe = @"C:\Apps\MindAttic.Browser\MindAttic.Browser.exe";
+    public static readonly string BrowserExe = @"R:\MindAttic\Apps\MindAttic.Browser\Release\MindAttic.Browser.exe";
 
     public sealed class Settings : WorkspaceSettings
     {
