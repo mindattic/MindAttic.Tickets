@@ -118296,6 +118296,9 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (122905, 
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (122906, 'M.CAPT-T214', '2026-11-26T04:48:43Z', 'priority', '0', '340');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (122907, 'M.CAPT-T216', '2026-11-26T04:48:43Z', 'priority', '0', '340');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (122908, 'M.CAPT-T217', '2026-11-26T04:48:44Z', 'priority', '0', '340');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (122909, 'MAT-T280', '2026-11-26T04:49:16Z', 'name', 'C:/Program Files/Git/deploy router switches', '/deploy router switches');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (122910, 'MAT-T256', '2026-11-26T04:50:12Z', 'working', 'e1bd5cdc-60d3-4e0e-8a84-21abd28f1dc5', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (122911, 'MAT-T274', '2026-11-26T04:50:13Z', 'working', 'e1bd5cdc-60d3-4e0e-8a84-21abd28f1dc5', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AES-T10', 'proposed', 380, '2026-11-24T19:47:20Z', NULL);
@@ -123938,8 +123941,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T89', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T23:30:09Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T91', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T23:09:54Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T105', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T05:26:05Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T256', NULL, 0, NULL, 'e1bd5cdc-60d3-4e0e-8a84-21abd28f1dc5', '2026-11-26T03:29:48Z', '2026-11-26T03:29:48Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T274', NULL, 0, NULL, 'e1bd5cdc-60d3-4e0e-8a84-21abd28f1dc5', '2026-11-26T04:30:29Z', '2026-11-26T04:30:29Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T58', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:02:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
@@ -152107,7 +152108,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MAT-T276', 'Publish
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MAT-T277', 'publish-app.ps1 on deploy-lib', '2026-11-26T04:32:04Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MAT-T278', 'Invoke-AppRun menu', '2026-11-26T04:32:12Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MAT-T279', 'run.bat template', '2026-11-26T04:32:14Z');
-INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MAT-T280', 'C:/Program Files/Git/deploy router switches', '2026-11-26T04:32:16Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MAT-T280', '/deploy router switches', '2026-11-26T04:49:16Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MAT-T281', 'Mirror sync for pilot', '2026-11-26T04:32:18Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MAT-T282', 'Pilot: Launcher on R:', '2026-11-26T04:32:43Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MAT-T283', 'Spot-check publish and deploy', '2026-11-26T04:32:48Z');
