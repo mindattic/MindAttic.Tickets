@@ -7103,6 +7103,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IDEA-T76', 'IdeaCms', 76, '2026-11-25', 'chore', 'open', 'Move IdeaCmsDev, MindAtticIdeas, MindAtticIdeasDemo, MindAtticIdeasDemoTemplate to Hetzner SQL with the DB move script, verify, and repoint IdeaCms''s connection strings (Vault + server env file)', '—', 75, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IDEA-T77', 'IdeaCms', 77, '2026-11-25', 'feature', 'open', 'Add IdeaCms to the reusable deploy workflow and a systemd/Caddy entry, deploy on push to main, verify /health and the main pages; if IdeaCms only runs locally, record that and close', '—', 76, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IDEA-T78', 'IdeaCms', 78, '2026-11-26', 'fix', 'closed', 'NamedBool/NamedString use FirstOrDefault on the CustomAttributeNamedArgument struct and read MemberName on the default value (NRE) whenever the named arg is absent; ResolveSettings swallows it so packed .idea manifests silently list no settings. Iterate via NamedValue instead.', '57e2af6', 77, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IDEA-T79', 'IdeaCms', 79, '2026-11-26', 'chore', 'closed', 'Local development reads the local SQL copy from its own Development config (owner 2026-11-25: all local development runs off local SQL Server, MAT-T255); the User-level override and deployed settings still win.', '—', 78, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T1', 'IdiotProof', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| IP-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T2', 'IdiotProof', 2, '2026-10-12', 'chore', 'closed', '/commit now logs every commit as a ticket in this table', '`.claude/skills/commit/SKILL.md`', 1, '| IP-T2 | 2026-10-12 | chore | closed | /commit now logs every commit as a ticket in this table | `.claude/skills/commit/SKILL.md` |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T3', 'IdiotProof', 3, '2026-10-13', 'chore', 'closed', 'Standard deploy convention: root deploy.ps1 (change-gated, -Force/-Launch) writes C:\Apps\IdiotProof\deploy.bat; removed deploy-idiotproof.bat, publish-all.bat, launch.bat and Start* leftovers', 'deploy.ps1', 2, '| IP-T3 | 2026-10-13 | chore | closed | Standard deploy convention: root deploy.ps1 (change-gated, -Force/-Launch) writes C:\Apps\IdiotProof\deploy.bat; removed deploy-idiotproof.bat, publish-all.bat, launch.bat and Start* leftovers | deploy.ps1 |');
@@ -16387,6 +16388,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TT-T67', 'ThinkTank', 67, '2026-11-25', 'feature', 'open', 'Move ThinkTank off Azure to the Hetzner server', '—', 66, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TT-T68', 'ThinkTank', 68, '2026-11-25', 'chore', 'open', 'Move ThinkTank to Hetzner SQL with the DB move script, verify, and repoint ThinkTank''s connection strings (Vault + server env file)', '—', 67, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TT-T69', 'ThinkTank', 69, '2026-11-25', 'feature', 'open', 'Add ThinkTank to the reusable deploy workflow and a systemd/Caddy entry, deploy on push to main, verify /health and the main pages; if ThinkTank only runs locally, record that and close', '—', 68, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TT-T70', 'ThinkTank', 70, '2026-11-26', 'chore', 'closed', 'Local development reads the local SQL copy from its own Development config (owner 2026-11-25: all local development runs off local SQL Server, MAT-T255); the User-level override and deployed settings still win.', '—', 69, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGC-T1', 'TownWalker', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| GGC-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGC-T2', 'TownWalker', 2, '2026-10-14', 'chore', 'closed', 'Move Tests/Core.Tests from xUnit to NUnit (swap xunit packages for NUnit + NUnit3TestAdapter, port the 6 LoopTests facts as-is) so the Lab core tests follow the workspace''s NUnit standard and the other GGC test tickets land in one framework', '749002d', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGC-T3', 'TownWalker', 3, '2026-10-14', 'chore', 'closed', 'NUnit tests for AStar and RouteGraph (Assets/Lab/Core/Routing.cs): AStar finds the cheapest path not just the first, returns [start] when start==goal, null when unreachable or when maxNodes is exhausted, skips infinite-cost edges; RouteGraph.Build keeps edges symmetric, caps each node at ''links'' nearest, always links the nearest neighbour even beyond maxLen (so no isolated site), and node 0 is the start', '49e1a64', 2, NULL);
@@ -16514,6 +16516,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TUT-T85', 'Tutor', 85, '2026-11-25', 'chore', 'open', 'Move TutorAuth to Hetzner SQL with the DB move script, verify, and repoint Tutor''s connection strings (Vault + server env file)', '—', 84, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TUT-T86', 'Tutor', 86, '2026-11-25', 'feature', 'open', 'Add Tutor to the reusable deploy workflow and a systemd/Caddy entry, deploy on push to main, verify /health and the main pages; if Tutor only runs locally, record that and close', '—', 85, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TUT-T87', 'Tutor', 87, '2026-11-26', 'fix', 'open', 'ReadAllEntriesAsync buffers every entry with no cap, so a hostile .tutor (zip bomb) exhausts memory before validation; resources/conceptMaps ToDictionary throws an unfriendly ArgumentException on duplicate ids.', '—', 86, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TUT-T88', 'Tutor', 88, '2026-11-26', 'chore', 'closed', 'Local development reads the local SQL copy from its own Development config (owner 2026-11-25: all local development runs off local SQL Server, MAT-T255); the User-level override and deployed settings still win.', '—', 87, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UC-T1', 'Unity.Cursory', 1, '2026-10-20', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UC-T2', 'Unity.Cursory', 2, '2026-10-20', 'chore', 'closed', 'Bootstrap repo: AGENTS.md/CLAUDE.md forwarders and docs/rfc/0001-port-plan.md (port Cursory to Unity 6 on MindAttic.Unity.Multiplayer; points at that repo''s architecture RFC)', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UC-T3', 'Unity.Cursory', 3, '2026-10-20', 'chore', 'closed', 'Unity 6000.4.3f1 project: URP 2D, top-down orthographic camera, Packages/manifest.json referencing file:../../MindAttic.Unity.Multiplayer/unity/com.mindattic.unity.multiplayer and com.mindattic.capture, engine-free Assets/UnityCursory/Core + Tests/Core.Tests dotnet NUnit pattern (as in UnitySpace/GridGameGaiden), docs/BIBLE.md porting Cursory''s CUR-LAW rules (server authoritative; geometry once per level), .gitattributes LF, .gitignore for Unity. Design: MindAttic.Unity.Multiplayer docs/rfc/0001-architecture.md.', '5d05eca', 2, NULL);
@@ -120515,6 +120518,27 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125051, 
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125052, 'US-T850', '2026-11-26T11:48:03Z', 'working', 'ryandebraal@gmail.com (b773a79b-ba7e-46cb-9786-f886660e3188)', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125053, 'US-T866', '2026-11-26T11:48:04Z', 'working', 'ryandebraal@gmail.com (b773a79b-ba7e-46cb-9786-f886660e3188)', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125054, 'MAT-T255', '2026-11-26T12:13:30Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125055, 'TUT-T88', '2026-11-26T12:24:52Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125056, 'TUT-T88', '2026-11-26T12:24:52Z', 'name', NULL, 'Development config points at local SQL');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125057, 'TUT-T88', '2026-11-26T12:24:52Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125058, 'TUT-T88', '2026-11-26T12:24:54Z', 'link', NULL, 'part-of MAT-T255');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125059, 'MAT-T255', '2026-11-26T12:24:54Z', 'link', NULL, 'TUT-T88 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125060, 'TUT-T88', '2026-11-26T12:24:55Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125061, 'TT-T70', '2026-11-26T12:24:56Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125062, 'TT-T70', '2026-11-26T12:24:56Z', 'name', NULL, 'Development config points at local SQL');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125063, 'TT-T70', '2026-11-26T12:24:56Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125064, 'TT-T70', '2026-11-26T12:25:00Z', 'link', NULL, 'part-of MAT-T255');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125065, 'MAT-T255', '2026-11-26T12:25:00Z', 'link', NULL, 'TT-T70 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125066, 'TT-T70', '2026-11-26T12:25:02Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125067, 'IDEA-T79', '2026-11-26T12:25:03Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125068, 'IDEA-T79', '2026-11-26T12:25:03Z', 'name', NULL, 'Development config points at local SQL');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125069, 'IDEA-T79', '2026-11-26T12:25:03Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125070, 'IDEA-T79', '2026-11-26T12:25:07Z', 'link', NULL, 'part-of MAT-T255');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125071, 'MAT-T255', '2026-11-26T12:25:07Z', 'link', NULL, 'IDEA-T79 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125072, 'IDEA-T79', '2026-11-26T12:25:09Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125073, 'TUT-T88', '2026-11-26T12:25:42Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125074, 'TT-T70', '2026-11-26T12:26:18Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (125075, 'IDEA-T79', '2026-11-26T12:26:24Z', 'status', 'open', 'closed');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AES-T10', 'proposed', 380, '2026-11-24T19:47:20Z', NULL);
@@ -122018,6 +122042,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IDEA-T75', 'approved', 0, '2026-11-25T19:39:24Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IDEA-T76', 'approved', 0, '2026-11-25T19:39:24Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IDEA-T77', 'approved', 0, '2026-11-25T19:39:25Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IDEA-T79', 'approved', 0, '2026-11-26T12:25:09Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T10', 'approved', 0, '2026-10-31T03:58:00Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T100', 'proposed', 1191, '2026-10-30T19:27:56Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T101', 'approved', 1190, '2026-10-31T02:56:20Z', NULL);
@@ -124651,6 +124676,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T67', 'approved', 0, '2026-11-25T19:39:23Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T68', 'approved', 0, '2026-11-25T19:39:23Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T69', 'approved', 0, '2026-11-25T19:39:24Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T70', 'approved', 0, '2026-11-26T12:25:02Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T18', 'approved', 5, '2026-10-21T04:35:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T19', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T20', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
@@ -124667,6 +124693,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T84', 'approved', 0, '2026-11-25T19:39:20Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T85', 'approved', 0, '2026-11-25T19:39:21Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T86', 'approved', 0, '2026-11-25T19:39:21Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T88', 'approved', 0, '2026-11-26T12:24:55Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.CHN-T10', 'approved', 0, '2026-10-22T05:35:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.CHN-T100', 'approved', 0, '2026-10-30T16:30:37Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.CHN-T110', 'approved', 0, '2026-11-03T04:34:56Z', NULL);
@@ -153496,6 +153523,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IDEA-T75', 'Move Id
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IDEA-T76', 'Move IdeaCms database', '2026-11-25T19:33:59Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IDEA-T77', 'Host IdeaCms on Hetzner', '2026-11-25T19:34:02Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IDEA-T78', 'Packer.NamedBool/NamedString NRE drops all manifest settings', '2026-11-26T10:49:15Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IDEA-T79', 'Development config points at local SQL', '2026-11-26T12:25:03Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T448', 'Gapper study population amendment', '2026-11-07T05:28:30Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T449', 'Full IdiotProof data backup', '2026-11-07T07:09:04Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T450', 'Gapper amendment 02 news-ride', '2026-11-07T07:09:43Z');
@@ -154884,6 +154912,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TT-T66', 'Exhaustiv
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TT-T67', 'Move ThinkTank to Hetzner', '2026-11-25T19:33:45Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TT-T68', 'Move ThinkTank database', '2026-11-25T19:33:49Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TT-T69', 'Host ThinkTank on Hetzner', '2026-11-25T19:33:52Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TT-T70', 'Development config points at local SQL', '2026-11-26T12:24:56Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TUT-T59', 'Author role and spend caps', '2026-11-19T22:38:09Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TUT-T60', 'Works online once', '2026-11-19T22:39:25Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TUT-T61', 'Embedding batch over token cap', '2026-11-19T22:49:02Z');
@@ -154912,6 +154941,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TUT-T84', 'Move Tut
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TUT-T85', 'Move Tutor database', '2026-11-25T19:33:26Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TUT-T86', 'Host Tutor on Hetzner', '2026-11-25T19:33:30Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TUT-T87', 'BundleImporter has no zip size cap and ToDictionary throws on duplicate ids', '2026-11-26T10:48:42Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TUT-T88', 'Development config points at local SQL', '2026-11-26T12:24:52Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.CHN-T113', 'Headless test flag', '2026-11-07T04:33:33Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.CHN-T115', 'Exhaustive bughunt', '2026-11-24T07:02:17Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.CHN-T116', 'Adopt MindAttic.Media.Capture', '2026-11-24T16:17:05Z');
@@ -156638,6 +156668,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('IDEA-T74', 'level:t
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('IDEA-T75', 'level:story', '2026-11-25T19:33:56Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('IDEA-T76', 'level:task', '2026-11-25T19:33:59Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('IDEA-T77', 'level:task', '2026-11-25T19:34:02Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('IDEA-T79', 'level:task', '2026-11-26T12:25:03Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('IDEA-T8', 'level:story', '2026-11-22T06:34:45Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('IDEA-T9', 'level:story', '2026-11-22T06:34:51Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('IP-T447', 'level:story', '2026-11-22T06:40:02Z');
@@ -160510,6 +160541,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TT-T67', 'level:sto
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TT-T68', 'level:task', '2026-11-25T19:33:49Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TT-T69', 'level:task', '2026-11-25T19:33:52Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TT-T7', 'level:task', '2026-11-22T05:41:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TT-T70', 'level:task', '2026-11-26T12:24:56Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TT-T8', 'level:task', '2026-11-22T05:41:47Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TT-T9', 'level:task', '2026-11-22T05:41:48Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TUT-T10', 'level:task', '2026-11-22T05:40:33Z');
@@ -160554,6 +160586,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TUT-T83', 'level:st
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TUT-T84', 'level:story', '2026-11-25T19:33:23Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TUT-T85', 'level:task', '2026-11-25T19:33:27Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TUT-T86', 'level:task', '2026-11-25T19:33:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TUT-T88', 'level:task', '2026-11-26T12:24:52Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TUT-T9', 'level:task', '2026-11-22T05:40:32Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.CHN-T115', 'level:story', '2026-11-24T07:02:18Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.CHN-T116', 'epic', '2026-11-24T16:17:06Z');
@@ -164333,6 +164366,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('IDEA-T77', 'IDEA-T76', '
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('IDEA-T77', 'MAT-T238', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('IDEA-T77', 'MAT-T239', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('IDEA-T77', 'MAT-T240', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IDEA-T79', 'MAT-T255', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('IDEA-US-A1', 'IDEA-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('IDEA-US-A2', 'IDEA-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('IDEA-US-A3', 'IDEA-EPIC-A', 'part-of', 'migrated: story under its epic');
@@ -168088,6 +168122,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('TT-T69', 'MAT-T239', 're
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TT-T69', 'MAT-T240', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TT-T69', 'TT-T67', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TT-T69', 'TT-T68', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('TT-T70', 'MAT-T255', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TT-US-A1', 'TT-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TT-US-A2', 'TT-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TT-US-A3', 'TT-EPIC-A', 'part-of', 'migrated: story under its epic');
@@ -168154,6 +168189,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-T86', 'MAT-T239', 'r
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-T86', 'MAT-T240', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-T86', 'TUT-T84', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-T86', 'TUT-T85', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-T88', 'MAT-T255', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-US-A1', 'TUT-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-US-A2', 'TUT-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-US-A3', 'TUT-EPIC-A', 'part-of', 'migrated: story under its epic');
