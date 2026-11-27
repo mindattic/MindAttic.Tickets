@@ -12,8 +12,9 @@ $ErrorActionPreference = 'Stop'
 $repo   = Resolve-Path (Join-Path $PSScriptRoot '..')
 $feed   = 'C:\LocalNuGet'
 
-dotnet test (Join-Path $repo 'MindAttic.Tickets.slnx') --nologo
-if ($LASTEXITCODE -ne 0) { throw 'Tests failed; not packing.' }
+# Build, never test: the suite runs only when asked for (/test), not on every install (M.TIX-T409).
+dotnet build (Join-Path $repo 'MindAttic.Tickets.slnx') --configuration Release --nologo
+if ($LASTEXITCODE -ne 0) { throw 'Build failed; not packing.' }
 
 foreach ($proj in 'src\MindAttic.Tickets\MindAttic.Tickets.csproj', 'src\MindAttic.Tickets.Cli\MindAttic.Tickets.Cli.csproj') {
     dotnet pack (Join-Path $repo $proj) --configuration Release --output $feed --nologo
