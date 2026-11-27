@@ -10,6 +10,13 @@ public sealed partial class TicketsDb
     /// </summary>
     public const string ContinuousLabel = "continuous";
 
+    /// <summary>The label that holds a ticket open for its tests (M.TIX-T411): its last child closing records a
+    /// <see cref="WaitingEvent"/> instead of rolling it up.</summary>
+    public const string GateTestsLabel = "gate:tests";
+
+    /// <summary>The history field a roll-up held by <see cref="GateTestsLabel"/> writes, its new value why it waits.</summary>
+    public const string WaitingEvent = "waiting";
+
     /// <summary>The history field a reopen writes: old = the status it had, new = the reason given (M.TIX-T372).</summary>
     public const string ReopenEvent = "reopen";
 
