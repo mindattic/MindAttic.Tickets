@@ -190,8 +190,12 @@
                             <TextBlock Text="{Binding ApprovalText}" Style="{StaticResource ApprovalText}" />
                         </Border>
                         <Border Style="{StaticResource Chip}" BorderBrush="{DynamicResource StateRejected}"
-                                Visibility="{Binding BlockedText, Converter={x:Static vm:Converters.EmptyToCollapsed}}">
-                            <TextBlock Text="{Binding BlockedText}" FontSize="12" Foreground="{DynamicResource StateRejected}" />
+                                Visibility="{Binding BlockedChipText, Converter={x:Static vm:Converters.EmptyToCollapsed}}" ToolTip="{Binding BlockedText}">
+                            <TextBlock Text="{Binding BlockedChipText}" FontSize="12" Foreground="{DynamicResource StateRejected}" />
+                        </Border>
+                        <Border Style="{StaticResource Chip}" BorderBrush="{DynamicResource MaControlBorder}"
+                                Visibility="{Binding BlocksChipText, Converter={x:Static vm:Converters.EmptyToCollapsed}}" ToolTip="{Binding BlocksText}">
+                            <TextBlock Text="{Binding BlocksChipText}" FontSize="12" Foreground="{DynamicResource MaMuted}" />
                         </Border>
                         <TextBlock Style="{StaticResource Muted}" VerticalAlignment="Center" Margin="0,0,8,0"
                                    Text="{Binding Priority, StringFormat='priority {0}'}" />
@@ -245,8 +249,10 @@
                 <WrapPanel Margin="0,5,0,0">
                     <TextBlock Text="{Binding ApprovalText}" Style="{StaticResource ApprovalText}" Margin="0,0,8,0" />
                     <TextBlock Text="{Binding StatusText}" Style="{StaticResource StatusText}" Margin="0,0,8,0" />
-                    <TextBlock Text="⏸ blocked" FontSize="12" Foreground="{DynamicResource StateRejected}" ToolTip="{Binding BlockedText}"
-                               Visibility="{Binding BlockedText, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
+                    <TextBlock Text="{Binding BlockedChipText}" FontSize="12" Foreground="{DynamicResource StateRejected}" ToolTip="{Binding BlockedText}"
+                               Visibility="{Binding BlockedChipText, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
+                    <TextBlock Text="{Binding BlocksChipText}" FontSize="12" Foreground="{DynamicResource MaMuted}" ToolTip="{Binding BlocksText}"
+                               Visibility="{Binding BlocksChipText, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
                 </WrapPanel>
                 <TextBlock Text="{Binding WorkerText}" Style="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,3,0,0"
                            Visibility="{Binding WorkerText, Converter={x:Static vm:Converters.EmptyToCollapsed}}" />
@@ -362,8 +368,8 @@
                           SelectedItem="{Binding StoryStatusFilter}" AutomationProperties.Name="Story status filter" />
             </StackPanel>
             <StackPanel Margin="0,0,12,6" VerticalAlignment="Bottom" Visibility="{Binding IsStoriesView, Converter={StaticResource Visible}}">
-                <CheckBox Style="{StaticResource Check}" Content="_Group by epic" IsChecked="{Binding GroupByEpic}" Margin="0,0,0,6"
-                          ToolTip="List each epic's stories under a heading with its title, and New story and Rename buttons." />
+                <CheckBox Style="{StaticResource MaCheck}" Content="_Group by epic" IsChecked="{Binding GroupByEpic}" Margin="0,0,0,6"
+                          ToolTip="List each epic's stories under a heading with its title and a Rename button." />
             </StackPanel>
             <StackPanel Margin="0,0,12,6" Visibility="{Binding IsTicketsView, Converter={StaticResource Visible}}">
                 <Label Style="{StaticResource FilterLabel}" Content="Stat_us" Target="{Binding ElementName=StatusBox}" />
@@ -375,13 +381,13 @@
                 <StackPanel Orientation="Horizontal">
                     <ComboBox x:Name="SortBox" Style="{StaticResource Combo}" ItemsSource="{Binding SortChoices}"
                               SelectedItem="{Binding SortBy}" AutomationProperties.Name="Sort by" />
-                    <CheckBox Style="{StaticResource Check}" Content="Descending" IsChecked="{Binding SortDescending}" Margin="10,0,0,0" />
+                    <CheckBox Style="{StaticResource MaCheck}" Content="Descending" IsChecked="{Binding SortDescending}" Margin="10,0,0,0" />
                 </StackPanel>
             </StackPanel>
             <StackPanel Margin="0,0,12,6" VerticalAlignment="Bottom" Visibility="{Binding IsTicketsView, Converter={StaticResource Visible}}">
-                <CheckBox Style="{StaticResource Check}" Content="_Group by repo" IsChecked="{Binding GroupByRepo}" Margin="0,0,0,6"
+                <CheckBox Style="{StaticResource MaCheck}" Content="_Group by repo" IsChecked="{Binding GroupByRepo}" Margin="0,0,0,6"
                           ToolTip="List each repo's tickets together under its name, sorted within it." />
-                <CheckBox Style="{StaticResource Check}" Content="Show closed and wont-do" IsChecked="{Binding ShowArchived}"
+                <CheckBox Style="{StaticResource MaCheck}" Content="Show closed and wont-do" IsChecked="{Binding ShowArchived}"
                           ToolTip="Closed and wont-do tickets are archived: hidden unless this is on or a status is picked." />
             </StackPanel>
         </WrapPanel>
@@ -722,12 +728,6 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <DockPanel Margin="0,0,0,8">
-                    <WrapPanel DockPanel.Dock="Right">
-                        <Button Style="{StaticResource MaButton}" Content="New stor_y&#x2026;" Command="{Binding NewStoryCommand}" Margin="0,0,6,4"
-                                ToolTip="Add a story under an epic of the repo shown; it opens in the editor" />
-                        <Button Style="{StaticResource MaButton}" Content="New e_pic&#x2026;" Command="{Binding NewEpicCommand}" Margin="0,0,0,4"
-                                ToolTip="Add an epic (its key and title) to a repo" />
-                    </WrapPanel>
                     <TextBlock Style="{StaticResource Muted}" TextWrapping="Wrap" VerticalAlignment="Center" Margin="0,0,12,4"
                                Text="Each repo's user stories, in their epics' order. Select one to edit its statement, status, acceptance and evidence (Ctrl+S saves, Esc goes back to the list) and the tickets that implement it. Saving rewrites the repo's USER_STORIES.md view." />
                 </DockPanel>
@@ -735,7 +735,7 @@
                          SelectedItem="{Binding SelectedStoryRow}" AutomationProperties.Name="Stories, by epic"
                          PreviewKeyDown="OnStoriesKeyDown"
                          VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling" VirtualizingPanel.IsVirtualizingWhenGrouping="True">
-                    <!-- Group by epic: a heading per epic (MainWindow sets the grouping) with its own New story and Rename,
+                    <!-- Group by epic: a heading per epic (MainWindow sets the grouping) with its own Rename button,
                          a rollup of its implementing tickets' progress, what to work on next, and a collapse toggle that's
                          remembered between runs (M.TIX-T182, M.TIX-T183, M.TIX-T184, M.TIX-T187). -->
                     <ListBox.GroupStyle>
@@ -757,11 +757,7 @@
                                                     ToolTip="Open implementing tickets waiting on another open ticket">
                                                 <TextBlock Text="{Binding Name.BlockedCount, StringFormat='{}{0} blocked'}" FontSize="12" Foreground="{DynamicResource StateRejected}" />
                                             </Border>
-                                            <Button Style="{StaticResource LinkBtn}" Content="New story" Margin="14,0,0,0" VerticalAlignment="Center"
-                                                    Visibility="{Binding Name.IsEpic, Converter={StaticResource Visible}}"
-                                                    Command="{Binding DataContext.NewStoryCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding Name}"
-                                                    AutomationProperties.Name="{Binding Name.NewStoryName}" ToolTip="Add a story to this epic" />
-                                            <Button Style="{StaticResource LinkBtn}" Content="Rename" Margin="12,0,0,0" VerticalAlignment="Center"
+                                            <Button Style="{StaticResource LinkBtn}" Content="Rename" Margin="14,0,0,0" VerticalAlignment="Center"
                                                     Visibility="{Binding Name.IsEpic, Converter={StaticResource Visible}}"
                                                     Command="{Binding DataContext.RenameEpicCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding Name}"
                                                     AutomationProperties.Name="{Binding Name.RenameName}" ToolTip="Rename this epic; its stories keep their IDs" />
@@ -1321,6 +1317,59 @@
                                 <TextBox Text="{Binding DependencyText, Mode=OneWay}" IsReadOnly="True" TextWrapping="NoWrap" FontFamily="Consolas" FontSize="12"
                                          Background="Transparent" Foreground="{DynamicResource MaText}" BorderThickness="0" Margin="0,4,0,0"
                                          HorizontalScrollBarVisibility="Auto" AutomationProperties.Name="Dependency graph, one ticket a line, indented by steps" />
+                            </Expander>
+                        </StackPanel>
+
+                        <!-- Execution order (M.TIX-T186): this epic's children, laid into steps by the requires links between
+                             them, drawn with the same rows and chips as the dependency graph above (reused as is, with no
+                             template of its own) so a red outline means the same thing in both. -->
+                        <StackPanel Visibility="{Binding HasExecutionOrder, Converter={StaticResource Visible}}">
+                            <TextBlock Text="EXECUTION ORDER" Style="{StaticResource SectionLabel}" />
+                            <TextBlock Text="{Binding ExecutionOrderSummary}" Style="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,0,0,6" />
+                            <ItemsControl ItemsSource="{Binding ExecutionOrderRows}" Focusable="False" AutomationProperties.Name="Execution order">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type vm:GraphRow}">
+                                        <StackPanel>
+                                            <DockPanel Margin="0,2">
+                                                <TextBlock Text="{Binding Label}" Style="{StaticResource Muted}" Width="110" VerticalAlignment="Center" />
+                                                <ItemsControl ItemsSource="{Binding Chips}" Focusable="False">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate><WrapPanel /></ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate DataType="{x:Type vm:GraphChip}">
+                                                            <Button Content="{Binding Text}" Margin="0,0,6,4" Padding="8,2" MinHeight="26" FontSize="12"
+                                                                    ToolTip="{Binding Summary}" AutomationProperties.Name="{Binding SpokenName}"
+                                                                    Command="{Binding DataContext.GoToCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding Id}">
+                                                                <Button.Style>
+                                                                    <Style TargetType="Button" BasedOn="{StaticResource MaButton}">
+                                                                        <Style.Triggers>
+                                                                            <DataTrigger Binding="{Binding IsOpen}" Value="False">
+                                                                                <Setter Property="Foreground" Value="{DynamicResource MaMuted}" />
+                                                                            </DataTrigger>
+                                                                            <DataTrigger Binding="{Binding Blocking}" Value="True">
+                                                                                <Setter Property="BorderBrush" Value="{DynamicResource MaRec}" />
+                                                                                <Setter Property="BorderThickness" Value="2" />
+                                                                                <Setter Property="Foreground" Value="{DynamicResource MaRec}" />
+                                                                                <Setter Property="FontWeight" Value="SemiBold" />
+                                                                            </DataTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </Button.Style>
+                                                            </Button>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </DockPanel>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                            <TextBlock Text="Each step waits for the steps above it; a red outline holds a later step up." Style="{StaticResource Muted}" Margin="0,2,0,6" />
+                            <Expander Header="As a text list" Foreground="{DynamicResource MaText}" AutomationProperties.Name="Execution order as a text list">
+                                <TextBox Text="{Binding ExecutionOrderText, Mode=OneWay}" IsReadOnly="True" TextWrapping="NoWrap" FontFamily="Consolas" FontSize="12"
+                                         Background="Transparent" Foreground="{DynamicResource MaText}" BorderThickness="0" Margin="0,4,0,0"
+                                         HorizontalScrollBarVisibility="Auto" AutomationProperties.Name="Execution order, one ticket a line under its step" />
                             </Expander>
                         </StackPanel>
 

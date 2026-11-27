@@ -14,7 +14,7 @@ public sealed class TicketRowViewModel(string id) : ObservableObject
     private long? estimate;
     private int rank;
     private bool isDropTarget;
-    private IReadOnlyList<string> blockers = [], ticketLabels = [];
+    private IReadOnlyList<string> blockers = [], blocks = [], ticketLabels = [];
     private RepoHeaderViewModel? repoHeader;
     private Worker? worker;
 
@@ -43,6 +43,9 @@ public sealed class TicketRowViewModel(string id) : ObservableObject
     /// <summary>The open tickets this one waits on (its <c>requires</c> links, all the way down).</summary>
     public IReadOnlyList<string> Blockers { get => blockers; private set => Set(ref blockers, value); }
 
+    /// <summary>The open tickets waiting on this one, all the way down (M.TIX-T195).</summary>
+    public IReadOnlyList<string> Blocks { get => blocks; private set => Set(ref blocks, value); }
+
     /// <summary>Its labels, shown as chips (M.TIX-T74).</summary>
     public IReadOnlyList<string> TicketLabels { get => ticketLabels; private set { if (Set(ref ticketLabels, value)) Raise(nameof(LabelsText)); } }
 
@@ -51,7 +54,20 @@ public sealed class TicketRowViewModel(string id) : ObservableObject
 
     public bool IsBlocked => IsOpen && Blockers.Count > 0;
 
+    /// <summary>Open and something else waits on it.</summary>
+    public bool HasBlocks => IsOpen && Blocks.Count > 0;
+
+    /// <summary>The chip's text: a count, not the boolean "blocked" it used to say (M.TIX-T195).</summary>
+    public string BlockedChipText => IsBlocked ? $"⏸ blocked by {Blockers.Count}" : "";
+
+    /// <summary>The chip's text for what it blocks; empty while nothing waits on it (M.TIX-T195).</summary>
+    public string BlocksChipText => HasBlocks ? $"blocks {Blocks.Count}" : "";
+
+    /// <summary>The full list, for the chip's tooltip and for screen readers.</summary>
     public string BlockedText => IsBlocked ? "⏸ blocked by " + string.Join(", ", Blockers) : "";
+
+    /// <summary>The full list of what it blocks, for the chip's tooltip and for screen readers.</summary>
+    public string BlocksText => HasBlocks ? "blocks " + string.Join(", ", Blocks) : "";
 
     /// <summary>1-based position in the queue as shown (0 outside the queue).</summary>
     public int Rank { get => rank; set { if (Set(ref rank, value)) Raise(nameof(SpokenName)); } }
@@ -98,6 +114,7 @@ public sealed class TicketRowViewModel(string id) : ObservableObject
     public string SpokenName =>
         (Rank > 0 ? $"Position {Rank}. " : "") + $"{Id}, {Type}, {Status}, {Approval}" +
         (Priority != 0 ? $", priority {Priority}" : "") + (Estimate is not null ? $", estimated {EstimateText.TrimStart('~')}" : "") + (IsBlocked ? $", {BlockedText.TrimStart('⏸', ' ')}" : "") +
+        (HasBlocks ? $", {BlocksText}" : "") +
         (TicketLabels.Count > 0 ? $", labels {LabelsText}" : "") + $", {Repo}: " + (Name is { } n ? $"{n}. {Summary}" : Summary);
 
     public void Update(TicketInfo t)
@@ -113,9 +130,14 @@ public sealed class TicketRowViewModel(string id) : ObservableObject
         Priority = t.Priority;
         Estimate = t.Estimate;
         if (!Blockers.SequenceEqual(t.Blockers, StringComparer.OrdinalIgnoreCase)) Blockers = t.Blockers;
+        if (!Blocks.SequenceEqual(t.Blocks, StringComparer.OrdinalIgnoreCase)) Blocks = t.Blocks;
         if (!TicketLabels.SequenceEqual(t.Labels, StringComparer.Ordinal)) TicketLabels = t.Labels;
         Raise(nameof(IsBlocked));
         Raise(nameof(BlockedText));
+        Raise(nameof(BlockedChipText));
+        Raise(nameof(HasBlocks));
+        Raise(nameof(BlocksText));
+        Raise(nameof(BlocksChipText));
         Raise(nameof(MayWork));
         Raise(nameof(IsOpen));
         Raise(nameof(ApprovalText));

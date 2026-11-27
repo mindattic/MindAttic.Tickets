@@ -17,6 +17,10 @@ public sealed record TicketInfo(string Repo, Ticket Ticket, string Approval, lon
 
     public IReadOnlyList<string> Blockers { get; init; } = Blockers ?? [];
 
+    /// <summary>The open tickets waiting on this one (the reverse of <see cref="Blockers"/>, all the way down); empty
+    /// while nothing waits on it (M.TIX-T195).</summary>
+    public IReadOnlyList<string> Blocks { get; init; } = [];
+
     /// <summary>A session is recorded as working it in the ticket database (<c>ticket_work</c>; M.TIX-T134).</summary>
     public bool Working { get; init; }
 
@@ -152,10 +156,12 @@ public sealed class TicketStore(string root)
         var tickets = db.Tickets();
         var links = db.AllLinks();
         var blockers = OpenBlockers(tickets.Select(x => x.Ticket), links);
+        var blocks = InvertBlockers(blockers);
         var work = db.WorkStates();
         var labels = db.AllLabels();
         var names = db.Names();
         IReadOnlyList<string> BlockersOf(string id) => blockers.TryGetValue(id, out var b) ? b : [];
+        IReadOnlyList<string> BlocksOf(string id) => blocks.TryGetValue(id, out var b) ? b : [];
         bool WorkingOn(string id) => work.TryGetValue(id, out var w) && w.IsWorking;
         long? EstimateOf(string id) => estimates.TryGetValue(id, out var e) ? e : null;
         var graph = TicketGraph.Build(tickets, links, names);
@@ -163,11 +169,11 @@ public sealed class TicketStore(string root)
         IReadOnlyList<string> LabelsOf(string id) => labels.TryGetValue(id, out var l) ? l : [];
         TicketInfo Info(string repo, Ticket t) =>
             (states.TryGetValue(t.Id, out var s) ? new TicketInfo(repo, t, s.Approval, s.Priority, BlockersOf(t.Id)) : new TicketInfo(repo, t, TicketsDb.Proposed, 0, BlockersOf(t.Id)))
-            with { Working = WorkingOn(t.Id), Estimate = EstimateOf(t.Id), Labels = LabelsOf(t.Id), Name = names.GetValueOrDefault(t.Id) };
+            with { Working = WorkingOn(t.Id), Estimate = EstimateOf(t.Id), Labels = LabelsOf(t.Id), Name = names.GetValueOrDefault(t.Id), Blocks = BlocksOf(t.Id) };
         return new Snapshot(
             [.. db.Repos().Select(r => r.Name)],
             [.. tickets.Select(x => Info(x.Repo, x.Ticket))],
-            [.. db.Queue().Select(q => new TicketInfo(q.Repo, q.Ticket, q.Approval, q.Priority, BlockersOf(q.Ticket.Id)) { Working = WorkingOn(q.Ticket.Id), Estimate = q.Estimate, Labels = LabelsOf(q.Ticket.Id), Name = q.Name })],
+            [.. db.Queue().Select(q => new TicketInfo(q.Repo, q.Ticket, q.Approval, q.Priority, BlockersOf(q.Ticket.Id)) { Working = WorkingOn(q.Ticket.Id), Estimate = q.Estimate, Labels = LabelsOf(q.Ticket.Id), Name = q.Name, Blocks = BlocksOf(q.Ticket.Id) })],
             DateTime.Now)
         {
             Hygiene = TicketHygiene.Check(tickets),
@@ -283,6 +289,19 @@ public sealed class TicketStore(string root)
         return result;
     }
 
+    /// <summary>The reverse of <see cref="OpenBlockers"/>: each open blocker's open dependents (M.TIX-T195).</summary>
+    internal static IReadOnlyDictionary<string, IReadOnlyList<string>> InvertBlockers(IReadOnlyDictionary<string, IReadOnlyList<string>> blockers)
+    {
+        var result = new Dictionary<string, List<string>>(StringComparer.OrdinalIgnoreCase);
+        foreach (var (dependent, found) in blockers)
+            foreach (var blocker in found)
+            {
+                if (!result.TryGetValue(blocker, out var list)) result[blocker] = list = [];
+                list.Add(dependent);
+            }
+        return result.ToDictionary(kv => kv.Key, IReadOnlyList<string> (kv) => kv.Value, StringComparer.OrdinalIgnoreCase);
+    }
+
     public TicketDetail? Detail(string id) =>
         // git runs after the database is closed, so a slow log never holds the file open (M.TIX-T85).
         DetailFromDb(id) is not { } d ? null : d with { Commits = Commits(d.Info.Repo, d.Info.Ticket.Id) };
@@ -313,8 +332,8 @@ public sealed class TicketStore(string root)
             Work = db.Work(found.Ticket.Id),
             Versions = db.Versions(found.Ticket.Id),
             Notes = db.Notes(found.Ticket.Id),
-            // Only read every ticket and link when a requires link touches it: most tickets have none.
-            Graph = links.Any(l => l.Kind == "requires")
+            // Only read every ticket and link when a requires or part-of link touches it: most tickets have neither.
+            Graph = links.Any(l => l.Kind is "requires" or "part-of")
                 ? DependencyGraph.Build(found.Ticket.Id, db.Tickets().Select(x => x.Ticket), db.AllLinks())
                 : DependencyGraph.Empty(found.Ticket.Id),
             Description = db.Description(found.Ticket.Id),
