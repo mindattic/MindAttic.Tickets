@@ -87,6 +87,10 @@ public sealed record Snapshot(IReadOnlyList<string> Repos, IReadOnlyList<TicketI
 
     /// <summary>Every milestone that isn't dropped, in milestone order, for the Milestones view (M.TIX-T336).</summary>
     public IReadOnlyList<MilestoneInfo> Milestones { get; init; } = [];
+
+    /// <summary>The highest <c>ticket_events</c> sequence number this snapshot reflects: where its next
+    /// <see cref="TicketStore.Apply"/> picks up (M.TIX-T370).</summary>
+    public long EventMark { get; init; }
 }
 
 /// <summary>Members of a milestone under one heading (M.TIX-T336): those that came through <paramref name="Heading"/>'s epic
@@ -151,6 +155,9 @@ public sealed class TicketStore(string root)
 
     public Snapshot Load() => Read(db =>
     {
+        // Read before everything else, so a change made while the rest of this read runs is caught by the next
+        // incremental Apply (M.TIX-T370) rather than missed between the two marks.
+        var mark = db.LatestEventSeq();
         var states = db.QueueStates();
         var estimates = db.Estimates();
         var tickets = db.Tickets();
@@ -188,8 +195,77 @@ public sealed class TicketStore(string root)
             Implementers = links.Where(l => l.Kind == "implements")
                 .GroupBy(l => l.To, StringComparer.OrdinalIgnoreCase)
                 .ToDictionary(g => g.Key, g => (IReadOnlyList<string>)[.. g.Select(l => l.From).Distinct(StringComparer.OrdinalIgnoreCase)], StringComparer.OrdinalIgnoreCase),
+            EventMark = mark,
         };
     });
+
+    /// <summary>
+    /// Brings <paramref name="snapshot"/> up to date with every ticket changed since its own mark (<see cref="Snapshot.EventMark"/>;
+    /// M.TIX-T369), instead of a full <see cref="Load"/>: each changed ticket's row in <see cref="Snapshot.Tickets"/> is replaced
+    /// (a ticket filed since is added), its <see cref="Snapshot.Queue"/> entry follows its status (joining, leaving or moving
+    /// within it), and its hygiene findings and <c>created</c>/<c>status</c> history are spliced in. Its repo (if new) and any
+    /// label it carries join <see cref="Snapshot.Repos"/> and <see cref="Snapshot.LabelNames"/>. Everything that needs the whole
+    /// link graph (blockers, weights, the Graph and Milestones tabs) keeps what <paramref name="snapshot"/> already had until
+    /// its next full <see cref="Load"/> (M.TIX-T235, M.TIX-T370). Called from the app bus's ticket events, debounced; returns
+    /// <paramref name="snapshot"/> itself when nothing changed since.
+    /// </summary>
+    public Snapshot Apply(Snapshot snapshot) => Read(db => MergeChanges(snapshot, db.ChangedTicketsSince(snapshot.EventMark)));
+
+    /// <summary>The queue's own order (M.TIX-T316): explicit priority, then graph weight (as <paramref name="snapshot"/> last knew
+    /// it), ties kept in the order they're given in &#8212; estimate, date, repo, ID, the same tie-break <c>Queue()</c> sorts by.</summary>
+    private static List<TicketInfo> OrderQueue(Snapshot snapshot, IEnumerable<TicketInfo> entries)
+    {
+        var tieBroken = entries.OrderBy(t => t.Estimate is null).ThenBy(t => t.Estimate)
+            .ThenBy(t => t.Ticket.Date, StringComparer.Ordinal).ThenBy(t => t.Repo, StringComparer.OrdinalIgnoreCase)
+            .ThenBy(t => TicketRules.ParseNumber(t.Ticket.Id) ?? 0);
+        return [.. GraphWeight.Order(tieBroken, t => t.Priority, t => snapshot.Weights.GetValueOrDefault(t.Ticket.Id)?.Value ?? 0)];
+    }
+
+    /// <summary>What <see cref="Apply"/> does, apart from the database (its own method so it can be tested without one).</summary>
+    internal static Snapshot MergeChanges(Snapshot snapshot, MindAttic.Tickets.Data.ChangedTicketsResult changes)
+    {
+        if (changes.Tickets.Count == 0) return changes.After == snapshot.EventMark ? snapshot : snapshot with { EventMark = changes.After };
+
+        var byId = changes.Tickets.ToDictionary(c => c.Ticket.Id, c => c, StringComparer.OrdinalIgnoreCase);
+        var previous = snapshot.Tickets.ToDictionary(t => t.Ticket.Id, t => t, StringComparer.OrdinalIgnoreCase);
+
+        // A changed row's Blockers/Blocks keep what the snapshot last worked out from the link graph: this doesn't touch
+        // links, so they're left for the next full Load to bring up to date (most changes are a status, ref or label).
+        TicketInfo ToInfo(ChangedTicketRow c) =>
+            new TicketInfo(c.Repo, c.Ticket, c.Approval, c.Priority, previous.GetValueOrDefault(c.Ticket.Id)?.Blockers ?? [])
+            {
+                Working = c.Working, Estimate = c.Estimate, Labels = c.Labels, Name = c.Name,
+                Blocks = previous.GetValueOrDefault(c.Ticket.Id)?.Blocks ?? [],
+            };
+
+        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        var tickets = new List<TicketInfo>(snapshot.Tickets.Count);
+        foreach (var t in snapshot.Tickets)
+        {
+            if (byId.TryGetValue(t.Ticket.Id, out var c)) { tickets.Add(ToInfo(c)); seen.Add(t.Ticket.Id); }
+            else tickets.Add(t);
+        }
+        foreach (var c in changes.Tickets)
+            if (seen.Add(c.Ticket.Id)) tickets.Add(ToInfo(c)); // filed since the snapshot was read
+
+        var openChanged = changes.Tickets.Where(c => c.Ticket.Status == TicketRules.Open).Select(ToInfo);
+        var queue = OrderQueue(snapshot, snapshot.Queue.Where(q => !byId.ContainsKey(q.Ticket.Id)).Concat(openChanged));
+
+        var hygiene = snapshot.Hygiene.Where(h => !byId.ContainsKey(h.TicketId)).Concat(changes.Tickets.SelectMany(c => c.Hygiene)).ToList();
+        var history = snapshot.StatusHistory.Where(e => !byId.ContainsKey(e.TicketId))
+            .Concat(changes.Tickets.SelectMany(c => c.History.Where(e => e.Field is "created" or "status"))).ToList();
+
+        var repos = snapshot.Repos.ToList();
+        foreach (var r in changes.Tickets.Select(c => c.Repo).Distinct(StringComparer.OrdinalIgnoreCase))
+            if (!repos.Contains(r, StringComparer.OrdinalIgnoreCase)) repos.Add(r);
+        var labels = snapshot.LabelNames.Union(changes.Tickets.SelectMany(c => c.Labels), StringComparer.Ordinal).Order(StringComparer.Ordinal).ToList();
+
+        return snapshot with
+        {
+            Repos = repos, Tickets = tickets, Queue = queue, Read = DateTime.Now,
+            Hygiene = hygiene, StatusHistory = history, LabelNames = labels, EventMark = changes.After,
+        };
+    }
 
     /// <summary>Every milestone that isn't dropped, in milestone order, each read from the one <paramref name="graph"/>: a few
     /// queries for all of them, not several apiece (M.TIX-T413).</summary>

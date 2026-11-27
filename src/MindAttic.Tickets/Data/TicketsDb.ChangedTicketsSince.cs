@@ -31,6 +31,13 @@ public sealed record ChangedTicketsResult(long After, IReadOnlyList<ChangedTicke
 public sealed partial class TicketsDb
 {
     /// <summary>
+    /// The highest <c>ticket_events</c> sequence number recorded so far (0 when there are none): the mark a full read
+    /// should keep, so its first <see cref="ChangedTicketsSince"/> call starts from where it read, not from the
+    /// beginning of every ticket's own history (M.TIX-T370).
+    /// </summary>
+    public long LatestEventSeq() => Scalar("SELECT MAX(seq) FROM ticket_events") is { } v ? Convert.ToInt64(v, CultureInfo.InvariantCulture) : 0L;
+
+    /// <summary>
     /// Every ticket that changed anywhere in the workspace after event <paramref name="after"/> (<c>ticket_events</c>;
     /// M.TIX-T369), each with its current row, queue state, history and hygiene findings — enough for the desktop view's
     /// incremental refresh (M.TIX-T235) to bring just those rows up to date instead of reloading the whole

@@ -271,6 +271,36 @@ public sealed partial class MainViewModel : ObservableObject
         }
     }
 
+    /// <summary>
+    /// Brings the lists up to date with the app bus's ticket events (M.TIX-T235, M.TIX-T370): only the changed tickets'
+    /// rows are replaced in the snapshot (<see cref="TicketStore.Apply"/>), not a full re-read of every repo's tickets,
+    /// history and hygiene. Falls back to <see cref="RefreshAsync"/> when there's no snapshot yet to apply onto.
+    /// </summary>
+    public async Task ApplyChangesAsync()
+    {
+        if (snapshot is not { } current) { await RefreshAsync(); return; }
+        var request = ++refreshRequest;
+        try
+        {
+            var s = await Task.Run(() => store.Apply(current));
+            if (request != refreshRequest || ReferenceEquals(s, current)) return;
+            snapshot = s;
+            foreach (var r in s.Repos.Where(r => !RepoChoices.Contains(r))) RepoChoices.Add(r);
+            SyncLabelChoices(s.LabelNames);
+            ApplyFilters();
+            if (Detail is { } d) await ShowDetailAsync(d.Id, quiet: true);
+            await RefreshActivityAsync();
+            LastRefresh = s.Read.ToString("HH:mm:ss", CultureInfo.InvariantCulture);
+            CommandManager.InvalidateRequerySuggested();
+        }
+        catch (Exception ex) when (ex is IOException or InvalidOperationException or System.Data.Common.DbException)
+        {
+            TicketsLog.For("Refresh").Warning(ex, "Couldn't apply ticket changes from {Db}", store.DbPath);
+            StatusMessage = $"Couldn't read the ticket database: {ex.Message}";
+            Announcement = StatusMessage;
+        }
+    }
+
     private void ApplyFilters()
     {
         Raise(nameof(IsFiltered));

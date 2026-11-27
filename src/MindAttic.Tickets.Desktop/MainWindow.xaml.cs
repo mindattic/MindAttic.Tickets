@@ -118,8 +118,9 @@ public partial class MainWindow : Window
         {
             busRefresh.Stop();
             busFirstPending = null;
-            try { await model.RefreshAsync(); }
-            catch (Exception ex) { TicketsLog.For("Bus").Error(ex, "Refreshing after a bus event failed"); }
+            // Only the tickets a burst's events named change (M.TIX-T235, M.TIX-T370): no need to re-read everything.
+            try { await model.ApplyChangesAsync(); }
+            catch (Exception ex) { TicketsLog.For("Bus").Error(ex, "Applying ticket changes after a bus event failed"); }
         };
         bus.TicketChanged += _ => Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
         {
