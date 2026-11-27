@@ -80,6 +80,32 @@ public sealed class LiveRefreshTests
         Assert.That(selected.Approval, Is.EqualTo(TicketsDb.Approved), "the kept row shows the change");
     }
 
+    /// <summary>
+    /// The file watch and the poll apply deltas instead of reloading everything (M.TIX-T371): a full <see cref="TicketStore.Load"/>
+    /// rebuilds every <see cref="TicketInfo"/> and the link graph from scratch, so proving a change took the delta path
+    /// (<see cref="TicketStore.Apply"/>) rather than another full load means showing what it <em>didn't</em> touch is the very
+    /// same object a full load already produced, not a freshly read copy of it.
+    /// </summary>
+    [Test]
+    public void Applying_a_single_changed_ticket_leaves_every_other_rows_data_untouched()
+    {
+        var store = new TicketStore(root);
+        var before = store.Load();
+        var untouched = before.Tickets.Single(t => t.Ticket.Id == "AL-T2");
+        var changedBefore = before.Tickets.Single(t => t.Ticket.Id == "AL-T1");
+
+        Agent(db => db.Approve("AL-T1"));
+        var after = store.Apply(before);
+
+        Assert.That(after.Tickets.Single(t => t.Ticket.Id == "AL-T2"), Is.SameAs(untouched),
+            "AL-T2 didn't change: its row is the very same object Load produced, not reread");
+        var changedAfter = after.Tickets.Single(t => t.Ticket.Id == "AL-T1");
+        Assert.That(changedAfter, Is.Not.SameAs(changedBefore), "only AL-T1's row was refreshed");
+        Assert.That(changedAfter.Approval, Is.EqualTo(TicketsDb.Approved), "and it shows the change");
+        Assert.That(after.Links, Is.SameAs(before.Links), "the link graph isn't touched by a delta apply");
+        Assert.That(after.Weights, Is.SameAs(before.Weights));
+    }
+
     [Test]
     public void Keyed_sync_reuses_rows_by_key_reorders_adds_and_drops()
     {

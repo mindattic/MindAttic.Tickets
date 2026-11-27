@@ -94,13 +94,15 @@ public partial class MainWindow : Window
         model.FocusRow += row => Dispatcher.BeginInvoke(DispatcherPriority.Background, () => FocusRow(row));
 
         // Agents change tickets all the time: follow the database file (settled for a second, since one change is several
-        // writes), with a slow poll behind it in case a change notification is missed. Rows are synced by ID, so the
-        // selected row, its focus and the scroll position survive every refresh.
+        // writes), with a slow poll behind it in case a change notification is missed. Only the very first load, here, is
+        // a full read; the file watch and the poll apply just what changed (M.TIX-T235, M.TIX-T371), as the bus already
+        // does — a full reload is otherwise only Sync's (it may have rewritten everything) and F5's own. Rows are synced
+        // by ID, so the selected row, its focus and the scroll position survive every refresh.
         Loaded += async (_, _) =>
         {
             await model.RefreshAsync();
             watch = new DatabaseWatch(model.DbPath, SettleDelay, PollInterval,
-                () => Dispatcher.BeginInvoke(DispatcherPriority.Background, async () => await model.RefreshAsync()));
+                () => Dispatcher.BeginInvoke(DispatcherPriority.Background, async () => await model.ApplyChangesAsync()));
             if (busConnected) watch.SetBusConnected(true);
             if (ticket is null || !await model.OpenTicketAsync(ticket)) FocusList();
         };
