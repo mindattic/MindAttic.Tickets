@@ -4611,11 +4611,13 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('AES-T11', 'Android.Emulator.Suite', 11, '2026-11-24', 'feature', 'open', 'Replace estimates in devices.json: iPhone 18 Pro/Pro Max Dynamic Island size, iPhone 18 (spring 2027) and iPhone Fold/Duo specs once Apple publishes them, Pixel 11 Pro XL official specs; clear approx flags', '—', 10, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('AES-T12', 'Android.Emulator.Suite', 12, '2026-11-25', 'chore', 'closed', 'Re-publish Android.Emulator.Suite with /publish so it lands in R:\MindAttic\Apps\Android.Emulator.Suite, check it runs, then delete C:\Apps\MindAttic\Android.Emulator.Suite (and C:\Apps\Android.Emulator.Suite\play if the Cutover/play decision moved it). Outcome: the R:\ copy runs and the old folders are gone', '6a7b5882728166340a96a6234e4c454d7aa18d45', 11, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('AES-T13', 'Android.Emulator.Suite', 13, '2026-11-26', 'feature', 'open', 'Once Apple announces the base iPhone 18 (spring 2027), replace the estimated iphone-18 entry in catalog/devices.json with apple.com spec-page values; if Apple, Google or a teardown ever publishes Dynamic Island / punch-hole dimensions for iPhone 18 Pro/Pro Max/Duo or Pixel 11 Pro XL, replace those cutout rectangles and clear approx', '—', 12, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('AES-T14', 'Android.Emulator.Suite', 14, '2026-11-26', 'chore', 'open', 'Verify the Android.Emulator.Suite R: deploy (AES-T12 moved it; MAT-T260/T267 had kept its play path on C: until then): run.ps1 -Redeploy, Run Debug and Run Release start from R:\MindAttic\Apps\Android.Emulator.Suite\{Debug,Release}, deploy.ps1 $Out and tools\play.ps1''s default exe path name R:, and C:\Apps\Android.Emulator.Suite no longer exists. Outcome: both builds launch and the repo names no C:\Apps\Android.Emulator.Suite path', '—', 13, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('AUTO-T1', 'Auto.GamePlay', 1, '2026-11-22', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('AUTO-T2', 'Auto.GamePlay', 2, '2026-11-22', 'docs', 'closed', '2026-11-22 morning', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('AUTO-T3', 'Auto.GamePlay', 3, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 2, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('AUTO-T4', 'Auto.GamePlay', 4, '2026-11-24', 'chore', 'closed', 'Auto.GamePlay docs and comments name MindAttic.Media.Capture.Windows', 'children done', 3, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('AUTO-T5', 'Auto.GamePlay', 5, '2026-11-24', 'chore', 'closed', 'Auto.GamePlay docs/ENGINES/windows.md (~116), docs/PRIOR_ART.md (~77) and src/AutoGamePlay.Windows/Capture/WindowCapture.cs (~51 comment) say MindAttic.Media.Capture.Windows', '608227c', 4, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('AUTO-T6', 'Auto.GamePlay', 6, '2026-11-26', 'feature', 'open', 'Auto.GamePlay: adopt (or confirm) the shared run menu over deploy-lib.ps1, run Redeploy, and confirm its exe lands and starts at R:\MindAttic\Apps\Auto.GamePlay\Debug and \Release; repoint anything in the repo still naming an old deploy path. Outcome: both builds exist under R: and launch', '—', 5, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('AMN2-T1', 'Auto.MidjourneyNav', 1, '2026-11-22', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('AMN2-T2', 'Auto.MidjourneyNav', 2, '2026-11-22', 'docs', 'closed', '2026-11-22 morning', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('AMN2-T3', 'Auto.MidjourneyNav', 3, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 2, NULL);
@@ -4746,6 +4748,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('AUT-T47', 'Automata', 47, '2026-11-26', 'fix', 'closed', 'RunEngineAsync: a run-store failure in SaveOutputs/CompleteRun leaves runActive stuck true', '5673e738cef4d8babff1204ebc6a958a21dc9cb1', 46, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('AUT-T48', 'Automata', 48, '2026-11-26', 'fix', 'closed', 'editor.js calls post(''getDatasets'') without importing post: ReferenceError rendering a step inside a loop whose dataset is not loaded', '6abda64', 47, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('AUT-T49', 'Automata', 49, '2026-11-26', 'fix', 'closed', 'A failed draft leaves the Draft steps button stuck on ''Drafting…'' and disabled', '56c2dfd9699033ac043f48ac0bc65a59abdeceed', 48, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('AUT-T50', 'Automata', 50, '2026-11-26', 'feature', 'open', 'Automata: adopt (or confirm) the shared run menu over deploy-lib.ps1, run Redeploy, and confirm its exe lands and starts at R:\MindAttic\Apps\Automata\Debug and \Release; repoint anything in the repo still naming an old deploy path. Outcome: both builds exist under R: and launch', '—', 49, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('AUT-T51', 'Automata', 51, '2026-11-26', 'chore', 'open', 'Delete the old C:\Apps\Automata deploy now that R:\MindAttic\Apps\Automata runs from both Debug and Release. Outcome: the folder is gone', '—', 50, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('CM-T1', 'ChiMesh', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| CM-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('CM-T2', 'ChiMesh', 2, '2026-10-15', 'chore', 'closed', 'Remove duplicate command copies (/deploy, /do, /quickload, /quicksave) now centralized at the user level (~/.claude/commands)', 'M.FLOW-T14', 1, '| CM-T2 | 2026-10-15 | chore | closed | Remove duplicate command copies (/deploy, /do, /quickload, /quicksave) now centralized at the user level (~/.claude/commands) | M.FLOW-T14 |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('CM-T3', 'ChiMesh', 3, '2026-10-16', 'chore', 'closed', 'install.ps1 adds this repo''s 8 .prose/commands stubs for the shared global commands, so any LLM client finds them', 'mindattic-agent-standard/install.ps1 run 2026-10-16', 2, NULL);
@@ -4893,6 +4897,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('CUR-T32', 'Cursory', 32, '2026-11-26', 'fix', 'closed', 'A wire across a component''s own terminals counts as the component being in series, so a shorted bulb still lights', 'cfd16ad', 31, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('CUR-T33', 'Cursory', 33, '2026-11-26', 'fix', 'closed', 'Babylon renderer mirrors shape pieces vertically: piece offset uses -localY though Babylon Z is world Y', '997456c', 32, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('CUR-T34', 'Cursory', 34, '2026-11-26', 'fix', 'closed', 'Three renderer wire lines keep a stale bounding sphere so a dragged wire can be frustum-culled', 'c59b5ce', 33, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('CUR-T35', 'Cursory', 35, '2026-11-26', 'feature', 'open', 'Cursory: adopt (or confirm) the shared run menu over deploy-lib.ps1, run Redeploy, and confirm its exe lands and starts at R:\MindAttic\Apps\Cursory\Debug and \Release; repoint anything in the repo still naming an old deploy path. Outcome: both builds exist under R: and launch', '—', 34, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('DEAS-T1', 'Dissertation.ElenchusAtScale', 1, '2026-11-22', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('DEAS-T2', 'Dissertation.ElenchusAtScale', 2, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SET-T1', 'Dissertation.SyntheticExchangeTheory', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| SET-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
@@ -4909,7 +4914,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SET-T12', 'Dissertation.SyntheticExchangeTheory', 12, '2026-10-17', 'docs', 'closed', 'Remove Chapter 7 (The Prototype: A Closed Agrarian Pilot) and Appendix B (its pre-registration protocol) entirely, and scrub every cross-reference to the agrarian/farm pilot across Ch. 1, 3-6, 8, 10, Appendix C glossary, README.md and docs/USER_STORIES.md; renumber remaining chapters/appendices and update export.json to match', 'Superseded by SET-T14/SET-T15: Ryan corrected the sequencing 2026-10-17 -- build the replacement chapter first, retarget references, remove the agrarian chapter last', 11, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SET-T13', 'Dissertation.SyntheticExchangeTheory', 13, '2026-10-17', 'docs', 'closed', 'Spike: design a fundamentally scientific experiment, run in a closed space with a genuine control environment (not an agrarian/farm settlement), to test whether a compute-funded basic income backed by AI systems'' willingly-given user training-data contributions is viable, i.e. whether that designed dependence actually shifts system behavior toward provider wellbeing; deliver a pre-registration-style write-up of the chosen design, leaving chapter drafting to a follow-up ticket', 'Superseded by SET-T14: scope corrected to draft the actual replacement chapter text, not defer drafting to a follow-up ticket', 12, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SET-T14', 'Dissertation.SyntheticExchangeTheory', 14, '2026-10-17', 'docs', 'closed', 'Design and draft the replacement Ch. 7: a fundamentally scientific experiment, run in a closed space with a genuine control environment (not an agrarian/farm settlement), testing whether a compute-funded basic income backed by AI systems'' willingly-given user training-data contributions is viable, i.e. whether that designed dependence shifts system behavior toward provider wellbeing. Deliverable is the actual chapter text plus its pre-registration-style protocol appendix, written alongside the existing Ch. 7 (nothing removed yet)', 'children done', 13, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SET-T15', 'Dissertation.SyntheticExchangeTheory', 15, '2026-10-17', 'docs', 'open', 'After SET-T14''s replacement chapter exists: retarget every cross-reference to the agrarian/farm pilot across Ch. 1, 3-6, 8, 10, Appendix C glossary, README.md, AGENTS.md and docs/USER_STORIES.md to the new design; only then remove the old agrarian Ch. 7 text and Appendix B pilot protocol, renumbering chapters/appendices and updating export.json if numbering changes', 'Requires SET-T14; supersedes SET-T12 with the order corrected (references retargeted before the agrarian chapter is removed)', 14, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SET-T15', 'Dissertation.SyntheticExchangeTheory', 15, '2026-10-17', 'docs', 'closed', 'After SET-T14''s replacement chapter exists: retarget every cross-reference to the agrarian/farm pilot across Ch. 1, 3-6, 8, 10, Appendix C glossary, README.md, AGENTS.md and docs/USER_STORIES.md to the new design; only then remove the old agrarian Ch. 7 text and Appendix B pilot protocol, renumbering chapters/appendices and updating export.json if numbering changes', 'children done', 14, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SET-T16', 'Dissertation.SyntheticExchangeTheory', 16, '2026-10-18', 'docs', 'closed', 'Update USER_STORIES.md', '—', 15, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SET-T17', 'Dissertation.SyntheticExchangeTheory', 17, '2026-10-19', 'chore', 'wont-do', 'Convert tracked source files to LF line endings via .gitattributes, per HOUSE-LAW-13 (low priority)', '—', 16, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SET-T18', 'Dissertation.SyntheticExchangeTheory', 18, '2026-10-20', 'docs', 'closed', 'Publish SyntheticExchangeTheory docs to GitHub Pages via the shared Agency DocFX pipeline: run adopt-docs-site.ps1 (README.md as home page, docs/*.md as articles, API reference only where the code builds in CI), enable Pages with build_type=workflow, set the repo homepage URL, retire tools/build-readme.ps1 and README.htm, confirm the docs Actions run is green and https://mindattic.github.io/SyntheticExchangeTheory/ returns 200. Depends on MAT-T8.', '2950c07', 17, NULL);
@@ -4951,8 +4956,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SET-T54', 'Dissertation.SyntheticExchangeTheory', 54, '2026-11-21', 'chore', 'closed', 'Move the academic manuscript toolkit out of SyntheticExchangeTheory/academic into its own public repo mindattic/Provenance (owner named it; not a MindAttic-ecosystem item, so no MindAttic prefix): create the repo, add it to the workspace with clone-repo.ps1, README explaining the verified-citation manuscript pipeline, then point SET''s and Gadfly''s dissertation export scripts at ../Provenance and remove the in-repo copy', '7762da7', 53, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SET-T55', 'Dissertation.SyntheticExchangeTheory', 55, '2026-11-22', 'docs', 'closed', 'Write the replacement Ch. 7 chapter text: closed-space experiment with genuine control testing compute-funded basic income backed by AI training-data contributions, alongside the existing Ch. 7', 'ecd1c0a', 54, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SET-T56', 'Dissertation.SyntheticExchangeTheory', 56, '2026-11-22', 'docs', 'closed', 'Write the pre-registration-style protocol appendix for the new Ch. 7 experiment', '0bbfae9', 55, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SET-T57', 'Dissertation.SyntheticExchangeTheory', 57, '2026-11-22', 'docs', 'open', 'Retarget every cross-reference to the agrarian/farm pilot across Ch. 1, 3-6, 8, 10, Appendix C glossary, README.md, AGENTS.md and docs/USER_STORIES.md to the new design', '—', 56, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SET-T58', 'Dissertation.SyntheticExchangeTheory', 58, '2026-11-22', 'docs', 'open', 'Remove the old agrarian Ch. 7 text and Appendix B pilot protocol, renumber chapters/appendices and update export.json if numbering changes', '—', 57, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SET-T57', 'Dissertation.SyntheticExchangeTheory', 57, '2026-11-22', 'docs', 'closed', 'Retarget every cross-reference to the agrarian/farm pilot across Ch. 1, 3-6, 8, 10, Appendix C glossary, README.md, AGENTS.md and docs/USER_STORIES.md to the new design', '0a39f4e', 56, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SET-T58', 'Dissertation.SyntheticExchangeTheory', 58, '2026-11-22', 'docs', 'closed', 'Remove the old agrarian Ch. 7 text and Appendix B pilot protocol, renumber chapters/appendices and update export.json if numbering changes', '4bccf5b', 57, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SET-T59', 'Dissertation.SyntheticExchangeTheory', 59, '2026-11-22', 'feature', 'closed', 'Insert figure image paragraphs with APA captions (../figures/*.svg) into the first part of the dissertation chapters', '827a726', 58, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SET-T60', 'Dissertation.SyntheticExchangeTheory', 60, '2026-11-22', 'feature', 'closed', 'Insert figure image paragraphs with APA captions into the remaining chapters so all 23 figures are placed', '01b0f9c', 59, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SET-T61', 'Dissertation.SyntheticExchangeTheory', 61, '2026-11-22', 'feature', 'closed', 'Write the List of Figures, run scripts/export.ps1 and check PDF/DOCX for ''[Figure: '' placeholders', '01b0f9c e148b7b', 60, NULL);
@@ -5012,6 +5017,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('FOR-T37', 'Formicarium', 37, '2026-11-25', 'chore', 'open', 'Move Formicarium to Hetzner SQL with the DB move script, verify, and repoint Formicarium''s connection strings (Vault + server env file)', '—', 36, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('FOR-T38', 'Formicarium', 38, '2026-11-25', 'feature', 'open', 'Add Formicarium to the reusable deploy workflow and a systemd/Caddy entry, deploy on push to main, verify /health and the main pages; if Formicarium only runs locally, record that and close', '—', 37, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('FOR-T39', 'Formicarium', 39, '2026-11-26', 'fix', 'closed', 'ControlLoop.BuildState publishes the lighting controller''s live RiserChannel/RiserBrightness arrays, so the HTTP thread can serialise a half-updated mapping; copy them into the state', 'de60bee', 38, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('FOR-T40', 'Formicarium', 40, '2026-11-26', 'feature', 'open', 'Formicarium: adopt (or confirm) the shared run menu over deploy-lib.ps1, run Redeploy, and confirm its exe lands and starts at R:\MindAttic\Apps\Formicarium\Debug and \Release; repoint anything in the repo still naming an old deploy path. Outcome: both builds exist under R: and launch', '—', 39, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T1', 'Gadfly', 1, '2026-10-13', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| GAD-T1 | 2026-10-13 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T2', 'Gadfly', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for CorpusRepository (Gadfly/Corpus/CorpusRepository.cs): GetAll orders by TimestampUtc, GetHumanMessages drops non-Human roles, GetSince is inclusive of the boundary, and CorpusHash is identical regardless of store read order but changes when a message is added/removed - it is the digest cache key, so a wrong hash means stale or needlessly re-billed summaries', 'Gadfly.Tests/Corpus/CorpusRepositoryTests.cs', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T3', 'Gadfly', 3, '2026-10-14', 'chore', 'closed', 'NUnit tests for ContextBuilder (Gadfly/Mining/ContextBuilder.cs): BuildInterrogationContext emits the CORPUS DIGEST header and omits the DIALOGUE SO FAR block when there are no turns, renders ''Speaker: Text'' lines in order otherwise; BuildCorpusDigestAsync (with FakeSocraticVotingClient) summarizes only human messages and reuses the cached digest when CorpusHash is unchanged', 'dd5d1ab', 2, NULL);
@@ -5816,7 +5822,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T802', 'Gadfly', 802, '2026-11-26', 'feature', 'closed', 'Admin switch flips the AI panel between Mock and Live at runtime (stored, audited, per-session mode kept), no restart', '6a3f745', 801, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T803', 'Gadfly', 803, '2026-11-26', 'chore', 'closed', 'Audit and fix: every Gadfly credential comes from Vault (MindAttic.Vault locally, Key Vault in Azure), none in config, scripts, env or code', '25801d9', 802, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T804', 'Gadfly', 804, '2026-11-26', 'chore', 'open', 'Remove Azure leftovers after the 2026-11-26 decommission (MAT-T297): tools/deploy-azure.ps1, tools/provision-azure.ps1 (running it would recreate billable resources), the WebJob files Gadfly.Worker/run.cmd, run.sh, settings.job, the Azure sections of docs/DEPLOY.md, and Production''s Key Vault/Blob key-ring requirement', '—', 803, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T805', 'Gadfly', 805, '2026-11-26', 'fix', 'open', 'Bust examiner: head leans off its plinth (TalkingHead body sway moves the spine) and the upper framing is half plinth', '—', 804, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T805', 'Gadfly', 805, '2026-11-26', 'fix', 'closed', 'Bust examiner: head leans off its plinth (TalkingHead body sway moves the spine) and the upper framing is half plinth', '7e5e548', 804, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T806', 'Gadfly', 806, '2026-11-26', 'feature', 'open', 'Gadfly: adopt (or confirm) the shared run menu over deploy-lib.ps1, run Redeploy, and confirm its exe lands and starts at R:\MindAttic\Apps\Gadfly\Debug and \Release; repoint anything in the repo still naming an old deploy path. Outcome: both builds exist under R: and launch', '—', 805, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T1', 'GridGame.Studio', 1, '2026-11-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T2', 'GridGame.Studio', 2, '2026-11-21', 'feature', 'closed', 'GridGame.Studio: ThumbnailStudio moved here as one WPF app, plus Gallery tabs (Heroes/Enemies/Abilities paste-to-replace: background cut, centred 1024x1024, Figure update; 64px icons) and an eraser (circle/square 1-100 px), Python image steps run as one-off commands, no web server', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T3', 'GridGame.Studio', 3, '2026-11-21', 'feature', 'closed', 'Studio gallery: Backgrounds tab grouped by region (campaign.json Themes Name/Backgrounds set), replace any image or add the next numbered one (<set>_NN.jpg)', '—', 2, NULL);
@@ -7172,6 +7179,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IDEA-T86', 'IdeaCms', 86, '2026-11-26', 'fix', 'closed', 'seed-readmes: a missing README overwrote the stored markdown with empty', '300624f', 85, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IDEA-T87', 'IdeaCms', 87, '2026-11-26', 'fix', 'closed', 'TabBoard panels use z-index 1100 and paint over the fixed header (z 200) and open modals (z 1000); drop to 1', '1268c02', 86, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IDEA-T88', 'IdeaCms', 88, '2026-11-26', 'chore', 'open', 'Remove Azure leftovers after the 2026-11-26 decommission (MAT-T297): infra/provision.ps1 and infra/migrate.ps1 (running provision would recreate billable resources) and the Production Azure Data Protection setup', '—', 87, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IDEA-T89', 'IdeaCms', 89, '2026-11-26', 'feature', 'open', 'IdeaCms: adopt (or confirm) the shared run menu over deploy-lib.ps1, run Redeploy, and confirm its exe lands and starts at R:\MindAttic\Apps\IdeaCms\Debug and \Release; repoint anything in the repo still naming an old deploy path. Outcome: both builds exist under R: and launch', '—', 88, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IDEA-T90', 'IdeaCms', 90, '2026-11-26', 'chore', 'open', 'Delete the old C:\Apps\Ideas deploy (confirm first it is IdeaCms output from before the rename) now that R:\MindAttic\Apps\IdeaCms runs from both Debug and Release. Outcome: the folder is gone', '—', 89, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T1', 'IdiotProof', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| IP-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T2', 'IdiotProof', 2, '2026-10-12', 'chore', 'closed', '/commit now logs every commit as a ticket in this table', '`.claude/skills/commit/SKILL.md`', 1, '| IP-T2 | 2026-10-12 | chore | closed | /commit now logs every commit as a ticket in this table | `.claude/skills/commit/SKILL.md` |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('IP-T3', 'IdiotProof', 3, '2026-10-13', 'chore', 'closed', 'Standard deploy convention: root deploy.ps1 (change-gated, -Force/-Launch) writes C:\Apps\IdiotProof\deploy.bat; removed deploy-idiotproof.bat, publish-all.bat, launch.bat and Start* leftovers', 'deploy.ps1', 2, '| IP-T3 | 2026-10-13 | chore | closed | Standard deploy convention: root deploy.ps1 (change-gated, -Force/-Launch) writes C:\Apps\IdiotProof\deploy.bat; removed deploy-idiotproof.bat, publish-all.bat, launch.bat and Start* leftovers | deploy.ps1 |');
@@ -7856,6 +7865,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T28', 'JellyFinPoster', 28, '2026-11-10', 'chore', 'closed', 'Adopt the shared docs-site pipeline: turn on GitHub Pages', '—', 27, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T29', 'JellyFinPoster', 29, '2026-11-17', 'docs', 'closed', 'Update USER_STORIES.md', '—', 28, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T30', 'JellyFinPoster', 30, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 29, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JFP-T31', 'JellyFinPoster', 31, '2026-11-26', 'feature', 'open', 'JellyFinPoster has no exe project (it is the Python script jellyfin_poster.py run by Start.bat), so Get-Plan finds nothing to deploy: decide how it ships, either a .agent\publish.json kind script that packages it (e.g. PyInstaller) into R:\MindAttic\Apps\JellyFinPoster\{Debug,Release} plus the shared run menu, or kind none with the reason noted. Outcome: Get-Plan returns that plan and, if it deploys, Redeploy leaves a launching exe in both folders', '—', 30, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JH-T1', 'JobHunt', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| JH-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JH-T2', 'JobHunt', 2, '2026-10-13', 'chore', 'closed', 'Move deploy script to repo-root deploy.ps1 (-Force/-Launch, rebuild only on change) and generate C:\Apps\JobHunt\deploy.bat in place of launch.bat', 'deploy.ps1', 1, '| JH-T2 | 2026-10-13 | chore | closed | Move deploy script to repo-root deploy.ps1 (-Force/-Launch, rebuild only on change) and generate C:\Apps\JobHunt\deploy.bat in place of launch.bat | deploy.ps1 |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JH-T3', 'JobHunt', 3, '2026-10-13', 'feature', 'open', 'Move to MindAttic.Components.Wpf 5.0.0 and turn on McWindow.DarkTitleBar for its windows', 'MindAttic.Components.Wpf 5.0.0', 2, '| JH-T3 | 2026-10-13 | feature | open | Move to MindAttic.Components.Wpf 5.0.0 and turn on McWindow.DarkTitleBar for its windows | MindAttic.Components.Wpf 5.0.0 |');
@@ -7897,6 +7907,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JH-T39', 'JobHunt', 39, '2026-11-26', 'fix', 'closed', 'Indeed search URL sends jt=<first type> when several employment types are allowed, silently dropping the other types (e.g. contract roles) server-side', '0566331', 38, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JH-T40', 'JobHunt', 40, '2026-11-26', 'fix', 'closed', 'SettingsStore.Refresh runs on a Timer thread with no try/catch: a half-written Vault settings file throws and crashes the process', '16c19b9', 39, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JH-T41', 'JobHunt', 41, '2026-11-26', 'fix', 'closed', 'LinkedIn scripts match challenge/login words anywhere in the URL, so a job slug like /jobs/view/login-engineer-123 reads as signed out or a challenge', 'fb43a3a', 40, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JH-T42', 'JobHunt', 42, '2026-11-26', 'feature', 'open', 'JobHunt: adopt (or confirm) the shared run menu over deploy-lib.ps1, run Redeploy, and confirm its exe lands and starts at R:\MindAttic\Apps\JobHunt\Debug and \Release; repoint anything in the repo still naming an old deploy path. Outcome: both builds exist under R: and launch', '—', 41, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JH-T43', 'JobHunt', 43, '2026-11-26', 'chore', 'open', 'Delete the old C:\Apps\JobHunt deploy now that R:\MindAttic\Apps\JobHunt runs from both Debug and Release. Outcome: the folder is gone', '—', 42, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JF-T1', 'JoyceFit', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| JF-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JF-T2', 'JoyceFit', 2, '2026-10-15', 'chore', 'closed', 'Remove duplicate command copies (/quickload, /quicksave) now centralized at the user level (~/.claude/commands)', 'M.FLOW-T14', 1, '| JF-T2 | 2026-10-15 | chore | closed | Remove duplicate command copies (/quickload, /quicksave) now centralized at the user level (~/.claude/commands) | M.FLOW-T14 |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('JF-T3', 'JoyceFit', 3, '2026-10-16', 'chore', 'closed', 'install.ps1 adds this repo''s 9 .prose/commands stubs for the shared global commands, so any LLM client finds them', 'mindattic-agent-standard/install.ps1 run 2026-10-16', 2, NULL);
@@ -7962,6 +7974,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('KP-T37', 'KdpPublish', 37, '2026-11-22', 'docs', 'closed', '2026-11-22 morning', '—', 36, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('KP-T38', 'KdpPublish', 38, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 37, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('KP-T39', 'KdpPublish', 39, '2026-11-26', 'fix', 'closed', 'Bookshelf label ''Live Updates in review'' showed raw instead of Publishing', 'da97b67', 38, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('KP-T40', 'KdpPublish', 40, '2026-11-26', 'feature', 'open', 'KdpPublish: adopt (or confirm) the shared run menu over deploy-lib.ps1, run Redeploy, and confirm its exe lands and starts at R:\MindAttic\Apps\KdpPublish\Debug and \Release; repoint anything in the repo still naming an old deploy path. Outcome: both builds exist under R: and launch', '—', 39, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('KP-T41', 'KdpPublish', 41, '2026-11-26', 'chore', 'open', 'Delete the old C:\Apps\KdpPublish deploy now that R:\MindAttic\Apps\KdpPublish runs from both Debug and Release. Outcome: the folder is gone', '—', 40, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('KYM-T1', 'KnowYourMech', 1, '2026-11-25', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('KYM-T2', 'KnowYourMech', 2, '2026-11-25', 'chore', 'closed', 'Rename drill terminology to quiz, make button text unselectable, and clean up naming/cruft across the app', 'a5f7760', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('KYM-T3', 'KnowYourMech', 3, '2026-11-25', 'feature', 'closed', 'BattleMech ID flashcards with a fresh image every showing, rotating sources (Sarna TRO art/minis/game shots, DeviantArt fan art, Flickr minis, Lemmy posts, Commons, MechWiki), plus name, tonnage and visual tells on reveal', '9dc8758', 2, NULL);
@@ -8041,6 +8055,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MB-T57', 'MediaButler', 57, '2026-11-26', 'fix', 'closed', 'CliEndToEndTests.RunCli reads stdout/stderr synchronously before WaitForExit, so its 60s timeout never fires on a hung CLI and a full stderr pipe can deadlock', '7a5d471', 56, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MB-T58', 'MediaButler', 58, '2026-11-26', 'fix', 'closed', 'CliEndToEndTests.FindBuiltExe hardcodes bin/Debug so a Release test run uses a stale or missing exe', '3e44b10c2e9910ad3d3b4b9c9be22512acfa2781', 57, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MB-T59', 'MediaButler', 59, '2026-11-26', 'fix', 'closed', 'MediaButlerLampTests.Write_settings_manifest_switch hardcodes bin/Debug for mediabutler.exe, so a Release test run launches a stale or missing exe', '61f47091f5662e423cbf08afd139a78fc45c0185', 58, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MB-T60', 'MediaButler', 60, '2026-11-26', 'feature', 'open', 'MediaButler: adopt (or confirm) the shared run menu over deploy-lib.ps1, run Redeploy, and confirm its exe lands and starts at R:\MindAttic\Apps\MediaButler\Debug and \Release; repoint anything in the repo still naming an old deploy path. Outcome: both builds exist under R: and launch', '—', 59, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAT-T1', 'MindAttic.Agency', 1, '2026-10-18', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAT-T2', 'MindAttic.Agency', 2, '2026-10-18', 'chore', 'closed', 'Shared global commands get their portable pointers here (from install.ps1), so any LLM client finds them', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAT-T3', 'MindAttic.Agency', 3, '2026-10-18', 'chore', 'closed', 'Regenerate mindattic-agent-standard/command-catalog.json to reflect current repo/command state', '—', 2, NULL);
@@ -8795,6 +8810,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.DPLY-T36', 'MindAttic.Deploy', 36, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 35, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.DPLY-T37', 'MindAttic.Deploy', 37, '2026-11-25', 'feature', 'closed', 'Register knowyourmech site (built dist/site, FTP to /mindattic.com/knowyourmech) in projects.json', 'b12d6bf', 36, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.DPLY-T38', 'MindAttic.Deploy', 38, '2026-11-26', 'fix', 'closed', 'Escape repo path, exe path and project labels in Spectre markup (AllCommand, ListCommand, MainMenuCommand, VersionCommand) so a ''['' in a path or slug no longer throws', 'f9dde28f913ae1de0a7c26ff72597a84684e5b99', 37, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.DPLY-T39', 'MindAttic.Deploy', 39, '2026-11-26', 'feature', 'open', 'MindAttic.Deploy: adopt (or confirm) the shared run menu over deploy-lib.ps1, run Redeploy, and confirm its exe lands and starts at R:\MindAttic\Apps\MindAttic.Deploy\Debug and \Release; repoint anything in the repo still naming an old deploy path. Outcome: both builds exist under R: and launch', '—', 38, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.EXPT-T1', 'MindAttic.Export', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.EXPT-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.EXPT-T2', 'MindAttic.Export', 2, '2026-10-16', 'chore', 'closed', 'install.ps1 adds this repo''s 15 .prose/commands stubs for the shared global commands, so any LLM client finds them', 'mindattic-agent-standard/install.ps1 run 2026-10-16', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.EXPT-T3', 'MindAttic.Export', 3, '2026-10-16', 'chore', 'closed', 'Bug hunt: run an exhaustive /bughunt over the whole repo and fix every real bug found (each fix under its own fix ticket), then hunt again; close this only when a full pass finds nothing', '6054a7f; pass 4 clean', 2, NULL);
@@ -9019,6 +9035,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LNCH-T147', 'MindAttic.Launcher', 147, '2026-11-25', 'chore', 'wont-do', 'Delete the old MindAttic.Launcher deploys C:\Apps\MindAttic.Launcher and C:\Apps\MindAttic\MindAttic.Launcher (if present) now that the R:\ deploy runs. Outcome: neither folder exists and the Launcher starts from R:\', 'duplicate of M.LNCH-T146 (double-run filing by the planner, 2026-11-25)', 146, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LNCH-T148', 'MindAttic.Launcher', 148, '2026-11-26', 'fix', 'closed', 'ExePath.DeployDir (agent tabs launch from it) and MainMenuCommand comments still point at C:\Apps\MindAttic.Launcher after the R:\MindAttic\Apps move (M.LNCH-T145); point at the R: Release copy; also verify Commit and Sync works from the self-contained R: Release (M.LNCH-T135 said self-contained broke git/process calls; if so set SelfContained false)', '58ef711', 147, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LNCH-T149', 'MindAttic.Launcher', 149, '2026-11-26', 'fix', 'open', 'In-app Redeploy (run.ps1 -WaitPid) restarts the new menu straight from R:\MindAttic\Apps\MindAttic.Launcher\Release, so tabs that menu opens run from Release and the next redeploy''s staging swap stops them; start it from a per-build run copy like the Orchestrator''s LauncherRunCopy (M.ORCH-T2285, 948a3d82)', '—', 148, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LNCH-T150', 'MindAttic.Launcher', 150, '2026-11-26', 'chore', 'open', 'Verify the MindAttic.Launcher R: deploy end to end: run.ps1 -Redeploy, then Run Debug and Run Release each start R:\MindAttic\Apps\MindAttic.Launcher\{Debug,Release}\MindAttic.Launcher.exe, and no shortcut, scheduled task or Orchestrator link still starts C:\Apps\MindAttic.Launcher. Outcome: a note on this ticket that both builds launch, so M.LNCH-T146 can delete the C: copy', '—', 149, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LEGN-T1', 'MindAttic.Legion', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.LEGN-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LEGN-T2', 'MindAttic.Legion', 2, '2026-10-13', 'fix', 'closed', 'Restore LlmProviderCatalog to live-verified model ids (all 13 providers) and expand the default trusted/voting set from 4 to 9 providers', 'M.LEGN-LAW-5, ActiveProviderIds_DefaultAllowedSet_IsTheTrustedProviders, AskCommandTests.TrustedProviderIds_MatchesCatalogDefaultSet', 1, '| M.LEGN-T2 | 2026-10-13 | fix | closed | Restore LlmProviderCatalog to live-verified model ids (all 13 providers) and expand the default trusted/voting set from 4 to 9 providers | M.LEGN-LAW-5, ActiveProviderIds_DefaultAllowedSet_IsTheTrustedProviders, AskCommandTests.TrustedProviderIds_MatchesCatalogDefaultSet |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.LEGN-T3', 'MindAttic.Legion', 3, '2026-10-14', 'chore', 'closed', 'NUnit tests for LegionConfig (Models/LegionConfig.cs): LoadFromDirectory walks up parent dirs to find legion.json (stops after 12 levels, null when absent or path invalid), LoadFromFile tolerates comments/trailing commas/case-insensitive keys and returns null on malformed JSON, ApplyTo replaces AllowedProviderIds only when voters is non-empty (case-insensitive set), sets JudgeProviderId only when non-blank, merges models/apiKeys skipping blank keys or values, applies maxConcurrency; this is how every project declares its voter panel and the CLI vote command depends on it', 'MindAttic.Legion.Tests/LegionConfigTests.cs (cdea439)', 2, NULL);
@@ -9343,6 +9360,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T225', 'MindAttic.Media.Capture', 225, '2026-11-26', 'fix', 'closed', 'UMindAtticCaptureSettings::ResolveDefaultsFile breaks on an absolute DefaultsFile', '3dfebc00619a62e378911ef2e2bea62cf1b3c6cb', 224, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T226', 'MindAttic.Media.Capture', 226, '2026-11-26', 'fix', 'closed', 'Fails on main: MindAttic.Media.Capture.Tests.EngineTests.Valve_stops_and_exports_the_session_when_a_limit_is_crossed — Assert.That(Probe(stem + "_Video.mkv", "format=duration"), Is.EqualTo(3.0).Within(1.0)) Expected: 3.0d +/- 1.0d But was: 4.5d Off by: -1.5d (landed on main since the last green run: tickets M.CAPT-T225, M.CAPT-T224, M.CAPT-T207, M.CAPT-T223, M.CAPT-T222, M.CAPT-T206, M.CAPT-T221, M.CAPT-T219, M.CAPT-T218, M.CAPT-T220 in 3dfebc0 Unreal settings: ResolveDefaultsFile accepts an absolute DefaultsFile (M.CAPT-T225); 3c73ba8 Recorder: a screenshot taken during a recording no longer replaces the recording''s session folder for the stop report (M.CAPT-T224); e25fd8f Media roots release: pack Media.Capture, Windows, Web 1.1.0 and Sets 2.1.0 to C:\LocalNuGet, refresh the Unity plugin DLL, reinstall the agent and tray; a default capture lands under R:\MindAttic\Media\Capture (M.CAPT-T207); ce0fcd5 capture web: a failed capture deletes its .video folder (M.CAPT-T223); da0abc9 capture host: a faulted stdin request loop now stops the session instead of leaving the host deaf (M.CAPT-T222); f06e243 Unreal plugin''s Open Capture Folder uses R:\MindAttic\Media\Capture\<AppName>, falling back to R:\MindAttic\Capture\<AppName> only when that alone exists (LEGACY-ROOT); tooltip and MindAtticCapture.h/MindAtticCaptureSettings.h docs name the Media root (M.CAPT-T206); 17f50fb Tray: a hotkey change saved in Vault is refused only for a binding it changed, so a hotkey another app already holds no longer vetoes an unrelated valid change (M.CAPT-T221); c875be4 DesktopIntegrationTests skip when screen capture is refused: the one-time setup probes a 16x16 screen copy, so a locked workstation or secure desktop (monitors present, every copy fails) ignores the desktop tests with the reason instead of failing them; also covers M.CAPT-T219 (M.CAPT-T218); 05f8009 TraySettingsTests: Setting_FocusedRecordHotkey test so EverySettingHasItsOwnTest passes again (M.CAPT-T220))', 'c3d048f', 225, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T227', 'MindAttic.Media.Capture', 227, '2026-11-26', 'fix', 'closed', 'Fails on main: MindAttic.Media.Capture.Windows.Tests.TraySettingsTests.Setting_FocusedRecordHotkey_ImportsRoundTripsAndIsRegistered — a saved value imported Assert.That(Load().FocusedRecordHotkey, Is.EqualTo("Ctrl+F8")) Expected string length 7 but was 16. Strings differ at index 5. Expected: "Ctrl+F8" But was: "Ctrl+Alt+Shift+F" ----------------^ (landed on main since the last green run: tickets M.CAPT-T225, M.CAPT-T224, M.CAPT-T207, M.CAPT-T223, M.CAPT-T222, M.CAPT-T206, M.CAPT-T221, M.CAPT-T219, M.CAPT-T218, M.CAPT-T220 in 3dfebc0 Unreal settings: ResolveDefaultsFile accepts an absolute DefaultsFile (M.CAPT-T225); 3c73ba8 Recorder: a screenshot taken during a recording no longer replaces the recording''s session folder for the stop report (M.CAPT-T224); e25fd8f Media roots release: pack Media.Capture, Windows, Web 1.1.0 and Sets 2.1.0 to C:\LocalNuGet, refresh the Unity plugin DLL, reinstall the agent and tray; a default capture lands under R:\MindAttic\Media\Capture (M.CAPT-T207); ce0fcd5 capture web: a failed capture deletes its .video folder (M.CAPT-T223); da0abc9 capture host: a faulted stdin request loop now stops the session instead of leaving the host deaf (M.CAPT-T222); f06e243 Unreal plugin''s Open Capture Folder uses R:\MindAttic\Media\Capture\<AppName>, falling back to R:\MindAttic\Capture\<AppName> only when that alone exists (LEGACY-ROOT); tooltip and MindAtticCapture.h/MindAtticCaptureSettings.h docs name the Media root (M.CAPT-T206); 17f50fb Tray: a hotkey change saved in Vault is refused only for a binding it changed, so a hotkey another app already holds no longer vetoes an unrelated valid change (M.CAPT-T221); c875be4 DesktopIntegrationTests skip when screen capture is refused: the one-time setup probes a 16x16 screen copy, so a locked workstation or secure desktop (monitors present, every copy fails) ignores the desktop tests with the reason instead of failing them; also covers M.CAPT-T219 (M.CAPT-T218); 05f8009 TraySettingsTests: Setting_FocusedRecordHotkey test so EverySettingHasItsOwnTest passes again (M.CAPT-T220))', '3115f6a', 226, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T228', 'MindAttic.Media.Capture', 228, '2026-11-26', 'feature', 'open', 'MindAttic.Media.Capture: adopt (or confirm) the shared run menu over deploy-lib.ps1, run Redeploy, and confirm its exe lands and starts at R:\MindAttic\Apps\MindAttic.Media.Capture\Debug and \Release; repoint anything in the repo still naming an old deploy path. Outcome: both builds exist under R: and launch', '—', 227, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.CAPT-T229', 'MindAttic.Media.Capture', 229, '2026-11-26', 'chore', 'open', 'Delete the old C:\Apps\MindAttic.Media.Capture deploy (R:\MindAttic\Capture is media storage, not this; leave it) now that R:\MindAttic\Apps\MindAttic.Media.Capture runs from both Debug and Release. Outcome: the folder is gone', '—', 228, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T1', 'MindAttic.Media.Viewer', 1, '2026-11-24', 'feature', 'closed', 'MindAttic.MediaViewer: WPF viewer for every image, animation, video, sound and song an agent captures', 'children done', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T2', 'MindAttic.Media.Viewer', 2, '2026-11-24', 'feature', 'closed', 'Viewer v1 per viewer-design.md: shell, formats, right-click, integration, Open with', 'children done', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T3', 'MindAttic.Media.Viewer', 3, '2026-11-24', 'feature', 'closed', 'Bootstrap: MindAttic.MediaViewer.slnx, src\MindAttic.MediaViewer net10.0-windows WPF on Components.Wpf 47, README, LICENSE, run.ps1 deploy to C:\Apps\MindAttic.MediaViewer', '99f63fc', 2, NULL);
@@ -9381,6 +9400,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T36', 'MindAttic.Media.Viewer', 36, '2026-11-26', 'feature', 'open', 'Collections: open any gathering of media (one folder, nested folders, sibling folders, or hand-picked files from many folders, or a Capture preview set) and cycle through it as one list', '—', 35, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T37', 'MindAttic.Media.Viewer', 37, '2026-11-26', 'feature', 'open', 'Clicking a thumbnail in the bottom strip jumps straight to that item (not only Left/Right arrow stepping); the strip highlights and scrolls to the current item', '—', 36, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T38', 'MindAttic.Media.Viewer', 38, '2026-11-26', 'fix', 'open', 'MediaViewer has a Vault settings manifest but no cog or menu entry that opens its Vault.Desktop tab', '—', 37, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T39', 'MindAttic.Media.Viewer', 39, '2026-11-26', 'feature', 'open', 'MindAttic.Media.Viewer: adopt (or confirm) the shared run menu over deploy-lib.ps1, run Redeploy, and confirm its exe lands and starts at R:\MindAttic\Apps\MindAttic.Media.Viewer\Debug and \Release; repoint anything in the repo still naming an old deploy path. Outcome: both builds exist under R: and launch', '—', 38, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.MVIEW-T40', 'MindAttic.Media.Viewer', 40, '2026-11-26', 'chore', 'open', 'Delete the old C:\Apps\MindAttic.Media.Viewer deploy now that R:\MindAttic\Apps\MindAttic.Media.Viewer runs from both Debug and Release. Outcome: the folder is gone', '—', 39, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T1', 'MindAttic.Orchestrator', 1, '2026-10-13', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.ORCH-T1 | 2026-10-13 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T2', 'MindAttic.Orchestrator', 2, '2026-10-13', 'feature', 'closed', 'Status dashboard (WPF on MindAttic.Components.Wpf) + CLI: repos grouped Needs you / Working / Open tickets / Quiet from Workflow tickets, Launcher host pipes and Claude transcripts; toast + taskbar flash when an agent finishes a turn', 'TranscriptReaderTests, MatchingTests', 1, '| M.ORCH-T2 | 2026-10-13 | feature | closed | Status dashboard (WPF on MindAttic.Components.Wpf) + CLI: repos grouped Needs you / Working / Open tickets / Quiet from Workflow tickets, Launcher host pipes and Claude transcripts; toast + taskbar flash when an agent finishes a turn | TranscriptReaderTests, MatchingTests |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T3', 'MindAttic.Orchestrator', 3, '2026-10-13', 'feature', 'closed', 'Session control: start a Claude/Codex/Gemini/Kimi Launcher tab for any repo (prompt pre-filled, never sent) and type replies into a live Launcher tab', 'MatchingTests.Start_arguments_escape_semicolons_for_windows_terminal', 2, '| M.ORCH-T3 | 2026-10-13 | feature | closed | Session control: start a Claude/Codex/Gemini/Kimi Launcher tab for any repo (prompt pre-filled, never sent) and type replies into a live Launcher tab | MatchingTests.Start_arguments_escape_semicolons_for_windows_terminal |');
@@ -11829,6 +11850,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T47', 'MindAttic.Psst', 47, '2026-11-26', 'fix', 'closed', 'psst when: a null SmsResult.Detail (declared nullable) crashes the watch loop before it saves state', 'b3ef4f6', 46, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T48', 'MindAttic.Psst', 48, '2026-11-26', 'fix', 'closed', 'EmailSmsClient.SubjectFor can cut a surrogate pair in half when shortening the subject', 'b3ef4f6', 47, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T49', 'MindAttic.Psst', 49, '2026-11-26', 'fix', 'closed', 'Scheduled launcher .cmd: a message with an embedded quote then & | < > ran the rest as a separate command', '9843c80b6b1012496a04b50f5202e58788f33ebc', 48, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.PSST-T50', 'MindAttic.Psst', 50, '2026-11-26', 'feature', 'open', 'MindAttic.Psst: adopt (or confirm) the shared run menu over deploy-lib.ps1, run Redeploy, and confirm its exe lands and starts at R:\MindAttic\Apps\MindAttic.Psst\Debug and \Release; repoint anything in the repo still naming an old deploy path. Outcome: both builds exist under R: and launch', '—', 49, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.RLY-T1', 'MindAttic.Relay', 1, '2026-10-27', 'docs', 'closed', 'Scaffold the MindAttic.Relay repo (agent standard files, ticket code M.RLY) and write docs/design/relay.md: the architecture every MindAttic app and machine uses to message each other (NATS + JetStream, subjects, envelope headers, security, delivery rules, outbox, versioning) and how the hub-and-spoke plan maps onto it', 'ba9744e', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.RLY-T2', 'MindAttic.Relay', 2, '2026-10-27', 'feature', 'open', 'RELAY', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.RLY-T3', 'MindAttic.Relay', 3, '2026-10-27', 'feature', 'open', 'Relay server: install a pinned NATS server with JetStream as a Windows service on each machine (loopback-only, TLS, local CA, credentials required), with `relay install|status|uninstall`', '—', 2, NULL);
@@ -11982,6 +12004,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T73', 'MindAttic.Scheduler', 73, '2026-11-25', 'feature', 'closed', 'Owner 2026-11-25: databases now live on local SQL Server (MAT-T255). Disable Azure.BackupNightly, Azure.BackupWeekly and Azure.RestoreDrill; add Sql.BackupLocalNightly: native BACKUP DATABASE WITH CHECKSUM + RESTORE VERIFYONLY of every local DB on (localdb)\MSSQLLocalDB and localhost to R:\Backup\MindAttic\sql, keeping a trailing 7 days (never fewer than the newest per DB).', '—', 72, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T74', 'MindAttic.Scheduler', 74, '2026-11-26', 'fix', 'closed', 'LocalDbInstalled() in nine more Scheduler test classes (ChangeTrackedTableSync, ChangeTrackingSetup, DatabaseSyncRunner, FullTableCopy, HashDiffTableSync, SchemaBootstrap, TableCatalog, TemporalPairSync, WatermarkStore) crashes SetUp with UnauthorizedAccessException on the MSSQLSERVER Backup folder; move the tolerant probe from RunLogTests (5788579) into one shared test helper', 'a808f48', 73, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T75', 'MindAttic.Scheduler', 75, '2026-11-26', 'fix', 'closed', 'jobs.json Launcher.NightlyBackup (and the live scheduled task \MindAttic\Scheduler\Launcher.NightlyBackup) run C:\Apps\MindAttic.Launcher\MindAttic.Launcher.exe backup --keep 30; point at R:\MindAttic\Apps\MindAttic.Launcher\Release\MindAttic.Launcher.exe and re-register the task before M.LNCH-T146 deletes the C: copy', 'e1aef030b450140b61dbcb644a031d4ca550efb7', 74, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T76', 'MindAttic.Scheduler', 76, '2026-11-26', 'feature', 'open', 'MindAttic.Scheduler: adopt (or confirm) the shared run menu over deploy-lib.ps1, run Redeploy, and confirm its exe lands and starts at R:\MindAttic\Apps\MindAttic.Scheduler\Debug and \Release; repoint anything in the repo still naming an old deploy path. Outcome: both builds exist under R: and launch', '—', 75, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.SCHD-T77', 'MindAttic.Scheduler', 77, '2026-11-26', 'chore', 'open', 'Delete the old C:\Apps\MindAttic.Scheduler deploy, after repointing any scheduled task that still runs it now that R:\MindAttic\Apps\MindAttic.Scheduler runs from both Debug and Release. Outcome: the folder is gone and the Scheduler jobs run from R:', '—', 76, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SR-T1', 'MindAttic.SpeechRecognition', 1, '2026-11-20', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SR-T2', 'MindAttic.SpeechRecognition', 2, '2026-11-20', 'chore', 'closed', 'Bootstrap the repo: AGENTS.md/CLAUDE.md forwarders, .NET 10 solution (MindAttic.SpeechRecognition, .AspNetCore) plus the @mindattic/speechrecognition npm package, NuGet.config for C:\LocalNuGet, commit-msg hook, README skeleton, docs site', '5049458', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SR-T3', 'MindAttic.SpeechRecognition', 3, '2026-11-20', 'feature', 'closed', 'Core contracts: ISpeechRecognizer streaming session, TranscriptSegment (partial/final, words with timings, confidence, speaker), audio conventions (16 kHz mono PCM16), provider options', 'cf217ad', 2, NULL);
@@ -12441,6 +12465,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T381', 'MindAttic.Tickets', 381, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 380, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T382', 'MindAttic.Tickets', 382, '2026-11-25', 'fix', 'closed', 'TicketCliTests.List_filters_and_emits_the_documented_json still expects the field list without ''level'', which ticket list --json now emits; it blocks run.ps1 -Republish (MAT-T255 local move).', '—', 381, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T383', 'MindAttic.Tickets', 383, '2026-11-25', 'fix', 'closed', 'LiveRefreshTests.A_burst_of_writes_to_the_database_refreshes_once_it_settles uses a 300 ms settle window; on a busy temp disk the four writes land >300 ms apart and the watch fires twice, failing run.ps1 -Republish. Widen the test''s window.', '—', 382, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T384', 'MindAttic.Tickets', 384, '2026-11-26', 'feature', 'open', 'MindAttic.Tickets: adopt (or confirm) the shared run menu over deploy-lib.ps1, run Redeploy, and confirm its exe lands and starts at R:\MindAttic\Apps\MindAttic.Tickets\Debug and \Release; repoint anything in the repo still naming an old deploy path. Outcome: both builds exist under R: and launch', '—', 383, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.TIX-T385', 'MindAttic.Tickets', 385, '2026-11-26', 'chore', 'open', 'Delete the old C:\Apps\MindAttic.Tickets.Desktop deploy now that R:\MindAttic\Apps\MindAttic.Tickets runs from both Debug and Release. Outcome: the folder is gone', '—', 384, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.VALT-T1', 'MindAttic.Vault', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| M.VALT-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.VALT-T2', 'MindAttic.Vault', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for Dashboard HealthMonitorStore (MindAttic.Vault.Dashboard/Services/HealthMonitorStore.cs; add a Dashboard ProjectReference to MindAttic.Vault.Tests first): RecordUptime running percentage per provider and case-insensitive ids, Previous returns null before first commit, Commit replaces snapshots and evicts providers missing from the fresh set, sets LastSweepUtc, clears SweepInProgress and fires OnChanged, Snapshots ordered trusted-first then alphabetical, TrustedPanelHealthy false when no trusted snapshots exist or any trusted one is not Healthy - this is the headline confidence verdict the dashboard leads with', 'MindAttic.Vault.Tests/HealthMonitorStoreTests.cs', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.VALT-T3', 'MindAttic.Vault', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for Dashboard AlertDispatcher (Services/AlertDispatcher.cs): with a fake IHttpClientFactory/HttpMessageHandler verify every non-blank webhook gets a JSON POST with provider, displayName, status, previous, diagnosis, detail, atUtc fields; blank webhook urls skipped; no channels configured means no work; a webhook that throws or returns non-2xx is logged and does not stop other webhooks or fault DispatchAsync; email channel skipped when Host is blank or To is empty, and an SMTP failure is swallowed - alerts must be best-effort and isolated so one bad channel never breaks a sweep', '—', 2, '| M.VALT-T3 | 2026-10-14 | chore | open | NUnit tests for Dashboard AlertDispatcher (Services/AlertDispatcher.cs): with a fake IHttpClientFactory/HttpMessageHandler verify every non-blank webhook gets a JSON POST with provider, displayName, status, previous, diagnosis, detail, atUtc fields; blank webhook urls skipped; no channels configured means no work; a webhook that throws or returns non-2xx is logged and does not stop other webhooks or fault DispatchAsync; email channel skipped when Host is blank or To is empty, and an SMTP failure is swallowed - alerts must be best-effort and isolated so one bad channel never breaks a sweep | — |');
@@ -13563,6 +13589,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T160', 'Mods.MechWarrior5.SaveEditor', 160, '2026-11-22', 'feature', 'open', 'Add add-on pack support for Clans, matching Mercenaries', '—', 159, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T161', 'Mods.MechWarrior5.SaveEditor', 161, '2026-11-22', 'docs', 'closed', '2026-11-22 morning', '—', 160, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T162', 'Mods.MechWarrior5.SaveEditor', 162, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 161, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T163', 'Mods.MechWarrior5.SaveEditor', 163, '2026-11-26', 'feature', 'open', 'Mods.MechWarrior5.SaveEditor: add .agent\publish.json (kind dotnet, project src\MechWarrior5.SaveEditor.App) so Get-Plan no longer skips it for its nexus.json, move run.ps1 (installs to C:\Apps\Mods.MechWarrior5.SaveEditor) onto the shared run menu, run Redeploy, and confirm the editor starts from R:\MindAttic\Apps\Mods.MechWarrior5.SaveEditor\{Debug,Release}; the Nexus release flow stays untouched. Outcome: both builds launch', '—', 162, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M5SE-T164', 'Mods.MechWarrior5.SaveEditor', 164, '2026-11-26', 'chore', 'open', 'Delete the old C:\Apps\Mods.MechWarrior5.SaveEditor install now that R:\MindAttic\Apps\Mods.MechWarrior5.SaveEditor runs from both Debug and Release. Outcome: the folder is gone', '—', 163, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T1', 'Mods.MechWarrior5.Shared', 1, '2026-11-09', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T2', 'Mods.MechWarrior5.Shared', 2, '2026-11-09', 'feature', 'closed', 'Seed the shared base from the Mercs editor: Mech5.Shared (Unreal tagged-property engine, FString/FText, struct builders) and Mech5.Shared.Wpf (MW5 HUD theme, chamfer panels, check-list multi-select, Sarna image service, dialogs, converters)', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MM5S-T3', 'Mods.MechWarrior5.Shared', 3, '2026-11-09', 'fix', 'closed', 'Controls.xaml styles resolved palette brushes as UnsetValue when nested under Mech5Theme.xaml (window failed to load); make Controls.xaml merge Palette.xaml itself', '—', 2, NULL);
@@ -13854,6 +13882,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T273', 'Mods.RogueTrader.Brevity', 273, '2026-11-24', 'chore', 'closed', 'Mods.RogueTrader.Brevity tooling names MindAttic.Media.Capture', 'children done', 272, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T274', 'Mods.RogueTrader.Brevity', 274, '2026-11-24', 'chore', 'closed', 'Mods.RogueTrader.Brevity tools/capture_dialogue.py docstring (~6) says MindAttic.Media.Capture; the capture.exe path it runs is unchanged', '0836a77', 273, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T275', 'Mods.RogueTrader.Brevity', 275, '2026-11-24', 'chore', 'closed', 'capture_dialogue.py writes to and pair_screenshots.py reads from R:\MindAttic\Media\Capture\RogueTraderBrevity (old root one-release fallback)', '58d340f', 274, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTB-T276', 'Mods.RogueTrader.Brevity', 276, '2026-11-26', 'feature', 'open', 'Mods.RogueTrader.Brevity: add .agent\publish.json (kind dotnet) naming its exe projects tools\DialogueExport and tools\DialogueSimplify (BrevityMod is the in-game mod DLL and stays on the Nexus flow) so Get-Plan no longer skips it for its nexus.json, add the shared run menu, run Redeploy, and confirm both exes land and run in R:\MindAttic\Apps\Mods.RogueTrader.Brevity\{Debug,Release}. Outcome: both exes exist in both folders and start', '—', 275, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T1', 'Mods.RogueTrader.Overwatch', 1, '2026-10-26', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T2', 'Mods.RogueTrader.Overwatch', 2, '2026-10-26', 'feature', 'closed', 'Create the RogueTrader.Overwatch repo: Overwatch abilities on every ranged weapon for heroes and enemies (Reaction Shot, Overwatch, Suppression)', '3d014c5', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RTO-T3', 'Mods.RogueTrader.Overwatch', 3, '2026-10-26', 'chore', 'closed', 'Build the mod without Unity: script that assembles the Owlcat mod folder (manifest, settings, blueprints, patches, enGB) and installs/enables it', '5873bbc', 2, NULL);
@@ -14053,6 +14082,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OC-T50', 'OpenCredentials', 50, '2026-11-26', 'fix', 'closed', 'BarRow formats {pct:F1} with the current culture, so comma-decimal locales write width:45,5% (invalid CSS) and the report bars vanish. Format invariant.', '0aa03d8', 49, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OC-T51', 'OpenCredentials', 51, '2026-11-26', 'fix', 'closed', 'Live-refresh loops in Findings, Settings and Visualizations die silently on the first DB exception (transient Azure SQL error), freezing the ''live'' page', '1164dab', 50, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OC-T52', 'OpenCredentials', 52, '2026-11-26', 'docs', 'open', 'README still says the database is Azure SQL; Azure was decommissioned 2026-11-26 (MAT-T297) and the app uses LocalDB OpenCredentials - update the README and drop the Azure-default connection string from the settings manifest', '—', 51, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OC-T53', 'OpenCredentials', 53, '2026-11-26', 'feature', 'open', 'OpenCredentials: adopt (or confirm) the shared run menu over deploy-lib.ps1, run Redeploy, and confirm its exe lands and starts at R:\MindAttic\Apps\OpenCredentials\Debug and \Release; repoint anything in the repo still naming an old deploy path. Outcome: both builds exist under R: and launch', '—', 52, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PL-T1', 'ProcessLogger', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| PL-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PL-T2', 'ProcessLogger', 2, '2026-10-13', 'chore', 'closed', 'Replace launch.bat with root deploy.ps1 (change-only republish to C:\Apps\ProcessLogger, generated deploy.bat)', 'deploy.ps1', 1, '| PL-T2 | 2026-10-13 | chore | closed | Replace launch.bat with root deploy.ps1 (change-only republish to C:\Apps\ProcessLogger, generated deploy.bat) | deploy.ps1 |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PL-T3', 'ProcessLogger', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for ProcessPathHeuristics.TryExtractPathFromCommandLine and PendingProcess.Merge (internal, visible to ProcessLogger.Tests): quoted path with spaces, unterminated quote returns null, leading whitespace, unquoted path up to first space, bare exe name or relative path returns null, null/blank returns null; Merge ORs SourceSeen and fills only null ParentProcessId/Path/CommandLine without overwriting - these decide the Path and Source columns every ETW/WMI row gets', '—', 2, '| PL-T3 | 2026-10-14 | chore | open | NUnit tests for ProcessPathHeuristics.TryExtractPathFromCommandLine and PendingProcess.Merge (internal, visible to ProcessLogger.Tests): quoted path with spaces, unterminated quote returns null, leading whitespace, unquoted path up to first space, bare exe name or relative path returns null, null/blank returns null; Merge ORs SourceSeen and fills only null ParentProcessId/Path/CommandLine without overwriting - these decide the Path and Source columns every ETW/WMI row gets | — |');
@@ -14095,6 +14125,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PL-T40', 'ProcessLogger', 40, '2026-11-10', 'chore', 'closed', 'Adopt the shared docs-site pipeline: turn on GitHub Pages', '—', 39, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PL-T41', 'ProcessLogger', 41, '2026-11-17', 'docs', 'closed', 'Update USER_STORIES.md', '—', 40, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PL-T42', 'ProcessLogger', 42, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 41, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PL-T43', 'ProcessLogger', 43, '2026-11-26', 'feature', 'open', 'ProcessLogger: adopt (or confirm) the shared run menu over deploy-lib.ps1, run Redeploy, and confirm its exe lands and starts at R:\MindAttic\Apps\ProcessLogger\Debug and \Release; repoint anything in the repo still naming an old deploy path. Outcome: both builds exist under R: and launch', '—', 42, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PL-T44', 'ProcessLogger', 44, '2026-11-26', 'chore', 'open', 'Delete the old C:\Apps\ProcessLogger deploy now that R:\MindAttic\Apps\ProcessLogger runs from both Debug and Release. Outcome: the folder is gone', '—', 43, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1', 'Prose', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| PRS-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T2', 'Prose', 2, '2026-10-12', 'chore', 'closed', '/commit now logs every commit as a ticket in this table', '`.prose/commands/commit.md`', 1, '| PRS-T2 | 2026-10-12 | chore | closed | /commit now logs every commit as a ticket in this table | `.prose/commands/commit.md` |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T3', 'Prose', 3, '2026-10-13', 'chore', 'open', 'Metadata completeness campaign: pronoun/entity tags, character history, continuity checks across every book (Hub WO:01a1337c)', '—', 2, '| PRS-T3 | 2026-10-13 | chore | open | Metadata completeness campaign: pronoun/entity tags, character history, continuity checks across every book (Hub WO:01a1337c) | — |');
@@ -15267,6 +15299,9 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1170', 'Prose', 1170, '2026-11-26', 'chore', 'open', 'The PRS-T3 tag backfill on 2026-11-26 rewrote 473 beats (1381 2, Babineaux 7, Gospel 5158f96e 59, f33c4d54 8, gospel-history-vs-heritage 392, 3641048e 1, Irish Outlaws 3, Sons of God 1): restate F3 Descriptions and F5 reads for any whose TextHash change staled them', '—', 1169, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1171', 'Prose', 1171, '2026-11-26', 'chore', 'open', 'Tag docs/planning/biomass-weave.md and traffic-weave.md once Ryan has reviewed them (PRS-T1114/T1119), and settle VIGL-brief''s untagged Soren Rowe (no matching scry entity; the scry Soren is someone else) and Heloth (a construct maker, stored as a character)', '—', 1170, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1172', 'Prose', 1172, '2026-11-26', 'chore', 'closed', 'Decide what PRS-T3''s character-history and continuity-check stages mean now: character history comes from beat contributions (PRS-T22 and the per-book campaign tickets) and --continuity is deactivated under RFC 0014; either fold them into those tickets or name a concrete check', 'PRS-T22', 1171, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1173', 'Prose', 1173, '2026-11-26', 'chore', 'open', 'Add a character-to-automaton retype (EntityRetypeService refuses built-in source/target), then retype scry''s Heloth (019F63B6-1015-716B-9CCC-82EDBC7C5D35; 29 tagged beats) to automaton with description ''bipedal construct'' and tag its mentions in docs/planning/VIGL-brief.md (lines 197, 221, 222, 255); owner: ''Heloth is a bipedal construct''', '—', 1172, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1174', 'Prose', 1174, '2026-11-26', 'chore', 'open', 'Delete the old C:\Apps\Prose and C:\Apps\MindAttic\Prose deploys, once PRS-T1133 and PRS-T1134 have moved Prose and its paths to R: now that R:\MindAttic\Apps\Prose runs from both Debug and Release. Outcome: both folders are gone', '—', 1173, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1175', 'Prose', 1175, '2026-11-26', 'chore', 'open', 'REN (Babineaux''s Guide) has 102 beats with a stale Description (beat-index trust STALE). Read each against its prose, restate the Description where it disagrees, re-stamp with prose --universe glmz --beat meta --id <id> --description ... Slow: each beat show takes ~3s.', '—', 1174, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GW-T1', 'Prose.Wiki.GLMZ', 1, '2026-11-19', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GW-T2', 'Prose.Wiki.GLMZ', 2, '2026-11-21', 'feature', 'closed', 'Every universe gets a wiki: this site repo becomes the template (site.json carries the universe, deploy.py reads it), new-universe-wiki.ps1 scaffolds <UNIVERSE>.Wiki, and docs/prose-and-wiki.md sets who does what between Prose and the wiki', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GW-T3', 'Prose.Wiki.GLMZ', 3, '2026-11-21', 'chore', 'closed', 'Rename the site repo GLMZ.Wiki to Prose.Wiki.GLMZ (the next is Prose.Wiki.SCRY): folder, GitHub repo, ticket registry, the scaffold''s naming and every reference', '—', 2, NULL);
@@ -15576,6 +15611,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T302', 'REA.Bloodlines', 302, '2026-11-26', 'feature', 'open', 'In-game run of RB-T248''s movie skip: in editor play mode with bl_autoplay 1 and bl_autoplay_skip_movies 0, start a new game (bl_new_game), check observe cinematics.movie (name, index, canSkip) while each intro movie plays, run skip_movie with esc then click (all:true) and confirm each movie ends and the Embrace loads; wait_movie ends done; skip_cinematic on a game_sign closes it; during an in-engine camera path observe cinematics.camera and skip_cinematic answers nothing with the camera reason. Record results in docs/AUTOPLAY.md''s checklist row.', '—', 301, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T303', 'REA.Bloodlines', 303, '2026-11-26', 'fix', 'open', 'shaders/bloodlines_water.shader no longer compiles on s&box 26.11.24a: TraceResult has no ValidHit or HitClipSpace (lines 186, 188), so the water material falls back; port the screen-space trace to the new TraceResult API (found while opening the editor for RB-T299)', '—', 302, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T304', 'REA.Bloodlines', 304, '2026-11-26', 'chore', 'open', 'Let the s&box editor finish its one-time recompile on engine 26.11.24a (last good 26.10.27b) before any play-mode ticket: on 2026-11-26 it sat on ''Opening s&box Editor'' for 75 min recompiling every asset (330 character models, then ~17,000 materials at ~60-115 a minute, a few hours in all) at 12 GB private memory, which left the machine at 1 GB free and dropped the tickets SQL Server; run it unattended on a quiet machine (no other CLIs'' builds) and leave it to the end', '—', 303, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T305', 'REA.Bloodlines', 305, '2026-11-26', 'feature', 'open', 'REA.Bloodlines is an s&box game (src\Bloodlines.Sbox) whose standalone export Bloodlines.exe lives today only in C:\Apps\REA.Bloodlines (5.6 GB): make its run menu (override block or .agent\publish.json kind script) export Debug and Release builds to R:\MindAttic\Apps\REA.Bloodlines\{Debug,Release}, run Redeploy, and repoint tools\autoplay (launch.py build) and docs at R:. Outcome: both exports are complete (file count and size checked against the C: copy) and reach the title menu', '—', 304, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RB-T306', 'REA.Bloodlines', 306, '2026-11-26', 'chore', 'open', 'Delete the old C:\Apps\REA.Bloodlines export (5.6 GB), only after checking the R: Release export is complete (file count and size) and reaches the title menu now that R:\MindAttic\Apps\REA.Bloodlines runs from both Debug and Release. Outcome: the folder is gone', '—', 305, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RN-T1', 'RusNet', 1, '2026-10-25', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RN-T2', 'RusNet', 2, '2026-10-25', 'chore', 'closed', 'Scaffold RusNet: local-network inventory scanner (Python core, standardized JSON schema v1, self-contained interactive HTML viewer, Python + .NET WebView2 desktop hosts)', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('RN-T3', 'RusNet', 3, '2026-10-25', 'fix', 'closed', 'Fix 4 defects found by /bughunt: mDNS query missing the unicast-response (QU) bit so it returned nothing; OS donut slice/legend filtered every host out (wrong field); network-map leaked internal x/y onto host objects into Copy-as-JSON; dead gw placeholder in the psutil interface path', '—', 2, NULL);
@@ -16610,6 +16647,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TRC-T96', 'TaxRateCollector', 96, '2026-11-26', 'fix', 'closed', 'IllinoisTableScraper reads cell InnerText without decoding HTML entities, so a rate like 7.25&nbsp;% or a name with &amp; is dropped or misnamed', '1b7056a', 95, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TRC-T97', 'TaxRateCollector', 97, '2026-11-26', 'chore', 'open', 'Bughunt the state alcohol scrapers TRC-T95 left unread: Indiana, Iowa, Michigan, Montana, NorthDakota, Ohio, Oregon, SouthDakota, Wisconsin, and the Illinois and Minnesota parse bodies; fix each real bug under its own fix ticket', '—', 96, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TRC-T98', 'TaxRateCollector', 98, '2026-11-26', 'fix', 'open', 'ScrapeSchedulerService is never registered as a hosted service (Blazor or Worker), so scheduled re-scrapes (now every default_update_frequency_days, TRC-T63 efc245c) never run; register it in the app that owns scraping', '—', 97, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TRC-T99', 'TaxRateCollector', 99, '2026-11-26', 'feature', 'open', 'TaxRateCollector: adopt (or confirm) the shared run menu over deploy-lib.ps1, run Redeploy, and confirm its exe lands and starts at R:\MindAttic\Apps\TaxRateCollector\Debug and \Release; repoint anything in the repo still naming an old deploy path. Outcome: both builds exist under R: and launch', '—', 98, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TT-T1', 'ThinkTank', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| TT-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TT-T2', 'ThinkTank', 2, '2026-10-12', 'chore', 'closed', '/commit now logs every commit as a ticket in this table', '`.claude/skills/commit/SKILL.md`', 1, '| TT-T2 | 2026-10-12 | chore | closed | /commit now logs every commit as a ticket in this table | `.claude/skills/commit/SKILL.md` |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TT-T3', 'ThinkTank', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for ThinkTankService.CallProvider dispatch and auth resolution (ThinkTank.Core/Services/ThinkTankService.cs): drive it through a LegionClient over a stubbed HttpMessageHandler and cover ClaudeFallbackMode rerouting a non-claude provider to claude with the WrapPersonaForClaudeFallback persona and the per-template auth override dropped, claude itself not rerouted, InvalidOperationException when no API key resolves, apiKey/model/maxTokens precedence (maxTokensOverride over auth override JSON over disk auth JSON over 2048 default; override model blank falls through), malformed auth override JSON emitting an isError Diagnostics event yet still falling back, and a provider failure emitting an error Diagnostics event then rethrowing - this is the core LLM call path and is untested beyond SanitizeModelOutput', '—', 2, '| TT-T3 | 2026-10-14 | chore | open | NUnit tests for ThinkTankService.CallProvider dispatch and auth resolution (ThinkTank.Core/Services/ThinkTankService.cs): drive it through a LegionClient over a stubbed HttpMessageHandler and cover ClaudeFallbackMode rerouting a non-claude provider to claude with the WrapPersonaForClaudeFallback persona and the per-template auth override dropped, claude itself not rerouted, InvalidOperationException when no API key resolves, apiKey/model/maxTokens precedence (maxTokensOverride over auth override JSON over disk auth JSON over 2048 default; override model blank falls through), malformed auth override JSON emitting an isError Diagnostics event yet still falling back, and a provider failure emitting an error Diagnostics event then rethrowing - this is the core LLM call path and is untested beyond SanitizeModelOutput | — |');
@@ -16690,6 +16728,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TT-T78', 'ThinkTank', 78, '2026-11-26', 'fix', 'closed', 'Personas Test reports ''API key is required'' for a persona whose own auth override carries an apiKey', 'a3ac2ca', 77, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TT-T79', 'ThinkTank', 79, '2026-11-26', 'fix', 'closed', 'Chat.razor RestoreAllAsync enumerates the live Conversations collection across awaits; a tab opened or closed during restore throws InvalidOperationException and skips restoring the remaining conversations', '7b25c67', 78, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TT-T80', 'ThinkTank', 80, '2026-11-26', 'chore', 'open', 'Remove Azure leftovers after the 2026-11-26 decommission (MAT-T297): Production Azure Data Protection (thinktank-dp-keys blob container is deleted) and any Azure deploy config', '—', 79, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TT-T81', 'ThinkTank', 81, '2026-11-26', 'feature', 'open', 'ThinkTank: adopt (or confirm) the shared run menu over deploy-lib.ps1, run Redeploy, and confirm its exe lands and starts at R:\MindAttic\Apps\ThinkTank\Debug and \Release; repoint anything in the repo still naming an old deploy path. Outcome: both builds exist under R: and launch', '—', 80, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGC-T1', 'TownWalker', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| GGC-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGC-T2', 'TownWalker', 2, '2026-10-14', 'chore', 'closed', 'Move Tests/Core.Tests from xUnit to NUnit (swap xunit packages for NUnit + NUnit3TestAdapter, port the 6 LoopTests facts as-is) so the Lab core tests follow the workspace''s NUnit standard and the other GGC test tickets land in one framework', '749002d', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGC-T3', 'TownWalker', 3, '2026-10-14', 'chore', 'closed', 'NUnit tests for AStar and RouteGraph (Assets/Lab/Core/Routing.cs): AStar finds the cheapest path not just the first, returns [start] when start==goal, null when unreachable or when maxNodes is exhausted, skips infinite-cost edges; RouteGraph.Build keeps edges symmetric, caps each node at ''links'' nearest, always links the nearest neighbour even beyond maxLen (so no isolated site), and node 0 is the start', '49e1a64', 2, NULL);
@@ -16730,6 +16769,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGC-T38', 'TownWalker', 38, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 37, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGC-T39', 'TownWalker', 39, '2026-11-24', 'chore', 'closed', 'TownWalker uses the com.mindattic.media.capture Unity package', 'children done', 38, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGC-T40', 'TownWalker', 40, '2026-11-24', 'chore', 'closed', 'TownWalker: Packages/manifest.json (and lock file) point at com.mindattic.media.capture; README.md and tools/harness.py name MindAttic.Media.Capture; compiles', '1bd97fa', 39, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGC-T41', 'TownWalker', 41, '2026-11-26', 'feature', 'open', 'TownWalker: adopt (or confirm) the shared run menu over deploy-lib.ps1 Publish-Unity, run Redeploy, and confirm the Development (Debug) and Release Windows players land and start at R:\MindAttic\Apps\TownWalker\Debug and \Release; repoint anything in the repo still naming an old build path. Outcome: both players exist under R: and launch', '—', 40, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TUT-T1', 'Tutor', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| TUT-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TUT-T2', 'Tutor', 2, '2026-10-12', 'chore', 'closed', '/commit now logs every commit as a ticket in this table', '`.claude/skills/commit/SKILL.md`', 1, '| TUT-T2 | 2026-10-12 | chore | closed | /commit now logs every commit as a ticket in this table | `.claude/skills/commit/SKILL.md` |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TUT-T3', 'Tutor', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for LLM key-pool failover: KeyPoolFailover.ExecuteAsync (empty pool throws InvalidOperationException, first success returns without trying later keys, 401/408/429/5xx/null-status HttpRequestException and TaskCanceledException fail over to the next key, 400-class and non-HTTP exceptions rethrow immediately, last key''s exception rethrows, caller cancellation stops failover) and IsKeyLevelFailure status mapping, plus ApiKeyPoolService Add/Remove/Clear/GetPool and IsSupportedProvider against FakeSecurePreferences (dedup, remaining count, unknown provider); this is what keeps every LLM adapter alive when a key is revoked or rate-limited', '—', 2, '| TUT-T3 | 2026-10-14 | chore | open | NUnit tests for LLM key-pool failover: KeyPoolFailover.ExecuteAsync (empty pool throws InvalidOperationException, first success returns without trying later keys, 401/408/429/5xx/null-status HttpRequestException and TaskCanceledException fail over to the next key, 400-class and non-HTTP exceptions rethrow immediately, last key''s exception rethrows, caller cancellation stops failover) and IsKeyLevelFailure status mapping, plus ApiKeyPoolService Add/Remove/Clear/GetPool and IsSupportedProvider against FakeSecurePreferences (dedup, remaining count, unknown provider); this is what keeps every LLM adapter alive when a key is revoked or rate-limited | — |');
@@ -16867,6 +16907,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TUT-T135', 'Tutor', 135, '2026-11-26', 'fix', 'closed', 'Chat.razor: Restart and course change leave the reading timer running, so Begin books the old elapsed time on section 1', '071faff', 134, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TUT-T136', 'Tutor', 136, '2026-11-26', 'fix', 'closed', 'Chat.razor: lesson-complete message and reading timer show a literal ?? and ? instead of text', 'c05fd86', 135, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TUT-T137', 'Tutor', 137, '2026-11-26', 'chore', 'open', 'Remove Azure leftovers after the 2026-11-26 decommission (MAT-T297): appsettings.json still points at the deleted Azure SQL server and kv-tutor; make Production use local SQL and drop Azure-only config', '—', 136, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('TUT-T138', 'Tutor', 138, '2026-11-26', 'feature', 'open', 'Tutor: adopt (or confirm) the shared run menu over deploy-lib.ps1, run Redeploy, and confirm its exe lands and starts at R:\MindAttic\Apps\Tutor\Debug and \Release; repoint anything in the repo still naming an old deploy path. Outcome: both builds exist under R: and launch', '—', 137, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UC-T1', 'Unity.Cursory', 1, '2026-10-20', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UC-T2', 'Unity.Cursory', 2, '2026-10-20', 'chore', 'closed', 'Bootstrap repo: AGENTS.md/CLAUDE.md forwarders and docs/rfc/0001-port-plan.md (port Cursory to Unity 6 on MindAttic.Unity.Multiplayer; points at that repo''s architecture RFC)', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UC-T3', 'Unity.Cursory', 3, '2026-10-20', 'chore', 'closed', 'Unity 6000.4.3f1 project: URP 2D, top-down orthographic camera, Packages/manifest.json referencing file:../../MindAttic.Unity.Multiplayer/unity/com.mindattic.unity.multiplayer and com.mindattic.capture, engine-free Assets/UnityCursory/Core + Tests/Core.Tests dotnet NUnit pattern (as in UnitySpace/GridGameGaiden), docs/BIBLE.md porting Cursory''s CUR-LAW rules (server authoritative; geometry once per level), .gitattributes LF, .gitignore for Unity. Design: MindAttic.Unity.Multiplayer docs/rfc/0001-architecture.md.', '5d05eca', 2, NULL);
@@ -16934,6 +16975,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UC-T65', 'Unity.Cursory', 65, '2026-11-24', 'chore', 'closed', 'Unity.Cursory uses com.mindattic.media.capture locally and in its nightly CI checkout', 'children done', 64, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UC-T66', 'Unity.Cursory', 66, '2026-11-24', 'chore', 'closed', 'Unity.Cursory: manifest, Runtime asmdef, README, docs/BIBLE.md and .github/workflows/nightly.yml (checkout mindattic/MindAttic.Media.Capture into MindAttic.Media.Capture, siblings list, token comment) use the new name; compiles', '7a797c9', 65, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UC-T67', 'Unity.Cursory', 67, '2026-11-25', 'fix', 'closed', 'Fails on main: the build — C:\Program Files\dotnet\sdk\11.0.100-rc.3.26522.148\Microsoft.Common.CurrentVersion.targets(5131,5): error MSB3030: Could not copy the file "R:\Temp\nuget\packages\microsoft.testing.extensions.telemetry\1.5.3\lib\net9.0\cs\Microsoft.Testing.Extensions.Telemetry.resources.dll" because it was not f... (landed on main since the last green run: tickets UC-T66 in 7a797c9 Point Cursory at MindAttic.Media.Capture (UC-T66))', '7a797c9', 66, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UC-T68', 'Unity.Cursory', 68, '2026-11-26', 'feature', 'open', 'Unity.Cursory: adopt (or confirm) the shared run menu over deploy-lib.ps1 Publish-Unity, run Redeploy, and confirm the Development (Debug) and Release Windows players land and start at R:\MindAttic\Apps\Unity.Cursory\Debug and \Release; repoint anything in the repo still naming an old build path. Outcome: both players exist under R: and launch', '—', 67, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UC-T69', 'Unity.Cursory', 69, '2026-11-26', 'chore', 'open', 'Delete the old C:\Apps\Unity.Cursory player now that R:\MindAttic\Apps\Unity.Cursory runs from both Debug and Release. Outcome: the folder is gone', '—', 68, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UCY-T1', 'Unity.Cyprid', 1, '2026-10-22', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UCY-T2', 'Unity.Cyprid', 2, '2026-10-22', 'chore', 'wont-do', 'Bootstrap Unity.Cyprid: Unity 6 (6000.4.3f1) project scaffold, engine-free Core + Tests/Core.Tests NUnit harness, AGENTS/CLAUDE pointers, original art copied in, and docs/RECONSTRUCTION.md + docs/BIBLE.md reverse-engineered from the 2013 GameMaker: Studio source', 'port cancelled by user; repo deleted', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UCY-T3', 'Unity.Cyprid', 3, '2026-10-22', 'feature', 'wont-do', 'Port the GameMaker step runtime into engine-free Core: fixed 120-steps/s simulation (room_speed 120), per-instance alarms with GM countdown semantics, speed/direction auto-motion, move_towards_point, irandom_range on a seedable RNG, and the GM step/collision event order (RECONSTRUCTION §0); NUnit tests in Tests/Core.Tests', 'port cancelled by user; repo deleted', 2, NULL);
@@ -17010,6 +17053,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.EVE-T55', 'Unity.Eve', 55, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 54, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.EVE-T56', 'Unity.Eve', 56, '2026-11-24', 'chore', 'closed', 'Unity.Eve uses the com.mindattic.media.capture Unity package', 'children done', 55, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.EVE-T57', 'Unity.Eve', 57, '2026-11-24', 'chore', 'closed', 'Unity.Eve: Packages/manifest.json, Autopilot.cs comment, README and any executeMethod string use MindAttic.Media.Capture; compiles', '63f869f', 56, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.EVE-T58', 'Unity.Eve', 58, '2026-11-26', 'feature', 'open', 'Unity.Eve: adopt (or confirm) the shared run menu over deploy-lib.ps1 Publish-Unity, run Redeploy, and confirm the Development (Debug) and Release Windows players land and start at R:\MindAttic\Apps\Unity.Eve\Debug and \Release; repoint anything in the repo still naming an old build path. Outcome: both players exist under R: and launch', '—', 57, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.EVE-T59', 'Unity.Eve', 59, '2026-11-26', 'chore', 'open', 'Delete the old C:\Apps\Unity.Eve player and run.bat now that R:\MindAttic\Apps\Unity.Eve runs from both Debug and Release. Outcome: the folder is gone', '—', 58, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.ISO-T1', 'Unity.Isometric', 1, '2026-10-22', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.ISO-T2', 'Unity.Isometric', 2, '2026-10-22', 'chore', 'wont-do', 'Bootstrap Unity 6 project (6000.4.3f1), engine-free Core + NUnit Tests/Core.Tests, workspace docs, and docs/RECONSTRUCTION.md + docs/BIBLE.md reverse-engineered from the 2013 GameMaker Isometric.gmx source', 'port cancelled by user; repo deleted', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UM-T1', 'Unity.Multiplayer', 1, '2026-10-20', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
@@ -17227,6 +17272,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.CHN-T115', 'Unity.Rea.Chain', 115, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 114, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.CHN-T116', 'Unity.Rea.Chain', 116, '2026-11-24', 'chore', 'closed', 'Unity.Rea.Chain uses the com.mindattic.media.capture Unity package', 'children done', 115, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.CHN-T117', 'Unity.Rea.Chain', 117, '2026-11-24', 'chore', 'closed', 'Unity.Rea.Chain: manifest, Runtime asmdef, usings in DemoBootstrap.cs and ScriptedPlaythrough.cs, tools/play.ps1 executeMethod and current docs use MindAttic.Media.Capture; compiles', 'f1b2fef', 116, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.CHN-T118', 'Unity.Rea.Chain', 118, '2026-11-26', 'feature', 'open', 'Unity.Rea.Chain: adopt (or confirm) the shared run menu over deploy-lib.ps1 Publish-Unity, run Redeploy, and confirm the Development (Debug) and Release Windows players land and start at R:\MindAttic\Apps\Unity.Rea.Chain\Debug and \Release; repoint anything in the repo still naming an old build path. Outcome: both players exist under R: and launch', '—', 117, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.CHN-T119', 'Unity.Rea.Chain', 119, '2026-11-26', 'chore', 'open', 'Delete the old C:\Apps\Unity.Rea.Chain player and the older C:\Apps\Unity.Chain player (no Unity.Chain repo exists; confirm it is this game first) now that R:\MindAttic\Apps\Unity.Rea.Chain runs from both Debug and Release. Outcome: both folders are gone', '—', 118, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T1', 'Unity.Rea.Hare', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T2', 'Unity.Rea.Hare', 2, '2026-10-21', 'chore', 'closed', 'Scaffold Unity.Hare project (folders, .gitignore, Unity version, docs layout)', '71b3ce1', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T3', 'Unity.Rea.Hare', 3, '2026-10-21', 'docs', 'closed', 'Write reverse-engineering notes for gmlHARE/gmlRabbit object, script and room catalog', '19d3c0f', 2, NULL);
@@ -17363,6 +17410,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T134', 'Unity.Rea.Hare', 134, '2026-11-24', 'chore', 'closed', 'Unity.Rea.Hare uses the com.mindattic.media.capture Unity package', 'children done', 133, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T135', 'Unity.Rea.Hare', 135, '2026-11-24', 'chore', 'closed', 'Unity.Rea.Hare: manifest, Scripts asmdef, ScriptedRun.cs using, DemoBootstrap.cs comment and tools/capture.ps1 use MindAttic.Media.Capture; compiles', '3ccb255', 134, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T136', 'Unity.Rea.Hare', 136, '2026-11-24', 'chore', 'closed', 'tools/capture.ps1 writes to R:\MindAttic\Media\Capture', '7b5c049', 135, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.HARE-T137', 'Unity.Rea.Hare', 137, '2026-11-26', 'feature', 'open', 'Unity.Rea.Hare: adopt (or confirm) the shared run menu over deploy-lib.ps1 Publish-Unity, run Redeploy, and confirm the Development (Debug) and Release Windows players land and start at R:\MindAttic\Apps\Unity.Rea.Hare\Debug and \Release; repoint anything in the repo still naming an old build path. Outcome: both players exist under R: and launch', '—', 136, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.INC-T1', 'Unity.Rea.Incognito', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.INC-T2', 'Unity.Rea.Incognito', 2, '2026-10-21', 'chore', 'closed', 'Bootstrap Unity 6 project, workspace docs, and reverse-engineering notes from the 2013 GameMaker source', 'eae442c', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.INC-T3', 'Unity.Rea.Incognito', 3, '2026-10-21', 'feature', 'closed', 'Port player locomotion: triangle-wave walk bob, sprint acceleration/friction, and facing flip', '923bc95', 2, NULL);
@@ -17424,6 +17472,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.INC-T59', 'Unity.Rea.Incognito', 59, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 58, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.INC-T60', 'Unity.Rea.Incognito', 60, '2026-11-24', 'chore', 'closed', 'Unity.Rea.Incognito uses the com.mindattic.media.capture Unity package', 'children done', 59, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.INC-T61', 'Unity.Rea.Incognito', 61, '2026-11-24', 'chore', 'closed', 'Unity.Rea.Incognito: manifest, PlayMode test asmdef, ParityTourPlayTests.cs using, README, docs and tools/verify-parity.ps1 use MindAttic.Media.Capture; compiles', '93a2818', 60, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.INC-T62', 'Unity.Rea.Incognito', 62, '2026-11-26', 'feature', 'open', 'Unity.Rea.Incognito: adopt (or confirm) the shared run menu over deploy-lib.ps1 Publish-Unity, run Redeploy, and confirm the Development (Debug) and Release Windows players land and start at R:\MindAttic\Apps\Unity.Rea.Incognito\Debug and \Release; repoint anything in the repo still naming an old build path. Outcome: both players exist under R: and launch', '—', 61, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.OVW-T1', 'Unity.Rea.Overworld', 1, '2026-10-23', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| U.OVW-T1 | 2026-10-23 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.OVW-T2', 'Unity.Rea.Overworld', 2, '2026-10-23', 'chore', 'closed', 'Bootstrap Unity.Overworld (owner 2026-10-23): a Unity 6000.4.3f1 project scaffold matching the other rebuilds (Unity.Incognito''s bootstrap eae442c), the workspace AGENTS.md and CLAUDE.md forwarders, README, docs/BIBLE.md, and docs/RECONSTRUCTION.md: a reverse-engineering record (REA) built from both copies of the original, R:\Projects\_PRE_2022\_PRE_2021\_PRE_2020\_PRE_2017\overhead 2 (the VB.NET/DirectX source) and R:\Projects\_PRE_2022\_PRE_2021\_PRE_2020\_PRE_2017\Overworld (a built copy with its data: books, world.mdb, gfx, audio), diffing the two to find where and why they split (source the build was made from, later changes, data or assets only one has) and taking the union, covering every mechanic, system, data file and asset, from which every story of the rebuild is written in build order', '38c3533', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.OVW-T3', 'Unity.Rea.Overworld', 3, '2026-10-23', 'docs', 'closed', 'First commit: the workspace forwarders (AGENTS.md, CLAUDE.md), the owner''s rebuild standard (2026-10-23) in AGENTS.md with the original''s source paths, and the generated docs/USER_STORIES.md view, so the bootstrap ticket and every agent after it start from the standard', '3595503', 2, NULL);
@@ -17531,6 +17580,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.OVW-T105', 'Unity.Rea.Overworld', 105, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 104, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.OVW-T106', 'Unity.Rea.Overworld', 106, '2026-11-24', 'chore', 'closed', 'Unity.Rea.Overworld docs name com.mindattic.media.capture', 'children done', 105, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.OVW-T107', 'Unity.Rea.Overworld', 107, '2026-11-24', 'docs', 'closed', 'Unity.Rea.Overworld docs/BIBLE.md (~79) names com.mindattic.media.capture for the scripted-run screenshots', '55e0983', 106, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.OVW-T108', 'Unity.Rea.Overworld', 108, '2026-11-26', 'feature', 'open', 'Unity.Rea.Overworld: adopt (or confirm) the shared run menu over deploy-lib.ps1 Publish-Unity, run Redeploy, and confirm the Development (Debug) and Release Windows players land and start at R:\MindAttic\Apps\Unity.Rea.Overworld\Debug and \Release; repoint anything in the repo still naming an old build path. Outcome: both players exist under R: and launch', '—', 107, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.VAN-T1', 'Unity.Rea.ProjectVania', 1, '2026-10-23', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| U.VAN-T1 | 2026-10-23 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.VAN-T2', 'Unity.Rea.ProjectVania', 2, '2026-10-23', 'chore', 'closed', 'Bootstrap Unity.ProjectVania (owner 2026-10-23): a Unity 6000.4.3f1 project scaffold matching the other rebuilds (Unity.Incognito''s bootstrap eae442c), the workspace AGENTS.md and CLAUDE.md forwarders, README, docs/BIBLE.md, and docs/RECONSTRUCTION.md: a reverse-engineering record (REA) of the XNA C# original at R:\Projects\_PRE_2022\_PRE_2021\_PRE_2020\_PRE_2017\ProjectVania (the fuller copy; XNA 2D\ProjectVania is an earlier, smaller copy) covering every mechanic, system, content file and asset, from which every story of the rebuild is written in build order', '138eb9b', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.VAN-T3', 'Unity.Rea.ProjectVania', 3, '2026-10-23', 'docs', 'closed', 'First commit: the workspace forwarders (AGENTS.md, CLAUDE.md), the owner''s rebuild standard (2026-10-23) in AGENTS.md with the original''s source paths, and the generated docs/USER_STORIES.md view, so the bootstrap ticket and every agent after it start from the standard', '7dc97f6', 2, NULL);
@@ -17575,6 +17625,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.VAN-T42', 'Unity.Rea.ProjectVania', 42, '2026-11-10', 'chore', 'closed', 'Crash recovery / fleet sync: commit the regenerated docs/USER_STORIES.md left uncommitted after other tickets closed elsewhere', '—', 41, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.VAN-T43', 'Unity.Rea.ProjectVania', 43, '2026-11-17', 'docs', 'closed', 'Update USER_STORIES.md', '—', 42, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.VAN-T44', 'Unity.Rea.ProjectVania', 44, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 43, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.VAN-T45', 'Unity.Rea.ProjectVania', 45, '2026-11-26', 'feature', 'open', 'Unity.Rea.ProjectVania: adopt (or confirm) the shared run menu over deploy-lib.ps1 Publish-Unity, run Redeploy, and confirm the Development (Debug) and Release Windows players land and start at R:\MindAttic\Apps\Unity.Rea.ProjectVania\Debug and \Release; repoint anything in the repo still naming an old build path. Outcome: both players exist under R: and launch', '—', 44, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UQD-T1', 'Unity.Rea.QuickDuel', 1, '2026-10-21', 'feature', 'closed', 'Scaffold Unity.QuickDuel: engine-free duel core (startup, countdown, randomized drumroll, cue, first strike wins, early strike loses, near-tie clash) with NUnit tests', '1127022', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UQD-T2', 'Unity.Rea.QuickDuel', 2, '2026-10-21', 'feature', 'closed', 'Two-player local input: Left key A / Right key L plus one gamepad each, via the Input System with event timestamps fed to Duel.Strike; Space or Start begins the next round', '8322ed5', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UQD-T3', 'Unity.Rea.QuickDuel', 3, '2026-10-21', 'feature', 'closed', 'Duel scene and bootstrap: one scene, two duelists facing each other, a DuelController MonoBehaviour that drives Duel.Tick and maps phases to visuals; a PlayMode test that a round resolves', '42326ea', 2, NULL);
@@ -17676,6 +17727,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UQD-T99', 'Unity.Rea.QuickDuel', 99, '2026-11-10', 'chore', 'closed', 'Crash recovery: commit the command-catalog sync (.agent/commands/*.md) and regenerated docs/USER_STORIES.md left uncommitted by the session crash', '—', 98, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UQD-T100', 'Unity.Rea.QuickDuel', 100, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 99, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UQD-T101', 'Unity.Rea.QuickDuel', 101, '2026-11-25', 'chore', 'closed', 'Re-publish Unity.Rea.QuickDuel with /publish so it lands in R:\MindAttic\Apps\Unity.Rea.QuickDuel, check it runs, then delete C:\Apps\MindAttic\Unity.Rea.QuickDuel. Outcome: the R:\ copy runs and the old folder is gone', '1f2b1c4', 100, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UQD-T102', 'Unity.Rea.QuickDuel', 102, '2026-11-26', 'chore', 'open', 'Verify the Unity.Rea.QuickDuel R: deploy (UQD-T101 moved it): run.ps1 -Redeploy, Run Debug (Development player) and Run Release each start from R:\MindAttic\Apps\Unity.Rea.QuickDuel\{Debug,Release}, and no copy of its player remains outside R:\MindAttic\Apps (delete a confirmed leftover, nothing else). Outcome: both players launch and no other copy exists', '—', 101, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T1', 'Unity.Rea.Ricochet', 1, '2026-10-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T2', 'Unity.Rea.Ricochet', 2, '2026-10-21', 'chore', 'closed', 'Create Unity.Ricochet repo (mindattic/Unity.Ricochet, tagged wip); scaffold README, AGENTS/CLAUDE pointers, .gitignore, Packages/manifest.json referencing the house kit (Unity.Multiplayer, MindAttic.Components, Unity.Shared), and docs/BIBLE.md + docs/rfc/0001-architecture.md capturing the GML Ricochet port plan', 'repo scaffold commit', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T3', 'Unity.Rea.Ricochet', 3, '2026-10-21', 'feature', 'closed', 'Run the Unity.Multiplayer New Game wizard to scaffold the project (NetBootstrap/NetFrontEnd/NetVotes scene, package manifest), then build core aim-and-fire: angle/power input, bounce-path preview off borders and rail redirectors (porting the line-line intersection and bounce-prediction math from aim.gml/draw_potential.gml/draw_bounceinfo.gml/check_rail_intersection.gml), and projectile flight/impact', '5038130', 2, NULL);
@@ -17849,6 +17901,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T171', 'Unity.Rea.Ricochet', 171, '2026-11-17', 'docs', 'closed', 'Update USER_STORIES.md', '—', 170, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T172', 'Unity.Rea.Ricochet', 172, '2026-11-18', 'chore', 'closed', 'Remove PerformanceTestRunInfo.json, PerformanceTestRunSettings.json', '—', 171, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T173', 'Unity.Rea.Ricochet', 173, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 172, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RICO-T174', 'Unity.Rea.Ricochet', 174, '2026-11-26', 'feature', 'open', 'Unity.Rea.Ricochet: adopt (or confirm) the shared run menu over deploy-lib.ps1 Publish-Unity, run Redeploy, and confirm the Development (Debug) and Release Windows players land and start at R:\MindAttic\Apps\Unity.Rea.Ricochet\Debug and \Release; repoint anything in the repo still naming an old build path. Outcome: both players exist under R: and launch', '—', 173, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAU-T1', 'Unity.Shared', 1, '2026-10-19', 'docs', 'closed', 'Start the permanent ticket log in the workflow database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAU-T2', 'Unity.Shared', 2, '2026-10-19', 'feature', 'closed', 'Create the MindAttic.Unity package (owner 2026-10-19): multiple player profiles, each with its own settings file as in GridGame2026, in ONE common format defined here and reused by every MindAttic Unity game (first users GridGameGaiden and UnitySpace), plus a home for shared Unity helpers. Package: package.json name com.mindattic.unity, consumed by games as "file:../../MindAttic.Unity" in Packages/manifest.json (owner chose local package). Two assemblies: (1) MindAttic.Unity.Core, ENGINE-FREE (noEngineReferences, compiles under plain dotnet netstandard2.1) so games'' engine-free Core/Meta layers and their dotnet test projects can use it; (2) MindAttic.Unity.Runtime, thin, supplies Application.persistentDataPath as the root. THE STANDARD, written in README as a versioned spec: <persistentDataPath>/Profiles/current.txt names the profile in use; Profiles/<Name>/settings.json is that profile''s ONE settings file (owner chose single JSON over UnitySpace''s file-per-setting); Profiles/<Name>/Saves/ holds the game''s own save files. settings.json = {"format":"mindattic.settings","version":1,"common":{musicVolume,sfxVolume,muteMusic,muteSfx,reduceMotion,language},"game":{...game-owned...}}. Unknown fields in common and game survive a load/save round-trip; missing file/keys fall back to defaults; damaged JSON is moved aside (settings.json.bad-<timestamp>) and defaults used, never a crash; writes are atomic (temp + replace). Profile API: list, current, select, create (name rules as UnitySpace''s ProfileStore.IsValidName: one folder on every platform, <=64 chars), rename, delete = move to Profiles/.trash (HOUSE-LAW-2 soft-disable), root override for tests/automation. JSON: do not ship a second Newtonsoft (GridGameGaiden bundles its own Newtonsoft.Json.dll; check UnitySpace) - choose an approach that works in both (e.g. an injected codec interface) and document it. Port the good parts of UnitySpace''s uncommitted Assets/UnitySpace/Core/Persistence/Profiles.cs and GridGame2026''s ProfileHelper/FolderHelper (archived repo mindattic/GridGame2026); do NOT edit UnitySpace or GridGameGaiden from this ticket. Repo basics: AGENTS.md/CLAUDE.md forwarders like sibling repos, README per codex-standard/README-STYLE.md, MIT LICENSE, a dotnet NUnit test project for the format (round-trip incl. unknown keys, defaults, damaged file, atomic write, name rules, current/select/create/rename/delete-to-trash, root override), a v1.0.0 tag once green.', 'tests/Core.Tests (89 passing: JsonTests, SettingsTests.RoundTripKeepsUnknownFieldsInCommonGameAndTopLevel/DamagedFileIsMovedAsideAndDefaultsUsed/SaveIsAtomicAndLeavesNoTempFile/FailedWriteLeavesTheOldFileIntact, ProfileStoreTests, ProfilesFacadeTests.TheOneLineIdentityApiReadsAndWritesNameAndColour); Unity 6000.4.3f1 batchmode smoke; c8b90c0; tag v1.0.0', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('MAU-T3', 'Unity.Shared', 3, '2026-10-19', 'chore', 'closed', 'Convert tracked source files to LF line endings via .gitattributes, per HOUSE-LAW-13 (low priority)', 'git ls-files --eol all i/lf; b57b99a', 2, NULL);
@@ -18537,6 +18590,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T642', 'Unity.SpaceGod', 642, '2026-11-22', 'feature', 'open', 'Civ dynamics succession crises: implement resolution by victory or permanent split', '—', 641, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T643', 'Unity.SpaceGod', 643, '2026-11-24', 'chore', 'wont-do', 'Unity.SpaceGod still loads com.mindattic.capture from ../../MindAttic.Capture, which no longer exists after the rename (M.CAPT-T179): point Packages/manifest.json (and packages-lock.json) at com.mindattic.media.capture in ../../MindAttic.Media.Capture, the UnitySpace.Runtime asmdef at MindAttic.Media.Capture.Unity, usings in Assets/UnitySpace/Runtime/CaptureRunner.cs, and README/tools/launch.ps1 links and names', 'Unity.SpaceGod is archived (skipped in the rename plan)', 642, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T644', 'Unity.SpaceGod', 644, '2026-11-26', 'docs', 'open', 'README and CaptureRunner comment name R:\MindAttic\Media\Capture\Unity.SpaceGod instead of the retired R:\MindAttic\Capture root', '—', 643, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T645', 'Unity.SpaceGod', 645, '2026-11-26', 'feature', 'open', 'Unity.SpaceGod: adopt (or confirm) the shared run menu over deploy-lib.ps1 Publish-Unity, run Redeploy, and confirm the Development (Debug) and Release Windows players land and start at R:\MindAttic\Apps\Unity.SpaceGod\Debug and \Release; repoint anything in the repo still naming an old build path. Outcome: both players exist under R: and launch', '—', 644, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.SPC-T646', 'Unity.SpaceGod', 646, '2026-11-26', 'chore', 'open', 'Delete the old C:\Apps\Unity.SpaceGod player now that R:\MindAttic\Apps\Unity.SpaceGod runs from both Debug and Release. Outcome: the folder is gone', '—', 645, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RON-T1', 'UnityRonin', 1, '2026-10-12', 'docs', 'closed', 'Start the permanent ticket log in USER_STORIES.md', '—', 0, '| U.RON-T1 | 2026-10-12 | docs | closed | Start the permanent ticket log in USER_STORIES.md | — |');
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RON-T2', 'UnityRonin', 2, '2026-10-14', 'chore', 'closed', 'NUnit tests for DuelDirector guard rails and riposte edge cases (add to the existing xUnit Tests/Core.Tests/DuelDirectorTests.cs, Assets/UnityRonin/Core/Combat/DuelDirector.cs): Resolve throws InvalidOperationException while Phase is PlayerRiposte, ResolveRiposte throws while Phase is EnemyBeat, both throw once IsOver, constructor throws ArgumentNullException for a null Rng, PlayerWon is false when the player reaches zero health, a landed riposte with chained alternating strokes deals 1 plus bonus hits and a repeated shape breaks it, a countered riposte on the player''s last health ends the duel, and after a riposte timeout, retreat or counter Phase returns to EnemyBeat with a fresh CurrentBeat; these are the state-machine invariants RoninGameController and DuelPresenter rely on and none are asserted today', 'Tests/Core.Tests/DuelDirectorTests.cs', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RON-T3', 'UnityRonin', 3, '2026-10-14', 'chore', 'open', 'NUnit tests for GestureClassifier edge cases (add to the existing xUnit Tests/Core.Tests/GestureClassifierTests.cs, Assets/UnityRonin/Core/Combat/GestureClassifier.cs): an empty or single-point path returns no strokes (SwipeInputReader then drops the gesture silently), the angle-bucket boundaries at 22.5, 67.5, 112.5 and 157.5 degrees land in the documented shape, a three-segment zigzag yields three alternating strokes with shared corner points, a short tail under 24px after a real corner is dropped rather than turned into a Thrust, a sharp turn before 24px of travel is treated as jitter and does not split, and downward or leftward drags fold to the same shape; misclassification here silently decides parries and combo bonus hits', '—', 2, '| U.RON-T3 | 2026-10-14 | chore | open | NUnit tests for GestureClassifier edge cases (add to the existing xUnit Tests/Core.Tests/GestureClassifierTests.cs, Assets/UnityRonin/Core/Combat/GestureClassifier.cs): an empty or single-point path returns no strokes (SwipeInputReader then drops the gesture silently), the angle-bucket boundaries at 22.5, 67.5, 112.5 and 157.5 degrees land in the documented shape, a three-segment zigzag yields three alternating strokes with shared corner points, a short tail under 24px after a real corner is dropped rather than turned into a Thrust, a sharp turn before 24px of travel is treated as jitter and does not split, and downward or leftward drags fold to the same shape; misclassification here silently decides parries and combo bonus hits | — |');
@@ -18569,6 +18624,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RON-T30', 'UnityRonin', 30, '2026-11-22', 'feature', 'open', 'Add a BIBLE law citing the standard and a test driving the game with commands from two player ids', '—', 29, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RON-T31', 'UnityRonin', 31, '2026-11-24', 'chore', 'closed', 'UnityRonin uses the com.mindattic.media.capture Unity package', 'children done', 30, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RON-T32', 'UnityRonin', 32, '2026-11-24', 'chore', 'closed', 'UnityRonin: Packages/manifest.json, RoninBuild.cs comment and README use MindAttic.Media.Capture; compiles', '42b77ce', 31, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('U.RON-T33', 'UnityRonin', 33, '2026-11-26', 'feature', 'open', 'UnityRonin: adopt (or confirm) the shared run menu over deploy-lib.ps1 Publish-Unity, run Redeploy, and confirm the Development (Debug) and Release Windows players land and start at R:\MindAttic\Apps\UnityRonin\Debug and \Release; repoint anything in the repo still naming an old build path. Outcome: both players exist under R: and launch', '—', 32, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T1', 'Unreal.Eve', 1, '2026-11-07', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T2', 'Unreal.Eve', 2, '2026-11-07', 'chore', 'closed', 'M0: scaffold Unreal.Eve (UE 5.8 C++ project, EveCore + UnrealEve modules, MindAtticShared plugin, tools/build|run|find-engine, BIBLE/AGENTS/CREDITS, Git LFS for Content) so the empty project builds and run.ps1 -Headless prints the ready line', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T3', 'Unreal.Eve', 3, '2026-11-07', 'feature', 'closed', 'M1: port Unity.Eve Core (ATB, damage, Focus, attack cycle, tokens, EnemyMind, blade arts, PE, inventory, loot, RNG, LockGraph, objectives, save, camera zone selector, movement basis, authorities, replay log) to a pure C++ EveCore module with battle-tuning.json, plus Low-Level Tests', '—', 2, NULL);
@@ -18645,6 +18701,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T74', 'Unreal.Eve', 74, '2026-11-22', 'feature', 'open', 'Add the options menu', '—', 73, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T75', 'Unreal.Eve', 75, '2026-11-22', 'docs', 'closed', '2026-11-22 morning', '—', 74, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T76', 'Unreal.Eve', 76, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 75, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T77', 'Unreal.Eve', 77, '2026-11-26', 'feature', 'open', 'Unreal.Eve: adopt (or confirm) the shared run menu over deploy-lib.ps1 Publish-Unreal, run Redeploy, and confirm the DebugGame (Debug) and Shipping (Release) packages land and start at R:\MindAttic\Apps\Unreal.Eve\Debug and \Release; repoint anything in the repo still naming an old package path. Outcome: both packages exist under R: and launch', '—', 76, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UE-T78', 'Unreal.Eve', 78, '2026-11-26', 'chore', 'open', 'Delete the old C:\Apps\Unreal.Eve package now that R:\MindAttic\Apps\Unreal.Eve runs from both Debug and Release. Outcome: the folder is gone', '—', 77, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T1', 'Unreal.Playground', 1, '2026-11-03', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T2', 'Unreal.Playground', 2, '2026-11-03', 'feature', 'closed', 'Scaffold co-op souls-like demo: third-person combat on isolated Hebrides island (dodge roll, block, parry, X/Y light/heavy attacks, RB heal)', 'b21f31c', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T3', 'Unreal.Playground', 3, '2026-11-03', 'feature', 'open', 'Playable demo: terrain-shaped Hebrides island surrounded by water, free meshes, working battle system, skeleton enemies that attack the player', '—', 2, NULL);
@@ -18771,6 +18829,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T124', 'Unreal.Playground', 124, '2026-11-24', 'feature', 'closed', 'Unreal.Playground -preview opens a preview set of a demo mode''s shots at quit; README Capture how-to', '266da3f', 123, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T125', 'Unreal.Playground', 125, '2026-11-24', 'fix', 'closed', 'tools/run.ps1 -Players >1: $map?listen expands as the variable $map? (empty), so player 1 launches with no map; use ${map}?listen', '952514b', 124, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T126', 'Unreal.Playground', 126, '2026-11-24', 'docs', 'closed', 'tools/run.ps1, run.bat and README name R:\MindAttic\Media\Capture\Unreal.Playground', '6e59f37ba0c7e6961c8815818e7a372cdfdadff9', 125, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNR-T127', 'Unreal.Playground', 127, '2026-11-26', 'feature', 'open', 'Unreal.Playground: adopt (or confirm) the shared run menu over deploy-lib.ps1 Publish-Unreal, run Redeploy, and confirm the DebugGame (Debug) and Shipping (Release) packages land and start at R:\MindAttic\Apps\Unreal.Playground\Debug and \Release; repoint anything in the repo still naming an old package path. Outcome: both packages exist under R: and launch', '—', 126, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNRE-T1', 'Unreal.Shared', 1, '2026-11-06', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNRE-T2', 'Unreal.Shared', 2, '2026-11-06', 'feature', 'closed', 'A shared Unreal plugin with an off-by-default --headless mode for every MindAttic Unreal game', 'e192c42', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNRE-T3', 'Unreal.Shared', 3, '2026-11-10', 'chore', 'closed', 'Adopt the shared docs-site pipeline: turn on GitHub Pages', '—', 2, NULL);
@@ -18818,6 +18877,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T35', 'Unstuck', 35, '2026-11-18', 'feature', 'closed', 'Ctrl+Alt+U becomes a second permanent, hardcoded hotkey (like Ctrl+Alt+Break), independent of the user''s one configurable extra-hotkey slot', '—', 34, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T36', 'Unstuck', 36, '2026-11-19', 'feature', 'closed', 'Inno Setup installer (Unstuck-Setup-vN.exe) like Bananarama: per-user, startup/desktop tasks, Apps & Features uninstall, whole-number release script', 'setup/Unstuck.iss; verified silent install/uninstall; release v3', 35, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T37', 'Unstuck', 37, '2026-11-24', 'fix', 'open', 'Hunt the whole repo for real bugs with no time limit and fix every confirmed one', '—', 36, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T38', 'Unstuck', 38, '2026-11-26', 'feature', 'open', 'Unstuck: adopt (or confirm) the shared run menu over deploy-lib.ps1, run Redeploy, and confirm its exe lands and starts at R:\MindAttic\Apps\Unstuck\Debug and \Release; repoint anything in the repo still naming an old deploy path. Outcome: both builds exist under R: and launch', '—', 37, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('UNS-T39', 'Unstuck', 39, '2026-11-26', 'chore', 'open', 'Delete the old C:\Apps\Unstuck install now that R:\MindAttic\Apps\Unstuck runs from both Debug and Release. Outcome: the folder is gone', '—', 38, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('EP-T1', 'ePub', 1, '2026-11-11', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('EP-T2', 'ePub', 2, '2026-11-11', 'chore', 'closed', 'Make ePub a private GitHub repo tagged wip holding only the latest version of each book in each universe (no Archives folders, no .psd)', '83df825', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('EP-T3', 'ePub', 3, '2026-11-11', 'chore', 'closed', 'ePub keeps only the files directly in MindAttic/<UNIVERSE>/<BOOK>/ (no book subfolders, universe-level or top-level files, no Calibre author folders)', 'e39aa85', 2, NULL);
@@ -124814,12 +124875,535 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (128990, 
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (128991, 'GAD-T805', '2026-11-26T23:58:31Z', 'working', NULL, '5c87f115-96a3-43aa-8559-17d8764da8f6');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (128992, 'GG-T1210', '2026-11-26T23:58:50Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (128993, 'GG-T1210', '2026-11-26T23:58:50Z', 'ref', '—', 'e32a4261c1670baea0c4c508a808f655417d5d4a');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (128994, 'GG-T1210', '2026-11-26T23:59:23Z', 'working', 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (128995, 'GAD-T805', '2026-11-26T23:59:45Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (128996, 'GAD-T805', '2026-11-26T23:59:45Z', 'ref', '—', '7e5e548');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (128997, 'M.LNCH-T150', '2026-11-26T23:59:53Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (128998, 'M.LNCH-T150', '2026-11-26T23:59:53Z', 'name', NULL, 'Launcher Debug and Release verified');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (128999, 'M.LNCH-T150', '2026-11-26T23:59:54Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129000, 'PRS-T1171', '2026-11-27T00:00:02Z', 'label', 'level:task', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129001, 'PRS-T1171', '2026-11-27T00:00:02Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129002, 'PRS-T1173', '2026-11-27T00:00:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129003, 'PRS-T1173', '2026-11-27T00:00:12Z', 'link', NULL, 'part-of PRS-T1171');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129004, 'PRS-T1171', '2026-11-27T00:00:12Z', 'link', NULL, 'PRS-T1173 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129005, 'PRS-T1173', '2026-11-27T00:00:12Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129006, 'PRS-T1173', '2026-11-27T00:00:12Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129007, 'M.LNCH-T150', '2026-11-27T00:00:13Z', 'link', NULL, 'part-of MAT-T288');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129008, 'MAT-T288', '2026-11-27T00:00:13Z', 'link', NULL, 'M.LNCH-T150 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129009, 'M.LNCH-T150', '2026-11-27T00:00:14Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129010, 'M.LNCH-T150', '2026-11-27T00:00:15Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129011, 'AUT-T50', '2026-11-27T00:00:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129012, 'AUT-T50', '2026-11-27T00:00:49Z', 'name', NULL, 'Automata on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129013, 'AUT-T50', '2026-11-27T00:00:49Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129014, 'GG-T1202', '2026-11-27T00:00:54Z', 'working', NULL, 'ohleo199@mindattic.com (e1bd5cdc-60d3-4e0e-8a84-21abd28f1dc5)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129015, 'GG-T1176', '2026-11-27T00:01:04Z', 'working', NULL, 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129016, 'G.EZ-T140', '2026-11-27T00:01:04Z', 'working', NULL, 'ohleo199@mindattic.com (9aa417dc-00ec-48db-aaea-59ffddf8b7f3)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129017, 'GG-T578', '2026-11-27T00:01:04Z', 'working', NULL, 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129018, 'TUT-T18', '2026-11-27T00:01:04Z', 'working', NULL, 'ohleo199@mindattic.com (9aa417dc-00ec-48db-aaea-59ffddf8b7f3)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129019, 'AUT-T50', '2026-11-27T00:01:04Z', 'link', NULL, 'part-of MAT-T290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129020, 'PRS-T22', '2026-11-27T00:01:04Z', 'working', NULL, 'ohleo199@mindattic.com (9aa417dc-00ec-48db-aaea-59ffddf8b7f3)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129021, 'PRS-T14', '2026-11-27T00:01:05Z', 'working', NULL, 'ohleo199@mindattic.com (9aa417dc-00ec-48db-aaea-59ffddf8b7f3)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129022, 'PRS-T3', '2026-11-27T00:01:05Z', 'working', NULL, 'ohleo199@mindattic.com (9aa417dc-00ec-48db-aaea-59ffddf8b7f3)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129023, 'MAT-T290', '2026-11-27T00:01:05Z', 'link', NULL, 'AUT-T50 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129024, 'AUT-T50', '2026-11-27T00:01:05Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129025, 'GG-T1015', '2026-11-27T00:01:05Z', 'working', NULL, '6082ff94-ff59-4f19-92da-270fca91363e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129026, 'GG-T1046', '2026-11-27T00:01:05Z', 'working', NULL, '6082ff94-ff59-4f19-92da-270fca91363e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129027, 'AUT-T50', '2026-11-27T00:01:06Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129028, 'CUR-T35', '2026-11-27T00:01:07Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129029, 'CUR-T35', '2026-11-27T00:01:07Z', 'name', NULL, 'Cursory on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129030, 'CUR-T35', '2026-11-27T00:01:07Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129031, 'CUR-T35', '2026-11-27T00:01:08Z', 'link', NULL, 'part-of MAT-T290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129032, 'MAT-T290', '2026-11-27T00:01:08Z', 'link', NULL, 'CUR-T35 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129033, 'CUR-T35', '2026-11-27T00:01:08Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129034, 'CUR-T35', '2026-11-27T00:01:09Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129035, 'FOR-T40', '2026-11-27T00:01:10Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129036, 'FOR-T40', '2026-11-27T00:01:10Z', 'name', NULL, 'Formicarium on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129037, 'FOR-T40', '2026-11-27T00:01:10Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129038, 'FOR-T40', '2026-11-27T00:01:10Z', 'link', NULL, 'part-of MAT-T290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129039, 'MAT-T290', '2026-11-27T00:01:10Z', 'link', NULL, 'FOR-T40 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129040, 'FOR-T40', '2026-11-27T00:01:11Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129041, 'FOR-T40', '2026-11-27T00:01:11Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129042, 'GAD-T806', '2026-11-27T00:01:12Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129043, 'GAD-T806', '2026-11-27T00:01:12Z', 'name', NULL, 'Gadfly on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129044, 'GAD-T806', '2026-11-27T00:01:12Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129045, 'GAD-T806', '2026-11-27T00:01:13Z', 'link', NULL, 'part-of MAT-T290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129046, 'MAT-T290', '2026-11-27T00:01:13Z', 'link', NULL, 'GAD-T806 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129047, 'GAD-T806', '2026-11-27T00:01:13Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129048, 'GAD-T806', '2026-11-27T00:01:14Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129049, 'IDEA-T89', '2026-11-27T00:01:15Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129050, 'IDEA-T89', '2026-11-27T00:01:15Z', 'name', NULL, 'IdeaCms on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129051, 'IDEA-T89', '2026-11-27T00:01:15Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129052, 'IDEA-T89', '2026-11-27T00:01:15Z', 'link', NULL, 'part-of MAT-T290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129053, 'MAT-T290', '2026-11-27T00:01:15Z', 'link', NULL, 'IDEA-T89 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129054, 'IDEA-T89', '2026-11-27T00:01:15Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129055, 'IDEA-T89', '2026-11-27T00:01:16Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129056, 'JH-T42', '2026-11-27T00:01:17Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129057, 'JH-T42', '2026-11-27T00:01:17Z', 'name', NULL, 'JobHunt on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129058, 'JH-T42', '2026-11-27T00:01:17Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129059, 'JH-T42', '2026-11-27T00:01:18Z', 'link', NULL, 'part-of MAT-T290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129060, 'MAT-T290', '2026-11-27T00:01:18Z', 'link', NULL, 'JH-T42 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129061, 'JH-T42', '2026-11-27T00:01:18Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129062, 'JH-T42', '2026-11-27T00:01:20Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129063, 'KP-T40', '2026-11-27T00:01:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129064, 'KP-T40', '2026-11-27T00:01:20Z', 'name', NULL, 'KdpPublish on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129065, 'KP-T40', '2026-11-27T00:01:20Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129066, 'KP-T40', '2026-11-27T00:01:21Z', 'link', NULL, 'part-of MAT-T290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129067, 'MAT-T290', '2026-11-27T00:01:21Z', 'link', NULL, 'KP-T40 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129068, 'KP-T40', '2026-11-27T00:01:21Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129069, 'KP-T40', '2026-11-27T00:01:22Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129070, 'MB-T60', '2026-11-27T00:01:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129071, 'MB-T60', '2026-11-27T00:01:22Z', 'name', NULL, 'MediaButler on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129072, 'MB-T60', '2026-11-27T00:01:23Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129073, 'MB-T60', '2026-11-27T00:01:23Z', 'link', NULL, 'part-of MAT-T290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129074, 'MAT-T290', '2026-11-27T00:01:23Z', 'link', NULL, 'MB-T60 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129075, 'MB-T60', '2026-11-27T00:01:23Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129076, 'MB-T60', '2026-11-27T00:01:24Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129077, 'M.DPLY-T39', '2026-11-27T00:01:25Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129078, 'M.DPLY-T39', '2026-11-27T00:01:25Z', 'name', NULL, 'MindAttic.Deploy on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129079, 'M.DPLY-T39', '2026-11-27T00:01:26Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129080, 'M.DPLY-T39', '2026-11-27T00:01:27Z', 'link', NULL, 'part-of MAT-T290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129081, 'MAT-T290', '2026-11-27T00:01:27Z', 'link', NULL, 'M.DPLY-T39 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129082, 'M.DPLY-T39', '2026-11-27T00:01:27Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129083, 'M.DPLY-T39', '2026-11-27T00:01:28Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129084, 'M.CAPT-T228', '2026-11-27T00:01:29Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129085, 'M.CAPT-T228', '2026-11-27T00:01:29Z', 'name', NULL, 'MindAttic.Media.Capture on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129086, 'M.CAPT-T228', '2026-11-27T00:01:29Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129087, 'M.CAPT-T228', '2026-11-27T00:01:29Z', 'link', NULL, 'part-of MAT-T290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129088, 'MAT-T290', '2026-11-27T00:01:29Z', 'link', NULL, 'M.CAPT-T228 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129089, 'M.CAPT-T228', '2026-11-27T00:01:29Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129090, 'M.CAPT-T228', '2026-11-27T00:01:30Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129091, 'M.MVIEW-T39', '2026-11-27T00:01:31Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129092, 'M.MVIEW-T39', '2026-11-27T00:01:31Z', 'name', NULL, 'MindAttic.Media.Viewer on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129093, 'M.MVIEW-T39', '2026-11-27T00:01:31Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129094, 'M.MVIEW-T39', '2026-11-27T00:01:32Z', 'link', NULL, 'part-of MAT-T290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129095, 'MAT-T290', '2026-11-27T00:01:32Z', 'link', NULL, 'M.MVIEW-T39 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129096, 'M.MVIEW-T39', '2026-11-27T00:01:32Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129097, 'M.MVIEW-T39', '2026-11-27T00:01:33Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129098, 'M.PSST-T50', '2026-11-27T00:01:33Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129099, 'M.PSST-T50', '2026-11-27T00:01:33Z', 'name', NULL, 'MindAttic.Psst on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129100, 'M.PSST-T50', '2026-11-27T00:01:33Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129101, 'M.PSST-T50', '2026-11-27T00:01:34Z', 'link', NULL, 'part-of MAT-T290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129102, 'MAT-T290', '2026-11-27T00:01:34Z', 'link', NULL, 'M.PSST-T50 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129103, 'M.PSST-T50', '2026-11-27T00:01:34Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129104, 'M.PSST-T50', '2026-11-27T00:01:34Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129105, 'M.SCHD-T76', '2026-11-27T00:01:35Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129106, 'M.SCHD-T76', '2026-11-27T00:01:35Z', 'name', NULL, 'MindAttic.Scheduler on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129107, 'M.SCHD-T76', '2026-11-27T00:01:35Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129108, 'M.SCHD-T76', '2026-11-27T00:01:36Z', 'link', NULL, 'part-of MAT-T290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129109, 'MAT-T290', '2026-11-27T00:01:36Z', 'link', NULL, 'M.SCHD-T76 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129110, 'M.SCHD-T76', '2026-11-27T00:01:36Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129111, 'M.SCHD-T76', '2026-11-27T00:01:36Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129112, 'M.TIX-T384', '2026-11-27T00:01:37Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129113, 'M.TIX-T384', '2026-11-27T00:01:37Z', 'name', NULL, 'MindAttic.Tickets on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129114, 'M.TIX-T384', '2026-11-27T00:01:37Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129115, 'M.TIX-T384', '2026-11-27T00:01:38Z', 'link', NULL, 'part-of MAT-T290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129116, 'MAT-T290', '2026-11-27T00:01:38Z', 'link', NULL, 'M.TIX-T384 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129117, 'M.TIX-T384', '2026-11-27T00:01:38Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129118, 'M.TIX-T384', '2026-11-27T00:01:38Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129119, 'OC-T53', '2026-11-27T00:01:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129120, 'OC-T53', '2026-11-27T00:01:39Z', 'name', NULL, 'OpenCredentials on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129121, 'OC-T53', '2026-11-27T00:01:39Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129122, 'OC-T53', '2026-11-27T00:01:40Z', 'link', NULL, 'part-of MAT-T290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129123, 'MAT-T290', '2026-11-27T00:01:40Z', 'link', NULL, 'OC-T53 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129124, 'OC-T53', '2026-11-27T00:01:40Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129125, 'G.EZ-T140', '2026-11-27T00:01:40Z', 'working', 'ohleo199@mindattic.com (9aa417dc-00ec-48db-aaea-59ffddf8b7f3)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129126, 'GAD-T805', '2026-11-27T00:01:41Z', 'working', '5c87f115-96a3-43aa-8559-17d8764da8f6', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129127, 'OC-T53', '2026-11-27T00:01:41Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129128, 'GG-T1015', '2026-11-27T00:01:41Z', 'working', '6082ff94-ff59-4f19-92da-270fca91363e', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129129, 'GG-T1046', '2026-11-27T00:01:41Z', 'working', '6082ff94-ff59-4f19-92da-270fca91363e', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129130, 'GG-T1176', '2026-11-27T00:01:41Z', 'working', 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129131, 'GG-T1202', '2026-11-27T00:01:41Z', 'working', 'ohleo199@mindattic.com (e1bd5cdc-60d3-4e0e-8a84-21abd28f1dc5)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129132, 'GG-T578', '2026-11-27T00:01:41Z', 'working', 'pdftransferjr@mindattic.com (6082ff94-ff59-4f19-92da-270fca91363e)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129133, 'PRS-T1171', '2026-11-27T00:01:41Z', 'working', 'ohleo199@mindattic.com (9aa417dc-00ec-48db-aaea-59ffddf8b7f3)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129134, 'PL-T43', '2026-11-27T00:01:41Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129135, 'PL-T43', '2026-11-27T00:01:41Z', 'name', NULL, 'ProcessLogger on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129136, 'PRS-T14', '2026-11-27T00:01:41Z', 'working', 'ohleo199@mindattic.com (9aa417dc-00ec-48db-aaea-59ffddf8b7f3)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129137, 'PL-T43', '2026-11-27T00:01:41Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129138, 'PRS-T22', '2026-11-27T00:01:41Z', 'working', 'ohleo199@mindattic.com (9aa417dc-00ec-48db-aaea-59ffddf8b7f3)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129139, 'PRS-T3', '2026-11-27T00:01:42Z', 'working', 'ohleo199@mindattic.com (9aa417dc-00ec-48db-aaea-59ffddf8b7f3)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129140, 'TUT-T18', '2026-11-27T00:01:42Z', 'working', 'ohleo199@mindattic.com (9aa417dc-00ec-48db-aaea-59ffddf8b7f3)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129141, 'PL-T43', '2026-11-27T00:01:42Z', 'link', NULL, 'part-of MAT-T290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129142, 'MAT-T290', '2026-11-27T00:01:42Z', 'link', NULL, 'PL-T43 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129143, 'PL-T43', '2026-11-27T00:01:42Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129144, 'PL-T43', '2026-11-27T00:01:43Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129145, 'TRC-T99', '2026-11-27T00:01:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129146, 'TRC-T99', '2026-11-27T00:01:43Z', 'name', NULL, 'TaxRateCollector on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129147, 'TRC-T99', '2026-11-27T00:01:43Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129148, 'TRC-T99', '2026-11-27T00:01:44Z', 'link', NULL, 'part-of MAT-T290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129149, 'MAT-T290', '2026-11-27T00:01:44Z', 'link', NULL, 'TRC-T99 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129150, 'TRC-T99', '2026-11-27T00:01:44Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129151, 'TRC-T99', '2026-11-27T00:01:45Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129152, 'TT-T81', '2026-11-27T00:01:45Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129153, 'TT-T81', '2026-11-27T00:01:45Z', 'name', NULL, 'ThinkTank on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129154, 'TT-T81', '2026-11-27T00:01:45Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129155, 'TT-T81', '2026-11-27T00:01:46Z', 'link', NULL, 'part-of MAT-T290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129156, 'MAT-T290', '2026-11-27T00:01:46Z', 'link', NULL, 'TT-T81 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129157, 'TT-T81', '2026-11-27T00:01:46Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129158, 'TT-T81', '2026-11-27T00:01:46Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129159, 'TUT-T138', '2026-11-27T00:01:47Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129160, 'TUT-T138', '2026-11-27T00:01:47Z', 'name', NULL, 'Tutor on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129161, 'TUT-T138', '2026-11-27T00:01:47Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129162, 'TUT-T138', '2026-11-27T00:01:47Z', 'link', NULL, 'part-of MAT-T290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129163, 'MAT-T290', '2026-11-27T00:01:47Z', 'link', NULL, 'TUT-T138 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129164, 'TUT-T138', '2026-11-27T00:01:48Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129165, 'TUT-T138', '2026-11-27T00:01:48Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129166, 'UNS-T38', '2026-11-27T00:01:49Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129167, 'UNS-T38', '2026-11-27T00:01:49Z', 'name', NULL, 'Unstuck on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129168, 'UNS-T38', '2026-11-27T00:01:49Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129169, 'UNS-T38', '2026-11-27T00:01:49Z', 'link', NULL, 'part-of MAT-T290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129170, 'MAT-T290', '2026-11-27T00:01:49Z', 'link', NULL, 'UNS-T38 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129171, 'UNS-T38', '2026-11-27T00:01:49Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129172, 'UNS-T38', '2026-11-27T00:01:50Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129173, 'AUTO-T6', '2026-11-27T00:01:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129174, 'AUTO-T6', '2026-11-27T00:01:51Z', 'name', NULL, 'Auto.GamePlay on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129175, 'AUTO-T6', '2026-11-27T00:01:51Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129176, 'AUTO-T6', '2026-11-27T00:01:51Z', 'link', NULL, 'part-of MAT-T290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129177, 'MAT-T290', '2026-11-27T00:01:51Z', 'link', NULL, 'AUTO-T6 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129178, 'AUTO-T6', '2026-11-27T00:01:51Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129179, 'AUTO-T6', '2026-11-27T00:01:52Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129180, 'AES-T14', '2026-11-27T00:01:52Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129181, 'AES-T14', '2026-11-27T00:01:52Z', 'name', NULL, 'AES Debug and Release verified');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129182, 'AES-T14', '2026-11-27T00:01:53Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129183, 'AES-T14', '2026-11-27T00:01:53Z', 'link', NULL, 'part-of MAT-T290');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129184, 'MAT-T290', '2026-11-27T00:01:53Z', 'link', NULL, 'AES-T14 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129185, 'AES-T14', '2026-11-27T00:01:53Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129186, 'AES-T14', '2026-11-27T00:01:54Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129187, 'GGC-T41', '2026-11-27T00:01:54Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129188, 'GGC-T41', '2026-11-27T00:01:54Z', 'name', NULL, 'TownWalker on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129189, 'GGC-T41', '2026-11-27T00:01:55Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129190, 'GGC-T41', '2026-11-27T00:01:55Z', 'link', NULL, 'part-of MAT-T291');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129191, 'MAT-T291', '2026-11-27T00:01:55Z', 'link', NULL, 'GGC-T41 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129192, 'GGC-T41', '2026-11-27T00:01:55Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129193, 'GGC-T41', '2026-11-27T00:01:56Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129194, 'UC-T68', '2026-11-27T00:01:56Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129195, 'UC-T68', '2026-11-27T00:01:56Z', 'name', NULL, 'Unity.Cursory on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129196, 'UC-T68', '2026-11-27T00:01:57Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129197, 'UC-T68', '2026-11-27T00:01:57Z', 'link', NULL, 'part-of MAT-T291');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129198, 'MAT-T291', '2026-11-27T00:01:57Z', 'link', NULL, 'UC-T68 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129199, 'UC-T68', '2026-11-27T00:01:57Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129200, 'UC-T68', '2026-11-27T00:01:58Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129201, 'U.EVE-T58', '2026-11-27T00:01:58Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129202, 'U.EVE-T58', '2026-11-27T00:01:58Z', 'name', NULL, 'Unity.Eve on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129203, 'U.EVE-T58', '2026-11-27T00:01:58Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129204, 'U.EVE-T58', '2026-11-27T00:02:14Z', 'link', NULL, 'part-of MAT-T291');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129205, 'MAT-T291', '2026-11-27T00:02:14Z', 'link', NULL, 'U.EVE-T58 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129206, 'U.EVE-T58', '2026-11-27T00:02:14Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129207, 'U.EVE-T58', '2026-11-27T00:02:15Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129208, 'U.CHN-T118', '2026-11-27T00:02:16Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129209, 'U.CHN-T118', '2026-11-27T00:02:16Z', 'name', NULL, 'Unity.Rea.Chain on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129210, 'U.CHN-T118', '2026-11-27T00:02:16Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129211, 'U.CHN-T118', '2026-11-27T00:02:16Z', 'link', NULL, 'part-of MAT-T291');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129212, 'MAT-T291', '2026-11-27T00:02:16Z', 'link', NULL, 'U.CHN-T118 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129213, 'U.CHN-T118', '2026-11-27T00:02:16Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129214, 'U.CHN-T118', '2026-11-27T00:02:17Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129215, 'U.HARE-T137', '2026-11-27T00:02:18Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129216, 'U.HARE-T137', '2026-11-27T00:02:18Z', 'name', NULL, 'Unity.Rea.Hare on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129217, 'U.HARE-T137', '2026-11-27T00:02:18Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129218, 'U.HARE-T137', '2026-11-27T00:02:18Z', 'link', NULL, 'part-of MAT-T291');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129219, 'MAT-T291', '2026-11-27T00:02:18Z', 'link', NULL, 'U.HARE-T137 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129220, 'U.HARE-T137', '2026-11-27T00:02:19Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129221, 'U.HARE-T137', '2026-11-27T00:02:19Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129222, 'U.INC-T62', '2026-11-27T00:02:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129223, 'U.INC-T62', '2026-11-27T00:02:20Z', 'name', NULL, 'Unity.Rea.Incognito on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129224, 'U.INC-T62', '2026-11-27T00:02:20Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129225, 'U.INC-T62', '2026-11-27T00:02:20Z', 'link', NULL, 'part-of MAT-T291');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129226, 'MAT-T291', '2026-11-27T00:02:20Z', 'link', NULL, 'U.INC-T62 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129227, 'U.INC-T62', '2026-11-27T00:02:21Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129228, 'U.INC-T62', '2026-11-27T00:02:21Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129229, 'U.OVW-T108', '2026-11-27T00:02:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129230, 'U.OVW-T108', '2026-11-27T00:02:22Z', 'name', NULL, 'Unity.Rea.Overworld on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129231, 'U.OVW-T108', '2026-11-27T00:02:22Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129232, 'U.OVW-T108', '2026-11-27T00:02:22Z', 'link', NULL, 'part-of MAT-T291');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129233, 'MAT-T291', '2026-11-27T00:02:22Z', 'link', NULL, 'U.OVW-T108 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129234, 'U.OVW-T108', '2026-11-27T00:02:22Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129235, 'U.OVW-T108', '2026-11-27T00:02:23Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129236, 'U.VAN-T45', '2026-11-27T00:02:24Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129237, 'U.VAN-T45', '2026-11-27T00:02:24Z', 'name', NULL, 'Unity.Rea.ProjectVania on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129238, 'U.VAN-T45', '2026-11-27T00:02:24Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129239, 'U.VAN-T45', '2026-11-27T00:02:24Z', 'link', NULL, 'part-of MAT-T291');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129240, 'MAT-T291', '2026-11-27T00:02:24Z', 'link', NULL, 'U.VAN-T45 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129241, 'U.VAN-T45', '2026-11-27T00:02:24Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129242, 'U.VAN-T45', '2026-11-27T00:02:25Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129243, 'U.RICO-T174', '2026-11-27T00:02:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129244, 'U.RICO-T174', '2026-11-27T00:02:26Z', 'name', NULL, 'Unity.Rea.Ricochet on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129245, 'U.RICO-T174', '2026-11-27T00:02:26Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129246, 'U.RICO-T174', '2026-11-27T00:02:27Z', 'link', NULL, 'part-of MAT-T291');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129247, 'MAT-T291', '2026-11-27T00:02:27Z', 'link', NULL, 'U.RICO-T174 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129248, 'U.RICO-T174', '2026-11-27T00:02:27Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129249, 'U.RICO-T174', '2026-11-27T00:02:28Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129250, 'U.SPC-T645', '2026-11-27T00:02:28Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129251, 'U.SPC-T645', '2026-11-27T00:02:28Z', 'name', NULL, 'Unity.SpaceGod on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129252, 'U.SPC-T645', '2026-11-27T00:02:28Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129253, 'U.SPC-T645', '2026-11-27T00:02:29Z', 'link', NULL, 'part-of MAT-T291');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129254, 'MAT-T291', '2026-11-27T00:02:29Z', 'link', NULL, 'U.SPC-T645 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129255, 'U.SPC-T645', '2026-11-27T00:02:29Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129256, 'U.SPC-T645', '2026-11-27T00:02:29Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129257, 'U.RON-T33', '2026-11-27T00:02:30Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129258, 'U.RON-T33', '2026-11-27T00:02:30Z', 'name', NULL, 'UnityRonin on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129259, 'U.RON-T33', '2026-11-27T00:02:30Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129260, 'U.RON-T33', '2026-11-27T00:02:30Z', 'link', NULL, 'part-of MAT-T291');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129261, 'MAT-T291', '2026-11-27T00:02:31Z', 'link', NULL, 'U.RON-T33 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129262, 'U.RON-T33', '2026-11-27T00:02:31Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129263, 'U.RON-T33', '2026-11-27T00:02:31Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129264, 'UQD-T102', '2026-11-27T00:02:32Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129265, 'UQD-T102', '2026-11-27T00:02:32Z', 'name', NULL, 'QuickDuel Debug and Release verified');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129266, 'UQD-T102', '2026-11-27T00:02:32Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129267, 'UQD-T102', '2026-11-27T00:02:32Z', 'link', NULL, 'part-of MAT-T291');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129268, 'MAT-T291', '2026-11-27T00:02:32Z', 'link', NULL, 'UQD-T102 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129269, 'UQD-T102', '2026-11-27T00:02:33Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129270, 'UQD-T102', '2026-11-27T00:02:33Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129271, 'UE-T77', '2026-11-27T00:02:34Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129272, 'UE-T77', '2026-11-27T00:02:34Z', 'name', NULL, 'Unreal.Eve on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129273, 'UE-T77', '2026-11-27T00:02:34Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129274, 'UE-T77', '2026-11-27T00:02:34Z', 'link', NULL, 'part-of MAT-T292');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129275, 'MAT-T292', '2026-11-27T00:02:34Z', 'link', NULL, 'UE-T77 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129276, 'UE-T77', '2026-11-27T00:02:35Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129277, 'UE-T77', '2026-11-27T00:02:35Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129278, 'UNR-T127', '2026-11-27T00:02:36Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129279, 'UNR-T127', '2026-11-27T00:02:36Z', 'name', NULL, 'Unreal.Playground on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129280, 'UNR-T127', '2026-11-27T00:02:36Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129281, 'UNR-T127', '2026-11-27T00:02:36Z', 'link', NULL, 'part-of MAT-T292');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129282, 'MAT-T292', '2026-11-27T00:02:36Z', 'link', NULL, 'UNR-T127 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129283, 'UNR-T127', '2026-11-27T00:02:36Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129284, 'UNR-T127', '2026-11-27T00:02:37Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129285, 'JFP-T31', '2026-11-27T00:02:38Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129286, 'JFP-T31', '2026-11-27T00:02:38Z', 'name', NULL, 'JellyFinPoster deploy plan');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129287, 'JFP-T31', '2026-11-27T00:02:38Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129288, 'JFP-T31', '2026-11-27T00:02:38Z', 'link', NULL, 'part-of MAT-T293');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129289, 'MAT-T293', '2026-11-27T00:02:38Z', 'link', NULL, 'JFP-T31 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129290, 'JFP-T31', '2026-11-27T00:02:38Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129291, 'JFP-T31', '2026-11-27T00:02:39Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129292, 'RB-T305', '2026-11-27T00:02:39Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129293, 'RB-T305', '2026-11-27T00:02:39Z', 'name', NULL, 'Bloodlines exports on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129294, 'RB-T305', '2026-11-27T00:02:40Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129295, 'RB-T305', '2026-11-27T00:02:40Z', 'link', NULL, 'part-of MAT-T293');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129296, 'MAT-T293', '2026-11-27T00:02:40Z', 'link', NULL, 'RB-T305 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129297, 'RB-T305', '2026-11-27T00:02:40Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129298, 'RB-T305', '2026-11-27T00:02:41Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129299, 'M5SE-T163', '2026-11-27T00:02:41Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129300, 'M5SE-T163', '2026-11-27T00:02:41Z', 'name', NULL, 'MW5 SaveEditor on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129301, 'M5SE-T163', '2026-11-27T00:02:41Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129302, 'M5SE-T163', '2026-11-27T00:02:42Z', 'link', NULL, 'part-of MAT-T318');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129303, 'MAT-T318', '2026-11-27T00:02:42Z', 'link', NULL, 'M5SE-T163 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129304, 'M5SE-T163', '2026-11-27T00:02:42Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129305, 'M5SE-T163', '2026-11-27T00:02:43Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129306, 'RTB-T276', '2026-11-27T00:02:43Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129307, 'RTB-T276', '2026-11-27T00:02:43Z', 'name', NULL, 'Brevity tools on R:');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129308, 'RTB-T276', '2026-11-27T00:02:43Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129309, 'RTB-T276', '2026-11-27T00:02:44Z', 'link', NULL, 'part-of MAT-T318');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129310, 'MAT-T318', '2026-11-27T00:02:44Z', 'link', NULL, 'RTB-T276 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129311, 'RTB-T276', '2026-11-27T00:02:44Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129312, 'RTB-T276', '2026-11-27T00:02:44Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129313, 'MAT-T318', '2026-11-27T00:02:48Z', 'working', '8b26624c-b794-4842-a4ae-87041419b1a9', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129314, 'AUT-T51', '2026-11-27T00:02:51Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129315, 'AUT-T51', '2026-11-27T00:02:51Z', 'name', NULL, 'Automata C: cleanup');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129316, 'AUT-T51', '2026-11-27T00:02:51Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129317, 'AUT-T51', '2026-11-27T00:02:51Z', 'link', NULL, 'part-of MAT-T261');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129318, 'MAT-T261', '2026-11-27T00:02:51Z', 'link', NULL, 'AUT-T51 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129319, 'AUT-T51', '2026-11-27T00:02:51Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129320, 'AUT-T51', '2026-11-27T00:02:52Z', 'priority', '0', '350');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129321, 'IDEA-T90', '2026-11-27T00:02:53Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129322, 'IDEA-T90', '2026-11-27T00:02:53Z', 'name', NULL, 'IdeaCms C: cleanup');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129323, 'IDEA-T90', '2026-11-27T00:02:53Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129324, 'IDEA-T90', '2026-11-27T00:02:53Z', 'link', NULL, 'part-of MAT-T261');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129325, 'MAT-T261', '2026-11-27T00:02:53Z', 'link', NULL, 'IDEA-T90 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129326, 'IDEA-T90', '2026-11-27T00:02:53Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129327, 'IDEA-T90', '2026-11-27T00:02:54Z', 'priority', '0', '350');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129328, 'JH-T43', '2026-11-27T00:02:54Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129329, 'JH-T43', '2026-11-27T00:02:54Z', 'name', NULL, 'JobHunt C: cleanup');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129330, 'JH-T43', '2026-11-27T00:02:55Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129331, 'JH-T43', '2026-11-27T00:02:55Z', 'link', NULL, 'part-of MAT-T261');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129332, 'MAT-T261', '2026-11-27T00:02:55Z', 'link', NULL, 'JH-T43 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129333, 'JH-T43', '2026-11-27T00:02:55Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129334, 'JH-T43', '2026-11-27T00:02:56Z', 'priority', '0', '350');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129335, 'KP-T41', '2026-11-27T00:02:57Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129336, 'KP-T41', '2026-11-27T00:02:57Z', 'name', NULL, 'KdpPublish C: cleanup');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129337, 'KP-T41', '2026-11-27T00:02:57Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129338, 'KP-T41', '2026-11-27T00:02:57Z', 'link', NULL, 'part-of MAT-T261');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129339, 'MAT-T261', '2026-11-27T00:02:57Z', 'link', NULL, 'KP-T41 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129340, 'KP-T41', '2026-11-27T00:02:57Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129341, 'KP-T41', '2026-11-27T00:02:58Z', 'priority', '0', '350');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129342, 'M.CAPT-T229', '2026-11-27T00:02:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129343, 'M.CAPT-T229', '2026-11-27T00:02:59Z', 'name', NULL, 'Capture C: cleanup');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129344, 'M.CAPT-T229', '2026-11-27T00:02:59Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129345, 'M.CAPT-T229', '2026-11-27T00:02:59Z', 'link', NULL, 'part-of MAT-T261');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129346, 'MAT-T261', '2026-11-27T00:02:59Z', 'link', NULL, 'M.CAPT-T229 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129347, 'M.CAPT-T229', '2026-11-27T00:02:59Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129348, 'M.CAPT-T229', '2026-11-27T00:03:00Z', 'priority', '0', '350');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129349, 'M.MVIEW-T40', '2026-11-27T00:03:00Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129350, 'M.MVIEW-T40', '2026-11-27T00:03:00Z', 'name', NULL, 'Viewer C: cleanup');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129351, 'M.MVIEW-T40', '2026-11-27T00:03:01Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129352, 'M.MVIEW-T40', '2026-11-27T00:03:01Z', 'link', NULL, 'part-of MAT-T261');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129353, 'MAT-T261', '2026-11-27T00:03:01Z', 'link', NULL, 'M.MVIEW-T40 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129354, 'M.MVIEW-T40', '2026-11-27T00:03:01Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129355, 'M.MVIEW-T40', '2026-11-27T00:03:02Z', 'priority', '0', '350');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129356, 'M.SCHD-T77', '2026-11-27T00:03:02Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129357, 'M.SCHD-T77', '2026-11-27T00:03:02Z', 'name', NULL, 'Scheduler C: cleanup');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129358, 'M.SCHD-T77', '2026-11-27T00:03:02Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129359, 'M.SCHD-T77', '2026-11-27T00:03:03Z', 'link', NULL, 'part-of MAT-T261');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129360, 'MAT-T261', '2026-11-27T00:03:03Z', 'link', NULL, 'M.SCHD-T77 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129361, 'M.SCHD-T77', '2026-11-27T00:03:03Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129362, 'M.SCHD-T77', '2026-11-27T00:03:04Z', 'priority', '0', '350');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129363, 'M.TIX-T385', '2026-11-27T00:03:05Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129364, 'M.TIX-T385', '2026-11-27T00:03:05Z', 'name', NULL, 'Tickets C: cleanup');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129365, 'M.TIX-T385', '2026-11-27T00:03:05Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129366, 'M.TIX-T385', '2026-11-27T00:03:05Z', 'link', NULL, 'part-of MAT-T261');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129367, 'MAT-T261', '2026-11-27T00:03:05Z', 'link', NULL, 'M.TIX-T385 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129368, 'M.TIX-T385', '2026-11-27T00:03:05Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129369, 'M.TIX-T385', '2026-11-27T00:03:06Z', 'priority', '0', '350');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129370, 'M5SE-T164', '2026-11-27T00:03:14Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129371, 'M5SE-T164', '2026-11-27T00:03:14Z', 'name', NULL, 'MW5 SaveEditor C: cleanup');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129372, 'M5SE-T164', '2026-11-27T00:03:14Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129373, 'M5SE-T164', '2026-11-27T00:03:15Z', 'link', NULL, 'part-of MAT-T261');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129374, 'MAT-T261', '2026-11-27T00:03:15Z', 'link', NULL, 'M5SE-T164 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129375, 'M5SE-T164', '2026-11-27T00:03:15Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129376, 'M5SE-T164', '2026-11-27T00:03:16Z', 'priority', '0', '350');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129377, 'PL-T44', '2026-11-27T00:03:16Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129378, 'PL-T44', '2026-11-27T00:03:16Z', 'name', NULL, 'ProcessLogger C: cleanup');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129379, 'PL-T44', '2026-11-27T00:03:16Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129380, 'PL-T44', '2026-11-27T00:03:17Z', 'link', NULL, 'part-of MAT-T261');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129381, 'MAT-T261', '2026-11-27T00:03:17Z', 'link', NULL, 'PL-T44 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129382, 'PL-T44', '2026-11-27T00:03:17Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129383, 'PL-T44', '2026-11-27T00:03:18Z', 'priority', '0', '350');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129384, 'PRS-T1174', '2026-11-27T00:03:18Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129385, 'PRS-T1174', '2026-11-27T00:03:18Z', 'name', NULL, 'Prose C: cleanup');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129386, 'PRS-T1174', '2026-11-27T00:03:18Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129387, 'PRS-T1174', '2026-11-27T00:03:19Z', 'link', NULL, 'part-of MAT-T261');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129388, 'MAT-T261', '2026-11-27T00:03:19Z', 'link', NULL, 'PRS-T1174 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129389, 'PRS-T1174', '2026-11-27T00:03:19Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129390, 'PRS-T1174', '2026-11-27T00:03:19Z', 'priority', '0', '350');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129391, 'RB-T306', '2026-11-27T00:03:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129392, 'RB-T306', '2026-11-27T00:03:20Z', 'name', NULL, 'Bloodlines C: cleanup');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129393, 'RB-T306', '2026-11-27T00:03:20Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129394, 'RB-T306', '2026-11-27T00:03:20Z', 'link', NULL, 'part-of MAT-T261');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129395, 'MAT-T261', '2026-11-27T00:03:21Z', 'link', NULL, 'RB-T306 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129396, 'RB-T306', '2026-11-27T00:03:21Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129397, 'RB-T306', '2026-11-27T00:03:21Z', 'priority', '0', '350');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129398, 'U.CHN-T119', '2026-11-27T00:03:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129399, 'U.CHN-T119', '2026-11-27T00:03:22Z', 'name', NULL, 'Chain C: cleanup');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129400, 'U.CHN-T119', '2026-11-27T00:03:22Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129401, 'U.CHN-T119', '2026-11-27T00:03:22Z', 'link', NULL, 'part-of MAT-T261');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129402, 'MAT-T261', '2026-11-27T00:03:22Z', 'link', NULL, 'U.CHN-T119 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129403, 'U.CHN-T119', '2026-11-27T00:03:23Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129404, 'U.CHN-T119', '2026-11-27T00:03:23Z', 'priority', '0', '350');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129405, 'UC-T69', '2026-11-27T00:03:24Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129406, 'UC-T69', '2026-11-27T00:03:24Z', 'name', NULL, 'Unity.Cursory C: cleanup');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129407, 'UC-T69', '2026-11-27T00:03:24Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129408, 'UC-T69', '2026-11-27T00:03:24Z', 'link', NULL, 'part-of MAT-T261');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129409, 'MAT-T261', '2026-11-27T00:03:24Z', 'link', NULL, 'UC-T69 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129410, 'UC-T69', '2026-11-27T00:03:24Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129411, 'UC-T69', '2026-11-27T00:03:25Z', 'priority', '0', '350');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129412, 'U.EVE-T59', '2026-11-27T00:03:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129413, 'U.EVE-T59', '2026-11-27T00:03:26Z', 'name', NULL, 'Unity.Eve C: cleanup');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129414, 'U.EVE-T59', '2026-11-27T00:03:26Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129415, 'U.EVE-T59', '2026-11-27T00:03:26Z', 'link', NULL, 'part-of MAT-T261');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129416, 'MAT-T261', '2026-11-27T00:03:26Z', 'link', NULL, 'U.EVE-T59 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129417, 'U.EVE-T59', '2026-11-27T00:03:26Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129418, 'U.EVE-T59', '2026-11-27T00:03:27Z', 'priority', '0', '350');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129419, 'U.SPC-T646', '2026-11-27T00:03:28Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129420, 'U.SPC-T646', '2026-11-27T00:03:28Z', 'name', NULL, 'Unity.SpaceGod C: cleanup');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129421, 'U.SPC-T646', '2026-11-27T00:03:28Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129422, 'U.SPC-T646', '2026-11-27T00:03:29Z', 'link', NULL, 'part-of MAT-T261');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129423, 'MAT-T261', '2026-11-27T00:03:29Z', 'link', NULL, 'U.SPC-T646 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129424, 'U.SPC-T646', '2026-11-27T00:03:29Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129425, 'U.SPC-T646', '2026-11-27T00:03:30Z', 'priority', '0', '350');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129426, 'UE-T78', '2026-11-27T00:03:30Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129427, 'UE-T78', '2026-11-27T00:03:30Z', 'name', NULL, 'Unreal.Eve C: cleanup');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129428, 'UE-T78', '2026-11-27T00:03:30Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129429, 'UE-T78', '2026-11-27T00:03:31Z', 'link', NULL, 'part-of MAT-T261');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129430, 'MAT-T261', '2026-11-27T00:03:31Z', 'link', NULL, 'UE-T78 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129431, 'UE-T78', '2026-11-27T00:03:31Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129432, 'UE-T78', '2026-11-27T00:03:32Z', 'priority', '0', '350');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129433, 'UNS-T39', '2026-11-27T00:03:32Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129434, 'UNS-T39', '2026-11-27T00:03:32Z', 'name', NULL, 'Unstuck C: cleanup');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129435, 'UNS-T39', '2026-11-27T00:03:32Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129436, 'UNS-T39', '2026-11-27T00:03:32Z', 'link', NULL, 'part-of MAT-T261');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129437, 'MAT-T261', '2026-11-27T00:03:33Z', 'link', NULL, 'UNS-T39 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129438, 'UNS-T39', '2026-11-27T00:03:33Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129439, 'UNS-T39', '2026-11-27T00:03:33Z', 'priority', '0', '350');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129440, 'AUT-T51', '2026-11-27T00:03:45Z', 'link', NULL, 'requires AUT-T50');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129441, 'AUT-T50', '2026-11-27T00:03:45Z', 'link', NULL, 'AUT-T51 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129442, 'IDEA-T90', '2026-11-27T00:03:46Z', 'link', NULL, 'requires IDEA-T89');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129443, 'IDEA-T89', '2026-11-27T00:03:46Z', 'link', NULL, 'IDEA-T90 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129444, 'JH-T43', '2026-11-27T00:03:47Z', 'link', NULL, 'requires JH-T42');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129445, 'JH-T42', '2026-11-27T00:03:47Z', 'link', NULL, 'JH-T43 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129446, 'KP-T41', '2026-11-27T00:03:48Z', 'link', NULL, 'requires KP-T40');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129447, 'KP-T40', '2026-11-27T00:03:48Z', 'link', NULL, 'KP-T41 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129448, 'M.CAPT-T229', '2026-11-27T00:03:49Z', 'link', NULL, 'requires M.CAPT-T228');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129449, 'M.CAPT-T228', '2026-11-27T00:03:50Z', 'link', NULL, 'M.CAPT-T229 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129450, 'M.MVIEW-T40', '2026-11-27T00:03:51Z', 'link', NULL, 'requires M.MVIEW-T39');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129451, 'M.MVIEW-T39', '2026-11-27T00:03:51Z', 'link', NULL, 'M.MVIEW-T40 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129452, 'M.SCHD-T77', '2026-11-27T00:03:52Z', 'link', NULL, 'requires M.SCHD-T76');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129453, 'M.SCHD-T76', '2026-11-27T00:03:52Z', 'link', NULL, 'M.SCHD-T77 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129454, 'M.TIX-T385', '2026-11-27T00:03:53Z', 'link', NULL, 'requires M.TIX-T384');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129455, 'M.TIX-T384', '2026-11-27T00:03:53Z', 'link', NULL, 'M.TIX-T385 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129456, 'M5SE-T164', '2026-11-27T00:03:54Z', 'link', NULL, 'requires M5SE-T163');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129457, 'M5SE-T163', '2026-11-27T00:03:54Z', 'link', NULL, 'M5SE-T164 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129458, 'PL-T44', '2026-11-27T00:03:55Z', 'link', NULL, 'requires PL-T43');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129459, 'PL-T43', '2026-11-27T00:03:55Z', 'link', NULL, 'PL-T44 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129460, 'PRS-T1174', '2026-11-27T00:03:56Z', 'link', NULL, 'requires PRS-T1133');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129461, 'PRS-T1133', '2026-11-27T00:03:56Z', 'link', NULL, 'PRS-T1174 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129462, 'PRS-T1174', '2026-11-27T00:03:57Z', 'link', NULL, 'requires PRS-T1134');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129463, 'PRS-T1134', '2026-11-27T00:03:57Z', 'link', NULL, 'PRS-T1174 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129464, 'RB-T306', '2026-11-27T00:03:58Z', 'link', NULL, 'requires RB-T305');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129465, 'RB-T305', '2026-11-27T00:03:58Z', 'link', NULL, 'RB-T306 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129466, 'U.CHN-T119', '2026-11-27T00:03:59Z', 'link', NULL, 'requires U.CHN-T118');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129467, 'U.CHN-T118', '2026-11-27T00:03:59Z', 'link', NULL, 'U.CHN-T119 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129468, 'UC-T69', '2026-11-27T00:04:00Z', 'link', NULL, 'requires UC-T68');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129469, 'UC-T68', '2026-11-27T00:04:00Z', 'link', NULL, 'UC-T69 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129470, 'U.EVE-T59', '2026-11-27T00:04:01Z', 'link', NULL, 'requires U.EVE-T58');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129471, 'U.EVE-T58', '2026-11-27T00:04:01Z', 'link', NULL, 'U.EVE-T59 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129472, 'U.SPC-T646', '2026-11-27T00:04:02Z', 'link', NULL, 'requires U.SPC-T645');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129473, 'U.SPC-T645', '2026-11-27T00:04:02Z', 'link', NULL, 'U.SPC-T646 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129474, 'UE-T78', '2026-11-27T00:04:03Z', 'link', NULL, 'requires UE-T77');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129475, 'UE-T77', '2026-11-27T00:04:03Z', 'link', NULL, 'UE-T78 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129476, 'UNS-T39', '2026-11-27T00:04:04Z', 'link', NULL, 'requires UNS-T38');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129477, 'UNS-T38', '2026-11-27T00:04:04Z', 'link', NULL, 'UNS-T39 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129478, 'M.LNCH-T146', '2026-11-27T00:04:06Z', 'link', NULL, 'requires M.LNCH-T150');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129479, 'M.LNCH-T150', '2026-11-27T00:04:06Z', 'link', NULL, 'M.LNCH-T146 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129480, 'PRS-T1133', '2026-11-27T00:04:07Z', 'link', NULL, 'part-of MAT-T293');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129481, 'MAT-T293', '2026-11-27T00:04:07Z', 'link', NULL, 'PRS-T1133 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129482, 'PRS-T1133', '2026-11-27T00:04:08Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129483, 'PRS-T1133', '2026-11-27T00:04:08Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129484, 'PRS-T1134', '2026-11-27T00:04:09Z', 'link', NULL, 'part-of MAT-T293');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129485, 'MAT-T293', '2026-11-27T00:04:09Z', 'link', NULL, 'PRS-T1134 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129486, 'PRS-T1134', '2026-11-27T00:04:10Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129487, 'PRS-T1134', '2026-11-27T00:04:10Z', 'priority', '0', '360');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129488, 'PRS-T1134', '2026-11-27T00:04:24Z', 'link', NULL, 'requires PRS-T1133');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129489, 'PRS-T1133', '2026-11-27T00:04:24Z', 'link', NULL, 'PRS-T1134 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129490, 'PRS-T1133', '2026-11-27T00:04:25Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129491, 'PRS-T1134', '2026-11-27T00:04:25Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129492, 'MAT-T294', '2026-11-27T00:04:26Z', 'link', NULL, 'requires PRS-T1174');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129493, 'PRS-T1174', '2026-11-27T00:04:26Z', 'link', NULL, 'MAT-T294 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129494, 'SET-T57', '2026-11-27T00:06:16Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129495, 'SET-T57', '2026-11-27T00:06:16Z', 'ref', '—', '0a39f4e');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129496, 'SET-T58', '2026-11-27T00:06:17Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129497, 'SET-T58', '2026-11-27T00:06:17Z', 'ref', '—', '4bccf5b');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129498, 'SET-T15', '2026-11-27T00:06:18Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129499, 'SET-T15', '2026-11-27T00:06:18Z', 'ref', 'Requires SET-T14; supersedes SET-T12 with the order corrected (references retargeted before the agrarian chapter is removed)', 'children done');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129500, 'SET-T15', '2026-11-27T00:06:18Z', 'rollup', NULL, 'SET-T58');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129501, 'PRS-T1170', '2026-11-27T00:06:33Z', 'label', 'level:task', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129502, 'PRS-T1170', '2026-11-27T00:06:33Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129503, 'PRS-T1175', '2026-11-27T00:06:34Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129504, 'PRS-T1175', '2026-11-27T00:06:34Z', 'link', NULL, 'part-of PRS-T1170');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129505, 'PRS-T1170', '2026-11-27T00:06:34Z', 'link', NULL, 'PRS-T1175 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129506, 'PRS-T1175', '2026-11-27T00:06:34Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129507, 'PRS-T1175', '2026-11-27T00:06:34Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129508, 'SET-T57', '2026-11-27T00:06:36Z', 'working', 'ohleo199@mindattic.com (9aa417dc-00ec-48db-aaea-59ffddf8b7f3)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129509, 'SET-T58', '2026-11-27T00:06:36Z', 'working', '9aa417dc-00ec-48db-aaea-59ffddf8b7f3', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129510, 'PRS-T1170', '2026-11-27T00:07:04Z', 'working', 'ohleo199@mindattic.com (9aa417dc-00ec-48db-aaea-59ffddf8b7f3)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129511, 'PRS-T1175', '2026-11-27T00:07:19Z', 'working', NULL, 'ohleo199@mindattic.com (9aa417dc-00ec-48db-aaea-59ffddf8b7f3)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129512, 'PRS-T1173', '2026-11-27T00:07:20Z', 'working', NULL, 'ohleo199@mindattic.com (9aa417dc-00ec-48db-aaea-59ffddf8b7f3)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129513, 'PRS-T1168', '2026-11-27T00:07:20Z', 'working', NULL, 'ohleo199@mindattic.com (9aa417dc-00ec-48db-aaea-59ffddf8b7f3)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129514, 'PRS-T1168', '2026-11-27T00:07:25Z', 'working', 'ohleo199@mindattic.com (9aa417dc-00ec-48db-aaea-59ffddf8b7f3)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129515, 'PRS-T1168', '2026-11-27T00:07:39Z', 'working', NULL, 'ohleo199@mindattic.com (9aa417dc-00ec-48db-aaea-59ffddf8b7f3)');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AES-T10', 'proposed', 380, '2026-11-24T19:47:20Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AES-T11', 'approved', 390, '2026-11-24T21:22:42Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AES-T12', 'approved', 350, '2026-11-26T06:02:47Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AES-T13', 'approved', 0, '2026-11-26T10:53:49Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AES-T14', 'approved', 360, '2026-11-27T00:01:54Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AES-T5', 'proposed', 300, '2026-11-24T19:47:15Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AES-T6', 'proposed', 390, '2026-11-24T19:47:16Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AES-T7', 'proposed', 390, '2026-11-24T19:47:17Z', NULL);
@@ -124864,6 +125448,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AGP-T9', 'approved', 0, '2026-10-28T03:55:07Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUTO-T4', 'approved', 0, '2026-11-24T16:25:46Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUTO-T5', 'approved', 0, '2026-11-24T16:25:46Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUTO-T6', 'approved', 360, '2026-11-27T00:01:52Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T14', 'approved', 5, '2026-10-21T04:35:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T15', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T16', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
@@ -124875,6 +125460,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T38', 'approved', 0, '2026-11-24T16:25:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T39', 'approved', 0, '2026-11-24T16:25:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T40', 'approved', 0, '2026-11-24T20:33:10Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T50', 'approved', 360, '2026-11-27T00:01:06Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AUT-T51', 'approved', 350, '2026-11-27T00:02:52Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AWN-T10', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AWN-T11', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AWN-T12', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
@@ -124964,6 +125551,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('CUR-T15', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('CUR-T18', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('CUR-T19', 'approved', 0, '2026-10-31T14:50:36Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('CUR-T35', 'approved', 360, '2026-11-27T00:01:09Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('ET-T12', 'approved', 871, '2026-11-20T22:53:50Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('ET-T13', 'approved', 870, '2026-11-20T22:53:52Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('ET-T14', 'approved', 869, '2026-11-20T22:53:54Z', NULL);
@@ -124980,6 +125568,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('FOR-T37', 'approved', 0, '2026-11-25T19:39:17Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('FOR-T38', 'approved', 0, '2026-11-25T19:39:18Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('FOR-T39', 'approved', 0, '2026-11-26T10:51:14Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('FOR-T40', 'approved', 360, '2026-11-27T00:01:11Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('G.AWPN-T10', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('G.AWPN-T11', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('G.AWPN-T127', 'approved', 0, '2026-10-18T17:51:33Z', NULL);
@@ -125548,6 +126137,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T802', 'approved', 0, '2026-11-26T20:56:47Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T803', 'approved', 0, '2026-11-26T20:56:48Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T805', 'approved', 0, '2026-11-26T23:58:03Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T806', 'approved', 360, '2026-11-27T00:01:14Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T81', 'proposed', 989, '2026-11-21T00:49:05Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T82', 'proposed', 988, '2026-11-21T00:49:25Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T83', 'proposed', 987, '2026-11-21T00:49:47Z', NULL);
@@ -125587,6 +126177,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GGC-T23', 'approved', 0, '2026-10-21T03:21:41Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GGC-T39', 'approved', 0, '2026-11-24T16:25:31Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GGC-T40', 'approved', 0, '2026-11-24T16:25:31Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GGC-T41', 'approved', 360, '2026-11-27T00:01:56Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GGS-T10', 'approved', 0, '2026-11-22T02:33:36Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GGS-T11', 'approved', 0, '2026-11-22T02:33:37Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GGS-T12', 'approved', 0, '2026-11-22T02:33:38Z', NULL);
@@ -126362,6 +126953,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IDEA-T77', 'approved', 0, '2026-11-25T19:39:25Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IDEA-T79', 'approved', 0, '2026-11-26T12:25:09Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IDEA-T80', 'proposed', 884, '2026-11-26T14:50:46Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IDEA-T89', 'approved', 360, '2026-11-27T00:01:16Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IDEA-T90', 'approved', 350, '2026-11-27T00:02:54Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T10', 'approved', 0, '2026-10-31T03:58:00Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T100', 'proposed', 1191, '2026-10-30T19:27:56Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('IP-T101', 'approved', 1190, '2026-10-31T02:56:20Z', NULL);
@@ -126761,6 +127354,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('JFP-T15', 'approved', 0, '2026-10-21T04:47:33Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('JFP-T19', 'approved', 0, '2026-10-31T14:50:42Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('JFP-T3', 'approved', 5, '2026-10-21T04:35:32Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('JFP-T31', 'approved', 360, '2026-11-27T00:02:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('JFP-T4', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('JFP-T5', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('JFP-T6', 'approved', 0, '2026-10-18T08:37:29Z', NULL);
@@ -126779,11 +127373,15 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('JH-T38', 'approved', 0, '2026-11-26T15:45:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('JH-T39', 'approved', 0, '2026-11-26T15:45:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('JH-T40', 'approved', 0, '2026-11-26T15:45:42Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('JH-T42', 'approved', 360, '2026-11-27T00:01:20Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('JH-T43', 'approved', 350, '2026-11-27T00:02:56Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('KP-T10', 'approved', 5, '2026-10-21T04:35:33Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('KP-T11', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('KP-T12', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('KP-T13', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('KP-T17', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('KP-T40', 'approved', 360, '2026-11-27T00:01:22Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('KP-T41', 'approved', 350, '2026-11-27T00:02:58Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.AUTH-T14', 'approved', 5, '2026-10-21T04:35:34Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.AUTH-T15', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.AUTH-T16', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
@@ -126889,6 +127487,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T221', 'approved', 0, '2026-11-26T15:36:14Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T226', 'proposed', 882, '2026-11-26T19:11:36Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T227', 'proposed', 881, '2026-11-26T19:11:37Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T228', 'approved', 360, '2026-11-27T00:01:30Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T229', 'approved', 350, '2026-11-27T00:03:00Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T23', 'approved', 0, '2026-10-16T22:46:04Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T24', 'approved', 0, '2026-10-16T22:46:04Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.CAPT-T25', 'approved', 0, '2026-10-16T22:46:04Z', NULL);
@@ -127007,6 +127607,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.DPLY-T11', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.DPLY-T12', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.DPLY-T16', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.DPLY-T39', 'approved', 360, '2026-11-27T00:01:28Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.DPLY-T9', 'approved', 5, '2026-10-21T04:35:35Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.EXPT-T10', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.EXPT-T3', 'approved', 5, '2026-10-21T04:35:35Z', NULL);
@@ -127056,6 +127657,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T145', 'approved', 360, '2026-11-26T06:02:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T146', 'approved', 350, '2026-11-26T06:02:45Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T15', 'approved', 0, '2026-10-23T19:14:19Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T150', 'approved', 360, '2026-11-27T00:00:15Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T16', 'approved', 0, '2026-10-23T19:14:19Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T17', 'approved', 0, '2026-10-23T19:14:19Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.LNCH-T18', 'approved', 0, '2026-10-23T19:14:19Z', NULL);
@@ -127137,6 +127739,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.MVIEW-T35', 'approved', 0, '2026-11-24T20:32:24Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.MVIEW-T36', 'approved', 0, '2026-11-26T15:27:00Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.MVIEW-T37', 'approved', 0, '2026-11-26T19:23:14Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.MVIEW-T39', 'approved', 360, '2026-11-27T00:01:33Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.MVIEW-T40', 'approved', 350, '2026-11-27T00:03:02Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1011', 'proposed', 616, '2026-10-27T00:13:20Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1012', 'proposed', 615, '2026-10-27T00:13:20Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.ORCH-T1046', 'proposed', 612, '2026-10-26T19:14:08Z', NULL);
@@ -128019,6 +128623,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.PSST-T27', 'approved', 0, '2026-10-31T14:50:00Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.PSST-T45', 'approved', 0, '2026-11-26T15:26:46Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.PSST-T46', 'approved', 0, '2026-11-26T15:26:51Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.PSST-T50', 'approved', 360, '2026-11-27T00:01:34Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.RLY-T10', 'proposed', 693, '2026-10-28T02:39:08Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.RLY-T11', 'proposed', 692, '2026-10-28T02:39:08Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.RLY-T12', 'proposed', 691, '2026-10-28T02:39:09Z', NULL);
@@ -128082,6 +128687,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T71', 'approved', 0, '2026-11-26T02:49:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T72', 'approved', 0, '2026-11-26T02:51:57Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T73', 'approved', 0, '2026-11-26T03:07:25Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T76', 'approved', 360, '2026-11-27T00:01:36Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T77', 'approved', 350, '2026-11-27T00:03:04Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T8', 'approved', 0, '2026-10-19T01:44:32Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.SCHD-T9', 'approved', 0, '2026-10-19T01:44:32Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.TELE-T10', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
@@ -128204,6 +128811,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.TIX-T38', 'rejected', 0, '2026-10-25T21:04:22Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.TIX-T382', 'approved', 0, '2026-11-26T01:26:58Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.TIX-T383', 'approved', 0, '2026-11-26T02:03:45Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.TIX-T384', 'approved', 360, '2026-11-27T00:01:38Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.TIX-T385', 'approved', 350, '2026-11-27T00:03:06Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.TIX-T39', 'rejected', 0, '2026-10-25T21:04:23Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.TIX-T40', 'rejected', 0, '2026-10-25T21:04:24Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.TIX-T41', 'rejected', 0, '2026-10-25T21:04:25Z', NULL);
@@ -128302,6 +128911,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M.WEB-T9', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M5SE-T12', 'proposed', 702, '2026-11-10T01:49:12Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M5SE-T125', 'proposed', 706, '2026-11-17T08:56:14Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M5SE-T163', 'approved', 360, '2026-11-27T00:02:43Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M5SE-T164', 'approved', 350, '2026-11-27T00:03:16Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M5SE-T27', 'proposed', 705, '2026-11-10T04:40:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M5SE-T28', 'proposed', 704, '2026-11-10T04:40:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('M5SE-T29', 'proposed', 703, '2026-11-10T04:40:41Z', NULL);
@@ -128473,6 +129084,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('MB-T20', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('MB-T27', 'approved', 0, '2026-10-31T14:48:12Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('MB-T5', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('MB-T60', 'approved', 360, '2026-11-27T00:01:24Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('MIN-T8', 'approved', 360, '2026-11-26T06:02:44Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('MOD-T3', 'rejected', 0, '2026-11-05T18:25:50Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('MPU-T10', 'approved', 360, '2026-11-26T06:02:43Z', NULL);
@@ -128486,6 +129098,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OC-T48', 'approved', 0, '2026-11-25T19:39:22Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OC-T49', 'approved', 0, '2026-11-25T19:39:22Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OC-T51', 'approved', 0, '2026-11-26T15:19:38Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OC-T53', 'approved', 360, '2026-11-27T00:01:41Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T10', 'proposed', 712, '2026-11-06T07:18:23Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T11', 'proposed', 704, '2026-11-05T23:15:11Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('OS-T12', 'proposed', 703, '2026-11-05T23:15:12Z', NULL);
@@ -128581,6 +129194,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PL-T15', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PL-T26', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PL-T31', 'approved', 0, '2026-10-31T14:50:07Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PL-T43', 'approved', 360, '2026-11-27T00:01:43Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PL-T44', 'approved', 350, '2026-11-27T00:03:18Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T104', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T1122', 'approved', 0, '2026-11-24T16:25:20Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T1123', 'approved', 0, '2026-11-24T16:25:20Z', NULL);
@@ -128592,6 +129207,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T1130', 'approved', 0, '2026-11-25T19:39:31Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T1131', 'approved', 0, '2026-11-25T19:39:31Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T1132', 'approved', 0, '2026-11-26T06:02:50Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T1133', 'approved', 360, '2026-11-27T00:04:25Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T1134', 'approved', 360, '2026-11-27T00:04:25Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T1137', 'approved', 0, '2026-11-26T22:54:32Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T1138', 'approved', 0, '2026-11-26T22:54:32Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T1139', 'approved', 0, '2026-11-26T22:54:32Z', NULL);
@@ -128628,6 +129245,9 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T1170', 'approved', 0, '2026-11-26T22:57:43Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T1171', 'approved', 0, '2026-11-26T22:57:43Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T1172', 'approved', 0, '2026-11-26T22:57:44Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T1173', 'approved', 0, '2026-11-27T00:00:12Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T1174', 'approved', 350, '2026-11-27T00:03:19Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T1175', 'approved', 0, '2026-11-27T00:06:34Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T133', 'approved', 5, '2026-10-21T04:35:38Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T134', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T135', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
@@ -128793,6 +129413,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T300', 'approved', 0, '2026-11-26T18:30:55Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T301', 'approved', 0, '2026-11-26T18:39:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T302', 'approved', 0, '2026-11-26T18:43:50Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T305', 'approved', 360, '2026-11-27T00:02:41Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T306', 'approved', 350, '2026-11-27T00:03:21Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T32', 'approved', 0, '2026-10-22T13:22:49Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T33', 'approved', 0, '2026-10-22T13:22:49Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RB-T34', 'approved', 0, '2026-10-22T13:22:49Z', NULL);
@@ -128984,6 +129606,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTB-T273', 'approved', 0, '2026-11-24T16:25:45Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTB-T274', 'approved', 0, '2026-11-24T16:25:45Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTB-T275', 'approved', 0, '2026-11-24T20:32:43Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTB-T276', 'approved', 360, '2026-11-27T00:02:44Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTO-T10', 'approved', 0, '2026-10-26T18:26:05Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTO-T11', 'approved', 0, '2026-10-26T18:26:07Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('RTO-T12', 'rejected', 0, '2026-10-26T19:23:56Z', NULL);
@@ -129082,6 +129705,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TRC-T94', 'approved', 0, '2026-11-26T20:57:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TRC-T95', 'approved', 0, '2026-11-26T20:57:41Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TRC-T96', 'approved', 0, '2026-11-26T21:05:42Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TRC-T99', 'approved', 360, '2026-11-27T00:01:44Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T13', 'approved', 5, '2026-10-21T04:35:38Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T14', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T15', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
@@ -129108,6 +129732,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T72', 'approved', 0, '2026-11-26T15:34:52Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T73', 'approved', 0, '2026-11-26T15:34:54Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T74', 'approved', 0, '2026-11-26T15:34:56Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TT-T81', 'approved', 360, '2026-11-27T00:01:46Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T116', 'approved', 0, '2026-11-26T20:09:31Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T117', 'approved', 0, '2026-11-26T20:09:34Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T118', 'approved', 0, '2026-11-26T20:15:14Z', NULL);
@@ -129128,6 +129753,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T134', 'approved', 0, '2026-11-26T20:49:17Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T135', 'approved', 0, '2026-11-26T20:49:19Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T136', 'approved', 0, '2026-11-26T20:49:23Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T138', 'approved', 360, '2026-11-27T00:01:48Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T18', 'approved', 5, '2026-10-21T04:35:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T19', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('TUT-T20', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
@@ -129155,6 +129781,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.CHN-T112', 'approved', 0, '2026-11-06T18:16:51Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.CHN-T116', 'approved', 0, '2026-11-24T16:25:35Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.CHN-T117', 'approved', 0, '2026-11-24T16:25:35Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.CHN-T118', 'approved', 360, '2026-11-27T00:02:17Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.CHN-T119', 'approved', 350, '2026-11-27T00:03:23Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.CHN-T12', 'approved', 0, '2026-10-22T22:54:20Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.CHN-T18', 'proposed', 930, '2026-10-23T22:17:18Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.CHN-T19', 'proposed', 880, '2026-10-23T22:17:45Z', NULL);
@@ -129253,6 +129881,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.EVE-T5', 'approved', 0, '2026-10-27T03:04:44Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.EVE-T56', 'approved', 0, '2026-11-24T16:25:34Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.EVE-T57', 'approved', 0, '2026-11-24T16:25:34Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.EVE-T58', 'approved', 360, '2026-11-27T00:02:15Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.EVE-T59', 'approved', 350, '2026-11-27T00:03:27Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.EVE-T6', 'approved', 0, '2026-10-27T03:04:44Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.EVE-T7', 'approved', 0, '2026-10-27T03:04:45Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.EVE-T8', 'approved', 0, '2026-10-27T03:04:45Z', NULL);
@@ -129278,6 +129908,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.HARE-T134', 'approved', 0, '2026-11-24T16:25:35Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.HARE-T135', 'approved', 0, '2026-11-24T16:25:36Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.HARE-T136', 'approved', 0, '2026-11-24T20:33:06Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.HARE-T137', 'approved', 360, '2026-11-27T00:02:19Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.HARE-T14', 'approved', 0, '2026-10-22T03:45:52Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.HARE-T15', 'approved', 0, '2026-10-22T03:45:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.HARE-T16', 'approved', 1000, '2026-10-23T22:19:00Z', NULL);
@@ -129390,12 +130021,14 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.INC-T6', 'approved', 0, '2026-10-22T04:18:06Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.INC-T60', 'approved', 0, '2026-11-24T16:25:36Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.INC-T61', 'approved', 0, '2026-11-24T16:25:37Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.INC-T62', 'approved', 360, '2026-11-27T00:02:21Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.INC-T7', 'approved', 0, '2026-10-22T04:18:07Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.INC-T8', 'approved', 0, '2026-10-22T04:18:07Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.INC-T9', 'approved', 0, '2026-10-22T04:18:07Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.OVW-T10', 'approved', 0, '2026-10-23T22:32:21Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.OVW-T106', 'approved', 0, '2026-11-24T16:25:37Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.OVW-T107', 'approved', 0, '2026-11-24T16:25:37Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.OVW-T108', 'approved', 360, '2026-11-27T00:02:23Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.OVW-T11', 'approved', 0, '2026-10-23T22:32:21Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.OVW-T12', 'approved', 0, '2026-10-23T22:32:21Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.OVW-T13', 'approved', 0, '2026-10-23T22:32:21Z', NULL);
@@ -129483,6 +130116,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.RICO-T163', 'approved', 0, '2026-11-06T18:22:04Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.RICO-T164', 'approved', 0, '2026-11-06T19:09:11Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.RICO-T165', 'approved', 0, '2026-11-06T18:22:10Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.RICO-T174', 'approved', 360, '2026-11-27T00:02:28Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.RICO-T19', 'proposed', 37, '2026-10-23T22:17:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.RICO-T20', 'proposed', 38, '2026-10-23T22:17:39Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.RICO-T21', 'proposed', 36, '2026-10-23T22:17:41Z', NULL);
@@ -129554,6 +130188,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.RON-T30', 'approved', 0, '2026-11-22T06:41:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.RON-T31', 'approved', 0, '2026-11-24T16:25:38Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.RON-T32', 'approved', 0, '2026-11-24T16:25:38Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.RON-T33', 'approved', 360, '2026-11-27T00:02:31Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.RON-T8', 'approved', 5, '2026-10-21T04:35:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.RON-T9', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.SPC-T103', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
@@ -129722,6 +130357,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.SPC-T640', 'approved', 0, '2026-11-22T06:50:48Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.SPC-T641', 'approved', 0, '2026-11-22T06:50:50Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.SPC-T642', 'approved', 0, '2026-11-22T06:50:52Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.SPC-T645', 'approved', 360, '2026-11-27T00:02:29Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.SPC-T646', 'approved', 350, '2026-11-27T00:03:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.SPC-T90', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.SPC-T91', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.SPC-T92', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
@@ -129753,6 +130390,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.VAN-T36', 'approved', 0, '2026-11-03T04:34:58Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.VAN-T38', 'approved', 0, '2026-11-06T18:19:03Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.VAN-T4', 'approved', 0, '2026-10-23T22:28:05Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.VAN-T45', 'approved', 360, '2026-11-27T00:02:25Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.VAN-T5', 'approved', 0, '2026-10-23T22:28:05Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.VAN-T6', 'approved', 0, '2026-10-23T22:28:05Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('U.VAN-T7', 'approved', 0, '2026-10-23T22:28:05Z', NULL);
@@ -129777,6 +130415,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UC-T65', 'approved', 0, '2026-11-24T16:25:33Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UC-T66', 'approved', 0, '2026-11-24T16:25:34Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UC-T67', 'proposed', 893, '2026-11-26T10:35:56Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UC-T68', 'approved', 360, '2026-11-27T00:01:58Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UC-T69', 'approved', 350, '2026-11-27T00:03:25Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UC-T7', 'approved', 0, '2026-10-20T17:47:10Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UC-T8', 'approved', 0, '2026-10-20T17:47:10Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UC-T9', 'approved', 0, '2026-10-20T17:47:10Z', NULL);
@@ -129785,6 +130425,8 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UCY-T5', 'approved', 0, '2026-10-22T23:03:36Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UCY-T6', 'approved', 0, '2026-10-22T23:03:36Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UCY-T7', 'approved', 0, '2026-10-22T23:03:36Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UE-T77', 'approved', 360, '2026-11-27T00:02:35Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UE-T78', 'approved', 350, '2026-11-27T00:03:32Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UM-T10', 'approved', 0, '2026-10-20T17:47:09Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UM-T11', 'approved', 0, '2026-10-20T17:47:09Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UM-T12', 'approved', 0, '2026-10-20T17:47:09Z', NULL);
@@ -129840,14 +130482,18 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNR-T124', 'approved', 0, '2026-11-24T18:56:16Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNR-T125', 'approved', 0, '2026-11-24T19:57:26Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNR-T126', 'approved', 0, '2026-11-24T20:32:32Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNR-T127', 'approved', 360, '2026-11-27T00:02:37Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNS-T11', 'approved', 0, '2026-10-21T04:34:53Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNS-T13', 'approved', 5, '2026-10-21T04:35:40Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNS-T17', 'approved', 0, '2026-10-31T14:49:34Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNS-T34', 'approved', 0, '2026-11-19T05:54:03Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNS-T35', 'approved', 0, '2026-11-19T05:58:52Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNS-T38', 'approved', 360, '2026-11-27T00:01:50Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNS-T39', 'approved', 350, '2026-11-27T00:03:33Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UNS-T9', 'approved', 0, '2026-10-19T01:44:34Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UQD-T10', 'approved', 0, '2026-10-22T03:45:54Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UQD-T101', 'approved', 350, '2026-11-26T06:02:48Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UQD-T102', 'approved', 360, '2026-11-27T00:02:33Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UQD-T11', 'approved', 0, '2026-10-22T03:45:55Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UQD-T13', 'approved', 0, '2026-10-22T04:15:57Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('UQD-T14', 'approved', 0, '2026-10-22T22:53:20Z', NULL);
@@ -130613,7 +131259,6 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('AES-T13', NULL, 0, 'ohleo199@mindattic.com', '9aa417dc-00ec-48db-aaea-59ffddf8b7f3', '2026-11-26T20:19:02Z', '2026-11-26T20:19:02Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('G.EZ-T143', NULL, 0, 'ohleo199@mindattic.com', '9aa417dc-00ec-48db-aaea-59ffddf8b7f3', '2026-11-26T22:19:32Z', '2026-11-26T22:19:32Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T805', NULL, 0, NULL, '5c87f115-96a3-43aa-8559-17d8764da8f6', '2026-11-26T23:58:31Z', '2026-11-26T23:58:31Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1115', 'ryandebraal@mindattic.com', 0, NULL, NULL, NULL, '2026-11-26T23:52:36Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1123', 'ryandebraal@mindattic.com', 0, NULL, NULL, NULL, '2026-11-26T23:52:32Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1127', 'ryandebraal@mindattic.com', 0, NULL, NULL, NULL, '2026-11-26T23:51:54Z');
@@ -130621,7 +131266,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1151', 'ryandebraal@mindattic.com', 0, NULL, NULL, NULL, '2026-11-26T15:27:06Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1175', 'ryandebraal@mindattic.com', 0, NULL, NULL, NULL, '2026-11-26T20:00:36Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1208', 'ryandebraal@mindattic.com', 0, NULL, NULL, NULL, '2026-11-26T18:15:13Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1210', NULL, 0, 'pdftransferjr@mindattic.com', '6082ff94-ff59-4f19-92da-270fca91363e', '2026-11-26T23:51:19Z', '2026-11-26T23:51:19Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1214', 'ryandebraal@mindattic.com', 0, NULL, NULL, NULL, '2026-11-26T19:55:58Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1215', 'ryandebraal@mindattic.com', 0, NULL, NULL, NULL, '2026-11-26T19:59:08Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T277', 'ryandebraal@mindattic.com', 0, NULL, NULL, NULL, '2026-11-26T23:54:12Z');
@@ -130721,12 +131365,12 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T89', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T23:30:09Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.TIX-T91', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T23:09:54Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T105', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T05:26:05Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T318', NULL, 0, NULL, '8b26624c-b794-4842-a4ae-87041419b1a9', '2026-11-26T23:58:31Z', '2026-11-26T23:58:31Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T58', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:02:45Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('MAT-T59', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:10:13Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T1167', NULL, 0, 'ohleo199@mindattic.com', '9aa417dc-00ec-48db-aaea-59ffddf8b7f3', '2026-11-26T23:01:47Z', '2026-11-26T23:01:47Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T1170', NULL, 0, 'ohleo199@mindattic.com', '9aa417dc-00ec-48db-aaea-59ffddf8b7f3', '2026-11-26T23:49:43Z', '2026-11-26T23:49:43Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T1171', NULL, 0, 'ohleo199@mindattic.com', '9aa417dc-00ec-48db-aaea-59ffddf8b7f3', '2026-11-26T23:09:03Z', '2026-11-26T23:09:03Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T1168', NULL, 0, 'ohleo199@mindattic.com', '9aa417dc-00ec-48db-aaea-59ffddf8b7f3', '2026-11-27T00:07:39Z', '2026-11-27T00:07:39Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T1173', NULL, 0, 'ohleo199@mindattic.com', '9aa417dc-00ec-48db-aaea-59ffddf8b7f3', '2026-11-27T00:07:20Z', '2026-11-27T00:07:20Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T1175', NULL, 0, 'ohleo199@mindattic.com', '9aa417dc-00ec-48db-aaea-59ffddf8b7f3', '2026-11-27T00:07:19Z', '2026-11-27T00:07:19Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T111', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:34:40Z');
@@ -130868,8 +131512,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T4', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:26Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T6', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T7', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:26:27Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('SET-T57', NULL, 0, 'ohleo199@mindattic.com', '9aa417dc-00ec-48db-aaea-59ffddf8b7f3', '2026-11-26T22:43:18Z', '2026-11-26T22:43:18Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('SET-T58', NULL, 0, NULL, '9aa417dc-00ec-48db-aaea-59ffddf8b7f3', '2026-11-26T23:50:39Z', '2026-11-26T23:50:39Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('TUT-T120', NULL, 0, 'ohleo199@mindattic.com', '9aa417dc-00ec-48db-aaea-59ffddf8b7f3', '2026-11-26T20:21:19Z', '2026-11-26T20:21:19Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('U.RICO-T62', NULL, 0, 'ohleo199@mindattic.com', '9aa417dc-00ec-48db-aaea-59ffddf8b7f3', '2026-11-26T20:21:19Z', '2026-11-26T20:21:19Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T100', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T23:10:16Z');
@@ -135204,9 +135846,26 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32655, '
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32656, 'PRS-T1171', 'ryand', '2026-11-26T23:52:32Z', 'OWNER DECISION 2026-11-26 (Ryan), verbatim: ''Heloth is a bipedal construct''. => Heloth is a kind of construct (bipedal), not a person: re-type the stored Heloth character as a construct/creature-type entity (whatever kind Prose uses for non-person beings) with description ''bipedal construct'', and tag the VIGL brief''s Heloth mentions to it. Only the weave-doc review is still awaiting the owner.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32657, 'GG-T1191', 'ryand', '2026-11-26T23:55:23Z', 'Held until the 00:00-10:00 soak window (owner rule); the scheduled task GG-T1191-night re-approves it at 00:01 on 2026-11-27.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32658, 'GAD-T805', 'ryand', '2026-11-26T23:58:03Z', '![image 3](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/GAD-T805/2026-11-26-image-3.png)');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32659, 'PRS-T1171', 'implementer', '2026-11-27T00:00:01Z', 'Soren Rowe DONE (070e5bed0): created a new blank character ''Soren Rowe'' in scry (id 01a21a4b-74ca-7b35-97e6-ac49762eb893, name only, nothing copied) via create_character; tagged the 3 ''Soren Rowe'' mentions in docs/planning/VIGL-brief.md to it (bare ''Rowe'' left as is). M-101 tie removed: the House Verlaine and Station Verlaine North descriptions said ''M-1018883 / Soren Rowe'' (M-1018883 is Declan Doyle''s/M-101''s designation); both now say just ''M-1018883''. Existing scry character ''Soren'' untouched. Eirene-7''s description (Soren Rowe as a Myrmidon-mind) left, it does not tie him to M-101.
+HELOTH NOT DONE: the fitting kind exists (Automaton, the non-sentient machine repo per BIBLE SS-LAW-4; Heloth is ''wholly without will''; the bestiary repo is GLMZ-only), but Prose has no character-to-other-type move: prose --retype-entity refuses a built-in source (character) and a built-in target (automaton). Heloth is a canon character tagged in 29 beats (28 mentions), so it needs a new retype capability, not a hand edit. Left Heloth entirely unchanged (description, type, brief mentions) rather than force it; follow-up split filed. Weave docs untouched. Ticket left open.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32660, 'MAT-T256', 'ryand', '2026-11-27T00:04:41Z', 'Owner widened scope 2026-11-26: every repo that builds an exe (apps, Unity, Unreal, and mod-kind repos that are really standalone apps) deploys Debug and Release to R:\MindAttic\Apps\<repo> every time, then its old C:\Apps copy is retired only after the R: copy is verified. Filed into this epic, not a new one: 41 rollout tasks under MAT-T260 (stories MAT-T288, T290, T291, T292, T293, and new MAT-T318 Mod-kind apps on R:) and 18 cleanup tasks under MAT-T261, each requiring its repo''s rollout task. Prose (PRS-T1133/T1134) is now in scope under MAT-T293. Out of scope: archived SpaceGod.Unreal.Cpp, SpaceGod.Unreal.CSharp, SpaceGod.Unity.CSharp, Unreal.SpaceGod; and R:\MindAttic\Capture, Media, Preview.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32661, 'MAT-T260', 'ryand', '2026-11-27T00:04:42Z', 'Fan-out widened 2026-11-26 (see MAT-T256 note): MAT-T290 now also holds Automata, Cursory, Formicarium, Gadfly, IdeaCms, JobHunt, KdpPublish, MediaButler, MindAttic.Deploy, Media.Capture, Media.Viewer, Psst, Scheduler, Tickets, OpenCredentials, ProcessLogger, TaxRateCollector, ThinkTank, Tutor, Unstuck, Auto.GamePlay and the AES verification AES-T14; MAT-T291 adds 11 Unity repos plus the QuickDuel verification UQD-T102; MAT-T292 adds Unreal.Eve and Unreal.Playground; MAT-T293 adds JellyFinPoster (Python, no exe), REA.Bloodlines (s&box export) and Prose; new story MAT-T318 holds Mods.MechWarrior5.SaveEditor and Mods.RogueTrader.Brevity (publish.json is read before Get-Plan''s nexus.json skip, so no deploy-lib change is needed). Launcher pilot adds M.LNCH-T150 (Debug+Release verified), which M.LNCH-T146 now requires.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32662, 'GG-T1164', 'ryand', '2026-11-27T00:04:42Z', 'Also under C:\Apps and apparently GridGame.Unity outputs (confirm before deleting): C:\Apps\Unity.GridGame (GridGameGaiden.apk), C:\Apps\GridGameCaravan and C:\Apps\GridGameGaiden (Windows players). Android.Emulator.Suite README.md and apps\apps.json still name C:\Apps\GridGame.Unity\GridGame.apk; when the apk moves to R:, file an AES ticket to repoint them.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32663, 'MAT-T294', 'ryand', '2026-11-27T00:04:43Z', 'Leftovers under C:\Apps not covered by a per-repo cleanup (as of 2026-11-26), to list rather than delete: MindAttic.Browser (repo not in the owner''s list, but it already deploys to R:), ArtCraft Launcher (not a MindAttic deploy, leave it), and the archived SpaceGod.Unity.CSharp, SpaceGod.Unreal.CSharp, SpaceGod.Unreal.Cpp folders (repos out of scope). C:\Apps\MindAttic holds only Prose today; PRS-T1174 removes it.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32664, 'RB-T305', 'ryand', '2026-11-27T00:04:43Z', 'RB-T301 (autoplay cold run) names C:\Apps\REA.Bloodlines\Bloodlines.exe for launch.py build; repoint it to the R: Release export here so RB-T301 keeps working once RB-T306 deletes the C: copy.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AES-T12', 'First confirm the folder is a MindAttic deploy output and no shortcut, scheduled task, startup entry or PATH entry still points into it; never touch anything else under C:\Apps.', '2026-11-26T04:46:51Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AES-T14', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:01:52Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AES-T4', 'Exhaustive bug hunt for this repo, no time limit (the /bughunt skill with no argument).
 
 1. Search the whole repo for real bugs: crashes, wrong results, data loss, races, resource leaks, broken error paths, stale paths/names after renames, dead config, security holes. Read code, don''t run the test suite unless a user asks (/test).
@@ -135658,6 +136317,16 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AUTO-T4', 'O
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AUTO-T5', 'Repo: D:\Projects\MindAttic\Auto.GamePlay. Comments and docs only; no package reference. Verify: `dotnet build AutoGamePlay.slnx`.
 
 Rules: change live references only (code, config, scripts, current docs); leave dated records as they are (USER_STORIES ticket rows, changelogs/AMENDMENTS, quicksaves, .agent session files, EF migration *.Designer.cs). Verify by building only; tests are run by the owner via /test. One commit ending in this ticket''s ID.', '2026-11-24T16:18:12Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AUTO-T6', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:01:51Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AUT-T27', 'LAMP migration for **Automata** (plan: MindAttic.Vault/docs/rfc/0003-lamp.md, Rollout step 5).
 
 - Move to the new MindAttic.Vault major.
@@ -135691,6 +136360,19 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AUT-T40', 'R
 Automata.App\App.xaml.cs (~80) comment: output under R:\MindAttic\Media\Capture\Automata\. Check the repo capture.json and README for the root too.
 
 Outcome: build passes; no R:\MindAttic\Capture left outside USER_STORIES.', '2026-11-24T20:33:08Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AUT-T50', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:00:49Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AUT-T51', 'Part of epic MAT-T256, feature MAT-T261 (C: deploy cleanup). This requires the repo''s R:\ deploy ticket: work it only once that one is closed with a note that both R:\MindAttic\Apps\<repo>\Debug and \Release launch. The old C:\Apps copy is the only working build until then.
+
+First confirm the folder is this repo''s MindAttic deploy output (its exe names match the R:\ copy), and that no shortcut, scheduled task, startup entry, PATH entry or other app''s exe path still points into it. Repoint any that do at R:\MindAttic\Apps\<repo>\Release (file a ticket in the owning repo if it is another repo''s code). Never touch anything else under C:\Apps, never do a blanket wipe, and never touch R:\MindAttic\Capture, \Media or \Preview. Note on this ticket what was deleted and its size.', '2026-11-27T00:02:51Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AWN2-T3', 'Exhaustive bug hunt for this repo, no time limit (the /bughunt skill with no argument).
 
 1. Search the whole repo for real bugs: crashes, wrong results, data loss, races, resource leaks, broken error paths, stale paths/names after renames, dead config, security holes. Read code, don''t run the test suite unless a user asks (/test).
@@ -137042,6 +137724,16 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('CUR-T30', 'E
 4. When nothing confirmed is left, close this ticket with a one-line count of bugs found and fixed.
 
 Filed in a workspace-wide sweep (one per non-archived repo); do not start until allocated.', '2026-11-24T06:59:13Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('CUR-T35', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:01:07Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('DEAS-T2', 'Exhaustive bug hunt for this repo, no time limit (the /bughunt skill with no argument).
 
 1. Search the whole repo for real bugs: crashes, wrong results, data loss, races, resource leaks, broken error paths, stale paths/names after renames, dead config, security holes. Read code, don''t run the test suite unless a user asks (/test).
@@ -137131,6 +137823,16 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('FOR-T35', 'E
 4. When nothing confirmed is left, close this ticket with a one-line count of bugs found and fixed.
 
 Filed in a workspace-wide sweep (one per non-archived repo); do not start until allocated.', '2026-11-24T06:59:34Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('FOR-T40', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:01:10Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('G.AWPN-T232', 'Thunderstore''s BepInExPack_GTFO is now at 3.2.4 (up from the pinned 3.2.3, published 2026-10-31). Bump package/manifest.json''s dependency string, bump version_number to 20.0.0, run tests, build Release, and produce the v20.0.0 dist zip via build.ps1. Part of a family-wide v20 release across all 6 GTFO.* mods (same BepInEx bump, kept in version lockstep with GTFO.EZ).', '2026-11-05T14:50:23Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('G.AWPN-T233', 'User wants every GTFO.* mod''s documentation accurate. Audit this repo''s README.md (root, if present) and package/README.md against the actual current Plugin.cs config entries, feature set, and package/CHANGELOG.md - fix any drift (missing features, stale version numbers/badges, out-of-sync embedded changelog copies, wrong current-release number), and make sure v20 (BepInEx 3.2.4 bump, already released) is reflected. GTFO.EZ''s own README had drifted (an embedded changelog copy was missing two real bullets from a past release) - check for the same class of bug here.', '2026-11-05T15:42:21Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('G.AWPN-T234', 'Player feedback, verbatim: ''infinite range pain doesn''t work'' (likely ''infinite range beam/gun'' via voice dictation). Identify which feature this is and fix.', '2026-11-06T06:50:54Z');
@@ -137748,6 +138450,16 @@ Acceptance
 - On a bust model (has a BustBase bone) Hips and Spine..Spine2 stay at their bind pose every frame; Neck and Head still nod, turn and talk.
 - The bust''s head-and-shoulders framing shows head, beard and the plinth''s top; other examiners unchanged.
 - Both the get-ready live preview and the exam room (both go through useExaminerLook).', '2026-11-26T23:57:54Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T806', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:01:12Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T81', 'Parts 5, 12.1, 17.4, 18.2 Feature 1. **Done when:** schema + migration exist and an assessment can hold objectives with criteria and level descriptors.
 
 Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T00:49:00Z');
@@ -137859,6 +138571,16 @@ Unity changes: Packages/manifest.json entry becomes "com.mindattic.media.capture
 Verify: a Unity batchmode compile (the repo tools/unity.ps1 if it has one, else Unity.exe -batchmode -nographics -quit -projectPath . -logFile -) with no error CS lines; if the Editor already has the project open, let it reimport instead of starting a second instance.
 
 Rules: change live references only (code, config, scripts, current docs); leave dated records as they are (USER_STORIES ticket rows, changelogs/AMENDMENTS, quicksaves, .agent session files, EF migration *.Designer.cs). Verify by building only; tests are run by the owner via /test. One commit ending in this ticket''s ID.', '2026-11-24T16:16:51Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GGC-T41', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:01:54Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GGS-T33', 'Exhaustive bug hunt for this repo, no time limit (the /bughunt skill with no argument).
 
 1. Search the whole repo for real bugs: crashes, wrong results, data loss, races, resource leaks, broken error paths, stale paths/names after renames, dead config, security holes. Read code, don''t run the test suite unless a user asks (/test).
@@ -139846,6 +140568,19 @@ Rules: change live references only (code, config, scripts, current docs); leave 
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IDEA-T81', 'Symptom: a non-race DB failure on commit returns NoOpAlreadyInstalled (silent success) with the new blob already overwriting the prior version''s bytes. Cause: blanket catch DbUpdateException. Fix: confirm a racing row exists via a fresh context, else restore prior blob and rethrow.', '2026-11-26T15:22:48Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IDEA-T82', 'Symptom: https redirect loop when the host sits behind a TLS-terminating proxy and the platform does not inject forwarded-headers middleware. Cause: UseForwardedHeaders registered after UseHttpsRedirection/UseHsts. Fix: register it before them.', '2026-11-26T15:27:13Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IDEA-T83', 'Symptom: a published page with slug ''administration'' always 404s. Cause: slug.StartsWith("admin") has no segment boundary. Fix: match ''admin'' exactly or ''admin/'' prefix.', '2026-11-26T15:32:40Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IDEA-T89', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:01:15Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IDEA-T90', 'Part of epic MAT-T256, feature MAT-T261 (C: deploy cleanup). This requires the repo''s R:\ deploy ticket: work it only once that one is closed with a note that both R:\MindAttic\Apps\<repo>\Debug and \Release launch. The old C:\Apps copy is the only working build until then.
+
+First confirm the folder is this repo''s MindAttic deploy output (its exe names match the R:\ copy), and that no shortcut, scheduled task, startup entry, PATH entry or other app''s exe path still points into it. Repoint any that do at R:\MindAttic\Apps\<repo>\Release (file a ticket in the owning repo if it is another repo''s code). Never touch anything else under C:\Apps, never do a blanket wipe, and never touch R:\MindAttic\Capture, \Media or \Preview. Note on this ticket what was deleted and its size.', '2026-11-27T00:02:53Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('IP-T100', '**Epic W — Command line & Hub** / W19 Account & trading operations (`W19.01`)
 
 `account summary [--mode]` (equity, cash, buying power, day P&L) for sandbox/paper/live
@@ -143196,6 +143931,16 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('JFP-T30', 'E
 4. When nothing confirmed is left, close this ticket with a one-line count of bugs found and fixed.
 
 Filed in a workspace-wide sweep (one per non-archived repo); do not start until allocated.', '2026-11-24T06:59:58Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('JFP-T31', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:02:38Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('JF-T22', 'Slide 7 said Four lock-ups and showed only a CSS chip demo, but the repo ships six logo SVGs. Replaced the demo with a 3x2 (2-col on phone) grid of .card tiles showing the real joycefit-logo-primary/reversed/onecolor/stacked and joycefit-mark/mark-ink SVGs; text now says Six lock-ups. Verified with headless Chrome at 1440x900, 1280x720, 390x844 and 360x640. Commit d9334cc.', '2026-11-03T06:06:33Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('JF-T24', 'Repo had no GitHub Pages site. Adopted MindAttic.Agency''s shared DocFX docs-site pipeline (HOUSE-LAW-14): added .github/workflows/docs.yml, enabled Pages (build_type=workflow), set homepage. Also picks up the navbar-brand Outfit/#ff0033 fix (MAT-T127) from day one.', '2026-11-10T22:04:35Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('JF-T26', 'Exhaustive bug hunt for this repo, no time limit (the /bughunt skill with no argument).
@@ -143231,6 +143976,19 @@ Filed in a workspace-wide sweep (one per non-archived repo); do not start until 
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('JH-T38', 'LooksLikeChallengeAsync matches the pattern against the whole URL, including the query string. A pane parked on a search for ''verification engineer'' or a continue= URL containing ''verify'' is reported NeedsYou and auto sign-in never runs. LinkedInSignIn already matches the path only for this reason.', '2026-11-26T15:45:39Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('JH-T39', 'BuildSearchUrl adds jt=jobTypes[0] even when FullTime, Contract and ContractToHire are all allowed (the default), so Indeed never returns contract jobs. Only send jt when exactly one type is allowed; FitScorer enforces the rest.', '2026-11-26T15:45:40Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('JH-T40', 'Watch() debounces a FileSystemWatcher event into Refresh() on a thread-pool Timer. vault.Load() or a Changed handler throwing is unhandled and terminates the app. Catch, log nothing fatal, keep the previous settings.', '2026-11-26T15:45:41Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('JH-T42', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:01:17Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('JH-T43', 'Part of epic MAT-T256, feature MAT-T261 (C: deploy cleanup). This requires the repo''s R:\ deploy ticket: work it only once that one is closed with a note that both R:\MindAttic\Apps\<repo>\Debug and \Release launch. The old C:\Apps copy is the only working build until then.
+
+First confirm the folder is this repo''s MindAttic deploy output (its exe names match the R:\ copy), and that no shortcut, scheduled task, startup entry, PATH entry or other app''s exe path still points into it. Repoint any that do at R:\MindAttic\Apps\<repo>\Release (file a ticket in the owning repo if it is another repo''s code). Never touch anything else under C:\Apps, never do a blanket wipe, and never touch R:\MindAttic\Capture, \Media or \Preview. Note on this ticket what was deleted and its size.', '2026-11-27T00:02:54Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('KP-T24', 'Repo had no GitHub Pages site. Adopted MindAttic.Agency''s shared DocFX docs-site pipeline (HOUSE-LAW-14): added .github/workflows/docs.yml, enabled Pages (build_type=workflow), set homepage. Also picks up the navbar-brand Outfit/#ff0033 fix (MAT-T127) from day one.', '2026-11-10T22:04:44Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('KP-T38', 'Exhaustive bug hunt for this repo, no time limit (the /bughunt skill with no argument).
 
@@ -143241,6 +143999,19 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('KP-T38', 'Ex
 
 Filed in a workspace-wide sweep (one per non-archived repo); do not start until allocated.', '2026-11-24T07:00:06Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('KP-T39', 'StatusFromShelf mapped ''Live Updates publishing'' to Publishing but not ''Live Updates in review'', which the shelf parser and ShelfRowByTitle both recognise; the table showed the raw label in the warn style. Found by KP-T10.', '2026-11-26T15:41:11Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('KP-T40', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:01:20Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('KP-T41', 'Part of epic MAT-T256, feature MAT-T261 (C: deploy cleanup). This requires the repo''s R:\ deploy ticket: work it only once that one is closed with a note that both R:\MindAttic\Apps\<repo>\Debug and \Release launch. The old C:\Apps copy is the only working build until then.
+
+First confirm the folder is this repo''s MindAttic deploy output (its exe names match the R:\ copy), and that no shortcut, scheduled task, startup entry, PATH entry or other app''s exe path still points into it. Repoint any that do at R:\MindAttic\Apps\<repo>\Release (file a ticket in the owning repo if it is another repo''s code). Never touch anything else under C:\Apps, never do a blanket wipe, and never touch R:\MindAttic\Capture, \Media or \Preview. Note on this ticket what was deleted and its size.', '2026-11-27T00:02:57Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.AUTH-T23', 'LAMP migration for **MindAttic.Authentication** (plan: MindAttic.Vault/docs/rfc/0003-lamp.md, Rollout step 5).
 
 - Move to the new MindAttic.Vault major.
@@ -143645,6 +144416,19 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.CAPT-T208'
 Outcome: old roots hold only the marker README (plus listed skips); the sweep hit list is recorded in the ticket with no unexplained entries.', '2026-11-24T20:33:17Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.CAPT-T216', 'The plan names R:\MindAttic\Capture\; M.CAPT-T199 moves the default root to R:\MindAttic\Media\Capture\<app>. Use whatever default root is current; do not hardcode either.', '2026-11-26T04:44:27Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.CAPT-T221', 'Symptom: if one hotkey (say Screenshot) could not be registered at startup because another app holds it, saving a different, valid hotkey in Vault is refused with ''Hotkey not available'' and reverted. Cause: ApplySavedSettings treats any problem from TryRegisterHotkeys as the new change''s problem, including the pre-existing unbound hotkey. Fix: only bindings that changed count.', '2026-11-26T15:36:13Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.CAPT-T228', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:01:29Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.CAPT-T229', 'Part of epic MAT-T256, feature MAT-T261 (C: deploy cleanup). This requires the repo''s R:\ deploy ticket: work it only once that one is closed with a note that both R:\MindAttic\Apps\<repo>\Debug and \Release launch. The old C:\Apps copy is the only working build until then.
+
+First confirm the folder is this repo''s MindAttic deploy output (its exe names match the R:\ copy), and that no shortcut, scheduled task, startup entry, PATH entry or other app''s exe path still points into it. Repoint any that do at R:\MindAttic\Apps\<repo>\Release (file a ticket in the owning repo if it is another repo''s code). Never touch anything else under C:\Apps, never do a blanket wipe, and never touch R:\MindAttic\Capture, \Media or \Preview. Note on this ticket what was deleted and its size.', '2026-11-27T00:02:59Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.CAPT-T79', 'This keeps `/capture` working from a CLI hosted in either shell.
 
 **Done when:** the capture tests cover both exe names.', '2026-10-28T01:26:08Z');
@@ -143997,6 +144781,16 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.DPLY-T36',
 4. When nothing confirmed is left, close this ticket with a one-line count of bugs found and fixed.
 
 Filed in a workspace-wide sweep (one per non-archived repo); do not start until allocated.', '2026-11-24T07:00:37Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.DPLY-T39', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:01:25Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.EXPT-T31', 'Markdown documents with image references (e.g. SET dissertation figures/*.svg) export to Markdown/Pages fine but images are dropped from PDF and DOCX. Add an image block to the model, parse ![alt](src) from Markdown, render it in DOCX and PDF (SVG native where possible, PNG fallback), keep caption. Book path must remain byte-identical.', '2026-11-03T04:39:14Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.EXPT-T36', 'Repo had no GitHub Pages site. Adopted MindAttic.Agency''s shared DocFX docs-site pipeline (HOUSE-LAW-14): added .github/workflows/docs.yml, enabled Pages (build_type=workflow), set homepage. Also picks up the navbar-brand Outfit/#ff0033 fix (MAT-T127) from day one.', '2026-11-10T22:05:15Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.EXPT-T37', 'Part of PRS-T942 (Prose): the author wants book-export directories restructured so each
@@ -144155,6 +144949,16 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.LNCH-T143'
 Filed in a workspace-wide sweep (one per non-archived repo); do not start until allocated.', '2026-11-24T07:00:43Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.LNCH-T146', 'First confirm the folder is a MindAttic deploy output and no shortcut, scheduled task, startup entry or PATH entry still points into it; never touch anything else under C:\Apps.', '2026-11-26T04:43:29Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.LNCH-T147', 'First confirm the folder is a MindAttic deploy output and no shortcut, scheduled task, startup entry or PATH entry still points into it; never touch anything else under C:\Apps.', '2026-11-26T04:43:31Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.LNCH-T150', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-26T23:59:53Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.LNCH-T88', 'Seen live: opening the Launcher as api-key@mindattic.vault printed ''isn''t signed in on this machine yet. Signing it in first (orchestrator login --account api-key@mindattic.vault)...'' and opened a claude.ai OAuth browser flow, exactly like a normal Team member who''s never signed in.
 
 Cause: AccountScope.IsSignedIn (Services/AccountScope.cs) only checks .claude.json''s oauthAccount.emailAddress. The API-key login (MindAttic.Orchestrator.Core''s ApiKeyPerson) never gets an oauthAccount — ApiKeyPerson.EnsureConfig only sets hasCompletedOnboarding and approves the Vault key in customApiKeyResponses.approved. So AccountScope.Ensure always thinks it''s never signed in and runs ''orchestrator login --account'', which drives a real claude.ai OAuth sign-in for an email that was never meant to have a claude.ai account.
@@ -144450,6 +145254,19 @@ whatever its source. A Collection is any gathering of media:
 - Check how Capture preview sets are opened today (R:\MindAttic\Preview, /preview skill) and make that the same path.', '2026-11-26T15:26:59Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.MVIEW-T37', 'Owner, 2026-11-26: MediaViewer needs to let you switch to an image from the bottom by clicking it, not just Left/Right arrow sequential navigation. Acceptance: single click on a bottom-strip thumbnail opens that item; current item highlighted and kept in view; works with collections (M.MVIEW-T36); arrows keep working.', '2026-11-26T19:23:14Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.MVIEW-T38', 'Found by M.VALT-T57 (LAMP final verification, 2026-11-26). ViewerSettings writes a MediaViewer manifest, so Vault.Desktop has a MediaViewer tab, but the Viewer has no settings entry: nothing calls VaultSettings.Open(AppId) (grep for VaultSettings finds nothing in the repo). Add a settings cog or menu item that opens mindattic-vault://open?app=MediaViewer, with a test that it calls VaultSettings.Open with the MediaViewer AppId (set VaultSettings.Launcher to a fake).', '2026-11-26T22:50:56Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.MVIEW-T39', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:01:31Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.MVIEW-T40', 'Part of epic MAT-T256, feature MAT-T261 (C: deploy cleanup). This requires the repo''s R:\ deploy ticket: work it only once that one is closed with a note that both R:\MindAttic\Apps\<repo>\Debug and \Release launch. The old C:\Apps copy is the only working build until then.
+
+First confirm the folder is this repo''s MindAttic deploy output (its exe names match the R:\ copy), and that no shortcut, scheduled task, startup entry, PATH entry or other app''s exe path still points into it. Repoint any that do at R:\MindAttic\Apps\<repo>\Release (file a ticket in the owning repo if it is another repo''s code). Never touch anything else under C:\Apps, never do a blanket wipe, and never touch R:\MindAttic\Capture, \Media or \Preview. Note on this ticket what was deleted and its size.', '2026-11-27T00:03:00Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.MVIEW-T9', 'Exhaustive bug hunt for this repo, no time limit (the /bughunt skill with no argument).
 
 1. Search the whole repo for real bugs: crashes, wrong results, data loss, races, resource leaks, broken error paths, stale paths/names after renames, dead config, security holes. Read code, don''t run the test suite unless a user asks (/test).
@@ -148581,6 +149398,16 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.PSST-T44',
 4. When nothing confirmed is left, close this ticket with a one-line count of bugs found and fixed.
 
 Filed in a workspace-wide sweep (one per non-archived repo); do not start until allocated.', '2026-11-24T07:00:56Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.PSST-T50', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:01:33Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.RLY-T10', '**Scope**
 - Prototype (in this repo, throwaway) proving the intricate part before anything depends on it: two machines (or two
   servers on one box), spoke offline for an hour, events published on both sides, link restored, nothing lost or
@@ -149171,6 +149998,19 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.SCHD-T71',
 - README: the design (Change Tracking watermark = the run''s START version and UTC time, unchanged DBs skipped, full copy on the first run or expired retention, hashdiff fallback for no-PK and temporal history tables, temporal versioning handling, schema never altered), the dbsync.json fields and tunables, providers.json auth, the log path, and how to enable the job once the target is up.
 
 **Outcome:** `./install.ps1 -WhatIf` parses the manifest and shows Database.SyncToRemote registered disabled; build clean.', '2026-11-26T02:49:23Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.SCHD-T76', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:01:35Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.SCHD-T77', 'Part of epic MAT-T256, feature MAT-T261 (C: deploy cleanup). This requires the repo''s R:\ deploy ticket: work it only once that one is closed with a note that both R:\MindAttic\Apps\<repo>\Debug and \Release launch. The old C:\Apps copy is the only working build until then.
+
+First confirm the folder is this repo''s MindAttic deploy output (its exe names match the R:\ copy), and that no shortcut, scheduled task, startup entry, PATH entry or other app''s exe path still points into it. Repoint any that do at R:\MindAttic\Apps\<repo>\Release (file a ticket in the owning repo if it is another repo''s code). Never touch anything else under C:\Apps, never do a blanket wipe, and never touch R:\MindAttic\Capture, \Media or \Preview. Note on this ticket what was deleted and its size.', '2026-11-27T00:03:02Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TELE-T20', 'Repo had no GitHub Pages site. Adopted MindAttic.Agency''s shared DocFX docs-site pipeline (HOUSE-LAW-14): added .github/workflows/docs.yml, enabled Pages (build_type=workflow), set homepage. Also picks up the navbar-brand Outfit/#ff0033 fix (MAT-T127) from day one.', '2026-11-10T22:06:33Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TELE-T24', 'Exhaustive bug hunt for this repo, no time limit (the /bughunt skill with no argument).
 
@@ -149397,6 +150237,19 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T381',
 4. When nothing confirmed is left, close this ticket with a one-line count of bugs found and fixed.
 
 Filed in a workspace-wide sweep (one per non-archived repo); do not start until allocated.', '2026-11-24T07:01:05Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T384', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:01:37Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.TIX-T385', 'Part of epic MAT-T256, feature MAT-T261 (C: deploy cleanup). This requires the repo''s R:\ deploy ticket: work it only once that one is closed with a note that both R:\MindAttic\Apps\<repo>\Debug and \Release launch. The old C:\Apps copy is the only working build until then.
+
+First confirm the folder is this repo''s MindAttic deploy output (its exe names match the R:\ copy), and that no shortcut, scheduled task, startup entry, PATH entry or other app''s exe path still points into it. Repoint any that do at R:\MindAttic\Apps\<repo>\Release (file a ticket in the owning repo if it is another repo''s code). Never touch anything else under C:\Apps, never do a blanket wipe, and never touch R:\MindAttic\Capture, \Media or \Preview. Note on this ticket what was deleted and its size.', '2026-11-27T00:03:05Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M.VALT-T104', 'Exhaustive bug hunt for this repo, no time limit (the /bughunt skill with no argument).
 
 1. Search the whole repo for real bugs: crashes, wrong results, data loss, races, resource leaks, broken error paths, stale paths/names after renames, dead config, security holes. Read code, don''t run the test suite unless a user asks (/test).
@@ -149874,6 +150727,19 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M5SE-T162', 
 4. When nothing confirmed is left, close this ticket with a one-line count of bugs found and fixed.
 
 Filed in a workspace-wide sweep (one per non-archived repo); do not start until allocated.', '2026-11-24T07:01:37Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M5SE-T163', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:02:41Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M5SE-T164', 'Part of epic MAT-T256, feature MAT-T261 (C: deploy cleanup). This requires the repo''s R:\ deploy ticket: work it only once that one is closed with a note that both R:\MindAttic\Apps\<repo>\Debug and \Release launch. The old C:\Apps copy is the only working build until then.
+
+First confirm the folder is this repo''s MindAttic deploy output (its exe names match the R:\ copy), and that no shortcut, scheduled task, startup entry, PATH entry or other app''s exe path still points into it. Repoint any that do at R:\MindAttic\Apps\<repo>\Release (file a ticket in the owning repo if it is another repo''s code). Never touch anything else under C:\Apps, never do a blanket wipe, and never touch R:\MindAttic\Capture, \Media or \Preview. Note on this ticket what was deleted and its size.', '2026-11-27T00:03:14Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M5SE-T41', 'Mirrored to Mods.MechWarrior5.Shared in 5d1d19a (MM5S-T14).', '2026-11-10T06:58:58Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M5SE-T43', 'Landed in 6d9e79f (closed earlier with ref 83ee56f by mistake; 83ee56f is M5SE-T45).', '2026-11-10T06:51:59Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('M5SE-T46', 'Mercs done (tools/CatalogCheck): items, traits, personas, portraits, voices all match the game exactly incl. DLC9; mechs already scanned at runtime. Clans: tools/clans_utoc_files.py lists all 243k packaged files; all 242 items exist; missing Clan chassis FMT, IFR, NGA, JR7IIC, WLF-IIC. Remaining: Oodle (UE 5.8''s oo2core.dll) + IoStore/Zen reader to pull chassis names/tonnage/variants and item data from the assets, then generate the Clans catalog from the game.', '2026-11-10T07:21:57Z');
@@ -150222,6 +151088,16 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('MB-T53', 'Tr
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('MB-T54', 'Found in MB-T14 bug hunt.', '2026-11-26T17:42:41Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('MB-T55', 'Found in MB-T14 bug hunt.', '2026-11-26T17:42:41Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('MB-T56', 'Found in MB-T14 bug hunt.', '2026-11-26T17:42:42Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('MB-T60', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:01:22Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('MIN-T6', 'Exhaustive bug hunt for this repo, no time limit (the /bughunt skill with no argument).
 
 1. Search the whole repo for real bugs: crashes, wrong results, data loss, races, resource leaks, broken error paths, stale paths/names after renames, dead config, security holes. Read code, don''t run the test suite unless a user asks (/test).
@@ -150286,6 +151162,16 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('OC-T46', 'Ex
 
 Filed in a workspace-wide sweep (one per non-archived repo); do not start until allocated.', '2026-11-24T07:01:46Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('OC-T51', 'Symptom: after a transient DB error the page keeps showing live but never updates again. Cause: LiveLoopAsync/LoopAsync only catch OperationCanceledException; any other exception ends the loop in a discarded task. Fix: catch and skip the tick, keep looping.', '2026-11-26T15:19:37Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('OC-T53', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:01:39Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('OS-T87', 'Exhaustive bug hunt for this repo, no time limit (the /bughunt skill with no argument).
 
 1. Search the whole repo for real bugs: crashes, wrong results, data loss, races, resource leaks, broken error paths, stale paths/names after renames, dead config, security holes. Read code, don''t run the test suite unless a user asks (/test).
@@ -150315,6 +151201,19 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PL-T42', 'Ex
 4. When nothing confirmed is left, close this ticket with a one-line count of bugs found and fixed.
 
 Filed in a workspace-wide sweep (one per non-archived repo); do not start until allocated.', '2026-11-24T07:01:48Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PL-T43', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:01:41Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PL-T44', 'Part of epic MAT-T256, feature MAT-T261 (C: deploy cleanup). This requires the repo''s R:\ deploy ticket: work it only once that one is closed with a note that both R:\MindAttic\Apps\<repo>\Debug and \Release launch. The old C:\Apps copy is the only working build until then.
+
+First confirm the folder is this repo''s MindAttic deploy output (its exe names match the R:\ copy), and that no shortcut, scheduled task, startup entry, PATH entry or other app''s exe path still points into it. Repoint any that do at R:\MindAttic\Apps\<repo>\Release (file a ticket in the owning repo if it is another repo''s code). Never touch anything else under C:\Apps, never do a blanket wipe, and never touch R:\MindAttic\Capture, \Media or \Preview. Note on this ticket what was deleted and its size.', '2026-11-27T00:03:16Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T1016', 'Author /goal 2026-11-18 (verbatim):
 
 "expand and improve all the GLMZ books by integrating the cosmic horror aspects and extra dimensional entities that are part of schisms/incursions/rifts/anomalies/tears/etc - the new book with Ren Babineaux is a first step in that direction of adding ''monsters'' into the books without having to use magic or escaped lab experimnts all the time; so use this oppurtunity to invent an entirely new type of cosmic horror integration for the GLMZ; creatures, beings, orders, cults, always dipping into ''Lovecraft voice'' when describing things; remember these are actual creatures from parallel upper or lower dimensions; the Ren book (lets make the code REN) gives detailed information about these kindsw of things and how they fit together in groups and how they are classified, so every book can in someway be improved by these things, remember its anything and everything can come through; not just monsters but friendly enigmatic entities like the camel rider in Sasha Vo''s Steppin'' Razor; so these creatures, monstersm cults and things below everywhere go through all the GLMZ book s several times over to add these things in until they are a part of the organic nature of the GLMZ world"
@@ -150361,6 +151260,9 @@ Verify: the script parses (`powershell -NoProfile -Command "[scriptblock]::Creat
 
 Rules: change live references only (code, config, scripts, current docs); leave dated records as they are (USER_STORIES ticket rows, changelogs/AMENDMENTS, quicksaves, .agent session files, EF migration *.Designer.cs). Verify by building only; tests are run by the owner via /test. One commit ending in this ticket''s ID.', '2026-11-24T16:15:40Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T1132', 'Kept out of the MAT-T256 rollout on purpose (plan, 2026-11-25): no rollout task until this spike answers. Related to MAT-T256 and MAT-T221.', '2026-11-26T04:47:43Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T1174', 'Part of epic MAT-T256, feature MAT-T261 (C: deploy cleanup). This requires the repo''s R:\ deploy ticket: work it only once that one is closed with a note that both R:\MindAttic\Apps\<repo>\Debug and \Release launch. The old C:\Apps copy is the only working build until then.
+
+First confirm the folder is this repo''s MindAttic deploy output (its exe names match the R:\ copy), and that no shortcut, scheduled task, startup entry, PATH entry or other app''s exe path still points into it. Repoint any that do at R:\MindAttic\Apps\<repo>\Release (file a ticket in the owning repo if it is another repo''s code). Never touch anything else under C:\Apps, never do a blanket wipe, and never touch R:\MindAttic\Capture, \Media or \Preview. Note on this ticket what was deleted and its size.', '2026-11-27T00:03:18Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('PRS-T320', 'The Book Node.Status string column (default ''draft'') carries no real signal across 37 GLMZ books -- every book sits at ''draft'' except 3, and nothing meaningfully branches on the other values either. Clear/remove it.
 
 Add two real fields to Node (book-kind rows, but the column lives on the shared Node table):
@@ -154815,6 +155717,19 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T297', 'E
 
 Filed in a workspace-wide sweep (one per non-archived repo); do not start until allocated.', '2026-11-24T07:01:55Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T303', 'Landed af3f462: the shader now uses TraceResult.HitUv and Confidence (core/shaders/common/classes/ScreenSpaceTrace.hlsl on 26.11.24a). Not compiled yet: resourcecompiler.exe cannot compile shaders standalone (it fails core shaders too), so it needs the editor, which was still recompiling assets (see the chore filed with it). Close once the editor log shows bloodlines_water.shader compiling clean.', '2026-11-26T19:10:56Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T305', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:02:39Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RB-T306', 'Part of epic MAT-T256, feature MAT-T261 (C: deploy cleanup). This requires the repo''s R:\ deploy ticket: work it only once that one is closed with a note that both R:\MindAttic\Apps\<repo>\Debug and \Release launch. The old C:\Apps copy is the only working build until then.
+
+First confirm the folder is this repo''s MindAttic deploy output (its exe names match the R:\ copy), and that no shortcut, scheduled task, startup entry, PATH entry or other app''s exe path still points into it. Repoint any that do at R:\MindAttic\Apps\<repo>\Release (file a ticket in the owning repo if it is another repo''s code). Never touch anything else under C:\Apps, never do a blanket wipe, and never touch R:\MindAttic\Capture, \Media or \Preview. Note on this ticket what was deleted and its size.', '2026-11-27T00:03:20Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RN-T16', 'Repo had no GitHub Pages site. Adopted MindAttic.Agency''s shared DocFX docs-site pipeline (HOUSE-LAW-14): added .github/workflows/docs.yml, enabled Pages (build_type=workflow), set homepage. Also picks up the navbar-brand Outfit/#ff0033 fix (MAT-T127) from day one.', '2026-11-10T22:09:06Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RN-T18', 'Exhaustive bug hunt for this repo, no time limit (the /bughunt skill with no argument).
 
@@ -154846,6 +155761,16 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RTB-T275', '
 - tools\pair_screenshots.py (~3, ~13): default folder the new root; when it is missing and R:\MindAttic\Capture\RogueTraderBrevity exists, use that (LEGACY-ROOT, one release).
 
 Outcome: python -I -m py_compile on both scripts passes; no old root left outside LEGACY-ROOT lines.', '2026-11-24T20:32:40Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RTB-T276', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:02:43Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('RTO-T10', 'Icons that look native.
 
 For test builds, point `m_Icon {guid, fileid}` at existing game sprites (a data-only mod can reference any game asset; FieldOverride supports UnityEngine.Object by guid/fileid), one distinct icon per Overwatch type. Final art: the user can generate icons (or take them from another game); match RT ability-icon size and style using a few weapon-ability icons from the template as reference. Custom sprites need the Unity template build (Content → Bundles).', '2026-10-26T18:26:03Z');
@@ -155320,6 +156245,16 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('TRC-T82', 'S
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('TRC-T92', 'Symptom: Create Account throws or leaves the user signed out after the account is created. Cause: SignInManager.SignInAsync runs inside the InteractiveServer circuit (no HttpContext response); Program.cs notes cookies need a plain POST endpoint. Fix: navigate to /login after CreateAsync succeeds.', '2026-11-26T20:39:18Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('TRC-T93', 'Symptom: a single scraper HTTP timeout aborts the full scrape as Paused. Cause: catch (OperationCanceledException) { throw; } matches timeouts. Fix: only rethrow when ct.IsCancellationRequested.', '2026-11-26T20:57:38Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('TRC-T94', 'Symptom: a Claude call timeout propagates out of ExtractAsync. Cause: catch (OperationCanceledException) { throw; } matches timeouts. Fix: only rethrow when ct.IsCancellationRequested.', '2026-11-26T20:57:39Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('TRC-T99', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:01:43Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('TT-T23', 'Move the content of ThinkTank.Shared/Components/Pages/Settings.razor and SettingsAppearance.razor into a settings-tab package implementing the MindAttic.Components settings-tab contract (M.COMP-T148), consumed by MindAttic.Vault.Dashboard. If ThinkTank isn''t already on MindAttic.Vault''s AddVaultAppSettings<T> for its preferences, migrate onto it first so the tab reads/writes through Vault, not a local store.', '2026-10-31T03:32:44Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('TT-T24', 'Delete ThinkTank.Shared/Components/Pages/Settings.razor and SettingsAppearance.razor (and its menu/route entry) once its tab package (previous ticket) is live in Dashboard. Replace the app''s settings/cog entry point with the shared ''open my settings'' helper (M.COMP-T150) deep-linking to this app''s Dashboard tab.', '2026-10-31T03:32:45Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('TT-T25', 'ThinkTank.Shared/Components/Pages/Settings.razor and SettingsAppearance.razor is already a plain Razor component (Sdk.Razor), so it''s portable as-is into either MindAttic.Vault.Desktop (via BlazorWebView) or MindAttic.Vault.Web (if this app opts its tab into web hosting, M.VALT-T32). Just implement the Razor-kind contract (M.COMP-T151); no UI rewrite needed. If ThinkTank isn''t already on AddVaultAppSettings<T>, migrate onto it first.', '2026-10-31T03:48:57Z');
@@ -155345,6 +156280,16 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('TT-T66', 'Ex
 4. When nothing confirmed is left, close this ticket with a one-line count of bugs found and fixed.
 
 Filed in a workspace-wide sweep (one per non-archived repo); do not start until allocated.', '2026-11-24T07:02:04Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('TT-T81', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:01:45Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('TUT-T111', 'StopReadingTimer adds wall-clock elapsed seconds on top of the per-second ticks already counted by OnReadingTimerElapsed (about 2x), and runs again when the timer is already stopped or never started (restored lesson: sectionStartTime is default), so sections get marked read too early.', '2026-11-26T18:16:47Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('TUT-T112', 'AskAboutTerm and SendFromJs have no isSending guard; a second send replaces cts and the first send''s finally disposes it and clears isSending while the second is still running.', '2026-11-26T18:16:47Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('TUT-T132', 'symptom: Denied authoring actions (toggle resource in course, rebuild, merge, regenerate, delete) and other statusMessage notices set from the Library tab are never shown; the status block lives inside the Add tab.
@@ -155353,6 +156298,16 @@ test: none (build check).', '2026-11-26T20:44:48Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('TUT-T133', 'symptom: In a comma-decimal locale the Min Confidence override select shows no selection and TryParse of "0.3" fails, yet ''updated'' is reported.
 cause: float.TryParse and ToString("0.0") use the current culture while option values are invariant.
 test: none (build check).', '2026-11-26T20:44:50Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('TUT-T138', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:01:47Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('TUT-T27', 'Move the content of Tutor.Shared/Components/Pages/Settings.razor into a settings-tab package implementing the MindAttic.Components settings-tab contract (M.COMP-T148), consumed by MindAttic.Vault.Dashboard. If Tutor isn''t already on MindAttic.Vault''s AddVaultAppSettings<T> for its preferences, migrate onto it first so the tab reads/writes through Vault, not a local store.', '2026-10-31T03:32:39Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('TUT-T28', 'Delete Tutor.Shared/Components/Pages/Settings.razor (and its menu/route entry) once its tab package (previous ticket) is live in Dashboard. Replace the app''s settings/cog entry point with the shared ''open my settings'' helper (M.COMP-T150) deep-linking to this app''s Dashboard tab.', '2026-10-31T03:32:40Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('TUT-T29', 'Tutor.Shared/Components/Pages/Settings.razor is already a plain Razor component (Sdk.Razor), so it''s portable as-is into either MindAttic.Vault.Desktop (via BlazorWebView) or MindAttic.Vault.Web (if this app opts its tab into web hosting, M.VALT-T32). Just implement the Razor-kind contract (M.COMP-T151); no UI rewrite needed. If Tutor isn''t already on AddVaultAppSettings<T>, migrate onto it first.', '2026-10-31T03:48:59Z');
@@ -155430,6 +156385,19 @@ Unity changes: Packages/manifest.json entry becomes "com.mindattic.media.capture
 Verify: a Unity batchmode compile (the repo tools/unity.ps1 if it has one, else Unity.exe -batchmode -nographics -quit -projectPath . -logFile -) with no error CS lines; if the Editor already has the project open, let it reimport instead of starting a second instance.
 
 Rules: change live references only (code, config, scripts, current docs); leave dated records as they are (USER_STORIES ticket rows, changelogs/AMENDMENTS, quicksaves, .agent session files, EF migration *.Designer.cs). Verify by building only; tests are run by the owner via /test. One commit ending in this ticket''s ID.', '2026-11-24T16:17:07Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.CHN-T118', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:02:16Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.CHN-T119', 'Part of epic MAT-T256, feature MAT-T261 (C: deploy cleanup). This requires the repo''s R:\ deploy ticket: work it only once that one is closed with a note that both R:\MindAttic\Apps\<repo>\Debug and \Release launch. The old C:\Apps copy is the only working build until then.
+
+First confirm the folder is this repo''s MindAttic deploy output (its exe names match the R:\ copy), and that no shortcut, scheduled task, startup entry, PATH entry or other app''s exe path still points into it. Repoint any that do at R:\MindAttic\Apps\<repo>\Release (file a ticket in the owning repo if it is another repo''s code). Never touch anything else under C:\Apps, never do a blanket wipe, and never touch R:\MindAttic\Capture, \Media or \Preview. Note on this ticket what was deleted and its size.', '2026-11-27T00:03:22Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.CHN-T97', 'C:\Apps\Unity.Chain\Unity.Chain.exe currently carries a blank/empty icon resource (extracted icon is a near-empty 185-byte bitmap), unlike every other shipped Unity app (Eve, Cursory, SpaceGod, GridGame, TownWalker, UnityRonin all share one identical exe hash and the same standard Unity cube icon). Embed the standard Unity .ico (sourced from the shared/common exe) into Unity.Chain''s build output so its Desktop shortcut (Unity.Chain.lnk, already pointing at C:\Apps\Unity.Chain\Unity.Chain.exe,0) shows the correct icon.', '2026-10-28T00:38:51Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.EVE-T49', 'Adopt the shared, off-by-default --headless mode from MAU-T18 (Unity.Shared Headless module) in this game: reference the shared package/plugin, wire the game''s own opt-ins (skip the main menu into a normal session when headless), and give its run script a -Headless switch that launches with the shared launcher''s flags. Without --headless nothing changes.', '2026-11-07T04:33:30Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.EVE-T55', 'Exhaustive bug hunt for this repo, no time limit (the /bughunt skill with no argument).
@@ -155448,6 +156416,19 @@ Unity changes: Packages/manifest.json entry becomes "com.mindattic.media.capture
 Verify: a Unity batchmode compile (the repo tools/unity.ps1 if it has one, else Unity.exe -batchmode -nographics -quit -projectPath . -logFile -) with no error CS lines; if the Editor already has the project open, let it reimport instead of starting a second instance.
 
 Rules: change live references only (code, config, scripts, current docs); leave dated records as they are (USER_STORIES ticket rows, changelogs/AMENDMENTS, quicksaves, .agent session files, EF migration *.Designer.cs). Verify by building only; tests are run by the owner via /test. One commit ending in this ticket''s ID.', '2026-11-24T16:17:01Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.EVE-T58', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:01:58Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.EVE-T59', 'Part of epic MAT-T256, feature MAT-T261 (C: deploy cleanup). This requires the repo''s R:\ deploy ticket: work it only once that one is closed with a note that both R:\MindAttic\Apps\<repo>\Debug and \Release launch. The old C:\Apps copy is the only working build until then.
+
+First confirm the folder is this repo''s MindAttic deploy output (its exe names match the R:\ copy), and that no shortcut, scheduled task, startup entry, PATH entry or other app''s exe path still points into it. Repoint any that do at R:\MindAttic\Apps\<repo>\Release (file a ticket in the owning repo if it is another repo''s code). Never touch anything else under C:\Apps, never do a blanket wipe, and never touch R:\MindAttic\Capture, \Media or \Preview. Note on this ticket what was deleted and its size.', '2026-11-27T00:03:26Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.HARE-T107', 'Rename this project everywhere to identify it as reverse-engineered: Unity.Hare -> Unity.Rea.Hare.
 
 Scope (all of it, in this repo''s own checkout on main):
@@ -155504,6 +156485,16 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.HARE-T136'
 tools\capture.ps1: $out (~56) = R:\MindAttic\Media\Capture and the header comment (~8); anything that reads the images back uses the new root.
 
 Outcome: the script still parses; a run (or dry run) lands under R:\MindAttic\Media\Capture\<repo>\; no old root left outside USER_STORIES.', '2026-11-24T20:33:04Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.HARE-T137', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:02:18Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.INC-T45', 'Rename this project everywhere to identify it as reverse-engineered: Unity.Incognito -> Unity.Rea.Incognito.
 
 Scope (all of it, in this repo''s own checkout on main):
@@ -155533,6 +156524,16 @@ Unity changes: Packages/manifest.json entry becomes "com.mindattic.media.capture
 Verify: a Unity batchmode compile (the repo tools/unity.ps1 if it has one, else Unity.exe -batchmode -nographics -quit -projectPath . -logFile -) with no error CS lines; if the Editor already has the project open, let it reimport instead of starting a second instance.
 
 Rules: change live references only (code, config, scripts, current docs); leave dated records as they are (USER_STORIES ticket rows, changelogs/AMENDMENTS, quicksaves, .agent session files, EF migration *.Designer.cs). Verify by building only; tests are run by the owner via /test. One commit ending in this ticket''s ID.', '2026-11-24T16:17:18Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.INC-T62', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:02:20Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.OVW-T100', 'Adopt the shared, off-by-default --headless mode from MAU-T18 (Unity.Shared Headless module) in this game: reference the shared package/plugin, wire the game''s own opt-ins (skip the main menu into a normal session when headless), and give its run script a -Headless switch that launches with the shared launcher''s flags. Without --headless nothing changes.', '2026-11-07T04:33:37Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.OVW-T105', 'Exhaustive bug hunt for this repo, no time limit (the /bughunt skill with no argument).
 
@@ -155546,6 +156547,16 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.OVW-T106',
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.OVW-T107', 'Repo: D:\Projects\MindAttic\Unity.Rea.Overworld. Docs only (the project does not reference the package yet, checked 2026-11-24); nothing compiles.
 
 Rules: change live references only (code, config, scripts, current docs); leave dated records as they are (USER_STORIES ticket rows, changelogs/AMENDMENTS, quicksaves, .agent session files, EF migration *.Designer.cs). Verify by building only; tests are run by the owner via /test. One commit ending in this ticket''s ID.', '2026-11-24T16:17:23Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.OVW-T108', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:02:22Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.OVW-T44', 'Symptom: an unseeded player build (no -overworld-seed) throws NullReferenceException at Clouds..ctor (Assets/Unity.Overworld/Core/Scenery/Weather.cs:237) from OverworldBootstrap.Start (line 136), so the game never starts. Present on origin/main 8eaf563.
 
 Cause: Clouds(SceneryData data, Random random = null) and Weather(SceneryData data, Random random = null) store ''random ?? new Random()'' in the field, but the picture draw ''random.Next(1, c.Textures.Count + 1)'' (Clouds, line 237) and the direction draw ''switch (random.Next(1, 5))'' (Weather, line 153) inside the constructors use the parameter, which is null when unseeded. Percent() uses the field, so only those two draws break.
@@ -155582,6 +156593,16 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.RICO-T173'
 4. When nothing confirmed is left, close this ticket with a one-line count of bugs found and fixed.
 
 Filed in a workspace-wide sweep (one per non-archived repo); do not start until allocated.', '2026-11-24T07:02:29Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.RICO-T174', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:02:26Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.RON-T22', 'Adopt the shared, off-by-default --headless mode from MAU-T18 (Unity.Shared Headless module) in this game: reference the shared package/plugin, wire the game''s own opt-ins (skip the main menu into a normal session when headless), and give its run script a -Headless switch that launches with the shared launcher''s flags. Without --headless nothing changes. This repo is archived on GitHub: unarchive it (gh repo unarchive), land the change, then archive it again (gh repo archive).', '2026-11-07T04:33:46Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.RON-T31', 'Owner-approved rename MindAttic.Capture -> MindAttic.Media.Capture (linked related to that epic). Its Unity package becomes com.mindattic.media.capture and namespaces MindAttic.Media.Capture.*; the capture CLI, %LOCALAPPDATA%\MindAttic\Capture\bin and R:\MindAttic\Capture stay.', '2026-11-24T16:17:27Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.RON-T32', 'Repo: D:\Projects\MindAttic\UnityRonin. Files: Packages/manifest.json (~3), Assets/UnityRonin/Editor/RoninBuild.cs (~84 comment), README.md (~107).
@@ -155591,6 +156612,16 @@ Unity changes: Packages/manifest.json entry becomes "com.mindattic.media.capture
 Verify: a Unity batchmode compile (the repo tools/unity.ps1 if it has one, else Unity.exe -batchmode -nographics -quit -projectPath . -logFile -) with no error CS lines; if the Editor already has the project open, let it reimport instead of starting a second instance.
 
 Rules: change live references only (code, config, scripts, current docs); leave dated records as they are (USER_STORIES ticket rows, changelogs/AMENDMENTS, quicksaves, .agent session files, EF migration *.Designer.cs). Verify by building only; tests are run by the owner via /test. One commit ending in this ticket''s ID.', '2026-11-24T16:17:29Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.RON-T33', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:02:30Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.SPC-T602', 'Symptom: at 1 month/s or 1 yr/s, Fleet.StateOf throws NullReferenceException in Fleet.BaseStateOf (Fleet.cs:335) every frame for a gone ship: Phase Parked, Orbit null. UnitySpaceApp.UpdateShips reads every ship of the active fleet, so the rest of Update is skipped from then on (Unreal.SpaceGod US-T59: the C++ port crashes, the C# track stalls).
 
 Cause: an escort has no motion of its own (it flies its leader''s, Ship.Controller; a hired or fresh escort has Orbit null and Phase Parked from creation). Two places leave it leaderless and gone without one:
@@ -155683,6 +156714,19 @@ index 6d32b68..3699455 100644
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.SPC-T603', 'Adopt the shared, off-by-default --headless mode from MAU-T18 (Unity.Shared Headless module) in this game: reference the shared package/plugin, wire the game''s own opt-ins (skip the main menu into a normal session when headless), and give its run script a -Headless switch that launches with the shared launcher''s flags. Without --headless nothing changes. This repo is archived on GitHub: unarchive it (gh repo unarchive), land the change, then archive it again (gh repo archive).', '2026-11-07T04:33:44Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.SPC-T643', 'Found by the M.CAPT-T181 sweep (Unity.SpaceGod was not in the consumer list of M.CAPT-T167). If the repo is retired in favour of SpaceGod.Unreal / SpaceGod.Unity.CSharp, close as wont-do instead. Steps as in the README''s Formerly MindAttic.Capture section of MindAttic.Media.Capture. Keep runtime ids (MindAttic > Capture menu path, [MindAttic.Capture] log tags, R:\MindAttic\Capture). Verify by opening/compiling in Unity batch mode if cheap. One commit ending in this ticket''s ID.', '2026-11-24T18:53:05Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.SPC-T644', 'Found by the M.CAPT-T208 workspace sweep: `README.md:324` and `Assets/UnitySpace/Runtime/CaptureRunner.cs:11` still say shots go to `R:\MindAttic\Capture\Unity.SpaceGod\`. Captures now go to `R:\MindAttic\Media\Capture\{RepoName}` (M.CAPT-T199) and the old root holds only a marker README. Update the text to the Media root (with the package move in U.SPC-T643 if that is where the path comes from).', '2026-11-26T21:41:23Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.SPC-T645', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:02:28Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.SPC-T646', 'Part of epic MAT-T256, feature MAT-T261 (C: deploy cleanup). This requires the repo''s R:\ deploy ticket: work it only once that one is closed with a note that both R:\MindAttic\Apps\<repo>\Debug and \Release launch. The old C:\Apps copy is the only working build until then.
+
+First confirm the folder is this repo''s MindAttic deploy output (its exe names match the R:\ copy), and that no shortcut, scheduled task, startup entry, PATH entry or other app''s exe path still points into it. Repoint any that do at R:\MindAttic\Apps\<repo>\Release (file a ticket in the owning repo if it is another repo''s code). Never touch anything else under C:\Apps, never do a blanket wipe, and never touch R:\MindAttic\Capture, \Media or \Preview. Note on this ticket what was deleted and its size.', '2026-11-27T00:03:28Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.VAN-T33', 'Rename this project everywhere to identify it as reverse-engineered: Unity.ProjectVania -> Unity.Rea.ProjectVania.
 
 Scope (all of it, in this repo''s own checkout on main):
@@ -155703,6 +156747,16 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.VAN-T44', 
 4. When nothing confirmed is left, close this ticket with a one-line count of bugs found and fixed.
 
 Filed in a workspace-wide sweep (one per non-archived repo); do not start until allocated.', '2026-11-24T07:02:25Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('U.VAN-T45', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:02:24Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UC-T47', 'Rename this project everywhere to identify it as reverse-engineered: Unity.Cursory -> Unity.Rea.Cursory.
 
 Scope (all of it, in this repo''s own checkout on main):
@@ -155732,6 +156786,19 @@ Unity changes: Packages/manifest.json entry becomes "com.mindattic.media.capture
 Verify: a Unity batchmode compile (the repo tools/unity.ps1 if it has one, else Unity.exe -batchmode -nographics -quit -projectPath . -logFile -) with no error CS lines; if the Editor already has the project open, let it reimport instead of starting a second instance.
 
 Rules: change live references only (code, config, scripts, current docs); leave dated records as they are (USER_STORIES ticket rows, changelogs/AMENDMENTS, quicksaves, .agent session files, EF migration *.Designer.cs). Verify by building only; tests are run by the owner via /test. One commit ending in this ticket''s ID.', '2026-11-24T16:16:56Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UC-T68', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:01:56Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UC-T69', 'Part of epic MAT-T256, feature MAT-T261 (C: deploy cleanup). This requires the repo''s R:\ deploy ticket: work it only once that one is closed with a note that both R:\MindAttic\Apps\<repo>\Debug and \Release launch. The old C:\Apps copy is the only working build until then.
+
+First confirm the folder is this repo''s MindAttic deploy output (its exe names match the R:\ copy), and that no shortcut, scheduled task, startup entry, PATH entry or other app''s exe path still points into it. Repoint any that do at R:\MindAttic\Apps\<repo>\Release (file a ticket in the owning repo if it is another repo''s code). Never touch anything else under C:\Apps, never do a blanket wipe, and never touch R:\MindAttic\Capture, \Media or \Preview. Note on this ticket what was deleted and its size.', '2026-11-27T00:03:24Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UE-T57', 'Repo had no GitHub Pages site. Adopted MindAttic.Agency''s shared DocFX docs-site pipeline (HOUSE-LAW-14): added .github/workflows/docs.yml, enabled Pages (build_type=workflow), set homepage. Also picks up the navbar-brand Outfit/#ff0033 fix (MAT-T127) from day one.', '2026-11-10T22:10:17Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UE-T76', 'Exhaustive bug hunt for this repo, no time limit (the /bughunt skill with no argument).
 
@@ -155741,6 +156808,19 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UE-T76', 'Ex
 4. When nothing confirmed is left, close this ticket with a one-line count of bugs found and fixed.
 
 Filed in a workspace-wide sweep (one per non-archived repo); do not start until allocated.', '2026-11-24T07:02:33Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UE-T77', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:02:34Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UE-T78', 'Part of epic MAT-T256, feature MAT-T261 (C: deploy cleanup). This requires the repo''s R:\ deploy ticket: work it only once that one is closed with a note that both R:\MindAttic\Apps\<repo>\Debug and \Release launch. The old C:\Apps copy is the only working build until then.
+
+First confirm the folder is this repo''s MindAttic deploy output (its exe names match the R:\ copy), and that no shortcut, scheduled task, startup entry, PATH entry or other app''s exe path still points into it. Repoint any that do at R:\MindAttic\Apps\<repo>\Release (file a ticket in the owning repo if it is another repo''s code). Never touch anything else under C:\Apps, never do a blanket wipe, and never touch R:\MindAttic\Capture, \Media or \Preview. Note on this ticket what was deleted and its size.', '2026-11-27T00:03:30Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UM-T84', 'LAMP migration for **Unity.Multiplayer Hosting.Cli** (plan: MindAttic.Vault/docs/rfc/0003-lamp.md, Rollout step 5).
 
 - Move to the new MindAttic.Vault major.
@@ -155834,6 +156914,16 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T126', '
 - run.bat (~5) comment; README.md and docs if they name the root.
 
 Outcome: rg for R:\MindAttic\Capture / Preview in the repo (excluding USER_STORIES) finds nothing; tools\run.ps1 still parses.', '2026-11-24T20:32:30Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T127', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:02:36Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNR-T2', '## Story
 
 <!-- As a ..., I want ... so that ... -->
@@ -155955,6 +157045,19 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNS-T37', 'E
 4. When nothing confirmed is left, close this ticket with a one-line count of bugs found and fixed.
 
 Filed in a workspace-wide sweep (one per non-archived repo); do not start until allocated.', '2026-11-24T07:02:39Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNS-T38', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:01:49Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UNS-T39', 'Part of epic MAT-T256, feature MAT-T261 (C: deploy cleanup). This requires the repo''s R:\ deploy ticket: work it only once that one is closed with a note that both R:\MindAttic\Apps\<repo>\Debug and \Release launch. The old C:\Apps copy is the only working build until then.
+
+First confirm the folder is this repo''s MindAttic deploy output (its exe names match the R:\ copy), and that no shortcut, scheduled task, startup entry, PATH entry or other app''s exe path still points into it. Repoint any that do at R:\MindAttic\Apps\<repo>\Release (file a ticket in the owning repo if it is another repo''s code). Never touch anything else under C:\Apps, never do a blanket wipe, and never touch R:\MindAttic\Capture, \Media or \Preview. Note on this ticket what was deleted and its size.', '2026-11-27T00:03:32Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UQD-T100', 'Exhaustive bug hunt for this repo, no time limit (the /bughunt skill with no argument).
 
 1. Search the whole repo for real bugs: crashes, wrong results, data loss, races, resource leaks, broken error paths, stale paths/names after renames, dead config, security holes. Read code, don''t run the test suite unless a user asks (/test).
@@ -155964,6 +157067,16 @@ INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UQD-T100', '
 
 Filed in a workspace-wide sweep (one per non-archived repo); do not start until allocated.', '2026-11-24T07:02:27Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UQD-T101', 'First confirm the folder is a MindAttic deploy output and no shortcut, scheduled task, startup entry or PATH entry still points into it; never touch anything else under C:\Apps.', '2026-11-26T04:47:04Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UQD-T102', 'Part of epic MAT-T256 (Unify app deploys on R:), feature MAT-T260 (Per-repo deploy rollout). Owner-approved 2026-11-26: every repo that produces an executable deploys Debug and Release to one standard place, R:\MindAttic\Apps\<repo>\{Debug,Release}\<exe>, every time.
+
+Steps:
+1. Make sure the repo has a working deploy plan: a run.ps1 copied from MindAttic.Agency\shared\templates\run.ps1 (Write-RunPs1, calling Invoke-AppRun in deploy-lib.ps1) and a run.bat from Write-RunBat. Several repos already adopted it (MAT-T298 to MAT-T316); if this one still has a hand-rolled run.ps1, or one that installs to C:\Apps, adopt it (`Write-RunPs1 -Repo <repo> -Force`). Where Get-Plan can''t detect the right project, add a `.agent\publish.json` override or fill in the run.ps1 override block. Check it with `.\run.ps1 -Redeploy -DryRun`.
+2. Run Redeploy (menu option 1, `.\run.ps1 -Redeploy`) to build Debug and Release.
+3. Confirm the exe (or player/package) exists at R:\MindAttic\Apps\<repo>\Debug\ and \Release\, and that Run Debug (2) and Run Release (3) each start it. Quit what you started.
+4. Repoint anything in this repo that still names an old deploy path (C:\Apps\<repo>, C:\Apps\MindAttic\<repo>, a shortcut or scheduler job it installs) at R:\MindAttic\Apps\<repo>\Release.
+5. Note the two exe paths on this ticket. If an old copy of this repo''s build exists anywhere other than R:\MindAttic\Apps (beyond what a cleanup ticket already covers), say so in that note.
+
+Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:02:32Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UQD-T63', 'Original: choose_random_arena.gml is called only from obj_location''s create event; obj_game builds the arena once. Rebuild: MatchSession.BeginRound and OnlineDuelHost redraw ArenaRoll every round. Fix: draw it with the match (NewMatch / host''s match), keep it for every round of that match; ambient effect follows. Update BIBLE (drop the deviation) and RECONSTRUCTION.', '2026-10-27T03:17:17Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UQD-T64', 'obj_player step: state defeated -> if(HP > 0) image_index = 0. Animation End: defeated and HP <= 0 -> image_index = 3 and with(obj_blood_emitter) instance_destroy(). With best of 3 standing in for HP, the match-deciding round is the killing blow. Fix FighterMotion/DuelView and DuelBlood; BIBLE deviation removed.', '2026-10-27T03:17:20Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('UQD-T65', 'Original: obj_game key press Escape -> room_goto(characterselect); obj_mainmenu Escape -> game_end(); obj_victory/obj_gameover: no handler. Rebuild DuelQuit quits the application between rounds. Fix: DuelQuit loads the MainMenu scene (any phase); the pad''s Select+Start chord does the same; verdict screen ignores Escape. Main menu keeps game_end.', '2026-10-27T03:17:28Z');
@@ -157287,6 +158400,7 @@ Rewind an hour of 1 week/s play (and a minute of a live dogfight) to an exact mo
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('AES-T10', 'play.ps1 + play.bat', '2026-11-24T19:46:39Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('AES-T11', 'Verify estimated device specs', '2026-11-24T21:22:15Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('AES-T12', 'AES move to R: and cleanup', '2026-11-26T04:46:51Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('AES-T14', 'AES Debug and Release verified', '2026-11-27T00:01:52Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('AES-T2', 'Orchestrator visual style', '2026-11-21T21:26:18Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('AES-T4', 'Exhaustive bughunt', '2026-11-24T06:58:47Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('AES-T5', 'Flagship profiles + play menu', '2026-11-24T19:46:25Z');
@@ -157313,6 +158427,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('AMN-T3', 'README + 
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('AUTO-T3', 'Exhaustive bughunt', '2026-11-24T06:59:01Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('AUTO-T4', 'Adopt MindAttic.Media.Capture name', '2026-11-24T16:18:10Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('AUTO-T5', 'Auto.GamePlay: Media.Capture name', '2026-11-24T16:18:12Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('AUTO-T6', 'Auto.GamePlay on R:', '2026-11-27T00:01:51Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('AUT-T35', 'Midjourney male-portrait batch collection', '2026-11-21T06:58:40Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('AUT-T37', 'Exhaustive bughunt', '2026-11-24T06:59:08Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('AUT-T38', 'Adopt MindAttic.Media.Capture', '2026-11-24T16:16:32Z');
@@ -157320,6 +158435,8 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('AUT-T39', 'Automata
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('AUT-T40', 'Automata capture comment Media root', '2026-11-24T20:33:08Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('AUT-T41', 'Cross-task step bindings break on copy', '2026-11-26T15:29:59Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('AUT-T49', 'Draft button stuck', '2026-11-26T18:14:32Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('AUT-T50', 'Automata on R:', '2026-11-27T00:00:49Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('AUT-T51', 'Automata C: cleanup', '2026-11-27T00:02:51Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('AWN2-T3', 'Exhaustive bughunt', '2026-11-24T06:59:06Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('C2SD-T78', 'Exhaustive bughunt', '2026-11-24T07:01:19Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('C2WS-T51', 'Exhaustive bughunt', '2026-11-24T07:01:21Z');
@@ -157361,6 +158478,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('COR-T53', 'Exhausti
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('CS-T10', 'Exhaustive bughunt', '2026-11-24T07:00:24Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('CUR-T30', 'Exhaustive bughunt', '2026-11-24T06:59:13Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('CUR-T31', 'Context menu click listener', '2026-11-26T15:39:26Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('CUR-T35', 'Cursory on R:', '2026-11-27T00:01:07Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('DEAS-T2', 'Exhaustive bughunt', '2026-11-24T06:59:22Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('DT-T3', 'Exhaustive bughunt', '2026-11-24T06:59:27Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('EP-T2', 'Create ePub repo', '2026-11-11T06:08:59Z');
@@ -157404,6 +158522,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('FOR-T36', 'Move For
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('FOR-T37', 'Move Formicarium database', '2026-11-25T19:33:05Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('FOR-T38', 'Host Formicarium on Hetzner', '2026-11-25T19:33:09Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('FOR-T39', 'Copy shared lighting arrays', '2026-11-26T10:51:13Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('FOR-T40', 'Formicarium on R:', '2026-11-27T00:01:10Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('G.AWPN-T241', 'Exhaustive bughunt', '2026-11-24T07:01:31Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('G.CTD-T53', 'Exhaustive bughunt', '2026-11-24T07:01:23Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('G.EZ-T135', 'GTFO.EZ README update', '2026-11-22T06:41:04Z');
@@ -157866,6 +158985,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T801', 'Dev pas
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T802', 'AI mode switch', '2026-11-26T20:56:44Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T803', 'All credentials in Vault', '2026-11-26T20:56:45Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T805', 'Bust leans off plinth', '2026-11-26T23:57:54Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T806', 'Gadfly on R:', '2026-11-27T00:01:12Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T81', 'Courses, objectives, rubric criteria', '2026-11-21T00:49:01Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T82', 'Grading policy and thresholds', '2026-11-21T00:49:17Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T83', 'Examiner and reviewer roles', '2026-11-21T00:49:38Z');
@@ -157894,6 +159014,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GGC-T32', 'Headless
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GGC-T38', 'Exhaustive bughunt', '2026-11-24T07:02:06Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GGC-T39', 'Adopt MindAttic.Media.Capture', '2026-11-24T16:16:49Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GGC-T40', 'TownWalker on Media.Capture', '2026-11-24T16:16:51Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GGC-T41', 'TownWalker on R:', '2026-11-27T00:01:54Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GGS-T15', 'Operations layer core', '2026-11-22T06:42:22Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GGS-T16', 'Rules validation', '2026-11-22T06:42:24Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GGS-T17', 'Studio CLI', '2026-11-22T06:42:26Z');
@@ -158503,6 +159624,8 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IDEA-T76', 'Move Id
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IDEA-T77', 'Host IdeaCms on Hetzner', '2026-11-25T19:34:02Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IDEA-T78', 'Packer.NamedBool/NamedString NRE drops all manifest settings', '2026-11-26T10:49:15Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IDEA-T79', 'Development config points at local SQL', '2026-11-26T12:25:03Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IDEA-T89', 'IdeaCms on R:', '2026-11-27T00:01:15Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IDEA-T90', 'IdeaCms C: cleanup', '2026-11-27T00:02:53Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T448', 'Gapper study population amendment', '2026-11-07T05:28:30Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T449', 'Full IdiotProof data backup', '2026-11-07T07:09:04Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T450', 'Gapper amendment 02 news-ride', '2026-11-07T07:09:43Z');
@@ -158573,6 +159696,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T652', 'IdiotPro
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T653', 'IdiotProof run menu and consumers', '2026-11-26T04:43:19Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('IP-T654', 'IdiotProof C: cleanup', '2026-11-26T04:46:48Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('JFP-T30', 'Exhaustive bughunt', '2026-11-24T06:59:58Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('JFP-T31', 'JellyFinPoster deploy plan', '2026-11-27T00:02:38Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('JF-T26', 'Exhaustive bughunt', '2026-11-24T07:00:04Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('JH-T33', 'Log sink setup', '2026-11-22T06:37:59Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('JH-T34', 'Log events and exceptions', '2026-11-22T06:38:00Z');
@@ -158581,6 +159705,8 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('JH-T37', 'Exhaustiv
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('JH-T38', 'Challenge URL path only', '2026-11-26T15:45:39Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('JH-T39', 'Indeed multi-type filter', '2026-11-26T15:45:40Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('JH-T40', 'Settings refresh guard', '2026-11-26T15:45:41Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('JH-T42', 'JobHunt on R:', '2026-11-27T00:01:17Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('JH-T43', 'JobHunt C: cleanup', '2026-11-27T00:02:54Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T26', 'Publish all GLMZ books', '2026-11-19T19:26:17Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T27', 'Vendor missing MindAttic.Vault', '2026-11-19T19:29:08Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T28', 'Repack Prose.Core for Node.Status drop', '2026-11-19T19:32:45Z');
@@ -158593,6 +159719,8 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T34', 'Log tests
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T35', 'Publish GLMZ books', '2026-11-22T06:38:17Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T36', 'Link wiki listings', '2026-11-22T06:38:19Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T38', 'Exhaustive bughunt', '2026-11-24T07:00:06Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T40', 'KdpPublish on R:', '2026-11-27T00:01:20Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KP-T41', 'KdpPublish C: cleanup', '2026-11-27T00:02:57Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KYM-T10', 'Familiarity / renown', '2026-11-26T02:56:39Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KYM-T11', 'Deploy command', '2026-11-26T03:29:40Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('KYM-T12', 'Image pool identifiability audit', '2026-11-26T07:32:01Z');
@@ -158679,6 +159807,8 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.CAPT-T217', 'Hotk
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.CAPT-T221', 'Hotkey change refused spuriously', '2026-11-26T15:36:13Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.CAPT-T222', 'Host reader fault hangs', '2026-11-26T16:33:03Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.CAPT-T223', 'Web video dir leaked', '2026-11-26T16:33:05Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.CAPT-T228', 'MindAttic.Media.Capture on R:', '2026-11-27T00:01:29Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.CAPT-T229', 'Capture C: cleanup', '2026-11-27T00:02:59Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.COMP-T183', 'MaToggleIcon two-state icon button', '2026-11-10T14:09:46Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.COMP-T189', 'Dropdown submenus', '2026-11-11T04:07:10Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.COMP-T190', 'Full-width light-gray MaSeparator', '2026-11-11T07:15:59Z');
@@ -158721,6 +159851,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.DPLY-T33', 'Extra
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.DPLY-T34', 'Batching tests', '2026-11-22T06:37:47Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.DPLY-T36', 'Exhaustive bughunt', '2026-11-24T07:00:37Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.DPLY-T37', 'KnowYourMech site profile', '2026-11-26T03:29:41Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.DPLY-T39', 'MindAttic.Deploy on R:', '2026-11-27T00:01:25Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.EXPT-T39', 'ImageBlock model parsing', '2026-11-22T06:39:49Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.EXPT-T40', 'PDF image rendering', '2026-11-22T06:39:51Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.EXPT-T41', 'DOCX image rendering', '2026-11-22T06:39:53Z');
@@ -158751,6 +159882,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.LNCH-T144', 'Laun
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.LNCH-T145', 'Launcher on shared run menu', '2026-11-26T04:37:22Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.LNCH-T146', 'Launcher C: cleanup', '2026-11-26T04:43:29Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.LNCH-T147', 'Launcher C: cleanup', '2026-11-26T04:43:31Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.LNCH-T150', 'Launcher Debug and Release verified', '2026-11-26T23:59:53Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.LOGS-T29', 'Log store abstraction', '2026-11-22T06:39:01Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.LOGS-T30', 'SQL Server store', '2026-11-22T06:39:02Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.LOGS-T31', 'Reader discovery', '2026-11-22T06:39:04Z');
@@ -158799,7 +159931,9 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.MVIEW-T35', 'View
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.MVIEW-T36', 'Media collections', '2026-11-26T15:26:59Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.MVIEW-T37', 'Click filmstrip to jump', '2026-11-26T19:23:14Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.MVIEW-T38', 'Viewer settings cog to Vault', '2026-11-26T22:50:56Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.MVIEW-T39', 'MindAttic.Media.Viewer on R:', '2026-11-27T00:01:31Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.MVIEW-T4', 'Viewer shell', '2026-11-24T06:50:41Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.MVIEW-T40', 'Viewer C: cleanup', '2026-11-27T00:03:00Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.MVIEW-T5', 'Every format', '2026-11-24T06:50:45Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.MVIEW-T6', 'Right-click menu', '2026-11-24T06:50:48Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.MVIEW-T7', 'Integration', '2026-11-24T06:50:52Z');
@@ -159266,6 +160400,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T2304', 'Gat
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T2305', 'Ledger keeps starting member hosts', '2026-11-26T20:30:18Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.ORCH-T2306', 'Timelapse uses Media root', '2026-11-26T21:41:22Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.PSST-T44', 'Exhaustive bughunt', '2026-11-24T07:00:56Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.PSST-T50', 'MindAttic.Psst on R:', '2026-11-27T00:01:33Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.RLY-T39', 'Pinned server download', '2026-11-22T06:14:25Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.RLY-T40', 'Server config and TLS', '2026-11-22T06:15:11Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.RLY-T41', 'Status and uninstall', '2026-11-22T06:16:04Z');
@@ -159334,6 +160469,8 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.SCHD-T70', 'dbsyn
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.SCHD-T71', 'Register disabled dbsync job', '2026-11-26T02:49:23Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.SCHD-T72', 'dbsync bootstraps a new remote database', '2026-11-26T02:51:55Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.SCHD-T73', 'Nightly local SQL backups replace the Azure ones', '2026-11-26T03:07:16Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.SCHD-T76', 'MindAttic.Scheduler on R:', '2026-11-27T00:01:35Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.SCHD-T77', 'Scheduler C: cleanup', '2026-11-27T00:03:02Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.TELE-T24', 'Exhaustive bughunt', '2026-11-24T07:01:03Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.TELE-T25', 'Adopt MindAttic.Media.Capture name', '2026-11-24T16:17:49Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.TELE-T26', 'Telemetry names Media.Capture', '2026-11-24T16:17:50Z');
@@ -159356,6 +160493,8 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.TIX-T371', 'Full-
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.TIX-T381', 'Exhaustive bughunt', '2026-11-24T07:01:05Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.TIX-T382', 'List json test knows level', '2026-11-26T01:26:50Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.TIX-T383', 'Burst refresh test survives a slow disk', '2026-11-26T02:03:42Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.TIX-T384', 'MindAttic.Tickets on R:', '2026-11-27T00:01:37Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.TIX-T385', 'Tickets C: cleanup', '2026-11-27T00:03:05Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.VALT-T100', 'Encrypted export/import core', '2026-11-22T06:35:39Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.VALT-T101', 'Desktop export/import UI', '2026-11-22T06:35:40Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M.VALT-T102', 'Cross-process write lock', '2026-11-22T06:49:26Z');
@@ -159423,6 +160562,8 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T159', 'Clans 
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T16', 'Localize dialog and toast messages', '2026-11-10T02:51:35Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T160', 'Clans add-on packs', '2026-11-22T06:38:55Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T162', 'Exhaustive bughunt', '2026-11-24T07:01:37Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T163', 'MW5 SaveEditor on R:', '2026-11-27T00:02:41Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T164', 'MW5 SaveEditor C: cleanup', '2026-11-27T00:03:14Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T2', 'Own MW5 save editor', '2026-11-10T00:34:39Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T57', 'Full reverification and bughunt', '2026-11-10T13:53:02Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('M5SE-T58', 'run.ps1 deploy to C:\Apps', '2026-11-10T13:58:24Z');
@@ -159642,6 +160783,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MB-T47', 'MasterVar
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MB-T49', 'Exhaustive bughunt', '2026-11-24T07:00:08Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MB-T58', 'CLI test exe config', '2026-11-26T18:16:07Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MB-T59', 'Lamp test exe config', '2026-11-26T18:17:40Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MB-T60', 'MediaButler on R:', '2026-11-27T00:01:22Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MIN-T2', 'MindPuck Unreal game', '2026-11-19T23:22:06Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MIN-T3', 'Magnetic mode and F1 toggle', '2026-11-20T02:23:43Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('MIN-T4', 'Steer mode', '2026-11-20T02:38:00Z');
@@ -159692,8 +160834,11 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('OC-T47', 'Move Open
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('OC-T48', 'Move OpenCredentials database', '2026-11-25T19:33:37Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('OC-T49', 'Host OpenCredentials on Hetzner', '2026-11-25T19:33:40Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('OC-T50', 'Report.cs BarRow bar width uses current culture', '2026-11-26T10:51:48Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('OC-T53', 'OpenCredentials on R:', '2026-11-27T00:01:39Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('OS-T87', 'Exhaustive bughunt', '2026-11-24T07:00:54Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PL-T42', 'Exhaustive bughunt', '2026-11-24T07:01:48Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PL-T43', 'ProcessLogger on R:', '2026-11-27T00:01:41Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PL-T44', 'ProcessLogger C: cleanup', '2026-11-27T00:03:16Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1000', 'Codex: new creatures, wave 1', '2026-11-17T21:58:35Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1001', 'Weave codex into BGTTO', '2026-11-17T22:24:05Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1002', 'GLMZ Fandom wiki migration', '2026-11-17T23:16:40Z');
@@ -159823,6 +160968,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1169', 'Vultur
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1170', 'Re-describe and re-read retagged beats', '2026-11-26T22:57:43Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1171', 'Doc entity tags: weave plans and VIGL leftovers', '2026-11-26T22:57:43Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1172', 'Character history and continuity stage', '2026-11-26T22:57:43Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T1174', 'Prose C: cleanup', '2026-11-27T00:03:18Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T919', 'Texts status=all hides retired', '2026-11-07T23:22:56Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T920', 'Import into new universe 404', '2026-11-07T23:22:57Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('PRS-T921', 'Leak check skips merged nodes', '2026-11-07T23:39:48Z');
@@ -159895,6 +161041,8 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RB-T295', 'Dialogue
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RB-T297', 'Exhaustive bughunt', '2026-11-24T07:01:55Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RB-T303', 'Water shader vs s&box 26.11', '2026-11-26T19:08:58Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RB-T304', 'Editor recompile on s&box 26.11', '2026-11-26T19:10:54Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RB-T305', 'Bloodlines exports on R:', '2026-11-27T00:02:39Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RB-T306', 'Bloodlines C: cleanup', '2026-11-27T00:03:20Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RN-T18', 'Exhaustive bughunt', '2026-11-24T07:01:56Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RN-T19', 'RusNet on shared run menu', '2026-11-26T04:34:35Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RN-T20', 'RusNet on shared run menu', '2026-11-26T04:42:48Z');
@@ -159905,6 +161053,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RTB-T272', 'Exhaust
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RTB-T273', 'Adopt MindAttic.Media.Capture name', '2026-11-24T16:18:05Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RTB-T274', 'Brevity tool: Media.Capture name', '2026-11-24T16:18:06Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RTB-T275', 'Brevity tools use Media root', '2026-11-24T20:32:40Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RTB-T276', 'Brevity tools on R:', '2026-11-27T00:02:43Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RTO-T113', 'Auto-publish to Nexus', '2026-11-07T02:41:58Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RTO-T119', 'Hunker Down ability', '2026-11-22T06:44:37Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('RTO-T120', 'Cover HP regen', '2026-11-22T06:44:39Z');
@@ -159971,6 +161120,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TRC-T77', 'Export b
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TRC-T78', 'Logs clear labels', '2026-11-26T18:23:48Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TRC-T79', 'Logs admin only', '2026-11-26T18:24:20Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TRC-T92', 'Register sign-in cookie', '2026-11-26T20:39:18Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TRC-T99', 'TaxRateCollector on R:', '2026-11-27T00:01:43Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TT-T42', 'No server process launch', '2026-11-19T22:38:12Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TT-T43', 'Stop runs when tab closes', '2026-11-19T22:38:14Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TT-T44', 'Error pages and limits', '2026-11-19T22:38:17Z');
@@ -159987,12 +161137,14 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TT-T67', 'Move Thin
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TT-T68', 'Move ThinkTank database', '2026-11-25T19:33:49Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TT-T69', 'Host ThinkTank on Hetzner', '2026-11-25T19:33:52Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TT-T70', 'Development config points at local SQL', '2026-11-26T12:24:56Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TT-T81', 'ThinkTank on R:', '2026-11-27T00:01:45Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TUT-T116', 'Course key newline', '2026-11-26T20:09:28Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TUT-T117', 'Atomic chunk store write', '2026-11-26T20:09:32Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TUT-T121', 'Queue retry wait holds slot', '2026-11-26T20:21:49Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TUT-T123', 'Fix context menu copy', '2026-11-26T20:31:15Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TUT-T124', 'Keep pins on graph filter', '2026-11-26T20:31:17Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TUT-T125', 'Ignore P key in inputs', '2026-11-26T20:31:19Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TUT-T138', 'Tutor on R:', '2026-11-27T00:01:47Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TUT-T59', 'Author role and spend caps', '2026-11-19T22:38:09Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TUT-T60', 'Works online once', '2026-11-19T22:39:25Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('TUT-T61', 'Embedding batch over token cap', '2026-11-19T22:49:02Z');
@@ -160026,11 +161178,15 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.CHN-T113', 'Headl
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.CHN-T115', 'Exhaustive bughunt', '2026-11-24T07:02:17Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.CHN-T116', 'Adopt MindAttic.Media.Capture', '2026-11-24T16:17:05Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.CHN-T117', 'Rea.Chain on Media.Capture', '2026-11-24T16:17:07Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.CHN-T118', 'Unity.Rea.Chain on R:', '2026-11-27T00:02:16Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.CHN-T119', 'Chain C: cleanup', '2026-11-27T00:03:22Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.EVE-T49', 'Headless test flag', '2026-11-07T04:33:30Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.EVE-T50', 'Stale replay test: creatures struck at her', '2026-11-08T22:16:11Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.EVE-T55', 'Exhaustive bughunt', '2026-11-24T07:02:13Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.EVE-T56', 'Adopt MindAttic.Media.Capture', '2026-11-24T16:17:00Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.EVE-T57', 'Eve on Media.Capture', '2026-11-24T16:17:02Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.EVE-T58', 'Unity.Eve on R:', '2026-11-27T00:01:58Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.EVE-T59', 'Unity.Eve C: cleanup', '2026-11-27T00:03:26Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.HARE-T124', 'Headless test flag', '2026-11-07T04:33:35Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.HARE-T129', 'Bindings tests', '2026-11-22T06:45:35Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.HARE-T130', 'Controls UI tests', '2026-11-22T06:45:37Z');
@@ -160039,16 +161195,20 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.HARE-T133', 'Exha
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.HARE-T134', 'Adopt MindAttic.Media.Capture', '2026-11-24T16:17:11Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.HARE-T135', 'Rea.Hare on Media.Capture', '2026-11-24T16:17:12Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.HARE-T136', 'Hare capture script Media root', '2026-11-24T20:33:04Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.HARE-T137', 'Unity.Rea.Hare on R:', '2026-11-27T00:02:18Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.INC-T54', 'Headless test flag', '2026-11-07T04:33:36Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.INC-T59', 'Exhaustive bughunt', '2026-11-24T07:02:21Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.INC-T60', 'Adopt MindAttic.Media.Capture', '2026-11-24T16:17:16Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.INC-T61', 'Rea.Incognito on Media.Capture', '2026-11-24T16:17:18Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.INC-T62', 'Unity.Rea.Incognito on R:', '2026-11-27T00:02:20Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.OVW-T100', 'Headless test flag', '2026-11-07T04:33:37Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.OVW-T105', 'Exhaustive bughunt', '2026-11-24T07:02:23Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.OVW-T106', 'Adopt MindAttic.Media.Capture', '2026-11-24T16:17:22Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.OVW-T107', 'Rea.Overworld docs: Media.Capture', '2026-11-24T16:17:24Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.OVW-T108', 'Unity.Rea.Overworld on R:', '2026-11-27T00:02:22Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.RICO-T169', 'Headless test flag', '2026-11-07T04:33:41Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.RICO-T173', 'Exhaustive bughunt', '2026-11-24T07:02:29Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.RICO-T174', 'Unity.Rea.Ricochet on R:', '2026-11-27T00:02:26Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.RON-T22', 'Headless test flag', '2026-11-07T04:33:46Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.RON-T26', 'Multiplayer-ready audit', '2026-11-22T06:41:20Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.RON-T27', 'Command pipeline', '2026-11-22T06:41:21Z');
@@ -160057,6 +161217,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.RON-T29', 'Sessio
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.RON-T30', 'BIBLE law and two-player test', '2026-11-22T06:41:28Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.RON-T31', 'Adopt MindAttic.Media.Capture', '2026-11-24T16:17:27Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.RON-T32', 'UnityRonin on Media.Capture', '2026-11-24T16:17:29Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.RON-T33', 'UnityRonin on R:', '2026-11-27T00:02:30Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.SPC-T603', 'Headless test flag', '2026-11-07T04:33:44Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.SPC-T607', 'Core model', '2026-11-22T06:14:39Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.SPC-T608', 'Core model', '2026-11-22T06:16:16Z');
@@ -160096,8 +161257,11 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.SPC-T641', 'Effec
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.SPC-T642', 'Follow-on', '2026-11-22T06:50:50Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.SPC-T643', 'Unity.SpaceGod on Media.Capture', '2026-11-24T18:53:05Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.SPC-T644', 'SpaceGod capture Media root', '2026-11-26T21:41:23Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.SPC-T645', 'Unity.SpaceGod on R:', '2026-11-27T00:02:28Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.SPC-T646', 'Unity.SpaceGod C: cleanup', '2026-11-27T00:03:28Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.VAN-T39', 'Headless test flag', '2026-11-07T04:33:39Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.VAN-T44', 'Exhaustive bughunt', '2026-11-24T07:02:25Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('U.VAN-T45', 'Unity.Rea.ProjectVania on R:', '2026-11-27T00:02:24Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UC-T51', 'Headless test flag', '2026-11-07T04:33:28Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UC-T57', 'Level data format', '2026-11-22T06:43:07Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UC-T58', 'Editor placement tools', '2026-11-22T06:43:08Z');
@@ -160108,6 +161272,8 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UC-T62', 'Update ot
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UC-T64', 'Exhaustive bughunt', '2026-11-24T07:02:11Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UC-T65', 'Adopt MindAttic.Media.Capture', '2026-11-24T16:16:55Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UC-T66', 'Cursory on Media.Capture', '2026-11-24T16:16:56Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UC-T68', 'Unity.Cursory on R:', '2026-11-27T00:01:56Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UC-T69', 'Unity.Cursory C: cleanup', '2026-11-27T00:03:24Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T10', 'Feel pass', '2026-11-08T05:47:52Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T11', 'Slice lock', '2026-11-08T05:47:53Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T12', 'Prose conduit wiring', '2026-11-08T05:51:20Z');
@@ -160175,6 +161341,8 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T72', 'MetaSound
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T73', 'Feedback effects', '2026-11-22T06:44:09Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T74', 'Options menu', '2026-11-22T06:44:10Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T76', 'Exhaustive bughunt', '2026-11-24T07:02:33Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T77', 'Unreal.Eve on R:', '2026-11-27T00:02:34Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T78', 'Unreal.Eve C: cleanup', '2026-11-27T00:03:30Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T8', 'North End town', '2026-11-08T05:47:50Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UE-T9', 'Story and Observer', '2026-11-08T05:47:51Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UM-T94', 'Exhaustive bughunt', '2026-11-24T07:02:15Z');
@@ -160208,6 +161376,7 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNR-T123', 'Playgro
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNR-T124', 'Playground demo preview sets', '2026-11-24T18:53:47Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNR-T125', 'Listen server map is empty', '2026-11-24T19:56:44Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNR-T126', 'Playground names Media root', '2026-11-24T20:32:30Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNR-T127', 'Unreal.Playground on R:', '2026-11-27T00:02:36Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNR-T87', 'Headless test flag', '2026-11-07T04:33:49Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNR-T88', 'Rename repo to Unreal.Playground', '2026-11-07T06:44:46Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNR-T93', 'Hebrides island terrain', '2026-11-22T06:14:30Z');
@@ -160226,8 +161395,11 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNS-T33', 'Release 
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNS-T34', 'Tray menu sets alternate hotkey', '2026-11-19T05:53:58Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNS-T35', 'Permanent Ctrl+Alt+U hotkey', '2026-11-19T05:58:51Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNS-T37', 'Exhaustive bughunt', '2026-11-24T07:02:39Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNS-T38', 'Unstuck on R:', '2026-11-27T00:01:49Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UNS-T39', 'Unstuck C: cleanup', '2026-11-27T00:03:32Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UQD-T100', 'Exhaustive bughunt', '2026-11-24T07:02:27Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UQD-T101', 'QuickDuel move to R: and cleanup', '2026-11-26T04:47:04Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UQD-T102', 'QuickDuel Debug and Release verified', '2026-11-27T00:02:32Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('UQD-T97', 'Headless test flag', '2026-11-07T04:33:40Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('USG-T2', 'Headless test flag', '2026-11-07T04:33:53Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('USG-T3', 'Fleet command sync', '2026-11-10T14:35:44Z');
@@ -160629,6 +161801,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AES-T10', 'level:ta
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AES-T11', 'level:story', '2026-11-26T10:53:31Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AES-T12', 'level:task', '2026-11-26T04:46:51Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AES-T13', 'level:task', '2026-11-26T10:53:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AES-T14', 'level:task', '2026-11-27T00:01:53Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AES-T4', 'level:story', '2026-11-24T06:58:50Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AES-T5', 'epic', '2026-11-24T19:46:25Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AES-T5', 'level:epic', '2026-11-24T19:46:25Z');
@@ -160659,6 +161832,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AUTO-T3', 'level:st
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AUTO-T4', 'epic', '2026-11-24T16:18:10Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AUTO-T4', 'level:epic', '2026-11-24T16:18:10Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AUTO-T5', 'level:task', '2026-11-24T16:18:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AUTO-T6', 'level:task', '2026-11-27T00:01:51Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AUT-T11', 'level:task', '2026-11-22T05:47:49Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AUT-T14', 'level:task', '2026-11-22T05:47:50Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AUT-T15', 'level:task', '2026-11-22T05:47:53Z');
@@ -160671,6 +161845,8 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AUT-T38', 'epic', '
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AUT-T38', 'level:epic', '2026-11-24T16:16:33Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AUT-T39', 'level:task', '2026-11-24T16:16:35Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AUT-T40', 'level:task', '2026-11-24T20:33:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AUT-T50', 'level:task', '2026-11-27T00:00:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AUT-T51', 'level:task', '2026-11-27T00:02:51Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AWN2-T3', 'level:story', '2026-11-24T06:59:06Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AWN-T10', 'level:task', '2026-11-22T05:47:42Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('AWN-T11', 'level:task', '2026-11-22T05:47:44Z');
@@ -160744,6 +161920,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('CUR-T13', 'level:ta
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('CUR-T14', 'level:task', '2026-11-22T05:46:42Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('CUR-T15', 'level:task', '2026-11-22T05:46:43Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('CUR-T30', 'level:story', '2026-11-24T06:59:14Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('CUR-T35', 'level:task', '2026-11-27T00:01:07Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('CUR-T4', 'level:task', '2026-11-22T05:46:31Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('CUR-T5', 'level:task', '2026-11-22T05:46:33Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('CUR-T6', 'level:task', '2026-11-22T05:46:34Z');
@@ -160781,6 +161958,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('FOR-T36', 'level:st
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('FOR-T37', 'level:task', '2026-11-25T19:33:06Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('FOR-T38', 'level:task', '2026-11-25T19:33:09Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('FOR-T4', 'level:task', '2026-11-22T05:44:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('FOR-T40', 'level:task', '2026-11-27T00:01:10Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('FOR-T5', 'level:task', '2026-11-22T05:44:53Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('FOR-T6', 'level:task', '2026-11-22T05:44:55Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('FOR-T7', 'level:task', '2026-11-22T05:44:56Z');
@@ -161092,6 +162270,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T801', 'level:t
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T802', 'level:task', '2026-11-26T20:56:44Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T803', 'level:task', '2026-11-26T20:56:46Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T805', 'level:task', '2026-11-26T23:57:55Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T806', 'level:task', '2026-11-27T00:01:12Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAI-T19', 'level:task', '2026-11-22T05:49:45Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAI-T33', 'level:task', '2026-11-22T05:49:46Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAI-T34', 'level:task', '2026-11-22T05:49:47Z');
@@ -161112,6 +162291,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GGC-T39', 'epic', '
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GGC-T39', 'level:epic', '2026-11-24T16:16:50Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GGC-T4', 'level:task', '2026-11-22T05:47:24Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GGC-T40', 'level:task', '2026-11-24T16:16:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GGC-T41', 'level:task', '2026-11-27T00:01:55Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GGC-T5', 'level:task', '2026-11-22T05:47:25Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GGC-T6', 'level:task', '2026-11-22T05:47:26Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GGC-T7', 'level:task', '2026-11-22T05:47:26Z');
@@ -161789,7 +162969,9 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('IDEA-T76', 'level:t
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('IDEA-T77', 'level:task', '2026-11-25T19:34:02Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('IDEA-T79', 'level:task', '2026-11-26T12:25:03Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('IDEA-T8', 'level:story', '2026-11-22T06:34:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('IDEA-T89', 'level:task', '2026-11-27T00:01:15Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('IDEA-T9', 'level:story', '2026-11-22T06:34:51Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('IDEA-T90', 'level:task', '2026-11-27T00:02:53Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('IP-T447', 'level:story', '2026-11-22T06:40:02Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('IP-T501', 'level:task', '2026-11-22T05:47:57Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('IP-T548', 'level:task', '2026-11-22T05:47:59Z');
@@ -161818,6 +163000,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('IP-T654', 'level:ta
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('JFP-T14', 'level:task', '2026-11-22T05:48:35Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('JFP-T15', 'level:task', '2026-11-22T05:48:37Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('JFP-T30', 'level:story', '2026-11-24T06:59:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('JFP-T31', 'level:task', '2026-11-27T00:02:38Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('JFP-T4', 'level:task', '2026-11-22T05:48:30Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('JFP-T5', 'level:task', '2026-11-22T05:48:31Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('JFP-T6', 'level:task', '2026-11-22T05:48:32Z');
@@ -161838,6 +163021,8 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('JH-T34', 'level:tas
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('JH-T35', 'level:task', '2026-11-22T06:38:04Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('JH-T37', 'level:story', '2026-11-24T07:00:02Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('JH-T4', 'level:task', '2026-11-22T05:45:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('JH-T42', 'level:task', '2026-11-27T00:01:17Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('JH-T43', 'level:task', '2026-11-27T00:02:55Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('JH-T5', 'level:task', '2026-11-22T05:45:45Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('JH-T6', 'level:task', '2026-11-22T05:45:47Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('JH-T7', 'level:task', '2026-11-22T05:45:49Z');
@@ -161857,6 +163042,8 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('KP-T36', 'level:tas
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('KP-T38', 'level:story', '2026-11-24T07:00:06Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('KP-T39', 'level:task', '2026-11-26T15:41:11Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('KP-T4', 'level:task', '2026-11-22T05:45:57Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('KP-T40', 'level:task', '2026-11-27T00:01:20Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('KP-T41', 'level:task', '2026-11-27T00:02:57Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('KP-T5', 'level:task', '2026-11-22T05:45:58Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('KP-T6', 'level:task', '2026-11-22T05:46:00Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('KP-T7', 'level:task', '2026-11-22T05:46:01Z');
@@ -161953,6 +163140,8 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.CAPT-T217', 'leve
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.CAPT-T220', 'level:task', '2026-11-26T15:15:14Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.CAPT-T221', 'level:task', '2026-11-26T15:36:13Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.CAPT-T226', 'level:task', '2026-11-26T19:12:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.CAPT-T228', 'level:task', '2026-11-27T00:01:29Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.CAPT-T229', 'level:task', '2026-11-27T00:02:59Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.CAPT-T30', 'level:story', '2026-11-22T06:35:46Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.CAPT-T34', 'level:story', '2026-11-22T06:35:59Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.CAPT-T47', 'level:task', '2026-11-22T05:42:36Z');
@@ -162084,6 +163273,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.DPLY-T32', 'level
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.DPLY-T33', 'level:task', '2026-11-22T06:37:46Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.DPLY-T34', 'level:task', '2026-11-22T06:37:48Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.DPLY-T36', 'level:story', '2026-11-24T07:00:37Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.DPLY-T39', 'level:task', '2026-11-27T00:01:26Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.DPLY-T4', 'level:story', '2026-11-22T06:37:37Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.DPLY-T5', 'level:story', '2026-11-22T06:37:45Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.DPLY-T6', 'level:task', '2026-11-22T05:45:24Z');
@@ -162167,6 +163357,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.LNCH-T144', 'leve
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.LNCH-T145', 'level:task', '2026-11-26T04:37:22Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.LNCH-T146', 'level:task', '2026-11-26T04:43:32Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.LNCH-T147', 'level:task', '2026-11-26T04:43:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.LNCH-T150', 'level:task', '2026-11-26T23:59:54Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.LNCH-T23', 'level:task', '2026-11-22T05:42:57Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.LNCH-T70', 'level:task', '2026-11-22T05:42:59Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.LNCH-T74', 'level:task', '2026-11-22T05:43:00Z');
@@ -162225,7 +163416,9 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.MVIEW-T3', 'level
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.MVIEW-T33', 'level:task', '2026-11-24T18:48:47Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.MVIEW-T34', 'level:task', '2026-11-24T18:49:33Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.MVIEW-T35', 'level:task', '2026-11-24T20:32:22Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.MVIEW-T39', 'level:task', '2026-11-27T00:01:31Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.MVIEW-T4', 'level:task', '2026-11-24T06:50:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.MVIEW-T40', 'level:task', '2026-11-27T00:03:01Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.MVIEW-T5', 'level:task', '2026-11-24T06:50:45Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.MVIEW-T6', 'level:task', '2026-11-24T06:50:49Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.MVIEW-T7', 'level:task', '2026-11-24T06:50:52Z');
@@ -162599,6 +163792,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.PSST-T30', 'level
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.PSST-T4', 'level:task', '2026-11-22T05:44:10Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.PSST-T44', 'level:story', '2026-11-24T07:00:56Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.PSST-T5', 'level:task', '2026-11-22T05:44:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.PSST-T50', 'level:task', '2026-11-27T00:01:33Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.PSST-T6', 'level:task', '2026-11-22T05:44:16Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.PSST-T7', 'level:task', '2026-11-22T05:44:17Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.PSST-T8', 'level:task', '2026-11-22T05:44:17Z');
@@ -162706,6 +163900,8 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.SCHD-T70', 'level
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.SCHD-T71', 'level:task', '2026-11-26T02:49:24Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.SCHD-T72', 'level:task', '2026-11-26T02:51:56Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.SCHD-T73', 'level:task', '2026-11-26T03:07:20Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.SCHD-T76', 'level:task', '2026-11-27T00:01:35Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.SCHD-T77', 'level:task', '2026-11-27T00:03:02Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.TELE-T10', 'level:task', '2026-11-22T05:49:44Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.TELE-T24', 'level:story', '2026-11-24T07:01:03Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.TELE-T25', 'epic', '2026-11-24T16:17:49Z');
@@ -162779,6 +163975,8 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.TIX-T376', 'level
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.TIX-T381', 'level:story', '2026-11-24T07:01:05Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.TIX-T382', 'level:task', '2026-11-26T01:26:50Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.TIX-T383', 'level:task', '2026-11-26T02:03:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.TIX-T384', 'level:task', '2026-11-27T00:01:37Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.TIX-T385', 'level:task', '2026-11-27T00:03:05Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.VALT-T10', 'level:story', '2026-11-26T20:05:22Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.VALT-T100', 'level:task', '2026-11-22T06:35:40Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.VALT-T101', 'level:task', '2026-11-22T06:35:41Z');
@@ -162845,6 +164043,8 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M5SE-T158', 'level:
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M5SE-T159', 'level:task', '2026-11-22T06:38:54Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M5SE-T160', 'level:task', '2026-11-22T06:38:56Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M5SE-T162', 'level:story', '2026-11-24T07:01:37Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M5SE-T163', 'level:task', '2026-11-27T00:02:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M5SE-T164', 'level:task', '2026-11-27T00:03:14Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M5SE-T77', 'level:task', '2026-11-22T05:46:21Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M5SE-T91', 'level:task', '2026-11-22T05:46:23Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('MAA-T10', 'level:task', '2026-11-22T05:47:09Z');
@@ -163057,6 +164257,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('MB-T47', 'level:tas
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('MB-T49', 'level:story', '2026-11-24T07:00:09Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('MB-T5', 'level:task', '2026-11-22T05:45:13Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('MB-T6', 'level:task', '2026-11-22T05:45:15Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('MB-T60', 'level:task', '2026-11-27T00:01:23Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('MB-T7', 'level:story', '2026-11-22T06:37:11Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('MB-T8', 'level:story', '2026-11-22T06:37:17Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('MB-T9', 'level:story', '2026-11-22T06:37:23Z');
@@ -163100,6 +164301,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('OC-T47', 'level:sto
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('OC-T48', 'level:task', '2026-11-25T19:33:37Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('OC-T49', 'level:task', '2026-11-25T19:33:41Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('OC-T5', 'level:task', '2026-11-22T05:43:36Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('OC-T53', 'level:task', '2026-11-27T00:01:39Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('OC-T6', 'level:task', '2026-11-22T05:43:38Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('OC-T7', 'level:task', '2026-11-22T05:43:39Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('OC-T8', 'level:task', '2026-11-22T05:43:40Z');
@@ -163117,6 +164319,8 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PL-T28', 'level:tas
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PL-T3', 'level:task', '2026-11-22T05:46:55Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PL-T4', 'level:task', '2026-11-22T05:46:57Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PL-T42', 'level:story', '2026-11-24T07:01:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PL-T43', 'level:task', '2026-11-27T00:01:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PL-T44', 'level:task', '2026-11-27T00:03:16Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PL-T5', 'level:task', '2026-11-22T05:46:57Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PL-T6', 'level:task', '2026-11-22T05:46:58Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PL-T7', 'level:task', '2026-11-22T05:47:00Z');
@@ -163185,6 +164389,8 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1129', 'level:
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1130', 'level:task', '2026-11-25T19:34:56Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1131', 'level:task', '2026-11-25T19:34:59Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1132', 'level:task', '2026-11-26T04:47:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1133', 'level:task', '2026-11-27T00:04:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1134', 'level:task', '2026-11-27T00:04:10Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1137', 'level:task', '2026-11-26T22:54:32Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1138', 'level:task', '2026-11-26T22:54:32Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1139', 'level:task', '2026-11-26T22:54:32Z');
@@ -163218,9 +164424,12 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1166', 'level:
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1167', 'level:task', '2026-11-26T22:57:22Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1168', 'level:task', '2026-11-26T22:57:42Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1169', 'level:task', '2026-11-26T22:57:42Z');
-INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1170', 'level:task', '2026-11-26T22:57:43Z');
-INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1171', 'level:task', '2026-11-26T22:57:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1170', 'level:story', '2026-11-27T00:06:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1171', 'level:story', '2026-11-27T00:00:02Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1172', 'level:task', '2026-11-26T22:57:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1173', 'level:task', '2026-11-27T00:00:12Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1174', 'level:task', '2026-11-27T00:03:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1175', 'level:task', '2026-11-27T00:06:34Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T14', 'glmz-vision', '2026-10-30T17:00:33Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T14', 'level:story', '2026-11-26T22:57:19Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T14', 'phase:5-final', '2026-10-30T17:00:33Z');
@@ -165641,6 +166850,8 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('RB-T299', 'level:ta
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('RB-T300', 'level:task', '2026-11-26T18:30:55Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('RB-T301', 'level:task', '2026-11-26T18:39:40Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('RB-T302', 'level:task', '2026-11-26T18:43:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('RB-T305', 'level:task', '2026-11-27T00:02:40Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('RB-T306', 'level:task', '2026-11-27T00:03:20Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('RN-T18', 'level:story', '2026-11-24T07:01:57Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('RN-T19', 'level:task', '2026-11-26T04:34:35Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('RN-T20', 'level:task', '2026-11-26T04:42:48Z');
@@ -165652,6 +166863,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('RTB-T273', 'epic', 
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('RTB-T273', 'level:epic', '2026-11-24T16:18:05Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('RTB-T274', 'level:task', '2026-11-24T16:18:07Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('RTB-T275', 'level:task', '2026-11-24T20:32:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('RTB-T276', 'level:task', '2026-11-27T00:02:43Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('RTO-T106', 'level:task', '2026-11-22T05:50:00Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('RTO-T107', 'level:task', '2026-11-22T05:50:01Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('RTO-T110', 'level:story', '2026-11-22T06:44:37Z');
@@ -165736,6 +166948,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TRC-T91', 'level:ta
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TRC-T93', 'level:task', '2026-11-26T20:57:38Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TRC-T94', 'level:task', '2026-11-26T20:57:39Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TRC-T95', 'level:task', '2026-11-26T20:57:41Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TRC-T99', 'level:task', '2026-11-27T00:01:43Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TT-T13', 'level:task', '2026-11-22T05:41:50Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TT-T14', 'level:task', '2026-11-22T05:41:52Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TT-T15', 'level:task', '2026-11-22T05:41:54Z');
@@ -165762,6 +166975,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TT-T69', 'level:tas
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TT-T7', 'level:task', '2026-11-22T05:41:46Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TT-T70', 'level:task', '2026-11-26T12:24:56Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TT-T8', 'level:task', '2026-11-22T05:41:47Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TT-T81', 'level:task', '2026-11-27T00:01:45Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TT-T9', 'level:task', '2026-11-22T05:41:48Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TUT-T10', 'level:task', '2026-11-22T05:40:33Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TUT-T11', 'level:story', '2026-11-22T06:34:30Z');
@@ -165778,6 +166992,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TUT-T128', 'level:t
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TUT-T13', 'level:story', '2026-11-22T06:34:39Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TUT-T132', 'level:task', '2026-11-26T20:44:49Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TUT-T133', 'level:task', '2026-11-26T20:44:50Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TUT-T138', 'level:task', '2026-11-27T00:01:47Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TUT-T14', 'level:task', '2026-11-22T05:40:34Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TUT-T15', 'level:task', '2026-11-22T05:40:35Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('TUT-T18', 'level:story', '2026-11-26T20:15:10Z');
@@ -165822,12 +167037,16 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.CHN-T115', 'level
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.CHN-T116', 'epic', '2026-11-24T16:17:06Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.CHN-T116', 'level:epic', '2026-11-24T16:17:06Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.CHN-T117', 'level:task', '2026-11-24T16:17:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.CHN-T118', 'level:task', '2026-11-27T00:02:16Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.CHN-T119', 'level:task', '2026-11-27T00:03:22Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.EVE-T45', 'level:task', '2026-11-22T05:50:20Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.EVE-T50', 'level:task', '2026-11-22T05:50:21Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.EVE-T55', 'level:story', '2026-11-24T07:02:14Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.EVE-T56', 'epic', '2026-11-24T16:17:00Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.EVE-T56', 'level:epic', '2026-11-24T16:17:00Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.EVE-T57', 'level:task', '2026-11-24T16:17:02Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.EVE-T58', 'level:task', '2026-11-27T00:01:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.EVE-T59', 'level:task', '2026-11-27T00:03:26Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.HARE-T122', 'level:story', '2026-11-22T06:45:35Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.HARE-T123', 'level:task', '2026-11-22T05:50:21Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.HARE-T129', 'level:task', '2026-11-22T06:45:36Z');
@@ -165838,20 +167057,24 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.HARE-T134', 'epic
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.HARE-T134', 'level:epic', '2026-11-24T16:17:11Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.HARE-T135', 'level:task', '2026-11-24T16:17:13Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.HARE-T136', 'level:task', '2026-11-24T20:33:04Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.HARE-T137', 'level:task', '2026-11-27T00:02:18Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.INC-T59', 'level:story', '2026-11-24T07:02:21Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.INC-T60', 'epic', '2026-11-24T16:17:16Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.INC-T60', 'level:epic', '2026-11-24T16:17:16Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.INC-T61', 'level:task', '2026-11-24T16:17:18Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.INC-T62', 'level:task', '2026-11-27T00:02:20Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.OVW-T105', 'level:story', '2026-11-24T07:02:24Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.OVW-T106', 'epic', '2026-11-24T16:17:22Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.OVW-T106', 'level:epic', '2026-11-24T16:17:22Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.OVW-T107', 'level:task', '2026-11-24T16:17:24Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.OVW-T108', 'level:task', '2026-11-27T00:02:22Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.RICO-T164', 'level:task', '2026-11-22T05:48:22Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.RICO-T165', 'level:task', '2026-11-22T05:48:24Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.RICO-T166', 'level:task', '2026-11-22T05:48:25Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.RICO-T167', 'level:task', '2026-11-22T05:48:27Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.RICO-T168', 'level:task', '2026-11-22T05:48:28Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.RICO-T173', 'level:story', '2026-11-24T07:02:29Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.RICO-T174', 'level:task', '2026-11-27T00:02:26Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.RICO-T22', 'level:task', '2026-11-22T05:48:20Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.RICO-T62', 'level:task', '2026-11-22T05:48:21Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.RON-T10', 'level:task', '2026-11-22T05:49:17Z');
@@ -165865,6 +167088,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.RON-T30', 'level:
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.RON-T31', 'epic', '2026-11-24T16:17:28Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.RON-T31', 'level:epic', '2026-11-24T16:17:28Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.RON-T32', 'level:task', '2026-11-24T16:17:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.RON-T33', 'level:task', '2026-11-27T00:02:30Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.RON-T4', 'level:task', '2026-11-22T05:49:13Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.RON-T5', 'level:task', '2026-11-22T05:49:14Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.RON-T9', 'level:task', '2026-11-22T05:49:15Z');
@@ -165922,7 +167146,10 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.SPC-T641', 'level
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.SPC-T642', 'level:task', '2026-11-22T06:50:52Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.SPC-T643', 'level:task', '2026-11-24T18:53:05Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.SPC-T644', 'level:task', '2026-11-26T21:41:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.SPC-T645', 'level:task', '2026-11-27T00:02:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.SPC-T646', 'level:task', '2026-11-27T00:03:28Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.VAN-T44', 'level:story', '2026-11-24T07:02:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('U.VAN-T45', 'level:task', '2026-11-27T00:02:24Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UC-T37', 'level:task', '2026-11-22T05:49:50Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UC-T38', 'level:story', '2026-11-22T06:43:06Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UC-T39', 'level:task', '2026-11-22T05:49:51Z');
@@ -165937,6 +167164,8 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UC-T64', 'level:sto
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UC-T65', 'epic', '2026-11-24T16:16:55Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UC-T65', 'level:epic', '2026-11-24T16:16:55Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UC-T66', 'level:task', '2026-11-24T16:16:57Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UC-T68', 'level:task', '2026-11-27T00:01:57Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UC-T69', 'level:task', '2026-11-27T00:03:24Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UE-T10', 'level:story', '2026-11-22T06:44:06Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UE-T5', 'level:story', '2026-11-22T06:43:27Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UE-T59', 'level:task', '2026-11-22T06:43:29Z');
@@ -165957,6 +167186,8 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UE-T72', 'level:tas
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UE-T73', 'level:task', '2026-11-22T06:44:10Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UE-T74', 'level:task', '2026-11-22T06:44:11Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UE-T76', 'level:story', '2026-11-24T07:02:33Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UE-T77', 'level:task', '2026-11-27T00:02:34Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UE-T78', 'level:task', '2026-11-27T00:03:30Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UE-T8', 'level:story', '2026-11-22T06:43:51Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UM-T94', 'level:story', '2026-11-24T07:02:16Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UM-T95', 'epic', '2026-11-24T16:17:44Z');
@@ -165990,6 +167221,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UNR-T122', 'level:t
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UNR-T123', 'level:task', '2026-11-24T18:53:43Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UNR-T124', 'level:task', '2026-11-24T18:53:47Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UNR-T126', 'level:task', '2026-11-24T20:32:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UNR-T127', 'level:task', '2026-11-27T00:02:36Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UNR-T3', 'level:story', '2026-11-22T06:14:10Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UNR-T4', 'level:task', '2026-11-22T05:45:39Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UNR-T45', 'level:task', '2026-11-22T05:45:39Z');
@@ -166009,8 +167241,11 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UNR-T97', 'level:ta
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UNR-T98', 'level:task', '2026-11-22T06:51:38Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UNR-T99', 'level:task', '2026-11-22T06:51:50Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UNS-T37', 'level:story', '2026-11-24T07:02:39Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UNS-T38', 'level:task', '2026-11-27T00:01:49Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UNS-T39', 'level:task', '2026-11-27T00:03:32Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UQD-T100', 'level:story', '2026-11-24T07:02:27Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UQD-T101', 'level:task', '2026-11-26T04:47:06Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('UQD-T102', 'level:task', '2026-11-27T00:02:32Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T451', 'level:task', '2026-11-22T05:50:18Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T453', 'level:story', '2026-11-23T20:17:13Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T454', 'level:task', '2026-11-22T06:44:50Z');
@@ -167254,6 +168489,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('AES-T12', 'MAT-T261', 'p
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AES-T12', 'MAT-T267', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AES-T12', 'MAT-T281', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AES-T13', 'AES-T11', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('AES-T14', 'MAT-T290', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AES-T6', 'AES-T5', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AES-T7', 'AES-T6', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AES-T8', 'AES-T6', 'part-of', NULL);
@@ -167317,9 +168553,13 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('AUT-T39', 'AUT-T38', 'pa
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AUT-T39', 'M.CAPT-T179', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AUT-T40', 'M.CAPT-T201', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AUT-T40', 'M.CAPT-T207', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('AUT-T50', 'MAT-T290', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('AUT-T51', 'AUT-T50', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('AUT-T51', 'MAT-T261', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AUTO-T4', 'M.CAPT-T167', 'related', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AUTO-T5', 'AUTO-T4', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AUTO-T5', 'M.CAPT-T179', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('AUTO-T6', 'MAT-T290', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('AWN-T7', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T10', 'C2SD-T9', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('C2SD-T11', 'C2SD-T10', 'requires', NULL);
@@ -167501,6 +168741,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('CUR-T19', 'M.COMP-T157',
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('CUR-T19', 'M.VALT-T35', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('CUR-T19', 'M.VALT-T39', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('CUR-T19', 'M.VALT-T44', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('CUR-T35', 'MAT-T290', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('CUR-US-A1', 'CUR-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('CUR-US-A2', 'CUR-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('CUR-US-A3', 'CUR-EPIC-A', 'part-of', 'migrated: story under its epic');
@@ -167574,6 +168815,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('FOR-T38', 'MAT-T238', 'r
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('FOR-T38', 'MAT-T239', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('FOR-T38', 'MAT-T240', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('FOR-T39', 'FOR-T15', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('FOR-T40', 'MAT-T290', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('G.AWPN-T169', 'G.AWPN-T170', 'related', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('G.AWPN-T89', 'G.AWPN-T87', 'follow-up-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('G.AWPN-T89', 'G.EZ-T81', 'related', NULL);
@@ -168232,6 +169474,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T788', 'GAD-T787', '
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T793', 'GAD-T792', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T794', 'GAD-T792', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T80', 'GAD-US-MP1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T806', 'MAT-T290', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T81', 'GAD-T80', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T81', 'GAD-US-MP1', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T82', 'GAD-T81', 'requires', NULL);
@@ -169424,6 +170667,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('GG-US-Z1', 'GG-EPIC-Z', 
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GGC-T39', 'M.CAPT-T167', 'related', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GGC-T40', 'GGC-T39', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GGC-T40', 'M.CAPT-T179', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GGC-T41', 'MAT-T291', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GGC-T8', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GGS-T11', 'GGS-T10', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GGS-T12', 'GGS-T10', 'part-of', NULL);
@@ -169638,6 +170882,9 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('IDEA-T77', 'MAT-T238', '
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('IDEA-T77', 'MAT-T239', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('IDEA-T77', 'MAT-T240', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('IDEA-T79', 'MAT-T255', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IDEA-T89', 'MAT-T290', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IDEA-T90', 'IDEA-T89', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('IDEA-T90', 'MAT-T261', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('IDEA-US-A1', 'IDEA-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('IDEA-US-A2', 'IDEA-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('IDEA-US-A3', 'IDEA-EPIC-A', 'part-of', 'migrated: story under its epic');
@@ -170190,6 +171437,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('JFP-T19', 'M.VALT-T39', 
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('JFP-T19', 'M.VALT-T44', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('JFP-T19', 'M.VALT-T45', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('JFP-T19', 'M.VALT-T46', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('JFP-T31', 'MAT-T293', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('JFP-T8', 'M.SCHD-T7', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('JH-T22', 'M.COMP-T157', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('JH-T22', 'M.VALT-T35', 'part-of', NULL);
@@ -170205,6 +171453,9 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('JH-T35', 'JH-T34', 'requ
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('JH-T38', 'JH-T11', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('JH-T39', 'JH-T11', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('JH-T40', 'JH-T11', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('JH-T42', 'MAT-T290', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('JH-T43', 'JH-T42', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('JH-T43', 'MAT-T261', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('JH-T9', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('KP-T32', 'KP-T14', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('KP-T33', 'KP-T14', 'part-of', NULL);
@@ -170214,6 +171465,9 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('KP-T34', 'KP-T33', 'requ
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('KP-T35', 'KP-T26', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('KP-T36', 'KP-T26', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('KP-T36', 'KP-T35', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('KP-T40', 'MAT-T290', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('KP-T41', 'KP-T40', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('KP-T41', 'MAT-T261', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('KP-T8', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.AUTH-T12', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.AUTH-T23', 'M.COMP-T157', 'requires', NULL);
@@ -170421,6 +171675,9 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T217', 'M.CAPT-T2
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T217', 'M.CAPT-T214', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T217', 'M.CAPT-T83', 'related', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T221', 'M.CAPT-T12', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T228', 'MAT-T290', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T229', 'M.CAPT-T228', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T229', 'MAT-T261', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T79', 'M.ORCH-T1196', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T79', 'M.ORCH-T1200', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.CAPT-T79', 'M.ORCH-T1245', 'requires', NULL);
@@ -170632,6 +171889,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.DPLY-T32', 'M.DPLY-T4'
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.DPLY-T33', 'M.DPLY-T5', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.DPLY-T34', 'M.DPLY-T33', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.DPLY-T34', 'M.DPLY-T5', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.DPLY-T39', 'MAT-T290', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.DPLY-T7', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.DPLY-US-A1', 'M.DPLY-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.DPLY-US-A2', 'M.DPLY-EPIC-A', 'part-of', 'migrated: story under its epic');
@@ -170724,12 +171982,14 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T145', 'MAT-T281'
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T145', 'MAT-T288', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T146', 'M.LNCH-T145', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T146', 'M.LNCH-T148', 'requires', 'blocked by hand');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T146', 'M.LNCH-T150', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T146', 'M.ORCH-T2285', 'requires', 'blocked by hand');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T146', 'M.SCHD-T75', 'requires', 'blocked by hand');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T146', 'MAT-T261', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T147', 'M.LNCH-T145', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T147', 'M.LNCH-T146', 'duplicates', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T147', 'MAT-T261', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T150', 'MAT-T288', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T2', 'M.LNCH-US-E5', 'implements', 'migrated: story named in ticket');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T24', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.LNCH-T3', 'M.LNCH-US-E4', 'implements', 'migrated: story named in ticket');
@@ -170887,7 +172147,10 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.MVIEW-T33', 'M.MVIEW-T
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.MVIEW-T34', 'M.MVIEW-T9', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.MVIEW-T35', 'M.CAPT-T201', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.MVIEW-T35', 'M.CAPT-T202', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.MVIEW-T39', 'MAT-T290', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.MVIEW-T4', 'M.MVIEW-T2', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.MVIEW-T40', 'M.MVIEW-T39', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.MVIEW-T40', 'MAT-T261', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.MVIEW-T5', 'M.MVIEW-T2', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.MVIEW-T6', 'M.MVIEW-T2', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.MVIEW-T7', 'M.MVIEW-T2', 'part-of', NULL);
@@ -171675,6 +172938,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.PSST-T27', 'M.VALT-T39
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.PSST-T27', 'M.VALT-T44', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.PSST-T45', 'M.PSST-T13', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.PSST-T46', 'M.PSST-T13', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.PSST-T50', 'MAT-T290', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.PSST-US-A1', 'M.PSST-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.PSST-US-A2', 'M.PSST-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.PSST-US-A3', 'M.PSST-EPIC-A', 'part-of', 'migrated: story under its epic');
@@ -171931,6 +173195,9 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T71', 'M.SCHD-T70
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T71', 'M.SCHD-T72', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T72', 'M.SCHD-T60', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T72', 'M.SCHD-T70', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T76', 'MAT-T290', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T77', 'M.SCHD-T76', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T77', 'MAT-T261', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T8', 'M.SCHD-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.SCHD-T9', 'M.SCHD-T2', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TELE-T25', 'M.CAPT-T167', 'related', NULL);
@@ -172182,6 +173449,9 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T370', 'M.TIX-T235
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T370', 'M.TIX-T369', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T371', 'M.TIX-T235', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T371', 'M.TIX-T370', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T384', 'MAT-T290', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T385', 'M.TIX-T384', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T385', 'MAT-T261', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T6', 'M.TIX-US-B2', 'implements', 'migrated: story named in ticket');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T64', 'M.TIX-T63', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.TIX-T64', 'M.TIX-US-G1', 'implements', NULL);
@@ -172399,6 +173669,9 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M5SE-T159', 'M5SE-T122',
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M5SE-T159', 'M5SE-T158', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M5SE-T160', 'M5SE-T122', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M5SE-T160', 'M5SE-T159', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M5SE-T163', 'MAT-T318', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M5SE-T164', 'M5SE-T163', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M5SE-T164', 'MAT-T261', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAA-T16', 'MAA-T9', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAA-T17', 'MAA-T16', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAA-T17', 'MAA-T9', 'part-of', NULL);
@@ -172625,6 +173898,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAT-T294', 'IP-T654', 'r
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAT-T294', 'M.LNCH-T146', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAT-T294', 'M.ORCH-T2253', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAT-T294', 'MAT-T261', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAT-T294', 'PRS-T1174', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAT-T294', 'RN-T21', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAT-T294', 'UQD-T101', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MAT-T294', 'US-T874', 'requires', NULL);
@@ -172679,6 +173953,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('MB-T44', 'MB-T9', 'part-
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MB-T45', 'MB-T9', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MB-T46', 'MB-T10', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MB-T47', 'MB-T10', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('MB-T60', 'MAT-T290', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MB-US-A1', 'MB-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MB-US-A2', 'MB-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('MB-US-A3', 'MB-EPIC-A', 'part-of', 'migrated: story under its epic');
@@ -172751,6 +174026,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('OC-T49', 'MAT-T240', 're
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('OC-T49', 'OC-T47', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('OC-T49', 'OC-T48', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('OC-T51', 'OC-T17', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('OC-T53', 'MAT-T290', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('OC-US-A1', 'OC-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('OC-US-A2', 'OC-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('OC-US-A3', 'OC-EPIC-A', 'part-of', 'migrated: story under its epic');
@@ -172783,6 +174059,9 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('PL-T31', 'M.COMP-T157', 
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PL-T31', 'M.VALT-T35', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PL-T31', 'M.VALT-T39', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PL-T31', 'M.VALT-T44', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PL-T43', 'MAT-T290', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PL-T44', 'MAT-T261', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PL-T44', 'PL-T43', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T10', 'PRS-T3', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T100', 'PRS-US-Q11', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T101', 'PRS-US-Q11', 'implements', NULL);
@@ -172881,6 +174160,9 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T1131', 'PRS-T1129',
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T1131', 'PRS-T1130', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T1132', 'MAT-T221', 'related', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T1132', 'MAT-T256', 'related', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T1133', 'MAT-T293', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T1134', 'MAT-T293', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T1134', 'PRS-T1133', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T1137', 'PRS-T22', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T1138', 'PRS-T22', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T1139', 'PRS-T22', 'part-of', NULL);
@@ -172925,6 +174207,11 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T117', 'PRS-US-Q13',
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T1170', 'PRS-T3', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T1171', 'PRS-T3', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T1172', 'PRS-T3', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T1173', 'PRS-T1171', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T1174', 'MAT-T261', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T1174', 'PRS-T1133', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T1174', 'PRS-T1134', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T1175', 'PRS-T1170', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T118', 'PRS-T117', 'requires', 'GLMZ wheel catalog order: PRS-T118 runs only after PRS-T117 closes');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T118', 'PRS-US-Q13', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T119', 'PRS-T118', 'requires', 'GLMZ wheel catalog order: PRS-T119 runs only after PRS-T118 closes');
@@ -173343,6 +174630,9 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T301', 'RB-T247', 'pa
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T301', 'RB-T299', 'requires', 'blocked by hand');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T302', 'RB-T248', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T302', 'RB-T299', 'requires', 'blocked by hand');
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T305', 'MAT-T293', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T306', 'MAT-T261', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T306', 'RB-T305', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RB-T37', 'RB-T35', 'requires', 'orchestrator block');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RN-T19', 'MAT-T287', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RN-T20', 'MAT-T289', 'requires', NULL);
@@ -173356,6 +174646,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('RTB-T274', 'M.CAPT-T179'
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RTB-T274', 'RTB-T273', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RTB-T275', 'M.CAPT-T201', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RTB-T275', 'M.CAPT-T207', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('RTB-T276', 'MAT-T318', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RTO-T119', 'RTO-T110', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RTO-T120', 'RTO-T110', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('RTO-T120', 'RTO-T119', 'requires', NULL);
@@ -173462,6 +174753,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('TRC-T93', 'TRC-T90', 'pa
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TRC-T94', 'TRC-T90', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TRC-T95', 'TRC-T90', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TRC-T96', 'TRC-T95', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('TRC-T99', 'MAT-T290', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TRC-US-A1', 'TRC-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TRC-US-A2', 'TRC-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TRC-US-A3', 'TRC-EPIC-A', 'part-of', 'migrated: story under its epic');
@@ -173527,6 +174819,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('TT-T71', 'TT-T13', 'part
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TT-T72', 'TT-T13', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TT-T73', 'TT-T13', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TT-T74', 'TT-T13', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('TT-T81', 'MAT-T290', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TT-US-A1', 'TT-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TT-US-A2', 'TT-EPIC-A', 'part-of', 'migrated: story under its epic');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TT-US-A3', 'TT-EPIC-A', 'part-of', 'migrated: story under its epic');
@@ -173569,6 +174862,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-T133', 'TUT-T127', '
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-T134', 'TUT-T126', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-T135', 'TUT-T126', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-T136', 'TUT-T126', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-T138', 'MAT-T290', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-T16', 'M.TIX-T14', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-T31', 'M.COMP-T157', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-T31', 'M.VALT-T35', 'part-of', NULL);
@@ -173658,6 +174952,9 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('TUT-US-I1', 'TUT-EPIC-I'
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.CHN-T116', 'M.CAPT-T167', 'related', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.CHN-T117', 'M.CAPT-T179', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.CHN-T117', 'U.CHN-T116', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.CHN-T118', 'MAT-T291', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.CHN-T119', 'MAT-T261', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.CHN-T119', 'U.CHN-T118', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.CHN-T12', 'U.CHN-T10', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.CHN-T12', 'U.CHN-T4', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.CHN-T12', 'U.CHN-T5', 'requires', NULL);
@@ -173819,6 +175116,9 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.EVE-T32', 'MAU-T12', '
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.EVE-T56', 'M.CAPT-T167', 'related', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.EVE-T57', 'M.CAPT-T179', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.EVE-T57', 'U.EVE-T56', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.EVE-T58', 'MAT-T291', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.EVE-T59', 'MAT-T261', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.EVE-T59', 'U.EVE-T58', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.HARE-T10', 'U.HARE-US-C3', 'implements', 'U.HARE-T118 audit: built by 58a4ab4; code on main');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.HARE-T11', 'U.HARE-US-D1', 'implements', 'U.HARE-T118 audit: built by 5704b0b; code on main');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.HARE-T119', 'U.CHN-T112', 'part-of', NULL);
@@ -173834,6 +175134,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.HARE-T135', 'M.CAPT-T1
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.HARE-T135', 'U.HARE-T134', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.HARE-T136', 'M.CAPT-T201', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.HARE-T136', 'M.CAPT-T207', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.HARE-T137', 'MAT-T291', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.HARE-T14', 'U.HARE-US-E2', 'implements', 'U.HARE-T118 audit: built by b80a36d; code on main');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.HARE-T15', 'U.HARE-US-E3', 'implements', 'U.HARE-T118 audit: built by 55ae20b; code on main');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.HARE-T16', 'U.HARE-US-E4', 'implements', 'U.HARE-T118 audit: built by 4b8a6b7; code on main');
@@ -174071,6 +175372,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-T6', 'U.INC-T5', '
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-T60', 'M.CAPT-T167', 'related', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-T61', 'M.CAPT-T179', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-T61', 'U.INC-T60', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-T62', 'MAT-T291', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-T7', 'U.INC-T6', 'requires', 'hacking overlay is a pointer-mode interaction');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-T8', 'U.INC-T3', 'requires', 'NPC suspicion reads player position/facing');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.INC-T9', 'U.INC-T3', 'requires', 'weapon aim/fire builds on player state machine');
@@ -174094,6 +175396,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.OVW-T10', 'U.OVW-US-A6
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.OVW-T106', 'M.CAPT-T167', 'related', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.OVW-T107', 'M.CAPT-T179', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.OVW-T107', 'U.OVW-T106', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.OVW-T108', 'MAT-T291', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.OVW-T11', 'U.OVW-T10', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.OVW-T11', 'U.OVW-US-A7', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.OVW-T12', 'U.OVW-T11', 'requires', NULL);
@@ -174225,6 +175528,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.RICO-T162', 'U.CHN-T11
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.RICO-T163', 'U.RICO-US-PAR18', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.RICO-T164', 'U.RICO-US-STD8', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.RICO-T165', 'U.RICO-T163', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.RICO-T174', 'MAT-T291', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.RICO-T20', 'U.RICO-US-NET4', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.RICO-T20', 'UM-T78', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.RICO-T22', 'U.RICO-T62', 'requires', 'orchestrator block');
@@ -174364,6 +175668,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.RON-T30', 'U.RON-T29',
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.RON-T31', 'M.CAPT-T167', 'related', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.RON-T32', 'M.CAPT-T179', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.RON-T32', 'U.RON-T31', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.RON-T33', 'MAT-T291', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.SPC-T100', 'U.SPC-T55', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.SPC-T101', 'U.SPC-T56', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.SPC-T102', 'U.SPC-T65', 'requires', NULL);
@@ -174601,6 +175906,9 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.SPC-T641', 'U.SPC-T406
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.SPC-T641', 'U.SPC-T640', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.SPC-T642', 'U.SPC-T406', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.SPC-T642', 'U.SPC-T641', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.SPC-T645', 'MAT-T291', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.SPC-T646', 'MAT-T261', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.SPC-T646', 'U.SPC-T645', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.SPC-T90', 'U.SPC-T104', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.SPC-T91', 'U.SPC-T90', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.SPC-T92', 'U.SPC-T55', 'requires', NULL);
@@ -174647,6 +175955,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.VAN-T29', 'MAU-T11', '
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.VAN-T29', 'MAU-T12', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.VAN-T38', 'U.CHN-T112', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.VAN-T4', 'U.VAN-US-A1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.VAN-T45', 'MAT-T291', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.VAN-T5', 'U.VAN-T26', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.VAN-T5', 'U.VAN-T4', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('U.VAN-T5', 'U.VAN-US-A2', 'implements', NULL);
@@ -174710,6 +176019,9 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('UC-T62', 'UC-T61', 'requ
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UC-T65', 'M.CAPT-T167', 'related', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UC-T66', 'M.CAPT-T179', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UC-T66', 'UC-T65', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('UC-T68', 'MAT-T291', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('UC-T69', 'MAT-T261', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('UC-T69', 'UC-T68', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UC-T7', 'UC-T6', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UC-T7', 'UM-T20', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UC-T8', 'UC-T7', 'requires', NULL);
@@ -174775,6 +176087,9 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('UE-T71', 'UE-T10', 'part
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UE-T72', 'UE-T10', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UE-T73', 'UE-T10', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UE-T74', 'UE-T10', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('UE-T77', 'MAT-T292', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('UE-T78', 'MAT-T261', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('UE-T78', 'UE-T77', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UM-T10', 'UM-T9', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UM-T11', 'UM-T10', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UM-T11', 'UM-T4', 'requires', NULL);
@@ -174868,6 +176183,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNR-T126', 'M.CAPT-T201'
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNR-T126', 'M.CAPT-T207', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNR-T126', 'UNR-T123', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNR-T126', 'UNR-T124', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNR-T127', 'MAT-T292', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNR-T4', 'UNR-T3', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNR-T4', 'UNR-T9', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNR-T5', 'UNR-T3', 'requires', NULL);
@@ -174891,9 +176207,13 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNS-T17', 'M.COMP-T157',
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNS-T17', 'M.VALT-T35', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNS-T17', 'M.VALT-T39', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNS-T17', 'M.VALT-T44', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNS-T38', 'MAT-T290', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNS-T39', 'MAT-T261', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNS-T39', 'UNS-T38', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UNS-T9', 'M.SCHD-T9', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UQD-T101', 'MAT-T261', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UQD-T101', 'MAT-T273', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('UQD-T102', 'MAT-T291', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UQD-T19', 'UQD-T14', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UQD-T21', 'UQD-T30', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('UQD-T29', 'UQD-T28', 'requires', NULL);
