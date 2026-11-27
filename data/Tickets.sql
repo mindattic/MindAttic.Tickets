@@ -18064,6 +18064,8 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T921', 'SpaceGod.Unreal', 921, '2026-11-27', 'fix', 'closed', 'UI/Hud.cpp fails a UBT -SingleFile compile on main: cs::Math::PI lines (~1126, 1602, 1609, 1693, 1696) hit the UE PI macro despite Cs.h undef (include order); switch to Tau*0.5/Mathf::Pi or fix the undef so Hud.cpp compiles on its own (found landing US-T920)', 'd8056f0d9765b88c6c631cf08f47b3a427038e39', 920, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T922', 'SpaceGod.Unreal', 922, '2026-11-27', 'fix', 'open', 'Add a scripted probe command sg.GFight (new file Cpp/Source/SpaceGod/GFightCommand.cpp, pattern of TractorCommand.cpp Run/steps: app->StartDogfightDemo(false), wait for IsPiloting + Piloted.Ship->Battle, lock via Input.LockTarget (FighterSeat::CycleLock path, UnitySpaceApp.Embodiment.cpp:996) or ToggleLockTarget, then ToggleScale x4 with ScaleAnimating waits) that logs per frame: IsPiloting, Piloted.Ship identity, PilotUnit()->PlayerLockTarget and LockProgress, camera distance to hull over TargetRadius, and the lead pip; run it detached with tools/play.ps1 -Mode dogfight -ExecCmds ''sg.GFight quit'' (game lease, log to scratch) and fix whatever drops the seat, the lock or the chase distance. Code read so far found Hud lock/lead/ArrowReachKm (Hud.cpp DrawCombatHud, Hud.Sights.cpp) and hit markers (Hud.Hits.cpp, screen-space) all derive from sim km each frame, so likely fine; suspects left unchecked: SpaceCamera chase lag and zoom across ScaleModel blend (Camera/SpaceCamera.cpp ~536 ChaseScale/TargetRadius), FighterSeat lock/cone state, BattleNearPlayer, ToggleScale/AnimateScale (UnitySpaceApp.Main2.cpp:929) interplay with EnterPilotChase.', '—', 921, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T923', 'SpaceGod.Unreal', 923, '2026-11-27', 'fix', 'open', 'Run the sg.GFight probe (tools/play.ps1 -Mode dogfight -ExecCmds ''sg.GFight quit'', detached, log to scratch; the lock step only works when HeldSeat is a FighterSeat, else add a helm lock path), read the per-toggle seat/lock/chase/pip lines, and fix whatever drops the seat, lock or chase distance across a G toggle; then close US-T922 and US-T910. Probe landed as 411b58a0861b588f9e3a17a0adfa00f0101b5f6f.', '—', 922, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T924', 'SpaceGod.Unreal', 924, '2026-11-27', 'fix', 'open', 'roles.free probe throws ''index'' (roles.exception FAIL) at gameplay scale in FreeRole (Shift+J/Shift+T/F in command after the seat probes), so the realistic-scale roles.* never run; find the out-of-range index (add step logs in FeatureAudit.cpp FreeRole), fix it, then run tools/play.ps1 -Mode audit -AuditFacade and confirm roles.gameplay.* and roles.realistic.* all pass. Also turret/worker/launched-craft seat probes log INFO ''no seat taken'' (no fight staged), so the carrier-launched-craft seat is not actually exercised; stage a fight for them. The full SpaceGodEditor build was failing in UnitySpaceApp.Main2.cpp (SscKit::ForPlatform, another agent''s in-progress edit).', '—', 923, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T925', 'SpaceGod.Unreal', 925, '2026-11-27', 'fix', 'open', 'tools/play.ps1 -Mode audit: transit.ftl-engage FAILs (seen in the US-T908 audit run after 354dbdd, logs in D:\Projects\MindAttic.worktrees\.scratch\US-T908); find why the FTL engage probe fails and fix it', '—', 924, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T1', 'SpaceGod.Unreal.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T2', 'SpaceGod.Unreal.CSharp', 2, '2026-11-06', 'feature', 'closed', 'Adopt the shared off-by-default --headless launch mode (Unreal.Shared)', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T3', 'SpaceGod.Unreal.CSharp', 3, '2026-11-08', 'feature', 'wont-do', 'Mirror SpaceGod US-T72: add docs/CAPTURE.md (Unity e29d871''s text, third copy named SpaceGod) that this copy''s capture code cites but lacks, and a US-T72 section in docs/PARITY.md', 'portfolio reset: SpaceGod.Unreal.CSharp is an archived copy; SpaceGod.Unreal is the one SpaceGod', 2, NULL);
@@ -149451,6 +149453,20 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151789, 
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151790, 'US-T921', '2026-11-27T20:37:09Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151791, 'US-T921', '2026-11-27T20:37:09Z', 'ref', '—', 'd8056f0d9765b88c6c631cf08f47b3a427038e39');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151792, 'US-T921', '2026-11-27T20:37:23Z', 'working', 'ryandebraal@gmail.com (b773a79b-ba7e-46cb-9786-f886660e3188)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151793, 'M.ORCH-T2335', '2026-11-27T20:40:59Z', 'working', 'ryandebraal@gmail.com (8b26624c-b794-4842-a4ae-87041419b1a9)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151794, 'US-T908', '2026-11-27T20:41:23Z', 'label', 'level:task', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151795, 'US-T908', '2026-11-27T20:41:23Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151796, 'US-T924', '2026-11-27T20:41:23Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151797, 'US-T924', '2026-11-27T20:41:23Z', 'link', NULL, 'part-of US-T908');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151798, 'US-T908', '2026-11-27T20:41:23Z', 'link', NULL, 'US-T924 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151799, 'US-T924', '2026-11-27T20:41:23Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151800, 'US-T924', '2026-11-27T20:41:23Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151801, 'US-T924', '2026-11-27T20:41:23Z', 'priority', '0', '790');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151802, 'US-T925', '2026-11-27T20:41:38Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151803, 'US-T908', '2026-11-27T20:41:41Z', 'working', 'ryandebraal@gmail.com (b773a79b-ba7e-46cb-9786-f886660e3188)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151804, 'US-T924', '2026-11-27T20:41:52Z', 'working', NULL, 'ryandebraal@gmail.com (b773a79b-ba7e-46cb-9786-f886660e3188)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151805, 'US-T925', '2026-11-27T20:41:57Z', 'working', NULL, 'b773a79b-ba7e-46cb-9786-f886660e3188');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151806, 'US-T925', '2026-11-27T20:42:24Z', 'working', 'b773a79b-ba7e-46cb-9786-f886660e3188', NULL);
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AES-T10', 'proposed', 380, '2026-11-24T19:47:20Z', NULL);
@@ -157178,6 +157194,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T920', 'approved', 880, '2026-11-27T20:06:32Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T922', 'approved', 780, '2026-11-27T20:20:08Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T923', 'approved', 780, '2026-11-27T20:35:48Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T924', 'approved', 790, '2026-11-27T20:41:23Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T96', 'approved', 0, '2026-11-06T21:27:45Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T98', 'approved', 0, '2026-11-06T21:27:46Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T99', 'approved', 210, '2026-11-23T19:31:02Z', NULL);
@@ -157284,7 +157301,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T573', 'ryandebraal@mindattic.com', 0, NULL, NULL, NULL, '2026-11-26T23:54:18Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T596', 'ryandebraal@mindattic.com', 0, NULL, NULL, NULL, '2026-11-26T23:54:21Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T2335', NULL, 0, 'ryandebraal@gmail.com', '8b26624c-b794-4842-a4ae-87041419b1a9', '2026-11-27T08:40:36Z', '2026-11-27T08:40:36Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T768', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
@@ -157517,10 +157533,10 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T146', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:14:40Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T82', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T07:02:05Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T85', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T23:52:54Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T908', NULL, 0, 'ryandebraal@gmail.com', 'b773a79b-ba7e-46cb-9786-f886660e3188', '2026-11-27T20:06:51Z', '2026-11-27T20:06:51Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T91', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T00:58:13Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T915', NULL, 0, 'ryandebraal@gmail.com', 'b773a79b-ba7e-46cb-9786-f886660e3188', '2026-11-27T20:20:24Z', '2026-11-27T20:20:24Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T923', NULL, 0, 'ryandebraal@gmail.com', 'b773a79b-ba7e-46cb-9786-f886660e3188', '2026-11-27T20:36:01Z', '2026-11-27T20:36:01Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T924', NULL, 0, 'ryandebraal@gmail.com', 'b773a79b-ba7e-46cb-9786-f886660e3188', '2026-11-27T20:41:52Z', '2026-11-27T20:41:52Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T98', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:51:51Z');
 
 -- ticket_notes
@@ -199422,7 +199438,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T904', 'level:ta
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T905', 'level:feature', '2026-11-27T09:51:31Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T906', 'level:task', '2026-11-27T09:51:43Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T907', 'level:feature', '2026-11-27T09:51:49Z');
-INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T908', 'level:task', '2026-11-27T09:51:53Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T908', 'level:story', '2026-11-27T20:41:23Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T909', 'level:feature', '2026-11-27T09:52:00Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T910', 'level:story', '2026-11-27T20:20:08Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T911', 'level:task', '2026-11-27T09:52:08Z');
@@ -199437,6 +199453,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T919', 'level:ta
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T920', 'level:task', '2026-11-27T20:06:32Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T922', 'level:story', '2026-11-27T20:35:47Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T923', 'level:task', '2026-11-27T20:35:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T924', 'level:task', '2026-11-27T20:41:23Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T99', 'level:story', '2026-11-22T06:44:47Z');
 
 -- repo_renames
@@ -211212,6 +211229,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T919', 'US-T900', 'pa
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T920', 'US-T903', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T922', 'US-T910', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T923', 'US-T922', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T924', 'US-T908', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T99', 'US-T468', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('USOD-T10', 'USOD-T3', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('USOD-T10', 'USOD-T4', 'requires', NULL);
