@@ -5825,6 +5825,23 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T805', 'Gadfly', 805, '2026-11-26', 'fix', 'closed', 'Bust examiner: head leans off its plinth (TalkingHead body sway moves the spine) and the upper framing is half plinth', '7e5e548', 804, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T806', 'Gadfly', 806, '2026-11-26', 'feature', 'open', 'Gadfly: adopt (or confirm) the shared run menu over deploy-lib.ps1, run Redeploy, and confirm its exe lands and starts at R:\MindAttic\Apps\Gadfly\Debug and \Release; repoint anything in the repo still naming an old deploy path. Outcome: both builds exist under R: and launch', '—', 805, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T807', 'Gadfly', 807, '2026-11-26', 'chore', 'closed', 'Female examiner is the default again (first in ExaminerCatalog); the bust stays offered second', '0df308e', 806, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T808', 'Gadfly', 808, '2026-11-26', 'feature', 'open', 'Pure elenchus: dissertation-backed cleanup of the examiner, the student flow and the exam-path code, backed by ElenchusAtScale (owner request 2026-11-26)', '—', 807, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T809', 'Gadfly', 809, '2026-11-26', 'feature', 'open', 'The examiner conducts pure elenchus: no leading, presupposing or double questions even on fallback, coherence counted only once a contradiction is put, and an ending in self-examination', '—', 808, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T810', 'Gadfly', 810, '2026-11-26', 'feature', 'open', 'The student flow serves self-examination: no delivery measures in the live view, honest get-ready expectations, results showing the student''s own elenctic record', '—', 809, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T811', 'Gadfly', 811, '2026-11-26', 'chore', 'open', 'Exam-path cleanup with a payoff: retire the ExamPromptsV3 alias, status names that misuse aporia, docs that match the code', '—', 810, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T812', 'Gadfly', 812, '2026-11-26', 'feature', 'open', 'Every question the examiner asks obeys the elenchus rules, including fixed fallbacks and streamed replies', '—', 811, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T813', 'Gadfly', 813, '2026-11-26', 'feature', 'open', 'The exam ends in self-examination: one fixed, unscored closing reflection asked aloud by the examiner', '—', 812, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T814', 'Gadfly', 814, '2026-11-26', 'fix', 'open', 'Fixed fallback questions (en/es/ko) stop presupposing, yes/no and process questions; a Contradiction fallback quotes both claims; Counterexample/Apply fallbacks are recorded as the move actually asked and never credit transfer (ElenchusAtScale 2.3.1, 3.3, 3.4, M3, M5, M7)', '—', 813, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T815', 'Gadfly', 815, '2026-11-26', 'fix', 'open', 'A draft or streamed reply is cut after its first question and an overlong draft is redrafted, so the student never hears two questions in one turn (ElenchusAtScale 3.1, 3.2, 4.3.4)', '—', 814, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T816', 'Gadfly', 816, '2026-11-26', 'fix', 'open', 'Judges score consistency only on a Contradiction move; other answers are weighted on accuracy, reasoning and completeness, so an unconfronted conflict never lowers a score (prompt set v11; ElenchusAtScale 3.4, M7)', '—', 815, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T817', 'Gadfly', 817, '2026-11-26', 'feature', 'open', 'After an examiner-ended exam the step carries one fixed, unscored reflection question (en/es/ko); answer or skip is stored on the session, outside the clock, never reaching judges, grades or reports (ElenchusAtScale 2.2.1, 2.2.2, 2.6, 6.5)', '—', 816, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T818', 'Gadfly', 818, '2026-11-26', 'feature', 'open', 'The exam room has the examiner ask the closing reflection aloud, takes a spoken (or accommodated typed) answer or Skip, with no timer, then shows the ended card (ElenchusAtScale 2.2.2, 2.5.1, 2.6)', '—', 817, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T819', 'Gadfly', 819, '2026-11-26', 'fix', 'open', 'The student''s live transcript drops the response-delay and voice-comparison lines and the dead voice-delay element; stored metrics and reviewer views unchanged (ElenchusAtScale 2.10.3, 5.6.2, 2.5.1, 5.3.4)', '—', 818, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T820', 'Gadfly', 820, '2026-11-26', 'fix', 'closed', 'Get-ready copy (en/es/ko) drops the false claim that the voice comparison steers questions and tells the student the examiner will not confirm, hint or correct (ElenchusAtScale 5.7.2, 2.2.2, 2.3.1, 2.5.1, 6.5)', 'ae4f1d2', 819, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T821', 'Gadfly', 821, '2026-11-26', 'feature', 'open', 'The published student result lists each contradiction put to the student (both claims quoted, their answer) with no verdict, and their closing reflection (ElenchusAtScale 3.4 Prop. 3.1, M7, 2.2.3, 2.6.1)', '—', 820, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T822', 'Gadfly', 822, '2026-11-26', 'chore', 'open', 'Delete the ExamPromptsV3 alias (identical to ExamPrompts.Set since v4); callers, tests and DESIGN.md use ExamPrompts; prompt-set hash unchanged (ElenchusAtScale 5.9, 6.7)', '—', 821, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T823', 'Gadfly', 823, '2026-11-26', 'chore', 'open', 'ConceptStatus stops calling a level settled below Conceptual Understanding ''Aporia'' and an inconclusive one ''Exhausted''; analytics columns and CSV follow, old rows still counted, running estimate labelled as such (ElenchusAtScale 2.2.2, 4.5, 3.1, M8, Prop. 3.3)', '—', 822, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GAD-T824', 'Gadfly', 824, '2026-11-26', 'docs', 'open', 'DESIGN, VOICE, SOCRATIC_PLATFORM, SCIENCE, EVIDENCE_MAP and the blueprint gap analysis match the exam path after this epic, stale read-back flow and ExamPromptsV3 references fixed (ElenchusAtScale 6.7, 5.9)', '—', 823, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T1', 'GridGame.Studio', 1, '2026-11-21', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T2', 'GridGame.Studio', 2, '2026-11-21', 'feature', 'closed', 'GridGame.Studio: ThumbnailStudio moved here as one WPF app, plus Gallery tabs (Heroes/Enemies/Abilities paste-to-replace: background cut, centred 1024x1024, Figure update; 64px icons) and an eraser (circle/square 1-100 px), Python image steps run as one-off commands, no web server', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GGS-T3', 'GridGame.Studio', 3, '2026-11-21', 'feature', 'closed', 'Studio gallery: Backgrounds tab grouped by region (campaign.json Themes Name/Backgrounds set), replace any image or add the next numbered one (<set>_NN.jpg)', '—', 2, NULL);
@@ -11717,7 +11734,7 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T2284', 'MindAttic.Orchestrator', 2284, '2026-11-26', 'fix', 'closed', 'The Do button overlaid on the shown CLI (M.ORCH-T2263, MainWindow.xaml ~1119, TerminalsViewModel.cs ~2002) types ''Do''; it must type ''do'' (lowercase) and Enter, so it matches the /do skill. Button label can stay ''Do''. Owner 2026-11-26.', 'dc57f22fc7fb2396c39dcae572f761ac49d6b9f4', 2283, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T2285', 'MindAttic.Orchestrator', 2285, '2026-11-26', 'fix', 'closed', 'Launcher moved to R:\MindAttic\Apps\MindAttic.Launcher (M.LNCH-T145 a9cde66): LauncherRedeploy still calls run.ps1 -Force, now a no-op, so the dashboard''s Launcher redeploy rebuilds nothing; switch it to run.ps1 -Redeploy, point OrchestratorOptions.LauncherExe default and release.ps1 at R:\MindAttic\Apps\MindAttic.Launcher\Release\MindAttic.Launcher.exe (Redeploy stops agent tabs running from that folder, so swap safely), update README/test fixtures', '948a3d8259e2a62b7a5018f57543492c717fd1d9', 2284, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T2286', 'MindAttic.Orchestrator', 2286, '2026-11-26', 'fix', 'closed', 'Ancestor-requires deadlock: Scheduler.AncestorRequires and Allocate.OpenPrerequisites (M.ORCH-T1909) count an ancestor''s requires links to its own part-of descendants (the links tickets ticket split adds), so a split''s tasks wait on their own parent (US-T880 on US-T866 via US-T744) or on each other (US-T881/US-T882 via US-T793) and nothing is ever handed out; skip a requires target that is part-of that ancestor', '2fc7a0bf', 2285, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T2287', 'MindAttic.Orchestrator', 2287, '2026-11-26', 'fix', 'open', 'orchestrator next skips claimable split children: SpaceGod.Unreal US-T871/T876/T880/T881/T882 (approved, open, no requires, part-of an open parent) were reported as ''wait on other open tickets'' and never handed out, while orchestrator claim <id> claimed each fine; the parent waiting on its children seems to be counted against the children', '—', 2286, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T2287', 'MindAttic.Orchestrator', 2287, '2026-11-26', 'fix', 'closed', 'orchestrator next skips claimable split children: SpaceGod.Unreal US-T871/T876/T880/T881/T882 (approved, open, no requires, part-of an open parent) were reported as ''wait on other open tickets'' and never handed out, while orchestrator claim <id> claimed each fine; the parent waiting on its children seems to be counted against the children', 'children done', 2286, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T2288', 'MindAttic.Orchestrator', 2288, '2026-11-26', 'chore', 'closed', 'Remove the Do button overlay (M.ORCH-T2263): hacky/cheap, not professional - users can type Do into the CLI themselves', 'a8078d1e', 2287, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T2289', 'MindAttic.Orchestrator', 2289, '2026-11-26', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.TabStatusTests.The_strip_shows_the_light_and_week_left_and_the_API_key_switch_lives_on_its_tab — Assert.That(xaml, Does.Contain("x:Name=\"ApiLeftTile\"").And.Contain("x:Name=\"ApiBurnChart\"") .And.Contain("{Binding ShowsClaudeMeters, Converter")) Expected: String containing "x:Name="ApiLeftTile"" and containing "x:Name="ApiBurnChart"" and containing "{Binding ShowsClaudeMeters, Converter" B... (landed on main since the last green run: tickets M.ORCH-T2284, M.ORCH-T2285, M.ORCH-T2281, M.ORCH-T2246, M.ORCH-T2283, M.ORCH-T2282, M.ORCH-T2141, M.ORCH-T2279, M.ORCH-T2221, M.ORCH-T2278, M.ORCH-T2238, M.ORCH-T2280, M.ORCH-T2276, M.ORCH-T2273, M.ORCH-T2265, T2269-T2272, M.ORCH-T2267, M.ORCH-T2268, M.ORCH-T2239, M.ORCH-T2236, M.ORCH-T2255, M.ORCH-T2233, M.ORCH-T2258, M.ORCH-T2260, M.ORCH-T2264 in dc57f22f Do button types ''do'' (lowercase) and Enter, matching the /do skill (M.ORCH-T2284); 948a3d82 Launcher run copies after review: a build is named by a fingerprint of its whole deploy folder (a copy taken mid-redeploy is dropped), a new build''s snapshot is copied in the background while the previous one runs, each start resolves the Launcher once, a snapshot handed out in the last 10 minutes is never pruned, and a PC with no R: drive finds the installer''s C:\Apps or per-user Programs Launcher (M.ORCH-T2285); fdc30010 Launcher moved to R:\MindAttic\Apps\MindAttic.Launcher\Release: LauncherRedeploy runs run.ps1 -Redeploy (not the no-op -Force), LauncherExe defaults to the R: Release exe as a Vault setting (Folders > Launcher exe), and every Launcher the dashboard starts runs from a per-build snapshot under MindAttic.Launcher\Run so a redeploy never stops live agent tabs; release.ps1, README and fixtures follow (M.ORCH-T2285); 39668154 TermHost numbers viewers in the order they connected, not the order their Hellos are read, and the first to connect owns the size until someone uses it: a slow host start let a second viewer''s Hello be read first, so it took the size and never heard another viewer owned it (the letterbox-reclaim test''s failure, logged in host 293b55d49b74); a viewer''s join applies the owner''s size from the policy, not its own Hello (M.ORCH-T2281); eb39da9f AllocateTests: the full-allowance refusal names each claimant CLI since M.ORCH-T2246 (''1 by CLI 2 (B)''); expect it, test update, not a regression (M.ORCH-T2283); c8eb2f97 TicketsDesktopTests: the window''s TicketText free-text links went with the login home page (T2225, T2238), drop the at-least-two assertion (M.ORCH-T2282); 9ad46176 TabStatusTests: the disabled icon binds ShowsDisabledIcon (IsTabDisabled less a locked tab, M.ORCH-T2141), not IsTabDisabled (M.ORCH-T2279); 0966d967 LeaseTests: the version-5 migration test expects schema version 23 now that step 23 (M.ORCH-T2221) adds members.alias (M.ORCH-T2278); 541850bc LibraryControlsTests: the API starting-credit box went with the login home page (M.ORCH-T2238), so only the name@company.com and Password hints remain; test update, not a regression (M.ORCH-T2280); 11d22c13 A subagent handed its ticket by file counts as working it: TicketAttribution.FromHandoff reads a subagent''s opening prompt (''Your complete task prompt for ticket X (Repo, fix) is in ...\X.prompt'', ''tickets X, Y and Z'', several pasted ''Work on ticket'' prompts), so next stops counting those claims as ''claimed with no subagent on yet''; every ticket one subagent was handed counts (TicketedSubagent.Also) in WorkedBy, TicketActivity and LastActivityUtc; transcript cache v6 rereads running subagents (M.ORCH-T2276); 672ebb6f AllocateTests: pacing off, next''s refusal names the session-setting fallback it used (Allocate.NoRoom, M.ORCH-T2246), test update, not a regression (M.ORCH-T2273); 68ad7482 SchedulePlan.AllowancePace is derived (Pace ?? UnpacedAllowance), not a stored copy: a plan remade with { Pace = ... } kept the allowance of the pace it was first made under, so next counted the wrong allowance; fixes the nine allocate/claim tests T2246 broke (M.ORCH-T2265, T2266, T2269-T2272, T2274, T2275) (M.ORCH-T2267); 9c128dd0 Give the letterbox-reclaim test 30 s per wait: a loaded suite run starved the host''s Size frame past 10 s (M.ORCH-T2268); f1b09069 TicketsDesktopTests: the login home page''s ticket links are gone, so only the owner inbox''s remains (M.ORCH-T2239); b799c0f4 MemberRosterTests: a new members table lists the alias column too (M.ORCH-T2236); fbab0f60 AccountsViewTests: slice the top row up to LoginTabStrip, the Header element is gone (M.ORCH-T2255); 0f7ef746 LeaseTests: DropStep23 undoes members.alias so old-version migration tests don''t hit duplicate column (M.ORCH-T2233); c288e30d AccountSwitchTests: BillingDetail is bound once by the billing detail line the test itself requires; assert that, and that LastUpdatedCaption is gone (M.ORCH-T2258); 999a7258 TabStatusTests slice the login strip up to LoginTreeScroller, the Header element it used to end at is gone (M.ORCH-T2260); 61c53cc6 Nudge the Logins tree''s title text up 1px to optically center it against its icon (M.ORCH-T2264))', '8ac75902dce44f8d7409fb27b5285b73df104bca', 2288, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T2290', 'MindAttic.Orchestrator', 2290, '2026-11-26', 'fix', 'closed', 'Bughunt sweep 2026-11-26: exhaustive pass over all tracked src, then fix every confirmed bug', 'children done', 2289, NULL);
@@ -11737,8 +11754,9 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T2304', 'MindAttic.Orchestrator', 2304, '2026-11-26', 'fix', 'closed', 'Bughunt: member-host start misreported and orphaned; owner watch token can DELETE sessions; ticket close checks a different ticket; renderer leak', 'f3f06870', 2303, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T2305', 'MindAttic.Orchestrator', 2305, '2026-11-26', 'fix', 'closed', 'Gateway member-host ledger drops a just-started host it can''t see yet, orphaning it', 'bd5481a7', 2304, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T2306', 'MindAttic.Orchestrator', 2306, '2026-11-26', 'fix', 'closed', 'Timelapse frames default to R:\MindAttic\Media\Capture\MindAttic.Orchestrator, not the retired R:\MindAttic\Capture root', '8dbb00bf', 2305, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T2307', 'MindAttic.Orchestrator', 2307, '2026-11-26', 'fix', 'open', 'Reproduce M.ORCH-T2287: in MindAttic.Orchestrator.Tests (AllocateTests.cs or SchedulerTests.cs), write a failing test with an approved, open, level:task ticket that has no requires links and is part-of an open non-epic parent (a container per Model.cs IsContainer/Containers), where that parent is itself part-of a further ancestor (epic or not). Assert Scheduler.Plan''s resulting QueueItem.BlockedBy is empty for the child (so it is proposed), matching what ''orchestrator claim <id>'' already allows. Pin down exactly which entry Blockers()/AncestorRequires() in src/MindAttic.Orchestrator.Core/Scheduling/Scheduler.cs (lines ~211-233) adds to BlockedBy that shouldn''t be there.', '—', 2306, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T2308', 'MindAttic.Orchestrator', 2308, '2026-11-26', 'fix', 'open', 'Using the failing test from the previous task, fix the root cause in src/MindAttic.Orchestrator.Core/Scheduling/Scheduler.cs (Blockers/AncestorRequires) or src/MindAttic.Orchestrator.Core/Model.cs (IsContainer/MayWork) so a part-of child of an open non-epic container is never blocked just because its container parent is open/unworked itself. Keep the M.ORCH-T1909/M.ORCH-T2286 behavior (an ancestor''s own real ''requires'' links still block) intact. Build, run the fixed and pre-existing Scheduler/Allocate tests, commit, land on main, close M.ORCH-T2287.', '—', 2307, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T2307', 'MindAttic.Orchestrator', 2307, '2026-11-26', 'fix', 'closed', 'Reproduce M.ORCH-T2287: in MindAttic.Orchestrator.Tests (AllocateTests.cs or SchedulerTests.cs), write a failing test with an approved, open, level:task ticket that has no requires links and is part-of an open non-epic parent (a container per Model.cs IsContainer/Containers), where that parent is itself part-of a further ancestor (epic or not). Assert Scheduler.Plan''s resulting QueueItem.BlockedBy is empty for the child (so it is proposed), matching what ''orchestrator claim <id>'' already allows. Pin down exactly which entry Blockers()/AncestorRequires() in src/MindAttic.Orchestrator.Core/Scheduling/Scheduler.cs (lines ~211-233) adds to BlockedBy that shouldn''t be there.', 'children done', 2306, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T2308', 'MindAttic.Orchestrator', 2308, '2026-11-26', 'fix', 'closed', 'Using the failing test from the previous task, fix the root cause in src/MindAttic.Orchestrator.Core/Scheduling/Scheduler.cs (Blockers/AncestorRequires) or src/MindAttic.Orchestrator.Core/Model.cs (IsContainer/MayWork) so a part-of child of an open non-epic container is never blocked just because its container parent is open/unworked itself. Keep the M.ORCH-T1909/M.ORCH-T2286 behavior (an ancestor''s own real ''requires'' links still block) intact. Build, run the fixed and pre-existing Scheduler/Allocate tests, commit, land on main, close M.ORCH-T2287.', '2fc7a0bf', 2307, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('M.ORCH-T2309', 'MindAttic.Orchestrator', 2309, '2026-11-26', 'fix', 'closed', 'Re-verify M.ORCH-T2287 against current Scheduler.cs (post M.ORCH-T2286/2fc7a0bf): extensive probing of Scheduler.Plan''s Blockers()/AncestorRequires() with a child (level:task, approved, no own requires) part-of a non-epic container that is itself part-of a further ancestor (epic or not), including split-style requires at every level (parent requires child, grandparent requires parent, grandparent requires child directly, redundant direct part-of to the grandparent), all produced an EMPTY BlockedBy for the child with current code -- IsPartOf''s transitive walk already excludes a split''s own requires links at any depth, not just one level. Either find the specific real SpaceGod-shaped data (requires/part-of combination) that still reproduces M.ORCH-T2287, or confirm commit 2fc7a0bf (M.ORCH-T2286) already fixed it and M.ORCH-T2287/M.ORCH-T2308 should be closed as already-fixed/stale instead of chasing a non-reproducing bug.', '66e3bc41', 2308, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T1', 'MindAttic.Orchestrator.SIDEBAR', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T2', 'MindAttic.Orchestrator.SIDEBAR', 2, '2026-11-05', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.SettingsModalTests.The_org_login_toolbar_is_the_Logins_dialogs_body — Assert.That(code, Does.Not.Contain("SettingsModal").And.Not.Contain("SizeSettings")) Expected: not String containing "SettingsModal" and not containing "SizeSettings" But was: "using System.Collections.Specialized; using System.Runtime.InteropServices; using System.Windows; using System.Windows.A... (landed on main since the last green run: tickets M.ORCH-T1310 in 864030c4 Cli csproj finds the workspace from any <workspace>.worktrees\<repo>\<name> checkout (drops .worktrees), so the main-tests build resolves MindAttic.Helpers without run.ps1''s MindAtticRoot (M.ORCH-T1310))', 'passes on main@270cb89', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('OS-T3', 'MindAttic.Orchestrator.SIDEBAR', 3, '2026-11-05', 'fix', 'closed', 'Fails on main: MindAttic.Orchestrator.Tests.LibraryOnlyXamlTests.Every_xaml_element_is_a_library_control_or_library_styled — Assert.That(Violations(files), Is.Empty) Expected: <empty> But was: < "MainWindow.xaml:33 <Style>: a style with a template or resources of its own", "MainWindow.xaml:42 <ControlTemplate>: neither a library control nor library-styled", "MainWindow.xaml:43 <Border>: Background="{TemplateBinding Bac... (landed on main since the last green run: tickets M.ORCH-T1310 in 864030c4 Cli csproj finds the workspace from any <workspace>.worktrees\<repo>\<name> checkout (drops .worktrees), so the main-tests build resolves MindAttic.Helpers without run.ps1''s MindAtticRoot (M.ORCH-T1310))', 'passes on main@270cb89', 2, NULL);
@@ -15347,6 +15365,11 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1187', 'Prose', 1187, '2026-11-26', 'docs', 'closed', 'M-101 is Declan Doyle (owner, 2026-11-26): fix docs/SCRY.md (M-1018883 belongs to Declan Doyle, not Soren Rowe), the VIGL brief''s ''Dame Lyra M-101'' rows and any other doc/DB text that names Soren Rowe as M-101; Soren Rowe is a separate blank character', '7c9f28136', 1186, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1188', 'Prose', 1188, '2026-11-26', 'chore', 'open', 'Weave approved (owner, 2026-11-26: ''approve all of it and weave''): apply all 8 biomass-weave.md insertions (+ its proposed supporting details) and all 10 traffic-weave.md insertions to the GLMZ books, re-read every edited beat, fix the flagged canon contradictions where the plans give a concrete fix, mark both plans applied, then tag their entities (PRS-T1171). No KDP republish.', '—', 1187, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1189', 'Prose', 1189, '2026-11-26', 'chore', 'open', 'Finish the approved weave (PRS-T1188 remainder): (1) biomass-weave.md contradictions 1-4 as entity/document fixes: ''The Biomass: What Grew When Everything Else Died'' (40,000 sq mi -> 28,000; 2149 -> 2147; CAUTERIZE ''near the Indiana border'' -> Kentucky''s northern border; fix imperial garble ''2-ten feet'', ''Within a 330 feet'', ''10-fifty feet''), Huntsville/Ridgepost/Biomass place entries ''engineered vegetation'' -> ''a continent-scale growth of human-derived tissue'', GLMZ Master Timeline add 2147/2158/2160/2163 official Biomass dates, The Gap visitor''s guide add the Green River line; (2) Boiler entity Description and Cetin Hiller story hook from the plan''s pilot section; (3) restamp beat Descriptions made stale by the 17 edited beats if any; (4) PRS-T1171 entity tagging of the weave docs. Creative call left for Ryan: biomass #3 (Death Whispers no longer has the husk-sinking passage it hangs on; needs a new spot or drop). No KDP republish.', '—', 1188, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1190', 'Prose', 1190, '2026-11-26', 'chore', 'open', 'BCODA F3: restate stale plan Descriptions book-wide. Book BCODA (Bushido Coda), universe glmz, 46 units/482 beats, plan-first gate active. ''prose --factory status --node bcoda --universe glmz'' shows F3 failing in 36 of 46 units (unit 1 alone has 13 of 46 beats with a stale Description, per the parent ticket title). Beat.DescriptionState (src/Prose.Core/Data/Entities/Beat.cs ~line 203 SummaryTrustState) is ''stale'' when DescriptionHash != current TextHash (prose edited after the plan was written), ''unverified'' when no hash was ever stamped, or null when there is no Description at all (F3''s ''missing''). FactoryService.EvaluateUnit''s F3 case (src/Prose.Core/Services/Factory/FactoryService.cs ~line 426) lists exactly which of these three buckets fail per unit. For each stale/unverified/missing prose beat: read its current prose text (e.g. prose --read-beats --slug bcoda --from N --to N --universe glmz), then restate its Description to say what the prose now actually does via ''prose --beat meta --id <beatId> --description "..." '' (this re-stamps DescriptionHash to the current TextHash, DB only — no repo file changes, same as the sibling ticket PRS-T1166/MNEMO: 47 stale plans restated by hand this same way, closed with ref ''prose --factory status --node mnemo: F3 pass 3/3 (... DB only, no repo change)'', no commit). Work unit-by-unit in reading order; re-run ''prose --factory status --node bcoda --universe glmz'' periodically to confirm units turn green. After every unit''s plan-first check passes, re-check whether the book''s F3 also gates on contributions (ctx.Contributions in the same EvaluateUnit F3 case — untagged pronouns / missing or extra per-character lines); if so, complete those too before marking a unit done. Budget ~200 CLI calls across the book''s beats; this is a DB-content task, not a code change, so expect no git commit for the restating itself — only close out this line of work once ''prose --factory status --node bcoda --universe glmz'' shows F3 passing in all 46 units, then close with --ref describing that status line (as PRS-T1166 did), no commit hash required. No code in this repo needs to change for this unless a real bug in the F3/contributions logic is found along the way.', '—', 1189, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1191', 'Prose', 1191, '2026-11-26', 'chore', 'open', 'REN beats: restate stale Description for beat 01a1e81e-f3db-7be7-b7ce-49c1ad6e3423 (ch8 beat2, the 20th stale beat in PRS-T1177''s chunk, not reached before PRS-T1177''s budget ran out); list with prose --universe glmz --beat-index --slug REN --tsv to find it, read it against its prose, restate where it disagrees, re-stamp with prose --universe glmz --beat meta --id 01a1e81e-f3db-7be7-b7ce-49c1ad6e3423 --description ...', '—', 1190, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1192', 'Prose', 1192, '2026-11-26', 'chore', 'open', 'VATD unit 1 (Chapter 1 - The Route): plan restated for all 5 stale beats (#21835, #21525, #21539, #21543, #21555); F3 still red on contributions gate for the same 5 beats (29 untagged pronouns, 8 stale lines, first #21835) - tag every pronoun then set_beat_contributions / prose --beat contributions per beat until unit 1''s F3 is green', '—', 1191, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1193', 'Prose', 1193, '2026-11-26', 'chore', 'open', 'VATD units 2-11 (Chapters 2-11): restate any stale/missing/unreconciled beat Descriptions against current prose (update_beat_metadata), then complete the contributions gate per beat (tag every pronoun, one line per tagged character via set_beat_contributions / prose --beat contributions), unit by unit, until F3 is green on all 11 VATD units', '—', 1192, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('PRS-T1194', 'Prose', 1194, '2026-11-26', 'chore', 'open', 'REN beats: restate stale Descriptions for the remaining 5 stale beats in reading order (ch5 beats 2-5: 24016, 24015, 24014, 24013; ch6 beat1: 24022), same method as PRS-T1176 chunk 1 (list with prose --universe glmz --beat-index --slug REN --tsv, description column STALE; read each beat''s prose via prose --beat show --id <id>, restate the Description where it disagrees, re-stamp with prose --universe glmz --beat meta --id <id> --description ...; this picks up where PRS-T1176 left off after completing the first 5 of its 10)', '—', 1193, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GW-T1', 'Prose.Wiki.GLMZ', 1, '2026-11-19', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GW-T2', 'Prose.Wiki.GLMZ', 2, '2026-11-21', 'feature', 'closed', 'Every universe gets a wiki: this site repo becomes the template (site.json carries the universe, deploy.py reads it), new-universe-wiki.ps1 scaffolds <UNIVERSE>.Wiki, and docs/prose-and-wiki.md sets who does what between Prose and the wiki', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('GW-T3', 'Prose.Wiki.GLMZ', 3, '2026-11-21', 'chore', 'closed', 'Rename the site repo GLMZ.Wiki to Prose.Wiki.GLMZ (the next is Prose.Wiki.SCRY): folder, GitHub repo, ticket registry, the scaffold''s naming and every reference', '—', 2, NULL);
@@ -125792,6 +125815,229 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129861, 
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129862, 'PRS-T1178', '2026-11-27T00:39:35Z', 'status', 'open', 'closed');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129863, 'PRS-T1178', '2026-11-27T00:39:35Z', 'ref', '—', 'data-only:no-commit');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129864, 'PRS-T1178', '2026-11-27T00:39:49Z', 'working', 'ryandebraal@gmail.com (8b26624c-b794-4842-a4ae-87041419b1a9)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129865, 'M.ORCH-T2307', '2026-11-27T00:42:56Z', 'label', 'level:task', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129866, 'M.ORCH-T2307', '2026-11-27T00:42:56Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129867, 'M.ORCH-T2309', '2026-11-27T00:42:56Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129868, 'M.ORCH-T2309', '2026-11-27T00:42:57Z', 'link', NULL, 'part-of M.ORCH-T2307');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129869, 'M.ORCH-T2307', '2026-11-27T00:42:57Z', 'link', NULL, 'M.ORCH-T2309 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129870, 'M.ORCH-T2309', '2026-11-27T00:42:57Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129871, 'M.ORCH-T2307', '2026-11-27T00:43:06Z', 'working', 'ryandebraal@gmail.com (8b26624c-b794-4842-a4ae-87041419b1a9)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129872, 'M.ORCH-T2309', '2026-11-27T00:43:23Z', 'working', NULL, 'ryandebraal@gmail.com (8b26624c-b794-4842-a4ae-87041419b1a9)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129873, 'PRS-T1177', '2026-11-27T00:43:23Z', 'working', NULL, 'ryandebraal@gmail.com (8b26624c-b794-4842-a4ae-87041419b1a9)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129874, 'PRS-T1176', '2026-11-27T00:43:24Z', 'working', NULL, 'ryandebraal@gmail.com (8b26624c-b794-4842-a4ae-87041419b1a9)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129875, 'PRS-T1165', '2026-11-27T00:43:24Z', 'working', NULL, 'ryandebraal@gmail.com (8b26624c-b794-4842-a4ae-87041419b1a9)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129876, 'PRS-T1164', '2026-11-27T00:43:24Z', 'working', NULL, 'ryandebraal@gmail.com (8b26624c-b794-4842-a4ae-87041419b1a9)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129877, 'GAD-T808', '2026-11-27T00:43:59Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129878, 'GAD-T808', '2026-11-27T00:43:59Z', 'name', NULL, 'Pure elenchus cleanup');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129879, 'GAD-T808', '2026-11-27T00:44:00Z', 'label', NULL, 'level:epic');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129880, 'GAD-T808', '2026-11-27T00:44:00Z', 'label', NULL, 'epic');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129881, 'GAD-T809', '2026-11-27T00:44:07Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129882, 'GAD-T809', '2026-11-27T00:44:07Z', 'name', NULL, 'Examiner does pure elenchus');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129883, 'GAD-T809', '2026-11-27T00:44:07Z', 'label', NULL, 'level:feature');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129884, 'GAD-T809', '2026-11-27T00:44:07Z', 'link', NULL, 'part-of GAD-T808');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129885, 'GAD-T808', '2026-11-27T00:44:08Z', 'link', NULL, 'GAD-T809 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129886, 'GAD-T810', '2026-11-27T00:44:08Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129887, 'GAD-T810', '2026-11-27T00:44:08Z', 'name', NULL, 'Student flow for self-examination');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129888, 'GAD-T810', '2026-11-27T00:44:08Z', 'label', NULL, 'level:feature');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129889, 'GAD-T810', '2026-11-27T00:44:09Z', 'link', NULL, 'part-of GAD-T808');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129890, 'GAD-T808', '2026-11-27T00:44:09Z', 'link', NULL, 'GAD-T810 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129891, 'GAD-T811', '2026-11-27T00:44:09Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129892, 'GAD-T811', '2026-11-27T00:44:09Z', 'name', NULL, 'Exam-path cleanup');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129893, 'GAD-T811', '2026-11-27T00:44:10Z', 'label', NULL, 'level:feature');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129894, 'GAD-T811', '2026-11-27T00:44:10Z', 'link', NULL, 'part-of GAD-T808');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129895, 'GAD-T808', '2026-11-27T00:44:10Z', 'link', NULL, 'GAD-T811 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129896, 'GAD-T812', '2026-11-27T00:44:22Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129897, 'GAD-T812', '2026-11-27T00:44:22Z', 'name', NULL, 'Questions obey elenchus rules');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129898, 'GAD-T812', '2026-11-27T00:44:23Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129899, 'GAD-T812', '2026-11-27T00:44:23Z', 'link', NULL, 'part-of GAD-T809');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129900, 'GAD-T809', '2026-11-27T00:44:23Z', 'link', NULL, 'GAD-T812 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129901, 'GAD-T813', '2026-11-27T00:44:24Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129902, 'GAD-T813', '2026-11-27T00:44:24Z', 'name', NULL, 'Exam ends in self-examination');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129903, 'GAD-T813', '2026-11-27T00:44:24Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129904, 'GAD-T813', '2026-11-27T00:44:24Z', 'link', NULL, 'part-of GAD-T809');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129905, 'GAD-T809', '2026-11-27T00:44:24Z', 'link', NULL, 'GAD-T813 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129906, 'GAD-T814', '2026-11-27T00:44:25Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129907, 'GAD-T814', '2026-11-27T00:44:25Z', 'name', NULL, 'Fallback questions obey elenchus');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129908, 'GAD-T814', '2026-11-27T00:44:25Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129909, 'GAD-T814', '2026-11-27T00:44:26Z', 'link', NULL, 'part-of GAD-T812');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129910, 'GAD-T812', '2026-11-27T00:44:26Z', 'link', NULL, 'GAD-T814 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129911, 'GAD-T815', '2026-11-27T00:44:26Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129912, 'GAD-T815', '2026-11-27T00:44:26Z', 'name', NULL, 'One question per turn');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129913, 'GAD-T815', '2026-11-27T00:44:26Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129914, 'GAD-T815', '2026-11-27T00:44:27Z', 'link', NULL, 'part-of GAD-T812');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129915, 'GAD-T812', '2026-11-27T00:44:27Z', 'link', NULL, 'GAD-T815 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129916, 'GAD-T816', '2026-11-27T00:44:28Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129917, 'GAD-T816', '2026-11-27T00:44:28Z', 'name', NULL, 'Consistency only when confronted');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129918, 'GAD-T816', '2026-11-27T00:44:28Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129919, 'GAD-T816', '2026-11-27T00:44:28Z', 'link', NULL, 'part-of GAD-T809');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129920, 'GAD-T809', '2026-11-27T00:44:28Z', 'link', NULL, 'GAD-T816 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129921, 'GAD-T817', '2026-11-27T00:44:29Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129922, 'GAD-T817', '2026-11-27T00:44:29Z', 'name', NULL, 'Closing reflection: server');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129923, 'GAD-T817', '2026-11-27T00:44:29Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129924, 'GAD-T817', '2026-11-27T00:44:29Z', 'link', NULL, 'part-of GAD-T813');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129925, 'GAD-T813', '2026-11-27T00:44:29Z', 'link', NULL, 'GAD-T817 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129926, 'GAD-T818', '2026-11-27T00:44:30Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129927, 'GAD-T818', '2026-11-27T00:44:30Z', 'name', NULL, 'Closing reflection: exam room');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129928, 'GAD-T818', '2026-11-27T00:44:30Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129929, 'GAD-T818', '2026-11-27T00:44:30Z', 'link', NULL, 'part-of GAD-T813');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129930, 'GAD-T813', '2026-11-27T00:44:30Z', 'link', NULL, 'GAD-T818 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129931, 'GAD-T819', '2026-11-27T00:44:42Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129932, 'GAD-T819', '2026-11-27T00:44:42Z', 'name', NULL, 'No delivery measures in live view');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129933, 'GAD-T819', '2026-11-27T00:44:43Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129934, 'GAD-T819', '2026-11-27T00:44:43Z', 'link', NULL, 'part-of GAD-T810');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129935, 'GAD-T810', '2026-11-27T00:44:43Z', 'link', NULL, 'GAD-T819 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129936, 'GAD-T820', '2026-11-27T00:44:44Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129937, 'GAD-T820', '2026-11-27T00:44:44Z', 'name', NULL, 'Get-ready page tells the truth');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129938, 'GAD-T820', '2026-11-27T00:44:44Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129939, 'GAD-T820', '2026-11-27T00:44:44Z', 'link', NULL, 'part-of GAD-T810');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129940, 'GAD-T810', '2026-11-27T00:44:44Z', 'link', NULL, 'GAD-T820 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129941, 'GAD-T821', '2026-11-27T00:44:45Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129942, 'GAD-T821', '2026-11-27T00:44:45Z', 'name', NULL, 'Results show elenctic record');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129943, 'GAD-T821', '2026-11-27T00:44:45Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129944, 'GAD-T821', '2026-11-27T00:44:45Z', 'link', NULL, 'part-of GAD-T810');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129945, 'GAD-T810', '2026-11-27T00:44:45Z', 'link', NULL, 'GAD-T821 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129946, 'GAD-T822', '2026-11-27T00:44:46Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129947, 'GAD-T822', '2026-11-27T00:44:46Z', 'name', NULL, 'Retire ExamPromptsV3 alias');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129948, 'GAD-T822', '2026-11-27T00:44:46Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129949, 'GAD-T822', '2026-11-27T00:44:47Z', 'link', NULL, 'part-of GAD-T811');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129950, 'GAD-T811', '2026-11-27T00:44:47Z', 'link', NULL, 'GAD-T822 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129951, 'GAD-T823', '2026-11-27T00:44:48Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129952, 'GAD-T823', '2026-11-27T00:44:48Z', 'name', NULL, 'Status names say what they mean');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129953, 'GAD-T823', '2026-11-27T00:44:48Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129954, 'GAD-T823', '2026-11-27T00:45:00Z', 'link', NULL, 'part-of GAD-T811');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129955, 'GAD-T811', '2026-11-27T00:45:00Z', 'link', NULL, 'GAD-T823 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129956, 'GAD-T824', '2026-11-27T00:45:01Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129957, 'GAD-T824', '2026-11-27T00:45:01Z', 'name', NULL, 'Docs match the exam path');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129958, 'GAD-T824', '2026-11-27T00:45:01Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129959, 'GAD-T824', '2026-11-27T00:45:02Z', 'link', NULL, 'part-of GAD-T811');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129960, 'GAD-T811', '2026-11-27T00:45:02Z', 'link', NULL, 'GAD-T824 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129961, 'GAD-T815', '2026-11-27T00:45:08Z', 'link', NULL, 'requires GAD-T814');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129962, 'GAD-T814', '2026-11-27T00:45:08Z', 'link', NULL, 'GAD-T815 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129963, 'GAD-T818', '2026-11-27T00:45:09Z', 'link', NULL, 'requires GAD-T817');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129964, 'GAD-T817', '2026-11-27T00:45:10Z', 'link', NULL, 'GAD-T818 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129965, 'GAD-T819', '2026-11-27T00:45:10Z', 'link', NULL, 'requires GAD-T818');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129966, 'GAD-T818', '2026-11-27T00:45:11Z', 'link', NULL, 'GAD-T819 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129967, 'GAD-T821', '2026-11-27T00:45:11Z', 'link', NULL, 'requires GAD-T817');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129968, 'GAD-T817', '2026-11-27T00:45:12Z', 'link', NULL, 'GAD-T821 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129969, 'GAD-T822', '2026-11-27T00:45:12Z', 'link', NULL, 'requires GAD-T815');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129970, 'GAD-T815', '2026-11-27T00:45:12Z', 'link', NULL, 'GAD-T822 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129971, 'GAD-T822', '2026-11-27T00:45:13Z', 'link', NULL, 'requires GAD-T816');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129972, 'GAD-T816', '2026-11-27T00:45:13Z', 'link', NULL, 'GAD-T822 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129973, 'GAD-T824', '2026-11-27T00:45:14Z', 'link', NULL, 'requires GAD-T814');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129974, 'GAD-T814', '2026-11-27T00:45:14Z', 'link', NULL, 'GAD-T824 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129975, 'GAD-T824', '2026-11-27T00:45:15Z', 'link', NULL, 'requires GAD-T815');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129976, 'GAD-T815', '2026-11-27T00:45:15Z', 'link', NULL, 'GAD-T824 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129977, 'GAD-T824', '2026-11-27T00:45:16Z', 'link', NULL, 'requires GAD-T816');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129978, 'GAD-T816', '2026-11-27T00:45:16Z', 'link', NULL, 'GAD-T824 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129979, 'GAD-T824', '2026-11-27T00:45:17Z', 'link', NULL, 'requires GAD-T817');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129980, 'GAD-T817', '2026-11-27T00:45:17Z', 'link', NULL, 'GAD-T824 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129981, 'GAD-T824', '2026-11-27T00:45:19Z', 'link', NULL, 'requires GAD-T818');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129982, 'GAD-T818', '2026-11-27T00:45:19Z', 'link', NULL, 'GAD-T824 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129983, 'GAD-T824', '2026-11-27T00:45:20Z', 'link', NULL, 'requires GAD-T819');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129984, 'GAD-T819', '2026-11-27T00:45:20Z', 'link', NULL, 'GAD-T824 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129985, 'GAD-T824', '2026-11-27T00:45:21Z', 'link', NULL, 'requires GAD-T820');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129986, 'GAD-T820', '2026-11-27T00:45:21Z', 'link', NULL, 'GAD-T824 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129987, 'GAD-T824', '2026-11-27T00:45:22Z', 'link', NULL, 'requires GAD-T821');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129988, 'GAD-T821', '2026-11-27T00:45:22Z', 'link', NULL, 'GAD-T824 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129989, 'GAD-T824', '2026-11-27T00:45:23Z', 'link', NULL, 'requires GAD-T822');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129990, 'GAD-T822', '2026-11-27T00:45:23Z', 'link', NULL, 'GAD-T824 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129991, 'GAD-T824', '2026-11-27T00:45:24Z', 'link', NULL, 'requires GAD-T823');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129992, 'GAD-T823', '2026-11-27T00:45:24Z', 'link', NULL, 'GAD-T824 requires');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129993, 'GAD-T808', '2026-11-27T00:45:25Z', 'priority', '0', '500');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129994, 'GAD-T809', '2026-11-27T00:45:26Z', 'priority', '0', '590');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129995, 'GAD-T812', '2026-11-27T00:45:26Z', 'priority', '0', '590');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129996, 'GAD-T813', '2026-11-27T00:45:26Z', 'priority', '0', '590');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129997, 'GAD-T814', '2026-11-27T00:45:27Z', 'priority', '0', '590');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129998, 'GAD-T815', '2026-11-27T00:45:28Z', 'priority', '0', '590');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (129999, 'GAD-T816', '2026-11-27T00:45:28Z', 'priority', '0', '590');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130000, 'GAD-T817', '2026-11-27T00:45:29Z', 'priority', '0', '590');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130001, 'GAD-T818', '2026-11-27T00:45:29Z', 'priority', '0', '590');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130002, 'GAD-T810', '2026-11-27T00:45:30Z', 'priority', '0', '580');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130003, 'GAD-T819', '2026-11-27T00:45:30Z', 'priority', '0', '580');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130004, 'GAD-T820', '2026-11-27T00:45:31Z', 'priority', '0', '580');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130005, 'GAD-T821', '2026-11-27T00:45:31Z', 'priority', '0', '580');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130006, 'GAD-T811', '2026-11-27T00:45:32Z', 'priority', '0', '570');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130007, 'GAD-T822', '2026-11-27T00:45:32Z', 'priority', '0', '570');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130008, 'GAD-T823', '2026-11-27T00:45:33Z', 'priority', '0', '570');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130009, 'GAD-T824', '2026-11-27T00:45:33Z', 'priority', '0', '570');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130010, 'GAD-T808', '2026-11-27T00:46:28Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130011, 'GAD-T809', '2026-11-27T00:46:29Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130012, 'GAD-T810', '2026-11-27T00:46:30Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130013, 'GAD-T811', '2026-11-27T00:46:30Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130014, 'GAD-T812', '2026-11-27T00:46:31Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130015, 'GAD-T813', '2026-11-27T00:46:31Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130016, 'GAD-T814', '2026-11-27T00:46:32Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130017, 'GAD-T815', '2026-11-27T00:46:33Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130018, 'GAD-T816', '2026-11-27T00:46:33Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130019, 'GAD-T817', '2026-11-27T00:46:34Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130020, 'GAD-T818', '2026-11-27T00:46:34Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130021, 'GAD-T819', '2026-11-27T00:46:35Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130022, 'GAD-T820', '2026-11-27T00:46:35Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130023, 'GAD-T821', '2026-11-27T00:46:36Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130024, 'GAD-T822', '2026-11-27T00:46:36Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130025, 'GAD-T823', '2026-11-27T00:46:37Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130026, 'GAD-T824', '2026-11-27T00:46:37Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130027, 'PRS-T1165', '2026-11-27T00:46:58Z', 'label', 'level:task', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130028, 'PRS-T1165', '2026-11-27T00:46:58Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130029, 'PRS-T1190', '2026-11-27T00:46:58Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130030, 'PRS-T1190', '2026-11-27T00:46:58Z', 'link', NULL, 'part-of PRS-T1165');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130031, 'PRS-T1165', '2026-11-27T00:46:58Z', 'link', NULL, 'PRS-T1190 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130032, 'PRS-T1190', '2026-11-27T00:46:58Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130033, 'PRS-T1190', '2026-11-27T00:46:58Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130034, 'GAD-T814', '2026-11-27T00:47:04Z', 'working', NULL, '5c87f115-96a3-43aa-8559-17d8764da8f6');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130035, 'GAD-T816', '2026-11-27T00:47:10Z', 'working', NULL, '5c87f115-96a3-43aa-8559-17d8764da8f6');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130036, 'PRS-T1165', '2026-11-27T00:47:10Z', 'working', 'ryandebraal@gmail.com (8b26624c-b794-4842-a4ae-87041419b1a9)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130037, 'GAD-T817', '2026-11-27T00:47:25Z', 'working', NULL, '5c87f115-96a3-43aa-8559-17d8764da8f6');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130038, 'GAD-T820', '2026-11-27T00:47:25Z', 'working', NULL, '5c87f115-96a3-43aa-8559-17d8764da8f6');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130039, 'GAD-T823', '2026-11-27T00:47:25Z', 'working', NULL, '5c87f115-96a3-43aa-8559-17d8764da8f6');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130040, 'PRS-T1177', '2026-11-27T00:49:04Z', 'label', 'level:task', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130041, 'PRS-T1177', '2026-11-27T00:49:04Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130042, 'PRS-T1191', '2026-11-27T00:49:04Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130043, 'PRS-T1191', '2026-11-27T00:49:05Z', 'link', NULL, 'part-of PRS-T1177');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130044, 'PRS-T1177', '2026-11-27T00:49:05Z', 'link', NULL, 'PRS-T1191 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130045, 'PRS-T1191', '2026-11-27T00:49:05Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130046, 'PRS-T1191', '2026-11-27T00:49:05Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130047, 'PRS-T1177', '2026-11-27T00:49:26Z', 'working', 'ryandebraal@gmail.com (8b26624c-b794-4842-a4ae-87041419b1a9)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130048, 'M.ORCH-T2309', '2026-11-27T00:49:27Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130049, 'M.ORCH-T2309', '2026-11-27T00:49:27Z', 'ref', '—', '66e3bc41');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130050, 'M.ORCH-T2307', '2026-11-27T00:49:27Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130051, 'M.ORCH-T2307', '2026-11-27T00:49:27Z', 'ref', '—', 'children done');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130052, 'M.ORCH-T2307', '2026-11-27T00:49:27Z', 'rollup', NULL, 'M.ORCH-T2309');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130053, 'M.ORCH-T2308', '2026-11-27T00:49:33Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130054, 'M.ORCH-T2308', '2026-11-27T00:49:33Z', 'ref', '—', '2fc7a0bf');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130055, 'M.ORCH-T2287', '2026-11-27T00:49:33Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130056, 'M.ORCH-T2287', '2026-11-27T00:49:33Z', 'ref', '—', 'children done');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130057, 'M.ORCH-T2287', '2026-11-27T00:49:33Z', 'rollup', NULL, 'M.ORCH-T2308');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130058, 'M.ORCH-T2309', '2026-11-27T00:49:41Z', 'working', 'ryandebraal@gmail.com (8b26624c-b794-4842-a4ae-87041419b1a9)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130059, 'GAD-T820', '2026-11-27T00:49:55Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130060, 'GAD-T820', '2026-11-27T00:49:55Z', 'ref', '—', 'ae4f1d2');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130061, 'GAD-T820', '2026-11-27T00:50:11Z', 'working', '5c87f115-96a3-43aa-8559-17d8764da8f6', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130062, 'PRS-T1164', '2026-11-27T00:50:19Z', 'label', 'level:task', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130063, 'PRS-T1164', '2026-11-27T00:50:19Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130064, 'PRS-T1192', '2026-11-27T00:50:20Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130065, 'PRS-T1192', '2026-11-27T00:50:30Z', 'link', NULL, 'part-of PRS-T1164');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130066, 'PRS-T1164', '2026-11-27T00:50:30Z', 'link', NULL, 'PRS-T1192 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130067, 'PRS-T1192', '2026-11-27T00:50:30Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130068, 'PRS-T1192', '2026-11-27T00:50:30Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130069, 'PRS-T1193', '2026-11-27T00:50:30Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130070, 'PRS-T1193', '2026-11-27T00:50:31Z', 'link', NULL, 'part-of PRS-T1164');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130071, 'PRS-T1164', '2026-11-27T00:50:31Z', 'link', NULL, 'PRS-T1193 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130072, 'PRS-T1193', '2026-11-27T00:50:31Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130073, 'PRS-T1193', '2026-11-27T00:50:31Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130074, 'PRS-T1164', '2026-11-27T00:50:39Z', 'working', 'ryandebraal@gmail.com (8b26624c-b794-4842-a4ae-87041419b1a9)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130075, 'PRS-T1176', '2026-11-27T00:50:46Z', 'label', 'level:task', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130076, 'PRS-T1176', '2026-11-27T00:50:46Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130077, 'PRS-T1194', '2026-11-27T00:50:47Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130078, 'PRS-T1194', '2026-11-27T00:50:47Z', 'link', NULL, 'part-of PRS-T1176');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130079, 'PRS-T1176', '2026-11-27T00:50:47Z', 'link', NULL, 'PRS-T1194 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130080, 'PRS-T1194', '2026-11-27T00:50:47Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130081, 'PRS-T1194', '2026-11-27T00:50:47Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130082, 'PRS-T1176', '2026-11-27T00:51:00Z', 'working', 'ryandebraal@gmail.com (8b26624c-b794-4842-a4ae-87041419b1a9)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130083, 'PRS-T1194', '2026-11-27T00:51:30Z', 'working', NULL, 'ryandebraal@gmail.com (8b26624c-b794-4842-a4ae-87041419b1a9)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130084, 'PRS-T1193', '2026-11-27T00:51:31Z', 'working', NULL, 'ryandebraal@gmail.com (8b26624c-b794-4842-a4ae-87041419b1a9)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130085, 'PRS-T1192', '2026-11-27T00:51:31Z', 'working', NULL, 'ryandebraal@gmail.com (8b26624c-b794-4842-a4ae-87041419b1a9)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130086, 'PRS-T1191', '2026-11-27T00:51:32Z', 'working', NULL, 'ryandebraal@gmail.com (8b26624c-b794-4842-a4ae-87041419b1a9)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (130087, 'PRS-T1190', '2026-11-27T00:51:32Z', 'working', NULL, 'ryandebraal@gmail.com (8b26624c-b794-4842-a4ae-87041419b1a9)');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AES-T10', 'proposed', 380, '2026-11-24T19:47:20Z', NULL);
@@ -126533,8 +126779,25 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T803', 'approved', 0, '2026-11-26T20:56:48Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T805', 'approved', 0, '2026-11-26T23:58:03Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T806', 'approved', 360, '2026-11-27T00:01:14Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T808', 'approved', 500, '2026-11-27T00:46:28Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T809', 'approved', 590, '2026-11-27T00:46:29Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T81', 'proposed', 989, '2026-11-21T00:49:05Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T810', 'approved', 580, '2026-11-27T00:46:30Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T811', 'approved', 570, '2026-11-27T00:46:30Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T812', 'approved', 590, '2026-11-27T00:46:31Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T813', 'approved', 590, '2026-11-27T00:46:31Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T814', 'approved', 590, '2026-11-27T00:46:32Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T815', 'approved', 590, '2026-11-27T00:46:33Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T816', 'approved', 590, '2026-11-27T00:46:33Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T817', 'approved', 590, '2026-11-27T00:46:34Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T818', 'approved', 590, '2026-11-27T00:46:34Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T819', 'approved', 580, '2026-11-27T00:46:35Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T82', 'proposed', 988, '2026-11-21T00:49:25Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T820', 'approved', 580, '2026-11-27T00:46:35Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T821', 'approved', 580, '2026-11-27T00:46:36Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T822', 'approved', 570, '2026-11-27T00:46:36Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T823', 'approved', 570, '2026-11-27T00:46:37Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T824', 'approved', 570, '2026-11-27T00:46:37Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T83', 'proposed', 987, '2026-11-21T00:49:47Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T84', 'proposed', 986, '2026-11-21T00:50:09Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('GAD-T85', 'proposed', 985, '2026-11-21T00:50:36Z', NULL);
@@ -129679,6 +129942,11 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T1182', 'approved', 0, '2026-11-27T00:10:05Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T1183', 'approved', 0, '2026-11-27T00:10:05Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T1184', 'approved', 0, '2026-11-27T00:10:05Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T1190', 'approved', 0, '2026-11-27T00:46:58Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T1191', 'approved', 0, '2026-11-27T00:49:05Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T1192', 'approved', 0, '2026-11-27T00:50:30Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T1193', 'approved', 0, '2026-11-27T00:50:31Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T1194', 'approved', 0, '2026-11-27T00:50:47Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T133', 'approved', 5, '2026-10-21T04:35:38Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T134', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('PRS-T135', 'approved', 0, '2026-10-18T08:37:30Z', NULL);
@@ -131690,6 +131958,10 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 -- ticket_work
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('AES-T13', NULL, 0, 'ohleo199@mindattic.com', '9aa417dc-00ec-48db-aaea-59ffddf8b7f3', '2026-11-26T20:19:02Z', '2026-11-26T20:19:02Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('G.EZ-T143', NULL, 0, 'ohleo199@mindattic.com', '9aa417dc-00ec-48db-aaea-59ffddf8b7f3', '2026-11-26T22:19:32Z', '2026-11-26T22:19:32Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T814', NULL, 0, NULL, '5c87f115-96a3-43aa-8559-17d8764da8f6', '2026-11-27T00:47:04Z', '2026-11-27T00:47:04Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T816', NULL, 0, NULL, '5c87f115-96a3-43aa-8559-17d8764da8f6', '2026-11-27T00:47:10Z', '2026-11-27T00:47:10Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T817', NULL, 0, NULL, '5c87f115-96a3-43aa-8559-17d8764da8f6', '2026-11-27T00:47:25Z', '2026-11-27T00:47:25Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GAD-T823', NULL, 0, NULL, '5c87f115-96a3-43aa-8559-17d8764da8f6', '2026-11-27T00:47:25Z', '2026-11-27T00:47:25Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1115', 'ryandebraal@mindattic.com', 0, NULL, NULL, NULL, '2026-11-26T23:52:36Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1123', 'ryandebraal@mindattic.com', 0, NULL, NULL, NULL, '2026-11-26T23:52:32Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('GG-T1127', 'ryandebraal@mindattic.com', 0, NULL, NULL, NULL, '2026-11-26T23:51:54Z');
@@ -131716,7 +131988,6 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LEGN-T60', NULL, 0, 'ohleo199@mindattic.com', '9aa417dc-00ec-48db-aaea-59ffddf8b7f3', '2026-11-26T20:28:28Z', '2026-11-26T20:28:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.LNCH-T80', 'pdftransferjr@mindattic.com', 0, NULL, NULL, NULL, '2026-10-26T02:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T2277', NULL, 0, 'ohleo199@mindattic.com', 'e1bd5cdc-60d3-4e0e-8a84-21abd28f1dc5', '2026-11-26T18:46:23Z', '2026-11-26T18:46:23Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T2307', NULL, 0, 'ryandebraal@gmail.com', '8b26624c-b794-4842-a4ae-87041419b1a9', '2026-11-27T00:31:15Z', '2026-11-27T00:31:15Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T534', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:00Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T758', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-27T21:16:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('M.ORCH-T768', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T20:46:01Z');
@@ -131802,6 +132073,11 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T1167', NULL, 0, 'ohleo199@mindattic.com', '9aa417dc-00ec-48db-aaea-59ffddf8b7f3', '2026-11-26T23:01:47Z', '2026-11-26T23:01:47Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T1168', NULL, 0, 'ohleo199@mindattic.com', '9aa417dc-00ec-48db-aaea-59ffddf8b7f3', '2026-11-27T00:07:39Z', '2026-11-27T00:07:39Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T1188', NULL, 0, NULL, '9aa417dc-00ec-48db-aaea-59ffddf8b7f3', '2026-11-27T00:36:45Z', '2026-11-27T00:36:46Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T1190', NULL, 0, 'ryandebraal@gmail.com', '8b26624c-b794-4842-a4ae-87041419b1a9', '2026-11-27T00:51:32Z', '2026-11-27T00:51:32Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T1191', NULL, 0, 'ryandebraal@gmail.com', '8b26624c-b794-4842-a4ae-87041419b1a9', '2026-11-27T00:51:32Z', '2026-11-27T00:51:32Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T1192', NULL, 0, 'ryandebraal@gmail.com', '8b26624c-b794-4842-a4ae-87041419b1a9', '2026-11-27T00:51:31Z', '2026-11-27T00:51:31Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T1193', NULL, 0, 'ryandebraal@gmail.com', '8b26624c-b794-4842-a4ae-87041419b1a9', '2026-11-27T00:51:31Z', '2026-11-27T00:51:31Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('PRS-T1194', NULL, 0, 'ryandebraal@gmail.com', '8b26624c-b794-4842-a4ae-87041419b1a9', '2026-11-27T00:51:30Z', '2026-11-27T00:51:30Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T109', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:28Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T110', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:35:57Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('RTB-T111', 'waffle@mindattic.com', 0, NULL, NULL, NULL, '2026-10-25T07:34:40Z');
@@ -136287,6 +136563,7 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32664, '
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32665, 'PRS-T1171', 'implementer', '2026-11-27T00:22:40Z', 'Heloth resolved by PRS-T1173 (229909086): owner decided it is a bipedal construct; retyped in scry to automaton (description ''bipedal construct''), all 29 beat tags kept (73 tags now repo=automaton), mentions tagged in docs/planning/VIGL-brief.md lines 197/221/222/255. Pre-change rows backed up to D:\Projects\MindAttic.worktrees\.scratch\PRS-T1173\heloth-backup.json. Only the owner''s weave-doc review remains.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32666, 'PRS-T1171', 'ryand', '2026-11-27T00:35:41Z', 'Weave docs approved by Ryan 2026-11-26 and applied under PRS-T1188 (commit 786d47d32): docs/planning/biomass-weave.md and traffic-weave.md are final, plus the new ''Gut-run details'' paragraph in docs/universes/GLMZ.md. Their entity tagging can proceed; it is also listed in PRS-T1189.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32667, 'PRS-T1188', 'ryand', '2026-11-27T00:35:47Z', 'Landed 786d47d32: 17 of 18 insertions (biomass 1,2,4,5,6,7,8; traffic 1-10) in the live DB, 10 books clear the read gate (Iron & Silk still has 790 older unread beats); books archived first. Not landed: biomass #3, needs Ryan''s call (the Death Whispers husk-sinking passage it hangs on is gone). Crestwood contradictions already fixed in the text. Remainder split to PRS-T1189. Parent left open because the tickets CLI won''t close it with an open child.');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32668, 'PRS-T1164', 'ryand', '2026-11-27T00:50:37Z', 'Restated the Description (update_beat_metadata) for all 5 plan-stale beats in VATD unit 1 (#21835, #21525, #21539, #21543, #21555), confirmed against current prose. factory --factory status VATD now shows unit 1''s plan-first check passing; F3 is still red on the contributions gate for the same 5 beats and on all 10 remaining units. Remainder split into PRS-T1192 (unit 1 contributions) and PRS-T1193 (units 2-11, both checks). No repo files changed -- this is Hub-database content work only.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AES-T12', 'First confirm the folder is a MindAttic deploy output and no shortcut, scheduled task, startup entry or PATH entry still points into it; never touch anything else under C:\Apps.', '2026-11-26T04:46:51Z');
@@ -138895,12 +139172,638 @@ Steps:
 
 Do not delete any old C:\Apps copy here. That is the separate cleanup ticket under MAT-T261, which requires this one, so nothing is removed before the R:\ copy is proven. Never touch R:\MindAttic\Capture, \Media or \Preview. Verification is build-and-launch only, with no test suites. Commit in this repo by path, with this ticket''s ID.', '2026-11-27T00:01:12Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T807', 'Owner, 2026-11-26: set the female examiner as the default. Reorders ExaminerCatalog.For (Female first, Bust second), its test and VOICE.md. A device that remembered another choice keeps it.', '2026-11-27T00:20:59Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T808', '# Pure elenchus: dissertation-backed cleanup
+
+The owner, 2026-11-26 (verbatim, cut off at the end): "go through and clean up the application code and ui and make sure its the
+best it can possibly be for what it is use the ElenchusAtScale dissertation to academically backup all the things you are doing we
+want a pure socratic method of cross examination to get users to self examine what they" (read as: what they believe and why).
+
+The dissertation is Gadfly''s blueprint (`D:\Projects\MindAttic\Dissertation.ElenchusAtScale`). Planned 2026-11-26 against main at
+`0df308e`, checked against the code, not only `docs/research/blueprint-gap-analysis.md` (GAD-T421), most of whose tickets
+(GAD-T425 to GAD-T454) have since closed. Only gaps still present in the code are filed.
+
+Three features, worked in this order:
+
+1. **The examiner conducts pure elenchus** (590): every question it asks obeys the elenchus rules, a contradiction counts only once it
+   is put to the student, and the exam ends in self-examination.
+2. **The student flow serves self-examination** (580): no delivery measurements in front of the student, honest expectations on the
+   get-ready page, and results that show the student their own elenctic record.
+3. **Exam-path cleanup** (570): dead aliases, misleading names, and docs that match the code.
+
+Hosting, Azure and Hetzner work is out of scope (another window).', '2026-11-27T00:43:59Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T809', '# The examiner conducts pure elenchus
+
+Group 1 of the epic. The cross-examination itself: questions that never lead, hint, presuppose, or ask two things at once, even on
+the fallback path; coherence judged only on a contradiction that was put to the student (Section 3.4, M7); and an ending in
+self-examination (Sections 2.2.1, 2.2.2, 2.6).', '2026-11-27T00:44:07Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T81', 'Parts 5, 12.1, 17.4, 18.2 Feature 1. **Done when:** schema + migration exist and an assessment can hold objectives with criteria and level descriptors.
 
 Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T00:49:00Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T810', '# The student flow serves self-examination
+
+Group 2 of the epic. What the student sees before, during and after the exam, judged by the dissertation''s claims on anxiety and
+time pressure (Sections 2.5.1, 5.3.4), signals that act on the student (5.6.2), and the exam as a learning event whose benefit
+comes through released feedback (2.6.1, 6.5).', '2026-11-27T00:44:08Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T811', '# Exam-path cleanup
+
+Group 3 of the epic. Code and docs cleanup with a real payoff: a dead prompt-set alias, status names that misuse "aporia", and
+docs that say what the code does (Section 6.7: the project''s documentation was repeatedly found wrong against the code). No churn
+for its own sake.', '2026-11-27T00:44:09Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T812', '# Every question the examiner asks obeys the elenchus rules
+
+The prompt (`Gadfly/Engine/ExamPrompts.cs`, `Question`) already forbids hints, presupposition, yes/no and introspection questions
+and asks for one question of at most 40 words. Two paths escape it: the fixed fallback questions asked when a draft fails or leaks,
+and drafts or streamed replies that carry a second question. Two tasks, worked in order (same file).', '2026-11-27T00:44:22Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T813', '# The exam ends in self-examination
+
+Today the exam just stops: when the planner ends it (`Gadfly/Engine/QuestionPlanner.cs:156-159`) the room goes straight to "Your
+answers were submitted" (`ExamRoom.razor:601-611`). The elenchus aims at the student''s own claim to know (Section 2.2.1, Apology
+21d) and at the state of no longer thinking one knows what one does not (Section 2.2.2, Meno 84a-b). Add one fixed, unscored
+closing reflection, asked aloud by the examiner. Server first, then the room.', '2026-11-27T00:44:24Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T814', '# Fallback questions obey the elenchus rules
+
+**Repo:** Gadfly. **Area:** `Gadfly/Engine/QuestionGenerator.cs` (`Fallback`, `SpanishFallback`, `KoreanFallback`, their callers at
+:232 and :541), `Gadfly.Sources/SourceExamRunner.cs` (:287-315), tests under `Gadfly.Tests/Engine/`.
+
+## Dissertation
+
+- Section 2.3.1 "Following the answer without suggesting it" and Section 3.3 "Leaks and presupposition": a question can lead by
+  presupposing its answer ("What makes X happen?" presupposes an outside cause); M3 in Section 3.10.
+- Section 2.2.2 "The slave-boy and the problem of leading questions": yes/no questions are the *Meno*''s failure mode.
+- Section 2.3.2 "What spoken reasoning can and cannot show": no questions about the student''s own mental process.
+- Section 3.4 "The ledger and the logic of contradiction", Proposition 3.2, and M7: a contradiction counts only once it is *put to*
+  the student, using the student''s own claims.
+- Section 2.7.1 "Taxonomies of objectives and of answers", Section 3.2 "Extrapolation is not application", and M5: transfer only
+  from a situation new to the student, set by the examiner.
+- Section 3.1 "A simple response model": each move has one probed level; the turn must record the move actually asked.
+
+## Current behaviour
+
+The fixed fallback (asked when every draft is empty, leaks, or the guard is undecided; and appended after streamed parts) breaks
+the prompt''s own rules (`QuestionGenerator.cs:775-792`, Spanish :798, Korean :816):
+
+- :785 CausalReasoning "What do you think causes that to happen? Explain the chain of cause and effect." presupposes a cause and a
+  chain, exactly what `ExamPrompts.Question` (:98-100) forbids.
+- :780 Probe "Walk me through your reasoning." asks for a process report; :779 Clarify "Could you..." and :781 Counterexample "Can
+  you think of a case..." are yes/no in form.
+- :782 Contradiction "Earlier you said something that seems to conflict..." quotes neither claim, yet the turn still records both
+  `TargetClaimIds` (`SourceExamRunner.cs:314`) and counts as the confrontation (`ObjectiveAssessor.cs:289`).
+- :781 Counterexample presents no case; :783 Apply asks the student to invent their own situation. `ApplyNovelty` finds too few
+  situation words (`Checked = false`, counted novel), so `MoveProfiles.CreditsTransfer` (`Gadfly/Engine/Objectives.cs:141`) credits
+  transfer from a situation the examiner never set.
+
+## Change
+
+1. Rewrite every fallback (English, Spanish, Korean) so none is yes/no, presupposes an answer point, or asks about the student''s
+   thought process, and each stays within 40 words. Use the prompt''s own safe forms ("why does that hold?", "what shows that it is
+   so?", "what happens to Y when X changes, and why?").
+2. Contradiction fallback: quote the two target claims from the ledger (`r.Ledger.Find(id).Quote`, both available in
+   `QuestionRequest`) and ask how both can stand. Quoting the student''s own words cannot leak.
+3. Where a move cannot be asked without a model-written case (Counterexample, Apply), the fallback asks the nearest move that can
+   (for example AssumptionTesting, IndependentExplanation), and the turn records **that** move (return the move with the text and
+   use it in `Session.Ask` at `SourceExamRunner.cs:314`), so its probed level and dimensions match what was asked. A fallback is
+   never credited as transfer.
+4. Tests: each fallback in each language passes `Usable` and is not introspective; a Contradiction fallback contains both quotes; a
+   fallback for Counterexample or Apply is recorded under the substitute move and `CreditsTransfer` is false for it.
+
+## Acceptance
+
+- No fallback string in any language presupposes, is yes/no, or is introspective; all at most 40 words.
+- A Contradiction turn asked by fallback quotes both claims it records as targets.
+- No turn asked by fallback is recorded as Apply or Counterexample; none credits transfer.
+- Builds clean.
+
+## Constraints (every task in this epic)
+
+- **No LLM spend.** Dev runs and any manual check use mock mode (`Gadfly:AiMode` mock). No live provider call.
+- **Build only.** Verify with `dotnet build -m:1 -p:UseSharedCompilation=false` from `D:\Projects\MindAttic\Gadfly` (memory is tight).
+  Do not run the test suite or any slice of it; the owner runs /test. Do update or add the tests this change affects so they
+  compile and state the new behaviour.
+- **Commit only your own paths, on main,** with the ticket ID in the message. Do not stage `docs/USER_STORIES.md` (another
+  agent''s uncommitted edit) or the untracked `en.json`, `es.json`, `ko.json` at the repo root.
+- **Standing owner decisions, kept even where the research differs:** no read-back (GAD-T405); voice and camera mandatory, typing
+  only as an instructor-granted accommodation (GAD-T260); gaze reminder ladder (decision c); a cleared attempt still counts
+  (decision d); no fact-only exams, an exam must be "interpretive by nature"; the female examiner is the default (GAD-T807).
+- **The blueprint** is the dissertation *Elenchus at Scale*, `D:\Projects\MindAttic\Dissertation.ElenchusAtScale\chapters\`
+  (read-only). Section numbers in this ticket are its headings.', '2026-11-27T00:44:25Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T815', '# One question per turn, enforced
+
+**Repo:** Gadfly. **Area:** `Gadfly/Engine/QuestionGenerator.cs` (`Usable` :740-750, `PartProblem` :551-559, the streaming path
+`StreamDraftAsync` :421-548 and `ReplyCleaner` :565-630), tests under `Gadfly.Tests/Engine/`. **Requires** the fallback task (same
+file).
+
+## Dissertation
+
+- Section 3.1 "Questions and answers" and "A simple response model": a question is one triple (objective, move, wording) and each
+  move has one probed level. A question that asks two things has no single probed level, so its answer cannot be attributed.
+- Section 3.2 "What a question is for": each question is an experiment on one split of the hypotheses. Section 4.3.4 "Wording and
+  the rule against hinting" records the requirement as built in the prompt: "one question of at most 40 words".
+- Section 3.4 "The ledger and the logic of contradiction": a Contradiction puts one pair to the student in one question.
+
+## Current behaviour
+
+The rule lives only in the prompt (`ExamPrompts.cs:91`, "One question only, at most 40 words"). Nothing checks it: `Usable`
+(`QuestionGenerator.cs:740-750`) accepts a draft with two questions or 80 words, and the live path speaks each sentence as it is
+written (:138-139, GAD-T495), so a second question is said aloud before anything could notice it.
+
+## Change
+
+1. A draft is cut after the end of its first question (the first ASCII question mark, the full-width question mark U+FF1F in
+   Korean, the closing mark of a Spanish inverted-question pair); text before that (a situation, the quoted claims) stays. If what
+   remains is not usable, the draft is redrafted like any empty draft.
+2. In the streaming path, once a said part ends a question, nothing further from that reply is said, and the question recorded is
+   what was said.
+3. A draft whose first question runs well past the limit (more than 50 words by `LanguageText.WordCount`) is redrafted, as an empty
+   draft is.
+4. Tests for each rule, in English, Spanish and Korean, including the streamed case.
+
+## Acceptance
+
+- No question reaches the student with more than one question in it, on either the one-shot or the streamed path.
+- The recorded question equals what was said.
+- Builds clean.
+
+## Constraints (every task in this epic)
+
+- **No LLM spend.** Dev runs and any manual check use mock mode (`Gadfly:AiMode` mock). No live provider call.
+- **Build only.** Verify with `dotnet build -m:1 -p:UseSharedCompilation=false` from `D:\Projects\MindAttic\Gadfly` (memory is tight).
+  Do not run the test suite or any slice of it; the owner runs /test. Do update or add the tests this change affects so they
+  compile and state the new behaviour.
+- **Commit only your own paths, on main,** with the ticket ID in the message. Do not stage `docs/USER_STORIES.md` (another
+  agent''s uncommitted edit) or the untracked `en.json`, `es.json`, `ko.json` at the repo root.
+- **Standing owner decisions, kept even where the research differs:** no read-back (GAD-T405); voice and camera mandatory, typing
+  only as an instructor-granted accommodation (GAD-T260); gaze reminder ladder (decision c); a cleared attempt still counts
+  (decision d); no fact-only exams, an exam must be "interpretive by nature"; the female examiner is the default (GAD-T807).
+- **The blueprint** is the dissertation *Elenchus at Scale*, `D:\Projects\MindAttic\Dissertation.ElenchusAtScale\chapters\`
+  (read-only). Section numbers in this ticket are its headings.', '2026-11-27T00:44:26Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T816', '# Coherence judged only on a confronted contradiction
+
+**Repo:** Gadfly. **Area:** `Gadfly/Engine/ExamPrompts.cs` (`Judge` :241-297, `Version` :13-35),
+`Gadfly.Sources/PanelAnswerJudge.cs` (`CriterionWeights` :28-34, scoring :123-160), `Gadfly/Socrates/Mock/MockVotingClient.cs`
+(:612), tests `Gadfly.Tests/Engine/PanelJudgingTests.cs`.
+
+## Dissertation
+
+- Section 3.4 "The ledger and the logic of contradiction", paragraph "What a contradiction shows": six causes of an apparent
+  contradiction, only one of them incoherence; "The evidence is therefore in the resolution, not in the occurrence. A contradiction
+  that is detected but not put to the student is an unconfirmed observation." Also paragraph "Detection is fallible".
+- M7 (Section 3.10 "Summary of the model''s requirements"): "It is put to the student before it counts."
+- Section 3.3 "Why questions written from the student''s own words are informative", paragraph "The state is not fixed": a later
+  claim may be the student''s corrected view, not a fault.
+- Section 2.2.3 "Consistency, not truth" and Section 4.4 "The claim ledger and the Contradiction move".
+
+## Current behaviour
+
+Every answer, whatever its move, is scored by each judge on `consistency`, "no conflict with the student''s earlier claims"
+(`ExamPrompts.cs:264-265`), weighted 0.15 in every overall score (`PanelAnswerJudge.cs:33`). A conflict the judge notices on its
+own, never put to the student and possibly an extraction or recording error (causes 2 and 3), lowers the score that decides
+positive or negative evidence (`ObjectiveAssessor`, 0.6 and 0.4). The confrontation route, where the student resolves it, already
+exists (`ObjectiveAssessor.ResolutionScore`, `ObjectiveAssessor.cs:199`).
+
+## Change
+
+1. `Judge` prompt: score `consistency` only when the move is Contradiction (the quality of the resolution, as now). On every other
+   move the judge does not score it. Bump `ExamPrompts.Version` to 11 with a line in its history comment.
+2. `PanelAnswerJudge`: on non-Contradiction moves the overall score is the weighted mean of accuracy, reasoning and completeness
+   (0.35/0.25/0.25 renormalised); a consistency score a member returns anyway is ignored. Contradiction moves keep all four. The
+   provisional live judge (GAD-T508) runs through the same prompt and code; check it follows.
+3. The mock judge returns the same shape.
+4. Tests: weights sum to 1 on each move kind; a non-Contradiction answer''s overall score does not change with a consistency value; a
+   Contradiction answer still feeds `ResolutionScore`.
+
+## Acceptance
+
+- An unconfronted conflict with earlier claims no longer lowers any answer''s score; a confronted one is judged on its resolution.
+- New sessions record prompt set version 11.
+- Builds clean.
+
+## Constraints (every task in this epic)
+
+- **No LLM spend.** Dev runs and any manual check use mock mode (`Gadfly:AiMode` mock). No live provider call.
+- **Build only.** Verify with `dotnet build -m:1 -p:UseSharedCompilation=false` from `D:\Projects\MindAttic\Gadfly` (memory is tight).
+  Do not run the test suite or any slice of it; the owner runs /test. Do update or add the tests this change affects so they
+  compile and state the new behaviour.
+- **Commit only your own paths, on main,** with the ticket ID in the message. Do not stage `docs/USER_STORIES.md` (another
+  agent''s uncommitted edit) or the untracked `en.json`, `es.json`, `ko.json` at the repo root.
+- **Standing owner decisions, kept even where the research differs:** no read-back (GAD-T405); voice and camera mandatory, typing
+  only as an instructor-granted accommodation (GAD-T260); gaze reminder ladder (decision c); a cleared attempt still counts
+  (decision d); no fact-only exams, an exam must be "interpretive by nature"; the female examiner is the default (GAD-T807).
+- **The blueprint** is the dissertation *Elenchus at Scale*, `D:\Projects\MindAttic\Dissertation.ElenchusAtScale\chapters\`
+  (read-only). Section numbers in this ticket are its headings.', '2026-11-27T00:44:28Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T817', '# Closing reflection: server side
+
+**Repo:** Gadfly. **Area:** `Gadfly.Server/Sessions/SessionOrchestrator.cs` (`SessionStep` :20, the end paths at :489, :673-700,
+:871, `ViewAsync` :946-990), `Gadfly.Server/Sessions/SessionHub.cs`, a new `Gadfly.Server/Sessions/ClosingReflection.cs`,
+`Gadfly.Server/Data/Entities.cs` (the exam session row near :413), `GadflyDbContext.cs`, a new migration,
+`Gadfly.Server/Privacy/PrivacyService.cs` (erasure near :98, export, retention), tests under `Gadfly.Tests/Server/`.
+
+## Dissertation
+
+- Section 2.2.1 "The examination of a claim to knowledge": the target of the elenchus is a person''s claim to know (Apology 21d).
+- Section 2.2.2 "The slave-boy and the problem of leading questions": the outcome the elenchus aims at is the state in which the
+  learner "besides not knowing does not think he knows" (Meno 84a-b).
+- Section 2.6.1 "Retrieval practice" and 2.6.2 "Self-explanation and the ''why'' question": the exam is a learning event; Section 3.3
+  "The state is not fixed" and Section 6.5 "The examiner changes the examined".
+- Limits it must respect: Section 2.3.2 (self-reports of process are unreliable, so the question asks for reasons, not process, and
+  is never scored); Section 3.2 "Stopping is a decision, not a question" and M1/M8 (it belongs to no objective and is never
+  evidence); Section 2.5.1 "Anxiety" (outside the clock and skippable, so it adds no time pressure).
+
+## Current behaviour
+
+When the planner ends the exam (`QuestionPlanner.cs:156-159`, EvidenceComplete; :124-125 TimeUp, TurnLimit) the step carries no
+question and the room shows "Your answers were submitted" (`ExamRoom.razor:601-611`). `MoveKind.Close` exists but is never asked
+(`Moves.cs:24-25`). Nothing invites the student to examine what they claimed.
+
+## Change
+
+1. One fixed reflection question per exam language (English, Spanish, Korean) in `ClosingReflection.cs`, asked word for word to
+   every student, no model call. Suggested English: "Before we finish: of everything you said today, which claim are you least sure
+   you could defend, and why?" It asks for reasons, never "how did you think" (must pass `QuestionGenerator.IsIntrospective` false).
+2. Offered after the examiner ends the exam (EvidenceComplete, TurnLimit, TimeUp), not after the student finishes early or staff end
+   it. The session is already ended and its clock stopped; the reflection is not a `Turn`, enters no ledger, judge, analysis,
+   report, grade or model prompt, and does not change `EndReason`.
+3. Stored on the session row (text, mode voice or typed under the accommodation, answered-at, or skipped), new migration.
+   `SessionStep` gains the reflection prompt while it is pending; `CurrentAsync` returns it until it is answered or skipped, so a
+   reload comes back to it. New orchestrator methods (and hub methods) to answer and to skip; an empty answer counts as skipped.
+4. Privacy: erased, exported and retained with the session''s answers.
+5. Tests: offered on the three examiner-ended reasons only; never offered twice; answering or skipping ends it; nothing about it
+   reaches `ExamSession` turns, the ledger, the report or grading inputs.
+
+## Acceptance
+
+- After the last question of an examiner-ended exam, the step carries the fixed reflection prompt; answer and skip both close it.
+- The reflection never reaches a judge, grader, score or report.
+- Builds clean (migration included).
+
+Note: new behaviour the owner asked for in the brief ("ending in self-examination and reflection"); the wording is a suggestion
+for the owner to confirm.
+
+## Constraints (every task in this epic)
+
+- **No LLM spend.** Dev runs and any manual check use mock mode (`Gadfly:AiMode` mock). No live provider call.
+- **Build only.** Verify with `dotnet build -m:1 -p:UseSharedCompilation=false` from `D:\Projects\MindAttic\Gadfly` (memory is tight).
+  Do not run the test suite or any slice of it; the owner runs /test. Do update or add the tests this change affects so they
+  compile and state the new behaviour.
+- **Commit only your own paths, on main,** with the ticket ID in the message. Do not stage `docs/USER_STORIES.md` (another
+  agent''s uncommitted edit) or the untracked `en.json`, `es.json`, `ko.json` at the repo root.
+- **Standing owner decisions, kept even where the research differs:** no read-back (GAD-T405); voice and camera mandatory, typing
+  only as an instructor-granted accommodation (GAD-T260); gaze reminder ladder (decision c); a cleared attempt still counts
+  (decision d); no fact-only exams, an exam must be "interpretive by nature"; the female examiner is the default (GAD-T807).
+- **The blueprint** is the dissertation *Elenchus at Scale*, `D:\Projects\MindAttic\Dissertation.ElenchusAtScale\chapters\`
+  (read-only). Section numbers in this ticket are its headings.', '2026-11-27T00:44:29Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T818', '# Closing reflection in the exam room
+
+**Repo:** Gadfly. **Area:** `Gadfly.Server/Components/Pages/Student/ExamRoom.razor` (the Ended handling :597-611 and phases),
+`ExamRoom.razor.cs`, `VoiceRoom.razor` only as needed to ask it and take the answer, `Gadfly.Server/Voice/ExaminerFiller.cs`
+(`FixedLines`, so the fixed line is in the phrase cache), `Gadfly.Server/Localization/Strings/examRoom.{en,es,ko}.json`.
+**Requires** "Closing reflection: server side".
+
+## Dissertation
+
+Same backing as the server task: Section 2.2.1 (Apology 21d), Section 2.2.2 (Meno 84a-b), Section 2.6 "The examination as a
+learning event", Section 6.5. Section 2.5.1 "Anxiety" and Section 5.3.4 "Time and anxiety" govern the presentation: no clock, no
+pressure, one clear way to skip.
+
+## Current behaviour
+
+`ExamRoom.Apply` (:597-611) treats a step without a question as the end and shows the Ended card at once; there is no phase for a
+question after the last one.
+
+## Change
+
+1. When the step carries the reflection prompt, the examiner says it aloud (the same voice path as a question) and the student
+   answers by voice, or types under the typed-answer accommodation (GAD-T260). No timer, no progress bar, no "I don''t know" button;
+   one "Skip" button instead. A short line on screen says it is not graded.
+2. Answering or skipping shows the existing Ended card. A reload during the reflection returns to it.
+3. The reflection line is prepared in the phrase cache with the other fixed lines.
+4. Strings in English, Spanish and Korean; any localization test that lists room keys is updated.
+
+## Acceptance
+
+- Mock mode: an exam that ends by EvidenceComplete, TurnLimit or TimeUp asks the reflection aloud, then shows the Ended card after
+  an answer or Skip; an exam the student finished early goes straight to the Ended card.
+- Builds clean.
+
+## Constraints (every task in this epic)
+
+- **No LLM spend.** Dev runs and any manual check use mock mode (`Gadfly:AiMode` mock). No live provider call.
+- **Build only.** Verify with `dotnet build -m:1 -p:UseSharedCompilation=false` from `D:\Projects\MindAttic\Gadfly` (memory is tight).
+  Do not run the test suite or any slice of it; the owner runs /test. Do update or add the tests this change affects so they
+  compile and state the new behaviour.
+- **Commit only your own paths, on main,** with the ticket ID in the message. Do not stage `docs/USER_STORIES.md` (another
+  agent''s uncommitted edit) or the untracked `en.json`, `es.json`, `ko.json` at the repo root.
+- **Standing owner decisions, kept even where the research differs:** no read-back (GAD-T405); voice and camera mandatory, typing
+  only as an instructor-granted accommodation (GAD-T260); gaze reminder ladder (decision c); a cleared attempt still counts
+  (decision d); no fact-only exams, an exam must be "interpretive by nature"; the female examiner is the default (GAD-T807).
+- **The blueprint** is the dissertation *Elenchus at Scale*, `D:\Projects\MindAttic\Dissertation.ElenchusAtScale\chapters\`
+  (read-only). Section numbers in this ticket are its headings.', '2026-11-27T00:44:30Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T819', '# No delivery measurements in the student''s live view
+
+**Repo:** Gadfly. **Area:** `Gadfly.Server/Components/Pages/Student/VoiceRoom.razor` (:116-123, :142, :329-411, :1017-1021),
+`Gadfly.Server/wwwroot/voice.css` (:71-72), `Gadfly.Server/Localization/Strings/examRoom.{en,es,ko}.json` (`examRoom.transcript.delay`
+:117, `examRoom.voiceLine.*` :215-223), `Gadfly.Tests/Server/ExamRoomLocalizationTests.cs` (:71-75). **Requires** "Closing
+reflection in the exam room" (same files).
+
+## Dissertation
+
+- Section 2.10.3 "Voice" and Section 5.6.1 "What each signal can show": voice-stress measures performed at about chance and have no
+  demonstrated validity for anything an exam cares about.
+- Section 5.6.2 "Signals that act, and signals that inform": a signal that acts on the student during the exam changes the
+  conditions of the evidence.
+- Section 2.3.2 "What spoken reasoning can and cannot show" (Fox et al. 2011: explaining aloud is slow, long pauses are normal) and
+  Section 2.5.1 "Anxiety" with Section 5.3.4 "Time and anxiety": showing time-to-answer adds time pressure that falls on anxious,
+  second-language and disfluent speakers.
+- Section 5.9 "Accountability", paragraph "The student''s view", records that the student sees a description of their own voice.
+
+## Current behaviour
+
+After each spoken answer the student''s live transcript shows "Response delay: N s" (`VoiceRoom.razor:116-118`,
+`examRoom.en.json:117`) and a voice line comparing pitch, jitter, loudness, rate and pauses with their first answers (:120-123,
+:375-381, strings :215-223). To build that line the room calls `VoiceStrain.ApplyAsync` a second time per answer
+(`VoiceRoom.razor:395-411`, :1021), duplicating the stored measurement done in `ExamRoom.razor.cs:200` and `SessionHub.cs:151`. The
+status bar also holds a `.voice-delay` element (:142, `voice.css:71-72`) that no script writes. None of this helps the student
+examine their claims; it points them at their delivery.
+
+## Change
+
+1. Remove the delay and voice line from the student''s transcript lines (`TranscriptLine` keeps examiner, student and text), the
+   `VoiceLineAsync` call and its duplicate `VoiceStrain.ApplyAsync`, `VoiceLine`, `VoiceFeatureKey`, `FormatDelay` and
+   `MaxDelaySeconds` if unused, the dead `.voice-delay` element and its CSS, and the unused strings in all three languages.
+2. Keep everything stored and shown to reviewers: `ExamRoom.razor.cs:200` and `SessionHub.cs:151` still apply voice measurements
+   where they are on (GAD-T259), and the reviewer''s line is unchanged.
+3. Update `ExamRoomLocalizationTests` for the removed keys.
+
+## Acceptance
+
+- The live transcript shows only who said what. Reviewer views and stored speech metrics are unchanged.
+- Builds clean.
+
+Owner note: the student''s voice line came with GAD-T232. It is not among the standing owner decisions, but the owner should know
+it goes.
+
+## Constraints (every task in this epic)
+
+- **No LLM spend.** Dev runs and any manual check use mock mode (`Gadfly:AiMode` mock). No live provider call.
+- **Build only.** Verify with `dotnet build -m:1 -p:UseSharedCompilation=false` from `D:\Projects\MindAttic\Gadfly` (memory is tight).
+  Do not run the test suite or any slice of it; the owner runs /test. Do update or add the tests this change affects so they
+  compile and state the new behaviour.
+- **Commit only your own paths, on main,** with the ticket ID in the message. Do not stage `docs/USER_STORIES.md` (another
+  agent''s uncommitted edit) or the untracked `en.json`, `es.json`, `ko.json` at the repo root.
+- **Standing owner decisions, kept even where the research differs:** no read-back (GAD-T405); voice and camera mandatory, typing
+  only as an instructor-granted accommodation (GAD-T260); gaze reminder ladder (decision c); a cleared attempt still counts
+  (decision d); no fact-only exams, an exam must be "interpretive by nature"; the female examiner is the default (GAD-T807).
+- **The blueprint** is the dissertation *Elenchus at Scale*, `D:\Projects\MindAttic\Dissertation.ElenchusAtScale\chapters\`
+  (read-only). Section numbers in this ticket are its headings.', '2026-11-27T00:44:42Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T82', 'Parts 9.3, 10.2. **Done when:** a published assessment''s policy is immutable without an approval record.
 
 Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T00:49:17Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T820', '# Get-ready page tells the truth about the examiner
+
+**Repo:** Gadfly. **Area:** `Gadfly.Server/Localization/Strings/en.json`, `es.json`, `ko.json` (`getReady.how.intro` :121,
+`getReady.science.limit5` :131, `getReady.rules.*` :133-140), and `Gadfly.Server/Components/Pages/Student/StartExam.razor` only if a
+new key needs placing.
+
+## Dissertation
+
+- Section 5.7.2 "Decision (b): voice strain drives harder probing", the evidence against it, and Section 2.10.3 "Voice". The owner
+  reversed decision (b) after the dissertation was written (GAD-T258, row E14 of `docs/research/blueprint-gap-analysis.md`).
+- Section 2.2.2 "The slave-boy and the problem of leading questions" (Meno 82e, not teaching but asking), Section 2.3.1 (Piaget:
+  never suggest the answer), and Section 4.3.4 "Wording and the rule against hinting" (the examiner never teaches, corrects,
+  confirms or denies).
+- Section 2.5.1 "Anxiety" (Joughin 2010: rehearsal and knowing what to expect help) and Section 6.5 "The examiner changes the
+  examined" (the examiner''s manner may change the student''s capacity to answer).
+
+## Current behaviour
+
+- `getReady.science.limit5` (`en.json:131`, same key in es and ko) tells the student "The voice comparison can lead the examiner to
+  ask an extra follow-up question." Since GAD-T258 nothing about the voice or its timing steers the examiner
+  (`Gadfly/Engine/AnswerDelivery.cs:27-30` and :98-99). The consent page states something false.
+- Nothing tells the student that the examiner will not say whether an answer is right, give hints or correct them
+  (`getReady.how.intro` :121, rules :133-140). Silence where a teacher would say "good" can read as failure.
+
+## Change
+
+1. limit5: drop the false sentence and say what is true: where voice measurements are on, a reviewer may see raw differences from
+   the student''s first answers, never a verdict, never graded, never steering the questions.
+2. One short line under "How Socratic questioning works": the examiner will not tell you whether an answer is right, give hints or
+   correct you, so every answer stays your own; not hearing "correct" does not mean you are wrong; if two of your answers seem to
+   disagree, that is a chance to say which you now hold and why.
+3. Same meaning in Spanish (neutral Latin American, usted) and Korean (polite form).
+
+## Acceptance
+
+- No student-facing string claims the voice steers questions.
+- The get-ready page states the examiner''s neutrality in all three languages.
+- Builds clean.
+
+## Constraints (every task in this epic)
+
+- **No LLM spend.** Dev runs and any manual check use mock mode (`Gadfly:AiMode` mock). No live provider call.
+- **Build only.** Verify with `dotnet build -m:1 -p:UseSharedCompilation=false` from `D:\Projects\MindAttic\Gadfly` (memory is tight).
+  Do not run the test suite or any slice of it; the owner runs /test. Do update or add the tests this change affects so they
+  compile and state the new behaviour.
+- **Commit only your own paths, on main,** with the ticket ID in the message. Do not stage `docs/USER_STORIES.md` (another
+  agent''s uncommitted edit) or the untracked `en.json`, `es.json`, `ko.json` at the repo root.
+- **Standing owner decisions, kept even where the research differs:** no read-back (GAD-T405); voice and camera mandatory, typing
+  only as an instructor-granted accommodation (GAD-T260); gaze reminder ladder (decision c); a cleared attempt still counts
+  (decision d); no fact-only exams, an exam must be "interpretive by nature"; the female examiner is the default (GAD-T807).
+- **The blueprint** is the dissertation *Elenchus at Scale*, `D:\Projects\MindAttic\Dissertation.ElenchusAtScale\chapters\`
+  (read-only). Section numbers in this ticket are its headings.', '2026-11-27T00:44:44Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T821', '# Results show the student''s own elenctic record
+
+**Repo:** Gadfly. **Area:** `Gadfly.Server/Grading/GradingReport.cs` (the student report model, `ForStudent`),
+`Gadfly.Server/Components/Pages/Grading/AssessmentReportView.razor` (:48-76) or `MyResult.razor` (:37), the student Markdown and PDF
+downloads if they render from the same model (`GradingReportPdf.cs`), `Gadfly.Server/Localization/Strings/report.en.json`,
+`report.es.json`, `report.ko.json`, tests under `Gadfly.Tests/Grading/`. **Requires** "Closing reflection: server side" (to show the
+stored reflection).
+
+## Dissertation
+
+- Section 3.4 "The ledger and the logic of contradiction", Proposition 3.1 (a contradiction does not identify the false claim) and
+  M7: only a contradiction put to the student is evidence; it is about coherence, never about which claim is wrong.
+- Section 2.2.3 "Consistency, not truth": a resolution in either direction can be correct.
+- Section 2.6.1 "Retrieval practice": the exam''s learning benefit reaches the student only through the feedback in released
+  results (Rowland 2014); Section 6.5 "The examiner changes the examined", third point.
+- Section 2.2.1 "The examination of a claim to knowledge": the point is the student''s view of their own claims.
+
+## Current behaviour
+
+The published result (`MyResult.razor:37`, `AssessmentReportView.razor:48-76`) shows scores, levels, what was missing and the
+answers used as evidence. It never shows the student the moments the elenchus is about: the pairs of their own claims that were
+put to them as conflicting, and how they answered. The ledger is stored (`ExamSession.LedgerJson`, `Entities.cs:413`) and read only
+for reviewers (`Review/ReviewService.cs:114` and :355).
+
+## Change
+
+1. For the student''s report only, a section listing each contradiction that was put to them (a Contradiction turn whose
+   `TargetClaimIds` hold both claims): their two claims quoted verbatim, the examiner''s question, and their answer verbatim. No
+   score, no verdict, no word on which claim was wrong. A claim the student withdrew is marked as withdrawn by them. Unconfronted
+   detections are never shown (Section 3.4: unconfirmed).
+2. The closing reflection (from the server task), if answered, under "Your closing reflection". Student only, never in grading or
+   review views.
+3. Shown only once the result is published, like the rest of the page; included in the student''s Markdown and PDF where those
+   render from this model.
+4. Strings in English, Spanish and Korean. Tests for the section''s content and for its absence from staff reports.
+
+## Acceptance
+
+- A published result with a confronted contradiction shows both quotes and the student''s answer, neutrally; one without shows no
+  section. The reflection appears when given.
+- Builds clean.
+
+## Constraints (every task in this epic)
+
+- **No LLM spend.** Dev runs and any manual check use mock mode (`Gadfly:AiMode` mock). No live provider call.
+- **Build only.** Verify with `dotnet build -m:1 -p:UseSharedCompilation=false` from `D:\Projects\MindAttic\Gadfly` (memory is tight).
+  Do not run the test suite or any slice of it; the owner runs /test. Do update or add the tests this change affects so they
+  compile and state the new behaviour.
+- **Commit only your own paths, on main,** with the ticket ID in the message. Do not stage `docs/USER_STORIES.md` (another
+  agent''s uncommitted edit) or the untracked `en.json`, `es.json`, `ko.json` at the repo root.
+- **Standing owner decisions, kept even where the research differs:** no read-back (GAD-T405); voice and camera mandatory, typing
+  only as an instructor-granted accommodation (GAD-T260); gaze reminder ladder (decision c); a cleared attempt still counts
+  (decision d); no fact-only exams, an exam must be "interpretive by nature"; the female examiner is the default (GAD-T807).
+- **The blueprint** is the dissertation *Elenchus at Scale*, `D:\Projects\MindAttic\Dissertation.ElenchusAtScale\chapters\`
+  (read-only). Section numbers in this ticket are its headings.', '2026-11-27T00:44:45Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T822', '# Retire the ExamPromptsV3 alias
+
+**Repo:** Gadfly. **Area:** `Gadfly/Engine/ExamPromptsV3.cs` (delete), its callers `Gadfly/Engine/QuestionGenerator.cs:54`,
+`Gadfly.Sources/ResponseAnalyzer.cs:32` and :45, `Gadfly.Sources/SourceMaterialSubject.cs:25-28`, the doc comment at
+`Gadfly/Engine/ExamPrompts.cs:16`, tests `Gadfly.Tests/Engine/KoreanExamTests.cs` and `SpanishExamTests.cs`, and `docs/DESIGN.md:183`.
+**Requires** "One question per turn, enforced" and "Coherence judged only on a confronted contradiction" (same files).
+
+## Dissertation
+
+- Section 5.9 "Accountability", paragraph "The record": "The prompt set in force is versioned" so a session shows which text
+  examined the student. One name for that set keeps the record legible.
+- Section 6.7 "Authorship and the case": the project''s descriptions of its own system were repeatedly found to say more or less
+  than the code; a "V3" name over a version-11 set is that kind of drift.
+
+## Current behaviour
+
+`ExamPromptsV3` (`ExamPromptsV3.cs:1-45`) has been an alias since prompt set version 4 (GAD-T120): its prompts are
+`ExamPrompts`''s word for word, and `Merge` returns `ExamPrompts.Set` unchanged, so `ExamPromptsV3.Set` is `ExamPrompts.Set`. Six
+production references and about 23 test references still go through the "V3" name.
+
+## Change
+
+Delete the file; point every caller at `ExamPrompts.Set` and the `ExamPrompts.*Key` constants; update the doc comment, the two
+test files and `docs/DESIGN.md:183`. Do not touch `docs/USER_STORIES.md` (another agent''s uncommitted edit; its mention can wait
+for the docs task).
+
+## Acceptance
+
+- No reference to `ExamPromptsV3` remains in code or tests; the prompt set id, version and SHA-256 are unchanged (same object).
+- Builds clean.
+
+## Constraints (every task in this epic)
+
+- **No LLM spend.** Dev runs and any manual check use mock mode (`Gadfly:AiMode` mock). No live provider call.
+- **Build only.** Verify with `dotnet build -m:1 -p:UseSharedCompilation=false` from `D:\Projects\MindAttic\Gadfly` (memory is tight).
+  Do not run the test suite or any slice of it; the owner runs /test. Do update or add the tests this change affects so they
+  compile and state the new behaviour.
+- **Commit only your own paths, on main,** with the ticket ID in the message. Do not stage `docs/USER_STORIES.md` (another
+  agent''s uncommitted edit) or the untracked `en.json`, `es.json`, `ko.json` at the repo root.
+- **Standing owner decisions, kept even where the research differs:** no read-back (GAD-T405); voice and camera mandatory, typing
+  only as an instructor-granted accommodation (GAD-T260); gaze reminder ladder (decision c); a cleared attempt still counts
+  (decision d); no fact-only exams, an exam must be "interpretive by nature"; the female examiner is the default (GAD-T807).
+- **The blueprint** is the dissertation *Elenchus at Scale*, `D:\Projects\MindAttic\Dissertation.ElenchusAtScale\chapters\`
+  (read-only). Section numbers in this ticket are its headings.', '2026-11-27T00:44:46Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T823', '# Status names that say what they mean
+
+**Repo:** Gadfly. **Area:** `Gadfly/Engine/QuestionPlanner.cs` (`ConceptStatus` :20, `StatusOf` :74-88), `Gadfly/Engine/SessionReport.cs`
+(:193), `Gadfly.Server/Analytics/AnalyticsService.cs` (:224), `Gadfly.Server/Analytics/AnalyticsEndpoints.cs` (:96),
+`Gadfly.Server/Components/Pages/Analytics/Analytics.razor` (:143-151), tests that name these values.
+
+## Dissertation
+
+- Section 2.2.2 "The slave-boy and the problem of leading questions": aporia is the perplexity of one who no longer thinks he knows
+  (Meno 84a-b); Section 4.5 "Evidence and stopping": "An honest ''I don''t know'', which the panel recognizes as aporia".
+- Section 3.1 "Insufficient evidence is a verdict, not a state" and M8: an objective that ran out of questions is "insufficient
+  evidence", not "exhausted".
+- Section 3.5 "Stopping rules", Proposition 3.3, and M9: the running estimate must never read as the student''s level.
+
+## Current behaviour
+
+`ConceptStatus` is `{ NotStarted, Open, Mastered, Aporia, Exhausted }`. `StatusOf` (`QuestionPlanner.cs:76-87`) calls an objective
+settled **below** Conceptual Understanding "Aporia", though the student may never have said "I don''t know"; and an inconclusive
+one "Exhausted". These strings are stored per concept (`SessionOrchestrator.cs:1208`, `.ToString()`), counted
+(`AnalyticsService.cs:224`), exported as CSV columns (`AnalyticsEndpoints.cs:96`) and shown to staff (`Analytics.razor:143`, columns
+"Mastered", "Aporia", "Exhausted" beside "Mean estimate", the running estimate).
+
+## Change
+
+1. Rename the values to what they mean (for example `SettledConceptualOrAbove`, `SettledBelowConceptual`, `Inconclusive`); "aporia"
+   then means only the student''s honest "I don''t know".
+2. Analytics: count stored rows written under the old names as the new ones; rename the columns and CSV headers to match
+   ("Insufficient evidence" for inconclusive); label "Mean estimate" as the examiner''s running estimate, not a level or score.
+3. Update tests that name these values.
+
+## Acceptance
+
+- No status calls a student''s settled level "aporia"; old stored rows still count in the right column.
+- Builds clean.
+
+## Constraints (every task in this epic)
+
+- **No LLM spend.** Dev runs and any manual check use mock mode (`Gadfly:AiMode` mock). No live provider call.
+- **Build only.** Verify with `dotnet build -m:1 -p:UseSharedCompilation=false` from `D:\Projects\MindAttic\Gadfly` (memory is tight).
+  Do not run the test suite or any slice of it; the owner runs /test. Do update or add the tests this change affects so they
+  compile and state the new behaviour.
+- **Commit only your own paths, on main,** with the ticket ID in the message. Do not stage `docs/USER_STORIES.md` (another
+  agent''s uncommitted edit) or the untracked `en.json`, `es.json`, `ko.json` at the repo root.
+- **Standing owner decisions, kept even where the research differs:** no read-back (GAD-T405); voice and camera mandatory, typing
+  only as an instructor-granted accommodation (GAD-T260); gaze reminder ladder (decision c); a cleared attempt still counts
+  (decision d); no fact-only exams, an exam must be "interpretive by nature"; the female examiner is the default (GAD-T807).
+- **The blueprint** is the dissertation *Elenchus at Scale*, `D:\Projects\MindAttic\Dissertation.ElenchusAtScale\chapters\`
+  (read-only). Section numbers in this ticket are its headings.', '2026-11-27T00:44:48Z');
+INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T824', '# Docs match the exam path
+
+**Repo:** Gadfly. **Area:** `docs/DESIGN.md`, `docs/VOICE.md`, `docs/SOCRATIC_PLATFORM.md`, `docs/SCIENCE.md`,
+`docs/EVIDENCE_MAP.md`, `docs/research/blueprint-gap-analysis.md`. Docs only. **Requires** every other task in this epic.
+
+## Dissertation
+
+- Section 6.7 "Authorship and the case": checks against the code "repeatedly found the documentation wrong" (corrections 30 to 37
+  and 40); the docs are only as good as their match with the code.
+- Section 5.9 "Accountability", "The record".
+
+## Current behaviour (stale today, before this epic)
+
+- `docs/DESIGN.md:545` student flow still has "Confirm or correct transcript, answer clarifications, revise an answer", removed by
+  GAD-T405 and GAD-T407; `DESIGN.md:183` names `ExamPromptsV3`.
+- `docs/VOICE.md:784` says "the student''s live interview transcript shows a short form" of the voice line (removed by this epic).
+- `docs/research/blueprint-gap-analysis.md` is dated `fccba6d` and lists GAD-T425 to GAD-T454 as open work; all have closed.
+
+## Change
+
+1. Fix the stale lines above.
+2. Describe what this epic changed, where each doc covers it: fallback questions and the one-question rule
+   (`SOCRATIC_PLATFORM.md`), consistency judged only on a confronted contradiction (prompt set v11; `SOCRATIC_PLATFORM.md`,
+   `EVIDENCE_MAP.md`, `SCIENCE.md` where they give the judge''s criteria or weights), the closing reflection and the student''s
+   elenctic record (`SOCRATIC_PLATFORM.md`, `DESIGN.md` student flow), no delivery measures in the live view (`VOICE.md`), the
+   renamed statuses.
+3. Add a dated addendum to `blueprint-gap-analysis.md`: what is closed since `fccba6d`, and the rows this epic acted on with
+   their ticket IDs.
+4. Do not edit `docs/USER_STORIES.md` unless its uncommitted edit by another agent has been committed by then; if it has, update
+   its `ExamPromptsV3` mention too.
+
+## Acceptance
+
+- Every statement touched matches the code at the commit, with file paths that exist. Docs only; nothing to build.
+
+## Constraints (every task in this epic)
+
+- **No LLM spend.** Dev runs and any manual check use mock mode (`Gadfly:AiMode` mock). No live provider call.
+- **Build only.** Verify with `dotnet build -m:1 -p:UseSharedCompilation=false` from `D:\Projects\MindAttic\Gadfly` (memory is tight).
+  Do not run the test suite or any slice of it; the owner runs /test. Do update or add the tests this change affects so they
+  compile and state the new behaviour.
+- **Commit only your own paths, on main,** with the ticket ID in the message. Do not stage `docs/USER_STORIES.md` (another
+  agent''s uncommitted edit) or the untracked `en.json`, `es.json`, `ko.json` at the repo root.
+- **Standing owner decisions, kept even where the research differs:** no read-back (GAD-T405); voice and camera mandatory, typing
+  only as an instructor-granted accommodation (GAD-T260); gaze reminder ladder (decision c); a cleared attempt still counts
+  (decision d); no fact-only exams, an exam must be "interpretive by nature"; the female examiner is the default (GAD-T807).
+- **The blueprint** is the dissertation *Elenchus at Scale*, `D:\Projects\MindAttic\Dissertation.ElenchusAtScale\chapters\`
+  (read-only). Section numbers in this ticket are its headings.', '2026-11-27T00:45:01Z');
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('GAD-T83', 'Part 16.2, Scenario J. **Done when:** each grading action checks a named permission and refusals are audited.
 
 Implements docs/MASTER-PLAN.md (the priority plan; read it and docs/MASTER-PLAN-STATUS.md first). Deterministic logic (scores, permissions, state transitions) lives in application code; LLM outputs are schema-validated.', '2026-11-21T00:49:37Z');
@@ -159422,8 +160325,25 @@ INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T803', 'All cre
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T805', 'Bust leans off plinth', '2026-11-26T23:57:54Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T806', 'Gadfly on R:', '2026-11-27T00:01:12Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T807', 'Female examiner default', '2026-11-27T00:20:59Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T808', 'Pure elenchus cleanup', '2026-11-27T00:43:59Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T809', 'Examiner does pure elenchus', '2026-11-27T00:44:07Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T81', 'Courses, objectives, rubric criteria', '2026-11-21T00:49:01Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T810', 'Student flow for self-examination', '2026-11-27T00:44:08Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T811', 'Exam-path cleanup', '2026-11-27T00:44:09Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T812', 'Questions obey elenchus rules', '2026-11-27T00:44:22Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T813', 'Exam ends in self-examination', '2026-11-27T00:44:24Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T814', 'Fallback questions obey elenchus', '2026-11-27T00:44:25Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T815', 'One question per turn', '2026-11-27T00:44:26Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T816', 'Consistency only when confronted', '2026-11-27T00:44:28Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T817', 'Closing reflection: server', '2026-11-27T00:44:29Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T818', 'Closing reflection: exam room', '2026-11-27T00:44:30Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T819', 'No delivery measures in live view', '2026-11-27T00:44:42Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T82', 'Grading policy and thresholds', '2026-11-21T00:49:17Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T820', 'Get-ready page tells the truth', '2026-11-27T00:44:44Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T821', 'Results show elenctic record', '2026-11-27T00:44:45Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T822', 'Retire ExamPromptsV3 alias', '2026-11-27T00:44:46Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T823', 'Status names say what they mean', '2026-11-27T00:44:48Z');
+INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T824', 'Docs match the exam path', '2026-11-27T00:45:01Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T83', 'Examiner and reviewer roles', '2026-11-21T00:49:38Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T84', 'Append-only audit log', '2026-11-21T00:49:59Z');
 INSERT INTO ticket_names (ticket_id, name, updated) VALUES ('GAD-T85', 'Teacher assessment setup UI', '2026-11-21T00:50:26Z');
@@ -162708,6 +163628,24 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T803', 'level:t
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T805', 'level:task', '2026-11-26T23:57:55Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T806', 'level:task', '2026-11-27T00:01:12Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T807', 'level:task', '2026-11-27T00:20:59Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T808', 'epic', '2026-11-27T00:44:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T808', 'level:epic', '2026-11-27T00:44:00Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T809', 'level:feature', '2026-11-27T00:44:07Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T810', 'level:feature', '2026-11-27T00:44:08Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T811', 'level:feature', '2026-11-27T00:44:10Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T812', 'level:story', '2026-11-27T00:44:23Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T813', 'level:story', '2026-11-27T00:44:24Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T814', 'level:task', '2026-11-27T00:44:25Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T815', 'level:task', '2026-11-27T00:44:26Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T816', 'level:task', '2026-11-27T00:44:28Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T817', 'level:task', '2026-11-27T00:44:29Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T818', 'level:task', '2026-11-27T00:44:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T819', 'level:task', '2026-11-27T00:44:43Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T820', 'level:task', '2026-11-27T00:44:44Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T821', 'level:task', '2026-11-27T00:44:45Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T822', 'level:task', '2026-11-27T00:44:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T823', 'level:task', '2026-11-27T00:44:48Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAD-T824', 'level:task', '2026-11-27T00:45:01Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAI-T19', 'level:task', '2026-11-22T05:49:45Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAI-T33', 'level:task', '2026-11-22T05:49:46Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('GAI-T34', 'level:task', '2026-11-22T05:49:47Z');
@@ -164237,8 +165175,9 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T2303', 'lev
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T2304', 'level:task', '2026-11-26T20:09:31Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T2305', 'level:task', '2026-11-26T20:30:18Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T2306', 'level:task', '2026-11-26T21:41:22Z');
-INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T2307', 'level:task', '2026-11-27T00:20:20Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T2307', 'level:story', '2026-11-27T00:42:56Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T2308', 'level:task', '2026-11-27T00:20:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T2309', 'level:task', '2026-11-27T00:42:57Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T534', 'level:story', '2026-11-22T06:14:04Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T768', 'level:task', '2026-11-22T05:38:23Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('M.ORCH-T802', 'level:task', '2026-11-22T05:38:24Z');
@@ -164878,8 +165817,8 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1160', 'level:
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1161', 'level:task', '2026-11-26T22:54:39Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1162', 'level:task', '2026-11-26T22:54:40Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1163', 'level:task', '2026-11-26T22:57:20Z');
-INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1164', 'level:task', '2026-11-26T22:57:21Z');
-INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1165', 'level:task', '2026-11-26T22:57:21Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1164', 'level:story', '2026-11-27T00:50:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1165', 'level:story', '2026-11-27T00:46:58Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1166', 'level:task', '2026-11-26T22:57:22Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1167', 'level:task', '2026-11-26T22:57:22Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1168', 'level:task', '2026-11-26T22:57:42Z');
@@ -164890,8 +165829,8 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1172', 'level:
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1173', 'level:task', '2026-11-27T00:00:12Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1174', 'level:task', '2026-11-27T00:03:18Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1175', 'level:story', '2026-11-27T00:10:01Z');
-INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1176', 'level:task', '2026-11-27T00:10:02Z');
-INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1177', 'level:task', '2026-11-27T00:10:02Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1176', 'level:story', '2026-11-27T00:50:46Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1177', 'level:story', '2026-11-27T00:49:04Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1178', 'level:task', '2026-11-27T00:10:03Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1179', 'level:task', '2026-11-27T00:10:03Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1180', 'level:task', '2026-11-27T00:10:04Z');
@@ -164901,6 +165840,11 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1183', 'level:
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1184', 'level:task', '2026-11-27T00:10:05Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1188', 'level:story', '2026-11-27T00:35:14Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1189', 'level:task', '2026-11-27T00:35:15Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1190', 'level:task', '2026-11-27T00:46:58Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1191', 'level:task', '2026-11-27T00:49:05Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1192', 'level:task', '2026-11-27T00:50:30Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1193', 'level:task', '2026-11-27T00:50:31Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T1194', 'level:task', '2026-11-27T00:50:47Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T14', 'glmz-vision', '2026-10-30T17:00:33Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T14', 'level:story', '2026-11-26T22:57:19Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('PRS-T14', 'phase:5-final', '2026-10-30T17:00:33Z');
@@ -169946,10 +170890,42 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T793', 'GAD-T792', '
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T794', 'GAD-T792', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T80', 'GAD-US-MP1', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T806', 'MAT-T290', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T809', 'GAD-T808', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T81', 'GAD-T80', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T81', 'GAD-US-MP1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T810', 'GAD-T808', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T811', 'GAD-T808', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T812', 'GAD-T809', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T813', 'GAD-T809', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T814', 'GAD-T812', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T815', 'GAD-T812', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T815', 'GAD-T814', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T816', 'GAD-T809', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T817', 'GAD-T813', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T818', 'GAD-T813', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T818', 'GAD-T817', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T819', 'GAD-T810', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T819', 'GAD-T818', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T82', 'GAD-T81', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T82', 'GAD-US-MP1', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T820', 'GAD-T810', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T821', 'GAD-T810', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T821', 'GAD-T817', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T822', 'GAD-T811', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T822', 'GAD-T815', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T822', 'GAD-T816', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T823', 'GAD-T811', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T824', 'GAD-T811', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T824', 'GAD-T814', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T824', 'GAD-T815', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T824', 'GAD-T816', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T824', 'GAD-T817', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T824', 'GAD-T818', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T824', 'GAD-T819', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T824', 'GAD-T820', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T824', 'GAD-T821', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T824', 'GAD-T822', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T824', 'GAD-T823', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T83', 'GAD-T80', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T83', 'GAD-US-MP1', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('GAD-T84', 'GAD-T80', 'requires', NULL);
@@ -173312,6 +174288,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T2305', 'M.ORCH-T
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T2307', 'M.ORCH-T2287', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T2308', 'M.ORCH-T2287', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T2308', 'M.ORCH-T2307', 'requires', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T2309', 'M.ORCH-T2307', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T43', 'M.ORCH-T44', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T45', 'M.ORCH-T9', 'related', 'migrated: named in ref');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('M.ORCH-T475', 'M.SCHD-T5', 'requires', NULL);
@@ -174700,6 +175677,11 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T1184', 'PRS-T1175',
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T1189', 'PRS-T1188', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T119', 'PRS-T118', 'requires', 'GLMZ wheel catalog order: PRS-T119 runs only after PRS-T118 closes');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T119', 'PRS-US-Q13', 'implements', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T1190', 'PRS-T1165', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T1191', 'PRS-T1177', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T1192', 'PRS-T1164', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T1193', 'PRS-T1164', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T1194', 'PRS-T1176', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T120', 'PRS-T119', 'requires', 'GLMZ wheel catalog order: PRS-T120 runs only after PRS-T119 closes');
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T120', 'PRS-US-Q13', 'implements', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('PRS-T121', 'PRS-T120', 'requires', 'GLMZ wheel catalog order: PRS-T121 runs only after PRS-T120 closes');
