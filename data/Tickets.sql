@@ -18058,8 +18058,9 @@ INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T915', 'SpaceGod.Unreal', 915, '2026-11-27', 'chore', 'open', 'Sol stations, habitats, shipyards and defence platforms that a mission or battle in the loop shows draw a Space Station Creator complete station as-is; replace any procedural station mesh still drawn there; record the mapping in docs/ThirdPartyArt.md', '—', 914, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T916', 'SpaceGod.Unreal', 916, '2026-11-27', 'feature', 'wont-do', 'MS-14 check #2 (exists) fails: R:\MindAttic\Apps\SpaceGod.Unreal\Release\SpaceGod.exe (Shipping) exists and launches', 'portfolio reset: covered by the milestone''s own tasks; the check passes when they are done (steward does not re-propose a declined check ticket)', 915, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T917', 'SpaceGod.Unreal', 917, '2026-11-27', 'fix', 'closed', 'Shipping package exits at launch (0xBDB2E CrashDuringStaticInit): ShipLineup.cpp:500 static CommandLineLineup reads FCommandLine::Get() during static init; defer to end of engine init', 'bd3a3e7', 916, NULL);
-INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T918', 'SpaceGod.Unreal', 918, '2026-11-27', 'chore', 'open', 'Packaged SpaceGod (Shipping and DebugGame at R:\MindAttic\Apps\SpaceGod.Unreal) freezes right after ''LogViewport: MouseCaptureMode Changed'' on world Entry up (no ticks, no -ExecCmds, CPU idle, window not responding; 3+ min), so sg.LaunchTest cannot run; found measuring US-T897 with -windowed and with -RenderOffScreen -nosplash -unattended -log. Find the hang (first game tick / SpaceGameMode BeginPlay), then measure sg.LaunchTest game and real for docs/TrueScale.md 5.6.', '—', 917, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T918', 'SpaceGod.Unreal', 918, '2026-11-27', 'chore', 'closed', 'Packaged SpaceGod (Shipping and DebugGame at R:\MindAttic\Apps\SpaceGod.Unreal) freezes right after ''LogViewport: MouseCaptureMode Changed'' on world Entry up (no ticks, no -ExecCmds, CPU idle, window not responding; 3+ min), so sg.LaunchTest cannot run; found measuring US-T897 with -windowed and with -RenderOffScreen -nosplash -unattended -log. Find the hang (first game tick / SpaceGameMode BeginPlay), then measure sg.LaunchTest game and real for docs/TrueScale.md 5.6.', '7d6afa3', 917, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T919', 'SpaceGod.Unreal', 919, '2026-11-27', 'feature', 'closed', 'Implement the Quick Start opening skirmish (design from US-T900''s investigation, no code landed yet). Hook it into PilotCareer::Update (Cpp/Source/SpaceGodCore/Combat/PilotCareer.cpp). Only World::UpdateAdventures calls that function, and only when a player is present, so the AI-only bench never runs it, its digests stay unchanged, and co-op and rewind replay it. When Update makes the career (Find returned null), set OpeningPending=true and OpeningDueJd=jd + OpeningWithinSeconds/86400. OpeningWithinSeconds is a public field defaulting to 120, a setting, not a constant. Run this check BEFORE the NextScanJd early return: once jd >= OpeningDueJd and OpeningPending, clear OpeningPending. Then, if no War->Battles entry is still running (!Over) and no mission is in the Offered state, seed the skirmish. Find the catalog body nearest playerHelio. Spawn 2 pirate raiders (world->Pirates, else world->UnknownRaiders(); names from War::RaiderNames style) and 1 Sol frigate with Fleet->SpawnAt(name, ShipClass, faction, body, offset toward the player, forward, jd), following AmbienceCommand.cpp:304-309. Then call War->TryStartBattle(body, pirates, jd). Set NextScanJd=jd so the board offers the fight as a mission in the same update. UpdateAdventures has to pass playerHelio to PilotCareer::Update (change its signature). Serialize OpeningPending and OpeningDueJd with SG_OPT in PilotCareer''s SG_SERIALIZE, and leave the defaults at false, so old saves never seed. Build-check with UBT -SingleFile on PilotCareer.cpp and World.cpp.', '5771147059e29f8f904d27ab4f6b358b190e8353', 918, NULL);
+INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('US-T920', 'SpaceGod.Unreal', 920, '2026-11-27', 'fix', 'open', 'Build-check and land the MISSION COMPLETE/FAILED banner patch (Hud::DrawMissionResult, already applied uncommitted in the working tree: Hud.cpp, Hud.Main.inl; also saved as D:\Projects\MindAttic.worktrees\.scratch\US-T903\banner.patch), then verify escort/intercept missions with no battle settle (Accepted with Ship destroyed and an Opportunity that never ends is never settled in PilotCareer::Update)', '—', 919, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T1', 'SpaceGod.Unreal.CSharp', 1, '2026-11-05', 'docs', 'closed', 'Start the permanent ticket log in the ticket database', '—', 0, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T2', 'SpaceGod.Unreal.CSharp', 2, '2026-11-06', 'feature', 'closed', 'Adopt the shared off-by-default --headless launch mode (Unreal.Shared)', '—', 1, NULL);
 INSERT INTO tickets (id, repo, number, date, type, status, summary, ref, ordinal, row_md) VALUES ('SPAC-T3', 'SpaceGod.Unreal.CSharp', 3, '2026-11-08', 'feature', 'wont-do', 'Mirror SpaceGod US-T72: add docs/CAPTURE.md (Unity e29d871''s text, third copy named SpaceGod) that this copy''s capture code cites but lacks, and a US-T72 section in docs/PARITY.md', 'portfolio reset: SpaceGod.Unreal.CSharp is an archived copy; SpaceGod.Unreal is the one SpaceGod', 2, NULL);
@@ -149355,6 +149356,28 @@ INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151697, 
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151698, 'US-T900', '2026-11-27T19:52:50Z', 'rollup', NULL, 'US-T919');
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151699, 'US-T919', '2026-11-27T19:53:11Z', 'working', 'ryandebraal@gmail.com (b773a79b-ba7e-46cb-9786-f886660e3188)', NULL);
 INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151700, 'US-T901', '2026-11-27T19:53:15Z', 'working', NULL, 'ryandebraal@gmail.com (b773a79b-ba7e-46cb-9786-f886660e3188)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151701, 'US-T918', '2026-11-27T20:04:36Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151702, 'US-T918', '2026-11-27T20:04:36Z', 'ref', '—', '7d6afa3');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151703, 'US-T897', '2026-11-27T20:04:36Z', 'status', 'open', 'closed');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151704, 'US-T897', '2026-11-27T20:04:36Z', 'ref', '—', 'children done');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151705, 'US-T897', '2026-11-27T20:04:36Z', 'rollup', NULL, 'US-T918');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151706, 'US-T897', '2026-11-27T20:04:44Z', 'status', 'closed', 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151707, 'US-T897', '2026-11-27T20:04:44Z', 'ref', 'children done', '—');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151708, 'US-T897', '2026-11-27T20:04:44Z', 'reopen', 'closed', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151709, 'US-T918', '2026-11-27T20:04:52Z', 'working', 'ryandebraal@gmail.com (b773a79b-ba7e-46cb-9786-f886660e3188)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151710, 'US-T903', '2026-11-27T20:05:15Z', 'working', NULL, 'ryandebraal@gmail.com (b773a79b-ba7e-46cb-9786-f886660e3188)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151711, 'US-T906', '2026-11-27T20:05:15Z', 'working', NULL, 'ryandebraal@gmail.com (b773a79b-ba7e-46cb-9786-f886660e3188)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151712, 'US-T903', '2026-11-27T20:06:31Z', 'label', 'level:task', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151713, 'US-T903', '2026-11-27T20:06:31Z', 'label', NULL, 'level:story');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151714, 'US-T920', '2026-11-27T20:06:31Z', 'created', NULL, 'open');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151715, 'US-T920', '2026-11-27T20:06:32Z', 'link', NULL, 'part-of US-T903');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151716, 'US-T903', '2026-11-27T20:06:32Z', 'link', NULL, 'US-T920 part-of');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151717, 'US-T920', '2026-11-27T20:06:32Z', 'label', NULL, 'level:task');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151718, 'US-T920', '2026-11-27T20:06:32Z', 'approval', 'proposed', 'approved');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151719, 'US-T920', '2026-11-27T20:06:32Z', 'priority', '0', '880');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151720, 'US-T903', '2026-11-27T20:06:49Z', 'working', 'ryandebraal@gmail.com (b773a79b-ba7e-46cb-9786-f886660e3188)', NULL);
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151721, 'US-T920', '2026-11-27T20:06:49Z', 'working', NULL, 'ryandebraal@gmail.com (b773a79b-ba7e-46cb-9786-f886660e3188)');
+INSERT INTO ticket_events (seq, ticket_id, at, field, old, new) VALUES (151722, 'US-T908', '2026-11-27T20:06:51Z', 'working', NULL, 'ryandebraal@gmail.com (b773a79b-ba7e-46cb-9786-f886660e3188)');
 
 -- ticket_queue
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('AES-T10', 'proposed', 380, '2026-11-24T19:47:20Z', NULL);
@@ -157079,6 +157102,7 @@ INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALU
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T915', 'approved', 680, '2026-11-27T09:53:50Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T918', 'approved', 980, '2026-11-27T19:44:48Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T919', 'approved', 890, '2026-11-27T19:48:19Z', NULL);
+INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T920', 'approved', 880, '2026-11-27T20:06:32Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T96', 'approved', 0, '2026-11-06T21:27:45Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T98', 'approved', 0, '2026-11-06T21:27:46Z', NULL);
 INSERT INTO ticket_queue (ticket_id, approval, priority, updated, estimate) VALUES ('US-T99', 'approved', 210, '2026-11-23T19:31:02Z', NULL);
@@ -157424,8 +157448,10 @@ INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, u
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T82', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T07:02:05Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T85', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T23:52:54Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T901', NULL, 0, 'ryandebraal@gmail.com', 'b773a79b-ba7e-46cb-9786-f886660e3188', '2026-11-27T19:53:15Z', '2026-11-27T19:53:15Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T906', NULL, 0, 'ryandebraal@gmail.com', 'b773a79b-ba7e-46cb-9786-f886660e3188', '2026-11-27T20:05:15Z', '2026-11-27T20:05:15Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T908', NULL, 0, 'ryandebraal@gmail.com', 'b773a79b-ba7e-46cb-9786-f886660e3188', '2026-11-27T20:06:51Z', '2026-11-27T20:06:51Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T91', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-07T00:58:13Z');
-INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T918', NULL, 0, 'ryandebraal@gmail.com', 'b773a79b-ba7e-46cb-9786-f886660e3188', '2026-11-27T19:45:07Z', '2026-11-27T19:45:07Z');
+INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T920', NULL, 0, 'ryandebraal@gmail.com', 'b773a79b-ba7e-46cb-9786-f886660e3188', '2026-11-27T20:06:49Z', '2026-11-27T20:06:49Z');
 INSERT INTO ticket_work (ticket_id, assignee, reserved, login, session, since, updated) VALUES ('US-T98', 'shampoo1232@mindattic.com', 0, NULL, NULL, NULL, '2026-11-06T22:51:51Z');
 
 -- ticket_notes
@@ -161886,6 +161912,7 @@ INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32739, '
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32740, 'GG-T1776', 'ryand', '2026-11-27T19:11:44Z', 'Retuned lanternroad (d2534687): river seeds pinned from the real palette colours (#3e533e, #344337; rivers are dull green-grey, not teal), blur 1, mode 3, water_close 7, grass seeds #796625/#5d5320/#8a8a3a, k 14. Classes: water 0.57%, snow 1.08%, rock 53.79%, grass 21.73%, forest 22.82%. Rivers continuous (faint left reach has small gaps). Overlay: ![lanternroad](file:///D:/Projects/MindAttic/MindAttic.Tickets/data/attachments/GG-T1652/world_map-lanternroad-classes.png). Moors/swamp entries and script untouched, so unchanged (greenvalley water 1.24 grass 91.18 forest 4.28 rock 3.30; swamp water 14.85 reeds 11.30 marsh 27.43 forest 46.42).');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32741, 'GG-T1693', 'ryand', '2026-11-27T19:19:07Z', 'Correction: GG-T1693 landed as 176a5c4d (WaystoneDust); the close ref ba9ec7eb is GG-T1696''s commit.');
 INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32742, 'GG-T1670', 'ryand', '2026-11-27T19:26:56Z', 'cost overlays (d14edd1e): D:\Projects\MindAttic\MindAttic.Tickets\data\attachments\GG-T1652\world_map-greenvalley-cost.png (2 bodies, main river one body), D:\Projects\MindAttic\MindAttic.Tickets\data\attachments\GG-T1652\world_map-lanternroad-cost.png (5 bodies; east river upper reach and west river still split), D:\Projects\MindAttic\MindAttic.Tickets\data\attachments\GG-T1652\world_map-swamp-cost.png (177 bodies, untuned). Valleys/grass cheapest on all three (grass ~1.5, forest 3-5, rock ~10, snow ~16).');
+INSERT INTO ticket_notes (seq, ticket_id, author, at, markdown) VALUES (32743, 'US-T897', 'ryand', '2026-11-27T20:04:37Z', 'US-T918 fixed the packaged-game hang (7d6afa3). Preliminary only, not for the doc: packaged DebugGame, -RenderOffScreen, run while Shipping was packaging on the same machine, sg.LaunchTest game seconds=40: per-second 96-114 ms mean, 108-170 ms worst once 200 craft out; summary 174 frames, 230 ms mean (21.3 s worst = the scene setup frame). Needs a rerun on a quiet machine (Development build or DebugGame with csvprofile for the top three costs) plus sg.LaunchTest real.');
 
 -- ticket_descriptions
 INSERT INTO ticket_descriptions (ticket_id, body, updated) VALUES ('AES-T12', 'First confirm the folder is a MindAttic deploy output and no shortcut, scheduled task, startup entry or PATH entry still points into it; never touch anything else under C:\Apps.', '2026-11-26T04:46:51Z');
@@ -199321,7 +199348,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T899', 'level:fe
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T900', 'level:story', '2026-11-27T19:48:14Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T901', 'level:task', '2026-11-27T09:50:49Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T902', 'level:feature', '2026-11-27T09:50:58Z');
-INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T903', 'level:task', '2026-11-27T09:51:06Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T903', 'level:story', '2026-11-27T20:06:31Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T904', 'level:task', '2026-11-27T09:51:16Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T905', 'level:feature', '2026-11-27T09:51:31Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T906', 'level:task', '2026-11-27T09:51:43Z');
@@ -199338,6 +199365,7 @@ INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T916', 'mileston
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T916', 'steward', '2026-11-27T10:49:48Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T918', 'level:task', '2026-11-27T19:44:48Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T919', 'level:task', '2026-11-27T19:48:19Z');
+INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T920', 'level:task', '2026-11-27T20:06:32Z');
 INSERT INTO ticket_labels (ticket_id, label, added) VALUES ('US-T99', 'level:story', '2026-11-22T06:44:47Z');
 
 -- repo_renames
@@ -211110,6 +211138,7 @@ INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T914', 'US-T894', 'pa
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T915', 'US-T914', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T918', 'US-T897', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T919', 'US-T900', 'part-of', NULL);
+INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T920', 'US-T903', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('US-T99', 'US-T468', 'part-of', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('USOD-T10', 'USOD-T3', 'requires', NULL);
 INSERT INTO links (from_id, to_id, kind, note) VALUES ('USOD-T10', 'USOD-T4', 'requires', NULL);
