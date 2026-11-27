@@ -185,19 +185,27 @@ public sealed class TicketStore(string root)
         };
     });
 
-    /// <summary>Every milestone that isn't dropped, in milestone order, each read from the one <paramref name="graph"/>.</summary>
-    private static IReadOnlyList<MilestoneInfo> Milestones(TicketsDb db, TicketGraph graph, IReadOnlyList<StoredEpic> epics) =>
-        [.. db.Milestones().Where(m => m.State != MilestoneStates.Dropped).Select(m =>
+    /// <summary>Every milestone that isn't dropped, in milestone order, each read from the one <paramref name="graph"/>: a few
+    /// queries for all of them, not several apiece (M.TIX-T413).</summary>
+    private static IReadOnlyList<MilestoneInfo> Milestones(TicketsDb db, TicketGraph graph, IReadOnlyList<StoredEpic> epics)
+    {
+        var members = db.MilestoneMembersAll(graph);
+        var checks = db.MilestoneChecksAll();
+        var growth = db.MilestoneGrowthAll(graph);
+        var pending = db.MilestonePending().ToLookup(p => p.MilestoneId, StringComparer.OrdinalIgnoreCase);
+        var history = db.MilestoneHistoryAll();
+        return [.. db.Milestones().Where(m => m.State != MilestoneStates.Dropped).Select(m =>
         {
-            var members = db.MilestoneMembers(m.Id, graph);
-            return new MilestoneInfo(m, members, db.MilestoneChecks(m.Id))
+            var on = members.GetValueOrDefault(m.Id) ?? [];
+            return new MilestoneInfo(m, on, checks.GetValueOrDefault(m.Id) ?? [])
             {
-                Groups = Group(members, graph, epics),
-                Growth = db.MilestoneGrowth(m.Id, graph),
-                Pending = [.. db.MilestonePending(m.Id).Select(p => new MilestonePendingItem(p, graph.Node(p.Item)))],
-                History = db.MilestoneHistory(m.Id),
+                Groups = Group(on, graph, epics),
+                Growth = growth.GetValueOrDefault(m.Id),
+                Pending = [.. pending[m.Id].Select(p => new MilestonePendingItem(p, graph.Node(p.Item)))],
+                History = history.GetValueOrDefault(m.Id) ?? [],
             };
         })];
+    }
 
     /// <summary>
     /// A milestone's members under headings: the tickets linked to it itself first, then one group per epic (or parent
@@ -288,13 +296,17 @@ public sealed class TicketStore(string root)
     {
         if (db.Ticket(id) is not { } found) return null;
         var (approval, priority) = db.QueueState(found.Ticket.Id);
-        var blockers = db.Requires(found.Ticket.Id, transitive: true)
-            .Where(b => db.Ticket(b) is { } t && t.Ticket.Status == TicketRules.Open).ToList();
+        var required = db.Requires(found.Ticket.Id, transitive: true);
         var links = db.Links(found.Ticket.Id);
-        var dependents = links
+        var requiring = links
             .Where(l => l.Kind == "requires" && string.Equals(l.To, found.Ticket.Id, StringComparison.OrdinalIgnoreCase))
-            .Select(l => l.From)
-            .Where(d => db.Ticket(d) is { } t && t.Ticket.Status == TicketRules.Open).ToList();
+            .Select(l => l.From).ToList();
+        // Every blocker's and dependent's status in one read (M.TIX-T413), each by its current ID as Ticket() would follow it.
+        var current = db.CurrentIds(required.Concat(requiring));
+        var statuses = db.TicketsById(current.Values);
+        bool IsOpen(string id) => statuses.TryGetValue(current.GetValueOrDefault(id, id), out var t) && t.Ticket.Status == TicketRules.Open;
+        var blockers = required.Where(IsOpen).ToList();
+        var dependents = requiring.Where(IsOpen).ToList();
         return new TicketDetail(new TicketInfo(found.Repo, found.Ticket, approval, priority, blockers) { Estimate = db.Estimate(found.Ticket.Id), Labels = db.Labels(found.Ticket.Id), Name = db.Name(found.Ticket.Id) }, db.History(found.Ticket.Id), links, blockers)
         {
             OpenDependents = dependents,

@@ -437,9 +437,13 @@ public sealed partial class TicketsDb
     public MilestoneGrowth? MilestoneGrowth(string idOrName, TicketGraph? graph = null)
     {
         var m = RequireMilestone(idOrName);
-        if (m.Activated is null) return null;
-        graph ??= Graph();
-        var history = MilestoneHistory(m.Id);
+        return m.Activated is null ? null : GrowthOf(m, graph ?? Graph(), MilestoneHistory(m.Id), MilestonePending(m.Id));
+    }
+
+    /// <summary><see cref="MilestoneGrowth(string, TicketGraph?)"/> for an activated <paramref name="m"/> from its history and
+    /// pending additions as read already.</summary>
+    private MilestoneGrowth GrowthOf(Milestone m, TicketGraph graph, IReadOnlyList<MilestoneEvent> history, IReadOnlyList<MilestonePendingAddition> pending)
+    {
         var activation = history.TakeWhile(e => !(e.Field == "state" && e.New == MilestoneStates.Active)).Count();
         // An item as it's known now: its history names it by the ID it had then.
         var renamed = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
@@ -457,8 +461,7 @@ public sealed partial class TicketsDb
         var tickets = TicketsOf(direct);
         var before = TicketsOf(direct.Where(d => !joined.Contains(d)));
         var removed = TicketsOf(left.Where(x => !direct.Contains(x, StringComparer.OrdinalIgnoreCase))).Count(t => !tickets.Contains(t));
-        var pending = MilestonePending(m.Id);
-        return new MilestoneGrowth(m.Id, m.Activated, before.Count + removed, tickets.Count - before.Count, removed, tickets.Count,
+        return new MilestoneGrowth(m.Id, m.Activated!, before.Count + removed, tickets.Count - before.Count, removed, tickets.Count,
             pending.Count, TicketsOf(pending.Select(p => p.Item)).Count(t => !tickets.Contains(t)));
     }
 
@@ -488,9 +491,14 @@ public sealed partial class TicketsDb
     public IReadOnlyList<MilestoneMember> MilestoneMembers(string idOrName, TicketGraph? graph = null)
     {
         var m = RequireMilestone(idOrName);
-        graph ??= Graph();
-        var direct = graph.In(m.Id, PartOf).Select(e => e.From).ToHashSet(StringComparer.OrdinalIgnoreCase);
-        return [.. graph.Reach(m.Id, PartOf, down: true).Select(x => new MilestoneMember(graph.Node(x), direct.Contains(x)))
+        return MembersOf(m.Id, graph ?? Graph());
+    }
+
+    /// <summary>What's on the milestone <paramref name="id"/> in <paramref name="graph"/>, as <see cref="MilestoneMembers"/> reads it.</summary>
+    private static List<MilestoneMember> MembersOf(string id, TicketGraph graph)
+    {
+        var direct = graph.In(id, PartOf).Select(e => e.From).ToHashSet(StringComparer.OrdinalIgnoreCase);
+        return [.. graph.Reach(id, PartOf, down: true).Select(x => new MilestoneMember(graph.Node(x), direct.Contains(x)))
             .OrderBy(x => x.Direct ? 0 : 1).ThenBy(x => x.Id, StringComparer.OrdinalIgnoreCase)];
     }
 
@@ -526,7 +534,7 @@ public sealed partial class TicketsDb
         if (active.Count == 0) return new Dictionary<string, IReadOnlyList<string>>(StringComparer.OrdinalIgnoreCase);
         var graph = Graph();
         foreach (var m in active)
-            foreach (var member in MilestoneMembers(m.Id, graph).Where(x => x.IsTicket))
+            foreach (var member in MembersOf(m.Id, graph).Where(x => x.IsTicket))
             {
                 if (!on.TryGetValue(member.Id, out var list)) on[member.Id] = list = [];
                 list.Add(m.Id);
@@ -540,13 +548,21 @@ public sealed partial class TicketsDb
     public IReadOnlyList<MilestoneCheck> MilestoneChecks(string idOrName)
     {
         var id = RequireMilestone(idOrName).Id;
-        var stored = Rows("SELECT number, kind, description, repos, target, result, checked, evidence FROM milestone_checks WHERE milestone_id = $id COLLATE NOCASE ORDER BY number",
-            r => (Number: Convert.ToInt64(r.GetValue(0), CultureInfo.InvariantCulture), Kind: r.GetString(1), Description: r.GetString(2),
-                Repos: r.IsDBNull(3) ? "" : r.GetString(3), Target: r.IsDBNull(4) ? null : r.GetString(4), Result: r.GetString(5),
-                Checked: r.IsDBNull(6) ? null : r.GetString(6), Evidence: r.IsDBNull(7) ? null : r.GetString(7)), ("$id", id));
-        // Its repos by the names they go by now: one renamed since the check was written still reads right.
-        return [.. stored.Select(c => new MilestoneCheck(id, c.Number, c.Kind, c.Description,
-            [.. c.Repos.Split(',', StringSplitOptions.RemoveEmptyEntries).Select(r => FindRepoRow(r)?.Name ?? r)], c.Target, c.Result, c.Checked, c.Evidence))];
+        return ReadChecks("WHERE milestone_id = $id COLLATE NOCASE ORDER BY number", ("$id", id));
+    }
+
+    /// <summary>The milestone checks <paramref name="where"/> selects, their repos by the names they go by now: one renamed since
+    /// the check was written still reads right. Each repo name is looked up once however many checks name it.</summary>
+    private List<MilestoneCheck> ReadChecks(string where, params (string Name, object? Value)[] args)
+    {
+        var stored = Rows("SELECT milestone_id, number, kind, description, repos, target, result, checked, evidence FROM milestone_checks " + where,
+            r => (Id: r.GetString(0), Number: Convert.ToInt64(r.GetValue(1), CultureInfo.InvariantCulture), Kind: r.GetString(2), Description: r.GetString(3),
+                Repos: r.IsDBNull(4) ? "" : r.GetString(4), Target: r.IsDBNull(5) ? null : r.GetString(5), Result: r.GetString(6),
+                Checked: r.IsDBNull(7) ? null : r.GetString(7), Evidence: r.IsDBNull(8) ? null : r.GetString(8)), args);
+        var names = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        string Now(string repo) => names.TryGetValue(repo, out var n) ? n : names[repo] = FindRepoRow(repo)?.Name ?? repo;
+        return [.. stored.Select(c => new MilestoneCheck(c.Id, c.Number, c.Kind, c.Description,
+            [.. c.Repos.Split(',', StringSplitOptions.RemoveEmptyEntries).Select(Now)], c.Target, c.Result, c.Checked, c.Evidence))];
     }
 
     /// <summary>
