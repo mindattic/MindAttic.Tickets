@@ -324,6 +324,11 @@ public sealed class TicketStore(string root)
     /// <summary>The workspace's ticket changes after event <paramref name="after"/>, newest first, at most <paramref name="limit"/> (M.TIX-T84).</summary>
     public IReadOnlyList<MindAttic.Tickets.Data.ActivityEvent> Activity(long after, int limit) => Read(db => db.Activity(after, limit));
 
+    /// <summary>Every ticket that changed anywhere in the workspace after event <paramref name="after"/> (<c>ticket_events</c>;
+    /// M.TIX-T369), each with its history and hygiene: what the window's incremental refresh (M.TIX-T235) applies to the
+    /// <see cref="Snapshot"/> instead of reloading it whole on every change.</summary>
+    public MindAttic.Tickets.Data.ChangedTicketsResult ChangedTicketsSince(long after) => Read(db => db.ChangedTicketsSince(after));
+
     /// <summary>Who this window acts as, for notes and milestone decisions: <c>$MINDATTIC_TICKETS_AUTHOR</c>, else
     /// <see cref="Environment.UserName"/> (the CLI's default author too).</summary>
     public static string Author =>
