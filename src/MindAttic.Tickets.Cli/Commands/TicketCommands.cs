@@ -44,7 +44,7 @@ public sealed class TicketNewCommand : Command<TicketNewCommand.Settings>
         public bool Template { get; init; }
 
         [CommandOption("--parent <ID>")]
-        [Description("Link the new ticket part-of this one; it inherits the parent's approval (M.TIX-T362).")]
+        [Description("Link the new ticket part-of this one; it inherits the parent's approval (M.TIX-T362) and priority (M.TIX-T387).")]
         public string? Parent { get; init; }
 
         [CommandOption("--level <LEVEL>")]
@@ -75,7 +75,9 @@ public sealed class TicketNewCommand : Command<TicketNewCommand.Settings>
                 if (settings.Parent is { } parent)
                 {
                     db.AddLink(newId, parent, "part-of", null);
-                    if (settings.Status == TicketRules.Open && db.QueueState(parent).Approval == TicketsDb.Approved) db.Approve(newId);
+                    var (approval, priority) = db.QueueState(parent);
+                    if (settings.Status == TicketRules.Open && approval == TicketsDb.Approved) db.Approve(newId);
+                    db.SetPriority(newId, priority);
                 }
                 Console.WriteLine(newId);
                 Db.Rerender(db, settings);

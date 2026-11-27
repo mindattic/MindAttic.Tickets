@@ -130,13 +130,17 @@ public sealed class TicketPriorityCommand : Command<TicketPriorityCommand.Settin
         [CommandArgument(1, "<PRIORITY>")]
         [Description("Whole number; higher runs sooner (0 is the default).")]
         public long Priority { get; init; }
+
+        [CommandOption("--cascade")]
+        [Description("Also set it on every open ticket part-of this one, at any depth (M.TIX-T387).")]
+        public bool Cascade { get; init; }
     }
 
     public override int Execute(CommandContext context, Settings settings)
     {
         using var db = Db.Open(settings);
-        db.SetPriority(settings.Id, settings.Priority);
-        Console.WriteLine($"{db.Ticket(settings.Id)!.Value.Ticket.Id} priority {settings.Priority}");
+        foreach (var id in db.SetPriority(settings.Id, settings.Priority, settings.Cascade))
+            Console.WriteLine($"{id} priority {settings.Priority}");
         return 0;
     }
 }

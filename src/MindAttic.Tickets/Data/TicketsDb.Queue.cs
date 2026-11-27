@@ -135,6 +135,16 @@ public sealed partial class TicketsDb
     /// <summary>Sets one ticket's priority (higher runs sooner).</summary>
     public void SetPriority(string id, long priority) => InWrite(() => SetPriorityCore(RequireTicket(id).Id, priority));
 
+    /// <summary>Sets <paramref name="id"/>'s priority and, with <paramref name="cascade"/>, every open ticket part-of it at any depth
+    /// (M.TIX-T387), in one transaction; returns the IDs set, the ticket itself first.</summary>
+    public IReadOnlyList<string> SetPriority(string id, long priority, bool cascade)
+    {
+        var root = RequireTicket(id).Id;
+        IReadOnlyList<string> ids = cascade ? [root, .. Graph().Descendants(root).Where(n => n.IsOpen).Select(n => n.Id)] : [root];
+        InWrite(() => { foreach (var x in ids) SetPriorityCore(x, priority); });
+        return ids;
+    }
+
     /// <summary>Moves a ticket's priority by <paramref name="by"/> (negative lowers it), read and written in one transaction;
     /// returns the new priority.</summary>
     public long Bump(string id, long by)

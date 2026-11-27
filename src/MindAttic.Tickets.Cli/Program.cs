@@ -33,7 +33,7 @@ app.Configure(config =>
         t.AddCommand<TicketQueueCommand>("queue").WithDescription("Open tickets in queue order, with approval and priority.");
         t.AddCommand<TicketApproveCommand>("approve").WithDescription("Approve open tickets for work (--undo puts them back to proposed); with no IDs, list what waits for approval.");
         t.AddCommand<TicketRejectCommand>("reject").WithDescription("Reject an open ticket: it closes wont-do with --reason as its ref.");
-        t.AddCommand<TicketPriorityCommand>("priority").WithDescription("Set a ticket's queue priority (higher runs sooner).");
+        t.AddCommand<TicketPriorityCommand>("priority").WithDescription("Set a ticket's queue priority (higher runs sooner); --cascade sets it on its open part-of descendants too.");
         t.AddCommand<TicketEstimateCommand>("estimate").WithDescription("Show, set (estimate <ID> 300k) or --clear a ticket's effort estimate in tokens; --seed estimates every open ticket without one from the Orchestrator's TicketCosts medians. Within a priority the queue runs the smallest first.");
         t.AddCommand<TicketBumpCommand>("bump").WithDescription("Raise (or with a negative --by, lower) a ticket's priority.");
         t.AddCommand<TicketAssignCommand>("assign").WithDescription("Assign a ticket to a member's login (assign <ID> <email>): it's dispatched only on that login; --unassign takes it off them, --redelegate hands it on like an unassigned ticket.");
@@ -50,7 +50,7 @@ app.Configure(config =>
             l.AddCommand<TicketLabelListCommand>("list").WithDescription("A ticket's labels, or with no ID every label in use and how many tickets carry it.");
         });
         t.AddCommand<TicketLevelCommand>("level").WithDescription("Show a ticket's level, or set it: level <ID> epic|feature|story|task (replaces any other level: label).");
-        t.AddCommand<TicketSplitCommand>("split").WithDescription("Split a ticket into tasks: split <ID> --task \"summary\" (repeatable) or --file PATH (\"name | summary\" lines); each a level-task child part-of it, its type and approval; --sequential chains requires, --name-prefix names them.");
+        t.AddCommand<TicketSplitCommand>("split").WithDescription("Split a ticket into tasks: split <ID> --task \"summary\" (repeatable) or --file PATH (\"name | summary\" lines); each a level-task child part-of it, its type, approval and priority; --sequential chains requires, --name-prefix names them.");
         t.AddCommand<TicketHygieneCommand>("hygiene").WithDescription("Closed tickets that may not be done: no Ref cited, or a later ticket says it came back.");
         t.AddCommand<TicketStatsCommand>("stats").WithDescription("Ticket metrics from ticket_events: throughput and cycle time per period, and open tickets by repo and type over time (--by day|week|month, --periods N, --repo, --type, --json).");
         t.AddCommand<TicketIntakeCommand>("intake").WithDescription("File GitHub issues labelled orchestrator and CI failures on main as tickets (--dry-run to preview).");
