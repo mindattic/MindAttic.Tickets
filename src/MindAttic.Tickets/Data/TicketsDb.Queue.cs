@@ -113,6 +113,21 @@ public sealed partial class TicketsDb
     /// <summary>Approves an open ticket for work.</summary>
     public void Approve(string id) => InWrite(() => SetApprovalCore(RequireOpen(id).Id, Approved));
 
+    /// <summary>Approves an open ticket and, with <paramref name="cascade"/>, every open ticket part-of it at any depth
+    /// (M.TIX-T388), in one transaction; returns the IDs approved, the ticket itself first.</summary>
+    public IReadOnlyList<string> Approve(string id, bool cascade) => SetApproval(RequireOpen(id).Id, Approved, cascade);
+
+    /// <summary>Puts a ticket back to proposed and, with <paramref name="cascade"/>, every open ticket part-of it at any depth
+    /// (M.TIX-T388); returns the IDs changed, the ticket itself first.</summary>
+    public IReadOnlyList<string> Unapprove(string id, bool cascade) => SetApproval(RequireTicket(id).Id, Proposed, cascade);
+
+    private IReadOnlyList<string> SetApproval(string root, string approval, bool cascade)
+    {
+        IReadOnlyList<string> ids = cascade ? [root, .. Graph().Descendants(root).Where(n => n.IsOpen).Select(n => n.Id)] : [root];
+        InWrite(() => { foreach (var x in ids) SetApprovalCore(x, approval); });
+        return ids;
+    }
+
     /// <summary>Puts a ticket back to proposed (neither approved nor rejected).</summary>
     public void Unapprove(string id) => InWrite(() => SetApprovalCore(RequireTicket(id).Id, Proposed));
 

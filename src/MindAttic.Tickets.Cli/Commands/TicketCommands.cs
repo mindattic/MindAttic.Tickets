@@ -44,8 +44,12 @@ public sealed class TicketNewCommand : Command<TicketNewCommand.Settings>
         public bool Template { get; init; }
 
         [CommandOption("--parent <ID>")]
-        [Description("Link the new ticket part-of this one; it inherits the parent's approval (M.TIX-T362) and priority (M.TIX-T387).")]
+        [Description("Link the new ticket part-of this one; it inherits the parent's priority (M.TIX-T387) and starts proposed unless --approved (M.TIX-T388).")]
         public string? Parent { get; init; }
+
+        [CommandOption("--approved")]
+        [Description("Start it approved for work (M.TIX-T388); without it, a ticket filed with --parent is a proposed follow-up.")]
+        public bool Approved { get; init; }
 
         [CommandOption("--level <LEVEL>")]
         [Description("epic | feature | story | task: its one level: label (M.TIX-T362).")]
@@ -75,18 +79,17 @@ public sealed class TicketNewCommand : Command<TicketNewCommand.Settings>
                 if (settings.Parent is { } parent)
                 {
                     db.AddLink(newId, parent, "part-of", null);
-                    var (approval, priority) = db.QueueState(parent);
-                    if (settings.Status == TicketRules.Open && approval == TicketsDb.Approved) db.Approve(newId);
-                    db.SetPriority(newId, priority);
+                    db.SetPriority(newId, db.QueueState(parent).Priority);
                 }
+                if (settings.Approved && settings.Status == TicketRules.Open) db.Approve(newId);
                 Console.WriteLine(newId);
                 Db.Rerender(db, settings);
                 return 0;
             }
         if (!File.Exists(repo.StoriesPath))
             throw new InvalidOperationException($"{repo.Name} has no docs/USER_STORIES.md; run 'tickets repos rollout --apply' first.");
-        if (settings.Description is not null || settings.DescriptionFile is not null || settings.Template || settings.Name is not null || settings.Parent is not null || settings.Level is not null)
-            throw new InvalidOperationException("Descriptions, names, parents and levels live in the ticket database; this workspace hasn't been migrated to it.");
+        if (settings.Description is not null || settings.DescriptionFile is not null || settings.Template || settings.Name is not null || settings.Parent is not null || settings.Level is not null || settings.Approved)
+            throw new InvalidOperationException("Descriptions, names, parents, levels and approval live in the ticket database; this workspace hasn't been migrated to it.");
 
         var file = StoryFile.Load(repo.StoriesPath);
         WarnOfDuplicates(settings, file.Tickets.Select(t => (repo.Name, t)));

@@ -31,7 +31,7 @@ app.Configure(config =>
         t.AddCommand<TicketReassignCommand>("reassign").WithDescription("Give a ticket a new ID; the old one is kept in its history and still resolves.");
         t.AddCommand<TicketVerifyCommand>("verify").WithDescription("Check a repo's tickets, links and versions are valid.");
         t.AddCommand<TicketQueueCommand>("queue").WithDescription("Open tickets in queue order, with approval and priority.");
-        t.AddCommand<TicketApproveCommand>("approve").WithDescription("Approve open tickets for work (--undo puts them back to proposed); with no IDs, list what waits for approval.");
+        t.AddCommand<TicketApproveCommand>("approve").WithDescription("Approve open tickets for work (--undo puts them back to proposed; --cascade their open part-of subtree too); with no IDs, list what waits for approval.");
         t.AddCommand<TicketRejectCommand>("reject").WithDescription("Reject an open ticket: it closes wont-do with --reason as its ref.");
         t.AddCommand<TicketPriorityCommand>("priority").WithDescription("Set a ticket's queue priority (higher runs sooner); --cascade sets it on its open part-of descendants too.");
         t.AddCommand<TicketEstimateCommand>("estimate").WithDescription("Show, set (estimate <ID> 300k) or --clear a ticket's effort estimate in tokens; --seed estimates every open ticket without one from the Orchestrator's TicketCosts medians. Within a priority the queue runs the smallest first.");

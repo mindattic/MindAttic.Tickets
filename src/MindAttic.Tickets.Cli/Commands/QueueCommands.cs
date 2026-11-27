@@ -65,6 +65,10 @@ public sealed class TicketApproveCommand : Command<TicketApproveCommand.Settings
         [CommandOption("--undo")]
         [Description("Put them back to proposed instead.")]
         public bool Undo { get; init; }
+
+        [CommandOption("--cascade")]
+        [Description("Also every open ticket part-of them, at any depth (M.TIX-T388).")]
+        public bool Cascade { get; init; }
     }
 
     public override int Execute(CommandContext context, Settings settings)
@@ -87,10 +91,8 @@ public sealed class TicketApproveCommand : Command<TicketApproveCommand.Settings
         if (!settings.Undo && ids.Where(i => db.Ticket(i)!.Value.Ticket.Status != Log.TicketRules.Open).ToList() is { Count: > 0 } shut)
             throw new InvalidOperationException($"{string.Join(", ", shut)} {(shut.Count == 1 ? "isn't" : "aren't")} open; nothing was changed.");
         foreach (var id in ids)
-        {
-            if (settings.Undo) db.Unapprove(id); else db.Approve(id);
-            Console.WriteLine($"{db.Ticket(id)!.Value.Ticket.Id} {db.QueueState(db.Ticket(id)!.Value.Ticket.Id).Approval}");
-        }
+            foreach (var changed in settings.Undo ? db.Unapprove(id, settings.Cascade) : db.Approve(id, settings.Cascade))
+                Console.WriteLine($"{changed} {db.QueueState(changed).Approval}");
         return 0;
     }
 }
