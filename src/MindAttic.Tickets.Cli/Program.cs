@@ -119,6 +119,7 @@ app.Configure(config =>
         d.AddCommand<DbCheckCommand>("check").WithDescription("Bad IDs, types, dates, dangling links and prerequisite cycles.");
         d.AddCommand<DbRenderCommand>("render").WithDescription("Rewrite each repo's generated USER_STORIES.md view from the database.");
         d.AddCommand<DbSyncCommand>("sync").WithDescription("Write the readable dump and commit (and push) the database.");
+        d.AddCommand<DbReconcileCommand>("reconcile").WithDescription("Rebuild the SQLite copy whole, check it against the server by row counts and checksums, then rebuild or reorganize fragmented indexes and update statistics (--dry-run reports only).");
         d.AddBranch("server", s =>
         {
             s.SetDescription("Where the ticket database is kept: SQL Server (its own database beside Prose's) or data/Tickets.db, with each table's rows in both.");
