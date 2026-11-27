@@ -48,7 +48,7 @@ public static partial class GitHubIntake
             var stderr = p.StandardError.ReadToEndAsync();
             if (!p.WaitForExit(GhTimeout))
             {
-                try { p.Kill(entireProcessTree: true); } catch (InvalidOperationException) { }
+                try { p.Kill(entireProcessTree: true); } catch (InvalidOperationException) { } catch (System.ComponentModel.Win32Exception) { }
                 return (-1, $"gh took over {GhTimeout.TotalSeconds:0}s; stopped it");
             }
             return (p.ExitCode, p.ExitCode == 0 ? stdout.GetAwaiter().GetResult() : stderr.GetAwaiter().GetResult());

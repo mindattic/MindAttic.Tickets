@@ -346,8 +346,7 @@ public sealed partial class StoryDocument
             while (j < lines.Count && lines[j].TrimStart().StartsWith('|'))
             {
                 var cells = StoryFile.SplitCells(lines[j]);
-                if (cells.Count < 6) break;
-                tickets.Add(new TicketRow(new Ticket(cells[0], cells[1], cells[2], cells[3], cells[4], string.Join(" | ", cells.Skip(5))), lines[j]));
+                if (cells.Count >= 6) tickets.Add(new TicketRow(new Ticket(cells[0], cells[1], cells[2], cells[3], cells[4], string.Join(" | ", cells.Skip(5))), lines[j]));
                 j++;
             }
             return j;

@@ -42,7 +42,7 @@ public static class Git
         var stderr = p.StandardError.ReadToEndAsync();
         if (!p.WaitForExit(timeout))
         {
-            try { p.Kill(entireProcessTree: true); } catch (InvalidOperationException) { }
+            try { p.Kill(entireProcessTree: true); } catch (InvalidOperationException) { } catch (System.ComponentModel.Win32Exception) { }
             return new GitResult(-1, "", $"git {string.Join(' ', args)} timed out after {timeout.TotalSeconds:0}s");
         }
         return new GitResult(p.ExitCode, stdout.GetAwaiter().GetResult(), stderr.GetAwaiter().GetResult());
