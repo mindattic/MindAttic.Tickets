@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.Text.Json;
 using MindAttic.Tickets.Data;
@@ -236,9 +237,42 @@ public sealed class TicketWorkingCommand : Command<TicketWorkingCommand.Settings
         if (settings.Clear) db.ClearWorking(settings.Id);
         else db.SetWorking(settings.Id, settings.Login, settings.Session);
         var id = db.Ticket(settings.Id)!.Value.Ticket.Id;
+        // The installed Orchestrator is the one tracking the default workspace's assignments (M.TIX-T337, M.ORCH-T1696): claiming
+        // against some other --root would claim the wrong workspace's ticket, so this only fires for the real one.
+        if (!settings.Clear && settings.Root == Workspace.DefaultRoot) OrchestratorClaim.TryClaim(id);
         var w = db.Work(id);
         Console.WriteLine(w.IsWorking ? $"{id} is being worked on {w.Login ?? "an unknown login"}{(w.Session is { } s ? $" ({s})" : "")}." : $"{id} isn't being worked.");
         return 0;
+    }
+}
+
+/// <summary>
+/// Claims a ticket with the installed Orchestrator CLI (<c>orchestrator claim &lt;ID&gt;</c>, M.ORCH-T1696) right after
+/// <c>tickets ticket working</c> records it, so a ticket a CLI starts by hand isn't re-dispatched by <c>/allocate</c> or
+/// cleared by the daemon's who-works-it sync (M.TIX-T337). Fails open: silent and harmless when the Orchestrator CLI isn't
+/// installed; <c>tickets ticket working</c> itself has already recorded the session either way, and whatever the Orchestrator
+/// CLI prints (a claim refused because another live CLI holds it, say) passes straight through to the console.
+/// </summary>
+internal static class OrchestratorClaim
+{
+    /// <summary>Set to the Orchestrator CLI's exe to use instead of the one found on PATH.</summary>
+    public const string ExeEnvVar = "MINDATTIC_ORCHESTRATOR_CLI_EXE";
+
+    public static void TryClaim(string id)
+    {
+        var exe = Environment.GetEnvironmentVariable(ExeEnvVar) is { Length: > 0 } env ? env : "orchestrator";
+        var psi = new ProcessStartInfo(exe) { UseShellExecute = false };
+        psi.ArgumentList.Add("claim");
+        psi.ArgumentList.Add(id);
+        try
+        {
+            using var p = Process.Start(psi);
+            p?.WaitForExit(10_000);
+        }
+        catch (Exception ex) when (ex is Win32Exception or InvalidOperationException)
+        {
+            // Not installed, or not on PATH here: fail open.
+        }
     }
 }
 
