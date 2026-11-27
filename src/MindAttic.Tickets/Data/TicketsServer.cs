@@ -405,6 +405,18 @@ public sealed class TicketsServer(string connectionString)
         """,
     ];
 
+    /// <summary>The indexes added to tables made before them (schema 11, M.TIX-T412): table, name, and the columns as
+    /// <c>CREATE INDEX</c> takes them.</summary>
+    internal static readonly (string Table, string Name, string Columns)[] Indexes =
+    [
+        ("ticket_events", "ticket_events_by_ticket", "(ticket_id, seq) INCLUDE (field, at)"),
+        ("ticket_events", "ticket_events_by_field", "(field, seq)"),
+        ("tickets", "tickets_by_status", "(status) INCLUDE (repo)"),
+        ("ticket_work", "ticket_work_by_login", "(login)"),
+        ("ticket_work", "ticket_work_by_assignee", "(assignee)"),
+        ("ticket_queue", "ticket_queue_by_approval", "(approval) INCLUDE (priority)"),
+    ];
+
     /// <summary>The guards, as SQLite's triggers keep them: tickets are never deleted and only their status and ref change
     /// (every such change a history row), and repo renames and ID history are never changed or deleted. T-SQL triggers fire
     /// once a statement, so each checks the rows it was given, and nothing fires for a statement that touched none.</summary>

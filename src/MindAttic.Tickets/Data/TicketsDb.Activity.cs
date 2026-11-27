@@ -49,12 +49,15 @@ public sealed partial class TicketsDb
         if (limit <= 0) return [];
         // The worker at a status change: the newest 'working' row for the ticket before it (MAX, not LIMIT, so the subquery
         // reads the same on SQL Server).
+        // At most limit rows from the server, not every event after the mark read and dropped (M.TIX-T412).
+        var top = server is null ? "" : $"TOP ({limit}) ";
         var sql =
-            "SELECT e.seq, e.ticket_id, t.repo, t.summary, e.at, e.field, e.old, e.new, " +
+            "SELECT " + top + "e.seq, e.ticket_id, t.repo, t.summary, e.at, e.field, e.old, e.new, " +
             "CASE WHEN e.field = 'status' THEN (SELECT w.new FROM ticket_events w WHERE w.seq = " +
             "(SELECT MAX(x.seq) FROM ticket_events x WHERE x.ticket_id = e.ticket_id AND x.field = 'working' AND x.seq < e.seq)) END " +
             "FROM ticket_events e JOIN tickets t ON t.id = e.ticket_id " +
-            "WHERE e.seq > $after" + (repo is null ? "" : " AND t.repo = $repo COLLATE NOCASE") + " ORDER BY e.seq DESC";
+            "WHERE e.seq > $after" + (repo is null ? "" : " AND t.repo = " + RepoNamed("$repo")) + " ORDER BY e.seq DESC" +
+            (server is null ? $" LIMIT {limit}" : "");
         (string, object?)[] args = repo is null ? [("$after", after)] : [("$after", after), ("$repo", repo.Trim())];
         var list = new List<ActivityEvent>();
         using var cmd = Command(sql, null, args);

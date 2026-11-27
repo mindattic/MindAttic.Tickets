@@ -306,6 +306,9 @@ public sealed partial class TicketsDb
         // Schema 7 (M.TIX-T75): the effort estimate, added to a table made before it. Nullable, so a system-versioned table takes
         // it as it is (SQL Server adds it to the history table too).
         Raw(connection, tx, "IF COL_LENGTH(N'ticket_queue', N'estimate') IS NULL ALTER TABLE ticket_queue ADD estimate bigint NULL");
+        // Schema 11 (M.TIX-T412): the indexes a ticket's history, the activity feed, the status reads and the queue seek on.
+        foreach (var (table, name, columns) in TicketsServer.Indexes)
+            Raw(connection, tx, $"IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'{table}') AND name = N'{name}') CREATE INDEX {name} ON {table} {columns}");
     }
 
     private static void ServerTriggers(DbConnection connection, DbTransaction? tx)

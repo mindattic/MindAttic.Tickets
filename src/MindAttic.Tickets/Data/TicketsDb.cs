@@ -41,7 +41,7 @@ public sealed partial class TicketsDb : IDisposable
     /// that changed; the file's own schema is 8's. 8 (M.TIX-T335): milestones, their repos, acceptance checks and history. 7 (M.TIX-T75): <c>ticket_queue.estimate</c>,
     /// a ticket's effort estimate in tokens. 6 (M.TIX-T137): on SQL Server, tickets, their queue state, work and links are
     /// system-versioned; the file's schema is 5's plus the estimate and the milestones.</summary>
-    public const int SchemaVersion = 10;
+    public const int SchemaVersion = 11;
     public const string RelativePath = "data/Tickets.db";
     public const string DumpRelativePath = "data/Tickets.sql";
     public const string EnvVar = "MINDATTIC_TICKETS_DB";
@@ -207,6 +207,10 @@ public sealed partial class TicketsDb : IDisposable
             CREATE TABLE IF NOT EXISTS ticket_events (
                 seq INTEGER PRIMARY KEY, ticket_id TEXT NOT NULL REFERENCES tickets(id), at TEXT NOT NULL,
                 field TEXT NOT NULL, old TEXT, new TEXT);
+            -- Schema 11 (M.TIX-T412): a ticket's history, the activity feed's worker lookup and the status history read by index.
+            CREATE INDEX IF NOT EXISTS ticket_events_by_ticket ON ticket_events (ticket_id, seq);
+            CREATE INDEX IF NOT EXISTS ticket_events_by_field ON ticket_events (field, seq);
+            CREATE INDEX IF NOT EXISTS tickets_by_status ON tickets (status, repo);
             CREATE TABLE IF NOT EXISTS links (
                 from_id TEXT NOT NULL, to_id TEXT NOT NULL,
                 kind TEXT NOT NULL CHECK (kind IN ('requires', 'related', 'follow-up-of', 'supersedes', 'duplicates', 'implements', 'part-of')),
@@ -220,6 +224,7 @@ public sealed partial class TicketsDb : IDisposable
                 priority INTEGER NOT NULL DEFAULT 0,
                 updated TEXT NOT NULL,
                 estimate INTEGER);
+            CREATE INDEX IF NOT EXISTS ticket_queue_by_approval ON ticket_queue (approval, priority);
             -- Schema 3: a repo's folder-name key can be renamed (RenameRepo); every rename is kept forever here,
             -- so the repo (and each of its tickets, via a 'repo' ticket_events row) traces back to its original name.
             CREATE TABLE IF NOT EXISTS repo_renames (
@@ -247,6 +252,8 @@ public sealed partial class TicketsDb : IDisposable
                 assignee TEXT, reserved INTEGER NOT NULL DEFAULT 0,
                 login TEXT, session TEXT, since TEXT,
                 updated TEXT NOT NULL);
+            CREATE INDEX IF NOT EXISTS ticket_work_by_login ON ticket_work (login);
+            CREATE INDEX IF NOT EXISTS ticket_work_by_assignee ON ticket_work (assignee);
             -- M.TIX-T72: comments on a ticket, append-only (never deleted; only ticket_id moves, when the ticket's ID is
             -- reassigned). No foreign key, as ticket_queue, so Import's per-repo ticket rebuild keeps them.
             CREATE TABLE IF NOT EXISTS ticket_notes (
@@ -643,14 +650,23 @@ public sealed partial class TicketsDb : IDisposable
 
     /// <summary>Tickets (with their repo name), optionally for one repo, in repo then log order.</summary>
     public IReadOnlyList<(string Repo, Ticket Ticket)> Tickets(string? repo = null) =>
-        [.. Rows("SELECT repo, id, date, type, status, summary, ref FROM tickets WHERE $r IS NULL OR repo = $r COLLATE NOCASE ORDER BY repo COLLATE NOCASE, ordinal",
+        [.. Rows("SELECT repo, id, date, type, status, summary, ref FROM tickets" + (repo is null ? "" : " WHERE repo = " + RepoNamed("$r")) +
+                 " ORDER BY repo COLLATE NOCASE, ordinal",
             r => (r.GetString(0), ReadTicket(r, 1)), ("$r", repo))];
+
+    /// <summary>The stored name of the repo parameter <paramref name="p"/> names in any case, as a subquery: the repos table is
+    /// small, and a column compared with it stays a seek where comparing that column case-insensitively would scan (M.TIX-T412).</summary>
+    internal static string RepoNamed(string p) => $"(SELECT name FROM repos WHERE name = {p} COLLATE NOCASE)";
+
+    /// <summary><paramref name="column"/> equal to the ID parameter <paramref name="p"/> as given or upper-cased: ticket IDs are
+    /// stored upper-case, and a binary-collated key compared this way stays a seek (M.TIX-T412).</summary>
+    internal static string IdIs(string column, string p) => $"{column} IN ({p}, UPPER({p}))";
 
     /// <summary>The ticket with <paramref name="id"/>, or the one a former ID was reassigned to; null if neither.</summary>
     public (string Repo, Ticket Ticket)? Ticket(string id)
     {
         (string, Ticket)? Lookup(string key) =>
-            Rows("SELECT repo, id, date, type, status, summary, ref FROM tickets WHERE id = $id COLLATE NOCASE",
+            Rows("SELECT repo, id, date, type, status, summary, ref FROM tickets WHERE " + IdIs("id", "$id"),
                 r => (r.GetString(0), ReadTicket(r, 1)), ("$id", key))
                 .Cast<(string, Ticket)?>().FirstOrDefault();
         return Lookup(id) ?? (CurrentId(id) is var current && !current.Equals(id, StringComparison.OrdinalIgnoreCase) ? Lookup(current) : null);
@@ -752,13 +768,13 @@ public sealed partial class TicketsDb : IDisposable
         var visited = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { id };
         var pending = new Queue<string>([id]);
         while (pending.TryDequeue(out var child))
-            foreach (var parentId in Rows("SELECT to_id FROM links WHERE from_id = $id COLLATE NOCASE AND kind = 'part-of'", r => r.GetString(0), ("$id", child)))
+            foreach (var parentId in Rows("SELECT to_id FROM links WHERE " + IdIs("from_id", "$id") + " AND kind = 'part-of'", r => r.GetString(0), ("$id", child)))
             {
                 if (IsMilestoneId(parentId) || !visited.Add(parentId)) continue;
                 if (Ticket(parentId)?.Ticket is not { Status: TicketRules.Open } parent || OpenChildren(parent.Id).Count > 0) continue;
                 // A continuous ticket (a standing sweep or loop) outlives any batch of its children (M.TIX-T372).
                 if (Labels(parent.Id).Contains(ContinuousLabel, StringComparer.Ordinal)) continue;
-                var anyDone = Scalar("SELECT 1 FROM links l JOIN tickets c ON c.id = l.from_id WHERE l.to_id = $id COLLATE NOCASE " +
+                var anyDone = Scalar("SELECT 1 FROM links l JOIN tickets c ON c.id = l.from_id WHERE " + IdIs("l.to_id", "$id") + " " +
                                      "AND l.kind = 'part-of' AND c.status = $s", null, ("$id", parent.Id), ("$s", TicketRules.Closed)) is not null;
                 closed.Add(CloseOne(parent, anyDone ? TicketRules.Closed : TicketRules.WontDo, ChildrenDoneRef));
                 // Which child's close rolled it up (M.TIX-T366), so undoing that close reopens it too.
@@ -769,7 +785,7 @@ public sealed partial class TicketsDb : IDisposable
 
     /// <summary>The IDs of <paramref name="id"/>'s open part-of children.</summary>
     private List<string> OpenChildren(string id) =>
-        Rows("SELECT c.id FROM links l JOIN tickets c ON c.id = l.from_id WHERE l.to_id = $id COLLATE NOCASE AND l.kind = 'part-of' " +
+        Rows("SELECT c.id FROM links l JOIN tickets c ON c.id = l.from_id WHERE " + IdIs("l.to_id", "$id") + " AND l.kind = 'part-of' " +
              "AND c.status = $s ORDER BY c.id", r => r.GetString(0), ("$id", id), ("$s", TicketRules.Open));
 
     private Ticket CloseOne(Ticket t, string status, string? reference)
@@ -885,7 +901,7 @@ public sealed partial class TicketsDb : IDisposable
 
     /// <summary>A ticket's history, oldest first.</summary>
     public IReadOnlyList<TicketEvent> History(string id) =>
-        [.. Rows("SELECT ticket_id, at, field, old, new FROM ticket_events WHERE ticket_id = $id COLLATE NOCASE ORDER BY seq",
+        [.. Rows("SELECT ticket_id, at, field, old, new FROM ticket_events WHERE " + IdIs("ticket_id", "$id") + " ORDER BY seq",
             r => new TicketEvent(r.GetString(0), r.GetString(1), r.GetString(2), r.IsDBNull(3) ? null : r.GetString(3), r.IsDBNull(4) ? null : r.GetString(4)), ("$id", id))];
 
     /// <summary>Every ticket's <c>created</c> and <c>status</c> history, oldest first: what <see cref="TicketStats"/> reads (M.TIX-T86).</summary>
@@ -1085,7 +1101,7 @@ public sealed partial class TicketsDb : IDisposable
 
     /// <summary>Every link touching <paramref name="id"/>, in either direction.</summary>
     public IReadOnlyList<Link> Links(string id) =>
-        [.. Rows("SELECT from_id, to_id, kind, note FROM links WHERE from_id = $id COLLATE NOCASE OR to_id = $id COLLATE NOCASE ORDER BY kind, from_id, to_id",
+        [.. Rows("SELECT from_id, to_id, kind, note FROM links WHERE " + IdIs("from_id", "$id") + " OR " + IdIs("to_id", "$id") + " ORDER BY kind, from_id, to_id",
             ReadLink, ("$id", id))];
 
     /// <summary>Every link in the database.</summary>

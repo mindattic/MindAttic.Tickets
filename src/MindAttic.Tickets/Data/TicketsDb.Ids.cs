@@ -141,7 +141,7 @@ public sealed partial class TicketsDb
     {
         var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { id };
         var cur = id;
-        while (Rows("SELECT new_id FROM id_history WHERE kind <> 'code' AND old_id = $o COLLATE NOCASE ORDER BY seq DESC LIMIT 1",
+        while (Rows("SELECT new_id FROM id_history WHERE " + IdIs("old_id", "$o") + " AND kind <> 'code' ORDER BY seq DESC LIMIT 1",
                    r => r.GetString(0), ("$o", cur)).FirstOrDefault() is { } next && seen.Add(next))
             cur = next;
         return cur;
