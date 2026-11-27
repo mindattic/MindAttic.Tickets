@@ -1,7 +1,8 @@
-<!-- Tickets Desktop's own controls: those MindAttic.Components.Wpf (M.COMP-T11) has no equivalent for: Combo, Check,
+<!-- Tickets Desktop's own controls: those MindAttic.Components.Wpf (M.COMP-T11) has no equivalent for: Combo
+     (MaCombo is still pending, M.COMP-T120; switch once it ships),
      RowList/RowItem (a drag-reorderable ListBox with a drop marker; the package's MaRowList is a plain ItemsControl
      with no drag support) and the Tickets grid view (GridHeader/GridRow) and Chip. Everything else (buttons, cards,
-     the focus ring, text fields, pills) comes from the package's Theme.xaml (M.TIX-T91).
+     checkboxes, the focus ring, text fields, pills) comes from the package's Theme.xaml (M.TIX-T91, M.TIX-T181).
 
      Both Theme.xaml and Colors.xaml are merged below, in that order, instead of as separate entries in App.xaml:
      merging them here, inside this dictionary, is what lets this dictionary's own styles reference their keys with a
@@ -165,34 +166,6 @@
                         <Trigger Property="IsKeyboardFocusWithin" Value="True">
                             <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource MaFocus}" />
                             <Setter TargetName="Bd" Property="BorderThickness" Value="2" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="Check" TargetType="CheckBox">
-        <Setter Property="Foreground" Value="{DynamicResource MaText}" />
-        <Setter Property="MinHeight" Value="30" />
-        <Setter Property="Cursor" Value="Hand" />
-        <Setter Property="FocusVisualStyle" Value="{StaticResource MaFocusRing}" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="CheckBox">
-                    <StackPanel Orientation="Horizontal" Background="Transparent">
-                        <Border x:Name="Box" Width="18" Height="18" CornerRadius="3" BorderThickness="1" VerticalAlignment="Center"
-                                BorderBrush="{DynamicResource FieldBorder}" Background="{DynamicResource MaSurface}">
-                            <TextBlock x:Name="Mark" Text="&#xE73E;" FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" FontSize="12" Visibility="Collapsed"
-                                       Foreground="{DynamicResource MaOnAccent}" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Border>
-                        <ContentPresenter Margin="8,0,0,0" VerticalAlignment="Center" RecognizesAccessKey="True" />
-                    </StackPanel>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="Mark" Property="Visibility" Value="Visible" />
-                            <Setter TargetName="Box" Property="Background" Value="{DynamicResource MaAccent}" />
-                            <Setter TargetName="Box" Property="BorderBrush" Value="{DynamicResource MaAccent}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
