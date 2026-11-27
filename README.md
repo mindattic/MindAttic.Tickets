@@ -1,6 +1,6 @@
 # MindAttic.Tickets
 
-A ticket engine and repo job runner for the MindAttic workspace: every repo's stories and permanent ticket log live in one SQLite database, queried, checked and maintained by a CLI and a WPF desktop app.
+A ticket engine and repo job runner for the MindAttic workspace: every repo's milestones and permanent ticket log — each ticket placed in a tree by level (epic → feature → story → task) — live in one database, a local SQL Server instance when configured with `data/Tickets.db` kept a complete copy, SQLite alone otherwise; queried, checked and maintained by a CLI and a WPF desktop app.
 
 ![C#](https://img.shields.io/badge/C%23-latest-239120) ![.NET](https://img.shields.io/badge/.NET-10-512BD4) ![Status](https://img.shields.io/badge/status-work--in--progress-orange)
 
@@ -24,7 +24,7 @@ $ tickets ticket list --status open
 
 ## Features
 
-**Stories and tickets** (every repo's, in one SQLite database: `data/Tickets.db`, with links such as `requires` between any two; each repo's `docs/USER_STORIES.md` is a generated, read-only view of it, rewritten after every change)
+**Tickets and milestones** (every repo's, in one database — a local SQL Server instance when configured (`tickets db server migrate`, M.TIX-T131), with `data/Tickets.db` kept a complete copy brought up to date after every write, or `data/Tickets.db` (SQLite) alone otherwise — with links such as `requires` between any two; each repo's `docs/USER_STORIES.md` is a generated, read-only view of it, rewritten after every change)
 - `ticket new` appends a row with the next free `CODE-T<n>` ID and prints it. It warns (on stderr, still filing) of open tickets in the repo whose summary reads alike, the same check Tickets Desktop's new-ticket dialog shows as you type. `--template` starts the description from the type's template (fix: symptom, cause, test; feature: story, acceptance; `ticket template TYPE` prints it), and the Desktop dialog starts from it too, swapping it as the type changes while it's untouched; an untouched template is never filed as a description.
 - `ticket close` moves a ticket to `closed` or `wont-do` and can set its Ref.
 - `ticket reopen <ID> [--reason TEXT] [--with-parents]` (M.TIX-T372) moves a closed or wont-do ticket back to open, recorded in its history (a `status` change plus a `reopen` event with the reason). A ticket a roll-up closed gets back the Ref it had before `children done`. `--with-parents` also reopens the part-of ancestors its close rolled up; without it they stay closed and reopen one by one. A ticket labelled `continuous` (a standing sweep or loop) is never rolled up when its last open child closes; an explicit `ticket close` still closes it.
@@ -35,6 +35,7 @@ $ tickets ticket list --status open
 - Milestones (M.TIX-T335): a milestone is a checkable point on the way to a goal, across one or more repos: a name, a goal, its repos, an order (lower first) and a state (`planned` → `active` → `accepting` → `reached`, or `dropped`), with an ID of its own (`MS-1`, never a ticket, story or epic ID). `milestone new --name --goal --repo --order` adds one, `milestone list` and `milestone show <ID>` read them (`--json` too: state, order, activation time, member tickets, checks), `milestone activate` makes a planned one active, `milestone accept` moves an active one into acceptance and `--reached` accepts it as reached (who and when recorded; refused while any acceptance check is fail or unknown, unless `--force`), `milestone drop` drops one, `milestone edit` changes its name, goal, order or repos. Tickets and epics join one with an ordinary `part-of` link (`milestone add <ID> <TICKET>...` / `remove`, or `ticket link X part-of MS-1`), so a milestone is the top of a part-of tree: an epic's children come with it, `milestone show` lists the member tickets with their status and a done/total count, and `ticket show` names the milestone a ticket is on, itself or through its parent. Acceptance checks are evidence, not ticket counts: `milestone check add <ID> --kind build|exists|harness|signoff --description … [--repo …] [--target …]`, `check list`, `check result <ID> <N> pass|fail|unknown --evidence …` and `check remove` store them and what each last came to; running them is the Orchestrator's job. Every change is history (`milestone_events`). The library has the same: `TicketsDb.Milestones()`, `MilestoneMembers`, `MilestoneChecks`, `MilestonesOf`, `IsOnActiveMilestone`, `ActiveMilestoneTickets`.
 - Milestone scope lock (M.TIX-T347): once a milestone is `active` (or `accepting`) its scope is locked. `milestone add` (and `ticket link X part-of MS-1`) no longer makes a member: the ticket or epic waits as a pending addition until the owner runs `milestone approve <ID> <ITEM> --by <WHO>` (it joins, and the history says who approved it) or `milestone decline <ID> <ITEM> --by <WHO> [--reason …]`; `milestone add … --approved-by <WHO>` is the owner's one-step add. A planned milestone still takes members directly, and one that's waiting is on no milestone (`milestone show`, `ticket show` and the queue don't count it). `milestone show` lists the pending additions and says how much the milestone has grown since activation ("grown by N ticket(s) since activation, M waiting for approval"); `milestone list` has it in a `Grown` column, and `--json` carries `pending`, `pendingCount` and `growth` (`atActivation`, `added`, `removed`, `now`, `pending`, `pendingTickets`). The library: `AddToMilestone` (which says what joined and what waits), `MilestonePending`, `ApproveMilestoneAddition`, `DeclineMilestoneAddition`, `MilestoneGrowth`.
 - Friendly names (M.TIX-T313): every ticket may carry a short (2-6 word) name beside its ID, summary and description (`ticket new --name`, `ticket correct <ID> --name`, recorded in its history). `ticket list`, `queue`, `show`, `graph`, Tickets Desktop and `view` show `ID · Name`, falling back to the summary cut short while a ticket has none; `--json` carries `name` (and the queue a ready-made `caption`). `ticket names` is the one-time backfill, propose then confirm: it proposes a name for every open ticket without one (`--output FILE` writes them tab-separated to review and edit), and only `--apply FILE` writes them.
+- The planning tree (M.TIX-T362, M.TIX-T363, M.TIX-T389): where a ticket sits is its one `level:` label — `epic`, `feature`, `story` or `task` — set by `ticket new --level` or `ticket level <ID> epic|feature|story|task` (replaces any other level label; an epic also carries the plain `epic` label). `ticket new --parent <ID>` links the new ticket `part-of` another, inheriting its priority and starting proposed unless `--approved`; `ticket split <ID> --task "..."` (repeatable, or `--file PATH`) breaks a ticket into `level:task` children part-of it, of its type, approved like the parent, `--sequential` chaining `requires` between them and `--name-prefix` naming them. `ticket orphans` lists open tickets (epics aside) with no epic ancestor in their own repo: work no epic accounts for. `ticket new --source auto` labels a ticket an agent filed unasked (`source:auto`).
 - `ticket show` prints a ticket end to end: its row, queue state, assignee, reservation, the session working it, links, history and its commits: those whose subject names it, each with its GitHub link, as the Desktop detail pane lists them too (`--diff` adds their full diffs); `--versions` lists every version of it (on SQL Server, where tickets, their approval and priority, their work and links are system-versioned temporal tables, every save is kept, never pruned; on the SQLite file, versions are worked back from its history) and `--version N` shows one, its changes marked. `ticket link` connects two tickets or stories (`requires` is a prerequisite; a cycle is refused).
 - `ticket list` shows tickets across the workspace, filtered by repo, status, type or date, as a table or `--json`. `--query` takes the ticket query language: `repo:` (a name or a ticket code), `type:`, `status:`, `label:`, `approval:` and free text (matched against ID, summary, ref and repo; quote it to keep spaces), every term required; commas give alternatives (`status:open,wont-do`), a leading `-` negates (`--query=-type:chore`), `*` is a wildcard in repo and label. An unknown field or value is refused, saying what's allowed. `--format csv|md` exports the filtered list as CSV (RFC 4180, a leading `=`/`+`/`-`/`@` defused) or a markdown table, and `--output FILE` writes it to a file (UTF-8; a `.csv` or `.md` name picks the format).
 - `ticket stats` reports ticket metrics from `ticket_events`: per day, week (Monday to Sunday) or month in UTC (`--by`, `--periods N`), the tickets filed, closed and closed wont-do and those open at each period's end; cycle time from filing to closing (median, mean, 85th percentile) overall and by type; and the tickets open at each period's end by repo and by type. `--repo`/`--type` narrow it, `--json` prints it. A reopen takes back the closing before it; a ticket filed already closed counts as throughput but not cycle time; one imported already closed (no history) counts nowhere.
@@ -43,8 +44,7 @@ $ tickets ticket list --status open
 - `ticket queue` lists a repo's (or every repo's) open tickets in priority order with their approval state; `ticket approve`/`ticket reject --reason` move a ticket through review (`--undo` puts an approval back to proposed; a reject closes the ticket wont-do with the reason as its ref); `ticket priority` sets where a ticket sits in that order and `ticket bump` moves it up or down. `ticket estimate` keeps each ticket's effort estimate in tokens (`ticket_queue.estimate`, editable in Tickets Desktop too); within one priority the queue runs the smallest estimate first, and `ticket estimate --seed` fills in open tickets without one from the median cost of finished tickets of the same type and repo in the Orchestrator's TicketCosts.
 - The ticket functions the Orchestrator used to own (M.TIX-T134; the Orchestrator now only runs the work and reads these from the database): `ticket assign <ID> <email>` assigns a ticket to a member's login (`--unassign`, `--redelegate`), `ticket block <ID> --by X` makes it wait for others (`--clear`), `ticket reserve <ID> 2M` sets tokens aside for it (0 releases), `ticket working <ID> --login --session` records the session working it (`--clear`), `ticket hygiene` lists closed tickets that may not be done, and `ticket intake` files GitHub issues labelled `orchestrator` and CI failures on main as tickets (`--dry-run`).
 - `codes check` finds duplicate project codes, repos without a ticket log, and malformed tables.
-- `story new`/`edit`/`status`/`list`/`show`, `epic new`, `backlog add` add and edit a repo's stories, epics and priority backlog in the database.
-- `db migrate`, `export`, `check`, `render`, `sync` import a repo's file once, rebuild it from the database, validate the database, rewrite a stale view, and commit (and push) `data/Tickets.db` and its readable dump `data/Tickets.sql`; a sync's commit names the tickets whose rows or history changed since the last one (or `--ticket ID`), and when a change has nothing to name (a story, epic or backlog edit alone) it opens and closes a chore ticket to carry it instead, so a sync with something to commit always names a ticket.
+- `db migrate`, `export`, `check`, `render`, `sync` import a repo's file once, rebuild it from the database, validate the database, rewrite a stale view, and commit (and push) `data/Tickets.db` and its readable dump `data/Tickets.sql`; a sync's commit names the tickets whose rows or history changed since the last one (or `--ticket ID`), and when a change has nothing to name it opens and closes a chore ticket to carry it instead, so a sync with something to commit always names a ticket. `db server` (M.TIX-T131) says where the database is kept and each table's row counts on both sides; `db server migrate` moves it from `data/Tickets.db` onto a local SQL Server instance (`--server`, `--database` or `--connection`; the database is created), after which `data/Tickets.db` is kept a complete copy, brought up to date after every write (by the rows that changed where the server tracks them, M.TIX-T344, else each table the write touched rewritten whole); `db server back` moves it back to SQLite alone. On SQL Server, tickets, their approval and priority, and links are system-versioned: every save is kept, read back with `ticket show <ID> --versions`. `db reconcile` rebuilds the SQLite copy whole, checks it against the server by row counts and checksums, then rebuilds or reorganizes fragmented indexes and updates statistics.
 - `view` opens a read-only page of every repo's tickets and stories, with filters, in MindAttic.Browser (or the default browser). It's a snapshot; run it again to refresh.
 
 **Tickets Desktop** (`src/MindAttic.Tickets.Desktop`, a WPF app built on MindAttic.Components.Wpf, matching the Orchestrator's look)
@@ -115,19 +115,34 @@ tickets ticket working <CODE-Tn> [--login <email>] [--session <id>] | --clear
 tickets ticket note <CODE-Tn> "<markdown>" [--author <name>]   # append-only comment (- reads stdin); show lists them
 tickets ticket hygiene [--repo X] [--json]
 tickets ticket intake  [--repo X] [--dry-run]
+tickets ticket level   <CODE-Tn> [epic|feature|story|task]   # show, or set, replacing any other level: label
+tickets ticket split   <CODE-Tn> --task "..." [--task "..." ...] | --file PATH [--sequential] [--name-prefix X]
+tickets ticket orphans [--repo X] [--json]   # open tickets, epics aside, with no epic ancestor in their own repo
 tickets codes check
-tickets story  list    [--repo X] [--status done|partial|planned] [--json]
-tickets story  show    <CODE-US-...>
-tickets story  new     [--repo X] --epic KEY --text "..." [--status planned|partial|done]
-tickets story  edit    <CODE-US-...> --text "..." [--repo X]
-tickets story  status  <CODE-US-...> done|partial|planned [--repo X]
-tickets epic   new     [--repo X] --key KEY --title "..."
-tickets backlog add    [--repo X] --text "..."
+tickets milestone new      --name "..." --goal "..." --repo X [--repo Y ...] [--order N]
+tickets milestone list     [--state planned|active|accepting|reached|dropped] [--repo X] [--json]
+tickets milestone show     <MS-n> [--json]
+tickets milestone activate <MS-n>
+tickets milestone accept   <MS-n> [--reached --by WHO] [--force]
+tickets milestone drop     <MS-n> [--reason "..."]
+tickets milestone edit     <MS-n> [--name "..."] [--goal "..."] [--order N] [--repo X ...]
+tickets milestone add      <MS-n> <CODE-Tn> ... [--approved-by WHO]
+tickets milestone approve  <MS-n> <ITEM> --by WHO
+tickets milestone decline  <MS-n> <ITEM> --by WHO [--reason "..."]
+tickets milestone remove   <MS-n> <CODE-Tn> ...
+tickets milestone check add    <MS-n> --kind build|exists|harness|signoff --description "..." [--repo X] [--target "..."]
+tickets milestone check list   <MS-n> [--json]
+tickets milestone check result <MS-n> <N> pass|fail|unknown [--evidence "..."]
+tickets milestone check remove <MS-n> <N>
 tickets db migrate     [--cutover] [--db FILE]
 tickets db export      [--repo X] [--out FILE]
 tickets db check       [--fix]
 tickets db render      [--repo X]
 tickets db sync        [--no-push] [--ticket ID]
+tickets db reconcile   [--dry-run]
+tickets db server [status]   # where the database is kept, and each table's row counts on both sides
+tickets db server migrate [--server NAME] [--database NAME] [--connection STRING] [--replace]
+tickets db server back
 tickets view [--repo X] [--out DIR] [--no-open]
 tickets repos status [--json]
 tickets repos prune  [--apply] [--only A,B] [--override A,B]
@@ -145,21 +160,23 @@ Every command takes `--root <DIR>` (default `D:\Projects\MindAttic`). `--repo` d
    tickets CLI  ·  Tickets Desktop (WPF)  ·  Launcher menu  ·  /commit
                  |
         MindAttic.Tickets (library)
-           |                              |
-   Data/ (SQLite, TicketsDb)       Repos/ (git + GitHub)
-           |                              |
-  data/Tickets.db, data/Tickets.sql,    git -C <repo>, api.github.com/user/repos
+           |                                       |
+   Data/ (TicketsDb: SQL Server or SQLite)   Repos/ (git + GitHub)
+           |                                       |
+  SQL Server database (store of record, when configured),    git -C <repo>, api.github.com/user/repos
+  data/Tickets.db (its copy, or the store itself), data/Tickets.sql,
   <repo>/docs/USER_STORIES.md (generated view)
 ```
 
-Every repo's stories, epics, backlog and tickets (and the links between them) live in `data/Tickets.db`, committed to this repo alongside a readable SQL dump (`data/Tickets.sql`) so changes show up as text diffs. A repo's `docs/USER_STORIES.md` is rewritten from the database after every change that touches it (and by `tickets db render`/`sync`); it's never read back in, so a hand edit is only ever a mistake `db check` flags. The GitHub token comes from MindAttic.Vault (bucket `GitHub`, key `github`), the same one the Launcher's roster filter uses. The library has no package dependencies: the CLI (and the Launcher) read the token and pass it in.
+Every repo's milestones, tickets (placed in a tree by level and `part-of` links) and the links between them live in one database: a local SQL Server instance when configured (`tickets db server migrate`, M.TIX-T131) — tickets, their approval and priority, and links kept system-versioned there, so `ticket show <ID> --versions` can read any past state — or `data/Tickets.db` (SQLite) alone otherwise. Either way `data/Tickets.db` is committed to this repo alongside a readable SQL dump (`data/Tickets.sql`) so changes show up as text diffs; on SQL Server it's kept a complete copy, brought up to date after every write (by the rows that changed where the server tracks them, else each table the write touched rewritten whole), so git and the commit-msg hook always have something to read. A repo's `docs/USER_STORIES.md` is rewritten from the database after every change that touches it (and by `tickets db render`/`sync`); it's never read back in, so a hand edit is only ever a mistake `db check` flags. The GitHub token comes from MindAttic.Vault (bucket `GitHub`, key `github`), the same one the Launcher's roster filter uses; the CLI (and the Launcher) read it and pass it in.
 
 ## Project layout
 
 ```text
 src/MindAttic.Tickets/            library (packed to C:\LocalNuGet)
-  Data/      TicketsDb (schema, import/export, tickets, stories, links, history, the ticket queue, sync-commit subjects)
-  Stories/   StoryDocument (parses a USER_STORIES.md into ordered blocks)
+  Data/      TicketsDb (schema, tickets with their level tree and milestones, links, history, the ticket queue,
+             sync-commit subjects, SQL Server or SQLite, M.TIX-T131)
+  Stories/   StoryDocument (parses a USER_STORIES.md into ordered blocks; the legacy story/epic/backlog import path)
   Tickets/   Ticket, TicketRules, StoryFile, WorkspaceTickets (the markdown fallback, pre-migration)
   Repos/     RepoStatus, GitHubRepoIndex, DependencyScan, PrunePlanner
   Git.cs, Workspace.cs
@@ -189,12 +206,12 @@ and Start-menu shortcuts, with `powershell -File run.ps1 -Redeploy` (add `-RunRe
 ## Limitations
 
 - Windows-first: the default root is `D:\Projects\MindAttic`, the CLI is built and tested on Windows, and Tickets Desktop (WPF, `net10.0-windows`) only runs on Windows at all.
-- Output piped or redirected still carries ANSI color codes in places and doesn't yet honor `NO_COLOR`; `story list` wraps rather than truncating in a narrow terminal. See the Priority backlog in [docs/USER_STORIES.md](docs/USER_STORIES.md) for these and other open gaps (restoring the db from its dump, keeping `data/Tickets.db` out of ordinary feature commits, concurrent writers).
+- Output piped or redirected still carries ANSI color codes in places and doesn't yet honor `NO_COLOR`. See the Priority backlog in [docs/USER_STORIES.md](docs/USER_STORIES.md) for these and other open gaps (restoring the db from its dump, keeping `data/Tickets.db` out of ordinary feature commits, concurrent writers on SQLite alone).
 
 ## Documentation
 
 - [docs/BIBLE.md](docs/BIBLE.md): what this project is and isn't, and its laws.
-- [docs/USER_STORIES.md](docs/USER_STORIES.md): stories with their tests, the backlog, and this repo's own ticket log.
+- [docs/USER_STORIES.md](docs/USER_STORIES.md): this repo's own ticket log and generated story view, with the backlog.
 - [docs/AMENDMENTS.md](docs/AMENDMENTS.md): pending decisions.
 - [docs/VIEWER.md](docs/VIEWER.md): how `tickets view` works and why it's a static snapshot.
 - [AGENTS.md](AGENTS.md): agent instructions.

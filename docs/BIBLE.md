@@ -4,7 +4,7 @@ project: MindAttic.Tickets
 code: M.TIX
 layer: bible
 status: living
-updated: 2026-10-19
+updated: 2026-11-27
 ---
 
 # MindAttic.Tickets — Project Bible
@@ -13,8 +13,11 @@ updated: 2026-10-19
 
 ## 1. The one sentence {#M.TIX-§1}
 MindAttic.Tickets is the workspace's ticket engine and repo job runner: a .NET library plus a
-`tickets` CLI that keeps every repo's stories and permanent ticket log in one SQLite database
-(`data/Tickets.db`) and runs workspace-wide jobs (status, prune, rollout) safely across every
+`tickets` CLI that keeps every repo's milestones and permanent ticket log — each ticket placed in
+a tree by level (`epic` → `feature` → `story` → `task`) and `part-of` links — in one database: a
+local SQL Server instance when configured (`tickets db server migrate`, M.TIX-T131), with
+`data/Tickets.db` kept a complete, git-committed copy; SQLite alone (`data/Tickets.db` is then the
+store) otherwise. It also runs workspace-wide jobs (status, prune, rollout) safely across every
 repo under `D:\Projects\MindAttic`.
 
 ## 2. The product promise {#M.TIX-§2}
@@ -28,15 +31,20 @@ repo under `D:\Projects\MindAttic`.
   overridden.
 
 ## 3. What it is NOT {#M.TIX-§3}
-- NOT a hosted tracker or a server. The store is one SQLite file in this repo (`data/Tickets.db`),
-  committed with a readable dump (`data/Tickets.sql`); there is no second copy to fall out of sync.
+- NOT a hosted tracker. The store of record is either `data/Tickets.db` (SQLite, the default) or a
+  local SQL Server database beside it (`tickets db server migrate`, M.TIX-T131); either way
+  `data/Tickets.db` is committed to this repo with a readable dump (`data/Tickets.sql`), and on SQL
+  Server it's kept a complete copy, brought up to date after every write, so there's never a copy
+  that needs reconciling by hand.
 - NOT an agent and NOT an LLM client. No code path calls an LLM SDK or API.
 - NOT the Launcher. MindAttic.Launcher launches agent tabs and orchestrates; it calls this library
   as one front door ([HOUSE-LAW-6](../../MindAttic.HouseRules.md#HOUSE-LAW-6)). This repo owns
   tickets and workspace jobs.
 - NOT a git client for commits. `/commit` commits; it calls `tickets ticket` to log the work.
-- NOT a free-form document editor. Stories (`CODE-US-…`), epics and backlog items are edited through the CLI
-  (`story new`/`edit`/`status`, `epic new`, `backlog add`), which keeps the database and each view in step.
+- NOT a free-form document editor. A ticket's place in the plan is its level (`ticket level <ID>
+  epic|feature|story|task`) and its `part-of` links (`ticket new --parent`, `ticket split`);
+  milestones group ticket trees toward a goal (`milestone new`/`add`). Edited only through the
+  CLI, which keeps the database and each generated view in step.
 
 ## 4. Architecture canon {#M.TIX-§4}
 ```
@@ -44,12 +52,13 @@ repo under `D:\Projects\MindAttic`.
                  |                                                         |
                  +-------------------- MindAttic.Tickets (library) -------+
                                    |                       |
-                       Data/ (SQLite, TicketsDb)    Repos/ (git + GitHub)
-                       Tickets/, Stories/ model       RepoStatus, GitHubRepoIndex,
-                       types read/written by it       DependencyScan, PrunePlanner
+                 Data/ (TicketsDb: SQL Server      Repos/ (git + GitHub)
+                 or SQLite, M.TIX-T131)             RepoStatus, GitHubRepoIndex,
+                 Log/ Ticket, levels, milestones     DependencyScan, PrunePlanner
                                    |                       |
-                  data/Tickets.db, data/Tickets.sql,  git -C <repo>, api.github.com
-                  <repo>/docs/USER_STORIES.md (generated view, `tickets db render`)
+   SQL Server database (store of record, when configured),  git -C <repo>, api.github.com
+   data/Tickets.db (its copy, or the store itself), data/Tickets.sql,
+   <repo>/docs/USER_STORIES.md (generated view, `tickets db render`)
 ```
 ### 4.1 Projects
 - `src/MindAttic.Tickets` — the library (net10.0), packed to `C:\LocalNuGet`.
@@ -60,13 +69,20 @@ repo under `D:\Projects\MindAttic`.
 
 ### 4.2 Domain model (nouns)
 - **Repo** — a git repo directly under the workspace root (`Workspace.cs`).
-- **TicketsDb** — the database connection and schema: repos, epics, stories, backlog items,
-  tickets, links and ticket history (`Data/TicketsDb.cs`).
+- **TicketsDb** — the database connection and schema: repos, tickets, their levels and labels,
+  links, milestones and ticket history, on SQL Server or SQLite (`Data/TicketsDb.cs`,
+  `Data/TicketsDb.Server.cs`, `Data/TicketsServer.cs`).
 - **Ticket** — one row: ID, Date, Type, Status, Summary, Ref (`Log/Ticket.cs`).
-- **StoryDocument / StoryFile** — a `docs/USER_STORIES.md` parsed into ordered blocks, used only
-  to import a file into the database and to render its generated view back out
-  (`Stories/StoryDocument.cs`, `Log/StoryFile.cs`, the markdown-only fallback for a workspace
-  that isn't migrated yet).
+- **Ticket level** — where a ticket sits in the planning tree, kept as its one `level:<x>` label
+  (`epic` → `feature` → `story` → `task`) plus `part-of` links to its parent; an epic also carries
+  the plain `epic` label (`Data/TicketsDb.Level.cs`, M.TIX-T362).
+- **Milestone** — a checkable point on the way to a goal across one or more repos: a goal, repos,
+  an order, a state (`planned` → `active` → `accepting` → `reached`, or `dropped`) and its own
+  `MS-n` ID; tickets and epics join one with an ordinary `part-of` link (M.TIX-T335).
+- **StoryDocument / StoryFile** — parses a repo's generated `docs/USER_STORIES.md` back into
+  ordered blocks so `tickets db migrate` can import a workspace not yet in the database; stories,
+  epics and backlog items are the legacy planning rows it reads, being retired in favor of the
+  ticket tree (`Stories/StoryDocument.cs`, `Log/StoryFile.cs`).
 - **RepoStatus** — what a repo holds only locally (`Repos/RepoStatus.cs`).
 - **GitHubRepoInfo** — archived flag and topics for a repo (`Repos/GitHubRepoIndex.cs`).
 - **PruneCandidate / PruneBlocker** — a repo that no longer belongs, and why it can't simply go
@@ -80,8 +96,13 @@ repo under `D:\Projects\MindAttic`.
   other sanctioned exception. The old name is kept forever in `repo_renames`, and each moved ticket
   gets a 'repo' `ticket_events` row, so the repo and every ticket trace back to their original name;
   a stale `--repo <old name>` keeps resolving through that history.
-- `TicketsDb.AddStory` / `EditStory` / `SetStoryStatus`, `AddEpic`, `AddBacklogItem` — edit a
-  repo's stories, epics and backlog directly in the database.
+- `TicketsDb.SetLevel` / `Orphans` — set a ticket's one `level:` label, and list open tickets with
+  no epic ancestor in their own repo (M.TIX-T362, M.TIX-T389).
+- `TicketsDb.Split` — break a ticket into `level:task` children `part-of` it, approved like the
+  parent, optionally chained by `requires` (M.TIX-T363).
+- `TicketsDb.Milestones` / `AddToMilestone` / `MilestoneChecks` / `MilestonesOf` — milestones,
+  their member tickets and acceptance checks, and the scope-lock approval queue on an active one
+  (M.TIX-T335, M.TIX-T347).
 - `TicketsDb.AddLink` / `RemoveLink` / `Requires` — links between any two tickets or stories
   (`requires` is a prerequisite; a `requires` cycle is refused).
 - `TicketsDb.Render` / `StaleViews` / `Export` — rewrite a repo's generated `docs/USER_STORIES.md`
@@ -108,8 +129,11 @@ Vault), [HOUSE-LAW-6](../../MindAttic.HouseRules.md#HOUSE-LAW-6) (one engine; CL
 story cites a test).
 
 ### {#M.TIX-LAW-1} The ticket database is the only store.
-Every repo's stories, epics, backlog and tickets, and the links between them, live in
-`data/Tickets.db` and nowhere else (amended 2026-10-15 by M.TIX-T20; markdown was the store before). A
+Every repo's milestones, tickets (placed in a tree by level and `part-of` links) and the links
+between them live in the ticket database and nowhere else (amended 2026-10-15 by M.TIX-T20;
+markdown was the store before). The database is `data/Tickets.db` (SQLite) by default, or a local
+SQL Server database once migrated (`tickets db server migrate`; amended 2026-10-22 by M.TIX-T131),
+with `data/Tickets.db` then kept a complete copy, brought up to date after every write. A
 repo's `docs/USER_STORIES.md` is a generated, read-only view (`tickets db render`); `db check` flags a hand edit.
 
 ### {#M.TIX-LAW-2} Ticket rows are append-only.
@@ -161,6 +185,10 @@ temp directories in tests before it runs on the real workspace.
 - **Workspace root** — `D:\Projects\MindAttic`, the parent of every repo (`--root` overrides).
 - **Ticket log** — a repo's tickets in the database, shown as the `## Tickets` table at the end of
   its generated `docs/USER_STORIES.md` view.
+- **Level** — where a ticket sits in the planning tree: `epic`, `feature`, `story` or `task`, kept
+  as its one `level:` label (`ticket level`).
+- **Milestone** — a checkable point on the way to a goal across one or more repos, with its own
+  `MS-n` ID (never a ticket ID); tickets and epics join one with a `part-of` link.
 - **Project code** — the `code:` front-matter value that prefixes ticket IDs (`M.LNCH-T4`).
 - **Local-only work** — anything a folder delete would lose: uncommitted, unpushed or stashed work,
   or ignored files that no build regenerates.
