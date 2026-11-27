@@ -120,6 +120,7 @@ app.Configure(config =>
         d.AddCommand<DbRenderCommand>("render").WithDescription("Rewrite each repo's generated USER_STORIES.md view from the database.");
         d.AddCommand<DbSyncCommand>("sync").WithDescription("Write the readable dump and commit (and push) the database.");
         d.AddCommand<DbReconcileCommand>("reconcile").WithDescription("Rebuild the SQLite copy whole, check it against the server by row counts and checksums, then rebuild or reorganize fragmented indexes and update statistics (--dry-run reports only).");
+        d.AddCommand<DbExportLegacyCommand>("export-legacy").WithDescription("Every repo's frozen stories, epics, backlog items, blocks and backlog links to data/legacy-planning.sql and a JSON copy, checked against the live tables' row counts.");
         d.AddBranch("server", s =>
         {
             s.SetDescription("Where the ticket database is kept: SQL Server (its own database beside Prose's) or data/Tickets.db, with each table's rows in both.");
