@@ -679,8 +679,11 @@ public sealed class StoryStatusCommand : Command<StoryStatusCommand.Settings>
 
     public override int Execute(CommandContext context, Settings settings)
     {
-        Console.Error.WriteLine("Story writes are frozen: new planning goes through ticket levels now. File it with 'tickets ticket new --level story' instead.");
-        return 1;
+        using var db = Db.Open(settings);
+        var n = db.SetStoryStatus(settings.Id, settings.Status, settings.Repo);
+        Db.Rerender(db, settings);
+        Console.WriteLine($"{settings.Id} {settings.Status}{(n > 1 ? $" ({n} stories with that ID)" : "")}");
+        return 0;
     }
 }
 
@@ -702,8 +705,11 @@ public sealed class StoryNewCommand : Command<StoryNewCommand.Settings>
 
     public override int Execute(CommandContext context, Settings settings)
     {
-        Console.Error.WriteLine("Story writes are frozen: new planning goes through ticket levels now. File it with 'tickets ticket new --level story' instead.");
-        return 1;
+        using var db = Db.Open(settings);
+        var id = db.AddStory(settings.ResolveRepo().Name, settings.Epic, settings.Text, settings.Status);
+        Db.Rerender(db, settings);
+        Console.WriteLine(id);
+        return 0;
     }
 }
 
@@ -724,8 +730,11 @@ public sealed class StoryEditCommand : Command<StoryEditCommand.Settings>
 
     public override int Execute(CommandContext context, Settings settings)
     {
-        Console.Error.WriteLine("Story writes are frozen: new planning goes through ticket levels now. File it with 'tickets ticket new --level story' instead.");
-        return 1;
+        using var db = Db.Open(settings);
+        db.EditStory(settings.Id, settings.Text, settings.Repo);
+        Db.Rerender(db, settings);
+        Console.WriteLine($"{settings.Id} updated");
+        return 0;
     }
 }
 
@@ -743,8 +752,11 @@ public sealed class EpicNewCommand : Command<EpicNewCommand.Settings>
 
     public override int Execute(CommandContext context, Settings settings)
     {
-        Console.Error.WriteLine("Epic writes are frozen: new planning goes through ticket levels now. File it with 'tickets ticket new --level epic' instead.");
-        return 1;
+        using var db = Db.Open(settings);
+        db.AddEpic(settings.ResolveRepo().Name, settings.Key, settings.Title);
+        Db.Rerender(db, settings);
+        Console.WriteLine($"Epic {settings.Key} added");
+        return 0;
     }
 }
 
@@ -758,7 +770,10 @@ public sealed class BacklogAddCommand : Command<BacklogAddCommand.Settings>
 
     public override int Execute(CommandContext context, Settings settings)
     {
-        Console.Error.WriteLine("Backlog writes are frozen: new planning goes through ticket levels now. File it with 'tickets ticket new --level' instead.");
-        return 1;
+        using var db = Db.Open(settings);
+        db.AddBacklogItem(settings.ResolveRepo().Name, settings.Text);
+        Db.Rerender(db, settings);
+        Console.WriteLine("added to the priority backlog");
+        return 0;
     }
 }

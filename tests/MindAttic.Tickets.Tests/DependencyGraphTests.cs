@@ -75,4 +75,58 @@ public sealed class DependencyGraphTests
         Assert.That(g.IsEmpty, Is.True);
         Assert.That(g.TextLines(), Is.EqualTo(new[] { "A-T1, open: a-t1", "Waits for nothing.", "Nothing waits for it." }));
     }
+
+    private static Link PartOf(string child, string parent) => new(child, parent, "part-of", null);
+
+    [Test]
+    public void Execution_order_steps_an_epics_children_by_the_requires_links_between_them()
+    {
+        // E-T1's children C-T1, C-T2, C-T3; C-T2 waits for C-T1, C-T3 waits for C-T2. C-T4 is unrelated (no requires link).
+        var tickets = new[] { T("E-T1"), T("C-T1"), T("C-T2"), T("C-T3"), T("C-T4") };
+        var links = new[]
+        {
+            PartOf("C-T1", "E-T1"), PartOf("C-T2", "E-T1"), PartOf("C-T3", "E-T1"), PartOf("C-T4", "E-T1"),
+            Requires("C-T2", "C-T1"), Requires("C-T3", "C-T2"),
+        };
+        var g = DependencyGraph.Build("E-T1", tickets, links);
+
+        Assert.That(g.ExecutionOrder.Select(step => step.Select(n => n.Id)), Is.EqualTo(new[]
+        {
+            new[] { "C-T1", "C-T4" }, new[] { "C-T2" }, new[] { "C-T3" },
+        }));
+        Assert.That(g.ExecutionOrder.SelectMany(s => s).Where(n => n.Blocking).Select(n => n.Id), Is.EqualTo(new[] { "C-T1", "C-T2" }));
+        Assert.That(g.ExecutionOrderLines(), Is.EqualTo(new[]
+        {
+            "Step 1:", "  C-T1, open, blocking: c-t1", "  C-T4, open: c-t4",
+            "Step 2:", "  C-T2, open, blocking: c-t2",
+            "Step 3:", "  C-T3, open: c-t3",
+        }));
+    }
+
+    [Test]
+    public void A_closed_prerequisite_still_orders_its_step_but_doesnt_block()
+    {
+        var g = DependencyGraph.Build("E-T1", [T("E-T1"), T("C-T1", "closed"), T("C-T2")],
+            [PartOf("C-T1", "E-T1"), PartOf("C-T2", "E-T1"), Requires("C-T2", "C-T1")]);
+
+        Assert.That(g.ExecutionOrder.Select(step => step.Select(n => n.Id)), Is.EqualTo(new[] { new[] { "C-T1" }, new[] { "C-T2" } }));
+        Assert.That(g.ExecutionOrder.SelectMany(s => s).Any(n => n.Blocking), Is.False);
+    }
+
+    [Test]
+    public void A_requires_link_outside_the_epic_is_ignored_for_execution_order()
+    {
+        var g = DependencyGraph.Build("E-T1", [T("E-T1"), T("C-T1"), T("X-T1")],
+            [PartOf("C-T1", "E-T1"), Requires("C-T1", "X-T1")]);
+
+        Assert.That(g.ExecutionOrder.Select(step => step.Select(n => n.Id)), Is.EqualTo(new[] { new[] { "C-T1" } }));
+    }
+
+    [Test]
+    public void No_children_is_an_empty_execution_order()
+    {
+        var g = DependencyGraph.Build("A-T1", [T("A-T1")], []);
+        Assert.That(g.ExecutionOrder, Is.Empty);
+        Assert.That(g.ExecutionOrderLines(), Is.Empty);
+    }
 }

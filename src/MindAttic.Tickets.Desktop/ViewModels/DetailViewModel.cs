@@ -266,8 +266,6 @@ public sealed class DetailViewModel : ObservableObject
         {
             if (Graph.IsEmpty) return [];
             static string Steps(int n) => n == 1 ? "" : $", {n} steps";
-            GraphChip Chip(DependencyNode n, bool upstream) =>
-                new(n.Id, n.StateText(upstream), n.Blocking, n.IsOpen, IsSelf: false, n.Summary ?? "");
             var rows = new List<GraphRow>();
             rows.AddRange(DependencyGraph.Layers(Graph.Upstream).Reverse()
                 .Select(layer => new GraphRow("Waits for" + Steps(layer[0].Depth), [.. layer.Select(n => Chip(n, upstream: true))])));
@@ -287,6 +285,26 @@ public sealed class DetailViewModel : ObservableObject
         $"Needed by {Count(Graph.Downstream)}, {Graph.Blocked.Count} of them blocked by it.";
 
     private static int Count(IEnumerable<DependencyNode> side) => side.Where(n => !n.Repeat && !n.Cycle).Select(n => n.Id).Distinct(StringComparer.OrdinalIgnoreCase).Count();
+
+    private static GraphChip Chip(DependencyNode n, bool upstream) =>
+        new(n.Id, n.StateText(upstream), n.Blocking, n.IsOpen, IsSelf: false, n.Summary ?? "");
+
+    // ── Execution order (M.TIX-T186): this epic's children, laid into steps by the requires links between them, drawn with
+    // the same chips as the dependency graph above ──
+
+    public bool HasExecutionOrder => Graph.ExecutionOrder.Count > 0;
+
+    /// <summary>The execution order's rows, one a step, top to bottom: everything in a step waits only on steps above it.</summary>
+    public IReadOnlyList<GraphRow> ExecutionOrderRows =>
+        [.. Graph.ExecutionOrder.Select((members, i) => new GraphRow($"Step {i + 1}", [.. members.Select(n => Chip(n, upstream: true))]))];
+
+    /// <summary>The execution order as a text list, one ticket a line under its step: the drawn rows' text alternative.</summary>
+    public string ExecutionOrderText => string.Join(Environment.NewLine, Graph.ExecutionOrderLines());
+
+    /// <summary>The execution order in one sentence: how many tickets, how many steps, how many still hold a later step up.</summary>
+    public string ExecutionOrderSummary =>
+        $"{Graph.ExecutionOrder.Sum(s => s.Count)} ticket(s) in {Graph.ExecutionOrder.Count} step(s), " +
+        $"{Graph.ExecutionOrder.SelectMany(s => s).Count(n => n.Blocking)} open and blocking a later step.";
 
     public IReadOnlyList<HistoryLine> History { get; }
 

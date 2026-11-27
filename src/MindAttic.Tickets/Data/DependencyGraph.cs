@@ -53,6 +53,14 @@ public sealed class DependencyGraph
     /// <summary>What's part of it, all the way down (its children, theirs, …), depth first.</summary>
     public IReadOnlyList<DependencyNode> Children { get; private init; } = [];
 
+    /// <summary>
+    /// <see cref="Children"/> ordered into steps by the <c>requires</c> links between them (M.TIX-T186): step 1 needs
+    /// nothing else in the epic done first, and each later step waits for at least one ticket in an earlier step. A
+    /// requires link to a ticket outside the epic doesn't count. A member still open that a later step waits for is
+    /// marked <see cref="DependencyNode.Blocking"/>; empty when the epic has no children.
+    /// </summary>
+    public IReadOnlyList<IReadOnlyList<DependencyNode>> ExecutionOrder { get; private init; } = [];
+
     /// <summary>Nothing waits either way and it has no parent or child.</summary>
     public bool IsAlone => IsEmpty && Parents.Count == 0 && Children.Count == 0;
 
@@ -109,13 +117,44 @@ public sealed class DependencyGraph
         var root = byId.GetValueOrDefault(id);
         var rootId = root?.Id ?? id;
         var rootOpen = root?.Status == TicketRules.Open;
+        var childNodes = Walk(rootId, children, byId, rootOpen: false, names);
         return new DependencyGraph(rootId, root,
             Walk(rootId, down, byId, rootOpen, names),
             Walk(rootId, up, byId, rootOpen, names), names.GetValueOrDefault(rootId))
         {
             Parents = Walk(rootId, parents, byId, rootOpen: false, names),
-            Children = Walk(rootId, children, byId, rootOpen: false, names),
+            Children = childNodes,
+            ExecutionOrder = Steps(childNodes, requires),
         };
+    }
+
+    /// <summary>Builds <see cref="ExecutionOrder"/> from <paramref name="children"/> and the workspace's <c>requires</c> links.</summary>
+    private static IReadOnlyList<IReadOnlyList<DependencyNode>> Steps(IReadOnlyList<DependencyNode> children, IReadOnlyList<Link> requires)
+    {
+        var members = new Dictionary<string, DependencyNode>(StringComparer.OrdinalIgnoreCase);
+        foreach (var n in children.Where(n => !n.Repeat && !n.Cycle)) members.TryAdd(n.Id, n);
+        if (members.Count == 0) return [];
+
+        var within = requires.Where(l => members.ContainsKey(l.From) && members.ContainsKey(l.To)).ToList();
+        var waitsFor = within.ToLookup(l => l.From, l => l.To, StringComparer.OrdinalIgnoreCase);
+        var waitedOnBy = within.ToLookup(l => l.To, l => l.From, StringComparer.OrdinalIgnoreCase);
+        var step = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+
+        // The longest requires chain within the epic up to this member; a cycle among them breaks where it's met again.
+        int StepOf(string memberId, HashSet<string> path)
+        {
+            if (step.TryGetValue(memberId, out var s)) return s;
+            if (!path.Add(memberId)) return 0;
+            var depth = waitsFor[memberId].Select(p => StepOf(p, path) + 1).DefaultIfEmpty(0).Max();
+            path.Remove(memberId);
+            return step[memberId] = depth;
+        }
+        foreach (var memberId in members.Keys) StepOf(memberId, []);
+
+        return [.. members.Values
+            .Select(n => n with { Depth = step[n.Id], Blocking = n.IsOpen && waitedOnBy[n.Id].Any() })
+            .GroupBy(n => n.Depth).OrderBy(g => g.Key)
+            .Select(g => (IReadOnlyList<DependencyNode>)[.. g.OrderBy(n => n.Id, StringComparer.OrdinalIgnoreCase)])];
     }
 
     /// <summary>Depth first from <paramref name="start"/>: each ticket expanded once, a repeat or a cycle listed but not followed.</summary>
@@ -173,6 +212,21 @@ public sealed class DependencyGraph
         {
             lines.Add($"Children ({Children.Count(n => n.IsOpen && !n.Repeat && !n.Cycle)} open):");
             lines.AddRange(Children.Select(n => new string(' ', n.Depth * 2) + n.Text(upstream: false)));
+        }
+        return lines;
+    }
+
+    /// <summary>
+    /// <see cref="ExecutionOrder"/> as plain text, one ticket a line under its step: the text alternative to the drawn
+    /// chips, for a screen reader. Empty when the epic has no children.
+    /// </summary>
+    public IReadOnlyList<string> ExecutionOrderLines()
+    {
+        var lines = new List<string>();
+        foreach (var (members, i) in ExecutionOrder.Select((s, i) => (s, i)))
+        {
+            lines.Add($"Step {i + 1}:");
+            lines.AddRange(members.Select(n => "  " + n.Text(upstream: true)));
         }
         return lines;
     }
