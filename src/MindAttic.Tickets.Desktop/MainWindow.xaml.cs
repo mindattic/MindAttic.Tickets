@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
+using MindAttic.Components.Wpf.Controls;
 using MindAttic.Tickets.Desktop.Bus;
 using MindAttic.Tickets.Desktop.Data;
 using MindAttic.Tickets.Desktop.ViewModels;
@@ -593,7 +594,7 @@ public partial class MainWindow : Window
         e.Handled = true;
     }
 
-    private void ShowHelp() => MessageBox.Show(this,
+    private void ShowHelp() => MaMessageBox.Show(this,
         """
         Repos lists every repo's tickets under its name, with its git state and a Start link that opens the Orchestrator
         to start a CLI there. The Queue is every open ticket in the order /allocate hands them out, highest priority
