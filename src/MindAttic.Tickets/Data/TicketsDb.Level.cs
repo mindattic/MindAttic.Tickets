@@ -40,6 +40,32 @@ public sealed partial class TicketsDb
     public static string? LevelOf(IEnumerable<string>? labels) =>
         labels?.FirstOrDefault(l => l.StartsWith(LevelPrefix, StringComparison.Ordinal)) is { } x ? NormalizeLevel(x) : null;
 
+    /// <summary>Whether <paramref name="labels"/> make a ticket an epic (<c>level:epic</c>, or the plain <c>epic</c> label).</summary>
+    public static bool IsEpic(IEnumerable<string>? labels) =>
+        labels is not null && (LevelOf(labels) == LevelEpic || labels.Contains(LevelEpic, StringComparer.Ordinal));
+
+    /// <summary>
+    /// The nearest epic <paramref name="id"/> is part-of at any depth (M.TIX-T389), nearest first along part-of links; with
+    /// <paramref name="repo"/>, only an epic in that repo counts. Null when there is none.
+    /// </summary>
+    public static string? EpicAncestor(TicketGraph graph, IReadOnlyDictionary<string, IReadOnlyList<string>> labels, string id, string? repo = null) =>
+        graph.Reach(id, PartOf, down: false)
+            .FirstOrDefault(a => IsEpic(labels.GetValueOrDefault(a))
+                && (repo is null || string.Equals(graph.Node(a).Repo, repo, StringComparison.OrdinalIgnoreCase)));
+
+    /// <summary>
+    /// Open tickets (optionally one repo's) that are not epics and have no epic ancestor in their own repo (M.TIX-T389): work
+    /// that no epic accounts for. In repo then ID order.
+    /// </summary>
+    public IReadOnlyList<(string Repo, Ticket Ticket)> Orphans(string? repo = null)
+    {
+        var graph = Graph();
+        var labels = AllLabels();
+        return [.. Tickets(repo)
+            .Where(x => x.Ticket.Status == TicketRules.Open && !IsEpic(labels.GetValueOrDefault(x.Ticket.Id))
+                && EpicAncestor(graph, labels, x.Ticket.Id, x.Repo) is null)];
+    }
+
     /// <summary>
     /// Sets a ticket's level: drops every other <c>level:*</c> label and adds <c>level:&lt;x&gt;</c> (and <c>epic</c> for an
     /// epic; taken off when it stops being one), in one transaction, each change in the ticket's history. Returns the level.

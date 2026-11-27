@@ -50,6 +50,7 @@ app.Configure(config =>
             l.AddCommand<TicketLabelListCommand>("list").WithDescription("A ticket's labels, or with no ID every label in use and how many tickets carry it.");
         });
         t.AddCommand<TicketLevelCommand>("level").WithDescription("Show a ticket's level, or set it: level <ID> epic|feature|story|task (replaces any other level: label).");
+        t.AddCommand<TicketOrphansCommand>("orphans").WithDescription("Open tickets (epics aside) with no epic above them in their own repo (--repo, --json).");
         t.AddCommand<TicketSplitCommand>("split").WithDescription("Split a ticket into tasks: split <ID> --task \"summary\" (repeatable) or --file PATH (\"name | summary\" lines); each a level-task child part-of it, its type, approval and priority; --sequential chains requires, --name-prefix names them.");
         t.AddCommand<TicketHygieneCommand>("hygiene").WithDescription("Closed tickets that may not be done: no Ref cited, or a later ticket says it came back.");
         t.AddCommand<TicketStatsCommand>("stats").WithDescription("Ticket metrics from ticket_events: throughput and cycle time per period, and open tickets by repo and type over time (--by day|week|month, --periods N, --repo, --type, --json).");

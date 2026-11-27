@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Text.Json;
 using MindAttic.Tickets.Data;
 using Spectre.Console;
 using Spectre.Console.Cli;
@@ -33,6 +34,44 @@ public sealed class TicketLevelCommand : Command<TicketLevelCommand.Settings>
         var id = db.Ticket(settings.Id)?.Ticket.Id ?? throw new InvalidOperationException($"No ticket {settings.Id}.");
         var level = settings.Level is { } l ? db.SetLevel(id, l) : db.Level(id);
         Console.WriteLine($"{id} level: {level ?? "none"}");
+        return 0;
+    }
+}
+
+/// <summary>
+/// <c>tickets ticket orphans [--repo R] [--json]</c> (M.TIX-T389): open tickets, epics aside, with no epic ancestor in their own
+/// repo; see <see cref="TicketsDb.Orphans"/>.
+/// </summary>
+public sealed class TicketOrphansCommand : Command<TicketOrphansCommand.Settings>
+{
+    public sealed class Settings : WorkspaceSettings
+    {
+        [CommandOption("--repo <NAME>")]
+        [Description("Only this repo. Default: every repo.")]
+        public string? Repo { get; init; }
+
+        [CommandOption("--json")]
+        public bool Json { get; init; }
+    }
+
+    public override int Execute(CommandContext context, Settings settings)
+    {
+        using var db = Db.Open(settings);
+        var rows = db.Orphans(settings.Repo);
+        var names = db.Names();
+        var labels = db.AllLabels();
+        if (settings.Json)
+        {
+            Console.WriteLine(JsonSerializer.Serialize(rows.Select(x => new
+            {
+                repo = x.Repo, id = x.Ticket.Id, name = names.GetValueOrDefault(x.Ticket.Id), type = x.Ticket.Type,
+                level = TicketsDb.LevelOf(labels.GetValueOrDefault(x.Ticket.Id)), summary = x.Ticket.Summary,
+            }), new JsonSerializerOptions { WriteIndented = true }));
+            return 0;
+        }
+        foreach (var x in rows)
+            AnsiConsole.MarkupLine($"  [bold]{Output.Esc(x.Ticket.Id)}[/] {Output.Esc(x.Repo)} ({Output.Esc(x.Ticket.Type)}): {Output.Name(names.GetValueOrDefault(x.Ticket.Id), x.Ticket.Summary)}");
+        AnsiConsole.MarkupLine($"[grey]{rows.Count} open ticket(s) with no epic above them in their repo[/]");
         return 0;
     }
 }

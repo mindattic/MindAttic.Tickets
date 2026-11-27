@@ -9,6 +9,8 @@ namespace MindAttic.Tickets.Cli.Commands;
 
 public sealed class TicketNewCommand : Command<TicketNewCommand.Settings>
 {
+    private const string SourceAuto = "auto";
+
     public sealed class Settings : RepoSettings
     {
         [CommandOption("--type <TYPE>")]
@@ -55,8 +57,13 @@ public sealed class TicketNewCommand : Command<TicketNewCommand.Settings>
         [Description("epic | feature | story | task: its one level: label (M.TIX-T362).")]
         public string? Level { get; init; }
 
+        [CommandOption("--source <SOURCE>")]
+        [Description("auto: an agent filed it unasked; labels it source:auto (M.TIX-T389).")]
+        public string? Source { get; init; }
+
         public override ValidationResult Validate() =>
             Level is not null && TicketsDb.NormalizeLevel(Level) is null ? ValidationResult.Error($"--level must be one of {string.Join(", ", TicketsDb.Levels)}")
+            : Source is not null && Source != SourceAuto ? ValidationResult.Error($"--source must be {SourceAuto}")
             : !TicketRules.Types.Contains(Type) ? ValidationResult.Error($"--type must be one of {string.Join(", ", TicketRules.Types)}")
             : string.IsNullOrWhiteSpace(Summary) ? ValidationResult.Error("--summary is required")
             : (Description is not null ? 1 : 0) + (DescriptionFile is not null ? 1 : 0) + (Template ? 1 : 0) > 1
@@ -76,6 +83,7 @@ public sealed class TicketNewCommand : Command<TicketNewCommand.Settings>
                     : settings.Description ?? (settings.DescriptionFile is { } path ? File.ReadAllText(path) : null);
                 var newId = db.Add(repo.Name, settings.Type, settings.Status, settings.Summary, settings.Ref ?? "", description: description, name: settings.Name).Id;
                 if (settings.Level is { } level) db.SetLevel(newId, level);
+                if (settings.Source is { } source) db.AddLabels(newId, ["source:" + source]);
                 if (settings.Parent is { } parent)
                 {
                     db.AddLink(newId, parent, "part-of", null);
@@ -88,8 +96,8 @@ public sealed class TicketNewCommand : Command<TicketNewCommand.Settings>
             }
         if (!File.Exists(repo.StoriesPath))
             throw new InvalidOperationException($"{repo.Name} has no docs/USER_STORIES.md; run 'tickets repos rollout --apply' first.");
-        if (settings.Description is not null || settings.DescriptionFile is not null || settings.Template || settings.Name is not null || settings.Parent is not null || settings.Level is not null || settings.Approved)
-            throw new InvalidOperationException("Descriptions, names, parents, levels and approval live in the ticket database; this workspace hasn't been migrated to it.");
+        if (settings.Description is not null || settings.DescriptionFile is not null || settings.Template || settings.Name is not null || settings.Parent is not null || settings.Level is not null || settings.Approved || settings.Source is not null)
+            throw new InvalidOperationException("Descriptions, names, parents, levels, approval and labels live in the ticket database; this workspace hasn't been migrated to it.");
 
         var file = StoryFile.Load(repo.StoriesPath);
         WarnOfDuplicates(settings, file.Tickets.Select(t => (repo.Name, t)));
@@ -347,8 +355,10 @@ public sealed class TicketListCommand : Command<TicketListCommand.Settings>
         IReadOnlyDictionary<string, IReadOnlyList<string>> labels;
         IReadOnlyDictionary<string, string> names; // friendly names (M.TIX-T313), likewise only in the database
         HashSet<string> containers = new(StringComparer.OrdinalIgnoreCase); // open tickets with an open part-of child (M.TIX-T365)
+        TicketGraph? graph = null; // for --json's parent and epic (M.TIX-T389)
         using (var db = TicketsDb.OpenIfMigrated(settings.Workspace.Root))
         {
+            if (settings.EffectiveFormat == "json") graph = db?.Graph();
             labels = db?.AllLabels() ?? (settings.Label.Length > 0
                 ? throw new InvalidOperationException("Labels live in the ticket database, and this workspace isn't migrated to it yet; run 'tickets db migrate'.")
                 : new Dictionary<string, IReadOnlyList<string>>());
@@ -398,6 +408,8 @@ public sealed class TicketListCommand : Command<TicketListCommand.Settings>
                     repo = x.Repo.Name, id = x.Ticket.Id, name = names.GetValueOrDefault(x.Ticket.Id), date = x.Ticket.Date, type = x.Ticket.Type,
                     status = x.Ticket.Status, summary = x.Ticket.Summary, @ref = x.Ticket.Ref, labels = LabelsOf(x.Ticket.Id),
                     level = TicketsDb.LevelOf(LabelsOf(x.Ticket.Id)),
+                    parent = graph?.Parents(x.Ticket.Id).FirstOrDefault()?.Id,
+                    epic = graph is null ? null : TicketsDb.EpicAncestor(graph, labels, x.Ticket.Id),
                 }), new JsonSerializerOptions { WriteIndented = true }) + Environment.NewLine
                 : TicketExport.Write(format, rows.Select(x => new ExportRow(x.Repo.Name, x.Ticket, LabelsOf(x.Ticket.Id))));
             if (settings.Output is { } path)
