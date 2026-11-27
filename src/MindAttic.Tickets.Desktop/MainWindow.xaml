@@ -900,31 +900,10 @@
             </Grid>
 
             <!-- Toasts (M.TIX-T84): an agent closed a ticket. Bottom right, over the lists; each goes by itself, or with ✕;
-                 clicking one opens its ticket. The announcer says each one too (4.1.3). -->
-            <ItemsControl Grid.Column="0" ItemsSource="{Binding Toasts}" Focusable="False" Panel.ZIndex="10"
-                          HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,24,12" Width="360"
-                          AutomationProperties.Name="Notifications">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate DataType="{x:Type vm:ActivityToast}">
-                        <Border Background="{DynamicResource MaPane}" BorderBrush="{DynamicResource StateClosed}" BorderThickness="1,1,1,1"
-                                CornerRadius="6" Padding="12,8" Margin="0,8,0,0">
-                            <DockPanel>
-                                <Button DockPanel.Dock="Right" Style="{StaticResource MaToolButton}" Content="&#x2715;" VerticalAlignment="Top" Margin="8,0,0,0"
-                                        Command="{Binding DataContext.DismissToastCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}"
-                                        AutomationProperties.Name="{Binding Title, StringFormat='Dismiss: {0}'}" ToolTip="Dismiss" />
-                                <Button Style="{StaticResource LinkBtn}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"
-                                        Command="{Binding DataContext.OpenToastCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}"
-                                        AutomationProperties.Name="{Binding Spoken}" ToolTip="Open the ticket">
-                                    <StackPanel>
-                                        <TextBlock Text="{Binding Title}" FontWeight="SemiBold" TextWrapping="Wrap" />
-                                        <TextBlock Text="{Binding Body}" Foreground="{DynamicResource MaText}" TextWrapping="Wrap" />
-                                    </StackPanel>
-                                </Button>
-                            </DockPanel>
-                        </Border>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+                 clicking one opens its ticket. MaToastHost announces each one itself (4.1.3). -->
+            <mc:MaToastHost Grid.Column="0" ItemsSource="{Binding Toasts}" Panel.ZIndex="10"
+                             HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,24,12" Width="360"
+                             OpenCommand="{Binding OpenToastCommand}" DismissCommand="{Binding DismissToastCommand}" />
 
             <!-- ── Graph (M.TIX-T315): the node graph around a focused ticket; the filter bar narrows it, a text list reads the same ── -->
             <DockPanel Margin="20,0,12,0" Visibility="{Binding IsGraphView, Converter={StaticResource Visible}}">
